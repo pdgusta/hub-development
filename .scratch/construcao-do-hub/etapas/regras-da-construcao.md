@@ -33,6 +33,14 @@ Valem para todo construtor e revisor das etapas. Plano decidido: `revisao/plano/
 - **Nada global de verdade.** Hub de ensaio e pasta de configuração de ensaio (HOME de ensaio por variável de ambiente:
   `CODEX_HOME`, `COPILOT_HOME`, `CLAUDE_CONFIG_DIR` ou equivalente). Nunca grave em `~/.claude`, `~/.codex`,
   `~/.copilot`, `~/.agents` de verdade, nem registre tarefa agendada ou serviço.
+- **Login dos harnesses no ensaio** (aval do Gustavo para a construção inteira, rodada
+  `2026-10-16-login-dos-harnesses-no-ensaio`, 20:24): construtor ou revisor que precise do Claude Code, do Codex ou do
+  Copilot de verdade copia o login para uma pasta de ensaio em `%TEMP%\hub-ensaio-<ticket>-*`: Claude,
+  `%USERPROFILE%\.claude\.credentials.json` em `CLAUDE_CONFIG_DIR`; Codex, `%USERPROFILE%\.codex\auth.json` em
+  `CODEX_HOME`; Copilot, só os campos de login (`lastLoggedInUser`, `loggedInUsers`) no `config.json` do `COPILOT_HOME`
+  (o token fica no cofre do Windows; não copie). Apague ao fim de cada rodada; confira as pastas reais por hash antes e
+  depois; modelos baratos (haiku no Claude e no Copilot, gpt-6-luna baixo no Codex); uma sessão por harness; registre
+  cada uso no relatório (o que copiou, quando apagou, os hashes).
 - Contêineres de ensaio (Docker): só em `127.0.0.1`, nome começando por `hub-ensaio-`, apagados ao fim da etapa.
 - Processo longo: em segundo plano, com registro em arquivo; nunca `taskkill` por nome (só o PID que você abriu).
 

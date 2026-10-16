@@ -16,3 +16,4 @@ Blocked by: 10, 03
 - [ ] no Copilot CLI, com e sem a opção que libera as instruções do MCP
 
 ## Comments
+- 2026-10-16 20:24 (maestro): aval do Gustavo para copiar o login dos três harnesses em pasta de ensaio (rodada `2026-10-16-login-dos-harnesses-no-ensaio`, A, vale para a construção inteira); condições em `../etapas/regras-da-construcao.md`.

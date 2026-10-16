@@ -14,3 +14,4 @@ Blocked by: 23
 - [ ] `claude -p`, `codex exec` e `copilot -p` respondem uma pergunta que só o contrato de ensaio sabe
 
 ## Comments
+- 2026-10-16 20:24 (maestro): aval do Gustavo para copiar o login dos três harnesses em pasta de ensaio (rodada `2026-10-16-login-dos-harnesses-no-ensaio`, A, vale para a construção inteira); condições em `../etapas/regras-da-construcao.md`.

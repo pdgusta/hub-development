@@ -62,3 +62,5 @@ Reproduzido: index.md 'local: True' -> locais []. Conserto: usar separar() da li
 Rodando em segundo plano: prova 01 (revisao-01-r1-cifrada.log) e sincronizador 06 (revisao-06-r1-sincronizador.log).
 06 r1: VOLTA (conserto 1, local lido como o verificador). sincronizador.ps1 invalidado: Vela editando worktree durante a rodada.
 Parecer em etapas/01-esqueleto/parecer-Vela.md. Vela avisada.
+01: prova com cifra do HEAD 0c8c639: 19 PASSA, saída 0, limpa (revisao-01-r1-cifrada.log). Rodando -Manter para sondar nomes do hub nos docs crus (revisao-01-r1-manter.log); depois derrubar com Remove-EnsaioBanco.
+06 r2 (b7cd714): conserto 1 feito; gerador 7/7 (Fiel). Rodando sincronizador e -SoPonto (revisao-06-r2-*.log).

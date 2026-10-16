@@ -2,7 +2,7 @@
 titulo: Login dos harnesses nas pastas de ensaio
 ticket: 16
 aberta: 2026-10-16
-estado: aberta
+estado: absorvida
 ---
 
 O Trilho terminou a guarda do ticket 14 (o hook que recusa regravar inteiro um arquivo que já existe no hub), com 68

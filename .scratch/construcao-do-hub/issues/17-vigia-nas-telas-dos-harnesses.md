@@ -16,3 +16,4 @@ Blocked by: 16, 03
 - [ ] o mod e a barra do Copilot mostram o estado de um arquivo de exemplo
 
 ## Comments
+- 2026-10-16 20:24 (maestro): aval do Gustavo para copiar o login dos três harnesses em pasta de ensaio (rodada `2026-10-16-login-dos-harnesses-no-ensaio`, A, vale para a construção inteira); condições em `../etapas/regras-da-construcao.md`.

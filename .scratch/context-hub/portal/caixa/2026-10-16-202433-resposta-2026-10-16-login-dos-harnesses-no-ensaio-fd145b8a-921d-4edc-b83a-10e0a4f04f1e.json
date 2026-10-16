@@ -1,0 +1,70 @@
+{
+  "envio": "fd145b8a-921d-4edc-b83a-10e0a4f04f1e",
+  "tipo": "resposta",
+  "enviada": "2026-10-16T20:24:33-03:00",
+  "alvo": {
+    "tipo": "rodada",
+    "id": "2026-10-16-login-dos-harnesses-no-ensaio",
+    "titulo": "Login dos harnesses nas pastas de ensaio"
+  },
+  "ticket": "16",
+  "substitui": null,
+  "rodada": {
+    "id": "2026-10-16-login-dos-harnesses-no-ensaio",
+    "base": "1a3b48ac91647ecf9269687900ef9a4999050c638698357c493d621c4d1f0af1",
+    "titulo": "Login dos harnesses nas pastas de ensaio",
+    "ticket": "16",
+    "perguntas": [
+      {
+        "id": "login-de-ensaio",
+        "titulo": "Login dos harnesses nas pastas de ensaio",
+        "tipo": "escolha",
+        "recomendada": [
+          "A"
+        ],
+        "opcoes": [
+          {
+            "chave": "A",
+            "texto": "Aval para a construção inteira, nas condições acima: qualquer ticket que precise dos harnesses de verdade copia o login dos três para uma pasta de ensaio em `%TEMP%`, apaga ao fim de cada rodada, confere as pastas reais por hash e usa modelos baratos; o construtor registra cada uso no relatório"
+          },
+          {
+            "chave": "B",
+            "texto": "Aval só para o ticket 14, nas condições acima; cada ticket seguinte pede de novo"
+          },
+          {
+            "chave": "C",
+            "texto": "Só o Codex, como na prova 03: o Claude Code e o Copilot ficam provados pelos eventos gravados, e a ponta a ponta deles fica para o kit de par (ticket 24)"
+          },
+          {
+            "chave": "D",
+            "texto": "Nenhum login copiado: a ponta a ponta dos três fica para o kit de par, e o 14 entrega só a prova pelos eventos gravados"
+          }
+        ],
+        "proposta": null
+      },
+      {
+        "id": "algo-mais",
+        "titulo": "Algo mais?",
+        "tipo": "texto",
+        "recomendada": [],
+        "opcoes": [],
+        "proposta": null
+      }
+    ]
+  },
+  "corpo_hash": "634e94657e1b9a514552f9a50c33dc5e68edd0e24e715347d5ec3eee1fa93936",
+  "corpo": {
+    "tipo": "resposta",
+    "rodada": "2026-10-16-login-dos-harnesses-no-ensaio",
+    "base": "1a3b48ac91647ecf9269687900ef9a4999050c638698357c493d621c4d1f0af1",
+    "respostas": {
+      "login-de-ensaio": {
+        "escolha": [
+          "A"
+        ],
+        "outra": null,
+        "comentario": null
+      }
+    }
+  }
+}

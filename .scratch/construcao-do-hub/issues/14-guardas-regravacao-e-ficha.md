@@ -24,3 +24,4 @@ Blocked by: 05, 03
   `node agents/code/hooks/guardas/antes-da-ferramenta.mjs <claude|codex|copilot>` com o evento na entrada, alimentado
   pelas entradas gravadas na bancada do ticket 11 (`C:\Projetos\bancada-acesso\gravacao\`); (2) ponta a ponta com
   `claude -p`, `codex exec` e `copilot -p` em HOME de ensaio. Falta: tudo depois do README.
+- 2026-10-16 20:24 (maestro): aval do Gustavo para copiar o login dos três harnesses em pasta de ensaio (rodada `2026-10-16-login-dos-harnesses-no-ensaio`, A, vale para a construção inteira); condições em `../etapas/regras-da-construcao.md`.

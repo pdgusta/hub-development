@@ -20,3 +20,4 @@ Blocked by: 04, 17, 03
   no mesmo trabalho (maestro, sessão sozinha, recrutas) e que nem uma nota para todos nem uma por agente fica bom.
   Proposta do maestro em `../rascunhos/retomada-com-varias-sessoes.md` (nota do trabalho só de quem conduz, mais uma
   passagem por sessão que não conduz). Decidir numa rodada antes de pegar este ticket.
+- 2026-10-16 20:24 (maestro): aval do Gustavo para copiar o login dos três harnesses em pasta de ensaio (rodada `2026-10-16-login-dos-harnesses-no-ensaio`, A, vale para a construção inteira); condições em `../etapas/regras-da-construcao.md`.
