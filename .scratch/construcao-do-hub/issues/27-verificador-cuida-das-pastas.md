@@ -20,3 +20,4 @@ Blocked by: 05, 06
 
 - 2026-10-16 ~21h30 (maestro): publicado pela decisão do Gustavo (rodada `2026-10-16-ticket-05-perguntas-do-trilho`, pergunta 1, A). As quatro tarefas estavam no spec e ficaram fora dos 26 tickets no fatiamento do `/to-tickets`.
 - 2026-10-17 (Vela): pego (`claimed`). Worktree `C:\context-hub-wt\ticket-27`, ramo `ticket-27`, de `integracao` 8b9beef. Falta: tudo (4 tarefas).
+- 2026-10-16 ~20h55 (maestro): perguntas da Vela no 27: aceitos como técnicos (1) `HUB_PAR_ID` por variável do kit, (2) três parecidas em `other/` pelo `why_other`, (3) lista do `index.md` entre `<!-- lista:inicio -->`/`<!-- lista:fim -->`, (4) contagem de 10 entradas diretas sem ponto; (5) proteção contra laço no fim da resposta foi para a rodada `2026-10-16-laco-no-fim-da-resposta` (vale também para o 18).
