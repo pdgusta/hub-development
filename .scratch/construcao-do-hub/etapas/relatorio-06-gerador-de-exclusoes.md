@@ -99,3 +99,4 @@ da ponta. O hub de ensaio já traz a pasta local `initiatives/context-hub/labs/`
 - 2026-10-16 ~23h20: ticket pego.
 - 2026-10-16 ~23h50: 5/5 e 14/14 verdes depois de juntar `integracao` 0d04985. Pedida a revisão do Fiel e do Fielzinho.
 - 2026-10-17 ~0h: rodada 1 = volta (o gerador lia `local` com regex própria). Consertado com o leitor do verificador e testes (`True`, `TRUE`, `--- `, texto, YAML ilegível). 7/7 e 14/14 em b7cd714. Pedida a rodada 2.
+- 2026-10-17: integracao andou para 45ec3b0 (ticket 01). Junto depois do parecer da rodada 2, para não mexer na worktree durante a revisão; depois rodo 7 + 14 de novo.

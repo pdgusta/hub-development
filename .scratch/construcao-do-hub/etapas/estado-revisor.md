@@ -64,3 +64,7 @@ Rodando em segundo plano: prova 01 (revisao-01-r1-cifrada.log) e sincronizador 0
 Parecer em etapas/01-esqueleto/parecer-Vela.md. Vela avisada.
 01: prova com cifra do HEAD 0c8c639: 19 PASSA, saída 0, limpa (revisao-01-r1-cifrada.log). Rodando -Manter para sondar nomes do hub nos docs crus (revisao-01-r1-manter.log); depois derrubar com Remove-EnsaioBanco.
 06 r2 (b7cd714): conserto 1 feito; gerador 7/7 (Fiel). Rodando sincronizador e -SoPonto (revisao-06-r2-*.log).
+Aval do Gustavo (20:24) para login dos harnesses em %TEMP%\hub-ensaio-<ticket>-*: regras-da-construcao.md, "Login dos harnesses no ensaio". Lido; usar só se a revisão exigir, com hashes antes/depois e registro no parecer.
+01 r1: PASSA (Fiel sozinho). Sonda -Manter sem vazamento; ensaio derrubado. Parecer etapas/00-provas/parecer-Brasa.md. Brasa avisada.
+06 r2: PASSA (Fiel sozinho). 7/7, 14/14, -SoPonto vermelho correto, limpo. Vela avisada.
+Pendente: leitura do Fielzinho em 05 r4, 01 r1 e 06 r2 quando ele voltar do limite.

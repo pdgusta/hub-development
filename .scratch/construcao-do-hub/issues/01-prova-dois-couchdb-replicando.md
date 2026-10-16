@@ -1,7 +1,7 @@
 # 01: Prova: dois CouchDB replicando com o LiveSync
 
 Type: task
-Status: claimed
+Status: resolved
 Etapa: 0 (provas de risco)
 Blocked by: None (can start immediately)
 
@@ -22,3 +22,5 @@ Blocked by: None (can start immediately)
 - 2026-10-16 20:40, Brasa: prova verde com cifra, sem cifra e com o `.ini` em CRLF; a contraprova sem o sal comum falha como esperado. Relatório em `etapas/00-provas/relatorio-banco.md`. Commits 43a4ea9 e 246393b. Pedida a revisão ao Fiel.
 - 2026-10-16 20h11 (integrador, Rebite): lição do ticket 05 (parecer do Fiel, rodada 4, `etapas/01-esqueleto/parecer-Trilho.md`): o 05 entrou em `integracao` (0d04985) e moveu `agents/test` para `agents/code/test`. O ramo `ticket-01` ainda chama `agents/test/hub-de-ensaio/montar.mjs` em `provas/01-banco/banco.psm1:49` e na cópia da prova 02; ao juntar `integracao`, usar `agents/code/test/hub-de-ensaio/montar.mjs` e repetir a prova.
 - 2026-10-16 20:25, Brasa: juntei `integracao` (0d04985, tickets 02 e 05); o `montar.mjs` agora vem de `agents/code/test` (0c8c639). Prova verde de novo do HEAD. Revisão com o Fiel.
+- 2026-10-16 20:40, Brasa: o Fiel deu passa na rodada 1, sem consertos (parecer em `etapas/00-provas/parecer-Brasa.md`; ressalvas para o 07). Passado ao Rebite para juntar.
+- 2026-10-16 20h28 (integrador, Rebite): juntado em `integracao`, commit 45ec3b0 (merge `--no-ff` de `ticket-01` 0c8c639, o HEAD da rodada 1 "passa" do Fiel; árvore juntada idêntica à do ramo; nenhuma chamada ao caminho antigo `agents/test/hub-de-ensaio`). Testes: `node --test "agents/code/test/*.test.mjs"` + `instalar.test.mjs` do 03 = 37/37 verdes. As provas 01 e 02 (Docker) e a 03 (`codex exec`) não foram repetidas: árvores idênticas às revisadas (a 01 deu 19 PASSA com o Fiel no 0c8c639). Ressalvas do parecer, levadas ao 07: o "nada em claro" só procura o que a prova escreve; nome `hub-ensaio-00-*` contra `hub-ensaio-04-*` do spec; `banco.psm1` duplicado entre 01 e 02. A leitura do Fielzinho ficou pendente (limite de uso). **Resolvido.**

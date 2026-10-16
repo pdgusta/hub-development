@@ -34,3 +34,24 @@ No limite de uso do Codex até 20:26; leitura dele pendente. Entra na próxima r
 ### Pedido para a rodada 2
 
 Não editar o worktree enquanto a revisão roda; pedir a rodada com o commit.
+
+## Rodada 2 — 2026-10-16 — ramo ticket-06 em b7cd714
+
+Veredito: **passa**. Sem consertos.
+
+Conserto 1 conferido: `pastasLocais` lê com `separar` (`lib/frontmatter.mjs`) e `dados.local === true`; YAML
+ilegível em `index.md` recusa com código 2, sem gravar (falha fechada, melhor que pasta vazando).
+Evidências (rodadas pelo Fiel, worktree limpo):
+1. `gerador.test.mjs`: 7/7 (novos: `True`, `TRUE`, fechamento `--- `, texto `"true"`, YAML inválido).
+2. `sincronizador.ps1`: 14/14, saída 0. Log `revisao-06-r2-sincronizador.log`.
+3. `sincronizador.ps1 -SoPonto`: 6 FALHA, saída 1, e só os arquivos de `labs/` e `rascunho-local/` vazam; nada com
+   ponto. O teste distingue. Log `revisao-06-r2-so-ponto.log`.
+4. Sem contêiner nem pasta hub-ensaio-06 depois das duas rodadas.
+
+Ressalvas (do relatório, decisões do Gustavo, não do ticket): pasta local nova criada com o CLI rodando vaza
+(parar, gerar, religar); quem roda o gerador depois da instalação; exclusão do git; limpeza ao pôr `local: true`
+numa pasta que já replicou. Um `index.md` ilegível em qualquer pasta trava a atualização da lista inteira: quem
+chama (kit, vigia) precisa mostrar o erro, não engolir.
+
+Fielzinho: no limite de uso do Codex até 20:26; a leitura dele fica para depois. Se ele achar algo, entra como
+ressalva para o Rebite.
