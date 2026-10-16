@@ -1,0 +1,66 @@
+{
+ "chave": "web:docs.llamaindex.ai/en/stable/module_guides/loading/node_parsers/modules",
+ "nomes": [
+  "LlamaIndex MarkdownNodeParser"
+ ],
+ "urls": [
+  "https://docs.llamaindex.ai/en/stable/module_guides/loading/node_parsers/modules/#markdownnodeparser"
+ ],
+ "readme_cortado": false,
+ "readme": "[Node Parser Modules | Developer Documentation]\n\nGitHub Skip to content \n\nFramework\nComponent Guides\nLoading\nNode Parsers\nNode Parser Modules\nCopy Markdown\n\nOpen in Claude\n\nOpen in ChatGPT\n\nOpen in Cursor\n\nCopy Markdown\n\nView as Markdown\n\nNode Parser Modules \n\nFile-Based Node ParsersSection titled “File-Based Node Parsers”\n\nThere are several file-based node parsers, that will create nodes based on the type of content that is being parsed (JSON, Markdown, etc.)\n\nThe simplest flow is to combine the FlatFileReader with the SimpleFileNodeParser to automatically use the best node parser for each type of content. Then, you may want to chain the file-based node parser with a text-based node parser to account for the actual length of the text.\n\nSimpleFileNodeParserSection titled “SimpleFileNodeParser”\n\nfrom llama_index.core.node_parser import SimpleFileNodeParser\n\nfrom llama_index.readers.file import FlatReader\n\nfrom pathlib import Path\n\nmd_docs = FlatReader().load_data(Path(\"./test.md\"))\n\nparser = SimpleFileNodeParser()\n\nmd_nodes = parser.get_nodes_from_documents(md_docs)\n\nHTMLNodeParserSection titled “HTMLNodeParser”\n\nThis node parser uses beautifulsoup to parse raw HTML.\n\nBy default, it will parse a select subset of HTML tags, but you can override this.\n\nThe default tags are: [\"p\", \"h1\", \"h2\", \"h3\", \"h4\", \"h5\", \"h6\", \"li\", \"b\", \"i\", \"u\", \"section\"]\n\nfrom llama_index.core.node_parser import HTMLNodeParser\n\nparser = HTMLNodeParser(tags=[\"p\", \"h1\"]) # optional list of tags\n\nnodes = parser.get_nodes_from_documents(html_docs)\n\nJSONNodeParserSection titled “JSONNodeParser”\n\nThe JSONNodeParser parses raw JSON.\n\nfrom llama_index.core.node_parser import JSONNodeParser\n\nparser = JSONNodeParser()\n\nnodes = parser.get_nodes_from_documents(json_docs)\n\nMarkdownNodeParserSection titled “MarkdownNodeParser”\n\nThe MarkdownNodeParser parses raw markdown text.\n\nfrom llama_index.core.node_parser import MarkdownNodeParser\n\nparser = MarkdownNodeParser()\n\nnodes = parser.get_nodes_from_documents(markdown_docs)\n\nText-SplittersSection titled “Text-Splitters”\n\nCodeSplitterSection titled “CodeSplitter”\n\nSplits raw code-text based on the language it is written in.\n\nCheck the full list of supported languages here.\n\nfrom llama_index.core.node_parser import CodeSplitter\n\nsplitter = CodeSplitter(\n\n language=\"python\",\n\n chunk_lines=40, # lines per chunk\n\n chunk_lines_overlap=15, # lines overlap between chunks\n\n max_chars=1500, # max chars per chunk\n\n)\n\nnodes = splitter.get_nodes_from_documents(documents)\n\nLangchainNodeParserSection titled “LangchainNodeParser”\n\nYou can also wrap any existing text splitter from langchain with a node parser.\n\nfrom langchain.text_splitter import RecursiveCharacterTextSplitter\n\nfrom llama_index.core.node_parser import LangchainNodeParser\n\nparser = LangchainNodeParser(RecursiveCharacterTextSplitter())\n\nnodes = parser.get_nodes_from_documents(documents)\n\nChunkerSection titled “Chunker”\n\nThe Chunker is a multi purpose node parser that wraps around the chonkie chunkers.\nyou can initialize your parser using an alias for any of the supported chonkie chunking strategies, the full list of valid aliases can be accessed via Chunker.valid_chunker_types attribute.\n\nfrom llama_index.node_parser.chonkie import Chunker\n\nparser = Chunker(\"recursive\", chunk_size=2048)\n\nnodes = parser.get_nodes_from_documents(documents)\n\nyou can also directly pass in a chonkie chunker instance to initialize the parser.\n\nfrom chonkie import RecursiveChunker\n\nfrom llama_index.node_parser.chonkie import Chunker\n\nchonkie_chunker = RecursiveChunker()\n\nparser = Chunker(chonkie_chunker)\n\nnodes = parser.get_nodes_from_documents(documents)\n\nSentenceSplitterSection titled “SentenceSplitter”\n\nThe SentenceSplitter attempts to split text while respecting the boundaries of sentences.\n\nfrom llama_index.core.node_parser import SentenceSplitter\n\nsplitter = SentenceSplitter(\n\n chunk_size=1024,\n\n chunk_overlap=20,\n\n)\n\nnodes = splitter.get_nodes_from_documents(documents)\n\nSentenceWindowNodeParserSection titled “SentenceWindowNodeParser”\n\nThe SentenceWindowNodeParser is similar to other node parsers, except that it splits all documents into individual sentences. The resulting nodes also contain the surrounding “window” of sentences around each node in the metadata. Note that this metadata will not be visible to the LLM or embedding model.\n\nThis is most useful for generating embeddings that have a very specific scope. Then, combined with a MetadataReplacementNodePostProcessor, you can replace the sentence with it’s surrounding context before sending the node to the LLM.\n\nAn example of setting up the parser with default settings is below. In practice, you would usually only want to adjust the window size of sentences.\n\nfrom llama_index.core.node_parser import SentenceWindowNodeParser\n\nnode_parser = SentenceWindowNodeParser.from_defaults(\n\n # how many sentences on either side to capture\n\n window_size=3,\n\n # the metadata key that holds the window of surrounding sentences\n\n window_metadata_key=\"window\",\n\n # the metadata key that holds the original sentence\n\n original_text_metadata_key=\"original_sentence\",\n\n)\n\nA full example can be found here in combination with the MetadataReplacementNodePostProcessor.\n\nSemanticSplitterNodeParserSection titled “SemanticSplitterNodeParser”\n\n“Semantic chunking” is a new concept proposed Greg Kamradt in his video tutorial on 5 levels of embedding chunking: https://youtu.be/8OJC21T2SL4?t=1933.\n\nInstead of chunking text with a fixed chunk size, the semantic splitter adaptively picks the breakpoint in-between sentences using embedding similarity. This ensures that a “chunk” contains sentences that are semantically related to each other.\n\nWe adapted it into a LlamaIndex module.\n\nCheck out our notebook below!\n\nCaveats:\n\nThe regex primarily works for English sentences\n\nYou may have to tune the breakpoint percentile threshold.\n\nfrom llama_index.core.node_parser import SemanticSplitterNodeParser\n\nfrom llama_index.embeddings.openai import OpenAIEmbedding\n\nembed_model = OpenAIEmbedding()\n\nsplitter = SemanticSplitterNodeParser(\n\n buffer_size=1, breakpoint_percentile_threshold=95, embed_model=embed_model\n\n)\n\nA full example can be found in our guide on using the SemanticSplitterNodeParser.\n\nTokenTextSplitterSection titled “TokenTextSplitter”\n\nThe TokenTextSplitter attempts to split to a consistent chunk size according to raw token counts.\n\nfrom llama_index.core.node_parser import TokenTextSplitter\n\nsplitter = TokenTextSplitter(\n\n chunk_size=1024,\n\n chunk_overlap=20,\n\n separator=\" \",\n\n)\n\nnodes = splitter.get_nodes_from_documents(documents)\n\nRelation-Based Node ParsersSection titled “Relation-Based Node Parsers”\n\nHierarchicalNodeParserSection titled “HierarchicalNodeParser”\n\nThis node parser will chunk nodes into hierarchical nodes. This means a single input will be chunked into several hierarchies of chunk sizes, with each node containing a reference to it’s parent node.\n\nWhen combined with the AutoMergingRetriever, this enables us to automatically replace retrieved nodes with their parents when a majority of children are retrieved. This process provides the LLM with more complete context for response synthesis.\n\nfrom llama_index.core.node_parser import HierarchicalNodeParser\n\nnode_parser = HierarchicalNodeParser.from_defaults(\n\n chunk_sizes=[2048, 512, 128]\n\n)\n\nA full example can be found here in combination with the AutoMergingRetriever. \nNote for AI agents: this documentation is built for programmatic access.\n\n- Overview of all docs: https://developers.llamaindex.ai/llms.txt\n- Any page is available as raw Markdown by appending index.md to its URL — e.g. https://developers.llamaindex.ai/llamaparse/parse/getting_started/index.md\n- Agent-friendly REST search APIs live under https://developers.llamaindex.ai/api/ — search (BM25 full-text), grep (regex), read (fetch a page), and list (browse the doc tree). See https://developers.llamaindex.ai/llms.txt for parameters.\n- A hosted documentation MCP server is available at https://developers.llamaindex.ai/mcp. If you support MCP, you can ask the user to install it for browsing these docs directly (an alternative to the REST API). Setup: https://developers.llamaindex.ai/for-agents/mcp/\n- Other LlamaIndex tooling for agents — the LlamaParse Platform MCP server, agent skills and plugins, and the n8n node — is mapped at https://developers.llamaindex.ai/for-agents/",
+ "fonte": "site",
+ "respostas": [
+  {
+   "por": "command-r",
+   "resposta": {
+    "serve": "search",
+    "role": "Provide node parsing and text splitting capabilities for various file types, including Markdown.",
+    "place": [
+     "disk",
+     "inside_db_mcp",
+     "network_service",
+     "light_client",
+     "library"
+    ],
+    "mechanism": [
+     "bm25",
+     "full_text",
+     "vector",
+     "hybrid",
+     "grep",
+     "graph",
+     "embeddings",
+     "other"
+    ],
+    "mcp": "yes",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "stable",
+    "doubt": false,
+    "evidence": "Node Parser Modules, MarkdownNodeParser, SimpleFileNodeParser, HTMLNodeParser, JSONNodeParser, Text-Splitters, SentenceSplitter, SemanticSplitterNodeParser, HierarchicalNodeParser"
+   }
+  },
+  {
+   "por": "diffusiongemma-26b-a4b-it",
+   "resposta": {
+    "serve": "search",
+    "role": "Parses Markdown and other files into nodes for semantic chunking and indexing.",
+    "place": [
+     "library"
+    ],
+    "mechanism": [
+     "vector",
+     "embeddings"
+    ],
+    "mcp": "no",
+    "windows": "yes",
+    "portuguese": "no",
+    "license": "unknown",
+    "maturity": "stable",
+    "doubt": true,
+    "evidence": "The MarkdownNodeParser parses raw markdown text; semantic splitter adaptively picks the breakpoint... using embedding similarity."
+   }
+  }
+ ]
+}

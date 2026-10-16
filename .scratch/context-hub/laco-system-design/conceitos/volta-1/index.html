@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cidade: três conceitos</title>
+<style>
+:root{--papel:#f6f1e7;--tinta:#2b2622;--suave:#5f574e;--linha:#d9cfbf;--cartao:#fffcf6}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--papel);color:var(--tinta);font-family:"Segoe UI",system-ui,sans-serif}
+header{display:flex;flex-wrap:wrap;align-items:center;gap:10px 20px;padding:12px 16px;border-bottom:1px solid var(--linha)}
+h1{font-family:Georgia,serif;font-size:22px;margin:0}
+.grupo{display:flex;flex-wrap:wrap;gap:6px}
+button{font:inherit;font-size:14px;padding:7px 12px;border:1px solid var(--linha);border-radius:9px;background:var(--cartao);color:var(--tinta);cursor:pointer}
+button[aria-pressed="true"]{background:var(--tinta);color:#fff;border-color:var(--tinta)}
+button:focus-visible{outline:3px solid #0b7480;outline-offset:2px}
+.nota{font-size:13px;color:var(--suave);margin:0}
+#um iframe{display:block;width:100%;height:calc(100vh - 62px);border:0}
+#lado{display:none;grid-template-columns:repeat(3,1fr);gap:12px;padding:12px}
+#lado figure{margin:0;background:var(--cartao);border:1px solid var(--linha);border-radius:12px;overflow:hidden}
+#lado figcaption{padding:8px 12px;font-size:14px;font-weight:600;border-bottom:1px solid var(--linha)}
+#lado figcaption a{color:inherit}
+.janela{position:relative;width:100%;overflow:hidden}
+.janela iframe{position:absolute;top:0;left:0;width:1280px;height:1000px;border:0;transform-origin:0 0;pointer-events:none}
+body.lado #um{display:none}body.lado #lado{display:grid}body.lado #escolha{display:none}
+@media (max-width:900px){#lado{grid-template-columns:1fr}}
+</style></head>
+<body>
+<header>
+<h1>Cidade do hub: três conceitos</h1>
+<div class="grupo" role="group" aria-label="Como ver">
+<button type="button" id="ver-um" aria-pressed="true">Um por vez</button>
+<button type="button" id="ver-lado" aria-pressed="false">Lado a lado</button>
+</div>
+<div class="grupo" role="group" aria-label="Conceito" id="escolha">
+<button type="button" data-c="a" aria-pressed="true">A · Linhas do hub</button>
+<button type="button" data-c="b" aria-pressed="false">B · Duas cidades e a estrada</button>
+<button type="button" data-c="c" aria-pressed="false">C · A cidade em corte</button>
+</div>
+<p class="nota">Mesmo conteúdo, mesmo acabamento; muda a forma de ler.</p>
+</header>
+<section id="um"><iframe id="quadro" src="conceito-a.html" title="Conceito A · Linhas do hub"></iframe></section>
+<section id="lado" aria-label="Os três conceitos lado a lado">
+<figure><figcaption><a href="conceito-a.html">A · Linhas do hub</a></figcaption><div class="janela"><iframe src="conceito-a.html" title="Conceito A, miniatura" tabindex="-1"></iframe></div></figure>
+<figure><figcaption><a href="conceito-b.html">B · Duas cidades e a estrada</a></figcaption><div class="janela"><iframe src="conceito-b.html" title="Conceito B, miniatura" tabindex="-1"></iframe></div></figure>
+<figure><figcaption><a href="conceito-c.html">C · A cidade em corte</a></figcaption><div class="janela"><iframe src="conceito-c.html" title="Conceito C, miniatura" tabindex="-1"></iframe></div></figure>
+</section>
+<script>
+(function(){
+var nomes={a:'Linhas do hub',b:'Duas cidades e a estrada',c:'A cidade em corte'};
+var q=document.getElementById('quadro');
+document.querySelectorAll('[data-c]').forEach(function(b){b.addEventListener('click',function(){
+ document.querySelectorAll('[data-c]').forEach(function(x){x.setAttribute('aria-pressed',String(x===b))});
+ q.src='conceito-'+b.dataset.c+'.html';q.title='Conceito '+b.dataset.c.toUpperCase()+' · '+nomes[b.dataset.c]})});
+var um=document.getElementById('ver-um'),lado=document.getElementById('ver-lado');
+function modo(l){document.body.classList.toggle('lado',l);um.setAttribute('aria-pressed',String(!l));lado.setAttribute('aria-pressed',String(l));escala()}
+um.addEventListener('click',function(){modo(false)});lado.addEventListener('click',function(){modo(true)});
+function escala(){document.querySelectorAll('.janela').forEach(function(j){var w=j.clientWidth||1;var k=w/1280;j.style.height=(1000*k)+'px';j.querySelector('iframe').style.transform='scale('+k+')'})}
+window.addEventListener('resize',escala);escala();
+})();
+</script>
+</body></html>

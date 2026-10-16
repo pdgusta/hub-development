@@ -1,0 +1,32 @@
+{
+ "chave": "gh:microsoft/unilm",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T21:22:36Z",
+ "resultado": "corrige",
+ "conferencia": {
+  "resultado": "corrige",
+  "final": {
+   "serve": "search",
+   "role": "Umbrella research repo; contains E5 text-embedding models usable for semantic retrieval.",
+   "place": [
+    "library"
+   ],
+   "mechanism": [
+    "embeddings"
+   ],
+   "mcp": "no",
+   "windows": "unknown",
+   "portuguese": "unknown",
+   "license": "unknown",
+   "maturity": "unknown",
+   "doubt": false,
+   "evidence": "\"E5: text embeddings\"; \"E5 - Text Embeddings by Weakly-Supervised Contrastive Pre-training\"; README is a list of many research models."
+  },
+  "o_que_mudou": [
+   "mechanism: embeddings,vector -> embeddings, vector index not part of repo",
+   "mcp: unknown -> no, not mentioned/no MCP",
+   "doubt: true -> false, E5 entry is clear enough"
+  ],
+  "nota": "Only the E5 embedding models matter, as a source of embeddings for the search layer; rest of repo is irrelevant."
+ }
+}

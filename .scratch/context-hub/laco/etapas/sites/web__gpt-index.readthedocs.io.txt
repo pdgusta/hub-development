@@ -1,0 +1,112 @@
+GitHub Skip to content 
+
+Framework
+Overview
+Copy Markdown
+
+Open in Claude
+
+Open in ChatGPT
+
+Open in Cursor
+
+Copy Markdown
+
+View as Markdown
+
+LlamaIndex Framework, by the makers of LlamaParse
+LlamaIndex is the company behind LlamaParse, the document parsing platform for AI agents. The LlamaIndex framework is our original open-source toolkit for RAG and agents. 
+
+LlamaIndex Framework 
+LlamaIndex is the company behind LlamaParse, the document parsing platform for AI agents. The LlamaIndex framework is our original open-source toolkit for RAG and agents. 
+ Start the tutorial Installation 
+GitHub
+
+IntroductionSection titled “Introduction”
+
+The LlamaIndex framework is a Python toolkit for building LLM-powered agents over your data. LLMs are trained on public data, not yours. Your data is behind APIs, in databases, or trapped in PDFs and slide decks. Context augmentation makes that data available to the model at the moment it answers, and its best-known form is retrieval-augmented generation (RAG). The framework gives you the parts to build any context-augmentation use case, from prototype to production, and it is the shortest path from documents parsed by LlamaParse to an agent that can use them.
+
+Agents are LLM-powered assistants that use tools to complete tasks, from answering questions over your documents to taking actions in other systems. A RAG pipeline is one of many tools an agent can call.
+
+Workflows are event-driven, multi-step processes that combine agents, data connectors and tools, with branching, retries and human-in-the-loop review, and can be deployed as services.
+
+The framework is built from composable parts. The high-level API gets you from documents to answers in a few lines; the lower-level API lets you customize or replace any of them.
+
+ Data connectors Indexes and vector stores Query and chat engines Agents and tools Workflows Models, evaluation and observability 
+
+New here? The starter tutorial builds an agent with a tool over your documents, the local-models tutorial does the same without any hosted API, and how to read these docs points you to the right section for your experience level. The Learn section then walks through a complete application step by step.
+
+When the documents get hardSection titled “When the documents get hard”
+
+The framework’s built-in readers are fine for clean text. For scanned PDFs, forms, spreadsheets and slide decks, the quality of what goes into your index decides the quality of every answer. That is what LlamaParse is for: Parse (agentic OCR for scans, tables and charts), Extract (JSON in your schema), Classify, Split and Index (managed ingestion and retrieval). Parsed pages drop straight into a framework index:
+
+Terminal window
+
+pip install llama-index "llama-cloud>=2.8"
+
+export LLAMA_CLOUD_API_KEY=llx-...
+
+export OPENAI_API_KEY=sk-...
+
+The OpenAI key is for the index, which embeds the pages with OpenAI by default. To embed locally instead, set Settings.embed_model as in the local-models tutorial.
+
+from llama_cloud import LlamaCloud
+
+from llama_index.core import Document, VectorStoreIndex
+
+client = LlamaCloud() # reads LLAMA_CLOUD_API_KEY
+
+file = client.files.create(file="data/report.pdf", purpose="parse")
+
+result = client.parsing.parse(
+
+ file_id=file.id, tier="agentic", version="latest", expand=["markdown"]
+
+)
+
+pages = result.markdown.pages
+
+documents = [Document(text=p.markdown) for p in pages if p.success]
+
+index = VectorStoreIndex.from_documents(documents)
+
+From there the index is a tool like any other: the starter tutorial shows how to hand it to an agent.
+
+For fully managed retrieval, Index keeps an index in sync with your data sources and serves retrieval to your query engine or agent. For parsing on your own machine, LiteParse is the open-source, local option.
+
+Hard documents in, clean Markdown out 
+Agentic OCR and structured extraction as an API, with SDKs for Python, TypeScript, Go and Java. Free to start. 
+ Get an API key LlamaParse docs 
+
+ LlamaCloud is now LlamaParse 
+
+The hosted platform formerly called LlamaCloud has been renamed LlamaParse.
+Its documentation lives at
+developers.llamaindex.ai/llamaparse. 
+
+What you can buildSection titled “What you can build”
+
+ Agents Assistants that call tools, keep state across turns and stream progress. Workflows Event-driven orchestration with branching, retries and human review. Question answering Retrieve the right passages and answer with citations (RAG). Chatbots Conversations over your data with memory and follow-ups. Structured extraction Typed fields from text with Pydantic, or from whole documents with Extract. Multi-modal Text, images, tables and charts in retrieval and generation. 
+
+More on the use cases page: text-to-SQL, querying CSVs, prompting techniques and fine-tuning.
+
+LlamaIndex open sourceSection titled “LlamaIndex open source”
+
+The framework is the oldest of our open-source projects, not the only one. The newer ones are smaller, focused on documents, and work with the framework or on their own.
+
+ LiteParse A fast, open-source document parser that runs on your machine. Layout, bounding boxes, Markdown, built-in OCR. No cloud, no key. ExtractBench A schema-guided extraction benchmark for enterprise documents, so you can compare structured extraction on real forms and contracts. ParseBench An open benchmark for document parsing and OCR, so you can compare parsers on your kind of documents. LlamaIndex Framework This toolkit: connectors, indexes, query engines, agents and workflows for Python. 
+
+Get help and contributeSection titled “Get help and contribute”
+
+LlamaIndex Framework is MIT-licensed and built with its community. The contributing guide covers everything from a documentation fix to a new integration. The FAQ answers the questions everyone asks first.
+
+ Discord GitHub issues X LinkedIn llama-index on PyPI Integrations 
+
+More from LlamaIndex: create-llama, full-stack projects and the Discover LlamaIndex video series. 
+Note for AI agents: this documentation is built for programmatic access.
+
+- Overview of all docs: https://developers.llamaindex.ai/llms.txt
+- Any page is available as raw Markdown by appending index.md to its URL — e.g. https://developers.llamaindex.ai/llamaparse/parse/getting_started/index.md
+- Agent-friendly REST search APIs live under https://developers.llamaindex.ai/api/ — search (BM25 full-text), grep (regex), read (fetch a page), and list (browse the doc tree). See https://developers.llamaindex.ai/llms.txt for parameters.
+- A hosted documentation MCP server is available at https://developers.llamaindex.ai/mcp. If you support MCP, you can ask the user to install it for browsing these docs directly (an alternative to the REST API). Setup: https://developers.llamaindex.ai/for-agents/mcp/
+- Other LlamaIndex tooling for agents — the LlamaParse Platform MCP server, agent skills and plugins, and the n8n node — is mapped at https://developers.llamaindex.ai/for-agents/

@@ -1,0 +1,121 @@
+Docs
+
+ /
+
+ Manage data
+
+ /
+
+ Data lifecycle
+
+Index lifecycle management (ILM) in Elasticsearch
+
+Index lifecycle management (ILM) automates the management of time-based indices, such as logs and metrics. Using ILM policies, you can streamline index rollover, retention, and deletion to optimize performance, reliability, and storage costs for your data.
+
+For example, you can use ILM to:
+
+Spin up a new index when an index reaches a certain size or number of documents
+
+Create a new index each day, week, or month and archive previous ones
+
+Delete stale indices to enforce data retention standards
+
+ Important
+
+To use ILM, all nodes in a cluster must run the same version. Although it might be possible to create and apply policies in a mixed-version cluster, there is no guarantee they will work as intended. Attempting to use a policy that contains actions that aren’t supported on all nodes in a cluster will cause errors.
+
+ILM availability
+
+Note the availability of ILM to ensure that it's applicable for your use case.
+
+You can use ILM to manage indices and data streams:
+
+Indices: You use ILM to manage a specific index or set of indices by defining a lifecycle policy and applying it to the indices or an index alias. Each index is then evaluated against its policy and transitions through phases (hot, warm, cold, frozen, delete) based on pre-defined conditions. This approach allows for more granular control over each index but requires considerably more effort compared to using a data stream, which is our recommended option.
+
+Data streams: A data stream acts as a layer of abstraction over a set of indices that contain append-only, time series data. You can configure ILM using a data stream as a single named resource, so that rollover and any other configured actions are performed on the data stream's backing indices automatically.
+
+ILM is available for all deployment types on the versioned Elastic Stack but is not available for Elasticsearch Serverless. In a Serverless environment, data stream lifecycle is available as a data lifecycle option.
+
+ Simpler lifecycle management in Serverless environments
+
+ILM lets you automatically transition indices through data tiers according to your performance needs and retention requirements. This allows you to balance hardware costs with performance. ILM is not available in Serverless because in that environment your cluster performance is optimized for you. Instead, data stream lifecycle is available as a data management option.
+
+Data stream lifecycle is a simpler lifecycle management tool optimized for the most common lifecycle management needs. It enables you to configure the retention duration for your data and to optimize how the data is stored, without hardware-centric concepts like data tiers. For a detailed comparison of ILM and data stream lifecycle refer to Data lifecycle.
+
+Index lifecycle actions
+
+ILM policies can trigger actions like:
+
+Rollover: Creates a new write index when the current one reaches a certain size, number of docs, or age.
+
+Shrink: Reduces the number of primary shards in an index.
+
+Force merge: Triggers a force merge to reduce the number of segments in an index’s shards.
+
+Delete: Permanently remove an index, including all of its data and metadata.
+
+And more
+
+Each action has options you can use to specify index behavior and characteristics like:
+
+The maximum shard size, number of documents, or age at which you want to roll over to a new index.
+
+The point at which the index is no longer being updated and the number of primary shards can be reduced.
+
+When to force a merge to permanently remove documents marked for deletion.
+
+The point at which the index can be moved to less performant hardware.
+
+The point at which the availability is not as critical and the number of replicas can be reduced.
+
+When the index can be safely deleted.
+
+For example, if you are indexing metrics data from a fleet of ATMs into Elasticsearch, you might define a policy that says:
+
+When the total size of the index’s primary shards reaches 50GB, roll over to a new index.
+
+Move the old index into the warm phase, mark it read only, and shrink it down to a single shard.
+
+After 7 days, move the index into the cold phase and move it to less expensive hardware.
+
+Delete the index once the required 30 day retention period is reached.
+
+Learn about all available actions in Index lifecycle actions.
+
+Create and manage ILM policies
+
+You can create and manage index lifecycle policies through Kibana's Index Management UI or the ILM APIs. For more details on creating and managing index lifecycle policies refer to:
+
+Create an index lifecycle management policy
+
+Check the ILM status of Elasticsearch indices and data streams
+
+Update or switch an Elasticsearch index lifecycle policy
+
+Restore managed indices and manage ILM actions
+
+Customize built-in ILM policies in Elasticsearch
+
+Default index lifecycle management policies are created automatically when you install an Elastic Integration, or when you use Elastic Agent, Beats, or the Logstash Elasticsearch output plugin to send data to the Elastic Stack.
+
+ Tip
+
+To automatically back up your indices and manage snapshots, use snapshot lifecycle policies.
+
+Pausing and troubleshooting ILM
+
+In case you want to temporarily pause the ILM service while you perform maintenance, make other changes to your cluster, or do any troubleshooting, refer to Start and stop index lifecycle management.
+
+In the event of any issues running ILM, refer to Fix index lifecycle management errors for detailed troubleshooting guidance.
+
+Migrate to ILM
+
+For existing hot-warm deployments that are currently using index curation, migrating to ILM gives you more fine-grained control over the lifecycle of each index. Read more in:
+
+Migrate to ILM on self-managed and Elastic Cloud on Kubernetes deployments
+
+Migrate to index lifecycle management (ILM) on Elastic Cloud Hosted or Elastic Cloud Enterprise deployments
+
+Migrate index allocation filters to ILM node roles
+
+You can also set up ILM to manage an existing set of indices that do not already have a managed lifecycle. The ILM policy that you apply should not contain a rollover action, because the policy isn't carried forward when the rollover action creates a new index. Refer to Apply an index lifecycle policy to an existing Elasticsearch index to learn more.

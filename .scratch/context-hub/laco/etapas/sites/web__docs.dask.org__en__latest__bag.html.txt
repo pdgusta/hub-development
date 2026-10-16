@@ -1,0 +1,110 @@
+Skip to main content
+
+ Back to top
+
+Dask documentation
+
+ Search
+ Ctrl+K
+
+.rst
+
+.pdf
+
+System Settings
+
+Light
+
+Dark
+
+Bag
+
+ Contents 
+
+Bag#
+
+Dask Bag implements operations like map, filter, fold, and
+groupby on collections of generic Python objects. It does this in parallel with a
+small memory footprint using Python iterators. It is similar to a parallel
+version of PyToolz or a Pythonic version of the PySpark RDD.
+
+Examples#
+
+Visit https://examples.dask.org/bag.html to see and run examples using Dask Bag.
+
+Design#
+
+Dask bags coordinate many Python lists or Iterators, each of which forms a
+partition of a larger collection.
+
+Common Uses#
+
+Dask bags are often used to parallelize simple computations on unstructured or
+semi-structured data like text data, log files, JSON records, or user defined
+Python objects.
+
+Execution#
+
+Execution on bags provides two benefits:
+
+Parallel: data is split up, allowing multiple cores or machines to execute
+in parallel
+
+Iterating: data processes lazily, allowing smooth execution of
+larger-than-memory data, even on a single machine within a single partition
+
+Default scheduler#
+
+By default, dask.bag uses dask.multiprocessing for computation. As a
+benefit, Dask bypasses the GIL and uses multiple cores on pure Python objects.
+As a drawback, Dask Bag doesn’t perform well on computations that include a
+great deal of inter-worker communication. For common operations this is rarely
+an issue as most Dask Bag workflows are embarrassingly parallel or result in
+reductions with little data moving between workers.
+
+Shuffle#
+
+Some operations, like groupby, require substantial inter-worker
+communication. On a single machine, Dask uses partd to perform efficient,
+parallel, spill-to-disk shuffles. When working in a cluster, Dask uses a task
+based shuffle.
+
+These shuffle operations are expensive and better handled by projects like
+dask.dataframe. It is best to use dask.bag to clean and process data,
+then transform it into an array or DataFrame before embarking on the more
+complex operations that require shuffle steps.
+
+Known Limitations#
+
+Bags provide very general computation (any Python function). This generality
+comes at cost. Bags have the following known limitations:
+
+By default, they rely on the multiprocessing scheduler, which has its own
+set of known limitations (see Shared Memory)
+
+Bags are immutable and so you can not change individual elements
+
+Bag operations tend to be slower than array/DataFrame computations in the
+same way that standard Python containers tend to be slower than NumPy
+arrays and Pandas DataFrames
+
+Bag’s groupby is slow. You should try to use Bag’s foldby if possible.
+Using foldby requires more thought though
+
+Name#
+
+Bag is the mathematical name for an unordered collection allowing repeats. It
+is a friendly synonym to multiset. A bag, or a multiset, is a generalization of
+the concept of a set that, unlike a set, allows multiple instances of the
+multiset’s elements:
+
+list: ordered collection with repeats, [1, 2, 3, 2]
+
+set: unordered collection without repeats, {1, 2, 3}
+
+bag: unordered collection with repeats, {1, 2, 2, 3}
+
+So, a bag is like a list, but it doesn’t guarantee an ordering among elements.
+There can be repeated elements but you can’t ask for the ith element.
+
+ Contents

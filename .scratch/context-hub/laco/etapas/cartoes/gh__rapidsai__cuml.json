@@ -1,0 +1,40 @@
+{
+ "chave": "gh:rapidsai/cuml",
+ "urls": [
+  "https://github.com/rapidsai/cuml"
+ ],
+ "tipos": [
+  "library",
+  "tool"
+ ],
+ "termos": [
+  "GPU ML",
+  "cuML",
+  "cuml",
+  "TF-IDF",
+  "FAISS",
+  "RAPIDS cuML",
+  "k‑Nearest Neighbors",
+  "UMAP"
+ ],
+ "mencoes": 3,
+ "familias": [
+  "mistral",
+  "nemotron"
+ ],
+ "primeira_onda": 5,
+ "nomes": [
+  "RAPIDS cuML",
+  "cuML",
+  "NVIDIA RAPIDS cuML"
+ ],
+ "resumos": [
+  "GPU-accelerated machine learning library for scalable model training and inference.",
+  "GPU-accelerated machine learning library providing TF-IDF, UMAP, clustering, and nearest‑neighbor search for embeddings.",
+  "GPU‑accelerated machine learning library providing algorithms such as k‑NN, UMAP, and PCA for preprocessing and similarity search."
+ ],
+ "readme_status": "ok",
+ "readme_nome": "README.md",
+ "readme_cortado": false,
+ "readme": "# NVIDIA cuML: GPU-Accelerated Machine Learning\n\nNVIDIA cuML is an open-source CUDA-X Data Science library for\nGPU-accelerated machine learning. It provides two ways to run machine learning\nworkloads on NVIDIA GPUs:\n\n- The `cuml` Python API provides GPU-native estimators with familiar\n  scikit-learn-style APIs and direct control over machine learning workflows.\n- `cuml.accel` accelerates existing scikit-learn, UMAP, and HDBSCAN code without\n  changing the Python code that uses those libraries.\n\nOn representative benchmarks, cuML can accelerate scikit-learn workflows by\nup to 50x. Performance depends on the algorithm, dataset, and hardware. See the\n[cuML benchmarks](https://docs.nvidia.com/cuml/latest/cuml-accel/benchmarks/) for\nresults and methodology.\n\n## Use the GPU-native `cuml` API\n\nThe `cuml` Python API follows the familiar scikit-learn fit-predict-transform pattern while keeping data and computation on the GPU. The following example generates sample data and computes DBSCAN clusters on the GPU:\n\n```python\nfrom cuml.datasets import make_blobs\nfrom cuml.cluster import DBSCAN\n\n# Create sample data\nX, y = make_blobs(n_samples=100, centers=3, n_features=2, random_state=42)\n\n# Fit clustering model\ndbscan = DBSCAN(eps=1.0, min_samples=5)\ndbscan.fit(X)\nprint(dbscan.labels_)\n```\n\n`cuml` supports clustering, dimensionality reduction, regression,\nclassification, preprocessing, model selection, model explanation, and\nnearest-neighbor workflows. Browse the [API\nreference](https://docs.nvidia.com/cuml/latest/api/) for the current list of\nestimators and functions.\n\n## Accelerate existing code with `cuml.accel`\n\nRun an existing Python script through the [`cuml.accel` module](https://docs.nvidia.com/cuml/latest/cuml-accel/):\n\n```console\npython -m cuml.accel script.py\n```\n\nOr load the extension in a Jupyter notebook before importing scikit-learn,\nUMAP, or HDBSCAN:\n\n```python\n%load_ext cuml.accel\n```\n\nSupported operations run on the GPU. When an estimator or configuration cannot\nbe accelerated, `cuml.accel` uses the original CPU implementation so the rest\nof the workflow can continue. See the [`cuml.accel` compatibility\ndocumentation](https://docs.nvidia.com/cuml/latest/cuml-accel/compatibility/) for\ncurrent coverage and fallback conditions. Use the [logging and profiling\ntools](https://docs.nvidia.com/cuml/latest/cuml-accel/logging-and-profiling/) to check\nwhich operations ran on the GPU.\n\n## Scale beyond one GPU\n\nThe `cuml.dask` API provides distributed implementations of selected algorithms\nfor multi-GPU and multi-node execution with [Dask](https://www.dask.org). See\nthe [multi-GPU guide](https://docs.nvidia.com/cuml/latest/dask_multigpu_guide/) for\ncluster setup, supported algorithms, and examples.\n\n## Installation\n\nUse the [installation selector](https://docs.nvidia.com/datascience/install#selector) to\ngenerate a command for installing nightly or release cuML packages with conda,\npip, or Docker.\n\nAdditional resources:\n\n- [NVIDIA cuML documentation](https://docs.nvidia.com/cuml/)\n- [NVIDIA cuML product page](https://developer.nvidia.com/topics/ai/data-science/cuda-x-data-science-libraries/cuml)\n- [Walkthrough notebooks](https://github.com/NVIDIA/cuml/tree/main/notebooks)\n- [CUDA-X Data Science libraries](https://developer.nvidia.com/topics/ai/data-science/cuda-x-for-data-science)\n\n## Build and install from source\n\nSee the [build guide](BUILD.md).\n\n## Scikit-learn compatibility\n\ncuML is compatible with scikit-learn version 1.6 or higher.\n\n## Model serialization and security\n\ncuML models can be serialized with `pickle` or `joblib` and loaded later for\ninference. cuML uses cloudpickle so that models trained with `cuml.accel` can be\nloaded and used with scikit-learn.\n\n**Only unpickle or deserialize from trusted sources.** The `pickle` module (and\nby extension `joblib`) is not secure: malicious payloads can execute arbitrary\ncode during deserialization and compromise your system. **Do not unpickle or\nload data from untrusted or tampered sources.** This applies to `pickle.load()`,\n`pickle.loads()`, `joblib.load()`, and any file-based model loading. For\ndetails and patterns, see the [Model Serialization and\nPersistence](docs/source/pickling_cuml_models.ipynb) notebook and the [Python\npickle security documentation](https://docs.python.org/3/library/pickle.html).\n\n## Contributing and support\n\nSee the [contributing guide](CONTRIBUTING.md) to contribute to cuML. Report bugs\nand request features through [GitHub issues](https://github.com/NVIDIA/cuml/issues).\nJoin the broader community through the [CUDA-X Data Science libraries\npage](https://developer.nvidia.com/topics/ai/data-science/cuda-x-for-data-science#join-the-community).\n\n## Citation\n\nFor additional details on the technologies behind cuML and the broader Python\nmachine learning landscape, see [_Machine Learning in Python: Main developments\nand technology trends in data science, machine learning, and artificial\nintelligence_ (2020)](https://arxiv.org/abs/2002.04803) by Sebastian Raschka,\nJoshua Patterson, and Corey Nolet.\n\nPlease consider citing this work when using cuML in a project:\n\n```bibtex\n@article{raschka2020machine,\n  title={Machine Learning in Python: Main developments and technology trends in data science, machine learning, and artificial intelligence},\n  author={Raschka, Sebastian and Patterson, Joshua and Nolet, Corey},\n  journal={arXiv preprint arXiv:2002.04803},\n  year={2020}\n}\n```\n"
+}

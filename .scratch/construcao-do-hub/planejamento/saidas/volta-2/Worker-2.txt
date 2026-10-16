@@ -1,0 +1,44 @@
+3) `.oculto/x.md`, `.env`, `projeto/.git/config` e `projeto/.venv/x` não chegam ao banco (o aninhado é o defeito 8 do ticket 48: se não
+           fechar, sai teste vermelho documentado e a parte vira candidata a Fable); (4) 60 MiB viaja, 201 MiB não; (5) a mesma linha editada nos dois pares com a replicação pa
+          usada vira `_conflicts` nos dois CouchDB, sem versão perdida; (6) retrato do banco de ensaio com um conflito aberto e um binário com ramo apagado, em `execucao/ensaio
+          /banco/`, para as faixas 5 e 7 | nada para começar. Entrega cedo aos outros: no minuto 0–10, o `compose.yml` e o `.env.modelo` do banco (fronteira "Banco de ensaio" a
+          baixo); até lá, as faixas 5 e 7 sobem a imagem oficial com os mesmos nomes. O hub de ensaio (Worker 2) serve de conteúdo das pastas A e B |
+      23  | Worker 5 | **MCP do banco com versão** (faixa 5 do corte; Answers dos tickets 25, 30, 11, 34, 14, 41 e comentários de 2026-10-12 do 16): fork local do es617/obsidia
+          n-sync-mcp (TypeScript, Node ≥ 22; nesta máquina Node 24) em repositório próprio fora do hub (pergunta abaixo). Muda no fork: (a) **R1**: `read_note` devolve a revisã
+          o; `write_note` e `edit_note` exigem `base_rev` e gravam o documento de metadados com `_rev = base_rev`; se a base não é mais a atual, o próprio CouchDB devolve 409 e
+           nada é gravado ("specified revision is not latest for target document"; "409 Conflict (not saved)", docs.couchdb.org, `api/document/common.html` e `replication/confl
+          icts.html`), e o MCP responde "a nota mudou desde a sua leitura: releia e refaça". É a **recusa** do Answer do 11 (2026-10-15, o mais novo), sem folha a mais para o G
+          ustavo resolver, e mais curta que o `r1.py` do spike: o `new_edits=false` dele é, pela doc, "intended for use only by the replicator" e fica só como reserva, se o Gus
+          tavo quiser a versão do agente guardada como folha em conflito (Prumo confere a leitura 11 × 25). Sem `base_rev`, regravar nota existente é recusado; nota nova pelo M
+          CP grava sem `base_rev` só se o caminho não existe; (b) **conflito visível ao agente**: `read_note` de nota em conflito avisa e lista as folhas, e a ferramenta `get_c
+          onflicts` lista os conflitos abertos; (c) **`instructions`**: o bloco `cabeca:inicio/fim` do `AGENTS.md` (Worker 1) lido a cada `initialize`, sem cópia, posto **antes
+          ** do texto do upstream para sobreviver ao corte do Claude Code, até 2.000 caracteres (Answer do 36); a regra curta ("leia antes, grave com a `base_rev` lida; conflit
+          o = releia e refaça") na descrição de `write_note`, `edit_note`, `delete_note` e `move_note`; (d) **ferramenta `estado_do_hub`**: devolve o `estado.json` da vigia (es
+          quema do Worker 8), para a checagem de início onde o hook falhar e para o cliente (14); (e) **duas instâncias por par**, em 127.0.0.1, cada uma com o seu token de var
+          iável de … [+2306 chars]
+
+● Update(plano.md)
+  ⎿  Removed 4 lines
+      242    (experimental) aceita `"model"` e roda antes da ferramenta, e que o mod impõe o modelo de qualquer subagente. Falta
+      243    medir o tempo de um hook `agent` em Sonnet (o teste do 16). O verificador fica na faixa, com esse tempo medido; vai
+      244    para outra execução só se o teste falhar.
+      245 -- **Faixa 2: o fim da resposta no Claude Code é um mod, não um hook** (segue aberto desde a volta 1). O ticket 14 refinou                                            
+      246 -  o 10: Claude Code pelo mod (`turn.start` com `classic.Stop`), Copilot pelo hook `agentStop` mais a extensão                                                        
+      247 -  `onAgentStop` (`--experimental`), Codex pelo hook `Stop`. A prova com `claude -p` só vale se o mod carregar no `-p`                                                
+      248 -  (não verificado).                                                                                                                                                  
+      245  - **Faixas 1 e 10: `agents/bin/` não existe na decisão** (segue aberto). O ticket 12 fixa o conteúdo de `agents/` e diz
+      246    que "nova iniciativa" é uma **skill** que cria por script. Ou os scripts vão para skills (`agents/skills/nova-iniciativa/`,
+      247    `agents/skills/arquivar/`), ou a spec registra `agents/bin/` como decisão nova. O Worker 6 já não depende do lugar
+
+  Ran 1 shell command 
+
+● Update(plano.md)
+
+· Shimmying… (running PreToolUse hooks… 0/4 · 7m 6s · ↓ 10.6k tokens)
+  ⎿  Tip: Use /btw to ask a quick side question without interrupting Claude's current work
+
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+❯ 
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  ⬆ /gsd-update │ Opus 5.5 │ planejamento █░░░░░░░░░ 19%
+  ⏵⏵ auto mode on (shift+tab to cycle) · ← 2 agents

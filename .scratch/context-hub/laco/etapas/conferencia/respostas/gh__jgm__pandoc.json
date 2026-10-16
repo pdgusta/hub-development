@@ -1,0 +1,31 @@
+{
+ "chave": "gh:jgm/pandoc",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T21:08:37Z",
+ "resultado": "corrige",
+ "conferencia": {
+  "resultado": "corrige",
+  "final": {
+   "serve": "stack",
+   "role": "Converts documents between dozens of markup formats (docx, html, epub, org, etc. to Markdown) to feed notes into the hub",
+   "place": [
+    "disk",
+    "library"
+   ],
+   "mechanism": [
+    "n/a"
+   ],
+   "mcp": "unknown",
+   "windows": "unknown",
+   "portuguese": "unknown",
+   "license": "GPL-2.0-or-later",
+   "maturity": "unknown",
+   "doubt": false,
+   "evidence": "Pandoc is a Haskell library for converting from one markup format to another, and a command-line tool that uses this library."
+  },
+  "o_que_mudou": [
+   "role: converts Markdown to plain text/JSON for indexing -> converts many input formats (docx, html, epub...) into Markdown, README lists readers and writers"
+  ],
+  "nota": "Useful as an ingestion converter (docx/html/pdf-adjacent to Markdown) before indexing; not a search tool."
+ }
+}

@@ -1,0 +1,25 @@
+{"n": 1, "pergunta": "Onde exatamente as notas e decisões ficam guardadas quando eu não estou com o Obsidian aberto?", "tipo": "onde-vive"}
+{"n": 11, "pergunta": "O que acontece quando o Vigia detecta uma colisão entre versões de um arquivo e o Gustavo não resolve imediatamente?", "tipo": "ordem"}
+{"n": 21, "pergunta": "Se o sincronizador de uma máquina parar enquanto o maestro do Maestri conduz os recrutas, como os agentes sabem que há uma divergência?", "tipo": "quem-usa"}
+{"n": 31, "pergunta": "Como o hub lida com um arquivo que foi excluído em uma máquina, mas ainda existe na outra?", "tipo": "relacao"}
+{"n": 41, "pergunta": "Qual a relação entre as **Portas de entrada** (como a sessão na raiz ou no Maestri) e a **Iniciativa e casa** quando um cliente (como a **STRATA**) solicita uma atualização em uma iniciativa arquivada?", "tipo": "relacao"}
+{"n": 51, "pergunta": "Quem vê a mudança de um arquivo que foi movido da raiz `operations/` para `_archive/` na outra máquina?", "tipo": "quem-usa"}
+{"n": 61, "pergunta": "Quando o cliente sandbox tenta escrever em um arquivo do hub, o que acontece considerando que ele tem acesso só de leitura por padrão?", "tipo": "quando"}
+{"n": 71, "pergunta": "Quem é responsável por resolver um conflito se eu editar um arquivo no exato momento em que o Gustavo estiver editando o mesmo arquivo no Obsidian?", "tipo": "responsavel"}
+{"n": 81, "pergunta": "O que muda no outro par se o Gustavo edita uma nota no Obsidian no exato momento em que um agente deva uma alteração via MCP do banco?", "tipo": "diferenca"}
+{"n": 91, "pergunta": "O que o Cliente não faz se tenta gravar no hub sem ter permissão de escrita?", "tipo": "o-que-nao-faz"}
+{"n": 101, "pergunta": "Se o cliente tentar acessar o context hub e o vigia não estiver funcionando, o que acontece?", "tipo": "falha"}
+{"n": 111, "pergunta": "Onde o Contrato do hub (AGENTS.md) é armazenado e como ele é propagado para novos pares?", "tipo": "onde-vive"}
+{"n": 121, "pergunta": "Como um agente de código encontra o trecho correto de informação em um arquivo grande sem ter que ler o arquivo inteiro?", "tipo": "se-x"}
+{"n": 131, "pergunta": "Onde eu vejo se o sincronizador parou de funcionar enquanto eu estava editando uma nota para a iniciativa AVIANCA, e como eu faço para consertar?", "tipo": "onde-vive"}
+{"n": 141, "pergunta": "Se o acervo do maestro for alterado, como isso é comunicado ao Gustavo?", "tipo": "quem-usa"}
+{"n": 151, "pergunta": "Qual a sequência de eventos quando o maestro do Maestri tenta atualizar o contrato do hub em uma máquina com sincronização parada, antes do Vigia detectar a falha?", "tipo": "ordem"}
+{"n": 161, "pergunta": "Se o contrato do hub (AGENTS.md) for alterado diretamente no disco por um agente, sem passar pelo Obsidian, o que acontece com a versão que o Gustavo vê no próximo acesso?", "tipo": "falha"}
+{"n": 171, "pergunta": "Se o Tailscale cair e a rede privada ficar indisponível por mais de 15 minutos, como o vigia reage e o que o Gustavo precisa fazer para resolver?", "tipo": "ordem"}
+{"n": 181, "pergunta": "Se a camada de busca local detecta que os embeddings foram corrompidos, que mecanismo de segurança evita que dados de cliente sejam enviados para servidores externos para reparo?", "tipo": "relacao"}
+{"n": 191, "pergunta": "Quando o sync para na outra máquina, o que acontece?", "tipo": "quando"}
+{"n": 201, "pergunta": "Quando eu inicio uma sessão num repositório fora do hub e peço para o agente salvar algo na raiz de STRATA, o que acontece?", "tipo": "quando"}
+{"n": 211, "pergunta": "Se o **Sincronizador** de uma máquina parar de rodar por 30 minutos, mas o **Vigia** ainda estiver ativo, o que acontece com as alterações pendentes no banco local e como o outro par reage?", "tipo": "diferenca"}
+{"n": 221, "pergunta": "Por que o **Maestro** e os **agentes de código** precisam acessar o hub por meio do **MCP do banco** (servidor de leitura/gravação), e não diretamente pelo disco ou pelo Obsidian?", "tipo": "por-que"}
+{"n": 231, "pergunta": "Se um **agente de código** (como o Claude Code) ler um arquivo da **SBF** e, por erro, tentar sobrescrevê-lo enquanto outra máquina está editando o mesmo arquivo, quem detecta o conflito e como o sistema evita que dados sejam perdidos?", "tipo": "responsavel"}
+{"n": 241, "pergunta": "O que o maestro do Maestri não faz quando a rede privada Tailscale cai no meio de uma atualização da iniciativa TRF3?", "tipo": "o-que-nao-faz"}

@@ -1,0 +1,66 @@
+{
+  "envio": "70824740-e39a-49df-b73f-9f372b107cbc",
+  "tipo": "resposta",
+  "enviada": "2026-10-15T18:15:15-03:00",
+  "alvo": {
+    "tipo": "rodada",
+    "id": "2026-10-15-arquitetura-de-pastas-e-frontmatter-r20",
+    "titulo": "Links para o que só existe numa máquina"
+  },
+  "ticket": "12",
+  "substitui": null,
+  "rodada": {
+    "id": "2026-10-15-arquitetura-de-pastas-e-frontmatter-r20",
+    "base": "0247f6d89315ce95369acfd0cfd5616cc508c2ad16f54d06d94ea6b728dc96fa",
+    "titulo": "Links para o que só existe numa máquina",
+    "ticket": "12",
+    "perguntas": [
+      {
+        "id": "links-por-par",
+        "titulo": "Em que casos o link leva o par na frente",
+        "tipo": "escolha",
+        "recomendada": [
+          "A"
+        ],
+        "opcoes": [
+          {
+            "chave": "A",
+            "texto": "Só quando o destino não replica. Para tudo que replica, link interno normal com o caminho a partir da raiz do cofre (\"Absolute path in vault\"), que o Obsidian atualiza ao renomear. Para destino numa pasta `local: true`, numa pasta com ponto ou fora do hub, a forma `par://<par_id>/<caminho a partir da raiz do hub>`, sem letra de unidade (cada par sabe onde fica a própria raiz). O verificador confere pelo cartão das pastas e corrige sozinho nos dois sentidos, avisando o agente. De `.secrets/`, só o nome do arquivo, nunca o conteúdo"
+          },
+          {
+            "chave": "B",
+            "texto": "Sempre com o par na frente, em todo link: uniforme, mas o Obsidian deixa de reconhecer os links (sem backlinks, sem atualizar ao renomear, sem grafo), e a busca não os segue"
+          },
+          {
+            "chave": "C",
+            "texto": "Nunca: só links internos normais; o destino que não replica fica descrito em texto (\"no notebook, em ...\"), e o verificador avisa o link quebrado"
+          }
+        ],
+        "proposta": null
+      },
+      {
+        "id": "algo-mais",
+        "titulo": "Algo mais?",
+        "tipo": "texto",
+        "recomendada": [],
+        "opcoes": [],
+        "proposta": null
+      }
+    ]
+  },
+  "corpo_hash": "5c0bfea79e914bfde321324bfd87a68310b02fc1988dc293b09a32a387f5844e",
+  "corpo": {
+    "tipo": "resposta",
+    "rodada": "2026-10-15-arquitetura-de-pastas-e-frontmatter-r20",
+    "base": "0247f6d89315ce95369acfd0cfd5616cc508c2ad16f54d06d94ea6b728dc96fa",
+    "respostas": {
+      "links-por-par": {
+        "escolha": [
+          "A"
+        ],
+        "outra": null,
+        "comentario": null
+      }
+    }
+  }
+}

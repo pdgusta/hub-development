@@ -1,0 +1,227 @@
+We distribute pre-trained word vectors for 157 languages, trained on Common Crawl and Wikipedia using fastText.
+These models were trained using CBOW with position-weights, in dimension 300, with character n-grams of length 5, a window of size 5 and 10 negatives.
+We also distribute three new word analogy datasets, for French, Hindi and Polish.
+
+Download directly with command line or from python
+
+In order to download with command line or from python code, you must have installed the python package as described here.
+
+Command line
+Python
+
+$ ./download_model.py en # English
+Downloading https://dl.fbaipublicfiles.com/fasttext/vectors-crawl/cc.en.300.bin.gz
+ (19.78%) [=========> ]
+
+Once the download is finished, use the model as usual:
+
+$ ./fasttext nn cc.en.300.bin 10
+Query word?
+
+>>> import fasttext.util
+>>> fasttext.util.download_model('en', if_exists='ignore') # English
+>>> ft = fasttext.load_model('cc.en.300.bin')
+
+Adapt the dimension
+
+The pre-trained word vectors we distribute have dimension 300. If you need a smaller size, you can use our dimension reducer.
+In order to use that feature, you must have installed the python package as described here.
+
+For example, in order to get vectors of dimension 100:
+
+Command line
+Python
+
+$ ./reduce_model.py cc.en.300.bin 100
+Loading model
+Reducing matrix dimensions
+Saving model
+cc.en.100.bin saved
+
+Then you can use the cc.en.100.bin model file as usual.
+
+>>> import fasttext
+>>> import fasttext.util
+>>> ft = fasttext.load_model('cc.en.300.bin')
+>>> ft.get_dimension()
+300
+>>> fasttext.util.reduce_model(ft, 100)
+>>> ft.get_dimension()
+100
+
+Then you can use ft model object as usual:
+
+>>> ft.get_word_vector('hello').shape
+(100,)
+>>> ft.get_nearest_neighbors('hello')
+[(0.775576114654541, u'heyyyy'), (0.7686290144920349, u'hellow'), (0.7663413286209106, u'hello-'), (0.7579624056816101, u'heyyyyy'), (0.7495524287223816, u'hullo'), (0.7473770380020142, u'.hello'), (0.7407292127609253, u'Hiiiii'), (0.7402616739273071, u'hellooo'), (0.7399682402610779, u'hello.'), (0.7396857738494873, u'Heyyyyy')]
+
+or save it for later use:
+
+>>> ft.save_model('cc.en.100.bin')
+
+Format
+
+The word vectors are available in both binary and text formats.
+
+Using the binary models, vectors for out-of-vocabulary words can be obtained with
+
+$ ./fasttext print-word-vectors wiki.it.300.bin < oov_words.txt
+
+where the file oov_words.txt contains out-of-vocabulary words.
+
+In the text format, each line contain a word followed by its vector.
+Each value is space separated, and words are sorted by frequency in descending order.
+These text models can easily be loaded in Python using the following code:
+
+import io
+
+def load_vectors(fname):
+ fin = io.open(fname, 'r', encoding='utf-8', newline='\n', errors='ignore')
+ n, d = map(int, fin.readline().split())
+ data = {}
+ for line in fin:
+ tokens = line.rstrip().split(' ')
+ data[tokens[0]] = map(float, tokens[1:])
+ return data
+
+Tokenization
+
+We used the Stanford word segmenter for Chinese, Mecab for Japanese and UETsegmenter for Vietnamese.
+For languages using the Latin, Cyrillic, Hebrew or Greek scripts, we used the tokenizer from the Europarl preprocessing tools.
+For the remaining languages, we used the ICU tokenizer.
+
+More information about the training of these models can be found in the article Learning Word Vectors for 157 Languages.
+
+License
+
+The word vectors are distributed under the Creative Commons Attribution-Share-Alike License 3.0.
+
+References
+
+If you use these word vectors, please cite the following paper:
+
+E. Grave*, P. Bojanowski*, P. Gupta, A. Joulin, T. Mikolov, Learning Word Vectors for 157 Languages
+
+@inproceedings{grave2018learning,
+ title={Learning Word Vectors for 157 Languages},
+ author={Grave, Edouard and Bojanowski, Piotr and Gupta, Prakhar and Joulin, Armand and Mikolov, Tomas},
+ booktitle={Proceedings of the International Conference on Language Resources and Evaluation (LREC 2018)},
+ year={2018}
+}
+
+Evaluation datasets
+
+The analogy evaluation datasets described in the paper are available here: French, Hindi, Polish.
+
+Models
+
+The models can be downloaded from:
+
+Afrikaans: bin, textAlbanian: bin, textAlemannic: bin, text
+
+Amharic: bin, textArabic: bin, textAragonese: bin, text
+
+Armenian: bin, textAssamese: bin, textAsturian: bin, text
+
+Azerbaijani: bin, textBashkir: bin, textBasque: bin, text
+
+Bavarian: bin, textBelarusian: bin, textBengali: bin, text
+
+Bihari: bin, textBishnupriya Manipuri: bin, textBosnian: bin, text
+
+Breton: bin, textBulgarian: bin, textBurmese: bin, text
+
+Catalan: bin, textCebuano: bin, textCentral Bicolano: bin, text
+
+Chechen: bin, textChinese: bin, textChuvash: bin, text
+
+Corsican: bin, textCroatian: bin, textCzech: bin, text
+
+Danish: bin, textDivehi: bin, textDutch: bin, text
+
+Eastern Punjabi: bin, textEgyptian Arabic: bin, textEmilian-Romagnol: bin, text
+
+English: bin, textErzya: bin, textEsperanto: bin, text
+
+Estonian: bin, textFiji Hindi: bin, textFinnish: bin, text
+
+French: bin, textGalician: bin, textGeorgian: bin, text
+
+German: bin, textGoan Konkani: bin, textGreek: bin, text
+
+Gujarati: bin, textHaitian: bin, textHebrew: bin, text
+
+Hill Mari: bin, textHindi: bin, textHungarian: bin, text
+
+Icelandic: bin, textIdo: bin, textIlokano: bin, text
+
+Indonesian: bin, textInterlingua: bin, textIrish: bin, text
+
+Italian: bin, textJapanese: bin, textJavanese: bin, text
+
+Kannada: bin, textKapampangan: bin, textKazakh: bin, text
+
+Khmer: bin, textKirghiz: bin, textKorean: bin, text
+
+Kurdish (Kurmanji): bin, textKurdish (Sorani): bin, textLatin: bin, text
+
+Latvian: bin, textLimburgish: bin, textLithuanian: bin, text
+
+Lombard: bin, textLow Saxon: bin, textLuxembourgish: bin, text
+
+Macedonian: bin, textMaithili: bin, textMalagasy: bin, text
+
+Malay: bin, textMalayalam: bin, textMaltese: bin, text
+
+Manx: bin, textMarathi: bin, textMazandarani: bin, text
+
+Meadow Mari: bin, textMinangkabau: bin, textMingrelian: bin, text
+
+Mirandese: bin, textMongolian: bin, textNahuatl: bin, text
+
+Neapolitan: bin, textNepali: bin, textNewar: bin, text
+
+North Frisian: bin, textNorthern Sotho: bin, textNorwegian (Bokmål): bin, text
+
+Norwegian (Nynorsk): bin, textOccitan: bin, textOriya: bin, text
+
+Ossetian: bin, textPalatinate German: bin, textPashto: bin, text
+
+Persian: bin, textPiedmontese: bin, textPolish: bin, text
+
+Portuguese: bin, textQuechua: bin, textRomanian: bin, text
+
+Romansh: bin, textRussian: bin, textSakha: bin, text
+
+Sanskrit: bin, textSardinian: bin, textScots: bin, text
+
+Scottish Gaelic: bin, textSerbian: bin, textSerbo-Croatian: bin, text
+
+Sicilian: bin, textSindhi: bin, textSinhalese: bin, text
+
+Slovak: bin, textSlovenian: bin, textSomali: bin, text
+
+Southern Azerbaijani: bin, textSpanish: bin, textSundanese: bin, text
+
+Swahili: bin, textSwedish: bin, textTagalog: bin, text
+
+Tajik: bin, textTamil: bin, textTatar: bin, text
+
+Telugu: bin, textThai: bin, textTibetan: bin, text
+
+Turkish: bin, textTurkmen: bin, textUkrainian: bin, text
+
+Upper Sorbian: bin, textUrdu: bin, textUyghur: bin, text
+
+Uzbek: bin, textVenetian: bin, textVietnamese: bin, text
+
+Volapük: bin, textWalloon: bin, textWaray: bin, text
+
+Welsh: bin, textWest Flemish: bin, textWest Frisian: bin, text
+
+Western Punjabi: bin, textYiddish: bin, textYoruba: bin, text
+
+Zazaki: bin, textZeelandic: bin, text
+
+← English word vectorsWiki word vectors →

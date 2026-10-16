@@ -1,0 +1,49 @@
+{
+ "nome": "Whoosh",
+ "nome_canonico": "mchaput/whoosh",
+ "chave": "gh:mchaput/whoosh",
+ "url": "https://github.com/mchaput/whoosh",
+ "serve": "search",
+ "area": null,
+ "identidade": "ok. Há um fork vivo, Whoosh-Reloaded (PyPI 2.7.5), não verificado em detalhe",
+ "windows": "yes (inferido): biblioteca Pure-Python; sem binário nem CI Windows conferidos",
+ "mcp": "no (MCP de terceiros nao_verificado)",
+ "portugues": "parcial: stemmers Porter, Porter2, Paice Husk, Lovins (sem português listado); accent folding via whoosh.support.charset; stopwords por idioma não documentadas",
+ "markdown_frontmatter": "Não indexa Markdown nem frontmatter; o código monta os campos",
+ "atualizacao": "manual",
+ "embeddings_endpoint": "não usa embeddings (só BM25F)",
+ "recursos": "Python puro, índice em disco; números: nao_verificado",
+ "licenca": "BSD de duas cláusulas (simplified BSD)",
+ "ultimo_release": "2.7.4 (2016-04-04, PyPI)",
+ "atividade": "último push 2024-01-03",
+ "maturidade": "sem manutenção na prática (sem release desde 2016; archived=false no GitHub)",
+ "encaixe": "Índice BM25 em disco de cada máquina, dentro de um MCP do banco em Python. Impedimento: sem manutenção, sem stemmer de português e sem Markdown.",
+ "evidencias": [
+  {
+   "campo": "licenca",
+   "url": "https://github.com/mchaput/whoosh",
+   "citacao": "licensed under the terms of the simplified BSD (A.K.A. \"two clause\" or \"FreeBSD\") license."
+  },
+  {
+   "campo": "portugues",
+   "url": "https://whoosh.readthedocs.io/en/latest/stemming.html",
+   "citacao": "Whoosh includes several stemming algorithms such as Porter and Porter2, Paice Husk, and Lovins."
+  },
+  {
+   "campo": "ultimo_release",
+   "url": "https://pypi.org/pypi/Whoosh/json",
+   "citacao": "versão 2.7.4, upload 2016-04-04"
+  },
+  {
+   "campo": "atividade",
+   "url": "https://api.github.com/repos/mchaput/whoosh",
+   "citacao": "pushed_at 2024-01-03; description: Pure-Python full-text search library"
+  }
+ ],
+ "nao_verificado": [
+  "Windows por teste/CI",
+  "recursos",
+  "stopwords de português",
+  "MCP de terceiros"
+ ]
+}

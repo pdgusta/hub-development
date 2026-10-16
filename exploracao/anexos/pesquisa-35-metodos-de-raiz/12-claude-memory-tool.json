@@ -1,0 +1,53 @@
+{
+  "metodo": "Claude memory tool (API Anthropic, ferramenta memory)",
+  "fontes": [
+    {"url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/memory-tool", "acessada_em": "2026-10-10", "status": "ok"}
+  ],
+  "o_que_e": {
+    "resumo": "Ferramenta da API Claude que deixa o modelo guardar e recuperar informações entre conversas num diretório de arquivos de memória. O armazenamento fica na aplicação do desenvolvedor, não no modelo.",
+    "citacao": "The memory tool lets Claude store and retrieve information across conversations in a directory of memory files. Claude can create, read, update, and delete files that persist between sessions, building up knowledge over time without keeping everything in the context window.",
+    "url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/memory-tool"
+  },
+  "nivel_raiz": [
+    {
+      "categoria": "/memories",
+      "o_que_mora": "Único nível raiz definido pela ferramenta: todo arquivo de memória fica sob o prefixo /memories, que a aplicação mapeia para o armazenamento real (pasta por usuário, chaves de banco, etc.). A fonte não define subpastas padrão.",
+      "citacao": "The /memories path is a prefix that your handler maps onto real storage, such as a per-user directory or keys in a database.",
+      "url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/memory-tool"
+    },
+    {
+      "categoria": "exemplos de arquivos (não é categoria oficial)",
+      "o_que_mora": "Exemplo de listagem de um diretório /memories com dois arquivos de políticas de atendimento. A fonte apresenta isso como exemplo de resposta, não como estrutura obrigatória.",
+      "citacao": "/memories/customer_service_guidelines.xml /memories/refund_policies.xml",
+      "url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/memory-tool"
+    }
+  ],
+  "criterio_de_separacao": {
+    "resumo": null,
+    "citacao": null,
+    "url": null
+  },
+  "quando_termina_ou_envelhece": {
+    "resumo": "A fonte recomenda que a aplicação apague periodicamente arquivos não acessados há muito tempo, e que o agente remova ou renomeie arquivos que deixaram de ser relevantes. Não define prazo nem critério exato.",
+    "citacao": "Periodically delete memory files that haven't been accessed in a long time.",
+    "url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/memory-tool"
+  },
+  "conteudo_compartilhado_ou_reaproveitado": {
+    "resumo": "A memória persiste entre conversas porque é uma loja da aplicação: outra conversa continua da mesma memória se usar a mesma configuração de tool e o mesmo handler/loja. A fonte não descreve compartilhamento entre usuários distintos.",
+    "citacao": "A later conversation continues from the same memory when it sends the same tools entry and your handler serves the same store.",
+    "url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/memory-tool"
+  },
+  "pastas_versus_tags_ou_links": {
+    "resumo": "Organização por caminho de arquivo (pastas e nomes de arquivo sob /memories). A fonte não menciona tags, links entre notas nem propriedades. Pede manter o conteúdo coerente e organizado.",
+    "citacao": "when editing your memory folder, always try to keep its content coherent and organized. You can rename or delete files that are no longer relevant. Do not create new files unless necessary.",
+    "url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/memory-tool"
+  },
+  "pensado_para_agentes_de_ia": {
+    "resumo": "Sim. É uma ferramenta para o Claude: o modelo pede operações (view, create, str_replace, insert, delete, rename) e a aplicação as executa. O agente consulta a memória antes de começar a tarefa e grava o que aprende, em vez de carregar tudo no contexto (recuperação sob demanda).",
+    "citacao": "Memory supports just-in-time context retrieval. Rather than loading all relevant information up front, an agent records what it learns in memory files and reads them back on demand.",
+    "url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/memory-tool"
+  },
+  "nao_verificado": [
+    "criterio_de_separacao (a fonte não define regras de em qual arquivo ou categoria algo entra; deixado null)"
+  ]
+}

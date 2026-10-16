@@ -1,0 +1,39 @@
+{
+ "chave": "gh:facebook/rocksdb",
+ "urls": [
+  "https://github.com/facebook/rocksdb",
+  "https://rocksdb.org/"
+ ],
+ "tipos": [
+  "library",
+  "tool"
+ ],
+ "termos": [
+  "embedded store",
+  "LSM-tree",
+  "key-value store",
+  "fast storage",
+  "database"
+ ],
+ "mencoes": 5,
+ "familias": [
+  "gemma",
+  "llama",
+  "nemotron",
+  "qwen"
+ ],
+ "primeira_onda": 1,
+ "nomes": [
+  "RocksDB"
+ ],
+ "resumos": [
+  "Banco de dados chave-valor baseado em LSM-tree que permite leitura/gravação eficiente de objetos MessagePack em disco local.",
+  "Uma biblioteca de armazenamento de dados, que pode ser usada para criar uma camada de busca local e sem rede.",
+  "An embeddable persistent key-value store for fast storage that can be extended for full-text search but lacks native vector support.",
+  "A high-performance, on-disk key-value store for Node.js and browser applications."
+ ],
+ "readme_status": "ok",
+ "readme_nome": "README.md",
+ "readme_cortado": false,
+ "readme": "## RocksDB: A Persistent Key-Value Store for Flash and RAM Storage\n\n[![CircleCI Status](https://circleci.com/gh/facebook/rocksdb.svg?style=svg)](https://circleci.com/gh/facebook/rocksdb)\n\nRocksDB is developed and maintained by Facebook Database Engineering Team.\nIt is built on earlier work on [LevelDB](https://github.com/google/leveldb) by Sanjay Ghemawat (sanjay@google.com)\nand Jeff Dean (jeff@google.com)\n\nThis code is a library that forms the core building block for a fast\nkey-value server, especially suited for storing data on flash drives.\nIt has a Log-Structured-Merge-Database (LSM) design with flexible tradeoffs\nbetween Write-Amplification-Factor (WAF), Read-Amplification-Factor (RAF)\nand Space-Amplification-Factor (SAF). It has multi-threaded compactions,\nmaking it especially suitable for storing multiple terabytes of data in a\nsingle database.\n\nStart with example usage here: https://github.com/facebook/rocksdb/tree/main/examples\n\nSee the [github wiki](https://github.com/facebook/rocksdb/wiki) for more explanation.\n\nThe public interface is in `include/`.  Callers should not include or\nrely on the details of any other header files in this package.  Those\ninternal APIs may be changed without warning.\n\nQuestions and discussions are welcome on the [RocksDB Developers Public](https://www.facebook.com/groups/rocksdb.dev/) Facebook group and [email list](https://groups.google.com/g/rocksdb) on Google Groups.\n\n## License\n\nRocksDB is dual-licensed under both the GPLv2 (found in the COPYING file in the root directory) and Apache 2.0 License (found in the LICENSE.Apache file in the root directory).  You may select, at your option, one of the above-listed licenses.\n"
+}

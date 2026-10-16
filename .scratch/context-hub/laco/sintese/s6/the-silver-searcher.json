@@ -1,0 +1,52 @@
+{
+ "nome": "The Silver Searcher",
+ "nome_canonico": "The Silver Searcher (ag)",
+ "chave": "gh:ggreer/the_silver_searcher",
+ "url": "https://github.com/ggreer/the_silver_searcher",
+ "serve": "search",
+ "area": null,
+ "identidade": "ok",
+ "windows": "yes, nao oficial: README lista builds diarios nao oficiais (k-takata), winget (JFLarvoire), Chocolatey, MSYS2 e Cygwin; sem binario oficial nem CI windows no upstream",
+ "mcp": "no: sem MCP na fonte; e um CLI",
+ "portugues": "nenhum: grep regex PCRE; sem stemmer, stopwords nem remocao de acentos",
+ "markdown_frontmatter": "Busca em texto puro, respeita .gitignore/.hgignore/.ignore; nao indexa, nao usa frontmatter nem divide por titulo",
+ "atualizacao": "nenhuma: sem indice, varre os arquivos a cada busca",
+ "embeddings_endpoint": "nao usa embeddings",
+ "recursos": "C, pthreads e arquivos mmap()ados, PCRE com JIT; sem uso de RAM/disco em numero na fonte",
+ "licenca": "Apache-2.0",
+ "ultimo_release": "2.2.0 (tag de 2018-08-07; sem Releases no GitHub)",
+ "atividade": "2020-12-17 (ultimo commit; repo ocioso)",
+ "maturidade": "stable, mas sem manutencao (sem commit desde 2020)",
+ "encaixe": "Cliente leve ou disco de cada maquina: grep rapido em pasta de notas. Impedimentos: sem manutencao desde 2020, sem indice nem MCP, sem Windows oficial; ripgrep o supera.",
+ "evidencias": [
+  {
+   "campo": "windows",
+   "url": "https://github.com/ggreer/the_silver_searcher#windows",
+   "citacao": "Unofficial daily builds are available."
+  },
+  {
+   "campo": "atualizacao",
+   "url": "https://github.com/ggreer/the_silver_searcher#readme",
+   "citacao": "Files are mmap()ed instead of read into a buffer."
+  },
+  {
+   "campo": "markdown_frontmatter",
+   "url": "https://github.com/ggreer/the_silver_searcher#readme",
+   "citacao": "It ignores file patterns from your .gitignore and .hgignore."
+  },
+  {
+   "campo": "licenca",
+   "url": "https://raw.githubusercontent.com/ggreer/the_silver_searcher/master/LICENSE",
+   "citacao": "Apache License Version 2.0, January 2004"
+  },
+  {
+   "campo": "atividade",
+   "url": "https://api.github.com/repos/ggreer/the_silver_searcher/commits?per_page=1",
+   "citacao": "2020-12-17T01:09:07Z Merge pull request #1424 from sanjaymsh/ppc64le"
+  }
+ ],
+ "nao_verificado": [
+  "MCP de terceiros",
+  "uso de RAM/disco em numero"
+ ]
+}

@@ -1,0 +1,76 @@
+{
+ "chave": "gh:remarkjs/remark-frontmatter",
+ "urls": [
+  "https://github.com/remarkjs/remark-frontmatter",
+  "https://www.npmjs.com/package/remark-frontmatter"
+ ],
+ "tipos": [
+  "library",
+  "tool"
+ ],
+ "termos": [
+  "remark frontmatter",
+  "unified frontmatter",
+  "remark plugin frontmatter",
+  "remark",
+  "unified",
+  "frontmatter",
+  "yaml frontmatter",
+  "metadata",
+  "remark plugins",
+  "remark plugin",
+  "markdown frontmatter",
+  "plugin",
+  "markdown",
+  "remark-frontmatter",
+  "remarkjs",
+  "markdown front matter",
+  "yaml",
+  "mdast-util-frontmatter",
+  "mdast",
+  "remark-meta",
+  "front-matter",
+  "remark-plugin",
+  "markdown-frontmatter-parser",
+  "markdown-metadata-parser",
+  "frontmatter-parser",
+  "front-matter-plugin",
+  "front matter",
+  "markdown-front-matter",
+  "yaml-front-matter",
+  "metadata extraction",
+  "mdast frontmatter",
+  "processing-frontmatter",
+  "markdown ast",
+  "frontmatter plugin",
+  "frontmatter extraction",
+  "unified AST",
+  "YAML",
+  "TOML"
+ ],
+ "mencoes": 30,
+ "familias": [
+  "agnes",
+  "cohere",
+  "gemini",
+  "gpt-oss",
+  "llama",
+  "mistral",
+  "nemotron"
+ ],
+ "primeira_onda": 2,
+ "nomes": [
+  "remark-frontmatter",
+  "markdown-front-matter-parser"
+ ],
+ "resumos": [
+  "Unified plugin to extract front matter from Markdown when using the remark ecosystem.",
+  "Plugin do remark que adiciona suporte a frontmatter YAML em processos Markdown.",
+  "Unified plugin to parse and stringify front matter in markdown when using the remark ecosystem.",
+  "Unified plugin that parses frontmatter when processing markdown with remark/unified."
+ ],
+ "readme_status": "ok",
+ "readme_nome": "readme.md",
+ "readme_cortado": true,
+ "readme": "# remark-frontmatter\n\n[![Build][build-badge]][build]\n[![Coverage][coverage-badge]][coverage]\n[![Downloads][downloads-badge]][downloads]\n[![Size][size-badge]][size]\n[![Sponsors][sponsors-badge]][collective]\n[![Backers][backers-badge]][collective]\n[![Chat][chat-badge]][chat]\n\n**[remark][]** plugin to support frontmatter (YAML, TOML, and more).\n\n## Contents\n\n*   [What is this?](#what-is-this)\n*   [When should I use this?](#when-should-i-use-this)\n*   [Install](#install)\n*   [Use](#use)\n*   [API](#api)\n    *   [`unified().use(remarkFrontmatter[, options])`](#unifieduseremarkfrontmatter-options)\n    *   [`Options`](#options)\n*   [Examples](#examples)\n    *   [Example: different markers and fences](#example-different-markers-and-fences)\n    *   [Example: frontmatter as metadata](#example-frontmatter-as-metadata)\n    *   [Example: frontmatter in MDX](#example-frontmatter-in-mdx)\n*   [Authoring](#authoring)\n*   [HTML](#html)\n*   [CSS](#css)\n*   [Syntax](#syntax)\n*   [Syntax tree](#syntax-tree)\n*   [Types](#types)\n*   [Compatibility](#compatibility)\n*   [Security](#security)\n*   [Related](#related)\n*   [Contribute](#contribute)\n*   [License](#license)\n\n## What is this?\n\nThis package is a [unified][] ([remark][]) plugin to add support for YAML, TOML,\nand other frontmatter.\n\nFrontmatter is a metadata format in front of the content.\nIt’s typically written in YAML and is often used with markdown.\n\nThis plugin follow how GitHub handles frontmatter.\nGitHub only supports YAML frontmatter, but this plugin also supports different\nflavors (such as TOML).\n\n## When should I use this?\n\nYou can use frontmatter when you want authors, that have some markup\nexperience, to configure where or how the content is displayed or supply\nmetadata about content, and know that the markdown is only used in places\nthat support frontmatter.\nA good example use case is markdown being rendered by (static) site generators.\n\nIf you *just* want to turn markdown into HTML (with maybe a few extensions such\nas frontmatter), we recommend [`micromark`][micromark] with\n[`micromark-extension-frontmatter`][micromark-extension-frontmatter] instead.\nIf you don’t use plugins and want to access the syntax tree, you can use\n[`mdast-util-from-markdown`][mdast-util-from-markdown] with\n[`mdast-util-frontmatter`][mdast-util-frontmatter].\n\n## Install\n\nThis package is [ESM only][esm].\nIn Node.js (version 16+), install with [npm][]:\n\n```sh\nnpm install remark-frontmatter\n```\n\nIn Deno with [`esm.sh`][esmsh]:\n\n```js\nimport remarkFrontmatter from 'https://esm.sh/remark-frontmatter@5'\n```\n\nIn browsers with [`esm.sh`][esmsh]:\n\n```html\n<script type=\"module\">\n  import remarkFrontmatter from 'https://esm.sh/remark-frontmatter@5?bundle'\n</script>\n```\n\n## Use\n\nSay our document `example.md` contains:\n\n```markdown\n+++\nlayout = \"solar-system\"\n+++\n\n# Jupiter\n```\n\n…and our module `example.js` contains:\n\n```js\nimport remarkFrontmatter from 'remark-frontmatter'\nimport remarkParse from 'remark-parse'\nimport remarkStringify from 'remark-stringify'\nimport {unified} from 'unified'\nimport {read} from 'to-vfile'\n\nconst file = await unified()\n  .use(remarkParse)\n  .use(remarkStringify)\n  .use(remarkFrontmatter, ['yaml', 'toml'])\n  .use(function () {\n    return function (tree) {\n      console.dir(tree)\n    }\n  })\n  .process(await read('example.md'))\n\nconsole.log(String(file))\n```\n\n…then running `node example.js` yields:\n\n```js\n{\n  type: 'root',\n  children: [\n    {type: 'toml', value: 'layout = \"solar-system\"', position: [Object]},\n    {type: 'heading', depth: 1, children: [Array], position: [Object]}\n  ],\n  position: {\n    start: {line: 1, column: 1, offset: 0},\n    end: {line: 6, column: 1, offset: 43}\n  }\n}\n```\n\n```markdown\n+++\nlayout = \"solar-system\"\n+++\n\n# Jupiter\n```\n\n## API\n\nThis package exports no identifiers.\nThe default export is [`remarkFrontmatter`][api-remark-frontmatter].\n\n### `unified().use(remarkFrontmatter[, options])`\n\nAdd support for frontmatter.\n\n###### Parameters\n\n*   `options` ([`Options`][api-options], default: `'yaml'`)\n    — configuration\n\n###### Returns\n\nNothing (`undefined`).\n\n###### Notes\n\nDoesn’t parse the data inside them:\n[create your own plugin][unified-create-plugin] to do that.\n\n### `Options`\n\nConfiguration (TypeScript type).\n\n###### Type\n\n```ts\ntype Options = Array<Matter | Preset> | Matter | Preset\n\n/**\n * Sequence.\n *\n * Depending on how this structure is used, it reflects a marker or a fence.\n */\nexport type Info = {\n  /**\n   * Closing.\n   */\n  close: string\n  /**\n   * Opening.\n   */\n  open: string\n}\n\n/**\n * Fence configuration.\n */\ntype FenceProps = {\n  /**\n   * Complete fences.\n   *\n   * This can be used when fences contain different characters or lengths\n   * other than 3.\n   * Pass `open` and `close` to interface to specify different characters for opening and\n   * closing fences.\n   */\n  fence: Info | string\n  /**\n   * If `fence` is set, `marker` must not be set.\n   */\n  marker?: never\n}\n\n/**\n * Marker configuration.\n */\ntype MarkerProps = {\n  /**\n   * Character repeated 3 times, used as complete fences.\n   *\n   * For example the character `'-'` will result in `'---'` being used as the\n   * fence\n   * Pass `open` and `close` to specify different characters for opening and\n   * closing fences.\n   */\n  marker: Info | string\n  /**\n   * If `marker` is set, `fence` must not be set.\n   */\n  fence?: never\n}\n\n/**\n * Fields describing a kind of matter.\n *\n * > 👉 **Note**: using `anywhere` is a terrible idea.\n * > It’s called frontmatter, not matter-in-the-middle or so.\n * > This makes your markdown less portable.\n *\n * > 👉 **Note**: `marker` and `fence` are mutually exclusive.\n * > If `marker` is set, `fence` must not be set, and vice versa.\n */\ntype Matter = (MatterProps & FenceProps) | (MatterProps & MarkerProps)\n\n/**\n * Fields describing a kind of matter.\n */\ntype MatterProps = {\n  /**\n   * Node type to tokenize as.\n   */\n  type: string\n  /**\n   * Whether matter can be found anywhere in the document, normally, only matter\n   * at the start of the document is recognized.\n   *\n   * > 👉 **Note**: using this is a terrible idea.\n   * > It’s called frontmatter, not matter-in-the-middle or so.\n   * > This makes your markdown less portable.\n   */\n  anywhere?: boolean | null | undefined\n}\n\n/**\n * Known name of a frontmatter style.\n */\ntype Preset = 'toml' | 'yaml'\n```\n\n## Examples\n\n### Example: different markers and fences\n\nHere are a couple of example of different matter objects and what frontmatter\nthey match.\n\nTo match frontmatter with the same opening and closing fence, namely three of\nthe same markers, use for example `{type: 'yaml', marker: '-'}`, which matches:\n\n```yaml\n---\nkey: value\n---\n```\n\nTo match frontmatter with different opening and closing fences, which each use\nthree different markers, use for example\n`{type: 'custom', marker: {open: '<', close: '>'}}`, which matches:\n\n```text\n<<<\ndata\n>>>\n```\n\nTo match frontmatter with the same opening and closing fences, which both use\nthe same custom string, use for example `{type: 'custom', fence: '+=+=+=+'}`,\nwhich matches:\n\n```text\n+=+=+=+\ndata\n+=+=+=+\n```\n\nTo match frontmatter with different opening and closing fences, which each use\ndifferent custom strings, use for example\n`{type: 'json', fence: {open: '{', close: '}'}}`, which matches:\n\n```json\n{\n  \"key\": \"value\"\n}\n```\n\n### Example: frontmatter as metadata\n\nThis plugin handles the syntax of frontmatter in markdown.\nIt does not *parse* that frontmatter as say YAML or TOML and expose it\nsomewhere.\n\nIn unified, there is a place for metadata about files:\n[`file.data`][vfile-file-data].\nFor frontmatter specifically, it’s customary to expose parsed data at `file.data.matter`.\n\nWe can make a plugin that does this.\nThis example uses the utility [`vfile-matter`][vfile-matter], which is specific\nto YAML.\nTo support other data languages, look at this utility for inspiration.\n\n`my-unified-plugin-handling-yaml-matter.js`:\n\n```js\n/**\n * @typedef {import('unist').Node} Node\n * @typedef {import('vfile').VFile} VFile\n */\n\nimport {matter} from 'vfile-matter'\n\n/**\n * Parse YAML frontmatter and expose it at `file.data.matter`.\n *\n * @returns\n *   Transform.\n */\nexport default function myUnifiedPluginHandlingYamlMatter() {\n  /**\n   * Transform.\n   *\n   * @param {Node} tree\n   *   Tree.\n   * @param {VFile} file\n   *   File.\n   * @returns {undefined}\n   *   Nothing.\n   */\n  return function (tree, file) {\n    matter(file)\n  }\n}\n```\n\n…with an example markdown file `example.md`:\n\n```markdown\n---\nkey: value\n---\n\n# Venus\n```\n\n…and using the plugin with an `example.js` containing:\n\n```js\nimport remarkParse from 'remark-parse'\nimport remarkFrontmatter from 'remark-frontmatter'\nimport remarkStringify from 'remark-stringify'\nimport {read} from 'to-vfile'\nimport {unified} from 'unified'\nimport myUnifiedPluginHandlingYamlMatter from './my-unified-plugin-handling-yaml-matter.js'\n\nconst file = await unified()\n  .use(remarkParse)\n  .use(remarkStringify)\n  .use(remarkFrontmatter)\n  .use(myUnifiedPluginHandlingYamlMatter)\n  .process(await read('example.md'))\n\nconsole.log(file.data.matter) // => {key: 'value'}\n```\n\n### Example: frontmatter in MDX\n\nMDX has the ability to export data from it, where markdown does not.\nWhen authoring MDX, you can write `export` statements and expose arbitrary data\nthrough them.\nIt is also possible to write frontmatter, and let a plugin turn those into\nexport statements.\n\nTo automatically turn frontmatter into export statements, use\n[`remark-mdx-frontmatter`][remark-mdx-frontmatter].\n\nWith an `example.mdx` as follows:\n\n```mdx\n---\nkey: value\n---\n\n# Mars\n```\n\nThis plugin can be used as follows:\n\n```js\nimport {compile} from '@mdx-js/mdx'\nimport remarkFrontmatter from 'remark-frontmatter'\nimport remarkMdxFrontmatter from 'remark-mdx-frontmatter'\nimport {read, write} from 'to-vfile'\n\nconst file = await compile(await read('example.mdx'), {\n  remarkPlugins: [remarkFrontmatter, [remarkMdxFrontmatter, {name: 'matter'}]]\n})\nfile.path = 'output.js'\nawait write(file)\n\nconst mod = await import('./output.js')\nconsole.log(mod.matter) // => {key: 'value'}\n```\n\n## Authoring\n\nWhen authoring markdown with frontmatter, it’s recommended to use YAML\nfrontmatter if possible.\nWhile YAML has some warts, it works in the most places, so using it guarantees\nthe highest chance of portability.\n\nIn certain ecosystems, other flavors are widely used.\nFor example, in the Rust ecosystem, TOML is often used.\nIn such cases, using TOML is an okay choice.\n\nWhen possible, do not use other types of frontmatter, and do not allow\nfrontmatter anywhere.\n\n## HTML\n\nFrontmatter does not relate to HTML elements.\nIt is typically stripped, which is what [`remark-rehype`][remark-rehype] does.\n\n## CSS\n\nThis package does not relate to CSS.\n\n## Syntax\n\nSee [*Syntax* in\n`micromark-extension-frontmatter`](https://github.com/micromark/micromark-extension-frontmatter#syntax).\n\n## Syntax tree\n\nSee [*Syntax tree* in\n`mdast-util-frontmatter`](https://github.com/syntax-tree/mdast-util-frontmatter#syntax-tree).\n\n## Types\n\nThis package is fully typed with [TypeScript][].\nIt exports the additional type [`Options`][api-options].\n\nThe YAML node type is supported in `@types/mdast` by default.\nTo add other node types, register them by adding them to\n`FrontmatterContentMap`:\n\n```ts\nimport type {Data, Literal} from 'mdast'\n\ninterface Toml extends Literal {\n  type: 'toml'\n  data?: Data\n}\n\ndeclare module 'mdast' {\n  interface FrontmatterContentMap {\n    // Allow using TOML nodes defined by `remark-frontmatter`.\n    toml: Toml\n  }\n}\n```\n\n## Compatibility\n\nProjects maintained by the unified collective are compatible with maintained\nversions of Node.js.\n\nWhen we cut a new major release, we drop support for unmaintained versions of\nNode.\nThis means we try to keep the current release line, `remark-frontmatter@^5`,\ncompatible with Node.js 16.\n\nThis plugin works with unified 6+ and remark 13+.\n\n## Security\n\nUse of `remark-frontmatter` does not involve **[rehype][]** ([hast][]) or user\ncontent so there are no openi"
+}

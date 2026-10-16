@@ -1,0 +1,28 @@
+{
+ "chave": "web:ignite.apache.org",
+ "urls": [
+  "https://ignite.apache.org/"
+ ],
+ "tipos": [
+  "tool"
+ ],
+ "termos": [
+  "Ignite Spark connector"
+ ],
+ "mencoes": 1,
+ "familias": [
+  "mistral"
+ ],
+ "primeira_onda": 4,
+ "nomes": [
+  "Apache Ignite"
+ ],
+ "resumos": [
+  "An in-memory data fabric that can accelerate Spark-based search with distributed caching."
+ ],
+ "fonte": "site",
+ "readme_status": "ok",
+ "readme_nome": "https://ignite.apache.org/",
+ "readme_cortado": false,
+ "readme": "[Distributed Database - Apache Ignite | Apache Ignite]\n\nSkip to main content\n\nFast OR Consistent?\nChoose Both.\nApache Ignite is a distributed database for mission-critical high-velocity applications that require in-memory performance.\nScale across memory and disk without compromise.\n\nDistributed systems make you choose.\nEvent streams: Fast OR Consistent?\nDistributed state: Fast OR Durable?\nData integrity: Eventual OR ACID?\nMicroservices: Simple OR Scalable?\nApache Ignite eliminates the trade-off.\nSpeed. Scale. Consistency. Durability. Queryability.\nGet StartedExplore Use Cases\n\nStart Building With Apache Ignite\n\nGet up and running in minutes. Apache Ignite provides a memory-first distributed SQL database that eliminates the scale/speed trade-off for high-velocity workloads.\nConfigure a cluster in under 5 minutesRun SQL queries on your distributed dataStore and retrieve data with the Java APIPersist your in-memory data\nView Client Documentation\n\nJava.NETC++PythonSQL/CLI\nCopy\n\n// Connect to the cluster\nIgniteClient client = IgniteClient.builder()\n .addresses(\"127.0.0.1:10800\")\n .build();\n\n// Create a table\nString createTableSql = \"CREATE TABLE IF NOT EXISTS Person (\"\n + \"id INT PRIMARY KEY,\"\n + \"name VARCHAR,\"\n + \"age INT\"\n + \")\";\nclient.sql().execute(null, createTableSql);\n\n// Insert data\nString insertSql = \"INSERT INTO Person (id, name, age) VALUES (?, ?, ?)\";\nclient.sql().execute(null, insertSql, 1, \"John Doe\", 30);\nclient.sql().execute(null, insertSql, 2, \"Jane Smith\", 28);\n\n// Query data\nclient.sql().execute(null, \"SELECT * FROM Person WHERE age > ?\", 25)\n .forEachRemaining(row -> {\n System.out.println(\"ID: \" + row.intValue(\"id\") +\n \", Name: \" + row.stringValue(\"name\") +\n \", Age: \" + row.intValue(\"age\"));\n });\n\n// Close the client\nclient.close();\n\nApache Ignite Use Cases\n\nEvent Stream Processing \nAnd Enrichment\nFast OR Consistent? Enrich high-throughput event streams with consistent reference data. Memory-first architecture delivers low-latency lookups while maintaining ACID guarantees. Eliminate cache invalidation complexity.Learn More\n\nSession Management \nAnd Caching At Scale\nFast OR Durable? Any-node session access with automatic failover and zero data loss. Low-latency session retrieval with ACID guarantees eliminates sticky sessions while maintaining consistency.Learn More\n\nMicroservices \nState Management\nSimple OR Scalable? Distributed ACID transactions across service boundaries eliminate saga complexity. Significant infrastructure cost reduction potential through system consolidation.Learn More\n\nJoin The Community At Events And Meetups Worldwide\n\nIgnite Virtual Meetup\nExperts and practitioners give online talks and presentations and share their Apache Ignite experience.\n\nOnline\nRegularly\n\nIgnite Summit\nThis virtual conference is a chance to learn more about up-to-date in-memory computing solutions.\nThere are speakers from industry-leading companies and hundreds of participants from all over the world.\n\nOnline\nAnnually\n\nOther Events\nJoin us for conferences, presentations, and webinars to learn more about in-memory computing technologies.\n\nONLINE and OFFLINE\nRegularly\nView All Events\n\nReady To Start?\nDiscover our quick start guides and build your first application in 5-10 minutes\nQuick Start Guide"
+}

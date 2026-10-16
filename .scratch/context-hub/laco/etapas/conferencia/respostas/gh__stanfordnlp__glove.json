@@ -1,0 +1,33 @@
+{
+ "chave": "gh:stanfordnlp/glove",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T12:00:00Z",
+ "resultado": "corrige",
+ "conferencia": {
+  "resultado": "corrige",
+  "final": {
+   "serve": "stack",
+   "role": "Static word-embedding vectors and training code (not passage search)",
+   "place": [
+    "library",
+    "disk"
+   ],
+   "mechanism": [
+    "embeddings"
+   ],
+   "mcp": "unknown",
+   "windows": "unknown",
+   "portuguese": "unknown",
+   "license": "Apache-2.0",
+   "maturity": "stable",
+   "doubt": false,
+   "evidence": "implementation of the GloVe model for learning word representations; pretrained vectors under PDDL; code under Apache 2.0"
+  },
+  "o_que_mudou": [
+   "serve: search -> stack, word vectors are a building block, not a search layer",
+   "mcp: no -> unknown, README does not say",
+   "doubt: false"
+  ],
+  "nota": "Old word-level vectors, English corpora; little use for passage search in pt/en compared with modern embedding models."
+ }
+}

@@ -1,0 +1,396 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mapeamento da frente</title>
+<link rel="stylesheet" href="fontes/mapeamento.css">
+<style>
+:root{
+  --paper:#f1e6cf;--paper2:#e8dbbe;--ink:#2b2117;--ink2:#5c4a36;--faint:#a08a6a;
+  --yes:#3d6b3a;--no:#b3261e;--adj:#b7791f;--fact:#2c5282;--trail:#b3261e;
+}
+*{box-sizing:border-box}
+body{margin:0;color:var(--ink);font-family:Fraunces,Georgia,serif;
+  background-color:var(--paper);
+  background-image:
+    repeating-radial-gradient(ellipse at 12% 18%,transparent 0 26px,rgba(110,80,40,.07) 26px 27px),
+    repeating-radial-gradient(ellipse at 88% 62%,transparent 0 30px,rgba(110,80,40,.06) 30px 31px),
+    radial-gradient(ellipse at 50% 40%,rgba(255,250,235,.6),transparent 70%);}
+main{max-width:1600px;margin:0 auto;padding:28px 16px 40px}
+.mono{font-family:"IBM Plex Mono",Consolas,monospace}
+svg.i{width:22px;height:22px;flex:none;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+svg.l{fill:currentColor;stroke:none}
+
+/* cabeçalho */
+header{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:end;border-bottom:3px double var(--ink);padding-bottom:16px}
+.kick{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--ink2)}
+h1{font-size:76px;line-height:.9;margin:6px 0 8px;font-weight:900;letter-spacing:-.02em;font-variation-settings:"opsz" 144}
+h1 em{font-weight:400;color:var(--trail)}
+.keys{display:flex;flex-wrap:wrap;gap:8px 22px;font-family:"IBM Plex Mono",monospace;font-size:14px;color:var(--ink2)}
+.keys b{color:var(--ink);font-size:18px}
+.tally{display:flex;gap:14px;flex-wrap:wrap}
+.tally .stamp{position:static;transform:rotate(-4deg);font-size:13px;padding:6px 10px;display:flex;align-items:center;gap:8px}
+.tally .stamp:nth-child(2){transform:rotate(3deg)}
+.tally .stamp:nth-child(4){transform:rotate(2deg)}
+.tally .stamp b{font-size:26px;font-family:Fraunces,serif;font-weight:900}
+
+/* carimbos */
+.stamp{position:absolute;top:10px;right:10px;transform:rotate(9deg);font-family:"IBM Plex Mono",monospace;font-weight:600;
+  font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;padding:3px 7px;border:2.5px solid currentColor;border-radius:4px;
+  outline:1px solid currentColor;outline-offset:2px;opacity:.88;mix-blend-mode:multiply;background:transparent}
+.s-yes{color:var(--yes)}.s-no{color:var(--no)}.s-adj{color:var(--adj)}.s-fact{color:var(--fact)}
+
+/* seções */
+.sec{margin-top:40px}
+.sech{display:flex;align-items:baseline;gap:16px;margin-bottom:14px}
+.sech h2{margin:0;font-size:34px;font-weight:800;font-style:italic}
+.sech .rule{flex:1;height:0;border-top:1.5px dashed var(--faint)}
+.sech .kick{white-space:nowrap}
+
+/* partida */
+.start{display:flex;align-items:center;gap:22px;flex-wrap:wrap;padding:16px 20px;border:1.5px solid var(--ink);background:rgba(255,250,235,.55);border-radius:2px;box-shadow:6px 6px 0 rgba(43,33,23,.12)}
+.start .pin{color:var(--trail);width:46px;height:46px}
+.start .q{font-size:22px;font-style:italic;font-weight:500}
+.start .q small{display:block;font-style:normal;font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--ink2);letter-spacing:.12em;text-transform:uppercase}
+.wish{display:flex;gap:10px;flex-wrap:wrap;margin-left:auto}
+.chip{display:flex;align-items:center;gap:8px;padding:7px 12px;border:1.5px solid var(--ink2);border-radius:999px;font-size:14px;font-weight:600;background:var(--paper)}
+.chip .n{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--paper);background:var(--ink);border-radius:50%;width:18px;height:18px;display:grid;place-items:center}
+
+/* trilha */
+.trail{position:relative}
+.trail::before{content:"";position:absolute;left:58px;top:20px;bottom:20px;border-left:4px dashed var(--trail);opacity:.75}
+.leg{display:grid;grid-template-columns:200px 1fr;gap:18px;position:relative;margin-bottom:26px}
+.camp{position:relative;padding-top:4px}
+.camp .dot{width:120px;height:120px;border-radius:50%;background:var(--paper);border:3px solid var(--ink);display:grid;place-items:center;text-align:center;position:relative;z-index:1;box-shadow:0 0 0 6px var(--paper)}
+.camp .dot b{font-size:44px;line-height:1;font-weight:900}
+.camp .dot span{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;display:block}
+.camp .when{margin:10px 0 0 4px;font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:var(--ink2);background:var(--paper);position:relative;z-index:1;display:inline-block;padding:2px 4px}
+.camp .theme{margin:4px 0 0 4px;font-size:17px;font-style:italic;font-weight:600;background:var(--paper);position:relative;z-index:1;display:inline-block;padding:0 4px;max-width:180px}
+.cards{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px}
+@media (max-width:1400px){.cards{grid-template-columns:repeat(auto-fill,minmax(222px,1fr))}}
+.card{position:relative;background:rgba(255,251,240,.82);border:1.5px solid var(--ink);padding:14px 14px 12px;min-height:150px;box-shadow:4px 4px 0 rgba(43,33,23,.14)}
+.card.no{border-left:7px solid var(--no)}.card.yes{border-left:7px solid var(--yes)}.card.adj{border-left:7px solid var(--adj)}.card.fact{border-left:7px solid var(--fact)}
+.card .ic{width:30px;height:30px;color:var(--ink)}
+.card h3{margin:8px 0 8px;font-size:18px;line-height:1.1;font-weight:800;padding-right:58px}
+.sug{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--ink2);display:flex;gap:6px;align-items:baseline}
+.sug i{font-style:normal;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);flex:none}
+.card.no .sug span{text-decoration:line-through;text-decoration-color:var(--no);text-decoration-thickness:2px}
+.ans{margin-top:7px;font-size:15.5px;font-weight:700;line-height:1.25;display:flex;gap:6px}
+.ans::before{content:"→";color:var(--trail);font-weight:900}
+.card.fact .ans::before{content:"◆";color:var(--fact);font-size:12px;margin-top:3px}
+.later{margin-top:9px;padding-top:7px;border-top:1px dotted var(--faint);font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--ink2);display:flex;gap:6px;align-items:center}
+.later svg{width:14px;height:14px}
+
+/* mapa da fronteira */
+.chart{border:1.5px solid var(--ink);background:rgba(234,222,196,.55);padding:8px;box-shadow:6px 6px 0 rgba(43,33,23,.12)}
+.chart>svg{display:block;width:100%;height:auto}
+.mi{fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}.mi.l{fill:currentColor;stroke:none}
+.chart text{font-family:Fraunces,Georgia,serif;fill:var(--ink)}
+.chart .lbl{font-size:16px;font-weight:800;text-anchor:middle}
+.chart .sub{font-size:12px;font-family:"IBM Plex Mono",monospace;fill:var(--ink2);text-anchor:middle}
+.chart .it{font-size:14px;font-weight:800}
+.chart .its{font-size:11.5px;font-family:"IBM Plex Mono",monospace;fill:var(--ink2)}
+.chart .sea{font-size:15px;font-style:italic;letter-spacing:.4em;fill:var(--ink2);text-anchor:middle}
+.chart .land{font-size:30px;font-style:italic;font-weight:300;letter-spacing:.5em;fill:#7a6142;text-anchor:middle}
+.legend{display:flex;flex-wrap:wrap;gap:10px 26px;margin:12px 4px 0;font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:var(--ink2)}
+.legend span{display:inline-flex;align-items:center;gap:8px}
+
+/* destino */
+.dest{display:grid;grid-template-columns:240px 1fr;gap:28px;align-items:start;background:var(--ink);color:var(--paper);padding:26px 28px;box-shadow:8px 8px 0 rgba(179,38,30,.35)}
+.dest .flag{color:var(--trail);width:120px;height:120px}
+.dest h2{margin:6px 0 4px;font-size:38px;font-weight:900;line-height:1}
+.dest .kick{color:#cdbb98}
+.machines{display:flex;align-items:center;gap:12px;margin-top:14px;font-family:"IBM Plex Mono",monospace;font-size:12.5px}
+.machines div{display:flex;flex-direction:column;align-items:center;gap:4px}
+.machines svg.i{width:36px;height:36px}
+.machines .sw{font-size:22px;color:var(--trail)}
+.flow{display:flex;flex-wrap:wrap;gap:0;margin-bottom:18px}
+.flow div{position:relative;padding:10px 26px 10px 30px;background:#3d3022;font-size:15px;font-weight:700;clip-path:polygon(0 0,calc(100% - 16px) 0,100% 50%,calc(100% - 16px) 100%,0 100%,16px 50%);margin-right:-8px}
+.flow div:first-child{clip-path:polygon(0 0,calc(100% - 16px) 0,100% 50%,calc(100% - 16px) 100%,0 100%);padding-left:18px}
+.flow div small{display:block;font-family:"IBM Plex Mono",monospace;font-weight:400;font-size:11px;color:#cdbb98}
+.flow div.end{background:var(--trail)}
+.crit{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.crit div{border:1.5px solid #6b5843;padding:14px 12px;text-align:left;position:relative}
+.crit .n{position:absolute;top:8px;right:10px;font-size:30px;font-weight:900;color:#5a4836;line-height:1}
+.crit svg{width:30px;height:30px;color:var(--paper)}
+.crit b{display:block;font-size:17px;margin-top:8px;line-height:1.15}
+.crit small{display:block;font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:#cdbb98;margin-top:6px}
+.agents{display:flex;align-items:center;gap:18px;margin-top:16px;font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:#cdbb98;flex-wrap:wrap}
+.agents span{display:inline-flex;align-items:center;gap:7px;color:var(--paper);font-size:13.5px}
+.agents svg{width:22px;height:22px}
+footer{margin-top:20px;font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--ink2);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+
+@media (max-width:1100px){.crit{grid-template-columns:repeat(2,1fr)}.dest{grid-template-columns:1fr}header{grid-template-columns:1fr}h1{font-size:52px}}
+@media (max-width:700px){.leg{grid-template-columns:1fr}.trail::before{display:none}.camp .dot{width:84px;height:84px}.camp .dot b{font-size:30px}.wish{margin-left:0}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="i-claude" viewBox="0 0 24 24"><path d="m4.7144 15.9555 4.7174-2.6471.079-.2307-.079-.1275h-.2307l-.7893-.0486-2.6956-.0729-2.3375-.0971-2.2646-.1214-.5707-.1215-.5343-.7042.0546-.3522.4797-.3218.686.0608 1.5179.1032 2.2767.1578 1.6514.0972 2.4468.255h.3886l.0546-.1579-.1336-.0971-.1032-.0972L6.973 9.8356l-2.55-1.6879-1.3356-.9714-.7225-.4918-.3643-.4614-.1578-1.0078.6557-.7225.8803.0607.2246.0607.8925.686 1.9064 1.4754 2.4893 1.8336.3643.3035.1457-.1032.0182-.0728-.164-.2733-1.3539-2.4467-1.445-2.4893-.6435-1.032-.17-.6194c-.0607-.255-.1032-.4674-.1032-.7285L6.287.1335 6.6997 0l.9957.1336.419.3642.6192 1.4147 1.0018 2.2282 1.5543 3.0296.4553.8985.2429.8318.091.255h.1579v-.1457l.1275-1.706.2368-2.0947.2307-2.6957.0789-.7589.3764-.9107.7468-.4918.5828.2793.4797.686-.0668.4433-.2853 1.8517-.5586 2.9021-.3643 1.9429h.2125l.2429-.2429.9835-1.3053 1.6514-2.0643.7286-.8196.85-.9046.5464-.4311h1.0321l.759 1.1293-.34 1.1657-1.0625 1.3478-.8804 1.1414-1.2628 1.7-.7893 1.36.0729.1093.1882-.0183 2.8535-.607 1.5421-.2794 1.8396-.3157.8318.3886.091.3946-.3278.8075-1.967.4857-2.3072.4614-3.4364.8136-.0425.0304.0486.0607 1.5482.1457.6618.0364h1.621l3.0175.2247.7892.522.4736.6376-.079.4857-1.2142.6193-1.6393-.3886-3.825-.9107-1.3113-.3279h-.1822v.1093l1.0929 1.0686 2.0035 1.8092 2.5075 2.3314.1275.5768-.3218.4554-.34-.0486-2.2039-1.6575-.85-.7468-1.9246-1.621h-.1275v.17l.4432.6496 2.3436 3.5214.1214 1.0807-.17.3521-.6071.2125-.6679-.1214-1.3721-1.9246L14.38 17.959l-1.1414-1.9428-.1397.079-.674 7.2552-.3156.3703-.7286.2793-.6071-.4614-.3218-.7468.3218-1.4753.3886-1.9246.3157-1.53.2853-1.9004.17-.6314-.0121-.0425-.1397.0182-1.4328 1.9672-2.1796 2.9446-1.7243 1.8456-.4128.164-.7164-.3704.0667-.6618.4008-.5889 2.386-3.0357 1.4389-1.882.929-1.0868-.0062-.1579h-.0546l-6.3385 4.1164-1.1293.1457-.4857-.4554.0608-.7467.2307-.2429 1.9064-1.3114Z"/></symbol>
+<symbol id="i-codex" viewBox="0 0 24 24"><path clip-rule="evenodd" d="M8.086.457a6.105 6.105 0 013.046-.415c1.333.153 2.521.72 3.564 1.7a.117.117 0 00.107.029c1.408-.346 2.762-.224 4.061.366l.063.03.154.076c1.357.703 2.33 1.77 2.918 3.198.278.679.418 1.388.421 2.126a5.655 5.655 0 01-.18 1.631.167.167 0 00.04.155 5.982 5.982 0 011.578 2.891c.385 1.901-.01 3.615-1.183 5.14l-.182.22a6.063 6.063 0 01-2.934 1.851.162.162 0 00-.108.102c-.255.736-.511 1.364-.987 1.992-1.199 1.582-2.962 2.462-4.948 2.451-1.583-.008-2.986-.587-4.21-1.736a.145.145 0 00-.14-.032c-.518.167-1.04.191-1.604.185a5.924 5.924 0 01-2.595-.622 6.058 6.058 0 01-2.146-1.781c-.203-.269-.404-.522-.551-.821a7.74 7.74 0 01-.495-1.283 6.11 6.11 0 01-.017-3.064.166.166 0 00.008-.074.115.115 0 00-.037-.064 5.958 5.958 0 01-1.38-2.202 5.196 5.196 0 01-.333-1.589 6.915 6.915 0 01.188-2.132c.45-1.484 1.309-2.648 2.577-3.493.282-.188.55-.334.802-.438.286-.12.573-.22.861-.304a.129.129 0 00.087-.087A6.016 6.016 0 015.635 2.31C6.315 1.464 7.132.846 8.086.457zm-.804 7.85a.848.848 0 00-1.473.842l1.694 2.965-1.688 2.848a.849.849 0 001.46.864l1.94-3.272a.849.849 0 00.007-.854l-1.94-3.393zm5.446 6.24a.849.849 0 000 1.695h4.848a.849.849 0 000-1.696h-4.848z"></path></symbol>
+<symbol id="i-copilot" viewBox="0 0 24 24"><path d="M23.922 16.997C23.061 18.492 18.063 22.02 12 22.02 5.937 22.02.939 18.492.078 16.997A.641.641 0 0 1 0 16.741v-2.869a.883.883 0 0 1 .053-.22c.372-.935 1.347-2.292 2.605-2.656.167-.429.414-1.055.644-1.517a10.098 10.098 0 0 1-.052-1.086c0-1.331.282-2.499 1.132-3.368.397-.406.89-.717 1.474-.952C7.255 2.937 9.248 1.98 11.978 1.98c2.731 0 4.767.957 6.166 2.093.584.235 1.077.546 1.474.952.85.869 1.132 2.037 1.132 3.368 0 .368-.014.733-.052 1.086.23.462.477 1.088.644 1.517 1.258.364 2.233 1.721 2.605 2.656a.841.841 0 0 1 .053.22v2.869a.641.641 0 0 1-.078.256Zm-11.75-5.992h-.344a4.359 4.359 0 0 1-.355.508c-.77.947-1.918 1.492-3.508 1.492-1.725 0-2.989-.359-3.782-1.259a2.137 2.137 0 0 1-.085-.104L4 11.746v6.585c1.435.779 4.514 2.179 8 2.179 3.486 0 6.565-1.4 8-2.179v-6.585l-.098-.104s-.033.045-.085.104c-.793.9-2.057 1.259-3.782 1.259-1.59 0-2.738-.545-3.508-1.492a4.359 4.359 0 0 1-.355-.508Zm2.328 3.25c.549 0 1 .451 1 1v2c0 .549-.451 1-1 1-.549 0-1-.451-1-1v-2c0-.549.451-1 1-1Zm-5 0c.549 0 1 .451 1 1v2c0 .549-.451 1-1 1-.549 0-1-.451-1-1v-2c0-.549.451-1 1-1Zm3.313-6.185c.136 1.057.403 1.913.878 2.497.442.544 1.134.938 2.344.938 1.573 0 2.292-.337 2.657-.751.384-.435.558-1.15.558-2.361 0-1.14-.243-1.847-.705-2.319-.477-.488-1.319-.862-2.824-1.025-1.487-.161-2.192.138-2.533.529-.269.307-.437.808-.438 1.578v.021c0 .265.021.562.063.893Zm-1.626 0c.042-.331.063-.628.063-.894v-.02c-.001-.77-.169-1.271-.438-1.578-.341-.391-1.046-.69-2.533-.529-1.505.163-2.347.537-2.824 1.025-.462.472-.705 1.179-.705 2.319 0 1.211.175 1.926.558 2.361.365.414 1.084.751 2.657.751 1.21 0 1.902-.394 2.344-.938.475-.584.742-1.44.878-2.497Z"/></symbol>
+<symbol id="i-obsidian" viewBox="0 0 24 24"><path d="M19.355 18.538a68.967 68.959 0 0 0 1.858-2.954.81.81 0 0 0-.062-.9c-.516-.685-1.504-2.075-2.042-3.362-.553-1.321-.636-3.375-.64-4.377a1.707 1.707 0 0 0-.358-1.05l-3.198-4.064a3.744 3.744 0 0 1-.076.543c-.106.503-.307 1.004-.536 1.5-.134.29-.29.6-.446.914l-.31.626c-.516 1.068-.997 2.227-1.132 3.59-.124 1.26.046 2.73.815 4.481.128.011.257.025.386.044a6.363 6.363 0 0 1 3.326 1.505c.916.79 1.744 1.922 2.415 3.5zM8.199 22.569c.073.012.146.02.22.02.78.024 2.095.092 3.16.29.87.16 2.593.64 4.01 1.055 1.083.316 2.198-.548 2.355-1.664.114-.814.33-1.735.725-2.58l-.01.005c-.67-1.87-1.522-3.078-2.416-3.849a5.295 5.295 0 0 0-2.778-1.257c-1.54-.216-2.952.19-3.84.45.532 2.218.368 4.829-1.425 7.531zM5.533 9.938c-.023.1-.056.197-.098.29L2.82 16.059a1.602 1.602 0 0 0 .313 1.772l4.116 4.24c2.103-3.101 1.796-6.02.836-8.3-.728-1.73-1.832-3.081-2.55-3.831zM9.32 14.01c.615-.183 1.606-.465 2.745-.534-.683-1.725-.848-3.233-.716-4.577.154-1.552.7-2.847 1.235-3.95.113-.235.223-.454.328-.664.149-.297.288-.577.419-.86.217-.47.379-.885.46-1.27.08-.38.08-.72-.014-1.043-.095-.325-.297-.675-.68-1.06a1.6 1.6 0 0 0-1.475.36l-4.95 4.452a1.602 1.602 0 0 0-.513.952l-.427 2.83c.672.59 2.328 2.316 3.335 4.711.09.21.175.43.253.653z"/></symbol>
+<symbol id="i-couchdb" viewBox="0 0 24 24"><path d="M19.5 14.625c0 .995-.524 1.482-1.5 1.5H6c-.976-.018-1.5-.505-1.5-1.5s.524-1.482 1.5-1.5h12c.976.018 1.5.505 1.5 1.5m-1.5 2.25H6c-.976.018-1.5.505-1.5 1.5s.524 1.482 1.5 1.5h12c.976-.018 1.5-.505 1.5-1.5s-.524-1.482-1.5-1.5m3.75-8.248v-.001c-.976.017-1.5.504-1.5 1.499v8.25c0 .995.524 1.482 1.5 1.5v-.002c1.464-.052 2.25-1.514 2.25-4.498v-3.75c0-1.99-.786-2.964-2.25-2.998m-19.5-.001C.786 8.662 0 9.637 0 11.626v3.75c0 2.984.786 4.446 2.25 4.498v.001c.976-.017 1.5-.504 1.5-1.499v-8.25c0-.995-.524-1.482-1.5-1.5m19.5-.75c0-2.486-1.31-3.705-3.75-3.748v-.002H6v.002c-2.44.043-3.75 1.262-3.75 3.748v.001c1.464.026 2.25.757 2.25 2.249s.786 2.223 2.25 2.249v.001h10.5v-.001c1.464-.026 2.25-.757 2.25-2.249s.786-2.223 2.25-2.249z"/></symbol>
+<symbol id="i-tailscale" viewBox="0 0 24 24"><path d="M24 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0zm-9 9a3 3 0 1 1-6 0 3 3 0 0 1 6 0zm0-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0zm6-6a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm0-.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5zM3 24a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm0-.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5zm18 .5a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm0-.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5zM6 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0zm9-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0zm-3 2.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5zM6 3a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM3 5.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/></symbol>
+<symbol id="i-github" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></symbol>
+<symbol id="i-markdown" viewBox="0 0 24 24"><path d="M22.27 19.385H1.73A1.73 1.73 0 010 17.655V6.345a1.73 1.73 0 011.73-1.73h20.54A1.73 1.73 0 0124 6.345v11.308a1.73 1.73 0 01-1.73 1.731zM5.769 15.923v-4.5l2.308 2.885 2.307-2.885v4.5h2.308V8.078h-2.308l-2.307 2.885-2.308-2.885H3.46v7.847zM21.232 12h-2.309V8.077h-2.307V12h-2.308l3.461 4.039z"/></symbol>
+<symbol id="i-docker" viewBox="0 0 24 24"><path d="M13.983 11.078h2.119a.186.186 0 00.186-.185V9.006a.186.186 0 00-.186-.186h-2.119a.185.185 0 00-.185.185v1.888c0 .102.083.185.185.185m-2.954-5.43h2.118a.186.186 0 00.186-.186V3.574a.186.186 0 00-.186-.185h-2.118a.185.185 0 00-.185.185v1.888c0 .102.082.185.185.185m0 2.716h2.118a.187.187 0 00.186-.186V6.29a.186.186 0 00-.186-.185h-2.118a.185.185 0 00-.185.185v1.887c0 .102.082.185.185.186m-2.93 0h2.12a.186.186 0 00.184-.186V6.29a.185.185 0 00-.185-.185H8.1a.185.185 0 00-.185.185v1.887c0 .102.083.185.185.186m-2.964 0h2.119a.186.186 0 00.185-.186V6.29a.185.185 0 00-.185-.185H5.136a.186.186 0 00-.186.185v1.887c0 .102.084.185.186.186m5.893 2.715h2.118a.186.186 0 00.186-.185V9.006a.186.186 0 00-.186-.186h-2.118a.185.185 0 00-.185.185v1.888c0 .102.082.185.185.185m-2.93 0h2.12a.185.185 0 00.184-.185V9.006a.185.185 0 00-.184-.186h-2.12a.185.185 0 00-.184.185v1.888c0 .102.083.185.185.185m-2.964 0h2.119a.185.185 0 00.185-.185V9.006a.185.185 0 00-.184-.186h-2.12a.186.186 0 00-.186.186v1.887c0 .102.084.185.186.185m-2.92 0h2.12a.185.185 0 00.184-.185V9.006a.185.185 0 00-.184-.186h-2.12a.185.185 0 00-.184.185v1.888c0 .102.082.185.185.185M23.763 9.89c-.065-.051-.672-.51-1.954-.51-.338.001-.676.03-1.01.087-.248-1.7-1.653-2.53-1.716-2.566l-.344-.199-.226.327c-.284.438-.49.922-.612 1.43-.23.97-.09 1.882.403 2.661-.595.332-1.55.413-1.744.42H.751a.751.751 0 00-.75.748 11.376 11.376 0 00.692 4.062c.545 1.428 1.355 2.48 2.41 3.124 1.18.723 3.1 1.137 5.275 1.137.983.003 1.963-.086 2.93-.266a12.248 12.248 0 003.823-1.389c.98-.567 1.86-1.288 2.61-2.136 1.252-1.418 1.998-2.997 2.553-4.4h.221c1.372 0 2.215-.549 2.68-1.009.309-.293.55-.65.707-1.046l.098-.288Z"/></symbol>
+<symbol id="i-mcp" viewBox="0 0 24 24"><path d="M13.85 0a4.16 4.16 0 0 0-2.95 1.217L1.456 10.66a.835.835 0 0 0 0 1.18.835.835 0 0 0 1.18 0l9.442-9.442a2.49 2.49 0 0 1 3.541 0 2.49 2.49 0 0 1 0 3.541L8.59 12.97l-.1.1a.835.835 0 0 0 0 1.18.835.835 0 0 0 1.18 0l.1-.098 7.03-7.034a2.49 2.49 0 0 1 3.542 0l.049.05a2.49 2.49 0 0 1 0 3.54l-8.54 8.54a1.96 1.96 0 0 0 0 2.755l1.753 1.753a.835.835 0 0 0 1.18 0 .835.835 0 0 0 0-1.18l-1.753-1.753a.266.266 0 0 1 0-.394l8.54-8.54a4.185 4.185 0 0 0 0-5.9l-.05-.05a4.16 4.16 0 0 0-2.95-1.218c-.2 0-.401.02-.6.048a4.17 4.17 0 0 0-1.17-3.552A4.16 4.16 0 0 0 13.85 0m0 3.333a.84.84 0 0 0-.59.245L6.275 10.56a4.186 4.186 0 0 0 0 5.902 4.186 4.186 0 0 0 5.902 0L19.16 9.48a.835.835 0 0 0 0-1.18.835.835 0 0 0-1.18 0l-6.985 6.984a2.49 2.49 0 0 1-3.54 0 2.49 2.49 0 0 1 0-3.54l6.983-6.985a.835.835 0 0 0 0-1.18.84.84 0 0 0-.59-.245"/></symbol>
+<symbol id="g-flag" viewBox="0 0 24 24"><path d="M5 22V3M5 4h12l-2.5 4L17 12H5"/></symbol>
+<symbol id="g-border" viewBox="0 0 24 24"><path d="M4 4h16v16H4z" stroke-dasharray="3 2.4"/><path d="M9 12h6M12 9v6"/></symbol>
+<symbol id="g-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3M12 15v2"/></symbol>
+<symbol id="g-clash" viewBox="0 0 24 24"><path d="M2 12h7M15 12h7M6 8l4 4-4 4M18 8l-4 4 4 4M12 3v3M12 18v3"/></symbol>
+<symbol id="g-disk" viewBox="0 0 24 24"><path d="M4 4h13l3 3v13H4z"/><path d="M8 4v5h8V4M8 20v-6h8v6"/></symbol>
+<symbol id="g-laptop" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="11" rx="1"/><path d="M2 19h20"/></symbol>
+<symbol id="g-desktop" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="1"/><path d="M9 20h6M12 16v4"/></symbol>
+<symbol id="g-route" viewBox="0 0 24 24"><circle cx="5" cy="19" r="2"/><circle cx="19" cy="5" r="2"/><path d="M7 19h8a3.5 3.5 0 0 0 0-7H9a3.5 3.5 0 0 1 0-7h8"/></symbol>
+<symbol id="g-plus" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></symbol>
+<symbol id="g-vault" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="11" cy="12" r="4"/><path d="M11 8v1.5M11 14.5V16M7 12h1.5M13.5 12H15M18 9v6"/></symbol>
+<symbol id="g-key" viewBox="0 0 24 24"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M16 7l2.5 2.5M13.5 9.5l2 2"/></symbol>
+<symbol id="g-shield" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></symbol>
+<symbol id="g-folder" viewBox="0 0 24 24"><path d="M3 6h6l2 2h10v11H3z"/><path d="M12 12v4M10.5 13.5h3" /></symbol>
+<symbol id="g-puzzle" viewBox="0 0 24 24"><path d="M4 8h4a2 2 0 1 1 4 0h4v4a2 2 0 1 1 0 4v4H4v-4a2 2 0 1 0 0-4z"/></symbol>
+<symbol id="g-ticket" viewBox="0 0 24 24"><path d="M3 7h18v3a2 2 0 0 0 0 4v3H3v-3a2 2 0 0 0 0-4z"/><path d="M15 7v10" stroke-dasharray="2 2"/></symbol>
+<symbol id="g-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.3-4.3"/></symbol>
+<symbol id="g-pen" viewBox="0 0 24 24"><path d="M4 20l4.5-1L19 8.5 15.5 5 5 15.5z"/><path d="M13.5 7l3.5 3.5"/></symbol>
+<symbol id="g-eye" viewBox="0 0 24 24"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></symbol>
+<symbol id="g-db" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></symbol>
+<symbol id="g-sync" viewBox="0 0 24 24"><path d="M20 9a8 8 0 0 0-14.5-3L4 8M4 3.5V8h4.5M4 15a8 8 0 0 0 14.5 3l1.5-2M20 20.5V16h-4.5"/></symbol>
+<symbol id="g-doc" viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4M9 12h7M9 16h5"/></symbol>
+<symbol id="g-arch" viewBox="0 0 24 24"><path d="M3 21V9l9-6 9 6v12z"/><path d="M9 21v-6h6v6M3 21h18"/></symbol>
+<symbol id="g-ban" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M5.6 5.6l12.8 12.8"/></symbol>
+<symbol id="g-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+<symbol id="g-pin" viewBox="0 0 24 24"><path d="M12 22s-7-6-7-12a7 7 0 0 1 14 0c0 6-7 12-7 12z"/><circle cx="12" cy="10" r="2.6"/></symbol>
+<symbol id="g-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><path d="M3 20a6 6 0 0 1 12 0"/><circle cx="17.5" cy="9" r="2.5"/><path d="M15.5 14.2A5 5 0 0 1 21.5 19"/></symbol>
+<symbol id="g-terminal" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 9l3 3-3 3M12.5 15H17"/></symbol>
+<symbol id="g-windows" viewBox="0 0 24 24"><path d="M3 5.5l7.5-1v7H3zM11.5 4.4L21 3v8.5h-9.5zM3 12.5h7.5v7L3 18.5zM11.5 12.5H21V21l-9.5-1.3z"/></symbol>
+<symbol id="g-compass" viewBox="0 0 100 100"><circle cx="50" cy="50" r="44" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="50" cy="50" r="36" fill="none" stroke="currentColor" stroke-width=".8" stroke-dasharray="2 3"/><path d="M50 4L57 43 50 50 43 43z" fill="currentColor"/><path d="M50 96L43 57 50 50 57 57z" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M4 50L43 43 50 50 43 57z" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M96 50L57 57 50 50 57 43z" fill="currentColor"/></symbol>
+</defs></svg>
+
+<main>
+<header>
+  <div>
+    <div class="kick">carta da frente · context hub</div>
+    <h1>Mapeamento <em>destino &amp; fronteira</em></h1>
+    <div class="keys"><span><b>4</b> rodadas</span><span><b>17</b> perguntas</span><span><b>30 set → 1 out</b> 2026</span><span>sugestão minha · resposta do Gustavo</span></div>
+  </div>
+  <div class="tally">
+    <div class="stamp s-yes"><b>6</b>aceitou</div>
+    <div class="stamp s-adj"><b>5</b>ajustou</div>
+    <div class="stamp s-no"><b>4</b>contrariou</div>
+    <div class="stamp s-fact"><b>2</b>fato</div>
+  </div>
+</header>
+
+<!-- PARTIDA -->
+<section class="sec">
+  <div class="sech"><h2>Partida</h2><span class="rule"></span><span class="kick">ideia de entrada · 30 set</span></div>
+  <div class="start">
+    <svg class="i pin"><use href="#g-pin"/></svg>
+    <div class="q"><small>o Gustavo, no ponto zero</small>“nem sei por onde começar”</div>
+    <div class="wish">
+      <span class="chip"><span class="n">1</span><svg class="i"><use href="#g-search"/></svg>achar sem ler tudo</span>
+      <span class="chip"><span class="n">2</span><svg class="i"><use href="#g-pen"/></svg>gravar sem pedir</span>
+      <span class="chip"><span class="n">3</span><svg class="i l" style="color:#7c3aed"><use href="#i-obsidian"/></svg>Obsidian + disco</span>
+      <span class="chip"><span class="n">4</span><svg class="i"><use href="#g-eye"/></svg>nada diverge</span>
+      <span class="chip"><span class="n">5</span><svg class="i"><use href="#g-clash"/></svg>edição simultânea</span>
+    </div>
+  </div>
+</section>
+
+<!-- TRILHA -->
+<section class="sec">
+  <div class="sech"><h2>A trilha</h2><span class="rule"></span><span class="kick">cada parada = uma pergunta · carimbo = o que ele respondeu</span></div>
+  <div class="trail">
+
+    <div class="leg">
+      <div class="camp"><div class="dot"><div><b>1ª</b><span>rodada</span></div></div><div class="when">30 set</div><br><div class="theme">destino e escopo</div></div>
+      <div class="cards">
+        <div class="card no"><span class="stamp s-no">contrariou</span><svg class="i ic"><use href="#g-flag"/></svg><h3>Tipo de destino</h3>
+          <div class="sug"><i>sugeri</i><span>mapa só até a spec</span></div><div class="ans">hub funcionando nas 2 máquinas</div></div>
+        <div class="card adj"><span class="stamp s-adj">ajustou</span><svg class="i ic"><use href="#g-border"/></svg><h3>Dentro × fora</h3>
+          <div class="sug"><i>sugeri</i><span>lista de fronteira</span></div><div class="ans">“concordo em partes”</div>
+          <div class="later"><svg class="i"><use href="#g-clock"/></svg>fechou na 2ª rodada</div></div>
+        <div class="card no"><span class="stamp s-no">contrariou</span><svg class="i ic"><use href="#g-lock"/></svg><h3>Dado de cliente</h3>
+          <div class="sug"><i>sugeri</i><span>restrição do destino</span></div><div class="ans">protegido igual nas 2 máquinas</div></div>
+        <div class="card adj"><span class="stamp s-adj">ajustou</span><svg class="i ic"><use href="#g-clash"/></svg><h3>Edição simultânea</h3>
+          <div class="sug"><i>sugeri</i><span>3 cenários</span></div><div class="ans">2: entre máquinas · 2 agentes</div>
+          <div class="later"><svg class="i"><use href="#g-ban"/></svg>Obsidian + agente sai</div></div>
+        <div class="card yes"><span class="stamp s-yes">aceitou</span><svg class="i ic"><use href="#g-disk"/></svg><h3>Gravar pela busca</h3>
+          <div class="sug"><i>sugeri</i><span>tudo acaba no disco</span></div><div class="ans">de acordo</div>
+          <div class="later"><svg class="i"><use href="#g-clock"/></svg>depois: verdade num banco, .md é a vista</div></div>
+        <div class="card no"><span class="stamp s-no">contrariou</span><svg class="i ic"><use href="#g-laptop"/></svg><h3>Onde o hub mora</h3>
+          <div class="sug"><i>sugeri</i><span>notebook é a referência</span></div><div class="ans">2 máquinas pares</div></div>
+      </div>
+    </div>
+
+    <div class="leg">
+      <div class="camp"><div class="dot"><div><b>2ª</b><span>rodada</span></div></div><div class="when">30 set → 1 out</div><br><div class="theme">fechar o destino</div></div>
+      <div class="cards">
+        <div class="card yes"><span class="stamp s-yes">aceitou</span><svg class="i ic"><use href="#g-route"/></svg><h3>Destino × fluxo de trabalho</h3>
+          <div class="sug"><i>sugeri</i><span>5 desejos = critérios de aceite</span></div><div class="ans">mapa decide · tickets constroem</div></div>
+        <div class="card adj"><span class="stamp s-adj">ajustou</span><svg class="i ic"><use href="#g-plus"/></svg><h3>O que entra</h3>
+          <div class="sug"><i>sugeri</i><span>a mesma fronteira</span></div><div class="ans">+ 6 territórios novos</div>
+          <div class="later"><svg class="i"><use href="#g-flag"/></svg>bandeiras no mapa abaixo</div></div>
+        <div class="card fact"><span class="stamp s-fact">fato</span><svg class="i ic"><use href="#g-desktop"/></svg><h3>A outra máquina</h3>
+          <div class="ans">Windows · pessoal · sempre ligada · mesma rede · todos os agentes + Maestri</div></div>
+      </div>
+    </div>
+
+    <div class="leg">
+      <div class="camp"><div class="dot"><div><b>3ª</b><span>rodada</span></div></div><div class="when">1 out</div><br><div class="theme">sentido dos itens novos</div></div>
+      <div class="cards">
+        <div class="card no"><span class="stamp s-no">contrariou</span><svg class="i ic"><use href="#g-vault"/></svg><h3>Hub substitui o vault?</h3>
+          <div class="sug"><i>sugeri</i><span>sim</span></div><div class="ans">não: convivem, cada trabalho numa casa</div>
+          <div class="later"><svg class="i"><use href="#g-clock"/></svg>depois: vault só referência</div></div>
+        <div class="card adj"><span class="stamp s-adj">ajustou</span><svg class="i ic"><use href="#g-key"/></svg><h3>SSH para quê?</h3>
+          <div class="sug"><i>sugeri</i><span>levar o git</span></div><div class="ans">pastas só por SSH · operar a outra máquina</div></div>
+        <div class="card yes"><span class="stamp s-yes">aceitou</span><svg class="i l ic"><use href="#i-mcp"/></svg><h3>Sync e busca como MCP</h3>
+          <div class="sug"><i>sugeri</i><span>MCP é a porta do agente</span></div><div class="ans">sync roda sem ele</div></div>
+        <div class="card adj"><span class="stamp s-adj">ajustou</span><svg class="i ic"><use href="#g-route"/></svg><h3>Roteamento FreeLLMAPI</h3>
+          <div class="sug"><i>sugeri</i><span>contrato mora no hub</span></div><div class="ans">só a skill no roteamento · embeddings como opção</div></div>
+        <div class="card fact"><span class="stamp s-fact">fato</span><svg class="i ic"><use href="#g-shield"/></svg><h3>O que a ARMIS permite</h3>
+          <div class="ans">GitHub privado · Tailscale · SSH: sim, com segurança</div></div>
+      </div>
+    </div>
+
+    <div class="leg" style="margin-bottom:0">
+      <div class="camp"><div class="dot"><div><b>4ª</b><span>rodada</span></div></div><div class="when">1 out</div><br><div class="theme">nomes e lista de tickets</div></div>
+      <div class="cards">
+        <div class="card yes"><span class="stamp s-yes">aceitou</span><svg class="i ic"><use href="#g-folder"/></svg><h3>Pastas só por SSH</h3>
+          <div class="sug"><i>sugeri</i><span>nome novo</span></div><div class="ans">“pasta não replicada”</div></div>
+        <div class="card yes"><span class="stamp s-yes">aceitou</span><svg class="i ic"><use href="#g-puzzle"/></svg><h3>Roteamento de skills</h3>
+          <div class="sug"><i>sugeri</i><span>skills moram no hub</span></div><div class="ans">tabela só onde a descrição não basta</div></div>
+        <div class="card yes"><span class="stamp s-yes">aceitou</span><svg class="i ic"><use href="#g-ticket"/></svg><h3>Lista de tickets</h3>
+          <div class="sug"><i>sugeri</i><span>16 tickets</span></div><div class="ans">17 · alguns viram protótipo</div>
+          <div class="later"><svg class="i"><use href="#g-flag"/></svg>fim do mapeamento</div></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FRONTEIRA -->
+<section class="sec">
+  <div class="sech"><h2>A fronteira</h2><span class="rule"></span><span class="kick">terra = dentro do mapa · mar = fora</span></div>
+  <div class="chart">
+  <svg viewBox="0 0 1520 740" role="img" aria-label="Mapa do escopo: o que está dentro e fora">
+    <defs>
+      <pattern id="waves" width="60" height="34" patternUnits="userSpaceOnUse"><path d="M6 17q6-6 12 0t12 0" fill="none" stroke="#a08a6a" stroke-width="1" opacity=".55"/></pattern>
+      <pattern id="hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(35)"><path d="M0 0v8" stroke="#c9b48c" stroke-width="1"/></pattern>
+      <marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5 0 10z" fill="#b3261e"/></marker>
+      <marker id="arg" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5 0 10z" fill="#3d6b3a"/></marker>
+      <symbol id="pen" viewBox="0 0 20 24"><path d="M2 24V2" stroke="#2b2117" stroke-width="2"/><path d="M3 2h15l-4 5 4 5H3z" fill="#b3261e"/></symbol>
+    </defs>
+    <rect x="0" y="0" width="1520" height="740" fill="url(#waves)"/>
+    <text class="sea" x="144" y="44">FORA DO MAPA</text>
+    <text class="sea" x="1376" y="44">FORA DO MAPA</text>
+
+    <!-- terra -->
+    <path d="M330 120C420 50 620 70 760 62C900 52 1080 70 1180 130C1240 170 1222 260 1204 330C1188 400 1240 470 1200 560C1160 630 980 652 820 642C660 632 480 656 380 602C300 556 318 470 300 390C286 310 262 190 330 120Z" fill="#e3d2ad" stroke="none"/>
+    <path d="M330 120C420 50 620 70 760 62C900 52 1080 70 1180 130C1240 170 1222 260 1204 330C1188 400 1240 470 1200 560C1160 630 980 652 820 642C660 632 480 656 380 602C300 556 318 470 300 390C286 310 262 190 330 120Z" fill="url(#hatch)" opacity=".45"/>
+    <path d="M330 120C420 50 620 70 760 62C900 52 1080 70 1180 130C1240 170 1222 260 1204 330C1188 400 1240 470 1200 560C1160 630 980 652 820 642C660 632 480 656 380 602C300 556 318 470 300 390C286 310 262 190 330 120Z" fill="none" stroke="#b3261e" stroke-width="3" stroke-dasharray="14 5 3 5"/>
+    <text class="land" x="760" y="592">TERRITÓRIO DO MAPA</text>
+
+    <!-- itens dentro: col 450/640/830/1020 · linhas 150/300/450 -->
+    <g id="inside">
+      <g transform="translate(450,160)"><circle r="31" fill="#f6eedc" stroke="#2b2117" stroke-width="2"/><svg x="-16" y="-16" width="32" height="32" class="mi" style="stroke-width:1.7"><use href="#g-db"/></svg><text class="lbl" y="56">Armazenamento</text><text class="sub" y="74">onde os .md vivem</text></g>
+      <g transform="translate(640,160)"><circle r="31" fill="#f6eedc" stroke="#2b2117" stroke-width="2"/><svg x="-16" y="-16" width="32" height="32" class="mi"><use href="#g-sync"/></svg><text class="lbl" y="56">Sync</text><text class="sub" y="74">2 máquinas</text></g>
+      <g transform="translate(830,160)"><circle r="31" fill="#f6eedc" stroke="#2b2117" stroke-width="2"/><svg x="-16" y="-16" width="32" height="32" class="mi"><use href="#g-search"/></svg><text class="lbl" y="56">Camada de busca</text><text class="sub" y="74">buscar + gravar</text></g>
+      <g transform="translate(1020,160)"><circle r="31" fill="#f6eedc" stroke="#2b2117" stroke-width="2"/><svg x="-16" y="-16" width="32" height="32" class="mi"><use href="#g-doc"/></svg><text class="lbl" y="56">Contrato file-first</text><text class="sub" y="74">zonas · checkpoint</text></g>
+
+      <g transform="translate(450,320)"><circle r="31" fill="#f6eedc" stroke="#2b2117" stroke-width="2"/><svg x="-16" y="-16" width="32" height="32" class="mi l" style="color:#7c3aed"><use href="#i-obsidian"/></svg><text class="lbl" y="56">Obsidian</text><text class="sub" y="74">edição à mão</text></g>
+      <g transform="translate(640,320)"><circle r="31" fill="#f6eedc" stroke="#2b2117" stroke-width="2"/><svg x="-16" y="-16" width="32" height="32" class="mi"><use href="#g-users"/></svg><text class="lbl" y="56">Acesso dos agentes</text><text class="sub" y="74">dentro e fora do Maestri</text></g>
+      <g transform="translate(830,320)"><circle r="31" fill="#f6eedc" stroke="#2b2117" stroke-width="2"/><svg x="-16" y="-16" width="32" height="32" class="mi"><use href="#g-arch"/></svg><text class="lbl" y="56">Arquitetura do hub</text><text class="sub" y="74">pastas · raízes</text><use href="#pen" x="14" y="-50" width="20" height="24"/></g>
+      <g transform="translate(1020,320)"><circle r="31" fill="#f6eedc" stroke="#2b2117" stroke-width="2"/><svg x="-16" y="-16" width="32" height="32" class="mi"><use href="#g-pen"/></svg><text class="lbl" y="56">Como agentes editam</text><text class="sub" y="74">direto no disco</text><use href="#pen" x="14" y="-50" width="20" height="24"/></g>
+
+      <g transform="translate(520,470)"><circle r="31" fill="#f6eedc" stroke="#2b2117" stroke-width="2"/><svg x="-16" y="-16" width="32" height="32" class="mi l"><use href="#i-mcp"/></svg><text class="lbl" y="56">Sync e busca como MCP</text><text class="sub" y="74">buscar · gravar · estado</text><use href="#pen" x="14" y="-50" width="20" height="24"/></g>
+      <g transform="translate(880,470)"><circle r="31" fill="#f6eedc" stroke="#2b2117" stroke-width="2"/><svg x="-16" y="-16" width="32" height="32" class="mi"><use href="#g-puzzle"/></svg><text class="lbl" y="56">Roteamento de skills</text><text class="sub" y="74">inclui a do FreeLLMAPI</text><use href="#pen" x="14" y="-50" width="20" height="24"/></g>
+      <g transform="translate(1095,470)"><circle r="31" fill="#f6eedc" stroke="#2b2117" stroke-width="2"/><svg x="-16" y="-16" width="32" height="32" class="mi l" style="color:#c15f3c"><use href="#i-claude"/></svg><rect x="-112" y="-10" width="76" height="20" rx="10" fill="#b7791f"/><text x="-74" y="4.5" text-anchor="middle" font-size="12" font-weight="800" fill="#fff8e8" font-family="IBM Plex Mono,monospace">em aberto</text><text class="lbl" y="56">Desktop grava</text><text class="sub" y="74">disco · MCP · os dois?</text></g>
+    </g>
+
+    <!-- na linha da fronteira: entraram e depois foram adiados -->
+    <g transform="translate(600,643)"><circle r="24" fill="#f6eedc" stroke="#b7791f" stroke-width="2.5" stroke-dasharray="5 3"/><svg x="-13" y="-13" width="26" height="26" class="mi" style="color:#2b2117"><use href="#g-key"/></svg><use href="#pen" x="10" y="-42" width="18" height="22"/><text class="lbl" y="48" style="font-size:15px">SSH · Tailscale</text><text class="sub" y="65">entrou → adiado: ticket à parte</text></g>
+    <g transform="translate(940,646)"><circle r="24" fill="#f6eedc" stroke="#b7791f" stroke-width="2.5" stroke-dasharray="5 3"/><svg x="-13" y="-13" width="26" height="26" class="mi" style="color:#2b2117"><use href="#g-terminal"/></svg><use href="#pen" x="10" y="-42" width="18" height="22"/><text class="lbl" y="48" style="font-size:15px">Hub no WSL</text><text class="sub" y="65">entrou → fica no Windows</text></g>
+
+    <!-- ilhas de fora: esquerda -->
+    <g font-size="14">
+      <g transform="translate(22,78)"><rect width="246" height="74" rx="22" fill="#ecdfc3" stroke="#8a7351" stroke-width="1.5"/><svg x="14" y="23" width="26" height="26" class="mi" style="color:#b3261e"><use href="#g-ban"/></svg><text class="it" x="50" y="33">Aposentar o vault</text><text class="its" x="50" y="52">depois deste mapa</text></g>
+      <g transform="translate(22,186)"><rect width="246" height="74" rx="22" fill="#ecdfc3" stroke="#8a7351" stroke-width="1.5"/><svg x="14" y="23" width="26" height="26" class="mi" style="color:#b3261e"><use href="#g-ban"/></svg><text class="it" x="50" y="33">Migrar workspaces</text><text class="its" x="50" y="52">existentes · do Maestri</text></g>
+      <g transform="translate(22,294)"><rect width="246" height="74" rx="22" fill="#ecdfc3" stroke="#8a7351" stroke-width="1.5"/><svg x="14" y="23" width="26" height="26" class="mi" style="color:#b3261e"><use href="#g-ban"/></svg><text class="it" x="50" y="33">Skill aplicar / auditar</text><text class="its" x="50" y="52">do Maestri</text></g>
+      <g transform="translate(22,402)"><rect width="246" height="74" rx="22" fill="#ecdfc3" stroke="#b3261e" stroke-width="2"/><svg x="14" y="23" width="26" height="26" class="mi" style="color:#b3261e"><use href="#g-ban"/></svg><text class="it" x="50" y="33">Obsidian + agente</text><text class="its" x="50" y="52">no mesmo arquivo</text></g>
+      <g transform="translate(22,510)"><rect width="246" height="74" rx="22" fill="#ecdfc3" stroke="#b3261e" stroke-width="2"/><svg x="14" y="23" width="26" height="26" class="mi" style="color:#b3261e"><use href="#g-ban"/></svg><text class="it" x="50" y="33">Dado de cliente</text><text class="its" x="50" y="52">política p/ 2ª máquina</text></g>
+      <!-- direita -->
+      <g transform="translate(1252,78)"><rect width="246" height="74" rx="22" fill="#ecdfc3" stroke="#8a7351" stroke-width="1.5"/><svg x="14" y="23" width="26" height="26" class="mi" style="color:#b3261e"><use href="#g-ban"/></svg><text class="it" x="50" y="33">Superpowers × GSD</text><text class="its" x="50" y="52">× Matt · convivência</text></g>
+      <g transform="translate(1252,186)"><rect width="246" height="74" rx="22" fill="#ecdfc3" stroke="#8a7351" stroke-width="1.5"/><svg x="14" y="23" width="26" height="26" class="mi" style="color:#b3261e"><use href="#g-ban"/></svg><text class="it" x="50" y="33">freellmapi-mcp</text><text class="its" x="50" y="52">e a skill que ensina</text></g>
+      <g transform="translate(1252,294)"><rect width="246" height="74" rx="22" fill="#ecdfc3" stroke="#8a7351" stroke-width="1.5"/><svg x="14" y="23" width="26" height="26" class="mi" style="color:#b3261e"><use href="#g-ban"/></svg><text class="it" x="50" y="33">Controle de acesso</text><text class="its" x="50" y="52">por pasta · futuro</text></g>
+      <g transform="translate(1252,402)" opacity=".75"><rect width="246" height="74" rx="22" fill="none" stroke="#8a7351" stroke-width="1.2" stroke-dasharray="4 5"/><text class="its" x="123" y="42" text-anchor="middle" font-style="italic">aqui ficava: Desktop grava</text></g>
+    </g>
+
+    <!-- setas "saiu" -->
+    <path d="M318 395C300 420 290 432 274 438" fill="none" stroke="#b3261e" stroke-width="2.2" marker-end="url(#ar)"/>
+    <text x="276" y="384" font-size="13" font-style="italic" font-weight="700" fill="#b3261e">saiu</text>
+    <path d="M330 540C306 546 292 548 274 548" fill="none" stroke="#b3261e" stroke-width="2.2" marker-end="url(#ar)"/>
+    <text x="282" y="528" font-size="13" font-style="italic" font-weight="700" fill="#b3261e">saiu</text>
+
+    <!-- seta "voltou" -->
+    <path d="M1252 436C1215 420 1175 430 1132 452" fill="none" stroke="#3d6b3a" stroke-width="2.4" marker-end="url(#arg)"/>
+    <text x="1262" y="396" font-size="13" font-style="italic" font-weight="700" fill="#3d6b3a">voltou</text>
+    <!-- rosa dos ventos -->
+    <g transform="translate(1310,540)" style="color:#5c4a36"><use href="#g-compass" width="130" height="130"/><text x="65" y="-6" text-anchor="middle" font-size="14" font-weight="800">N</text></g>
+    <text x="1375" y="700" text-anchor="middle" font-size="12" font-family="IBM Plex Mono,monospace" fill="#5c4a36">o norte é o destino ↓</text>
+  </svg>
+  </div>
+  <div class="legend">
+    <span><svg width="40" height="10"><path d="M0 5h40" stroke="#b3261e" stroke-width="3" stroke-dasharray="14 5 3 5"/></svg>fronteira do mapa</span>
+    <span><svg width="16" height="20" viewBox="0 0 20 24"><use href="#pen"/></svg>entrou na 2ª rodada</span>
+    <span><svg width="22" height="22"><circle cx="11" cy="11" r="9" fill="none" stroke="#b7791f" stroke-width="2" stroke-dasharray="4 3"/></svg>na linha: entrou e foi adiado</span>
+    <span><svg width="26" height="14"><rect x="1" y="1" width="24" height="12" rx="6" fill="#ecdfc3" stroke="#b3261e" stroke-width="2"/></svg>ilha vermelha: saiu na 1ª rodada</span>
+    <span><svg width="30" height="14"><path d="M2 10C10 2 18 2 28 7" fill="none" stroke="#3d6b3a" stroke-width="2.4"/></svg>voltou: Desktop grava · 12 out · em aberto</span>
+  </div>
+</section>
+
+<!-- DESTINO -->
+<section class="sec">
+  <div class="dest">
+    <div>
+      <svg class="i flag" style="stroke-width:1.4"><use href="#g-flag"/></svg>
+      <div class="kick">destino</div>
+      <h2>Hub funcionando</h2>
+      <div class="machines">
+        <div><svg class="i"><use href="#g-laptop"/></svg>notebook ARMIS</div>
+        <span class="sw">⇄</span>
+        <div><svg class="i"><use href="#g-desktop"/></svg>máquina pessoal</div>
+      </div>
+      <div class="machines" style="margin-top:6px;color:#cdbb98"><span>pares · nenhuma manda</span></div>
+    </div>
+    <div>
+      <div class="flow">
+        <div>mapa decide<small>rodadas + tickets</small></div>
+        <div>passagem<small>spec + lista de tickets</small></div>
+        <div>construção<small>fora do mapa</small></div>
+        <div class="end">verificação<small style="color:#f7d9d4">critérios nas 2 máquinas · fecha</small></div>
+      </div>
+      <div class="kick" style="margin-bottom:10px">os 5 desejos viraram critérios de aceite</div>
+      <div class="crit">
+        <div><span class="n">1</span><svg class="i"><use href="#g-search"/></svg><b>Acha o trecho certo</b><small>sem ler tudo</small></div>
+        <div><span class="n">2</span><svg class="i"><use href="#g-pen"/></svg><b>Grava sozinho</b><small>no lugar certo · sem pedir</small></div>
+        <div><span class="n">3</span><svg class="i l" style="color:#a78bfa"><use href="#i-obsidian"/></svg><b>Obsidian + disco</b><small>busca sempre à mão</small></div>
+        <div><span class="n">4</span><svg class="i"><use href="#g-eye"/></svg><b>Nada diverge</b><small>em silêncio</small></div>
+        <div><span class="n">5</span><svg class="i"><use href="#g-shield"/></svg><b>Edição concorrente</b><small>protegida</small></div>
+      </div>
+      <div class="agents">quem usa:
+        <span><svg class="l" style="color:#e07a52"><use href="#i-claude"/></svg>Claude Code</span>
+        <span><svg class="l"><use href="#i-codex"/></svg>Codex</span>
+        <span><svg class="l"><use href="#i-copilot"/></svg>Copilot</span>
+        <span style="color:#cdbb98">dentro ou fora do Maestri · qualquer máquina</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer><span>fontes: mapeamento.md · map.md (destino, fora do escopo)</span><span>carta traçada em 12 out 2026 · atualizada 12 out 2026: Desktop grava voltou ao território</span></footer>
+</main>
+</body>
+</html>

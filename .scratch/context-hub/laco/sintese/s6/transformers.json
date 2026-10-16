@@ -1,0 +1,53 @@
+{
+ "nome": "HuggingFace Tokenizers + Transformers",
+ "nome_canonico": "Hugging Face Transformers",
+ "chave": "web:huggingface.co/docs/transformers",
+ "url": "https://huggingface.co/docs/transformers",
+ "identidade": "ok; item juntava Tokenizers + Transformers, verifiquei a peça principal: Transformers (github.com/huggingface/transformers)",
+ "windows": "yes: doc de instalação cita \"On Windows, the default directory is C:\\Users\\username\\.cache\\huggingface\\hub\"; wheel py3-none-any (PyPI, OS Independent); exige PyTorch. Instala por pip/uv, sem WSL/Docker.",
+ "portugues": "depende do modelo: carrega qualquer modelo do Hub, inclusive multilíngues; suporte a português não é do framework (nao_verificado).",
+ "embeddings_endpoint": "nao_aplicavel: biblioteca Python in-process, sem base_url OpenAI-compatível.",
+ "recursos": "Requer \"Python 3.10+, and PyTorch 2.6+\"; wheel 12 MB, mas PyTorch e pesos somam GBs (nao_verificado em número). Cache em HF_HUB_CACHE; offline com HF_HUB_OFFLINE=1.",
+ "licenca": "Apache-2.0",
+ "ultimo_release": "5.19.0 (2026-10-06)",
+ "atividade": "release de 2026-10-06; data do último commit nao_verificado",
+ "maturidade": "stable (PyPI: Development Status :: 5 - Production/Stable)",
+ "encaixe": "Rodar embeddings/rerank multilíngues localmente em Python, fora do FreeLLMAPI. Pesado (PyTorch) para duas máquinas Windows; não fala com CouchDB, LiveSync ou MCP sem código próprio.",
+ "evidencias": [
+  {
+   "campo": "windows",
+   "url": "https://huggingface.co/docs/transformers/installation",
+   "citacao": "On Windows, the default directory is `C:\\Users\\username\\.cache\\huggingface\\hub`."
+  },
+  {
+   "campo": "recursos",
+   "url": "https://github.com/huggingface/transformers",
+   "citacao": "Transformers works with Python 3.10+, and PyTorch 2.6+."
+  },
+  {
+   "campo": "licenca",
+   "url": "https://pypi.org/pypi/transformers/json",
+   "citacao": "Apache 2.0 License"
+  },
+  {
+   "campo": "ultimo_release",
+   "url": "https://pypi.org/pypi/transformers/json",
+   "citacao": "transformers-5.19.0-py3-none-any.whl 2026-10-06"
+  },
+  {
+   "campo": "maturidade",
+   "url": "https://pypi.org/pypi/transformers/json",
+   "citacao": "Development Status :: 5 - Production/Stable"
+  }
+ ],
+ "nao_verificado": [
+  "suporte a português",
+  "tamanho em disco/memória em número",
+  "data do último commit"
+ ],
+ "serve": "stack",
+ "area": "embeddings_rerank",
+ "mcp": "nao_aplicavel",
+ "markdown_frontmatter": "nao_aplicavel",
+ "atualizacao": "nao_aplicavel"
+}

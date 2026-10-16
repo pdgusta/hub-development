@@ -1,0 +1,31 @@
+{
+ "chave": "web:elastic.co/guide/en/logstash/current/input-plugins.html",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T21:43:12Z",
+ "resultado": "corrige",
+ "conferencia": {
+  "resultado": "corrige",
+  "final": {
+   "serve": "stack",
+   "role": "Logstash input plugins (file, couchdb_changes) that could stream note changes into an index.",
+   "place": [
+    "network_service"
+   ],
+   "mechanism": [
+    "other"
+   ],
+   "mcp": "no",
+   "windows": "unknown",
+   "portuguese": "unknown",
+   "license": "unknown",
+   "maturity": "stable",
+   "doubt": false,
+   "evidence": "couchdb_changes: Streams events from CouchDB's _changes URI; file input plugin."
+  },
+  "o_que_mudou": [
+   "doubt: true -> false",
+   "mcp: unknown -> no"
+  ],
+  "nota": "Catalog of Logstash inputs, including CouchDB _changes; a possible ingestion path to an index, but heavy for the hub."
+ }
+}

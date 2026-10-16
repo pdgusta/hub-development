@@ -1,0 +1,33 @@
+{
+ "chave": "web:docs.vespa.ai/en/embedding.html",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T12:00:00Z",
+ "resultado": "corrige",
+ "conferencia": {
+  "resultado": "corrige",
+  "final": {
+   "serve": "search",
+   "role": "Geração de embeddings dentro do Vespa (embedders configuráveis) para busca vetorial.",
+   "place": [
+    "network_service"
+   ],
+   "mechanism": [
+    "vector",
+    "embeddings"
+   ],
+   "mcp": "unknown",
+   "windows": "unknown",
+   "portuguese": "unknown",
+   "license": "unknown",
+   "maturity": "unknown",
+   "doubt": false,
+   "evidence": "Alternatively, you can use the embed function to generate the embeddings inside Vespa; hugging-face-embedder supports multilingual tokenizers"
+  },
+  "o_que_mudou": [
+   "mechanism: vector,hybrid,bm25,embeddings -> vector,embeddings, a página só trata de embedding",
+   "portuguese: yes -> unknown, só diz tokenizadores multilíngues",
+   "doubt: true -> false"
+  ],
+  "nota": "Referência de embedders do Vespa; útil só se o Vespa for escolhido como motor, o que é pesado para o hub."
+ }
+}

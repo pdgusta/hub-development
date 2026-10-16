@@ -1,0 +1,35 @@
+{
+ "chave": "gh:teamtnt/tntsearch",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T22:00:41Z",
+ "resultado": "corrige",
+ "conferencia": {
+  "resultado": "corrige",
+  "final": {
+   "serve": "search",
+   "role": "Pure-PHP full-text search engine with BM25 ranking, fuzzy and boolean search, indexes stored in SQLite/MySQL/Redis.",
+   "place": [
+    "library",
+    "disk"
+   ],
+   "mechanism": [
+    "bm25",
+    "full_text"
+   ],
+   "mcp": "unknown",
+   "windows": "unknown",
+   "portuguese": "yes",
+   "license": "unknown",
+   "maturity": "unknown",
+   "doubt": false,
+   "evidence": "Full-text search (FTS) engine written entirely in PHP; BM25/TF-IDF ranking; built-in stemmers incl. portuguese; SQLite index"
+  },
+  "o_que_mudou": [
+   "mechanism: drop hybrid/grep/graph/reranker/embeddings/other, README shows only BM25 full-text",
+   "place: drop network_service, add library",
+   "mcp: no -> unknown",
+   "doubt: true -> false"
+  ],
+  "nota": "Capable BM25 engine with Portuguese stemming, but PHP-only and no MCP; fits only if the hub adopts PHP."
+ }
+}

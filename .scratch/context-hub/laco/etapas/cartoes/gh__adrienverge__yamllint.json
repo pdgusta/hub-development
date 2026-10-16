@@ -1,0 +1,39 @@
+{
+ "chave": "gh:adrienverge/yamllint",
+ "urls": [
+  "https://github.com/adrienverge/yamllint",
+  "https://yamllint.readthedocs.io/en/stable/",
+  "https://yamllint.readthedocs.io/"
+ ],
+ "tipos": [
+  "tool"
+ ],
+ "termos": [
+  "yamllint",
+  "YAML 格式验证",
+  "YAML 验证",
+  "YAML 格式检查",
+  "YAML validator"
+ ],
+ "mencoes": 3,
+ "familias": [
+  "cohere",
+  "llama",
+  "mistral"
+ ],
+ "primeira_onda": 2,
+ "nomes": [
+  "YAML-Lint (for Validation)",
+  "YAML-Lint",
+  "Yamllint"
+ ],
+ "resumos": [
+  "YAML 格式化和验证工具，可用于检查 frontmatter 语法错误（如缺失字段或重复键），但不解析",
+  "用于验证 YAML 格式的工具",
+  "YAML ファイルの構文とスタイルをチェックするリインター。"
+ ],
+ "readme_status": "ok",
+ "readme_nome": "README.rst",
+ "readme_cortado": false,
+ "readme": "yamllint\n========\n\nA linter for YAML files.\n\nyamllint does not only check for syntax validity, but for weirdnesses like key\nrepetition and cosmetic problems such as lines length, trailing spaces,\nindentation, etc.\n\n.. image::\n   https://github.com/adrienverge/yamllint/actions/workflows/tests.yaml/badge.svg?branch=master\n   :target: https://github.com/adrienverge/yamllint/actions/workflows/tests.yaml?query=branch%3Amaster\n   :alt: CI tests status\n.. image::\n   https://coveralls.io/repos/github/adrienverge/yamllint/badge.svg?branch=master\n   :target: https://coveralls.io/github/adrienverge/yamllint?branch=master\n   :alt: Code coverage status\n.. image:: https://readthedocs.org/projects/yamllint/badge/?version=latest\n   :target: https://yamllint.readthedocs.io/en/latest/?badge=latest\n   :alt: Documentation status\n\nWritten in Python.\n\nDocumentation\n-------------\n\nhttps://yamllint.readthedocs.io/\n\nOverview\n--------\n\nScreenshot\n^^^^^^^^^^\n\n.. image:: docs/screenshot.png\n   :alt: yamllint screenshot\n\nInstallation\n^^^^^^^^^^^^\n\nUsing pip, the Python package manager:\n\n.. code:: bash\n\n pip install --user yamllint\n\nyamllint is also packaged for all major operating systems, see installation\nexamples (``dnf``, ``apt-get``...) `in the documentation\n<https://yamllint.readthedocs.io/en/stable/quickstart.html>`_.\n\nUsage\n^^^^^\n\n.. code:: bash\n\n # Lint one or more files\n yamllint my_file.yml my_other_file.yaml ...\n\n.. code:: bash\n\n # Recursively lint all YAML files in a directory\n yamllint .\n\n.. code:: bash\n\n # Use a pre-defined lint configuration\n yamllint -d relaxed file.yaml\n\n # Use a custom lint configuration\n yamllint -c /path/to/myconfig file-to-lint.yaml\n\n.. code:: bash\n\n # Output a parsable format (for syntax checking in editors like Vim, emacs...)\n yamllint -f parsable file.yaml\n\n`Read more in the complete documentation! <https://yamllint.readthedocs.io/>`__\n\nFeatures\n^^^^^^^^\n\nHere is a yamllint configuration file example:\n\n.. code:: yaml\n\n extends: default\n\n rules:\n   # 80 chars should be enough, but don't fail if a line is longer\n   line-length:\n     max: 80\n     level: warning\n\n   # don't bother me with this rule\n   indentation: disable\n\nWithin a YAML file, special comments can be used to disable checks for a single\nline:\n\n.. code:: yaml\n\n This line is waaaaaaaaaay too long  # yamllint disable-line\n\nor for a whole block:\n\n.. code:: yaml\n\n # yamllint disable rule:colons\n - Lorem       : ipsum\n   dolor       : sit amet,\n   consectetur : adipiscing elit\n # yamllint enable\n\nSpecific files can be ignored (totally or for some rules only) using a\n``.gitignore``-style pattern:\n\n.. code:: yaml\n\n # For all rules\n ignore: |\n   *.dont-lint-me.yaml\n   /bin/\n   !/bin/*.lint-me-anyway.yaml\n\n rules:\n   key-duplicates:\n     ignore: |\n       generated\n       *.template.yaml\n   trailing-spaces:\n     ignore: |\n       *.ignore-trailing-spaces.yaml\n       /ascii-art/*\n\n`Read more in the complete documentation! <https://yamllint.readthedocs.io/>`__\n\nLicense\n-------\n\n`GPL version 3 <LICENSE>`_\n"
+}

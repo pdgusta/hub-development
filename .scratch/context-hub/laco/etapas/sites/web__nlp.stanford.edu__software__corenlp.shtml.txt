@@ -1,0 +1,837 @@
+Software > Stanford CoreNLP
+
+Stanford CoreNLP
+
+A Suite of Core NLP Tools
+
+About |
+Citing |
+Download |
+Usage |
+SUTime |
+Sentiment |
+Adding Annotators |
+Caseless Models |
+Shift Reduce Parser |
+Extensions |
+Questions |
+Mailing lists |
+Online demo |
+FAQ |
+Release history
+
+About
+
+Stanford CoreNLP provides a set of natural language analysis
+tools which can take raw text input and give the base
+forms of words, their parts of speech, whether they are names of
+companies, people, etc., normalize dates, times, and numeric quantities,
+and mark up the structure of sentences in terms of
+phrases and word dependencies, indicate which noun phrases refer to
+the same entities, indicate sentiment, etc. 
+Stanford CoreNLP is an integrated framework. Its goal is to
+make it very easy to apply a bunch of linguistic analysis tools to a piece
+of text. Starting from plain text, you can run all the tools on it with
+just two lines of code. It is designed to be highly
+flexible and extensible. With a single option you can change which
+tools should be enabled and which should be disabled. 
+Its analyses provide the foundational building blocks for
+higher-level and domain-specific text understanding applications.
+
+Stanford CoreNLP integrates many of our NLP tools,
+including the part-of-speech (POS) tagger, 
+the named entity recognizer (NER),
+the parser,
+the coreference resolution system, 
+the sentiment analysis, 
+and the bootstrapped pattern learning tools.
+The basic distribution provides model files for the analysis of English,
+but the engine is compatible with models for other languages. Below you
+can find packaged models for Chinese and Spanish, and
+Stanford NLP models for German and Arabic are usable inside CoreNLP.
+
+Stanford CoreNLP is written in Java and licensed under the
+GNU
+General Public License (v3 or later; in general Stanford NLP
+code is GPL v2+, but CoreNLP uses several Apache-licensed libraries, and
+so the composite is v3+). Source is included.
+Note that this is the full GPL,
+which allows many free uses, but not its use in
+proprietary
+software which is distributed to others.
+The download is 260 MB and requires Java 1.8+.
+
+Citing Stanford CoreNLP
+
+If you're just running the CoreNLP pipeline, please cite this CoreNLP
+demo paper. If you're dealing in depth with particular annotators,
+you're also very welcome to cite the papers that cover individual
+components (check elsewhere on our software pages).
+
+Manning, Christopher D., Surdeanu, Mihai, Bauer, John, Finkel, Jenny,
+ Bethard, Steven J., and McClosky, David. 2014.
+The Stanford CoreNLP Natural Language Processing Toolkit. 
+In Proceedings of 52nd Annual Meeting of the Association for
+ Computational Linguistics: System Demonstrations, pp. 55-60.
+[pdf]
+[bib]
+
+Download
+
+Download Stanford CoreNLP version 3.5.2. 
+
+If you want to change the source code and recompile the files, see these instructions.
+
+GitHub: Here
+is the Stanford CoreNLP
+ GitHub site.
+
+Maven: You can find Stanford CoreNLP on 
+Maven
+ Central. The crucial thing to know is that CoreNLP needs its
+ models to run (most parts beyond the tokenizer) and so you need to
+ specify both the code jar and the models jar in
+ your pom.xml, as follows:
+
+(Note: Maven releases are made several days after the release on the
+website.)
+
+<dependencies>
+<dependency>
+ <groupId>edu.stanford.nlp</groupId>
+ <artifactId>stanford-corenlp</artifactId>
+ <version>3.5.2</version>
+</dependency>
+<dependency>
+ <groupId>edu.stanford.nlp</groupId>
+ <artifactId>stanford-corenlp</artifactId>
+ <version>3.5.2</version>
+ <classifier>models</classifier>
+</dependency>
+</dependencies>
+
+NEW: If you want to get a language models jar off of Maven for Chinese, Spanish, or German,
+add this to your pom.xml:
+
+<dependency>
+ <groupId>edu.stanford.nlp</groupId>
+ <artifactId>stanford-corenlp</artifactId>
+ <version>3.5.2</version>
+ <classifier>models-chinese</classifier>
+</dependency>
+
+Replace "models-chinese" with "models-german" or "models-spanish" for the other two languages!
+
+Usage
+
+Parsing a file and saving the output as XML
+
+Before using Stanford CoreNLP, it is usual to create a configuration
+file (a Java Properties file). Minimally, this file should contain the "annotators" property, which contains a comma-separated list of Annotators to use. For example, the setting below enables: tokenization, sentence splitting (required by most Annotators), POS tagging, lemmatization, NER, syntactic parsing, and coreference resolution.
+
+annotators = tokenize, ssplit, pos, lemma, ner, parse, dcoref
+
+However, if you just want to specify one or two properties, you can
+instead place them on the command line.
+
+To process one file using Stanford CoreNLP, use the following sort of command line (adjust the JAR file date extensions to your downloaded release):
+
+java -cp stanford-corenlp-VV.jar:stanford-corenlp-VV-models.jar:xom.jar:joda-time.jar:jollyday.jar:ejml-VV.jar -Xmx2g edu.stanford.nlp.pipeline.StanfordCoreNLP [ -props <YOUR CONFIGURATION FILE> ] -file <YOUR INPUT FILE>
+
+In particular, to process the included sample
+file input.txt you can use this command in the distribution
+directory (where we use a wildcard after -cp to load all jar files in the directory):
+
+java -cp "*" -Xmx2g edu.stanford.nlp.pipeline.StanfordCoreNLP -annotators tokenize,ssplit,pos,lemma,ner,parse,dcoref -file input.txt
+
+Notes:
+
+Stanford CoreNLP requires Java version 1.8 or higher.
+
+Specifying memory: -Xmx2g specifies the amount
+ of RAM that Java will make available for CoreNLP.
+On a 64-bit machine, Stanford CoreNLP typically requires 2GB to run
+(and it may need even more, depending on the size of the document to
+parse). On a 32 bit machine, you cannot allocate 2GB of RAM, probably
+ you should try with -Xmx1800m, but this amount of memory is a bit
+ marginal. This is especially a problem on 32-bit Windows
+ machines.
+
+The first command above works for Mac OS X or Linux. For Windows, the
+colons (:) separating the jar files need to be semi-colons (;). And, if you
+are not sitting in the distribution directory, you'll also need to
+include a path to the files before each.
+
+The -annotators argument is actually optional. If you leave it out, the code uses a built in properties file, 
+which enables the following annotators: tokenization and sentence splitting, POS tagging, lemmatization, NER, parsing, and 
+coreference resolution (that is, what we used in this example).
+
+Processing a short text like this is very inefficient. It
+ takes a minute to load everything before processing
+ begins. You should batch your processing.
+
+Stanford CoreNLP includes an interactive shell for analyzing
+sentences. If you do not specify any properties that load input files,
+you will be placed in the interactive shell. Type q to exit:
+
+java -cp "*" -Xmx2g edu.stanford.nlp.pipeline.StanfordCoreNLP -annotators tokenize,ssplit,pos,lemma,ner,parse,dcoref
+
+If you want to process a list of files use the following command line:
+
+java -cp stanford-corenlp-VV.jar:stanford-corenlp-VV-models.jar:xom.jar:joda-time.jar:jollyday.jar:ejml-VV.jar -Xmx2g edu.stanford.nlp.pipeline.StanfordCoreNLP [ -props <YOUR CONFIGURATION FILE> ] -filelist <A FILE CONTAINING YOUR LIST OF FILES>
+
+where the -filelist parameter points to a file whose content lists all files to be processed (one per line).
+
+Note that the -props parameter is optional. By default,
+Stanford CoreNLP
+will search for StanfordCoreNLP.properties in your classpath
+and use the defaults included in the distribution.
+
+By default, output files are written to the current directory.
+You may specify an alternate output directory with the flag
+-outputDirectory. Output filenames are the same as input
+filenames but with -outputExtension added them (.xml
+by default). It will overwrite (clobber) output files by default.
+Pass -noClobber to avoid this behavior. Additionally, if you'd
+rather it replace the extension with the -outputExtension, pass
+the -replaceExtension flag. This will result in filenames like
+test.xml instead of test.txt.xml (when given test.txt
+as an input file).
+
+For each input file, Stanford CoreNLP generates one file (an XML or text
+file) with all relevant annotation. For example, for the above configuration and a file containing the text below:
+
+Stanford University is located in California. It is a great university.
+
+Stanford CoreNLP generates the 
+following output, with the 
+following attributes.
+
+Note that the XML output uses the CoreNLP-to-HTML.xsl stylesheet file, which can be downloaded from here.
+This stylesheet enables human-readable display of the above XML content. For example, the previous example should be displayed like this.
+
+Stanford CoreNLP also has the ability to remove most XML from a document before processing it. (CDATA is not correctly handled.) For example, if run with the annotators
+
+annotators = tokenize, cleanxml, ssplit, pos, lemma, ner, parse, dcoref
+
+and given the text
+
+<xml>Stanford University is located in California. It is a great university.</xml>
+
+Stanford CoreNLP generates the following output. Note that the only difference between this and the original output is the change in CharacterOffsets.
+
+Using the Stanford CoreNLP API
+
+The backbone of the CoreNLP package is formed by two classes: Annotation and Annotator. Annotations are the data structure which hold the results of annotators. Annotations are basically maps, from keys to bits of the annotation, such as the parse, the part-of-speech tags, or named entity tags.
+Annotators are a lot like functions, except that they operate over Annotations instead of Objects. They do things like tokenize, parse, or NER tag sentences. 
+Annotators and Annotations are integrated by AnnotationPipelines, which
+create sequences of generic Annotators. Stanford CoreNLP inherits from the AnnotationPipeline class, and is customized with NLP Annotators.
+
+The table below summarizes the Annotators currently supported and the Annotations that they generate. 
+
+Property nameAnnotator class nameGenerated AnnotationDescription
+
+tokenizeTokenizerAnnotatorTokensAnnotation (list of tokens), and CharacterOffsetBeginAnnotation, CharacterOffsetEndAnnotation, TextAnnotation (for each token) 
+Tokenizes the text. This component started as a PTB-style tokenizer, but was extended since then to handle noisy and web text. The tokenizer saves the character offsets of each token in the input text, as CharacterOffsetBeginAnnotation and CharacterOffsetEndAnnotation.
+
+cleanxmlCleanXmlAnnotatorXmlContextAnnotationRemove xml tokens from the document
+
+ssplitWordToSentenceAnnotatorSentencesAnnotationSplits a sequence of tokens into sentences.
+
+posPOSTaggerAnnotatorPartOfSpeechAnnotationLabels tokens with their POS tag. For more details see this page.
+
+lemmaMorphaAnnotatorLemmaAnnotationGenerates the word lemmas for all tokens in the corpus.
+
+nerNERClassifierCombinerNamedEntityTagAnnotation
+ and NormalizedNamedEntityTagAnnotationRecognizes named
+ (PERSON, LOCATION, ORGANIZATION, MISC), numerical (MONEY, NUMBER, ORDINAL,
+ PERCENT), and temporal (DATE, TIME, DURATION, SET) entities. Named entities are recognized using a combination of three CRF sequence taggers trained on various corpora, such as ACE and MUC. Numerical entities are recognized using a rule-based system. Numerical entities that require normalization, e.g., dates, are normalized to NormalizedNamedEntityTagAnnotation. For more details on the CRF tagger see this page.
+
+regexnerRegexNERAnnotatorNamedEntityTagAnnotationImplements a simple, rule-based NER over token sequences using Java regular expressions. The goal of this Annotator is to provide a simple framework to incorporate NE labels that are not annotated in traditional NL corpora. For example, the default list of regular expressions that we distribute in the models file recognizes ideologies (IDEOLOGY), nationalities (NATIONALITY), religions (RELIGION), and titles (TITLE). Here is a simple example of how to use RegexNER. For more complex applications, you might consider TokensRegex.
+
+ sentiment
+ SentimentAnnotator
+ SentimentCoreAnnotations.AnnotatedTree
+ Implements Socher et al's sentiment model. Attaches a binarized tree of the sentence to the sentence level CoreMap. The nodes of the tree then contain the annotations from RNNCoreAnnotations indicating the predicted class and scores for that subtree. See the sentiment page for more information about this project. 
+
+truecaseTrueCaseAnnotatorTrueCaseAnnotation and TrueCaseTextAnnotationRecognizes the true case of tokens in text where this information was lost, e.g., all upper case text. This is implemented with a discriminative model implemented using a CRF sequence tagger. The true case label, e.g., INIT_UPPER is saved in TrueCaseAnnotation. The token text adjusted to match its true case is saved as TrueCaseTextAnnotation.
+
+parseParserAnnotatorTreeAnnotation, BasicDependenciesAnnotation, CollapsedDependenciesAnnotation, CollapsedCCProcessedDependenciesAnnotationProvides full syntactic analysis, using both the constituent and the dependency representations. 
+The constituent-based output is saved in TreeAnnotation. We generate three dependency-based outputs, as follows: basic, uncollapsed dependencies, saved in BasicDependenciesAnnotation; collapsed dependencies saved in CollapsedDependenciesAnnotation; and collapsed dependencies with processed coordinations, in CollapsedCCProcessedDependenciesAnnotation. Most users of our parser will prefer the latter representation.
+For more details on the parser, please see this page. For more details about the dependencies, please refer to this page.
+
+ depparse
+ DependencyParseAnnotator
+ BasicDependenciesAnnotation, CollapsedDependenciesAnnotation, CollapsedCCProcessedDependenciesAnnotation
+ Provides a fast syntactic dependency parser. We generate three dependency-based outputs, as follows: basic, uncollapsed dependencies, saved in BasicDependenciesAnnotation; collapsed dependencies saved in CollapsedDependenciesAnnotation; and collapsed dependencies with processed coordinations, in CollapsedCCProcessedDependenciesAnnotation. Most users of our parser will prefer the latter representation. For details about the dependency software, see this page. For more details about dependency parsing in general, see this page.
+
+dcorefDeterministicCorefAnnotatorCorefChainAnnotationImplements both pronominal and nominal coreference resolution. The entire coreference graph (with head words of mentions as nodes) is saved in CorefChainAnnotation. For more details on the underlying coreference resolution algorithm, see this page.
+
+ relation
+ RelationExtractorAnnotator
+ MachineReadingAnnotations.RelationMentionsAnnotation
+ Stanford relation extractor is a Java implementation to find relations between two entities. The current relation extraction model is trained on the relation types (except the 'kill' relation) and data from the paper Roth and Yih, Global inference for entity and relation identification via a linear programming formulation, 2007, except instead of using the gold NER tags, we used the NER tags predicted by Stanford NER classifier to improve generalization. The default model predicts relations Live_In, Located_In, OrgBased_In, Work_For, and None. For more details of how to use and train your own model, see this page. 
+
+ natlog
+ NaturalLogicAnnotator
+ OperatorAnnotation, PolarityAnnotation
+ Marks quantifier scope and token polarity, according to natural logic semantics. Places an OperatorAnnotation on tokens which are quantifiers (or other natural logic operators), and a PolarityAnnotation on all tokens in the sentence.
+
+ quote
+ QuoteAnnotator
+ QuotationAnnotation
+ Deterministically picks out quotes delimited by “ or ‘ from a text. All top-level quotes, are supplied by the top level annotation for a text. If a QuotationAnnotation corresponds to a quote that contains embedded quotes, these quotes will appear as embedded QuotationAnnotations that can be accessed from the QuotationAnnotation that they are embedded in. The QuoteAnnotator can handle multi-line and cross-paragraph quotes, but any embedded quotes must be delimited by a different kind of quotation mark than its parents. Does not depend on any other annotators. Support for unicode quotes is not yet present.
+
+ entitymentions
+ EntityMentionsAnnotator
+ MentionsAnnotation
+ Provides a list of the mentions identified by NER (including their spans, NER tag, normalized value, and time). As an instance, "New York City" will be identified as one mention spanning three tokens.
+
+Depending on which annotators you use, please cite the corresponding papers on: POS tagging, NER, parsing (with parse annotator), dependency parsing (with depparse annotator), coreference resolution, or sentiment.
+
+To construct a Stanford CoreNLP object from a given set of properties, use StanfordCoreNLP(Properties props). This method creates the pipeline using the annotators given in the "annotators" property (see above for an example setting). The complete list of accepted annotator names is listed in the first column of the table above. To parse an arbitrary text, use the annotate(Annotation document) method. 
+
+The code below shows how to create and use a Stanford CoreNLP object:
+
+ // creates a StanfordCoreNLP object, with POS tagging, lemmatization, NER, parsing, and coreference resolution 
+ Properties props = new Properties();
+ props.setProperty("annotators", "tokenize, ssplit, pos, lemma, ner, parse, dcoref");
+ StanfordCoreNLP pipeline = new StanfordCoreNLP(props);
+
+ // read some text in the text variable
+ String text = ... // Add your text here!
+
+ // create an empty Annotation just with the given text
+ Annotation document = new Annotation(text);
+
+ // run all Annotators on this text
+ pipeline.annotate(document);
+
+ // these are all the sentences in this document
+ // a CoreMap is essentially a Map that uses class objects as keys and has values with custom types
+ List<CoreMap> sentences = document.get(SentencesAnnotation.class);
+
+ for(CoreMap sentence: sentences) {
+ // traversing the words in the current sentence
+ // a CoreLabel is a CoreMap with additional token-specific methods
+ for (CoreLabel token: sentence.get(TokensAnnotation.class)) {
+ // this is the text of the token
+ String word = token.get(TextAnnotation.class);
+ // this is the POS tag of the token
+ String pos = token.get(PartOfSpeechAnnotation.class);
+ // this is the NER label of the token
+ String ne = token.get(NamedEntityTagAnnotation.class); 
+ }
+
+ // this is the parse tree of the current sentence
+ Tree tree = sentence.get(TreeAnnotation.class);
+
+ // this is the Stanford dependency graph of the current sentence
+ SemanticGraph dependencies = sentence.get(CollapsedCCProcessedDependenciesAnnotation.class);
+ }
+
+ // This is the coreference link graph
+ // Each chain stores a set of mentions that link to each other,
+ // along with a method for getting the most representative mention
+ // Both sentence and token offsets start at 1!
+ Map<Integer, CorefChain> graph = 
+ document.get(CorefChainAnnotation.class);
+
+Annotator options
+
+While all Annotators have a default behavior that is likely to be sufficient for the majority of users, most Annotators take additional options that can be passed as Java properties in the configuration file. We list below the configuration options for all Annotators:
+
+general options:
+
+outputFormat: different methods for outputting results. Can be "xml", "text" or "serialized".
+
+annotators: which annotators to use.
+
+encoding: the character encoding or charset. The default is "UTF-8".
+
+tokenize:
+
+tokenize.whitespace: if set to true, separates words only when
+whitespace is encountered.
+
+tokenize.options: Accepts the options of PTBTokenizer
+ for example, things like "americanize=false" or
+ "strictTreebank3=true,untokenizable=allKeep".
+
+cleanxml:
+
+clean.xmltags: Discard xml tag tokens that match this regular expression. For example, .* will discard all xml tags.
+
+clean.sentenceendingtags: treat tags that match this regular expression as the end of a sentence. For example, p will treat <p> as the end of a sentence.
+
+clean.allowflawedxml: if this is true, allow errors such as unclosed tags. Otherwise, such xml will cause an exception.
+
+clean.datetags: a regular expression that specifies which tags to treat as the reference date of a document. Defaults to datetime|date
+
+ssplit:
+
+ssplit.eolonly: only split sentences on newlines. Works well in
+conjunction with "-tokenize.whitespace true", in which case
+StanfordCoreNLP will treat the input as one sentence per line, only separating
+words on whitespace.
+
+ssplit.isOneSentence: each document is to be treated as one
+sentence, no sentence splitting at all.
+
+ssplit.newlineIsSentenceBreak: Whether to treat newlines as sentence
+ breaks. This property has 3 legal values: "always", "never", or
+ "two". The default is "never". "always" means that a newline is always
+ a sentence break (but there still may be multiple sentences per
+ line). This is often appropriate for texts with soft line
+ breaks. "never" means to ignore newlines for the purpose of sentence
+ splitting. This is appropriate when just the non-whitespace
+ characters should be used to determine sentence breaks. "two" means
+ that two or more consecutive newlines will be 
+ treated as a sentence break. This option can be appropriate when
+ dealing with text with hard line breaking, and a blank line between paragraphs.
+
+A side-effect of setting ssplit.newlineIsSentenceBreak to "two" or "always"
+ is that tokenizer will tokenize newlines.
+
+ssplit.boundaryMultiTokenRegex: Value is a multi-token sentence
+ boundary regex.
+
+ssplit.boundaryTokenRegex:
+
+ssplit.boundariesToDiscard:
+
+ssplit.htmlBoundariesToDiscard
+
+ssplit.tokenPatternsToDiscard: 
+
+pos:
+
+pos.model: POS model to use. There is no need to explicitly set this option, unless you want to use a different POS model (for advanced developers only). By default, this is set to the english left3words POS model included in the stanford-corenlp-models JAR file.
+
+pos.maxlen: Maximum sentence size for the POS sequence tagger. Useful to control the speed of the tagger on noisy text without punctuation marks. Note that the parser, if used, will be much more expensive than the tagger.
+
+ner:
+
+ner.useSUTime: Whether or not to use sutime. On by default in the version which includes sutime, off by default in the version that doesn't. If not processing English, make sure to set this to false.
+
+ner.model: NER model(s) in a comma separated list to use instead of the default models. By default, the models used will be the 3class, 7class, and MISCclass models, in that order.
+
+ner.applyNumericClassifiers: Whether or not to use numeric classifiers, including SUTime. These are hardcoded for English, so if using a different language, this should be set to false.
+
+sutime.markTimeRanges: Tells sutime to mark phrases such as "From January to March" instead of marking "January" and "March" separately
+
+sutime.includeRange: If marking time ranges, set the time range in the TIMEX output from sutime
+
+regexner:
+
+regexner.mapping: The name of a file, classpath, or URI that contains NER rules, i.e., the mapping from regular expressions to NE classes. The format is one rule per line; each rule has two mandatory fields separated by one tab. The first field stores one or more Java regular expression (without any slashes or anything around them) separated by non-tab whitespace. The second token gives the named entity class to assign when the regular expression matches one or a sequence of tokens. An optional third tab-separated field indicates which regular named entity types can be overwritten by the current rule. For example, the rule "U\.S\.A\. COUNTRY LOCATION" marks the token "U.S.A." as a COUNTRY, allowing overwriting the previous LOCATION label (if it exists). An optional fourth tab-separated field gives a real number-valued rule priority. Higher priority rules are tried first for matches. Here is a simple example.
+
+regexner.ignorecase: if set to true, matching will be case insensitive. Default value is false. In the simplest case, the mapping file can be just a word list of lines of "word TAB class". Especially in this case, it may be easiest to set this to true, so it works regardless of capitalization.
+
+regexner.validpospattern: If given (non-empty and non-null) this is a regex that must be matched (with find()) againstat least one token in a match for the NE to be labeled.
+
+parse:
+
+parse.model: parsing model to use. There is no need to explicitly set this option, unless you want to use a different parsing model (for advanced developers only). By default, this is set to the parsing model included in the stanford-corenlp-models JAR file.
+
+parse.maxlen: if set, the annotator parses only sentences shorter (in terms of number of tokens) than this number. For longer sentences, the parser creates a flat structure, where every token is assigned to the non-terminal X. This is useful when parsing noisy web text, which may generate arbitrarily long sentences. By default, this option is not set.
+
+parse.flags: flags to use when loading the parser model. The English model used by default uses "-retainTmpSubcategories"
+
+parse.originalDependencies: Generate original Stanford Dependencies grammatical relations instead of Universal Dependencies. Note, however, that some annotators that use dependencies such as natlog might not function properly if you use this option. 
+ If you are using the Neural Network dependency parser and want to get the original SD relations, see the CoreNLP FAQ on how to use a model trained on Stanford Dependencies.
+
+depparse:
+
+depparse.model: dependency parsing model to use. There is no need to
+ explicitly set this option, unless you want to use a different parsing
+ model than the default. By default, this is set to the UD parsing model included in the stanford-corenlp-models JAR file.
+
+depparse.extradependencies: Whether to include extra (enhanced)
+ dependencies in the output. The default is NONE (basic dependencies)
+ and this can have other values of the GrammaticalStructure.Extras
+ enum, such as SUBJ_ONLY or MAXIMAL (all extra dependencies).
+
+dcoref:
+
+dcoref.sievePasses: list of sieve modules to enable in the system, specified as a comma-separated list of class names. By default, this property is set to include: "edu.stanford.nlp.dcoref.sievepasses.MarkRole, edu.stanford.nlp.dcoref.sievepasses.DiscourseMatch, edu.stanford.nlp.dcoref.sievepasses.ExactStringMatch, edu.stanford.nlp.dcoref.sievepasses.RelaxedExactStringMatch, edu.stanford.nlp.dcoref.sievepasses.PreciseConstructs, edu.stanford.nlp.dcoref.sievepasses.StrictHeadMatch1, edu.stanford.nlp.dcoref.sievepasses.StrictHeadMatch2, edu.stanford.nlp.dcoref.sievepasses.StrictHeadMatch3, edu.stanford.nlp.dcoref.sievepasses.StrictHeadMatch4, edu.stanford.nlp.dcoref.sievepasses.RelaxedHeadMatch, edu.stanford.nlp.dcoref.sievepasses.PronounMatch". The default value can be found in Constants.SIEVEPASSES.
+
+dcoref.demonym: list of demonyms from http://en.wikipedia.org/wiki/List_of_adjectival_forms_of_place_names. The format of this file is: location TAB singular gentilic form TAB plural gentilic form, e.g., "Algeria Algerian Algerians".
+
+dcoref.animate and dcoref.inanimate: lists of animate/inanimate words, from (Ji and Lin, 2009). The format is one word per line.
+
+dcoref.male, dcoref.female, dcoref.neutral: lists of words of male/female/neutral gender, from (Bergsma and Lin, 2006) and (Ji and Lin, 2009). The format is one word per line.
+
+dcoref.plural and dcoref.singular: lists of words that are plural or singular, from (Bergsma and Lin, 2006). The format is one word per line. All the above dictionaries are already set to the files included in the stanford-corenlp-models JAR file, but they can easily be adjusted to your needs by setting these properties.
+
+dcoref.maxdist: the maximum distance at which to look for mentions. Can help keep the runtime down in long documents.
+
+oldCorefFormat: produce a CorefGraphAnnotation, the output format used in releases v1.0.3 or earlier. Note that this uses quadratic memory rather than linear.
+
+sentiment:
+
+sentiment.model: which model to load. Will default to the model included in the models jar.
+
+quote:
+
+quote.singleQuotes: whether or not to consider single quotes as quote delimiters. Default is "false".
+
+Javadoc
+
+More information is available in the javadoc: 
+
+ Stanford Core NLP Javadoc.
+
+SUTime
+
+StanfordCoreNLP includes SUTime, Stanford's temporal expression
+recognizer. SUTime is transparently called from the "ner" annotator,
+so no configuration is necessary. Furthermore, the "cleanxml"
+annotator now extracts the reference date for a given XML document, so
+relative dates, e.g., "yesterday", are transparently normalized with
+no configuration necessary.
+
+SUTime supports the same annotations as before, i.e.,
+NamedEntityTagAnnotation is set with the label of the numeric entity (DATE,
+TIME, DURATION, MONEY, PERCENT, or NUMBER) and
+NormalizedNamedEntityTagAnnotation is set to the value of the normalized
+temporal expression. Note that NormalizedNamedEntityTagAnnotation now
+follows the TIMEX3 standard, rather than Stanford's internal representation,
+e.g., "2010-01-01" for the string "January 1, 2010", rather than "20100101".
+
+Also, SUTime now sets the TimexAnnotation key to an
+edu.stanford.nlp.time.Timex object, which contains the complete list of
+TIMEX3 fields for the corresponding expressions, such as "val", "alt_val",
+"type", "tid". This might be useful to developers interested in recovering
+complete TIMEX3 expressions.
+
+Reference dates are by default extracted from the "datetime" and
+"date" tags in an xml document. To set a different set of tags to
+use, use the clean.datetags property. When using the API, reference
+dates can be added to an Annotation via
+edu.stanford.nlp.ling.CoreAnnotations.DocDateAnnotation,
+although note that when processing an xml document, the cleanxml
+annotator will overwrite the DocDateAnnotation if
+"datetime" or "date" are specified in the document.
+
+Sentiment
+
+StanfordCoreNLP also includes the sentiment tool and various programs
+which support it. The model can be used to analyze text as part of
+StanfordCoreNLP by adding "sentiment" to the list of annotators.
+There is also command line support and model training support. For
+more information, please see the description on 
+the sentiment project home page.
+
+TokensRegex
+
+StanfordCoreNLP includes TokensRegex, a framework for defining regular expressions over 
+text and tokens, and mapping matched text to semantic objects.
+
+Bootstrapped Surface Patterns
+
+StanfordCoreNLP includes Bootstrapped Pattern Learning, a framework for learning patterns to learn entities of given entity types from unlabeled text starting with seed sets of entities.
+
+Adding a new annotator
+
+StanfordCoreNLP also has the capacity to add a new annotator by
+reflection without altering the code in StanfordCoreNLP.java. To
+create a new annotator, extend the class
+edu.stanford.nlp.pipeline.Annotator and define a constructor with the
+signature (String, Properties). Then, add the property
+customAnnotatorClass.FOO=BAR to the properties used to create the
+pipeline. If FOO is then added to the list of annotators, the class
+BAR will be created, with the name used to create it and the
+properties file passed in.
+
+Caseless Models
+
+It is possible to run StanfordCoreNLP with tagger, parser, and NER
+models that ignore capitalization. In order to do this, download the
+caseless
+models package. Be sure to include the path to the case
+insensitive models jar in the -cp classpath flag as well.
+Then, set properties which point to these models as follows:
+
+-pos.model edu/stanford/nlp/models/pos-tagger/english-caseless-left3words-distsim.tagger 
+
+-parse.model edu/stanford/nlp/models/lexparser/englishPCFG.caseless.ser.gz 
+
+-ner.model edu/stanford/nlp/models/ner/english.all.3class.caseless.distsim.crf.ser.gz 
+
+   edu/stanford/nlp/models/ner/english.muc.7class.caseless.distsim.crf.ser.gz 
+
+   edu/stanford/nlp/models/ner/english.conll.4class.caseless.distsim.crf.ser.gz 
+
+Shift Reduce Parser
+
+There is a much faster and more memory efficient parser available in
+the shift reduce parser. It takes quite a while to load, and the
+download is much larger, which is the main reason it is not the
+default.
+
+Details on how to use it are available on the
+shift reduce parser page.
+
+Extensions: Packages and models by others using Stanford CoreNLP
+
+Annotators/models
+
+A stopword removal
+ annotator by John Conwell. 
+
+English informal text: aGATE
+ Twitter part-of-speech tagger, including 
+ a pos.model
+ loadable by CoreNLP. 
+
+Swedish: Swedish
+ POS tagger model by Andreas Klintberg. See
+ medium
+ post for details.
+
+We're happy to list other models and annotators that work with
+ Stanford CoreNLP. If you have something, please get in touch!
+
+Java
+
+dkpro-core-gpl
+is a collection of GPL NLP components, principally Stanford CoreNLP,
+wrapped as UIMA components, based on work at the Ubiquitous Knowledge
+Processing Lab (UKP) at the Technische Universität Darmstadt. It is
+part of the
+DKPro
+project.
+See also the DKPro
+Core wiki
+and a
+tutorial on the Stanford CoreNLP components. It is up-to-date, well-maintained,
+and our recommended way of using Stanford CoreNLP within UIMA.
+
+cleartk-stanford-corenlp
+is a UIMA wrapper for Stanford
+CoreNLP built by Steven Bethard in the context of the 
+ClearTK toolkit.
+
+A Vert.x
+ module for acccessing Stanford CoreNLP by Jonny Wray.
+
+Wrapper for each of Stanford's Chinese tools by Mingli Yuan.
+
+RESTful API
+ for integrating between Stanford CoreNLP
+ and Apache Stanbol by
+ Rupert Westenthaler and Cristian Petroaca. 
+
+Thrift server
+
+Apache
+Thrift server for Stanford CoreNLP by Diane Napolitano. (Written in Java, but usable from many languages.)
+
+C#/F#/.NET
+
+Stanford
+ CoreNLP for .NET by Sergey Tihon. (See
+ also: NuGet page.)
+
+Python
+
+Brendan
+ O'Connor's Python wrapper or
+ maybe John
+ Beieler's fork.
+ At CoreNLP v3.5.0, last we checked.
+
+An
+ up-to-date fork of Smith (below) by Hiroyoshi Komatsu and Johannes Castner 
+(see also: PyPI
+ page). At CoreNLP v3.4.1, last we checked.
+
+A Python wrapper for
+ Stanford CoreNLP (see
+ also: PyPI
+ page). This "Wordseer fork" seems to merge the work of a
+ number of people building on the original Dustin Smith wrapper,
+ namely:
+ Hiroyoshi Komatsu, Johannes Castner, Robert Elwell, Tristan Chong, Aditi Muralidharan.
+ At Stanford CoreNLP v3.2.0, last we checked. See
+ also Robert
+ Elwell's version (also at CoreNLP v3.2.0, last we checked).
+
+A Python wrapper for
+ Stanford CoreNLP by Chris Kedzie (see also: PyPI page).
+ At Stanford CoreNLP v3.2.0, last we checked. 
+
+Original
+ Python wrapper including JSON-RPC server by Dustin Smith. At
+ CoreNLP v1.3.3, last we checked.
+
+Ruby
+
+Ruby bindings by Louis Mullie (see
+ also: Ruby Gems page).
+
+The larger TREAT NLP toolkit by Louis Mullie also makes available Stanford CoreNLP.
+
+Perl
+
+Perl
+ wrapper by Kalle Räisänen.
+
+Scala
+
+Scala API for CoreNLP
+by Mihai Surdeanu, one of the original developers of the CoreNLP package.
+
+Clojure
+
+Clojure wrapper for CoreNLP
+by Cory Giles. Incomplete. Currently only a parser wrapper.
+
+Clojure wrapper for CoreNLP
+by Nils Grünwald. Incomplete. Currently only wraps tagger and TokensRegex.
+
+JavaScript (node.js)
+
+stanford-simple-nlp
+ is a node.js CoreNLP wrapper by xissy 
+(github site)
+
+stanford-corenlp,
+ a simply node.js wrapper by hiteshjoshi 
+(github site) 
+
+stanford-corenlp-node
+ is a webservice interface to CoreNLP in node.js by Mike Hewett 
+(github site)
+
+ZeroMQ server
+
+corenlp-server. Simple
+ Java server
+ communicating with clients via XML through ZeroMQ. Example Python
+ client included. By Eric Kow.
+
+Online Demo
+
+We have an online demo 
+of CoreNLP which uses the default annotators. You can either see the
+xml output or see a nicely formatted xsl version of the output.
+
+Release History
+
+ Version 3.5.2
+ 2015-04-20
+ Switch to Universal Dependencies, add Chinese coreference system to CoreNLP
+ caseless models
+ chinese models
+ shift reduce parser models
+ spanish models
+
+ Version 3.5.1
+ 2015-01-29
+ Substantial NER and dependency parsing improvements; new annotators for natural logic, quotes, and entity mentions
+ caseless models
+ chinese models
+ shift reduce parser models
+ spanish models
+
+ Version 3.5.0
+ 2014-10-31
+ Upgrade to Java 1.8; add annotators for dependency parsing, relation extraction
+ caseless models
+ chinese models
+ shift reduce parser models
+ spanish models
+
+ Version 3.4.1
+ 2014-08-27
+ Spanish models added. Last version to support Java 6 and Java 7.
+ caseless models
+ chinese models
+ shift reduce parser models
+ spanish models
+
+ Version 3.4
+ 2014-06-16
+ Shift-reduce parser and bootstrapped pattern-based entity extraction added
+ caseless models
+ chinese models
+ shift reduce parser models
+
+ Version 3.3.1
+ 2014-01-04
+ Bugfix release
+ caseless models
+ chinese models
+
+ Version 3.3.0
+ 2013‑11-12
+ Sentiment model added, minor sutime improvements, English and Chinese dependency improvements
+ caseless models
+ chinese models
+
+ Version 3.2.0
+ 2013‑06‑20
+ Improved tagger speed, new and more accurate parser model
+ caseless models
+ chinese models
+
+ Version 1.3.5
+ 2013‑04‑04
+ Bugs fixed, speed improvements, coref improvements, Chinese support
+ caseless models
+ chinese models
+
+ Version 1.3.4
+ 2012‑11‑12
+ Upgrades to sutime, dependency extraction code and English 3-class NER model
+ caseless models
+
+ Version 1.3.3
+ 2012‑07‑09
+ Minor bug fixes
+ caseless models
+
+ Version 1.3.2
+ 2012‑05‑22
+ Upgrades to sutime, include tokenregex annotator
+ caseless models
+
+ Version 1.3.1
+ 2012‑04‑09
+ Fixed thread safety bugs, caseless models available
+ caseless models
+
+ Version 1.3.0
+ 2012‑01‑08
+ Fix a crashing bug, fix excessive warnings, threadsafe. Last version to support Java 5.
+
+ Version 1.2.0
+ 2011‑09‑14
+ Added SUTime time phrase recognizer to NER, bug fixes, reduced
+ library dependencies
+
+ Version 1.1.0
+ 2011‑06‑19
+ Greatly improved coref results
+
+ Version 1.0.4
+ 2011‑05‑15
+ DCoref uses less memory, already tokenized input possible
+
+ Version 1.0.3
+ 2011‑04‑17
+ Add the ability to specify an arbitrary annotator
+
+ Version 1.0.2
+ 2010‑11‑11
+ Remove wn.jar for license reasons
+
+ Version 1.0.1
+ 2010‑11‑10
+ Add the ability to remove XML
+
+ Version 1.0
+ 2010‑11‑01
+ Initial release

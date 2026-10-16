@@ -1,0 +1,300 @@
+Org Mode
+
+Your life in plain text
+
+ A GNU Emacs
+ major mode for keeping notes, authoring documents,
+ computational notebooks, literate programming, maintaining to-do lists, planning
+ projects, and more — in a fast and effective plain text
+ system.
+
+Source code
+
+git clone https://https.git.savannah.nongnu.org/git/org-mode.git
+
+Source code (mirror)
+
+git clone https://git.sr.ht/~bzg/org-mode
+
+ Support via 
+
+ Liberapay
+
+ Created by
+ Carsten Dominik
+ in 2003,
+ maintained by Ihor Radchenko
+ and developed by
+ many others.
+
+Highlights
+
+Features
+
+Install
+
+Quickstart
+
+Contribute
+
+Mobile/Web
+
+Org is a highly flexible structured plain text file format, composed
+of a few simple, yet versatile, structures — constructed to be both
+simple enough for the novice and powerful enough for the expert.
+
+Get a glimpse of the expressive power Org offers in the example below.
+Click the headings and links to discover how Org intelligently folds structural content.
+You can also check the formal specification of Org syntax and a list
+of Org syntax parsers
+
+ Metadata 
+
+#+title: Example Org File
+#+author: TEC
+#+date: 2020-10-27
+
+Outlining
+ Headings and folding make structured editing a breeze.
+ Plain text makes it easy to sync and version control Org files.
+
+* Revamp orgmode.org website
+
+Agenda
+ List todos across all your files.
+ Filter content, and update it in place.
+
+The /beauty/ of org *must* be shared.
+
+[[https://upload.wikimedia.org/wikipedia/commons/b/bd/Share_Icon.svg]]
+
+** DONE Make screenshots
+
+ CLOSED: [2020-09-03 Thu 18:24]
+
+** DONE Restyle Site CSS
+
+Go through [[file:style.scss][stylesheet]]
+
+** TODO Check CSS on main pages 
+
+- Index page
+- Quickstart
+- Features
+- Releases
+- Install
+- Manual
+- Contribute
+
+ Prose
+
+* Learn Org
+
+Org makes easy things trivial and complex things practical.
+
+You don't need to learn Org before using Org: read the quickstart
+page and you should be good to go. If you need more, Org will be
+here for you as well: dive into the manual and join the community!
+
+** Feedback
+
+#+include: "other/feedback.org*manual" :only-contents t
+
+* Check CSS minification ratios
+
+Babel
+ Perform literate programming in org,
+ with notebook-like live code execution in the buffer.
+
+ Code
+
+#+begin_src python
+
+from pathlib import Path
+cssRatios = []
+for css_min in Path("resources/style").glob("*.min.css"):
+ css = css_min.with_suffix('').with_suffix('.css')
+ cssRatios.append([css.name,
+ "{:.0f}% minified ({:4.1f} KiB)".format( 100 *
+ css_min.stat().st_size / css.stat().st_size,
+ css_min.stat().st_size / 1000)])
+return cssRatios
+
+#+end_src
+
+ Evaluated results
+
+#+RESULTS:
+
+| index.css | 76% minified ( 1.4 KiB) |
+| org-demo.css | 77% minified ( 2.8 KiB) |
+| errors.css | 74% minified ( 4.9 KiB) |
+| org.css | 75% minified (10.7 KiB) |
+
+Further reading
+
+Beyond the quickstart and the manual, Org has a guide and a wealth of
+community-written documentation on Worg .
+
+Nearly every Org user has a story to tell about how Org enables and
+empowers them — some have found it so useful that they have written
+(scientific) papers about the value of Org for conducting reproducible
+research. Some have produced third party tools to enjoy Org outside of
+Emacs, such as mobile applications.
+
+More Org
+
+The de facto mimetype for Org files is text/org. Org files use the
+.org extension. Most operating systems don't know to open .org files
+in Emacs, but they can be configured to do so without much effort.
+
+While the reference implementation of Org in Emacs lisp is by far the
+most featureful, there are many additional tools that work with Org.
+
+Tools that work with Org
+
+Project heartbeat
+
+New features:
+
+ox-latex: safe and keyword for org-latex-table-scientific-notation
+
+Enhance prefix argument to org-open-at-point on URLs
+
+ox-latex: pass :align to table.el tables
+
+Announce 'org-latex-listings-env'
+
+Announcements:
+
+[EVENT] #5 OrgDevMeetup on Sat, October 17, 19:00 UTC+3
+
+[ANN] Beware of force-push we just did on bugfix branch
+
+[ANN] PDF-UA2 experiments with pdflatex
+
+[ANN] LaTeX font management feature that used to be in feature/all-tex-fonts now lives in fontspec3 branch
+
+[BLOG] #4 OrgDevMeetup on Sat, September 19, 11:00 UTC+3
+
+[EVENT] #4 OrgDevMeetup on Sat, September 19, 11:00 UTC+3
+
+Discussions:
+
+[TASK] Re: orgmode: do textsec-url-suspicious-p for http and https links
+
+[RFC] Org markup inside comments (was: [Bug] Confusing appearance of bracket link in comment)
+
+[FR] Include :var expansion in expanded noweb references (was: ob-clojure :var header argument not work when src block is noweb called by another src block)
+
+[FR] Add org-delete-subtree without modifying the kill ring
+
+[FR] Simpler file ID links in HTML export
+
+[RFC] PDF document tagging: language code
+
+Recent blog posts (from 2026-10-12 Emacs news):
+
+Org Mode requests: [TASK] Re: orgmode: do textsec-url-suspicious-p for http and https links
+
+James Dyer: Org Speed Keys: Making t Land After the TODO Keyword
+
+Deeper layers of Org Mode laziness explained (Reddit)
+
+org-retroclock: Log CLOCK entries retrospectively without starting a timer (Reddit, Reddit)
+
+Bringing micro-timers, checklist budgeting, and monotasking focus to Org-mode (org-focus-hud) (Reddit)
+
+Sacha Chua: Des commandes vocales pour ajouter des tâches sur Emacs (YouTube, 02:44)
+
+excali-mode 0.3.0: an Org-mode whiteboard inside Emacs (Reddit, HN, Reddit) - excali-board-mode: Org headings as cards; diagram DSL
+
+Comparing org-roam, org-node, Supertag and vulpea, with a benchmark you can re-run
+
+Worg, a World of Org
+
+Org and Org-mode have so many use cases that it is simply not possible
+to easily document them, let alone show them all off on a single page.
+As a result, Worg serves as a community wiki and provides a place to
+document and share information about all aspects of using and working
+with Org.
+
+For example, Worg contains:
+
+The FAQ
+
+Org hacks
+
+A list of tutorials
+
+Documentation on all hooks, commands and options
+
+Org in the wild
+
+…and much more
+
+Worg is maintained as a Git repository of Org files that are published
+as an HTML website. New contributors are welcome.
+
+~$ git clone https://git.sr.ht/~bzg/worg
+
+Joining the mailing list
+
+Org mailing list is the central place where to connect with Org
+community. You can subscribe to the list and browse the list archive 
+on list.orgmode.org or on this mailman page.
+
+If you are not a subscriber to the list, you can still send an email
+to emacs-orgmode@gnu.org, we will add you to the whitelist of people
+who can reach the list.
+
+You can read more on the mailing list and more information on Org news
+on the social web.
+
+You can also connect with other org-thusiasts via IRC at #org-mode on
+Libera.Chat.
+
+The full list of contributors to Org mode is maintained in Worg and
+you can also check the manual's acknowledgments.
+
+Doom, Spacemacs, Scimax and popular configs
+
+The Emacs starter kits Doom, Spacemacs and Scimax come with a curated
+set of packages and configurations that aim to enhance Org mode (and
+Emacs more generally) for particular use cases. They include Org
+along with integrations between org-mode and other modes (such as
+evil-mode). Here are links to the current packages included with
+Doom, and Spacemacs. Scimax is deeply integrated with Org so a good
+place to start is the manual. Doom installs a version of Org that is
+close to the development HEAD, while Spacemacs and Scimax track org
+elpa.
+
+Starter kits often make significant changes to the default user
+experience for Emacs. If you are looking for something closer to
+vanilla Emacs there are popular configs such as Purcell's emacs.d that
+include org-mode customization and Org-related packages.
+
+In Other Editors, Android, iOS
+
+While the full set of Org features is currently exclusive to Emacs,
+basic functionality for Org files has been implemented for a variety
+of editors and mobile apps. Here are some extensions and apps that
+enable support for Org files.
+
+Vim : orgmode.nvim, vim-orgmode, and org.vim
+
+VS Codium : vscode-org-mode
+
+Android : Orgzly Revived, Orgro, Org Note
+
+iOS : MobileOrg, Orgro
+
+Web : Organice (progressive web app), Org Note
+
+Created by
+ TEC
+ with
+
+licensed under the
+ GNU FDL 1.3
+ — see the source code for this website.

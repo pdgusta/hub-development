@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>A mistura da cidade</title>
+<link rel="stylesheet" href="fontes/carta.css">
+<style>
+:root {
+  --papel: #f3eadb;
+  --cartao: #fbf6ec;
+  --linha: #d9cdb8;
+  --linha-forte: #bfae92;
+  --tinta: #2b2117;
+  --tinta-fraca: #55463a;
+  --apagado: #6e6054;
+  --petroleo: #1f5f73;
+  --musgo: #3f6b32;
+  --terracota: #9c3a22;
+  --madeira: #7a4f2a;
+  /* as cores de quem aciona, iguais às da peça */
+  --agente: #2a62a8; --gustavo: #b8462a; --maestro: #0d7480; --disc: #6f4f92; --agendador: #8a6a3a; --confere: #4a433c; --sinc: #3d8a76;
+  --letreiro: "Fraunces", Georgia, serif;
+  --texto: "Nunito Sans", "Segoe UI", system-ui, sans-serif;
+  --raio: 14px;
+  --sombra: 0 1px 2px rgba(60, 40, 20, .08), 0 6px 18px rgba(60, 40, 20, .08);
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--papel); color: var(--tinta); }
+body {
+  font-family: var(--texto); font-size: 17px; font-weight: 500; line-height: 1.5;
+  background-image: radial-gradient(1100px 480px at 85% -10%, rgba(255, 244, 220, .95), transparent 60%);
+}
+.folha { max-width: 1320px; margin: 0 auto; padding: 36px 32px 56px; }
+
+/* topo: título, a ideia e a decisão em dois ramos */
+.topo { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 24px 48px; align-items: end; }
+.topo h1 { font-family: var(--letreiro); font-weight: 650; font-size: 38px; line-height: 1.1; margin: 0 0 12px; letter-spacing: -.01em; }
+.topo h1 em { font-style: normal; color: var(--madeira); }
+.ideia { margin: 0; font-size: 19px; line-height: 1.45; color: var(--tinta-fraca); max-width: 46ch; }
+.decisao { margin: 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+.decisao li { display: flex; align-items: flex-start; gap: 12px; font-size: 16px; color: var(--tinta-fraca); }
+.decisao li svg { flex: none; margin-top: 1px; }
+.decisao b { color: var(--tinta); font-weight: 750; }
+
+/* o que ele pediu, na cidade: quatro desenhos no vocabulário da peça */
+.pedidos-titulo { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; margin: 52px 0 18px; }
+.pedidos-titulo h2 { margin: 0; font-family: var(--letreiro); font-weight: 600; font-size: 25px; }
+.origem { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.origem li { font-size: 14px; color: var(--tinta-fraca); background: var(--cartao); border: 1px solid var(--linha); border-radius: 999px; padding: 3px 12px; }
+.origem b { color: var(--tinta); }
+.pedidos { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; margin: 0; padding: 0; list-style: none; }
+.pedido { background: var(--cartao); border: 1px solid var(--linha); border-radius: var(--raio); box-shadow: var(--sombra); padding: 18px 20px 20px; display: flex; flex-direction: column; gap: 10px; }
+.pedido svg { display: block; width: 100%; height: auto; max-width: 220px; }
+.pedido h3 { margin: 4px 0 0; font-family: var(--letreiro); font-weight: 600; font-size: 20px; line-height: 1.2; }
+.pedido p { margin: 0; font-size: 16px; line-height: 1.45; color: var(--tinta-fraca); }
+
+/* convite */
+.convite { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; margin: 44px 0 16px; }
+.convite .chamada { display: flex; align-items: center; gap: 10px; font-family: var(--letreiro); font-weight: 600; font-size: 22px; }
+.convite ol { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; counter-reset: c; }
+.convite ol li { counter-increment: c; display: flex; align-items: center; gap: 8px; font-size: 15px; background: var(--cartao); border: 1px solid var(--linha-forte); border-radius: 999px; padding: 4px 14px 4px 5px; }
+.convite ol li::before { content: counter(c); display: grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; background: var(--tinta); color: var(--cartao); font-size: 13px; font-weight: 800; }
+.convite .como { font-size: 15px; color: var(--apagado); }
+kbd { font-family: var(--texto); font-size: 13px; font-weight: 700; border: 1px solid var(--linha-forte); border-bottom-width: 2px; border-radius: 5px; padding: 0 6px; background: var(--cartao); }
+
+/* a peça */
+.palco { position: relative; overflow: hidden; background: #f6f1e7; border: 1px solid var(--linha); border-radius: var(--raio); box-shadow: var(--sombra); }
+.palco iframe { display: block; border: 0; transform-origin: 0 0; }
+.rodape-palco { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px 24px; margin-top: 14px; color: var(--apagado); font-size: 15px; }
+.rodape-palco a { color: var(--petroleo); font-weight: 700; text-decoration: none; }
+.rodape-palco a:hover { text-decoration: underline; }
+.rodape-palco a:focus-visible { outline: 3px solid var(--petroleo); outline-offset: 2px; border-radius: 4px; }
+.so-estreito { display: none; }
+
+@media (max-width: 1100px) {
+  .pedidos { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 900px) {
+  .folha { padding: 24px 16px 40px; }
+  .topo { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+  .topo h1 { font-size: 30px; }
+  .ideia { font-size: 18px; }
+  .pedidos-titulo { margin-top: 36px; }
+  .pedidos { gap: 14px; }
+  .convite { margin-top: 32px; }
+  .so-estreito { display: inline; }
+}
+@media (max-width: 560px) {
+  .pedidos { grid-template-columns: minmax(0, 1fr); }
+  .pedido { padding: 16px; }
+  .pedido svg { max-width: 200px; }
+  .convite .chamada { font-size: 20px; }
+}
+</style>
+</head>
+<body>
+<main class="folha">
+
+<header class="topo">
+  <div>
+    <h1>A planta da B, <em>as linhas da A</em></h1>
+    <p class="ideia">A cidade do par, com uma linha saindo de quem aciona cada componente, na cor de quem aciona. Um cenário acende o caminho, passo a passo.</p>
+  </div>
+  <ul class="decisao">
+    <li>
+      <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="none" stroke="#3f6b32" stroke-width="2"/><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#3f6b32" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span><b>Passou</b> por QA, UX revisor e Tech lead, em duas voltas</span>
+    </li>
+    <li>
+      <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h13M12 6l6 6-6 6" fill="none" stroke="#7a4f2a" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span><b>Aprovar:</b> vem a amostra, em página à parte; o System design de hoje não muda</span>
+    </li>
+    <li>
+      <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 18.5V20h1.5L17 9.5 15.5 8zM16.5 7l1.5-1.5 1.5 1.5L18 8.5" fill="none" stroke="#9c3a22" stroke-width="2" stroke-linejoin="round"/></svg>
+      <span><b>Recusar:</b> diga o que mudar</span>
+    </li>
+  </ul>
+</header>
+
+<div class="pedidos-titulo">
+  <h2>O que você pediu, na cidade</h2>
+  <ul class="origem">
+    <li><b>da B:</b> a planta por lugar, a estrada, o outro par igual</li>
+    <li><b>da A:</b> a linha que sai da pessoa</li>
+  </ul>
+</div>
+<ul class="pedidos">
+  <li class="pedido">
+    <!-- relógio do agendador ligado à torre e à casa de máquinas -->
+    <svg viewBox="0 0 220 84" aria-hidden="true">
+      <path d="M40 46H110V18H150" fill="none" stroke="var(--agendador)" stroke-width="4" stroke-linejoin="round"/>
+      <path d="M110 46V70H178" fill="none" stroke="var(--agendador)" stroke-width="4" stroke-linejoin="round"/>
+      <circle cx="30" cy="46" r="17" fill="#fffcf6" stroke="var(--tinta)" stroke-width="3"/>
+      <path d="M30 35v11l7 5" fill="none" stroke="var(--tinta)" stroke-width="3" stroke-linecap="round"/>
+      <path d="M150 8h22v8h-22zM154 16h14v18h-14z" fill="#f3dfb0" stroke="#b07a2a" stroke-width="2.5" stroke-linejoin="round"/>
+      <path d="M144 10l17-8 17 8" fill="none" stroke="#b07a2a" stroke-width="2.5" stroke-linejoin="round"/>
+      <rect x="178" y="58" width="24" height="24" rx="3" fill="#fffcf6" stroke="var(--sinc)" stroke-width="2.5"/>
+      <path d="M190 63v14M183 70h14" stroke="var(--sinc)" stroke-width="2.5"/>
+    </svg>
+    <h3>Nada solto</h3>
+    <p>Vigia e sincronizador saem do relógio do Windows; todo componente tem linha.</p>
+  </li>
+  <li class="pedido">
+    <!-- três pessoas, três cores, um componente -->
+    <svg viewBox="0 0 220 84" aria-hidden="true">
+      <g fill="var(--tinta)"><circle cx="18" cy="12" r="7"/><path d="M6 32a12 12 0 0124 0z"/><circle cx="18" cy="46" r="7"/><path d="M6 66a12 12 0 0124 0z"/></g>
+      <path d="M36 24H120V40H160" fill="none" stroke="var(--maestro)" stroke-width="4" stroke-linejoin="round"/>
+      <path d="M36 58H120V48H160" fill="none" stroke="var(--agente)" stroke-width="7" stroke-linejoin="round"/>
+      <rect x="160" y="26" width="46" height="38" rx="5" fill="#fffcf6" stroke="var(--tinta)" stroke-width="3"/>
+      <circle cx="198" cy="26" r="9" fill="#fffcf6" stroke="var(--tinta)" stroke-width="2.4"/>
+      <path d="M198 21v10M193 26h10" stroke="var(--tinta)" stroke-width="2.4"/>
+    </svg>
+    <h3>Quem aciona, quem responde</h3>
+    <p>A cor da linha é de quem aciona; o ⊕ de cada bairro diz o dono e quem lê.</p>
+  </li>
+  <li class="pedido">
+    <!-- Gustavo → Obsidian → vista; a vista ao cofre só pelo sincronizador -->
+    <svg viewBox="0 0 220 84" aria-hidden="true">
+      <g fill="var(--tinta)"><circle cx="14" cy="34" r="7"/><path d="M2 54a12 12 0 0124 0z"/></g>
+      <path d="M30 44H58" stroke="var(--gustavo)" stroke-width="5"/>
+      <path d="M58 44l14-12 14 12v16H58z" fill="#fffcf6" stroke="var(--gustavo)" stroke-width="2.5" stroke-linejoin="round"/>
+      <path d="M86 52H112" stroke="var(--gustavo)" stroke-width="5"/>
+      <rect x="112" y="34" width="34" height="36" rx="4" fill="#fffcf6" stroke="var(--sinc)" stroke-width="3"/>
+      <rect x="119" y="41" width="20" height="13" fill="#dcebe5" stroke="var(--sinc)" stroke-width="1.5"/>
+      <path d="M146 52H170" stroke="var(--sinc)" stroke-width="4" stroke-dasharray="1 6" stroke-linecap="round"/>
+      <rect x="170" y="36" width="44" height="32" rx="8" fill="#fffcf6" stroke="var(--tinta)" stroke-width="4"/>
+      <path d="M40 18c40-14 120-14 150 14" fill="none" stroke="#b3261e" stroke-width="2" stroke-dasharray="4 5"/>
+      <path d="M184 22l12 12M196 22l-12 12" stroke="#b3261e" stroke-width="3" stroke-linecap="round"/>
+    </svg>
+    <h3>A vista é a sua porta</h3>
+    <p>Você edita no Obsidian, que grava na vista; o sincronizador leva ao banco. Nada seu vai direto ao banco.</p>
+  </li>
+  <li class="pedido">
+    <!-- prefeitura (contrato) → agente; cancela (checkpoint) só confere -->
+    <svg viewBox="0 0 220 84" aria-hidden="true">
+      <path d="M16 30l24-14 24 14zM20 34h40v4H20zM24 38h5v22h-5zM37 38h5v22h-5zM50 38h5v22h-5zM18 60h44v5H18z" fill="#efe7f5" stroke="var(--disc)" stroke-width="2.2" stroke-linejoin="round"/>
+      <path d="M66 46H178" stroke="var(--disc)" stroke-width="4"/>
+      <path d="M100 76h-6V58h6zM100 60h44" fill="none" stroke="var(--disc)" stroke-width="2.5"/>
+      <path d="M144 66H178" stroke="var(--confere)" stroke-width="3" stroke-dasharray="7 5"/>
+      <g fill="var(--tinta)"><circle cx="196" cy="36" r="7"/><path d="M184 56a12 12 0 0124 0z"/></g>
+    </svg>
+    <h3>Disciplina ligada ao agente</h3>
+    <p>As regras chegam a cada agente e ao maestro; o checkpoint só confere, tracejado.</p>
+  </li>
+</ul>
+
+<div class="convite">
+  <span class="chamada">
+    <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4l12 8-12 8z" fill="#7a4f2a"/></svg>
+    Experimente na faixa Cenários
+  </span>
+  <ol>
+    <li>O Gustavo edita um arquivo</li>
+    <li>O Gustavo pede a um agente: altere</li>
+    <li>O outro par altera um arquivo</li>
+  </ol>
+  <span class="como"><kbd>Próximo →</kbd> acende o passo seguinte · <kbd>Esc</kbd> sai</span>
+</div>
+
+<div class="palco" id="palco">
+  <iframe id="quadro" src="mistura.html" title="A cidade e quem a aciona: a mistura, com os cenários"></iframe>
+</div>
+<div class="rodape-palco">
+  <span>Cada bairro abre uma ficha no ⊕<span class="so-estreito"> · arraste o desenho para os lados</span></span>
+  <a href="mistura.html" target="_blank" rel="noopener">abrir a mistura sozinha ↗</a>
+</div>
+
+</main>
+<script>
+(function () {
+  /* A peça é desenhada para 1280 × 1000 (com os cenários, ela se ajusta a essa altura). Na largura da carta, a peça
+     inteira é reduzida para caber; abaixo de 900 px, ela usa a própria forma estreita, com rolagem dentro do quadro. */
+  var LARGURA = 1280, ALTURA = 1000, ESTREITO = 900;
+  var palco = document.getElementById('palco');
+  var quadro = document.getElementById('quadro');
+  function medir() {
+    var w = palco.clientWidth || LARGURA;
+    if (window.innerWidth < ESTREITO) {
+      var h = Math.round(Math.max(560, Math.min(window.innerHeight * 0.85, 900)));
+      quadro.removeAttribute('scrolling');
+      quadro.style.width = w + 'px';
+      quadro.style.height = h + 'px';
+      quadro.style.transform = 'none';
+      palco.style.height = h + 'px';
+      return;
+    }
+    var k = Math.min(1, w / LARGURA);
+    quadro.setAttribute('scrolling', 'no');
+    quadro.style.width = LARGURA + 'px';
+    quadro.style.height = ALTURA + 'px';
+    quadro.style.transform = k < 1 ? 'scale(' + k + ')' : 'none';
+    palco.style.height = Math.ceil(ALTURA * k) + 'px';
+  }
+  window.addEventListener('resize', medir);
+  medir();
+})();
+</script>
+</body>
+</html>

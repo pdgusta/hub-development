@@ -1,0 +1,129 @@
+{
+  "envio": "1f640d48-f607-4267-8aa6-a98b387b00a6",
+  "tipo": "resposta",
+  "enviada": "2026-10-14T19:52:00-03:00",
+  "alvo": {
+    "tipo": "rodada",
+    "id": "2026-10-14-arquitetura-de-pastas-e-frontmatter-r12",
+    "titulo": "Como o agente acha tudo, e nada fica órfão"
+  },
+  "ticket": "12",
+  "substitui": null,
+  "rodada": {
+    "id": "2026-10-14-arquitetura-de-pastas-e-frontmatter-r12",
+    "base": "fbca4d141a84049008aff0385f686b667a74f4f97f79c1be9ff287f88e6b1625",
+    "titulo": "Como o agente acha tudo, e nada fica órfão",
+    "ticket": "12",
+    "perguntas": [
+      {
+        "id": "catalogo",
+        "titulo": "O catálogo de blocos",
+        "tipo": "escolha",
+        "recomendada": [
+          "A"
+        ],
+        "opcoes": [
+          {
+            "chave": "A",
+            "texto": "Um arquivo `agents/blocks.md`, citado pelo `AGENTS.md` da raiz: cada bloco com uma linha do que entra, o que não entra e um exemplo, mais a pilha sugerida por tipo; uma skill \"nova iniciativa\" o usa para criar a pasta, o núcleo e os índices"
+          },
+          {
+            "chave": "B",
+            "texto": "Só a skill \"nova iniciativa\", com o catálogo dentro dela"
+          },
+          {
+            "chave": "C",
+            "texto": "A descrição de cada bloco escrita no `AGENTS.md` de cada iniciativa"
+          }
+        ],
+        "proposta": null
+      },
+      {
+        "id": "generico",
+        "titulo": "O bloco genérico",
+        "tipo": "escolha",
+        "recomendada": [
+          "A"
+        ],
+        "opcoes": [
+          {
+            "chave": "A",
+            "texto": "`misc/`, para o que não cabe em nenhum bloco; quando três ou mais arquivos parecidos se juntam ali, o agente propõe um bloco novo para o catálogo"
+          },
+          {
+            "chave": "B",
+            "texto": "`other/`, com a mesma regra"
+          },
+          {
+            "chave": "C",
+            "texto": "Sem bloco genérico; o agente sempre escolhe o bloco mais próximo"
+          }
+        ],
+        "proposta": null
+      },
+      {
+        "id": "orfaos",
+        "titulo": "Como nenhum arquivo fica sem referência",
+        "tipo": "escolha",
+        "recomendada": [
+          "A"
+        ],
+        "opcoes": [
+          {
+            "chave": "A",
+            "texto": "Toda pasta tem um `index.md`, e um verificador sem IA roda no hook do fim de cada resposta: ele acha o arquivo que nenhum índice cita, já o inscreve no `index.md` da pasta como \"sem descrição\" e avisa o agente para descrevê-lo"
+          },
+          {
+            "chave": "B",
+            "texto": "O mesmo verificador, mas ele só avisa, sem inscrever"
+          },
+          {
+            "chave": "C",
+            "texto": "Só uma regra no `AGENTS.md` pedindo que o agente atualize os índices"
+          }
+        ],
+        "proposta": null
+      },
+      {
+        "id": "algo-mais",
+        "titulo": "Algo mais?",
+        "tipo": "texto",
+        "recomendada": [],
+        "opcoes": [],
+        "proposta": null
+      }
+    ]
+  },
+  "corpo_hash": "922db7e1632f7615c1bae90c0400774c6ce6ec5797d1505f7bb6e860ca48dfb3",
+  "corpo": {
+    "tipo": "resposta",
+    "rodada": "2026-10-14-arquitetura-de-pastas-e-frontmatter-r12",
+    "base": "fbca4d141a84049008aff0385f686b667a74f4f97f79c1be9ff287f88e6b1625",
+    "respostas": {
+      "catalogo": {
+        "escolha": [
+          "A"
+        ],
+        "outra": null,
+        "comentario": "e essa skill pode já conter scripts para criar os tipos mecanicamente e os agentes não gastariam tokens. É crucial também ser uma skill que não pode ficar sofrendo alteração por qualquer agente. Só alteraçao sob supervisão e aprovação. Já sofri isso em skills de workspace e agentes no copilot vs code a editando a cada utilização (a skill do ai-soc-report)"
+      },
+      "generico": {
+        "escolha": [
+          "B"
+        ],
+        "outra": null,
+        "comentario": null
+      },
+      "orfaos": {
+        "escolha": [
+          "A"
+        ],
+        "outra": null,
+        "comentario": "só uma correção: nem toda pasta. Deve ser em toda pasta que sabemos que vai crescer o número de arquivos e não de subpastas de diferentes tipos. \n\nExemplo: uma pasta de 'runs/' com várias subpastas 'run-01/' e 'run-02/', etc. Pode ter um 'index.md'. \n\nMas uma pasta que contenha sei lá, 3 subpastas, e dentre as subpastas apenas 1 cresce em arquivos, o 'index.md' fica na subpasta.\n\nNão sei se deu pra entender mas é isso"
+      },
+      "algo-mais": {
+        "texto": "Essa rodada de perguntas não necessariamente precisava de uma nova carta, mas essa que criaram está boa também. Vão ter casos de rodadas de perguntas realmente simples que reconheço que não preciso de uma 'visualização' e espero que tenha a mesma percepção daqui pra frente. Abri a carta.\n\nA carta só troca a ordem das perguntas, mas vi que a recomendação é a mesma. E na carta realmente deixa isso em aberto, essa verificação se o mecanismo de hook pro claude tem correlatos pros outros harnesses e modelos. Sei que no claude pode ser claude mod.\n\nInclusive me surgiu uma dúvida agora com a carta, Ter esses index.md ao invés de usar o mecanismo de busca é ruim? Sei que ter os 2 é bom, mas em nenhum momento você citou o mecanismo de busca. Será que está fazendo todas essas sugestões apenas com seu conhecimento esquecendo de tudo que decidimos nos outros tickets, ou você já considerou tudo que decidimos do context-hub ? Inclusive considerou o que ainda não decidimos, mas a pesquisa ampla trouxe à luz como oportunidade futura?"
+      }
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+ "chave": "web:huggingface.co/intfloat/multilingual-e5-base",
+ "urls": [
+  "https://huggingface.co/intfloat/multilingual-e5-base"
+ ],
+ "tipos": [
+  "library",
+  "concept"
+ ],
+ "termos": [
+  "E5",
+  "multilingual",
+  "sentence embeddings",
+  "E5, multilingual, semantische Suche, kognitive Modelle",
+  "E5 embeddings",
+  "multilingual retrieval",
+  "instruct embedding",
+  "intfloat",
+  "multilingual embeddings"
+ ],
+ "mencoes": 5,
+ "familias": [
+  "agnes",
+  "gpt-oss",
+  "mistral"
+ ],
+ "primeira_onda": 2,
+ "nomes": [
+  "multilingual-e5-base",
+  "intfloat/multilingual-e5-base",
+  "sentence-transformers/multilingual-e5-base"
+ ],
+ "resumos": [
+  "Mittlere Größe des multilingualen E5‑Modells, guter Kompromiss zwischen Genauigkeit und Ressourcenverbrauch.",
+  "Erweiterte Version des E5-Modells mit besserer multilingualer Semantik, unterstützt auch portugiesische Varianten und Stammformen.",
+  "E5 model fine-tuned for multilingual retrieval tasks, supporting 100+ languages.",
+  "Multilingual version of Google's E5 embeddings with instruct-tuning, supporting over 100 languages and known for strong retrieval benchmarks."
+ ],
+ "fonte": "site",
+ "readme_status": "ok",
+ "readme_nome": "https://huggingface.co/intfloat/multilingual-e5-base",
+ "readme_cortado": false,
+ "readme": "[intfloat/multilingual-e5-base · Hugging Face]\n\nMultilingual-E5-base\n\nMultilingual E5 Text Embeddings: A Technical Report.\nLiang Wang, Nan Yang, Xiaolong Huang, Linjun Yang, Rangan Majumder, Furu Wei, arXiv 2024\n\nThis model has 12 layers and the embedding size is 768.\n\n Usage\n\nBelow is an example to encode queries and passages from the MS-MARCO passage ranking dataset.\n\nimport torch.nn.functional as F\n\nfrom torch import Tensor\nfrom transformers import AutoTokenizer, AutoModel\n\ndef average_pool(last_hidden_states: Tensor,\n attention_mask: Tensor) -> Tensor:\n last_hidden = last_hidden_states.masked_fill(~attention_mask[..., None].bool(), 0.0)\n return last_hidden.sum(dim=1) / attention_mask.sum(dim=1)[..., None]\n\n# Each input text should start with \"query: \" or \"passage: \", even for non-English texts.\n# For tasks other than retrieval, you can simply use the \"query: \" prefix.\ninput_texts = ['query: how much protein should a female eat',\n 'query: 南瓜的家常做法',\n \"passage: As a general guideline, the CDC's average requirement of protein for women ages 19 to 70 is 46 grams per day. But, as you can see from this chart, you'll need to increase that if you're expecting or training for a marathon. Check out the chart below to see how much protein you should be eating each day.\",\n \"passage: 1.清炒南瓜丝 原料:嫩南瓜半个 调料:葱、盐、白糖、鸡精 做法: 1、南瓜用刀薄薄的削去表面一层皮,用勺子刮去瓤 2、擦成细丝(没有擦菜板就用刀慢慢切成细丝) 3、锅烧热放油,入葱花煸出香味 4、入南瓜丝快速翻炒一分钟左右,放盐、一点白糖和鸡精调味出锅 2.香葱炒南瓜 原料:南瓜1只 调料:香葱、蒜末、橄榄油、盐 做法: 1、将南瓜去皮,切成片 2、油锅8成热后,将蒜末放入爆香 3、爆香后,将南瓜片放入,翻炒 4、在翻炒的同时,可以不时地往锅里加水,但不要太多 5、放入盐,炒匀 6、南瓜差不多软和绵了之后,就可以关火 7、撒入香葱,即可出锅\"]\n\ntokenizer = AutoTokenizer.from_pretrained('intfloat/multilingual-e5-base')\nmodel = AutoModel.from_pretrained('intfloat/multilingual-e5-base')\n\n# Tokenize the input texts\nbatch_dict = tokenizer(input_texts, max_length=512, padding=True, truncation=True, return_tensors='pt')\n\noutputs = model(**batch_dict)\nembeddings = average_pool(outputs.last_hidden_state, batch_dict['attention_mask'])\n\n# normalize embeddings\nembeddings = F.normalize(embeddings, p=2, dim=1)\nscores = (embeddings[:2] @ embeddings[2:].T) * 100\nprint(scores.tolist())\n\n Supported Languages\n\nThis model is initialized from xlm-roberta-base\nand continually trained on a mixture of multilingual datasets.\nIt supports 100 languages from xlm-roberta,\nbut low-resource languages may see performance degradation.\n\n Training Details\n\nInitialization: xlm-roberta-base\n\nFirst stage: contrastive pre-training with weak supervision\n\nDataset\nWeak supervision\n# of text pairs\n\nFiltered mC4\n(title, page content)\n1B\n\nCC News\n(title, news content)\n400M\n\nNLLB\ntranslation pairs\n2.4B\n\nWikipedia\n(hierarchical section title, passage)\n150M\n\nFiltered Reddit\n(comment, response)\n800M\n\nS2ORC\n(title, abstract) and citation pairs\n100M\n\nStackexchange\n(question, answer)\n50M\n\nxP3\n(input prompt, response)\n80M\n\nMiscellaneous unsupervised SBERT data\n-\n10M\n\nSecond stage: supervised fine-tuning\n\nDataset\nLanguage\n# of text pairs\n\nMS MARCO\nEnglish\n500k\n\nNQ\nEnglish\n70k\n\nTrivia QA\nEnglish\n60k\n\nNLI from SimCSE\nEnglish\n<300k\n\nELI5\nEnglish\n500k\n\nDuReader Retrieval\nChinese\n86k\n\nKILT Fever\nEnglish\n70k\n\nKILT HotpotQA\nEnglish\n70k\n\nSQuAD\nEnglish\n87k\n\nQuora\nEnglish\n150k\n\nMr. TyDi\n11 languages\n50k\n\nMIRACL\n16 languages\n40k\n\nFor all labeled datasets, we only use its training set for fine-tuning.\n\nFor other training details, please refer to our paper at https://arxiv.org/pdf/2402.05672.\n\n Benchmark Results on Mr. TyDi\n\nModel\nAvg MRR@10\n\nar\nbn\nen\nfi\nid\nja\nko\nru\nsw\nte\nth\n\nBM25\n33.3\n\n36.7\n41.3\n15.1\n28.8\n38.2\n21.7\n28.1\n32.9\n39.6\n42.4\n41.7\n\nmDPR\n16.7\n\n26.0\n25.8\n16.2\n11.3\n14.6\n18.1\n21.9\n18.5\n7.3\n10.6\n13.5\n\nBM25 + mDPR\n41.7\n\n49.1\n53.5\n28.4\n36.5\n45.5\n35.5\n36.2\n42.7\n40.5\n42.0\n49.2\n\nmultilingual-e5-small\n64.4\n\n71.5\n66.3\n54.5\n57.7\n63.2\n55.4\n54.3\n60.8\n65.4\n89.1\n70.1\n\nmultilingual-e5-base\n65.9\n\n72.3\n65.0\n58.5\n60.8\n64.9\n56.6\n55.8\n62.7\n69.0\n86.6\n72.7\n\nmultilingual-e5-large\n70.5\n\n77.5\n73.2\n60.8\n66.8\n68.5\n62.5\n61.6\n65.8\n72.7\n90.2\n76.2\n\n MTEB Benchmark Evaluation\n\nCheck out unilm/e5 to reproduce evaluation results \non the BEIR and MTEB benchmark.\n\n Support for Sentence Transformers\n\nBelow is an example for usage with sentence_transformers.\n\nfrom sentence_transformers import SentenceTransformer\nmodel = SentenceTransformer('intfloat/multilingual-e5-base')\ninput_texts = [\n 'query: how much protein should a female eat',\n 'query: 南瓜的家常做法',\n \"passage: As a general guideline, the CDC's average requirement of protein for women ages 19 to 70 i s 46 grams per day. But, as you can see from this chart, you'll need to increase that if you're expecting or traini ng for a marathon. Check out the chart below to see how much protein you should be eating each day.\",\n \"passage: 1.清炒南瓜丝 原料:嫩南瓜半个 调料:葱、盐、白糖、鸡精 做法: 1、南瓜用刀薄薄的削去表面一层皮 ,用勺子刮去瓤 2、擦成细丝(没有擦菜板就用刀慢慢切成细丝) 3、锅烧热放油,入葱花煸出香味 4、入南瓜丝快速翻炒一分钟左右, 放盐、一点白糖和鸡精调味出锅 2.香葱炒南瓜 原料:南瓜1只 调料:香葱、蒜末、橄榄油、盐 做法: 1、将南瓜去皮,切成片 2、油 锅8成热后,将蒜末放入爆香 3、爆香后,将南瓜片放入,翻炒 4、在翻炒的同时,可以不时地往锅里加水,但不要太多 5、放入盐,炒匀 6、南瓜差不多软和绵了之后,就可以关火 7、撒入香葱,即可出锅\"\n]\nembeddings = model.encode(input_texts, normalize_embeddings=True)\n\nPackage requirements\n\npip install sentence_transformers~=2.2.2\n\nContributors: michaelfeil\n\n FAQ\n\n1. Do I need to add the prefix \"query: \" and \"passage: \" to input texts?\n\nYes, this is how the model is trained, otherwise you will see a performance degradation.\n\nHere are some rules of thumb:\n\nUse \"query: \" and \"passage: \" correspondingly for asymmetric tasks such as passage retrieval in open QA, ad-hoc information retrieval.\n\nUse \"query: \" prefix for symmetric tasks such as semantic similarity, bitext mining, paraphrase retrieval.\n\nUse \"query: \" prefix if you want to use embeddings as features, such as linear probing classification, clustering.\n\n2. Why are my reproduced results slightly different from reported in the model card?\n\nDifferent versions of transformers and pytorch could cause negligible but non-zero performance differences.\n\n3. Why does the cosine similarity scores distribute around 0.7 to 1.0?\n\nThis is a known and expected behavior as we use a low temperature 0.01 for InfoNCE contrastive loss. \n\nFor text embedding tasks like text retrieval or semantic similarity, \nwhat matters is the relative order of the scores instead of the absolute values, \nso this should not be an issue.\n\n Citation\n\nIf you find our paper or models helpful, please consider cite as follows:\n\n@article{wang2024multilingual,\n title={Multilingual E5 Text Embeddings: A Technical Report},\n author={Wang, Liang and Yang, Nan and Huang, Xiaolong and Yang, Linjun and Majumder, Rangan and Wei, Furu},\n journal={arXiv preprint arXiv:2402.05672},\n year={2024}\n}\n\n Limitations\n\nLong texts will be truncated to at most 512 tokens.\n\nDownloads last month 6,771,503 \n\nSafetensors \n\nModel size \n0.3B params \n\nTensor type \nI64 \n·F32 \n· \n\nFiles info"
+}

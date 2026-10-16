@@ -1,0 +1,33 @@
+{
+ "chave": "web:typesense.org",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T21:11:31Z",
+ "resultado": "corrige",
+ "conferencia": {
+  "resultado": "corrige",
+  "final": {
+   "serve": "search",
+   "role": "Open-source search engine (typo tolerance, filtering, vector/semantic search) served over a REST API",
+   "place": [
+    "network_service"
+   ],
+   "mechanism": [
+    "full_text",
+    "vector",
+    "hybrid"
+   ],
+   "mcp": "unknown",
+   "windows": "unknown",
+   "portuguese": "unknown",
+   "license": "unknown",
+   "maturity": "stable",
+   "doubt": false,
+   "evidence": "Typesense is a lightning-fast, open-source search engine; Vector & Semantic Search; Neatly WRAPPED in a RESTful API; Use Docker, our native binaries or our RPM or DEB packages"
+  },
+  "o_que_mudou": [
+   "windows: yes/unknown -> unknown, README lists Docker, binaries, RPM/DEB without naming Windows",
+   "license/maturity: unset or guessed -> unknown/stable, README says open source and thousands of production clusters but names no license"
+  ],
+  "nota": "Search server with typo tolerance and vector search behind a REST API; a candidate for the hub's search layer, though it needs its own server and an MCP wrapper."
+ }
+}

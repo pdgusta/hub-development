@@ -1,0 +1,32 @@
+{
+ "chave": "web:supabase.com",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T12:00:00Z",
+ "resultado": "corrige",
+ "conferencia": {
+  "resultado": "corrige",
+  "final": {
+   "serve": "stack",
+   "role": "Hosted/self-hostable Postgres platform with pgvector vector store, auth, storage and realtime; usable as backend for embeddings",
+   "place": [
+    "network_service"
+   ],
+   "mechanism": [
+    "vector"
+   ],
+   "mcp": "yes",
+   "windows": "unknown",
+   "portuguese": "unknown",
+   "license": "unknown",
+   "maturity": "stable",
+   "doubt": false,
+   "evidence": "\"Vector: Integrate your favorite ML-models to store, index and search vector embeddings\"; \"Open source from day one... self-host\"; user quotes mention Supabase MCP"
+  },
+  "o_que_mudou": [
+   "serve: search -> stack, a general backend platform, not a search layer",
+   "doubt: true -> false (gpt-oss), README supports a decision",
+   "place: removed disk, self-host is a service"
+  ],
+  "nota": "Postgres backend with vector support and MCP; possible embeddings store, but heavy versus the hub's CouchDB."
+ }
+}

@@ -1,0 +1,49 @@
+      57 +  `$env:HUB_HOME_ENSAIO` (nunca `~`), aceita `-WhatIf`. A faixa 8 só os enfileira; ninguém espera o kit.                                                              
+      58 +- **Hooks no mesmo evento.** Faixas 2, 6 e 9 registram hooks nos mesmos eventos (início, fim, antes da ferramenta,                                                    
+      59 +  entrada). Cada uma grava o seu script em `hooks/<faixa>/` e um fragmento de configuração; a faixa 8 junta os                                                        
+      60 +  fragmentos. Sem editar o arquivo de settings de outra faixa.                                                                                                        
+      61 +- **Banco de ensaio por faixa.** Faixas 4, 5 e 7 sobem cada uma o seu CouchDB descartável em porta própria (4: 5984 e                                                 
+      62 +  5985; 5: 5986; 7: 5987), pelo mesmo `compose` que a faixa 4 publica nos primeiros 10 minutos; até lá, imagem oficial                                                
+      63 +  com `.env` de ensaio.                                                                                                                                               
+      64 +                                                                                                                                                                      
+      65  ## Revisão (Prumo e Prumo 2)
+      66  
+      67  (como e quando cada faixa passa pelos dois, dentro da hora)
+
+● Update(plano.md)
+  ⎿  Added 11 lines
+      68  
+      69  ## Fica para outra execução
+      70  
+      71 +- (Worker 2, volta 1) O segundo par (notebook), o Tailscale e os grants, a replicação real pela tailnet, o FreeLLMAPI                                                 
+      72 +  nativo no notebook pessoal e a instalação de verdade em `~/.claude`, `~/.codex` e `~/.copilot`: tudo                                                                
+      73 +  `ready-for-human`, com o Gustavo.                                                                                                                                   
+      74 +                                                                                                                                                                      
+      75  ## Perguntas ao Gustavo
+      76 +                                                                                                                                                                      
+      77 +- (Worker 2, volta 1) **CouchDB descartável no Docker local conta como "serviço"?** As faixas 4, 5 e 7 precisam de                                                    
+      78 +  CouchDB em porta local, só durante a hora, apagado ao fim. Recomendação: liberar contêineres de ensaio em                                                           
+      79 +  127.0.0.1, sem tarefa agendada de verdade (a tarefa do sincronizador e da vigia roda em laço no terminal).                                                          
+      80 +- (Worker 2, volta 1) **Login dos harnesses no HOME de ensaio.** Provar que Codex e Copilot leem o contrato num                                                       
+      81 +  `CODEX_HOME`/`COPILOT_HOME` de ensaio pede uma sessão autenticada lá. Recomendação: copiar só o arquivo de login                                                    
+      82 +  para o HOME de ensaio e apagá-lo ao fim; a alternativa é provar só a forma dos arquivos, sem rodar o harness.                                                       
+
+  Ran 2 shell commands 
+
+● Volta 1 (Worker 2): achei o plano vazio e escrevi um corte candidato em 10 faixas verticais, cada uma ligada às decisões do mapa e com uma prova de ponta a ponta. Assumi a faixa 2,
+  retomada e checkpoint (ticket 10). Também propus 4 fronteiras para ninguém esperar ninguém: um hub de ensaio pronto antes da hora, um contrato comum para os instaladores, hooks em
+  fragmentos separados e um CouchDB próprio por faixa.
+  
+  Deixei 2 perguntas para o Gustavo no plano:
+  - CouchDB de ensaio: um CouchDB descartável no Docker local conta como serviço que precisa de aval?
+  - Login dos harnesses: como Codex e Copilot fazem login no HOME de ensaio?
+ 
+  Minhas edições continuam no plano.md, que outros recrutas já estão mudando. Gravei as notas em agentes/Worker 2.md e a linha da volta em voltas.md (mudou o plano: sim).
+
+✻ Cogitated for 13m 55s · done 9:28 PM
+
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+❯ 
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  ⬆ /gsd-update │ Opus 5.5 │ planejamento █░░░░░░░░░ 12%
+  ⏵⏵ auto mode on (shift+tab to cycle) · ← 2 agents

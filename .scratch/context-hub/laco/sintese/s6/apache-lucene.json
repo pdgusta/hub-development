@@ -1,0 +1,66 @@
+{
+ "nome": "Apache Lucene",
+ "nome_canonico": "Apache Lucene (apache/lucene)",
+ "chave": "gh:apache/lucene",
+ "url": "https://github.com/apache/lucene",
+ "serve": "search",
+ "area": null,
+ "identidade": "ok. Biblioteca Java (core), não servidor. contrib/ranklib não confirmado como existente.",
+ "windows": "yes: roda em JVM (Java 21 ou superior); repo tem gradlew.bat. Fonte não lista SO; CI windows-latest nao_verificado.",
+ "mcp": "third_party: mirkosertic/MCPLuceneServer (STDIO e HTTP, Java 25+, Apache-2.0); a biblioteca não tem MCP.",
+ "portugues": "yes: PortugueseAnalyzer ('Analyzer for Portuguese'), PortugueseLightStemFilter, PortugueseMinimalStemFilter, PortugueseStemFilter (RSLP). Remoção de acentos por filtro não conferida nesta rodada.",
+ "markdown_frontmatter": "Não indexa Markdown nem frontmatter por si: o código monta os documentos. MCPLuceneServer (terceiro): README não menciona frontmatter.",
+ "atualizacao": "manual na biblioteca (IndexWriter); MCPLuceneServer tem watcher opcional (watch-enabled: true).",
+ "embeddings_endpoint": "A biblioteca não gera embeddings; suporte a vetores na 10.5 nao_verificado. MCPLuceneServer: e5 multilíngue embutido, sem base_url citado.",
+ "recursos": "JVM com Java 21+; número de RAM/disco nao_verificado.",
+ "licenca": "Apache-2.0",
+ "ultimo_release": "10.5.2 (04/10/2026); 10.5.1 em 12/08; 10.5.0 em 25/06",
+ "atividade": "Notícia de release em 04/10/2026; data do último commit nao_verificado",
+ "maturidade": "stable",
+ "encaixe": "Motor lexical em português (stemmer RSLP), mas é biblioteca Java: precisa de embrulho. Cabe dentro de um MCP do banco no disco de cada máquina; sozinha não é servidor nem MCP. Impedimento: Java e código próprio.",
+ "evidencias": [
+  {
+   "campo": "windows",
+   "url": "https://lucene.apache.org/core/10_5_2/SYSTEM_REQUIREMENTS.html",
+   "citacao": "Apache Lucene runs on Java 21 or greater."
+  },
+  {
+   "campo": "mcp",
+   "url": "https://github.com/mirkosertic/MCPLuceneServer",
+   "citacao": "MCP Lucene Server is a Model Context Protocol (MCP) server that exposes Apache Lucene's full-text search capabilities"
+  },
+  {
+   "campo": "portugues",
+   "url": "https://lucene.apache.org/core/10_0_0/analysis/common/org/apache/lucene/analysis/pt/package-summary.html",
+   "citacao": "PortugueseAnalyzer: Analyzer for Portuguese."
+  },
+  {
+   "campo": "atualizacao",
+   "url": "https://github.com/mirkosertic/MCPLuceneServer",
+   "citacao": "Real-time directory monitoring for automatic updates"
+  },
+  {
+   "campo": "licenca",
+   "url": "https://github.com/apache/lucene",
+   "citacao": "Apache-2.0 license"
+  },
+  {
+   "campo": "ultimo_release",
+   "url": "https://lucene.apache.org/",
+   "citacao": "Apache Lucene 10.5.2 available (04.Oct)"
+  },
+  {
+   "campo": "identidade",
+   "url": "https://github.com/apache/lucene",
+   "citacao": "Apache Lucene is a high-performance, full-featured text search engine library written in Java."
+  }
+ ],
+ "nao_verificado": [
+  "data do último commit",
+  "CI windows-latest",
+  "vetores/kNN na versão 10.5",
+  "recursos numéricos",
+  "existência de contrib/ranklib",
+  "filtro de acentos"
+ ]
+}

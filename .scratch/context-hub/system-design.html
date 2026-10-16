@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Context hub: arquitetura</title>
+<style>
+:root{--bg:#070b16;--panel:#0b1020;--ink:#e2e8f0;--muted:#94a3b8;--line:#1e293b;--accent:#5eead4}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Cascadia Mono",Consolas,ui-monospace,monospace}
+main{max-width:1680px;margin:0 auto;padding:22px 16px 28px}
+.bar{width:46px;height:3px;background:var(--accent);margin-bottom:10px}
+h1{margin:0;font-size:30px}
+.sub{color:var(--muted);margin:6px 0 16px;font-size:14px}
+.tag{float:right;color:var(--accent);font-weight:700;font-size:13px;letter-spacing:.08em}
+.frame{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px;overflow-x:auto}
+svg.topo{width:100%;min-width:900px;height:auto;display:block}
+svg text{font-family:"Cascadia Mono",Consolas,ui-monospace,monospace}
+.nt{font-size:15px;font-weight:700;fill:#f1f5f9}
+.ns{font-size:11.5px;fill:#94a3b8}
+.el{font-size:11px;font-weight:600}
+.bl{font-size:12px;font-weight:700}
+.gl{font-size:12.5px;font-weight:800;letter-spacing:.12em}
+.pill{font-size:10.5px;font-weight:700}
+.legend{display:flex;flex-wrap:wrap;gap:8px 18px;margin:14px 6px 2px;font-size:12.5px;color:var(--muted)}
+.legend b{color:var(--ink);margin-right:6px}
+.lg{display:inline-flex;align-items:center;gap:6px}
+.lg i{width:22px;height:12px;border:1.4px solid;border-radius:3px;display:inline-block}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><symbol id="i-claude" viewBox="0 0 24 24"><path d="m4.7144 15.9555 4.7174-2.6471.079-.2307-.079-.1275h-.2307l-.7893-.0486-2.6956-.0729-2.3375-.0971-2.2646-.1214-.5707-.1215-.5343-.7042.0546-.3522.4797-.3218.686.0608 1.5179.1032 2.2767.1578 1.6514.0972 2.4468.255h.3886l.0546-.1579-.1336-.0971-.1032-.0972L6.973 9.8356l-2.55-1.6879-1.3356-.9714-.7225-.4918-.3643-.4614-.1578-1.0078.6557-.7225.8803.0607.2246.0607.8925.686 1.9064 1.4754 2.4893 1.8336.3643.3035.1457-.1032.0182-.0728-.164-.2733-1.3539-2.4467-1.445-2.4893-.6435-1.032-.17-.6194c-.0607-.255-.1032-.4674-.1032-.7285L6.287.1335 6.6997 0l.9957.1336.419.3642.6192 1.4147 1.0018 2.2282 1.5543 3.0296.4553.8985.2429.8318.091.255h.1579v-.1457l.1275-1.706.2368-2.0947.2307-2.6957.0789-.7589.3764-.9107.7468-.4918.5828.2793.4797.686-.0668.4433-.2853 1.8517-.5586 2.9021-.3643 1.9429h.2125l.2429-.2429.9835-1.3053 1.6514-2.0643.7286-.8196.85-.9046.5464-.4311h1.0321l.759 1.1293-.34 1.1657-1.0625 1.3478-.8804 1.1414-1.2628 1.7-.7893 1.36.0729.1093.1882-.0183 2.8535-.607 1.5421-.2794 1.8396-.3157.8318.3886.091.3946-.3278.8075-1.967.4857-2.3072.4614-3.4364.8136-.0425.0304.0486.0607 1.5482.1457.6618.0364h1.621l3.0175.2247.7892.522.4736.6376-.079.4857-1.2142.6193-1.6393-.3886-3.825-.9107-1.3113-.3279h-.1822v.1093l1.0929 1.0686 2.0035 1.8092 2.5075 2.3314.1275.5768-.3218.4554-.34-.0486-2.2039-1.6575-.85-.7468-1.9246-1.621h-.1275v.17l.4432.6496 2.3436 3.5214.1214 1.0807-.17.3521-.6071.2125-.6679-.1214-1.3721-1.9246L14.38 17.959l-1.1414-1.9428-.1397.079-.674 7.2552-.3156.3703-.7286.2793-.6071-.4614-.3218-.7468.3218-1.4753.3886-1.9246.3157-1.53.2853-1.9004.17-.6314-.0121-.0425-.1397.0182-1.4328 1.9672-2.1796 2.9446-1.7243 1.8456-.4128.164-.7164-.3704.0667-.6618.4008-.5889 2.386-3.0357 1.4389-1.882.929-1.0868-.0062-.1579h-.0546l-6.3385 4.1164-1.1293.1457-.4857-.4554.0608-.7467.2307-.2429 1.9064-1.3114Z"/></symbol>
+<symbol id="i-codex" viewBox="0 0 24 24"><path clip-rule="evenodd" d="M8.086.457a6.105 6.105 0 013.046-.415c1.333.153 2.521.72 3.564 1.7a.117.117 0 00.107.029c1.408-.346 2.762-.224 4.061.366l.063.03.154.076c1.357.703 2.33 1.77 2.918 3.198.278.679.418 1.388.421 2.126a5.655 5.655 0 01-.18 1.631.167.167 0 00.04.155 5.982 5.982 0 011.578 2.891c.385 1.901-.01 3.615-1.183 5.14l-.182.22a6.063 6.063 0 01-2.934 1.851.162.162 0 00-.108.102c-.255.736-.511 1.364-.987 1.992-1.199 1.582-2.962 2.462-4.948 2.451-1.583-.008-2.986-.587-4.21-1.736a.145.145 0 00-.14-.032c-.518.167-1.04.191-1.604.185a5.924 5.924 0 01-2.595-.622 6.058 6.058 0 01-2.146-1.781c-.203-.269-.404-.522-.551-.821a7.74 7.74 0 01-.495-1.283 6.11 6.11 0 01-.017-3.064.166.166 0 00.008-.074.115.115 0 00-.037-.064 5.958 5.958 0 01-1.38-2.202 5.196 5.196 0 01-.333-1.589 6.915 6.915 0 01.188-2.132c.45-1.484 1.309-2.648 2.577-3.493.282-.188.55-.334.802-.438.286-.12.573-.22.861-.304a.129.129 0 00.087-.087A6.016 6.016 0 015.635 2.31C6.315 1.464 7.132.846 8.086.457zm-.804 7.85a.848.848 0 00-1.473.842l1.694 2.965-1.688 2.848a.849.849 0 001.46.864l1.94-3.272a.849.849 0 00.007-.854l-1.94-3.393zm5.446 6.24a.849.849 0 000 1.695h4.848a.849.849 0 000-1.696h-4.848z"></path></symbol>
+<symbol id="i-copilot" viewBox="0 0 24 24"><path d="M23.922 16.997C23.061 18.492 18.063 22.02 12 22.02 5.937 22.02.939 18.492.078 16.997A.641.641 0 0 1 0 16.741v-2.869a.883.883 0 0 1 .053-.22c.372-.935 1.347-2.292 2.605-2.656.167-.429.414-1.055.644-1.517a10.098 10.098 0 0 1-.052-1.086c0-1.331.282-2.499 1.132-3.368.397-.406.89-.717 1.474-.952C7.255 2.937 9.248 1.98 11.978 1.98c2.731 0 4.767.957 6.166 2.093.584.235 1.077.546 1.474.952.85.869 1.132 2.037 1.132 3.368 0 .368-.014.733-.052 1.086.23.462.477 1.088.644 1.517 1.258.364 2.233 1.721 2.605 2.656a.841.841 0 0 1 .053.22v2.869a.641.641 0 0 1-.078.256Zm-11.75-5.992h-.344a4.359 4.359 0 0 1-.355.508c-.77.947-1.918 1.492-3.508 1.492-1.725 0-2.989-.359-3.782-1.259a2.137 2.137 0 0 1-.085-.104L4 11.746v6.585c1.435.779 4.514 2.179 8 2.179 3.486 0 6.565-1.4 8-2.179v-6.585l-.098-.104s-.033.045-.085.104c-.793.9-2.057 1.259-3.782 1.259-1.59 0-2.738-.545-3.508-1.492a4.359 4.359 0 0 1-.355-.508Zm2.328 3.25c.549 0 1 .451 1 1v2c0 .549-.451 1-1 1-.549 0-1-.451-1-1v-2c0-.549.451-1 1-1Zm-5 0c.549 0 1 .451 1 1v2c0 .549-.451 1-1 1-.549 0-1-.451-1-1v-2c0-.549.451-1 1-1Zm3.313-6.185c.136 1.057.403 1.913.878 2.497.442.544 1.134.938 2.344.938 1.573 0 2.292-.337 2.657-.751.384-.435.558-1.15.558-2.361 0-1.14-.243-1.847-.705-2.319-.477-.488-1.319-.862-2.824-1.025-1.487-.161-2.192.138-2.533.529-.269.307-.437.808-.438 1.578v.021c0 .265.021.562.063.893Zm-1.626 0c.042-.331.063-.628.063-.894v-.02c-.001-.77-.169-1.271-.438-1.578-.341-.391-1.046-.69-2.533-.529-1.505.163-2.347.537-2.824 1.025-.462.472-.705 1.179-.705 2.319 0 1.211.175 1.926.558 2.361.365.414 1.084.751 2.657.751 1.21 0 1.902-.394 2.344-.938.475-.584.742-1.44.878-2.497Z"/></symbol>
+<symbol id="i-obsidian" viewBox="0 0 24 24"><path d="M19.355 18.538a68.967 68.959 0 0 0 1.858-2.954.81.81 0 0 0-.062-.9c-.516-.685-1.504-2.075-2.042-3.362-.553-1.321-.636-3.375-.64-4.377a1.707 1.707 0 0 0-.358-1.05l-3.198-4.064a3.744 3.744 0 0 1-.076.543c-.106.503-.307 1.004-.536 1.5-.134.29-.29.6-.446.914l-.31.626c-.516 1.068-.997 2.227-1.132 3.59-.124 1.26.046 2.73.815 4.481.128.011.257.025.386.044a6.363 6.363 0 0 1 3.326 1.505c.916.79 1.744 1.922 2.415 3.5zM8.199 22.569c.073.012.146.02.22.02.78.024 2.095.092 3.16.29.87.16 2.593.64 4.01 1.055 1.083.316 2.198-.548 2.355-1.664.114-.814.33-1.735.725-2.58l-.01.005c-.67-1.87-1.522-3.078-2.416-3.849a5.295 5.295 0 0 0-2.778-1.257c-1.54-.216-2.952.19-3.84.45.532 2.218.368 4.829-1.425 7.531zM5.533 9.938c-.023.1-.056.197-.098.29L2.82 16.059a1.602 1.602 0 0 0 .313 1.772l4.116 4.24c2.103-3.101 1.796-6.02.836-8.3-.728-1.73-1.832-3.081-2.55-3.831zM9.32 14.01c.615-.183 1.606-.465 2.745-.534-.683-1.725-.848-3.233-.716-4.577.154-1.552.7-2.847 1.235-3.95.113-.235.223-.454.328-.664.149-.297.288-.577.419-.86.217-.47.379-.885.46-1.27.08-.38.08-.72-.014-1.043-.095-.325-.297-.675-.68-1.06a1.6 1.6 0 0 0-1.475.36l-4.95 4.452a1.602 1.602 0 0 0-.513.952l-.427 2.83c.672.59 2.328 2.316 3.335 4.711.09.21.175.43.253.653z"/></symbol>
+<symbol id="i-couchdb" viewBox="0 0 24 24"><path d="M19.5 14.625c0 .995-.524 1.482-1.5 1.5H6c-.976-.018-1.5-.505-1.5-1.5s.524-1.482 1.5-1.5h12c.976.018 1.5.505 1.5 1.5m-1.5 2.25H6c-.976.018-1.5.505-1.5 1.5s.524 1.482 1.5 1.5h12c.976-.018 1.5-.505 1.5-1.5s-.524-1.482-1.5-1.5m3.75-8.248v-.001c-.976.017-1.5.504-1.5 1.499v8.25c0 .995.524 1.482 1.5 1.5v-.002c1.464-.052 2.25-1.514 2.25-4.498v-3.75c0-1.99-.786-2.964-2.25-2.998m-19.5-.001C.786 8.662 0 9.637 0 11.626v3.75c0 2.984.786 4.446 2.25 4.498v.001c.976-.017 1.5-.504 1.5-1.499v-8.25c0-.995-.524-1.482-1.5-1.5m19.5-.75c0-2.486-1.31-3.705-3.75-3.748v-.002H6v.002c-2.44.043-3.75 1.262-3.75 3.748v.001c1.464.026 2.25.757 2.25 2.249s.786 2.223 2.25 2.249v.001h10.5v-.001c1.464-.026 2.25-.757 2.25-2.249s.786-2.223 2.25-2.249z"/></symbol>
+<symbol id="i-tailscale" viewBox="0 0 24 24"><path d="M24 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0zm-9 9a3 3 0 1 1-6 0 3 3 0 0 1 6 0zm0-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0zm6-6a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm0-.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5zM3 24a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm0-.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5zm18 .5a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm0-.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5zM6 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0zm9-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0zm-3 2.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5zM6 3a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM3 5.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/></symbol>
+<symbol id="i-github" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></symbol>
+<symbol id="i-markdown" viewBox="0 0 24 24"><path d="M22.27 19.385H1.73A1.73 1.73 0 010 17.655V6.345a1.73 1.73 0 011.73-1.73h20.54A1.73 1.73 0 0124 6.345v11.308a1.73 1.73 0 01-1.73 1.731zM5.769 15.923v-4.5l2.308 2.885 2.307-2.885v4.5h2.308V8.078h-2.308l-2.307 2.885-2.308-2.885H3.46v7.847zM21.232 12h-2.309V8.077h-2.307V12h-2.308l3.461 4.039z"/></symbol>
+<symbol id="i-docker" viewBox="0 0 24 24"><path d="M13.983 11.078h2.119a.186.186 0 00.186-.185V9.006a.186.186 0 00-.186-.186h-2.119a.185.185 0 00-.185.185v1.888c0 .102.083.185.185.185m-2.954-5.43h2.118a.186.186 0 00.186-.186V3.574a.186.186 0 00-.186-.185h-2.118a.185.185 0 00-.185.185v1.888c0 .102.082.185.185.185m0 2.716h2.118a.187.187 0 00.186-.186V6.29a.186.186 0 00-.186-.185h-2.118a.185.185 0 00-.185.185v1.887c0 .102.082.185.185.186m-2.93 0h2.12a.186.186 0 00.184-.186V6.29a.185.185 0 00-.185-.185H8.1a.185.185 0 00-.185.185v1.887c0 .102.083.185.185.186m-2.964 0h2.119a.186.186 0 00.185-.186V6.29a.185.185 0 00-.185-.185H5.136a.186.186 0 00-.186.185v1.887c0 .102.084.185.186.186m5.893 2.715h2.118a.186.186 0 00.186-.185V9.006a.186.186 0 00-.186-.186h-2.118a.185.185 0 00-.185.185v1.888c0 .102.082.185.185.185m-2.93 0h2.12a.185.185 0 00.184-.185V9.006a.185.185 0 00-.184-.186h-2.12a.185.185 0 00-.184.185v1.888c0 .102.083.185.185.185m-2.964 0h2.119a.185.185 0 00.185-.185V9.006a.185.185 0 00-.184-.186h-2.12a.186.186 0 00-.186.186v1.887c0 .102.084.185.186.185m-2.92 0h2.12a.185.185 0 00.184-.185V9.006a.185.185 0 00-.184-.186h-2.12a.185.185 0 00-.184.185v1.888c0 .102.082.185.185.185M23.763 9.89c-.065-.051-.672-.51-1.954-.51-.338.001-.676.03-1.01.087-.248-1.7-1.653-2.53-1.716-2.566l-.344-.199-.226.327c-.284.438-.49.922-.612 1.43-.23.97-.09 1.882.403 2.661-.595.332-1.55.413-1.744.42H.751a.751.751 0 00-.75.748 11.376 11.376 0 00.692 4.062c.545 1.428 1.355 2.48 2.41 3.124 1.18.723 3.1 1.137 5.275 1.137.983.003 1.963-.086 2.93-.266a12.248 12.248 0 003.823-1.389c.98-.567 1.86-1.288 2.61-2.136 1.252-1.418 1.998-2.997 2.553-4.4h.221c1.372 0 2.215-.549 2.68-1.009.309-.293.55-.65.707-1.046l.098-.288Z"/></symbol>
+<symbol id="i-mcp" viewBox="0 0 24 24"><path d="M13.85 0a4.16 4.16 0 0 0-2.95 1.217L1.456 10.66a.835.835 0 0 0 0 1.18.835.835 0 0 0 1.18 0l9.442-9.442a2.49 2.49 0 0 1 3.541 0 2.49 2.49 0 0 1 0 3.541L8.59 12.97l-.1.1a.835.835 0 0 0 0 1.18.835.835 0 0 0 1.18 0l.1-.098 7.03-7.034a2.49 2.49 0 0 1 3.542 0l.049.05a2.49 2.49 0 0 1 0 3.54l-8.54 8.54a1.96 1.96 0 0 0 0 2.755l1.753 1.753a.835.835 0 0 0 1.18 0 .835.835 0 0 0 0-1.18l-1.753-1.753a.266.266 0 0 1 0-.394l8.54-8.54a4.185 4.185 0 0 0 0-5.9l-.05-.05a4.16 4.16 0 0 0-2.95-1.218c-.2 0-.401.02-.6.048a4.17 4.17 0 0 0-1.17-3.552A4.16 4.16 0 0 0 13.85 0m0 3.333a.84.84 0 0 0-.59.245L6.275 10.56a4.186 4.186 0 0 0 0 5.902 4.186 4.186 0 0 0 5.902 0L19.16 9.48a.835.835 0 0 0 0-1.18.835.835 0 0 0-1.18 0l-6.985 6.984a2.49 2.49 0 0 1-3.54 0 2.49 2.49 0 0 1 0-3.54l6.983-6.985a.835.835 0 0 0 0-1.18.84.84 0 0 0-.59-.245"/></symbol><marker id="m-acv" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#f472b6"/></marker>
+<marker id="m-vig" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#34d399"/></marker>
+<marker id="m-gray" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#94a3b8"/></marker>
+</defs></svg>
+<main>
+<div class="bar"></div>
+<span class="tag">2026-10-13 · sync e divergência resolvidos</span>
+<h1>Context hub · arquitetura</h1>
+<p class="sub">CouchDB em cada máquina · sincronizador sem depender do Obsidian · pares pela tailnet · gravação com base_rev · vigia em cada máquina</p>
+<div class="frame">
+<svg viewBox="0 -205 1600 1005" class="topo" role="img" aria-label="Arquitetura do context hub">
+<defs>
+<pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M24 0H0V24" fill="none" stroke="#1e293b" stroke-width="0.6"/></pattern>
+<marker id="m-solid" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#7dd3fc"/></marker>
+<marker id="m-both" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#7dd3fc"/></marker>
+<marker id="m-sec" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#fb7185"/></marker>
+<marker id="m-net" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#fbbf24"/></marker>
+<marker id="m-netboth" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#fbbf24"/></marker>
+<marker id="m-open" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#f59e0b"/></marker>
+<marker id="m-rev" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#c084fc"/></marker>
+</defs>
+<rect y="-205" width="1600" height="1005" fill="url(#grid)"/>
+<rect x="20" y="-176" width="1560" height="196" rx="14" fill="#f472b6" fill-opacity="0.03" stroke="#f472b6" stroke-opacity="0.6" stroke-width="1.2" stroke-dasharray="7 6"/><text x="34" y="-184" class="gl" fill="#f472b6">ACERVO DO MAESTRO</text><text x="1566" y="-184" class="bl" fill="#f472b6" text-anchor="end">C:\context-hub\agents\ · replica para as 2 máquinas</text>
+<path d="M300 -97 L242 -97" fill="none" stroke="#f472b6" stroke-width="1.6" marker-end="url(#m-acv)"/>
+<rect x="249.5" y="-120" width="43.0" height="18" rx="4" fill="#0b1020"/><text x="271" y="-107" class="el" fill="#f472b6" text-anchor="middle">cópia</text>
+<path d="M560 -97 L502 -97" fill="none" stroke="#f472b6" stroke-width="1.6" marker-end="url(#m-acv)"/>
+<rect x="499.6" y="-120" width="62.8" height="18" rx="4" fill="#0b1020"/><text x="531" y="-107" class="el" fill="#f472b6" text-anchor="middle">cataloga</text>
+<path d="M760 -97 L818 -97" fill="none" stroke="#f472b6" stroke-width="1.6" marker-end="url(#m-acv)"/>
+<rect x="757.6" y="-120" width="62.8" height="18" rx="4" fill="#0b1020"/><text x="789" y="-107" class="el" fill="#f472b6" text-anchor="middle">registra</text>
+<path d="M1340 -97 L1282 -97" fill="none" stroke="#fb7185" stroke-width="1.6" marker-end="url(#m-sec)"/>
+<rect x="1286.2" y="-120" width="49.6" height="18" rx="4" fill="#0b1020"/><text x="1311" y="-107" class="el" fill="#fb7185" text-anchor="middle">propõe</text>
+<path d="M1180 -150 L1180 -164 L400 -164 L400 -152" fill="none" stroke="#fb7185" stroke-width="1.6" marker-end="url(#m-sec)"/>
+<rect x="725.6" y="-173" width="128.8" height="18" rx="4" fill="#0b1020"/><text x="790" y="-160" class="el" fill="#fb7185" text-anchor="middle">altera só com aval</text>
+<path d="M770 -44 L770 148" fill="none" stroke="#f472b6" stroke-width="1.6" marker-end="url(#m-acv)"/>
+<rect x="715.5" y="25" width="109.0" height="18" rx="4" fill="#0b1020"/><text x="770" y="38" class="el" fill="#f472b6" text-anchor="middle">contratos-opção</text>
+<path d="M600 -44 L600 4 L28 4 L28 436 L38 436" fill="none" stroke="#f472b6" stroke-width="1.6" stroke-dasharray="6 5" marker-end="url(#m-acv)"/>
+<rect x="339.1" y="-5" width="161.8" height="18" rx="4" fill="#0b1020"/><text x="420" y="8" class="el" fill="#f472b6" text-anchor="middle">junction · todo harness</text>
+
+<rect x="20" y="96" width="240" height="676" rx="14" fill="#94a3b8" fill-opacity="0.03" stroke="#94a3b8" stroke-opacity="0.55" stroke-width="1.2" stroke-dasharray="7 6"/><text x="34" y="88" class="gl" fill="#94a3b8">QUEM USA</text><rect x="290" y="96" width="240" height="676" rx="14" fill="#22d3ee" fill-opacity="0.03" stroke="#22d3ee" stroke-opacity="0.55" stroke-width="1.2" stroke-dasharray="7 6"/><text x="304" y="88" class="gl" fill="#22d3ee">PORTAS</text><rect x="560" y="96" width="480" height="676" rx="14" fill="#34d399" fill-opacity="0.03" stroke="#34d399" stroke-opacity="0.55" stroke-width="1.2" stroke-dasharray="7 6"/><text x="574" y="88" class="gl" fill="#34d399">CONTRATO E SERVIÇOS</text><rect x="1070" y="96" width="240" height="676" rx="14" fill="#a78bfa" fill-opacity="0.03" stroke="#a78bfa" stroke-opacity="0.55" stroke-width="1.2" stroke-dasharray="7 6"/><text x="1084" y="88" class="gl" fill="#a78bfa">DADOS</text><rect x="1340" y="96" width="240" height="676" rx="14" fill="#fbbf24" fill-opacity="0.03" stroke="#fbbf24" stroke-opacity="0.55" stroke-width="1.2" stroke-dasharray="7 6"/><text x="1354" y="88" class="gl" fill="#fbbf24">REDE E PARES</text>
+<rect x="282" y="60" width="1036" height="724" rx="16" fill="none" stroke="#eab308" stroke-width="1.2" stroke-dasharray="3 5"/>
+<text x="1310" y="52" class="bl" fill="#eab308" text-anchor="end">par 1 · notebook ARMIS · C:\context-hub</text>
+<rect x="570" y="378" width="452" height="116" rx="12" fill="none" stroke="#fb7185" stroke-width="1.1" stroke-dasharray="5 4"/>
+<text x="1016" y="372" class="bl" fill="#fb7185" text-anchor="end">fronteira de gravação</text>
+<use href="#i-tailscale" x="1311" y="400" width="26" height="26" fill="#fbbf24"/>
+<text x="1324" y="466" class="el" fill="#fbbf24" text-anchor="middle">cada uma</text><text x="1324" y="480" class="el" fill="#fbbf24" text-anchor="middle">empurra</text>
+
+<path d="M240 196 L308 196" fill="none" stroke="#7dd3fc" stroke-width="1.6" marker-end="url(#m-solid)"/>
+<rect x="251.5" y="187.0" width="45.0" height="18" rx="4" fill="#0b1020"/>
+<text x="274.0" y="200.0" class="el" fill="#7dd3fc" text-anchor="middle">edita</text><path d="M240 436 L308 436" fill="none" stroke="#7dd3fc" stroke-width="1.6" marker-end="url(#m-solid)"/>
+<rect x="254.8" y="427.0" width="38.4" height="18" rx="4" fill="#0b1020"/>
+<text x="274.0" y="440.0" class="el" fill="#7dd3fc" text-anchor="middle">abre</text><path d="M240 686 L308 686" fill="none" stroke="#fbbf24" stroke-width="1.6" stroke-dasharray="6 5" marker-end="url(#m-net)"/>
+<rect x="244.9" y="677.0" width="58.199999999999996" height="18" rx="4" fill="#0b1020"/>
+<text x="274.0" y="690.0" class="el" fill="#fbbf24" text-anchor="middle">tailnet</text><path d="M410 148 L410 118 L1190 118 L1190 138" fill="none" stroke="#7dd3fc" stroke-width="1.6" marker-end="url(#m-solid)"/>
+<rect x="754.4" y="109" width="91.19999999999999" height="18" rx="4" fill="#0b1020"/>
+<text x="800" y="122" class="el" fill="#7dd3fc" text-anchor="middle">arquivos</text><path d="M1190 232 L1190 263" fill="none" stroke="#7dd3fc" stroke-width="1.6" marker-end="url(#m-both)" marker-start="url(#m-both)"/><path d="M1190 357 L1190 388" fill="none" stroke="#7dd3fc" stroke-width="1.6" marker-end="url(#m-both)" marker-start="url(#m-both)"/><path d="M510 416 L545 416 L545 196 L578 196" fill="none" stroke="#7dd3fc" stroke-width="1.6" marker-end="url(#m-solid)"/>
+<rect x="515.9" y="291" width="58.199999999999996" height="18" rx="4" fill="#0b1020"/>
+<text x="545" y="304" class="el" fill="#7dd3fc" text-anchor="middle">carrega</text><path d="M510 446 L578 446" fill="none" stroke="#7dd3fc" stroke-width="1.6" marker-end="url(#m-solid)"/>
+<rect x="521.5" y="437.0" width="45.0" height="18" rx="4" fill="#0b1020"/>
+<text x="544.0" y="450.0" class="el" fill="#7dd3fc" text-anchor="middle">tools</text><path d="M510 686 L556 686 L556 470 L578 470" fill="none" stroke="#7dd3fc" stroke-width="1.6" marker-end="url(#m-solid)"/>
+<rect x="526.9" y="591" width="58.199999999999996" height="18" rx="4" fill="#0b1020"/>
+<text x="556" y="604" class="el" fill="#7dd3fc" text-anchor="middle">leitura</text><path d="M780 436 L808 436" fill="none" stroke="#fb7185" stroke-width="1.6" marker-end="url(#m-sec)"/><path d="M1010 436 L1088 436" fill="none" stroke="#fb7185" stroke-width="1.6" marker-end="url(#m-sec)"/>
+<rect x="1026.5" y="427.0" width="45.0" height="18" rx="4" fill="#0b1020"/>
+<text x="1049.0" y="440.0" class="el" fill="#fb7185" text-anchor="middle">grava</text><path d="M700 482 L700 606 L808 606" fill="none" stroke="#f59e0b" stroke-width="1.6" stroke-dasharray="6 5" marker-end="url(#m-open)"/>
+<rect x="677.5" y="536" width="45.0" height="18" rx="4" fill="#0b1020"/>
+<text x="700" y="549" class="el" fill="#f59e0b" text-anchor="middle">busca</text><path d="M1010 580 L1120 580 L1120 484" fill="none" stroke="#f59e0b" stroke-width="1.6" stroke-dasharray="6 5" marker-end="url(#m-open)"/>
+<rect x="1094.2" y="520" width="51.6" height="18" rx="4" fill="#0b1020"/>
+<text x="1120" y="533" class="el" fill="#f59e0b" text-anchor="middle">indexa</text><path d="M1240 484 L1240 598" fill="none" stroke="#34d399" stroke-width="1.6" marker-end="url(#m-vig)"/><rect x="1228.4" y="531" width="23.2" height="18" rx="4" fill="#0b1020"/><text x="1240" y="544" class="el" fill="#34d399" text-anchor="middle">lê</text>
+<path d="M1090 676 L782 676" fill="none" stroke="#34d399" stroke-width="1.6" marker-end="url(#m-vig)"/><rect x="888.8" y="667" width="102.4" height="18" rx="4" fill="#0b1020"/><text x="940" y="680" class="el" fill="#34d399" text-anchor="middle">estado · 5 min</text>
+<path d="M1150 692 L1150 718" fill="none" stroke="#34d399" stroke-width="1.4" marker-end="url(#m-vig)"/><path d="M1240 692 L1240 718" fill="none" stroke="#34d399" stroke-width="1.4" marker-end="url(#m-vig)"/><path d="M1290 196 L1358 196" fill="none" stroke="#94a3b8" stroke-width="1.6" stroke-dasharray="3 4" marker-end="url(#m-gray)"/><rect x="1299.2" y="171" width="49.6" height="18" rx="4" fill="#0b1020"/><text x="1324" y="184" class="el" fill="#94a3b8" text-anchor="middle">diário</text>
+<path d="M640 638 L640 520 L410 520 L410 484" fill="none" stroke="#c084fc" stroke-width="1.6" stroke-dasharray="6 5" marker-end="url(#m-rev)"/>
+<rect x="457.5" y="511" width="45.0" height="18" rx="4" fill="#0b1020"/>
+<text x="480" y="524" class="el" fill="#c084fc" text-anchor="middle">aviso</text><path d="M470 388 L470 352 L1060 352 L1060 186 L1088 186" fill="none" stroke="#f59e0b" stroke-width="1.6" stroke-dasharray="6 5" marker-end="url(#m-open)"/>
+<rect x="741.2" y="343" width="117.6" height="18" rx="4" fill="#0b1020"/>
+<text x="800" y="356" class="el" fill="#f59e0b" text-anchor="middle">agente no disco?</text><path d="M240 662 L276 662 L276 352 L470 352" fill="none" stroke="#f59e0b" stroke-width="1.6" stroke-dasharray="6 5"/><circle cx="470" cy="352" r="3.5" fill="#f59e0b"/>
+<rect x="222" y="566" width="108" height="18" rx="4" fill="#0b1020"/>
+<text x="276" y="579" class="el" fill="#f59e0b" text-anchor="middle">Desktop grava?</text>
+<path d="M1290 430 L1358 430" fill="none" stroke="#fbbf24" stroke-width="1.6" marker-end="url(#m-net)"/><path d="M1358 446 L1292 446" fill="none" stroke="#fbbf24" stroke-width="1.6" marker-end="url(#m-net)"/>
+<g class="node">
+<rect x="40" y="150" width="200" height="92" rx="10" fill="#94a3b8" fill-opacity="0.09" stroke="#94a3b8" stroke-width="1.4"/>
+<svg x="54" y="162" width="30" height="30" viewBox="0 0 24 24"><g fill="none" stroke="#94a3b8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></g></svg>
+<text x="54" y="212" class="nt">Gustavo</text>
+<text x="54" y="231" class="ns">humano</text>
+</g><g class="node">
+<rect x="40" y="390" width="200" height="92" rx="10" fill="#94a3b8" fill-opacity="0.09" stroke="#94a3b8" stroke-width="1.4"/>
+<use href="#i-claude" x="54" y="402" width="30" height="30" fill="#D97757"/>
+<use href="#i-codex" x="92" y="402" width="30" height="30" fill="#e2e8f0"/>
+<use href="#i-copilot" x="130" y="402" width="30" height="30" fill="#e2e8f0"/>
+<text x="54" y="452" class="nt">Agentes</text>
+<text x="54" y="471" class="ns">Claude · Codex · Copilot</text>
+</g><g class="node">
+<rect x="40" y="640" width="200" height="92" rx="10" fill="#94a3b8" fill-opacity="0.09" stroke="#94a3b8" stroke-width="1.4"/>
+<use href="#i-docker" x="54" y="652" width="30" height="30" fill="#2496ED"/>
+<use href="#i-claude" x="92" y="652" width="30" height="30" fill="#D97757"/>
+<text x="54" y="702" class="nt">Clientes</text>
+<text x="54" y="721" class="ns">sandbox lê · Desktop grava</text>
+<rect x="178" y="650" width="54" height="17" rx="8.5" fill="#0b1020" stroke="#f59e0b"/>
+<text x="205.0" y="662.5" class="pill" fill="#f59e0b" text-anchor="middle">aberto</text>
+</g><g class="node">
+<rect x="310" y="150" width="200" height="92" rx="10" fill="#22d3ee" fill-opacity="0.09" stroke="#22d3ee" stroke-width="1.4"/>
+<use href="#i-obsidian" x="324" y="162" width="30" height="30" fill="#a78bfa"/>
+<text x="324" y="212" class="nt">Obsidian</text>
+<text x="324" y="231" class="ns">ver · editar · conflito</text><rect x="418" y="160" width="84" height="17" rx="8.5" fill="#0b1020" stroke="#94a3b8"/><text x="460" y="172.5" class="pill" fill="#94a3b8" text-anchor="middle">pode fechar</text>
+</g><g class="node">
+<rect x="310" y="390" width="200" height="92" rx="10" fill="#22d3ee" fill-opacity="0.09" stroke="#22d3ee" stroke-width="1.4"/>
+<svg x="324" y="402" width="30" height="30" viewBox="0 0 24 24"><g fill="none" stroke="#22d3ee" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 9l3 3-3 3M12 15h5"/></g></svg>
+<text x="324" y="452" class="nt">Sessão</text>
+<text x="324" y="471" class="ns">raiz · iniciativa · link</text>
+<rect x="430" y="400" width="72" height="17" rx="8.5" fill="#0b1020" stroke="#22d3ee"/>
+<text x="466" y="412.5" class="pill" fill="#22d3ee" text-anchor="middle">+ Copilot</text>
+</g><g class="node">
+<rect x="310" y="640" width="200" height="92" rx="10" fill="#22d3ee" fill-opacity="0.09" stroke="#22d3ee" stroke-width="1.4"/>
+<use href="#i-mcp" x="324" y="652" width="30" height="30" fill="#e2e8f0"/>
+<text x="324" y="702" class="nt">MCP só leitura</text>
+<text x="324" y="721" class="ns">instructions · tools · kit</text>
+</g><g class="node">
+<rect x="580" y="150" width="200" height="92" rx="10" fill="#60a5fa" fill-opacity="0.09" stroke="#60a5fa" stroke-width="1.4"/>
+<svg x="594" y="162" width="30" height="30" viewBox="0 0 24 24"><g fill="none" stroke="#60a5fa" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4M9 12h7M9 16h7"/></g></svg>
+<text x="594" y="212" class="nt">Contrato</text>
+<text x="594" y="231" class="ns">AGENTS.md · retomada</text>
+</g><g class="node">
+<rect x="580" y="390" width="200" height="92" rx="10" fill="#34d399" fill-opacity="0.09" stroke="#34d399" stroke-width="1.4"/>
+<use href="#i-mcp" x="594" y="402" width="30" height="30" fill="#e2e8f0"/>
+<text x="594" y="452" class="nt">MCP · fork es617</text>
+<text x="594" y="471" class="ns">read · write · search</text>
+</g><g class="node">
+<rect x="810" y="390" width="200" height="92" rx="10" fill="#fb7185" fill-opacity="0.09" stroke="#fb7185" stroke-width="1.4"/>
+<svg x="824" y="402" width="30" height="30" viewBox="0 0 24 24"><g fill="none" stroke="#fb7185" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="1.5"/><path d="M8 11V7a4 4 0 018 0v4"/></g></svg>
+<text x="824" y="452" class="nt">Guarda de versão</text>
+<text x="824" y="471" class="ns">base_rev · conflito</text>
+</g><g class="node">
+<rect x="810" y="560" width="200" height="92" rx="10" fill="#34d399" fill-opacity="0.09" stroke="#34d399" stroke-width="1.4" stroke-dasharray="6 4"/>
+<svg x="824" y="572" width="30" height="30" viewBox="0 0 24 24"><g fill="none" stroke="#34d399" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></g></svg>
+<text x="824" y="622" class="nt">Busca</text>
+<text x="824" y="641" class="ns">zvec · memtomem · ck</text>
+<rect x="948" y="570" width="54" height="17" rx="8.5" fill="#0b1020" stroke="#f59e0b"/>
+<text x="975.0" y="582.5" class="pill" fill="#f59e0b" text-anchor="middle">aberto</text>
+</g><g class="node">
+<rect x="580" y="640" width="200" height="92" rx="10" fill="#34d399" fill-opacity="0.09" stroke="#34d399" stroke-width="1.4"/>
+<svg x="594" y="652" width="30" height="30" viewBox="0 0 24 24"><g fill="none" stroke="#34d399" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l10 18H2z"/><path d="M12 10v5M12 18v.4"/></g></svg>
+<text x="594" y="702" class="nt">Divergência</text>
+<text x="594" y="721" class="ns">conflito aberto · &gt;15 min</text>
+</g><g class="node">
+<rect x="1090" y="140" width="200" height="92" rx="10" fill="#a78bfa" fill-opacity="0.09" stroke="#a78bfa" stroke-width="1.4"/>
+<use href="#i-markdown" x="1104" y="152" width="30" height="30" fill="#e2e8f0"/>
+<text x="1104" y="202" class="nt">Vista Markdown</text>
+<text x="1104" y="221" class="ns">todo arquivo comum</text>
+<rect x="1196" y="150" width="86" height="17" rx="8.5" fill="#0b1020" stroke="#a78bfa"/>
+<text x="1239" y="162.5" class="pill" fill="#a78bfa" text-anchor="middle">até 200 MiB</text>
+</g><g class="node">
+<rect x="1090" y="265" width="200" height="92" rx="10" fill="#34d399" fill-opacity="0.09" stroke="#34d399" stroke-width="1.4"/>
+<svg x="1104" y="277" width="30" height="30" viewBox="0 0 24 24"><g fill="none" stroke="#34d399" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M6 9l3 3-3 3M11 15h4"/><path d="M17 6.5v0"/></g></svg>
+<text x="1104" y="327" class="nt">Sincronizador</text>
+<text x="1104" y="346" class="ns">CLI LiveSync · agendado</text>
+<rect x="1176" y="275" width="106" height="17" rx="8.5" fill="#0b1020" stroke="#34d399"/>
+<text x="1229" y="287.5" class="pill" fill="#34d399" text-anchor="middle">sempre ligado</text>
+</g><g class="node">
+<rect x="1090" y="390" width="200" height="92" rx="10" fill="#a78bfa" fill-opacity="0.09" stroke="#a78bfa" stroke-width="1.4"/>
+<use href="#i-couchdb" x="1104" y="402" width="30" height="30" fill="#E42528"/>
+<text x="1104" y="452" class="nt">CouchDB</text>
+<text x="1104" y="471" class="ns">verdade · revisões</text>
+</g><g class="node">
+<rect x="1360" y="390" width="200" height="92" rx="10" fill="#94a3b8" fill-opacity="0.09" stroke="#94a3b8" stroke-width="1.4"/>
+<svg x="1374" y="402" width="30" height="30" viewBox="0 0 24 24"><g fill="none" stroke="#94a3b8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M8 20h8M12 16v4"/></g></svg>
+<use href="#i-couchdb" x="1412" y="402" width="30" height="30" fill="#E42528"/>
+<text x="1374" y="452" class="nt">Par 2</text>
+<text x="1374" y="471" class="ns">máquina pessoal</text>
+</g><g class="node">
+<rect x="1360" y="150" width="200" height="92" rx="10" fill="#94a3b8" fill-opacity="0.09" stroke="#94a3b8" stroke-width="1.4"/>
+<use href="#i-github" x="1374" y="162" width="30" height="30" fill="#e2e8f0"/>
+<text x="1374" y="212" class="nt">GitHub · cópia</text>
+<text x="1374" y="231" class="ns">.git na raiz · 1 ramo/máq.</text>
+<rect x="1450" y="160" width="102" height="17" rx="8.5" fill="#0b1020" stroke="#94a3b8"/>
+<text x="1501" y="172.5" class="pill" fill="#94a3b8" text-anchor="middle">commit + push</text>
+</g>
+<g class="node"><rect x="1090" y="600" width="200" height="92" rx="10" fill="#34d399" fill-opacity="0.09" stroke="#34d399" stroke-width="1.4"/><svg x="1104" y="612" width="30" height="30" viewBox="0 0 24 24"><g fill="none" stroke="#34d399" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></g></svg><rect x="1196" y="610" width="86" height="17" rx="8.5" fill="#0b1020" stroke="#34d399"/><text x="1239" y="622.5" class="pill" fill="#34d399" text-anchor="middle">por máquina</text><text x="1104" y="662" class="nt">Vigia · 5 min</text><text x="1104" y="681" class="ns">sync · conflito · limite</text></g>
+<g class="node"><rect x="1096" y="720" width="96" height="30" rx="7" fill="#0b1020" stroke="#34d399" stroke-width="1.2"/><svg x="1104" y="727" width="16" height="16" viewBox="0 0 24 24"><g fill="none" stroke="#34d399" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4z"/><path d="M10 21h4"/></g></svg><text x="1124" y="739" class="pill" fill="#e2e8f0">se piorar</text></g><g class="node"><rect x="1198" y="720" width="92" height="30" rx="7" fill="#0b1020" stroke="#34d399" stroke-width="1.2"/><use href="#i-claude" x="1205" y="727" width="16" height="16" fill="#D97757"/><text x="1226" y="739" class="pill" fill="#e2e8f0">mod fixo</text></g>
+<text x="1356" y="500" class="pill" fill="#94a3b8" letter-spacing=".12em">REGRAS DO SYNC</text>
+<g class="node"><rect x="1356" y="508" width="208" height="62" rx="8" fill="#34d399" fill-opacity="0.07" stroke="#34d399" stroke-width="1.2"/><rect x="1356" y="508" width="4" height="62" rx="2" fill="#34d399"/><text x="1368" y="525" class="bl" fill="#34d399">outra máquina desligada</text><text x="1368" y="542" class="ns">só informa a última troca</text><text x="1368" y="557" class="ns">sem alarme · não diverge</text></g>
+<g class="node"><rect x="1356" y="578" width="208" height="76" rx="8" fill="#34d399" fill-opacity="0.07" stroke="#34d399" stroke-width="1.2"/><rect x="1356" y="578" width="4" height="76" rx="2" fill="#34d399"/><text x="1368" y="595" class="bl" fill="#34d399">colisão</text><text x="1368" y="612" class="ns">texto: segura só a nota</text><text x="1368" y="627" class="ns">binário: mais novo vence</text><text x="1368" y="642" class="ns">vigia avisa · recupera</text></g>
+<g class="node"><rect x="1356" y="662" width="208" height="104" rx="8" fill="#a78bfa" fill-opacity="0.07" stroke="#a78bfa" stroke-width="1.2"/><rect x="1356" y="662" width="4" height="104" rx="2" fill="#a78bfa"/><text x="1368" y="679" class="bl" fill="#a78bfa">o que vai ao banco</text><text x="1368" y="696" class="ns">todo arquivo até 200 MiB</text><text x="1368" y="711" class="ns">.md .txt .csv: junta</text><text x="1368" y="726" class="ns">fora: pastas com ponto</text><text x="1368" y="741" class="ns">código mora fora do hub</text><text x="1368" y="756" class="ns">acima do limite: vigia lista</text></g>
+<g class="node"><rect x="40" y="-150" width="200" height="106" rx="10" fill="#94a3b8" fill-opacity="0.09" stroke="#94a3b8" stroke-width="1.4"/><svg x="54" y="-140" width="28" height="28" viewBox="0 0 24 24"><g fill="none" stroke="#94a3b8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8" cy="10" r="1.6"/><circle cx="16" cy="9" r="1.6"/><circle cx="12" cy="15.5" r="1.6"/><path d="M9.4 10.6l1.6 3.6M14.6 9.8l-1.7 4.3"/></g></svg><text x="54" y="-92" class="nt">Maestri</text><text x="54" y="-73" class="ns">papéis · cópia conferida</text><text x="54" y="-56" class="ns">lembrete ao abrir sessão</text></g>
+<g class="node"><rect x="300" y="-150" width="200" height="106" rx="10" fill="#f472b6" fill-opacity="0.09" stroke="#f472b6" stroke-width="1.4"/><svg x="314" y="-140" width="28" height="28" viewBox="0 0 24 24"><g fill="none" stroke="#f472b6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 5-9 5-9-5z"/><path d="M3 13l9 5 9-5"/><path d="M3 17.5l9 4.5 9-4.5" opacity=".6"/></g></svg><text x="314" y="-92" class="nt">Peças</text><text x="314" y="-73" class="ns">papéis · setups (receita)</text><text x="314" y="-56" class="ns">contratos-opção</text></g>
+<g class="node"><rect x="560" y="-150" width="200" height="106" rx="10" fill="#f472b6" fill-opacity="0.09" stroke="#f472b6" stroke-width="1.4"/><svg x="574" y="-140" width="28" height="28" viewBox="0 0 24 24"><g fill="none" stroke="#f472b6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h4a2 2 0 1 1 4 0h4v4a2 2 0 1 1 0 4v4H4v-4a2 2 0 1 0 0-4z"/></g></svg><text x="574" y="-92" class="nt">maestro-*</text><text x="574" y="-73" class="ns">porta: maestro-acervo</text><text x="574" y="-56" class="ns">agents/skills/</text></g>
+<g class="node"><rect x="820" y="-150" width="200" height="106" rx="10" fill="#f472b6" fill-opacity="0.09" stroke="#f472b6" stroke-width="1.4"/><svg x="834" y="-140" width="28" height="28" viewBox="0 0 24 24"><g fill="none" stroke="#f472b6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></g></svg><text x="834" y="-92" class="nt">Registro de uso</text><text x="834" y="-73" class="ns">por máquina</text><text x="834" y="-56" class="ns">agents/maestro/uso/</text></g>
+<g class="node"><rect x="1080" y="-150" width="200" height="106" rx="10" fill="#fb7185" fill-opacity="0.09" stroke="#fb7185" stroke-width="1.4"/><svg x="1094" y="-140" width="28" height="28" viewBox="0 0 24 24"><g fill="none" stroke="#fb7185" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></g></svg><text x="1094" y="-92" class="nt">Guarda do acervo</text><text x="1094" y="-73" class="ns">verificador outro modelo</text><text x="1094" y="-56" class="ns">aval do Gustavo · Claude</text></g>
+<g class="node"><rect x="1340" y="-150" width="200" height="106" rx="10" fill="#f472b6" fill-opacity="0.09" stroke="#f472b6" stroke-width="1.4"/><svg x="1354" y="-140" width="28" height="28" viewBox="0 0 24 24"><g fill="none" stroke="#f472b6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13l3-8h12l3 8v6H3z"/><path d="M3 13h5l1.5 2.5h5L16 13h5"/></g></svg><text x="1354" y="-92" class="nt">Propostas</text><text x="1354" y="-73" class="ns">Codex · Copilot propõem</text><text x="1354" y="-56" class="ns">agents/maestro/propostas/</text></g>
+</svg>
+<div class="legend"><b>Legenda</b><span class="lg"><i style="border-color:#94a3b8;background:#94a3b822"></i>Externo</span><span class="lg"><i style="border-color:#22d3ee;background:#22d3ee22"></i>Entrada</span><span class="lg"><i style="border-color:#60a5fa;background:#60a5fa22"></i>Contrato</span><span class="lg"><i style="border-color:#34d399;background:#34d39922"></i>Serviço</span><span class="lg"><i style="border-color:#fb7185;background:#fb718522"></i>Proteção</span><span class="lg"><i style="border-color:#a78bfa;background:#a78bfa22"></i>Dados</span><span class="lg"><i style="border-color:#fbbf24;background:#fbbf2422"></i>Rede</span><span class="lg"><i style="border-color:#f472b6;background:#f472b622"></i>Acervo</span><span class="lg"><i style="border:1.4px dashed #f59e0b"></i>aberto</span><span class="lg"><i style="border:1.4px dashed #c084fc"></i>revisão</span></div>
+</div>
+</main>
+</body>
+</html>

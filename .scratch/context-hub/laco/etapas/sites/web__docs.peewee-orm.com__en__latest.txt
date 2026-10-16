@@ -1,0 +1,571 @@
+peewee¶
+
+Peewee is a simple and small ORM. It has few (but expressive) concepts, making
+it easy to learn and intuitive to use.
+
+Peewee is a single module with no required dependencies and has been running
+production workloads of all sizes since 2010.
+
+flexible query-builder that exposes full power of SQL
+
+supports sqlite, mysql, mariadb, postgresql.
+
+asyncio support
+
+schema migrations with diff-based generation (pwmigrate)
+
+tons of extensions
+
+use with flask, fastapi, pydantic
+and more
+
+Peewee’s source code is hosted on GitHub.
+
+New to peewee? These may help:
+
+Quickstart
+
+Example twitter app
+
+Using peewee interactively
+
+Models and fields
+
+Querying
+
+Relationships and joins
+
+Extensive library of SQL / Peewee examples
+
+Flask setup or FastAPI setup
+
+Contents:¶
+
+Installing and Testing
+
+Installing from Source
+
+Running Tests
+
+Supported Drivers
+
+Quickstart
+
+Model Definition
+
+Create the Tables
+
+Writing Data
+
+Reading Data
+
+Simple Aggregates
+
+Close the Connection
+
+Working with Existing Databases
+
+What Next
+
+Example app
+
+Running the Example
+
+Code Structure
+
+Creating Tables
+
+Database Connection
+
+Making Queries
+
+Storing Data
+
+Subqueries
+
+Other Topics
+
+More Examples
+
+Database
+
+Using SQLite
+
+Using Postgresql
+
+Using MySQL / MariaDB
+
+Connection Parameters
+
+Initializing the Database
+
+Connecting via URL
+
+Connection Lifecycle
+
+Connection Pooling
+
+Executing SQL
+
+Database Errors
+
+Logging Queries
+
+Query Hooks
+
+Testing Peewee Applications
+
+Adding a Custom Database Driver
+
+Models and Fields
+
+Model Inheritance
+
+Fields
+
+ForeignKeyField
+
+Date and Time Fields
+
+JSONField
+
+BitField and BigBitField
+
+Model Settings
+
+Indexes and Constraints
+
+Primary Keys
+
+Table Constraints
+
+Creating Tables
+
+Migrations
+
+Advanced Topics
+
+Relationships and Joins
+
+Model Definitions
+
+Foreign Keys
+
+Back-references
+
+The N+1 Problem
+
+Joins
+
+Related-instance Names
+
+Many-to-Many Relationships
+
+Avoiding N+1 with eager loading
+
+Querying
+
+Selecting Records
+
+Retrieving a Single Record
+
+Filtering
+
+Sorting
+
+Pagination, Limiting, and Offsetting
+
+Counting
+
+Aggregates and GROUP BY
+
+Scalar Values
+
+Row Types
+
+Iterating Over Large Result Sets
+
+Window Functions
+
+Common Table Expressions
+
+Writing Data
+
+Inserting Records
+
+Bulk Inserts
+
+Updating Records
+
+Upsert
+
+Deleting Records
+
+Returning Clause
+
+Query Operators
+
+Three Valued Logic
+
+User-Defined Operators
+
+Expressions
+
+SQL Functions
+
+SQL Helper
+
+Security and SQL Injection
+
+Transactions
+
+db.atomic
+
+Manual Commit / Rollback
+
+Nesting Transactions
+
+Explicit Transaction
+
+Explicit Savepoints
+
+Running Code After Commit
+
+Autocommit Mode
+
+SQLite Transaction Locking Modes
+
+Postgresql Isolation Notes
+
+Schema Management
+
+Creating Tables
+
+Dropping Tables
+
+SchemaManager
+
+Schema Migrations
+
+Introspecting an Existing Schema
+
+Async Support
+
+Installation
+
+Example
+
+How it works
+
+Async Model Methods
+
+Executing queries
+
+General purpose wrapper
+
+Async Helper Methods
+
+Transactions
+
+Connection Management
+
+Sharp Corners
+
+Why no await User.select()?
+
+API Reference
+
+Framework Integration
+
+Flask
+
+FastAPI
+
+Quart
+
+Starlette
+
+Litestar
+
+aiohttp
+
+Django
+
+Bottle
+
+Falcon
+
+Pyramid
+
+Sanic
+
+CherryPy
+
+General Pattern for Any Framework
+
+Using Peewee Interactively
+
+Query Builder
+
+Declaring tables
+
+Select queries
+
+Insert Queries
+
+Update Queries
+
+Delete Queries
+
+Query Objects
+
+More
+
+Query Examples Library
+
+Model Definitions
+
+Schema Creation
+
+Basic Exercises
+
+Joins and Subqueries
+
+Modifying Data
+
+Aggregation
+
+Dates and Times
+
+String
+
+Recursion
+
+API Reference
+
+Database
+
+Model
+
+Fields
+
+Schema Manager
+
+Query-builder
+
+Queries
+
+Query-builder Internals
+
+Constants and Helpers
+
+Playhouse Reference
+
+SQLite
+
+Implementations
+
+PRAGMA statements
+
+User-Defined Functions
+
+Locking Mode for Transactions
+
+CySqlite
+
+APSW
+
+SQLCipher
+
+SqliteQueueDatabase
+
+SQLite-Specific Fields
+
+SQLite JSON
+
+Full-text search
+
+User-Defined Function Collection
+
+Postgresql
+
+Getting Started
+
+PostgresqlExtDatabase
+
+psycopg2 vs psycopg3
+
+JSON Support
+
+HStore
+
+Arrays
+
+Interval
+
+DateTimeTZ Field
+
+Full-Text Search
+
+Server-Side Cursors
+
+CockroachDB
+
+MySQL and MariaDB
+
+MySQLConnectorDatabase
+
+PooledMySQLConnectorDatabase
+
+MariaDBConnectorDatabase
+
+PooledMariaDBConnectorDatabase
+
+Match()
+
+Database Tooling
+
+Database URLs
+
+Connection Pooling
+
+Schema Migrations
+
+Migration Runner
+
+Schema Diff
+
+Reflection
+
+pwiz - Model Generator
+
+Test Utilities
+
+ORM Utilities
+
+Shortcuts
+
+Pydantic Integration
+
+Hybrid Attributes
+
+Key/Value Store
+
+Signals
+
+DataSet
+
+Extra Field Types
+
+Flask Utilities
+
+Recipes
+
+Optimistic Locking
+
+Get-or-Create Safely
+
+Eager-loading for a list view
+
+Top Item Per Group
+
+Top N Per Group
+
+Bulk-Loading with Explicit Primary Keys
+
+Custom SQLite Functions
+
+Date Arithmetic Across Databases
+
+Contributing
+
+Running the tests
+
+Patches
+
+Bugs
+
+Questions
+
+Note¶
+
+If you find any bugs, odd behavior, or have an idea for a new feature please
+don’t hesitate to open an issue
+on GitHub.
+
+Indices and tables¶
+
+Index
+
+Module Index
+
+Search Page
+
+peewee
+
+Navigation
+
+Installing and Testing
+
+Quickstart
+
+Example app
+
+Database
+
+Models and Fields
+
+Relationships and Joins
+
+Querying
+
+Writing Data
+
+Query Operators
+
+Transactions
+
+Schema Management
+
+Async Support
+
+Framework Integration
+
+Using Peewee Interactively
+
+Query Builder
+
+Query Examples Library
+
+API Reference
+
+SQLite
+
+Postgresql
+
+MySQL and MariaDB
+
+Database Tooling
+
+ORM Utilities
+
+Recipes
+
+Contributing
+
+Related Topics
+
+Documentation overview
+
+Next: Installing and Testing
+
+Quick search
+
+ ©charles leifer.
+
+ |
+ Powered by Sphinx 5.3.0
+ & Alabaster 0.7.16
+
+ |
+ Page source

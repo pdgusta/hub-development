@@ -1,0 +1,31 @@
+{
+ "chave": "web:sourcegraph.com",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T21:08:51Z",
+ "resultado": "corrige",
+ "conferencia": {
+  "resultado": "corrige",
+  "final": {
+   "mcp": "yes",
+   "windows": "unknown",
+   "portuguese": "unknown",
+   "license": "unknown",
+   "maturity": "stable",
+   "doubt": false,
+   "serve": "search",
+   "role": "Exact keyword code search over many repositories, with an MCP server giving agents codebase context",
+   "place": [
+    "network_service"
+   ],
+   "mechanism": [
+    "full_text"
+   ],
+   "evidence": "Code Search. Search your entire codebase with exact, deterministic, and exhaustive results. MCP Server. Give agents complete, SCIP-powered context."
+  },
+  "o_que_mudou": [
+   "doubt: true -> false, README clearly states search and MCP server",
+   "portuguese: no -> unknown, README does not say"
+  ],
+  "nota": "Commercial enterprise code search with MCP; aimed at code repositories, not Markdown notes, so limited fit and not self-hostable for free as far as the page says."
+ }
+}

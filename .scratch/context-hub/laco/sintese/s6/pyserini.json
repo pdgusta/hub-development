@@ -1,0 +1,54 @@
+{
+ "nome": "Pyserini",
+ "nome_canonico": "Pyserini",
+ "chave": "gh:castorini/pyserini",
+ "url": "https://github.com/castorini/pyserini",
+ "serve": "search",
+ "area": null,
+ "identidade": "ok",
+ "windows": "nao_verificado: o guia de instalação cobre só Mac e Linux (conda, openjdk=21); depende de Java 21 via PyJNIus. Provável only_wsl_or_docker, mas a fonte não afirma.",
+ "mcp": "yes: servidor MCP próprio (python -m pyserini.server.mcp), transporte stdio por padrão ou http (--transport http, --port); há também REST (FastAPI).",
+ "portugues": "nao_verificado: aceita --language/set_language com código ISO (exemplo zh); português não confirmado na fonte.",
+ "markdown_frontmatter": "no: indexa coleções JSONL pelo Anserini; não lê Markdown nem frontmatter.",
+ "atualizacao": "manual: indexação em lote pelo Anserini; sem watcher.",
+ "embeddings_endpoint": "só modelo local: encoders Hugging Face/ONNX/FAISS dentro do pacote; base_url OpenAI-compatível nao_verificado.",
+ "recursos": "Python 3.12 + Java 21; pip puxa PyTorch, Transformers e ONNX Runtime (pesado); índices pré-prontos de 2,7 GB a 72 GB.",
+ "licenca": "Apache-2.0",
+ "ultimo_release": "pyserini-2.4.0 (2026-08-27)",
+ "atividade": "commit de 2026-10-13 (feed)",
+ "maturidade": "stable (projeto de pesquisa; sem selo explícito)",
+ "encaixe": "Serviço de busca de pesquisa, não do hub: Java 21, PyTorch e sem Windows nativo documentado. Só como bancada de comparação BM25/denso em outro lugar.",
+ "evidencias": [
+  {
+   "campo": "mcp",
+   "url": "https://github.com/castorini/pyserini/blob/master/docs/usage-mcp.md",
+   "citacao": "Default transport is stdio (no HTTP port)."
+  },
+  {
+   "campo": "windows",
+   "url": "https://github.com/castorini/pyserini/blob/master/docs/installation.md",
+   "citacao": "### Mac ... ### Linux"
+  },
+  {
+   "campo": "recursos",
+   "url": "https://github.com/castorini/pyserini",
+   "citacao": "Pyserini is built on Python 3.12 (other versions might work, but YMMV) and Java 21"
+  },
+  {
+   "campo": "recursos",
+   "url": "https://github.com/castorini/pyserini",
+   "citacao": "A pip installation will automatically pull in major dependencies such as PyTorch, Transformers, and the ONNX Runtime."
+  },
+  {
+   "campo": "ultimo_release",
+   "url": "https://github.com/castorini/pyserini/releases",
+   "citacao": "pyserini-2.4.0"
+  }
+ ],
+ "nao_verificado": [
+  "Windows nativo",
+  "português",
+  "base_url OpenAI-compatível",
+  "arquivo exato de licença (badge Apache)"
+ ]
+}

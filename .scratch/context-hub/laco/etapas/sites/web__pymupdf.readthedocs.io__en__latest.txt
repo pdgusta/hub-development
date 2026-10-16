@@ -1,0 +1,711 @@
+Skip to content
+
+ PyMuPDF documentation
+
+About
+
+Features Comparison
+
+PyMuPDF Product Suite
+
+Performance
+
+License and Copyright
+
+PyMuPDF4LLM
+
+PyMuPDF Pro
+
+User Guide
+
+Installation
+
+The Basics
+
+Tutorial
+
+PyMuPDF, LLM & RAG
+
+Resources
+
+FAQ
+
+How to Guide
+
+Opening Files
+
+Converting Files
+
+Compressing Files
+
+OCR - Optical Character Recognition
+
+Text
+
+Images
+
+Annotations
+
+Drawing and Graphics
+
+Stories
+
+Journalling
+
+Multiprocessing
+
+Optional Content Support
+
+Low-Level Interfaces
+
+Common Issues and their Solutions
+
+API Reference
+
+Classes
+
+Annot
+
+Archive
+
+Colorspace
+
+DisplayList
+
+Document
+
+DocumentWriter
+
+Font
+
+Identity
+
+IRect
+
+Link
+
+linkDest
+
+Matrix
+
+Outline
+
+Page
+
+Pixmap
+
+Point
+
+Quad
+
+Rect
+
+Shape
+
+Story
+
+TextPage
+
+TextWriter
+
+Tools
+
+Widget
+
+Xml
+
+The PyMuPDF4LLM API
+
+Operator Algebra for Geometry Objects
+
+Low Level Functions and Classes
+
+Functions
+
+Device
+
+Working together: DisplayList and TextPage
+
+Glossary
+
+Constants and Enumerations
+
+Color Database
+
+Other
+
+Appendix 1: Details on Text Extraction
+
+Appendix 2: Considerations on Embedded Files
+
+Appendix 3: Assorted Technical Information
+
+Appendix 4: Performance Comparison Methodology
+
+Change Log
+
+Deprecated Names
+
+ Back to top
+
+ View this page
+
+ pymupdf.io
+
+ English
+ 日本語
+ 한국어
+
+ Find #pymupdf on Discord
+
+Try our forum! 
+
+Welcome to PyMuPDF¶
+
+PyMuPDF is a high-performance Python library for data extraction, analysis, conversion & manipulation of PDF (and other) documents.
+
+PyMuPDF is hosted on GitHub and registered on PyPI.
+
+This documentation covers all versions up to 1.28.2.
+
+About
+
+Features Comparison
+
+PyMuPDF Product Suite
+
+Performance
+
+License and Copyright
+
+PyMuPDF4LLM
+
+PyMuPDF Pro
+
+User Guide
+
+Installation
+
+The Basics
+
+Tutorial
+
+PyMuPDF, LLM & RAG
+
+Resources
+
+FAQ
+
+How to Guide
+
+Opening Files
+
+Supported File Types
+
+PyMuPDF
+
+PyMuPDF Pro
+
+How to Open a File
+
+File Recognizer: Opening with a Wrong File Extension
+
+Opening Remote Files
+
+Opening Files from Cloud Services
+
+Opening Django Files
+
+Opening Files as Text
+
+Examples
+
+Full Options for Opening a File
+
+open()
+
+Converting Files
+
+Files to PDF
+
+Markdown to PDF
+
+Defining paper size
+
+Defining CSS
+
+Using CSS Custom Element Selectors
+
+Defining Fonts
+
+PDF to Markdown
+
+PDF to SVG
+
+PDF to Images
+
+PDF to DOCX
+
+Compressing Files
+
+PyMuPDF & Compression
+
+use_objstms
+
+deflate
+
+garbage
+
+Results Summary
+
+PyMuPDF & Compression Benchmarking
+
+See also
+
+OCR - Optical Character Recognition
+
+How to OCR an Image
+
+How to OCR a Document Page
+
+Text
+
+How to Extract all Document Text
+
+How to Extract Text as Markdown
+
+How to Extract Key-Value Pairs from a Page
+
+How to Extract Text from within a Rectangle
+
+How to Extract Text in Natural Reading Order
+
+How to Extract Table Content from Documents
+
+How to Mark Extracted Text
+
+How to Mark Searched Text
+
+How to Mark Non-horizontal Text
+
+How to Analyze Font Characteristics
+
+How to Insert Text
+
+How to Write Text Lines
+
+How to Fill a Text Box
+
+How to Fill a Box with HTML Text
+
+How to Extract Text with Color
+
+Images
+
+How to Make Images from Document Pages
+
+How to Increase Image Resolution
+
+How to Create Partial Pixmaps (Clips)
+
+How to Zoom a Clip to a GUI Window
+
+How to Create or Suppress Annotation Images
+
+How to Extract Images: Non-PDF Documents
+
+How to Extract Images: PDF Documents
+
+How to Handle Image Masks
+
+How to Make one PDF of all your Pictures (or Files)
+
+How to Create Vector Images
+
+How to Convert Images
+
+How to Use Pixmaps: Gluing Images
+
+How to Use Pixmaps: Making a Fractal
+
+How to Interface with NumPy
+
+How to Add Images to a PDF Page
+
+How to Use Pixmaps: Checking Text Visibility
+
+Annotations
+
+How to Add and Modify Annotations
+
+How to Use FreeText
+
+How to Use Ink Annotations
+
+Drawing and Graphics
+
+How to Extract Drawings
+
+How to Delete Drawings
+
+How to Draw Graphics
+
+Stories
+
+How to Add a Line of Text with Some Formatting
+
+How to use Images
+
+How to Read External HTML and CSS for a Story
+
+How to Output Database Content with Story Templates
+
+How to Integrate with Existing PDFs
+
+How to Make Multi-Columned Layouts and Access Fonts from Package pymupdf-fonts
+
+How to Make a Layout which Wraps Around a Predefined “no go area” Layout
+
+How to Output an HTML Table
+
+How to Create a Simple Grid Layout
+
+How to Generate a Table of Contents
+
+How to Display a List from JSON Data
+
+Using the Alternative Story.write*() functions
+
+How to do Basic Layout with Story.write()
+
+How to do Iterative Layout for a Table of Contents with Story.write_stabilized()
+
+How to do Iterative Layout and Create PDF Links with Story.write_stabilized_links()
+
+Journalling
+
+Example Session 1
+
+Example Session 2
+
+Multiprocessing
+
+Optional Content Support
+
+Introduction: The Optional Content Concept
+
+PyMuPDF Support for PDF Optional Content
+
+How to Add Optional Content
+
+How to Define Complex Optional Content Conditions
+
+Low-Level Interfaces
+
+How to Iterate through the xref Table
+
+How to Handle Object Streams
+
+How to Handle Page Contents
+
+How to Access the PDF Catalog
+
+How to Access the PDF File Trailer
+
+How to Access XML Metadata
+
+How to Extend PDF Metadata
+
+How to Read and Update PDF Objects
+
+Common Issues and their Solutions
+
+How To Dynamically Clean Up Corrupt PDFs
+
+How to Convert Any Document to PDF
+
+Changing Annotations: Unexpected Behaviour
+
+Problem
+
+Cause
+
+Solutions
+
+Missing or Unreadable Extracted Text
+
+Problem: no text is extracted
+
+Cause
+
+Solution
+
+Problem: unreadable text
+
+Cause
+
+Solution
+
+API Reference
+
+Classes
+
+Annot
+
+Archive
+
+Colorspace
+
+DisplayList
+
+Document
+
+DocumentWriter
+
+Font
+
+Identity
+
+IRect
+
+Link
+
+linkDest
+
+Matrix
+
+Outline
+
+Page
+
+Pixmap
+
+Point
+
+Quad
+
+Rect
+
+Shape
+
+Story
+
+TextPage
+
+TextWriter
+
+Tools
+
+Widget
+
+Xml
+
+The PyMuPDF4LLM API
+
+version
+
+to_markdown()
+
+to_text()
+
+to_json()
+
+use_layout()
+
+get_key_values()
+
+LlamaMarkdownReader()
+
+IdentifyHeaders
+
+TocHeaders
+
+pdf_markdown_reader.PDFMarkdownReader
+
+Operator Algebra for Geometry Objects
+
+General Remarks
+
+Unary Operations
+
+Binary Operations
+
+Some Examples
+
+Low Level Functions and Classes
+
+Functions
+
+Device
+
+Working together: DisplayList and TextPage
+
+Glossary
+
+coordinate
+
+matrix_like
+
+rect_like
+
+irect_like
+
+point_like
+
+quad_like
+
+inheritable
+
+MediaBox
+
+CropBox
+
+catalog
+
+trailer
+
+contents
+
+resources
+
+dictionary
+
+page
+
+pagetree
+
+object
+
+stream
+
+unitvector
+
+xref
+
+fontsize
+
+resolution
+
+OCPD
+
+OCCD
+
+OCG
+
+OCMD
+
+ligature
+
+Constants and Enumerations
+
+Constants
+
+Document Permissions
+
+PDF Optional Content Codes
+
+PDF encryption method codes
+
+Font File Extensions
+
+Text Alignment
+
+Font Properties
+
+Text Extraction Flags
+
+Link Destination Kinds
+
+Link Destination Flags
+
+Annotation Related Constants
+
+Widget Constants
+
+PDF Standard Blend Modes
+
+Stamp Annotation Icons
+
+Pixmap Transformations
+
+Color Database
+
+Function getColor()
+
+Printing the Color Database
+
+Other
+
+Appendix 1: Details on Text Extraction
+
+General structure of a TextPage
+
+Plain Text
+
+BLOCKS
+
+WORDS
+
+HTML
+
+Controlling Quality of HTML Output
+
+DICT (or JSON)
+
+RAWDICT (or RAWJSON)
+
+XML
+
+XHTML
+
+Text Extraction Flags Defaults
+
+Performance
+
+Appendix 2: Considerations on Embedded Files
+
+General
+
+MuPDF Support
+
+PyMuPDF Support
+
+Appendix 3: Assorted Technical Information
+
+Image Transformation Matrix
+
+PDF Base 14 Fonts
+
+Adobe PDF References
+
+Using Python Sequences as Arguments in PyMuPDF
+
+Ensuring Consistency of Important Objects in PyMuPDF
+
+Design of Method Page.show_pdf_page()
+
+Diagnostics
+
+Coordinates
+
+CSS Support
+
+Appendix 4: Performance Comparison Methodology
+
+Files used
+
+Tools used
+
+Copying / Joining / Merging
+
+Text Extraction
+
+Page Rendering
+
+Change Log
+
+Deprecated Names
+
+This software is provided AS-IS with no warranty, either express or implied. This software is distributed under license and may not be copied, modified or distributed except as expressly authorized under the terms of that license. Refer to licensing information at artifex.com or contact Artifex Software Inc., 39 Mesa Street, Suite 108A, San Francisco CA 94129, United States for further information.
+
+This documentation covers all versions up to 1.28.2.

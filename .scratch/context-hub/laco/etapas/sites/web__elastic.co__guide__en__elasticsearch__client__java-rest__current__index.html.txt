@@ -1,0 +1,663 @@
+WARNING: Deprecated in 7.15.0. 
+
+ The Java REST Client is deprecated in favor of the 
+ Java API Client.
+
+Overview »
+
+Java REST Client
+
+Java REST Client (deprecated): 7.176.8other versionsother versions: 7.177.167.157.147.137.127.117.107.97.87.77.67.57.47.37.27.17.06.86.76.66.56.46.36.26.16.05.65.55.45.35.25.15.0
+Overview
+
+Java High Level REST Client
+
+Getting started
+
+Compatibility
+
+Javadoc
+
+Maven Repository
+
+Dependencies
+
+Initialization
+
+RequestOptions
+
+Asynchronous usage
+
+Document APIs
+
+Index API
+
+Get API
+
+Get Source API
+
+Exists API
+
+Delete API
+
+Update API
+
+Term Vectors API
+
+Bulk API
+
+Multi-Get API
+
+Reindex API
+
+Update By Query API
+
+Delete By Query API
+
+Rethrottle API
+
+Multi Term Vectors API
+
+Search APIs
+
+Search API
+
+Search Scroll API
+
+Clear Scroll API
+
+Multi-Search API
+
+Search Template API
+
+Multi-Search-Template API
+
+Field Capabilities API
+
+Ranking Evaluation API
+
+Explain API
+
+Count API
+
+Open a point in time
+
+Search with point in time
+
+Close point in time
+
+Async Search APIs
+
+Submit Async Search API
+
+Get Async Search API
+
+Delete Async Search API
+
+Miscellaneous APIs
+
+Info API
+
+Ping API
+
+X-Pack Info API
+
+X-Pack Usage API
+
+Index APIs
+
+Analyze API
+
+Create Index API
+
+Delete Index API
+
+Index Exists API
+
+Open Index API
+
+Close Index API
+
+Shrink Index API
+
+Split Index API
+
+Clone Index API
+
+Refresh API
+
+Flush API
+
+Flush Synced API
+
+Clear Cache API
+
+Force Merge API
+
+Rollover Index API
+
+Update mapping API
+
+Get Mappings API
+
+Get Field Mappings API
+
+Index Aliases API
+
+Delete Alias API
+
+Exists Alias API
+
+Get Alias API
+
+Update Indices Settings API
+
+Get Settings API
+
+Create or update index template API
+
+Validate Query API
+
+Get Templates API
+
+Templates Exist API
+
+Get Index API
+
+Freeze Index API
+
+Unfreeze Index API
+
+Delete Template API
+
+Reload Search Analyzers API
+
+Get Composable Index Templates API
+
+Create or update composable index template API
+
+Delete Composable Index Template API
+
+Optional arguments
+
+Simulate Index Template API
+
+Cluster APIs
+
+Cluster Update Settings API
+
+Cluster Get Settings API
+
+Cluster Health API
+
+Remote Cluster Info API
+
+Get Component Templates API
+
+Create or update component template API
+
+Optional arguments
+
+Delete Component Template API
+
+Optional arguments
+
+Ingest APIs
+
+Create or update pipeline API
+
+Get Pipeline API
+
+Delete Pipeline API
+
+Simulate Pipeline API
+
+Snapshot APIs
+
+Snapshot Get Repository API
+
+Snapshot Create RepositoryAPI
+
+Snapshot Delete Repository API
+
+Snapshot Verify Repository API
+
+Create Snapshot API
+
+Get Snapshots API
+
+Snapshots Status API
+
+Delete Snapshot API
+
+Restore Snapshot API
+
+Clone Snapshot API
+
+Tasks APIs
+
+List Tasks API
+
+Cancel Tasks API
+
+Script APIs
+
+Get Stored Script API
+
+Create or update stored script API
+
+Delete Stored Script API
+
+Licensing APIs
+
+Update License
+
+Get License
+
+Delete License
+
+Start Trial
+
+Start Basic License
+
+Get Trial Status
+
+Get Basic Status
+
+Machine Learning APIs
+
+Close anomaly detection jobs API
+
+Delete anomaly detection jobs API
+
+Delete anomaly detection jobs from calendar API
+
+Delete calendar events API
+
+Delete calendars API
+
+Delete data frame analytics jobs API
+
+Delete datafeeds API
+
+Delete expired data API
+
+Delete filters API
+
+Delete forecasts API
+
+Delete model snapshots API
+
+Delete trained models API
+
+Delete trained model alias API
+
+Estimate anomaly detection job model memory API
+
+Evaluate data frame analytics API
+
+Explain data frame analytics API
+
+Flush jobs API
+
+Forecast jobs API
+
+Get anomaly detection jobs API
+
+Get anomaly detection job stats API
+
+Get buckets API
+
+Get calendar events API
+
+Get calendars API
+
+Get categories API
+
+Get data frame analytics jobs API
+
+Get data frame analytics jobs stats API
+
+Get datafeeds API
+
+Get datafeed stats API
+
+Get filters API
+
+Get influencers API
+
+Get machine learning info API
+
+Get model snapshots API
+
+Get overall buckets API
+
+Get records API
+
+Get trained models API
+
+Get trained models stats API
+
+Open anomaly detection jobs API
+
+Post calendar events API
+
+Post data API
+
+Preview datafeeds API
+
+Create anomaly detection jobs API
+
+Add anomaly detection jobs to calendar API
+
+Create calendars API
+
+Create data frame analytics jobs API
+
+Create datafeeds API
+
+Create filters API
+
+Create trained models API
+
+Create or update trained model alias API
+
+Reset anomaly detection jobs API
+
+Revert model snapshots API
+
+Set upgrade mode API
+
+Start data frame analytics jobs API
+
+Start datafeeds API
+
+Stop data frame analytics jobs API
+
+Stop datafeeds API
+
+Update anomaly detection jobs API
+
+Update data frame analytics jobs API
+
+Update datafeeds API
+
+Update filters API
+
+Update model snapshots API
+
+Upgrade job snapshot API
+
+Migration APIs
+
+Get Deprecation Info
+
+Rollup APIs
+
+Create or update rollup job API
+
+Start Rollup Job API
+
+Stop Rollup Job API
+
+Delete Rollup Job API
+
+Get Rollup Job API
+
+Rollup Search API
+
+Get Rollup Capabilities API
+
+Get Rollup Index Capabilities API
+
+Security APIs
+
+Create or update user API
+
+Get Users API
+
+Delete User API
+
+Enable User API
+
+Disable User API
+
+Change Password API
+
+Create or update role API
+
+Get Roles API
+
+Delete Role API
+
+Delete Privileges API
+
+Get Builtin Privileges API
+
+Get Application Privileges API
+
+Clear Roles Cache API
+
+Clear Privileges Cache API
+
+Clear Realm Cache API
+
+Clear API Key Cache API
+
+Clear Service Account Token Cache API
+
+Authenticate API
+
+Has Privileges API
+
+Get User Privileges API
+
+SSL Certificate API
+
+Create or update role mapping API
+
+Get Role Mappings API
+
+Delete Role Mapping API
+
+Create Token API
+
+Invalidate Token API
+
+Create or update privileges API
+
+Create API Key API
+
+Grant API key API
+
+Get API Key information API
+
+Invalidate API Key API
+
+Query API Key information API
+
+Get Service Accounts API
+
+Create Service Account Token API
+
+Delete Service Account Token API
+
+Get Service Account Credentials API
+
+Text Structure APIs
+
+Find structure API
+
+Watcher APIs
+
+Start watch service API
+
+Stop watch service API
+
+Create or update watch API
+
+Get watch API
+
+Delete watch API
+
+Ack watch API
+
+Deactivate watch API
+
+Activate watch API
+
+Execute watch API
+
+Get Watcher stats API
+
+Graph APIs
+
+X-Pack Graph explore API
+
+CCR APIs
+
+Create follower API
+
+Pause Follow API
+
+Resume Follow API
+
+Unfollow API
+
+Forget Follower API
+
+Put Auto Follow Pattern API
+
+Delete Auto Follow Pattern API
+
+Get Auto Follow Pattern API
+
+Pause Auto Follow Pattern API
+
+Resume Auto Follow Pattern API
+
+Get CCR Stats API
+
+Get Follow Stats API
+
+Get Follow Info API
+
+Index Lifecycle Management APIs
+
+Create or update lifecycle policy API
+
+Delete Lifecycle Policy API
+
+Get Lifecycle Policy API
+
+Explain Lifecycle API
+
+Start Index Lifecycle Management API
+
+Stop Index Lifecycle Management API
+
+Index Lifecycle Management Status API
+
+Retry Lifecycle Policy API
+
+Remove Policy from Index API
+
+Snapshot Lifecycle Management APIs
+
+Create or update snapshot lifecycle policy API
+
+Delete Snapshot Lifecycle Policy API
+
+Get Snapshot Lifecycle Policy API
+
+Start Snapshot Lifecycle Management API
+
+Stop Snapshot Lifecycle Management API
+
+Snapshot Lifecycle Management Status API
+
+Execute Snapshot Lifecycle Policy API
+
+Execute Snapshot Lifecycle Retention API
+
+Searchable Snapshots APIs
+
+Mount Snapshot API
+
+Cache Stats API
+
+Transform APIs
+
+Get transform API
+
+Get transform stats API
+
+Create transform API
+
+Update transform API
+
+Delete transform API
+
+Preview transform API
+
+Start transform API
+
+Stop transform API
+
+Enrich APIs
+
+Create enrich policy API
+
+Delete Policy API
+
+Get Policy API
+
+Stats API
+
+Execute Policy API
+
+EQL APIs
+
+EQL Search API
+
+Using Java Builders
+
+Building Queries
+
+Building Aggregations
+
+Migration Guide
+
+Motivations around a new Java client
+
+Prerequisite
+
+How to migrate
+
+Updating the dependencies
+
+Changing the client’s initialization code
+
+Changing the application’s code
+
+Provide feedback
+
+License
+
+ IMPORTANT: This documentation is no longer updated. Refer to Elastic's version policy and the latest documentation.
+
+Overview »
+
+Most Popular
+
+Video
+
+Get Started with Elasticsearch
+
+Video
+
+Intro to Kibana
+
+Video
+
+ELK for Logs & Metrics

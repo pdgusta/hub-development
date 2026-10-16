@@ -1,0 +1,63 @@
+{
+ "nome": "pouchdb",
+ "nome_canonico": "pouchdb/pouchdb (Apache PouchDB)",
+ "chave": "gh:pouchdb/pouchdb",
+ "url": "https://github.com/pouchdb/pouchdb",
+ "serve": "stack",
+ "area": "sync_couchdb",
+ "identidade": "ok (as outras URLs do item são CouchDB, pouchdb-quick-search e pouchdb-server, projetos distintos; verificado o PouchDB)",
+ "windows": "nao_verificado: o CI roda só em ubuntu-latest. No Node o adaptador padrão é LevelDB (leveldown 6.1.1, módulo nativo), com adaptador memory; prebuilds para Windows a fonte não confirma",
+ "mcp": "nao_aplicavel",
+ "portugues": "nao_aplicavel",
+ "markdown_frontmatter": "nao_aplicavel",
+ "atualizacao": "nao_aplicavel: sincroniza por replicação com CouchDB",
+ "embeddings_endpoint": "nao_aplicavel",
+ "recursos": "biblioteca JavaScript; em Node guarda em LevelDB local; sem número de memória ou disco na fonte",
+ "licenca": "Apache-2.0 (package.json)",
+ "ultimo_release": "9.0.0, 2024-06-21 (npm latest 9.0.0)",
+ "atividade": "último commit 2026-08-25",
+ "maturidade": "stable, com releases espaçados (último há mais de 2 anos) e em incubação no ASF",
+ "encaixe": "Cliente JS que replica com o CouchDB de cada máquina, útil para cópia leve de leitura e para um MCP em Node. Não substitui o LiveSync nem seus pedaços cifrados; impedimento: leveldown nativo e sem CI Windows.",
+ "evidencias": [
+  {
+   "campo": "identidade",
+   "url": "https://github.com/pouchdb/pouchdb",
+   "citacao": "Apache PouchDB is an open-source JavaScript database inspired by Apache CouchDB"
+  },
+  {
+   "campo": "windows",
+   "url": "https://raw.githubusercontent.com/pouchdb/pouchdb/master/.github/workflows/ci.yml",
+   "citacao": "adapter: ['leveldb', 'memory'] ... runs-on: ubuntu-latest"
+  },
+  {
+   "campo": "recursos",
+   "url": "https://registry.npmjs.org/pouchdb-adapter-leveldb/latest",
+   "citacao": "dependencies: leveldown 6.1.1, level 6.0.1"
+  },
+  {
+   "campo": "adaptadores",
+   "url": "https://pouchdb.com/guides/replication.html",
+   "citacao": "PouchDB ships with the IndexedDB adapter for the browser, and a LevelDB adapter in Node.js."
+  },
+  {
+   "campo": "licenca",
+   "url": "https://raw.githubusercontent.com/pouchdb/pouchdb/master/package.json",
+   "citacao": "\"license\": \"Apache-2.0\""
+  },
+  {
+   "campo": "ultimo_release",
+   "url": "https://github.com/pouchdb/pouchdb/releases.atom",
+   "citacao": "9.0.0 updated 2024-06-21T16:10:33Z"
+  },
+  {
+   "campo": "atividade",
+   "url": "https://github.com/pouchdb/pouchdb/commits/master.atom",
+   "citacao": "updated 2026-08-25T14:09:49Z"
+  }
+ ],
+ "nao_verificado": [
+  "prebuilds do leveldown para Windows",
+  "compatibilidade com o formato de pedaços cifrados do LiveSync",
+  "memória e disco"
+ ]
+}

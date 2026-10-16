@@ -1,0 +1,36 @@
+{
+ "chave": "gh:mem0ai/mem0",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T21:22:46Z",
+ "resultado": "corrige",
+ "conferencia": {
+  "resultado": "corrige",
+  "final": {
+   "serve": "stack",
+   "role": "Agent memory layer (library, self-hosted server, cloud) with hybrid semantic, BM25 and entity retrieval",
+   "place": [
+    "library",
+    "network_service"
+   ],
+   "mechanism": [
+    "bm25",
+    "vector",
+    "hybrid",
+    "embeddings"
+   ],
+   "mcp": "unknown",
+   "windows": "unknown",
+   "portuguese": "unknown",
+   "license": "Apache-2.0",
+   "maturity": "stable",
+   "doubt": false,
+   "evidence": "Mem0 enhances AI assistants and agents with an intelligent memory layer; multi-signal retrieval semantic, BM25 and entity; Apache 2.0; pip/npm, docker compose server."
+  },
+  "o_que_mudou": [
+   "serve: kept stack (memory layer, not a notes search)",
+   "place: disk removed, README does not say it persists to disk",
+   "maturity: stable kept"
+  ],
+  "nota": "Agent memory, not a notes index; needs an LLM and embedding model for extraction. A reference for agent memory design."
+ }
+}

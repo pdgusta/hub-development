@@ -1,0 +1,33 @@
+{
+ "chave": "web:docs.couchdb.org/en/stable/api/database/views.html",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T21:45:38Z",
+ "resultado": "corrige",
+ "conferencia": {
+  "resultado": "corrige",
+  "final": {
+   "serve": "stack",
+   "role": "CouchDB MapReduce views: key-sorted indexes for lookups and range queries over documents",
+   "place": [
+    "network_service"
+   ],
+   "mechanism": [
+    "other"
+   ],
+   "mcp": "unknown",
+   "windows": "unknown",
+   "portuguese": "unknown",
+   "license": "unknown",
+   "maturity": "stable",
+   "doubt": false,
+   "evidence": "views build efficient indexes to find documents by any value or structure; results stored in a B-tree sorted by key"
+  },
+  "o_que_mudou": [
+   "serve: search -> stack, views give key/range lookup, not text search",
+   "place: inside_db_mcp -> network_service",
+   "maturity: unknown -> stable, part of 3.5 docs",
+   "doubt: true -> false"
+  ],
+  "nota": "Useful for frontmatter/key lookups inside CouchDB, but gives no full-text search for Portuguese or English notes."
+ }
+}

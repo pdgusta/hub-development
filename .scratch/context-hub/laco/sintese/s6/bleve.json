@@ -1,0 +1,52 @@
+{
+ "nome": "Bleve",
+ "nome_canonico": "Bleve (blevesearch/bleve)",
+ "chave": "gh:blevesearch/bleve",
+ "url": "https://github.com/blevesearch/bleve",
+ "serve": "search",
+ "area": null,
+ "identidade": "ok: bleve.apache.org e bleve.co não responderam, bleve.io dá 404; o projeto é blevesearch/bleve (Go).",
+ "windows": "yes: CI 'Tests' roda em ubuntu-latest, macos-latest e windows-latest (go test -race). Busca vetorial exige FAISS compilado (C++) e a tag Go 'vectors'.",
+ "mcp": "no: biblioteca Go e CLI; sem MCP na fonte.",
+ "portugues": "yes: analisador pt pré-pronto (lowercase + stopwords pt + light stemmer pt); README lista Portuguese (pt).",
+ "markdown_frontmatter": "no: indexa structs Go ou JSON; sem leitor de Markdown/frontmatter.",
+ "atualizacao": "manual: a aplicação chama index.Index; sem watcher.",
+ "embeddings_endpoint": "nao_verificado: campo 'vector' com kNN/FAISS e busca híbrida RRF/RSF; os vetores vêm do chamador, sem base_url.",
+ "recursos": "biblioteca Go embutida; memória e disco: nao_verificado.",
+ "licenca": "Apache-2.0",
+ "ultimo_release": "v2.6.1 (2026-08-24)",
+ "atividade": "commit de 2026-10-09 (feed)",
+ "maturidade": "stable",
+ "encaixe": "Biblioteca de índice dentro de um MCP do banco escrito em Go, no disco de cada máquina, com pt e híbrido BM25+vetor. Impedimento: sem MCP nem Markdown prontos; vetores exigem FAISS em C++ no Windows.",
+ "evidencias": [
+  {
+   "campo": "windows",
+   "url": "https://github.com/blevesearch/bleve/blob/master/.github/workflows/tests.yml",
+   "citacao": "platform: [ubuntu-latest, macos-latest, windows-latest]"
+  },
+  {
+   "campo": "portugues",
+   "url": "https://github.com/blevesearch/bleve",
+   "citacao": "Portuguese (pt)"
+  },
+  {
+   "campo": "embeddings_endpoint",
+   "url": "https://github.com/blevesearch/bleve/blob/master/docs/vectors.md",
+   "citacao": "FAISS is a C++ library that needs to be compiled and its shared libraries need to be situated at an accessible path"
+  },
+  {
+   "campo": "licenca",
+   "url": "https://github.com/blevesearch/bleve",
+   "citacao": "Apache License Version 2.0"
+  },
+  {
+   "campo": "ultimo_release",
+   "url": "https://github.com/blevesearch/bleve/releases",
+   "citacao": "v2.6.1"
+  }
+ ],
+ "nao_verificado": [
+  "memória e disco",
+  "base_url de embeddings"
+ ]
+}

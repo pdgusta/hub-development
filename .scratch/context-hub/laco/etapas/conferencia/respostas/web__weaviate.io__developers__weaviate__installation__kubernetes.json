@@ -1,0 +1,34 @@
+{
+ "chave": "web:weaviate.io/developers/weaviate/installation/kubernetes",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T21:14:57Z",
+ "resultado": "corrige",
+ "conferencia": {
+  "resultado": "corrige",
+  "final": {
+   "serve": "search",
+   "role": "Vector database deployed on Kubernetes via Helm; Query Agent and Engram agent memory in the same platform",
+   "place": [
+    "network_service"
+   ],
+   "mechanism": [
+    "vector"
+   ],
+   "mcp": "unknown",
+   "windows": "unknown",
+   "portuguese": "unknown",
+   "license": "unknown",
+   "maturity": "unknown",
+   "doubt": false,
+   "evidence": "Page is Kubernetes/Helm install requirements (Kubernetes 1.23+, Helm v3); sidebar: \"Persistent memory for LLM agents\"."
+  },
+  "o_que_mudou": [
+   "place: drop inside_db_mcp, not supported",
+   "windows: no -> unknown, not stated",
+   "mechanism: [vector, embeddings] -> [vector]; page is a deploy guide",
+   "doubt: true -> false",
+   "maturity: stable -> unknown, not stated"
+  ],
+  "nota": "Kubernetes install guide for Weaviate; deployment overhead is poor fit for a two-PC Windows hub, relevant only as a note on the vector database."
+ }
+}

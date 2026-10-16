@@ -1,0 +1,33 @@
+{
+ "chave": "web:elastic.co/de/logstash",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T12:00:00Z",
+ "resultado": "corrige",
+ "conferencia": {
+  "resultado": "corrige",
+  "final": {
+   "serve": "stack",
+   "role": "Pipeline de dados que ingere, transforma e envia dados a um destino como o Elasticsearch",
+   "place": [
+    "network_service"
+   ],
+   "mechanism": [
+    "other"
+   ],
+   "mcp": "unknown",
+   "windows": "unknown",
+   "portuguese": "unknown",
+   "license": "unknown",
+   "maturity": "unknown",
+   "doubt": false,
+   "evidence": "serverseitige Open-Source-Datenverarbeitungspipeline, die Daten aufnimmt, transformiert und an einen Stash sendet"
+  },
+  "o_que_mudou": [
+   "doubt: true -> false, README claro",
+   "mechanism: full_text,other -> other, não indexa Markdown",
+   "portuguese: no -> unknown, README não diz",
+   "maturity: stable -> unknown, README não diz"
+  ],
+  "nota": "Pipeline de ingestão de logs; pouco útil para notas Markdown, só como peça de stack se houver Elasticsearch."
+ }
+}

@@ -1,0 +1,34 @@
+{
+ "chave": "gh:sunnweiwei/rankgpt",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T22:00:41Z",
+ "resultado": "corrige",
+ "conferencia": {
+  "resultado": "corrige",
+  "final": {
+   "serve": "search",
+   "role": "LLM-based re-ranking of retrieved passages (permutation generation, sliding window).",
+   "place": [
+    "library"
+   ],
+   "mechanism": [
+    "reranker"
+   ],
+   "mcp": "unknown",
+   "windows": "unknown",
+   "portuguese": "unknown",
+   "license": "Apache-2.0",
+   "maturity": "unknown",
+   "doubt": false,
+   "evidence": "Re-rank passages using ChatGPT with instructional permutation generation; sliding window strategy; Apache license badge"
+  },
+  "o_que_mudou": [
+   "mcp: no/unknown -> unknown, README silent",
+   "portuguese: unknown/no -> unknown, README silent",
+   "doubt: true -> false",
+   "place: drop network_service, it is a Python library calling external LLM APIs",
+   "mechanism: drop 'other'"
+  ],
+  "nota": "Reranker recipe usable as a second stage after BM25 over notes, needs an LLM API; research code."
+ }
+}

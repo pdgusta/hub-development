@@ -1,0 +1,32 @@
+{
+ "chave": "web:elastic.co/guide/en/elasticsearch/plugins/7.10/ingest-attachment.html",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T12:00:00Z",
+ "resultado": "corrige",
+ "conferencia": {
+  "resultado": "corrige",
+  "final": {
+   "serve": "stack",
+   "role": "Extracts text from PDF/Office attachments via Tika at ingest time for Elasticsearch indexing",
+   "place": [
+    "network_service"
+   ],
+   "mechanism": [
+    "other"
+   ],
+   "mcp": "no",
+   "windows": "unknown",
+   "portuguese": "unknown",
+   "license": "unknown",
+   "maturity": "archived",
+   "doubt": false,
+   "evidence": "lets Elasticsearch extract file attachments in common formats (such as PPT, XLS, and PDF) by using the Apache text extraction library Tika; documentation no longer updated"
+  },
+  "o_que_mudou": [
+   "serve: none/stack split -> stack, text extraction is an indexing part",
+   "place: inside_db_mcp -> network_service, it is a server plugin",
+   "doubt: true -> false"
+  ],
+  "nota": "Marginal: hub notes are Markdown; only relevant for PDFs and only with Elasticsearch, and this is 7.10 archived doc."
+ }
+}

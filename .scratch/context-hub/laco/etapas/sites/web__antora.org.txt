@@ -1,0 +1,145 @@
+Antora
+
+The single or multi-repository documentation site generator for tech writers who writing in AsciiDoc.
+
+Antora 3.1 is now available!
+
+Install AntoraView the Source
+
+Docs as Code
+
+Store documentation in one or more repositories
+
+No matter how many git repositories you use, Antora can retrieve and aggregate all the content from them to assemble a documentation site.
+
+Workspaces that fit team and content requirements
+
+Since documentation files can be stored in separate repositories, the teams that maintain them can use the administration policies, version schema, and release schedule that works for them.
+
+Manage versions like a pro
+
+Use branches to version documentation just like software. Antora can find repository branches and assemble the files in each branch into a versioned documentation collection. Antora also knows how to ignore branches you don’t want published.
+
+Remote and local, private and public, bare and non-bare
+
+Antora can collect files from a combination of local, remote public, and remote private repositories over any protocol supported by git.
+
+Site Orchestration for Everyone
+
+Antora’s playbook
+
+With an Antora playbook, anyone can easily assemble and generate a documentation site. A playbook is a straight-forward set of concise instructions that tell Antora what documentation to assemble, where to find it, and what UI to apply to it.
+
+Run your playbook using the Antora CLI
+
+Just point the Antora CLI at your playbook to configure and execute the default site generator. Out comes your site!
+
+Site remixes for any occasion
+
+With Antora’s playbooks, you can control which versions of the documentation get published to a site. You can even tell Antora to use uncommitted changes when generating the site on a local machine.
+
+Open architecture
+
+Antora features an open architecture. Despite providing an opinionated default site generator, you’re free to reuse the core components to assemble your own custom generator pipeline.
+
+Multi-channel publishing
+
+Antora automatically adapts a docs site to its publishing environment. Whether the site is published locally, to revolving testing, QA, or staging environments, or to an alternate URL for a campaign or event, the site is fully functional. This environment portability is possible because Antora’s cross referencing system isn’t based on a hardcoded base URL or system path.
+
+Minimal Markup, Maximum Functionality
+
+Mark up content with AsciiDoc’s lightweight yet comprehensive syntax.
+
+Bold, italic, monospace, highlight, and custom text roles
+
+Special characters, font icons, and UI references
+
+Ordered, unordered, definition, and interactive task lists
+
+YouTube, Vimeo, and self-hosted videos with display and user-control options
+
+Images and icons
+
+Tables, notices, quotes, and sidebars
+
+Metadata and taxonomy
+
+Cross references, page-to-page and in-page
+
+Include directives with tags
+
+Table of contents
+
+Source code with callouts, callout icons, wrap and scroll controls, and syntax highlighting
+
+Page, section, asset, block, and line controls to optimize reader experience
+
+No markup plugins, extensions, or shortcodes needed
+
+AsciiDoc’s extensive feature set is available right out of the box with Antora. There’s no need to find, install, and manage plugins, extensions, or scripts to add basic capabilities to the syntax.
+
+No flavor lock-in
+
+Documentation written with AsciiDoc works with all of the software and tools in the Asciidoctor ecosystem. You don’t need to worry about incompatible syntax or lost functionality.
+
+Tooling
+
+Write and preview AsciiDoc with text editors and IDEs like Atom, Brackets, and IntelliJ. And GitLab and GitHub render AsciiDoc files right in the browser.
+
+Extension API
+
+Custom syntax or output transformations can be added as discrete extensions using Asciidoctor’s extension API.
+
+Responsive maintainers
+
+Antora’s core developers help lead the Asciidoctor organization, home of the AsciiDoc syntax and Asciidoctor, the AsciiDoc processor. Due to this direct relationship, Antora is always in sync with AsciiDoc and Asciidoctor features.
+
+Cross References
+
+Decoupled from filesystems, environments, and URLs
+
+It doesn’t matter where you publish your documentation site — on a local machine, a staging environment, or a production environment — the page-to-page cross references always work. That’s because Antora’s page referencing system isn’t coupled to filesystem paths or URLs.
+
+Site Navigation
+
+Described using AsciiDoc lists
+
+A site’s navigation is described by one or more AsciiDoc lists that are stored alongside your documentation files. Links are added using the same cross referencing syntax used in the pages themselves.
+
+No content or organization restrictions
+
+Add normal text, images, icons, and external links to the navigation. Order and nest the links in the arrangement of your choice.
+
+Site UI & Theme
+
+Discrete UI
+
+Site UIs are stored in separate repositories so that developing, testing, and publishing new or updated themes has no impact on your documentation files or their repositories. Antora retrieves the specified site UI just like it fetches the content files from their repositories.
+
+Web team workspaces
+
+Web teams can use their preferred repository structure, development workflow and release schedule since the site UI isn’t stored with the documentation.
+
+Hot swap UIs
+
+Switch between site UIs just by changing the UI address in the playbook.
+
+URLs & Routes
+
+URLs for humans and SEO
+
+A page’s URL is derived from its filename, yet still isolated from its full filesystem path.
+
+Route and redirect controls
+
+Routes and redirects can be specified at the site, component, version, module, and page level.
+
+Metadata & Taxonomy
+
+Multi-level metadata controls
+
+Add and remove metadata at the site, component, module, and page level using AsciiDoc attributes.
+
+Built-in and custom taxonomy types
+
+Assign taxonomy types and values at the site or page level.

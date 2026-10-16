@@ -1,0 +1,31 @@
+{
+ "chave": "web:pulsar.apache.org/docs/en/functions-overview",
+ "urls": [
+  "https://pulsar.apache.org/docs/en/functions-overview/"
+ ],
+ "tipos": [
+  "service"
+ ],
+ "termos": [
+  "Pulsar Functions",
+  "stream processing",
+  "search pipeline",
+  "MCP integration"
+ ],
+ "mencoes": 1,
+ "familias": [
+  "mistral"
+ ],
+ "primeira_onda": 4,
+ "nomes": [
+  "Apache Pulsar with Pulsar Functions (for search pipelines)"
+ ],
+ "resumos": [
+  "Use Pulsar Functions to process search queries (BM25/semantic) as streamed tasks, integrating with downstream components via MCP."
+ ],
+ "fonte": "site",
+ "readme_status": "ok",
+ "readme_nome": "https://pulsar.apache.org/docs/en/functions-overview/",
+ "readme_cortado": false,
+ "readme": "[Pulsar Functions overview | Apache Pulsar]\n\nSkip to main content\n\n ✨ Apache Pulsar 5.0 is here! ✨\n\nVersion:\n5.0.x\nNext\n5.0.x\n4.2.x\n4.0.x LTS\n3.0.x LTS\nOthers\n\nVersion: 5.0.x\nOn this page\n\nWhat are Pulsar Functions​\n\nPulsar Functions are a serverless computing framework that runs on top of Pulsar and processes messages in the following way:\n\nconsumes messages from one or more topics,\n\napplies a user-defined processing logic to the messages,\n\npublishes the outputs of the messages to other topics.\n\nThe diagram below illustrates the three steps in the functions computing process.\n\nEach time a function receives a message, it completes the following consume-apply-publish steps.\n\nConsumes the message from one or more input topics.\n\nApplies the customized (user-supplied) processing logic to the message.\n\nPublishes the output of the message, including:\n\nwrites output messages to an output topic in Pulsar\n\nwrites logs to a log topic (if it is configured)for debugging\n\nwrites state updates to BookKeeper (if it is configured)\n\nYou can write functions in Java, Python, and Go. For example, you can use Pulsar Functions to set up the following processing chain:\n\nA Python function listens for the raw-sentences topic and \"sanitizes\" incoming strings (removing extraneous white space and converting all characters to lowercase) and then publishes the results to a sanitized-sentences topic.\n\nA Java function listens for the sanitized-sentences topic, counts the number of times each word appears within a specified time window, and publishes the results to a results topic.\n\nA Python function listens for the results topic and writes the results to a MySQL table.\n\nSee Develop Pulsar Functions for more details.\n\nWhy use Pulsar Functions​\n\nPulsar Functions perform simple computations on messages before routing the messages to consumers. These Lambda-style functions are specifically designed and integrated with Pulsar. The framework provides a simple computing framework on your Pulsar cluster and takes care of the underlying details of sending and receiving messages. You only need to focus on the business logic.\n\nPulsar Functions enable your organization to maximize the value of your data and enjoy the benefits of:\n\nSimplified deployment and operations - you can create a data pipeline without deploying a separate Stream Processing Engine (SPE), such as Apache Storm, Apache Heron, or Apache Flink.\n\nServerless computing (when you use Kubernetes runtime)\n\nMaximized developer productivity (both language-native interfaces and SDKs for Java/Python/Go).\n\nEasy troubleshooting\n\nUse cases​\n\nBelow are two simple examples of use cases for Pulsar Functions.\n\nWord count example​\n\nThis figure shows the process of implementing the classic word count use case.\n\nIn this example, the function calculates a sum of the occurrences of every individual word published to a given topic.\n\nContent-based routing example​\n\nThis figure demonstrates the process of implementing a content-based routing use case.\n\nIn this example, a function takes items (strings) as input and publishes them to either a fruits or vegetables topic, depending on the item. If an item is neither fruit nor vegetable, a warning is logged to a log topic.\n\nWhat's next?​\n\nFunction concepts\n\nFunction CLIs and configs\n\nFor developers\n\nDevelop a function.\n\nDebug a function.\n\nPackage a function.\n\nDeploy a function.\n\nFor admins/operators\n\nSet up function workers.\n\nConfigure function runtime.\n\nDeploy a function.\n\nWas this helpful?\n\n💡 Suggest changes🛟 Get support\nWhat are Pulsar Functions\nWhy use Pulsar Functions\nUse cases\nWord count example\nContent-based routing example\nWhat's next?"
+}

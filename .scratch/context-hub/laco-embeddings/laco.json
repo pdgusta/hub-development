@@ -1,0 +1,437 @@
+{
+ "formato": 1,
+ "id": "modelos-de-embeddings",
+ "titulo": "Modelos de embeddings da busca",
+ "ticket": "54",
+ "execucao": {
+  "id": "embeddings-2026-10-14",
+  "inicio": "2026-10-14T20:36:47-03:00",
+  "terminou_em": "2026-10-14T22:16:38-03:00"
+ },
+ "nos": [
+  {
+   "id": "plano",
+   "titulo": "Plano",
+   "papel": "etapa",
+   "detalhe": "as células da onda 1"
+  },
+  {
+   "id": "despachante",
+   "titulo": "Despachante",
+   "papel": "etapa",
+   "detalhe": "tabela de modelos do gateway a cada 60 s; modelo que falha fica fora por um tempo"
+  },
+  {
+   "id": "geradores",
+   "titulo": "Geradores",
+   "papel": "etapa",
+   "detalhe": "grupos pt-en e zh; os modelos só respondem, o script grava"
+  },
+  {
+   "id": "juntador",
+   "titulo": "Juntador",
+   "papel": "etapa",
+   "detalhe": "fecha a onda, junta o catálogo, cria a bola de neve"
+  },
+  {
+   "id": "parada",
+   "titulo": "Parada",
+   "papel": "decisao",
+   "detalhe": "resumo: 2 ondas abaixo do valor, depois a onda de calibração; ou sem células novas"
+  },
+  {
+   "id": "teto",
+   "titulo": "Teto",
+   "papel": "controle",
+   "detalhe": "tentativas ou horas, o que vier antes"
+  },
+  {
+   "id": "painel",
+   "titulo": "Painel",
+   "papel": "observador",
+   "detalhe": "observatório; o atualizador relê os dados a cada 30 s"
+  },
+  {
+   "id": "conferencia",
+   "titulo": "Conferência",
+   "papel": "fora-dos-scripts",
+   "detalhe": "o maestro confere a lista na fonte primária"
+  }
+ ],
+ "ligacoes": [
+  {
+   "de": "plano",
+   "para": "geradores",
+   "palavra": "células",
+   "tipo": "segue"
+  },
+  {
+   "de": "despachante",
+   "para": "geradores",
+   "palavra": "modelos",
+   "tipo": "segue"
+  },
+  {
+   "de": "geradores",
+   "para": "juntador",
+   "palavra": "respostas",
+   "tipo": "segue"
+  },
+  {
+   "de": "juntador",
+   "para": "parada",
+   "palavra": "taxa",
+   "tipo": "segue"
+  },
+  {
+   "de": "parada",
+   "para": "geradores",
+   "palavra": "repete",
+   "tipo": "repete"
+  },
+  {
+   "de": "parada",
+   "para": "conferencia",
+   "palavra": "fim",
+   "tipo": "segue"
+  },
+  {
+   "de": "teto",
+   "para": "despachante",
+   "palavra": "limita",
+   "tipo": "condiciona"
+  },
+  {
+   "de": "painel",
+   "para": "geradores",
+   "palavra": "observa",
+   "tipo": "observa"
+  },
+  {
+   "de": "painel",
+   "para": "juntador",
+   "palavra": "observa",
+   "tipo": "observa"
+  }
+ ],
+ "controles": [
+  {
+   "id": "gate_novos",
+   "no": "parada",
+   "rotulo": "novos por onda abaixo de",
+   "tipo": "numero",
+   "faixa": [
+    0.01,
+    0.5
+   ],
+   "escala": "porcento",
+   "unidade": "de novos",
+   "quando_vale": "proxima-onda",
+   "releitura": "ao-ligar",
+   "configurado": {
+    "arquivo": "config.json",
+    "campo": "gate_novos"
+   }
+  },
+  {
+   "id": "teto-tentativas",
+   "no": "teto",
+   "rotulo": "tentativas, no máximo",
+   "tipo": "inteiro",
+   "faixa": [
+    100,
+    20000
+   ],
+   "unidade": "tentativas",
+   "aceita_nulo": true,
+   "nulo": "sem limite",
+   "quando_vale": "agora",
+   "releitura": "continua",
+   "configurado": {
+    "sqlite": "estado/laco.db",
+    "tabela": "controle",
+    "onde": {
+     "chave": "teto"
+    },
+    "coluna": "valor",
+    "json": true,
+    "campo": "pedidos",
+    "ausente": null
+   },
+   "precondicoes": {
+    "inicio": {
+     "sqlite": "estado/laco.db",
+     "tabela": "controle",
+     "onde": {
+      "chave": "teto"
+     },
+     "coluna": "valor",
+     "json": true,
+     "campo": "inicio",
+     "formato": "epoch",
+     "ausente": null
+    }
+   }
+  },
+  {
+   "id": "teto-horas",
+   "no": "teto",
+   "rotulo": "horas, no máximo",
+   "tipo": "duracao",
+   "unidade": "h",
+   "faixa": [
+    0.5,
+    12
+   ],
+   "aceita_nulo": true,
+   "nulo": "sem limite",
+   "quando_vale": "agora",
+   "releitura": "continua",
+   "configurado": {
+    "sqlite": "estado/laco.db",
+    "tabela": "controle",
+    "onde": {
+     "chave": "teto"
+    },
+    "coluna": "valor",
+    "json": true,
+    "campo": "horas",
+    "ausente": null
+   },
+   "precondicoes": {
+    "inicio": {
+     "sqlite": "estado/laco.db",
+     "tabela": "controle",
+     "onde": {
+      "chave": "teto"
+     },
+     "coluna": "valor",
+     "json": true,
+     "campo": "inicio",
+     "formato": "epoch",
+     "ausente": null
+    }
+   }
+  },
+  {
+   "id": "trabalhadores_por_gerador",
+   "no": "geradores",
+   "rotulo": "trabalhadores por gerador",
+   "tipo": "inteiro",
+   "faixa": [
+    1,
+    40
+   ],
+   "unidade": "trabalhadores",
+   "quando_vale": "ao-reiniciar",
+   "releitura": "ao-ligar",
+   "configurado": {
+    "arquivo": "config.json",
+    "campo": "trabalhadores_por_gerador"
+   }
+  },
+  {
+   "id": "max_celulas_novas_por_onda",
+   "no": "juntador",
+   "rotulo": "células novas por onda, no máximo",
+   "tipo": "inteiro",
+   "faixa": [
+    10,
+    500
+   ],
+   "unidade": "células",
+   "quando_vale": "proxima-onda",
+   "releitura": "ao-ligar",
+   "configurado": {
+    "arquivo": "config.json",
+    "campo": "max_celulas_novas_por_onda"
+   }
+  },
+  {
+   "id": "fracao_da_cota",
+   "no": "despachante",
+   "rotulo": "parte da cota diária de cada modelo",
+   "tipo": "numero",
+   "faixa": [
+    0.1,
+    1
+   ],
+   "escala": "porcento",
+   "unidade": "da cota",
+   "quando_vale": "ao-reiniciar",
+   "releitura": "ao-ligar",
+   "configurado": {
+    "arquivo": "config.json",
+    "campo": "fracao_da_cota"
+   }
+  },
+  {
+   "id": "excluir_manual",
+   "no": "despachante",
+   "rotulo": "modelos que não recebem pedidos",
+   "tipo": "lista",
+   "itens": {
+    "max": 500,
+    "comprimento": 200
+   },
+   "quando_vale": "ao-reiniciar",
+   "releitura": "ao-ligar",
+   "configurado": {
+    "arquivo": "config.json",
+    "campo": "excluir_manual"
+   }
+  }
+ ],
+ "capacidades": [
+  {
+   "id": "parar-apos-onda",
+   "onda_atual": "onda"
+  },
+  {
+   "id": "parar-de-despachar"
+  }
+ ],
+ "contadores": [
+  {
+   "id": "tentativas",
+   "no": "teto",
+   "rotulo": "tentativas",
+   "tipo": "inteiro",
+   "origem": {
+    "sqlite": "estado/laco.db",
+    "tabela": "uso",
+    "soma": "tentativas"
+   }
+  },
+  {
+   "id": "teto-desde",
+   "no": "teto",
+   "rotulo": "horas contadas desde",
+   "tipo": "hora",
+   "origem": {
+    "sqlite": "estado/laco.db",
+    "tabela": "controle",
+    "onde": {
+     "chave": "teto"
+    },
+    "coluna": "valor",
+    "json": true,
+    "campo": "inicio",
+    "formato": "epoch"
+   }
+  },
+  {
+   "id": "onda",
+   "no": "juntador",
+   "rotulo": "onda",
+   "tipo": "inteiro",
+   "origem": {
+    "sqlite": "estado/laco.db",
+    "tabela": "controle",
+    "onde": {
+     "chave": "onda"
+    },
+    "coluna": "valor",
+    "json": true
+   }
+  },
+  {
+   "id": "curva",
+   "no": "parada",
+   "rotulo": "novos por onda",
+   "tipo": "serie",
+   "campos": [
+    "onda",
+    "novos",
+    "taxa_novos"
+   ],
+   "origem": {
+    "sqlite": "estado/laco.db",
+    "tabela": "controle",
+    "onde": {
+     "chave": "historico"
+    },
+    "coluna": "valor",
+    "json": true
+   }
+  },
+  {
+   "id": "pedidos",
+   "no": "geradores",
+   "rotulo": "pedidos, todas as ondas",
+   "tipo": "contagem",
+   "origem": {
+    "sqlite": "estado/laco.db",
+    "tabela": "pedidos",
+    "contagem": true,
+    "agrupar": "estado"
+   }
+  },
+  {
+   "id": "aptos",
+   "no": "despachante",
+   "rotulo": "modelos aptos",
+   "tipo": "inteiro",
+   "origem": {
+    "arquivo": "estado/despachante.json",
+    "campo": "aptos"
+   },
+   "hora": {
+    "arquivo": "estado/despachante.json",
+    "campo": "gerado_em",
+    "formato": "iso"
+   }
+  },
+  {
+   "id": "plataformas-aptas",
+   "no": "despachante",
+   "rotulo": "pools do gateway com modelo apto",
+   "tipo": "lista",
+   "origem": {
+    "arquivo": "estado/despachante.json",
+    "campo": "pools_aptos"
+   },
+   "hora": {
+    "arquivo": "estado/despachante.json",
+    "campo": "gerado_em",
+    "formato": "iso"
+   }
+  }
+ ],
+ "sinal": {
+  "fontes": [
+   {
+    "arquivo": "estado/despachante.json",
+    "campo": "gerado_em",
+    "formato": "iso"
+   },
+   {
+    "mtime": "livros/pt-en.jsonl"
+   },
+   {
+    "mtime": "livros/zh.jsonl"
+   }
+  ],
+  "sem_sinal_apos_s": 300
+ },
+ "parado": {
+  "sqlite": "estado/laco.db",
+  "tabela": "controle",
+  "onde": {
+   "chave": "parar"
+  },
+  "coluna": "valor",
+  "json": true,
+  "ausente": false
+ },
+ "esperando_cota": {
+  "aptos": {
+   "arquivo": "estado/despachante.json",
+   "campo": "aptos"
+  },
+  "fora": {
+   "arquivo": "estado/despachante.json",
+   "campo": "fora_agora"
+  }
+ }
+}

@@ -1,0 +1,69 @@
+{
+  "envio": "3d827fb8-dafe-44ed-b2b2-f1653dd9ea3f",
+  "tipo": "resposta",
+  "enviada": "2026-10-15T13:57:21-03:00",
+  "alvo": {
+    "tipo": "rodada",
+    "id": "2026-10-15-laco-do-system-design-r6",
+    "titulo": "Como refazer a descrição do hub"
+  },
+  "ticket": "56",
+  "substitui": null,
+  "rodada": {
+    "id": "2026-10-15-laco-do-system-design-r6",
+    "base": "8ac249f9088273e8f45730d00b624eae489df9e0bd3f87b22bc9ab3f8113b03b",
+    "titulo": "Como refazer a descrição do hub",
+    "ticket": "56",
+    "perguntas": [
+      {
+        "id": "caminho",
+        "titulo": "O caminho",
+        "tipo": "escolha",
+        "recomendada": [
+          "A"
+        ],
+        "opcoes": [
+          {
+            "chave": "A",
+            "texto": "O laço inteiro: modelo de sete eixos, umas 150 perguntas por vários modelos do FreeLLMAPI, metade escondida, teste de respostas por modelos que só leem a descrição, teste de três diagramas; depois a mistura. Uns 700 mil tokens de Claude e algumas centenas de chamadas do gateway, orçadas antes"
+          },
+          {
+            "chave": "B",
+            "texto": "Versão curta: o Tech lead reescreve nos sete eixos a partir das suas cinco perguntas e de umas 50 geradas, sem metade escondida e sem teste por outros modelos; depois a mistura. Mais rápido, mas a descrição pode responder só ao que ele viu"
+          },
+          {
+            "chave": "C",
+            "texto": "Primeiro você responde a uma lista de perguntas práticas (o que você faz, o que espera que aconteça), e só depois a descrição e o laço da opção A"
+          }
+        ],
+        "proposta": null
+      },
+      {
+        "id": "algo-mais",
+        "titulo": "Algo mais?",
+        "tipo": "texto",
+        "recomendada": [],
+        "opcoes": [],
+        "proposta": null
+      }
+    ]
+  },
+  "corpo_hash": "aaee3d1819f917e757b5cc7c18a8973541ec169a6756f2dcdee093c379c839ab",
+  "corpo": {
+    "tipo": "resposta",
+    "rodada": "2026-10-15-laco-do-system-design-r6",
+    "base": "8ac249f9088273e8f45730d00b624eae489df9e0bd3f87b22bc9ab3f8113b03b",
+    "respostas": {
+      "caminho": {
+        "escolha": [
+          "A"
+        ],
+        "outra": null,
+        "comentario": "este laço inteiro, mas nem tudo vai só pros freellmapi, alguns devem ir pra subagentes haiku 5.5 Alto. Não preciso de painel disso, pode rodar tudo em background. Pros haiku O orçamento é ilimitado em tokens e limitado a 2h, máximo de 20 subagentes por lote, a quantidade de lote você diz. Para os FreellmAPI 20 workers, tentativas 40k, mas limitado em ondas (2x 15% igual a ultima) e tempo de 2h."
+      },
+      "algo-mais": {
+        "texto": "Quero seguir com o resto do context hub enquanto isso roda em background. Já gere outras respostas para cada um dos tickets em andamento sem bloqueantes. Se tiver bloqueantes me diga quais."
+      }
+    }
+  }
+}

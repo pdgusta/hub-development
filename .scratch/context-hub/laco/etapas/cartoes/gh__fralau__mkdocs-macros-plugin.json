@@ -1,0 +1,48 @@
+{
+ "chave": "gh:fralau/mkdocs-macros-plugin",
+ "urls": [
+  "https://github.com/fralau/mkdocs-macros-plugin",
+  "https://github.com/fralau/mkdocs-macros"
+ ],
+ "tipos": [
+  "library",
+  "assembly",
+  "tool"
+ ],
+ "termos": [
+  "mkdocs",
+  "python",
+  "plugins",
+  "dynamic content",
+  "MkDocs macros",
+  "macros",
+  "front‑matter",
+  "template",
+  "variables",
+  "mkdocs macros",
+  "frontmatter",
+  "filtragem",
+  "templates"
+ ],
+ "mencoes": 5,
+ "familias": [
+  "gpt-oss",
+  "mistral"
+ ],
+ "primeira_onda": 4,
+ "nomes": [
+  "Mkdocs-Macros",
+  "mkdocs-macros-plugin",
+  "mkdocs-macros"
+ ],
+ "resumos": [
+  "Plugin para mkdocs que permite execução de código Python durante a geração do site.",
+  "Allows dynamic content generation in MkDocs, useful for embedding search results or metadata-driven filters.",
+  "Allows dynamic content generation and front‑matter filtering in MkDocs.",
+  "Plugin MkDocs que permite usar macros e variáveis no conteúdo Markdown."
+ ],
+ "readme_status": "ok",
+ "readme_nome": "README.md",
+ "readme_cortado": false,
+ "readme": "<div align=\"center\">\n\n![Mkdocs-Macros](logo.png)\n\n#  Unleash the power of MkDocs with variables and macros\n\n\n\n[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) \n![Language](https://img.shields.io/github/languages/top/fralau/mkdocs_macros_plugin)\n![PyPI](https://img.shields.io/pypi/v/mkdocs-macros-plugin)\n![Github](https://img.shields.io/github/v/tag/fralau/mkdocs_macros_plugin?label=github%20tag)\n![macros](https://img.shields.io/pypi/dm/mkdocs-macros-plugin)\n![Python Version](https://img.shields.io/badge/python-3.8%2B-blue.svg)\n\n:open_file_folder: [Used by > 2K repositories on Github](https://github.com/fralau/mkdocs_macros_plugin/network/dependents)<br>\n🥇 Listed as [High-Quality Plugin](https://github.com/mkdocs/catalog#-code-execution-variables--templating)\n\n\n**mkdocs-macros-plugin** is a general-purpose plugin for [MkDocs](https://www.mkdocs.org/)<br>that uses  **variables** and **macros** (functions) to  automate tasks, and produce richer and more beautiful pages.\n\n\n\n\n\n```markdown\nThe unit price of product A is {{ unit_price }} EUR.\nTaking the standard discount into account,\nthe sale price of 50 units is {{ price(unit_price, 50) }} EUR.\n```\n\n\nView the [mkdocs-macro documentation](https://mkdocs-macros-plugin.readthedocs.io/) on Read the Docs.\n</div>\n\n\n<!-- To update, run the following command:\nmarkdown-toc -i README.md \n-->\n\n<!-- toc -->\n\n## Overview\n**mkdocs-macros-plugin** is a plugin that makes it easier for contributors\nof an [MkDocs](https://www.mkdocs.org/) website to produce richer and more beautiful pages. It transforms the markdown pages\ninto [jinja2](https://jinja.palletsprojects.com/en/2.10.x/) templates\nthat use **variables**, calls to **macros** and custom **filters**.\n\n> **You can also partially replace MkDocs plugins with mkdocs-macros modules,\n> and [pluglets](https://mkdocs-macros-plugin.readthedocs.io/en/latest/pluglets/) \n> (pre-installed modules).**\n\n\n### Using variables\nYou can leverage the power of Python in markdown thanks to jinja2\nby writing this :\n\n```markdown\nThe unit price of product A is {{ unit_price }} EUR.\nTaking the standard discount into account,\nthe sale price of 50 units is {{ price(unit_price, 50) }} EUR.\n```\n\nIf you defined a `price()` function, this could translate into:\n\n```\nThe unit price of product A is 10.00 EUR.\nTaking the standard discount into account,\nthe sale price of 50 units is 450.00 EUR.\n```\n\n> The result of a macro can be **HTML code**:\nthis makes macros especially useful\nto make custom extensions to the syntax of markdown, such as buttons,\ncalls to email, embedding YouTube videos, etc.\n\nIt is possible to use the wide range of facilities provided by\n[Jinja2 templates](http://jinja.pocoo.org/docs/2.10/templates/) such\nas conditions (`{% if ... %}`) and loops (`{% for ... %}`).\n\n### Defining variables\n\nRegular **variables** can be defined in five ways:\n\n| No | Validity | For whom | Description |\n| --- | --- | --- | ---- |\n| 1. | global | designer of the website | in the `mkdocs.yml` file, under the `extra` heading |\n| 2. | global | contributor | in external yaml definition files |\n| 3. | global | programmer | in a `main.py` file (Python), by adding them to a dictionary |\n| 4. | local (page) | writer | in the YAML header of each Markdown page |\n| 5. | local (page) | writer | with a `{%set variable = value %}`  statement |\n\nIn addition, predefined objects are provided (local and global), typically\nfor the environment, project, page, git information, etc. \n\n\n### Macros and filters\nSimilarly programmers can define their own **macros** and **filters**,\nas Python functions in the `main.py` file, \nwhich the users will then be able to\nuse without much difficulty, as jinja2 directives in the markdown page.\n\n\n\n## Installation\n\n### Prerequisites\n\n  - Python version > 3.7\n  - MkDocs version >= 1.0\n    (compatible with post 1.5 versions)\n\n### Standard installation\n```\npip install mkdocs-macros-plugin\n```\n\n### \"Manual installation\"\nTo install the package, download it and run:\n\n```\npip install .\n# or...\npython setup.py install\n```\n\n### Development/test installation\nTo install the extra dependencies required for testing the package, run:\n\n```\npip install \"mkdocs-macros-plugin[test]\"\n```\n\n### Declaration of plugin\nDeclare the plugin in the file `mkdocs.yml`:\n\n```yaml\nplugins:\n    - search\n    - macros\n```\n\n> **Note:** If you have no `plugins` entry in your config file yet,\nyou should also add the `search` plugin.\nIf no `plugins` entry is set, MkDocs enables `search` by default; but\nif you use it, then you have to declare it explicitly.\n\nBy default, undefined variables are printed to the page as-is. If you\nwish for a page to fail on undefined variables, you should use the\nbelow configuration instead:\n\n```yaml\nplugins:\n    - search\n    - macros\n          on_undefined: strict\n```\n\nFor details and more options, see the [documentation](\nhttps://mkdocs-macros-plugin.readthedocs.io/en/latest/troubleshooting/#what-happens-if-a-variable-is-undefined).\n\n### Check that it works\nThe recommended way to check that the plugin works properly is to add the \nfollowing command in one of the pages of your site (let's say `info.md`):\n\n```\n{{ macros_info() }}\n```\n\nIn the terminal, restart the environment:\n\n```\n> mkdocs serve\n````\nYou will notice that additional information now appears in the terminal:\n\n```\nINFO    -  Building documentation...\n[macros] Macros arguments: {'module_name': 'main', 'include_yaml': [], 'j2_block_start_string': '', 'j2_block_end_string': '', 'j2_variable_start_string': '', 'j2_variable_end_string': ''}\n```\n\nWithin the browser (e.g. http://127.0.0.1:8000/info), you should\nsee a description of the plugin's environment: \n\n![macros_info()](macros_info.png)\n\nIf you see it that information, you should be all set.\n\nGive a good look at the General List, since it gives you an overview\nof what you can do out of the box with the macros plugin.\n\nThe other parts give you more detailed information.\n\n\n## Using pluglets\n\n### What are pluglets?\n\n**Pluglets** are small, easy-to-write programs\nthat use mkdocs-macro's foundation\nto offer services to mkdocs projects, which would normally\nbe offered by plugins.\n\nPluglets are Python packages, which can be hosted on github, and \ndistributed through [PyPI](https://pypi.org/).\n\n\n### How to add a pluglet to an mkdocs project?\n\nInstall it: \n\n```shell\npip install <pluglet_name>\n```\n\nDeclare it in the project's config (`mkdocs.yml`) file:\n\n```yaml\nplugins:\n  - search\n  - macros:\n      modules:\n        - <pluglet_name> \n```\n\n### How to write a pluglet?\n\n[See instructions in the documentation](https://mkdocs-macros-plugin.readthedocs.io/en/latest/pluglets/).\n\nA sample pluglet can be found in [mkdocs-test (github)](https://github.com/fralau/mkdocs-macros-test).\n\n### List of existing pluglets\n\n[See the wiki page on Github](https://github.com/fralau/mkdocs-macros-plugin/wiki/Mkdocs%E2%80%90Macros-Pluglets).\n"
+}

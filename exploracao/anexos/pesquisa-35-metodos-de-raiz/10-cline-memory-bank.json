@@ -1,0 +1,85 @@
+{
+  "metodo": "Cline Memory Bank",
+  "fontes": [
+    {"url": "https://docs.cline.bot/prompting/cline-memory-bank", "acessada_em": "2026-10-10", "status": "ok"}
+  ],
+  "o_que_e": {
+    "resumo": "Metodologia de documentação que mantém contexto do projeto entre sessões de um agente de código, por meio de arquivos Markdown estruturados em uma pasta memory-bank/ dentro do projeto.",
+    "citacao": "Memory Bank is a documentation methodology that transforms Cline from a stateless assistant into a persistent development partner. Through structured markdown files, Cline can “remember” your project details across sessions.",
+    "url": "https://docs.cline.bot/prompting/cline-memory-bank"
+  },
+  "nivel_raiz": [
+    {
+      "categoria": "memory-bank/projectbrief.md",
+      "o_que_mora": "Documento de fundação com requisitos centrais e objetivos do projeto; é a fonte de verdade do escopo.",
+      "citacao": "Foundation document with core requirements and goals",
+      "url": "https://docs.cline.bot/prompting/cline-memory-bank"
+    },
+    {
+      "categoria": "memory-bank/productContext.md",
+      "o_que_mora": "Por que o projeto existe, que problemas resolve e metas de experiência do usuário.",
+      "citacao": "Why the project exists, problems it solves, UX goals",
+      "url": "https://docs.cline.bot/prompting/cline-memory-bank"
+    },
+    {
+      "categoria": "memory-bank/activeContext.md",
+      "o_que_mora": "Foco atual, mudanças recentes e próximos passos; é o arquivo que mais muda.",
+      "citacao": "Current focus, recent changes, next steps (updates most frequently)",
+      "url": "https://docs.cline.bot/prompting/cline-memory-bank"
+    },
+    {
+      "categoria": "memory-bank/systemPatterns.md",
+      "o_que_mora": "Arquitetura, padrões de projeto e relações entre componentes.",
+      "citacao": "Architecture, design patterns, component relationships",
+      "url": "https://docs.cline.bot/prompting/cline-memory-bank"
+    },
+    {
+      "categoria": "memory-bank/techContext.md",
+      "o_que_mora": "Stack tecnológica, setup, restrições e dependências.",
+      "citacao": "Tech stack, setup, constraints, dependencies",
+      "url": "https://docs.cline.bot/prompting/cline-memory-bank"
+    },
+    {
+      "categoria": "memory-bank/progress.md",
+      "o_que_mora": "O que funciona, o que falta, status atual e problemas conhecidos.",
+      "citacao": "What works, what’s left, known issues",
+      "url": "https://docs.cline.bot/prompting/cline-memory-bank"
+    },
+    {
+      "categoria": "memory-bank/ (arquivos e pastas adicionais)",
+      "o_que_mora": "Documentação opcional de funcionalidades complexas, especificações de integração, API, estratégias de teste e procedimentos de deploy, criada conforme necessidade.",
+      "citacao": "Create additional files/folders within memory-bank/ when they help organize:",
+      "url": "https://docs.cline.bot/prompting/cline-memory-bank"
+    }
+  ],
+  "criterio_de_separacao": {
+    "resumo": "A fonte separa arquivos 'Core Files (Required)', que formam a hierarquia base, de 'Additional Context', criados livremente quando ajudam a organizar. Não há regra geral além dessa distinção e das descrições de cada arquivo.",
+    "citacao": "### Core Files (Required) ... ### Additional Context — Create additional files/folders within memory-bank/ when they help organize:",
+    "url": "https://docs.cline.bot/prompting/cline-memory-bank"
+  },
+  "quando_termina_ou_envelhece": {
+    "resumo": "Não há término definido. A memória é atualizada por gatilhos: ao descobrir padrões, após mudanças significativas, quando o usuário pede 'update memory bank' ou quando o contexto da janela enche. Recomenda-se atualizar após marcos significativos ou mudanças de direção, e o activeContext.md após cada sessão.",
+    "citacao": "Memory Bank updates occur when: 1. Discovering new project patterns 2. After implementing significant changes 3. When user requests with **update memory bank** (MUST review ALL files)",
+    "url": "https://docs.cline.bot/prompting/cline-memory-bank"
+  },
+  "conteudo_compartilhado_ou_reaproveitado": {
+    "resumo": "A fonte diz que os arquivos ficam no repositório do projeto, o que facilita compartilhar com colaboradores (no caso das Cline Rules por projeto). Não descreve reaproveitamento entre projetos; diz que a abordagem funciona com qualquer IA que leia docs.",
+    "citacao": "Cline Rules file is project-specific and stored in your repo, which makes it easy to share with collaborators.",
+    "url": "https://docs.cline.bot/prompting/cline-memory-bank"
+  },
+  "pastas_versus_tags_ou_links": {
+    "resumo": "Usa pasta: os arquivos ficam em memory-bank/ e a organização é hierárquica por pastas e arquivos Markdown. A fonte não menciona tags, links entre notas ou propriedades.",
+    "citacao": "memory-bank/ ├── projectbrief.md ├── productContext.md ├── activeContext.md ├── systemPatterns.md ├── techContext.md └── progress.md",
+    "url": "https://docs.cline.bot/prompting/cline-memory-bank"
+  },
+  "pensado_para_agentes_de_ia": {
+    "resumo": "Sim. O método é escrito como instrução para o agente: ele deve ler todos os arquivos no início de cada tarefa, pois não guarda memória entre sessões e depende inteiramente da Memory Bank.",
+    "citacao": "I MUST read ALL memory bank files at the start of EVERY task - this is not optional.",
+    "url": "https://docs.cline.bot/prompting/cline-memory-bank"
+  },
+  "nao_verificado": [
+    "criterio_de_separacao: a fonte não define uma regra geral de separação de conteúdo além de core files versus contexto adicional",
+    "pastas_versus_tags_ou_links: a fonte não menciona tags, links ou propriedades",
+    "quando_termina_ou_envelhece: a fonte não define critério de término nem de expiração do conteúdo"
+  ]
+}

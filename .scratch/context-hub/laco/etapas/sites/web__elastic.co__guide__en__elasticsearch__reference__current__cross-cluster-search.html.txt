@@ -1,0 +1,2093 @@
+Docs
+
+ /
+
+ Explore and analyze
+
+Cross-cluster search
+
+Cross-cluster search lets you run a single search request against one or more remote clusters. For example, you can use a cross-cluster search to filter and analyze log data stored on clusters in different data centers.
+
+ Search across Serverless projects
+
+To run searches across multiple Elastic Cloud Serverless projects, use cross-project search. For a comparison of CCS and CPS syntax, refer to Compare cross-project search and cross-cluster search.
+
+Supported APIs
+
+The following APIs support cross-cluster search:
+
+Search
+
+Async search
+
+Multi search
+
+Search template
+
+Multi search template
+
+Field capabilities
+
+Painless execute API
+
+Resolve Index API
+
+Vector tile search
+
+ ES|QL
+
+ EQL search
+
+ SQL search
+
+Prerequisites
+
+Cross-cluster search requires remote clusters. To set up remote clusters, see Remote clusters.
+
+To ensure your remote cluster configuration supports cross-cluster search, see Supported cross-cluster search configurations.
+
+To use cross-cluster search with ES|QL, both the local and remote clusters must have the appropriate subscription level.
+
+The local coordinating node must have the remote_cluster_client node role.
+
+If you use sniff mode, the local coordinating node must be able to connect to seed and gateway nodes on the remote cluster.
+
+We recommend using gateway nodes capable of serving as coordinating nodes. The seed nodes can be a subset of these gateway nodes.
+
+If you use proxy mode, the local coordinating node must be able to connect to the configured proxy_address. The proxy at this address must be able to route connections to gateway and coordinating nodes on the remote cluster.
+
+Cross-cluster search requires different security privileges on the local cluster and remote cluster. Refer to Configure privileges for details.
+
+Configure privileges for cross-cluster search
+
+After remote clusters are connected, you can configure which users on your local cluster can search data on remote clusters. The steps depend on the remote cluster security model in use:
+
+API key authentication (recommended), where you create roles with the required remote privileges on the local cluster.
+
+ TLS certificate authentication, where you create matching roles on both the local and remote clusters.
+
+You can manage roles in Kibana on the Roles page in the navigation menu or use the global search field. You can also use the role management APIs to add, update, remove, and retrieve roles dynamically. When you use the UI or APIs to manage roles, the roles are stored in an internal Elasticsearch index. When you use local files, the roles are only stored in those files. For more information, refer to Defining roles.
+
+The following examples use the create or update roles API and the create or update users API. You must have at least the manage_security cluster privilege to use these APIs.
+
+ Warning
+
+The following examples include the monitor cluster privilege on the local cluster to support asynchronous searches. This privilege is required when checking the status of an asynchronous cross-cluster search, but it also grants access to other monitoring operations on the local cluster. Kibana applications such as Dashboards and Discover use asynchronous search internally, so include monitor to ensure that cross-cluster search works reliably in Kibana. If a role is used only for direct synchronous requests to the _search API, you can omit monitor.
+
+API key authentication
+
+Authorization works in two parts:
+
+The cross-cluster API key used to connect to a remote cluster defines the maximum privileges that any user can exercise on remote clusters. This key is created and configured when you configure the remote cluster.
+
+Roles on the local cluster with remote indices privileges or remote cluster privileges grant remote access to specific users.
+
+By default, users have no remote privileges unless they are superusers or are assigned a role that includes remote privileges. A user's effective access is the intersection of their role privileges and the API key privileges.
+
+ Note
+
+The cross-cluster API key used by the local cluster to connect the remote cluster must have sufficient privileges to cover all remote indices privileges required by individual users.
+
+To grant a user cross-cluster search access, create a role on the local cluster, assign it the required privileges for the remote cluster alias and target indices, then assign that role to the user.
+
+For the target indices, grant the read remote index privilege. To use cross-cluster search in Kibana, also grant the view_index_metadata remote index privilege and the monitor local cluster privilege because some Kibana features rely on asynchronous search.
+
+Assuming the remote cluster is connected under the name of my_remote_cluster, the following request creates a remote-search role on the local cluster that allows searching the remote target-index index:
+
+ POST /_security/role/remote-search
+ {
+ "cluster": [ "monitor" ],
+ "remote_indices": [
+ {
+ "clusters": [ "my_remote_cluster" ],
+ "names": [
+ "target-index"
+ ],
+ "privileges": [
+ "read",
+ "view_index_metadata"
+ ]
+ }
+ ]
+}
+
+If the role is used only for synchronous search requests, omit the monitor cluster privilege.
+
+ POST /_security/role/remote-search
+ {
+ "cluster": [ "monitor" ],
+ "remote_indices": [
+ {
+ "clusters": [ "my_remote_cluster" ],
+ "names": [
+ "target-index"
+ ],
+ "privileges": [
+ "read",
+ "read_cross_cluster",
+ "view_index_metadata"
+ ]
+ }
+ ]
+}
+
+If the role is used only for synchronous search requests, omit the monitor cluster privilege.
+
+After creating the remote-search role, use the create or update users API to create a user on the local cluster and assign the remote-search role. For example, the following request assigns the remote-search role to a user named cross-search-user:
+
+ POST /_security/user/cross-search-user
+ {
+ "password" : "l0ng-r4nd0m-p@ssw0rd",
+ "roles" : [ "remote-search" ]
+}
+
+ Note
+
+You only need to create this user and role on the local cluster.
+
+The same user can hold multiple roles, or a single role can combine remote indices privileges with local index privileges and Kibana access roles.
+
+TLS certificate authentication
+
+ Warning
+
+Certificate based authentication is deprecated. Configure API key authentication instead or follow a guide on how to migrate remote clusters from certificate to API key authentication.
+
+After connecting remote clusters, create matching user roles on both the local and remote clusters and assign the necessary privileges. With TLS-based authentication, the local user's role names are forwarded to the remote cluster. The remote cluster authorizes access to its indices by evaluating its own role definitions with matching names.
+
+ Important
+
+You must use the same role names on both the local and remote clusters. For example, the following configuration uses the remote-search role name on both clusters. However, you can specify different role definitions on each cluster.
+
+Remote cluster
+
+On the remote cluster, the cross-cluster search role requires the following index privileges for the target indices:
+
+read
+
+ read_cross_cluster
+
+ Note
+
+If requests are issued on behalf of other users, then the authenticating user must have the run_as privilege on the remote cluster.
+
+The following requests create a remote-search role on the remote cluster:
+
+ POST /_security/role/remote-search
+ {
+ "indices": [
+ {
+ "names": [
+ "target-indices"
+ ],
+ "privileges": [
+ "read"
+ ]
+ }
+ ]
+}
+
+ POST /_security/role/remote-search
+ {
+ "indices": [
+ {
+ "names": [
+ "target-indices"
+ ],
+ "privileges": [
+ "read",
+ "read_cross_cluster"
+ ]
+ }
+ ]
+}
+
+Local cluster
+
+On the local cluster, which is the cluster used to initiate cross cluster search, assign users the remote-search role. The remote cluster grants access to its indices, so the local role doesn't need index privileges if users only need remote access. To support asynchronous searches, grant the local monitor cluster privilege. If users also need to query local indices or use other Kibana features, grant the required local privileges in the same role or assign the user additional roles.
+
+The following request creates a remote-search role on the local cluster with the monitor privilege and no local index privileges:
+
+ POST /_security/role/remote-search
+ {
+ "cluster": [ "monitor" ]
+}
+
+If the role is used only for synchronous search requests and users don't need local index privileges, leave the local role empty.
+
+After creating the remote-search role on each cluster, use the create or update users API to create a user on the local cluster and assign the remote-search role. For example, the following request assigns the remote-search role to a user named cross-search-user:
+
+ POST /_security/user/cross-search-user
+ {
+ "password" : "l0ng-r4nd0m-p@ssw0rd",
+ "roles" : [ "remote-search" ]
+}
+
+ Note
+
+You only need to create this user on the local cluster.
+
+Cross-cluster search examples
+
+Remote cluster setup
+
+The following cluster update settings API request adds three remote clusters: cluster_one, cluster_two, and cluster_three.
+
+ PUT _cluster/settings
+ {
+ "persistent": {
+ "cluster": {
+ "remote": {
+ "cluster_one": {
+ "seeds": [
+ "35.238.149.1:9443"
+ ],
+ "skip_unavailable": true
+ },
+ "cluster_two": {
+ "seeds": [
+ "35.238.149.2:9443"
+ ],
+ "skip_unavailable": false
+ },
+ "cluster_three": {
+ "seeds": [
+ "35.238.149.3:9443"
+ ]
+ }
+ }
+ }
+ }
+}
+
+Since skip_unavailable was not set on cluster_three, it uses the default of true. See the Optional remote clusters section for details.
+
+Search a single remote cluster
+
+In the search request, you specify data streams and indices on a remote cluster as <remote_cluster_name>:<target>.
+
+The following search API request searches the my-index-000001 index on a single remote cluster, cluster_one.
+
+ GET /cluster_one:my-index-000001/_search
+ {
+ "size": 1,
+ "query": {
+ "match": {
+ "user.id": "kimchy"
+ }
+ },
+ "_source": ["user.id", "message", "http.response.status_code"]
+}
+
+The API returns the following response. Note that when you search one or more remote clusters, a _clusters section is included to provide information about the search on each cluster.
+
+{
+ "took": 150,
+ "timed_out": false,
+ "_shards": {
+ "total": 12,
+ "successful": 12,
+ "failed": 0,
+ "skipped": 0
+ },
+ "_clusters": {
+ "total": 1,
+ "successful": 1,
+ "skipped": 0,
+ "running": 0,
+ "partial": 0,
+ "failed": 0,
+ "details": {
+ "cluster_one": {
+ "status": "successful",
+ "indices": "my-index-000001",
+ "took": 148,
+ "timed_out": false,
+ "_shards": {
+ "total": 12,
+ "successful": 12,
+ "skipped": 0,
+ "failed": 0
+ }
+ }
+ }
+ },
+ "hits": {
+ "total" : {
+ "value": 1,
+ "relation": "eq"
+ },
+ "max_score": 1,
+ "hits": [
+ {
+ "_index": "cluster_one:my-index-000001",
+ "_id": "0",
+ "_score": 1,
+ "_source": {
+ "user": {
+ "id": "kimchy"
+ },
+ "message": "GET /search HTTP/1.1 200 1070000",
+ "http": {
+ "response":
+ {
+ "status_code": 200
+ }
+ }
+ }
+ }
+ ]
+ }
+}
+
+This section of counters shows all possible cluster search states and how many cluster searches are currently in that state. The clusters can be in one of the following statuses:
+
+running
+
+successful (searches on all shards were successful)
+
+partial (searches on at least one shard of the cluster were successful and at least one failed)
+
+skipped (the search failed on a cluster marked with skip_unavailable=true)
+
+failed (the search failed on a cluster marked with skip_unavailable=false)
+
+The _clusters/details section shows metadata about the search on each cluster.
+
+The index expression supplied by the user. If you provide a wildcard such as logs-*, this section will show the value with the wildcard, not the concrete indices being searched.
+
+How long (in milliseconds) the sub-search took on that cluster.
+
+The shard details for the sub-search on that cluster.
+
+The search response body includes the name of the remote cluster in the _index parameter.
+
+Search multiple remote clusters
+
+The following search API request searches the my-index-000001 index on three clusters:
+
+The local ("querying") cluster, with 10 shards
+
+Two remote clusters, cluster_one, with 12 shards and cluster_two with 6 shards.
+
+ GET /my-index-000001,cluster_one:my-index-000001,cluster_two:my-index-000001/_search
+ {
+ "query": {
+ "match": {
+ "user.id": "kimchy"
+ }
+ },
+ "_source": ["user.id", "message", "http.response.status_code"]
+}
+
+The API returns the following response:
+
+{
+ "took": 150,
+ "timed_out": false,
+ "num_reduce_phases": 4,
+ "_shards": {
+ "total": 28,
+ "successful": 28,
+ "failed": 0,
+ "skipped": 0
+ },
+ "_clusters": {
+ "total": 3,
+ "successful": 3,
+ "skipped": 0,
+ "running": 0,
+ "partial": 0,
+ "failed": 0,
+ "details": {
+ "(local)": {
+ "status": "successful",
+ "indices": "my-index-000001",
+ "took": 21,
+ "timed_out": false,
+ "_shards": {
+ "total": 10,
+ "successful": 10,
+ "skipped": 0,
+ "failed": 0
+ }
+ },
+ "cluster_one": {
+ "status": "successful",
+ "indices": "my-index-000001",
+ "took": 48,
+ "timed_out": false,
+ "_shards": {
+ "total": 12,
+ "successful": 12,
+ "skipped": 0,
+ "failed": 0
+ }
+ },
+ "cluster_two": {
+ "status": "successful",
+ "indices": "my-index-000001",
+ "took": 141,
+ "timed_out": false,
+ "_shards": {
+ "total" : 6,
+ "successful" : 6,
+ "skipped": 0,
+ "failed": 0
+ }
+ }
+ }
+ },
+ "hits": {
+ "total" : {
+ "value": 3,
+ "relation": "eq"
+ },
+ "max_score": 1,
+ "hits": [
+ {
+ "_index": "my-index-000001",
+ "_id": "0",
+ "_score": 2,
+ "_source": {
+ "user": {
+ "id": "kimchy"
+ },
+ "message": "GET /search HTTP/1.1 200 1070000",
+ "http": {
+ "response":
+ {
+ "status_code": 200
+ }
+ }
+ }
+ },
+ {
+ "_index": "cluster_one:my-index-000001",
+ "_id": "0",
+ "_score": 1,
+ "_source": {
+ "user": {
+ "id": "kimchy"
+ },
+ "message": "GET /search HTTP/1.1 200 1070000",
+ "http": {
+ "response":
+ {
+ "status_code": 200
+ }
+ }
+ }
+ },
+ {
+ "_index": "cluster_two:my-index-000001",
+ "_id": "0",
+ "_score": 1,
+ "_source": {
+ "user": {
+ "id": "kimchy"
+ },
+ "message": "GET /search HTTP/1.1 200 1070000",
+ "http": {
+ "response":
+ {
+ "status_code": 200
+ }
+ }
+ }
+ }
+ ]
+ }
+}
+
+The local (querying) cluster is identified as "(local)".
+
+This document’s _index parameter doesn’t include a cluster name. This means the document came from the local cluster.
+
+This document came from cluster_one.
+
+This document came from cluster_two.
+
+Using async search for cross-cluster search with ccs_minimize_roundtrips=true
+
+Remote clusters can be queried asynchronously using the async search API. A cross-cluster search accepts a ccs_minimize_roundtrips parameter. For asynchronous searches it defaults to false. (Note: for synchronous searches it defaults to true.) See Considerations for choosing whether to minimize roundtrips in a cross-cluster search to learn more about this option.
+
+The following request does an asynchronous search of the my-index-000001 index using ccs_minimize_roundtrips=true against three clusters (same ones as the previous example).
+
+ POST /my-index-000001,cluster_one:my-index-000001,cluster_two:my-index-000001/_async_search?ccs_minimize_roundtrips=true
+ {
+ "query": {
+ "match": {
+ "user.id": "kimchy"
+ }
+ },
+ "_source": ["user.id", "message", "http.response.status_code"]
+}
+
+The API returns the following response:
+
+{
+ "id": "FklQYndoTDJ2VEFlMEVBTzFJMGhJVFEaLVlKYndBWWZSMUdicUc4WVlEaFl4ZzoxNTU=",
+ "is_partial": true,
+ "is_running": true,
+ "start_time_in_millis": 1685563581380,
+ "expiration_time_in_millis": 1685995581380,
+ "response": {
+ "took": 1020,
+ "timed_out": false,
+ "num_reduce_phases": 0,
+ "_shards": {
+ "total": 10,
+ "successful": 0,
+ "failed": 0,
+ "skipped": 0
+ },
+ "_clusters": {
+ "total" : 3,
+ "successful" : 0,
+ "skipped": 0,
+ "running": 3,
+ "partial": 0,
+ "failed": 0,
+ "details": {
+ "(local)": {
+ "status": "running",
+ "indices": "my-index-000001",
+ "timed_out": false
+ },
+ "cluster_one": {
+ "status": "running",
+ "indices": "my-index-000001",
+ "timed_out": false
+ },
+ "cluster_one": {
+ "status": "running",
+ "indices": "my-index-000001",
+ "timed_out": false
+ }
+ }
+ },
+ "hits": {
+ "total" : {
+ "value": 0,
+ "relation": "eq"
+ },
+ "max_score": null,
+ "hits": []
+ }
+ }
+}
+
+The async search id.
+
+When ccs_minimize_roundtrips = true and searches on the remote clusters are still running, this section indicates the number of shards in scope for the local cluster only and any clusters that have finished their search so far. This will be updated to include the total number of shards across all clusters only when the search is completed. When ccs_minimize_roundtrips= false, the total shard count across all clusters is known up front and will be correct.
+
+The _clusters section indicates that 3 clusters are in scope for the search and all are currently in the "running" state.
+
+If you query the get async search endpoint while the query is still running, you will see an update in the _clusters and _shards section of the response as each cluster finishes its search.
+
+If you set ccs_minimize_roundtrips=false, then you will also see partial aggregation results from shards (from any cluster) that have finished, but no results are shown in "hits" section until the search has completed.
+
+If you set ccs_minimize_roundtrips=true, then you will also see partial results in the "hits" and "aggregations" section of the response from all clusters that have completed so far. (Note: you can also see partial aggregation results from the local cluster even before it finishes.) The example below shows the ccs_minimize_roundtrips=true case.
+
+ GET /_async_search/FklQYndoTDJ2VEFlMEVBTzFJMGhJVFEaLVlKYndBWWZSMUdicUc4WVlEaFl4ZzoxNTU=
+
+Response:
+
+{
+ "id": "FklQYndoTDJ2VEFlMEVBTzFJMGhJVFEaLVlKYndBWWZSMUdicUc4WVlEaFl4ZzoxNTU=",
+ "is_partial": true,
+ "is_running": true,
+ "start_time_in_millis": 1685564911108,
+ "expiration_time_in_millis": 1685996911108,
+ "response": {
+ "took": 11164,
+ "timed_out": false,
+ "terminated_early": false,
+ "_shards": {
+ "total": 22,
+ "successful": 22,
+ "skipped": 0,
+ "failed": 0
+ },
+ "_clusters": {
+ "total": 3,
+ "successful": 2,
+ "skipped": 0,
+ "running": 1,
+ "partial": 0,
+ "failed": 0,
+ "details": {
+ "(local)": {
+ "status": "successful",
+ "indices": "my-index-000001",
+ "took": 2034,
+ "timed_out": false,
+ "_shards": {
+ "total": 10,
+ "successful": 10,
+ "skipped": 0,
+ "failed": 0
+ }
+ },
+ "cluster_one": {
+ "status": "successful",
+ "indices": "my-index-000001",
+ "took": 9039,
+ "timed_out": false,
+ "_shards": {
+ "total": 12,
+ "successful": 12,
+ "skipped": 0,
+ "failed": 0
+ }
+ },
+ "cluster_two": {
+ "status": "running",
+ "indices": "my-index-000001",
+ "timed_out": false
+ }
+ }
+ },
+ "hits": {
+ "total": {
+ "value": 542,
+ "relation": "eq"
+ },
+ "max_score": 1.7232,
+ "hits": [...list of hits here...]
+ }
+ }
+}
+
+Searches on all shards of the local cluster and remote cluster_one cluster have completed.
+
+Since two clusters have completed the search, the "successful" clusters entry is set to 2 and "running" clusters entry is reduced to 1. The _clusters response metadata will be updated as each cluster finishes.
+
+Number of hits from the completed searches so far. Final hits are not shown until searches on all clusters have been completed and merged. Thus, the "hits" section can change as you call this endpoint until the search is completely done.
+
+After searches on all the clusters have completed, querying the get async search endpoint will show the final status of the _clusters and _shards section as well as the hits and any aggregation results.
+
+ GET /_async_search/FklQYndoTDJ2VEFlMEVBTzFJMGhJVFEaLVlKYndBWWZSMUdicUc4WVlEaFl4ZzoxNTU=
+
+Response:
+
+{
+ "id": "FklQYndoTDJ2VEFlMEVBTzFJMGhJVFEaLVlKYndBWWZSMUdicUc4WVlEaFl4ZzoxNTU=",
+ "is_partial": false,
+ "is_running": false,
+ "start_time_in_millis": 1685564911108,
+ "expiration_time_in_millis": 1685996911108,
+ "completion_time_in_millis": 1685564938727,
+ "response": {
+ "took": 27619,
+ "timed_out": false,
+ "num_reduce_phases": 4,
+ "_shards": {
+ "total": 28,
+ "successful": 28,
+ "skipped": 0,
+ "failed": 0
+ },
+ "_clusters": {
+ "total": 3,
+ "successful": 3,
+ "skipped": 0,
+ "running": 0,
+ "partial": 0,
+ "failed": 0,
+ "details": {
+ "(local)": {
+ "status": "successful",
+ "indices": "my-index-000001",
+ "took": 2034,
+ "timed_out": false,
+ "_shards": {
+ "total": 10,
+ "successful": 10,
+ "skipped": 0,
+ "failed": 0
+ }
+ },
+ "cluster_one": {
+ "status": "successful",
+ "indices": "my-index-000001",
+ "took": 9039,
+ "timed_out": false,
+ "_shards": {
+ "total": 12,
+ "successful": 12,
+ "skipped": 0,
+ "failed": 0
+ }
+ },
+ "cluster_two": {
+ "status": "successful",
+ "indices": "my-index-000001",
+ "took": 27550,
+ "timed_out": false,
+ "_shards": {
+ "total": 6,
+ "successful": 6,
+ "skipped": 0,
+ "failed": 0
+ }
+ }
+ }
+ },
+ "hits": {
+ "total": {
+ "value": 1067,
+ "relation": "eq"
+ },
+ "max_score": 1.8293576,
+ "hits": [...list of hits here...]
+ }
+ }
+}
+
+Once the search has finished, the completion_time is present.
+
+The _shards section is now updated to show that 28 total shards were searched across all clusters and that all were successful.
+
+The _clusters section shows that searches on all 3 clusters were successful.
+
+Cross-cluster search failures
+
+Failures during a cross-cluster search can result in one of two conditions:
+
+partial results (2xx HTTP status code)
+
+a failed search (4xx or 5xx HTTP status code)
+
+Failure details will be present in the search response in both cases.
+
+A search will be failed if a cluster marked with skip_unavailable=false is unavailable, disconnects during the search, or has search failures on all shards. In all other cases, failures will result in partial results.
+
+Search failures on individual shards will be present in both the _shards section and the _clusters section of the response.
+
+A failed search will have an additional top-level errors entry in the response.
+
+Here is an example of a search with partial results due to a failure on one shard of one cluster. The search would be similar to ones shown previously. The _async_search/status endpoint is used here to show the completion status and not show the hits.
+
+ GET /_async_search/status/FmpwbThueVB4UkRDeUxqb1l4akIza3cbWEJyeVBPQldTV3FGZGdIeUVabXBldzoyMDIw
+
+Response:
+
+{
+ "id": "FmpwbThueVB4UkRDeUxqb1l4akIza3cbWEJyeVBPQldTV3FGZGdIeUVabXBldzoyMDIw",
+ "is_partial": true,
+ "is_running": false,
+ "start_time_in_millis": 1692106901478,
+ "expiration_time_in_millis": 1692538901478,
+ "completion_time_in_millis": 1692106903547,
+ "response": {
+ "took": 2069,
+ "timed_out": false,
+ "num_reduce_phases": 4,
+ "_shards": {
+ "total": 28,
+ "successful": 27,
+ "skipped": 0,
+ "failed": 1,
+ "failures": [
+ {
+ "shard": 1,
+ "index": "cluster_two:my-index-000001",
+ "node": "LMpUnAu0QEeCUMfg_56sAg",
+ "reason": {
+ "type": "query_shard_exception",
+ "reason": "failed to create query: [my-index-000001][1] exception message here",
+ "index_uuid": "4F2VWx8RQSeIhUE-nksvCQ",
+ "index": "cluster_two:my-index-000001",
+ "caused_by": {
+ "type": "runtime_exception",
+ "reason": "runtime_exception: [my-index-000001][1] exception message here"
+ }
+ }
+ }
+ ]
+ },
+ "_clusters": {
+ "total": 3,
+ "successful": 2,
+ "skipped": 0,
+ "running": 0,
+ "partial": 1,
+ "failed": 0,
+ "details": {
+ "(local)": {
+ "status": "successful",
+ "indices": "my-index-000001",
+ "took": 1753,
+ "timed_out": false,
+ "_shards": {
+ "total": 10,
+ "successful": 10,
+ "skipped": 0,
+ "failed": 0
+ }
+ },
+ "cluster_one": {
+ "status": "successful",
+ "indices": "my-index-000001",
+ "took": 2054,
+ "timed_out": false,
+ "_shards": {
+ "total": 12,
+ "successful": 12,
+ "skipped": 0,
+ "failed": 0
+ }
+ },
+ "cluster_two": {
+ "status": "partial",
+ "indices": "my-index-000001",
+ "took": 2039,
+ "timed_out": false,
+ "_shards": {
+ "total": 6,
+ "successful": 5,
+ "skipped": 0,
+ "failed": 1
+ },
+ "failures": [
+ {
+ "shard": 1,
+ "index": "cluster_two:my-index-000001",
+ "node": "LMpUnAu0QEeCUMfg_56sAg",
+ "reason": {
+ "type": "query_shard_exception",
+ "reason": "failed to create query: [my-index-000001][1] exception message here",
+ "index_uuid": "4F2VWx8RQSeIhUE-nksvCQ",
+ "index": "cluster_two:my-index-000001",
+ "caused_by": {
+ "type": "runtime_exception",
+ "reason": "runtime_exception: [my-index-000001][1] exception message here"
+ }
+ }
+ }
+ ]
+ }
+ }
+ },
+ "hits": {
+ }
+ }
+}
+
+The search results are marked as partial, since at least one shard search failed.
+
+The _shards section includes shard failure info.
+
+Clusters that have partial results are still marked as "partial". They are marked with status "skipped" (or "failed") only if no data was returned from the search.
+
+The partial status has been applied to the cluster with partial results.
+
+The failed shard count is shown.
+
+The shard failures are listed under the cluster/details entry also.
+
+Here is an example where both cluster_one and cluster_two lost connectivity during a cross-cluster search. Since cluster_one is marked as skip_unavailable=true, its status is skipped and since cluster_two is marked as skip_unavailable=false, its status is failed. Since there was a failed cluster, a top level error is also present and this returns an HTTP status of 500 (not shown).
+
+If you want the search to still return results even when a cluster is unavailable, set skip_unavailable=true for all the remote clusters.
+
+ GET /_async_search/FjktRGJ1Y2w1U0phLTRhZnVyeUZ2MVEbWEJyeVBPQldTV3FGZGdIeUVabXBldzo5NzA4
+
+Response:
+
+{
+ "id": "FjktRGJ1Y2w1U0phLTRhZnVyeUZ2MVEbWEJyeVBPQldTV3FGZGdIeUVabXBldzo5NzA4",
+ "is_partial": true,
+ "is_running": false,
+ "start_time_in_millis": 1692112102650,
+ "expiration_time_in_millis": 1692544102650,
+ "completion_time_in_millis": 1692112106177,
+ "response": {
+ "took": 3527,
+ "timed_out": false,
+ "terminated_early": false,
+ "_shards": {
+ "total": 10,
+ "successful": 10,
+ "skipped": 0,
+ "failed": 0
+ },
+ "_clusters": {
+ "total": 3,
+ "successful": 1,
+ "skipped": 1,
+ "running": 0,
+ "partial": 0,
+ "failed": 1,
+ "details": {
+ "(local)": {
+ "status": "successful",
+ "indices": "my-index-000001",
+ "took": 1473,
+ "timed_out": false,
+ "_shards": {
+ "total": 10,
+ "successful": 10,
+ "skipped": 0,
+ "failed": 0
+ }
+ },
+ "cluster_one": {
+ "status": "skipped",
+ "indices": "my-index-000001",
+ "timed_out": false,
+ "failures": [
+ {
+ "shard": -1,
+ "index": null,
+ "reason": {
+ "type": "node_disconnected_exception",
+ "reason": "[myhostname1][35.238.149.1:9443][indices:data/read/search] disconnected"
+ }
+ }
+ ]
+ },
+ "cluster_two": {
+ "status": "failed",
+ "indices": "my-index-000001",
+ "timed_out": false,
+ "failures": [
+ {
+ "shard": -1,
+ "index": null,
+ "reason": {
+ "type": "node_disconnected_exception",
+ "reason": "[myhostname2][35.238.149.2:9443][indices:data/read/search] disconnected"
+ }
+ }
+ ]
+ }
+ }
+ },
+ "hits": {
+ },
+ }
+ "error": {
+ "type": "status_exception",
+ "reason": "error while executing search",
+ "caused_by": {
+ "type": "node_disconnected_exception",
+ "reason": "[myhostname2][35.238.149.2:9443][indices:data/read/search] disconnected"
+ }
+ }
+}
+
+The shard accounting will often be only partial when errors like this occur, since we need to be able to get shard info from remote clusters on each search.
+
+cluster_one disconnected during the search and it returned no results. Since it is marked in the remote cluster configuration as skip_unavailable=true, its status is "skipped", which will not fail the entire search.
+
+The failures list shows that the remote cluster node disconnected from the querying cluster.
+
+cluster_two status is "failed", since it is marked in the remote cluster configuration as skip_unavailable=false.
+
+A top level error entry is included when there is a "failed" cluster.
+
+Excluding clusters or indices from a cross-cluster search
+
+If you use a wildcard to include a large list of clusters and/or indices, you can explicitly exclude one or more clusters or indices with a - minus sign in front of the cluster or index.
+
+To exclude an entire cluster, you would put the minus sign in front of the cluster alias, such as: -mycluster:*. When excluding a cluster, you must use * in the index position or an error will be returned.
+
+To exclude a specific remote index, you would put the minus sign in front of the index, such as mycluster:-myindex.
+
+ You can also put the minus sign in front of the cluster alias. For example, -mycluster:myindex is equivalent to mycluster:-myindex. This works for any index name or wildcard pattern other than *.
+
+Combining both prefixes, such as -mycluster:-myindex, is not valid and is rejected.
+
+Exclude a remote cluster
+
+Here’s how you would exclude cluster_three from a cross-cluster search that uses a wildcard to specify a list of clusters:
+
+ POST /my-index-000001,cluster*:my-index-000001,-cluster_three:*/_async_search
+ {
+ "query": {
+ "match": {
+ "user.id": "kimchy"
+ }
+ },
+ "_source": ["user.id", "message", "http.response.status_code"]
+}
+
+The cluster* notation would naturally include cluster_one, cluster_two and cluster_three. To exclude cluster_three use a - before the cluster name along with a simple wildcard * in the index position. This indicates that you do not want the search to make any contact with cluster_three.
+
+Exclude a remote index
+
+Suppose you want to search all indices matching my-index-* but you want to exclude my-index-000001 on cluster_three. Here’s how you could do that:
+
+ POST /my-index-000001,cluster*:my-index-*,cluster_three:-my-index-000001/_async_search
+ {
+ "query": {
+ "match": {
+ "user.id": "kimchy"
+ }
+ },
+ "_source": ["user.id", "message", "http.response.status_code"]
+}
+
+This will not exclude cluster_three from the search. It will still be contacted and told to search any indexes matching my-index-* except for my-index-000001.
+
+ For this request, cluster_three:-my-index-000001 can also be written as -cluster_three:my-index-000001. Both forms are equivalent.
+
+Using async search for cross-cluster search with ccs_minimize_roundtrips=false
+
+The _shards and _clusters section of the response behave differently when ccs_minimize_roundtrips is false.
+
+Key differences are:
+
+The _shards section total count will be accurate immediately as the total number of shards is gathered from all clusters before the search starts.
+
+The _shards section will be incrementally updated as searches on individual shards complete, whereas when minimizing roundtrips, the shards section will be updated as searches on shards complete on the local cluster and then as each remote cluster reports back its full search results.
+
+The _cluster section starts off listing all of its shard counts, since they are also obtained before the query phase begins.
+
+Example using the same setup as in the previous section (ccs_minimize_roundtrips=true):
+
+ POST /my-index-000001,cluster_one:my-index-000001,cluster_two:my-index-000001/_async_search?ccs_minimize_roundtrips=false
+ {
+ "query": {
+ "match": {
+ "user.id": "kimchy"
+ }
+ },
+ "_source": ["user.id", "message", "http.response.status_code"]
+}
+
+The API returns the following response if the query takes longer than the wait_for_completion_timeout duration (see Async search).
+
+{
+ "id": "FklQYndoTDJ2VEFlMEVBTzFJMGhJVFEaLVlKYndBWWZSMUdicUc4WVlEaFl4ZzoxNTU=",
+ "is_partial": true,
+ "is_running": true,
+ "start_time_in_millis": 1685563581380,
+ "expiration_time_in_millis": 1685995581380,
+ "response": {
+ "took": 1020,
+ "timed_out": false,
+ "_shards": {
+ "total": 28,
+ "successful": 0,
+ "failed": 0,
+ "skipped": 0
+ },
+ "_clusters": {
+ "total" : 3,
+ "successful": 0,
+ "skipped": 0,
+ "running": 3,
+ "partial": 0,
+ "failed": 0,
+ "details": {
+ "(local)": {
+ "status": "running",
+ "indices": "my-index-000001",
+ "timed_out": false,
+ "_shards": {
+ "total": 10,
+ "successful": 0,
+ "skipped": 0,
+ "failed": 0
+ }
+ },
+ "cluster_one": {
+ "status": "running",
+ "indices": "my-index-000001",
+ "timed_out": false,
+ "_shards": {
+ "total": 12,
+ "successful": 0,
+ "skipped": 0,
+ "failed": 0
+ }
+ },
+ "cluster_two": {
+ "status": "running",
+ "indices": "my-index-000001",
+ "timed_out": false,
+ "_shards": {
+ "total": 6,
+ "successful": 0,
+ "skipped": 0,
+ "failed": 0
+ }
+ }
+ }
+ },
+ "hits": {
+ "total" : {
+ "value": 0,
+ "relation": "eq"
+ },
+ "max_score": null,
+ "hits": []
+ }
+ }
+}
+
+All shards from all clusters in scope for the search are listed here. Watch this section and/or the _clusters section for updates to monitor search progress.
+
+From the _clusters section we can see that all the clusters are in "running" state.
+
+The _clusters section shows that shard information was successfully gathered from all 3 clusters and the total shard count on each cluster is listed.
+
+Optional remote clusters
+
+By default, a cross-cluster search fails if a remote cluster in the request is unavailable or returns an error where the search on all shards failed. Use the skip_unavailable cluster setting to mark a specific remote cluster as either optional or required for cross-cluster search.
+
+ Important
+
+In Elasticsearch 8.15, the default value for skip_unavailable was changed from false to true. Before Elasticsearch 8.15, if you want a cluster to be treated as optional for a cross-cluster search, then you need to set that configuration. From Elasticsearch 8.15 forward, you need to set the configuration in order to make a cluster required for the cross-cluster search.
+
+If skip_unavailable is true, a cross-cluster search:
+
+Skips the remote cluster if its nodes are unavailable during the search. The response’s _clusters.skipped value contains a count of any skipped clusters and the _clusters.details section of the response will show a skipped status.
+
+Ignores errors returned by the remote cluster, such as errors related to unavailable shards or indices. This can include errors related to search parameters such as allow_no_indices and ignore_unavailable.
+
+Ignores the allow_partial_search_results parameter and the related search.default_allow_partial_results cluster setting when searching the remote cluster. This means searches on the remote cluster may return partial results.
+
+You can modify the skip_unavailable setting by editing the cluster.remote.<cluster_alias> settings in the elasticsearch.yml config file. For example:
+
+cluster:
+ remote:
+ cluster_one:
+ seeds: 35.238.149.1:9443
+ skip_unavailable: false
+ cluster_two:
+ seeds: 35.238.149.2:9443
+ skip_unavailable: true
+
+Or you can set the cluster.remote settings via the cluster update settings API as shown here.
+
+When a remote cluster configured with skip_unavailable: true (such as cluster_two above) is disconnected or unavailable during a cross-cluster search, Elasticsearch won’t include matching documents from that cluster in the final results and the search will be considered successful (HTTP status 200 OK).
+
+If at least one shard from a cluster provides search results, those results will be used and the search will return partial data. This is true regardless of the skip_unavailable setting of the remote cluster. (If doing cross-cluster search using async search, the is_partial field will be set to true to indicate partial results.)
+
+How cross-cluster search handles network delays
+
+Because cross-cluster search involves sending requests to remote clusters, any network delays can impact search speed. To avoid slow searches, cross-cluster search offers two options for handling network delays:
+
+Minimize network roundtrips
+
+By default, Elasticsearch reduces the number of network roundtrips between remote clusters. This reduces the impact of network delays on search speed. However, Elasticsearch can’t reduce network roundtrips for large search requests, such as those including a scroll or inner hits.
+
+See Considerations for choosing whether to minimize roundtrips in a cross-cluster search to learn how this option works.
+
+Don’t minimize network roundtrips
+
+For search requests that include a scroll or inner hits, Elasticsearch sends multiple outgoing and ingoing requests to each remote cluster. You can also choose this option by setting the ccs_minimize_roundtrips parameter to false. While typically slower, this approach may work well for networks with low latency.
+
+See Don’t minimize network roundtrips to learn how this option works.
+
+ Note
+
+The vector tile search API always minimizes network roundtrips and doesn’t include the ccs_minimize_roundtrips parameter.
+
+ Note
+
+The Approximate kNN search doesn’t support minimizing network roundtrips, and sets the parameter ccs_minimize_roundtrips to false.
+
+Considerations for choosing whether to minimize roundtrips in a cross-cluster search
+
+Advantages of minimizing roundtrips:
+
+For cross-cluster searches that query a large number of shards, the minimize roundtrips option typically provides much better performance. This is especially true if the clusters being searched have high network latency (e.g., distant geographic regions).
+
+When doing an async cross-cluster search, the GET _async_search/<search_id> endpoint will provide both top hits and aggregations from all clusters that have reported back results even while the search is still running on other clusters. In other words, it provides "incremental" partial results as the search progresses. Note that if the local cluster is included in the search, it has special handling in that it can show partial aggregations (but not partial top hits) while the search on the local cluster is still running.
+
+Not minimizing roundtrips when using async-search allows you to get back incremental results of any aggregations in your query as individual shards complete (rather than whole clusters) while the search is still running, but top hits are not shown until the search has completed on all clusters.
+
+By default, synchronous searches minimize roundtrips, while asynchronous searches do not. You can override the default by using the ccs_minimize_roundtrips parameter, setting it to either true or false, as shown in several examples earlier in this document.
+
+Minimize network roundtrips
+
+Here’s how cross-cluster search works when you minimize network roundtrips.
+
+You send a cross-cluster search request to your local cluster. A coordinating node in that cluster receives and parses the request.
+
+The coordinating node sends a single search request to each cluster, including the local cluster. Each cluster performs the search request independently, applying its own cluster-level settings to the request.
+
+Each remote cluster sends its search results back to the coordinating node.
+
+After collecting results from each cluster, the coordinating node returns the final results in the cross-cluster search response.
+
+Don’t minimize network roundtrips
+
+Here’s how cross-cluster search works when you don’t minimize network roundtrips.
+
+You send a cross-cluster search request to your local cluster. A coordinating node in that cluster receives and parses the request.
+
+The coordinating node sends a "search shards" transport layer request to each remote cluster to have them to perform a "can match" search to determine which shards on each cluster should be searched.
+
+Each remote cluster sends its response back to the coordinating node. This response contains information about the indices and shards the cross-cluster search request will be executed on.
+
+The coordinating node sends a search request to each shard, including those in its own cluster. Each shard performs the search request independently.
+
+ Warning
+
+When network roundtrips aren’t minimized, the search is executed as if all data were in the coordinating node’s cluster. We recommend updating cluster-level settings or search request parameters that limit searches, such as action.search.shard_count.limit, pre_filter_shard_size, and max_concurrent_shard_requests, to account for this. If these limits are too low, the search may be rejected.
+
+Each shard sends its search results back to the coordinating node.
+
+After collecting results from each cluster, the coordinating node returns the final results in the cross-cluster search response.
+
+Supported cross-cluster search configurations
+
+Elastic supports searches from a local cluster to a remote cluster running:
+
+The previous minor version.
+
+The same version.
+
+A newer minor version in the same major version.
+
+Elastic also supports searches from a local cluster running the last minor version of a major version to a remote cluster running any minor version in the following major version. For example, a local 8.19 cluster can search any remote 9.x cluster. However, a search from a local 9.0 cluster to a remote 8.17 or 7.17 cluster is not supported.
+
+ Note
+
+Version 8.19 is the final minor release in the 8.x series. Unlike past releases, 8.18 was launched simultaneously with 9.0, allowing cross-version compatibility between them. Hence, as shown in the compatibility table, 8.18 can only search 9.0 clusters in the 9.x series, while 8.19 supports searching 9.0 clusters and later.
+
+Remote cluster version
+
+Local cluster version
+7.17
+8.0
+8.1
+8.2
+8.3
+8.4
+8.5
+8.6
+8.7
+8.8
+8.9
+8.10
+8.11
+8.12
+8.13
+8.14
+8.15
+8.16
+8.17
+8.18
+8.19
+9.0
+9.1
+9.2
+9.3
+9.4
+9.5
+
+7.17
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+❌
+❌
+❌
+❌
+❌
+❌
+
+8.0
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+❌
+❌
+❌
+❌
+❌
+❌
+
+8.1
+❌
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+❌
+❌
+❌
+❌
+❌
+❌
+
+8.2
+❌
+❌
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+❌
+❌
+❌
+❌
+❌
+❌
+
+8.3
+❌
+❌
+❌
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+❌
+❌
+❌
+❌
+❌
+❌
+
+8.4
+❌
+❌
+❌
+❌
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+❌
+❌
+❌
+❌
+❌
+❌
+
+8.5
+❌
+❌
+❌
+❌
+❌
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+❌
+❌
+❌
+❌
+❌
+❌
+
+8.6
+❌
+❌
+❌
+❌
+❌
+❌
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+❌
+❌
+❌
+❌
+❌
+❌
+
+8.7
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+❌
+❌
+❌
+❌
+❌
+❌
+
+8.8
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+❌
+❌
+❌
+❌
+❌
+❌
+
+8.9
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+❌
+❌
+❌
+❌
+❌
+❌
+
+8.10
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+❌
+❌
+❌
+❌
+❌
+❌
+
+8.11
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+❌
+❌
+❌
+❌
+❌
+❌
+
+8.12
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+❌
+❌
+❌
+❌
+❌
+❌
+
+8.13
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+❌
+❌
+❌
+❌
+❌
+❌
+
+8.14
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+❌
+❌
+❌
+❌
+❌
+❌
+
+8.15
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+✅
+✅
+✅
+✅
+✅
+✅
+❌
+❌
+❌
+❌
+❌
+❌
+
+8.16
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+✅
+✅
+✅
+✅
+✅
+❌
+❌
+❌
+❌
+❌
+❌
+
+8.17
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+✅
+✅
+✅
+✅
+❌
+❌
+❌
+❌
+❌
+❌
+
+8.18
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+✅
+✅
+✅
+✅
+❌
+❌
+❌
+❌
+❌
+
+8.19
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+✅
+
+9.0
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+✅
+❌
+✅
+✅
+✅
+✅
+✅
+✅
+
+9.1
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+✅
+✅
+✅
+✅
+✅
+✅
+
+9.2
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+✅
+✅
+✅
+✅
+✅
+
+9.3
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+✅
+✅
+✅
+✅
+
+9.4
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+✅
+✅
+✅
+
+9.5
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+✅
+✅
+
+ Important
+
+For the EQL search API, the local and remote clusters must use the same Elasticsearch version if they have versions prior to 7.17.7 (included) or prior to 8.5.1 (included).
+
+Only features that exist across all searched clusters are supported. Using a feature with a remote cluster where the feature is not supported will result in undefined behavior.
+
+A cross-cluster search using an unsupported configuration may still work. However, such searches aren’t tested by Elastic, and their behavior isn’t guaranteed.
+
+Ensure cross-cluster search support
+
+The simplest way to ensure your clusters support cross-cluster search is to keep each cluster on the same version of Elasticsearch. If you need to maintain clusters with different versions, you can:
+
+Maintain a dedicated cluster for cross-cluster search. Keep this cluster on the earliest version needed to search the other clusters. For example, if you have 8.19 and 9.x clusters, you can maintain a dedicated 8.19 cluster to use as the local cluster for cross-cluster search.
+
+Keep each cluster no more than one minor version apart. This lets you use any cluster as the local cluster when running a cross-cluster search.
+
+Cross-cluster search during an upgrade
+
+You can still search a remote cluster while performing a rolling upgrade on the local cluster. However, the local coordinating node’s "upgrade from" and "upgrade to" version must be compatible with the remote cluster’s gateway node.
+
+ Warning
+
+Running multiple versions of Elasticsearch in the same cluster beyond the duration of an upgrade is not supported.
+
+For more information about upgrades, see Upgrading Elasticsearch.

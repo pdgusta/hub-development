@@ -1,0 +1,28 @@
+{
+ "chave": "gh:couchbase/geocouch",
+ "urls": [
+  "https://github.com/couchbase/geocouch"
+ ],
+ "tipos": [
+  "tool"
+ ],
+ "termos": [
+  "CouchDB Geocouch",
+  "CouchDB spatial search"
+ ],
+ "mencoes": 1,
+ "familias": [
+  "mistral"
+ ],
+ "primeira_onda": 3,
+ "nomes": [
+  "CouchDB Geocouch"
+ ],
+ "resumos": [
+  "A spatial index and search engine for CouchDB."
+ ],
+ "readme_status": "ok",
+ "readme_nome": "README.md",
+ "readme_cortado": false,
+ "readme": "Welcome to the world of GeoCouch\n================================\n\nGeoCouch is a spatial extension for Couchbase and Apache CouchDB.\n\n\nFor Couchbase\n-------------\n\nFor compiling Couchbase (it includes GeoCouch), please see https://github.com/couchbase/tlm\n\n\nFor Apache CouchDB\n------------------\n\nThis version of GeoCouch needs at least Apache CouchDB 1.3.x.\n\n\n### Checkout the code\n\nFirst checkout the source code for Apache CouchDB into a directory that will\nbe referred to as `<path-to-couchdb-source>`.\n\nThen checkout the GeoCouch source:\n\n    git clone https://github.com/couchbase/geocouch.git\n\nThere's a new directory called `geocouch` created. From now on this directory\nwill be referred to as `<path-to-geocouch-source>`.\n\n\n### Build instructions\n\nMake sure you have built Apache CouchDB from source including `make dev`. So\ngo to your `<path-to-couchdb-source>` and run:\n\n    ./bootstrap\n    ./configure\n    make dev\n\nAfter that you can compile GeoCouch from within the GeoCouch directory:\n\n    COUCH_SRC=<path-to-couchdb-source>/src/couchdb make couchdb\n\nNow copy the configuration file into your Apache CouchDB directory:\n\n    cp gc-couchdb/etc/couchdb/default.d/geocouch.ini <path-to-couchdb-source>/etc/couchdb/default.d/\n\n\n### Running Apache CouchDB\n\nApache CouchDB needs the compiled geocouch in the include path. You can either copy `gc-couchdb` and `vtree` into `<path-to-couchdb-source>/src/` or set the `ERL_LIBS` environment variable to the GeoCouch root directory.\n\n    cd <path-to-couchdb-source>\n    ERL_LIBS=\"<path-to-geocouch-source>\" ./utils/run\n\n\n### Running tests\n\nAfter you've followed the build instructions you can run the tests with\n\n    COUCH_SRC=<path-to-couchdb-source>/src/couchdb make couchdb-check\n\nIn order to run the JavaScript based tests, you need to start Apache CouchDB first:\n\n    cd <path-to-couchdb-source>\n    ERL_LIBS=\"<path-to-geocouch-source>\" ./utils/run\n\nThe tests can either be run from the command line or the browser.\n\n\n#### From command line\n\nFrom the command line the easiest way is to use the supplied runner script.\nFrom within the `<path-to-geocouch-source>`:\n\n    cd gc-couchdb\n    ./utils/runjstests.sh <path-to-couchdb-source>/test/javascript/run ./share/www/script/test\n\n\n#### From browser\n\nTo run it from the browser first copy the JavaScript tests into the same directory as the other Apache CouchDB tests:\n\n    cp <path-to-geocouch-source>/gc-couchdb/share/www/script/test/* <path-to-couchdb-source>/share/www/script/test/\n\nThen add the tests to `<path-to-couchdb-source>/share/www/script/couch_tests.js`\n\n    loadTest(\"spatial.js\");\n    loadTest(\"list_spatial.js\");\n    loadTest(\"etags_spatial.js\");\n    loadTest(\"multiple_spatial_rows.js\");\n    loadTest(\"spatial_compaction.js\");\n    loadTest(\"spatial_design_docs.js\");\n    loadTest(\"spatial_bugfixes.js\");\n    loadTest(\"spatial_offsets.js\");\n    loadTest(\"spatial_range.js\");\n\n\n### More information\n\nFor more information and samples please see the [README in the gc-couchdb subdirectory](gc-couchdb/README.md).\n\n\nLicense\n-------\n\nGeoCouch is licensed under the Apache License 2.0.\n"
+}

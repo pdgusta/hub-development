@@ -1,0 +1,34 @@
+{
+ "chave": "gh:python-openapi/openapi-core",
+ "urls": [
+  "https://github.com/python-openapi/openapi-core",
+  "https://github.com/openapistudio/openapi-core"
+ ],
+ "tipos": [
+  "library"
+ ],
+ "termos": [
+  "openapi core",
+  "validation",
+  "openapi validation",
+  "openapi spec",
+  "openapi processor"
+ ],
+ "mencoes": 2,
+ "familias": [
+  "cohere",
+  "free"
+ ],
+ "primeira_onda": 5,
+ "nomes": [
+  "openapi-core"
+ ],
+ "resumos": [
+  "OpenAPI 仕様の検証とリクエスト/レスポンスの検証を行うライブラリで、API ゲートウェイに最適。",
+  "OpenAPI 仕様の検証とリクエスト/レスポンスの処理を行うライブラリで、ドキュメント化された API のテストに利用できる。"
+ ],
+ "readme_status": "ok",
+ "readme_nome": "README.md",
+ "readme_cortado": false,
+ "readme": "# openapi-core\n\n<a href=\"https://pypi.python.org/pypi/openapi-core\" target=\"_blank\">\n    <img src=\"https://img.shields.io/pypi/v/openapi-core.svg\" alt=\"Package version\">\n</a>\n<a href=\"https://travis-ci.org/python-openapi/openapi-core\" target=\"_blank\">\n    <img src=\"https://travis-ci.org/python-openapi/openapi-core.svg?branch=master\" alt=\"Continuous Integration\">\n</a>\n<a href=\"https://codecov.io/github/python-openapi/openapi-core?branch=master\" target=\"_blank\">\n    <img src=\"https://img.shields.io/codecov/c/github/python-openapi/openapi-core/master.svg?style=flat\" alt=\"Tests coverage\">\n</a>\n<a href=\"https://pypi.python.org/pypi/openapi-core\" target=\"_blank\">\n    <img src=\"https://img.shields.io/pypi/pyversions/openapi-core.svg\" alt=\"Python versions\">\n</a>\n<a href=\"https://pypi.python.org/pypi/openapi-core\" target=\"_blank\">\n    <img src=\"https://img.shields.io/pypi/format/openapi-core.svg\" alt=\"Package format\">\n</a>\n<a href=\"https://pypi.python.org/pypi/openapi-core\" target=\"_blank\">\n    <img src=\"https://img.shields.io/pypi/status/openapi-core.svg\" alt=\"Development status\">\n</a>\n\n## About\n\nOpenapi-core is a Python library that provides client-side and server-side support\nfor the [OpenAPI v3.0](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.3.md)\nand [OpenAPI v3.1](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.1.0.md)\nand [OpenAPI v3.2](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.2.0.md) specifications.\n\n\n## Key features\n\n- **Validation** and **unmarshalling** of request and response data (including webhooks)\n- **Integration** with popular libraries (Requests, Werkzeug) and frameworks (Django, Falcon, Flask, Starlette)\n- Customization with media type **deserializers** and format **unmarshallers**\n- **Security** data providers (API keys, Cookie, Basic, and Bearer HTTP authentications)\n\n\n## Documentation\n\nCheck documentation to see more details about the features. All documentation is in the \"docs\" directory and online at [openapi-core.readthedocs.io](https://openapi-core.readthedocs.io)\n\n## Integrations compatibility matrix\n\nSupported [Integrations](https://openapi-core.readthedocs.io/en/latest/integrations/) and it's versions:\n\n| Integration | Version(s) | Level |\n| --- | --- | --- |\n| [AIOHTTP](https://openapi-core.readthedocs.io/en/latest/integrations/aiohttp/) | versions 3.8+ and 3.11+ tracks | Low-level request and response classes |\n| [Django](https://openapi-core.readthedocs.io/en/latest/integrations/django/) | versions 4, 5, and 6 | Middleware, decorator and low level |\n| [Falcon](https://openapi-core.readthedocs.io/en/latest/integrations/falcon/) | version 4 | Middleware and low-level classes |\n| [FastAPI](https://openapi-core.readthedocs.io/en/latest/integrations/fastapi/) | versions 0.11x, 0.12x, and 0.13x | Middleware (low-level via Starlette integration) |\n| [Flask](https://openapi-core.readthedocs.io/en/latest/integrations/flask/) | versions 2 and 3 | View decorator, class-based view, and low-level classes |\n| [Requests](https://openapi-core.readthedocs.io/en/latest/integrations/requests/) | default dependency set | Low-level request, webhook request, and response classes |\n| [Starlette](https://openapi-core.readthedocs.io/en/latest/integrations/starlette/) | versions 0.4x, 0.5x, and 1.x | Middleware and low-level classes |\n| [Werkzeug](https://openapi-core.readthedocs.io/en/latest/integrations/werkzeug/) | default dependency set | Low-level request and response classes |\n\n## Installation\n\nRecommended way (via pip):\n\n``` console\npip install openapi-core\n```\n\nAlternatively you can download the code and install from the repository:\n\n``` console\npip install -e git+https://github.com/python-openapi/openapi-core.git#egg=openapi_core\n```\n\n\n## First steps\n\nFirst, create your OpenAPI object.\n\n``` python\nfrom openapi_core import OpenAPI\n\nopenapi = OpenAPI.from_file_path('openapi.json')\n```\n\nNow you can use it to validate and unmarshal against requests and/or responses. \n\n``` python\n# raises an error if the request is invalid\nresult = openapi.unmarshal_request(request)\n```\n\nRetrieve validated and unmarshalled request data.\n\n``` python\n# get parameters\npath_params = result.parameters.path\nquery_params = result.parameters.query\ncookies_params = result.parameters.cookies\nheaders_params = result.parameters.headers\n# get body\nbody = result.body\n# get security data\nsecurity = result.security\n```\n\nThe request object should implement the OpenAPI Request protocol. Check [Integrations](https://openapi-core.readthedocs.io/en/latest/integrations/) to find officially supported implementations.\n\nFor more details read about the [Unmarshalling](https://openapi-core.readthedocs.io/en/latest/unmarshalling/) process.\n\nIf you just want to validate your request/response data without unmarshalling, read about [Validation](https://openapi-core.readthedocs.io/en/latest/validation/) instead.\n\n\n## Related projects\n\n- [openapi-spec-validator](https://github.com/python-openapi/openapi-spec-validator)\n  : A Python library that validates OpenAPI Specs against the OpenAPI 2.0 (aka Swagger), OpenAPI 3.0, OpenAPI 3.1, and OpenAPI 3.2 specification. The validator aims to check for full compliance with the Specification.\n- [openapi-schema-validator](https://github.com/python-openapi/openapi-schema-validator)\n  : A Python library that validates schema against the OpenAPI Schema Specification v3.0, v3.1, and v3.2.\n- [bottle-openapi-3](https://github.com/cope-systems/bottle-openapi-3)\n  : OpenAPI 3.0 Support for the Bottle Web Framework\n- [pyramid_openapi3](https://github.com/niteoweb/pyramid_openapi3)\n  : Pyramid addon for OpenAPI3 validation of requests and responses.\n- [tornado-openapi3](https://github.com/correl/tornado-openapi3)\n  : Tornado OpenAPI 3 request and response validation library.\n\n## License\n\nThe project is under the terms of the BSD 3-Clause License.\n"
+}

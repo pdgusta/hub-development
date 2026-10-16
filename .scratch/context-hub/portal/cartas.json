@@ -1,0 +1,442 @@
+[
+  {
+    "id": "system-design",
+    "titulo": "System design",
+    "arquivo": ".scratch/context-hub/system-design.html",
+    "pasta": ".scratch/context-hub",
+    "proposito": "o desenho do hub de bater o olho; serve ao mapa inteiro e só muda quando um ticket que mexe no desenho é resolvido",
+    "ticket": null,
+    "decisao": "o desenho do hub de bater o olho; serve ao mapa inteiro e só muda quando um ticket que mexe no desenho é resolvido",
+    "data": {
+      "valor": null,
+      "tipo": "modificado"
+    },
+    "situacao": "vigente",
+    "mestra": true
+  },
+  {
+    "id": "system-design-planta",
+    "titulo": "System design: planta técnica (amostra)",
+    "arquivo": ".scratch/context-hub/amostras/system-design-planta.html",
+    "pasta": ".scratch/context-hub/amostras",
+    "proposito": "forma nova do System design pedida pelo Gustavo em 2026-10-14; mesmo conteúdo",
+    "ticket": null,
+    "decisao": "recusada pelo Gustavo em 2026-10-14: só mudou o estilo, o diagrama ficou o mesmo; ele pediu reimaginar como uma cidade vista de cima em 2.5D (amostra System design: cidade 2.5D)",
+    "data": {
+      "valor": "2026-10-14",
+      "tipo": "modificado"
+    },
+    "situacao": "historica",
+    "mestra": false
+  },
+  {
+    "id": "system-design-cidade",
+    "titulo": "System design: cidade 2.5D (amostra)",
+    "arquivo": ".scratch/context-hub/amostras/system-design-cidade.html",
+    "pasta": ".scratch/context-hub/amostras",
+    "proposito": "forma nova do System design pedida pelo Gustavo em 2026-10-14, depois de recusar a planta técnica: o mesmo conteúdo reimaginado como uma ilha-cidade vista de cima em 2.5D, com bairros por cor, ruas como ligações e o detalhe na ficha ao clicar",
+    "ticket": null,
+    "decisao": "recusada pelo Gustavo em 2026-10-14 como piloto bom: manter o estilo e ajustar a disposição (radial, CouchDB no centro), o ângulo, os rótulos e a analogia de cada peça",
+    "data": {
+      "valor": "2026-10-14",
+      "tipo": "modificado"
+    },
+    "situacao": "vigente",
+    "mestra": false
+  },
+  {
+    "id": "system-design-cidade-v2",
+    "titulo": "System design: cidade radial (amostra v2)",
+    "arquivo": ".scratch/context-hub/amostras/system-design-cidade-v2.html",
+    "pasta": ".scratch/context-hub/amostras",
+    "proposito": "os ajustes que o Gustavo pediu no piloto da cidade em 2026-10-14: o CouchDB como cofre no centro, as peças em anéis pela distância no grafo, ruas sem cruzamento, vista de cima, cada nome colado ao seu prédio e a analogia de cada peça na ficha",
+    "ticket": null,
+    "decisao": "recusada pelo Gustavo em 2026-10-14 (22h01): \"tudo poluído, não dá pra bater o olho e entender; precisa de distância entre os itens\". O System design fica pausado até a página Laços ficar pronta; depois, um laço próprio o recria, totalmente diferente, com a mesma ideia de cidade e analogia de papéis",
+    "data": {
+      "valor": "2026-10-14",
+      "tipo": "modificado"
+    },
+    "situacao": "historica",
+    "mestra": false,
+    "substitui": "system-design-cidade"
+  },
+  {
+    "id": "portal-lacos-proposta",
+    "titulo": "Laços: a página dos laços em voo (proposta)",
+    "arquivo": ".scratch/context-hub/amostras/portal-lacos-proposta.html",
+    "pasta": ".scratch/context-hub/amostras",
+    "proposito": "carta-proposta da página nova do portal, abaixo de Decisões, pedida pelo Gustavo em 2026-10-14: os laços de pesquisa e as suítes de teste em voo como fluxo de nós estilo n8n; estado real só para ler, edição que vira pedido ao maestro pela caixa, e esboço que não muda nada",
+    "ticket": null,
+    "decisao": "em aberto: a página dos laços segue esta proposta (conteúdo, funcionalidades e forma) ou precisa de alteração? Nada é construído antes do aval",
+    "data": {
+      "valor": "2026-10-14",
+      "tipo": "modificado"
+    },
+    "situacao": "vigente",
+    "mestra": false
+  },
+  {
+    "id": "mapeamento",
+    "titulo": "Mapeamento da frente",
+    "arquivo": ".scratch/context-hub/mapeamento.html",
+    "pasta": ".scratch/context-hub",
+    "proposito": "as rodadas de mapeamento que fixaram o destino (os cinco critérios) e a fronteira do mapa",
+    "ticket": null,
+    "decisao": "criação do mapa (mapeamento.md, rodadas de perguntas Q1 a Q17); registro de origem: o destino não mudou, a fronteira ganhou depois itens fora de escopo, como o segundo mapa sobre o hub controlar os agentes",
+    "data": {
+      "valor": null,
+      "tipo": "modificado"
+    },
+    "situacao": "vigente",
+    "mestra": false
+  },
+  {
+    "id": "prototipo-10-contrato",
+    "titulo": "Contrato de retomada",
+    "arquivo": ".scratch/context-hub/prototipos/prototipo-10-contrato.html",
+    "pasta": ".scratch/context-hub/prototipos",
+    "proposito": "o contrato file-first: zonas do hub e a nota de retomada (checkpoint) de cada trabalho",
+    "ticket": "10",
+    "decisao": "contrato de retomada para o hub pronto; uma nota de retomada por trabalho (sete campos, sobrescrita, teste de suficiência); regra no contrato global mais hook ao fim da resposta, que também leva ao hub o que só a memória privada sabe; a checagem de início de sessão abre a nota; sem revisão pós-sessão nem FreeLLMAPI no checkpoint",
+    "data": {
+      "valor": null,
+      "tipo": "modificado"
+    },
+    "situacao": "vigente",
+    "mestra": false
+  },
+  {
+    "id": "painel-sintese",
+    "titulo": "Super Trunfo da busca",
+    "arquivo": ".scratch/context-hub/laco/painel/sintese.html",
+    "pasta": ".scratch/context-hub/laco/painel",
+    "proposito": "a síntese da pesquisa ampla sobre lugares e mecanismos de busca (terceira versão; a primeira, um laudo, e a segunda, um mapa do hub, foram recusadas)",
+    "ticket": "50",
+    "decisao": "o CouchDB só tem pedaços cifrados, então \"dentro do banco\" vira um índice do MCP do banco; nenhuma ferramenta pronta cumpre a régua (as mais próximas, obsidian-hybrid-search e memtomem, não têm stemmer de português); recomendação para \"Camada de busca\": teste obsidian-hybrid-search × memtomem decide entre Leve com alcance (disco + repasse na tailnet) e Robusta (índice no MCP do banco)",
+    "data": {
+      "valor": null,
+      "tipo": "modificado"
+    },
+    "situacao": "vigente",
+    "mestra": false
+  },
+  {
+    "id": "prototipo-08-divergencia",
+    "titulo": "Divergência e edição concorrente",
+    "arquivo": ".scratch/context-hub/prototipos/prototipo-08-divergencia.html",
+    "pasta": ".scratch/context-hub/prototipos",
+    "proposito": "o que é divergência entre as duas máquinas, como se descobre e como se resolve, com o git como mecanismo",
+    "ticket": "08",
+    "decisao": "divergência é colisão real, máquina sem sync há mais de 30 min ou cópia de conflito; aviso por notificação do Windows e checagem no início de sessão; colisão para a máquina com a junção desfeita; agentes gravam conferindo a versão. As garantias continuam, mas o mecanismo (git) foi trocado por CouchDB + LiveSync na revisão do sync e da divergência com o banco (ticket 33)",
+    "data": {
+      "valor": null,
+      "tipo": "modificado"
+    },
+    "situacao": "historica",
+    "mestra": false
+  },
+  {
+    "id": "prototipo-09-busca",
+    "titulo": "Camada de busca",
+    "arquivo": ".scratch/context-hub/prototipos/prototipo-09-busca.html",
+    "pasta": ".scratch/context-hub/prototipos",
+    "proposito": "a primeira rodada da camada de busca: markdown-vault-mcp contra zvec-grep",
+    "ticket": "09",
+    "decisao": "serviu à rodada 1 do ticket; as candidatas foram trocadas depois pela pesquisa ampla",
+    "data": {
+      "valor": null,
+      "tipo": "modificado"
+    },
+    "situacao": "historica",
+    "mestra": false
+  },
+  {
+    "id": "prototipo-09-busca-desenho-novo",
+    "titulo": "Busca, desenho novo",
+    "arquivo": ".scratch/context-hub/prototipos/prototipo-09-busca-desenho-novo.html",
+    "pasta": ".scratch/context-hub/prototipos",
+    "proposito": "a rodada 4 da camada de busca, com o desenho refeito depois da revisão do sync",
+    "ticket": "09",
+    "decisao": "serviu à rodada 4 do ticket; a pesquisa ampla trocou as candidatas para obsidian-hybrid-search contra memtomem",
+    "data": {
+      "valor": null,
+      "tipo": "modificado"
+    },
+    "situacao": "historica",
+    "mestra": false
+  },
+  {
+    "id": "prototipo-09-roteamento-da-pesquisa",
+    "titulo": "Roteamento da pesquisa",
+    "arquivo": ".scratch/context-hub/prototipos/prototipo-09-roteamento-da-pesquisa.html",
+    "pasta": ".scratch/context-hub/prototipos",
+    "proposito": "como a pesquisa ampla seria roteada entre os modelos do FreeLLMAPI (o laço da pesquisa)",
+    "ticket": "09",
+    "decisao": "serviu à rodada 6 do ticket, que desenhou o laço; o laço rodou nos tickets Preparar o FreeLLMAPI para a pesquisa da busca (49), Montar os scripts do laço da pesquisa ampla (52) e Pesquisa ampla: lugares e mecanismos de busca (50), já resolvidos",
+    "data": {
+      "valor": null,
+      "tipo": "modificado"
+    },
+    "situacao": "historica",
+    "mestra": false
+  },
+  {
+    "id": "prototipo-12-pastas",
+    "titulo": "Raiz do hub",
+    "arquivo": ".scratch/context-hub/prototipos/prototipo-12-pastas.html",
+    "pasta": ".scratch/context-hub/prototipos",
+    "proposito": "a primeira proposta de arquitetura de pastas e frontmatter do hub",
+    "ticket": "12",
+    "decisao": "a rodada 1 do ticket não funcionou para o Gustavo e virou a pesquisa Métodos conhecidos de organizar a raiz (35); o ticket segue aberto, sem página nova",
+    "data": {
+      "valor": null,
+      "tipo": "modificado"
+    },
+    "situacao": "historica",
+    "mestra": false
+  },
+  {
+    "id": "painel-mare",
+    "titulo": "Maré de novos",
+    "arquivo": ".scratch/context-hub/laco/painel/index.html",
+    "pasta": ".scratch/context-hub/laco/painel",
+    "proposito": "painel ao vivo do laço da pesquisa ampla: a maré de achados novos a cada onda",
+    "ticket": "50",
+    "decisao": "painel ao vivo da pesquisa ampla, já resolvida; a síntese que ficou é o Super Trunfo da busca",
+    "data": {
+      "valor": null,
+      "tipo": "modificado"
+    },
+    "situacao": "historica",
+    "mestra": false
+  },
+  {
+    "id": "painel-garimpo",
+    "titulo": "O garimpo",
+    "arquivo": ".scratch/context-hub/laco/painel/etapas.html",
+    "pasta": ".scratch/context-hub/laco/painel",
+    "proposito": "painel ao vivo do laço da pesquisa ampla: as etapas do garimpo, do despachante ao juntador",
+    "ticket": "50",
+    "decisao": "painel ao vivo da pesquisa ampla, já resolvida; a síntese que ficou é o Super Trunfo da busca",
+    "data": {
+      "valor": null,
+      "tipo": "modificado"
+    },
+    "situacao": "historica",
+    "mestra": false
+  },
+  {
+    "id": "prototipo-12-miolo",
+    "titulo": "Miolo da iniciativa",
+    "arquivo": ".scratch/context-hub/prototipos/prototipo-12-miolo.html",
+    "pasta": ".scratch/context-hub/prototipos",
+    "proposito": "a rodada 8 do ticket: o que fica dentro da pasta de uma iniciativa, com as pastas reais em Projetos hoje e como ficariam nas opções A, B e C",
+    "ticket": "12",
+    "decisao": "em aberto: o miolo de cada iniciativa é um núcleo pequeno mais modelos prontos por tipo (A, a recomendada), um esqueleto único com as mesmas subpastas (B) ou só o núcleo, com o resto livre (C)?",
+    "data": {
+      "valor": "2026-10-14",
+      "tipo": "modificado"
+    },
+    "situacao": "historica",
+    "mestra": false
+  },
+  {
+    "id": "prototipo-12-blocos",
+    "titulo": "Núcleo e blocos da iniciativa",
+    "arquivo": ".scratch/context-hub/prototipos/prototipo-12-blocos.html",
+    "pasta": ".scratch/context-hub/prototipos",
+    "proposito": "a rodada 10 do ticket: o núcleo de toda iniciativa (retomada.md e AGENTS.md com a ficha no topo) e as três formas do resto da pasta, com SOC STRATA, context-hub e VOEGOL em cada uma, e um spike que ganha blocos ao virar produto",
+    "ticket": "12",
+    "decisao": "em aberto: o que vai no núcleo de toda iniciativa (retomada.md e AGENTS.md com a ficha no topo, os recomendados) e como o resto da pasta se monta: um modelo por tipo (A), blocos combináveis do acervo somados depois (B, a recomendada) ou só o núcleo (C)?",
+    "data": {
+      "valor": "2026-10-14",
+      "tipo": "modificado"
+    },
+    "situacao": "vigente",
+    "substitui": "prototipo-12-miolo",
+    "mestra": false
+  },
+  {
+    "id": "prototipo-12-ritmos",
+    "titulo": "Como você já faz × como seria ideal",
+    "arquivo": ".scratch/context-hub/prototipos/prototipo-12-ritmos.html",
+    "pasta": ".scratch/context-hub/prototipos",
+    "proposito": "a rodada 11 do ticket: o initiative.md do vault em escala (VOEGOL cross-tenant 337 mil caracteres, soc-as-code 190 mil, TRF3 181 mil) separado em seis arquivos com o seu ritmo, os nomes de pasta de hoje convergindo para blocos de nome único e a pilha sugerida por tipo de trabalho com os exemplos reais",
+    "ticket": "12",
+    "decisao": "em aberto: o núcleo de toda iniciativa são as sete seções de hoje em seis arquivos (A, a recomendada), o initiative.md como hoje com só o Estado à parte (B) ou ficha + retomada + diário (C)? E o resto da pasta se monta com um modelo por tipo (A), blocos de nome único com uma pilha sugerida por tipo (B, a recomendada) ou só o núcleo (C)?",
+    "data": {
+      "valor": "2026-10-14",
+      "tipo": "modificado"
+    },
+    "situacao": "vigente",
+    "mestra": false,
+    "substitui": "prototipo-12-blocos"
+  },
+  {
+    "id": "prototipo-12-sumario",
+    "titulo": "O agente acha tudo · nada fica órfão",
+    "arquivo": ".scratch/context-hub/prototipos/prototipo-12-sumario.html",
+    "pasta": ".scratch/context-hub/prototipos",
+    "proposito": "a rodada 12 do ticket: os quatro pulos como sumário de livro (AGENTS.md da raiz, index.md da raiz, AGENTS.md da iniciativa, index.md do bloco e da subpasta) achando um print real do TRF3 sem listar pastas; o verificador de órfãos no fim da resposta nas opções A, B e C; misc/ e a promoção a bloco novo",
+    "ticket": "12",
+    "decisao": "decidido: o catálogo em agents/blocks.md (rodada 12) e, para índices e órfãos, a busca como porta com index.md onde a busca não lê e em toda pasta que cresce (rodada 16, B); visual aprovado pelo Gustavo em 2026-10-15 (envio 854291c3)",
+    "data": {
+      "valor": "2026-10-14",
+      "tipo": "modificado"
+    },
+    "situacao": "vigente",
+    "mestra": false,
+    "substitui": "prototipo-12-ritmos"
+  },
+  {
+    "id": "direcao-visual-cidade",
+    "titulo": "Cidade do hub: três direções",
+    "arquivo": ".scratch/context-hub/laco-system-design/conceitos/final/carta.html",
+    "pasta": ".scratch/context-hub/laco-system-design/conceitos/final",
+    "proposito": "a parada do laço do system design antes de construir: os três conceitos de cidade que passaram em três voltas de QA, UX revisor e Tech lead (linhas de metrô, duas cidades e a estrada, a cidade em corte), cada um grande, com a ideia, como se lê e onde é melhor; a escolhida vira amostra em página à parte, sem tocar o System design de hoje",
+    "ticket": "56",
+    "decisao": "decidido (rodada 5): mistura, com a B como principal e o jeito da A de mostrar quem acessa e quem responde por cada componente; antes da mistura, a descrição do hub é refeita",
+    "data": {
+      "valor": "2026-10-15",
+      "tipo": "modificado"
+    },
+    "situacao": "vigente",
+    "mestra": false
+  },
+  {
+    "id": "mistura-da-cidade",
+    "titulo": "Cidade do hub: a mistura",
+    "arquivo": ".scratch/context-hub/laco-system-design/conceitos/mistura/carta.html",
+    "pasta": ".scratch/context-hub/laco-system-design/conceitos/mistura",
+    "proposito": "a direção que o Gustavo pediu na carta das três direções: a planta da B com as linhas da A, na cor de quem aciona cada componente, com os cenários acendendo o caminho passo a passo",
+    "ticket": "56",
+    "decisao": "decidido (aprovada pelo Gustavo, envio 8c6e7d3e, 2026-10-15): a mistura vira a direção da amostra, sem alteração; o teto de 25 rótulos sai, mantidas a folga e a separação",
+    "data": {
+      "valor": "2026-10-15",
+      "tipo": "modificado"
+    },
+    "situacao": "vigente",
+    "mestra": false
+  },
+  {
+    "id": "prototipo-12-arvore",
+    "titulo": "A árvore final do hub",
+    "arquivo": ".scratch/context-hub/prototipos/prototipo-12-arvore.html",
+    "pasta": ".scratch/context-hub/prototipos",
+    "proposito": "o esboço da árvore final do ticket 12, pedido pelo Gustavo na rodada 17: da raiz até clients/voegol/cross-tenant/, com o núcleo, os blocos em uso, o que fica nesta máquina e notas de exemplo que abrem com o frontmatter do tipo, cada campo marcado por quem o preenche",
+    "ticket": "12",
+    "decisao": "aprovada pelo Gustavo em 2026-10-15 20:32 (envio 0011c856-1d7f-4533-893c-dcd8d816d458), sem comentário: a árvore final do ticket 12, com o frontmatter por tipo das rodadas 18 e 19 e os links da rodada 20",
+    "data": {
+      "valor": "2026-10-15",
+      "tipo": "modificado"
+    },
+    "situacao": "vigente",
+    "mestra": false
+  },
+  {
+    "id": "amostra-da-cidade",
+    "titulo": "Cidade do hub: a amostra",
+    "arquivo": ".scratch/context-hub/laco-system-design/amostra/carta.html",
+    "pasta": ".scratch/context-hub/laco-system-design/amostra",
+    "proposito": "a mistura aprovada como página final do System design: a mesma cidade num canvas de tela inteira que se arrasta e aproxima, com mais nomes ao aproximar e os sete cenários",
+    "ticket": "56",
+    "decisao": "em aberto: aprovar a amostra para substituir o system-design.html ou recusar com o que mudar",
+    "data": {
+      "valor": "2026-10-15",
+      "tipo": "modificado"
+    },
+    "situacao": "vigente",
+    "mestra": false,
+    "pede_veredito": true
+  },
+  {
+    "id": "laco-construcao",
+    "titulo": "O laço da construção",
+    "arquivo": ".scratch/construcao-do-hub/laco-construcao.html",
+    "pasta": ".scratch/construcao-do-hub",
+    "proposito": "o desenho do laço que constrói o hub, como mapa de metrô: as 3 fases, o giro da execução, o caminho de um ticket até feito (construtor, Prumos, testador, integrador), os 12 recrutas todos ligados entre si, o Fable, o HOME de ensaio e o que fica com você; depois as 2 perguntas da rodada (papéis e a 1 hora)",
+    "ticket": "16",
+    "decisao": "substituída antes do veredito: a resposta do Gustavo à rodada 1 do ticket 16 (2026-10-15 21:08, envio d29332f7) mudou o desenho (faixas verticais por grupo lógico, uma por worker; a execução inteira em 1 hora; antes, uma rodada Ralph dos 12 recrutas ajustando o plano). O plano vigente é .scratch/construcao-do-hub/planejamento/plano.md",
+    "data": {
+      "valor": "2026-10-15",
+      "tipo": "modificado"
+    },
+    "situacao": "historica",
+    "mestra": false
+  },
+  {
+    "id": "escolhas-2-vigia",
+    "titulo": "Escolhas do spec, carta 2: vigia e manutenção",
+    "arquivo": ".scratch/construcao-do-hub/revisao/cartas/carta-2-vigia.html",
+    "pasta": ".scratch/construcao-do-hub/revisao/cartas",
+    "proposito": "explica as seis escolhas sem ticket sobre a vigia e a manutenção (estado da vigia, outra máquina ligada, falha da cópia diária, data no nome da pasta arquivada, limpeza na tarefa diária, repetição de avisos no Codex), como caderno de aquarela do faroleiro; feita pela Aquarela, revisada pelo Lente",
+    "ticket": "16",
+    "decisao": "aprovada pelo Gustavo em 2026-10-16 16:33 (envio 26de232e): \"perfeito, gostei demais do design dessa carta\"; as seis escolhas da rodada aceitas",
+    "data": {
+      "valor": "2026-10-16",
+      "tipo": "modificado"
+    },
+    "situacao": "vigente",
+    "mestra": false
+  },
+  {
+    "id": "escolhas-3-busca",
+    "titulo": "Escolhas do spec, carta 3: a busca",
+    "arquivo": ".scratch/construcao-do-hub/revisao/cartas/carta-3-busca.html",
+    "pasta": ".scratch/construcao-do-hub/revisao/cartas",
+    "proposito": "explica as quatro escolhas sem ticket sobre a busca (aceite com 3 primeiras e 60 s, relatório das notas recusadas por cabeçalho quebrado, regras de exclusão de tudo que tem ponto, endereço observado atrás do proxy), pelo caminho de uma nota até a resposta; feita pelo Nanquim, revisada pelo Esquadro",
+    "ticket": "16",
+    "decisao": null,
+    "data": {
+      "valor": "2026-10-16",
+      "tipo": "modificado"
+    },
+    "situacao": "vigente",
+    "mestra": false
+  },
+  {
+    "id": "escolhas-1-banco",
+    "titulo": "Escolhas do spec, carta 1: gravar e ler no banco",
+    "arquivo": ".scratch/construcao-do-hub/revisao/cartas/carta-1-banco.html",
+    "pasta": ".scratch/construcao-do-hub/revisao/cartas",
+    "proposito": "explica as seis escolhas sem ticket sobre o MCP do banco (conflito à vista, cabeça do contrato, regra curta, nome da ferramenta de estado, quantas instâncias por máquina, caminho embaralhado na cifra), como uma agência com guichês e cofre; feita pelo Designer, revisada pelo Lente",
+    "ticket": "16",
+    "decisao": "aprovada pelo Gustavo em 2026-10-16 16:52 (envio cfc760f8): \"carta bastante criativa, parabéns\"; escolhas aceitas, menos a 5 (três instâncias do MCP do banco por máquina)",
+    "data": {
+      "valor": "2026-10-16",
+      "tipo": "modificado"
+    },
+    "situacao": "vigente",
+    "mestra": false
+  },
+  {
+    "id": "escolhas-4-regras",
+    "titulo": "Escolhas do spec, carta 4: ficha, porteiros e acervo",
+    "arquivo": ".scratch/construcao-do-hub/revisao/cartas/carta-4-regras.html",
+    "pasta": ".scratch/construcao-do-hub/revisao/cartas",
+    "proposito": "explica as sete escolhas sem ticket sobre as regras que o hub impõe sozinho (verificador que só completa o dedutível, porteiro que monta a nota final, conferência de fim de resposta sem IA, acervo do maestro em qualquer pasta, skills do Copilot no ensaio, campo de iniciativa, mapa da iniciativa pelo script), como manual de montagem; feita pelo Guache, revisada pelo Esquadro",
+    "ticket": "16",
+    "decisao": "aprovada pelo Gustavo em 2026-10-16 17:14 (envio d55d5f8a), sem comentário; escolhas aceitas, menos a 7 (mapa da iniciativa à mão) e a 3 (em aberto: pergunta sobre hook e mod)",
+    "data": {
+      "valor": "2026-10-16",
+      "tipo": "modificado"
+    },
+    "situacao": "vigente",
+    "mestra": false
+  },
+  {
+    "id": "plano-de-construcao",
+    "titulo": "O plano de construção",
+    "arquivo": ".scratch/construcao-do-hub/revisao/plano/carta-plano.html",
+    "pasta": ".scratch/construcao-do-hub/revisao/plano",
+    "proposito": "explica a proposta do plano de construção em etapas como um ateliê de costura (fita métrica = etapas, fios = entregas, alinhavo = exemplo trocado pelo real depois, portão entre etapas): a ordem, a etapa zero de provas de risco, os ramos de ontem e a ficha de cada etapa; feita pela Aquarela, revisada pelo Lente",
+    "ticket": "16",
+    "decisao": "aprovada pelo Gustavo em 2026-10-16 18:34 (envio 0c7ba4cf): \"design incrível também. Os designers estão pegando o jeito. Só achei a tipografia dos títulos difícil de ler\"",
+    "data": {
+      "valor": "2026-10-16",
+      "tipo": "modificado"
+    },
+    "situacao": "vigente",
+    "mestra": false
+  }
+]

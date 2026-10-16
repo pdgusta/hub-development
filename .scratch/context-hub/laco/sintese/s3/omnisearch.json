@@ -1,0 +1,47 @@
+{
+ "nome": "Omnisearch",
+ "url": "https://github.com/scambier/obsidian-omnisearch",
+ "papel": "lado do Obsidian",
+ "windows": "yes, indireto: plugin do Obsidian (que roda no Windows); sem prova específica de CI",
+ "mcp": "third_party: obsidian-mcp-server (cyanheads) 'auto-detects Omnisearch and exposes it as a BM25-ranked search mode'; o plugin tem servidor HTTP opt-in",
+ "portugues": "nao_verificado (README só trata chinês; nada sobre stemmer PT ou acentos)",
+ "markdown_frontmatter": "Indexa notas do vault, BM25 via MiniSearch; frontmatter e chunking por título: nao_verificado",
+ "atualizacao": "nao_verificado (plugin dentro do Obsidian; depende do Obsidian aberto)",
+ "embeddings_endpoint": "não usa embeddings (BM25/MiniSearch)",
+ "recursos": "roda dentro do Obsidian (Electron); números: nao_verificado",
+ "licenca": "GPL-3",
+ "ultimo_release": "1.31.0 (5 set, ano não mostrado)",
+ "atividade": "939 commits; data do último: nao_verificado",
+ "maturidade": "stable (Gems of the Year 2023)",
+ "encaixe": "Lado do Obsidian em cada máquina, via HTTP local opt-in. Impedimento: exige Obsidian aberto; agentes headless e sandboxes ficam sem; PT sem confirmação.",
+ "evidencias": [
+  {
+   "campo": "mcp",
+   "url": "https://github.com/scambier/obsidian-omnisearch",
+   "citacao": "Opt-in local HTTP server to query Omnisearch from outside of Obsidian"
+  },
+  {
+   "campo": "mcp",
+   "url": "https://github.com/scambier/obsidian-omnisearch",
+   "citacao": "an MCP server that auto-detects Omnisearch and exposes it as a BM25-ranked search mode"
+  },
+  {
+   "campo": "licenca",
+   "url": "https://github.com/scambier/obsidian-omnisearch",
+   "citacao": "Omnisearch is licensed under GPL-3"
+  },
+  {
+   "campo": "markdown_frontmatter",
+   "url": "https://github.com/scambier/obsidian-omnisearch",
+   "citacao": "Under the hood, it uses the excellent MiniSearch library"
+  }
+ ],
+ "nao_verificado": [
+  "portugues/acentos",
+  "frontmatter",
+  "atualizacao",
+  "recursos",
+  "data do último commit",
+  "exigência de Obsidian aberto (inferida)"
+ ]
+}

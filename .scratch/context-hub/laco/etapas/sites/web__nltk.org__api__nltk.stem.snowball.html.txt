@@ -1,0 +1,786 @@
+NLTK Documentation
+
+API Reference
+
+Example Usage
+
+Module Index
+
+Wiki
+
+FAQ
+
+Open Issues
+
+NLTK on GitHub
+
+Installation
+
+Installing NLTK
+
+Installing NLTK Data
+
+More
+
+Release Notes
+
+Contributing to NLTK
+
+NLTK Team
+
+nltk.stem.snowball module¶
+
+Snowball stemmers
+
+This module provides a port of the Snowball stemmers
+developed by Martin Porter.
+
+There is also a demo function: snowball.demo().
+
+class nltk.stem.snowball.ArabicStemmer[source]¶
+
+Bases: _StandardStemmer
+
+https://github.com/snowballstem/snowball/blob/master/algorithms/arabic/stem_Unicode.sbl (Original Algorithm)
+The Snowball Arabic light Stemmer
+Algorithm:
+
+Assem Chelli
+
+Abdelkrim Aries
+
+Lakhdar Benzahia
+
+NLTK Version Author:
+
+Lakhdar Benzahia
+
+is_defined = False¶
+
+is_noun = True¶
+
+is_verb = True¶
+
+prefix_step2a_success = False¶
+
+prefix_step3a_noun_success = False¶
+
+prefix_step3b_noun_success = False¶
+
+stem(word)[source]¶
+
+Stem an Arabic word and return the stemmed form.
+
+Parameters:
+
+word – string
+
+Returns:
+
+string
+
+suffix_noun_step1a_success = False¶
+
+suffix_noun_step2a_success = False¶
+
+suffix_noun_step2b_success = False¶
+
+suffix_noun_step2c2_success = False¶
+
+suffix_verb_step2a_success = False¶
+
+suffix_verb_step2b_success = False¶
+
+suffixe_noun_step1b_success = False¶
+
+suffixes_verb_step1_success = False¶
+
+class nltk.stem.snowball.DanishStemmer[source]¶
+
+Bases: _ScandinavianStemmer
+
+The Danish Snowball stemmer.
+
+Variables:
+
+__vowels – The Danish vowels.
+
+__consonants – The Danish consonants.
+
+__double_consonants – The Danish double consonants.
+
+__s_ending – Letters that may directly appear before a word final ‘s’.
+
+__step1_suffixes – Suffixes to be deleted in step 1 of the algorithm.
+
+__step2_suffixes – Suffixes to be deleted in step 2 of the algorithm.
+
+__step3_suffixes – Suffixes to be deleted in step 3 of the algorithm.
+
+Note:
+
+A detailed description of the Danish
+stemming algorithm can be found under
+http://snowball.tartarus.org/algorithms/danish/stemmer.html
+
+stem(word)[source]¶
+
+Stem a Danish word and return the stemmed form.
+
+Parameters:
+
+word (str or unicode) – The word that is stemmed.
+
+Returns:
+
+The stemmed form.
+
+Return type:
+
+unicode
+
+class nltk.stem.snowball.DutchStemmer[source]¶
+
+Bases: _StandardStemmer
+
+The Dutch Snowball stemmer.
+
+Variables:
+
+__vowels – The Dutch vowels.
+
+__step1_suffixes – Suffixes to be deleted in step 1 of the algorithm.
+
+__step3b_suffixes – Suffixes to be deleted in step 3b of the algorithm.
+
+Note:
+
+A detailed description of the Dutch
+stemming algorithm can be found under
+http://snowball.tartarus.org/algorithms/dutch/stemmer.html
+
+stem(word)[source]¶
+
+Stem a Dutch word and return the stemmed form.
+
+Parameters:
+
+word (str or unicode) – The word that is stemmed.
+
+Returns:
+
+The stemmed form.
+
+Return type:
+
+unicode
+
+class nltk.stem.snowball.EnglishStemmer[source]¶
+
+Bases: _StandardStemmer
+
+The English Snowball stemmer.
+
+Variables:
+
+__vowels – The English vowels.
+
+__double_consonants – The English double consonants.
+
+__li_ending – Letters that may directly appear before a word final ‘li’.
+
+__step0_suffixes – Suffixes to be deleted in step 0 of the algorithm.
+
+__step1a_suffixes – Suffixes to be deleted in step 1a of the algorithm.
+
+__step1b_suffixes – Suffixes to be deleted in step 1b of the algorithm.
+
+__step2_suffixes – Suffixes to be deleted in step 2 of the algorithm.
+
+__step3_suffixes – Suffixes to be deleted in step 3 of the algorithm.
+
+__step4_suffixes – Suffixes to be deleted in step 4 of the algorithm.
+
+__step5_suffixes – Suffixes to be deleted in step 5 of the algorithm.
+
+__special_words – A dictionary containing words
+which have to be stemmed specially.
+
+Note:
+
+A detailed description of the English
+stemming algorithm can be found under
+http://snowball.tartarus.org/algorithms/english/stemmer.html
+
+stem(word)[source]¶
+
+Stem an English word and return the stemmed form.
+
+Parameters:
+
+word (str or unicode) – The word that is stemmed.
+
+Returns:
+
+The stemmed form.
+
+Return type:
+
+unicode
+
+class nltk.stem.snowball.FinnishStemmer[source]¶
+
+Bases: _StandardStemmer
+
+The Finnish Snowball stemmer.
+
+Variables:
+
+__vowels – The Finnish vowels.
+
+__restricted_vowels – A subset of the Finnish vowels.
+
+__long_vowels – The Finnish vowels in their long forms.
+
+__consonants – The Finnish consonants.
+
+__double_consonants – The Finnish double consonants.
+
+__step1_suffixes – Suffixes to be deleted in step 1 of the algorithm.
+
+__step2_suffixes – Suffixes to be deleted in step 2 of the algorithm.
+
+__step3_suffixes – Suffixes to be deleted in step 3 of the algorithm.
+
+__step4_suffixes – Suffixes to be deleted in step 4 of the algorithm.
+
+Note:
+
+A detailed description of the Finnish
+stemming algorithm can be found under
+http://snowball.tartarus.org/algorithms/finnish/stemmer.html
+
+stem(word)[source]¶
+
+Stem a Finnish word and return the stemmed form.
+
+Parameters:
+
+word (str or unicode) – The word that is stemmed.
+
+Returns:
+
+The stemmed form.
+
+Return type:
+
+unicode
+
+class nltk.stem.snowball.FrenchStemmer[source]¶
+
+Bases: _StandardStemmer
+
+The French Snowball stemmer.
+
+Variables:
+
+__vowels – The French vowels.
+
+__step1_suffixes – Suffixes to be deleted in step 1 of the algorithm.
+
+__step2a_suffixes – Suffixes to be deleted in step 2a of the algorithm.
+
+__step2b_suffixes – Suffixes to be deleted in step 2b of the algorithm.
+
+__step4_suffixes – Suffixes to be deleted in step 4 of the algorithm.
+
+Note:
+
+A detailed description of the French
+stemming algorithm can be found under
+http://snowball.tartarus.org/algorithms/french/stemmer.html
+
+stem(word)[source]¶
+
+Stem a French word and return the stemmed form.
+
+Parameters:
+
+word (str or unicode) – The word that is stemmed.
+
+Returns:
+
+The stemmed form.
+
+Return type:
+
+unicode
+
+class nltk.stem.snowball.GermanStemmer[source]¶
+
+Bases: _StandardStemmer
+
+The German Snowball stemmer.
+
+Variables:
+
+__vowels – The German vowels.
+
+__s_ending – Letters that may directly appear before a word final ‘s’.
+
+__st_ending – Letter that may directly appear before a word final ‘st’.
+
+__step1_suffixes – Suffixes to be deleted in step 1 of the algorithm.
+
+__step2_suffixes – Suffixes to be deleted in step 2 of the algorithm.
+
+__step3_suffixes – Suffixes to be deleted in step 3 of the algorithm.
+
+Note:
+
+A detailed description of the German
+stemming algorithm can be found under
+http://snowball.tartarus.org/algorithms/german/stemmer.html
+
+stem(word)[source]¶
+
+Stem a German word and return the stemmed form.
+
+Parameters:
+
+word (str or unicode) – The word that is stemmed.
+
+Returns:
+
+The stemmed form.
+
+Return type:
+
+unicode
+
+class nltk.stem.snowball.HungarianStemmer[source]¶
+
+Bases: _LanguageSpecificStemmer
+
+The Hungarian Snowball stemmer.
+
+Variables:
+
+__vowels – The Hungarian vowels.
+
+__digraphs – The Hungarian digraphs.
+
+__double_consonants – The Hungarian double consonants.
+
+__step1_suffixes – Suffixes to be deleted in step 1 of the algorithm.
+
+__step2_suffixes – Suffixes to be deleted in step 2 of the algorithm.
+
+__step3_suffixes – Suffixes to be deleted in step 3 of the algorithm.
+
+__step4_suffixes – Suffixes to be deleted in step 4 of the algorithm.
+
+__step5_suffixes – Suffixes to be deleted in step 5 of the algorithm.
+
+__step6_suffixes – Suffixes to be deleted in step 6 of the algorithm.
+
+__step7_suffixes – Suffixes to be deleted in step 7 of the algorithm.
+
+__step8_suffixes – Suffixes to be deleted in step 8 of the algorithm.
+
+__step9_suffixes – Suffixes to be deleted in step 9 of the algorithm.
+
+Note:
+
+A detailed description of the Hungarian
+stemming algorithm can be found under
+http://snowball.tartarus.org/algorithms/hungarian/stemmer.html
+
+stem(word)[source]¶
+
+Stem an Hungarian word and return the stemmed form.
+
+Parameters:
+
+word (str or unicode) – The word that is stemmed.
+
+Returns:
+
+The stemmed form.
+
+Return type:
+
+unicode
+
+class nltk.stem.snowball.ItalianStemmer[source]¶
+
+Bases: _StandardStemmer
+
+The Italian Snowball stemmer.
+
+Variables:
+
+__vowels – The Italian vowels.
+
+__step0_suffixes – Suffixes to be deleted in step 0 of the algorithm.
+
+__step1_suffixes – Suffixes to be deleted in step 1 of the algorithm.
+
+__step2_suffixes – Suffixes to be deleted in step 2 of the algorithm.
+
+Note:
+
+A detailed description of the Italian
+stemming algorithm can be found under
+http://snowball.tartarus.org/algorithms/italian/stemmer.html
+
+stem(word)[source]¶
+
+Stem an Italian word and return the stemmed form.
+
+Parameters:
+
+word (str or unicode) – The word that is stemmed.
+
+Returns:
+
+The stemmed form.
+
+Return type:
+
+unicode
+
+class nltk.stem.snowball.NorwegianStemmer[source]¶
+
+Bases: _ScandinavianStemmer
+
+The Norwegian Snowball stemmer.
+
+Variables:
+
+__vowels – The Norwegian vowels.
+
+__s_ending – Letters that may directly appear before a word final ‘s’.
+
+__step1_suffixes – Suffixes to be deleted in step 1 of the algorithm.
+
+__step2_suffixes – Suffixes to be deleted in step 2 of the algorithm.
+
+__step3_suffixes – Suffixes to be deleted in step 3 of the algorithm.
+
+Note:
+
+A detailed description of the Norwegian
+stemming algorithm can be found under
+http://snowball.tartarus.org/algorithms/norwegian/stemmer.html
+
+stem(word)[source]¶
+
+Stem a Norwegian word and return the stemmed form.
+
+Parameters:
+
+word (str or unicode) – The word that is stemmed.
+
+Returns:
+
+The stemmed form.
+
+Return type:
+
+unicode
+
+class nltk.stem.snowball.PorterStemmer[source]¶
+
+Bases: _LanguageSpecificStemmer, PorterStemmer
+
+A word stemmer based on the original Porter stemming algorithm.
+
+Porter, M. “An algorithm for suffix stripping.”
+Program 14.3 (1980): 130-137.
+
+A few minor modifications have been made to Porter’s basic
+algorithm. See the source code of the module
+nltk.stem.porter for more information.
+
+__init__(ignore_stopwords=False)[source]¶
+
+class nltk.stem.snowball.PortugueseStemmer[source]¶
+
+Bases: _StandardStemmer
+
+The Portuguese Snowball stemmer.
+
+Variables:
+
+__vowels – The Portuguese vowels.
+
+__step1_suffixes – Suffixes to be deleted in step 1 of the algorithm.
+
+__step2_suffixes – Suffixes to be deleted in step 2 of the algorithm.
+
+__step4_suffixes – Suffixes to be deleted in step 4 of the algorithm.
+
+Note:
+
+A detailed description of the Portuguese
+stemming algorithm can be found under
+http://snowball.tartarus.org/algorithms/portuguese/stemmer.html
+
+stem(word)[source]¶
+
+Stem a Portuguese word and return the stemmed form.
+
+Parameters:
+
+word (str or unicode) – The word that is stemmed.
+
+Returns:
+
+The stemmed form.
+
+Return type:
+
+unicode
+
+class nltk.stem.snowball.RomanianStemmer[source]¶
+
+Bases: _StandardStemmer
+
+The Romanian Snowball stemmer.
+
+Variables:
+
+__vowels – The Romanian vowels.
+
+__step0_suffixes – Suffixes to be deleted in step 0 of the algorithm.
+
+__step1_suffixes – Suffixes to be deleted in step 1 of the algorithm.
+
+__step2_suffixes – Suffixes to be deleted in step 2 of the algorithm.
+
+__step3_suffixes – Suffixes to be deleted in step 3 of the algorithm.
+
+Note:
+
+A detailed description of the Romanian
+stemming algorithm can be found under
+http://snowball.tartarus.org/algorithms/romanian/stemmer.html
+
+stem(word)[source]¶
+
+Stem a Romanian word and return the stemmed form.
+
+Parameters:
+
+word (str or unicode) – The word that is stemmed.
+
+Returns:
+
+The stemmed form.
+
+Return type:
+
+unicode
+
+class nltk.stem.snowball.RussianStemmer[source]¶
+
+Bases: _LanguageSpecificStemmer
+
+The Russian Snowball stemmer.
+
+Variables:
+
+__perfective_gerund_suffixes – Suffixes to be deleted.
+
+__adjectival_suffixes – Suffixes to be deleted.
+
+__reflexive_suffixes – Suffixes to be deleted.
+
+__verb_suffixes – Suffixes to be deleted.
+
+__noun_suffixes – Suffixes to be deleted.
+
+__superlative_suffixes – Suffixes to be deleted.
+
+__derivational_suffixes – Suffixes to be deleted.
+
+Note:
+
+A detailed description of the Russian
+stemming algorithm can be found under
+http://snowball.tartarus.org/algorithms/russian/stemmer.html
+
+stem(word)[source]¶
+
+Stem a Russian word and return the stemmed form.
+
+Parameters:
+
+word (str or unicode) – The word that is stemmed.
+
+Returns:
+
+The stemmed form.
+
+Return type:
+
+unicode
+
+class nltk.stem.snowball.SnowballStemmer[source]¶
+
+Bases: StemmerI
+
+Snowball Stemmer
+
+The following languages are supported:
+Arabic, Danish, Dutch, English, Finnish, French, German,
+Hungarian, Italian, Norwegian, Portuguese, Romanian, Russian,
+Spanish and Swedish.
+
+The algorithm for English is documented here:
+
+Porter, M. “An algorithm for suffix stripping.”
+Program 14.3 (1980): 130-137.
+
+The algorithms have been developed by Martin Porter.
+These stemmers are called Snowball, because Porter created
+a programming language with this name for creating
+new stemming algorithms. There is more information available
+at http://snowball.tartarus.org/
+
+The stemmer is invoked as shown below:
+
+>>> from nltk.stem import SnowballStemmer # See which languages are supported
+>>> print(" ".join(SnowballStemmer.languages))
+arabic danish dutch english finnish french german hungarian
+italian norwegian porter portuguese romanian russian
+spanish swedish
+>>> stemmer = SnowballStemmer("german") # Choose a language
+>>> stemmer.stem("Autobahnen") # Stem a word
+'autobahn'
+
+Invoking the stemmers that way is useful if you do not know the
+language to be stemmed at runtime. Alternatively, if you already know
+the language, then you can invoke the language specific stemmer directly:
+
+>>> from nltk.stem.snowball import GermanStemmer
+>>> stemmer = GermanStemmer()
+>>> stemmer.stem("Autobahnen")
+'autobahn'
+
+Parameters:
+
+language (str or unicode) – The language whose subclass is instantiated.
+
+ignore_stopwords (bool) – If set to True, stopwords are
+not stemmed and returned unchanged.
+Set to False by default.
+
+Raises:
+
+ValueError – If there is no stemmer for the specified
+language, a ValueError is raised.
+
+__init__(language, ignore_stopwords=False)[source]¶
+
+languages = ('arabic', 'danish', 'dutch', 'english', 'finnish', 'french', 'german', 'hungarian', 'italian', 'norwegian', 'porter', 'portuguese', 'romanian', 'russian', 'spanish', 'swedish')¶
+
+stem(token)[source]¶
+
+Strip affixes from the token and return the stem.
+
+Parameters:
+
+token (str) – The token that should be stemmed.
+
+class nltk.stem.snowball.SpanishStemmer[source]¶
+
+Bases: _StandardStemmer
+
+The Spanish Snowball stemmer.
+
+Variables:
+
+__vowels – The Spanish vowels.
+
+__step0_suffixes – Suffixes to be deleted in step 0 of the algorithm.
+
+__step1_suffixes – Suffixes to be deleted in step 1 of the algorithm.
+
+__step2a_suffixes – Suffixes to be deleted in step 2a of the algorithm.
+
+__step2b_suffixes – Suffixes to be deleted in step 2b of the algorithm.
+
+__step3_suffixes – Suffixes to be deleted in step 3 of the algorithm.
+
+Note:
+
+A detailed description of the Spanish
+stemming algorithm can be found under
+http://snowball.tartarus.org/algorithms/spanish/stemmer.html
+
+stem(word)[source]¶
+
+Stem a Spanish word and return the stemmed form.
+
+Parameters:
+
+word (str or unicode) – The word that is stemmed.
+
+Returns:
+
+The stemmed form.
+
+Return type:
+
+unicode
+
+class nltk.stem.snowball.SwedishStemmer[source]¶
+
+Bases: _ScandinavianStemmer
+
+The Swedish Snowball stemmer.
+
+Variables:
+
+__vowels – The Swedish vowels.
+
+__s_ending – Letters that may directly appear before a word final ‘s’.
+
+__step1_suffixes – Suffixes to be deleted in step 1 of the algorithm.
+
+__step2_suffixes – Suffixes to be deleted in step 2 of the algorithm.
+
+__step3_suffixes – Suffixes to be deleted in step 3 of the algorithm.
+
+Note:
+
+A detailed description of the Swedish
+stemming algorithm can be found under
+http://snowball.tartarus.org/algorithms/swedish/stemmer.html
+
+stem(word)[source]¶
+
+Stem a Swedish word and return the stemmed form.
+
+Parameters:
+
+word (str or unicode) – The word that is stemmed.
+
+Returns:
+
+The stemmed form.
+
+Return type:
+
+unicode
+
+nltk.stem.snowball.demo()[source]¶
+
+This function provides a demonstration of the Snowball stemmers.
+
+After invoking this function and specifying a language,
+it stems an excerpt of the Universal Declaration of Human Rights
+(which is a part of the NLTK corpus collection) and then prints
+out the original and the stemmed text.

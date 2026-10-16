@@ -1,0 +1,62 @@
+{
+ "chave": "web:docs.meilisearch.com",
+ "nomes": [
+  "Meilisearch Documentation"
+ ],
+ "urls": [
+  "https://docs.meilisearch.com/"
+ ],
+ "readme_cortado": false,
+ "readme": "[Welcome to Meilisearch - Meilisearch Documentation]\n\nDocumentation Index\nFetch the complete documentation index at: /docs/llms.txt\nUse this file to discover all available pages before exploring further.\nSkip to main content\n\nMeilisearch indexes your content and makes it accessible to both humans and AI. It stores your documents and embeddings, then exposes them through fast full-text search, semantic search, and conversational interfaces, all from a single API.\n\nStart with Cloud\nGet started in minutes with Meilisearch Cloud\n\nSelf-host\nDeploy on your own infrastructure\n\n​\nHow it works\nIndex once, access everywhere. You push your content to Meilisearch. It stores the documents, builds the search indexes, and when configured with an embedder, generates vector embeddings automatically. Your data becomes accessible to both end users and AI systems.\n\nFor humans\nSearch-as-you-type interfaces, faceted navigation, filtering, sorting, and personalized results, all in under 50ms.\n\nFor AI\nSemantic search, RAG-powered conversational interfaces, and similar document retrieval so LLMs can answer questions grounded in your data.\n\n​\nWhat you can build\n\nSearch interfaces: instant, typo-tolerant search bars for websites, apps, and documentation.\n\nAI assistants: connect LLMs to your content with built-in RAG. Users ask questions in natural language and get answers grounded in your data.\n\nRecommendation systems: find similar documents and personalize results based on user preferences.\n\nInternal tools: make company knowledge searchable across documents, databases, and APIs.\n\n​\nWhy Meilisearch?\nMeilisearch is built on three pillars:\n\n​\nPerformance\nMeilisearch is designed for speed at scale. Every query returns results in under 50 milliseconds, whether your index contains a thousand documents or tens of millions. The engine uses memory-mapped storage, multi-threaded indexing, and DiskANN-based vector search to maintain consistent performance as your data grows. Sharding and replication let you scale horizontally without sacrificing latency.\n\n​\nRelevancy\nGetting the right results means combining multiple signals. Meilisearch chains seven default ranking rules (words, typo, proximity, attributeRank, sort, wordPosition, and exactness) with support for custom rules tailored to your domain. Hybrid search merges keyword and semantic results so users find what they’re looking for even when they don’t use the exact right words. Conversational search goes further: RAG-powered responses are grounded in your indexed data, so AI answers are sourced and verifiable.\n\n​\nDeveloper experience\nMeilisearch is a single binary with a REST API. There is no cluster to configure, no schema to define, and no separate vector store to manage. Send your documents and Meilisearch handles tokenization, indexing, and vector generation through auto-embeddings. SDKs for 10+ languages, one-click deployment on Meilisearch Cloud, and sensible defaults mean you go from zero to production search in minutes, not weeks.\n\n​\nSee it in action\n\nTry our live demos:\n\nE-commerce search - Browse millions of products\n\nWhere to Watch - Search the TMDB movie database\n\nSaaS search - Multi-model search with Laravel\n\n​\nGet started with Meilisearch Cloud\nMeilisearch Cloud gets you up and running in minutes with automatic scaling, updates, and maintenance. Start with a 14-day free trial.\n\n​\nNext steps\n\nExplore features\nSee all Meilisearch capabilities\n\nGood practices\nLearn how to format, chunk, and index your data\n\nChoose your SDK\nGet started with your preferred language\n\nGlossary\nKey terms and concepts explained\n\nWas this page helpful?\n\nYesNo",
+ "fonte": "site",
+ "respostas": [
+  {
+   "por": "ministral-14b",
+   "resposta": {
+    "serve": "search",
+    "role": "fast full-text, semantic, and hybrid search for Markdown in Portuguese/English via MCP",
+    "place": [
+     "network_service",
+     "inside_db_mcp"
+    ],
+    "mechanism": [
+     "full_text",
+     "vector",
+     "hybrid",
+     "reranker",
+     "embeddings"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "yes",
+    "license": "unknown",
+    "maturity": "unknown",
+    "doubt": true,
+    "evidence": "\"Meilisearch indexes your content... exposes them through fast full-text search, semantic search, and conversational interfaces... supports hybrid search merging keyword and semantic results. Supports Portuguese/English via multilingual indexing.\""
+   }
+  },
+  {
+   "por": "nemotron-3-super-120b",
+   "resposta": {
+    "serve": "search",
+    "role": "Provides full-text, semantic, hybrid search over Markdown notes",
+    "place": [
+     "network_service",
+     "disk"
+    ],
+    "mechanism": [
+     "full_text",
+     "vector",
+     "hybrid"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "unknown",
+    "doubt": false,
+    "evidence": "Meilisearch indexes your content and makes it accessible to both humans and AI. It stores your documents and embeddings, then exposes them through fast full-text search, semantic search, and conversational interfaces, all from a single API."
+   }
+  }
+ ]
+}

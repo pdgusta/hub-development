@@ -1,0 +1,31 @@
+{
+ "chave": "gh:facebook/watchman",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T21:08:30Z",
+ "resultado": "corrige",
+ "conferencia": {
+  "resultado": "corrige",
+  "final": {
+   "serve": "stack",
+   "role": "File watching service that records file changes and triggers actions on matching changes.",
+   "place": [
+    "disk",
+    "network_service"
+   ],
+   "mechanism": [
+    "other"
+   ],
+   "mcp": "unknown",
+   "windows": "yes",
+   "portuguese": "unknown",
+   "license": "MIT",
+   "maturity": "stable",
+   "doubt": false,
+   "evidence": "Watchman exists to watch files and record when they actually change. It can also trigger actions. We support Windows and macOS builds"
+  },
+  "o_que_mudou": [
+   "portuguese: no -> unknown, README does not mention language support"
+  ],
+  "nota": "File-watching service with Windows support; fits the file watching part of the stack (detecting note changes)."
+ }
+}

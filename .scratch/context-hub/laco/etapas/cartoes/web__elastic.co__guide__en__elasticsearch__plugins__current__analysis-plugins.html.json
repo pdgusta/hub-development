@@ -1,0 +1,46 @@
+{
+ "chave": "web:elastic.co/guide/en/elasticsearch/plugins/current/analysis-plugins.html",
+ "urls": [
+  "https://www.elastic.co/guide/en/elasticsearch/plugins/current/analysis-plugins.html",
+  "https://www.elastic.co/guide/en/elasticsearch/plugins/current/analysis.html",
+  "https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-plugins.html"
+ ],
+ "tipos": [
+  "library",
+  "tool"
+ ],
+ "termos": [
+  "テキスト分析",
+  "プラグイン",
+  "Elasticsearch",
+  "stemmer",
+  "tokenizer",
+  "normalizer",
+  "Analysis Plugins",
+  "トークナイザー",
+  "フィルター",
+  "言語サポート",
+  "scoring"
+ ],
+ "mencoes": 4,
+ "familias": [
+  "ising",
+  "liquid",
+  "mistral"
+ ],
+ "primeira_onda": 4,
+ "nomes": [
+  "Elasticsearch Analysis Plugins"
+ ],
+ "resumos": [
+  "Elasticsearch Analysis プラグインは、テキスト分析機能を拡張するためのプラグインです。",
+  "Plugins for language-specific analyzers (e.g., Portuguese stemming, accent handling).",
+  "Elasticsearch のテキスト分析機能を拡張するプラグインのコレクションで、言語固有のトークナイザーやフィルターが含まれています。",
+  "スコアリングやハイライト生成などの分析プラグインを提供し、意味検索の精度を向上させる."
+ ],
+ "fonte": "site",
+ "readme_status": "ok",
+ "readme_nome": "https://www.elastic.co/guide/en/elasticsearch/plugins/current/analysis.html",
+ "readme_cortado": false,
+ "readme": "[Analysis plugins | Elasticsearch Reference]\n\nDocs\n\n /\n\n Reference\n\n /\n\n Elasticsearch\n\n /\n\n Elasticsearch plugins\n\nAnalysis plugins\n\nAnalysis plugins extend Elasticsearch by adding new analyzers, tokenizers, token filters, or character filters to Elasticsearch.\n\nCore analysis plugins\n\nThe core analysis plugins are:\n\nICU\nAdds extended Unicode support using the ICU libraries, including better analysis of Asian languages, Unicode normalization, Unicode-aware case folding, collation support, and transliteration.\nKuromoji\nAdvanced analysis of Japanese using the Kuromoji analyzer.\nNori\nMorphological analysis of Korean using the Lucene Nori analyzer.\nPhonetic\nAnalyzes tokens into their phonetic equivalent using Soundex, Metaphone, Caverphone, and other codecs.\nSmartCN\nAn analyzer for Chinese or mixed Chinese-English text. This analyzer uses probabilistic knowledge to find the optimal word segmentation for Simplified Chinese text. The text is first broken into sentences, then each sentence is segmented into words.\nStempel\nProvides high quality stemming for Polish.\nUkrainian\nProvides stemming for Ukrainian.\n\nCommunity contributed analysis plugins\n\nA number of analysis plugins have been contributed by our community:\n\nIK Analysis Plugin (by Medcl)\n\nPinyin Analysis Plugin (by Medcl)\n\nVietnamese Analysis Plugin (by Duy Do)\n\nSTConvert Analysis Plugin (by Medcl)"
+}

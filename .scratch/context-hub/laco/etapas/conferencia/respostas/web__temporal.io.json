@@ -1,0 +1,32 @@
+{
+ "chave": "web:temporal.io",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T21:08:34Z",
+ "resultado": "corrige",
+ "conferencia": {
+  "resultado": "corrige",
+  "final": {
+   "serve": "stack",
+   "role": "Durable workflow orchestration engine for long-running agent and AI pipelines",
+   "place": [
+    "network_service"
+   ],
+   "mechanism": [
+    "other"
+   ],
+   "mcp": "unknown",
+   "windows": "unknown",
+   "portuguese": "unknown",
+   "license": "MIT",
+   "maturity": "stable",
+   "doubt": false,
+   "evidence": "Open-source platform; workflows capture state and retry on failure; MIT-licensed, 9 years in production; use case 'Agents, MCP, & AI Pipelines'."
+  },
+  "o_que_mudou": [
+   "mcp: yes/unknown -> unknown, page lists MCP only as a use case, not as an MCP server",
+   "place: dropped inside_db_mcp, it is a separate service",
+   "doubt: true -> false"
+  ],
+  "nota": "Heavy durable-execution server; likely overkill for a two-machine notes hub, but valid as an orchestration part."
+ }
+}

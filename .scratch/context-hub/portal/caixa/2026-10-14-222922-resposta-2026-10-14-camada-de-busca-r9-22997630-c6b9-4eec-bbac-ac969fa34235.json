@@ -1,0 +1,66 @@
+{
+  "envio": "22997630-c6b9-4eec-bbac-ac969fa34235",
+  "tipo": "resposta",
+  "enviada": "2026-10-14T22:29:22-03:00",
+  "alvo": {
+    "tipo": "rodada",
+    "id": "2026-10-14-camada-de-busca-r9",
+    "titulo": "O que fazer com a Robusta depois do protótipo"
+  },
+  "ticket": "09",
+  "substitui": null,
+  "rodada": {
+    "id": "2026-10-14-camada-de-busca-r9",
+    "base": "393c936bf1a8518f48199a322af365100b7a88a1310c0098e8bb4cde6b2ce763",
+    "titulo": "O que fazer com a Robusta depois do protótipo",
+    "ticket": "09",
+    "perguntas": [
+      {
+        "id": "robusta",
+        "titulo": "O que fazer com a Robusta",
+        "tipo": "escolha",
+        "recomendada": [
+          "B"
+        ],
+        "opcoes": [
+          {
+            "chave": "A",
+            "texto": "Seguir como está: na fase 2 as duas são testadas com os modelos da lista curta, e você decide depois. A busca por palavra da Robusta continua pior"
+          },
+          {
+            "chave": "B",
+            "texto": "Antes da fase 2, o mesmo subagente faz uma rodada curta de ajuste: troca a busca por palavra pelo FTS5 do SQLite e tenta decifrar o banco direto no índice, pelo caminho do MCP do es617. Depois, a fase 2 com as duas. Estimativa de 80 a 150 mil tokens do Sonnet a mais"
+          },
+          {
+            "chave": "C",
+            "texto": "Encerrar a Robusta agora: a fase 2 testa só o OHS com os modelos da lista curta, e a busca fica na Leve com alcance (OHS no disco de cada máquina e repasse do MCP na tailnet)"
+          }
+        ],
+        "proposta": null
+      },
+      {
+        "id": "algo-mais",
+        "titulo": "Algo mais?",
+        "tipo": "texto",
+        "recomendada": [],
+        "opcoes": [],
+        "proposta": null
+      }
+    ]
+  },
+  "corpo_hash": "c949d686aaea1f902932cacc4d8c627a5110d0365fe5a82f3fbeae36231b486d",
+  "corpo": {
+    "tipo": "resposta",
+    "rodada": "2026-10-14-camada-de-busca-r9",
+    "base": "393c936bf1a8518f48199a322af365100b7a88a1310c0098e8bb4cde6b2ce763",
+    "respostas": {
+      "robusta": {
+        "escolha": [
+          "B"
+        ],
+        "outra": null,
+        "comentario": "essa opção porem com subagente opus 5.5 medium"
+      }
+    }
+  }
+}

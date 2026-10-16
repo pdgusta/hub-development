@@ -1,0 +1,34 @@
+{
+ "chave": "gh:huggingface/text-embeddings-inference",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T21:08:39Z",
+ "resultado": "corrige",
+ "conferencia": {
+  "resultado": "corrige",
+  "final": {
+   "serve": "search",
+   "role": "Server for text embedding, re-ranker and sequence classification models; HTTP/gRPC embedding endpoint",
+   "place": [
+    "network_service"
+   ],
+   "mechanism": [
+    "vector",
+    "reranker",
+    "embeddings"
+   ],
+   "mcp": "unknown",
+   "windows": "unknown",
+   "portuguese": "yes",
+   "license": "unknown",
+   "maturity": "stable",
+   "doubt": false,
+   "evidence": "Toolkit for deploying and serving open source text embeddings and sequence classification models; supports multilingual-e5-large-instruct, bge-reranker; production ready (tracing, Prometheus)."
+  },
+  "o_que_mudou": [
+   "mcp: no -> unknown, README does not mention MCP either way",
+   "maturity: unknown -> stable, README says production ready",
+   "windows: unknown kept, README shows Docker/Mac/Linux only"
+  ],
+  "nota": "Embedding and re-ranker server could power vector search over PT/EN notes via HTTP; no MCP, Windows unclear."
+ }
+}

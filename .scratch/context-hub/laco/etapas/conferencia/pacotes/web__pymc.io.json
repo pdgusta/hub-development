@@ -1,0 +1,54 @@
+{
+ "chave": "web:pymc.io",
+ "nomes": [
+  "PyMC"
+ ],
+ "urls": [
+  "https://www.pymc.io"
+ ],
+ "readme_cortado": false,
+ "readme": "[Bayesian Modeling and Probabilistic Programming in Python — PyMC]\n\nSkip to main content\n\nBack to top\n\nGitHub\n\nMastodon\n\nTwitter\n\nYouTube\n\nDiscourse\n\nBayesian Modeling and Probabilistic Programming in Python#\n\nPyMC is a probabilistic programming library for Python that allows users to build Bayesian models with a simple Python API and fit them using state of the art algorithms such as Markov chain Monte Carlo (MCMC) methods and variational inference.\n\nFeatures#\n\nPyMC strives to make Bayesian modeling as simple and painless as possible, allowing users to focus on their problem rather than the methods.\n\nHere is what sets it apart:\n\nModern: Includes state-of-the-art inference algorithms, including MCMC (NUTS) and variational inference (ADVI).\n\nUser friendly: Write your models using friendly Python syntax. Learn Bayesian modeling from the many example notebooks.\n\nFast: Uses PyTensor as its computational backend to compile through Numba (default), JAX, or C, run your models on the GPU, and benefit from complex graph-optimizations.\n\nBatteries included: Includes probability distributions, Gaussian processes, ABC, SMC and much more. It integrates nicely with ArviZ for visualizations and diagnostics, as well as Bambi for high-level mixed-effect models.\n\nCommunity focused: Ask questions on discourse, join MeetUp events, follow us on Twitter, and start contributing.\n\nLearn more about the PyMC ecosystem, our history, and what users say. Read the latest updates on the Blog or explore the PyMC source code.\n\nGet started#\n\nRead the PyMC 6.0 release announcement for the\nNumba backend (default), nutpie sampling, named dimensions, and ArviZ >= 1.0 integration.\n\nInstallation instructions\n\nBeginner guide (if you do not know Bayesian modeling)\n\nAPI quickstart (if you do know Bayesian modeling)\n\nExploratory Analysis of Bayesian Models, an online book on visualization, diagnostics, and Bayesian workflow with ArviZ.\n\nExample gallery\n\nDiscourse help forum\n\nExample from Linear Regression#\n\nThis example demonstrates how to perform Bayesian inference for a linear regression model to predict plant growth based on environmental factors.\n\nPlant growth can be influenced by multiple factors, and understanding these relationships is crucial for optimizing agricultural practices.\n\nIndependent Variables:\n\nSunlight Hours: Number of hours the plant is exposed to sunlight daily.\n\nWater Amount: Daily water amount given to the plant (in milliliters).\n\nSoil Nitrogen Content: Percentage of nitrogen content in the soil.\n\nDependent Variable:\n\nPlant Growth (y): Measured as the increase in plant height (in centimeters) over a certain period.\n\nimport pymc as pm\n\n# Taking draws from a normal distribution\nseed = 42\nx_dist = pm.Normal.dist(shape=(100, 3))\nx_data = pm.draw(x_dist, random_seed=seed)\n\n# Define coordinate values for all dimensions of the data\ncoords={\n \"trial\": range(100),\n \"features\": [\"sunlight hours\", \"water amount\", \"soil nitrogen\"],\n}\n\n# Define generative model\nwith pm.Model(coords=coords) as generative_model:\n x = pm.Data(\"x\", x_data, dims=[\"trial\", \"features\"])\n\n # Model parameters\n betas = pm.Normal(\"betas\", dims=\"features\")\n sigma = pm.HalfNormal(\"sigma\")\n\n # Linear model\n mu = x @ betas\n\n # Likelihood\n # Assuming we measure deviation of each plant from baseline\n plant_growth = pm.Normal(\"plant growth\", mu, sigma, dims=\"trial\")\n\n# Generating data from model by fixing parameters\nfixed_parameters = {\n \"betas\": [5, 20, 2],\n \"sigma\": 0.5,\n}\nwith pm.do(generative_model, fixed_parameters) as synthetic_model:\n idata = pm.sample_prior_predictive(random_seed=seed) # Sample from prior predictive distribution.\n synthetic_y = idata.prior[\"plant growth\"].sel(draw=0, chain=0)\n\n# Infer parameters conditioned on observed data\nwith pm.observe(generative_model, {\"plant growth\": synthetic_y}) as inference_model:\n idata = pm.sample(random_seed=seed)\n\n summary = pm.stats.summary(idata, var_names=[\"betas\", \"sigma\"])\n print(summary)\n\nFrom the summary, we can see that the mean of the inferred parameters are very close to the fixed parameters\n\nParams\n\nmean\n\nsd\n\nhdi_3%\n\nhdi_97%\n\nmcse_mean\n\nmcse_sd\n\ness_bulk\n\ness_tail\n\nr_hat\n\nbetas[sunlight hours]\n\n4.972\n\n0.054\n\n4.866\n\n5.066\n\n0.001\n\n0.001\n\n3003\n\n1257\n\n1\n\nbetas[water amount]\n\n19.963\n\n0.051\n\n19.872\n\n20.062\n\n0.001\n\n0.001\n\n3112\n\n1658\n\n1\n\nbetas[soil nitrogen]\n\n1.994\n\n0.055\n\n1.899\n\n2.107\n\n0.001\n\n0.001\n\n3221\n\n1559\n\n1\n\nsigma\n\n0.511\n\n0.037\n\n0.438\n\n0.575\n\n0.001\n\n0\n\n2945\n\n1522\n\n1\n\n# Simulate new data conditioned on inferred parameters\nnew_x_data = pm.draw(\n pm.Normal.dist(shape=(3, 3)),\n random_seed=seed,\n)\nnew_coords = coords | {\"trial\": [0, 1, 2]}\n\nwith inference_model:\n pm.set_data({\"x\": new_x_data}, coords=new_coords)\n pm.sample_posterior_predictive(\n idata,\n predictions=True,\n extend_inferencedata=True,\n random_seed=seed,\n )\n\npm.stats.summary(idata.predictions, kind=\"stats\")\n\nThe new data conditioned on inferred parameters would look like:\n\nOutput\n\nmean\n\nsd\n\nhdi_3%\n\nhdi_97%\n\nplant growth[0]\n\n14.229\n\n0.515\n\n13.325\n\n15.272\n\nplant growth[1]\n\n24.418\n\n0.511\n\n23.428\n\n25.326\n\nplant growth[2]\n\n-6.747\n\n0.511\n\n-7.740\n\n-5.797\n\n# Simulate new data, under a scenario where the first beta is zero\nwith pm.do(\n inference_model,\n {inference_model[\"betas\"]: inference_model[\"betas\"] * [0, 1, 1]},\n) as plant_growth_model:\n new_predictions = pm.sample_posterior_predictive(\n idata,\n predictions=True,\n random_seed=seed,\n )\n\npm.stats.summary(new_predictions, kind=\"stats\")\n\nThe new data, under the above scenario would look like:\n\nOutput\n\nmean\n\nsd\n\nhdi_3%\n\nhdi_97%\n\nplant growth[0]\n\n12.149\n\n0.515\n\n11.193\n\n13.135\n\nplant growth[1]\n\n29.809\n\n0.508\n\n28.832\n\n30.717\n\nplant growth[2]\n\n-0.131\n\n0.507\n\n-1.121\n\n0.791\n\nCite PyMC#\n\nIf you use PyMC in your research, please cite the following paper:\n\n PyMC: A Modern and Comprehensive Probabilistic Programming Framework in Python, Abril-Pla O, Andreani V, Carroll C, Dong L, Fonnesbeck CJ, Kochurov M, Kumar R, Lao J, Luhmann CC, Martin OA, Osthege M, Vieira R, Wiecki T, Zinkov R. (2023)\n\nBibTeX version\n\n@article{pymc2023,\n title = {{PyMC}: A Modern and Comprehensive Probabilistic Programming Framework in {P}ython},\n author = {Oriol Abril-Pla and Virgile Andreani and Colin Carroll and Larry Dong and Christopher J. Fonnesbeck and Maxim Kochurov and Ravin Kumar and Junpeng Lao and Christian C. Luhmann and Osvaldo A. Martin and Michael Osthege and Ricardo Vieira and Thomas Wiecki and Robert Zinkov },\n journal = {{PeerJ} Computer Science},\n volume = {9},\n number = {e1516},\n doi = {10.7717/peerj-cs.1516},\n year = {2023}\n}\n\n A DOI for all versions.\n\nDOIs for specific versions are shown on Zenodo and under Releases.\n\nSponsors#\n\nNumFOCUS\n\nNumFOCUS is our non-profit umbrella organization.\n\nhttps://numfocus.org\n\nPyMC Labs\n\nPyMC Labs offers professional consulting services for PyMC.\n\nhttps://pymc-labs.io\n\nOpen Wound Research\n\nA novel wound-care research organization committed to advancing actionable wound care research.\n\nhttps://www.openwoundresearch.com/\n\nPast Sponsors#\n\nMany thanks to all our former sponsors who supported PyMC development.\n\nMistplay (2022-2023)\n\nMistplay is the world’s leading Loyalty Program for mobile gamers.\n\nhttps://www.mistplay.com/\n\nODSC (2022-2023)\n\nThe future of AI gathers here.\n\nhttps://odsc.com/california/?utm_source=pymc&utm_medium=referral\n\nAdia Lab (2023-2024)\n\nDedicated to basic and applied research in data and computational sciences.\n\nhttps://www.adialab.ae/\n\n On this page\n\n Edit on GitHub\n\n Show Source\n\n Support PyMC",
+ "fonte": "site",
+ "respostas": [
+  {
+   "por": "gemma-4-31b",
+   "resposta": {
+    "serve": "none",
+    "role": "",
+    "place": [
+     "n/a"
+    ],
+    "mechanism": [
+     "n/a"
+    ],
+    "mcp": "no",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "stable",
+    "doubt": false,
+    "evidence": ""
+   }
+  },
+  {
+   "por": "qwen2.5-vl-72b",
+   "resposta": {
+    "serve": "none",
+    "role": "",
+    "place": [
+     "n/a"
+    ],
+    "mechanism": [
+     "n/a"
+    ],
+    "mcp": "no",
+    "windows": "no",
+    "portuguese": "no",
+    "license": "unknown",
+    "maturity": "unknown",
+    "doubt": true,
+    "evidence": "README focuses on Bayesian modeling and probabilistic programming, unrelated to hub requirements."
+   }
+  }
+ ]
+}

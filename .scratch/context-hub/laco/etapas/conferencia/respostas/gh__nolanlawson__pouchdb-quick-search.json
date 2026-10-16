@@ -1,0 +1,34 @@
+{
+ "chave": "gh:nolanlawson/pouchdb-quick-search",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T21:22:40Z",
+ "resultado": "corrige",
+ "conferencia": {
+  "resultado": "corrige",
+  "final": {
+   "serve": "search",
+   "role": "Local full-text search plugin for PouchDB (Lunr-based, offline), not for server-side CouchDB.",
+   "place": [
+    "library"
+   ],
+   "mechanism": [
+    "full_text"
+   ],
+   "mcp": "no",
+   "windows": "unknown",
+   "portuguese": "partial",
+   "license": "unknown",
+   "maturity": "unknown",
+   "doubt": false,
+   "evidence": "Full-text search engine built on top of PouchDB; local plugin not designed to work against CouchDB; Lunr optimized for English, other languages via lunr-languages."
+  },
+  "o_que_mudou": [
+   "serve: none/search split -> search, full-text over PouchDB documents is a real search mechanism",
+   "place: inside_db_mcp -> library, it is a client-side PouchDB plugin",
+   "portuguese: no -> partial, English-optimized with lunr-languages option",
+   "maturity: stable -> unknown, README does not say",
+   "doubt: true -> false"
+  ],
+  "nota": "Busca full-text local sobre PouchDB (mesma base do LiveSync), mas só no cliente e otimizada para inglês; agentes via MCP não a alcançam."
+ }
+}

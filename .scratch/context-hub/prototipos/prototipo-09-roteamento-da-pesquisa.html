@@ -1,0 +1,528 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Roteamento da pesquisa</title>
+<link rel="stylesheet" href="fontes/roteamento.css">
+<style>
+  :root{
+    --bg:#fbfbf7; --ink:#14213d; --soft:#5f6b82; --line:#d8dce5; --card:#ffffff;
+    --l0:#00a19a; --l1:#7c3aad; --l2:#f08a00; --l3:#2e9e4f; --l4:#1667c7; --l5:#d7263d; --l6:#14213d;
+    --hl:#ffe14d;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.45 Barlow,system-ui,sans-serif}
+  main{max-width:1180px;margin:0 auto;padding:0 16px 80px}
+  .cond{font-family:"Barlow Condensed",Barlow,sans-serif}
+  /* placa de estação */
+  .placa{background:var(--ink);color:#fff;margin:0 -16px;padding:26px 32px 22px;display:flex;flex-wrap:wrap;gap:18px 36px;align-items:center;justify-content:space-between;border-bottom:8px solid var(--l2)}
+  .placa h1{margin:0;font:800 clamp(36px,6vw,64px)/1 "Barlow Condensed",sans-serif;letter-spacing:.01em}
+  .placa .linhas{display:flex;gap:6px;margin-top:10px}
+  .placa .linhas i{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font:800 16px "Barlow Condensed";color:#fff;font-style:normal}
+  .placa .meta{font:600 15px/1.5 Barlow;text-align:right;color:#cfd6e4}
+  .placa .meta b{color:#fff;font-size:17px}
+  .aviso{display:inline-block;background:var(--hl);color:var(--ink);font-weight:700;padding:2px 8px;border-radius:3px;margin-top:6px}
+  /* blocos */
+  .bloco{margin-top:46px}
+  .rot{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+  .rot i{flex:none;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font:800 22px "Barlow Condensed";color:#fff;font-style:normal;border:4px solid #fff;box-shadow:0 0 0 3px var(--k)}
+  .rot h2{margin:0;font:800 30px/1.05 "Barlow Condensed",sans-serif;text-transform:uppercase;letter-spacing:.01em}
+  .rot span{font:600 15px Barlow;color:var(--soft);margin-left:6px;text-transform:none}
+  svg.mapa{width:100%;height:auto;display:block;background:var(--card);border:1.5px solid var(--line);border-radius:14px}
+  svg.mapa text{font-family:Barlow,sans-serif;fill:var(--ink)}
+  svg.mapa .c{font-family:"Barlow Condensed",sans-serif}
+  .nota{font-size:13.5px;color:var(--soft);margin:6px 4px 0}
+  /* etapa 0 e 1, cartões laterais */
+  .duo{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
+  .cartao{background:var(--card);border:1.5px solid var(--line);border-radius:14px;padding:16px 18px;border-top:8px solid var(--c,var(--ink))}
+  .cartao h3{margin:0 0 10px;font:800 21px "Barlow Condensed";text-transform:uppercase}
+  .chips{display:flex;flex-wrap:wrap;gap:6px}
+  .chip{border:1.5px solid var(--c,var(--line));border-radius:999px;padding:3px 10px;font:600 14px Barlow;background:#fff}
+  .chip.f{background:var(--c);color:#fff;border-color:var(--c)}
+  .seq{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:10px 0}
+  .seq .s{font:800 18px "Barlow Condensed";color:var(--soft)}
+  .grade{display:grid;grid-template-columns:repeat(8,1fr);gap:3px;margin-top:8px;font:600 12px Barlow}
+  .grade div{background:#efe7f6;border-radius:4px;padding:3px 4px;text-align:center;min-height:22px}
+  .grade .h{background:none;font:700 12px "Barlow Condensed";color:var(--l1);text-align:left}
+  .grade .t{background:none;font:700 12px "Barlow Condensed";color:var(--l1)}
+  /* catálogo */
+  .cat{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+  .grp{background:var(--card);border:1.5px solid var(--line);border-radius:12px;overflow:hidden}
+  .grp h4{margin:0;padding:8px 12px;color:#fff;background:var(--c);font:800 17px "Barlow Condensed";text-transform:uppercase;display:flex;gap:8px;align-items:center}
+  .grp h4 b{background:#fff;color:var(--c);border-radius:50%;width:22px;height:22px;display:grid;place-items:center;font-size:14px;flex:none}
+  .grp ul{margin:0;padding:10px 12px 12px 26px;font-size:14px;line-height:1.35}
+  .grp li{margin:2px 0}
+  /* painel */
+  .painel{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+  .painel span{background:var(--ink);color:#fff;border-radius:6px;padding:6px 10px;font:600 14px Barlow}
+  /* perguntas */
+  .perg{display:grid;grid-template-columns:96px 1fr;background:var(--card);border:2px solid var(--ink);border-radius:14px;overflow:hidden;margin-top:14px}
+  .perg .n{background:var(--ink);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;font:800 40px/1 "Barlow Condensed"}
+  .perg .n small{font:700 12px Barlow;letter-spacing:.08em;text-transform:uppercase;color:#cfd6e4;margin-bottom:4px}
+  .perg .b{padding:14px 18px}
+  .perg h3{margin:0 0 6px;font:800 24px/1.1 "Barlow Condensed";text-transform:uppercase}
+  .perg p{margin:0 0 8px}
+  .perg .rec{display:inline-block;background:#e6f4ea;border-left:6px solid var(--l3);padding:6px 10px;border-radius:4px;font-weight:600}
+  footer{margin-top:40px;font-size:13px;color:var(--soft)}
+  @media (max-width:860px){
+    .duo{grid-template-columns:1fr} .cat{grid-template-columns:1fr 1fr}
+    .placa .meta{text-align:left}
+    .perg{grid-template-columns:70px 1fr}
+  }
+</style>
+</head>
+<body>
+<main>
+
+<div class="placa">
+  <div>
+    <h1>Roteamento da pesquisa</h1>
+    <div class="linhas">
+      <i style="background:var(--l0);border-radius:5px">0</i><i style="background:var(--l1)">1</i><i style="background:var(--l2)">2</i><i style="background:var(--l3)">3</i><i style="background:var(--l4)">4</i><i style="background:var(--l5)">5</i><i style="background:var(--l6);box-shadow:0 0 0 2px #fff">6</i>
+    </div>
+  </div>
+  <div class="meta"><b>Camada de busca · rodada 6</b><br>2026-10-13 · proposta para a pesquisa ampla<br><span class="aviso">nada roda antes do "pode iniciar"</span></div>
+</div>
+
+<!-- PRINCÍPIO -->
+<div class="bloco">
+  <div class="rot"><i style="background:var(--ink);--k:var(--ink)">!</i><h2>O princípio <span>os modelos só respondem; quem grava é o laço</span></h2></div>
+  <svg class="mapa" viewBox="0 0 1100 330" role="img" aria-label="Modelos presos ao escopo, sem ferramenta de escrita, só respondem; o laço valida e grava no livro-razão, no catálogo e na quarentena">
+    <defs>
+      <marker id="p1" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M0 0L10 5L0 10z" fill="#14213d"/></marker>
+      <marker id="p2" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M0 0L10 5L0 10z" fill="#f08a00"/></marker>
+    </defs>
+    <!-- sala dos modelos -->
+    <rect x="30" y="40" width="390" height="266" rx="22" fill="#fff7ec" stroke="#f08a00" stroke-width="3" stroke-dasharray="12 7"/>
+    <rect x="50" y="26" width="236" height="28" rx="14" fill="#f08a00"/>
+    <text x="168" y="45" text-anchor="middle" class="c" font-size="16" font-weight="800" fill="#fff" style="fill:#fff">ESCOPO · PROMPT FECHADO + ESQUEMA</text>
+    <g font-size="15" font-weight="700">
+      <rect x="62" y="80" width="150" height="46" rx="23" fill="#fff" stroke="#14213d" stroke-width="2"/><text x="137" y="109" text-anchor="middle">modelo · família A</text>
+      <rect x="238" y="80" width="150" height="46" rx="23" fill="#fff" stroke="#14213d" stroke-width="2"/><text x="313" y="109" text-anchor="middle">modelo · família B</text>
+      <rect x="150" y="140" width="150" height="46" rx="23" fill="#fff" stroke="#14213d" stroke-width="2"/><text x="225" y="169" text-anchor="middle">modelo · família C</text>
+    </g>
+    <!-- sem lápis -->
+    <g transform="translate(70,196)">
+      <circle cx="20" cy="20" r="19" fill="#fff" stroke="#d7263d" stroke-width="3"/>
+      <path d="M11 29l3-9 11-11 6 6-11 11z" fill="none" stroke="#14213d" stroke-width="2.2" stroke-linejoin="round"/>
+      <path d="M6 34L34 6" stroke="#d7263d" stroke-width="3.5"/>
+      <text x="50" y="18" font-size="15" font-weight="700">sem ferramenta de escrita</text>
+      <text x="50" y="37" font-size="13.5" style="fill:#5f6b82">sem harness · nenhum toca o disco</text>
+    </g>
+    <g transform="translate(70,250)">
+      <circle cx="20" cy="20" r="19" fill="#fff" stroke="#2e9e4f" stroke-width="3"/>
+      <circle cx="18" cy="18" r="7" fill="none" stroke="#14213d" stroke-width="2.4"/><path d="M23 23l7 7" stroke="#14213d" stroke-width="2.6" stroke-linecap="round"/>
+      <text x="50" y="18" font-size="15" font-weight="700">só ler: busca do Google</text>
+      <text x="50" y="37" font-size="13.5" style="fill:#5f6b82">a única ferramenta</text>
+    </g>
+    <!-- setas -->
+    <path d="M520 120 L428 120" stroke="#14213d" stroke-width="3" marker-end="url(#p1)"/>
+    <text x="474" y="104" text-anchor="middle" class="c" font-size="16" font-weight="800">PERGUNTA</text>
+    <path d="M428 200 L520 200" stroke="#f08a00" stroke-width="5" marker-end="url(#p2)"/>
+    <text x="474" y="226" text-anchor="middle" class="c" font-size="16" font-weight="800" style="fill:#f08a00">RESPONDE</text>
+    <!-- laço -->
+    <circle cx="610" cy="160" r="86" fill="#14213d"/>
+    <path d="M610 92 a68 68 0 1 1 -60 36" fill="none" stroke="#f08a00" stroke-width="7" stroke-linecap="round" marker-end="url(#p2)"/>
+    <text x="610" y="150" text-anchor="middle" class="c" font-size="30" font-weight="800" style="fill:#fff">LAÇO</text>
+    <text x="610" y="174" text-anchor="middle" font-size="14" font-weight="600" style="fill:#cfd6e4">script</text>
+    <text x="610" y="193" text-anchor="middle" font-size="14" font-weight="600" style="fill:#cfd6e4">valida · decide</text>
+    <!-- grava -->
+    <path d="M700 160 L800 160" stroke="#14213d" stroke-width="5" marker-end="url(#p1)"/>
+    <text x="748" y="144" text-anchor="middle" class="c" font-size="18" font-weight="800">GRAVA</text>
+    <g font-size="15" font-weight="700">
+      <rect x="806" y="62" width="264" height="56" rx="10" fill="#fff" stroke="#14213d" stroke-width="2"/>
+      <text x="824" y="86">📒 livro-razão</text><text x="824" y="106" font-size="13" font-weight="500" style="fill:#5f6b82">só acréscimo · retoma de onde parou</text>
+      <rect x="806" y="132" width="264" height="56" rx="10" fill="#fff" stroke="#14213d" stroke-width="2"/>
+      <text x="824" y="156">🗂 catálogo</text><text x="824" y="176" font-size="13" font-weight="500" style="fill:#5f6b82">itens com fontes e modelos que citaram</text>
+      <rect x="806" y="202" width="264" height="56" rx="10" fill="#fff" stroke="#14213d" stroke-width="2"/>
+      <text x="824" y="226">🧪 quarentena</text><text x="824" y="246" font-size="13" font-weight="500" style="fill:#5f6b82">fora do escopo · não é apagado</text>
+    </g>
+  </svg>
+</div>
+
+<!-- LINHA DAS ETAPAS -->
+<div class="bloco">
+  <div class="rot"><i style="background:var(--l2);--k:var(--l2)">⇢</i><h2>O pátio e a linha <span>a etapa 0 prepara; as estações 1 a 6 rodam</span></h2></div>
+  <svg class="mapa" viewBox="0 0 1100 420" role="img" aria-label="Pátio de manutenção (etapa 0, montagem, uma vez) antes da linha; linha com as estações 1 a 6 e a vigia do provedor no laço">
+    <defs>
+      <marker id="m5" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M0 0L10 5L0 10z" fill="#d7263d"/></marker>
+      <marker id="m2" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M0 0L10 5L0 10z" fill="#f08a00"/></marker>
+      <marker id="m0" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M0 0L10 5L0 10z" fill="#00a19a"/></marker>
+    </defs>
+    <!-- pátio -->
+    <rect x="20" y="96" width="214" height="232" rx="12" fill="#e9f6f5" stroke="#00a19a" stroke-width="3"/>
+    <rect x="20" y="96" width="214" height="34" rx="12" fill="#00a19a"/><rect x="20" y="116" width="214" height="14" fill="#00a19a"/>
+    <text x="127" y="119" text-anchor="middle" class="c" font-size="19" font-weight="800" style="fill:#fff">0 · PÁTIO</text>
+    <text x="36" y="154" class="c" font-size="18" font-weight="800">PREPARAR O PROVEDOR</text>
+    <text x="36" y="173" font-size="13" font-weight="600">montagem · uma vez</text>
+    <text x="36" y="190" font-size="13" font-weight="600">antes de a linha abrir</text>
+    <g stroke="#5f6b82" stroke-width="2"><path d="M34 236 H220"/><path d="M34 266 H220"/><path d="M34 296 H220"/></g>
+    <g fill="#00a19a"><rect x="44" y="222" width="40" height="12" rx="3"/><rect x="88" y="222" width="40" height="12" rx="3"/><rect x="132" y="252" width="40" height="12" rx="3"/><rect x="60" y="282" width="40" height="12" rx="3"/><rect x="104" y="282" width="40" height="12" rx="3"/><rect x="148" y="282" width="40" height="12" rx="3"/></g>
+    <text x="127" y="318" text-anchor="middle" font-size="12" font-weight="700" style="fill:#00a19a">levanta · testa · propõe a chain</text>
+    <path d="M236 200 L280 200" stroke="#00a19a" stroke-width="5" stroke-dasharray="7 5" marker-end="url(#m0)"/>
+    <text x="258" y="188" text-anchor="middle" font-size="11.5" font-weight="700" style="fill:#00a19a">abre</text>
+    <!-- segmentos -->
+    <g stroke-width="14" stroke-linecap="round">
+      <path d="M300 200 L450 200" stroke="#7c3aad"/><path d="M450 200 L610 200" stroke="#f08a00"/>
+      <path d="M610 200 L760 200" stroke="#2e9e4f"/><path d="M760 200 L890 200" stroke="#1667c7"/><path d="M890 200 L1030 200" stroke="#d7263d"/>
+    </g>
+    <!-- laços -->
+    <path d="M430 180 C 390 60, 510 60, 470 180" fill="none" stroke="#f08a00" stroke-width="5" marker-end="url(#m2)"/>
+    <text x="450" y="54" text-anchor="middle" class="c" font-size="16" font-weight="800" style="fill:#f08a00">BOLA DE NEVE</text>
+    <text x="450" y="72" text-anchor="middle" font-size="12.5" font-weight="600" style="fill:#f08a00">item novo → célula nova</text>
+    <path d="M890 222 C 870 300, 780 300, 764 226" fill="none" stroke="#d7263d" stroke-width="4" marker-end="url(#m5)"/>
+    <text x="827" y="300" text-anchor="middle" font-size="12.5" font-weight="700" style="fill:#d7263d">erro acima do limiar:</text>
+    <text x="827" y="314" text-anchor="middle" font-size="12.5" font-weight="700" style="fill:#d7263d">o lote volta</text>
+    <!-- estações -->
+    <g stroke="#14213d" stroke-width="4" fill="#fff">
+      <circle cx="300" cy="200" r="16"/><circle cx="450" cy="200" r="24" stroke-width="6"/>
+      <circle cx="610" cy="200" r="16"/><circle cx="760" cy="200" r="16"/><circle cx="890" cy="200" r="16"/><circle cx="1030" cy="200" r="20" fill="#14213d"/>
+    </g>
+    <g class="c" font-size="17" font-weight="800" text-anchor="middle">
+      <text x="300" y="206">1</text><text x="450" y="207" font-size="22">2</text><text x="610" y="206">3</text><text x="760" y="206">4</text><text x="890" y="206">5</text><text x="1030" y="206" style="fill:#fff">6</text>
+    </g>
+    <g text-anchor="middle">
+      <g transform="translate(300,0)"><text y="150" class="c" font-size="19" font-weight="800">PLANO</text><text y="168" font-size="13.5">matriz de células</text><text y="132" font-size="12.5" style="fill:#5f6b82">maestro</text></g>
+      <g transform="translate(450,0)"><text y="252" class="c" font-size="21" font-weight="800" style="fill:#f08a00">LAÇO DE GERAÇÃO</text><text y="271" font-size="13.5">o coração</text><text y="288" font-size="12.5" style="fill:#5f6b82">script + modelos</text></g>
+      <g transform="translate(610,0)"><text y="150" class="c" font-size="19" font-weight="800">JUNTAR</text><text y="168" font-size="13.5">contínuo, sem excluir</text><text y="132" font-size="12.5" style="fill:#5f6b82">script + Haiku 5.5</text></g>
+      <g transform="translate(760,0)"><text y="150" class="c" font-size="19" font-weight="800">CONFERIR</text><text y="168" font-size="13.5">fonte primária</text><text y="132" font-size="12.5" style="fill:#5f6b82">Sonnet 5.5</text></g>
+      <g transform="translate(890,0)"><text y="150" class="c" font-size="19" font-weight="800">AUDITAR</text><text y="168" font-size="13.5">amostra de ~10%</text><text y="132" font-size="12.5" style="fill:#5f6b82">Opus</text></g>
+      <g transform="translate(1030,0)"><text y="250" class="c" font-size="19" font-weight="800">SÍNTESE</text><text y="269" font-size="13.5">lugares × mecanismos</text><text y="287" font-size="12.5" style="fill:#5f6b82">maestro → Designer</text></g>
+    </g>
+    <!-- vigia do provedor -->
+    <path d="M450 292 L450 304" stroke="#00a19a" stroke-width="2.5"/>
+    <rect x="320" y="304" width="320" height="62" rx="10" fill="#fff" stroke="#00a19a" stroke-width="2.5"/>
+    <g transform="translate(332,316)"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z" fill="none" stroke="#00a19a" stroke-width="2"/><circle cx="12" cy="12" r="3" fill="none" stroke="#00a19a" stroke-width="2"/></g>
+    <text x="362" y="325" class="c" font-size="16" font-weight="800" style="fill:#00a19a">VIGIA DO PROVEDOR · leve</text>
+    <text x="362" y="342" font-size="12" font-weight="600">entre ondas e em falhas seguidas</text>
+    <text x="362" y="358" font-size="12" font-weight="600">adia pedidos · tira quem caiu · <tspan style="fill:#d7263d">não muda a chain</tspan></text>
+    <!-- legenda -->
+    <g transform="translate(40,388)" font-size="13" font-weight="600">
+      <rect x="0" y="0" width="16" height="16" rx="3" fill="#e9f6f5" stroke="#00a19a" stroke-width="2.5"/><text x="24" y="13">pátio: montagem, fora da linha</text>
+      <circle cx="248" cy="8" r="7" fill="#fff" stroke="#14213d" stroke-width="3"/><text x="262" y="13">estação</text>
+      <circle cx="348" cy="8" r="9" fill="#fff" stroke="#14213d" stroke-width="4"/><text x="364" y="13">baldeação: onde o laço gira (detalhe abaixo)</text>
+      <path d="M710 8 l40 0" stroke="#d7263d" stroke-width="4"/><text x="758" y="13">volta</text>
+    </g>
+  </svg>
+
+  <div class="duo">
+    <div class="cartao" style="--c:var(--l0);grid-column:1/-1">
+      <h3>0 · Pátio: preparar o provedor <span style="font:600 15px Barlow;text-transform:none;color:var(--soft)">montagem, uma vez, antes de o laço existir</span></h3>
+      <div class="seq"><span class="s">LEVANTAR</span><span class="chip" style="--c:var(--l0)">catálogo de modelos e estado de cada um</span><span class="chip" style="--c:var(--l0)">cotas por pool e hora em que zeram</span><span class="chip" style="--c:var(--l0)">chaves por provedor</span><span class="chip" style="--c:var(--l0)">fallback chain e perfis atuais</span></div>
+      <div class="seq"><span class="s">BANCADA</span><span class="chip">JSON válido?</span><span class="chip">corta?</span><span class="chip">latência</span><span class="chip">taxa de erro</span><span class="chip">busca do Google?</span></div>
+      <div class="seq"><span class="s">PROPOR</span><span class="chip">ordem da chain</span><span class="chip">modelos que saem ou entram</span><span class="chip">famílias diferentes</span><span class="chip">pools que se esgotam juntos</span><span class="chip">perfis por trabalho: gerar com busca na web · juntar · conferir</span><span class="chip">perfil auto:pesquisa</span></div>
+      <div class="seq"><span class="s">SAI</span><span class="chip f" style="--c:var(--l0)">ficha do provedor</span><span class="chip f" style="--c:var(--l0)">relatório da bancada</span><span class="chip f" style="--c:var(--l0)">proposta da chain</span><span class="s">→</span><span class="chip" style="--c:var(--ink)"><b>o Gustavo decide o que vale para o dia a dia e aplica no painel</b></span></div>
+    </div>
+    <div class="cartao" style="--c:var(--l1)">
+      <h3>1 · Plano: a matriz de células</h3>
+      <div class="seq"><span class="chip f" style="--c:var(--l1)">ângulo</span><span class="s">×</span><span class="chip f" style="--c:var(--l1)">língua</span><span class="s">×</span><span class="chip f" style="--c:var(--l1)">2 ou 3 formulações</span><span class="s">=</span><span class="chip">1 pedido no livro-razão</span></div>
+      <div class="grade">
+        <div class="h"></div><div class="t">pt</div><div class="t">en</div><div class="t">es</div><div class="t">zh</div><div class="t">ja</div><div class="t">de</div><div class="t">ru</div>
+        <div class="h">lugares</div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+        <div class="h">prontas</div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+        <div class="h">peças</div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+        <div class="h">montagens</div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+        <div class="h">pt-BR</div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+        <div class="h">sem rede</div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+        <div class="h">vizinhos</div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+      </div>
+      <p class="nota">Cada pedido leva: prompt fechado, esquema JSON e orçamento de tokens.</p>
+    </div>
+    <div class="cartao" style="--c:var(--l0)">
+      <h3>Dentro da linha: vigia do provedor</h3>
+      <div class="seq"><span class="s">QUANDO</span><span class="chip">entre ondas</span><span class="chip">falhas seguidas</span></div>
+      <div class="seq"><span class="s">RELÊ</span><span class="chip">estado dos modelos</span><span class="chip">hora de virada das cotas</span></div>
+      <div class="seq"><span class="s">FAZ</span><span class="chip f" style="--c:var(--l0)">adia pedidos</span><span class="chip f" style="--c:var(--l0)">tira modelos que caíram</span></div>
+      <div class="seq"><span class="s">NÃO</span><span class="chip" style="--c:var(--l5)">muda a chain: só o pátio muda</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- MÁQUINA DE ESTADOS -->
+<div class="bloco">
+  <div class="rot"><i style="background:var(--l2);--k:var(--l2)">2</i><h2>A baldeação <span>a vida de cada pedido no laço de geração</span></h2></div>
+  <svg class="mapa" viewBox="0 0 1100 640" role="img" aria-label="Estados de cada pedido: pendente, em voo, aceito; inválido, truncado, adiado por cota, fora do escopo e esgotado, com as setas de volta">
+    <defs>
+      <marker id="s0" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M0 0L10 5L0 10z" fill="#14213d"/></marker>
+      <marker id="sr" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M0 0L10 5L0 10z" fill="#d7263d"/></marker>
+      <marker id="sp" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M0 0L10 5L0 10z" fill="#7c3aad"/></marker>
+      <marker id="sb" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M0 0L10 5L0 10z" fill="#1667c7"/></marker>
+      <marker id="sg" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M0 0L10 5L0 10z" fill="#8a94a8"/></marker>
+      <marker id="so" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M0 0L10 5L0 10z" fill="#f08a00"/></marker>
+    </defs>
+    <!-- sem resposta: volta por cima -->
+    <path d="M470 118 C 420 30, 200 30, 160 112" fill="none" stroke="#8a94a8" stroke-width="4" stroke-dasharray="8 6" marker-end="url(#sg)"/>
+    <text x="315" y="38" text-anchor="middle" font-size="14" font-weight="700" style="fill:#5f6b82">sem resposta a tempo → volta a pendente</text>
+    <!-- linha principal -->
+    <path d="M190 150 L432 150" stroke="#14213d" stroke-width="10"/>
+    <path d="M540 140 L842 140" stroke="#2e9e4f" stroke-width="8"/><path d="M540 160 L842 160" stroke="#2e9e4f" stroke-width="8"/>
+    <text x="690" y="126" text-anchor="middle" font-size="13.5" font-weight="700" style="fill:#2e9e4f">dois modelos · famílias diferentes</text>
+    <text x="690" y="186" text-anchor="middle" font-size="12.5" font-weight="600" style="fill:#5f6b82">cada item registra qual modelo respondeu</text>
+    <text x="310" y="140" text-anchor="middle" font-size="13" font-weight="700">despacho em ondas</text>
+    <text x="310" y="176" text-anchor="middle" font-size="12.5" style="fill:#5f6b82">paralelismo limitado por pool</text>
+    <!-- estações principais -->
+    <g>
+      <rect x="40" y="114" width="150" height="72" rx="36" fill="#fff" stroke="#14213d" stroke-width="5"/>
+      <text x="115" y="157" text-anchor="middle" class="c" font-size="22" font-weight="800">PENDENTE</text>
+      <rect x="432" y="104" width="110" height="92" rx="46" fill="#f08a00" stroke="#14213d" stroke-width="5"/>
+      <text x="487" y="149" text-anchor="middle" class="c" font-size="22" font-weight="800" style="fill:#fff">EM VOO</text>
+      <text x="487" y="170" text-anchor="middle" font-size="12" font-weight="700" style="fill:#fff">A + B</text>
+      <rect x="842" y="114" width="200" height="72" rx="36" fill="#2e9e4f" stroke="#14213d" stroke-width="5"/>
+      <text x="942" y="157" text-anchor="middle" class="c" font-size="24" font-weight="800" style="fill:#fff">ACEITO ✓</text>
+    </g>
+    <!-- recusa: outro modelo -->
+    <path d="M530 108 C 580 60, 600 110, 545 132" fill="none" stroke="#f08a00" stroke-width="3.5" marker-end="url(#so)"/>
+    <text x="596" y="80" font-size="13" font-weight="700" style="fill:#f08a00">vazia ou recusa</text>
+    <text x="596" y="96" font-size="13" font-weight="700" style="fill:#f08a00">→ outro modelo</text>
+    <!-- barramento para os desvios -->
+    <path d="M487 196 L487 250" stroke="#14213d" stroke-width="5"/>
+    <path d="M250 250 L1000 250" stroke="#14213d" stroke-width="5"/>
+    <g stroke="#14213d" stroke-width="4">
+      <path d="M250 250 L250 300" marker-end="url(#s0)"/><path d="M440 250 L440 300" marker-end="url(#s0)"/><path d="M630 250 L630 300" marker-end="url(#s0)"/><path d="M820 250 L820 300" marker-end="url(#s0)"/><path d="M1000 250 L1000 300" marker-end="url(#s0)"/>
+    </g>
+    <g font-size="12.5" font-weight="700" text-anchor="middle">
+      <rect x="185" y="262" width="130" height="20" rx="4" fill="#fff"/><text x="250" y="277">fora do esquema</text>
+      <rect x="370" y="262" width="140" height="20" rx="4" fill="#fff"/><text x="440" y="277">cortada no limite</text>
+      <rect x="555" y="262" width="150" height="20" rx="4" fill="#fff"/><text x="630" y="277">erro 429 · sem cota</text>
+      <rect x="760" y="262" width="120" height="20" rx="4" fill="#fff"/><text x="820" y="277">item fora</text>
+      <rect x="935" y="262" width="130" height="20" rx="4" fill="#fff"/><text x="1000" y="277">não sobra caminho</text>
+    </g>
+    <!-- estados de desvio -->
+    <g>
+      <rect x="180" y="302" width="140" height="58" rx="29" fill="#fdecee" stroke="#d7263d" stroke-width="4"/><text x="250" y="338" text-anchor="middle" class="c" font-size="20" font-weight="800" style="fill:#d7263d">INVÁLIDO</text>
+      <rect x="370" y="302" width="140" height="58" rx="29" fill="#f3eafa" stroke="#7c3aad" stroke-width="4"/><text x="440" y="338" text-anchor="middle" class="c" font-size="20" font-weight="800" style="fill:#7c3aad">TRUNCADO</text>
+      <rect x="545" y="302" width="170" height="58" rx="29" fill="#e8f0fb" stroke="#1667c7" stroke-width="4"/><text x="630" y="338" text-anchor="middle" class="c" font-size="20" font-weight="800" style="fill:#1667c7">ADIADO POR COTA</text>
+      <rect x="740" y="302" width="160" height="58" rx="29" fill="#fff7ec" stroke="#a15c00" stroke-width="4"/><text x="820" y="338" text-anchor="middle" class="c" font-size="20" font-weight="800" style="fill:#a15c00">FORA DO ESCOPO</text>
+      <rect x="935" y="302" width="130" height="58" rx="29" fill="#eceef2" stroke="#5f6b82" stroke-width="4"/><text x="1000" y="338" text-anchor="middle" class="c" font-size="20" font-weight="800" style="fill:#5f6b82">ESGOTADO</text>
+    </g>
+    <!-- voltas para pendente -->
+    <path d="M250 360 L250 410 L95 410 L95 190" fill="none" stroke="#d7263d" stroke-width="5" marker-end="url(#sr)"/>
+    <path d="M440 360 L440 460 L80 460 L80 300" fill="none" stroke="#7c3aad" stroke-width="5"/>
+    <path d="M80 300 L80 190" fill="none" stroke="#7c3aad" stroke-width="5" marker-end="url(#sp)"/>
+    <path d="M630 360 L630 510 L65 510 L65 190" fill="none" stroke="#1667c7" stroke-width="5" marker-end="url(#sb)"/>
+    <g font-size="14" font-weight="700">
+      <text x="110" y="430" style="fill:#d7263d">reenvia com o erro apontado</text><text x="110" y="446" font-size="12.5" font-weight="600" style="fill:#d7263d">até 2×, depois outro modelo</text>
+      <text x="110" y="480" style="fill:#7c3aad">divide a célula em duas menores</text><text x="110" y="496" font-size="12.5" font-weight="600" style="fill:#7c3aad">não só repete</text>
+      <text x="110" y="530" style="fill:#1667c7">espera a hora em que o pool zera (resetAt)</text><text x="110" y="546" font-size="12.5" font-weight="600" style="fill:#1667c7">espera crescente com variação · disjuntor no provedor com falhas seguidas</text>
+    </g>
+    <!-- quarentena -->
+    <path d="M820 360 L820 410" stroke="#a15c00" stroke-width="4" marker-end="url(#s0)"/>
+    <rect x="705" y="412" width="230" height="64" rx="10" fill="#fff" stroke="#a15c00" stroke-width="3" stroke-dasharray="7 5"/>
+    <text x="820" y="438" text-anchor="middle" class="c" font-size="19" font-weight="800" style="fill:#a15c00">🧪 QUARENTENA</text>
+    <text x="820" y="460" text-anchor="middle" font-size="12.5" font-weight="600">não apaga · o maestro olha no fim</text>
+    <!-- livro-razão -->
+    <path d="M1000 360 L1000 374" stroke="#5f6b82" stroke-width="4" marker-end="url(#s0)"/>
+    <rect x="945" y="376" width="145" height="200" rx="10" fill="#eceef2" stroke="#5f6b82" stroke-width="2.5"/>
+    <g font-size="12" font-weight="600">
+      <text x="956" y="398" class="c" font-size="15" font-weight="800" style="fill:#5f6b82">LACUNA DE</text>
+      <text x="956" y="414" class="c" font-size="15" font-weight="800" style="fill:#5f6b82">COBERTURA</text>
+      <text x="956" y="434">todos os modelos já</text><text x="956" y="449">falharam, ou a célula</text><text x="956" y="464">no mínimo ainda corta</text>
+      <text x="956" y="486" font-weight="800">não é apagado:</text><text x="956" y="501">livro-razão e painel</text>
+      <text x="956" y="523" font-weight="800">o maestro decide:</text><text x="956" y="538">reformular · esperar</text><text x="956" y="553">a virada · registrar</text><text x="956" y="568">a lacuna</text>
+    </g>
+    <rect x="110" y="572" width="480" height="54" rx="10" fill="#14213d"/>
+    <text x="126" y="596" font-size="15" font-weight="700" style="fill:#fff">📒 tudo isso fica no livro-razão</text>
+    <text x="126" y="616" font-size="12.5" style="fill:#cfd6e4">só acréscimo · caiu? retoma de onde parou, sem repetir o aceito</text>
+  </svg>
+</div>
+
+<!-- BOLA DE NEVE + SATURAÇÃO -->
+<div class="bloco">
+  <div class="rot"><i style="background:var(--l2);--k:var(--l2)">❄</i><h2>Bola de neve e parada <span>o que faz dele um laço, não uma fila</span></h2></div>
+  <svg class="mapa" viewBox="0 0 1100 370" role="img" aria-label="Itens novos geram células novas a cada onda; a parcela de novos cai até ficar abaixo de 5% em duas ondas seguidas">
+    <defs><marker id="bn" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M0 0L10 5L0 10z" fill="#f08a00"/></marker></defs>
+    <!-- ondas de células -->
+    <text x="40" y="40" class="c" font-size="18" font-weight="800">CÉLULAS POR ONDA</text>
+    <g>
+      <text x="80" y="300" text-anchor="middle" font-size="13" font-weight="700">onda 1</text>
+      <text x="230" y="300" text-anchor="middle" font-size="13" font-weight="700">onda 2</text>
+      <text x="390" y="300" text-anchor="middle" font-size="13" font-weight="700">onda 3</text>
+    </g>
+    <g fill="#ddd2ea">
+      <rect x="56" y="200" width="20" height="20" rx="3"/><rect x="82" y="200" width="20" height="20" rx="3"/>
+      <rect x="56" y="226" width="20" height="20" rx="3"/><rect x="82" y="226" width="20" height="20" rx="3"/>
+      <rect x="56" y="252" width="20" height="20" rx="3"/><rect x="82" y="252" width="20" height="20" rx="3"/>
+      <!-- onda 2 -->
+      <rect x="194" y="200" width="20" height="20" rx="3"/><rect x="220" y="200" width="20" height="20" rx="3"/><rect x="246" y="200" width="20" height="20" rx="3"/>
+      <rect x="194" y="226" width="20" height="20" rx="3"/><rect x="220" y="226" width="20" height="20" rx="3"/><rect x="246" y="226" width="20" height="20" rx="3"/>
+      <rect x="194" y="252" width="20" height="20" rx="3"/><rect x="220" y="252" width="20" height="20" rx="3"/><rect x="246" y="252" width="20" height="20" rx="3"/>
+      <!-- onda 3 -->
+      <rect x="341" y="174" width="20" height="20" rx="3"/><rect x="367" y="174" width="20" height="20" rx="3"/><rect x="393" y="174" width="20" height="20" rx="3"/><rect x="419" y="174" width="20" height="20" rx="3"/>
+      <rect x="341" y="200" width="20" height="20" rx="3"/><rect x="367" y="200" width="20" height="20" rx="3"/><rect x="393" y="200" width="20" height="20" rx="3"/><rect x="419" y="200" width="20" height="20" rx="3"/>
+      <rect x="341" y="226" width="20" height="20" rx="3"/><rect x="367" y="226" width="20" height="20" rx="3"/><rect x="393" y="226" width="20" height="20" rx="3"/><rect x="419" y="226" width="20" height="20" rx="3"/>
+      <rect x="341" y="252" width="20" height="20" rx="3"/><rect x="367" y="252" width="20" height="20" rx="3"/><rect x="393" y="252" width="20" height="20" rx="3"/><rect x="419" y="252" width="20" height="20" rx="3"/>
+    </g>
+    <g fill="#f08a00">
+      <rect x="246" y="200" width="20" height="20" rx="3"/><rect x="246" y="226" width="20" height="20" rx="3"/><rect x="246" y="252" width="20" height="20" rx="3"/>
+      <rect x="341" y="174" width="20" height="20" rx="3"/><rect x="367" y="174" width="20" height="20" rx="3"/><rect x="393" y="174" width="20" height="20" rx="3"/><rect x="419" y="174" width="20" height="20" rx="3"/>
+      <rect x="419" y="200" width="20" height="20" rx="3"/>
+    </g>
+    <path d="M110 230 L186 230" stroke="#f08a00" stroke-width="4" marker-end="url(#bn)"/>
+    <path d="M274 230 L332 230" stroke="#f08a00" stroke-width="4" marker-end="url(#bn)"/>
+    <g font-size="13" font-weight="600">
+      <rect x="40" y="62" width="420" height="94" rx="10" fill="#fff7ec" stroke="#f08a00" stroke-width="2"/>
+      <text x="56" y="86" font-weight="800" style="fill:#f08a00">item novo vira célula nova:</text>
+      <text x="56" y="106">· "alternativas a X"</text>
+      <text x="56" y="124">· "o que se monta com X"</text>
+      <text x="56" y="142">· o termo novo em outras línguas</text>
+    </g>
+    <g transform="translate(40,318)" font-size="12.5" font-weight="600"><rect width="14" height="14" rx="3" fill="#ddd2ea"/><text x="20" y="12">célula do plano</text><rect x="140" width="14" height="14" rx="3" fill="#f08a00"/><text x="160" y="12">célula nascida de item novo</text></g>
+    <!-- curva -->
+    <g transform="translate(540,0)">
+      <text x="20" y="40" class="c" font-size="18" font-weight="800">ITENS NOVOS POR ONDA</text>
+      <text x="300" y="40" font-size="12.5" font-weight="600" style="fill:#5f6b82">formato ilustrativo, sem dados</text>
+      <path d="M60 60 L60 280 L520 280" fill="none" stroke="#14213d" stroke-width="2"/>
+      <text x="52" y="72" text-anchor="end" font-size="12" font-weight="600">100%</text>
+      <text x="52" y="284" text-anchor="end" font-size="12" font-weight="600">0</text>
+      <!-- barras -->
+      <g fill="#f08a00">
+        <rect x="76" y="72" width="44" height="208"/><rect x="138" y="150" width="44" height="130"/><rect x="200" y="206" width="44" height="74"/>
+        <rect x="262" y="240" width="44" height="40"/><rect x="324" y="261" width="44" height="19"/>
+      </g>
+      <g fill="#2e9e4f"><rect x="386" y="272" width="44" height="8"/><rect x="448" y="274" width="44" height="6"/></g>
+      <path d="M60 269.5 L520 269.5" stroke="#d7263d" stroke-width="2.5" stroke-dasharray="8 5"/>
+      <text x="64" y="262" font-size="13" font-weight="800" style="fill:#d7263d">5%</text>
+      <g font-size="12" font-weight="700" text-anchor="middle">
+        <text x="98" y="298">1</text><text x="160" y="298">2</text><text x="222" y="298">3</text><text x="284" y="298">4</text><text x="346" y="298">5</text><text x="408" y="298">6</text><text x="470" y="298">7</text>
+      </g>
+      <text x="290" y="318" text-anchor="middle" font-size="12.5" font-weight="600" style="fill:#5f6b82">onda</text>
+      <path d="M380 224 L498 224 L498 262" fill="none" stroke="#2e9e4f" stroke-width="2"/>
+      <path d="M380 224 L380 262" fill="none" stroke="#2e9e4f" stroke-width="2"/>
+      <rect x="330" y="150" width="200" height="66" rx="10" fill="#e6f4ea" stroke="#2e9e4f" stroke-width="2"/>
+      <text x="430" y="174" text-anchor="middle" class="c" font-size="18" font-weight="800" style="fill:#2e9e4f">PARA</text>
+      <text x="430" y="192" text-anchor="middle" font-size="12.5" font-weight="700">2 ondas seguidas abaixo de 5%</text>
+      <text x="430" y="208" text-anchor="middle" font-size="12.5" font-weight="600" style="fill:#5f6b82">ou o orçamento acaba</text>
+    </g>
+  </svg>
+</div>
+
+<!-- CALIBRAÇÃO -->
+<div class="bloco">
+  <div class="rot"><i style="background:var(--ink);--k:var(--ink)">◎</i><h2>Calibração <span>antes de parar, as sementes ocultas</span></h2></div>
+  <svg class="mapa" viewBox="0 0 1100 260" role="img" aria-label="Sementes ocultas: candidatas atuais que os geradores não veem; se alguma não apareceu, o laço gera células com o vocabulário vizinho e roda mais uma onda">
+    <defs>
+      <marker id="k0" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M0 0L10 5L0 10z" fill="#14213d"/></marker>
+      <marker id="kg" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M0 0L10 5L0 10z" fill="#2e9e4f"/></marker>
+      <marker id="kr" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M0 0L10 5L0 10z" fill="#d7263d"/></marker>
+    </defs>
+    <rect x="30" y="30" width="320" height="200" rx="14" fill="#14213d"/>
+    <g transform="translate(50,48)"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z" fill="none" stroke="#ffe14d" stroke-width="2"/><circle cx="12" cy="12" r="3" fill="none" stroke="#ffe14d" stroke-width="2"/><path d="M3 21L21 3" stroke="#ffe14d" stroke-width="2.4"/></g>
+    <text x="84" y="66" class="c" font-size="20" font-weight="800" style="fill:#fff">SEMENTES OCULTAS</text>
+    <text x="50" y="94" font-size="13" font-weight="600" style="fill:#cfd6e4">candidatas já conhecidas · os geradores nunca veem</text>
+    <g font-size="13.5" font-weight="700">
+      <rect x="50" y="108" width="92" height="26" rx="13" fill="#2b3a5c"/><text x="96" y="126" text-anchor="middle" style="fill:#fff">zvec-grep</text>
+      <rect x="150" y="108" width="94" height="26" rx="13" fill="#2b3a5c"/><text x="197" y="126" text-anchor="middle" style="fill:#fff">memtomem</text>
+      <rect x="252" y="108" width="40" height="26" rx="13" fill="#2b3a5c"/><text x="272" y="126" text-anchor="middle" style="fill:#fff">ck</text>
+      <rect x="50" y="142" width="166" height="26" rx="13" fill="#2b3a5c"/><text x="133" y="160" text-anchor="middle" style="fill:#fff">markdown-vault-mcp</text>
+      <rect x="224" y="142" width="104" height="26" rx="13" fill="#2b3a5c"/><text x="276" y="160" text-anchor="middle" style="fill:#fff">grooveseek</text>
+      <rect x="50" y="176" width="250" height="26" rx="13" fill="#2b3a5c"/><text x="175" y="194" text-anchor="middle" style="fill:#fff">+ as das pesquisas antigas</text>
+    </g>
+    <path d="M352 130 L438 130" stroke="#14213d" stroke-width="4" marker-end="url(#k0)"/>
+    <text x="395" y="118" text-anchor="middle" font-size="12.5" font-weight="700">medem a</text><text x="395" y="152" text-anchor="middle" font-size="12.5" font-weight="700">cobertura</text>
+    <path d="M520 60 L600 130 L520 200 L440 130 Z" fill="#fff" stroke="#14213d" stroke-width="3"/>
+    <text x="520" y="126" text-anchor="middle" class="c" font-size="17" font-weight="800">TODAS</text><text x="520" y="144" text-anchor="middle" class="c" font-size="17" font-weight="800">APARECERAM?</text>
+    <path d="M600 130 L690 130" stroke="#2e9e4f" stroke-width="4" marker-end="url(#kg)"/><text x="645" y="120" text-anchor="middle" font-size="13" font-weight="800" style="fill:#2e9e4f">sim</text>
+    <rect x="692" y="104" width="150" height="52" rx="26" fill="#2e9e4f"/><text x="767" y="136" text-anchor="middle" class="c" font-size="19" font-weight="800" style="fill:#fff">PODE PARAR</text>
+    <path d="M520 200 L520 226 L870 226 L870 196" fill="none" stroke="#d7263d" stroke-width="4" marker-end="url(#kr)"/>
+    <text x="540" y="220" font-size="13" font-weight="800" style="fill:#d7263d">não</text>
+    <rect x="870" y="40" width="210" height="154" rx="12" fill="#fdecee" stroke="#d7263d" stroke-width="2.5"/>
+    <text x="886" y="66" font-size="14" font-weight="800" style="fill:#d7263d">células com o vocabulário</text>
+    <text x="886" y="84" font-size="14" font-weight="800" style="fill:#d7263d">vizinho, sem citar o nome</text>
+    <text x="886" y="110" font-size="13.5" font-weight="700">→ mais uma onda</text>
+    <line x1="886" y1="124" x2="1064" y2="124" stroke="#d7263d" stroke-width="1"/>
+    <text x="886" y="146" font-size="13" font-weight="600">a falha vira dado:</text>
+    <text x="886" y="164" font-size="13" font-weight="600">que vocabulário faltava</text>
+  </svg>
+</div>
+
+<!-- DEPOIS DA GERAÇÃO -->
+<div class="bloco">
+  <div class="rot"><i style="background:var(--l3);--k:var(--l3)">3</i><h2>Juntar, conferir, auditar, sintetizar <span>do monte de respostas ao mapa</span></h2></div>
+  <svg class="mapa" viewBox="0 0 1100 330" role="img" aria-label="Juntar contínuo sem excluir, conferir em fonte primária, auditoria por amostra e síntese">
+    <defs><marker id="j5" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M0 0L10 5L0 10z" fill="#d7263d"/></marker></defs>
+    <g stroke-width="14" stroke-linecap="round">
+      <path d="M140 70 L410 70" stroke="#2e9e4f"/><path d="M410 70 L680 70" stroke="#1667c7"/><path d="M680 70 L950 70" stroke="#d7263d"/>
+    </g>
+    <path d="M680 92 C 660 140, 430 140, 414 94" fill="none" stroke="#d7263d" stroke-width="3.5" marker-end="url(#j5)"/>
+    <text x="547" y="140" text-anchor="middle" font-size="12.5" font-weight="700" style="fill:#d7263d">erro acima do limiar: o lote inteiro volta</text>
+    <g stroke="#14213d" stroke-width="4" fill="#fff"><circle cx="140" cy="70" r="18"/><circle cx="410" cy="70" r="18"/><circle cx="680" cy="70" r="18"/><circle cx="950" cy="70" r="22" fill="#14213d"/></g>
+    <g class="c" font-size="18" font-weight="800" text-anchor="middle"><text x="140" y="76">3</text><text x="410" y="76">4</text><text x="680" y="76">5</text><text x="950" y="77" style="fill:#fff">6</text></g>
+    <!-- cartões -->
+    <g font-size="13.5">
+      <g transform="translate(30,160)">
+        <rect width="230" height="160" rx="12" fill="#fff" stroke="#2e9e4f" stroke-width="2.5"/>
+        <text x="16" y="28" class="c" font-size="20" font-weight="800" style="fill:#2e9e4f">JUNTAR · a cada onda</text>
+        <text x="16" y="52">repetido vira 1 item</text><text x="16" y="69" font-size="12.5" style="fill:#5f6b82">com todas as fontes e modelos</text>
+        <text x="16" y="93">Haiku 5.5 só nos ambíguos</text><text x="16" y="110" font-size="12.5" style="fill:#5f6b82">nomes diferentes · fork × original</text>
+        <text x="16" y="134" font-weight="800">nada sai:</text><text x="16" y="151" font-size="12.5" style="fill:#5f6b82">contradições lado a lado, com origem</text>
+      </g>
+      <g transform="translate(300,160)">
+        <rect width="230" height="160" rx="12" fill="#fff" stroke="#1667c7" stroke-width="2.5"/>
+        <text x="16" y="28" class="c" font-size="20" font-weight="800" style="fill:#1667c7">CONFERIR · Sonnet 5.5</text>
+        <text x="16" y="52">só fonte primária</text><text x="16" y="69" font-size="12.5" style="fill:#5f6b82">README · docs · código · API do GitHub</text>
+        <text x="16" y="93">marca cada célula:</text>
+        <text x="16" y="112" font-size="12.5" font-weight="700" style="fill:#2e9e4f">verificado</text><text x="94" y="112" font-size="12.5" font-weight="700" style="fill:#a17c00">não verificado</text>
+        <text x="16" y="129" font-size="12.5" font-weight="700" style="fill:#d7263d">contradito pela fonte</text>
+        <text x="16" y="151" font-size="12.5" style="fill:#5f6b82">primeiro: mais citados e sementes</text>
+      </g>
+      <g transform="translate(570,160)">
+        <rect width="230" height="160" rx="12" fill="#fff" stroke="#d7263d" stroke-width="2.5"/>
+        <text x="16" y="28" class="c" font-size="20" font-weight="800" style="fill:#d7263d">AUDITAR · Opus</text>
+        <text x="16" y="52">amostra de ~10%</text><text x="16" y="69" font-size="12.5" style="fill:#5f6b82">do que o Sonnet marcou</text>
+        <text x="16" y="93">erro acima do limiar</text><text x="16" y="110" font-size="12.5" style="fill:#5f6b82">o lote volta para conferir</text>
+      </g>
+      <g transform="translate(840,160)">
+        <rect width="230" height="160" rx="12" fill="#14213d"/>
+        <text x="16" y="28" class="c" font-size="20" font-weight="800" style="fill:#fff">SÍNTESE · maestro</text>
+        <text x="16" y="52" style="fill:#fff">mapa lugares × mecanismos</text>
+        <text x="16" y="76" style="fill:#fff">combinações leves e robustas</text>
+        <text x="16" y="100" style="fill:#fff">o que falta montar</text>
+        <text x="16" y="124" style="fill:#fff">a pergunta da próxima rodada</text>
+        <text x="16" y="148" font-size="12.5" style="fill:#ffe14d">o Designer vira página</text>
+      </g>
+    </g>
+  </svg>
+  <div class="painel">
+    <span>painel por onda:</span><span>pedidos por estado</span><span>itens novos</span><span>curva de saturação</span><span>cota restante por pool</span><span>sementes achadas</span><span>registro de todas as consultas</span>
+  </div>
+</div>
+
+<!-- CATÁLOGO -->
+<div class="bloco">
+  <div class="rot"><i style="background:var(--l4);--k:var(--l4)">▦</i><h2>As colunas do catálogo <span>dez grupos</span></h2></div>
+  <div class="cat">
+    <div class="grp" style="--c:#14213d"><h4><b>1</b>Identidade</h4><ul><li>nome · link</li><li>tipo: pronta, peça, conceito, montagem</li><li>licença</li><li>linguagem e runtime</li></ul></div>
+    <div class="grp" style="--c:#00a19a"><h4><b>2</b>Onde roda</h4><ul><li>SO: Windows, WSL, Linux, macOS</li><li>lugar: disco, rede, dentro de outro MCP, cliente</li><li>RAM · CPU · GPU</li><li>funciona offline</li></ul></div>
+    <div class="grp" style="--c:#7c3aad"><h4><b>3</b>Como o agente chega</h4><ul><li>transporte: stdio, HTTP, CLI, biblioteca</li><li>MCP nativo</li><li>autenticação</li><li>vários clientes juntos</li></ul></div>
+    <div class="grp" style="--c:#f08a00"><h4><b>4</b>Como acha</h4><ul><li>palavra: raiz e acento em pt-BR</li><li>sentido: embeddings locais ou remotos</li><li>híbrida · rerank</li><li>trechos por título</li><li>filtros e frontmatter</li><li>cita o trecho</li></ul></div>
+    <div class="grp" style="--c:#2e9e4f"><h4><b>5</b>AI Provider</h4><ul><li>endpoint compatível com OpenAI: embedding, rerank, chat</li><li>modelos multilíngues</li></ul></div>
+    <div class="grp" style="--c:#1667c7"><h4><b>6</b>Índice</h4><ul><li>onde fica</li><li>como se refaz: observador de arquivos, hash, na hora da busca</li><li>disco reescrito o tempo todo</li><li>tempo de reindexar · escala</li></ul></div>
+    <div class="grp" style="--c:#d7263d"><h4><b>7</b>Formatos</h4><ul><li>md · txt · csv</li><li>pdf · docx · xlsx</li><li>código · imagens</li></ul></div>
+    <div class="grp" style="--c:#a15c00"><h4><b>8</b>Composição</h4><ul><li>agrega ou é agregado (federação)</li><li>plugins</li><li>repasse pelo MCP do banco</li></ul></div>
+    <div class="grp" style="--c:#5f6b82"><h4><b>9</b>Maturidade</h4><ul><li>versão · estrelas</li><li>último commit · mantenedores</li><li>testes por SO</li><li>documentação</li></ul></div>
+    <div class="grp" style="--c:#14213d"><h4><b>10</b>Para o hub</h4><ul><li>o que falta montar</li><li>esforço estimado</li><li>fontes</li><li>estado da conferência</li></ul></div>
+  </div>
+</div>
+
+<!-- PERGUNTAS -->
+<div class="bloco">
+  <div class="rot"><i style="background:var(--l5);--k:var(--l5)">?</i><h2>As perguntas <span>responda na nota "Rodada atual"</span></h2></div>
+  <div class="perg"><div class="n"><small>pergunta</small>84</div><div class="b"><h3>O laço proposto serve de base?</h3>
+    <p>Modelos só respondem e o laço grava · livro-razão que retoma · dois modelos de famílias diferentes por pedido · inválido reenvia com o erro, cortado divide em dois, cota espera a virada do pool · bola de neve até saturar · calibração com as candidatas atuais escondidas.</p>
+    <span class="rec">Recomendação: sim, como base; mude o que quiser.</span></div></div>
+  <div class="perg"><div class="n"><small>pergunta</small>85</div><div class="b"><h3>Preparar o provedor antes do laço: o que entra?</h3>
+    <p>Corrigido depois da sua observação: a etapa 0 é da <b>montagem</b>, feita uma vez antes de o laço existir. Levanta modelos, cotas, chaves e a fallback chain atual; testa cada modelo (JSON válido, corte, latência, erros, busca do Google); e propõe estratégias melhores para a <b>chain atual</b> (ordem, modelos que saem ou entram, famílias diferentes, pools que se esgotam juntos, perfis por tipo de trabalho, um perfil <b>auto:pesquisa</b>). Você decide o que vale para o dia a dia e aplica no painel. Dentro do laço fica só uma vigia leve do provedor, que adia pedidos e tira modelos que caíram, sem mudar a chain.</p>
+    <span class="rec">Recomendação: sim, nesse formato.</span></div></div>
+  <div class="perg"><div class="n"><small>pergunta</small>86</div><div class="b"><h3>Quando o laço para?</h3>
+    <p>Saturação medida na curva de itens novos por onda, depois da calibração com as sementes ocultas.</p>
+    <span class="rec">Recomendação: quando duas ondas seguidas trouxerem menos de 5% de itens novos, depois da calibração; mais um teto de segurança (horas ou tokens) que você escolhe.</span></div></div>
+  <div class="perg"><div class="n"><small>pergunta</small>87</div><div class="b"><h3>As colunas do catálogo bastam?</h3>
+    <p>Os dez grupos acima: identidade, onde roda, como o agente chega, como acha, AI Provider, índice, formatos, composição, maturidade e o que falta para o hub.</p>
+    <span class="rec">Recomendação: sim; acrescente o que faltar.</span></div></div>
+</div>
+
+<footer>Camada de busca · rodada 6 · 2026-10-13 · texto-fonte: proposta-09-roteamento-da-pesquisa.md · proposta, nada roda antes do "pode iniciar"</footer>
+</main>
+</body>
+</html>

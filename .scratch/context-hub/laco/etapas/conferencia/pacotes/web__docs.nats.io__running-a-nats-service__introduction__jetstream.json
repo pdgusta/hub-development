@@ -1,0 +1,34 @@
+{
+ "chave": "web:docs.nats.io/running-a-nats-service/introduction/jetstream",
+ "nomes": [
+  "JetStream (NATS)"
+ ],
+ "urls": [
+  "https://docs.nats.io/running-a-nats-service/introduction/jetstream"
+ ],
+ "readme_cortado": false,
+ "readme": "[Deployment & Upgrades Deep Dive | NATS Documentation]\n\nSkip to main content\n\nOn this page\n\nThe Topologies deep dive designed a shape: a\nthree-node NATS cluster, east, carrying the ORDERS stream. This\nchapter takes that exact cluster and runs it in production.\n\nTopologies covered the shapes: one server, a cluster, a super-cluster,\nleaf nodes. This chapter covers the operations that turn a shape into\na running system. Those operations are the resources a node needs, the\nmanifests that stand it up, the SIGHUP that reloads its config without\ndropping a connection, the lame-duck mode that upgrades it without losing\nthe stream, and the systemd flags that restrict its access.\n\nThis is the runbook rather than the theory. Each page names the\nmechanism, gives the exact command or manifest you run, and links the\nwhy out to the chapter that covers it.\n\nBy the end you'll have​\n\nA production runbook for the same Acme ORDERS cluster you've followed\nthrough every other Learn chapter:\n\nA sizing baseline for the workload: the four resources a node\nspends (CPU, memory, disk, file descriptors), and how an R3 stream\ncounts against the ORDERS account limits.\n\nThe cluster running on Kubernetes as a three-replica StatefulSet\nwith pods nats-0, nats-1, nats-2 (the same n1-east, n2-east,\nn3-east cluster you designed in Topologies; the Kubernetes page\nspells out that mapping), with the ORDERS stream and the shipping\nand analytics consumers declared as CRDs.\n\nThe ability to change config live: split into per-account and\nper-region includes, reloaded with a SIGHUP, with zero downtime and no\nclient reconnect.\n\nA safe rolling upgrade procedure that walks a new server version\nthrough nats-0..2 while the R3 ORDERS stream stays available and\nclients stay connected.\n\nA hardened cluster: TLS on every link, the ACME credentials\nmounted, a locked-down systemd unit, and the monitor port closed to the\ninternet.\n\nWho this is for​\n\nYou're an operator standing the cluster up for real. You've read the\nTopologies deep dive and know the shapes, and you've\nskimmed the JetStream and\nSecurity deep dives. This chapter reuses the ORDERS\nstream and the ACME operator rather than re-introducing them.\n\nThis chapter is deliberately the runbook half. It divides the work with\nfour sibling chapters, and each owns part of it:\n\nWhich shape to deploy is Topologies. This\nchapter assumes the three-node ORDERS cluster shape is already decided.\n\nHow Raft and replication work underneath is\nClustering. This chapter triggers a leadership\ntransfer during an upgrade; it doesn't explain how Raft elects a\nleader.\n\nThe auth model (operators, accounts, users, JWTs) is\nSecurity. This chapter mounts the credentials and\nturns on TLS; the model is taught there.\n\nWhat to watch once it's live is Monitoring.\nThis chapter sets up the cluster; monitoring watches it.\n\nIf a sentence here would be at home verbatim in one of those four, it\nbelongs there, and this chapter links to it instead.\n\nHow to read it​\n\nEach page introduces at most two new concepts and carries the same\ncluster forward. You size it,\ndeploy it, edit its config\nlive, upgrade\nit, and\nharden it. The\nnode names (n1-east/n2-east/n3-east), the ORDERS stream, the\norder-svc publisher, and the ACME operator stay fixed throughout, so\nyou keep a\nmental picture of one Acme system getting production-ready rather than a\nnew example each time.\n\nEvery page covers only the configuration keys this deployment needs. The\nfull set of server configuration options lives in\nReference → Configuration; each page points there\nfor the exhaustive knob list.\n\nMap​\n\nPageWhat you learn\nDeployment & UpgradesWhat this chapter operates and the order of the runbook\nSizing & resourcesThe four resources a node spends, and how an R3 stream counts against account limits\nKubernetesStand the cluster up as a StatefulSet with the NATS Helm chart, and declare streams as CRDs\nConfig managementSplit config into includes and reload it live with a SIGHUP: no downtime, no reconnect\nRolling upgradesUse lame-duck mode and the right upgrade order to roll a new version through the cluster\nHardeningTLS on every link, mounted credentials, and a locked-down systemd unit\nWhere to go nextThe production checklist and a map of what's beyond running the cluster\n\nPrerequisites​\n\nYou'll need:\n\nA running three-node ORDERS cluster, or the willingness to stand one up\nwhile you read. The Topologies deep dive builds it\nstep by step.\n\nThe nats CLI installed and pointed at the cluster, for the inspection\ncommands (nats account info, nats server info, nats stream info)\nthat anchor each page.\n\nFor the Kubernetes pages, a cluster you can kubectl against and helm\ninstalled. The NATS Helm chart and the\nNACK controller are the canonical path this chapter follows.\n\nOpen a terminal and turn to\nSizing & resources.\n\nSee also​\n\nTopologies deep dive — the shape this chapter runs.\n\nClustering & Replication — the Raft mechanics this\nchapter triggers but doesn't teach.\n\nSecurity deep dive — the auth model behind the\ncredentials this chapter mounts.\n\nCopy as MarkdownView as MarkdownOpen in Claude\n\nBy the end you'll have\nWho this is for\nHow to read it\nMap\nPrerequisites\nSee also",
+ "fonte": "site",
+ "respostas": [
+  {
+   "por": "claude-haiku-5-5",
+   "resposta": {
+    "serve": "stack",
+    "role": "Durable message streams to queue and sync hub events across both machines",
+    "place": [
+     "network_service"
+    ],
+    "mechanism": [
+     "n/a"
+    ],
+    "mcp": "no",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "unknown",
+    "doubt": false,
+    "evidence": "a three-node NATS cluster ... carrying the ORDERS stream; runbook for running the cluster in production"
+   }
+  }
+ ]
+}

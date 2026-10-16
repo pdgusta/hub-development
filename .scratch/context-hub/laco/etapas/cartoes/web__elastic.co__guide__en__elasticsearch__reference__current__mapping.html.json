@@ -1,0 +1,30 @@
+{
+ "chave": "web:elastic.co/guide/en/elasticsearch/reference/current/mapping.html",
+ "urls": [
+  "https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping.html"
+ ],
+ "tipos": [
+  "library"
+ ],
+ "termos": [
+  "マッピング設定",
+  "frontmatterフィールド",
+  "Elasticsearch Index"
+ ],
+ "mencoes": 1,
+ "familias": [
+  "mistral"
+ ],
+ "primeira_onda": 3,
+ "nomes": [
+  "Elasticsearch Index Mapping (Frontmatter Field Mapping)"
+ ],
+ "resumos": [
+  "frontmatterフィールド（例: `language`, `date`, `tags`）をElasticsearchのマッピングに反映させるための設定。"
+ ],
+ "fonte": "site",
+ "readme_status": "ok",
+ "readme_nome": "https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping.html",
+ "readme_cortado": false,
+ "readme": "[Mapping | Elastic Docs]\n\nDocs\n\n /\n\n Manage data\n\n /\n\n The Elasticsearch data store\n\nMapping\n\nMapping is the process of defining how a document and the fields it contains are stored and indexed.\n\nEach document is a collection of fields, which each have their own data type. When mapping your data, you create a mapping definition, which contains a list of fields that are pertinent to the document. A mapping definition also includes metadata fields, like the _source field, which customize how a document’s associated metadata is handled.\n\nDepending on where you are in your data journey, use dynamic mapping and explicit mapping to define your data. For example, you can explicitly map fields where you don’t want to use the defaults, or to gain greater control over which fields are created. Then you can allow Elasticsearch to dynamically map other fields. Using a combination of dynamic and explicit mapping on the same index is especially useful when you have a mix of known and unknown fields in your data.\n\n Note\n\nBefore 7.0.0, the mapping definition included a type name. Elasticsearch 7.0.0 and later no longer accept a default mapping. Removal of mapping types provides more information.\n\nDynamic mapping\n\nWhen you use dynamic mapping, Elasticsearch automatically detects the data types of fields in your documents and creates mappings for you. If you index additional documents with new fields, Elasticsearch will add these fields automatically. You can add fields to the top-level mapping, and to inner object and nested fields. Dynamic mapping helps you get started quickly, but might yield suboptimal results for your specific use case due to automatic field type inference.\n\nUse dynamic templates to define custom mappings that are applied to dynamically added fields based on the matching condition.\n\nExplicit mapping\n\nUse explicit mapping to define mappings by specifying data types for each field. This is recommended for production use cases, because you have full control over how your data is indexed to suit your specific use case.\n\nDefining your own mappings enables you to:\n\nDefine which string fields should be treated as full-text fields.\n\nDefine which text field can be automatically vectorized by a semantic search machine learning model.\n\nDefine which fields contain numbers, dates, or geolocations.\n\nUse data types that cannot be automatically detected (such as geo_point and geo_shape.)\n\nChoose date value formats, including custom date formats.\n\nCreate custom rules to control the mapping for dynamically added fields.\n\nOptimize fields for partial matching.\n\nPerform language-specific text analysis.\n\n Tip\n\nIt’s often useful to index the same field in different ways for different purposes. For example, you might want to index a string field as both a text field for full-text search and as a keyword field for sorting or aggregating your data. Or, you might choose to use more than one language analyzer to process the contents of a string field that contains user input.\n\nRuntime fields\n\nUse runtime fields to make schema changes without reindexing. You can use runtime fields in conjunction with indexed fields to balance resource usage and performance. Your index will be smaller, but with slower search performance.\n\n Experiment with mapping options\n\nDefine runtime fields in a search request to experiment with different mapping options, and also fix mistakes in your index mapping values by overriding values in the mapping during the search request.\n\nManage and update mappings\n\nExplicit mappings should be defined at index creation for fields you know in advance. You can still add new fields to mappings at any time, as your data evolves.\n\nUse the Update mapping API to update an existing mapping.\n\nIn most cases, you can’t change mappings for fields that are already mapped. These changes require reindexing.\n\nHowever, you can update mappings under certain conditions:\n\nYou can add new fields to an existing mapping at any time, dynamically or explicitly.\n\nYou can add new multi-fields for existing fields.\n\nDocuments indexed before the mapping update will not have values for the new multi-fields until they are updated or reindexed. Documents indexed after the mapping change will automatically have values for the new multi-fields.\n\nSome mapping parameters can be updated for existing fields of certain data types.\n\nPrevent mapping explosions\n\nDefining too many fields in an index can lead to a mapping explosion, which can cause out of memory errors and difficult situations from which to recover.\n\nConsider a situation where every new document inserted introduces new fields, such as with dynamic mapping. Each new field is added to the index mapping, which can become a problem as the mapping grows.\n\nUse the mapping limit settings to limit the number of field mappings (created manually or dynamically) and prevent documents from causing a mapping explosion.\n\nRelated learning\n\n Data types and mappings on-demand training"
+}

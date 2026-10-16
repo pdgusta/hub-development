@@ -1,0 +1,64 @@
+{
+ "chave": "web:elastic.co/de/logstash",
+ "nomes": [
+  "Logstash"
+ ],
+ "urls": [
+  "https://www.elastic.co/de/logstash",
+  "https://www.elastic.co/logstash/",
+  "https://www.elastic.co/jp/logstash",
+  "https://www.elastic.co/what-is/logstash",
+  "https://www.elastic.co/logstash",
+  "https://www.elastic.co/de/index/logstash.html",
+  "https://www.elastic.co/",
+  "https://logstash.org/",
+  "https://www.elastic.co/products/logstash"
+ ],
+ "readme_cortado": false,
+ "readme": "[Logstash: Logs sammeln, analysieren, transformieren | ElasticElastic logo]\n\nSkip to main content\n\nLogstash\n\nZentralisieren, Transformieren und Speichern von Daten\n\nLogstash ist eine serverseitige Open-Source-Datenverarbeitungspipeline, die Daten aus einer Vielzahl von Quellen aufnimmt, transformiert und dann an Ihren bevorzugten „Stash“ sendet.\nHerunterladen\n\nNeu bei Logstash? Informieren Sie sich, wie Sie innerhalb kürzester Zeit loslegen können.Video ansehen\n\nSehen Sie sich an, wie Logstash Ihre CSV-Dateien parsen und in Elasticsearch ingestieren kann.Video ansehen\n\nLassen Sie sich zum Elastic Certified Engineer ausbilden, um das Potenzial von Elasticsearch maximal nutzen zu können.Weitere Informationen\n\nIngestieren und mehr\n\nInputs, Filter und Outputs\n\nLogstash ingestiert, transformiert und versendet Ihre Daten dynamisch und unabhängig von Format oder Komplexität. Sie können mit Grok aus unstrukturierten Daten Struktur ableiten, Geokoordinaten aus IP-Adressen entschlüsseln, sicherheitsrelevante Felder anonymisieren oder ausschließen und den Gesamtverarbeitungsprozess insgesamt vereinfachen.\n\nInputs\n\nIngestieren von Daten, unabhängig von Art, Umfang oder Quelle\n\nDaten liegen oftmals verstreut oder in Silos auf verschiedenen Systemen in unterschiedlichen Formaten vor. Logstash unterstützt eine Vielzahl von Inputs, die Ereignisse aus verschiedensten verbreiteten Quellen gleichzeitig auslesen können. Es akzeptiert anstandslos Daten von Logs, Metriken, Webanwendungen, Datenbanken und verschiedene AWS-Dienste in einem kontinuierlichen Stream. Hier finden Sie eine vollständige Liste der Inputs.\n\nFilter\n\nSofortiges Parsen und Transformieren Ihrer Daten\n\nWährend Daten von der Quelle zum Speicher übertragen werden, können die Logstash-Filter jedes Ereignis parsen, definierte Felder zur Strukturbildung identifizieren und so umwandeln, dass sie anschließend zur eingehenderen Analyse und Verwendung in einem gemeinsamen Format verfügbar sind.\nLogstash kann Ihre Daten dynamisch und unabhängig von Format oder Komplexität umwandeln und aufbereiten:\nVerleihen Sie ungeordneten Daten eine Struktur mit Grok\nWandeln Sie IP-Adressen in geographische Koordinaten um\nAnonymisieren Sie personenbezogene Daten oder sortieren Sie entsprechende Felder komplett aus\nSorgen Sie insgesamt für eine einfachere Verarbeitung, unabhängig von Datenquelle, Format oder Schema.\nUnsere umfangreiche Filterbibliothek und das vielseitige Elastic Common Schema bieten endlose Möglichkeiten.\n\nOutputs\n\nAblage auswählen und Daten übertragen\n\nWenngleich Elasticsearch unsere erste Wahl ist, weil es ein breites Spektrum an Such- und Analyseoptionen eröffnet, ist es nicht der einzig verfügbare Output.\nLogstash hat eine Vielzahl von Outputs, mit denen Sie Daten weiterleiten können, wohin Sie wollen, was Ihnen die Flexibilität gibt, eine Reihe von Downstream-Anwendungsfällen freizuschalten.\n\nERWEITERBARKEIT\nErstellen und konfigurieren Sie Ihre Pipeline, ganz nach Ihren Vorstellungen\n\nDas Framework von Logstash ist mit mehr als 200 Plugins erweiterbar. Für einen reibungslosen Ablauf können Sie verschiedene Inputs, Filter und Outputs mischen, einander zuordnen und koordinieren. \nSie verwenden eine eigene Anwendung als Quelle? Sie finden nicht das passende Plugin? Die Plugins von Logstash sind einfach zu generieren. Wir haben ein hervorragendes API zur Entwicklung und Erstellung von Plugins entwickelt, damit Sie Ihre eigenen Kreationen umsetzen und teilen können.\n\nDauerhaftigkeit und Sicherheit\nEine Pipeline, die tatsächlich Resultate liefert\n\nSollten Ihre Logstash-Knoten ausfallen, garantiert Logstash mit seiner persistenten Warteschlange mindestens eine einmalige Zustellung für Ihre laufenden Events. Ereignisse, die nicht erfolgreich verarbeitet wurden, können zur Introspektion und Wiedergabe in eine Dead-Letter-Queue übertragen werden. Mit der Fähigkeit, den Durchsatz zu absorbieren, skaliert Logstash durch Ingestion-Spikes, ohne eine externe Warteschlange verwenden zu müssen. Außerdem können Sie Ihre Ingestieren-Pipelines komplett sicher gestalten.\n\nMonitoring\n\nDeployments mit umfassender Sichtbarkeit\n\nLogstash Pipelines werden oft für mehrere Zwecke genutzt und daher schnell komplex. Umso wichtiger ist es, dass Sie die Auslastung, die Performance, die Verfügbarkeit und die Schwachstellen der Pipeline genau kennen. Mit dem Monitoring-Feature und dem Pipeline-Viewer können Sie Logstash-Knoten oder ganze Deployments einfach beobachten und analysieren.\n\nÜberblick\n\nPipeline-Viewer\n\nSie möchten Ihr Logging von Splunk zu Elastic migrieren?\n\nWir helfen Ihnen in jeder Phase, von der technischen Migrationsunterstützung bis hin zu Schulungen für Analysten direkt von unseren Elastic-Experten.\nWeitere Informationen\n\nManagement und Orchestrierung\n\nGemeinsame Benutzeroberfläche für die zentrale Deployment-Verwaltung\n\nÜbernehmen Sie mit der Pipeline-Management-UI die Kontrolle über Ihre Logstash-Deployments, wodurch die Verwaltung Ihrer Pipelines zum Kinderspiel wird. Die Verwaltungssteuerelemente lassen sich außerdem nahtlos in die integrierten Sicherheitsfunktionen integrieren, um eine unbeabsichtigte Neuverdrahtung zu verhindern.\n\nAnerkannt, genutzt und geliebt von\n\nSind Sie für Logstash bereit?\n\nOpen Source für einfachen Zugriff. Nie wieder Abhängigkeiten nachverfolgen oder Cronjobs für wiederholte Neustarts schreiben. Logstash macht Ihnen die Einstieg so einfach wie nur irgend möglich und hilft Ihnen, eine Pipeline bereitzustellen, die mit Ihrem Ereignis-Stream mithalten kann. Sie haben Fragen? Sehen Sie sich die Logstash-Dokumentation an oder besuchen Sie unser Logstash-Forum.\nHerunterladen",
+ "fonte": "site",
+ "respostas": [
+  {
+   "por": "ministral-14b",
+   "resposta": {
+    "serve": "stack",
+    "role": "data pipeline for indexing/transforming Markdown into searchable formats",
+    "place": [
+     "network_service",
+     "disk"
+    ],
+    "mechanism": [
+     "full_text",
+     "other"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "no",
+    "license": "unknown",
+    "maturity": "unknown",
+    "doubt": true,
+    "evidence": "Logstash processes data from sources, transforms it, and sends it to storage (e.g., Elasticsearch). No mention of MCP or Windows; no Portuguese support."
+   }
+  },
+  {
+   "por": "gemma-4-31b",
+   "resposta": {
+    "serve": "stack",
+    "role": "Data processing pipeline to ingest, transform, and send data to a stash",
+    "place": [
+     "network_service"
+    ],
+    "mechanism": [
+     "other"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "stable",
+    "doubt": false,
+    "evidence": "serverseitige Open-Source-Datenverarbeitungspipeline"
+   }
+  }
+ ]
+}

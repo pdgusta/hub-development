@@ -1,0 +1,95 @@
+{
+  "metodo": "XDG Base Directory Specification",
+  "fontes": [
+    {"url": "https://specifications.freedesktop.org/basedir-spec/latest/", "acessada_em": "2026-10-10", "status": "ok"}
+  ],
+  "o_que_e": {
+    "resumo": "Especificação do freedesktop.org que define em quais diretórios base de usuário arquivos de dados, configuração, estado, cache e runtime devem ser gravados e procurados, com variáveis de ambiente e valores padrão.",
+    "citacao": "This specification defines where these files should be looked for by defining one or more base directories relative to which files should be located.",
+    "url": "https://specifications.freedesktop.org/basedir-spec/latest/"
+  },
+  "nivel_raiz": [
+    {
+      "categoria": "$XDG_DATA_HOME (padrão $HOME/.local/share)",
+      "o_que_mora": "Dados específicos do usuário que devem ser gravados nesse diretório.",
+      "citacao": "$XDG_DATA_HOME defines the base directory relative to which user-specific data files should be stored. If $XDG_DATA_HOME is either not set or empty, a default equal to $HOME /.local/share should be used.",
+      "url": "https://specifications.freedesktop.org/basedir-spec/latest/"
+    },
+    {
+      "categoria": "$XDG_CONFIG_HOME (padrão $HOME/.config)",
+      "o_que_mora": "Arquivos de configuração específicos do usuário.",
+      "citacao": "$XDG_CONFIG_HOME defines the base directory relative to which user-specific configuration files should be stored. If $XDG_CONFIG_HOME is either not set or empty, a default equal to $HOME /.config should be used.",
+      "url": "https://specifications.freedesktop.org/basedir-spec/latest/"
+    },
+    {
+      "categoria": "$XDG_STATE_HOME (padrão $HOME/.local/state)",
+      "o_que_mora": "Dados de estado que devem persistir entre reinícios de aplicativos, mas que não são importantes ou portáteis o bastante para ficar em $XDG_DATA_HOME. Exemplos citados: histórico de ações (logs, histórico, arquivos recentes) e estado atual reutilizável no reinício (view, layout, arquivos abertos, histórico de undo).",
+      "citacao": "The $XDG_STATE_HOME contains state data that should persist between (application) restarts, but that is not important or portable enough to the user that it should be stored in $XDG_DATA_HOME . It may contain: actions history (logs, history, recently used files, …) current state of the application that can be reused on a restart (view, layout, open files, undo history, …)",
+      "url": "https://specifications.freedesktop.org/basedir-spec/latest/"
+    },
+    {
+      "categoria": "$HOME/.local/bin (executáveis do usuário)",
+      "o_que_mora": "Arquivos executáveis específicos do usuário. A própria especificação não define variável de ambiente para este diretório.",
+      "citacao": "User-specific executable files may be stored in $HOME /.local/bin. Distributions should ensure this directory shows up in the UNIX $PATH environment variable, at an appropriate place.",
+      "url": "https://specifications.freedesktop.org/basedir-spec/latest/"
+    },
+    {
+      "categoria": "$XDG_CACHE_HOME (padrão $HOME/.cache)",
+      "o_que_mora": "Dados de usuário não essenciais (cache).",
+      "citacao": "There is a single base directory relative to which user-specific non-essential (cached) data should be written. This directory is defined by the environment variable $XDG_CACHE_HOME .",
+      "url": "https://specifications.freedesktop.org/basedir-spec/latest/"
+    },
+    {
+      "categoria": "$XDG_RUNTIME_DIR (sem padrão definido)",
+      "o_que_mora": "Arquivos runtime não essenciais e outros objetos de arquivo do usuário, como sockets, named pipes. Não deve conter arquivos grandes.",
+      "citacao": "$XDG_RUNTIME_DIR defines the base directory relative to which user-specific non-essential runtime files and other file objects (such as sockets, named pipes, ...) should be stored.",
+      "url": "https://specifications.freedesktop.org/basedir-spec/latest/"
+    },
+    {
+      "categoria": "$XDG_DATA_DIRS (padrão /usr/local/share/:/usr/share/)",
+      "o_que_mora": "Conjunto ordenado de diretórios base onde arquivos de dados são procurados além de $XDG_DATA_HOME. Não é categoria de escrita do usuário.",
+      "citacao": "$XDG_DATA_DIRS defines the preference-ordered set of base directories to search for data files in addition to the $XDG_DATA_HOME base directory.",
+      "url": "https://specifications.freedesktop.org/basedir-spec/latest/"
+    },
+    {
+      "categoria": "$XDG_CONFIG_DIRS (padrão /etc/xdg)",
+      "o_que_mora": "Conjunto ordenado de diretórios base onde arquivos de configuração são procurados além de $XDG_CONFIG_HOME. Não é categoria de escrita do usuário.",
+      "citacao": "$XDG_CONFIG_DIRS defines the preference-ordered set of base directories to search for configuration files in addition to the $XDG_CONFIG_HOME base directory.",
+      "url": "https://specifications.freedesktop.org/basedir-spec/latest/"
+    }
+  ],
+  "criterio_de_separacao": {
+    "resumo": "A categoria é decidida pela natureza do arquivo: dados persistentes do usuário vão para data; configuração vai para config; estado que persiste entre reinícios, mas não é importante o bastante para data, vai para state; dados não essenciais vão para cache; objetos efêmeros de comunicação vão para runtime. Há regra de precedência: o diretório mais importante vence quando a mesma informação existe em vários lugares.",
+    "citacao": "The order of base directories denotes their importance; the first directory listed is the most important. When the same information is defined in multiple places the information defined relative to the more important base directory takes precedent.",
+    "url": "https://specifications.freedesktop.org/basedir-spec/latest/"
+  },
+  "quando_termina_ou_envelhece": {
+    "resumo": "Para runtime, a própria especificação define o ciclo de vida: vale enquanto o usuário estiver logado e pode sofrer limpeza periódica. Para data, config, state e cache, a fonte não define prazo de validade nem regra de expiração (cache não tem regra de expiração explícita).",
+    "citacao": "The lifetime of the directory MUST be bound to the user being logged in. ... Files in this directory MUST not survive reboot or a full logout/login cycle. ... Files in this directory MAY be subjected to periodic clean-up.",
+    "url": "https://specifications.freedesktop.org/basedir-spec/latest/"
+  },
+  "conteudo_compartilhado_ou_reaproveitado": {
+    "resumo": "Sim, por meio de $XDG_DATA_DIRS e $XDG_CONFIG_DIRS: arquivos de sistema são instalados em diretórios compartilhados e uma versão do usuário pode sobrescrevê-los em $XDG_DATA_HOME ou $XDG_CONFIG_HOME. A busca percorre todos os diretórios, e a especificação exige que quem usa esses diretórios defina o comportamento quando um arquivo aparece em vários.",
+    "citacao": "A user-specific version of the data file may be created in $XDG_DATA_HOME /subdir/filename, taking into account the default value for $XDG_DATA_HOME if $XDG_DATA_HOME is not set. ... A specification that refers to $XDG_DATA_DIRS or $XDG_CONFIG_DIRS should define what the behaviour must be when a file is located under multiple base directories.",
+    "url": "https://specifications.freedesktop.org/basedir-spec/latest/"
+  },
+  "pastas_versus_tags_ou_links": {
+    "resumo": "Usa pastas (diretórios base com subdiretórios e nomes de arquivo). A especificação não menciona tags, links de entidade ou propriedades como mecanismo de organização.",
+    "citacao": "Lookups of the data file should search for ./subdir/filename relative to all base directories specified by $XDG_DATA_HOME and $XDG_DATA_DIRS .",
+    "url": "https://specifications.freedesktop.org/basedir-spec/latest/"
+  },
+  "pensado_para_agentes_de_ia": {
+    "resumo": "Não. A especificação é voltada a aplicativos e distribuições em sistemas Unix-like; não menciona agentes de IA, nem LLMs, nem ferramentas automatizadas.",
+    "citacao": null,
+    "url": "https://specifications.freedesktop.org/basedir-spec/latest/"
+  },
+  "nao_verificado": [
+    "conteudo_compartilhado_ou_reaproveitado: nada sobre dados compartilhados entre usuários além de DATA_DIRS/CONFIG_DIRS (não verificado)",
+    "quando_termina_ou_envelhece: prazo ou regra de expiração para cache, data, config e state (a fonte não define)",
+    "nivel_raiz: categoria de cache sem regra de limpeza definida na fonte (não verificado)",
+    "nivel_raiz: $HOME/.local/bin não tem variável de ambiente própria na fonte (não verificado)",
+    "nivel_raiz: $XDG_RUNTIME_DIR não tem caminho padrão definido na fonte (não verificado)",
+    "pensado_para_agentes_de_ia: a fonte não trata de agentes ou IA, citação ausente (não verificado)",
+    "Itens fora do escopo do texto da fonte: Windows e outros sistemas não Unix (não verificado)"
+  ]
+}

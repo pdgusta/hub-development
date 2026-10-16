@@ -1,0 +1,55 @@
+{
+ "chave": "gh:theskumar/python-dotenv",
+ "nomes": [
+  "python-dotenv"
+ ],
+ "urls": [
+  "https://github.com/theskumar/python-dotenv"
+ ],
+ "readme_cortado": false,
+ "readme": "# python-dotenv\n\n[![Build Status][build_status_badge]][build_status_link]\n[![PyPI version][pypi_badge]][pypi_link]\n\npython-dotenv reads key-value pairs from a `.env` file and can set them as\nenvironment variables. It helps in the development of applications following the\n[12-factor](https://12factor.net/) principles.\n\n- [Getting Started](#getting-started)\n- [Other Use Cases](#other-use-cases)\n  - [Load configuration without altering the environment](#load-configuration-without-altering-the-environment)\n  - [Parse configuration as a stream](#parse-configuration-as-a-stream)\n  - [Load .env files in IPython](#load-env-files-in-ipython)\n- [Command-line Interface](#command-line-interface)\n- [File format](#file-format)\n  - [Multiline values](#multiline-values)\n  - [Variable expansion](#variable-expansion)\n- [Related Projects](#related-projects)\n- [Acknowledgements](#acknowledgements)\n\n## Getting Started\n\n```shell\npip install python-dotenv\n```\n\nIf your application takes its configuration from environment variables, like a\n12-factor application, launching it in development is not very practical because\nyou have to set those environment variables yourself.\n\nTo help you with that, you can add python-dotenv to your application to make it\nload the configuration from a `.env` file when it is present (e.g. in\ndevelopment) while remaining configurable via the environment:\n\n```python\nfrom dotenv import load_dotenv\n\nload_dotenv()  # reads variables from a .env file and sets them in os.environ\n\n# Code of your application, which uses environment variables (e.g. from `os.environ` or\n# `os.getenv`) as if they came from the actual environment.\n```\n\nBy default, `load_dotenv()` will:\n\n- Look for a `.env` file in the same directory as the Python script (or higher up the directory tree).\n- Read each key-value pair and add it to `os.environ`.\n- **Not override** existing environment variables (`override=False`). Pass `override=True` to override existing variables.\n\nTo configure the development environment, add a `.env` in the root directory of\nyour project:\n\n```\n.\n├── .env\n└── foo.py\n```\n\nThe syntax of `.env` files supported by python-dotenv is similar to that of\nBash:\n\n```bash\n# Development settings\nDOMAIN=example.org\nADMIN_EMAIL=admin@${DOMAIN}\nROOT_URL=${DOMAIN}/app\n```\n\nIf you use variables in values, ensure they are surrounded with `{` and `}`,\nlike `${DOMAIN}`, as bare variables such as `$DOMAIN` are not expanded.\n\nYou will probably want to add `.env` to your `.gitignore`, especially if it\ncontains secrets like a password.\n\nSee the section \"[File format](#file-format)\" below for more information about what you can write in a `.env` file.\n\n## Other Use Cases\n\n### Load configuration without altering the environment\n\nThe function `dotenv_values` works more or less the same way as `load_dotenv`,\nexcept it doesn't touch the environment, it just returns a `dict` with the\nvalues parsed from the `.env` file.\n\n```python\nfrom dotenv import dotenv_values\n\nconfig = dotenv_values(\".env\")  # config = {\"USER\": \"foo\", \"EMAIL\": \"foo@example.org\"}\n```\n\nThis notably enables advanced configuration management:\n\n```python\nimport os\nfrom dotenv import dotenv_values\n\nconfig = {\n    **dotenv_values(\".env.shared\"),  # load shared development variables\n    **dotenv_values(\".env.secret\"),  # load sensitive variables\n    **os.environ,  # override loaded values with environment variables\n}\n```\n\n### Parse configuration as a stream\n\n`load_dotenv` and `dotenv_values` accept [streams][python_streams] via their\n`stream` argument. It is thus possible to load the variables from sources other\nthan the filesystem (e.g. the network).\n\n```python\nfrom io import StringIO\n\nfrom dotenv import load_dotenv\n\nconfig = StringIO(\"USER=foo\\nEMAIL=foo@example.org\")\nload_dotenv(stream=config)\n```\n\n### Load .env files in IPython\n\nYou can use dotenv in IPython. By default, it will use `find_dotenv` to search for a\n`.env` file:\n\n```python\n%load_ext dotenv\n%dotenv\n```\n\nYou can also specify a path:\n\n```python\n%dotenv relative/or/absolute/path/to/.env\n%dotenv ~/path/to/.env\n```\n\nOptional flags:\n\n- `-o` to override existing variables.\n- `-v` for increased verbosity.\n\n### Disable load_dotenv\n\nSet `PYTHON_DOTENV_DISABLED=1` to disable `load_dotenv()` from loading .env\nfiles or streams. Useful when you can't modify third-party package calls or in\nproduction.\n\n## Command-line Interface\n\nA CLI interface `dotenv` is also included, which helps you manipulate the `.env`\nfile without manually opening it.\n\n```shell\n$ pip install \"python-dotenv[cli]\"\n$ dotenv set USER foo\n$ dotenv set EMAIL foo@example.org\n$ dotenv list\nUSER=foo\nEMAIL=foo@example.org\n$ dotenv list --format=json\n{\n  \"USER\": \"foo\",\n  \"EMAIL\": \"foo@example.org\"\n}\n$ dotenv run -- python foo.py\n```\n\nRun `dotenv --help` for more information about the options and subcommands.\n\n## File format\n\nThe format is not formally specified and still improves over time. That being\nsaid, `.env` files should mostly look like Bash files. Reading from FIFOs (named\npipes) on Unix systems is also supported.\n\nKeys can be unquoted or single-quoted. Values can be unquoted, single- or\ndouble-quoted. Spaces before and after keys, equal signs, and values are\nignored. Values can be followed by a comment. Lines can start with the `export`\ndirective, which does not affect their interpretation.\n\nAllowed escape sequences:\n\n- in single-quoted values: `\\\\`, `\\'`\n- in double-quoted values: `\\\\`, `\\'`, `\\\"`, `\\a`, `\\b`, `\\f`, `\\n`, `\\r`, `\\t`, `\\v`\n\n### Multiline values\n\nIt is possible for single- or double-quoted values to span multiple lines. The\nfollowing examples are equivalent:\n\n```bash\nFOO=\"first line\nsecond line\"\n```\n\n```bash\nFOO=\"first line\\nsecond line\"\n```\n\n### Variable without a value\n\nA variable can have no value:\n\n```bash\nFOO\n```\n\nIt results in `dotenv_values` associating that variable name with the value\n`None` (e.g. `{\"FOO\": None}`. `load_dotenv`, on the other hand, simply ignores\nsuch variables.\n\nThis shouldn't be confused with `FOO=`, in which case the variable is associated\nwith the empty string.\n\n### Variable expansion\n\npython-dotenv can interpolate variables using POSIX variable expansion.\n\nWith `load_dotenv(override=True)` or `dotenv_values()`, the value of a variable\nis the first of the values defined in the following list:\n\n- Value of that variable in the `.env` file.\n- Value of that variable in the environment.\n- Default value, if provided.\n- Empty string.\n\nWith `load_dotenv(override=False)`, the value of a variable is the first of the\nvalues defined in the following list:\n\n- Value of that variable in the environment.\n- Value of that variable in the `.env` file.\n- Default value, if provided.\n- Empty string.\n\n## Related Projects\n\n- [environs](https://github.com/sloria/environs)\n- [Honcho](https://github.com/nickstenning/honcho)\n- [dump-env](https://github.com/sobolevn/dump-env)\n- [dynaconf](https://github.com/dynaconf/dynaconf)\n- [parse_it](https://github.com/naorlivne/parse_it)\n- [django-dotenv](https://github.com/jpadilla/django-dotenv)\n- [django-environ](https://github.com/joke2k/django-environ)\n- [python-decouple](https://github.com/HBNetwork/python-decouple)\n- [django-configuration](https://github.com/jezdez/django-configurations)\n\n## Acknowledgements\n\nThis project is currently maintained by [Saurabh Kumar][saurabh-homepage] and\n[Bertrand Bonnefoy-Claudet][gh-bbc2] and would not have been possible without\nthe support of these [awesome people][contributors].\n\n[gh-bbc2]: https://github.com/bbc2\n[saurabh-homepage]: https://saurabh-kumar.com\n[pypi_link]: https://badge.fury.io/py/python-dotenv\n[pypi_badge]: https://badge.fury.io/py/python-dotenv.svg\n[python_streams]: https://docs.python.org/3/library/io.html\n[contributors]: https://github.com/theskumar/python-dotenv/graphs/contributors\n[build_status_link]: https://github.com/theskumar/python-dotenv/actions/workflows/test.yml\n[build_status_badge]: https://github.com/theskumar/python-dotenv/actions/workflows/test.yml/badge.svg\n",
+ "fonte": "readme",
+ "respostas": [
+  {
+   "por": "diffusiongemma-26b-a4b-it",
+   "resposta": {
+    "serve": "stack",
+    "role": "Load environment variables from .env files for application configuration",
+    "place": [
+     "disk",
+     "library"
+    ],
+    "mechanism": [
+     "other"
+    ],
+    "mcp": "no",
+    "windows": "yes",
+    "portuguese": "no",
+    "license": "MIT",
+    "maturity": "stable",
+    "doubt": false,
+    "evidence": "reads key-value pairs from a .env file and can set them as environment variables."
+   }
+  },
+  {
+   "por": "ministral-3-8b",
+   "resposta": {
+    "serve": "none",
+    "role": "environment variable management for Python apps",
+    "place": [
+     "library"
+    ],
+    "mechanism": [
+     "n/a"
+    ],
+    "mcp": "no",
+    "windows": "unknown",
+    "portuguese": "no",
+    "license": "unknown",
+    "maturity": "stable",
+    "doubt": false,
+    "evidence": "Handles `.env` files for Python apps (no mention of search, CouchDB, MCP, or multilingual support)."
+   }
+  }
+ ]
+}

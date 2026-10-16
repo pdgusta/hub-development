@@ -1,0 +1,51 @@
+{
+ "nome": "CouchDB Clouseau/Dreyfus",
+ "url": "https://docs.couchdb.org/en/latest/ddocs/search.html",
+ "papel": "dentro do banco",
+ "windows": "nao_verificado (docs do CouchDB e README do Clouseau não mencionam Windows; é JAR Java 21, em tese portável, sem confirmação)",
+ "mcp": "no (recurso do CouchDB acessado por HTTP _search; MCP teria de vir do MCP do banco)",
+ "portugues": "yes: analisador 'portuguese' (org.apache.lucene.analysis.pt.PortugueseAnalyzer), stopwords customizáveis; analisadores por idioma removem palavras comuns e prefixos/sufixos",
+ "markdown_frontmatter": "Não indexa Markdown como tal: indexa documentos JSON por funções de índice no design doc; campos do doc (inclusive frontmatter já parseado no JSON) podem ser indexados; sem chunking",
+ "atualizacao": "Automática, no banco: 'An index builds after processing one search request or after the server detects a document update.' Acompanha o LiveSync pois indexa o CouchDB",
+ "embeddings_endpoint": "não usa embeddings (busca lexical Lucene)",
+ "recursos": "JVM: Clouseau 3.x exige Java 21 e CouchDB 3.5.0; JAR; memória só em exemplo (-Xmx2G)",
+ "licenca": "Apache-2.0 (clouseau)",
+ "ultimo_release": "nao_verificado (seção Releases vazia na página; JAR de exemplo clouseau_2.13.16_3.3.0.jar)",
+ "atividade": "nao_verificado",
+ "maturidade": "stable no CouchDB ('Added in version 3.0'); Clouseau 3.x reescrito em ZIO",
+ "encaixe": "Dentro do banco em cada máquina, sem cópia em disco; lexical PT bom. Impedimento: JVM 21 + Clouseau ao lado do CouchDB no Windows nativo sem confirmação; sem semântica nem MCP.",
+ "evidencias": [
+  {
+   "campo": "portugues",
+   "url": "https://docs.couchdb.org/en/latest/ddocs/search.html",
+   "citacao": "portuguese -> org.apache.lucene.analysis.pt.PortugueseAnalyzer"
+  },
+  {
+   "campo": "atualizacao",
+   "url": "https://docs.couchdb.org/en/latest/ddocs/search.html",
+   "citacao": "An index builds after processing one search request or after the server detects a document update."
+  },
+  {
+   "campo": "recursos",
+   "url": "https://docs.couchdb.org/en/latest/install/search.html",
+   "citacao": "The search plugin is runtime-compatible with Java JDKs 21 and later."
+  },
+  {
+   "campo": "recursos",
+   "url": "https://github.com/cloudant-labs/clouseau",
+   "citacao": "Java 21 is required."
+  },
+  {
+   "campo": "licenca",
+   "url": "https://github.com/cloudant-labs/clouseau",
+   "citacao": "Apache-2.0 license"
+  }
+ ],
+ "nao_verificado": [
+  "windows",
+  "ultimo_release",
+  "atividade",
+  "Dreyfus (a doc atual não o cita)",
+  "memória real"
+ ]
+}

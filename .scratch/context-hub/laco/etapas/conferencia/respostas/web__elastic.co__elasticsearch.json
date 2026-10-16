@@ -1,0 +1,35 @@
+{
+ "chave": "web:elastic.co/elasticsearch",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T12:00:00Z",
+ "resultado": "corrige",
+ "conferencia": {
+  "resultado": "corrige",
+  "final": {
+   "serve": "search",
+   "role": "Distributed open source search and analytics engine with full-text, vector and hybrid search",
+   "place": [
+    "network_service",
+    "disk"
+   ],
+   "mechanism": [
+    "full_text",
+    "vector",
+    "hybrid",
+    "reranker"
+   ],
+   "mcp": "unknown",
+   "windows": "unknown",
+   "portuguese": "unknown",
+   "license": "unknown",
+   "maturity": "stable",
+   "doubt": false,
+   "evidence": "Elasticsearch is an open source, distributed search and analytics engine... fast hybrid and vector search."
+  },
+  "o_que_mudou": [
+   "windows: yes/unknown -> unknown, only a user-agent string in an example",
+   "mechanism: bm25/embeddings removed, not stated (full_text, vector, hybrid, reranker are)"
+  ],
+  "nota": "Mature hybrid search server; heavy to run for a notes hub but a valid candidate search layer."
+ }
+}

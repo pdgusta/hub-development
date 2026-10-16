@@ -1,0 +1,37 @@
+{"pergunta": "Se eu abrir o hub num computador que não tem cópia nenhuma, o que ele consegue ler de fato?", "tipo": "se-x", "lente": "cliente", "cita": ["cliente", "hub"]}
+{"pergunta": "Qual a relação entre o computador sem cópia e o computador que tem a cópia completa?", "tipo": "relacao", "lente": "cliente", "cita": ["cliente", "computador com cópia"]}
+{"pergunta": "Se o computador que tem a cópia estiver desligado, o que acontece com a sessão do computador sem cópia?", "tipo": "se-x", "lente": "cliente", "cita": ["cliente", "computador com cópia"]}
+{"pergunta": "Quando o computador que tem a cópia está desligado, a sessão mostra um aviso claro ou simplesmente fica sem resposta?", "tipo": "falha", "lente": "cliente", "cita": ["cliente", "computador com cópia"]}
+{"pergunta": "Quando o computador sem cópia fica desligado por dias, ao ligar ele já recebe o que mudou nesse meio-tempo?", "tipo": "quando", "lente": "cliente", "cita": ["cliente", "computador com cópia"]}
+{"pergunta": "Onde fica a informação que o computador sem cópia lê: guardada nele, numa pasta temporária ou só passa pela conexão?", "tipo": "onde-vive", "lente": "cliente", "cita": ["cliente", "conexão"]}
+{"pergunta": "Onde o contrato do hub chega ao computador sem cópia: num arquivo na máquina dele ou só pela conexão com a ferramenta?", "tipo": "onde-vive", "lente": "cliente", "cita": ["cliente", "AGENTS.md", "MCP"]}
+{"pergunta": "Se o computador sem cópia não tem o arquivo do contrato, ele consegue usar a busca do hub mesmo assim?", "tipo": "se-x", "lente": "cliente", "cita": ["cliente", "AGENTS.md", "camada de busca"]}
+{"pergunta": "O que o computador sem cópia não consegue fazer no hub por padrão?", "tipo": "o-que-nao-faz", "lente": "cliente", "cita": ["cliente"]}
+{"pergunta": "Quem decide se o computador sem cópia pode gravar: o Gustavo, a máquina que tem a cópia ou o próprio agente?", "tipo": "responsavel", "lente": "cliente", "cita": ["cliente", "computador com cópia", "agente"]}
+{"pergunta": "Se o computador sem cópia gravar uma nota ao mesmo tempo que a máquina com a cópia grava a mesma nota, quem ganha?", "tipo": "falha", "lente": "cliente", "cita": ["cliente", "computador com cópia"]}
+{"pergunta": "Se eu pedir ao Claude Desktop para editar uma nota do hub, ele consegue fazer isso?", "tipo": "se-x", "lente": "cliente", "cita": ["Claude Desktop"]}
+{"pergunta": "Quando o Claude Desktop edita uma nota, a alteração chega ao hub do mesmo jeito que a feita pelo Claude Code numa pasta do hub?", "tipo": "diferenca", "lente": "cliente", "cita": ["Claude Desktop", "Claude Code"]}
+{"pergunta": "Como o Claude Desktop alcança o hub: por uma ponte instalada no computador dele ou por um endereço na internet?", "tipo": "onde-vive", "lente": "cliente", "cita": ["Claude Desktop", "ponte mcp-remote"]}
+{"pergunta": "Qual a diferença, para o Gustavo, entre usar o hub pelo Claude Desktop e pelo Claude Code aberto na pasta do hub?", "tipo": "diferenca", "lente": "cliente", "cita": ["Claude Desktop", "Claude Code"]}
+{"pergunta": "Se a conexão do Claude Desktop cair no meio de uma gravação, o que acontece com a nota?", "tipo": "falha", "lente": "cliente", "cita": ["Claude Desktop"]}
+{"pergunta": "O Claude Desktop consegue se conectar ao hub por um conector remoto na internet, sem a rede privada do Gustavo?", "tipo": "o-que-nao-faz", "lente": "cliente", "cita": ["Claude Desktop", "conector remoto", "rede privada"]}
+{"pergunta": "Quem instala a ponte do Claude Desktop na máquina sem cópia: o Gustavo ou quem está usando essa máquina?", "tipo": "responsavel", "lente": "cliente", "cita": ["Claude Desktop", "ponte mcp-remote"]}
+{"pergunta": "O contrato do hub chega ao Claude Desktop pelo mesmo caminho que chega ao Claude Code?", "tipo": "diferenca", "lente": "cliente", "cita": ["Claude Desktop", "Claude Code", "contrato"]}
+{"pergunta": "Quando um computador sem cópia abre uma sessão, o que acontece primeiro: a conexão com o computador que tem a cópia, a leitura do contrato ou a busca?", "tipo": "ordem", "lente": "cliente", "cita": ["cliente", "conexão", "AGENTS.md"]}
+{"pergunta": "Se a sessão começar antes de a conexão estar pronta, o agente percebe isso ou trabalha como se o hub estivesse disponível?", "tipo": "se-x", "lente": "cliente", "cita": ["cliente", "agente"]}
+{"pergunta": "O notebook que só recebe, sem cópia, entra no mesmo grupo das máquinas que têm cópia completa, ou fica num grupo à parte?", "tipo": "grupo", "lente": "cliente", "cita": ["cliente", "computador com cópia"]}
+{"pergunta": "Um computador de outra pessoa que entra na rede privada conta como cliente ou como máquina do Gustavo?", "tipo": "grupo", "lente": "cliente", "cita": ["cliente", "rede privada"]}
+{"pergunta": "Um sandbox de teste pode receber dado de cliente de verdade, ou só dado de exemplo?", "tipo": "o-que-nao-faz", "lente": "cliente", "cita": ["sandbox", "dado de cliente"]}
+{"pergunta": "A proteção que vale para o dado de cliente na máquina do Gustavo também vale num computador de passagem?", "tipo": "se-x", "lente": "cliente", "cita": ["dado de cliente", "cliente"]}
+{"pergunta": "Quais pastas do hub o computador sem cópia nunca enxerga, por morarem só numa máquina?", "tipo": "o-que-nao-faz", "lente": "cliente", "cita": ["cliente", "pasta que só existe numa máquina"]}
+{"pergunta": "Um cliente consegue ver as pastas com ponto, como as de configuração, quando lê o hub?", "tipo": "o-que-nao-faz", "lente": "cliente", "cita": ["cliente", "pasta com ponto"]}
+{"pergunta": "Quem usa o computador sem cópia no dia a dia: só o Gustavo, ou também agentes de outras pessoas e sandboxes que ele cria?", "tipo": "quem-usa", "lente": "cliente", "cita": ["cliente", "sandbox", "agente"]}
+{"pergunta": "Quando a sessão de um computador sem cópia termina, a chave de acesso que ele usou some junto ou continua valendo?", "tipo": "quando", "lente": "cliente", "cita": ["cliente", "token"]}
+{"pergunta": "Quanto tempo depois de parar de usar o computador sem cópia a conexão dele deixa de funcionar?", "tipo": "quando", "lente": "cliente", "cita": ["cliente", "conexão"]}
+{"pergunta": "Por que o computador sem cópia depende de uma máquina ligada, se o hub já existe inteiro em outro computador?", "tipo": "por-que", "lente": "cliente", "cita": ["cliente", "computador com cópia"]}
+{"pergunta": "Por que um computador de passagem não recebe uma cópia completa, em vez de enxergar o hub pela conexão?", "tipo": "por-que", "lente": "cliente", "cita": ["cliente"]}
+{"pergunta": "Se a nota que o computador sem cópia leu ficou velha, de onde vem o aviso de que ela está desatualizada?", "tipo": "falha", "lente": "cliente", "cita": ["cliente", "aviso"]}
+{"pergunta": "Se o computador sem cópia se conectar ao computador errado, o que impede que ele leia notas que não deveria?", "tipo": "falha", "lente": "cliente", "cita": ["cliente", "computador com cópia"]}
+{"pergunta": "Qual a relação entre a chave de acesso do computador sem cópia e a frase-senha que protege as notas?", "tipo": "relacao", "lente": "cliente", "cita": ["cliente", "token", "frase-senha"]}
+{"pergunta": "Qual a diferença entre um computador com cópia completa e um cliente, do ponto de vista de quem está sentado nele?", "tipo": "diferenca", "lente": "cliente", "cita": ["cliente", "computador com cópia"]}
+{"pergunta": "Se o computador que tem a cópia for trocado por outro, o computador sem cópia precisa ser reconfigurado?", "tipo": "se-x", "lente": "cliente", "cita": ["cliente", "computador com cópia"]}

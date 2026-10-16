@@ -1,0 +1,28 @@
+{
+  "nome": "Context hub",
+  "raiz": "../../..",
+  "porta": 8770,
+  "mapa": ".scratch/context-hub/map.md",
+  "tickets": ".scratch/context-hub/issues",
+  "estrategia": ".scratch/context-hub/estrategia-pos-pesquisa.md",
+  "glossario": "GLOSSARY.md",
+  "rodadas": "rodadas",
+  "caixa": "caixa",
+  "cartas": "cartas.json",
+  "lacos": "lacos.json",
+  "criterios": [
+    {"palavra": "acha"},
+    {"palavra": "grava sozinho"},
+    {"palavra": "Obsidian e disco"},
+    {"palavra": "sem divergência"},
+    {"palavra": "edição concorrente"}
+  ],
+  "aviso": {"agente": "Claude Code", "executavel": "maestri"},
+  "codigos": {
+    "Q": "pergunta numerada das rodadas de mapeamento que fixaram o destino (mapeamento.md)",
+    "R": "pergunta numerada das rodadas de decisão, registrada no ticket dono; exceção: nos tickets 25 e 30, R1 é a correção \"ramo de conflito\" da pesquisa 26 (a gravação do agente leva a revisão de base)",
+    "S": "opção numerada de onde mora o servidor do banco (pesquisa 26, seção 4; ticket 34)",
+    "O": "caminho numerado de como a verdade viaja entre as máquinas (ticket 25, pesquisas 23 e 24)",
+    "C": "item numerado do que falta montar na trilha do Fast Note Sync (pesquisa 28; ticket 29)"
+  }
+}

@@ -1,0 +1,31 @@
+{
+ "chave": "web:elastic.co/beats/auditbeat",
+ "urls": [
+  "https://www.elastic.co/beats/auditbeat"
+ ],
+ "tipos": [
+  "tool"
+ ],
+ "termos": [
+  "auditbeat",
+  "audit framework",
+  "Linux Audit Framework",
+  "audit data"
+ ],
+ "mencoes": 1,
+ "familias": [
+  "mistral"
+ ],
+ "primeira_onda": 3,
+ "nomes": [
+  "Auditbeat"
+ ],
+ "resumos": [
+  "A lightweight shipper that collects and parses audit framework data, such as the Linux Audit Framework."
+ ],
+ "fonte": "site",
+ "readme_status": "ok",
+ "readme_nome": "https://www.elastic.co/beats/auditbeat",
+ "readme_cortado": false,
+ "readme": "[Auditbeat: Lightweight Shipper for Audit Data | ElasticElastic logo]\n\nSkip to main content\n\nAuditbeat\n\nLightweight shipper for audit data\n\nCollect your Linux audit framework data and monitor the integrity of your files. Auditbeat ships these events in real time to the rest of the Elastic Stack for further analysis.\n\nDownload\nAuditbeat documentation\n\nKeep an eye on your Linux systems\n\nMonitor user activity and processes, and analyze your event data in the Elastic Stack without touching auditd. Auditbeat communicates directly with the Linux audit framework, collects the same data as auditd, and sends the events to the Elastic Stack in real time. If you’re feeling nostalgic, you can run auditd alongside Auditbeat (in newer kernels).\n\nDon’t rewrite what works. Use your existing audit rules to ingest data painlessly. Who was the actor? What action did they perform and when? Auditbeat retains all of the original syscall data and the associated paths so you have the context you need.\n\nGet the right message(s)\n\nAvoid getting caught in the cross-hairs of split messages, duplicate events, and meaningless ID numbers. Unlike auditd, Auditbeat groups related messages into a single event. It also handles the parsing and normalizing of the messages, delivering structured data to Elasticsearch — like converting numeric IDs to names. And with the processors that are a part of every Beat, you can filter and amend data easily.\n\nFile integrity monitoring\n\nAuditbeat allows you to carefully watch lists of directories for any funny business on Linux, macOS, and Windows. File changes are sent in real time to Elasticsearch, each message containing metadata and cryptographic hashes of the file contents for further analysis.\n\nSimply specify the paths to the directories you want Auditbeat to watch and take a congratulatory sip of coffee.\n\nGo from ingest to insights in minutes with out-of-the-box integrations\nView integrations\n\nIt doesn't miss a beat\n\nSpool your Linux system events to disk so your pipeline doesn’t skip a data point — even when interruptions such as network issues occur. Auditbeat holds onto incoming data and then ships it all to Elasticsearch or Logstash when things are back online.\n\nShip to Elasticsearch. Visualize in Kibana.\n\nAuditbeat is part of the Elastic Stack, meaning it works seamlessly with Logstash, Elasticsearch, and Kibana. Whether you want to transform or enrich your metrics with Logstash, fiddle with some analytics in Elasticsearch, or build and share dashboards in Kibana, Auditbeat makes it easy to ship your data to where it matters most."
+}

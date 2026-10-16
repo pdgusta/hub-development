@@ -1,0 +1,48 @@
+Crate yaml_rust2source · [−]Expand description
+
+YAML 1.2 implementation in pure Rust.
+
+§Usage
+
+This crate is on github and can be used by adding
+yaml-rust2 to the dependencies in your project’s Cargo.toml.
+
+[dependencies]
+yaml-rust2 = "0.5.0"
+
+§Examples
+
+Parse a string into Vec<Yaml> and then serialize it as a YAML string.
+
+use yaml_rust2::{YamlLoader, YamlEmitter};
+
+let docs = YamlLoader::load_from_str("[1, 2, 3]").unwrap();
+let doc = &docs[0]; // select the first YAML document
+assert_eq!(doc[0].as_i64().unwrap(), 1); // access elements by index
+
+let mut out_str = String::new();
+let mut emitter = YamlEmitter::new(&mut out_str);
+emitter.dump(doc).unwrap(); // dump the YAML object to a String
+
+Re-exports§
+
+pub use crate::emitter::EmitError;
+
+pub use crate::emitter::YamlEmitter;
+
+pub use crate::parser::Event;
+
+pub use crate::scanner::ScanError;
+
+pub use crate::yaml::Yaml;
+
+pub use crate::yaml::YamlLoader;
+Modules§
+
+emitter
+
+parser
+
+scanner
+
+yaml

@@ -1,0 +1,34 @@
+{
+ "chave": "web:fasttext.cc/docs/en/english-vectors.html",
+ "nomes": [
+  "FastText"
+ ],
+ "urls": [
+  "https://fasttext.cc/docs/en/english-vectors.html"
+ ],
+ "readme_cortado": false,
+ "readme": "[English word vectors · fastText]\n\nThis page gathers several pre-trained word vectors trained using fastText.\n\nDownload pre-trained word vectors\n\nPre-trained word vectors learned on different sources can be downloaded below:\n\nwiki-news-300d-1M.vec.zip: 1 million word vectors trained on Wikipedia 2017, UMBC webbase corpus and statmt.org news dataset (16B tokens).\n\nwiki-news-300d-1M-subword.vec.zip: 1 million word vectors trained with subword infomation on Wikipedia 2017, UMBC webbase corpus and statmt.org news dataset (16B tokens).\n\ncrawl-300d-2M.vec.zip: 2 million word vectors trained on Common Crawl (600B tokens).\n\ncrawl-300d-2M-subword.zip: 2 million word vectors trained with subword information on Common Crawl (600B tokens).\n\nFormat\n\nThe first line of the file contains the number of words in the vocabulary and the size of the vectors.\nEach line contains a word followed by its vectors, like in the default fastText text format.\nEach value is space separated. Words are ordered by descending frequency.\nThese text models can easily be loaded in Python using the following code:\n\nimport io\n\ndef load_vectors(fname):\n fin = io.open(fname, 'r', encoding='utf-8', newline='\\n', errors='ignore')\n n, d = map(int, fin.readline().split())\n data = {}\n for line in fin:\n tokens = line.rstrip().split(' ')\n data[tokens[0]] = map(float, tokens[1:])\n return data\n\nLicense\n\nThese word vectors are distributed under the Creative Commons Attribution-Share-Alike License 3.0.\n\nReferences\n\nIf you use these word vectors, please cite the following paper:\n\nT. Mikolov, E. Grave, P. Bojanowski, C. Puhrsch, A. Joulin. Advances in Pre-Training Distributed Word Representations\n\n@inproceedings{mikolov2018advances,\n title={Advances in Pre-Training Distributed Word Representations},\n author={Mikolov, Tomas and Grave, Edouard and Bojanowski, Piotr and Puhrsch, Christian and Joulin, Armand},\n booktitle={Proceedings of the International Conference on Language Resources and Evaluation (LREC 2018)},\n year={2018}\n}\n\nWord vectors for 157 languages →",
+ "fonte": "site",
+ "respostas": [
+  {
+   "por": "claude-haiku-5-5",
+   "resposta": {
+    "serve": "stack",
+    "role": "Vetores de palavras em inglês pré-treinados para embeddings",
+    "place": [
+     "library"
+    ],
+    "mechanism": [
+     "embeddings"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "no",
+    "license": "CC-BY-SA-3.0",
+    "maturity": "unknown",
+    "doubt": false,
+    "evidence": "\"These word vectors are distributed under the Creative Commons Attribution-Share-Alike License 3.0.\" \"Word vectors for 157 languages\""
+   }
+  }
+ ]
+}

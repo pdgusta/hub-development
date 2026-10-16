@@ -1,0 +1,54 @@
+{
+ "chave": "gh:clips/pattern",
+ "urls": [
+  "https://github.com/clips/pattern",
+  "https://www.clips.ua.ac.be/pages/pattern",
+  "https://www.clips.ua.ac.be/pattern"
+ ],
+ "tipos": [
+  "library"
+ ],
+ "termos": [
+  "pattern",
+  "pattern stemmer",
+  "nlp",
+  "pattern.nlproc",
+  "portuguese stemmer",
+  "pattern.en",
+  "pattern python",
+  "pattern portuguese",
+  "lemmatizer pattern",
+  "Pattern",
+  "NLP",
+  "分词",
+  "词干提取",
+  "语言检测",
+  "机器学习",
+  "文本分类",
+  "向量空间模型",
+  "pattern-pt",
+  "Portuguese morphology"
+ ],
+ "mencoes": 6,
+ "familias": [
+  "agnes",
+  "cohere",
+  "ising"
+ ],
+ "primeira_onda": 3,
+ "nomes": [
+  "Pattern (Python 库)",
+  "Pattern",
+  "Pattern (Python library)"
+ ],
+ "resumos": [
+  "一个用于英语和葡萄牙语的综合 NLP 库，包括词干提取、词性标注和句法分析功能。",
+  "Biblioteca de PLN em Python com stemmer para português ( Porter ) integrado, útil para normalização morfológica simples e direta.",
+  "Pattern umfasst portugiesische Lemmatizer, Parser und Konjugationswerkzeuge für die Textanalyse.",
+  "一个用于分词、词性标注、词干提取和语言检测的 Python NLP 库。"
+ ],
+ "readme_status": "ok",
+ "readme_nome": "README.md",
+ "readme_cortado": false,
+ "readme": "# WARNING: This repository is no longer maintained.\n\nThis project is archived and will not receive further updates, bug fixes, or security patches. Issues and pull requests may not be reviewed.\n\nUse this software at your own risk.\n__________________________________________________\n\nPattern\n=======\n\n[![Build Status](http://img.shields.io/travis/clips/pattern/master.svg?style=flat)](https://travis-ci.org/clips/pattern/branches)\n[![Coverage](https://img.shields.io/coveralls/clips/pattern/master.svg?style=flat)](https://coveralls.io/github/clips/pattern?branch=master)\n[![PyPi version](http://img.shields.io/pypi/v/pattern.svg?style=flat)](https://pypi.python.org/pypi/pattern)\n[![License](https://img.shields.io/badge/License-BSD%203--Clause-green.svg?style=flat)](https://github.com/clips/pattern/blob/master/LICENSE.txt)\n\nPattern is a web mining module for Python. It has tools for:\n\n * Data Mining: web services (Google, Twitter, Wikipedia), web crawler, HTML DOM parser\n * Natural Language Processing: part-of-speech taggers, n-gram search, sentiment analysis, WordNet\n * Machine Learning: vector space model, clustering, classification (KNN, SVM, Perceptron)\n * Network Analysis: graph centrality and visualization.\n\nIt is well documented, thoroughly tested with 350+ unit tests and comes bundled with 50+ examples. The source code is licensed under BSD.\n\n![Example workflow](https://raw.githubusercontent.com/clips/pattern/master/docs/g/pattern_schema.gif)\n\nExample\n-------\n\nThis example trains a classifier on adjectives mined from Twitter using Python 3. First, tweets that contain hashtag #win or #fail are collected. For example: *\"$20 tip off a sweet little old lady today #win\"*. The word part-of-speech tags are then parsed, keeping only adjectives. Each tweet is transformed to a vector, a dictionary of adjective → count items, labeled `WIN` or `FAIL`. The classifier uses the vectors to learn which other tweets look more like `WIN` or more like `FAIL`.\n\n```python\nfrom pattern.web import Twitter\nfrom pattern.en import tag\nfrom pattern.vector import KNN, count\n\ntwitter, knn = Twitter(), KNN()\n\nfor i in range(1, 3):\n    for tweet in twitter.search('#win OR #fail', start=i, count=100):\n        s = tweet.text.lower()\n        p = '#win' in s and 'WIN' or 'FAIL'\n        v = tag(s)\n        v = [word for word, pos in v if pos == 'JJ'] # JJ = adjective\n        v = count(v) # {'sweet': 1}\n        if v:\n            knn.train(v, type=p)\n\nprint(knn.classify('sweet potato burger'))\nprint(knn.classify('stupid autocorrect'))\n```\n\nInstallation\n------------\n\nPattern supports Python 2.7 and Python 3.6. To install Pattern so that it is available in all your scripts, unzip the download and from the command line do:\n```bash\ncd pattern-3.6\npython setup.py install\n```\n\nIf you have pip, you can automatically download and install from the [PyPI repository](https://pypi.python.org/pypi/pattern):\n```bash\npip install pattern\n```\n\nIf none of the above works, you can make Python aware of the module in three ways:\n- Put the pattern folder in the same folder as your script.\n- Put the pattern folder in the standard location for modules so it is available to all scripts:\n  * `c:\\python36\\Lib\\site-packages\\` (Windows),\n  * `/Library/Python/3.6/site-packages/` (Mac OS X),\n  * `/usr/lib/python3.6/site-packages/` (Unix).\n- Add the location of the module to `sys.path` in your script, before importing it:\n\n```python\nMODULE = '/users/tom/desktop/pattern'\nimport sys; if MODULE not in sys.path: sys.path.append(MODULE)\nfrom pattern.en import parsetree\n```\n\nDocumentation\n-------------\n\nFor documentation and examples see the [user documentation](https://github.com/clips/pattern/wiki).\n\nVersion\n-------\n\n3.6\n\nLicense\n-------\n\n**BSD**, see `LICENSE.txt` for further details.\n\nReference\n---------\n\nDe Smedt, T., Daelemans, W. (2012). Pattern for Python. *Journal of Machine Learning Research, 13*, 2031–2035.\n\nContribute\n----------\n\nThe source code is hosted on GitHub and contributions or donations are welcomed.\n\nBundled dependencies\n--------------------\n\nPattern is bundled with the following data sets, algorithms and Python packages:\n\n- **Brill tagger**, Eric Brill\n- **Brill tagger for Dutch**, Jeroen Geertzen\n- **Brill tagger for German**, Gerold Schneider & Martin Volk\n- **Brill tagger for Spanish**, trained on Wikicorpus (Samuel Reese & Gemma Boleda et al.)\n- **Brill tagger for French**, trained on Lefff (Benoît Sagot & Lionel Clément et al.)\n- **Brill tagger for Italian**, mined from Wiktionary\n- **English pluralization**, Damian Conway\n- **Spanish verb inflection**, Fred Jehle\n- **French verb inflection**, Bob Salita\n- **Graph JavaScript framework**, Aslak Hellesoy & Dave Hoover\n- **LIBSVM**, Chih-Chung Chang & Chih-Jen Lin\n- **LIBLINEAR**, Rong-En Fan et al.\n- **NetworkX centrality**, Aric Hagberg, Dan Schult & Pieter Swart\n- **spelling corrector**, Peter Norvig\n\nAcknowledgements\n----------------\n\n**Authors:**\n\n- Tom De Smedt (tom@organisms.be)\n- Walter Daelemans (walter.daelemans@ua.ac.be)\n\n**Contributors (chronological):**\n\n- Frederik De Bleser\n- Jason Wiener\n- Daniel Friesen\n- Jeroen Geertzen\n- Thomas Crombez\n- Ken Williams\n- Peteris Erins\n- Rajesh Nair\n- F. De Smedt\n- Radim Řehůřek\n- Tom Loredo\n- John DeBovis\n- Thomas Sileo\n- Gerold Schneider\n- Martin Volk\n- Samuel Joseph\n- Shubhanshu Mishra\n- Robert Elwell\n- Fred Jehle\n- Antoine Mazières + fabelier.org\n- Rémi de Zoeten + closealert.nl\n- Kenneth Koch\n- Jens Grivolla\n- Fabio Marfia\n- Steven Loria\n- Colin Molter + tevizz.com\n- Peter Bull\n- Maurizio Sambati\n- Dan Fu\n- Salvatore Di Dio\n- Vincent Van Asch\n- Frederik Elwert\n"
+}

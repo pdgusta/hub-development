@@ -1,0 +1,30 @@
+{
+ "chave": "web:arrow.apache.org/docs/python/flight.html",
+ "urls": [
+  "https://arrow.apache.org/docs/python/flight.html"
+ ],
+ "tipos": [
+  "library"
+ ],
+ "termos": [
+  "arrow flight",
+  "arrow rpc",
+  "columnar transfer"
+ ],
+ "mencoes": 1,
+ "familias": [
+  "gpt-oss"
+ ],
+ "primeira_onda": 4,
+ "nomes": [
+  "Apache Arrow Flight"
+ ],
+ "resumos": [
+  "High‑performance RPC framework for large columnar data transfer, built on Arrow."
+ ],
+ "fonte": "site",
+ "readme_status": "ok",
+ "readme_nome": "https://arrow.apache.org/docs/python/flight.html",
+ "readme_cortado": false,
+ "readme": "[Arrow Flight RPC — Apache Arrow v25.0.1]\n\nSkip to main content\n\n Back to top\n\n Choose version \n\nSystem Settings\n\nLight\n\nDark\n\n GitHub\n\n LinkedIn\n\n BlueSky\n\n Collapse Sidebar\n Expand Sidebar\n\nArrow Flight RPC#\n\nArrow Flight is an RPC framework for efficient transfer of Flight data\nover the network.\n\nSee also\n\nFlight protocol documentation\nDocumentation of the Flight protocol, including how to use\nFlight conceptually.\n\nFlight API documentation\nPython API documentation listing all of the various client and\nserver classes.\n\nPython Cookbook\nRecipes for using Arrow Flight in Python.\n\nWriting a Flight Service#\n\nServers are subclasses of FlightServerBase. To implement\nindividual RPCs, override the RPC methods on this class.\n\nimport pyarrow.flight as flight\n\nclass MyFlightServer(flight.FlightServerBase):\n def list_flights(self, context, criteria):\n info = flight.FlightInfo(...)\n yield info\n\nEach RPC method always takes a ServerCallContext for common\nparameters. To indicate failure, raise an exception; Flight-specific\nerrors can be indicated by raising one of the subclasses of\nFlightError.\n\nTo start a server, create a Location to specify where to\nlisten, and create an instance of the server. (A string will be\nconverted into a location.) This will start the server, but won’t\nblock the rest of the program. Call FlightServerBase.serve() to\nblock until the server stops.\n\n# Listen to all interfaces on a free port\nserver = MyFlightServer(\"grpc://0.0.0.0:0\")\n\nprint(\"Server listening on port\", server.port)\nserver.serve()\n\nUsing the Flight Client#\n\nTo connect to a Flight service, call pyarrow.flight.connect()\nwith a location.\n\nCancellation and Timeouts#\n\nWhen making a call, clients can optionally provide\nFlightCallOptions. This allows clients to set a timeout on\ncalls or provide custom HTTP headers, among other features. Also, some\nobjects returned by client RPC calls expose a cancel method which\nallows terminating a call early.\n\nOn the server side, timeouts are transparent. For cancellation, the\nserver needs to manually poll ServerCallContext.is_cancelled()\nto check if the client has cancelled the call, and if so, break out of\nany processing the server is currently doing.\n\nEnabling TLS#\n\nTLS can be enabled when setting up a server by providing a certificate\nand key pair to FlightServerBase.\n\nOn the client side, use Location.for_grpc_tls() to construct the\nLocation to listen on.\n\nEnabling Authentication#\n\nWarning\n\nAuthentication is insecure without enabling TLS.\n\nHandshake-based authentication can be enabled by implementing\nServerAuthHandler. Authentication consists of two parts: on\ninitial client connection, the server and client authentication\nimplementations can perform any negotiation needed; then, on each RPC\nthereafter, the client provides a token. The server authentication\nhandler validates the token and provides the identity of the\nclient. This identity can be obtained from the\nServerCallContext.\n\nCustom Middleware#\n\nServers and clients support custom middleware (or interceptors) that\nare called on every request and can modify the request in a limited\nfashion. These can be implemented by subclassing\nServerMiddleware and ClientMiddleware, then\nproviding them when creating the client or server.\n\nMiddleware are fairly limited, but they can add headers to a\nrequest/response. On the server, they can inspect incoming headers and\nfail the request; hence, they can be used to implement custom\nauthentication methods.\n\nFlight best practices#\n\n On this page\n\n Edit on GitHub"
+}

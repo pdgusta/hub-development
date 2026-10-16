@@ -1,0 +1,32 @@
+{
+ "chave": "web:lucene.apache.org/core/8_11_0/analyzers-common/org/apache/lucene/analysis/pt/portugueselightstemfilter.html",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T21:30:35Z",
+ "resultado": "corrige",
+ "conferencia": {
+  "resultado": "corrige",
+  "final": {
+   "serve": "search",
+   "role": "Lucene Portuguese light stemmer token filter for Portuguese full-text search.",
+   "place": [
+    "library"
+   ],
+   "mechanism": [
+    "full_text"
+   ],
+   "mcp": "no",
+   "windows": "unknown",
+   "portuguese": "yes",
+   "license": "Apache-2.0",
+   "maturity": "stable",
+   "doubt": false,
+   "evidence": "A TokenFilter that applies PortugueseLightStemmer to stem Portuguese words."
+  },
+  "o_que_mudou": [
+   "serve: none -> search, Portuguese stemming helps PT search",
+   "mechanism: other -> full_text",
+   "doubt: true -> false"
+  ],
+  "nota": "Portuguese stemming for Lucene analyzers; useful for PT-BR notes if Lucene is used."
+ }
+}

@@ -1,0 +1,3389 @@
+[
+ {
+  "conceito": "hybrid search",
+  "cartoes": 67,
+  "serve": "search",
+  "duvidas": 4,
+  "ferramentas": [
+   "FAISS",
+   "Elasticsearch",
+   "SQLite FTS5",
+   "Weaviate",
+   "Whoosh",
+   "Recoll",
+   "Xapian",
+   "sentence-transformers"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "combines lexical ranking with semantic similarity"
+ },
+ {
+  "conceito": "bm25",
+  "cartoes": 25,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Lucene",
+   "Snowflake",
+   "whoosh",
+   "pysolr",
+   "DuckDB",
+   "solr",
+   "vespa",
+   "LangChain"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "rank documents by relevance using BM25 in CouchDB"
+ },
+ {
+  "conceito": "frontmatter filtering",
+  "cartoes": 15,
+  "serve": "search",
+  "duvidas": 1,
+  "ferramentas": [
+   "FlexSearch",
+   "Dendron",
+   "sqlite",
+   "DuckDB",
+   "OpenSearch",
+   "AnythingLLM",
+   "Lucene.NET",
+   "Recoll"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Typed frontmatter fields to filter results by date, tags or title"
+ },
+ {
+  "conceito": "stemming",
+  "cartoes": 14,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Snowball",
+   "libstemmer",
+   "nltk",
+   "snowballstemmer",
+   "unicodedata",
+   "PostgreSQL Full Text Search",
+   "tantivy",
+   "Solr"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Reduce Portuguese words to stems and fold accents for matching"
+ },
+ {
+  "conceito": "metadata filtering",
+  "cartoes": 13,
+  "serve": "search",
+  "duvidas": 1,
+  "ferramentas": [
+   "Milvus",
+   "haystack",
+   "Jina",
+   "LanceDB",
+   "Apache Arrow",
+   "Sonic-Frontmatter Filter",
+   "Sonic",
+   "Weaviate"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Filter documents by frontmatter fields before or alongside text search"
+ },
+ {
+  "conceito": "vector search",
+  "cartoes": 12,
+  "serve": "search",
+  "duvidas": 1,
+  "ferramentas": [
+   "Lucene.NET",
+   "ArangoDB",
+   "Couchbase Server",
+   "Lucene",
+   "Meilisearch",
+   "solr",
+   "Typesense",
+   "Solr"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Semantic approximate-nearest-neighbor search over embeddings in ArangoDB"
+ },
+ {
+  "conceito": "portuguese stemming",
+  "cartoes": 9,
+  "serve": "search",
+  "duvidas": 2,
+  "ferramentas": [
+   "Snowball",
+   "Meilisearch",
+   "Sphinx",
+   "Manticore",
+   "Porter Stemmer",
+   "PorterStemmer",
+   "RSLP",
+   "Snowball stemmer (NLTK)"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Tokenização e stemming em português, com acentos, no Meilisearch."
+ },
+ {
+  "conceito": "messagepack",
+  "cartoes": 8,
+  "serve": "stack",
+  "duvidas": 1,
+  "ferramentas": [
+   "MessagePack",
+   "CouchDB",
+   "MCP"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Binary local cache format for offline search data"
+ },
+ {
+  "conceito": "portuguese analyzer",
+  "cartoes": 5,
+  "serve": "search",
+  "duvidas": 1,
+  "ferramentas": [
+   "Typesense",
+   "Elasticsearch",
+   "Whoosh",
+   "Snowball"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Fold accents and stem Portuguese text at index and query time"
+ },
+ {
+  "conceito": "offline search",
+  "cartoes": 5,
+  "serve": "search",
+  "duvidas": 3,
+  "ferramentas": [
+   "FlexSearch",
+   "typesense"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Run search fully local with no network dependency"
+ },
+ {
+  "conceito": "frontmatter parsing",
+  "cartoes": 4,
+  "serve": "search",
+  "duvidas": 1,
+  "ferramentas": [
+   "YamlDotNet",
+   "MARP",
+   "Solr"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Extract frontmatter with regex, then parse the YAML with YamlDotNet"
+ },
+ {
+  "conceito": "embeddings",
+  "cartoes": 4,
+  "serve": "search",
+  "duvidas": 1,
+  "ferramentas": [
+   "Dendron",
+   "sentence-transformers",
+   "OpenAI",
+   "Elasticsearch",
+   "PySpark",
+   "Koalas",
+   "Annoy",
+   "FAISS"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Semantic vectors via a custom Lua plugin for hybrid search"
+ },
+ {
+  "conceito": "accent normalization",
+  "cartoes": 3,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "whoosh"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Strip Portuguese diacritics before indexing to raise BM25 recall"
+ },
+ {
+  "conceito": "accent folding",
+  "cartoes": 3,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Typesense",
+   "Xapian"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Normalize Portuguese accents so queries match accented and unaccented forms."
+ },
+ {
+  "conceito": "vector embeddings",
+  "cartoes": 3,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "ArangoDB",
+   "ArangoSearch",
+   "sentence-transformers",
+   "Orama",
+   "Weaviate"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Semantic search over Markdown notes using vector representations of text"
+ },
+ {
+  "conceito": "bm25f",
+  "cartoes": 3,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Whoosh"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Weight frontmatter fields as separate BM25 fields for hybrid ranking"
+ },
+ {
+  "conceito": "federated search",
+  "cartoes": 3,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Xapian",
+   "Lucene",
+   "Elasticsearch",
+   "Weaviate"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Enables querying multiple search indices (CouchDB, local markdown) as a single repository."
+ },
+ {
+  "conceito": "couchdb replication",
+  "cartoes": 3,
+  "serve": "stack",
+  "duvidas": 0,
+  "ferramentas": [
+   "CouchDB"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Replicate CouchDB data to local copies for offline use across machines"
+ },
+ {
+  "conceito": "frontmatter schema",
+  "cartoes": 3,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Dendron"
+  ],
+  "ligado_a_projeto": false,
+  "papel": "Use vault frontmatter structure as filter predicates for search"
+ },
+ {
+  "conceito": "dense retrieval",
+  "cartoes": 3,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [],
+  "ligado_a_projeto": false,
+  "papel": "Recuperar passagens por vetores densos, base da busca semântica."
+ },
+ {
+  "conceito": "frontmatter indexing",
+  "cartoes": 3,
+  "serve": "search",
+  "duvidas": 1,
+  "ferramentas": [
+   "Elasticsearch",
+   "Recoll",
+   "Whoosh"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Map frontmatter fields as searchable Elasticsearch attributes such as tags"
+ },
+ {
+  "conceito": "inverted index",
+  "cartoes": 3,
+  "serve": "search",
+  "duvidas": 1,
+  "ferramentas": [
+   "Elasticsearch"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Inverted index for fast keyword search over notes"
+ },
+ {
+  "conceito": "html comment metadata",
+  "cartoes": 3,
+  "serve": "stack",
+  "duvidas": 0,
+  "ferramentas": [],
+  "ligado_a_projeto": false,
+  "papel": "Guarda metadados em comentários HTML das notas para filtrar a busca."
+ },
+ {
+  "conceito": "faceted search",
+  "cartoes": 3,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Haystack",
+   "typesense"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Filter search results by frontmatter metadata categories to narrow passages."
+ },
+ {
+  "conceito": "rest api",
+  "cartoes": 3,
+  "serve": "stack",
+  "duvidas": 2,
+  "ferramentas": [
+   "Pyramid",
+   "MCP"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Architecture for exposing hub operations as web APIs over HTTP"
+ },
+ {
+  "conceito": "reciprocal rank fusion",
+  "cartoes": 3,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "LangChain"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Fuse BM25 and vector rankings into one hybrid ranking."
+ },
+ {
+  "conceito": "lemmatization",
+  "cartoes": 3,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "NLTK",
+   "spaCy"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Reduce Portuguese inflected word forms to lemma for keyword matching"
+ },
+ {
+  "conceito": "unicode normalization",
+  "cartoes": 3,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Unicode CLDR",
+   "unicode-normalization"
+  ],
+  "ligado_a_projeto": false,
+  "papel": "Normaliza acentos e diacríticos (NFKC) antes da radicalização"
+ },
+ {
+  "conceito": "markdown indexing pipeline",
+  "cartoes": 3,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Meilisearch",
+   "Whoosh"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Read Markdown, extract frontmatter, embed and push to keyword and vector indexes"
+ },
+ {
+  "conceito": "nng",
+  "cartoes": 3,
+  "serve": "stack",
+  "duvidas": 0,
+  "ferramentas": [
+   "NNG"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "In-process messaging between search components inside one MCP host"
+ },
+ {
+  "conceito": "stemming and lemmatization",
+  "cartoes": 3,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "NLTK",
+   "SpaCy",
+   "Snowball Stemmer",
+   "spaCy",
+   "RSLP"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Reduce Portuguese words to base forms so searches match inflections."
+ },
+ {
+  "conceito": "search aggregator",
+  "cartoes": 2,
+  "serve": "search",
+  "duvidas": 1,
+  "ferramentas": [],
+  "ligado_a_projeto": false,
+  "papel": "Juntar resultados de várias fontes de busca num só."
+ },
+ {
+  "conceito": "text analyzer",
+  "cartoes": 2,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "ArangoDB",
+   "FlexSearch"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "processes Markdown text for stemming, accent folding, and language-specific tokenization for indexing"
+ },
+ {
+  "conceito": "sentence embeddings",
+  "cartoes": 2,
+  "serve": "search",
+  "duvidas": 1,
+  "ferramentas": [
+   "BAAI/bge-small-en"
+  ],
+  "ligado_a_projeto": false,
+  "papel": "generate embeddings for search layer (English-only model)"
+ },
+ {
+  "conceito": "change data capture",
+  "cartoes": 2,
+  "serve": "stack",
+  "duvidas": 0,
+  "ferramentas": [
+   "CouchDB _changes",
+   "NATS JetStream"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Stream CouchDB _changes to keep the search index in sync"
+ },
+ {
+  "conceito": "model context protocol",
+  "cartoes": 2,
+  "serve": "stack",
+  "duvidas": 0,
+  "ferramentas": [
+   "Claude Code",
+   "Codex",
+   "GitHub Copilot",
+   "modelcontext/mcp",
+   "Elasticsearch MCP"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "standardized interface for AI agents to access tools and data in the hub"
+ },
+ {
+  "conceito": "couchdb indexing",
+  "cartoes": 2,
+  "serve": "search",
+  "duvidas": 2,
+  "ferramentas": [
+   "CouchDB",
+   "MCP"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Index and query hub documents inside the CouchDB database"
+ },
+ {
+  "conceito": "approximate nearest neighbor search",
+  "cartoes": 2,
+  "serve": "search",
+  "duvidas": 1,
+  "ferramentas": [
+   "FAISS",
+   "cuML"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "GPU-accelerated similarity lookup over note embeddings"
+ },
+ {
+  "conceito": "neural search",
+  "cartoes": 2,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Elasticsearch"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Dense-vector k-NN retrieval inside Elasticsearch for passage search"
+ },
+ {
+  "conceito": "search result highlighting",
+  "cartoes": 2,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Elasticsearch",
+   "Apache Solr"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Highlight matched terms in search result snippets for agents and users"
+ },
+ {
+  "conceito": "index templates",
+  "cartoes": 2,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Elasticsearch",
+   "OpenSearch"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Predefined index settings and mappings for note search if Elasticsearch is the engine"
+ },
+ {
+  "conceito": "multilingual embeddings",
+  "cartoes": 2,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "distiluse-base-multilingual-cased",
+   "multilingual-e5",
+   "bge-m3"
+  ],
+  "ligado_a_projeto": false,
+  "papel": "Offline Portuguese and English vectors for the hybrid search layer"
+ },
+ {
+  "conceito": "front matter",
+  "cartoes": 2,
+  "serve": "stack",
+  "duvidas": 0,
+  "ferramentas": [],
+  "ligado_a_projeto": false,
+  "papel": "Guardar metadados (tags, idioma) no topo de cada nota Markdown"
+ },
+ {
+  "conceito": "frontmatter",
+  "cartoes": 2,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "python-frontmatter"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Stores metadata at top of markdown files for indexing, filtering, and organization."
+ },
+ {
+  "conceito": "full-text search",
+  "cartoes": 2,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "PostgreSQL tsvector",
+   "MariaDB"
+  ],
+  "ligado_a_projeto": false,
+  "papel": "Keyword search with stemming, using database-native text indexing"
+ },
+ {
+  "conceito": "hnsw",
+  "cartoes": 2,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Manticore",
+   "LanceDB"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Approximate nearest-neighbor vector index for semantic search"
+ },
+ {
+  "conceito": "real-time index",
+  "cartoes": 2,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Sphinx"
+  ],
+  "ligado_a_projeto": false,
+  "papel": "Incremental insert, update and delete without full reindexing"
+ },
+ {
+  "conceito": "lancaster stemmer",
+  "cartoes": 2,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "NLTK"
+  ],
+  "ligado_a_projeto": false,
+  "papel": "Aggressive English stemming for keyword matching in English notes"
+ },
+ {
+  "conceito": "mcp search server",
+  "cartoes": 2,
+  "serve": "stack",
+  "duvidas": 1,
+  "ferramentas": [
+   "Lunary",
+   "RAGFlow",
+   "MCP"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Expose search API through an MCP server so agents can query notes"
+ },
+ {
+  "conceito": "markdown frontmatter",
+  "cartoes": 2,
+  "serve": "stack",
+  "duvidas": 0,
+  "ferramentas": [],
+  "ligado_a_projeto": false,
+  "papel": "Provides metadata for filtering and organizing Markdown notes, supporting efficient retrieval and categorization."
+ },
+ {
+  "conceito": "multilingual search",
+  "cartoes": 2,
+  "serve": "search",
+  "duvidas": 1,
+  "ferramentas": [],
+  "ligado_a_projeto": false,
+  "papel": "Support several languages in the search layer"
+ },
+ {
+  "conceito": "request-reply",
+  "cartoes": 2,
+  "serve": "stack",
+  "duvidas": 0,
+  "ferramentas": [
+   "NATS",
+   "nng",
+   "ZeroMQ",
+   "nanomsg"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Synchronous query-response channel between the MCP server and a search service"
+ },
+ {
+  "conceito": "offline mode",
+  "cartoes": 2,
+  "serve": "search",
+  "duvidas": 1,
+  "ferramentas": [
+   "Elasticsearch",
+   "weaviate"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Fully local index so search works without network access"
+ },
+ {
+  "conceito": "offline search cache",
+  "cartoes": 2,
+  "serve": "stack",
+  "duvidas": 1,
+  "ferramentas": [],
+  "ligado_a_projeto": false,
+  "papel": "Keep indexed notes locally so search works when disconnected"
+ },
+ {
+  "conceito": "accent-insensitive search",
+  "cartoes": 2,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Snowball",
+   "PostgreSQL Full Text Search"
+  ],
+  "ligado_a_projeto": false,
+  "papel": "Stem Portuguese words and strip accents so 'ação' matches 'acao'"
+ },
+ {
+  "conceito": "snowball stemming",
+  "cartoes": 2,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "DuckDB"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Portuguese token normalization"
+ },
+ {
+  "conceito": "user-defined function",
+  "cartoes": 2,
+  "serve": "none",
+  "duvidas": 0,
+  "ferramentas": [
+   "PySpark",
+   "Snowflake"
+  ],
+  "ligado_a_projeto": false,
+  "papel": ""
+ },
+ {
+  "conceito": "rag",
+  "cartoes": 2,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "facebookresearch/rag"
+  ],
+  "ligado_a_projeto": false,
+  "papel": "Retrieve local note passages as context for LLM answers."
+ },
+ {
+  "conceito": "semantic search",
+  "cartoes": 2,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Sentence-BERT",
+   "FAISS"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Semantic search by embedding notes with a sentence-embedding model"
+ },
+ {
+  "conceito": "replicated local index",
+  "cartoes": 2,
+  "serve": "stack",
+  "duvidas": 1,
+  "ferramentas": [
+   "CouchDB",
+   "Tantivy"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Cada máquina mantém índice local atualizado por replicação do CouchDB."
+ },
+ {
+  "conceito": "sidecar metadata",
+  "cartoes": 2,
+  "serve": "stack",
+  "duvidas": 0,
+  "ferramentas": [],
+  "ligado_a_projeto": false,
+  "papel": "Guardar metadados em arquivo irmão .json/.yaml ao lado de cada nota"
+ },
+ {
+  "conceito": "tantivy",
+  "cartoes": 2,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Tantivy"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Local full-text engine that runs without internet for agents"
+ },
+ {
+  "conceito": "python type hints",
+  "cartoes": 2,
+  "serve": "stack",
+  "duvidas": 0,
+  "ferramentas": [
+   "mypy"
+  ],
+  "ligado_a_projeto": false,
+  "papel": "Static and runtime type checking for frontmatter validation"
+ },
+ {
+  "conceito": "vector database",
+  "cartoes": 2,
+  "serve": "search",
+  "duvidas": 1,
+  "ferramentas": [
+   "Milvus",
+   "FAISS",
+   "ChromaDB"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Store embeddings and run approximate nearest-neighbor semantic search"
+ },
+ {
+  "conceito": "word embeddings",
+  "cartoes": 2,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "word2vec",
+   "GloVe"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Representar notas e consultas como vetores para busca semântica."
+ },
+ {
+  "conceito": "zettelkasten",
+  "cartoes": 2,
+  "serve": "stack",
+  "duvidas": 0,
+  "ferramentas": [
+   "Obsidian",
+   "Logseq"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "note organization system"
+ },
+ {
+  "conceito": "ai agent integration",
+  "cartoes": 1,
+  "serve": "stack",
+  "duvidas": 1,
+  "ferramentas": [
+   "Fuse.js"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Permitir que agentes de IA usem o motor de busca"
+ },
+ {
+  "conceito": "search rules",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "algolia"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Conditional rules that boost or pin results for specific query conditions"
+ },
+ {
+  "conceito": "synonyms",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Algolia"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "improve term matching"
+ },
+ {
+  "conceito": "analyzer",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Lucene"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Chain tokenizer and filters that prepare text for search"
+ },
+ {
+  "conceito": "keyed state backend",
+  "cartoes": 1,
+  "serve": "none",
+  "duvidas": 0,
+  "ferramentas": [
+   "Apache Flink",
+   "RocksDB"
+  ],
+  "ligado_a_projeto": true,
+  "papel": ""
+ },
+ {
+  "conceito": "ast markdown processing",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "remark"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Split Markdown by AST nodes to index sections as passages."
+ },
+ {
+  "conceito": "search benchmarking",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 1,
+  "ferramentas": [
+   "Elasticlunr"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Measure Elasticlunr performance over thousands of md files"
+ },
+ {
+  "conceito": "llm reranking",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "BM25Ranker",
+   "RankGPT"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Rerank BM25 results with a learned or LLM ranker."
+ },
+ {
+  "conceito": "boolean filter",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Elasticsearch"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Filter results by frontmatter metadata before scoring, with must/should/must-not clauses"
+ },
+ {
+  "conceito": "nats mcp bridge",
+  "cartoes": 1,
+  "serve": "stack",
+  "duvidas": 0,
+  "ferramentas": [
+   "NATS"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Carry agent MCP tool calls over a NATS message bus instead of HTTP"
+ },
+ {
+  "conceito": "mcp server for search",
+  "cartoes": 1,
+  "serve": "stack",
+  "duvidas": 0,
+  "ferramentas": [
+   "OpenSearch"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Expor a busca por MCP para agentes de código"
+ },
+ {
+  "conceito": "couchdb change feed sync",
+  "cartoes": 1,
+  "serve": "stack",
+  "duvidas": 0,
+  "ferramentas": [
+   "CouchDB"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Use CouchDB changes feed to keep an offline search index up to date"
+ },
+ {
+  "conceito": "changes feed indexing worker",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "CouchDB",
+   "Ollama",
+   "Milvus",
+   "pgvector"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Worker que reindexa notas alteradas via feed de mudanças do CouchDB."
+ },
+ {
+  "conceito": "couchdb continuous replication",
+  "cartoes": 1,
+  "serve": "stack",
+  "duvidas": 0,
+  "ferramentas": [
+   "CouchDB"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Keep notes and local indexes synced across both machines"
+ },
+ {
+  "conceito": "couchdb design documents",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "CouchDB"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Store CouchDB views and search logic as versioned design documents"
+ },
+ {
+  "conceito": "embeddings storage",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "CouchDB"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Store vector embeddings in CouchDB documents to enable semantic search"
+ },
+ {
+  "conceito": "vector embeddings storage",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "CouchDB"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Guarda vetores de embedding junto aos metadados das notas no CouchDB"
+ },
+ {
+  "conceito": "couchdb filtering",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "CouchDB"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Filter notes by frontmatter fields inside CouchDB using its filter function"
+ },
+ {
+  "conceito": "couchdb full-text indexing",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 1,
+  "ferramentas": [
+   "Lucene.NET"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Full-text index over CouchDB documents using a Lucene-based indexer"
+ },
+ {
+  "conceito": "couchdb mango index",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "CouchDB"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Filter notes by frontmatter fields using CouchDB Mango indexes"
+ },
+ {
+  "conceito": "couchdb mapreduce view",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "CouchDB"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Build frontmatter filters and simple full-text indexes inside CouchDB"
+ },
+ {
+  "conceito": "n1ql query language",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 1,
+  "ferramentas": [
+   "CouchDB"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "SQL-like filtering and sorting of notes by frontmatter, if the engine supports it"
+ },
+ {
+  "conceito": "couchdb full-text search",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 1,
+  "ferramentas": [
+   "CouchDB"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Lucene full-text search inside CouchDB via Nouveau/Clouseau indexes, not MapReduce views"
+ },
+ {
+  "conceito": "couchdb to lucene sync",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "CouchDB",
+   "Lucene"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Index CouchDB changes into a search engine, keeping CouchDB as source of truth"
+ },
+ {
+  "conceito": "couchdb to recoll sync",
+  "cartoes": 1,
+  "serve": "stack",
+  "duvidas": 0,
+  "ferramentas": [
+   "Recoll",
+   "CouchDB"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Keep a Recoll index in sync with CouchDB via change notifications"
+ },
+ {
+  "conceito": "couchdb custom search index",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 1,
+  "ferramentas": [
+   "CouchDB"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Índice de busca customizado no CouchDB com BM25 para português."
+ },
+ {
+  "conceito": "couchdb mcp integration",
+  "cartoes": 1,
+  "serve": "stack",
+  "duvidas": 0,
+  "ferramentas": [
+   "CouchDB"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Acessa o CouchDB do hub via MCP, permitindo busca offline."
+ },
+ {
+  "conceito": "couchdb text analysis",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 1,
+  "ferramentas": [
+   "CouchDB"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Análise de texto em português com filtro por frontmatter no CouchDB."
+ },
+ {
+  "conceito": "couchdb frontmatter filter",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 1,
+  "ferramentas": [
+   "CouchDB"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Filter search results by frontmatter fields (tags, language) via CouchDB queries or views"
+ },
+ {
+  "conceito": "hybrid search architecture",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Whoosh",
+   "Tantivy",
+   "LanceDB"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Local hybrid search: BM25 keyword index plus vector index, filtered by frontmatter."
+ },
+ {
+  "conceito": "custom frontmatter extraction",
+  "cartoes": 1,
+  "serve": "stack",
+  "duvidas": 0,
+  "ferramentas": [
+   "frontmatter",
+   "ruamel.yaml"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Python frontmatter plus ruamel.yaml parser for multilingual metadata"
+ },
+ {
+  "conceito": "custom mcp plugin",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Whoosh",
+   "Meilisearch",
+   "CouchDB",
+   "nltk",
+   "spaCy"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "MCP plugin exposing custom search endpoints over real-time indexed Markdown notes"
+ },
+ {
+  "conceito": "data import handler",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Solr"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "ingest data from CouchDB into a Solr search index"
+ },
+ {
+  "conceito": "dense vector field",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Elasticsearch"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Semantic search support"
+ },
+ {
+  "conceito": "custom nlp pipeline",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 1,
+  "ferramentas": [
+   "YamlDotNet",
+   "Lucene.NET",
+   "SBERT"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Custom NLP pipeline for PT accents, stemming and frontmatter filtering"
+ },
+ {
+  "conceito": "duckdb index",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "DuckDB"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Índices no DuckDB para acelerar consultas sobre as notas."
+ },
+ {
+  "conceito": "duckdb-python-udfs",
+  "cartoes": 1,
+  "serve": "stack",
+  "duvidas": 1,
+  "ferramentas": [
+   "DuckDB"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "enable custom query logic via Python in database processing"
+ },
+ {
+  "conceito": "duckdb views",
+  "cartoes": 1,
+  "serve": "stack",
+  "duvidas": 0,
+  "ferramentas": [
+   "DuckDB"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Views virtuais para simplificar consultas SQL sobre os dados"
+ },
+ {
+  "conceito": "edge ngram",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Elasticsearch"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Prefix tokens for partial and autocomplete matching of Portuguese terms"
+ },
+ {
+  "conceito": "elasticlunr plugins",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Elasticlunr"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Add accent folding, Portuguese stemmers and embeddings to Elasticlunr"
+ },
+ {
+  "conceito": "bool query",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Elasticsearch"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Combinar cláusulas must, should e must_not para filtrar e ranquear."
+ },
+ {
+  "conceito": "elasticsearch cluster coordination",
+  "cartoes": 1,
+  "serve": "none",
+  "duvidas": 0,
+  "ferramentas": [
+   "Elasticsearch"
+  ],
+  "ligado_a_projeto": true,
+  "papel": ""
+ },
+ {
+  "conceito": "custom analyzer",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Elasticsearch"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Custom analyzer for Portuguese tokenization, accent folding and stemming in the index"
+ },
+ {
+  "conceito": "script score",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Elasticsearch"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Painless scripts boost passage ranking by frontmatter fields such as priority"
+ },
+ {
+  "conceito": "elasticsearch embedding index",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Elasticsearch"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "index embeddings for semantic search"
+ },
+ {
+  "conceito": "search filtering",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 1,
+  "ferramentas": [
+   "Elasticsearch"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Filter search results by metadata such as tags or dates"
+ },
+ {
+  "conceito": "frontmatter metadata extraction",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Elasticsearch"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Extract frontmatter into indexed metadata fields for filtering"
+ },
+ {
+  "conceito": "hybrid query",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Elasticsearch"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Elasticsearch query merging BM25 and vector results with rank fusion"
+ },
+ {
+  "conceito": "ingest pipeline",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Elasticsearch",
+   "grok"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Index-time preprocessing: stemming and frontmatter field extraction in Elasticsearch"
+ },
+ {
+  "conceito": "embedding inference",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Elasticsearch"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Gerar embeddings semânticos com modelo NLP dentro do Elasticsearch"
+ },
+ {
+  "conceito": "elasticsearch mapping",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 1,
+  "ferramentas": [
+   "Elasticsearch"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Define Elasticsearch index field types for notes and frontmatter"
+ },
+ {
+  "conceito": "elasticsearch machine learning",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Elasticsearch"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Busca semântica e sugestões de termos com ML do Elasticsearch."
+ },
+ {
+  "conceito": "multilingual indexing",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Elasticsearch"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Keep Portuguese and English indexes, switching analyzers per language"
+ },
+ {
+  "conceito": "language analyzer",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Elasticsearch"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Portuguese analyzer with accent folding and stemming for BM25 ranking"
+ },
+ {
+  "conceito": "multi-match bool query",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Elasticsearch"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Busca BM25 com filtros de frontmatter por idioma, tags e tipo."
+ },
+ {
+  "conceito": "elasticsearch query dsl",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Elasticsearch"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Consultas programáticas do Elasticsearch que agentes montam para buscar."
+ },
+ {
+  "conceito": "elasticsearch ingest pipeline",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Elasticsearch"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Parse frontmatter, apply Portuguese analysis and write embeddings at index time"
+ },
+ {
+  "conceito": "elasticsearch reindex api",
+  "cartoes": 1,
+  "serve": "stack",
+  "duvidas": 0,
+  "ferramentas": [
+   "Elasticsearch"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Rebuild the index with new analyzers or embeddings by copying documents between indices"
+ },
+ {
+  "conceito": "hybrid reranking",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Elasticsearch"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Rerank combined BM25 and vector results to improve hybrid search precision"
+ },
+ {
+  "conceito": "script score query",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Elasticsearch"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Combine BM25 keyword scores with embedding similarity through a custom scoring script."
+ },
+ {
+  "conceito": "search highlighting",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Elasticsearch"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "highlighting search keywords in retrieved markdown passages for agent or human review"
+ },
+ {
+  "conceito": "term query",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Elasticsearch"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Enables exact term matching for precise document retrieval in the search layer."
+ },
+ {
+  "conceito": "term vectors",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Elasticsearch"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Inspecionar estatísticas de termos para ajustar a relevância BM25"
+ },
+ {
+  "conceito": "elasticsearch field mappings",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Elasticsearch"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Map frontmatter fields as dynamic filters in Elasticsearch"
+ },
+ {
+  "conceito": "embedded library per agent",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Tantivy",
+   "Whoosh",
+   "sqlite-vec"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Provides each agent with a local, in-process search index for fast retrieval."
+ },
+ {
+  "conceito": "faiss",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Faiss"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Vector similarity index over embeddings for passage retrieval"
+ },
+ {
+  "conceito": "faiss flat inner product index",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "FAISS"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Exact inner-product vector index for brute-force search over embeddings"
+ },
+ {
+  "conceito": "faiss flat l2",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "faiss"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Provide fast similarity search over note embeddings"
+ },
+ {
+  "conceito": "fastapi mcp",
+  "cartoes": 1,
+  "serve": "stack",
+  "duvidas": 0,
+  "ferramentas": [
+   "FastAPI-MCP"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Expõe a busca do hub como servidor MCP via FastAPI para os agentes."
+ },
+ {
+  "conceito": "fastapi wrapper",
+  "cartoes": 1,
+  "serve": "stack",
+  "duvidas": 0,
+  "ferramentas": [
+   "FastAPI"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Own REST layer between agents and the search index."
+ },
+ {
+  "conceito": "mcp server",
+  "cartoes": 1,
+  "serve": "stack",
+  "duvidas": 0,
+  "ferramentas": [
+   "FastMCP",
+   "NATS"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Exposes the search layer as MCP tools for Claude Code, Codex and Copilot"
+ },
+ {
+  "conceito": "search api",
+  "cartoes": 1,
+  "serve": "stack",
+  "duvidas": 0,
+  "ferramentas": [
+   "FlexSearch",
+   "MCP"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Expose search over REST or IPC to MCP clients or sockets"
+ },
+ {
+  "conceito": "search cli",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 1,
+  "ferramentas": [
+   "FlexSearch"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Command-line full-text indexing and search of Markdown notes"
+ },
+ {
+  "conceito": "flexsearch documentation",
+  "cartoes": 1,
+  "serve": "none",
+  "duvidas": 0,
+  "ferramentas": [
+   "FlexSearch"
+  ],
+  "ligado_a_projeto": true,
+  "papel": ""
+ },
+ {
+  "conceito": "local index storage",
+  "cartoes": 1,
+  "serve": "stack",
+  "duvidas": 1,
+  "ferramentas": [
+   "FlexSearch"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Persist the search index locally for offline use"
+ },
+ {
+  "conceito": "server-side full-text search library",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 1,
+  "ferramentas": [
+   "FlexSearch"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Node.js build of FlexSearch for indexing and searching on a local server"
+ },
+ {
+  "conceito": "stopword list",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 1,
+  "ferramentas": [
+   "FlexSearch"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Stopword lists for Portuguese and English to drop filler terms from queries and index"
+ },
+ {
+  "conceito": "fuse.js embeddings",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 1,
+  "ferramentas": [
+   "Fuse.js"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Client-side lookup over precomputed embeddings using Fuse.js"
+ },
+ {
+  "conceito": "composable_pipelines",
+  "cartoes": 1,
+  "serve": "stack",
+  "duvidas": 0,
+  "ferramentas": [
+   "Haystack"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "chain retrievers/rankers/generators into modular, serializable AI workflows"
+ },
+ {
+  "conceito": "filtering_pipeline",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Haystack"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "post-retrieval filtering by metadata in query pipeline"
+ },
+ {
+  "conceito": "haystack offline mode",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Haystack"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "enables local LLM and embedding processing without an internet connection"
+ },
+ {
+  "conceito": "haystack pipeline dsl",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "haystack"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Define and compose indexing/retrieval steps for the hub's search layer"
+ },
+ {
+  "conceito": "realtime index update",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Haystack"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Update the search index on save or delete to keep it in sync"
+ },
+ {
+  "conceito": "hnsw vector search",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "tantivy"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "indexes and searches vector embeddings alongside text"
+ },
+ {
+  "conceito": "hybrid query dsl",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Elasticsearch"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "One query body combining BM25, knn and text expansion with weights"
+ },
+ {
+  "conceito": "icu analyzer",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "ICU4J",
+   "ICU4C"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Unicode tokenisation and accent folding so Portuguese text matches."
+ },
+ {
+  "conceito": "centralized replicated index with couchdb",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "CouchDB",
+   "MCP server"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "A single, centralized search index hosted on one machine that is queried by multiple clients via MCP, while the underlying Markdown files are replicated from CouchDB."
+ },
+ {
+  "conceito": "inference processor",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Elasticsearch",
+   "ELSER"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Generate embeddings during ingestion so notes are vectorized at index time"
+ },
+ {
+  "conceito": "ingest script processing",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Elasticsearch",
+   "Painless"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Custom Painless script in the ingest pipeline to extract fields at index time"
+ },
+ {
+  "conceito": "json attributes",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Manticore"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Schema-less frontmatter metadata fields for complex filter queries"
+ },
+ {
+  "conceito": "kibana data view",
+  "cartoes": 1,
+  "serve": "none",
+  "duvidas": 0,
+  "ferramentas": [
+   "Kibana",
+   "Elasticsearch"
+  ],
+  "ligado_a_projeto": true,
+  "papel": ""
+ },
+ {
+  "conceito": "knn search",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Elasticsearch"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Perform vector similarity search to retrieve nearest neighbor passages"
+ },
+ {
+  "conceito": "knn vector search",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Lucene",
+   "Solr"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Busca aproximada de vizinhos mais próximos sobre embeddings."
+ },
+ {
+  "conceito": "langchain expression language",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "LangChain"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Declarative composition of hybrid retrieval pipelines"
+ },
+ {
+  "conceito": "markdown loader",
+  "cartoes": 1,
+  "serve": "stack",
+  "duvidas": 0,
+  "ferramentas": [
+   "LangChain"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Reads Markdown files and extracts frontmatter metadata for the indexing pipeline."
+ },
+ {
+  "conceito": "rag indexing framework (llamaindex, formerly gpt index)",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "LlamaIndex"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Creates searchable indexes of documents for the hub's search layer"
+ },
+ {
+  "conceito": "local offline index",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "LlamaIndex"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Índice local e offline sobre os arquivos das notas"
+ },
+ {
+  "conceito": "query engine",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "LlamaIndex"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Consultar documentos indexados com LLM sobre o índice"
+ },
+ {
+  "conceito": "vector store",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "LlamaIndex"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Guardar embeddings dos documentos para busca semântica"
+ },
+ {
+  "conceito": "local-first sync",
+  "cartoes": 1,
+  "serve": "stack",
+  "duvidas": 0,
+  "ferramentas": [
+   "CouchDB",
+   "PouchDB"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Sync CouchDB notes to the local filesystem before indexing runs"
+ },
+ {
+  "conceito": "local vector index",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "FAISS",
+   "HNSWLib"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Índice vetorial offline com FAISS ou HNSWLib, junto de um BM25 para palavras-chave"
+ },
+ {
+  "conceito": "local-search-api",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 1,
+  "ferramentas": [
+   "MCP"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "API for local search with frontmatter filtering via MCP"
+ },
+ {
+  "conceito": "local search with couchdb",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 1,
+  "ferramentas": [
+   "couchdb"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Local search layer built over the CouchDB notes database"
+ },
+ {
+  "conceito": "vector database benchmark",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 1,
+  "ferramentas": [
+   "Elasticsearch",
+   "Weaviate",
+   "FAISS"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Compare local vector databases to pick the search backend"
+ },
+ {
+  "conceito": "local vector store",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "llamaindex"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Store embeddings on disk for offline semantic search over notes"
+ },
+ {
+  "conceito": "embedding integration",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Lucene"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Feed language embeddings into Lucene for semantic search"
+ },
+ {
+  "conceito": "lucene embeddings",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 1,
+  "ferramentas": [
+   "Lucene"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Guardar vetores densos das passagens junto do índice Lucene"
+ },
+ {
+  "conceito": "lucene filters",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Lucene"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Restrict Lucene results to notes matching frontmatter field values"
+ },
+ {
+  "conceito": "lucene frontmatter filter",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Apache Lucene"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Parser ou filtro Lucene customizado para filtrar pelo frontmatter Markdown"
+ },
+ {
+  "conceito": "lucene index",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Lucene"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Store analyzed notes in an inverted index for fast retrieval"
+ },
+ {
+  "conceito": "local embeddings",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Lucene.NET"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Embed notes with a local model and run offline semantic search in Lucene"
+ },
+ {
+  "conceito": "lucene performance tuning",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 1,
+  "ferramentas": [
+   "Lucene.NET"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Index and RAM tuning for large Lucene.NET indexes, if that engine is chosen"
+ },
+ {
+  "conceito": "custom score query",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Lucene.Net"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Attach a vector similarity factor to BM25 for one hybrid ranking"
+ },
+ {
+  "conceito": "lucene vector api",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Lucene"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "native vector search and HNSW indexing for markdown notes"
+ },
+ {
+  "conceito": "lunr embeddings",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "lunr"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Combine Lunr keyword matches with precomputed embeddings for hybrid semantic search"
+ },
+ {
+  "conceito": "lunr pipeline",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "lunr"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Customizable tokenization pipeline with stemming and stopword removal for Markdown text"
+ },
+ {
+  "conceito": "mango queries",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "CouchDB"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Filter notes by frontmatter fields with exact-match selectors in CouchDB."
+ },
+ {
+  "conceito": "markdown parsing",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Fuse.js"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Ler Markdown para indexar o conteúdo das notas"
+ },
+ {
+  "conceito": "mcp bindings",
+  "cartoes": 1,
+  "serve": "stack",
+  "duvidas": 1,
+  "ferramentas": [
+   "FastText",
+   "Whoosh",
+   "FAISS"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Adaptadores MCP para expor busca (FastText, Whoosh, FAISS) aos agentes."
+ },
+ {
+  "conceito": "mcp couchdb adapter",
+  "cartoes": 1,
+  "serve": "stack",
+  "duvidas": 0,
+  "ferramentas": [
+   "CouchDB"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Expose CouchDB notes to agents through MCP; overlaps the existing MCP server."
+ },
+ {
+  "conceito": "custom hybrid search",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "whoosh",
+   "lucene",
+   "MCP"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Own BM25 and semantic search over the notes, built on MCP file access"
+ },
+ {
+  "conceito": "filterable attributes",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Meilisearch"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Filtrar resultados por campos do frontmatter com filtros do Meilisearch."
+ },
+ {
+  "conceito": "stop words",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Meilisearch"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Portuguese and English stop-word lists to tune BM25 relevance"
+ },
+ {
+  "conceito": "meilisearch with ai agents",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 1,
+  "ferramentas": [
+   "Meilisearch"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Boas práticas para agentes de IA consultarem o Meilisearch."
+ },
+ {
+  "conceito": "meilisearch-sync",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 1,
+  "ferramentas": [
+   "Meilisearch",
+   "CouchDB"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Sync CouchDB changes to Meilisearch to maintain an up-to-date search index."
+ },
+ {
+  "conceito": "meilisearch windows",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Meilisearch"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Provides full-text search for the hub on Windows"
+ },
+ {
+  "conceito": "metadata filter",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "MetadataFilterRetriever",
+   "LangChain"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Filters search results by metadata fields like language, date, tags"
+ },
+ {
+  "conceito": "vector index types",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Milvus"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "enables efficient vector search for semantic note retrieval"
+ },
+ {
+  "conceito": "local multilingual embedding models",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 1,
+  "ferramentas": [
+   "bge-m3",
+   "nomic-embed-text",
+   "all-MiniLM-L6-v2",
+   "sentence-transformers"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Local multilingual embeddings for Portuguese and English hybrid search"
+ },
+ {
+  "conceito": "nats messaging",
+  "cartoes": 1,
+  "serve": "stack",
+  "duvidas": 1,
+  "ferramentas": [
+   "NATS"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Messaging layer that could connect hub services; card is thin"
+ },
+ {
+  "conceito": "nats leaf nodes",
+  "cartoes": 1,
+  "serve": "stack",
+  "duvidas": 0,
+  "ferramentas": [
+   "NATS"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Sincronizar as duas máquinas Windows com um cluster NATS central."
+ },
+ {
+  "conceito": "microservices messaging",
+  "cartoes": 1,
+  "serve": "stack",
+  "duvidas": 1,
+  "ferramentas": [
+   "NATS"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Decouple indexing, querying and filtering components over NATS"
+ },
+ {
+  "conceito": "nats tuning",
+  "cartoes": 1,
+  "serve": "none",
+  "duvidas": 0,
+  "ferramentas": [
+   "NATS Server"
+  ],
+  "ligado_a_projeto": true,
+  "papel": ""
+ },
+ {
+  "conceito": "publish subscribe messaging",
+  "cartoes": 1,
+  "serve": "stack",
+  "duvidas": 1,
+  "ferramentas": [
+   "NATS"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Notify components of note changes over a message bus"
+ },
+ {
+  "conceito": "nats security",
+  "cartoes": 1,
+  "serve": "none",
+  "duvidas": 0,
+  "ferramentas": [
+   "NATS"
+  ],
+  "ligado_a_projeto": true,
+  "papel": ""
+ },
+ {
+  "conceito": "nats services",
+  "cartoes": 1,
+  "serve": "stack",
+  "duvidas": 0,
+  "ferramentas": [
+   "NATS"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Request/reply RPC between agents and search backends over NATS"
+ },
+ {
+  "conceito": "subject wildcards",
+  "cartoes": 1,
+  "serve": "stack",
+  "duvidas": 1,
+  "ferramentas": [
+   "NATS"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Route messages by tag or category without hardcoded routes"
+ },
+ {
+  "conceito": "pub/sub messaging",
+  "cartoes": 1,
+  "serve": "stack",
+  "duvidas": 0,
+  "ferramentas": [
+   "NNG"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Notificar outros processos quando o índice de busca for atualizado."
+ },
+ {
+  "conceito": "request-reply messaging",
+  "cartoes": 1,
+  "serve": "stack",
+  "duvidas": 0,
+  "ferramentas": [
+   "nng"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Lightweight RPC between MCP server and search backend via REQ/REP"
+ },
+ {
+  "conceito": "obsidian front matter",
+  "cartoes": 1,
+  "serve": "stack",
+  "duvidas": 0,
+  "ferramentas": [
+   "Obsidian"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "stores file-level metadata like tags and aliases for indexing and agent filtering"
+ },
+ {
+  "conceito": "obsidian graph protocol",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 1,
+  "ferramentas": [
+   "Obsidian Graph Protocol",
+   "Weaviate",
+   "Meilisearch",
+   "MCP"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Camada de busca híbrida própria sobre notas Markdown do Obsidian."
+ },
+ {
+  "conceito": "local embeddings plugin",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 1,
+  "ferramentas": [
+   "sentence-transformers",
+   "Obsidian"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Gerar embeddings localmente dentro do Obsidian para busca semântica"
+ },
+ {
+  "conceito": "local bm25 search",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Meilisearch",
+   "Whoosh"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Local BM25 engine with accent-insensitive Portuguese stemming"
+ },
+ {
+  "conceito": "obsidian plugin api",
+  "cartoes": 1,
+  "serve": "stack",
+  "duvidas": 0,
+  "ferramentas": [
+   "Obsidian"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Plugin API to read vault frontmatter and expose custom MCP tools"
+ },
+ {
+  "conceito": "obsidian search",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Fuse.js"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "local vault search engine using Fuse.js and file indices"
+ },
+ {
+  "conceito": "langchain",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "LangChain",
+   "sentence-transformers"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "LangChain Python pipeline for semantic search over Obsidian notes"
+ },
+ {
+  "conceito": "obsidian-like vscode setup",
+  "cartoes": 1,
+  "serve": "stack",
+  "duvidas": 0,
+  "ferramentas": [
+   "Markdown All in One",
+   "Front-Matter"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "VS Code extensions that emulate the Obsidian workflow on plain files"
+ },
+ {
+  "conceito": "offline elasticsearch",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 1,
+  "ferramentas": [
+   "Elasticsearch",
+   "CouchDB"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Run Elasticsearch locally offline, keeping synced data on disk"
+ },
+ {
+  "conceito": "offline solr sync",
+  "cartoes": 1,
+  "serve": "stack",
+  "duvidas": 1,
+  "ferramentas": [
+   "SolrCloud",
+   "CouchDB",
+   "MCP"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Manter índice Solr local sincronizado com CouchDB, inclusive offline, via MCP."
+ },
+ {
+  "conceito": "opensearch cross-cluster replication",
+  "cartoes": 1,
+  "serve": "none",
+  "duvidas": 0,
+  "ferramentas": [
+   "OpenSearch"
+  ],
+  "ligado_a_projeto": true,
+  "papel": ""
+ },
+ {
+  "conceito": "index pruning",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 1,
+  "ferramentas": [
+   "OpenSearch"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Drop low-weight index terms to speed up search; likely unneeded at this hub's size"
+ },
+ {
+  "conceito": "opensearch index lifecycle",
+  "cartoes": 1,
+  "serve": "none",
+  "duvidas": 0,
+  "ferramentas": [
+   "OpenSearch"
+  ],
+  "ligado_a_projeto": true,
+  "papel": ""
+ },
+ {
+  "conceito": "index templates and ingest pipelines",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "OpenSearch"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Mapear campos do frontmatter e fazer chunking na criação do índice"
+ },
+ {
+  "conceito": "ingest pipelines",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "OpenSearch"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Preprocess notes before indexing, such as normalizing text or extracting fields"
+ },
+ {
+  "conceito": "observability",
+  "cartoes": 1,
+  "serve": "none",
+  "duvidas": 0,
+  "ferramentas": [
+   "OpenSearch"
+  ],
+  "ligado_a_projeto": true,
+  "papel": ""
+ },
+ {
+  "conceito": "opensearch plugins",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "OpenSearch"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Extension points for custom analyzers, such as Portuguese accent and stemming handling"
+ },
+ {
+  "conceito": "opensearch query dsl",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "OpenSearch"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Structured query language for keyword and vector queries over notes"
+ },
+ {
+  "conceito": "elasticsearch hybrid search",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Elasticsearch",
+   "OpenSearch"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Heavy self-hosted hybrid search stack (BM25 plus vectors); too heavy for this hub"
+ },
+ {
+  "conceito": "post-build indexing",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Pagefind"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Run Pagefind after content generation to build a static full-text index"
+ },
+ {
+  "conceito": "pandoc json ast",
+  "cartoes": 1,
+  "serve": "stack",
+  "duvidas": 0,
+  "ferramentas": [
+   "Pandoc"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Extrair a estrutura do Markdown em AST para tratar partes do texto"
+ },
+ {
+  "conceito": "pandoc json metadata",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Pandoc"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Expose frontmatter and content as JSON for indexing"
+ },
+ {
+  "conceito": "postgres hybrid search",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "pg_vector_search",
+   "pg_trgm",
+   "pgvector",
+   "tsvector"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Full-text plus vector search inside Postgres, with Portuguese stemming"
+ },
+ {
+  "conceito": "distributed text indexing",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 1,
+  "ferramentas": [
+   "NATS"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Distributed indexing of Markdown notes with frontmatter, coordinated over NATS"
+ },
+ {
+  "conceito": "portuguese stemmer",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "MiniSearch"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Portuguese stemmer as a custom tokenizer to normalize word roots"
+ },
+ {
+  "conceito": "portuguese icu tokenizer",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "ICU",
+   "Elasticsearch",
+   "Whoosh",
+   "CouchDB FTS"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Normalize Portuguese orthography, strip accents and stem during indexing"
+ },
+ {
+  "conceito": "portuguese nlp",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Whoosh",
+   "langdetect",
+   "xlm-roberta"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Portuguese stemming, accent normalization and multilingual embeddings for search"
+ },
+ {
+  "conceito": "stopword filter",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Elasticsearch"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Remove Portuguese stopwords before BM25 indexing to improve relevance"
+ },
+ {
+  "conceito": "portuese text normalization",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "RediSearch",
+   "Snowball"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Prepares Portuguese text by removing accents and stemming to improve search accuracy."
+ },
+ {
+  "conceito": "text preprocessing",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Haystack"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Tokenize, stem and normalize accents before indexing text"
+ },
+ {
+  "conceito": "attachment text extraction",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Apache Tika",
+   "Elasticsearch"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Extrair texto de arquivos na ingestão, sem pré-processamento externo"
+ },
+ {
+  "conceito": "pubsub",
+  "cartoes": 1,
+  "serve": "stack",
+  "duvidas": 0,
+  "ferramentas": [
+   "nanomsg"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "event-driven notification for sync/indexing changes in CouchDB/Markdown"
+ },
+ {
+  "conceito": "pydantic schemas",
+  "cartoes": 1,
+  "serve": "stack",
+  "duvidas": 0,
+  "ferramentas": [
+   "Pydantic",
+   "MCP"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Validate MCP message schemas, including search filters, with Pydantic"
+ },
+ {
+  "conceito": "pyramid couchdb integration",
+  "cartoes": 1,
+  "serve": "stack",
+  "duvidas": 0,
+  "ferramentas": [
+   "Pyramid",
+   "CouchDB"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Query CouchDB from a Pyramid service; sync overlaps the existing LiveSync."
+ },
+ {
+  "conceito": "fuzzy matching",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "RapidFuzz",
+   "portseg",
+   "Spark NLP"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Accent-tolerant fuzzy matching with Portuguese morphological analysis"
+ },
+ {
+  "conceito": "recoll external filters",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Recoll"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Index Markdown and frontmatter through a custom Recoll filter at indexing time"
+ },
+ {
+  "conceito": "document filters",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Recoll"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Extract text and frontmatter from Markdown files for indexing"
+ },
+ {
+  "conceito": "langchain retriever",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Recoll",
+   "LangChain"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Expose Recoll results as a LangChain retriever for RAG pipelines"
+ },
+ {
+  "conceito": "sqlite metadata index",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Recoll",
+   "SQLite"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Keep frontmatter metadata in SQLite beside Recoll for structured filters"
+ },
+ {
+  "conceito": "redis",
+  "cartoes": 1,
+  "serve": "none",
+  "duvidas": 1,
+  "ferramentas": [
+   "Redis"
+  ],
+  "ligado_a_projeto": true,
+  "papel": ""
+ },
+ {
+  "conceito": "vector similarity search",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Redis"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Enables semantic search by comparing embedding vectors to find similar documents."
+ },
+ {
+  "conceito": "reranking",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Pagefind"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "reorder retrieved passages with a cross-encoder for higher precision"
+ },
+ {
+  "conceito": "rust search engine with mcp wrapper",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "tantivy",
+   "Deno",
+   "Node.js"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Tantivy engine in Rust exposed through a Deno or Node MCP server"
+ },
+ {
+  "conceito": "frontmatter schema design",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Solr"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Map frontmatter fields to typed Solr fields for filtering and faceting"
+ },
+ {
+  "conceito": "model server",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Ollama",
+   "LocalAI",
+   "vLLM"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Host embedding models to generate vectors for semantic search in notes."
+ },
+ {
+  "conceito": "shared_network_index",
+  "cartoes": 1,
+  "serve": "stack",
+  "duvidas": 0,
+  "ferramentas": [
+   "Tantivy"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "enables agents to read/write a search index via LAN-mounted filesystem"
+ },
+ {
+  "conceito": "similarity queries",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "gensim"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Find documents similar to a query by comparing embedding vectors in an index"
+ },
+ {
+  "conceito": "snowball analyzer",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Snowball",
+   "Lucene"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Portuguese-capable stemmer so word variants match in notes."
+ },
+ {
+  "conceito": "snowball stemmer",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Elasticsearch"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Stem Portuguese so buscar, busca and buscando match each other"
+ },
+ {
+  "conceito": "solr analyzers",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Solr"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Analyzer chain for Portuguese tokenizing, accent stripping and stemming."
+ },
+ {
+  "conceito": "solr core configuration",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Solr"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Schema and handler config that define the Solr search index."
+ },
+ {
+  "conceito": "dense vector search",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Solr"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Busca semântica por vetores nativa no Solr, com k-NN sobre HNSW"
+ },
+ {
+  "conceito": "solr managed schema api",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Solr"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Declarar por API os campos do frontmatter como atributos buscáveis"
+ },
+ {
+  "conceito": "offline reindexing",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 1,
+  "ferramentas": [
+   "Solr"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Reindex the search index offline, e.g. after schema changes"
+ },
+ {
+  "conceito": "solr schema design",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Solr"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Declarar o frontmatter como campos do schema Solr para filtrar consultas."
+ },
+ {
+  "conceito": "solr schema",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Solr"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Define index fields and field types for the search layer"
+ },
+ {
+  "conceito": "solr managed schema",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "solr"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Add frontmatter fields as indexed filters in Solr without restarting it"
+ },
+ {
+  "conceito": "embedded solr",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "solr"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Run Solr embedded on each machine for offline search, syncing with CouchDB"
+ },
+ {
+  "conceito": "sonic embeddings plugin",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 1,
+  "ferramentas": [
+   "Sonic"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Plugin hipotético para levar embeddings semânticos ao Sonic"
+ },
+ {
+  "conceito": "spacy similarity",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "spaCy"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Enables cosine similarity on document embeddings for semantic search."
+ },
+ {
+  "conceito": "metadata_filtering_with_spacy",
+  "cartoes": 1,
+  "serve": "stack",
+  "duvidas": 1,
+  "ferramentas": [
+   "spaCy",
+   "CouchDB",
+   "MCP"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "processes CouchDB docs via spaCy for NLP-based metadata filtering (tags, language)"
+ },
+ {
+  "conceito": "sqlite with indexing",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "SQLite"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "store note data in SQLite and build local indexes (e.g. FTS5) for fast retrieval"
+ },
+ {
+  "conceito": "sqlite virtual tables",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "SQLite",
+   "FTS5"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Expose FTS5 or vector indexes as queryable SQL tables in a local index"
+ },
+ {
+  "conceito": "static site generation",
+  "cartoes": 1,
+  "serve": "stack",
+  "duvidas": 0,
+  "ferramentas": [
+   "Pagefind"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Converte Markdown em HTML para o Pagefind indexar"
+ },
+ {
+  "conceito": "stemming and tokenization",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 1,
+  "ferramentas": [
+   "Redis"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Radicais, tokenização e acentos do português nos analisadores"
+ },
+ {
+  "conceito": "survey pattern",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "nng"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Fan out one query to several local search indexes at once"
+ },
+ {
+  "conceito": "fast fields",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Tantivy"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "enables exact metadata filtering and faceted search for efficient querying."
+ },
+ {
+  "conceito": "tantivy fast fields",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "tantivy"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Provides columnar storage for fast filtering and metadata aggregations in Tantivy"
+ },
+ {
+  "conceito": "pandoc text extraction",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Pandoc"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Extract plain text from Markdown before indexing."
+ },
+ {
+  "conceito": "tokenizer",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Lucene"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Split Markdown text into tokens for indexing and querying"
+ },
+ {
+  "conceito": "typesense-embeddings-integration",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Typesense"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Enables semantic search using vector indices for embeddings"
+ },
+ {
+  "conceito": "search performance tuning",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 1,
+  "ferramentas": [
+   "typesense"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Tune Typesense for large collections of Markdown notes"
+ },
+ {
+  "conceito": "typesense vector search",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Typesense"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Enable semantic search for agents to find contextually relevant notes."
+ },
+ {
+  "conceito": "vector store index",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "LlamaIndex"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "store embeddings for semantic search to help agents find relevant passages"
+ },
+ {
+  "conceito": "vector database mcp server",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Weaviate"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "provide agents with vector search capabilities over notes via MCP"
+ },
+ {
+  "conceito": "bm25 module",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 1,
+  "ferramentas": [
+   "Weaviate"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Módulos do Weaviate que oferecem BM25 e NLP para consulta no índice."
+ },
+ {
+  "conceito": "vector_db_authz",
+  "cartoes": 1,
+  "serve": "none",
+  "duvidas": 1,
+  "ferramentas": [
+   "Weaviate"
+  ],
+  "ligado_a_projeto": true,
+  "papel": ""
+ },
+ {
+  "conceito": "text analysis pipeline",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Whoosh"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "processes markdown text for tokenization, stemming, and normalization in Portuguese and English"
+ },
+ {
+  "conceito": "text analysis",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Whoosh"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Normalizar acentos, tokenizar e radicalizar texto em português para o BM25"
+ },
+ {
+  "conceito": "embedding indexer",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Whoosh",
+   "sentence-transformers"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Store sentence embeddings beside BM25 index for semantic scoring."
+ },
+ {
+  "conceito": "whoosh_offline_indexing",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "whoosh"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "local file-based search index for offline agent queries"
+ },
+ {
+  "conceito": "whoosh schema",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Whoosh"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Define indexed text fields and stored frontmatter fields"
+ },
+ {
+  "conceito": "whoosh elasticsearch integration",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "Whoosh",
+   "Elasticsearch"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Export Whoosh index to Elasticsearch for multilingual and hybrid search"
+ },
+ {
+  "conceito": "windows compatibility",
+  "cartoes": 1,
+  "serve": "stack",
+  "duvidas": 0,
+  "ferramentas": [
+   "Fuse.js"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Garantir que o hub rode nas duas máquinas Windows."
+ },
+ {
+  "conceito": "portuguese word form normalization",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 0,
+  "ferramentas": [
+   "libstemmer",
+   "Manticore"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Normalize Portuguese queries and documents for search using accent folding, stemming, and custom dictionaries."
+ },
+ {
+  "conceito": "sql-like query language",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 1,
+  "ferramentas": [
+   "ZincSearch"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "SQL-like query language for filters and combined searches in ZincSearch."
+ },
+ {
+  "conceito": "hybrid indexing",
+  "cartoes": 1,
+  "serve": "search",
+  "duvidas": 1,
+  "ferramentas": [
+   "Zotero",
+   "Milvus",
+   "Chroma"
+  ],
+  "ligado_a_projeto": true,
+  "papel": "Vector index with frontmatter filters for reference corpora."
+ }
+]

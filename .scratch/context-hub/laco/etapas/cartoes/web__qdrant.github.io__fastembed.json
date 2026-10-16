@@ -1,0 +1,30 @@
+{
+ "chave": "web:qdrant.github.io/fastembed",
+ "urls": [
+  "https://qdrant.github.io/fastembed/"
+ ],
+ "tipos": [
+  "library"
+ ],
+ "termos": [
+  "fastembed",
+  "sentence-transformers",
+  "local embedding"
+ ],
+ "mencoes": 1,
+ "familias": [
+  "agnes"
+ ],
+ "primeira_onda": 4,
+ "nomes": [
+  "Pydantic / fastembed"
+ ],
+ "resumos": [
+  "Lightweightな埋め込み生成ライブラリで、多言語対応モデルをローカルオフラインで動かし、意味検索パイプラインの構築に利用できる。"
+ ],
+ "fonte": "site",
+ "readme_status": "ok",
+ "readme_nome": "https://qdrant.github.io/fastembed/",
+ "readme_cortado": false,
+ "readme": "[FastEmbed]\n\nSkip to content\n\n If you're using FastEmbed from Qdrant, join the\n\n Qdrant Discord server\n\n to get help and share your work! Or check out Qdrant Cloud to\n get started with vector search!\n\n⚡️ What is FastEmbed?\n\nFastEmbed is a lightweight, fast, Python library built for embedding generation. We support popular text models. Please open a Github issue if you want us to add a new model.\n\nLight & Fast\n\nQuantized model weights\n\nONNX Runtime for inference\n\nAccuracy/Recall\n\nBetter than OpenAI Ada-002\n\nDefault is Flag Embedding, which has shown good results on the MTEB leaderboard\n\nList of supported models - including multilingual models\n\nHere is an example for Retrieval Embedding Generation and how to use FastEmbed with Qdrant.\n\n🚀 Installation\n\nTo install the FastEmbed library, pip works:\n\npip install fastembed\n\n📖 Usage\n\nfrom fastembed import TextEmbedding\n\ndocuments: list[str] = [\n \"passage: Hello, World!\",\n \"query: Hello, World!\",\n \"passage: This is an example passage.\",\n \"fastembed is supported by and maintained by Qdrant.\"\n]\nembedding_model = TextEmbedding()\nembeddings: list[np.ndarray] = embedding_model.embed(documents)\n\nUsage with Qdrant\n\nInstallation with Qdrant Client in Python:\n\npip install qdrant-client[fastembed]\n\nMight have to use pip install 'qdrant-client[fastembed]' on zsh.\n\nfrom qdrant_client import QdrantClient\n\n# Initialize the client\nclient = QdrantClient(\":memory:\") # Using an in-process Qdrant\n\n# Prepare your documents, metadata, and IDs\ndocs = [\"Qdrant has Langchain integrations\", \"Qdrant also has Llama Index integrations\"]\nmetadata = [\n {\"source\": \"Langchain-docs\"},\n {\"source\": \"Llama-index-docs\"},\n]\nids = [42, 2]\n\nclient.add(\n collection_name=\"demo_collection\",\n documents=docs,\n metadata=metadata,\n ids=ids\n)\n\nsearch_result = client.query(\n collection_name=\"demo_collection\",\n query_text=\"This is a query document\"\n)\nprint(search_result)"
+}

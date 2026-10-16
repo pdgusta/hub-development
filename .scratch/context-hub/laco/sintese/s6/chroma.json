@@ -1,0 +1,72 @@
+{
+ "nome": "Chroma",
+ "nome_canonico": "Chroma (chroma-core/chroma)",
+ "chave": "gh:chroma-core/chroma",
+ "url": "https://github.com/chroma-core/chroma",
+ "serve": "search",
+ "area": null,
+ "identidade": "ok. chroma.db, chromadb.com e chromadb.readthedocs.io apontam para o mesmo projeto, chroma-core/chroma.",
+ "windows": "yes (indício): workflow _python-tests.yml tem job test-windows-smoke em 8core-32gb-windows-latest; pip install chromadb; Dockerfile.windows no repo. Wheels Windows: nao_verificado.",
+ "mcp": "third_party: chroma-core/chroma-mcp, README diz 'data retrieval capabilities powered by Chroma', lançado via uvx (stdio implícito); chroma-core/chroma não menciona MCP. Pesquisa indicou 'Official', não confirmado no README.",
+ "portugues": "Sem analisador de português. Busca de texto é $contains/$regex, sensível a maiúsculas e sem tokenização documentada. Embedding padrão all-MiniLM-L6-v2 sem guia multilíngue; modelo multilíngue pelo embedding custom.",
+ "markdown_frontmatter": "Não indexa Markdown nem frontmatter: guarda documentos e metadados enviados pelo chamador. Sem divisão por título.",
+ "atualizacao": "manual: o cliente faz add/upsert; nenhum watcher no repo.",
+ "embeddings_endpoint": "Modelo local padrão (all-MiniLM-L6-v2) ou funções de embedding de provedores; a função OpenAI aceita api_base (Python) / apiBase (TS), citado para Azure; uso com gateway OpenAI-compatível plausível, nao_verificado.",
+ "recursos": "Modos: em memória, persistente, cliente-servidor (chroma run --path), Docker. Número de RAM/disco: nao_verificado.",
+ "licenca": "Apache-2.0",
+ "ultimo_release": "1.5.9 (05 de maio; ano não exibido na página; PyPI marca 1.5.9 como atual)",
+ "atividade": "nao_verificado (data do último commit não exibida)",
+ "maturidade": "stable",
+ "encaixe": "Cabe como disco de cada máquina (modo persistente) ou serviço na rede (chroma run), com chroma-mcp de terceiros. Limites: busca lexical só substring/regex, sem português nem frontmatter.",
+ "evidencias": [
+  {
+   "campo": "windows",
+   "url": "https://raw.githubusercontent.com/chroma-core/chroma/main/.github/workflows/_python-tests.yml",
+   "citacao": "runs-on: 8core-32gb-windows-latest (job test-windows-smoke)"
+  },
+  {
+   "campo": "mcp",
+   "url": "https://raw.githubusercontent.com/chroma-core/chroma-mcp/main/README.md",
+   "citacao": "This server provides data retrieval capabilities powered by Chroma"
+  },
+  {
+   "campo": "portugues",
+   "url": "https://docs.trychroma.com/docs/querying-collections/full-text-search",
+   "citacao": "Full-text search is case-sensitive."
+  },
+  {
+   "campo": "embeddings_endpoint",
+   "url": "https://docs.trychroma.com/docs/embeddings/embedding-functions",
+   "citacao": "default is the Sentence Transformers model all-MiniLM-L6-v2 ... runs locally"
+  },
+  {
+   "campo": "embeddings_endpoint",
+   "url": "https://docs.trychroma.com/integrations/embedding-models/openai",
+   "citacao": "api_base=\"YOUR_API_BASE_PATH\""
+  },
+  {
+   "campo": "licenca",
+   "url": "https://github.com/chroma-core/chroma",
+   "citacao": "Apache 2.0"
+  },
+  {
+   "campo": "ultimo_release",
+   "url": "https://github.com/chroma-core/chroma/releases",
+   "citacao": "1.5.9, released 05 May (marked Latest)"
+  },
+  {
+   "campo": "atualizacao",
+   "url": "https://docs.trychroma.com/docs/overview/getting-started",
+   "citacao": "npx chroma run --path ./getting-started; docker run -p 8000:8000 chromadb/chroma"
+  }
+ ],
+ "nao_verificado": [
+  "data do último commit",
+  "ano do release 1.5.9",
+  "wheels Windows do chromadb",
+  "RAM/disco",
+  "se chroma-mcp é oficial pelo README",
+  "transporte do chroma-mcp",
+  "gateway OpenAI-compatível"
+ ]
+}

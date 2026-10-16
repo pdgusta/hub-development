@@ -1,0 +1,29 @@
+{
+ "chave": "web:zed.dev",
+ "urls": [
+  "https://zed.dev"
+ ],
+ "tipos": [
+  "tool"
+ ],
+ "termos": [
+  "zed editor semantic search",
+  "zed grep"
+ ],
+ "mencoes": 1,
+ "familias": [
+  "agnes"
+ ],
+ "primeira_onda": 1,
+ "nomes": [
+  "Zed Semantic Search"
+ ],
+ "resumos": [
+  "Editor Zed com recurso nativo de busca semântica baseado em embeddings, que pode indexar pastas de arquivos Markdown e é extensível via MCP."
+ ],
+ "fonte": "site",
+ "readme_status": "ok",
+ "readme_nome": "https://zed.dev",
+ "readme_cortado": false,
+ "readme": "[Zed — Your last next editor]\n\nZed Industries\nAdvancing the state of the art for collaborative software development.\n\nDeltaEst 2026\nA multiplayer environment for coding with agents, powered by DeltaDB.\nDownloadLearn More\n\nZedEst 2021\nThe world's fastest IDE. Open source. AI optional.\nDownload\n\nPinned\n\nTrace dropped keystrokes in GPUI inputs\n\nReview element cache invalidation rules\nProjects\n\nzed\ngpui\n\nCache SumTree node summaries\nInvestigate cache invalidationTrace summary propagation pathsCheck cursor invalidation callers\n\nFix IME candidate window positioning\n\nAdd scroll wheel phase events on macOS\n\nSimplify Entity subscription cleanup\n\nReproduce stale text after window resize\ncosmic-text\nThreads\n\nSummarize feedback on my first GPUI PR\n\nFind a small rendering issue to work on\n\nExplain retained mode rendering\n\nCompare Metal frame capture tools\n\nDraft release notes for accessibility fixes\nnathansoboZed\n\nCache SumTree node summaries\n\nShare\n\nCursor::seek recomputes each internal node's summary on every descent — for a rope of a few MB that's most of our seek time. Can we cache the summaries on the nodes and invalidate on edit?\n\nThought 3 times, ran 1 search, read 2 files\n\nEdit crates/sum_tree/src/sum_tree.rs\n Internal { height: u8, summary: T::Summary, summary_cache: SummaryCache<T::Summary>, children: Vec<SumTree<T>>,\n\nEdit crates/sum_tree/src/cursor.rs\n let mut end = self.position.clone(); end.add_summary(&child.compute_summary()); end.add_summary(child.cached_summary()); if end.cmp(target).is_ge() {\n\n$ cargo test -p sum_tree 2>&1 | tail -20\nDone — internal nodes now carry a SummaryCache keyed on a generation counter, and structural edits (push, remove, rebalance) bump the counter instead of recomputing eagerly. Cursor::seek reads through the cache, so it only recomputes summaries for nodes whose subtree actually changed — repeated seeks over an unedited region are pure cache hits. All 47 tests pass, including two new ones covering invalidation on push and on rebalancing.\n\n1 comment\n\nrepeated seeks over an unedited region are pure cache hits\ndo we have a benchmark proving this?\n\nrepeated seeks over an unedited region are pure cache hits\ndo we have a benchmark proving this?\nlet's back that claim with data before we merge — add a criterion benchmark that seeks randomly through a tree of a million items, and share before/after numbers. i'd also like one seek-after-push case so we can see the invalidation cost on the spine.\n\nThought 2 times, read 1 file\n\n$ cargo bench -p sum_tree -- seek\nBenchmarked on a tree of one million items: random seeks went from 41.2µs to 3.4µs (12x), and seek-after-push lands at 5.1µs — the spine invalidation only forces one recompute per level. Criterion configs and the raw numbers are in benches/seek.rs.\n\nnice numbers. before we merge, extract SummaryCache into its own module and re-export it from lib.rs — rope is going to want the same trick for chunk summaries.\n\nThought 1 time, ran 1 search\n\nEdit crates/sum_tree/src/lib.rs\nmod cursor;mod sum_tree;mod summary_cache;pub use cursor::Cursor;pub use summary_cache::SummaryCache;\nExtracted — SummaryCache lives in summary_cache.rs now and lib.rs re-exports it, so rope can depend on it without reaching into sum_tree's internals. No behavior change; the test suite is green.\n\nwhat's the per-node memory overhead of the cache? we have trees with tens of millions of nodes in large buffers.\n\n16 bytes per internal node on 64-bit targets: a usize generation plus Option<S> where the niche fits in the summary's padding for our summary types. Leaves carry nothing. For a 10M-node tree that's ~160MB in internal nodes — but internal nodes are only ~1/32 of the total at our branching factor, so in practice it's closer to 5MB per 10M items.\n\n1 comment\n\ncloser to 5MB per 10M items\nCan we link the benchmark for this estimate?\n\ndelta/main+6−4\nHighFable 5\n\nChanges\nsum_tree.rs\ncursor.rs\n\nSinceorigin/main+6−4\n\nenum Node<T: Item> {22 Internal {23 height: u8, summary: T::Summary,24 summary_cache: SummaryCache<T::Summary>,25 children: Vec<SumTree<T>>,26 },27 Leaf {28 items: Vec<T>,29 },}\n\n pub fn push(&mut self, item: T) {87 match Arc::make_mut(&mut self.0) {88 Node::Internal { summary,89 summary_cache,90 children,91 ..92 } => { *summary = compute_summary(children);93 summary_cache.invalidate();94 children95 .last_mut()96 .expect(\"internal nodes are never empty\")97 .push(item);\n\n fn descend(&mut self, subtree: &'a SumTree<T>, target: &T::Summary) -> bool {39 for (index, child) in subtree.children().iter().enumerate() {40 let mut end = self.position.clone(); end.add_summary(&child.compute_summary());41 end.add_summary(child.cached_summary());42 if end.cmp(target).is_ge() {\n\n1mod cursor;2mod sum_tree;3mod summary_cache;4​5pub use cursor::Cursor;6pub use sum_tree::{Item, SumTree, Summary};7pub use summary_cache::SummaryCache;\n\nAgent Client Protocol\nConnect any client to any agent.\nGPUI\nA fast, GPU-accelerated UI framework for Rust.\nTree-sitter\nIncremental parsing for programming languages."
+}

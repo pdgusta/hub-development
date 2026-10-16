@@ -1,0 +1,61 @@
+{
+ "chave": "gh:jina-ai/jina",
+ "nomes": [
+  "Jina",
+  "jina-embeddings",
+  "Jina CLI",
+  "Jina AI (framework principal)",
+  "Jina Embeddings",
+  "Jina AI CLI",
+  "Jina Indexer (BM25)",
+  "Jina Embedding Executor",
+  "Jina Search Executor",
+  "Jina Hybrid Search Executor",
+  "Jina RPC (MCP)",
+  "Jina AI"
+ ],
+ "urls": [
+  "https://github.com/jina-ai/jina",
+  "https://jina.ai/",
+  "https://github.com/jina-ai/jina#command-line-interface",
+  "https://jina.ai",
+  "https://github.com/jina-ai/jina/blob/main/jina/executors/indexers",
+  "https://github.com/jina-ai/jina/blob/main/jina/executors/embeddings",
+  "https://github.com/jina-ai/jina/blob/main/jina/executors/search",
+  "https://github.com/jina-ai/jina/blob/main/jina/executors/search/hybrid",
+  "https://github.com/jina-ai/jina/blob/main/jina/rpc",
+  "https://github.com/jina-ai/jina/blob/main/jina/cli",
+  "https://github.com/jina-ai/jina/tree/master/python/jina/protocols/mcp",
+  "https://docs.jina.ai/latest/flow.html",
+  "https://docs.jina.ai/flow",
+  "https://docs.jina.ai/fundamentals/flow/",
+  "https://docs.jina.ai/executors",
+  "https://github.com/jina-ai/cli"
+ ],
+ "readme_cortado": false,
+ "readme": "# Jina-Serve\n<a href=\"https://pypi.org/project/jina/\"><img alt=\"PyPI\" src=\"https://img.shields.io/pypi/v/jina?label=Release&style=flat-square\"></a>\n<a href=\"https://discord.jina.ai\"><img src=\"https://img.shields.io/discord/1106542220112302130?logo=discord&logoColor=white&style=flat-square\"></a>\n<a href=\"https://pypistats.org/packages/jina\"><img alt=\"PyPI - Downloads from official pypistats\" src=\"https://img.shields.io/pypi/dm/jina?style=flat-square\"></a>\n<a href=\"https://github.com/jina-ai/jina/actions/workflows/cd.yml\"><img alt=\"Github CD status\" src=\"https://github.com/jina-ai/jina/actions/workflows/cd.yml/badge.svg\"></a>\n\nJina-serve is a framework for building and deploying AI services that communicate via gRPC, HTTP and WebSockets. Scale your services from local development to production while focusing on your core logic.\n\n## Key Features\n\n- Native support for all major ML frameworks and data types\n- High-performance service design with scaling, streaming, and dynamic batching\n- LLM serving with streaming output\n- Built-in Docker integration and Executor Hub\n- One-click deployment to Jina AI Cloud\n- Enterprise-ready with Kubernetes and Docker Compose support\n\n<details>\n<summary><strong>Comparison with FastAPI</strong></summary>\n\nKey advantages over FastAPI:\n\n- DocArray-based data handling with native gRPC support\n- Built-in containerization and service orchestration\n- Seamless scaling of microservices\n- One-command cloud deployment\n</details>\n\n## Install \n\n```bash\npip install jina\n```\n\nSee guides for [Apple Silicon](https://jina.ai/serve/get-started/install/apple-silicon-m1-m2/) and [Windows](https://jina.ai/serve/get-started/install/windows/).\n\n## Core Concepts\n\nThree main layers:\n- **Data**: BaseDoc and DocList for input/output\n- **Serving**: Executors process Documents, Gateway connects services\n- **Orchestration**: Deployments serve Executors, Flows create pipelines\n\n## Build AI Services\n\nLet's create a gRPC-based AI service using StableLM:\n\n```python\nfrom jina import Executor, requests\nfrom docarray import DocList, BaseDoc\nfrom transformers import pipeline\n\n\nclass Prompt(BaseDoc):\n    text: str\n\n\nclass Generation(BaseDoc):\n    prompt: str\n    text: str\n\n\nclass StableLM(Executor):\n    def __init__(self, **kwargs):\n        super().__init__(**kwargs)\n        self.generator = pipeline(\n            'text-generation', model='stabilityai/stablelm-base-alpha-3b'\n        )\n\n    @requests\n    def generate(self, docs: DocList[Prompt], **kwargs) -> DocList[Generation]:\n        generations = DocList[Generation]()\n        prompts = docs.text\n        llm_outputs = self.generator(prompts)\n        for prompt, output in zip(prompts, llm_outputs):\n            generations.append(Generation(prompt=prompt, text=output))\n        return generations\n```\n\nDeploy with Python or YAML:\n\n```python\nfrom jina import Deployment\nfrom executor import StableLM\n\ndep = Deployment(uses=StableLM, timeout_ready=-1, port=12345)\n\nwith dep:\n    dep.block()\n```\n\n```yaml\njtype: Deployment\nwith:\n uses: StableLM\n py_modules:\n   - executor.py\n timeout_ready: -1\n port: 12345\n```\n\nUse the client:\n\n```python\nfrom jina import Client\nfrom docarray import DocList\nfrom executor import Prompt, Generation\n\nprompt = Prompt(text='suggest an interesting image generation prompt')\nclient = Client(port=12345)\nresponse = client.post('/', inputs=[prompt], return_type=DocList[Generation])\n```\n\n## Build Pipelines\n\nChain services into a Flow:\n\n```python\nfrom jina import Flow\n\nflow = Flow(port=12345).add(uses=StableLM).add(uses=TextToImage)\n\nwith flow:\n    flow.block()\n```\n\n## Scaling and Deployment\n\n### Local Scaling\n\nBoost throughput with built-in features:\n- Replicas for parallel processing\n- Shards for data partitioning\n- Dynamic batching for efficient model inference\n\nExample scaling a Stable Diffusion deployment:\n\n```yaml\njtype: Deployment\nwith:\n uses: TextToImage\n timeout_ready: -1\n py_modules:\n   - text_to_image.py\n env:\n  CUDA_VISIBLE_DEVICES: RR\n replicas: 2\n uses_dynamic_batching:\n   /default:\n     preferred_batch_size: 10\n     timeout: 200\n```\n\n### Cloud Deployment\n\n#### Containerize Services\n\n1. Structure your Executor:\n```\nTextToImage/\n├── executor.py\n├── config.yml\n├── requirements.txt\n```\n\n2. Configure:\n```yaml\n# config.yml\njtype: TextToImage\npy_modules:\n - executor.py\nmetas:\n name: TextToImage\n description: Text to Image generation Executor\n```\n\n3. Push to Hub:\n```bash\njina hub push TextToImage\n```\n\n#### Deploy to Kubernetes\n```bash\njina export kubernetes flow.yml ./my-k8s\nkubectl apply -R -f my-k8s\n```\n\n#### Use Docker Compose\n```bash\njina export docker-compose flow.yml docker-compose.yml\ndocker-compose up\n```\n\n#### JCloud Deployment\n\nDeploy with a single command:\n```bash\njina cloud deploy jcloud-flow.yml\n```\n\n## LLM Streaming\n\nEnable token-by-token streaming for responsive LLM applications:\n\n1. Define schemas:\n```python\nfrom docarray import BaseDoc\n\n\nclass PromptDocument(BaseDoc):\n    prompt: str\n    max_tokens: int\n\n\nclass ModelOutputDocument(BaseDoc):\n    token_id: int\n    generated_text: str\n```\n\n2. Initialize service:\n```python\nfrom transformers import GPT2Tokenizer, GPT2LMHeadModel\n\n\nclass TokenStreamingExecutor(Executor):\n    def __init__(self, **kwargs):\n        super().__init__(**kwargs)\n        self.model = GPT2LMHeadModel.from_pretrained('gpt2')\n```\n\n3. Implement streaming:\n```python\n@requests(on='/stream')\nasync def task(self, doc: PromptDocument, **kwargs) -> ModelOutputDocument:\n    input = tokenizer(doc.prompt, return_tensors='pt')\n    input_len = input['input_ids'].shape[1]\n    for _ in range(doc.max_tokens):\n        output = self.model.generate(**input, max_new_tokens=1)\n        if output[0][-1] == tokenizer.eos_token_id:\n            break\n        yield ModelOutputDocument(\n            token_id=output[0][-1],\n            generated_text=tokenizer.decode(\n                output[0][input_len:], skip_special_tokens=True\n            ),\n        )\n        input = {\n            'input_ids': output,\n            'attention_mask': torch.ones(1, len(output[0])),\n        }\n```\n\n4. Serve and use:\n```python\n# Server\nwith Deployment(uses=TokenStreamingExecutor, port=12345, protocol='grpc') as dep:\n    dep.block()\n\n\n# Client\nasync def main():\n    client = Client(port=12345, protocol='grpc', asyncio=True)\n    async for doc in client.stream_doc(\n        on='/stream',\n        inputs=PromptDocument(prompt='what is the capital of France ?', max_tokens=10),\n        return_type=ModelOutputDocument,\n    ):\n        print(doc.generated_text)\n```\n\n## Support\n\nJina-serve is backed by [Jina AI](https://jina.ai) and licensed under [Apache-2.0](./LICENSE).\n",
+ "fonte": "readme",
+ "respostas": [
+  {
+   "por": "claude-haiku-5-5",
+   "resposta": {
+    "serve": "stack",
+    "role": "Framework to deploy AI services over gRPC/HTTP, could host embedding or search services",
+    "place": [
+     "library",
+     "network_service"
+    ],
+    "mechanism": [
+     "n/a"
+    ],
+    "mcp": "unknown",
+    "windows": "yes",
+    "portuguese": "unknown",
+    "license": "Apache-2.0",
+    "maturity": "unknown",
+    "doubt": true,
+    "evidence": "Jina-serve is a framework for building and deploying AI services that communicate via gRPC, HTTP and WebSockets. See guides for ... Windows."
+   }
+  }
+ ]
+}

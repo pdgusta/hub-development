@@ -1,0 +1,70 @@
+{
+ "chave": "gh:ku-nlp/jumanpp",
+ "urls": [
+  "https://github.com/ku-nlp/jumanpp",
+  "https://nlp.ist.i.kyoto-u.ac.jp/index.php?JUMAN++",
+  "https://bos突突.mit.edu/~juman/",
+  "https://nlp.ist.i.kyoto-u.ac.jp/index.php?Juman%2B%2B",
+  "https://nlp.ist.i.kyoto-u.ac.jp/index.php?KyTea",
+  "https://github.com/shuyo/jumanpp"
+ ],
+ "tipos": [
+  "library",
+  "tool"
+ ],
+ "termos": [
+  "形態素解析",
+  "日本語処理",
+  "NLP",
+  "Kyoto University Morphological Analyzer",
+  "juman",
+  "ku-nlp",
+  "kenall",
+  "morphological analyzer",
+  "Juman",
+  "Japanese morphological analyzer",
+  "jumanpp",
+  "日本語NLP",
+  "JUMAN",
+  "Juman++-pt",
+  "形態素解析器",
+  "ポルトガル語NLP",
+  "日本語",
+  "kuromoji",
+  "MeCab",
+  "Japanese morphological analysis",
+  "Juman++",
+  "Jumal++",
+  "IR library",
+  "morphological analysis",
+  "tokenization",
+  "lemmatization"
+ ],
+ "mencoes": 16,
+ "familias": [
+  "agnes",
+  "cohere",
+  "gemma",
+  "gpt-oss",
+  "llama",
+  "mistral",
+  "nemotron"
+ ],
+ "primeira_onda": 3,
+ "nomes": [
+  "Juman++",
+  "KyTea",
+  "Juman++-IPADIC",
+  "KyTea-IPADIC"
+ ],
+ "resumos": [
+  "日本語の形態素解析器で、辞書や文法をカスタマイズ可能",
+  "日本語形態素解析エンジンで、ポルトガル語のアクセントや語幹処理にも応用可能",
+  "A high-performance morphological analyzer for Japanese text, part of the Ku-ron ecosystem for NLP pipeline construction.",
+  "A Japanese morphological analyzer that provides tokenization and part‑of‑speech tagging for text processing pipelines."
+ ],
+ "readme_status": "ok",
+ "readme_nome": "README.md",
+ "readme_cortado": false,
+ "readme": "# What is Juman++\n\nA new morphological analyser that considers semantic plausibility of \nword sequences by using a recurrent neural network language model (RNNLM).\nVersion 2 has better accuracy and greatly (>250x) improved analysis speed than\nthe original Juman++.\n\n[![Build Status](https://github.com/ku-nlp/jumanpp/actions/workflows/cmake.yml/badge.svg)](https://github.com/ku-nlp/jumanpp/actions/workflows/cmake.yml)\n\n# Installation\n\n## System Requirements\n\n* OS: Linux, MacOS X or Windows.\n* Compiler: C++14 compatible\n  * For example gcc 5.1+, clang 3.4+, MSVC 2017\n  * We test on GCC and clang on Linux/MacOS, mingw64-gcc and MSVC2017 on Windows\n- CMake v3.13 or later\n- For Ubuntu22.04, you need to install additional packages as follows: `sudo apt install libprotobuf-dev protobuf-compiler`\n\nRead [this document](docs/building.md) for CentOS and RHEL derivatives or non-CMake alternatives.\n\n## Building from a package\n\nDownload the package from [Releases](https://github.com/ku-nlp/jumanpp/releases)\n\n**Important**: The download should be around 300 MB. If it is not you have probably downloaded a source snapshot which does not contain a model.\n\n```bash\n$ tar xf jumanpp-<version>.tar.xz  # decompress the package\n$ cd jumanpp-<version>\n$ cmake -S . -B build \\\n    -DCMAKE_BUILD_TYPE=Release \\\n    -DCMAKE_INSTALL_PREFIX=<prefix>\n$ cmake --build build -j<parallelism>\n$ cmake --install build\n```\n## Building from git\n\n**Important**: Only the package distribution contains a pretrained model and can be used for analysis. \nThe current git version is not compatible with the models of 2.0-rc1 and 2.0-rc2.\n\n```bash\n$ cmake -S . -B build\n$ cmake --build build -j\n```\n\n# Usage\n\n## Quick start\n```\n% echo \"魅力がたっぷりと詰まっている\" | jumanpp\n魅力 みりょく 魅力 名詞 6 普通名詞 1 * 0 * 0 \"代表表記:魅力/みりょく カテゴリ:抽象物\"\nが が が 助詞 9 格助詞 1 * 0 * 0 NIL\nたっぷり たっぷり たっぷり 副詞 8 * 0 * 0 * 0 \"自動認識\"\nと と と 助詞 9 格助詞 1 * 0 * 0 NIL\n詰まって つまって 詰まる 動詞 2 * 0 子音動詞ラ行 10 タ系連用テ形 14 \"代表表記:詰まる/つまる ドメイン:料理・食事 自他動詞:他:詰める/つめる\"\nいる いる いる 接尾辞 14 動詞性接尾辞 7 母音動詞 1 基本形 2 \"代表表記:いる/いる\"\nEOS\n```\n\n## Main options\n```\nusage: jumanpp [options] \n  -s, --specifics              lattice format output (unsigned int [=5])\n  --beam <int>                 set local beam width used in analysis (unsigned int [=5])\n  -v, --version                print version\n  -h, --help                   print this message\n  --model <file>               specify a model location\n```\n\nUse `--help` to see more options.\n\n## Input\nJUMAN++ can handle only utf-8 encoded text as an input.\nLines beginning with `# ` will be interpreted as comments.\n\n## Training Jumandic Model\n\nA set of scripts for training Jumandic model is available in [this repository](https://github.com/ku-nlp/jumanpp-jumandic).\nIt is possible to modify the system dictionary to add other entries to the trained model.\n\n**Attention**: You need to have access to Mainichi Shinbun for Year 1995 to be able to use Kyoto Univeristy corpus for training.\n\n# Other\n\n## DEMO\nYou can play around our [web demo](https://tulip.kuee.kyoto-u.ac.jp/demo/jumanpp_lattice?text=%E5%A4%96%E5%9B%BD%E4%BA%BA%E5%8F%82%E6%94%BF%E6%A8%A9%E3%81%AB%E5%AF%BE%E3%81%99%E3%82%8B%E8%80%83%E3%81%88%E6%96%B9%E3%81%AE%E9%81%95%E3%81%84)\nwhich displays a subset of the whole lattice.\nThe demo still uses v1 but, it will be updated to v2 soon.\n\n## Extracting diffs caused by beam configurations\n\nYou can see sentences in which two different beam configurations produce different analyses.\nA `src/jumandic/jpp_jumandic_pathdiff` binary [(source)](https://github.com/ku-nlp/jumanpp/blob/master/src/jumandic/main/path_diff.cc) \n(relative to a compilation root) does it.\nThe only Jumandic-specific thing here is the usage of [code-generated linear model inference](https://github.com/ku-nlp/jumanpp/blob/master/src/jumandic/main/path_diff.cc#L195).\n\nUse the binary as `jpp_jumandic_pathdiff <model> <input> > <output>`.\n\nOutputs would be in the partial annotation format with a full beam results being the actual tags and trimmed beam results being written as comments.\n\nExample: \n```\n# scores: -0.602687 -1.20004\n# 子がい        pos:名詞        subpos:普通名詞 <------- trimmed beam result\n# S-ID:w201007-0080605751-6 COUNT:2\n熊本選抜にはマリノス、アントラーズのユースに行く\n        子      pos:名詞        subpos:普通名詞 <------- full beam result\n        が      pos:助詞        subpos:格助詞\n        い      baseform:いる   conjtype:母音動詞       pos:動詞        conjform:基本連用形\nます\n```\n\n## Partial Annotation Tool\n\nWe also have a partial annotation tool. Please see https://github.com/eiennohito/nlp-tools-demo for details.\n\n## Performance Notes\n\nTo get the best performance, you need to build with [extended instruction sets](https://gcc.gnu.org/onlinedocs/gcc/x86-Options.html).\nIf you are planning to use Juman++ only locally,\nspecify `-DCMAKE_CXX_FLAGS=\"-march=native\"`.\n\nWorks best on Intel Haswell and newer processors (because of FMA and BMI instruction set extensions).\n\n## Using Juman++ to create your own Morphological Analyzer\n\nJuman++ is a general tool. \nIt does not depend on Jumandic or Japanese Language \n(albeit there are some Japanese-specific functionality).\nSee [this tutorial project](https://github.com/eiennohito/jumanpp-t9)\nwhich shows how to implement a something similar to a \n[T9 text input](https://en.wikipedia.org/wiki/T9_(predictive_text))\nfor the case when there are no word boundaries in the input text.\n\n## Publications and Slides\n\n* About the model itself: *Morphological Analysis for Unsegmented Languages using Recurrent Neural Network Language Model*. Hajime Morita, Daisuke Kawahara, Sadao Kurohashi. EMNLP 2015 [link](http://aclweb.org/anthology/D15-1276), [bibtex](https://www.aclweb.org/anthology/D15-1276.bib).\n\n* V2 Improvments: *Juman++ v2: A Practical and Modern Morphological Analyzer*. Arseny Tolmachev and Kurohashi Sadao. The Proceedings of the Twenty-fourth Annual Meeting of the Association for Natural Language Processing. March 2018, Okayama, Japan. ([pdf](http://www.anlp.jp/proceedings/annual_meeting/2018/pdf_dir/A5-2.pdf), [slides](https://www.slideshare.net/eiennohito/juman-v2-a-practical-and-modern-morphological-analyzer))\n\n* Morphological Analysis Workshop in ANLP2018 Slides: 形態素解析システムJuman++. 河原 大輔, Arseny Tolmachev. (in Japanese) [slides](https://drive.google.com/file/d/1DVnrsWw4skRgC8jU6_RkeofOQEHFwctc/view?usp=sharing).\n\n* *Juman++: A Morphological Analysis Toolkit for Scriptio Continua.* Arseny Tolmachev, Daisuke Kawahara and Sadao Kurohashi. EMNLP 2018, Brussels. [pdf](http://aclweb.org/anthology/D18-2010), [poster](https://drive.google.com/file/d/1SeiYP2z4Hb1Q0IhIe_3ydSIjCMhxnKIS/view?usp=sharing), [bibtex](https://www.aclweb.org/anthology/D18-2010.bib).\n\n* *Design and Structure of The Juman++ Morphological Analyzer Toolkit.* Arseny Tolmachev, Daisuke Kawahara, Sadao Kurohashi. Journal of Natural Language Processing, ([paper](https://www.jstage.jst.go.jp/article/jnlp/27/1/27_89/_article/-char/en), [bibtex](https://www.jstage.jst.go.jp/AF06S010ShoshJkuDld?sryCd=jnlp&noVol=27&noIssue=1&kijiCd=27_89&kijiLangKrke=en&kijiToolIdHkwtsh=AT0073&request_locale=EN)).\n\nIf you use Juman++ V1 in academic setting, then please cite the first work (EMNLP2015). If you use Juman++ V2, then please cite both the first and the fourth (EMNLP2018) papers. \n\n## Authors\n* Arseny Tolmachev <arseny **at** kotonoha.ws>\n* Hajime Morita <hmorita  **at** nlp.ist.i.kyoto-u.ac.jp>  \n* Daisuke Kawahara <dk  **at** i.kyoto-u.ac.jp>  \n* Sadao Kurohashi <kuro  **at** i.kyoto-u.ac.jp>\n\n## Acknowledgement\nThe list of all libraries used by JUMAN++ is [here](libs/README.md).\n\n## Notice\n\nThis is a branch for the Juman++ rewrite.\nThe original version lives in the [legacy](https://github.com/ku-nlp/jumanpp/tree/legacy) branch.\n"
+}

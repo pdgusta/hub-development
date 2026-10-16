@@ -1,0 +1,572 @@
+Confluent Documentation
+
+Confluent Documentation
+
+ Find the guides, samples, tutorials, API, and CLI reference to get started
+ with the streaming data platform based on Apache Kafka®.
+
+ /
+
+Get started
+
+Confluent Cloud quick start
+
+Use this quick start to set up a cluster and configure event streaming applications on Confluent Cloud, Confluent's fully managed service for Apache Kafka.
+
+Confluent Platform quick start
+
+Use this quick start to get Confluent Platform running locally with Docker, then build data pipelines using Confluent's self-managed distribution of Apache Kafka.
+
+Development
+
+Install Confluent CLI
+
+Manage Confluent Platform and Cloud using the command-line interface.
+
+Confluent Cloud APIs
+
+Use API references to manage your deployment or integrate Confluent into your product.
+
+Kafka clients
+
+Produce and consume messages through Apache Kafka using official Confluent clients for Java, a native Rust client, and librdkafka (C/C++) and its derived clients.
+
+Apache Kafka
+
+Build streaming data pipelines and applications with the open-source distributed data streaming engine that thousands of companies use to power operational and analytics use cases.
+
+Browse by use case
+
+Stream
+
+Build real-time data architectures
+
+ Browse cluster types
+ Configure Kafka clients
+ Set up networking
+
+Connect
+
+Integrate your data ecosystem
+
+ Install fully managed connectors
+ Integrate with cloud service providers
+
+Process
+
+Transform, analyze, and act on real-time data
+
+ Process data with Apache Flink®
+ Materialize topics with Tableflow
+ Embed streaming agents in Flink
+ Stream real-time data to AI agents
+
+Govern
+
+Simplify access to high-quality data
+
+ Manage schemas and Data Contracts
+
+Browse by product
+
+ All
+ Cloud
+ Platform
+
+Core streaming platforms
+
+ Confluent Cloud
+ Cloud
+
+Deploy and scale a fully managed, elastic cloud Kafka service built on the Kora engine
+
+ Confluent Platform
+ Platform
+
+Deploy a self-managed enterprise distribution of Apache Kafka for on-premises or cloud
+
+ Confluent Server
+ Platform
+
+Run an enhanced Kafka broker with Confluent enterprise and security features
+
+ Apache Kafka
+ Cloud
+ Platform
+
+Stream and store real-time data using the open-source distributed event engine at the core of Confluent
+
+ KRaft
+ Platform
+
+Manage cluster metadata with built-in consensus that removes the Apache ZooKeeper™ dependency
+
+ WarpStream
+ Cloud
+
+Run stateless, S3-backed Kafka workloads with zero disk footprint on brokers
+
+Clusters and storage
+
+ Kafka clusters
+ Cloud
+
+Provision clusters across flexible tiers tailored to your scaling, isolation, and pricing requirements
+
+ Topics and message management
+ Cloud
+ Platform
+
+Create, configure, and manage topics, partitions, and records
+
+ Consumer groups and offset management
+ Cloud
+ Platform
+
+Track consumer group membership and committed read offsets
+
+ Tiered Storage
+ Platform
+
+Offload older topic data to cheaper object storage automatically
+
+ Self-Balancing Clusters
+ Platform
+
+Automatically rebalance partitions as brokers are added or removed
+
+ Auto Data Balancer
+ Platform
+
+Redistribute partitions to even out load across brokers
+
+Stream processing
+
+ Confluent Cloud for Apache Flink
+ Cloud
+
+Execute stateful, low-latency stream processing workloads on a fully managed Flink service
+
+ Apache Flink (self-managed)
+ Platform
+
+Run self-managed Flink for complex, stateful streaming applications
+
+ Apache Flink SQL
+ Cloud
+ Platform
+
+Write and deploy real-time streaming queries and data pipelines using standard ANSI SQL
+
+ Kafka Streams
+ Cloud
+ Platform
+
+Build stateful stream processing applications directly in Java
+
+ ksqlDB
+ Cloud
+ Platform
+
+Process and query streaming data in real time using SQL directly against Kafka topics
+
+Data integration
+
+ Kafka Connect (managed and self-managed)
+ Cloud
+ Platform
+
+Stream data between Kafka and external systems using managed or self-managed infrastructure
+
+ Confluent connectors (100+ sources and sinks)
+ Cloud
+ Platform
+
+Integrate instantly with databases, storage, SaaS applications, and messaging systems
+
+ Custom connectors and plugins
+ Cloud
+
+Upload and run custom connector plugins directly within Confluent Cloud
+
+ Confluent Replicator
+ Platform
+
+Replicate topics and configurations between Kafka clusters
+
+ REST Proxy
+ Platform
+
+Produce, consume, and administer Kafka using an HTTP interface
+
+ MQTT Proxy
+ Platform
+
+Ingest MQTT messages from IoT devices into Kafka without a broker
+
+Data governance
+
+ Schema Registry
+ Cloud
+ Platform
+
+Centralize, version, and enforce schema compatibility across your data streams
+
+ Stream Governance
+ Cloud
+ Platform
+
+Ensure data quality, maintain metadata catalogs, and trace lineage across all event streams
+
+ Stream Lineage
+ Cloud
+
+Visualize end-to-end data flow across topics, connectors, and streaming applications
+
+ Stream Catalog and Data Portal
+ Cloud
+
+Discover, search, and access event streams through a self-service portal
+
+ Data Contracts
+ Cloud
+ Platform
+
+Enforce schema rules, metadata standards, and quality guarantees on topic data
+
+ Tableflow
+ Cloud
+
+Expose Kafka topics as Apache Iceberg™ or Delta Lake tables for open analytical processing
+
+AI and machine learning
+
+ Confluent Intelligence
+ Cloud
+
+Power real-time, context-aware AI applications with built-in streaming intelligence features
+
+ Streaming Agents
+ Cloud
+
+Build event-driven AI agents that analyze and act on streaming data in real time
+
+ AI Assistant
+ Cloud
+
+Get instant assistance, execute queries, and complete guided tasks using an in-product AI assistant
+
+ Built-in ML functions
+ Cloud
+
+Detect sentiment, anomalies, and PII, or run forecasts directly within streaming SQL queries
+
+ Model inference and embeddings
+ Cloud
+
+Call remote AI models and generate vector embeddings directly from streaming SQL
+
+ Real-Time Context Engine
+ Cloud
+
+Serve fresh, real-time context to AI models and downstream applications
+
+ External tables
+ Cloud
+
+Query external vector and text stores directly within streaming SQL pipelines
+
+ MCP servers for AI tool integration
+ Cloud
+
+Expose Confluent data and actions to external AI tools via Model Context Protocol (MCP)
+
+Multi-region and replication
+
+ Cluster Linking
+ Cloud
+ Platform
+
+Mirror topics across clusters and regions without deploying extra infrastructure
+
+ Multi-Region Clusters
+ Platform
+
+Span a single cluster across regions for high availability
+
+ Confluent Replicator
+ Platform
+
+Replicate topics and configurations between Kafka clusters
+
+Security and access control
+
+ Authentication (SSO, SAML, OAuth/OIDC, SASL, mTLS)
+ Cloud
+ Platform
+
+Authenticate and verify user and service identities using SSO, SAML, OAuth/OIDC, SASL, or mTLS
+
+ Role-based access control
+ Cloud
+ Platform
+
+Grant precise access permissions using role-based scopes across specific resources
+
+ Access control lists (ACLs)
+ Cloud
+ Platform
+
+Define fine-grained allow rules per principal and resource
+
+ IP filtering
+ Cloud
+
+Restrict cluster access to authorized source IP address ranges
+
+ TLS encryption in transit
+ Cloud
+ Platform
+
+Encrypt all client and broker network traffic over the wire
+
+ Bring-your-own-key (BYOK) encryption at rest
+ Cloud
+
+Encrypt stored cluster data using your own customer-managed encryption keys
+
+ Client-Side Field Level Encryption (CSFLE)
+ Cloud
+ Platform
+
+Encrypt sensitive fields on the client side before transmitting data to brokers
+
+ Audit logging and access transparency
+ Cloud
+ Platform
+
+Track, log, and review authentication and access events for security compliance
+
+ Confluent Cloud for Government
+ Cloud
+
+Deploy FedRAMP-aligned event streaming for secure U.S. government workloads
+
+Networking
+
+ Public networking
+ Cloud
+
+Connect to clusters securely over public internet endpoints
+
+ AWS PrivateLink
+ Cloud
+
+Establish private, one-way network connections to clusters on AWS
+
+ Azure Private Link
+ Cloud
+
+Establish private network connectivity to clusters on Microsoft Azure
+
+ Google Cloud Private Service Connect
+ Cloud
+
+Establish private network connectivity to clusters on Google Cloud
+
+ VPC Peering, Transit Gateway, DNS Forwarding
+ Cloud
+
+Route private network traffic between your VPC and Confluent infrastructure
+
+ Custom domains and network isolation
+ Cloud
+
+Configure custom DNS domain names and isolate network segments
+
+ Confluent Gateway
+ Cloud
+
+Streamline client connections, secure access, and abstract cluster complexity with an intelligent routing proxy
+
+Management and operations
+
+ Confluent CLI
+ Cloud
+ Platform
+
+Administer Confluent Cloud and Platform resources directly from your terminal
+
+ Control Center
+ Platform
+
+Monitor and manage Confluent Platform clusters through a web UI
+
+ Confluent Cloud Console
+ Cloud
+
+Manage Confluent Cloud resources, configurations, and settings through a web UI
+
+ Unified Stream Manager
+ Cloud
+ Platform
+
+Manage hybrid cloud and self-managed clusters from a single control plane
+
+ Confluent for Kubernetes
+ Platform
+
+Deploy and manage Confluent Platform on Kubernetes using a dedicated operator
+
+ Ansible Playbooks for Confluent Platform
+ Platform
+
+Automate Confluent Platform installation and configuration with Ansible
+
+ Terraform provider
+ Cloud
+
+Provision and manage Confluent Cloud resources as code using Terraform
+
+ Pulumi provider
+ Cloud
+
+Provision and manage Confluent Cloud resources using Pulumi infrastructure as code
+
+ Cost allocation and billing
+ Cloud
+
+Track, allocate, and manage Confluent Cloud spend across teams and environments
+
+ Service quotas
+ Cloud
+
+Monitor and manage resource limits and service quotas across Confluent Cloud
+
+ Notifications management
+ Cloud
+
+Configure, route, and manage alerts and notifications for account events
+
+Monitoring and observability
+
+ Health+
+ Platform
+
+Monitor and alert on Confluent Platform health
+
+ JMX monitoring
+ Platform
+
+Expose broker and client metrics over JMX
+
+ Metrics Reporter
+ Platform
+
+Publish Confluent Platform metrics to a Kafka topic
+
+ Consumer lag monitoring
+ Cloud
+ Platform
+
+Monitor consumer lag and track processing delays across topics
+
+ Observability integrations
+ Cloud
+
+Export cluster metrics and logs to external monitoring tools like Datadog and Prometheus
+
+APIs and developer tools
+
+ Confluent Cloud REST API
+ Cloud
+
+Manage Confluent Cloud infrastructure programmatically over HTTP
+
+ Kafka Admin and Produce REST API
+ Cloud
+
+Produce records and administer Kafka topics programmatically over REST
+
+ Connect API
+ Cloud
+ Platform
+
+Configure, monitor, and manage Kafka connectors programmatically via REST
+
+ Metrics API
+ Cloud
+
+Query cluster health, performance, and resource metrics programmatically
+
+ GraphQL API
+ Cloud
+
+Fetch Confluent metadata and resource details using GraphQL queries
+
+ Confluent Plugin for JetBrains IDEs
+ Cloud
+ Platform
+
+Develop, test, and manage Kafka resources directly inside JetBrains IDEs
+
+ Confluent for VS Code
+ Cloud
+ Platform
+
+Manage topics, schemas, and connectors directly from Visual Studio Code
+
+ kcat
+ Platform
+
+Produce and consume Kafka messages directly from the command line
+
+Client libraries
+
+ Java Client
+ Cloud
+ Platform
+
+Produce and consume Kafka events in native Java applications
+
+ librdkafka (C/C++) Client
+ Cloud
+ Platform
+
+Build high-performance C/C++ producers and consumers or power derived language libraries
+
+ Rust Client
+ Cloud
+ Platform
+
+Build high-performance producers and consumers with a native Rust client for Kafka
+
+ Python Client
+ Cloud
+ Platform
+
+Produce and consume Kafka events using native Python code
+
+ Go Client
+ Cloud
+ Platform
+
+Build fast, concurrent Kafka producers and consumers in Go
+
+ .NET Client
+ Cloud
+ Platform
+
+Integrate Kafka messaging directly into .NET and C# applications
+
+ JavaScript Client
+ Cloud
+ Platform
+
+Produce and consume Kafka events in Node.js and JavaScript applications
+
+ Confluent Documentation
+
+ Get started
+
+ Search the docs or ask a question

@@ -1,0 +1,61 @@
+{
+ "chave": "web:zilliz.com",
+ "urls": [
+  "https://www.zilliz.com/",
+  "https://zilliz.com/",
+  "https://zilliz.com"
+ ],
+ "tipos": [
+  "service",
+  "tool"
+ ],
+ "termos": [
+  "Zilliz hybrid search",
+  "offline PostgreSQL",
+  "Portuguese trgm",
+  "Zilliz",
+  "Vektor-Datenbank",
+  "Embeddings",
+  "Vector Search",
+  "Embedding Database",
+  "vector search",
+  "hybrid search",
+  "scalable",
+  "Cloud Vector Database",
+  "vector database",
+  "AI search",
+  "cloud service",
+  "managed vector search",
+  "cloud",
+  "向量数据库",
+  "PostgreSQL 兼容",
+  "zilliz",
+  "embedding search",
+  "vector DB",
+  "cloud vector database",
+  "filtering"
+ ],
+ "mencoes": 15,
+ "familias": [
+  "cohere",
+  "mistral"
+ ],
+ "primeira_onda": 2,
+ "nomes": [
+  "Ollama + Zilliz (PostgreSQL-compatible VectorDB)",
+  "Zilliz",
+  "Zilliz (PostgreSQL-compatible VectorDB)",
+  "Zilliz Labs"
+ ],
+ "resumos": [
+  "Ollama生成嵌入存储到Zilliz（PostgreSQL兼容），结合BM25（通过`pg_trgm`扩展）实现混合检索，支持葡萄牙语重音（自定义扩展）。",
+  "Ein gehosteter Vektor-Datenbankdienst, der für die Speicherung und Abfrage von Embeddings entwickelt wurde.",
+  "Plataforma de búsqueda vectorial con soporte para BM25 y embeddings.",
+  "Plataforma de busca vetorial com suporte a BM25 e filtros, escalável."
+ ],
+ "fonte": "site",
+ "readme_status": "ok",
+ "readme_nome": "https://www.zilliz.com/",
+ "readme_cortado": false,
+ "readme": "[Zilliz Vector Lakebase for Enterprise AI, Powered by Milvus]\n\nThe Vector\n\nLakebase for AI\nBeyond vector databases — real-time serving, iterative discovery, and batch analytics on a single source of truth, each at the right cost, at hundred-billion data scale.\nBuilt by the creators of Milvus.\n\nBook a DemoGet Started Free\nBuild with CLIcurl -fsSL https://zilliz.com/cli/install.sh | bash\n\nProduct Deep Dive with Zilliz Agent\n\n// Try AskingIs Vector Lakebase a better fit for my AI application than a traditional vector database?I have a high-QPS workload (around 500 QPS) and need latency under 20ms. Which Zilliz solution should I use?I have 10 billion vectors but very low query traffic. Which Zilliz solution is the most cost-effective for this workload?Does Zilliz support BM25 full-text search, optionally combined with vector search, as well as reranking?Which types of use cases does Zilliz Cloud really excel at?Do you provide solutions with strong data security and privacy protection for my AI application?Type something to learn more.\n\nReal-time Serving\n\nIterative Discovery\n\nBatch Analytics\n\nHot Cache\n\nOn-demandCompute\n\nAnnouncing Zilliz Vector Lakebase Public Preview\nZilliz offers a fully managed Vector Lakebase powered by Milvus, unifying real-time vector search, lake-scale discovery, and AI data operations.Learn More\n\nRead story\nRead story\nRead story\n\nRead story\n\nRead story\n\nRead story\n\nRead story\n\nRead story\n\nBuilt for Reliability\n\nBuilt on a deep understanding of large-scale vector database failure modes. Production-tested across 10,000+ enterprises over 8 years.\n\nBuilt for Scale\n\nEngineered to handle 100B+ entities and 10K+ QPS with consistent latency and predictable performance.\n\nBuilt for Lower Cost\n\nAll data and indexes on S3, with hot cache and on-demand compute to cut costs by 90%.\n\nFull-Spectrum Search\n\nFrom vector and text to JSON and geospatial—combined with hybrid retrieval, filtering, and reranking for expressive multi-modal queries.\n\nLake-Native Storage\n\nUnified storage for serving and analytics, built on Vortex—an open, next-gen format. Up to 10× faster, cheaper random reads than Lance, with per-column format flexibility.\n\n“ Zilliz Cloud has been an important part of Exa’s journey to build and scale entity search, giving us the retrieval performance and operational simplicity we need to scale quickly and confidently. ”\n\nJeffrey WangCo-FounderRead more\n\n“ With Zilliz Cloud, we have achieved a true consciousness of data, bringing the data together in the way that an individual doing their job needs to see it. ”\n\nNathan MorrisCo-FounderRead more\n\n“ Zilliz Cloud has helped us create a strong foundation behind the scenes as we continue to grow and serve hundreds of thousands of clinicians. ”\n\nJagath KumarHead of Performance EngineeringRead more\n\n“ Zilliz gave us real-time retrieval for our multilingual RAG system at scale with tight latency targets. It freed up engineering cycles and let us focus on improving reasoning on the model side, not managing infrastructure. ”\n\nDr. Pratyush KumarCo-Founder\n\nReal-time Serving Highlights\n\nTiered Architecture\n\nOptimize for diverse workloads with flexible tiers—delivering ultra-high performance, balanced efficiency, and cost-effective scaling across massive datasets.\nPerformance-Optimized Solution\nCapacity-Optimized Solution\nTiered-Storage Solution\nExplore with Zilliz Agent\n\nMassive Multi-Tenancy for AI Apps\n\nUnlimited namespaces with hybrid vector, full-text, and JSON search—plus hot-cold data serving.\nExplore with Zilliz Agent\n\nGlobal Cluster\n\nMulti-region deployment with replication and failover—ensuring low-latency, high-availability access worldwide, supporting rapid global expansion of AI applications.Read Deep Dive\nExplore with Zilliz Agent\n\nPerformance\n\nVectorFull-TextTechnical Specs\nSetup: 768-dimensional vectors, top-k = 10, cluster-size = 1 CU\nPerformance-Optimized SolutionCapacity-Optimized SolutionTiered-Storage Solution\n\nAverage Latency\n\n3 ms\n\n21 ms\n\n107 ms\nP99 Latency\n\n5 ms\n\n37 ms\n\n253 ms\nQPS\n\n1476\n\n236\n\n22\nTotal Vectors\n\n2M\n\n6M\n\n25M\n\nOn-demand Compute Highlights\n\nOn-demand Search\n\nPay per query, not per provisioned compute—enabling dramatically lower cost than serverless at scale.Read Deep Dive\nExplore with Zilliz Agent\n\nSeamless Backfill & Schema Iteration\n\nBackfill and evolve schemas and data models online—without impacting serving, built for continuous AI iteration.\nExplore with Zilliz Agent\nBring Indexes to Your Lake\n\nAn optional access mode to operate directly on your S3 data (Iceberg, Lance, Vortex, Parquet). Keep data in your bucket while indexes are built and served on Zilliz—no copies, no ETL.\nExplore with Zilliz Agent\n\nPerformance and Cost\n\nSetup: 1 billion 768-dimensional vectors, top-k = 100k, cluster-size = 64 CU\nWarm SearchCold-Start Search\n\nAverage Latency\n\n0.6 s\n\n16 s\nP99 latency\n\n1.1 s\n\n18 s\nTotal Vectors\n\n1B\n\nCost per 1K Searches(5% cold-start, 95% warm)$9.9\nWrite cost$0\nStorage Cost / Month(1B vectors + index, 2.1 TB)$53.7\n\nThe CLI for Vector Lakebase\nYour Vector Lakebase. Your Terminal. Full Control.\nThe official CLI for management, search, and analytics.\n\nTerminal\n\nReady to start building?Get Started Free\n\nSaaS\nFully managed on Zilliz Cloud. Start in minutes.\nBYOC\nYour data stays in your VPC. We manage the rest.\nMigration\nFrom lake data, Milvus, Elasticsearch, and other vector DBs.\n\nOpen Source\nRun Milvus in your own environment.\n\nSecure and Compliant\nGlobally Distributed Vector Database InfrastructureExplore Zilliz Cloud Regions & Availability\n\nTake a snapshotDark mapLight map\n\nAWS\nGoogle Cloud\nAzure"
+}

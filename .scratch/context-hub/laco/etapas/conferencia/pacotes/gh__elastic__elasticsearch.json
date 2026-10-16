@@ -1,0 +1,76 @@
+{
+ "chave": "gh:elastic/elasticsearch",
+ "nomes": [
+  "Elasticsearch с Neural Search",
+  "Elasticsearch",
+  "ElasticSearch",
+  "Elasticsearch + Frontmatter Indexer (Local)",
+  "Elasticsearch Neural Search",
+  "elasticsearch",
+  "Lucene / Elasticsearch",
+  "BM25",
+  "Hybrid Search Framework (e.g., Elasticsearch + BM25 + Semantic)",
+  "Elasticsearch + Custom Analyzer (para português)",
+  "Elasticsearch Custom Analyzer (Portuguese)",
+  "Elasticsearch (可选替代，离线版)"
+ ],
+ "urls": [
+  "https://github.com/elastic/elasticsearch",
+  "https://www.elastic.co/guide/en/elasticsearch/reference/current/neural-search.html",
+  "https://lucene.apache.org/",
+  "https://github.com/elastic/elasticsearch/tree/master/plugins/analysis",
+  "https://www.elastic.co/guide/en/elasticsearch/reference/current/inference-api.html",
+  "https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-custom-analyzer.html",
+  "https://github.com/elastic/elasticsearch/tree/main/server/src/main/java/org/elasticsearch/search/similarity",
+  "https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-custom.html",
+  "https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-lang-analyzer.html"
+ ],
+ "readme_cortado": false,
+ "readme": "# Elasticsearch docs\n\n> [!IMPORTANT]  \n> Elastic docs migration from asciidoc to Markdown is ongoing for 9.0.\nElasticians can reach out in `#docs` or `#es-docs` on Slack if you have questions.\n\n> [!TIP]\n> If you need to update the `8.x` docs, you'll have to use the old `asciidoc` system. Refer to the [`8.x` README](https://github.com/elastic/elasticsearch/blob/8.x/docs/README.asciidoc) for more information.\n\nThis is a guide for writing, editing, and building the Elasticsearch docs.\n\n## Where do the docs source files live?\n\nAs of 9.0.0, the Elasticsearch docs have been redistributed as part of the [Elastic docs migration](https://elastic.github.io/docs-builder/migration/), with the aim of telling a more cohesive story across Elastic products, features, and tools.\n\nDocs live in **three places**:\n\n1. **Reference content** lives in this repo. This covers low-level stuff like settings and configuration information that is tightly coupled to code.\n- 👩🏽‍💻 **Engineers** own the bulk of this content.\n2.  **API reference docs** live in the [Elasticsearch specification](https://github.com/elastic/elasticsearch-specification/blob/main/README.md#how-to-generate-the-openapi-representation)\n    - This is where you need to update API docs published in the [new API docs system](https://www.elastic.co/docs/api/doc/elasticsearch/v8/)\n- 👩🏽‍💻 **Engineers** own this content.\n3. **Narrative, overview, and conceptual content** mostly lives in the [`docs-content`](https://github.com/elastic/docs-content/) repo. \n- ✍🏼 **Tech writers** own the bulk of this content.\n\n### Where can I find the source files for a specific page?\n\nOnce the docs are published, you'll be able to choose the `Edit this page` option to find the source file in the appropriate GitHub repo.\n\nIn the meantime, grep around in the Elasticsearch or `docs-content` repos to identify the source file.\n\n## Build the docs\n\nFor 9.0.0+, all (ex-API reference) docs are written in [Elastic docs V3 Markdown syntax](https://elastic.github.io/docs-builder/syntax/) and stored in `.md` files.\n\nYou can:\n* Build the [docs locally](https://elastic.github.io/docs-builder/contribute/locally/)\n* Make single-page edits using the [GitHub UI](https://elastic.github.io/docs-builder/contribute/on-the-web/)\n\n### Preview links for PRs\n\nFor open PRs, a GitHub action generates a live preview of any docs changes. If the check runs successfully, you can find the preview at:\n\n`https://docs-v3-preview.elastic.dev/elastic/elasticsearch/pull/<PR-NUMBER>/reference/`\n\nTo re-run CI checks, an Elastic employee can select the `Re-run this job` option in the GitHub Actions tab. \n\n## Backporting\n\n> [!TIP]\nAs of 9.0.0, we are currently only publishing from the `main` branch.\nWe will continue to backport changes as usual, in case we need to revisit this approach in the future.\n\nIf you need to update the `8.x` docs, you'll have to use the old `asciidoc` system. Refer to the [`8.x` README](https://github.com/elastic/elasticsearch/blob/8.x/docs/README.asciidoc) for more information.\n\n> [!NOTE]\n> If you need to make changes to 9.x docs and 8.x docs, you'll need to use two different workflows:\n\n- **For `9.x` docs**, create a PR using the new Markdown system against the `main` branch and backport as necessary.\n- **For `8.x` docs**, create a PR using the old AsciiDoc system against the `8.x` branch and backport the changes to any other `8.x` branches needed.\n\n## Test code snippets\n\n> [!IMPORTANT]\n> Snippet testing has been temporarily disabled for Elasticsearch docs. This is a WIP and should be re-enabled soon for the new Markdown docs.\n\nSnippets in `console` syntax are automatically tested by the command `./gradlew -pdocs check`. To test just the docs from a single page, use e.g. `./gradlew -pdocs yamlRestTest --tests \"*rollover*\"`.\n\nBy default each `console` snippet runs as its own isolated test. You can manipulate the test execution in the following ways:\n\n* `% TEST`: Explicitly marks a snippet as a test. Snippets marked this way are tests even if they don't have `` ```console `` but usually `% TEST` is used for its modifiers:\n  * `% TEST[s/foo/bar/]`: Replace `foo` with `bar` in the generated test. This should be used sparingly because it makes the snippet \"lie\". Sometimes, though, you can use it to make the snippet more clear. Keep in mind that if there are multiple substitutions then they are applied in the order that they are defined.\n  * `% TEST[catch:foo]`: Used to expect errors in the requests. Replace `foo` with `request` to expect a 400 error, for example. If the snippet contains multiple requests then only the last request will expect the error.\n  * `% TEST[continued]`: Continue the test started in the last snippet. Between tests the nodes are cleaned: indexes are removed, etc. This prevents that from happening between snippets because the two snippets are a single test. This is most useful when you have text and snippets that work together to tell the story of some use case because it merges the snippets (and thus the use case) into one big test.\n      * You can't use `% TEST[continued]` immediately after `% TESTSETUP` or `// TEARDOWN`.\n  * `% TEST[skip:reason]`: Skip this test. Replace `reason` with the actual reason to skip the test. Snippets without `% TEST` or `// CONSOLE` aren't considered tests anyway but this is useful for explicitly documenting the reason why the test shouldn't be run.\n  * `% TEST[setup:name]`: Run some setup code before running the snippet. This is useful for creating and populating indexes used in the snippet. The `name` is split on `,` and looked up in the `setups` defined in `docs/build.gradle`. See `% TESTSETUP` below for a similar feature.\n  * `% TEST[teardown:name]`: Run some teardown code after the snippet. This is useful for performing hidden cleanup, such as deleting index templates. The `name` is split on `,` and looked up in the `teardowns` defined in `docs/build.gradle`. See `% TESTSETUP` below for a similar feature.\n  * `% TEST[warning:some warning]`: Expect the response to include a `Warning` header. If the response doesn't include a `Warning` header with the exact text then the test fails. If the response includes `Warning` headers that aren't expected then the test fails.\n* `` ```console-result ``: Matches this snippet against the body of the response of the last test. If the response is JSON then order is ignored. If you add `% TEST[continued]` to the snippet after `` ```console-result `` it will continue in the same test, allowing you to interleave requests with responses to check.\n* `% TESTRESPONSE`: Explicitly marks a snippet as a test response even without `` ```console-result ``. Similarly to `% TEST` this is mostly used for its modifiers.\n  * You can't use `` ```console-result `` immediately after `% TESTSETUP`. Instead, consider using `% TEST[continued]` or rearrange your snippets.\n\n  > [!NOTE]  \n  > Previously we only used `% TESTRESPONSE` instead of `` ```console-result `` so you'll see that a lot in older branches but we prefer `` ```console-result `` now.\n\n  * `% TESTRESPONSE[s/foo/bar/]`: Substitutions. See `% TEST[s/foo/bar]` for how it works. These are much more common than `% TEST[s/foo/bar]` because they are useful for eliding portions of the response that are not pertinent to the documentation.\n    * One interesting difference here is that you often want to match against the response from Elasticsearch. To do that you can reference the \"body\" of the response like this: `% TESTRESPONSE[s/\"took\": 25/\"took\": $body.took/]`. Note the `$body` string. This says \"I don't expect that 25 number in the response, just match against what is in the response.\" Instead of writing the path into the response after `$body` you can write `$_path` which \"figures out\" the path. This is especially useful for making sweeping assertions like \"I made up all the numbers in this example, don't compare them\" which looks like `% TESTRESPONSE[s/\\d+/$body.$_path/]`.\n  * `% TESTRESPONSE[non_json]`: Add substitutions for testing responses in a format other than JSON. Use this after all other substitutions so it doesn't make other substitutions difficult.\n  * `% TESTRESPONSE[skip:reason]`: Skip the assertions specified by this response.\n* `% TESTSETUP`: Marks this snippet as the \"setup\" for all other snippets in this file. In order to enhance clarity and simplify understanding for readers, a straightforward approach involves marking the first snippet in the documentation file with the `% TESTSETUP` marker. By doing so, it clearly indicates that this particular snippet serves as the setup or preparation step for all subsequent snippets in the file. This helps in explaining the necessary steps that need to be executed before running the examples. Unlike the alternative convention `% TEST[setup:name]`, which relies on a setup defined in a separate file, this convention brings the setup directly into the documentation file, making it more self-contained and reducing ambiguity. By adopting this convention, users can easily identify and follow the correct sequence of steps to ensure that the examples provided in the documentation work as intended.\n* `// TEARDOWN`: Ends and cleans up a test series started with `% TESTSETUP` or `% TEST[setup:name]`. You can use `// TEARDOWN` to set up multiple tests in the same file.\n* `// NOTCONSOLE`: Marks this snippet as neither `// CONSOLE` nor `% TESTRESPONSE`, excluding it from the list of unconverted snippets. We should only use this for snippets that *are* JSON but are *not* responses or requests.\n\nIn addition to the standard CONSOLE syntax these snippets can contain blocks of yaml surrounded by markers like this:\n\n```\nstartyaml\n  - compare_analyzers: {index: thai_example, first: thai, second: rebuilt_thai}\nendyaml\n```\n\nThis allows slightly more expressive testing of the snippets. Since that syntax is not supported by `` ```console `` the usual way to incorporate it is with a `% TEST[s//]` marker like this:\n\n```\n% TEST[s/\\n$/\\nstartyaml\\n  - compare_analyzers: {index: thai_example, first: thai, second: rebuilt_thai}\\nendyaml\\n/]\n```\n\nAny place you can use json you can use elements like `$body.path.to.thing` which is replaced on the fly with the contents of the thing at `path.to.thing` in the last response.\n",
+ "fonte": "readme",
+ "respostas": [
+  {
+   "por": "dots3-note-preview",
+   "resposta": {
+    "serve": "none",
+    "role": "",
+    "place": [
+     "n/a"
+    ],
+    "mechanism": [
+     "n/a"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "unknown",
+    "doubt": false,
+    "evidence": "README states: 'This is a guide for writing, editing, and building the Elasticsearch docs.' No mention of MCP, Windows, or search functionality."
+   }
+  },
+  {
+   "por": "ising-calibration-1.5-31b",
+   "resposta": {
+    "serve": "stack",
+    "role": "Provides a scalable, distributed search engine with neural search capabilities for the hub's data.",
+    "place": [
+     "network_service"
+    ],
+    "mechanism": [
+     "bm25",
+     "vector",
+     "hybrid",
+     "embeddings"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "yes",
+    "license": "Apache-2.0",
+    "maturity": "stable",
+    "doubt": false,
+    "evidence": "The README explicitly states that Elasticsearch supports neural search, which involves vector embeddings and hybrid search mechanisms. It also mentions the use of custom analyzers for Portuguese, indicating language support. The project is hosted on GitHub with a clear license and stable release status."
+   }
+  }
+ ]
+}

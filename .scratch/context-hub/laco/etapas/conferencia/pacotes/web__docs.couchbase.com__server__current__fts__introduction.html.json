@@ -1,0 +1,54 @@
+{
+ "chave": "web:docs.couchbase.com/server/current/fts/introduction.html",
+ "nomes": [
+  "Couchbase Server Full Text Search (FTS)"
+ ],
+ "urls": [
+  "https://docs.couchbase.com/server/current/fts/introduction.html"
+ ],
+ "readme_cortado": false,
+ "readme": "[Couchbase Documentation | Couchbase Docs]\n\nFor AI agents:\n A documentation index is available at /llms.txt.\n\n Markdown versions of all docs pages are available by replacing `.html` with `.md`.\n\nCouchbase Documentation\n\nCouchbase is the modern database for enterprise applications.\n\nCouchbase is a distributed document database with a powerful search engine and in-built operational and analytical capabilities.\nIt brings the power of NoSQL to the edge and provides fast, efficient bidirectional synchronization of data between the edge and the cloud.\n\nFind the documentation, samples, and references to help you use Couchbase and build applications.\n\n// List the schedule of flights from Boston\n// to San Francisco on JETBLUE\n\nSELECT DISTINCT airline.name, route.schedule\nFROM `travel-sample`.inventory.route\n JOIN `travel-sample`.inventory.airline\n ON KEYS route.airlineid\nWHERE route.sourceairport = \"BOS\"\nAND route.destinationairport = \"SFO\"\nAND airline.callsign = \"JETBLUE\";\n\nGet Started\n\nCouchbase Capella (DBaaS)\n\nExplore Couchbase Capella, our fully-managed database as a service offering.\nTake the complexity out of deploying, managing, scaling, and securing Couchbase in the public cloud.\nStore, query, and analyze any amount of data — and let us handle more of the administration — all in a few clicks.\n\nCouchbase Capella\n\nCapella Analytics (RT-OLAP)\n\nCapella Analytics is a real-time analytical database (RT-OLAP) for real time apps and operational intelligence.\nCapella Analytics is a standalone, cloud-only offering from Couchbase under the Capella family of products.\n\nCapella Analytics\n\nCouchbase Server\n\nExplore Couchbase Server, a modern, distributed document database with all the desired capabilities of a relational database and more. It exposes a scale-out, key-value store with managed cache for sub-millisecond data operations, purpose-built indexers for efficient queries, and a powerful query engine for executing SQL-like queries.\n\nCouchbase Server\n\nEnterprise Analytics (RT-OLAP)\n\nEnterprise Analytics is a self-managed analytical database (RT-OLAP) for real time apps and operational intelligence.\n\nEnterprise Analytics\n\nCouchbase Mobile\n\nCouchbase Mobile brings the power of NoSQL to the edge.\nThe combination of Sync Gateway and Couchbase Lite coupled with the power of Couchbase Server provides fast, efficient bidirectional synchronization of data between the edge and the cloud.\nEnabling you to deploy your offline-first mobile and embedded applications with greater agility on premises or in any cloud.\n\nCouchbase Lite |\nSync Gateway |\nCouchbase Edge Server\n\nThe Couchbase AI Data Plane\n\nThe Couchbase AI Data Plane is a fully managed set of tools that help you build, deploy, and scale your agentic and retrieval-augmented generation (RAG) AI applications.\nThese tools integrate seamlessly with the Couchbase Capella cloud platform, enabling you to develop your AI applications on the same platform as your data.\n\nThe Couchbase AI Data Plane\n\nDeveloper Tools\n\nSDK and Connectors\n\nCouchbase SDKs allow applications to access a Couchbase cluster and the big data Connectors enable data exchange with other platforms.\n\nDeveloper Docs |\nOperational SDKs |\nEnterprise Analytics SDKs |\nCapella Analytics SDKs\n\nCLI and REST APIs\n\nUse the command-line interface (CLI) tools and REST API to manage and monitor your Couchbase deployment.\n\nCouchbase CLI | REST API\n\nCouchbase Shell\n\nA modern shell to interact with Couchbase Server and Capella, now available.\n\nExplore Couchbase Shell\n\nMore Developer Resources\n\nDeveloper Portal\n\nExplore a variety of resources - sample apps, videos, blogs, and more, to build applications using Couchbase.\n\nDeveloper Portal\nDeveloper Tutorials\n\nAcademy\n\nExplore extensive hands-on learning experiences through free, online courses or under the guidance of an in-person instructor.\n\nAcademy\n\nCommunity\n\nWith open source roots, Couchbase has a rich history of collaboration and community. Connect with our developer community and get involved.\n\nCommunity\n\nExplore Products and Services\n\nCloud\nServer\nSDK and Connectors\nMobile\n\nCouchbase Capella\n\nCapella Analytics\n\nCouchbase Server\n\nEnterprise Analytics\n\nCouchbase Autonomous Operator\n\nCouchbase Service Broker\n\nCouchbase Monitoring and Observability Stack\n\nCouchbase Java SDK\n\nCouchbase Scala SDK\n\nCouchbase .NET SDK\n\nCouchbase C++ SDK\n\nCouchbase C SDK\n\nCouchbase Node.js SDK\n\nCouchbase PHP SDK\n\nCouchbase Python SDK\n\nCouchbase Ruby SDK\n\nCouchbase Go SDK\n\nCouchbase Kotlin SDK\n\nCouchbase Elasticsearch Connector\n\nCouchbase Kafka Connector\n\nCouchbase Spark Connector\n\nGo Analytics SDK\n\nJava Analytics SDK\n\nNode.js Analytics SDK\n\nPython Analytics SDK\n\nGo Columnar SDK\n\nJava Columnar SDK\n\nNode.js Columnar SDK\n\nPython Columnar SDK\n\nCouchbase Lite JavaScript\n\nCouchbase Lite C#\n\nCouchbase Lite Java\n\nCouchbase Lite Java Android\n\nCouchbase Lite Swift\n\nCouchbase Lite Objective-C\n\nCouchbase Sync Gateway\n\nFeedback and Contributions\n\nProvide Feedback\n\nProvide feedback, and get help with any problem you may encounter.\n\nProvide Feedback\n\nContact Support\n\nCouchbase Support provides online support for customers of Enterprise Edition who have a support contract.\n\nContact Couchbase\n\nContribute\n\nYou can submit simple changes, such as typo fixes and minor clarifications directly on GitHub. Contributions are greatly encouraged.\n\nContribute to the Documentation",
+ "fonte": "site",
+ "respostas": [
+  {
+   "por": "codestral-2508",
+   "resposta": {
+    "serve": "search",
+    "role": "full-text search for Markdown notes",
+    "place": [
+     "inside_db_mcp"
+    ],
+    "mechanism": [
+     "full_text"
+    ],
+    "mcp": "unknown",
+    "windows": "yes",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "stable",
+    "doubt": false,
+    "evidence": "Couchbase Server Full Text Search (FTS), Couchbase Mobile brings the power of NoSQL to the edge."
+   }
+  },
+  {
+   "por": "nemotron-3-super-120b",
+   "resposta": {
+    "serve": "search",
+    "role": "Provides full-text search over Markdown notes via Couchbase FTS",
+    "place": [
+     "network_service"
+    ],
+    "mechanism": [
+     "full_text"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "unknown",
+    "doubt": false,
+    "evidence": "\"Couchbase is a distributed document database with a powerful search engine and in-built operational and analytical capabilities.\""
+   }
+  }
+ ]
+}

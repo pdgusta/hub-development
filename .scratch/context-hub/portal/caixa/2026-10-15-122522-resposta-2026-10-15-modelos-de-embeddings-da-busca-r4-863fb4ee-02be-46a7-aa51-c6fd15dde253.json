@@ -1,0 +1,96 @@
+{
+  "envio": "863fb4ee-02be-46a7-aa51-c6fd15dde253",
+  "tipo": "resposta",
+  "enviada": "2026-10-15T12:25:22-03:00",
+  "alvo": {
+    "tipo": "rodada",
+    "id": "2026-10-15-modelos-de-embeddings-da-busca-r4",
+    "titulo": "Modelos de embeddings: qual entra no hub"
+  },
+  "ticket": "54",
+  "substitui": null,
+  "rodada": {
+    "id": "2026-10-15-modelos-de-embeddings-da-busca-r4",
+    "base": "6cb27f6f85dc20d6f03f66dc1714ca4067ea7a777877421dca3edc160e25c064",
+    "titulo": "Modelos de embeddings: qual entra no hub",
+    "ticket": "54",
+    "perguntas": [
+      {
+        "id": "modelo",
+        "titulo": "Qual modelo",
+        "tipo": "escolha",
+        "recomendada": [
+          "A"
+        ],
+        "opcoes": [
+          {
+            "chave": "A",
+            "texto": "arctic-embed-m-v2.0, local nas duas máquinas: o conteúdo não sai da máquina, responde em 46 ms e é o único já provado no obsidian-hybrid-search; perde uns 0,03 para o embeddinggemma-300m, dentro do ruído"
+          },
+          {
+            "chave": "B",
+            "texto": "embeddinggemma-300m, local: o melhor local, sobretudo nas perguntas com outras palavras; 228 ms por consulta; não foi testado no obsidian-hybrid-search"
+          },
+          {
+            "chave": "C",
+            "texto": "gemini-embedding-001, pela API do Google via FreeLLMAPI: o melhor de todos (0,73), mas todo o hub, dado de cliente incluído, vai ao Google para indexar e cada busca depende da rede e da cota do gateway"
+          },
+          {
+            "chave": "D",
+            "texto": "local como padrão (arctic) e o gemini como segunda opção ligável depois, para as buscas por sentido"
+          }
+        ],
+        "proposta": null
+      },
+      {
+        "id": "qwen3",
+        "titulo": "O Qwen3",
+        "tipo": "escolha",
+        "recomendada": [
+          "A"
+        ],
+        "opcoes": [
+          {
+            "chave": "A",
+            "texto": "Fica de fora sem investigar: mesmo corrigido, ele teria de passar o embeddinggemma-300m, e o tamanho dele (7,5 GB de memória ao indexar) já pesa contra"
+          },
+          {
+            "chave": "B",
+            "texto": "Investigar a configuração (quantização e preenchimento) e rodar de novo, uns 70 min de máquina sem agente"
+          }
+        ],
+        "proposta": null
+      },
+      {
+        "id": "algo-mais",
+        "titulo": "Algo mais?",
+        "tipo": "texto",
+        "recomendada": [],
+        "opcoes": [],
+        "proposta": null
+      }
+    ]
+  },
+  "corpo_hash": "aca050bc9ffe0a8b5a742c86d02929dd016e14d432b71f27f7c03ca4c8d7ca4b",
+  "corpo": {
+    "tipo": "resposta",
+    "rodada": "2026-10-15-modelos-de-embeddings-da-busca-r4",
+    "base": "6cb27f6f85dc20d6f03f66dc1714ca4067ea7a777877421dca3edc160e25c064",
+    "respostas": {
+      "modelo": {
+        "escolha": [
+          "D"
+        ],
+        "outra": null,
+        "comentario": null
+      },
+      "qwen3": {
+        "escolha": [
+          "A"
+        ],
+        "outra": null,
+        "comentario": null
+      }
+    }
+  }
+}

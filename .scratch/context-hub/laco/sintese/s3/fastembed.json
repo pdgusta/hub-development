@@ -1,0 +1,53 @@
+{
+ "nome": "FastEmbed",
+ "url": "https://github.com/qdrant/fastembed",
+ "papel": "peça de embeddings",
+ "windows": "yes: CI python-tests.yml roda matriz com windows-latest; pip install fastembed",
+ "mcp": "no (a biblioteca não tem MCP). third_party oficial-Qdrant: mcp-server-qdrant usa fastembed como único EMBEDDING_PROVIDER",
+ "portugues": "Modelo padrão BAAI/bge-small-en-v1.5 (inglês). Multilíngue só via lista de modelos suportados ou add_custom_model, ex.: intfloat/multilingual-e5-small (384 dim, ONNX, pooling MEAN). Sem stemmer/stopwords (não é busca textual).",
+ "markdown_frontmatter": "Não aplicável: só gera vetores a partir de strings; chunking e frontmatter são do chamador.",
+ "atualizacao": "Não aplicável (biblioteca; o chamador reindexa).",
+ "embeddings_endpoint": "Só modelo local (ONNX Runtime, sem GPU). Não é cliente de endpoint OpenAI; é a alternativa local ao FreeLLMAPI.",
+ "recursos": "Python >=3.10, onnxruntime, sem PyTorch; modelos baixados no primeiro uso (Hugging Face). Número de RAM/disco não verificado.",
+ "licenca": "Apache-2.0",
+ "ultimo_release": "v0.9.0 (2026-10-07)",
+ "atividade": "2026-10-13 (feed de commits)",
+ "maturidade": "stable (0.x, ativo)",
+ "encaixe": "Cópia leve no disco de cada máquina, ou dentro do MCP do banco, para embeddings locais multilíngues (e5) sem rede. Impedimento: modelo padrão é inglês; exige escolher/adicionar modelo multilíngue.",
+ "evidencias": [
+  {
+   "campo": "windows",
+   "url": "https://raw.githubusercontent.com/qdrant/fastembed/main/.github/workflows/python-tests.yml",
+   "citacao": "- windows-latest"
+  },
+  {
+   "campo": "licenca",
+   "url": "https://raw.githubusercontent.com/qdrant/fastembed/main/pyproject.toml",
+   "citacao": "license = \"Apache-2.0\""
+  },
+  {
+   "campo": "recursos",
+   "url": "https://github.com/qdrant/fastembed",
+   "citacao": "We don't require a GPU and don't download GBs of PyTorch dependencies, and instead use the ONNX Runtime."
+  },
+  {
+   "campo": "portugues",
+   "url": "https://github.com/qdrant/fastembed",
+   "citacao": "TextEmbedding(model_name=\"intfloat/multilingual-e5-small\")"
+  },
+  {
+   "campo": "mcp",
+   "url": "https://raw.githubusercontent.com/qdrant/mcp-server-qdrant/master/README.md",
+   "citacao": "`EMBEDDING_PROVIDER` | Embedding provider to use (currently only \"fastembed\" is supported)"
+  },
+  {
+   "campo": "ultimo_release",
+   "url": "https://github.com/qdrant/fastembed/releases.atom",
+   "citacao": "v0.9.0 updated 2026-10-07T16:36:13Z"
+  }
+ ],
+ "nao_verificado": [
+  "RAM/disco por modelo",
+  "lista completa de modelos multilíngues suportados nativamente"
+ ]
+}

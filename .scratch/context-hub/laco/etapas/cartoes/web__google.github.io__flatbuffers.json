@@ -1,0 +1,68 @@
+{
+ "chave": "web:google.github.io/flatbuffers",
+ "urls": [
+  "https://google.github.io/flatbuffers/",
+  "https://flatbuffers.org/",
+  "https://google.github.io/flatbuffers",
+  "https://flatbuffers.dev/",
+  "https://flatbuffers.dev",
+  "https://flatbuffers.github.io/"
+ ],
+ "tipos": [
+  "library",
+  "tool",
+  "concept"
+ ],
+ "termos": [
+  "flatbuffers",
+  "flatbuffers c++",
+  "flatbuffers windows",
+  "Protobuf",
+  "MemoryMapped",
+  "On-Disk Search",
+  "zero-copy",
+  "memory mapping",
+  "FlatBuffers",
+  "serialização binária",
+  "FlatBuffers C++",
+  "FlatBuffers JavaScript",
+  "Google FlatBuffers",
+  "serialização",
+  "deserialização",
+  "serialização de dados",
+  "acesso direto",
+  "binary serialization",
+  "google flatbuffers",
+  "zero-copy serialization",
+  "serialization",
+  "cross-platform",
+  "Google"
+ ],
+ "mencoes": 15,
+ "familias": [
+  "agnes",
+  "cohere",
+  "dots3",
+  "gemma",
+  "gpt-oss",
+  "liquid",
+  "llama",
+  "mistral",
+  "nemotron"
+ ],
+ "primeira_onda": 4,
+ "nomes": [
+  "FlatBuffers"
+ ],
+ "resumos": [
+  "Biblioteca para serialização de dados em memória, otimizada para desempenho e uso em tempo real.",
+  "零拷贝的二进制格式，适合高性能离线搜索与存储。",
+  "An alternative to protobuf that allows accessing serialized data without deserialization for even faster local access.",
+  "FlatBuffers é uma biblioteca de serialização binária rápida e eficiente, que permite acesso direto sem parsing, ideal para dados de alto desempenho."
+ ],
+ "fonte": "site",
+ "readme_status": "ok",
+ "readme_nome": "https://google.github.io/flatbuffers/",
+ "readme_cortado": false,
+ "readme": "[FlatBuffers Docs]\n\nSkip to content\n\nOverview\n\nFlatBuffers is an efficient cross platform serialization library for C++, C#, C,\nGo, Java, Kotlin, JavaScript, Lobster, Lua, TypeScript, PHP, Python, Rust and\nSwift. It was originally created at Google for game development and other\nperformance-critical applications.\n\nIt is available as Open Source on\nGitHub under the Apache license v2.0.\n\nWhy Use FlatBuffers?\n\n Access to serialized data without\n parsing/unpacking\n\nAccess the data directly without unpacking or parsing.\n\n Memory Efficiency and Speed\n\nThe only memory needed to access your data is that of the buffer.\n No heap is required.\n\n Backwards and Forwards\n Compatibility\n\nFlatBuffers enables the schema to evolve over time while still maintaining\n forwards and backwards compatibility with old flatbuffers.\n\n Small Footprint\n\nMinimal dependencies and small code footprint.\n\nWhy not use...\n\nProtocol BuffersJSON\n\nProtocol Buffers is indeed relatively similar to FlatBuffers, with the primary\ndifference being that FlatBuffers does not need a parsing/unpacking step to a\nsecondary representation before you can access data, often coupled with\nper-object memory allocation. The code is an order of magnitude bigger, too.\n\nJSON is very readable (which is why we use it as our optional text format) and\nvery convenient when used together with dynamically typed languages (such as\nJavaScript). When serializing data from statically typed languages, however,\nJSON not only has the obvious drawback of runtime inefficiency, but also forces\nyou to write more code to access data (counterintuitively) due to its\ndynamic-typing serialization system. In this context, it is only a better choice\nfor systems that have very little to no information ahead of time about what\ndata needs to be stored."
+}

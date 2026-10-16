@@ -1,0 +1,54 @@
+{
+ "chave": "gh:arangodb-community/python-arango",
+ "nomes": [
+  "python‑arango"
+ ],
+ "urls": [
+  "https://github.com/ArangoDB-Community/python-arango"
+ ],
+ "readme_cortado": false,
+ "readme": "![Logo](https://user-images.githubusercontent.com/2701938/108583516-c3576680-72ee-11eb-883f-2d9b52e74e45.png)\n\n[![CircleCI](https://dl.circleci.com/status-badge/img/gh/arangodb/python-arango/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/arangodb/python-arango/tree/main)\n[![CodeQL](https://github.com/arangodb/python-arango/actions/workflows/codeql.yaml/badge.svg)](https://github.com/arangodb/python-arango/actions/workflows/codeql.yaml)\n[![Docs](https://github.com/arangodb/python-arango/actions/workflows/docs.yaml/badge.svg)](https://github.com/arangodb/python-arango/actions/workflows/docs.yaml)\n[![Coverage Status](https://codecov.io/gh/arangodb/python-arango/branch/main/graph/badge.svg?token=M8zrjrzsUY)](https://codecov.io/gh/arangodb/python-arango)\n[![Last commit](https://img.shields.io/github/last-commit/arangodb/python-arango)](https://github.com/arangodb/python-arango/commits/main)\n\n[![PyPI version badge](https://img.shields.io/pypi/v/python-arango?color=3775A9&style=for-the-badge&logo=pypi&logoColor=FFD43B)](https://pypi.org/project/python-arango/)\n[![Python versions badge](https://img.shields.io/badge/3.9%2B-3776AB?style=for-the-badge&logo=python&logoColor=FFD43B&label=Python)](https://pypi.org/project/python-arango/)\n\n[![License](https://img.shields.io/github/license/arangodb/python-arango?color=9E2165&style=for-the-badge)](https://github.com/arangodb/python-arango/blob/main/LICENSE)\n[![Code style: black](https://img.shields.io/static/v1?style=for-the-badge&label=code%20style&message=black&color=black)](https://github.com/psf/black)\n[![Downloads](https://img.shields.io/pepy/dt/python-arango?style=for-the-badge&color=282661\n)](https://pepy.tech/project/python-arango)\n\n# Python-Arango\n\nPython driver for [ArangoDB](https://www.arangodb.com), a scalable multi-model\ndatabase natively supporting documents, graphs and search.\n\nIf you're interested in using asyncio, please check [python-arango-async](https://github.com/arangodb/python-arango-async).\n\n## Requirements\n\n- ArangoDB version 3.11+\n- Python version 3.10+\n\n## Installation\n\n```shell\npip install python-arango --upgrade\n```\n\n## Getting Started\n\nHere is a simple usage example:\n\n```python\nfrom arango import ArangoClient\n\n# Initialize the client for ArangoDB.\nclient = ArangoClient(hosts=\"http://localhost:8529\")\n\n# Connect to \"_system\" database as root user.\nsys_db = client.db(\"_system\", username=\"root\", password=\"passwd\")\n\n# Create a new database named \"test\".\nsys_db.create_database(\"test\")\n\n# Connect to \"test\" database as root user.\ndb = client.db(\"test\", username=\"root\", password=\"passwd\")\n\n# Create a new collection named \"students\".\nstudents = db.create_collection(\"students\")\n\n# Add a persistent index to the collection.\nstudents.add_index({'type': 'persistent', 'fields': ['name'], 'unique': True})\n\n# Insert new documents into the collection.\nstudents.insert({\"name\": \"jane\", \"age\": 39})\nstudents.insert({\"name\": \"josh\", \"age\": 18})\nstudents.insert({\"name\": \"judy\", \"age\": 21})\n\n# Execute an AQL query and iterate through the result cursor.\ncursor = db.aql.execute(\"FOR doc IN students RETURN doc\")\nstudent_names = [document[\"name\"] for document in cursor]\n```\n\nAnother example with [graphs](https://docs.arangodb.com/stable/graphs/):\n\n```python\nfrom arango import ArangoClient\n\n# Initialize the client for ArangoDB.\nclient = ArangoClient(hosts=\"http://localhost:8529\")\n\n# Connect to \"test\" database as root user.\ndb = client.db(\"test\", username=\"root\", password=\"passwd\")\n\n# Create a new graph named \"school\".\ngraph = db.create_graph(\"school\")\n\n# Create a new EnterpriseGraph [Enterprise Edition]\neegraph = db.create_graph(\n    name=\"school\",\n    smart=True)\n\n# Create vertex collections for the graph.\nstudents = graph.create_vertex_collection(\"students\")\nlectures = graph.create_vertex_collection(\"lectures\")\n\n# Create an edge definition (relation) for the graph.\nedges = graph.create_edge_definition(\n    edge_collection=\"register\",\n    from_vertex_collections=[\"students\"],\n    to_vertex_collections=[\"lectures\"]\n)\n\n# Insert vertex documents into \"students\" (from) vertex collection.\nstudents.insert({\"_key\": \"01\", \"full_name\": \"Anna Smith\"})\nstudents.insert({\"_key\": \"02\", \"full_name\": \"Jake Clark\"})\nstudents.insert({\"_key\": \"03\", \"full_name\": \"Lisa Jones\"})\n\n# Insert vertex documents into \"lectures\" (to) vertex collection.\nlectures.insert({\"_key\": \"MAT101\", \"title\": \"Calculus\"})\nlectures.insert({\"_key\": \"STA101\", \"title\": \"Statistics\"})\nlectures.insert({\"_key\": \"CSC101\", \"title\": \"Algorithms\"})\n\n# Insert edge documents into \"register\" edge collection.\nedges.insert({\"_from\": \"students/01\", \"_to\": \"lectures/MAT101\"})\nedges.insert({\"_from\": \"students/01\", \"_to\": \"lectures/STA101\"})\nedges.insert({\"_from\": \"students/01\", \"_to\": \"lectures/CSC101\"})\nedges.insert({\"_from\": \"students/02\", \"_to\": \"lectures/MAT101\"})\nedges.insert({\"_from\": \"students/02\", \"_to\": \"lectures/STA101\"})\nedges.insert({\"_from\": \"students/03\", \"_to\": \"lectures/CSC101\"})\n\n# Traverse the graph in outbound direction, breath-first.\nquery = \"\"\"\n    FOR v, e, p IN 1..3 OUTBOUND 'students/01' GRAPH 'school'\n    OPTIONS { order: 'bfs', uniqueVertices: 'global' }\n    RETURN {vertex: v, edge: e, path: p}\n    \"\"\"\ncursor = db.aql.execute(query)\n```\n\nPlease see the [documentation](https://docs.python-arango.com) for more details.\n",
+ "fonte": "readme",
+ "respostas": [
+  {
+   "por": "agnes-2.5-flash",
+   "resposta": {
+    "serve": "none",
+    "role": "",
+    "place": [
+     "n/a"
+    ],
+    "mechanism": [
+     "n/a"
+    ],
+    "mcp": "no",
+    "windows": "unknown",
+    "portuguese": "no",
+    "license": "unknown",
+    "maturity": "stable",
+    "doubt": false,
+    "evidence": "Python driver for ArangoDB database; unrelated to CouchDB-based personal context hub."
+   }
+  },
+  {
+   "por": "mistral-code-fim",
+   "resposta": {
+    "serve": "stack",
+    "role": "ArangoDB Python driver",
+    "place": [
+     "library"
+    ],
+    "mechanism": [
+     "n/a"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "Apache-2.0",
+    "maturity": "stable",
+    "doubt": false,
+    "evidence": "Python driver for ArangoDB, a scalable multi-model database natively supporting documents, graphs and search."
+   }
+  }
+ ]
+}

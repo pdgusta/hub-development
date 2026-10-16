@@ -1,0 +1,115 @@
+{
+  "envio": "5b0c7e2a-3f41-4d8e-9a17-2c6e8f0b4d31",
+  "tipo": "alteracao-laco",
+  "enviada": "2026-10-14T21:59:30-03:00",
+  "alvo": {
+    "tipo": "laco",
+    "id": "pesquisa-de-regas",
+    "titulo": "Pesquisa de horários de rega"
+  },
+  "ticket": "05",
+  "substitui": null,
+  "laco": {
+    "id": "pesquisa-de-regas",
+    "titulo": "Pesquisa de horários de rega",
+    "ticket": "05",
+    "execucao": {
+      "id": "regas-2026-10-14",
+      "inicio": "2026-10-14T20:36:47-03:00",
+      "terminou_em": null
+    },
+    "revisao": "e96e47268d9614816180b17bb035b8f54393851f7bcc80fcf0ef1ad2836c5972",
+    "no": {
+      "id": "parada",
+      "titulo": "Parada",
+      "papel": "decisao"
+    },
+    "capacidades": [
+      {
+        "id": "parar-apos-onda",
+        "onda_atual": 2,
+        "onda_ilegivel": null
+      },
+      {
+        "id": "parar-de-despachar"
+      }
+    ],
+    "situacao": "rodando",
+    "controle": {
+      "id": "gate_novos",
+      "no": "parada",
+      "rotulo": "novos por onda abaixo de",
+      "tipo": "numero",
+      "faixa": [
+        0.01,
+        0.5
+      ],
+      "opcoes": null,
+      "itens": null,
+      "unidade": "de novos",
+      "escala": "porcento",
+      "aceita_nulo": false,
+      "nulo": null,
+      "quando_vale": "proxima-onda",
+      "releitura": "ao-ligar",
+      "configurado": {
+        "valor": 0.15,
+        "como": "lido",
+        "fonte": "config.json → gate_novos",
+        "hora": "2026-10-14T21:59:01-03:00",
+        "ilegivel": null
+      },
+      "em_uso": {
+        "estado": "nao-confirmado",
+        "valor": null,
+        "como": null,
+        "fonte": null,
+        "hora": null,
+        "ilegivel": null,
+        "diverge": false
+      },
+      "precondicoes": {},
+      "definicao": {
+        "id": "gate_novos",
+        "no": "parada",
+        "rotulo": "novos por onda abaixo de",
+        "tipo": "numero",
+        "faixa": [
+          0.01,
+          0.5
+        ],
+        "escala": "porcento",
+        "unidade": "de novos",
+        "quando_vale": "proxima-onda",
+        "releitura": "ao-ligar",
+        "configurado": {
+          "arquivo": "config.json",
+          "campo": "gate_novos"
+        }
+      },
+      "origem_configurado": {
+        "arquivo": "config.json",
+        "campo": "gate_novos"
+      }
+    }
+  },
+  "corpo_hash": "212991045990bfcc92f0654408a3525c7897c345c24b90b47c3aedcc99c5750c",
+  "corpo": {
+    "tipo": "alteracao-laco",
+    "laco": "pesquisa-de-regas",
+    "execucao": "regas-2026-10-14",
+    "operacao": "mudar-controle",
+    "no": "parada",
+    "controle": "gate_novos",
+    "antes": {
+      "tipo": "numero",
+      "valor": 0.15
+    },
+    "depois": {
+      "tipo": "numero",
+      "valor": 0.1
+    },
+    "revisao": "e96e47268d9614816180b17bb035b8f54393851f7bcc80fcf0ef1ad2836c5972",
+    "texto": "a curva já está achatando"
+  }
+}

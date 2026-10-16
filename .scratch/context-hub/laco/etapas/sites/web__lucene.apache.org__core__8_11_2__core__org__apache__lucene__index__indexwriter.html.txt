@@ -1,0 +1,1929 @@
+Skip navigation links
+
+Overview
+
+Package
+
+Class
+
+Use
+
+Tree
+
+Deprecated
+
+Help
+
+Prev Class
+
+Next Class
+
+Frames
+
+No Frames
+
+All Classes
+
+Summary: 
+
+Nested | 
+
+Field | 
+
+Constr | 
+
+Method
+
+Detail: 
+
+Field | 
+
+Constr | 
+
+Method
+
+org.apache.lucene.index
+
+Class IndexWriter
+
+java.lang.Object
+
+org.apache.lucene.index.IndexWriter
+
+All Implemented Interfaces:
+Closeable, AutoCloseable, MergePolicy.MergeContext, TwoPhaseCommit, Accountable
+
+public class IndexWriter
+extends Object
+implements Closeable, TwoPhaseCommit, Accountable, MergePolicy.MergeContext
+
+An IndexWriter creates and maintains an index.
+
+The IndexWriterConfig.OpenMode option on 
+ IndexWriterConfig.setOpenMode(OpenMode) determines 
+ whether a new index is created, or whether an existing index is
+ opened. Note that you can open an index with IndexWriterConfig.OpenMode.CREATE
+ even while readers are using the index. The old readers will 
+ continue to search the "point in time" snapshot they had opened, 
+ and won't see the newly created index until they re-open. If 
+ IndexWriterConfig.OpenMode.CREATE_OR_APPEND is used IndexWriter will create a
+ new index if there is not already an index at the provided path
+ and otherwise open the existing index.
+
+In either case, documents are added with addDocument and removed with deleteDocuments(Term...) or deleteDocuments(Query...). A document can be updated with updateDocument (which just deletes
+ and then adds the entire document). When finished adding, deleting 
+ and updating documents, close should be called.
+
+Each method that changes the index returns a long sequence number, which
+ expresses the effective order in which each change was applied.
+ commit() also returns a sequence number, describing which
+ changes are in the commit point and which are not. Sequence numbers
+ are transient (not saved into the index in any way) and only valid
+ within a single IndexWriter instance.
+
+These changes are buffered in memory and periodically
+ flushed to the Directory (during the above method
+ calls). A flush is triggered when there are enough added documents
+ since the last flush. Flushing is triggered either by RAM usage of the
+ documents (see IndexWriterConfig.setRAMBufferSizeMB(double)) or the
+ number of added documents (see IndexWriterConfig.setMaxBufferedDocs(int)).
+ The default is to flush when RAM usage hits
+ IndexWriterConfig.DEFAULT_RAM_BUFFER_SIZE_MB MB. For
+ best indexing speed you should flush by RAM usage with a
+ large RAM buffer.
+ In contrast to the other flush options IndexWriterConfig.setRAMBufferSizeMB(double) and 
+ IndexWriterConfig.setMaxBufferedDocs(int), deleted terms
+ won't trigger a segment flush. Note that flushing just moves the
+ internal buffered state in IndexWriter into the index, but
+ these changes are not visible to IndexReader until either
+ commit() or close() is called. A flush may
+ also trigger one or more segment merges which by default
+ run with a background thread so as not to block the
+ addDocument calls (see below
+ for changing the MergeScheduler).
+
+Opening an IndexWriter creates a lock file for the directory in use. Trying to open
+ another IndexWriter on the same directory will lead to a
+ LockObtainFailedException.
+
+Expert: IndexWriter allows an optional
+ IndexDeletionPolicy implementation to be specified. You
+ can use this to control when prior commits are deleted from
+ the index. The default policy is KeepOnlyLastCommitDeletionPolicy
+ which removes all prior commits as soon as a new commit is
+ done. Creating your own policy can allow you to explicitly
+ keep previous "point in time" commits alive in the index for
+ some time, either because this is useful for your application,
+ or to give readers enough time to refresh to the new commit
+ without having the old commit deleted out from under them.
+ The latter is necessary when multiple computers take turns opening
+ their own IndexWriter and IndexReaders
+ against a single shared index mounted via remote filesystems
+ like NFS which do not support "delete on last close" semantics.
+ A single computer accessing an index via NFS is fine with the
+ default deletion policy since NFS clients emulate "delete on
+ last close" locally. That said, accessing an index via NFS
+ will likely result in poor performance compared to a local IO
+ device. 
+
+Expert:
+ IndexWriter allows you to separately change
+ the MergePolicy and the MergeScheduler.
+ The MergePolicy is invoked whenever there are
+ changes to the segments in the index. Its role is to
+ select which merges to do, if any, and return a MergePolicy.MergeSpecification describing the merges.
+ The default is LogByteSizeMergePolicy. Then, the MergeScheduler is invoked with the requested merges and
+ it decides when and how to run the merges. The default is
+ ConcurrentMergeScheduler. 
+
+NOTE: if you hit a
+ VirtualMachineError, or disaster strikes during a checkpoint
+ then IndexWriter will close itself. This is a
+ defensive measure in case any internal state (buffered
+ documents, deletions, reference counts) were corrupted. 
+ Any subsequent calls will throw an AlreadyClosedException.
+
+NOTE: IndexWriter instances are completely thread
+ safe, meaning multiple threads can call any of its
+ methods, concurrently. If your application requires
+ external synchronization, you should not
+ synchronize on the IndexWriter instance as
+ this may cause deadlock; use your own (non-Lucene) objects
+ instead. 
+
+NOTE: If you call
+ Thread.interrupt() on a thread that's within
+ IndexWriter, IndexWriter will try to catch this (eg, if
+ it's in a wait() or Thread.sleep()), and will then throw
+ the unchecked exception ThreadInterruptedException
+ and clear the interrupt status on the thread.
+
+Nested Class Summary
+
+Nested Classes 
+
+Modifier and Type
+Class and Description
+
+static class 
+IndexWriter.DocStats
+
+DocStats for this index
+
+static interface 
+IndexWriter.IndexReaderWarmer
+
+If DirectoryReader.open(IndexWriter) has
+ been called (ie, this writer is in near real-time
+ mode), then after a merge completes, this class can be
+ invoked to warm the reader on the newly merged
+ segment, before the merge commits.
+
+Field Summary
+
+Fields 
+
+Modifier and Type
+Field and Description
+
+static int
+MAX_DOCS
+
+Hard limit on maximum number of documents that may be added to the
+ index.
+
+static int
+MAX_POSITION
+
+Maximum value of the token position in an indexed field.
+
+static int
+MAX_STORED_STRING_LENGTH
+
+Maximum length string for a stored field.
+
+static int
+MAX_TERM_LENGTH
+
+Absolute hard maximum length for a term, in bytes once
+ encoded as UTF8.
+
+static String
+SOURCE
+
+Key for the source of a segment in the diagnostics.
+
+static String
+SOURCE_ADDINDEXES_READERS
+
+Source of a segment which results from a call to addIndexes(CodecReader...).
+
+static String
+SOURCE_FLUSH
+
+Source of a segment which results from a flush.
+
+static String
+SOURCE_MERGE
+
+Source of a segment which results from a merge of other segments.
+
+static String
+WRITE_LOCK_NAME
+
+Name of the write lock in the index.
+
+Fields inherited from interface org.apache.lucene.util.Accountable
+NULL_ACCOUNTABLE
+
+Constructor Summary
+
+Constructors 
+
+Constructor and Description
+
+IndexWriter(Directory d,
+ IndexWriterConfig conf)
+
+Constructs a new IndexWriter per the settings given in conf.
+
+Method Summary
+
+All Methods Instance Methods Concrete Methods 
+
+Modifier and Type
+Method and Description
+
+long
+addDocument(Iterable<? extends IndexableField> doc)
+
+Adds a document to this index.
+
+long
+addDocuments(Iterable<? extends Iterable<? extends IndexableField>> docs)
+
+Atomically adds a block of documents with sequentially
+ assigned document IDs, such that an external reader
+ will see all or none of the documents.
+
+long
+addIndexes(CodecReader... readers)
+
+Merges the provided indexes into this index.
+
+long
+addIndexes(Directory... dirs)
+
+Adds all segments from an array of indexes into this index.
+
+void
+advanceSegmentInfosVersion(long newVersion)
+
+If SegmentInfos.getVersion() is below newVersion then update it to this value.
+
+void
+close()
+
+Closes all open resources and releases the write lock.
+
+long
+commit()
+
+Commits all pending changes (added and deleted
+ documents, segment merges, added
+ indexes, etc.) to the index, and syncs all referenced
+ index files, such that a reader will see the changes
+ and the index updates will survive an OS or machine
+ crash or power loss.
+
+void
+decRefDeleter(SegmentInfos segmentInfos)
+
+Record that the files referenced by this SegmentInfos are no longer in use.
+
+long
+deleteAll()
+
+Delete all documents in the index.
+
+long
+deleteDocuments(Query... queries)
+
+Deletes the document(s) matching any of the provided queries.
+
+long
+deleteDocuments(Term... terms)
+
+Deletes the document(s) containing any of the
+ terms.
+
+void
+deleteUnusedFiles()
+
+Expert: remove any index files that are no longer
+ used.
+
+protected void
+doAfterFlush()
+
+A hook for extending classes to execute operations after pending added and
+ deleted documents have been flushed to the Directory but before the change
+ is committed (new segments_N file written).
+
+protected void
+doBeforeFlush()
+
+A hook for extending classes to execute operations before pending added and
+ deleted documents are flushed to the Directory.
+
+protected void
+ensureOpen()
+
+Used internally to throw an AlreadyClosedException if this IndexWriter has been
+ closed (closed=true) or is in the process of
+ closing (closing=true).
+
+protected void
+ensureOpen(boolean failIfClosing)
+
+Used internally to throw an AlreadyClosedException if this
+ IndexWriter has been closed or is in the process of closing.
+
+void
+flush()
+
+Moves all in-memory segments to the Directory, but does not commit
+ (fsync) them (call commit() for that).
+
+boolean
+flushNextBuffer()
+
+Expert: Flushes the next pending writer per thread buffer if available or the largest active
+ non-pending writer per thread buffer in the calling thread.
+
+void
+forceMerge(int maxNumSegments)
+
+Forces merge policy to merge segments until there are
+ <= maxNumSegments.
+
+void
+forceMerge(int maxNumSegments,
+ boolean doWait)
+
+Just like forceMerge(int), except you can
+ specify whether the call should block until
+ all merging completes.
+
+void
+forceMergeDeletes()
+
+Forces merging of all segments that have deleted
+ documents.
+
+void
+forceMergeDeletes(boolean doWait)
+
+Just like forceMergeDeletes(), except you can
+ specify whether the call should block until the
+ operation completes.
+
+Analyzer
+getAnalyzer()
+
+Returns the analyzer used by this index.
+
+LiveIndexWriterConfig
+getConfig()
+
+Returns a LiveIndexWriterConfig, which can be used to query the IndexWriter
+ current settings, as well as modify "live" ones.
+
+Directory
+getDirectory()
+
+Returns the Directory used by this index.
+
+IndexWriter.DocStats
+getDocStats()
+
+Returns accurate IndexWriter.DocStats form this writer.
+
+Set<String>
+getFieldNames()
+
+Return an unmodifiable set of all field names as visible
+ from this IndexWriter, across all segments of the index.
+
+long
+getFlushingBytes()
+
+Returns the number of bytes currently being flushed
+
+InfoStream
+getInfoStream()
+
+Returns the info stream that can be used to log messages
+
+Iterable<Map.Entry<String,String>>
+getLiveCommitData()
+
+Returns the commit user data iterable previously set with setLiveCommitData(Iterable), or null if nothing has been set yet.
+
+long
+getMaxCompletedSequenceNumber()
+
+Returns the highest sequence number across
+ all completed operations, or 0 if no operations have finished yet.
+
+Set<SegmentCommitInfo>
+getMergingSegments()
+
+Expert: to be used by a MergePolicy to avoid
+ selecting merges for segments already being merged.
+
+long
+getPendingNumDocs()
+
+Returns the number of documents in the index including documents are being added (i.e., reserved).
+
+Throwable
+getTragicException()
+
+If this IndexWriter was closed as a side-effect of a tragic exception,
+ e.g.
+
+boolean
+hasDeletions()
+
+Returns true if this index has deletions (including
+ buffered deletions).
+
+boolean
+hasPendingMerges()
+
+Expert: returns true if there are merges waiting to be scheduled.
+
+boolean
+hasUncommittedChanges()
+
+Returns true if there may be changes that have not been
+ committed.
+
+void
+incRefDeleter(SegmentInfos segmentInfos)
+
+Record that the files referenced by this SegmentInfos are still in use.
+
+protected boolean
+isEnableTestPoints()
+
+Tests should override this to enable test points.
+
+boolean
+isOpen()
+
+Returns true if this IndexWriter is still open.
+
+void
+maybeMerge()
+
+Expert: asks the mergePolicy whether any merges are
+ necessary now and if so, runs the requested merges and
+ then iterate (test again if merges are needed) until no
+ more merges are returned by the mergePolicy.
+
+protected void
+merge(MergePolicy.OneMerge merge)
+
+Merges the indicated segments, replacing them in the stack with a
+ single segment.
+
+protected void
+mergeSuccess(MergePolicy.OneMerge merge)
+
+Hook that's called when the specified merge is complete.
+
+int
+numDeletedDocs(SegmentCommitInfo info)
+
+Obtain the number of deleted docs for a pooled reader.
+
+int
+numDeletesToMerge(SegmentCommitInfo info)
+
+Returns the number of deletes a merge would claim back if the given segment is merged.
+
+int
+numRamDocs()
+
+Expert: Return the number of documents currently
+ buffered in RAM.
+
+void
+onTragicEvent(Throwable tragedy,
+ String location)
+
+This method should be called on a tragic event ie.
+
+long
+prepareCommit()
+
+Expert: prepare for commit.
+
+long
+ramBytesUsed()
+
+Return the memory usage of this object in bytes.
+
+void
+rollback()
+
+Close the IndexWriter without committing
+ any changes that have occurred since the last commit
+ (or since it was opened, if commit hasn't been called).
+
+void
+setLiveCommitData(Iterable<Map.Entry<String,String>> commitUserData)
+
+Sets the iterator to provide the commit user data map at commit time.
+
+void
+setLiveCommitData(Iterable<Map.Entry<String,String>> commitUserData,
+ boolean doIncrementVersion)
+
+Sets the commit user data iterator, controlling whether to advance the SegmentInfos.getVersion().
+
+long
+softUpdateDocument(Term term,
+ Iterable<? extends IndexableField> doc,
+ Field... softDeletes)
+
+Expert:
+ Updates a document by first updating the document(s)
+ containing term with the given doc-values fields
+ and then adding the new document.
+
+long
+softUpdateDocuments(Term term,
+ Iterable<? extends Iterable<? extends IndexableField>> docs,
+ Field... softDeletes)
+
+Expert:
+ Atomically updates documents matching the provided
+ term with the given doc-values fields
+ and adds a block of documents with sequentially
+ assigned document IDs, such that an external reader
+ will see all or none of the documents.
+
+long
+tryDeleteDocument(IndexReader readerIn,
+ int docID)
+
+Expert: attempts to delete by document ID, as long as
+ the provided reader is a near-real-time reader (from DirectoryReader.open(IndexWriter)).
+
+long
+tryUpdateDocValue(IndexReader readerIn,
+ int docID,
+ Field... fields)
+
+Expert: attempts to update doc values by document ID, as long as
+ the provided reader is a near-real-time reader (from DirectoryReader.open(IndexWriter)).
+
+long
+updateBinaryDocValue(Term term,
+ String field,
+ BytesRef value)
+
+Updates a document's BinaryDocValues for field to the
+ given value.
+
+long
+updateDocument(Term term,
+ Iterable<? extends IndexableField> doc)
+
+Updates a document by first deleting the document(s)
+ containing term and then adding the new
+ document.
+
+long
+updateDocuments(Term delTerm,
+ Iterable<? extends Iterable<? extends IndexableField>> docs)
+
+Atomically deletes documents matching the provided
+ delTerm and adds a block of documents with sequentially
+ assigned document IDs, such that an external reader
+ will see all or none of the documents.
+
+long
+updateDocValues(Term term,
+ Field... updates)
+
+Updates documents' DocValues fields to the given values.
+
+long
+updateNumericDocValue(Term term,
+ String field,
+ long value)
+
+Updates a document's NumericDocValues for field to the
+ given value.
+
+Methods inherited from class java.lang.Object
+clone, equals, finalize, getClass, hashCode, notify, notifyAll, toString, wait, wait, wait
+
+Methods inherited from interface org.apache.lucene.util.Accountable
+getChildResources
+
+Field Detail
+
+MAX_DOCS
+
+public static final int MAX_DOCS
+
+Hard limit on maximum number of documents that may be added to the
+ index. If you try to add more than this you'll hit IllegalArgumentException.
+
+See Also:
+Constant Field Values
+
+MAX_POSITION
+
+public static final int MAX_POSITION
+
+Maximum value of the token position in an indexed field.
+
+See Also:
+Constant Field Values
+
+WRITE_LOCK_NAME
+
+public static final String WRITE_LOCK_NAME
+
+Name of the write lock in the index.
+
+See Also:
+Constant Field Values
+
+SOURCE
+
+public static final String SOURCE
+
+Key for the source of a segment in the diagnostics.
+
+See Also:
+Constant Field Values
+
+SOURCE_MERGE
+
+public static final String SOURCE_MERGE
+
+Source of a segment which results from a merge of other segments.
+
+See Also:
+Constant Field Values
+
+SOURCE_FLUSH
+
+public static final String SOURCE_FLUSH
+
+Source of a segment which results from a flush.
+
+See Also:
+Constant Field Values
+
+SOURCE_ADDINDEXES_READERS
+
+public static final String SOURCE_ADDINDEXES_READERS
+
+Source of a segment which results from a call to addIndexes(CodecReader...).
+
+See Also:
+Constant Field Values
+
+MAX_TERM_LENGTH
+
+public static final int MAX_TERM_LENGTH
+
+Absolute hard maximum length for a term, in bytes once
+ encoded as UTF8. If a term arrives from the analyzer
+ longer than this length, an
+ IllegalArgumentException is thrown
+ and a message is printed to infoStream, if set (see IndexWriterConfig.setInfoStream(InfoStream)).
+
+See Also:
+Constant Field Values
+
+MAX_STORED_STRING_LENGTH
+
+public static final int MAX_STORED_STRING_LENGTH
+
+Maximum length string for a stored field.
+
+Constructor Detail
+
+IndexWriter
+
+public IndexWriter(Directory d,
+ IndexWriterConfig conf)
+ throws IOException
+
+Constructs a new IndexWriter per the settings given in conf.
+ If you want to make "live" changes to this writer instance, use
+ getConfig().
+
+ NOTE: after ths writer is created, the given configuration instance
+ cannot be passed to another writer.
+
+Parameters:
+d - the index directory. The index is either created or appended
+ according conf.getOpenMode().
+conf - the configuration settings according to which IndexWriter should
+ be initialized.
+Throws:
+IOException - if the directory cannot be read/written to, or if it does not
+ exist and conf.getOpenMode() is
+ OpenMode.APPEND or if there is any other low-level
+ IO error
+
+Method Detail
+
+ramBytesUsed
+
+public final long ramBytesUsed()
+
+Description copied from interface: Accountable
+
+Return the memory usage of this object in bytes. Negative values are illegal.
+
+Specified by:
+ramBytesUsed in interface Accountable
+
+getFlushingBytes
+
+public final long getFlushingBytes()
+
+Returns the number of bytes currently being flushed
+
+numDeletedDocs
+
+public int numDeletedDocs(SegmentCommitInfo info)
+
+Obtain the number of deleted docs for a pooled reader.
+ If the reader isn't being pooled, the segmentInfo's 
+ delCount is returned.
+
+Specified by:
+numDeletedDocs in interface MergePolicy.MergeContext
+
+ensureOpen
+
+protected final void ensureOpen(boolean failIfClosing)
+ throws AlreadyClosedException
+
+Used internally to throw an AlreadyClosedException if this
+ IndexWriter has been closed or is in the process of closing.
+
+Parameters:
+failIfClosing - if true, also fail when IndexWriter is in the process of
+ closing (closing=true) but not yet done closing (
+ closed=false)
+Throws:
+AlreadyClosedException - if this IndexWriter is closed or in the process of closing
+
+ensureOpen
+
+protected final void ensureOpen()
+ throws AlreadyClosedException
+
+Used internally to throw an AlreadyClosedException if this IndexWriter has been
+ closed (closed=true) or is in the process of
+ closing (closing=true).
+
+ Calls ensureOpen(true).
+
+Throws:
+AlreadyClosedException - if this IndexWriter is closed
+
+getConfig
+
+public LiveIndexWriterConfig getConfig()
+
+Returns a LiveIndexWriterConfig, which can be used to query the IndexWriter
+ current settings, as well as modify "live" ones.
+
+close
+
+public void close()
+ throws IOException
+
+Closes all open resources and releases the write lock.
+
+ If LiveIndexWriterConfig.commitOnClose is true,
+ this will attempt to gracefully shut down by writing any
+ changes, waiting for any running merges, committing, and closing.
+ In this case, note that:
+
+If you called prepareCommit but failed to call commit, this
+ method will throw IllegalStateException and the IndexWriter
+ will not be closed.
+
+If this method throws any other exception, the IndexWriter
+ will be closed, but changes may have been lost.
+
+ Note that this may be a costly
+ operation, so, try to re-use a single writer instead of
+ closing and opening a new one. See commit() for
+ caveats about write caching done by some IO devices.
+
+NOTE: You must ensure no other threads are still making
+ changes at the same time that this method is invoked.
+
+Specified by:
+close in interface Closeable
+Specified by:
+close in interface AutoCloseable
+Throws:
+IOException
+
+getDirectory
+
+public Directory getDirectory()
+
+Returns the Directory used by this index.
+
+getInfoStream
+
+public InfoStream getInfoStream()
+
+Description copied from interface: MergePolicy.MergeContext
+
+Returns the info stream that can be used to log messages
+
+Specified by:
+getInfoStream in interface MergePolicy.MergeContext
+
+getAnalyzer
+
+public Analyzer getAnalyzer()
+
+Returns the analyzer used by this index.
+
+advanceSegmentInfosVersion
+
+public void advanceSegmentInfosVersion(long newVersion)
+
+If SegmentInfos.getVersion() is below newVersion then update it to this value.
+
+NOTE: This API is for internal purposes only and might change in incompatible ways in the next release.
+
+hasDeletions
+
+public boolean hasDeletions()
+
+Returns true if this index has deletions (including
+ buffered deletions). Note that this will return true
+ if there are buffered Term/Query deletions, even if it
+ turns out those buffered deletions don't match any
+ documents.
+
+addDocument
+
+public long addDocument(Iterable<? extends IndexableField> doc)
+ throws IOException
+
+Adds a document to this index.
+
+ Note that if an Exception is hit (for example disk full)
+ then the index will be consistent, but this document
+ may not have been added. Furthermore, it's possible
+ the index will have one segment in non-compound format
+ even when using compound files (when a merge has
+ partially succeeded).
+
+ This method periodically flushes pending documents
+ to the Directory (see above), and
+ also periodically triggers segment merges in the index
+ according to the MergePolicy in use.
+
+Merges temporarily consume space in the
+ directory. The amount of space required is up to 1X the
+ size of all segments being merged, when no
+ readers/searchers are open against the index, and up to
+ 2X the size of all segments being merged when
+ readers/searchers are open against the index (see
+ forceMerge(int) for details). The sequence of
+ primitive merge operations performed is governed by the
+ merge policy.
+
+Note that each term in the document can be no longer
+ than MAX_TERM_LENGTH in bytes, otherwise an
+ IllegalArgumentException will be thrown.
+
+Note that it's possible to create an invalid Unicode
+ string in java if a UTF16 surrogate pair is malformed.
+ In this case, the invalid characters are silently
+ replaced with the Unicode replacement character
+ U+FFFD.
+
+Returns:
+The sequence number
+ for this operation
+Throws:
+CorruptIndexException - if the index is corrupt
+IOException - if there is a low-level IO error
+
+addDocuments
+
+public long addDocuments(Iterable<? extends Iterable<? extends IndexableField>> docs)
+ throws IOException
+
+Atomically adds a block of documents with sequentially
+ assigned document IDs, such that an external reader
+ will see all or none of the documents.
+
+WARNING: the index does not currently record
+ which documents were added as a block. Today this is
+ fine, because merging will preserve a block. The order of
+ documents within a segment will be preserved, even when child
+ documents within a block are deleted. Most search features
+ (like result grouping and block joining) require you to
+ mark documents; when these documents are deleted these
+ search features will not work as expected. Obviously adding
+ documents to an existing block will require you the reindex
+ the entire block.
+
+However it's possible that in the future Lucene may
+ merge more aggressively re-order documents (for example,
+ perhaps to obtain better index compression), in which case
+ you may need to fully re-index your documents at that time.
+
+See addDocument(Iterable) for details on
+ index and IndexWriter state after an Exception, and
+ flushing/merging temporary free space requirements.
+
+NOTE: tools that do offline splitting of an index
+ (for example, IndexSplitter in contrib) or
+ re-sorting of documents (for example, IndexSorter in
+ contrib) are not aware of these atomically added documents
+ and will likely break them up. Use such tools at your
+ own risk!
+
+Returns:
+The sequence number
+ for this operation
+Throws:
+CorruptIndexException - if the index is corrupt
+IOException - if there is a low-level IO error
+WARNING: This API is experimental and might change in incompatible ways in the next release.
+
+updateDocuments
+
+public long updateDocuments(Term delTerm,
+ Iterable<? extends Iterable<? extends IndexableField>> docs)
+ throws IOException
+
+Atomically deletes documents matching the provided
+ delTerm and adds a block of documents with sequentially
+ assigned document IDs, such that an external reader
+ will see all or none of the documents. 
+
+ See addDocuments(Iterable).
+
+Returns:
+The sequence number
+ for this operation
+Throws:
+CorruptIndexException - if the index is corrupt
+IOException - if there is a low-level IO error
+WARNING: This API is experimental and might change in incompatible ways in the next release.
+
+softUpdateDocuments
+
+public long softUpdateDocuments(Term term,
+ Iterable<? extends Iterable<? extends IndexableField>> docs,
+ Field... softDeletes)
+ throws IOException
+
+Expert:
+ Atomically updates documents matching the provided
+ term with the given doc-values fields
+ and adds a block of documents with sequentially
+ assigned document IDs, such that an external reader
+ will see all or none of the documents.
+
+ One use of this API is to retain older versions of
+ documents instead of replacing them. The existing
+ documents can be updated to reflect they are no
+ longer current while atomically adding new documents
+ at the same time.
+
+ In contrast to updateDocuments(Term, Iterable)
+ this method will not delete documents in the index
+ matching the given term but instead update them with
+ the given doc-values fields which can be used as a
+ soft-delete mechanism.
+
+ See addDocuments(Iterable)
+ and updateDocuments(Term, Iterable).
+
+Returns:
+The sequence number
+ for this operation
+Throws:
+CorruptIndexException - if the index is corrupt
+IOException - if there is a low-level IO error
+WARNING: This API is experimental and might change in incompatible ways in the next release.
+
+tryDeleteDocument
+
+public long tryDeleteDocument(IndexReader readerIn,
+ int docID)
+ throws IOException
+
+Expert: attempts to delete by document ID, as long as
+ the provided reader is a near-real-time reader (from DirectoryReader.open(IndexWriter)). If the
+ provided reader is an NRT reader obtained from this
+ writer, and its segment has not been merged away, then
+ the delete succeeds and this method returns a valid (> 0) sequence
+ number; else, it returns -1 and the caller must then
+ separately delete by Term or Query.
+
+ NOTE: this method can only delete documents
+ visible to the currently open NRT reader. If you need
+ to delete documents indexed after opening the NRT
+ reader you must use deleteDocuments(Term...)).
+
+Throws:
+IOException
+
+tryUpdateDocValue
+
+public long tryUpdateDocValue(IndexReader readerIn,
+ int docID,
+ Field... fields)
+ throws IOException
+
+Expert: attempts to update doc values by document ID, as long as
+ the provided reader is a near-real-time reader (from DirectoryReader.open(IndexWriter)). If the
+ provided reader is an NRT reader obtained from this
+ writer, and its segment has not been merged away, then
+ the update succeeds and this method returns a valid (> 0) sequence
+ number; else, it returns -1 and the caller must then
+ either retry the update and resolve the document again.
+ If a doc values fields data is null the existing
+ value is removed from all documents matching the term. This can be used
+ to un-delete a soft-deleted document since this method will apply the
+ field update even if the document is marked as deleted.
+
+ NOTE: this method can only updates documents
+ visible to the currently open NRT reader. If you need
+ to update documents indexed after opening the NRT
+ reader you must use updateDocValues(Term, Field...).
+
+Throws:
+IOException
+
+deleteDocuments
+
+public long deleteDocuments(Term... terms)
+ throws IOException
+
+Deletes the document(s) containing any of the
+ terms. All given deletes are applied and flushed atomically
+ at the same time.
+
+Parameters:
+terms - array of terms to identify the documents
+ to be deleted
+Returns:
+The sequence number
+ for this operation
+Throws:
+CorruptIndexException - if the index is corrupt
+IOException - if there is a low-level IO error
+
+deleteDocuments
+
+public long deleteDocuments(Query... queries)
+ throws IOException
+
+Deletes the document(s) matching any of the provided queries.
+ All given deletes are applied and flushed atomically at the same time.
+
+Parameters:
+queries - array of queries to identify the documents
+ to be deleted
+Returns:
+The sequence number
+ for this operation
+Throws:
+CorruptIndexException - if the index is corrupt
+IOException - if there is a low-level IO error
+
+updateDocument
+
+public long updateDocument(Term term,
+ Iterable<? extends IndexableField> doc)
+ throws IOException
+
+Updates a document by first deleting the document(s)
+ containing term and then adding the new
+ document. The delete and then add are atomic as seen
+ by a reader on the same index (flush may happen only after
+ the add).
+
+Parameters:
+term - the term to identify the document(s) to be
+ deleted
+doc - the document to be added
+Returns:
+The sequence number
+ for this operation
+Throws:
+CorruptIndexException - if the index is corrupt
+IOException - if there is a low-level IO error
+
+softUpdateDocument
+
+public long softUpdateDocument(Term term,
+ Iterable<? extends IndexableField> doc,
+ Field... softDeletes)
+ throws IOException
+
+Expert:
+ Updates a document by first updating the document(s)
+ containing term with the given doc-values fields
+ and then adding the new document. The doc-values update and
+ then add are atomic as seen by a reader on the same index
+ (flush may happen only after the add).
+
+ One use of this API is to retain older versions of
+ documents instead of replacing them. The existing
+ documents can be updated to reflect they are no
+ longer current while atomically adding new documents
+ at the same time.
+
+ In contrast to updateDocument(Term, Iterable)
+ this method will not delete documents in the index
+ matching the given term but instead update them with
+ the given doc-values fields which can be used as a
+ soft-delete mechanism.
+
+ See addDocuments(Iterable)
+ and updateDocuments(Term, Iterable).
+
+Returns:
+The sequence number
+ for this operation
+Throws:
+CorruptIndexException - if the index is corrupt
+IOException - if there is a low-level IO error
+WARNING: This API is experimental and might change in incompatible ways in the next release.
+
+updateNumericDocValue
+
+public long updateNumericDocValue(Term term,
+ String field,
+ long value)
+ throws IOException
+
+Updates a document's NumericDocValues for field to the
+ given value. You can only update fields that already exist in
+ the index, not add new fields through this method.
+
+Parameters:
+term - the term to identify the document(s) to be updated
+field - field name of the NumericDocValues field
+value - new value for the field
+Returns:
+The sequence number
+ for this operation
+Throws:
+CorruptIndexException - if the index is corrupt
+IOException - if there is a low-level IO error
+
+updateBinaryDocValue
+
+public long updateBinaryDocValue(Term term,
+ String field,
+ BytesRef value)
+ throws IOException
+
+Updates a document's BinaryDocValues for field to the
+ given value. You can only update fields that already exist in
+ the index, not add new fields through this method.
+
+ NOTE: this method currently replaces the existing value of all
+ affected documents with the new value.
+
+Parameters:
+term - the term to identify the document(s) to be updated
+field - field name of the BinaryDocValues field
+value - new value for the field
+Returns:
+The sequence number
+ for this operation
+Throws:
+CorruptIndexException - if the index is corrupt
+IOException - if there is a low-level IO error
+
+updateDocValues
+
+public long updateDocValues(Term term,
+ Field... updates)
+ throws IOException
+
+Updates documents' DocValues fields to the given values. Each field update
+ is applied to the set of documents that are associated with the
+ Term to the same value. All updates are atomically applied and
+ flushed together. If a doc values fields data is null the existing
+ value is removed from all documents matching the term.
+
+Parameters:
+updates - the updates to apply
+Returns:
+The sequence number
+ for this operation
+Throws:
+CorruptIndexException - if the index is corrupt
+IOException - if there is a low-level IO error
+
+getFieldNames
+
+public Set<String> getFieldNames()
+
+Return an unmodifiable set of all field names as visible
+ from this IndexWriter, across all segments of the index.
+ Useful for knowing which fields exist, before updateDocValues(Term, Field...) is
+ attempted. We could phase out this method if
+ updateDocValues(Term, Field...) could create the non-existent
+ docValues fields as necessary, instead of throwing
+ IllegalArgumentException for attempts to update non-existent
+ docValues fields.
+
+WARNING: This API is experimental and might change in incompatible ways in the next release.
+NOTE: This API is for internal purposes only and might change in incompatible ways in the next release.
+
+forceMerge
+
+public void forceMerge(int maxNumSegments)
+ throws IOException
+
+Forces merge policy to merge segments until there are
+ <= maxNumSegments. The actual merges to be
+ executed are determined by the MergePolicy.
+
+This is a horribly costly operation, especially when
+ you pass a small maxNumSegments; usually you
+ should only call this if the index is static (will no
+ longer be changed).
+
+Note that this requires free space that is proportional
+ to the size of the index in your Directory: 2X if you are
+ not using compound file format, and 3X if you are.
+ For example, if your index size is 10 MB then you need
+ an additional 20 MB free for this to complete (30 MB if
+ you're using compound file format). This is also affected
+ by the Codec that is used to execute the merge,
+ and may result in even a bigger index. Also, it's best
+ to call commit() afterwards, to allow IndexWriter
+ to free up disk space.
+
+If some but not all readers re-open while merging
+ is underway, this will cause > 2X temporary
+ space to be consumed as those new readers will then
+ hold open the temporary segments at that time. It is
+ best not to re-open readers while merging is running.
+
+The actual temporary usage could be much less than
+ these figures (it depends on many factors).
+
+In general, once this completes, the total size of the
+ index will be less than the size of the starting index.
+ It could be quite a bit smaller (if there were many
+ pending deletes) or just slightly smaller.
+
+If an Exception is hit, for example
+ due to disk full, the index will not be corrupted and no
+ documents will be lost. However, it may have
+ been partially merged (some segments were merged but
+ not all), and it's possible that one of the segments in
+ the index will be in non-compound format even when
+ using compound file format. This will occur when the
+ Exception is hit during conversion of the segment into
+ compound format.
+
+This call will merge those segments present in
+ the index when the call started. If other threads are
+ still adding documents and flushing segments, those
+ newly created segments will not be merged unless you
+ call forceMerge again.
+
+Parameters:
+maxNumSegments - maximum number of segments left
+ in the index after merging finishes
+Throws:
+CorruptIndexException - if the index is corrupt
+IOException - if there is a low-level IO error
+See Also:
+MergePolicy.findMerges(org.apache.lucene.index.MergeTrigger, org.apache.lucene.index.SegmentInfos, org.apache.lucene.index.MergePolicy.MergeContext)
+
+forceMerge
+
+public void forceMerge(int maxNumSegments,
+ boolean doWait)
+ throws IOException
+
+Just like forceMerge(int), except you can
+ specify whether the call should block until
+ all merging completes. This is only meaningful with a
+ MergeScheduler that is able to run merges in
+ background threads.
+
+Throws:
+IOException
+
+forceMergeDeletes
+
+public void forceMergeDeletes(boolean doWait)
+ throws IOException
+
+Just like forceMergeDeletes(), except you can
+ specify whether the call should block until the
+ operation completes. This is only meaningful with a
+ MergeScheduler that is able to run merges in
+ background threads.
+
+Throws:
+IOException
+
+forceMergeDeletes
+
+public void forceMergeDeletes()
+ throws IOException
+
+Forces merging of all segments that have deleted
+ documents. The actual merges to be executed are
+ determined by the MergePolicy. For example,
+ the default TieredMergePolicy will only
+ pick a segment if the percentage of
+ deleted docs is over 10%.
+
+This is often a horribly costly operation; rarely
+ is it warranted.
+
+To see how
+ many deletions you have pending in your index, call
+ IndexReader.numDeletedDocs().
+
+NOTE: this method first flushes a new
+ segment (if there are indexed documents), and applies
+ all buffered deletes.
+
+Throws:
+IOException
+
+maybeMerge
+
+public final void maybeMerge()
+ throws IOException
+
+Expert: asks the mergePolicy whether any merges are
+ necessary now and if so, runs the requested merges and
+ then iterate (test again if merges are needed) until no
+ more merges are returned by the mergePolicy.
+
+ Explicit calls to maybeMerge() are usually not
+ necessary. The most common case is when merge policy
+ parameters have changed.
+
+ This method will call the MergePolicy with
+ MergeTrigger.EXPLICIT.
+
+Throws:
+IOException
+
+getMergingSegments
+
+public Set<SegmentCommitInfo> getMergingSegments()
+
+Expert: to be used by a MergePolicy to avoid
+ selecting merges for segments already being merged.
+ The returned collection is not cloned, and thus is
+ only safe to access if you hold IndexWriter's lock
+ (which you do when IndexWriter invokes the
+ MergePolicy).
+
+The Set is unmodifiable.
+
+Specified by:
+getMergingSegments in interface MergePolicy.MergeContext
+
+hasPendingMerges
+
+public boolean hasPendingMerges()
+
+Expert: returns true if there are merges waiting to be scheduled.
+
+WARNING: This API is experimental and might change in incompatible ways in the next release.
+
+rollback
+
+public void rollback()
+ throws IOException
+
+Close the IndexWriter without committing
+ any changes that have occurred since the last commit
+ (or since it was opened, if commit hasn't been called).
+ This removes any temporary files that had been created,
+ after which the state of the index will be the same as
+ it was when commit() was last called or when this
+ writer was first opened. This also clears a previous
+ call to prepareCommit().
+
+Specified by:
+rollback in interface TwoPhaseCommit
+Throws:
+IOException - if there is a low-level IO error
+
+deleteAll
+
+public long deleteAll()
+ throws IOException
+
+Delete all documents in the index.
+
+ This method will drop all buffered documents and will remove all segments
+ from the index. This change will not be visible until a commit()
+ has been called. This method can be rolled back using rollback().
+
+ NOTE: this method is much faster than using deleteDocuments( new
+ MatchAllDocsQuery() ). Yet, this method also has different semantics
+ compared to deleteDocuments(Query...) since internal
+ data-structures are cleared as well as all segment information is
+ forcefully dropped anti-viral semantics like omitting norms are reset or
+ doc value types are cleared. Essentially a call to deleteAll() is
+ equivalent to creating a new IndexWriter with
+ IndexWriterConfig.OpenMode.CREATE which a delete query only marks documents as
+ deleted.
+
+ NOTE: this method will forcefully abort all merges in progress. If other
+ threads are running forceMerge(int), addIndexes(CodecReader[])
+ or forceMergeDeletes(boolean) methods, they may receive
+ MergePolicy.MergeAbortedExceptions.
+
+Returns:
+The sequence number
+ for this operation
+Throws:
+IOException
+
+addIndexes
+
+public long addIndexes(Directory... dirs)
+ throws IOException
+
+Adds all segments from an array of indexes into this index.
+
+This may be used to parallelize batch indexing. A large document
+ collection can be broken into sub-collections. Each sub-collection can be
+ indexed in parallel, on a different thread, process or machine. The
+ complete index can then be created by merging sub-collection indexes
+ with this method.
+
+ NOTE: this method acquires the write lock in
+ each directory, to ensure that no IndexWriter
+ is currently open or tries to open while this is
+ running.
+
+This method is transactional in how Exceptions are
+ handled: it does not commit a new segments_N file until
+ all indexes are added. This means if an Exception
+ occurs (for example disk full), then either no indexes
+ will have been added or they all will have been.
+
+Note that this requires temporary free space in the
+ Directory up to 2X the sum of all input indexes
+ (including the starting index). If readers/searchers
+ are open against the starting index, then temporary
+ free space required will be higher by the size of the
+ starting index (see forceMerge(int) for details).
+
+This requires this index not be among those to be added.
+
+All added indexes must have been created by the same
+ Lucene version as this index.
+
+Returns:
+The sequence number
+ for this operation
+Throws:
+CorruptIndexException - if the index is corrupt
+IOException - if there is a low-level IO error
+IllegalArgumentException - if addIndexes would cause
+ the index to exceed MAX_DOCS, or if the indoming
+ index sort does not match this index's index sort
+
+addIndexes
+
+public long addIndexes(CodecReader... readers)
+ throws IOException
+
+Merges the provided indexes into this index.
+
+ The provided IndexReaders are not closed.
+
+ See addIndexes(org.apache.lucene.store.Directory...) for details on transactional semantics, temporary
+ free space required in the Directory, and non-CFS segments on an Exception.
+
+ NOTE: empty segments are dropped by this method and not added to this
+ index.
+
+ NOTE: this merges all given LeafReaders in one
+ merge. If you intend to merge a large number of readers, it may be better
+ to call this method multiple times, each time with a small set of readers.
+ In principle, if you use a merge policy with a mergeFactor or
+ maxMergeAtOnce parameter, you should pass that many readers in one
+ call.
+
+ NOTE: this method does not call or make use of the MergeScheduler,
+ so any custom bandwidth throttling is at the moment ignored.
+
+Returns:
+The sequence number
+ for this operation
+Throws:
+CorruptIndexException - if the index is corrupt
+IOException - if there is a low-level IO error
+IllegalArgumentException - if addIndexes would cause the index to exceed MAX_DOCS
+
+doAfterFlush
+
+protected void doAfterFlush()
+ throws IOException
+
+A hook for extending classes to execute operations after pending added and
+ deleted documents have been flushed to the Directory but before the change
+ is committed (new segments_N file written).
+
+Throws:
+IOException
+
+doBeforeFlush
+
+protected void doBeforeFlush()
+ throws IOException
+
+A hook for extending classes to execute operations before pending added and
+ deleted documents are flushed to the Directory.
+
+Throws:
+IOException
+
+prepareCommit
+
+public final long prepareCommit()
+ throws IOException
+
+Expert: prepare for commit. This does the
+ first phase of 2-phase commit. This method does all
+ steps necessary to commit changes since this writer
+ was opened: flushes pending added and deleted docs,
+ syncs the index files, writes most of next segments_N
+ file. After calling this you must call either commit() to finish the commit, or rollback() to revert the commit and undo all changes
+ done since the writer was opened.
+
+You can also just call commit() directly
+ without prepareCommit first in which case that method
+ will internally call prepareCommit.
+
+Specified by:
+prepareCommit in interface TwoPhaseCommit
+Returns:
+The sequence number
+ of the last operation in the commit. All sequence numbers <= this value
+ will be reflected in the commit, and all others will not.
+Throws:
+IOException
+
+flushNextBuffer
+
+public final boolean flushNextBuffer()
+ throws IOException
+
+Expert: Flushes the next pending writer per thread buffer if available or the largest active
+ non-pending writer per thread buffer in the calling thread.
+ This can be used to flush documents to disk outside of an indexing thread. In contrast to flush()
+ this won't mark all currently active indexing buffers as flush-pending.
+
+ Note: this method is best-effort and might not flush any segments to disk. If there is a full flush happening
+ concurrently multiple segments might have been flushed.
+ Users of this API can access the IndexWriters current memory consumption via ramBytesUsed()
+
+Returns:
+true iff this method flushed at least on segment to disk.
+Throws:
+IOException
+WARNING: This API is experimental and might change in incompatible ways in the next release.
+
+setLiveCommitData
+
+public final void setLiveCommitData(Iterable<Map.Entry<String,String>> commitUserData)
+
+Sets the iterator to provide the commit user data map at commit time. Calling this method
+ is considered a committable change and will be committed even if
+ there are no other changes this writer. Note that you must call this method
+ before prepareCommit(). Otherwise it won't be included in the
+ follow-on commit().
+
+ NOTE: the iterator is late-binding: it is only visited once all documents for the
+ commit have been written to their segments, before the next segments_N file is written
+
+setLiveCommitData
+
+public final void setLiveCommitData(Iterable<Map.Entry<String,String>> commitUserData,
+ boolean doIncrementVersion)
+
+Sets the commit user data iterator, controlling whether to advance the SegmentInfos.getVersion().
+
+See Also:
+setLiveCommitData(Iterable)
+NOTE: This API is for internal purposes only and might change in incompatible ways in the next release.
+
+getLiveCommitData
+
+public final Iterable<Map.Entry<String,String>> getLiveCommitData()
+
+Returns the commit user data iterable previously set with setLiveCommitData(Iterable), or null if nothing has been set yet.
+
+commit
+
+public final long commit()
+ throws IOException
+
+Commits all pending changes (added and deleted
+ documents, segment merges, added
+ indexes, etc.) to the index, and syncs all referenced
+ index files, such that a reader will see the changes
+ and the index updates will survive an OS or machine
+ crash or power loss. Note that this does not wait for
+ any running background merges to finish. This may be a
+ costly operation, so you should test the cost in your
+ application and do it only when really necessary.
+
+ Note that this operation calls Directory.sync on
+ the index files. That call should not return until the
+ file contents and metadata are on stable storage. For
+ FSDirectory, this calls the OS's fsync. But, beware:
+ some hardware devices may in fact cache writes even
+ during fsync, and return before the bits are actually
+ on stable storage, to give the appearance of faster
+ performance. If you have such a device, and it does
+ not have a battery backup (for example) then on power
+ loss it may still lose data. Lucene cannot guarantee
+ consistency on such devices. 
+
+ If nothing was committed, because there were no
+ pending changes, this returns -1. Otherwise, it returns
+ the sequence number such that all indexing operations
+ prior to this sequence will be included in the commit
+ point, and all other operations will not. 
+
+Specified by:
+commit in interface TwoPhaseCommit
+Returns:
+The sequence number
+ of the last operation in the commit. All sequence numbers <= this value
+ will be reflected in the commit, and all others will not.
+Throws:
+IOException
+See Also:
+prepareCommit()
+
+hasUncommittedChanges
+
+public final boolean hasUncommittedChanges()
+
+Returns true if there may be changes that have not been
+ committed. There are cases where this may return true
+ when there are no actual "real" changes to the index,
+ for example if you've deleted by Term or Query but
+ that Term or Query does not match any documents.
+ Also, if a merge kicked off as a result of flushing a
+ new segment during commit(), or a concurrent
+ merged finished, this method may return true right
+ after you had just called commit().
+
+flush
+
+public final void flush()
+ throws IOException
+
+Moves all in-memory segments to the Directory, but does not commit
+ (fsync) them (call commit() for that).
+
+Throws:
+IOException
+
+numRamDocs
+
+public final int numRamDocs()
+
+Expert: Return the number of documents currently
+ buffered in RAM.
+
+merge
+
+protected void merge(MergePolicy.OneMerge merge)
+ throws IOException
+
+Merges the indicated segments, replacing them in the stack with a
+ single segment.
+
+Throws:
+IOException
+WARNING: This API is experimental and might change in incompatible ways in the next release.
+
+mergeSuccess
+
+protected void mergeSuccess(MergePolicy.OneMerge merge)
+
+Hook that's called when the specified merge is complete.
+
+onTragicEvent
+
+public void onTragicEvent(Throwable tragedy,
+ String location)
+
+This method should be called on a tragic event ie. if a downstream class of the writer
+ hits an unrecoverable exception. This method does not rethrow the tragic event exception. 
+
+Note: This method will not close the writer but can be called from any location without respecting any lock order
+
+NOTE: This API is for internal purposes only and might change in incompatible ways in the next release.
+
+getTragicException
+
+public Throwable getTragicException()
+
+If this IndexWriter was closed as a side-effect of a tragic exception,
+ e.g. disk full while flushing a new segment, this returns the root cause exception.
+ Otherwise (no tragic exception has occurred) it returns null.
+
+isOpen
+
+public boolean isOpen()
+
+Returns true if this IndexWriter is still open.
+
+deleteUnusedFiles
+
+public void deleteUnusedFiles()
+ throws IOException
+
+Expert: remove any index files that are no longer
+ used.
+
+ IndexWriter normally deletes unused files itself,
+ during indexing. However, on Windows, which disallows
+ deletion of open files, if there is a reader open on
+ the index then those files cannot be deleted. This is
+ fine, because IndexWriter will periodically retry
+ the deletion.
+
+ However, IndexWriter doesn't try that often: only
+ on open, close, flushing a new segment, and finishing
+ a merge. If you don't do any of these actions with your
+ IndexWriter, you'll see the unused files linger. If
+ that's a problem, call this method to delete them
+ (once you've closed the open readers that were
+ preventing their deletion). 
+
+ In addition, you can call this method to delete 
+ unreferenced index commits. This might be useful if you 
+ are using an IndexDeletionPolicy which holds
+ onto index commits until some criteria are met, but those
+ commits are no longer needed. Otherwise, those commits will
+ be deleted the next time commit() is called.
+
+Throws:
+IOException
+
+incRefDeleter
+
+public void incRefDeleter(SegmentInfos segmentInfos)
+ throws IOException
+
+Record that the files referenced by this SegmentInfos are still in use.
+
+Throws:
+IOException
+NOTE: This API is for internal purposes only and might change in incompatible ways in the next release.
+
+decRefDeleter
+
+public void decRefDeleter(SegmentInfos segmentInfos)
+ throws IOException
+
+Record that the files referenced by this SegmentInfos are no longer in use. Only call this if you are sure you previously
+ called incRefDeleter(org.apache.lucene.index.SegmentInfos).
+
+Throws:
+IOException
+NOTE: This API is for internal purposes only and might change in incompatible ways in the next release.
+
+getPendingNumDocs
+
+public long getPendingNumDocs()
+
+Returns the number of documents in the index including documents are being added (i.e., reserved).
+
+WARNING: This API is experimental and might change in incompatible ways in the next release.
+
+getMaxCompletedSequenceNumber
+
+public long getMaxCompletedSequenceNumber()
+
+Returns the highest sequence number across
+ all completed operations, or 0 if no operations have finished yet. Still
+ in-flight operations (in other threads) are not counted until they finish.
+
+WARNING: This API is experimental and might change in incompatible ways in the next release.
+
+numDeletesToMerge
+
+public final int numDeletesToMerge(SegmentCommitInfo info)
+ throws IOException
+
+Returns the number of deletes a merge would claim back if the given segment is merged.
+
+Specified by:
+numDeletesToMerge in interface MergePolicy.MergeContext
+Parameters:
+info - the segment to get the number of deletes for
+Throws:
+IOException
+See Also:
+MergePolicy.numDeletesToMerge(SegmentCommitInfo, int, org.apache.lucene.util.IOSupplier)
+WARNING: This API is experimental and might change in incompatible ways in the next release.
+
+isEnableTestPoints
+
+protected boolean isEnableTestPoints()
+
+Tests should override this to enable test points. Default is false.
+
+getDocStats
+
+public IndexWriter.DocStats getDocStats()
+
+Returns accurate IndexWriter.DocStats form this writer. The numDoc for instance can change after maxDoc is fetched
+ that causes numDocs to be greater than maxDoc which makes it hard to get accurate document stats from IndexWriter.
+
+Skip navigation links
+
+Overview
+
+Package
+
+Class
+
+Use
+
+Tree
+
+Deprecated
+
+Help
+
+Prev Class
+
+Next Class
+
+Frames
+
+No Frames
+
+All Classes
+
+Summary: 
+
+Nested | 
+
+Field | 
+
+Constr | 
+
+Method
+
+Detail: 
+
+Field | 
+
+Constr | 
+
+Method
+
+ Copyright © 2000-2022 Apache Software Foundation. All Rights Reserved.

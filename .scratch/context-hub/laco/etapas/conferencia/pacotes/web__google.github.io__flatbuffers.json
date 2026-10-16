@@ -1,0 +1,39 @@
+{
+ "chave": "web:google.github.io/flatbuffers",
+ "nomes": [
+  "FlatBuffers"
+ ],
+ "urls": [
+  "https://google.github.io/flatbuffers/",
+  "https://flatbuffers.org/",
+  "https://google.github.io/flatbuffers",
+  "https://flatbuffers.dev/",
+  "https://flatbuffers.dev",
+  "https://flatbuffers.github.io/"
+ ],
+ "readme_cortado": false,
+ "readme": "[FlatBuffers Docs]\n\nSkip to content\n\nOverview\n\nFlatBuffers is an efficient cross platform serialization library for C++, C#, C,\nGo, Java, Kotlin, JavaScript, Lobster, Lua, TypeScript, PHP, Python, Rust and\nSwift. It was originally created at Google for game development and other\nperformance-critical applications.\n\nIt is available as Open Source on\nGitHub under the Apache license v2.0.\n\nWhy Use FlatBuffers?\n\n Access to serialized data without\n parsing/unpacking\n\nAccess the data directly without unpacking or parsing.\n\n Memory Efficiency and Speed\n\nThe only memory needed to access your data is that of the buffer.\n No heap is required.\n\n Backwards and Forwards\n Compatibility\n\nFlatBuffers enables the schema to evolve over time while still maintaining\n forwards and backwards compatibility with old flatbuffers.\n\n Small Footprint\n\nMinimal dependencies and small code footprint.\n\nWhy not use...\n\nProtocol BuffersJSON\n\nProtocol Buffers is indeed relatively similar to FlatBuffers, with the primary\ndifference being that FlatBuffers does not need a parsing/unpacking step to a\nsecondary representation before you can access data, often coupled with\nper-object memory allocation. The code is an order of magnitude bigger, too.\n\nJSON is very readable (which is why we use it as our optional text format) and\nvery convenient when used together with dynamically typed languages (such as\nJavaScript). When serializing data from statically typed languages, however,\nJSON not only has the obvious drawback of runtime inefficiency, but also forces\nyou to write more code to access data (counterintuitively) due to its\ndynamic-typing serialization system. In this context, it is only a better choice\nfor systems that have very little to no information ahead of time about what\ndata needs to be stored.",
+ "fonte": "site",
+ "respostas": [
+  {
+   "por": "claude-haiku-5-5",
+   "resposta": {
+    "serve": "stack",
+    "role": "Serialização zero-copy para índices ou metadados em disco",
+    "place": [
+     "library"
+    ],
+    "mechanism": [
+     "other"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "Apache-2.0",
+    "maturity": "unknown",
+    "doubt": true,
+    "evidence": "Access the data directly without unpacking or parsing. Available as Open Source under the Apache license v2.0."
+   }
+  }
+ ]
+}

@@ -1,0 +1,33 @@
+{
+ "chave": "gh:prabhatsharma/zinc",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T12:00:00Z",
+ "resultado": "corrige",
+ "conferencia": {
+  "resultado": "corrige",
+  "final": {
+   "serve": "search",
+   "role": "Lightweight full-text search engine, Elasticsearch-API compatible, single binary with HTTP API",
+   "place": [
+    "disk",
+    "network_service"
+   ],
+   "mechanism": [
+    "full_text"
+   ],
+   "mcp": "unknown",
+   "windows": "yes",
+   "portuguese": "unknown",
+   "license": "unknown",
+   "maturity": "stable",
+   "doubt": false,
+   "evidence": "ZincSearch is a search engine that does full text indexing... single binary, binaries for multiple platforms; CI runs go test on Linux/macOS/Windows; hundreds of production installations."
+  },
+  "o_que_mudou": [
+   "mechanism: full_text,bm25 -> full_text, README never mentions BM25",
+   "maturity: beta/stable -> stable, hundreds of production installs",
+   "role: drop hub-specific claim"
+  ],
+  "nota": "Simple Windows-friendly full-text server; no MCP, no vectors, no Portuguese info; candidate lexical layer."
+ }
+}

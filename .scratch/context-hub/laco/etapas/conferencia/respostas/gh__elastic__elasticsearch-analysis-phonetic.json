@@ -1,0 +1,32 @@
+{
+ "chave": "gh:elastic/elasticsearch-analysis-phonetic",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T20:24:07Z",
+ "resultado": "corrige",
+ "conferencia": {
+  "resultado": "corrige",
+  "final": {
+   "serve": "search",
+   "role": "Phonetic analysis plugin for Elasticsearch; repo moved into the main Elasticsearch repo from 2.0.",
+   "place": [
+    "library"
+   ],
+   "mechanism": [
+    "other"
+   ],
+   "mcp": "no",
+   "windows": "unknown",
+   "portuguese": "unknown",
+   "license": "Apache-2.0",
+   "maturity": "archived",
+   "doubt": false,
+   "evidence": "'IMPORTANT: Project MOVED!' from elasticsearch 2.0; 'Phonetic Analysis Plugin' version table for es-0.90 to es-1.7; Apache 2 license."
+  },
+  "o_que_mudou": [
+   "serve: stack/search -> search",
+   "place: inside_db_mcp/network_service -> library, it is a plugin for Elasticsearch",
+   "maturity: unknown -> archived, README says moved and lists only old versions"
+  ],
+  "nota": "Archived legacy phonetic plugin for Elasticsearch 1.x; marginal for the hub and phonetic matching is not a stated need."
+ }
+}

@@ -1,0 +1,77 @@
+{
+ "chave": "gh:foambubble/foam",
+ "urls": [
+  "https://github.com/foambubble/foam",
+  "https://foam.foambubble.dev",
+  "https://foambubble.github.io/foam/",
+  "https://foambubble.github.io/foam",
+  "https://foam.obsidian.md"
+ ],
+ "tipos": [
+  "tool",
+  "library"
+ ],
+ "termos": [
+  "Foam",
+  "Foam AI",
+  "VSCode knowledge base",
+  "VS Code",
+  "Foam Workspace",
+  "note-taking",
+  "knowledge management",
+  "Markdown",
+  "graph",
+  "frontmatter",
+  "search",
+  "offline",
+  "foam",
+  "vscode",
+  "markdown knowledge base",
+  "zettelkasten",
+  "foam language server",
+  "lsp",
+  "markdown graph",
+  "backlinks",
+  "VS Code",
+  "knowledge graph",
+  "foam bubble",
+  "VS Code notes",
+  "markdown wiki",
+  "Foam for VSCode",
+  "VS Code, markdown, search, plugins, AI",
+  "Foam workspace",
+  "Foam notes",
+  "search plugin",
+  "Foam Search",
+  "Foam VS Code",
+  "VS Code knowledge base",
+  "offline search",
+  "markdown",
+  "Foam Graph"
+ ],
+ "mencoes": 17,
+ "familias": [
+  "agnes",
+  "cohere",
+  "gpt-oss",
+  "kilo",
+  "llama",
+  "mistral",
+  "nemotron"
+ ],
+ "primeira_onda": 1,
+ "nomes": [
+  "Foam",
+  "Foam‑compatible LSP server (foam‑language-server)"
+ ],
+ "resumos": [
+  "Marco de código abierto para crear bases de conocimiento en Markdown dentro de VSCode, con búsqueda de texto completo y extensibilidad para búsqueda semántica mediante embeddings.",
+  "VS Code 拡張機能で、Markdown ファイルの関係性をグラフ化し検索可能",
+  "Un framework para crear una base de conocimiento personal utilizando Markdown y Visual Studio Code.",
+  "Herramienta de gestión de conocimiento basada en Markdown y grafos."
+ ],
+ "readme_status": "ok",
+ "readme_nome": "readme.md",
+ "readme_cortado": true,
+ "readme": "<div align=\"center\">\n\n<img src=\"packages/foam-vscode/assets/icon/FOAM_ICON_256.png\" width=\"100\"/>\n\n# Foam\n\n<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->\n[![All Contributors](https://img.shields.io/badge/all_contributors-135-orange.svg?style=flat-square)](#contributors-)\n<!-- ALL-CONTRIBUTORS-BADGE:END -->\n\n[![Version](https://vsmarketplacebadges.dev/version/foam.foam-vscode.svg)](https://marketplace.visualstudio.com/items?itemName=foam.foam-vscode)\n[![Downloads](https://vsmarketplacebadges.dev/downloads/foam.foam-vscode.svg)](https://marketplace.visualstudio.com/items?itemName=foam.foam-vscode)\n[![Visual Studio Marketplace Installs](https://vsmarketplacebadges.dev/installs/foam.foam-vscode.svg)](https://marketplace.visualstudio.com/items?itemName=foam.foam-vscode)\n[![Ratings](https://vsmarketplacebadges.dev/rating/foam.foam-vscode.svg)](https://marketplace.visualstudio.com/items?itemName=foam.foam-vscode)\n[![Discord Chat](https://img.shields.io/discord/729975036148056075?color=748AD9&label=discord%20chat&style=flat-square)](https://discord.com/invite/HV2tn2FpEk)\n[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/foambubble/foam)\n\n</div>\n\n**Foam** is a personal knowledge management and sharing system built on [Visual Studio Code](https://code.visualstudio.com/) and [GitHub](https://github.com/).\n\nYou can use **Foam** for organising your research, keeping re-discoverable notes, writing long-form content and, optionally, publishing it to the web.\n\n**Foam** is free, open source, and extremely extensible to suit your personal workflow. You own the information you create with Foam, and you're free to share it, and collaborate on it with anyone you want.\n\n## Features\n\n### Graph Visualization\n\nSee how your notes are connected via a [graph](https://docs.foam.md/features/graph-view/) with the `Foam: Show Graph` command.\n\n![Graph Visualization](./assets/screenshots/feature-show-graph.gif)\n\n### Link Autocompletion\n\nFoam helps you create the connections between your notes, and your placeholders as well.\n\n![Link Autocompletion](./assets/screenshots/feature-link-autocompletion.gif)\n\n### Sync links on file rename\n\nFoam updates the links to renamed files, so your notes stay consistent.\n\n![Sync links on file rename](./assets/screenshots/feature-link-sync.gif)\n\n### Unique identifiers across directories\n\nFoam supports files with the same name in multiple directories.\nIt will use the minimum identifier required, and even report and help you fix existing ambiguous wikilinks.\n\n![Unique identifier autocompletion](./assets/screenshots/feature-unique-wikilink-completion.gif)\n\n![Wikilink diagnostic](./assets/screenshots/feature-wikilink-diagnostics.gif)\n\n### Link Preview and Navigation\n\n![Link Preview and Navigation](./assets/screenshots/feature-navigation.gif)\n\n### Go to definition, Peek References\n\nSee where a note is being referenced in your knowledge base.\n\n![Go to Definition, Peek References](./assets/screenshots/feature-definition-references.gif)\n\n### Navigation in Preview\n\nNavigate your rendered notes in the VS Code preview panel.\n\n![Navigation in Preview](./assets/screenshots/feature-preview-navigation.gif)\n\n### Note embed\n\nEmbed the content from other notes.\n\n![Note Embed](./assets/screenshots/feature-note-embed.gif)\n\n### Support for sections\n\nFoam supports autocompletion, navigation, embedding and diagnostics for note sections.\nJust use the standard wiki syntax of `[[resource#Section Title]]`.\n\n### Link Alias\n\nFoam supports link aliasing, so you can have a `[[wikilink]]`, or a `[[wikilink|alias]]`.\n\n### Templates\n\nUse [custom templates](https://docs.foam.md/features/templates/) to have avoid repetitve work on your notes.\n\n![Templates](./assets/screenshots/feature-templates.gif)\n\n### Backlinks Panel\n\nQuickly check which notes are referencing the currently active note.\nSee for each occurrence the context in which it lives, as well as a preview of the note.\n\n![Backlinks Panel](./assets/screenshots/feature-backlinks-panel.gif)\n\n### Tag Explorer Panel\n\nTag your notes and navigate them with the [Tag Explorer](https://docs.foam.md/features/tags/).\nFoam also supports hierarchical tags.\n\n![Tag Explorer Panel](./assets/screenshots/feature-tags-panel.gif)\n\n### Orphans and Placeholder Panels\n\nOrphans are notes that have no inbound nor outbound links.\nPlaceholders are dangling links, or notes without content.\nKeep them under control, and your knowledge base in a better state, by using this panel.\n\n![Orphans and Placeholder Panels](./assets/screenshots/feature-placeholder-orphan-panel.gif)\n\n### Syntax highlight\n\nFoam highlights wikilinks and placeholder differently, to help you visualize your knowledge base.\n\n![Syntax Highlight](./assets/screenshots/feature-syntax-highlight.png)\n\n### Daily note\n\nCreate a journal with [daily notes](https://docs.foam.md/features/daily-notes/).\n\n![Daily Note](./assets/screenshots/feature-daily-note.gif)\n\n### Generate references for your wikilinks\n\nCreate markdown [references](https://docs.foam.md/features/link-reference-definitions/) for `[[wikilinks]]`, to use your notes in a non-Foam workspace.\nWith references you can also make your notes navigable both in GitHub UI as well as GitHub Pages.\n\n![Generate references](./assets/screenshots/feature-definitions-generation.gif)\n\n### Commands\n\n- Explore your knowledge base with the `Foam: Open Random Note` command\n- Access your daily note with the `Foam: Open Daily Note` command\n- Create a new note with the `Foam: Create New Note` command\n  - This becomes very powerful when combined with [note templates](https://docs.foam.md/features/templates/) and the `Foam: Create New Note from Template` command\n- See your workspace as a connected graph with the `Foam: Show Graph` command\n\n## Recipes\n\nPeople use Foam in different ways for different use cases, check out the [recipes](https://docs.foam.md/recipes/recipes/) page for inspiration!\n\n## Getting started\n\n> Already using Obsidian? An Obsidian vault is usually already a Foam workspace — see [Coming from Obsidian](https://docs.foam.md/recipes/migrating-from-obsidian/).\n\nWhether you want to build a [Second Brain](https://www.buildingasecondbrain.com/) or a [Zettelkasten](https://zettelkasten.de/posts/overview/), write a book, or just get better at long-term learning, **Foam** can help you organise your thoughts if you follow these simple rules:\n\n1. Create a single **Foam** workspace for all your knowledge and research following the [[Getting started]] guide.\n2. Write your thoughts in markdown documents (I like to call them **Bubbles**, but that might be more than a little twee). These documents should be atomic: Put things that belong together into a single document, and limit its content to that single topic. ([source](https://zettelkasten.de/posts/overview/#principles))\n3. Use Foam's shortcuts and autocompletions to link your thoughts together with `[[wikilinks]]`, and navigate between them to explore your knowledge graph.\n4. Get an overview of your **Foam** workspace using the [[Graph Visualisation]], and discover relationships between your thoughts with the use of [[Backlinking]].\n\nYou can also use our Foam template:\n\n1. Log in on your GitHub account.\n2. [Create a GitHub repository from foam-template](https://github.com/foambubble/foam-template/generate). If you want to keep your thoughts to yourself, remember to set the repository private.\n3. Clone the repository and open it in VS Code.\n4. When prompted to install recommended extensions, click **Install all** (or **Show Recommendations** if you want to review and install them one by one).\n\nThis will also install `Foam`, but if you already have it installed, that's ok, just make sure you're up to date on the latest version.\n\n## Requirements\n\nHigh tolerance for alpha-grade software.\nFoam is still a Work in Progress.\nRest assured it will never lock you in, nor compromise your files, but sometimes some features might break ;)\n\n## Known Issues\n\nSee the [issues](https://github.com/foambubble/foam/issues/) on our GitHub repo ;)\n\n## Release Notes\n\nSee the [CHANGELOG](./packages/foam-vscode/CHANGELOG.md).\n\n## Learn more\n\n**Head over to the 👉[Foam documentation site](https://foam.md)** to see Foam in action and read the rest of the documentation!\n\nQuick links to next documentation sections\n\n- [Foam homepage](https://foam.md)\n- [Getting started](https://docs.foam.md/getting-started/installation/)\n- [Features](https://docs.foam.md/#features)\n- [Recipes](https://docs.foam.md/recipes/recipes/)\n- [Frequently Asked Questions](https://docs.foam.md/frequently-asked-questions/)\n\nYou can also browse the [docs folder](https://github.com/foambubble/foam/tree/main/docs).\n\n## License\n\nFoam is licensed under the [MIT license](LICENSE).\n\n[Backlinking]: docs/user/features/backlinking.md 'Backlinking'\n\n## Contribution Guide\n\nSee the [Contribution Guide](https://github.com/foambubble/foam/blob/main/CONTRIBUTING.md)\n\n## Code of conduct\n\nSee the [Code of Conduct](https://github.com/foambubble/foam/blob/main/docs/dev/code-of-conduct.md)\n\n## Contributors ✨\n\nThanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):\n\n<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->\n<!-- prettier-ignore-start -->\n<!-- markdownlint-disable -->\n<table>\n  <tbody>\n    <tr>\n      <td align=\"center\" valign=\"top\" width=\"14.28%\"><a href=\"https://jevakallio.dev/\"><img src=\"https://avatars1.githubusercontent.com/u/1203949?v=4?s=60\" width=\"60px;\" alt=\"Jani Eväkallio\"/><br /><sub><b>Jani Eväkallio</b></sub></a><br /><a href=\"https://github.com/foambubble/foam/commits?author=jevakallio\" title=\"Code\">💻</a> <a href=\"https://github.com/foambubble/foam/commits?author=jevakallio\" title=\"Documentation\">📖</a></td>\n      <td align=\"center\" valign=\"top\" width=\"14.28%\"><a href=\"https://joeprevite.com/\"><img src=\"https://avatars3.githubusercontent.com/u/3806031?v=4?s=60\" width=\"60px;\" alt=\"Joe Previte\"/><br /><sub><b>Joe Previte</b></sub></a><br /><a href=\"https://github.com/foambubble/foam/commits?author=jsjoeio\" title=\"Code\">💻</a> <a href=\"https://github.com/foambubble/foam/commits?author=jsjoeio\" title=\"Documentation\">📖</a></td>\n      <td align=\"center\" valign=\"top\" width=\"14.28%\"><a href=\"https://github.com/riccardoferretti\"><img src=\"https://avatars3.githubusercontent.com/u/457005?v=4?s=60\" width=\"60px;\" alt=\"Riccardo\"/><br /><sub><b>Riccardo</b></sub></a><br /><a href=\"https://github.com/foambubble/foam/commits?author=riccardoferretti\" title=\"Code\">💻</a> <a href=\"https://github.com/foambubble/foam/commits?author=riccardoferretti\" title=\"Documentation\">📖</a></td>\n      <td align=\"center\" valign=\"top\" width=\"14.28%\"><a href=\"http://ojanaho.com/\"><img src=\"https://avatars0.githubusercontent.com/u/2180090?v=4?s=60\" width=\"60px;\" alt=\"Janne Ojanaho\"/><br /><sub><b>Janne Ojanaho</b></sub></a><br /><a href=\"https://github.com/foambubble/foam/commits?author=jojanaho\" title=\"Code\">💻</a> <a href=\"https://github.com/foambubble/foam/commits?author=jojanaho\" title=\"Documentation\">📖</a></td>\n      <td align=\"center\" valign=\"top\" width=\"14.28%\"><a href=\"http://bypaulshen.com/\"><img src=\"https://avatars3.githubusercontent.com/u/2266187?v=4?s=60\" width=\"60px;\" alt=\"Paul Shen\"/><br /><sub><b>Paul Shen</b></sub></a><br /><a href=\"https://github.com/foambubble/foam/commits?author=paulshen\" title=\"Documentation\">📖</a></td>\n      <td align=\"center\" valign=\"top\" width=\"14.28%\"><a href=\"https://github.com/coffenbacher\"><img src=\"https://avatars0.githubusercontent.com/u/245867?v=4?s=60\" width=\"60px;\" alt=\"coffenbacher\"/><br /><sub><b>coffenbacher</b></sub></a><br /><a href=\"https://github.com/foambubble/foam/commits?author=coffenbacher\" title=\"Documentation\">📖</a></td>\n      <td align=\"center\" valign=\"top\" width=\"14.28%\"><a href=\"https://mathieu.dutour.me/\"><img src=\"https://avatars2.githubusercontent.com/u/3254314?v=4?s=60\" width=\"60px;\" alt=\"Mathieu Dutour\"/><br /><sub><b>Mathieu Dutour</b></sub></a><br /"
+}

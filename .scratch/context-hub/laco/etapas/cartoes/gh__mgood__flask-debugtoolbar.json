@@ -1,0 +1,29 @@
+{
+ "chave": "gh:mgood/flask-debugtoolbar",
+ "urls": [
+  "https://github.com/mgood/flask-debugtoolbar"
+ ],
+ "tipos": [
+  "library"
+ ],
+ "termos": [
+  "Flask debugging",
+  "Werkzeug profiler",
+  "Flask extension"
+ ],
+ "mencoes": 1,
+ "familias": [
+  "gemini"
+ ],
+ "primeira_onda": 5,
+ "nomes": [
+  "Flask-DebugToolbar"
+ ],
+ "resumos": [
+  "Flaskで構築されたローカル検索APIのデバッグ情報やクエリパフォーマンスをブラウザ上で確認できるデバッグツールバー。"
+ ],
+ "readme_status": "ok",
+ "readme_nome": "README.md",
+ "readme_cortado": false,
+ "readme": "# Flask-DebugToolbar\n\nA [Flask][] extension that injects debugging information into rendered HTML\npages. Presented as a sidebar with configurable panels of information.\n\nThis is a port of the excellent [django-debug-toolbar][ddt].\n\n[Flask]: https://flask.palletsprojects.com\n[ddt]: https://github.com/jazzband/django-debug-toolbar/\n\n\n## Pallets Community Ecosystem\n\n> [!IMPORTANT]\\\n> This project is part of the Pallets Community Ecosystem. Pallets is the open\n> source organization that maintains Flask; Pallets-Eco enables community\n> maintenance of related projects. If you are interested in helping maintain\n> this project, please reach out on [the Pallets Discord server][discord].\n\n[discord]: https://discord.gg/pallets\n\n\n## Example\n\nSetting up the debug toolbar is simple:\n\n```python\nfrom flask import Flask\nfrom flask_debugtoolbar import DebugToolbarExtension\n\napp = Flask(__name__)\napp.config[\"SECRET_KEY\"] = \"<replace with a secret key>\"\n\ntoolbar = DebugToolbarExtension(app)\n```\n\nThe toolbar will automatically be injected into Jinja templates when debug\nmode is enabled.\n\n```\n$ flask -A my_app run --debug\n```\n\n![](https://raw.githubusercontent.com/pallets-eco/flask-debugtoolbar/main/docs/_static/example.gif)\n"
+}

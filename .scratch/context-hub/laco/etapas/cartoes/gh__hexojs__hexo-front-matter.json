@@ -1,0 +1,29 @@
+{
+ "chave": "gh:hexojs/hexo-front-matter",
+ "urls": [
+  "https://github.com/hexojs/hexo-front-matter"
+ ],
+ "tipos": [
+  "library"
+ ],
+ "termos": [
+  "hexo",
+  "static site generator",
+  "frontmatter parser"
+ ],
+ "mencoes": 1,
+ "familias": [
+  "nemotron"
+ ],
+ "primeira_onda": 5,
+ "nomes": [
+  "hexo-front-matter"
+ ],
+ "resumos": [
+  "The frontmatter parsing library used by Hexo to extract YAML metadata from markdown posts."
+ ],
+ "readme_status": "ok",
+ "readme_nome": "README.md",
+ "readme_cortado": false,
+ "readme": "# hexo-front-matter\n\n[![CI](https://github.com/hexojs/hexo-front-matter/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/hexojs/hexo-front-matter/actions/workflows/ci.yml)\n[![NPM version](https://badge.fury.io/js/hexo-front-matter.svg)](https://www.npmjs.com/package/hexo-front-matter)\n[![Coverage Status](https://coveralls.io/repos/github/hexojs/hexo-front-matter/badge.svg)](https://coveralls.io/github/hexojs/hexo-front-matter)\n\nFront-matter parser.\n\n## What is Front-matter?\n\nFront-matter allows you to specify data at the top of a file. Here are two formats:\n\n**YAML front-matter**\n\n```\n---\nlayout: false\ntitle: \"Hello world\"\n---\nLorem ipsum dolor sit amet, consectetur adipiscing elit.\n```\n\n**JSON front-matter**\n\n```\n;;;\n\"layout\": false,\n\"title\": \"Hello world\"\n;;;\nLorem ipsum dolor sit amet, consectetur adipiscing elit.\n```\n\nPrefixing separators are optional.\n\n## API\n\n### parse(str, [options])\n\nParses front-matter.\n\nOption | Description | Default | Since\n--- | --- | --- | ---\n`defaultTimeZone` | Default timezone for timestamps without timezone specification (e.g., `Asia/Tokyo`, `Europe/Paris`, `America/New_York`). See [Timezone Behavior](#timezone-behavior) for detailed behavior. | `undefined` | v5.0.0\n\n### stringify(obj, [options])\n\nConverts an object to a front-matter string.\n\nOption | Description | Default\n--- | --- | ---\n`mode` | The mode can be either `json` or `yaml`. | `yaml`\n`separator` | Separator | `---`\n`prefixSeparator` | Add prefixing separator. | `false`\n\n### split(str)\n\nSplits a YAML front-matter string.\n\n### escape(str)\n\nConverts hard tabs to soft tabs.\n\n## Timezone Behavior\n\nStarting from `v5.0.0`, the timezone handling has been changed. Below is a comparison of the behavior between `v4.x` and `v5.x`:\n\n### Behavior Differences\n\n| Front-matter Timestamp | `defaultTimeZone` Option (typically from Hexo config) | v4.x Behavior | v5.x Behavior |\n|------------------------|---------------------------------------------|---------------|---------------|\n| With timezone<br>(e.g., `2025-01-01T12:00:00+08:00`) | Not specified | Uses machine's local timezone | Uses the specified timezone |\n| With timezone<br>(e.g., `2025-01-01T12:00:00+08:00`) | Specified | Uses machine's local timezone | Uses the specified timezone |\n| Without timezone<br>(e.g., `2025-01-01T12:00:00`) | Not specified | Uses machine's local timezone | Treats as UTC |\n| Without timezone<br>(e.g., `2025-01-01T12:00:00`) | Specified | Uses machine's local timezone | Uses `defaultTimeZone` |\n| Date only<br>(e.g., `2025-01-01`) | Not specified | Treats as 00:00:00 in machine's local timezone | Treats as 00:00:00 UTC |\n| Date only<br>(e.g., `2025-01-01`) | Specified | Treats as 00:00:00 in machine's local timezone | Treats as 00:00:00 in `defaultTimeZone` |\n\n## License\n\nMIT"
+}

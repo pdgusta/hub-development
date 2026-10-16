@@ -1,0 +1,60 @@
+{
+ "chave": "web:docs.python-cerberus.org/en/stable",
+ "nomes": [
+  "Cerberus",
+  "cerberus"
+ ],
+ "urls": [
+  "http://docs.python-cerberus.org/en/stable/",
+  "https://docs.python-cerberus.org/",
+  "https://docs.python-cerberus.org/en/stable/",
+  "https://docs.cerberus.org/",
+  "http://docs.python-cerberus.org/",
+  "https://cerberus.readthedocs.io/"
+ ],
+ "readme_cortado": false,
+ "readme": "[Cerberus — Data validation for PythonContentsMenuExpandLight modeDark modeAuto light/dark, in light modeAuto light/dark, in dark mode]\n\nHide navigation sidebar\n\nHide table of contents sidebar\n\nSkip to content\n\n Cerberus — Data validation for Python\n\nInstallation\n\nUsage\n\nValidation Schemas\n\nValidation Rules\n\nNormalization Rules\n\nErrors & Error Handling\n\nExtending\n\nContributing\n\nAPI\n\nFAQ\n\nExternal resources\n\nCerberus Changelog\n\nUpgrading to Cerberus 1.0\n\nAuthors\n\nContact\n\nLicense\n\n Back to top\n\n View this page\n\nToggle Light / Dark / Auto color theme\n\nToggle table of contents sidebar\n\nWelcome to Cerberus¶\n\nCERBERUS, n. The watch-dog of Hades, whose duty it was to guard the\nentrance; everybody, sooner or later, had to go there, and nobody wanted to\ncarry off the entrance.\n- Ambrose Bierce, The Devil’s Dictionary\n\nCerberus provides powerful yet simple and lightweight data validation\nfunctionality out of the box and is designed to be easily extensible, allowing\nfor custom validation. It has no dependencies and is thoroughly.\n\nAt a Glance¶\n\nYou define a validation schema and pass it to an instance of the\nValidator class:\n\n>>> schema = {'name': {'type': 'string'}}\n>>> v = Validator(schema)\n\nThen you simply invoke the validate() to validate\na dictionary against the schema. If validation succeeds, True is returned:\n\n>>> document = {'name': 'john doe'}\n>>> v.validate(document)\nTrue\n\nTable of Contents¶\n\nInstallation\n\nStable Version\n\nDevelopment Version\n\nUsage\n\nBasic Usage\n\nAllowing the Unknown\n\nRequiring all\n\nFetching Processed Documents\n\nWarnings\n\nValidation Schemas\n\nRegistries\n\nValidation\n\nSerialization\n\nValidation Rules\n\nallow_unknown\n\nallowed\n\nallof\n\nanyof\n\ncheck_with\n\ncontains\n\ndependencies\n\nempty\n\nexcludes\n\nforbidden\n\nitems\n\nkeysrules\n\nmeta\n\nmin, max\n\nminlength, maxlength\n\nnoneof\n\nnullable\n\n*of-rules\n\noneof\n\nreadonly\n\nregex\n\nrequire_all\n\nrequired\n\nschema (dict)\n\nschema (list)\n\ntype\n\nvaluesrules\n\nNormalization Rules\n\nRenaming Of Fields\n\nPurging Unknown Fields\n\nDefault Values\n\nValue Coercion\n\nErrors & Error Handling\n\nError Handlers\n\nPython interfaces\n\nExtending\n\nCustom Rules\n\nCustom Data Types\n\nMethods that can be referenced by the check_with rule\n\nCustom Coercers\n\nCustom Default Setters\n\nLimitations\n\nAttaching Configuration Data And Instantiating Custom Validators\n\nRelevant Validator-attributes\n\nContributing\n\nMaking Changes\n\nSubmitting Changes\n\nRunning the Tests\n\nAPI\n\nValidator Class\n\nRules Set & Schema Registry\n\nType Definitions\n\nError Handlers\n\nPython Error Representations\n\nExceptions\n\nUtilities\n\nSchema Validation Schema\n\nFAQ\n\nCan I use Cerberus to validate objects?\n\nAre Cerberus validators thread-safe, can they be used in different threads?\n\nExternal resources\n\nCommunity forums\n\n7 Best Python Libraries For Validating Data (February 2018)\n\nNicola Iarocci: Cerberus, or Data Validation for Humans (November 2017)\n\nHenry Ölsner: Validate JSON data using cerberus (March 2016)\n\nCerberus Changelog\n\nVersion 1.3.5\n\nVersion 1.3.4\n\nVersion 1.3.3\n\nVersion 1.3.2\n\nVersion 1.3.1\n\nVersion 1.3\n\nVersion 1.2\n\nVersion 1.1\n\nVersion 1.0.1\n\nVersion 1.0\n\nVersion 0.9.2\n\nVersion 0.9.1\n\nVersion 0.9\n\nVersion 0.8.1\n\nVersion 0.8\n\nVersion 0.7.2\n\nVersion 0.7.1\n\nVersion 0.7\n\nVersion 0.6\n\nVersion 0.5\n\nVersion 0.4.0\n\nVersion 0.3.0\n\nVersion 0.2.0\n\nVersion 0.1.0\n\nVersion 0.0.3\n\nVersion 0.0.2\n\nVersion 0.0.1\n\nUpgrading to Cerberus 1.0\n\nMajor Additions\n\nDeprecations\n\nAuthors\n\nCore maintainers\n\nContributors\n\nContact\n\nBlog\n\nMailing List\n\nIssues tracker\n\nGitHub repository\n\nLicense\n\nCopyright Notice¶\n\nCerberus is an open source project by Nicola Iarocci. See the original LICENSE for more\ninformation.\n\n On this page\n\nWelcome to Cerberus\n\nAt a Glance\n\nTable of Contents\n\nCopyright Notice",
+ "fonte": "site",
+ "respostas": [
+  {
+   "por": "llama-3.2-11b-vision-instruct",
+   "resposta": {
+    "serve": "none",
+    "role": "",
+    "place": [
+     "n/a"
+    ],
+    "mechanism": [
+     "n/a"
+    ],
+    "mcp": "unknown",
+    "windows": "yes",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "unknown",
+    "doubt": true,
+    "evidence": ""
+   }
+  },
+  {
+   "por": "mistral-code-fim",
+   "resposta": {
+    "serve": "stack",
+    "role": "data validation library",
+    "place": [
+     "library"
+    ],
+    "mechanism": [
+     "other"
+    ],
+    "mcp": "no",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "stable",
+    "doubt": false,
+    "evidence": "Cerberus provides powerful yet simple and lightweight data validation functionality out of the box."
+   }
+  }
+ ]
+}

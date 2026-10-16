@@ -1,0 +1,32 @@
+{
+ "chave": "web:jina.ai/embeddings",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T21:30:21Z",
+ "resultado": "corrige",
+ "conferencia": {
+  "resultado": "corrige",
+  "final": {
+   "serve": "search",
+   "role": "Hosted API that generates multilingual embedding vectors for semantic search over notes.",
+   "place": [
+    "network_service"
+   ],
+   "mechanism": [
+    "embeddings",
+    "vector"
+   ],
+   "mcp": "unknown",
+   "windows": "unknown",
+   "portuguese": "yes",
+   "license": "unknown",
+   "maturity": "unknown",
+   "doubt": false,
+   "evidence": "Top-performing multimodal multilingual long-context embeddings for search, RAG and agent applications."
+  },
+  "o_que_mudou": [
+   "place: [network_service, light_client] -> [network_service], hosted API only",
+   "doubt: true -> false, README allows decision"
+  ],
+  "nota": "Hosted multilingual embedding API usable for the hub's semantic search layer; requires API key and sends notes to a third party."
+ }
+}

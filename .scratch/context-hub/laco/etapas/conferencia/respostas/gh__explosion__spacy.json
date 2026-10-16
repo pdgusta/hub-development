@@ -1,0 +1,32 @@
+{
+ "chave": "gh:explosion/spacy",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T21:08:36Z",
+ "resultado": "corrige",
+ "conferencia": {
+  "resultado": "corrige",
+  "final": {
+   "serve": "stack",
+   "role": "NLP library (tokenization, lemmatization, NER) with pretrained pipelines, usable for text preprocessing before indexing.",
+   "place": [
+    "library"
+   ],
+   "mechanism": [
+    "other"
+   ],
+   "mcp": "unknown",
+   "windows": "unknown",
+   "portuguese": "unknown",
+   "license": "MIT",
+   "maturity": "stable",
+   "doubt": false,
+   "evidence": "spaCy is a library for advanced NLP in Python and Cython; supports tokenization and training for 70+ languages; released under the MIT license; production-ready."
+  },
+  "o_que_mudou": [
+   "mechanism: embeddings/n/a -> other, README describes NLP pipelines, not embedding search",
+   "portuguese: yes/unknown -> unknown, README only says 70+ languages",
+   "doubt: true -> false"
+  ],
+  "nota": "General NLP preprocessing library; could help lemmatization or tokenization for Portuguese search, but is not a search layer itself."
+ }
+}

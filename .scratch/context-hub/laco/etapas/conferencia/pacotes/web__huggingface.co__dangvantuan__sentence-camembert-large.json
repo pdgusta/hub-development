@@ -1,0 +1,54 @@
+{
+ "chave": "web:huggingface.co/dangvantuan/sentence-camembert-large",
+ "nomes": [
+  "dangvantuan/sentence-camembert-large"
+ ],
+ "urls": [
+  "https://huggingface.co/dangvantuan/sentence-camembert-large"
+ ],
+ "readme_cortado": false,
+ "readme": "[dangvantuan/sentence-camembert-large · Hugging Facegoogle-tensorflow]\n\nDescription:\n\nSentence-CamemBERT-Large is the Embedding Model for French developed by La Javaness. The purpose of this embedding model is to represent the content and semantics of a French sentence in a mathematical vector which allows it to understand the meaning of the text-beyond individual words in queries and documents, offering a powerful semantic search.\n\n Pre-trained sentence embedding models are state-of-the-art of Sentence Embeddings for French.\n\nThe model is Fine-tuned using pre-trained facebook/camembert-large and\nSiamese BERT-Networks with 'sentences-transformers' on dataset stsb\n\n Usage\n\nThe model can be used directly (without a language model) as follows:\n\nfrom sentence_transformers import SentenceTransformer\nmodel = SentenceTransformer(\"dangvantuan/sentence-camembert-large\")\n\nsentences = [\"Un avion est en train de décoller.\",\n \"Un homme joue d'une grande flûte.\",\n \"Un homme étale du fromage râpé sur une pizza.\",\n \"Une personne jette un chat au plafond.\",\n \"Une personne est en train de plier un morceau de papier.\",\n ]\n\nembeddings = model.encode(sentences)\n\n Evaluation\n\nThe model can be evaluated as follows on the French test data of stsb.\n\nfrom sentence_transformers import SentenceTransformer\nfrom sentence_transformers.readers import InputExample\nfrom datasets import load_dataset\ndef convert_dataset(dataset):\n dataset_samples=[]\n for df in dataset:\n score = float(df['similarity_score'])/5.0 # Normalize score to range 0 ... 1\n inp_example = InputExample(texts=[df['sentence1'], \n df['sentence2']], label=score)\n dataset_samples.append(inp_example)\n return dataset_samples\n\n# Loading the dataset for evaluation\ndf_dev = load_dataset(\"stsb_multi_mt\", name=\"fr\", split=\"dev\")\ndf_test = load_dataset(\"stsb_multi_mt\", name=\"fr\", split=\"test\")\n\n# Convert the dataset for evaluation\n\n# For Dev set:\ndev_samples = convert_dataset(df_dev)\nval_evaluator = EmbeddingSimilarityEvaluator.from_input_examples(dev_samples, name='sts-dev')\nval_evaluator(model, output_path=\"./\")\n\n# For Test set:\ntest_samples = convert_dataset(df_test)\ntest_evaluator = EmbeddingSimilarityEvaluator.from_input_examples(test_samples, name='sts-test')\ntest_evaluator(model, output_path=\"./\")\n\nTest Result: \nThe performance is measured using Pearson and Spearman correlation:\n\nOn dev\n\nModel\nPearson correlation\nSpearman correlation\n#params\n\ndangvantuan/sentence-camembert-large\n88.2\n88.02\n336M\n\ndangvantuan/sentence-camembert-base\n86.73\n86.54\n110M\n\ndistiluse-base-multilingual-cased\n79.22\n79.16\n135M\n\nGPT-3 (text-davinci-003)\n85\nNaN\n175B\n\nGPT-(text-embedding-ada-002)\n79.75\n80.44\nNaN\n\nOn test\n\nModel\nPearson correlation\nSpearman correlation\n\ndangvantuan/sentence-camembert-large\n85.9\n85.8\n\ndangvantuan/sentence-camembert-base\n82.36\n81.64\n\ndistiluse-base-multilingual-cased\n78.62\n77.48\n\nGPT-3 (text-davinci-003)\n82\nNaN\n\nGPT-(text-embedding-ada-002)\n79.05\n77.56\n\n Citation\n\n@article{reimers2019sentence,\n title={Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks},\n author={Nils Reimers, Iryna Gurevych},\n journal={https://arxiv.org/abs/1908.10084},\n year={2019}\n}\n\n@article{martin2020camembert,\n title={CamemBERT: a Tasty French Language Mode},\n author={Martin, Louis and Muller, Benjamin and Su{\\'a}rez, Pedro Javier Ortiz and Dupont, Yoann and Romary, Laurent and de la Clergerie, {\\'E}ric Villemonte and Seddah, Djam{\\'e} and Sagot, Beno{\\^\\i}t},\n journal={Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics},\n year={2020}\n}\n\nDownloads last month 68,290 \n\nSafetensors \n\nModel size \n0.3B params \n\nTensor type \nI64 \n·F32 \n· \n\nFiles info \n\n Model tree for dangvantuan/sentence-camembert-large \n\nFinetunes \n 3 models\n\nQuantizations \n 1 model \n\n Dataset used to train dangvantuan/sentence-camembert-large \n\n Spaces using dangvantuan/sentence-camembert-large 19 \n\n Paper for dangvantuan/sentence-camembert-large \n\n Paper • 1908.10084 • Published Aug 27, 2019 • 19 \n\n Evaluation results \n\nTest Pearson correlation coefficient on Text Similarity fr self-reported \n\nxx.xx",
+ "fonte": "site",
+ "respostas": [
+  {
+   "por": "deepseek-v4-flashfree",
+   "resposta": {
+    "serve": "none",
+    "role": "",
+    "place": [
+     "n/a"
+    ],
+    "mechanism": [
+     "n/a"
+    ],
+    "mcp": "no",
+    "windows": "unknown",
+    "portuguese": "no",
+    "license": "unknown",
+    "maturity": "unknown",
+    "doubt": false,
+    "evidence": "Sentence-CamemBERT-Large is the Embedding Model for French ... offering a powerful semantic search. No MCP or Windows mention."
+   }
+  },
+  {
+   "por": "nemotron-3-super-120b",
+   "resposta": {
+    "serve": "none",
+    "role": "",
+    "place": [
+     "n/a"
+    ],
+    "mechanism": [
+     "n/a"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "no",
+    "license": "unknown",
+    "maturity": "unknown",
+    "doubt": true,
+    "evidence": "Sentence-CamemBERT-Large is the Embedding Model for French"
+   }
+  }
+ ]
+}

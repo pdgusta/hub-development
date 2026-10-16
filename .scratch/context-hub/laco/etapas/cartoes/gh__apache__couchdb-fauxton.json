@@ -1,0 +1,28 @@
+{
+ "chave": "gh:apache/couchdb-fauxton",
+ "urls": [
+  "https://github.com/apache/couchdb-fauxton"
+ ],
+ "tipos": [
+  "tool"
+ ],
+ "termos": [
+  "CouchDB Fauxton",
+  "CouchDB web admin"
+ ],
+ "mencoes": 1,
+ "familias": [
+  "mistral"
+ ],
+ "primeira_onda": 3,
+ "nomes": [
+  "CouchDB Fauxton"
+ ],
+ "resumos": [
+  "A web-based administrative interface for CouchDB."
+ ],
+ "readme_status": "ok",
+ "readme_nome": "readme.md",
+ "readme_cortado": false,
+ "readme": "![Build Status](https://github.com/apache/couchdb-fauxton/actions/workflows/main.yml/badge.svg?branch=main)\n\n# Fauxton\n\nFauxton is the new Web UI for CouchDB. To get it running in development on your machine. Follow the steps below.\n\n## Install as standalone server via npm\n\nYou can use the latest release of Fauxton via npm:\n\n    npm install -g fauxton\n    fauxton\n\nSee `fauxton --help` for extra options.\n\n\n## Setting up Fauxton\n\nPlease note that [node.js](http://nodejs.org/) and npm is required. Specifically, Fauxton requires at least Node 6 and npm 3.\n\n1. Fork this repo (see [GitHub help](https://help.github.com/articles/fork-a-repo/) for details)\n1. Clone your fork: `git clone https://github.com/YOUR-USERNAME/couchdb-fauxton.git`\n1. Go to your cloned copy: `cd couchdb-fauxton`\n1. Set up the upstream repo: \n    * `git remote add upstream https://github.com/apache/couchdb-fauxton.git`\n    * `git fetch upstream`\n    * `git branch --set-upstream-to=upstream/main main`\n1. Download all dependencies: `npm install`\n1. Make sure you have CouchDB installed.\n    - Option 1 (**recommended**): Use `npm run docker:up` to start a Docker container running CouchDB with user `tester` and password `testerpass`.\n      - You need to have [Docker](https://docs.docker.com/engine/installation/) installed to use this option. \n    - Option 2: Follow instructions \n[found here](http://couchdb.readthedocs.org/en/latest/install/index.html)\n\n\n## Running Fauxton\n\n**NOTE: Before you run Fauxton, don't forget to start CouchDB!**\n\n\n### The Dev Server\n\nUsing the dev server is the easiest way to use Fauxton, especially when developing for it. In the cloned repo folder,\ntype:\n\n```\nnpm run dev\n```\n\nYou should be able to access Fauxton at `http://localhost:8000`\n\n\n### Preparing a Fauxton Release\n\nFollow the \"Setting up Fauxton\" section above, then edit the `settings.json` variable root where the document will live, \ne.g. `/_utils/`. Then type:\n\n```\nnpm run couchdb\n```\nThis will install the latest version of Fauxton into `/share/www/`\n\n\n### To Deploy Fauxton\n\nTo deploy to your local [CouchDB instance](http://localhost:5984/fauxton/_design/fauxton/index.html):\n\n    grunt couchapp_deploy\n\n### Build pipeline overview\n\nDuring a release build we are creating a folder called `dist/tmp-out`.\nIt contains all files that are just intermediate results for the final\nrelease artifact. Once everything is finished the files are copied from\n`tmp-out` to their final destination, `dist/release` where they are\npart of the deployable release artifact.\n\n### (Optional) To avoid a npm global install\n    # Development mode, non minified files\n    npm run couchdebug\n\n    # Or fully compiled install\n    npm run couchdb\n\n\n\n## More information \n\nCheck out the following pages for a lot more information about Fauxton:\n\n- [The Fauxton Code Layout](https://github.com/apache/couchdb-fauxton/blob/main/code-layout.md)\n- [Style Guide](https://github.com/apache/couchdb-fauxton/blob/main/styleguide.md)\n- [Testing Fauxton](https://github.com/apache/couchdb-fauxton/blob/main/tests.md)\n- [Extensions](https://github.com/apache/couchdb-fauxton/blob/main/extensions.md)\n- [How to contribute](https://github.com/apache/couchdb-fauxton/blob/main/CONTRIBUTING.md)\n\n\n------\n\n\n-- The Fauxton Team\n"
+}

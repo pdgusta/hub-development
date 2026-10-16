@@ -1,0 +1,55 @@
+{
+ "chave": "conceito:nats-request-reply",
+ "chaves_do_catalogo": [
+  "web:docs.nats.io/concepts/request-reply"
+ ],
+ "nomes": [
+  "NATS Request-Reply"
+ ],
+ "mencoes": 3,
+ "familias": [
+  "gemma",
+  "ising",
+  "nemotron"
+ ],
+ "resumos": [
+  "The communication pattern used by the MCP server to query the search layer and return results to the agent.",
+  "The request-reply pattern in NATS allows for synchronous communication, which is ideal for search queries where a client needs to send a query and receive a response immediately.",
+  "Request‑response pattern for query‑response interactions with the search service."
+ ],
+ "termos": [
+  "RPC",
+  "synchronous messaging",
+  "request-reply",
+  "synchronous search",
+  "NATS patterns",
+  "rpc",
+  "request",
+  "response"
+ ],
+ "urls": [
+  "https://docs.nats.io/concepts/request-reply",
+  "https://nats.io/documentation/core/concepts/request_reply/"
+ ],
+ "triagem": {
+  "chave": "conceito:nats-request-reply",
+  "modelo": "claude-haiku-5-5",
+  "ts": "2026-10-13T21:02:37Z",
+  "resposta": {
+   "concept_en": "request-reply",
+   "serve": "stack",
+   "role": "Synchronous query-response channel between the MCP server and a search service",
+   "mechanism": [
+    "n/a"
+   ],
+   "place": [
+    "network_service"
+   ],
+   "tools_on_card": [
+    "NATS"
+   ],
+   "doubt": false,
+   "evidence": "The communication pattern used by the MCP server to query the search layer and return results to the agent."
+  }
+ }
+}

@@ -1,0 +1,141 @@
+Skip to main content
+Crate tantivy
+
+Crate tantivy Copy item pathSource Expand description
+
+§tantivy
+
+Tantivy is a search engine library.
+Think Lucene, but in Rust.
+
+// First we need to define a schema ...
+
+// `TEXT` means the field should be tokenized and indexed,
+// along with its term frequency and term positions.
+//
+// `STORED` means that the field will also be saved
+// in a compressed, row-oriented key-value store.
+// This store is useful to reconstruct the
+// documents that were selected during the search phase.
+let mut schema_builder = Schema::builder();
+let title = schema_builder.add_text_field("title", TEXT | STORED);
+let body = schema_builder.add_text_field("body", TEXT);
+let schema = schema_builder.build();
+
+// Indexing documents
+
+let index = Index::create_in_dir(index_path, schema.clone())?;
+
+// Here we use a buffer of 100MB that will be split
+// between indexing threads.
+let mut index_writer: IndexWriter = index.writer(100_000_000)?;
+
+// Let's index a document!
+index_writer.add_document(doc!(
+ title => "The Old Man and the Sea",
+ body => "He was an old man who fished alone in a skiff in \
+ the Gulf Stream and he had gone eighty-four days \
+ now without taking a fish."
+))?;
+
+// We need to call .commit() explicitly to force the
+// index_writer to finish processing the documents in the queue,
+// flush the current index to the disk, and advertise
+// the existence of new documents.
+index_writer.commit()?;
+
+// # Searching
+
+let reader = index.reader()?;
+
+let searcher = reader.searcher();
+
+let query_parser = QueryParser::for_index(&index, vec![title, body]);
+
+// QueryParser may fail if the query is not in the right
+// format. For user facing applications, this can be a problem.
+// A ticket has been opened regarding this problem.
+let query = query_parser.parse_query("sea whale")?;
+
+// Perform search.
+// `topdocs` contains the 10 most relevant doc ids, sorted by decreasing scores...
+let top_docs: Vec<(Score, DocAddress)> =
+ searcher.search(&query, &TopDocs::with_limit(10).order_by_score())?;
+
+for (_score, doc_address) in top_docs {
+ // Retrieve the actual content of documents given its `doc_address`.
+ let retrieved_doc = searcher.doc::<TantivyDocument>(doc_address)?;
+ println!("{}", retrieved_doc.to_json(&schema));
+}
+
+A good place for you to get started is to check out
+the example code (
+literate programming /
+source code)
+
+§Tantivy Architecture Overview
+
+Tantivy is inspired by Lucene, the Architecture is very similar.
+
+§Core Concepts
+
+Index: A collection of segments. The top level entry point for tantivy users to search
+and index data.
+
+Segment: At the heart of Tantivy’s indexing structure is the Segment. It contains
+documents and indices and is the atomic unit of indexing and search.
+
+Schema: A schema is a set of fields in an index. Each field has a specific data
+type and set of attributes.
+
+IndexWriter: Responsible creating and merging segments. It executes the indexing
+pipeline including tokenization, creating indices, and storing the index in the
+Directory.
+
+Searching: Searcher searches the segments with anything that implements
+Query and merges the results. The list of supported
+queries. Custom Queries are supported by implementing the
+Query trait.
+
+Directory: Abstraction over the storage where the index data is stored.
+
+Tokenizer: Breaks down text into individual tokens. Users can implement or
+use provided tokenizers.
+
+§Architecture Flow
+
+Document Addition: Users create documents according to the defined schema. The documents
+fields are tokenized, processed, and added to the current segment. See
+Document for the structure and usage.
+
+Segment Creation: Once the memory limit threshold is reached or a commit is called, the
+segment is written to the Directory. Documents are searchable after commit.
+
+Merging: To optimize space and search speed, segments might be merged. This operation is
+performed in the background. Customize the merge behaviour via
+IndexWriter::set_merge_policy.
+
+Re-exports§pub use crate::error::TantivyError;pub use crate::directory::Directory;pub use crate::index::Index;pub use crate::index::IndexBuilder;pub use crate::index::IndexMeta;pub use crate::index::IndexSettings;pub use crate::index::InvertedIndexReader;pub use crate::index::Order;pub use crate::index::Segment;pub use crate::index::SegmentMeta;pub use crate::index::SegmentReader;pub use crate::indexer::IndexWriter;pub use crate::schema::Document;pub use crate::schema::TantivyDocument;pub use crate::schema::Term;pub use columnar;pub use query_grammar;pub use time;
+Modules§aggregationAggregationscollectorCollectorsdirectoryWORM (Write Once Read Many) directory abstraction.errorDefinition of Tantivy’s errors and results.fastfieldColumn oriented field storage for tantivy.fieldnormThe fieldnorm represents the length associated with
+a given Field of a given document.indexThe index module in Tantivy contains core components to read and write indexes.indexerIndexing and merging data.merge_policyDefines tantivy’s merging strategypositionsTantivy can (if instructed to do so in the schema) store the term positions in a given field.postingsPostings module (also called inverted index)queryModule containing the different query implementations.schemaSchema definition for tantivy’s indices.snippetSnippetGenerator
+Generates a text snippet for a given document, and some highlighted parts inside it.space_usageRepresentations for the space usage of various parts of a Tantivy index.storeCompressed/slow/row-oriented storage for documents.termdictThe term dictionary main role is to associate the sorted Terms to
+a TermInfo struct that contains some meta-information
+about the term.tokenizerTokenizer are in charge of chopping text into a stream of tokens
+ready for indexing.
+Macros§docdoc! is a shortcut that helps building Document
+objects.fail_pointEnable fail_point if feature is enabled.
+Structs§ByteCountIndicates space usage in bytesDateTimeA date/time value with nanoseconds precision.DocAddressDocAddress contains all the necessary information
+to identify a document given a Searcher object.FutureResultFutureResult is a handle that makes it possible to wait for the completion
+of an ongoing task.IndexReaderIndexReader is your entry point to read and search the index.IndexReaderBuilderIndexReader builderInventoryThe Inventory register and keeps track of all of the objects alive.SearcherHolds a list of SegmentReaders ready for search.SearcherGenerationIdentifies the searcher generation accessed by a Searcher.TrackedObjectYour tracked object.VersionStructure version for the index.
+Enums§ExecutorExecutor makes it possible to run tasks in single thread or
+in a thread pool.ReloadPolicyDefines when a new version of the index should be reloaded.
+Constants§COLLECT_BLOCK_BUFFER_LENThe collect_block method on SegmentCollector uses a buffer of this size.
+Passed results to collect_block will not exceed this size and will be
+exactly this size as long as we can fill the buffer.INDEX_FORMAT_OLDEST_SUPPORTED_VERSIONOldest index format version this tantivy version can read.INDEX_FORMAT_VERSIONIndex format version.TERMINATEDSentinel value returned when a DocSet has been entirely consumed.
+Traits§DocSetRepresents an iterable set of sorted doc ids.HasLenHas length traitWarmerWarmer can be used to maintain segment-level state e.g. caches.
+Functions§f64_to_u64Maps a f64 to u64i64_to_u64Maps a i64 to u64u64_to_f64Reverse the mapping given by f64_to_u64().u64_to_i64Reverse the mapping given by i64_to_u64().versionExpose the current version of tantivy as found in Cargo.toml during compilation.
+eg. “0.11.0” as well as the compression scheme used in the docstore.version_stringExposes the complete version of tantivy as found in Cargo.toml during compilation as a string.
+eg. “tantivy v0.11.0, index_format v1, store_compression: lz4”.
+Type Aliases§DocIdA u32 identifying a document within a segment.
+Documents have their DocId assigned incrementally,
+as they are added in the segment.OpstampA u64 assigned to every operation incrementallyResultTantivy result.ScoreA Score that represents the relevance of the document to the querySegmentOrdinalA SegmentOrdinal identifies a segment, within a Searcher or Merger.

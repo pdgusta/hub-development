@@ -1,0 +1,32 @@
+{
+ "chave": "web:elastic.co/cloud/elasticsearch-service",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T21:55:21Z",
+ "resultado": "corrige",
+ "conferencia": {
+  "resultado": "corrige",
+  "final": {
+   "serve": "search",
+   "role": "Hosted Elasticsearch service (paid cloud) usable as a remote search backend",
+   "place": [
+    "network_service"
+   ],
+   "mechanism": [
+    "vector"
+   ],
+   "mcp": "unknown",
+   "windows": "unknown",
+   "portuguese": "unknown",
+   "license": "unknown",
+   "maturity": "unknown",
+   "doubt": false,
+   "evidence": "Page: hosted Elasticsearch, 'excellent support for vector search'; no MCP, license or Windows info."
+  },
+  "o_que_mudou": [
+   "serve: none/search -> search, hosted Elasticsearch is a search backend",
+   "mechanism: bm25,vector,hybrid,embeddings -> vector, only vector is mentioned",
+   "mcp/windows/maturity -> unknown, page does not say"
+  ],
+  "nota": "Paid remote Elasticsearch; a possible but heavy search backend, poor fit with local CouchDB notes and no MCP."
+ }
+}

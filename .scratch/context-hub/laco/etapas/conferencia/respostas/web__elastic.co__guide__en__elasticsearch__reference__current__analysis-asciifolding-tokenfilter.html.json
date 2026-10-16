@@ -1,0 +1,31 @@
+{
+ "chave": "web:elastic.co/guide/en/elasticsearch/reference/current/analysis-asciifolding-tokenfilter.html",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T21:57:22Z",
+ "resultado": "corrige",
+ "conferencia": {
+  "resultado": "corrige",
+  "final": {
+   "serve": "search",
+   "role": "Token filter that folds accented characters to ASCII (e.g. acai from açaí) for accent-insensitive matching",
+   "place": [
+    "library"
+   ],
+   "mechanism": [
+    "full_text"
+   ],
+   "mcp": "unknown",
+   "windows": "unknown",
+   "portuguese": "yes",
+   "license": "unknown",
+   "maturity": "unknown",
+   "doubt": false,
+   "evidence": "Converts alphabetic, numeric, and symbolic characters that are not in the Basic Latin Unicode block to their ASCII equivalent ... açaí à la carte -> [acai, a, la, carte]"
+  },
+  "o_que_mudou": [
+   "place: network_service -> library, a filter inside an analyzer",
+   "portuguese: no/yes -> yes, example folds Portuguese accents"
+  ],
+  "nota": "Only matters if Elasticsearch is used; accent-insensitive Portuguese matching."
+ }
+}

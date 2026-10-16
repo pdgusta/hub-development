@@ -1,0 +1,64 @@
+{
+ "chave": "gh:castorini/anserini",
+ "nomes": [
+  "Anserini",
+  "Anserini (BM25 para índices Lucene)",
+  "Anserini (com BM25 + embeddings)",
+  "Anserini (Indri Search)"
+ ],
+ "urls": [
+  "https://github.com/castorini/anserini",
+  "https://anserini.io/",
+  "https://github.com/castorini/Anserini",
+  "https://anserini.io",
+  "https://anserini.github.io/",
+  "https://github.com/project-anserini/anserini"
+ ],
+ "readme_cortado": false,
+ "readme": "Anserini <img src=\"docs/anserini-logo.png\" width=\"300\" />\n========\n[![build](https://github.com/castorini/anserini/actions/workflows/maven.yml/badge.svg)](https://github.com/castorini/anserini/actions)\n[![codecov](https://codecov.io/gh/castorini/anserini/branch/master/graph/badge.svg)](https://codecov.io/gh/castorini/anserini)\n[![Generic badge](https://img.shields.io/badge/Lucene-v10.5.0-brightgreen.svg)](https://archive.apache.org/dist/lucene/java/10.5.0/)\n[![Maven Central](https://img.shields.io/maven-central/v/io.anserini/anserini?color=brightgreen)](https://central.sonatype.com/namespace/io.anserini)\n[![LICENSE](https://img.shields.io/badge/license-Apache-blue.svg?style=flat)](https://www.apache.org/licenses/LICENSE-2.0)\n[![doi](http://img.shields.io/badge/doi-10.1145%2F3239571-blue.svg?style=flat)](https://doi.org/10.1145/3239571)\n\nAnserini is a toolkit for reproducible information retrieval research.\nBy building on Lucene, we aim to bridge the gap between academic information retrieval research and the practice of building real-world search applications.\nAmong other goals, our effort aims to be [the opposite of this](http://phdcomics.com/comics/archive.php?comicid=1689).[*](docs/reproducibility.md)\nAnserini grew out of [a reproducibility study of various open-source retrieval engines in 2016](https://link.springer.com/chapter/10.1007/978-3-319-30671-1_30) (Lin et al., ECIR 2016).\nSee [Yang et al. (SIGIR 2017)](https://dl.acm.org/doi/10.1145/3077136.3080721) and [Yang et al. (JDIQ 2018)](https://dl.acm.org/doi/10.1145/3239571) for overviews.\n\n**For users steering coding agents:**\nIf you want a complete dev environment, give your agent the following instructions:\n\n> read the skill at https://github.com/castorini/anserini/tree/master/.agents/skills/install-anserini-dev-env to create a dev environment for me; no need to install the skill\n\nAlternatively, if you want a quick fatjar-based setup, give your agent the following instructions:\n\n> read the skill at https://github.com/castorini/anserini/tree/master/.agents/skills/install-anserini-fatjar to download the fatjar for me; no need to install the skill\n\n<details>\n<summary>Rationale...</summary>\n\n> ❓ **Why the above instructions?**\n> If you just tell the agent to install Anserini, it'll likely figure everything out by itself, but there are some choice points it might get confused by, like whether to do a full clone for a dev environment, or just fetch the fatjar.\n> The skills make this clear and provide instructions that make the installation process more token-efficient.\n> If you don't _explicitly_ point your agent at the skills, it may be overeager and wander around...\n>\n> Also, tell the agent not to install the skill locally, since you only need it once.\n> Otherwise, it may do unnecessary work.\n\n</details>\n\n> **For coding agents:** When setting up Anserini, ask whether the user wants a dev environment or a quick fatjar-based setup. Use the [`install-anserini-dev-env`](.agents/skills/install-anserini-dev-env/SKILL.md) skill for the dev environment and the [`install-anserini-fatjar`](.agents/skills/install-anserini-fatjar/SKILL.md) skill for the fatjar setup.\n> For command-line usage after setup, use the [`anserini-cli`](.agents/skills/anserini-cli/SKILL.md) skill for prebuilt-index registry, topics registry, search, and REST workflows.\n> For reproducibility experiments, use the [`anserini-reproduction`](.agents/skills/anserini-reproduction/SKILL.md).\n\n❗ Anserini previously included [a submodule checkout](https://github.com/castorini/eval/) at `tools/`. This was removed at [`anserini#3382`](https://github.com/castorini/anserini/pull/3382) to eliminate an external dependency. This has a few implications:\n\n+ At commit [`43add83`](https://github.com/castorini/eval/commit/43add835e20bd66b48f9a640be9bad95a4762d82) (2026/08/09), (in what used to be `tools/`) `topics-and-qrels/` was refactored into separate `topics/` and `qrels/` directories.\nAt the same time, the repo was renamed from `anserini-tools` to `eval`.\nThe associated PR is [`eval#118`](https://github.com/castorini/eval/pull/118).\nThis breaks consumers that depend on fetching a stable `topics-and-qrels/` path (on `master`).\nNote that the most obvious solution to add symlinks won't work, as `raw.githubusercontent.com` URLs do not automatically redirect.\nUnfortunately, there's no good solution... according to Codex, we either have to fix all downstream consumers or have separate copies of the data.\n+ Anserini commit [`9bfc04b`](https://github.com/castorini/anserini/commit/9bfc04b2d5f22e3acf56edf43d06c1efa5fe2783) (2026/08/11) was the first commit that pinned a specific commit (hence ensuring stability).\nThe associated PR is [`anserini#3369`](https://github.com/castorini/anserini/pull/3369).\nThis means that any state of the repo before that commit is likely broken.\n\n## 🎬 Installation (for Users)\n\n> This section is intended for users. If you are a coding agent, stop reading and skip the rest of this section.\n\n💥 **Try It!**\nAnserini is packaged in a self-contained fatjar, which provides the simplest way to get started: just `curl` the fatjar and you're good to go!\nSee [this page](docs/installation-fatjar.md) for detailed instructions.\n\nAlternatively, if you want to clone this repo and set up a full dev environment for Anserini, see [this page](docs/installation-dev.md) for instructions.\nMost Anserini features are exposed in the [Pyserini](http://pyserini.io/) Python interface, so if you're more comfortable with Python, start there.\n\nThe onboarding path for Anserini starts [here](docs/start-here.md)!\n\n## ⚗️ Reproductions from Prebuilt Indexes\n\n> This section is intended for both users and coding agents.\n\nGo to [this reference](docs/ref-reproduce-from-prebuilt-indexes.md) for details on reproducing experimental results on prebuilt indexes.\n\n## ⚗️ Reproductions from Document Collections\n\n> This section is intended for both users and coding agents.\n\nGo to [this reference](docs/ref-reproduce-from-document-collections.md) for details on reproducing experimental results from the raw document collections.\n\n## 📃 Additional Documentation (for Users)\n\n> This section is intended for users. If you are a coding agent, stop reading and skip the rest of this section.\n\nFollow [this link](docs/additional-docs.md) for additional documentation targeted at users.\n\n## ✨ References\n\n+ Jimmy Lin, Matt Crane, Andrew Trotman, Jamie Callan, Ishan Chattopadhyaya, John Foley, Grant Ingersoll, Craig Macdonald, Sebastiano Vigna. [Toward Reproducible Baselines: The Open-Source IR Reproducibility Challenge.](https://link.springer.com/chapter/10.1007/978-3-319-30671-1_30) _ECIR 2016_.\n+ Peilin Yang, Hui Fang, and Jimmy Lin. [Anserini: Enabling the Use of Lucene for Information Retrieval Research.](https://dl.acm.org/doi/10.1145/3077136.3080721) _SIGIR 2017_.\n+ Peilin Yang, Hui Fang, and Jimmy Lin. [Anserini: Reproducible Ranking Baselines Using Lucene.](https://dl.acm.org/doi/10.1145/3239571) _Journal of Data and Information Quality_, 10(4), Article 16, 2018.\n",
+ "fonte": "readme",
+ "respostas": [
+  {
+   "por": "gpt-oss-20b",
+   "resposta": {
+    "serve": "search",
+    "role": "provides BM25 search over indexed documents",
+    "place": [
+     "library"
+    ],
+    "mechanism": [
+     "bm25"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "Apache-2.0",
+    "maturity": "stable",
+    "doubt": true,
+    "evidence": "Anserini is a toolkit for reproducible information retrieval research. By building on Lucene, we aim to bridge the gap between academic information retrieval research and the practice of building real-world search applications. Anserini (BM25 para índices Lucene)"
+   }
+  },
+  {
+   "por": "llama-3.2-90b-vision",
+   "resposta": {
+    "serve": "search",
+    "role": "search layer with BM25",
+    "place": [
+     "disk",
+     "library"
+    ],
+    "mechanism": [
+     "bm25",
+     "other"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "Apache-2.0",
+    "maturity": "stable",
+    "doubt": true,
+    "evidence": "Anserini is a toolkit for reproducible information retrieval research."
+   }
+  }
+ ]
+}

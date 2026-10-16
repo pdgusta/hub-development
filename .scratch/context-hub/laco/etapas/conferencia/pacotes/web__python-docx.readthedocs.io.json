@@ -1,0 +1,54 @@
+{
+ "chave": "web:python-docx.readthedocs.io",
+ "nomes": [
+  "`python-docx` + spaCy for Frontmatter Extraction"
+ ],
+ "urls": [
+  "https://python-docx.readthedocs.io/"
+ ],
+ "readme_cortado": false,
+ "readme": "[python-docx — python-docx 1.2.0 documentation]\n\nNavigation\n\n index\n\n next |\n\npython-docx 1.2.0 documentation » \n\npython-docx¶\n\nRelease v1.2.0 (Installation)\n\npython-docx is a Python library for creating and updating Microsoft Word\n(.docx) files.\n\nWhat it can do¶\n\nHere’s an example of what python-docx can do:\n\nfrom docx import Document\nfrom docx.shared import Inches\n\ndocument = Document()\n\ndocument.add_heading('Document Title', 0)\n\np = document.add_paragraph('A plain paragraph having some ')\np.add_run('bold').bold = True\np.add_run(' and some ')\np.add_run('italic.').italic = True\n\ndocument.add_heading('Heading, level 1', level=1)\ndocument.add_paragraph('Intense quote', style='Intense Quote')\n\ndocument.add_paragraph(\n 'first item in unordered list', style='List Bullet'\n)\ndocument.add_paragraph(\n 'first item in ordered list', style='List Number'\n)\n\ndocument.add_picture('monty-truth.png', width=Inches(1.25))\n\nrecords = (\n (3, '101', 'Spam'),\n (7, '422', 'Eggs'),\n (4, '631', 'Spam, spam, eggs, and spam')\n)\n\ntable = document.add_table(rows=1, cols=3)\nhdr_cells = table.rows[0].cells\nhdr_cells[0].text = 'Qty'\nhdr_cells[1].text = 'Id'\nhdr_cells[2].text = 'Desc'\nfor qty, id, desc in records:\n row_cells = table.add_row().cells\n row_cells[0].text = str(qty)\n row_cells[1].text = id\n row_cells[2].text = desc\n\ndocument.add_page_break()\n\ndocument.save('demo.docx')\n\nUser Guide¶\n\nInstalling\n\nQuickstart\n\nWorking with Documents\n\nWorking with Tables\n\nWorking with Text\n\nWorking with Sections\n\nWorking with Headers and Footers\n\nAPI basics\n\nUnderstanding Styles\n\nWorking with Styles\n\nWorking with Comments\n\nUnderstanding pictures and other shapes\n\nAPI Documentation¶\n\nDocument objects\n\nDocument constructor\n\nDocument objects\n\nCoreProperties objects\n\nDocument Settings objects\n\nStyle-related objects\n\nStyles objects\n\nBaseStyle objects\n\nCharacterStyle objects\n\nParagraphStyle objects\n\n_TableStyle objects\n\n_NumberingStyle objects\n\nLatentStyles objects\n\n_LatentStyle objects\n\nText-related objects\n\nParagraph objects\n\nParagraphFormat objects\n\nHyperlink objects\n\nRun objects\n\nFont objects\n\nRenderedPageBreak objects\n\nTabStop objects\n\nTabStops objects\n\nTable objects\n\nTable objects\n\n_Cell objects\n\n_Row objects\n\n_Column objects\n\n_Rows objects\n\n_Columns objects\n\nSection objects\n\nSections objects\n\nSection objects\n\n_Header and _Footer objects\n\nComment-related objects\n\nComments objects\n\nComment objects\n\nShape-related objects\n\nInlineShapes objects\n\nInlineShape objects\n\nDrawingML objects\n\nColorFormat objects\n\nShared classes\n\nLength objects\n\nRGBColor objects\n\nEnumerations\n\nMSO_COLOR_TYPE\n\nMSO_THEME_COLOR_INDEX\n\nWD_PARAGRAPH_ALIGNMENT\n\nWD_BUILTIN_STYLE\n\nWD_CELL_VERTICAL_ALIGNMENT\n\nWD_COLOR_INDEX\n\nWD_LINE_SPACING\n\nWD_ORIENTATION\n\nWD_TABLE_ALIGNMENT\n\nWD_ROW_HEIGHT_RULE\n\nWD_SECTION_START\n\nWD_STYLE_TYPE\n\nWD_TAB_ALIGNMENT\n\nWD_TAB_LEADER\n\nWD_TABLE_DIRECTION\n\nWD_UNDERLINE\n\nContributor Guide¶\n\nAnalysis\n\nTable of Contents\n\npython-docx\n\nWhat it can do\n\nUser Guide\n\nAPI Documentation\n\nContributor Guide\n\nNext topic\n\nInstalling\nUseful Links\n\npython-docx @ GitHub\n\npython-docx @ PyPI\n\nIssue Tracker\n\nQuick search\n\nNavigation\n\n index\n\n next |\n\npython-docx 1.2.0 documentation » \n\n © Copyright 2013, Steve Canny.\n Created using Sphinx 1.8.6.\n\nTheme based on Read The Docs",
+ "fonte": "site",
+ "respostas": [
+  {
+   "por": "gpt-oss-20b",
+   "resposta": {
+    "serve": "stack",
+    "role": "Python library for manipulating Word docs",
+    "place": [
+     "library"
+    ],
+    "mechanism": [
+     "other"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "unknown",
+    "doubt": true,
+    "evidence": "python-docx is a Python library for creating and updating Microsoft Word (.docx) files."
+   }
+  },
+  {
+   "por": "nemotron-3-super-120b",
+   "resposta": {
+    "serve": "none",
+    "role": "",
+    "place": [
+     "n/a"
+    ],
+    "mechanism": [
+     "n/a"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "unknown",
+    "doubt": false,
+    "evidence": "python-docx is a Python library for creating and updating Microsoft Word (.docx) files."
+   }
+  }
+ ]
+}

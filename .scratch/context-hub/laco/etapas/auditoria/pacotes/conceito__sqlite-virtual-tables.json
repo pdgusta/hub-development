@@ -1,0 +1,53 @@
+{
+ "chave": "conceito:sqlite-virtual-tables",
+ "chaves_do_catalogo": [
+  "web:sqlite.org/vtab.html"
+ ],
+ "nomes": [
+  "SQLite Virtual Tables"
+ ],
+ "mencoes": 3,
+ "familias": [
+  "gemma",
+  "mistral"
+ ],
+ "resumos": [
+  "SQLite Virtual Tables sind virtuelle Tabellen, die von benutzerdefinierten Modulen implementiert werden.",
+  "Mechanismus, der es erlaubt, externe Daten oder FTS5-Indizes wie normale Tabellen abzufragen.",
+  "The mechanism FTS5 uses to treat a search index as a queryable table."
+ ],
+ "termos": [
+  "Virtuelle Tabellen",
+  "Benutzerdefinierte Tabellen",
+  "virtual table",
+  "FTS5 table",
+  "vtab",
+  "shadow tables"
+ ],
+ "urls": [
+  "https://www.sqlite.org/vtab.html"
+ ],
+ "triagem": {
+  "chave": "conceito:sqlite-virtual-tables",
+  "modelo": "gemma-4-31b",
+  "ts": "2026-10-13T20:22:51Z",
+  "resposta": {
+   "concept_en": "sqlite virtual tables",
+   "serve": "search",
+   "role": "allow querying FTS5 search indexes or external data as standard SQL tables",
+   "mechanism": [
+    "full_text"
+   ],
+   "place": [
+    "inside_db_mcp"
+   ],
+   "tools_on_card": [
+    "SQLite",
+    "FTS5"
+   ],
+   "doubt": false,
+   "evidence": "Mechanismus, der es erlaubt, externe Daten oder FTS5-Indizes wie normale Tabellen abzufragen."
+  },
+  "via": "freellmapi"
+ }
+}

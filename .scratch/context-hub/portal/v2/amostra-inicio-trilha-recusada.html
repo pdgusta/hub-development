@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mesa de mapas · amostra</title>
+<meta name="description" content="Amostra estática da tela de início do portal na direção 'Mesa de mapas': dados reais de 2026-10-14, três fontes candidatas e uma interação pequena (explorar a dependência de um ticket na trilha).">
+<style>
+@font-face { font-family: "Nunito Sans"; font-weight: 200 1000; font-style: normal; font-display: swap; src: url("fontes/nunito-sans-latin-wght-normal.woff2") format("woff2"); }
+@font-face { font-family: "Fraunces"; font-weight: 100 900; font-style: normal; font-display: swap; src: url("fontes/fraunces-latin-full-normal.woff2") format("woff2"); }
+@font-face { font-family: "JetBrains Mono"; font-weight: 100 800; font-style: normal; font-display: swap; src: url("fontes/jetbrains-mono-latin-wght-normal.woff2") format("woff2"); }
+:root {
+  --papel: #f3eadb; --cartao: #fbf6ec; --cartao-2: #f6efe2; --linha: #d9cdb8; --linha-forte: #bfae92;
+  --tinta: #2b2117; --tinta-2: #55463a; --tinta-3: #6e6054;
+  --terracota: #9c3a22; --terracota-fundo: #f3dcd3; --musgo: #3f6b32; --musgo-fundo: #dfe9d6;
+  --petroleo: #1f5f73; --petroleo-fundo: #d8e7ec; --tijolo: #9b2a1c; --tijolo-fundo: #f1d6d1; --pedra: #5a544b; --pedra-fundo: #e6dfd2;
+  --madeira: #7a4f2a; --madeira-clara: #b98a5c;
+  --serifa: "Fraunces", Georgia, serif; --texto: "Nunito Sans", "Segoe UI", system-ui, sans-serif; --mono: "JetBrains Mono", Consolas, monospace;
+  --raio: 14px; --sombra: 0 1px 2px rgba(60, 40, 20, .08), 0 6px 18px rgba(60, 40, 20, .08);
+}
+* { box-sizing: border-box; }
+html { background: var(--papel); }
+body { margin: 0; color: var(--tinta); font-family: var(--texto); font-size: 16px; line-height: 1.55; font-weight: 500; background: var(--papel); min-height: 100vh;
+  background-image: radial-gradient(1200px 500px at 20% -10%, rgba(255, 244, 220, .9), transparent 60%), radial-gradient(900px 500px at 110% 20%, rgba(214, 190, 150, .35), transparent 60%); }
+a { color: var(--petroleo); }
+button { font: inherit; color: inherit; }
+.pagina { display: grid; grid-template-columns: 112px 1fr; min-height: 100vh; }
+/* barra lateral de madeira */
+.barra { background: linear-gradient(180deg, #8a5b33, #6f4423); color: #fbefdc; padding: 18px 0; display: flex; flex-direction: column; align-items: center; gap: 6px; box-shadow: inset -2px 0 0 rgba(0,0,0,.15); }
+.barra .marca { font-family: var(--serifa); font-weight: 700; font-size: 22px; margin-bottom: 14px; letter-spacing: .01em; font-variation-settings: "SOFT" 80; }
+.barra a { color: #fbefdc; text-decoration: none; display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 10px 8px; width: 96px; border-radius: 12px; font-size: 15px; font-weight: 600; }
+.barra a svg { width: 26px; height: 26px; }
+.barra a.ativo { background: rgba(40, 20, 5, .34); box-shadow: inset 0 0 0 1.5px rgba(255, 240, 215, .55); }
+.barra a:hover { background: rgba(40, 20, 5, .22); }
+.barra .rodape { margin-top: auto; font-size: 14px; opacity: .85; text-align: center; padding: 0 8px; }
+main { padding: 26px 34px 40px; max-width: 1480px; }
+.topo { display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; flex-wrap: wrap; margin-bottom: 18px; }
+h1 { font-family: var(--serifa); font-weight: 600; font-size: 38px; line-height: 1.1; margin: 0; font-variation-settings: "opsz" 72, "SOFT" 70; }
+.topo .sub { color: var(--tinta-2); font-size: 16px; margin-top: 6px; }
+/* bandeja: o que espera você */
+.bandeja { display: flex; align-items: center; gap: 14px; background: var(--cartao); border: 1.5px solid var(--linha-forte); border-radius: var(--raio); padding: 12px 16px; box-shadow: var(--sombra); }
+.bandeja .n { font-family: var(--serifa); font-size: 40px; font-weight: 700; line-height: 1; color: var(--pedra); min-width: 48px; text-align: center; }
+.bandeja.espera .n { color: var(--terracota); }
+.bandeja .t { font-size: 16px; line-height: 1.3; } .bandeja .t strong { display: block; font-weight: 800; }
+.bandeja .bandeira { width: 34px; height: 44px; }
+/* cartões e seções */
+.grade { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(360px, 1fr); gap: 20px; align-items: start; }
+@media (max-width: 1400px) { .grade { grid-template-columns: 1fr; } }
+.cartao { background: var(--cartao); border: 1px solid var(--linha); border-radius: var(--raio); padding: 18px 20px; box-shadow: var(--sombra); }
+h2 { font-family: var(--serifa); font-weight: 600; font-size: 24px; margin: 0 0 4px; font-variation-settings: "opsz" 36, "SOFT" 60; }
+.h2-sub { color: var(--tinta-2); margin: 0 0 14px; font-size: 15px; }
+/* carta (rodada) */
+.carta-rodada { display: grid; grid-template-columns: 1fr auto; gap: 10px 18px; align-items: center; padding: 14px 16px; border: 1.5px dashed var(--linha-forte); border-radius: 12px; background: var(--cartao-2); }
+.carta-rodada h3 { font-family: var(--serifa); font-size: 22px; font-weight: 600; margin: 0 0 4px; font-variation-settings: "opsz" 24, "SOFT" 60; }
+.meta { display: flex; flex-wrap: wrap; gap: 6px 14px; color: var(--tinta-2); font-size: 15px; align-items: center; }
+.chip { display: inline-flex; align-items: center; gap: 6px; border-radius: 999px; padding: 3px 11px; font-size: 14px; font-weight: 700; border: 1.5px solid transparent; }
+.chip.aberto { background: var(--pedra-fundo); color: #4a453d; border-color: #cdc3b1; }
+.chip.andamento { background: var(--petroleo-fundo); color: var(--petroleo); border-color: #b9d0d8; }
+.chip.resolvido { background: var(--musgo-fundo); color: var(--musgo); border-color: #bfd1b3; }
+.chip.espera { background: var(--terracota-fundo); color: var(--terracota); border-color: #e5bfb1; }
+.chip.bloqueado { background: var(--tijolo-fundo); color: var(--tijolo); border-color: #e2b8b1; }
+.chip .n-ticket { font-family: var(--mono); font-weight: 600; font-size: 14px; }
+.botao { display: inline-flex; align-items: center; gap: 8px; border-radius: 12px; padding: 10px 16px; border: 1.5px solid var(--linha-forte); background: var(--cartao); cursor: pointer; font-weight: 700; font-size: 16px; box-shadow: 0 1px 0 rgba(60,40,20,.12); transition: transform .08s ease, box-shadow .08s ease; }
+.botao:hover { box-shadow: 0 2px 0 rgba(60,40,20,.16); }
+.botao:active { transform: translateY(1px); box-shadow: none; }
+.botao.primario { background: var(--terracota); color: #fff6ee; border-color: #7e2d19; }
+.botao:focus-visible, .acamp:focus-visible, .barra a:focus-visible { outline: 3px solid var(--petroleo); outline-offset: 2px; }
+.aviso-salvo { display: flex; gap: 10px; align-items: flex-start; margin-top: 12px; padding: 10px 12px; border-radius: 10px; background: var(--petroleo-fundo); color: var(--petroleo); font-size: 15px; }
+.aviso-salvo svg { width: 20px; height: 20px; flex: none; margin-top: 2px; }
+.proximo { margin: 14px 0 0; padding: 12px 14px; border-left: 4px solid var(--madeira-clara); background: var(--cartao-2); border-radius: 0 10px 10px 0; font-size: 16px; }
+.proximo strong { font-weight: 800; }
+/* números de relance */
+.relance { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 10px; margin-top: 4px; }
+.relance div { background: var(--cartao-2); border-radius: 12px; padding: 10px 12px; }
+.relance .num { font-family: var(--serifa); font-size: 34px; font-weight: 700; line-height: 1; font-variation-settings: "opsz" 48; }
+.relance .rot { font-size: 15px; color: var(--tinta-2); margin-top: 2px; font-weight: 600; }
+/* trilha (mapa) */
+.mapa { position: relative; border-radius: 12px; background: #efe3cc; border: 1px solid var(--linha); overflow: hidden; aspect-ratio: 900 / 540; }
+.mapa > svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.mapa .controles { position: absolute; right: 10px; bottom: 10px; display: flex; gap: 6px; }
+.mapa .controles button { width: 36px; height: 36px; border-radius: 10px; border: 1.5px solid var(--linha-forte); background: var(--cartao); cursor: pointer; font-weight: 800; font-size: 18px; }
+.trilha { fill: none; stroke: var(--madeira); stroke-width: 3; stroke-linecap: round; stroke-dasharray: 7 7; }
+.dep { fill: none; stroke: #6f5a3e; stroke-width: 2; stroke-dasharray: 4 5; marker-end: url(#seta); transition: stroke .15s, stroke-width .15s, opacity .15s; }
+.dep.realce { stroke: var(--terracota); stroke-width: 3.5; stroke-dasharray: none; marker-end: url(#seta-realce); }
+.dep.apagada { opacity: .3; }
+.acamp { position: absolute; left: calc(var(--x) / 900 * 100%); top: calc(var(--y) / 540 * 100%); transform: translate(-50%, -30px); display: flex; flex-direction: column; align-items: center; gap: 1px; background: none; border: 0; padding: 0; cursor: pointer; width: max-content; }
+.acamp .tenda-svg { width: 48px; height: 30px; display: block; }
+.acamp .n { font-family: var(--mono); font-size: 14px; font-weight: 600; color: var(--tinta-3); line-height: 1.1; }
+.acamp .rot { font-size: 15px; font-weight: 700; color: var(--tinta); background: rgba(239, 227, 204, .88); padding: 0 5px; border-radius: 5px; line-height: 1.25; }
+.acamp .espera { position: absolute; left: 50%; top: -22px; transform: translateX(-50%); font-size: 14px; font-weight: 700; color: var(--terracota); white-space: nowrap; background: rgba(239, 227, 204, .92); border: 1px solid #e5bfb1; padding: 0 6px; border-radius: 999px; line-height: 1.3; }
+.acamp.andamento::before { content: ""; position: absolute; top: -8px; left: 50%; width: 46px; height: 46px; margin-left: -23px; border-radius: 50%; border: 2px solid var(--petroleo); animation: pulso-anel 2.4s ease-in-out infinite; pointer-events: none; }
+@keyframes pulso-anel { 0%, 100% { transform: scale(.9); opacity: .55; } 50% { transform: scale(1.15); opacity: .15; } }
+.acamp .tenda { fill: var(--cartao); stroke: var(--pedra); stroke-width: 2.5; transition: transform .12s ease; transform-box: fill-box; transform-origin: center; }
+.acamp.andamento .tenda { stroke: var(--petroleo); fill: var(--petroleo-fundo); }
+.acamp.ativo .tenda { stroke: var(--terracota); stroke-width: 3.5; fill: #fde9e0; }
+.acamp:hover .tenda, .acamp:focus-visible .tenda { transform: scale(1.12); }
+.cume-rot { margin: 8px 0 0; font-size: 15px; color: var(--tinta-2); }
+.cume-rot small { font-size: 15px; color: var(--tinta-3); }
+.cume-nome { white-space: nowrap; position: absolute; left: calc(836 / 900 * 100%); top: calc(126 / 540 * 100%); transform: translateX(-50%); font-family: var(--serifa); font-size: 20px; font-weight: 700; }
+.cume text { font-family: var(--serifa); font-size: 20px; font-weight: 700; fill: var(--tinta); }
+.bandeira-crit { fill: #fff; stroke: var(--pedra); stroke-width: 1.8; stroke-dasharray: 3 3; }
+.cume text.bandeira-crit-rot { font-family: var(--texto); font-size: 14px; font-weight: 700; fill: var(--tinta-2); }
+.hoje { fill: var(--terracota); } .hoje-rot { font-family: var(--texto); font-size: 15px; font-weight: 800; fill: var(--terracota); }
+@keyframes desenhar { from { stroke-dashoffset: 1400; } to { stroke-dashoffset: 0; } }
+@keyframes pulso { 0%, 100% { r: 7; opacity: .9; } 50% { r: 11; opacity: .45; } }
+.trilha.viva { stroke-dasharray: 1400; stroke-dashoffset: 1400; animation: desenhar 1.6s ease-out forwards; }
+.hoje-pulso { fill: var(--terracota); animation: pulso 2.4s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) { .acamp.andamento::before { animation: none; opacity: .4; } .botao, .acamp .tenda { transition: none; } }
+/* placa (o que a interação abre) */
+.placa[hidden], .dica[hidden] { display: none; }
+.placa { margin-top: 12px; padding: 14px 16px; border-radius: 12px; background: var(--cartao-2); border: 1.5px solid var(--linha-forte); display: grid; grid-template-columns: 1fr auto; gap: 8px 16px; align-items: start; }
+.placa h3 { font-family: var(--serifa); font-size: 21px; font-weight: 600; margin: 0 0 6px; font-variation-settings: "opsz" 24, "SOFT" 60; }
+.placa .lista { margin: 6px 0 0; padding-left: 20px; }
+.placa .lista li { margin: 2px 0; }
+.placa .vazia { color: var(--tinta-2); }
+/* decisões e texto corrido */
+.decisoes { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.decisoes li { padding: 12px 14px; background: var(--cartao-2); border-radius: 12px; border-left: 4px solid var(--musgo); }
+.decisoes h3 { font-family: var(--serifa); font-size: 20px; font-weight: 600; margin: 0 0 4px; font-variation-settings: "opsz" 24, "SOFT" 60; }
+.decisoes p { margin: 0; color: var(--tinta-2); font-size: 16px; max-width: 68ch; }
+.decisoes .quando { font-size: 14px; color: var(--tinta-3); margin-bottom: 2px; font-weight: 600; }
+.dica { position: absolute; left: 20px; bottom: 16px; max-width: 420px; background: var(--tinta); color: #fbf3e6; border-radius: 10px; padding: 10px 12px; font-size: 15px; line-height: 1.4; box-shadow: var(--sombra); }
+.dica strong { display: block; font-weight: 800; }
+code, .mono { font-family: var(--mono); font-size: 15px; font-weight: 500; background: rgba(60, 40, 20, .06); padding: 1px 5px; border-radius: 5px; }
+.legenda { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 12px; font-size: 15px; color: var(--tinta-2); align-items: center; }
+.legenda .b { width: 14px; height: 14px; border-radius: 4px; display: inline-block; vertical-align: -2px; margin-right: 6px; }
+.rodape-amostra { margin-top: 26px; padding: 14px 18px; border-radius: 12px; border: 1px dashed var(--linha-forte); color: var(--tinta-2); font-size: 15px; background: rgba(251, 246, 236, .7); }
+.rodape-amostra strong { color: var(--tinta); }
+</style>
+</head>
+<body>
+<div class="pagina">
+  <nav class="barra" aria-label="telas">
+    <div class="marca">Hub</div>
+    <a href="#" class="ativo" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h18M5 20l5-11 3 5 2-3 4 9"/><circle cx="18" cy="5" r="2"/></svg>Início</a>
+    <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h10M4 18h7"/><circle cx="18" cy="16" r="3"/></svg>Tickets</a>
+    <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>Responder</a>
+    <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6l6-2 6 2 6-2v14l-6 2-6-2-6 2z"/><path d="M9 4v14M15 6v14"/></svg>Designs</a>
+    <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M12 12l4-4"/></svg>Decisões</a>
+    <div class="rodape">Context hub<br>mesa de mapas</div>
+  </nav>
+  <main>
+    <div class="topo">
+      <div>
+        <h1>Bom dia. Aqui está a mesa de hoje.</h1>
+        <div class="sub">quarta-feira, 14/10/2026 · a expedição está em 9 tickets abertos; o cume ainda sem bandeira hasteada</div>
+      </div>
+      <div class="bandeja" aria-label="o que espera você">
+        <svg class="bandeira" viewBox="0 0 34 44" aria-hidden="true"><rect x="4" y="2" width="3" height="40" rx="1.5" fill="#6f4423"/><path d="M7 4h20l-6 7 6 7H7z" fill="#cdc3b1" stroke="#8b8378" stroke-width="1.5"/></svg>
+        <div class="n">0</div>
+        <div class="t"><strong>Nenhuma pergunta espera você</strong>1 resposta salva hoje, aviso ao maestro ainda pendente</div>
+      </div>
+    </div>
+
+    <div class="grade">
+      <section class="cartao" aria-labelledby="t-trilha">
+        <h2 id="t-trilha">A trilha até o cume</h2>
+        <p class="h2-sub">Só o que está aberto, ligado pelas dependências reais do mapa: a seta sai de quem bloqueia e chega em quem espera. Clique ou dê foco a um acampamento para ver de quem ele depende e abrir o ticket.</p>
+        <div class="mapa">
+          <div class="controles" aria-label="vista do mapa"><button type="button" aria-label="aproximar">+</button><button type="button" aria-label="afastar">−</button><button type="button" aria-label="restaurar vista" title="restaurar vista">⌂</button></div>
+          <svg viewBox="0 0 900 540" preserveAspectRatio="none" role="img" aria-label="setas de dependência entre os acampamentos e o cume com cinco bandeiras tracejadas">
+            <defs><filter id="papel"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="7"/><feColorMatrix values="0 0 0 0 .45 0 0 0 0 .36 0 0 0 0 .22 0 0 0 .06 0"/></filter>
+              <marker id="seta" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#6f5a3e"/></marker>
+              <marker id="seta-realce" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#9c3a22"/></marker></defs>
+            <rect width="900" height="540" filter="url(#papel)"/>
+            <g id="deps">
+              <path class="dep" data-de="09" data-para="11" d="M318 242 C 380 215, 430 185, 476 166"/>
+              <path class="dep" data-de="14" data-para="15" d="M318 462 C 380 450, 430 425, 476 406"/>
+              <path class="dep" data-de="09" data-para="16" d="M318 248 C 440 250, 540 290, 636 304"/>
+              <path class="dep" data-de="11" data-para="16" d="M518 168 C 570 180, 610 250, 640 296"/>
+              <path class="dep" data-de="12" data-para="16" d="M318 376 C 440 370, 540 330, 636 312"/>
+              <path class="dep" data-de="15" data-para="16" d="M518 406 C 570 390, 610 340, 640 316"/>
+              <path class="dep" data-de="16" data-para="17" d="M678 304 C 700 280, 712 240, 719 212"/>
+            </g>
+            <path d="M720 118 L 800 58 L 880 118 Z" fill="#e4d6bc" stroke="var(--madeira)" stroke-width="2.5" stroke-linejoin="round"/>
+            <g transform="translate(696 36)"><g transform="translate(0 0)"><line x1="0" y1="0" x2="0" y2="22" stroke="#6f4423" stroke-width="2"/><path class="bandeira-crit" d="M1 1h16l-4 5 4 5H1z"/></g><g transform="translate(26 -8)"><line x1="0" y1="0" x2="0" y2="22" stroke="#6f4423" stroke-width="2"/><path class="bandeira-crit" d="M1 1h16l-4 5 4 5H1z"/></g><g transform="translate(52 -14)"><line x1="0" y1="0" x2="0" y2="22" stroke="#6f4423" stroke-width="2"/><path class="bandeira-crit" d="M1 1h16l-4 5 4 5H1z"/></g><g transform="translate(78 -8)"><line x1="0" y1="0" x2="0" y2="22" stroke="#6f4423" stroke-width="2"/><path class="bandeira-crit" d="M1 1h16l-4 5 4 5H1z"/></g><g transform="translate(104 0)"><line x1="0" y1="0" x2="0" y2="22" stroke="#6f4423" stroke-width="2"/><path class="bandeira-crit" d="M1 1h16l-4 5 4 5H1z"/></g></g>
+          </svg>
+          <div class="cume-nome" aria-hidden="true">o cume</div>
+          <button type="button" class="acamp" style="--x:110;--y:130" data-t="53" data-titulo="Teste do canal de aviso do portal" data-tipo="tarefa" data-estado="aberto" data-espera="ninguém" data-deps="" aria-label="Teste do canal de aviso do portal, ticket 53, aberto"><svg class="tenda-svg" viewBox="0 0 48 30" aria-hidden="true"><path class="tenda" d="M4 28 L24 3 L44 28 Z"/></svg><span class="n">53</span><span class="rot">Teste do aviso</span></button>
+          <button type="button" class="acamp" style="--x:110;--y:270" data-t="32" data-titulo="Sonda do Dolt" data-tipo="tarefa" data-estado="aberto" data-espera="ninguém" data-deps="" aria-label="Sonda do Dolt, ticket 32, aberto"><svg class="tenda-svg" viewBox="0 0 48 30" aria-hidden="true"><path class="tenda" d="M4 28 L24 3 L44 28 Z"/></svg><span class="n">32</span><span class="rot">Sonda do Dolt</span></button>
+          <button type="button" class="acamp andamento" style="--x:300;--y:250" data-t="09" data-titulo="Camada de busca" data-tipo="protótipo" data-estado="em andamento" data-espera="ninguém: os 10 tickets de que dependia já estão resolvidos" data-deps="" aria-label="Camada de busca, ticket 09, em andamento"><svg class="tenda-svg" viewBox="0 0 48 30" aria-hidden="true"><path class="tenda" d="M4 28 L24 3 L44 28 Z"/></svg><span class="n">09</span><span class="rot">Camada de busca</span></button>
+          <button type="button" class="acamp" style="--x:300;--y:380" data-t="12" data-titulo="Arquitetura de pastas e frontmatter do hub" data-tipo="protótipo" data-estado="aberto" data-espera="ninguém: os 7 tickets de que dependia já estão resolvidos" data-deps="" aria-label="Arquitetura de pastas e frontmatter do hub, ticket 12, aberto"><svg class="tenda-svg" viewBox="0 0 48 30" aria-hidden="true"><path class="tenda" d="M4 28 L24 3 L44 28 Z"/></svg><span class="n">12</span><span class="rot">Pastas e frontmatter</span></button>
+          <button type="button" class="acamp" style="--x:300;--y:470" data-t="14" data-titulo="Acesso dos agentes: decisão" data-tipo="conversa" data-estado="aberto" data-espera="ninguém: os 10 tickets de que dependia já estão resolvidos" data-deps="" aria-label="Acesso dos agentes: decisão, ticket 14, aberto"><svg class="tenda-svg" viewBox="0 0 48 30" aria-hidden="true"><path class="tenda" d="M4 28 L24 3 L44 28 Z"/></svg><span class="n">14</span><span class="rot">Acesso dos agentes</span></button>
+          <button type="button" class="acamp" style="--x:500;--y:170" data-t="11" data-titulo="Como os agentes gravam no hub" data-tipo="protótipo" data-estado="aberto" data-espera="Camada de busca (09)" data-deps="09" aria-label="Como os agentes gravam no hub, ticket 11, aberto, espera 1"><svg class="tenda-svg" viewBox="0 0 48 30" aria-hidden="true"><path class="tenda" d="M4 28 L24 3 L44 28 Z"/></svg><span class="n">11</span><span class="rot">Como os agentes gravam</span><span class="espera">espera 1</span></button>
+          <button type="button" class="acamp" style="--x:500;--y:410" data-t="15" data-titulo="Roteamento de skills" data-tipo="conversa" data-estado="aberto" data-espera="Acesso dos agentes: decisão (14)" data-deps="14" aria-label="Roteamento de skills, ticket 15, aberto, espera 1"><svg class="tenda-svg" viewBox="0 0 48 30" aria-hidden="true"><path class="tenda" d="M4 28 L24 3 L44 28 Z"/></svg><span class="n">15</span><span class="rot">Roteamento de skills</span><span class="espera">espera 1</span></button>
+          <button type="button" class="acamp" style="--x:660;--y:310" data-t="16" data-titulo="Passagem para a construção" data-tipo="tarefa" data-estado="aberto" data-espera="Camada de busca (09), Como os agentes gravam (11), Pastas e frontmatter (12), Roteamento de skills (15); outros 5 já resolvidos" data-deps="09 11 12 15" aria-label="Passagem para a construção, ticket 16, aberto, espera 4"><svg class="tenda-svg" viewBox="0 0 48 30" aria-hidden="true"><path class="tenda" d="M4 28 L24 3 L44 28 Z"/></svg><span class="n">16</span><span class="rot">Passagem para a construção</span><span class="espera">espera 4</span></button>
+          <button type="button" class="acamp" style="--x:735;--y:200" data-t="17" data-titulo="Verificação dos cinco critérios nas duas máquinas" data-tipo="tarefa" data-estado="aberto" data-espera="Passagem para a construção (16)" data-deps="16" aria-label="Verificação dos cinco critérios nas duas máquinas, ticket 17, aberto, espera 1"><svg class="tenda-svg" viewBox="0 0 48 30" aria-hidden="true"><path class="tenda" d="M4 28 L24 3 L44 28 Z"/></svg><span class="n">17</span><span class="rot">Verificação nas duas máquinas</span><span class="espera">espera 1</span></button>
+          <div class="dica" id="dica" hidden></div>
+        </div>
+        <div class="legenda"><span><i class="b" style="background:var(--petroleo-fundo);border:2px solid var(--petroleo)"></i>em andamento</span><span><i class="b" style="background:var(--cartao);border:2px solid var(--pedra)"></i>aberto</span><span><i class="b" style="background:#fde9e0;border:2px solid var(--terracota)"></i>escolhido</span><span><i class="b" style="border-top:2px dashed #6f5a3e;height:0;border-radius:0"></i>seta: de quem bloqueia para quem espera</span><span><i class="b" style="border:2px solid var(--petroleo);border-radius:50%;background:none"></i>o anel pulsa no que está em andamento</span></div>
+        <p class="cume-rot">Cinco bandeiras no cume, uma por critério: acha · grava sozinho · Obsidian e disco · sem divergência · edição concorrente. <small>Tracejadas: ainda não verificado.</small></p>
+        <div class="placa" id="placa" hidden></div>
+        <div class="placa" id="placa-vazia"><div><h3>Escolha um acampamento</h3><div class="vazia">A placa mostra o ticket, de quem ele espera e o botão para abrir. Setas e Enter funcionam no teclado.</div></div></div>
+      </section>
+
+      <div style="display:flex;flex-direction:column;gap:20px">
+        <section class="cartao" aria-labelledby="t-espera">
+          <h2 id="t-espera">Para responder</h2>
+          <p class="h2-sub">As cartas da expedição que pedem a sua palavra. Hoje nenhuma espera; a última já foi respondida.</p>
+          <div class="carta-rodada">
+            <div>
+              <h3>Teste do canal de aviso do portal</h3>
+              <div class="meta"><span class="chip aberto"><span class="n-ticket">53</span>Teste do canal de aviso do portal</span><span>5 perguntas</span><span>aberta em 14 de outubro</span><span class="chip resolvido">respondida às 14:30</span></div>
+            </div>
+            <button type="button" class="botao">Ver a resposta</button>
+          </div>
+          <div class="aviso-salvo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 12l5 5L20 7"/></svg><div><strong>Resposta gravada na caixa.</strong> O aviso ao maestro ainda não saiu: o canal está em teste. Até lá, diga "respondi" no chat.</div></div>
+          <p class="proximo"><strong>Próximo passo:</strong> nada seu. A expedição está em <em>Camada de busca</em> (em andamento; tudo de que ela dependia já foi resolvido); outros três acampamentos podem partir agora: Pastas e frontmatter, Acesso dos agentes e Sonda do Dolt.</p>
+        </section>
+
+        <section class="cartao" aria-labelledby="t-relance">
+          <h2 id="t-relance">Tickets de relance</h2>
+          <div class="relance">
+            <div><div class="num" style="color:var(--pedra)">8</div><div class="rot">abertos</div></div>
+            <div><div class="num" style="color:var(--petroleo)">1</div><div class="rot">em andamento</div></div>
+            <div><div class="num" style="color:var(--musgo)">43</div><div class="rot">resolvidos</div></div>
+            <div><div class="num" style="color:var(--tinta-3)">1</div><div class="rot">descartado</div></div>
+          </div>
+        </section>
+
+        <section class="cartao" aria-labelledby="t-decisoes">
+          <h2 id="t-decisoes">Últimas decisões do mapa</h2>
+          <ul class="decisoes">
+            <li><div class="quando">resolvido · ticket 50 · pesquisa</div><h3>Pesquisa ampla: lugares e mecanismos de busca</h3><p>o CouchDB só tem pedaços cifrados, então "dentro do banco" vira um índice do MCP do banco; nenhuma ferramenta pronta cumpre a régua (as mais próximas, obsidian-hybrid-search e memtomem, não têm stemmer de português); recomendação para "Camada de busca": teste obsidian-hybrid-search × memtomem decide entre Leve com alcance (disco + repasse na tailnet) e Robusta (índice no MCP do banco). Síntese e inventário em <code>exploracao/anexos/pesquisa-50-*</code>.</p></li>
+            <li><div class="quando">resolvido · ticket 52 · tarefa</div><h3>Montar os scripts do laço da pesquisa ampla</h3><p>suite em <code>laco/</code> (despachante com orçamento por modelo, geradores, juntador com bola de neve e gate, painel); rodou 5 ondas.</p></li>
+            <li><div class="quando">resolvido · ticket 49 · tarefa</div><h3>Preparar o FreeLLMAPI para a pesquisa da busca</h3><p>levantamento (185 modelos prontos, 32 pools) e bancada (49 com JSON válido; sem busca, só 65 de 169 URLs reais) viram a base do despachante da pesquisa ampla; o perfil <code>pesquisa</code> e a função <code>web_search</code> saíram na proposta refeita; a Default fica como está.</p></li>
+          </ul>
+        </section>
+      </div>
+    </div>
+
+    <div class="rodape-amostra"><strong>Amostra estática, 14 de outubro de 2026.</strong> Dados reais do projeto copiados no dia; o portal de verdade lê a API. Fontes candidatas embarcadas: Nunito Sans (texto, 16 px), Fraunces (títulos e números) e JetBrains Mono (números de ticket e caminhos); nenhum texto abaixo de 14 px. Os botões de zoom são só de demonstração.</div>
+  </main>
+</div>
+<script>
+// interação pequena: escolher um acampamento realça de quem ele depende e abre a placa
+const acamps = [...document.querySelectorAll('.acamp')];
+const deps = [...document.querySelectorAll('.dep')];
+const placa = document.getElementById('placa'), vazia = document.getElementById('placa-vazia'), dica = document.getElementById('dica');
+function escolher(g) {
+  acamps.forEach(a => a.classList.toggle('ativo', a === g));
+  const t = g.dataset.t, meus = (g.dataset.deps || '').split(' ').filter(Boolean);
+  deps.forEach(d => { const liga = d.dataset.para === t || d.dataset.de === t; d.classList.toggle('realce', liga); d.classList.toggle('apagada', !liga); });
+  const itens = meus.length ? meus.map(n => { const a = acamps.find(x => x.dataset.t === n); return `<li>${a.dataset.titulo} <span class="mono">${n}</span> · ${a.dataset.estado}</li>`; }).join('') : '';
+  placa.innerHTML = `<div><div class="meta"><span class="chip ${g.classList.contains('andamento') ? 'andamento' : 'aberto'}"><span class="n-ticket">${t}</span>${g.dataset.estado}</span><span>${g.dataset.tipo}</span></div><h3>${g.dataset.titulo}</h3><div>Espera por: ${g.dataset.espera}.</div>${itens ? `<ul class="lista">${itens}</ul>` : ''}</div><div style="display:flex;flex-direction:column;gap:8px"><button type="button" class="botao primario">Abrir o ticket</button><button type="button" class="botao" id="limpar">Soltar</button></div>`;
+  placa.hidden = false; vazia.hidden = true;
+  document.getElementById('limpar').onclick = () => { acamps.forEach(a => a.classList.remove('ativo')); deps.forEach(d => d.classList.remove('realce', 'apagada')); placa.hidden = true; vazia.hidden = false; g.focus(); };
+}
+acamps.forEach(g => {
+  g.addEventListener('click', () => escolher(g));
+  g.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); escolher(g); } if (e.key === 'ArrowRight' || e.key === 'ArrowDown') { e.preventDefault(); (acamps[acamps.indexOf(g) + 1] || acamps[0]).focus(); } if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); (acamps[acamps.indexOf(g) - 1] || acamps[acamps.length - 1]).focus(); } });
+  const mostrar = () => { dica.innerHTML = `<strong>${g.dataset.titulo}</strong>${g.dataset.tipo} · ${g.dataset.estado} · espera por ${g.dataset.espera}`; dica.hidden = false; };
+  const sumir = () => { dica.hidden = true; };
+  g.addEventListener('mouseenter', mostrar); g.addEventListener('mouseleave', sumir); g.addEventListener('focus', mostrar); g.addEventListener('blur', sumir);
+});
+</script>
+</body>
+</html>

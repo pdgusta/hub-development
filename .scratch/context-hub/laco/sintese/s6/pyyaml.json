@@ -1,0 +1,53 @@
+{
+ "nome": "PyYAML",
+ "nome_canonico": "PyYAML (yaml/pyyaml)",
+ "chave": "gh:yaml/pyyaml",
+ "url": "https://github.com/yaml/pyyaml",
+ "serve": "stack",
+ "area": "markdown_frontmatter",
+ "identidade": "ok: yaml/pyyaml é o repo canônico (as variantes de capitalização apontam para o mesmo).",
+ "windows": "yes: o PyPI do 6.0.3 traz wheels win_amd64 e win_arm64 (cp39 a cp314), ex.: pyyaml-6.0.3-cp312-cp312-win_amd64.whl.",
+ "mcp": "nao_aplicavel",
+ "portugues": "nao_verificado: biblioteca YAML geral; o README não trata de idiomas.",
+ "markdown_frontmatter": "Só parseia e emite YAML, não conhece Markdown; o frontmatter precisa ser separado antes (o que o python-frontmatter faz). README: usar yaml.safe_load para entrada não confiável.",
+ "atualizacao": "nao_aplicavel",
+ "embeddings_endpoint": "nao_aplicavel",
+ "recursos": "Biblioteca em processo; parser LibYAML em C opcional (CLoader) para velocidade.",
+ "licenca": "MIT (não confirmado no texto da licença; LICENSE traz copyright Kirill Simonov / Ingy döt Net)",
+ "ultimo_release": "2025-09-25, 6.0.3",
+ "atividade": "último commit 2026-10-07",
+ "maturidade": "stable (CHANGES já lista 7.0.0.dev0 em preparação)",
+ "encaixe": "Base de YAML sob o python-frontmatter e qualquer script Python que leia o frontmatter das notas. Sem conversa direta com CouchDB ou LiveSync. Impedimento: usar safe_load sempre e normalizar datas e tipos.",
+ "evidencias": [
+  {
+   "campo": "windows",
+   "url": "https://pypi.org/pypi/PyYAML/json",
+   "citacao": "pyyaml-6.0.3-cp312-cp312-win_amd64.whl"
+  },
+  {
+   "campo": "markdown_frontmatter",
+   "url": "https://raw.githubusercontent.com/yaml/pyyaml/main/README.md",
+   "citacao": "If you don't trust the input YAML stream, you should use: >>> yaml.safe_load(stream)"
+  },
+  {
+   "campo": "recursos",
+   "url": "https://raw.githubusercontent.com/yaml/pyyaml/main/README.md",
+   "citacao": "When LibYAML bindings are installed, you may use fast LibYAML-based parser and emitter"
+  },
+  {
+   "campo": "ultimo_release",
+   "url": "https://github.com/yaml/pyyaml/releases.atom",
+   "citacao": "6.0.3, updated 2025-09-25T21:10:45Z"
+  },
+  {
+   "campo": "atividade",
+   "url": "https://github.com/yaml/pyyaml/commits/HEAD.atom",
+   "citacao": "updated 2026-10-07T22:14:54Z"
+  }
+ ],
+ "nao_verificado": [
+  "licença MIT no texto integral",
+  "português",
+  "recursos em número"
+ ]
+}

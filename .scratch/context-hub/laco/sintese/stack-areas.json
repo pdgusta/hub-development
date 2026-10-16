@@ -1,0 +1,5074 @@
+[
+ {
+  "nome": "LangChain",
+  "chave": "gh:hwchase17/langchain",
+  "mencoes": 361,
+  "estado": "acordo",
+  "area": "agent_framework",
+  "fit": "optional",
+  "respostas": [
+   {
+    "modelo": "dots3-note-preview",
+    "area": "agent_framework",
+    "area_2": "none",
+    "hub_use": "Orchestrate LLM agents and RAG pipelines to query and update notes.",
+    "fit": "optional",
+    "doubt": false
+   },
+   {
+    "modelo": "ministral-3-8b",
+    "area": "agent_framework",
+    "area_2": "llm_runtime",
+    "hub_use": "Orchestrate LLM agents and RAG workflows with local model/gateway compatibility",
+    "fit": "unlikely",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "spaCy",
+  "chave": "gh:explosion/spacy",
+  "mencoes": 314,
+  "estado": "acordo",
+  "area": "text_pt",
+  "fit": "core",
+  "respostas": [
+   {
+    "modelo": "llama-3.3-70b",
+    "area": "text_pt",
+    "area_2": "embeddings_rerank",
+    "hub_use": "Portuguese text processing",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "gpt-oss-20b",
+    "area": "text_pt",
+    "area_2": "none",
+    "hub_use": "Preprocess Portuguese notes: tokenization, lemmatization, NER for indexing",
+    "fit": "core",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "MCP (Model Context Protocol)",
+  "chave": "web:modelcontextprotocol.io",
+  "mencoes": 311,
+  "estado": "acordo",
+  "area": "mcp",
+  "fit": "core",
+  "respostas": [
+   {
+    "modelo": "codestral-2508",
+    "area": "mcp",
+    "area_2": "agent_framework",
+    "hub_use": "MCP server for agent access to notes and local tools",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "nemotron-3-super",
+    "area": "mcp",
+    "area_2": "none",
+    "hub_use": "Expose notes to AI agents via MCP server for read/write access.",
+    "fit": "core",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "NLTK",
+  "chave": "gh:nltk/nltk",
+  "mencoes": 257,
+  "estado": "acordo",
+  "area": "text_pt",
+  "fit": "optional",
+  "respostas": [
+   {
+    "modelo": "diffusiongemma-26b-a4b-it",
+    "area": "text_pt",
+    "area_2": "none",
+    "hub_use": "Provides Portuguese stemming and tokenization for pre-processing text before indexing or analysis.",
+    "fit": "optional",
+    "doubt": false
+   },
+   {
+    "modelo": "gpt-oss-20b",
+    "area": "text_pt",
+    "area_2": "none",
+    "hub_use": "Stemming Portuguese text for indexing or tokenization",
+    "fit": "optional",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "DistilBERT",
+  "chave": "gh:huggingface/transformers",
+  "mencoes": 240,
+  "estado": "acordo",
+  "area": "embeddings_rerank",
+  "fit": "core",
+  "respostas": [
+   {
+    "modelo": "mistral-nemo",
+    "area": "embeddings_rerank",
+    "area_2": "llm_runtime",
+    "hub_use": "Run local embedding and reranker models",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "north-mini-code",
+    "area": "embeddings_rerank",
+    "area_2": "none",
+    "hub_use": "Run DistilBERT models for local embeddings and reranking",
+    "fit": "core",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "FastAPI",
+  "chave": "gh:tiangolo/fastapi",
+  "mencoes": 218,
+  "estado": "acordo",
+  "area": "api_service",
+  "fit": "optional",
+  "respostas": [
+   {
+    "modelo": "gemma-4-26b-a4b-it",
+    "area": "api_service",
+    "area_2": "mcp",
+    "hub_use": "Expose local services, MCP endpoints, or custom API interfaces for the hub components.",
+    "fit": "optional",
+    "doubt": false
+   },
+   {
+    "modelo": "command-r7b",
+    "area": "api_service",
+    "area_2": "llm_runtime",
+    "hub_use": "Host local MCP endpoint and API service for LLM interactions",
+    "fit": "core",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "DuckDB",
+  "chave": "gh:duckdb/duckdb",
+  "mencoes": 159,
+  "estado": "acordo",
+  "area": "storage_db",
+  "fit": "optional",
+  "respostas": [
+   {
+    "modelo": "ministral-3-8b",
+    "area": "storage_db",
+    "area_2": "none",
+    "hub_use": "Lightweight SQL metadata/indexing store for local note indexing (CSV/Parquet support)",
+    "fit": "optional",
+    "doubt": false
+   },
+   {
+    "modelo": "llama-3.2-11b-vision-instruct",
+    "area": "storage_db",
+    "area_2": "none",
+    "hub_use": "Embedded analytical SQL database for indexing and metadata store",
+    "fit": "optional",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "Ollama",
+  "chave": "gh:ollama/ollama",
+  "mencoes": 148,
+  "estado": "acordo",
+  "area": "llm_runtime",
+  "fit": "core",
+  "respostas": [
+   {
+    "modelo": "voxtral-small-2507",
+    "area": "llm_runtime",
+    "area_2": "embeddings_rerank",
+    "hub_use": "Serve local LLMs and embeddings",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "nemotron-3-super-120b",
+    "area": "llm_runtime",
+    "area_2": "none",
+    "hub_use": "Provide local LLM and embedding models via REST API for agents and search",
+    "fit": "core",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "Markdown 解析器（如 gray-matter 或 frontmatter）",
+  "chave": "gh:jonschlinkert/gray-matter",
+  "mencoes": 115,
+  "estado": "acordo",
+  "area": "markdown_frontmatter",
+  "fit": "core",
+  "respostas": [
+   {
+    "modelo": "gpt-oss-20b",
+    "area": "markdown_frontmatter",
+    "area_2": "none",
+    "hub_use": "Parse and write note front matter for metadata indexing",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "ministral-8b",
+    "area": "markdown_frontmatter",
+    "area_2": "none",
+    "hub_use": "Parse YAML/TOML frontmatter for Obsidian notes; enable agent metadata extraction.",
+    "fit": "core",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "python‑frontmatter",
+  "chave": "gh:eyeseast/python-frontmatter",
+  "mencoes": 114,
+  "estado": "acordo",
+  "area": "markdown_frontmatter",
+  "fit": "core",
+  "respostas": [
+   {
+    "modelo": "ministral-3b",
+    "area": "markdown_frontmatter",
+    "area_2": "text_pt",
+    "hub_use": "Parse/write YAML frontmatter for Obsidian notes (multilingual, pt-BR/EN)",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "dots3-note-preview",
+    "area": "markdown_frontmatter",
+    "area_2": "none",
+    "hub_use": "Parse and write frontmatter for Markdown notes to enable metadata filtering and indexing.",
+    "fit": "core",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "fastText",
+  "chave": "gh:facebookresearch/fasttext",
+  "mencoes": 104,
+  "estado": "acordo",
+  "area": "embeddings_rerank",
+  "fit": "core",
+  "respostas": [
+   {
+    "modelo": "mistral-nemo",
+    "area": "embeddings_rerank",
+    "area_2": "text_pt",
+    "hub_use": "Generate Portuguese embeddings for text in the hub",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "command-a-translate",
+    "area": "embeddings_rerank",
+    "area_2": "text_pt",
+    "hub_use": "Provides lightweight, offline embeddings for Portuguese and other languages, useful for indexing and sentence classification.",
+    "fit": "core",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "PyYAML",
+  "chave": "gh:yaml/pyyaml",
+  "mencoes": 93,
+  "estado": "acordo",
+  "area": "markdown_frontmatter",
+  "fit": "core",
+  "respostas": [
+   {
+    "modelo": "nemotron-3-super-120b",
+    "area": "markdown_frontmatter",
+    "area_2": "none",
+    "hub_use": "Parse YAML frontmatter in Obsidian Markdown notes",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "tiny-aya-water",
+    "area": "markdown_frontmatter",
+    "area_2": "text_pt",
+    "hub_use": "Parse YAML frontmatter in Markdown notes for the hub's personal context system",
+    "fit": "core",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "Obsidian (registro de plugins)",
+  "chave": "gh:obsidianmd/obsidian-releases",
+  "mencoes": 74,
+  "estado": "acordo",
+  "area": "obsidian",
+  "fit": "core",
+  "respostas": [
+   {
+    "modelo": "mistral-code-fim",
+    "area": "obsidian",
+    "area_2": "none",
+    "hub_use": "Hosts and distributes Obsidian plugins for the hub's agents",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "gemma-4-31b",
+    "area": "obsidian",
+    "area_2": "none",
+    "hub_use": "Source for discovering and installing community plugins and themes for the Obsidian client.",
+    "fit": "core",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "NATS",
+  "chave": "gh:nats-io/nats-server",
+  "mencoes": 72,
+  "estado": "acordo",
+  "area": "events_jobs",
+  "fit": "optional",
+  "respostas": [
+   {
+    "modelo": "codestral",
+    "area": "events_jobs",
+    "area_2": "none",
+    "hub_use": "Event bus for local services and agents",
+    "fit": "optional",
+    "doubt": false
+   },
+   {
+    "modelo": "tiny-aya-earth",
+    "area": "api_service",
+    "area_2": "mcp",
+    "hub_use": "Exposes a message bus (NATS) for inter-hub communication and local agent coordination.",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "command-a-reasoning",
+    "area": "events_jobs",
+    "area_2": "none",
+    "hub_use": "Message broker for decoupled event routing between hub services/agents (e.g., sync triggers, job queues).",
+    "fit": "optional",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "remark",
+  "chave": "gh:remarkjs/remark",
+  "mencoes": 67,
+  "estado": "acordo",
+  "area": "markdown_frontmatter",
+  "fit": "core",
+  "respostas": [
+   {
+    "modelo": "ministral-14b",
+    "area": "markdown_frontmatter",
+    "area_2": "none",
+    "hub_use": "Parse Markdown/YAML frontmatter into AST for chunking by headings before indexing.",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "nemotron-3-ultra",
+    "area": "markdown_frontmatter",
+    "area_2": "none",
+    "hub_use": "Parse Markdown notes into mdast AST for heading-based chunking before indexing",
+    "fit": "core",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "Cortex (MCP Server)",
+  "chave": "gh:modelcontextprotocol/servers",
+  "mencoes": 61,
+  "estado": "acordo",
+  "area": "mcp",
+  "fit": "core",
+  "respostas": [
+   {
+    "modelo": "nemotron-3-ultra-550b",
+    "area": "mcp",
+    "area_2": "none",
+    "hub_use": "Reference implementations for building the hub's MCP server",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "ministral-14b",
+    "area": "mcp",
+    "area_2": "none",
+    "hub_use": "Reference MCP server implementations for filesystem, git, and memory access in the hub",
+    "fit": "core",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "pouchdb",
+  "chave": "gh:pouchdb/pouchdb",
+  "mencoes": 53,
+  "estado": "acordo",
+  "area": "sync_couchdb",
+  "fit": "core",
+  "respostas": [
+   {
+    "modelo": "lfm2.5-2.6b",
+    "area": "sync_couchdb",
+    "area_2": "none",
+    "hub_use": "Provides offline database synchronization with CouchDB across multiple machines via PouchDB.",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "nemotron-3-nano-30b",
+    "area": "sync_couchdb",
+    "area_2": "none",
+    "hub_use": "Provides offline-first JavaScript CouchDB sync for local notes and AI agents.",
+    "fit": "core",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "onnxruntime",
+  "chave": "gh:microsoft/onnxruntime",
+  "mencoes": 48,
+  "estado": "acordo",
+  "area": "embeddings_rerank",
+  "fit": "core",
+  "respostas": [
+   {
+    "modelo": "ising-calibration-1.5-31b",
+    "area": "embeddings_rerank",
+    "area_2": "llm_runtime",
+    "hub_use": "ONNX Runtime serves as the underlying inference engine for local embedding models (like transformers.js and fastembed), enabling efficient vector generation from text data within the hub's environment.",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "ministral-14b",
+    "area": "embeddings_rerank",
+    "area_2": "llm_runtime",
+    "hub_use": "Local ONNX runtime for embedding inference (e.g., sentence models) on Windows",
+    "fit": "core",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "couchdb‑python",
+  "chave": "gh:djc/couchdb-python",
+  "mencoes": 45,
+  "estado": "acordo",
+  "area": "sync_couchdb",
+  "fit": "optional",
+  "respostas": [
+   {
+    "modelo": "llama-3-stheno-8b-v3.2",
+    "area": "sync_couchdb",
+    "area_2": "none",
+    "hub_use": "Python client for scripting reads and writes against the hub's CouchDB database",
+    "fit": "optional",
+    "doubt": false
+   },
+   {
+    "modelo": "gemma-4-31b",
+    "area": "sync_couchdb",
+    "area_2": "none",
+    "hub_use": "Python client to script reads, writes, and replication tasks against the CouchDB database.",
+    "fit": "optional",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "Lucene (via Apache Tika)",
+  "chave": "gh:apache/tika",
+  "mencoes": 41,
+  "estado": "acordo",
+  "area": "text_extraction",
+  "fit": "core",
+  "respostas": [
+   {
+    "modelo": "command-r7b",
+    "area": "text_extraction",
+    "area_2": "markdown_frontmatter",
+    "hub_use": "Extracts text and metadata from various file formats, including PDF and Office documents, to feed into the indexation process.",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "codestral-2508",
+    "area": "text_extraction",
+    "area_2": "markdown_frontmatter",
+    "hub_use": "extract text/metadata from attachments for indexing",
+    "fit": "core",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "Stanza",
+  "chave": "gh:stanfordnlp/stanza",
+  "mencoes": 40,
+  "estado": "acordo",
+  "area": "text_pt",
+  "fit": "optional",
+  "respostas": [
+   {
+    "modelo": "dots3-note-preview",
+    "area": "text_pt",
+    "area_2": "none",
+    "hub_use": "Lemmatize and tokenize Portuguese and English notes for agent tasks or text preprocessing.",
+    "fit": "optional",
+    "doubt": true
+   },
+   {
+    "modelo": "codestral",
+    "area": "text_pt",
+    "area_2": "markdown_frontmatter",
+    "hub_use": "Lemmatization and NLP preprocessing for Portuguese text",
+    "fit": "optional",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "Unidecode",
+  "chave": "gh:avian2/unidecode",
+  "mencoes": 38,
+  "estado": "acordo",
+  "area": "text_pt",
+  "fit": "optional",
+  "respostas": [
+   {
+    "modelo": "gemma-4-31b",
+    "area": "text_pt",
+    "area_2": "none",
+    "hub_use": "Normalize Portuguese text by stripping accents for accent-insensitive matching and indexing.",
+    "fit": "optional",
+    "doubt": false
+   },
+   {
+    "modelo": "nemotron-3-super",
+    "area": "text_pt",
+    "area_2": "none",
+    "hub_use": "Normalize Portuguese/English text by stripping accents for accent‑insensitive matching or ASCII identifiers.",
+    "fit": "core",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "Logstash",
+  "chave": "web:elastic.co/de/logstash",
+  "mencoes": 38,
+  "estado": "acordo",
+  "area": "events_jobs",
+  "fit": "optional",
+  "respostas": [
+   {
+    "modelo": "codestral-2508",
+    "area": "events_jobs",
+    "area_2": "none",
+    "hub_use": "process Markdown notes as event streams for AI agents",
+    "fit": "optional",
+    "doubt": false
+   },
+   {
+    "modelo": "diffusiongemma-26b-a4b-it",
+    "area": "events_jobs",
+    "area_2": "none",
+    "hub_use": "Heavyweight log ingestion and transformation pipeline; likely overkill for a local Markdown-based hub.",
+    "fit": "unlikely",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "pandoc",
+  "chave": "gh:jgm/pandoc",
+  "mencoes": 34,
+  "estado": "acordo",
+  "area": "text_extraction",
+  "fit": "core",
+  "respostas": [
+   {
+    "modelo": "deepseek-v4-flashfree",
+    "area": "text_extraction",
+    "area_2": "none",
+    "hub_use": "Converts imported Office/HTML/EPUB documents into Markdown notes before they enter the hub.",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "lfm2.5-2.6b",
+    "area": "text_extraction",
+    "area_2": "none",
+    "hub_use": "Ingests external documents and converts them to Markdown for the hub's notes.",
+    "fit": "core",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "CouchDB",
+  "chave": "gh:apache/couchdb",
+  "mencoes": 33,
+  "estado": "acordo",
+  "area": "sync_couchdb",
+  "fit": "core",
+  "respostas": [
+   {
+    "modelo": "codestral",
+    "area": "sync_couchdb",
+    "area_2": "none",
+    "hub_use": "Master-master replication backend for notes",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "deepseek-v4-flashfree",
+    "area": "sync_couchdb",
+    "area_2": "none",
+    "hub_use": "Acts as the sync/storage backend for notes across machines.",
+    "fit": "core",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "markdown-it",
+  "chave": "gh:markdown-it/markdown-it",
+  "mencoes": 33,
+  "estado": "acordo",
+  "area": "markdown_frontmatter",
+  "fit": "core",
+  "respostas": [
+   {
+    "modelo": "gemma-4-26b-it",
+    "area": "markdown_frontmatter",
+    "area_2": "none",
+    "hub_use": "Parses Markdown files to facilitate chunking by headings for indexing or processing.",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "nemotron-3-ultra-550b",
+    "area": "markdown_frontmatter",
+    "area_2": "none",
+    "hub_use": "Parse and chunk Markdown notes by heading for agent processing and indexing",
+    "fit": "core",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "CouchDB Change Feed",
+  "chave": "web:docs.couchdb.org",
+  "mencoes": 30,
+  "estado": "acordo",
+  "area": "sync_couchdb",
+  "fit": "core",
+  "respostas": [
+   {
+    "modelo": "mistral-code-fim",
+    "area": "sync_couchdb",
+    "area_2": "none",
+    "hub_use": "master-master replication for notes",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "nemotron-3-super-120b",
+    "area": "sync_couchdb",
+    "area_2": "none",
+    "hub_use": "Provides the note store and master-master replication for Obsidian notes across Windows machines.",
+    "fit": "core",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "natural",
+  "chave": "gh:naturalnode/natural",
+  "mencoes": 29,
+  "estado": "acordo",
+  "area": "text_pt",
+  "fit": "optional",
+  "respostas": [
+   {
+    "modelo": "kilo-auto",
+    "area": "text_pt",
+    "area_2": "none",
+    "hub_use": "Provide tokenization, stemming, and language detection for Portuguese and English notes.",
+    "fit": "optional",
+    "doubt": false
+   },
+   {
+    "modelo": "mistral-code",
+    "area": "text_pt",
+    "area_2": "markdown_frontmatter",
+    "hub_use": "tokenization, stemming, and NLP preprocessing for Portuguese notes",
+    "fit": "core",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "Obsidian Dataview plugin",
+  "chave": "gh:blacksmithgu/obsidian-dataview",
+  "mencoes": 27,
+  "estado": "acordo",
+  "area": "obsidian",
+  "fit": "core",
+  "respostas": [
+   {
+    "modelo": "nemotron-3-super-120b",
+    "area": "obsidian",
+    "area_2": "markdown_frontmatter",
+    "hub_use": "Provides querying of markdown notes via frontmatter and inline fields within Obsidian vault.",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "mistral-code",
+    "area": "markdown_frontmatter",
+    "area_2": "obsidian",
+    "hub_use": "Query and analyze Markdown notes with frontmatter and inline fields",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "dots3-note-preview",
+    "area": "obsidian",
+    "area_2": "none",
+    "hub_use": "Queries Markdown notes by frontmatter and inline fields in Obsidian, aiding personal knowledge management.",
+    "fit": "core",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "CouchDB Mango",
+  "chave": "gh:apache/couchdb-mango",
+  "mencoes": 26,
+  "estado": "acordo",
+  "area": "sync_couchdb",
+  "fit": "core",
+  "respostas": [
+   {
+    "modelo": "ministral-8b",
+    "area": "sync_couchdb",
+    "area_2": "none",
+    "hub_use": "Filter Markdown notes by YAML frontmatter fields via CouchDB Mango queries",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "north-mini-code",
+    "area": "sync_couchdb",
+    "area_2": "none",
+    "hub_use": "Provides JSON query interface for filtering and manipulating CouchDB notes",
+    "fit": "core",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "XLM-RoBERTa",
+  "chave": "gh:facebookresearch/xlm",
+  "mencoes": 24,
+  "estado": "acordo",
+  "area": "embeddings_rerank",
+  "fit": "optional",
+  "respostas": [
+   {
+    "modelo": "voxtral-small",
+    "area": "embeddings_rerank",
+    "area_2": "text_pt",
+    "hub_use": "Multilingual embeddings for Portuguese/English",
+    "fit": "optional",
+    "doubt": false
+   },
+   {
+    "modelo": "diffusiongemma-26b-a4b-it",
+    "area": "embeddings_rerank",
+    "area_2": "text_pt",
+    "hub_use": "Provide multilingual embeddings for Portuguese and English notes to support semantic search and retrieval.",
+    "fit": "optional",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "FastMCP / mcp-sdk",
+  "chave": "gh:modelcontextprotocol/python-sdk",
+  "mencoes": 23,
+  "estado": "acordo",
+  "area": "mcp",
+  "fit": "core",
+  "respostas": [
+   {
+    "modelo": "gemma-4-26b-a4b-it",
+    "area": "mcp",
+    "area_2": "none",
+    "hub_use": "SDK to build the MCP server that exposes hub notes and tools to AI agents.",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "agnes-2.5-flash",
+    "area": "mcp",
+    "area_2": "none",
+    "hub_use": "Core SDK to build the hub's MCP server exposing tools, resources, and prompts to AI coding agents.",
+    "fit": "core",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "OpenNLP",
+  "chave": "web:opennlp.apache.org",
+  "mencoes": 23,
+  "estado": "acordo",
+  "area": "text_pt",
+  "fit": "optional",
+  "respostas": [
+   {
+    "modelo": "nemotron-3-ultra-550b",
+    "area": "text_pt",
+    "area_2": "none",
+    "hub_use": "Portuguese lemmatization, tokenization, and language detection for note preprocessing before embedding",
+    "fit": "optional",
+    "doubt": false
+   },
+   {
+    "modelo": "agnes-2.5-flash",
+    "area": "text_pt",
+    "area_2": "none",
+    "hub_use": "Preprocess Portuguese/English text (tokenization, lemmatization, language detection) before indexation.",
+    "fit": "optional",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "js-yaml",
+  "chave": "gh:nodeca/js-yaml",
+  "mencoes": 22,
+  "estado": "acordo",
+  "area": "markdown_frontmatter",
+  "fit": "core",
+  "respostas": [
+   {
+    "modelo": "ministral-14b",
+    "area": "markdown_frontmatter",
+    "area_2": "mcp",
+    "hub_use": "Parse YAML frontmatter in notes for MCP server or Obsidian plugins.",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "ising-calibration-1.5-31b",
+    "area": "markdown_frontmatter",
+    "area_2": "mcp",
+    "hub_use": "Parses YAML frontmatter in Markdown notes for the MCP server and handles YAML-based configuration.",
+    "fit": "core",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "Flair",
+  "chave": "gh:flairnlp/flair",
+  "mencoes": 22,
+  "estado": "acordo",
+  "area": "text_pt",
+  "fit": "optional",
+  "respostas": [
+   {
+    "modelo": "gpt-oss-120b",
+    "area": "text_pt",
+    "area_2": "embeddings_rerank",
+    "hub_use": "Provides Portuguese NER, sentiment, POS tagging and embeddings for notes",
+    "fit": "optional",
+    "doubt": false
+   },
+   {
+    "modelo": "ministral-3-8b",
+    "area": "embeddings_rerank",
+    "area_2": "text_pt",
+    "hub_use": "Portuguese/English embeddings for document similarity and NLP tasks; lightweight PyTorch-based",
+    "fit": "optional",
+    "doubt": false
+   },
+   {
+    "modelo": "llama-3.3-70b",
+    "area": "text_pt",
+    "area_2": "embeddings_rerank",
+    "hub_use": "Portuguese text analysis",
+    "fit": "optional",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "GloVe",
+  "chave": "gh:stanfordnlp/glove",
+  "mencoes": 20,
+  "estado": "acordo",
+  "area": "embeddings_rerank",
+  "fit": "unlikely",
+  "respostas": [
+   {
+    "modelo": "nemotron-3-ultra",
+    "area": "embeddings_rerank",
+    "area_2": "none",
+    "hub_use": "static word vectors, outdated for passage search",
+    "fit": "unlikely",
+    "doubt": false
+   },
+   {
+    "modelo": "agnes-2.5-flash",
+    "area": "embeddings_rerank",
+    "area_2": "text_pt",
+    "hub_use": "Pre-trained word embeddings for basic similarity/search tasks, limited by English-heavy word-level granularity.",
+    "fit": "optional",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "Markdown-it-py",
+  "chave": "gh:executablebooks/markdown-it-py",
+  "mencoes": 16,
+  "estado": "acordo",
+  "area": "markdown_frontmatter",
+  "fit": "core",
+  "respostas": [
+   {
+    "modelo": "ministral-3b",
+    "area": "markdown_frontmatter",
+    "area_2": "text_pt",
+    "hub_use": "tokenize frontmatter and Markdown for heading-aware chunking in multilingual notes",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "gemma-4-26b-a4b-it",
+    "area": "markdown_frontmatter",
+    "area_2": "none",
+    "hub_use": "Parses Markdown and extracts front matter and tokens for structured chunking.",
+    "fit": "core",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "ICU",
+  "chave": "gh:unicode-org/icu",
+  "mencoes": 15,
+  "estado": "acordo",
+  "area": "text_pt",
+  "fit": "optional",
+  "respostas": [
+   {
+    "modelo": "nemotron-3-super-120b",
+    "area": "text_pt",
+    "area_2": "none",
+    "hub_use": "Provides Unicode normalization, collation, and text boundary detection for multilingual notes.",
+    "fit": "optional",
+    "doubt": false
+   },
+   {
+    "modelo": "gpt-oss-20b",
+    "area": "text_pt",
+    "area_2": "none",
+    "hub_use": "Unicode normalization, collation, locale data for text handling",
+    "fit": "core",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "PageAssist",
+  "chave": "gh:nomic-ai/gpt4all",
+  "mencoes": 14,
+  "estado": "acordo",
+  "area": "llm_runtime",
+  "fit": "core",
+  "respostas": [
+   {
+    "modelo": "dots3-note-preview",
+    "area": "llm_runtime",
+    "area_2": "none",
+    "hub_use": "Provides local LLM inference for AI agents and gateway.",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "diffusiongemma-26b-a4b-it",
+    "area": "llm_runtime",
+    "area_2": "agent_framework",
+    "hub_use": "Runs local LLMs privately on Windows to serve requests for agents without external API calls.",
+    "fit": "core",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "LocalAI + LangChain",
+  "chave": "gh:go-skynet/localai",
+  "mencoes": 13,
+  "estado": "acordo",
+  "area": "llm_runtime",
+  "fit": "core",
+  "respostas": [
+   {
+    "modelo": "agnes-2.5-flash",
+    "area": "llm_runtime",
+    "area_2": "agent_framework",
+    "hub_use": "Local LLM/embedding server with built-in RAG and agent capabilities; replaces or augments the hub's local gateway.",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "gpt-oss-20b",
+    "area": "mcp",
+    "area_2": "llm_runtime",
+    "hub_use": "Serve local LLM API and agent MCP for Obsidian workflows",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "gemma-4-31b",
+    "area": "llm_runtime",
+    "area_2": "mcp",
+    "hub_use": "Local OpenAI-compatible gateway to serve LLMs, embeddings, and MCP-enabled agents on Windows.",
+    "fit": "core",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "Unstructured",
+  "chave": "gh:unstructured-io/unstructured",
+  "mencoes": 13,
+  "estado": "acordo",
+  "area": "text_extraction",
+  "fit": "optional",
+  "respostas": [
+   {
+    "modelo": "llama-3.2-11b-vision-instruct",
+    "area": "text_extraction",
+    "area_2": "other",
+    "hub_use": "Extract text from PDFs, HTML, Word, and images for LLMs",
+    "fit": "optional",
+    "doubt": false
+   },
+   {
+    "modelo": "deepseek-v4-flashfree",
+    "area": "text_extraction",
+    "area_2": "none",
+    "hub_use": "Extract text from PDFs, Office, HTML if non-Markdown files enter hub",
+    "fit": "optional",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "front-matter",
+  "chave": "gh:jxson/front-matter",
+  "mencoes": 12,
+  "estado": "acordo",
+  "area": "markdown_frontmatter",
+  "fit": "core",
+  "respostas": [
+   {
+    "modelo": "nemotron-3-super-120b",
+    "area": "markdown_frontmatter",
+    "area_2": "none",
+    "hub_use": "Extract YAML front matter from Markdown notes to get metadata for indexing or filtering.",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "tiny-aya-global",
+    "area": "markdown_frontmatter",
+    "area_2": "text_pt",
+    "hub_use": "Parses YAML front matter from strings for metadata extraction in a personal context hub.",
+    "fit": "core",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "mistune",
+  "chave": "gh:lepture/mistune",
+  "mencoes": 12,
+  "estado": "acordo",
+  "area": "markdown_frontmatter",
+  "fit": "core",
+  "respostas": [
+   {
+    "modelo": "kilo-auto",
+    "area": "markdown_frontmatter",
+    "area_2": "none",
+    "hub_use": "Parse Markdown notes into AST for chunking before indexing.",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "command-r-2",
+    "area": "markdown_frontmatter",
+    "area_2": "none",
+    "hub_use": "Parse Markdown notes into an AST for chunking before indexing.",
+    "fit": "core",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "nng (nanomsg next generation)",
+  "chave": "gh:nanomsg/nng",
+  "mencoes": 12,
+  "estado": "acordo",
+  "area": "events_jobs",
+  "fit": "optional",
+  "respostas": [
+   {
+    "modelo": "voxtral-small-2507",
+    "area": "events_jobs",
+    "area_2": "none",
+    "hub_use": "Inter-process messaging for background jobs",
+    "fit": "optional",
+    "doubt": false
+   },
+   {
+    "modelo": "north-mini-code",
+    "area": "events_jobs",
+    "area_2": "none",
+    "hub_use": "Provide lightweight pub/sub messaging for internal component communication and event handling.",
+    "fit": "optional",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "nanomsg",
+  "chave": "gh:nanomsg/nanomsg",
+  "mencoes": 12,
+  "estado": "acordo",
+  "area": "events_jobs",
+  "fit": "core",
+  "respostas": [
+   {
+    "modelo": "ministral-3b",
+    "area": "events_jobs",
+    "area_2": "none",
+    "hub_use": "message broker protocol for pub/sub/req-rep in local event handling",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "kilo-auto",
+    "area": "events_jobs",
+    "area_2": "none",
+    "hub_use": "Provide lightweight pub/sub/rep-rep messaging for internal hub components",
+    "fit": "optional",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "Node.js",
+  "chave": "web:nodejs.org",
+  "mencoes": 12,
+  "estado": "acordo",
+  "area": "mcp",
+  "fit": "core",
+  "respostas": [
+   {
+    "modelo": "llama-3.3-70b",
+    "area": "mcp",
+    "area_2": "api_service",
+    "hub_use": "Runtime for MCP servers and CLI tools",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "dots3-note-preview",
+    "area": "other",
+    "area_2": "none",
+    "hub_use": "Runtime for JS MCP servers and CLI tools",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "kilo-auto",
+    "area": "mcp",
+    "area_2": "none",
+    "hub_use": "Run MCP server and CLI tools for LiveSync",
+    "fit": "core",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "unified",
+  "chave": "gh:unifiedjs/unified",
+  "mencoes": 11,
+  "estado": "acordo",
+  "area": "markdown_frontmatter",
+  "fit": "core",
+  "respostas": [
+   {
+    "modelo": "codestral",
+    "area": "markdown_frontmatter",
+    "area_2": "none",
+    "hub_use": "parse and transform Markdown with frontmatter via remark plugins",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "dots3-note-preview",
+    "area": "markdown_frontmatter",
+    "area_2": "none",
+    "hub_use": "Parse and transform Markdown notes, including frontmatter and chunking, for agent processing.",
+    "fit": "core",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "Local Cluster (Docker Compose)",
+  "chave": "web:docs.docker.com/compose",
+  "mencoes": 11,
+  "estado": "acordo",
+  "area": "other",
+  "fit": "unlikely",
+  "respostas": [
+   {
+    "modelo": "ising-calibration-1.5-31b",
+    "area": "sync_couchdb",
+    "area_2": "events_jobs",
+    "hub_use": "Docker Compose is used to define and run multi-container applications, including the CouchDB database service for the hub. It manages the lifecycle of the database container, ensuring it is started, stopped, and rebuilt as needed.",
+    "fit": "optional",
+    "doubt": false
+   },
+   {
+    "modelo": "gpt-oss-20b",
+    "area": "other",
+    "area_2": "none",
+    "hub_use": "not used in hub",
+    "fit": "unlikely",
+    "doubt": false
+   },
+   {
+    "modelo": "kilo-auto",
+    "area": "other",
+    "area_2": "none",
+    "hub_use": "Define and run multi-container services (e.g., CouchDB) via Docker Compose.",
+    "fit": "unlikely",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "Ingest Pipeline",
+  "chave": "web:elastic.co/guide/en/elasticsearch/reference/current/ingest.html",
+  "mencoes": 11,
+  "estado": "divergente",
+  "area": null,
+  "fit": "unlikely",
+  "respostas": [
+   {
+    "modelo": "llama-3.2-90b-vision",
+    "area": "other",
+    "area_2": "none",
+    "hub_use": "Preprocessing for Elasticsearch indexing",
+    "fit": "unlikely",
+    "doubt": false
+   },
+   {
+    "modelo": "ministral-14b",
+    "area": "text_extraction",
+    "area_2": "none",
+    "hub_use": "Preprocess Markdown/YAML before storage or LLM ingestion (e.g., field extraction, enrichment)",
+    "fit": "optional",
+    "doubt": true
+   },
+   {
+    "modelo": "deepseek-v4-flashfree",
+    "area": "storage_db",
+    "area_2": "none",
+    "hub_use": "Would preprocess documents only if Elasticsearch were used for search; not needed for Markdown notes.",
+    "fit": "unlikely",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "Federated Search (ArangoDB)",
+  "chave": "web:arangodb.com",
+  "mencoes": 11,
+  "estado": "acordo",
+  "area": "storage_db",
+  "fit": "optional",
+  "respostas": [
+   {
+    "modelo": "ising-calibration-1.5-31b",
+    "area": "storage_db",
+    "area_2": "mcp",
+    "hub_use": "ArangoDB serves as a secondary storage option for the hub, providing a graph-native database for complex data relationships and retrieval. It integrates with the hub via MCP, allowing agents to query and update the database directly.",
+    "fit": "optional",
+    "doubt": false
+   },
+   {
+    "modelo": "voxtral-small-2507",
+    "area": "embeddings_rerank",
+    "area_2": "storage_db",
+    "hub_use": "Vector search and retrieval for notes",
+    "fit": "optional",
+    "doubt": false
+   },
+   {
+    "modelo": "nemotron-3-super",
+    "area": "storage_db",
+    "area_2": "mcp",
+    "hub_use": "Provides multimodel storage with MCP integration for agent data",
+    "fit": "unlikely",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "SQLite",
+  "chave": "web:sqlite.org/index.html",
+  "mencoes": 11,
+  "estado": "acordo",
+  "area": "storage_db",
+  "fit": "core",
+  "respostas": [
+   {
+    "modelo": "gemma-4-31b",
+    "area": "storage_db",
+    "area_2": "none",
+    "hub_use": "Local structured storage for metadata, indexing, or agent memory outside of CouchDB.",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "mistral-nemo",
+    "area": "storage_db",
+    "area_2": "none",
+    "hub_use": "Local, lightweight database for storing and managing notes",
+    "fit": "core",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "MCP TypeScript SDK",
+  "chave": "gh:modelcontextprotocol/typescript-sdk",
+  "mencoes": 10,
+  "estado": "acordo",
+  "area": "mcp",
+  "fit": "core",
+  "respostas": [
+   {
+    "modelo": "codestral-2508",
+    "area": "mcp",
+    "area_2": "none",
+    "hub_use": "MCP server and client SDK for Node.js",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "lfm2.5-2.6b",
+    "area": "mcp",
+    "area_2": "none",
+    "hub_use": "Provides TypeScript SDK for building MCP servers and clients on Node.js, Bun, Deno.",
+    "fit": "core",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "DocArray",
+  "chave": "gh:docarray/docarray",
+  "mencoes": 10,
+  "estado": "acordo",
+  "area": "storage_db",
+  "fit": "optional",
+  "respostas": [
+   {
+    "modelo": "llama-3.2-11b-vision-instruct",
+    "area": "storage_db",
+    "area_2": "none",
+    "hub_use": "vector database for storing and retrieving embeddings",
+    "fit": "optional",
+    "doubt": false
+   },
+   {
+    "modelo": "north-mini-code",
+    "area": "storage_db",
+    "area_2": "none",
+    "hub_use": "Provide vector database adapters for storing and retrieving note embeddings.",
+    "fit": "optional",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "RethinkDB",
+  "chave": "web:rethinkdb.com",
+  "mencoes": 10,
+  "estado": "acordo",
+  "area": "storage_db",
+  "fit": "unlikely",
+  "respostas": [
+   {
+    "modelo": "north-mini-code",
+    "area": "storage_db",
+    "area_2": "none",
+    "hub_use": "Provides realtime JSON database with change feeds for push updates.",
+    "fit": "unlikely",
+    "doubt": false
+   },
+   {
+    "modelo": "dots3-note-preview",
+    "area": "storage_db",
+    "area_2": "none",
+    "hub_use": "Alternative realtime JSON database for note storage, but redundant with existing CouchDB.",
+    "fit": "unlikely",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "Markdig",
+  "chave": "gh:xoofx/markdig",
+  "mencoes": 8,
+  "estado": "acordo",
+  "area": "markdown_frontmatter",
+  "fit": "optional",
+  "respostas": [
+   {
+    "modelo": "command-r7b",
+    "area": "markdown_frontmatter",
+    "area_2": "llm_runtime",
+    "hub_use": "Process Markdown and YAML frontmatter for .NET applications",
+    "fit": "optional",
+    "doubt": false
+   },
+   {
+    "modelo": "codestral",
+    "area": "markdown_frontmatter",
+    "area_2": "none",
+    "hub_use": "Parse Markdown and YAML frontmatter for indexing and editing",
+    "fit": "core",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "MUSE (Multilingual Unsupervised and Supervised Embeddings)",
+  "chave": "gh:facebookresearch/muse",
+  "mencoes": 8,
+  "estado": "acordo",
+  "area": "text_pt",
+  "fit": "optional",
+  "respostas": [
+   {
+    "modelo": "command-r7b",
+    "area": "embeddings_rerank",
+    "area_2": "text_pt",
+    "hub_use": "aligns multilingual word embeddings for Portuguese and English",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "ising-calibration-1.5-31b",
+    "area": "text_pt",
+    "area_2": "embeddings_rerank",
+    "hub_use": "MUSE provides multilingual word embeddings and bilingual dictionaries, useful for analyzing and aligning text across languages in the hub's context.",
+    "fit": "optional",
+    "doubt": false
+   },
+   {
+    "modelo": "diffusiongemma-26b-a4b-it",
+    "area": "text_pt",
+    "area_2": "embeddings_rerank",
+    "hub_use": "Align word embeddings between Portuguese and English for cross-lingual note concept mapping.",
+    "fit": "unlikely",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "Portuguese Stemming (Snowball/Porter)",
+  "chave": "gh:stopwords-iso/stopwords-pt",
+  "mencoes": 8,
+  "estado": "acordo",
+  "area": "text_pt",
+  "fit": "core",
+  "respostas": [
+   {
+    "modelo": "tiny-aya-earth",
+    "area": "text_pt",
+    "area_2": "none",
+    "hub_use": "Supports Portuguese text preprocessing with stopwords for NLP pipelines.",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "llama-3.2-90b-vision",
+    "area": "text_pt",
+    "area_2": "none",
+    "hub_use": "Portuguese text preprocessing",
+    "fit": "core",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "Cerberus",
+  "chave": "web:docs.python-cerberus.org/en/stable",
+  "mencoes": 8,
+  "estado": "acordo",
+  "area": "markdown_frontmatter",
+  "fit": "optional",
+  "respostas": [
+   {
+    "modelo": "llama-3.3-70b",
+    "area": "markdown_frontmatter",
+    "area_2": "storage_db",
+    "hub_use": "validate note frontmatter",
+    "fit": "optional",
+    "doubt": false
+   },
+   {
+    "modelo": "tiny-aya-earth",
+    "area": "text_pt",
+    "area_2": "none",
+    "hub_use": "Supports validation of Portuguese text in the hub's Markdown notes.",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "command-r7b",
+    "area": "markdown_frontmatter",
+    "area_2": "sync_couchdb",
+    "hub_use": "validate note frontmatter or config",
+    "fit": "optional",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "sentencepiece",
+  "chave": "gh:google/sentencepiece",
+  "mencoes": 7,
+  "estado": "acordo",
+  "area": "text_pt",
+  "fit": "core",
+  "respostas": [
+   {
+    "modelo": "command-r7b",
+    "area": "embeddings_rerank",
+    "area_2": "llm_runtime",
+    "hub_use": "For embedding models or pipelines, using SentencePiece as a subword tokenizer",
+    "fit": "optional",
+    "doubt": false
+   },
+   {
+    "modelo": "voxtral-small",
+    "area": "text_pt",
+    "area_2": "embeddings_rerank",
+    "hub_use": "Tokenize text for embeddings and NLP tasks",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "diffusiongemma-26b-a4b-it",
+    "area": "text_pt",
+    "area_2": "embeddings_rerank",
+    "hub_use": "Provides subword tokenization for local LLMs and embedding models processing Portuguese and English notes.",
+    "fit": "optional",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "marked",
+  "chave": "gh:markedjs/marked",
+  "mencoes": 7,
+  "estado": "acordo",
+  "area": "markdown_frontmatter",
+  "fit": "core",
+  "respostas": [
+   {
+    "modelo": "diffusiongemma-26b-a4b-it",
+    "area": "markdown_frontmatter",
+    "area_2": "none",
+    "hub_use": "Parse Markdown notes into HTML or extract content for processing by agents and internal tools.",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "ministral-14b",
+    "area": "markdown_frontmatter",
+    "area_2": "none",
+    "hub_use": "Parse Markdown content for YAML frontmatter extraction and note processing in Obsidian/AI agents.",
+    "fit": "core",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "mdast-util-frontmatter",
+  "chave": "gh:syntax-tree/mdast-util-frontmatter",
+  "mencoes": 7,
+  "estado": "acordo",
+  "area": "markdown_frontmatter",
+  "fit": "core",
+  "respostas": [
+   {
+    "modelo": "llama-3.2-90b-vision",
+    "area": "markdown_frontmatter",
+    "area_2": "none",
+    "hub_use": "Parse and serialize YAML frontmatter in Markdown notes",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "gemma-4-26b-a4b-it",
+    "area": "markdown_frontmatter",
+    "area_2": "none",
+    "hub_use": "Parses and serializes YAML/TOML metadata in Markdown files.",
+    "fit": "core",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "CouchDB Sync",
+  "chave": "web:docs.couchdb.org/en/stable/sync.html",
+  "mencoes": 7,
+  "estado": "acordo",
+  "area": "sync_couchdb",
+  "fit": "core",
+  "respostas": [
+   {
+    "modelo": "tiny-aya-earth",
+    "area": "sync_couchdb",
+    "area_2": "none",
+    "hub_use": "Syncs CouchDB databases between machines with conflict resolution and replication protocol support.",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "mistral-code-fim",
+    "area": "sync_couchdb",
+    "area_2": "none",
+    "hub_use": "Master-master CouchDB replication between local and remote instances",
+    "fit": "core",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "Hugging Face Transformers.js",
+  "chave": "gh:huggingface/transformers.js",
+  "mencoes": 7,
+  "estado": "acordo",
+  "area": "embeddings_rerank",
+  "fit": "optional",
+  "respostas": [
+   {
+    "modelo": "command-a-reasoning",
+    "area": "embeddings_rerank",
+    "area_2": "none",
+    "hub_use": "Generate embeddings locally in Obsidian plugins or MCP nodes without a server via ONNX Runtime.",
+    "fit": "optional",
+    "doubt": false
+   },
+   {
+    "modelo": "llama-3.3-70b",
+    "area": "embeddings_rerank",
+    "area_2": "llm_runtime",
+    "hub_use": "Generate embeddings for notes",
+    "fit": "core",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "Goldmark",
+  "chave": "gh:yuin/goldmark",
+  "mencoes": 7,
+  "estado": "acordo",
+  "area": "markdown_frontmatter",
+  "fit": "core",
+  "respostas": [
+   {
+    "modelo": "command-a-reasoning",
+    "area": "markdown_frontmatter",
+    "area_2": "none",
+    "hub_use": "Parse and process Markdown/YAML frontmatter for note indexing, chunking, or conversion in the hub's workflow.",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "deepseek-v4-flashfree",
+    "area": "markdown_frontmatter",
+    "area_2": "none",
+    "hub_use": "Parse Markdown into AST for chunking and converting notes in Go tooling.",
+    "fit": "core",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "Watchdog",
+  "chave": "gh:gorakhargosh/watchdog",
+  "mencoes": 6,
+  "estado": "acordo",
+  "area": "events_jobs",
+  "fit": "core",
+  "respostas": [
+   {
+    "modelo": "mistral-code",
+    "area": "events_jobs",
+    "area_2": "none",
+    "hub_use": "Trigger reindexing on Markdown file changes",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "command-r7b",
+    "area": "sync_couchdb",
+    "area_2": "mcp",
+    "hub_use": "Monitor file changes to trigger CouchDB reindex or sync reactions",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "command-a-reasoning",
+    "area": "events_jobs",
+    "area_2": "none",
+    "hub_use": "Monitors Markdown file changes on NTFS to trigger reindexing or sync reactions.",
+    "fit": "core",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "mcp-server",
+  "chave": "gh:modelcontextprotocol/modelcontextprotocol",
+  "mencoes": 6,
+  "estado": "acordo",
+  "area": "mcp",
+  "fit": "core",
+  "respostas": [
+   {
+    "modelo": "tiny-aya-earth",
+    "area": "mcp",
+    "area_2": "none",
+    "hub_use": "Supports MCP protocol for agent communication in the hub.",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "ising-calibration-1.5-31b",
+    "area": "mcp",
+    "area_2": "markdown_frontmatter",
+    "hub_use": "The MCP specification defines the protocol for agents to interact with the hub's data, while the markdown_frontmatter component handles the parsing of the actual note content.",
+    "fit": "core",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "Joblib",
+  "chave": "web:joblib.readthedocs.io",
+  "mencoes": 6,
+  "estado": "acordo",
+  "area": "events_jobs",
+  "fit": "optional",
+  "respostas": [
+   {
+    "modelo": "command-r7b",
+    "area": "storage_db",
+    "area_2": "llm_runtime",
+    "hub_use": "Parallelize LLM jobs and cache results to disk.",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "codestral",
+    "area": "events_jobs",
+    "area_2": "none",
+    "hub_use": "Parallelize embedding jobs and cache results to disk",
+    "fit": "optional",
+    "doubt": false
+   },
+   {
+    "modelo": "mistral-code",
+    "area": "events_jobs",
+    "area_2": "none",
+    "hub_use": "Parallelize indexing and cache results to disk",
+    "fit": "optional",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "Docling",
+  "chave": "gh:ds4sd/docling",
+  "mencoes": 6,
+  "estado": "acordo",
+  "area": "text_extraction",
+  "fit": "core",
+  "respostas": [
+   {
+    "modelo": "command-a-reasoning",
+    "area": "text_extraction",
+    "area_2": "mcp",
+    "hub_use": "Convert PDFs/Office docs to Markdown for notes via MCP server integration",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "kilo-auto",
+    "area": "text_extraction",
+    "area_2": "mcp",
+    "hub_use": "Convert PDFs/DOCX to Markdown for notes via MCP server",
+    "fit": "core",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "Langdetect",
+  "chave": "gh:mimino666/langdetect",
+  "mencoes": 6,
+  "estado": "acordo",
+  "area": "text_pt",
+  "fit": "optional",
+  "respostas": [
+   {
+    "modelo": "command-r7b",
+    "area": "text_pt",
+    "area_2": "embeddings_rerank",
+    "hub_use": "Language detection for Portuguese and English text",
+    "fit": "optional",
+    "doubt": false
+   },
+   {
+    "modelo": "gpt-oss-120b",
+    "area": "text_pt",
+    "area_2": "none",
+    "hub_use": "Detect note language to choose appropriate NLP pipelines",
+    "fit": "optional",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "PyNATS",
+  "chave": "gh:nats-io/nats.py",
+  "mencoes": 6,
+  "estado": "acordo",
+  "area": "events_jobs",
+  "fit": "unlikely",
+  "respostas": [
+   {
+    "modelo": "north-mini-code",
+    "area": "events_jobs",
+    "area_2": "none",
+    "hub_use": "NATS client for hub event streaming and job queue communication.",
+    "fit": "unlikely",
+    "doubt": false
+   },
+   {
+    "modelo": "nemotron-3-super",
+    "area": "events_jobs",
+    "area_2": "none",
+    "hub_use": "Provide async pub/sub messaging between agents or services in the hub.",
+    "fit": "optional",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "TensorFlow Similarity",
+  "chave": "gh:tensorflow/similarity",
+  "mencoes": 6,
+  "estado": "acordo",
+  "area": "embeddings_rerank",
+  "fit": "unlikely",
+  "respostas": [
+   {
+    "modelo": "qwen3.6-27b",
+    "area": "embeddings_rerank",
+    "area_2": "none",
+    "hub_use": "Train custom embedding models for local similarity search, likely redundant with existing gateway.",
+    "fit": "unlikely",
+    "doubt": false
+   },
+   {
+    "modelo": "north-mini-code",
+    "area": "other",
+    "area_2": "none",
+    "hub_use": "Trains image embedding models for metric learning",
+    "fit": "unlikely",
+    "doubt": false
+   },
+   {
+    "modelo": "gpt-oss-20b",
+    "area": "embeddings_rerank",
+    "area_2": "none",
+    "hub_use": "Train image embeddings, not used for Markdown notes",
+    "fit": "unlikely",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "Doc2Vec",
+  "chave": "web:radimrehurek.com/gensim/models/doc2vec.html",
+  "mencoes": 6,
+  "estado": "acordo",
+  "area": "embeddings_rerank",
+  "fit": "optional",
+  "respostas": [
+   {
+    "modelo": "ministral-3-8b",
+    "area": "embeddings_rerank",
+    "area_2": "llm_runtime",
+    "hub_use": "Train legacy document embeddings; may need MCP integration for local LLM use",
+    "fit": "optional",
+    "doubt": true
+   },
+   {
+    "modelo": "command-r-2",
+    "area": "embeddings_rerank",
+    "area_2": "none",
+    "hub_use": "Train and infer document embeddings for text processing and search.",
+    "fit": "optional",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "pynng",
+  "chave": "gh:codypiersall/pynng",
+  "mencoes": 5,
+  "estado": "acordo",
+  "area": "events_jobs",
+  "fit": "unlikely",
+  "respostas": [
+   {
+    "modelo": "nemotron-3-ultra-550b",
+    "area": "events_jobs",
+    "area_2": "none",
+    "hub_use": "Low-level IPC messaging between Python services if hub adds multiple Python processes",
+    "fit": "unlikely",
+    "doubt": false
+   },
+   {
+    "modelo": "ministral-14b",
+    "area": "events_jobs",
+    "area_2": "none",
+    "hub_use": "IPC between Python processes/agents in the hub (local or tailnet).",
+    "fit": "optional",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "RocksDB",
+  "chave": "gh:facebook/rocksdb",
+  "mencoes": 5,
+  "estado": "acordo",
+  "area": "storage_db",
+  "fit": "optional",
+  "respostas": [
+   {
+    "modelo": "command-a-reasoning",
+    "area": "storage_db",
+    "area_2": "none",
+    "hub_use": "Embedded key-value storage for local indexes or state, complementing CouchDB for specific low-level needs.",
+    "fit": "optional",
+    "doubt": false
+   },
+   {
+    "modelo": "diffusiongemma-26b-a4b-it",
+    "area": "storage_db",
+    "area_2": "none",
+    "hub_use": "Embedded key-value store for local indexing or managing specific state beyond what CouchDB provides.",
+    "fit": "optional",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "Docker Desktop for Windows",
+  "chave": "web:docker.com/products/docker-desktop",
+  "mencoes": 5,
+  "estado": "acordo",
+  "area": "other",
+  "fit": "optional",
+  "respostas": [
+   {
+    "modelo": "north-mini-code",
+    "area": "other",
+    "area_2": "none",
+    "hub_use": "Run local containers such as CouchDB or search services on Windows",
+    "fit": "optional",
+    "doubt": false
+   },
+   {
+    "modelo": "ising-calibration-1.5-31b",
+    "area": "other",
+    "area_2": "sync_couchdb",
+    "hub_use": "Docker Desktop is used to run local containers, including CouchDB and search services, on Windows machines. It provides the necessary runtime environment for these components to operate, although it is not a direct part of the hub's data processing or analysis stack.",
+    "fit": "optional",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "CouchDB MapReduce Views",
+  "chave": "web:docs.couchdb.org/en/stable/api/database/views.html",
+  "mencoes": 5,
+  "estado": "acordo",
+  "area": "sync_couchdb",
+  "fit": "core",
+  "respostas": [
+   {
+    "modelo": "command-a-reasoning",
+    "area": "sync_couchdb",
+    "area_2": "none",
+    "hub_use": "Enables efficient indexing and querying of YAML frontmatter/document keys in CouchDB for fast lookups.",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "codestral",
+    "area": "sync_couchdb",
+    "area_2": "markdown_frontmatter",
+    "hub_use": "Index and query Markdown notes by YAML frontmatter keys",
+    "fit": "core",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "JSON Schema",
+  "chave": "web:json-schema.org",
+  "mencoes": 5,
+  "estado": "acordo",
+  "area": "markdown_frontmatter",
+  "fit": "optional",
+  "respostas": [
+   {
+    "modelo": "command-a-reasoning",
+    "area": "markdown_frontmatter",
+    "area_2": "none",
+    "hub_use": "Validates structure of YAML frontmatter in notes and JSON config files using JSON Schema.",
+    "fit": "optional",
+    "doubt": false
+   },
+   {
+    "modelo": "voxtral-small",
+    "area": "markdown_frontmatter",
+    "area_2": "none",
+    "hub_use": "Validate note metadata and config JSON files.",
+    "fit": "optional",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "Everything Search Engine",
+  "chave": "web:voidtools.com",
+  "mencoes": 5,
+  "estado": "acordo",
+  "area": "events_jobs",
+  "fit": "optional",
+  "respostas": [
+   {
+    "modelo": "llama-3.2-90b-vision",
+    "area": "other",
+    "area_2": "none",
+    "hub_use": "File and folder lookup utility",
+    "fit": "optional",
+    "doubt": false
+   },
+   {
+    "modelo": "qwen2.5-vl-72b",
+    "area": "events_jobs",
+    "area_2": "storage_db",
+    "hub_use": "Locates files quickly by name, complements CouchDB for file access.",
+    "fit": "optional",
+    "doubt": false
+   },
+   {
+    "modelo": "nemotron-3-super-120b",
+    "area": "events_jobs",
+    "area_2": "none",
+    "hub_use": "Provides real-time filename indexing and instant file/folder lookup for quick note location.",
+    "fit": "optional",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "FastMCP",
+  "chave": "gh:jlowin/fastmcp",
+  "mencoes": 5,
+  "estado": "acordo",
+  "area": "mcp",
+  "fit": "core",
+  "respostas": [
+   {
+    "modelo": "gpt-oss-120b",
+    "area": "mcp",
+    "area_2": "none",
+    "hub_use": "Run the hub's MCP server exposing tools/resources to AI agents",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "gemini-3.5-flash-lite",
+    "area": "mcp",
+    "area_2": "none",
+    "hub_use": "Builds the MCP server for AI coding agents to interact with hub data.",
+    "fit": "core",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "Mem0",
+  "chave": "gh:mem0ai/mem0",
+  "mencoes": 5,
+  "estado": "acordo",
+  "area": "agent_framework",
+  "fit": "core",
+  "respostas": [
+   {
+    "modelo": "gemma-4-26b-it",
+    "area": "agent_framework",
+    "area_2": "embeddings_rerank",
+    "hub_use": "Provides an intelligent memory layer for AI agents to store and retrieve user preferences and context.",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "agnes-2.5-flash",
+    "area": "agent_framework",
+    "area_2": "embeddings_rerank",
+    "hub_use": "Provide agent memory with hybrid semantic/BM25/entity retrieval for persistent assistant context",
+    "fit": "optional",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "n8n",
+  "chave": "gh:n8n-io/n8n",
+  "mencoes": 5,
+  "estado": "acordo",
+  "area": "agent_framework",
+  "fit": "core",
+  "respostas": [
+   {
+    "modelo": "mistral-nemo",
+    "area": "agent_framework",
+    "area_2": "api_service",
+    "hub_use": "Builds and deploys AI agents and workflows, connects to 1500+ integrations",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "ising-calibration-1.5-31b",
+    "area": "agent_framework",
+    "area_2": "api_service",
+    "hub_use": "n8n serves as a central orchestration platform for AI agents and automation workflows, connecting various components of the hub (such as CouchDB, MCP servers, and LLM runtimes) to enable complex, multi-step data processing and decision-making tasks.",
+    "fit": "core",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "Obsidian API",
+  "chave": "gh:obsidianmd/obsidian-api",
+  "mencoes": 4,
+  "estado": "acordo",
+  "area": "obsidian",
+  "fit": "core",
+  "respostas": [
+   {
+    "modelo": "gemma-4-31b",
+    "area": "obsidian",
+    "area_2": "none",
+    "hub_use": "Type definitions for developing Obsidian plugins to interact with the vault and metadata cache.",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "gpt-oss-120b",
+    "area": "obsidian",
+    "area_2": "none",
+    "hub_use": "Type definitions for building Obsidian plugins that read/write vault and metadata.",
+    "fit": "core",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "Obsidian Advanced URI",
+  "chave": "gh:vinzent03/obsidian-advanced-uri",
+  "mencoes": 4,
+  "estado": "acordo",
+  "area": "obsidian",
+  "fit": "optional",
+  "respostas": [
+   {
+    "modelo": "kilo-auto",
+    "area": "obsidian",
+    "area_2": "none",
+    "hub_use": "Enable external scripts and AI agents to read/write Obsidian notes via URI commands.",
+    "fit": "optional",
+    "doubt": false
+   },
+   {
+    "modelo": "gpt-oss-120b",
+    "area": "obsidian",
+    "area_2": "markdown_frontmatter",
+    "hub_use": "Enables scripts/agents to open, edit, append notes via obsidian:// URIs.",
+    "fit": "core",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "SharpYaml",
+  "chave": "gh:xoofx/sharpyaml",
+  "mencoes": 4,
+  "estado": "acordo",
+  "area": "markdown_frontmatter",
+  "fit": "optional",
+  "respostas": [
+   {
+    "modelo": "codestral",
+    "area": "markdown_frontmatter",
+    "area_2": "none",
+    "hub_use": "Parse YAML frontmatter in .NET tools",
+    "fit": "optional",
+    "doubt": false
+   },
+   {
+    "modelo": "dots3-note-preview",
+    "area": "markdown_frontmatter",
+    "area_2": "none",
+    "hub_use": "Parse YAML frontmatter from Markdown notes when using .NET-based tools in the hub.",
+    "fit": "optional",
+    "doubt": true
+   }
+  ]
+ },
+ {
+  "nome": "Celery",
+  "chave": "web:docs.celeryproject.org/en/stable",
+  "mencoes": 4,
+  "estado": "acordo",
+  "area": "events_jobs",
+  "fit": "optional",
+  "respostas": [
+   {
+    "modelo": "ising-calibration-1.5-31b",
+    "area": "events_jobs",
+    "area_2": "api_service",
+    "hub_use": "Celery serves as a distributed task queue for background job processing, enabling asynchronous execution of tasks such as indexing, synchronization, and data processing within the hub's ecosystem.",
+    "fit": "optional",
+    "doubt": false
+   },
+   {
+    "modelo": "gemma-4-31b",
+    "area": "events_jobs",
+    "area_2": "none",
+    "hub_use": "Handle background task scheduling and asynchronous job processing for the hub's services.",
+    "fit": "optional",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "CouchDB + PouchDB + Extensiones de Búsqueda",
+  "chave": "web:docs.couchdb.org/en/stable/api/database/common.html",
+  "mencoes": 4,
+  "estado": "acordo",
+  "area": "sync_couchdb",
+  "fit": "core",
+  "respostas": [
+   {
+    "modelo": "gemma-4-31b",
+    "area": "sync_couchdb",
+    "area_2": "none",
+    "hub_use": "Provides the core HTTP API for managing databases and documents within the CouchDB sync layer.",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "nemotron-3-ultra",
+    "area": "sync_couchdb",
+    "area_2": "none",
+    "hub_use": "Core HTTP API for all CouchDB document and database operations in the hub",
+    "fit": "core",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "StrictYAML",
+  "chave": "web:strictyaml.readthedocs.io",
+  "mencoes": 4,
+  "estado": "acordo",
+  "area": "markdown_frontmatter",
+  "fit": "core",
+  "respostas": [
+   {
+    "modelo": "agnes-2.5-flash",
+    "area": "markdown_frontmatter",
+    "area_2": "none",
+    "hub_use": "Validates YAML frontmatter in Obsidian notes, type-checks fields and preserves comments on write",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "gpt-oss-120b",
+    "area": "markdown_frontmatter",
+    "area_2": "none",
+    "hub_use": "Validate and edit note frontmatter YAML safely",
+    "fit": "core",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "frontmatter (Go)",
+  "chave": "gh:adrg/frontmatter",
+  "mencoes": 4,
+  "estado": "acordo",
+  "area": "markdown_frontmatter",
+  "fit": "core",
+  "respostas": [
+   {
+    "modelo": "voxtral-small-2507",
+    "area": "markdown_frontmatter",
+    "area_2": "none",
+    "hub_use": "Parsing YAML frontmatter in Markdown notes",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "ising-calibration-1.5-31b",
+    "area": "markdown_frontmatter",
+    "area_2": "text_pt",
+    "hub_use": "Parses YAML frontmatter in Markdown notes for metadata extraction and content separation.",
+    "fit": "core",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "PyMuPDF / MarkItDown",
+  "chave": "gh:microsoft/markitdown",
+  "mencoes": 4,
+  "estado": "acordo",
+  "area": "text_extraction",
+  "fit": "core",
+  "respostas": [
+   {
+    "modelo": "codestral-2508",
+    "area": "text_extraction",
+    "area_2": "markdown_frontmatter",
+    "hub_use": "converts PDFs and Office files to Markdown for the vault",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "gpt-oss-20b",
+    "area": "text_extraction",
+    "area_2": "other",
+    "hub_use": "Converts documents to Markdown for LLM ingestion",
+    "fit": "core",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "UDPipe",
+  "chave": "gh:ufal/udpipe",
+  "mencoes": 4,
+  "estado": "acordo",
+  "area": "text_pt",
+  "fit": "core",
+  "respostas": [
+   {
+    "modelo": "voxtral-small-2507",
+    "area": "text_pt",
+    "area_2": "none",
+    "hub_use": "Normalize Portuguese terms for lexical search",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "agnes-2.5-flash",
+    "area": "text_pt",
+    "area_2": "none",
+    "hub_use": "Portuguese lemmatization and tokenization for normalizing terms in lexical search.",
+    "fit": "optional",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "Supabase",
+  "chave": "web:supabase.com",
+  "mencoes": 4,
+  "estado": "acordo",
+  "area": "storage_db",
+  "fit": "unlikely",
+  "respostas": [
+   {
+    "modelo": "llama-3.2-11b-vision-instruct",
+    "area": "storage_db",
+    "area_2": "none",
+    "hub_use": "Postgres backend for vector embeddings and storage",
+    "fit": "unlikely",
+    "doubt": true
+   },
+   {
+    "modelo": "agnes-2.5-flash",
+    "area": "storage_db",
+    "area_2": "embeddings_rerank",
+    "hub_use": "Postgres backend with pgvector for embedding storage and search, alongside MCP integration.",
+    "fit": "unlikely",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "LiteLLM",
+  "chave": "gh:berriai/litellm",
+  "mencoes": 4,
+  "estado": "acordo",
+  "area": "llm_runtime",
+  "fit": "core",
+  "respostas": [
+   {
+    "modelo": "nemotron-3-super-120b",
+    "area": "llm_runtime",
+    "area_2": "mcp",
+    "hub_use": "Provide a local OpenAI‑compatible LLM gateway for agents and embeddings",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "codestral-2508",
+    "area": "llm_runtime",
+    "area_2": "mcp",
+    "hub_use": "Local LLM gateway for OpenAI-compatible calls",
+    "fit": "core",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "couchdb-nano",
+  "chave": "gh:apache/couchdb-nano",
+  "mencoes": 3,
+  "estado": "acordo",
+  "area": "sync_couchdb",
+  "fit": "core",
+  "respostas": [
+   {
+    "modelo": "llama-3.2-11b-vision-instruct",
+    "area": "sync_couchdb",
+    "area_2": "none",
+    "hub_use": "CouchDB client for reading, writing, and syncing notes database",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "nemotron-3-super-120b",
+    "area": "sync_couchdb",
+    "area_2": "none",
+    "hub_use": "Node.js CouchDB client for MCP server to read/write hub notes",
+    "fit": "core",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "fzf (fuzzy finder)",
+  "chave": "gh:junegunn/fzf",
+  "mencoes": 3,
+  "estado": "acordo",
+  "area": "other",
+  "fit": "unlikely",
+  "respostas": [
+   {
+    "modelo": "gpt-oss-20b",
+    "area": "other",
+    "area_2": "none",
+    "hub_use": "interactive terminal fuzzy finder for local file search",
+    "fit": "unlikely",
+    "doubt": false
+   },
+   {
+    "modelo": "diffusiongemma-26b-a4b-it",
+    "area": "other",
+    "area_2": "none",
+    "hub_use": "Interactive CLI filtering for the user to navigate files or select content within the terminal.",
+    "fit": "optional",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "Llamafile",
+  "chave": "gh:mozilla-ocho/llamafile",
+  "mencoes": 3,
+  "estado": "acordo",
+  "area": "llm_runtime",
+  "fit": "core",
+  "respostas": [
+   {
+    "modelo": "dots3-note-preview",
+    "area": "llm_runtime",
+    "area_2": "embeddings_rerank",
+    "hub_use": "Serves as local LLM backend for generation and embeddings used by AI agents.",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "ministral-3b",
+    "area": "llm_runtime",
+    "area_2": "storage_db",
+    "hub_use": "local LLM backend for embedding/gen via single-file exec (Windows-native)",
+    "fit": "core",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "Fast File Indexer (e.g., `rayon` + `walkdir`)",
+  "chave": "gh:rayon-rs/rayon",
+  "mencoes": 3,
+  "estado": "divergente",
+  "area": null,
+  "fit": "optional",
+  "respostas": [
+   {
+    "modelo": "ministral-14b",
+    "area": "other",
+    "area_2": "none",
+    "hub_use": "Accelerate Rust-based Markdown file indexing in local processing pipelines",
+    "fit": "optional",
+    "doubt": false
+   },
+   {
+    "modelo": "deepseek-v4-flashfree",
+    "area": "markdown_frontmatter",
+    "area_2": "none",
+    "hub_use": "Parallelize a Rust Markdown indexer if one is built; otherwise not used.",
+    "fit": "optional",
+    "doubt": false
+   },
+   {
+    "modelo": "gpt-oss-20b",
+    "area": "events_jobs",
+    "area_2": "other",
+    "hub_use": "Index Markdown files in parallel for quick search",
+    "fit": "optional",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "Dgraph",
+  "chave": "web:dgraph.io",
+  "mencoes": 3,
+  "estado": "acordo",
+  "area": "storage_db",
+  "fit": "unlikely",
+  "respostas": [
+   {
+    "modelo": "agnes-2.5-flash",
+    "area": "storage_db",
+    "area_2": "none",
+    "hub_use": "Store note relations as a graph; too heavy and distributed for a personal local hub.",
+    "fit": "unlikely",
+    "doubt": false
+   },
+   {
+    "modelo": "gemma-4-31b",
+    "area": "storage_db",
+    "area_2": "none",
+    "hub_use": "Store complex relations between Markdown notes as a graph database.",
+    "fit": "unlikely",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "CouchDB HTTP API",
+  "chave": "web:docs.couchdb.org/en/stable/api/index.html",
+  "mencoes": 3,
+  "estado": "acordo",
+  "area": "sync_couchdb",
+  "fit": "core",
+  "respostas": [
+   {
+    "modelo": "lfm2.5-2.6b",
+    "area": "sync_couchdb",
+    "area_2": "none",
+    "hub_use": "Provides reference API endpoints for CouchDB used by sync layers and agents within the personal context hub.",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "deepseek-v4-flashfree",
+    "area": "sync_couchdb",
+    "area_2": "none",
+    "hub_use": "Reference for CouchDB endpoints used by sync and agents.",
+    "fit": "optional",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "couchdb-replicator",
+  "chave": "web:docs.couchdb.org/en/stable/replication/index.html",
+  "mencoes": 3,
+  "estado": "acordo",
+  "area": "sync_couchdb",
+  "fit": "core",
+  "respostas": [
+   {
+    "modelo": "gemma-4-31b",
+    "area": "sync_couchdb",
+    "area_2": "none",
+    "hub_use": "Handles master-master replication and conflict resolution between the two Windows machines' CouchDB databases.",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "nemotron-3-super",
+    "area": "sync_couchdb",
+    "area_2": "none",
+    "hub_use": "Provides incremental one-way replication between CouchDB instances for master-master sync.",
+    "fit": "core",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "configparser",
+  "chave": "web:docs.python.org/3/library/configparser.html",
+  "mencoes": 3,
+  "estado": "acordo",
+  "area": "other",
+  "fit": "optional",
+  "respostas": [
+   {
+    "modelo": "codestral",
+    "area": "other",
+    "area_2": "none",
+    "hub_use": "Store small script settings in INI files",
+    "fit": "optional",
+    "doubt": false
+   },
+   {
+    "modelo": "kilo-auto",
+    "area": "mcp",
+    "area_2": "none",
+    "hub_use": "Parse INI configuration files for MCP server or other local services",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "nemotron-3-ultra-550b",
+    "area": "other",
+    "area_2": "none",
+    "hub_use": "Parse INI config files if any legacy tool uses them",
+    "fit": "unlikely",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "TypeDB (com plugin de busca semântica)",
+  "chave": "web:vaticle.com/typedb",
+  "mencoes": 3,
+  "estado": "acordo",
+  "area": "mcp",
+  "fit": "optional",
+  "respostas": [
+   {
+    "modelo": "gpt-oss-20b",
+    "area": "mcp",
+    "area_2": "storage_db",
+    "hub_use": "Typed graph storage for agent memory via MCP",
+    "fit": "optional",
+    "doubt": false
+   },
+   {
+    "modelo": "llama-3.2-11b-vision-instruct",
+    "area": "agent_framework",
+    "area_2": "storage_db",
+    "hub_use": "Agent memory and knowledge graph with schema checks and MCP",
+    "fit": "optional",
+    "doubt": false
+   },
+   {
+    "modelo": "nemotron-3-super-120b",
+    "area": "mcp",
+    "area_2": "storage_db",
+    "hub_use": "Provide MCP-enabled graph DB for agent memory and vector search",
+    "fit": "optional",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "diskcache",
+  "chave": "gh:grantjenks/python-diskcache",
+  "mencoes": 3,
+  "estado": "acordo",
+  "area": "storage_db",
+  "fit": "core",
+  "respostas": [
+   {
+    "modelo": "nemotron-3-super-120b",
+    "area": "storage_db",
+    "area_2": "none",
+    "hub_use": "Cache embeddings or expensive results locally using SQLite",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "ministral-8b",
+    "area": "storage_db",
+    "area_2": "events_jobs",
+    "hub_use": "SQLite-backed cache for persistent LLM embeddings or agent outputs",
+    "fit": "optional",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "SQLite Python Bindings",
+  "chave": "web:docs.python.org/3/library/sqlite3.html",
+  "mencoes": 3,
+  "estado": "acordo",
+  "area": "storage_db",
+  "fit": "optional",
+  "respostas": [
+   {
+    "modelo": "diffusiongemma-26b-a4b-it",
+    "area": "storage_db",
+    "area_2": "agent_framework",
+    "hub_use": "Local structured storage for indexing, metadata, or agent memory outside of CouchDB.",
+    "fit": "optional",
+    "doubt": false
+   },
+   {
+    "modelo": "ministral-14b",
+    "area": "storage_db",
+    "area_2": "none",
+    "hub_use": "Local SQLite index for metadata or search backups (lightweight, Windows-native)",
+    "fit": "optional",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "Dendron VS Code Extension",
+  "chave": "web:marketplace.visualstudio.com/items",
+  "mencoes": 3,
+  "estado": "divergente",
+  "area": null,
+  "fit": "optional",
+  "respostas": [
+   {
+    "modelo": "voxtral-small",
+    "area": "obsidian",
+    "area_2": "markdown_frontmatter",
+    "hub_use": "Provide VS Code integration for Markdown notes",
+    "fit": "optional",
+    "doubt": true
+   },
+   {
+    "modelo": "nemotron-3-super-120b",
+    "area": "markdown_frontmatter",
+    "area_2": "none",
+    "hub_use": "Provides VS Code-based hierarchical Markdown note-taking with schema and refactor for hub notes.",
+    "fit": "optional",
+    "doubt": false
+   },
+   {
+    "modelo": "north-mini-code",
+    "area": "other",
+    "area_2": "none",
+    "hub_use": "Alternative VS Code PKM tool, not part of Obsidian hub",
+    "fit": "unlikely",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "Jina Reader",
+  "chave": "gh:jina-ai/reader",
+  "mencoes": 2,
+  "estado": "acordo",
+  "area": "text_extraction",
+  "fit": "core",
+  "respostas": [
+   {
+    "modelo": "llama-3.2-90b-vision",
+    "area": "text_extraction",
+    "area_2": "markdown_frontmatter",
+    "hub_use": "Convert web pages, PDFs, Office files to Markdown notes",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "gemma-4-31b",
+    "area": "text_extraction",
+    "area_2": "markdown_frontmatter",
+    "hub_use": "Convert web pages, PDFs, and Office files into Markdown notes with frontmatter for the hub.",
+    "fit": "optional",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "Langfuse",
+  "chave": "gh:langfuse/langfuse",
+  "mencoes": 2,
+  "estado": "acordo",
+  "area": "agent_framework",
+  "fit": "unlikely",
+  "respostas": [
+   {
+    "modelo": "ministral-8b",
+    "area": "agent_framework",
+    "area_2": "llm_runtime",
+    "hub_use": "Trace agent execution steps and LLM calls for debugging/evaluation.",
+    "fit": "unlikely",
+    "doubt": false
+   },
+   {
+    "modelo": "llama-3.2-90b-vision",
+    "area": "agent_framework",
+    "area_2": "mcp",
+    "hub_use": "Trace agent retrieval and search steps",
+    "fit": "unlikely",
+    "doubt": true
+   }
+  ]
+ },
+ {
+  "nome": "Tch",
+  "chave": "gh:laurentmazare/tch-rs",
+  "mencoes": 2,
+  "estado": "acordo",
+  "area": "embeddings_rerank",
+  "fit": "core",
+  "respostas": [
+   {
+    "modelo": "nemotron-3-super-120b",
+    "area": "embeddings_rerank",
+    "area_2": "none",
+    "hub_use": "Run PyTorch-based embedding models locally for semantic search and reranking.",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "voxtral-small",
+    "area": "embeddings_rerank",
+    "area_2": "llm_runtime",
+    "hub_use": "Run embedding models locally",
+    "fit": "optional",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "Markdownify",
+  "chave": "gh:matthewwithanm/python-markdownify",
+  "mencoes": 2,
+  "estado": "acordo",
+  "area": "text_extraction",
+  "fit": "optional",
+  "respostas": [
+   {
+    "modelo": "ising-calibration-1.5-31b",
+    "area": "text_extraction",
+    "area_2": "markdown_frontmatter",
+    "hub_use": "Converts HTML content from web pages into Markdown format for storage as notes in the hub.",
+    "fit": "optional",
+    "doubt": false
+   },
+   {
+    "modelo": "lfm2.5-2.6b",
+    "area": "text_extraction",
+    "area_2": "none",
+    "hub_use": "Converts HTML web content to Markdown for importing as notes in the Obsidian context hub.",
+    "fit": "core",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "Python-Levenshtein",
+  "chave": "gh:maxbachmann/python-levenshtein",
+  "mencoes": 2,
+  "estado": "acordo",
+  "area": "text_pt",
+  "fit": "optional",
+  "respostas": [
+   {
+    "modelo": "ising-calibration-1.5-31b",
+    "area": "text_pt",
+    "area_2": "markdown_frontmatter",
+    "hub_use": "Provides fast Levenshtein distance calculations for typo-tolerant string matching, useful in keyword lookups and text normalization tasks within the hub's processing pipeline.",
+    "fit": "optional",
+    "doubt": false
+   },
+   {
+    "modelo": "command-a",
+    "area": "text_pt",
+    "area_2": "none",
+    "hub_use": "Fuzzy string matching for typo-tolerant keyword lookups in Portuguese and English text.",
+    "fit": "optional",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "micromark",
+  "chave": "gh:micromark/micromark",
+  "mencoes": 2,
+  "estado": "acordo",
+  "area": "markdown_frontmatter",
+  "fit": "core",
+  "respostas": [
+   {
+    "modelo": "ministral-3b",
+    "area": "markdown_frontmatter",
+    "area_2": "obsidian",
+    "hub_use": "Parse Markdown frontmatter and structural tokens for Obsidian/YAML note chunking",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "ising-calibration-1.5-31b",
+    "area": "markdown_frontmatter",
+    "area_2": "mcp",
+    "hub_use": "Parses Markdown notes to extract structured data (e.g., frontmatter, headings) for indexing and search. Can be used by MCP servers to preprocess note content before storage or retrieval.",
+    "fit": "core",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "fd",
+  "chave": "gh:sharkdp/fd",
+  "mencoes": 2,
+  "estado": "divergente",
+  "area": null,
+  "fit": "optional",
+  "respostas": [
+   {
+    "modelo": "mistral-code-fim",
+    "area": "markdown_frontmatter",
+    "area_2": "none",
+    "hub_use": "search for Markdown files in the hub's folder",
+    "fit": "optional",
+    "doubt": false
+   },
+   {
+    "modelo": "dots3-note-preview",
+    "area": "other",
+    "area_2": "none",
+    "hub_use": "Enable fast file name search for agents working on the hub's note directory.",
+    "fit": "optional",
+    "doubt": false
+   },
+   {
+    "modelo": "llama-3.2-11b-vision-instruct",
+    "area": "text_extraction",
+    "area_2": "none",
+    "hub_use": "Extract text from files for search and analysis",
+    "fit": "optional",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "Showdown",
+  "chave": "gh:showdownjs/showdown",
+  "mencoes": 2,
+  "estado": "acordo",
+  "area": "markdown_frontmatter",
+  "fit": "core",
+  "respostas": [
+   {
+    "modelo": "tiny-aya-fire",
+    "area": "markdown_frontmatter",
+    "area_2": "llm_runtime",
+    "hub_use": "Render Markdown to HTML for notes in the hub, compatible with local LLM calls.",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "nemotron-3-super-120b",
+    "area": "markdown_frontmatter",
+    "area_2": "none",
+    "hub_use": "Convert Markdown notes to HTML for preview or export",
+    "fit": "optional",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "Sled",
+  "chave": "gh:spacejam/sled",
+  "mencoes": 2,
+  "estado": "acordo",
+  "area": "storage_db",
+  "fit": "optional",
+  "respostas": [
+   {
+    "modelo": "ising-calibration-1.5-31b",
+    "area": "storage_db",
+    "area_2": "sync_couchdb",
+    "hub_use": "Sled serves as a local, embedded database for storing metadata and indices, complementing the main CouchDB synchronization by providing fast, atomic access to local data structures.",
+    "fit": "optional",
+    "doubt": false
+   },
+   {
+    "modelo": "llama-3.3-70b",
+    "area": "storage_db",
+    "area_2": "none",
+    "hub_use": "Local database storage",
+    "fit": "optional",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "vLLM",
+  "chave": "gh:vllm-project/vllm",
+  "mencoes": 2,
+  "estado": "acordo",
+  "area": "embeddings_rerank",
+  "fit": "core",
+  "respostas": [
+   {
+    "modelo": "ministral-3b",
+    "area": "embeddings_rerank",
+    "area_2": "llm_runtime",
+    "hub_use": "hosts embedding models for semantic search via OpenAI-compatible API",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "qwen2.5-vl-72b",
+    "area": "embeddings_rerank",
+    "area_2": "llm_runtime",
+    "hub_use": "Serves embedding models for semantic search via OpenAI-compatible API.",
+    "fit": "optional",
+    "doubt": true
+   }
+  ]
+ },
+ {
+  "nome": "Deepset Cloud",
+  "chave": "web:deepset.ai",
+  "mencoes": 2,
+  "estado": "acordo",
+  "area": "agent_framework",
+  "fit": "optional",
+  "respostas": [
+   {
+    "modelo": "llama-3.2-11b-vision-instruct",
+    "area": "agent_framework",
+    "area_2": "none",
+    "hub_use": "RAG framework for agent pipelines and context-engineered agents",
+    "fit": "optional",
+    "doubt": false
+   },
+   {
+    "modelo": "lfm2.5-2.6b",
+    "area": "agent_framework",
+    "area_2": "none",
+    "hub_use": "Documentation for an agent framework, supporting the hub's focus on AI agents and RAG pipelines.",
+    "fit": "core",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "Whoosh + `Pydantic` (frontmatter)",
+  "chave": "web:docs.pydantic.dev/latest",
+  "mencoes": 2,
+  "estado": "acordo",
+  "area": "markdown_frontmatter",
+  "fit": "core",
+  "respostas": [
+   {
+    "modelo": "nemotron-3-ultra-550b",
+    "area": "markdown_frontmatter",
+    "area_2": "none",
+    "hub_use": "Validate YAML frontmatter schemas in Python hub scripts",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "gpt-oss-20b",
+    "area": "markdown_frontmatter",
+    "area_2": "none",
+    "hub_use": "Validate and enforce schema on note frontmatter",
+    "fit": "core",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "Apache NiFi",
+  "chave": "web:nifi.apache.org",
+  "mencoes": 2,
+  "estado": "acordo",
+  "area": "events_jobs",
+  "fit": "optional",
+  "respostas": [
+   {
+    "modelo": "aya-vision-32b",
+    "area": "events_jobs",
+    "area_2": "none",
+    "hub_use": "Processar e distribuir dados de eventos, como notas ou logs.",
+    "fit": "optional",
+    "doubt": false
+   },
+   {
+    "modelo": "gpt-oss-120b",
+    "area": "other",
+    "area_2": "none",
+    "hub_use": "generic dataflow orchestration, not needed for markdown note hub",
+    "fit": "unlikely",
+    "doubt": false
+   },
+   {
+    "modelo": "agnes-2.5-flash",
+    "area": "events_jobs",
+    "area_2": "other",
+    "hub_use": "Data pipeline/orchestration engine; not suited for a personal Markdown note hub.",
+    "fit": "unlikely",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "Beir",
+  "chave": "gh:beir-cellar/beir",
+  "mencoes": 2,
+  "estado": "acordo",
+  "area": "embeddings_rerank",
+  "fit": "optional",
+  "respostas": [
+   {
+    "modelo": "agnes-2.5-flash",
+    "area": "embeddings_rerank",
+    "area_2": "none",
+    "hub_use": "Benchmark retrieval quality (NDCG, recall) against the hub's embedding/reranking layer",
+    "fit": "optional",
+    "doubt": false
+   },
+   {
+    "modelo": "gpt-oss-20b",
+    "area": "other",
+    "area_2": "none",
+    "hub_use": "Measure search quality metrics (NDCG, recall) for the hub's retrieval layer",
+    "fit": "optional",
+    "doubt": false
+   },
+   {
+    "modelo": "ministral-3b",
+    "area": "embeddings_rerank",
+    "area_2": "text_pt",
+    "hub_use": "evaluate retrieval quality (NDCG, recall) via embeddings/reranking metrics on multilingual text (pt/EN)",
+    "fit": "core",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "watchman",
+  "chave": "gh:facebook/watchman",
+  "mencoes": 2,
+  "estado": "acordo",
+  "area": "events_jobs",
+  "fit": "core",
+  "respostas": [
+   {
+    "modelo": "llama-3.2-11b-vision-instruct",
+    "area": "events_jobs",
+    "area_2": "none",
+    "hub_use": "detect file changes and trigger actions on notes",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "mistral-code",
+    "area": "events_jobs",
+    "area_2": "none",
+    "hub_use": "Detect file changes in notes and trigger reindexing",
+    "fit": "core",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "cmark-gfm",
+  "chave": "gh:github/cmark-gfm",
+  "mencoes": 2,
+  "estado": "acordo",
+  "area": "markdown_frontmatter",
+  "fit": "core",
+  "respostas": [
+   {
+    "modelo": "gpt-oss-120b",
+    "area": "markdown_frontmatter",
+    "area_2": "none",
+    "hub_use": "Parse notes into AST to split by headings and extract frontmatter for downstream processing",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "agnes-2.5-flash",
+    "area": "markdown_frontmatter",
+    "area_2": "none",
+    "hub_use": "Parse Markdown notes into AST for structure-aware chunking before indexing.",
+    "fit": "core",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "CouchDB View Server",
+  "chave": "web:couchdb.apache.org/docs/stable/views/index.html",
+  "mencoes": 2,
+  "estado": "acordo",
+  "area": "sync_couchdb",
+  "fit": "core",
+  "respostas": [
+   {
+    "modelo": "llama-3.2-90b-vision",
+    "area": "sync_couchdb",
+    "area_2": "none",
+    "hub_use": "CouchDB replication and views",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "tiny-aya-water",
+    "area": "sync_couchdb",
+    "area_2": "other",
+    "hub_use": "Manages CouchDB views and replication for the hub's note sync and indexing.",
+    "fit": "core",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "Peewee",
+  "chave": "web:docs.peewee-orm.com/en/latest",
+  "mencoes": 2,
+  "estado": "acordo",
+  "area": "storage_db",
+  "fit": "optional",
+  "respostas": [
+   {
+    "modelo": "nemotron-3-super",
+    "area": "storage_db",
+    "area_2": "none",
+    "hub_use": "Provide ORM layer for a local SQLite/Postgres index database",
+    "fit": "optional",
+    "doubt": false
+   },
+   {
+    "modelo": "voxtral-small-2507",
+    "area": "storage_db",
+    "area_2": "none",
+    "hub_use": "Local SQLite index database for notes",
+    "fit": "optional",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "IngestionPipeline",
+  "chave": "web:docs.llamaindex.ai/en/stable/module_guides/loading/ingestion_pipeline",
+  "mencoes": 2,
+  "estado": "acordo",
+  "area": "agent_framework",
+  "fit": "optional",
+  "respostas": [
+   {
+    "modelo": "agnes-2.5-flash",
+    "area": "agent_framework",
+    "area_2": "embeddings_rerank",
+    "hub_use": "Chunks notes, computes embeddings, deduplicates, and upserts into vector store for RAG retrieval in the hub.",
+    "fit": "optional",
+    "doubt": false
+   },
+   {
+    "modelo": "ministral-3-8b",
+    "area": "embeddings_rerank",
+    "area_2": "events_jobs",
+    "hub_use": "Incremental embedding/chunking pipeline with hash-based dedup and caching for notes",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "nemotron-3-ultra",
+    "area": "agent_framework",
+    "area_2": "embeddings_rerank",
+    "hub_use": "Incremental note indexing: chunk, embed, dedup, and upsert to vector store for RAG",
+    "fit": "core",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "CouchDB Change Feed + Kibana (via Logstash + BM25)",
+  "chave": "web:elastic.co/guide/en/logstash/current/index.html",
+  "mencoes": 2,
+  "estado": "acordo",
+  "area": "sync_couchdb",
+  "fit": "unlikely",
+  "respostas": [
+   {
+    "modelo": "diffusiongemma-26b-a4b-it",
+    "area": "sync_couchdb",
+    "area_2": "none",
+    "hub_use": "Ingest and transform CouchDB change feeds for external search indexing or analytics.",
+    "fit": "unlikely",
+    "doubt": false
+   },
+   {
+    "modelo": "gpt-oss-20b",
+    "area": "events_jobs",
+    "area_2": "none",
+    "hub_use": "Stream CouchDB changes to Elastic for real-time search.",
+    "fit": "unlikely",
+    "doubt": false
+   },
+   {
+    "modelo": "ministral-14b",
+    "area": "sync_couchdb",
+    "area_2": "storage_db",
+    "hub_use": "CouchDB change feed → Logstash → Elasticsearch for search indexing (if needed)",
+    "fit": "optional",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "Git",
+  "chave": "web:git-scm.com",
+  "mencoes": 2,
+  "estado": "acordo",
+  "area": "other",
+  "fit": "optional",
+  "respostas": [
+   {
+    "modelo": "nemotron-3-ultra",
+    "area": "other",
+    "area_2": "none",
+    "hub_use": "Version control backup for notes folder",
+    "fit": "optional",
+    "doubt": false
+   },
+   {
+    "modelo": "ministral-14b",
+    "area": "other",
+    "area_2": "none",
+    "hub_use": "version control for Markdown notes folder (history/backup)",
+    "fit": "optional",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "HuggingFace Tokenizers + Transformers",
+  "chave": "web:huggingface.co/docs/transformers",
+  "mencoes": 2,
+  "estado": "acordo",
+  "area": "embeddings_rerank",
+  "fit": "core",
+  "respostas": [
+   {
+    "modelo": "codestral",
+    "area": "text_pt",
+    "area_2": "embeddings_rerank",
+    "hub_use": "Run embedding models and NLP tasks locally for Portuguese/English text",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "diffusiongemma-26b-a4b-it",
+    "area": "embeddings_rerank",
+    "area_2": "llm_runtime",
+    "hub_use": "Runs local embedding models and LLMs for RAG and text processing within the hub.",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "nemotron-3-super-120b",
+    "area": "embeddings_rerank",
+    "area_2": "llm_runtime",
+    "hub_use": "Provides model definitions and tokenizers to run local embedding and LLM models via the gateway.",
+    "fit": "core",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "SurrealDB",
+  "chave": "web:surrealdb.com",
+  "mencoes": 2,
+  "estado": "acordo",
+  "area": "storage_db",
+  "fit": "core",
+  "respostas": [
+   {
+    "modelo": "voxtral-small-2507",
+    "area": "storage_db",
+    "area_2": "mcp",
+    "hub_use": "Replaces CouchDB with hybrid search and MCP access.",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "ising-calibration-1.5-31b",
+    "area": "storage_db",
+    "area_2": "mcp",
+    "hub_use": "SurrealDB would serve as the primary data store for the hub, replacing CouchDB to provide a unified database for documents, graphs, vectors, and relational data. It would also enable direct access to the database and memory layer via the MCP protocol for AI agents.",
+    "fit": "core",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "P2P File Sync (Syncthing)",
+  "chave": "web:syncthing.net",
+  "mencoes": 2,
+  "estado": "acordo",
+  "area": "sync_couchdb",
+  "fit": "optional",
+  "respostas": [
+   {
+    "modelo": "nemotron-3-ultra-550b",
+    "area": "other",
+    "area_2": "none",
+    "hub_use": "Alternative P2P file sync for non-note folders or backup layer",
+    "fit": "optional",
+    "doubt": false
+   },
+   {
+    "modelo": "mistral-code-fim",
+    "area": "sync_couchdb",
+    "area_2": "none",
+    "hub_use": "Alternative sync layer for Markdown notes and CouchDB data",
+    "fit": "optional",
+    "doubt": false
+   },
+   {
+    "modelo": "diffusiongemma-26b-a4b-it",
+    "area": "sync_couchdb",
+    "area_2": "none",
+    "hub_use": "Provides a redundant file-level synchronization layer for the Markdown notes alongside CouchDB LiveSync.",
+    "fit": "optional",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "Kibana",
+  "chave": "web:elastic.co/guide/en/kibana/current/index.html",
+  "mencoes": 2,
+  "estado": "acordo",
+  "area": "storage_db",
+  "fit": "unlikely",
+  "respostas": [
+   {
+    "modelo": "ising-calibration-1.5-31b",
+    "area": "storage_db",
+    "area_2": "api_service",
+    "hub_use": "Elasticsearch serves as a high-performance, distributed search and analytics engine for the hub's data, while Kibana provides the user interface for data visualization and management.",
+    "fit": "unlikely",
+    "doubt": false
+   },
+   {
+    "modelo": "gemma-4-31b",
+    "area": "storage_db",
+    "area_2": "other",
+    "hub_use": "Heavyweight search and analytics backend for indexing notes and vectors.",
+    "fit": "unlikely",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "CouchDB Fauxton",
+  "chave": "gh:apache/couchdb-fauxton",
+  "mencoes": 1,
+  "estado": "acordo",
+  "area": "sync_couchdb",
+  "fit": "optional",
+  "respostas": [
+   {
+    "modelo": "gemma-4-31b",
+    "area": "sync_couchdb",
+    "area_2": "none",
+    "hub_use": "Web admin interface to inspect and manage the CouchDB database and debug replication conflicts.",
+    "fit": "optional",
+    "doubt": false
+   },
+   {
+    "modelo": "gpt-oss-20b",
+    "area": "sync_couchdb",
+    "area_2": "none",
+    "hub_use": "Web UI for inspecting and managing CouchDB database",
+    "fit": "optional",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "cmark",
+  "chave": "gh:commonmark/cmark",
+  "mencoes": 1,
+  "estado": "acordo",
+  "area": "markdown_frontmatter",
+  "fit": "core",
+  "respostas": [
+   {
+    "modelo": "tiny-aya-global",
+    "area": "text_pt",
+    "area_2": "mcp",
+    "hub_use": "Parser Markdown para notas em português, integrado ao hub via MCP para processamento local.",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "gpt-oss-120b",
+    "area": "markdown_frontmatter",
+    "area_2": "none",
+    "hub_use": "Parse notes to AST for heading/metadata extraction before indexing",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "llama-3.2-90b-vision",
+    "area": "markdown_frontmatter",
+    "area_2": "none",
+    "hub_use": "parse Markdown notes to AST",
+    "fit": "core",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "ConceptNet Numberbatch",
+  "chave": "gh:commonsense/conceptnet-numberbatch",
+  "mencoes": 1,
+  "estado": "acordo",
+  "area": "embeddings_rerank",
+  "fit": "optional",
+  "respostas": [
+   {
+    "modelo": "llama-3.2-11b-vision-instruct",
+    "area": "text_pt",
+    "area_2": "none",
+    "hub_use": "Multilingual word embeddings for semantic analysis",
+    "fit": "optional",
+    "doubt": false
+   },
+   {
+    "modelo": "dots3-note-preview",
+    "area": "embeddings_rerank",
+    "area_2": "text_pt",
+    "hub_use": "Provide pre-computed multilingual word embeddings for NLP tasks involving Portuguese and English text.",
+    "fit": "optional",
+    "doubt": true
+   },
+   {
+    "modelo": "nemotron-3-ultra-550b",
+    "area": "embeddings_rerank",
+    "area_2": "none",
+    "hub_use": "Static multilingual word vectors as fallback or supplement to gateway embeddings",
+    "fit": "optional",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "LevelDB",
+  "chave": "gh:google/leveldb",
+  "mencoes": 1,
+  "estado": "acordo",
+  "area": "storage_db",
+  "fit": "optional",
+  "respostas": [
+   {
+    "modelo": "gpt-oss-120b",
+    "area": "storage_db",
+    "area_2": "none",
+    "hub_use": "Local key-value store for indexing or sync metadata",
+    "fit": "optional",
+    "doubt": false
+   },
+   {
+    "modelo": "codestral",
+    "area": "storage_db",
+    "area_2": "sync_couchdb",
+    "hub_use": "low-level key-value storage for sync metadata or indexing",
+    "fit": "optional",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "hexo-front-matter",
+  "chave": "gh:hexojs/hexo-front-matter",
+  "mencoes": 1,
+  "estado": "acordo",
+  "area": "markdown_frontmatter",
+  "fit": "optional",
+  "respostas": [
+   {
+    "modelo": "deepseek-v4-flashfree",
+    "area": "markdown_frontmatter",
+    "area_2": "none",
+    "hub_use": "Parse YAML/JSON front matter from Markdown notes to read metadata for indexing.",
+    "fit": "optional",
+    "doubt": false
+   },
+   {
+    "modelo": "codestral",
+    "area": "markdown_frontmatter",
+    "area_2": "none",
+    "hub_use": "Parse YAML frontmatter from Markdown notes for metadata indexing",
+    "fit": "optional",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "ftfy",
+  "chave": "gh:luminosoinsight/python-ftfy",
+  "mencoes": 1,
+  "estado": "acordo",
+  "area": "text_pt",
+  "fit": "optional",
+  "respostas": [
+   {
+    "modelo": "codestral-2508",
+    "area": "markdown_frontmatter",
+    "area_2": "text_pt",
+    "hub_use": "clean mojibake and encoding issues in Markdown notes before sync",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "kilo-auto",
+    "area": "text_pt",
+    "area_2": "none",
+    "hub_use": "Fix encoding mojibake in notes before indexing or sync",
+    "fit": "optional",
+    "doubt": false
+   },
+   {
+    "modelo": "agnes-2.5-flash",
+    "area": "text_pt",
+    "area_2": "none",
+    "hub_use": "Text cleaning stage to repair mojibake before indexing or sync in the note hub.",
+    "fit": "optional",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "SQLite Node.js Bindings",
+  "chave": "gh:mapbox/node-sqlite3",
+  "mencoes": 1,
+  "estado": "acordo",
+  "area": "storage_db",
+  "fit": "optional",
+  "respostas": [
+   {
+    "modelo": "ministral-3-8b",
+    "area": "storage_db",
+    "area_2": "none",
+    "hub_use": "Local SQLite storage for lightweight, non-CouchDB data needs (e.g., agent metadata, caches)",
+    "fit": "optional",
+    "doubt": true
+   },
+   {
+    "modelo": "gemma-4-26b-it",
+    "area": "storage_db",
+    "area_2": "none",
+    "hub_use": "Local SQLite database driver for Node.js-based components or MCP servers.",
+    "fit": "optional",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "LlamaStack",
+  "chave": "gh:meta-llama/llama-stack",
+  "mencoes": 1,
+  "estado": "acordo",
+  "area": "llm_runtime",
+  "fit": "core",
+  "respostas": [
+   {
+    "modelo": "nemotron-3-super-120b",
+    "area": "llm_runtime",
+    "area_2": "mcp",
+    "hub_use": "Provide local OpenAI-compatible LLM gateway with MCP tool integration",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "lfm2.5-2.6b",
+    "area": "llm_runtime",
+    "area_2": "none",
+    "hub_use": "Core LLM runtime providing OpenAI-compatible API endpoints for local inference and vector store queries.",
+    "fit": "core",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "mcp-go",
+  "chave": "gh:modelcontextprotocol/go-sdk",
+  "mencoes": 1,
+  "estado": "acordo",
+  "area": "mcp",
+  "fit": "core",
+  "respostas": [
+   {
+    "modelo": "ministral-14b",
+    "area": "mcp",
+    "area_2": "none",
+    "hub_use": "Build MCP servers/clients for AI agents to interact with the hub",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "deepseek-v4-flashfree",
+    "area": "mcp",
+    "area_2": "none",
+    "hub_use": "Build MCP server/client in Go for agents to access hub notes",
+    "fit": "optional",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "rmcp (Rust MCP SDK)",
+  "chave": "gh:modelcontextprotocol/rust-sdk",
+  "mencoes": 1,
+  "estado": "acordo",
+  "area": "mcp",
+  "fit": "core",
+  "respostas": [
+   {
+    "modelo": "ising-calibration-1.5-31b",
+    "area": "mcp",
+    "area_2": "agent_framework",
+    "hub_use": "The Rust MCP SDK (rmcp) is used to build the MCP server that interfaces with the personal context hub. It handles the communication protocol between the hub and AI coding agents, allowing them to read and write notes in the CouchDB database.",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "agnes-2.5-flash",
+    "area": "mcp",
+    "area_2": "none",
+    "hub_use": "Rust SDK to build the hub's MCP server for agent interaction with the Obsidian note hub.",
+    "fit": "core",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "yaml",
+  "chave": "gh:eemeli/yaml",
+  "mencoes": 1,
+  "estado": "acordo",
+  "area": "markdown_frontmatter",
+  "fit": "core",
+  "respostas": [
+   {
+    "modelo": "kilo-auto",
+    "area": "markdown_frontmatter",
+    "area_2": "none",
+    "hub_use": "Parse and preserve YAML frontmatter in Obsidian notes when agents edit them.",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "ministral-8b",
+    "area": "markdown_frontmatter",
+    "area_2": "text_pt",
+    "hub_use": "Parse YAML frontmatter in Obsidian notes, preserving comments/structure for AI agents.",
+    "fit": "core",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "lingua-py",
+  "chave": "gh:pemistahl/lingua-py",
+  "mencoes": 1,
+  "estado": "acordo",
+  "area": "text_pt",
+  "fit": "core",
+  "respostas": [
+   {
+    "modelo": "gpt-oss-20b",
+    "area": "text_pt",
+    "area_2": "none",
+    "hub_use": "Detect language of notes before indexing.",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "agnes-2.5-flash",
+    "area": "text_pt",
+    "area_2": "markdown_frontmatter",
+    "hub_use": "Detect pt vs en per note before indexing; tag YAML frontmatter with detected language.",
+    "fit": "core",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "lingua-rs",
+  "chave": "gh:pemistahl/lingua-rs",
+  "mencoes": 1,
+  "estado": "acordo",
+  "area": "text_pt",
+  "fit": "core",
+  "respostas": [
+   {
+    "modelo": "tiny-aya-global",
+    "area": "text_pt",
+    "area_2": "text_pt",
+    "hub_use": "Language detection for Portuguese text preprocessing in a personal context hub.",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "voxtral-small",
+    "area": "text_pt",
+    "area_2": "none",
+    "hub_use": "Detect language of notes for indexing.",
+    "fit": "core",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "Pydantic AI",
+  "chave": "gh:pydantic/pydantic-ai",
+  "mencoes": 1,
+  "estado": "acordo",
+  "area": "agent_framework",
+  "fit": "optional",
+  "respostas": [
+   {
+    "modelo": "llama-3.2-90b-vision",
+    "area": "agent_framework",
+    "area_2": "mcp",
+    "hub_use": "Build custom AI agents for the hub",
+    "fit": "optional",
+    "doubt": false
+   },
+   {
+    "modelo": "mistral-code",
+    "area": "agent_framework",
+    "area_2": "mcp",
+    "hub_use": "build typed Python agents with MCP client and memory",
+    "fit": "optional",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "ort",
+  "chave": "gh:pykeio/ort",
+  "mencoes": 1,
+  "estado": "acordo",
+  "area": "embeddings_rerank",
+  "fit": "core",
+  "respostas": [
+   {
+    "modelo": "nemotron-3-ultra-550b",
+    "area": "embeddings_rerank",
+    "area_2": "none",
+    "hub_use": "Run local embedding and reranker models via ONNX Runtime on Windows",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "ministral-8b",
+    "area": "embeddings_rerank",
+    "area_2": "llm_runtime",
+    "hub_use": "Local ONNX Runtime for fast embedding/reranking models (hardware-accelerated, lightweight)",
+    "fit": "core",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "rusqlite",
+  "chave": "gh:rusqlite/rusqlite",
+  "mencoes": 1,
+  "estado": "acordo",
+  "area": "storage_db",
+  "fit": "core",
+  "respostas": [
+   {
+    "modelo": "codestral-2508",
+    "area": "storage_db",
+    "area_2": "none",
+    "hub_use": "SQLite database for local storage and indexing",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "lfm2.5-2.6b",
+    "area": "storage_db",
+    "area_2": "none",
+    "hub_use": "Provides a Rust wrapper for SQLite enabling easy database operations and indexing on Windows.",
+    "fit": "core",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "Pytesseract",
+  "chave": "gh:tesseract-ocr/tesseract",
+  "mencoes": 1,
+  "estado": "acordo",
+  "area": "text_extraction",
+  "fit": "optional",
+  "respostas": [
+   {
+    "modelo": "ministral-8b",
+    "area": "text_extraction",
+    "area_2": "none",
+    "hub_use": "Extract text from scanned images/PDFs for indexing or agent processing",
+    "fit": "optional",
+    "doubt": false
+   },
+   {
+    "modelo": "nemotron-3-super-120b",
+    "area": "text_extraction",
+    "area_2": "none",
+    "hub_use": "Convert scanned images/PDFs in notes to searchable text for indexing.",
+    "fit": "optional",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "vfile-matter",
+  "chave": "gh:vfile/vfile-matter",
+  "mencoes": 1,
+  "estado": "acordo",
+  "area": "markdown_frontmatter",
+  "fit": "optional",
+  "respostas": [
+   {
+    "modelo": "command-a-translate",
+    "area": "markdown_frontmatter",
+    "area_2": "none",
+    "hub_use": "Parses YAML frontmatter from Markdown notes for metadata extraction and indexing.",
+    "fit": "optional",
+    "doubt": false
+   },
+   {
+    "modelo": "ising-calibration-1.5-31b",
+    "area": "markdown_frontmatter",
+    "area_2": "none",
+    "hub_use": "Parses YAML frontmatter from Markdown notes, extracting metadata for indexing and search. Can optionally strip frontmatter to clean content for non-YAML-aware processors.",
+    "fit": "core",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "Marker",
+  "chave": "gh:vikparuchuri/marker",
+  "mencoes": 1,
+  "estado": "acordo",
+  "area": "text_extraction",
+  "fit": "core",
+  "respostas": [
+   {
+    "modelo": "qwen2.5-vl-72b",
+    "area": "text_extraction",
+    "area_2": "markdown_frontmatter",
+    "hub_use": "Converts various document formats to Markdown for hub ingestion.",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "agnes-2.5-flash",
+    "area": "text_extraction",
+    "area_2": "markdown_frontmatter",
+    "hub_use": "Ingest PDFs and Office files into Markdown notes for the Obsidian vault.",
+    "fit": "core",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "Yjs",
+  "chave": "gh:yjs/yjs",
+  "mencoes": 1,
+  "estado": "acordo",
+  "area": "sync_couchdb",
+  "fit": "core",
+  "respostas": [
+   {
+    "modelo": "ministral-3b",
+    "area": "sync_couchdb",
+    "area_2": "events_jobs",
+    "hub_use": "Conflict-free sync for Obsidian notes via CouchDB replication",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "north-mini-code",
+    "area": "sync_couchdb",
+    "area_2": "none",
+    "hub_use": "Implement CRDT for conflict‑free merging of note changes across devices.",
+    "fit": "optional",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "Datasette",
+  "chave": "web:datasette.io",
+  "mencoes": 1,
+  "estado": "acordo",
+  "area": "storage_db",
+  "fit": "optional",
+  "respostas": [
+   {
+    "modelo": "tiny-aya-fire",
+    "area": "llm_runtime",
+    "area_2": "obsidian",
+    "hub_use": "Hosts Datasette Agent plugin for LLM-powered data exploration and publishing via SQLite databases.",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "dots3-note-preview",
+    "area": "storage_db",
+    "area_2": "agent_framework",
+    "hub_use": "Exposes SQLite index database via web UI and API for data exploration.",
+    "fit": "optional",
+    "doubt": false
+   },
+   {
+    "modelo": "voxtral-small-2507",
+    "area": "storage_db",
+    "area_2": "api_service",
+    "hub_use": "Expose SQLite data as a web UI and JSON API.",
+    "fit": "optional",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "QueryEngine + ResponseSynthesizer",
+  "chave": "web:docs.llamaindex.ai/en/stable/module_guides/querying/response_synthesizers",
+  "mencoes": 1,
+  "estado": "acordo",
+  "area": "agent_framework",
+  "fit": "optional",
+  "respostas": [
+   {
+    "modelo": "ministral-14b",
+    "area": "agent_framework",
+    "area_2": "llm_runtime",
+    "hub_use": "LLM-driven response synthesis for agents via MCP, replacing LlamaIndex’s role in this hub",
+    "fit": "optional",
+    "doubt": false
+   },
+   {
+    "modelo": "nemotron-3-super-120b",
+    "area": "agent_framework",
+    "area_2": "none",
+    "hub_use": "Generate LLM-based answers from retrieved note chunks in the personal context hub.",
+    "fit": "optional",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "Pydantic Core Models",
+  "chave": "web:docs.pydantic.dev",
+  "mencoes": 1,
+  "estado": "acordo",
+  "area": "markdown_frontmatter",
+  "fit": "core",
+  "respostas": [
+   {
+    "modelo": "ministral-3b",
+    "area": "markdown_frontmatter",
+    "area_2": "text_pt",
+    "hub_use": "Validate YAML/Markdown frontmatter schemas and process multilingual (pt/EN) data",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "llama-3.2-90b-vision",
+    "area": "markdown_frontmatter",
+    "area_2": "other",
+    "hub_use": "Validate Markdown frontmatter in Python scripts",
+    "fit": "core",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "GitJournal",
+  "chave": "web:gitjournal.io",
+  "mencoes": 1,
+  "estado": "divergente",
+  "area": null,
+  "fit": "unlikely",
+  "respostas": [
+   {
+    "modelo": "agnes-2.5-flash",
+    "area": "obsidian",
+    "area_2": "sync_couchdb",
+    "hub_use": "Mobile read/write client compatible with the Obsidian note folder, syncing via Git.",
+    "fit": "unlikely",
+    "doubt": false
+   },
+   {
+    "modelo": "llama-3.2-90b-vision",
+    "area": "sync_couchdb",
+    "area_2": "none",
+    "hub_use": "Git-based sync reference",
+    "fit": "unlikely",
+    "doubt": true
+   },
+   {
+    "modelo": "nemotron-3-ultra-550b",
+    "area": "other",
+    "area_2": "none",
+    "hub_use": "Mobile Markdown client using Git sync; incompatible with hub's CouchDB/LiveSync architecture",
+    "fit": "unlikely",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "Stemming in Hugging Face Tokenizers",
+  "chave": "web:huggingface.co/docs/tokenizers",
+  "mencoes": 1,
+  "estado": "acordo",
+  "area": "text_pt",
+  "fit": "core",
+  "respostas": [
+   {
+    "modelo": "kilo-auto",
+    "area": "text_pt",
+    "area_2": "embeddings_rerank",
+    "hub_use": "Provides fast tokenization for Portuguese/English text before embedding or LLM inference.",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "agnes-2.5-flash",
+    "area": "embeddings_rerank",
+    "area_2": "text_pt",
+    "hub_use": "Tokenizes Portuguese/English text locally for embedding models, supporting accent folding and sentence segmentation.",
+    "fit": "optional",
+    "doubt": false
+   },
+   {
+    "modelo": "ministral-3-8b",
+    "area": "text_pt",
+    "area_2": "embeddings_rerank",
+    "hub_use": "Portuguese tokenization, stemming, and NLP preprocessing for embeddings/LLM pipelines.",
+    "fit": "optional",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "Python Embeddings",
+  "chave": "web:huggingface.co/docs/transformers/index",
+  "mencoes": 1,
+  "estado": "acordo",
+  "area": "embeddings_rerank",
+  "fit": "core",
+  "respostas": [
+   {
+    "modelo": "kilo-auto",
+    "area": "llm_runtime",
+    "area_2": "embeddings_rerank",
+    "hub_use": "Provides model definitions for local embedding/LLM gateway",
+    "fit": "optional",
+    "doubt": true
+   },
+   {
+    "modelo": "voxtral-small-2507",
+    "area": "embeddings_rerank",
+    "area_2": "llm_runtime",
+    "hub_use": "Run local embedding models and LLMs",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "agnes-2.5-flash",
+    "area": "embeddings_rerank",
+    "area_2": "llm_runtime",
+    "hub_use": "Indirect dependency for running local embedding models via Transformers model definitions and pipelines",
+    "fit": "optional",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "yq",
+  "chave": "web:mikefarah.gitbook.io/yq",
+  "mencoes": 1,
+  "estado": "acordo",
+  "area": "markdown_frontmatter",
+  "fit": "core",
+  "respostas": [
+   {
+    "modelo": "agnes-2.5-flash",
+    "area": "markdown_frontmatter",
+    "area_2": "none",
+    "hub_use": "CLI tool to bulk-edit and filter YAML frontmatter in Obsidian notes for agents and scripts.",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "nemotron-3-super-120b",
+    "area": "markdown_frontmatter",
+    "area_2": "none",
+    "hub_use": "Edit YAML frontmatter of markdown notes via command line, usable by scripts and agents.",
+    "fit": "core",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "CrewAI / LangGraph",
+  "chave": "web:python.langchain.com/docs/langgraph",
+  "mencoes": 1,
+  "estado": "acordo",
+  "area": "agent_framework",
+  "fit": "core",
+  "respostas": [
+   {
+    "modelo": "mistral-code-fim",
+    "area": "agent_framework",
+    "area_2": "events_jobs",
+    "hub_use": "Orchestrate stateful agents with durable execution and memory",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "dots3-note-preview",
+    "area": "agent_framework",
+    "area_2": "none",
+    "hub_use": "Orchestrate stateful AI agents for note workflows and memory.",
+    "fit": "optional",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "Rsync",
+  "chave": "web:rsync.samba.org",
+  "mencoes": 1,
+  "estado": "acordo",
+  "area": "sync_couchdb",
+  "fit": "optional",
+  "respostas": [
+   {
+    "modelo": "kilo-auto",
+    "area": "other",
+    "area_2": "none",
+    "hub_use": "Incremental file transfer for backing up or mirroring hub folders between machines.",
+    "fit": "optional",
+    "doubt": false
+   },
+   {
+    "modelo": "ising-calibration-1.5-31b",
+    "area": "sync_couchdb",
+    "area_2": "other",
+    "hub_use": "Rsync can be used to back up the hub's folders or synchronize them between machines, but it is not the primary sync mechanism for the notes (which is handled by LiveSync and CouchDB).",
+    "fit": "optional",
+    "doubt": false
+   },
+   {
+    "modelo": "llama-3.2-90b-vision",
+    "area": "sync_couchdb",
+    "area_2": "none",
+    "hub_use": "Syncing folders between machines",
+    "fit": "optional",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "Trafilatura (text extraction)",
+  "chave": "gh:adbar/trafilatura",
+  "mencoes": 1,
+  "estado": "acordo",
+  "area": "text_extraction",
+  "fit": "core",
+  "respostas": [
+   {
+    "modelo": "codestral",
+    "area": "text_extraction",
+    "area_2": "markdown_frontmatter",
+    "hub_use": "convert web content to Markdown notes for the hub",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "ising-calibration-1.5-31b",
+    "area": "text_extraction",
+    "area_2": "markdown_frontmatter",
+    "hub_use": "Extracts main text and metadata from web HTML into Markdown/JSON for hub content ingestion.",
+    "fit": "core",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "Markdown Parser",
+  "chave": "gh:commonmark/commonmark-java",
+  "mencoes": 1,
+  "estado": "acordo",
+  "area": "markdown_frontmatter",
+  "fit": "optional",
+  "respostas": [
+   {
+    "modelo": "gemma-4-26b-it",
+    "area": "markdown_frontmatter",
+    "area_2": "none",
+    "hub_use": "Parses Markdown into an AST for structural manipulation and rendering.",
+    "fit": "optional",
+    "doubt": false
+   },
+   {
+    "modelo": "mistral-code",
+    "area": "markdown_frontmatter",
+    "area_2": "none",
+    "hub_use": "parse Markdown notes into AST for processing",
+    "fit": "optional",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "llama-cpp-python",
+  "chave": "gh:abetlen/llama-cpp-python",
+  "mencoes": 1,
+  "estado": "acordo",
+  "area": "llm_runtime",
+  "fit": "core",
+  "respostas": [
+   {
+    "modelo": "nemotron-3-super-120b",
+    "area": "llm_runtime",
+    "area_2": "none",
+    "hub_use": "Provide local LLM inference via an OpenAI‑compatible API for agents and users.",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "dots3-note-preview",
+    "area": "llm_runtime",
+    "area_2": "none",
+    "hub_use": "Runs local LLM models via OpenAI-compatible server for agent queries.",
+    "fit": "core",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "StarSpace",
+  "chave": "gh:facebookresearch/starspace",
+  "mencoes": 1,
+  "estado": "acordo",
+  "area": "embeddings_rerank",
+  "fit": "optional",
+  "respostas": [
+   {
+    "modelo": "command-a-translate",
+    "area": "embeddings_rerank",
+    "area_2": "none",
+    "hub_use": "Treinar embeddings para entidades como palavras ou documentos, útil para ranking e classificação.",
+    "fit": "optional",
+    "doubt": false
+   },
+   {
+    "modelo": "voxtral-small-2507",
+    "area": "embeddings_rerank",
+    "area_2": "text_pt",
+    "hub_use": "Train embeddings for Portuguese text",
+    "fit": "optional",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "stopword",
+  "chave": "gh:fergiemcdowall/stopword",
+  "mencoes": 1,
+  "estado": "acordo",
+  "area": "text_pt",
+  "fit": "core",
+  "respostas": [
+   {
+    "modelo": "mistral-code",
+    "area": "text_pt",
+    "area_2": "markdown_frontmatter",
+    "hub_use": "filter stopwords in Portuguese/English text before indexing",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "diffusiongemma-26b-a4b-it",
+    "area": "text_pt",
+    "area_2": "markdown_frontmatter",
+    "hub_use": "Filter common words from Portuguese and English notes to clean text for processing or indexing.",
+    "fit": "optional",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "SQLite with SQLite-FTS",
+  "chave": "gh:nalgeon/sqlean",
+  "mencoes": 1,
+  "estado": "acordo",
+  "area": "storage_db",
+  "fit": "optional",
+  "respostas": [
+   {
+    "modelo": "kilo-auto",
+    "area": "storage_db",
+    "area_2": "none",
+    "hub_use": "Provide lightweight local SQLite storage with full-text search via FTS extensions",
+    "fit": "optional",
+    "doubt": false
+   },
+   {
+    "modelo": "agnes-2.5-flash",
+    "area": "storage_db",
+    "area_2": "text_pt",
+    "hub_use": "SQLite extended functions (fuzzy, regexp, text) for local indexed storage if hub uses SQLite instead of CouchDB for some data.",
+    "fit": "optional",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "mistletoe",
+  "chave": "gh:miyuchina/mistletoe",
+  "mencoes": 1,
+  "estado": "acordo",
+  "area": "markdown_frontmatter",
+  "fit": "optional",
+  "respostas": [
+   {
+    "modelo": "nemotron-3-super",
+    "area": "markdown_frontmatter",
+    "area_2": "none",
+    "hub_use": "Parse Markdown notes to AST for agent processing or reflow",
+    "fit": "optional",
+    "doubt": false
+   },
+   {
+    "modelo": "gpt-oss-120b",
+    "area": "markdown_frontmatter",
+    "area_2": "none",
+    "hub_use": "Parse, transform, and render markdown notes (AST, reflow, custom renderers).",
+    "fit": "core",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "SimCSE",
+  "chave": "gh:princeton-nlp/simcse",
+  "mencoes": 1,
+  "estado": "acordo",
+  "area": "embeddings_rerank",
+  "fit": "optional",
+  "respostas": [
+   {
+    "modelo": "ising-calibration-1.5-31b",
+    "area": "embeddings_rerank",
+    "area_2": "text_pt",
+    "hub_use": "SimCSE provides pretrained sentence embedding models for semantic search and similarity analysis, primarily supporting English text. While not directly optimized for Portuguese, it can be used as a baseline for multilingual embedding tasks or to analyze English-language metadata in the hub.",
+    "fit": "optional",
+    "doubt": false
+   },
+   {
+    "modelo": "ministral-14b",
+    "area": "embeddings_rerank",
+    "area_2": "text_pt",
+    "hub_use": "English sentence embeddings for semantic search (Portuguese support limited)",
+    "fit": "optional",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "Chokidar",
+  "chave": "gh:paulmillr/chokidar",
+  "mencoes": 1,
+  "estado": "acordo",
+  "area": "events_jobs",
+  "fit": "optional",
+  "respostas": [
+   {
+    "modelo": "llama-3.2-11b-vision-instruct",
+    "area": "events_jobs",
+    "area_2": "none",
+    "hub_use": "Trigger re-indexing or sync when notes change on disk",
+    "fit": "optional",
+    "doubt": false
+   },
+   {
+    "modelo": "nemotron-3-ultra",
+    "area": "events_jobs",
+    "area_2": "none",
+    "hub_use": "Watch note folder for changes to trigger re-indexing or sync jobs",
+    "fit": "core",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "Obsidian Plugin Samples",
+  "chave": "gh:obsidianmd/obsidian-sample-plugin",
+  "mencoes": 1,
+  "estado": "acordo",
+  "area": "obsidian",
+  "fit": "core",
+  "respostas": [
+   {
+    "modelo": "ministral-3b",
+    "area": "obsidian",
+    "area_2": "agent_framework",
+    "hub_use": "Enables Obsidian plugin integration for AI agents (e.g., Claude Code) to extend functionality via custom scripts",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "nemotron-3-ultra-550b",
+    "area": "obsidian",
+    "area_2": "none",
+    "hub_use": "Template to build custom Obsidian plugins for hub-specific workflows",
+    "fit": "optional",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "mdast-util-from-markdown",
+  "chave": "gh:syntax-tree/mdast-util-from-markdown",
+  "mencoes": 1,
+  "estado": "acordo",
+  "area": "markdown_frontmatter",
+  "fit": "core",
+  "respostas": [
+   {
+    "modelo": "codestral-2508",
+    "area": "markdown_frontmatter",
+    "area_2": "none",
+    "hub_use": "Parse Markdown into mdast for heading-aware chunking",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "llama-3.2-11b-vision-instruct",
+    "area": "markdown_frontmatter",
+    "area_2": "none",
+    "hub_use": "Parse Markdown notes into syntax trees for chunking and processing",
+    "fit": "core",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "TensorFlow Ranking",
+  "chave": "gh:tensorflow/ranking",
+  "mencoes": 1,
+  "estado": "acordo",
+  "area": "embeddings_rerank",
+  "fit": "unlikely",
+  "respostas": [
+   {
+    "modelo": "gpt-oss-20b",
+    "area": "embeddings_rerank",
+    "area_2": "none",
+    "hub_use": "none",
+    "fit": "unlikely",
+    "doubt": false
+   },
+   {
+    "modelo": "mistral-code-fim",
+    "area": "embeddings_rerank",
+    "area_2": "none",
+    "hub_use": "Training reranker models for local embeddings",
+    "fit": "optional",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "better-sqlite3",
+  "chave": "gh:wiselibs/better-sqlite3",
+  "mencoes": 1,
+  "estado": "acordo",
+  "area": "storage_db",
+  "fit": "optional",
+  "respostas": [
+   {
+    "modelo": "gemma-4-31b",
+    "area": "storage_db",
+    "area_2": "none",
+    "hub_use": "Local SQLite storage for indexing or metadata management within Node.js components.",
+    "fit": "optional",
+    "doubt": false
+   },
+   {
+    "modelo": "nemotron-3-nano-30b",
+    "area": "storage_db",
+    "area_2": "none",
+    "hub_use": "Fast local SQLite indexing and FTS5 search for Node.js agents",
+    "fit": "core",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "Azure Cognitive Services",
+  "chave": "web:azure.microsoft.com/en-us/services/cognitive-services",
+  "mencoes": 1,
+  "estado": "acordo",
+  "area": "llm_runtime",
+  "fit": "core",
+  "respostas": [
+   {
+    "modelo": "tiny-aya-water",
+    "area": "llm_runtime",
+    "area_2": "other",
+    "hub_use": "Hosts local LLM servers (Ollama, llama.cpp) for agent workflows in the hub.",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "ministral-14b",
+    "area": "llm_runtime",
+    "area_2": "text_pt",
+    "hub_use": "Cloud-based LLM/gateway for multilingual (pt-BR/EN) AI tasks; translation/speech APIs",
+    "fit": "optional",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "Azure OpenAI Service (text-embedding-ada-002)",
+  "chave": "web:azure.microsoft.com/en-us/services/cognitive-services/openai-service",
+  "mencoes": 1,
+  "estado": "divergente",
+  "area": null,
+  "fit": "unlikely",
+  "respostas": [
+   {
+    "modelo": "dots3-note-preview",
+    "area": "other",
+    "area_2": "none",
+    "hub_use": "Cloud-hosted LLM service for API-based model inference.",
+    "fit": "unlikely",
+    "doubt": false
+   },
+   {
+    "modelo": "gpt-oss-20b",
+    "area": "embeddings_rerank",
+    "area_2": "none",
+    "hub_use": "Provide embeddings via Azure OpenAI API",
+    "fit": "optional",
+    "doubt": false
+   },
+   {
+    "modelo": "ministral-14b",
+    "area": "llm_runtime",
+    "area_2": "embeddings_rerank",
+    "hub_use": "Cloud-hosted embeddings model (text-embedding-ada-002) for LLM/gateway integration via API",
+    "fit": "optional",
+    "doubt": true
+   }
+  ]
+ },
+ {
+  "nome": "ArangoDB Client Libraries",
+  "chave": "web:arangodb.com/docs/stable/drivers",
+  "mencoes": 1,
+  "estado": "acordo",
+  "area": "storage_db",
+  "fit": "unlikely",
+  "respostas": [
+   {
+    "modelo": "diffusiongemma-26b-a4b-it",
+    "area": "storage_db",
+    "area_2": "none",
+    "hub_use": "Not needed as the hub specifically uses CouchDB for data storage and replication.",
+    "fit": "unlikely",
+    "doubt": false
+   },
+   {
+    "modelo": "gemini-3.5-flash-lite",
+    "area": "storage_db",
+    "area_2": "none",
+    "hub_use": "Unused database drivers, as the hub uses CouchDB for storage.",
+    "fit": "unlikely",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "BabelNet",
+  "chave": "web:babelnet.org",
+  "mencoes": 1,
+  "estado": "acordo",
+  "area": "text_pt",
+  "fit": "optional",
+  "respostas": [
+   {
+    "modelo": "ministral-3b",
+    "area": "text_pt",
+    "area_2": "embeddings_rerank",
+    "hub_use": "query expansion for multilingual text (pt/EN) via lexical-semantic network",
+    "fit": "optional",
+    "doubt": false
+   },
+   {
+    "modelo": "llama-3.2-11b-vision-instruct",
+    "area": "text_pt",
+    "area_2": "none",
+    "hub_use": "Portuguese language processing for text analysis",
+    "fit": "optional",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "ArangoDB Documentation",
+  "chave": "web:arangodb.com/docs/stable",
+  "mencoes": 1,
+  "estado": "acordo",
+  "area": "storage_db",
+  "fit": "core",
+  "respostas": [
+   {
+    "modelo": "tiny-aya-global",
+    "area": "storage_db",
+    "area_2": "api_service",
+    "hub_use": "Hosts ArangoDB documentation, exposing its API for querying and managing data.",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "nemotron-3-super-120b",
+    "area": "storage_db",
+    "area_2": "none",
+    "hub_use": "Provide an alternative multi-model database backend for the hub's note storage",
+    "fit": "optional",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "CouchDB Attachments",
+  "chave": "web:docs.couchdb.org/en/stable/api/document/attachments.html",
+  "mencoes": 1,
+  "estado": "acordo",
+  "area": "sync_couchdb",
+  "fit": "core",
+  "respostas": [
+   {
+    "modelo": "gemma-4-31b",
+    "area": "sync_couchdb",
+    "area_2": "none",
+    "hub_use": "Storing and retrieving binary files associated with Markdown notes in the CouchDB database.",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "nemotron-3-ultra-550b",
+    "area": "sync_couchdb",
+    "area_2": "none",
+    "hub_use": "Store and serve binary files (images, PDFs) attached to notes in CouchDB with range request support",
+    "fit": "core",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "SimpleDirectoryReader + MarkdownNodeParser",
+  "chave": "web:docs.llamaindex.ai/en/stable/module_guides/loading/simpledirectoryreader",
+  "mencoes": 1,
+  "estado": "acordo",
+  "area": "text_extraction",
+  "fit": "optional",
+  "respostas": [
+   {
+    "modelo": "command-a-translate",
+    "area": "markdown_frontmatter",
+    "area_2": "agent_framework",
+    "hub_use": "Loads Markdown files into LlamaIndex for potential use in agent frameworks or indexing.",
+    "fit": "optional",
+    "doubt": false
+   },
+   {
+    "modelo": "gemma-4-26b-it",
+    "area": "text_extraction",
+    "area_2": "agent_framework",
+    "hub_use": "Loads various local file formats into LlamaIndex documents for RAG and agentic workflows.",
+    "fit": "optional",
+    "doubt": false
+   },
+   {
+    "modelo": "llama-3.2-11b-vision-instruct",
+    "area": "text_extraction",
+    "area_2": "llm_runtime",
+    "hub_use": "loads local Markdown files into LlamaIndex for indexing",
+    "fit": "optional",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "shelve",
+  "chave": "web:docs.python.org/3/library/shelve.html",
+  "mencoes": 1,
+  "estado": "acordo",
+  "area": "storage_db",
+  "fit": "optional",
+  "respostas": [
+   {
+    "modelo": "nemotron-3-super-120b",
+    "area": "storage_db",
+    "area_2": "none",
+    "hub_use": "Provide a simple Python persistent key‑value store for agent scripts or temporary caches.",
+    "fit": "optional",
+    "doubt": false
+   },
+   {
+    "modelo": "ministral-8b",
+    "area": "storage_db",
+    "area_2": "none",
+    "hub_use": "lightweight Python object persistence for local scripts (pickle-backed, no concurrency)",
+    "fit": "optional",
+    "doubt": true
+   }
+  ]
+ },
+ {
+  "nome": "ingest-attachment plugin",
+  "chave": "web:elastic.co/guide/en/elasticsearch/plugins/7.10/ingest-attachment.html",
+  "mencoes": 1,
+  "estado": "acordo",
+  "area": "text_extraction",
+  "fit": "unlikely",
+  "respostas": [
+   {
+    "modelo": "diffusiongemma-26b-a4b-it",
+    "area": "text_extraction",
+    "area_2": "none",
+    "hub_use": "Extracts text from PDF and Office attachments to be included in the Markdown notes content.",
+    "fit": "unlikely",
+    "doubt": false
+   },
+   {
+    "modelo": "gpt-oss-20b",
+    "area": "text_extraction",
+    "area_2": "none",
+    "hub_use": "Extracts text from PDFs/Office for indexing",
+    "fit": "unlikely",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "Security & Authentication (OpenSearch Security Plugin)",
+  "chave": "web:opensearch.org/docs/latest/security",
+  "mencoes": 1,
+  "estado": "acordo",
+  "area": "other",
+  "fit": "unlikely",
+  "respostas": [
+   {
+    "modelo": "nemotron-3-ultra-550b",
+    "area": "other",
+    "area_2": "none",
+    "hub_use": "OpenSearch cluster security, not used in hub",
+    "fit": "unlikely",
+    "doubt": false
+   },
+   {
+    "modelo": "mistral-nemo",
+    "area": "other",
+    "area_2": "none",
+    "hub_use": "Provides security for an OpenSearch cluster, not relevant to the hub's search functionality",
+    "fit": "unlikely",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "Polyglot Portuguese",
+  "chave": "web:polyglot.readthedocs.io",
+  "mencoes": 1,
+  "estado": "acordo",
+  "area": "text_pt",
+  "fit": "core",
+  "respostas": [
+   {
+    "modelo": "nemotron-3-nano-30b",
+    "area": "text_pt",
+    "area_2": "none",
+    "hub_use": "preprocess Portuguese/English notes for AI agents, enabling entity extraction, language detection, tokenization",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "voxtral-small",
+    "area": "text_pt",
+    "area_2": "embeddings_rerank",
+    "hub_use": "Portuguese tokenization, language detection, embeddings",
+    "fit": "optional",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "Templater",
+  "chave": "web:silentvoid13.github.io/templater",
+  "mencoes": 1,
+  "estado": "acordo",
+  "area": "obsidian",
+  "fit": "core",
+  "respostas": [
+   {
+    "modelo": "gpt-oss-120b",
+    "area": "obsidian",
+    "area_2": "none",
+    "hub_use": "adds template engine for standardized note creation in Obsidian",
+    "fit": "core",
+    "doubt": false
+   },
+   {
+    "modelo": "llama-3.2-11b-vision-instruct",
+    "area": "obsidian",
+    "area_2": "none",
+    "hub_use": "Obsidian template engine for note creation and automation",
+    "fit": "core",
+    "doubt": false
+   }
+  ]
+ },
+ {
+  "nome": "NATS + Temporal (for workflows)",
+  "chave": "web:temporal.io",
+  "mencoes": 1,
+  "estado": "acordo",
+  "area": "events_jobs",
+  "fit": "optional",
+  "respostas": [
+   {
+    "modelo": "kilo-auto",
+    "area": "events_jobs",
+    "area_2": "none",
+    "hub_use": "Orchestrate durable agent workflows and background jobs for note processing.",
+    "fit": "optional",
+    "doubt": false
+   },
+   {
+    "modelo": "gemma-4-26b-it",
+    "area": "events_jobs",
+    "area_2": "agent_framework",
+    "hub_use": "Orchestrate long-running agent tasks and AI pipelines with reliable state and retries.",
+    "fit": "unlikely",
+    "doubt": false
+   }
+  ]
+ }
+]

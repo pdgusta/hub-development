@@ -1,0 +1,29 @@
+{
+ "chave": "gh:apenwarr/mkdocs-exclude",
+ "urls": [
+  "https://github.com/apenwarr/mkdocs-exclude"
+ ],
+ "tipos": [
+  "library"
+ ],
+ "termos": [
+  "mkdocs",
+  "exclude",
+  "build"
+ ],
+ "mencoes": 1,
+ "familias": [
+  "mistral"
+ ],
+ "primeira_onda": 4,
+ "nomes": [
+  "Mkdocs-Exclude"
+ ],
+ "resumos": [
+  "Plugin para mkdocs que permite excluir arquivos do build."
+ ],
+ "readme_status": "ok",
+ "readme_nome": "README.md",
+ "readme_cortado": false,
+ "readme": "# File exclude plugin for mkdocs\n\n`mkdocs-exclude` is a\n[mkdocs plugin](http://www.mkdocs.org/user-guide/plugins/) that allows you\nto exclude files from your input using unix-style wildcards (globs) or\nregular expressions (regexes).\n\nThis implements what people were asking for in some mkdocs bugs, such as\n<https://github.com/mkdocs/mkdocs/issues/1500> and\n<https://github.com/mkdocs/mkdocs/issues/1152>.\n\n\n## Quick start\n\n1. Install the module using pip: `pip3 install mkdocs-exclude`\n\n2. In your project, add a plugin configuration to `mkdocs.yml`:\n\n   ```yaml\n   plugins:\n     - exclude:\n         glob:\n           - exclude/this/path/*\n           - \"*.tmp\"\n           - \"*.pdf\"\n           - \"*.gz\"\n         regex:\n           - '.*\\.(tmp|bin|tar)$'\n   ```\n\nYou can provide zero or more patterns of each type.  (If you don't provide\nany patterns, then nothing will happen!)\n\nNote!  Because of peculiarity of yaml syntax, the `glob:` and `regex:` lines\n**must not** start with a dash, but the lines under them **must** start with\na dash.\n\nAlso because of yaml, patterns that start with a punctuation mark must be\nquoted.\n\nWhen writing regexes, it's best to use single quotes rather than double\nquotes, so that your regex backslash escapes are preserved correctly without\nhaving to be doubled up.\n"
+}

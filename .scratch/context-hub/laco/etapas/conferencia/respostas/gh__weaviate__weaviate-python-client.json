@@ -1,0 +1,34 @@
+{
+ "chave": "gh:weaviate/weaviate-python-client",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T12:00:00Z",
+ "resultado": "corrige",
+ "conferencia": {
+  "resultado": "corrige",
+  "final": {
+   "serve": "search",
+   "role": "Python client to talk to a Weaviate vector database instance.",
+   "place": [
+    "library"
+   ],
+   "mechanism": [
+    "vector"
+   ],
+   "mcp": "unknown",
+   "windows": "unknown",
+   "portuguese": "unknown",
+   "license": "unknown",
+   "maturity": "stable",
+   "doubt": false,
+   "evidence": "A python native client for easy interaction with a Weaviate instance. 4.X: actively supported"
+  },
+  "o_que_mudou": [
+   "mechanism: [vector,embeddings] -> [vector], README does not mention embeddings",
+   "mcp: no -> unknown",
+   "windows: yes -> unknown",
+   "portuguese: no -> unknown",
+   "doubt: true -> false"
+  ],
+  "nota": "Only a client; useful only if the hub adopts a Weaviate server, which is heavy for the hub."
+ }
+}

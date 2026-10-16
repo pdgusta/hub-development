@@ -1,0 +1,32 @@
+{
+ "chave": "gh:django-haystack/pysolr",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T20:23:09Z",
+ "resultado": "corrige",
+ "conferencia": {
+  "resultado": "corrige",
+  "final": {
+   "serve": "search",
+   "role": "Python client to index and query an Apache Solr server",
+   "place": [
+    "library"
+   ],
+   "mechanism": [
+    "other"
+   ],
+   "mcp": "no",
+   "windows": "unknown",
+   "portuguese": "unknown",
+   "license": "BSD-3-Clause",
+   "maturity": "active",
+   "doubt": false,
+   "evidence": "pysolr is a lightweight Python client for Apache Solr; New BSD license; Python 3.11+; Solr 9+"
+  },
+  "o_que_mudou": [
+   "place: library, network_service -> library, it is a client not a service",
+   "mcp: unknown -> no",
+   "maturity: unknown -> active, supports Python 3.15 and Solr 9/10 in README"
+  ],
+  "nota": "Only a client for Solr, which needs a separate Java server; weak fit for the hub's CouchDB-based setup."
+ }
+}

@@ -1,0 +1,30 @@
+{
+ "chave": "web:elastic.co/guide/en/elasticsearch/reference/current/analysis-stemmer-tokenfilter.html",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T21:57:22Z",
+ "resultado": "corrige",
+ "conferencia": {
+  "resultado": "corrige",
+  "final": {
+   "serve": "search",
+   "role": "Stemmer token filter with Portuguese algorithms (light_portuguese, minimal_portuguese, portuguese, portuguese_rslp, brazilian)",
+   "place": [
+    "library"
+   ],
+   "mechanism": [
+    "full_text"
+   ],
+   "mcp": "unknown",
+   "windows": "unknown",
+   "portuguese": "yes",
+   "license": "unknown",
+   "maturity": "unknown",
+   "doubt": false,
+   "evidence": "Provides algorithmic stemming for several languages ... Portuguese: light_portuguese, minimal_portuguese, portuguese, portuguese_rslp; Brazilian Portuguese: brazilian"
+  },
+  "o_que_mudou": [
+   "place: network_service -> library, it is a filter inside an Elasticsearch analyzer, not a service"
+  ],
+  "nota": "Only useful if the hub adopts Elasticsearch; gives Portuguese stemming for full-text search."
+ }
+}

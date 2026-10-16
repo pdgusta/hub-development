@@ -1,0 +1,29 @@
+{
+ "chave": "gh:grpc/grpc-dotnet",
+ "urls": [
+  "https://github.com/grpc/grpc-dotnet"
+ ],
+ "tipos": [
+  "library"
+ ],
+ "termos": [
+  "grpc-dotnet",
+  "c#",
+  "grpc"
+ ],
+ "mencoes": 1,
+ "familias": [
+  "gpt-oss"
+ ],
+ "primeira_onda": 5,
+ "nomes": [
+  "grpc-dotnet"
+ ],
+ "resumos": [
+  "Official gRPC client and server libraries for .NET, built on protobuf."
+ ],
+ "readme_status": "ok",
+ "readme_nome": "README.md",
+ "readme_cortado": false,
+ "readme": "# gRPC for .NET\n\ngRPC is a modern, open source, high-performance remote procedure call (RPC) framework that can run anywhere. gRPC enables client and server applications to communicate transparently, and simplifies the building of connected systems.\n\ngRPC functionality for .NET Core 3.0 or later includes:\n\n* [Grpc.AspNetCore](https://www.nuget.org/packages/Grpc.AspNetCore) &ndash; An ASP.NET Core framework for hosting gRPC services. gRPC on ASP.NET Core integrates with standard ASP.NET Core features like logging, dependency injection (DI), authentication and authorization.\n* [Grpc.Net.Client](https://www.nuget.org/packages/Grpc.Net.Client) &ndash; A gRPC client for .NET Core that builds upon the familiar `HttpClient`. The client uses new HTTP/2 functionality in .NET Core.\n* [Grpc.Net.ClientFactory](https://www.nuget.org/packages/Grpc.Net.ClientFactory) &ndash; gRPC client integration with `HttpClientFactory`. The client factory allows gRPC clients to be centrally configured and injected into your app with DI.\n\nFor more information, see [An introduction to gRPC on .NET](https://docs.microsoft.com/aspnet/core/grpc/).\n\n## gRPC for .NET is now the recommended implementation!\n\nStarting from May 2021, gRPC for .NET is the recommended implemention of gRPC for C#. The original [gRPC for C#](https://github.com/grpc/grpc/tree/master/src/csharp) implementation (distributed as the `Grpc.Core` nuget package) is now in maintenance mode and will be deprecated in the future.\nSee [blogpost](https://grpc.io/blog/grpc-csharp-future/) for more details.\n\n## To start using gRPC for .NET\n\nThe best place to start using gRPC for .NET is the gRPC template that comes with .NET Core 3.0 or later. Use the template to [create a gRPC service website and client](https://docs.microsoft.com/aspnet/core/tutorials/grpc/grpc-start).\n\nFor additional examples of using gRPC in .NET refer to https://github.com/grpc/grpc-dotnet/tree/master/examples.\n\n## gRPC NuGet feed\n\nOfficial versions of gRPC are published to [NuGet.org](https://www.nuget.org/profiles/grpc-packages). This is the recommended place for most developers to get gRPC packages.\n\nNightly versions of gRPC for ASP.NET Core are published to the gRPC NuGet repository at https://grpc.jfrog.io/grpc/api/nuget/v3/grpc-nuget-dev. It is recommended to use a nightly gRPC package if you are using a nightly version of .NET Core, and vice-versa. There may be incompatibilities between .NET Core and gRPC for ASP.NET Core if a newer version of one is used with an older version of the other.\n\nTo use the gRPC NuGet repository and get the latest packages from it, place a `NuGet.config` file with the gRPC repository setup in your solution folder:\n\n```xml\n<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<configuration>\n    <packageSources>\n        <!-- Add this repository to the list of available repositories -->\n        <add key=\"gRPC repository\" value=\"https://grpc.jfrog.io/grpc/api/nuget/v3/grpc-nuget-dev\" />\n    </packageSources>\n</configuration>\n```\n\nAdditional instructions for configuring a project to use a custom NuGet repository are available at [Changing NuGet configuration settings](https://docs.microsoft.com/en-us/nuget/consume-packages/configuring-nuget-behavior#changing-config-settings).\n\n## To develop gRPC for ASP.NET Core\n\nInstalling .NET Core SDK:\n```\n# Run this script before building the project.\n./build/get-dotnet.sh or ./build/get-dotnet.ps1\n```\n\nSet up the development environment to use the installed .NET Core SDK:\n```\n# Source this script to use the installed .NET Core SDK.\nsource ./activate.sh or . ./activate.ps1\n```\nTo launch Visual Studio with the installed SDK:\n```\n# activate.sh or activate.ps1 must be sourced first, see previous step\nstartvs.cmd\n```\n\nTo build from the command line:\n```\ndotnet build Grpc.DotNet.slnx\n```\n\nTo run tests from the command line:\n```\ndotnet test Grpc.DotNet.slnx\n```\n\n### Alternative implementation using Code-First (external library)\n\nAn alternative way to use gRPC in .NET is to define the Protobuf contracts directly in C# using [protobuf-net](https://github.com/protobuf-net/protobuf-net.Grpc).\n\nFor more information, see the documentation on [learn.microsoft.com](https://learn.microsoft.com/aspnet/core/grpc/code-first) or the [protobuf-net.Grpc website](https://protobuf-net.github.io/protobuf-net.Grpc/).\n\n## To contribute\n\nContributions are welcome!\n\nGeneral rules for [contributing to the gRPC project](https://github.com/grpc/grpc/blob/master/CONTRIBUTING.md) apply for this repository.\n"
+}

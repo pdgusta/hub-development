@@ -1,0 +1,35 @@
+{
+ "chave": "gh:jonschlinkert/gray-matter",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T21:08:34Z",
+ "resultado": "corrige",
+ "conferencia": {
+  "resultado": "corrige",
+  "final": {
+   "serve": "stack",
+   "role": "Node library that parses and stringifies front matter (YAML/JSON/TOML) in Markdown files",
+   "place": [
+    "library"
+   ],
+   "mechanism": [
+    "n/a"
+   ],
+   "mcp": "no",
+   "windows": "unknown",
+   "portuguese": "unknown",
+   "license": "unknown",
+   "maturity": "stable",
+   "doubt": false,
+   "evidence": "\"Parse front-matter from a string or file... Used by metalsmith, assemble, verb and many other projects.\""
+  },
+  "o_que_mudou": [
+   "serve: none/stack split -> stack, front matter parsing of notes is useful for indexing",
+   "place: disk,library -> library, it parses strings or files in-process",
+   "mechanism: other -> n/a, not a search mechanism",
+   "portuguese: no -> unknown",
+   "maturity: unknown -> stable, battle-tested and widely used",
+   "doubt: true -> false"
+  ],
+  "nota": "Reads and writes note front matter in Node tooling; helpful for metadata indexing, not search itself."
+ }
+}

@@ -1,0 +1,30 @@
+{
+ "chave": "web:codeql.github.com",
+ "urls": [
+  "https://codeql.github.com/"
+ ],
+ "tipos": [
+  "tool"
+ ],
+ "termos": [
+  "semantic code analysis",
+  "code search",
+  "GitHub"
+ ],
+ "mencoes": 1,
+ "familias": [
+  "mistral"
+ ],
+ "primeira_onda": 1,
+ "nomes": [
+  "CodeQL"
+ ],
+ "resumos": [
+  "A semantic code analysis tool by GitHub that can be used for semantic search and works with various file types."
+ ],
+ "fonte": "site",
+ "readme_status": "ok",
+ "readme_nome": "https://codeql.github.com/",
+ "readme_cortado": false,
+ "readme": "[CodeQL]\n\nGitHub\n\n Docs\n\n Repository\n\n License\n\n Security Lab\n\n Docs\n\n Repo\n\n License\n\n Security Lab\n\nCodeQL\n\n Discover vulnerabilities across a codebase with CodeQL, our industry-leading semantic code analysis engine. CodeQL lets you query code as though it were data. Write a query to find all variants of a vulnerability, eradicating it forever. Then share your query to help others do the same.\n\nCodeQL is free for research and open source.\n\nUnsafeDeserialization.ql\n\nimport TaintTracking::Global<UnsafeDeserializationConfig>\n\nfrom PathNode source, PathNode sink\n\nwhere flowPath(source, sink)\n\nselect sink.getNode().(UnsafeDeserializationSink).getMethodAccess(), source, sink,\n \"Unsafe deserialization of $@.\", source.getNode(), \"user input\"\n\nMeet CodeQL\n\n Run real queries on popular open source codebases using\n CodeQL for Visual Studio Code. See how powerful it is to discover a bad pattern and then find similar occurrences across the entire codebase.\n\n Write and run queries in\n\n Visual Studio Code\n\n Install CodeQL for Visual Studio Code\n\nBy downloading, you agree to the\n GitHub CodeQL Terms & Conditions.\n\nOnce you've installed the extension:\n\nStep 1: get a CodeQL database\n\nSearch GitHub.com for an open source project you want to research.\n\nDownload and add the project’s CodeQL database to VS Code\n using these instructions, or create a CodeQL database using the CodeQL CLI.\n\nStep 2: query the code and find vulnerabilities\n\nClone\n the CodeQL starter workspace\n and open it in VS Code.\n\nRun a query by right-clicking it and choosing Run Query.\n\n See the documentation for more info.\n\n$ # Clone the project\n$ git clone https://github.com/m-y-mo/struts_9805\n\n$ # Create a CodeQL database\n$ codeql database create ./struts_db -s ./struts_9805 \\\n -j 0 -l java --command \"mvn -B -DskipTests \\\n -DskipAssembly\"\n\nQuery open source codebases\n\n You can create CodeQL databases yourself for any project that's under an OSI-approved open source license. To download CodeQL and get started,\n visit the CodeQL CLI docs.\n\nCodeQL Capture the Flag\n\n Looking for a vulnerability hunting challenge? Through this Java Capture the Flag, you will hone your bug finding skills and also learn all about CodeQL's taint tracking features. The contest is closed since June 12, but you can\n still take it for fun, and find a Server-Side Template Injection in an open source Java project.\n\nTake a look at the\n previous challenges.\n Go Capture the Flag\n\n GitHub CodeQL can only be used on codebases that are released under an OSI-approved open source license, or to perform academic research, or to generate CodeQL databases for or during automated analysis, continuous integration (CI)\n or continuous delivery (CD) in the following cases: (1) on any Open Source Codebase hosted and maintained on GitHub.com, and (2) to test CodeQL queries you have released under an OSI-approved open source software license. It can't\n be used for automated analysis, continuous integration or continuous delivery, whether as part of normal software engineering processes or otherwise, except in the express cases set forth herein. For these uses,\n contact the sales team.\n\nProduct\n\n Features\n\n Security\n\n Enterprise\n\n Case\n Studies\n\n Pricing\n\n Resources\n\nPlatform\n\n Developer API\n\n Partners\n\n Atom\n\n Electron\n\n GitHub Desktop\n\nSupport\n\n Help\n\n Community\n Forum\n\n Training\n\n Status\n\n Contact GitHub\n\nCompany\n\n About\n\n Blog\n\n Careers\n\n Press\n\n Shop\n\n© 2021 GitHub, Inc.\n\n Terms\n\n Privacy"
+}

@@ -1,0 +1,29 @@
+{
+ "chave": "web:gohugo.io/content-management/page-bundles",
+ "urls": [
+  "https://gohugo.io/content-management/page-bundles/"
+ ],
+ "tipos": [
+  "service"
+ ],
+ "termos": [
+  "Hugo bundles",
+  "Hugo sidecar metadata"
+ ],
+ "mencoes": 1,
+ "familias": [
+  "gpt-oss"
+ ],
+ "primeira_onda": 4,
+ "nomes": [
+  "Hugo Page Bundles with Separate JSON"
+ ],
+ "resumos": [
+  "Hugo can store metadata in a separate JSON/TOML/YAML file within a page bundle, avoiding inline front‑matter."
+ ],
+ "fonte": "site",
+ "readme_status": "ok",
+ "readme_nome": "https://gohugo.io/content-management/page-bundles/",
+ "readme_cortado": false,
+ "readme": "[Page bundlesPage bundles |\nHugo]\n\nMenu\n\nSearch\n\nGitHub\n90108 stars\n\nMastodon\n\nHugo Documentation\n\nUse page bundles to logically associate one or more resources with content.\nIntroduction\nA page bundle is a directory that encapsulates both content and associated resources.\nBy way of example, this site has an about page and a privacy page:\n\ncontent/\n├── about/\n│ ├── index.md\n│ └── welcome.jpg\n└── privacy.md\nThe about page is a page bundle. It logically associates a resource with content by bundling them together. Resources within a page bundle are page resources, accessible with the Resources method on the Page object.\nPage bundles are either leaf bundles or branch bundles.leaf bundleA leaf bundle is a directory that contains an index.md file and zero or more resources. Analogous to a physical leaf, a leaf bundle is at the end of a branch. It has no descendants.branch bundleA branch bundle is a directory that contains an _index.md file and zero or more resources. Analogous to a physical branch, a branch bundle may have descendants including leaf bundles and other branch bundles. Top-level directories with or without _index.md files are also branch bundles. This includes the home page.\n\nIn the definitions above and the examples below, the extension of the index file depends on the content format. For example, use index.md for Markdown content, index.html for HTML content, index.adoc for AsciiDoc content, etc.\nComparison\nPage bundle characteristics vary by bundle type.\n\nLeaf bundleBranch bundle\nIndex fileindex.md_index.md\nExamplecontent/about/index.mdcontent/posts/_index.md\nPage kindspagehome, section, taxonomy, or term\nTemplate typessinglehome, section, taxonomy, or term\nDescendant pagesNoneZero or more\nResource locationAdjacent to the index file or in a nested subdirectorySame as a leaf bundles, but excludes descendant bundles\nResource typespage, image, video, etc.all but page\nFiles with resource type page include content written in Markdown, HTML, AsciiDoc, Pandoc, reStructuredText, and Emacs Org Mode. In a leaf bundle, excluding the index file, these files are only accessible as page resources. In a branch bundle, these files are only accessible as content pages.\nLeaf bundles\nA leaf bundle is a directory that contains an index.md file and zero or more resources. Analogous to a physical leaf, a leaf bundle is at the end of a branch. It has no descendants.\n\ncontent/\n├── about\n│ └── index.md\n├── posts\n│ ├── my-post\n│ │ ├── content-1.md\n│ │ ├── content-2.md\n│ │ ├── image-1.jpg\n│ │ ├── image-2.png\n│ │ └── index.md\n│ └── my-other-post\n│ └── index.md\n└── another-section\n ├── foo.md\n └── not-a-leaf-bundle\n ├── bar.md\n └── another-leaf-bundle\n └── index.md\nThere are four leaf bundles in the example above:aboutThis leaf bundle does not contain any page resources.my-postThis leaf bundle contains an index file, two resources of resource type page, and two resources of resource type image.\n\ncontent-1, content-2\nThese are resources of resource type page, accessible via the Resources method on the Page object. Hugo will not render these as individual pages.\n\nimage-1, image-2\nThese are resources of resource type image, accessible via the Resources method on the Page objectmy-other-postThis leaf bundle does not contain any page resources.another-leaf-bundleThis leaf bundle does not contain any page resources.\n\nCreate leaf bundles at any depth within the content directory, but a leaf bundle may not contain another bundle. Leaf bundles do not have descendants.\nBranch bundles\nA branch bundle is a directory that contains an _index.md file and zero or more resources. Analogous to a physical branch, a branch bundle may have descendants including leaf bundles and other branch bundles. Top-level directories with or without _index.md files are also branch bundles. This includes the home page.\n\ncontent/\n├── branch-bundle-1/\n│ ├── _index.md\n│ ├── content-1.md\n│ ├── content-2.md\n│ ├── image-1.jpg\n│ └── image-2.png\n├── branch-bundle-2/\n│ ├── a-leaf-bundle/\n│ │ └── index.md\n│ └── _index.md\n└── _index.md\nThere are three branch bundles in the example above:home pageThis branch bundle contains an index file, two descendant branch bundles, and no resources.branch-bundle-1This branch bundle contains an index file, two resources of resource type page, and two resources of resource type image.branch-bundle-2This branch bundle contains an index file and a leaf bundle.\n\nCreate branch bundles at any depth within the content directory. Branch bundles may have descendants.\nHeadless bundles\nUse build options in front matter to create an unpublished leaf or branch bundle whose content and resources you can include in other pages.\n\nLast updated:\nJune 18, 2026\n:\nMerge commit 'c86d9f4aa8a58931f52df6516f10b67c807505fb' (be780afa7)Improve this page\n\nIn this section\nArchetypes\nBuild options\nComments\nContent adapters\nContent formats\nData sources\nDiagrams\nFront matter\nImage processing\nMarkdown attributes\nMathematics\nMenus\nMultilingual\nOrganization\nPage bundles\nPage resources\nRelated content\nSections\nShortcodes\nSummaries\nSyntax highlighting\nTaxonomies\nURL management\n\nOn this page"
+}

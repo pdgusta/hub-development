@@ -1,0 +1,55 @@
+{
+ "chave": "web:silentvoid13.github.io/templater",
+ "nomes": [
+  "Templater"
+ ],
+ "urls": [
+  "https://silentvoid13.github.io/Templater/"
+ ],
+ "readme_cortado": false,
+ "readme": "[Introduction - Templater]\n\nLight (default)\n\nRust\n\nCoal\n\nNavy\n\nAyu\n\nTemplater\n\nIntroduction\n\nTemplater is a template language that lets you insert variables and functions results into your notes. It will also let you execute JavaScript code manipulating those variables and functions.\n\nWith Templater, you will be able to create powerful templates to automate manual tasks.\n\nQuick Example\n\nThe following template file, that is using Templater syntax:\n\n---\ncreation date: <% tp.file.creation_date() %>\nmodification date: <% tp.file.last_modified_date(\"dddd Do MMMM YYYY HH:mm:ss\") %>\n---\n\n<< [[<% tp.date.now(\"YYYY-MM-DD\", -1) %>]] | [[<% tp.date.now(\"YYYY-MM-DD\", 1) %>]] >>\n\n# <% tp.file.title %>\n\n<% tp.web.daily_quote() %>\n\nWill produce the following result when inserted:\n\n---\ncreation date: 2021-01-07 17:20\nmodification date: Thursday 7th January 2021 17:20:43\n---\n\n<< [[2021-04-08]] | [[2021-04-10]] >>\n\n# Test Test\n\n> Do the best you can until you know better. Then when you know better, do better.\n> — <cite>Maya Angelou</cite>",
+ "fonte": "site",
+ "respostas": [
+  {
+   "por": "ising-calibration-1.5-31b",
+   "resposta": {
+    "serve": "stack",
+    "role": "A template engine for Obsidian, allowing users to insert dynamic content (dates, quotes, etc.) into their notes via a custom syntax.",
+    "place": [
+     "library"
+    ],
+    "mechanism": [
+     "other"
+    ],
+    "mcp": "no",
+    "windows": "yes",
+    "portuguese": "no",
+    "license": "MIT",
+    "maturity": "stable",
+    "doubt": false,
+    "evidence": "The README explicitly states that Templater is a 'template language' for Obsidian, enabling the insertion of variables and function results into notes. It provides a clear example of its syntax and usage, confirming it is a functional component of the Obsidian ecosystem."
+   }
+  },
+  {
+   "por": "mistral-code",
+   "resposta": {
+    "serve": "stack",
+    "role": "template engine for notes",
+    "place": [
+     "disk",
+     "inside_db_mcp"
+    ],
+    "mechanism": [
+     "other"
+    ],
+    "mcp": "unknown",
+    "windows": "yes",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "unknown",
+    "doubt": true,
+    "evidence": "Rust, Navy, Ayu, Templater is a template language for notes. Works on Windows."
+   }
+  }
+ ]
+}

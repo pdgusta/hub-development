@@ -1,0 +1,90 @@
+Docs
+
+ /
+
+ Reference
+
+ /
+
+ Elasticsearch
+
+Elasticsearch clients
+
+Elasticsearch is easy to use from most popular programming languages, thanks to the wide range of official libraries and developer tools available.
+
+Language client overview
+
+Language
+Quick install (latest version)
+Docs
+Source
+
+Python
+pip install elasticsearch
+docs
+repo
+
+Java
+(project configuration)
+docs
+repo
+
+JavaScript / Node.js
+npm install @elastic/elasticsearch
+docs
+repo
+
+C# / .NET
+dotnet add package Elastic.Clients.Elasticsearch
+docs
+repo
+
+PHP
+composer require elasticsearch/elasticsearch
+docs
+repo
+
+Go
+require github.com/elastic/go-elasticsearch/v9 9.0
+docs
+repo
+
+Ruby
+gem install elasticsearch
+docs
+repo
+
+Rust (experimental)
+cargo add elasticsearch
+docs
+repo
+
+Releases and compatibility
+
+Elasticsearch client libraries are released for every Elasticsearch server major or minor release.
+Patches are released independently to allow for faster bugfixes.
+This release policy does not affect compatibility; for example, version 8.13.x of the client will be compatible with versions of the server 8.13.y where y >= x.
+
+The Elasticsearch clients are forward compatible, meaning that the client supports communicating with greater or equal minor versions of Elasticsearch without breaking.
+It does not mean that the client automatically supports new features of newer Elasticsearch versions; that is only possible after the release of a new client version.
+For example, an 8.12 client will not automatically support the new features of Elasticsearch 8.13; the 8.13 client version is required for that.
+Elasticsearch language clients are only backwards compatible with default distributions and without guarantees made.
+
+ Note
+
+When upgrading Elasticsearch it is strongly recommended to upgrade the server first, before the client.
+The forward compatibility policy allows client applications to continue to work with the new server before the client itself is upgraded.
+
+Handling retries and timeouts
+
+You should avoid using response timeouts in your HTTP client. Elasticsearch always responds to every request, but some requests can take several minutes to complete. For example, you might receive 429 Too Many Requests responses while your Elastic deployment autoscales, which is expected behavior.
+
+To learn more, refer to HTTP client configuration.
+
+Local server development
+
+For development and testing on a local Elasticsearch server, start-local is recommended:
+
+curl -fsSL https://elastic.co/start-local | sh
+
+Alternatively, learn how to connect to your Elasticsearch endpoint for other types of deployment.

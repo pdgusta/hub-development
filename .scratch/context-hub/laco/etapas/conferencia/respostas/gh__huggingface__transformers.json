@@ -1,0 +1,34 @@
+{
+ "chave": "gh:huggingface/transformers",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T21:08:40Z",
+ "resultado": "corrige",
+ "conferencia": {
+  "resultado": "corrige",
+  "final": {
+   "serve": "stack",
+   "role": "Model-definition framework to run and train ML models (text, vision, audio); usable to run embedding and reranker models locally",
+   "place": [
+    "library"
+   ],
+   "mechanism": [
+    "embeddings"
+   ],
+   "mcp": "no",
+   "windows": "unknown",
+   "portuguese": "unknown",
+   "license": "Apache-2.0",
+   "maturity": "stable",
+   "doubt": false,
+   "evidence": "Transformers acts as the model-definition framework for state-of-the-art machine learning ... for both inference and training; Apache License 2.0 header; pip install transformers[torch]"
+  },
+  "o_que_mudou": [
+   "serve: search -> stack, README describes a general model framework, not a search layer",
+   "mechanism: vector/embeddings/reranker -> embeddings, README does not describe search mechanisms",
+   "place: inside_db_mcp/network_service -> library",
+   "windows: yes/unknown -> unknown, README does not state it",
+   "portuguese: yes -> unknown, only a Portuguese translation of the README is listed"
+  ],
+  "nota": "General ML library; useful only as the runtime for embedding or reranker models, not a search layer or MCP piece itself."
+ }
+}

@@ -1,0 +1,1196 @@
+Vespa basics
+
+ Deploy an application
+
+ Vespa applications
+
+ Schemas
+
+ Writing
+
+ Querying
+
+ Ranking
+
+ Operations
+
+ What's more
+
+ Learn more
+
+ Vespa overview
+
+ Getting help from LLMs
+
+ Features
+
+ Tutorials and use cases
+
+ Frequently asked questions
+
+ Glossary
+
+ Releases
+
+ Tenants, apps and instances
+
+ Migrating to Vespa Cloud
+
+ Migrating from ElasticSearch
+
+ About this documentation
+
+ Contributing to Vespa
+
+ Applications and components
+
+ Developer guide
+
+ IDE support
+
+ Deployment
+
+ .vespaignore files
+
+ Containers
+
+ Components
+
+ Searchers
+
+ Document processors
+
+ Request handlers
+
+ Result renderers
+
+ Dependency injection
+
+ Configuring components
+
+ Chaining
+
+ Inspecting structured data in a Searcher
+
+ Developing web services
+
+ Unit testing
+
+ System testing
+
+ The config system
+
+ Request-response processing
+
+ Bundles
+
+ Using ZooKeeper
+
+ Http servers and filters
+
+ Using pluggable frameworks
+
+ Java config API
+
+ Schemas and documents
+
+ Documents
+
+ Inheritance in schemas
+
+ Concrete document types
+
+ Parent-child relationships
+
+ Structs
+
+ Predicate fields
+
+ Exposing schema information
+
+ Reading and writing
+
+ Reads and writes
+
+ /document/v1
+
+ Indexing
+
+ Index bootstrap
+
+ Visiting
+
+ Document API
+
+ Partial updates
+
+ Batch delete
+
+ Feed block
+
+ Document routing
+
+ Indexing paged vectors
+
+ Querying
+
+ The query api
+
+ The YQL query language
+
+ Grouping and aggregation
+
+ Query profiles
+
+ An intro to vector search
+
+ Nearest neighbor search
+
+ Approximate nearest neighbor search
+
+ Nearest neighbor search guide
+
+ Text matching
+
+ Searching multivalue fields
+
+ Geo search
+
+ Document summaries
+
+ Result diversity
+
+ Federation
+
+ Page templates
+
+ Filter intersections
+
+ Ranking and inference
+
+ Ranking introduction
+
+ Ranking expressions and features
+
+ Multivalue query operators
+
+ Tensor user guide
+
+ Tensor examples
+
+ Phased ranking
+
+ Using TensorFlow models
+
+ Using ONNX models
+
+ Using XGBoost models
+
+ Using LightGBM models
+
+ Wand: Accelerated OR search
+
+ The BM25 rank feature
+
+ The nativeRank rank feature
+
+ Cross-encoder transformer ranking
+
+ Searcher re-ranking
+
+ Significance model
+
+ Stateless model evaluation
+
+ RAG and embedding
+
+ RAG in Vespa
+
+ Working with chunks
+
+ Embedding
+
+ Binarizing vectors
+
+ LLMs in Vespa
+
+ Using local LLMs
+
+ Using external LLMs
+
+ Document enrichment with LLMs
+
+ Model hub
+
+ Linguistics and text processing
+
+ Linguistics
+
+ Linguistics Overview
+
+ Default (OpenNLP) linguistics
+
+ Lucene linguistics
+
+ Custom linguistics
+
+ Query rewriting
+
+ Troubleshooting character encoding
+
+ Content and elasticity
+
+ Content clusters
+
+ Content nodes and states
+
+ Elasticity
+
+ Document attributes
+
+ Consistency Model
+
+ Distribution algorithm
+
+ Buckets
+
+ Performance
+
+ Performance overview
+
+ Practical performance guide
+
+ Serving sizing guide
+
+ Feed sizing guide
+
+ Node resources
+
+ Instance types
+
+ AWS instance types
+
+ GCP instance types
+
+ Azure instance types
+
+ Topology and resizing
+
+ Streaming search
+
+ Benchmarking
+
+ Benchmarking using Vespa Cloud
+
+ Memory visualizer
+
+ Profiling
+
+ Container tuning
+
+ Rate-limiting queries
+
+ Graceful degradation
+
+ Caches
+
+ HTTP performance testing
+
+ HTTP/2
+
+ Feature tuning
+
+ Valgrind
+
+ Operations
+
+ Quota
+
+ Environments
+
+ Zones
+
+ Availability Zones
+
+ Production deployment
+
+ Deployment variants
+
+ Automated deployments
+
+ Autoscaling
+
+ Enclave: Bring your own cloud
+
+ Enclave
+
+ AWS getting started
+
+ AWS architecture
+
+ Azure getting started
+
+ Azure architecture
+
+ GCP getting started
+
+ GCP architecture
+
+ Log archive
+
+ Operations
+
+ Reindexing
+
+ Reindexing on Vespa Cloud
+
+ Data management and backup
+
+ Cloning applications and data
+
+ Monitoring
+
+ Metrics
+
+ Telemetry export
+
+ Notifications
+
+ Support
+
+ Login Help
+
+ Single Sign-On (SSO) Setup
+
+ Deployment patterns
+
+ Private endpoints
+
+ Endpoint routing
+
+ Access logging
+
+ Artifact archive
+
+ Archive guide
+
+ Archive Guide AWS
+
+ Archive Guide GCP
+
+ Archive Guide Azure
+
+ Deleting applications
+
+ Self-managed
+
+ Admin procedures
+
+ Multinode Systems
+
+ Files, Processes, Ports, Environment
+
+ Node Setup
+
+ Build and install
+
+ Monitoring
+
+ Content node recovery
+
+ Configuration Servers
+
+ Live Vespa upgrade procedure
+
+ Config Sentinel
+
+ Config Proxy
+
+ Docker Containers
+
+ Docker Containers GPU setup
+
+ CPU Support
+
+ Service Location Broker
+
+ Change from attribute to index procedure
+
+ Container
+
+ Sizing examples
+
+ Vespa Support CLI
+
+ Kubernetes
+
+ Introduction
+
+ Operations
+
+ Overview
+
+ Installation
+
+ Permissions
+
+ Pod Lifecycle
+
+ Production Serving
+
+ Vespa Upgrades
+
+ Resource Scaling
+
+ Delete a VespaSet
+
+ Configuration
+
+ Overview
+
+ Configure Local Storage Type
+
+ Configure Log Collections
+
+ Configure External Access Layer
+
+ Configure Custom Overrides
+
+ Configure TLS Encryption with CertManager
+
+ Configure Monitoring
+
+ Reference
+
+ Overview
+
+ VespaSet CRD
+
+ Helm Chart Reference
+
+ Security
+
+ Security overview
+
+ Security Guide
+
+ Host Images
+
+ Secret Store
+
+ Cloudflare Workers
+
+ Security Whitepaper
+
+ Securing a Vespa installation
+
+ mTLS
+
+ Clients
+
+ Command line client (Vespa CLI)
+
+ Python client (pyVespa)
+
+ Java feed client
+
+ HTTP best practices
+
+ Modules
+
+ E-commerce
+
+ Multi-Currency Pricing
+
+ Saved Search Notifications
+
+ Using Features Together
+
+ Reference
+
+ APIs
+
+ APIs overview
+
+ The query API
+
+ /document/v1 API
+
+ /state/v1 API
+
+ /application/v2 API (deployment)
+
+ /application/v2/tenant API
+
+ /config/v2 API
+
+ /cluster/v2 API
+
+ /metrics/v1 API
+
+ /metrics/v2 API
+
+ /prometheus/v1 API
+
+ Applications and components
+
+ Application packages
+
+ services.xml
+
+ services.xml
+
+ services.xml - admin
+
+ services.xml - container
+
+ services.xml - content
+
+ services.xml - docproc
+
+ services.xml - http
+
+ services.xml - processing
+
+ services.xml - search
+
+ deployment.xml
+
+ hosts.xml
+
+ validation-overrides.xml
+
+ Components
+
+ Configuration files
+
+ System test
+
+ System test (Java)
+
+ Production test
+
+ Schemas and documents
+
+ Schemas
+
+ Document JSON format
+
+ Document field path language
+
+ Reading and writing
+
+ Indexing language
+
+ Document selector language
+
+ Querying
+
+ The YQL query language
+
+ The simple query language
+
+ Select
+
+ Grouping
+
+ Sorting
+
+ Query profiles
+
+ Semantic rules
+
+ The default result format
+
+ The page result format
+
+ Page templates
+
+ Filter intersections
+
+ Ranking and inference
+
+ Ranking expressions
+
+ Tensor evaluation
+
+ Rank features
+
+ nativeRank
+
+ String segment match
+
+ Rank feature configuration
+
+ Rank types
+
+ Model files
+
+ Constant tensors
+
+ RAG and embedding
+
+ Chunking
+
+ Embedding
+
+ Operations
+
+ Health checks
+
+ Log files
+
+ Tools
+
+ Metrics
+
+ Metrics
+
+ Default metric set
+
+ Vespa metric set
+
+ Metric units
+
+ Container metrics
+
+ Distributor metrics
+
+ Search node metrics
+
+ Storage metrics
+
+ Configserver metrics
+
+ Logd metrics
+
+ Node Admin metrics
+
+ Slobrok metrics
+
+ Cluster controller metrics
+
+ Sentinel metrics
+
+ Self-managed
+
+ Tools
+
+ Security
+
+ Mtls
+
+ Clients
+
+ Vespa CLI
+
+ vespa
+
+ vespa activate
+
+ vespa auth
+
+ vespa clone
+
+ vespa config
+
+ vespa curl
+
+ vespa deploy
+
+ vespa destroy
+
+ vespa document
+
+ vespa feed
+
+ vespa fetch
+
+ vespa inspect
+
+ vespa log
+
+ vespa prepare
+
+ vespa prod
+
+ vespa query
+
+ vespa status
+
+ vespa test
+
+ vespa version
+
+ vespa visit
+
+ Release notes
+
+ Vespa 7
+
+ Vespa 8
+
+ Vespa 9 (upcoming)
+
+Linguistics in Vespa
+
+ Vespa uses a linguistics module to process text in queries and documents during indexing and searching.
+ The goal of linguistic processing is to increase recall (how many documents are matched)
+ without hurting precision (the relevance of the documents matched) too much.
+ It consists of such operations as:
+
+tokenizing text into chunks of known types such as words and punctuation.
+
+normalizing accents.
+
+finding the base form of words (stemming or lemmatization).
+
+ Linguistic processing is run when writing documents, and when querying:
+
+ The processing is run on string fields
+ with index indexing mode. Overview:
+
+ When writing documents, string fields with indexing: index are by default processed.
+ A field's language will configure this processing.
+ A document/fields can have the language set explicitly,
+ if not, it is detected.
+
+ The field's content is processed (e.g., tokenized, normalized, stemmed, etc.),
+ and the resulting terms are added to the index.
+
+ Note:
+ The language for the field is not persisted on the content node,
+ just the processed terms themselves
+
+ A query is also processed in a similar fashion. Typically through the same 
+ linguistics profile as the field content,
+ producing the same terms from the same text.
+ The language of query strings is detected unless specified using
+ model.locale
+ or annotations like language.
+
+ Note:
+ This is a very common query problem -
+ it is hard to detect language precisely from short strings.
+
+ The processed query is evaluated on the content nodes,
+ and will only work as expected if both documents and queries produce the same terms.
+
+ These operations can be turned on or off per field in the schema.
+ See implicitTransforms
+ for how to enable/disable transforms per query term.
+
+Linguistics implementations
+
+ Vespa comes with two linguistics variants out of the box:
+ OpenNLP and Lucene.
+ Check out the respective pages for more information on how to configure them.
+
+ You can also implement a custom Linguistics component.
+
+ The default linguistics variant is OpenNLP, but for the
+ rest of this page we'll go through common options, such as language handling, inherited by
+ all implementations.
+
+ Note:
+ Linguistics implementations only control how text is tokenized,
+ including positional information. These tokens are stored in the same way in the underlying
+ index. For example, if you use Lucene linguistics, Vespa does not store information such as
+ positions in Lucene segment files. Storage is the same as with OpenNLP,
+ only resulting tokens might differ.
+
+Language handling
+
+Vespa does not know the language of a document - this applies:
+
+The indexing processor is instructed on a per-field level what language to
+use when calling the underlying linguistics library
+
+The query processor is instructed on a per-query level what language to use
+
+If no language is explicitly set in a document or a query,
+Vespa will run its configured language detector (by default, OpenNLP language detection)
+on the available text (the full content of a document field, or the full query= parameter value).
+
+A document that contains the exact same word as a query might not be recall-able
+if the language of the document field is detected differently from the query.
+Unless the query has explicitly declared a language,
+this can occur.
+
+Indexing with language
+
+The indexing process run by Vespa is a sequential execution
+of the indexing scripts of each field in the schema, in the declared order.
+At any point, the script may set the language that will be used for indexing statements for subsequent fields,
+using set_language.
+
+Example:
+
+schema doc {
+ document doc {
+ field language type string {
+ indexing: set_language
+ }
+ field title type string {
+ indexing: index
+ }
+ }
+}
+
+If a language has not been set when tokenization of a field is run, the language is determined by
+language detection.
+
+If all documents have the same language, the language can be hardcoded it the schema in this way:
+
+schema doc {
+
+ field language type string {
+ indexing: "en" | set_language
+ }
+
+ document doc {
+ ...
+
+If the same document contains fields in multiple languages, set_language can be invoked multiple times, e.g.:
+
+schema doc {
+ document doc {
+ field language_title1 type string {
+ indexing: set_language
+ }
+ field title1 type string {
+ indexing: index
+ }
+ field language_title2 type string {
+ indexing: set_language
+ }
+ field title2 type string {
+ indexing: index
+ }
+ }
+}
+
+Or, if fixed per field, use multiple indexing statements in each field:
+
+schema doc {
+ document doc {
+ field my_english_field type string {
+ indexing {
+ "en" | set_language;
+ index;
+ }
+ }
+ field my_spanish_field type string {
+ indexing {
+ "es" | set_language;
+ index;
+ }
+ }
+ }
+}
+
+Field language detection
+
+ When indexing a document, if a field has unknown language (i.e. not set using set_language),
+ language detection is run on the field's content.
+ This means, language detection is per field, not per document.
+
+ See query language detection for detection confidence,
+ fields with little text will default to English.
+
+Querying with language
+
+ The content of an indexed string field is language-agnostic.
+ One must therefore apply a compatible tokenization on the query terms (e.g., stemming for the same language)
+ in order to match the content of that field.
+
+ The query parser subscribes to configuration that tells it what fields are indexed strings,
+ and every query term that targets such a field are run through appropriate tokenization.
+ The language query parameter
+ controls the language state of these calls.
+
+ Because an index may simultaneously contain terms in any number of languages,
+ one can have stemmed variants of one language match the stemmed variants of another.
+ To work around this, store the language of a document in a separate attribute,
+ and apply a filter against that attribute at query-time.
+
+ By default, there is no knowledge anywhere that captures what
+ languages are used to generate the content of an index.
+ The language parameter only affects the transformation of query terms that hit tokenized indexes.
+
+Query language detection
+
+ If no language parameter is used,
+ or the query terms are annotated,
+ the language detector is called to process the query string.
+
+ Queries are normally short, as a consequence, the detection confidence is low. Example:
+
+$ vespa query "select * from music where default contains text(@text)" \
+ tracelevel=3 text='Eine kleine Nachtmusik' | grep 'Stemming with language'
+ "message": "Stemming with language=ENGLISH"
+
+$ vespa query "select * from music where default contains text(@text)" \
+ tracelevel=3 text='Eine kleine Nachtmusik schnell' | grep 'Stemming with language'
+ "message": "Stemming with language=GERMAN"
+
+ See #24265 for details -
+ in short, with the current 0.02 confidence cutoff, queries with 3 terms or fewer will default to English.
+
+Multiple languages
+
+Vespa supports having documents in multiple languages in the same schema, but does not out-of-the-box 
+ support cross-lingual retrieval (e.g., search using English and retrieve relevant documents written in German). 
+
+ This is because the language of a query is determined 
+ by the language of the query string and only one transformation can take place. 
+
+Approaches to overcome this limitation include:
+
+ Use semantic retrieval using a multilingual text embedding model (see blog post) 
+ which has been trained on multilingual corpus and can be used to retrieve documents in multiple languages.
+
+ Stem and tokenize the query using the relevant languages,
+ build a query tree using weakAnd /
+ or
+ and using equiv per stem variant.
+ This is easiest done in a custom Searcher as mentioned in
+ #12154.
+
+Example:
+
+language=fr: machine learning => machin learn
+
+language=en: machine learning => machine learn
+
+Using weakAnd here as example as that technique is already mentioned in #12154:
+
+select * from sources * where rank( 
+ default contains "machine", 
+ default contains "learning",
+ weakAnd(
+ default contains equiv("machin", "machine"), 
+ default contains "learn"
+ )
+)
+
+We now retrieve using all possible stems/base forms with weakAnd,
+and use the rank operator
+to pass in the original query form, so that ranking can rank literal matches (original) higher.
+Benefit of equiv is that it allows multiple term variants to share the same position,
+so that proximity ranking does not become broken by this approach.
+
+Linguistics profiles
+
+ The linguistics block of a field in the schema
+ configures the linguistics processing of that field. It has two settings:
+ a profile, which names how the linguistics implementation should process the text,
+ and tokens, which decides which of the tokens
+ that processing produces for each word are used.
+ Profiles are typically used with the Lucene linguistics implementation,
+ but can be used in e.g., custom linguistics implementations as well.
+
+Symmetrical processing
+
+ For example, a definition like this:
+
+field title type string {
+ indexing: summary | index
+ linguistics {
+ profile: whitespaceLowercase
+ }
+}
+
+ Will look for a profile named whitespaceLowercase, which could be defined like this
+ in services.xml:
+
+ <item key="profile=whitespaceLowercase;language=en">
+ <tokenizer>
+ <name>whitespace</name>
+ </tokenizer>
+ <tokenFilters>
+ <item>
+ <name>lowercase</name>
+ </item>
+ </tokenFilters>
+ </item>
+
+ Note language=en there. It is optional: if it's not set,
+ the profile will be used for all languages. But you can have different
+ definitions for different languages on the same profile (e.g., different stemming).
+
+Different processing for query strings
+
+ For some use cases, you may want to process the query string differently than the document content.
+ Synonyms are a good example. If you expand dog to dog,puppy at query time,
+ it will match either term in the document anyway - no need to expand it at write-time.
+
+ To do this, you'd define a different profile for the query string. Like:
+
+ <item key="profile=whitespaceLowercaseSynonyms;language=en">
+ <tokenizer>
+ <name>whitespace</name>
+ </tokenizer>
+ <tokenFilters>
+ <item>
+ <name>lowercase</name>
+ </item>
+ <item>
+ <name>synonymGraph</name>
+ <conf>
+ <!--
+ Synonyms file should contain something like:
+ dog,puppy
+ -->
+ <item key="synonyms">en/synonyms.txt</item>
+ </conf>
+ </item>
+ </tokenFilters>
+ </item>
+
+ Then, in the schema, expand profile to profile.index and profile.search:
+
+ field title type string {
+ indexing: summary | index
+ linguistics {
+ profile {
+ index: whitespaceLowercase
+ search: whitespaceLowercaseSynonyms
+ }
+ }
+}
+
+ At this point, where synonyms_test contains 'dog' will match a document containing puppy.
+
+ The same can be written with an index and a search block, each holding the
+ settings for that side. This form is needed when the tokens
+ setting should also differ between indexing and searching:
+
+field title type string {
+ indexing: summary | index
+ linguistics {
+ index {
+ profile: whitespaceLowercase
+ }
+ search {
+ profile: whitespaceLowercaseSynonyms
+ }
+ }
+}
+
+Choosing which tokens to use
+
+ Linguistics processing often produces more than one token for a word: the stems of it, the parts
+ of a compound, its n-grams, or synonyms like in the example above. By default, Vespa only uses one of
+ them per word, both when indexing and when searching. The tokens setting of the linguistics
+ block controls which tokens are used:
+
+tokensDescription
+
+original
+Use the original word only, disregarding any alternatives produced for it.
+Equivalent to stemming: none.
+
+first-alternative
+Use the one alternative the linguistics implementation considers best for each word, which is the
+first one it produces for most implementations. This is the default, equivalent to stemming: best.
+
+alternatives
+Use all the alternatives produced for each word, but not the original word itself.
+
+original-and-alternatives
+Use the original word and all the alternatives produced for it.
+Equivalent to stemming: multiple.
+
+ For example, with the n-gram profile from Indexing all stems,
+ this indexes dog as dog, do and og, so that a
+ search for og matches it:
+
+field title_grams type string {
+ indexing: summary | index
+ linguistics {
+ profile: ngram
+ tokens: original-and-alternatives
+ }
+}
+
+ As with the profile, tokens given directly in the linguistics block applies both when
+ indexing and when searching, while tokens in an index or search
+ block applies to that side only. This indexes the original words, and expands each query term to the
+ term itself and all its synonyms:
+
+field title type string {
+ indexing: summary | index
+ linguistics {
+ index {
+ profile: whitespaceLowercase
+ tokens: original
+ }
+ search {
+ profile: whitespaceLowercaseSynonyms
+ tokens: original-and-alternatives
+ }
+ }
+}
+
+ Rules for the tokens setting:
+
+ It takes precedence over any stemming setting
+ which applies to the field: in the field, in the schema, or in an index block.
+ Deployment warns when such a setting is overridden by a different value.
+
+ It only applies to string fields with indexing: index and the default text matching.
+ Fields with word, exact or gram matching, uri fields and
+ fields of other types produce a single token per word regardless, so tokens is ignored
+ for them, with a warning.
+
+ All fields of a fieldset are searched as one,
+ so they must use the same tokens when searching, whether that follows from tokens or
+ from stemming. A fieldset where they differ, and at least one field sets tokens,
+ fails deployment.
+
+ Setting it for one side only makes the other side follow the stemming setting, which is
+ warned about: the index and the query normally need to produce the same tokens to match.
+
+Overriding profile for query strings
+
+ At query time, you can tell Vespa to use a specific profile to process the query string via grammar.profile.
+ This works with the userInput() and text() operators.
+ For example, to use the whitespaceLowercase profile for the query string:
+
+where title contains ({grammar.profile: 'whitespaceLowercase'}text('dog'))
+
+Equivalent expression via userInput():
+
+where {defaultIndex:'title', grammar.profile: 'whitespaceLowercase', grammar: 'linguistics'}userInput('dog')
+
+ Note:
+ You should use grammar=linguistics (like in the example above) with grammar.profile to ensure that there is no
+additional processing (e.g., tokenization) besides what is already defined in the profile.
+
+Troubleshooting linguistics processing
+
+ If your documents don't match as expected, there are two ways to get more information.
+
+ First, you can get the tokenized text for a field by using tokens
+ in the document summary.
+ For example, to get the original text and tokens for the title field:
+
+ document-summary debug-text-tokens {
+ summary title {}
+ summary title_tokens {
+ source: title
+ tokens
+ }
+ from-disk
+}
+
+ Then, at query time, you can also get the tokens of the query string
+ by increasing the trace level:
+
+{
+ "yql": "select * from sources * where title contains \"dog\"",
+ "presentation.summary": "debug-text-tokens",
+ "model.locale": "en",
+ "trace.level": 2
+}

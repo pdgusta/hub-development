@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mapa de grupos do hub</title>
+<style>
+:root{--bg:#f7f7f5;--box:#ffffff;--ink:#1d1d1b;--mut:#66665f;--line:#8a8a80;--acc:#2f5d8a;--amb:#8a5a00;--par:#b3b3a9}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#1b1b19;--box:#262623;--ink:#ecebe6;--mut:#a4a39a;--line:#8c8c82;--acc:#7fa9d6;--amb:#e0b35a;--par:#5a5a52}}
+:root[data-theme="dark"]{--bg:#1b1b19;--box:#262623;--ink:#ecebe6;--mut:#a4a39a;--line:#8c8c82;--acc:#7fa9d6;--amb:#e0b35a;--par:#5a5a52}
+body{background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",sans-serif;margin:0;padding:16px;line-height:1.45}
+h1{font-size:20px;margin:0 0 4px}
+h2{font-size:16px;margin:28px 0 8px}
+p.sub{color:var(--mut);margin:0 0 12px;font-size:14px}
+.wrap{overflow-x:auto;border:1px solid var(--par);border-radius:10px;background:var(--bg)}
+svg{display:block;width:1400px;height:auto}
+svg text{font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
+.T{font-size:18px;font-weight:600;fill:var(--ink)}
+.t{font-size:14px;font-weight:600;fill:var(--acc)}
+.b{font-size:12px;font-weight:600;fill:var(--ink)}
+.i{font-size:12px;fill:var(--ink)}
+.d{font-size:11px;fill:var(--mut)}
+.tag{font-size:11px;fill:var(--amb);font-style:italic;font-weight:400}
+.lbl{font-size:11px;fill:var(--mut);letter-spacing:.04em}
+.g{fill:var(--box);stroke:var(--line);stroke-width:1.5}
+.f{fill:var(--box);stroke:var(--line);stroke-width:1.5;stroke-dasharray:6 4}
+.a{fill:var(--box);stroke:var(--mut);stroke-width:1.5;stroke-dasharray:3 3}
+.par-box{fill:none;stroke:var(--par);stroke-width:1.5;stroke-dasharray:8 5}
+.leg{fill:none;stroke:var(--par);stroke-width:1;stroke-dasharray:4 4}
+.ln{stroke:var(--line);stroke-width:1.5;fill:none}
+.dash{stroke:var(--line);stroke-width:1.5;stroke-dasharray:4 3;fill:none}
+.mk{fill:var(--line)}
+.bd circle{fill:var(--acc)}
+.bd text{fill:#ffffff;font-size:11px;font-weight:700;text-anchor:middle;dominant-baseline:central}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{border-bottom:1px solid var(--par);padding:6px 8px;text-align:left;vertical-align:top}
+th{color:var(--mut);font-weight:600}
+td.n{width:28px;font-weight:700;color:var(--acc)}
+ul{padding-left:20px;margin:6px 0}
+li{margin:3px 0}
+.mk-note{color:var(--mut);font-size:13px}
+</style>
+</head>
+<body>
+<h1>Mapa de grupos do hub</h1>
+<p class="sub">Desenho por grupo (seção 5.1 da descrição v3). Ligações numeradas da seção 6, agregadas por grupo. Lugares (seção 5.2) só como texto na lista abaixo.</p>
+
+<div class="wrap">
+<svg viewBox="0 0 1400 1010" role="img" aria-label="Mapa de grupos do context hub: componentes agrupados por área lógica e ligações principais entre os grupos">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" class="mk"/>
+    </marker>
+  </defs>
+
+  <!-- cabecalho -->
+  <text class="T" x="20" y="40">Mapa de grupos do hub</text>
+  <text class="d" x="20" y="60">Versão 3 (2026-10-15). Uma caixa por grupo. Cada componente aparece uma vez;</text>
+  <text class="d" x="20" y="76">"+ grupo" marca o segundo grupo a que ele pertence.</text>
+
+  <!-- faixa de cima: fora do par -->
+  <text class="lbl" x="690" y="20">FORA DO PAR</text>
+  <rect class="f" x="690" y="28" width="330" height="60" rx="8"/>
+  <text class="b" x="702" y="50">Rede privada (Tailscale)</text>
+  <text class="d" x="702" y="68">único caminho entre pares e clientes; nunca Funnel</text>
+  <rect class="a" x="1050" y="28" width="310" height="60" rx="8"/>
+  <text class="b" x="1062" y="50">Outro par</text>
+  <text class="d" x="1062" y="68">a outra máquina, igual a esta (ator)</text>
+  <line class="dash" x1="1020" y1="58" x2="1050" y2="58"/>
+
+  <!-- limite do par -->
+  <rect class="par-box" x="300" y="120" width="1080" height="730" rx="12"/>
+  <text class="lbl" x="316" y="140">O PAR: máquina Windows (notebook ou pessoal); cada uma tem o hub inteiro</text>
+
+  <!-- quem chega (atores, fora dos grupos) -->
+  <rect class="a" x="20" y="160" width="250" height="680" rx="8"/>
+  <text class="t" x="32" y="184">Quem chega</text>
+  <text class="d" x="32" y="202">de fora dos grupos; entra pelas portas</text>
+  <text class="b" x="32" y="232">Gustavo</text>
+  <text class="d" x="32" y="248">dono; vê o hub, pede a agentes</text>
+  <text class="b" x="32" y="280">Agentes de código</text>
+  <text class="d" x="32" y="296">Claude Code, Codex, Copilot</text>
+  <text class="d" x="32" y="312">maestro, recrutas, subagentes</text>
+  <text class="b" x="32" y="344">Claude Desktop</text>
+  <text class="d" x="32" y="360">pela ponte mcp-remote</text>
+  <text class="b" x="32" y="392">Clientes</text>
+  <text class="d" x="32" y="408">sandbox, máquina de passagem</text>
+  <text class="tag" x="32" y="424">+ Fora do par</text>
+
+  <!-- linha 1 -->
+  <rect class="g" x="330" y="160" width="330" height="210" rx="8"/>
+  <text class="t" x="342" y="184">Portas do par</text>
+  <text class="b" x="342" y="212">Porta do banco (MCP)</text>
+  <text class="tag" x="342" y="228">guarda de versão: a construir</text>
+  <text class="b" x="342" y="254">Porta de leitura</text>
+  <text class="d" x="342" y="270">2ª instância, só leitura, rede privada</text>
+  <text class="b" x="342" y="296">Camada de busca</text>
+  <text class="d" x="342" y="312">arctic + índice (um por máquina)</text>
+  <text class="b" x="342" y="338">Ponte mcp-remote</text>
+  <text class="d" x="342" y="354">Claude Desktop até a porta do banco</text>
+
+  <rect class="g" x="690" y="160" width="330" height="210" rx="8"/>
+  <text class="t" x="702" y="184">Núcleo de dados do par</text>
+  <text class="b" x="702" y="212">Banco local (CouchDB)</text>
+  <text class="d" x="702" y="228">a verdade: versões, conflitos, cifrado</text>
+  <text class="b" x="702" y="254">Vista Markdown</text>
+  <text class="d" x="702" y="270">C:\context-hub, o que se vê e edita</text>
+  <text class="b" x="702" y="296">Sincronizador</text>
+  <text class="d" x="702" y="312">CLI do LiveSync; liga disco e banco</text>
+  <text class="b" x="702" y="338">Regra de exclusão</text>
+  <text class="d" x="702" y="354">pastas e arquivos com ponto</text>
+
+  <rect class="g" x="1050" y="160" width="310" height="210" rx="8"/>
+  <text class="t" x="1062" y="184">Interfaces do Gustavo</text>
+  <text class="b" x="1062" y="212">Obsidian <tspan class="tag">+ Periferia</tspan></text>
+  <text class="d" x="1062" y="228">com o plugin de sync; pode ficar fechado</text>
+  <text class="b" x="1062" y="254">Janela de conflito do plugin</text>
+  <text class="d" x="1062" y="270">tela de três vias: depois da construção</text>
+  <text class="b" x="1062" y="296">Notificação e mod de estado</text>
+  <text class="d" x="1062" y="312">moram em Vigilância (ver lá)</text>
+
+  <!-- linha 2 -->
+  <rect class="g" x="330" y="400" width="330" height="240" rx="8"/>
+  <text class="t" x="342" y="424">Disciplina do agente</text>
+  <text class="b" x="342" y="446">Contrato (AGENTS.md) <tspan class="tag">+ Conteúdo</tspan></text>
+  <text class="b" x="342" y="462">Ligações da ferramenta</text>
+  <text class="b" x="342" y="478">Checagem de sessão <tspan class="tag">+ Vigilância</tspan></text>
+  <text class="b" x="342" y="494">Checkpoint (hook de fim de resposta)</text>
+  <text class="b" x="342" y="510">Guarda do acervo + Verificador</text>
+  <text class="b" x="342" y="526">Hook de uso (registro)</text>
+  <text class="b" x="342" y="542">Lembrete do maestro</text>
+  <text class="d" x="342" y="562">Claude Code: recusa, verificador e aval</text>
+  <text class="d" x="342" y="578">Codex e Copilot: só recusa</text>
+
+  <rect class="g" x="690" y="400" width="330" height="240" rx="8"/>
+  <text class="t" x="702" y="424">Conteúdo (dentro do hub)</text>
+  <text class="b" x="702" y="446">Raízes (6)</text>
+  <text class="d" x="702" y="462">clients, operations, initiatives,</text>
+  <text class="d" x="702" y="478">reference, agents, inbox</text>
+  <text class="b" x="702" y="500">Iniciativa, núcleo, blocos</text>
+  <text class="d" x="702" y="516">catálogo de blocos; _archive/ por raiz</text>
+  <text class="b" x="702" y="538">Acervo do maestro <tspan class="tag">+ Disciplina</tspan></text>
+  <text class="d" x="702" y="554">peças, skills, variantes, versão local</text>
+  <text class="b" x="702" y="576">Nota de retomada <tspan class="tag">+ Disciplina</tspan></text>
+  <text class="b" x="702" y="598">Propostas, registro de uso <tspan class="tag">+ Disciplina</tspan></text>
+  <text class="b" x="702" y="620">Segredos (.secrets/)</text>
+  <text class="tag" x="702" y="636">pasta não replicada: nenhuma hoje</text>
+
+  <rect class="g" x="1050" y="400" width="310" height="240" rx="8"/>
+  <text class="t" x="1062" y="424">Vigilância</text>
+  <text class="b" x="1062" y="446">Vigia (a cada 5 min)</text>
+  <text class="d" x="1062" y="462">troca, conflitos, limites, processos</text>
+  <text class="b" x="1062" y="484">Avisos</text>
+  <text class="d" x="1062" y="500">notificação do Windows; estado curto</text>
+  <text class="b" x="1062" y="522">Mod de estado <tspan class="tag">+ Interfaces</tspan></text>
+  <text class="d" x="1062" y="538">só Claude Code; mostra o estado</text>
+  <text class="b" x="1062" y="560">Recuperar binário</text>
+  <text class="d" x="1062" y="576">comando; com o Gustavo vendo</text>
+
+  <!-- linha 3 -->
+  <rect class="g" x="330" y="670" width="330" height="170" rx="8"/>
+  <text class="t" x="342" y="694">Ferramentas da máquina</text>
+  <text class="b" x="342" y="716">Biblioteca do Maestri</text>
+  <text class="d" x="342" y="732">~/.maestri: papéis e partituras</text>
+  <text class="b" x="342" y="752">Pasta do papel</text>
+  <text class="d" x="342" y="768">.maestri/roles/&lt;id&gt;/, tem ponto</text>
+  <text class="b" x="342" y="788">Memória privada</text>
+  <text class="d" x="342" y="804">da ferramenta, no perfil da máquina</text>
+  <text class="b" x="342" y="828">Configuração das ferramentas</text>
+
+  <rect class="par-box" x="690" y="670" width="330" height="170" rx="8" style="stroke-dasharray:2 4"/>
+  <text class="t" x="702" y="694">Como ler</text>
+  <text class="i" x="702" y="716">Caixa: um grupo (seção 5.1).</text>
+  <text class="i" x="702" y="732">Cada componente aparece uma vez.</text>
+  <text class="i" x="702" y="748">+ grupo: também pertence a ele.</text>
+  <text class="i" x="702" y="764">Número: ligação, lista abaixo.</text>
+  <text class="i" x="702" y="780">Lugar: onde vive, seção 5.2.</text>
+  <text class="i" x="702" y="796">Caixa tracejada: ator ou fora.</text>
+
+  <rect class="g" x="1050" y="670" width="310" height="170" rx="8"/>
+  <text class="t" x="1062" y="694">Periferia do par</text>
+  <text class="i" x="1062" y="716">Cópia local (git) + tarefa diária</text>
+  <text class="i" x="1062" y="732">Nó da rede (Tailscale, Windows)</text>
+  <text class="i" x="1062" y="748">Credenciais do par (fora do hub)</text>
+  <text class="i" x="1062" y="764">Kit de par <tspan class="tag">+ Disciplina</tspan></text>
+  <text class="i" x="1062" y="780">Script do _archive/</text>
+  <text class="i" x="1062" y="796">Assistente do plugin (Config Doctor)</text>
+
+  <!-- faixa de baixo: fora do par -->
+  <text class="lbl" x="40" y="872">FORA DO PAR: cópias, rede e referências</text>
+  <rect class="f" x="40" y="880" width="240" height="105" rx="8"/>
+  <text class="b" x="52" y="904">Vault ai-operating-system</text>
+  <text class="d" x="52" y="922">só referência; no notebook</text>
+  <text class="d" x="52" y="938">nada grava nele</text>
+
+  <rect class="f" x="310" y="880" width="240" height="105" rx="8"/>
+  <text class="b" x="322" y="904">FreeLLMAPI (gateway)</text>
+  <text class="d" x="322" y="922">máquina pessoal, depois da construção</text>
+  <text class="d" x="322" y="938">roteia tarefas simples dos agentes</text>
+
+  <rect class="f" x="580" y="880" width="240" height="105" rx="8"/>
+  <text class="b" x="592" y="904">Embeddings na nuvem</text>
+  <text class="d" x="592" y="922">gemini-embedding-001, desligado</text>
+  <text class="d" x="592" y="938">ligar é escolha do Gustavo</text>
+
+  <rect class="f" x="850" y="880" width="240" height="105" rx="8"/>
+  <text class="b" x="862" y="904">Tailscale da empresa</text>
+  <text class="d" x="862" y="922">no notebook; risco de conflito</text>
+  <text class="d" x="862" y="938">se bloquear: não tratado</text>
+
+  <rect class="f" x="1120" y="880" width="240" height="105" rx="8"/>
+  <text class="b" x="1132" y="904">Cópia no GitHub</text>
+  <text class="d" x="1132" y="922">repositório privado</text>
+  <text class="d" x="1132" y="938">um ramo por máquina</text>
+
+  <!-- ligacoes -->
+  <!-- 1 Quem chega <-> Portas -->
+  <line class="ln" x1="270" y1="265" x2="330" y2="265" marker-start="url(#a)" marker-end="url(#a)"/>
+  <!-- 2 Quem chega <-> Disciplina -->
+  <line class="ln" x1="270" y1="520" x2="330" y2="520" marker-start="url(#a)" marker-end="url(#a)"/>
+  <!-- 3 Quem chega <-> Ferramentas -->
+  <line class="ln" x1="270" y1="755" x2="330" y2="755" marker-start="url(#a)" marker-end="url(#a)"/>
+  <!-- 4 Portas <-> Nucleo -->
+  <line class="ln" x1="660" y1="265" x2="690" y2="265" marker-start="url(#a)" marker-end="url(#a)"/>
+  <!-- 5 Interfaces <-> Nucleo -->
+  <line class="ln" x1="1020" y1="265" x2="1050" y2="265" marker-start="url(#a)" marker-end="url(#a)"/>
+  <!-- 6 Nucleo <-> Conteudo -->
+  <line class="ln" x1="855" y1="370" x2="855" y2="400" marker-start="url(#a)" marker-end="url(#a)"/>
+  <!-- 7 Vigilancia -> Nucleo -->
+  <line class="ln" x1="1080" y1="400" x2="1000" y2="370" marker-end="url(#a)"/>
+  <!-- 8 Vigilancia -> Interfaces -->
+  <line class="ln" x1="1210" y1="400" x2="1210" y2="370" marker-end="url(#a)"/>
+  <!-- 9 Disciplina <-> Conteudo -->
+  <line class="ln" x1="660" y1="520" x2="690" y2="520" marker-start="url(#a)" marker-end="url(#a)"/>
+  <!-- 10 Vigilancia -> Disciplina (passa sob o Conteudo) -->
+  <path class="ln" d="M1210 640 V655 H600 V640" marker-end="url(#a)"/>
+  <!-- 11 Disciplina <-> Ferramentas -->
+  <line class="ln" x1="420" y1="640" x2="420" y2="670" marker-start="url(#a)" marker-end="url(#a)"/>
+  <!-- 12 Periferia -> GitHub -->
+  <line class="ln" x1="1205" y1="840" x2="1205" y2="880" marker-end="url(#a)"/>
+  <!-- 13 Nucleo <-> Rede privada <-> Outro par -->
+  <line class="ln" x1="855" y1="160" x2="855" y2="88" marker-start="url(#a)" marker-end="url(#a)"/>
+
+  <!-- numeros das ligacoes -->
+  <g class="bd"><circle cx="300" cy="265" r="11"/><text x="300" y="265">1</text></g>
+  <g class="bd"><circle cx="300" cy="520" r="11"/><text x="300" y="520">2</text></g>
+  <g class="bd"><circle cx="300" cy="755" r="11"/><text x="300" y="755">3</text></g>
+  <g class="bd"><circle cx="675" cy="265" r="11"/><text x="675" y="265">4</text></g>
+  <g class="bd"><circle cx="1035" cy="265" r="11"/><text x="1035" y="265">5</text></g>
+  <g class="bd"><circle cx="855" cy="385" r="11"/><text x="855" y="385">6</text></g>
+  <g class="bd"><circle cx="1040" cy="385" r="11"/><text x="1040" y="385">7</text></g>
+  <g class="bd"><circle cx="1210" cy="385" r="11"/><text x="1210" y="385">8</text></g>
+  <g class="bd"><circle cx="675" cy="520" r="11"/><text x="675" y="520">9</text></g>
+  <g class="bd"><circle cx="905" cy="655" r="11"/><text x="905" y="655">10</text></g>
+  <g class="bd"><circle cx="420" cy="655" r="11"/><text x="420" y="655">11</text></g>
+  <g class="bd"><circle cx="1205" cy="860" r="11"/><text x="1205" y="860">12</text></g>
+  <g class="bd"><circle cx="880" cy="125" r="11"/><text x="880" y="125">13</text></g>
+</svg>
+</div>
+
+<h2>Ligações entre grupos</h2>
+<table>
+  <thead><tr><th>Nº</th><th>Entre</th><th>O que passa</th><th>Estado (fonte)</th></tr></thead>
+  <tbody>
+    <tr><td class="n">1</td><td>Quem chega ↔ Portas do par</td><td>agentes leem e gravam pela porta do banco e pela busca; Desktop pela ponte; cliente pela porta de leitura, na rede privada</td><td>[D] "Portas de entrada do hub"; "Onde o servidor mora". Guarda de versão: [D] decidida, a construir</td></tr>
+    <tr><td class="n">2</td><td>Quem chega ↔ Disciplina do agente</td><td>agente abre sessão, recebe o contrato, passa pela checagem de sessão</td><td>[D] "Portas de entrada do hub"; "Contrato file-first"</td></tr>
+    <tr><td class="n">3</td><td>Quem chega ↔ Ferramentas da máquina</td><td>recruta abre na pasta do papel; maestro usa a biblioteca do Maestri</td><td>[D] "Testes do papel do Maestri"; "Maestri: padrão e liberdade"</td></tr>
+    <tr><td class="n">4</td><td>Portas ↔ Núcleo</td><td>porta do banco lê e grava o banco com versão; busca lê a vista</td><td>[D] "Como a verdade viaja"; "Camada de busca"</td></tr>
+    <tr><td class="n">5</td><td>Interfaces ↔ Núcleo</td><td>Obsidian e plugin editam; disco e banco se espelham</td><td>[D] "Revisão do sync"; "Markdown: vista ou fonte"</td></tr>
+    <tr><td class="n">6</td><td>Núcleo ↔ Conteúdo</td><td>o banco guarda o conteúdo; a vista o mostra</td><td>[D] glossário; "Como a verdade viaja"</td></tr>
+    <tr><td class="n">7</td><td>Vigilância → Núcleo</td><td>vigia confere troca, sincronizador e plugin a cada 5 min</td><td>[D] "Revisão do sync"</td></tr>
+    <tr><td class="n">8</td><td>Vigilância → Interfaces</td><td>avisos: notificação do Windows e mod de estado</td><td>[D] "Revisão do sync"</td></tr>
+    <tr><td class="n">9</td><td>Disciplina ↔ Conteúdo</td><td>checkpoint grava a nota de retomada; guarda e hook cuidam do acervo e do registro de uso</td><td>[D] "Contrato file-first"; "Maestri: padrão e liberdade"</td></tr>
+    <tr><td class="n">10</td><td>Vigilância → Disciplina</td><td>estado curto lido pela checagem de sessão</td><td>[D] "Contrato file-first"; "Revisão do sync"</td></tr>
+    <tr><td class="n">11</td><td>Disciplina ↔ Ferramentas da máquina</td><td>hooks rodam na configuração do usuário; checkpoint lê a memória privada</td><td>[D] "Maestri: padrão e liberdade"; escopo do usuário [C] "Acesso dos agentes: decisão"</td></tr>
+    <tr><td class="n">12</td><td>Periferia → Cópia no GitHub</td><td>tarefa diária: commit e push, um ramo por máquina</td><td>[D] "Revisão do sync"</td></tr>
+    <tr><td class="n">13</td><td>Núcleo ↔ Rede privada ↔ Outro par</td><td>o banco de cada par envia as próprias mudanças pela rede privada</td><td>[D] "Onde o servidor mora"; "Revisão do sync"</td></tr>
+  </tbody>
+</table>
+
+<h2>Não desenhado (por falta de espaço ou de ligação decidida)</h2>
+<ul>
+  <li>Gustavo → Obsidian (seção 7.1; a caixa Quem chega não liga às Interfaces, para não cruzar o desenho).</li>
+  <li>Agentes → FreeLLMAPI, roteamento de tarefas simples [D] "Maestri: padrão e liberdade"; FreeLLMAPI fora do ar: destino [A].</li>
+  <li>Busca → Embeddings na nuvem, só se ligado [D] "Camada de busca".</li>
+  <li>Agendador do Windows → Sincronizador, Vigia e Cópia diária [D] "Revisão do sync". O agendador não está em nenhum grupo da seção 5.1.</li>
+  <li>Vault: só leitura direta pelo agente; nenhuma ligação de escrita [D] "Workloads piloto".</li>
+  <li>Tailscale da empresa: risco ao lado da rede privada, sem ligação de dados [D] "Ligar as máquinas com segurança".</li>
+</ul>
+<p class="mk-note">Estados: [D] decidido ou ticket resolvido; [C] em curso; [A] a decidir; "a construir" = decidido, ainda não construído. Este desenho não mostra a segunda instância da porta do banco para clientes com escrita [R11], por ser ligável e não padrão.</p>
+</body>
+</html>

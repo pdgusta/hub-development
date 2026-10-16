@@ -1,0 +1,63 @@
+{
+ "nome": "MCP reference servers",
+ "nome_canonico": "modelcontextprotocol/servers",
+ "chave": "gh:modelcontextprotocol/servers",
+ "url": "https://github.com/modelcontextprotocol/servers",
+ "serve": "stack",
+ "area": "mcp",
+ "identidade": "ok (a variante .../server não existe; a /tree/main/src/elasticsearch não está no README atual, que lista Everything, Fetch, Filesystem, Git, Memory, Sequential Thinking, Time)",
+ "windows": "yes: o CI tem job test-windows em windows-latest (typescript.yml e python.yml) e o README manda embrulhar o npx com cmd /c no Windows",
+ "mcp": "yes: coleção de servidores MCP de referência, rodados por npx/uvx via stdio (configuração command/args no README)",
+ "portugues": "nao_aplicavel",
+ "markdown_frontmatter": "nao_aplicavel",
+ "atualizacao": "nao_aplicavel",
+ "embeddings_endpoint": "nao_aplicavel",
+ "recursos": "Node 22 no CI para os servidores TypeScript; Python via uvx/pip para o Git e outros; sem números de memória ou disco na fonte",
+ "licenca": "Transição MIT para Apache-2.0: código novo em Apache-2.0, contribuições antigas sem consentimento seguem MIT (LICENSE; a API do GitHub dá NOASSERTION)",
+ "ultimo_release": "v1.0.0, 2026-10-11 (pacotes server-everything, server-filesystem, server-memory 1.0.0); antes, Release 2026.8.31",
+ "atividade": "último commit 2026-10-11",
+ "maturidade": "stable no versionamento (1.0.0), mas o README avisa que são implementações de referência educacionais, não produção",
+ "encaixe": "Exemplos e ponto de partida para o MCP do banco (Filesystem e Memory como modelos). Não serve de produção, precisa de cmd /c no Windows e não conhece o CouchDB.",
+ "evidencias": [
+  {
+   "campo": "identidade",
+   "url": "https://github.com/modelcontextprotocol/servers",
+   "citacao": "This repository is a collection of *reference implementations* for the Model Context Protocol (MCP)"
+  },
+  {
+   "campo": "maturidade",
+   "url": "https://github.com/modelcontextprotocol/servers",
+   "citacao": "They are meant to serve as educational examples for developers building their own MCP servers, not as production-ready solutions."
+  },
+  {
+   "campo": "windows",
+   "url": "https://github.com/modelcontextprotocol/servers",
+   "citacao": "On Windows, wrap `npx` with `cmd /c`"
+  },
+  {
+   "campo": "windows",
+   "url": "https://raw.githubusercontent.com/modelcontextprotocol/servers/main/.github/workflows/typescript.yml",
+   "citacao": "test-windows: ... runs-on: windows-latest"
+  },
+  {
+   "campo": "licenca",
+   "url": "https://raw.githubusercontent.com/modelcontextprotocol/servers/main/LICENSE",
+   "citacao": "The MCP project is undergoing a licensing transition from the MIT License to the Apache License, Version 2.0"
+  },
+  {
+   "campo": "ultimo_release",
+   "url": "https://github.com/modelcontextprotocol/servers/releases/tag/v1.0.0",
+   "citacao": "@modelcontextprotocol/server-filesystem 1.0.0 npm published"
+  },
+  {
+   "campo": "atividade",
+   "url": "https://github.com/modelcontextprotocol/servers/commits/main.atom",
+   "citacao": "updated 2026-10-11T05:10:42Z"
+  }
+ ],
+ "nao_verificado": [
+  "transporte HTTP dos servidores individuais",
+  "consumo de memória",
+  "se cada servidor individual roda no Windows sem ajuste, além do CI geral"
+ ]
+}

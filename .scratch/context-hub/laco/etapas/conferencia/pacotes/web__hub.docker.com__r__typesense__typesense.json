@@ -1,0 +1,58 @@
+{
+ "chave": "web:hub.docker.com/r/typesense/typesense",
+ "nomes": [
+  "Typesense Docker Image",
+  "Typesense Docker"
+ ],
+ "urls": [
+  "https://hub.docker.com/r/typesense/typesense",
+  "https://hub.docker.com/r/typesense/typesense-server"
+ ],
+ "readme_cortado": false,
+ "readme": "[typesense/typesense - Docker Image]\n\ntypesense/typesense\n\nBy typesense•Updated about 8 hours ago\n ⚡🔍 Fast, typo tolerant, fuzzy search engine for building delightful search experiences\n\nImage\n\nMachine learning & AI\nDeveloper tools\nDatabases & storage\n\n67\n\n10M+\n\nOverviewTags\n\ntypesense/typesense repository overview\n\nTypesense offers a delightful, out-of-the-box search experience. From instant search, to autosuggest, to faceted search, to vector search and semantic search, Typesense has got you covered.\n\nAn open source Algolia alternative and an easier-to-use ElasticSearch alternative.\n⁠Usage\n\nOn Docker, you can run Typesense like this:\n\nexport TYPESENSE_API_KEY=xyz\n\nmkdir $(pwd)/typesense-data\n\ndocker run -p 8108:8108 -v$(pwd)/typesense-data:/data typesense/typesense:30.1 \\\n --data-dir /data --api-key=$TYPESENSE_API_KEY --enable-cors\nCopy\n⁠Guide\n\nFor detailed instructions, please refer to our guide⁠.\n\nTag summary\n\nRecent tags\n\n31.0.rc20Recent tags\n\nContent type\nImage\n\nDigest\nsha256:8fe84e697…\n\nSize\n365.3 MB\n\nLast updated\nabout 8 hours ago\n\ndocker pull typesense/typesense:31.0.rc20Copy\n\nArchive\n\nGo back",
+ "fonte": "site",
+ "respostas": [
+  {
+   "por": "dots3-note-preview",
+   "resposta": {
+    "serve": "search",
+    "role": "Provides fast, typo-tolerant search with vector and semantic capabilities.",
+    "place": [
+     "network_service"
+    ],
+    "mechanism": [
+     "hybrid"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "stable",
+    "doubt": false,
+    "evidence": "Fast, typo tolerant, fuzzy search engine; docker run -p 8108:8108 -v$(pwd)/typesense-data:/data typesense/typesense:30.1"
+   }
+  },
+  {
+   "por": "nemotron-3-super-120b",
+   "resposta": {
+    "serve": "search",
+    "role": "Provides full-text and vector search for markdown notes via MCP",
+    "place": [
+     "network_service"
+    ],
+    "mechanism": [
+     "full_text",
+     "vector",
+     "embeddings"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "unknown",
+    "doubt": false,
+    "evidence": "\"⚡🔍 Fast, typo tolerant, fuzzy search engine for building delightful search experiences\" and \"vector search and semantic search\""
+   }
+  }
+ ]
+}

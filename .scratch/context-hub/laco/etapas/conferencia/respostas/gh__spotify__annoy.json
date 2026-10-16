@@ -1,0 +1,33 @@
+{
+ "chave": "gh:spotify/annoy",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T22:00:16Z",
+ "resultado": "corrige",
+ "conferencia": {
+  "resultado": "corrige",
+  "final": {
+   "serve": "search",
+   "role": "Biblioteca C++/Python de busca aproximada de vizinhos mais próximos com índices em arquivo mmap",
+   "place": [
+    "library",
+    "disk"
+   ],
+   "mechanism": [
+    "vector"
+   ],
+   "windows": "yes",
+   "maturity": "stable",
+   "evidence": "C++ library with Python bindings to search for points in space; index files mmapped; conda package on Windows",
+   "mcp": "unknown",
+   "portuguese": "unknown",
+   "license": "unknown",
+   "doubt": false
+  },
+  "o_que_mudou": [
+   "place: inside_db_mcp -> library, disk, é biblioteca com arquivos de índice",
+   "mcp: no -> unknown, README não diz",
+   "portuguese: no -> unknown, README não diz"
+  ],
+  "nota": "Índice vetorial leve e somente leitura, bom para embeddings locais; precisa de embeddings externos e IDs inteiros."
+ }
+}

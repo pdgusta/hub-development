@@ -1,0 +1,28 @@
+{
+ "chave": "gh:serilog/serilog-sinks-couchdb",
+ "urls": [
+  "https://github.com/serilog/serilog-sinks-couchdb"
+ ],
+ "tipos": [
+  "library"
+ ],
+ "termos": [
+  "CouchDB integration",
+  "Serilog sinks"
+ ],
+ "mencoes": 1,
+ "familias": [
+  "mistral"
+ ],
+ "primeira_onda": 4,
+ "nomes": [
+  "Serilog.Sinks.CouchDB (间接相关)"
+ ],
+ "resumos": [
+  "虽然主要用于日志，但可参考如何与 CouchDB 集成，可能有助于 frontmatter 数据同步逻辑。"
+ ],
+ "readme_status": "ok",
+ "readme_nome": "README.md",
+ "readme_cortado": false,
+ "readme": "### Serilog.Sinks.CouchDB\n\n[![Build status](https://ci.appveyor.com/api/projects/status/i0u84k30h2ab3lbp/branch/master?svg=true)](https://ci.appveyor.com/project/serilog/serilog-sinks-couchdb/branch/master)\n\nA Serilog sink that writes events to Apache [CouchDB](http://couchdb.org).\n\n**Package** - [Serilog.Sinks.CouchDB](http://nuget.org/packages/serilog.sinks.couchdb)\n| **Platforms** - .NET 4.5\n\nYou'll need to create a database on your CouchDB server. In the example shown, it is called `log`.\n\n```csharp\nvar log = new LoggerConfiguration()\n    .WriteTo.CouchDB(\"http://mycouchdb/log/\")\n    .CreateLogger();\n```\n"
+}

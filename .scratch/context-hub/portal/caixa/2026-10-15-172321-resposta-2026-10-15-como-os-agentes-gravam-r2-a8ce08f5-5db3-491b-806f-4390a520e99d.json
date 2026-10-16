@@ -1,0 +1,66 @@
+{
+  "envio": "a8ce08f5-5db3-491b-806f-4390a520e99d",
+  "tipo": "resposta",
+  "enviada": "2026-10-15T17:23:21-03:00",
+  "alvo": {
+    "tipo": "rodada",
+    "id": "2026-10-15-como-os-agentes-gravam-r2",
+    "titulo": "Por onde o agente grava, agora com o teste"
+  },
+  "ticket": "11",
+  "substitui": null,
+  "rodada": {
+    "id": "2026-10-15-como-os-agentes-gravam-r2",
+    "base": "ec3c1b00a0b4d386ad15ec7a16bd0b8604c65a3a146c7867b0b1ca88b318d9e8",
+    "titulo": "Por onde o agente grava, agora com o teste",
+    "ticket": "11",
+    "perguntas": [
+      {
+        "id": "disco-ou-mcp",
+        "titulo": "Por onde o agente grava, nas sessões do Claude Code, do Codex e do Copilot",
+        "tipo": "escolha",
+        "recomendada": [
+          "A"
+        ],
+        "opcoes": [
+          {
+            "chave": "A",
+            "texto": "Pelos dois, cada um no que confere: no disco, só troca de trecho, segura nos três pelo teste; a regravação inteira de um arquivo que já existe vai pelo `write_note` do MCP do banco, com a versão lida. Um hook antes da ferramenta recusa no disco a regravação inteira de arquivo existente (o Write do Claude Code, o criar e a regravação do `apply_patch`, o criar do Copilot) e manda usar o MCP. Arquivo novo nasce no disco"
+          },
+          {
+            "chave": "B",
+            "texto": "Disco livre, sem hook, confiando no que as ferramentas já conferem: menos construção, mas ficam abertos os dois furos do teste (o Claude Code regrava arquivo que não leu e o Codex cria por cima de arquivo existente, os dois sem aviso)"
+          },
+          {
+            "chave": "C",
+            "texto": "Guarda por marca: um hook guarda o hash do arquivo quando o agente lê e recusa qualquer gravação no disco se ele mudou. Funciona no Claude Code e no Copilot, que avisam a leitura ao hook; o Codex lê por comando de shell, e reconhecer a leitura dentro de um comando de shell não é confiável (não testado)"
+          }
+        ],
+        "proposta": null
+      },
+      {
+        "id": "algo-mais",
+        "titulo": "Algo mais?",
+        "tipo": "texto",
+        "recomendada": [],
+        "opcoes": [],
+        "proposta": null
+      }
+    ]
+  },
+  "corpo_hash": "1f984343bbaba92e92c961e92047d6ff0f32d410841739783db6e56ab853f8df",
+  "corpo": {
+    "tipo": "resposta",
+    "rodada": "2026-10-15-como-os-agentes-gravam-r2",
+    "base": "ec3c1b00a0b4d386ad15ec7a16bd0b8604c65a3a146c7867b0b1ca88b318d9e8",
+    "respostas": {
+      "disco-ou-mcp": {
+        "escolha": [
+          "A"
+        ],
+        "outra": null,
+        "comentario": null
+      }
+    }
+  }
+}

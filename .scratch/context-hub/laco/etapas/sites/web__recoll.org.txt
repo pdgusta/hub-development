@@ -1,0 +1,302 @@
+Recoll
+
+Links 
+Downloads 
+Documentation 
+Screenshots 
+Support 
+Helping out and donations 
+En Français 
+
+Table of Contents
+
+News
+
+Full-text search for your desktop.
+
+Recoll finds documents based on
+their contents as well as their file names.
+
+Versions are available for Linux,
+MS Windows and
+MacOS.
+
+It can search most document formats.
+You may need external applications for text extraction.
+
+It can reach any storage place: files, archive members, email attachments, transparently
+handling decompression.
+
+One click will open the document inside a native editor or display an even quicker text preview.
+
+A WEB front-end with preview and download features
+can replace or supplement the GUI for remote use.
+
+The software is free on Linux, open source, and licensed under the GPL.
+
+Detailed features and application requirements for supported document
+types.
+
+Recoll will index an MS-Word document stored as an attachment to an e-mail
+message inside a Thunderbird folder archived in a Zip file (and more…​). It will
+also help you search for it with a friendly and powerful interface, and let you open a copy of a PDF
+at the right page with two clicks. There is little that will remain hidden on your disk.
+
+The current Recoll version is 1.44.2
+(Release history, Release notes).
+
+Recoll is based on the very capable Xapian search engine library, for
+which it provides a powerful text extraction layer and a complete, yet easy to use, Qt graphical
+interface.
+
+Recoll has extensive documentation. If you run into a problem, or
+want to propose improvements, you are welcome to use the mailing list or
+problem tracker. Even if you are already using Recoll, maybe there are still a few useful search
+tricks that you don’t know about. A quick look at the
+search tips might prove useful ! Also the
+Faqs and Howtos section, and some contributed
+result list formats.
+
+Recoll could not exist without a rich free software environment. See the
+credits. Thanks !
+
+News
+
+2026-09-01 
+
+Recoll 1.44.2. Release notes.
+
+2026-07-01 
+
+There are still frequent display issues with Qt on Wayland. These are quite often
+solved by switching to the X11 API: set QT_QPA_PLATFORM=xcb in the environment.
+
+2026-02-25 
+
+Recoll GSSP 1.1.4. Almost no change: got rid of a useless desktop file which resulted
+in confusing output from app search.
+
+2026-01-01 
+
+I have been experimenting a bit with
+language models and running semantic searches in Recoll.
+
+2025-05-10 
+
+Ubuntu PPA and local Debian packages: due to a package name change
+(librecoll→librecoll39), and my insufficient Debian packaging abilities, upgrading currently does
+not work. The workaround is to remove and reinstall recoll:
+
+dpkg -l '*recoll*'
+sudo dpkg -r <<all in the above>>
+sudo apt update
+sudo apt install recoll
+
+2025-05-06 
+
+Recoll 1.43.2: a classic (aka stupid) static initialisation order bug causes immediate
+crashes of recoll in systems which have switched to gcc 15 (and maybe others, this is definitely a
+recoll bug). This is fixed in 1.43.2, released today.
+
+2025-05-02 
+
+Recoll 1.43.1.
+
+2024-12-14 
+
+Up to the fix in 1.41.1, there is a bug in the newish indexing method
+using multiple temporary indexes (not
+default), you’re not affected if you did not configure it.
+
+2024-11-28 
+
+There is now an Android
+application and its companion server for using
+Recoll from a mobile device.
+
+2024-11-22 
+
+Recoll (1.41) now correctly processes Tibetan, using n-grams. There are a
+few notes about font
+issues. Medium version bump because of slight changes to the text splitter.
+
+2024-11-21 
+
+Someone (NN708, not me) made a flatpak for recoll. It is now available on
+flathub. More details on the
+downloads page.
+
+2024-11-15 
+
+recoll 1.40.4. Small fixes. See the release notes. The
+appimage file was updated to this version.
+
+2024-11-09 
+
+I’ve set up a Recoll WEBUI instance to search the documentation on this site. Please
+give it a try and maybe tell me if this looks useful
+(jf@dockes.org).
+
+2024-08-04 
+
+recoll 1.39.4. Small fixes. See the release notes.
+
+2024-07-18 
+
+If you wondered how big a Recoll index could be: the answer is: very big
+(According to this reddit post).
+
+2024-05-30 
+
+Recoll 1.39.0: allow configuring non-alphanumeric characters (e.g., ,%$€) to be
+indexed as separate words. Allows searching for things which would previously have been
+indiscriminately mixed up.
+
+2024-03-28 
+
+Recoll gets an AppImage. This will index and search
+many document formats (not all) on most Linux distributions from around 2019 (the image is built on
+Debian Buster) and newer.
+
+2024-03-08 
+
+The Recoll WEB pages have been moved to their own host: https://www.recoll.org, for
+clarification and security.
+
+2024-02-02 
+
+release 1.37.4: indexer for Joplin notes. Misc bug fixes. See the
+release notes.
+
+2022-12-07 
+
+Debian repositories on this site: the repository key has expired on the 6th of
+December. It has been extended and the repositories re-signed, but you will need to
+download and install the key
+again
+
+2021-03-09 
+
+A contributed script for
+indexing Anki flashcards, and another for a
+Newsboat RSS reader.
+
+2021-02-03 
+
+There is now a new way to install Recoll on macOS.
+
+2020-11-21 
+
+New version 1.1.0 for the Recoll Gnome Shell Search Provider (recoll GSSP). Version
+1.0.0 had stopped working with newer Gnome versions.
+
+2020-11-18 
+
+Version 1.27.12. Improved Korean indexing, docx
+endnotes and footnotes support, easy switch to dark mode and misc. bug fixes, see the
+release notes.
+
+2020-11-02 
+
+A new article by a kind Recoll user
+about using Linux cgroups to limit indexing CPU usage.
+
+2020-04-03 
+
+Version 1.26.7. Fix the GUI settings issue described above for 1.26.6, for those who
+have not run 1.26.6 yet.
+
+2020-03-26 1.26.6 update, loss of GUI preferences 
+
+Version 1.26.6. Small fixes. See the
+release notes
+
+A change in 1.26.6, which was supposedly intended for Windows, has unfortunately resulted in a
+change of name for the GUI preferences file under Linux. This was previously named
+~/.config/Recoll.org/recoll.conf, and it is is now ~/.config/Recoll.org/recoll.ini. Changing back
+would risk causing even more trouble for the people who have began using the new file, and besides,
+the new name avoids confusion with the indexing configuration file ~/.recoll/recoll.conf. In order
+to recover your preferences, please exit recoll, then rename ~/.config/Recoll.org/recoll.conf to
+~/.config/Recoll.org/recoll.ini.
+
+2020-03-08 
+
+The Recoll source repository and issues tracker moves to
+framagit. It was nice to find the opensourceprojects.eu
+haven when leaving Github, but there are now better alternatives. Framagit runs on the Gitlab
+software.
+
+2020-02-28 
+
+Version 1.26.5. Vastly improved OCR support, with caching. See the
+release notes and the
+manual.
+
+2019 
+
+Recoll now has a Gnome Shell Search Provider. See the 
+downloads page.
+
+2019-10-07 
+
+Version 1.25.23. Fixes a nasty bug in the mbox parser. Needed if you want to index
+gmail exports. Other small fixes. See the release notes.
+
+2019-02-19 
+
+Version 1.25.4. Full switch to Python3, new completer tool. See the
+release notes.
+
+2019-01-31 
+
+Version 1.24.5. Fixes an ennoying bug with recollindex -z resetting the index format
+to the one compatible with Xapian 1.2 and problematic with Xapian 1.4.
+
+2017-12-08 
+
+Version 1.23.6 is released to provide a workaround to the Xapian 1.4 snippets
+generation issue. It will create indexes with the previous 'Chert' index format by default. If your
+index is in 'Glass' format and you are experiencing the UI freezes, you will need to delete it, by
+actually running rm -rf on the directory, (typically rm -rf ~/.recoll/xapiandb) before
+restarting the indexing.
+
+2017-11-24 
+
+Release 1.23.5 has a few changes and fixes and supports the
+(still experimental) new version of
+the Web browser extension. Also, I split the Debian/Ubuntu packages into command-line/GUI parts
+(recollcmd/recollgui), with a top recoll packages which depends on both, and this causes
+conflicts during the upgrade. For upgrading, either first delete the recoll package, then upgrade
+and reinstall recoll, or fix the issues with apt -f upgrade
+
+2017-07-31 
+
+Finalizing the move to the new site, I am closing the old BitBucket project. The
+existing BitBucket issues have been archived.
+
+2014-02-27 
+
+While working on a
+Recoll-Mutt interface I
+discovered incidentally that the Recoll Webui Web
+interface works quite well with the links web browser inside a
+terminal window. This appears to be an interesting solution for people looking for a search
+interface usable in a non-GUI environment.
+
+2013-04-30 
+
+Thanks to some of its users, Recoll now has filters to
+ index and retrieve Lotus Notes messages
+(some
+
+implementation notes from an early user), and there is also now a
+ Web browser interface for querying your Recoll
+indexes.
+
+2012-09-11 
+
+A new user-contributed script for those who use real-time indexing on laptops: stop or
+start indexing according to AC power status. See the details on the
+Wiki.
+
+Last updated 2026-09-24 09:20:59 +0200

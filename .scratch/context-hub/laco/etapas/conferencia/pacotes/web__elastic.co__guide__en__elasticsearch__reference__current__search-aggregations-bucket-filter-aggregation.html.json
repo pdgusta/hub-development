@@ -1,0 +1,56 @@
+{
+ "chave": "web:elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-filter-aggregation.html",
+ "nomes": [
+  "Elasticsearch Filter Aggregations",
+  "Elasticsearch Filter Aggregation"
+ ],
+ "urls": [
+  "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-filter-aggregation.html"
+ ],
+ "readme_cortado": false,
+ "readme": "[Filter aggregation | Elasticsearch Reference]\n\nDocs\n\n /\n\n Reference\n\n /\n\n Elasticsearch\n\n /\n\n Aggregations\n\n /\n\n Bucket\n\nFilter aggregation\n\nA single bucket aggregation that narrows the set of documents to those that match a query.\n\nExample:\n\n POST /sales/_search?size=0&filter_path=aggregations\n {\n \"aggs\": {\n \"avg_price\": { \"avg\": { \"field\": \"price\" } },\n \"t_shirts\": {\n \"filter\": { \"term\": { \"type\": \"t-shirt\" } },\n \"aggs\": {\n \"avg_price\": { \"avg\": { \"field\": \"price\" } }\n }\n }\n }\n}\n\nThe previous example calculates the average price of all sales as well as the average price of all T-shirt sales.\n\nResponse:\n\n{\n \"aggregations\": {\n \"avg_price\": { \"value\": 140.71428571428572 },\n \"t_shirts\": {\n \"doc_count\": 3,\n \"avg_price\": { \"value\": 128.33333333333334 }\n }\n }\n}\n\nUse a top-level query to limit all aggregations\n\nTo limit the documents on which all aggregations in a search run, use a top-level query. This is faster than a single filter aggregation with sub-aggregations.\n\nFor example, use this:\n\n POST /sales/_search?size=0&filter_path=aggregations\n {\n \"query\": { \"term\": { \"type\": \"t-shirt\" } },\n \"aggs\": {\n \"avg_price\": { \"avg\": { \"field\": \"price\" } }\n }\n}\n\nInstead of this:\n\n POST /sales/_search?size=0&filter_path=aggregations\n {\n \"aggs\": {\n \"t_shirts\": {\n \"filter\": { \"term\": { \"type\": \"t-shirt\" } },\n \"aggs\": {\n \"avg_price\": { \"avg\": { \"field\": \"price\" } }\n }\n }\n }\n}\n\nUse the filters aggregation for multiple filters\n\nTo group documents using multiple filters, use the filters aggregation. This is faster than multiple filter aggregations.\n\nFor example, use this:\n\n POST /sales/_search?size=0&filter_path=aggregations\n {\n \"aggs\": {\n \"f\": {\n \"filters\": {\n \"filters\": {\n \"hats\": { \"term\": { \"type\": \"hat\" } },\n \"t_shirts\": { \"term\": { \"type\": \"t-shirt\" } }\n }\n },\n \"aggs\": {\n \"avg_price\": { \"avg\": { \"field\": \"price\" } }\n }\n }\n }\n}\n\nInstead of this:\n\n POST /sales/_search?size=0&filter_path=aggregations\n {\n \"aggs\": {\n \"hats\": {\n \"filter\": { \"term\": { \"type\": \"hat\" } },\n \"aggs\": {\n \"avg_price\": { \"avg\": { \"field\": \"price\" } }\n }\n },\n \"t_shirts\": {\n \"filter\": { \"term\": { \"type\": \"t-shirt\" } },\n \"aggs\": {\n \"avg_price\": { \"avg\": { \"field\": \"price\" } }\n }\n }\n }\n}",
+ "fonte": "site",
+ "respostas": [
+  {
+   "por": "ministral-14b",
+   "resposta": {
+    "serve": "stack",
+    "role": "enables filtered aggregations for analytics on indexed data",
+    "place": [
+     "network_service",
+     "library"
+    ],
+    "mechanism": [
+     "other"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "no",
+    "license": "unknown",
+    "maturity": "unknown",
+    "doubt": true,
+    "evidence": "README describes Elasticsearch filter aggregations for document grouping/analytics; no mention of MCP, Windows, or Portuguese support."
+   }
+  },
+  {
+   "por": "diffusiongemma-26b-a4b-it",
+   "resposta": {
+    "serve": "search",
+    "role": "Narrows sets of documents to match specific queries within search aggregations.",
+    "place": [
+     "network_service"
+    ],
+    "mechanism": [
+     "other"
+    ],
+    "mcp": "no",
+    "windows": "unknown",
+    "portuguese": "no",
+    "license": "unknown",
+    "maturity": "stable",
+    "doubt": true,
+    "evidence": "A single bucket aggregation that narrows the set of documents to those that match a query."
+   }
+  }
+ ]
+}

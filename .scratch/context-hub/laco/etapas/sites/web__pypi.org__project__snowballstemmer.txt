@@ -1,0 +1,880 @@
+Skip to main content
+ Switch to mobile version
+
+snowballstemmer 3.1.1
+
+This package provides 36 stemmers for 34 languages generated from Snowball algorithms.
+
+ pip install snowballstemmer
+
+ Copy PIP instructions
+
+Python 3 (>= 3.3) is supported. We no longer support Python 2 as the Python
+developers stopped supporting it at the start of 2020. Snowball 2.1.0 was the
+last release to officially support Python 2; Snowball 3.0.1 was the last
+release which had the code to support Python 2, but we were no longer testing
+it.
+
+What is Stemming?
+
+Stemming maps different forms of the same word to a common “stem” - for
+example, the English stemmer maps connection, connections, connective,
+connected, and connecting to connect. So a search for connected
+would also find documents which only have the other forms.
+
+This stem form is often a word itself, but this is not always the case as this
+is not a requirement for text search systems, which are the intended field of
+use. We also aim to conflate words with the same meaning, rather than all
+words with a common linguistic root (so awe and awful don’t have the same
+stem), and over-stemming is more problematic than under-stemming so we tend not
+to stem in cases that are hard to resolve. If you want to always reduce words
+to a root form and/or get a root form which is itself a word then Snowball’s
+stemming algorithms likely aren’t the right answer.
+
+How to use library
+
+The stemming algorithms generally expect the input text to use composed accents
+(Unicode NFC or NFKC) and to have been folded to lower case already.
+
+The snowballstemmer module has two functions.
+
+The snowballstemmer.algorithms function returns a list of available
+algorithm names.
+
+The snowballstemmer.stemmer function takes an algorithm name and returns a
+Stemmer object.
+
+Stemmer objects have a Stemmer.stemWord(word) method and a
+Stemmer.stemWords(word[]) method.
+
+import snowballstemmer
+
+stemmer = snowballstemmer.stemmer('english')
+print(stemmer.stemWords("We are the world".split()))
+
+Generally you should create a stemmer object and reuse it rather than creating
+a fresh object for each word stemmed (since there’s some cost to creating and
+destroying the object).
+
+The stemmer code is re-entrant, but not thread-safe if the same stemmer object
+is used concurrently in different threads.
+
+If you want to perform stemming concurrently in different threads, we suggest
+creating a new stemmer object for each thread. The alternative is to share
+stemmer objects between threads and protect access using a mutex or similar
+(e.g. threading.Lock in Python) but that’s liable to slow your program down
+as threads can end up waiting for the lock.
+
+Automatic Acceleration
+
+PyStemmer is a wrapper module for
+Snowball’s libstemmer_c and should provide results 100% compatible to
+snowballstemmer.
+
+PyStemmer is faster because it wraps generated C versions of the stemmers;
+snowballstemmer uses generate Python code and is slower but offers a pure
+Python solution.
+
+If PyStemmer is installed, snowballstemmer.stemmer returns a PyStemmer
+Stemmer object which provides the same Stemmer.stemWord() and
+Stemmer.stemWords() methods.
+
+Benchmark
+
+This is a crude benchmark which measures the time for running each stemmer on
+every word in its sample vocabulary (10,787,583 words over 26 languages). It’s
+not a realistic test of normal use as a real application would do much more
+than just stemming. It’s also skewed towards the stemmers which do more work
+per word and towards those with larger sample vocabularies.
+
+Python 2.7 + snowballstemmer : 13m00s (15.0 * PyStemmer)
+
+Python 3.7 + snowballstemmer : 12m19s (14.2 * PyStemmer)
+
+PyPy 7.1.1 (Python 2.7.13) + snowballstemmer : 2m14s (2.6 * PyStemmer)
+
+PyPy 7.1.1 (Python 3.6.1) + snowballstemmer : 1m46s (2.0 * PyStemmer)
+
+Python 2.7 + PyStemmer : 52s
+
+For reference the equivalent test for C runs in 9 seconds.
+
+These results are for Snowball 2.0.0. They’re likely to evolve over time as
+the code Snowball generates for both Python and C continues to improve (for
+a much older test over a different set of stemmers using Python 2.7,
+snowballstemmer was 30 times slower than PyStemmer, or 9 times slower
+with PyPy).
+
+The message to take away is that if you’re stemming a lot of words you should
+either install PyStemmer (which snowballstemmer will then automatically
+use for you as described above) or use PyPy.
+
+The TestApp example
+
+The testapp.py example program allows you to run any of the stemmers
+on a sample vocabulary.
+
+Usage:
+
+testapp.py <algorithm> "sentences ... "
+
+$ python testapp.py English "sentences... "
+
+Project links
+
+Data verified by PyPI on Jun 3, 2026 
+
+Data provided by the project maintainers, verified at the time the release was uploaded to PyPI. 
+
+ Homepage
+
+Key dates
+
+ PyPI data
+
+Data sourced directly from PyPI's database.
+
+ Released: 
+ Jun 3, 2026
+
+ Latest release
+
+2 maintainers 
+
+ PyPI data
+
+Data sourced directly from PyPI's database.
+
+ mitya57
+
+ shibu
+
+Credits
+
+Author: 
+ Snowball Developers
+
+GitHub Statistics
+
+ Data verified by PyPI on Jun 3, 2026
+
+The GitHub source repository was provided by the project maintainers and verified by PyPI at the time of upload. Stars, forks, and open issues/PRs are derived from that repository and have not been independently verified.
+
+Repository 
+
+Stars:
+
+Forks:
+
+Open issues:
+
+Open PRs:
+
+License
+
+BSD-3-Clause
+
+Requires
+
+Python >=3.3
+
+Tags
+
+ stemmer
+
+Classifiers
+
+ Development Status
+
+ 5 - Production/Stable
+
+ Intended Audience
+
+ Developers
+
+ Natural Language
+
+ Arabic
+
+ Armenian
+
+ Basque
+
+ Catalan
+
+ Czech
+
+ Danish
+
+ Dutch
+
+ English
+
+ Esperanto
+
+ Estonian
+
+ Finnish
+
+ French
+
+ German
+
+ Greek
+
+ Hindi
+
+ Hungarian
+
+ Indonesian
+
+ Irish
+
+ Italian
+
+ Lithuanian
+
+ Nepali
+
+ Norwegian
+
+ Persian
+
+ Polish
+
+ Portuguese
+
+ Romanian
+
+ Russian
+
+ Serbian
+
+ Spanish
+
+ Swedish
+
+ Tamil
+
+ Turkish
+
+ Yiddish
+
+ Operating System
+
+ OS Independent
+
+ Programming Language
+
+ Python
+
+ Python :: 3
+
+ Python :: 3.3
+
+ Python :: 3.4
+
+ Python :: 3.5
+
+ Python :: 3.6
+
+ Python :: 3.7
+
+ Python :: 3.8
+
+ Python :: 3.9
+
+ Python :: 3.10
+
+ Python :: 3.11
+
+ Python :: 3.12
+
+ Python :: 3.13
+
+ Python :: 3.14
+
+ Python :: Implementation :: CPython
+
+ Python :: Implementation :: PyPy
+
+ Topic
+
+ Database
+
+ Internet :: WWW/HTTP :: Indexing/Search
+
+ Text Processing :: Indexing
+
+ Text Processing :: Linguistic
+
+ Report project as malware
+
+Metadata
+
+Project links
+
+Data verified by PyPI on Jun 3, 2026 
+
+Data provided by the project maintainers, verified at the time the release was uploaded to PyPI. 
+
+ Homepage
+
+Key dates
+
+ PyPI data
+
+Data sourced directly from PyPI's database.
+
+ Released: 
+ Jun 3, 2026
+
+ Latest release
+
+2 maintainers 
+
+ PyPI data
+
+Data sourced directly from PyPI's database.
+
+ mitya57
+
+ shibu
+
+Credits
+
+Author: 
+ Snowball Developers
+
+GitHub Statistics
+
+ Data verified by PyPI on Jun 3, 2026
+
+The GitHub source repository was provided by the project maintainers and verified by PyPI at the time of upload. Stars, forks, and open issues/PRs are derived from that repository and have not been independently verified.
+
+Repository 
+
+Stars:
+
+Forks:
+
+Open issues:
+
+Open PRs:
+
+License
+
+BSD-3-Clause
+
+Requires
+
+Python >=3.3
+
+Tags
+
+ stemmer
+
+Classifiers
+
+ Development Status
+
+ 5 - Production/Stable
+
+ Intended Audience
+
+ Developers
+
+ Natural Language
+
+ Arabic
+
+ Armenian
+
+ Basque
+
+ Catalan
+
+ Czech
+
+ Danish
+
+ Dutch
+
+ English
+
+ Esperanto
+
+ Estonian
+
+ Finnish
+
+ French
+
+ German
+
+ Greek
+
+ Hindi
+
+ Hungarian
+
+ Indonesian
+
+ Irish
+
+ Italian
+
+ Lithuanian
+
+ Nepali
+
+ Norwegian
+
+ Persian
+
+ Polish
+
+ Portuguese
+
+ Romanian
+
+ Russian
+
+ Serbian
+
+ Spanish
+
+ Swedish
+
+ Tamil
+
+ Turkish
+
+ Yiddish
+
+ Operating System
+
+ OS Independent
+
+ Programming Language
+
+ Python
+
+ Python :: 3
+
+ Python :: 3.3
+
+ Python :: 3.4
+
+ Python :: 3.5
+
+ Python :: 3.6
+
+ Python :: 3.7
+
+ Python :: 3.8
+
+ Python :: 3.9
+
+ Python :: 3.10
+
+ Python :: 3.11
+
+ Python :: 3.12
+
+ Python :: 3.13
+
+ Python :: 3.14
+
+ Python :: Implementation :: CPython
+
+ Python :: Implementation :: PyPy
+
+ Topic
+
+ Database
+
+ Internet :: WWW/HTTP :: Indexing/Search
+
+ Text Processing :: Indexing
+
+ Text Processing :: Linguistic
+
+ Report project as malware
+
+Release files for snowballstemmer 3.1.1
+
+For a detailed explanation of source distributions (sdists) and built distributions (wheels), please see the package formats documentation. 
+
+Source distribution (sdist) 
+
+ Source distribution for snowballstemmer 3.1.1
+
+ File
+ Size
+ Uploaded
+
+ snowballstemmer-3.1.1.tar.gz
+
+ 123.3 kB
+
+ Jun 3, 2026
+
+ Details
+
+Built distribution (wheel) 
+
+ Table of built distributions (wheels) for snowballstemmer 3.1.1
+
+ File
+
+Interpreter 
+
+ABI 
+
+Platform 
+
+ Reset
+
+ snowballstemmer-3.1.1-py3-none-any.whl
+
+ 104.2 kB
+
+ Jun 3, 2026
+
+ Python 3
+
+ none
+
+ any
+
+ Details
+
+ Total release size: 227.5 kB
+
+ Release files
+ / snowballstemmer-3.1.1.tar.gz
+
+ Download URL
+
+ snowballstemmer-3.1.1.tar.gz
+
+ Size
+ 123.3 kB
+
+ Tags
+
+ Source
+
+SHA-256 checksum 
+
+ How to use checksums
+
+ e07bbc54a0d798fe6010a12398422e62a8bfbba95c394fd0956ef58cb4d3e260
+
+BLAKE2b-256 checksum 
+
+ How to use checksums
+
+ 43f80a71edf031f03c40db17503cb8ca78a69a171254e568e7db241b0ab57ea1
+
+ Upload date
+
+ Jun 3, 2026
+
+Uploaded using Trusted Publishing? 
+
+ What is trusted publishing?
+
+Yes 
+
+ Uploaded via
+
+ twine/6.1.0 CPython/3.13.12
+
+Provenance
+
+Provenance describes where a file came from. On PyPI, provenance is shared via attestations, which provide a verifiable record of the build or publishing details. View details, limitations and caveats. 
+
+PyPI Publish 
+Attestation 
+
+PyPI verified that this artifact, at this checksum, originated from the publisher listed below. 
+
+Signed by GitHub Actions, verified by PyPI on Jun 3, 2026. 
+
+ Transparency log
+
+ Identity
+
+Publishing platform 
+
+ GitHub Actions
+
+Publishing repository 
+
+ github.com/snowballstem/snowball
+
+Publishing commit 
+
+ github.com/snowballstem/snowball/tree/cd195b51e948a902a4312f023f4a14392516a543
+
+Workflow 
+
+Publishing configuration 
+
+ github.com/snowballstem/snowball/blob/cd195b51e948a902a4312f023f4a14392516a543/.github/workflows/ci.yml
+
+Publishing logs 
+
+ github.com/snowballstem/snowball/actions/runs/26856133689/attempts/1
+
+ Artifact
+
+ Subject
+
+ snowballstemmer-3.1.1.tar.gz
+
+ SHA-256 checksum
+
+ e07bbc54a0d798fe6010a12398422e62a8bfbba95c394fd0956ef58cb4d3e260
+
+ Verifying attestations
+
+ Release files
+ / snowballstemmer-3.1.1-py3-none-any.whl
+
+ Download URL
+
+ snowballstemmer-3.1.1-py3-none-any.whl
+
+ Size
+ 104.2 kB
+
+ Tags
+
+ Python 3
+
+SHA-256 checksum 
+
+ How to use checksums
+
+ 7e207fa178741da09cdee59d3ecec3827ad5f92b1fc5c9ff3755b639f71f5752
+
+BLAKE2b-256 checksum 
+
+ How to use checksums
+
+ 4c072ebca9b11fb9be7340a818d8d6f63feaebb146be2c4afbd6061701d6df6e
+
+ Upload date
+
+ Jun 3, 2026
+
+Uploaded using Trusted Publishing? 
+
+ What is trusted publishing?
+
+Yes 
+
+ Uploaded via
+
+ twine/6.1.0 CPython/3.13.12
+
+Provenance
+
+Provenance describes where a file came from. On PyPI, provenance is shared via attestations, which provide a verifiable record of the build or publishing details. View details, limitations and caveats. 
+
+PyPI Publish 
+Attestation 
+
+PyPI verified that this artifact, at this checksum, originated from the publisher listed below. 
+
+Signed by GitHub Actions, verified by PyPI on Jun 3, 2026. 
+
+ Transparency log
+
+ Identity
+
+Publishing platform 
+
+ GitHub Actions
+
+Publishing repository 
+
+ github.com/snowballstem/snowball
+
+Publishing commit 
+
+ github.com/snowballstem/snowball/tree/cd195b51e948a902a4312f023f4a14392516a543
+
+Workflow 
+
+Publishing configuration 
+
+ github.com/snowballstem/snowball/blob/cd195b51e948a902a4312f023f4a14392516a543/.github/workflows/ci.yml
+
+Publishing logs 
+
+ github.com/snowballstem/snowball/actions/runs/26856133689/attempts/1
+
+ Artifact
+
+ Subject
+
+ snowballstemmer-3.1.1-py3-none-any.whl
+
+ SHA-256 checksum
+
+ 7e207fa178741da09cdee59d3ecec3827ad5f92b1fc5c9ff3755b639f71f5752
+
+ Verifying attestations
+
+ Release history
+
+ Release notifications |
+ RSS feed 
+
+ This release
+
+ 3.1.1
+ This release
+
+ Jun 3, 2026
+
+ 2 release files
+
+ 3.1.0
+
+ May 24, 2026
+
+ 2 release files
+
+ 3.0.1
+
+ May 9, 2025
+
+ 2 release files
+
+ 3.0.0.1
+
+ May 8, 2025
+
+ 2 release files
+
+ Yanked
+
+ 3.0.0
+
+ May 8, 2025
+
+ 2 release files
+
+Yanked reason: https://github.com/snowballstem/snowball/issues/229
+
+ 2.2.0
+
+ Nov 16, 2021
+
+ 2 release files
+
+ 2.1.0
+
+ Jan 21, 2021
+
+ 2 release files
+
+ 2.0.0
+
+ Oct 3, 2019
+
+ 2 release files
+
+ 1.9.1
+
+ Sep 5, 2019
+
+ 1 release file
+
+ 1.9.0
+
+ Jun 26, 2019
+
+ 1 release file
+
+ 1.2.1
+
+ Dec 25, 2015
+
+ 2 release files
+
+ 1.2.0
+
+ Jul 16, 2014
+
+ 1 release file
+
+ 1.1.0
+
+ Feb 16, 2013
+
+ 1 release file
+
+ 1.0.0
+
+ Feb 15, 2013
+
+ 1 release file
+
+ 0.1.0
+
+ Feb 15, 2013
+
+ 1 release file
+
+ Anthropic, PBC
+ Visionary sponsor
+
+ Bloomberg
+ Visionary sponsor
+
+ Hudson River Trading
+ Visionary sponsor
+
+ Meta
+ Visionary sponsor
+
+ NVIDIA
+ Visionary sponsor
+
+ Microsoft
+ Sustainability sponsor
+
+ Depot
+ Continuous Integration
+
+ AWS
+ Cloud computing and Security Sponsor
+
+ Datadog
+ Monitoring
+
+ Fastly
+ CDN
+
+ Google
+ Download Analytics
+
+ Sentry
+ Error logging
+
+ StatusPage
+ Status page
+
+"PyPI", "Python Package Index", and the blocks logos are registered trademarks of the Python Software Foundation.
+
+ © 2026 Python Software Foundation
+
+ Site map
+
+Deployed from 63f0d55

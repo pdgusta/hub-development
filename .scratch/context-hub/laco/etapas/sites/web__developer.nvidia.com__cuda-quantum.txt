@@ -1,0 +1,185 @@
+NVIDIA CUDA-Q
+
+CUDA-Q™ is NVIDIA’s open platform for quantum computing and the foundation for accelerated quantum supercomputing.
+
+Get Started
+
+pip install cudaq
+
+How CUDA-Q Works
+
+CUDA-Q is an open-source quantum development platform for running powerful, large-scale quantum computing applications. It uses a kernel-based programming model that extends the proven power of NVIDIA CUDA™ to quantum accelerators, enabling computation across GPU, CPU, and QPU resources within a single program. CUDA-Q integrates with any QPU or qubit modality and supports both GPU-QPU integration and GPU-accelerated simulation.
+
+Built for the Future of Quantum Computing
+
+CUDA-Q is designed for researchers and engineers building at the frontier of quantum computing, with a full suite of libraries and developer tools covering quantum error correction, algorithm development, and more. The platform supports industry-leading simulators and real quantum processors from a growing ecosystem of hardware vendors. Both can leverage AI supercomputing to accelerate GPU simulations or control and enhance QPU operations, charting a clear path from today’s NISQ devices to large-scale, error-corrected quantum-GPU supercomputing.
+
+Part of an Ecosystem
+
+CUDA-Q is a modular quantum computing platform. It includes Python and C++ programming models, high-performance compilers, libraries for fault-tolerant workloads, quantum error correction and algorithm development, accelerated decoders, QPU and simulator backends, open AI models, and a broad set of tools and datasets. Behind it all is the world’s largest ecosystem of hardware, software, control, and applications partners building on the platform.
+
+Key Features
+
+Write Once, Run Everywhere
+
+CUDA-Q is QPU agnostic and integrates with 75% of publicly available QPUs. Write your code once and run on all qubit modalities.
+
+Use Familiar Tools
+
+Use Python or C++ to describe your algorithm in a high-level language. The CUDA-Q compiler will lower and optimize the code based on the backend, using industry tools such as Multi-Level Intermediate Representation (MLIR), Low Level Virtual Machine (LLVM), and Quantum Intermediate Representation (QIR).
+
+Be Part of the Community
+
+CUDA-Q is an open-source project and is part of the quantum community. It interops with AI and high-performance computing (HPC) libraries and visualization tools. 
+
+Starter Kits
+
+Quick-Start to Quantum-GPU Supercomputing
+
+New to quantum? Learn the basics and program your first quantum-GPU application.
+
+Read An Introduction to Accelerated Quantum Supercomputing.
+
+Watch the GTC presentation.
+
+Explore a CUDA-Q Hello World program.
+
+View the tutorial and follow along with the notebooks.
+
+Quantum Error Correction
+
+Learn how to do quantum error correction with CUDA-Q.
+
+Read the blog about CUDA-Q QEC.
+
+Complete the QEC 101 Learning Path.
+
+Explore CUDA-Q QEC documentation.
+
+Run the QEC examples.
+
+Dynamic Simulation
+
+Learn about the dynamics capabilities in CUDA-Q.
+
+Read the blog that introduces the dynamics capabilities.
+
+Read CUDA-Q dynamics documentation.
+
+Explore different qubit modalities’ examples of system time evolution
+
+.
+
+Optimization
+
+Use AI to build quantum circuits to solve the max-cut problem with a generative pretrained transformer for the Quantum Approximate Optimization Algorithm (QAOA-GPT).
+
+Read the QAOA-GPT paper.
+
+Learn about ADAPT-QAOA, which was used to train QAOA-GPT.
+
+Run the max-cut notebook.
+
+Use Cases
+
+Fault-Tolerant Qubits
+
+Infleqtion demonstrated error-corrected, logical qubits using neutral atoms. 
+
+Read the “NVIDIA CUDA-Q Runs Breakthrough Logical Qubit Application on Infleqtion QPU” blog.
+
+Read the paper.
+
+View the implementation.
+
+AI for Algorithm Design
+
+The University of Toronto developed the Generative Quantum Eigensolver—a new class of quantum algorithms that uses AI to improve performance.
+
+Read the “Advancing Quantum Algorithm Design With GPTs” blog.
+
+Read the paper about the Generative Quantum Eigensolver (GQE).
+
+Learn about GQE and other algorithms for chemistry simulations
+
+.
+
+Solar Energy Prediction
+
+The Chung Yuan Christian University developed a quantum neural network model for solar irradiance forecasting, showing faster training and improved performance.
+
+Read the “Accelerating Quantum Algorithms for Solar Energy Prediction With NVIDIA CUDA-Q and NVIDIA cuDNN” blog.
+
+Read the paper.
+
+Divisive Clustering
+
+The University of Edinburgh developed a method of finding data patterns and clustering big data so it can be used in quantum computers.
+
+Read the “CUDA-Q Enabled Resource Reduction for Quantum Clustering Algorithms” blog.
+
+View the implementation.
+
+Read the paper.
+
+Molecular Generation
+
+Yale University developed a hybrid transformer with a quantized self-attention mechanism applied to molecular generation.
+
+Read the paper.
+
+Circuit Synthesis
+
+The University of Innsbruck used diffusion models to synthesize arbitrary unitaries into CUDA-Q kernels.
+
+View the implementation.
+
+Watch the workshop.
+
+Read the paper.
+
+CUDA-Q Learning Library
+
+Download the raw results data (JSON)
+
+Latest CUDA-Q News
+
+CUDA-Q Ecosystem
+
+CUDA-Q is accelerating work across the quantum computing ecosystem, including partner integrations that range from building and controlling better quantum hardware to developing the first useful quantum algorithms.
+
+FAQs
+
+CUDA-Q is NVIDIA's open source platform for quantum computing. It was designed from the ground up for quantum-GPU supercomputing, where quantum processors are integrated into today’s AI supercomputers. It extends the proven programming model of NVIDIA CUDA to quantum accelerators, letting you write a single program that runs across GPUs, CPUs, and quantum processing units (QPUs). Whether you're simulating quantum circuits on a GPU or running them on real quantum hardware, CUDA-Q gives you one unified platform to do it.
+
+CUDA-Q is built for researchers, engineers, and developers working at the frontier of quantum computing. If you're developing quantum algorithms, exploring quantum error correction, building hybrid quantum-classical applications, or just getting started with quantum programming, CUDA-Q has the tools and libraries to support your work.
+
+CUDA-Q is designed to work alongside NVIDIA's AI and HPC ecosystem. Existing NVIDIA Ising decoder models run in real time for quantum error correction through CUDA-Q. You can also combine quantum algorithms with GPU-accelerated AI models, use generative AI to design better quantum circuits or devices, and tap into HPC libraries. Real-world applications already include solar energy prediction, molecular generation, and quantum algorithm design powered by large language models.
+
+CUDA-Q supports both Python and C++. You can describe quantum algorithms in either language using a high-level kernel-based model. Under the hood, the CUDA-Q compiler optimizes your code for the target backend using industry-standard tools, including Multi-Level Intermediate Representation (MLIR), Low Level Virtual Machine (LLVM), and Quantum Intermediate Representation (QIR).
+
+CUDA-Q is QPU-agnostic and integrates with most publicly available QPUs across all major qubit modalities, including superconducting, trapped ion, neutral atom, and photonic systems. Write your code once and run it on the quantum hardware of your choice. The growing ecosystem includes many companies—details are available here.
+
+Absolutely. CUDA-Q includes GPU-accelerated quantum simulators so you can develop, test, and benchmark your quantum applications today, even without access to physical QPU hardware. GPU acceleration makes these simulations significantly faster than CPU-based alternatives, especially for large or complex quantum circuits. Furthermore, CUDA-Q is future proof, so your programs will run on QPUs with minimal changes. If CUDA-Q does not have a simulator you’re looking for, or if you would like to build your own, look at cuQuantum—an SDK that provides primitives for building GPU-accelerated and scaled quantum emulations of all kinds. 
+
+Yes, CUDA-Q can run locally on your CPU to simulate smaller problem sizes and run on all supported QPU backends. CUDA-Q is also available on quantum cloud platforms such as NVIDIA Brev, Braket, and qBraid, which provide GPU access.
+
+CUDA-Q includes a dedicated library for quantum error correction (QEC), complete with accelerated decoders and learning resources. The platform supports the full QEC workflow, from encoding logical qubits to decoding error syndromes at GPU speed. You can explore the QEC 101 Learning Path and run examples directly from the CUDA-Q documentation.
+
+Yes. CUDA-Q is an open source project. You can access the source code, contribute to the platform, and build on it alongside a global community of quantum computing researchers and developers. Get started with a single command: pip install cudaq.
+
+CUDA-Q is also designed to build applications for the large-scale, fault-tolerant quantum-GPU supercomputers of the future - providing the tools for error correction research, dynamic quantum simulation, and hybrid quantum-classical workflows. CUDA-Q Logical also provides developers with the logical layer they need to explore and evaluate fault-tolerant applications across different QEC codes and system architectures - charting a clear path to utility as quantum hardware continues to mature.
+
+Start with the CUDA-Q Quick Start guide. You'll find beginner-friendly resources, including an interactive Hello World program, GTC tutorial recordings, and the CUDA-Q Academic learning library, which covers topics from quantum error correction to quantum chemistry simulations. The community forum is also a great place to ask questions and connect with other developers.
+
+More Resources
+
+Explore the Community
+
+Accelerate Your Startup
+
+Sign Up for our Developer Newsletter
+
+Get started with CUDA-Q today.
+
+Get Started

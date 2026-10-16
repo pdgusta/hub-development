@@ -1,0 +1,54 @@
+{
+ "chave": "gh:knagis/commonmark.net",
+ "nomes": [
+  "CommonMark.NET"
+ ],
+ "urls": [
+  "https://github.com/Knagis/CommonMark.NET"
+ ],
+ "readme_cortado": false,
+ "readme": "CommonMark.NET is no longer maintained. If you find it does not meet your needs, you might want to check out [Markdig](https://github.com/lunet-io/markdig).\n\n---\n\n[![Build status](https://ci.appveyor.com/api/projects/status/9jo20450utqy1p0o/branch/master?svg=true)](https://ci.appveyor.com/project/Knagis/commonmark-net/branch/master)\n\n# CommonMark.NET\n\nImplementation of [CommonMark][1] specification (passes tests from version 0.27) in C# for converting Markdown documents to HTML.\n\nThe current version of the library is also [available on NuGet][nuget].\n\n## Usage\n\nTo convert Markdown data in a stream or file:\n```C#\nusing (var reader = new System.IO.StreamReader(\"source.md\"))\nusing (var writer = new System.IO.StreamWriter(\"result.html\"))\n{\n  CommonMark.CommonMarkConverter.Convert(reader, writer);\n}\n```\n\nTo convert data stored in a string:\n```C#\nvar result = CommonMark.CommonMarkConverter.Convert(\"**Hello world!**\");\n```\n\nSee the [wiki][extensibility] for an example how the parser can be extended with additional logic.\n\n**Important:** The converter [does not include any HTML sanitizing][XSS].\n\n## Installation via NuGet\n\n`Install-Package CommonMark.NET`\n\n## Compatibility\n\nThe library uses no references except for `System` - it has no external dependencies. It is cross compiled to:\n\n* .NET Framework 2.0 \n* .NET Framework 3.5 Client Profile\n* .NET Framework 4.0 Client Profile\n* .NET 4.0 Portable Class Library\n    * .NET Framework 4.0 Client Profile\n    * Silverlight 5\n    * Windows 8\n    * Windows Phone 8.1\n    * Windows Phone Silverlight 8\n    * Xamarin.Android\n    * Xamarin.iOS\n* .NET 4.5 Portable Class Library (Optimized)\n    * .NET Framework 4.5\n    * Windows 8\n    * Windows Phone 8.1\n    * Windows Phone Silverlight 8\n    * Xamarin.Android\n    * Xamarin.iOS\n* .NET Framework 4.5 (Optimized)\n* .NET Core 1.0 (.NET Standard 1.0)\n\nFor working with the source code you will need Visual Studio 2015 or newer (Community edition is supported).\n\n## Performance\n\nUsing a [simple tool][3] to compare the performance of various Markdown implementations for .NET yields the\nfollowing results:\n\n     CommonMark.NET 0.4.1      4 ms   7%      \n\n    CommonMarkSharp 0.3.2     30 ms   46%\n       MarkdownSharp 1.13     55 ms   84%     (might not conform to CommonMark specification)\n         MarkdownDeep 1.5      7 ms   11%     (might not conform to CommonMark specification)\n      MoonShine (sundown)      3 ms    6%     (wrapper for a native x86 .dll)\n                 Baseline     65 ms   100%    (used to compare results on different machines)\n\nThis benchmark is very simple and tests the processing of the CommonMark specification document itself (a \n115 KB file). The results are provided just for a high-level comparison.\n\n## Reliability\n\nThe parser uses algorithms that completely avoid recursion so even specifically crafted input documents\nwill not cause exceptions and will be rendered correctly. This is important because a `StackOverflowException`\ncannot be caught and will bring down the entire process.\n\n## References\n\nThis library is based on a port of the reference implementation in C, available on [jgm/cmark repo][2]. \nIt follows the same approach - the source is parsed into a syntax tree that can be used to add custom \nprocessing if the application needs it and then formatted into HTML.\n\n## Running tests\n\nAll tests from `spec.txt` are merged into the unit testing project and can be executed from within Visual Studio.\n\nThe project also includes a slightly modified version of `runtests.pl` for compatibility with the original\nimplementation. Use `CommonMark.Console.exe --perltest` as the argument to `runtests.pl` so that the\napplication can correctly handle input from the Perl script.\n\n[1]: http://spec.commonmark.org/\n[2]: https://github.com/jgm/cmark\n[3]: https://github.com/Knagis/CommonMarkBenchmark\n[extensibility]: https://github.com/Knagis/CommonMark.NET/wiki\n[XSS]: http://talk.commonmark.org/t/cross-site-scripting-issue-in-standard-markdown-example-at-try-standardmarkdown-com/55\n[nuget]: https://www.nuget.org/packages/CommonMark.NET/\n",
+ "fonte": "readme",
+ "respostas": [
+  {
+   "por": "gpt-oss-20b",
+   "resposta": {
+    "serve": "stack",
+    "role": "convert Markdown to HTML",
+    "place": [
+     "library"
+    ],
+    "mechanism": [
+     "other"
+    ],
+    "mcp": "unknown",
+    "windows": "yes",
+    "portuguese": "no",
+    "license": "unknown",
+    "maturity": "archived",
+    "doubt": false,
+    "evidence": "\"Implementation of CommonMark specification ... in C# for converting Markdown documents to HTML.\""
+   }
+  },
+  {
+   "por": "dots3-note-preview",
+   "resposta": {
+    "serve": "none",
+    "role": "",
+    "place": [
+     "n/a"
+    ],
+    "mechanism": [
+     "n/a"
+    ],
+    "mcp": "unknown",
+    "windows": "yes",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "archived",
+    "doubt": true,
+    "evidence": "Serve: 'Implementation of CommonMark specification for converting Markdown documents to HTML.' (not search); MCP: 'The current version of the library is also available on NuGet.' (library, no MCP mention); Windows: 'cross compiled to: ... Windows 8 ...' (supports Windows)."
+   }
+  }
+ ]
+}

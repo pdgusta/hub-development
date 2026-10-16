@@ -1,0 +1,32 @@
+{
+ "chave": "web:elastic.co/guide/en/elasticsearch/reference/current/setup.html",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T21:43:20Z",
+ "resultado": "corrige",
+ "conferencia": {
+  "resultado": "corrige",
+  "final": {
+   "serve": "search",
+   "role": "Install and run a self-managed Elasticsearch server (Windows package or Docker)",
+   "place": [
+    "network_service"
+   ],
+   "mechanism": [
+    "other"
+   ],
+   "mcp": "unknown",
+   "windows": "yes",
+   "portuguese": "unknown",
+   "license": "unknown",
+   "maturity": "unknown",
+   "doubt": false,
+   "evidence": "Run Elasticsearch using a Linux, MacOS, or Windows install package."
+  },
+  "o_que_mudou": [
+   "doubt: true -> false, README says it installs on Windows",
+   "place: disk,network_service -> network_service, it is a server",
+   "role: reworded to the install guide scope"
+  ],
+  "nota": "Install guide for Elasticsearch, a heavy server candidate for the search layer; no MCP in this page."
+ }
+}

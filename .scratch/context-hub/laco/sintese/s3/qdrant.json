@@ -1,0 +1,59 @@
+{
+ "nome": "Qdrant",
+ "url": "https://github.com/qdrant/qdrant",
+ "papel": "serviço na rede",
+ "windows": "yes: asset qdrant-x86_64-pc-windows-msvc.zip no release v1.19.2; docs avisam sobre Docker/WSL com mounts no Windows. CI windows não verificado.",
+ "mcp": "yes (oficial Qdrant, repositório separado qdrant/mcp-server-qdrant): stdio (padrão), sse, streamable-http; roda com uvx; QDRANT_LOCAL_PATH ou QDRANT_URL; embeddings só fastembed (padrão all-MiniLM-L6-v2). Último commit 2026-08-11, último release 2025-12-10.",
+ "portugues": "Vetorial: depende do modelo de embeddings. Índice textual de payload: tokenizers word/whitespace, stemmer snowball por idioma, stopwords por idioma, ascii_folding, lowercase (opcionais, desligados por padrão).",
+ "markdown_frontmatter": "Não indexa arquivos; payload JSON filtrável (keyword, índices). Frontmatter vira payload se o chamador mapear.",
+ "atualizacao": "Manual via API (upsert/delete); sem watcher.",
+ "embeddings_endpoint": "Servidor sem base_url OpenAI arbitrário: inferência de servidor ligada ao Qdrant Cloud (OpenAI, Cohere, Jina, OpenRouter); self-hosted usa inferência no cliente (FastEmbed) ou vetores calculados pelo chamador, inclusive via FreeLLMAPI.",
+ "recursos": "Binário Rust único; docs não dão RAM fixa (depende de vetores, dimensões, quantização).",
+ "licenca": "Apache-2.0",
+ "ultimo_release": "v1.19.2 (2026-10-05)",
+ "atividade": "2026-10-05 (feed de commits)",
+ "maturidade": "stable",
+ "encaixe": "Serviço local em cada máquina Windows (binário) ou na rede, com vetores gerados pelo MCP do banco; MCP oficial é um 'memory' simples. Impedimento: mais um serviço para manter em sincronia com o CouchDB.",
+ "evidencias": [
+  {
+   "campo": "windows",
+   "url": "https://github.com/qdrant/qdrant/releases/expanded_assets/v1.19.2",
+   "citacao": "qdrant-x86_64-pc-windows-msvc.zip"
+  },
+  {
+   "campo": "mcp",
+   "url": "https://raw.githubusercontent.com/qdrant/mcp-server-qdrant/master/README.md",
+   "citacao": "An official Model Context Protocol server ... `stdio` (default) ... `sse` ... `streamable-http`"
+  },
+  {
+   "campo": "portugues",
+   "url": "https://qdrant.tech/documentation/concepts/indexing/",
+   "citacao": "For full-text indices, stemming is not enabled by default; ASCII folding is not enabled by default."
+  },
+  {
+   "campo": "embeddings_endpoint",
+   "url": "https://qdrant.tech/documentation/inference/",
+   "citacao": "Manage your own inference pipeline locally; external providers OpenAI, Cohere, Jina AI, OpenRouter via Qdrant Cloud"
+  },
+  {
+   "campo": "licenca",
+   "url": "https://github.com/qdrant/qdrant",
+   "citacao": "Qdrant is licensed under the Apache License, Version 2.0."
+  },
+  {
+   "campo": "recursos",
+   "url": "https://qdrant.tech/documentation/installation/",
+   "citacao": "The preferred size of your CPU and RAM depends on: ..."
+  },
+  {
+   "campo": "windows",
+   "url": "https://qdrant.tech/documentation/installation/",
+   "citacao": "Using Docker/WSL on Windows with mounts is known to have file system problems causing data loss."
+  }
+ ],
+ "nao_verificado": [
+  "CI windows do qdrant",
+  "server-side inference em self-hosted",
+  "RAM/disco"
+ ]
+}

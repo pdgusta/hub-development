@@ -1,0 +1,38 @@
+{
+ "chave": "web:elastic.co/de",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T12:00:00Z",
+ "resultado": "corrige",
+ "conferencia": {
+  "resultado": "corrige",
+  "final": {
+   "serve": "search",
+   "role": "Elasticsearch como banco de busca para IA: texto, vetor e híbrido com reranking",
+   "place": [
+    "network_service"
+   ],
+   "mechanism": [
+    "bm25",
+    "full_text",
+    "vector",
+    "hybrid",
+    "reranker",
+    "embeddings"
+   ],
+   "mcp": "unknown",
+   "windows": "yes",
+   "portuguese": "unknown",
+   "license": "AGPL-3.0/ELv2",
+   "maturity": "stable",
+   "doubt": false,
+   "evidence": "BM25-Keyword-Abruf und Vektorabruf mit Reranking; AGPL v3 und Elastic License 2.0; selbstverwaltete Produkte unterstützen Linux, macOS, Windows"
+  },
+  "o_que_mudou": [
+   "doubt: true -> false",
+   "license: ELv2/AGPL3 unificado em AGPL-3.0/ELv2",
+   "portuguese: no -> unknown",
+   "mechanism: inclui bm25 e full_text"
+  ],
+  "nota": "Motor de busca completo (texto, vetor, híbrido) que pode servir de camada de busca, mas é um serviço pesado para um hub de notas."
+ }
+}

@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Painel da construção</title>
+<style>
+  /* Porta do portal para o painel: só embute http://127.0.0.1:8771/. Não lê a execução nem manda nada. */
+  :root{--papel:#f3eadb;--cartao:#fbf6ec;--tinta:#2b2117;--suave:#5a544b;--erro:#9b2a1c}
+  html,body{margin:0;height:100%;background:var(--papel);color:var(--tinta);font:16px/1.4 "Nunito Sans","Segoe UI",system-ui,sans-serif}
+  iframe{display:block;border:0;width:100%;height:100%}
+  .desligado{max-width:520px;margin:12vh auto;padding:20px 22px;background:var(--cartao);border:2px solid var(--erro);border-radius:10px}
+  .desligado h1{font:600 20px Fraunces,Georgia,serif;margin:0 0 8px}
+  .desligado code{font-family:"JetBrains Mono",Consolas,monospace;font-size:15px}
+  .desligado p{margin:6px 0}.desligado .nota{color:var(--suave);font-size:14px}
+  [hidden]{display:none!important}
+</style>
+</head>
+<body>
+<iframe id="painel" title="Painel da construção" hidden></iframe>
+<div class="desligado" id="desligado" hidden role="status">
+  <h1>O painel está desligado</h1>
+  <p>Rode <code>painel\iniciar.cmd</code> (ou <code>iniciar.cmd --fixture</code> para a simulação).</p>
+  <p class="nota">Esta página tenta de novo a cada 5 segundos. A execução não depende do painel.</p>
+</div>
+<script>
+(function () {
+  var URL = 'http://127.0.0.1:8771/', f = document.getElementById('painel'), d = document.getElementById('desligado'), ligado = null;
+  function testar() {
+    // no-cors: a resposta é opaca, mas chegar já diz que o servidor está de pé
+    fetch(URL + 'api/execucao', { mode: 'no-cors', cache: 'no-store' }).then(function () { mostrar(true) }, function () { mostrar(false) });
+  }
+  function mostrar(ok) {
+    if (ok === ligado) return;
+    ligado = ok; d.hidden = ok; f.hidden = !ok;
+    if (ok) f.src = URL; else f.removeAttribute('src');
+  }
+  testar(); setInterval(testar, 5000);
+})();
+</script>
+</body>
+</html>

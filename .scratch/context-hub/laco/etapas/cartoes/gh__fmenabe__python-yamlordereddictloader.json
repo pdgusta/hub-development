@@ -1,0 +1,32 @@
+{
+ "chave": "gh:fmenabe/python-yamlordereddictloader",
+ "urls": [
+  "https://github.com/fmenabe/python-yamlordereddictloader"
+ ],
+ "tipos": [
+  "library"
+ ],
+ "termos": [
+  "ordered dict loader",
+  "yamlordereddictloader",
+  "yaml ordered",
+  "PyYAML"
+ ],
+ "mencoes": 2,
+ "familias": [
+  "gpt-oss",
+  "nemotron"
+ ],
+ "primeira_onda": 3,
+ "nomes": [
+  "yamlordereddictloader"
+ ],
+ "resumos": [
+  "为 PyYAML 提供的加载器，直接返回 OrderedDict 以保持键序",
+  "提供有序字典加载器的小型工具，常与 PyYAML 配合使用。"
+ ],
+ "readme_status": "ok",
+ "readme_nome": "README.rst",
+ "readme_cortado": false,
+ "readme": "python-yamlordereddictloader\n============================\n\n**DEPRECATED: the** `Phynix/yamlloader <https://github.com/Phynix/yamlloader>`_ **project\nprovide an improved version of this library with unit tests, performance improvements\n(by providing access to the C implementation of PyYAML) and is more actively developed.\nYou should use it!**\n\n.. image:: https://img.shields.io/pypi/l/yamlordereddictloader.svg\n           :target: https://opensource.org/licenses/MIT\n           :alt: License\n\n.. image:: https://img.shields.io/pypi/pyversions/yamlordereddictloader.svg\n           :target: https://pypi.python.org/pypi/yamlordereddictloader\n           :alt: Versions\n\n.. image:: https://img.shields.io/pypi/v/yamlordereddictloader.svg\n           :target: https://pypi.python.org/pypi/yamlordereddictloader\n           :alt: PyPi\n\n.. image:: https://img.shields.io/badge/github-repo-yellow.jpg\n           :target: https://github.com/fmenabe/python-yamlordereddictloader\n           :alt: Code repo\n\n.. image:: https://landscape.io/github/fmenabe/python-yamlordereddictloader/master/landscape.svg?style=flat\n           :target: https://landscape.io/github/fmenabe/python-yamlordereddictloader/master\n           :alt: Code Health\n\nThis module provide a loader and a dumper for PyYAML allowing to keep items order\nwhen loading a file (by putting them in ``OrderedDict`` objects) and to manage\n``OrderedDict`` objects when dumping to a file.\n\nThe loader is based on stackoverflow topic (thanks to Eric Naeseth):\nhttp://stackoverflow.com/questions/5121931/in-python-how-can-you-load-yaml-mappings-as-ordereddicts#answer-5121963\n\nSelf promotion: I use it a lot with `clg <https://clg.readthedocs.io>`_, which\nallows to generate command-line definition from a configuration file, for keeping\norder of subcommands, options and arguments in the help message!\n\n\nTo install it\n-------------\n\n.. code-block:: bash\n\n    $ pip install yamlordereddictloader\n\nLoader usage\n------------\n\n.. code-block:: python\n\n    import yaml\n    import yamlordereddictloader\n\n    data = yaml.load(open('myfile.yml'), Loader=yamlordereddictloader.Loader)\n\n**Note:** For using the safe loader (which want standard YAML tags and does\nnot construct arbitrary Python objects), replace ``yamlorderdictloader.Loader`` by\n``yamlorderedictloader.SafeLoader``.\n\nDumper usage\n------------\n\n.. code-block:: python\n\n    import yaml\n    import yamlordereddictloader\n    from collections import OrderedDict\n\n    data = OrderedDict([\n        ('key1', 'val1'),\n        ('key2', OrderedDict([('key21', 'val21'), ('key22', 'val22')]))\n    ])\n    yaml.dump(\n        data,\n        open('myfile.yml', 'w'),\n        Dumper=yamlordereddictloader.Dumper,\n        default_flow_style=False)\n\n**Note:** For using the safe dumper (which produce standard YAML tags and does\nnot represent arbitrary Python objects), replace ``yamlorderdictloader.Dumper`` by\n``yamlorderedictloader.SafeDumper``.\n"
+}

@@ -1,0 +1,35 @@
+{
+ "chave": "gh:jerryjliu/gpt_index",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T21:08:38Z",
+ "resultado": "corrige",
+ "conferencia": {
+  "resultado": "corrige",
+  "final": {
+   "serve": "search",
+   "role": "Python framework for indexing documents and retrieval/query with embeddings and vector stores",
+   "place": [
+    "library",
+    "disk"
+   ],
+   "mechanism": [
+    "vector",
+    "embeddings",
+    "reranker"
+   ],
+   "mcp": "unknown",
+   "windows": "unknown",
+   "portuguese": "unknown",
+   "license": "unknown",
+   "maturity": "unknown",
+   "doubt": false,
+   "evidence": "Provides an advanced retrieval/query interface over your data; VectorStoreIndex; persist to ./storage; reranking modules"
+  },
+  "o_que_mudou": [
+   "mechanism: vector,embeddings,graph,reranker / vector,hybrid,other -> vector,embeddings,reranker, README shows vector index, embeddings and reranking modules; no hybrid",
+   "place: library / disk,library -> library,disk, persists to ./storage",
+   "doubt: true -> false, README is sufficient"
+  ],
+  "nota": "Mesmo projeto que LlamaIndex (nome antigo); framework RAG em biblioteca, candidato à camada de busca, sem MCP nativo declarado."
+ }
+}

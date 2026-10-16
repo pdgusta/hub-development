@@ -1,0 +1,58 @@
+{
+ "nome": "ort",
+ "nome_canonico": "ort (pykeio/ort)",
+ "chave": "gh:pykeio/ort",
+ "url": "https://github.com/pykeio/ort",
+ "identidade": "ok",
+ "windows": "nao_verificado: a matriz de plataformas é um widget que não rendeu; docs dizem \"For most desktop users, pre-built binaries are available\"; usa o ONNX Runtime, que tem wheels Windows.",
+ "portugues": "nao_aplicavel: binding do runtime; português depende do modelo ONNX.",
+ "embeddings_endpoint": "nao_aplicavel: biblioteca Rust in-process; README cita FastEmbed-rs e Text Embeddings Inference como usuários para embeddings.",
+ "recursos": "Crate Rust (rust-version 1.92) sobre o ONNX Runtime; \"light enough to run on your users' devices\". Números nao_verificado.",
+ "licenca": "MIT OR Apache-2.0",
+ "ultimo_release": "2.0.0-rc.14 (2026-10-12, crates.io)",
+ "atividade": "release de 2026-10-12; data do último commit nao_verificado",
+ "maturidade": "beta (série 2.0.0-rc; sem 2.x estável)",
+ "encaixe": "Embeddings/rerank locais dentro de um serviço ou MCP escrito em Rust, sem Python. Só vale se o MCP do banco for Rust; ainda release candidate e Windows não confirmado.",
+ "evidencias": [
+  {
+   "campo": "identidade",
+   "url": "https://github.com/pykeio/ort",
+   "citacao": "`ort` is a Rust interface for performing hardware-accelerated inference & training on machine learning models"
+  },
+  {
+   "campo": "licenca",
+   "url": "https://raw.githubusercontent.com/pykeio/ort/main/Cargo.toml",
+   "citacao": "license = \"MIT OR Apache-2.0\""
+  },
+  {
+   "campo": "ultimo_release",
+   "url": "https://crates.io/api/v1/crates/ort",
+   "citacao": "2.0.0-rc.14 2026-10-12"
+  },
+  {
+   "campo": "maturidade",
+   "url": "https://raw.githubusercontent.com/pykeio/ort/main/Cargo.toml",
+   "citacao": "version = \"2.0.0-rc.14\""
+  },
+  {
+   "campo": "embeddings_endpoint",
+   "url": "https://github.com/pykeio/ort",
+   "citacao": "FastEmbed-rs uses ort for generating vector embeddings, reranking locally."
+  },
+  {
+   "campo": "windows",
+   "url": "https://raw.githubusercontent.com/pykeio/ort/main/docs/content/setup/platforms.mdx",
+   "citacao": "For most desktop users, pre-built binaries are available"
+  }
+ ],
+ "nao_verificado": [
+  "Windows (matriz é widget)",
+  "recursos em número",
+  "data do último commit"
+ ],
+ "serve": "stack",
+ "area": "embeddings_rerank",
+ "mcp": "nao_aplicavel",
+ "markdown_frontmatter": "nao_aplicavel",
+ "atualizacao": "nao_aplicavel"
+}

@@ -1,0 +1,71 @@
+{
+ "nome": "zvec-grep",
+ "url": "https://github.com/zvec-ai/zvec-grep",
+ "papel": "disco+MCP pronto",
+ "windows": "yes",
+ "mcp": "yes: Streamable HTTP em http://127.0.0.1:7999/mcp (daemon compartilhado); stdio também citado na documentação",
+ "portugues": "Sem stemmer documentado. Embeddings multilíngues locais: potion-multilingual-128m (101 idiomas), multilingual-e5-small, embeddinggemma-300m. Tokenização BM25 para português: nao_verificado.",
+ "markdown_frontmatter": "Indexa .md/.mdx por seções de título com breadcrumbs (fallback texto). Frontmatter como filtro: nao_verificado; filtros são glob e tipo de arquivo.",
+ "atualizacao": "Servidor com watcher por workspace, reconciliação horária e fusão de rajadas; modo direct sem refresh por padrão (`--refresh`). Resultados marcados fresh/possibly_stale.",
+ "embeddings_endpoint": "parcial: remoto só pelo provider Qwen, com ZVEC_GREP_ENDPOINT aceitando base OpenAI-compatível `/v1` (descrito para o CLI Rust); endpoint genérico para modelo arbitrário nao_verificado. Padrão é modelo local.",
+ "recursos": "Node >=22 (implementação TS; porta Rust separada); índice em `.zvec-grep/` dentro da pasta indexada. RAM: nao_verificado.",
+ "licenca": "Apache-2.0",
+ "ultimo_release": "v0.2.0, 27 ago (sem ano na página; presumido 2026), 'preview release'",
+ "atividade": "último commit 13 out 2026",
+ "maturidade": "beta (v0.2.0 preview)",
+ "encaixe": "Disco de cada máquina via daemon e MCP HTTP local. Impedimentos: índice `.zvec-grep` dentro da pasta sincronizada pelo LiveSync (excluir), endpoint de embeddings genérico não confirmado.",
+ "evidencias": [
+  {
+   "campo": "windows",
+   "url": "https://github.com/zvec-ai/zvec-grep/blob/main/.github/workflows/ci.yml",
+   "citacao": "- os: windows-latest  node: 24 (job unit)"
+  },
+  {
+   "campo": "windows",
+   "url": "https://github.com/zvec-ai/zvec-grep",
+   "citacao": "on macOS, Linux, and Windows"
+  },
+  {
+   "campo": "mcp",
+   "url": "https://github.com/zvec-ai/zvec-grep/blob/main/docs/03-mcp.md",
+   "citacao": "zvec-grep exposes its local search layer over Streamable HTTP MCP. ... http://127.0.0.1:7999/mcp"
+  },
+  {
+   "campo": "portugues",
+   "url": "https://github.com/zvec-ai/zvec-grep/blob/main/docs/07-embedding.md",
+   "citacao": "local/potion-multilingual-128m | Static model trained for 101 languages"
+  },
+  {
+   "campo": "markdown_frontmatter",
+   "url": "https://github.com/zvec-ai/zvec-grep/blob/main/docs/04-pipeline.md",
+   "citacao": "Heading sections and breadcrumbs; plain-text fallback for documents without headings"
+  },
+  {
+   "campo": "atualizacao",
+   "url": "https://github.com/zvec-ai/zvec-grep/blob/main/docs/06-server.md",
+   "citacao": "Because file-system watchers can silently miss events, the Server schedules an hourly"
+  },
+  {
+   "campo": "embeddings_endpoint",
+   "url": "https://github.com/zvec-ai/zvec-grep/blob/main/docs/07-embedding.md",
+   "citacao": "accepts either a full Embedding endpoint or an OpenAI-compatible API base URL ending in `/v1`"
+  },
+  {
+   "campo": "recursos",
+   "url": "https://github.com/zvec-ai/zvec-grep/blob/main/docs/04-pipeline.md",
+   "citacao": "The workspace index is stored under `<root>/.zvec-grep/`."
+  },
+  {
+   "campo": "licenca",
+   "url": "https://github.com/zvec-ai/zvec-grep",
+   "citacao": "license-Apache 2.0"
+  }
+ ],
+ "nao_verificado": [
+  "tokenização BM25 em português",
+  "filtro por frontmatter",
+  "endpoint OpenAI-compatível para modelos não-Qwen",
+  "RAM",
+  "ano do release"
+ ]
+}

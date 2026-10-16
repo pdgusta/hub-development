@@ -1,0 +1,54 @@
+{
+ "nome": "Weaviate",
+ "nome_canonico": "weaviate/weaviate",
+ "chave": "gh:semi-technologies/weaviate",
+ "url": "https://github.com/weaviate/weaviate",
+ "serve": "search",
+ "area": null,
+ "identidade": "mudou de dono: semi-technologies/weaviate é hoje weaviate/weaviate",
+ "windows": "only_wsl_or_docker: \"we don't offer native Windows support at this time\"",
+ "mcp": "nao_verificado (só um resumo de busca, sem leitura da fonte, diz: yes: servidor embutido em /v1/mcp na porta REST (HTTP com token Bearer; preview, desligado por padrão em self-hosted, escrita desligada); o standalone mcp-server-weaviate está deprecated)",
+ "portugues": "nao_verificado (tokenização/idioma não conferidos)",
+ "markdown_frontmatter": "Não indexa Markdown; guarda objetos com propriedades. Suporta BM25 e híbrido",
+ "atualizacao": "manual: o cliente envia objetos",
+ "embeddings_endpoint": "yes: módulo OpenAI aceita baseURL/X-OpenAI-Baseurl para serviço OpenAI-compatível, endpoint padrão /v1/embeddings",
+ "recursos": "nao_verificado (servidor Go em container)",
+ "licenca": "BSD-3-Clause na maior parte; pasta wl/ exige licença comercial",
+ "ultimo_release": "v1.40.1 (13 Oct; ano não mostrado, provável 2026)",
+ "atividade": "release recente (outubro)",
+ "maturidade": "stable",
+ "encaixe": "Serviço de busca na rede com BM25, híbrido e MCP próprio. Impedimento: sem Windows nativo, exige Docker/WSL, que o hub não tem.",
+ "evidencias": [
+  {
+   "campo": "windows",
+   "url": "https://docs.weaviate.io/weaviate/installation",
+   "citacao": "we don't offer native Windows support at this time"
+  },
+  {
+   "campo": "embeddings_endpoint",
+   "url": "https://docs.weaviate.io/weaviate/model-providers/openai/embeddings",
+   "citacao": "Use the X-OpenAI-Baseurl header, or the baseURL parameter, to target an OpenAI-compatible service."
+  },
+  {
+   "campo": "licenca",
+   "url": "https://github.com/weaviate/weaviate",
+   "citacao": "Most of this repository is available under the BSD 3-Clause License."
+  },
+  {
+   "campo": "mcp",
+   "url": "https://docs.weaviate.io/weaviate/configuration/mcp-server",
+   "citacao": "MCP em /v1/mcp na porta REST (só por resumo de busca; página não lida inteira)"
+  },
+  {
+   "campo": "ultimo_release",
+   "url": "https://github.com/weaviate/weaviate/releases",
+   "citacao": "Latest v1.40.1"
+  }
+ ],
+ "nao_verificado": [
+  "português",
+  "recursos",
+  "ano do release",
+  "detalhes do MCP lidos só por resumo de busca"
+ ]
+}

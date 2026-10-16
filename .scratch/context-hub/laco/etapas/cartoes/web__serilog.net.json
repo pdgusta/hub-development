@@ -1,0 +1,30 @@
+{
+ "chave": "web:serilog.net",
+ "urls": [
+  "https://serilog.net/"
+ ],
+ "tipos": [
+  "library"
+ ],
+ "termos": [
+  "logging",
+  "search layer monitoring",
+  "error tracking"
+ ],
+ "mencoes": 1,
+ "familias": [
+  "mistral"
+ ],
+ "primeira_onda": 4,
+ "nomes": [
+  "Serilog / NLog"
+ ],
+ "resumos": [
+  "日志记录库，用于监控搜索层的性能和错误（如 MCP 同步失败、嵌入生成异常）。"
+ ],
+ "fonte": "site",
+ "readme_status": "ok",
+ "readme_nome": "https://serilog.net/",
+ "readme_cortado": false,
+ "readme": "[Serilog — simple .NET logging with fully-structured events]\n\nWhy Serilog?\n\nLike many other libraries for .NET, Serilog provides diagnostic\n logging to files, the console, and\n\n elsewhere. It is easy to set up,\n has a clean API, and is portable between recent .NET platforms.\n\nUnlike other logging libraries, Serilog is built with\n powerful structured event data in mind.\n\nText formatting with a twist\n\nSerilog message templates are a simple DSL extending\n .NET format strings. Parameters can be named, and their values\n are serialized as properties on the event for incredible searching\n and sorting flexibility:\n\nvar position = new { Latitude = 25, Longitude = 134 };\nvar elapsedMs = 34;\n\nlog.Information(\"Processed {@Position} in {Elapsed:000} ms.\", position, elapsedMs);\n\nThis example records two properties, Position and\n Elapsed along with the log event. The properties\n captured in the example, in JSON format, would appear like:\n\n{\"Position\": {\"Latitude\": 25, \"Longitude\": 134}, \"Elapsed\": 34}\n\nThe @ operator in front of Position\n tells Serilog to serialize the object passed in,\n rather than convert it using ToString().\n\nThe :000 segment following Elapsed is a\n standard .NET format string\n that affects how the property is rendered. The console\n sink included with Serilog will display the above message as:\n\n09:14:22 [Information] Processed { Latitude: 25, Longitude: 134 } in 034 ms.\n\nDocumentation\n\nYou'll find heaps of information and advice about using Serilog on\n the project site:\n\nInstallation\n\nConfiguration basics\n\nWriting log events\n\nStructured data\n\nProvided sinks\n\nDebugging and diagnostics\n\nResources\n\nGitHub project\n\nserilog tag on Stack Overflow\n\nBlog posts at nblumhardt.com\n\nPackages on NuGet\n\nSerilog integration for ASP.NET Core 2+\n\nGitter chat\n\n Dive in deeper with this great Serilog course on"
+}

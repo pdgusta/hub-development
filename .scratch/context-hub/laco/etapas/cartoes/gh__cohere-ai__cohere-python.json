@@ -1,0 +1,56 @@
+{
+ "chave": "gh:cohere-ai/cohere-python",
+ "urls": [
+  "https://github.com/cohere-ai/cohere-python",
+  "https://cohere.com/rerank",
+  "https://docs.cohere.com/docs/rerank"
+ ],
+ "tipos": [
+  "tool",
+  "service"
+ ],
+ "termos": [
+  "cohere-rerank",
+  "reranking-api",
+  "command-rerank",
+  "cross-encoder",
+  "reranking",
+  "semantic relevance",
+  "local deployment",
+  "Cohere reranking",
+  "AI rerank",
+  "search rerank",
+  "cohere",
+  "Reranking API",
+  "Precision Retrieval",
+  "Cohere",
+  "rerank endpoint",
+  "semantic ranking",
+  "Cohere Rerank v3",
+  "rerank-english-v3",
+  "rerank-multilingual-v3"
+ ],
+ "mencoes": 7,
+ "familias": [
+  "agnes",
+  "gemma",
+  "gpt-oss",
+  "mistral",
+  "nemotron"
+ ],
+ "primeira_onda": 1,
+ "nomes": [
+  "Cohere Rerank",
+  "Cohere Rerank API"
+ ],
+ "resumos": [
+  "Cohere's API-based or locally deployable reranking model that can be integrated into Haystack pipelines via custom components for improved result quality.",
+  "Modelo cross-encoder de re-ranking local/disponível via API, complementa BM25+embeddings ordenando resultados por relevância semântica profunda.",
+  "A reranking service that improves search results by reordering them based on relevance.",
+  "Re-ranking model that can refine hybrid BM25 + semantic results before returning them over NATS to agents."
+ ],
+ "readme_status": "ok",
+ "readme_nome": "README.md",
+ "readme_cortado": false,
+ "readme": "# Cohere Python SDK\n\n![](banner.png)\n\n[![version badge](https://img.shields.io/pypi/v/cohere)](https://pypi.org/project/cohere/)\n![license badge](https://img.shields.io/github/license/cohere-ai/cohere-python)\n[![fern shield](https://img.shields.io/badge/%F0%9F%8C%BF-SDK%20generated%20by%20Fern-brightgreen)](https://github.com/fern-api/fern)\n\nThe Cohere Python SDK allows access to Cohere models across many different platforms: the cohere platform, AWS (Bedrock, Sagemaker), Azure, GCP and Oracle OCI. For a full list of support and snippets, please take a look at the [SDK support docs page](https://docs.cohere.com/docs/cohere-works-everywhere).\n\n## Documentation\n\nCohere documentation and API reference is available [here](https://docs.cohere.com/).\n\n## Installation\n\n```\npip install cohere\n```\n\n## Usage\n\n```Python\nimport cohere\n\nco = cohere.ClientV2()\n\nresponse = co.chat(\n    model=\"command-r-plus-08-2024\",\n    messages=[{\"role\": \"user\", \"content\": \"hello world!\"}],\n)\n\nprint(response)\n```\n\n> [!TIP]\n> You can set a system environment variable `CO_API_KEY` to avoid writing your api key within your code, e.g. add `export CO_API_KEY=theapikeyforyouraccount`\n> in your ~/.zshrc or ~/.bashrc, open a new terminal, then code calling `cohere.Client()` will read this key.\n\n\n## Streaming\n\nThe SDK supports streaming endpoints. To take advantage of this feature for chat,\nuse `chat_stream`.\n\n```Python\nimport cohere\n\nco = cohere.ClientV2()\n\nresponse = co.chat_stream(\n    model=\"command-r-plus-08-2024\",\n    messages=[{\"role\": \"user\", \"content\": \"hello world!\"}],\n)\n\nfor event in response:\n    if event.type == \"content-delta\":\n        print(event.delta.message.content.text, end=\"\")\n```\n\n## Oracle Cloud Infrastructure (OCI)\n\nThe SDK supports Oracle Cloud Infrastructure (OCI) Generative AI service. First, install the OCI SDK:\n\n```\npip install 'cohere[oci]'\n```\n\nThen use the `OciClient` or `OciClientV2`:\n\n```Python\nimport cohere\n\n# Using OCI config file authentication (default: ~/.oci/config)\nco = cohere.OciClient(\n    oci_region=\"us-chicago-1\",\n    oci_compartment_id=\"ocid1.compartment.oc1...\",\n)\n\nresponse = co.embed(\n    model=\"embed-english-v3.0\",\n    texts=[\"Hello world\"],\n    input_type=\"search_document\",\n)\n\nprint(response.embeddings)\n```\n\n### OCI Authentication Methods\n\n**1. Config File (Default)**\n```Python\nco = cohere.OciClient(\n    oci_region=\"us-chicago-1\",\n    oci_compartment_id=\"ocid1.compartment.oc1...\",\n    # Uses ~/.oci/config with DEFAULT profile\n)\n```\n\n**2. Custom Profile**\n```Python\nco = cohere.OciClient(\n    oci_profile=\"MY_PROFILE\",\n    oci_region=\"us-chicago-1\",\n    oci_compartment_id=\"ocid1.compartment.oc1...\",\n)\n```\n\n**3. Session-based Authentication (Security Token)**\n```Python\n# Works with OCI CLI session tokens\nco = cohere.OciClient(\n    oci_profile=\"MY_SESSION_PROFILE\",  # Profile with security_token_file\n    oci_region=\"us-chicago-1\",\n    oci_compartment_id=\"ocid1.compartment.oc1...\",\n)\n```\n\n**4. Direct Credentials**\n```Python\nco = cohere.OciClient(\n    oci_user_id=\"ocid1.user.oc1...\",\n    oci_fingerprint=\"xx:xx:xx:...\",\n    oci_tenancy_id=\"ocid1.tenancy.oc1...\",\n    oci_private_key_path=\"~/.oci/key.pem\",\n    oci_region=\"us-chicago-1\",\n    oci_compartment_id=\"ocid1.compartment.oc1...\",\n)\n```\n\n**5. Instance Principal (for OCI Compute instances)**\n```Python\nco = cohere.OciClient(\n    auth_type=\"instance_principal\",\n    oci_region=\"us-chicago-1\",\n    oci_compartment_id=\"ocid1.compartment.oc1...\",\n)\n```\n\n### Supported OCI APIs\n\nThe OCI client supports the following Cohere APIs:\n- **Embed**: Full support for all embedding models\n- **Chat**: Full support with both V1 (`OciClient`) and V2 (`OciClientV2`) APIs\n  - Streaming available via `chat_stream()`\n  - Supports Command-R and Command-A model families\n\n### OCI Model Availability and Limitations\n\n**Available on OCI On-Demand Inference:**\n- ✅ **Embed models**: available on OCI Generative AI\n- ✅ **Chat models**: available via `OciClient` (V1) and `OciClientV2` (V2)\n\n**Not Available on OCI On-Demand Inference:**\n- ❌ **Generate API**: OCI TEXT_GENERATION models are base models that require fine-tuning before deployment\n- ❌ **Rerank API**: OCI TEXT_RERANK models are base models that require fine-tuning before deployment\n- ❌ **Multiple Embedding Types**: OCI on-demand models only support single embedding type per request (cannot request both `float` and `int8` simultaneously)\n\n**Note**: To use Generate or Rerank models on OCI, you need to:\n1. Fine-tune the base model using OCI's fine-tuning service\n2. Deploy the fine-tuned model to a dedicated endpoint\n3. Update your code to use the deployed model endpoint\n\nFor the latest model availability, see the [OCI Generative AI documentation](https://docs.oracle.com/en-us/iaas/Content/generative-ai/home.htm).\n\n## Contributing\n\nWhile we value open-source contributions to this SDK, the code is generated programmatically. Additions made directly would have to be moved over to our generation code, otherwise they would be overwritten upon the next generated release. Feel free to open a PR as a proof of concept, but know that we will not be able to merge it as-is. We suggest opening an issue first to discuss with us!\n\nOn the other hand, contributions to the README are always very welcome!\n"
+}

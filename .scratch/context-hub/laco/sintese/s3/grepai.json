@@ -1,0 +1,65 @@
+{
+ "nome": "grepai",
+ "url": "https://github.com/yoanbernabeu/grepai",
+ "papel": "disco+MCP pronto",
+ "windows": "yes: instalador PowerShell (install.ps1), build GOOS=windows e CI com windows-latest",
+ "mcp": "yes: 'grepai mcp-serve', stdio",
+ "portugues": "Depende do modelo de embeddings: padrão nomic-embed-text é inglês; docs recomendam nomic-embed-text-v2-moe (~100 idiomas, drop-in 768d) ou bge-m3 (~100 idiomas). Sem stemmer/stopwords documentados.",
+ "markdown_frontmatter": "Indexa .md e .txt (lista de extensões no scanner), chunking por tokens com overlap; sem uso de frontmatter nem chunking por título documentados. Foco em código.",
+ "atualizacao": "yes: 'grepai watch' daemon com file watcher e debounce_ms (padrão 500); 'grepai update' manual",
+ "embeddings_endpoint": "yes, com ressalva: providers ollama, lmstudio (OpenAI-compatível) e openai com 'endpoint' configurável (docs: supports Azure OpenAI); gateway genérico como o FreeLLMAPI: nao_verificado.",
+ "recursos": "Binário único em Go (go 1.25); requer provedor de embeddings externo (Ollama padrão); armazenamento do índice e RAM: nao_verificado.",
+ "licenca": "MIT",
+ "ultimo_release": "2026-09-10, v0.37.0",
+ "atividade": "último commit 2026-09-10 (um mês sem commits em 2026-10-13)",
+ "maturidade": "beta (versão 0.x ativa; classificação inferida)",
+ "encaixe": "Disco de cada máquina com watcher e MCP stdio, embeddings pelo FreeLLMAPI via endpoint openai. Impedimentos: feito para código (sem título/frontmatter), depende de endpoint de embeddings, sem commits há um mês.",
+ "evidencias": [
+  {
+   "campo": "windows",
+   "url": "https://github.com/yoanbernabeu/grepai",
+   "citacao": "Windows (PowerShell): irm https://raw.githubusercontent.com/yoanbernabeu/grepai/main/install.ps1 | iex"
+  },
+  {
+   "campo": "windows",
+   "url": "https://github.com/yoanbernabeu/grepai/blob/main/.github/workflows/ci.yml",
+   "citacao": "os: [ubuntu-latest, macos-latest, windows-latest]"
+  },
+  {
+   "campo": "mcp",
+   "url": "https://yoanbernabeu.github.io/grepai/commands/grepai_mcp-serve/",
+   "citacao": "The server communicates via stdio and exposes the following tools"
+  },
+  {
+   "campo": "atualizacao",
+   "url": "https://github.com/yoanbernabeu/grepai",
+   "citacao": "Always up-to-date — File watcher keeps the index fresh automatically"
+  },
+  {
+   "campo": "embeddings_endpoint",
+   "url": "https://yoanbernabeu.github.io/grepai/configuration/",
+   "citacao": "# Endpoint URL (depends on provider, supports Azure OpenAI)"
+  },
+  {
+   "campo": "portugues",
+   "url": "https://yoanbernabeu.github.io/grepai/backends/embedders/",
+   "citacao": "Recommended: nomic-embed-text-v2-moe — same dimensions (768) as the default"
+  },
+  {
+   "campo": "markdown_frontmatter",
+   "url": "https://github.com/yoanbernabeu/grepai/blob/main/indexer/scanner.go",
+   "citacao": "\".md\":     true,"
+  },
+  {
+   "campo": "licenca",
+   "url": "https://github.com/yoanbernabeu/grepai",
+   "citacao": "MIT License - Yoan Bernabeu 2026"
+  }
+ ],
+ "nao_verificado": [
+  "armazenamento do índice e RAM",
+  "compatibilidade com o FreeLLMAPI",
+  "tratamento de frontmatter",
+  "busca híbrida"
+ ]
+}

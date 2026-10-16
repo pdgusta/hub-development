@@ -1,0 +1,45 @@
+{
+ "chave": "web:mdxjs.com",
+ "urls": [
+  "https://mdxjs.com/",
+  "https://mdxjs.com/guides/what-is-mdx#metadata",
+  "https://www.npmjs.com/package/mdx-frontmatter"
+ ],
+ "tipos": [
+  "concept",
+  "library"
+ ],
+ "termos": [
+  "mdx metadata",
+  "mdx frontmatter",
+  "mdx",
+  "jsx",
+  "metadata",
+  "MDX metadata",
+  "export const meta",
+  "frontmatter"
+ ],
+ "mencoes": 4,
+ "familias": [
+  "gpt-oss",
+  "nemotron"
+ ],
+ "primeira_onda": 2,
+ "nomes": [
+  "MDX front matter",
+  "MDX frontmatter",
+  "MDX Export Syntax",
+  "mdx-frontmatter"
+ ],
+ "resumos": [
+  "MDX allows embedding JavaScript and uses front matter (YAML/TOML/JSON) for page metadata in MDX files.",
+  "MDX allows exporting metadata as JavaScript objects alongside content, removing the need for traditional frontmatter.",
+  "Export a JavaScript object from an MDX file to serve as structured metadata.",
+  "专为 MDX 文件设计的前置元数据提取器。"
+ ],
+ "fonte": "site",
+ "readme_status": "ok",
+ "readme_nome": "https://mdxjs.com/",
+ "readme_cortado": false,
+ "readme": "[Markdown for the component era | MDXMDXGitHubOpenCollective]\n\nSkip to navigation\n\nMarkdown for the\ncomponent era\nMDX lets you use JSX in your markdown content. You can import components, such as interactive charts or alerts, and embed them within your content. This makes writing long-form content with components a blast. 🚀 Continue reading »\n\nNew: MDX 3!\nA small major this time, nothing big, which is also nice sometimes! This mainly drops support for old Node (use 16 or later), adds modern ES2024 support in MDX, supports await in MDX (if your framework does too), and removes several deprecated options.\nContinue reading »\nWhat does MDX do?\n\nYou write markdown with embedded components through JSX:\n\nexample.mdx\nimport {Chart} from './snowfall.js'\nexport const year = 2023\n\n# Last year’s snowfall\n\nIn {year}, the snowfall was above average.\nIt was followed by a warm spring which caused\nflood conditions in many of the nearby rivers.\n\n<Chart color=\"#fcb32c\" year={year} />\n\nIt gets compiled to JavaScript that you can use in any framework that supports JSX:\n\nLast year’s snowfall\nIn 2023, the snowfall was above average. It was followed by a warm spring which caused flood conditions in many of the nearby rivers.\n\nWe made an interactive playground where you can try MDX out and see what it turns into. Play »\nGet started\nThere are integrations for most bundlers, frameworks, and editors. Whether you build with Docusaurus, Next.js, or Vite. You prefer Rollup, esbuild, or webpack. You’re using React, Preact, or Vue. Get started »\nMDX in short\n\n❤️ Powerful: MDX blends markdown and JSX syntax to fit perfectly in JSX-based projects\n💻 Everything is a component: Use existing components in your MDX and import other MDX files as components\n🔧 Customizable: Decide which component is rendered for each markdown construct ({h1: MyHeading})\n📚 Markdown-based: The simplicity and elegance of markdown remains, you use JSX only when you want to\n🔥 Blazingly blazing fast: MDX has no runtime, all compilation occurs during the build stage\nlol mdx is so good\n— @dan_abramov"
+}

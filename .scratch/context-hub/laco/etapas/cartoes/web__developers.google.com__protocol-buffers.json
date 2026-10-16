@@ -1,0 +1,69 @@
+{
+ "chave": "web:developers.google.com/protocol-buffers",
+ "urls": [
+  "https://developers.google.com/protocol-buffers",
+  "https://protobuf.dev/",
+  "https://protobuf.org/",
+  "https://developers.google.com/protocol-buffers/"
+ ],
+ "tipos": [
+  "library",
+  "tool",
+  "concept"
+ ],
+ "termos": [
+  "protobuf",
+  "protobuf c++",
+  "protobuf windows",
+  "schema validation",
+  "binary/text formats",
+  "structured data",
+  "serialization format",
+  "data interchange format",
+  "MessagePack",
+  "FlatBuffers",
+  "Apache Thrift",
+  "proto",
+  "serialization",
+  "binary format",
+  "binary data",
+  "Protocol Buffers",
+  "protobuf JSON",
+  "protobuf C++",
+  "Google Protocol Buffers",
+  "serialização",
+  "pb",
+  "Google protobuf",
+  "google protobuf"
+ ],
+ "mencoes": 14,
+ "familias": [
+  "agnes",
+  "cohere",
+  "dots3",
+  "gemma",
+  "gpt-oss",
+  "liquid",
+  "llama",
+  "mistral",
+  "nemotron"
+ ],
+ "primeira_onda": 4,
+ "nomes": [
+  "Protocol Buffers (protobuf)",
+  "Protocol Buffers (protobuf) with JSON/Structured Text",
+  "Protocol Buffers",
+  "Protobuf"
+ ],
+ "resumos": [
+  "Formato de serialização de dados eficiente, desenvolvido pelo Google, com suporte a múltiplas linguagens.",
+  "Binary/structured text serialization with schema support, enabling strict frontmatter validation and efficient storage.",
+  "A language-neutral data interchange format that can be used with ZeroMQ.",
+  "Google 开发的二进制序列化格式，体积小且解析快，适合大规模索引。"
+ ],
+ "fonte": "site",
+ "readme_status": "ok",
+ "readme_nome": "https://developers.google.com/protocol-buffers",
+ "readme_cortado": false,
+ "readme": "[Protocol Buffers Documentation]\n\nView page source\n Edit this page\n Create child page\n Create documentation issue\n Create project issue\n\nProtobuf\nProtobuf is a language-neutral, platform-neutral extensible mechanism for serializing structured data.\nWhat Is Protobuf?\nProtobuf (“Protocol Buffers”) is Google’s language-neutral, platform-neutral,\nextensible mechanism for serializing structured data – think XML, but smaller,\nfaster, and simpler. You define how you want your data to be structured once,\nthen you can use special generated source code to easily write and read your\nstructured data to and from a variety of data streams and using a variety of\nlanguages.\nPick Your Favorite Language\nProtobuf supports generated code in C++, C#, Dart, Go,\nJava, Kotlin, Objective-C, Python, Rust, and Ruby. With proto3,\nyou can also work with PHP.\nExample Implementation\n\nedition = \"2024\";\n\nmessage Person {\n string name = 1;\n int32 id = 2;\n string email = 3;\n}\n\nFigure 1. A proto definition.\n\n// Java code\nPerson john = Person.newBuilder()\n .setId(1234)\n .setName(\"John Doe\")\n .setEmail(\"jdoe@example.com\")\n .build();\noutput = new FileOutputStream(args[0]);\njohn.writeTo(output);\n\nFigure 2. Using a generated class to persist data.\n\n// C++ code\nPerson john;\nfstream input(argv[1],\n ios::in | ios::binary);\njohn.ParseFromIstream(&input);\nid = john.id();\nname = john.name();\nemail = john.email();\n\nFigure 3. Using a generated class to parse persisted data.\nHow Do I Start?\nDownload\nand install the Protobuf compiler.\nRead the\noverview.\nTry the tutorial for your\nchosen language."
+}

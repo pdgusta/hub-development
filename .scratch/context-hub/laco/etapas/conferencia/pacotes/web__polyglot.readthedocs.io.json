@@ -1,0 +1,55 @@
+{
+ "chave": "web:polyglot.readthedocs.io",
+ "nomes": [
+  "Polyglot Portuguese"
+ ],
+ "urls": [
+  "https://polyglot.readthedocs.io/"
+ ],
+ "readme_cortado": false,
+ "readme": "[Welcome to polyglot’s documentation! — polyglot 16.07.04 documentation]\n\nDocs »\n\nWelcome to polyglot’s documentation!\n\n Edit on GitHub\n\nWelcome to polyglot’s documentation!¶\n\npolyglot¶\n\nPolyglot is a natural language pipeline that supports massive\nmultilingual applications.\n\nFree software: GPLv3 license\n\nDocumentation: http://polyglot.readthedocs.org.\n\nFeatures¶\n\nTokenization (165 Languages)\n\nLanguage detection (196 Languages)\n\nNamed Entity Recognition (40 Languages)\n\nPart of Speech Tagging (16 Languages)\n\nSentiment Analysis (136 Languages)\n\nWord Embeddings (137 Languages)\n\nMorphological analysis (135 Languages)\n\nTransliteration (69 Languages)\n\nDeveloper¶\n\nRami Al-Rfou @ rmyeid gmail com\n\nQuick Tutorial¶\n\nimport polyglot\nfrom polyglot.text import Text, Word\n\nLanguage Detection¶\n\ntext = Text(\"Bonjour, Mesdames.\")\nprint(\"Language Detected: Code={}, Name={}\\n\".format(text.language.code, text.language.name))\n\nLanguage Detected: Code=fr, Name=French\n\nTokenization¶\n\nzen = Text(\"Beautiful is better than ugly. \"\n \"Explicit is better than implicit. \"\n \"Simple is better than complex.\")\nprint(zen.words)\n\n[u'Beautiful', u'is', u'better', u'than', u'ugly', u'.', u'Explicit', u'is', u'better', u'than', u'implicit', u'.', u'Simple', u'is', u'better', u'than', u'complex', u'.']\n\nprint(zen.sentences)\n\n[Sentence(\"Beautiful is better than ugly.\"), Sentence(\"Explicit is better than implicit.\"), Sentence(\"Simple is better than complex.\")]\n\nPart of Speech Tagging¶\n\ntext = Text(u\"O primeiro uso de desobediência civil em massa ocorreu em setembro de 1906.\")\n\nprint(\"{:<16}{}\".format(\"Word\", \"POS Tag\")+\"\\n\"+\"-\"*30)\nfor word, tag in text.pos_tags:\n print(u\"{:<16}{:>2}\".format(word, tag))\n\nWord POS Tag\n------------------------------\nO DET\nprimeiro ADJ\nuso NOUN\nde ADP\ndesobediência NOUN\ncivil ADJ\nem ADP\nmassa NOUN\nocorreu ADJ\nem ADP\nsetembro NOUN\nde ADP\n1906 NUM\n. PUNCT\n\nNamed Entity Recognition¶\n\ntext = Text(u\"In Großbritannien war Gandhi mit dem westlichen Lebensstil vertraut geworden\")\nprint(text.entities)\n\n[I-LOC([u'Gro\\xdfbritannien']), I-PER([u'Gandhi'])]\n\nPolarity¶\n\nprint(\"{:<16}{}\".format(\"Word\", \"Polarity\")+\"\\n\"+\"-\"*30)\nfor w in zen.words[:6]:\n print(\"{:<16}{:>2}\".format(w, w.polarity))\n\nWord Polarity\n------------------------------\nBeautiful 0\nis 0\nbetter 1\nthan 0\nugly -1\n. 0\n\nEmbeddings¶\n\nword = Word(\"Obama\", language=\"en\")\nprint(\"Neighbors (Synonms) of {}\".format(word)+\"\\n\"+\"-\"*30)\nfor w in word.neighbors:\n print(\"{:<16}\".format(w))\nprint(\"\\n\\nThe first 10 dimensions out the {} dimensions\\n\".format(word.vector.shape[0]))\nprint(word.vector[:10])\n\nNeighbors (Synonms) of Obama\n------------------------------\nBush\nReagan\nClinton\nAhmadinejad\nNixon\nKarzai\nMcCain\nBiden\nHuckabee\nLula\n\nThe first 10 dimensions out the 256 dimensions\n\n[-2.57382345 1.52175975 0.51070285 1.08678675 -0.74386948 -1.18616164\n 2.92784619 -0.25694436 -1.40958667 -2.39675403]\n\nMorphology¶\n\nword = Text(\"Preprocessing is an essential step.\").words[0]\nprint(word.morphemes)\n\n[u'Pre', u'process', u'ing']\n\nTransliteration¶\n\nfrom polyglot.transliteration import Transliterator\ntransliterator = Transliterator(source_lang=\"en\", target_lang=\"ru\")\nprint(transliterator.transliterate(u\"preprocessing\"))\n\nпрепрокессинг\n\nContents:¶\n\nInstallation\n\nInstalling/Upgrading From the PyPI\n\nFrom Source\n\nGet the bleeding edge version\n\nLanguage Detection\n\nExample\n\nMixed Text\n\nBest Effort Strategy\n\nCommand Line\n\nSupported Languages\n\nTokenization\n\nWord Tokenization\n\nSentence Segmentation\n\nCommand Line\n\nCommand Line Interface\n\nInput formats\n\nWord Count Example\n\nBuilding Pipelines\n\nDownloading Models\n\nModes of Operation\n\nCollections\n\nLangauge & Task Support\n\nWord Embeddings\n\nFormats\n\nNearest Neighbors\n\nVocabulary Expansion\n\nDemo\n\nPart of Speech Tagging\n\nLanguages Coverage\n\nExample\n\nReferences\n\nNamed Entity Extraction\n\nLanguages Coverage\n\nExample\n\nDemo\n\nReferences\n\nMorphological Analysis\n\nLanguages Coverage\n\nExample\n\nDemo\n\nReferences\n\nTransliteration\n\nLanguages Coverage\n\nExample\n\nCitation\n\nSentiment\n\nLanguages Coverage\n\nCitation\n\npolyglot\n\npolyglot package",
+ "fonte": "site",
+ "respostas": [
+  {
+   "por": "nemotron-3-super-120b",
+   "resposta": {
+    "serve": "search",
+    "role": "Provides multilingual NLP processing for tokenization, embeddings, and language detection.",
+    "place": [
+     "library"
+    ],
+    "mechanism": [
+     "embeddings"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "yes",
+    "license": "GPL-3.0",
+    "maturity": "unknown",
+    "doubt": false,
+    "evidence": "Embeddings¶\n\nword = Word(\"Obama\", language=\"en\")\nprint(\"Neighbors (Synonms) of {}\".format(word)+\"\\n\"+\"-\"*30)"
+   }
+  },
+  {
+   "por": "dots3-note-preview",
+   "resposta": {
+    "serve": "stack",
+    "role": "Provides multilingual NLP features like embeddings and tokenization for notes",
+    "place": [
+     "library"
+    ],
+    "mechanism": [
+     "embeddings",
+     "full_text"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "yes",
+    "license": "GPL-3.0",
+    "maturity": "unknown",
+    "doubt": false,
+    "evidence": "Polyglot is a natural language pipeline; import polyglot"
+   }
+  }
+ ]
+}

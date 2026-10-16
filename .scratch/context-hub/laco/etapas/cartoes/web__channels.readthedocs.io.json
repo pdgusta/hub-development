@@ -1,0 +1,64 @@
+{
+ "chave": "web:channels.readthedocs.io",
+ "urls": [
+  "https://channels.readthedocs.io/",
+  "https://channels.readthedocs.io/en/latest/",
+  "https://channels.readthedocs.io",
+  "https://docs.djangoproject.com/en/stable/howto/channels/",
+  "https://channels.readthedocs.io/en/stable/",
+  "https://channels.readthedocs.django.com/"
+ ],
+ "tipos": [
+  "library",
+  "tool"
+ ],
+ "termos": [
+  "async Django",
+  "WebSockets",
+  "WebSocket",
+  "real-time",
+  "async",
+  "Django WebSockets",
+  "real-time Django",
+  "ASGI",
+  "Django Channels Worker",
+  "Django",
+  "Django WebSocket",
+  "async messaging",
+  "リアルタイム",
+  "asynchronous",
+  "channels",
+  "django channels",
+  "websocket",
+  "Asynchronous Django views",
+  "django real-time",
+  "django websockets",
+  "real-time search",
+  "asynchronous Django"
+ ],
+ "mencoes": 15,
+ "familias": [
+  "gemini",
+  "gemma",
+  "gpt-oss",
+  "liquid",
+  "llama",
+  "mistral",
+  "qwen"
+ ],
+ "primeira_onda": 4,
+ "nomes": [
+  "Django Channels"
+ ],
+ "resumos": [
+  "Django の非同期処理をサポートするライブラリで、リアルタイム検索などに利用可能です。",
+  "Django に WebSocket を追加するライブラリで、リアルタイムな検索結果の更新に利用可能です。",
+  "Adds WebSocket and HTTP2 support to Django.",
+  "Djangoに非同期プロトコル（WebSocketやASGI）のサポートを追加し、リアルタイム処理やバックグラウンドタスクを可能にするライブラリ。"
+ ],
+ "fonte": "site",
+ "readme_status": "ok",
+ "readme_nome": "https://channels.readthedocs.io/",
+ "readme_cortado": false,
+ "readme": "[Django Channels — Channels 4.3.2 documentation]\n\nDjango Channels\n\n View page source\n\nDjango Channels\n\nChannels is a project that takes Django and extends its abilities beyond\nHTTP - to handle WebSockets, chat protocols, IoT protocols, and more. It’s\nbuilt on a Python specification called ASGI.\n\nChannels builds upon the native ASGI support in Django. Whilst Django still handles\ntraditional HTTP, Channels gives you the choice to handle other connections in\neither a synchronous or asynchronous style.\n\nTo get started understanding Channels, read our Introduction,\nwhich will walk through how things work.\n\nNote\n\nThis is documentation for the 4.x series of Channels. If you are looking\nfor documentation for older versions, you can select 3.x, 2.x, or\n1.x from the versions selector in the bottom-left corner.\n\nProjects\n\nChannels is comprised of several packages:\n\nChannels, the Django integration layer\n\nDaphne, the HTTP and Websocket termination server\n\nasgiref, the base ASGI library\n\nchannels_redis, the Redis channel layer backend (optional)\n\nThis documentation covers the system as a whole; individual release notes and\ninstructions can be found in the individual repositories.\n\nTopics\n\nIntroduction\n\nTurtles All The Way Down\n\nScopes and Events\n\nWhat is a Consumer?\n\nRouting and Multiple Protocols\n\nCross-Process Communication\n\nDjango Integration\n\nInstallation\n\nType checking support\n\nInstalling the latest development version\n\nTutorial\n\nTutorial Part 1: Basic Setup\n\nTutorial Part 2: Implement a Chat Server\n\nTutorial Part 3: Rewrite Chat Server as Asynchronous\n\nTutorial Part 4: Automated Testing\n\nConsumers\n\nBasic Layout\n\nScope\n\nGeneric Consumers\n\nRouting\n\nProtocolTypeRouter\n\nURLRouter\n\nChannelNameRouter\n\nDatabase Access\n\nDatabase Connections\n\ndatabase_sync_to_async\n\naclose_old_connections\n\nChannel Layers\n\nConfiguration\n\nSynchronous Functions\n\nWhat To Send Over The Channel Layer\n\nSingle Channels\n\nGroups\n\nUsing Outside Of Consumers\n\nSessions\n\nBasic Usage\n\nSession Persistence\n\nAuthentication\n\nDjango authentication\n\nCustom Authentication\n\nHow to log a user in/out\n\nSecurity\n\nWebSockets\n\nTesting\n\nSetting Up Async Tests\n\nApplicationCommunicator\n\nHttpCommunicator\n\nWebsocketCommunicator\n\nChannelsLiveServerTestCase\n\nWorker and Background Tasks\n\nSending\n\nReceiving and Consumers\n\nDeploying\n\nConfiguring the ASGI application\n\nSetting up a channel backend\n\nRun protocol servers\n\nHTTP and WebSocket\n\nAlternative Web Servers\n\nExample Setups\n\nTroubleshooting\n\nImproperlyConfigured exception\n\nReference\n\nASGI\n\nSummary\n\nComposability\n\nProtocol Specifications\n\nChannel Layer Specification\n\nAbstract\n\nOverview\n\nSpecification Details\n\nCopyright\n\nCommunity Projects\n\nContributing\n\nWhat can I work on?\n\nI’m a novice contributor/developer - can I help?\n\nHow do I get started and run the tests?\n\nHow do I do a release?\n\nSupport\n\nMaking bugs reproducible\n\nHow to help the Channels project\n\nRelease Notes\n\n4.3.2 Release Notes\n\n4.3.1 Release Notes\n\n4.3.0 Release Notes\n\n4.2.2 Release Notes\n\n4.2.1 Release Notes\n\n4.2.0 Release Notes\n\n4.1.0 Release Notes\n\n4.0.0 Release Notes\n\n3.0.5 Release Notes\n\n3.0.4 Release Notes\n\n3.0.3 Release Notes\n\n3.0.2 Release Notes\n\n3.0.1 Release Notes\n\n3.0.0 Release Notes\n\n2.4.0 Release Notes\n\n2.3.0 Release Notes\n\n2.2.0 Release Notes\n\n2.1.7 Release Notes\n\n2.1.6 Release Notes\n\n2.1.5 Release Notes\n\n2.1.4 Release Notes\n\n2.1.3 Release Notes\n\n2.1.2 Release Notes\n\n2.1.1 Release Notes\n\n2.1.0 Release Notes\n\n2.0.2 Release Notes\n\n2.0.1 Release Notes\n\n2.0.0 Release Notes\n\n1.1.6 Release Notes\n\n1.1.5 Release Notes\n\n1.1.4 Release Notes\n\n1.1.3 Release Notes\n\n1.1.2 Release Notes\n\n1.1.1 Release Notes\n\n1.1.0 Release Notes\n\n1.0.3 Release Notes\n\n1.0.2 Release Notes\n\n1.0.1 Release Notes\n\n1.0.0 Release Notes"
+}

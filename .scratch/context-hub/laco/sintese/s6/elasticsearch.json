@@ -1,0 +1,54 @@
+{
+ "nome": "Elasticsearch",
+ "nome_canonico": "elastic/elasticsearch",
+ "chave": "gh:elastic/elasticsearch",
+ "url": "https://github.com/elastic/elasticsearch",
+ "serve": "search",
+ "area": null,
+ "identidade": "ok (elastic.co aponta para o mesmo projeto; elasticsearch-py é só o cliente)",
+ "windows": "yes: zip nativo para Windows, com OpenJDK embutido, sem Docker/WSL",
+ "mcp": "yes (oficial da Elastic): Agent Builder MCP server (9.2+ e Serverless); o elastic/mcp-server-elasticsearch está deprecated desde 9.2. Transporte: nao_verificado",
+ "portugues": "yes: analisador `portuguese` com stopwords _portuguese_ e stemmer light_portuguese",
+ "markdown_frontmatter": "Não indexa Markdown nem frontmatter por si; recebe JSON com campos que o cliente monta. Divisão por título: nao_verificado",
+ "atualizacao": "manual: o cliente envia os documentos (sem watcher próprio)",
+ "embeddings_endpoint": "nao_verificado nesta rodada (tem vetores/kNN, mas o endpoint de inferência não foi conferido)",
+ "recursos": "JVM; heap dimensionado automaticamente pelo nó (automatically sizes JVM heap based on a node's roles and total memory); RAM/disco em número: nao_verificado",
+ "licenca": "Tripla: AGPLv3 only, SSPL v1 ou Elastic License 2.0 (x-pack só ELv2)",
+ "ultimo_release": "v9.5.5 (2026-10-06)",
+ "atividade": "último push 2026-10-14",
+ "maturidade": "stable",
+ "encaixe": "Serviço de busca pesado (JVM) na rede ou no disco de uma máquina; português nativo e MCP oficial. Impedimento: peso do runtime e licença AGPL/SSPL/ELv2, exagero para um vault.",
+ "evidencias": [
+  {
+   "campo": "windows",
+   "url": "https://www.elastic.co/docs/deploy-manage/deploy/self-managed/install-elasticsearch-with-zip-on-windows",
+   "citacao": "Elasticsearch can be installed on Windows using the Windows .zip archive."
+  },
+  {
+   "campo": "portugues",
+   "url": "https://www.elastic.co/docs/reference/text-analysis/analysis-lang-analyzer",
+   "citacao": "\"stemmer\": { \"type\": \"stemmer\", \"language\": \"light_portuguese\" }"
+  },
+  {
+   "campo": "mcp",
+   "url": "https://www.elastic.co/docs/solutions/search/mcp",
+   "citacao": "Elastic offers two MCP server options for connecting agents to your Elasticsearch data."
+  },
+  {
+   "campo": "licenca",
+   "url": "https://github.com/elastic/elasticsearch/blob/main/LICENSE.txt",
+   "citacao": "Source code in this repository is covered by (i) a triple license under the"
+  },
+  {
+   "campo": "ultimo_release",
+   "url": "https://api.github.com/repos/elastic/elasticsearch/releases/latest",
+   "citacao": "tag v9.5.5, published 2026-10-06"
+  }
+ ],
+ "nao_verificado": [
+  "transporte do MCP",
+  "embeddings_endpoint",
+  "RAM/disco em número",
+  "Markdown/frontmatter"
+ ]
+}

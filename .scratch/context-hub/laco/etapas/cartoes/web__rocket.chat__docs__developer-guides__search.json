@@ -1,0 +1,38 @@
+{
+ "chave": "web:rocket.chat/docs/developer-guides/search",
+ "urls": [
+  "https://rocket.chat/docs/developer-guides/search/",
+  "https://docs.rocket.chat/developer-guides/search"
+ ],
+ "tipos": [
+  "service",
+  "tool"
+ ],
+ "termos": [
+  "MCP",
+  "full-text",
+  "semantic",
+  "portuguese",
+  "document search",
+  "metadata filtering",
+  "self-hosted"
+ ],
+ "mencoes": 2,
+ "familias": [
+  "mistral"
+ ],
+ "primeira_onda": 1,
+ "nomes": [
+  "Rocket.Chat Search (si usas MCP)",
+  "Rocket.Chat Search"
+ ],
+ "resumos": [
+  "Integración de búsqueda híbrida en MCP si este usa Rocket.Chat como capa de interfaz (BM25 + semántica).",
+  "Self-hosted search layer for document collections (including Markdown) with BM25, fuzzy matching, and metadata filtering (e.g., frontmatter)."
+ ],
+ "fonte": "site",
+ "readme_status": "ok",
+ "readme_nome": "https://rocket.chat/docs/developer-guides/search/",
+ "readme_cortado": false,
+ "readme": "[Rocket Chat Settings Search Guide]\n\nDocumentation Index\nFetch the complete documentation index at: https://docs.rocket.chat/llms.txt\nUse this file to discover all available pages before exploring further.\n\n Search \n CTRL+K\nPress CTRL+K to open search\n\nPowered by\n\n Search \n\n Print \nCopy pageCopy as Markdown for LLMsView as MarkdownView the page as plain text\nOpen in ChatGPTAsk ChatGPT about this pageOpen in ClaudeAsk Claude about this page Prev Next \nConfigure how users search for messages in workspace rooms. These settings apply only to Search messages within rooms. They do not affect the global spotlight search, which searches for users, channels, and rooms by name from the search bar at the top of the workspace.\nTo access this setting, navigate to Manage > Workspace > Settings > Search.\n\nSearch Provider: Select the backend provider used for message search. Default provider is the only option and it uses MongoDB's text index to search messages.\nDefault provider\n\nGlobal search : When enabled, global search extends an in-room message search to cover every room the user is a member of, instead of limiting results to the current room. Users will have the option to enable it while searching for a text string in any room. It returns results for the matching string across all rooms that the user is a member of.\n\nPage Size: The number of search results displayed per page.\nThe global search feature is currently in beta and may not function as expected.\n\n Was this article helpful? \n Yes No \n\n Tags \n\nPremium"
+}

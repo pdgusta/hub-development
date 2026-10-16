@@ -1,0 +1,37 @@
+{
+ "chave": "gh:fergiemcdowall/search-index",
+ "nomes": [
+  "Search-index",
+  "Search Index",
+  "search-index"
+ ],
+ "urls": [
+  "https://github.com/fergiemcdowall/search-index",
+  "https://github.com/feross/search-index"
+ ],
+ "readme_cortado": false,
+ "readme": "# search-index\n\n### A network resilient, persistent full-text search library for the browser and Node.js\n\n[![npm](https://img.shields.io/npm/v/search-index.svg?style=flat-square)](https://www.npmjs.com/package/search-index)\n[![npm](https://img.shields.io/npm/dm/search-index.svg?style=flat-square)](https://npm-stat.com/charts.html?package=search-index)\n[![license](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square)](LICENCE)\n[![Build Status](https://travis-ci.org/fergiemcdowall/search-index.svg?branch=master)](https://travis-ci.org/fergiemcdowall/search-index)\n[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg?style=flat-square)](https://standardjs.com)\n\n\n## Quick start\n\n```javascript\nimport { SearchIndex } from 'search-index' \n\n// initialize an index\nconst { PUT, QUERY } = new SearchIndex(options)\n\n// add documents to the index\nawait PUT(documents)\n\n// read documents from the index\nconst results = await QUERY(query)\n```\n\n## Documentation\n\n* [Browser\n  demo](https://codesandbox.io/p/github/fergiemcdowall/search-index-demo/)\n  ([source code](https://github.com/fergiemcdowall/search-index-demo))\n* [API](docs/API.md)\n* [FAQ](docs/FAQ.md)\n",
+ "fonte": "readme",
+ "respostas": [
+  {
+   "por": "claude-haiku-5-5",
+   "resposta": {
+    "serve": "search",
+    "role": "Biblioteca de busca de texto completo persistente para indexar as notas em Node.",
+    "place": [
+     "library"
+    ],
+    "mechanism": [
+     "full_text"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "unknown",
+    "doubt": false,
+    "evidence": "A network resilient, persistent full-text search library for the browser and Node.js"
+   }
+  }
+ ]
+}

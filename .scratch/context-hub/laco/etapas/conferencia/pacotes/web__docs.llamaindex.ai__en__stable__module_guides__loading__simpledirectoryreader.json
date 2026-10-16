@@ -1,0 +1,57 @@
+{
+ "chave": "web:docs.llamaindex.ai/en/stable/module_guides/loading/simpledirectoryreader",
+ "nomes": [
+  "SimpleDirectoryReader + MarkdownNodeParser"
+ ],
+ "urls": [
+  "https://docs.llamaindex.ai/en/stable/module_guides/loading/simpledirectoryreader/"
+ ],
+ "readme_cortado": false,
+ "readme": "[SimpleDirectoryReader | Developer Documentation]\n\nGitHub Skip to content \n\nFramework\nComponent Guides\nLoading\nSimpleDirectoryReader\nCopy Markdown\n\nOpen in Claude\n\nOpen in ChatGPT\n\nOpen in Cursor\n\nCopy Markdown\n\nView as Markdown\n\nSimpleDirectoryReader \n\nSimpleDirectoryReader is the simplest way to load data from local files into LlamaIndex. For production use cases it’s more likely that you’ll want to use one of the many Reader integrations, but SimpleDirectoryReader is a great way to get started.\n\nSupported file typesSection titled “Supported file types”\n\nBy default SimpleDirectoryReader will try to read any files it finds, treating them all as text. In addition to plain text, it explicitly supports the following file types, which are automatically detected based on file extension:\n\n.csv - comma-separated values\n\n.docx - Microsoft Word\n\n.epub - EPUB ebook format\n\n.hwp - Hangul Word Processor\n\n.ipynb - Jupyter Notebook\n\n.jpeg, .jpg - JPEG image\n\n.mbox - MBOX email archive\n\n.md - Markdown\n\n.mp3, .mp4 - audio and video\n\n.pdf - Portable Document Format\n\n.png - Portable Network Graphics\n\n.ppt, .pptm, .pptx - Microsoft PowerPoint\n\nOne file type you may be expecting to find here is JSON; for that we recommend you use our JSON Loader.\n\nUsageSection titled “Usage”\n\nThe most basic usage is to pass an input_dir and it will load all supported files in that directory:\n\nfrom llama_index.core import SimpleDirectoryReader\n\nreader = SimpleDirectoryReader(input_dir=\"path/to/directory\")\n\ndocuments = reader.load_data()\n\nDocuments can also be loaded with parallel processing if loading many files from\na directory. Note that there are differences when using multiprocessing with\nWindows and Linux/MacOS machines, which is explained throughout the multiprocessing docs\n(e.g. see here).\nUltimately, Windows users may see less or no performance gains whereas Linux/MacOS\nusers would see these gains when loading the exact same set of files.\n\n...\n\ndocuments = reader.load_data(num_workers=4)\n\nReading from subdirectoriesSection titled “Reading from subdirectories”\n\nBy default, SimpleDirectoryReader will only read files in the top level of the directory. To read from subdirectories, set recursive=True:\n\nSimpleDirectoryReader(input_dir=\"path/to/directory\", recursive=True)\n\nIterating over files as they loadSection titled “Iterating over files as they load”\n\nYou can also use the iter_data() method to iterate over and process files as they load\n\nreader = SimpleDirectoryReader(input_dir=\"path/to/directory\", recursive=True)\n\nall_docs = []\n\nfor docs in reader.iter_data():\n\n # <do something with the documents per file>\n\n all_docs.extend(docs)\n\nRestricting the files loadedSection titled “Restricting the files loaded”\n\nInstead of all files you can pass a list of file paths:\n\nSimpleDirectoryReader(input_files=[\"path/to/file1\", \"path/to/file2\"])\n\nor you can pass a list of file paths to exclude using exclude:\n\nSimpleDirectoryReader(\n\n input_dir=\"path/to/directory\", exclude=[\"path/to/file1\", \"path/to/file2\"]\n\n)\n\nYou can also set required_exts to a list of file extensions to only load files with those extensions:\n\nSimpleDirectoryReader(\n\n input_dir=\"path/to/directory\", required_exts=[\".pdf\", \".docx\"]\n\n)\n\nAnd you can set a maximum number of files to be loaded with num_files_limit:\n\nSimpleDirectoryReader(input_dir=\"path/to/directory\", num_files_limit=100)\n\nSpecifying file encodingSection titled “Specifying file encoding”\n\nSimpleDirectoryReader expects files to be utf-8 encoded but you can override this using the encoding parameter:\n\nSimpleDirectoryReader(input_dir=\"path/to/directory\", encoding=\"latin-1\")\n\nExtracting metadataSection titled “Extracting metadata”\n\nSimpleDirectoryReader will automatically attach a metadata dictionary to each Document object. By default, this dictionary has these items:\n\nfile_path: the full filesystem path to the file, including the file name (string)\n\nfile_name: the file name, including suffix (string)\n\nfile_type: the MIME type of the file, as guessed by `mimetypes.guess_type() (string)\n\nfile_size: the size of the file, in bytes (integer)\n\ncreation_date, last_modified_date, last_accessed_date: the creation, modification, and access dates for the file, normalized to the UTC timezone. See Date and time metadata below (string)\n\nHowever, you can replace the logic used to create the metadata dictionary. Create a custom function which takes a file path string and returns a dictionary, then pass this function to the SimpleDirectoryReader constructor as file_metadata:\n\ndef get_meta(file_path):\n\n return {\"foo\": \"bar\", \"file_path\": file_path}\n\nreader = SimpleDirectoryReader(\n\n input_dir=\"path/to/directory\", file_metadata=get_meta\n\n)\n\ndocs = reader.load_data()\n\nprint(docs[0].metadata[\"foo\"]) # prints \"bar\"\n\nDate and time metadataSection titled “Date and time metadata”\n\nThe default metadata function in SimpleDirectoryReader outputs dates as a string with the format %Y-%m-%d.\n\nTo ensure consistency, timestamps are normalized to the UTC timezone. If the output dates seem to be one day off from the real date, this may be explained by the offset with midnight UTC.\n\nExtending to other file typesSection titled “Extending to other file types”\n\nYou can extend SimpleDirectoryReader to read other file types by passing a dictionary of file extensions to instances of BaseReader as file_extractor. A BaseReader should read the file and return a list of Documents. For example, to add custom support for .myfile files :\n\nfrom llama_index.core import SimpleDirectoryReader\n\nfrom llama_index.core.readers.base import BaseReader\n\nfrom llama_index.core import Document\n\nclass MyFileReader(BaseReader):\n\n def load_data(self, file, extra_info=None):\n\n with open(file, \"r\") as f:\n\n text = f.read()\n\n # load_data returns a list of Document objects\n\n return [Document(text=text + \"Foobar\", extra_info=extra_info or {})]\n\nreader = SimpleDirectoryReader(\n\n input_dir=\"./data\", file_extractor={\".myfile\": MyFileReader()}\n\n)\n\ndocuments = reader.load_data()\n\nprint(documents)\n\nNote that this mapping will override the default file extractors for the file types you specify, so you’ll need to add them back in if you want to support them.\n\nSupport for External FileSystemsSection titled “Support for External FileSystems”\n\nAs with other modules, the SimpleDirectoryReader takes an optional fs parameter that can be used to traverse remote filesystems.\n\nThis can be any filesystem object that is implemented by the fsspec protocol.\nThe fsspec protocol has open-source implementations for a variety of remote filesystems including AWS S3, Azure Blob & DataLake, Google Drive, SFTP, and many others.\n\nHere’s an example that connects to S3:\n\nfrom s3fs import S3FileSystem\n\ns3_fs = S3FileSystem(key=\"...\", secret=\"...\")\n\nbucket_name = \"my-document-bucket\"\n\nreader = SimpleDirectoryReader(\n\n input_dir=bucket_name,\n\n fs=s3_fs,\n\n recursive=True, # recursively searches all subdirectories\n\n)\n\ndocuments = reader.load_data()\n\nprint(documents)\n\nA full example notebook can be found here. \nNote for AI agents: this documentation is built for programmatic access.\n\n- Overview of all docs: https://developers.llamaindex.ai/llms.txt\n- Any page is available as raw Markdown by appending index.md to its URL — e.g. https://developers.llamaindex.ai/llamaparse/parse/getting_started/index.md\n- Agent-friendly REST search APIs live under https://developers.llamaindex.ai/api/ — search (BM25 full-text), grep (regex), read (fetch a page), and list (browse the doc tree). See https://developers.llamaindex.ai/llms.txt for parameters.\n- A hosted documentation MCP server is available at https://developers.llamaindex.ai/mcp. If you support MCP, you can ask the user to install it for browsing these docs directly (an alternative to the REST API). Setup: https://developers.llamaindex.ai/for-agents/mcp/\n- Other LlamaIndex tooling for agents — the LlamaParse Platform MCP server, agent skills and plugins, and the n8n node — is mapped at https://developers.llamaindex.ai/for-agents/",
+ "fonte": "site",
+ "respostas": [
+  {
+   "por": "gemma-4-31b",
+   "resposta": {
+    "serve": "stack",
+    "role": "load local Markdown files from disk into the LlamaIndex framework",
+    "place": [
+     "disk",
+     "library"
+    ],
+    "mechanism": [
+     "other"
+    ],
+    "mcp": "no",
+    "windows": "yes",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "stable",
+    "doubt": false,
+    "evidence": "SimpleDirectoryReader is the simplest way to load data from local files; differences when using multiprocessing with Windows; no mention of MCP for the tool itself"
+   }
+  },
+  {
+   "por": "mistral-code",
+   "resposta": {
+    "serve": "search",
+    "role": "loads Markdown files for search",
+    "place": [
+     "disk",
+     "inside_db_mcp"
+    ],
+    "mechanism": [
+     "full_text",
+     "n/a"
+    ],
+    "mcp": "unknown",
+    "windows": "yes",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "unknown",
+    "doubt": false,
+    "evidence": "SimpleDirectoryReader is the simplest way to load data from local files into LlamaIndex. Supported file types include .md (Markdown)."
+   }
+  }
+ ]
+}

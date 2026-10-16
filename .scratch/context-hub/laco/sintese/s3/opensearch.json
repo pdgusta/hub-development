@@ -1,0 +1,60 @@
+{
+ "nome": "OpenSearch",
+ "url": "https://github.com/opensearch-project/OpenSearch",
+ "papel": "serviço na rede",
+ "windows": "yes (zip nativo com JDK embutido; Windows Server 2019 é o testado)",
+ "mcp": "yes: opensearch-mcp-server-py (org opensearch-project), stdio e streaming (SSE/Streamable HTTP)",
+ "portugues": "analisadores nativos 'portuguese' e 'brazilian' (stemmer + stopwords); embeddings via ml-commons (modelo à escolha)",
+ "markdown_frontmatter": "nao_verificado: não indexa arquivos; recebe JSON via API, então o parse de Markdown/frontmatter seria externo",
+ "atualizacao": "nao_verificado: sem watcher de disco; é preciso enviar documentos por API (indexador externo)",
+ "embeddings_endpoint": "parcial: ml-commons usa connector blueprint com endpoint configurável para modelos remotos; OpenAI-compatível genérico nao_verificado; vetores prontos também aceitos (k-NN)",
+ "recursos": "JVM (JDK embutido no zip); servidor de cluster pesado; número mínimo nao_verificado",
+ "licenca": "Apache-2.0",
+ "ultimo_release": "3.9.0 (2026-09-29)",
+ "atividade": "ativa (release de 2026-09-29; 61.5k commits)",
+ "maturidade": "stable",
+ "encaixe": "Serviço de rede só se o hub precisar de escala; para duas máquinas é excessivo (JVM, cluster, indexador externo para o LiveSync). Impedimento: peso e ausência de watcher.",
+ "evidencias": [
+  {
+   "campo": "windows",
+   "url": "https://raw.githubusercontent.com/opensearch-project/documentation-website/main/_install-and-configure/install-opensearch/windows.md",
+   "citacao": "The Windows OpenSearch archive is a self-contained directory with everything needed to run OpenSearch, including an integrated Java Development Kit (JDK)."
+  },
+  {
+   "campo": "windows",
+   "url": "https://raw.githubusercontent.com/opensearch-project/documentation-website/main/_install-and-configure/os-comp.md",
+   "citacao": "Windows Server | 2019"
+  },
+  {
+   "campo": "mcp",
+   "url": "https://raw.githubusercontent.com/opensearch-project/opensearch-mcp-server-py/main/README.md",
+   "citacao": "Support for both stdio and streaming server transports (SSE and Streamable HTTP)"
+  },
+  {
+   "campo": "portugues",
+   "url": "https://raw.githubusercontent.com/opensearch-project/documentation-website/main/_analyzers/language-analyzers/index.md",
+   "citacao": "`brazilian`, ... `portuguese`"
+  },
+  {
+   "campo": "embeddings_endpoint",
+   "url": "https://raw.githubusercontent.com/opensearch-project/documentation-website/main/_ml-commons-plugin/remote-models/connectors.md",
+   "citacao": "\"endpoint\": \"api.openai.com\""
+  },
+  {
+   "campo": "licenca",
+   "url": "https://github.com/opensearch-project/OpenSearch",
+   "citacao": "Apache v2.0 License"
+  },
+  {
+   "campo": "ultimo_release",
+   "url": "https://github.com/opensearch-project/OpenSearch/releases/latest",
+   "citacao": "3.9.0 Latest, 29 Sep"
+  }
+ ],
+ "nao_verificado": [
+  "RAM mínima",
+  "data do último commit",
+  "aceita endpoint OpenAI-compatível arbitrário",
+  "watcher/indexação de Markdown"
+ ]
+}

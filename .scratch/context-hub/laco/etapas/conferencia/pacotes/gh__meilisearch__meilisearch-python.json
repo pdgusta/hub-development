@@ -1,0 +1,63 @@
+{
+ "chave": "gh:meilisearch/meilisearch-python",
+ "nomes": [
+  "Meilisearch Python SDK",
+  "MeiliAI (Python client)",
+  "Meilisearch Python Client",
+  "meilisearch-python",
+  "Meilisearch + Python"
+ ],
+ "urls": [
+  "https://github.com/meilisearch/meilisearch-python"
+ ],
+ "readme_cortado": false,
+ "readme": "<p align=\"center\">\n  <img src=\"https://raw.githubusercontent.com/meilisearch/integration-guides/main/assets/logos/meilisearch_python.svg\" alt=\"Meilisearch-Python\" width=\"200\" height=\"200\" />\n</p>\n\n<h1 align=\"center\">Meilisearch Python</h1>\n\n<h4 align=\"center\">\n  <a href=\"https://github.com/meilisearch/meilisearch\">Meilisearch</a> |\n  <a href=\"https://www.meilisearch.com/cloud?utm_campaign=oss&utm_source=github&utm_medium=meilisearch-python\">Meilisearch Cloud</a> |\n  <a href=\"https://www.meilisearch.com/docs\">Documentation</a> |\n  <a href=\"https://discord.meilisearch.com\">Discord</a> |\n  <a href=\"https://roadmap.meilisearch.com/tabs/1-under-consideration\">Roadmap</a> |\n  <a href=\"https://www.meilisearch.com\">Website</a> |\n  <a href=\"https://www.meilisearch.com/docs/faq\">FAQ</a>\n</h4>\n\n<p align=\"center\">\n  <a href=\"https://badge.fury.io/py/meilisearch\"><img src=\"https://badge.fury.io/py/meilisearch.svg\" alt=\"PyPI version\"></a>\n  <a href=\"https://github.com/meilisearch/meilisearch-python/actions\"><img src=\"https://github.com/meilisearch/meilisearch-python/workflows/Tests/badge.svg\" alt=\"Test Status\"></a>\n  <a href=\"https://github.com/meilisearch/meilisearch-python/blob/main/LICENSE\"><img src=\"https://img.shields.io/badge/license-MIT-informational\" alt=\"License\"></a>\n</p>\n\n<p align=\"center\">⚡ The Meilisearch API client written for Python 🐍</p>\n\n**Meilisearch Python** is the Meilisearch API client for Python developers.\n\n**Meilisearch** is an open-source search engine. [Learn more about Meilisearch.](https://github.com/meilisearch/meilisearch)\n\n## Table of Contents <!-- omit in TOC -->\n\n- [📖 Documentation](#-documentation)\n- [🔧 Installation](#-installation)\n- [🚀 Getting started](#-getting-started)\n- [🤖 Compatibility with Meilisearch](#-compatibility-with-meilisearch)\n- [⚡ Async usage](#-async-usage)\n- [💡 Learn more](#-learn-more)\n- [⚙️ Contributing](#️-contributing)\n\n## 📖 Documentation\n\nTo learn more about Meilisearch Python, refer to the in-depth [Meilisearch Python documentation](https://meilisearch.github.io/meilisearch-python/). To learn more about Meilisearch in general, refer to our [documentation](https://www.meilisearch.com/docs/learn/getting_started/quick_start) or our [API reference](https://www.meilisearch.com/docs/reference/api/overview).\n\n## 🔧 Installation\n\n**Note**: Python 3.10+ is required.\n\nWith `pip3` in command line:\n\n```bash\npip3 install meilisearch\n```\n\n### Run Meilisearch <!-- omit in toc -->\n\n⚡️ **Launch, scale, and streamline in minutes with Meilisearch Cloud**—no maintenance, no commitment, cancel anytime. [Try it free now](https://cloud.meilisearch.com/login?utm_campaign=oss&utm_source=github&utm_medium=meilisearch-python).\n\n🪨  Prefer to self-host? [Download and deploy](https://www.meilisearch.com/docs/learn/self_hosted/getting_started_with_self_hosted_meilisearch?utm_campaign=oss&utm_source=github&utm_medium=meilisearch-python) our fast, open-source search engine on your own infrastructure.\n\n## 🚀 Getting started\n\n#### Add Documents <!-- omit in toc -->\n\n```python\nimport meilisearch\n\nclient = meilisearch.Client(\"http://127.0.0.1:7700\", \"masterKey\")\n\n# An index is where the documents are stored.\nindex = client.index(\"movies\")\n\ndocuments = [\n    {\"id\": 1, \"title\": \"Carol\", \"genres\": [\"Romance\", \"Drama\"]},\n    {\"id\": 2, \"title\": \"Wonder Woman\", \"genres\": [\"Action\", \"Adventure\"]},\n    {\"id\": 3, \"title\": \"Life of Pi\", \"genres\": [\"Adventure\", \"Drama\"]},\n    {\"id\": 4, \"title\": \"Mad Max: Fury Road\", \"genres\": [\"Adventure\", \"Science Fiction\"]},\n    {\"id\": 5, \"title\": \"Moana\", \"genres\": [\"Fantasy\", \"Action\"]},\n    {\"id\": 6, \"title\": \"Philadelphia\", \"genres\": [\"Drama\"]},\n]\n\n# If the index 'movies' does not exist, Meilisearch creates it when you first add the documents.\nindex.add_documents(documents)  # => { \"uid\": 0 }\n```\n\nWith the task `uid`, you can check the status (`enqueued`, `canceled`, `processing`, `succeeded` or `failed`) of your documents addition using the [task](https://www.meilisearch.com/docs/reference/api/tasks#get-tasks).\n\n#### Basic Search <!-- omit in toc -->\n\n```python\n# Meilisearch is typo-tolerant:\nindex.search(\"caorl\")\n```\n\nOutput:\n\n```json\n{\n  \"hits\": [\n    {\n      \"id\": 1,\n      \"title\": \"Carol\",\n      \"genre\": [\"Romance\", \"Drama\"]\n    }\n  ],\n  \"offset\": 0,\n  \"limit\": 20,\n  \"processingTimeMs\": 1,\n  \"query\": \"caorl\"\n}\n```\n\n#### Custom Search <!-- omit in toc -->\n\nAll the supported options are described in the [search parameters](https://www.meilisearch.com/docs/reference/api/search#search-parameters)\n\n```python\nindex.search(\n    \"phil\",\n    {\n        \"attributesToHighlight\": [\"*\"],\n    },\n)\n```\n\nJSON output:\n\n```json\n{\n  \"hits\": [\n    {\n      \"id\": 6,\n      \"title\": \"Philadelphia\",\n      \"_formatted\": {\n        \"id\": 6,\n        \"title\": \"<em>Phil</em>adelphia\",\n        \"genre\": [\"Drama\"]\n      }\n    }\n  ],\n  \"offset\": 0,\n  \"limit\": 20,\n  \"processingTimeMs\": 0,\n  \"query\": \"phil\"\n}\n```\n\n#### Hybrid Search <!-- omit in toc -->\n\nHybrid search combines traditional keyword search with semantic search for more relevant results. You need to have an embedder configured in your index settings to use this feature.\n\n```python\n# Using hybrid search with the search method\nindex.search(\"action movie\", {\"hybrid\": {\"semanticRatio\": 0.5, \"embedder\": \"default\"}})\n```\n\nThe `semanticRatio` parameter (between 0 and 1) controls the balance between keyword search and semantic search:\n- 0: Only keyword search\n- 1: Only semantic search\n- Values in between: A mix of both approaches\n\nThe `embedder` parameter specifies which configured embedder to use for the semantic search component.\n\n#### Custom Search With Filters <!-- omit in toc -->\n\nIf you want to enable filtering, you must add your attributes to the `filterableAttributes` index setting.\n\n```py\nindex.update_filterable_attributes([\"id\", \"genres\"])\n```\n\n#### Custom Serializer for documents <!-- omit in toc -->\n\nIf your documents contain fields that the Python JSON serializer does not know how to handle you\ncan use your own custom serializer.\n\n```py\nfrom datetime import datetime\nfrom json import JSONEncoder\nfrom uuid import uuid4\n\n\nclass CustomEncoder(JSONEncoder):\n    def default(self, o):\n        if isinstance(o, (UUID, datetime)):\n            return str(o)\n\n        # Let the base class default method raise the TypeError\n        return super().default(o)\n\n\ndocuments = [\n    {\"id\": uuid4(), \"title\": \"test 1\", \"when\": datetime.now()},\n    {\"id\": uuid4(), \"title\": \"Test 2\", \"when\": datetime.now()},\n]\nindex.add_documents(documents, serializer=CustomEncoder)\n```\n\nYou only need to perform this operation once.\n\nNote that Meilisearch will rebuild your index whenever you update `filterableAttributes`. Depending on the size of your dataset, this might take time. You can track the process using the [task](https://www.meilisearch.com/docs/reference/api/tasks#get-tasks).\n\nThen, you can perform the search:\n\n```py\nindex.search(\"wonder\", {\"filter\": [\"id > 1 AND genres = Action\"]})\n```\n\n```json\n{\n  \"hits\": [\n    {\n      \"id\": 2,\n      \"title\": \"Wonder Woman\",\n      \"genres\": [\"Action\", \"Adventure\"]\n    }\n  ],\n  \"offset\": 0,\n  \"limit\": 20,\n  \"estimatedTotalHits\": 1,\n  \"processingTimeMs\": 0,\n  \"query\": \"wonder\"\n}\n```\n\n## 🤖 Compatibility with Meilisearch\n\nThis package guarantees compatibility with [version v1.2 and above of Meilisearch](https://github.com/meilisearch/meilisearch/releases/latest), but some features may not be present. Please check the [issues](https://github.com/meilisearch/meilisearch-python/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22+label%3Aenhancement) for more info.\n\n## ⚡ Async usage\n\nThis SDK (`meilisearch`) is synchronous. If your project requires async/await support, the community-maintained [meilisearch-python-sdk](https://github.com/sanders41/meilisearch-python-sdk) provides a full-featured async (and sync) client with a similar API surface:\n\n```bash\npip install meilisearch-python-sdk\n```\n\n```python\nimport asyncio\nfrom meilisearch_python_sdk import AsyncClient\n\n\nasync def main():\n    async with AsyncClient(\"http://127.0.0.1:7700\", \"masterKey\") as client:\n        index = client.index(\"movies\")\n        await index.search(\"wonder woman\")\n\n\nasyncio.run(main())\n```\n\nFor more details, refer to the [meilisearch-python-sdk documentation](https://meilisearch-python-sdk.paulsanders.dev/).\n\n## 💡 Learn more\n\nThe following sections in our main documentation website may interest you:\n\n- **Manipulate documents**: see the [API references](https://www.meilisearch.com/docs/reference/api/documents) or read more about [documents](https://www.meilisearch.com/docs/learn/core_concepts/documents).\n- **Search**: see the [API references](https://www.meilisearch.com/docs/reference/api/search).\n- **Manage the indexes**: see the [API references](https://www.meilisearch.com/docs/reference/api/indexes) or read more about [indexes](https://www.meilisearch.com/docs/learn/core_concepts/indexes).\n- **Configure the index settings**: see the [API references](https://www.meilisearch.com/docs/reference/api/settings) or follow our guide on [settings parameters](https://www.meilisearch.com/docs/learn/configuration/settings).\n\n## ⚙️ Contributing\n\nAny new contribution is more than welcome in this project!\n\nIf you want to know more about the development workflow or want to contribute, please visit our [contributing guidelines](/CONTRIBUTING.md) for detailed instructions!\n\n<hr>\n\n**Meilisearch** provides and maintains many **SDKs and Integration tools** like this one. We want to provide everyone with an **amazing search experience for any kind of project**. If you want to contribute, make suggestions, or just know what's going on right now, visit us in the [integration-guides](https://github.com/meilisearch/integration-guides) repository.\n",
+ "fonte": "readme",
+ "respostas": [
+  {
+   "por": "llama-3.2-11b-vision-instruct",
+   "resposta": {
+    "serve": "search",
+    "role": "Meilisearch API client for Python developers",
+    "place": [
+     "network_service",
+     "library"
+    ],
+    "mechanism": [
+     "bm25",
+     "hybrid",
+     "embeddings"
+    ],
+    "mcp": "no",
+    "windows": "yes",
+    "portuguese": "no",
+    "license": "MIT",
+    "maturity": "stable",
+    "doubt": false,
+    "evidence": "Meilisearch is the Meilisearch API client for Python developers. Meilisearch is an open-source search engine."
+   }
+  },
+  {
+   "por": "gemma-4-31b",
+   "resposta": {
+    "serve": "search",
+    "role": "Python client to interact with Meilisearch engine for indexing and searching notes",
+    "place": [
+     "library"
+    ],
+    "mechanism": [
+     "hybrid",
+     "vector",
+     "full_text"
+    ],
+    "mcp": "no",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "MIT",
+    "maturity": "stable",
+    "doubt": false,
+    "evidence": "The Meilisearch API client written for Python; Hybrid search combines traditional keyword search with semantic search"
+   }
+  }
+ ]
+}

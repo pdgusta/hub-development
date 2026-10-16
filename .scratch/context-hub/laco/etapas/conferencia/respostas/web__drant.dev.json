@@ -1,0 +1,33 @@
+{
+ "chave": "web:drant.dev",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T21:55:37Z",
+ "resultado": "corrige",
+ "conferencia": {
+  "resultado": "corrige",
+  "final": {
+   "serve": "search",
+   "role": "Vector and hybrid (dense+sparse, BM25) search engine as a network service for hub notes",
+   "place": [
+    "network_service"
+   ],
+   "mechanism": [
+    "vector",
+    "hybrid"
+   ],
+   "mcp": "unknown",
+   "windows": "unknown",
+   "portuguese": "unknown",
+   "license": "unknown",
+   "maturity": "stable",
+   "doubt": false,
+   "evidence": "Native Hybrid Search (Dense + Sparse): Supports BM25, SPLADE++, and miniCOIL; Rust powered, production-grade"
+  },
+  "o_que_mudou": [
+   "mcp: no -> unknown, page does not mention MCP",
+   "place: dropped light_client, page describes server/cloud/edge deployments",
+   "maturity: unknown -> stable, page presents production-grade product"
+  ],
+  "nota": "Page is Qdrant (name Fdrant is a typo); a vector/hybrid engine that could back the hub search layer."
+ }
+}

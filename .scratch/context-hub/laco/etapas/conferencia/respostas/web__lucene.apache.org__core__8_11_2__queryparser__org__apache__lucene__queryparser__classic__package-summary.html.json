@@ -1,0 +1,31 @@
+{
+ "chave": "web:lucene.apache.org/core/8_11_2/queryparser/org/apache/lucene/queryparser/classic/package-summary.html",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T21:30:35Z",
+ "resultado": "corrige",
+ "conferencia": {
+  "resultado": "corrige",
+  "final": {
+   "serve": "search",
+   "role": "Lucene classic query parser: parses query strings (fields, boolean, wildcards) into Lucene queries.",
+   "place": [
+    "library"
+   ],
+   "mechanism": [
+    "full_text"
+   ],
+   "mcp": "no",
+   "windows": "unknown",
+   "portuguese": "unknown",
+   "license": "Apache-2.0",
+   "maturity": "stable",
+   "doubt": false,
+   "evidence": "A simple query parser implemented with JavaCC."
+  },
+  "o_que_mudou": [
+   "mechanism: bm25,full_text,vector,... -> full_text, README only describes a JavaCC query parser",
+   "serve: stack -> search"
+  ],
+  "nota": "Query-string parser for Lucene; useful only if the hub builds on Lucene (Java), otherwise low relevance."
+ }
+}

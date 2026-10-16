@@ -1,0 +1,58 @@
+{
+ "chave": "web:arangodb.com/docs/stable",
+ "nomes": [
+  "ArangoDB Documentation"
+ ],
+ "urls": [
+  "https://www.arangodb.com/docs/stable/"
+ ],
+ "readme_cortado": false,
+ "readme": "[ArangoDB database system]\n\nArangoDB database system\nArangoDB is a scalable graph database system to drive value from connected data, faster\nArangoDB combines the analytical power of native graphs with an integrated\nsearch engine, JSON support, vector indexes, and a variety of data access\npatterns via a single, composable query language.\nArangoDB is available in a community and a commercial edition.\nYou can use it for on-premises deployments, self-managed cloud deployments,\nas well as a fully managed cloud service, the Arango Managed Platform (AMP).\nWhat are Graphs? \nGraphs are information networks composed of nodes and edges.\n\nA social network is a common example of a graph. People are represented by nodes\nand their friendships by relations.\n\nNodes are also called vertices (singular: vertex), and edges are relations that\nconnect nodes.\nA node typically represents a specific entity (a person, a book, a sensor\nreading, etc.) and an edge defines how one entity relates to another.\n\nThis paradigm of storing data feels natural because it closely matches the\ncognitive model of humans. It is an expressive data model that allows you to\nrepresent many problem domains and solve them with semantic queries and graph\nanalytics.\nBeyond Graphs \nNot everything is a graph use case. ArangoDB lets you equally work with\nstructured, semi-structured, and unstructured data in the form of schema-free\nJSON objects, without having to connect these objects to form a graph.\n\nDepending on your needs, you may mix graphs and unconnected data.\nArangoDB is designed from the ground up to support multiple data models with a\nsingle, composable query language.\n\nFOR book IN Books\n FILTER book.title == \"Arango\"\n FOR person IN 2..2 INBOUND book transferred, OUTBOUND knows\n RETURN person.name\nArangoDB also comes with an integrated search engine for information retrieval,\nsuch as full-text search with relevance ranking.\nArangoDB is written in C++ for high performance and built to work at scale, in\nthe cloud or on-premises.\n\nOn this page",
+ "fonte": "site",
+ "respostas": [
+  {
+   "por": "gpt-oss-20b",
+   "resposta": {
+    "serve": "search",
+    "role": "provides full-text search and vector indexing for data queries",
+    "place": [
+     "network_service"
+    ],
+    "mechanism": [
+     "full_text",
+     "vector"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "stable",
+    "doubt": false,
+    "evidence": "ArangoDB combines the analytical power of native graphs with an integrated search engine, ... full-text search with relevance ranking."
+   }
+  },
+  {
+   "por": "gemini-3.5-flash-lite",
+   "resposta": {
+    "serve": "stack",
+    "role": "Alternative database backend for storing notes, graphs, and search indexes.",
+    "place": [
+     "network_service"
+    ],
+    "mechanism": [
+     "full_text",
+     "vector",
+     "graph",
+     "other"
+    ],
+    "mcp": "no",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "stable",
+    "doubt": true,
+    "evidence": "ArangoDB combines the analytical power of native graphs with an integrated search engine, JSON support, vector indexes"
+   }
+  }
+ ]
+}

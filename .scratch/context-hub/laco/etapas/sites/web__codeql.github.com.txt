@@ -1,0 +1,152 @@
+GitHub
+
+ Docs
+
+ Repository
+
+ License
+
+ Security Lab
+
+ Docs
+
+ Repo
+
+ License
+
+ Security Lab
+
+CodeQL
+
+ Discover vulnerabilities across a codebase with CodeQL, our industry-leading semantic code analysis engine. CodeQL lets you query code as though it were data. Write a query to find all variants of a vulnerability, eradicating it forever. Then share your query to help others do the same.
+
+CodeQL is free for research and open source.
+
+UnsafeDeserialization.ql
+
+import TaintTracking::Global<UnsafeDeserializationConfig>
+
+from PathNode source, PathNode sink
+
+where flowPath(source, sink)
+
+select sink.getNode().(UnsafeDeserializationSink).getMethodAccess(), source, sink,
+ "Unsafe deserialization of $@.", source.getNode(), "user input"
+
+Meet CodeQL
+
+ Run real queries on popular open source codebases using
+ CodeQL for Visual Studio Code. See how powerful it is to discover a bad pattern and then find similar occurrences across the entire codebase.
+
+ Write and run queries in
+
+ Visual Studio Code
+
+ Install CodeQL for Visual Studio Code
+
+By downloading, you agree to the
+ GitHub CodeQL Terms & Conditions.
+
+Once you've installed the extension:
+
+Step 1: get a CodeQL database
+
+Search GitHub.com for an open source project you want to research.
+
+Download and add the project’s CodeQL database to VS Code
+ using these instructions, or create a CodeQL database using the CodeQL CLI.
+
+Step 2: query the code and find vulnerabilities
+
+Clone
+ the CodeQL starter workspace
+ and open it in VS Code.
+
+Run a query by right-clicking it and choosing Run Query.
+
+ See the documentation for more info.
+
+$ # Clone the project
+$ git clone https://github.com/m-y-mo/struts_9805
+
+$ # Create a CodeQL database
+$ codeql database create ./struts_db -s ./struts_9805 \
+ -j 0 -l java --command "mvn -B -DskipTests \
+ -DskipAssembly"
+
+Query open source codebases
+
+ You can create CodeQL databases yourself for any project that's under an OSI-approved open source license. To download CodeQL and get started,
+ visit the CodeQL CLI docs.
+
+CodeQL Capture the Flag
+
+ Looking for a vulnerability hunting challenge? Through this Java Capture the Flag, you will hone your bug finding skills and also learn all about CodeQL's taint tracking features. The contest is closed since June 12, but you can
+ still take it for fun, and find a Server-Side Template Injection in an open source Java project.
+
+Take a look at the
+ previous challenges.
+ Go Capture the Flag
+
+ GitHub CodeQL can only be used on codebases that are released under an OSI-approved open source license, or to perform academic research, or to generate CodeQL databases for or during automated analysis, continuous integration (CI)
+ or continuous delivery (CD) in the following cases: (1) on any Open Source Codebase hosted and maintained on GitHub.com, and (2) to test CodeQL queries you have released under an OSI-approved open source software license. It can't
+ be used for automated analysis, continuous integration or continuous delivery, whether as part of normal software engineering processes or otherwise, except in the express cases set forth herein. For these uses,
+ contact the sales team.
+
+Product
+
+ Features
+
+ Security
+
+ Enterprise
+
+ Case
+ Studies
+
+ Pricing
+
+ Resources
+
+Platform
+
+ Developer API
+
+ Partners
+
+ Atom
+
+ Electron
+
+ GitHub Desktop
+
+Support
+
+ Help
+
+ Community
+ Forum
+
+ Training
+
+ Status
+
+ Contact GitHub
+
+Company
+
+ About
+
+ Blog
+
+ Careers
+
+ Press
+
+ Shop
+
+© 2021 GitHub, Inc.
+
+ Terms
+
+ Privacy

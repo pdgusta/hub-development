@@ -1,0 +1,32 @@
+{
+ "chave": "gh:elastic/elasticsearch-analysis-icu",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T20:24:07Z",
+ "resultado": "corrige",
+ "conferencia": {
+  "resultado": "corrige",
+  "final": {
+   "serve": "search",
+   "role": "ICU analysis plugin for Elasticsearch (Unicode text analysis); repo moved into the main Elasticsearch repo from 2.0.",
+   "place": [
+    "library"
+   ],
+   "mechanism": [
+    "full_text"
+   ],
+   "mcp": "unknown",
+   "windows": "unknown",
+   "portuguese": "unknown",
+   "license": "Apache-2.0",
+   "maturity": "archived",
+   "doubt": false,
+   "evidence": "'IMPORTANT: Project MOVED!' from elasticsearch 2.0; 'ICU Analysis Plugin' version table for es-0.90 to es-1.7; Apache 2 license."
+  },
+  "o_que_mudou": [
+   "role: Portuguese accent folding -> generic ICU analysis plugin, README does not mention Portuguese",
+   "place: network_service -> library, it is a plugin for Elasticsearch",
+   "doubt: true -> false, README is clear that the project moved"
+  ],
+  "nota": "Archived legacy plugin for Elasticsearch 1.x; only relevant if the hub adopts Elasticsearch, and then via the main repo."
+ }
+}

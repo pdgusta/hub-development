@@ -1,0 +1,2788 @@
+{
+ "observacao": "top 5 (arquivos distintos, caminhos relativos ao corpus) por pergunta e configuracao; rank = posicao do 1o arquivo certo ou null",
+ "configuracoes_nao_medidas": {
+  "ohs-gateway-embeddinggemma-300m": "429 cota Cloudflare esgotada",
+  "ohs-gateway-bge-m3": "429 cota Cloudflare esgotada",
+  "mm-gateway-embeddinggemma-300m": "429",
+  "mm-gateway-bge-m3": "429"
+ },
+ "metricas": {
+  "ohs-local-fulltext": {
+   "total": {
+    "n": 40,
+    "hit5": 0.725,
+    "mrr": 0.504
+   },
+   "L": {
+    "n": 20,
+    "hit5": 0.95,
+    "mrr": 0.804
+   },
+   "P": {
+    "n": 20,
+    "hit5": 0.5,
+    "mrr": 0.203
+   },
+   "pt": {
+    "n": 36,
+    "hit5": 0.75,
+    "mrr": 0.532
+   },
+   "en": {
+    "n": 4,
+    "hit5": 0.5,
+    "mrr": 0.25
+   }
+  },
+  "ohs-local-hybrid": {
+   "total": {
+    "n": 40,
+    "hit5": 0.75,
+    "mrr": 0.509
+   },
+   "L": {
+    "n": 20,
+    "hit5": 0.9,
+    "mrr": 0.643
+   },
+   "P": {
+    "n": 20,
+    "hit5": 0.6,
+    "mrr": 0.374
+   },
+   "pt": {
+    "n": 36,
+    "hit5": 0.722,
+    "mrr": 0.495
+   },
+   "en": {
+    "n": 4,
+    "hit5": 1.0,
+    "mrr": 0.633
+   }
+  },
+  "ohs-local-semantic": {
+   "total": {
+    "n": 40,
+    "hit5": 0.75,
+    "mrr": 0.532
+   },
+   "L": {
+    "n": 20,
+    "hit5": 0.9,
+    "mrr": 0.639
+   },
+   "P": {
+    "n": 20,
+    "hit5": 0.6,
+    "mrr": 0.425
+   },
+   "pt": {
+    "n": 36,
+    "hit5": 0.722,
+    "mrr": 0.499
+   },
+   "en": {
+    "n": 4,
+    "hit5": 1.0,
+    "mrr": 0.833
+   }
+  },
+  "mm-bm25": {
+   "total": {
+    "n": 40,
+    "hit5": 0.675,
+    "mrr": 0.439
+   },
+   "L": {
+    "n": 20,
+    "hit5": 0.9,
+    "mrr": 0.627
+   },
+   "P": {
+    "n": 20,
+    "hit5": 0.45,
+    "mrr": 0.252
+   },
+   "pt": {
+    "n": 36,
+    "hit5": 0.694,
+    "mrr": 0.446
+   },
+   "en": {
+    "n": 4,
+    "hit5": 0.5,
+    "mrr": 0.375
+   }
+  },
+  "mm-e5": {
+   "total": {
+    "n": 40,
+    "hit5": 0.8,
+    "mrr": 0.491
+   },
+   "L": {
+    "n": 20,
+    "hit5": 0.95,
+    "mrr": 0.613
+   },
+   "P": {
+    "n": 20,
+    "hit5": 0.65,
+    "mrr": 0.37
+   },
+   "pt": {
+    "n": 36,
+    "hit5": 0.778,
+    "mrr": 0.503
+   },
+   "en": {
+    "n": 4,
+    "hit5": 1.0,
+    "mrr": 0.383
+   }
+  }
+ },
+ "rajada": {
+  "rajada-ohs": {
+   "rss_ocioso_pico_mb_45s": 118,
+   "rss_ocioso_final_mb": 96,
+   "copia_s": 6.35,
+   "primeiro_marcador_s": 33.4,
+   "tres_sondas_s": 85.6,
+   "verificacao_completa_s": 146.9,
+   "marcadores_achados": 200,
+   "pico_rss_mb_rajada": 880,
+   "faltando": []
+  },
+  "rajada-mm-1a-rodada": {
+   "mem_status": "[TextContent(type='text', text='memtomem Status\\n==============\\nStorage:   sqlite\\nDB path:   C:\\\\Projetos\\\\bancada-busca\\\\dbs\\\\mm-e5.db\\nEmbedding: onnx / multilingual-e5-small\\nDimension: 384\\nTop-",
+   "rss_ocioso_pico_mb_45s": 372,
+   "rss_ocioso_final_mb": 372,
+   "copia_s": 3.48,
+   "primeiro_marcador_s": 67.0,
+   "tres_sondas_s": null,
+   "marcadores_achados": 0,
+   "pico_rss_mb_rajada": 1226,
+   "faltando": "sem verificacao"
+  },
+  "rajada-mm-2a-rodada": {
+   "mem_status": "[TextContent(type='text', text='memtomem Status\\n==============\\nStorage:   sqlite\\nDB path:   C:\\\\Projetos\\\\bancada-busca\\\\dbs\\\\mm-e5.db\\nEmbedding: onnx / multilingual-e5-small\\nDimension: 384\\nTop-",
+   "rss_ocioso_pico_mb_45s": 372,
+   "rss_ocioso_final_mb": 372,
+   "copia_s": 0.3,
+   "arquivos_indexados_por_tempo_s": {
+    "1": 0.3,
+    "50": 0.3,
+    "100": 0.3,
+    "150": 74.0,
+    "200": 185.7
+   },
+   "indexados_final": 200,
+   "pico_rss_mb_rajada": 1214,
+   "t_ate_verificar_s": 185.7,
+   "marcadores_achados_na_busca": 200,
+   "verificacao_busca_fim_s": 669.6,
+   "faltando": []
+  }
+ },
+ "perguntas": {
+  "ohs-local-fulltext": [
+   {
+    "n": 1,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "issues/33-revisao-do-sync-e-da-divergencia.md",
+     "exploracao/anexos/pesquisa-47-disco-e-banco-sem-o-obsidian.md",
+     "issues/48-teste-disco-e-banco-sem-o-obsidian.md",
+     "issues/47-disco-e-banco-sem-o-obsidian-pesquisa.md",
+     "issues/30-spike-couchdb-livesync.md"
+    ],
+    "rank": 1
+   },
+   {
+    "n": 2,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "issues/25-como-a-verdade-viaja-entre-as-maquinas.md",
+     "issues/22-markdown-vista-ou-fonte.md",
+     "issues/26-montar-couchdb-livesync-mcp.md",
+     "issues/09-camada-de-busca.md",
+     "issues/12-arquitetura-de-pastas-e-frontmatter.md"
+    ],
+    "rank": 2
+   },
+   {
+    "n": 3,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "exploracao/anexos/pesquisa-50-sintese.md",
+     "exploracao/anexos/pesquisa-50-inventario.md",
+     "issues/09-camada-de-busca.md",
+     "exploracao/anexos/varredura-3-camada-sobre-markdown.md",
+     "issues/50-pesquisa-ampla-lugares-e-mecanismos-de-busca.md"
+    ],
+    "rank": 1
+   },
+   {
+    "n": 4,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "issues/05-ligar-as-maquinas-com-seguranca.md",
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/04-context-hub.md",
+     "issues/06-ponto-de-encontro-do-sync.md",
+     "exploracao/anexos/pesquisa-37-portas/porta-6-claude-sem-disco.md",
+     "exploracao/anexos/pesquisa-37-portas/porta-7-cliente-mcp.md"
+    ],
+    "rank": 1
+   },
+   {
+    "n": 5,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "issues/02-workloads-piloto.md",
+     "issues/15-roteamento-de-skills.md",
+     "issues/12-arquitetura-de-pastas-e-frontmatter.md",
+     "issues/50-pesquisa-ampla-lugares-e-mecanismos-de-busca.md",
+     "issues/40-maestri-padrao-e-liberdade.md"
+    ],
+    "rank": 1
+   },
+   {
+    "n": 6,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "issues/06-ponto-de-encontro-do-sync.md",
+     "issues/24-sync-de-banco-entre-duas-maquinas.md",
+     "issues/33-revisao-do-sync-e-da-divergencia.md",
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/04-context-hub.md",
+     "issues/27-montar-dolt-central.md"
+    ],
+    "rank": 1
+   },
+   {
+    "n": 7,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "issues/48-teste-disco-e-banco-sem-o-obsidian.md",
+     "issues/09-camada-de-busca.md",
+     "exploracao/anexos/pesquisa-47-disco-e-banco-sem-o-obsidian.md",
+     "issues/33-revisao-do-sync-e-da-divergencia.md",
+     "issues/21-varredura-de-candidatas-a-camada-de-busca.md"
+    ],
+    "rank": 1
+   },
+   {
+    "n": 8,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "issues/09-camada-de-busca.md",
+     "issues/50-pesquisa-ampla-lugares-e-mecanismos-de-busca.md",
+     "issues/49-preparar-freellmapi-para-a-pesquisa.md",
+     "exploracao/anexos/2026-10-02-magpie-vs-freellmapi.md",
+     "issues/16-passagem-para-a-construcao.md"
+    ],
+    "rank": 1
+   },
+   {
+    "n": 9,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "issues/09-camada-de-busca.md",
+     "issues/16-passagem-para-a-construcao.md",
+     "exploracao/anexos/pesquisa-50-sintese.md",
+     "issues/39-beneficios-claude-code-com-hub-e-maestri.md",
+     "exploracao/anexos/testes-38-portas/grupo-c-es617.md"
+    ],
+    "rank": 1
+   },
+   {
+    "n": 10,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "issues/10-contrato-file-first.md",
+     "issues/12-arquitetura-de-pastas-e-frontmatter.md",
+     "armis-docs/guia-tecnico/README.md",
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/04-context-hub.md",
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/02-claude-code-recursos.md"
+    ],
+    "rank": 1
+   },
+   {
+    "n": 11,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "issues/42-testes-da-porta-do-repositorio-fora-do-hub.md",
+     "exploracao/anexos/testes-42-repositorio-fora-do-hub.md",
+     "issues/40-maestri-padrao-e-liberdade.md",
+     "issues/14-acesso-dos-agentes-decisao.md",
+     "issues/36-portas-de-entrada-do-hub.md"
+    ],
+    "rank": null
+   },
+   {
+    "n": 12,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "issues/18-acesso-dos-agentes-copilot.md",
+     "exploracao/anexos/pesquisa-37-portas/porta-8-repo-fora-do-hub.md",
+     "issues/30-spike-couchdb-livesync.md",
+     "issues/38-testes-das-portas-de-entrada.md",
+     "exploracao/anexos/testes-38-portas/grupo-b-obsidian-livesync.md"
+    ],
+    "rank": 1
+   },
+   {
+    "n": 13,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "issues/08-divergencia-e-edicao-concorrente.md",
+     "issues/33-revisao-do-sync-e-da-divergencia.md",
+     "issues/14-acesso-dos-agentes-decisao.md",
+     "issues/48-teste-disco-e-banco-sem-o-obsidian.md",
+     "exploracao/anexos/pesquisa-47-disco-e-banco-sem-o-obsidian.md"
+    ],
+    "rank": 2
+   },
+   {
+    "n": 14,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "issues/50-pesquisa-ampla-lugares-e-mecanismos-de-busca.md",
+     "issues/49-preparar-freellmapi-para-a-pesquisa.md",
+     "exploracao/anexos/pesquisa-50-sintese.md",
+     "issues/09-camada-de-busca.md",
+     "issues/12-arquitetura-de-pastas-e-frontmatter.md"
+    ],
+    "rank": 3
+   },
+   {
+    "n": 15,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "issues/20-turbovec-na-camada-de-busca.md",
+     "issues/21-varredura-de-candidatas-a-camada-de-busca.md",
+     "issues/09-camada-de-busca.md",
+     "exploracao/anexos/pesquisa-41-contrato-pelo-mcp.md",
+     "issues/41-contrato-pelo-mcp-pesquisa.md"
+    ],
+    "rank": 1
+   },
+   {
+    "n": 16,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "issues/21-varredura-de-candidatas-a-camada-de-busca.md",
+     "issues/09-camada-de-busca.md",
+     "issues/22-markdown-vista-ou-fonte.md",
+     "issues/50-pesquisa-ampla-lugares-e-mecanismos-de-busca.md",
+     "issues/19-zvec-grep-na-camada-de-busca.md"
+    ],
+    "rank": 1
+   },
+   {
+    "n": 17,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "issues/30-spike-couchdb-livesync.md",
+     "issues/25-como-a-verdade-viaja-entre-as-maquinas.md",
+     "exploracao/anexos/testes-38-portas/grupo-b-obsidian-livesync.md",
+     "exploracao/anexos/pesquisa-37-portas/porta-8-repo-fora-do-hub.md",
+     "issues/48-teste-disco-e-banco-sem-o-obsidian.md"
+    ],
+    "rank": 1
+   },
+   {
+    "n": 18,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "issues/28-montar-banco-central-com-plugin-obsidian.md",
+     "issues/29-spike-fast-note-sync.md",
+     "issues/30-spike-couchdb-livesync.md",
+     "exploracao/anexos/pesquisa-50-sintese.md",
+     "exploracao/anexos/2026-10-02-magpie-vs-freellmapi.md"
+    ],
+    "rank": 2
+   },
+   {
+    "n": 19,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "armis-docs/README.md",
+     "armis-docs/configuracoes-aplicadas/README.md",
+     "armis-docs/guia-tecnico/README.md",
+     "issues/44-guarda-do-acervo-mods-e-hooks-pesquisa.md",
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/02-claude-code-recursos.md"
+    ],
+    "rank": 1
+   },
+   {
+    "n": 20,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "armis-docs/guia-tecnico/README.md",
+     "armis-docs/configuracoes-aplicadas/README.md",
+     "armis-docs/README.md",
+     "armis-docs/guia-tecnico/esqueleto-ptbr.md",
+     "issues/39-beneficios-claude-code-com-hub-e-maestri.md"
+    ],
+    "rank": 4
+   },
+   {
+    "n": 21,
+    "tipo": "P",
+    "lang": "pt",
+    "top5": [
+     "issues/24-sync-de-banco-entre-duas-maquinas.md",
+     "exploracao/2026-09-28-context-hub.md",
+     "issues/02-workloads-piloto.md",
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/04-context-hub.md",
+     "armis-docs/guia-tecnico/esqueleto-ptbr.md"
+    ],
+    "rank": null
+   },
+   {
+    "n": 22,
+    "tipo": "P",
+    "lang": "pt",
+    "top5": [
+     "exploracao/anexos/pesquisa-44-guarda-do-acervo.md",
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/04-context-hub.md",
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/05-video-B9xAHilKHBc.md",
+     "issues/48-teste-disco-e-banco-sem-o-obsidian.md",
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/02-claude-code-recursos.md"
+    ],
+    "rank": null
+   },
+   {
+    "n": 23,
+    "tipo": "P",
+    "lang": "pt",
+    "top5": [
+     "issues/34-onde-o-servidor-mora.md",
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/04-context-hub.md",
+     "exploracao/2026-09-28-context-hub.md",
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/02-claude-code-recursos.md",
+     "exploracao/anexos/pesquisa-37-portas/porta-6-claude-sem-disco.md"
+    ],
+    "rank": null
+   },
+   {
+    "n": 24,
+    "tipo": "P",
+    "lang": "pt",
+    "top5": [
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/02-claude-code-recursos.md",
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/04-context-hub.md",
+     "issues/34-onde-o-servidor-mora.md",
+     "exploracao/2026-09-28-context-hub.md",
+     "exploracao/anexos/pesquisa-37-portas/porta-6-claude-sem-disco.md"
+    ],
+    "rank": 3
+   },
+   {
+    "n": 25,
+    "tipo": "P",
+    "lang": "pt",
+    "top5": [
+     "issues/16-passagem-para-a-construcao.md",
+     "issues/10-contrato-file-first.md",
+     "issues/30-spike-couchdb-livesync.md",
+     "issues/40-maestri-padrao-e-liberdade.md",
+     "exploracao/2026-09-28-context-hub.md"
+    ],
+    "rank": null
+   },
+   {
+    "n": 26,
+    "tipo": "P",
+    "lang": "pt",
+    "top5": [
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/05-video-B9xAHilKHBc.md",
+     "exploracao/anexos/testes-38-portas/grupo-b-obsidian-livesync.md",
+     "exploracao/2026-09-28-context-hub.md",
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/02-claude-code-recursos.md",
+     "issues/38-testes-das-portas-de-entrada.md"
+    ],
+    "rank": null
+   },
+   {
+    "n": 27,
+    "tipo": "P",
+    "lang": "pt",
+    "top5": [
+     "exploracao/anexos/varredura-1-canvas-multiagente.md",
+     "exploracao/anexos/pesquisa-07-sync.md",
+     "issues/05-ligar-as-maquinas-com-seguranca.md",
+     "issues/13-acesso-dos-agentes-pesquisa.md",
+     "issues/03-hub-no-wsl-comportamento.md"
+    ],
+    "rank": 5
+   },
+   {
+    "n": 28,
+    "tipo": "P",
+    "lang": "pt",
+    "top5": [
+     "issues/30-spike-couchdb-livesync.md",
+     "issues/46-copilot-com-assinatura-enterprise-pesquisa.md",
+     "exploracao/anexos/pesquisa-46-copilot-enterprise.md",
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/02-claude-code-recursos.md",
+     "issues/36-portas-de-entrada-do-hub.md"
+    ],
+    "rank": 5
+   },
+   {
+    "n": 29,
+    "tipo": "P",
+    "lang": "pt",
+    "top5": [
+     "exploracao/anexos/pesquisa-35-metodos-de-raiz/comparacao-final.md",
+     "issues/12-arquitetura-de-pastas-e-frontmatter.md",
+     "exploracao/anexos/pesquisa-43-acervo-do-maestro.md",
+     "issues/33-revisao-do-sync-e-da-divergencia.md",
+     "issues/43-acervo-do-maestro-pesquisa.md"
+    ],
+    "rank": null
+   },
+   {
+    "n": 30,
+    "tipo": "P",
+    "lang": "pt",
+    "top5": [
+     "armis-docs/guia-tecnico/README.md",
+     "armis-docs/configuracoes-aplicadas/README.md",
+     "issues/48-teste-disco-e-banco-sem-o-obsidian.md",
+     "exploracao/anexos/pesquisa-50-inventario.md",
+     "armis-docs/guia-tecnico/esqueleto-ptbr.md"
+    ],
+    "rank": 3
+   },
+   {
+    "n": 31,
+    "tipo": "P",
+    "lang": "pt",
+    "top5": [
+     "issues/14-acesso-dos-agentes-decisao.md",
+     "issues/30-spike-couchdb-livesync.md",
+     "exploracao/anexos/pesquisa-46-copilot-enterprise.md",
+     "issues/46-copilot-com-assinatura-enterprise-pesquisa.md",
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/02-claude-code-recursos.md"
+    ],
+    "rank": 4
+   },
+   {
+    "n": 32,
+    "tipo": "P",
+    "lang": "pt",
+    "top5": [
+     "issues/27-montar-dolt-central.md",
+     "armis-docs/configuracoes-aplicadas/README.md",
+     "issues/25-como-a-verdade-viaja-entre-as-maquinas.md",
+     "issues/30-spike-couchdb-livesync.md",
+     "issues/50-pesquisa-ampla-lugares-e-mecanismos-de-busca.md"
+    ],
+    "rank": null
+   },
+   {
+    "n": 33,
+    "tipo": "P",
+    "lang": "pt",
+    "top5": [
+     "issues/40-maestri-padrao-e-liberdade.md",
+     "exploracao/anexos/pesquisa-35-metodos-de-raiz/debate/r4-Astrolabio.md",
+     "exploracao/anexos/pesquisa-35-metodos-de-raiz/debate/00-briefing.md",
+     "exploracao/anexos/pesquisa-37-portas/porta-3-4-maestri.md",
+     "issues/30-spike-couchdb-livesync.md"
+    ],
+    "rank": 1
+   },
+   {
+    "n": 34,
+    "tipo": "P",
+    "lang": "pt",
+    "top5": [
+     "issues/40-maestri-padrao-e-liberdade.md",
+     "exploracao/anexos/pesquisa-43-acervo-do-maestro.md",
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/00-sintese.md",
+     "issues/43-acervo-do-maestro-pesquisa.md",
+     "exploracao/anexos/varredura-1-canvas-multiagente.md"
+    ],
+    "rank": 4
+   },
+   {
+    "n": 35,
+    "tipo": "P",
+    "lang": "pt",
+    "top5": [
+     "issues/50-pesquisa-ampla-lugares-e-mecanismos-de-busca.md",
+     "exploracao/anexos/pesquisa-50-sintese.md",
+     "issues/52-montar-os-scripts-do-laco.md",
+     "exploracao/anexos/2026-10-02-magpie-vs-freellmapi.md",
+     "issues/49-preparar-freellmapi-para-a-pesquisa.md"
+    ],
+    "rank": 2
+   },
+   {
+    "n": 36,
+    "tipo": "P",
+    "lang": "pt",
+    "top5": [
+     "issues/30-spike-couchdb-livesync.md",
+     "exploracao/anexos/pesquisa-37-portas/porta-6-claude-sem-disco.md",
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/02-claude-code-recursos.md",
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/01-custo-e-inteligencia.md",
+     "exploracao/anexos/2026-10-02-magpie-vs-freellmapi.md"
+    ],
+    "rank": null
+   },
+   {
+    "n": 37,
+    "tipo": "P",
+    "lang": "en",
+    "top5": [
+     "exploracao/anexos/pesquisa-47-disco-e-banco-sem-o-obsidian.md",
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/01-custo-e-inteligencia.md",
+     "exploracao/anexos/pesquisa-44-guarda-do-acervo.md",
+     "exploracao/anexos/pesquisa-37-portas/porta-5-obsidian.md",
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/02-claude-code-recursos.md"
+    ],
+    "rank": null
+   },
+   {
+    "n": 38,
+    "tipo": "P",
+    "lang": "en",
+    "top5": [
+     "exploracao/anexos/pesquisa-50-inventario.md",
+     "exploracao/anexos/pesquisa-37-portas/porta-6-claude-sem-disco.md",
+     "exploracao/anexos/pesquisa-37-portas/porta-7-cliente-mcp.md",
+     "exploracao/anexos/pesquisa-46-copilot-enterprise.md",
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/02-claude-code-recursos.md"
+    ],
+    "rank": null
+   },
+   {
+    "n": 39,
+    "tipo": "P",
+    "lang": "en",
+    "top5": [
+     "armis-docs/guia-tecnico/esqueleto.md",
+     "armis-docs/configuracoes-aplicadas/README.md",
+     "armis-docs/guia-tecnico/README.md",
+     "exploracao/anexos/pesquisa-43-acervo-do-maestro.md",
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/02b-claude-code-complementos.md"
+    ],
+    "rank": 2
+   },
+   {
+    "n": 40,
+    "tipo": "P",
+    "lang": "en",
+    "top5": [
+     "exploracao/anexos/pesquisa-50-inventario.md",
+     "exploracao/anexos/pesquisa-50-sintese.md",
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/01-custo-e-inteligencia.md",
+     "exploracao/anexos/varredura-3-camada-sobre-markdown.md",
+     "issues/09-camada-de-busca.md"
+    ],
+    "rank": 2
+   }
+  ],
+  "ohs-local-hybrid": [
+   {
+    "n": 1,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "exploracao/anexos/pesquisa-47-disco-e-banco-sem-o-obsidian.md",
+     "issues/47-disco-e-banco-sem-o-obsidian-pesquisa.md",
+     "issues/48-teste-disco-e-banco-sem-o-obsidian.md",
+     "issues/33-revisao-do-sync-e-da-divergencia.md",
+     "issues/24-sync-de-banco-entre-duas-maquinas.md"
+    ],
+    "rank": 4
+   },
+   {
+    "n": 2,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "issues/22-markdown-vista-ou-fonte.md",
+     "issues/25-como-a-verdade-viaja-entre-as-maquinas.md",
+     "issues/23-banco-como-verdade-com-vista-markdown.md",
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/04-context-hub.md",
+     "issues/12-arquitetura-de-pastas-e-frontmatter.md"
+    ],
+    "rank": 1
+   },
+   {
+    "n": 3,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "exploracao/anexos/pesquisa-50-inventario.md",
+     "exploracao/anexos/pesquisa-50-sintese.md",
+     "issues/09-camada-de-busca.md",
+     "issues/50-pesquisa-ampla-lugares-e-mecanismos-de-busca.md",
+     "exploracao/anexos/varredura-3-camada-sobre-markdown.md"
+    ],
+    "rank": 2
+   },
+   {
+    "n": 4,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "exploracao/anexos/testes-38-portas/grupo-d-tailscale-e-claude-desktop.md",
+     "issues/34-onde-o-servidor-mora.md",
+     "issues/05-ligar-as-maquinas-com-seguranca.md",
+     "issues/04-windows-ou-wsl.md",
+     "issues/06-ponto-de-encontro-do-sync.md"
+    ],
+    "rank": 3
+   },
+   {
+    "n": 5,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "issues/02-workloads-piloto.md",
+     "issues/36-portas-de-entrada-do-hub.md",
+     "issues/40-maestri-padrao-e-liberdade.md",
+     "issues/12-arquitetura-de-pastas-e-frontmatter.md",
+     "exploracao/anexos/testes-42-repositorio-fora-do-hub.md"
+    ],
+    "rank": 1
+   },
+   {
+    "n": 6,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "issues/06-ponto-de-encontro-do-sync.md",
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/04-context-hub.md",
+     "issues/33-revisao-do-sync-e-da-divergencia.md",
+     "issues/24-sync-de-banco-entre-duas-maquinas.md",
+     "issues/34-onde-o-servidor-mora.md"
+    ],
+    "rank": 1
+   },
+   {
+    "n": 7,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "exploracao/anexos/pesquisa-47-disco-e-banco-sem-o-obsidian.md",
+     "issues/09-camada-de-busca.md",
+     "issues/33-revisao-do-sync-e-da-divergencia.md",
+     "issues/26-montar-couchdb-livesync-mcp.md",
+     "exploracao/anexos/pesquisa-50-sintese.md"
+    ],
+    "rank": null
+   },
+   {
+    "n": 8,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "exploracao/anexos/2026-10-02-magpie-vs-freellmapi.md",
+     "issues/49-preparar-freellmapi-para-a-pesquisa.md",
+     "issues/09-camada-de-busca.md",
+     "issues/50-pesquisa-ampla-lugares-e-mecanismos-de-busca.md",
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/04-context-hub.md"
+    ],
+    "rank": 3
+   },
+   {
+    "n": 9,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "issues/16-passagem-para-a-construcao.md",
+     "exploracao/anexos/testes-38-portas/grupo-c-es617.md",
+     "exploracao/anexos/pesquisa-37-portas/porta-7-cliente-mcp.md",
+     "issues/09-camada-de-busca.md",
+     "exploracao/anexos/pesquisa-50-sintese.md"
+    ],
+    "rank": 4
+   },
+   {
+    "n": 10,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "issues/10-contrato-file-first.md",
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/04-context-hub.md",
+     "armis-docs/guia-tecnico/README.md",
+     "issues/50-pesquisa-ampla-lugares-e-mecanismos-de-busca.md",
+     "issues/14-acesso-dos-agentes-decisao.md"
+    ],
+    "rank": 1
+   },
+   {
+    "n": 11,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "issues/18-acesso-dos-agentes-copilot.md",
+     "issues/46-copilot-com-assinatura-enterprise-pesquisa.md",
+     "exploracao/anexos/testes-42-repositorio-fora-do-hub.md",
+     "exploracao/anexos/pesquisa-46-copilot-enterprise.md",
+     "issues/42-testes-da-porta-do-repositorio-fora-do-hub.md"
+    ],
+    "rank": 1
+   },
+   {
+    "n": 12,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "issues/18-acesso-dos-agentes-copilot.md",
+     "exploracao/anexos/pesquisa-46-copilot-enterprise.md",
+     "exploracao/anexos/pesquisa-37-portas/porta-8-repo-fora-do-hub.md",
+     "exploracao/anexos/pesquisa-37-portas/porta-1-harness-na-raiz.md",
+     "exploracao/anexos/testes-38-portas/grupo-a-carga-de-instrucoes.md"
+    ],
+    "rank": 1
+   },
+   {
+    "n": 13,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "issues/08-divergencia-e-edicao-concorrente.md",
+     "issues/33-revisao-do-sync-e-da-divergencia.md",
+     "exploracao/anexos/pesquisa-07-sync.md",
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/04-context-hub.md",
+     "issues/48-teste-disco-e-banco-sem-o-obsidian.md"
+    ],
+    "rank": 2
+   },
+   {
+    "n": 14,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "issues/50-pesquisa-ampla-lugares-e-mecanismos-de-busca.md",
+     "exploracao/anexos/pesquisa-50-sintese.md",
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/01-custo-e-inteligencia.md",
+     "exploracao/anexos/pesquisa-50-inventario.md",
+     "issues/09-camada-de-busca.md"
+    ],
+    "rank": 2
+   },
+   {
+    "n": 15,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "issues/20-turbovec-na-camada-de-busca.md",
+     "issues/21-varredura-de-candidatas-a-camada-de-busca.md",
+     "issues/09-camada-de-busca.md",
+     "exploracao/anexos/pesquisa-50-sintese.md",
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/02-claude-code-recursos.md"
+    ],
+    "rank": 1
+   },
+   {
+    "n": 16,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "issues/21-varredura-de-candidatas-a-camada-de-busca.md",
+     "issues/09-camada-de-busca.md",
+     "issues/50-pesquisa-ampla-lugares-e-mecanismos-de-busca.md",
+     "issues/19-zvec-grep-na-camada-de-busca.md",
+     "exploracao/anexos/varredura-2-memoria-de-agentes.md"
+    ],
+    "rank": 1
+   },
+   {
+    "n": 17,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "issues/30-spike-couchdb-livesync.md",
+     "exploracao/anexos/testes-38-portas/grupo-b-obsidian-livesync.md",
+     "issues/25-como-a-verdade-viaja-entre-as-maquinas.md",
+     "issues/33-revisao-do-sync-e-da-divergencia.md",
+     "exploracao/anexos/pesquisa-07-sync.md"
+    ],
+    "rank": 1
+   },
+   {
+    "n": 18,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "issues/29-spike-fast-note-sync.md",
+     "issues/26-montar-couchdb-livesync-mcp.md",
+     "issues/28-montar-banco-central-com-plugin-obsidian.md",
+     "issues/30-spike-couchdb-livesync.md",
+     "issues/25-como-a-verdade-viaja-entre-as-maquinas.md"
+    ],
+    "rank": 1
+   },
+   {
+    "n": 19,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/05-video-ERNqRK6sMJY.md",
+     "issues/44-guarda-do-acervo-mods-e-hooks-pesquisa.md",
+     "exploracao/anexos/pesquisa-44-guarda-do-acervo.md",
+     "exploracao/anexos/pesquisa-07-sync.md",
+     "issues/41-contrato-pelo-mcp-pesquisa.md"
+    ],
+    "rank": null
+   },
+   {
+    "n": 20,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "armis-docs/guia-tecnico/README.md",
+     "armis-docs/configuracoes-aplicadas/README.md",
+     "issues/21-varredura-de-candidatas-a-camada-de-busca.md",
+     "exploracao/anexos/varredura-3-camada-sobre-markdown.md",
+     "armis-docs/guia-tecnico/esqueleto-ptbr.md"
+    ],
+    "rank": 5
+   },
+   {
+    "n": 21,
+    "tipo": "P",
+    "lang": "pt",
+    "top5": [
+     "issues/24-sync-de-banco-entre-duas-maquinas.md",
+     "exploracao/anexos/pesquisa-50-sintese.md",
+     "exploracao/anexos/pesquisa-47-disco-e-banco-sem-o-obsidian.md",
+     "exploracao/anexos/testes-38-portas/grupo-d-tailscale-e-claude-desktop.md",
+     "exploracao/2026-09-28-context-hub.md"
+    ],
+    "rank": null
+   },
+   {
+    "n": 22,
+    "tipo": "P",
+    "lang": "pt",
+    "top5": [
+     "exploracao/anexos/pesquisa-50-sintese.md",
+     "exploracao/anexos/varredura-2-memoria-de-agentes.md",
+     "exploracao/anexos/pesquisa-47-disco-e-banco-sem-o-obsidian.md",
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/01-custo-e-inteligencia.md",
+     "issues/19-zvec-grep-na-camada-de-busca.md"
+    ],
+    "rank": 1
+   },
+   {
+    "n": 23,
+    "tipo": "P",
+    "lang": "pt",
+    "top5": [
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/04-context-hub.md",
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/02-claude-code-recursos.md",
+     "issues/24-sync-de-banco-entre-duas-maquinas.md",
+     "issues/50-pesquisa-ampla-lugares-e-mecanismos-de-busca.md",
+     "issues/37-portas-de-entrada-pesquisa.md"
+    ],
+    "rank": null
+   },
+   {
+    "n": 24,
+    "tipo": "P",
+    "lang": "pt",
+    "top5": [
+     "issues/34-onde-o-servidor-mora.md",
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/02-claude-code-recursos.md",
+     "exploracao/anexos/pesquisa-37-portas/porta-6-claude-sem-disco.md",
+     "exploracao/anexos/pesquisa-47-disco-e-banco-sem-o-obsidian.md",
+     "issues/33-revisao-do-sync-e-da-divergencia.md"
+    ],
+    "rank": 1
+   },
+   {
+    "n": 25,
+    "tipo": "P",
+    "lang": "pt",
+    "top5": [
+     "issues/40-maestri-padrao-e-liberdade.md",
+     "exploracao/anexos/pesquisa-43-acervo-do-maestro.md",
+     "issues/10-contrato-file-first.md",
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/02-claude-code-recursos.md",
+     "exploracao/anexos/pesquisa-44-guarda-do-acervo.md"
+    ],
+    "rank": null
+   },
+   {
+    "n": 26,
+    "tipo": "P",
+    "lang": "pt",
+    "top5": [
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/02-claude-code-recursos.md",
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/01-custo-e-inteligencia.md",
+     "exploracao/2026-09-28-context-hub.md",
+     "exploracao/anexos/pesquisa-35-metodos-de-raiz/debate/00-briefing.md",
+     "exploracao/anexos/pesquisa-35-metodos-de-raiz/debate/r4-Cinzel.md"
+    ],
+    "rank": null
+   },
+   {
+    "n": 27,
+    "tipo": "P",
+    "lang": "pt",
+    "top5": [
+     "exploracao/anexos/pesquisa-07-sync.md",
+     "issues/03-hub-no-wsl-comportamento.md",
+     "issues/48-teste-disco-e-banco-sem-o-obsidian.md",
+     "issues/24-sync-de-banco-entre-duas-maquinas.md",
+     "exploracao/anexos/varredura-1-canvas-multiagente.md"
+    ],
+    "rank": 2
+   },
+   {
+    "n": 28,
+    "tipo": "P",
+    "lang": "pt",
+    "top5": [
+     "issues/46-copilot-com-assinatura-enterprise-pesquisa.md",
+     "exploracao/anexos/pesquisa-37-portas/porta-2-harness-em-subpasta.md",
+     "exploracao/anexos/pesquisa-37-portas/porta-8-repo-fora-do-hub.md",
+     "issues/41-contrato-pelo-mcp-pesquisa.md",
+     "exploracao/anexos/pesquisa-46-copilot-enterprise.md"
+    ],
+    "rank": null
+   },
+   {
+    "n": 29,
+    "tipo": "P",
+    "lang": "pt",
+    "top5": [
+     "exploracao/anexos/pesquisa-43-acervo-do-maestro.md",
+     "issues/43-acervo-do-maestro-pesquisa.md",
+     "exploracao/anexos/pesquisa-44-guarda-do-acervo.md",
+     "issues/40-maestri-padrao-e-liberdade.md",
+     "issues/44-guarda-do-acervo-mods-e-hooks-pesquisa.md"
+    ],
+    "rank": null
+   },
+   {
+    "n": 30,
+    "tipo": "P",
+    "lang": "pt",
+    "top5": [
+     "armis-docs/configuracoes-aplicadas/README.md",
+     "exploracao/anexos/pesquisa-07-sync.md",
+     "armis-docs/guia-tecnico/README.md",
+     "issues/02-workloads-piloto.md",
+     "exploracao/anexos/pesquisa-47-disco-e-banco-sem-o-obsidian.md"
+    ],
+    "rank": null
+   },
+   {
+    "n": 31,
+    "tipo": "P",
+    "lang": "pt",
+    "top5": [
+     "issues/46-copilot-com-assinatura-enterprise-pesquisa.md",
+     "exploracao/anexos/pesquisa-46-copilot-enterprise.md",
+     "exploracao/anexos/varredura-2-memoria-de-agentes.md",
+     "exploracao/2026-09-28-context-hub.md",
+     "issues/40-maestri-padrao-e-liberdade.md"
+    ],
+    "rank": 1
+   },
+   {
+    "n": 32,
+    "tipo": "P",
+    "lang": "pt",
+    "top5": [
+     "issues/48-teste-disco-e-banco-sem-o-obsidian.md",
+     "issues/25-como-a-verdade-viaja-entre-as-maquinas.md",
+     "issues/27-montar-dolt-central.md",
+     "issues/50-pesquisa-ampla-lugares-e-mecanismos-de-busca.md",
+     "issues/24-sync-de-banco-entre-duas-maquinas.md"
+    ],
+    "rank": null
+   },
+   {
+    "n": 33,
+    "tipo": "P",
+    "lang": "pt",
+    "top5": [
+     "exploracao/anexos/pesquisa-44-guarda-do-acervo.md",
+     "issues/40-maestri-padrao-e-liberdade.md",
+     "issues/30-spike-couchdb-livesync.md",
+     "issues/50-pesquisa-ampla-lugares-e-mecanismos-de-busca.md",
+     "exploracao/anexos/pesquisa-37-portas/porta-2-harness-em-subpasta.md"
+    ],
+    "rank": 2
+   },
+   {
+    "n": 34,
+    "tipo": "P",
+    "lang": "pt",
+    "top5": [
+     "exploracao/anexos/varredura-1-canvas-multiagente.md",
+     "exploracao/anexos/pesquisa-43-acervo-do-maestro.md",
+     "issues/40-maestri-padrao-e-liberdade.md",
+     "issues/43-acervo-do-maestro-pesquisa.md",
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/03-maestri.md"
+    ],
+    "rank": 4
+   },
+   {
+    "n": 35,
+    "tipo": "P",
+    "lang": "pt",
+    "top5": [
+     "issues/50-pesquisa-ampla-lugares-e-mecanismos-de-busca.md",
+     "exploracao/anexos/pesquisa-50-sintese.md",
+     "exploracao/anexos/2026-10-02-magpie-vs-freellmapi.md",
+     "issues/49-preparar-freellmapi-para-a-pesquisa.md",
+     "exploracao/anexos/pesquisa-50-inventario.md"
+    ],
+    "rank": 2
+   },
+   {
+    "n": 36,
+    "tipo": "P",
+    "lang": "pt",
+    "top5": [
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/01-custo-e-inteligencia.md",
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/00-sintese.md",
+     "exploracao/anexos/2026-10-02-magpie-vs-freellmapi.md",
+     "exploracao/anexos/pesquisa-37-portas/porta-6-claude-sem-disco.md",
+     "issues/37-portas-de-entrada-pesquisa.md"
+    ],
+    "rank": 5
+   },
+   {
+    "n": 37,
+    "tipo": "P",
+    "lang": "en",
+    "top5": [
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/02-claude-code-recursos.md",
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/01-custo-e-inteligencia.md",
+     "issues/30-spike-couchdb-livesync.md",
+     "exploracao/anexos/pesquisa-47-disco-e-banco-sem-o-obsidian.md",
+     "exploracao/anexos/pesquisa-37-portas/porta-7-cliente-mcp.md"
+    ],
+    "rank": 3
+   },
+   {
+    "n": 38,
+    "tipo": "P",
+    "lang": "en",
+    "top5": [
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/01-custo-e-inteligencia.md",
+     "exploracao/anexos/pesquisa-50-inventario.md",
+     "exploracao/anexos/pesquisa-37-portas/porta-6-claude-sem-disco.md",
+     "exploracao/anexos/2026-10-02-magpie-vs-freellmapi.md",
+     "exploracao/anexos/pesquisa-50-sintese.md"
+    ],
+    "rank": 5
+   },
+   {
+    "n": 39,
+    "tipo": "P",
+    "lang": "en",
+    "top5": [
+     "armis-docs/configuracoes-aplicadas/README.md",
+     "armis-docs/guia-tecnico/README.md",
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/02b-claude-code-complementos.md",
+     "armis-docs/guia-tecnico/esqueleto.md",
+     "exploracao/anexos/pesquisa-37-portas/porta-7-cliente-mcp.md"
+    ],
+    "rank": 1
+   },
+   {
+    "n": 40,
+    "tipo": "P",
+    "lang": "en",
+    "top5": [
+     "exploracao/anexos/pesquisa-50-sintese.md",
+     "exploracao/anexos/pesquisa-50-inventario.md",
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/02b-claude-code-complementos.md",
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/01-custo-e-inteligencia.md",
+     "exploracao/anexos/pesquisa-37-portas/porta-7-cliente-mcp.md"
+    ],
+    "rank": 1
+   }
+  ],
+  "ohs-local-semantic": [
+   {
+    "n": 1,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "issues/47-disco-e-banco-sem-o-obsidian-pesquisa.md",
+     "issues/33-revisao-do-sync-e-da-divergencia.md",
+     "exploracao/anexos/pesquisa-47-disco-e-banco-sem-o-obsidian.md",
+     "issues/48-teste-disco-e-banco-sem-o-obsidian.md",
+     "issues/07-sync-que-nao-depende-de-quem-gravou.md"
+    ],
+    "rank": 2
+   },
+   {
+    "n": 2,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "issues/22-markdown-vista-ou-fonte.md",
+     "issues/12-arquitetura-de-pastas-e-frontmatter.md",
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/04-context-hub.md",
+     "issues/25-como-a-verdade-viaja-entre-as-maquinas.md",
+     "issues/23-banco-como-verdade-com-vista-markdown.md"
+    ],
+    "rank": 1
+   },
+   {
+    "n": 3,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "exploracao/anexos/pesquisa-50-inventario.md",
+     "exploracao/anexos/pesquisa-50-sintese.md",
+     "issues/50-pesquisa-ampla-lugares-e-mecanismos-de-busca.md",
+     "issues/09-camada-de-busca.md",
+     "issues/21-varredura-de-candidatas-a-camada-de-busca.md"
+    ],
+    "rank": 2
+   },
+   {
+    "n": 4,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "issues/05-ligar-as-maquinas-com-seguranca.md",
+     "issues/03-hub-no-wsl-comportamento.md",
+     "exploracao/anexos/testes-38-portas/grupo-d-tailscale-e-claude-desktop.md",
+     "issues/04-windows-ou-wsl.md",
+     "exploracao/anexos/pesquisa-07-sync.md"
+    ],
+    "rank": 1
+   },
+   {
+    "n": 5,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "issues/02-workloads-piloto.md",
+     "issues/10-contrato-file-first.md",
+     "issues/04-windows-ou-wsl.md",
+     "issues/42-testes-da-porta-do-repositorio-fora-do-hub.md",
+     "issues/46-copilot-com-assinatura-enterprise-pesquisa.md"
+    ],
+    "rank": 1
+   },
+   {
+    "n": 6,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "issues/06-ponto-de-encontro-do-sync.md",
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/04-context-hub.md",
+     "issues/33-revisao-do-sync-e-da-divergencia.md",
+     "exploracao/2026-09-28-context-hub.md",
+     "issues/24-sync-de-banco-entre-duas-maquinas.md"
+    ],
+    "rank": 1
+   },
+   {
+    "n": 7,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "exploracao/anexos/pesquisa-47-disco-e-banco-sem-o-obsidian.md",
+     "exploracao/anexos/testes-38-portas/grupo-b-obsidian-livesync.md",
+     "issues/33-revisao-do-sync-e-da-divergencia.md",
+     "issues/09-camada-de-busca.md",
+     "exploracao/anexos/pesquisa-37-portas/porta-5-obsidian.md"
+    ],
+    "rank": null
+   },
+   {
+    "n": 8,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "issues/09-camada-de-busca.md",
+     "exploracao/anexos/2026-10-02-magpie-vs-freellmapi.md",
+     "issues/49-preparar-freellmapi-para-a-pesquisa.md",
+     "issues/50-pesquisa-ampla-lugares-e-mecanismos-de-busca.md",
+     "exploracao/anexos/pesquisa-50-inventario.md"
+    ],
+    "rank": 1
+   },
+   {
+    "n": 9,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "issues/16-passagem-para-a-construcao.md",
+     "exploracao/anexos/testes-38-portas/grupo-c-es617.md",
+     "exploracao/anexos/pesquisa-37-portas/porta-7-cliente-mcp.md",
+     "issues/09-camada-de-busca.md",
+     "exploracao/anexos/pesquisa-41-contrato-pelo-mcp.md"
+    ],
+    "rank": 4
+   },
+   {
+    "n": 10,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "issues/10-contrato-file-first.md",
+     "issues/29-spike-fast-note-sync.md",
+     "issues/21-varredura-de-candidatas-a-camada-de-busca.md",
+     "issues/50-pesquisa-ampla-lugares-e-mecanismos-de-busca.md",
+     "exploracao/anexos/varredura-3-camada-sobre-markdown.md"
+    ],
+    "rank": 1
+   },
+   {
+    "n": 11,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "exploracao/anexos/pesquisa-41-contrato-pelo-mcp.md",
+     "exploracao/anexos/testes-42-repositorio-fora-do-hub.md",
+     "issues/46-copilot-com-assinatura-enterprise-pesquisa.md",
+     "exploracao/anexos/pesquisa-46-copilot-enterprise.md",
+     "issues/18-acesso-dos-agentes-copilot.md"
+    ],
+    "rank": 5
+   },
+   {
+    "n": 12,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "exploracao/anexos/pesquisa-37-portas/porta-8-repo-fora-do-hub.md",
+     "issues/18-acesso-dos-agentes-copilot.md",
+     "exploracao/anexos/pesquisa-44-guarda-do-acervo.md",
+     "exploracao/anexos/pesquisa-46-copilot-enterprise.md",
+     "issues/46-copilot-com-assinatura-enterprise-pesquisa.md"
+    ],
+    "rank": 2
+   },
+   {
+    "n": 13,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "issues/08-divergencia-e-edicao-concorrente.md",
+     "issues/33-revisao-do-sync-e-da-divergencia.md",
+     "issues/24-sync-de-banco-entre-duas-maquinas.md",
+     "exploracao/anexos/pesquisa-07-sync.md",
+     "issues/48-teste-disco-e-banco-sem-o-obsidian.md"
+    ],
+    "rank": 2
+   },
+   {
+    "n": 14,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "issues/50-pesquisa-ampla-lugares-e-mecanismos-de-busca.md",
+     "exploracao/anexos/pesquisa-50-sintese.md",
+     "exploracao/anexos/pesquisa-50-inventario.md",
+     "issues/09-camada-de-busca.md",
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/01-custo-e-inteligencia.md"
+    ],
+    "rank": 2
+   },
+   {
+    "n": 15,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "issues/20-turbovec-na-camada-de-busca.md",
+     "issues/21-varredura-de-candidatas-a-camada-de-busca.md",
+     "issues/09-camada-de-busca.md",
+     "issues/19-zvec-grep-na-camada-de-busca.md",
+     "exploracao/anexos/pesquisa-50-sintese.md"
+    ],
+    "rank": 1
+   },
+   {
+    "n": 16,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "issues/21-varredura-de-candidatas-a-camada-de-busca.md",
+     "issues/09-camada-de-busca.md",
+     "exploracao/anexos/pesquisa-50-sintese.md",
+     "issues/50-pesquisa-ampla-lugares-e-mecanismos-de-busca.md",
+     "issues/19-zvec-grep-na-camada-de-busca.md"
+    ],
+    "rank": 1
+   },
+   {
+    "n": 17,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "issues/30-spike-couchdb-livesync.md",
+     "issues/25-como-a-verdade-viaja-entre-as-maquinas.md",
+     "issues/33-revisao-do-sync-e-da-divergencia.md",
+     "exploracao/anexos/pesquisa-47-disco-e-banco-sem-o-obsidian.md",
+     "issues/09-camada-de-busca.md"
+    ],
+    "rank": 1
+   },
+   {
+    "n": 18,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "issues/25-como-a-verdade-viaja-entre-as-maquinas.md",
+     "issues/29-spike-fast-note-sync.md",
+     "issues/26-montar-couchdb-livesync-mcp.md",
+     "exploracao/anexos/debate-31-dolt.md",
+     "issues/30-spike-couchdb-livesync.md"
+    ],
+    "rank": 2
+   },
+   {
+    "n": 19,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "exploracao/anexos/pesquisa-44-guarda-do-acervo.md",
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/05-video-ERNqRK6sMJY.md",
+     "issues/02-workloads-piloto.md",
+     "exploracao/anexos/debate-31-dolt.md",
+     "issues/41-contrato-pelo-mcp-pesquisa.md"
+    ],
+    "rank": null
+   },
+   {
+    "n": 20,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "armis-docs/guia-tecnico/README.md",
+     "armis-docs/configuracoes-aplicadas/README.md",
+     "armis-docs/guia-tecnico/esqueleto-ptbr.md",
+     "exploracao/anexos/varredura-3-camada-sobre-markdown.md",
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/04-context-hub.md"
+    ],
+    "rank": 3
+   },
+   {
+    "n": 21,
+    "tipo": "P",
+    "lang": "pt",
+    "top5": [
+     "issues/24-sync-de-banco-entre-duas-maquinas.md",
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/01-custo-e-inteligencia.md",
+     "exploracao/anexos/pesquisa-47-disco-e-banco-sem-o-obsidian.md",
+     "issues/21-varredura-de-candidatas-a-camada-de-busca.md",
+     "exploracao/anexos/pesquisa-50-sintese.md"
+    ],
+    "rank": null
+   },
+   {
+    "n": 22,
+    "tipo": "P",
+    "lang": "pt",
+    "top5": [
+     "exploracao/anexos/pesquisa-50-sintese.md",
+     "exploracao/anexos/pesquisa-47-disco-e-banco-sem-o-obsidian.md",
+     "issues/50-pesquisa-ampla-lugares-e-mecanismos-de-busca.md",
+     "issues/19-zvec-grep-na-camada-de-busca.md",
+     "issues/21-varredura-de-candidatas-a-camada-de-busca.md"
+    ],
+    "rank": 1
+   },
+   {
+    "n": 23,
+    "tipo": "P",
+    "lang": "pt",
+    "top5": [
+     "issues/25-como-a-verdade-viaja-entre-as-maquinas.md",
+     "issues/09-camada-de-busca.md",
+     "exploracao/anexos/pesquisa-50-sintese.md",
+     "issues/38-testes-das-portas-de-entrada.md",
+     "issues/16-passagem-para-a-construcao.md"
+    ],
+    "rank": 1
+   },
+   {
+    "n": 24,
+    "tipo": "P",
+    "lang": "pt",
+    "top5": [
+     "issues/34-onde-o-servidor-mora.md",
+     "exploracao/anexos/testes-38-portas/grupo-d-tailscale-e-claude-desktop.md",
+     "issues/27-montar-dolt-central.md",
+     "issues/47-disco-e-banco-sem-o-obsidian-pesquisa.md",
+     "exploracao/anexos/pesquisa-37-portas/porta-6-claude-sem-disco.md"
+    ],
+    "rank": 1
+   },
+   {
+    "n": 25,
+    "tipo": "P",
+    "lang": "pt",
+    "top5": [
+     "exploracao/anexos/pesquisa-35-metodos-de-raiz/debate/r4-Astrolabio.md",
+     "issues/01-licoes-do-vault.md",
+     "issues/40-maestri-padrao-e-liberdade.md",
+     "exploracao/anexos/pesquisa-43-acervo-do-maestro.md",
+     "exploracao/anexos/pesquisa-35-metodos-de-raiz/debate/r3-Cinzel.md"
+    ],
+    "rank": null
+   },
+   {
+    "n": 26,
+    "tipo": "P",
+    "lang": "pt",
+    "top5": [
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/02-claude-code-recursos.md",
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/03-maestri.md",
+     "armis-docs/guia-tecnico/esqueleto-ptbr.md",
+     "issues/40-maestri-padrao-e-liberdade.md",
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/01-custo-e-inteligencia.md"
+    ],
+    "rank": null
+   },
+   {
+    "n": 27,
+    "tipo": "P",
+    "lang": "pt",
+    "top5": [
+     "exploracao/anexos/pesquisa-37-portas/porta-2-harness-em-subpasta.md",
+     "exploracao/anexos/pesquisa-07-sync.md",
+     "issues/03-hub-no-wsl-comportamento.md",
+     "issues/47-disco-e-banco-sem-o-obsidian-pesquisa.md",
+     "exploracao/anexos/pesquisa-47-disco-e-banco-sem-o-obsidian.md"
+    ],
+    "rank": 3
+   },
+   {
+    "n": 28,
+    "tipo": "P",
+    "lang": "pt",
+    "top5": [
+     "issues/43-acervo-do-maestro-pesquisa.md",
+     "exploracao/anexos/pesquisa-37-portas/porta-8-repo-fora-do-hub.md",
+     "issues/40-maestri-padrao-e-liberdade.md",
+     "exploracao/anexos/pesquisa-44-guarda-do-acervo.md",
+     "issues/41-contrato-pelo-mcp-pesquisa.md"
+    ],
+    "rank": null
+   },
+   {
+    "n": 29,
+    "tipo": "P",
+    "lang": "pt",
+    "top5": [
+     "exploracao/anexos/pesquisa-44-guarda-do-acervo.md",
+     "issues/50-pesquisa-ampla-lugares-e-mecanismos-de-busca.md",
+     "issues/43-acervo-do-maestro-pesquisa.md",
+     "exploracao/anexos/pesquisa-43-acervo-do-maestro.md",
+     "issues/40-maestri-padrao-e-liberdade.md"
+    ],
+    "rank": null
+   },
+   {
+    "n": 30,
+    "tipo": "P",
+    "lang": "pt",
+    "top5": [
+     "issues/02-workloads-piloto.md",
+     "issues/10-contrato-file-first.md",
+     "issues/25-como-a-verdade-viaja-entre-as-maquinas.md",
+     "exploracao/anexos/pesquisa-07-sync.md",
+     "armis-docs/guia-tecnico/README.md"
+    ],
+    "rank": null
+   },
+   {
+    "n": 31,
+    "tipo": "P",
+    "lang": "pt",
+    "top5": [
+     "exploracao/anexos/pesquisa-37-portas/porta-2-harness-em-subpasta.md",
+     "issues/46-copilot-com-assinatura-enterprise-pesquisa.md",
+     "exploracao/anexos/pesquisa-46-copilot-enterprise.md",
+     "exploracao/anexos/pesquisa-07-sync.md",
+     "issues/40-maestri-padrao-e-liberdade.md"
+    ],
+    "rank": 2
+   },
+   {
+    "n": 32,
+    "tipo": "P",
+    "lang": "pt",
+    "top5": [
+     "issues/23-banco-como-verdade-com-vista-markdown.md",
+     "issues/33-revisao-do-sync-e-da-divergencia.md",
+     "issues/48-teste-disco-e-banco-sem-o-obsidian.md",
+     "exploracao/anexos/pesquisa-47-disco-e-banco-sem-o-obsidian.md",
+     "exploracao/anexos/testes-38-portas/grupo-b-obsidian-livesync.md"
+    ],
+    "rank": null
+   },
+   {
+    "n": 33,
+    "tipo": "P",
+    "lang": "pt",
+    "top5": [
+     "exploracao/anexos/pesquisa-44-guarda-do-acervo.md",
+     "exploracao/anexos/testes-45-papel-do-maestri.md",
+     "exploracao/anexos/pesquisa-37-portas/porta-2-harness-em-subpasta.md",
+     "exploracao/anexos/pesquisa-43-acervo-do-maestro.md",
+     "issues/48-teste-disco-e-banco-sem-o-obsidian.md"
+    ],
+    "rank": null
+   },
+   {
+    "n": 34,
+    "tipo": "P",
+    "lang": "pt",
+    "top5": [
+     "exploracao/anexos/pesquisa-43-acervo-do-maestro.md",
+     "exploracao/anexos/varredura-1-canvas-multiagente.md",
+     "issues/43-acervo-do-maestro-pesquisa.md",
+     "issues/40-maestri-padrao-e-liberdade.md",
+     "exploracao/anexos/pesquisa-44-guarda-do-acervo.md"
+    ],
+    "rank": 3
+   },
+   {
+    "n": 35,
+    "tipo": "P",
+    "lang": "pt",
+    "top5": [
+     "issues/50-pesquisa-ampla-lugares-e-mecanismos-de-busca.md",
+     "exploracao/anexos/pesquisa-50-sintese.md",
+     "issues/40-maestri-padrao-e-liberdade.md",
+     "issues/49-preparar-freellmapi-para-a-pesquisa.md"
+    ],
+    "rank": 2
+   },
+   {
+    "n": 36,
+    "tipo": "P",
+    "lang": "pt",
+    "top5": [
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/01-custo-e-inteligencia.md",
+     "issues/41-contrato-pelo-mcp-pesquisa.md",
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/00-sintese.md",
+     "issues/09-camada-de-busca.md",
+     "exploracao/anexos/pesquisa-37-portas/porta-6-claude-sem-disco.md"
+    ],
+    "rank": 2
+   },
+   {
+    "n": 37,
+    "tipo": "P",
+    "lang": "en",
+    "top5": [
+     "issues/30-spike-couchdb-livesync.md",
+     "exploracao/anexos/pesquisa-37-portas/porta-7-cliente-mcp.md",
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/02-claude-code-recursos.md",
+     "exploracao/anexos/pesquisa-47-disco-e-banco-sem-o-obsidian.md",
+     "issues/25-como-a-verdade-viaja-entre-as-maquinas.md"
+    ],
+    "rank": 1
+   },
+   {
+    "n": 38,
+    "tipo": "P",
+    "lang": "en",
+    "top5": [
+     "exploracao/anexos/pesquisa-50-inventario.md",
+     "exploracao/anexos/pesquisa-37-portas/porta-6-claude-sem-disco.md",
+     "exploracao/anexos/pesquisa-50-sintese.md",
+     "exploracao/anexos/testes-38-portas/grupo-d-tailscale-e-claude-desktop.md",
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/01-custo-e-inteligencia.md"
+    ],
+    "rank": 3
+   },
+   {
+    "n": 39,
+    "tipo": "P",
+    "lang": "en",
+    "top5": [
+     "armis-docs/configuracoes-aplicadas/README.md",
+     "armis-docs/guia-tecnico/esqueleto.md",
+     "armis-docs/guia-tecnico/README.md",
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/02b-claude-code-complementos.md",
+     "exploracao/anexos/pesquisa-37-portas/porta-2-harness-em-subpasta.md"
+    ],
+    "rank": 1
+   },
+   {
+    "n": 40,
+    "tipo": "P",
+    "lang": "en",
+    "top5": [
+     "exploracao/anexos/pesquisa-50-sintese.md",
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/01-custo-e-inteligencia.md",
+     "exploracao/anexos/pesquisa-50-inventario.md",
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/02-claude-code-recursos.md",
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/02b-claude-code-complementos.md"
+    ],
+    "rank": 1
+   }
+  ],
+  "mm-bm25": [
+   {
+    "n": 1,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "issues/33-revisao-do-sync-e-da-divergencia.md",
+     "issues/47-disco-e-banco-sem-o-obsidian-pesquisa.md",
+     "issues/48-teste-disco-e-banco-sem-o-obsidian.md",
+     "exploracao/anexos/pesquisa-37-portas/porta-1-harness-na-raiz.md",
+     "issues/30-spike-couchdb-livesync.md"
+    ],
+    "rank": 1
+   },
+   {
+    "n": 2,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "issues/12-arquitetura-de-pastas-e-frontmatter.md",
+     "issues/22-markdown-vista-ou-fonte.md",
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/04-context-hub.md",
+     "issues/11-como-os-agentes-gravam.md",
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/00-sintese.md"
+    ],
+    "rank": 2
+   },
+   {
+    "n": 3,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "exploracao/anexos/pesquisa-50-sintese.md",
+     "issues/50-pesquisa-ampla-lugares-e-mecanismos-de-busca.md",
+     "exploracao/anexos/pesquisa-50-inventario.md"
+    ],
+    "rank": 1
+   },
+   {
+    "n": 4,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "exploracao/anexos/pesquisa-05-ligar-as-maquinas.md",
+     "issues/05-ligar-as-maquinas-com-seguranca.md"
+    ],
+    "rank": 2
+   },
+   {
+    "n": 5,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "issues/02-workloads-piloto.md",
+     "issues/15-roteamento-de-skills.md",
+     "issues/12-arquitetura-de-pastas-e-frontmatter.md",
+     "issues/50-pesquisa-ampla-lugares-e-mecanismos-de-busca.md",
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/01-custo-e-inteligencia.md"
+    ],
+    "rank": 1
+   },
+   {
+    "n": 6,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "issues/06-ponto-de-encontro-do-sync.md",
+     "exploracao/anexos/pesquisa-05-ligar-as-maquinas.md",
+     "exploracao/anexos/pesquisa-24-sync-de-banco.md",
+     "exploracao/anexos/pesquisa-27-montagem.md",
+     "issues/33-revisao-do-sync-e-da-divergencia.md"
+    ],
+    "rank": 1
+   },
+   {
+    "n": 7,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "issues/48-teste-disco-e-banco-sem-o-obsidian.md",
+     "issues/09-camada-de-busca.md",
+     "issues/33-revisao-do-sync-e-da-divergencia.md",
+     "exploracao/anexos/pesquisa-47-disco-e-banco-sem-o-obsidian.md",
+     "exploracao/anexos/pesquisa-50-sintese.md"
+    ],
+    "rank": 1
+   },
+   {
+    "n": 8,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "issues/50-pesquisa-ampla-lugares-e-mecanismos-de-busca.md",
+     "exploracao/anexos/pesquisa-50-sintese.md",
+     "issues/09-camada-de-busca.md",
+     "issues/49-preparar-freellmapi-para-a-pesquisa.md",
+     "exploracao/anexos/pesquisa-20-turbovec.md"
+    ],
+    "rank": 3
+   },
+   {
+    "n": 9,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "issues/09-camada-de-busca.md",
+     "exploracao/anexos/pesquisa-50-sintese.md",
+     "issues/16-passagem-para-a-construcao.md"
+    ],
+    "rank": 1
+   },
+   {
+    "n": 10,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "issues/10-contrato-file-first.md",
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/04-context-hub.md",
+     "exploracao/anexos/pesquisa-35-metodos-de-raiz/debate/r4-Junco.md",
+     "exploracao/anexos/pesquisa-35-metodos-de-raiz/debate/r3-Astrolabio.md",
+     "exploracao/anexos/pesquisa-35-metodos-de-raiz/debate/00-briefing.md"
+    ],
+    "rank": 1
+   },
+   {
+    "n": 11,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "issues/40-maestri-padrao-e-liberdade.md",
+     "issues/36-portas-de-entrada-do-hub.md",
+     "exploracao/anexos/testes-42-repositorio-fora-do-hub.md",
+     "issues/14-acesso-dos-agentes-decisao.md",
+     "issues/46-copilot-com-assinatura-enterprise-pesquisa.md"
+    ],
+    "rank": null
+   },
+   {
+    "n": 12,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "exploracao/anexos/pesquisa-18-acesso-copilot.md",
+     "issues/18-acesso-dos-agentes-copilot.md",
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/02b-claude-code-complementos.md",
+     "exploracao/anexos/pesquisa-47-disco-e-banco-sem-o-obsidian.md",
+     "exploracao/anexos/pesquisa-37-portas/porta-1-harness-na-raiz.md"
+    ],
+    "rank": 2
+   },
+   {
+    "n": 13,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "issues/08-divergencia-e-edicao-concorrente.md",
+     "exploracao/anexos/pesquisa-27-montagem.md",
+     "exploracao/anexos/pesquisa-50-inventario.md",
+     "exploracao/anexos/pesquisa-24-sync-de-banco.md",
+     "issues/33-revisao-do-sync-e-da-divergencia.md"
+    ],
+    "rank": 5
+   },
+   {
+    "n": 14,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "exploracao/anexos/pesquisa-50-inventario.md",
+     "issues/50-pesquisa-ampla-lugares-e-mecanismos-de-busca.md",
+     "exploracao/anexos/pesquisa-50-sintese.md",
+     "issues/49-preparar-freellmapi-para-a-pesquisa.md",
+     "exploracao/anexos/pesquisa-27-montagem.md"
+    ],
+    "rank": 3
+   },
+   {
+    "n": 15,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "exploracao/anexos/pesquisa-20-turbovec.md",
+     "issues/21-varredura-de-candidatas-a-camada-de-busca.md"
+    ],
+    "rank": null
+   },
+   {
+    "n": 16,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "issues/09-camada-de-busca.md",
+     "issues/21-varredura-de-candidatas-a-camada-de-busca.md",
+     "exploracao/anexos/pesquisa-21-varredura-busca.md",
+     "issues/19-zvec-grep-na-camada-de-busca.md",
+     "issues/22-markdown-vista-ou-fonte.md"
+    ],
+    "rank": 2
+   },
+   {
+    "n": 17,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "issues/30-spike-couchdb-livesync.md",
+     "issues/25-como-a-verdade-viaja-entre-as-maquinas.md",
+     "exploracao/anexos/testes-38-portas/grupo-b-obsidian-livesync.md",
+     "exploracao/anexos/pesquisa-47-disco-e-banco-sem-o-obsidian.md",
+     "issues/48-teste-disco-e-banco-sem-o-obsidian.md"
+    ],
+    "rank": 1
+   },
+   {
+    "n": 18,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "issues/28-montar-banco-central-com-plugin-obsidian.md",
+     "exploracao/anexos/pesquisa-27-montagem.md",
+     "issues/29-spike-fast-note-sync.md",
+     "issues/30-spike-couchdb-livesync.md",
+     "exploracao/anexos/pesquisa-28-montagem.md"
+    ],
+    "rank": 3
+   },
+   {
+    "n": 19,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "armis-docs/README.md",
+     "armis-docs/configuracoes-aplicadas/README.md",
+     "armis-docs/configuracoes-aplicadas/compor.py",
+     "armis-docs/guia-tecnico/README.md",
+     "armis-docs/guia-tecnico/compor.py"
+    ],
+    "rank": 1
+   },
+   {
+    "n": 20,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "armis-docs/guia-tecnico/README.md",
+     "armis-docs/guia-tecnico/compor.py",
+     "armis-docs/guia-tecnico/esqueleto-ptbr.md",
+     "armis-docs/README.md",
+     "armis-docs/configuracoes-aplicadas/README.md"
+    ],
+    "rank": 3
+   },
+   {
+    "n": 21,
+    "tipo": "P",
+    "lang": "pt",
+    "top5": [
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/02-claude-code-recursos.md",
+     "exploracao/anexos/pesquisa-24-sync-de-banco.md",
+     "issues/10-contrato-file-first.md",
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/04-context-hub.md",
+     "issues/24-sync-de-banco-entre-duas-maquinas.md"
+    ],
+    "rank": null
+   },
+   {
+    "n": 22,
+    "tipo": "P",
+    "lang": "pt",
+    "top5": [
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/02-claude-code-recursos.md",
+     "exploracao/anexos/debate-31-dolt.md",
+     "exploracao/anexos/pesquisa-35-metodos-de-raiz/14-evergreen-notes.json",
+     "issues/33-revisao-do-sync-e-da-divergencia.md",
+     "issues/29-spike-fast-note-sync.md"
+    ],
+    "rank": null
+   },
+   {
+    "n": 23,
+    "tipo": "P",
+    "lang": "pt",
+    "top5": [
+     "exploracao/2026-09-28-context-hub.md",
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/04-context-hub.md",
+     "exploracao/anexos/pesquisa-44-guarda-do-acervo.md",
+     "issues/33-revisao-do-sync-e-da-divergencia.md",
+     "issues/44-guarda-do-acervo-mods-e-hooks-pesquisa.md"
+    ],
+    "rank": null
+   },
+   {
+    "n": 24,
+    "tipo": "P",
+    "lang": "pt",
+    "top5": [
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/02-claude-code-recursos.md",
+     "exploracao/anexos/pesquisa-27-montagem.md",
+     "exploracao/anexos/varredura-3-camada-sobre-markdown.md",
+     "issues/34-onde-o-servidor-mora.md",
+     "exploracao/2026-09-28-context-hub.md"
+    ],
+    "rank": 4
+   },
+   {
+    "n": 25,
+    "tipo": "P",
+    "lang": "pt",
+    "top5": [
+     "issues/30-spike-couchdb-livesync.md",
+     "issues/16-passagem-para-a-construcao.md",
+     "exploracao/anexos/pesquisa-37-portas/porta-6-claude-sem-disco.md",
+     "issues/10-contrato-file-first.md",
+     "issues/40-maestri-padrao-e-liberdade.md"
+    ],
+    "rank": null
+   },
+   {
+    "n": 26,
+    "tipo": "P",
+    "lang": "pt",
+    "top5": [
+     "exploracao/anexos/pesquisa-24-sync-de-banco.md",
+     "exploracao/anexos/testes-38-portas/grupo-b-obsidian-livesync.md",
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/02-claude-code-recursos.md",
+     "exploracao/2026-09-28-context-hub.md",
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/05-video-B9xAHilKHBc.md"
+    ],
+    "rank": null
+   },
+   {
+    "n": 27,
+    "tipo": "P",
+    "lang": "pt",
+    "top5": [
+     "exploracao/anexos/pesquisa-50-sintese.md",
+     "exploracao/anexos/pesquisa-03-hub-no-wsl.md",
+     "exploracao/anexos/pesquisa-27-montagem.md",
+     "exploracao/anexos/pesquisa-19-zvec-grep.md",
+     "exploracao/anexos/varredura-1-canvas-multiagente.md"
+    ],
+    "rank": null
+   },
+   {
+    "n": 28,
+    "tipo": "P",
+    "lang": "pt",
+    "top5": [
+     "issues/46-copilot-com-assinatura-enterprise-pesquisa.md",
+     "exploracao/anexos/pesquisa-46-copilot-enterprise.md",
+     "exploracao/anexos/pesquisa-35-metodos-de-raiz/debate/r2-Junco.md",
+     "issues/41-contrato-pelo-mcp-pesquisa.md",
+     "issues/36-portas-de-entrada-do-hub.md"
+    ],
+    "rank": 5
+   },
+   {
+    "n": 29,
+    "tipo": "P",
+    "lang": "pt",
+    "top5": [
+     "exploracao/anexos/pesquisa-35-metodos-de-raiz/comparacao-final.md",
+     "exploracao/2026-09-28-context-hub.md",
+     "exploracao/anexos/pesquisa-43-acervo-do-maestro.md",
+     "issues/43-acervo-do-maestro-pesquisa.md",
+     "exploracao/anexos/pesquisa-35-metodos-de-raiz/debate/00-briefing.md"
+    ],
+    "rank": null
+   },
+   {
+    "n": 30,
+    "tipo": "P",
+    "lang": "pt",
+    "top5": [
+     "exploracao/anexos/pesquisa-44-guarda-do-acervo.md",
+     "issues/48-teste-disco-e-banco-sem-o-obsidian.md",
+     "armis-docs/configuracoes-aplicadas/README.md",
+     "exploracao/anexos/pesquisa-47-disco-e-banco-sem-o-obsidian.md",
+     "armis-docs/guia-tecnico/README.md"
+    ],
+    "rank": 2
+   },
+   {
+    "n": 31,
+    "tipo": "P",
+    "lang": "pt",
+    "top5": [
+     "issues/14-acesso-dos-agentes-decisao.md",
+     "exploracao/anexos/pesquisa-46-copilot-enterprise.md",
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/02-claude-code-recursos.md",
+     "issues/46-copilot-com-assinatura-enterprise-pesquisa.md",
+     "issues/30-spike-couchdb-livesync.md"
+    ],
+    "rank": 4
+   },
+   {
+    "n": 32,
+    "tipo": "P",
+    "lang": "pt",
+    "top5": [
+     "issues/48-teste-disco-e-banco-sem-o-obsidian.md",
+     "issues/30-spike-couchdb-livesync.md",
+     "exploracao/anexos/pesquisa-24-sync-de-banco.md",
+     "armis-docs/configuracoes-aplicadas/README.md",
+     "issues/50-pesquisa-ampla-lugares-e-mecanismos-de-busca.md"
+    ],
+    "rank": null
+   },
+   {
+    "n": 33,
+    "tipo": "P",
+    "lang": "pt",
+    "top5": [
+     "exploracao/anexos/pesquisa-35-metodos-de-raiz/debate/r4-Astrolabio.md",
+     "exploracao/anexos/pesquisa-37-portas/porta-3-4-maestri.md",
+     "issues/40-maestri-padrao-e-liberdade.md",
+     "exploracao/anexos/pesquisa-46-copilot-enterprise.md",
+     "issues/30-spike-couchdb-livesync.md"
+    ],
+    "rank": 3
+   },
+   {
+    "n": 34,
+    "tipo": "P",
+    "lang": "pt",
+    "top5": [
+     "issues/40-maestri-padrao-e-liberdade.md",
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/01-custo-e-inteligencia.md",
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/00-sintese.md",
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/02-claude-code-recursos.md",
+     "exploracao/anexos/varredura-1-canvas-multiagente.md"
+    ],
+    "rank": null
+   },
+   {
+    "n": 35,
+    "tipo": "P",
+    "lang": "pt",
+    "top5": [
+     "exploracao/anexos/pesquisa-50-sintese.md",
+     "issues/50-pesquisa-ampla-lugares-e-mecanismos-de-busca.md",
+     "exploracao/anexos/pesquisa-50-inventario.md",
+     "issues/49-preparar-freellmapi-para-a-pesquisa.md",
+     "issues/12-arquitetura-de-pastas-e-frontmatter.md"
+    ],
+    "rank": 1
+   },
+   {
+    "n": 36,
+    "tipo": "P",
+    "lang": "pt",
+    "top5": [
+     "issues/41-contrato-pelo-mcp-pesquisa.md",
+     "exploracao/anexos/pesquisa-41-contrato-pelo-mcp.md",
+     "issues/30-spike-couchdb-livesync.md",
+     "exploracao/anexos/pesquisa-37-portas/porta-7-cliente-mcp.md",
+     "exploracao/anexos/pesquisa-27-montagem.md"
+    ],
+    "rank": 1
+   },
+   {
+    "n": 37,
+    "tipo": "P",
+    "lang": "en",
+    "top5": [
+     "exploracao/anexos/pesquisa-23-banco-com-vista.md",
+     "exploracao/anexos/pesquisa-47-disco-e-banco-sem-o-obsidian.md",
+     "exploracao/anexos/pesquisa-28-montagem.md",
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/01-custo-e-inteligencia.md",
+     "exploracao/anexos/pesquisa-44-guarda-do-acervo.md"
+    ],
+    "rank": null
+   },
+   {
+    "n": 38,
+    "tipo": "P",
+    "lang": "en",
+    "top5": [
+     "exploracao/anexos/pesquisa-37-portas/porta-6-claude-sem-disco.md",
+     "exploracao/anexos/pesquisa-46-copilot-enterprise.md",
+     "exploracao/anexos/pesquisa-37-portas/porta-7-cliente-mcp.md",
+     "exploracao/anexos/pesquisa-05-ligar-as-maquinas.md",
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/02b-claude-code-complementos.md"
+    ],
+    "rank": null
+   },
+   {
+    "n": 39,
+    "tipo": "P",
+    "lang": "en",
+    "top5": [
+     "armis-docs/guia-tecnico/esqueleto.md",
+     "armis-docs/configuracoes-aplicadas/README.md",
+     "armis-docs/guia-tecnico/README.md",
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/05-video-ERNqRK6sMJY.md",
+     "exploracao/anexos/pesquisa-37-portas/porta-7-cliente-mcp.md"
+    ],
+    "rank": 2
+   },
+   {
+    "n": 40,
+    "tipo": "P",
+    "lang": "en",
+    "top5": [
+     "exploracao/anexos/pesquisa-50-sintese.md",
+     "exploracao/anexos/pesquisa-50-inventario.md",
+     "exploracao/anexos/pesquisa-19-zvec-grep.md",
+     "exploracao/anexos/pesquisa-28-montagem.md",
+     "exploracao/anexos/pesquisa-21-varredura-busca.md"
+    ],
+    "rank": 1
+   }
+  ],
+  "mm-e5": [
+   {
+    "n": 1,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "issues/47-disco-e-banco-sem-o-obsidian-pesquisa.md",
+     "issues/33-revisao-do-sync-e-da-divergencia.md",
+     "issues/48-teste-disco-e-banco-sem-o-obsidian.md",
+     "exploracao/anexos/pesquisa-47-disco-e-banco-sem-o-obsidian.md",
+     "exploracao/anexos/pesquisa-23-banco-com-vista.md"
+    ],
+    "rank": 2
+   },
+   {
+    "n": 2,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "issues/11-como-os-agentes-gravam.md",
+     "issues/12-arquitetura-de-pastas-e-frontmatter.md",
+     "issues/22-markdown-vista-ou-fonte.md",
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/04-context-hub.md",
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/00-sintese.md"
+    ],
+    "rank": 3
+   },
+   {
+    "n": 3,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "exploracao/anexos/pesquisa-50-sintese.md",
+     "exploracao/anexos/pesquisa-50-inventario.md",
+     "issues/50-pesquisa-ampla-lugares-e-mecanismos-de-busca.md",
+     "issues/09-camada-de-busca.md",
+     "exploracao/anexos/pesquisa-24-sync-de-banco.md"
+    ],
+    "rank": 1
+   },
+   {
+    "n": 4,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "issues/05-ligar-as-maquinas-com-seguranca.md",
+     "exploracao/anexos/pesquisa-05-ligar-as-maquinas.md",
+     "exploracao/anexos/pesquisa-03-hub-no-wsl.md",
+     "issues/16-passagem-para-a-construcao.md",
+     "exploracao/anexos/pesquisa-28-montagem.md"
+    ],
+    "rank": 1
+   },
+   {
+    "n": 5,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "issues/02-workloads-piloto.md",
+     "issues/15-roteamento-de-skills.md",
+     "exploracao/anexos/pesquisa-20-turbovec.md",
+     "issues/12-arquitetura-de-pastas-e-frontmatter.md",
+     "exploracao/2026-09-28-context-hub.md"
+    ],
+    "rank": 1
+   },
+   {
+    "n": 6,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "issues/06-ponto-de-encontro-do-sync.md",
+     "exploracao/anexos/pesquisa-05-ligar-as-maquinas.md",
+     "exploracao/anexos/pesquisa-24-sync-de-banco.md",
+     "issues/33-revisao-do-sync-e-da-divergencia.md",
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/04-context-hub.md"
+    ],
+    "rank": 1
+   },
+   {
+    "n": 7,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "exploracao/anexos/pesquisa-47-disco-e-banco-sem-o-obsidian.md",
+     "issues/12-arquitetura-de-pastas-e-frontmatter.md",
+     "exploracao/anexos/pesquisa-37-portas/porta-5-obsidian.md",
+     "issues/33-revisao-do-sync-e-da-divergencia.md",
+     "issues/09-camada-de-busca.md"
+    ],
+    "rank": null
+   },
+   {
+    "n": 8,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "issues/09-camada-de-busca.md",
+     "exploracao/anexos/pesquisa-50-sintese.md",
+     "issues/49-preparar-freellmapi-para-a-pesquisa.md",
+     "issues/50-pesquisa-ampla-lugares-e-mecanismos-de-busca.md",
+     "exploracao/anexos/pesquisa-20-turbovec.md"
+    ],
+    "rank": 1
+   },
+   {
+    "n": 9,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "issues/16-passagem-para-a-construcao.md",
+     "issues/09-camada-de-busca.md",
+     "issues/50-pesquisa-ampla-lugares-e-mecanismos-de-busca.md",
+     "exploracao/anexos/pesquisa-50-sintese.md",
+     "exploracao/anexos/pesquisa-37-portas/porta-7-cliente-mcp.md"
+    ],
+    "rank": 2
+   },
+   {
+    "n": 10,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "issues/10-contrato-file-first.md",
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/04-context-hub.md",
+     "exploracao/anexos/pesquisa-35-metodos-de-raiz/comparacao-final.md",
+     "issues/14-acesso-dos-agentes-decisao.md",
+     "armis-docs/guia-tecnico/README.md"
+    ],
+    "rank": 1
+   },
+   {
+    "n": 11,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "exploracao/anexos/testes-42-repositorio-fora-do-hub.md",
+     "exploracao/anexos/pesquisa-18-acesso-copilot.md",
+     "issues/46-copilot-com-assinatura-enterprise-pesquisa.md",
+     "issues/18-acesso-dos-agentes-copilot.md",
+     "issues/40-maestri-padrao-e-liberdade.md"
+    ],
+    "rank": 4
+   },
+   {
+    "n": 12,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "exploracao/anexos/pesquisa-18-acesso-copilot.md",
+     "issues/18-acesso-dos-agentes-copilot.md",
+     "exploracao/anexos/pesquisa-37-portas/porta-8-repo-fora-do-hub.md",
+     "exploracao/anexos/pesquisa-46-copilot-enterprise.md",
+     "exploracao/anexos/testes-38-portas/grupo-a-carga-de-instrucoes.md"
+    ],
+    "rank": 2
+   },
+   {
+    "n": 13,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "issues/08-divergencia-e-edicao-concorrente.md",
+     "issues/33-revisao-do-sync-e-da-divergencia.md",
+     "exploracao/anexos/pesquisa-24-sync-de-banco.md",
+     "issues/48-teste-disco-e-banco-sem-o-obsidian.md",
+     "issues/16-passagem-para-a-construcao.md"
+    ],
+    "rank": 2
+   },
+   {
+    "n": 14,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "issues/50-pesquisa-ampla-lugares-e-mecanismos-de-busca.md",
+     "exploracao/anexos/pesquisa-50-sintese.md",
+     "exploracao/anexos/pesquisa-50-inventario.md",
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/01-custo-e-inteligencia.md",
+     "issues/09-camada-de-busca.md"
+    ],
+    "rank": 2
+   },
+   {
+    "n": 15,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "exploracao/anexos/pesquisa-20-turbovec.md",
+     "issues/21-varredura-de-candidatas-a-camada-de-busca.md",
+     "issues/20-turbovec-na-camada-de-busca.md",
+     "exploracao/anexos/pesquisa-21-varredura-busca.md",
+     "exploracao/anexos/pesquisa-19-zvec-grep.md"
+    ],
+    "rank": 3
+   },
+   {
+    "n": 16,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "exploracao/anexos/pesquisa-21-varredura-busca.md",
+     "issues/21-varredura-de-candidatas-a-camada-de-busca.md",
+     "issues/09-camada-de-busca.md"
+    ],
+    "rank": 2
+   },
+   {
+    "n": 17,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "issues/25-como-a-verdade-viaja-entre-as-maquinas.md",
+     "issues/30-spike-couchdb-livesync.md",
+     "exploracao/anexos/testes-38-portas/grupo-b-obsidian-livesync.md",
+     "exploracao/anexos/testes-42-repositorio-fora-do-hub.md",
+     "exploracao/anexos/pesquisa-50-sintese.md"
+    ],
+    "rank": 2
+   },
+   {
+    "n": 18,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "exploracao/anexos/pesquisa-28-montagem.md",
+     "issues/30-spike-couchdb-livesync.md",
+     "issues/29-spike-fast-note-sync.md",
+     "issues/28-montar-banco-central-com-plugin-obsidian.md",
+     "issues/31-debate-sobre-o-dolt.md"
+    ],
+    "rank": 3
+   },
+   {
+    "n": 19,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "armis-docs/guia-tecnico/README.md",
+     "armis-docs/configuracoes-aplicadas/README.md",
+     "exploracao/anexos/pesquisa-44-guarda-do-acervo.md",
+     "armis-docs/configuracoes-aplicadas/compor.py",
+     "armis-docs/README.md"
+    ],
+    "rank": 1
+   },
+   {
+    "n": 20,
+    "tipo": "L",
+    "lang": "pt",
+    "top5": [
+     "armis-docs/guia-tecnico/README.md",
+     "armis-docs/guia-tecnico/esqueleto-ptbr.md",
+     "armis-docs/configuracoes-aplicadas/README.md",
+     "armis-docs/guia-tecnico/compor.py",
+     "armis-docs/configuracoes-aplicadas/compor.py"
+    ],
+    "rank": 2
+   },
+   {
+    "n": 21,
+    "tipo": "P",
+    "lang": "pt",
+    "top5": [
+     "exploracao/anexos/pesquisa-35-metodos-de-raiz/debate/r3-Astrolabio.md",
+     "exploracao/anexos/pesquisa-47-disco-e-banco-sem-o-obsidian.md",
+     "exploracao/2026-09-28-context-hub.md",
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/02-claude-code-recursos.md",
+     "issues/08-divergencia-e-edicao-concorrente.md"
+    ],
+    "rank": 5
+   },
+   {
+    "n": 22,
+    "tipo": "P",
+    "lang": "pt",
+    "top5": [
+     "exploracao/anexos/pesquisa-35-metodos-de-raiz/14-evergreen-notes.json",
+     "exploracao/anexos/varredura-2-memoria-de-agentes.md",
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/01-custo-e-inteligencia.md",
+     "exploracao/anexos/pesquisa-27-montagem.md",
+     "issues/09-camada-de-busca.md"
+    ],
+    "rank": null
+   },
+   {
+    "n": 23,
+    "tipo": "P",
+    "lang": "pt",
+    "top5": [
+     "exploracao/2026-09-28-context-hub.md",
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/04-context-hub.md",
+     "issues/25-como-a-verdade-viaja-entre-as-maquinas.md",
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/02-claude-code-recursos.md",
+     "exploracao/anexos/testes-38-portas/grupo-b-obsidian-livesync.md"
+    ],
+    "rank": 3
+   },
+   {
+    "n": 24,
+    "tipo": "P",
+    "lang": "pt",
+    "top5": [
+     "issues/34-onde-o-servidor-mora.md",
+     "exploracao/anexos/pesquisa-27-montagem.md",
+     "exploracao/anexos/pesquisa-50-sintese.md",
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/04-context-hub.md",
+     "exploracao/anexos/pesquisa-50-inventario.md"
+    ],
+    "rank": 1
+   },
+   {
+    "n": 25,
+    "tipo": "P",
+    "lang": "pt",
+    "top5": [
+     "issues/37-portas-de-entrada-pesquisa.md",
+     "exploracao/anexos/pesquisa-44-guarda-do-acervo.md",
+     "exploracao/anexos/pesquisa-43-acervo-do-maestro.md",
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/05-video-ERNqRK6sMJY.md",
+     "exploracao/anexos/pesquisa-35-metodos-de-raiz/debate/r4-Astrolabio.md"
+    ],
+    "rank": null
+   },
+   {
+    "n": 26,
+    "tipo": "P",
+    "lang": "pt",
+    "top5": [
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/02-claude-code-recursos.md",
+     "exploracao/anexos/pesquisa-35-metodos-de-raiz/05-gtd.json",
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/01-custo-e-inteligencia.md",
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/05-video-B9xAHilKHBc.md",
+     "exploracao/anexos/testes-38-portas/grupo-b-obsidian-livesync.md"
+    ],
+    "rank": null
+   },
+   {
+    "n": 27,
+    "tipo": "P",
+    "lang": "pt",
+    "top5": [
+     "exploracao/anexos/pesquisa-05-ligar-as-maquinas.md",
+     "exploracao/anexos/pesquisa-03-hub-no-wsl.md",
+     "exploracao/anexos/pesquisa-13-acesso-dos-agentes.md",
+     "exploracao/anexos/pesquisa-47-disco-e-banco-sem-o-obsidian.md",
+     "exploracao/anexos/pesquisa-35-metodos-de-raiz/debate/r5-Cinzel.md"
+    ],
+    "rank": null
+   },
+   {
+    "n": 28,
+    "tipo": "P",
+    "lang": "pt",
+    "top5": [
+     "issues/43-acervo-do-maestro-pesquisa.md",
+     "exploracao/anexos/pesquisa-46-copilot-enterprise.md",
+     "exploracao/anexos/pesquisa-35-metodos-de-raiz/debate/r3-Astrolabio.md",
+     "issues/13-acesso-dos-agentes-pesquisa.md",
+     "exploracao/2026-09-28-context-hub.md"
+    ],
+    "rank": null
+   },
+   {
+    "n": 29,
+    "tipo": "P",
+    "lang": "pt",
+    "top5": [
+     "exploracao/anexos/pesquisa-43-acervo-do-maestro.md",
+     "exploracao/anexos/pesquisa-44-guarda-do-acervo.md",
+     "exploracao/anexos/pesquisa-35-metodos-de-raiz/comparacao-final.md",
+     "issues/50-pesquisa-ampla-lugares-e-mecanismos-de-busca.md",
+     "exploracao/anexos/pesquisa-35-metodos-de-raiz/08-fhs.json"
+    ],
+    "rank": null
+   },
+   {
+    "n": 30,
+    "tipo": "P",
+    "lang": "pt",
+    "top5": [
+     "armis-docs/configuracoes-aplicadas/README.md",
+     "armis-docs/guia-tecnico/README.md",
+     "issues/48-teste-disco-e-banco-sem-o-obsidian.md",
+     "armis-docs/configuracoes-aplicadas/esqueleto-ptbr.md",
+     "issues/30-spike-couchdb-livesync.md"
+    ],
+    "rank": 3
+   },
+   {
+    "n": 31,
+    "tipo": "P",
+    "lang": "pt",
+    "top5": [
+     "exploracao/anexos/pesquisa-46-copilot-enterprise.md",
+     "issues/46-copilot-com-assinatura-enterprise-pesquisa.md",
+     "issues/40-maestri-padrao-e-liberdade.md",
+     "issues/14-acesso-dos-agentes-decisao.md",
+     "exploracao/anexos/pesquisa-05-ligar-as-maquinas.md"
+    ],
+    "rank": 2
+   },
+   {
+    "n": 32,
+    "tipo": "P",
+    "lang": "pt",
+    "top5": [
+     "issues/48-teste-disco-e-banco-sem-o-obsidian.md",
+     "exploracao/anexos/pesquisa-24-sync-de-banco.md",
+     "issues/24-sync-de-banco-entre-duas-maquinas.md",
+     "exploracao/anexos/pesquisa-23-banco-com-vista.md",
+     "issues/33-revisao-do-sync-e-da-divergencia.md"
+    ],
+    "rank": null
+   },
+   {
+    "n": 33,
+    "tipo": "P",
+    "lang": "pt",
+    "top5": [
+     "issues/40-maestri-padrao-e-liberdade.md",
+     "exploracao/anexos/pesquisa-37-portas/porta-3-4-maestri.md",
+     "issues/30-spike-couchdb-livesync.md",
+     "exploracao/anexos/pesquisa-35-metodos-de-raiz/debate/r4-Astrolabio.md",
+     "issues/44-guarda-do-acervo-mods-e-hooks-pesquisa.md"
+    ],
+    "rank": 1
+   },
+   {
+    "n": 34,
+    "tipo": "P",
+    "lang": "pt",
+    "top5": [
+     "exploracao/anexos/varredura-1-canvas-multiagente.md",
+     "issues/43-acervo-do-maestro-pesquisa.md",
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/01-custo-e-inteligencia.md",
+     "issues/40-maestri-padrao-e-liberdade.md",
+     "exploracao/anexos/pesquisa-43-acervo-do-maestro.md"
+    ],
+    "rank": 2
+   },
+   {
+    "n": 35,
+    "tipo": "P",
+    "lang": "pt",
+    "top5": [
+     "exploracao/anexos/pesquisa-50-sintese.md",
+     "issues/50-pesquisa-ampla-lugares-e-mecanismos-de-busca.md",
+     "issues/49-preparar-freellmapi-para-a-pesquisa.md",
+     "issues/40-maestri-padrao-e-liberdade.md",
+     "exploracao/anexos/pesquisa-50-inventario.md"
+    ],
+    "rank": 1
+   },
+   {
+    "n": 36,
+    "tipo": "P",
+    "lang": "pt",
+    "top5": [
+     "issues/41-contrato-pelo-mcp-pesquisa.md",
+     "exploracao/anexos/pesquisa-37-portas/porta-7-cliente-mcp.md",
+     "exploracao/anexos/pesquisa-03-hub-no-wsl.md",
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/00-sintese.md",
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/01-custo-e-inteligencia.md"
+    ],
+    "rank": 1
+   },
+   {
+    "n": 37,
+    "tipo": "P",
+    "lang": "en",
+    "top5": [
+     "exploracao/anexos/pesquisa-23-banco-com-vista.md",
+     "issues/30-spike-couchdb-livesync.md",
+     "exploracao/anexos/pesquisa-47-disco-e-banco-sem-o-obsidian.md",
+     "exploracao/anexos/pesquisa-37-portas/porta-7-cliente-mcp.md",
+     "exploracao/anexos/pesquisa-50-inventario.md"
+    ],
+    "rank": 2
+   },
+   {
+    "n": 38,
+    "tipo": "P",
+    "lang": "en",
+    "top5": [
+     "exploracao/anexos/pesquisa-37-portas/porta-6-claude-sem-disco.md",
+     "exploracao/anexos/pesquisa-50-inventario.md",
+     "exploracao/anexos/pesquisa-50-sintese.md",
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/01-custo-e-inteligencia.md",
+     "exploracao/anexos/pesquisa-21-varredura-busca.md"
+    ],
+    "rank": 3
+   },
+   {
+    "n": 39,
+    "tipo": "P",
+    "lang": "en",
+    "top5": [
+     "armis-docs/guia-tecnico/esqueleto.md",
+     "armis-docs/configuracoes-aplicadas/README.md",
+     "exploracao/anexos/pesquisa-37-portas/porta-7-cliente-mcp.md",
+     "armis-docs/guia-tecnico/README.md",
+     "exploracao/anexos/pesquisa-46-copilot-enterprise.md"
+    ],
+    "rank": 2
+   },
+   {
+    "n": 40,
+    "tipo": "P",
+    "lang": "en",
+    "top5": [
+     "exploracao/anexos/pesquisa-50-inventario.md",
+     "exploracao/anexos/pesquisa-19-zvec-grep.md",
+     "exploracao/anexos/pesquisa-39-beneficios-claude-code/01-custo-e-inteligencia.md",
+     "exploracao/anexos/pesquisa-21-varredura-busca.md",
+     "exploracao/anexos/pesquisa-50-sintese.md"
+    ],
+    "rank": 5
+   }
+  ]
+ }
+}

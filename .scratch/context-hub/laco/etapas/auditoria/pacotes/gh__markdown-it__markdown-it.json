@@ -1,0 +1,91 @@
+{
+ "chave": "gh:markdown-it/markdown-it",
+ "nomes": [
+  "markdown-it",
+  "Markdown-It",
+  "Markdown It",
+  "Markdown-it",
+  "Fuse.js-Text-Parser",
+  "Markdown-it (Frontmatter parsing)",
+  "FrontmatterParser",
+  "MCP (Markdown Content Protocol)"
+ ],
+ "urls": [
+  "https://github.com/markdown-it/markdown-it",
+  "https://markdown-it.github.io/"
+ ],
+ "readme_cortado": false,
+ "readme": "# markdown-it\n\n[![CI](https://github.com/markdown-it/markdown-it/actions/workflows/ci.yml/badge.svg)](https://github.com/markdown-it/markdown-it/actions/workflows/ci.yml)\n[![NPM version](https://img.shields.io/npm/v/markdown-it.svg?style=flat)](https://www.npmjs.org/package/markdown-it)\n[![Coverage Status](https://coveralls.io/repos/markdown-it/markdown-it/badge.svg?branch=master&service=github)](https://coveralls.io/github/markdown-it/markdown-it?branch=master)\n\n> Markdown parser done right. Fast and easy to extend.\n\n__[Live demo](https://markdown-it.github.io)__\n\n- Follows the [CommonMark spec](http://spec.commonmark.org/) + adds syntax extensions & sugar (URL autolinking, typographer).\n- Configurable syntax! You can add new rules and even replace existing ones.\n- High speed.\n- Safe by default.\n- Community-written __[plugins](https://www.npmjs.org/browse/keyword/markdown-it-plugin)__\n  and [other packages](https://www.npmjs.org/browse/keyword/markdown-it) on npm.\n\n\n> [!NOTE]\n> If you are upgrading to v15, see the [migration guide](docs/migration/migration_v15.md).\n\n### [Documentation >>](https://markdown-it.github.io/markdown-it/)\n\n\n##### Install (node.js):\n\n```bash\nnpm install markdown-it\n```\n\nFor a quick look at `dist/` folder contents, see <https://unpkg.com/markdown-it/>.\nFor browser you can use unpkg.com, esm.sh or any other CDN, which mirror npm\nregistry.\n\n\n##### Usage\n\n```js\nimport MarkdownIt from 'markdown-it'\nconst md = new MarkdownIt()\nconst result = md.render('# markdown-it rulezz!')\n```\n\n[More usage examples](docs/usage.md).\n",
+ "fonte": "readme",
+ "respostas": [
+  {
+   "por": "nemotron-3-super-120b",
+   "resposta": {
+    "serve": "stack",
+    "role": "Parse markdown notes to extract plain text for indexing and search",
+    "place": [
+     "library"
+    ],
+    "mechanism": [
+     "n/a"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "unknown",
+    "doubt": false,
+    "evidence": "\"Markdown parser done right. Fast and easy to extend.\""
+   }
+  },
+  {
+   "por": "voxtral-small",
+   "resposta": {
+    "serve": "stack",
+    "role": "Markdown parsing and rendering",
+    "place": [
+     "disk",
+     "library"
+    ],
+    "mechanism": [
+     "n/a"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "stable",
+    "doubt": false,
+    "evidence": "Markdown parser done right. Fast and easy to extend."
+   }
+  }
+ ],
+ "conferencia_sonnet": {
+  "chave": "gh:markdown-it/markdown-it",
+  "modelo": "claude-sonnet-5-5",
+  "ts": "2026-10-13T12:00:00Z",
+  "resultado": "confirma",
+  "conferencia": {
+   "resultado": "confirma",
+   "final": {
+    "serve": "stack",
+    "role": "Markdown parser (CommonMark, extensible) usable to parse notes before indexing",
+    "place": [
+     "library"
+    ],
+    "mechanism": [
+     "n/a"
+    ],
+    "mcp": "no",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "unknown",
+    "doubt": false,
+    "evidence": "Markdown parser done right. Fast and easy to extend."
+   },
+   "o_que_mudou": [],
+   "nota": "Biblioteca JS de parsing de Markdown; util como peca de indexacao, nao e camada de busca."
+  }
+ }
+}

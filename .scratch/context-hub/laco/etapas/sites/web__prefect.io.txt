@@ -1,0 +1,269 @@
+Skip to content
+
+Start with one flow.Scale to millions.
+Durable orchestration for data, ML, and agents.
+Start freeBook a demowith our team
+Looking for managed MCP? Visit FastMCP Gateway
+
+Trusted in Production by:
+
+Case study →Case study →Case study →Case study →Case study →Case study →
+
+Case study →
+Case study →Case study →Case study →
+
+Case study →Case study →Case study →Case study →Case study →Case study →
+
+Case study →
+Case study →Case study →Case study →
+
+Enterprise GradeSOC 2 Type IIHIPAAGDPRHybrid & VPC99.9% uptime
+
+One platformfrom ML to AI
+Data pipelinesMLDurable executionAgentsEnterprise
+
+Data you can depend on
+Replace brittle cron jobs with pipelines that heal themselves, so your data always arrives on time.
+</> flow.py
+
+from prefect import flow, task
+
+@task(retries=3)
+def extract(source):
+ ...
+
+@flow
+def daily_revenue_elt():
+ load(transform(extract("warehouse")))
+
+Deployments / daily_revenue_elt · k8s-prodRunning · 0:00
+
+Success rate
+99.2%▲ +0.3%
+
+Avg duration
+1.4s▼ −0.2s
+
+Runs · 24h
+2,182▲ +8.4%
+
+p95 latency
+4.1s▲ +0.4s
+
+Task timeline6 tasks
+
+ingest3s
+normalize6s
+validate5s
+enrich13s
+score5s
+load3s
+
+0:000:100:200:30
+
+Teams ship faster on Prefect
+From startups to enterprises, teams trust Prefect with the workflows their businesses depend on.
+
+How Ramp moved critical data workflows to PrefectWatch
+
+How WHOOP cut production incidents by 75%Watch
+
+How Barstool Sports Scaled Media Data Operations with Prefect
+
+Cash App Gains Flexibility in Machine Learning Workflows with Prefect
+
+How Kepler Cut Pipeline Delivery from Weeks to Days with Prefect
+
+Snorkel AI
+How Snorkel AI Reliably Executes Thousands of Daily Workflows with Prefect Open Source
+
+How Seven.One Entertainment Orchestrates Data Pipelines with Prefect
+
+How Flatiron Health Orchestrates Cancer Research Data Pipelines
+See all customer stories
+
+Annotate your code.
+Add @flow to your Python functions for state, logging, and automatic retries. No new framework to learn.
+
+etl_pipeline.py
+
+@flow(retries=3)
+def process_data():
+ data = extract()
+ transform(data)
+ load(data)
+
+Our place or yours.
+Run on managed compute, keep execution inside your own VPC, or anywhere in between. The same code deploys anywhere.
+
+deploy daily_revenue
+
+Prefect Cloudfully managed
+or
+
+Your VPCyour code never leaves
+
+Runs you can trust.
+Prefect executes your flows on your infrastructure, retries failures, scales out, and tracks every task, so runs recover on their own.
+
+daily-revenue/running
+
+extract0.3s
+
+transform.map
+
+load
+
+Back to building.
+Skip building your own cron-and-Slack monitoring stack. One UI shows every run and flags what's late or failed, so you get your engineering hours back.
+
+integration-tests
+Search workspace⌘KHelp
+
+Home
+ Past 7 days
+
+Flow Runs123,066 total
+
+4,074
+9
+110,923
+1
+8,059
+
+Active Work Pools
+kubernetes-prd-internal-tools96.26% completed
+managed-work-pool100% completed
+
+etl_pipeline.py
+
+@flow(retries=3)
+def process_data():
+ data = extract()
+ transform(data)
+ load(data)
+
+deploy daily_revenue
+
+Prefect Cloudfully managed
+or
+
+Your VPCyour code never leaves
+
+daily-revenue/running
+
+extract0.3s
+
+transform.map
+
+load
+
+integration-tests
+Search workspace⌘KHelp
+
+Home
+ Past 7 days
+
+Flow Runs123,066 total
+
+4,074
+9
+110,923
+1
+8,059
+
+Active Work Pools
+kubernetes-prd-internal-tools96.26% completed
+managed-work-pool100% completed
+
+Annotate your code.
+Add @flow to your Python functions for state, logging, and automatic retries. No new framework to learn.
+Next
+
+Never fly blind in production.
+See every run across all your teams and infrastructure, and catch problems before they spread.
+
+Observability
+Every run, log, and state across all teams, in one view.Scale
+Thousands of parallel runs, with global concurrency limits.Scheduling
+Cron, event-driven, and backfills, recovered automatically.
+
+integration-tests
+Search workspace⌘KHelp
+
+Deployments / daily-revenue
+ Past 7 days
+
+2,182
+Runs
+
+<1%
+Failure rate
+
+2s
+Duration
+
+0s
+Lateness
+
+0
+SLA violations
+
+110MB
+Max memory
+
+revenue-etlCron ScheduleCompleted
+ml-trainingCron ScheduleCompleted
+
+Run anywhere
+Kubernetes, ECS, your own VPC, or serverless.Automation & alerts
+Alerts on failures, SLA misses, and late runs.Priority support
+A 30-minute response SLA on every enterprise plan.
+
+Open source at the core
+Prefect Cloud runs on the open-source Prefect framework. We also build FastMCP, the open-source framework for building MCP servers that connect agents to your tools and data.
+
+Prefect
+The orchestration layer for workflows
+Turn any Python function into a durable, observable workflow with one decorator.
+
+pipeline.py
+
+from prefect import flow
+
+@flow(retries=3)
+def daily_report():
+ data = extract()
+ load(transform(data))
+ 6.9M+/mo
+
+yup, that's us too
+
+FastMCP
+The context layer for agents
+Build MCP servers in minutes and connect agents to any system.
+
+server.py
+
+from fastmcp import FastMCP
+
+mcp = FastMCP("agent-tools")
+
+@mcp.tool
+def search(query):
+ return db.query(query)
+ 53M+/mo
+
+Questions answered
+What is Prefect?Prefect is a workflow orchestration platform for data, ML, and agents. You write workflows as plain Python, and Prefect runs them durably in production: scheduling, retries, caching, and recovery are part of the platform rather than code you maintain. The open-source framework and Prefect Cloud share the same core engine.
+Can my coding agent write Prefect workflows?Yes. A Prefect workflow is ordinary Python with two decorators, so any coding agent that writes Python can produce a working flow, add retries, and deploy it without learning a DSL. Your engineers review and own the result, and the same is true for humans: if you can write a Python function, you can ship a Prefect flow.
+How is Prefect different from Airflow?Three differences do most of the work. Workflows are plain Python functions that can branch, loop, and create tasks at runtime, rather than DAGs declared up front. Durable execution is built into the engine, so retries, state, and crash recovery are not code you write. And with Prefect Cloud there is no scheduler for your team to host, upgrade, or page anyone about.
+Do I have to run any infrastructure?Only if you want to. Prefect Serverless runs flows on managed compute, so you can start with zero infrastructure. Teams with stricter requirements use the hybrid model instead: lightweight workers inside your environment run your code where your data already lives, while the control plane handles scheduling and visibility. That split is what clears most security reviews.
+Is Prefect open source?Yes. The Prefect framework is open source under the Apache 2.0 license, and it is the same engine Prefect Cloud runs. Cloud adds the managed control plane, enterprise authentication, and scale on top; it does not fork the framework.
+What does the Dagster Labs acquisition mean for Prefect?Prefect acquired Dagster Labs in July 2026, bringing together two leading orchestration products. Nothing changes for users of either product: Dagster keeps its name and open-source license, and no action is required of any customer. The full announcement is at prefect.io/prefect-acquires-dagster.
+
+Your first flow, in minutes.
+
+schedule·retry·observe·deploy·cache·trigger·backfill·alert·
+Start freeBook a demowith our team
+Looking for managed MCP? Visit FastMCP Gateway

@@ -1,0 +1,48 @@
+{
+ "nome": "Annoy",
+ "nome_canonico": "Annoy (spotify/annoy)",
+ "chave": "gh:spotify/annoy",
+ "url": "https://github.com/spotify/annoy",
+ "serve": "search",
+ "identidade": "ok: as URLs facebookresearch/annoy e spacy-org/annoy são espelhos/erros; o projeto canônico é spotify/annoy. Não é busca de texto: é índice de vizinhos aproximados.",
+ "windows": "yes: CI com windows-latest na matriz (Python 3.7-3.13) e README diz suportar Windows; PyPI 1.17.3 só tem wheel macOS arm64 e sdist, então no Windows compila de fonte (precisa de compilador C++) ou usa conda-forge.",
+ "mcp": "no",
+ "portugues": "nao_aplicavel: não trata texto, só vetores (multilíngue depende do modelo de embeddings usado).",
+ "markdown_frontmatter": "no: não indexa Markdown; indexa vetores numéricos.",
+ "atualizacao": "manual: índice é construído (build) e fica imutável; para adicionar item é preciso reconstruir.",
+ "embeddings_endpoint": "nao_usa_embeddings: recebe vetores prontos, de qualquer fonte (inclusive gateway OpenAI-compatível).",
+ "recursos": "C++ com bindings Python; índice em arquivo mapeado em memória (mmap), compartilhável entre processos, 'Small memory usage'; sem número na fonte.",
+ "licenca": "Apache-2.0",
+ "ultimo_release": "1.17.3, 2023-06-14 (PyPI)",
+ "atividade": "último commit em 2025-10-29 (feed de commits do GitHub)",
+ "maturidade": "stable (sem aviso de arquivado)",
+ "encaixe": "Biblioteca de vetores dentro do MCP do banco, em cada máquina, para ANN em disco via mmap. Não é busca pronta: exige gerar embeddings, reconstruir o índice e compilar no Windows.",
+ "evidencias": [
+  {
+   "campo": "windows",
+   "url": "https://github.com/spotify/annoy",
+   "citacao": "The code should support Windows"
+  },
+  {
+   "campo": "windows",
+   "url": "https://raw.githubusercontent.com/spotify/annoy/master/.github/workflows/ci.yml",
+   "citacao": "os: [\"ubuntu-20.04\", \"macos-latest\", \"windows-latest\"]"
+  },
+  {
+   "campo": "recursos",
+   "url": "https://github.com/spotify/annoy",
+   "citacao": "creates large read-only file-based data structures ... mmapped into memory"
+  },
+  {
+   "campo": "ultimo_release",
+   "url": "https://pypi.org/project/annoy/",
+   "citacao": "annoy 1.17.3, upload 2023-06-14 (wheel macosx_11_0_arm64 e tar.gz)"
+  }
+ ],
+ "nao_verificado": [
+  "mcp",
+  "memória em números",
+  "hash do último commit (só a data do feed)"
+ ],
+ "area": null
+}

@@ -1,0 +1,2211 @@
+Skip to main content
+
+ Back to top
+
+Dask documentation
+
+ Search
+ Ctrl+K
+
+.rst
+
+.pdf
+
+System Settings
+
+Light
+
+Dark
+
+Dask DataFrame API with Logical Query Planning
+
+ Contents 
+
+Dask DataFrame API with Logical Query Planning#
+
+DataFrame#
+
+DataFrame(expr)
+
+DataFrame-like Expr Collection.
+
+DataFrame.abs()
+
+Return a Series/DataFrame with absolute numeric value of each element.
+
+DataFrame.add(other[, axis, level, fill_value])
+
+DataFrame.align(other[, join, axis, fill_value])
+
+Align two objects on their axes with the specified join method.
+
+DataFrame.all([axis, skipna, split_every])
+
+Return whether all elements are True, potentially over an axis.
+
+DataFrame.any([axis, skipna, split_every])
+
+Return whether any element is True, potentially over an axis.
+
+DataFrame.apply(function, *args[, meta, axis])
+
+Parallel version of pandas.DataFrame.apply
+
+DataFrame.assign(**pairs)
+
+Assign new columns to a DataFrame.
+
+DataFrame.astype(dtypes)
+
+Cast a pandas object to a specified dtype dtype.
+
+DataFrame.bfill([axis, limit])
+
+Fill NA/NaN values by using the next valid observation to fill the gap.
+
+DataFrame.categorize([columns, index, ...])
+
+Convert columns of the DataFrame to category dtype.
+
+DataFrame.columns
+
+DataFrame.compute(**kwargs)
+
+Compute this dask collection
+
+DataFrame.copy([deep])
+
+Make a copy of the dataframe
+
+DataFrame.corr([method, min_periods, ...])
+
+Compute pairwise correlation of columns, excluding NA/null values.
+
+DataFrame.count([axis, numeric_only, ...])
+
+Count non-NA cells for each column or row.
+
+DataFrame.cov([min_periods, numeric_only, ...])
+
+Compute pairwise covariance of columns, excluding NA/null values.
+
+DataFrame.cummax([axis, skipna])
+
+Return cumulative maximum over a DataFrame or Series axis.
+
+DataFrame.cummin([axis, skipna])
+
+Return cumulative minimum over a DataFrame or Series axis.
+
+DataFrame.cumprod([axis, skipna])
+
+Return cumulative product over a DataFrame or Series axis.
+
+DataFrame.cumsum([axis, skipna])
+
+Return cumulative sum over a DataFrame or Series axis.
+
+DataFrame.describe([split_every, ...])
+
+Generate descriptive statistics.
+
+DataFrame.diff([periods, axis])
+
+First discrete difference of element.
+
+DataFrame.div(other[, axis, level, fill_value])
+
+DataFrame.divide(other[, axis, level, ...])
+
+DataFrame.divisions
+
+Tuple of npartitions + 1 values, in ascending order, marking the lower/upper bounds of each partition's index.
+
+DataFrame.drop([labels, axis, columns, errors])
+
+Drop specified labels from rows or columns.
+
+DataFrame.drop_duplicates([subset, ...])
+
+Return DataFrame with duplicate rows removed.
+
+DataFrame.dropna([how, subset, thresh])
+
+Remove missing values.
+
+DataFrame.dtypes
+
+Return data types
+
+DataFrame.eq(other[, level, axis])
+
+DataFrame.eval(expr, **kwargs)
+
+Evaluate a string describing operations on DataFrame columns.
+
+DataFrame.explode(column)
+
+Transform each element of a list-like to a row, replicating index values.
+
+DataFrame.ffill([axis, limit])
+
+Fill NA/NaN values by propagating the last valid observation to next valid.
+
+DataFrame.fillna([value, axis])
+
+Fill NA/NaN values with value.
+
+DataFrame.floordiv(other[, axis, level, ...])
+
+DataFrame.ge(other[, level, axis])
+
+DataFrame.get_partition(n)
+
+Get a dask DataFrame/Series representing the nth partition.
+
+DataFrame.groupby(by[, group_keys, sort, ...])
+
+Group DataFrame using a mapper or by a Series of columns.
+
+DataFrame.gt(other[, level, axis])
+
+DataFrame.head([n, npartitions, compute])
+
+First n rows of the dataset
+
+DataFrame.idxmax([axis, skipna, ...])
+
+Return index of first occurrence of maximum over requested axis.
+
+DataFrame.idxmin([axis, skipna, ...])
+
+Return index of first occurrence of minimum over requested axis.
+
+DataFrame.iloc
+
+Purely integer-location based indexing for selection by position.
+
+DataFrame.index
+
+Return dask Index instance
+
+DataFrame.info([buf, verbose, memory_usage])
+
+Concise summary of a Dask DataFrame
+
+DataFrame.isin(values)
+
+Whether each element in the DataFrame is contained in values.
+
+DataFrame.isna()
+
+Detect missing values.
+
+DataFrame.isnull()
+
+DataFrame.isnull is an alias for DataFrame.isna.
+
+DataFrame.items()
+
+Iterate over (column name, Series) pairs.
+
+DataFrame.iterrows()
+
+Iterate over DataFrame rows as (index, Series) pairs.
+
+DataFrame.itertuples([index, name])
+
+Iterate over DataFrame rows as namedtuples.
+
+DataFrame.join(other[, on, how, lsuffix, ...])
+
+Join columns of another DataFrame.
+
+DataFrame.known_divisions
+
+Whether the divisions are known.
+
+DataFrame.le(other[, level, axis])
+
+DataFrame.loc
+
+Purely label-location based indexer for selection by label.
+
+DataFrame.lt(other[, level, axis])
+
+DataFrame.map_partitions(func, *args[, ...])
+
+Apply a Python function to each partition
+
+DataFrame.mask(cond[, other])
+
+Replace values where the condition is True.
+
+DataFrame.max([axis, skipna, numeric_only, ...])
+
+Return the maximum of the values over the requested axis.
+
+DataFrame.mean([axis, skipna, numeric_only, ...])
+
+Return the mean of the values over the requested axis.
+
+DataFrame.median([axis, numeric_only])
+
+Return the median of the values over the requested axis.
+
+DataFrame.median_approximate([axis, method, ...])
+
+Return the approximate median of the values over the requested axis.
+
+DataFrame.melt([id_vars, value_vars, ...])
+
+Unpivot DataFrame from wide to long format, optionally leaving identifiers set.
+
+DataFrame.memory_usage([deep, index])
+
+Return the memory usage of each column in bytes.
+
+DataFrame.memory_usage_per_partition([...])
+
+Return the memory usage of each partition
+
+DataFrame.merge(right[, how, on, left_on, ...])
+
+Merge the DataFrame with another DataFrame
+
+DataFrame.min([axis, skipna, numeric_only, ...])
+
+Return the minimum of the values over the requested axis.
+
+DataFrame.mod(other[, axis, level, fill_value])
+
+DataFrame.mode([dropna, split_every, ...])
+
+Get the mode(s) of each element along the selected axis.
+
+DataFrame.mul(other[, axis, level, fill_value])
+
+DataFrame.ndim
+
+Return dimensionality
+
+DataFrame.ne(other[, level, axis])
+
+DataFrame.nlargest([n, columns, split_every])
+
+Return the first n rows ordered by columns in descending order.
+
+DataFrame.npartitions
+
+Return number of partitions
+
+DataFrame.nsmallest([n, columns, split_every])
+
+Return the first n rows ordered by columns in ascending order.
+
+DataFrame.partitions
+
+Slice dataframe by partitions
+
+DataFrame.persist([fuse])
+
+Persist this dask collection into memory
+
+DataFrame.pivot_table(index, columns, values)
+
+Create a spreadsheet-style pivot table as a DataFrame.
+
+DataFrame.pop(item)
+
+Return item and drop it from DataFrame.
+
+DataFrame.pow(other[, axis, level, fill_value])
+
+DataFrame.prod([axis, skipna, numeric_only, ...])
+
+Return the product of the values over the requested axis.
+
+DataFrame.quantile([q, axis, numeric_only, ...])
+
+Approximate row-wise and precise column-wise quantiles of DataFrame
+
+DataFrame.query(expr, **kwargs)
+
+Filter dataframe with complex expression
+
+DataFrame.radd(other[, axis, level, fill_value])
+
+DataFrame.random_split(frac[, random_state, ...])
+
+Pseudorandomly split dataframe into different pieces row-wise
+
+DataFrame.rdiv(other[, axis, level, fill_value])
+
+DataFrame.rename([index, columns])
+
+Rename columns or index labels.
+
+DataFrame.rename_axis([mapper, index, ...])
+
+Set the name of the axis for the index or columns.
+
+DataFrame.repartition([divisions, ...])
+
+Repartition a collection
+
+DataFrame.replace([to_replace, value, regex])
+
+Replace values given in to_replace with value.
+
+DataFrame.resample(rule[, closed, label])
+
+Resample time-series data.
+
+DataFrame.reset_index([drop])
+
+Reset the index to the default index.
+
+DataFrame.rfloordiv(other[, axis, level, ...])
+
+DataFrame.rmod(other[, axis, level, fill_value])
+
+DataFrame.rmul(other[, axis, level, fill_value])
+
+DataFrame.round([decimals])
+
+Round numeric columns in a DataFrame to a variable number of decimal places.
+
+DataFrame.rpow(other[, axis, level, fill_value])
+
+DataFrame.rsub(other[, axis, level, fill_value])
+
+DataFrame.rtruediv(other[, axis, level, ...])
+
+DataFrame.sample([n, frac, replace, ...])
+
+Random sample of items
+
+DataFrame.select_dtypes([include, exclude])
+
+Return a subset of the DataFrame's columns based on the column dtypes.
+
+DataFrame.sem([axis, skipna, ddof, ...])
+
+Return unbiased standard error of the mean over requested axis.
+
+DataFrame.set_index(other[, drop, sorted, ...])
+
+Set the DataFrame index (row labels) using an existing column.
+
+DataFrame.shape
+
+DataFrame.shuffle([on, ignore_index, ...])
+
+Rearrange DataFrame into new partitions
+
+DataFrame.size
+
+Size of the Series or DataFrame as a Delayed object.
+
+DataFrame.sort_values(by[, npartitions, ...])
+
+Sort the dataset by a single column.
+
+DataFrame.squeeze([axis])
+
+Squeeze 1 dimensional axis objects into scalars.
+
+DataFrame.std([axis, skipna, ddof, ...])
+
+Return sample standard deviation over requested axis.
+
+DataFrame.sub(other[, axis, level, fill_value])
+
+DataFrame.sum([axis, skipna, numeric_only, ...])
+
+Return the sum of the values over the requested axis.
+
+DataFrame.tail([n, compute])
+
+Last n rows of the dataset
+
+DataFrame.to_backend([backend])
+
+Move to a new DataFrame backend
+
+DataFrame.to_bag([index, format])
+
+Create a Dask Bag from a Series
+
+DataFrame.to_csv(filename, **kwargs)
+
+See dd.to_csv docstring for more information
+
+DataFrame.to_dask_array([lengths, meta, ...])
+
+Convert a dask DataFrame to a dask array.
+
+DataFrame.to_delayed([optimize_graph])
+
+Convert into a list of dask.delayed objects, one per partition.
+
+DataFrame.to_hdf(path_or_buf, key[, mode, ...])
+
+See dd.to_hdf docstring for more information
+
+DataFrame.to_html([max_rows])
+
+Render a DataFrame as an HTML table.
+
+DataFrame.to_json(filename, *args, **kwargs)
+
+See dd.to_json docstring for more information
+
+DataFrame.to_orc(path, *args, **kwargs)
+
+See dd.to_orc docstring for more information
+
+DataFrame.to_parquet(path, **kwargs)
+
+DataFrame.to_records([index, lengths])
+
+DataFrame.to_string([max_rows])
+
+Render a DataFrame to a console-friendly tabular output.
+
+DataFrame.to_sql(name, uri[, schema, ...])
+
+DataFrame.to_timestamp([freq, how])
+
+Cast PeriodIndex to DatetimeIndex of timestamps, at beginning of period.
+
+DataFrame.truediv(other[, axis, level, ...])
+
+DataFrame.values
+
+Return a dask.array of the values of this dataframe
+
+DataFrame.var([axis, skipna, ddof, ...])
+
+Return unbiased variance over requested axis.
+
+DataFrame.visualize([tasks])
+
+Visualize the expression or task graph
+
+DataFrame.where(cond[, other])
+
+Replace values where the condition is False.
+
+Series#
+
+Series(expr)
+
+Series-like Expr Collection.
+
+Series.add(other[, level, fill_value, axis])
+
+Series.align(other[, join, axis, fill_value])
+
+Align two objects on their axes with the specified join method.
+
+Series.all([axis, skipna, split_every])
+
+Return whether all elements are True, potentially over an axis.
+
+Series.any([axis, skipna, split_every])
+
+Return whether any element is True, potentially over an axis.
+
+Series.apply(function, *args[, meta, axis])
+
+Parallel version of pandas.Series.apply
+
+Series.astype(dtypes)
+
+Cast a pandas object to a specified dtype dtype.
+
+Series.autocorr([lag, split_every])
+
+Compute the lag-N autocorrelation.
+
+Series.between(left, right[, inclusive])
+
+Return boolean Series equivalent to left <= series <= right.
+
+Series.bfill([axis, limit])
+
+Fill NA/NaN values by using the next valid observation to fill the gap.
+
+Series.clear_divisions()
+
+Forget division information.
+
+Series.clip([lower, upper, axis])
+
+Trim values at input threshold(s).
+
+Series.compute(**kwargs)
+
+Compute this dask collection
+
+Series.copy([deep])
+
+Make a copy of the dataframe
+
+Series.corr(other[, method, min_periods, ...])
+
+Compute correlation with other Series, excluding missing values.
+
+Series.count([axis, numeric_only, split_every])
+
+Count non-NA cells for each column or row.
+
+Series.cov(other[, min_periods, split_every])
+
+Compute covariance with Series, excluding missing values.
+
+Series.cummax([axis, skipna])
+
+Return cumulative maximum over a DataFrame or Series axis.
+
+Series.cummin([axis, skipna])
+
+Return cumulative minimum over a DataFrame or Series axis.
+
+Series.cumprod([axis, skipna])
+
+Return cumulative product over a DataFrame or Series axis.
+
+Series.cumsum([axis, skipna])
+
+Return cumulative sum over a DataFrame or Series axis.
+
+Series.describe([split_every, percentiles, ...])
+
+Generate descriptive statistics.
+
+Series.diff([periods, axis])
+
+First discrete difference of element.
+
+Series.div(other[, level, fill_value, axis])
+
+Series.drop_duplicates([ignore_index, ...])
+
+Series.dropna()
+
+Return a new Series with missing values removed.
+
+Series.dtype
+
+Series.eq(other[, level, fill_value, axis])
+
+Series.explode()
+
+Transform each element of a list-like to a row.
+
+Series.ffill([axis, limit])
+
+Fill NA/NaN values by propagating the last valid observation to next valid.
+
+Series.fillna([value, axis])
+
+Fill NA/NaN values with value.
+
+Series.floordiv(other[, level, fill_value, axis])
+
+Series.ge(other[, level, fill_value, axis])
+
+Series.get_partition(n)
+
+Get a dask DataFrame/Series representing the nth partition.
+
+Series.groupby(by, **kwargs)
+
+Group Series using a mapper or by a Series of columns.
+
+Series.gt(other[, level, fill_value, axis])
+
+Series.head([n, npartitions, compute])
+
+First n rows of the dataset
+
+Series.idxmax([axis, skipna, numeric_only, ...])
+
+Return index of first occurrence of maximum over requested axis.
+
+Series.idxmin([axis, skipna, numeric_only, ...])
+
+Return index of first occurrence of minimum over requested axis.
+
+Series.isin(values)
+
+Whether each element in the DataFrame is contained in values.
+
+Series.isna()
+
+Detect missing values.
+
+Series.isnull()
+
+DataFrame.isnull is an alias for DataFrame.isna.
+
+Series.known_divisions
+
+Whether the divisions are known.
+
+Series.le(other[, level, fill_value, axis])
+
+Series.loc
+
+Purely label-location based indexer for selection by label.
+
+Series.lt(other[, level, fill_value, axis])
+
+Series.map(arg[, na_action, meta])
+
+Map values of Series according to an input mapping or function.
+
+Series.map_overlap(func, before, after, *args)
+
+Apply a function to each partition, sharing rows with adjacent partitions.
+
+Series.map_partitions(func, *args[, meta, ...])
+
+Apply a Python function to each partition
+
+Series.mask(cond[, other])
+
+Replace values where the condition is True.
+
+Series.max([axis, skipna, numeric_only, ...])
+
+Return the maximum of the values over the requested axis.
+
+Series.mean([axis, skipna, numeric_only, ...])
+
+Return the mean of the values over the requested axis.
+
+Series.median()
+
+Return the median of the values over the requested axis.
+
+Series.median_approximate([method])
+
+Return the approximate median of the values over the requested axis.
+
+Series.memory_usage([deep, index])
+
+Return the memory usage of the Series.
+
+Series.memory_usage_per_partition([index, deep])
+
+Return the memory usage of each partition
+
+Series.min([axis, skipna, numeric_only, ...])
+
+Return the minimum of the values over the requested axis.
+
+Series.mod(other[, level, fill_value, axis])
+
+Series.mul(other[, level, fill_value, axis])
+
+Series.nbytes
+
+Number of bytes
+
+Series.ndim
+
+Return dimensionality
+
+Series.ne(other[, level, fill_value, axis])
+
+Series.nlargest([n, split_every])
+
+Return the largest n elements.
+
+Series.notnull()
+
+DataFrame.notnull is an alias for DataFrame.notna.
+
+Series.nsmallest([n, split_every])
+
+Return the smallest n elements.
+
+Series.nunique([dropna, split_every, split_out])
+
+Return number of unique elements in the object.
+
+Series.nunique_approx([split_every])
+
+Approximate number of unique rows.
+
+Series.persist([fuse])
+
+Persist this dask collection into memory
+
+Series.pipe(func, *args, **kwargs)
+
+Apply chainable functions that expect Series or DataFrames.
+
+Series.pow(other[, level, fill_value, axis])
+
+Series.prod([axis, skipna, numeric_only, ...])
+
+Return the product of the values over the requested axis.
+
+Series.quantile([q, method])
+
+Approximate quantiles of Series
+
+Series.radd(other[, level, fill_value, axis])
+
+Series.random_split(frac[, random_state, ...])
+
+Pseudorandomly split dataframe into different pieces row-wise
+
+Series.rdiv(other[, level, fill_value, axis])
+
+Series.repartition([divisions, npartitions, ...])
+
+Repartition a collection
+
+Series.replace([to_replace, value, regex])
+
+Replace values given in to_replace with value.
+
+Series.rename(index[, sorted_index])
+
+Alter Series index labels or name
+
+Series.resample(rule[, closed, label])
+
+Resample time-series data.
+
+Series.reset_index([drop])
+
+Reset the index to the default index.
+
+Series.rolling(window, **kwargs)
+
+Provides rolling transformations.
+
+Series.round([decimals])
+
+Round numeric columns in a DataFrame to a variable number of decimal places.
+
+Series.sample([n, frac, replace, random_state])
+
+Random sample of items
+
+Series.sem([axis, skipna, ddof, ...])
+
+Return unbiased standard error of the mean over requested axis.
+
+Series.shape
+
+Return a tuple representing the dimensionality of the DataFrame.
+
+Series.shift([periods, freq, axis])
+
+Shift index by desired number of periods with an optional time freq.
+
+Series.size
+
+Size of the Series or DataFrame as a Delayed object.
+
+Series.std([axis, skipna, ddof, ...])
+
+Return sample standard deviation over requested axis.
+
+Series.sub(other[, level, fill_value, axis])
+
+Series.sum([axis, skipna, numeric_only, ...])
+
+Return the sum of the values over the requested axis.
+
+Series.to_backend([backend])
+
+Move to a new DataFrame backend
+
+Series.to_bag([index, format])
+
+Create a Dask Bag from a Series
+
+Series.to_csv(filename, **kwargs)
+
+See dd.to_csv docstring for more information
+
+Series.to_dask_array([lengths, meta, optimize])
+
+Convert a dask DataFrame to a dask array.
+
+Series.to_delayed([optimize_graph])
+
+Convert into a list of dask.delayed objects, one per partition.
+
+Series.to_frame([name])
+
+Convert Series to DataFrame.
+
+Series.to_hdf(path_or_buf, key[, mode, append])
+
+See dd.to_hdf docstring for more information
+
+Series.to_string([max_rows])
+
+Render a string representation of the Series.
+
+Series.to_timestamp([freq, how])
+
+Cast PeriodIndex to DatetimeIndex of timestamps, at beginning of period.
+
+Series.truediv(other[, level, fill_value, axis])
+
+Series.unique([split_every, split_out, ...])
+
+Return Series of unique values in the object.
+
+Series.value_counts([sort, ascending, ...])
+
+Return a Series containing counts of unique values.
+
+Series.values
+
+Return a dask.array of the values of this dataframe
+
+Series.var([axis, skipna, ddof, ...])
+
+Return unbiased variance over requested axis.
+
+Series.visualize([tasks])
+
+Visualize the expression or task graph
+
+Series.where(cond[, other])
+
+Replace values where the condition is False.
+
+Index#
+
+Index(expr)
+
+Index-like Expr Collection.
+
+Index.add(other[, level, fill_value, axis])
+
+Index.align(other[, join, axis, fill_value])
+
+Align two objects on their axes with the specified join method.
+
+Index.all([axis, skipna, split_every])
+
+Return whether all elements are True, potentially over an axis.
+
+Index.any([axis, skipna, split_every])
+
+Return whether any element is True, potentially over an axis.
+
+Index.apply(function, *args[, meta, axis])
+
+Parallel version of pandas.Series.apply
+
+Index.astype(dtypes)
+
+Cast a pandas object to a specified dtype dtype.
+
+Index.autocorr([lag, split_every])
+
+Compute the lag-N autocorrelation.
+
+Index.between(left, right[, inclusive])
+
+Return boolean Series equivalent to left <= series <= right.
+
+Index.bfill([axis, limit])
+
+Fill NA/NaN values by using the next valid observation to fill the gap.
+
+Index.clear_divisions()
+
+Forget division information.
+
+Index.clip([lower, upper, axis])
+
+Trim values at input threshold(s).
+
+Index.compute(**kwargs)
+
+Compute this dask collection
+
+Index.copy([deep])
+
+Make a copy of the dataframe
+
+Index.corr(other[, method, min_periods, ...])
+
+Compute correlation with other Series, excluding missing values.
+
+Index.count([split_every])
+
+Count non-NA cells for each column or row.
+
+Index.cov(other[, min_periods, split_every])
+
+Compute covariance with Series, excluding missing values.
+
+Index.cummax([axis, skipna])
+
+Return cumulative maximum over a DataFrame or Series axis.
+
+Index.cummin([axis, skipna])
+
+Return cumulative minimum over a DataFrame or Series axis.
+
+Index.cumprod([axis, skipna])
+
+Return cumulative product over a DataFrame or Series axis.
+
+Index.cumsum([axis, skipna])
+
+Return cumulative sum over a DataFrame or Series axis.
+
+Index.describe([split_every, percentiles, ...])
+
+Generate descriptive statistics.
+
+Index.diff([periods, axis])
+
+First discrete difference of element.
+
+Index.div(other[, level, fill_value, axis])
+
+Index.drop_duplicates([ignore_index, ...])
+
+Index.dropna()
+
+Return a new Series with missing values removed.
+
+Index.dtype
+
+Index.eq(other[, level, fill_value, axis])
+
+Index.explode()
+
+Transform each element of a list-like to a row.
+
+Index.ffill([axis, limit])
+
+Fill NA/NaN values by propagating the last valid observation to next valid.
+
+Index.fillna([value, axis])
+
+Fill NA/NaN values with value.
+
+Index.floordiv(other[, level, fill_value, axis])
+
+Index.ge(other[, level, fill_value, axis])
+
+Index.get_partition(n)
+
+Get a dask DataFrame/Series representing the nth partition.
+
+Index.groupby(by, **kwargs)
+
+Group Series using a mapper or by a Series of columns.
+
+Index.gt(other[, level, fill_value, axis])
+
+Index.head([n, npartitions, compute])
+
+First n rows of the dataset
+
+Index.is_monotonic_decreasing
+
+Return True if values in the object are monotonically decreasing.
+
+Index.is_monotonic_increasing
+
+Return True if values in the object are monotonically increasing.
+
+Index.isin(values)
+
+Whether each element in the DataFrame is contained in values.
+
+Index.isna()
+
+Detect missing values.
+
+Index.isnull()
+
+DataFrame.isnull is an alias for DataFrame.isna.
+
+Index.known_divisions
+
+Whether the divisions are known.
+
+Index.le(other[, level, fill_value, axis])
+
+Index.loc
+
+Purely label-location based indexer for selection by label.
+
+Index.lt(other[, level, fill_value, axis])
+
+Index.map(arg[, na_action, meta, is_monotonic])
+
+Map values using an input mapping or function.
+
+Index.map_overlap(func, before, after, *args)
+
+Apply a function to each partition, sharing rows with adjacent partitions.
+
+Index.map_partitions(func, *args[, meta, ...])
+
+Apply a Python function to each partition
+
+Index.mask(cond[, other])
+
+Replace values where the condition is True.
+
+Index.max([axis, skipna, numeric_only, ...])
+
+Return the maximum of the values over the requested axis.
+
+Index.median()
+
+Return the median of the values over the requested axis.
+
+Index.median_approximate([method])
+
+Return the approximate median of the values over the requested axis.
+
+Index.memory_usage([deep])
+
+Memory usage of the values.
+
+Index.memory_usage_per_partition([index, deep])
+
+Return the memory usage of each partition
+
+Index.min([axis, skipna, numeric_only, ...])
+
+Return the minimum of the values over the requested axis.
+
+Index.mod(other[, level, fill_value, axis])
+
+Index.mul(other[, level, fill_value, axis])
+
+Index.nbytes
+
+Number of bytes
+
+Index.ndim
+
+Return dimensionality
+
+Index.ne(other[, level, fill_value, axis])
+
+Index.nlargest([n, split_every])
+
+Return the largest n elements.
+
+Index.notnull()
+
+DataFrame.notnull is an alias for DataFrame.notna.
+
+Index.nsmallest([n, split_every])
+
+Return the smallest n elements.
+
+Index.nunique([dropna, split_every, split_out])
+
+Return number of unique elements in the object.
+
+Index.nunique_approx([split_every])
+
+Approximate number of unique rows.
+
+Index.persist([fuse])
+
+Persist this dask collection into memory
+
+Index.pipe(func, *args, **kwargs)
+
+Apply chainable functions that expect Series or DataFrames.
+
+Index.pow(other[, level, fill_value, axis])
+
+Index.quantile([q, method])
+
+Approximate quantiles of Series
+
+Index.radd(other[, level, fill_value, axis])
+
+Index.random_split(frac[, random_state, shuffle])
+
+Pseudorandomly split dataframe into different pieces row-wise
+
+Index.rdiv(other[, level, fill_value, axis])
+
+Index.rename(index[, sorted_index])
+
+Alter Series index labels or name
+
+Index.repartition([divisions, npartitions, ...])
+
+Repartition a collection
+
+Index.replace([to_replace, value, regex])
+
+Replace values given in to_replace with value.
+
+Index.resample(rule[, closed, label])
+
+Resample time-series data.
+
+Index.reset_index([drop])
+
+Reset the index to the default index.
+
+Index.rolling(window, **kwargs)
+
+Provides rolling transformations.
+
+Index.round([decimals])
+
+Round numeric columns in a DataFrame to a variable number of decimal places.
+
+Index.sample([n, frac, replace, random_state])
+
+Random sample of items
+
+Index.sem([axis, skipna, ddof, split_every, ...])
+
+Return unbiased standard error of the mean over requested axis.
+
+Index.shape
+
+Return a tuple representing the dimensionality of the DataFrame.
+
+Index.shift([periods, freq])
+
+Shift index by desired number of periods with an optional time freq.
+
+Index.size
+
+Size of the Series or DataFrame as a Delayed object.
+
+Index.sub(other[, level, fill_value, axis])
+
+Index.to_backend([backend])
+
+Move to a new DataFrame backend
+
+Index.to_bag([index, format])
+
+Create a Dask Bag from a Series
+
+Index.to_csv(filename, **kwargs)
+
+See dd.to_csv docstring for more information
+
+Index.to_dask_array([lengths, meta, optimize])
+
+Convert a dask DataFrame to a dask array.
+
+Index.to_delayed([optimize_graph])
+
+Convert into a list of dask.delayed objects, one per partition.
+
+Index.to_frame([index, name])
+
+Create a DataFrame with a column containing the Index.
+
+Index.to_hdf(path_or_buf, key[, mode, append])
+
+See dd.to_hdf docstring for more information
+
+Index.to_series([index, name])
+
+Create a Series with both index and values equal to the index keys.
+
+Index.to_string([max_rows])
+
+Render a string representation of the Series.
+
+Index.to_timestamp([freq, how])
+
+Cast PeriodIndex to DatetimeIndex of timestamps, at beginning of period.
+
+Index.truediv(other[, level, fill_value, axis])
+
+Index.unique([split_every, split_out, ...])
+
+Return Series of unique values in the object.
+
+Index.value_counts([sort, ascending, ...])
+
+Return a Series containing counts of unique values.
+
+Index.values
+
+Return a dask.array of the values of this dataframe
+
+Index.visualize([tasks])
+
+Visualize the expression or task graph
+
+Index.where(cond[, other])
+
+Replace values where the condition is False.
+
+Index.to_frame([index, name])
+
+Create a DataFrame with a column containing the Index.
+
+Accessors#
+
+Similar to pandas, Dask provides dtype-specific methods under various accessors.
+These are separate namespaces within Series that only apply to specific data types.
+
+Datetime Accessor#
+
+Methods
+
+Series.dt.ceil(freq[, ambiguous, nonexistent])
+
+Perform ceil operation on the data to the specified freq.
+
+Series.dt.floor(freq[, ambiguous, nonexistent])
+
+Perform floor operation on the data to the specified freq.
+
+Series.dt.isocalendar()
+
+Calculate year, week, and day according to the ISO 8601 standard.
+
+Series.dt.normalize()
+
+Convert times to midnight.
+
+Series.dt.round(freq[, ambiguous, nonexistent])
+
+Perform round operation on the data to the specified freq.
+
+Series.dt.strftime(date_format)
+
+Convert to Index using specified date_format.
+
+Attributes
+
+Series.dt.date
+
+Returns numpy array of python datetime.date objects.
+
+Series.dt.day
+
+The day of the datetime.
+
+Series.dt.day_of_week
+
+The day of the week with Monday=0, Sunday=6.
+
+Series.dt.day_of_year
+
+The ordinal day of the year.
+
+Series.dt.dayofweek
+
+The day of the week with Monday=0, Sunday=6.
+
+Series.dt.dayofyear
+
+The ordinal day of the year.
+
+Series.dt.days_in_month
+
+The number of days in the month.
+
+Series.dt.daysinmonth
+
+The number of days in the month.
+
+Series.dt.freq
+
+Tries to return a string representing a frequency generated by infer_freq.
+
+Series.dt.hour
+
+The hours of the datetime.
+
+Series.dt.is_leap_year
+
+Boolean indicator if the date belongs to a leap year.
+
+Series.dt.is_month_end
+
+Indicates whether the date is the last day of the month.
+
+Series.dt.is_month_start
+
+Indicates whether the date is the first day of the month.
+
+Series.dt.is_quarter_end
+
+Indicator for whether the date is the last day of a quarter.
+
+Series.dt.is_quarter_start
+
+Indicator for whether the date is the first day of a quarter.
+
+Series.dt.is_year_end
+
+Indicate whether the date is the last day of the year.
+
+Series.dt.is_year_start
+
+Indicate whether the date is the first day of a year.
+
+Series.dt.microsecond
+
+The microseconds of the datetime.
+
+Series.dt.minute
+
+The minutes of the datetime.
+
+Series.dt.month
+
+The month as January=1, December=12.
+
+Series.dt.nanosecond
+
+The nanoseconds of the datetime.
+
+Series.dt.quarter
+
+The quarter of the date.
+
+Series.dt.second
+
+The seconds of the datetime.
+
+Series.dt.time
+
+Returns numpy array of datetime.time objects.
+
+Series.dt.timetz
+
+Returns numpy array of datetime.time objects with timezones.
+
+Series.dt.tz
+
+Return the timezone.
+
+Series.dt.week
+
+The week ordinal of the year.
+
+Series.dt.weekday
+
+The day of the week with Monday=0, Sunday=6.
+
+Series.dt.weekofyear
+
+The week ordinal of the year.
+
+Series.dt.year
+
+The year of the datetime.
+
+String Accessor#
+
+Methods
+
+Series.str.capitalize()
+
+Convert strings in the Series/Index to be capitalized.
+
+Series.str.casefold()
+
+Convert strings in the Series/Index to be casefolded.
+
+Series.str.cat([others, sep, na_rep])
+
+Series.str.center(width[, fillchar])
+
+Pad left and right side of strings in the Series/Index.
+
+Series.str.contains(pat[, case, flags, na, ...])
+
+Test if pattern or regex is contained within a string of a Series or Index.
+
+Series.str.count(pat[, flags])
+
+Count occurrences of pattern in each string of the Series/Index.
+
+Series.str.decode(encoding[, errors, dtype])
+
+Decode character string in the Series/Index using indicated encoding.
+
+Series.str.encode(encoding[, errors])
+
+Encode character string in the Series/Index using indicated encoding.
+
+Series.str.endswith(pat[, na])
+
+Test if the end of each string element matches a pattern.
+
+Series.str.extract(pat[, flags, expand])
+
+Extract capture groups in the regex pat as columns in a DataFrame.
+
+Series.str.extractall(pat[, flags])
+
+Extract capture groups in the regex pat as columns in DataFrame.
+
+Series.str.find(sub[, start, end])
+
+Return lowest indexes in each strings in the Series/Index.
+
+Series.str.findall(pat[, flags])
+
+Find all occurrences of pattern or regular expression in the Series/Index.
+
+Series.str.fullmatch(pat[, case, flags, na])
+
+Determine if each string entirely matches a regular expression.
+
+Series.str.get(i)
+
+Extract element from each component at specified position or with specified key.
+
+Series.str.index(sub[, start, end])
+
+Return lowest indexes in each string in Series/Index.
+
+Series.str.isalnum()
+
+Check whether all characters in each string are alphanumeric.
+
+Series.str.isalpha()
+
+Check whether all characters in each string are alphabetic.
+
+Series.str.isdecimal()
+
+Check whether all characters in each string are decimal.
+
+Series.str.isdigit()
+
+Check whether all characters in each string are digits.
+
+Series.str.islower()
+
+Check whether all characters in each string are lowercase.
+
+Series.str.isnumeric()
+
+Check whether all characters in each string are numeric.
+
+Series.str.isspace()
+
+Check whether all characters in each string are whitespace.
+
+Series.str.istitle()
+
+Check whether all characters in each string are titlecase.
+
+Series.str.isupper()
+
+Check whether all characters in each string are uppercase.
+
+Series.str.join(sep)
+
+Join lists contained as elements in the Series/Index with passed delimiter.
+
+Series.str.len()
+
+Compute the length of each element in the Series/Index.
+
+Series.str.ljust(width[, fillchar])
+
+Pad right side of strings in the Series/Index.
+
+Series.str.lower()
+
+Convert strings in the Series/Index to lowercase.
+
+Series.str.lstrip([to_strip])
+
+Remove leading characters.
+
+Series.str.match(pat[, case, flags, na])
+
+Determine if each string starts with a match of a regular expression.
+
+Series.str.normalize(form)
+
+Return the Unicode normal form for the strings in the Series/Index.
+
+Series.str.pad(width[, side, fillchar])
+
+Pad strings in the Series/Index up to width.
+
+Series.str.partition([sep, expand])
+
+Split the string at the first occurrence of sep.
+
+Series.str.repeat(repeats)
+
+Duplicate each string in the Series or Index.
+
+Series.str.replace(pat[, repl, n, case, ...])
+
+Replace each occurrence of pattern/regex in the Series/Index.
+
+Series.str.rfind(sub[, start, end])
+
+Return highest indexes in each strings in the Series/Index.
+
+Series.str.rindex(sub[, start, end])
+
+Return highest indexes in each string in Series/Index.
+
+Series.str.rjust(width[, fillchar])
+
+Pad left side of strings in the Series/Index.
+
+Series.str.rpartition([sep, expand])
+
+Split the string at the last occurrence of sep.
+
+Series.str.rsplit([pat, n, expand])
+
+Series.str.rstrip([to_strip])
+
+Remove trailing characters.
+
+Series.str.slice([start, stop, step])
+
+Slice substrings from each element in the Series or Index.
+
+Series.str.split([pat, n, expand])
+
+Known inconsistencies: expand=True with unknown n will raise a NotImplementedError.
+
+Series.str.startswith(pat[, na])
+
+Test if the start of each string element matches a pattern.
+
+Series.str.strip([to_strip])
+
+Remove leading and trailing characters.
+
+Series.str.swapcase()
+
+Convert strings in the Series/Index to be swapcased.
+
+Series.str.title()
+
+Convert strings in the Series/Index to titlecase.
+
+Series.str.translate(table)
+
+Map all characters in the string through the given mapping table.
+
+Series.str.upper()
+
+Convert strings in the Series/Index to uppercase.
+
+Series.str.wrap(width[, expand_tabs, ...])
+
+Wrap strings in Series/Index at specified line width.
+
+Series.str.zfill(width)
+
+Pad strings in the Series/Index by prepending '0' characters.
+
+Categorical Accessor#
+
+Methods
+
+Series.cat.add_categories(new_categories)
+
+Add new categories.
+
+Series.cat.as_known(**kwargs)
+
+Ensure the categories in this series are known.
+
+Series.cat.as_ordered()
+
+Set the Categorical to be ordered.
+
+Series.cat.as_unknown()
+
+Ensure the categories in this series are unknown
+
+Series.cat.as_unordered()
+
+Set the Categorical to be unordered.
+
+Series.cat.remove_categories(removals)
+
+Remove the specified categories.
+
+Series.cat.remove_unused_categories()
+
+Removes categories which are not used
+
+Series.cat.rename_categories(new_categories)
+
+Rename categories.
+
+Series.cat.reorder_categories(new_categories)
+
+Reorder categories as specified in new_categories.
+
+Series.cat.set_categories(new_categories[, ...])
+
+Set the categories to the specified new categories.
+
+Attributes
+
+Series.cat.categories
+
+The categories of this categorical.
+
+Series.cat.codes
+
+The codes of this categorical.
+
+Series.cat.known
+
+Whether the categories are fully known
+
+Series.cat.ordered
+
+Whether the categories have an ordered relationship
+
+Groupby Operations#
+
+DataFrame Groupby#
+
+GroupBy.aggregate([arg, split_every, ...])
+
+Aggregate using one or more specified operations
+
+GroupBy.apply(func, *args[, meta, ...])
+
+Parallel version of pandas GroupBy.apply
+
+GroupBy.bfill([limit, shuffle_method])
+
+Backward fill the values.
+
+GroupBy.count(**kwargs)
+
+Compute count of group, excluding missing values.
+
+GroupBy.cumcount()
+
+Number each item in each group from 0 to the length of that group - 1.
+
+GroupBy.cumprod([numeric_only])
+
+Cumulative product for each group.
+
+GroupBy.cumsum([numeric_only])
+
+Cumulative sum for each group.
+
+GroupBy.ffill([limit, shuffle_method])
+
+Forward fill the values.
+
+GroupBy.get_group(key)
+
+Construct DataFrame from group with provided name.
+
+GroupBy.max([numeric_only])
+
+Compute max of group values.
+
+GroupBy.mean([numeric_only, split_out])
+
+Compute mean of groups, excluding missing values.
+
+GroupBy.min([numeric_only])
+
+Compute min of group values.
+
+GroupBy.size(**kwargs)
+
+Compute group sizes.
+
+GroupBy.std([ddof, split_every, split_out, ...])
+
+Compute standard deviation of groups, excluding missing values.
+
+GroupBy.sum([numeric_only, min_count])
+
+Compute sum of group values.
+
+GroupBy.var([ddof, split_every, split_out, ...])
+
+Compute variance of groups, excluding missing values.
+
+GroupBy.cov([ddof, split_every, split_out, ...])
+
+Compute pairwise covariance of columns, excluding NA/null values.
+
+GroupBy.corr([split_every, split_out, ...])
+
+Compute pairwise correlation of columns, excluding NA/null values.
+
+GroupBy.first([numeric_only, sort])
+
+Compute the first entry of each column within each group.
+
+GroupBy.last([numeric_only, sort])
+
+Compute the last entry of each column within each group.
+
+GroupBy.idxmin([split_every, split_out, ...])
+
+Return index of first occurrence of minimum over requested axis.
+
+GroupBy.idxmax([split_every, split_out, ...])
+
+Return index of first occurrence of maximum over requested axis.
+
+GroupBy.rolling(window[, min_periods, ...])
+
+Provides rolling transformations.
+
+GroupBy.transform(func[, meta, shuffle_method])
+
+Parallel version of pandas GroupBy.transform
+
+Series Groupby#
+
+SeriesGroupBy.aggregate([arg, split_every, ...])
+
+Aggregate using one or more specified operations
+
+SeriesGroupBy.apply(func, *args[, meta, ...])
+
+Parallel version of pandas GroupBy.apply
+
+SeriesGroupBy.bfill([limit, shuffle_method])
+
+Backward fill the values.
+
+SeriesGroupBy.count(**kwargs)
+
+Compute count of group, excluding missing values.
+
+SeriesGroupBy.cumcount()
+
+Number each item in each group from 0 to the length of that group - 1.
+
+SeriesGroupBy.cumprod([numeric_only])
+
+Cumulative product for each group.
+
+SeriesGroupBy.cumsum([numeric_only])
+
+Cumulative sum for each group.
+
+SeriesGroupBy.ffill([limit, shuffle_method])
+
+Forward fill the values.
+
+SeriesGroupBy.get_group(key)
+
+Construct DataFrame from group with provided name.
+
+SeriesGroupBy.max([numeric_only])
+
+Compute max of group values.
+
+SeriesGroupBy.mean([numeric_only, split_out])
+
+Compute mean of groups, excluding missing values.
+
+SeriesGroupBy.min([numeric_only])
+
+Compute min of group values.
+
+SeriesGroupBy.nunique([split_every, ...])
+
+Return number of unique elements in the group.
+
+SeriesGroupBy.size(**kwargs)
+
+Compute group sizes.
+
+SeriesGroupBy.std([ddof, split_every, ...])
+
+Compute standard deviation of groups, excluding missing values.
+
+SeriesGroupBy.sum([numeric_only, min_count])
+
+Compute sum of group values.
+
+SeriesGroupBy.var([ddof, split_every, ...])
+
+Compute variance of groups, excluding missing values.
+
+SeriesGroupBy.first([numeric_only, sort])
+
+Compute the first entry of each column within each group.
+
+SeriesGroupBy.last([numeric_only, sort])
+
+Compute the last entry of each column within each group.
+
+SeriesGroupBy.idxmin([split_every, ...])
+
+Return index of first occurrence of minimum over requested axis.
+
+SeriesGroupBy.idxmax([split_every, ...])
+
+Return index of first occurrence of maximum over requested axis.
+
+SeriesGroupBy.rolling(window[, min_periods, ...])
+
+Provides rolling transformations.
+
+SeriesGroupBy.transform(func[, meta, ...])
+
+Parallel version of pandas GroupBy.transform
+
+Custom Aggregation#
+
+Aggregation(name, chunk, agg[, finalize])
+
+User defined groupby-aggregation.
+
+Rolling Operations#
+
+Series.rolling(window, **kwargs)
+
+Provides rolling transformations.
+
+DataFrame.rolling(window, **kwargs)
+
+Provides rolling transformations.
+
+Rolling.apply(func, *args, **kwargs)
+
+Calculate the rolling custom aggregation function.
+
+Rolling.count(*args, **kwargs)
+
+Calculate the rolling count of non NaN observations.
+
+Rolling.kurt(*args, **kwargs)
+
+Calculate the rolling Fisher's definition of kurtosis without bias.
+
+Rolling.max(*args, **kwargs)
+
+Calculate the rolling maximum.
+
+Rolling.mean(*args, **kwargs)
+
+Calculate the rolling mean.
+
+Rolling.median(*args, **kwargs)
+
+Calculate the rolling median.
+
+Rolling.min(*args, **kwargs)
+
+Calculate the rolling minimum.
+
+Rolling.quantile(q, *args, **kwargs)
+
+Calculate the rolling quantile.
+
+Rolling.skew(*args, **kwargs)
+
+Calculate the rolling unbiased skewness.
+
+Rolling.std(*args, **kwargs)
+
+Calculate the rolling standard deviation.
+
+Rolling.sum(*args, **kwargs)
+
+Calculate the rolling sum.
+
+Rolling.var(*args, **kwargs)
+
+Calculate the rolling variance.
+
+Create DataFrames#
+
+read_csv(urlpath[, blocksize, ...])
+
+Read CSV files into a Dask.DataFrame
+
+read_table(urlpath[, blocksize, ...])
+
+Read delimited files into a Dask.DataFrame
+
+read_fwf(urlpath[, blocksize, ...])
+
+Read fixed-width files into a Dask.DataFrame
+
+read_parquet([path, columns, filters, ...])
+
+Read a Parquet file into a Dask DataFrame
+
+read_hdf(pattern, key[, start, stop, ...])
+
+Read HDF files into a Dask DataFrame
+
+read_json(url_path[, orient, lines, ...])
+
+Create a dataframe from a set of JSON files
+
+read_orc(path[, engine, columns, index, ...])
+
+Read dataframe from ORC file(s)
+
+read_sql_table(table_name, con, index_col[, ...])
+
+Read SQL database table into a DataFrame.
+
+read_sql_query(sql, con, index_col[, ...])
+
+Read SQL query into a DataFrame.
+
+read_sql(sql, con, index_col, **kwargs)
+
+Read SQL query or database table into a DataFrame.
+
+from_array(arr[, chunksize, columns, meta])
+
+Read any sliceable array into a Dask Dataframe
+
+from_dask_array(x[, columns, index, meta])
+
+Create a Dask DataFrame from a Dask Array.
+
+from_delayed(dfs[, meta, divisions, prefix, ...])
+
+Create Dask DataFrame from many Dask Delayed objects
+
+from_map(func, *iterables[, args, meta, ...])
+
+Create a DataFrame collection from a custom function map.
+
+from_pandas(data[, npartitions, sort, chunksize])
+
+Construct a Dask DataFrame from a Pandas DataFrame
+
+DataFrame.from_dict(data, *[, npartitions, ...])
+
+Construct a Dask DataFrame from a Python Dictionary
+
+Store DataFrames#
+
+to_csv(df, filename[, single_file, ...])
+
+Store Dask DataFrame to CSV files
+
+to_parquet(df, path[, compression, ...])
+
+Store Dask.dataframe to Parquet files
+
+to_hdf(df, path, key[, mode, append, ...])
+
+Store Dask Dataframe to Hierarchical Data Format (HDF) files
+
+to_records(df)
+
+Create Dask Array from a Dask Dataframe
+
+to_sql(df, name, uri[, schema, if_exists, ...])
+
+Store Dask Dataframe to a SQL table
+
+to_json(df, url_path[, orient, lines, ...])
+
+Write dataframe into JSON text files
+
+to_orc(df, path[, engine, write_index, ...])
+
+Store Dask.dataframe to ORC files
+
+Convert DataFrames#
+
+DataFrame.to_bag([index, format])
+
+Create a Dask Bag from a Series
+
+DataFrame.to_dask_array([lengths, meta, ...])
+
+Convert a dask DataFrame to a dask array.
+
+DataFrame.to_delayed([optimize_graph])
+
+Convert into a list of dask.delayed objects, one per partition.
+
+Reshape DataFrames#
+
+get_dummies(data[, prefix, prefix_sep, ...])
+
+Convert categorical variable into dummy/indicator variables.
+
+pivot_table(df, index, columns, values[, ...])
+
+Create a spreadsheet-style pivot table as a DataFrame.
+
+melt(frame[, id_vars, value_vars, var_name, ...])
+
+Concatenate DataFrames#
+
+DataFrame.merge(right[, how, on, left_on, ...])
+
+Merge the DataFrame with another DataFrame
+
+concat(dfs[, axis, join, ...])
+
+Concatenate DataFrames along rows.
+
+merge(left, right[, how, on, left_on, ...])
+
+Merge DataFrame or named Series objects with a database-style join.
+
+merge_asof(left, right[, on, left_on, ...])
+
+Perform a merge by key distance.
+
+Resampling#
+
+Resampler(obj, rule, **kwargs)
+
+Aggregate using one or more operations
+
+Resampler.agg(func, *args, **kwargs)
+
+Aggregate using one or more operations over the specified axis.
+
+Resampler.count()
+
+Compute count of group, excluding missing values.
+
+Resampler.first()
+
+Compute the first non-null entry of each column.
+
+Resampler.last()
+
+Compute the last non-null entry of each column.
+
+Resampler.max()
+
+Compute max value of group.
+
+Resampler.mean()
+
+Compute mean of groups, excluding missing values.
+
+Resampler.median()
+
+Compute median of groups, excluding missing values.
+
+Resampler.min()
+
+Compute min value of group.
+
+Resampler.nunique()
+
+Return number of unique elements in the group.
+
+Resampler.ohlc()
+
+Compute open, high, low and close values of a group, excluding missing values.
+
+Resampler.prod()
+
+Compute prod of group values.
+
+Resampler.quantile()
+
+Return value at the given quantile.
+
+Resampler.sem()
+
+Compute standard error of the mean of groups, excluding missing values.
+
+Resampler.size()
+
+Compute group sizes.
+
+Resampler.std()
+
+Compute standard deviation of groups, excluding missing values.
+
+Resampler.sum()
+
+Compute sum of group values.
+
+Resampler.var()
+
+Compute variance of groups, excluding missing values.
+
+Dask Metadata#
+
+make_meta(x[, index, parent_meta])
+
+This method creates meta-data based on the type of x, and parent_meta if supplied.
+
+Query Planning and Optimization#
+
+DataFrame.explain([stage, format])
+
+Create a graph representation of the Expression.
+
+DataFrame.visualize([tasks])
+
+Visualize the expression or task graph
+
+DataFrame.analyze([filename, format])
+
+Outputs statistics about every node in the expression.
+
+Other functions#
+
+compute(*args[, traverse, optimize_graph, ...])
+
+Compute several dask collections at once.
+
+map_partitions(func, *args[, meta, ...])
+
+Apply Python function on each DataFrame partition.
+
+map_overlap(func, df, before, after, *args)
+
+Apply a function to each partition, sharing rows with adjacent partitions.
+
+to_datetime(arg[, errors, dayfirst, ...])
+
+Convert argument to datetime.
+
+to_numeric(arg[, errors, downcast, meta])
+
+Convert argument to a numeric type.
+
+to_timedelta(arg[, unit, errors])
+
+Convert argument to timedelta.
+
+ Contents

@@ -1,0 +1,116 @@
+Skip to content
+
+Python-Markdown§
+
+This is a Python implementation of John Gruber’s
+Markdown.
+It is almost completely compliant with the reference implementation,
+though there are a few very minor differences. See John’s
+Syntax Documentation
+for the syntax rules.
+
+To get started, see the installation instructions, the library
+reference, and the command line interface.
+
+Goals§
+
+The Python-Markdown project is developed with the following goals in mind:
+
+Maintain a Python library (with an optional CLI wrapper) suited to use in web
+ server environments (never raise an exception, never write to stdout, etc.) as
+ an implementation of the markdown parser that follows the
+ syntax rules and the behavior of the original (markdown.pl)
+ implementation as reasonably as possible (see differences for
+ a few exceptions).
+
+Provide an Extension API which makes it possible
+ to change and/or extend the behavior of the parser.
+
+Note
+
+This is not a CommonMark implementation; nor is it trying to be!
+Python-Markdown was developed long before the CommonMark specification was
+released and has always (mostly) followed the syntax rules and behavior
+of the original reference implementation. No accommodations have been made
+to address the changes which CommonMark has suggested. It is recommended
+that you look elsewhere if you want an implementation which follows the
+CommonMark specification.
+
+Features§
+
+In addition to the basic markdown syntax, Python-Markdown supports the following
+features:
+
+International Input
+
+Python-Markdown will accept input in any language
+supported by Unicode including bi-directional text. In fact the test suite
+includes documents written in Russian and Arabic.
+
+Extensions
+
+Various extensions are provided (including
+extra) to change and/or extend the base syntax.
+Additionally, a public Extension API is available
+to write your own extensions.
+
+Output Formats
+
+Python-Markdown can output documents with either HTML or XHTML style tags.
+See the Library Reference for details.
+
+Command Line Interface
+
+In addition to being a Python Library, a
+command line script is available for your convenience.
+
+Differences§
+
+While Python-Markdown strives to fully implement markdown as described in the
+syntax rules, the rules
+can be interpreted in different ways and different implementations
+occasionally vary in their behavior (see the
+Babelmark FAQ
+for some examples). Known and intentional differences found in Python-Markdown
+are summarized below:
+
+Middle-Word Emphasis
+
+Python-Markdown defaults to ignoring middle-word emphasis (and strong
+emphasis). In other words, some_long_filename.txt will not become
+some<em>long</em>filename.txt. This can be switched off if desired. See
+the Legacy EM Extension for details.
+
+Indentation/Tab Length
+
+The syntax rules
+clearly state that when a list item consists of multiple paragraphs, “each
+subsequent paragraph in a list item must be indented by either 4 spaces
+or one tab” (emphasis added). However, many implementations do not enforce
+this rule and allow less than 4 spaces of indentation. The implementers of
+Python-Markdown consider it a bug to not enforce this rule.
+
+This applies to any block level elements nested in a list, including
+paragraphs, sub-lists, blockquotes, code blocks, etc. They must always
+be indented by at least four spaces (or one tab) for each level of nesting.
+
+In the event that one would prefer different behavior,
+tab_length can be set to whatever length is
+desired. Be warned however, as this will affect indentation for all aspects
+of the syntax (including root level code blocks). Alternatively, a
+third party extension may offer a solution that meets your needs.
+
+Consecutive Lists
+
+While the syntax rules are not clear on this, many implementations (including
+the original) do not end one list and start a second list when the list marker
+(asterisks, pluses, hyphens, and numbers) changes. For consistency,
+Python-Markdown maintains the same behavior with no plans to change in the
+foreseeable future. That said, the Sane List Extension
+is available to provide a less surprising behavior.
+
+Support§
+
+You may report bugs, ask for help, and discuss various other issues on the bug tracker.
+
+ Back to top

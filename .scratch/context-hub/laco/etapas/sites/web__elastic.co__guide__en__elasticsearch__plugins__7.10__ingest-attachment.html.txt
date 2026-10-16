@@ -1,0 +1,68 @@
+IMPORTANT: No additional bug fixes or documentation updates
+will be released for this version. For the latest information, see the
+current release documentation.
+
+« Ingest Plugins
+
+Using the Attachment Processor in a Pipeline »
+
+Elastic Docs
+›Elasticsearch Plugins and Integrations [7.10]
+›Ingest Plugins
+
+Ingest Attachment Processor Pluginedit
+
+ IMPORTANT: This documentation is no longer updated. Refer to Elastic's version policy and the latest documentation.
+
+Ingest Attachment Processor Pluginedit
+
+The ingest attachment plugin lets Elasticsearch extract file attachments in common formats (such as PPT, XLS, and PDF) by
+using the Apache text extraction library Tika.
+
+You can use the ingest attachment plugin as a replacement for the mapper attachment plugin.
+
+The source field must be a base64 encoded binary. If you do not want to incur
+the overhead of converting back and forth between base64, you can use the CBOR
+format instead of JSON and specify the field as a bytes array instead of a string
+representation. The processor will skip the base64 decoding then.
+
+Installationedit
+
+This plugin can be installed using the plugin manager:
+
+sudo bin/elasticsearch-plugin install ingest-attachment
+
+The plugin must be installed on every node in the cluster, and each node must
+be restarted after installation.
+
+You can download this plugin for offline
+install from https://artifacts.elastic.co/downloads/elasticsearch-plugins/ingest-attachment/ingest-attachment-7.10.2.zip. To verify
+the .zip file, use the
+SHA hash or
+ASC key.
+
+Removaledit
+
+The plugin can be removed with the following command:
+
+sudo bin/elasticsearch-plugin remove ingest-attachment
+
+The node must be stopped before removing the plugin.
+
+« Ingest Plugins
+
+Using the Attachment Processor in a Pipeline »
+
+Most Popular
+
+Video
+
+Get Started with Elasticsearch
+
+Video
+
+Intro to Kibana
+
+Video
+
+ELK for Logs & Metrics

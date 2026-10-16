@@ -1,0 +1,192 @@
+{
+  "envio": "c37fcd98-7761-4257-8dc4-fffc5e74577e",
+  "tipo": "resposta",
+  "enviada": "2026-10-15T07:44:01-03:00",
+  "alvo": {
+    "tipo": "rodada",
+    "id": "2026-10-15-acesso-dos-agentes-decisao-r3",
+    "titulo": "Acesso dos agentes: o que o teste mostrou"
+  },
+  "ticket": "14",
+  "substitui": null,
+  "rodada": {
+    "id": "2026-10-15-acesso-dos-agentes-decisao-r3",
+    "base": "016a3825cf79f09212df03ef3231347e1f9e3f0ac0d691ff49e69949f9dfdc3b",
+    "titulo": "Acesso dos agentes: o que o teste mostrou",
+    "ticket": "14",
+    "perguntas": [
+      {
+        "id": "fim-copilot",
+        "titulo": "O fim da resposta no Copilot",
+        "tipo": "escolha",
+        "recomendada": [
+          "A"
+        ],
+        "opcoes": [
+          {
+            "chave": "A",
+            "texto": "O hook de fim comum agora (estável, mesmo script do Codex); a extensão entra quando sair do modo experimental"
+          },
+          {
+            "chave": "B",
+            "texto": "A extensão já, com `--experimental` ligado pelo kit em todo Copilot do hub"
+          },
+          {
+            "chave": "C",
+            "texto": "Os dois: o hook de fim e a extensão experimental, ligados juntos"
+          }
+        ],
+        "proposta": null
+      },
+      {
+        "id": "fim-codex",
+        "titulo": "O fim da resposta no Codex",
+        "tipo": "escolha",
+        "recomendada": [
+          "A"
+        ],
+        "opcoes": [
+          {
+            "chave": "A",
+            "texto": "O hook de fim, já que não existe correlato de mod; o \"solta quando a nota foi tocada\" é conferido na construção, junto com o erro de sandbox do Codex nesta máquina"
+          },
+          {
+            "chave": "B",
+            "texto": "Investigar agora o erro de sandbox do Codex (um teste curto) e só então decidir"
+          }
+        ],
+        "proposta": null
+      },
+      {
+        "id": "escopo",
+        "titulo": "Onde moram os hooks",
+        "tipo": "escolha",
+        "recomendada": [
+          "A"
+        ],
+        "opcoes": [
+          {
+            "chave": "A",
+            "texto": "No escopo do usuário, nos três harnesses, com o script saindo na hora quando a pasta não é do hub. É o mesmo lugar da guarda do acervo, já decidido, e não depende de marcar o hub como pasta confiável"
+          },
+          {
+            "chave": "B",
+            "texto": "Na pasta do hub (nível do projeto), com o kit marcando o hub como confiável em cada harness"
+          }
+        ],
+        "proposta": null
+      },
+      {
+        "id": "marcador",
+        "titulo": "O marcador de raiz",
+        "tipo": "escolha",
+        "recomendada": [
+          "A"
+        ],
+        "opcoes": [
+          {
+            "chave": "A",
+            "texto": "Sai: o `.git` da raiz já basta para o Codex e o Copilot chegarem ao contrato, e o kit deixa de criar o marcador"
+          },
+          {
+            "chave": "B",
+            "texto": "Fica junto com o `.git`, por garantia, se um dia o `.git` sair da raiz"
+          }
+        ],
+        "proposta": null
+      },
+      {
+        "id": "vigia-tela",
+        "titulo": "O estado da vigia na tela",
+        "tipo": "escolha",
+        "recomendada": [
+          "A"
+        ],
+        "opcoes": [
+          {
+            "chave": "A",
+            "texto": "Claude Code pelo mod, Copilot pela barra de estado; no Codex, só na checagem de início e na notificação do Windows"
+          },
+          {
+            "chave": "B",
+            "texto": "Pedir ao Codex o recurso (uma issue no repositório deles) e, até lá, como na A"
+          }
+        ],
+        "proposta": null
+      },
+      {
+        "id": "lista-gustavo",
+        "titulo": "Sua lista do VS Code e da conta da empresa",
+        "tipo": "escolha",
+        "recomendada": [
+          "A"
+        ],
+        "opcoes": [
+          {
+            "chave": "A",
+            "texto": "Você roda agora, uns 10 minutos, com o passo a passo no fim do relatório (seção \"Teste 12\"); me manda as fotos das telas pelo chat"
+          },
+          {
+            "chave": "B",
+            "texto": "Fica para a construção, antes de ligar o Copilot do VS Code ao hub"
+          }
+        ],
+        "proposta": null
+      },
+      {
+        "id": "algo-mais",
+        "titulo": "Algo mais?",
+        "tipo": "texto",
+        "recomendada": [],
+        "opcoes": [],
+        "proposta": null
+      }
+    ]
+  },
+  "corpo_hash": "b58449621dffee3168f244f90bbcf4507ce27114b5f70240c6d9304a1508d0e7",
+  "corpo": {
+    "tipo": "resposta",
+    "rodada": "2026-10-15-acesso-dos-agentes-decisao-r3",
+    "base": "016a3825cf79f09212df03ef3231347e1f9e3f0ac0d691ff49e69949f9dfdc3b",
+    "respostas": {
+      "fim-copilot": {
+        "escolha": [
+          "C"
+        ],
+        "outra": null,
+        "comentario": null
+      },
+      "fim-codex": {
+        "escolha": [
+          "B"
+        ],
+        "outra": null,
+        "comentario": "e pesquisar melhor também, peça para um agente codex GPT 6.1 Sol Medium (permissions full access) pesquisar"
+      },
+      "escopo": {
+        "escolha": [
+          "A"
+        ],
+        "outra": null,
+        "comentario": null
+      },
+      "marcador": {
+        "escolha": [],
+        "outra": null,
+        "comentario": "não entendi essa pergunta, refaça"
+      },
+      "vigia-tela": {
+        "escolha": [],
+        "outra": null,
+        "comentario": "pesquisa da pergunta 2 deve tratar disso também. Fora isso, claude code pelo mod, copilot pela barra de estado e codex na checagem de início e notificação do windows como fallback"
+      },
+      "lista-gustavo": {
+        "escolha": [
+          "A"
+        ],
+        "outra": null,
+        "comentario": "quero esse passo a passo como uma rodada de perguntas"
+      }
+    }
+  }
+}

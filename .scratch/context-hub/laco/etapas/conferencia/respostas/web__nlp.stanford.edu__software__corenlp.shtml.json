@@ -1,0 +1,32 @@
+{
+ "chave": "web:nlp.stanford.edu/software/corenlp.shtml",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T21:31:56Z",
+ "resultado": "rejeita",
+ "conferencia": {
+  "resultado": "rejeita",
+  "final": {
+   "serve": "none",
+   "role": "Suite Java de analise linguistica (POS, NER, parser); modelos para ingles, chines, espanhol, alemao, arabe.",
+   "place": [
+    "library"
+   ],
+   "mechanism": [
+    "other"
+   ],
+   "mcp": "no",
+   "windows": "yes",
+   "portuguese": "no",
+   "license": "GPL-3.0-or-later",
+   "maturity": "unknown",
+   "doubt": false,
+   "evidence": "\"packaged models for Chinese and Spanish ... German and Arabic\"; no Portuguese; GPL v3+; requires Java 1.8+"
+  },
+  "o_que_mudou": [
+   "serve: search -> none, sem modelos para portugues e pesado (Java, 260 MB)",
+   "portuguese: unknown -> no",
+   "doubt: true -> false"
+  ],
+  "nota": "Sem suporte a portugues e pesado em Java; nao serve a camada de busca do hub."
+ }
+}

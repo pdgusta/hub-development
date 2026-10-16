@@ -1,0 +1,338 @@
+Skip to content 
+
+ The Showcase 
+
+ Open source change data capture 
+ Stream changes from your database. 
+ Debezium is an open source distributed platform for change data capture. Start it up, point it at your databases, and your apps can start responding to all of the inserts, updates, and deletes that other apps commit to your databases. Debezium is durable and fast, so your apps can respond quickly and never miss an event, even when things go wrong. 
+ Get Started Explore installation options 
+ Latest stable 3.7.0.Final 
+ 18 Source connectors 
+ 25 Sink connectors 
+ 100% Apache 2.0 licensed 
+
+ customers.orders · change event 
+{
+ "op": "u",
+ "ts_ms": 1786435255680,
+ "before": {
+ "id": 1042,
+ "status": "PENDING"
+ },
+ "after": {
+ "id": 1042,
+ "status": "SHIPPED"
+ },
+ "source": {
+ "connector": "postgresql",
+ "lsn": 24023128
+ }
+} 
+
+Do more with your data 
+React every time your data changes without modifying the apps that write it. Purge caches, update search indexes and keep other systems in sync. 
+
+Simplify your apps 
+Stop making one service update the database and the search index and the cache. Move that work into services that consume change events instead. 
+
+Never miss a beat 
+Take services down for maintenance and Debezium resumes exactly where it left off, in commit order, without dropping an event. 
+
+React quickly 
+Built for low latency and high throughput. Proven, scalable, and comfortable with large volumes of data. 
+
+Install Debezium your way 
+The same connectors, the same change events, several different runtimes. Pick the one that matches the infrastructure you already run. 
+ Most popular 
+Kafka Connect 
+The classic distributed installation 
+Run Debezium connectors inside a Kafka Connect cluster and stream change events straight into Apache Kafka topics. 
+Horizontal scaling and automatic task rebalancing 
+Offsets and schema history stored durably in Kafka 
+Single Message Transforms and the full Connect ecosystem 
+ Learn more Documentation 
+Debezium Platform 
+The managed way to run Debezium on Kubernetes 
+A web front end over the Debezium Operator. Design a pipeline once, from source through transforms to destination, and the Platform deploys and manages it on your cluster. 
+Design pipelines visually instead of hand-writing connector configuration 
+Full lifecycle management - create, deploy, edit, pause, resume, monitor 
+Backed by the Debezium Operator, so the cluster stays declarative 
+ Learn more Documentation 
+Debezium Server 
+Standalone, no Kafka required 
+A ready-to-run application that captures changes and sends them to a messaging infrastructure of your choice. 
+Sinks to Kinesis, Pub/Sub, Pulsar, Redis, RabbitMQ, NATS and more 
+Configured with a single properties file 
+Small footprint, quick to stand up 
+ Learn more Documentation 
+Operator for Debezium Server 
+Operator managed, cloud native 
+Declare your pipelines as custom resources and let the Debezium Operator reconcile them the way Kubernetes reconciles everything else. 
+GitOps friendly, fully declarative configuration 
+Rolling upgrades and self healing handled for you 
+Add Debezium Platform on top for a managed UI over the same Operator 
+ Learn more Documentation 
+
+Releases 
+A stable series for production and a development series for what is coming next. All releases 
+
+ Latest stable September 29, 2026 
+3.7.0.Final 
+ Incubating Ingres connector; JMX metrics for JDBC connector; Spanner placement tables support; CockroachDB configurable changefeed strategy and dialect for JDBC sink; SingleStore and Star... 
+ Release notes Announcement Docs 
+
+Recent releases 
+ 3.7.0.Final Sep 29, 2026 stable
+ 3.6.3.Final Sep 18, 2026 stable
+ 2.7.4.Final Dec 11, 2024 stable 
+
+ Debezium & AI 
+Give your models fresh context 
+Retrieval pipelines and agents are only as current as the data behind them. Debezium turns every committed row change into an event, and can parse, vectorise and deliver it to a vector store without any glue code in between. Explore Debezium for AI 
+
+Further reading 
+ Debezium as part of your AI solution 
+ Debezium and Jupyter integration 
+ Everything tagged AI 
+
+Embeddings in the pipeline 
+The Embeddings transformation vectorises text as it passes through, using Ollama, Hugging Face, Voyage AI or a local ONNX model. 
+
+Document parsing 
+The Docling transformation converts PDF, DOCX and HTML into a form a language model can actually consume. 
+
+Straight into a vector store 
+Debezium Server writes to Qdrant and Milvus directly, so the vector index follows the database rather than a nightly job. 
+
+Native vector columns 
+Vector column types are captured with their semantics intact, and the Vector to JSON transformation remaps them when you need something plainer. 
+
+Capture from the databases you already run 
+One event format, one set of guarantees, across every supported platform. 
+
+ Capture from 
+
+CockroachDB
+Db2 for LUW / zOS
+MariaDB
+MongoDB
+MySQL
+Oracle
+PostgreSQL
+SQL Server
+Cassandraincubating
+Db2 for IBM iincubating
+Google Spannerincubating
+Informixincubating
+Ingresincubating
+Milvusincubating
+
+SQLiteincubating
+
+TiDBincubating
+Vitessincubating
+YashanDBincubating
+CockroachDB
+Db2 for LUW / zOS
+MariaDB
+MongoDB
+MySQL
+Oracle
+PostgreSQL
+SQL Server
+Cassandraincubating
+Db2 for IBM iincubating
+Google Spannerincubating
+Informixincubating
+Ingresincubating
+Milvusincubating
+
+SQLiteincubating
+
+TiDBincubating
+Vitessincubating
+YashanDBincubating 
+
+ Deliver to 
+
+Amazon Kinesis 
+ Amazon SNS 
+ Amazon SQS 
+Apache Fluss 
+Apache Iceberg 
+Apache Kafka 
+Apache Pulsar 
+Apache RocketMQ 
+Azure Event Hubs 
+Databricks Zerobus Ingest 
+Google Cloud Pub/Sub 
+HTTP Client 
+Infinispan 
+InstructLab 
+JDBC Sink 
+Milvus 
+MongoDB Sink 
+NATS JetStream 
+NATS Streaming 
+Pravega 
+Pub/Sub Lite 
+Qdrant 
+RabbitMQ Native Stream 
+RabbitMQ Stream 
+Redis Stream 
+Amazon Kinesis 
+ Amazon SNS 
+ Amazon SQS 
+Apache Fluss 
+Apache Iceberg 
+Apache Kafka 
+Apache Pulsar 
+Apache RocketMQ 
+Azure Event Hubs 
+Databricks Zerobus Ingest 
+Google Cloud Pub/Sub 
+HTTP Client 
+Infinispan 
+InstructLab 
+JDBC Sink 
+Milvus 
+MongoDB Sink 
+NATS JetStream 
+NATS Streaming 
+Pravega 
+Pub/Sub Lite 
+Qdrant 
+RabbitMQ Native Stream 
+RabbitMQ Stream 
+Redis Stream 
+ Compare every connector 
+
+From the blog 
+Deep dives, project updates and stories from the community. Read the blog 
+
+ debezium-platform news update 
+ Debezium Platform: Mid-Year Update (2026) 
+Hello Debezium community, Mario here. I have been leading the development of the Debezium Platform for nearly two years now, and it has been about a year since my last update on... 
+
+Fiore Mario Vitale July 10, 2026 
+ community meetings contributors 
+ Debezium Community Showcase 
+It has been a month since we opened our weekly team meeting to the community, and we have received many interesting insights. Because of that, we have decided to create another opportunity... 
+
+Giovanni Panice June 24, 2026 
+ community news 
+ What Nobody Explains About Debezium in 2026 (But Should) 
+Teams evaluating Change Data Capture (CDC) tools often encounter comparison articles with titles like "Top Debezium Alternatives in 2026" or "Why We Moved Away from Debezium." These articles can be useful starting... 
+
+Chris Cranford May 22, 2026 
+
+Trusted in production 
+Teams around the world run Debezium against their busiest databases. 
+
+Airwallex
+Alza
+Auto Trader UK
+Behalf
+Bajaj Finserv Health
+Bolt
+Convoy
+Delhivery
+DeviantArt
+EOS Technology Solutions
+Experience
+Flipkart
+Fampay
+Getir
+GoHealth
+Gorgias
+Hepsiburada
+Hipages
+JW Player
+Kenshoo
+Klabin S.A.
+Lendingkart Tech
+MEGOGO
+Myntra
+Okta (Auth0)
+OYO
+Paystack
+Pipedrive
+Reddit
+Segment
+Shippeo
+Shopify
+SquadStack
+Strava
+SugarCRM
+Synaltic
+Tokopedia
+TouchBistro
+Traveloka
+Trendyol
+TrueAccord
+Ubisoft
+Usabilla by Surveymonkey
+Via Varejo
+Vimeo
+WePay, Inc.
+Zalando
+Zepto
+Zomato
+ZoloStays
+Airwallex
+Alza
+Auto Trader UK
+Behalf
+Bajaj Finserv Health
+Bolt
+Convoy
+Delhivery
+DeviantArt
+EOS Technology Solutions
+Experience
+Flipkart
+Fampay
+Getir
+GoHealth
+Gorgias
+Hepsiburada
+Hipages
+JW Player
+Kenshoo
+Klabin S.A.
+Lendingkart Tech
+MEGOGO
+Myntra
+Okta (Auth0)
+OYO
+Paystack
+Pipedrive
+Reddit
+Segment
+Shippeo
+Shopify
+SquadStack
+Strava
+SugarCRM
+Synaltic
+Tokopedia
+TouchBistro
+Traveloka
+Trendyol
+TrueAccord
+Ubisoft
+Usabilla by Surveymonkey
+Via Varejo
+Vimeo
+WePay, Inc.
+Zalando
+Zepto
+Zomato
+ZoloStays 
+ See every adopter 
+
+Debezium is your project 
+Debezium is open source under the Apache 2.0 license and hosted by the Commonhaus Foundation. Everyone is welcome, whether you want to ask a question, report a bug, improve the documentation or send a pull request. 
+ Get involved How to contribute 
+ Chat on Zulip 
+ GitHub

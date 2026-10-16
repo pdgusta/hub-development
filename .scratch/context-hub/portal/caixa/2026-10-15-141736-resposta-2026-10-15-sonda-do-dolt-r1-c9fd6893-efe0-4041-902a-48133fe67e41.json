@@ -1,0 +1,69 @@
+{
+  "envio": "c9fd6893-efe0-4041-902a-48133fe67e41",
+  "tipo": "resposta",
+  "enviada": "2026-10-15T14:17:36-03:00",
+  "alvo": {
+    "tipo": "rodada",
+    "id": "2026-10-15-sonda-do-dolt-r1",
+    "titulo": "A sonda do Dolt: rodar ou guardar"
+  },
+  "ticket": "32",
+  "substitui": null,
+  "rodada": {
+    "id": "2026-10-15-sonda-do-dolt-r1",
+    "base": "519788a99acfa21115f088189d1d27acaefba373328de90ccc45c5cc870a9c9a",
+    "titulo": "A sonda do Dolt: rodar ou guardar",
+    "ticket": "32",
+    "perguntas": [
+      {
+        "id": "sonda",
+        "titulo": "O que fazer com a sonda",
+        "tipo": "escolha",
+        "recomendada": [
+          "A"
+        ],
+        "opcoes": [
+          {
+            "chave": "A",
+            "texto": "Fechar o ticket sem rodar: a sonda fica só no Radar e volta se o CouchDB falhar na construção"
+          },
+          {
+            "chave": "B",
+            "texto": "Rodar agora, em segundo plano, por um subagente: meio dia de máquina e uns 150 mil tokens; o resultado só muda o Dolt de reserva para candidato"
+          },
+          {
+            "chave": "C",
+            "texto": "Deixar o ticket aberto como está, sem rodar"
+          }
+        ],
+        "proposta": null
+      },
+      {
+        "id": "algo-mais",
+        "titulo": "Algo mais?",
+        "tipo": "texto",
+        "recomendada": [],
+        "opcoes": [],
+        "proposta": null
+      }
+    ]
+  },
+  "corpo_hash": "9670c2f06768016d9395467ec630b153656b75c32f8dc13d0979728872afde3b",
+  "corpo": {
+    "tipo": "resposta",
+    "rodada": "2026-10-15-sonda-do-dolt-r1",
+    "base": "519788a99acfa21115f088189d1d27acaefba373328de90ccc45c5cc870a9c9a",
+    "respostas": {
+      "sonda": {
+        "escolha": [
+          "A"
+        ],
+        "outra": null,
+        "comentario": null
+      },
+      "algo-mais": {
+        "texto": "Não era pra ter aberto esse ticket, coloque no radar sem gatilho, só como opção se falhar na construção, o que é bem improvável"
+      }
+    }
+  }
+}

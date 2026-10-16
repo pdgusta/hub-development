@@ -1,0 +1,56 @@
+{
+ "chave": "gh:medcl/elasticsearch-analysis-ik",
+ "nomes": [
+  "Elasticsearch Analysis IK",
+  "IK Analyzer / Chinese Analyzer (adaptable for PT)"
+ ],
+ "urls": [
+  "https://github.com/medcl/elasticsearch-analysis-ik"
+ ],
+ "readme_cortado": false,
+ "readme": "IK Analysis for Elasticsearch and OpenSearch\n==================================\n\n![](./assets/banner.png)\n[![Test](https://github.com/infinilabs/analysis-ik/actions/workflows/test.yml/badge.svg)](https://github.com/infinilabs/analysis-ik/actions/workflows/test.yml)\n[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE.txt)\n\nThe IK Analysis plugin integrates Lucene IK analyzer, and support customized dictionary.  It supports major versions of Elasticsearch and OpenSearch. Maintained and supported with ❤️ by [INFINI Labs](https://infinilabs.com).\n\nThe plugin comprises analyzer: `ik_smart` , `ik_max_word`, and tokenizer: `ik_smart` , `ik_max_word`\n\n# How to Install\n\n### 🚀 **Get the Packaged Plugins**\n\nYou can download the packaged plugins from here:  \n\n**[https://release.infinilabs.com/](https://release.infinilabs.com/)**\n\n---\n\n### 🛠️ **Install via CLI**\n\nAlternatively, you can use the `plugin` CLI to install the plugin. Here's how:\n\n#### For Elasticsearch:\n```bash\nbin/elasticsearch-plugin install https://get.infini.cloud/elasticsearch/analysis-ik/9.1.4\n```\n\n#### For OpenSearch:\n```bash\nbin/opensearch-plugin install https://get.infini.cloud/opensearch/analysis-ik/2.12.0\n```\n\n---\n\n### ⚠️ **Tip**  \nMake sure to replace the version number with the one that matches your Elasticsearch or OpenSearch version.\n\n# Getting Started\n\n1.create a index\n\n```bash\ncurl -XPUT http://localhost:9200/index\n```\n\n2.create a mapping\n\n```bash\ncurl -XPOST http://localhost:9200/index/_mapping -H 'Content-Type:application/json' -d'\n{\n        \"properties\": {\n            \"content\": {\n                \"type\": \"text\",\n                \"analyzer\": \"ik_max_word\",\n                \"search_analyzer\": \"ik_smart\"\n            }\n        }\n\n}'\n```\n\n3.index some docs\n\n```bash\ncurl -XPOST http://localhost:9200/index/_create/1 -H 'Content-Type:application/json' -d'\n{\"content\":\"美国留给伊拉克的是个烂摊子吗\"}\n'\n```\n\n```bash\ncurl -XPOST http://localhost:9200/index/_create/2 -H 'Content-Type:application/json' -d'\n{\"content\":\"公安部：各地校车将享最高路权\"}\n'\n```\n\n```bash\ncurl -XPOST http://localhost:9200/index/_create/3 -H 'Content-Type:application/json' -d'\n{\"content\":\"中韩渔警冲突调查：韩警平均每天扣1艘中国渔船\"}\n'\n```\n\n```bash\ncurl -XPOST http://localhost:9200/index/_create/4 -H 'Content-Type:application/json' -d'\n{\"content\":\"中国驻洛杉矶领事馆遭亚裔男子枪击 嫌犯已自首\"}\n'\n```\n\n4.query with highlighting\n\n```bash\ncurl -XPOST http://localhost:9200/index/_search  -H 'Content-Type:application/json' -d'\n{\n    \"query\" : { \"match\" : { \"content\" : \"中国\" }},\n    \"highlight\" : {\n        \"pre_tags\" : [\"<tag1>\", \"<tag2>\"],\n        \"post_tags\" : [\"</tag1>\", \"</tag2>\"],\n        \"fields\" : {\n            \"content\" : {}\n        }\n    }\n}\n'\n```\n\nResult\n\n```json\n{\n    \"took\": 14,\n    \"timed_out\": false,\n    \"_shards\": {\n        \"total\": 5,\n        \"successful\": 5,\n        \"failed\": 0\n    },\n    \"hits\": {\n        \"total\": 2,\n        \"max_score\": 2,\n        \"hits\": [\n            {\n                \"_index\": \"index\",\n                \"_type\": \"fulltext\",\n                \"_id\": \"4\",\n                \"_score\": 2,\n                \"_source\": {\n                    \"content\": \"中国驻洛杉矶领事馆遭亚裔男子枪击 嫌犯已自首\"\n                },\n                \"highlight\": {\n                    \"content\": [\n                        \"<tag1>中国</tag1>驻洛杉矶领事馆遭亚裔男子枪击 嫌犯已自首 \"\n                    ]\n                }\n            },\n            {\n                \"_index\": \"index\",\n                \"_type\": \"fulltext\",\n                \"_id\": \"3\",\n                \"_score\": 2,\n                \"_source\": {\n                    \"content\": \"中韩渔警冲突调查：韩警平均每天扣1艘中国渔船\"\n                },\n                \"highlight\": {\n                    \"content\": [\n                        \"均每天扣1艘<tag1>中国</tag1>渔船 \"\n                    ]\n                }\n            }\n        ]\n    }\n}\n```\n\n# Dictionary Configuration\n\nConfig file `IKAnalyzer.cfg.xml` can be located at `{conf}/analysis-ik/IKAnalyzer.cfg.xml`\nor `{plugins}/elasticsearch-analysis-ik-*/config/IKAnalyzer.cfg.xml`\n\n```xml\n<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!DOCTYPE properties SYSTEM \"http://java.sun.com/dtd/properties.dtd\">\n<properties>\n\t<entry key=\"ext_dict\">custom/mydict.dic;custom/single_word_low_freq.dic</entry>\n\t<entry key=\"ext_stopwords\">custom/ext_stopword.dic</entry>\n\t<entry key=\"remote_ext_dict\">location</entry>\n\t<entry key=\"remote_ext_stopwords\">http://xxx.com/xxx.dic</entry>\n</properties>\n```\n\n## Hot-reload Dictionary\n\nThe current plugin supports hot reloading dictionary for IK Analysis, through the configuration mentioned earlier in the IK configuration file.\n\n```xml\n\t<entry key=\"remote_ext_dict\">location</entry>\n\t<entry key=\"remote_ext_stopwords\">location</entry>\n```\n\nAmong which `location` refers to a URL, such as `http://yoursite.com/getCustomDict`. This request only needs to meet the following two points to complete the segmentation hot update.\n\n1. The HTTP request needs to return two headers, one is `Last-Modified`, and the other is `ETag`. Both of these are of string type, and if either changes, the plugin will fetch new segmentation to update the word library.\n\n2. The content format returned by the HTTP request is one word per line, and the newline character is represented by `\\n`.\n\nMeeting the above two requirements can achieve hot word updates without the need to restart the ES instance.\n\nYou can place the hot words that need to be automatically updated in a .txt file encoded in UTF-8. Place it under nginx or another simple HTTP server. When the .txt file is modified, the HTTP server will automatically return the corresponding Last-Modified and ETag when the client requests the file. You can also create a separate tool to extract relevant vocabulary from the business system and update this .txt file.\n\n## FAQs\n-------\n\n1. Why isn't the custom dictionary taking effect?\n\nPlease ensure that the text format of your custom dictionary is UTF8 encoded.\n\n2. What is the difference between ik_max_word and ik_smart?\n\nik_max_word: Performs the finest-grained segmentation of the text. For example, it will segment \"中华人民共和国国歌\" into \"中华人民共和国,中华人民,中华,华人,人民共和国,人民,人,民,共和国,共和,和,国国,国歌\", exhaustively generating various possible combinations, suitable for Term Query.\n\nik_smart: Performs the coarsest-grained segmentation of the text. For example, it will segment \"中华人民共和国国歌\" into \"中华人民共和国,国歌\", suitable for Phrase queries.\n\nNote: ik_smart is not a subset of ik_max_word.\n\n# Community\n\nFell free to join the Discord server to discuss anything around this project: \n\n[https://discord.gg/4tKTMkkvVX](https://discord.gg/4tKTMkkvVX)\n\n# License\n\nCopyright ©️ INFINI Labs.\n\nLicensed under the Apache License, Version 2.0 (the \"License\");\nyou may not use this file except in compliance with the License.\nYou may obtain a copy of the License at\n\n    http://www.apache.org/licenses/LICENSE-2.0\n\nUnless required by applicable law or agreed to in writing, software\ndistributed under the License is distributed on an \"AS IS\" BASIS,\nWITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\nSee the License for the specific language governing permissions and\nlimitations under the License.\n",
+ "fonte": "readme",
+ "respostas": [
+  {
+   "por": "gemma-4-31b",
+   "resposta": {
+    "serve": "search",
+    "role": "Analyzer plugin for Elasticsearch/OpenSearch to handle text segmentation",
+    "place": [
+     "network_service"
+    ],
+    "mechanism": [
+     "full_text",
+     "other"
+    ],
+    "mcp": "no",
+    "windows": "unknown",
+    "portuguese": "no",
+    "license": "Apache-2.0",
+    "maturity": "unknown",
+    "doubt": false,
+    "evidence": "IK Analysis for Elasticsearch and OpenSearch; no mention of MCP or Windows"
+   }
+  },
+  {
+   "por": "llama-3.2-90b-vision",
+   "resposta": {
+    "serve": "none",
+    "role": "",
+    "place": [
+     "n/a"
+    ],
+    "mechanism": [
+     "other"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "Apache-2.0",
+    "maturity": "unknown",
+    "doubt": true,
+    "evidence": ""
+   }
+  }
+ ]
+}

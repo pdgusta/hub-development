@@ -1,0 +1,55 @@
+Docs
+
+ /
+
+ Explore and analyze
+
+What is Elastic Machine Learning?
+
+Machine learning features analyze your data and generate models for its patterns of behavior. The type of analysis that you choose depends on the questions or problems you want to address and the type of data you have available.
+
+Unsupervised machine learning
+
+There are two types of analysis that can deduce the patterns and relationships within your data without training or intervention: anomaly detection and outlier detection.
+
+Anomaly detection requires time series data. It constructs a probability model and can run continuously to identify unusual events as they occur. The model evolves over time; you can use its insights to forecast future behavior.
+
+Outlier detection does not require time series data. It is a type of data frame analytics that identifies unusual points in a data set by analyzing how close each data point is to others and the density of the cluster of points around it. It does not run continuously; it generates a copy of your data set where each data point is annotated with an outlier score. The score indicates the extent to which a data point is an outlier compared to other data points.
+
+Supervised machine learning
+
+There are two types of data frame analytics that require training data sets: classification and regression.
+
+In both cases, the result is a copy of your data set where each data point is annotated with predictions and a trained model, which you can deploy to make predictions for new data. For more information, refer to Introduction to supervised learning.
+
+Classification learns relationships between your data points in order to predict discrete categorical values, such as whether a DNS request originates from a malicious or benign domain.
+
+Regression learns relationships between your data points in order to predict continuous numerical values, such as the response time for a web request.
+
+Feature availability by project type
+
+The machine learning features that are available vary by project type:
+
+Elasticsearch Serverless projects have anomaly detection jobs, data frame analytics analytics jobs, and trained models.
+
+Observability projects have anomaly detection jobs.
+
+Elastic Security projects have anomaly detection jobs, data frame analytics analytics jobs, and trained models.
+
+Synchronize saved objects
+
+Before you can view your machine learning datafeeds, jobs, and trained models in Kibana, they must have saved objects. For example, if you used APIs to create your jobs, wait for automatic synchronization or go to the Machine Learning page and click Synchronize saved objects.
+
+Export and import jobs
+
+You can export and import your machine learning job and datafeed configuration details on the Machine Learning page. For example, you can export jobs from your test environment and import them in your production environment.
+
+The exported file contains configuration details; it does not contain the machine learning models. For anomaly detection, you must import and run the job to build a model that is accurate for the new environment. For data frame analytics, trained models are portable; you can import the job then transfer the model to the new cluster. Refer to Exporting and importing data frame analytics trained models.
+
+There are some additional actions that you must take before you can successfully import and run your jobs:
+
+The data views that are used by anomaly detection datafeeds and data frame analytics source indices must exist; otherwise, the import fails.
+
+If your anomaly detection jobs use custom rules with filter lists, the filter lists must exist; otherwise, the import fails.
+
+If your anomaly detection jobs were associated with calendars, you must create the calendar in the new environment and add your imported jobs to the calendar.

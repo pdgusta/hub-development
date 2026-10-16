@@ -1,0 +1,38 @@
+{
+ "chave": "gh:elastic/curator",
+ "urls": [
+  "https://github.com/elastic/curator",
+  "https://www.elastic.co/guide/en/elasticsearch/client/curator/current/index.html"
+ ],
+ "tipos": [
+  "tool"
+ ],
+ "termos": [
+  "index management",
+  "snapshot",
+  "rollover",
+  "インデックス管理",
+  "自動化ツール",
+  "Elasticsearch Curator",
+  "retention policy",
+  "automation"
+ ],
+ "mencoes": 3,
+ "familias": [
+  "cohere",
+  "mistral"
+ ],
+ "primeira_onda": 4,
+ "nomes": [
+  "Elasticsearch Curator"
+ ],
+ "resumos": [
+  "Management tool to perform actions like snapshotting, deletion, and index aging on Elasticsearch indices automatically.",
+  "インデックスの管理（削除、マージ、スナップショット）を自動化するツール",
+  "Automates index lifecycle management (ILM) and cleanup tasks."
+ ],
+ "readme_status": "ok",
+ "readme_nome": "README.rst",
+ "readme_cortado": false,
+ "readme": ".. _readme:\n\n\nCurator\n=======\n\nHave indices in Elasticsearch? This is the tool for you!\n\nLike a museum curator manages the exhibits and collections on display,\nElasticsearch Curator helps you curate, or manage your indices.\n\nANNOUNCEMENT\n------------\n\nCurator is breaking into version dependent releases. Curator 6.x will work with\nElasticsearch 6.x, Curator 7.x will work with Elasticsearch 7.x, and when it is\nreleased, Curator 8.x will work with Elasticsearch 8.x.\n\nWatch this space for updates when that is coming.\n\nAdditional support for Elasticsearch 7.14.0 - 7.17.x\n****************************************************\n\nStarting with Curator 8.0.18, Curator 8 can execute against Elasticsearch versions\n7.14.0 - 7.17.x in addition to all versions of Elasticsearch 8.x.\n\nNew Client Configuration\n------------------------\n\nCurator now connects using the ``es_client`` Python module. This separation makes it much easier\nto update the client connection portion separate from Curator. It is largely derived from the\noriginal Curator client configuration, but with important updates.\n\nThe updated configuration file structure requires ``elasticsearch`` at the root level::\n\n    ---\n    elasticsearch:\n      client:\n        hosts: https://10.11.12.13:9200\n        cloud_id:\n        bearer_auth:\n        opaque_id:\n        request_timeout: 60\n        http_compress:\n        verify_certs:\n        ca_certs:\n        client_cert:\n        client_key:\n        ssl_assert_hostname:\n        ssl_assert_fingerprint:\n        ssl_version:\n      other_settings:\n        master_only:\n        skip_version_test:\n        username:\n        password:\n        api_key:\n          id:\n          api_key:\n\n    logging:\n      loglevel: INFO\n      logfile: /path/to/file.log\n      logformat: default\n      blacklist: []\n\nAction File Configuration\n-------------------------\n\nAction file structure is unchanged, for now. A few actions may have had the options modified a bit.\n"
+}

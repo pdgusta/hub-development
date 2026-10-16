@@ -1,0 +1,32 @@
+{
+ "chave": "gh:nomic-ai/gpt4all",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T21:22:40Z",
+ "resultado": "corrige",
+ "conferencia": {
+  "resultado": "corrige",
+  "final": {
+   "serve": "stack",
+   "role": "Run local LLMs privately on desktops, with Python client and LocalDocs chat over local files.",
+   "place": [
+    "library",
+    "disk"
+   ],
+   "mechanism": [
+    "other"
+   ],
+   "mcp": "unknown",
+   "windows": "yes",
+   "portuguese": "unknown",
+   "license": "unknown",
+   "maturity": "stable",
+   "doubt": false,
+   "evidence": "Runs LLMs privately on desktops; Windows installer; pip install gpt4all; LocalDocs stable since July 2023; README does not mention embeddings directly."
+  },
+  "o_que_mudou": [
+   "place: network_service removed -> README only lists the Docker API server as a past release",
+   "mechanism: embeddings -> other, README does not describe embeddings"
+  ],
+  "nota": "Executor local de LLM com LocalDocs; marginal para o hub, que não precisa de chat local, só de busca e indexação."
+ }
+}

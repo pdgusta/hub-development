@@ -1,0 +1,37 @@
+{
+ "chave": "gh:terrier-org/pyterrier",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T20:02:33Z",
+ "resultado": "corrige",
+ "conferencia": {
+  "resultado": "corrige",
+  "final": {
+   "serve": "search",
+   "role": "Biblioteca Python para montar pipelines de indexação e recuperação (esparsa, esparsa aprendida, densa) com reranking e RAG, e avaliar experimentos.",
+   "place": [
+    "library"
+   ],
+   "mechanism": [
+    "bm25",
+    "vector",
+    "hybrid",
+    "reranker",
+    "embeddings"
+   ],
+   "mcp": "unknown",
+   "windows": "yes",
+   "portuguese": "unknown",
+   "license": "MPL-2.0",
+   "maturity": "unknown",
+   "doubt": false,
+   "evidence": "Build (sparse|learned sparse|dense) indexing and retrieval pipelines for search and RAG use-cases; BM25 >> MonoT5; pip install 'pyterrier[all]' on Linux, Colab, Windows or macOS; needs Java"
+  },
+  "o_que_mudou": [
+   "place: disk/network_service/library -> library, README descreve só uma biblioteca pip",
+   "mcp: no -> unknown, README não fala de MCP",
+   "portuguese: no -> unknown, README não fala de idioma",
+   "maturity: stable -> unknown, README só traz v1.1 sem declarar estabilidade"
+  ],
+  "nota": "Framework de pipelines de busca (BM25, densa, reranker) para pesquisa em IR; exige Java e licença com cláusula de citação."
+ }
+}

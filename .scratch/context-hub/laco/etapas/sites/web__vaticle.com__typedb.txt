@@ -1,0 +1,254 @@
+Hypergraph database with a strict schema
+The graph database that tells you when you've got it wrong
+TypeDB checks every write and every query against a model of your domain. Bad data gets rejected, and a query that makes no sense comes back as an error with a reason.Get TypeDB open sourceTry TypeDB Cloud
+
+1
+2
+3
+4
+5
+6
+7
+
+match
+ $p isa person, has name "Ada Lovelace";
+ $c isa company, has name "Acme Ltd";
+ $l isa loan, links (borrower: $p, lender: $p);
+fetch { "amount": $l.amount };
+
+Error: type check failed
+Type 'person' cannot play the role 'loan:lender'.
+
+What is TypeDB?
+TypeDB is a graph database with a new, intuitive way to model and query connected data, using a language that reads almost like plain English.
+It allows developers and AI agents to naturally model complex entities and relationships as a graph, without the usual friction, drastically speeding up the time it takes to build, launch, and scale data-heavy applications.
+
+Used by thousands of developers globally
+
+Used in groundbreaking research at
+
+The problem
+Where property graphs fall short
+The property graph model works well for simple domains with people writing the queries. Give it a complex domain, or let agents loose on it, and three problems start to show.
+
+Structure drifts
+
+Constraints are optional and added one at a time. As more people and agents write to the graph, its shape slowly moves away from what anyone intended.
+
+TypeDB: the schema is the model, and every write is checked against it.
+
+Everything gets flattened into pairs
+
+An edge joins exactly two nodes. Anything involving three or more parties becomes an extra node that every query has to reassemble correctly.
+
+TypeDB: one relation can connect any number of things.
+
+No guardrails, so agents guess
+
+A query with the wrong type or relationship still runs and returns nothing, or something plausible. An agent can't tell that apart from a real answer, so it confidently reports one.
+
+TypeDB: queries are type-checked first, and mistakes come back as errors.
+
+What's in the engine
+Six things TypeDB does with one model
+You describe your domain once. The database uses that description to check your data, answer broader questions and keep logic in one place.
+
+Correctness
+
+A schema that holds its shape
+Entities, relations and attributes are declared as types, and every write is checked against them. The graph doesn't drift as more people and agents write to it.
+
+entity company, owns name, plays loan:borrower;
+relation loan, relates lender, relates borrower;
+
+insert $c isa compnay; # rejected: no type compnay
+Copied!
+
+Correctness
+
+Queries checked before they run
+A query that doesn't fit the model fails with a reason. An empty result means there really is nothing there.
+
+Expressiveness
+
+Relationships with any number of sides
+A deal with a buyer, a target and two advisors is one fact, with no intermediate nodes to keep in sync.
+
+Expressiveness
+
+Types that build on each other
+A new kind of thing inherits attributes and roles from its parent. Your domain stays the shape it really is.
+
+Efficiency
+
+One query covers every subtype
+Ask for every party and get companies, people and banks back, including subtypes you add next year.
+
+Efficiency
+
+Logic defined once, in the database
+Functions live in the schema and can be called from any query. Your application, your analysts and your agents all use the same definition, so they can't quietly disagree.
+
+fun exposure($c: company) -> decimal:
+ match $l isa loan, links (guarantor: $c),
+ has amount $a;
+ return sum($a);
+Copied!
+
+And moreHow TypeDB works, in depth
+
+Use Cases
+What teams build on TypeDB
+01Agent grounding02Knowledge graphs03Financial relationships04Manufacturing05Threat intelligence06Enterprise interoperability07Digital twins08Legal and regulated09Scientific knowledge
+
+01 · Agent grounding
+Give agents a model of your domain they can check their work against.
+Agents query the same typed model your application uses
+Wrong queries come back as errors the agent can fix
+Connect through MCP and a TypeDB skill
+
+match
+ $c isa customer, has name "Acme";
+ $p isa policy, links (holder: $c);
+fetch { "policy": $p.ref };
+
+02 · Knowledge graphs
+One connected model of your organisation, built to keep growing.
+Bring data from several systems into one typed model
+Extend the schema as you learn, without rewriting queries
+Ask questions that cross teams, systems and sources
+
+entity employee, sub person,
+ plays membership:member;
+relation membership,
+ relates member, relates team;
+
+03 · Financial relationships
+Deals, ownership and exposure, modelled as they really are.
+A deal with a buyer, a target and advisors is one relation
+Ownership chains and guarantees stay queryable end to end
+One definition of exposure, shared by every team
+
+relation deal,
+ relates buyer, relates target,
+ relates advisor @card(0..);
+
+04 · Manufacturing
+Parts, suppliers and assemblies, with every dependency traceable.
+Bills of materials as nested assemblies, at any depth
+Supply relations linking part, supplier, site and contract
+Ask for every component and get every part type back
+
+entity component;
+entity fastener, sub component;
+relation supply,
+ relates part, relates supplier, relates site;
+
+05 · Threat intelligence
+Model actors, campaigns and indicators in one connected graph.
+Map standards like STIX directly onto types and roles
+Ask for every threat actor and get every subtype back
+Keep analyst and agent queries on the same model
+
+entity threat-actor, sub stix-object;
+entity intrusion-set, sub threat-actor;
+match $a isa threat-actor;
+
+06 · Enterprise interoperability
+Share data across systems and teams without losing what it means.
+A common model that several systems can write to
+Data that doesn't fit the model is rejected at the door
+Self-host with TypeDB Enterprise
+
+entity person, owns id, plays case:subject;
+relation case, relates subject,
+ relates department, owns status;
+
+07 · Digital twins
+Assets, sensors and sites, connected in one live model.
+Model plants, systems and components as nested hierarchies
+Link each reading to the asset, sensor and location it belongs to
+Add new equipment types without rewriting queries
+
+entity asset;
+entity pump, sub asset;
+relation reading,
+ relates asset, relates sensor, relates site,
+ owns value;
+
+08 · Legal and regulated
+Obligations, parties and jurisdictions, modelled precisely.
+An obligation links a party, a rule, a jurisdiction and a deadline in one fact
+Data that breaks the model is rejected before it is stored
+Every answer traces back to typed, explicit relations
+
+relation obligation,
+ relates party, relates regulation,
+ relates jurisdiction, owns due-date;
+
+09 · Scientific knowledge
+Research domains with deep hierarchies and many-sided relationships.
+Inheritance for taxonomies that keep growing
+Reactions, pathways and samples with as many participants as they need
+Used in research in geoscience, biology and robotics
+
+relation reaction,
+ relates input, relates output,
+ relates catalyst;
+
+Benchmark
+Wrong answers you can see
+We had Claude write queries in TypeQL, SQL and Cypher over the same dataset. On a first attempt, a wrong TypeQL query nearly always came back as an error. Given the chance to retry, TypeQL ended up the most accurate of the three.
+Reactome dataset, 42 questions, Claude Sonnet 5. Full methodology, a second model and known weaknesses are published with the results.
+First attempt
+Correct
+Failed with a visible error
+Silently wrong
+
+TypeQL23.1% flagged · 1.7% silent
+
+SQL0.9% flagged · 17.1% silent
+
+Cypher10.3% flagged · 15.4% silent
+
+Correct first time: TypeQL 75.2%, SQL 82.1%, Cypher 74.4%.With schema, examples and four retries
+TypeQL
+
+92.9%SQL
+
+84.1%Cypher
+
+83.3%
+Claude Sonnet 5. With DeepSeek V4 Pro, Cypher led at 89.7%, with TypeQL at 86.5% and SQL at 85.7%.
+
+For AI Agents
+A database your agents can learn from
+When an agent gets something wrong, TypeDB tells it what and why, so it can try again. The same checks make TypeQL easy for models to write, even though they've barely seen it.
+
+TypeDB MCP
+Connect Claude, Cursor or your own agent to TypeDB, so it can read the schema, write queries and learn from the errors.
+
+TypeDB Vector
+Store embeddings alongside your typed data, so similarity search and structured queries work from the same model.
+
+TypeDB Embedded
+Coming soon! Run TypeDB inside your application or agent, with no separate server to manage.
+
+Where it fits
+Works alongside the systems you already have
+
+You don't need to replace anything. Keep your systems of record, bring in the data your agents and applications need, and give them one typed model of your domain to work from.
+01
+Keep your systems of recordERP, warehouses and operational databases stay where they are.
+02
+Load what matters into TypeDBAnything that doesn't fit the model is rejected on the way in.
+03
+Query one modelAgents, applications and analysts all work from the same definitions.
+
+Open source. Run it yourself, or let us run it.
+Model your own domain in an afternoon. When you need it in production, we'll host it or support you running it.Get TypeDB open sourceCompare editions
+TypeDB CloudFully managed on GCP or AWS.
+TypeDB EnterpriseSelf-hosted, with our support.
+TypeDB StudioWrite schemas and queries, and see the results.
+
+Feedback

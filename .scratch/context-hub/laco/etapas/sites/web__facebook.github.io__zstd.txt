@@ -1,0 +1,396 @@
+Support Ukraine 🇺🇦
+
+ Help Provide Humanitarian Aid to Ukraine
+
+ .
+
+ Zstandard
+
+ Zstandard is a fast compression algorithm, providing high compression ratios.
+ It also offers a special mode for small data, called dictionary compression.
+ The reference library offers a very wide range of speed / compression trade-off,
+ and is backed by an extremely fast decoder (see benchmarks below).
+ Zstandard library is provided as open source software using a BSD license.
+ Its format is stable and published as IETF RFC 8878.
+
+## Watch Introductory Video
+
+Benchmarks
+----------
+
+For reference, several fast compression algorithms were tested and compared
+on a desktop featuring a Core i7-9700K CPU @ 4.9GHz
+and running Ubuntu 24.04 (`Linux 6.8.0-53-generic`),
+using [lzbench], an open-source in-memory benchmark by @inikep
+compiled with [gcc] 14.2.0,
+on the [Silesia compression corpus].
+
+[lzbench]: https://github.com/inikep/lzbench
+[Silesia compression corpus]: https://sun.aei.polsl.pl//~sdeor/index.php?page=silesia
+[gcc]: https://gcc.gnu.org/
+
+| Compressor name | Ratio | Compression| Decompress.|
+| --------------- | ------| -----------| ---------- |
+| **zstd 1.5.7 -1** | 2.896 | 510 MB/s | 1550 MB/s |
+| [zlib] 1.3.1 -1 | 2.743 | 105 MB/s | 390 MB/s |
+| brotli 1.1.0 -0 | 2.702 | 400 MB/s | 425 MB/s |
+| **zstd 1.5.7 --fast=1** | 2.439 | 545 MB/s | 1850 MB/s |
+| **zstd 1.5.7 --fast=3** | 2.241 | 635 MB/s | 1980 MB/s |
+| quicklz 1.5.0 -1 | 2.238 | 520 MB/s | 750 MB/s |
+| lzo1x 2.10 -1 | 2.106 | 650 MB/s | 780 MB/s |
+| [lz4] 1.10.0 | 2.101 | 675 MB/s | 3850 MB/s |
+| snappy 1.2.1 | 2.089 | 520 MB/s | 1500 MB/s |
+| lzf 3.6 -1 | 2.077 | 410 MB/s | 820 MB/s |
+
+[zlib]: https://www.zlib.net/
+[lz4]: http://www.lz4.org/
+
+The negative compression levels, specified with `--fast=#`,
+offer faster compression and decompression speed in exchange for some loss in
+compression ratio compared to level 1, as seen in the table above.
+
+Zstd can trade compression speed for stronger compression ratios.
+It is configurable by small increment.
+Decompression speed is preserved and remain roughly the same at all settings,
+a property shared by most LZ compression algorithms, such as [zlib] or lzma.
+
+The following tests were run
+on a server running Linux Debian (`Linux version 4.14.0-3-amd64`)
+with a Core i7-6700K CPU @ 4.0GHz,
+using [lzbench], an open-source in-memory benchmark by @inikep
+compiled with [gcc] 7.3.0,
+on the [Silesia compression corpus].
+
+| Compression Speed vs Ratio | Decompression Speed |
+| ---------------------------|-------------------- |
+| | 
+
+Several algorithms can produce higher compression ratio but at slower speed, falling outside of the graph.
+For a larger picture including very slow modes, [click on this link](https://raw.githubusercontent.com/facebook/zstd/master/doc/images/DCspeed5.png) .
+
+### The case for Small Data compression
+
+Previous charts provide results applicable to typical file and stream scenarios (several MB). Small data comes with different perspectives.
+
+The smaller the amount of data to compress, the more difficult it is to compress. This problem is common to all compression algorithms, and reason is, compression algorithms learn from past data how to compress future data. But at the beginning of a new data set, there is no "past" to build upon.
+
+To solve this situation, Zstd offers a __training mode__, which can be used to tune the algorithm for a selected type of data.
+Training Zstandard is achieved by provide it with a few samples (one file per sample). The result of this training is stored in a file called "dictionary", which must be loaded before compression and decompression.
+Using this dictionary, the compression ratio achievable on small data improves dramatically.
+
+The following example uses the `github-users` [sample set](https://github.com/facebook/zstd/releases/tag/v1.1.3), created from [github public API](https://developer.github.com/v3/users/#get-all-users).
+It consists of roughly 10K records weighting about 1KB each.
+
+Compression Ratio | Compression Speed | Decompression Speed
+------------------|-------------------|--------------------
+![Compression Ratio](https://raw.githubusercontent.com/facebook/zstd/master/doc/images/dict-cr.png "Compression Ratio") | ![Compression Speed](https://raw.githubusercontent.com/facebook/zstd/master/doc/images/dict-cs.png "Compression Speed") | ![Decompression Speed](https://raw.githubusercontent.com/facebook/zstd/master/doc/images/dict-ds.png "Decompression Speed")
+
+These compression gains are achieved while simultaneously providing _faster_ compression and decompression speeds.
+
+Training works if there is some correlation in a family of small data samples. The more data-specific a dictionary is, the more efficient it is (there is no _universal dictionary_).
+Hence, deploying one dictionary per type of data will provide the greatest benefits.
+Dictionary gains are mostly effective in the first few KB. Then, the compression algorithm will gradually use previously decoded content to better compress the rest of the file.
+
+### A rich API set :
+
+Zstandard API is designed with learning curve in mind.
+At the top, you'll find simple methods, using trivial arguments and behavior.
+Then, at each new paragraph, the API introduces new concepts and parameters,
+giving gradually more control for advanced usages.
+
+You can learn more about Zstandard API by reading [its documentation](https://raw.githack.com/facebook/zstd/release/doc/zstd_manual.html).
+
+## Multiple programming languages
+
+Should you need Zstandard in different language than [reference C],
+here is a list of known bindings and ports provided by great authors.
+All versions support the Zstandard [format specification]
+and are therefore interoperable.
+Many versions listed below are bindings to the [reference C] library.
+There are also full re-implementation of the algorithm in the target language
+which are explicitly labelled as Ports.
+
+| Language | Author | URL |
+| ------------- | ------------------- | ------------------------------------- |
+| __Python__ (standard) | Python Software Foundation | https://docs.python.org/3.14/library/compression.zstd.html
+| __Python__ (full) | Gregory Szorc | https://pypi.python.org/pypi/zstandard
+| __Python__ (simple) | Sergey Dryabzhinsky | https://github.com/sergey-dryabzhinsky/python-zstd
+| __Python__ (bz2 api) | Ma Lin | https://pypi.org/project/pyzstd |
+| __Rust__ | Alexandre Bury | https://crates.io/crates/zstd |
+| __Rust__ (Port) | Moritz Borcherding | https://github.com/KillingSpark/zstd-rs
+| __Java__ | Luben Karavelov | https://github.com/luben/zstd-jni |
+| __Java__ (Port) | Martin Traverso | https://github.com/airlift/aircompressor/tree/master/src/main/java/io/airlift/compress/v3/zstd
+| __C#__ | SKB Kontur | https://github.com/skbkontur/ZstdNet |
+| __C#__ (streaming) | Bernhard Pichler | https://github.com/bp74/Zstandard.Net
+| __C#__ (signed) | Tyler Young | https://github.com/ImpromptuNinjas/ZStd
+| __C#__ (Port) | Oleg Stepanischev | https://github.com/oleg-st/ZstdSharp
+| __C__ (winXP) | jimmyleocn | https://github.com/jimmyleocn/zstd-winxp
+| __Javascript__ (pure, Port) | Ben Houston | https://www.npmjs.com/package/zstdify
+| __Javascript__ (decoder, Port) | Arjun Barrett | https://www.npmjs.com/package/fzstd
+| __Javascript__ (wasm, asm) | Szende, Tamas, Szabo & Zana | https://www.npmjs.com/package/@oneidentity/zstd-js
+| __Javascript__ (decoder, wasm) | Don McCurdy | https://www.npmjs.com/package/zstddec
+| __Javascript__ (emscripten) | Yoshihito | https://www.npmjs.com/package/zstd-codec
+| __Node.js__ | MongoDB-js | https://github.com/mongodb-js/zstd
+| __Node.js__ | Tyler Stiene | https://www.npmjs.com/package/simple-zstd
+| __Go__ (Port) | Klaus Post | https://github.com/klauspost/compress/tree/master/zstd#zstd
+| __Go__ | Vianney Tran | https://github.com/DataDog/zstd |
+| __Go__ (+dict) | Aliaksandr Valialkin | https://github.com/valyala/gozstd |
+| __PHP__ | Kamijo | https://github.com/kjdev/php-ext-zstd |
+| __PHP__ | John Wedgbury | https://github.com/appoly/zstd-php |
+| __Fortran__ | Philippe Engel | https://github.com/interkosmos/fortran-zstd
+| __Pascal__ | Denis Anisimov | https://github.com/DenisAnisimov/ZSTD.pas
+| __Delphi__ | Xelitan | https://github.com/Xelitan/ZSTD-compression-decompression-for-Delphi-Lazarus
+| __Swift__ | Anatoli Peredera | https://github.com/omniprog/SwiftZSTD |
+| __Ruby__ | SpringMT | https://github.com/SpringMT/zstd-ruby |
+| __Ruby__ (FFI) | Michael Sievers | https://github.com/msievers/zstandard-ruby
+| __Ruby__ (stream) | Andrew Aladjev | https://rubygems.org/gems/ruby-zstds |
+| __R__ | Konstantin Sorokin | https://cran.r-project.org/web/packages/zstdr/index.html
+| __Perl__ | Jiro Nishiguchi | https://metacpan.org/release/Compress-Zstd
+| __Visual Basic 6__ | Tanner Helland | https://github.com/tannerhelland/VB6-Compression
+| __Objective C__ | Micha Mazaheri | https://github.com/luckymarmot/ZstdKit
+| __Lisp__ | Guillaume Le Vaillant | https://github.com/glv2/cl-zstd |
+| __Ada__ | John Marino | https://github.com/jrmarino/zstd-ada |
+| __Dart__ | Instantiations | https://pub.dev/documentation/es_compression/latest/zstd/zstd-library.html
+| __Scala__ (Port, decoder) | Johannes Rudolph | https://github.com/jrudolph/decoders/blob/main/src/main/scala/net/virtualvoid/codecs/zstd/Zstd.scala
+| __Julia__ | Kenta Sato | https://github.com/bicycle1885/CodecZstd.jl
+| __D__ | Masahiro Nakagawa | https://code.dlang.org/packages/zstd |
+| __Lua__ | Soojin Nam | https://github.com/sjnam/lua-resty-zstd
+| __Haskell__ | Bryan O'Sullivan | https://github.com/facebookexperimental/hs-zstd
+| __Erlang__ | Silviu Caragea | https://github.com/silviucpp/ezstd |
+| __Erlang__ | Yuki Ito | https://hex.pm/packages/zstd |
+| __Tcl__ | D. Bohdan | https://wiki.tcl-lang.org/48788 |
+| __SmallTalk__ | Instantiations | http://www.instantiations.com/resources/goodies.html#instantiations
+| __Elixir__ | chenzhuoyu | https://hex.pm/packages/ex_zstd |
+| __OCaml__ | Jane Street | https://opam.ocaml.org/packages/zstandard/
+| __Crystal__ | @didactic-drunk | https://github.com/didactic-drunk/zstd.cr
+| __Nim__ | wltsmrz | https://github.com/wltsmrz/nim_zstd |
+| __Racket__ | Vincent Lee | https://pkgs.racket-lang.org/package/zstd |
+
+[reference C]:https://github.com/facebook/zstd
+[format specification]:https://github.com/facebook/zstd/blob/master/doc/zstd_compression_format.md
+
+## Graphical User Interfaces
+
+Tino Reichardt has created a version of [7-zip archive manager with Zstandard](https://mcmilk.de/projects/7-Zip-ZStd/).
+
+Denis Anisimov, of TC4shell fame, also developed a [7-zip plugin with Zstandard support](http://www.tc4shell.com/en/7zip/modern7z/).
+
+Peazip is a free multi-platforms archiver by Giorgio Tani with [support for Zstandard](https://peazip.github.io/zst-compressed-file-format.html)
+
+[WinRAR](https://www.rarlab.com/download.htm) supports decoding of Zstandard files (as well as zip files using Zstandard encoder)
+
+## Zstandard is used by :
+
+#### Featured
+
+ [Linux](https://www.phoronix.com/scan.php?page=article&item=linux-414-features) 
+
+ [FreeBSD](https://svnweb.freebsd.org/changeset/base/329240)
+
+ [Redshift](https://aws.amazon.com/about-aws/whats-new/2017/01/amazon-redshift-now-supports-the-zstandard-high-data-compression-encoding-and-two-new-aggregate-functions/) 
+
+ [Github Actions](https://github.com/actions/cache/pull/270)
+
+ [Mercurial](https://www.mercurial-scm.org/wiki/Release4.1)
+
+#### Databases
+
+ [RocksDB](https://twitter.com/rocksdb/status/771387757306388480) 
+
+ [Hadoop](https://issues.apache.org/jira/browse/HADOOP-13578) 
+
+ [MySQL](https://dev.mysql.com/doc/relnotes/mysql/8.0/en/news-8-0-18.html#mysqld-8-0-18-connection-control) 
+
+ [Cassandra](https://issues.apache.org/jira/browse/CASSANDRA-14482) 
+
+ [MongoDB](http://mongodb.github.io/mongo-java-driver/3.12/driver-async/tutorials/compression/) 
+
+ [WiredTiger](https://github.com/wiredtiger/wiredtiger/tree/master/ext/compressors/zstd) 
+
+ [Redis](https://github.com/chadnickbok/redis-zstd-module) 
+
+ [Presto](https://prestosql.io/docs/current/release/release-314.html) 
+
+ [ClickHouse](https://clickhouse.tech/docs/en/operations/server-configuration-parameters/settings/#server-settings-compression) 
+
+ [Groonga](http://groonga.org/en/blog/2016/11/29/groonga-6.1.1.html) 
+
+ [Tarantool](https://github.com/tarantool/tarantool/blob/master/cmake/BuildZSTD.cmake) 
+
+ [TokuDB](https://github.com/XeLabs/tokudb/commit/7ba55b2ee6aaac0980daa0a6b269a5c551da4ba6) 
+
+ [HBase](https://issues.apache.org/jira/browse/HBASE-16710) 
+
+ [PostgreSQL](https://github.com/grahamedgecombe/pgzstd) 
+
+ [VictoriaMetrics](https://medium.com/faun/victoriametrics-achieving-better-compression-for-time-series-data-than-gorilla-317bc1f95932) 
+
+ [Scylla](https://www.scylladb.com/2019/10/04/compression-in-scylla-part-one/) 
+
+ [Vertica](https://www.vertica.com/docs/9.3.x/HTML/Content/Authoring/SQLReferenceManual/Statements/encoding-type.htm?zoom_highlight=zstandard#Zstandar) 
+
+ [Impala](https://impala.apache.org/docs/build/html/topics/impala_new_features.html) 
+
+ [Trino](https://trino.io/docs/current/search.html?q=zstd) 
+
+ [StarRocks](https://docs.starrocks.io/en-us/latest/sql-reference/sql-statements/data-definition/CREATE%20TABLE#set-data-compression-algorithm) 
+
+#### File systems & storage
+
+ [BtrFS](https://btrfs.wiki.kernel.org/index.php/Compression) 
+
+ [OpenZFS](https://github.com/openzfs/zfs/commit/10b3c7f5e424f54b3ba82dbf1600d866e64ec0a0) 
+
+ [SquashFS](https://www.phoronix.com/scan.php?page=news_item&px=Linux-4.14-Zstd-Pull) 
+
+ [ReFS](https://gist.github.com/0xbadfca11/da0598e47dd643d933dc#refs-39) 
+
+ [F2FS](https://www.phoronix.com/scan.php?page=news_item&px=F2FS-Zstd-Linux-5.7-Pull) 
+
+ [ReiserFS](https://metztli.it/blog/index.php/building-new-reiser4-software-format?blog=4) 
+
+ [TrueNAS](https://github.com/freenas/freenas/pull/5517)
+
+#### Web
+
+ [caddy](https://twitter.com/mholt6/status/1137176475784732673) 
+
+ [HHVM](https://github.com/facebook/hhvm/commit/d830ac5b335cea8433abcda14a044d71da3bd0dc) 
+
+ [nginx (module)](https://github.com/tokers/zstd-nginx-module) 
+
+ [curl](https://github.com/curl/curl/pull/5453) 
+
+ [wget2](https://twitter.com/ruehsen/status/1050701663995129862) 
+
+ [django](https://pypi.org/project/django-compression-middleware/) 
+
+ [HTTP Toolkit](https://twitter.com/HttpToolkit/status/1396911225108418564) 
+
+#### Archives
+
+ [winzip](http://kb.winzip.com/kb/entry/313/) 
+
+ [winrar](https://www.rarlab.com/rarnew.htm) 
+
+ [PowerAchiver](https://www.powerarchiver.com/2020/04/08/powerarchiver-2021-preview-build-32-is-out-today/) 
+
+ [Fog](https://news.fogproject.org/fog-1-3-5-rc-9/) 
+
+ [Backup](https://github.com/borgbackup/borg/issues/1633#issuecomment-307556500) 
+
+ [libarchive](https://github.com/libarchive/libarchive/pull/905) 
+
+ [tar](https://www.phoronix.com/scan.php?page=news_item&px=Tar-Zstd-Compression) 
+
+ [SmartVersion](http://smartversion.com/download.htm) 
+
+#### Serialization
+
+ [FST](https://github.com/fstpackage/fst/tree/master/src/ZSTD) 
+
+ [Blosc](https://www.blosc.org/posts/zstd-has-just-landed-in-blosc/) 
+
+ [bcolz](https://github.com/Blosc/bcolz/tree/master/c-blosc/internal-complibs/zstd-1.1.2) 
+
+ [Apache Arrow](https://arrow.apache.org/blog/2020/04/21/0.17.0-release/) 
+
+ [mrcz](https://github.com/em-MRCZ/c-mrcz) 
+
+ [bgen](http://www.well.ox.ac.uk/~gav/bgen_format/bgen_format.html) 
+
+ [Gecko](https://bug635044.bugzilla.mozilla.org/show_bug.cgi?id=1316183) 
+
+ [HDF5](https://github.com/aparamon/HDF5Plugin-Zstandard) 
+
+ [Sereal](https://github.com/Sereal/Sereal/tree/master/Perl/shared/zstd) 
+
+ [PLink2](https://www.cog-genomics.org/plink/2.0/) 
+
+ [NAF](http://kirill-kryukov.com/study/naf/) 
+
+#### Network
+
+ [fbthrift](https://github.com/facebook/fbthrift/commit/ec42813f0ced737617d4614900ef3a96c1f3d17f) 
+
+ [Fizz](https://github.com/facebookincubator/fizz/blob/master/fizz/protocol/ZstdCertificateCompressor.h) 
+
+ [proxygen](https://github.com/facebook/proxygen/blob/master/proxygen/lib/utils/ZstdStreamDecompressor.h) 
+
+ [mcrouter](https://github.com/facebook/mcrouter/blob/master/mcrouter/lib/ZstdCompressionCodec.h) 
+
+ [Rspamd](https://rspamd.com/announce/2016/11/21/rspamd-1.4.0.html) 
+
+ [Tor](https://blog.torproject.org/blog/tor-0312-alpha-out-notes-about-0311-alpha) 
+
+ [NeoMutt](https://neomutt.org/feature/hccompress) 
+
+ [Rsync](https://download.samba.org/pub/rsync/NEWS#3.2.0) 
+
+#### Hardware
+
+ Intel QAT
+
+ [Xilinx](https://github.com/Xilinx/Vitis_Libraries/tree/master/data_compression/L2/tests/zstd_quadcore_compress) 
+
+ [IBM TS7700](https://developer.ibm.com/storage/2018/11/26/ts7700-enhanced-compression/) 
+
+ [ZeroPoint](https://www.zeropoint-tech.com/products/nvme-expansion-flash-mx/) 
+
+#### Games & Creation
+
+ [League of Legends](https://technology.riotgames.com/news/supercharging-data-delivery-new-league-patcher) 
+
+ [Blender](https://wiki.blender.org/wiki/Reference/Release_Notes/3.0/Core) 
+
+ [Godot](https://github.com/godotengine/godot/tree/master/thirdparty/zstd) 
+
+ [Khronos's KTX](http://github.khronos.org/KTX-Specification/) 
+
+ [OpenSiv3D](https://github.com/Siv3D/OpenSiv3D/tree/master/Siv3D/Source/ThirdParty/zstd) 
+
+ [Esenthel](http://www.esenthel.com/?id=feature_list) 
+
+ [Mass Effect:Andromeda](https://youtu.be/u3zSdu2mp9A?t=6m33s) 
+
+#### Misc
+
+ [Ubuntu](https://www.omgubuntu.co.uk/2018/03/faster-ubuntu-installs-zstd-compression) 
+
+ [Fedora](https://fedoraproject.org/wiki/Changes/Switch_RPMs_to_zstd_compression) 
+
+ [ArchLinux](https://www.archlinux.org/news/now-using-zstandard-instead-of-xz-for-package-compression/) 
+
+ [RPM](https://rpm.org/wiki/Releases/4.14.0) 
+
+ [PKG](https://svnweb.freebsd.org/ports?view=revision&revision=512256) 
+
+ [Conda](https://www.anaconda.com/how-we-made-conda-faster-4-7/) 
+
+ [GCC](https://www.phoronix.com/scan.php?page=news_item&px=GCC-10-Gets-Zstd-LTO-Byte-Comp) 
+
+ [Hex-rays IDA](https://docs.hex-rays.com/release-notes/9_1)
+
+ [folly](https://github.com/facebook/folly/blob/master/folly/compression/Compression.h#L83) 
+
+ [cmake](https://cmake.org/cmake/help/v3.15/release/3.15.html) 
+
+ [TaskCluster](https://github.com/taskcluster/taskcluster-worker/pull/114)
+
+ [U++](http://www.ultimatepp.org/www$uppweb$Roadmap$en-us.html) 
+
+ [Ceph](https://github.com/ceph/ceph/tree/master/src/compressor/zstd)
+
+ [LiveScan3D](https://github.com/MarekKowalski/LiveScan3D/pull/14) 
+
+ [Kiwix](https://www.kiwix.org/en/zim-tools-3-0-0-is-out/) 
+
+---
+
+ Legal
+
+ Privacy
+
+ Terms
+
+ Copyright © Meta Platforms, Inc.

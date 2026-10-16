@@ -1,0 +1,37 @@
+Documentation Index
+Fetch the complete documentation index at: /llms.txt
+Use this file to discover all available pages before exploring further.
+Skip to main content
+
+Given a set of start URLs, the Crawler:
+
+Visits these pages and extracts data that’s relevant for search.
+
+Discovers other pages through links (and extracts their data).
+
+Sends your data to your Algolia indices. You can run the Crawler on a schedule to keep your Algolia indices up-to-date.
+
+​
+Why you should use the Crawler
+The Crawler simplifies uploading your data to Algolia and keeping your indices up-to-date.
+Compared to using the API clients or other methods to index your data, using the Crawler has these benefits:
+
+You don’t have to write and maintain code for extracting content, transforming it to indices, and scheduling periodic updates.
+
+It helps you extract data from unstructured content (such as HTML and PDF files).
+
+It can index your web pages when it’s difficult to access the sources, for example, due to restricted access, or if you want to index different resources managed by different teams using different tools.
+
+​
+Get started
+To add, verify, and crawl your site, see Create a new crawler.
+If you want to use the Crawler to index a technical documentation site,
+consider DocSearch,
+which also comes with a search UI.
+If you use Netlify to host your website,
+use the Netlify Crawler plugin.
+Last modified on September 14, 2026
+
+Was this page helpful?
+
+YesNo

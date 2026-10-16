@@ -1,0 +1,621 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Árvore final do hub</title>
+<link rel="stylesheet" href="fontes/arvore.css">
+<style>
+:root {
+  --papel: #f3eadb;
+  --cartao: #fbf6ec;
+  --cartao-2: #f6efe2;
+  --linha: #d9cdb8;
+  --linha-forte: #bfae92;
+  --tinta: #2b2117;
+  --tinta-fraca: #55463a;
+  --apagado: #6e6054;
+  --madeira: #7a4f2a;      /* raízes */
+  --madeira-fundo: #efe1cf;
+  --petroleo: #1f5f73;     /* núcleo; a máquina preenche */
+  --petroleo-fundo: #d8e7ec;
+  --musgo: #3f6b32;        /* blocos */
+  --musgo-fundo: #dfe9d6;
+  --terracota: #9c3a22;    /* quem escreve */
+  --terracota-fundo: #f3dcd3;
+  --ambar: #8a6400;        /* a conciliar */
+  --ambar-fundo: #f8ecc4;
+  --letreiro: "Fraunces", Georgia, serif;
+  --texto: "Nunito Sans", "Segoe UI", system-ui, sans-serif;
+  --mono: "JetBrains Mono", Consolas, ui-monospace, monospace;
+  --raio: 14px;
+  --sombra: 0 1px 2px rgba(60, 40, 20, .08), 0 6px 18px rgba(60, 40, 20, .08);
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--papel); color: var(--tinta); }
+body {
+  font-family: var(--texto); font-size: 16px; font-weight: 500; line-height: 1.5;
+  background-image: radial-gradient(1200px 500px at 15% -10%, rgba(255, 244, 220, .9), transparent 60%);
+}
+code, .mono { font-family: var(--mono); font-size: .92em; }
+.folha { max-width: 1340px; margin: 0 auto; padding: 32px 32px 56px; }
+
+/* topo */
+.topo { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 18px 40px; align-items: end; }
+.topo h1 { font-family: var(--letreiro); font-weight: 650; font-size: 36px; line-height: 1.1; margin: 0 0 10px; letter-spacing: -.01em; }
+.topo p { margin: 0; color: var(--tinta-fraca); font-size: 17px; max-width: 60ch; }
+.legenda { display: flex; flex-wrap: wrap; gap: 8px 18px; margin: 18px 0 0; padding: 0; list-style: none; font-size: 15px; color: var(--tinta-fraca); }
+.legenda li { display: flex; align-items: center; gap: 8px; }
+.decisao { margin: 0; padding: 14px 18px; list-style: none; display: grid; gap: 6px; background: var(--cartao); border: 1px solid var(--linha); border-radius: var(--raio); font-size: 15px; color: var(--tinta-fraca); max-width: 400px; }
+.decisao b { color: var(--tinta); }
+
+/* selos de quem preenche */
+.selo { justify-self: start; display: inline-flex; align-items: center; gap: 5px; font-family: var(--texto); font-size: 12.5px; font-weight: 750; border-radius: 999px; padding: 1px 9px 1px 6px; white-space: nowrap; line-height: 1.6; }
+.selo svg { flex: none; }
+.selo.m { color: var(--petroleo); background: var(--petroleo-fundo); }
+.selo.e { color: var(--terracota); background: var(--terracota-fundo); }
+.selo.c { color: var(--ambar); background: var(--ambar-fundo); border: 1px dashed #c9a23a; }
+.selo.l { color: var(--madeira); background: var(--madeira-fundo); border: 1px dashed var(--madeira); }
+
+/* corpo: árvore à esquerda, leitor à direita */
+.mesa { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 440px); gap: 32px; margin-top: 34px; align-items: start; }
+
+/* as sete entradas da raiz */
+.raiz-cabeca { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; margin: 0 0 10px; }
+.raiz-cabeca .arq { color: var(--madeira); font-weight: 700; border-color: var(--madeira); }
+.raiz-cabeca > span { font-size: 14px; color: var(--apagado); }
+.raiz { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 10px; }
+.raiz > li { background: var(--cartao); border: 1px solid var(--linha); border-top: 4px solid var(--madeira); border-radius: 10px; padding: 10px 10px 11px; min-height: 74px; min-width: 0; }
+.raiz > li.ativa { border-color: var(--madeira); box-shadow: 0 0 0 3px rgba(122, 79, 42, .14); }
+.raiz .nome { font-family: var(--mono); font-weight: 700; font-size: 14px; color: var(--madeira); display: block; }
+.raiz .para { font-size: 13.5px; color: var(--tinta-fraca); line-height: 1.35; display: block; margin-top: 4px; }
+.raiz-pe { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 10px 2px 0; font-size: 14px; color: var(--apagado); }
+
+/* o caminho até a iniciativa */
+.trilha { display: flex; align-items: center; gap: 0; margin: 22px 0 0 calc((100% - 50px) / 6 * .5 - 2px); }
+.trilha svg { display: block; }
+.trilha-rotulo { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; margin-left: 10px; }
+.trilha-rotulo .mono { font-size: 15px; font-weight: 700; color: var(--madeira); }
+.trilha-rotulo small { font-size: 13.5px; color: var(--apagado); }
+
+/* a iniciativa como planta */
+.planta { margin-top: 10px; background: var(--cartao); border: 2px solid var(--tinta); border-radius: 18px; box-shadow: var(--sombra); padding: 22px 22px 24px; }
+.planta-topo { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; margin-bottom: 18px; }
+.planta-topo h2 { margin: 0; font-family: var(--mono); font-size: 20px; font-weight: 800; letter-spacing: -.01em; }
+.planta-topo span { color: var(--apagado); font-size: 15px; }
+.zona { margin-top: 20px; }
+.zona:first-of-type { margin-top: 0; }
+.zona-titulo { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 10px; margin: 0 0 10px; font-size: 13px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+.zona-titulo small { font-size: 13.5px; font-weight: 600; letter-spacing: 0; text-transform: none; color: var(--apagado); }
+.nucleo .zona-titulo { color: var(--petroleo); }
+.blocos .zona-titulo { color: var(--musgo); }
+.local .zona-titulo { color: var(--madeira); }
+
+.prateleira { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+.arq {
+  all: unset; box-sizing: border-box; cursor: pointer; display: flex; align-items: center; gap: 8px; min-width: 0;
+  font-family: var(--mono); font-size: 13.5px; font-weight: 600; line-height: 1.3; color: var(--tinta);
+  padding: 9px 11px; border-radius: 9px; background: #fff; border: 1px solid var(--linha);
+}
+.arq:hover { border-color: var(--linha-forte); background: #fffdf8; }
+.arq:focus-visible { outline: 3px solid var(--petroleo); outline-offset: 2px; }
+.arq[aria-pressed="true"] { border: 2px solid var(--tinta); padding: 8px 10px; background: #fffaf0; }
+.arq .n { overflow-wrap: anywhere; }
+.arq svg { flex: none; }
+.nucleo .arq { background: #f4fafb; border-color: #b9d3db; }
+.arq.mudo { cursor: default; color: var(--apagado); background: transparent; border-style: dashed; }
+
+.estantes { display: grid; grid-template-columns: repeat(auto-fill, minmax(208px, 1fr)); gap: 12px; }
+.bloco { border: 1px solid #c3d4b8; background: #f5f9f1; border-radius: 12px; padding: 10px 10px 12px; display: flex; flex-direction: column; gap: 7px; }
+.bloco-nome { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; font-family: var(--mono); font-weight: 800; font-size: 15px; color: var(--musgo); padding: 0 2px 2px; }
+.bloco-nome small { font-family: var(--texto); font-weight: 600; font-size: 13px; color: var(--apagado); }
+.sub { margin-left: 14px; padding-left: 10px; border-left: 2px dashed var(--madeira); display: flex; flex-direction: column; gap: 7px; }
+.sub-nome { font-family: var(--mono); font-size: 13px; font-weight: 700; color: var(--madeira); display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.conta { font-family: var(--texto); font-size: 13px; color: var(--apagado); padding: 0 4px; }
+.cinza { color: var(--apagado); font-size: 14px; }
+
+.local .prateleira { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.local .arq { background: #fbf3ea; border: 1.5px dashed var(--madeira); }
+
+/* leitor da nota */
+.leitor { position: sticky; top: 16px; max-height: calc(100vh - 32px); overflow: auto; background: #fffdf8; border: 1px solid var(--linha-forte); border-radius: var(--raio); box-shadow: var(--sombra); }
+.leitor-topo { padding: 16px 20px 12px; border-bottom: 1px solid var(--linha); background: var(--cartao); }
+.leitor-caminho { font-family: var(--mono); font-size: 13px; color: var(--apagado); overflow-wrap: anywhere; margin: 0 0 4px; }
+.leitor-topo h3 { margin: 0; font-family: var(--letreiro); font-weight: 600; font-size: 22px; line-height: 1.2; }
+.leitor-tipo { margin-top: 8px; display: flex; flex-wrap: wrap; gap: 6px; }
+.fm { margin: 0; padding: 12px 20px 14px; font-family: var(--mono); font-size: 13.5px; background: #fbf8f2; border-bottom: 1px solid var(--linha); }
+.fm .traco { color: var(--linha-forte); }
+.campo { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 10px; align-items: center; padding: 4px 0; border-bottom: 1px dotted #e3d9c8; }
+.campo:last-of-type { border-bottom: 0; }
+.campo .chave { color: var(--petroleo); font-weight: 700; }
+.campo .valor { color: var(--tinta); overflow-wrap: anywhere; }
+.campo.conciliar { margin: 4px -8px; padding: 5px 8px; border: 1px dashed #c9a23a; border-radius: 8px; background: #fdf6dd; }
+.corpo { padding: 14px 20px 6px; font-size: 15px; line-height: 1.55; }
+.corpo p { margin: 0 0 8px; }
+.aviso-nota { margin: 4px 20px 16px; padding: 9px 12px; border-radius: 10px; background: var(--cartao-2); font-size: 14px; color: var(--tinta-fraca); }
+.esquema { padding: 0 20px 16px; font-size: 13.5px; color: var(--apagado); }
+.volta { display: none; }
+
+/* o mecanismo */
+.mecanismo { margin-top: 40px; display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, .8fr) minmax(0, 1.6fr); gap: 0; background: var(--cartao); border: 1px solid var(--linha); border-radius: var(--raio); box-shadow: var(--sombra); }
+.passo { padding: 18px 22px 20px; position: relative; }
+.passo + .passo { border-left: 1px solid var(--linha); }
+.passo h3 { display: flex; align-items: center; gap: 10px; margin: 0 0 8px; font-family: var(--letreiro); font-weight: 600; font-size: 19px; }
+.passo .num { display: grid; place-items: center; width: 28px; height: 28px; flex: none; border-radius: 50%; background: var(--petroleo); color: #fff; font-family: var(--texto); font-size: 14px; font-weight: 800; }
+.passo p { margin: 0; font-size: 15px; color: var(--tinta-fraca); }
+.passo .arq { display: inline-flex; margin-top: 8px; }
+.passo .arq .n { overflow-wrap: normal; }
+.camadas { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.camadas li { background: #fff; border: 1px solid var(--linha); border-radius: 10px; padding: 10px 12px; font-size: 14.5px; color: var(--tinta-fraca); line-height: 1.4; }
+.camadas b { display: block; color: var(--tinta); font-size: 15px; margin-bottom: 3px; }
+.obsidian { margin: 12px 0 0; font-size: 14.5px; color: var(--apagado); }
+
+@media (max-width: 1180px) {
+  .raiz { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .trilha { margin-left: 12px; }
+  .prateleira { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 980px) {
+  .mesa { grid-template-columns: minmax(0, 1fr); }
+  .leitor { position: static; max-height: none; }
+  .volta { display: inline-block; margin: 0 20px 16px; color: var(--petroleo); font-weight: 700; text-decoration: none; }
+  .mecanismo { grid-template-columns: minmax(0, 1fr); }
+  .passo + .passo { border-left: 0; border-top: 1px solid var(--linha); }
+}
+@media (max-width: 760px) {
+  .folha { padding: 22px 16px 40px; }
+  .topo { grid-template-columns: minmax(0, 1fr); }
+  .topo h1 { font-size: 29px; }
+  .raiz { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .prateleira, .local .prateleira { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .planta { padding: 16px 12px 18px; border-radius: 14px; }
+  .planta-topo h2 { font-size: 16px; overflow-wrap: anywhere; }
+  .camadas { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 420px) {
+  .prateleira, .local .prateleira { grid-template-columns: minmax(0, 1fr); }
+  .estantes { grid-template-columns: minmax(0, 1fr); }
+  .fm { padding: 12px 14px; font-size: 13px; }
+  .campo { grid-template-columns: minmax(0, 1fr); }
+  .leitor-topo, .corpo { padding-left: 14px; padding-right: 14px; }
+}
+</style>
+</head>
+<body>
+<main class="folha">
+
+<header class="topo">
+  <div>
+    <h1>A árvore do hub, com notas de exemplo</h1>
+    <p>Da raiz até uma iniciativa de cliente. Clique num arquivo: a nota abre ao lado, e cada campo diz quem o preenche.</p>
+    <ul class="legenda" aria-label="Legenda">
+      <li><span class="selo m"><svg width="13" height="13" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8.5a3.5 3.5 0 100 7 3.5 3.5 0 000-7zm8 3.5l2-1.6-2-3.5-2.4.8a8 8 0 00-1.8-1L15.4 4h-4l-.4 2.5a8 8 0 00-1.8 1L6.8 6.7l-2 3.5L6.8 12l-2 1.6 2 3.5 2.4-.8a8 8 0 001.8 1l.4 2.6h4l.4-2.6a8 8 0 001.8-1l2.4.8 2-3.5z" fill="currentColor"/></svg>máquina</span> preenche sozinha</li>
+      <li><span class="selo e"><svg width="13" height="13" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l1-4.5L16 4.5 19.5 8 8.5 19zM14.5 6l3.5 3.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/></svg>escreve</span> quem grava (agente ou você)</li>
+      <li><span class="selo l">fica nesta máquina</span></li>
+      <li><span class="selo c">a conciliar</span> o <code>status</code> comum</li>
+    </ul>
+  </div>
+  <ul class="decisao">
+    <li><b>Aprovar:</b> esta é a árvore final do ticket</li>
+    <li><b>Recusar:</b> diga o que mudar</li>
+    <li>O <code>status</code> comum (rascunho, em uso, superada) se concilia com o de cada tipo na rodada que acompanha esta carta</li>
+  </ul>
+</header>
+
+<div class="mesa">
+<section aria-label="A árvore">
+
+  <div class="raiz-cabeca">
+    <button class="arq" type="button" data-nota="agents-raiz" aria-pressed="false"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6l5-2 6 2 5-2v14l-5 2-6-2-5 2z" fill="none" stroke="var(--madeira)" stroke-width="2" stroke-linejoin="round"/></svg><span class="n">AGENTS.md</span></button>
+    <span>na raiz: o mapa para os agentes, e seis raízes</span>
+  </div>
+  <ul class="raiz" aria-label="As seis raízes">
+    <li class="ativa"><span class="nome">clients/</span><span class="para">cliente / iniciativa</span></li>
+    <li><span class="nome">operations/</span><span class="para">trabalho contínuo</span></li>
+    <li><span class="nome">initiatives/</span><span class="para">sem cliente</span></li>
+    <li><span class="nome">reference/</span><span class="para">referência</span></li>
+    <li><span class="nome">agents/</span><span class="para">a oficina</span></li>
+    <li><span class="nome">inbox/</span><span class="para">captura</span></li>
+  </ul>
+  <div class="raiz-pe">
+    <span>cada raiz tem o seu <code>_archive/</code></span>
+    <span>tudo replica nas duas máquinas, menos o que tem ponto no nome ou <code>local: true</code></span>
+  </div>
+
+  <div class="trilha">
+    <svg width="34" height="40" viewBox="0 0 34 40" aria-hidden="true"><path d="M4 0v24a10 10 0 0010 10h20" fill="none" stroke="var(--madeira)" stroke-width="3"/></svg>
+    <div class="trilha-rotulo">
+      <span class="mono">clients/voegol/</span>
+      <small>o nível do cliente: o que mora nele fica a decidir</small>
+    </div>
+  </div>
+
+  <article class="planta" aria-label="A iniciativa de exemplo">
+    <div class="planta-topo">
+      <h2>clients/voegol/cross-tenant/</h2>
+      <span>uma iniciativa de cliente</span>
+    </div>
+
+    <div class="zona nucleo">
+      <p class="zona-titulo">Núcleo <small>seis arquivos, um por ritmo, e o mapa</small></p>
+      <div class="prateleira">
+        <button class="arq" type="button" data-nota="initiative" aria-pressed="false"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2" fill="none" stroke="var(--petroleo)" stroke-width="2"/><path d="M8 8h8M8 12h8M8 16h5" stroke="var(--petroleo)" stroke-width="2"/></svg><span class="n">initiative.md</span></button>
+        <button class="arq" type="button" data-nota="retomada" aria-pressed="false"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12a7 7 0 1 0 2-5" fill="none" stroke="var(--petroleo)" stroke-width="2.2"/><path d="M4 4v4h4" fill="none" stroke="var(--petroleo)" stroke-width="2.2"/></svg><span class="n">retomada.md</span></button>
+        <button class="arq" type="button" data-nota="tasks" aria-pressed="false"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6l2 2 3-3M4 13l2 2 3-3M12 7h8M12 14h8" fill="none" stroke="var(--petroleo)" stroke-width="2.2"/></svg><span class="n">tasks.md</span></button>
+        <button class="arq" type="button" data-nota="decisions" aria-pressed="false"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18M6 7h12M4 15l2-8 2 8a2 2 0 01-4 0zM16 15l2-8 2 8a2 2 0 01-4 0z" fill="none" stroke="var(--petroleo)" stroke-width="2"/></svg><span class="n">decisions.md</span></button>
+        <button class="arq" type="button" data-nota="context" aria-pressed="false"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h10l4 4v12H5z" fill="none" stroke="var(--petroleo)" stroke-width="2"/><circle cx="12" cy="13" r="3" fill="none" stroke="var(--petroleo)" stroke-width="2"/></svg><span class="n">context.md</span></button>
+        <button class="arq" type="button" data-nota="log" aria-pressed="false"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="2" fill="none" stroke="var(--petroleo)" stroke-width="2"/><path d="M4 10h16M9 3v4M15 3v4" stroke="var(--petroleo)" stroke-width="2"/></svg><span class="n">log/2026-10.md</span></button>
+        <button class="arq" type="button" data-nota="agents-ini" aria-pressed="false"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6l5-2 6 2 5-2v14l-5 2-6-2-5 2z" fill="none" stroke="var(--petroleo)" stroke-width="2" stroke-linejoin="round"/></svg><span class="n">AGENTS.md</span></button>
+        <span class="arq mudo"><span class="n">maestro/</span><span class="conta">opcional</span></span>
+      </div>
+    </div>
+
+    <div class="zona blocos">
+      <p class="zona-titulo">Blocos em uso <small>somados quando o trabalho pede</small></p>
+      <div class="estantes">
+        <div class="bloco">
+          <div class="bloco-nome">inputs/ <small>chega de fora</small></div>
+          <button class="arq" type="button" data-nota="input" aria-pressed="false"><span class="n">2026-10-08-reuniao-de-escopo.md</span></button>
+          <button class="arq" type="button" data-nota="pdf" aria-pressed="false"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l4 4v14H6z" fill="#f3dcd3" stroke="var(--terracota)" stroke-width="2"/></svg><span class="n">escopo-cross-tenant.pdf</span></button>
+          <button class="arq" type="button" data-nota="pdfmd" aria-pressed="false"><span class="n">escopo-cross-tenant.pdf.md</span></button>
+        </div>
+        <div class="bloco">
+          <div class="bloco-nome">evidence/ <small>14 prints</small></div>
+          <button class="arq" type="button" data-nota="index-evidence" aria-pressed="false"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" fill="none" stroke="var(--musgo)" stroke-width="2"/><path d="M7 10h6M7 14h10" stroke="var(--musgo)" stroke-width="2"/></svg><span class="n">index.md</span></button>
+          <span class="arq mudo"><span class="n">2026-10-09-consentimento-a.png</span></span>
+          <span class="conta">… e mais 13 imagens</span>
+        </div>
+        <div class="bloco">
+          <div class="bloco-nome">runs/ <small>uma pasta por execução</small></div>
+          <div class="sub-nome" style="color:var(--musgo)">2026-10-15-coleta/</div>
+          <button class="arq" type="button" data-nota="run" aria-pressed="false"><span class="n">relatorio.md</span></button>
+          <div class="sub">
+            <div class="sub-nome">brutos/ <span class="selo l">local: true</span></div>
+            <button class="arq" type="button" data-nota="index-brutos" aria-pressed="false"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" fill="none" stroke="var(--madeira)" stroke-width="2"/><path d="M7 10h6M7 14h10" stroke="var(--madeira)" stroke-width="2"/></svg><span class="n">index.md</span></button>
+            <span class="conta">3 arquivos .jsonl, 2,1 GB</span>
+          </div>
+        </div>
+        <div class="bloco">
+          <div class="bloco-nome">work/ <small>trabalho em curso</small></div>
+          <button class="arq" type="button" data-nota="work" aria-pressed="false"><span class="n">2026-10-15-handoff-filtro.md</span></button>
+        </div>
+        <div class="bloco">
+          <div class="bloco-nome">research/ <small>3 notas</small></div>
+          <span class="cinza">perguntas e respostas da coleta</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="zona local">
+      <p class="zona-titulo">Fica nesta máquina <small>ponto no nome: não vai ao banco, à outra máquina nem ao git</small></p>
+      <div class="prateleira">
+        <button class="arq" type="button" data-nota="secrets" aria-pressed="false"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10" width="14" height="11" rx="2" fill="none" stroke="var(--madeira)" stroke-width="2"/><path d="M8 10V7a4 4 0 018 0v3" fill="none" stroke="var(--madeira)" stroke-width="2"/></svg><span class="n">.secrets/</span></button>
+        <span class="arq mudo"><span class="n">.maestri/</span><span class="conta">papéis do Maestri</span></span>
+      </div>
+    </div>
+  </article>
+</section>
+
+<aside class="leitor" id="leitor" aria-live="polite" aria-label="A nota aberta">
+  <div class="leitor-topo">
+    <p class="leitor-caminho" id="l-caminho"></p>
+    <h3 id="l-titulo"></h3>
+    <div class="leitor-tipo" id="l-tipo"></div>
+  </div>
+  <div class="fm" id="l-fm"></div>
+  <div class="corpo" id="l-corpo"></div>
+  <p class="aviso-nota" id="l-aviso" hidden></p>
+  <p class="esquema" id="l-esquema"></p>
+  <a class="volta" href="#topo-arvore">↑ voltar à árvore</a>
+</aside>
+</div>
+
+<section class="mecanismo" aria-label="O mecanismo">
+  <div class="passo">
+    <h3><span class="num">1</span>O caminho diz o tipo</h3>
+    <p>Quem grava não escolhe: a pasta decide.</p>
+    <button class="arq" type="button" data-nota="paths" aria-pressed="false"><span class="n">agents/frontmatter/<wbr>paths.yml</span></button>
+  </div>
+  <div class="passo">
+    <h3><span class="num">2</span>O tipo tem um esquema</h3>
+    <p>Obrigatórios, opcionais e valores aceitos, num arquivo por tipo.</p>
+    <span class="arq mudo" style="display:inline-flex;margin-top:8px"><span class="n">agents/frontmatter/<wbr>&lt;tipo&gt;.yml</span></span>
+  </div>
+  <div class="passo">
+    <h3><span class="num">3</span>Três camadas impõem</h3>
+    <ul class="camadas">
+      <li><b>Antes de gravar</b>o hook recusa a nota fora do esquema, com o que falta</li>
+      <li><b>No banco</b>o MCP recusa do mesmo jeito (não verificado)</li>
+      <li><b>No fim da resposta</b>o verificador preenche o que é da máquina e devolve o resto ao agente</li>
+    </ul>
+    <p class="obsidian">Nota sua no Obsidian nasce sem frontmatter; a próxima resposta de agente a completa.</p>
+  </div>
+</section>
+
+</main>
+<script>
+(function () {
+  /* m = a máquina preenche (com a origem); e = quem grava escreve; c = a conciliar (o status comum). */
+  var M = function (o) { return { q: 'm', o: o }; };
+  var E = function (o) { return { q: 'e', o: o || 'agente' }; };
+  var C = { q: 'c', o: 'a conciliar' };
+  var STATUS_COMUM = ['status', 'em uso', C];
+  var COMUM_E_PROPRIO = ['status comum', 'rascunho · em uso · superada', C];
+  var INI = 'voegol-cross-tenant';
+
+  var NOTAS = {
+    'agents-raiz': {
+      caminho: 'AGENTS.md', titulo: 'AGENTS.md da raiz', tipo: 'sem frontmatter do hub', campos: [],
+      corpo: ['Instrução lida pelos harnesses: as seis raízes e onde cada coisa grava.',
+              'Aponta o catálogo de blocos (agents/blocks.md) e os esquemas (agents/frontmatter/).'],
+      aviso: 'AGENTS.md e SKILL.md não levam o frontmatter do hub.'
+    },
+    'agents-ini': {
+      caminho: 'clients/voegol/cross-tenant/AGENTS.md', titulo: 'AGENTS.md da iniciativa', tipo: 'sem frontmatter do hub', campos: [],
+      corpo: ['Só o mapa e as regras próprias: o que mora em cada bloco desta iniciativa.',
+              'Regra própria: nada de credencial fora de .secrets/.'],
+      aviso: 'É instrução para os harnesses, não nota: fica sem o frontmatter do hub.'
+    },
+    initiative: {
+      caminho: 'clients/voegol/cross-tenant/initiative.md', titulo: 'A ficha', tipo: 'initiative',
+      campos: [
+        ['title', 'VOEGOL cross-tenant', E('agente ou você')],
+        ['type', 'initiative', M('caminho')],
+        ['initiative', INI, M('caminho')],
+        ['id', INI, M('skill')],
+        ['aliases', '[XT, "cross-tenant (vault)"]', E('agente ou você')],
+        ['kind', 'projeto de cliente', E('agente ou você')],
+        ['size', 'project', E('agente ou você')],
+        ['status', 'doing', E('agente ou você')],
+        COMUM_E_PROPRIO,
+        ['blocks', '[inputs, research, evidence, runs, work]', E()],
+        ['cadence', 'weekly', E('agente ou você')],
+        ['related', '["[[soc-as-code]]"]', E()],
+        ['created', '2026-09-02', M('skill')],
+        ['updated', '2026-10-15', M('verificador')]
+      ],
+      corpo: ['Coletar os eventos dos tenants do cliente num workspace só, sem copiar credencial entre eles.',
+              'Fontes: o escopo em inputs/, as coletas em runs/.'],
+      aviso: 'Os aliases entram na busca com peso 5; o title, com peso 10.'
+    },
+    retomada: {
+      caminho: 'clients/voegol/cross-tenant/retomada.md', titulo: 'A nota de retomada', tipo: 'retomada',
+      campos: [
+        ['title', 'Retomada · VOEGOL cross-tenant', M('verificador')],
+        ['type', 'retomada', M('caminho')],
+        ['initiative', INI, M('caminho')],
+        ['next_step', 'Rodar a coleta de novo com o filtro de tenant corrigido', E()],
+        ['blocked_by', 'leitura no segundo tenant, pedida ao cliente', E()],
+        ['last_agent', 'Claude Code · Opus 5.5', E()],
+        STATUS_COMUM,
+        ['created', '2026-09-02', M('skill')],
+        ['updated', '2026-10-15', M('verificador')]
+      ],
+      corpo: ['Parou em: a coleta de 15/10 trouxe só o tenant A.',
+              'Próximo: o handoff em work/ diz o que trocar no filtro.'],
+      aviso: 'Sobrescrita a cada sessão; qualquer agente lê e continua.'
+    },
+    tasks: {
+      caminho: 'clients/voegol/cross-tenant/tasks.md', titulo: 'As pendências abertas', tipo: 'tasks',
+      campos: [
+        ['title', 'Tarefas · VOEGOL cross-tenant', M('verificador')],
+        ['type', 'tasks', M('caminho')],
+        ['initiative', INI, M('caminho')],
+        ['open_count', '4', M('verificador')],
+        STATUS_COMUM,
+        ['updated', '2026-10-15', M('verificador')]
+      ],
+      corpo: ['- [ ] trocar o nome do tenant pelo ID no filtro', '- [ ] pedir leitura no segundo tenant', '- [ ] …e mais duas']
+    },
+    decisions: {
+      caminho: 'clients/voegol/cross-tenant/decisions.md', titulo: 'Uma linha por decisão', tipo: 'decisions',
+      campos: [
+        ['title', 'Decisões · VOEGOL cross-tenant', M('verificador')],
+        ['type', 'decisions', M('caminho')],
+        ['initiative', INI, M('caminho')],
+        ['last_decision', '2026-10-09', M('verificador')],
+        STATUS_COMUM,
+        ['updated', '2026-10-09', M('verificador')]
+      ],
+      corpo: ['2026-10-09 · um workspace só para os dois tenants (reunião de escopo)', '2026-09-20 · coleta só de leitura; nada muda nos tenants']
+    },
+    context: {
+      caminho: 'clients/voegol/cross-tenant/context.md', titulo: 'Os fatos estáveis', tipo: 'context',
+      campos: [
+        ['title', 'Contexto · VOEGOL cross-tenant', M('verificador')],
+        ['type', 'context', M('caminho')],
+        ['initiative', INI, M('caminho')],
+        ['reviewed', '2026-10-01', E()],
+        STATUS_COMUM,
+        ['updated', '2026-10-01', M('verificador')]
+      ],
+      corpo: ['Dois tenants, um por unidade do cliente.', 'O acesso de leitura é pedido ao cliente, tenant por tenant.']
+    },
+    log: {
+      caminho: 'clients/voegol/cross-tenant/log/2026-10.md', titulo: 'O diário do mês', tipo: 'log',
+      campos: [
+        ['title', 'Diário · VOEGOL cross-tenant · 2026-10', M('verificador')],
+        ['type', 'log', M('caminho')],
+        ['initiative', INI, M('caminho')],
+        ['month', '2026-10', M('verificador')],
+        STATUS_COMUM,
+        ['updated', '2026-10-15', M('verificador')]
+      ],
+      corpo: ['15/10 · coleta parcial: o filtro usa o nome do tenant.', '09/10 · escopo recebido e extraído.'],
+      aviso: 'No mês novo, o verificador cria o arquivo e o title.'
+    },
+    input: {
+      caminho: 'clients/voegol/cross-tenant/inputs/2026-10-08-reuniao-de-escopo.md', titulo: 'Uma entrada', tipo: 'input',
+      campos: [
+        ['title', 'Reunião de escopo, 08/10', E()],
+        ['type', 'input', M('caminho')],
+        ['initiative', INI, M('caminho')],
+        ['origin', 'reunião', E()],
+        ['received', '2026-10-08', E()],
+        ['org', 'VOEGOL', E()],
+        STATUS_COMUM,
+        ['created', '2026-10-08', M('verificador')],
+        ['updated', '2026-10-08', M('verificador')]
+      ],
+      corpo: ['Pedido: os eventos dos dois tenants no mesmo workspace.', 'Anexo: o escopo assinado, escopo-cross-tenant.pdf.']
+    },
+    pdf: {
+      caminho: 'clients/voegol/cross-tenant/inputs/escopo-cross-tenant.pdf', titulo: 'O anexo', tipo: 'anexo, sem frontmatter', campos: [],
+      corpo: ['A busca não lê PDF.', 'O texto dele mora no arquivo irmão escopo-cross-tenant.pdf.md, que a busca lê.'],
+      aviso: 'Anexo com texto extraído dispensa linha no index.md da pasta.'
+    },
+    pdfmd: {
+      caminho: 'clients/voegol/cross-tenant/inputs/escopo-cross-tenant.pdf.md', titulo: 'O texto do anexo', tipo: 'attachment-text',
+      campos: [
+        ['title', 'Escopo · cross-tenant', M('extrator')],
+        ['type', 'attachment-text', M('caminho')],
+        ['initiative', INI, M('caminho')],
+        ['source', 'escopo-cross-tenant.pdf', M('extrator')],
+        ['extractor', 'docling 2.55.1', M('extrator')],
+        ['extracted', '2026-10-09', M('extrator')],
+        ['source_hash', 'sha256:9f2c…e41a', M('extrator')],
+        STATUS_COMUM
+      ],
+      corpo: ['1. Objeto: coleta de eventos de segurança dos tenants A e B.', '2. Fora do escopo: mudar política em qualquer tenant.'],
+      aviso: 'Vale para PDF, Word, PowerPoint, Excel e HTML; replica e vai ao git.'
+    },
+    'index-evidence': {
+      caminho: 'clients/voegol/cross-tenant/evidence/index.md', titulo: 'O cartão da pasta', tipo: 'index',
+      campos: [
+        ['title', 'evidence · VOEGOL cross-tenant', M('verificador')],
+        ['type', 'index', M('caminho')],
+        ['initiative', INI, M('caminho')],
+        ['folder', 'evidence', M('caminho')],
+        ['summary', 'auto', M('verificador')],
+        ['local', 'false', M('verificador')],
+        STATUS_COMUM,
+        ['created', '2026-10-12', M('verificador')],
+        ['updated', '2026-10-15', M('verificador')]
+      ],
+      corpo: ['- 2026-10-09-consentimento-a.png · tela de consentimento do app no tenant A',
+              '- 2026-10-09-consentimento-b.png · sem descrição',
+              '- … 12 linhas mais, uma por imagem'],
+      aviso: 'O verificador criou este cartão: a pasta passou de 10 arquivos e guarda imagens que a busca não lê. Arquivo novo entra como "sem descrição"; quem grava descreve.'
+    },
+    'index-brutos': {
+      caminho: 'clients/voegol/cross-tenant/runs/2026-10-15-coleta/brutos/index.md', titulo: 'Uma pasta local', tipo: 'index',
+      campos: [
+        ['title', 'brutos · Coleta 15/10', M('verificador')],
+        ['type', 'index', M('caminho')],
+        ['initiative', INI, M('caminho')],
+        ['folder', 'runs/2026-10-15-coleta/brutos', M('caminho')],
+        ['summary', 'auto', M('verificador')],
+        ['local', 'true', E('agente ou você')],
+        STATUS_COMUM,
+        ['updated', '2026-10-15', M('verificador')]
+      ],
+      corpo: ['- eventos-tenant-a-1.jsonl · sem descrição', '- eventos-tenant-a-2.jsonl · sem descrição', '- eventos-tenant-a-3.jsonl · sem descrição'],
+      aviso: 'local: true deixa a pasta nesta máquina: um script tira a pasta do sync e da busca a partir do cartão (não verificado). Os brutos são grandes e se refazem rodando a coleta.'
+    },
+    run: {
+      caminho: 'clients/voegol/cross-tenant/runs/2026-10-15-coleta/relatorio.md', titulo: 'Uma execução', tipo: 'run',
+      campos: [
+        ['title', 'Coleta 15/10', E()],
+        ['type', 'run', M('caminho')],
+        ['initiative', INI, M('caminho')],
+        ['started', '2026-10-15T09:40', E()],
+        ['ended', '2026-10-15T10:55', E()],
+        ['outcome', 'partial', E()],
+        ['harness', 'codex', E()],
+        STATUS_COMUM,
+        ['updated', '2026-10-15', M('verificador')]
+      ],
+      corpo: ['Tenant A: 182 mil eventos. Tenant B: nenhum, sem leitura.', 'Os brutos ficam em brutos/, só nesta máquina.']
+    },
+    work: {
+      caminho: 'clients/voegol/cross-tenant/work/2026-10-15-handoff-filtro.md', titulo: 'Um handoff', tipo: 'work',
+      campos: [
+        ['title', 'Handoff: corrigir o filtro de tenant', E()],
+        ['type', 'work', M('caminho')],
+        ['initiative', INI, M('caminho')],
+        ['work_kind', 'handoff', E()],
+        ['status', 'open', E()],
+        COMUM_E_PROPRIO,
+        ['agent', 'Claude Code', E()],
+        ['created', '2026-10-15', M('verificador')],
+        ['updated', '2026-10-15', M('verificador')]
+      ],
+      corpo: ['Feito: a coleta de 15/10; só o tenant A veio.', 'Falta: o filtro usa o nome do tenant, não o ID. Trocar e rodar de novo.']
+    },
+    secrets: {
+      caminho: 'clients/voegol/cross-tenant/.secrets/', titulo: 'Os segredos', tipo: 'pasta com ponto', campos: [],
+      corpo: ['coletor.env · ••••••••', 'Não vai ao banco, à outra máquina, ao git nem à busca.'],
+      aviso: 'Senhas de contas que acessam tenant ficam no KeePass, não aqui.'
+    },
+    paths: {
+      caminho: 'agents/frontmatter/paths.yml', titulo: 'Caminho → tipo', tipo: 'o mecanismo',
+      yaml: [
+        'clients/*/*/initiative.md: initiative',
+        'clients/*/*/retomada.md: retomada',
+        'clients/*/*/inputs/*.pdf.md: attachment-text',
+        'clients/*/*/inputs/**: input',
+        'clients/*/*/runs/**: run',
+        'clients/*/*/work/**: work',
+        '"**/index.md": index'
+      ],
+      corpo: ['Um trecho de exemplo: a tabela inteira cobre os 28 tipos.'],
+      aviso: 'Fonte única: o AGENTS.md só aponta para cá.'
+    }
+  };
+
+  var ICONE_M = '<svg width="12" height="12" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8.5a3.5 3.5 0 100 7 3.5 3.5 0 000-7zm8 3.5l2-1.6-2-3.5-2.4.8a8 8 0 00-1.8-1L15.4 4h-4l-.4 2.5a8 8 0 00-1.8 1L6.8 6.7l-2 3.5L6.8 12l-2 1.6 2 3.5 2.4-.8a8 8 0 001.8 1l.4 2.6h4l.4-2.6a8 8 0 001.8-1l2.4.8 2-3.5z" fill="currentColor"/></svg>';
+  var ICONE_E = '<svg width="12" height="12" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l1-4.5L16 4.5 19.5 8 8.5 19zM14.5 6l3.5 3.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/></svg>';
+
+  function el(tag, cls, txt) { var e = document.createElement(tag); if (cls) e.className = cls; if (txt != null) e.textContent = txt; return e; }
+  function selo(quem) {
+    var s = el('span', 'selo ' + quem.q);
+    s.innerHTML = quem.q === 'm' ? ICONE_M : quem.q === 'e' ? ICONE_E : '';
+    s.appendChild(document.createTextNode(quem.q === 'm' ? 'máquina · ' + quem.o : quem.q === 'e' ? quem.o : quem.o));
+    return s;
+  }
+
+  var botoes = Array.prototype.slice.call(document.querySelectorAll('[data-nota]'));
+  function abrir(id, rolar) {
+    var n = NOTAS[id]; if (!n) return;
+    botoes.forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.nota === id)); });
+    document.getElementById('l-caminho').textContent = n.caminho;
+    document.getElementById('l-titulo').textContent = n.titulo;
+    var tipo = document.getElementById('l-tipo'); tipo.textContent = '';
+    tipo.appendChild(el('span', 'selo m', 'tipo: ' + n.tipo));
+    var fm = document.getElementById('l-fm'); fm.textContent = '';
+    fm.hidden = false;
+    if (n.yaml) {
+      n.yaml.forEach(function (l) { fm.appendChild(el('div', 'campo', l)); });
+    } else if (!n.campos.length) {
+      fm.appendChild(el('div', 'traco', 'sem frontmatter'));
+    } else {
+      fm.appendChild(el('div', 'traco', '---'));
+      n.campos.forEach(function (c) {
+        var linha = el('div', 'campo' + (c[2].q === 'c' ? ' conciliar' : ''));
+        var esq = el('span');
+        esq.appendChild(el('span', 'chave', c[0] + ': '));
+        esq.appendChild(el('span', 'valor', c[1]));
+        linha.appendChild(esq);
+        linha.appendChild(selo(c[2]));
+        fm.appendChild(linha);
+      });
+      fm.appendChild(el('div', 'traco', '---'));
+    }
+    var corpo = document.getElementById('l-corpo'); corpo.textContent = '';
+    n.corpo.forEach(function (p) { corpo.appendChild(el('p', null, p)); });
+    var aviso = document.getElementById('l-aviso');
+    aviso.hidden = !n.aviso; aviso.textContent = n.aviso || '';
+    var esquema = document.getElementById('l-esquema');
+    var temEsquema = n.campos && n.campos.length && !n.yaml;
+    esquema.hidden = !temEsquema;
+    esquema.textContent = temEsquema ? 'esquema: agents/frontmatter/' + n.tipo + '.yml' : '';
+    if (rolar && window.innerWidth <= 980) document.getElementById('leitor').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+  botoes.forEach(function (b) { b.addEventListener('click', function () { abrir(b.dataset.nota, true); }); });
+  document.querySelector('.mesa section').id = 'topo-arvore';
+  abrir('initiative', false);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+{
+ "nome": "FAISS",
+ "nome_canonico": "facebookresearch/faiss",
+ "chave": "gh:facebookresearch/faiss",
+ "url": "https://github.com/facebookresearch/faiss",
+ "serve": "search",
+ "area": null,
+ "identidade": "ok",
+ "windows": "yes: faiss-cpu tem wheels win_amd64 no PyPI (CPython 3.10 a 3.14) e pacote conda para Windows x86-64; GPU só Linux",
+ "mcp": "no (biblioteca; MCP de terceiros nao_verificado)",
+ "portugues": "nao_aplicavel como texto: só vetores; o idioma depende do modelo de embedding",
+ "markdown_frontmatter": "Não indexa texto nem Markdown; só vetores densos",
+ "atualizacao": "manual: o código adiciona/remove vetores",
+ "embeddings_endpoint": "não gera embeddings: recebe vetores prontos (o FreeLLMAPI os geraria)",
+ "recursos": "C++ com BLAS como única dependência; memória e disco em número: nao_verificado",
+ "licenca": "MIT",
+ "ultimo_release": "v1.15.1 (2026-09-16, PyPI faiss-cpu)",
+ "atividade": "release recente (set/2026)",
+ "maturidade": "stable",
+ "encaixe": "Índice vetorial em disco de cada máquina, dentro do MCP do banco, com vetores do FreeLLMAPI. Impedimento: não faz BM25 nem texto; precisa de outra peça para a parte lexical.",
+ "evidencias": [
+  {
+   "campo": "windows",
+   "url": "https://pypi.org/project/faiss-cpu/",
+   "citacao": "faiss_cpu-1.15.1-cp314-cp314-win_amd64.whl"
+  },
+  {
+   "campo": "windows",
+   "url": "https://github.com/facebookresearch/faiss/blob/main/INSTALL.md",
+   "citacao": "Faiss is supported on x86-64 machines on Linux, OSX, and Windows."
+  },
+  {
+   "campo": "licenca",
+   "url": "https://github.com/facebookresearch/faiss",
+   "citacao": "Faiss is MIT-licensed, refer to the LICENSE file in the top level directory."
+  },
+  {
+   "campo": "recursos",
+   "url": "https://github.com/facebookresearch/faiss",
+   "citacao": "mostly implemented in C++, the only dependency is a BLAS implementation"
+  }
+ ],
+ "nao_verificado": [
+  "recursos em número",
+  "MCP de terceiros"
+ ]
+}

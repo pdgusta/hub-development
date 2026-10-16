@@ -1,0 +1,118 @@
+{
+  "envio": "2851bfe9-9d62-402f-8b3d-69976f994e60",
+  "tipo": "resposta",
+  "enviada": "2026-10-15T14:14:44-03:00",
+  "alvo": {
+    "tipo": "rodada",
+    "id": "2026-10-15-camada-de-busca-r10",
+    "titulo": "Onde a busca mora, depois da comparação"
+  },
+  "ticket": "09",
+  "substitui": null,
+  "rodada": {
+    "id": "2026-10-15-camada-de-busca-r10",
+    "base": "ab6efdf2f03996fa58d4a50e3113cbe4677e59dee5671b2ae35ad5dbf924171b",
+    "titulo": "Onde a busca mora, depois da comparação",
+    "ticket": "09",
+    "perguntas": [
+      {
+        "id": "onde",
+        "titulo": "Onde a busca mora",
+        "tipo": "escolha",
+        "recomendada": [
+          "A"
+        ],
+        "opcoes": [
+          {
+            "chave": "A",
+            "texto": "Leve com alcance: o obsidian-hybrid-search com o arctic no disco de cada máquina, servindo a busca por MCP em HTTP na tailnet. O protótipo da Robusta fica guardado como reserva e volta se a busca precisar mostrar uma gravação em segundos, ou se o gemini não rodar ao lado do arctic"
+          },
+          {
+            "chave": "B",
+            "texto": "Robusta: um índice próprio dentro da versão modificada do MCP do banco (Node, FTS5 do SQLite, sqlite-vec e o arctic), lendo o CouchDB cifrado, com a fusão do obsidian-hybrid-search copiada. Construção estimada em 5 a 8 dias, não medida"
+          },
+          {
+            "chave": "C",
+            "texto": "Antes de decidir, um teste curto no obsidian-hybrid-search: o gemini pela API num segundo índice ao lado do arctic, e o tempo de uma edição até a busca com o CLI do LiveSync ligado. Custo estimado: 80 a 150 mil tokens de um subagente Sonnet 5.5, mais a cota do Google para uma indexação completa (orçada antes), cerca de 1 a 2 horas"
+          }
+        ],
+        "proposta": null
+      },
+      {
+        "id": "idioma",
+        "titulo": "A busca escolhe o idioma de cada nota?",
+        "tipo": "escolha",
+        "recomendada": [
+          "A"
+        ],
+        "opcoes": [
+          {
+            "chave": "A",
+            "texto": "Não: um analisador só para português e inglês (FTS5 do SQLite, sem stemmer) e o embedding multilíngue. O frontmatter não ganha campo de idioma por causa da busca, e \"Arquitetura de pastas e frontmatter\" fica livre desse campo"
+          },
+          {
+            "chave": "B",
+            "texto": "Sim: cada nota ganha um campo de idioma no frontmatter, detectado pelo lingua-py, e a busca escolhe o analisador por ele. Quem grava o campo fica para \"Arquitetura de pastas e frontmatter\"; a detecção erra mais em texto curto e em nota que mistura os dois idiomas"
+          }
+        ],
+        "proposta": null
+      },
+      {
+        "id": "gemini",
+        "titulo": "Como o gemini fica ligável",
+        "tipo": "escolha",
+        "recomendada": [
+          "A"
+        ],
+        "opcoes": [
+          {
+            "chave": "A",
+            "texto": "Pronto e desligado: a construção escreve a configuração do gemini pelo FreeLLMAPI e a testa uma vez, num índice ao lado do arctic. Ligar fica a seu critério, a qualquer hora; quando ligado, todo o conteúdo indexado vai ao Google, e a busca por sentido passa a depender da rede e da cota do gateway"
+          },
+          {
+            "chave": "B",
+            "texto": "Sem preparo: a construção entrega só o arctic, e o gemini é montado quando você pedir"
+          }
+        ],
+        "proposta": null
+      },
+      {
+        "id": "algo-mais",
+        "titulo": "Algo mais?",
+        "tipo": "texto",
+        "recomendada": [],
+        "opcoes": [],
+        "proposta": null
+      }
+    ]
+  },
+  "corpo_hash": "92131caa40eba8a9a6e1480b817f3b95e1f88b0c67915821887ea3f7100bdeb2",
+  "corpo": {
+    "tipo": "resposta",
+    "rodada": "2026-10-15-camada-de-busca-r10",
+    "base": "ab6efdf2f03996fa58d4a50e3113cbe4677e59dee5671b2ae35ad5dbf924171b",
+    "respostas": {
+      "onde": {
+        "escolha": [
+          "A"
+        ],
+        "outra": null,
+        "comentario": null
+      },
+      "idioma": {
+        "escolha": [
+          "A"
+        ],
+        "outra": null,
+        "comentario": null
+      },
+      "gemini": {
+        "escolha": [
+          "A"
+        ],
+        "outra": null,
+        "comentario": null
+      }
+    }
+  }
+}

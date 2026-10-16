@@ -1,0 +1,33 @@
+
+const EXPR_BANCO = `(function(){var r=document.querySelector('[data-item="Banco local"]').getBoundingClientRect();return {x:r.left+r.width/2,y:r.top+r.height/2}})()`;
+const FICHA = `document.getElementById('ficha').classList.contains('aberta')`;
+for (const [W,H] of [[1920,1080],[320,640],[1280,1000]]) {
+  const T = {}; R.tamanhos[`${W}x${H}`] = T; T.rodadas = [];
+  for (const modo of ['como_antes','arrasto_curto_longe_do_bairro','dois_toques_seguidos_sem_arrasto']) {
+    await abrir(W,H,true);
+    await ev(`(function(){window.__ev=[];['pointerdown','pointerup','pointercancel','click','lostpointercapture'].forEach(function(n){document.addEventListener(n,function(e){var t=e.target;window.__ev.push(n+':'+(t.tagName||'')+(t.getAttribute&&t.getAttribute('class')?'.'+t.getAttribute('class'):''))},true)})})()`);
+    const b = await ev(EXPR_BANCO); const r = {modo};
+    if (modo==='como_antes') {
+      await toqueEv('touchStart',[{x:b.x-40,y:b.y-20,id:0}]); for(let i=1;i<=6;i++){ await toqueEv('touchMove',[{x:b.x-40+i*40/3,y:b.y-20+i*20/3,id:0}]); await esp(10);}
+      await toqueEv('touchEnd',[{x:b.x+40,y:b.y+20,id:0}]); await esp(150);
+    } else if (modo==='arrasto_curto_longe_do_bairro') {
+      const st = await estado(); const x=st.tela.l+20,y=st.tela.t+st.tela.h*.5;
+      await toqueEv('touchStart',[{x,y,id:0}]); for(let i=1;i<=6;i++){ await toqueEv('touchMove',[{x:x+10*i,y,id:0}]); await esp(10);}
+      await toqueEv('touchEnd',[{x:x+60,y,id:0}]); await esp(150);
+    }
+    r.ficha_apos_arrasto = await ev(FICHA);
+    const b2 = await ev(EXPR_BANCO);
+    r.banco_antes=b; r.banco_depois=b2;
+    r.elemento_no_ponto = await ev(`(function(){var e=document.elementFromPoint(${b2.x},${b2.y});return e?(e.tagName+'.'+(e.getAttribute('class')||'')):null})()`);
+    r.dentro_da_tela = await ev(`(function(){var t=document.getElementById('tela').getBoundingClientRect();return ${b2.x}>t.left&&${b2.x}<t.right&&${b2.y}>t.top&&${b2.y}<t.bottom})()`);
+    await ev(`window.__ev=[]`);
+    await toqueEv('touchStart',[{x:b2.x,y:b2.y,id:0}]); await toqueEv('touchEnd',[{x:b2.x,y:b2.y,id:0}]); await esp(200);
+    r.ficha_apos_toque_seguinte = await ev(FICHA);
+    r.eventos_do_toque = await ev(`window.__ev.join(' ')`);
+    T.rodadas.push(r);
+  }
+  await cmd('Emulation.setTouchEmulationEnabled',{enabled:false});
+}
+fs.writeFileSync(SAIDA, JSON.stringify(R,null,1));
+try{ws.close()}catch{}
+edge.kill(); srv.close(); setTimeout(()=>process.exit(0),500);

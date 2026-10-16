@@ -1,0 +1,30 @@
+{
+ "chave": "web:elastic.co/guide/en/logstash/current/input-plugins.html",
+ "urls": [
+  "https://www.elastic.co/guide/en/logstash/current/input-plugins.html"
+ ],
+ "tipos": [
+  "library"
+ ],
+ "termos": [
+  "logstash input",
+  "data ingestion",
+  "filebeat"
+ ],
+ "mencoes": 1,
+ "familias": [
+  "mistral"
+ ],
+ "primeira_onda": 3,
+ "nomes": [
+  "Logstash Input Plugins"
+ ],
+ "resumos": [
+  "Plugins for ingesting data from various sources, including files, databases, and APIs."
+ ],
+ "fonte": "site",
+ "readme_status": "ok",
+ "readme_nome": "https://www.elastic.co/guide/en/logstash/current/input-plugins.html",
+ "readme_cortado": false,
+ "readme": "[Input plugins | Logstash Plugins]\n\nDocs\n\n /\n\n Reference\n\n /\n\n Ingestion tools\n\n /\n\n Logstash Plugins\n\nInput plugins\n\nAn input plugin enables a specific source of events to be read by Logstash.\n\nThe following input plugins are available below. For a list of Elastic supported plugins, please consult the Support Matrix.\n\nPlugin\nDescription\nGithub repository\n\nazure_event_hubs\nReceives events from Azure Event Hubs\nazure_event_hubs\n\nbeats\nReceives events from the Elastic Beats framework\nlogstash-input-beats\n\ncloudwatch\nPulls events from the Amazon Web Services CloudWatch API\nlogstash-input-cloudwatch\n\ncouchdb_changes\nStreams events from CouchDB's _changes URI\nlogstash-input-couchdb_changes\n\ndead_letter_queue\nread events from Logstash's dead letter queue\nlogstash-input-dead_letter_queue\n\nelastic_agent\nReceives events from the Elastic Agent framework\nlogstash-input-beats (shared)\n\nelastic_serverless_forwarder\nAccepts events from Elastic Serverless Forwarder\nlogstash-input-elastic_serverless_forwarder\n\nelasticsearch\nReads query results from an Elasticsearch cluster\nlogstash-input-elasticsearch\n\nexec\nCaptures the output of a shell command as an event\nlogstash-input-exec\n\nfile\nStreams events from files\nlogstash-input-file\n\nganglia\nReads Ganglia packets over UDP\nlogstash-input-ganglia\n\ngelf\nReads GELF-format messages from Graylog2 as events\nlogstash-input-gelf\n\ngenerator\nGenerates random log events for test purposes\nlogstash-input-generator\n\ngithub\nReads events from a GitHub webhook\nlogstash-input-github\n\ngoogle_cloud_storage\nExtract events from files in a Google Cloud Storage bucket\nlogstash-input-google_cloud_storage\n\ngoogle_pubsub\nConsume events from a Google Cloud PubSub service\nlogstash-input-google_pubsub\n\ngraphite\nReads metrics from the graphite tool\nlogstash-input-graphite\n\nheartbeat\nGenerates heartbeat events for testing\nlogstash-input-heartbeat\n\nhttp\nReceives events over HTTP or HTTPS\nlogstash-input-http\n\nhttp_poller\nDecodes the output of an HTTP API into events\nlogstash-input-http_poller\n\nimap\nReads mail from an IMAP server\nlogstash-input-imap\n\nirc\nReads events from an IRC server\nlogstash-input-irc\n\njava_generator\nGenerates synthetic log events\ncore plugin\n\njava_stdin\nReads events from standard input\ncore plugin\n\njdbc\nCreates events from JDBC data\nlogstash-integration-jdbc\n\njms\nReads events from a Jms Broker\nlogstash-input-jms\n\njmx\nRetrieves metrics from remote Java applications over JMX\nlogstash-input-jmx\n\nkafka\nReads events from a Kafka topic\nlogstash-integration-kafka\n\nkinesis\nReceives events through an AWS Kinesis stream\nlogstash-input-kinesis\n\nlog4j\nReads events over a TCP socket from a Log4j SocketAppender object\nlogstash-input-log4j\n\nlogstash\nReads from Logstash output of another Logstash instance\nlogstash-integration-logstash\n\nlumberjack\nReceives events using the Lumberjack protocl\nlogstash-input-lumberjack\n\nmeetup\nCaptures the output of command line tools as an event\nlogstash-input-meetup\n\npipe\nStreams events from a long-running command pipe\nlogstash-input-pipe\n\npuppet_facter\nReceives facts from a Puppet server\nlogstash-input-puppet_facter\n\nrabbitmq\nPulls events from a RabbitMQ exchange\nlogstash-integration-rabbitmq\n\nredis\nReads events from a Redis instance\nlogstash-input-redis\n\nrelp\nReceives RELP events over a TCP socket\nlogstash-input-relp\n\nrss\nCaptures the output of command line tools as an event\nlogstash-input-rss\n\ns3\nStreams events from files in a S3 bucket\nlogstash-input-s3\n\ns3-sns-sqs\nReads logs from AWS S3 buckets using sqs\nlogstash-input-s3-sns-sqs\n\nsalesforce\nCreates events based on a Salesforce SOQL query\nlogstash-input-salesforce\n\nsnmp\nPolls network devices using Simple Network Management Protocol (SNMP)\nlogstash-integration-snmp\n\nsnmptrap\nCreates events based on SNMP trap messages\nlogstash-integration-snmp\n\nsqlite\nCreates events based on rows in an SQLite database\nlogstash-input-sqlite\n\nsqs\nPulls events from an Amazon Web Services Simple Queue Service queue\nlogstash-input-sqs\n\nstdin\nReads events from standard input\nlogstash-input-stdin\n\nstomp\nCreates events received with the STOMP protocol\nlogstash-input-stomp\n\nsyslog\nReads syslog messages as events\nlogstash-input-syslog\n\ntcp\nReads events from a TCP socket\nlogstash-input-tcp\n\ntwitter\nReads events from the Twitter Streaming API\nlogstash-input-twitter\n\nudp\nReads events over UDP\nlogstash-input-udp\n\nunix\nReads events over a UNIX socket\nlogstash-input-unix\n\nvarnishlog\nReads from the varnish cache shared memory log\nlogstash-input-varnishlog\n\nwebsocket\nReads events from a websocket\nlogstash-input-websocket\n\nwmi\nCreates events based on the results of a WMI query\nlogstash-input-wmi\n\nxmpp\nReceives events over the XMPP/Jabber protocol\nlogstash-input-xmpp"
+}

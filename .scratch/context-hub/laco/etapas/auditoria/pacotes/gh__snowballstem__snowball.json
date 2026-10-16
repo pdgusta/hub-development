@@ -1,0 +1,86 @@
+{
+ "chave": "gh:snowballstem/snowball",
+ "nomes": [
+  "Portuguese Stemmer",
+  "Snowball Stemmer",
+  "PyStemmer (Snowball)",
+  "Portuguese Stemmer/Tokenizer (NLTK, spaCy, PyStemmer)",
+  "Snowball Stemmer (Portuguese)",
+  "Portuguese Stemmer (Snowball/PyStemmer)",
+  "snowballstemmer",
+  "Snowball 词干提取器（原始 C 库）",
+  "Portuguese Stemmer (Snowball)",
+  "Snowball Stemmer (Português)",
+  "SnowballStemmer",
+  "Portuguese Stemmer (Snowball ou PyStemmer)"
+ ],
+ "urls": [
+  "https://github.com/snowballstem/snowball",
+  "https://github.com/snowballstem/snowball | https://github.com/hunspell/hunspell",
+  "https://snowballstem.org/",
+  "http://snowballstem.org/",
+  "https://snowballstem.org/algorithms/portuguese.html",
+  "https://snowball.tartarus.org/",
+  "https://snowballstem.org",
+  "https://github.com/snowballstemmer/snowball",
+  "https://github.com/shankarpandala/snowballstemmer",
+  "https://github.com/shibukawa/snowballstemmer",
+  "https://github.com/skvark/snowball-stemmer",
+  "https://github.com/shibukawa/snowball_data",
+  "https://github.com/words/snowball-stemmers",
+  "https://snowballstem.org/algorithms/portuguese/stemmer.html"
+ ],
+ "readme_cortado": false,
+ "readme": "Snowball is a small string processing language for creating stemming algorithms\nfor use in Information Retrieval, plus a collection of stemming algorithms\nimplemented using it.\n\nSnowball was originally designed and built by Martin Porter.  Martin retired\nfrom development in 2014 and Snowball is now maintained as a community project.\nMartin originally chose the name Snowball as a tribute to SNOBOL, the excellent\nstring handling language from the 1960s.  It now also serves as a metaphor for\nhow the project grows by gathering contributions over time.\n\nThe Snowball compiler translates a Snowball program into source code in another\nlanguage - currently Ada, C, C++, C#, Dart, Go, Java, Javascript, Object\nPascal, PHP, Python, Rust and Zig are supported.\n\nThis repository contains the source code for the snowball compiler and the\nstemming algorithms.  The snowball compiler is written in ISO C - you'll need\na C compiler which support C99 to build it (but the C code it generates should\nwork with any ISO C compiler).\n\nSee https://snowballstem.org/ for more information about Snowball.\n\nWhat is Stemming?\n=================\n\nStemming maps different forms of the same word to a common \"stem\" - for\nexample, the English stemmer maps *connection*, *connections*, *connective*,\n*connected*, and *connecting* to *connect*.  So a search for *connected*\nwould also find documents which only have the other forms.\n\nThis stem form is often a word itself, but this is not always the case as this\nis not a requirement for text search systems, which are the intended field of\nuse.  We also aim to conflate words with the same meaning, rather than all\nwords with a common linguistic root (so *awe* and *awful* don't have the same\nstem), and over-stemming is more problematic than under-stemming so we tend not\nto stem in cases that are hard to resolve.  If you want to always reduce words\nto a root form and/or get a root form which is itself a word then Snowball's\nstemming algorithms likely aren't the right answer.\n\nBuilding Snowball\n=================\n\nGNU make is required to build Snowball.\n\nThe build system is currently structured as two separate stages for many of the\ntarget languages.\n\nThe first stage builds the Snowball compiler and runs it to create target\nlanguage code (and it can also run tests on each stemmer).  The expectation is\nthat you then create \"distribution\" tarballs of this code with ``make dist``\n(or create one for a specific target language, e.g. with ``make\ndist_libstemmer_c`` for C).  These tarballs are created in the ``dist/``\nsubdirectory.\n\nTo actually build the libstemmer library you then unpack and build the\ndistribution tarball, e.g. for C::\n\n    tar xf dist/libstemmer_c-3.1.1.tar.gz\n    cd libstemmer_c-3.1.1\n    make\n\nCross-compiling\n---------------\n\nIf cross-compiling starting from the git repo, the Snowball compiler needs to\nbe built with a native compiler then libstemmer with the cross-compiler.  For\nexample::\n\n    make CC=cc dist_libstemmer_c\n    tar xf dist/libstemmer_c-3.1.1.tar.gz\n    cd libstemmer_c-3.1.1\n    make CC=riscv64-unknown-linux-gnu-gcc\n\nIf you are cross-compiling to or from Microsoft Windows, you'll need to also\nwork around an assumption in libstemmer's ``Makefile`` which sets ``EXEEXT``\nbased on the OS you are building on::\n\n    ifeq ($(OS),Windows_NT)\n    EXEEXT=.exe\n    endif\n\nFor example, if cross-compiling from Linux to Microsoft Windows, use something\nlike this for the libstemmer build::\n\n    make CC=x86_64-w64-mingw32-gcc EXEEXT=.exe\n\nWhen going the other way, you'll need to use ``EXEEXT=``.\n",
+ "fonte": "readme",
+ "respostas": [
+  {
+   "por": "claude-haiku-5-5",
+   "resposta": {
+    "serve": "search",
+    "role": "Stemmer para normalizar termos em recuperação de informação, base do BM25",
+    "place": [
+     "library"
+    ],
+    "mechanism": [
+     "other"
+    ],
+    "mcp": "unknown",
+    "windows": "yes",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "unknown",
+    "doubt": false,
+    "evidence": "\"a collection of stemming algorithms\" / \"for use in Information Retrieval\"; \"cross-compiling to or from Microsoft Windows\""
+   }
+  }
+ ],
+ "conferencia_sonnet": {
+  "chave": "gh:snowballstem/snowball",
+  "modelo": "claude-sonnet-5-5",
+  "ts": "2026-10-13T22:00:16Z",
+  "resultado": "confirma",
+  "conferencia": {
+   "resultado": "confirma",
+   "final": {
+    "serve": "search",
+    "role": "Stemmer para normalizar termos em recuperação de informação (compilador Snowball e algoritmos de stemming)",
+    "place": [
+     "library"
+    ],
+    "mechanism": [
+     "other"
+    ],
+    "windows": "yes",
+    "maturity": "unknown",
+    "evidence": "\"a collection of stemming algorithms\" / \"for use in Information Retrieval\"; cross-compiling to or from Microsoft Windows",
+    "mcp": "unknown",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "doubt": false
+   },
+   "o_que_mudou": [],
+   "nota": "Stemmer útil como peça do BM25 em português, se houver algoritmo para a língua (README não lista)."
+  }
+ }
+}

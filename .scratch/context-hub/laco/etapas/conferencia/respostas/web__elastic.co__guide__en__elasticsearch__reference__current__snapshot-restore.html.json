@@ -1,0 +1,31 @@
+{
+ "chave": "web:elastic.co/guide/en/elasticsearch/reference/current/snapshot-restore.html",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T21:43:20Z",
+ "resultado": "corrige",
+ "conferencia": {
+  "resultado": "corrige",
+  "final": {
+   "serve": "stack",
+   "role": "Backup and restore of an Elasticsearch cluster via snapshots",
+   "place": [
+    "network_service"
+   ],
+   "mechanism": [
+    "other"
+   ],
+   "mcp": "unknown",
+   "windows": "unknown",
+   "portuguese": "unknown",
+   "license": "unknown",
+   "maturity": "unknown",
+   "doubt": false,
+   "evidence": "A snapshot is a backup of a running Elasticsearch cluster."
+  },
+  "o_que_mudou": [
+   "role: hub indices -> generic Elasticsearch cluster backup",
+   "place: disk -> network_service, snapshots go to an off-cluster repository"
+  ],
+  "nota": "Backup concept for Elasticsearch only; relevant only if the hub adopts it as search layer."
+ }
+}

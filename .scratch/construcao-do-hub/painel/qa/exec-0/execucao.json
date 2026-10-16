@@ -1,0 +1,181 @@
+{
+ "formato": 1,
+ "id": "fixture-construcao",
+ "titulo": "Construção do context hub (fixture)",
+ "inicio": "2026-10-15T20:27:30-03:00",
+ "terminou_em": null,
+ "limites": {
+  "tentativa_min": 60,
+  "subagentes_por_agente": 10,
+  "sem_sinal_apos_s": 300
+ },
+ "fases": [
+  {
+   "id": "spec",
+   "titulo": "Spec",
+   "estado": "feita"
+  },
+  {
+   "id": "tickets",
+   "titulo": "Tickets de construção",
+   "estado": "feita"
+  },
+  {
+   "id": "execucao",
+   "titulo": "Execução",
+   "estado": "em-curso"
+  }
+ ],
+ "papeis": [
+  {
+   "id": "construtor",
+   "titulo": "Construtor"
+  },
+  {
+   "id": "revisor",
+   "titulo": "Revisor"
+  },
+  {
+   "id": "testador",
+   "titulo": "Testador"
+  },
+  {
+   "id": "integrador",
+   "titulo": "Integrador"
+  },
+  {
+   "id": "prumo",
+   "titulo": "Prumo"
+  },
+  {
+   "id": "maestro",
+   "titulo": "Maestro"
+  }
+ ],
+ "agentes": [
+  {
+   "id": "maestro",
+   "papel": "maestro",
+   "titulo": "Maestro",
+   "modelo": "claude-opus-5-5",
+   "esforco": "alto",
+   "terminal": "Maestro"
+  },
+  {
+   "id": "construtor-1",
+   "papel": "construtor",
+   "titulo": "Construtor 1",
+   "modelo": "claude-opus-5-5",
+   "esforco": "alto",
+   "terminal": "Construtor 1"
+  },
+  {
+   "id": "construtor-2",
+   "papel": "construtor",
+   "titulo": "Construtor 2",
+   "modelo": "claude-opus-5-5",
+   "esforco": "alto",
+   "terminal": "Construtor 2"
+  },
+  {
+   "id": "construtor-3",
+   "papel": "construtor",
+   "titulo": "Construtor 3",
+   "modelo": "claude-opus-5-5",
+   "esforco": "alto",
+   "terminal": "Construtor 3"
+  },
+  {
+   "id": "construtor-4",
+   "papel": "construtor",
+   "titulo": "Construtor 4",
+   "modelo": "claude-opus-5-5",
+   "esforco": "alto",
+   "terminal": "Construtor 4"
+  },
+  {
+   "id": "construtor-5",
+   "papel": "construtor",
+   "titulo": "Construtor 5",
+   "modelo": "claude-opus-5-5",
+   "esforco": "alto",
+   "terminal": "Construtor 5"
+  },
+  {
+   "id": "revisor-1",
+   "papel": "revisor",
+   "titulo": "Revisor 1",
+   "modelo": "claude-opus-5-5",
+   "esforco": "alto",
+   "terminal": "Revisor 1"
+  },
+  {
+   "id": "revisor-2",
+   "papel": "revisor",
+   "titulo": "Revisor 2",
+   "modelo": "claude-opus-5-5",
+   "esforco": "alto",
+   "terminal": "Revisor 2"
+  },
+  {
+   "id": "testador-1",
+   "papel": "testador",
+   "titulo": "Testador 1",
+   "modelo": "claude-opus-5-5",
+   "esforco": "alto",
+   "terminal": "Testador 1"
+  },
+  {
+   "id": "testador-2",
+   "papel": "testador",
+   "titulo": "Testador 2",
+   "modelo": "claude-opus-5-5",
+   "esforco": "alto",
+   "terminal": "Testador 2"
+  },
+  {
+   "id": "integrador-1",
+   "papel": "integrador",
+   "titulo": "Integrador 1",
+   "modelo": "claude-opus-5-5",
+   "esforco": "alto",
+   "terminal": "Integrador 1"
+  },
+  {
+   "id": "prumo-1",
+   "papel": "prumo",
+   "titulo": "Prumo 1",
+   "modelo": "claude-opus-5-5",
+   "esforco": "alto",
+   "terminal": "Prumo 1"
+  },
+  {
+   "id": "prumo-2",
+   "papel": "prumo",
+   "titulo": "Prumo 2",
+   "modelo": "claude-opus-5-5",
+   "esforco": "alto",
+   "terminal": "Prumo 2"
+  },
+  {
+   "id": "fable-1",
+   "papel": "construtor",
+   "titulo": "Fable do ticket 14",
+   "modelo": "claude-fable-5-1",
+   "esforco": "medio",
+   "terminal": "Fable do ticket 14",
+   "temporario": true,
+   "ticket": "14"
+  }
+ ],
+ "padroes": {
+  "teste": [
+   "^pytest\\b",
+   "^python -m pytest\\b",
+   "^npm (run )?test\\b"
+  ],
+  "commit": [
+   "^git commit\\b"
+  ]
+ }
+}

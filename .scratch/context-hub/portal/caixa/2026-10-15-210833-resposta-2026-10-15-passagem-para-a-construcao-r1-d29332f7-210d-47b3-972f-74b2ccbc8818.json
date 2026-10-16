@@ -1,0 +1,94 @@
+{
+  "envio": "d29332f7-210d-47b3-972f-74b2ccbc8818",
+  "tipo": "resposta",
+  "enviada": "2026-10-15T21:08:33-03:00",
+  "alvo": {
+    "tipo": "rodada",
+    "id": "2026-10-15-passagem-para-a-construcao-r1",
+    "titulo": "O laço da construção"
+  },
+  "ticket": "16",
+  "substitui": null,
+  "rodada": {
+    "id": "2026-10-15-passagem-para-a-construcao-r1",
+    "base": "4b6ab0f8def3130fba3c9a27ec848c360875cf063f171ee062765bc6ab6ec4d5",
+    "titulo": "O laço da construção",
+    "ticket": "16",
+    "perguntas": [
+      {
+        "id": "papeis",
+        "titulo": "Como os 12 recrutas se dividem",
+        "tipo": "escolha",
+        "recomendada": [
+          "A"
+        ],
+        "opcoes": [
+          {
+            "chave": "A",
+            "texto": "7 construtores (um ticket por vez, inteiro, com testes e até 10 subagentes), 1 integrador (fila, ordem dos bloqueios, ramos, junção, conflitos), 1 testador de aceite (roda o critério de cada ticket já junto com os outros), 1 pesquisador de fonte (confere em fonte primária o que o construtor vai usar) e os 2 Prumos (um revisa contra as decisões do hub, o outro revisa o código)"
+          },
+          {
+            "chave": "B",
+            "texto": "9 construtores e 1 integrador; os 2 Prumos fazem também o teste de aceite e a conferência de fonte. Mais mãos construindo, menos olhos separados"
+          },
+          {
+            "chave": "C",
+            "texto": "6 construtores, 1 integrador, 1 testador, 1 pesquisador e 1 guardião do ambiente (o HOME de ensaio, os serviços, a instalação de verdade), mais os 2 Prumos"
+          }
+        ],
+        "proposta": null
+      },
+      {
+        "id": "hora",
+        "titulo": "O limite de 1 hora vale para quê",
+        "tipo": "escolha",
+        "recomendada": [
+          "A"
+        ],
+        "opcoes": [
+          {
+            "chave": "A",
+            "texto": "Por ticket: ao bater 60 minutos, o construtor para, grava o estado e devolve; o maestro divide o ticket ou o dá ao Fable"
+          },
+          {
+            "chave": "B",
+            "texto": "Por volta do laço: cada volta dura até 1 hora; no fim dela todos gravam o estado, o maestro consolida e você vê o placar antes da próxima volta"
+          },
+          {
+            "chave": "C",
+            "texto": "A execução inteira em 1 hora: o que não couber fica para outra execução"
+          }
+        ],
+        "proposta": null
+      },
+      {
+        "id": "algo-mais",
+        "titulo": "Algo mais?",
+        "tipo": "texto",
+        "recomendada": [],
+        "opcoes": [],
+        "proposta": null
+      }
+    ]
+  },
+  "corpo_hash": "eedd09428291dc5dbc2951b5749c5b8de8f77b337a9475b1433a17afface4fdf",
+  "corpo": {
+    "tipo": "resposta",
+    "rodada": "2026-10-15-passagem-para-a-construcao-r1",
+    "base": "4b6ab0f8def3130fba3c9a27ec848c360875cf063f171ee062765bc6ab6ec4d5",
+    "respostas": {
+      "papeis": {
+        "escolha": [],
+        "outra": null,
+        "comentario": "Se os tickets forem independentes, pode ser a opção A, ja tem meu aceite. Mas se tem relação, faça de forma vertical e despache em grupos lógicos de execução e dê uma parte para cada worker. Não deve ser um trabalho horizontal, um worker não deve ficar parado esperando o outro, cada um pode seguir com o que é responsável. Inclusive eu quero uma rodada só deles conversando entre eles pra ajustar exatamente a sua proposta de execução. Quero uma rodada Ralph engineering só disso. Pode ser com você junto ou não."
+      },
+      "hora": {
+        "escolha": [
+          "C"
+        ],
+        "outra": null,
+        "comentario": null
+      }
+    }
+  }
+}

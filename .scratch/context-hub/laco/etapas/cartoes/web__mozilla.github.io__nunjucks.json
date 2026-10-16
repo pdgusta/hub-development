@@ -1,0 +1,29 @@
+{
+ "chave": "web:mozilla.github.io/nunjucks",
+ "urls": [
+  "https://mozilla.github.io/nunjucks/"
+ ],
+ "tipos": [
+  "library"
+ ],
+ "termos": [
+  "template",
+  "renderização"
+ ],
+ "mencoes": 1,
+ "familias": [
+  "llama"
+ ],
+ "primeira_onda": 2,
+ "nomes": [
+  "Nunjucks"
+ ],
+ "resumos": [
+  "Uma biblioteca de template que suporta front-matter em arquivos Markdown"
+ ],
+ "fonte": "site",
+ "readme_status": "ok",
+ "readme_nome": "https://mozilla.github.io/nunjucks/",
+ "readme_cortado": false,
+ "readme": "[Nunjucks]\n\nTweet\n\nNunjucks\n\n A rich and powerful templating language for JavaScript.\n\n x\n\nNode\n\n Just use npm to install it:\n\n$ npm install nunjucks\n\n Getting Started →\n\nBrowser\n\n Grab nunjucks.js\n (min) for the full\n library, or\n grab nunjucks-slim.js\n (min) for a slim\n version that only works with precompiled templates. Read\n more about the differences of these files in Getting Started.\n\n Getting Started →\n\nDownload\n\nGitHub\n\nTemplating Docs\n\nAPI Docs\n\nFAQ\n\n You've been looking for a more sophisticated templating\n engine for JavaScript. Here it is.\n\nRich Powerful language with block\n inheritance, autoescaping, macros, asynchronous\n control, and more. Heavily inspired by jinja2\n\nFast & Lean High-performant. Small 8K\n gzipped runtime with precompiled templates in the browser\n\nExtensible Crazy extensible with custom filters and extensions\n\nEverywhere Available in node and all modern web browsers, with\n thorough precompilation options\n\n{% extends \"base.html\" %}\n\n{% block header %}\n<h1>{{ title }}</h1>\n{% endblock %}\n\n{% block content %}\n<ul>\n {% for name, item in items %}\n <li>{{ name }}: {{ item }}</li>\n {% endfor %}\n</ul>\n{% endblock %}\n\n Getting Started →\n\nWho's Using It?\n\nFirefox Marketplace\n\n “Nunjucks has allowed us to port all of our existing\n templates from a Django project to something that's easier\n to manage. By moving our templates to the client, transfer\n sizes are reduced and page responsiveness increases\n significantly. Our API supplies data, meaning we can\n decouple testing the front-end from testing the back-end.\n Nunjucks has made our app feel native.”\n\n– Matt Basta, Firefox Marketplace team\n\nMozilla Webmaker\n\n Webmaker from the\n Mozilla Foundation encourages people to create. Using web\n technologies, you can create visually rich media with a\n powerful real-time tool. Using nunjucks, it was easy to\n collaborate on the templates and implement complex\n features such as localization. There haven't been any\n problems with performance or stability.\n\nApostrophe CMS\n\n “P'unk Avenue chose Nunjucks as the template language for the\n Apostrophe\n content management system, an open source CMS for node\n developers. We chose Nunjucks because of its close\n relationship with the Jinja and Twig languages, and\n also for its test coverage and robust\n implementation.”\n\n – Tom Boutell, Senior Developer at P'unk Avenue\n\n And many, many more...\n\nMore Examples\n\n Use any of the builtin filters to work with variables, and\n even create your own.\n\n{{ foo | title }}\n{{ foo | join(\",\") }}\n{{ foo | replace(\"foo\", \"bar\") | capitalize }}\n\n Use keyword arguments to any function or filter\n\n{{ foo(1, 2, bar=3, baz=4) }}\n{{ bar | transform(level=2) }}\n\n Template inheritance allows you to reuse templates in a powerful\n way. Define skeleton structures that child templates fill in.\n\n{% extends \"base.html\" %}\n\n{% block header %}\n<h3>{{ subtitle }}</h3>\n{% endblock %}\n\n{% block content %}\n<h1>{{ page.title }}</h1>\n<p>{{ page.content }}</p>\n{% endblock %}\n\n You can even write asynchronous templates if you need to make\n asynchronous calls in filters! Take advantage\n of asyncAll\n to execute all iterations in parallel,\n assuming lookup is asynchronous.\n\n<h1>Posts</h1>\n<ul>\n{% asyncAll item in items %}\n <li>{{ item.id | lookup }}</li>\n{% endall %}\n</ul>\n\n That's just the beginning. Check the the docs for a whole range of powerful features!\n\n Getting Started →"
+}

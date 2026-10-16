@@ -1,0 +1,47 @@
+{
+ "chave": "web:python-markdown.github.io",
+ "urls": [
+  "https://python-markdown.github.io/",
+  "https://python-markdown.github.io"
+ ],
+ "tipos": [
+  "library"
+ ],
+ "termos": [
+  "Markdown",
+  "Python",
+  "Markdown en Python",
+  "парсинг",
+  "структуризация",
+  "Python Markdown",
+  "frontmatter parsing",
+  "markdown parser",
+  "text extraction",
+  "markdown",
+  "python",
+  "parsing"
+ ],
+ "mencoes": 5,
+ "familias": [
+  "mistral",
+  "poolside",
+  "qwen"
+ ],
+ "primeira_onda": 1,
+ "nomes": [
+  "Markdown",
+  "Markdown Parser (Python-Markdown)",
+  "Markdown Parsing Library"
+ ],
+ "resumos": [
+  "Biblioteca para trabajar con Markdown en Python.",
+  "Библиотека для парсинга Markdown и извлечения структуры (заголовки, текст).",
+  "Used to parse Markdown files and extract frontmatter metadata for indexing and filtering during search operations.",
+  "A Python implementation of Markdown that can parse .md files and extract content for indexing."
+ ],
+ "fonte": "site",
+ "readme_status": "ok",
+ "readme_nome": "https://python-markdown.github.io/",
+ "readme_cortado": false,
+ "readme": "[Python-Markdown - Python-Markdown]\n\nSkip to content\n\nPython-Markdown§\n\nThis is a Python implementation of John Gruber’s\nMarkdown.\nIt is almost completely compliant with the reference implementation,\nthough there are a few very minor differences. See John’s\nSyntax Documentation\nfor the syntax rules.\n\nTo get started, see the installation instructions, the library\nreference, and the command line interface.\n\nGoals§\n\nThe Python-Markdown project is developed with the following goals in mind:\n\nMaintain a Python library (with an optional CLI wrapper) suited to use in web\n server environments (never raise an exception, never write to stdout, etc.) as\n an implementation of the markdown parser that follows the\n syntax rules and the behavior of the original (markdown.pl)\n implementation as reasonably as possible (see differences for\n a few exceptions).\n\nProvide an Extension API which makes it possible\n to change and/or extend the behavior of the parser.\n\nNote\n\nThis is not a CommonMark implementation; nor is it trying to be!\nPython-Markdown was developed long before the CommonMark specification was\nreleased and has always (mostly) followed the syntax rules and behavior\nof the original reference implementation. No accommodations have been made\nto address the changes which CommonMark has suggested. It is recommended\nthat you look elsewhere if you want an implementation which follows the\nCommonMark specification.\n\nFeatures§\n\nIn addition to the basic markdown syntax, Python-Markdown supports the following\nfeatures:\n\nInternational Input\n\nPython-Markdown will accept input in any language\nsupported by Unicode including bi-directional text. In fact the test suite\nincludes documents written in Russian and Arabic.\n\nExtensions\n\nVarious extensions are provided (including\nextra) to change and/or extend the base syntax.\nAdditionally, a public Extension API is available\nto write your own extensions.\n\nOutput Formats\n\nPython-Markdown can output documents with either HTML or XHTML style tags.\nSee the Library Reference for details.\n\nCommand Line Interface\n\nIn addition to being a Python Library, a\ncommand line script is available for your convenience.\n\nDifferences§\n\nWhile Python-Markdown strives to fully implement markdown as described in the\nsyntax rules, the rules\ncan be interpreted in different ways and different implementations\noccasionally vary in their behavior (see the\nBabelmark FAQ\nfor some examples). Known and intentional differences found in Python-Markdown\nare summarized below:\n\nMiddle-Word Emphasis\n\nPython-Markdown defaults to ignoring middle-word emphasis (and strong\nemphasis). In other words, some_long_filename.txt will not become\nsome<em>long</em>filename.txt. This can be switched off if desired. See\nthe Legacy EM Extension for details.\n\nIndentation/Tab Length\n\nThe syntax rules\nclearly state that when a list item consists of multiple paragraphs, “each\nsubsequent paragraph in a list item must be indented by either 4 spaces\nor one tab” (emphasis added). However, many implementations do not enforce\nthis rule and allow less than 4 spaces of indentation. The implementers of\nPython-Markdown consider it a bug to not enforce this rule.\n\nThis applies to any block level elements nested in a list, including\nparagraphs, sub-lists, blockquotes, code blocks, etc. They must always\nbe indented by at least four spaces (or one tab) for each level of nesting.\n\nIn the event that one would prefer different behavior,\ntab_length can be set to whatever length is\ndesired. Be warned however, as this will affect indentation for all aspects\nof the syntax (including root level code blocks). Alternatively, a\nthird party extension may offer a solution that meets your needs.\n\nConsecutive Lists\n\nWhile the syntax rules are not clear on this, many implementations (including\nthe original) do not end one list and start a second list when the list marker\n(asterisks, pluses, hyphens, and numbers) changes. For consistency,\nPython-Markdown maintains the same behavior with no plans to change in the\nforeseeable future. That said, the Sane List Extension\nis available to provide a less surprising behavior.\n\nSupport§\n\nYou may report bugs, ask for help, and discuss various other issues on the bug tracker.\n\n Back to top"
+}

@@ -1,0 +1,76 @@
+{
+ "nome": "obsidian-brain",
+ "url": "https://github.com/sweir1/obsidian-brain",
+ "papel": "disco+MCP pronto",
+ "windows": "yes (Node 20+; docs citam binários prebuilt para Windows e watcher ReadDirectoryChangesW; CI só em ubuntu-latest)",
+ "mcp": "yes: servidor próprio, stdio, 18 tools (inclui escrita: create/edit/move/delete_note)",
+ "portugues": "EMBEDDING_PRESET=multilingual (Xenova/multilingual-e5-small, 94 idiomas, ~135 MB) ou multilingual-ollama (qwen3-embedding:0.6b, 100+ idiomas); padrão é english. FTS5 BM25 sem stemmer de português confirmado.",
+ "markdown_frontmatter": "Indexa .md; parseia frontmatter e campos Dataview inline; chunking por heading preservando código e LaTeX; busca híbrida RRF (FTS5 BM25 + vetor); grafo de wikilinks. Filtro por campo de frontmatter: nao_verificado.",
+ "atualizacao": "Watcher chokidar embutido no server (debounce 3 s por arquivo), mais reindex de catch-up no boot; OBSIDIAN_BRAIN_NO_WATCH=1 desliga e usa `obsidian-brain index` agendado.",
+ "embeddings_endpoint": "Local por padrão (transformers.js/ONNX) ou Ollama (OLLAMA_BASE_URL). Sem base_url OpenAI-compatível documentado.",
+ "recursos": "Node >=20; um arquivo SQLite (better-sqlite3 + sqlite-vec); modelo ~34 MB (english) ou ~135 MB (multilingual); processo único stdio.",
+ "licenca": "Apache-2.0",
+ "ultimo_release": "v1.7.24, 2026-05-16",
+ "atividade": "último commit 2026-05-16 (cerca de 5 meses parado em 2026-10-13)",
+ "maturidade": "stable (v1.7.x, sem rótulo beta; sem commits desde maio)",
+ "encaixe": "Disco de cada máquina, como MCP stdio. Impedimento: embeddings só locais/Ollama (sem gateway OpenAI), escreve na pasta (risco com LiveSync), docs focadas em macOS.",
+ "evidencias": [
+  {
+   "campo": "windows",
+   "url": "https://raw.githubusercontent.com/sweir1/obsidian-brain/main/docs/install-clients.md",
+   "citacao": "as prebuilt binaries for macOS, Linux, and Windows."
+  },
+  {
+   "campo": "windows",
+   "url": "https://raw.githubusercontent.com/sweir1/obsidian-brain/main/docs/watching.md",
+   "citacao": "**Windows**: ReadDirectoryChangesW"
+  },
+  {
+   "campo": "mcp",
+   "url": "https://github.com/sweir1/obsidian-brain",
+   "citacao": "Runs as one local stdio process — no plugin, no HTTP bridge, no API key"
+  },
+  {
+   "campo": "portugues",
+   "url": "https://raw.githubusercontent.com/sweir1/obsidian-brain/main/docs/embeddings.md",
+   "citacao": "`Xenova/multilingual-e5-small` (384-dim, 94 languages, ~135 MB one-time download"
+  },
+  {
+   "campo": "markdown_frontmatter",
+   "url": "https://github.com/sweir1/obsidian-brain",
+   "citacao": "embeddings at markdown-heading granularity, fused with FTS5 BM25 via Reciprocal Rank Fusion"
+  },
+  {
+   "campo": "atualizacao",
+   "url": "https://raw.githubusercontent.com/sweir1/obsidian-brain/main/docs/watching.md",
+   "citacao": "runs a chokidar watcher inside the `server` process, reindexing any `.md` file within seconds of it being saved"
+  },
+  {
+   "campo": "embeddings_endpoint",
+   "url": "https://raw.githubusercontent.com/sweir1/obsidian-brain/main/docs/configuration.md",
+   "citacao": "`EMBEDDING_PROVIDER` | no | transformers | Embedding backend. 'transformers' (local, default) or 'ollama'"
+  },
+  {
+   "campo": "recursos",
+   "url": "https://github.com/sweir1/obsidian-brain",
+   "citacao": "downloads a ~34 MB embedding model"
+  },
+  {
+   "campo": "licenca",
+   "url": "https://github.com/sweir1/obsidian-brain",
+   "citacao": "Apache License 2.0 — Copyright 2026 sweir1."
+  },
+  {
+   "campo": "ultimo_release",
+   "url": "https://github.com/sweir1/obsidian-brain/releases.atom",
+   "citacao": "v1.7.24 updated 2026-05-16T15:22:21Z"
+  }
+ ],
+ "nao_verificado": [
+  "CI em Windows (ci.yml só ubuntu-latest) e issue confirmando Windows nativo",
+  "filtro por campo de frontmatter",
+  "stemmer/tokenizer do FTS5",
+  "RAM em execução",
+  "transporte HTTP (só stdio)"
+ ]
+}

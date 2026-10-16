@@ -1,0 +1,84 @@
+{
+ "chave": "web:quickwit.io/docs",
+ "nomes": [
+  "Ingest SDK / API REST do Quickwit"
+ ],
+ "urls": [
+  "https://quickwit.io/docs"
+ ],
+ "readme_cortado": false,
+ "readme": "[Quickwit documentation | QuickwitQuickwitsubmit]\n\nSkip to main content\n\nQuickwit joins Datadog! Read the blog post!\n\nDocs\n\nVersion: 0.9.0\nOn this page\n\nQuickwit is the first engine to execute complex search and analytics queries directly on cloud storage with sub-second latency. Powered by Rust and its decoupled compute and storage architecture, it is designed to be resource-efficient, easy to operate, and scale to petabytes of data.\nQuickwit is a great fit for log management, distributed tracing, and generally immutable data such as conversational data (emails, texts, messaging platforms) and event-based analytics.\n\nGet started with Quickwit\nGet up and running in minutes and start harnessing the power of Quickwit today!GET STARTED\nUse cases​\nLog management\nDistributed Tracing\nKey concepts​\nArchitecture\nIndexing\nQuerying\nReference​\nConfiguration\nREST API\nCLI\n\nUse cases\nKey concepts\nReference",
+ "fonte": "site",
+ "respostas": [
+  {
+   "por": "ising-calibration-1.5-31b",
+   "resposta": {
+    "serve": "none",
+    "role": "",
+    "place": [
+     "n/a"
+    ],
+    "mechanism": [
+     "n/a"
+    ],
+    "mcp": "no",
+    "windows": "unknown",
+    "portuguese": "no",
+    "license": "unknown",
+    "maturity": "stable",
+    "doubt": false,
+    "evidence": "Quickwit is a cloud-native search engine for log management and distributed tracing, not a local hub component. It operates on cloud storage and lacks the necessary integration points (like MCP or local file system indexing) to serve as a search layer for a personal context hub."
+   }
+  },
+  {
+   "por": "nemotron-3-super-120b",
+   "resposta": {
+    "serve": "search",
+    "role": "Provides full-text search over Markdown notes for agents",
+    "place": [
+     "network_service"
+    ],
+    "mechanism": [
+     "bm25"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "unknown",
+    "doubt": false,
+    "evidence": "Quickwit is the first engine to execute complex search and analytics queries directly on cloud storage with sub-second latency."
+   }
+  }
+ ],
+ "conferencia_sonnet": {
+  "chave": "web:quickwit.io/docs",
+  "modelo": "claude-sonnet-5-5",
+  "ts": "2026-10-13T21:24:41Z",
+  "resultado": "rejeita",
+  "conferencia": {
+   "resultado": "rejeita",
+   "final": {
+    "serve": "none",
+    "role": "",
+    "place": [
+     "n/a"
+    ],
+    "mechanism": [
+     "n/a"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "stable",
+    "doubt": false,
+    "evidence": "Cloud-storage search engine aimed at log management and distributed tracing; joined Datadog."
+   },
+   "o_que_mudou": [
+    "serve: none, built for logs/traces on cloud storage"
+   ],
+   "nota": "Log and tracing engine on cloud storage, overkill and mismatched for a Markdown notes hub."
+  }
+ }
+}

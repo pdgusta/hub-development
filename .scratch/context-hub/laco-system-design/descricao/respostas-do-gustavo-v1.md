@@ -1,0 +1,49 @@
+# Respostas do Gustavo às perguntas da prática (rodada 7 do laço, envio 3dc9cc9e-0c18-4276-835f-8b59f8c1ba8a)
+
+Transcrição fiel, 2026-10-15 14:50. Nota do maestro na pergunta dos binários: o caso foi tratado em "Revisão do sync e da divergência" (rodada 71 = A: a vigia acha o ramo descartado pela resolução automática, avisa, e um comando recupera a versão perdida para um arquivo ao lado); a pergunta não devia ter sido feita.
+
+
+## Suas máquinas ficam ligadas juntas no dia a dia? Você desliga, hiberna ou fecha o notebook à noite e fora do expediente?
+> Sim, ficam ligadas juntas no dia a dia e eu raramente fecho ambos os notebooks fora do expediente.
+
+## Quando você pede a um agente para ler, alterar ou remover algo do hub, por onde pede no dia a dia: Claude Code na raiz, um workspace do Maestri, o Claude Desktop, o VS Code, outro?
+> A porta principal continua sendo a sessão na raiz do context hub, mas podem surgir casos onde a sessão vai estar fora do hub e vai ser cliente dele. Nesse caso a sessão deve funcionar tal qual uma aberta na raíz, carregando os MCPs de busca e seguindo os padrões de como alterar arquivos e etc.
+
+## Quando você cria uma nota nova no Obsidian, onde ela deve nascer: em `inbox/`, na pasta da iniciativa aberta, ou onde você clicar?
+> raramente vou criar nota nova direto no obsidian, essa é a verdade, mas vou manter o padrão de criar no inbox/ e pedir a agentes para colocar no lugar certo. Vou criar no inbox mesmo que eu saiba que aquela nota deve ou ser padronizada devidamente e movida pra pasta correta, ou o conteúdo dela absorvido numa nota existente. Mas em qualquer caso ela vai só nascer no inbox.
+
+## "Remova isto" para você quer dizer apagar ou arquivar? E quem decide que uma iniciativa terminou e roda a mudança para o `_archive/`: você, ou o agente quando percebe?
+> Remover vai significar mover pro '_archive/' por tempo determinado e se não surgir necessidade de recuperação (passar 30 dias), é porque pode ser removida tranquilamente. Eu posso pedir para remover do '_archive/' antes dos 30 dias ou pedir remoção diretamente. Os agentes só removem com essa minha permissão ou ao passar 30 dias.
+
+## Você costuma editar no Obsidian uma nota que um agente está trabalhando ao mesmo tempo?
+> Não, impossível. Se acontecer eu aceito a colisão sem proteção.
+
+## Você aceita que conteúdo de cliente vá para o repositório privado do GitHub na cópia diária, e para os modelos na nuvem que os agentes usam? Há iniciativa de cliente que não pode?
+> não existe iniciativa de cliente que não pode ir pro repo privado do github,
+
+## Que arquivos que não são texto (docx, xlsx, imagem, PDF) você edita nas duas máquinas?
+> tínhamos tratado esse caso, você esqueceu.
+
+## Quem usa hoje um computador sem cópia do hub: só você numa sandbox ou máquina de passagem, ou também agentes de outras pessoas? Com que frequência?
+> hoje um cliente sem cópia do hub pode ser e vai ser: eu numa sandbox, agentes meus numa sandbox, máquina de passagem. Frequência indefinida, a possibilidade existe.
+
+## Onde você quer ver um aviso do hub quando está só no Obsidian, sem sessão de agente aberta? A notificação do Windows basta?
+> A notificação do windows basta.
+
+## Quantos agentes costumam trabalhar ao mesmo tempo na mesma iniciativa, na mesma máquina?
+> Eu costumo trabalhar isoladamente com 1 agente por iniciativa, em alguns casos o mesmo agente vai trabalhar em mais de uma iniciativa ou pasta do hub. Não quero proteção disso por enquanto.
+
+## Quem cuida da operação: montar uma máquina nova, revogar a chave de uma máquina devolvida, responder um aviso, religar o que parou? Você mesmo, ou um agente com você vendo?
+> Majoritariamente um agente comigo vendo, exceto quando são ações que realmente só eu consigo executar.
+
+## Em que situação você ligaria os embeddings do Google na busca?
+> Eu naõ quero depender disso em toda busca por sentido, mas quero deixar como opção.
+
+## O que você pede ao Claude Desktop sobre o hub: só perguntas, ou também alterações em notas?
+> Também alterações em notas e em arquivos.
+
+## Você quer chegar ao hub pelo celular ou pela web?
+> Por enquanto não. Pela 'web' eu entendo como um novo cliente (pela tailnet) que já estamos trabalhando para atender.
+
+## Algo mais?
+em branco

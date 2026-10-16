@@ -1,0 +1,56 @@
+{
+ "chave": "gh:dexie/dexie.js",
+ "nomes": [
+  "Dexie.js",
+  "Dexie"
+ ],
+ "urls": [
+  "https://github.com/dexie/Dexie.js",
+  "https://dexie.org/"
+ ],
+ "readme_cortado": false,
+ "readme": "# Dexie.js\n\n[![NPM Version][npm-image]][npm-url] ![Build Status](https://github.com/dexie/Dexie.js/actions/workflows/main.yml/badge.svg) [![Join our Discord](https://img.shields.io/discord/1328303736363421747?label=Discord&logo=discord&style=badge)](https://discord.gg/huhre7MHBF)\n\nDexie.js is a wrapper library for indexedDB - the standard database in the browser. https://dexie.org.\n\n#### Why Dexie.js?\n\nIndexedDB is the portable database for all browser engines. Dexie.js makes it fun and easy to work with.\n\nBut also:\n\n* Dexie.js is widely used by 100,000 of web sites, apps and other projects and supports all browsers, Electron for Desktop apps, Capacitor for iOS / Android apps and of course pure PWAs.\n* Dexie.js works around bugs in the IndexedDB implementations, giving a more stable user experience.\n* Need sync? [Dexie Cloud](https://dexie.org/cloud/) adds real-time sync, auth, and collaboration on top of Dexie.js — no backend needed.\n\n#### Hello World (vanilla JS)\n\n```html\n<!DOCTYPE html>\n<html>\n  <head>\n    <script type=\"module\">\n      // Import Dexie\n      import { Dexie } from 'https://unpkg.com/dexie/dist/modern/dexie.mjs';\n\n      //\n      // Declare Database\n      //\n      const db = new Dexie('FriendDatabase');\n      db.version(1).stores({\n        friends: '++id, age'\n      });\n\n      //\n      // Play with it\n      //\n      try {\n        await db.friends.add({ name: 'Alice', age: 21 });\n\n        const youngFriends = await db.friends\n            .where('age')\n            .below(30)\n            .toArray();\n\n        alert(`My young friends: ${JSON.stringify(youngFriends)}`);\n      } catch (e) {\n        alert(`Oops: ${e}`);\n      }\n    </script>\n  </head>\n</html>\n```\n\nYes, it's that simple. Read [the docs](https://dexie.org/docs/) to get into the details.\n\n#### Hello World (legacy script tags)\n\n```html\n<!DOCTYPE html>\n<html>\n  <head>\n    <script src=\"https://unpkg.com/dexie/dist/dexie.js\"></script>\n    <script>\n\n      //\n      // Declare Database\n      //\n      const db = new Dexie('FriendDatabase');\n      db.version(1).stores({\n        friends: '++id, age'\n      });\n\n      //\n      // Play with it\n      //\n      db.friends.add({ name: 'Alice', age: 21 }).then(() => {\n        return db.friends\n          .where('age')\n          .below(30)\n          .toArray();\n      }).then(youngFriends => {\n        alert (`My young friends: ${JSON.stringify(youngFriends)}`);\n      }).catch (e => {\n        alert(`Oops: ${e}`);\n      });\n\n    </script>\n  </head>\n</html>\n```\n\n#### Hello World (React + Typescript)\n\nReal-world apps are often built using components in various frameworks. Here's a version of Hello World written for React and Typescript. There are also links below this sample to more tutorials for different frameworks...\n\n```tsx\nimport React from 'react';\nimport { Dexie, type EntityTable } from 'dexie';\nimport { useLiveQuery } from 'dexie-react-hooks';\n\n// Typing for your entities (hint is to move this to its own module)\nexport interface Friend {\n  id: number;\n  name: string;\n  age: number;\n}\n\n// Database declaration (move this to its own module also)\nexport const db = new Dexie('FriendDatabase') as Dexie & {\n  friends: EntityTable<Friend, 'id'>;\n};\ndb.version(1).stores({\n  friends: '++id, age',\n});\n\n// Component:\nexport function MyDexieReactComponent() {\n  const youngFriends = useLiveQuery(() =>\n    db.friends\n      .where('age')\n      .below(30)\n      .toArray()\n  );\n\n  return (\n    <>\n      <h3>My young friends</h3>\n      <ul>\n        {youngFriends?.map((f) => (\n          <li key={f.id}>\n            Name: {f.name}, Age: {f.age}\n          </li>\n        ))}\n      </ul>\n      <button\n        onClick={() => {\n          db.friends.add({ name: 'Alice', age: 21 });\n        }}\n      >\n        Add another friend\n      </button>\n    </>\n  );\n}\n```\n\n[Tutorials for React, Svelte, Vue, Angular and vanilla JS](https://dexie.org/docs/Tutorial/Getting-started)\n\n[API Reference](https://dexie.org/docs/API-Reference)\n\n[Samples](https://dexie.org/docs/Samples)\n\n### Performance\n\nDexie has kick-ass performance. Its [bulk methods](<https://dexie.org/docs/Table/Table.bulkPut()>) take advantage of a lesser-known feature in IndexedDB that makes it possible to store stuff without listening to every onsuccess event. This speeds up the performance to a maximum.\n\n#### Supported operations\n\n```js\nabove(key): Collection;\naboveOrEqual(key): Collection;\nadd(item, key?): Promise;\nand(filter: (x) => boolean): Collection;\nanyOf(keys[]): Collection;\nanyOfIgnoreCase(keys: string[]): Collection;\nbelow(key): Collection;\nbelowOrEqual(key): Collection;\nbetween(lower, upper, includeLower?, includeUpper?): Collection;\nbulkAdd(items: Array): Promise;\nbulkDelete(keys: Array): Promise;\nbulkPut(items: Array): Promise;\nclear(): Promise;\ncount(): Promise;\ndelete(key): Promise;\ndistinct(): Collection;\neach(callback: (obj) => any): Promise;\neachKey(callback: (key) => any): Promise;\neachPrimaryKey(callback: (key) => any): Promise;\neachUniqueKey(callback: (key) => any): Promise;\nequals(key): Collection;\nequalsIgnoreCase(key): Collection;\nfilter(fn: (obj) => boolean): Collection;\nfirst(): Promise;\nget(key): Promise;\ninAnyRange(ranges): Collection;\nkeys(): Promise;\nlast(): Promise;\nlimit(n: number): Collection;\nmodify(changeCallback: (obj: T, ctx:{value: T}) => void): Promise;\nmodify(changes: { [keyPath: string]: any } ): Promise;\nnoneOf(keys: Array): Collection;\nnotEqual(key): Collection;\noffset(n: number): Collection;\nor(indexOrPrimayKey: string): WhereClause;\norderBy(index: string): Collection;\nprimaryKeys(): Promise;\nput(item: T, key?: Key): Promise;\nreverse(): Collection;\nsortBy(keyPath: string): Promise;\nstartsWith(key: string): Collection;\nstartsWithAnyOf(prefixes: string[]): Collection;\nstartsWithAnyOfIgnoreCase(prefixes: string[]): Collection;\nstartsWithIgnoreCase(key: string): Collection;\ntoArray(): Promise;\ntoCollection(): Collection;\nuniqueKeys(): Promise;\nuntil(filter: (value) => boolean, includeStopEntry?: boolean): Collection;\nupdate(key: Key, changes: { [keyPath: string]: any }): Promise;\n```\n\nThis is a mix of methods from [WhereClause](https://dexie.org/docs/WhereClause/WhereClause), [Table](https://dexie.org/docs/Table/Table) and [Collection](https://dexie.org/docs/Collection/Collection). Dive into the [API reference](https://dexie.org/docs/API-Reference) to see the details.\n\n## Dexie Cloud\n\n[Dexie Cloud](https://dexie.org/cloud/) is the easiest way to add sync, authentication, and real-time collaboration to your Dexie app. You keep writing frontend code with Dexie.js — Dexie Cloud handles the rest.\n\n**What you get:**\n- 🔄 **Sync across devices** — changes propagate in real time, no polling needed\n- 🔐 **Authentication** — built-in user auth, no identity provider required\n- 🛡️ **Access control** — share data between users with fine-grained permissions\n- 📁 **File & blob storage** — store attachments alongside your structured data\n- ✈️ **Offline-first** — works fully offline, syncs when back online\n\n**Getting started is just a few lines:**\n\n```bash\nnpm install dexie-cloud-addon\n```\n\n```ts\nimport Dexie from 'dexie';\nimport dexieCloud from 'dexie-cloud-addon';\n\nconst db = new Dexie('MyDatabase', { addons: [dexieCloud] });\ndb.version(1).stores({ items: '@id, title' });\ndb.cloud.configure({ databaseUrl: 'https://<your-db>.dexie.cloud' });\n```\n\nThat's it. Your existing Dexie app now syncs. Hosted cloud or self-hosted on your own infrastructure. 👋\n\n→ [Quickstart guide](https://dexie.org/cloud/docs/quickstart)\n\n**Sample app:**\n\nSource: [Dexie Cloud To-do app](https://github.com/dexie/Dexie.js/tree/master/samples/dexie-cloud-todo-app)\n\nLive demo: https://dexie.github.io/Dexie.js/dexie-cloud-todo-app/\n\n## Legacy Addons (dexie-observable, dexie-syncable)\n\n> **⚠️ These packages are legacy and no longer maintained.**\n\nIf you find references to `dexie-observable` or `dexie-syncable` in tutorials, blog posts, or old code, be aware that these are **deprecated** sync solutions. They are not compatible with Dexie Cloud and should not be used in new projects.\n\n**For local-first sync, use [`dexie-cloud-addon`](https://dexie.org/cloud/) instead.** It is the modern, actively maintained solution for offline-first apps with real-time sync.\n\n## Samples\n\nhttps://dexie.org/docs/Samples\n\nhttps://github.com/dexie/Dexie.js/tree/master/samples\n\n## Knowledge Base\n\n[https://dexie.org/docs/Questions-and-Answers](https://dexie.org/docs/Questions-and-Answers)\n\n## Website\n\n[https://dexie.org](https://dexie.org)\n\n## Install via npm\n\n```\nnpm install dexie\n```\n\n## Download\n\nFor those who don't like package managers, here's the download links:\n\n### UMD (for legacy script includes as well as commonjs require):\n\nhttps://unpkg.com/dexie@latest/dist/dexie.min.js\n\nhttps://unpkg.com/dexie@latest/dist/dexie.min.js.map\n\n### Modern (ES module):\n\nhttps://unpkg.com/dexie@latest/dist/modern/dexie.min.mjs\n\nhttps://unpkg.com/dexie@latest/dist/modern/dexie.min.mjs.map\n\n### Typings:\n\nhttps://unpkg.com/dexie@latest/dist/dexie.d.ts\n\n# Contributing\n\nSee [CONTRIBUTING.md](CONTRIBUTING.md)\n\n## Build\n\n```\npnpm install\npnpm run build\n```\n\n## Test\n\n```\npnpm test\n```\n\n## Watch\n\n```\npnpm run watch\n```\n\n<br/>\n\nBrowser testing via<br/>\n<a href=\"https://www.testmuai.com/?utm_medium=sponsor&utm_source=dexiejs\">\n  <picture>\n    <source media=\"(prefers-color-scheme: dark)\" srcset=\"testmuai-logo-white.svg\">\n    <img src=\"testmuai-logo.svg\" alt=\"TestMu AI (Formerly LambdaTest)\" width=\"147\" height=\"26\">\n  </picture>\n</a>\n\n[npm-image]: https://img.shields.io/npm/v/dexie.svg?style=flat\n[npm-url]: https://npmjs.org/package/dexie\n",
+ "fonte": "readme",
+ "respostas": [
+  {
+   "por": "nemotron-3-super-120b",
+   "resposta": {
+    "serve": "none",
+    "role": "",
+    "place": [
+     "library"
+    ],
+    "mechanism": [
+     "n/a"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "unknown",
+    "doubt": false,
+    "evidence": "Dexie.js is a wrapper library for indexedDB - the standard database in the browser."
+   }
+  },
+  {
+   "por": "diffusiongemma-26b-a4b-it",
+   "resposta": {
+    "serve": "stack",
+    "role": "A wrapper for IndexedDB to manage local storage, sync, and cloud data.",
+    "place": [
+     "library"
+    ],
+    "mechanism": [
+     "other"
+    ],
+    "mcp": "no",
+    "windows": "unknown",
+    "portuguese": "no",
+    "license": "unknown",
+    "maturity": "stable",
+    "doubt": false,
+    "evidence": "Dexie.js is a wrapper library for indexedDB - the standard database in the browser. Dexie Cloud adds real-time sync"
+   }
+  }
+ ]
+}

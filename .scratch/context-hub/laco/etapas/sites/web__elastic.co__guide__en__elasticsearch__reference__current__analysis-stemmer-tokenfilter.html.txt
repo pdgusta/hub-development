@@ -1,0 +1,251 @@
+Docs
+
+ /
+
+ Reference
+
+ /
+
+ Elasticsearch
+
+ /
+
+ Text analysis components
+
+ /
+
+ Token filter reference
+
+Stemmer token filter
+
+Provides algorithmic stemming for several languages, some with additional variants. For a list of supported languages, see the language parameter.
+
+When not customized, the filter uses the porter stemming algorithm for English.
+
+Example
+
+The following analyze API request uses the stemmer filter’s default porter stemming algorithm to stem the foxes jumping quickly to the fox jump quickli:
+
+ GET /_analyze
+ {
+ "tokenizer": "standard",
+ "filter": [ "stemmer" ],
+ "text": "the foxes jumping quickly"
+}
+
+The filter produces the following tokens:
+
+[ the, fox, jump, quickli ]
+
+Add to an analyzer
+
+The following create index API request uses the stemmer filter to configure a new custom analyzer.
+
+ PUT /my-index-000001
+ {
+ "settings": {
+ "analysis": {
+ "analyzer": {
+ "my_analyzer": {
+ "tokenizer": "whitespace",
+ "filter": [ "stemmer" ]
+ }
+ }
+ }
+ }
+}
+
+Configurable parameters
+
+language
+(Optional, string) Language-dependent stemming algorithm used to stem tokens. If both this and the name parameter are specified, the language parameter argument is used.
+
+ Valid values for language
+
+Valid values are sorted by language. Defaults to english. Recommended algorithms are bolded.
+
+Arabic: arabic
+
+Armenian: armenian
+
+Basque: basque
+
+Bengali:bengali
+
+Brazilian Portuguese:brazilian
+
+Bulgarian:bulgarian
+
+Catalan:catalan
+
+Czech:czech
+
+Danish:danish
+
+Dutch
+
+dutch
+
+dutch_kp
+
+ Deprecated in 8.16.0
+
+This language was deprecated in 8.16.0.
+
+English:
+
+english
+
+light_english
+
+lovins
+
+ Deprecated in 8.16.0
+
+This language was deprecated in 8.16.0.
+
+minimal_english
+
+porter2
+
+possessive_english
+
+Estonian:estonian
+
+Finnish:
+
+finnish
+
+light_finnish
+
+French:
+
+light_french
+
+french
+
+minimal_french
+
+Galician:
+
+galician
+
+minimal_galician (Plural step only)
+
+German:
+
+light_german,
+
+german
+
+minimal_german
+
+Greek:greek
+
+Hindi:hindi
+
+Hungarian:
+
+hungarian
+
+light_hungarian
+
+Indonesian:indonesian
+
+Irish:irish
+
+Italian:
+
+light_italian
+
+italian
+
+Kurdish (Sorani):sorani
+
+Latvian:latvian
+
+Lithuanian:lithuanian
+
+Norwegian (Bokmål):
+
+norwegian
+
+light_norwegian
+
+minimal_norwegian
+
+Norwegian (Nynorsk):
+
+light_nynorsk
+
+minimal_nynorsk
+
+Persian:persian
+
+Portuguese:
+
+light_portuguese
+
+minimal_portuguese
+
+portuguese
+
+portuguese_rslp
+
+Romanian:romanian
+
+Russian:
+
+russian
+
+light_russian
+
+Serbian:serbian
+
+Spanish:
+
+light_spanish
+
+spanish
+
+spanish_plural
+
+Swedish:
+
+swedish
+
+light_swedish
+
+Turkish:turkish
+
+name
+An alias for the language parameter. If both this and the language parameter are specified, the language parameter argument is used.
+
+Customize
+
+To customize the stemmer filter, duplicate it to create the basis for a new custom token filter. You can modify the filter using its configurable parameters.
+
+For example, the following request creates a custom stemmer filter that stems words using the light_german algorithm:
+
+ PUT /my-index-000001
+ {
+ "settings": {
+ "analysis": {
+ "analyzer": {
+ "my_analyzer": {
+ "tokenizer": "standard",
+ "filter": [
+ "lowercase",
+ "my_stemmer"
+ ]
+ }
+ },
+ "filter": {
+ "my_stemmer": {
+ "type": "stemmer",
+ "language": "light_german"
+ }
+ }
+ }
+ }
+}

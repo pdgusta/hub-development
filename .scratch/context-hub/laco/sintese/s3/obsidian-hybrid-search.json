@@ -1,0 +1,69 @@
+{
+ "nome": "obsidian-hybrid-search",
+ "url": "https://github.com/flowing-abyss/obsidian-hybrid-search",
+ "papel": "disco+MCP pronto",
+ "windows": "yes",
+ "mcp": "yes: próprio, stdio (via npx) e HTTP stateless (`ohs serve`, 127.0.0.1:3939/mcp)",
+ "portugues": "Modelo padrão Xenova/multilingual-e5-small (100+ idiomas); reranker multilíngue opcional gte-multilingual-reranker-base; FTS5 BM25 sem stemmer de português documentado.",
+ "markdown_frontmatter": "yes: filtros `--frontmatter campo:valor`, tags, aliases (boost 5x), pastas; chunking por títulos com janela deslizante; wikilinks e backlinks.",
+ "atualizacao": "Indexação incremental só dos arquivos alterados e watcher chokidar em tempo real; `ohs reindex` manual.",
+ "embeddings_endpoint": "yes: OPENAI_BASE_URL + OPENAI_EMBEDDING_MODEL (OpenRouter, Ollama, LM Studio); local por padrão.",
+ "recursos": "Node 22 (npm global ou npx); SQLite + FTS5 + sqlite-vec, banco `.obsidian-hybrid-search.db` no vault; modelo local ~117 MB; reranker ~341 MB opcional.",
+ "licenca": "MIT",
+ "ultimo_release": "v0.16.2, 12 out (sem ano na página; presumido 2026)",
+ "atividade": "último commit 12 out 2026",
+ "maturidade": "beta (0.x, muito ativo, CI em 3 SOs)",
+ "encaixe": "Disco de cada máquina, MCP stdio ou HTTP local sobre o vault. Melhor aderência à régua. Impedimentos: banco SQLite dentro do vault (excluir do LiveSync), português sem stemmer.",
+ "evidencias": [
+  {
+   "campo": "windows",
+   "url": "https://github.com/flowing-abyss/obsidian-hybrid-search/blob/master/.github/workflows/ci.yml",
+   "citacao": "os: [ubuntu-latest, macos-latest, windows-latest]"
+  },
+  {
+   "campo": "mcp",
+   "url": "https://github.com/flowing-abyss/obsidian-hybrid-search",
+   "citacao": "`serve` starts the MCP server over HTTP by default ... \"url\": \"http://127.0.0.1:3939/mcp\""
+  },
+  {
+   "campo": "portugues",
+   "url": "https://github.com/flowing-abyss/obsidian-hybrid-search",
+   "citacao": "default model: Xenova/multilingual-e5-small, 100+ languages"
+  },
+  {
+   "campo": "markdown_frontmatter",
+   "url": "https://github.com/flowing-abyss/obsidian-hybrid-search",
+   "citacao": "ohs \"notes\" --frontmatter status:todo"
+  },
+  {
+   "campo": "markdown_frontmatter",
+   "url": "https://github.com/flowing-abyss/obsidian-hybrid-search",
+   "citacao": "Indexing splits notes by headings with a sliding-window fallback"
+  },
+  {
+   "campo": "atualizacao",
+   "url": "https://github.com/flowing-abyss/obsidian-hybrid-search",
+   "citacao": "Watcher uses `chokidar` to detect file changes and update the index in the background."
+  },
+  {
+   "campo": "embeddings_endpoint",
+   "url": "https://github.com/flowing-abyss/obsidian-hybrid-search",
+   "citacao": "# export OPENAI_BASE_URL=\"http://localhost:11434/v1\"  # Ollama"
+  },
+  {
+   "campo": "recursos",
+   "url": "https://github.com/flowing-abyss/obsidian-hybrid-search",
+   "citacao": "downloads about 117 MB on first use, and supports more than 100 languages"
+  },
+  {
+   "campo": "licenca",
+   "url": "https://github.com/flowing-abyss/obsidian-hybrid-search",
+   "citacao": "## License MIT"
+  }
+ ],
+ "nao_verificado": [
+  "stemmer/tokenizer FTS5 para português",
+  "RAM em execução",
+  "ano exato do release"
+ ]
+}

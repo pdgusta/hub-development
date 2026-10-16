@@ -1,0 +1,32 @@
+{
+ "chave": "web:spacy.io/api/lemmatizer",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T21:08:51Z",
+ "resultado": "corrige",
+ "conferencia": {
+  "resultado": "corrige",
+  "final": {
+   "mcp": "no",
+   "windows": "unknown",
+   "portuguese": "unknown",
+   "license": "unknown",
+   "maturity": "stable",
+   "doubt": false,
+   "serve": "stack",
+   "role": "Lemmatizer pipeline component of spaCy: assigns base forms via rules or lookup tables; text pre-processing usable before indexing",
+   "place": [
+    "library"
+   ],
+   "mechanism": [
+    "other"
+   ],
+   "evidence": "Component for assigning base forms to tokens using rules based on part-of-speech tags, or lookup tables."
+  },
+  "o_que_mudou": [
+   "serve: none -> stack, lemmatization is a text-normalization part usable in an indexing pipeline",
+   "doubt: true -> false",
+   "mcp: unknown -> no, Python library API only"
+  ],
+  "nota": "Marginal: lemmatization could normalize Portuguese/English terms before indexing, but Portuguese is not listed with a dedicated mode and the page is only API docs."
+ }
+}

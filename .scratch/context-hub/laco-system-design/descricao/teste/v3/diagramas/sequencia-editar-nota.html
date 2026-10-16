@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sequência: editar nota</title>
+<style>
+:root{--bg:#fbfaf6;--ink:#1d2330;--muted:#5d6676;--line:#aab2bf;--box:#ffffff;--note:#fff3c4;--note-line:#e0c25a;--frame:#8a5a00;--ga:#e6f0fb;--gb:#e9f6ec}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#15181e;--ink:#e6e9ef;--muted:#9aa3b2;--line:#5a6373;--box:#1f242d;--note:#3d3520;--note-line:#8a7430;--frame:#e0b35a;--ga:#1a2636;--gb:#1a2a20}}
+:root[data-theme="dark"]{--bg:#15181e;--ink:#e6e9ef;--muted:#9aa3b2;--line:#5a6373;--box:#1f242d;--note:#3d3520;--note-line:#8a7430;--frame:#e0b35a;--ga:#1a2636;--gb:#1a2a20}
+body{background:var(--bg);color:var(--ink);font-family:system-ui,"Segoe UI",sans-serif;margin:0;padding:24px 16px;line-height:1.45}
+main{max-width:1440px;margin:0 auto}
+h1{font-size:20px;margin:0 0 6px}
+h2{font-size:16px;margin:28px 0 8px}
+.sub{color:var(--muted);margin:0 0 14px;font-size:14px}
+.scroll{overflow-x:auto;border:1px solid var(--line);border-radius:8px;padding:8px;background:var(--bg)}
+svg{display:block;max-width:none;height:auto}
+.lifeline{stroke:var(--line);stroke-width:1;stroke-dasharray:4 4}
+.arrow{stroke:var(--ink);stroke-width:1.4;fill:none}
+.arrow.dash{stroke-dasharray:5 4}
+.mk{fill:var(--ink)}
+.lbl{font:11px system-ui,"Segoe UI",sans-serif;fill:var(--ink);paint-order:stroke;stroke:var(--bg);stroke-width:4px;stroke-linejoin:round}
+.note{fill:var(--note);stroke:var(--note-line);stroke-width:1}
+.notet{font:11px system-ui,"Segoe UI",sans-serif;fill:var(--ink)}
+.frame{fill:none;stroke:var(--frame);stroke-width:1.2;stroke-dasharray:6 4}
+.frametxt{font:600 11px system-ui,"Segoe UI",sans-serif;fill:var(--frame)}
+.hd{fill:var(--box);stroke:var(--line);stroke-width:1}
+.hdt{font:600 12px system-ui,"Segoe UI",sans-serif;fill:var(--ink)}
+.hds{font:10px system-ui,"Segoe UI",sans-serif;fill:var(--muted)}
+.grpA{fill:var(--ga)}
+.grpB{fill:var(--gb)}
+.grpt{font:600 11px system-ui,"Segoe UI",sans-serif;fill:var(--muted)}
+table{border-collapse:collapse;width:100%;font-size:13px}
+th,td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+th{color:var(--muted);font-weight:600}
+td.tipo{white-space:nowrap;color:var(--muted)}
+</style>
+</head>
+<body>
+<main>
+<h1>Editar uma nota no Obsidian: da máquina A ao agente da máquina B</h1>
+<p class="sub">Diagrama de sequência, teste v3 da descrição do hub. Cada seta é um passo, numerado de cima para baixo.
+Caixas tracejadas: <b>alt</b> é um caminho alternativo (com "else"); <b>opt</b> é um caminho que pode acontecer.
+Setas tracejadas são retorno ou leitura sem ação do agente.</p>
+<div class="scroll">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1394 1756" width="1394" height="1756" role="img" aria-label="Diagrama de sequência: editar uma nota no Obsidian na máquina A até um agente que a busca na máquina B"><defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="mk" d="M0,0 L10,5 L0,10 z"/></marker></defs><rect class="grpA" x="156" y="4" width="488" height="1748" rx="10"/><text class="grpt" x="166" y="22">Máquina A (onde o Gustavo edita)</text>
+<rect class="grpB" x="652" y="4" width="736" height="1748" rx="10"/><text class="grpt" x="662" y="22">Máquina B (a outra, com o agente)</text>
+<line class="lifeline" x1="90" y1="108" x2="90" y2="1732"/>
+<line class="lifeline" x1="214" y1="108" x2="214" y2="1732"/>
+<line class="lifeline" x1="338" y1="108" x2="338" y2="1732"/>
+<line class="lifeline" x1="462" y1="108" x2="462" y2="1732"/>
+<line class="lifeline" x1="586" y1="108" x2="586" y2="1732"/>
+<line class="lifeline" x1="710" y1="108" x2="710" y2="1732"/>
+<line class="lifeline" x1="834" y1="108" x2="834" y2="1732"/>
+<line class="lifeline" x1="958" y1="108" x2="958" y2="1732"/>
+<line class="lifeline" x1="1082" y1="108" x2="1082" y2="1732"/>
+<line class="lifeline" x1="1206" y1="108" x2="1206" y2="1732"/>
+<line class="lifeline" x1="1330" y1="108" x2="1330" y2="1732"/>
+<text class="lbl" x="152.0" y="142" text-anchor="middle">1. Edita a nota</text>
+<text class="lbl" x="152.0" y="155" text-anchor="middle">no Obsidian</text>
+<line class="arrow" x1="90" y1="163" x2="214" y2="163" marker-end="url(#ah)"/>
+<text class="lbl" x="276.0" y="189" text-anchor="middle">2. Obsidian grava</text>
+<text class="lbl" x="276.0" y="202" text-anchor="middle">o arquivo .md no</text>
+<text class="lbl" x="276.0" y="215" text-anchor="middle">disco</text>
+<line class="arrow" x1="214" y1="223" x2="338" y2="223" marker-end="url(#ah)"/>
+<rect class="frame" x="252" y="237" width="296" height="108" rx="6"/>
+<rect class="note" x="288" y="263" width="224" height="70" rx="4"/>
+<text class="notet" x="296" y="278">A edição fica só no disco de A.</text>
+<text class="notet" x="296" y="291">Ninguém mais a vê. A vigia avisa</text>
+<text class="notet" x="296" y="304">em até 5 min; o sincronizador</text>
+<text class="notet" x="296" y="317">volta sozinho em até 1 min.</text>
+<text class="frametxt" x="264" y="253">opt: sincronizador A parado</text>
+<text class="lbl" x="400.0" y="365" text-anchor="middle">3a. Plugin, se o Obsidian estiver aberto, leva a mudança</text>
+<text class="lbl" x="400.0" y="378" text-anchor="middle">ao banco A</text>
+<line class="arrow dash" x1="214" y1="386" x2="586" y2="386" marker-end="url(#ah)"/>
+<text class="lbl" x="400.0" y="412" text-anchor="middle">3b. Sincronizador</text>
+<text class="lbl" x="400.0" y="425" text-anchor="middle">pega a mudança do</text>
+<text class="lbl" x="400.0" y="438" text-anchor="middle">disco (~2 s), com</text>
+<text class="lbl" x="400.0" y="451" text-anchor="middle">o Obsidian aberto</text>
+<text class="lbl" x="400.0" y="464" text-anchor="middle">ou fechado</text>
+<line class="arrow" x1="338" y1="472" x2="462" y2="472" marker-end="url(#ah)"/>
+<text class="lbl" x="524.0" y="498" text-anchor="middle">4. Sincronizador</text>
+<text class="lbl" x="524.0" y="511" text-anchor="middle">leva ao banco A;</text>
+<text class="lbl" x="524.0" y="524" text-anchor="middle">o banco ganha uma</text>
+<text class="lbl" x="524.0" y="537" text-anchor="middle">versão nova</text>
+<line class="arrow" x1="462" y1="545" x2="586" y2="545" marker-end="url(#ah)"/>
+<rect class="note" x="412" y="559" width="224" height="57" rx="4"/>
+<text class="notet" x="420" y="574">Só agora a edição existe para os</text>
+<text class="notet" x="420" y="587">outros. Plugin e sincronizador</text>
+<text class="notet" x="420" y="600">são dois escritores, sem ciclo.</text>
+<rect class="frame" x="500" y="624" width="618" height="463" rx="6"/>
+<text class="lbl" x="648.0" y="662" text-anchor="middle">5. Banco A envia</text>
+<text class="lbl" x="648.0" y="675" text-anchor="middle">a mudança ao</text>
+<text class="lbl" x="648.0" y="688" text-anchor="middle">banco B pela rede</text>
+<text class="lbl" x="648.0" y="701" text-anchor="middle">privada (cada par</text>
+<text class="lbl" x="648.0" y="714" text-anchor="middle">envia as suas)</text>
+<line class="arrow" x1="586" y1="722" x2="710" y2="722" marker-end="url(#ah)"/>
+<text class="lbl" x="772.0" y="748" text-anchor="middle">6. Sincronizador</text>
+<text class="lbl" x="772.0" y="761" text-anchor="middle">B recebe a</text>
+<text class="lbl" x="772.0" y="774" text-anchor="middle">mudança do banco</text>
+<text class="lbl" x="772.0" y="787" text-anchor="middle">B</text>
+<line class="arrow" x1="710" y1="795" x2="834" y2="795" marker-end="url(#ah)"/>
+<text class="lbl" x="896.0" y="821" text-anchor="middle">7. Sincronizador</text>
+<text class="lbl" x="896.0" y="834" text-anchor="middle">B escreve o .md</text>
+<text class="lbl" x="896.0" y="847" text-anchor="middle">no disco B; no</text>
+<text class="lbl" x="896.0" y="860" text-anchor="middle">disco, a última</text>
+<text class="lbl" x="896.0" y="873" text-anchor="middle">gravação vence</text>
+<line class="arrow" x1="834" y1="881" x2="958" y2="881" marker-end="url(#ah)"/>
+<text class="lbl" x="1020.0" y="907" text-anchor="middle">8. Busca B</text>
+<text class="lbl" x="1020.0" y="920" text-anchor="middle">reindexa o que</text>
+<text class="lbl" x="1020.0" y="933" text-anchor="middle">mudou (tempo</text>
+<text class="lbl" x="1020.0" y="946" text-anchor="middle">[NV])</text>
+<line class="arrow" x1="958" y1="954" x2="1082" y2="954" marker-end="url(#ah)"/>
+<line class="frame" x1="500" y1="970" x2="1118" y2="970"/><text class="frametxt" x="512" y="985">else: B desligada ou fora do ar</text>
+<rect class="note" x="536" y="992" width="224" height="83" rx="4"/>
+<text class="notet" x="544" y="1007">A mudança espera no banco A e</text>
+<text class="notet" x="544" y="1020">viaja quando B voltar. Não é</text>
+<text class="notet" x="544" y="1033">divergência; a checagem de sessão</text>
+<text class="notet" x="544" y="1046">em A só mostra a hora da última</text>
+<text class="notet" x="544" y="1059">troca.</text>
+<text class="frametxt" x="512" y="640">alt: B ligada</text>
+<rect class="frame" x="500" y="1095" width="544" height="95" rx="6"/>
+<rect class="note" x="536" y="1121" width="472" height="57" rx="4"/>
+<text class="notet" x="544" y="1136">Colisão real: as duas versões ficam no banco; a nota fica retida nas duas</text>
+<text class="notet" x="544" y="1149">máquinas até alguém escolher. Em texto, o hub não escolhe sozinho. A</text>
+<text class="notet" x="544" y="1162">porta avisa o agente (a construir).</text>
+<text class="frametxt" x="512" y="1111">opt: B mudou o mesmo trecho antes da troca</text>
+<rect class="note" x="1032" y="1198" width="348" height="44" rx="4"/>
+<text class="notet" x="1040" y="1213">Antes da reindexação, a busca de B devolve a versão</text>
+<text class="notet" x="1040" y="1226">antiga. A busca só enxerga o disco daquela máquina.</text>
+<text class="lbl" x="1206.0" y="1262" text-anchor="middle">9. Agente pergunta por palavra e por</text>
+<text class="lbl" x="1206.0" y="1275" text-anchor="middle">sentido</text>
+<line class="arrow" x1="1330" y1="1283" x2="1082" y2="1283" marker-end="url(#ah)"/>
+<text class="lbl" x="1206.0" y="1309" text-anchor="middle">10. Busca devolve trechos com o</text>
+<text class="lbl" x="1206.0" y="1322" text-anchor="middle">caminho, não o arquivo inteiro</text>
+<line class="arrow dash" x1="1082" y1="1330" x2="1330" y2="1330" marker-end="url(#ah)"/>
+<rect class="frame" x="1120" y="1344" width="296" height="95" rx="6"/>
+<rect class="note" x="1156" y="1370" width="224" height="57" rx="4"/>
+<text class="notet" x="1164" y="1385">O agente não lê pela porta. Pode</text>
+<text class="notet" x="1164" y="1398">ler o .md do disco, sem versão. O</text>
+<text class="notet" x="1164" y="1411">que deve fazer não está decidido.</text>
+<text class="frametxt" x="1132" y="1360">opt: porta do banco B fora do ar</text>
+<text class="lbl" x="1268.0" y="1459" text-anchor="middle">11. Agente abre a</text>
+<text class="lbl" x="1268.0" y="1472" text-anchor="middle">nota pela porta</text>
+<text class="lbl" x="1268.0" y="1485" text-anchor="middle">do banco</text>
+<line class="arrow" x1="1330" y1="1493" x2="1206" y2="1493" marker-end="url(#ah)"/>
+<text class="lbl" x="958.0" y="1519" text-anchor="middle">12. Porta lê o banco B; a frase-senha decifra o texto</text>
+<line class="arrow" x1="1206" y1="1527" x2="710" y2="1527" marker-end="url(#ah)"/>
+<text class="lbl" x="958.0" y="1553" text-anchor="middle">texto e versão</text>
+<line class="arrow dash" x1="710" y1="1561" x2="1206" y2="1561" marker-end="url(#ah)"/>
+<text class="lbl" x="1268.0" y="1587" text-anchor="middle">13. Devolve texto</text>
+<text class="lbl" x="1268.0" y="1600" text-anchor="middle">e versão; avisa</text>
+<text class="lbl" x="1268.0" y="1613" text-anchor="middle">se a nota está em</text>
+<text class="lbl" x="1268.0" y="1626" text-anchor="middle">conflito (a</text>
+<text class="lbl" x="1268.0" y="1639" text-anchor="middle">construir)</text>
+<line class="arrow dash" x1="1206" y1="1647" x2="1330" y2="1647" marker-end="url(#ah)"/>
+<rect class="note" x="1156" y="1661" width="224" height="57" rx="4"/>
+<text class="notet" x="1164" y="1676">O agente tem o trecho. Para</text>
+<text class="notet" x="1164" y="1689">alterar, grava pela porta com a</text>
+<text class="notet" x="1164" y="1702">versão lida (8.6).</text>
+<rect class="hd" x="37" y="30" width="106" height="78" rx="6"/><text class="hdt" x="90" y="46" text-anchor="middle">Gustavo</text><text class="hds" x="90" y="76" text-anchor="middle">diante da máquina A</text>
+<rect class="hd" x="161" y="30" width="106" height="78" rx="6"/><text class="hdt" x="214" y="46" text-anchor="middle">Obsidian +</text><text class="hdt" x="214" y="60" text-anchor="middle">plugin</text><text class="hds" x="214" y="76" text-anchor="middle">plugin só se o</text><text class="hds" x="214" y="88" text-anchor="middle">Obsidian estiver</text><text class="hds" x="214" y="100" text-anchor="middle">aberto</text>
+<rect class="hd" x="285" y="30" width="106" height="78" rx="6"/><text class="hdt" x="338" y="46" text-anchor="middle">Disco A</text><text class="hds" x="338" y="76" text-anchor="middle">vista: arquivo .md</text>
+<rect class="hd" x="409" y="30" width="106" height="78" rx="6"/><text class="hdt" x="462" y="46" text-anchor="middle">Sincronizador A</text><text class="hds" x="462" y="76" text-anchor="middle">CLI, tarefa</text><text class="hds" x="462" y="88" text-anchor="middle">agendada</text>
+<rect class="hd" x="533" y="30" width="106" height="78" rx="6"/><text class="hdt" x="586" y="46" text-anchor="middle">Banco local A</text><text class="hds" x="586" y="76" text-anchor="middle">CouchDB: a verdade</text>
+<rect class="hd" x="657" y="30" width="106" height="78" rx="6"/><text class="hdt" x="710" y="46" text-anchor="middle">Banco local B</text><text class="hds" x="710" y="76" text-anchor="middle">CouchDB: a verdade</text><text class="hds" x="710" y="88" text-anchor="middle">do par B</text>
+<rect class="hd" x="781" y="30" width="106" height="78" rx="6"/><text class="hdt" x="834" y="46" text-anchor="middle">Sincronizador B</text><text class="hds" x="834" y="76" text-anchor="middle">CLI, tarefa</text><text class="hds" x="834" y="88" text-anchor="middle">agendada</text>
+<rect class="hd" x="905" y="30" width="106" height="78" rx="6"/><text class="hdt" x="958" y="46" text-anchor="middle">Disco B</text><text class="hds" x="958" y="76" text-anchor="middle">vista: arquivo .md</text>
+<rect class="hd" x="1029" y="30" width="106" height="78" rx="6"/><text class="hdt" x="1082" y="46" text-anchor="middle">Busca B</text><text class="hds" x="1082" y="76" text-anchor="middle">obsidian-hybrid-search</text>
+<rect class="hd" x="1153" y="30" width="106" height="78" rx="6"/><text class="hdt" x="1206" y="46" text-anchor="middle">Porta do banco</text><text class="hdt" x="1206" y="60" text-anchor="middle">B</text><text class="hds" x="1206" y="76" text-anchor="middle">MCP, com</text><text class="hds" x="1206" y="88" text-anchor="middle">frase-senha</text>
+<rect class="hd" x="1277" y="30" width="106" height="78" rx="6"/><text class="hdt" x="1330" y="46" text-anchor="middle">Agente B</text><text class="hds" x="1330" y="76" text-anchor="middle">sessão de Claude</text><text class="hds" x="1330" y="88" text-anchor="middle">Code, Codex ou</text><text class="hds" x="1330" y="100" text-anchor="middle">Copilot</text></svg>
+</div>
+<h2>Passos, notas e fontes</h2>
+<p class="sub">Marcas da descrição: [D] decidido ou fato medido; [C] em curso; [P] prática do Gustavo; [NV] não verificado;
+[L] leitura do Tech lead; [A] a decidir; [G] com o Gustavo. "a construir" é peça decidida que ainda não existe.</p>
+<table>
+<tr><th>Tipo</th><th>O que aparece no diagrama</th><th>Marca e fonte</th></tr>
+<tr><td class="tipo">passo</td><td>1. Edita a nota no Obsidian</td><td>[D] 8.1, passos 1 e 2</td></tr>
+<tr><td class="tipo">passo</td><td>2. Obsidian grava o arquivo .md no disco</td><td>[D] 8.1, passo 2; vista Markdown</td></tr>
+<tr><td class="tipo">nota</td><td>A edição fica só no disco de A. Ninguém mais a vê. A vigia avisa em até 5 min; o sincronizador volta sozinho em até 1 min.</td><td>[D] 8.13 (sincronizador parou); 8.2, falha</td></tr>
+<tr><td class="tipo">passo</td><td>3a. Plugin, se o Obsidian estiver aberto, leva a mudança ao banco A</td><td>[D] 8.1, passo 3; &quot;Teste: disco e banco&quot;, jeito 1</td></tr>
+<tr><td class="tipo">passo</td><td>3b. Sincronizador pega a mudança do disco (~2 s), com o Obsidian aberto ou fechado</td><td>[D] 8.2, passos 1 e 2; ~2 s medido</td></tr>
+<tr><td class="tipo">passo</td><td>4. Sincronizador leva ao banco A; o banco ganha uma versão nova</td><td>[D] 8.1, passo 3; regra 2</td></tr>
+<tr><td class="tipo">nota</td><td>Só agora a edição existe para os outros. Plugin e sincronizador são dois escritores, sem ciclo.</td><td>[D] regra 1; 8.1, passo 3</td></tr>
+<tr><td class="tipo">passo</td><td>5. Banco A envia a mudança ao banco B pela rede privada (cada par envia as suas)</td><td>[D] 8.1, passo 4; &quot;Revisão do sync&quot;; tempo na rede [NV]</td></tr>
+<tr><td class="tipo">passo</td><td>6. Sincronizador B recebe a mudança do banco B</td><td>[D] 8.1, passo 5</td></tr>
+<tr><td class="tipo">passo</td><td>7. Sincronizador B escreve o .md no disco B; no disco, a última gravação vence</td><td>[D] 8.1, passo 5; regra 7</td></tr>
+<tr><td class="tipo">passo</td><td>8. Busca B reindexa o que mudou (tempo [NV])</td><td>[D] &quot;Camada de busca&quot;; tempo de reindexação [NV]</td></tr>
+<tr><td class="tipo">nota</td><td>A mudança espera no banco A e viaja quando B voltar. Não é divergência; a checagem de sessão em A só mostra a hora da última troca.</td><td>[D] 8.1, falha &quot;B desligada&quot;; 8.13; regra 8</td></tr>
+<tr><td class="tipo">nota</td><td>Colisão real: as duas versões ficam no banco; a nota fica retida nas duas máquinas até alguém escolher. Em texto, o hub não escolhe sozinho. A porta avisa o agente (a construir).</td><td>[D] 8.12; regra 3; 8.1, falha de colisão</td></tr>
+<tr><td class="tipo">nota</td><td>Antes da reindexação, a busca de B devolve a versão antiga. A busca só enxerga o disco daquela máquina.</td><td>[D] regra 12; 8.9, limites</td></tr>
+<tr><td class="tipo">passo</td><td>9. Agente pergunta por palavra e por sentido</td><td>[D] 8.9, passos 1 e 2</td></tr>
+<tr><td class="tipo">passo</td><td>10. Busca devolve trechos com o caminho, não o arquivo inteiro</td><td>[D] 8.9, passo 3</td></tr>
+<tr><td class="tipo">nota</td><td>O agente não lê pela porta. Pode ler o .md do disco, sem versão. O que deve fazer não está decidido.</td><td>[L] 8.5, falha &quot;porta fora&quot;; [A] 8.18, porta do banco</td></tr>
+<tr><td class="tipo">passo</td><td>11. Agente abre a nota pela porta do banco</td><td>[L] 7.2 e 8.5 dizem porta; 8.9, passo 3 não diz por onde</td></tr>
+<tr><td class="tipo">passo</td><td>12. Porta lê o banco B; a frase-senha decifra o texto</td><td>[D] &quot;Como a verdade viaja&quot;; &quot;Onde o servidor mora&quot;</td></tr>
+<tr><td class="tipo">passo</td><td>13. Devolve texto e versão; avisa se a nota está em conflito (a construir)</td><td>[D] 8.5, passos 3 e 4; o aviso de conflito é a construir</td></tr>
+<tr><td class="tipo">nota</td><td>O agente tem o trecho. Para alterar, grava pela porta com a versão lida (8.6).</td><td>[D] 8.6</td></tr>
+</table>
+</main>
+</body>
+</html>

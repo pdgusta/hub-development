@@ -1,0 +1,54 @@
+{
+ "chave": "web:tensorflow.org/quantum",
+ "nomes": [
+  "TensorFlow Quantum"
+ ],
+ "urls": [
+  "https://www.tensorflow.org/quantum"
+ ],
+ "readme_cortado": false,
+ "readme": "[TensorFlow Quantum]\n\nSkip to main content\n\n English\n\n Español\n\n Español – América Latina\n\n Français\n\n Indonesia\n\n Italiano\n\n Polski\n\n Português\n\n Português – Brasil\n\n Tiếng Việt\n\n Türkçe\n\n Русский\n\n עברית\n\n العربيّة\n\n فارسی\n\n हिंदी\n\n বাংলা\n\n ภาษาไทย\n\n 中文 – 简体\n\n 中文 – 繁體\n\n 日本語\n\n 한국어\n\n GitHub\n\n Sign in\n\n Quantum\n\n A quantum ML library for rapid prototyping of hybrid quantum-classical models. Leverage Google’s quantum computing frameworks, all from within TensorFlow.\n\n TensorFlow\n\n Resources\n\n Quantum\n\n Stay organized with collections\n\n Save and categorize content based on your preferences.\n\n# A hybrid quantum-classical model.\nmodel = tf.keras.Sequential([\n # Quantum circuit data comes in inside of tensors.\n tf.keras.Input(shape=(), dtype=tf.dtypes.string),\n\n # Parametrized Quantum Circuit (PQC) provides output\n # data from the input circuits run on a quantum computer.\n tfq.layers.PQC(my_circuit, [cirq.Z(q1), cirq.X(q0)]),\n\n # Output data from quantum computer passed through model.\n tf.keras.layers.Dense(50)\n])\n\n TensorFlow Quantum (TFQ) is a quantum machine learning library for rapid prototyping of hybrid quantum-classical ML models. Research in quantum algorithms and applications can leverage Google’s quantum computing frameworks, all from within TensorFlow. \n TensorFlow Quantum focuses on quantum data and building hybrid quantum-classical models. It integrates quantum computing algorithms and logic designed in Cirq, and provides quantum computing primitives compatible with existing TensorFlow APIs, along with high-performance quantum circuit simulators. Read more in the TensorFlow Quantum white paper. \n Start with the overview, then run the notebook tutorials. \n\n Distributed TensorFlow Quantum\n\n Read on TensorFlow blog\n\n Power of quantum data\n\n Read on TensorFlow blog\n\n User Journey: Owen\n\n Read on TensorFlow blog\n\n Announcing\nTensorFlow Quantum\n\n Read on the Google AI blog\n\n TensorFlow Quantum\nResearch Snippets\n\n View on GitHub\n\n TensorFlow Quantum (TF Dev Summit '20)\n\n Watch the video\n\n Programming a quantum computer with Cirq\n\n Watch the video\n\n TensorFlow Quantum on GitHub\n\n View on GitHub\n\n [[[\"Easy to understand\",\"easyToUnderstand\",\"thumb-up\"],[\"Solved my problem\",\"solvedMyProblem\",\"thumb-up\"],[\"Other\",\"otherUp\",\"thumb-up\"]],[[\"Missing the information I need\",\"missingTheInformationINeed\",\"thumb-down\"],[\"Too complicated / too many steps\",\"tooComplicatedTooManySteps\",\"thumb-down\"],[\"Out of date\",\"outOfDate\",\"thumb-down\"],[\"Samples / code issue\",\"samplesCodeIssue\",\"thumb-down\"],[\"Other\",\"otherDown\",\"thumb-down\"]],[],[],[]]",
+ "fonte": "site",
+ "respostas": [
+  {
+   "por": "mistral-code-fim",
+   "resposta": {
+    "serve": "none",
+    "role": "",
+    "place": [
+     "n/a"
+    ],
+    "mechanism": [
+     "n/a"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "yes",
+    "license": "unknown",
+    "maturity": "unknown",
+    "doubt": true,
+    "evidence": "Português – Brasil in language list, no mention of MCP or Windows."
+   }
+  },
+  {
+   "por": "nemotron-3-super-120b",
+   "resposta": {
+    "serve": "none",
+    "role": "",
+    "place": [
+     "n/a"
+    ],
+    "mechanism": [
+     "n/a"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "unknown",
+    "doubt": false,
+    "evidence": "TensorFlow Quantum is a quantum machine learning library for rapid prototyping of hybrid quantum-classical ML models."
+   }
+  }
+ ]
+}

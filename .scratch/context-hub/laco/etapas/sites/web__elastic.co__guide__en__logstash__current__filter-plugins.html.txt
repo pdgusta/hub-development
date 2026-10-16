@@ -1,0 +1,216 @@
+Docs
+
+ /
+
+ Reference
+
+ /
+
+ Ingestion tools
+
+ /
+
+ Logstash Plugins
+
+Filter plugins
+
+A filter plugin performs intermediary processing on an event. Filters are often applied conditionally depending on the
+characteristics of the event.
+
+The following filter plugins are available below. For a list of Elastic supported plugins, please consult the Support Matrix.
+
+Plugin
+Description
+Github repository
+
+age
+Calculates the age of an event by subtracting the event timestamp from the current timestamp
+logstash-filter-age
+
+aggregate
+Aggregates information from several events originating with a single task
+logstash-filter-aggregate
+
+alter
+Performs general alterations to fields that the mutate filter does not handle
+logstash-filter-alter
+
+bytes
+Parses string representations of computer storage sizes, such as "123 MB" or "5.6gb", into their numeric value in bytes
+logstash-filter-bytes
+
+cidr
+Checks IP addresses against a list of network blocks
+logstash-filter-cidr
+
+cipher
+Applies or removes a cipher to an event
+logstash-filter-cipher
+
+clone
+Duplicates events
+logstash-filter-clone
+
+csv
+Parses comma-separated value data into individual fields
+logstash-filter-csv
+
+date
+Parses dates from fields to use as the Logstash timestamp for an event
+logstash-filter-date
+
+de_dot
+Computationally expensive filter that removes dots from a field name
+logstash-filter-de_dot
+
+dissect
+Extracts unstructured event data into fields using delimiters
+logstash-filter-dissect
+
+dns
+Performs a standard or reverse DNS lookup
+logstash-filter-dns
+
+drop
+Drops all events
+logstash-filter-drop
+
+elapsed
+Calculates the elapsed time between a pair of events
+logstash-filter-elapsed
+
+elastic_integration
+Provides additional Logstash processing on data from Elastic integrations
+logstash-filter-elastic_integration
+
+elasticsearch
+Copies fields from previous log events in Elasticsearch to current events
+logstash-filter-elasticsearch
+
+environment
+Stores environment variables as metadata sub-fields
+logstash-filter-environment
+
+extractnumbers
+Extracts numbers from a string
+logstash-filter-extractnumbers
+
+fingerprint
+Fingerprints fields by replacing values with a consistent hash
+logstash-filter-fingerprint
+
+geoip
+Adds geographical information about an IP address
+logstash-filter-geoip
+
+grok
+Parses unstructured event data into fields
+logstash-filter-grok
+
+http
+Provides integration with external web services/REST APIs
+logstash-filter-http
+
+i18n
+Removes special characters from a field
+logstash-filter-i18n
+
+java_uuid
+Generates a UUID and adds it to each processed event
+core plugin
+
+jdbc_streaming
+Enrich events with your database data
+logstash-integration-jdbc
+
+json
+Parses JSON events
+logstash-filter-json
+
+json_encode
+Serializes a field to JSON
+logstash-filter-json_encode
+
+kv
+Parses key-value pairs
+logstash-filter-kv
+
+memcached
+Provides integration with external data in Memcached
+logstash-filter-memcached
+
+metricize
+Takes complex events containing a number of metrics and splits these up into multiple events, each holding a single metric
+logstash-filter-metricize
+
+metrics
+Aggregates metrics
+logstash-filter-metrics
+
+mutate
+Performs mutations on fields
+logstash-filter-mutate
+
+prune
+Prunes event data based on a list of fields to blacklist or whitelist
+logstash-filter-prune
+
+range
+Checks that specified fields stay within given size or length limits
+logstash-filter-range
+
+ruby
+Executes arbitrary Ruby code
+logstash-filter-ruby
+
+sleep
+Sleeps for a specified time span
+logstash-filter-sleep
+
+split
+Splits multi-line messages, strings, or arrays into distinct events
+logstash-filter-split
+
+syslog_pri
+Parses the PRI (priority) field of a syslog message
+logstash-filter-syslog_pri
+
+threats_classifier
+Enriches security logs with information about the attacker’s intent
+logstash-filter-threats_classifier
+
+throttle
+Throttles the number of events
+logstash-filter-throttle
+
+tld
+Replaces the contents of the default message field with whatever you specify in the configuration
+logstash-filter-tld
+
+translate
+Replaces field contents based on a hash or YAML file
+logstash-filter-translate
+
+truncate
+Truncates fields longer than a given length
+logstash-filter-truncate
+
+urldecode
+Decodes URL-encoded fields
+logstash-filter-urldecode
+
+useragent
+Parses user agent strings into fields
+logstash-filter-useragent
+
+uuid
+Adds a UUID to events
+logstash-filter-uuid
+
+wurfl_device_detection
+Enriches logs with device information such as brand, model, OS
+logstash-filter-wurfl_device_detection
+
+xml
+Parses XML into fields
+logstash-filter-xml

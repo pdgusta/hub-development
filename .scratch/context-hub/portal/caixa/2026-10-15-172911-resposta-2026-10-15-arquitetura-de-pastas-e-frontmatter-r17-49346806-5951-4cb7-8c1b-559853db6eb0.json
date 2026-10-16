@@ -1,0 +1,142 @@
+{
+  "envio": "49346806-5951-4cb7-8c1b-559853db6eb0",
+  "tipo": "resposta",
+  "enviada": "2026-10-15T17:29:11-03:00",
+  "alvo": {
+    "tipo": "rodada",
+    "id": "2026-10-15-arquitetura-de-pastas-e-frontmatter-r17",
+    "titulo": "Os quatro últimos pontos da árvore de pastas"
+  },
+  "ticket": "12",
+  "substitui": null,
+  "rodada": {
+    "id": "2026-10-15-arquitetura-de-pastas-e-frontmatter-r17",
+    "base": "627c31fe83f8cef675c53412a25444c18905cc034ed9c110cdfe6a68ed94189a",
+    "titulo": "Os quatro últimos pontos da árvore de pastas",
+    "ticket": "12",
+    "perguntas": [
+      {
+        "id": "pasta-local",
+        "titulo": "Como uma pasta fica só numa máquina",
+        "tipo": "escolha",
+        "recomendada": [
+          "A"
+        ],
+        "opcoes": [
+          {
+            "chave": "A",
+            "texto": "Não há pasta não replicada declarada: o que precisa ficar numa máquina só leva ponto no nome, e só isso. O glossário troca o termo \"pasta não replicada\" (hoje: \"cada pasta declara\", \"alcançada por SSH\") por essa regra"
+          },
+          {
+            "chave": "B",
+            "texto": "Além do ponto no nome, uma pasta pode se declarar local por um arquivo marcador dentro dela, que o sync e a busca respeitam. Mais construção, sem uso conhecido hoje"
+          }
+        ],
+        "proposta": null
+      },
+      {
+        "id": "frontmatter-demais",
+        "titulo": "O frontmatter das notas que não são ficha, núcleo nem anexo",
+        "tipo": "escolha",
+        "recomendada": [
+          "A"
+        ],
+        "opcoes": [
+          {
+            "chave": "A",
+            "texto": "Livre, só com YAML válido (o verificador avisa o inválido). Os `index.md` ganham `title` pelo verificador, com a pasta e a iniciativa (\"Índice · runs · VOEGOL cross-tenant\"), para não aparecerem todos como \"index\" na busca"
+          },
+          {
+            "chave": "B",
+            "texto": "Livre, só com YAML válido, sem `title` nos `index.md`: na busca eles aparecem como \"index\", e o caminho da pasta não entra na busca por palavra"
+          }
+        ],
+        "proposta": null
+      },
+      {
+        "id": "sumario-dono",
+        "titulo": "Quem mantém o sumário das pastas que crescem",
+        "tipo": "escolha",
+        "recomendada": [
+          "A"
+        ],
+        "opcoes": [
+          {
+            "chave": "A",
+            "texto": "O verificador mantém a lista de arquivos de cada `index.md` sozinho, e você ou o agente escrevem só o texto livre do topo. \"Pasta que cresce\" = a partir de 10 arquivos; abaixo disso, sem `index.md`"
+          },
+          {
+            "chave": "B",
+            "texto": "O agente que cria ou move um arquivo atualiza o `index.md` à mão, e o verificador só avisa quando a lista não bate com a pasta. Também a partir de 10 arquivos"
+          },
+          {
+            "chave": "C",
+            "texto": "Como a A, mas com outro limite para \"pasta que cresce\" (diga qual em \"Algo mais?\")"
+          }
+        ],
+        "proposta": null
+      },
+      {
+        "id": "prototipo",
+        "titulo": "O protótipo da árvore",
+        "tipo": "escolha",
+        "recomendada": [
+          "A"
+        ],
+        "opcoes": [
+          {
+            "chave": "A",
+            "texto": "As cartas aprovadas no caminho (o núcleo e os blocos) bastam como protótipo; o desenho da árvore final entra no `system-design.html` quando o ticket for resolvido"
+          },
+          {
+            "chave": "B",
+            "texto": "Antes de resolver, o Designer faz um esboço da árvore final com notas de exemplo (ficha com `aliases`, `work/`, `.secrets/`, os `index.md` e o texto dos anexos), numa carta para você aprovar"
+          }
+        ],
+        "proposta": null
+      },
+      {
+        "id": "algo-mais",
+        "titulo": "Algo mais?",
+        "tipo": "texto",
+        "recomendada": [],
+        "opcoes": [],
+        "proposta": null
+      }
+    ]
+  },
+  "corpo_hash": "f0d469c84e296852dee360f93becd749cf48132b946a29ce8b0d3ad4bf7e9292",
+  "corpo": {
+    "tipo": "resposta",
+    "rodada": "2026-10-15-arquitetura-de-pastas-e-frontmatter-r17",
+    "base": "627c31fe83f8cef675c53412a25444c18905cc034ed9c110cdfe6a68ed94189a",
+    "respostas": {
+      "pasta-local": {
+        "escolha": [
+          "B"
+        ],
+        "outra": null,
+        "comentario": null
+      },
+      "frontmatter-demais": {
+        "escolha": [],
+        "outra": null,
+        "comentario": "detalhe mais e recomende um padrão para cada tipo possível de nota. Pois frontmatter é algo muito útil e você está banalizando"
+      },
+      "sumario-dono": {
+        "escolha": [
+          "A"
+        ],
+        "outra": null,
+        "comentario": "Opção A porém peço uma recomendação de ONDE ficará definido na pasta que ela é uma pasta que recebe index. Como quero que padronize frontmatter (pergunta 2) também já te pergunto se dá pra fazer isso de forma mecânica pra nenhum agente ficar livre pra \"decidir\" se vai seguir o padrão ou não (regrinhas no AGENTS.md já se provaram as vezes inúteis pra agentes menores)"
+      },
+      "prototipo": {
+        "escolha": [
+          "B"
+        ],
+        "outra": null,
+        "comentario": null
+      }
+    }
+  }
+}

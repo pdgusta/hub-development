@@ -1,0 +1,122 @@
+{
+  "envio": "1b33c719-fc92-41e1-9d5e-5951c15879fb",
+  "tipo": "resposta",
+  "enviada": "2026-10-15T14:54:28-03:00",
+  "alvo": {
+    "tipo": "rodada",
+    "id": "2026-10-15-como-os-agentes-gravam-r1",
+    "titulo": "Por onde cada agente grava, e como a gravação confere a versão"
+  },
+  "ticket": "11",
+  "substitui": null,
+  "rodada": {
+    "id": "2026-10-15-como-os-agentes-gravam-r1",
+    "base": "cfd8ff6c92fc0cd4337cabd30b5e822227d3a1f94e967a34052d7e0813dacefe",
+    "titulo": "Por onde cada agente grava, e como a gravação confere a versão",
+    "ticket": "11",
+    "perguntas": [
+      {
+        "id": "disco-ou-mcp",
+        "titulo": "Por onde o agente grava, nas sessões do Claude Code, do Codex e do Copilot",
+        "tipo": "escolha",
+        "recomendada": [
+          "A"
+        ],
+        "opcoes": [
+          {
+            "chave": "A",
+            "texto": "Pelos dois, cada um no que confere: no disco, só troca de trecho (Edit do Claude Code, `apply_patch` do Codex, a edição do Copilot), que grava só se o trecho antigo ainda está lá; a regravação inteira de um arquivo que já existe no hub vai pelo `write_note` do MCP do banco, com a versão lida. Um hook antes da ferramenta, no escopo do usuário, recusa a regravação inteira no disco e manda usar o MCP. Arquivo novo pode nascer no disco. O que o Codex e o Copilot conferem na troca de trecho é conferido na construção"
+          },
+          {
+            "chave": "B",
+            "texto": "Pelos dois, com o disco livre e uma guarda por marca: um hook guarda a marca do arquivo (o hash) quando o agente lê e recusa qualquer gravação no disco se a marca mudou, inclusive a regravação inteira. Mais construção, e não se sabe se o Codex e o Copilot deixam um hook ver a leitura"
+          },
+          {
+            "chave": "C",
+            "texto": "Antes de decidir, um teste curto: o que o Edit e o Write do Claude Code, o `apply_patch` do Codex e a edição do Copilot fazem quando o arquivo muda entre a leitura e a gravação, e se o hook antes da ferramenta recusa a regravação inteira nos três. Custo estimado: 100 a 200 mil tokens de um subagente, cerca de 1 hora; o erro de sandbox do Codex nesta máquina, ainda em pesquisa em \"Acesso dos agentes: decisão\", pode travar a parte do Codex"
+          }
+        ],
+        "proposta": null
+      },
+      {
+        "id": "desktop",
+        "titulo": "Por onde o Claude Desktop grava",
+        "tipo": "escolha",
+        "recomendada": [
+          "A"
+        ],
+        "opcoes": [
+          {
+            "chave": "A",
+            "texto": "Pelos dois: a pasta `C:\\context-hub` conectada no Cowork, para ler e gravar, com \"Folder instructions\" que mandam ler o `AGENTS.md` da raiz; e o MCP do banco com escrita pela ponte `mcp-remote` (localhost, com token), cuja descrição das ferramentas leva o \"antes de gravar, leia `AGENTS.md`\". Na pasta conectada, a gravação fica sem a guarda de versão do hub até a construção mostrar o que a ferramenta do Cowork confere"
+          },
+          {
+            "chave": "B",
+            "texto": "Só pela pasta conectada, com as \"Folder instructions\"; sem MCP de escrita no Desktop. Mais simples, e a gravação nunca confere a versão pelo hub"
+          },
+          {
+            "chave": "C",
+            "texto": "Antes de decidir, um teste seu no Desktop: conectar uma pasta de teste, ver se ele segue o `AGENTS.md` dela e o que acontece quando o arquivo muda entre a leitura e a gravação. Custo: cerca de 20 minutos seus, com cliques no app; nenhum token de subagente"
+          }
+        ],
+        "proposta": null
+      },
+      {
+        "id": "cliente",
+        "titulo": "O cliente grava no hub?",
+        "tipo": "escolha",
+        "recomendada": [
+          "A"
+        ],
+        "opcoes": [
+          {
+            "chave": "A",
+            "texto": "Gravação ligável por cliente: o padrão continua só de leitura; quando você quiser, o cliente recebe o token de uma segunda instância do MCP do banco, com escrita e a mesma guarda de versão, exposta só na tailnet. A senha do CouchDB continua só nos pares. Como esse MCP chega ao cliente (endereço, junto com a busca) é de \"Acesso dos agentes: decisão\""
+          },
+          {
+            "chave": "B",
+            "texto": "Só leitura sempre: o cliente não grava, e a nota de retomada de um trabalho feito num cliente se perde quando a sessão acaba; o trabalho que precisa de nota é feito num par"
+          }
+        ],
+        "proposta": null
+      },
+      {
+        "id": "algo-mais",
+        "titulo": "Algo mais?",
+        "tipo": "texto",
+        "recomendada": [],
+        "opcoes": [],
+        "proposta": null
+      }
+    ]
+  },
+  "corpo_hash": "7b7a94401bb8a38cf8ce763c758f1bd1ea4b9411dd5f4198d5f8be94207fd4c8",
+  "corpo": {
+    "tipo": "resposta",
+    "rodada": "2026-10-15-como-os-agentes-gravam-r1",
+    "base": "cfd8ff6c92fc0cd4337cabd30b5e822227d3a1f94e967a34052d7e0813dacefe",
+    "respostas": {
+      "disco-ou-mcp": {
+        "escolha": [
+          "C"
+        ],
+        "outra": null,
+        "comentario": null
+      },
+      "desktop": {
+        "escolha": [
+          "A"
+        ],
+        "outra": null,
+        "comentario": null
+      },
+      "cliente": {
+        "escolha": [
+          "A"
+        ],
+        "outra": null,
+        "comentario": null
+      }
+    }
+  }
+}

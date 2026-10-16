@@ -1,0 +1,33 @@
+{
+ "chave": "gh:typesense/typesense-python",
+ "urls": [
+  "https://github.com/typesense/typesense-python"
+ ],
+ "tipos": [
+  "library"
+ ],
+ "termos": [
+  "Typesense Client",
+  "Typesense SDK",
+  "python",
+  "client"
+ ],
+ "mencoes": 2,
+ "familias": [
+  "gpt-oss",
+  "mistral"
+ ],
+ "primeira_onda": 2,
+ "nomes": [
+  "Typesense Python Client",
+  "Typesense Python SDK"
+ ],
+ "resumos": [
+  "Python-Bibliothek für die Interaktion mit Typesense über die REST-API.",
+  "Client library for interacting with Typesense from Python."
+ ],
+ "readme_status": "ok",
+ "readme_nome": "README.md",
+ "readme_cortado": false,
+ "readme": "# Typesense Python Client\n\nPython client for the Typesense API: https://github.com/typesense/typesense\n\n## Installation\n\n```\n$ pip install typesense\n```\n\nYou can also add `typesense` to your project's `requirements.txt`.\n\n## Usage\n\nYou can find some examples [here](https://github.com/typesense/typesense-python/blob/master/examples/collection_operations.py).\n\nSee detailed [API documentation](https://typesense.org/api).\n\n## Async usage\n\nUse `AsyncClient` when working in an async runtime:\n\n```python\nimport asyncio\nimport typesense\n\n\nasync def main() -> None:\n    client = typesense.AsyncClient({\n        \"api_key\": \"abcd\",\n        \"nodes\": [{\"host\": \"localhost\", \"port\": \"8108\", \"protocol\": \"http\"}],\n        \"connection_timeout_seconds\": 2,\n    })\n\n    print(await client.collections.retrieve())\n    await client.api_call.aclose()\n\n\nif __name__ == \"__main__\":\n    asyncio.run(main())\n```\n\nSee `examples/async_collection_operations.py` for a fuller async walkthrough.\n\n## Using httpx2\n\nThe client sends requests with [httpx](https://www.python-httpx.org/) by default. On Python 3.10+ you can pass an [httpx2](https://github.com/pydantic/httpx2) client instead. httpx2 is Pydantic's maintained continuation of httpx, and it fixes a connection pool leak in httpcore ([encode/httpcore#1093](https://github.com/encode/httpcore/issues/1093)) that can leave an `AsyncClient` failing every request with `PoolTimeout` under load.\n\n```\n$ pip install \"typesense[httpx2]\"\n```\n\n```python\nimport httpx2\nimport typesense\n\nhttp_client = httpx2.AsyncClient(\n    timeout=httpx2.Timeout(2.0),\n    limits=httpx2.Limits(max_connections=100, max_keepalive_connections=20),\n)\nclient = typesense.AsyncClient(\n    {\n        \"api_key\": \"abcd\",\n        \"nodes\": [{\"host\": \"localhost\", \"port\": \"8108\", \"protocol\": \"http\"}],\n    },\n    http_client=http_client,\n)\n```\n\n`typesense.Client` takes an `httpx2.Client` the same way. The connection pool settings in the config (`pool_timeout_seconds`, `max_connections`, `max_keepalive_connections`) only apply to the default client, so set them on your own client instead. The Typesense client does not close a client you pass in.\n\n## Compatibility\n\n| Typesense Server | typesense-python |\n|------------------|------------------|\n| \\>= v30.0        | \\>= v2.0.0       |\n| \\>= v28.0        | \\>= v1.0.0       |\n| \\>= v26.0        | \\>= v0.20.0      |\n| \\>= v0.25.0      | \\>= v0.16.0      |\n| \\>= v0.23.0      | \\>= v0.14.0      |\n| \\>= v0.21.0      | \\>= v0.13.0      |\n| \\>= v0.20.0      | \\>= v0.11.0      |\n| \\>= v0.19.0      | \\>= v0.10.0      |\n| \\>= v0.17.0      | \\>= v0.9.0       |\n| \\>= v0.16.0      | \\>= v0.8.0       |\n| \\>= v0.15.0      | \\>= v0.7.0       |\n\n## Contributing\n\n> [!NOTE]\n> Development happens in async-only code; sync code is generated automatically via `utils/run-unasync.py`.\n\nBug reports and pull requests are welcome on GitHub at [https://github.com/typesense/typesense-python].\nIf you change any part of the client's source code, run `uv run utils/run-unasync.py` before opening a PR to keep the generated sync files in sync.\n\n## License\n\n`typesense-python` is distributed under the Apache 2 license.\n"
+}

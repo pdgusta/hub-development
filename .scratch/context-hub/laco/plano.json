@@ -1,0 +1,111 @@
+{
+  "_nota": "Plano de cobertura da onda 1 (etapa 1 da proposta). Ângulos x línguas x formulações. As sementes ocultas ficam em sementes.json, que os geradores nunca leem.",
+  "formato": "Reply ONLY with one JSON object, no other text: {\"items\":[{\"name\":\"...\",\"url\":\"https://... or empty string if you are not sure it exists\",\"kind\":\"tool|library|concept|assembly|service\",\"summary\":\"one sentence, in {lingua_nome}\",\"terms\":[\"other names or terms worth searching next\"]}]}. List up to 12 items. Never invent a URL: if you are not sure it exists, use \"\".",
+  "linguas": {
+    "pt": {"nome": "Portuguese", "contexto": "Contexto: um acervo de notas em Markdown (milhares de arquivos .md com frontmatter, em português e inglês) usado por agentes de IA (Claude Code, Codex, Copilot) em duas máquinas Windows. A verdade fica num banco CouchDB sincronizado; os agentes chegam por MCP ou pelo disco. Precisamos de uma camada de busca: por palavra (BM25, com acento e radicais do português), por sentido (embeddings), híbrida, filtros por frontmatter, acessível por MCP, de preferência local e sem rede."},
+    "en": {"nome": "English", "contexto": "Context: a Markdown knowledge base (thousands of .md files with frontmatter, in Portuguese and English) used by AI coding agents (Claude Code, Codex, Copilot) on two Windows machines. The source of truth is a synced CouchDB database; agents reach it through MCP or the file system. We need a search layer: keyword (BM25, handling Portuguese accents and stemming), semantic (embeddings), hybrid, frontmatter filters, reachable over MCP, preferably local and offline."},
+    "es": {"nome": "Spanish", "contexto": "Contexto: una base de notas en Markdown (miles de archivos .md con frontmatter, en portugués e inglés) que usan agentes de IA (Claude Code, Codex, Copilot) en dos máquinas Windows. La fuente de verdad es una base CouchDB sincronizada; los agentes acceden por MCP o por el disco. Necesitamos una capa de búsqueda: por palabras (BM25, con acentos y raíces del portugués), semántica (embeddings), híbrida, filtros por frontmatter, accesible por MCP, preferiblemente local y sin red."},
+    "de": {"nome": "German", "contexto": "Kontext: eine Markdown-Wissensbasis (Tausende .md-Dateien mit Frontmatter, auf Portugiesisch und Englisch), die KI-Agenten (Claude Code, Codex, Copilot) auf zwei Windows-Rechnern nutzen. Die Datenquelle ist eine synchronisierte CouchDB; die Agenten greifen über MCP oder das Dateisystem zu. Gesucht ist eine Suchschicht: Stichwortsuche (BM25, mit portugiesischen Akzenten und Stammformen), semantische Suche (Embeddings), hybrid, Filter nach Frontmatter, über MCP erreichbar, möglichst lokal und offline."},
+    "ru": {"nome": "Russian", "contexto": "Контекст: база заметок в Markdown (тысячи файлов .md с frontmatter, на португальском и английском), которой пользуются ИИ-агенты (Claude Code, Codex, Copilot) на двух машинах с Windows. Источник истины — синхронизируемая база CouchDB; агенты обращаются через MCP или файловую систему. Нужен слой поиска: по словам (BM25, с учётом португальских диакритик и основ слов), смысловой (эмбеддинги), гибридный, фильтры по frontmatter, доступ по MCP, желательно локально и без сети."},
+    "zh": {"nome": "Chinese", "contexto": "背景：一个 Markdown 笔记库（数千个带 frontmatter 的 .md 文件，葡萄牙语和英语），由 AI 编程代理（Claude Code、Codex、Copilot）在两台 Windows 电脑上使用。数据的真实来源是同步的 CouchDB 数据库；代理通过 MCP 或文件系统访问。需要一个搜索层：关键词检索（BM25，支持葡萄牙语重音和词干）、语义检索（向量嵌入）、混合检索、按 frontmatter 过滤、可通过 MCP 访问，最好本地离线运行。"},
+    "ja": {"nome": "Japanese", "contexto": "背景：Markdown のノート集（frontmatter 付きの .md ファイルが数千、ポルトガル語と英語）を、AI エージェント（Claude Code、Codex、Copilot）が 2 台の Windows マシンで使っています。正本は同期された CouchDB データベースで、エージェントは MCP かファイルシステム経由でアクセスします。必要なのは検索レイヤーです：キーワード検索（BM25、ポルトガル語のアクセントと語幹に対応）、意味検索（埋め込み）、ハイブリッド、frontmatter によるフィルタ、MCP で利用可能、できればローカルかつオフライン。"}
+  },
+  "angulos": {
+    "lugares": {
+      "pt": ["Onde essa busca pode morar: no disco de cada máquina, dentro do servidor MCP do banco, como serviço na rede, como cópia leve no cliente? Quais projetos fazem cada um?", "Que topologias existem para busca local compartilhada entre duas máquinas e vários agentes, e que ferramentas as implementam?"],
+      "en": ["Where can this search live: on each machine's disk, inside the database's MCP server, as a network service, as a lightweight client-side copy? Which projects do each?", "What topologies exist for local search shared by two machines and several agents, and which tools implement them?"],
+      "es": ["¿Dónde puede vivir esta búsqueda: en el disco de cada máquina, dentro del servidor MCP de la base, como servicio en red, como copia ligera en el cliente? ¿Qué proyectos hacen cada cosa?", "¿Qué topologías existen para una búsqueda local compartida entre dos máquinas y varios agentes, y qué herramientas las implementan?"],
+      "de": ["Wo kann diese Suche laufen: auf der Festplatte jedes Rechners, im MCP-Server der Datenbank, als Netzwerkdienst, als leichte Kopie beim Client? Welche Projekte machen was?", "Welche Topologien gibt es für eine lokale Suche, die zwei Rechner und mehrere Agenten teilen, und welche Werkzeuge setzen sie um?"],
+      "ru": ["Где может жить такой поиск: на диске каждой машины, внутри MCP-сервера базы, как сетевой сервис, как лёгкая копия на клиенте? Какие проекты делают каждое из этого?", "Какие топологии существуют для локального поиска, общего для двух машин и нескольких агентов, и какие инструменты их реализуют?"],
+      "zh": ["这种搜索可以放在哪里：每台电脑的磁盘上、数据库的 MCP 服务器里、作为网络服务、还是客户端的轻量副本？分别有哪些项目？", "两台电脑和多个代理共享的本地搜索有哪些部署拓扑？哪些工具实现了它们？"],
+      "ja": ["この検索はどこに置けるか：各マシンのディスク、データベースの MCP サーバー内、ネットワークサービス、クライアント側の軽量コピー？それぞれを実現するプロジェクトは？", "2 台のマシンと複数のエージェントで共有するローカル検索には、どんな構成があり、どのツールが実装しているか？"]
+    },
+    "prontas": {
+      "pt": ["Que ferramentas prontas fazem busca em pastas de Markdown para agentes de IA, com servidor MCP?", "Quais projetos open-source indexam notas Markdown (Obsidian, Logseq, wikis) com busca híbrida e podem ser usados por um agente?"],
+      "en": ["Which ready-made tools search folders of Markdown files for AI agents and ship an MCP server?", "Which open-source projects index Markdown notes (Obsidian, Logseq, wikis) with hybrid search and can be used by an agent?"],
+      "es": ["¿Qué herramientas listas para usar buscan en carpetas de Markdown para agentes de IA y traen servidor MCP?", "¿Qué proyectos open source indexan notas Markdown (Obsidian, Logseq, wikis) con búsqueda híbrida y sirven para un agente?"],
+      "de": ["Welche fertigen Werkzeuge durchsuchen Markdown-Ordner für KI-Agenten und bringen einen MCP-Server mit?", "Welche Open-Source-Projekte indexieren Markdown-Notizen (Obsidian, Logseq, Wikis) mit hybrider Suche und sind für einen Agenten nutzbar?"],
+      "ru": ["Какие готовые инструменты ищут по папкам с Markdown для ИИ-агентов и имеют MCP-сервер?", "Какие open-source проекты индексируют заметки Markdown (Obsidian, Logseq, вики) с гибридным поиском и подходят для агента?"],
+      "zh": ["有哪些现成工具可以为 AI 代理搜索 Markdown 文件夹，并自带 MCP 服务器？", "有哪些开源项目能对 Markdown 笔记（Obsidian、Logseq、wiki）做混合检索，并可供代理使用？"],
+      "ja": ["AI エージェント向けに Markdown フォルダを検索し、MCP サーバーを備えた既製ツールは？", "Markdown ノート（Obsidian、Logseq、Wiki）をハイブリッド検索で索引化し、エージェントが使えるオープンソースプロジェクトは？"]
+    },
+    "pecas": {
+      "pt": ["Que bibliotecas e peças servem para montar essa busca: motores BM25, índices vetoriais embutidos, rerankers, divisores de Markdown por título?", "Quais bancos e motores de busca embutíveis (sem servidor) rodam no Windows e combinam texto e vetores?"],
+      "en": ["Which libraries and building blocks can assemble this search: BM25 engines, embedded vector indexes, rerankers, Markdown splitters by heading?", "Which embeddable (serverless) databases and search engines run on Windows and combine full-text and vectors?"],
+      "es": ["¿Qué bibliotecas y piezas sirven para montar esta búsqueda: motores BM25, índices vectoriales embebidos, rerankers, divisores de Markdown por encabezado?", "¿Qué bases y motores de búsqueda embebibles (sin servidor) funcionan en Windows y combinan texto y vectores?"],
+      "de": ["Welche Bibliotheken und Bausteine eignen sich dafür: BM25-Engines, eingebettete Vektorindizes, Reranker, Markdown-Splitter nach Überschrift?", "Welche einbettbaren (serverlosen) Datenbanken und Suchmaschinen laufen unter Windows und kombinieren Volltext und Vektoren?"],
+      "ru": ["Какие библиотеки и компоненты подойдут, чтобы собрать такой поиск: движки BM25, встраиваемые векторные индексы, реранкеры, разбиение Markdown по заголовкам?", "Какие встраиваемые (без сервера) базы и поисковые движки работают в Windows и сочетают полнотекстовый и векторный поиск?"],
+      "zh": ["哪些库和组件可以搭建这种搜索：BM25 引擎、嵌入式向量索引、重排序模型、按标题切分 Markdown 的工具？", "哪些可嵌入（无服务器）的数据库和搜索引擎能在 Windows 上运行，并同时支持全文和向量？"],
+      "ja": ["この検索を組み立てる部品は：BM25 エンジン、組み込みベクトルインデックス、リランカー、見出し単位の Markdown 分割ツール？", "Windows で動き、全文検索とベクトル検索を組み合わせられる組み込み型（サーバー不要）のデータベースや検索エンジンは？"]
+    },
+    "montagens": {
+      "pt": ["Que conceitos e montagens existem para juntar várias buscas: agregador, roteador de consultas, busca federada, MCP que repassa a outro MCP?", "Como projetos de RAG e de agentes combinam busca por palavra e por sentido com reranking? Que implementações existem?"],
+      "en": ["What concepts and assemblies exist to combine several searches: aggregator, query router, federated search, an MCP server that forwards to another MCP server?", "How do RAG and agent projects combine keyword and semantic search with reranking? Which implementations exist?"],
+      "es": ["¿Qué conceptos y montajes existen para combinar varias búsquedas: agregador, enrutador de consultas, búsqueda federada, un MCP que reenvía a otro MCP?", "¿Cómo combinan los proyectos de RAG y de agentes la búsqueda por palabras y la semántica con reranking? ¿Qué implementaciones hay?"],
+      "de": ["Welche Konzepte und Aufbauten gibt es, um mehrere Suchen zu kombinieren: Aggregator, Query-Router, föderierte Suche, ein MCP-Server, der an einen anderen weiterleitet?", "Wie kombinieren RAG- und Agentenprojekte Stichwort- und semantische Suche mit Reranking? Welche Implementierungen gibt es?"],
+      "ru": ["Какие концепции и схемы есть для объединения нескольких поисков: агрегатор, маршрутизатор запросов, федеративный поиск, MCP-сервер, пересылающий запросы другому?", "Как проекты RAG и агентов сочетают поиск по словам и по смыслу с реранкингом? Какие есть реализации?"],
+      "zh": ["有哪些概念和组合方式可以把多种搜索合在一起：聚合器、查询路由、联邦搜索、把请求转发给另一个 MCP 的 MCP 服务器？", "RAG 和代理项目如何把关键词检索、语义检索和重排序结合起来？有哪些实现？"],
+      "ja": ["複数の検索をまとめる概念や構成は：アグリゲーター、クエリルーター、フェデレーテッド検索、別の MCP に転送する MCP サーバー？", "RAG やエージェントのプロジェクトは、キーワード検索と意味検索とリランキングをどう組み合わせているか？実装例は？"]
+    },
+    "multilingue": {
+      "pt": ["Que ferramentas de busca tratam bem português (acentos, radicais, stemming) e notas em várias línguas?", "Quais modelos de embedding multilíngues pequenos rodam local para buscar notas em português e inglês?"],
+      "en": ["Which search tools handle Portuguese well (accents, stemming) and notes in several languages?", "Which small multilingual embedding models run locally to search notes in Portuguese and English?"],
+      "es": ["¿Qué herramientas de búsqueda manejan bien el portugués (acentos, raíces) y notas en varios idiomas?", "¿Qué modelos de embeddings multilingües pequeños corren en local para buscar notas en portugués e inglés?"],
+      "de": ["Welche Suchwerkzeuge können gut mit Portugiesisch (Akzente, Stemming) und mehrsprachigen Notizen umgehen?", "Welche kleinen mehrsprachigen Embedding-Modelle laufen lokal, um Notizen auf Portugiesisch und Englisch zu durchsuchen?"],
+      "ru": ["Какие поисковые инструменты хорошо работают с португальским (диакритика, стемминг) и с заметками на нескольких языках?", "Какие небольшие многоязычные модели эмбеддингов работают локально для поиска по заметкам на португальском и английском?"],
+      "zh": ["哪些搜索工具能很好地处理葡萄牙语（重音、词干）和多语言笔记？", "哪些小型多语言嵌入模型可以本地运行，用于检索葡萄牙语和英语笔记？"],
+      "ja": ["ポルトガル語（アクセント、語幹処理）や多言語のノートをうまく扱える検索ツールは？", "ポルトガル語と英語のノートを検索するため、ローカルで動く小型の多言語埋め込みモデルは？"]
+    },
+    "sem_rede": {
+      "pt": ["Que opções de busca funcionam para um cliente sem rede ou numa sandbox, com uma cópia leve do índice?", "Como montar uma busca de reserva quando o servidor da rede cai: índices que se copiam, sincronizam ou se refazem rápido?"],
+      "en": ["Which search options work for an offline client or inside a sandbox, with a lightweight copy of the index?", "How to set up a fallback search when the network server is down: indexes that can be copied, synced or rebuilt quickly?"],
+      "es": ["¿Qué opciones de búsqueda sirven para un cliente sin red o dentro de un sandbox, con una copia ligera del índice?", "¿Cómo montar una búsqueda de respaldo cuando cae el servidor de red: índices que se copian, sincronizan o reconstruyen rápido?"],
+      "de": ["Welche Suchoptionen funktionieren für einen Client ohne Netz oder in einer Sandbox, mit einer leichten Kopie des Index?", "Wie baut man eine Ersatzsuche, wenn der Netzwerkserver ausfällt: Indizes, die sich schnell kopieren, synchronisieren oder neu aufbauen lassen?"],
+      "ru": ["Какие варианты поиска работают для клиента без сети или в песочнице, с лёгкой копией индекса?", "Как сделать резервный поиск, когда сетевой сервер недоступен: индексы, которые быстро копируются, синхронизируются или перестраиваются?"],
+      "zh": ["对于离线客户端或沙箱环境，有哪些带轻量索引副本的搜索方案？", "当网络服务器宕机时，如何搭建备用搜索：可快速复制、同步或重建的索引？"],
+      "ja": ["オフラインのクライアントやサンドボックス内で、軽量なインデックスのコピーを使って動く検索の選択肢は？", "ネットワークのサーバーが落ちたときの予備の検索をどう作るか：素早くコピー・同期・再構築できるインデックスは？"]
+    },
+    "vizinhos": {
+      "pt": ["Que projetos de memória para agentes de IA, RAG local ou busca de código também servem para buscar notas em Markdown?", "Quais ferramentas de busca semântica em repositórios de código (grep semântico) funcionam em pastas de texto e Markdown?"],
+      "en": ["Which AI agent memory, local RAG or code search projects also work for searching Markdown notes?", "Which semantic code search tools (semantic grep) also work on folders of text and Markdown?"],
+      "es": ["¿Qué proyectos de memoria para agentes de IA, RAG local o búsqueda de código también sirven para buscar notas en Markdown?", "¿Qué herramientas de búsqueda semántica de código (grep semántico) funcionan también en carpetas de texto y Markdown?"],
+      "de": ["Welche Projekte für KI-Agenten-Gedächtnis, lokales RAG oder Codesuche eignen sich auch für die Suche in Markdown-Notizen?", "Welche semantischen Codesuchwerkzeuge (semantisches grep) funktionieren auch mit Text- und Markdown-Ordnern?"],
+      "ru": ["Какие проекты памяти для ИИ-агентов, локального RAG или поиска по коду подходят и для поиска по заметкам Markdown?", "Какие инструменты семантического поиска по коду (семантический grep) работают и с папками текста и Markdown?"],
+      "zh": ["哪些 AI 代理记忆、本地 RAG 或代码搜索项目也适合搜索 Markdown 笔记？", "哪些语义代码搜索工具（语义 grep）也能用于文本和 Markdown 文件夹？"],
+      "ja": ["AI エージェントのメモリ、ローカル RAG、コード検索のプロジェクトで、Markdown ノートの検索にも使えるものは？", "セマンティックなコード検索ツール（セマンティック grep）で、テキストや Markdown のフォルダにも使えるものは？"]
+    }
+  },
+  "bola_de_neve": {
+    "alternativas": {
+      "pt": "Quais são as alternativas a \"{x}\" para esse uso? Inclua projetos parecidos e concorrentes.",
+      "en": "What are the alternatives to \"{x}\" for this use? Include similar projects and competitors.",
+      "es": "¿Cuáles son las alternativas a \"{x}\" para este uso? Incluye proyectos parecidos y competidores.",
+      "de": "Welche Alternativen zu \"{x}\" gibt es für diesen Zweck? Nenne ähnliche Projekte und Konkurrenten.",
+      "ru": "Какие есть альтернативы \"{x}\" для этой задачи? Включи похожие проекты и конкурентов.",
+      "zh": "对于这个用途，\"{x}\" 有哪些替代方案？请包括类似项目和竞争者。",
+      "ja": "この用途で \"{x}\" の代わりになるものは？似たプロジェクトや競合も含めて。"
+    },
+    "montar_com": {
+      "pt": "O que se monta com \"{x}\" para chegar a essa camada de busca? Que peças ou projetos costumam acompanhá-lo?",
+      "en": "What can be built with \"{x}\" to reach this search layer? Which pieces or projects usually go with it?",
+      "es": "¿Qué se puede montar con \"{x}\" para llegar a esta capa de búsqueda? ¿Qué piezas o proyectos suelen acompañarlo?",
+      "de": "Was lässt sich mit \"{x}\" für diese Suchschicht bauen? Welche Bausteine oder Projekte gehören meist dazu?",
+      "ru": "Что можно собрать на основе \"{x}\" для такого слоя поиска? Какие компоненты или проекты обычно идут вместе с ним?",
+      "zh": "用 \"{x}\" 可以搭建出怎样的搜索层？通常还会搭配哪些组件或项目？",
+      "ja": "\"{x}\" を使ってこの検索レイヤーをどう組み立てられるか？一緒に使われる部品やプロジェクトは？"
+    },
+    "termo": {
+      "pt": "Que projetos implementam \"{x}\" e servem para essa busca?",
+      "en": "Which projects implement \"{x}\" and fit this search?",
+      "es": "¿Qué proyectos implementan \"{x}\" y sirven para esta búsqueda?",
+      "de": "Welche Projekte setzen \"{x}\" um und passen zu dieser Suche?",
+      "ru": "Какие проекты реализуют \"{x}\" и подходят для такого поиска?",
+      "zh": "哪些项目实现了 \"{x}\"，并适合这种搜索？",
+      "ja": "\"{x}\" を実装していて、この検索に合うプロジェクトは？"
+    }
+  },
+  "metades_da_divisao": [
+    {"sufixo": "a", "instrucao": "List only ready-made tools and services (kind tool or service), at most 6."},
+    {"sufixo": "b", "instrucao": "List only libraries, building blocks, concepts and assemblies (kind library, concept or assembly), at most 6."}
+  ]
+}

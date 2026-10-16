@@ -1,0 +1,70 @@
+{
+  "envio": "9f9e2312-d1db-4006-9b2e-4cab60a1f13a",
+  "tipo": "resposta",
+  "enviada": "2026-10-16T19:12:02-03:00",
+  "alvo": {
+    "tipo": "rodada",
+    "id": "2026-10-16-onde-mora-o-codigo-do-hub-r2",
+    "titulo": "Onde mora o código do próprio hub (2)"
+  },
+  "ticket": "16",
+  "substitui": null,
+  "rodada": {
+    "id": "2026-10-16-onde-mora-o-codigo-do-hub-r2",
+    "base": "4c1ad74e3bd537a471960f62351dacda0f7004027fd8a7b9b841b49e7c901894",
+    "titulo": "Onde mora o código do próprio hub (2)",
+    "ticket": "16",
+    "perguntas": [
+      {
+        "id": "codigo-do-hub",
+        "titulo": "Onde mora o código do hub",
+        "tipo": "escolha",
+        "recomendada": [
+          "C"
+        ],
+        "opcoes": [
+          {
+            "chave": "A",
+            "texto": "Tudo vira skill: cada peça em `agents/skills/<peça>/` (busca, vigia, guardas, kit de par, manutenção, verificador), com `SKILL.md`, scripts, fragmentos de hook e testes juntos; `agents/` fica como decidido, mas o motor divide pasta com o acervo e cada peça leva um manual que ninguém lê"
+          },
+          {
+            "chave": "B",
+            "texto": "Só código em `agents/`, nada vira skill: pastas novas `agents/kit/`, `agents/hooks/`, `agents/mods/`, `agents/bin/` e `agents/test/`, sem `SKILL.md`; nem a busca nem a \"nova iniciativa\" teriam manual para o agente"
+          },
+          {
+            "chave": "C",
+            "texto": "Meio a meio pelo critério \"quem chama\": o que um agente chama vira skill em `agents/skills/<peça>/` (busca, \"nova iniciativa\", `vigia recuperar`, arquivar); o que só o harness ou o kit roda (hooks, mod do Claude Code, kit de par, verificador, testes) vai numa pasta nova, `agents/code/`, com `hooks/`, `mods/`, `kit/`, `bin/` e `test/` dentro; acrescenta uma única pasta a `agents/`"
+          },
+          {
+            "chave": "D",
+            "texto": "Pastas de código na raiz do repositório (`kit/`, `hooks/`, `mods/`, `busca/`), como o spec antigo; muda a raiz decidida"
+          }
+        ],
+        "proposta": null
+      },
+      {
+        "id": "algo-mais",
+        "titulo": "Algo mais?",
+        "tipo": "texto",
+        "recomendada": [],
+        "opcoes": [],
+        "proposta": null
+      }
+    ]
+  },
+  "corpo_hash": "1f3c9315c97f3fa440f59b5c037b1119cfdf40891000fd6e066b3c488054a5f9",
+  "corpo": {
+    "tipo": "resposta",
+    "rodada": "2026-10-16-onde-mora-o-codigo-do-hub-r2",
+    "base": "4c1ad74e3bd537a471960f62351dacda0f7004027fd8a7b9b841b49e7c901894",
+    "respostas": {
+      "codigo-do-hub": {
+        "escolha": [
+          "C"
+        ],
+        "outra": null,
+        "comentario": null
+      }
+    }
+  }
+}

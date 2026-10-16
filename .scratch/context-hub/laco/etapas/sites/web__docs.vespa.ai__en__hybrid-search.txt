@@ -1,0 +1,741 @@
+Vespa basics
+
+ Deploy an application
+
+ Vespa applications
+
+ Schemas
+
+ Writing
+
+ Querying
+
+ Ranking
+
+ Operations
+
+ What's more
+
+ Learn more
+
+ Vespa overview
+
+ Getting help from LLMs
+
+ Features
+
+ Tutorials and use cases
+
+ Frequently asked questions
+
+ Glossary
+
+ Releases
+
+ Tenants, apps and instances
+
+ Migrating to Vespa Cloud
+
+ Migrating from ElasticSearch
+
+ About this documentation
+
+ Contributing to Vespa
+
+ Applications and components
+
+ Developer guide
+
+ IDE support
+
+ Deployment
+
+ .vespaignore files
+
+ Containers
+
+ Components
+
+ Searchers
+
+ Document processors
+
+ Request handlers
+
+ Result renderers
+
+ Dependency injection
+
+ Configuring components
+
+ Chaining
+
+ Inspecting structured data in a Searcher
+
+ Developing web services
+
+ Unit testing
+
+ System testing
+
+ The config system
+
+ Request-response processing
+
+ Bundles
+
+ Using ZooKeeper
+
+ Http servers and filters
+
+ Using pluggable frameworks
+
+ Java config API
+
+ Schemas and documents
+
+ Documents
+
+ Inheritance in schemas
+
+ Concrete document types
+
+ Parent-child relationships
+
+ Structs
+
+ Predicate fields
+
+ Exposing schema information
+
+ Reading and writing
+
+ Reads and writes
+
+ /document/v1
+
+ Indexing
+
+ Index bootstrap
+
+ Visiting
+
+ Document API
+
+ Partial updates
+
+ Batch delete
+
+ Feed block
+
+ Document routing
+
+ Indexing paged vectors
+
+ Querying
+
+ The query api
+
+ The YQL query language
+
+ Grouping and aggregation
+
+ Query profiles
+
+ An intro to vector search
+
+ Nearest neighbor search
+
+ Approximate nearest neighbor search
+
+ Nearest neighbor search guide
+
+ Text matching
+
+ Searching multivalue fields
+
+ Geo search
+
+ Document summaries
+
+ Result diversity
+
+ Federation
+
+ Page templates
+
+ Filter intersections
+
+ Ranking and inference
+
+ Ranking introduction
+
+ Ranking expressions and features
+
+ Multivalue query operators
+
+ Tensor user guide
+
+ Tensor examples
+
+ Phased ranking
+
+ Using TensorFlow models
+
+ Using ONNX models
+
+ Using XGBoost models
+
+ Using LightGBM models
+
+ Wand: Accelerated OR search
+
+ The BM25 rank feature
+
+ The nativeRank rank feature
+
+ Cross-encoder transformer ranking
+
+ Searcher re-ranking
+
+ Significance model
+
+ Stateless model evaluation
+
+ RAG and embedding
+
+ RAG in Vespa
+
+ Working with chunks
+
+ Embedding
+
+ Binarizing vectors
+
+ LLMs in Vespa
+
+ Using local LLMs
+
+ Using external LLMs
+
+ Document enrichment with LLMs
+
+ Model hub
+
+ Linguistics and text processing
+
+ Linguistics
+
+ Linguistics Overview
+
+ Default (OpenNLP) linguistics
+
+ Lucene linguistics
+
+ Custom linguistics
+
+ Query rewriting
+
+ Troubleshooting character encoding
+
+ Content and elasticity
+
+ Content clusters
+
+ Content nodes and states
+
+ Elasticity
+
+ Document attributes
+
+ Consistency Model
+
+ Distribution algorithm
+
+ Buckets
+
+ Performance
+
+ Performance overview
+
+ Practical performance guide
+
+ Serving sizing guide
+
+ Feed sizing guide
+
+ Node resources
+
+ Instance types
+
+ AWS instance types
+
+ GCP instance types
+
+ Azure instance types
+
+ Topology and resizing
+
+ Streaming search
+
+ Benchmarking
+
+ Benchmarking using Vespa Cloud
+
+ Memory visualizer
+
+ Profiling
+
+ Container tuning
+
+ Rate-limiting queries
+
+ Graceful degradation
+
+ Caches
+
+ HTTP performance testing
+
+ HTTP/2
+
+ Feature tuning
+
+ Valgrind
+
+ Operations
+
+ Quota
+
+ Environments
+
+ Zones
+
+ Availability Zones
+
+ Production deployment
+
+ Deployment variants
+
+ Automated deployments
+
+ Autoscaling
+
+ Enclave: Bring your own cloud
+
+ Enclave
+
+ AWS getting started
+
+ AWS architecture
+
+ Azure getting started
+
+ Azure architecture
+
+ GCP getting started
+
+ GCP architecture
+
+ Log archive
+
+ Operations
+
+ Reindexing
+
+ Reindexing on Vespa Cloud
+
+ Data management and backup
+
+ Cloning applications and data
+
+ Monitoring
+
+ Metrics
+
+ Telemetry export
+
+ Notifications
+
+ Support
+
+ Login Help
+
+ Single Sign-On (SSO) Setup
+
+ Deployment patterns
+
+ Private endpoints
+
+ Endpoint routing
+
+ Access logging
+
+ Artifact archive
+
+ Archive guide
+
+ Archive Guide AWS
+
+ Archive Guide GCP
+
+ Archive Guide Azure
+
+ Deleting applications
+
+ Self-managed
+
+ Admin procedures
+
+ Multinode Systems
+
+ Files, Processes, Ports, Environment
+
+ Node Setup
+
+ Build and install
+
+ Monitoring
+
+ Content node recovery
+
+ Configuration Servers
+
+ Live Vespa upgrade procedure
+
+ Config Sentinel
+
+ Config Proxy
+
+ Docker Containers
+
+ Docker Containers GPU setup
+
+ CPU Support
+
+ Service Location Broker
+
+ Change from attribute to index procedure
+
+ Container
+
+ Sizing examples
+
+ Vespa Support CLI
+
+ Kubernetes
+
+ Introduction
+
+ Operations
+
+ Overview
+
+ Installation
+
+ Permissions
+
+ Pod Lifecycle
+
+ Production Serving
+
+ Vespa Upgrades
+
+ Resource Scaling
+
+ Delete a VespaSet
+
+ Configuration
+
+ Overview
+
+ Configure Local Storage Type
+
+ Configure Log Collections
+
+ Configure External Access Layer
+
+ Configure Custom Overrides
+
+ Configure TLS Encryption with CertManager
+
+ Configure Monitoring
+
+ Reference
+
+ Overview
+
+ VespaSet CRD
+
+ Helm Chart Reference
+
+ Security
+
+ Security overview
+
+ Security Guide
+
+ Host Images
+
+ Secret Store
+
+ Cloudflare Workers
+
+ Security Whitepaper
+
+ Securing a Vespa installation
+
+ mTLS
+
+ Clients
+
+ Command line client (Vespa CLI)
+
+ Python client (pyVespa)
+
+ Java feed client
+
+ HTTP best practices
+
+ Modules
+
+ E-commerce
+
+ Multi-Currency Pricing
+
+ Saved Search Notifications
+
+ Using Features Together
+
+ Reference
+
+ APIs
+
+ APIs overview
+
+ The query API
+
+ /document/v1 API
+
+ /state/v1 API
+
+ /application/v2 API (deployment)
+
+ /application/v2/tenant API
+
+ /config/v2 API
+
+ /cluster/v2 API
+
+ /metrics/v1 API
+
+ /metrics/v2 API
+
+ /prometheus/v1 API
+
+ Applications and components
+
+ Application packages
+
+ services.xml
+
+ services.xml
+
+ services.xml - admin
+
+ services.xml - container
+
+ services.xml - content
+
+ services.xml - docproc
+
+ services.xml - http
+
+ services.xml - processing
+
+ services.xml - search
+
+ deployment.xml
+
+ hosts.xml
+
+ validation-overrides.xml
+
+ Components
+
+ Configuration files
+
+ System test
+
+ System test (Java)
+
+ Production test
+
+ Schemas and documents
+
+ Schemas
+
+ Document JSON format
+
+ Document field path language
+
+ Reading and writing
+
+ Indexing language
+
+ Document selector language
+
+ Querying
+
+ The YQL query language
+
+ The simple query language
+
+ Select
+
+ Grouping
+
+ Sorting
+
+ Query profiles
+
+ Semantic rules
+
+ The default result format
+
+ The page result format
+
+ Page templates
+
+ Filter intersections
+
+ Ranking and inference
+
+ Ranking expressions
+
+ Tensor evaluation
+
+ Rank features
+
+ nativeRank
+
+ String segment match
+
+ Rank feature configuration
+
+ Rank types
+
+ Model files
+
+ Constant tensors
+
+ RAG and embedding
+
+ Chunking
+
+ Embedding
+
+ Operations
+
+ Health checks
+
+ Log files
+
+ Tools
+
+ Metrics
+
+ Metrics
+
+ Default metric set
+
+ Vespa metric set
+
+ Metric units
+
+ Container metrics
+
+ Distributor metrics
+
+ Search node metrics
+
+ Storage metrics
+
+ Configserver metrics
+
+ Logd metrics
+
+ Node Admin metrics
+
+ Slobrok metrics
+
+ Cluster controller metrics
+
+ Sentinel metrics
+
+ Self-managed
+
+ Tools
+
+ Security
+
+ Mtls
+
+ Clients
+
+ Vespa CLI
+
+ vespa
+
+ vespa activate
+
+ vespa auth
+
+ vespa clone
+
+ vespa config
+
+ vespa curl
+
+ vespa deploy
+
+ vespa destroy
+
+ vespa document
+
+ vespa feed
+
+ vespa fetch
+
+ vespa inspect
+
+ vespa log
+
+ vespa prepare
+
+ vespa prod
+
+ vespa query
+
+ vespa status
+
+ vespa test
+
+ vespa version
+
+ vespa visit
+
+ Release notes
+
+ Vespa 7
+
+ Vespa 8
+
+ Vespa 9 (upcoming)
+
+Page not found
+
+404
+
+Page not found :(
+
+The requested page could not be found.

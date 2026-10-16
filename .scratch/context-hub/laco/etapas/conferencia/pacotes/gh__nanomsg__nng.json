@@ -1,0 +1,62 @@
+{
+ "chave": "gh:nanomsg/nng",
+ "nomes": [
+  "nng (nanomsg next generation)",
+  "NNG",
+  "nng",
+  "NNG (nanomsg next generation)",
+  "NNG (Nanomsg Next Generation)",
+  "NNG (nanomsg Next Generation)"
+ ],
+ "urls": [
+  "https://github.com/nanomsg/nng",
+  "https://nng.nanomsg.org/",
+  "https://nng.nanomsg.org",
+  "https://nanomsg.github.io/nng/"
+ ],
+ "readme_cortado": false,
+ "readme": "# nng - nanomsg-next-gen\n\n[![Stand With Ukraine](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/badges/StandWithUkraine.svg)](https://stand-with-ukraine.pp.ua)\n[![Linux Status](https://img.shields.io/github/actions/workflow/status/nanomsg/nng/linux.yml?branch=main&logoColor=grey&logo=linux&label=)](https://github.com/nanomsg/nng/actions)\n[![Windows Status](https://img.shields.io/github/actions/workflow/status/nanomsg/nng/windows.yml?branch=main&logoColor=grey&logo=data:image/svg%2bxml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0ODc1IDQ4NzUiPjxwYXRoIGZpbGw9ImdyZXkiIGQ9Ik0wIDBoMjMxMXYyMzEwSDB6bTI1NjQgMGgyMzExdjIzMTBIMjU2NHpNMCAyNTY0aDIzMTF2MjMxMUgwem0yNTY0IDBoMjMxMXYyMzExSDI1NjQiLz48L3N2Zz4=&label=)](https://github.com/nanomsg/nng/actions)\n[![macOS Status](https://img.shields.io/github/actions/workflow/status/nanomsg/nng/darwin.yml?branch=main&logoColor=grey&logo=apple&label=)](https://github.com/nanomsg/nng/actions)\n[![FreeBSD Status](https://img.shields.io/github/actions/workflow/status/nanomsg/nng/freebsd.yml?branch=main&logoColor=grey&logo=freebsd&label=)](https://github.com/nanomsg/nng/actions)\n[![illumos Status](https://img.shields.io/github/actions/workflow/status/nanomsg/nng/omnios.yml?branch=main&logoColor=grey&logo=accuweather&label=)](https://github.com/nanomsg/nng/actions)\n[![Coverage](https://img.shields.io/codecov/c/github/nanomsg/nng/main?logo=codecov&logoColor=grey&label=)](https://codecov.io/gh/nanomsg/nng/tree/main)\n[![Discord](https://img.shields.io/discord/639573728212156478?label=&logo=discord)](https://discord.gg/Xnac6b9)\n[![Manual](https://img.shields.io/static/v1?label=&message=docs&logo=mdbook&logoColor=silver&color=blue)](https://nng.nanomsg.org/ref)\n[![MIT License](https://img.shields.io/github/license/nanomsg/nng.svg?logoColor=silver&logo=open-source-initiative&label=&color=blue)](https://github.com/nanomsg/nng/blob/main/LICENSE.txt)\n[![Latest Pre-Release](https://img.shields.io/github/v/release/nanomsg/nng.svg?logo=github&label=)](https://github.com/nanomsg/nng/releases)\n[![Latest Release](https://img.shields.io/github/v/release/nanomsg/nng.svg?include_prereleases&logo=github&label=)](https://github.com/nanomsg/nng/releases)\n\nPlease see [here](UKRAINE.md) for an important message for the people of Russia.\n\n> [!NOTE]\n> This is the development branch for NNG.\n> The content here is\n> under development and may not be suitable for production use.\n> Please use the [`stable`](https://github.com/nanomsg/nng/tree/stable) branch\n> for the latest stable release.\n>\n> As a major release, there are some breaking API changes,\n> but a [migration guide](docs/ref/migrate/nng1.md) is\n> available to help with migrating from NNG 1.x.\n\n> [!NOTE]\n> If you are looking for the legacy version of nanomsg, please\n> see the [libnanomsg](https://github.com/nanomsg/nanomsg) repository.\n\nThis project is a rewrite of the Scalability Protocols\nlibrary known as [nanomsg](https://github.com/nanomsg/nanomsg),\nand adds significant new capabilities, while retaining\ncompatibility with the original.\n\nIt may help to think of this as \"nanomsg-next-generation\".\n\n## NNG: Lightweight Messaging Library\n\nNNG, like its predecessors [nanomsg](http://nanomsg.org) (and to some extent\n[ZeroMQ](http://zeromq.org/)), is a lightweight, broker-less library,\noffering a simple API to solve common recurring messaging problems,\nsuch as publish/subscribe, RPC-style request/reply, or service discovery.\nThe API frees the programmer from worrying about details like connection\nmanagement, retries, and other common considerations, so that they\ncan focus on the application instead of the plumbing.\n\nNNG is implemented in C, requiring only a relatively modern C compiler (C11) and CMake to build.\nIt can be built as a shared or a static library, and is readily\nembeddable. It is also designed to be easy to port to new platforms\nif your platform is not already supported.\n\n## License\n\nNNG is licensed under a liberal, and commercial friendly, MIT license.\nThe goal to the license is to minimize friction in adoption, use, and\ncontribution.\n\n## Enhancements (Relative to nanomsg)\n\nHere are areas where this project improves on \"nanomsg\":\n\n- _Reliability_\n\n  NNG is designed for production use from the beginning.\n  Every error case is considered, and it is designed to avoid crashing except\n  in cases of gross developer error.\n  (Hopefully we don't have any of these in our own code.)\n\n- _Scalability_\n\n  NNG scales out to engage multiple cores using a bespoke asynchronous I/O\n  framework, using thread pools to spread load without exceeding typical\n  system limits.\n\n- _Maintainability_\n\n  NNG's architecture is designed to be modular and easily grasped by developers\n  unfamiliar with the code base. The code is also well documented.\n\n- _Extensibility_\n\n  Because it avoids ties to file descriptors, and avoids confusing interlocking\n  state machines, it is easier to add new protocols and transports to NNG.\n  This was demonstrated by the addition of new transports such as TLS.\n\n- _Security_\n\n  NNG provides TLS (1.2 and optionally 1.3) enabled transports, offering\n  support for robust and industry standard authentication and encryption.\n  In addition, it is hardened to be resilient against malicious attackers,\n  with special consideration given to use in a hostile Internet.\n\n- _Usability_\n\n  NNG eschews slavish adherence parts of the more complex and less well\n  understood POSIX APIs, while adopting the semantics that are familiar and\n  useful. New APIs are intuitive, and the optional support for separating\n  protocol context and state from sockets makes creating concurrent\n  applications vastly simpler than previously possible.\n\n## Compatibility\n\nThis project offers both wire compatibility and API compatibility,\nso most nanomsg users can begin using NNG right away.\n\nExisting nanomsg and [mangos](https://github.com/nanomsg/mangos) applications\ncan inter-operate with NNG applications automatically.\n\nThat said, there are some areas where legacy nanomsg still offers\ncapabilities NNG lacks -- specifically enhanced observability with\nstatistics, and tunable prioritization of different destinations\nare missing, but will be added in a future release.\n\nAdditionally, some API capabilities that are useful for foreign\nlanguage bindings are not implemented yet.\n\nSome simple single threaded, synchronous applications may perform better under\nlegacy nanomsg than under NNG. (We believe that these applications are the\nleast commonly deployed, and least interesting from a performance perspective.\nNNG's internal design is slightly less efficient in such scenarios, but it\ngreatly benefits when concurrency or when multiple sockets or network peers\nare involved.)\n\n## Supported Platforms\n\nNNG supports Linux, macOS, Windows, illumos, Solaris,\nFreeBSD, Android, and iOS.\nIt is regularly tested against macOS, Windows, OmniOS, Ubuntu, and FreeBSD.\nMost other POSIX platforms should work out of\nthe box but have not been tested. Very old versions of otherwise supported\nplatforms might not work.\n\nOfficially, NNG only supports operating systems that are supported by\ntheir vendors. For example, Windows versions 8.1 and lower are no longer\nofficially supported, and macOS versions predating Ventura are no longer\nofficially supported. Very old versions of systems may or may not work,\nand we will generally expend no effort trying to make an unsupported system\nfunction.\nWe generally only test relatively recent versions of supported systems.\n\n## Requirements\n\nTo build this project, you will need a C11 compatible compiler and\n[CMake](http://www.cmake.org) version 3.15 or newer.\n\nWe recommend using the [Ninja](https://ninja-build.org) build\nsystem (pass `-G Ninja` to CMake) when you can.\n(And not just because Ninja sounds like \"NNG\" -- it's also\nblindingly fast and has made our lives as developers measurably better.)\n\nIf you want to build with TLS support you will also need a supported\nTLS library. Currently [Mbed TLS](https://tls.mbed.org), [WolfSSL](https://wolfssl.com),\nand [OpenSSL](https://openssl.org) all enjoy some level support in NNG.\n\nSee the [build instructions](docs/BUILD_TLS.md) for details.\n\n## Quick Start\n\nWith a Linux or UNIX environment:\n\n```sh\n$ mkdir build\n$ cd build\n$ cmake -G Ninja ..\n$ ninja\n$ ninja test\n$ ninja install\n```\n\n## Reference Manual\n\nThe reference documentation is maintained as an `mdbook` and can be viewed\n[online](https://nng.nanomsg.org/ref). The conversion to mdBook included a\nsubstantial reorganization for improved usability, with major content revisions\nand additions for NNG 2.0.\n\nYou can also purchase a copy of the\n[**NNG Reference Manual**](http://staysail.tech/books/nng_reference/index.html).\n(It is published in both electronic and printed formats.)\nPurchases of the book help fund continued development of NNG.\n\n## Example Programs\n\nSome demonstration programs have been created to help serve as examples.\nThese are located in the `demo` directory.\n\n## Legacy Compatibility\n\nMigration from `libnanomsg` APIs is fairly straight-forward for most applications.\nA [migration guide](docs/ref/migrate/nanomsg.md) is available to assist.\n\n## Commercial Support\n\nCommercial support for NNG is available.\n\nPlease contact\n[Staysail Systems, Inc.](mailto:info@staysail.tech)\nto inquire further.\n\n## Commercial Sponsors\n\nThe development of NNG has been made possible through the generous\nsponsorship of\n[Capitar IT Group BV](https://www.capitar.com)\nand\n[Staysail Systems, Inc.](http://staysail.tech).\n",
+ "fonte": "readme",
+ "respostas": [
+  {
+   "por": "nemotron-3-super-120b",
+   "resposta": {
+    "serve": "none",
+    "role": "",
+    "place": [
+     "library"
+    ],
+    "mechanism": [
+     "n/a"
+    ],
+    "mcp": "unknown",
+    "windows": "yes",
+    "portuguese": "unknown",
+    "license": "MIT",
+    "maturity": "beta",
+    "doubt": true,
+    "evidence": "NNG is a lightweight broker‑less library for messaging. Supported Platforms: NNG supports Windows."
+   }
+  },
+  {
+   "por": "diffusiongemma-26b-a4b-it",
+   "resposta": {
+    "serve": "stack",
+    "role": "A lightweight messaging library for socket patterns like pub/sub, RPC, and service discovery.",
+    "place": [
+     "library"
+    ],
+    "mechanism": [
+     "other"
+    ],
+    "mcp": "no",
+    "windows": "yes",
+    "portuguese": "no",
+    "license": "MIT",
+    "maturity": "stable",
+    "doubt": false,
+    "evidence": "Lightweight Messaging Library; Windows Status badge; MIT license."
+   }
+  }
+ ]
+}

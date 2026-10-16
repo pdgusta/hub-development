@@ -1,0 +1,39 @@
+{
+ "chave": "gh:redisjson/redisjson",
+ "nomes": [
+  "RedisJSON",
+  "Redis JSON"
+ ],
+ "urls": [
+  "https://github.com/RedisJSON/RedisJSON",
+  "https://redis.io/docs/stack/json/",
+  "https://oss.redislabs.com/redisjson/",
+  "https://redis.io/docs/latest/develop/data-types/json/",
+  "https://redis.io/docs/latest/develop/redisjson/"
+ ],
+ "readme_cortado": false,
+ "readme": "[![GitHub issues](https://img.shields.io/github/release/RedisJSON/RedisJSON.svg)](https://github.com/RedisJSON/RedisJSON/releases/latest)\n[![CircleCI](https://circleci.com/gh/RedisJSON/RedisJSON/tree/master.svg?style=svg)](https://circleci.com/gh/RedisJSON/RedisJSON/tree/master)\n[![macos](https://github.com/RedisJSON/RedisJSON/workflows/macos/badge.svg)](https://github.com/RedisJSON/RedisJSON/actions?query=workflow%3Amacos)\n[![Dockerhub](https://img.shields.io/docker/pulls/redis/redis-stack-server?label=redis-stack-server)](https://hub.docker.com/r/redis/redis-stack-server/)\n[![Codecov](https://codecov.io/gh/RedisJSON/RedisJSON/branch/master/graph/badge.svg)](https://codecov.io/gh/RedisJSON/RedisJSON)\n\n# RedisJSON\n\n[![Discord](https://img.shields.io/discord/697882427875393627?style=flat-square)](https://discord.gg/QUkjSsk)\n\n<img src=\"docs/docs/images/logo.svg\" alt=\"logo\" width=\"300\"/>\n\n> [!NOTE]\n> Starting with Redis 8, the JSON data structure is integral to Redis. You don't need to install this module separately.\n>\n> We no longer release standalone versions of RedisJSON.\n>\n> See https://github.com/redis/redis\n\n> [!NOTE]\n> 32 bit systems are not supported.\n\n## Overview\n\nRedisJSON is a [Redis](https://redis.io/) module that implements [ECMA-404 The JSON Data Interchange Standard](https://json.org/) as a native data type. It allows storing, updating, and fetching JSON values from Redis keys (documents).\n\n## Primary features\n\n* Full support of the JSON standard\n* [JSONPath](https://goessner.net/articles/JsonPath/) syntax for selecting elements inside documents\n* Documents are stored as binary data in a tree structure, allowing fast access to sub-elements\n* Typed atomic operations for all JSON value types\n* Secondary index support when combined with [RediSearch](https://redis.io/docs/latest/develop/interact/search-and-query/)\n\n## Documentation\n\nRead the docs at <https://redis.io/docs/latest/develop/data-types/json/>\n\n## License\n\nStarting with Redis 8, RedisJSON is licensed under your choice of: (i) Redis Source Available License 2.0 (RSALv2); (ii) the Server Side Public License v1 (SSPLv1); or (iii) the GNU Affero General Public License version 3 (AGPLv3). Please review the license folder for the full license terms and conditions. Prior versions remain subject to (i) and (ii).\n\n## Code contributions\n\nBy contributing code to this Redis module in any form, including sending a pull request via GitHub, a code fragment or patch via private email or public discussion groups, you agree to release your code under the terms of the Redis Software Grant and Contributor License Agreement. Please see the CONTRIBUTING.md file in this source distribution for more information. For security bugs and vulnerabilities, please see SECURITY.md. \n",
+ "fonte": "readme",
+ "respostas": [
+  {
+   "por": "claude-haiku-5-5",
+   "resposta": {
+    "serve": "stack",
+    "role": "Store Markdown frontmatter as JSON documents for filtered queries via secondary indexes.",
+    "place": [
+     "network_service"
+    ],
+    "mechanism": [
+     "other"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "unknown",
+    "doubt": true,
+    "evidence": "Secondary index support when combined with RediSearch; Documents are stored as binary data in a tree structure. README does not mention MCP or Windows."
+   }
+  }
+ ]
+}

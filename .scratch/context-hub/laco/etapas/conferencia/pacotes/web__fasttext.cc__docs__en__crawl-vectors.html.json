@@ -1,0 +1,64 @@
+{
+ "chave": "web:fasttext.cc/docs/en/crawl-vectors.html",
+ "nomes": [
+  "FastText Portuguese Embeddings",
+  "FastText Portuguese",
+  "FastText Portuguese word vectors",
+  "FastText Portuguese Word Vectors",
+  "FastText",
+  "FastText Portuguese Embeddings (pretrained models)",
+  "FastText Embeddings for Portuguese"
+ ],
+ "urls": [
+  "https://fasttext.cc/docs/en/crawl-vectors.html",
+  "https://fasttext.cc/docs/en/pretrained-vectors.html#portuguese",
+  "https://fasttext.cc/docs/en/english-vectors.html"
+ ],
+ "readme_cortado": false,
+ "readme": "[Word vectors for 157 languages · fastText]\n\nWe distribute pre-trained word vectors for 157 languages, trained on Common Crawl and Wikipedia using fastText.\nThese models were trained using CBOW with position-weights, in dimension 300, with character n-grams of length 5, a window of size 5 and 10 negatives.\nWe also distribute three new word analogy datasets, for French, Hindi and Polish.\n\nDownload directly with command line or from python\n\nIn order to download with command line or from python code, you must have installed the python package as described here.\n\nCommand line\nPython\n\n$ ./download_model.py en # English\nDownloading https://dl.fbaipublicfiles.com/fasttext/vectors-crawl/cc.en.300.bin.gz\n (19.78%) [=========> ]\n\nOnce the download is finished, use the model as usual:\n\n$ ./fasttext nn cc.en.300.bin 10\nQuery word?\n\n>>> import fasttext.util\n>>> fasttext.util.download_model('en', if_exists='ignore') # English\n>>> ft = fasttext.load_model('cc.en.300.bin')\n\nAdapt the dimension\n\nThe pre-trained word vectors we distribute have dimension 300. If you need a smaller size, you can use our dimension reducer.\nIn order to use that feature, you must have installed the python package as described here.\n\nFor example, in order to get vectors of dimension 100:\n\nCommand line\nPython\n\n$ ./reduce_model.py cc.en.300.bin 100\nLoading model\nReducing matrix dimensions\nSaving model\ncc.en.100.bin saved\n\nThen you can use the cc.en.100.bin model file as usual.\n\n>>> import fasttext\n>>> import fasttext.util\n>>> ft = fasttext.load_model('cc.en.300.bin')\n>>> ft.get_dimension()\n300\n>>> fasttext.util.reduce_model(ft, 100)\n>>> ft.get_dimension()\n100\n\nThen you can use ft model object as usual:\n\n>>> ft.get_word_vector('hello').shape\n(100,)\n>>> ft.get_nearest_neighbors('hello')\n[(0.775576114654541, u'heyyyy'), (0.7686290144920349, u'hellow'), (0.7663413286209106, u'hello-'), (0.7579624056816101, u'heyyyyy'), (0.7495524287223816, u'hullo'), (0.7473770380020142, u'.hello'), (0.7407292127609253, u'Hiiiii'), (0.7402616739273071, u'hellooo'), (0.7399682402610779, u'hello.'), (0.7396857738494873, u'Heyyyyy')]\n\nor save it for later use:\n\n>>> ft.save_model('cc.en.100.bin')\n\nFormat\n\nThe word vectors are available in both binary and text formats.\n\nUsing the binary models, vectors for out-of-vocabulary words can be obtained with\n\n$ ./fasttext print-word-vectors wiki.it.300.bin < oov_words.txt\n\nwhere the file oov_words.txt contains out-of-vocabulary words.\n\nIn the text format, each line contain a word followed by its vector.\nEach value is space separated, and words are sorted by frequency in descending order.\nThese text models can easily be loaded in Python using the following code:\n\nimport io\n\ndef load_vectors(fname):\n fin = io.open(fname, 'r', encoding='utf-8', newline='\\n', errors='ignore')\n n, d = map(int, fin.readline().split())\n data = {}\n for line in fin:\n tokens = line.rstrip().split(' ')\n data[tokens[0]] = map(float, tokens[1:])\n return data\n\nTokenization\n\nWe used the Stanford word segmenter for Chinese, Mecab for Japanese and UETsegmenter for Vietnamese.\nFor languages using the Latin, Cyrillic, Hebrew or Greek scripts, we used the tokenizer from the Europarl preprocessing tools.\nFor the remaining languages, we used the ICU tokenizer.\n\nMore information about the training of these models can be found in the article Learning Word Vectors for 157 Languages.\n\nLicense\n\nThe word vectors are distributed under the Creative Commons Attribution-Share-Alike License 3.0.\n\nReferences\n\nIf you use these word vectors, please cite the following paper:\n\nE. Grave*, P. Bojanowski*, P. Gupta, A. Joulin, T. Mikolov, Learning Word Vectors for 157 Languages\n\n@inproceedings{grave2018learning,\n title={Learning Word Vectors for 157 Languages},\n author={Grave, Edouard and Bojanowski, Piotr and Gupta, Prakhar and Joulin, Armand and Mikolov, Tomas},\n booktitle={Proceedings of the International Conference on Language Resources and Evaluation (LREC 2018)},\n year={2018}\n}\n\nEvaluation datasets\n\nThe analogy evaluation datasets described in the paper are available here: French, Hindi, Polish.\n\nModels\n\nThe models can be downloaded from:\n\nAfrikaans: bin, textAlbanian: bin, textAlemannic: bin, text\n\nAmharic: bin, textArabic: bin, textAragonese: bin, text\n\nArmenian: bin, textAssamese: bin, textAsturian: bin, text\n\nAzerbaijani: bin, textBashkir: bin, textBasque: bin, text\n\nBavarian: bin, textBelarusian: bin, textBengali: bin, text\n\nBihari: bin, textBishnupriya Manipuri: bin, textBosnian: bin, text\n\nBreton: bin, textBulgarian: bin, textBurmese: bin, text\n\nCatalan: bin, textCebuano: bin, textCentral Bicolano: bin, text\n\nChechen: bin, textChinese: bin, textChuvash: bin, text\n\nCorsican: bin, textCroatian: bin, textCzech: bin, text\n\nDanish: bin, textDivehi: bin, textDutch: bin, text\n\nEastern Punjabi: bin, textEgyptian Arabic: bin, textEmilian-Romagnol: bin, text\n\nEnglish: bin, textErzya: bin, textEsperanto: bin, text\n\nEstonian: bin, textFiji Hindi: bin, textFinnish: bin, text\n\nFrench: bin, textGalician: bin, textGeorgian: bin, text\n\nGerman: bin, textGoan Konkani: bin, textGreek: bin, text\n\nGujarati: bin, textHaitian: bin, textHebrew: bin, text\n\nHill Mari: bin, textHindi: bin, textHungarian: bin, text\n\nIcelandic: bin, textIdo: bin, textIlokano: bin, text\n\nIndonesian: bin, textInterlingua: bin, textIrish: bin, text\n\nItalian: bin, textJapanese: bin, textJavanese: bin, text\n\nKannada: bin, textKapampangan: bin, textKazakh: bin, text\n\nKhmer: bin, textKirghiz: bin, textKorean: bin, text\n\nKurdish (Kurmanji): bin, textKurdish (Sorani): bin, textLatin: bin, text\n\nLatvian: bin, textLimburgish: bin, textLithuanian: bin, text\n\nLombard: bin, textLow Saxon: bin, textLuxembourgish: bin, text\n\nMacedonian: bin, textMaithili: bin, textMalagasy: bin, text\n\nMalay: bin, textMalayalam: bin, textMaltese: bin, text\n\nManx: bin, textMarathi: bin, textMazandarani: bin, text\n\nMeadow Mari: bin, textMinangkabau: bin, textMingrelian: bin, text\n\nMirandese: bin, textMongolian: bin, textNahuatl: bin, text\n\nNeapolitan: bin, textNepali: bin, textNewar: bin, text\n\nNorth Frisian: bin, textNorthern Sotho: bin, textNorwegian (Bokmål): bin, text\n\nNorwegian (Nynorsk): bin, textOccitan: bin, textOriya: bin, text\n\nOssetian: bin, textPalatinate German: bin, textPashto: bin, text\n\nPersian: bin, textPiedmontese: bin, textPolish: bin, text\n\nPortuguese: bin, textQuechua: bin, textRomanian: bin, text\n\nRomansh: bin, textRussian: bin, textSakha: bin, text\n\nSanskrit: bin, textSardinian: bin, textScots: bin, text\n\nScottish Gaelic: bin, textSerbian: bin, textSerbo-Croatian: bin, text\n\nSicilian: bin, textSindhi: bin, textSinhalese: bin, text\n\nSlovak: bin, textSlovenian: bin, textSomali: bin, text\n\nSouthern Azerbaijani: bin, textSpanish: bin, textSundanese: bin, text\n\nSwahili: bin, textSwedish: bin, textTagalog: bin, text\n\nTajik: bin, textTamil: bin, textTatar: bin, text\n\nTelugu: bin, textThai: bin, textTibetan: bin, text\n\nTurkish: bin, textTurkmen: bin, textUkrainian: bin, text\n\nUpper Sorbian: bin, textUrdu: bin, textUyghur: bin, text\n\nUzbek: bin, textVenetian: bin, textVietnamese: bin, text\n\nVolapük: bin, textWalloon: bin, textWaray: bin, text\n\nWelsh: bin, textWest Flemish: bin, textWest Frisian: bin, text\n\nWestern Punjabi: bin, textYiddish: bin, textYoruba: bin, text\n\nZazaki: bin, textZeelandic: bin, text\n\n← English word vectorsWiki word vectors →",
+ "fonte": "site",
+ "respostas": [
+  {
+   "por": "gemma-4-31b",
+   "resposta": {
+    "serve": "search",
+    "role": "Provide pre-trained word embeddings for semantic search in Portuguese and English",
+    "place": [
+     "disk",
+     "library"
+    ],
+    "mechanism": [
+     "embeddings",
+     "vector"
+    ],
+    "mcp": "no",
+    "windows": "unknown",
+    "portuguese": "yes",
+    "license": "CC-BY-SA-3.0",
+    "maturity": "stable",
+    "doubt": false,
+    "evidence": "pre-trained word vectors for 157 languages; Portuguese: bin, text; no mention of MCP or Windows"
+   }
+  },
+  {
+   "por": "mistral-nemo",
+   "resposta": {
+    "serve": "stack",
+    "role": "Provides pre-trained word vectors for various languages, including Portuguese (pt-BR)",
+    "place": [
+     "disk"
+    ],
+    "mechanism": [
+     "embeddings"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "yes",
+    "license": "CC BY-SA 3.0",
+    "maturity": "stable",
+    "doubt": false,
+    "evidence": "We distribute pre-trained word vectors for 157 languages, trained on Common Crawl and Wikipedia using fastText. These models were trained using CBOW with position-weights, in dimension 300, with character n-grams of length 5, a window of size 5 and 10 negatives."
+   }
+  }
+ ]
+}

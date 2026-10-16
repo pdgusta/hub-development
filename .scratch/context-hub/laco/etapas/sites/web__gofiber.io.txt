@@ -1,0 +1,236 @@
+Skip to main content
+
+🌟 If you like Fiber, don't forget to give us a star on Github 🌟
+
+An Express-inspired web framework
+written in Go.
+Fiber is a Go web framework built on top of Fasthttp, the fastest HTTP engine for Go. It's designed to ease development with performance in mind.
+
+package main
+
+import (
+
+ "log"
+
+ "github.com/gofiber/fiber/v3"
+
+)
+
+func main() {
+
+ app := fiber.New()
+
+ app.Get("/", func (c fiber.Ctx) error {
+
+ return c.SendString("Hello, World!")
+
+ })
+
+ log.Fatal(app.Listen(":3000"))
+
+}
+
+→
+
+http://localhost:3000
+
+Hello, World!
+Get Started →✨ Ask AIRead FAQ
+
+Fiber in Action​
+How Fiber applications are built: pick a topic, read the code.
+
+🔀Routing🧬Middleware📦JSON APIs📁Static Files📝Templates
+
+Routes are declared Express-style with a method, a path, and a handler. Dynamic segments like :name are captured and read through c.Params, and wildcards like * match everything below a prefix. Routing guide →
+
+app.Get("/", func(c fiber.Ctx) error {
+
+ return c.SendString("Hello, World!")
+
+})
+
+app.Get("/user/:name", func(c fiber.Ctx) error {
+
+ return c.SendString("Hello, " + c.Params("name"))
+
+})
+
+app.Get("/files/*", func(c fiber.Ctx) error {
+
+ return c.SendString("Path: " + c.Params("*"))
+
+})
+
+app.Use chains middleware into the request cycle. Here logger.New() prints every request and limiter.New() throttles abusive clients. Middleware runs in the order you register it, so requests flow through the chain top to bottom. Middleware overview →
+
+import (
+
+ "github.com/gofiber/fiber/v3/middleware/limiter"
+
+ "github.com/gofiber/fiber/v3/middleware/logger"
+
+)
+
+// Log every request
+
+app.Use(logger.New())
+
+// 20 requests per 30 seconds per client
+
+app.Use(limiter.New(limiter.Config{
+
+ Max: 20,
+
+ Expiration: 30 * time.Second,
+
+}))
+
+c.JSON serializes structs or a fiber.Map straight into the response body, and status codes chain through c.Status. Reading request data works the same way in reverse with c.Bind. Context API →
+
+app.Get("/api/posts", func(c fiber.Ctx) error {
+
+ posts := getPosts() // your logic
+
+ if len(posts) == 0 {
+
+ return c.Status(404).JSON(&fiber.Map{
+
+ "success": false,
+
+ "error": "There are no posts!",
+
+ })
+
+ }
+
+ return c.JSON(&fiber.Map{
+
+ "success": true,
+
+ "posts": posts,
+
+ })
+
+})
+
+static.New serves HTML, CSS, JavaScript, and images from one or more directories on the same route, with options like compression, caching, and directory browsing. Static middleware →
+
+import "github.com/gofiber/fiber/v3/middleware/static"
+
+app.Get("/*", static.New("./public"))
+
+// => http://localhost:3000/hello.html
+
+// => http://localhost:3000/js/jquery.js
+
+// => http://localhost:3000/css/style.css
+
+Set a Views engine and c.Render fills your templates server-side. Engines are swappable behind the same interface, so your handlers never change. Template engines →
+
+import "github.com/gofiber/template/html/v3"
+
+app := fiber.New(fiber.Config{
+
+ Views: html.New("./views", ".html"),
+
+})
+
+app.Get("/", func(c fiber.Ctx) error {
+
+ return c.Render("index", fiber.Map{
+
+ "Title": "Hello, World!",
+
+ })
+
+})
+
+Extreme Performance
+
+Since Fiber is built on top of Fasthttp, your apps will enjoy unmatching performance! Don't believe us? Here's a benchmark that proves how Fiber shines compared to other frameworks:
+
+The framework
+Built into the Core​
+Everyday capabilities that ship with the framework itself. No extra packages, nothing else to install.
+📥↗Request BindingParse JSON bodies, forms, query strings, and headers into Go structs with c.Bind.🧭↗Route ConstraintsValidate parameters in the route pattern itself: :id<int> never matches "abc".🧯↗Error HandlingReturn errors from handlers and shape every response in one central ErrorHandler.🌐↗HTTP ClientCall other services with the built-in, Fasthttp-powered client.🧪↗TestingTest handlers in-process with app.Test, no port and no running server needed.🪝↗Hooks & ServicesReact to lifecycle events, and let Fiber start and stop your backing services.🗂️↗State ManagementShare typed application state across handlers without global variables.🛬↗Graceful ShutdownFinish in-flight requests and run cleanup hooks before the process exits.🎯↗Type-Safe HelpersRead params, query values, and locals as real Go types with generic helpers.
+
+Ready to ship something fast?​
+Start with one file, add middleware as you grow, and deploy a single binary.
+Get Started →Browse Recipes
+
+Beyond the core
+The Official Ecosystem​
+Complete catalogs of official building blocks: middleware, storage drivers, template engines, and contrib integrations, all maintained by the Fiber team.
+
+🧬
+Core Middleware32 middleware
+The deepest catalog in the box: authentication, caching, compression, rate limiting, security headers, sessions, and more, each one app.Use away.
+AdaptorBasicAuthCacheCompressCORSCSRFEarlyDataEncrypt CookieEnvVarETagExpVarFaviconHealth CheckHelmetHost AuthorizationIdempotencyKeyAuthLimiterLoggerPaginatePprofProxyRecoverRedirectRequestIDResponseTimeRewriteSessionSkipSSEStaticTimeoutExplore middleware →
+🗄️
+Storage Drivers34 drivers
+One unified interface for every major database and key-value store. Plug them into sessions, caching, or rate limiting without changing your code.
+AerospikeArangoDBAzure BlobBadgerBboltCassandraClickhouseCloudflare KVCoherenceCouchbaseDynamoDBEtcdFirestoreLevelDBMemcacheMemoryMinioMockStorageMongoDBMSSQLMySQLNatsNeo4jPebblePostgresRedisRistrettoRueidisS3ScyllaDbSQLite3SurrealDBTest HelpersValkeyBrowse storage drivers →
+📝
+Template Engines9 engines
+Server-side rendering with the syntax you already know. One official package, one interface, your choice of engine.
+AceAmberDjangoHandlebarsHTMLJetMustachePugSlimPick your engine →
+🧩
+Contrib Packages24 packages
+Officially maintained integrations with the wider ecosystem: tracing, logging, authentication, API documentation, and real-time communication.
+CasbinCircuit BreakerCorazaFgprofHCaptchaI18nJWTLoadShedMonitorNew RelicOPAOTelPasetoPrometheusSentrySocket.ioSPNEGO Kerberos Authentication Middleware for FiberSwagger UISwaggoTestcontainersUptimeWebsocketZapZerologDiscover contrib →
+
+Official Sponsors​
+Fiber is supported by these organisations. Want to join them? Become a sponsor on GitHub.
+
+Tool Sponsors - supporting Fiber with free IDE licenses and AI credits.
+
+Help & Support​
+Join our community on Discord: ask questions, share, help others.
+
+Media​
+
+📖 Go Fiber by Examples: Working with middlewares and boilerplates
+Vic Shóstak • september 13, 2021 • dev.to→
+
+📖 Go Fiber by Examples: Testing the application
+Vic Shóstak • august 30, 2021 • dev.to→
+
+📖 Go Fiber by Examples: Delving into built-in functions
+Vic Shóstak • august 24, 2021 • dev.to→
+
+📖 Go Fiber by Examples: How can the Fiber Web Framework be useful?
+Vic Shóstak • august 16, 2021 • dev.to→
+
+📖 Build a RESTful API on Go: Fiber, PostgreSQL, JWT and Swagger docs in isolated Docker containers
+Vic Shóstak • march 22, 2021 • dev.to→
+
+Getting started with Fiber ⚡
+Fenny 🔥 • june 10, 2020 • dev.to→
+
+Building an Express-style API in Go with Fiber
+Alexander Nnakwue • june 10, 2020 • logrocket.com→
+
+Fiber v1.9.6 🔥 How to improve performance by 817% and stay fast, flexible and friendly?
+Vic Shóstak • May 12, 2020 • dev.to→
+
+🌎 Create a travel list app with Go, Fiber, Angular, MongoDB and Google Cloud Secret Manager
+Wei Lun • April 25, 2020 • yongweilun.me→
+
+Building a Basic REST API in Go using Fiber
+Elliot Forbes • April 23, 2020 • tutorialedge.net→
+
+Creating Fast APIs In Go Using Fiber
+József Sallai • April 7, 2020 • dev.to→
+
+Is switching from Express to Fiber worth it? 🤔
+Vic Shóstak • April 1, 2020 • dev.to→
+
+🚀 Fiber v1.8. What's new, updated and re-thinked?
+Vic Shóstak • March 3, 2020 • dev.to→
+
+Fiber released v1.7! 🎉 What's new and is it still fast, flexible and friendly?
+Vic Shóstak • February 21, 2020 • dev.to→
+
+Welcome to Fiber — an Express.js styled web framework written in Go with ❤️
+Vic Shóstak • February 3, 2020 • dev.to→

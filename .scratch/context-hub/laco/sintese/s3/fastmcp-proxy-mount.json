@@ -1,0 +1,49 @@
+{
+ "nome": "FastMCP proxy/mount",
+ "url": "https://gofastmcp.com/servers/providers/proxy.md",
+ "papel": "repasse de MCP",
+ "windows": "nao_verificado (a doc não traz notas de Windows; pacote Python puro sem classifier de SO no PyPI)",
+ "mcp": "yes (biblioteca Python: create_proxy() e server.mount(); stdio por padrão, HTTP via run(transport=\"http\"))",
+ "portugues": "nao_aplicavel",
+ "markdown_frontmatter": "nao_aplicavel",
+ "atualizacao": "nao_aplicavel (repasse; conexão lazy ao backend)",
+ "embeddings_endpoint": "nao usa embeddings",
+ "recursos": "Python >=3.10 (pip); biblioteca, sem número de memória na fonte",
+ "licenca": "Apache-2.0",
+ "ultimo_release": "4.1.0 (PyPI, 2026-10-08)",
+ "atividade": "nao_verificado (release PyPI de 2026-10-08)",
+ "maturidade": "stable (4.x)",
+ "encaixe": "Dentro do MCP do banco: montar o servidor de busca com mount() ou prefixar tools de backends. Exige código Python; não é serviço pronto.",
+ "evidencias": [
+  {
+   "campo": "mcp",
+   "url": "https://gofastmcp.com/servers/providers/proxy.md",
+   "citacao": "`server.mount(external)`, which exposes the backend's tools alongside your local ones"
+  },
+  {
+   "campo": "mcp",
+   "url": "https://gofastmcp.com/servers/providers/proxy.md",
+   "citacao": "`proxy.run(transport=\"http\", host=\"0.0.0.0\", port=8080)`"
+  },
+  {
+   "campo": "atualizacao",
+   "url": "https://gofastmcp.com/servers/providers/proxy.md",
+   "citacao": "Creating the proxy object and starting the local server do not contact the upstream server."
+  },
+  {
+   "campo": "licenca",
+   "url": "https://pypi.org/pypi/fastmcp/json",
+   "citacao": "license_expression Apache-2.0; version 4.1.0"
+  },
+  {
+   "campo": "recursos",
+   "url": "https://raw.githubusercontent.com/jlowin/fastmcp/main/pyproject.toml",
+   "citacao": "requires-python = \">=3.10\""
+  }
+ ],
+ "nao_verificado": [
+  "Windows nativo",
+  "data do último commit",
+  "memória"
+ ]
+}

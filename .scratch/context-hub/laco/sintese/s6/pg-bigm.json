@@ -1,0 +1,57 @@
+{
+ "nome": "pg_bigm",
+ "nome_canonico": "pg_bigm",
+ "chave": "gh:pgbigm/pg_bigm",
+ "url": "https://github.com/pgbigm/pg_bigm",
+ "identidade": "ok (a URL pg-bigm/pg-bigm é alias; o repo é pgbigm/pg_bigm).",
+ "windows": "nao_verificado: docs testam só Linux e Mac OS X e o build usa make/PGXS; exige PostgreSQL, que o hub não tem (usa CouchDB).",
+ "mcp": "no: extensão de PostgreSQL; sem MCP.",
+ "portugues": "Bigrama independe de idioma: 'supports all PostgreSQL encoding and locale'. Sem stemmer, stopwords nem remoção de acentos.",
+ "markdown_frontmatter": "Não aplicável a arquivos: indexa colunas de texto; só índice GIN e operador LIKE.",
+ "atualizacao": "O índice GIN do PostgreSQL é atualizado a cada escrita na tabela.",
+ "embeddings_endpoint": "Não usa embeddings.",
+ "recursos": "Roda dentro do PostgreSQL; coluna indexada até cerca de 102 MB; sem outros números.",
+ "licenca": "PostgreSQL License",
+ "ultimo_release": "v1.2-20250903 (2025-09-02)",
+ "atividade": "Último commit 2026-08-04",
+ "maturidade": "stable",
+ "encaixe": "Só serviria dentro de um banco PostgreSQL com o texto das notas. O hub usa CouchDB e Windows nativo sem Docker, então não encaixa; impedimento: exige PostgreSQL e build por make.",
+ "evidencias": [
+  {
+   "campo": "identidade",
+   "url": "https://github.com/pgbigm/pg_bigm",
+   "citacao": "The pg_bigm module provides full text search capability in PostgreSQL."
+  },
+  {
+   "campo": "windows",
+   "url": "https://raw.githubusercontent.com/pgbigm/pg_bigm/master/docs/pg_bigm_en.md",
+   "citacao": "tested OS list includes only Linux and Mac OS X; build uses make with USE_PGXS (parafraseado)"
+  },
+  {
+   "campo": "portugues",
+   "url": "https://raw.githubusercontent.com/pgbigm/pg_bigm/master/docs/pg_bigm_en.md",
+   "citacao": "pg_bigm supports all PostgreSQL encoding and locale."
+  },
+  {
+   "campo": "licenca",
+   "url": "https://github.com/pgbigm/pg_bigm",
+   "citacao": "pg_bigm is released under the PostgreSQL License"
+  },
+  {
+   "campo": "ultimo_release",
+   "url": "https://github.com/pgbigm/pg_bigm/releases",
+   "citacao": "v1.2-20250903 Latest (02 Sep)"
+  },
+  {
+   "campo": "atividade",
+   "url": "https://github.com/pgbigm/pg_bigm/commits/master",
+   "citacao": "Update copyright for 2026, Aug 4, 2026"
+  }
+ ],
+ "nao_verificado": [
+  "windows (sem menção explícita)",
+  "ano exato do release (2025 inferido do nome da tag)"
+ ],
+ "serve": "search",
+ "area": null
+}

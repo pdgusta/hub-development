@@ -1,0 +1,43 @@
+{
+ "nome": "Obsidian API",
+ "nome_canonico": "obsidian-api (obsidianmd/obsidian-api)",
+ "chave": "gh:obsidianmd/obsidian-api",
+ "url": "https://github.com/obsidianmd/obsidian-api",
+ "serve": "stack",
+ "area": "obsidian",
+ "identidade": "ok: definições de tipos TypeScript da API de plugins, não um runtime",
+ "windows": "yes: pacote de tipos (obsidian.d.ts), independente de SO; o plugin roda no Obsidian desktop.",
+ "mcp": "nao_aplicavel",
+ "portugues": "nao_aplicavel",
+ "markdown_frontmatter": "parcial: README descreve MetadataCache com cabeçalhos, links, embeds, tags e blocos; frontmatter não é citado.",
+ "atualizacao": "nao_aplicavel",
+ "embeddings_endpoint": "nao_aplicavel",
+ "recursos": "Só tipos; sem custo de execução.",
+ "licenca": "MIT",
+ "ultimo_release": "nao_verificado (package.json versão 1.14.4; releases/API do GitHub não consultados por limite de taxa)",
+ "atividade": "nao_verificado",
+ "maturidade": "stable (mantido pelo próprio Obsidian)",
+ "encaixe": "Base para escrever um plugin Obsidian próprio, lendo o MetadataCache em cada máquina. Fala com o Obsidian, não com CouchDB nem MCP. Impedimento: exige o Obsidian aberto; é só tipos.",
+ "evidencias": [
+  {
+   "campo": "identidade",
+   "url": "https://github.com/obsidianmd/obsidian-api",
+   "citacao": "Type definitions for the latest Obsidian API."
+  },
+  {
+   "campo": "markdown_frontmatter",
+   "url": "https://github.com/obsidianmd/obsidian-api",
+   "citacao": "cached metadata about each markdown file, including headings, links, embeds, tags, and blocks"
+  },
+  {
+   "campo": "licenca",
+   "url": "https://raw.githubusercontent.com/obsidianmd/obsidian-api/master/package.json",
+   "citacao": "\"license\": \"MIT\""
+  }
+ ],
+ "nao_verificado": [
+  "ultimo_release",
+  "atividade",
+  "frontmatter no MetadataCache"
+ ]
+}

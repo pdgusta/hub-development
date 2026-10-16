@@ -1,0 +1,105 @@
+{
+ "tema": "t07-indices-embutidos-mcp",
+ "consultas": [
+  "sqlite-vec MCP server markdown search hybrid FTS5 Windows",
+  "LanceDB MCP server local markdown notes search 2026",
+  "DuckDB vss extension fts extension status experimental persistence 2026",
+  "tantivy-py Windows wheels release",
+  "Turso libSQL native vector search F32_BLOB DiskANN docs; usearch Windows wheels",
+  "github MCP server semantic search markdown LanceDB OR DuckDB OR sqlite-vec Windows 2026 coding agents"
+ ],
+ "achados": [
+  {
+   "nome": "DimonSmart/LocalVectorSearchMcp",
+   "url_fonte": "https://www.nuget.org/packages/DimonSmart.LocalVectorSearchMcp",
+   "o_que_e": "Servidor MCP .NET que indexa e edita Markdown de projeto; SQLite FTS5 mais sqlite-vec opcional, embeddings via Ollama.",
+   "lugar": ["inside_db_mcp", "disk"],
+   "mecanismo": ["full_text", "bm25", "vector", "hybrid"],
+   "mcp": "yes", "windows": "unknown", "portugues": "unknown",
+   "licenca": "MIT", "ultimo_release": "0.1.3 (atualizado 10/11/2026 na página NuGet)", "maturidade": "alpha",
+   "encaixe": "Candidato a busca no disco por máquina, atrás do MCP do banco. Modo FTS5 offline sem embeddings. Windows e português precisam de teste.",
+   "evidencias": [
+    {"url": "https://www.nuget.org/packages/DimonSmart.LocalVectorSearchMcp", "citacao": "SQLite FTS5 (+ sqlite-vec when embeddings are enabled)"},
+    {"url": "https://www.nuget.org/packages/DimonSmart.LocalVectorSearchMcp", "citacao": "use `embedding.provider: none` for offline FTS5-only mode"},
+    {"url": "https://github.com/DimonSmart/LocalVectorSearchMcp", "citacao": "The MCP server exposes eighteen tools."}
+   ],
+   "nao_verificado": ["Windows suportado (NuGet só mostra net10.0-windows 'computed'; o resumo de busca citou binário Windows x64 em CI, não conferido na fonte)", "suporte a português no FTS5/tokenizer", "data exata do release", "se aceita embeddings por endpoint OpenAI-compatível (padrão é Ollama)"]
+  },
+  {
+   "nome": "sqlite-vec (asg017)",
+   "url_fonte": "https://github.com/asg017/sqlite-vec",
+   "o_que_e": "Extensão SQLite de busca vetorial em C puro; roda onde o SQLite roda; wheel Python para Windows publicado.",
+   "lugar": ["library", "disk"],
+   "mecanismo": ["vector", "embeddings"],
+   "mcp": "no", "windows": "yes", "portugues": "unknown",
+   "licenca": "MIT ou Apache-2.0", "ultimo_release": "0.1.9 (PyPI, 31/03/2026); pré-releases 0.1.10a1-a4", "maturidade": "beta",
+   "encaixe": "Bloco vetorial dentro de um SQLite local por máquina; combinar com FTS5 para híbrida. Pré-v1, atenção a quebras entre versões.",
+   "evidencias": [
+    {"url": "https://github.com/asg017/sqlite-vec", "citacao": "`sqlite-vec` is a pre-v1, so expect breaking changes!"},
+    {"url": "https://github.com/asg017/sqlite-vec", "citacao": "runs anywhere SQLite runs (Linux/MacOS/Windows, in the browser with WASM, Raspberry Pis, etc.)"},
+    {"url": "https://pypi.org/project/sqlite-vec/", "citacao": "sqlite_vec-0.1.9-py3-none-win_amd64.whl"}
+   ],
+   "nao_verificado": ["se a busca é só força bruta (arquivos diskann/ivf no repo sugerem índices, não confirmado)", "desempenho em volume de notas do hub", "carga da extensão em Node/.NET no Windows"]
+  },
+  {
+   "nome": "LanceDB",
+   "url_fonte": "https://docs.lancedb.com/search/full-text-search",
+   "o_que_e": "Banco vetorial embutido (Rust) com FTS BM25 nativo; opção de idioma controla stemming e stopwords, inclusive português.",
+   "lugar": ["library", "disk"],
+   "mecanismo": ["bm25", "full_text", "vector"],
+   "mcp": "no", "windows": "yes", "portugues": "yes",
+   "licenca": "Apache-2.0 (classificador PyPI)", "ultimo_release": "0.40.0 (PyPI, 07/10/2026)", "maturidade": "stable",
+   "encaixe": "Índice único por máquina com BM25 em português mais vetores, atrás de um MCP próprio. Wheel de 83 MB; sem MCP de Markdown+LanceDB com Windows confirmado.",
+   "evidencias": [
+    {"url": "https://docs.lancedb.com/search/full-text-search", "citacao": "Norwegian, Portuguese, Russian, Spanish, and Swedish."},
+    {"url": "https://pypi.org/project/lancedb/", "citacao": "lancedb-0.40.0-cp310-abi3-win_amd64.whl"}
+   ],
+   "nao_verificado": ["híbrida pronta (a página de FTS não cobre híbrida)", "mecanismo de atualização incremental do índice FTS", "servidores MCP com LanceDB e Windows (só listagens de diretório: semantic-code-mcp, memória em Rust)"]
+  },
+  {
+   "nome": "DuckDB extensões vss e fts",
+   "url_fonte": "https://duckdb.org/docs/current/core_extensions/vss",
+   "o_que_e": "Extensões do DuckDB: vss (índice HNSW) e fts (BM25 com stemmer portuguese). Persistência do HNSW é experimental.",
+   "lugar": ["library", "disk"],
+   "mecanismo": ["bm25", "full_text", "vector"],
+   "mcp": "no", "windows": "unknown", "portugues": "yes",
+   "licenca": "unknown", "ultimo_release": "unknown", "maturidade": "beta",
+   "encaixe": "Possível, mas o índice FTS não se atualiza sozinho e o HNSW persistente é desaconselhado em produção. Pior que LanceDB ou SQLite para índice vivo.",
+   "evidencias": [
+    {"url": "https://duckdb.org/docs/current/core_extensions/vss", "citacao": "we still recommend that you do not use this feature in production environments."},
+    {"url": "https://duckdb.org/docs/current/core_extensions/full_text_search", "citacao": "The FTS index will not update automatically when the input table changes."}
+   ],
+   "nao_verificado": ["Windows para vss/fts", "servidor MCP que use DuckDB para Markdown", "licença e versão (não conferidas nesta varredura)", "nível de suporte Secondary veio de resumo de busca"]
+  },
+  {
+   "nome": "tantivy-py",
+   "url_fonte": "https://pypi.org/project/tantivy/",
+   "o_que_e": "Bindings Python oficiais do Tantivy (BM25 em Rust); wheels Windows amd64 para CPython 3.10 a 3.14.",
+   "lugar": ["library", "disk"],
+   "mecanismo": ["bm25", "full_text"],
+   "mcp": "no", "windows": "yes", "portugues": "unknown",
+   "licenca": "MIT", "ultimo_release": "0.26.2 (PyPI, 17/09/2026)", "maturidade": "stable",
+   "encaixe": "Motor BM25 embutido para índice em disco por máquina, com MCP próprio. Stemmer de português deve ser configurado; README do binding não o documenta.",
+   "evidencias": [
+    {"url": "https://pypi.org/project/tantivy/", "citacao": "tantivy-0.26.2-cp313-cp313-win_amd64.whl"},
+    {"url": "https://github.com/quickwit-oss/tantivy-py", "citacao": "Python bindings for Tantivy the full-text search engine library written in Rust."}
+   ],
+   "nao_verificado": ["stemmer português exposto pelo binding", "MCP de busca que use tantivy-py"]
+  },
+  {
+   "nome": "Turso/libSQL vector search",
+   "url_fonte": "https://docs.turso.tech/features/ai-and-embeddings",
+   "o_que_e": "Busca vetorial nativa em libSQL (F32_BLOB, índice DiskANN via libsql_vector_idx), sem extensão; documentada como technical preview.",
+   "lugar": ["library", "disk"],
+   "mecanismo": ["vector", "embeddings"],
+   "mcp": "no", "windows": "unknown", "portugues": "unknown",
+   "licenca": "unknown", "ultimo_release": "unknown", "maturidade": "beta",
+   "encaixe": "Alternativa ao sqlite-vec com índice ANN, mas preview e sem Windows conferido. Não vale a troca para o volume de um cofre de notas.",
+   "evidencias": [
+    {"url": "https://docs.turso.tech/features/ai-and-embeddings", "citacao": "This is currently in technical preview."}
+   ],
+   "nao_verificado": ["Windows", "licença e versão", "citação veio de resumo de busca, página não aberta", "usearch e seus wheels Windows: sem fonte nesta varredura"]
+  }
+ ],
+ "lacunas": "Nenhum servidor MCP de Markdown com sqlite-vec, LanceDB ou DuckDB tem Windows confirmado em fonte primária (só DimonSmart/LocalVectorSearchMcp, com Windows em aberto). usearch não foi coberto; Turso/libSQL sem Windows, versão e licença. DuckDB sem servidor MCP achado. Híbrida pronta no LanceDB não confirmada. Português no FTS5 e no tantivy-py não confirmado."
+}

@@ -1,0 +1,36 @@
+{
+ "chave": "web:elastic.co/guide/en/logstash/current/index.html",
+ "urls": [
+  "https://www.elastic.co/guide/en/logstash/current/index.html"
+ ],
+ "tipos": [
+  "assembly",
+  "tool"
+ ],
+ "termos": [
+  "Logstash CouchDB",
+  "BM25 Kibana",
+  "visualização de resultados",
+  "data pipeline",
+  "sync",
+  "ETL"
+ ],
+ "mencoes": 2,
+ "familias": [
+  "mistral"
+ ],
+ "primeira_onda": 3,
+ "nomes": [
+  "CouchDB Change Feed + Kibana (via Logstash + BM25)",
+  "Elasticsearch Logstash Integration"
+ ],
+ "resumos": [
+  "Sincronização do *change feed* para Logstash/Kibana via *input plugin* de CouchDB, processando BM25 e embeddings com *filter* customizados para frontmatter e exibição via *visualização de busca híbrida*.",
+  "ETL pipeline for syncing CouchDB data into Elasticsearch."
+ ],
+ "fonte": "site",
+ "readme_status": "ok",
+ "readme_nome": "https://www.elastic.co/guide/en/logstash/current/index.html",
+ "readme_cortado": false,
+ "readme": "[Logstash | Logstash]\n\nDocs\n\n /\n\n Reference\n\n /\n\n Ingestion tools\n\nLogstash\n\nLogstash is an open source data collection engine with real-time pipelining capabilities.\nLogstash can dynamically unify data from disparate sources and normalize the data into destinations of your choice.\nCleanse and democratize all your data for diverse advanced downstream analytics and visualization use cases.\n\nWhile Logstash originally drove innovation in log collection, its capabilities extend well beyond that use case.\nAny type of event can be enriched and transformed with a broad array of input, filter, and output plugins, with many native codecs further simplifying the ingestion process.\nLogstash accelerates your insights by harnessing a greater volume and variety of data.\n\n Logstash to Elastic Cloud Serverless\n\nYou’ll use the Logstash Elasticsearch output plugin to send data to Elastic Cloud Serverless.\nNote these differences between Elasticsearch Serverless and both Elastic Cloud Hosted and self-managed Elasticsearch:\n\nUse API keys to access Elastic Cloud Serverless from Logstash as it does not support native user authentication.\nAny user-based security settings in your Elasticsearch output plugin configuration are ignored and may cause errors.\n\nElastic Cloud Serverless uses data streams and data lifecycle management (DLM) instead of index lifecycle management (ILM). Any ILM settings in your Elasticsearch output plugin configuration are ignored and may cause errors.\n\nLogstash monitoring is available through the Logstash Integration in Elastic Observability on Elastic Cloud Serverless.\n\nKnown issue for Logstash to Elasticsearch Serverless.\nThe logstash-output-elasticsearch hosts setting defaults to port :9200.\nSet the value to port :443 instead."
+}

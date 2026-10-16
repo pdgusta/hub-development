@@ -1,0 +1,292 @@
+Welcome to Django Q¶
+
+Django Q is a native Django task queue, scheduler and worker application using Python multiprocessing.
+
+Features¶
+
+Multiprocessing worker pools
+
+Asynchronous tasks
+
+Scheduled, cron and repeated tasks
+
+Signed and compressed packages
+
+Failure and success database or cache
+
+Result hooks, groups and chains
+
+Django Admin integration
+
+PaaS compatible with multiple instances
+
+Multi cluster monitor
+
+Redis, Disque, IronMQ, SQS, MongoDB or ORM
+
+Rollbar and Sentry support
+
+Django Q is tested with: Python 3.7 and 3.8, Django 2.2.x and 3.1.x
+
+Currently available in English, German and French.
+
+Contents:
+
+ Installation
+
+Requirements
+
+Add-ons
+
+Compatibility
+
+ Configuration
+
+name
+
+workers
+
+daemonize_workers
+
+recycle
+
+max_rss
+
+timeout
+
+ack_failures
+
+max_attempts
+
+retry
+
+compress
+
+save_limit
+
+guard_cycle
+
+sync
+
+queue_limit
+
+label
+
+catch_up
+
+redis
+
+django_redis
+
+disque_nodes
+
+disque_auth
+
+iron_mq
+
+sqs
+
+orm
+
+mongo
+
+mongo_db
+
+broker_class
+
+bulk
+
+poll
+
+cache
+
+cached
+
+scheduler
+
+error_reporter
+
+cpu_affinity
+
+ Brokers
+
+Redis
+
+Disque
+
+IronMQ
+
+Amazon SQS
+
+MongoDB
+
+Django ORM
+
+Custom Broker
+
+Reference
+
+ Tasks
+
+async_task()
+
+AsyncTask
+
+Cached operations
+
+Synchronous testing
+
+Connection pooling
+
+Reference
+
+ Groups
+
+Reference
+
+ Iterable
+
+Reference
+
+ Chains
+
+Reference
+
+ Schedules
+
+Schedule
+
+Missed schedules
+
+Management Commands
+
+Reference
+
+ Cluster
+
+Multiple Clusters
+
+Using a Procfile
+
+Process managers
+
+Reference
+
+ Monitor
+
+Legend
+
+Info
+
+Status
+
+Reference
+
+ Admin
+
+Successful tasks
+
+Failed tasks
+
+Scheduled tasks
+
+Queued tasks
+
+ Errors
+
+ Signals
+
+Available signals
+
+Subscribing to a signal
+
+ Architecture
+
+Signed Tasks
+
+Broker
+
+Pusher
+
+Worker
+
+Monitor
+
+Sentinel
+
+Timeouts
+
+Scheduler
+
+Stop procedure
+
+ Examples
+
+Emails
+
+Signals
+
+Reports
+
+Haystack
+
+Shell
+
+Groups
+
+Http Health Check
+
+Index
+
+Search Page
+
+A multiprocessing task queue for Django
+
+Navigation
+
+ Installation
+
+ Configuration
+
+ Brokers
+
+ Tasks
+
+ Groups
+
+ Iterable
+
+ Chains
+
+ Schedules
+
+ Cluster
+
+ Monitor
+
+ Admin
+
+ Errors
+
+ Signals
+
+ Architecture
+
+ Examples
+
+Related Topics
+
+Documentation overview
+
+Next: Installation
+
+Quick search
+
+ ©2015-2021, Ilan Steemers.
+
+ |
+ Powered by Sphinx 1.8.5
+ & Alabaster 0.7.12
+
+ |
+ Page source

@@ -1,0 +1,24 @@
+{"n": 1, "pergunta": "Se a outra máquina excluir um arquivo da pasta *clients/STRATA* enquanto eu estou lendo ele no Maestri, como o sistema garante que o maestro não continue usando uma versão desatualizada?", "tipo": "diferenca"}
+{"n": 11, "pergunta": "O acervo do maestro faz parte do grupo de itens que qualquer agente pode modificar sem passar pelo aval do Gustavo?", "tipo": "grupo"}
+{"n": 21, "pergunta": "Se eu abrir uma sessão no Maestri na máquina pessoal e tentar recrutar um agente que está registrado só no notebook (porque o sync das skills ainda não terminou), o que acontece: o agente não aparece como opção, o Maestri dá erro, ou o Vigia me avisa que há skills desatualizadas?", "tipo": "quem-usa"}
+{"n": 31, "pergunta": "O que muda entre o cliente iniciar a sessão na raiz do hub e iniciar a sessão numa subpasta de uma iniciativa específica (como operations/ ou clients/STRATA/)?", "tipo": "diferenca"}
+{"n": 41, "pergunta": "Se eu tentar gravar uma nova versão do *AGENTS.md* (contrato do hub) enquanto a outra máquina está com o MCP do banco fora do ar, como o sistema impede que eu perca minha edição quando o banco voltar?", "tipo": "diferenca"}
+{"n": 51, "pergunta": "O que muda entre eu acessar o hub pelo MCP do banco do par e eu acessar direto pelos arquivos .md no disco desse par via SSH?", "tipo": "diferenca"}
+{"n": 61, "pergunta": "Onde vive o conhecimento de referência, e como o agente o consulta durante uma sessão?", "tipo": "onde-vive"}
+{"n": 71, "pergunta": "Quando o cliente STRATA submete uma nova iniciativa ao hub, em que ordem os dados são gravados no banco, sincronizados entre as máquinas e protegidos por chaves TLS?", "tipo": "ordem"}
+{"n": 81, "pergunta": "Se eu mover uma iniciativa para o `_archive/`, onde isso fica visível para o outro par?", "tipo": "onde-vive"}
+{"n": 91, "pergunta": "Um cliente que acessa o hub via MCP de um par consegue acidentalmente modificar uma iniciativa mesmo sendo de apenas leitura?", "tipo": "falha"}
+{"n": 101, "pergunta": "Quem é responsável por me mostrar o trecho certo de uma nota sem eu ler tudo?", "tipo": "responsavel"}
+{"n": 111, "pergunta": "Quando o maestro precisa de uma skill nova do acervo, como a trava de segurança do Gustavo é acitada?", "tipo": "quando"}
+{"n": 121, "pergunta": "Se um arquivo com mais de 200 MiB for criado na pasta de trabalho do Gustavo, o que o Sincronizador faz e como o conteúdo permanece acessível?", "tipo": "se-x"}
+{"n": 131, "pergunta": "Se uma máquina ficar desconectada por mais que o limite e o Gustavo resolver uma divergência depois, os dados de clientes como TRF3 são perdidos?", "tipo": "falha"}
+{"n": 141, "pergunta": "Quando um arquivo é deletado manualmente na pasta não replicada, o que acontece quando a outra máquina tenta acess buscas via SSH?", "tipo": "quando"}
+{"n": 151, "pergunta": "Qual a relação entre a **Nota de retomada** e o **Agente de código** quando uma sessão é reiniciada em uma máquina diferente, mas a **Nota de retomada** original está em uma **pasta não replicada** da máquina original?", "tipo": "relacao"}
+{"n": 161, "pergunta": "Se eu mover um arquivo da raiz `operations/` para a pasta `_archive/`, como o sincronizador, o banco e a camada de busca processam essa mudança passo a passo?", "tipo": "ordem"}
+{"n": 171, "pergunta": "Em que ordem um arquivo grande (acima de 200 MiB) é bloqueado pelo Sincronizador, gera alerta de arquivo grande e permanece apenas na máquina onde foi criado?", "tipo": "ordem"}
+{"n": 181, "pergunta": "O que muda entre a replicação automática de um documento que está dentro do limite de tamanho e a replicação de um documento que excede 200 MiB?", "tipo": "diferenca"}
+{"n": 191, "pergunta": "O que o **Sincronizador** não faz se um arquivo de 250 MiB é criado na máquina pessoal e o outro par está ligado, mas o limite de tamanho para sincronização é de 200 MiB?", "tipo": "o-que-nao-faz"}
+{"n": 201, "pergunta": "Se eu realizar uma operação que exige o AGENTS.md, como o hub garante que eu estou usando as instruções corretas?", "tipo": "se-x"}
+{"n": 211, "pergunta": "Por que as iniciativas de cliente devem morar em uma 'casa' única na estrutura do hub?", "tipo": "por-que"}
+{"n": 221, "pergunta": "Como o acervo do maestro é organizado, e como um maestro novo encontra e usa essas peças?", "tipo": "onde-vive"}
+{"n": 231, "pergunta": "Onde vive a definição autoritativa de um papel de recruta que o maestro deve instanciar, se o Acervo do maestro oferece opções e não regras?", "tipo": "onde-vive"}

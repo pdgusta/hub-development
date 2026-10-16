@@ -1,0 +1,56 @@
+{
+ "chave": "web:getakka.net",
+ "nomes": [
+  "Akka.NET"
+ ],
+ "urls": [
+  "https://getakka.net",
+  "https://getakka.net/"
+ ],
+ "readme_cortado": false,
+ "readme": "[Akka.NET Home | Akka.NET Documentation]\n\nTry Akka.NET now!\n\nFollow our tutorial and build your first Akka.NET application today.\n\n OUT NOW: Akka.NET v1.5\n Get Started Now\n Read the Documentation\n\nProfessionally Maintained and Supported by Petabridge\n\nBuild powerful concurrent & distributed applications more easily.\n\nAkka.NET is a toolkit and runtime for building highly concurrent, distributed, and fault tolerant event-driven applications on .NET & Mono.\n\nThis community-driven port brings C# & F# developers the capabilities of the original Akka framework in Java/Scala.\n\nLearn about Akka for the JVM here.\n\n Simple Concurrency & Distribution\n\nAsynchronous and Distributed by design. High-level abstractions like Actors and FSM.\n\n High Performance\n\n50 million msg/sec on a single machine. Small memory footprint; ~2.5 million actors per GB of heap.\n\n Resilient by Design\n\nWrite systems that self-heal. Remote and/or local supervisor hierarchies.\n\n Elastic & Decentralized\n\nAdaptive load balancing, routing, partitioning and configuration-driven remoting.\n\n Extensible\n\nUse Akka.NET Extensions to adapt Akka to fit your needs.\n\n Open Source \n\nAkka.NET is released under the Apache 2 license\n\nActor Model\n\n The Actor Model provides a higher level of abstraction for writing concurrent and distributed systems. It alleviates the developer from having to deal with explicit locking and thread management, making it easier to write correct concurrent and parallel systems.\n\nActors were defined in the 1973 paper by Carl Hewitt but have been popularized by the Erlang language, and used for example at Ericsson with great success to build highly concurrent and reliable telecom systems.\n\nRead more\n\nDistributed by Default\n\n Everything in Akka.NET is designed to work in a distributed setting: all interactions of actors use purely message passing and everything is asynchronous.\n\nThis effort has been undertaken to ensure that all functions are available equally when running within a single process or on a cluster of hundreds of machines. The key for enabling this is to go from remote to local by way of optimization instead of trying to go from local to remote by way of generalization. See this classic paper for a detailed discussion on why the second approach is bound to fail.\n\nRead more\n\nSupervision & monitoring\n\n Actors form a tree with actors being parents to the actors they've created.\n\n As a parent, the actor is responsible for handling its children’s failures (so-called supervision), forming a chain of responsibility, all the way to the top. When an actor crashes, its parent can either restart or stop it, or escalate the failure up the hierarchy of actors. This enables a clean set of semantics for managing failures in a concurrent, distributed system and allows for writing highly fault-tolerant systems that self-heal.\n\nRead more",
+ "fonte": "site",
+ "respostas": [
+  {
+   "por": "gemma-4-31b",
+   "resposta": {
+    "serve": "stack",
+    "role": "Toolkit for building concurrent, distributed, and fault-tolerant event-driven applications",
+    "place": [
+     "library",
+     "network_service"
+    ],
+    "mechanism": [
+     "n/a"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "Apache-2.0",
+    "maturity": "stable",
+    "doubt": false,
+    "evidence": ""
+   }
+  },
+  {
+   "por": "codestral-2508",
+   "resposta": {
+    "serve": "none",
+    "role": "",
+    "place": [
+     "n/a"
+    ],
+    "mechanism": [
+     "n/a"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "Apache-2.0",
+    "maturity": "stable",
+    "doubt": true,
+    "evidence": "Akka.NET is a toolkit for concurrent/distributed apps; no mention of search, MCP, or Windows."
+   }
+  }
+ ]
+}

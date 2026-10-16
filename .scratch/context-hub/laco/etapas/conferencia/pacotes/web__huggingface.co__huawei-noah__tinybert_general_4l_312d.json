@@ -1,0 +1,56 @@
+{
+ "chave": "web:huggingface.co/huawei-noah/tinybert_general_4l_312d",
+ "nomes": [
+  "TinyBERT"
+ ],
+ "urls": [
+  "https://huggingface.co/huawei-noah/TinyBERT_General_4L_312D"
+ ],
+ "readme_cortado": false,
+ "readme": "[huawei-noah/TinyBERT_General_4L_312D · Hugging Face]\n\nYAML Metadata\n Warning:empty or missing yaml metadata in repo card \nCheck out the documentation for more information. \n\n TinyBERT: Distilling BERT for Natural Language Understanding\n\nTinyBERT is 7.5x smaller and 9.4x faster on inference than BERT-base and achieves competitive performances in the tasks of natural language understanding. It performs a novel transformer distillation at both the pre-training and task-specific learning stages. In general distillation, we use the original BERT-base without fine-tuning as the teacher and a large-scale text corpus as the learning data. By performing the Transformer distillation on the text from general domain, we obtain a general TinyBERT which provides a good initialization for the task-specific distillation. We here provide the general TinyBERT for your tasks at hand.\n\nFor more details about the techniques of TinyBERT, refer to our paper:\nTinyBERT: Distilling BERT for Natural Language Understanding\n\n Citation\n\nIf you find TinyBERT useful in your research, please cite the following paper:\n\n@article{jiao2019tinybert,\n title={Tinybert: Distilling bert for natural language understanding},\n author={Jiao, Xiaoqi and Yin, Yichun and Shang, Lifeng and Jiang, Xin and Chen, Xiao and Li, Linlin and Wang, Fang and Liu, Qun},\n journal={arXiv preprint arXiv:1909.10351},\n year={2019}\n}\n\nDownloads last month 557,449 \n\n Inference Providers NEW \nThis model isn't deployed by any Inference Provider. 🙋 1 Ask for provider support \n\n Model tree for huawei-noah/TinyBERT_General_4L_312D \n\nFinetunes \n 64 models\n\nQuantizations \n 7 models \n\n Spaces using huawei-noah/TinyBERT_General_4L_312D 15 \n\n Paper for huawei-noah/TinyBERT_General_4L_312D \n\n Paper • 1909.10351 • Published Sep 23, 2019 • 4",
+ "fonte": "site",
+ "respostas": [
+  {
+   "por": "gemini-3.5-flash-lite",
+   "resposta": {
+    "serve": "stack",
+    "role": "Provide embeddings for semantic search and indexing.",
+    "place": [
+     "library",
+     "disk"
+    ],
+    "mechanism": [
+     "vector",
+     "embeddings"
+    ],
+    "mcp": "no",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "unknown",
+    "doubt": true,
+    "evidence": "TinyBERT is 7.5x smaller and 9.4x faster on inference than BERT-base"
+   }
+  },
+  {
+   "por": "diffusiongemma-26b-a4b-it",
+   "resposta": {
+    "serve": "search",
+    "role": "provides embeddings for semantic search and natural language understanding tasks",
+    "place": [
+     "library"
+    ],
+    "mechanism": [
+     "embeddings"
+    ],
+    "mcp": "no",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "stable",
+    "doubt": true,
+    "evidence": "distillng BERT for Natural Language Understanding; provides the general TinyBERT for your tasks at hand."
+   }
+  }
+ ]
+}

@@ -1,0 +1,790 @@
+{
+  "quando": "2026-10-15T04:24:29.085Z",
+  "copia": "C:/Users/GUSTAV~1.DEL/AppData/Local/Temp/l3h",
+  "passos": {
+    "lista por grupo": {
+      "ok": true,
+      "lista": [
+        {
+          "grupo": "espera você",
+          "lacos": []
+        },
+        {
+          "grupo": "em voo\n1",
+          "lacos": [
+            "Pesquisa de horários de rega"
+          ]
+        },
+        {
+          "grupo": "terminados\n1",
+          "lacos": [
+            "Censo de sementes da vizinhança"
+          ]
+        }
+      ]
+    },
+    "fluxo com os 8 nós e uma palavra por seta": {
+      "ok": true,
+      "nos": [
+        "no-plano",
+        "no-despachante",
+        "no-geradores",
+        "no-juntador",
+        "no-parada",
+        "no-teto",
+        "no-painel",
+        "no-conferencia"
+      ],
+      "rotulos": [
+        "repete",
+        "células",
+        "fontes",
+        "respostas",
+        "taxa",
+        "limita",
+        "observa",
+        "observa",
+        "fim"
+      ],
+      "situacao": "rodando"
+    },
+    "situação rodando": {
+      "ok": true,
+      "situacao": "rodando"
+    },
+    "fonte mínima 14 px e sem rolagem horizontal (1600)": {
+      "ok": true,
+      "menorFonte": 14,
+      "onde": "P.vazio-grupo: nada espera você",
+      "rolagemHorizontal": false
+    },
+    "fluxo limpo: nada cortado, pílula sem linha alheia, linha sem texto, envelope afastado": {
+      "ok": true,
+      "cortados": [],
+      "pilulaEmLinha": [],
+      "pilulaEmPilula": [],
+      "linhaEmTexto": [],
+      "folgaEnvelopes": [
+        16
+      ],
+      "textos": [
+        "Plano",
+        "Despachante",
+        "12 fontes aptas",
+        "3 plataformas aptas",
+        "80% da cota +1",
+        "Geradores",
+        "53 pedidos",
+        "última chamada 14/10",
+        "21h11",
+        "20 trabalhadores",
+        "Juntador",
+        "onda 2",
+        "120 células +1",
+        "Parada",
+        "35,4% novos",
+        "10% de novos",
+        "Teto",
+        "1.684 tentativas",
+        "horas contadas desde",
+        "14/10 20h36",
+        "Painel",
+        "só olha · abre o painel",
+        "Conferência"
+      ]
+    },
+    "gaveta abre, prende o foco e mostra configurado × em uso": {
+      "ok": true,
+      "aberta": true,
+      "titulo": "Geradores",
+      "foco": true,
+      "blocos": [
+        "Estado real",
+        "Botão",
+        "Comentário sobre este nó",
+        "Pedidos deste nó"
+      ],
+      "cfg": "configurado\n20 trabalhadores\nlido de config.json → trabalhadores_por_gerador às 01h24",
+      "uso": "em uso\nnão confirmado\no processo pode ter subido com outro valor ou ainda não ter sido religado"
+    },
+    "mudar-controle gravado (20 → 24, revisão vista, só ids e valores)": {
+      "ok": true,
+      "arquivo": "2026-10-15-012441-alteracao-laco-pesquisa-de-regas-ff1aff55-b4b5-413b-a565-63ac35242e67.json",
+      "corpo": {
+        "tipo": "alteracao-laco",
+        "laco": "pesquisa-de-regas",
+        "execucao": "regas-2026-10-14",
+        "operacao": "mudar-controle",
+        "no": "geradores",
+        "controle": "trabalhadores_por_gerador",
+        "antes": {
+          "tipo": "inteiro",
+          "valor": 20
+        },
+        "depois": {
+          "tipo": "inteiro",
+          "valor": 24
+        },
+        "revisao": "e10c217c4b732a968b0059fcb4932dfae421e16d6fa525888fc840d407e9cdfa",
+        "texto": "mais vazão na tarde"
+      }
+    },
+    "comentario-no gravado": {
+      "ok": true,
+      "tipo": "alteracao-laco",
+      "laco": "pesquisa-de-regas",
+      "execucao": "regas-2026-10-14",
+      "operacao": "comentario-no",
+      "revisao": "e10c217c4b732a968b0059fcb4932dfae421e16d6fa525888fc840d407e9cdfa",
+      "texto": "trocar o harness do recruta da tarde?",
+      "no": "geradores"
+    },
+    "pedidos do nó com estado em palavras": {
+      "ok": true,
+      "pedidosNo": [
+        "enviado",
+        "enviado",
+        "lido"
+      ]
+    },
+    "Esc fecha a gaveta e devolve o foco ao nó": {
+      "ok": true,
+      "escondida": true,
+      "foco": "no-geradores",
+      "rota": "#/lacos/pesquisa-de-regas"
+    },
+    "redesenho preserva texto, foco e cursor": {
+      "ok": true,
+      "marca": "mesmo-no",
+      "valor": "escrevendo devagar",
+      "foco": true,
+      "cursor": 4
+    },
+    "comentario-laco gravado": {
+      "ok": true,
+      "tipo": "alteracao-laco",
+      "laco": "pesquisa-de-regas",
+      "execucao": "regas-2026-10-14",
+      "operacao": "comentario-laco",
+      "revisao": "e10c217c4b732a968b0059fcb4932dfae421e16d6fa525888fc840d407e9cdfa",
+      "texto": "escr (ainda)evendo devagar"
+    },
+    "pedir-parada gravado (depois da onda 3)": {
+      "ok": true,
+      "corpo": {
+        "tipo": "alteracao-laco",
+        "laco": "pesquisa-de-regas",
+        "execucao": "regas-2026-10-14",
+        "operacao": "pedir-parada",
+        "revisao": "e10c217c4b732a968b0059fcb4932dfae421e16d6fa525888fc840d407e9cdfa",
+        "capacidade": "parar-apos-onda",
+        "onda": 3
+      },
+      "aviso": "até valer, chamadas em voo ainda gastam cota"
+    },
+    "400 em palavras, nada gravado": {
+      "ok": true,
+      "mensagem": "A torre recusou: o laço não declara (mais) essa forma de parar ou pausar. Nada foi gravado.",
+      "http": 400
+    },
+    "409 null: \"você viu / agora está / você pediu\" + a regra ou a configuração mudou": {
+      "ok": true,
+      "http": 409,
+      "definicao_mudou": null,
+      "tri": [
+        "120 células",
+        "150 células",
+        "200 células"
+      ]
+    },
+    "\"Propor sobre o valor atual\" grava 150 → 200": {
+      "ok": true,
+      "tipo": "alteracao-laco",
+      "laco": "pesquisa-de-regas",
+      "execucao": "regas-2026-10-14",
+      "operacao": "mudar-controle",
+      "no": "juntador",
+      "controle": "max_celulas_novas_por_onda",
+      "antes": {
+        "tipo": "inteiro",
+        "valor": 150
+      },
+      "depois": {
+        "tipo": "inteiro",
+        "valor": 200
+      },
+      "revisao": "63674190869f6410829f8703b83da1345478e376e6d5af76709cb6307c0c9dc6"
+    },
+    "409 true: \"a regra deste botão mudou\"": {
+      "ok": true,
+      "http": 409,
+      "corpo": {
+        "erro": "laco-mudou",
+        "mensagem": "o laço mudou depois que a página o leu (revisão diferente)",
+        "campo": "revisao",
+        "conflito": {
+          "viu": {
+            "tipo": "numero",
+            "valor": 0.1
+          },
+          "agora": {
+            "tipo": "numero",
+            "valor": 0.1
+          },
+          "pediu": {
+            "tipo": "numero",
+            "valor": 0.4
+          },
+          "revisao": "9d1eb7520bbf452037667fc35b94d0a1674c13da1ba1b5ffe626a2c6fe56a97c",
+          "definicao_mudou": true
+        }
+      },
+      "texto": "você viu\n10% de novos\nagora está\n10% de novos\nvocê pediu\n40% de novos\n\nNada foi gravado. A regra deste botão mudou (tipo, faixa ou opções): o pedido não cabe mais nela. O rascunho ficou guardado.\n\nPropor sobre o valor atual"
+    },
+    "rede caiu → \"Tentar de novo\" com o mesmo envio; um arquivo só": {
+      "ok": true,
+      "rotulo": "Tentar de novo",
+      "enviosVistos": [
+        "3a967c18-ed54-4d92-b517-4f8f0cb74304",
+        "3a967c18-ed54-4d92-b517-4f8f0cb74304"
+      ],
+      "arquivos": [
+        "2026-10-15-012538-alteracao-laco-pesquisa-de-regas-3a967c18-ed54-4d92-b517-4f8f0cb74304.json"
+      ]
+    },
+    "conflito atual: grupo \"espera você\", envelope cheio, \"você viu 20 · agora está 22 · você pediu 24\", Propor de novo": {
+      "ok": true,
+      "esp": {
+        "grupo": "espera você\n1\nPesquisa de horários de rega\nticket 05\nrodando\n1.684 tentativas\nsinal agora há pouco\n5 pedidos abertos",
+        "faixa": "Espera você: um pedido está em conflito (veja em Pedidos, abaixo)",
+        "envelope": true,
+        "contador": "1 aguardando você"
+      },
+      "cf": {
+        "o": "mudar “trabalhadores por gerador” (Geradores)",
+        "estado": "conflito",
+        "tri": [
+          "20 trabalhadores",
+          "22 trabalhadores",
+          "24 trabalhadores"
+        ],
+        "propor": true,
+        "erros": []
+      }
+    },
+    "recibo inválido em tijolo, nunca \"aplicado\"": {
+      "ok": true,
+      "o": "parar depois da onda 3",
+      "estado": "aplicado com recibo inválido",
+      "tri": [],
+      "propor": false,
+      "erros": [
+        "aplicado_em é anterior ao envio",
+        "falta efeito",
+        "falta recibo_execucao",
+        "falta recibo_revisao",
+        "falta recibo_antes",
+        "falta recibo_depois"
+      ]
+    },
+    "contador do topo segue o contrato (rodadas + cartas)": {
+      "ok": true,
+      "contador": "1 aguardando você"
+    },
+    "fluxo limpo também com envelopes e conflito": {
+      "ok": true,
+      "cortados": [],
+      "pilulaEmLinha": [],
+      "pilulaEmPilula": [],
+      "linhaEmTexto": [],
+      "folgaEnvelopes": [
+        18,
+        18,
+        18,
+        16
+      ],
+      "textos": [
+        "Plano",
+        "Despachante",
+        "12 fontes aptas",
+        "3 plataformas aptas",
+        "80% da cota +1",
+        "Geradores",
+        "53 pedidos",
+        "última chamada 14/10",
+        "21h11",
+        "20 trabalhadores",
+        "!",
+        "Juntador",
+        "onda 2",
+        "150 células +1",
+        "Parada",
+        "35,4% novos",
+        "10% de novos",
+        "Teto",
+        "1.684 tentativas",
+        "horas contadas desde",
+        "14/10 20h36",
+        "Painel",
+        "só olha · abre o painel",
+        "Conferência"
+      ]
+    },
+    "Propor de novo abre o nó com o valor pedido e liga ao pedido em conflito": {
+      "ok": true,
+      "rota": "#/lacos/pesquisa-de-regas?no=geradores",
+      "valor": "24",
+      "substitui": "este pedido substitui o seu pedido anterior, o de 01h24 (mudar “trabalhadores por gerador” (Geradores) para 24 trabalhadores), ainda conflito"
+    },
+    "o envio novo substitui o pedido em conflito": {
+      "ok": true,
+      "tipo": "alteracao-laco",
+      "laco": "pesquisa-de-regas",
+      "execucao": "regas-2026-10-14",
+      "operacao": "mudar-controle",
+      "no": "geradores",
+      "controle": "trabalhadores_por_gerador",
+      "antes": {
+        "tipo": "inteiro",
+        "valor": 20
+      },
+      "depois": {
+        "tipo": "inteiro",
+        "valor": 24
+      },
+      "revisao": "63674190869f6410829f8703b83da1345478e376e6d5af76709cb6307c0c9dc6",
+      "texto": "mais vazão na tarde",
+      "substitui": "2026-10-15-012441-alteracao-laco-pesquisa-de-regas-ff1aff55-b4b5-413b-a565-63ac35242e67"
+    },
+    "terminado: sem botões de pedido nem proposta; comentário continua": {
+      "ok": true,
+      "term": {
+        "botoes": [],
+        "soLeitura": "só leitura · o laço terminou; comentário continua",
+        "comentario": true
+      },
+      "termGav": {
+        "propostas": 0,
+        "cfg": "configurado\n5% de novos\nlido de config.json → gate_novos às 01h24",
+        "comentario": true
+      }
+    },
+    "fluxo limpo no laço terminado": {
+      "ok": true,
+      "cortados": [],
+      "pilulaEmLinha": [],
+      "pilulaEmPilula": [],
+      "linhaEmTexto": [],
+      "folgaEnvelopes": [],
+      "textos": [
+        "Plano",
+        "Geradores",
+        "1 botão",
+        "Juntador",
+        "104 sementes",
+        "Parada",
+        "13,5% novos",
+        "taxa 13,5%",
+        "5% de novos",
+        "Teto",
+        "738 tentativas",
+        "2.000 tentativas",
+        "Maré de novos",
+        "só olha · abre o painel",
+        "Síntese"
+      ]
+    },
+    "malformado: selo na lista, erro em palavras, sem botões nem comentário; o outro laço intacto": {
+      "ok": true,
+      "selo": "malformado",
+      "aviso": "A descrição deste laço está fora do contrato. o laço censo-de-sementes está malformado: ligacoes[0].de precisa ser o id de um nó (texto), não list. Sem fluxo, sem botões e sem comentário: o maestro precisa corrigir o laco.json.",
+      "botoes": 0,
+      "outro": true
+    },
+    "fonte mínima 14 px e sem rolagem horizontal da página (1280)": {
+      "ok": true,
+      "menorFonte": 14,
+      "onde": "P.vazio-grupo: nada espera você",
+      "rolagemHorizontal": false
+    },
+    "1280: o fluxo que não cabe mostra que continua (borda esmaecida + \"rola →\")": {
+      "ok": true,
+      "transborda": true,
+      "selo": "block"
+    },
+    "gaveta em 1280: fonte mínima 14 px": {
+      "ok": true,
+      "menorFonte": 14,
+      "onde": "P.vazio-grupo: nada espera você",
+      "rolagemHorizontal": false
+    },
+    "zero erros de JS": {
+      "ok": true,
+      "erros": []
+    }
+  },
+  "erros_js": [],
+  "capturas": [
+    "lacos-1600x900.png",
+    "lacos-1600-inteira.png",
+    "gaveta-geradores-1600x900.png",
+    "gaveta-proposta-1600x900.png",
+    "gaveta-pedidos-1600x900.png",
+    "pedir-parada-1600x900.png",
+    "recusa-400-1600x900.png",
+    "conflito-409-null-1600x900.png",
+    "conflito-409-true-1600x900.png",
+    "rede-caiu-1600x900.png",
+    "espera-voce-1600x900.png",
+    "espera-voce-1600-inteira.png",
+    "terminado-gaveta-1600x900.png",
+    "terminado-1600x900.png",
+    "malformado-1600x900.png",
+    "lacos-1280x800.png",
+    "lacos-1280-inteira.png",
+    "gaveta-teto-1280x800.png"
+  ],
+  "tudo_ok": true,
+  "portal_real": {
+    "quando": "2026-10-15T04:26:32.035Z",
+    "capturas": [
+      "real-embeddings-1600x900.png",
+      "real-embeddings-1600-inteira.png",
+      "real-ampla-1600x900.png",
+      "real-ampla-1600-inteira.png",
+      "real-ampla-gaveta-juntador-1600x900.png",
+      "real-embeddings-1280x800.png",
+      "real-embeddings-1280-inteira.png",
+      "real-ampla-1280x800.png",
+      "real-ampla-1280-inteira.png",
+      "real-ampla-gaveta-juntador-1280x800.png"
+    ],
+    "medidas": {
+      "real-embeddings-1600-limpeza": {
+        "cortados": [],
+        "pilulaEmLinha": [],
+        "pilulaEmPilula": [],
+        "linhaEmTexto": [],
+        "folgaEnvelopes": [],
+        "textos": [
+          "Plano",
+          "Despachante",
+          "95 modelos aptos",
+          "19 pools",
+          "90% da cota +1",
+          "Geradores",
+          "2.916 pedidos",
+          "20 trabalhadores",
+          "Juntador",
+          "onda 6",
+          "120 células",
+          "Parada",
+          "14,1% novos",
+          "15% de novos",
+          "Teto",
+          "5.000 tentativas",
+          "horas contadas desde",
+          "14/10 20h36",
+          "Painel",
+          "só olha",
+          "Conferência"
+        ]
+      },
+      "real-embeddings-1600": {
+        "menorFonte": 14,
+        "rolagemHorizontal": false,
+        "lista": [
+          "Modelos de embeddings da busca",
+          "Pesquisa ampla: lugares e mecanismos de busca"
+        ],
+        "botoesDePedido": 0
+      },
+      "real-ampla-1600-limpeza": {
+        "cortados": [],
+        "pilulaEmLinha": [],
+        "pilulaEmPilula": [],
+        "linhaEmTexto": [],
+        "folgaEnvelopes": [],
+        "textos": [
+          "Plano",
+          "Despachante",
+          "267 modelos usados",
+          "1 botão",
+          "Geradores",
+          "20 trabalhadores",
+          "Juntador",
+          "5.526 itens",
+          "Ambíguos",
+          "Parada",
+          "21,7% novos",
+          "5% de novos",
+          "Teto",
+          "7.382 tentativas",
+          "20.000 tentativas +1",
+          "Maré de novos",
+          "só olha · abre o painel",
+          "Estado no chat",
+          "só olha",
+          "Conferência",
+          "Auditoria",
+          "Síntese"
+        ]
+      },
+      "real-ampla-1600": {
+        "menorFonte": 14,
+        "rolagemHorizontal": false,
+        "lista": [
+          "Modelos de embeddings da busca",
+          "Pesquisa ampla: lugares e mecanismos de busca"
+        ],
+        "botoesDePedido": 0
+      },
+      "real-ampla-gaveta-juntador-1600": {
+        "menorFonte": 14,
+        "rolagemHorizontal": false,
+        "lista": [
+          "Modelos de embeddings da busca",
+          "Pesquisa ampla: lugares e mecanismos de busca"
+        ],
+        "botoesDePedido": 0
+      },
+      "real-embeddings-1280-limpeza": {
+        "cortados": [],
+        "pilulaEmLinha": [],
+        "pilulaEmPilula": [],
+        "linhaEmTexto": [],
+        "folgaEnvelopes": [],
+        "textos": [
+          "Plano",
+          "Despachante",
+          "95 modelos aptos",
+          "19 pools",
+          "90% da cota +1",
+          "Geradores",
+          "2.916 pedidos",
+          "20 trabalhadores",
+          "Juntador",
+          "onda 6",
+          "120 células",
+          "Parada",
+          "14,1% novos",
+          "15% de novos",
+          "Teto",
+          "5.000 tentativas",
+          "horas contadas desde",
+          "14/10 20h36",
+          "Painel",
+          "só olha",
+          "Conferência"
+        ]
+      },
+      "real-embeddings-1280": {
+        "menorFonte": 14,
+        "rolagemHorizontal": false,
+        "lista": [
+          "Modelos de embeddings da busca",
+          "Pesquisa ampla: lugares e mecanismos de busca"
+        ],
+        "botoesDePedido": 0
+      },
+      "real-ampla-1280-limpeza": {
+        "cortados": [],
+        "pilulaEmLinha": [],
+        "pilulaEmPilula": [],
+        "linhaEmTexto": [],
+        "folgaEnvelopes": [],
+        "textos": [
+          "Plano",
+          "Despachante",
+          "267 modelos usados",
+          "1 botão",
+          "Geradores",
+          "20 trabalhadores",
+          "Juntador",
+          "5.526 itens",
+          "Ambíguos",
+          "Parada",
+          "21,7% novos",
+          "5% de novos",
+          "Teto",
+          "7.382 tentativas",
+          "20.000 tentativas +1",
+          "Maré de novos",
+          "só olha · abre o painel",
+          "Estado no chat",
+          "só olha",
+          "Conferência",
+          "Auditoria",
+          "Síntese"
+        ]
+      },
+      "real-ampla-1280": {
+        "menorFonte": 14,
+        "rolagemHorizontal": false,
+        "lista": [
+          "Modelos de embeddings da busca",
+          "Pesquisa ampla: lugares e mecanismos de busca"
+        ],
+        "botoesDePedido": 0
+      },
+      "real-ampla-gaveta-juntador-1280": {
+        "menorFonte": 14,
+        "rolagemHorizontal": false,
+        "lista": [
+          "Modelos de embeddings da busca",
+          "Pesquisa ampla: lugares e mecanismos de busca"
+        ],
+        "botoesDePedido": 0
+      }
+    },
+    "erros_js": [],
+    "posts_bloqueados": 0
+  },
+  "substituicao": {
+    "quando": "2026-10-15T04:33:38.786Z",
+    "passos": {
+      "A1: 120→200 e 120→250; o segundo substitui o primeiro, dito em palavras": {
+        "ok": true,
+        "p1": "2026-10-15-013346-alteracao-laco-pesquisa-de-regas-91e5fb2a-ee78-43c2-855c-2f9d400e4b19",
+        "p2": "2026-10-15-013352-alteracao-laco-pesquisa-de-regas-52a82177-693b-481f-ab60-2a4a014cf451",
+        "substitui": "2026-10-15-013346-alteracao-laco-pesquisa-de-regas-91e5fb2a-ee78-43c2-855c-2f9d400e4b19",
+        "nota": "este pedido substitui o seu pedido anterior, o de 01h33 (mudar “células novas por onda, no máximo” (Juntador) para 200 células), ainda enviado"
+      },
+      "A2: recusa antes do envio → a tela diz em palavras e oferece \"Enviar como pedido novo\", sem enviar nada": {
+        "ok": true,
+        "blocoA": "Nada foi gravado. O pedido que este substituiria, o de 01h33 (mudar “células novas por onda, no máximo” (Juntador) para 250 células), já teve desfecho: recusado (motivo: fora da janela de teste). Seu valor e seu texto continuam aqui.\n\nEnviar como pedido novo",
+        "posts": 0
+      },
+      "A3: \"Pedir ao maestro\" com o alvo vencido não envia (mostra a escolha)": {
+        "ok": true,
+        "posts": 0
+      },
+      "A4: depois de recarregar, a escolha continua, valor 300 e texto preservados, sem referência guardada": {
+        "ok": true,
+        "recarga": {
+          "valor": "300",
+          "texto": "terceira tentativa",
+          "bloco": "Nada foi gravado. O pedido que este substituiria, o de 01h33 (mudar “células novas por onda, no máximo” (Juntador) para 250 células), já teve desfecho: recusado (motivo: fora da janela de teste). Seu valor e seu texto continuam aqui.\n\nEnviar como pedido novo"
+        },
+        "rascunho": {
+          "envio": "43e9d36d-b99e-48b4-976b-078be0b3f368",
+          "valor": 300,
+          "texto": "terceira tentativa",
+          "antes": {
+            "tipo": "inteiro",
+            "valor": 120
+          },
+          "revisao": "e10c217c4b732a968b0059fcb4932dfae421e16d6fa525888fc840d407e9cdfa",
+          "alvoVisto": "2026-10-15-013352-alteracao-laco-pesquisa-de-regas-52a82177-693b-481f-ab60-2a4a014cf451",
+          "recuperar": {
+            "alvo": "2026-10-15-013352-alteracao-laco-pesquisa-de-regas-52a82177-693b-481f-ab60-2a4a014cf451"
+          }
+        }
+      },
+      "A5: \"Enviar como pedido novo\" → 200 com UUID novo, sem substituir o recusado, valor e texto preservados": {
+        "ok": true,
+        "p3": "2026-10-15-013406-alteracao-laco-pesquisa-de-regas-e8b4fbf2-cab5-42ca-ad22-be3d01ae65b4",
+        "envio_novo": "e8b4fbf2-cab5-42ca-ad22-be3d01ae65b4",
+        "envio_do_rascunho": "43e9d36d-b99e-48b4-976b-078be0b3f368",
+        "corpo": {
+          "tipo": "alteracao-laco",
+          "laco": "pesquisa-de-regas",
+          "execucao": "regas-2026-10-14",
+          "operacao": "mudar-controle",
+          "no": "juntador",
+          "controle": "max_celulas_novas_por_onda",
+          "antes": {
+            "tipo": "inteiro",
+            "valor": 120
+          },
+          "depois": {
+            "tipo": "inteiro",
+            "valor": 300
+          },
+          "revisao": "e10c217c4b732a968b0059fcb4932dfae421e16d6fa525888fc840d407e9cdfa",
+          "texto": "terceira tentativa"
+        }
+      },
+      "B1: 400 `substitui-invalido` vira explicação em palavras e a escolha (relidos os pedidos)": {
+        "ok": true,
+        "http": 400,
+        "erro": "substitui-invalido",
+        "blocoB": "Nada foi gravado. O pedido que este substituiria, o de 01h34 (mudar “células novas por onda, no máximo” (Juntador) para 300 células), já teve desfecho: recusado (motivo: já basta uma onda). Seu valor e seu texto continuam aqui.\n\nEnviar como pedido novo"
+      },
+      "B2: o reenvio sai com UUID novo, sem referência, valor 350": {
+        "ok": true,
+        "p4": "2026-10-15-013416-alteracao-laco-pesquisa-de-regas-405b19a4-cc6b-4205-afbd-150afd9ab65d",
+        "envio_400": "b0862cfc-6c4d-4978-b4df-0233021efdf0",
+        "envio_novo": "405b19a4-cc6b-4205-afbd-150afd9ab65d"
+      },
+      "C1: parada — recusa do pedido anterior antes do envio vira escolha em palavras": {
+        "ok": true,
+        "notaParada": "este pedido substitui o seu pedido anterior, o de 01h34 (parar de despachar), ainda enviado",
+        "blocoC": "Nada foi gravado. O pedido que este substituiria, o de 01h34 (parar de despachar), já teve desfecho: recusado (motivo: a onda 2 ainda não fechou). Seu valor e seu texto continuam aqui.\n\nEnviar como pedido novo"
+      },
+      "C2: parada sai como pedido novo, sem referência, depois da onda 4": {
+        "ok": true,
+        "q2": {
+          "tipo": "alteracao-laco",
+          "laco": "pesquisa-de-regas",
+          "execucao": "regas-2026-10-14",
+          "operacao": "pedir-parada",
+          "revisao": "e10c217c4b732a968b0059fcb4932dfae421e16d6fa525888fc840d407e9cdfa",
+          "capacidade": "parar-apos-onda",
+          "onda": 4
+        }
+      },
+      "D1: pausa substitui a parada (dito); retomada com a pausa recusada vira escolha em palavras": {
+        "ok": true,
+        "notaPausa": "este pedido substitui o seu pedido anterior, o de 01h34 (parar depois da onda 4), ainda enviado",
+        "blocoD": "Nada foi gravado. O pedido que este substituiria, o de 01h34 (pausar), já teve desfecho: recusado (motivo: o laço não estava pausável agora). Seu valor e seu texto continuam aqui.\n\nEnviar como pedido novo"
+      },
+      "D2: retomada sai como pedido novo, sem referência, texto preservado": {
+        "ok": true,
+        "r2": {
+          "tipo": "alteracao-laco",
+          "laco": "pesquisa-de-regas",
+          "execucao": "regas-2026-10-14",
+          "operacao": "pedir-retomada",
+          "revisao": "92d62fdddee123b9942639c2628cecec2c3fd05bd508210a74609f728fca8851",
+          "texto": "retomar só depois do almoço"
+        }
+      },
+      "zero erros de JS": {
+        "ok": true,
+        "erros": []
+      }
+    },
+    "erros_js": [],
+    "capturas": [
+      "subst-A-recusado-antes-de-enviar-1600x900.png",
+      "subst-A-depois-da-recarga-1600x900.png",
+      "subst-B-400-recuperacao-1600x900.png",
+      "subst-C-parada-1600x900.png",
+      "subst-D-retomada-1600x900.png"
+    ],
+    "rascunho_apos_300": {
+      "envio": "43e9d36d-b99e-48b4-976b-078be0b3f368",
+      "valor": 300,
+      "texto": "",
+      "antes": {
+        "tipo": "inteiro",
+        "valor": 120
+      },
+      "revisao": "e10c217c4b732a968b0059fcb4932dfae421e16d6fa525888fc840d407e9cdfa",
+      "alvoVisto": "2026-10-15-013352-alteracao-laco-pesquisa-de-regas-52a82177-693b-481f-ab60-2a4a014cf451"
+    },
+    "rascunho_apos_texto": {
+      "envio": "43e9d36d-b99e-48b4-976b-078be0b3f368",
+      "valor": 300,
+      "texto": "terceira tentativa",
+      "antes": {
+        "tipo": "inteiro",
+        "valor": 120
+      },
+      "revisao": "e10c217c4b732a968b0059fcb4932dfae421e16d6fa525888fc840d407e9cdfa",
+      "alvoVisto": "2026-10-15-013352-alteracao-laco-pesquisa-de-regas-52a82177-693b-481f-ab60-2a4a014cf451"
+    },
+    "tudo_ok": true
+  }
+}

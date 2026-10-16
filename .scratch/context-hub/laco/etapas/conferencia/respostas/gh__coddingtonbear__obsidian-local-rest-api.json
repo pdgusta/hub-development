@@ -1,0 +1,30 @@
+{
+ "chave": "gh:coddingtonbear/obsidian-local-rest-api",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T20:23:03Z",
+ "resultado": "corrige",
+ "conferencia": {
+  "resultado": "corrige",
+  "final": {
+   "serve": "search",
+   "role": "Obsidian plugin exposing the vault to agents via REST API and built-in MCP server, with full-text and JsonLogic search and section patching",
+   "place": [
+    "network_service"
+   ],
+   "mechanism": [
+    "full_text"
+   ],
+   "mcp": "yes",
+   "windows": "yes",
+   "portuguese": "unknown",
+   "license": "unknown",
+   "maturity": "unknown",
+   "doubt": false,
+   "evidence": "Search your vault: simple full-text search or structured JsonLogic queries; MCP server at https://127.0.0.1:27124/mcp/; Windows %APPDATA% path"
+  },
+  "o_que_mudou": [
+   "place: disk -> network_service, runs HTTPS/MCP server inside Obsidian"
+  ],
+  "nota": "Plugin do Obsidian com MCP embutido para ler, editar e buscar notas; liga agentes ao vault, mas busca é só texto simples e JsonLogic."
+ }
+}

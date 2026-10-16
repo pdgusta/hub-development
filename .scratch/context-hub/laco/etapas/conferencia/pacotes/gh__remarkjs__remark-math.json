@@ -1,0 +1,54 @@
+{
+ "chave": "gh:remarkjs/remark-math",
+ "nomes": [
+  "remark-math"
+ ],
+ "urls": [
+  "https://github.com/remarkjs/remark-math"
+ ],
+ "readme_cortado": false,
+ "readme": "# remark-math\n\n[![Build][build-badge]][build]\n[![Coverage][coverage-badge]][coverage]\n[![Downloads][downloads-badge]][downloads]\n[![Size][size-badge]][size]\n[![Sponsors][sponsors-badge]][collective]\n[![Backers][backers-badge]][collective]\n[![Chat][chat-badge]][chat]\n\nThis project is a monorepo that contains several packages for dealing with\nmath in markdown and HTML.\n\n## Contents\n\n* [What is this?](#what-is-this)\n* [When should I use this?](#when-should-i-use-this)\n* [Examples](#examples)\n  * [Example: KaTeX](#example-katex)\n  * [Example: MathJax](#example-mathjax)\n* [Security](#security)\n* [Contribute](#contribute)\n* [License](#license)\n\n## What is this?\n\nThis repository contains [unified][] ([rehype][] and [remark][]) plugins to add\nsupport for math.\nYou can use them to add support for parsing and serializing a syntax extension\nand to render math with KaTeX or MathJax.\n\n* [`remark-math`][remark-math]\n  — remark plugin to support a math syntax in markdown\n* [`rehype-katex`][rehype-katex]\n  — rehype plugin to render math in HTML with [KaTeX][]\n* [`rehype-mathjax`][rehype-mathjax]\n  — rehype plugin to render math in HTML with [MathJax][]\n\nWhen dealing with markdown, you optionally use `remark-math`, or alternatively\nuse fenced code (` ```math `).\nThen, you either use `rehype-katex` or `rehype-mathjax` to render math in HTML.\n\nThere are also other plugins that work with `remark-math`.\nSuch as [`rehype-mathml`](https://github.com/Daiji256/rehype-mathml)\nwhich uses [`ronkok/Temml`](https://github.com/ronkok/Temml).\n\n## When should I use this?\n\nThis project is useful when you want to support LaTeX math.\nThis mechanism works well when you want authors, that have some LaTeX\nexperience, to be able to embed rich diagrams of math to scientific\ndocumentation.\nThe extra syntax extension supported by `remark-math` for math in markdown does\nnot work everywhere so it makes markdown less portable.\nThis project is also useful as it renders math with KaTeX or MathJax at compile\ntime, which means that there is no client side JavaScript needed.\n\n## Examples\n\n### Example: KaTeX\n\nSay our document `example.md` contains:\n\n```markdown\nLift($$L$$) can be determined by Lift Coefficient ($$C_L$$) like the following\nequation.\n\n$$\nL = \\frac{1}{2} \\rho v^2 S C_L\n$$\n```\n\n…and our module `example.js` contains:\n\n```js\nimport rehypeKatex from 'rehype-katex'\nimport rehypeStringify from 'rehype-stringify'\nimport remarkMath from 'remark-math'\nimport remarkParse from 'remark-parse'\nimport remarkRehype from 'remark-rehype'\nimport {read} from 'to-vfile'\nimport {unified} from 'unified'\n\nconst file = await unified()\n  .use(remarkParse)\n  .use(remarkMath)\n  .use(remarkRehype)\n  .use(rehypeKatex)\n  .use(rehypeStringify)\n  .process(await read('example.md'))\n\nconsole.log(String(file))\n```\n\n…then running `node example.js` yields:\n\n```html\n<p>Lift(<code class=\"language-math math-inline\"><span class=\"katex\">…</span></code>) like the following\nequation.</p>\n<pre><code class=\"language-math math-display\"><span class=\"katex-display\"><span class=\"katex\">…</span></span></code></pre>\n```\n\n> 👉 **Note**: KaTeX requires CSS to render correctly.\n> Use `katex.css` somewhere on the page where the math is shown to style it\n> properly:\n>\n> ```html\n> <!-- Get the latest one from: https://katex.org/docs/browser -->\n> <link href=\"https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css\" rel=\"stylesheet\">\n> ```\n\n### Example: MathJax\n\nSupporting either MathJax or KaTeX is very similar.\nTake the above KaTeX example and change:\n\n```diff\n@@ -1,4 +1,4 @@\n-import rehypeKatex from 'rehype-katex'\n+import rehypeMathjax from 'rehype-mathjax'\n import rehypeStringify from 'rehype-stringify'\n import remarkMath from 'remark-math'\n import remarkParse from 'remark-parse'\n@@ -10,7 +10,7 @@ const file = await unified()\n   .use(remarkParse)\n   .use(remarkMath)\n   .use(remarkRehype)\n-  .use(rehypeKatex)\n+  .use(rehypeMathjax)\n   .use(rehypeStringify)\n   .process(await read('example.md'))\n```\n\n…then running `node example.js` yields:\n\n```html\n<p>Lift(<mjx-container class=\"MathJax\" jax=\"SVG\"><!--…--></mjx-container>) can be determined by Lift Coefficient (<mjx-container class=\"MathJax\" jax=\"SVG\"><!--…--></mjx-container>) like the following\nequation.</p>\n<mjx-container class=\"MathJax\" jax=\"SVG\" display=\"true\"><!--…--></mjx-container><style>\nmjx-container[jax=\"SVG\"] {\n  direction: ltr;\n}\n/* … */\n</style>\n```\n\n## Security\n\nAssuming you trust KaTeX/MathJax, using `rehype-katex`/`rehype-mathjax` is\nsafe.\nIf a vulnerability is introduced in them, it opens you up to a\n[cross-site scripting (XSS)][wiki-xss] attack.\nSee their readmes for more info.\n\n## Contribute\n\nSee [`contributing.md`][contributing] in [`remarkjs/.github`][health] for ways\nto get started.\nSee [`support.md`][support] for ways to get help.\n\nThis project has a [code of conduct][coc].\nBy interacting with this repository, organization, or community you agree to\nabide by its terms.\n\n## License\n\n[MIT][license] © [Junyoung Choi][author] and Taniguchi Masaya\n\n<!-- Definitions -->\n\n[author]: https://rokt33r.github.io\n\n[backers-badge]: https://opencollective.com/unified/backers/badge.svg\n\n[build]: https://github.com/remarkjs/remark-math/actions\n\n[build-badge]: https://github.com/remarkjs/remark-math/workflows/main/badge.svg\n\n[chat]: https://github.com/remarkjs/remark/discussions\n\n[chat-badge]: https://img.shields.io/badge/chat-discussions-success.svg\n\n[coc]: https://github.com/remarkjs/.github/blob/HEAD/code-of-conduct.md\n\n[collective]: https://opencollective.com/unified\n\n[contributing]: https://github.com/remarkjs/.github/blob/HEAD/contributing.md\n\n[coverage]: https://codecov.io/github/remarkjs/remark-math\n\n[coverage-badge]: https://img.shields.io/codecov/c/github/remarkjs/remark-math.svg\n\n[downloads]: https://www.npmjs.com/package/remark-math\n\n[downloads-badge]: https://img.shields.io/npm/dm/remark-math.svg\n\n[health]: https://github.com/remarkjs/.github\n\n[katex]: https://github.com/Khan/KaTeX\n\n[license]: license\n\n[mathjax]: https://mathjax.org/\n\n[rehype]: https://github.com/rehypejs/rehype\n\n[rehype-katex]: ./packages/rehype-katex/\n\n[rehype-mathjax]: ./packages/rehype-mathjax/\n\n[remark]: https://github.com/remarkjs/remark\n\n[remark-math]: ./packages/remark-math/\n\n[size]: https://bundlejs.com/?q=remark-math\n\n[size-badge]: https://img.shields.io/bundlejs/size/remark-math\n\n[sponsors-badge]: https://opencollective.com/unified/sponsors/badge.svg\n\n[support]: https://github.com/remarkjs/.github/blob/HEAD/support.md\n\n[unified]: https://github.com/unifiedjs/unified\n\n[wiki-xss]: https://en.wikipedia.org/wiki/Cross-site_scripting\n",
+ "fonte": "readme",
+ "respostas": [
+  {
+   "por": "diffusiongemma-26b-a4b-it",
+   "resposta": {
+    "serve": "stack",
+    "role": "remark and rehype plugins to parse and render math syntax in markdown using KaTeX or MathJax.",
+    "place": [
+     "library"
+    ],
+    "mechanism": [
+     "full_text"
+    ],
+    "mcp": "no",
+    "windows": "yes",
+    "portuguese": "no",
+    "license": "MIT",
+    "maturity": "stable",
+    "doubt": false,
+    "evidence": "This project is a monorepo that contains several packages for dealing with math in markdown and HTML... renders math with KaTeX or MathJax at compile time, which means there is no client side JavaScript needed."
+   }
+  },
+  {
+   "por": "nemotron-3-super-120b",
+   "resposta": {
+    "serve": "none",
+    "role": "",
+    "place": [
+     "n/a"
+    ],
+    "mechanism": [
+     "n/a"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "MIT",
+    "maturity": "stable",
+    "doubt": false,
+    "evidence": "This project is a monorepo that contains several packages for dealing with math in markdown and HTML."
+   }
+  }
+ ]
+}

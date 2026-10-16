@@ -1,0 +1,31 @@
+{
+ "chave": "gh:luminosoinsight/python-ftfy",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T21:22:46Z",
+ "resultado": "corrige",
+ "conferencia": {
+  "resultado": "corrige",
+  "final": {
+   "serve": "stack",
+   "role": "Corrigir mojibake e problemas de codificacao em texto das notas antes de indexar ou sincronizar",
+   "place": [
+    "library"
+   ],
+   "mechanism": [
+    "n/a"
+   ],
+   "mcp": "no",
+   "windows": "unknown",
+   "portuguese": "unknown",
+   "license": "Apache-2.0",
+   "maturity": "unknown",
+   "doubt": false,
+   "evidence": "ftfy can fix mojibake (encoding mix-ups), by detecting patterns of characters that were clearly meant to be UTF-8 but were decoded as something else. Apache license."
+  },
+  "o_que_mudou": [
+   "portuguese: no -> unknown, README so mostra exemplos genericos e franceses",
+   "mcp: unknown -> no, e biblioteca Python sem servidor MCP"
+  ],
+  "nota": "Biblioteca Python que repara mojibake; util como etapa de limpeza de texto antes da indexacao, nao e camada de busca."
+ }
+}

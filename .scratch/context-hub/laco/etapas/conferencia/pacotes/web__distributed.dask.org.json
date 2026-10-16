@@ -1,0 +1,54 @@
+{
+ "chave": "web:distributed.dask.org",
+ "nomes": [
+  "Dask-Distributed"
+ ],
+ "urls": [
+  "https://distributed.dask.org/"
+ ],
+ "readme_cortado": false,
+ "readme": "[Dask.distributed — Dask.distributed 2026.8.0 documentation]\n\nSkip to main content\n\n Back to top\n\nDask.distributed 2026.8.0 documentation\n\n Search\n Ctrl+K\n\n.rst\n\n.pdf\n\nSystem Settings\n\nLight\n\nDark\n\nDask.distributed\n\n Contents \n\nDask.distributed#\n\nDask.distributed is a lightweight library for distributed computing in Python.\nIt extends both the concurrent.futures and dask APIs to moderate sized\nclusters.\n\nSee the quickstart to get started.\n\nMotivation#\n\nDistributed serves to complement the existing PyData analysis stack.\nIn particular it meets the following needs:\n\nLow latency: Each task suffers about 1ms of overhead. A small\ncomputation and network roundtrip can complete in less than 10ms.\n\nPeer-to-peer data sharing: Workers communicate with each other to share\ndata. This removes central bottlenecks for data transfer.\n\nComplex Scheduling: Supports complex workflows (not just\nmap/filter/reduce) which are necessary for sophisticated algorithms used in\nnd-arrays, machine learning, image processing, and statistics.\n\nPure Python: Built in Python using well-known technologies. This eases\ninstallation, improves efficiency (for Python users), and simplifies debugging.\n\nData Locality: Scheduling algorithms cleverly execute computations where\ndata lives. This minimizes network traffic and improves efficiency.\n\nFamiliar APIs: Compatible with the concurrent.futures API in the\nPython standard library. Compatible with dask API for parallel\nalgorithms\n\nEasy Setup: As a Pure Python package distributed is pip installable\nand easy to set up on your own cluster.\n\nArchitecture#\n\nDask.distributed is a centrally managed, distributed, dynamic task scheduler.\nThe central dask scheduler process coordinates the actions of several\ndask worker processes spread across multiple machines and the concurrent\nrequests of several clients.\n\nThe scheduler is asynchronous and event driven, simultaneously responding to\nrequests for computation from multiple clients and tracking the progress of\nmultiple workers. The event-driven and asynchronous nature makes it flexible\nto concurrently handle a variety of workloads coming from multiple users at the\nsame time while also handling a fluid worker population with failures and\nadditions. Workers communicate amongst each other for bulk data transfer over\nTCP.\n\nInternally the scheduler tracks all work as a constantly changing directed\nacyclic graph of tasks. A task is a Python function operating on Python\nobjects, which can be the results of other tasks. This graph of tasks grows as\nusers submit more computations, fills out as workers complete tasks, and\nshrinks as users leave or become disinterested in previous results.\n\nUsers interact by connecting a local Python session to the scheduler and\nsubmitting work, either by individual calls to the simple interface\nclient.submit(function, *args, **kwargs) or by using the large data\ncollections and parallel algorithms of the parent dask library. The\ncollections in the dask library like dask.array and dask.dataframe\nprovide easy access to sophisticated algorithms and familiar APIs like NumPy\nand Pandas, while the simple client.submit interface provides users with\ncustom control when they want to break out of canned “big data” abstractions\nand submit fully custom workloads.\n\nContents#\n\nGetting Started\n\nInstall Dask.Distributed\n\nQuickstart\n\nSetup\n\nClient\n\nAPI\n\nExamples\n\nFrequently Asked Questions\n\nBuild Understanding\n\nDiagnosing Performance\n\nEfficiency\n\nLimitations\n\nData Locality\n\nLogging\n\nManaging Computation\n\nManaging Memory\n\nPrioritizing Work\n\nRelated Work\n\nResilience\n\nScheduling Policies\n\nScheduler State Machine\n\nWorker\n\nWorker State Machine\n\nWorker Memory Management\n\nWork Stealing\n\nWhy did my worker die?\n\nAdditional Features\n\nActors\n\nAsynchronous Operation\n\nHTTP endpoints\n\nPublish Datasets\n\nWorker Resources\n\nLaunch Tasks from Tasks\n\nTLS/SSL\n\nActive Memory Manager\n\nPrometheus monitoring\n\nFine Performance Metrics\n\nSpans\n\nDeveloper Documentation\n\nChangelog\n\nCommunications\n\nDevelopment Guidelines\n\nFoundations\n\nJourney of a Task\n\nProtocol\n\nSerialization\n\nPlugins\n\n Contents",
+ "fonte": "site",
+ "respostas": [
+  {
+   "por": "llama-3.2-90b-vision",
+   "resposta": {
+    "serve": "none",
+    "role": "",
+    "place": [
+     "n/a"
+    ],
+    "mechanism": [
+     "n/a"
+    ],
+    "mcp": "no",
+    "windows": "unknown",
+    "portuguese": "no",
+    "license": "unknown",
+    "maturity": "unknown",
+    "doubt": true,
+    "evidence": ""
+   }
+  },
+  {
+   "por": "deepseek-v4-flashfree",
+   "resposta": {
+    "serve": "none",
+    "role": "",
+    "place": [
+     "n/a"
+    ],
+    "mechanism": [
+     "n/a"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "unknown",
+    "doubt": false,
+    "evidence": "Dask.distributed is a lightweight library for distributed computing in Python."
+   }
+  }
+ ]
+}

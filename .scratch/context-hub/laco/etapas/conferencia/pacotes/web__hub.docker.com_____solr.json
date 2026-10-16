@@ -1,0 +1,62 @@
+{
+ "chave": "web:hub.docker.com/_/solr",
+ "nomes": [
+  "Solr Docker Image",
+  "Official Solr Docker Image",
+  "Solr Docker"
+ ],
+ "urls": [
+  "https://hub.docker.com/_/solr"
+ ],
+ "readme_cortado": false,
+ "readme": "[solr - Official Image | Docker Hub]\n\nsolr\n\nDocker Official Image•\n\n100M+•\n1.0K\nSolr is the blazing-fast, open source, multi-modal search platform built on Apache Lucene.\nDatabases & storage\n\nOverviewTags\n\nsolr Docker official image overview\n\n⁠Quick reference\n\nMaintained by:\n\nthe Apache Solr project⁠\n\nWhere to get help:\n\nthe Solr Community⁠\n\n⁠Supported tags and respective Dockerfile links\n\n10.0.0, 10.0, 10, latest⁠\n\n10.0.0-slim, 10.0-slim, 10-slim, slim⁠\n\n9.11.0, 9.11, 9⁠\n\n9.11.0-slim, 9.11-slim, 9-slim⁠\n\n9.10.1, 9.10⁠\n\n9.10.1-slim, 9.10-slim⁠\n\n⁠Quick reference (cont.)\n\nWhere to file issues:\n\nThe Solr Users mailing list⁠\n\nSupported architectures: (more info⁠)\n\namd64⁠, arm64v8⁠, ppc64le⁠, riscv64⁠, s390x⁠\n\nPublished image artifact details:\n\nrepo-info repo's repos/solr/ directory⁠ (history⁠)\n\n(image metadata, transfer size, etc)\n\nImage updates:\n\nofficial-images repo's library/solr label⁠\n\nofficial-images repo's library/solr file⁠ (history⁠)\n\nSource of this description:\n\ndocs repo's solr/ directory⁠ (history⁠)\n\n⁠What is Solr?\n\nSolr is the blazing-fast, open source, multi-modal search platform built on Apache Lucene. It powers full-text, vector, analytics, and geospatial search at many of the world's largest organizations. Other major features include Kubernetes integration, streaming, highlighting, faceting, and spellchecking.\n\nLearn more on Apache Solr homepage⁠ and in the Apache Solr Reference Guide⁠.\n\n⁠How to use this Docker image\n\nFull documentation can be found in the Solr Reference Guide's Docker section⁠.\n\nTo run a single Solr server:\n\n$ docker run -p 8983:8983 -t solr\nCopy\n\nThen with a web browser go to http://localhost:8983/⁠ to see the Solr Admin Console.\n\n⁠About this repository\n\nThis repository is available on github.com/apache/solr-docker⁠, but the image is built and maintained in the official Solr repo github.com/apache/solr⁠.\n\nPlease direct any usage questions to the Solr users mailing list⁠.\n\n⁠History\n\nThis project was started in 2015 by Martijn Koster⁠ in the github.com/docker-solr/docker-solr⁠ repository. In 2019, the maintainership and copyright was transferred to the Apache Solr project. Many thanks to Martijn for all your contributions over the years!\n\n⁠Image Variants\n\nThe solr images come in many flavors, each designed for a specific use case.\n\n⁠solr:<version>\n\nThis is the defacto image. If you are unsure about what your needs are, you probably want to use this one. It is designed to be used both as a throw away container (mount your source code and start the container to start your app), as well as the base to build other images off of.\n\n⁠solr:<version>-slim\n\nThis image does not contain the common packages contained in the default tag and only contains the minimal packages needed to run solr. Unless you are working in an environment where only the solr image will be deployed and you have space constraints, we highly recommend using the default image of this repository.\n\n⁠License\n\nSolr is licensed under the Apache License, Version 2.0⁠.\n\nThis repository is also licensed under the Apache License, Version 2.0⁠.\n\nCopyright 2015-2022 The Apache Software Foundation\n\nLicensed under the Apache License, Version 2.0 (the \"License\"); you may not use this file except in compliance with the License. You may obtain a copy of the License at\n\n http://www.apache.org/licenses/LICENSE-2.0\nCopy\n\nUnless required by applicable law or agreed to in writing, software distributed under the License is distributed on an \"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.\n\nAs with all Docker images, these likely also contain other software which may be under other licenses (such as Bash, etc from the base distribution, along with any direct or indirect dependencies of the primary software being contained).\n\nSome additional license information which was able to be auto-detected might be found in the repo-info repository's solr/ directory⁠.\n\nAs for any pre-built image usage, it is the image user's responsibility to ensure that any use of this image complies with any relevant licenses for all software contained within.\n\nTag summary\n\nRecent tags\n\nlatestRecent tags\n\nContent type\nImage\n\nDigest\nsha256:4316295f1…\n\nSize\n448.9 MB\n\nLast updated\n8 days ago\n\ndocker pull solrCopy\n\nThis week's pulls\n\nPulls:\n183,808\nLast week\n\nLearn more⁠\n\nAbout Official Images\n\nDocker Official Images are a curated set of Docker open source and drop-in solution repositories.Why Official Images?\nThese images have clear documentation, promote best practices, and are designed for the most common use cases.\n\nArchive\n\nGo back",
+ "fonte": "site",
+ "respostas": [
+  {
+   "por": "voxtral-small",
+   "resposta": {
+    "serve": "search",
+    "role": "search layer for agents",
+    "place": [
+     "network_service"
+    ],
+    "mechanism": [
+     "bm25",
+     "full_text",
+     "vector",
+     "hybrid",
+     "other"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "Apache-2.0",
+    "maturity": "stable",
+    "doubt": false,
+    "evidence": "Solr is the blazing-fast, open source, multi-modal search platform built on Apache Lucene."
+   }
+  },
+  {
+   "por": "gpt-oss-20b",
+   "resposta": {
+    "serve": "search",
+    "role": "Provides full-text and vector search for Markdown notes",
+    "place": [
+     "network_service"
+    ],
+    "mechanism": [
+     "full_text",
+     "vector",
+     "hybrid"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "Apache-2.0",
+    "maturity": "stable",
+    "doubt": false,
+    "evidence": "Solr is the blazing-fast, open source, multi-modal search platform built on Apache Lucene.; No mention of MCP or Windows."
+   }
+  }
+ ]
+}

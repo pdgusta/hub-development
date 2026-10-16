@@ -1,0 +1,74 @@
+{
+ "nome": "Milvus",
+ "nome_canonico": "Milvus (milvus-io/milvus; inclui Milvus Lite)",
+ "chave": "gh:milvus-io/milvus",
+ "url": "https://github.com/milvus-io/milvus",
+ "serve": "search",
+ "area": null,
+ "identidade": "ok. Peça principal: Milvus servidor (milvus-io/milvus); milvus-lite é a variante embarcada em Python, verificada à parte. milvusdb/milvus é alias antigo.",
+ "windows": "only_wsl_or_docker (servidor): docs listam Windows só via Docker Desktop com WSL 2. Milvus Lite roda em Windows: README cita CI Windows só em Python 3.10; wheel milvus_lite 3.2.2 é py3-none-any, dependendo de faiss-cpu e pyarrow.",
+ "mcp": "third_party: zilliztech/mcp-server-milvus (Apache-2.0, stdio padrão, SSE e streamable HTTP); o repo milvus-io/milvus não menciona MCP.",
+ "portugues": "Sem analisador de português embutido: embutidos são standard, english, chinese, arabic, thai. Standard aceita stop words configuráveis; ICU só como tokenizer de analisador custom. Lite: standard e Jieba. Modelo multilíngue possível por fora.",
+ "markdown_frontmatter": "Não indexa Markdown nem lê frontmatter: é banco de vetores; o chamador faz o parse e envia campos. Sem divisão por título. BM25 de texto completo nativo.",
+ "atualizacao": "manual: o cliente insere e atualiza registros; nenhum watcher no projeto.",
+ "embeddings_endpoint": "Guarda vetores; README diz que funciona com modelos e serviços de embedding abertos. base_url OpenAI-compatível: nao_verificado.",
+ "recursos": "Standalone via Docker: mínimo 8 GB RAM (16 GB recomendado), 4 núcleos ou mais, SSD; Lite é biblioteca Python em processo, sem número na fonte.",
+ "licenca": "Apache-2.0",
+ "ultimo_release": "milvus-3.0.2 (20/09/2026, Latest); milvus-2.6.25 em 29/09; milvus-lite v3.2.2 (13/10/2026)",
+ "atividade": "Release de 13/10/2026 (Lite) e 29/09 (servidor); data do último commit nao_verificado",
+ "maturidade": "stable",
+ "encaixe": "Só o Milvus Lite caberia, como índice embarcado em Python no disco de cada máquina; o servidor exige Docker/WSL2, vetado. Sem frontmatter, sem português nativo e sem MCP próprio.",
+ "evidencias": [
+  {
+   "campo": "windows",
+   "url": "https://milvus.io/docs/prerequisite-docker.md",
+   "citacao": "Windows ... supported with Docker Desktop on 'Windows with WSL 2 enabled'"
+  },
+  {
+   "campo": "windows",
+   "url": "https://github.com/milvus-io/milvus-lite",
+   "citacao": "macOS, Linux, or Windows where the Python dependencies are available"
+  },
+  {
+   "campo": "mcp",
+   "url": "https://github.com/zilliztech/mcp-server-milvus",
+   "citacao": "This repository contains a MCP server that provides access to Milvus vector database functionality."
+  },
+  {
+   "campo": "portugues",
+   "url": "https://milvus.io/docs/analyzer-overview.md",
+   "citacao": "standard, english, chinese, arabic, thai (sem portuguese)"
+  },
+  {
+   "campo": "markdown_frontmatter",
+   "url": "https://github.com/milvus-io/milvus",
+   "citacao": "natively supports full text search with BM25"
+  },
+  {
+   "campo": "recursos",
+   "url": "https://milvus.io/docs/prerequisite-docker.md",
+   "citacao": "RAM: 8 GB minimum, with 16 GB recommended"
+  },
+  {
+   "campo": "licenca",
+   "url": "https://github.com/milvus-io/milvus",
+   "citacao": "distributed with Apache 2.0 License"
+  },
+  {
+   "campo": "ultimo_release",
+   "url": "https://github.com/milvus-io/milvus/releases",
+   "citacao": "milvus-3.0.2 September 20, 2026 (Latest)"
+  },
+  {
+   "campo": "ultimo_release",
+   "url": "https://pypi.org/pypi/milvus-lite/json",
+   "citacao": "milvus-lite 3.2.2, upload 2026-10-13 08:38:30 UTC"
+  }
+ ],
+ "nao_verificado": [
+  "data do último commit",
+  "base_url OpenAI-compatível para embeddings",
+  "MCP oficial dentro do repo milvus-io/milvus",
+  "Windows nativo do servidor (sem fonte)"
+ ]
+}

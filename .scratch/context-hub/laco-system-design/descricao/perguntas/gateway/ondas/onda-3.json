@@ -1,0 +1,1543 @@
+{
+ "onda": 3,
+ "criada_em": "2026-10-15T17:44:09Z",
+ "origem": "menos cobertas",
+ "itens": [
+  {
+   "celula": "cliente|onde-vive|pratica",
+   "vaga": 0,
+   "ja_temos": [
+    "Onde fica a **nota de retomada** de uma iniciativa como a **AVIANCA** se eu acessar o hub pelo cliente e o arquivo foi sobrescrito por um agente na máquina pessoal enquanto eu estava em sessão?",
+    "Onde vivo as notas de uma iniciativa como a **STRATA** se eu acessar o hub através do par do notebook do Gustavo, mas ele desligou a máquina pessoal enquanto eu estava trabalhando?",
+    "Onde ficam as versões conflitantes de um arquivo que eu editei pelo cliente, mas o Gustavo alterou a mesma nota na máquina pessoal enquanto eu estava offline?",
+    "Onde o **vigia** guarda os alertas que ele gera para mim quando há um problema de sincronização entre os pares do hub, e como eu acesso esses logs se não tenho o Obsidian instalado?",
+    "Onde estão os arquivos da pasta **inbox/** se eu acessar o hub pelo Maestri, mas o sincronizador da máquina que estou usando está com uma falha e não consegue replicar pastas com ponto no nome?",
+    "Onde vivo as **skills** do maestro se eu for usar o hub como cliente, mas o arquivo global de skills não está disponível porque o link simbólico quebrou?",
+    "Onde estão os arquivos da **pasta não replicada** de uma máquina se eu tentar acessá-los como cliente através do par do notebook do Gustavo, mas eles só ficam disponíveis por SSH?",
+    "Onde vivo os **papéis** do acervo do maestro se eu for usar o hub como cliente e o Gustavo ainda não aprovou uma atualização que fiz em uma skill na máquina pessoal?",
+    "Onde ficam os arquivos de uma iniciativa arquivada, como a **TRF3**, se eu acessar o hub pelo cliente e o arquivo original foi movido para o `_archive/` da raiz, mas o sincronizador não conseguiu atualizar a referência?",
+    "Onde estão os **embeddings** usados pela camada de busca se eu acessar o hub como cliente e a ferramenta de busca ainda não foi escolhida entre as duas opções em teste?"
+   ]
+  },
+  {
+   "celula": "cliente|por-que|borda",
+   "vaga": 0,
+   "ja_temos": [
+    "O que diferencia uma colisão real de uma divergência na prática para quem usa o hub?",
+    "Por que um arquivo com mais de 200 MiB não é sincronizado entre a minha máquina de trabalho e a de casa?",
+    "Por que existe um limite de 200 MiB para os arquivos que podem ser sincronizados entre as máquinas?",
+    "O que a Nota de retomada não faz se o agente não a atualiza ao final da sessão?",
+    "Por que o cliente, ao usar o MCP de um par, tem acesso apenas de leitura por padrão?",
+    "Arquivos que estão na pasta não replicada podem ser encontrados pela camada de busca da outra máquina via SSH?",
+    "Como o Vigia notifica o Gustavo se a sincronização entre as máquinas parou há mais de 15 minutos?",
+    "Por que o cliente precisa se conectar **através de um par** do hub e não diretamente ao banco (CouchDB) ou à pasta Markdown?",
+    "Por que o **vigia** (que avisa sobre colisões e sync parado) não notifica o cliente se detectar problemas no par que ele está usando?",
+    "Por que o cliente não pode usar a **camada de busca** para encontrar trechos específicos em arquivos grandes (acima de 200 MiB), mesmo que precise disso para uma tarefa urgente?"
+   ]
+  },
+  {
+   "celula": "maestro|relacao|pratica",
+   "vaga": 0,
+   "ja_temos": [
+    "Se o Gustavo tentar alterar o acervo do maestro sem aval, o que acontece?",
+    "Como a camada de busca ajuda os recrutas do maestro a acharem o trecho certo sem ler todo o hub?",
+    "Qual a relação entre o acervo do maestro e as skills guardadas na pasta agents?",
+    "Como o maestro utiliza a nota de retomada quando monta e conduz uma equipe de recrutas?",
+    "Qual a relação entre o contrato do hub (AGENTS.md) e as instruções lidas pelos recrutas recrutados pelo maestro?",
+    "Qual a relação entre as iniciativas de cliente, como STRATA ou VOEGOL, e a pasta operations?",
+    "O que acontece se o maestro gravar algo em uma nota ao mesmo tempo em que a outra máquina altera o mesmo arquivo?",
+    "Qual a relação entre o arquivo salvo no inbox e a raiz operations onde o trabalho contínuo é organizado?",
+    "Como a checagem no início de cada sessão afeta o trabalho do maestro ao abrir uma iniciativa de cliente?",
+    "Qual a relação entre o acervo do maestro e a guarda que impede alterações não autorizadas pelo Gustavo?"
+   ]
+  },
+  {
+   "celula": "leitor-novo|relacao|pratica",
+   "vaga": 0,
+   "ja_temos": [
+    "Qual a relação entre o contrato do hub e as skills dos agentes?",
+    "O que o hub não faz quando um arquivo grande demais para viajar é editado?",
+    "Qual a relação entre a pasta não replicada e o GitHub privado?",
+    "Qual a relação entre o Maestro do Maestri e o Acervo do maestro quando ele inicia uma sessão?",
+    "Qual a relação entre as Raízes e a Iniciativa e casa quando uma iniciativa de cliente é arquivada?",
+    "Se o Vigia detectar uma colisão, o que acontece?",
+    "Qual a relação entre o banco e a vista Markdown?",
+    "Como o sincronizador interage com o banco e a vista Markdown?",
+    "Qual a relação entre o Gustavo e o maestro do Maestri no uso do context hub?",
+    "Como os agentes de código acessam e modificam o context hub?"
+   ]
+  },
+  {
+   "celula": "outro-par|falha|borda",
+   "vaga": 0,
+   "ja_temos": [
+    "Se eu criar um arquivo maior que 200 MiB em uma das pastas do hub, o que acontece com a sincronização?",
+    "E se um agente iniciar uma sessão e a nota de retomada estiver desatualizada, o que acontece?",
+    "E se um agente de código gravar uma alteração via MCP do banco no exato momento em que o Gustavo salva uma edição manual no mesmo arquivo no Obsidian?",
+    "E se um arquivo for editado na pasta não replicada, a outra máquina consegue acessá-lo?",
+    "E se um cliente tentar gravar no hub através de um par, o que acontece?",
+    "E se o Sincronizador da outra máquina travar enquanto tenta replicar um arquivo de 190 MiB que acabou de ser alterado?",
+    "E se a rede privada do Tailscale cair por mais de 15 minutos enquanto ambas as máquinas estiverem recebendo alterações simultâneas?",
+    "E se o Vigia detectar uma colisão real, mas o Gustavo estiver com a máquina pessoal desligada e não visualizar a notificação do Windows?",
+    "E se um agente tentar sobrescrever uma Nota de retomada que está em estado de divergência por ser grande demais para ser sincronizada pela outra máquina?",
+    "E se o cliente tentar ler via MCP de um par um arquivo que foi movido para uma pasta não replicada que só está acessível via SSH?"
+   ]
+  },
+  {
+   "celula": "vida-da-nota|onde-vive|borda",
+   "vaga": 0,
+   "ja_temos": [
+    "Onde fica a cópia de segurança diária de todo o conteúdo do hub?",
+    "Se eu criar uma nota nova dentro do Obsidian na minha máquina pessoal, onde ela fica guardada até ir para o notebook do trabalho?",
+    "Quando um agente do Claude Code altera um arquivo de iniciativa da STRATA, onde essa informação é gravada antes de aparecer no meu disco?",
+    "Onde ficam armazenadas as notas de retomada de um trabalho que eu parei agora para que o agente saiba de onde continuar amanhã?",
+    "Se eu editar um arquivo de referência que tem mais de 200 MiB, onde ele vai parar e por que não viaja?",
+    "Onde as versões de uma nota que entraram em colisão porque eu e um agente editamos ao mesmo tempo ficam esperando?",
+    "Onde o maestro busca as skills e os papéis que ele pode usar para montar uma nova equipe de agentes?",
+    "Se eu colocar um arquivo em uma pasta que não é replicada, onde ele vive quando eu tento acessá-lo através da outra máquina?",
+    "Onde os embeddings de busca ficam guardados para que o agente ache o trecho certo sem ler o arquivo inteiro?",
+    "Depois que uma iniciativa da VOEGOL é concluída, para qual pasta ela é movida?"
+   ]
+  },
+  {
+   "celula": "vida-da-nota|falha|pratica",
+   "vaga": 0,
+   "ja_temos": [
+    "O que o hub não faz com os arquivos que estão no GitHub privado se a cópia de segurança diária falhar?",
+    "O que a nota de retomada não faz se o hook ao final de uma resposta de agente falhar?",
+    "Se o sincronizador falhar ao copiar um arquivo porque a pasta tem ponto no nome, o que acontece?",
+    "Se o GitHub privado falhar ao fazer backup diário, onde a cópia de segurança mais recente permanece?",
+    "E se o Vigia detectar que a sincronização está parada há 20 minutos, qual alerta ele enviará?",
+    "E se o agente tentar ler um trecho de uma nota que ainda não chegou ao seu banco porque o arquivo é maior que 200 MiB?",
+    "E se duas máquinas gravarem a mesma nota ao mesmo tempo e o MCP do banco gerar um conflito, o que a Tela de três vias mostrará?",
+    "E se eu mover uma nota para a pasta não replicada, como o outro par a encontrará nas buscas?",
+    "E se eu abrir a Nota de retomada de uma iniciativa e ela estiver desatualizada porque o agente não a atualizou na última resposta?",
+    "E se o agente criar um novo arquivo dentro de `agents/skills/` sem seguir o Contrato do hub, o que ocorre?"
+   ]
+  },
+  {
+   "celula": "seguranca-dado-cliente|responsavel|borda",
+   "vaga": 0,
+   "ja_temos": [
+    "Quem é responsável por garantir que os dados da iniciativa STRATA não sejam acessados por um cliente de sandbox não autorizado?",
+    "Quem é responsável por gerenciar as chaves de acesso e a segurança da rede Tailscale que permite a replicação entre as máquinas?",
+    "Quem é responsável por validar se um agente de código rodando fora do Maestri tem permissão para gravar no banco de dados de uma iniciativa VOEGOL?",
+    "Quem é responsável por resolver uma divergência de dados da iniciativa AVIANCA que o Vigia não conseguiu sincronizar automaticamente?",
+    "Quem é responsável por auditar se o GitHub privado não está expondo informações sensíveis de clientes na cópia de segurança diária?",
+    "Quem é responsável por restringir o acesso via SSH à pasta não replicada para evitar que a outra máquina exponseue arquivos sensíveis?",
+    "Quem é responsável por garantir que o maestro não utilize skills do acervo que comprometam a privacidade de um cliente?",
+    "Quem é responsável por agir quando um conflito de edição entre o Gustavo e um agente ocorre dentro de um arquivo da iniciativa TRF3?",
+    "Quem é responsável por limpar arquivos temporários no inbox que possam conter dados de clientes de SBF antes de serem processados?",
+    "Quem é responsável por monitorar se o sincronizador parou de enviar mudanças, deixando uma máquina com dados de SBF desatualizados?"
+   ]
+  },
+  {
+   "celula": "seguranca-dado-cliente|onde-vive|borda",
+   "vaga": 0,
+   "ja_temos": [
+    "Se um agente de código rodar fora do Maestri, ele consegue acessar os arquivos que estão dentro da pasta não replicada?",
+    "Onde são processadas as notas de colisão real que o Sronizador não conseguiu juntar de forma automática?",
+    "O que o maestro do Maestri não faz quando uma iniciativa de cliente é movida para a pasta _archive da própria raiz?",
+    "Onde vive o arquivo de colisão real que o Gustavo ainda não abriu para resolver na tela de três vias?",
+    "Onde vivem os dados sensíveis da iniciativa STRATA quando a máquina de trabalho está desconada da máquina pessoal?",
+    "Onde ficam armazenadas as chaves de acesso e credenciais que permitem a replicação via Tailscale entre as duas máquinas?",
+    "Onde residem as informações de uma iniciativa da VOEGOL se ela for acessada por um cliente que não possui cópia do hub?",
+    "Onde vive o registro de um conflito quando um agente tenta gravar um arquivo que o Gustavo acabou de editar no Obsidian offline?",
+    "Onde ficam guardados os arquivos da pasta não replicada que não podem ser vistos pela camada de busca da máquina vizinha?",
+    "Onde mora a cópia de segurança diária no GitHub privado e como se garante que dados de clientes não fiquem expostos lá?"
+   ]
+  },
+  {
+   "celula": "construtor|quem-usa|borda",
+   "vaga": 0,
+   "ja_temos": [
+    "O que o hub não faz com os arquivos que estão no GitHub privado se a cópia de segurança diária falhar?",
+    "Se houver uma colisão real entre duas versões de uma nota, quem é responsável por resolver o conflito?",
+    "O que o hub não faz quando um arquivo grande demais para viajar é editado?",
+    "Quando o vigia detecta um conflito de divergência, como ele avisa o Gustavo?",
+    "Quando eu editar uma nota no Obsidian da minha máquina pessoal, o que acontece para essa mudança aparecer no notebook do trabalho?",
+    "O que acontece quando um agente inicia uma sessão no context hub?",
+    "O que acontece se o sincronizador parar de funcionar?",
+    "Se o Gustavo editar um arquivo no Obsidian, o que acontece com a versão no banco?",
+    "O que muda se o maestro iniciar a sessão no hub?",
+    "Por que a nota de retomada é sobrescrita e como isso ajuda na continuidade do trabalho?"
+   ]
+  },
+  {
+   "celula": "construtor|diferenca|borda",
+   "vaga": 0,
+   "ja_temos": [
+    "O que muda entre a sincronização feita pelo Sincronizador de um arquivo pequeno (<200 MiB) e a tentativa de sincronizar um arquivo maior que o limite?",
+    "O que muda entre uma colisão real detectada pelo Vigia e uma divergência que ainda não foi vista pelo Gustavo?",
+    "O que muda entre uma gravação feita por um agente através do MCP do banco e uma gravação feita diretamente pelo Sincronizador?",
+    "O que muda entre a busca de um trecho usando a Camada de busca local e a busca feita por um cliente que não tem cópia própria do hub?",
+    "O que muda entre iniciar uma sessão no hub pela raiz (root) e iniciar uma sessão numa subpasta específica?",
+    "O que muda entre a cópia de segurança diária no GitHub privado e a presença da Pasta não replicada que só existe em uma máquina?",
+    "O que muda entre a atualização da Nota de retomada ao final de cada resposta de agente e a atualização feita manualmente pelo Gustavo ao iniciar a sessão?",
+    "O que muda entre a replicação automática do Banco entre as duas máquinas via Tailscale e a replicação manual usando SSH para a Pasta não replicada?",
+    "O que muda entre a edição de um arquivo no Obsidian e a edição direta no disco?",
+    "O que muda entre editar uma nota no Obsidian e editá‑la diretamente no disco?"
+   ]
+  },
+  {
+   "celula": "gustavo-dia-a-dia|o-que-nao-faz|borda",
+   "vaga": 0,
+   "ja_temos": [
+    "Se o Gustavo tentar alterar o acervo do maestro sem aval, o que acontece?",
+    "O que a nota de retomada não faz se o hook ao final de uma resposta de agente falhar?",
+    "Se o Gustavo tentar mover uma nota para a pasta não replicada, o que acontece?",
+    "O que o contrato do hub não faz para agentes que iniciam sessão em um repositório fora do hub?",
+    "Se o Gustavo tentar editar uma nota no Obsidian enquanto o agente está gravando a mesma nota, o que acontece?",
+    "O que a busca não faz com arquivos que estão na pasta não replicada?",
+    "Se o Gustavo editar uma nota no Obsidian e depois apagar o arquivo da pasta, o que acontece?",
+    "Se o Gustavo criar uma pasta com ponto no nome (ex: .config) e colocar arquivos lá, o que acontece?",
+    "Se um agente gravar uma nota no hub e o Gustavo editar a mesma nota no Obsidian antes do sync, o que acontece?",
+    "Se o Gustavo mover uma nota de uma pasta para outra no disco, o que acontece?"
+   ]
+  },
+  {
+   "celula": "gustavo-dia-a-dia|falha|borda",
+   "vaga": 0,
+   "ja_temos": [
+    "O que acontece se eu deletar uma pasta que começa com um ponto no nome, ela vai ser enviada para o outro par?",
+    "Se um agente terminar uma tarefa mas esquecer de atualizar a nota de retomada, o que acontece na próxima sessão dele?",
+    "E se eu editar uma nota no Obsidian e um agente de IA tentar gravar nela ao mesmo tempo, o que acontece?",
+    "Qual a relação entre a Pasta não replicada e a Camada de busca quando um agente tenta acessar um arquivo lá?",
+    "O que acontece se a conexão Tailscale entre as duas máquinas cair e eu fizer muitas alterações no notebook do trabalho?",
+    "E se eu colocar um arquivo de 500 MiB na pasta do hub, ele vai ser sincronizado com a outra máquina?",
+    "Como eu descubro se houve uma colisão de uma nota que o hub não conseguiu resolver sozinho?",
+    "O que acontece se o processo do sincronizador travar por mais de 15 minutos e eu não receber notificação?",
+    "Se o agente Claude Code gravar uma informação no banco via MCP, em quanto tempo ela aparece no meu Obsidian na outra máquina?",
+    "E se a camada de busca me entregar o trecho errado para o agente, como eu sei que o embedding foi o problema?"
+   ]
+  },
+  {
+   "celula": "agente-novo|se-x|borda",
+   "vaga": 0,
+   "ja_temos": [
+    "Se o Gustavo tentar alterar o acervo do maestro sem aval, o que acontece?",
+    "Se o agente tentar acessar uma nota que está na pasta não replicada, o que acontece?",
+    "Se eu pedir ao agente para criar uma nova nota sobre a iniciativa STRATA, o que acontece?",
+    "Se eu pedir ao agente para apagar uma nota que eu mesmo criei, o que acontece?",
+    "Se o agente sugerir uma alteração em uma nota que eu editei recentemente, o que acontece?",
+    "Se eu pedir ao agente para buscar informações sobre a iniciativa VOEGOL, o que acontece?",
+    "Se o agente tentar salvar uma nota muito grande, o que acontece?",
+    "Se eu pedir ao agente para compartilhar uma nota com outro par, o que acontece?",
+    "Se o agente encontrar um conflito entre duas versões de uma nota, o que acontece?",
+    "Se eu pedir ao agente para mover uma nota para a pasta não replicada, o que acontece?"
+   ]
+  },
+  {
+   "celula": "agente-novo|diferenca|borda",
+   "vaga": 0,
+   "ja_temos": [
+    "Qual a relação entre o Maestro do Maestri e o Acervo do maestro quando ele inicia uma sessão?",
+    "Como um agente acessa arquivos que estão em uma pasta não replicada em outra máquina?",
+    "Se o Vigia detectar uma colisão, o que acontece?",
+    "Onde vivem as iniciativas de cliente, como STRATA e VOEGOL?",
+    "O que muda entre editar uma nota comum e uma nota da pasta não replicada?",
+    "O que acontece se o agente tentar gravar em um arquivo que está em colisão?",
+    "Se um arquivo for muito grande para viajar, o que acontece?",
+    "O que muda entre o agente acessar o hub pela sessão na raiz e acessar pela sessão numa subpasta?",
+    "Como o agente sabe se uma iniciativa está ativa ou arquivada, e o que ele pode fazer em cada caso?",
+    "Se o agente está rodando no notebook do trabalho e o Gustavo está editando no desktop, como é tratado o conflito de edição simultânea?"
+   ]
+  },
+  {
+   "celula": "maestro|quem-usa|pratica",
+   "vaga": 0,
+   "ja_temos": [
+    "Se o Gustavo tentar alterar o acervo do maestro sem aval, o que acontece?",
+    "Em que ordem o maestro do Maestri lê as peças prontas do acervo para montar uma equipe de recrutas no canvas?",
+    "Quem usa o acervo do maestro quando uma equipe de recrutas é montada no canvas?",
+    "Quem vê ou usa as peças prontas do acervo do maestro quando um recruta inicia uma sessão numa subpasta?",
+    "Se o maestro do Maestri acionar uma skill que altera uma iniciativa de cliente como STRATA, o contrato do hub garante que o arquivo vai para o lugar certo?",
+    "Quem usa a nota de retomada quando o maestro do Maestri passa o bastão de liderança para uma nova equipe de recrutas?",
+    "Se o sincronizador de uma máquina parar enquanto o maestro do Maestri conduz os recrutas, como os agentes sabem que há uma divergência?",
+    "Quem vê ou usa a pasta não replicada quando um recruta guiado pelo maestro do Maestri precisa buscar referências externas?",
+    "Se o maestro do Maestri e o Gustavo editarem a mesma peça do acervo do maestro ao mesmo tempo, como o MCP do banco lida com a concorrência?",
+    "Quem usa o contrato do hub para validar se os papéis atribuídos pelo maestro aos recrutas respeitam as regras?"
+   ]
+  },
+  {
+   "celula": "outro-par|por-que|pratica",
+   "vaga": 0,
+   "ja_temos": [
+    "Por que o acervo do maestro exige aval do Gustavo e uma guarda para ser alterado?",
+    "Por que o sincronizador precisa rodar como tarefa agendada se eu já tenho o plugin do LiveSync instalado no Obsidian?",
+    "Por que a colisão de uma nota não trava a viagem das outras notas entre as máquinas?",
+    "Por que o MCP do banco valida a versão da nota antes de gravar, em vez de simplesmente sobrescrever o que já existe?",
+    "Por que existe uma pasta não replicada se o objetivo do hub é ter uma cópia completa em cada par?",
+    "Por que o Vigia me avisa de um arquivo grande demais se ele não vai viajar de qualquer jeito?",
+    "Por que a nota de retomada precisa ser atualizada a cada resposta do agente, mesmo que o trabalho não tenha mudado?",
+    "Por que o contrato do hub usa links simbólicos para garantir que as instruções dos agentes sejam iguais em todos os harnesses?",
+    "Por que preciso de uma tela de três vias para resolver divergências se o CouchDB é quem deveria gerir os conflitos?",
+    "Por que a camada de busca precisa rodar localmente nas duas máquinas em vez de consultar um serviço único centralizado?"
+   ]
+  },
+  {
+   "celula": "cliente|se-x|borda",
+   "vaga": 0,
+   "ja_temos": [
+    "Se o cliente tentar acessar a pasta não replicada, o que acontece?",
+    "Se eu tentar usar uma skill que está no acervo do maestro mas que não foi aprovada pelo Gustavo, o que acontece?",
+    "Se o cliente tentar editar um arquivo do hub via a pair, o que acontece?",
+    "Se o cliente tentar abrir um arquivo maior que 200 MiB que está no hub, o que acontece?",
+    "Se o cliente tentar ler um arquivo que foi alterado no outro par mas ainda não sincronizou, o que acontece?",
+    "Se o cliente tentar criar uma nova iniciativa de cliente em clients/, o que acontece?",
+    "Se o cliente tentar usar a Tela de três vias para resolver uma colisão, o que acontece?",
+    "Se o cliente tentar enviar uma alteração para o GitHub privado, o que acontece?",
+    "Se o cliente tentar usar o Contrato do hub para adicionar uma nova skill, o que acontece?",
+    "Se o cliente tentar iniciar uma sessão do Maestri via a porta de entrada, o que acontece?"
+   ]
+  },
+  {
+   "celula": "cliente|quem-usa|borda",
+   "vaga": 0,
+   "ja_temos": [
+    "Se um cliente acessar o context hub através de um par ligado, quem vê ou usa o banco?",
+    "Quem vê a nota que eu edito através da porta de entrada do hub?",
+    "Quem usa a Camada de busca para encontrar o trecho que preciso sem ler todo o arquivo?",
+    "Quem recebe a notificação do Vigia quando ocorre uma colisão real no hub enquanto eu estou conectado?",
+    "Quem tem acesso à Pasta não replicada quando eu tento abrir um arquivo que está lá?",
+    "Quem verifica se a minha edição foi gravada no Banco depois que eu salvo a mudança?",
+    "Quem pode ler ou alterar a Nota de retomada de uma iniciativa que eu estou usando?",
+    "Quem tem permissão para usar o MCP do banco ao solicitar a leitura de um arquivo via minha sessão de cliente?",
+    "Quem vê a Tela de três vias quando ocorre uma divergência que eu não consigo resolver sozinho?",
+    "Quem tem acesso ao Acervo do maestro para usar um contrato‑opção enquanto eu executo uma tarefa?"
+   ]
+  },
+  {
+   "celula": "cliente|o-que-nao-faz|pratica",
+   "vaga": 0,
+   "ja_temos": [
+    "Se o cliente tentar acessar a pasta não replicada, o que acontece?",
+    "Quando um cliente tenta gravar um arquivo maior que 200 MiB no hub, o que acontece?",
+    "Se o cliente tentar acessar uma iniciativa de cliente sem permissão, o que acontece?",
+    "Se o cliente tentar usar o hub durante uma sincronização parada, o que acontece?",
+    "Se o cliente tentar usar o hub durante uma falha no vigia, o que acontece?",
+    "Se o cliente tentar usar o hub durante uma falha no MCP do banco, o que acontece?",
+    "Se o cliente tentar gravar no banco diretamente, o que acontece?",
+    "Se o cliente tentar usar o hub sem estar conectado a um par, o que acontece?",
+    "Se o cliente tentar editar o contrato do hub, o que acontece?",
+    "Se o cliente tentar usar o hub durante uma colisão real, o que acontece?"
+   ]
+  },
+  {
+   "celula": "falhas-divergencia|se-x|pratica",
+   "vaga": 0,
+   "ja_temos": [
+    "O que acontece na tela de três vias se o Gustavo tentar resolver uma colisão em uma nota da iniciativa AVIANCA?",
+    "E se um agente de código gravar uma alteração via MCP do banco no exato momento em que o Gustavo salva uma edição manual no mesmo arquivo no Obsidian?",
+    "Se o sincronizador falhar ao copiar um arquivo porque a pasta tem ponto no nome, o que acontece?",
+    "Se o Gustavo mover um arquivo dentro de uma pasta não replicada, o que acontece quando o agente da outra máquina tenta acessá-lo via SSH?",
+    "Se o hook de fim de resposta do agente falhar ao gravar a Nota de retomada, o que acontece na próxima sessão de trabalho do agente?",
+    "O que acontece se um agente tentar buscar um arquivo que está na pasta não replicada?",
+    "Se o Gustavo abrir a tela de três vias mas fechar sem escolher uma versão, o que acontece com as duas versões da nota?",
+    "Se a iniciativa STRATA for movida para a pasta _archive/ enquanto ainda há agentes trabalhando nela, o que acontece?",
+    "Se o Gustavo criar um arquivo com mais de 200 MiB na máquina pessoal, o que acontece com a sincronização da máquina de trabalho?",
+    "Se a máquina de trabalho ficar desligada por dois dias e o Gustavo fizer várias edições na pessoal, o que acontece quando a máquina de trabalho for ligada novamente?"
+   ]
+  },
+  {
+   "celula": "seguranca-dado-cliente|quando|pratica",
+   "vaga": 0,
+   "ja_temos": [
+    "Se um arquivo estiver em uma pasta não replicada, o que a camada de busca da outra máquina faz quando um agente tenta buscar essa informação?",
+    "Se um agente terminar uma tarefa mas esquecer de atualizar a nota de retomada, o que acontece na próxima sessão dele?",
+    "Quando o GitHub privado faz backup de um arquivo que está em conflito, como esse conflito é tratado?",
+    "Quando eu editar uma nota no Obsidian na máquina de trabalho e um agente editar a mesma nota na máquina pessoal ao mesmo tempo, o que acontece para não sobrescrever meus dados?",
+    "Se eu colocar um arquivo de 300 MiB numa pasta do hub, o que o sincronizador faz com ele em relação ao par?",
+    "Quando a sincronização entre as duas máquinas parar por mais de 15 minutos, como eu sou avisado de que o hub está travado?",
+    "Se um cliente usar o hub através de um par de leitura, o que garante que ele não consiga apagar ou alterar minhas iniciativas de trabalho?",
+    "Se eu criar uma pasta com um ponto no nome dentro do hub, o que o sincronizador faz ao tentar enviar essa dados para a outra máquina?",
+    "Quando houver uma colisão real que o hub não consegue resolver sozinho, como eu visualizo as três versões para decidir qual a correta?",
+    "Quando o maestro do Maestri montar uma equipe de agentes, como o hub garante que todos sigam as instruções do contrato do hub?"
+   ]
+  },
+  {
+   "celula": "responsabilidade|relacao|pratica",
+   "vaga": 0,
+   "ja_temos": [
+    "Quem é responsável por fazer o backup diário de todo o meu hub no GitHub privado?",
+    "Qual a relação entre o MCP do banco e o Agente de código quando dois agentes tentam gravar na mesma nota simultaneamente em máquinas diferentes?",
+    "Qual a relação entre o Sincronizador e o Banco quando o Gustavo edita um arquivo no Obsidian enquanto a máquina está offline?",
+    "Qual a relação entre a Nota de retomada e o Agente de código ao final de uma sessão de trabalho interroma?",
+    "Como a Camada de busca interage com o Agente de código para entregar trechos corretos sem ler todo o hub?",
+    "Qual a relação entre o Vigia e a Tela de três vias no momento em que uma colisão real é detectada?",
+    "Qual a relação entre a Camada de busca e a Pasta não replicada quando um agente solicita uma informação contida nela?",
+    "Qual a relação entre o Maestro do Maestri e o Acervo do maestro quando uma nova skill é solicitada pela equipe?",
+    "Qual a relação entre o Sincronizador e o GitHub privado caso um arquivo de 200 MiB seja alterado?",
+    "Qual a relação entre o Contrato do hub e o Agente de código ao realizar uma tarefa em uma iniciativa STRATA?"
+   ]
+  },
+  {
+   "celula": "responsabilidade|diferenca|pratica",
+   "vaga": 0,
+   "ja_temos": [
+    "Quem é responsável por monitorar se o GitHub privado recebeu a cópia de segurança diária?",
+    "O que muda entre a sincronização feita pelo Sincronizador de um arquivo pequeno (<200 MiB) e a tentativa de sincronizar um arquivo maior que o limite?",
+    "O que muda entre a criação de uma nova nota de retomada por um agente ao final de uma sessão e a criação da mesma nota por Gustavo manualmente no Obsidian?",
+    "Quem é responsável por manter o acervo do maestro atualizado?",
+    "O que muda entre o Gustavo editar um arquivo no Obsidian e editar direto no disco?",
+    "Quem é responsável por garantir que as mudanças sejam gravadas no lugar certo sem o Gustavo pedir?",
+    "O que muda entre um cliente que acessa o hub através de um par ligado e um cliente que acessa o hub diretamente?",
+    "Quem é responsável por garantir que os agentes encontrem o trecho certo sem ler tudo?",
+    "Quem é responsável por sincronizar as mudanças entre as máquinas quando o Sincronizador está desligado?",
+    "O que acontece quando um agente tenta gravar uma mudança em um arquivo que está sendo editado pelo Gustavo ao mesmo tempo?"
+   ]
+  },
+  {
+   "celula": "grupos-onde-vive|se-x|pratica",
+   "vaga": 0,
+   "ja_temos": [
+    "Se o agente tentar acessar uma nota que está na pasta não replicada, o que acontece?",
+    "Se o GitHub privado falhar ao fazer backup diário, onde a cópia de segurança mais recente permanece?",
+    "Se a Vigia detectar que o sync está parado há 15 minutos, onde a notificação é enviada e quem a recebe?",
+    "Se o Sincronizador de uma máquina parar de rodar, onde permanecem as alterações feitas no disco até que ele seja reiniciado?",
+    "Se dois agentes diferentes lerem simultaneamente a mesma nota através da Camada de busca, onde é armazenada a informação de que eles a acessaram?",
+    "Se o Gustavo editar um arquivo na pasta não replicada, como isso afeta a replicação entre as duas máquinas?",
+    "Se o MCP do banco rejeitar uma gravação por conflito de versão, onde a versão conflitante fica armazenada até ser resolvida?",
+    "Se um cliente acessar o hub apenas como leitor via porta de entrada, onde o conteúdo que ele vê é servido (do banco local, do cache, etc.)?",
+    "Se a Camada de busca falhar ao gerar embeddings em uma das máquinas, onde a busca ainda pode ser realizada?",
+    "Se uma nota de retomada for sobrescrita por um agente, onde a versão anterior é mantida?"
+   ]
+  },
+  {
+   "celula": "grupos-onde-vive|onde-vive|pratica",
+   "vaga": 0,
+   "ja_temos": [
+    "Se o Gustavo tentar alterar o acervo do maestro sem aval, o que acontece?",
+    "Onde fica a cópia de segurança diária de todo o conteúdo do hub?",
+    "O que o sincronizador não faz quando eu tento enviar um arquivo de 300 MiB para a outra máquina?",
+    "Se a Vigia detectar que o sync está parado há 15 minutos, onde a notificação é enviada e quem a recebe?",
+    "Se eu edito uma nota no Obsidian, como essa alteração chega na minha máquina pessoal?",
+    "Onde a Vista Markdown vive quando editada pelo Gustavo?",
+    "Onde os embeddings de busca são processados se uma das máquinas estiver offline durante uma sincronização?",
+    "Onde ficam guardadas as alterações que o agente Claude Code faz no banco de dados do hub?",
+    "Como um cliente que está em uma sandbox consegue ler as notas do hub sem alterar nada?",
+    "Onde eu encontro as instruções obrigatórias que todos os agentes devem seguir ao agir com o hub?"
+   ]
+  },
+  {
+   "celula": "grupos-onde-vive|ordem|pratica",
+   "vaga": 0,
+   "ja_temos": [
+    "Se o agente tenta editar um arquivo grande que ultrapassa o limite de 200 MiB, o que acontece com a sincronização?",
+    "Quando ocorre uma colisão real entre duas versões de uma nota, em que ordem o Vigia notifica, a Tela de três vias é aberta e o usuário (Gustavo) resolve o conflito?",
+    "Quando o Gustavo salva um arquivo .md no Obsidian, qual a sequência de passos entre Vista Markdown, Sincronizador, Banco e MCP para que a mudança seja propagada ao outro par?",
+    "Se um Agente de código grava um arquivo grande (150 MiB) via MCP enquanto o Sincronizador está tentando replicar um arquivo de 180 MiB, qual evento ocorre primeiro: a rejeição por tamanho ou a geração de alerta de arquivo grande pelo Vigia?",
+    "Se o Maestro do Maestri inicia uma sessão que requer uma skill do Acervo do maestro, qual a cadeia de consultas entre Contrato do hub, Camada de busca e a pasta de skills antes que a skill seja carregada?",
+    "Quando o cliente (sandbox) tenta ler um arquivo que está na Pasta não replicada de uma das máquinas, qual a ordem de falha ou fallback que ocorre antes de o agente retornar “arquivo não encontrado”?",
+    "Se o Vigia detecta que a sincronização está parada há 15 minutos e simultaneamente o GitHub privado tenta fazer backup, qual processo tem prioridade para interromper a operação de sync?",
+    "Ao iniciar uma nova sessão de agente, qual a sequência de verificações realizadas pelo início de sessão: validação da Porta de entrada, checagem de divergência, carregamento do Contrato do hub e atualização da Nota de retomada?",
+    "Quando o Sincronizador copia um arquivo de 200 MiB que contém ponto no nome, qual a ordem de filtragem que impede seu envio e como o Vigia registra essa exceção?",
+    "Se duas máquinas diferentes recebem simultaneamente atualizações distintas de um mesmo arquivo via MCP, qual a ordem de detecção de conflito: versão local vs remota, criação de colisão real, notificação pelo Vigia?"
+   ]
+  },
+  {
+   "celula": "vida-da-nota|grupo|borda",
+   "vaga": 0,
+   "ja_temos": [
+    "O GitHub privado faz parte do grupo de soluções de backup do context hub?",
+    "Por que a Nota de retomada é sobrescrita ao final de cada resposta do agente?",
+    "A tela de três vias faz parte do grupo de resolução?",
+    "A pasta não replicada pertence ao grupo de áreas que não são sincronizadas entre as máquinas?",
+    "A tela de três vias faz parte do grupo de recursos que o Gustavo usa para resolver colisões de edição entre os pares?",
+    "O Sincronizador faz parte do grupo de processos que atualizam o Banco automaticamente?",
+    "A Nota de retomada faz parte do grupo de documentos que permitem reiniciar um trabalho interrompido?",
+    "O Gustavo faz parte do grupo de editores da Vista Markdown?",
+    "Um agente de código faz parte do grupo de leitores do Banco?",
+    "O maestro faz parte do grupo de condutores de equipes de agentes?"
+   ]
+  },
+  {
+   "celula": "vida-da-nota|onde-vive|pratica",
+   "vaga": 0,
+   "ja_temos": [
+    "Onde fica a cópia de segurança diária de todo o conteúdo do hub?",
+    "Se eu criar uma nota nova dentro do Obsidian na minha máquina pessoal, onde ela fica guardada até ir para o notebook do trabalho?",
+    "Quando um agente do Claude Code altera um arquivo de iniciativa da STRATA, onde essa informação é gravada antes de aparecer no meu disco?",
+    "Onde ficam armazenadas as notas de retomada de um trabalho que eu parei agora para que o agente saiba de onde continuar amanhã?",
+    "Se eu editar um arquivo de referência que tem mais de 200 MiB, onde ele vai parar e por que não viaja?",
+    "Onde as versões de uma nota que entraram em colisão porque eu e um agente editamos ao mesmo tempo ficam esperando?",
+    "Onde o maestro busca as skills e os papéis que ele pode usar para montar uma nova equipe de agentes?",
+    "Se eu colocar um arquivo em uma pasta que não é replicada, onde ele vive quando eu tento acessá-lo através da outra máquina?",
+    "Onde os embeddings de busca ficam guardados para que o agente ache o trecho certo sem ler o arquivo inteiro?",
+    "Depois que uma iniciativa da VOEGOL é concluída, para qual pasta ela é movida?"
+   ]
+  },
+  {
+   "celula": "vida-da-nota|ordem|pratica",
+   "vaga": 0,
+   "ja_temos": [
+    "Quando ocorre uma colisão real entre duas versões de uma nota, em que ordem o Vigia notifica, a Tela de três vias é aberta e o usuário (Gustavo) resolve o conflito?",
+    "Quando Gustavo cria uma nova nota em inbox/ via Obsidian, qual a sequência de eventos entre a Vista Markdown, o Sincronizador e o Banco até que a nota esteja disponível para os agentes?",
+    "Se um agente de código grava uma alteração em uma nota já existente, como o MCP do banco, o Sincronizador e o Vigia interagem para detectar e sinalizar eventual colisão?",
+    "Quando duas máquinas editam simultaneamente a mesma nota e geram uma colisão, em que ordem o Vigia notifica, a Tela de três vias exibe as versões e o Gustavo resolve o conflito?",
+    "Se uma nota ultrapassa 200 MiB, qual é a ordem de tratamento: bloqueio do Sincronizador, registro no Vigia e eventual exclusão ou migração para a Pasta não replicada?",
+    "Ao iniciar uma sessão de agente a partir de uma Porta de entrada diferente da raiz (por exemplo, sessão em operations/), quais passos ocorrem antes que o agente possa buscar trechos relevantes usando a Camada de busca?",
+    "Quando o backup diário para o GitHub privado é disparado, em que ordem são feitas: a exportação dos arquivos do Banco, a compressão, o upload e a atualização do status no Vigia?",
+    "Se o Maestro do Maestri solicita uma peça do Acervo do maestro para montar uma equipe, como a sequência de acesso ao Contrato do hub, leitura das skills e entrega da peça ocorre antes da execução da tarefa?",
+    "Quando um cliente (sandbox) lê apenas a versão mais recente de uma nota, mas a outra máquina está com a sincronização parada há 20 minutos, qual a ordem de verificações que o Vigia realiza e que efeito tem na disponibilidade da nota para o cliente?",
+    "Se a Nota de retomada é atualizada ao final da resposta de um agente, qual a cadeia de eventos que garante que a mudança seja persistida no Banco, refletida na Vista Markdown e propagada ao outro par antes da próxima sessão?"
+   ]
+  },
+  {
+   "celula": "leitor-novo|grupo|pratica",
+   "vaga": 0,
+   "ja_temos": [
+    "O GitHub privado faz parte do grupo de soluções de backup do context hub?",
+    "O vigia faz parte do grupo de mecanismos que monitoram e notificam sobre problemas no hub?",
+    "O sincronizador faz parte do grupo de processos que garantem a replicação entre as máquinas do Gustavo?",
+    "A nota de retomada faz parte do grupo de peças que ajudam a continuar um trabalho?",
+    "O 'Acervo do maestro' faz parte do grupo de recursos que vivem na máquina?",
+    "O que o hub não faz se dois agentes e o Gustavo tentarem editar a mesma nota Markdown ao mesmo tempo?",
+    "O banco faz parte do grupo de peças que armazenam a verdade?",
+    "A tela de três vias faz parte do grupo de peças que resolvem conflitos?",
+    "A colisão real faz parte do grupo de conflitos?",
+    "As portas de entrada fazem parte do grupo de acesso?"
+   ]
+  },
+  {
+   "celula": "leitor-novo|o-que-nao-faz|pratica",
+   "vaga": 0,
+   "ja_temos": [
+    "O que a Tela de três vias não faz quando há mais de duas versões divergentes de uma nota?",
+    "Quando o GitHub privado faz backup de um arquivo que está em conflito, como esse conflito é tratado?",
+    "O que o Sincronizador não faz quando um arquivo maior que 200 MiB é modificado por Gustavo no disco?",
+    "O que o MCP do banco não faz quando duas gravações conflitantes chegam de máquinas diferentes ao mesmo tempo?",
+    "O que o Vigia não faz quando a rede Tailscale fica temporariamente indisponível, mas o par ainda tenta sincronizar?",
+    "O que a Camada de busca não faz quando um agente tenta recuperar um fragmento de uma nota que está em uma Pasta não replicada?",
+    "O que o contrato do hub não faz quando um agente tenta escrever em uma pasta que não está listada no AGENTS.md?",
+    "O que o módulo de Nota de retomada não faz quando o agente não conclui o hook ao fim de cada resposta, deixando a nota desatualizada?",
+    "O que o Banco não faz quando o documento atingiu o limite de tamanho de página padrão do CouchDB, forçando um split?",
+    "O que o Acervo do maestro não faz quando um usuário tenta adicionar uma nova skill sem a aprovação de Gustavo?"
+   ]
+  },
+  {
+   "celula": "leitor-novo|o-que-nao-faz|borda",
+   "vaga": 0,
+   "ja_temos": [
+    "O que a Tela de três vias não faz quando há mais de duas versões divergentes de uma nota?",
+    "Quando o GitHub privado faz backup de um arquivo que está em conflito, como esse conflito é tratado?",
+    "O que o Sincronizador não faz quando um arquivo maior que 200 MiB é modificado por Gustavo no disco?",
+    "O que o MCP do banco não faz quando duas gravações conflitantes chegam de máquinas diferentes ao mesmo tempo?",
+    "O que o Vigia não faz quando a rede Tailscale fica temporariamente indisponível, mas o par ainda tenta sincronizar?",
+    "O que a Camada de busca não faz quando um agente tenta recuperar um fragmento de uma nota que está em uma Pasta não replicada?",
+    "O que o contrato do hub não faz quando um agente tenta escrever em uma pasta que não está listada no AGENTS.md?",
+    "O que o módulo de Nota de retomada não faz quando o agente não conclui o hook ao fim de cada resposta, deixando a nota desatualizada?",
+    "O que o Banco não faz quando o documento atingiu o limite de tamanho de página padrão do CouchDB, forçando um split?",
+    "O que o Acervo do maestro não faz quando um usuário tenta adicionar uma nova skill sem a aprovação de Gustavo?"
+   ]
+  },
+  {
+   "celula": "leitor-novo|ordem|borda",
+   "vaga": 0,
+   "ja_temos": [
+    "Se o Gustavo mover um arquivo dentro de uma pasta não replicada, o que acontece quando o agente da outra máquina tenta acessá-lo via SSH?",
+    "Se o Gustavo editar uma nota no Obsidian da máquina A e um agente de código editar a mesma nota via MCP na máquina B simultaneamente, qual é a ordem dos eventos para garantir que nada seja sobrescrito?",
+    "Quando um agente inicia uma nova sessão de trabalho em uma iniciativa, qual é o passo a passo para que ele leia a nota de retomada e entenda onde o trabalho parou?",
+    "Se o sincronronizador tentar replicar um arquivo de 300 MiB, o que o sistema faz imediatamente após o limite ser atingido e como o Gustavo é avisado?",
+    "Em que ordem o maestro do Maestri monta uma equipe de recrutas, como ele busca as skills no acervo e como aplica o contrato do hub a cada um?",
+    "Se a máquina pessoal ficar desligada por dois dias e várias mudanças ocorrerem no notebook do trabalho, o que o sincronizador fará assim que a máquina pessoal for ligada novamente?",
+    "Quando um cliente (computador de sandbox) solicita uma leitura do hub de um par via MCP, qual é o fluxo de dados para garantir que ele não altera os arquivos originais?",
+    "Se ocorrer uma colisão real que o hub não consegue resolver sozinho, qual é o processo desde a detecção pelo Vigia até a resolução final feita pelo Gustavo na tela de três vias?",
+    "Como a camada de busca atua para entregar um trecho específico para um agente sem que ele precise processar todos os arquivos Markdown que estão no banco CouchDB?",
+    "Ao final de uma resposta de um agente, como o hook de verificação garante que a nota de retomada seja atualizada corretamente antes da sessão ser encerrada?"
+   ]
+  },
+  {
+   "celula": "construtor|relacao|pratica",
+   "vaga": 0,
+   "ja_temos": [
+    "Se o Gustavo tentar alterar o acervo do maestro sem aval, o que acontece?",
+    "Qual a relação entre o MCP do banco e a Busca quando um agente de código pede um trecho específico de uma nota?",
+    "Qual a relação entre o Sincronizador e o Banco quando o Gustavo edita um arquivo no Obsidian enquanto a máquina está offline?",
+    "Quando o Gustavo edita um arquivo na pasta não replicada, o que acontece com a cópia na outra máquina?",
+    "O que acontece se o vigia detectar uma divergência e o Gustavo não resolver antes de iniciar uma nova sessão?",
+    "Como o contrato do hub é aplicado a um agente que não está no acervo do maestro?",
+    "O que acontece se um arquivo for editado simultaneamente no Obsidian e na pasta não replicada?",
+    "O que acontece se o Gustavo tentar resolver uma colisão usando a tela de três vias, mas uma das versões estiver corrompida?",
+    "Como o hub lida com um arquivo que excede o limite de 200 MiB e é movido para a pasta não replicada?",
+    "Qual a relação entre o GitHub privado e o banco quando ocorre uma falha na sincronização entre os pares?"
+   ]
+  },
+  {
+   "celula": "construtor|grupo|pratica",
+   "vaga": 0,
+   "ja_temos": [
+    "O que o hub não faz com os arquivos que estão no GitHub privado se a cópia de segurança diária falhar?",
+    "O GitHub privado faz parte do grupo de soluções de backup do context hub?",
+    "Se eu criar um arquivo maior que 200 MiB em uma das pastas do hub, o que acontece com a sincronização?",
+    "O vigia faz parte do grupo de mecanismos que monitoram e notificam sobre problemas no hub?",
+    "A tela de três vias faz parte do grupo de resolução?",
+    "Quem controla que a Nota de retomada seja atualizada automaticamente ao final de cada resposta de um agente?",
+    "O 'Acervo do maestro' faz parte do grupo de recursos que vivem na máquina?",
+    "O MCP do banco faz parte do grupo de peças que os agentes usam para gravar?",
+    "Quem é responsável por manter a nota de retomada atualizada durante uma sessão de agente?",
+    "A Camada de busca consegue entregar para o Claude Code o trecho da iniciativa STRATA sem precisar ler todos os arquivos da pasta?"
+   ]
+  },
+  {
+   "celula": "construtor|quando|pratica",
+   "vaga": 0,
+   "ja_temos": [
+    "Quando a Pasta não replicada é acessada por uma máquina que não a possui, o que acontece?",
+    "Quando ocorre uma colisão real e eu abro a Tela de três vias, o que acontece com a versão que foi descartada?",
+    "Quando o Sincronizador tenta enviar um arquivo de 250 MiB, o que acontece?",
+    "Quando o Syncronizador detecta que um arquivo maior que 200 MiB foi alterado no disco, o que acontece?",
+    "Quando um agente de código cria um novo arquivo em uma pasta com ponto no nome, o que acontece com a replicação?",
+    "Quando o MCP do banco recebe uma gravação com versão conflitante, como o agente é notificado e o arquivo é tratado?",
+    "Quando a Vigia detecta que o Syncronizador está parado há mais de 15 minutos, qual a ação automática?",
+    "Quando o cliente sandbox tenta escrever em um arquivo do hub, o que acontece considerando que ele tem acesso só de leitura por padrão?",
+    "Quando a Camada de busca falha em gerar embeddings locais, como o agente pode obter o trecho correto?",
+    "Quando a réplica do Banco em uma das máquinas fica fora de sincronia por mais do que o limite permitido, como é resolvida a divergência?"
+   ]
+  },
+  {
+   "celula": "construtor|quando|borda",
+   "vaga": 0,
+   "ja_temos": [
+    "Quando a Pasta não replicada é acessada por uma máquina que não a possui, o que acontece?",
+    "Quando ocorre uma colisão real e eu abro a Tela de três vias, o que acontece com a versão que foi descartada?",
+    "Quando o Sincronizador tenta enviar um arquivo de 250 MiB, o que acontece?",
+    "Quando o Syncronizador detecta que um arquivo maior que 200 MiB foi alterado no disco, o que acontece?",
+    "Quando um agente de código cria um novo arquivo em uma pasta com ponto no nome, o que acontece com a replicação?",
+    "Quando o MCP do banco recebe uma gravação com versão conflitante, como o agente é notificado e o arquivo é tratado?",
+    "Quando a Vigia detecta que o Syncronizador está parado há mais de 15 minutos, qual a ação automática?",
+    "Quando o cliente sandbox tenta escrever em um arquivo do hub, o que acontece considerando que ele tem acesso só de leitura por padrão?",
+    "Quando a Camada de busca falha em gerar embeddings locais, como o agente pode obter o trecho correto?",
+    "Quando a réplica do Banco em uma das máquinas fica fora de sincronia por mais do que o limite permitido, como é resolvida a divergência?"
+   ]
+  },
+  {
+   "celula": "construtor|por-que|borda",
+   "vaga": 0,
+   "ja_temos": [
+    "Por que o GitHub privado funciona como cópia de segurança diária, e não em tempo real?",
+    "Por que existe uma pasta não replicada que só é acessada via SSH e por que a busca da outra máquina não a vê?",
+    "Por que o sincronizador deve ignorar pastas com ponto no nome e o que isso pode afetar a organização de arquivos internos?",
+    "Por que o MCP do banco precisa conferir a versão da gravação em vez de usar uma estratégia de 'last-write-wins'?",
+    "Por que a camada de busca ainda está em escolha entre duas ferramentas e como isso impacta a performance de agentes que rodam fora do hub?",
+    "Por que o Vigia só checa de 5 em 5 minutos e qual o risco de uma colisão não ser vista imediatamente pelo Gustavo durante esse intervalo?",
+    "Por que a Nota de retomada é sobrescrita por um hook de fim de resposta em vez de manter um histórico de versões de sessões anteriores?",
+    "Por que o hub utiliza um modelo de pares onde nenhuma máquina manda na outra em vez de uma arquitetura cliente-servidor central?",
+    "Por que arquivos maiores que 200 MiB não viajam pelo sync e como o sistema lida com a divergência causada por isso?",
+    "Por que o contrato do hub é file-first e como garantir que o agente grave no lugar certo sem supervisão manual do Gustavo?"
+   ]
+  },
+  {
+   "celula": "agente-novo|diferenca|pratica",
+   "vaga": 0,
+   "ja_temos": [
+    "Qual a relação entre o Maestro do Maestri e o Acervo do maestro quando ele inicia uma sessão?",
+    "Como um agente acessa arquivos que estão em uma pasta não replicada em outra máquina?",
+    "Se o Vigia detectar uma colisão, o que acontece?",
+    "Onde vivem as iniciativas de cliente, como STRATA e VOEGOL?",
+    "O que muda entre editar uma nota comum e uma nota da pasta não replicada?",
+    "O que acontece se o agente tentar gravar em um arquivo que está em colisão?",
+    "Se um arquivo for muito grande para viajar, o que acontece?",
+    "O que muda entre o agente acessar o hub pela sessão na raiz e acessar pela sessão numa subpasta?",
+    "Como o agente sabe se uma iniciativa está ativa ou arquivada, e o que ele pode fazer em cada caso?",
+    "Se o agente está rodando no notebook do trabalho e o Gustavo está editando no desktop, como é tratado o conflito de edição simultânea?"
+   ]
+  },
+  {
+   "celula": "cliente|falha|borda",
+   "vaga": 0,
+   "ja_temos": [
+    "Se o cliente tentar acessar a pasta não replicada, o que acontece?",
+    "O que acontece se o cliente tentar editar um arquivo do context hub?",
+    "O que acontece se o cliente não conseguir se conectar ao par?",
+    "Se eu editar uma nota no sandbox e a máquina do Gustavo não estiver conectada na rede privada (Tailscale), o que acontece com a minha edição depois que ela volta online?",
+    "Se eu abrir uma sessão no hub através do Maestri e o `AGENTS.md` (contrato do hub) estiver desatualizado por causa de uma divergência não resolvida, o que o agente vai fazer?",
+    "Se eu tentar acessar um arquivo grande (mais de 200 MiB) que está na pasta `clients/STRATA/` e o sincronizador (LiveSync) bloquear o envio, como eu faço para trabalhar com ele?",
+    "Se eu pedir ao agente para ler um trecho específico de uma nota longa (usando a camada de busca) e essa nota estiver em colisão não resolvida entre as duas máquinas, o que o agente vai me mostrar?",
+    "Se eu editar uma `nota de retomada` da iniciativa VOEGOL e, ao salvar, o sistema detectar que a versão no banco está desatualizada por causa de uma edição do Gustavo na outra máquina, como eu resolvo isso sem perder meu trabalho?",
+    "Se o `vigia` parar de funcionar (por exemplo, por um erro no sistema de notificações do Windows) e uma pasta com ponto no nome (como `.config/`) for modificada localmente, como eu descubro que ela não está sincronizando?",
+    "Se eu tentar acessar um arquivo que está na `pasta não replicada` da máquina do Gustavo (por exemplo, um script local) e o SSH falhar, como eu faço para continuar meu trabalho?"
+   ]
+  },
+  {
+   "celula": "grupos-onde-vive|quando|pratica",
+   "vaga": 0,
+   "ja_temos": [
+    "Quando um arquivo é movido na outra máquina, o que acontece?",
+    "Quando o Gustavo edita um arquivo no Obsidian, o que acontece?",
+    "Quando o Gustavo edita um arquivo na pasta não replicada, o que acontece com a cópia na outra máquina?",
+    "Quando um agente edita um arquivo no disco, o que acontece com a cópia na outra máquina?",
+    "Quando um cliente lê um arquivo no hub, o que acontece com a cópia local dele?",
+    "Quando um arquivo grande é movido para a pasta não replicada, o que acontece com a busca nas outras máquinas?",
+    "Quando um agente cria um novo arquivo na sessão do Maestri, o que acontece com a cópia no disco?",
+    "Quando o Gustavo resolve uma colisão no hub, o que acontece com as versões locais das máquinas?",
+    "Quando um cliente altera um arquivo no hub, o que acontece com a cópia na máquina do Gustavo?",
+    "Quando um agente lê um arquivo no hub, o que acontece com a cópia local dele?"
+   ]
+  },
+  {
+   "celula": "vida-da-nota|diferenca|borda",
+   "vaga": 0,
+   "ja_temos": [
+    "E se um agente iniciar uma sessão e a nota de retomada estiver desatualizada, o que acontece?",
+    "Quando o vigia detecta um conflito de divergência, como ele avisa o Gustavo?",
+    "Quando o Gustavo resolve um conflito usando a tela de três vias, o que acontece com as versões conflitantes?",
+    "Se o Gustavo editar um arquivo no Obsidian, o que acontece com a versão no banco?",
+    "Se um agente gravar uma nota no banco, como o sincronizador reage?",
+    "Se o Gustavo editar um arquivo diretamente no disco, como o sincronizador trata essa mudança?",
+    "Se um agente ler uma nota no banco e outra pessoa editar a mesma nota antes que o agente grave, o que acontece?",
+    "Se o sincronizador detectar uma colisão real, como ele trata essa situação?",
+    "Se um arquivo grande for editado em uma máquina, como o sincronizador trata essa mudança?",
+    "Se o Gustavo editar uma nota de retomada, como essa mudança é tratada pelo hook ao fim de cada resposta do agente?"
+   ]
+  },
+  {
+   "celula": "construtor|relacao|borda",
+   "vaga": 0,
+   "ja_temos": [
+    "Se o Gustavo tentar alterar o acervo do maestro sem aval, o que acontece?",
+    "Qual a relação entre o MCP do banco e a Busca quando um agente de código pede um trecho específico de uma nota?",
+    "Qual a relação entre o Sincronizador e o Banco quando o Gustavo edita um arquivo no Obsidian enquanto a máquina está offline?",
+    "Quando o Gustavo edita um arquivo na pasta não replicada, o que acontece com a cópia na outra máquina?",
+    "O que acontece se o vigia detectar uma divergência e o Gustavo não resolver antes de iniciar uma nova sessão?",
+    "Como o contrato do hub é aplicado a um agente que não está no acervo do maestro?",
+    "O que acontece se um arquivo for editado simultaneamente no Obsidian e na pasta não replicada?",
+    "O que acontece se o Gustavo tentar resolver uma colisão usando a tela de três vias, mas uma das versões estiver corrompida?",
+    "Como o hub lida com um arquivo que excede o limite de 200 MiB e é movido para a pasta não replicada?",
+    "Qual a relação entre o GitHub privado e o banco quando ocorre uma falha na sincronização entre os pares?"
+   ]
+  },
+  {
+   "celula": "agente-novo|falha|pratica",
+   "vaga": 0,
+   "ja_temos": [
+    "O que a nota de retomada não faz se o hook ao final de uma resposta de agente falhar?",
+    "Se o sincronizador travar no meio de uma replicação bidirecional via Tailscale, como o banco local sabe quais operações já chegaram ao par remoto e quais precisam ser reenviadas?",
+    "Se dois agentes (um no notebook do trabalho e outro na máquina pessoal) gravarem a mesma nota quase ao mesmo tempo via MCP do banco, e a versão lida por cada um for diferente da versão atual no banco local, como a colisão real é detectada e apresentada antes que a replicação a propague?",
+    "Se o Vigia detectar uma divergência (sync parado há mais de 15 minutos com a outra máquina ligada) exatamente no momento em que eu, agente, tento ler a Camada de busca para achar o trecho certo, a leitura falha, espera ou retorna dado potencialmente desatualizado?",
+    "Se a Camada de busca ainda não foi decidida (duas ferramentas em avaliação) e os embeddings rodam localmente, o que acontece se eu pedir uma busca semântica numa máquina onde a ferramenta escolhida ainda não foi instalada ou o índice está corrompido?",
+    "Se um arquivo comum de 250 MiB for salvo no disco pelo Gustavo, o Sincronizador o ignora silenciosamente ou registra a divergência 'arquivo grande demais para viajar' visível para o Vigia notificar?",
+    "Se a pasta não replicada na máquina pessoal contiver um arquivo essencial para a iniciativa VOEGOL e eu, agente, estiver rodando no notebook do trabalho, como o Contrato do hub me instrui a acessar esse conteúdo via SSH sem quebrar o critério 'agentes acham o trecho certo sem ler tudo'?",
+    "Se o GitHub privado (cópia de segurança diária) falhar no push por três dias seguidos, o Vigia emite alerta de 'sync parado' ou isso só vale para a replicação entre os dois bancos via Tailscale?",
+    "Se eu, agente, editar um arquivo Markdown direto no disco (fora do Obsidian) enquanto o LiveSync do Obsidian também roda, e o Sincronizador de linha de comando pegar a mudança ao mesmo tempo, há risco de dupla gravação no banco local gerando colisão real consigo mesmo?",
+    "E se o Vigia não disparar notificação quando a sincronização parar por mais de 15 minutos?"
+   ]
+  },
+  {
+   "celula": "construtor|quem-usa|pratica",
+   "vaga": 0,
+   "ja_temos": [
+    "O que o hub não faz com os arquivos que estão no GitHub privado se a cópia de segurança diária falhar?",
+    "Se houver uma colisão real entre duas versões de uma nota, quem é responsável por resolver o conflito?",
+    "O que o hub não faz quando um arquivo grande demais para viajar é editado?",
+    "Quando o vigia detecta um conflito de divergência, como ele avisa o Gustavo?",
+    "Quando eu editar uma nota no Obsidian da minha máquina pessoal, o que acontece para essa mudança aparecer no notebook do trabalho?",
+    "O que acontece quando um agente inicia uma sessão no context hub?",
+    "O que acontece se o sincronizador parar de funcionar?",
+    "Se o Gustavo editar um arquivo no Obsidian, o que acontece com a versão no banco?",
+    "O que muda se o maestro iniciar a sessão no hub?",
+    "Por que a nota de retomada é sobrescrita e como isso ajuda na continuidade do trabalho?"
+   ]
+  },
+  {
+   "celula": "falhas-divergencia|onde-vive|pratica",
+   "vaga": 0,
+   "ja_temos": [
+    "Onde vive a nota de retomada se o agente falhar ao tentar executar o hook de atualização obrigatória ao fim de uma resposta?",
+    "Onde vive a notificação de colisão real quando o Gustavo e um agente editam o mesmo arquivo Markdown simultaneamente em máquinas diferentes?",
+    "Onde fica o registro de um sincronizador que parou há mais de 15 minutos devido a uma falha no Tailscale?",
+    "Onde é armazenado um arquivo que excede os 200 MiB e acaba sendo descartado pelo sincronizador?",
+    "Onde a divergência de uma nota fica retida quando uma máquina não consegue enviar mudanças após o limite de tempo excedido?",
+    "Onde ficam guardados os arquivos da pasta não replicada que são invisíveis para a camada de busca da máquina par?",
+    "Onde reside a cópia de segurança de caso o banco CouchDB de ambas as máquinas sofra corrupção de dados?",
+    "Onde vive a interface da tela de três vias quando o Gustavo precisa resolver uma colisão que o hub não viu?",
+    "Onde fica armazenada a versão de uma nota que o MCP do banco identificou como tendo um conflito de edição concorrente?",
+    "Onde vive o binário descartado que o Vigia identificou durante a checagem de erro de sincronização?"
+   ]
+  },
+  {
+   "celula": "gustavo-dia-a-dia|grupo|pratica",
+   "vaga": 0,
+   "ja_temos": [
+    "O que acontece quando eu edito uma nota no Obsidian e não salvo imediatamente, depois que o sincronizador faz o sync?",
+    "Se eu abrir o hub por meio de um cliente que só tem permissão de leitura, consigo ver as alterações feitas na outra máquina em tempo real?",
+    "O que acontece se eu fizer duas edições simultâneas em um mesmo arquivo, usando o Obsidian em uma máquina e o editor de texto na outra?",
+    "Se o sincronizador falhar por um arquivo grande, ele fica na pasta não replicada ou reporta alguma mensagem?",
+    "Quando eu adiciono uma nova iniciativa na pasta initiatives, ela aparece instantaneamente na outra máquina?",
+    "Se um agente de código tentar criar uma nota em uma pasta que começa com ponto, o que acontece?",
+    "Quando o agente do Maestri cria um novo canvas, ele cria automaticamente a nota de retomada?",
+    "Se a rede Tailscale cair, o sincronizador continua trabalhando?",
+    "Como a camada de busca local garante que ele só entregue o trecho certo sem ler todo o banco?",
+    "O que acontece se eu movo um arquivo de operations para inbox durante o processo de sync?"
+   ]
+  },
+  {
+   "celula": "gustavo-dia-a-dia|onde-vive|pratica",
+   "vaga": 0,
+   "ja_temos": [
+    "Onde vive o contrato do hub?",
+    "Onde vivem as iniciativas de cliente, como STRATA e VOEGOL?",
+    "Onde vive o acervo do maestro?",
+    "Onde vivem os arquivos que estão na vista Markdown?",
+    "Onde vivem os arquivos que estão na tela de três vias?",
+    "Onde vivem as notas de retomada?",
+    "Onde vivem as skills dos agentes?",
+    "Onde vivem os papéis dos agentes?",
+    "Onde vivem os arquivos grandes que não viajam?",
+    "Onde vivem os arquivos que estão em divergência?"
+   ]
+  },
+  {
+   "celula": "gustavo-dia-a-dia|ordem|borda",
+   "vaga": 0,
+   "ja_temos": [
+    "Se o Gustavo editar uma nota no Obsidian, o que acontece?",
+    "O que acontece na tela de três vias se o Gustavo tentar resolver uma colisão em uma nota da iniciativa AVIANCA?",
+    "O que acontece quando um agente inicia uma sessão no context hub?",
+    "O que acontece se o sincronizador parar de funcionar?",
+    "O que acontece com arquivos grandes demais para serem replicados?",
+    "Se o Obsidian estiver fechado e o sincronizador rodando, o que acontece com uma nota que o Gustavo acabou de salvar direto no disco?",
+    "O que acontece se o Gustavo editar uma nota no Obsidian no notebook do trabalho ao mesmo tempo em que um agente edita a mesma nota via MCP do banco na máquina pessoal?",
+    "Como o Vigia avisa o Gustavo se a máquina pessoal ficar sem conseguir enviar mudanças para o notebook por mais do que o limite estabelecido?",
+    "O que acontece com a busca e com o sync se o Gustavo criar uma pasta com ponto no nome dentro da raiz operations?",
+    "Se uma nota de STRATA passar dos 200 MiB, o que acontece quando o sincronizador tenta levá-la para a outra máquina?"
+   ]
+  },
+  {
+   "celula": "gustavo-dia-a-dia|quando|borda",
+   "vaga": 0,
+   "ja_temos": [
+    "Quando a Vigia detecta que a sincronização parou há mais de 15 minutos, o que eu vejo?",
+    "Quando o hook ao fim de cada resposta do agente atualiza a nota de retomada, ela sobrescreve a anterior?",
+    "Quando ocorre uma colisão real e eu abro a Tela de três vias, o que acontece com a versão que foi descartada?",
+    "Quando eu edito a mesma nota no Obsidian enquanto um agente grava nela via MCP do banco, o que acontece?",
+    "Quando o Vigia detecta que o sync está parado há 15 minutos mas eu estou trabalhando offline, o que acontece?",
+    "Quando eu crio um arquivo maior que 200 MiB em uma das máquinas, o que acontece com a replicação?",
+    "Quando eu tento acessar a Pasta não replicada a partir da máquina que não a hospeda, o que acontece?",
+    "Quando um agente tenta atualizar a Nota de retomada mas o arquivo está travado por outro processo, o que acontece?",
+    "Quando o maestro do Maestri tenta alterar algo no Acervo do maestro sem a minha autorização, o que acontece?",
+    "Quando eu inicio uma sessão num repositório fora do hub e peço para o agente salvar algo na raiz de STRATA, o que acontece?"
+   ]
+  },
+  {
+   "celula": "gustavo-dia-a-dia|diferenca|borda",
+   "vaga": 0,
+   "ja_temos": [
+    "Se o Gustavo editar uma nota no Obsidian, o que acontece?",
+    "O que muda entre editar uma nota comum e uma nota da pasta não replicada?",
+    "Se o Gustavo desligar o notebook do trabalho, como o agente na máquina pessoal consegue ler e editar as notas do hub?",
+    "Se o vigia avisar que um arquivo grande foi descartado, como o Gustavo recupera esse arquivo?",
+    "Se o Gustavo deixar o Obsidian fechado e um agente editar uma nota, como essa mudança chega aos arquivos Markdown?",
+    "O que acontece se o Gustavo excluir um arquivo do disco e o agente tentar editá-lo?",
+    "Como o Gustavo resolve um conflito se duas máquinas tiverem versões diferentes de uma nota?",
+    "Se o Gustavo pede a um maestro para usar o acervo pronto, ele pode alterar o que está lá durante a sessão?",
+    "O que muda entre usar o contexto do hub em uma sessão na raiz e em uma subpasta?",
+    "Se o Gustavo criar uma iniciativa nova, onde ela deve ficar e como o agente deve tratá-la?"
+   ]
+  },
+  {
+   "celula": "agente-novo|relacao|pratica",
+   "vaga": 0,
+   "ja_temos": [
+    "Qual a relação entre o contrato do hub e as skills dos agentes?",
+    "Qual a relação entre o MCP do banco e a Busca quando um agente de código pede um trecho específico de uma nota?",
+    "Quando a Nota de retomada é atualizada ao final de uma resposta do agente, quem verifica se ela foi sincronizada antes da próxima sessão?",
+    "Se o agente tenta editar um arquivo dentro de uma Pasta não replicada, o que acontece?",
+    "Se o agente tenta editar um arquivo grande que ultrapassa o limite de 200 MiB, o que acontece com a sincronização?",
+    "Como o Sincronizador sabe que um arquivo .md editado pelo Gustavo já está pronto para ser enviado ao Banco?",
+    "Quando o Vigia detecta uma colisão, como a Tela de três vias entra no fluxo para que o Gustavo resolva?",
+    "De que forma o GitHub privado recebe backup das mudanças que foram replicadas pelo Sincronizador entre as duas máquinas?",
+    "Como a Pasta não replicada se comporta quando um agente tenta buscar um arquivo que só existe nela?",
+    "Qual a dependência entre o Contrato do hub e as Skills nas pastas globais para que um agente possa gravar um novo arquivo?"
+   ]
+  },
+  {
+   "celula": "agente-novo|o-que-nao-faz|pratica",
+   "vaga": 0,
+   "ja_temos": [
+    "Qual a relação entre a pasta não replicada e o GitHub privado?",
+    "O que o MCP do banco não faz se duas gravações concorrentes chegam com a mesma versão?",
+    "O que o Sincronizador não faz com arquivos que têm ponto no nome?",
+    "O que o Sincronizador não faz quando o arquivo tem mais de 200 MiB?",
+    "O que a Tela de três vias não faz quando há mais de duas versões divergentes de uma nota?",
+    "O que o Contrato do hub não faz se um agente tenta gravar um arquivo fora da estrutura definida?",
+    "O que o Maestro do Maestri não faz se o Acervo do maestro não está atualizado na máquina local?",
+    "O que o sistema não faz se eu tentar editar uma nota ao mesmo tempo que o Gustavo está editando no Obsidian?",
+    "O que o sincronizador não faz se eu criar uma pasta com um ponto no início do nome dentro da estrutura do hub?",
+    "O que o hub não faz se um arquivo maior que 200 MiB for adicionado em uma das máquinas?"
+   ]
+  },
+  {
+   "celula": "agente-novo|ordem|borda",
+   "vaga": 0,
+   "ja_temos": [
+    "Em que ordem acontece a leitura do contrato do hub, a verificação de divergências pendentes e a abertura da nota de retomada quando eu inicio uma sessão nova na raiz do hub?",
+    "Se eu edito um arquivo Markdown no disco enquanto o Obsidian está fechado, em que ordem o sincronizador detecta a mudança, grava no banco local e envia para o banco do outro par via Tailscale?",
+    "Quando eu tento gravar uma nota via MCP do banco e outro agente já mudou a mesma nota no outro par desde que eu a li, em que ordem ocorre a checagem de versão, a criação da colisão real e a notificação ao Gustavo?",
+    "Se o Gustavo resolve uma colisão na tela de três vias no notebook do trabalho, em que ordem a versão resolvida volta para o banco local, replica para o banco da máquina pessoal e atualiza os arquivos .md nos dois discos?",
+    "Em que ordem a camada de busca indexa uma nota nova que eu acabei de criar via MCP do banco, considerando que os embeddings rodam localmente em cada máquina?",
+    "Se a máquina pessoal fica offline por duas horas e o notebook do trabalho recebe edições do Gustavo e de agentes nesse período, em que ordem ocorre a replicação de recuperação quando a pessoal volta à rede Tailscale?",
+    "Quando um cliente (sem cópia própria) pede uma leitura via MCP do banco do notebook do trabalho, em que ordem o hub verifica se o cliente tem permissão de leitura, consulta a camada de busca e devolve o trecho?",
+    "Se eu gero um arquivo binário de 250 MiB numa iniciativa de cliente (ex.: STRATA) e tento salvar no hub, em que ordem o sincronizador descarta o binário, avisa o vigia e registra a divergência por arquivo grande?",
+    "Em que ordem o hook de fim de resposta me obriga a atualizar a nota de retomada, e o que acontece se eu tentar encerrar a sessão sem gravá-la?",
+    "Se o Gustavo move uma iniciativa (ex.: VOEGOL) de `clients/` para `initiatives/` pelo Obsidian, em que ordem o sincronizador propaga a mudança de pasta, o banco atualiza os caminhos e a camada de busca reindexa?"
+   ]
+  },
+  {
+   "celula": "agente-novo|quando|pratica",
+   "vaga": 0,
+   "ja_temos": [
+    "Quando o agente tenta acessar um arquivo localizado na pasta não replicada, o que acontece?",
+    "Se eu alterar uma nota de uma iniciativa como a STRATA ao mesmo tempo que o Gustavo a edita no Obsidian, como o banco trata essa concorrência?",
+    "Quando detecto que uma nota está em conflito, qual é o procedimento padrão para eu não sobrescrever as mudanças do outro par?",
+    "Quando preciso acessar uma informação técnica de uma iniciativa, como uso a camada de busca para evitar a leitura de arquivos irrelevantes?",
+    "Quando o Gustavo edita um arquivo no disco, em quanto tempo essa alteração fica disponível para mim através do sincronizador?",
+    "Se eu encontrar uma nota de retomada desatualizada ao iniciar minha sessão, qual é o protocolo para garantir que ela reflita o estado atual?",
+    "Quando preciso gravar uma nova instrução ou peça de agente, como garanto que ela siga o contrato do hub sem intervenção manual do Gustavo?",
+    "Quando uma das máquinas fica offline por muito tempo, como o vigia me avisa que a sincronização parou?",
+    "Se eu precisar acessar dados de uma pasta não replicada, como faço para ler esse conteúdo que não está no sincronizador?",
+    "Quando finalizo uma tarefa de uma iniciativa, qual o critério para mover os arquivos para o _archive da raiz correspondente?"
+   ]
+  },
+  {
+   "celula": "agente-novo|quando|borda",
+   "vaga": 0,
+   "ja_temos": [
+    "Quando o agente tenta acessar um arquivo localizado na pasta não replicada, o que acontece?",
+    "Se eu alterar uma nota de uma iniciativa como a STRATA ao mesmo tempo que o Gustavo a edita no Obsidian, como o banco trata essa concorrência?",
+    "Quando detecto que uma nota está em conflito, qual é o procedimento padrão para eu não sobrescrever as mudanças do outro par?",
+    "Quando preciso acessar uma informação técnica de uma iniciativa, como uso a camada de busca para evitar a leitura de arquivos irrelevantes?",
+    "Quando o Gustavo edita um arquivo no disco, em quanto tempo essa alteração fica disponível para mim através do sincronizador?",
+    "Se eu encontrar uma nota de retomada desatualizada ao iniciar minha sessão, qual é o protocolo para garantir que ela reflita o estado atual?",
+    "Quando preciso gravar uma nova instrução ou peça de agente, como garanto que ela siga o contrato do hub sem intervenção manual do Gustavo?",
+    "Quando uma das máquinas fica offline por muito tempo, como o vigia me avisa que a sincronização parou?",
+    "Se eu precisar acessar dados de uma pasta não replicada, como faço para ler esse conteúdo que não está no sincronizador?",
+    "Quando finalizo uma tarefa de uma iniciativa, qual o critério para mover os arquivos para o _archive da raiz correspondente?"
+   ]
+  },
+  {
+   "celula": "maestro|responsavel|pratica",
+   "vaga": 0,
+   "ja_temos": [
+    "Quem é responsável por monitorar se o GitHub privado recebeu a cópia de segurança diária?",
+    "Quem é responsável por impedir que a Pasta não replicada seja indexada na busca da outra máquina?",
+    "Quem é responsável por garantir que o Vigia notifique colisões dentro do intervalo de 5 minutos?",
+    "Quem é responsável por atualizar a Camada de busca quando novos embeddings são treinados nas duas máquinas?",
+    "Quem é responsável por resolver divergências quando uma máquina está offline por mais de 30 minutos?",
+    "Quem é responsável por sincronizar arquivos maiores que 200 MiB entre as duas cópias do hub?",
+    "Quem é responsável por decidir quando um novo par de máquinas pode ser adicionado ao hub?",
+    "Quem é responsável por aplicar automaticamente a Nota de retomada ao iniciar uma sessão de agente?",
+    "Quem é responsável por validar alterações no Acervo do maestro antes de serem disponibilizadas?",
+    "Quem é responsável por gerar a Vista Markdown a partir das mudanças no banco?"
+   ]
+  },
+  {
+   "celula": "maestro|responsavel|borda",
+   "vaga": 0,
+   "ja_temos": [
+    "Quem é responsável por monitorar se o GitHub privado recebeu a cópia de segurança diária?",
+    "Quem é responsável por impedir que a Pasta não replicada seja indexada na busca da outra máquina?",
+    "Quem é responsável por garantir que o Vigia notifique colisões dentro do intervalo de 5 minutos?",
+    "Quem é responsável por atualizar a Camada de busca quando novos embeddings são treinados nas duas máquinas?",
+    "Quem é responsável por resolver divergências quando uma máquina está offline por mais de 30 minutos?",
+    "Quem é responsável por sincronizar arquivos maiores que 200 MiB entre as duas cópias do hub?",
+    "Quem é responsável por decidir quando um novo par de máquinas pode ser adicionado ao hub?",
+    "Quem é responsável por aplicar automaticamente a Nota de retomada ao iniciar uma sessão de agente?",
+    "Quem é responsável por validar alterações no Acervo do maestro antes de serem disponibilizadas?",
+    "Quem é responsável por gerar a Vista Markdown a partir das mudanças no banco?"
+   ]
+  },
+  {
+   "celula": "maestro|grupo|borda",
+   "vaga": 0,
+   "ja_temos": [
+    "Quem controla que a Nota de retomada seja atualizada automaticamente ao final de cada resposta de um agente?",
+    "A iniciativa STRATA faz parte do grupo de iniciativas de cliente que têm uma casa própria no hub?",
+    "O acervo do maestro faz parte do grupo de peças que o hub oferece a todo maestro como opção?",
+    "Onde são processadas as notas de colisão real que o Sronizador não conseguiu juntar de forma automática?",
+    "Quem decide qual versão de uma nota será mantida quando o Gustavo usa a Tela de três vias para resolver um conflito?",
+    "Como o Vigia notifica o Gustavo se a sincronização entre as máquinas parou há mais de 15 minutos?",
+    "O que diferencia uma divergência de uma colisão real no contexto do hub?",
+    "As skills que compõem o acervo do maestro fazem parte do grupo de peças guardadas nas pastas globais?",
+    "As regras de alteração do acervo do maestro fazem parte do grupo de itens protegidos por uma guarda?",
+    "O maestro do Maestri faz parte do grupo de agentes que conduzem equipes de recrutas num canvas?"
+   ]
+  },
+  {
+   "celula": "maestro|ordem|pratica",
+   "vaga": 0,
+   "ja_temos": [
+    "Se o Gustavo tentar alterar o acervo do maestro sem aval, o que acontece?",
+    "Como a camada de busca ajuda os recrutas do maestro a acharem o trecho certo sem ler todo o hub?",
+    "Em que ordem o maestro do Maestri lê as peças prontas do acervo para montar uma equipe de recrutas no canvas?",
+    "Em que ordem o contrato do hub e as skills das pastas globais são carregados quando o maestro do Maestri inicia uma sessão numa subpasta?",
+    "Se um recruta da equipe montada pelo maestro do Maestri tentar editar a nota de retomada ao mesmo tempo que outra sessão, como o MCP do banco lida com a concorrência?",
+    "Se o sincronizador de uma máquina parar por mais de 15 minutos e o maestro do Maestri iniciar uma sessão, como o vigia avisa o problema?",
+    "Se o maestro do Maestri precisa consultar dados de uma iniciativa de cliente como STRATA que está numa pasta não replicada da outra máquina, o que acontece?",
+    "Se ocorrer uma colisão real em uma nota de uma iniciativa como TRF3 enquanto o maestro do Maestri conduz os recrutas, como o resto das notas continua viajando?",
+    "Se o gancho (hook) ao fim da resposta de um recruta falhar ao tentar atualizar a nota de retomada, o que o maestro do Maestri faz no início da próxima sessão?",
+    "Em que ordem acontece a publicação de um novo papel do maestro no contrato quando eu o salvo no Obsidian?"
+   ]
+  },
+  {
+   "celula": "maestro|falha|borda",
+   "vaga": 0,
+   "ja_temos": [
+    "Se uma das máquinas perder a conexão com a rede privada (Tailscale) durante uma tarefa do maestro, como o sincronizador garante que o acervo do maestro não fique desatualizado na máquina offline?",
+    "E se o maestro tentar aplicar um papel do acervo do maestro enquanto o Gustavo está alterando a mesma skill, como o MCP do banco resolve a colisão de escrita?",
+    "Se um agente recruta gravar uma nota de retomada num formato que excede o limite de 200 MiB, o sincronizador interrompe a operação ou gera uma divergência silenciosa?",
+    "O que acontece com a integridade do contrato do hub se o maestro tentar atualizar uma skill global enquanto o Gustavo está com o Obsidian aberto editando o mesmo arquivo?",
+    "Se a camada de busca falhar ao indexar uma nova iniciativa de cliente como STRATA, o maestro deve abortar a sessão ou tentar processar a iniciativa lendo todo o conteúdo bruto?",
+    "Como a guarda do acervo do maestro reage se o maestro tentar implementar uma mudança proposta por um recruta que não foi autorizada pelo Gustavo?",
+    "Se o vigia detectar que o sincronizador parou há 15 minutos, o maestro deve interromper automaticamente a execução de qualquer iniciativa em curso até que a sincronização seja restaurada?",
+    "Caso o maestro tente gravar uma mudança numa nota de retomada e o MCP do banco retorne um conflito de versão, o hook do agente é capaz de disparar uma resolução automática ou ele interrompe o fluxo?",
+    "Se o maestro estiver operando através de uma pasta não replicada, como ele garante que os agentes recrutas tenham acesso às dependências necessárias que residem no restante do hub?",
+    "O que ocorre se dois maestros em máquinas diferentes tentarem atualizar o mesmo contrato do hub simultaneamente, considerando que as máquinas são pares?"
+   ]
+  },
+  {
+   "celula": "maestro|por-que|pratica",
+   "vaga": 0,
+   "ja_temos": [
+    "Por que as pastas com ponto no nome não são replicadas pelo sincronizador entre as minhas máquinas?",
+    "Por que o meu maestro precisa consultar o contrato do hub em AGENTS.md antes de começar a montar uma equipe?",
+    "Por que o sistema não permite que eu ignore a nota de retomada ao iniciar uma sessão de trabalho em uma iniciativa como a STRATA?",
+    "Por que o MCP do banco exige conferência de versão em cada gravação que meus recrutas fazem nas notas?",
+    "Por que existe uma guarda impedindo que eu altere o acervo do maestro sem o aval direto do Gustavo?",
+    "Por que o hub me obriga a usar uma tela de três vias quando ocorre uma colisão em uma nota de projeto?",
+    "Por que o sistema veda que uma divergência entre as máquinas permaneça silenciosa até que o Gustavo a resolva?",
+    "Por que preciso que a camada de busca rode localmente em vez de depender de um serviço externo para encontrar trechos nas notas?",
+    "Por que a pasta não replicada existe se ela me impede de acessar arquivos de uma máquina a partir da outra via busca?",
+    "Por que o vigia me notifica se o sincronizador ficar parado por mais de 15 minutos?"
+   ]
+  },
+  {
+   "celula": "maestro|por-que|borda",
+   "vaga": 0,
+   "ja_temos": [
+    "Por que as pastas com ponto no nome não são replicadas pelo sincronizador entre as minhas máquinas?",
+    "Por que o meu maestro precisa consultar o contrato do hub em AGENTS.md antes de começar a montar uma equipe?",
+    "Por que o sistema não permite que eu ignore a nota de retomada ao iniciar uma sessão de trabalho em uma iniciativa como a STRATA?",
+    "Por que o MCP do banco exige conferência de versão em cada gravação que meus recrutas fazem nas notas?",
+    "Por que existe uma guarda impedindo que eu altere o acervo do maestro sem o aval direto do Gustavo?",
+    "Por que o hub me obriga a usar uma tela de três vias quando ocorre uma colisão em uma nota de projeto?",
+    "Por que o sistema veda que uma divergência entre as máquinas permaneça silenciosa até que o Gustavo a resolva?",
+    "Por que preciso que a camada de busca rode localmente em vez de depender de um serviço externo para encontrar trechos nas notas?",
+    "Por que a pasta não replicada existe se ela me impede de acessar arquivos de uma máquina a partir da outra via busca?",
+    "Por que o vigia me notifica se o sincronizador ficar parado por mais de 15 minutos?"
+   ]
+  },
+  {
+   "celula": "outro-par|se-x|pratica",
+   "vaga": 0,
+   "ja_temos": [
+    "Se eu alterar um arquivo de uma iniciativa enquanto a outra máquina está desconectada da rede, como o sistema garante que essa mudança não será perdida quando a conexão voltar?",
+    "Se o sincronizador detectar que um arquivo ultrapassou o limite de 200 MiB na minha máquina, como a outra máquina é informada sobre essa impossibilidade de sincronização?",
+    "Se um agente gravar uma alteração em uma nota simultaneamente na minha máquina e na outra, de que forma o MCP do banco impede que uma versão sobrescreva a outra?",
+    "Se eu mover uma pasta que contém um ponto no nome, o que o sincronizador faz para garantir que a outra máquina não tente processar esse diretório?",
+    "Se uma divergência for detectada porque uma máquina ficou offline por mais de 15 minutos, como o vigia me alerta sobre esse estado de sincronização parado?",
+    "Se eu editar uma nota que está em conflito com a versão da outra máquina, como a tela de três vias é acionada para que eu resolva a colisão?",
+    "Se o Gustavo salvar um novo arquivo na pasta não replicada de uma máquina, como a outra máquina reage ao tentar acessar esse conteúdo via SSH?",
+    "Se a camada de busca for atualizada em uma máquina, como a outra máquina garante que os embeddings locais permaneçam consistentes para a consulta dos agentes?",
+    "Se o contrato do hub for alterado em uma das máquinas, como essa mudança é replicada para que o arquivo global e as skills sejam atualizados no outro par?",
+    "Se um agente encerrar uma sessão e a nota de retomada for atualizada, como o outro par garante que o próximo agente a iniciar o trabalho tenha acesso à versão mais recente?"
+   ]
+  },
+  {
+   "celula": "outro-par|se-x|borda",
+   "vaga": 0,
+   "ja_temos": [
+    "Se eu alterar um arquivo de uma iniciativa enquanto a outra máquina está desconectada da rede, como o sistema garante que essa mudança não será perdida quando a conexão voltar?",
+    "Se o sincronizador detectar que um arquivo ultrapassou o limite de 200 MiB na minha máquina, como a outra máquina é informada sobre essa impossibilidade de sincronização?",
+    "Se um agente gravar uma alteração em uma nota simultaneamente na minha máquina e na outra, de que forma o MCP do banco impede que uma versão sobrescreva a outra?",
+    "Se eu mover uma pasta que contém um ponto no nome, o que o sincronizador faz para garantir que a outra máquina não tente processar esse diretório?",
+    "Se uma divergência for detectada porque uma máquina ficou offline por mais de 15 minutos, como o vigia me alerta sobre esse estado de sincronização parado?",
+    "Se eu editar uma nota que está em conflito com a versão da outra máquina, como a tela de três vias é acionada para que eu resolva a colisão?",
+    "Se o Gustavo salvar um novo arquivo na pasta não replicada de uma máquina, como a outra máquina reage ao tentar acessar esse conteúdo via SSH?",
+    "Se a camada de busca for atualizada em uma máquina, como a outra máquina garante que os embeddings locais permaneçam consistentes para a consulta dos agentes?",
+    "Se o contrato do hub for alterado em uma das máquinas, como essa mudança é replicada para que o arquivo global e as skills sejam atualizados no outro par?",
+    "Se um agente encerrar uma sessão e a nota de retomada for atualizada, como o outro par garante que o próximo agente a iniciar o trabalho tenha acesso à versão mais recente?"
+   ]
+  },
+  {
+   "celula": "outro-par|relacao|borda",
+   "vaga": 0,
+   "ja_temos": [
+    "Como o sincronizador lida com uma colisão de edição caso a outra máquina tenha ficado offline por um período superior ao limite de tolerância?",
+    "Qual a relação entre o MCP do banco e a integridade dos dados quando um agente tenta gravar um arquivo enquanto a outra máquina está realizando uma sincronização pesada?",
+    "Como a camada de busca garante que um agente na outra máquina não acesse ou considere informações de uma pasta não replicada?",
+    "O que acontece com a nota de retomada se o agente na outra máquina sofrer uma queda de conexão exatamente no momento do hook de salvamento?",
+    "Como o vigia na outra máquina diferencia uma divergência causada por um arquivo grande demais de uma divergência técnica por falha na rede?",
+    "Qual é o comportamento do sincronizador ao encontrar um arquivo com o mesmo nome na pasta de uma iniciativa de cliente que foi editado simultaneamente nas duas máquinas?",
+    "Existe risco de o contrato do hub ser sobrescrito por uma versão antiga se a outra máquina realizar uma alteração durante a atualização automática via link simbólico?",
+    "Como o banco local resolve a prioridade de escrita quando o Gustavo edita via Obsidian em uma máquina e um agente tenta editar via MCP na outra?",
+    "Se uma iniciativa for movida para o _archive em uma máquina, como o sincronizador garante que a outra máquina remova o acesso imediato sem gerar conflitos de caminho?",
+    "Qual é a interação entre o acervo do maestro e a guarda de avaliação quando uma alteração no acervo é replicada pela primeira vez na outra máquina?"
+   ]
+  },
+  {
+   "celula": "outro-par|responsavel|borda",
+   "vaga": 0,
+   "ja_temos": [
+    "Se um arquivo estiver em uma pasta não replicada, o que a camada de busca da outra máquina faz quando um agente tenta buscar essa informação?",
+    "Como a outra máquina recebe a alteração que fiz em uma nota no meu Obsidian?",
+    "O que a outra máquina faz se eu editar um arquivo ao mesmo tempo que ela edita o mesmo arquivo?",
+    "Como o outro par fica sabendo de uma alteração se a conexão Tailscale cair bem na hora?",
+    "O que acontece na outra máquina se eu apagar uma nota que ela acabou de atualizar?",
+    "Como o outro par lida com arquivos grandes acima de 200 MiB que eu criei aqui?",
+    "O que o outro par enxerga na pasta não replicada que está apenas na minha máquina?",
+    "Como a outra máquina percebe que o meu sincronizador parou de funcionar há mais de 15 minutos?",
+    "O que acontece com as minhas edições na iniciativa STRATA quando o outro par tenta enviar as mudanças dele?",
+    "Como o outro par é avisado de que existe uma divergência que eu ainda não resolvi?"
+   ]
+  },
+  {
+   "celula": "outro-par|grupo|pratica",
+   "vaga": 0,
+   "ja_temos": [
+    "A tela de três vias faz parte do grupo de recursos que o Gustavo usa para resolver colisões de edição entre os pares?",
+    "Se o outro par alterar o contrato do hub, o que acontece com a minha máquina?",
+    "Se eu criar uma nova iniciativa de cliente como 'STRATA', ela aparece automaticamente na estrutura de pastas da outra máquina?",
+    "O sincronizador faz parte do grupo de processos que garantem que meu disco local esteja idêntico ao do notebook do Gustavo?",
+    "A pasta não replicada faz parte do grupo de diretórios que o agente de busca da outra máquina consegue acessar via rede?",
+    "O arquivo de contrato do hub faz parte do grupo de itens que o sincronizador ignora se houver conflito de versão?",
+    "As notas de retomada fazem parte do grupo de arquivos que o maestro deve manter atualizados obrigatoriamente ao final de cada resposta?",
+    "O acervo do maestro faz parte do grupo de itens que qualquer agente pode modificar sem passar pelo aval do Gustavo?",
+    "Os arquivos maiores que 200 MiB fazem parte do grupo de dados que o sincronizador tenta replicar entre as máquinas?",
+    "O Vigia faz parte do grupo de ferramentas que me avisam se uma divergência estiver acontecendo silenciosamente?"
+   ]
+  },
+  {
+   "celula": "outro-par|quem-usa|pratica",
+   "vaga": 0,
+   "ja_temos": [
+    "Quem vê a atualização de uma nota que eu editei no Obsidian assim que o Sincronizador a envia para o banco?",
+    "Quem recebe a notificação do Vigia quando ocorre uma colisão porque eu alterei o mesmo arquivo que a outra máquina já tinha modificado?",
+    "Quem tem acesso ao arquivo grande (acima de 200 MiB) que eu tentei salvar, e o que acontece na outra máquina?",
+    "Quem percebe que a outra máquina ficou sem sincronizar por mais de 15 minutos e como é avisado?",
+    "Quem vê a versão conflitante de uma nota quando a outra máquina tenta enviar uma mudança que eu ainda não vi?",
+    "Quem tem a oportunidade de resolver uma divergência que permanece porque a outra máquina está offline há mais de 24 horas?",
+    "Quem recebe a cópia de segurança diária no GitHub privado quando eu faço uma alteração que ainda não foi replicada?",
+    "Quem consegue ler a nota que está na Pasta não replicada da outra máquina, caso eu tente buscá‑la?",
+    "Quem vê a mudança de um arquivo que foi movido da raiz `operations/` para `_archive/` na outra máquina?",
+    "Quem tem a informação de que eu adicionei um novo agente ao `AGENTS.md` e como isso se propaga?"
+   ]
+  },
+  {
+   "celula": "outro-par|quando|borda",
+   "vaga": 0,
+   "ja_temos": [
+    "E se um arquivo for editado na pasta não replicada, a outra máquina consegue acessá-lo?",
+    "Quando um arquivo é movido na outra máquina, o que acontece?",
+    "Quando um arquivo é editado no Obsidian na outra máquina, o que acontece?",
+    "Quando um arquivo é editado no Claude Desktop na outra máquina, o que acontece?",
+    "Quando um agente grava no banco na outra máquina, o que acontece?",
+    "Quando um arquivo grande é descartado na outra máquina, o que acontece?",
+    "Quando o sync para na outra máquina, o que acontece?",
+    "Quando um conflito é resolvido na outra máquina, o que acontece?",
+    "Quando um arquivo é excluído na outra máquina, o que acontece?",
+    "Quando um arquivo é editado no GitHub na outra máquina, o que acontece?"
+   ]
+  },
+  {
+   "celula": "cliente|se-x|pratica",
+   "vaga": 0,
+   "ja_temos": [
+    "Se o cliente tentar acessar a pasta não replicada, o que acontece?",
+    "Se eu tentar usar uma skill que está no acervo do maestro mas que não foi aprovada pelo Gustavo, o que acontece?",
+    "Se o cliente tentar editar um arquivo do hub via a pair, o que acontece?",
+    "Se o cliente tentar abrir um arquivo maior que 200 MiB que está no hub, o que acontece?",
+    "Se o cliente tentar ler um arquivo que foi alterado no outro par mas ainda não sincronizou, o que acontece?",
+    "Se o cliente tentar criar uma nova iniciativa de cliente em clients/, o que acontece?",
+    "Se o cliente tentar usar a Tela de três vias para resolver uma colisão, o que acontece?",
+    "Se o cliente tentar enviar uma alteração para o GitHub privado, o que acontece?",
+    "Se o cliente tentar usar o Contrato do hub para adicionar uma nova skill, o que acontece?",
+    "Se o cliente tentar iniciar uma sessão do Maestri via a porta de entrada, o que acontece?"
+   ]
+  },
+  {
+   "celula": "cliente|responsavel|borda",
+   "vaga": 0,
+   "ja_temos": [
+    "Se houver uma colisão real entre duas versões de uma nota, quem é responsável por resolver o conflito?",
+    "Quem é responsável por manter o acervo do maestro atualizado?",
+    "Se eu, como cliente, tentar modificar uma iniciativa da STRATA através do par, quem é responsável por garantir que essa alteração chegue à outra máquina do Gustavo?",
+    "Quem é responsável por resolver um conflito se eu editar um arquivo no exato momento em que o Gustavo estiver editando o mesmo arquivo no Obsidian?",
+    "Se o sincronizador de uma máquina do Gustavo parar por mais de 15 minutos enquanto eu estiver usando o hub, qual peça ou ator é responsável por me avisar desse erro?",
+    "Quem é responsável por validar se a nota de retomada de um trabalho foi atualizada corretamente antes de eu iniciar uma nova sessão de agente?",
+    "Se eu tentar enviar um arquivo maior que 200 MiB para o hub, quem é responsável por impedir a sincronização e evitar a divergência silenciosa?",
+    "Quem é responsável por garantir que a camada de busca não me entregue informações de uma pasta não replicada que eu não deveria ver ver?",
+    "Se o maestro do Maestri solicitar uma skill nova do acervo, quem é responsável por aplicar a guarda do Gustavo antes de disponibilizar para mim?",
+    "Quem é responsável por manter a consistência do banco CouchDB se a rede privada Tailscale entre as duas máquinas cair momentaneamente?"
+   ]
+  },
+  {
+   "celula": "cliente|grupo|pratica",
+   "vaga": 0,
+   "ja_temos": [
+    "Se o cliente acessar o **hub** através de um **par** ligado e tentar editar um arquivo `.md` na pasta `initiatives/STRATA/`, o que o **sincronizador** do par faz com essa edição antes de ela chegar ao **banco** local?",
+    "Se o **cliente** tentar ler um arquivo que está numa **pasta não replicada** do par ligado, o que o **MCP do banco** faz e por que o **cliente** não consegue acessá-lo?",
+    "Se o **cliente** conectar ao **hub** por um **par** desligado há mais de 15 minutos, como o **vigia** do par ligado reage e o que impede que o **cliente** tenha acesso sincronizado ao **banco**?",
+    "Se o **cliente** tentar editar um arquivo grande (acima de 200 MiB) na pasta `clients/AVIANCA/`, o que o **sincronizador** faz e como o **cliente** é notificado disso?",
+    "Se o **cliente** acessar o **hub** e tentar ler uma **colisão real** não resolvida em um arquivo da pasta `operations/`, como o **MCP do banco** exibe essa situação e o que o **cliente** pode fazer?",
+    "Se o **cliente** tentar executar uma ação no **hub** enquanto o **maestro** está usando o **Maestri** para editar o mesmo arquivo `.md` na pasta `agents/`, como o **MCP do banco** lida com a **divergência** e quem é notificado primeiro?",
+    "Se o **cliente** tentar acessar uma **nota de retomada** da iniciativa `TRF3` enquanto o **Gustavo** está editando-a no **Obsidian**, o que o **sincronizador** faz para garantir que o **cliente** não receba uma versão conflitante?",
+    "Se o **cliente** tentar editar um arquivo na **pasta não replicada** de um par e o **par** desligar a conexão **Tailscale** no meio da operação, o que acontece com a edição e como o **vigia** reage?",
+    "Se o **cliente** tentar usar a **camada de busca** para encontrar um termo em um arquivo da pasta `reference/`, mas o **par** ligado estiver usando um **embedding** diferente do padrão, como o **MCP do banco** decide qual resultado mostrar?",
+    "Se o **cliente** tentar acessar o **hub** através de um **par** que não tem a **nota de retomada** atualizada para uma iniciativa, como o **vigia** verifica isso e o que impede que o **cliente** comece a trabalhar sem a versão correta?"
+   ]
+  },
+  {
+   "celula": "cliente|quem-usa|pratica",
+   "vaga": 0,
+   "ja_temos": [
+    "Se um cliente acessar o context hub através de um par ligado, quem vê ou usa o banco?",
+    "Quem vê a nota que eu edito através da porta de entrada do hub?",
+    "Quem usa a Camada de busca para encontrar o trecho que preciso sem ler todo o arquivo?",
+    "Quem recebe a notificação do Vigia quando ocorre uma colisão real no hub enquanto eu estou conectado?",
+    "Quem tem acesso à Pasta não replicada quando eu tento abrir um arquivo que está lá?",
+    "Quem verifica se a minha edição foi gravada no Banco depois que eu salvo a mudança?",
+    "Quem pode ler ou alterar a Nota de retomada de uma iniciativa que eu estou usando?",
+    "Quem tem permissão para usar o MCP do banco ao solicitar a leitura de um arquivo via minha sessão de cliente?",
+    "Quem vê a Tela de três vias quando ocorre uma divergência que eu não consigo resolver sozinho?",
+    "Quem tem acesso ao Acervo do maestro para usar um contrato‑opção enquanto eu executo uma tarefa?"
+   ]
+  },
+  {
+   "celula": "cliente|quando|pratica",
+   "vaga": 0,
+   "ja_temos": [
+    "Se o cliente tentar acessar a pasta não replicada, o que acontece?",
+    "Quando um cliente tenta gravar um arquivo maior que 200 MiB no hub, o que acontece?",
+    "Quando eu salvo mudanças em um arquivo maior que 200 MiB, o que acontece com a sincronização?",
+    "Quando um cliente tenta acessar o context hub pela primeira vez, o que acontece?",
+    "Quando um cliente solicita a leitura de uma nota que ainda não existe no hub, o que acontece?",
+    "Quando um cliente altera um arquivo no hub e a máquina local do Gustavo está desligada, o que acontece?",
+    "Quando um cliente acessa o hub e encontra uma divergência não resolvida, o que acontece?",
+    "Quando um cliente solicita a criação de uma nova iniciativa no hub, o que acontece?",
+    "Quando um cliente tenta acessar o hub durante uma falha na sincronização entre os pares, o que acontece?",
+    "Quando um cliente pede a exclusão de um arquivo crítico do hub, o que acontece?"
+   ]
+  },
+  {
+   "celula": "cliente|por-que|pratica",
+   "vaga": 0,
+   "ja_temos": [
+    "O que diferencia uma colisão real de uma divergência na prática para quem usa o hub?",
+    "Por que um arquivo com mais de 200 MiB não é sincronizado entre a minha máquina de trabalho e a de casa?",
+    "Por que existe um limite de 200 MiB para os arquivos que podem ser sincronizados entre as máquinas?",
+    "O que a Nota de retomada não faz se o agente não a atualiza ao final da sessão?",
+    "Por que o cliente, ao usar o MCP de um par, tem acesso apenas de leitura por padrão?",
+    "Arquivos que estão na pasta não replicada podem ser encontrados pela camada de busca da outra máquina via SSH?",
+    "Como o Vigia notifica o Gustavo se a sincronização entre as máquinas parou há mais de 15 minutos?",
+    "Por que o cliente precisa se conectar **através de um par** do hub e não diretamente ao banco (CouchDB) ou à pasta Markdown?",
+    "Por que o **vigia** (que avisa sobre colisões e sync parado) não notifica o cliente se detectar problemas no par que ele está usando?",
+    "Por que o cliente não pode usar a **camada de busca** para encontrar trechos específicos em arquivos grandes (acima de 200 MiB), mesmo que precise disso para uma tarefa urgente?"
+   ]
+  },
+  {
+   "celula": "falhas-divergencia|relacao|pratica",
+   "vaga": 0,
+   "ja_temos": [
+    "Se o MCP do banco recebe uma gravação sem a verificação de versão, o que acontece?",
+    "Se o **sincronizador** de uma máquina para de funcionar por mais de 15 minutos, como o **vigia** detecta isso e o que acontece com os arquivos que estavam sendo sincronizados nesse intervalo?",
+    "Se o **banco** em uma máquina fica indisponível por tempo indeterminado (por exemplo, por um crash do CouchDB), como isso afeta o **maestro do Maestri** que estava usando o hub naquela máquina, e o que acontece quando o banco volta?",
+    "Se um **agente de código** (como o Copilot) tenta gravar uma alteração em um arquivo que está em **divergência** (porque uma máquina não conseguiu sincronizar há mais de 5 minutos), o que o **MCP do banco** faz para evitar que a edição seja perdida ou sobrescreva sem aviso?",
+    "Se o **GitHub privado** falha em fazer a cópia de segurança diária do **banco**, como o **vigia** ou outro mecanismo alerta o Gustavo sobre isso, e qual é o impacto se essa falha persistir por mais de um dia?",
+    "Se uma **iniciativa** (como a STRATA) tem sua **casa** (pasta) movida ou renomeada manualmente pelo Gustavo em uma máquina, mas o **sincronizador** da outra máquina não consegue aplicar essa mudança por causa de um arquivo grande (acima de 200 MiB), como o hub lida com essa situação e o que o Gustavo vê?",
+    "Se um **cliente** (computador externo) tenta acessar o hub através de um **par** que está com a rede **Tailscale** instável, como o **MCP do banco** se comporta ao tentar servir os dados, e o que acontece se a conexão cair no meio de uma leitura?",
+    "Se o **contrato do hub** (o `AGENTS.md`) é alterado diretamente no disco por um **agente de código** (sem passar pelo Obsidian), como o **sincronizador** garante que essa mudança seja propagada para a outra máquina sem causar conflitos, e o que acontece se o arquivo estiver em **colisão real**?",
+    "Se o **acervo do maestro** é modificado por um **maestro** sem passar pela guarda que exige aval do Gustavo, como o **banco** detecta essa alteração não autorizada e o que acontece com os arquivos envolvidos?",
+    "Se uma **pasta não replicada** (que só existe em uma máquina) é acessada por um **agente de código** na outra máquina via SSH, e alguém edita o arquivo localmente na máquina original, como o **sincronizador** ou o **vigia** reagem a essa inconsistência?"
+   ]
+  },
+  {
+   "celula": "falhas-divergencia|responsavel|borda",
+   "vaga": 0,
+   "ja_temos": [
+    "Quem vê que a Pasta não replicada não aparece nos resultados da busca da outra máquina?",
+    "Se o MCP do banco ficar indisponível, quem garante que os agentes ainda possam ler e escrever no hub?",
+    "Quem é responsável se o GitHub privado não tem a cópia diária atualizada?",
+    "Se o Sincronizador for interrompido enquanto um arquivo de 180 MiB está sendo copiado, o que acontece com a versão parcial e quem decide se ela é descartada?",
+    "Se o Gustavo abre o arquivo em Vista Markdown em ambas as máquinas simultaneamente, quem detecta a colisão e qual processo a resolve?",
+    "Se o Vigia não conseguir avisar sobre uma colisão real e divergência em um horário crítico, quem assume a responsabilidade por não notificá‑lo?",
+    "Se o agente de código tentar gravar em um arquivo na Pasta não replicada enquanto a outra máquina está offline, quem garante que a mudança não perca?",
+    "Se a Camada de busca falhar em um dos nós, quem garante que o agente ainda possa localizar o trecho correto?",
+    "Se o GitHub privado falhar na cópia de segurança diária, quem garante que o hub retorne a um estado consistente?",
+    "Se o cliente externo abre o hub em modo somente‑leitura e o MCP do banco está fora do ar, quem garante que o cliente possa ainda acessar as notas?"
+   ]
+  },
+  {
+   "celula": "falhas-divergencia|grupo|borda",
+   "vaga": 0,
+   "ja_temos": [
+    "Se o Sincronizador detectar um arquivo maior que 200 MiB, ele bloqueia a transferência ou descarta o arquivo?",
+    "O que acontece se a pasta não replicada for acessada por um agente que não tem chave SSH?",
+    "O que acontece se o agente tentar gravar na pasta agents/ enquanto a nota está em divergência?",
+    "Se o cliente for conectado via MCP, ele pode criar novos arquivos na raiz ou apenas ler?",
+    "Como a Camada de busca lida com embeddings que não estão atualizados em ambas as máquinas?",
+    "Quando o GitHub privado é usado como backup, que garante que nenhuma divergência fique silenciosa?",
+    "O MCP do banco resolve conflitos quando duas máquinas alteram o mesmo arquivo simultaneamente?",
+    "Quando o Vigia detecta uma colisão real, ele notifica o Gustavo via Windows ou apenas registra no log?",
+    "Se o CouchDB local falhar, o hub continua funcionando com a cópia no disco ou para total paralisação?",
+    "Se o agente abrir uma sessão na raiz e editar um arquivo que está em conflito, o Sistema usa a Tela de três vias ou outra estratégia?"
+   ]
+  },
+  {
+   "celula": "falhas-divergencia|onde-vive|borda",
+   "vaga": 0,
+   "ja_temos": [
+    "Onde vive a nota de retomada se o agente falhar ao tentar executar o hook de atualização obrigatória ao fim de uma resposta?",
+    "Onde vive a notificação de colisão real quando o Gustavo e um agente editam o mesmo arquivo Markdown simultaneamente em máquinas diferentes?",
+    "Onde fica o registro de um sincronizador que parou há mais de 15 minutos devido a uma falha no Tailscale?",
+    "Onde é armazenado um arquivo que excede os 200 MiB e acaba sendo descartado pelo sincronizador?",
+    "Onde a divergência de uma nota fica retida quando uma máquina não consegue enviar mudanças após o limite de tempo excedido?",
+    "Onde ficam guardados os arquivos da pasta não replicada que são invisíveis para a camada de busca da máquina par?",
+    "Onde reside a cópia de segurança de caso o banco CouchDB de ambas as máquinas sofra corrupção de dados?",
+    "Onde vive a interface da tela de três vias quando o Gustavo precisa resolver uma colisão que o hub não viu?",
+    "Onde fica armazenada a versão de uma nota que o MCP do banco identificou como tendo um conflito de edição concorrente?",
+    "Onde vive o binário descartado que o Vigia identificou durante a checagem de erro de sincronização?"
+   ]
+  },
+  {
+   "celula": "falhas-divergencia|quem-usa|pratica",
+   "vaga": 0,
+   "ja_temos": [
+    "Quem vê que a Pasta não replicada não aparece nos resultados da busca da outra máquina?",
+    "O que diferencia uma colisão real de uma divergência na prática para quem usa o hub?",
+    "Quando a Nota de retomada é atualizada ao final de uma resposta do agente, quem verifica se ela foi sincronizada antes da próxima sessão?",
+    "O que a nota de retomada não garante se o hook de fim de resposta do agente falhar ao atualizar o arquivo antes de um encerramento inesperado?",
+    "Quando o Sincronizador tenta enviar um arquivo de 250 MiB, o que acontece?",
+    "O que acontece se dois agentes tentarem gravar na mesma nota exatamente ao mesmo tempo em máquinas diferentes?",
+    "Como o sistema lida com um arquivo de mais de 200 MiB que precisa ser sincronizado?",
+    "Se o sincronizador de uma das máquinas parar de rodar por mais de 15 minutos, quem é avisado e como?",
+    "O que acontece com uma nota que sofreu uma colisão e o Gustavo ainda não resolveu na tela de três vias?",
+    "Um agente consegue buscar informações que estão dentro da pasta não replicada?"
+   ]
+  },
+  {
+   "celula": "falhas-divergencia|ordem|borda",
+   "vaga": 0,
+   "ja_temos": [
+    "Se eu editar uma nota no Obsidian da máquina pessoal e um agente editar a mesma nota no notebook do trabalho simultaneamente, em que ordem o sistema detecta o conflito?",
+    "Se eu tentar salvar um arquivo maior que 200 MiB em uma pasta, em que momento o sincronizador decide que ele não deve viajar para o outro par?",
+    "Se a rede do Tailscale cair enquanto eu estou alterando a iniciativa STRATA, em que ordem o Vigia vai me avisar que o sync parou?",
+    "Se um agente terminar uma tarefa e tentar atualizar a nota de retomada enquanto o CouchDB local estiver travado, em que ordem o erro é propagado para o disco?",
+    "Se eu deletar um arquivo no disco e o agente estiver lendo esse mesmo arquivo via MCP no momento, em que ordem o sincronizador impede uma divergência real?",
+    "Se houver uma colisão que o hub não consegue resolver, em que ordem a tela de três vias deve ser apresentada para eu resolver manualmente?",
+    "Se eu criar um arquivo em uma pasta não replicada na máquina do trabalho, em que ordem a camada de busca da máquina pessoal deve falhar ao ignorá-lo?",
+    "Se o GitHub privado falhar durante a cópia diária, em que ordem o sistema deve sinalizar que a versão de backup de segurança está desatualizada?",
+    "Se um agente tentar gravar uma skill nova no acervo do maestro sem o meu aval, em que ordem o contrato do hub deve barr essa essa escrita antes de ser persistida?",
+    "Se um binário for descartado pelo sincronizador, em que ordem a notificação do Windows do Vigia deve aparecer para eu não perceber por que o arquivo sumiu?"
+   ]
+  },
+  {
+   "celula": "falhas-divergencia|falha|pratica",
+   "vaga": 0,
+   "ja_temos": [
+    "E se um cliente (sandbox) ler o hub via MCP de um par que está com sync parado há 20 minutos, o cliente recebe dado velho sem aviso?",
+    "E se o Tailscale cair e as duas máquinas não se veem por horas, o que acontece com as edições que o Gustavo fizer no notebook e no desktop?",
+    "E se o sincronizador travar numa das máquinas e parar de subir as mudanças pro banco local, o Vigia avisa em quanto tempo?",
+    "E se um agente gravar no banco via MCP usando uma versão velha da nota enquanto o Gustavo já editou o mesmo arquivo no Obsidian, como a colisão aparece pro Gustavo?",
+    "E se o Gustavo editar uma nota no Obsidian e, antes do sincronizador pegar, um agente ler a versão antiga via MCP e gravar por cima, o que impede a perda silenciosa?",
+    "E se a camada de busca (embeddings) ficar desatualizada numa das máquinas porque o processo local parou, o agente lê trecho velho sem saber?",
+    "E se o backup diário pro GitHub privado falhar por três dias seguidos, tem algum alarme ou o Gustavo só descobre quando precisar restaurar?",
+    "E se o Gustavo resolver uma colisão na tela de três vias mas o sincronizador não conseguir gravar a resolução no banco (disco cheio, permissão), a colisão fica marcada como resolvida?",
+    "E se a máquina pessoal ficar ligada mas o processo do Vigia morrer (crash, update do Windows), as notificações de colisão e sync parado param de chegar?",
+    "E se o Gustavo mexer no acervo do maestro (apagar um papel, mudar um setup) sem passar pela guarda, a alteração vai pro banco e replica pro outro par mesmo sem aval?"
+   ]
+  },
+  {
+   "celula": "falhas-divergencia|falha|borda",
+   "vaga": 0,
+   "ja_temos": [
+    "E se um cliente (sandbox) ler o hub via MCP de um par que está com sync parado há 20 minutos, o cliente recebe dado velho sem aviso?",
+    "E se o Tailscale cair e as duas máquinas não se veem por horas, o que acontece com as edições que o Gustavo fizer no notebook e no desktop?",
+    "E se o sincronizador travar numa das máquinas e parar de subir as mudanças pro banco local, o Vigia avisa em quanto tempo?",
+    "E se um agente gravar no banco via MCP usando uma versão velha da nota enquanto o Gustavo já editou o mesmo arquivo no Obsidian, como a colisão aparece pro Gustavo?",
+    "E se o Gustavo editar uma nota no Obsidian e, antes do sincronizador pegar, um agente ler a versão antiga via MCP e gravar por cima, o que impede a perda silenciosa?",
+    "E se a camada de busca (embeddings) ficar desatualizada numa das máquinas porque o processo local parou, o agente lê trecho velho sem saber?",
+    "E se o backup diário pro GitHub privado falhar por três dias seguidos, tem algum alarme ou o Gustavo só descobre quando precisar restaurar?",
+    "E se o Gustavo resolver uma colisão na tela de três vias mas o sincronizador não conseguir gravar a resolução no banco (disco cheio, permissão), a colisão fica marcada como resolvida?",
+    "E se a máquina pessoal ficar ligada mas o processo do Vigia morrer (crash, update do Windows), as notificações de colisão e sync parado param de chegar?",
+    "E se o Gustavo mexer no acervo do maestro (apagar um papel, mudar um setup) sem passar pela guarda, a alteração vai pro banco e replica pro outro par mesmo sem aval?"
+   ]
+  },
+  {
+   "celula": "falhas-divergencia|quando|pratica",
+   "vaga": 0,
+   "ja_temos": [
+    "Quando eu edito uma nota no Obsidian de uma máquina e um agente edita a mesma nota na outra máquina simultaneamente, o que acontece?",
+    "Quando eu coloco um arquivo maior que 200 MiB na pasta, o que acontece com a sincronização entre as máquinas?",
+    "Quando a rede Tailscale cai e as duas máquinas ficam sem se comunicar, o que acontece com as mudanças feitas localmente?",
+    "Quando um agente tenta gravar uma nota no banco mas a versão mudou no meio do processo, o que acontece com essa gravação?",
+    "Quando o sincronizador para de funcionar por mais de 15 minutos, o que o sistema faz para que eu seja avisado?",
+    "Quando eu crio uma pasta com ponto no nome, o que acontece com o conteúdo dela na outra máquina?",
+    "Quando o vigia descarta um arquivo binário por erro, o que acontece com o estado do hub?",
+    "Quando ocorre uma colisão real que o hub não consegue resolver sozinho, o que acontece com o restante dos arquivos da iniciativa STRATA?",
+    "Quando um agente falha no meio da atualização de uma nota de retomada, o que acontece quando eu abrir a próxima sessão de trabalho?",
+    "Quando eu tento acessar um arquivo da pasta não replicada através de um agente na outra máquina, o que acontece com o resultado de busca?"
+   ]
+  },
+  {
+   "celula": "seguranca-dado-cliente|relacao|pratica",
+   "vaga": 0,
+   "ja_temos": [
+    "Qual a relação entre o Tailscale e o CouchDB para garantir que os dados das iniciativas de cliente não sejam expostos na rede pública?",
+    "Qual a relação entre o MCP do banco e a permissão de leitura do cliente para impedir que ele altere dados da VOEGOL?",
+    "Qual a relação entre a pasta não replicada e o acesso via SSH da outra máquina em termos de dados sensíveis de cliente que devem ficar apenasmente?",
+    "Qual a relação entre o Vigia e a divergência para garantir que nenhuma alteração da iniciativa AVIANCA seja perdida silenciosamente entre as duas máquinas?",
+    "Qual a relação entre o GitHub privado e a privacidade das notas de estratégia do TRF3 caso a credencial do repositório seja comprometida?",
+    "Qual a relação entre a Camada de busca e os embeddings locais para garantir que dados de clientes não sejam enviados para APIs de nuvem de terceiros?",
+    "Qual a relação entre o Sincronizador e a colisão real quando um agente de código edita um arquivo enquanto o Gustavo edita no Obsidian?",
+    "Qual a relação entre o Contrato do hub e o Acervo do maestro para impedir que um agente recruta acesse iniciativas de clientes de não autorização?",
+    "Qual a relação entre a Nota de retomada e os agentes de código para garantir que uma nova sessão não sobrescreva decisões de segurança de uma sessão anterior?",
+    "Qual a relação entre a Tela de três vias e o limite de 200 MiB quando um arquivo de cliente excede o tamanho de sincronização?"
+   ]
+  },
+  {
+   "celula": "seguranca-dado-cliente|grupo|borda",
+   "vaga": 0,
+   "ja_temos": [
+    "Se um agente de código rodar fora do Maestri, ele consegue acessar os arquivos que estão dentro da pasta não replicada?",
+    "Um agente recruta criado pelo maestro pode alterar as peças do acervo do maestro sem a permissão do Gustavo?",
+    "Um computador de cliente que está ligado como par consegue ler as notas das iniciativas da STRATA e da VOEGOL?",
+    "Os dados da iniciativa AVIANCA ficam expostos na cópia de segurança do GitHub?",
+    "O que impede que um cliente de uma sandbox externa altere uma nota de operação do TRF3?",
+    "A rede privada Tailscale é a única via de acesso para os dados entre as duas máquinas do Gustavo?",
+    "Se a máquina de trabalho for comprometida, os dados de cliente sincronizados ficam na máquina pessoal?",
+    "O MCP do banco garante que um agente não sobrescreva uma decisão crítica da SBF sem aviso?",
+    "As instruções do arquivo AGENTS.md são enviadas para qualquer cliente que acessa o hub via par?",
+    "O Vigia avisa se um arquivo de iniciativa de cliente for descartado por ser grande?"
+   ]
+  },
+  {
+   "celula": "seguranca-dado-cliente|quem-usa|pratica",
+   "vaga": 0,
+   "ja_temos": [
+    "Se um cliente conectar um sandbox no hub via um par, ele consegue ver as notas das iniciativas STRATA e VOEGOL?",
+    "Como um agente de código rodando fora do Maestri garante que não vai acessar informações sensíveis que não deveria ver?",
+    "O que impede que um arquivo da pasta não replicada seja enviado pela outra máquina via Tailscale?",
+    "Se eu apagar um arquivo de cliente no Obsidian, o que acontece com a cópia de segurança diária no GitHub privado?",
+    "Um agente recrutado tem permissão para alterar as skills dentro do acervo do maestro sem a aprovação do Gustavo?",
+    "Como o sistema protege os dados da iniciativa AVIANCA se a rede privada entre as máquinas for invadida?",
+    "Se houver uma colisão em uma nota de cliente, o cliente consegue ler as versões antigas enquanto o Gustavo não resolve?",
+    "O MCP do banco permite que um agente externo grave informações diretamente na pasta de inbox sem validação prévia?",
+    "O que o Vigia faz se um arquivo binário de um cliente for descartado por ser grande demais?",
+    "Um agente em um repositório fora do hub consegue acessar o link simbólico do arquivo global de contrato?"
+   ]
+  },
+  {
+   "celula": "seguranca-dado-cliente|ordem|pratica",
+   "vaga": 0,
+   "ja_temos": [
+    "Se um cliente acessar o context hub através de um par ligado, como o sistema garante que ele só veja os arquivos da iniciativa dele?",
+    "Se um arquivo grande de um cliente for editado simultaneamente pelos dois pares, como o hub evita que o dado seja perdido?",
+    "Se um agente de IA acessar o contrato do hub, como o sistema impede que ele modifique instruções que só o Gustavo pode alterar?",
+    "Se um arquivo da pasta não replicada de um par for acessado pela outra máquina, como o sistema avisa que aquele dado não está sincronizado?",
+    "Se um maestro do Maestri usar peças do acervo para montar uma equipe, como o sistema garante que aquelas peças não sejam alteradas sem a aprovação do Gustavo?",
+    "Se um arquivo da iniciativa STRATA for editado por um agente enquanto o Gustavo estiver editando o mesmo arquivo no Obsidian, como o hub resolve o conflito?",
+    "Se um par não conseguir sincronizar com o outro há mais de 15 minutos, como o sistema avisa e o que o Gustavo precisa fazer para resolver?",
+    "Se um cliente pedir para um agente gravar um arquivo em uma iniciativa de outro cliente, como o sistema impede que isso aconteça?",
+    "Se um arquivo do hub for alterado e não sincronizado por mais de um dia, como o sistema avisa e o que pode ter causado isso?",
+    "Se um agente de um cliente tentar acessar o contrato do hub, como o sistema bloqueia esse acesso?"
+   ]
+  },
+  {
+   "celula": "seguranca-dado-cliente|ordem|borda",
+   "vaga": 0,
+   "ja_temos": [
+    "Se um cliente acessar o context hub através de um par ligado, como o sistema garante que ele só veja os arquivos da iniciativa dele?",
+    "Se um arquivo grande de um cliente for editado simultaneamente pelos dois pares, como o hub evita que o dado seja perdido?",
+    "Se um agente de IA acessar o contrato do hub, como o sistema impede que ele modifique instruções que só o Gustavo pode alterar?",
+    "Se um arquivo da pasta não replicada de um par for acessado pela outra máquina, como o sistema avisa que aquele dado não está sincronizado?",
+    "Se um maestro do Maestri usar peças do acervo para montar uma equipe, como o sistema garante que aquelas peças não sejam alteradas sem a aprovação do Gustavo?",
+    "Se um arquivo da iniciativa STRATA for editado por um agente enquanto o Gustavo estiver editando o mesmo arquivo no Obsidian, como o hub resolve o conflito?",
+    "Se um par não conseguir sincronizar com o outro há mais de 15 minutos, como o sistema avisa e o que o Gustavo precisa fazer para resolver?",
+    "Se um cliente pedir para um agente gravar um arquivo em uma iniciativa de outro cliente, como o sistema impede que isso aconteça?",
+    "Se um arquivo do hub for alterado e não sincronizado por mais de um dia, como o sistema avisa e o que pode ter causado isso?",
+    "Se um agente de um cliente tentar acessar o contrato do hub, como o sistema bloqueia esse acesso?"
+   ]
+  },
+  {
+   "celula": "seguranca-dado-cliente|quando|borda",
+   "vaga": 0,
+   "ja_temos": [
+    "Se um arquivo estiver em uma pasta não replicada, o que a camada de busca da outra máquina faz quando um agente tenta buscar essa informação?",
+    "Se um agente terminar uma tarefa mas esquecer de atualizar a nota de retomada, o que acontece na próxima sessão dele?",
+    "Quando o GitHub privado faz backup de um arquivo que está em conflito, como esse conflito é tratado?",
+    "Quando eu editar uma nota no Obsidian na máquina de trabalho e um agente editar a mesma nota na máquina pessoal ao mesmo tempo, o que acontece para não sobrescrever meus dados?",
+    "Se eu colocar um arquivo de 300 MiB numa pasta do hub, o que o sincronizador faz com ele em relação ao par?",
+    "Quando a sincronização entre as duas máquinas parar por mais de 15 minutos, como eu sou avisado de que o hub está travado?",
+    "Se um cliente usar o hub através de um par de leitura, o que garante que ele não consiga apagar ou alterar minhas iniciativas de trabalho?",
+    "Se eu criar uma pasta com um ponto no nome dentro do hub, o que o sincronizador faz ao tentar enviar essa dados para a outra máquina?",
+    "Quando houver uma colisão real que o hub não consegue resolver sozinho, como eu visualizo as três versões para decidir qual a correta?",
+    "Quando o maestro do Maestri montar uma equipe de agentes, como o hub garante que todos sigam as instruções do contrato do hub?"
+   ]
+  },
+  {
+   "celula": "seguranca-dado-cliente|diferenca|pratica",
+   "vaga": 0,
+   "ja_temos": [
+    "Se o agente tentar acessar uma nota que está na pasta não replicada, o que acontece?",
+    "E se um cliente tentar gravar no hub através de um par, o que acontece?",
+    "O que muda entre a criação de uma nova nota de retomada por um agente ao final de uma sessão e a criação da mesma nota por Gustavo manualmente no Obsidian?",
+    "Se o cliente tentar acessar uma iniciativa de cliente sem permissão, o que acontece?",
+    "O que muda entre o acesso de um agente de código e o acesso de um cliente ao contexto do hub?",
+    "Como as chaves de acesso são gerenciadas entre as máquinas do Gustavo e os agentes de IA?",
+    "Qual a diferença entre a rede privada entre as máquinas do Gustavo (Tailscale) e a rede usada pelos clientes?",
+    "O que acontece se um cliente tentar gravar informações no hub sem permissão?",
+    "Como a iniciativa STRATA é protegida no hub em comparação com a iniciativa VOEGOL?",
+    "O que muda entre a sincronização de arquivos comuns e a sincronização de arquivos grandes no hub?"
+   ]
+  },
+  {
+   "celula": "responsabilidade|relacao|borda",
+   "vaga": 0,
+   "ja_temos": [
+    "Quem é responsável por fazer o backup diário de todo o meu hub no GitHub privado?",
+    "Qual a relação entre o MCP do banco e o Agente de código quando dois agentes tentam gravar na mesma nota simultaneamente em máquinas diferentes?",
+    "Qual a relação entre o Sincronizador e o Banco quando o Gustavo edita um arquivo no Obsidian enquanto a máquina está offline?",
+    "Qual a relação entre a Nota de retomada e o Agente de código ao final de uma sessão de trabalho interroma?",
+    "Como a Camada de busca interage com o Agente de código para entregar trechos corretos sem ler todo o hub?",
+    "Qual a relação entre o Vigia e a Tela de três vias no momento em que uma colisão real é detectada?",
+    "Qual a relação entre a Camada de busca e a Pasta não replicada quando um agente solicita uma informação contida nela?",
+    "Qual a relação entre o Maestro do Maestri e o Acervo do maestro quando uma nova skill é solicitada pela equipe?",
+    "Qual a relação entre o Sincronizador e o GitHub privado caso um arquivo de 200 MiB seja alterado?",
+    "Qual a relação entre o Contrato do hub e o Agente de código ao realizar uma tarefa em uma iniciativa STRATA?"
+   ]
+  },
+  {
+   "celula": "responsabilidade|responsavel|pratica",
+   "vaga": 0,
+   "ja_temos": [
+    "Se houver uma colisão real entre duas versões de uma nota, quem é responsável por resolver o conflito?",
+    "Quem é responsável por monitorar se o GitHub privado recebeu a cópia de segurança diária?",
+    "Quem é responsável por fazer o backup diário de todo o meu hub no GitHub privado?",
+    "O que acontece com arquivos grandes demais para serem replicados?",
+    "Quem é responsável por manter a nota de retomada atualizada após um agente terminar de uma tarefa?",
+    "Quem é responsável por aprovar a inclusão de uma nova skill no acervo do maestro?",
+    "Quem é responsável por me avisar que a sincronização entre as máquinas parou há mais de 15 minutos?",
+    "Quem é responsável por manter a nota de retomada atualizada durante uma sessão de agente?",
+    "Quem é responsável por resolver uma colisão quando eu edito a mesma nota nas duas máquinas simultaneamente?",
+    "Quem é responsável por garantir que as informações da iniciativa STRATA sejam gravadas na pasta certa sem eu pedir?"
+   ]
+  },
+  {
+   "celula": "responsabilidade|ordem|borda",
+   "vaga": 0,
+   "ja_temos": [
+    "Em que ordem o Synchronizer, o banco local e o MCP do banco são acionados quando o Gustavo salva um arquivo `.md` no Obsidian?",
+    "Em que ordem o Vigia verifica e notifica uma colisão que ocorreu simultaneamente nas duas máquinas?",
+    "Em que ordem o agente de código obtém o trecho correto de uma nota usando a camada de busca antes de gravar uma alteração no hub?",
+    "Em que ordem o maestro do Maestri consulta o Acervo do maestro e o contrato do hub ao montar uma nova equipe de agentes?",
+    "Em que ordem o cliente, que só tem acesso de leitura, recebe as atualizações de um arquivo que foi modificado na pasta não replicada?",
+    "Em que ordem a confirmação de versão impede uma gravação concorrente quando dois agentes diferentes tentam editar o mesmo arquivo ao mesmo tempo?",
+    "Em que ordem o GitHub privado recebe a cópia de segurança diária do hub, considerando a existência de arquivos grandes que não são sincronizados?",
+    "Em que ordem a tela de três vias é apresentada ao Gustavo após o Vigia detectar uma divergência que ultrapassa o limite de tempo de sincronização?",
+    "Em que ordem o Synchronizer lida com um arquivo cujo tamanho excede 200 MiB ao tentar replicá‑lo entre as duas máquinas?",
+    "Em que ordem a camada de busca entrega um trecho de nota quando a mesma nota está presente em duas versões diferentes (colisão) e ainda não foi resolvida?"
+   ]
+  }
+ ]
+}

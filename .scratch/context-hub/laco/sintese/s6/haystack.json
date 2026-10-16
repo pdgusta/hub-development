@@ -1,0 +1,50 @@
+{
+ "nome": "Haystack",
+ "nome_canonico": "Haystack (deepset-ai/haystack)",
+ "chave": "gh:deepset-ai/haystack",
+ "url": "https://github.com/deepset-ai/haystack",
+ "serve": "search",
+ "identidade": "ok: github.com/deepmind/haystack é URL errada; o projeto é deepset-ai/haystack. Framework de pipelines RAG, não motor de busca; o MCP vem do projeto separado Hayhooks.",
+ "windows": "yes: wheel pura Python (py3-none-any, 'Operating System :: OS Independent') e CI com windows-latest.",
+ "mcp": "third_party: Hayhooks (deepset-ai/hayhooks, projeto separado da mesma organização) expõe pipelines por HTTP ou MCP; transporte não verificado.",
+ "portugues": "nao_verificado: depende dos componentes escolhidos (embedders multilíngues); analisador português próprio não confirmado.",
+ "markdown_frontmatter": "nao_verificado: não confirmado se o conversor de Markdown usa frontmatter ou divide por título.",
+ "atualizacao": "manual: pipelines de indexação rodam sob demanda; watcher não verificado.",
+ "embeddings_endpoint": "nao_verificado: README cita integração com OpenAI; base_url customizada do embedder não confirmada.",
+ "recursos": "Python >=3.10; framework leve, o peso vem do armazém de documentos e dos modelos; sem número na fonte.",
+ "licenca": "Apache-2.0",
+ "ultimo_release": "3.3.0, 2026-10-01 (PyPI)",
+ "atividade": "último commit em 2026-10-13 (feed de commits)",
+ "maturidade": "stable",
+ "encaixe": "Orquestrador de RAG que poderia montar a indexação sobre o banco e servir via Hayhooks/MCP. Impedimento: framework grande demais e o hub já decidiu CouchDB, LiveSync e MCP próprio.",
+ "evidencias": [
+  {
+   "campo": "mcp",
+   "url": "https://github.com/deepset-ai/haystack",
+   "citacao": "Hayhooks provides a simple way for you to wrap pipelines and agents with custom logic and expose them through HTTP endpoints or MCP."
+  },
+  {
+   "campo": "windows",
+   "url": "https://raw.githubusercontent.com/deepset-ai/haystack/main/.github/workflows/tests.yml",
+   "citacao": "- windows-latest"
+  },
+  {
+   "campo": "licenca",
+   "url": "https://github.com/deepset-ai/haystack",
+   "citacao": "Apache-2.0 license"
+  },
+  {
+   "campo": "ultimo_release",
+   "url": "https://pypi.org/project/haystack-ai/",
+   "citacao": "3.3.0 enviado em 2026-10-01"
+  }
+ ],
+ "nao_verificado": [
+  "transporte MCP do Hayhooks",
+  "portugues",
+  "markdown_frontmatter",
+  "embeddings_endpoint com base_url",
+  "recursos em números"
+ ],
+ "area": null
+}

@@ -1,0 +1,71 @@
+{
+ "chave": "web:lucene.apache.org/core/8_11_0/analyzers-common/org/apache/lucene/analysis/pt/portugueseanalyzer.html",
+ "urls": [
+  "https://lucene.apache.org/core/8_11_0/analyzers-common/org/apache/lucene/analysis/pt/PortugueseAnalyzer.html",
+  "https://whoosh.readthedocs.io/en/latest/analysis.html",
+  "https://lucene.apache.org/core/3_6_0/analysis/standard/PortugueseAnalyzer.html",
+  "https://www.elastic.co/guide/en/elasticsearch/plugins/current/analysis-stempel.html",
+  "https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-portuguese-analyzer.html",
+  "https://lucene.apache.org/core/8_11_0/analyzers/common.html",
+  "https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-lang-analyzer.html"
+ ],
+ "tipos": [
+  "library",
+  "concept"
+ ],
+ "termos": [
+  "stemming",
+  "Portuguese",
+  "Snowball",
+  "ICU",
+  "Porter stemmer",
+  "stopwords",
+  "analyzer",
+  "Portuguese analyzer",
+  "stop‑words",
+  "Lucene",
+  "remover_acentos",
+  "light_portuguese stemmer",
+  "Portuguese Analysis Filter",
+  "accent handling",
+  "language analyzer",
+  "analysis-stempel",
+  "analysis-icu",
+  "PortugueseAnalyzer",
+  "pt analyzer",
+  "linguistic analysis",
+  "ポルトガル語 アナライザ",
+  "analysis-portuguese",
+  "Lucene PortugueseAnalyzer",
+  "Analyzer para português",
+  "stop words",
+  "Portuguese Stemmer",
+  "Brazilian analyzer"
+ ],
+ "mencoes": 12,
+ "familias": [
+  "gemini",
+  "gpt-oss",
+  "nemotron"
+ ],
+ "primeira_onda": 2,
+ "nomes": [
+  "Portuguese Analyzer (Lucene)",
+  "PortugueseAnalyzer",
+  "Portuguese Analyzer",
+  "Portuguese Analyzer (Stempel/ICU)",
+  "PortugueseAnalyzer (Lucene)",
+  "Portuguese Analyzer (Elasticsearch)"
+ ],
+ "resumos": [
+  "Analisador de texto com stemming e tratamento de acentos para o português, usado nas pipelines de análise do Solr.",
+  "Analisador de texto que suporta acentuação e stemming para o idioma português, útil para indexação de documentos em português.",
+  "Lucene analyzer that handles Portuguese accents, stemming and stop‑words for accurate BM25 scoring",
+  "OpenSearch's built-in text analyzer configured with stemming and accent removal for accurate Portuguese keyword search."
+ ],
+ "fonte": "site",
+ "readme_status": "ok",
+ "readme_nome": "https://lucene.apache.org/core/8_11_0/analyzers-common/org/apache/lucene/analysis/pt/PortugueseAnalyzer.html",
+ "readme_cortado": false,
+ "readme": "[PortugueseAnalyzer (Lucene 8.11.0 API)]\n\nSkip navigation links\n\nOverview\n\nPackage\n\nClass\n\nUse\n\nTree\n\nDeprecated\n\nHelp\n\nPrev Class\n\nNext Class\n\nFrames\n\nNo Frames\n\nAll Classes\n\nSummary: \n\nNested | \n\nField | \n\nConstr | \n\nMethod\n\nDetail: \n\nField | \n\nConstr | \n\nMethod\n\norg.apache.lucene.analysis.pt\n\nClass PortugueseAnalyzer\n\njava.lang.Object\n\norg.apache.lucene.analysis.Analyzer\n\norg.apache.lucene.analysis.StopwordAnalyzerBase\n\norg.apache.lucene.analysis.pt.PortugueseAnalyzer\n\nAll Implemented Interfaces:\nCloseable, AutoCloseable\n\npublic final class PortugueseAnalyzer\nextends StopwordAnalyzerBase\n\nAnalyzer for Portuguese.\n\nSince:\n3.1\n\nNested Class Summary\n\nNested classes/interfaces inherited from class org.apache.lucene.analysis.Analyzer\nAnalyzer.ReuseStrategy, Analyzer.TokenStreamComponents\n\nField Summary\n\nFields \n\nModifier and Type\nField and Description\n\nstatic String\nDEFAULT_STOPWORD_FILE\n\nFile containing default Portuguese stopwords.\n\nFields inherited from class org.apache.lucene.analysis.StopwordAnalyzerBase\nstopwords\n\nFields inherited from class org.apache.lucene.analysis.Analyzer\nGLOBAL_REUSE_STRATEGY, PER_FIELD_REUSE_STRATEGY\n\nConstructor Summary\n\nConstructors \n\nConstructor and Description\n\nPortugueseAnalyzer()\n\nBuilds an analyzer with the default stop words: DEFAULT_STOPWORD_FILE.\n\nPortugueseAnalyzer(CharArraySet stopwords)\n\nBuilds an analyzer with the given stop words.\n\nPortugueseAnalyzer(CharArraySet stopwords,\n CharArraySet stemExclusionSet)\n\nBuilds an analyzer with the given stop words.\n\nMethod Summary\n\nAll Methods Static Methods Instance Methods Concrete Methods \n\nModifier and Type\nMethod and Description\n\nprotected Analyzer.TokenStreamComponents\ncreateComponents(String fieldName)\n\nCreates a\n Analyzer.TokenStreamComponents\n which tokenizes all the text in the provided Reader.\n\nstatic CharArraySet\ngetDefaultStopSet()\n\nReturns an unmodifiable instance of the default stop words set.\n\nprotected TokenStream\nnormalize(String fieldName,\n TokenStream in) \n\nMethods inherited from class org.apache.lucene.analysis.StopwordAnalyzerBase\ngetStopwordSet, loadStopwordSet, loadStopwordSet, loadStopwordSet\n\nMethods inherited from class org.apache.lucene.analysis.Analyzer\nattributeFactory, close, getOffsetGap, getPositionIncrementGap, getReuseStrategy, getVersion, initReader, initReaderForNormalization, normalize, setVersion, tokenStream, tokenStream\n\nMethods inherited from class java.lang.Object\nclone, equals, finalize, getClass, hashCode, notify, notifyAll, toString, wait, wait, wait\n\nField Detail\n\nDEFAULT_STOPWORD_FILE\n\npublic static final String DEFAULT_STOPWORD_FILE\n\nFile containing default Portuguese stopwords.\n\nSee Also:\nConstant Field Values\n\nConstructor Detail\n\nPortugueseAnalyzer\n\npublic PortugueseAnalyzer()\n\nBuilds an analyzer with the default stop words: DEFAULT_STOPWORD_FILE.\n\nPortugueseAnalyzer\n\npublic PortugueseAnalyzer(CharArraySet stopwords)\n\nBuilds an analyzer with the given stop words.\n\nParameters:\nstopwords - a stopword set\n\nPortugueseAnalyzer\n\npublic PortugueseAnalyzer(CharArraySet stopwords,\n CharArraySet stemExclusionSet)\n\nBuilds an analyzer with the given stop words. If a non-empty stem exclusion set is\n provided this analyzer will add a SetKeywordMarkerFilter before\n stemming.\n\nParameters:\nstopwords - a stopword set\nstemExclusionSet - a set of terms not to be stemmed\n\nMethod Detail\n\ngetDefaultStopSet\n\npublic static CharArraySet getDefaultStopSet()\n\nReturns an unmodifiable instance of the default stop words set.\n\nReturns:\ndefault stop words set.\n\ncreateComponents\n\nprotected Analyzer.TokenStreamComponents createComponents(String fieldName)\n\nCreates a\n Analyzer.TokenStreamComponents\n which tokenizes all the text in the provided Reader.\n\nSpecified by:\ncreateComponents in class Analyzer\nReturns:\nA\n Analyzer.TokenStreamComponents\n built from an StandardTokenizer filtered with\n LowerCaseFilter, StopFilter\n , SetKeywordMarkerFilter if a stem exclusion set is\n provided and PortugueseLightStemFilter.\n\nnormalize\n\nprotected TokenStream normalize(String fieldName,\n TokenStream in)\n\nOverrides:\nnormalize in class Analyzer\n\nSkip navigation links\n\nOverview\n\nPackage\n\nClass\n\nUse\n\nTree\n\nDeprecated\n\nHelp\n\nPrev Class\n\nNext Class\n\nFrames\n\nNo Frames\n\nAll Classes\n\nSummary: \n\nNested | \n\nField | \n\nConstr | \n\nMethod\n\nDetail: \n\nField | \n\nConstr | \n\nMethod\n\n Copyright © 2000-2021 Apache Software Foundation. All Rights Reserved."
+}

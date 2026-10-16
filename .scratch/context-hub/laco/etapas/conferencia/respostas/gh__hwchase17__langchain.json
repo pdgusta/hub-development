@@ -1,0 +1,34 @@
+{
+ "chave": "gh:hwchase17/langchain",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T21:08:40Z",
+ "resultado": "corrige",
+ "conferencia": {
+  "resultado": "corrige",
+  "final": {
+   "serve": "stack",
+   "role": "Framework for building LLM agents and apps, with standard interfaces for models, embeddings, vector stores and retrievers",
+   "place": [
+    "library"
+   ],
+   "mechanism": [
+    "vector",
+    "embeddings"
+   ],
+   "mcp": "unknown",
+   "windows": "unknown",
+   "portuguese": "unknown",
+   "license": "MIT",
+   "maturity": "stable",
+   "doubt": false,
+   "evidence": "LangChain is a framework for building agents and LLM-powered applications ... standard interface for models, embeddings, vector stores, and more; license badge MIT"
+  },
+  "o_que_mudou": [
+   "serve: search -> stack, README describes an agent framework, not a search layer",
+   "mechanism: bm25/hybrid/other dropped, README never mentions BM25 or hybrid search",
+   "place: network_service dropped -> library only",
+   "doubt: true -> false"
+  ],
+  "nota": "Agent and RAG orchestration framework with retriever and vector store integrations; a possible glue layer, not a search engine itself."
+ }
+}

@@ -1,0 +1,357 @@
+Skip to main content
+
+ Upcoming Webinar: 
+Getting Started with OpenObserve
+
+ October 8, 2026
+ 11:00 AM ETRegister 
+
+140x more storage efficient vs Elastic
+Open-Source, Unified Observability 
+for the AI Era
+
+Get Started Free
+Talk to a Human 
+
+Observability Layers
+
+Frontend
+
+AI & LLM
+
+API
+
+Application
+
+Database
+
+Network
+
+Infrastructure
+
+LMT
+Logs · Metrics · Traces from each layer
+
+Autocorrelation Engine ANALYZING1.24M signals/s · 86K pairs correlated
+
+Observability Layers
+Frontend
+AI & LLM
+API
+Application
+Database
+Network
+Infrastructure
+LMTLogs · Metrics · Traces from each layer
+
+Autocorrelation Engine ANALYZING1.24M signals/s · 86K pairs correlated
+
+Unified observability INVESTIGATING
+Payments API - checkout errors rising
+AI SRE agent · Payments API - checkout errors rising
+1
+
+Service graph
+CheckoutPayments APIledger-db+9 upstream
+2
+
+Impact analysis
+3 services affected12% of checkouts2 SLOs at risk
+3
+
+Root cause
+Deploy payments-api v2.14 at 14:02 halved the connection pool - traces show 94% of errors waiting on pool_acquire.
+4
+
+Corrective action
+Roll back to v2.13 · restore pool 40 → 80Applied ✓
+Incident resolved automaticallyError rate back to baseline · MTTR 3m 12s · no human paged
+
+Intelligent proactive observability REVIEWING
+14 services reviewed - 1 needs attention
+Daily briefing · 14 services reviewed · last 14 days
+13 healthy1 degradinglast 14 days
+SERVICEP95ERRORS
+Checkout web240 ms0.2%
+Search service533 ms9.4%
+Payments API196 ms0.4%
+ledger-db88 ms0.1%
+
+Search service · 14 days
+p95 latencyerror rate
+Jul 14Jul 21Jul 27
+Latency 186 ms → 533 ms, errors 0.3% → 9.4% within an hour of the Jul 21 index rebuild - and flat ever since.
+
+Agentic observability MONITORING
+Token spend up 18% - 1 failed completion
+Agentic observability · 6 models in production · last 24h
+
+SPEND TODAY
+$412.80
+
+TOKENS
+18.4M
+
+ERROR RATE
+2.1%
+
+GPT-4o 46%Claude 28%Llama 3 16%Other 10%
+
+refund-agent · GPT-4oeval failed · policy-compliance
+
+PROMPT
+"Refund order #48213 and explain the policy exception to the customer."
+
+OUTPUT
+"Your refund has been approved and will land in 3–5 business days."
+
+EVAL FAILED · policy-compliance
+Order #48213 is 47 days old - outside the 30-day window the policy doc allows. Grader score 0.41 (threshold 0.80); the refund was promised without an exception approval.
+
+01Unmatched efficiency
+
+Keep a year of logs on 1/140th the storage and 1/30th the compute
+Columnar Parquet storage, written in Rust on the DataFusion engine. There is no index to build, so there is nothing to pay for twice.
+
+5 PB/day
+ingested by a single customer
+Proven at a scale most vendors quote as a roadmap item.See the benchmarks →
+
+Storage cost, same telemetry, same year
+Both bars drawn to scale
+
+Elasticsearch$140
+
+OpenObserve$1
+
+← that 4-pixel sliver is the entire bar
+
+140×lower storage cost
+Every $140 you spend keeping logs in Elasticsearch buys the same year of retention here for $1.
+02Unified observabilityAuto-correlate all layers
+
+03Open source at scale+10K enterprises. 22.3k stars
+
+04No vendor lock-inYour bucket, your collectors
+
+01Unmatched efficiency140× storage efficiency. 30× compute efficiency02Unified observabilityAuto-correlate all layers03Open source at scale+10K enterprises. 22.3k stars04No vendor lock-inYour bucket, your collectors
+
+Keep a year of logs on 1/140th the storage and 1/30th the compute
+Columnar Parquet storage, written in Rust on the DataFusion engine. There is no index to build, so there is nothing to pay for twice.
+
+5 PB/day
+ingested by a single customer
+Proven at a scale most vendors quote as a roadmap item.See the benchmarks →
+
+Storage cost, same telemetry, same year
+Both bars drawn to scale
+
+Elasticsearch$140
+
+OpenObserve$1
+
+← that 4-pixel sliver is the entire bar
+
+140×lower storage cost
+Every $140 you spend keeping logs in Elasticsearch buys the same year of retention here for $1.
+
+vs Grafana stack5-15× faster
+vs Datadog8× cheaper
+vs Elastic140× storageCalculate your savings →
+
+How It Works
+
+One stack, every signal
+Explore how telemetry is collected, correlated and turned into answers. Click any tile or layer of the stack to open it.
+
+Unified observability stack
+Every signal from your estate flows into one correlated view.
+ Overview Collection layer Correlation layer 
+
+×
+
+Read more →
+ Click a layer of the stack to open it. Click again to close.
+Product Tour
+
+Every signal, one platform
+
+Logs
+Metrics
+Traces
+Dashboard
+Alerts
+AI SRE
+AI assistant
+LLM Observability
+SLOs
+RUM
+Synthetic monitoring
+
+Petabyte-scale log search
+Ingest and query trillions of log lines with familiar SQL: no indexing tax, no surprise storage bills.
+
+Explore Logs 
+
+Logs
+
+Petabyte-scale log search
+Ingest and query trillions of log lines with familiar SQL: no indexing tax, no surprise storage bills.
+
+Explore Logs 
+Metrics
+
+Metrics
+Store and query Prometheus-compatible metrics at any scale, with the same engine powering your logs.
+Explore Metrics 
+Traces
+
+Distributed tracing
+Follow every request across services with full trace context, auto-correlated with logs and metrics.
+Explore Traces 
+Dashboard
+
+Build dashboards in minutes
+Drag-and-drop panels across every signal, or bring your existing Grafana boards straight over.
+Explore Dashboards 
+Alerts
+
+Alerts
+Set real-time and scheduled alerts on logs, metrics and traces, and route notifications to Slack, PagerDuty, email and more.
+Explore Alerts 
+AI SRE
+
+AI SRE agent
+An always-on agent that triages incidents, correlates root cause, and drafts the postmortem for you.
+Explore AI SRE 
+AI assistant
+
+AI assistant
+Ask natural-language questions across every log, metric, and trace. Get an answer, not another query language.
+Explore AI assistant 
+LLM Observability
+
+LLM Observability
+Trace prompts, completions, token usage and cost across your LLM applications to debug quality and spend.
+Explore LLM Observability 
+SLOs
+
+SLOs
+Define and monitor service-level objectives to ensure consistent performance.
+Explore SLOs 
+RUM
+
+Real user monitoring
+See exactly how real users experience your app: session traces, Core Web Vitals, and errors, correlated with backend traces.
+Explore RUM 
+Synthetic monitoring
+
+Synthetic monitoring
+Proactively monitor your applications and services from outside-in.
+Explore Synthetic monitoring 
+
+Benchmarks
+
+Measured against industry leaders
+Same telemetry, same workloads, one platform. Every number is OpenObserve against a named vendor - not an industry average.
+
+ vs. Grafana stack
+5–15×
+faster performance
+Dashboards and queries return in milliseconds, not minutes.Read case study 
+
+ vs. Datadog
+8×
+more cost-effective
+Logs, metrics and traces on one bill instead of three.Read case study 
+
+ vs. Elastic
+140×
+storage efficiency
+Keep a year of history without a year's worth of bill.Read case study 
+
+See how much you would save switching today.
+Calculate your savingsSee all comparisons 
+
+One platform, every workload
+Correlate between environments and signals across every source with the OpenObserve built-in correlation engine.
+
+KubernetesAWSGoogle CloudAzureNetworkDatabaseAPMAI / LLMFrontend
+
+Kubernetes
+
+Full-stack visibility across every cluster
+Deploy the collector with one command. Container logs, cluster events and metrics arrive together, plus zero-code traces for workloads already running.
+Container logs, Kubernetes events and cluster metrics from one install
+Zero-code traces for workloads you have not instrumented
+Dashboards and alert rules ship pre-built
+Holds up under ephemeral, high-cardinality churnExplore Kubernetes observability 
+
+Kubernetes
+~3 min setupClusterLogsMetricsEventsTraces
+curl -sSL https://raw.githubusercontent.com/openobserve/o2-datasource/main/k8s/install.sh | bash -s -- \
+ --cluster-name=cluster1 \
+ --access-key=•••••••••••••••••••••••• \
+ --o2-url=https://your-org.openobserve.ai
+
+Installs cert-manager, the OTel operator and the collector automatically
+
+pod logs
+cluster metrics
+app traces
+one incident, one timestampIntegrations
+
+Plug into your stack
+
+All Integrations 
+
+Testimonials
+
+What teams say running OpenObserve
+Correlate between the environments and signals across various sources with OpenObserve built-in correlation engine.
+
+ “OpenObserve helped us migrate from Datadog in under an hour... reducing observability costs by 4x.” 
+
+4x
+Lower observability cost
+
+< 1 hour
+Migrated off Datadog
+
+Flat pricing
+No month-end surprises
+
+ “Today, I think we run our entire production logs through OpenObserve... it's been a phenomenal journey so far.” 
+
+~1TB/day
+Ingested at scale
+
+IoT logs
+Large-scale telemetry
+
+Production
+Entire prod logs on O2
+
+ “The costs only seem to be skyrocketing... OpenObserve solves that by keeping the entire cost contained.” 
+
+Day one
+Immediate cost savings
+
+3 clouds
+GCP, AWS & Azure unified
+
+Drop-in
+OTel & StatsD, no rework
+
+Ready to get started?
+Try OpenObserve today for more efficient and performant observability.
+
+Get Started For FreeSchedule Demo 
+
+We're live on Product Hunt
+
+AI Observability by OpenObserve
+
+OpenTelemetry-native observability for agents and LLMs.
+
+Support us on Product Hunt

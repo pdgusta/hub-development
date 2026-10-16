@@ -1,0 +1,66 @@
+{
+  "envio": "73e9fa2c-0653-4e55-ab8a-9939cc778899",
+  "tipo": "resposta",
+  "enviada": "2026-10-15T17:47:08-03:00",
+  "alvo": {
+    "tipo": "rodada",
+    "id": "2026-10-15-como-os-agentes-gravam-r4",
+    "titulo": "O aviso de leitura grande, quando o agente já buscou"
+  },
+  "ticket": "11",
+  "substitui": null,
+  "rodada": {
+    "id": "2026-10-15-como-os-agentes-gravam-r4",
+    "base": "3d3144867675c4c2930acab85582605dcaca7215847a643107e4fc6e236a1adb",
+    "titulo": "O aviso de leitura grande, quando o agente já buscou",
+    "ticket": "11",
+    "perguntas": [
+      {
+        "id": "ja-buscou",
+        "titulo": "Quando o agente já buscou",
+        "tipo": "escolha",
+        "recomendada": [
+          "C"
+        ],
+        "opcoes": [
+          {
+            "chave": "A",
+            "texto": "O que conta é de onde veio o arquivo: se alguma busca da sessão devolveu aquele arquivo, abrir passa calado, mesmo inteiro; se nenhuma devolveu, o aviso \"busque antes\" aparece. Uma vez por arquivo por sessão"
+          },
+          {
+            "chave": "B",
+            "texto": "O que conta é o jeito de ler: abrir inteiro um arquivo grande avisa \"leia só o trecho\", tenha buscado ou não; ler um trecho passa calado. Uma vez por arquivo por sessão"
+          },
+          {
+            "chave": "C",
+            "texto": "Os dois: veio da busca e lê um trecho, passa calado; veio da busca e lê inteiro um arquivo grande, avisa \"leia o trecho que a busca apontou\"; não veio de nenhuma busca, avisa \"busque antes\". Uma vez por arquivo por sessão"
+          }
+        ],
+        "proposta": null
+      },
+      {
+        "id": "algo-mais",
+        "titulo": "Algo mais?",
+        "tipo": "texto",
+        "recomendada": [],
+        "opcoes": [],
+        "proposta": null
+      }
+    ]
+  },
+  "corpo_hash": "498742c4a39bbfc49d199d618b8ce8f173a030e81e50664f55a03e4b7522e8cf",
+  "corpo": {
+    "tipo": "resposta",
+    "rodada": "2026-10-15-como-os-agentes-gravam-r4",
+    "base": "3d3144867675c4c2930acab85582605dcaca7215847a643107e4fc6e236a1adb",
+    "respostas": {
+      "ja-buscou": {
+        "escolha": [
+          "C"
+        ],
+        "outra": null,
+        "comentario": null
+      }
+    }
+  }
+}

@@ -1,0 +1,57 @@
+{
+ "nome": "spaCy",
+ "nome_canonico": "spaCy (explosion/spaCy)",
+ "chave": "gh:explosion/spacy",
+ "url": "https://github.com/explosion/spaCy",
+ "serve": "stack",
+ "area": "text_pt",
+ "identidade": "URL explosion-ai/spacy nao e a canonica; o projeto e explosion/spaCy (as outras URLs do item apontam para ele e para spaCy-models)",
+ "windows": "yes: README lista Windows (Cygwin, MinGW, Visual Studio); setup.cfg traz 'Operating System :: Microsoft :: Windows'; tests.yml roda em windows-latest; cibuildwheel.yml compila para windows-2025; wheels via pip",
+ "mcp": "nao_aplicavel",
+ "portugues": "yes: modulo lang/pt com stop words; modelos pt_core_news_sm/md/lg 3.8.0 (2024-09-30); tokenizacao e lematizacao, sem remocao de acentos citada",
+ "markdown_frontmatter": "nao_aplicavel",
+ "atualizacao": "nao_aplicavel",
+ "embeddings_endpoint": "nao_aplicavel",
+ "recursos": "Python >=3.9,<3.15 (setup.cfg), 64 bit; pip install spacy; modelo pt separado, tamanho nao verificado",
+ "licenca": "MIT",
+ "ultimo_release": "2026-08-24, release-v3.8.16",
+ "atividade": "2026-09-30 (ultimo commit)",
+ "maturidade": "stable",
+ "encaixe": "Pre-processamento PT opcional (tokenizar, lematizar, entidades) antes de indexar. Fala com MCP/CouchDB so por script externo; nao com FreeLLMAPI. Impedimento: dependencia Python e modelo pt a parte; FTS/embeddings dispensam em geral.",
+ "evidencias": [
+  {
+   "campo": "windows",
+   "url": "https://github.com/explosion/spaCy#readme",
+   "citacao": "Operating system: macOS / OS X · Linux · Windows (Cygwin, MinGW, Visual Studio)"
+  },
+  {
+   "campo": "portugues",
+   "url": "https://raw.githubusercontent.com/explosion/spaCy/master/spacy/lang/pt/stop_words.py",
+   "citacao": "STOP_WORDS = set("
+  },
+  {
+   "campo": "portugues",
+   "url": "https://github.com/explosion/spacy-models/releases/tag/pt_core_news_sm-3.8.0",
+   "citacao": "pt_core_news_sm-3.8.0"
+  },
+  {
+   "campo": "licenca",
+   "url": "https://github.com/explosion/spaCy#readme",
+   "citacao": "MIT license"
+  },
+  {
+   "campo": "recursos",
+   "url": "https://raw.githubusercontent.com/explosion/spaCy/master/setup.cfg",
+   "citacao": "python_requires = >=3.9,<3.15"
+  },
+  {
+   "campo": "windows",
+   "url": "https://github.com/explosion/spaCy/blob/master/.github/workflows/tests.yml",
+   "citacao": "os: [ubuntu-latest, windows-latest, macos-latest]"
+  }
+ ],
+ "nao_verificado": [
+  "tamanho em disco/RAM dos modelos pt",
+  "remocao de acentos"
+ ]
+}

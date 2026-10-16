@@ -1,0 +1,57 @@
+{
+ "chave": "gh:executablebooks/markdown-it-py",
+ "nomes": [
+  "Markdown-it-py",
+  "markdown-it-py",
+  "markdown‑it‑py",
+  "Markdown-Parser (Python: `markdown-it-py` + 自定义)"
+ ],
+ "urls": [
+  "https://github.com/executablebooks/markdown-it-py"
+ ],
+ "readme_cortado": false,
+ "readme": "# markdown-it-py\n\n[![Github-CI][github-ci]][github-link]\n[![Coverage Status][codecov-badge]][codecov-link]\n[![PyPI][pypi-badge]][pypi-link]\n[![Conda][conda-badge]][conda-link]\n[![PyPI - Downloads][install-badge]][install-link]\n\n<p align=\"center\">\n  <img alt=\"markdown-it-py icon\" src=\"https://raw.githubusercontent.com/executablebooks/markdown-it-py/master/docs/_static/markdown-it-py.svg\">\n</p>\n\n> Markdown parser done right.\n\n- Follows the __[CommonMark spec](http://spec.commonmark.org/)__ for baseline parsing\n- Configurable syntax: you can add new rules and even replace existing ones.\n- Pluggable: Adds syntax extensions to extend the parser (see the [plugin list][md-plugins]).\n- High speed (see our [benchmarking tests][md-performance])\n- Easy to configure for [security][md-security]\n- Member of [Google's Assured Open Source Software](https://cloud.google.com/assured-open-source-software/docs/supported-packages)\n\nThis is a Python port of [markdown-it], and some of its associated plugins.\nFor more details see: <https://markdown-it-py.readthedocs.io>.\n\nFor details on [markdown-it] itself, see:\n\n- The __[Live demo](https://markdown-it.github.io)__\n- [The markdown-it README][markdown-it-readme]\n\n**See also:** [markdown-it-pyrs](https://github.com/chrisjsewell/markdown-it-pyrs) for an experimental Rust binding,\nfor even more speed!\n\n## Installation\n\n### PIP\n\n```bash\npip install markdown-it-py[plugins]\n```\n\nor with extras\n\n```bash\npip install markdown-it-py[linkify,plugins]\n```\n\n### Conda\n\n```bash\nconda install -c conda-forge markdown-it-py\n```\n\nor with extras\n\n```bash\nconda install -c conda-forge markdown-it-py linkify-it-py mdit-py-plugins\n```\n\n## Usage\n\n### Python API Usage\n\nRender markdown to HTML with markdown-it-py and a custom configuration\nwith and without plugins and features:\n\n```python\nfrom markdown_it import MarkdownIt\nfrom mdit_py_plugins.front_matter import front_matter_plugin\nfrom mdit_py_plugins.footnote import footnote_plugin\n\nmd = (\n    MarkdownIt(\"commonmark\", {\"breaks\": True, \"html\": True})\n    .use(front_matter_plugin)\n    .use(footnote_plugin)\n    .enable(\"table\")\n)\ntext = \"\"\"\n---\na: 1\n---\n\na | b\n- | -\n1 | 2\n\nA footnote [^1]\n\n[^1]: some details\n\"\"\"\ntokens = md.parse(text)\nhtml_text = md.render(text)\n\n## To export the html to a file, uncomment the lines below:\n# from pathlib import Path\n# Path(\"output.html\").write_text(html_text)\n```\n\n### Command-line Usage\n\nRender markdown to HTML with markdown-it-py from the\ncommand-line:\n\n```console\nusage: markdown-it [-h] [-v] [--stdin] [--enable-tables] [filenames ...]\n\nParse one or more markdown files, convert each to HTML, and print to stdout\n\npositional arguments:\n  filenames        specify an optional list of files to convert\n\noptions:\n  -h, --help       show this help message and exit\n  -v, --version    show program's version number and exit\n  --stdin          read Markdown from standard input\n  --enable-tables  enable table parsing\n\nInteractive:\n\n  $ markdown-it\n  markdown-it-py [version 0.0.0] (interactive)\n  Type Ctrl-D to complete input, or Ctrl-C to exit.\n  >>> # Example\n  ... > markdown *input*\n  ...\n  <h1>Example</h1>\n  <blockquote>\n  <p>markdown <em>input</em></p>\n  </blockquote>\n\nBatch:\n\n  $ markdown-it README.md README.footer.md > index.html\n\n```\n\nTables are disabled by default, as in CommonMark.\nUse `--enable-tables` with any input mode to enable them:\n\n```bash\nmarkdown-it --enable-tables README.md > index.html\nmarkdown-it --enable-tables --stdin < README.md > index.html\nmarkdown-it --enable-tables\n```\n\n## References / Thanks\n\nBig thanks to the authors of [markdown-it]:\n\n- Alex Kocharin [github/rlidwka](https://github.com/rlidwka)\n- Vitaly Puzrin [github/puzrin](https://github.com/puzrin)\n\nAlso [John MacFarlane](https://github.com/jgm) for his work on the CommonMark spec and reference implementations.\n\n[github-ci]: https://github.com/executablebooks/markdown-it-py/actions/workflows/tests.yml/badge.svg?branch=master\n[github-link]: https://github.com/executablebooks/markdown-it-py\n[pypi-badge]: https://img.shields.io/pypi/v/markdown-it-py.svg\n[pypi-link]: https://pypi.org/project/markdown-it-py\n[conda-badge]: https://anaconda.org/conda-forge/markdown-it-py/badges/version.svg\n[conda-link]: https://anaconda.org/conda-forge/markdown-it-py\n[codecov-badge]: https://codecov.io/gh/executablebooks/markdown-it-py/branch/master/graph/badge.svg\n[codecov-link]: https://codecov.io/gh/executablebooks/markdown-it-py\n[install-badge]: https://img.shields.io/pypi/dw/markdown-it-py?label=pypi%20installs\n[install-link]: https://pypistats.org/packages/markdown-it-py\n\n[CommonMark spec]: http://spec.commonmark.org/\n[markdown-it]: https://github.com/markdown-it/markdown-it\n[markdown-it-readme]: https://github.com/markdown-it/markdown-it/blob/master/README.md\n[md-security]: https://markdown-it-py.readthedocs.io/en/latest/security.html\n[md-performance]: https://markdown-it-py.readthedocs.io/en/latest/performance.html\n[md-plugins]: https://markdown-it-py.readthedocs.io/en/latest/plugins.html\n",
+ "fonte": "readme",
+ "respostas": [
+  {
+   "por": "llama-3.2-90b-vision",
+   "resposta": {
+    "serve": "none",
+    "role": "",
+    "place": [
+     "n/a"
+    ],
+    "mechanism": [
+     "other"
+    ],
+    "mcp": "no",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "unknown",
+    "doubt": true,
+    "evidence": ""
+   }
+  },
+  {
+   "por": "ministral-3-8b",
+   "resposta": {
+    "serve": "none",
+    "role": "",
+    "place": [
+     "library"
+    ],
+    "mechanism": [
+     "n/a"
+    ],
+    "mcp": "no",
+    "windows": "unknown",
+    "portuguese": "no",
+    "license": "unknown",
+    "maturity": "stable",
+    "doubt": false,
+    "evidence": "Markdown parser library for Python; no mention of search, MCP, Windows, or Portuguese support."
+   }
+  }
+ ]
+}

@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Medidas da peça</title>
+<style>
+  html, body { margin: 0; background: #fff; color: #111; font: 14px/1.4 system-ui, sans-serif; }
+  #palco { overflow: hidden; }
+  #palco iframe { display: block; border: 0; }
+  #medidas { white-space: pre-wrap; padding: 8px; }
+</style>
+</head>
+<body>
+<!--
+  Uso: /__medidas/medir.html?peca=/caminho/da/peca.html&largura=1280&altura=1000&espera=1500
+  A peça precisa vir do mesmo servidor local (mesma origem), senão o navegador não deixa medir.
+  O resultado sai em JSON no bloco "medidas" (pre), que ganha data-pronto ao terminar.
+-->
+<div id="palco"></div>
+<pre id="medidas">medindo…</pre>
+<script src="medir.js"></script>
+</body>
+</html>

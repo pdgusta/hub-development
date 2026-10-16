@@ -1,0 +1,37 @@
+{"pergunta": "Numa máquina nova, qual programa de sincronização precisa estar rodando antes de o plugin do Obsidian ser aberto pela primeira vez?", "tipo": "ordem", "lente": "construtor", "cita": ["LiveSync CLI", "plugin LiveSync", "Obsidian"]}
+{"pergunta": "Em que ordem devo criar, numa máquina nova, o banco, os links do contrato e as junções de skills?", "tipo": "ordem", "lente": "construtor", "cita": ["CouchDB", "links simbólicos do contrato", "junções de skills"]}
+{"pergunta": "Antes de escrever a lista de tarefas da construção, quais decisões ainda abertas precisam estar fechadas?", "tipo": "ordem", "lente": "construtor", "cita": ["busca", "gravação dos agentes", "arquitetura de pastas", "roteamento de skills"]}
+{"pergunta": "Se a outra máquina estiver desligada, o que a minha faz com as mudanças que eu continuo gravando?", "tipo": "se-x", "lente": "construtor", "cita": ["CouchDB", "vigia"]}
+{"pergunta": "Se só o notebook da empresa estiver ligado, ele continua editando o hub e guarda o que mudou para mandar depois?", "tipo": "se-x", "lente": "construtor", "cita": ["notebook da empresa", "CouchDB"]}
+{"pergunta": "Se eu editar uma nota direto no disco sem abrir o Obsidian, o que o programa de sincronização faz com ela?", "tipo": "se-x", "lente": "construtor", "cita": ["Obsidian", "LiveSync CLI"]}
+{"pergunta": "Se o mesmo texto for editado nas duas máquinas ao mesmo tempo, o que acontece com cada versão?", "tipo": "se-x", "lente": "construtor", "cita": ["LiveSync", "CouchDB"]}
+{"pergunta": "Se eu guardar uma senha numa pasta com ponto dentro de uma iniciativa, ela pode chegar ao banco ou ao GitHub?", "tipo": "se-x", "lente": "construtor", "cita": ["pastas com ponto", "CouchDB", "GitHub"]}
+{"pergunta": "Se eu abrir uma sessão numa subpasta do hub, o Codex acha o AGENTS.md da raiz?", "tipo": "se-x", "lente": "construtor", "cita": ["Codex", "AGENTS.md", ".git da raiz"]}
+{"pergunta": "Se eu abrir um agente por um papel do Maestri, o AGENTS.md da raiz chega a ele?", "tipo": "se-x", "lente": "construtor", "cita": ["papel do Maestri", "AGENTS.md", "claude-md-and-agents-md"]}
+{"pergunta": "Se eu interromper o agente no meio da resposta, o que acontece com a nota de retomada?", "tipo": "se-x", "lente": "construtor", "cita": ["hook de fim de resposta", "nota de retomada"]}
+{"pergunta": "Se um agente grava uma nota que outro já mudou, ela é recusada ou sobrescrita?", "tipo": "se-x", "lente": "construtor", "cita": ["agente", "MCP do banco", "gravação com versão"]}
+{"pergunta": "Se o mesmo arquivo de imagem for editado nas duas máquinas, qual das duas versões sobrevive?", "tipo": "falha", "lente": "construtor", "cita": ["arquivo binário", "LiveSync CLI", "vigia"]}
+{"pergunta": "Depois que o banco compacta, de onde volta uma versão antiga de uma nota?", "tipo": "falha", "lente": "construtor", "cita": ["CouchDB", "cópia de segurança no GitHub"]}
+{"pergunta": "O arquivo global do Copilot já tem instruções do GSD: o que acontece com elas quando o contrato do hub entra?", "tipo": "falha", "lente": "construtor", "cita": ["copilot-instructions.md", "GSD", "contrato do hub"]}
+{"pergunta": "Se o shell do Codex falhar com erro de sandbox no Windows, o que o hub perde?", "tipo": "falha", "lente": "construtor", "cita": ["Codex", "sandbox do Windows"]}
+{"pergunta": "O que ainda não foi testado com a conta da empresa e não pode ser dado como certo?", "tipo": "falha", "lente": "construtor", "cita": ["VS Code", "Copilot CLI", "conta da empresa"]}
+{"pergunta": "Quem roda o comando que traz de volta uma versão de imagem descartada pelo sistema?", "tipo": "responsavel", "lente": "construtor", "cita": ["vigia", "comando de recuperação"]}
+{"pergunta": "Quem roda a cópia de segurança diária no GitHub: uma tarefa agendada ou o próprio agente ao fim da sessão?", "tipo": "responsavel", "lente": "construtor", "cita": ["GitHub", "tarefa agendada"]}
+{"pergunta": "Quando a máquina trava, quem vê o aviso: a própria máquina travada ou a outra?", "tipo": "responsavel", "lente": "construtor", "cita": ["vigia", "notificação do Windows"]}
+{"pergunta": "Quem roda o comando que aceita uma máquina nova no programa de sincronização de linha de comando?", "tipo": "responsavel", "lente": "construtor", "cita": ["LiveSync CLI", "mark-resolved"]}
+{"pergunta": "Quem liga o modo de desenvolvedor do Windows em cada máquina, necessário para os links simbólicos?", "tipo": "responsavel", "lente": "construtor", "cita": ["modo de desenvolvedor do Windows", "links simbólicos"]}
+{"pergunta": "Quem decide se o agente grava direto no disco ou só pelo MCP?", "tipo": "responsavel", "lente": "construtor", "cita": ["agentes", "MCP do banco", "disco"]}
+{"pergunta": "Onde fica a regra que deixa as pastas com ponto de fora: no programa de linha de comando, no plugin ou nos dois?", "tipo": "onde-vive", "lente": "construtor", "cita": ["LiveSync CLI", "plugin LiveSync", "regra de exclusão"]}
+{"pergunta": "Onde a busca mora: no disco de cada máquina, no servidor do banco ou nos dois?", "tipo": "onde-vive", "lente": "construtor", "cita": ["busca", "obsidian-hybrid-search", "MCP do banco"]}
+{"pergunta": "Depois da construção, em qual máquina o FreeLLMAPI passa a rodar?", "tipo": "onde-vive", "lente": "construtor", "cita": ["FreeLLMAPI", "Docker", "notebook pessoal", "notebook da empresa"]}
+{"pergunta": "Quais programas rodam sozinhos em cada máquina, sem eu abrir nada?", "tipo": "quando", "lente": "construtor", "cita": ["LiveSync CLI", "vigia", "cópia de segurança"]}
+{"pergunta": "Em que situação o modelo de embeddings do Google entra na busca?", "tipo": "quando", "lente": "construtor", "cita": ["gemini-embedding-001", "busca"]}
+{"pergunta": "Qual é a diferença entre o plugin do Obsidian e o programa de linha de comando que sincroniza?", "tipo": "diferenca", "lente": "construtor", "cita": ["plugin LiveSync", "LiveSync CLI"]}
+{"pergunta": "Por que as pastas com ponto ficam de fora da sincronização, se o Obsidian tem um recurso próprio para elas?", "tipo": "por-que", "lente": "construtor", "cita": ["pastas com ponto", "Hidden File Sync"]}
+{"pergunta": "Por que o FreeLLMAPI nativo precisa do arquivo de chaves copiado da instalação Docker?", "tipo": "por-que", "lente": "construtor", "cita": ["FreeLLMAPI", "freeapi.db", "ENCRYPTION_KEY"]}
+{"pergunta": "Qual é a relação entre a busca no disco e o que o sincronizador grava?", "tipo": "relacao", "lente": "construtor", "cita": ["busca", "LiveSync CLI"]}
+{"pergunta": "Qual é a relação entre o arquivo global de instruções do Claude Code e o do Codex?", "tipo": "relacao", "lente": "construtor", "cita": ["CLAUDE.md", "AGENTS.md"]}
+{"pergunta": "Quais peças formam a busca local: o programa de busca, o modelo de texto e o acesso para os clientes?", "tipo": "grupo", "lente": "construtor", "cita": ["obsidian-hybrid-search", "arctic-embed-m-v2.0", "proxy de MCP"]}
+{"pergunta": "O que desta prova de conceito não entra no hub novo?", "tipo": "o-que-nao-faz", "lente": "construtor", "cita": ["prova de conceito", "C:/context-hub"]}
+{"pergunta": "Quem usa o FreeLLMAPI depois da construção: só as duas máquinas pessoais ou também o notebook da empresa?", "tipo": "quem-usa", "lente": "construtor", "cita": ["FreeLLMAPI", "notebook da empresa", "Tailscale"]}
+{"pergunta": "Quem pode ler o hub a partir de uma máquina de passagem: qualquer aparelho da rede privada ou só as máquinas do Gustavo?", "tipo": "quem-usa", "lente": "construtor", "cita": ["Tailscale", "chave efêmera", "MCP de leitura"]}

@@ -1,0 +1,92 @@
+{
+  "envio": "ae64bab7-9c5b-4e68-9cae-800d4ebd9f5b",
+  "tipo": "resposta",
+  "enviada": "2026-10-15T07:44:45-03:00",
+  "alvo": {
+    "tipo": "rodada",
+    "id": "2026-10-15-modelos-de-embeddings-da-busca-r3",
+    "titulo": "Modelos de embeddings: o que a comparação mostrou"
+  },
+  "ticket": "54",
+  "substitui": null,
+  "rodada": {
+    "id": "2026-10-15-modelos-de-embeddings-da-busca-r3",
+    "base": "1c76f2168769bb7f9e5587a00c4db29d05565facfbb2a4c4abbdf8f9b9ae8818",
+    "titulo": "Modelos de embeddings: o que a comparação mostrou",
+    "ticket": "54",
+    "perguntas": [
+      {
+        "id": "completar",
+        "titulo": "O que faltou",
+        "tipo": "escolha",
+        "recomendada": [
+          "A"
+        ],
+        "opcoes": [
+          {
+            "chave": "A",
+            "texto": "Completar os 6 com os scripts que já existem, disparados por mim, sem agente Claude: os quatro locais um de cada vez (uns 5 h de máquina, por causa da memória de 15,7 GB), o da OpenAI com o nome certo no gateway e o da Cohere num ritmo abaixo do limite. Depois, uma rodada para escolher o modelo"
+          },
+          {
+            "chave": "B",
+            "texto": "Escolher o modelo já, com os 9 que rodaram"
+          },
+          {
+            "chave": "C",
+            "texto": "Completar só os dois por API (minutos) e escolher em seguida; os quatro locais maiores ficam de fora"
+          }
+        ],
+        "proposta": null
+      },
+      {
+        "id": "rerank",
+        "titulo": "Os rerankers",
+        "tipo": "escolha",
+        "recomendada": [
+          "A"
+        ],
+        "opcoes": [
+          {
+            "chave": "A",
+            "texto": "Ficam de fora do hub agora e vão para o Radar, com o gatilho \"a busca virar caminho crítico ou uma máquina com GPU\""
+          },
+          {
+            "chave": "B",
+            "texto": "O bge-reranker-v2-m3 entra como opção ligável só nas buscas por paráfrase, mesmo com 14 s por busca"
+          }
+        ],
+        "proposta": null
+      },
+      {
+        "id": "algo-mais",
+        "titulo": "Algo mais?",
+        "tipo": "texto",
+        "recomendada": [],
+        "opcoes": [],
+        "proposta": null
+      }
+    ]
+  },
+  "corpo_hash": "4de4646a1c1f78be00003b658854f33b9869486b431a14c62d93881d88d960e5",
+  "corpo": {
+    "tipo": "resposta",
+    "rodada": "2026-10-15-modelos-de-embeddings-da-busca-r3",
+    "base": "1c76f2168769bb7f9e5587a00c4db29d05565facfbb2a4c4abbdf8f9b9ae8818",
+    "respostas": {
+      "completar": {
+        "escolha": [
+          "A"
+        ],
+        "outra": null,
+        "comentario": null
+      },
+      "rerank": {
+        "escolha": [
+          "A"
+        ],
+        "outra": null,
+        "comentario": null
+      }
+    }
+  }
+}

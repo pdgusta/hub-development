@@ -1,0 +1,83 @@
+{
+ "chave": "gh:beir-cellar/beir",
+ "nomes": [
+  "Beir",
+  "BeIR"
+ ],
+ "urls": [
+  "https://github.com/beir-cellar/beir"
+ ],
+ "readme_cortado": true,
+ "readme": "<h1 align=\"center\">\n<img style=\"vertical-align:middle\" width=\"450\" height=\"180\" src=\"https://raw.githubusercontent.com/benchmarkir/beir/main/images/color_logo_transparent_cropped.png\" />\n</h1>\n\n<p align=\"center\">\n    <a href=\"https://github.com/beir-cellar/beir/releases\">\n        <img alt=\"GitHub release\" src=\"https://img.shields.io/github/release/beir-cellar/beir.svg\">\n    </a>\n    <a href=\"https://www.python.org/\">\n            <img alt=\"Build\" src=\"https://img.shields.io/pypi/pyversions/beir?logo=pypi&style=flat&color=blue\">\n    </a>\n    <a href=\"https://github.com/beir-cellar/beir/blob/master/LICENSE\">\n        <img alt=\"License\" src=\"https://img.shields.io/github/license/beir-cellar/beir?logo=github&style=flat&color=green\">\n    </a>\n    <a href=\"https://colab.research.google.com/drive/1HfutiEhHMJLXiWGT8pcipxT5L2TpYEdt?usp=sharing\">\n        <img alt=\"Open In Colab\" src=\"https://colab.research.google.com/assets/colab-badge.svg\">\n    </a>\n    <a href=\"https://pepy.tech/project/beir\">\n        <img alt=\"Downloads\" src=\"https://img.shields.io/pypi/dm/beir?logo=pypi&style=flat&color=orange\">\n    </a>\n    <a href=\"https://github.com/beir-cellar/beir/\">\n        <img alt=\"Open Source\" src=\"https://badges.frapsoft.com/os/v1/open-source.svg?v=103\">\n    </a>\n</p>\n\n<h4 align=\"center\">\n    <p>\n        <a href=\"https://openreview.net/forum?id=wCu6T5xFjeJ\">Paper</a> |\n        <a href=\"#beers-installation\">Installation</a> |\n        <a href=\"#beers-quick-example\">Quick Example</a> |\n        <a href=\"#beers-available-datasets\">Datasets</a> |\n        <a href=\"https://github.com/beir-cellar/beir/wiki\">Wiki</a> |\n        <a href=\"https://huggingface.co/BeIR\">Hugging Face</a>\n    <p>\n</h4>\n\n<!-- > The development of BEIR benchmark is supported by: -->\n\n<h3 align=\"center\">\n    <a href=\"http://www.ukp.tu-darmstadt.de\"><img style=\"float: left; padding: 2px 7px 2px 7px;\" width=\"220\" height=\"100\" src=\"./images/ukp.png\" /></a>\n    <a href=\"https://www.tu-darmstadt.de/\"><img style=\"float: middle; padding: 2px 7px 2px 7px;\" width=\"250\" height=\"90\" src=\"./images/tu-darmstadt.png\" /></a>\n    <a href=\"https://uwaterloo.ca\"><img style=\"float: right; padding: 2px 7px 2px 7px;\" width=\"320\" height=\"100\" src=\"./images/uwaterloo.png\" /></a>\n</h3>\n\n<h3 align=\"center\">\n    <a href=\"https://huggingface.co/\"><img style=\"float: middle; padding: 2px 7px 2px 7px;\" width=\"400\" height=\"80\" src=\"./images/HF.png\" /></a>\n</h3>\n\n## :beers: What is it?\n\n**BEIR** is a **heterogeneous benchmark** containing diverse IR tasks. It also provides a **common and easy framework** for evaluation of your NLP-based retrieval models within the benchmark.\n\nFor **an overview**, checkout our **new wiki** page: [https://github.com/beir-cellar/beir/wiki](https://github.com/beir-cellar/beir/wiki).\n\nFor **models and datasets**, checkout out **Hugging Face (HF)** page: [https://huggingface.co/BeIR](https://huggingface.co/BeIR).\n\nFor more information, checkout out our publications:\n\n- [BEIR: A Heterogenous Benchmark for Zero-shot Evaluation of Information Retrieval Models](https://openreview.net/forum?id=wCu6T5xFjeJ) (NeurIPS 2021, Datasets and Benchmarks Track)\n- [Resources for Brewing BEIR: Reproducible Reference Models and an Official Leaderboard](https://dl.acm.org/doi/10.1145/3626772.3657862) (SIGIR 2024 Resource Track)\n\n## :beers: Installation\n\nInstall via pip:\n\n```python\npip install beir\n```\n\nIf you want to build from source, use:\n\n```python\n$ git clone https://github.com/beir-cellar/beir.git\n$ cd beir\n$ pip install -e .\n```\n\nTested with python versions 3.9+\n\n## :beers: Features\n\n- Preprocess your own IR dataset or use one of the already-preprocessed 17 benchmark datasets\n- Wide settings included, covers diverse benchmarks useful for both academia and industry\n- Evaluates well-known retrieval architectures (lexical, dense, sparse and reranking-based)\n- Add and evaluate your own model in a easy framework using different state-of-the-art evaluation metrics\n\n## :beers: Quick Example\n\nFor other example codes, please refer to our **[Examples and Tutorials](https://github.com/beir-cellar/beir/wiki/Examples-and-tutorials)** Wiki page.\n\n<details><summary><b>Quick Example with Sentence-BERT</b></summary>\n\n```python\nfrom beir import util, LoggingHandler\nfrom beir.retrieval import models\nfrom beir.datasets.data_loader import GenericDataLoader\nfrom beir.retrieval.evaluation import EvaluateRetrieval\nfrom beir.retrieval.search.dense import DenseRetrievalExactSearch as DRES\n\nimport logging\nimport pathlib, os\n\n#### Just some code to print debug information to stdout\nlogging.basicConfig(format='%(asctime)s - %(message)s',\n                    datefmt='%Y-%m-%d %H:%M:%S',\n                    level=logging.INFO,\n                    handlers=[LoggingHandler()])\n#### /print debug information to stdout\n\n#### Download scifact.zip dataset and unzip the dataset\ndataset = \"scifact\"\nurl = f\"https://public.ukp.informatik.tu-darmstadt.de/thakur/BEIR/datasets/{dataset}.zip\"\nout_dir = os.path.join(pathlib.Path(__file__).parent.absolute(), \"datasets\")\ndata_path = util.download_and_unzip(url, out_dir)\n\n#### Provide the data_path where scifact has been downloaded and unzipped\ncorpus, queries, qrels = GenericDataLoader(data_folder=data_path).load(split=\"test\")\n\n#### Load the SBERT model and retrieve using cosine-similarity\nmodel = DRES(models.SentenceBERT(\"Alibaba-NLP/gte-modernbert-base\"), batch_size=16)\n\nretriever = EvaluateRetrieval(model, score_function=\"cos_sim\") # or \"dot\" for dot product\nresults = retriever.retrieve(corpus, queries)\n\n#### Evaluate your model with NDCG@k, MAP@K, Recall@K and Precision@K  where k = [1,3,5,10,100,1000]\nndcg, _map, recall, precision = retriever.evaluate(qrels, results, retriever.k_values)\nmrr = retriever.evaluate_custom(qrels, results, retriever.k_values, metric=\"mrr\")\n\n### If you want to save your results and runfile (useful for reranking)\nresults_dir = os.path.join(pathlib.Path(__file__).parent.absolute(), \"results\")\nos.makedirs(results_dir, exist_ok=True)\n\n#### Save the evaluation runfile & results\nutil.save_runfile(os.path.join(results_dir, f\"{dataset}.run.trec\"), results)\nutil.save_results(os.path.join(results_dir, f\"{dataset}.json\"), ndcg, _map, recall, precision, mrr)\n```\n</details>\n\n<details><summary><b>Quick Example with LoRA & vLLM</b></summary>\nFirst install peft, vllm & accelerate using the following installations:\n\n```\npip install peft\npip install accelerate\npip install vllm\n```\n\n```python\nfrom beir import util, LoggingHandler\nfrom beir.retrieval import models\nfrom beir.datasets.data_loader import GenericDataLoader\nfrom beir.retrieval.evaluation import EvaluateRetrieval\nfrom beir.retrieval.search.dense import DenseRetrievalExactSearch as DRES\n\nimport logging\nimport pathlib, os\n\n#### Just some code to print debug information to stdout\nlogging.basicConfig(format='%(asctime)s - %(message)s',\n                    datefmt='%Y-%m-%d %H:%M:%S',\n                    level=logging.INFO,\n                    handlers=[LoggingHandler()])\n#### /print debug information to stdout\n\n#### Download scifact.zip dataset and unzip the dataset\ndataset = \"scifact\"\nurl = f\"https://public.ukp.informatik.tu-darmstadt.de/thakur/BEIR/datasets/{dataset}.zip\"\nout_dir = os.path.join(pathlib.Path(__file__).parent.absolute(), \"datasets\")\ndata_path = util.download_and_unzip(url, out_dir)\n\n#### Provide the data_path where scifact has been downloaded and unzipped\ncorpus, queries, qrels = GenericDataLoader(data_folder=data_path).load(split=\"test\")\n\n#### You can also merge the LoRA model weights into the original base model for faster inference.\n#### Checkout: https://github.com/beir-cellar/beir/blob/main/examples/retrieval/evaluation/dense/evaluate_lora_vllm.py\n\n#### Load the vLLM embed model and retrieve using cosine-similarity\nmodel = DRES(\n    models.VLLMEmbed(\n        model_path=\"Qwen/Qwen2.5-7B\",\n        lora_name_or_path=\"rlhn/Qwen2.5-7B-rlhn-400K\",\n        max_length=512,\n        lora_r=16,\n        pooling=\"eos\",\n        append_eos_token=True,\n        normalize=True,\n        prompts={\"query\": \"query: \", \"passage\": \"passage: \"},\n        convert_to_numpy=True\n    ),\n    batch_size=128,\n)\n\nretriever = EvaluateRetrieval(model, score_function=\"cos_sim\") # or \"dot\" for dot product\nresults = retriever.encode_and_retrieve(corpus, queries, encode_output_path=\"./qwen_embeddings/\")\n\n#### Evaluate your model with NDCG@k, MAP@K, Recall@K and Precision@K  where k = [1,3,5,10,100,1000]\nndcg, _map, recall, precision = retriever.evaluate(qrels, results, retriever.k_values)\nmrr = retriever.evaluate_custom(qrels, results, retriever.k_values, metric=\"mrr\")\n\n### If you want to save your results and runfile (useful for reranking)\nresults_dir = os.path.join(pathlib.Path(__file__).parent.absolute(), \"results\")\nos.makedirs(results_dir, exist_ok=True)\n\n#### Save the evaluation runfile & results\nutil.save_runfile(os.path.join(results_dir, f\"{dataset}.run.trec\"), results)\nutil.save_results(os.path.join(results_dir, f\"{dataset}.json\"), ndcg, _map, recall, precision, mrr)\n```\n</details>\n\n<details><summary><b>Quick Example with HuggingFace</b></summary>\nif you use `encode_and_retrieve()` make sure you install faiss with `pip install faiss-cpu`.\n\n```python\nfrom beir import util, LoggingHandler\nfrom beir.retrieval import models\nfrom beir.datasets.data_loader import GenericDataLoader\nfrom beir.retrieval.evaluation import EvaluateRetrieval\nfrom beir.retrieval.search.dense import DenseRetrievalExactSearch as DRES\n\nimport logging\nimport pathlib, os\n\n#### Just some code to print debug information to stdout\nlogging.basicConfig(format='%(asctime)s - %(message)s',\n                    datefmt='%Y-%m-%d %H:%M:%S',\n                    level=logging.INFO,\n                    handlers=[LoggingHandler()])\n#### /print debug information to stdout\n\n#### Download scifact.zip dataset and unzip the dataset\ndataset = \"scifact\"\nurl = f\"https://public.ukp.informatik.tu-darmstadt.de/thakur/BEIR/datasets/{dataset}.zip\"\nout_dir = os.path.join(pathlib.Path(__file__).parent.absolute(), \"datasets\")\ndata_path = util.download_and_unzip(url, out_dir)\n\n#### Provide the data_path where scifact has been downloaded and unzipped\ncorpus, queries, qrels = GenericDataLoader(data_folder=data_path).load(split=\"test\")\n\n#### Load the Huggingface model and retrieve using cosine-similarity\nquery_prompt = \"Instruct: Given a question, retrieve relevant documents that best answer the question\\nQuery: \"\n\nmodel = DRES(\n    models.HuggingFace(\n        model_path=\"intfloat/e5-mistral-7b-instruct\",\n        max_length=512,\n        pooling=\"eos\",\n        append_eos_token=True,\n        normalize=True,\n        prompts={\"query\": query_prompt, \"passage\": \"\"},\n        attn_implementation=\"flash_attention_2\",\n        torch_dtype=\"bfloat16\"\n    ),\n    batch_size=128,\n)\n\nretriever = EvaluateRetrieval(model, score_function=\"cos_sim\") # or \"dot\" for dot product\nresults = retriever.encode_and_retrieve(corpus, queries, encode_output_path=\"./embeddings/\")\n\n#### Evaluate your model with NDCG@k, MAP@K, Recall@K and Precision@K  where k = [1,3,5,10,100,1000]\nndcg, _map, recall, precision = retriever.evaluate(qrels, results, retriever.k_values)\nmrr = retriever.evaluate_custom(qrels, results, retriever.k_values, metric=\"mrr\")\n\n### If you want to save your results and runfile (useful for reranking)\nresults_dir = os.path.join(pathlib.Path(__file__).parent.absolute(), \"results\")\nos.makedirs(results_dir, exist_ok=True)\n\n#### Save the evaluation runfile & results\nutil.save_runfile(os.path.join(results_dir, f\"{dataset}.run.trec\"), results)\nutil.save_results(os.path.join(results_dir, f\"{dataset}.json\"), ndcg, _map, recall, precision, mrr)\n```\n</details>\n\n<details><summary><b>Quick Example with APIs, e.g. Cohere</b></summary>\n\nInstall Cohere API using `pip install cohere` & if you are using `encode_and_retrieve()` install faiss with `pip install faiss-cpu`.\n```python\nfrom beir import util, LoggingHandler\nfrom beir.retrieval import apis\nfrom beir.datasets.data_loader",
+ "fonte": "readme",
+ "respostas": [
+  {
+   "por": "free-router",
+   "resposta": {
+    "serve": "stack",
+    "role": "Benchmark framework for evaluating retrieval models",
+    "place": [
+     "library"
+    ],
+    "mechanism": [
+     "other"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "stable",
+    "doubt": false,
+    "evidence": "BEIR is a heterogeneous benchmark containing diverse IR tasks; no mention of MCP or Windows."
+   }
+  },
+  {
+   "por": "diffusiongemma-26b-a4b-it",
+   "resposta": {
+    "serve": "none",
+    "role": "A benchmark framework for evaluating NLP-based retrieval models and datasets.",
+    "place": [
+     "library"
+    ],
+    "mechanism": [
+     "other"
+    ],
+    "mcp": "no",
+    "windows": "unknown",
+    "portuguese": "no",
+    "license": "unknown",
+    "maturity": "stable",
+    "doubt": true,
+    "evidence": "BEIR is a heterogeneous benchmark containing diverse IR tasks. It also provides a common and easy framework for evaluation."
+   }
+  }
+ ],
+ "conferencia_sonnet": {
+  "chave": "gh:beir-cellar/beir",
+  "modelo": "claude-sonnet-5-5",
+  "ts": "2026-10-13T20:23:45Z",
+  "resultado": "confirma",
+  "conferencia": {
+   "resultado": "confirma",
+   "final": {
+    "serve": "stack",
+    "role": "Benchmark and evaluation framework for retrieval models (NDCG, MAP, recall) over standard IR datasets",
+    "place": [
+     "library"
+    ],
+    "mechanism": [
+     "other"
+    ],
+    "mcp": "no",
+    "windows": "unknown",
+    "portuguese": "no",
+    "license": "unknown",
+    "maturity": "stable",
+    "doubt": false,
+    "evidence": "BEIR is a heterogeneous benchmark containing diverse IR tasks, with a framework to evaluate lexical, dense, sparse and reranking retrieval models"
+   },
+   "o_que_mudou": [],
+   "nota": "Evaluation tooling, not a search engine; could measure retrieval quality of the hub's search layer, though its datasets are mostly English."
+  }
+ }
+}

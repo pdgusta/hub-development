@@ -1,0 +1,142 @@
+{
+  "envio": "7e842cf5-1aee-4ead-8646-fadff3a0556a",
+  "tipo": "resposta",
+  "enviada": "2026-10-16T18:32:46-03:00",
+  "alvo": {
+    "tipo": "rodada",
+    "id": "2026-10-16-plano-de-construcao-r1",
+    "titulo": "O plano de construção em etapas"
+  },
+  "ticket": "16",
+  "substitui": null,
+  "rodada": {
+    "id": "2026-10-16-plano-de-construcao-r1",
+    "base": "9106e6f99044e1f91f2ec962cbfd785bf5807d2600b48b9cbaf742ce2fbc53ac",
+    "titulo": "O plano de construção em etapas",
+    "ticket": "16",
+    "perguntas": [
+      {
+        "id": "ordem",
+        "titulo": "1. A construção em etapas, nesta ordem",
+        "tipo": "escolha",
+        "recomendada": [
+          "A"
+        ],
+        "opcoes": [
+          {
+            "chave": "A",
+            "texto": "Aceitar: uma etapa por vez, cada uma usando a entrega real da anterior, na ordem esqueleto → banco → MCP do banco → busca → guardas no disco → vigia → retomada → skills e acervo → manutenção e kit de cliente → kit de par → junção"
+          },
+          {
+            "chave": "B",
+            "texto": "Etapas em sequência, mas com outra ordem (diga qual no \"Algo mais?\")"
+          }
+        ],
+        "proposta": null
+      },
+      {
+        "id": "etapa-zero",
+        "titulo": "2. Uma etapa zero de provas de risco",
+        "tipo": "escolha",
+        "recomendada": [
+          "A"
+        ],
+        "opcoes": [
+          {
+            "chave": "A",
+            "texto": "Sim: antes de tudo, testar o que pode derrubar o desenho (dois CouchDB replicando com os documentos do LiveSync; a exclusão de pastas com ponto aninhadas no LiveSync; os hooks do Codex em acesso total)"
+          },
+          {
+            "chave": "B",
+            "texto": "Não: cada risco é testado dentro da etapa que o usa"
+          }
+        ],
+        "proposta": null
+      },
+      {
+        "id": "ramos-de-ontem",
+        "titulo": "3. Os ramos da execução de ontem",
+        "tipo": "escolha",
+        "recomendada": [
+          "A"
+        ],
+        "opcoes": [
+          {
+            "chave": "A",
+            "texto": "Guardar como referência (`ontem/faixa-NN`) e recomeçar cada etapa da ponta do ramo de integração, consultando o de ontem quando servir"
+          },
+          {
+            "chave": "B",
+            "texto": "Continuar dos ramos de ontem onde houver trabalho (esqueleto, retomada, busca, vigia, skills)"
+          },
+          {
+            "chave": "C",
+            "texto": "Apagar os ramos de ontem"
+          }
+        ],
+        "proposta": null
+      },
+      {
+        "id": "receita",
+        "titulo": "4. Como cada etapa é executada",
+        "tipo": "escolha",
+        "recomendada": [
+          "A"
+        ],
+        "opcoes": [
+          {
+            "chave": "A",
+            "texto": "Antes de cada etapa, o maestro propõe a receita (quem constrói, quem revisa, qual modelo, quantos no canvas) e você ajusta numa rodada curta"
+          },
+          {
+            "chave": "B",
+            "texto": "Uma receita padrão fixa para todas as etapas, decidida agora (diga qual no \"Algo mais?\")"
+          }
+        ],
+        "proposta": null
+      },
+      {
+        "id": "algo-mais",
+        "titulo": "Algo mais?",
+        "tipo": "texto",
+        "recomendada": [],
+        "opcoes": [],
+        "proposta": null
+      }
+    ]
+  },
+  "corpo_hash": "8e056e72943239fb82f7255016c050b03739abe9332dee1117a535c7916ea1b7",
+  "corpo": {
+    "tipo": "resposta",
+    "rodada": "2026-10-16-plano-de-construcao-r1",
+    "base": "9106e6f99044e1f91f2ec962cbfd785bf5807d2600b48b9cbaf742ce2fbc53ac",
+    "respostas": {
+      "ordem": {
+        "escolha": [],
+        "outra": null,
+        "comentario": "no plano anterior os agentes estavam construindo em cima de algo virtual que ainda não existia ainda (era de responsabilidade de outro agente), mas com esse desenho fica claro que até pode existir um certo paralelismo, mas apenas para o agente conseguir adiantar trabalho que não depende do trabalho executado nas etapas anteriores. Certo? Mesmo com um paralelismo de maximo de 3 agentes. Não precisa mudar o desenho, é só uma duvida. Se não der, escolho a opção A"
+      },
+      "etapa-zero": {
+        "escolha": [
+          "A"
+        ],
+        "outra": null,
+        "comentario": "mas por favor é bom testar porém já tentando prever dificuldades ao ligar o resultado final com o que foi testado."
+      },
+      "ramos-de-ontem": {
+        "escolha": [
+          "A"
+        ],
+        "outra": null,
+        "comentario": "mas com outro nome. 'ontem/' é um nome horrível."
+      },
+      "receita": {
+        "escolha": [
+          "A"
+        ],
+        "outra": null,
+        "comentario": "o que disse na pergunta 1 não é essa opção B. Na verdade a opção A vai continuar acontecendo, a cada etapa você propõe como vamos seguir de acordo com como foi o resultado e estado da etapa anterior e também vai me dizendo o que os agentes ja anteciparam da etapa que você está propondo. Deu pra entender?"
+      }
+    }
+  }
+}

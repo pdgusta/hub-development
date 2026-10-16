@@ -1,0 +1,25 @@
+{
+ "chave": "conceito:embedded-library-per-agent",
+ "modelo": "nemotron-3-super-120b",
+ "ts": "2026-10-13T20:22:54Z",
+ "resposta": {
+  "concept_en": "embedded library per agent",
+  "serve": "search",
+  "role": "Provides each agent with a local, in-process search index for fast retrieval.",
+  "mechanism": [
+   "full_text",
+   "vector"
+  ],
+  "place": [
+   "disk"
+  ],
+  "tools_on_card": [
+   "Tantivy",
+   "Whoosh",
+   "sqlite-vec"
+  ],
+  "doubt": false,
+  "evidence": "Jeder Agent lädt die Index-Dateien (Tantivy/Whoosh/sqlite-vec) direkt in den Prozess; kein Netzwerk, aber Index-Build auf jedem Rechner."
+ },
+ "via": "freellmapi"
+}

@@ -1,0 +1,39 @@
+{
+ "chave": "web:vector.dev",
+ "urls": [
+  "https://vector.dev",
+  "https://vector.dev/"
+ ],
+ "tipos": [
+  "tool"
+ ],
+ "termos": [
+  "Vector.dev",
+  "Datadog Vector",
+  "Log pipeline",
+  "Vector",
+  "observability",
+  "data pipeline",
+  "observability pipeline",
+  "log router"
+ ],
+ "mencoes": 3,
+ "familias": [
+  "gemini",
+  "mistral"
+ ],
+ "primeira_onda": 3,
+ "nomes": [
+  "Vector"
+ ],
+ "resumos": [
+  "Ein hochperformantes Tool für Datenpipelines und Log-Ingestion, entwickelt in Rust und eine beliebte, ressourcenschonende Alternative zu Logstash.",
+  "High-performance observability data pipeline.",
+  "High-performance observability data pipeline that could handle document ingestion."
+ ],
+ "fonte": "site",
+ "readme_status": "ok",
+ "readme_nome": "https://vector.dev",
+ "readme_cortado": false,
+ "readme": "[Vector | A lightweight, ultra-fast tool for building observability pipelines]\n\nNew\nVector version 0.59.0\n\nA lightweight, ultra-fast tool for building observability pipelines\n\nQuickstart\n\nVector Remap Language\n\nComponents\n\nTake control of your observability data\n\nCollect, transform, and route all your logs and metrics with one simple tool.\n\nWhy Vector?\n\nUltra fast and reliable\nBuilt in Rust, Vector is blistering fast, memory efficient, and designed to handle the most demanding workloads.\n\nEnd to end\nVector strives to be the only tool you need to get observability data from A to B, deploying as a daemon, sidecar, or aggregator.\n\nUnified\nVector supports logs and metrics, making it easy to collect and process all your observability data.\n\nVendor neutral\nVector doesn’t favor any specific vendor platforms and fosters a fair, open ecosystem with your best interests in mind. Lock-in free and future proof.\n\nProgrammable transforms\nVector’s highly configurable transforms give you the full power of programmable runtimes. Handle complex use cases without limitation.\n\nClear guarantees\nGuarantees matter, and Vector is clear on which guarantees it provides, helping you make the appropriate trade-offs for your use case.\n\nA complete, end-to-end platform.\n\nDeploy Vector in a variety of roles to suit your use case.\nGet data from point A to point B without patching tools together.\n\nDistributed\n\nCentralized\n\nStream based\n\nLearn more about the distributed deployment topology for Vector\n\nLearn more about the centralized deployment topology for Vector\n\nLearn more about the stream-based deployment topology for Vector\n\nEasy to configure\n\nA simple, composable format enables you to build flexible pipelines\n\nRedacted Datadog Agent logs to Datadog\n\nKafka topic to Elasticsearch\n\nKubernetes logs to AWS S3\n\nSplunk HEC to Datadog\n\n/etc/vector/vector.yaml\n\nsources:\n datadog_agent:\n type: \"datadog_agent\"\n address: \"0.0.0.0:80\"\n\ntransforms:\n remove_sensitive_user_info:\n type: \"remap\"\n inputs: [\"datadog_agent\"]\n source: |\n redact(., filters: [\"us_social_security_number\"])\n\nsinks:\n datadog_backend:\n type: \"datadog_logs\"\n inputs: [\"remove_sensitive_user_info\"]\n default_api_key: \"${DATADOG_API_KEY}\"\n\nsources:\n kafka_in:\n type: \"kafka\"\n bootstrap_servers: \"10.14.22.123:9092,10.14.23.332:9092\"\n group_id: \"vector-logs\"\n key_field: \"message\"\n topics: [\"logs-*\"]\n\ntransforms:\n json_parse:\n type: \"remap\"\n inputs: [\"kafka_in\"]\n source: |\n parsed, err = parse_json(.message)\n if err != null {\n log(err, level: \"error\")\n }\n . |= object(parsed) ?? {}\n\nsinks:\n elasticsearch_out:\n type: \"elasticsearch\"\n inputs: [\"json_parse\"]\n endpoint: \"http://10.24.32.122:9000\"\n index: \"logs-via-kafka\"\n\nsources:\n k8s_in:\n type: \"kubernetes_logs\"\n\nsinks:\n aws_s3_out:\n type: \"aws_s3\"\n inputs: [\"k8s_in\"]\n bucket: \"k8s-logs\"\n region: \"us-east-1\"\n compression: \"gzip\"\n encoding:\n codec: \"json\"\n\nsources:\n splunk_hec_in:\n type: \"splunk_hec\"\n address: \"0.0.0.0:8080\"\n token: \"${SPLUNK_HEC_TOKEN}\"\n\nsinks:\n datadog_out:\n type: \"datadog_logs\"\n inputs: [\"splunk_hec_in\"]\n default_api_key: \"${DATADOG_API_KEY}\"\nConfiguration examples are in YAML but Vector also supports TOML and JSON\n\nInstalls everywhere\n\nPackaged as a single binary. No dependencies, no runtime, and memory safe.\n\nSingle binary\nX86_64, ARM64/v7\nNo runtime\nMemory safe\n\nInstall with a one-liner:\n\nFor humans\nFor machines\n\ncurl --proto '=https' --tlsv1.2 -sSfL https://sh.vector.dev | bash\n\ncurl --proto '=https' --tlsv1.2 -sSfL https://sh.vector.dev | bash -s -- -y\n\nOr choose your preferred method:\n\nPlatforms\n\nPackage managers\n\nOperating systems\n\nManual\n\nHighly flexible processing topologies\n\nA wide range of sources, transforms, and sinks to choose from\n\n47\nsources\nAMQP\nApache Metrics\nAWS ECS metrics\nAWS Kinesis Firehose\nAWS S3\nAWS SQS\nDatadog agent\nDemo Logs\ndnstap\nDocker logs\n18\ntransforms\nRemap with VRL\nAggregate\nAWS EC2 metadata\nDedupe\nDelay\nExclusive Route\nFilter\nIncremental to Absolute\nLog to metric\nLua\n61\nsinks\nAMQP\nAppSignal\nAWS Cloudwatch logs\nAWS Cloudwatch metrics\nAWS Kinesis Data Firehose logs\nAWS Kinesis Streams logs\nAWS S3\nAWS SNS\nAWS SQS\nAxiom\n\nBacked by a strong open source community\n\n22k+\nGitHub stars\n800+\nContributors\n1B+\nDownloads\n40\nCountries\n\nView GitHub repo\nChat with us on Discord\n\nSign up to receive emails on the latest Vector content and new releases\n×\n\nThank you for joining our Updates Newsletter"
+}

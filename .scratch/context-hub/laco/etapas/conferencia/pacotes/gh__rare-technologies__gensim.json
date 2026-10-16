@@ -1,0 +1,74 @@
+{
+ "chave": "gh:rare-technologies/gensim",
+ "nomes": [
+  "Gensim",
+  "Gensim (BM25 Implementation)",
+  "Gensim (Portuguese Word2Vec)",
+  "Gensim (Word2Vec/FastText)",
+  "gensim BM25",
+  "gensim",
+  "Gensim PortugueseStemmer",
+  "Gensim (for Portuguese Stemming)",
+  "Stemming with GenSim",
+  " Portuguese Stemmer (Gensim)",
+  "Gensim BM25 implementation",
+  "Gensim KeyedVectors"
+ ],
+ "urls": [
+  "https://github.com/RaRe-Technologies/gensim",
+  "https://radimrehurek.com/gensim/",
+  "https://gensim.readthedocs.io/",
+  "https://radimrehurek.com/gensim/models/word2vec.html",
+  "https://gensim.org/",
+  "https://github.com/rammel/gensim"
+ ],
+ "readme_cortado": false,
+ "readme": "gensim – Topic Modelling in Python\n==================================\n\n<!--\nThe following image URLs are obfuscated = proxied and cached through\nGoogle because of Github's proxying issues. See:\nhttps://github.com/RaRe-Technologies/gensim/issues/2805\n-->\n\n[![Build Status](https://github.com/RaRe-Technologies/gensim/actions/workflows/tests.yml/badge.svg?branch=develop)](https://github.com/RaRe-Technologies/gensim/actions)\n[![GitHub release](https://img.shields.io/github/release/rare-technologies/gensim.svg?maxAge=3600)](https://github.com/RaRe-Technologies/gensim/releases)\n[![Downloads](https://img.shields.io/pypi/dm/gensim?color=blue)](https://pepy.tech/project/gensim/)\n[![DOI](https://zenodo.org/badge/DOI/10.13140/2.1.2393.1847.svg)](https://doi.org/10.13140/2.1.2393.1847)\n[![Mailing List](https://img.shields.io/badge/-Mailing%20List-blue.svg)](https://groups.google.com/g/gensim)\n[![Follow](https://img.shields.io/twitter/follow/gensim_py.svg?style=social&style=flat&logo=twitter&label=Follow&color=blue)](https://twitter.com/gensim_py)\n\nGensim is a Python library for *topic modelling*, *document indexing*\nand *similarity retrieval* with large corpora. Target audience is the\n*natural language processing* (NLP) and *information retrieval* (IR)\ncommunity.\n\n## ⚠️ Want to help out? [Sponsor Gensim](https://github.com/sponsors/piskvorky) ❤️\n\n## ⚠️ Gensim is in stable maintenance mode: we are not accepting new features, but bug and documentation fixes are still welcome! ⚠️\n\nFeatures\n--------\n\n-   All algorithms are **memory-independent** w.r.t. the corpus size\n    (can process input larger than RAM, streamed, out-of-core),\n-   **Intuitive interfaces**\n    -   easy to plug in your own input corpus/datastream (trivial\n        streaming API)\n    -   easy to extend with other Vector Space algorithms (trivial\n        transformation API)\n-   Efficient multicore implementations of popular algorithms, such as\n    online **Latent Semantic Analysis (LSA/LSI/SVD)**, **Latent\n    Dirichlet Allocation (LDA)**, **Random Projections (RP)**,\n    **Hierarchical Dirichlet Process (HDP)** or **word2vec deep\n    learning**.\n-   **Distributed computing**: can run *Latent Semantic Analysis* and\n    *Latent Dirichlet Allocation* on a cluster of computers.\n-   Extensive [documentation and Jupyter Notebook tutorials].\n\nIf this feature list left you scratching your head, you can first read\nmore about the [Vector Space Model] and [unsupervised document analysis]\non Wikipedia.\n\nInstallation\n------------\n\nThis software depends on [NumPy], a Python package for\nscientific computing. Please bear in mind that building NumPy from source\n(e.g. by installing gensim on a platform which lacks NumPy .whl distribution)\nis a non-trivial task involving [linking NumPy to a BLAS library].  \nIt is recommended to provide a fast one (such as MKL, [ATLAS] or\n[OpenBLAS]) which can improve performance by as much as an order of\nmagnitude. On OSX, NumPy picks up its vecLib BLAS automatically,\nso you don’t need to do anything special.\n\nInstall the latest version of gensim:\n\n```bash\n    pip install --upgrade gensim\n```\n\nOr, if you have instead downloaded and unzipped the [source tar.gz]\npackage:\n\n```bash\n    tar -xvzf gensim-X.X.X.tar.gz\n    cd gensim-X.X.X/\n    pip install .\n```\n\nFor alternative modes of installation, see the [documentation].\n\nGensim is being [continuously tested](https://radimrehurek.com/gensim/#testing) under all\n[supported Python versions](https://github.com/RaRe-Technologies/gensim/wiki/Gensim-And-Compatibility).\nSupport for Python 2.7 was dropped in gensim 4.0.0 – install gensim 3.8.3 if you must use Python 2.7.\n\nHow come gensim is so fast and memory efficient? Isn’t it pure Python, and isn’t Python slow and greedy?\n--------------------------------------------------------------------------------------------------------\n\nMany scientific algorithms can be expressed in terms of large matrix\noperations (see the BLAS note above). Gensim taps into these low-level\nBLAS libraries, by means of its dependency on NumPy. So while\ngensim-the-top-level-code is pure Python, it actually executes highly\noptimized Fortran/C under the hood, including multithreading (if your\nBLAS is so configured).\n\nMemory-wise, gensim makes heavy use of Python’s built-in generators and\niterators for streamed data processing. Memory efficiency was one of\ngensim’s [design goals], and is a central feature of gensim, rather than\nsomething bolted on as an afterthought.\n\nDocumentation\n-------------\n\n-   [QuickStart]\n-   [Tutorials]\n-   [Official API Documentation]\n\n  [QuickStart]: https://radimrehurek.com/gensim/auto_examples/core/run_core_concepts.html\n  [Tutorials]: https://radimrehurek.com/gensim/auto_examples/\n  [Official Documentation and Walkthrough]: https://radimrehurek.com/gensim/\n  [Official API Documentation]: https://radimrehurek.com/gensim/auto_examples/index.html#documentation\n\nSupport\n-------\n\nFor commercial support, please see [Gensim sponsorship](https://github.com/sponsors/piskvorky).\n\nAsk open-ended questions on the public [Gensim Mailing List](https://groups.google.com/g/gensim).\n\nRaise bugs on [Github](https://github.com/RaRe-Technologies/gensim/blob/develop/CONTRIBUTING.md) but please **make sure you follow the [issue template](https://github.com/RaRe-Technologies/gensim/blob/develop/ISSUE_TEMPLATE.md)**. Issues that are not bugs or fail to provide the requested details will be closed without inspection.\n\n\n---------\n\nAdopters\n--------\n\n| Company | Logo | Industry | Use of Gensim |\n|---------|------|----------|---------------|\n| [RARE Technologies](https://rare-technologies.com/) | ![rare](docs/src/readme_images/rare.png) | ML & NLP consulting | Creators of Gensim – this is us! |\n| [Amazon](http://www.amazon.com/) |  ![amazon](docs/src/readme_images/amazon.png) | Retail |  Document similarity. |\n| [National Institutes of Health](https://github.com/NIHOPA/pipeline_word2vec) | ![nih](docs/src/readme_images/nih.png) | Health | Processing grants and publications with word2vec. |\n| [Cisco Security](http://www.cisco.com/c/en/us/products/security/index.html) | ![cisco](docs/src/readme_images/cisco.png) | Security |  Large-scale fraud detection. |\n| [Mindseye](http://www.mindseyesolutions.com/) | ![mindseye](docs/src/readme_images/mindseye.png) | Legal | Similarities in legal documents. |\n| [Channel 4](http://www.channel4.com/) | ![channel4](docs/src/readme_images/channel4.png) | Media | Recommendation engine. |\n| [Talentpair](http://talentpair.com) | ![talent-pair](docs/src/readme_images/talent-pair.png) | HR | Candidate matching in high-touch recruiting. |\n| [Juju](http://www.juju.com/)  | ![juju](docs/src/readme_images/juju.png) | HR | Provide non-obvious related job suggestions. |\n| [Tailwind](https://www.tailwindapp.com/) | ![tailwind](docs/src/readme_images/tailwind.png) | Media | Post interesting and relevant content to Pinterest. |\n| [Issuu](https://issuu.com/) | ![issuu](docs/src/readme_images/issuu.png) | Media | Gensim's LDA module lies at the very core of the analysis we perform on each uploaded publication to figure out what it's all about. |\n| [Search Metrics](http://www.searchmetrics.com/) | ![search-metrics](docs/src/readme_images/search-metrics.png) | Content Marketing | Gensim word2vec used for entity disambiguation in Search Engine Optimisation. |\n| [12K Research](https://12k.com/) | ![12k](docs/src/readme_images/12k.png)| Media |   Document similarity analysis on media articles. |\n| [Stillwater Supercomputing](http://www.stillwater-sc.com/) | ![stillwater](docs/src/readme_images/stillwater.png) | Hardware | Document comprehension and association with word2vec. |\n| [SiteGround](https://www.siteground.com/) |  ![siteground](docs/src/readme_images/siteground.png) | Web hosting | An ensemble search engine which uses different embeddings models and similarities, including word2vec, WMD, and LDA. |\n| [Capital One](https://www.capitalone.com/) | ![capitalone](docs/src/readme_images/capitalone.png) | Finance | Topic modeling for customer complaints exploration. |\n\n-------\n\nCiting gensim\n------------\n\nWhen [citing gensim in academic papers and theses], please use this\nBibTeX entry:\n\n    @inproceedings{rehurek_lrec,\n          title = {{Software Framework for Topic Modelling with Large Corpora}},\n          author = {Radim {\\v R}eh{\\r u}{\\v r}ek and Petr Sojka},\n          booktitle = {{Proceedings of the LREC 2010 Workshop on New\n               Challenges for NLP Frameworks}},\n          pages = {45--50},\n          year = 2010,\n          month = May,\n          day = 22,\n          publisher = {ELRA},\n          address = {Valletta, Malta},\n          note={\\url{http://is.muni.cz/publication/884893/en}},\n          language={English}\n    }\n\n  [citing gensim in academic papers and theses]: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=9vG_kV0AAAAJ&citation_for_view=9vG_kV0AAAAJ:NaGl4SEjCO4C\n\n  [design goals]: https://radimrehurek.com/gensim/intro.html#design-principles\n  [RaRe Technologies]: https://rare-technologies.com/wp-content/uploads/2016/02/rare_image_only.png%20=10x20\n  [rare\\_tech]: //rare-technologies.com\n  [Talentpair]: https://avatars3.githubusercontent.com/u/8418395?v=3&s=100\n  [citing gensim in academic papers and theses]: https://scholar.google.cz/citations?view_op=view_citation&hl=en&user=9vG_kV0AAAAJ&citation_for_view=9vG_kV0AAAAJ:u-x6o8ySG0sC\n\n  [documentation and Jupyter Notebook tutorials]: https://github.com/RaRe-Technologies/gensim/#documentation\n  [Vector Space Model]: https://en.wikipedia.org/wiki/Vector_space_model\n  [unsupervised document analysis]: https://en.wikipedia.org/wiki/Latent_semantic_indexing\n  [NumPy]: https://numpy.org/install/\n  [linking NumPy to a BLAS library]: https://numpy.org/devdocs/building/blas_lapack.html\n  [ATLAS]: https://math-atlas.sourceforge.net/\n  [OpenBLAS]: https://xianyi.github.io/OpenBLAS/\n  [source tar.gz]: https://pypi.org/project/gensim/\n  [documentation]: https://radimrehurek.com/gensim/#install\n\n",
+ "fonte": "readme",
+ "respostas": [
+  {
+   "por": "gpt-oss-20b",
+   "resposta": {
+    "serve": "search",
+    "role": "index and retrieve similar passages",
+    "place": [
+     "library"
+    ],
+    "mechanism": [
+     "vector"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "stable",
+    "doubt": false,
+    "evidence": "Gensim is a Python library for *topic modelling*, *document indexing* and *similarity retrieval*."
+   }
+  },
+  {
+   "por": "ising-calibration-1.5-31b",
+   "resposta": {
+    "serve": "stack",
+    "role": "Provides core NLP algorithms (LDA, LSA, word2vec) for document analysis and similarity retrieval, serving as a foundational library for the hub's search and understanding capabilities.",
+    "place": [
+     "library"
+    ],
+    "mechanism": [
+     "bm25",
+     "full_text",
+     "vector",
+     "hybrid",
+     "embeddings"
+    ],
+    "mcp": "no",
+    "windows": "yes",
+    "portuguese": "yes",
+    "license": "GPL-3.0",
+    "maturity": "stable",
+    "doubt": false,
+    "evidence": "The README explicitly states that Gensim is a Python library for topic modelling, document indexing, and similarity retrieval, which aligns with the 'stack' role. It mentions support for various mechanisms including BM25, vector spaces, and embeddings. The license is identified as GPL-3.0 in the repository metadata, and the library is confirmed to be stable with active maintenance."
+   }
+  }
+ ]
+}

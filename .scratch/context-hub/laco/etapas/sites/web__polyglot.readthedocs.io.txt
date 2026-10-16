@@ -1,0 +1,254 @@
+Docs »
+
+Welcome to polyglot’s documentation!
+
+ Edit on GitHub
+
+Welcome to polyglot’s documentation!¶
+
+polyglot¶
+
+Polyglot is a natural language pipeline that supports massive
+multilingual applications.
+
+Free software: GPLv3 license
+
+Documentation: http://polyglot.readthedocs.org.
+
+Features¶
+
+Tokenization (165 Languages)
+
+Language detection (196 Languages)
+
+Named Entity Recognition (40 Languages)
+
+Part of Speech Tagging (16 Languages)
+
+Sentiment Analysis (136 Languages)
+
+Word Embeddings (137 Languages)
+
+Morphological analysis (135 Languages)
+
+Transliteration (69 Languages)
+
+Developer¶
+
+Rami Al-Rfou @ rmyeid gmail com
+
+Quick Tutorial¶
+
+import polyglot
+from polyglot.text import Text, Word
+
+Language Detection¶
+
+text = Text("Bonjour, Mesdames.")
+print("Language Detected: Code={}, Name={}\n".format(text.language.code, text.language.name))
+
+Language Detected: Code=fr, Name=French
+
+Tokenization¶
+
+zen = Text("Beautiful is better than ugly. "
+ "Explicit is better than implicit. "
+ "Simple is better than complex.")
+print(zen.words)
+
+[u'Beautiful', u'is', u'better', u'than', u'ugly', u'.', u'Explicit', u'is', u'better', u'than', u'implicit', u'.', u'Simple', u'is', u'better', u'than', u'complex', u'.']
+
+print(zen.sentences)
+
+[Sentence("Beautiful is better than ugly."), Sentence("Explicit is better than implicit."), Sentence("Simple is better than complex.")]
+
+Part of Speech Tagging¶
+
+text = Text(u"O primeiro uso de desobediência civil em massa ocorreu em setembro de 1906.")
+
+print("{:<16}{}".format("Word", "POS Tag")+"\n"+"-"*30)
+for word, tag in text.pos_tags:
+ print(u"{:<16}{:>2}".format(word, tag))
+
+Word POS Tag
+------------------------------
+O DET
+primeiro ADJ
+uso NOUN
+de ADP
+desobediência NOUN
+civil ADJ
+em ADP
+massa NOUN
+ocorreu ADJ
+em ADP
+setembro NOUN
+de ADP
+1906 NUM
+. PUNCT
+
+Named Entity Recognition¶
+
+text = Text(u"In Großbritannien war Gandhi mit dem westlichen Lebensstil vertraut geworden")
+print(text.entities)
+
+[I-LOC([u'Gro\xdfbritannien']), I-PER([u'Gandhi'])]
+
+Polarity¶
+
+print("{:<16}{}".format("Word", "Polarity")+"\n"+"-"*30)
+for w in zen.words[:6]:
+ print("{:<16}{:>2}".format(w, w.polarity))
+
+Word Polarity
+------------------------------
+Beautiful 0
+is 0
+better 1
+than 0
+ugly -1
+. 0
+
+Embeddings¶
+
+word = Word("Obama", language="en")
+print("Neighbors (Synonms) of {}".format(word)+"\n"+"-"*30)
+for w in word.neighbors:
+ print("{:<16}".format(w))
+print("\n\nThe first 10 dimensions out the {} dimensions\n".format(word.vector.shape[0]))
+print(word.vector[:10])
+
+Neighbors (Synonms) of Obama
+------------------------------
+Bush
+Reagan
+Clinton
+Ahmadinejad
+Nixon
+Karzai
+McCain
+Biden
+Huckabee
+Lula
+
+The first 10 dimensions out the 256 dimensions
+
+[-2.57382345 1.52175975 0.51070285 1.08678675 -0.74386948 -1.18616164
+ 2.92784619 -0.25694436 -1.40958667 -2.39675403]
+
+Morphology¶
+
+word = Text("Preprocessing is an essential step.").words[0]
+print(word.morphemes)
+
+[u'Pre', u'process', u'ing']
+
+Transliteration¶
+
+from polyglot.transliteration import Transliterator
+transliterator = Transliterator(source_lang="en", target_lang="ru")
+print(transliterator.transliterate(u"preprocessing"))
+
+препрокессинг
+
+Contents:¶
+
+Installation
+
+Installing/Upgrading From the PyPI
+
+From Source
+
+Get the bleeding edge version
+
+Language Detection
+
+Example
+
+Mixed Text
+
+Best Effort Strategy
+
+Command Line
+
+Supported Languages
+
+Tokenization
+
+Word Tokenization
+
+Sentence Segmentation
+
+Command Line
+
+Command Line Interface
+
+Input formats
+
+Word Count Example
+
+Building Pipelines
+
+Downloading Models
+
+Modes of Operation
+
+Collections
+
+Langauge & Task Support
+
+Word Embeddings
+
+Formats
+
+Nearest Neighbors
+
+Vocabulary Expansion
+
+Demo
+
+Part of Speech Tagging
+
+Languages Coverage
+
+Example
+
+References
+
+Named Entity Extraction
+
+Languages Coverage
+
+Example
+
+Demo
+
+References
+
+Morphological Analysis
+
+Languages Coverage
+
+Example
+
+Demo
+
+References
+
+Transliteration
+
+Languages Coverage
+
+Example
+
+Citation
+
+Sentiment
+
+Languages Coverage
+
+Citation
+
+polyglot
+
+polyglot package

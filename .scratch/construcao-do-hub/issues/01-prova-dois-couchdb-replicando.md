@@ -1,0 +1,21 @@
+# 01: Prova: dois CouchDB replicando com o LiveSync
+
+Type: task
+Status: claimed
+Etapa: 0 (provas de risco)
+Blocked by: None (can start immediately)
+
+**What to build:** Dois CouchDB de ensaio, um por par, replicando entre si com os documentos do LiveSync, como o desenho decidido (um banco em cada máquina, replicação de envio em cada um). Usa a forma de configuração que a construção vai usar e termina dizendo o que vai doer ao ligar no resultado final.
+
+**Fonte:** Tickets 30, 33, 34 e 48; bloco do Worker 4 no `spec.md`; brief da etapa em `../etapas/00-provas/brief.md`. Regras comuns: `../etapas/regras-da-construcao.md`.
+
+**Blocked by:** None (can start immediately)
+
+- [ ] nota criada, editada e apagada no par A chega ao B, e vice-versa
+- [ ] a mesma linha editada nos dois pares com a replicação pausada vira conflito nos dois bancos, sem versão perdida
+- [ ] com a cifra de ponta a ponta e o caminho ofuscado ligados, o mesmo vale e nada aparece em claro nos documentos crus
+- [ ] relatório com a evidência e a seção "o que vai doer ao ligar"; contêineres apagados ao fim
+
+## Comments
+
+- 2026-10-16 19:10, Brasa: peguei (Status claimed). Worktree `C:\context-hub-wt\ticket-01`, ramo `ticket-01`, a partir de `integracao` (69cb383). Li spec (Worker 4), faixa 4 da parte 03-04, ticket 48 e o CLI do spike. Achado antes de codar: o sal da cifra (`_local/obsidian_livesync_sync_parameters`) e o milestone são documentos `_local`, que a replicação do CouchDB não copia; o kit precisa gravar o mesmo sal nos dois bancos antes do primeiro dispositivo. Plano: `provas/01-banco/` com `compose.yml`, `04.env` (nomes do spec), `subir.ps1`, `descer.ps1` e `prova.ps1` (teste de ponta a ponta). Falta: tudo.

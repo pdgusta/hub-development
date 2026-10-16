@@ -1,0 +1,75 @@
+{
+ "chave": "gh:asg017/sqlite-vec",
+ "nomes": [
+  "SQLite-vec",
+  "SQLite with SQLite-vec",
+  "sqlite-vec",
+  "sqlite-vec + SQLite FTS5",
+  "SQLite-Vec",
+  "SQLite + FTS5 + sqlite-vec",
+  "SQLite + sqlite-vec + FTS5",
+  "sqlite-vec-python",
+  "SQLite com FTS5 + extensão vector (sqlite‑vec)",
+  "SQLite + sqlite-vec / sqlite-fts5",
+  "SQLite with sqlite-vec and FTS5",
+  "SQLite-vec + FTS5"
+ ],
+ "urls": [
+  "https://github.com/asg017/sqlite-vec",
+  "https://github.com/asg017/sqlite-vec/tree/main/python",
+  "https://www.sqlite.org/fts5.html",
+  "https://sqlite.org/fts5.html",
+  "https://www.sqlite.org/",
+  "https://www.sqlite.org/fts5.html#_external_content_fts5_tables",
+  "https://www.sqlite.org",
+  "https://sqlite.org",
+  "https://sqlite.org/"
+ ],
+ "readme_cortado": false,
+ "readme": "# `sqlite-vec`\n\n[![](https://dcbadge.vercel.app/api/server/VCtQ8cGhUs)](https://discord.gg/Ve7WeCJFXk)\n\nAn extremely small, \"fast enough\" vector search SQLite extension that runs\nanywhere! A successor to [`sqlite-vss`](https://github.com/asg017/sqlite-vss)\n\n<!-- deno-fmt-ignore-start -->\n\n> [!IMPORTANT]\n> _`sqlite-vec` is a pre-v1, so expect breaking changes!_\n\n<!-- deno-fmt-ignore-end -->\n\n- Store and query float, int8, and binary vectors in `vec0` virtual tables\n- Written in pure C, no dependencies, runs anywhere SQLite runs\n  (Linux/MacOS/Windows, in the browser with WASM, Raspberry Pis, etc.)\n- Store non-vector data in metadata, auxiliary, or partition key columns\n\n<p align=\"center\">\n  <a href=\"https://hacks.mozilla.org/2024/06/sponsoring-sqlite-vec-to-enable-more-powerful-local-ai-applications/\">\n  <picture>\n    <source media=\"(prefers-color-scheme: dark)\" srcset=\"./.github/logos/mozilla.dark.svg\">\n    <source media=\"(prefers-color-scheme: light)\" srcset=\"./.github/logos/mozilla.svg\">\n    <img alt=\"Mozilla Builders logo\" width=400>\n  </picture>\n  </a>\n</p>\n\n<p align=\"center\">\n<i>\n<code>sqlite-vec</code> is a\n<a href=\"https://hacks.mozilla.org/2024/06/sponsoring-sqlite-vec-to-enable-more-powerful-local-ai-applications/\">Mozilla Builders project</a>,\nwith additional sponsorship from\n<a href=\"https://fly.io/\"><img width=14px src=\"./.github/logos/flyio.small.ico\"/> Fly.io </a>,\n<a href=\"https://tur.so/sqlite-vec\"><img width=14px src=\"./.github/logos/turso.small.ico\"/> Turso</a>,\n<a href=\"https://sqlitecloud.io/\"><img width=14px src=\"./.github/logos/sqlitecloud.small.svg\"/> SQLite Cloud</a>, and\n<a href=\"https://shinkai.com/\"><img width=14px src=\"./.github/logos/shinkai.small.svg\"/> Shinkai</a>.\nSee <a href=\"#sponsors\">the Sponsors section</a> for more details.\n</i>\n</p>\n\n## Installing\n\nSee [Installing `sqlite-vec`](https://alexgarcia.xyz/sqlite-vec/installation.html)\nfor more details.\n\n| Language       | Install                                              | More Info                                                                             |                                                                                                                                                                                                    |\n| -------------- | ---------------------------------------------------- | ------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |\n| Python         | `pip install sqlite-vec`                             | [`sqlite-vec` with Python](https://alexgarcia.xyz/sqlite-vec/python.html)             | [![PyPI](https://img.shields.io/pypi/v/sqlite-vec.svg?color=blue&logo=python&logoColor=white)](https://pypi.org/project/sqlite-vec/)                                                               |\n| Node.js        | `npm install sqlite-vec`                             | [`sqlite-vec` with Node.js](https://alexgarcia.xyz/sqlite-vec/js.html)            | [![npm](https://img.shields.io/npm/v/sqlite-vec.svg?color=green&logo=nodedotjs&logoColor=white)](https://www.npmjs.com/package/sqlite-vec)                                                         |\n| Ruby           | `gem install sqlite-vec`                             | [`sqlite-vec` with Ruby](https://alexgarcia.xyz/sqlite-vec/ruby.html)                 | ![Gem](https://img.shields.io/gem/v/sqlite-vec?color=red&logo=rubygems&logoColor=white)                                                                       |\n| Go             | `go get -u github.com/asg017/sqlite-vec/bindings/go` | [`sqlite-vec` with Go](https://alexgarcia.xyz/sqlite-vec/go.html)                     | [![Go Reference](https://pkg.go.dev/badge/github.com/asg017/sqlite-vec-go-bindings/cgo.svg)](https://pkg.go.dev/github.com/asg017/asg017/sqlite-vec-go-bindings/cgo)                                              |\n| Rust           | `cargo add sqlite-vec`                               | [`sqlite-vec` with Rust](https://alexgarcia.xyz/sqlite-vec/rust.html)                 | [![Crates.io](https://img.shields.io/crates/v/sqlite-vec?logo=rust)](https://crates.io/crates/sqlite-vec)                                                                                          |\n| Datasette      | `datasette install datasette-sqlite-vec`             | [`sqlite-vec` with Datasette](https://alexgarcia.xyz/sqlite-vec/datasette.html)       | [![Datasette](https://img.shields.io/pypi/v/datasette-sqlite-vec.svg?color=B6B6D9&label=Datasette+plugin&logoColor=white&logo=python)](https://datasette.io/plugins/datasette-sqlite-vec)          |\n| rqlite         | `rqlited -extensions-path=sqlite-vec.tar.gz`         | [`sqlite-vec` with rqlite](https://alexgarcia.xyz/sqlite-vec/rqlite.html)                        | [![rqlite](https://img.shields.io/badge/rqlite-sqlite_extensions-blue)](https://rqlite.io/docs/guides/extensions/)           |\n| `sqlite-utils` | `sqlite-utils install sqlite-utils-sqlite-vec`       | [`sqlite-vec` with sqlite-utils](https://alexgarcia.xyz/sqlite-vec/sqlite-utils.html) | [![sqlite-utils](https://img.shields.io/pypi/v/sqlite-utils-sqlite-vec.svg?color=B6B6D9&label=sqlite-utils+plugin&logoColor=white&logo=python)](https://datasette.io/plugins/datasette-sqlite-vec) |\n| Github Release |                                                      |                                                                                       | ![GitHub tag (latest SemVer pre-release)](https://img.shields.io/github/v/tag/asg017/sqlite-vec?color=lightgrey&include_prereleases&label=Github+release&logo=github)                              |\n\n\n## Sample usage\n\n```sql\n.load ./vec0\n\ncreate virtual table vec_examples using vec0(\n  sample_embedding float[8]\n);\n\n-- vectors can be provided as JSON or in a compact binary format\ninsert into vec_examples(rowid, sample_embedding)\n  values\n    (1, '[-0.200, 0.250, 0.341, -0.211, 0.645, 0.935, -0.316, -0.924]'),\n    (2, '[0.443, -0.501, 0.355, -0.771, 0.707, -0.708, -0.185, 0.362]'),\n    (3, '[0.716, -0.927, 0.134, 0.052, -0.669, 0.793, -0.634, -0.162]'),\n    (4, '[-0.710, 0.330, 0.656, 0.041, -0.990, 0.726, 0.385, -0.958]');\n\n\n-- KNN style query\nselect\n  rowid,\n  distance\nfrom vec_examples\nwhere sample_embedding match '[0.890, 0.544, 0.825, 0.961, 0.358, 0.0196, 0.521, 0.175]'\norder by distance\nlimit 2;\n/*\n┌───────┬──────────────────┐\n│ rowid │     distance     │\n├───────┼──────────────────┤\n│ 2     │ 2.38687372207642 │\n│ 1     │ 2.38978505134583 │\n└───────┴──────────────────┘\n*/\n```\n\n## Sponsors\n\nDevelopment of `sqlite-vec` is supported by multiple generous sponsors! Mozilla\nis the main sponsor through the new Builders project.\n<p align=\"center\">\n  <a href=\"https://hacks.mozilla.org/2024/06/sponsoring-sqlite-vec-to-enable-more-powerful-local-ai-applications/\">\n  <picture>\n    <source media=\"(prefers-color-scheme: dark)\" srcset=\"./.github/logos/mozilla.dark.svg\">\n    <source media=\"(prefers-color-scheme: light)\" srcset=\"./.github/logos/mozilla.svg\">\n    <img alt=\"Mozilla Builders logo\" width=400>\n  </picture>\n  </a>\n</p>\n\n`sqlite-vec` is also sponsored by the following companies:\n\n<a href=\"https://fly.io/\">\n<picture>\n  <source media=\"(prefers-color-scheme: dark)\" srcset=\"./.github/logos/flyio.dark.svg\">\n  <source media=\"(prefers-color-scheme: light)\" srcset=\"./.github/logos/flyio.svg\">\n  <img alt=\"Fly.io logo\" src=\"./.github/logos/flyio.svg\" width=\"48%\">\n</picture>\n</a>\n\n<a href=\"https://tur.so/sqlite-vec\">\n<picture>\n  <source media=\"(prefers-color-scheme: dark)\" srcset=\"./.github/logos/turso.svg\">\n  <source media=\"(prefers-color-scheme: light)\" srcset=\"./.github/logos/turso.svg\">\n  <img alt=\"Turso logo\" src=\"./.github/logos/turso.svg\" width=\"48%\">\n</picture>\n</a>\n\n<a href=\"https://sqlitecloud.io/\">\n<picture>\n  <source media=\"(prefers-color-scheme: dark)\" srcset=\"./.github/logos/sqlitecloud.dark.svg\">\n  <source media=\"(prefers-color-scheme: light)\" srcset=\"./.github/logos/sqlitecloud.svg\">\n  <img alt=\"SQLite Cloud logo\" src=\"./.github/logos/flyio.svg\" width=\"48%\">\n</picture>\n</a>\n\n<a href=\"https://shinkai.com\">\n<picture>\n  <source media=\"(prefers-color-scheme: dark)\" srcset=\"./.github/logos/shinkai.dark.svg\">\n  <source media=\"(prefers-color-scheme: light)\" srcset=\"./.github/logos/shinkai.svg\">\n\n  <img alt=\"Shinkai logo\" src=\"./.github/logos/shinkai.svg\" width=\"48%\">\n</picture>\n</a>\n\nAs well as multiple individual supporters on\n[Github sponsors](https://github.com/sponsors/asg017/)!\n\nIf your company interested in sponsoring `sqlite-vec` development, send me an\nemail to get more info: https://alexgarcia.xyz\n\n## See Also\n\n- [**`sqlite-ecosystem`**](https://github.com/asg017/sqlite-ecosystem), Maybe\n  more 3rd party SQLite extensions I've developed\n- [**`sqlite-rembed`**](https://github.com/asg017/sqlite-rembed), Generate text\n  embeddings from remote APIs like OpenAI/Nomic/Ollama, meant for testing and\n  SQL scripts\n- [**`sqlite-lembed`**](https://github.com/asg017/sqlite-lembed), Generate text\n  embeddings locally from embedding models in the `.gguf` format\n",
+ "fonte": "readme",
+ "respostas": [
+  {
+   "por": "voxtral-small-2507",
+   "resposta": {
+    "serve": "search",
+    "role": "vector search for Markdown notes",
+    "place": [
+     "disk",
+     "network_service"
+    ],
+    "mechanism": [
+     "vector"
+    ],
+    "mcp": "no",
+    "windows": "yes",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "alpha",
+    "doubt": false,
+    "evidence": "Runs anywhere SQLite runs (Linux/MacOS/Windows, in the browser with WASM, Raspberry Pis, etc.)"
+   }
+  },
+  {
+   "por": "llama-3.2-11b-vision-instruct",
+   "resposta": {
+    "serve": "stack",
+    "role": "Store and query float, int8, and binary vectors in `vec0` virtual tables",
+    "place": [
+     "disk",
+     "inside_db_mcp"
+    ],
+    "mechanism": [
+     "vector"
+    ],
+    "mcp": "no",
+    "windows": "yes",
+    "portuguese": "no",
+    "license": "unknown",
+    "maturity": "alpha",
+    "doubt": false,
+    "evidence": "Written in pure C, no dependencies, runs anywhere SQLite runs (Linux/MacOS/Windows, in the browser with WASM, Raspberry Pis, etc.)"
+   }
+  }
+ ]
+}

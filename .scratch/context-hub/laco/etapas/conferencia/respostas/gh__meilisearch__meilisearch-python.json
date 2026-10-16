@@ -1,0 +1,34 @@
+{
+ "chave": "gh:meilisearch/meilisearch-python",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T21:22:46Z",
+ "resultado": "corrige",
+ "conferencia": {
+  "resultado": "corrige",
+  "final": {
+   "serve": "stack",
+   "role": "Python client library for the Meilisearch API (keyword, hybrid search)",
+   "place": [
+    "library"
+   ],
+   "mechanism": [
+    "full_text",
+    "hybrid"
+   ],
+   "mcp": "unknown",
+   "windows": "unknown",
+   "portuguese": "unknown",
+   "license": "MIT",
+   "maturity": "stable",
+   "doubt": false,
+   "evidence": "The Meilisearch API client written for Python; hybrid search with semanticRatio and configured embedder; Python 3.10+."
+  },
+  "o_que_mudou": [
+   "serve: search -> stack, only a client SDK",
+   "mcp: no -> unknown, README does not say",
+   "windows: yes/unknown -> unknown",
+   "mechanism: bm25/vector/embeddings -> full_text, hybrid (engine-side features)"
+  ],
+  "nota": "Python client useful if an MCP server in Python talks to a Meilisearch engine; supports hybrid search through engine embedders."
+ }
+}

@@ -1,0 +1,56 @@
+WARNING: Deprecated in 7.15.0. 
+
+ The Java REST Client is deprecated in favor of the 
+ Java API Client.
+
+« Overview
+
+Getting started »
+
+Elastic Docs
+›Java REST Client [7.17]
+
+Java High Level REST Clientedit
+
+ IMPORTANT: This documentation is no longer updated. Refer to Elastic's version policy and the latest documentation.
+
+Java High Level REST Clientedit
+
+Deprecated in 7.15.0.
+
+The High Level REST Client is deprecated in favour of the Java API Client.
+
+The High Level Rest Client version 7.17 can work with Elasticsearch 8.x with compatibility mode enabled.
+
+The Java High Level REST Client works on top of the Java Low Level REST client.
+Its main goal is to expose API specific methods, that accept request objects as
+an argument and return response objects, so that request marshalling and
+response un-marshalling is handled by the client itself.
+
+Each API can be called synchronously or asynchronously. The synchronous
+methods return a response object, while the asynchronous methods, whose names
+end with the async suffix, require a listener argument that is notified
+(on the thread pool managed by the low level client) once a response or an
+error is received.
+
+The Java High Level REST Client depends on the Elasticsearch core project.
+It accepts the same request arguments as the TransportClient and returns
+the same response objects.
+
+« Overview
+
+Getting started »
+
+Most Popular
+
+Video
+
+Get Started with Elasticsearch
+
+Video
+
+Intro to Kibana
+
+Video
+
+ELK for Logs & Metrics

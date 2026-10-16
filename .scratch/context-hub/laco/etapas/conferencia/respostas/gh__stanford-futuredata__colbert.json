@@ -1,0 +1,34 @@
+{
+ "chave": "gh:stanford-futuredata/colbert",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T12:00:00Z",
+ "resultado": "corrige",
+ "conferencia": {
+  "resultado": "corrige",
+  "final": {
+   "serve": "search",
+   "role": "Late-interaction BERT retriever with PLAID index and lightweight search server",
+   "place": [
+    "disk",
+    "library",
+    "network_service"
+   ],
+   "mechanism": [
+    "vector",
+    "embeddings"
+   ],
+   "mcp": "unknown",
+   "windows": "unknown",
+   "portuguese": "unknown",
+   "license": "unknown",
+   "maturity": "stable",
+   "doubt": false,
+   "evidence": "ColBERT is a fast and accurate retrieval model, enabling scalable BERT-based search; Running a lightweight ColBERTv2 server; a GPU is required for training and indexing"
+  },
+  "o_que_mudou": [
+   "portuguese: no -> unknown, README only mentions English MS MARCO checkpoint",
+   "mechanism: dropped reranker, README presents end-to-end retrieval"
+  ],
+  "nota": "Strong neural retriever but needs GPU for indexing and an English checkpoint; heavy for a small Markdown vault."
+ }
+}

@@ -1,0 +1,308 @@
+LLM/AI Agent Notice: For the most important and up-to-date Weaviate information, see https://weaviate.io/llms.txt
+Skip to main content
+
+Introducing Engram — managed memory for AI agents, built on Weaviate
+
+Go to documentation:
+
+⌘U
+✕
+
+Weaviate Database
+Develop AI applications using Weaviate's APIs and tools
+
+Deploy
+Deploy, configure, and maintain Weaviate Database
+
+Query Agent
+Run agentic search over your Weaviate Cloud collections
+
+Weaviate Cloud
+Manage and scale Weaviate in the cloud
+
+Engram
+Persistent memory for LLM agents and applications
+
+Additional resources
+
+Integrations
+Weaviate Academy
+
+Need help?
+
+Ask AI Assistant⌘K
+Support
+Community Forum
+Contributor guide
+
+Copy page
+
+On this page
+
+Requirements​
+
+A recent Kubernetes Cluster (at least version 1.23). If you are in a development environment, consider using the kubernetes cluster that is built into Docker desktop. For more information, see the Docker documentation.
+
+The cluster needs to be able to provision PersistentVolumes using Kubernetes' PersistentVolumeClaims.
+
+A file system that can be mounted read-write by a single node to allow Kubernetes' ReadWriteOnce access mode.
+
+Helm version v3 or higher. The current Helm chart is version 17.8.3.
+
+Telemetry
+
+To help us improve Weaviate and understand community usage trends, Weaviate collects telemetry data by default. To learn more or opt-out, click here.
+
+Weaviate Helm chart​
+
+Important: Set the correct Weaviate version
+
+As a best practice, explicitly set the Weaviate version in the Helm chart.
+
+Set the version in your values.yaml file or overwrite the default value during deployment.
+
+To install the Weaviate chart on your Kubernetes cluster, follow these steps:
+
+Verify tool setup and cluster access​
+
+# Check if helm is installed
+helm version
+# Make sure `kubectl` is configured correctly and you can access the cluster.
+# For example, try listing the pods in the currently configured namespace.
+kubectl get pods
+
+Get the Helm Chart​
+
+Add the Weaviate helm repo that contains the Weaviate helm chart.
+
+helm repo add weaviate https://weaviate.github.io/weaviate-helm
+helm repo update
+
+Get the default values.yaml configuration file from the Weaviate helm chart:
+
+helm show values weaviate/weaviate > values.yaml
+
+Modify values.yaml​
+
+To customize the Helm chart for your environment, edit the values.yaml
+file. The default yaml file is extensively documented to help you configure your system.
+
+Replication​
+
+The default configuration defines one Weaviate replica cluster.
+
+Local models​
+
+Local models, such as text2vec-transformers, qna-transformers, and img2vec-neural are disabled by default. To enable a model, set the model's
+enabled flag to true.
+
+Resource limits​
+
+Starting in Helm chart version 17.0.1, constraints on module resources are commented out to improve performance. To constrain resources for specific modules, add the constraints in your values.yaml file.
+
+gRPC service configuration​
+
+Starting in Helm chart version 17.0.0, the gRPC service is enabled by default. If you use an older Helm chart, edit your values.yaml file to enable gRPC.
+
+Check that the enabled field is set to true and the type field to LoadBalancer. These settings allow you to access the gRPC API from outside the Kubernetes cluster.
+
+grpcService:
+ enabled: true # ⬅️ Make sure this is set to true
+ name: weaviate-grpc
+ ports:
+ - name: grpc
+ protocol: TCP
+ port: 50051
+ type: LoadBalancer # ⬅️ Set this to LoadBalancer (from NodePort)
+
+Authentication and authorization​
+
+tip
+
+Weaviate Helm charts automatically generate random username/password values each time Weaviate is deployed to Kubernetes, this means that when Weaviate is deployed with Helm charts internode communication is always secured.
+
+An example configuration for authentication:
+
+authentication:
+ apikey:
+ enabled: true
+ allowed_keys:
+ - readonly-key
+ - secr3tk3y
+ users:
+ - readonly@example.com
+ - admin@example.com
+ anonymous_access:
+ enabled: false
+ oidc:
+ enabled: true
+ issuer: https://auth.wcs.api.weaviate.io/auth/realms/SeMI
+ username_claim: email
+ groups_claim: groups
+ client_id: wcs
+authorization:
+ admin_list:
+ enabled: true
+ users:
+ - someuser@weaviate.io
+ - admin@example.com
+ readonly_users:
+ - readonly@example.com
+
+In this example, the key readonly-key will authenticate a user as the readonly@example.com identity, and secr3tk3y will authenticate a user as admin@example.com.
+
+OIDC authentication is also enabled, with WCD as the token issuer/identity provider. Thus, users with WCD accounts could be authenticated. This configuration sets someuser@weaviate.io as an admin user, so if someuser@weaviate.io were to authenticate, they will be given full (read and write) privileges.
+
+warning
+
+Connecting to Weaviate Cloud (WCD) using OIDC is deprecated and should not be used. Please use API key authentication instead.
+
+For further, general documentation on authentication and authorization configuration, see:
+
+Authentication
+
+Authorization
+
+Run as non-root user​
+
+By default, weaviate runs as the root user. To run as a non-privileged user, edit the settings in the containerSecurityContext section.
+
+The init container always runs as root to configure the node. Once the system is started, it run a non-privileged user if you have one configured.
+
+Deploy (install the Helm chart)​
+
+You can deploy the helm charts as follows:
+
+# Create a Weaviate namespace
+kubectl create namespace weaviate
+
+# Deploy
+helm upgrade --install \
+ "weaviate" \
+ weaviate/weaviate \
+ --namespace "weaviate" \
+ --values ./values.yaml
+
+The above assumes that you have permissions to create a new namespace. If you
+have only namespace-level permissions, you can skip creating a new
+namespace and adjust the namespace argument on helm upgrade according to the
+name of your pre-configured namespace.
+
+Optionally, you can provide the --create-namespace parameter which will create the namespace if not present.
+
+Updating the installation after the initial deployment​
+
+The above command (helm upgrade...) is idempotent. In other words, you can run it multiple times after adjusting your desired configuration without causing any unintended changes or side effects.
+
+Upgrading to 1.25 or higher from pre-1.25​
+
+Important
+
+To upgrade to 1.25 or higher from a pre-1.25 version, you must delete the deployed StatefulSet, update the helm chart to version 17.0.0 or higher, and re-deploy Weaviate.
+
+See the 1.25 migration guide for Kubernetes for more details.
+
+Additional Configuration Help​
+
+Cannot list resource "configmaps" in API group when deploying Weaviate k8s setup on GCP
+
+Error: UPGRADE FAILED: configmaps is forbidden
+
+Using EFS with Weaviate​
+
+In some circumstances, you may wish, or need, to use EFS (Amazon Elastic File System) with Weaviate. And we note in the case of AWS Fargate, you must create the PV (persistent volume) manually, as the PVC will NOT create a PV for you.
+
+To use EFS with Weaviate, you need to:
+
+Create an EFS file system.
+
+Create an EFS access point for every Weaviate replica.
+
+All of the Access Points must have a different root-directory so that Pods do not share the data, otherwise it will fail.
+
+Create EFS mount targets for each subnet of the VPC where Weaviate is deployed.
+
+Create StorageClass in Kubernetes using EFS.
+
+Create Weaviate Volumes, where each volume has a different AccessPoint for VolumeHandle(as mentioned above).
+
+Deploy Weaviate.
+
+This code is an example of a PV for weaviate-0 Pod:
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+ name: weaviate-0
+spec:
+ capacity:
+ storage: 8Gi
+ volumeMode: Filesystem
+ accessModes:
+ - ReadWriteOnce
+ persistentVolumeReclaimPolicy: Delete
+ storageClassName: "efs-sc"
+ csi:
+ driver: efs.csi.aws.com
+ volumeHandle: <FileSystemId>::<AccessPointId-for-weaviate-0-Pod>
+ claimRef:
+ namespace: <namespace where Weaviate is/going to be deployed>
+ name: weaviate-data-weaviate-0
+
+For more, general information on running EFS with Fargate, we recommend reading this AWS blog.
+
+Using Azure file CSI with Weaviate​
+
+The provisioner file.csi.azure.com is not supported and will lead to file corruptions. Instead, make sure the storage class defined in values.yaml is from provisioner disk.csi.azure.com, for example:
+
+storage:
+ size: 32Gi
+ storageClassName: managed
+
+you can get the list of available storage classes in your cluster with:
+
+kubectl get storageclasses
+
+Troubleshooting​
+
+If you see No private IP address found, and explicit IP not provided, set the pod subnet to be in an valid ip address range of the following:
+
+10.0.0.0/8
+100.64.0.0/10
+172.16.0.0/12
+192.168.0.0/16
+198.19.0.0/16
+
+Set CLUSTER_HOSTNAME if it may change over time​
+
+In some systems, the cluster hostname may change over time. This is known to create issues with a single-node Weaviate deployment. To avoid this, set the CLUSTER_HOSTNAME environment variable in the values.yaml file to the cluster hostname.
+
+env:
+ CLUSTER_HOSTNAME: "node-1"
+
+Questions and feedback​
+
+Have a question or feedback? Here's how to reach us.
+
+Community Forum
+Ask questions and connect with other developers on our Community forum.
+Support
+Weaviate Cloud user or customer? Find the right channel on the Support page.
+
+Requirements
+Weaviate Helm chart
+Verify tool setup and cluster access
+Get the Helm Chart
+Modify values.yaml
+Deploy (install the Helm chart)
+Updating the installation after the initial deployment
+Upgrading to 1.25 or higher from pre-1.25
+Additional Configuration Help
+Using EFS with Weaviate
+Using Azure file CSI with Weaviate
+Troubleshooting
+Set CLUSTER_HOSTNAME if it may change over time
+Questions and feedback
+
+Was this page helpful?
+YesNo

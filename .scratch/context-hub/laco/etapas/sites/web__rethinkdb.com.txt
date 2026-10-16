@@ -1,0 +1,150 @@
+The open-source database for the realtime web
+
+ Install RethinkDB →
+
+Latest release: RethinkDB 2.4.4 (Night Of The Living Dead)
+
+26k stars on GitHub
+
+@rethinkdb on Twitter
+
+RethinkDB pushes JSON to your apps in realtime.
+
+ When your app polls for data, it becomes slow, unscalable,
+ and cumbersome to maintain.
+
+ RethinkDB is the open-source, scalable database
+ that makes building realtime apps dramatically
+ easier.
+
+ What is RethinkDB?go
+
+r.table('game').orderBy('score').limit(3).changes()
+
+Top player scores
+
+1.
+
+2.
+
+3.
+
+Streaming RethinkDB results...
+
+Building realtime apps just got easy
+
+Reactive web and mobile apps
+
+ Web apps like Google Docs,
+ Trello, and Quora pioneered
+ the realtime experience on the web. With RethinkDB, you
+ can build amazing realtime apps with dramatically
+ less engineering effort.
+
+Multiplayer games
+
+ When a player takes an action in a multiplayer
+ game, every other player in the game needs to see
+ the change in realtime. RethinkDB dramatically
+ simplifies the data infrastructure for low latency,
+ high throughput realtime interactions.
+
+Realtime marketplaces
+
+ RethinkDB dramatically reduces the
+ complexity of building realtime trading and
+ optimization engines. Publish realtime
+ updates to thousands of clients, and provide
+ pricing updates to users in milliseconds.
+
+Streaming analytics
+
+ Build realtime dashboards with RethinkDB data
+ push notifications, and make instantaneous business
+ decisions.
+
+Connected devices
+
+ RethinkDB dramatically simplifies modern IoT
+ infrastructures. Stream data between connected
+ devices, enable messaging and signaling, and
+ trigger actions in millions of devices in
+ milliseconds.
+
+What's in the box?
+
+Work with your favorite stack
+
+ Query JSON documents with Python, Ruby, Node.js
+ or dozens of
+ other languages. Build modern apps using
+ your favorite web framework, paired with
+ realtime technologies like Socket.io
+ or SignalR.
+
+Robust architecture
+
+ RethinkDB integrates the latest advances in
+ database technology. It has a modern
+ distributed architecture,
+ a highly-optimized buffer cache, and a state-of-the-art 
+ storage engine. All of these components
+ work together to create a robust, scalable,
+ high-performance database.
+
+Everything you need to build modern apps
+
+ Express relationships using joins,
+ build location-aware apps,
+ or store multimedia
+ and time-series
+ data. Do analytics with aggregation and
+ map/reduce, and speed up your apps using
+ flexible indexing.
+
+Built with love by the open source community
+
+ Originally developed by a core team of database experts
+ and over 100 contributors from around the
+ world, RethinkDB is shaped by developers like
+ you participating in an
+ open source community development process.
+
+Scale your cluster in seconds
+
+ When you're ready to scale your app, shard and replicate in
+ a few clicks using an intuitive web UI.
+
+ If you need it, a simple API provides precise control over
+ the cluster:
+
+r.table('games').reconfigure(shards=5, replicas=3)
+
+ Monitor your production cluster with live statistics and
+ complete visibility into running jobs:
+
+r.db('rethinkdb').table('jobs').changes()
+ Learn more go
+
+Install in seconds on Linux, OS X or DigitalOcean
+ Install RethinkDB go
+ Learn more go
+
+Our lovely RethinkDB users
+
+ RethinkDB has the best query language of all new databases I’ve seen.
+ Guillermo Rauch, Cloudup CTO, creator of Mongoose
+
+ RethinkDB is probably the most interesting new
+ ‘on-disk + complex queries’ database out there. For
+ sure made by people who get it.
+ Salvatore Sanfillipo, creator of Redis
+
+ At NASA, RethinkDB is radically simplifying how we provide real-time services in support of Extra-Vehicular Activity.
+ Collin Estes, Director of Software Engineering, Chief Architect - MRI Technologies Inc. - NASA / ESOC
+
+Our incredible sponsors
+
+Would you like to become a sponsor?
+
+Your donation helps support RethinkDB's future as an open-source project.

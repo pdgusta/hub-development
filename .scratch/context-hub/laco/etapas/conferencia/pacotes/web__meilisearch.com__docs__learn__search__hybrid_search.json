@@ -1,0 +1,39 @@
+{
+ "chave": "web:meilisearch.com/docs/learn/search/hybrid_search",
+ "nomes": [
+  "Meilisearch Hybrid Search"
+ ],
+ "urls": [
+  "https://www.meilisearch.com/docs/learn/search/hybrid_search",
+  "https://www.meilisearch.com/docs/learn/advanced/hybrid_search",
+  "https://www.meilisearch.com"
+ ],
+ "readme_cortado": false,
+ "readme": "[Hybrid and semantic search - Meilisearch Documentation]\n\nDocumentation Index\nFetch the complete documentation index at: /docs/llms.txt\nUse this file to discover all available pages before exploring further.\nSkip to main content\n\nHybrid search combines two search strategies: full-text search (matching keywords) and semantic search (matching meaning). This gives users the best of both worlds, returning results that are both textually and conceptually relevant.\n\n​\nEmbedding models, not LLMs\nSemantic search in Meilisearch relies on embedding models, not large language models (LLMs). This is an important distinction:\n\nEmbedding models convert text into numerical vectors that capture meaning. They are small, fast, and inexpensive to run.\n\nLLMs (like GPT-4 or Claude) generate text and reason about it. They are much larger, slower, and more expensive.\n\nMeilisearch uses embedding models for hybrid and semantic search, making it orders of magnitude cheaper and faster than LLM-based approaches. For conversational AI features that do use LLMs, see agentic search.\n\n​\nHow it works\nWhen you configure an embedder, Meilisearch automatically generates vector embeddings for every document in your index. You don’t need to compute or manage embeddings yourself.\n\nAt search time, Meilisearch runs both keyword and semantic search in parallel, then merges the results using a smart scoring system.\n\n​\nAutomatic embedding generation\nMeilisearch handles the entire embedding pipeline for you:\n\nBatching: documents are grouped and sent to the embedding provider in optimized batches, minimizing API calls and maximizing throughput\n\nCaching: embeddings are stored and only regenerated when document content changes, so re-indexing unchanged documents costs nothing. Note that changing your embedder configuration (switching model, provider, or document template) triggers a full re-embedding of all documents, which may incur significant API costs for large indexes\n\nRate limit handling: Meilisearch automatically retries when providers return rate limit errors, with no configuration needed\n\nDocument templates: you control exactly which fields are embedded using Liquid templates, so the embedding captures the most relevant parts of each document\n\nUpdating embedder settings may trigger a full reindex. When you partially update an index’s embedder settings (for example, changing model, source, documentTemplate, dimensions, or pooling), Meilisearch may reindex all documents and regenerate their embeddings. For large indexes this can take a long time and, with paid providers, incur significant API costs.distribution is a notable exception: changing it does not trigger a reindex.\n\n​\nSmart result ranking\nWhen you perform a hybrid search, Meilisearch does not simply concatenate keyword and semantic results. It uses a scoring system that automatically determines, for each query, whether full-text or semantic results are more relevant:\n\nA precise query like \"iPhone 15 Pro Max 256GB\" will naturally favor keyword matches, because the exact terms appear in matching documents\n\nA descriptive query like \"lightweight laptop for travel\" will favor semantic matches, because the meaning matters more than the exact words\n\nAmbiguous queries get a balanced mix of both strategies\n\nYou can influence this balance with the semanticRatio parameter, but the default (0.5) works well for most use cases because Meilisearch’s scoring handles the blending intelligently.\n\n​\nWhen to use hybrid search\n\nScenarioBest approach\nUser searches for a product name or SKUFull-text search\nUser describes a problem in natural languageSemantic search\nEcommerce product search with varied vocabularyHybrid search\nDocumentation search with technical termsHybrid search\nFAQ or support knowledge baseHybrid search\n\n​\nSupported embedder providers\nMeilisearch supports a wide range of embedding providers. Some have native integrations, while others are available through the flexible REST embedder that works with any API.\n\n​\nNative integrations\n\nProviderSourceGuide\nOpenAIopenAiConfigure OpenAI\nHuggingFace (local)huggingFaceConfigure HuggingFace\n\n​\nAvailable via REST embedder\n\nProviderGuide\nCohereConfigure Cohere\nMistralConfigure Mistral\nGoogle GeminiConfigure Gemini\nCloudflare Workers AIConfigure Cloudflare\nVoyage AIConfigure Voyage\nAWS BedrockConfigure Bedrock\nHuggingFace Inference EndpointsConfigure HF Inference\nJinaConfigure Jina\nTwelveLabsConfigure TwelveLabs Marengo\nAny REST APIConfigure REST embedder\n\n​\nUser-provided embeddings\nIf you pre-compute embeddings externally (for example, for images or audio content), you can supply them directly. See search with user-provided embeddings.\n\n​\nEmbedder field compatibility\nDifferent embedder sources accept different configuration fields. Setting an invalid field for a given source returns an error on settings update.\n\nFieldopenAihuggingFaceollamarestuserProvided\nurl / apiKeyoptionalinvalidoptionalrequired (url)invalid\nmodeloptionaloptionaloptionalinvalidinvalid\ndocumentTemplate / documentTemplateMaxBytesoptionaloptionaloptionaloptionalinvalid\ndimensionsoptionaloptionaloptionaloptionalmandatory\npoolinginvalidoptional (default useModel)invalidinvalidinvalid\ndistributionoptionaloptionaloptionaloptionaloptional\nbinaryQuantizedoptionaloptionaloptionaloptionaloptional\n\nFor composite embedders, these rules apply to each sub-embedder with additional constraints. See composite embedders.\n\n​\nNext steps\n\nGetting started\nConfigure an embedder and perform your first semantic search\n\nChoose an embedder\nCompare providers and pick the right one for your use case\n\nDocument templates\nControl which document fields are used for embedding generation\n\nCustom hybrid ranking\nTune semanticRatio to balance keyword and semantic results\n\nWas this page helpful?\n\nYesNo",
+ "fonte": "site",
+ "respostas": [
+  {
+   "por": "claude-haiku-5-5",
+   "resposta": {
+    "serve": "search",
+    "role": "Hybrid BM25 plus vector search engine for Markdown notes",
+    "place": [
+     "network_service"
+    ],
+    "mechanism": [
+     "hybrid",
+     "full_text",
+     "vector",
+     "embeddings"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "unknown",
+    "doubt": false,
+    "evidence": "Hybrid search combines two search strategies: full-text search (matching keywords) and semantic search (matching meaning)."
+   }
+  }
+ ]
+}

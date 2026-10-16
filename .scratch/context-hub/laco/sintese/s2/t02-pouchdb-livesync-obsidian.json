@@ -1,0 +1,166 @@
+{
+ "tema": "t02-pouchdb-livesync-obsidian",
+ "consultas": [
+  "Omnisearch Obsidian HTTP API localhost 51361 search endpoint",
+  "Smart Connections Obsidian MCP server 2026",
+  "pouchdb-quick-search maintained 2026 full-text search PouchDB alternatives",
+  "Copilot for Obsidian vault QA local embeddings API agent",
+  "Miyo local search Obsidian Copilot Logan Yang",
+  "Obsidian CLI official search command 1.12 agents",
+  "smart-connections-mcp github .smart-env ajson read-only MCP semantic search obsidian",
+  "Miyo app local search folders Claude Code Codex MCP miyo.ai",
+  "obsidian-mcp-plugin aaronsb semantic search Dataview Windows",
+  "fetch das fontes: READMEs, releases da API do GitHub, obsidian.md/help/cli, miyo.md, community.obsidian.md/plugins/companion-mcp"
+ ],
+ "achados": [
+  {
+   "nome": "Omnisearch (scambier/obsidian-omnisearch), servidor HTTP opcional",
+   "url_fonte": "https://github.com/scambier/obsidian-omnisearch",
+   "o_que_e": "Plugin de busca de texto do Obsidian com API HTTP local opt-in (GET /search?q=) que devolve JSON com score, path, excerpt.",
+   "lugar": ["light_client"],
+   "mecanismo": ["full_text", "bm25"],
+   "mcp": "no", "windows": "yes", "portugues": "unknown",
+   "licenca": "GPL-3", "ultimo_release": "1.31.0 (2026-09-05)", "maturidade": "stable",
+   "encaixe": "Só funciona com o Obsidian aberto e em localhost; serve a uma máquina com app aberto, não a clientes sem cópia nem a sandboxes. Um MCP do banco poderia repassar a ele, com fragilidade.",
+   "evidencias": [
+    {"url": "https://publish.obsidian.md/omnisearch/Public+API+%26+URL+Scheme", "citacao": "The HTTP Server must be activated in Omnisearch settings."},
+    {"url": "https://publish.obsidian.md/omnisearch/Public+API+%26+URL+Scheme", "citacao": "It is not accessible outside of localhost."}
+   ],
+   "nao_verificado": ["tratamento de acentos e stemming do português (README não menciona)", "se existe MCP oficial: há só um servidor de terceiros (anpigon) visto em listagem, não conferido na fonte", "desempenho em cofres grandes", "Windows: plugin de desktop, não há declaração explícita"]
+  },
+  {
+   "nome": "Obsidian Local REST API com MCP embutido (coddingtonbear)",
+   "url_fonte": "https://github.com/coddingtonbear/obsidian-local-rest-api",
+   "o_que_e": "Plugin com API REST e, na 5.x, servidor MCP Streamable HTTP dentro do Obsidian, com ferramentas search_simple e search_query (JsonLogic).",
+   "lugar": ["light_client", "db_mcp_forwarding"],
+   "mecanismo": ["full_text", "other"],
+   "mcp": "yes", "windows": "unknown", "portugues": "unknown",
+   "licenca": "MIT", "ultimo_release": "5.4.0 (2026-10-06)", "maturidade": "stable",
+   "encaixe": "Dá a um agente a busca nativa do Obsidian (e leitura/escrita) por MCP, mas exige o app rodando; redundante com o MCP sobre o CouchDB, útil só como busca delegada.",
+   "evidencias": [
+    {"url": "https://raw.githubusercontent.com/coddingtonbear/obsidian-local-rest-api/main/README.md", "citacao": "search_simple runs Obsidian's built-in full-text search"},
+    {"url": "https://api.github.com/repos/coddingtonbear/obsidian-local-rest-api/releases/latest", "citacao": "search_query MCP tool"}
+   ],
+   "nao_verificado": ["qualidade e ranking de search_simple (busca fuzzy do Obsidian) em português", "se escuta fora de 127.0.0.1", "Windows (plugin de desktop, sem declaração explícita)"]
+  },
+  {
+   "nome": "Obsidian CLI oficial (comandos search e search:context)",
+   "url_fonte": "https://obsidian.md/help/cli",
+   "o_que_e": "CLI oficial que conecta ao Obsidian em execução; search devolve caminhos, search:context devolve linhas estilo grep, com format=json.",
+   "lugar": ["light_client"],
+   "mecanismo": ["full_text", "grep"],
+   "mcp": "no", "windows": "yes", "portugues": "unknown",
+   "licenca": "proprietária (Obsidian), não conferida", "ultimo_release": "instalador 1.12.7 ou posterior", "maturidade": "beta",
+   "encaixe": "Um agente local com Obsidian aberto poderia chamar o CLI; sem MCP e dependente do app, não serve a clientes sem cópia. Relatos de falha silenciosa em cofres grandes.",
+   "evidencias": [
+    {"url": "https://obsidian.md/help/cli", "citacao": "connects to the running Obsidian instance"},
+    {"url": "https://obsidian.md/help/cli", "citacao": "Returns grep-style path:line: text output"}
+   ],
+   "nao_verificado": ["bug de resultado vazio em cofre com ~2.700 arquivos (só relato no fórum, não reproduzido)", "bug de exit 127 com operadores (relato único)", "licença exata"]
+  },
+  {
+   "nome": "Copilot for Obsidian com Miyo (busca indexada)",
+   "url_fonte": "https://github.com/logancyang/obsidian-copilot",
+   "o_que_e": "Plugin com agente; a 4.0.x delega a busca a um serviço Miyo que indexa notas e pode rodar em outra máquina via Tailscale.",
+   "lugar": ["light_client", "network_service"],
+   "mecanismo": ["vector", "embeddings"],
+   "mcp": "unknown", "windows": "unknown", "portugues": "unknown",
+   "licenca": "AGPL-3.0 (frontend); backend hospedado proprietário", "ultimo_release": "4.0.14 (2026-10-09)", "maturidade": "beta",
+   "encaixe": "Plugin é cliente de chat, não API para agentes externos; só interessa pelo desenho Miyo (índice numa máquina, consulta pela tailnet). Não encaixa como busca do hub.",
+   "evidencias": [
+    {"url": "https://api.github.com/repos/logancyang/obsidian-copilot/releases?per_page=8", "citacao": "Keep your notes indexed on one computer and connect to that Miyo server from Copilot on another."},
+    {"url": "https://github.com/logancyang/obsidian-copilot", "citacao": "The backend services that support hosted features are closed source and proprietary."}
+   ],
+   "nao_verificado": ["o README atual não cita Vault QA, embeddings nem MCP; afirmações antigas sobre Vault QA/Ollama vêm de guias de terceiros", "Windows do plugin"]
+  },
+  {
+   "nome": "Miyo (miyo.md)",
+   "url_fonte": "https://miyo.md",
+   "o_que_e": "App desktop que dá a agentes acesso a pastas locais, com busca semântica, CLI gratuito para agentes locais e MCP remoto via Relay pago.",
+   "lugar": ["disk", "network_service"],
+   "mecanismo": ["vector", "embeddings"],
+   "mcp": "yes", "windows": "yes", "portugues": "unknown",
+   "licenca": "não declarada; app e CLI gratuitos, Relay pago", "ultimo_release": "0.3.1 (citado nas notas do Copilot 4.0.14)", "maturidade": "beta",
+   "encaixe": "Indexa pastas Markdown em disco (o hub tem a pasta sincronizada) e o agente local usa o CLI. Fechado, com Relay pago; avaliar como concorrente de busca em disco.",
+   "evidencias": [
+    {"url": "https://miyo.md", "citacao": "Searches by meaning, not keywords."},
+    {"url": "https://miyo.md", "citacao": "Local agents use the free miyo CLI."}
+   ],
+   "nao_verificado": ["busca por palavra-chave/híbrida (a página só cita semântica)", "modelo de embeddings e suporte a português", "licença do código", "repositório de código-fonte (só Brevilabs/miyo-releases citado, não conferido)", "se o MCP funciona sem Relay"]
+  },
+  {
+   "nome": "Companion MCP for Obsidian (yama662607)",
+   "url_fonte": "https://community.obsidian.md/plugins/companion-mcp",
+   "o_que_e": "Plugin Obsidian mais CLI MCP stdio: busca semântica local com multilingual-e5-small (Transformers.js), edição de notas; sem Obsidian lê/escreve arquivos, sem semântica.",
+   "lugar": ["light_client"],
+   "mecanismo": ["vector", "embeddings"],
+   "mcp": "yes", "windows": "unknown", "portugues": "yes",
+   "licenca": "MIT", "ultimo_release": "0.1.3", "maturidade": "alpha",
+   "encaixe": "Prova de conceito de índice e5-small dentro do plugin; exige Obsidian aberto para a semântica. Útil como referência de desenho, imaturo como dependência.",
+   "evidencias": [
+    {"url": "https://community.obsidian.md/plugins/companion-mcp", "citacao": "intfloat/multilingual-e5-small"},
+    {"url": "https://community.obsidian.md/plugins/companion-mcp", "citacao": "If Obsidian isn't running, the server can still read and write vault files directly"}
+   ],
+   "nao_verificado": ["Windows (diz só desktop)", "data do release", "qualidade da recuperação em português (e5-small é multilíngue, o plugin não mediu)"]
+  },
+  {
+   "nome": "smart-connections-mcp (gogogadgetbytes e variantes)",
+   "url_fonte": "https://github.com/gogogadgetbytes/smart-connections-mcp",
+   "o_que_e": "Servidor MCP somente leitura que reaproveita embeddings do Smart Connections e roda o modelo localmente (Transformers.js) para buscar por significado.",
+   "lugar": ["disk", "inside_db_mcp"],
+   "mecanismo": ["vector", "embeddings"],
+   "mcp": "yes", "windows": "unknown", "portugues": "unknown",
+   "licenca": "MIT", "ultimo_release": "npm 0.2.0, atualização 2026-02-03 (só em listagem)", "maturidade": "alpha",
+   "encaixe": "Depende de o plugin Smart Connections já ter gerado .smart-env; o hub teria de manter esse plugin só para os vetores. Pouco provável.",
+   "evidencias": [
+    {"url": "https://github.com/gogogadgetbytes/smart-connections-mcp", "citacao": "Read-only - no write operations, no shell execution"},
+    {"url": "https://github.com/brianpetro/obsidian-smart-connections", "citacao": "add the `.smart-env/` directory to its ignore patterns to avoid conflicts"}
+   ],
+   "nao_verificado": ["data do último commit (repositório com 7 commits)", "Windows (exemplos com caminhos Unix)", "modelo e multilinguismo", "formato exato do .smart-env", "msdanyg/smart-connections-mcp e dan6684 vistos só em listagens"]
+  },
+  {
+   "nome": "Smart Connections (brianpetro), plugin",
+   "url_fonte": "https://github.com/brianpetro/obsidian-smart-connections",
+   "o_que_e": "Plugin de notas relacionadas por embeddings locais; v4.7.2 exige Smart Environment v3 e adiciona mais modelos locais. Sem API externa documentada.",
+   "lugar": ["light_client"],
+   "mecanismo": ["vector", "embeddings"],
+   "mcp": "no", "windows": "unknown", "portugues": "unknown",
+   "licenca": "Smart Plugins License (código disponível, com restrição a concorrentes)", "ultimo_release": "4.7.2 (2026-08-06)", "maturidade": "stable",
+   "encaixe": "Não entra como busca: não expõe API a agentes e a pasta .smart-env deve ser excluída de sincronizadores, o que pesa para o LiveSync.",
+   "evidencias": [
+    {"url": "https://github.com/brianpetro/obsidian-smart-connections", "citacao": "add the `.smart-env/` directory to its ignore patterns to avoid conflicts"},
+    {"url": "https://api.github.com/repos/brianpetro/obsidian-smart-connections/releases/latest", "citacao": "tag_name 4.7.2, published_at 2026-08-06"}
+   ],
+   "nao_verificado": ["modelo local padrão e se é multilíngue", "MCP próprio (não localizado)"]
+  },
+  {
+   "nome": "aaronsb/obsidian-mcp-plugin",
+   "url_fonte": "https://github.com/aaronsb/obsidian-mcp-plugin",
+   "o_que_e": "Plugin do Obsidian que é o próprio servidor MCP (HTTP :3001), com busca full-text (operadores tag:, path:, content:, regex, frase, ranking) e Dataview.",
+   "lugar": ["light_client"],
+   "mecanismo": ["full_text"],
+   "mcp": "yes", "windows": "unknown", "portugues": "unknown",
+   "licenca": "MIT", "ultimo_release": "não conferido", "maturidade": "unknown",
+   "encaixe": "Mais uma porta MCP para o Obsidian aberto; sobrepõe o MCP do banco. Só como busca delegada local, sem vantagem sobre a Local REST API.",
+   "evidencias": [
+    {"url": "https://github.com/aaronsb/obsidian-mcp-plugin", "citacao": "the server _is_ the plugin"}
+   ],
+   "nao_verificado": ["último release", "suporte a Windows", "busca semântica (só aparece nos tópicos do repositório)"]
+  },
+  {
+   "nome": "pouchdb-quick-search",
+   "url_fonte": "https://github.com/nolanlawson/pouchdb-quick-search",
+   "o_que_e": "Plugin de busca full-text local para PouchDB sobre Lunr, com stemmer Porter inglês e outros idiomas via lunr-languages; não funciona contra CouchDB remoto.",
+   "lugar": ["library"],
+   "mecanismo": ["full_text", "bm25"],
+   "mcp": "no", "windows": "unknown", "portugues": "unknown",
+   "licenca": "Apache-2.0", "ultimo_release": "1.3.0 (data não conferida)", "maturidade": "unknown",
+   "encaixe": "Não serve: indexa dentro do PouchDB do cliente e o README manda usar CouchDB Lucene para busca no servidor. Descartar como caminho para o hub.",
+   "evidencias": [
+    {"url": "https://github.com/nolanlawson/pouchdb-quick-search", "citacao": "not designed to work against CouchDB/Cloudant/etc."}
+   ],
+   "nao_verificado": ["data do último commit ou release e estado de manutenção em 2026 (nenhuma fonte primária achada)", "lista de idiomas do lunr-languages e se inclui português"]
+  }
+ ],
+ "lacunas": "Não existe, na fonte, busca que opere sobre os documentos do PouchDB/LiveSync: pouchdb-quick-search é local e sem sinal de manutenção; não conferi se o LiveSync documenta API de busca. Todas as buscas do lado do Obsidian exigem o app aberto. Português: nenhuma fonte primária confirma stemmer/acentos no Omnisearch, no search_simple ou no Miyo. Datas de release de aaronsb, Companion MCP e Miyo não conferidas."
+}

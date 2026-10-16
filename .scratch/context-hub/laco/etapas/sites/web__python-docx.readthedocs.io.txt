@@ -1,0 +1,257 @@
+Navigation
+
+ index
+
+ next |
+
+python-docx 1.2.0 documentation » 
+
+python-docx¶
+
+Release v1.2.0 (Installation)
+
+python-docx is a Python library for creating and updating Microsoft Word
+(.docx) files.
+
+What it can do¶
+
+Here’s an example of what python-docx can do:
+
+from docx import Document
+from docx.shared import Inches
+
+document = Document()
+
+document.add_heading('Document Title', 0)
+
+p = document.add_paragraph('A plain paragraph having some ')
+p.add_run('bold').bold = True
+p.add_run(' and some ')
+p.add_run('italic.').italic = True
+
+document.add_heading('Heading, level 1', level=1)
+document.add_paragraph('Intense quote', style='Intense Quote')
+
+document.add_paragraph(
+ 'first item in unordered list', style='List Bullet'
+)
+document.add_paragraph(
+ 'first item in ordered list', style='List Number'
+)
+
+document.add_picture('monty-truth.png', width=Inches(1.25))
+
+records = (
+ (3, '101', 'Spam'),
+ (7, '422', 'Eggs'),
+ (4, '631', 'Spam, spam, eggs, and spam')
+)
+
+table = document.add_table(rows=1, cols=3)
+hdr_cells = table.rows[0].cells
+hdr_cells[0].text = 'Qty'
+hdr_cells[1].text = 'Id'
+hdr_cells[2].text = 'Desc'
+for qty, id, desc in records:
+ row_cells = table.add_row().cells
+ row_cells[0].text = str(qty)
+ row_cells[1].text = id
+ row_cells[2].text = desc
+
+document.add_page_break()
+
+document.save('demo.docx')
+
+User Guide¶
+
+Installing
+
+Quickstart
+
+Working with Documents
+
+Working with Tables
+
+Working with Text
+
+Working with Sections
+
+Working with Headers and Footers
+
+API basics
+
+Understanding Styles
+
+Working with Styles
+
+Working with Comments
+
+Understanding pictures and other shapes
+
+API Documentation¶
+
+Document objects
+
+Document constructor
+
+Document objects
+
+CoreProperties objects
+
+Document Settings objects
+
+Style-related objects
+
+Styles objects
+
+BaseStyle objects
+
+CharacterStyle objects
+
+ParagraphStyle objects
+
+_TableStyle objects
+
+_NumberingStyle objects
+
+LatentStyles objects
+
+_LatentStyle objects
+
+Text-related objects
+
+Paragraph objects
+
+ParagraphFormat objects
+
+Hyperlink objects
+
+Run objects
+
+Font objects
+
+RenderedPageBreak objects
+
+TabStop objects
+
+TabStops objects
+
+Table objects
+
+Table objects
+
+_Cell objects
+
+_Row objects
+
+_Column objects
+
+_Rows objects
+
+_Columns objects
+
+Section objects
+
+Sections objects
+
+Section objects
+
+_Header and _Footer objects
+
+Comment-related objects
+
+Comments objects
+
+Comment objects
+
+Shape-related objects
+
+InlineShapes objects
+
+InlineShape objects
+
+DrawingML objects
+
+ColorFormat objects
+
+Shared classes
+
+Length objects
+
+RGBColor objects
+
+Enumerations
+
+MSO_COLOR_TYPE
+
+MSO_THEME_COLOR_INDEX
+
+WD_PARAGRAPH_ALIGNMENT
+
+WD_BUILTIN_STYLE
+
+WD_CELL_VERTICAL_ALIGNMENT
+
+WD_COLOR_INDEX
+
+WD_LINE_SPACING
+
+WD_ORIENTATION
+
+WD_TABLE_ALIGNMENT
+
+WD_ROW_HEIGHT_RULE
+
+WD_SECTION_START
+
+WD_STYLE_TYPE
+
+WD_TAB_ALIGNMENT
+
+WD_TAB_LEADER
+
+WD_TABLE_DIRECTION
+
+WD_UNDERLINE
+
+Contributor Guide¶
+
+Analysis
+
+Table of Contents
+
+python-docx
+
+What it can do
+
+User Guide
+
+API Documentation
+
+Contributor Guide
+
+Next topic
+
+Installing
+Useful Links
+
+python-docx @ GitHub
+
+python-docx @ PyPI
+
+Issue Tracker
+
+Quick search
+
+Navigation
+
+ index
+
+ next |
+
+python-docx 1.2.0 documentation » 
+
+ © Copyright 2013, Steve Canny.
+ Created using Sphinx 1.8.6.
+
+Theme based on Read The Docs

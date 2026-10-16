@@ -1,0 +1,680 @@
+Skip to main content
+ Switch to mobile version
+
+toml 0.10.2
+
+Python Library for Tom's Obvious, Minimal Language
+
+ pip install toml
+
+ Copy PIP instructions
+
+A Python library for parsing and creating TOML.
+
+The module passes the TOML test suite.
+
+See also:
+
+The TOML Standard
+
+The currently supported TOML specification
+
+Installation
+
+To install the latest release on PyPI,
+simply run:
+
+pip install toml
+
+Or to install the latest development version, run:
+
+git clone https://github.com/uiri/toml.git
+cd toml
+python setup.py install
+
+Quick Tutorial
+
+toml.loads takes in a string containing standard TOML-formatted data and
+returns a dictionary containing the parsed data.
+
+>>> import toml
+>>> toml_string = """
+... # This is a TOML document.
+...
+... title = "TOML Example"
+...
+... [owner]
+... name = "Tom Preston-Werner"
+... dob = 1979-05-27T07:32:00-08:00 # First class dates
+...
+... [database]
+... server = "192.168.1.1"
+... ports = [ 8001, 8001, 8002 ]
+... connection_max = 5000
+... enabled = true
+...
+... [servers]
+...
+... # Indentation (tabs and/or spaces) is allowed but not required
+... [servers.alpha]
+... ip = "10.0.0.1"
+... dc = "eqdc10"
+...
+... [servers.beta]
+... ip = "10.0.0.2"
+... dc = "eqdc10"
+...
+... [clients]
+... data = [ ["gamma", "delta"], [1, 2] ]
+...
+... # Line breaks are OK when inside arrays
+... hosts = [
+... "alpha",
+... "omega"
+... ]
+... """
+>>> parsed_toml = toml.loads(toml_string)
+
+toml.dumps takes a dictionary and returns a string containing the
+corresponding TOML-formatted data.
+
+>>> new_toml_string = toml.dumps(parsed_toml)
+>>> print(new_toml_string)
+title = "TOML Example"
+[owner]
+name = "Tom Preston-Werner"
+dob = 1979-05-27T07:32:00Z
+[database]
+server = "192.168.1.1"
+ports = [ 8001, 8001, 8002,]
+connection_max = 5000
+enabled = true
+[clients]
+data = [ [ "gamma", "delta",], [ 1, 2,],]
+hosts = [ "alpha", "omega",]
+[servers.alpha]
+ip = "10.0.0.1"
+dc = "eqdc10"
+[servers.beta]
+ip = "10.0.0.2"
+dc = "eqdc10"
+
+toml.dump takes a dictionary and a file descriptor and returns a string containing the
+corresponding TOML-formatted data.
+
+>>> with open('new_toml_file.toml', 'w') as f:
+... new_toml_string = toml.dump(parsed_toml, f)
+>>> print(new_toml_string)
+title = "TOML Example"
+[owner]
+name = "Tom Preston-Werner"
+dob = 1979-05-27T07:32:00Z
+[database]
+server = "192.168.1.1"
+ports = [ 8001, 8001, 8002,]
+connection_max = 5000
+enabled = true
+[clients]
+data = [ [ "gamma", "delta",], [ 1, 2,],]
+hosts = [ "alpha", "omega",]
+[servers.alpha]
+ip = "10.0.0.1"
+dc = "eqdc10"
+[servers.beta]
+ip = "10.0.0.2"
+dc = "eqdc10"
+
+For more functions, view the API Reference below.
+
+Note
+
+For Numpy users, by default the data types np.floatX will not be translated to floats by toml, but will instead be encoded as strings. To get around this, specify the TomlNumpyEncoder when saving your data.
+
+>>> import toml
+>>> import numpy as np
+>>> a = np.arange(0, 10, dtype=np.double)
+>>> output = {'a': a}
+>>> toml.dumps(output)
+'a = [ "0.0", "1.0", "2.0", "3.0", "4.0", "5.0", "6.0", "7.0", "8.0", "9.0",]\n'
+>>> toml.dumps(output, encoder=toml.TomlNumpyEncoder())
+'a = [ 0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0,]\n'
+
+API Reference
+
+toml.load(f, _dict=dict)
+
+Parse a file or a list of files as TOML and return a dictionary.
+
+Args:
+
+f: A path to a file, list of filepaths (to be read into single
+object) or a file descriptor
+
+_dict: The class of the dictionary object to be returned
+
+Returns:
+
+A dictionary (or object _dict) containing parsed TOML data
+
+Raises:
+
+TypeError: When f is an invalid type or is a list containing
+invalid types
+
+TomlDecodeError: When an error occurs while decoding the file(s)
+
+toml.loads(s, _dict=dict)
+
+Parse a TOML-formatted string to a dictionary.
+
+Args:
+
+s: The TOML-formatted string to be parsed
+
+_dict: Specifies the class of the returned toml dictionary
+
+Returns:
+
+A dictionary (or object _dict) containing parsed TOML data
+
+Raises:
+
+TypeError: When a non-string object is passed
+
+TomlDecodeError: When an error occurs while decoding the
+TOML-formatted string
+
+toml.dump(o, f, encoder=None)
+
+Write a dictionary to a file containing TOML-formatted data
+
+Args:
+
+o: An object to be converted into TOML
+
+f: A File descriptor where the TOML-formatted output should be stored
+
+encoder: An instance of TomlEncoder (or subclass) for encoding the object. If None, will default to TomlEncoder
+
+Returns:
+
+A string containing the TOML-formatted data corresponding to object o
+
+Raises:
+
+TypeError: When anything other than file descriptor is passed
+
+toml.dumps(o, encoder=None)
+
+Create a TOML-formatted string from an input object
+
+Args:
+
+o: An object to be converted into TOML
+
+encoder: An instance of TomlEncoder (or subclass) for encoding the object. If None, will default to TomlEncoder
+
+Returns:
+
+A string containing the TOML-formatted data corresponding to object o
+
+Licensing
+
+This project is released under the terms of the MIT Open Source License. View
+LICENSE.txt for more information.
+
+Project links
+
+ Homepage
+
+Key dates
+
+ PyPI data
+
+Data sourced directly from PyPI's database.
+
+ Released: 
+ Nov 1, 2020
+
+ Latest release
+
+1 maintainer 
+
+ PyPI data
+
+Data sourced directly from PyPI's database.
+
+ uiri
+
+Credits
+
+Author: 
+ William Pearson
+
+License
+
+MIT License (MIT)
+
+Requires
+
+Python >=2.6, !=3.0.*, !=3.1.*, !=3.2.*
+
+Classifiers
+
+ Development Status
+
+ 5 - Production/Stable
+
+ Intended Audience
+
+ Developers
+
+ License
+
+ OSI Approved :: MIT License
+
+ Operating System
+
+ OS Independent
+
+ Programming Language
+
+ Python
+
+ Python :: 2
+
+ Python :: 2.6
+
+ Python :: 2.7
+
+ Python :: 3
+
+ Python :: 3.3
+
+ Python :: 3.4
+
+ Python :: 3.5
+
+ Python :: 3.6
+
+ Python :: 3.7
+
+ Python :: 3.8
+
+ Python :: 3.9
+
+ Python :: Implementation :: CPython
+
+ Python :: Implementation :: PyPy
+
+ Report project as malware
+
+Metadata
+
+Project links
+
+ Homepage
+
+Key dates
+
+ PyPI data
+
+Data sourced directly from PyPI's database.
+
+ Released: 
+ Nov 1, 2020
+
+ Latest release
+
+1 maintainer 
+
+ PyPI data
+
+Data sourced directly from PyPI's database.
+
+ uiri
+
+Credits
+
+Author: 
+ William Pearson
+
+License
+
+MIT License (MIT)
+
+Requires
+
+Python >=2.6, !=3.0.*, !=3.1.*, !=3.2.*
+
+Classifiers
+
+ Development Status
+
+ 5 - Production/Stable
+
+ Intended Audience
+
+ Developers
+
+ License
+
+ OSI Approved :: MIT License
+
+ Operating System
+
+ OS Independent
+
+ Programming Language
+
+ Python
+
+ Python :: 2
+
+ Python :: 2.6
+
+ Python :: 2.7
+
+ Python :: 3
+
+ Python :: 3.3
+
+ Python :: 3.4
+
+ Python :: 3.5
+
+ Python :: 3.6
+
+ Python :: 3.7
+
+ Python :: 3.8
+
+ Python :: 3.9
+
+ Python :: Implementation :: CPython
+
+ Python :: Implementation :: PyPy
+
+ Report project as malware
+
+Release files for toml 0.10.2
+
+For a detailed explanation of source distributions (sdists) and built distributions (wheels), please see the package formats documentation. 
+
+Source distribution (sdist) 
+
+ Source distribution for toml 0.10.2
+
+ File
+ Size
+ Uploaded
+
+ toml-0.10.2.tar.gz
+
+ 22.3 kB
+
+ Nov 1, 2020
+
+ Details
+
+Built distribution (wheel) 
+
+ Table of built distributions (wheels) for toml 0.10.2
+
+ File
+
+Interpreter 
+
+ABI 
+
+Platform 
+
+ Reset
+
+ toml-0.10.2-py2.py3-none-any.whl
+
+ 16.6 kB
+
+ Nov 1, 2020
+
+ Python 2, Python 3
+
+ none
+
+ any
+
+ Details
+
+ Total release size: 38.8 kB
+
+ Release files
+ / toml-0.10.2.tar.gz
+
+ Download URL
+
+ toml-0.10.2.tar.gz
+
+ Size
+ 22.3 kB
+
+ Tags
+
+ Source
+
+SHA-256 checksum 
+
+ How to use checksums
+
+ b3bda1d108d5dd99f4a20d24d9c348e91c4db7ab1b749200bded2f839ccbe68f
+
+BLAKE2b-256 checksum 
+
+ How to use checksums
+
+ beba1f744cdc819428fc6b5084ec34d9b30660f6f9daaf70eead706e3203ec3c
+
+ Upload date
+
+ Nov 1, 2020
+
+Uploaded using Trusted Publishing? 
+
+ What is trusted publishing?
+
+No 
+
+ Uploaded via
+
+ twine/3.2.0 pkginfo/1.6.1 requests/2.24.0 setuptools/50.3.2 requests-toolbelt/0.9.1 tqdm/4.51.0 CPython/3.8.3
+
+ Release files
+ / toml-0.10.2-py2.py3-none-any.whl
+
+ Download URL
+
+ toml-0.10.2-py2.py3-none-any.whl
+
+ Size
+ 16.6 kB
+
+ Tags
+
+ Python 2
+ Python 3
+
+SHA-256 checksum 
+
+ How to use checksums
+
+ 806143ae5bfb6a3c6e736a764057db0e6a0e05e338b5630894a5f779cabb4f9b
+
+BLAKE2b-256 checksum 
+
+ How to use checksums
+
+ 446f7120676b6d73228c96e17f1f794d8ab046fc910d781c8d151120c3f1569e
+
+ Upload date
+
+ Nov 1, 2020
+
+Uploaded using Trusted Publishing? 
+
+ What is trusted publishing?
+
+No 
+
+ Uploaded via
+
+ twine/3.2.0 pkginfo/1.6.1 requests/2.24.0 setuptools/50.3.2 requests-toolbelt/0.9.1 tqdm/4.51.0 CPython/3.8.3
+
+ Release history
+
+ Release notifications |
+ RSS feed 
+
+ This release
+
+ 0.10.2
+ This release
+
+ Nov 1, 2020
+
+ 2 release files
+
+ 0.10.1
+
+ May 14, 2020
+
+ 2 release files
+
+ 0.10.0
+
+ Oct 4, 2018
+
+ 3 release files
+
+ 0.9.6
+
+ Sep 9, 2018
+
+ 2 release files
+
+ 0.9.4
+
+ Dec 21, 2017
+
+ 1 release file
+
+ 0.9.3
+
+ Oct 1, 2017
+
+ 1 release file
+
+ 0.9.2
+
+ Jul 28, 2016
+
+ 1 release file
+
+ 0.9.1
+
+ Jul 11, 2015
+
+ 1 release file
+
+ 0.9.0
+
+ Feb 24, 2015
+
+ 1 release file
+
+ 0.8.2
+
+ Apr 16, 2014
+
+ 1 release file
+
+ 0.8.1
+
+ Oct 21, 2013
+
+ 1 release file
+
+ 0.8.0
+
+ Sep 25, 2013
+
+ 1 release file
+
+ 0.7.1
+
+ Jul 24, 2013
+
+ 1 release file
+
+ 0.7.0
+
+ Mar 6, 2013
+
+ 1 release file
+
+ 0.6.5
+
+ Feb 25, 2013
+
+ 1 release file
+
+ 0.6.0
+
+ Feb 24, 2013
+
+ 1 release file
+
+ Anthropic, PBC
+ Visionary sponsor
+
+ Bloomberg
+ Visionary sponsor
+
+ Hudson River Trading
+ Visionary sponsor
+
+ Meta
+ Visionary sponsor
+
+ NVIDIA
+ Visionary sponsor
+
+ Microsoft
+ Sustainability sponsor
+
+ Depot
+ Continuous Integration
+
+ AWS
+ Cloud computing and Security Sponsor
+
+ Datadog
+ Monitoring
+
+ Fastly
+ CDN
+
+ Google
+ Download Analytics
+
+ Sentry
+ Error logging
+
+ StatusPage
+ Status page
+
+"PyPI", "Python Package Index", and the blocks logos are registered trademarks of the Python Software Foundation.
+
+ © 2026 Python Software Foundation
+
+ Site map
+
+Deployed from 63f0d55

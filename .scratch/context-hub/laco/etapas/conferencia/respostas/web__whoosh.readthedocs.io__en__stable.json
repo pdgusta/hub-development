@@ -1,0 +1,33 @@
+{
+ "chave": "web:whoosh.readthedocs.io/en/stable",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T21:13:42Z",
+ "resultado": "corrige",
+ "conferencia": {
+  "resultado": "corrige",
+  "final": {
+   "serve": "search",
+   "role": "Pure-Python full-text indexing and search library (Whoosh 2.7.4 docs)",
+   "place": [
+    "library"
+   ],
+   "mechanism": [
+    "full_text",
+    "bm25"
+   ],
+   "mcp": "no",
+   "windows": "unknown",
+   "portuguese": "unknown",
+   "license": "unknown",
+   "maturity": "unknown",
+   "doubt": false,
+   "evidence": "Docs index: Quick start, Index and Schema, IndexWriter, Searcher; Edit on Bitbucket (unmaintained 2.7.4)"
+  },
+  "o_que_mudou": [
+   "mcp: unknown -> no, library only, no MCP server",
+   "mechanism: reduced to full_text/bm25 (no vector)",
+   "place: inside_db_mcp etc removed -> library"
+  ],
+  "nota": "Python library for local full-text search; usable only via own wrapper, no MCP, docs of an old 2.7.4 release."
+ }
+}

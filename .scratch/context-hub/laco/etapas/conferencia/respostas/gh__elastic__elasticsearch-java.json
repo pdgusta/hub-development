@@ -1,0 +1,32 @@
+{
+ "chave": "gh:elastic/elasticsearch-java",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T20:24:12Z",
+ "resultado": "corrige",
+ "conferencia": {
+  "resultado": "corrige",
+  "final": {
+   "serve": "stack",
+   "role": "Official Java client for Elasticsearch APIs (typed requests/responses)",
+   "place": [
+    "library"
+   ],
+   "mechanism": [
+    "other"
+   ],
+   "mcp": "unknown",
+   "windows": "unknown",
+   "portuguese": "unknown",
+   "license": "Apache-2.0",
+   "maturity": "stable",
+   "doubt": false,
+   "evidence": "Official Java client for Elasticsearch providing strongly typed requests and responses; delegates HTTP to a low-level REST client."
+  },
+  "o_que_mudou": [
+   "serve: search -> stack, it is only a client library, not a search layer",
+   "mechanism: bm25/full_text/vector/hybrid/reranker/embeddings -> other, README lists no such features of the client",
+   "doubt: true/false -> false"
+  ],
+  "nota": "Only a Java client for an Elasticsearch server the hub does not run; marginal, relevant only if Elasticsearch were chosen."
+ }
+}

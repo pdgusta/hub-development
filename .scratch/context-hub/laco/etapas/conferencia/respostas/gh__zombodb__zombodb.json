@@ -1,0 +1,30 @@
+{
+ "chave": "gh:zombodb/zombodb",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T21:45:35Z",
+ "resultado": "rejeita",
+ "conferencia": {
+  "resultado": "rejeita",
+  "final": {
+   "serve": "none",
+   "role": "Postgres extension that uses Elasticsearch as an index type",
+   "place": [
+    "network_service"
+   ],
+   "mechanism": [
+    "full_text"
+   ],
+   "mcp": "unknown",
+   "windows": "unknown",
+   "portuguese": "unknown",
+   "license": "Apache-2.0",
+   "maturity": "stable",
+   "doubt": false,
+   "evidence": "Requires Postgres 12-15 and Elasticsearch >=7.10; the hub stores notes in CouchDB, so it does not apply."
+  },
+  "o_que_mudou": [
+   "serve: search/stack -> none, requires Postgres plus Elasticsearch, hub uses CouchDB"
+  ],
+  "nota": "Needs Postgres and Elasticsearch; the hub runs on CouchDB, so it cannot be used."
+ }
+}

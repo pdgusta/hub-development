@@ -1,0 +1,32 @@
+{
+ "chave": "gh:pgbigm/pg_bigm",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T22:00:19Z",
+ "resultado": "corrige",
+ "conferencia": {
+  "resultado": "corrige",
+  "final": {
+   "serve": "search",
+   "role": "Bigram (2-gram) index for full text search in PostgreSQL; requires a PostgreSQL server.",
+   "place": [
+    "inside_db_mcp"
+   ],
+   "mechanism": [
+    "full_text"
+   ],
+   "mcp": "no",
+   "windows": "unknown",
+   "portuguese": "unknown",
+   "license": "PostgreSQL",
+   "maturity": "stable",
+   "doubt": false,
+   "evidence": "The pg_bigm module provides full text search capability in PostgreSQL; allows creating a 2-gram (bigram) index."
+  },
+  "o_que_mudou": [
+   "doubt: true -> false, README is clear it is a Postgres-only module",
+   "place: network_service -> inside_db_mcp, it lives inside the database",
+   "mcp: unknown -> no, README mentions none"
+  ],
+  "nota": "Busca textual por bigramas, mas só dentro de PostgreSQL; relevante só se o hub migrar para Postgres."
+ }
+}

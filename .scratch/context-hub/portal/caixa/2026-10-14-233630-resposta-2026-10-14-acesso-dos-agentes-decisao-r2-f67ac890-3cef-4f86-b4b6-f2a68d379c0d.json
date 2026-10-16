@@ -1,0 +1,230 @@
+{
+  "envio": "f67ac890-3cef-4f86-b4b6-f2a68d379c0d",
+  "tipo": "resposta",
+  "enviada": "2026-10-14T23:36:30-03:00",
+  "alvo": {
+    "tipo": "rodada",
+    "id": "2026-10-14-acesso-dos-agentes-decisao-r2",
+    "titulo": "Acesso dos agentes: o teste em detalhe"
+  },
+  "ticket": "14",
+  "substitui": null,
+  "rodada": {
+    "id": "2026-10-14-acesso-dos-agentes-decisao-r2",
+    "base": "92b1abba04e43418ea1e8c45a3ee41a2fad729cc9d7dc5dce530bf659bd094c2",
+    "titulo": "Acesso dos agentes: o teste em detalhe",
+    "ticket": "14",
+    "perguntas": [
+      {
+        "id": "testes",
+        "titulo": "Os testes",
+        "tipo": "proposta",
+        "recomendada": [],
+        "opcoes": [],
+        "proposta": {
+          "colunas": [
+            "teste",
+            "o que prova",
+            "decisão que alimenta",
+            "quem roda"
+          ],
+          "linhas": [
+            {
+              "id": "inicio-codex",
+              "teste": "Hook de início no Codex",
+              "o que prova": "o texto que o hook devolve chega ao modelo; e se dá para deixar o hook aprovado pelo kit, sem você aceitar à mão em /hooks",
+              "decisão que alimenta": "checagem de início",
+              "quem roda": "subagente"
+            },
+            {
+              "id": "inicio-copilot",
+              "teste": "Hook de início no Copilot CLI",
+              "o que prova": "o texto do hook chega ao modelo",
+              "decisão que alimenta": "checagem de início",
+              "quem roda": "subagente"
+            },
+            {
+              "id": "inicio-claude",
+              "teste": "Hook de início no Claude Code",
+              "o que prova": "o mesmo script dos outros dois funciona aqui",
+              "decisão que alimenta": "checagem de início",
+              "quem roda": "subagente"
+            },
+            {
+              "id": "fim-tres",
+              "teste": "Hook de fim da resposta nos três",
+              "o que prova": "um script sem modelo devolve o agente quando a nota de retomada não foi tocada, e solta quando foi",
+              "decisão que alimenta": "fim da resposta",
+              "quem roda": "subagente"
+            },
+            {
+              "id": "maestri",
+              "teste": "Hooks dentro de um terminal do Maestri",
+              "o que prova": "os hooks rodam num recruta de teste e enxergam a variável que identifica o terminal do Maestri",
+              "decisão que alimenta": "checagem de início dos recrutas",
+              "quem roda": "subagente, com um recruta de teste criado e removido por mim"
+            },
+            {
+              "id": "git-raiz",
+              "teste": "O .git real no lugar do marcador de raiz",
+              "o que prova": "Codex e Copilot abertos numa subpasta e na pasta de um papel chegam ao AGENTS.md da raiz só com o .git",
+              "decisão que alimenta": "se o marcador de raiz ainda precisa existir",
+              "quem roda": "subagente"
+            },
+            {
+              "id": "dobro",
+              "teste": "Contrato carregado em dobro",
+              "o que prova": "se o contrato entra duas vezes quando a sessão abre na raiz (pelo arquivo global e pelo AGENTS.md da raiz)",
+              "decisão que alimenta": "como ligar o contrato global sem duplicar",
+              "quem roda": "subagente"
+            },
+            {
+              "id": "token",
+              "teste": "MCP com token lido de variável de ambiente",
+              "o que prova": "Claude Code, Codex e Copilot CLI conectam a um MCP de teste em 127.0.0.1 com o token vindo da variável",
+              "decisão que alimenta": "a porta local do par (já decidida) funciona nos três",
+              "quem roda": "subagente"
+            },
+            {
+              "id": "instrucoes-mcp",
+              "teste": "Instruções do MCP no Copilot CLI",
+              "o que prova": "com a opção --allow-all-mcp-server-instructions, o texto de instruções do MCP chega ao modelo",
+              "decisão que alimenta": "o contrato nos clientes",
+              "quem roda": "subagente"
+            },
+            {
+              "id": "vigia-tela",
+              "teste": "Estado da vigia o tempo todo (pesquisa)",
+              "o que prova": "se Codex e Copilot têm barra de estado ou algo parecido que um script alimente; fonte primária, e teste se existir",
+              "decisão que alimenta": "a pesquisa pedida na rodada 1",
+              "quem roda": "subagente"
+            },
+            {
+              "id": "vscode",
+              "teste": "VS Code com Copilot",
+              "o que prova": "hooks de usuário rodam; um MCP com token é aceito; o que a política da empresa permite (Policy Diagnostics)",
+              "decisão que alimenta": "se o hub precisa virar plugin para o VS Code",
+              "quem roda": "você, com uma lista passo a passo"
+            },
+            {
+              "id": "empresa-mcp",
+              "teste": "MCP do hub com a conta da empresa no Copilot CLI",
+              "o que prova": "a lista de MCP permitidos da empresa não barra o MCP do hub (/mcp)",
+              "decisão que alimenta": "se os clientes Copilot alcançam o hub",
+              "quem roda": "você, com uma lista passo a passo"
+            }
+          ],
+          "pode": [
+            "editar",
+            "remover",
+            "adicionar"
+          ]
+        }
+      },
+      {
+        "id": "quem",
+        "titulo": "Quem roda e quanto custa",
+        "tipo": "escolha",
+        "recomendada": [
+          "A"
+        ],
+        "opcoes": [
+          {
+            "chave": "A",
+            "texto": "Um subagente Opus 5.5 médio roda agora os testes de linha de comando, em cerca de 1 hora, com 150 a 250 mil tokens; a lista dos seus testes chega junto com o relatório"
+          },
+          {
+            "chave": "B",
+            "texto": "O mesmo subagente, mas Sonnet 5.5: custa menos tokens do Opus, e ele erra mais em teste que exige ler documentação e ajustar"
+          },
+          {
+            "chave": "C",
+            "texto": "Só os testes de hook agora (início, fim e Maestri); o resto fica para a construção"
+          }
+        ],
+        "proposta": null
+      },
+      {
+        "id": "checagem",
+        "titulo": "De onde a checagem de início lê o estado do sync",
+        "tipo": "escolha",
+        "recomendada": [
+          "A"
+        ],
+        "opcoes": [
+          {
+            "chave": "A",
+            "texto": "No par, o hook de início lê o arquivo de estado que a vigia grava a cada 5 min (não depende do MCP estar de pé). No cliente, que não tem vigia, o hook pede o estado a uma ferramenta do MCP. Vale se o teste de início passar nos três; onde falhar, a checagem vira regra no contrato daquele harness"
+          },
+          {
+            "chave": "B",
+            "texto": "Sempre pela ferramenta do MCP, no par e no cliente: um caminho só, mas a checagem falha quando o MCP cai"
+          },
+          {
+            "chave": "C",
+            "texto": "Esperar o resultado do teste para decidir"
+          }
+        ],
+        "proposta": null
+      },
+      {
+        "id": "fim",
+        "titulo": "O hook de fim da resposta",
+        "tipo": "escolha",
+        "recomendada": [
+          "A"
+        ],
+        "opcoes": [
+          {
+            "chave": "A",
+            "texto": "O mesmo script nos três harnesses, sem modelo: confere se a nota de retomada foi tocada nesta resposta e, se não, devolve o agente para gravar. Vale se o teste de fim passar; onde falhar, fica só a regra no contrato daquele harness"
+          },
+          {
+            "chave": "B",
+            "texto": "No Claude Code, um hook com modelo, que julga se a nota está boa; no Codex e no Copilot, que não aceitam hook com modelo, o script"
+          },
+          {
+            "chave": "C",
+            "texto": "Esperar o resultado do teste para decidir"
+          }
+        ],
+        "proposta": null
+      },
+      {
+        "id": "algo-mais",
+        "titulo": "Algo mais?",
+        "tipo": "texto",
+        "recomendada": [],
+        "opcoes": [],
+        "proposta": null
+      }
+    ]
+  },
+  "corpo_hash": "a014d76aa5c99f7ef2096ff6a6cd29cf9cc388e60202fdd94035e682899bd0a3",
+  "corpo": {
+    "tipo": "resposta",
+    "rodada": "2026-10-14-acesso-dos-agentes-decisao-r2",
+    "base": "92b1abba04e43418ea1e8c45a3ee41a2fad729cc9d7dc5dce530bf659bd094c2",
+    "respostas": {
+      "quem": {
+        "escolha": [
+          "A"
+        ],
+        "outra": null,
+        "comentario": null
+      },
+      "checagem": {
+        "escolha": [
+          "A"
+        ],
+        "outra": null,
+        "comentario": "quero que a ferramenta do mcp também sirva par como fallback"
+      },
+      "fim": {
+        "escolha": [],
+        "outra": "hook claude mod e o correlato de claude mod pros outros harness",
+        "comentario": null
+      }
+    }
+  }
+}

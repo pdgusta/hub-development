@@ -1,0 +1,34 @@
+{
+ "chave": "web:docs.llamaindex.ai/en/stable/module_guides/loading/node_parsers/modules",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T21:51:57Z",
+ "resultado": "corrige",
+ "conferencia": {
+  "resultado": "corrige",
+  "final": {
+   "serve": "stack",
+   "role": "Node parsers and text splitters (Markdown, sentence, semantic, hierarchical) that chunk documents before indexing",
+   "place": [
+    "library"
+   ],
+   "mechanism": [
+    "other"
+   ],
+   "mcp": "unknown",
+   "windows": "unknown",
+   "portuguese": "unknown",
+   "license": "unknown",
+   "maturity": "unknown",
+   "doubt": false,
+   "evidence": "MarkdownNodeParser parses raw markdown text; SentenceSplitter, SemanticSplitterNodeParser, HierarchicalNodeParser"
+  },
+  "o_que_mudou": [
+   "serve: search -> stack, it is a chunking stage, not a retrieval layer",
+   "place: many -> library",
+   "mechanism: bm25/hybrid/grep/graph/etc -> other (chunking)",
+   "mcp: yes/no -> unknown, not stated",
+   "windows/portuguese -> unknown, not stated"
+  ],
+  "nota": "Markdown-aware chunking for the indexing stage; semantic splitter regex works mainly for English, so Portuguese needs checking."
+ }
+}

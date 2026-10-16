@@ -1,0 +1,54 @@
+{
+ "chave": "web:confuse.readthedocs.io",
+ "nomes": [
+  "Confuse"
+ ],
+ "urls": [
+  "https://confuse.readthedocs.io/"
+ ],
+ "readme_cortado": false,
+ "readme": "[Confuse: painless YAML config files — Confuse 2.3.0 documentation]\n\nConfuse: painless YAML config files\n\n View page source\n\nConfuse: painless YAML config files\n\nConfuse is a configuration library for Python that uses YAML. It takes care\nof defaults, overrides, type checking, command-line integration, environment\nvariable support, human-readable errors, and standard OS-specific locations.\n\nWhat It Does\n\nHere’s what Confuse brings to the table:\n\nAn utterly sensible API resembling dictionary-and-list structures but\nproviding transparent validation without lots of boilerplate code. Type\nconfig['num_goats'].get(int) to get the configured number of goats and\nensure that it’s an integer.\n\nCombine configuration data from multiple sources. Using layering,\nConfuse allows user-specific configuration to seamlessly override system-wide\nconfiguration, which in turn overrides built-in defaults. An in-package\nconfig_default.yaml can be used to provide bottom-layer defaults using the\nsame syntax that users will see. A runtime overlay allows the program to\nprogrammatically override and add configuration values.\n\nLook for configuration files in platform-specific paths. Like\n$XDG_CONFIG_HOME or ~/.config on Unix; “Application Support” on macOS;\n%APPDATA% on Windows. Your program gets its own directory, which you can\nuse to store additional data. You can transparently create this directory on\ndemand if, for example, you need to initialize the configuration file on first\nrun. And an environment variable can be used to override the directory’s\nlocation.\n\nIntegration with command-line arguments via argparse or optparse from\nthe standard library. Use argparse’s declarative API to allow command-line\noptions to override configured defaults.\n\nInclude configuration values from environment variables. Values undergo\nautomatic type conversion, and nested dicts and lists are supported.\n\nInstallation\n\nConfuse is available on PyPI and can be\ninstalled using pip:\n\npip install confuse\n\nUsing Confuse\n\nConfuse’s documentation describes its API in detail.\n\nCredits\n\nConfuse was made to power beets. Like beets, it is available under the MIT\nlicense.",
+ "fonte": "site",
+ "respostas": [
+  {
+   "por": "llama-3.3-70b",
+   "resposta": {
+    "serve": "stack",
+    "role": "config management",
+    "place": [
+     "library"
+    ],
+    "mechanism": [
+     "other"
+    ],
+    "mcp": "no",
+    "windows": "yes",
+    "portuguese": "no",
+    "license": "MIT",
+    "maturity": "unknown",
+    "doubt": false,
+    "evidence": "Look for configuration files in... %APPDATA% on Windows"
+   }
+  },
+  {
+   "por": "ising-calibration-1.5-31b",
+   "resposta": {
+    "serve": "stack",
+    "role": "Manages application configuration via YAML files, supporting defaults, overrides, and type checking.",
+    "place": [
+     "library"
+    ],
+    "mechanism": [
+     "other"
+    ],
+    "mcp": "no",
+    "windows": "yes",
+    "portuguese": "no",
+    "license": "MIT",
+    "maturity": "stable",
+    "doubt": false,
+    "evidence": "Confuse is a configuration library for Python that uses YAML. It takes care of defaults, overrides, type checking, command-line integration, environment variable support, human-readable errors, and standard OS-specific locations."
+   }
+  }
+ ]
+}

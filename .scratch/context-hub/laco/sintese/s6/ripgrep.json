@@ -1,0 +1,53 @@
+{
+ "nome": "Ripgrep",
+ "nome_canonico": "ripgrep",
+ "chave": "gh:burntsushi/ripgrep",
+ "url": "https://github.com/BurntSushi/ripgrep",
+ "identidade": "ok",
+ "windows": "yes: binários pré-compilados para Windows (zip MSVC no release 15.2.0; Chocolatey, Scoop, Winget).",
+ "mcp": "no: o README não menciona MCP; seria preciso um wrapper de terceiros (nao_verificado qual). Transporte: nenhum (CLI).",
+ "portugues": "Unicode sempre ligado, sem stemmer, sem stopwords e sem remoção de acentos (busca regex literal); não é analisador de idioma.",
+ "markdown_frontmatter": "Não indexa: busca por linha em qualquer texto; sem noção de frontmatter nem de títulos.",
+ "atualizacao": "Sem índice: cada consulta lê o disco, logo não precisa de watcher nem reconciliação.",
+ "embeddings_endpoint": "Não usa embeddings.",
+ "recursos": "Rust, binário único; escolhe sozinho entre mmap e buffer; sem números de memória/disco no README. Sem índice em disco.",
+ "licenca": "MIT ou Unlicense (dupla)",
+ "ultimo_release": "15.2.0 (2026-07-15)",
+ "atividade": "Último commit 2026-08-04",
+ "maturidade": "stable",
+ "encaixe": "Grep no disco de cada máquina Windows, sobre a pasta de notas; serve a agentes que precisam de busca literal/regex. Impedimento: sem MCP próprio, sem semântica nem ranking.",
+ "evidencias": [
+  {
+   "campo": "windows",
+   "url": "https://github.com/BurntSushi/ripgrep",
+   "citacao": "ripgrep has first class support on Windows, macOS and Linux."
+  },
+  {
+   "campo": "licenca",
+   "url": "https://github.com/BurntSushi/ripgrep",
+   "citacao": "Unlicense and 2 other licenses found (README: dual-licensed under MIT or the Unlicense)"
+  },
+  {
+   "campo": "ultimo_release",
+   "url": "https://github.com/BurntSushi/ripgrep/releases",
+   "citacao": "15.2.0; ripgrep-15.2.0-aarch64-pc-windows-msvc.zip (2026-07-15)"
+  },
+  {
+   "campo": "atividade",
+   "url": "https://github.com/BurntSushi/ripgrep/commits/master",
+   "citacao": "Commits on Aug 4, 2026: ignore-0.4.33"
+  },
+  {
+   "campo": "markdown_frontmatter",
+   "url": "https://github.com/BurntSushi/ripgrep",
+   "citacao": "ripgrep is a line-oriented search tool that recursively searches the current directory for a regex pattern."
+  }
+ ],
+ "nao_verificado": [
+  "mcp: ausência inferida do README, sem busca por wrapper",
+  "recursos numéricos",
+  "presença de binário x86_64 Windows (só aarch64 visto na lista parcial)"
+ ],
+ "serve": "search",
+ "area": null
+}

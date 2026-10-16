@@ -1,0 +1,32 @@
+{
+ "chave": "gh:hunspell/hunspell",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T21:08:40Z",
+ "resultado": "rejeita",
+ "conferencia": {
+  "resultado": "rejeita",
+  "final": {
+   "serve": "none",
+   "role": "",
+   "place": [
+    "library"
+   ],
+   "mechanism": [
+    "other"
+   ],
+   "mcp": "no",
+   "windows": "yes",
+   "portuguese": "unknown",
+   "license": "LGPL/GPL/MPL tri-license",
+   "maturity": "stable",
+   "doubt": false,
+   "evidence": "Hunspell is a free spell checker and morphological analyzer library and command-line tool; compiling on Windows via MSYS2/Cygwin; README does not mention Portuguese"
+  },
+  "o_que_mudou": [
+   "serve: stack -> none, spell checker with no role in the hub stack; stemming needs per-language dictionaries not mentioned for Portuguese",
+   "portuguese: yes -> unknown, README does not mention it",
+   "role: Obsidian notes spell checking -> removed, README does not mention Obsidian"
+  ],
+  "nota": "Spell checker and morphology library; not a search or sync component, stemming marginal and Portuguese unsupported by the README."
+ }
+}

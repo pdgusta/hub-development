@@ -1,0 +1,29 @@
+{
+ "chave": "web:dotnet.github.io/docfx",
+ "urls": [
+  "https://dotnet.github.io/docfx"
+ ],
+ "tipos": [
+  "tool"
+ ],
+ "termos": [
+  "Markdown",
+  ".NET"
+ ],
+ "mencoes": 1,
+ "familias": [
+  "mistral"
+ ],
+ "primeira_onda": 4,
+ "nomes": [
+  "DocFX"
+ ],
+ "resumos": [
+  "A documentation generator for .NET projects."
+ ],
+ "fonte": "site",
+ "readme_status": "ok",
+ "readme_nome": "https://dotnet.github.io/docfx",
+ "readme_cortado": false,
+ "readme": "[Quick Start | docfx]\n\nTable of Contents\n\nQuick Start\n\nBuild your technical documentation site with docfx. Converts .NET assembly, XML code comment, REST API Swagger files and markdown into rendered HTML pages, JSON model or PDF files.\n\nCreate a New Website\n\nIn this section we will build a simple documentation site on your local machine.\n\nPrerequisites\n\nFamiliarity with the command line\n\nInstall .NET SDK 8.0 or higher\n\nInstall Node.js v20 or higher (Optional: It's required when using Create PDF Files)\n\nMake sure you have .NET SDK installed, then open a terminal and enter the following command to install the latest docfx:\n\ndotnet tool update -g docfx\n\nTo create a new docset, run:\n\ndocfx init\n\nThis command walks you through creating a new docfx project under the current working directory. To build the docset, run:\n\ndocfx docfx.json --serve\n\nNow you can preview the website on http://localhost:8080.\n\nTo preview your local changes, save changes then run this command in a new terminal to rebuild the website:\n\ndocfx docfx.json\n\nPublish to GitHub Pages\n\nDocfx produces static HTML files under the _site folder ready for publishing to any static site hosting servers.\n\nTo publish to GitHub Pages:\n\nEnable GitHub Pages.\n\nUpload _site folder to GitHub Pages using GitHub actions.\n\nThis is an example GitHub action file that publishes documents to the gh-pages branch:\n\n# Your GitHub workflow file under .github/workflows/\n# Trigger the action on push to main\non:\n push:\n branches:\n - main\n\n# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages\npermissions:\n actions: read\n pages: write\n id-token: write\n\n# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.\n# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.\nconcurrency:\n group: \"pages\"\n cancel-in-progress: false\n\njobs:\n publish-docs:\n environment:\n name: github-pages\n url: ${{ steps.deployment.outputs.page_url }}\n runs-on: ubuntu-latest\n steps:\n - name: Checkout\n uses: actions/checkout@v3\n - name: Dotnet Setup\n uses: actions/setup-dotnet@v3\n with:\n dotnet-version: 8.x\n\n - run: dotnet tool update -g docfx\n - run: docfx <docfx-project-path>/docfx.json\n\n - name: Upload artifact\n uses: actions/upload-pages-artifact@v3\n with:\n # Upload entire repository\n path: '<docfx-project-path>/_site'\n - name: Deploy to GitHub Pages\n id: deployment\n uses: actions/deploy-pages@v4\n\nUse the NuGet Library\n\nYou can also use docfx as a NuGet library:\n\n<PackageReference Include=\"Docfx.App\" Version=\"2.77.0\" />\n<!-- the versions of Microsoft.CodeAnalysis.* must match exactly what Docfx.App was built against, not the latest stable version -->\n<PackageReference Include=\"Microsoft.CodeAnalysis.Workspaces.MSBuild\" Version=\"4.10.0\" />\n<PackageReference Include=\"Microsoft.CodeAnalysis.CSharp.Workspaces\" Version=\"4.10.0\" />\n\nThen build a docset using:\n\nawait Docfx.Dotnet.DotnetApiCatalog.GenerateManagedReferenceYamlFiles(\"docfx.json\");\nawait Docfx.Docset.Build(\"docfx.json\");\n\nSee API References for additional APIs.\n\nHow to use prerelease version of docfx\n\nDocfx publishes nightly builds to GitHub Packages.\nIf you want to use prerelease version, you can install package with following steps.\n\nPrerequisite\n\nInstall GitHub CLI command.\n\nInstall PowerShell 7.x or later.\n\nSteps\n\nOpen PowerShell on working directory.\n\nLogin to GitHub with additional scope request\n\ngh auth login --scopes \"read:packages\" --hostname github.com\n\nFollow the instructions and complete the login steps.\n\nDownload docfx nuget package from GitHub Packages\n\n# Gets Access Token\n$token = gh auth token\n\n# Gets the version of latest nightly build\n$version = gh api /orgs/dotnet/packages/nuget/docfx/versions --jq '.[0].name'\n\n# Gets nupkg download URL.\n$downloadUrl = \"https://nuget.pkg.github.com/dotnet/download/docfx/${version}/${version}.nupkg\"\n\n# Download nupkg to current directory.\nWrite-Host ('Download nupkg from: {0}' -f $downloadUrl)\nInvoke-RestMethod -Method Get -Uri $downloadUrl -OutFile \"docfx.${version}.nupkg\" -Headers @{\n Authorization = \"Bearer $token\"\n}\n\nInstall docfx as .NET Global Package from local source\n\ndotnet tool update docfx -g --prerelease --source ./\n\nNext Steps\n\nWrite Articles\n\nOrganize Contents\n\nConfigure Website\n\nAdd .NET API Docs\n\n Edit this page"
+}

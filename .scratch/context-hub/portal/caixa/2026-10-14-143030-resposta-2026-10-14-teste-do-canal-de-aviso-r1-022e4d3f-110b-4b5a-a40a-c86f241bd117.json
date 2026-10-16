@@ -1,0 +1,177 @@
+{
+  "envio": "022e4d3f-110b-4b5a-a40a-c86f241bd117",
+  "tipo": "resposta",
+  "enviada": "2026-10-14T14:30:30-03:00",
+  "alvo": {
+    "tipo": "rodada",
+    "id": "2026-10-14-teste-do-canal-de-aviso-r1",
+    "titulo": "Teste do canal de aviso ao maestro"
+  },
+  "ticket": "53",
+  "substitui": null,
+  "rodada": {
+    "id": "2026-10-14-teste-do-canal-de-aviso-r1",
+    "base": "877241c27fa14874ba1cf130a58070c35a16bb69fba0034ce5a200e05f5f0a17",
+    "titulo": "Teste do canal de aviso ao maestro",
+    "ticket": "53",
+    "perguntas": [
+      {
+        "id": "canal",
+        "titulo": "Por qual canal o aviso começa",
+        "tipo": "escolha",
+        "recomendada": [
+          "A"
+        ],
+        "opcoes": [
+          {
+            "chave": "A",
+            "texto": "Terminal \"Portal\" no canvas, que manda `maestri ask` ao maestro"
+          },
+          {
+            "chave": "B",
+            "texto": "Vigia na sessão do maestro, pela ferramenta Monitor"
+          },
+          {
+            "chave": "C",
+            "texto": "Só a conferência da caixa no começo de cada turno"
+          }
+        ],
+        "proposta": null
+      },
+      {
+        "id": "situacoes",
+        "titulo": "Que situações o teste cobre",
+        "tipo": "varias",
+        "recomendada": [
+          "parado",
+          "ocupado",
+          "duas",
+          "reinicio",
+          "nome-errado"
+        ],
+        "opcoes": [
+          {
+            "chave": "parado",
+            "texto": "maestro ocioso"
+          },
+          {
+            "chave": "ocupado",
+            "texto": "maestro no meio de um turno longo"
+          },
+          {
+            "chave": "duas",
+            "texto": "duas respostas em 5 s"
+          },
+          {
+            "chave": "reinicio",
+            "texto": "servidor reiniciado com aviso pendente"
+          },
+          {
+            "chave": "nome-errado",
+            "texto": "nome de agente errado, que vira \"falhou\" e \"tentar de novo\""
+          }
+        ],
+        "proposta": null
+      },
+      {
+        "id": "sequencia-ok",
+        "titulo": "A sequência do teste está boa",
+        "tipo": "aprovar",
+        "recomendada": [],
+        "opcoes": [],
+        "proposta": null
+      },
+      {
+        "id": "passos",
+        "titulo": "Ordem e responsável de cada passo",
+        "tipo": "proposta",
+        "recomendada": [],
+        "opcoes": [],
+        "proposta": {
+          "colunas": [
+            "passo",
+            "quem",
+            "o que confirma"
+          ],
+          "linhas": [
+            {
+              "id": "p1",
+              "passo": "parado",
+              "quem": "Designer responde, maestro ocioso",
+              "o que confirma": "aviso chega sem o maestro pedir"
+            },
+            {
+              "id": "p2",
+              "passo": "ocupado",
+              "quem": "Designer responde no meio de um turno do maestro",
+              "o que confirma": "aviso chega com Enter, sem ficar digitado"
+            },
+            {
+              "id": "p3",
+              "passo": "duas em 5 s",
+              "quem": "Designer responde duas vezes",
+              "o que confirma": "dois avisos ou um aviso com os dois arquivos"
+            },
+            {
+              "id": "p4",
+              "passo": "reinício",
+              "quem": "Designer reinicia o servidor com aviso pendente",
+              "o que confirma": "aviso pendente sai depois do reinício"
+            },
+            {
+              "id": "p5",
+              "passo": "nome errado",
+              "quem": "Designer troca o nome do agente",
+              "o que confirma": "falhou visível e tentar de novo funciona"
+            }
+          ],
+          "pode": [
+            "editar",
+            "reordenar",
+            "ligar",
+            "adicionar",
+            "remover"
+          ]
+        }
+      },
+      {
+        "id": "observacoes",
+        "titulo": "Observações do teste",
+        "tipo": "texto",
+        "recomendada": [],
+        "opcoes": [],
+        "proposta": null
+      }
+    ]
+  },
+  "corpo_hash": "0e68c7a3beed148ff44c9213d876ea576fdb6f982c3fc08a63eff1421ccda5b5",
+  "corpo": {
+    "tipo": "resposta",
+    "rodada": "2026-10-14-teste-do-canal-de-aviso-r1",
+    "base": "877241c27fa14874ba1cf130a58070c35a16bb69fba0034ce5a200e05f5f0a17",
+    "respostas": {
+      "canal": {
+        "escolha": [
+          "B"
+        ],
+        "outra": null,
+        "comentario": null
+      },
+      "situacoes": {
+        "escolha": [
+          "ocupado",
+          "parado",
+          "duas",
+          "reinicio",
+          "nome-errado"
+        ],
+        "outra": null,
+        "comentario": null
+      },
+      "sequencia-ok": {
+        "veredito": "aprovado",
+        "comentario": null
+      }
+    }
+  }
+}

@@ -1,0 +1,49 @@
+{
+ "chave": "gh:elastic/elasticsearch-java",
+ "urls": [
+  "https://github.com/elastic/elasticsearch-java",
+  "https://www.elastic.co/guide/en/elasticsearch/client/java-api/current/index.html"
+ ],
+ "tipos": [
+  "library"
+ ],
+ "termos": [
+  "elasticsearch-java",
+  "java client",
+  "Elasticsearch Java Client",
+  "Java Client",
+  "Java client",
+  "elastic-java",
+  "Java REST client",
+  "Elasticsearch Client",
+  "Java Library",
+  "MCP",
+  "Python client",
+  "REST API"
+ ],
+ "mencoes": 7,
+ "familias": [
+  "cohere",
+  "gpt-oss",
+  "mistral",
+  "nemotron"
+ ],
+ "primeira_onda": 2,
+ "nomes": [
+  "Elasticsearch Java Client",
+  "Elasticsearch Java API Client",
+  "elasticsearch-java",
+  "Elasticsearch-Java",
+  "Elasticsearch MCP Client (Java/Python)"
+ ],
+ "resumos": [
+  "Cliente Java para Elasticsearch, permitindo consultas avançadas e suporte a frontmatter.",
+  "Official Java client for communicating with Elasticsearch clusters, supports bulk indexing of markdown docs.",
+  "Biblioteca Java para interagir com clusters Elasticsearch",
+  "Official Java client for Elasticsearch, suitable for backend services that need high-performance indexing and search."
+ ],
+ "readme_status": "ok",
+ "readme_nome": "README.md",
+ "readme_cortado": false,
+ "readme": "<img alt=\"Elastic logo\" align=\"right\" width=\"auto\" height=\"auto\" src=\"https://www.elastic.co/static-res/images/elastic-logo-200.png\">\n\n# Elasticsearch Java Client\nElasticsearch is a distributed, RESTful search engine optimized for speed and relevance on production-scale workloads. You can use Elasticsearch to perform real-time search over massive datasets for applications including Vector search, Full-text search, Logs, Metrics, Application Performance Monitoring, Security Logs and more ! \n\nThis repo has the official Java client for [Elasticsearch](https://github.com/elastic/elasticsearch).\n\nThe Java client for Elasticsearch provides strongly typed requests and responses for all Elasticsearch APIs. It delegates protocol handling to an http client such as the [Elasticsearch Low Level REST client](https://www.elastic.co/guide/en/elasticsearch/client/java-api-client/current/java-rest-low.html) that takes care of all transport-level concerns (http connection establishment and pooling, retries, etc).\n\nThe `docs/design` folder contains records of the major decisions in the design of the API. Most notably:\n\n- Object construction is based on the [builder pattern](https://www.informit.com/articles/article.aspx?p=1216151).\n- Nested objects can be constructed with builder lambdas, allowing for clean and expressive DSL-like code.\n- Optional values are represented as `null` with `@Nullable` annotations instead of the newer  `Optional`, the Java ecosystem being still very null-based.\n\n## Installation\n\n**[Download the latest version of Elasticsearch](https://www.elastic.co/downloads/elasticsearch)**\nor\n**[sign-up](https://cloud.elastic.co/registration?elektra=en-ess-sign-up-page)**\n**for a free trial of Elastic Cloud**.\n\nRefer to the [Installation section](https://www.elastic.co/guide/en/elasticsearch/client/java-api-client/current/getting-started-java.html#_installation)\nof the getting started documentation.\n### Try Elasticsearch and Kibana locally\n\nIf you want to try Elasticsearch and Kibana locally, you can run the following command:\n\n```bash\ncurl -fsSL https://elastic.co/start-local | sh\n```\n\nThis will run Elasticsearch at [http://localhost:9200](http://localhost:9200) and Kibana at [http://localhost:5601](http://localhost:5601).\n\nMore information is available [here](https://www.elastic.co/guide/en/elasticsearch/reference/current/run-elasticsearch-locally.html).\n\n## Connecting\n\nRefer to the [Connecting section](https://www.elastic.co/guide/en/elasticsearch/client/java-api-client/current/getting-started-java.html#_connecting)\nof the getting started documentation.\n\n## Compatibility\n\nThe Elasticsearch client is compatible with currently maintained Java versions.\n\nThe Java client is forward compatible; meaning that the client supports\ncommunicating with greater or equal minor versions of Elasticsearch without\nbreaking. It does not mean that the client automatically supports new features\nof newer Elasticsearch versions; it is only possible after a release of a new\nclient version. For example, a 8.12 client version won't automatically support\nthe new features of the 8.13 version of Elasticsearch, the 8.13 client version\nis required for that. Elasticsearch language clients are only backwards\ncompatible with default distributions and without guarantees made.\n\n| Elasticsearch Version | Elasticsearch-Java Branch | Supported |\n|-----------------------|---------------------------|-----------|\n| main                  | main                      |           |\n| 9.x                   | 9.x                       | 9.x       |\n| 8.x                   | 8.x                       | 8.17      |\n\nJava client releases are synchronized with the Elasticsearch server for major and minor versions, \nwhile patches are released independently, to allow for faster bugfixes. This does not affect compatibility: \nfor example, version 8.13.x of the client will be compatible with versions of the server 8.13.y where y >= x. \n\n## Usage\n\n- [Creating an index](https://www.elastic.co/guide/en/elasticsearch/client/java-api-client/current/getting-started-java.html#_creating_an_index)\n- [Indexing a document](https://www.elastic.co/guide/en/elasticsearch/client/java-api-client/current/getting-started-java.html#_indexing_documents)\n- [Getting documents](https://www.elastic.co/guide/en/elasticsearch/client/java-api-client/current/getting-started-java.html#_getting_documents)\n- [Searching documents](https://www.elastic.co/guide/en/elasticsearch/client/java-api-client/current/getting-started-java.html#_searching_documents)\n- [Updating documents](https://www.elastic.co/guide/en/elasticsearch/client/java-api-client/current/getting-started-java.html#_updating_documents)\n- [Deleting documents](https://www.elastic.co/guide/en/elasticsearch/client/java-api-client/current/getting-started-java.html#_deleting_documents)\n- [Deleting an index](https://www.elastic.co/guide/en/elasticsearch/client/java-api-client/current/getting-started-java.html#_deleting_an_index)\n\n## Documentation\n\nPlease refer to [the full documentation on elastic.co](https://www.elastic.co/guide/en/elasticsearch/client/java-api-client/current/index.html) for comprehensive information.\n\n## Contributing\n\nSee [CONTRIBUTING.md](./CONTRIBUTING.md)\n\n## Licence\n\nThis software is licensed under the [Apache License 2.0](https://github.com/elastic/elasticsearch-java/blob/main/LICENSE.txt).\n"
+}

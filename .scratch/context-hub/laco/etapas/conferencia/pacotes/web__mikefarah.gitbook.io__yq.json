@@ -1,0 +1,34 @@
+{
+ "chave": "web:mikefarah.gitbook.io/yq",
+ "nomes": [
+  "yq"
+ ],
+ "urls": [
+  "https://mikefarah.gitbook.io/yq/"
+ ],
+ "readme_cortado": false,
+ "readme": "[yq]\n\nyq\n\nv4.x\n\nyq\nHow It Works\nRecipes\nUpgrading from V3\n\nCommands\n\nEvaluate\nEvaluate All\nShell Completion\nOperators\n\nUsage\n\nOutput format\nWorking with Base64\nWorking with CSV, TSV\nWorking with JSON\nWorking with Properties\nWorking with XML\nWorking with HCL\nWorking with LUA\nWorking with TOML\nWorking with KYAML\nWorking with Shell Output\nFront Matter\nSplit into multiple files\nGitHub Action\nTips, Tricks, Troubleshooting\nGithub PagePowered by GitBook\n\n On this page\n\nFor the complete documentation index, see llms.txt. This page is also available as Markdown.\n\na lightweight and portable command-line YAML, JSON, INI and XML processor. yq uses jq like syntax but works with yaml files as well as json, xml, ini, properties, csv and tsv. It doesn't yet support everything jq does - but it does support the most common operations and functions, and more is being added continuously.\nyq is written in go - so you can download a dependency free binary for your platform and you are good to go! If you prefer there are a variety of package managers that can be used as well as Docker and Podman, all listed below.\nQuick Usage Guide\nRead a value:\n\nCopy\nyq '.a.b[0].c' file.yaml\nPipe from STDIN:\n\nCopy\nyq '.a.b[0].c' < file.yaml\nUpdate a yaml file, in place\n\nCopy\nyq -i '.a.b[0].c = \"cool\"' file.yaml\nUpdate using environment variables\n\nCopy\nNAME=mike yq -i '.a.b[0].c = strenv(NAME)' file.yaml\nMerge multiple files\n\nCopy\n# merge two files\nyq -n 'load(\"file1.yaml\") * load(\"file2.yaml\")'\n\n# merge using globs:\n# note the use of `ea` to evaluate all the files at once\n# instead of in sequence\nyq ea '. as $item ireduce ({}; . * $item )' path/to/*.yml\nMultiple updates to a yaml file\nFind and update an item in an array:\nConvert JSON to YAML\nSee recipes for more examples and the documentation for more information.\nTake a look at the discussions for common questions, and cool ideas\nInstall\nSee the github page for the various ways you can install and use yq\nKnown Issues / Missing Features\n\nyq attempts to preserve comment positions and whitespace as much as possible, but it does not handle all scenarios (see https://github.com/go-yaml/yaml/tree/v3 for details)\n\nPowershell has its own...opinions on quoting yq\nSee tips and tricks for more common problems and solutions.\n\nNextHow It Works\n\nLast updated 10 months ago\n\nWas this helpful?\n\nQuick Usage Guide\nInstall\nKnown Issues / Missing Features\n\nWas this helpful?\n\nCopy\nyq -i '\n .a.b[0].c = \"cool\" |\n .x.y.z = \"foobar\" |\n .person.name = strenv(NAME)\n' file.yaml\n\nCopy\nyq '(.[] | select(.name == \"foo\") | .address) = \"12 cat st\"'\n\nCopy\nyq -Poy sample.json",
+ "fonte": "site",
+ "respostas": [
+  {
+   "por": "claude-haiku-5-5",
+   "resposta": {
+    "serve": "stack",
+    "role": "Command-line editing and filtering of YAML frontmatter in hub notes.",
+    "place": [
+     "disk"
+    ],
+    "mechanism": [
+     "other"
+    ],
+    "mcp": "unknown",
+    "windows": "yes",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "unknown",
+    "doubt": false,
+    "evidence": "a portable command-line YAML... processor; Powershell has its own...opinions on quoting yq"
+   }
+  }
+ ]
+}

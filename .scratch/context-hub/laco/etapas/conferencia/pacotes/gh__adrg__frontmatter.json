@@ -1,0 +1,57 @@
+{
+ "chave": "gh:adrg/frontmatter",
+ "nomes": [
+  "frontmatter (Go)",
+  "frontmatter",
+  "adrg/frontmatter"
+ ],
+ "urls": [
+  "https://github.com/adrg/frontmatter"
+ ],
+ "readme_cortado": false,
+ "readme": "<h1 align=\"center\">\n  <div>\n    <img src=\"https://raw.githubusercontent.com/adrg/adrg.github.io/master/assets/projects/frontmatter/logo.png\" width=\"120px\" alt=\"frontmatter logo\"/>\n  </div>\n  frontmatter\n</h1>\n\n<h3 align=\"center\">Go library for detecting and decoding various content front matter formats.</h3>\n\n<p align=\"center\">\n    <a href=\"https://github.com/adrg/frontmatter/actions/workflows/tests.yml\">\n        <img alt=\"Tests status\" src=\"https://github.com/adrg/frontmatter/actions/workflows/tests.yml/badge.svg\">\n    </a>\n    <a href=\"https://codecov.io/gh/adrg/frontmatter\">\n        <img alt=\"Code coverage\" src=\"https://codecov.io/gh/adrg/frontmatter/branch/master/graphs/badge.svg?branch=master\">\n    </a>\n    <a href=\"https://pkg.go.dev/github.com/adrg/frontmatter\">\n        <img alt=\"pkg.go.dev documentation\" src=\"https://pkg.go.dev/badge/github.com/adrg/frontmatter\">\n    </a>\n    <a href=\"https://opensource.org/licenses/MIT\" rel=\"nofollow\">\n        <img alt=\"MIT License\" src=\"https://img.shields.io/github/license/adrg/frontmatter\"/>\n    </a>\n    <br />\n    <a href=\"https://goreportcard.com/report/github.com/adrg/frontmatter\">\n        <img alt=\"Go report card\" src=\"https://goreportcard.com/badge/github.com/adrg/frontmatter?style=flat\" />\n    </a>\n    <a href=\"https://github.com/adrg/frontmatter/graphs/contributors\">\n        <img alt=\"GitHub contributors\" src=\"https://img.shields.io/github/contributors/adrg/frontmatter\" />\n    </a>\n    <a href=\"https://github.com/adrg/frontmatter/issues?q=is%3Aopen+is%3Aissue\">\n        <img alt=\"GitHub open issues\" src=\"https://img.shields.io/github/issues-raw/adrg/frontmatter\">\n    </a>\n    <a href=\"https://github.com/adrg/frontmatter/issues?q=is%3Aissue+is%3Aclosed\">\n        <img alt=\"GitHub closed issues\" src=\"https://img.shields.io/github/issues-closed-raw/adrg/frontmatter\" />\n    </a>\n    <a href=\"https://ko-fi.com/T6T72WATK\">\n        <img alt=\"Buy me a coffee\" src=\"https://img.shields.io/static/v1.svg?label=%20&message=Buy%20me%20a%20coffee&color=579fbf&logo=buy%20me%20a%20coffee&logoColor=white\"/>\n    </a>\n\n## Supported formats\n\nThe following front matter formats are supported by default. If the default\nformats are not suitable for your use case, you can easily bring your own.\nFor more information, see the [usage examples](#usage) below.\n\n![Default front matter formats](https://raw.githubusercontent.com/adrg/adrg.github.io/master/assets/projects/frontmatter/formats.png)\n\n## Installation\n\n```bash\ngo get github.com/adrg/frontmatter\n```\n\n## Usage\n\n**Default usage.**\n\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\t\"strings\"\n\n\t\"github.com/adrg/frontmatter\"\n)\n\nvar input = `\n---\nname: \"frontmatter\"\ntags: [\"go\", \"yaml\", \"json\", \"toml\"]\n---\nrest of the content`\n\nfunc main() {\n\tvar matter struct {\n\t\tName string   `yaml:\"name\"`\n\t\tTags []string `yaml:\"tags\"`\n\t}\n\n\trest, err := frontmatter.Parse(strings.NewReader(input), &matter)\n\tif err != nil {\n\t\t// Treat error.\n\t}\n\t// NOTE: If a front matter must be present in the input data, use\n\t//       frontmatter.MustParse instead.\n\n\tfmt.Printf(\"%+v\\n\", matter)\n\tfmt.Println(string(rest))\n\n\t// Output:\n\t// {Name:frontmatter Tags:[go yaml json toml]}\n\t// rest of the content\n}\n```\n\n**Bring your own formats.**\n\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\t\"strings\"\n\n\t\"github.com/adrg/frontmatter\"\n\t\"gopkg.in/yaml.v2\"\n)\n\nvar input = `\n...\nname: \"frontmatter\"\ntags: [\"go\", \"yaml\", \"json\", \"toml\"]\n...\nrest of the content`\n\nfunc main() {\n\tvar matter struct {\n\t\tName string   `yaml:\"name\"`\n\t\tTags []string `yaml:\"tags\"`\n\t}\n\n\tformats := []*frontmatter.Format{\n\t\tfrontmatter.NewFormat(\"...\", \"...\", yaml.Unmarshal),\n\t}\n\n\trest, err := frontmatter.Parse(strings.NewReader(input), &matter, formats...)\n\tif err != nil {\n\t\t// Treat error.\n\t}\n\t// NOTE: If a front matter must be present in the input data, use\n\t//       frontmatter.MustParse instead.\n\n\tfmt.Printf(\"%+v\\n\", matter)\n\tfmt.Println(string(rest))\n\n\t// Output:\n\t// {Name:frontmatter Tags:[go yaml json toml]}\n\t// rest of the content\n}\n```\n\nFull documentation can be found at: https://pkg.go.dev/github.com/adrg/frontmatter.\n\n## Stargazers over time\n\n[![Stargazers over time](https://starchart.cc/adrg/frontmatter.svg)](https://starchart.cc/adrg/frontmatter)\n\n## Contributing\n\nContributions in the form of pull requests, issues or just general feedback,\nare always welcome. See [CONTRIBUTING.MD](CONTRIBUTING.md).\n\n## License\n\nCopyright (c) 2020 Adrian-George Bostan.\n\nThis project is licensed under the [MIT license](https://opensource.org/licenses/MIT).\nSee [LICENSE](LICENSE) for more details.\n",
+ "fonte": "readme",
+ "respostas": [
+  {
+   "por": "voxtral-small-2507",
+   "resposta": {
+    "serve": "stack",
+    "role": "parse and decode front matter",
+    "place": [
+     "disk",
+     "library"
+    ],
+    "mechanism": [
+     "n/a"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "MIT",
+    "maturity": "stable",
+    "doubt": false,
+    "evidence": "Go library for detecting and decoding various content front matter formats."
+   }
+  },
+  {
+   "por": "agnes-2.5-flash",
+   "resposta": {
+    "serve": "stack",
+    "role": "Go library for parsing YAML/JSON/TOML front matter from Markdown files",
+    "place": [
+     "library"
+    ],
+    "mechanism": [
+     "n/a"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "MIT",
+    "maturity": "stable",
+    "doubt": false,
+    "evidence": "Go library for detecting and decoding various content front matter formats. Supports YAML, JSON, TOML."
+   }
+  }
+ ]
+}

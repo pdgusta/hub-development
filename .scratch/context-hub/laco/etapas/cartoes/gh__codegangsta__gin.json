@@ -1,0 +1,35 @@
+{
+ "chave": "gh:codegangsta/gin",
+ "urls": [
+  "https://github.com/codegangsta/gin",
+  "https://gin-gonic.com/"
+ ],
+ "tipos": [
+  "library"
+ ],
+ "termos": [
+  "gin",
+  "GoWebフレームワーク",
+  "Gin",
+  "Go",
+  "Web"
+ ],
+ "mencoes": 3,
+ "familias": [
+  "liquid",
+  "llama"
+ ],
+ "primeira_onda": 3,
+ "nomes": [
+  "Gin"
+ ],
+ "resumos": [
+  "Go言語で書かれたWebフレームワーク",
+  "Go言語で書かれたWebフレームワークで、frontmatterをサポートしている",
+  "Fast, minimalistic Go web framework delivering high throughput for concurrent search queries."
+ ],
+ "readme_status": "ok",
+ "readme_nome": "README.md",
+ "readme_cortado": false,
+ "readme": "gin [![wercker status](https://app.wercker.com/status/f413ccbd85cfc4a58a37f03dd7aaa87e \"wercker status\")](https://app.wercker.com/project/bykey/f413ccbd85cfc4a58a37f03dd7aaa87e)\n========\n\n`gin` is a simple command line utility for live-reloading Go web applications.\nJust run `gin` in your app directory and your web app will be served with\n`gin` as a proxy. `gin` will automatically recompile your code when it\ndetects a change. Your app will be restarted the next time it receives an\nHTTP request.\n\n`gin` adheres to the \"silence is golden\" principle, so it will only complain\nif there was a compiler error or if you succesfully compile after an error.\n\n## Installation\n\nAssuming you have a working Go environment and `GOPATH/bin` is in your\n`PATH`, `gin` is a breeze to install:\n\n```shell\ngo install github.com/codegangsta/gin@latest\n```\n\nThen verify that `gin` was installed correctly:\n\n```shell\ngin help\n```\n## Basic usage\n```shell\ngin run main.go\n```\nOptions\n```\n   --laddr value, -l value       listening address for the proxy server\n   --port value, -p value        port for the proxy server (default: 3000)\n   --appPort value, -a value     port for the Go web server (default: 3001)\n   --bin value, -b value         name of generated binary file (default: \"gin-bin\")\n   --path value, -t value        Path to watch files from (default: \".\")\n   --build value, -d value       Path to build files from (defaults to same value as --path)\n   --excludeDir value, -x value  Relative directories to exclude\n   --immediate, -i               run the server immediately after it's built\n   --all                         reloads whenever any file changes, as opposed to reloading only on .go file change\n   --godep, -g                   use godep when building\n   --buildArgs value             Additional go build arguments\n   --certFile value              TLS Certificate\n   --keyFile value               TLS Certificate Key\n   --logPrefix value             Setup custom log prefix\n   --notifications               enable desktop notifications\n   --help, -h                    show help\n   --version, -v                 print the version\n```\n\n## Supporting Gin in Your Web app\n`gin` assumes that your web app binds itself to the `PORT` environment\nvariable so it can properly proxy requests to your app. Web frameworks\nlike [Martini](http://github.com/codegangsta/martini) do this out of\nthe box.\n\n## Using flags?\nWhen you normally start your server with [flags](https://godoc.org/flag)\nif you want to override any of them when running `gin` we suggest you\ninstead use [github.com/namsral/flag](https://github.com/namsral/flag)\nas explained in [this post](http://stackoverflow.com/questions/24873883/organizing-environment-variables-golang/28160665#28160665)\n\nIf you want to still use the standard flag package but support environment variables, you might want to try [github.com/peak6/envflag](https://github.com/peak6/envflag).\n"
+}

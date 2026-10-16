@@ -1,0 +1,64 @@
+{
+ "chave": "gh:dtolnay/serde-yaml",
+ "urls": [
+  "https://github.com/dtolnay/serde-yaml",
+  "https://github.com/dtolnay/serde_yaml",
+  "https://github.com/serde-rs/serde-yaml",
+  "https://github.com/serde-rs/serde_yaml",
+  "https://crates.io/crates/serde_yaml",
+  "https://docs.rs/serde_yaml/0.8.21/serde_yaml/",
+  "https://docs.rs/serde_yaml/latest/serde_yaml/"
+ ],
+ "tipos": [
+  "library"
+ ],
+ "termos": [
+  "serde_yaml",
+  "rust yaml",
+  "serde",
+  "frontmatter rust",
+  "YAML parsing",
+  "frontmatter",
+  "serialization",
+  "parsing",
+  "YAML parser",
+  "rust",
+  "yaml",
+  "Rust",
+  "Serde",
+  "Performance",
+  "serde yaml",
+  "YAML",
+  "Rust YAML",
+  "serde integration",
+  "structured parsing",
+  "parser",
+  "emitter"
+ ],
+ "mencoes": 12,
+ "familias": [
+  "agnes",
+  "gemini",
+  "gemma",
+  "gpt-oss",
+  "mistral",
+  "nemotron"
+ ],
+ "primeira_onda": 2,
+ "nomes": [
+  "serde_yaml",
+  "yaml-rs",
+  "Serde YAML",
+  "serde_yaml (Rust)"
+ ],
+ "resumos": [
+  "Rust 生态的 YAML 序列化/反序列化库，基于 serde 框架，性能优秀。",
+  "Rust 生态中用于序列化和反序列化 YAML 数据的库，常用于高性能本地搜索工具。",
+  "Rust library for parsing Markdown frontmatter into structured data for indexing and filtering.",
+  "A YAML serialization/deserialization library for Rust that complements yaml-rs by providing ergonomic parsing into typed structs."
+ ],
+ "readme_status": "ok",
+ "readme_nome": "README.md",
+ "readme_cortado": false,
+ "readme": "Serde YAML\n==========\n\n[<img alt=\"github\" src=\"https://img.shields.io/badge/github-dtolnay/serde--yaml-8da0cb?style=for-the-badge&labelColor=555555&logo=github\" height=\"20\">](https://github.com/dtolnay/serde-yaml)\n[<img alt=\"crates.io\" src=\"https://img.shields.io/crates/v/serde_yaml.svg?style=for-the-badge&color=fc8d62&logo=rust\" height=\"20\">](https://crates.io/crates/serde_yaml)\n[<img alt=\"docs.rs\" src=\"https://img.shields.io/badge/docs.rs-serde__yaml-66c2a5?style=for-the-badge&labelColor=555555&logo=docs.rs\" height=\"20\">](https://docs.rs/serde_yaml)\n[<img alt=\"build status\" src=\"https://img.shields.io/github/actions/workflow/status/dtolnay/serde-yaml/ci.yml?branch=master&style=for-the-badge\" height=\"20\">](https://github.com/dtolnay/serde-yaml/actions?query=branch%3Amaster)\n\nRust library for using the [Serde] serialization framework with data in [YAML]\nfile format. _(This project is no longer maintained.)_\n\n[Serde]: https://github.com/serde-rs/serde\n[YAML]: https://yaml.org/\n\n## Dependency\n\n```toml\n[dependencies]\nserde = \"1.0\"\nserde_yaml = \"0.9\"\n```\n\nRelease notes are available under [GitHub releases].\n\n[GitHub releases]: https://github.com/dtolnay/serde-yaml/releases\n\n## Using Serde YAML\n\n[API documentation is available in rustdoc form][docs.rs] but the general idea\nis:\n\n[docs.rs]: https://docs.rs/serde_yaml\n\n```rust\nuse std::collections::BTreeMap;\n\nfn main() -> Result<(), serde_yaml::Error> {\n    // You have some type.\n    let mut map = BTreeMap::new();\n    map.insert(\"x\".to_string(), 1.0);\n    map.insert(\"y\".to_string(), 2.0);\n\n    // Serialize it to a YAML string.\n    let yaml = serde_yaml::to_string(&map)?;\n    assert_eq!(yaml, \"x: 1.0\\ny: 2.0\\n\");\n\n    // Deserialize it back to a Rust type.\n    let deserialized_map: BTreeMap<String, f64> = serde_yaml::from_str(&yaml)?;\n    assert_eq!(map, deserialized_map);\n    Ok(())\n}\n```\n\nIt can also be used with Serde's derive macros to handle structs and enums\ndefined in your program.\n\n```toml\n[dependencies]\nserde = { version = \"1.0\", features = [\"derive\"] }\nserde_yaml = \"0.9\"\n```\n\nStructs serialize in the obvious way:\n\n```rust\nuse serde::{Serialize, Deserialize};\n\n#[derive(Debug, PartialEq, Serialize, Deserialize)]\nstruct Point {\n    x: f64,\n    y: f64,\n}\n\nfn main() -> Result<(), serde_yaml::Error> {\n    let point = Point { x: 1.0, y: 2.0 };\n\n    let yaml = serde_yaml::to_string(&point)?;\n    assert_eq!(yaml, \"x: 1.0\\ny: 2.0\\n\");\n\n    let deserialized_point: Point = serde_yaml::from_str(&yaml)?;\n    assert_eq!(point, deserialized_point);\n    Ok(())\n}\n```\n\nEnums serialize using YAML's `!tag` syntax to identify the variant name.\n\n```rust\nuse serde::{Serialize, Deserialize};\n\n#[derive(Serialize, Deserialize, PartialEq, Debug)]\nenum Enum {\n    Unit,\n    Newtype(usize),\n    Tuple(usize, usize, usize),\n    Struct { x: f64, y: f64 },\n}\n\nfn main() -> Result<(), serde_yaml::Error> {\n    let yaml = \"\n        - !Newtype 1\n        - !Tuple [0, 0, 0]\n        - !Struct {x: 1.0, y: 2.0}\n    \";\n    let values: Vec<Enum> = serde_yaml::from_str(yaml).unwrap();\n    assert_eq!(values[0], Enum::Newtype(1));\n    assert_eq!(values[1], Enum::Tuple(0, 0, 0));\n    assert_eq!(values[2], Enum::Struct { x: 1.0, y: 2.0 });\n\n    // The last two in YAML's block style instead:\n    let yaml = \"\n        - !Tuple\n          - 0\n          - 0\n          - 0\n        - !Struct\n          x: 1.0\n          y: 2.0\n    \";\n    let values: Vec<Enum> = serde_yaml::from_str(yaml).unwrap();\n    assert_eq!(values[0], Enum::Tuple(0, 0, 0));\n    assert_eq!(values[1], Enum::Struct { x: 1.0, y: 2.0 });\n\n    // Variants with no data can be written using !Tag or just the string name.\n    let yaml = \"\n        - Unit  # serialization produces this one\n        - !Unit\n    \";\n    let values: Vec<Enum> = serde_yaml::from_str(yaml).unwrap();\n    assert_eq!(values[0], Enum::Unit);\n    assert_eq!(values[1], Enum::Unit);\n\n    Ok(())\n}\n```\n\n<br>\n\n#### License\n\n<sup>\nLicensed under either of <a href=\"LICENSE-APACHE\">Apache License, Version\n2.0</a> or <a href=\"LICENSE-MIT\">MIT license</a> at your option.\n</sup>\n\n<br>\n\n<sub>\nUnless you explicitly state otherwise, any contribution intentionally submitted\nfor inclusion in this crate by you, as defined in the Apache-2.0 license, shall\nbe dual licensed as above, without any additional terms or conditions.\n</sub>\n"
+}

@@ -1,0 +1,81 @@
+{
+ "chave": "web:sphinxsearch.com/docs/current.html",
+ "nomes": [
+  "searchd daemon",
+  "SphinxQL",
+  "Real‑Time Indexes (RT)",
+  "Sphinx C API",
+  "Sphinx configuration (sphinx.conf)",
+  "Distributed indexing",
+  "Charset table & morphology for Portuguese",
+  "realtime indexes (RT)",
+  "Real-Time (RT) Indexes",
+  "Sphinx C++ API",
+  "Sphinx Searchd config"
+ ],
+ "urls": [
+  "https://sphinxsearch.com/docs/current.html#searchd",
+  "https://sphinxsearch.com/docs/current.html#sphinxql",
+  "https://sphinxsearch.com/docs/current.html#rt-indexes",
+  "https://sphinxsearch.com/docs/current.html#c-api",
+  "https://sphinxsearch.com/docs/current.html#conf-file",
+  "https://sphinxsearch.com/docs/current.html#distributed-indexes",
+  "https://sphinxsearch.com/docs/current.html#charset-table",
+  "https://sphinxsearch.com/docs/current.html#cpp",
+  "https://sphinxsearch.com/docs/current.html#config"
+ ],
+ "readme_cortado": true,
+ "readme": "[Sphinx | Open Source Search Server]\n\nOpen Source Search Server\n\n Email Us  |   \n Chat on Skype  \n\nRSS\n\nTwitter\n\nLinkedIn\n\nVKontakte\n\nGoogle+\n\nFacebook\n\n Downloads\n\nCurrent \n\nDictionaries \n\nArchive \n\n Services\n\nEnterprise Support \n\nPackage Matrix \n\nConsulting \n\nDevelopment \n\nEmbedding \n\nTraining \n\nSphinx Tools \n\n Community\n\nForum \n\nWiki \n\nBugtracker \n\nOpen Projects \n\nPlugins \n\n Resources\n\nDocumentation \n\nCase-Studies \n\nPowered by Sphinx \n\nBlog \n\nNewsletter \n\n About\n\nCompany \n\nContact \n\nHome » Resources \n\nDocumentation \n\nCase-Studies \n\nPowered by Sphinx \n\nButtons \n\nSphinx 2.2.11-release reference manual\n\nFree open-source SQL full-text search engine\n\nCopyright © 2001-2016 Andrew Aksyonoff\n\nCopyright © 2008-2016 Sphinx Technologies Inc, http://sphinxsearch.com\n\nTable of Contents1. Introduction\n1.1. About\n1.2. Sphinx features\n1.3. Where to get Sphinx\n1.4. License\n1.5. Credits\n1.6. History\n2. Installation\n2.1. Supported systems\n2.2. Compiling Sphinx from source\n2.2.1. Required tools\n2.2.2. Compiling on Linux\n2.2.3. Known compilation issues\n2.3. Installing Sphinx packages on Debian and Ubuntu\n2.4. Installing Sphinx packages on RedHat and CentOS\n2.5. Installing Sphinx on Windows\n2.6. Sphinx deprecations and changes in default configuration\n2.7. Quick Sphinx usage tour\n3. Indexing\n3.1. Data sources\n3.2. Full-text fields\n3.3. Attributes\n3.4. MVA (multi-valued attributes)\n3.5. Indexes\n3.6. Restrictions on the source data\n3.7. Charsets, case folding, translation tables, and replacement rules\n3.8. SQL data sources (MySQL, PostgreSQL)\n3.9. xmlpipe2 data source\n3.10. tsvpipe\\csvpipe (Tab\\Comma Separated Values) data source\n3.11. Live index updates\n3.12. Delta index updates\n3.13. Index merging\n4. Real-time indexes\n4.1. RT indexes overview\n4.2. Known caveats with RT indexes\n4.3. RT index internals\n4.4. Binary logging\n5. Searching\n5.1. Matching modes\n5.2. Boolean query syntax\n5.3. Extended query syntax\n5.4. Search results ranking\n5.4.1. Ranking overview\n5.4.2. Available built-in rankers\n5.4.3. Expression based ranker (SPH_RANK_EXPR)\n5.4.4. Quick summary of the ranking factors\n5.4.5. Document-level ranking factors\n5.4.6. Field-level ranking factors\n5.4.7. Ranking factor aggregation functions\n5.4.8. Formula expressions for all the built-in rankers\n5.5. Expressions, functions, and operators\n5.5.1. Operators\n5.5.2. Numeric functions\n5.5.3. Date and time functions\n5.5.4. Type conversion functions\n5.5.5. Comparison functions\n5.5.6. Miscellaneous functions\n5.6. Sorting modes\n5.7. Grouping (clustering) search results \n5.8. Distributed searching\n5.9. searchd query log formats\n5.9.1. Plain log format\n5.9.2. SphinxQL log format\n5.10. MySQL protocol support and SphinxQL\n5.11. Multi-queries\n5.12. Collations\n6. Extending Sphinx\n6.1. Sphinx UDFs (User Defined Functions)\n6.2. Sphinx plugins\n6.3. Ranker plugins\n7. Command line tools reference\n7.1. indexer command reference\n7.2. searchd command reference\n7.3. spelldump command reference\n7.4. indextool command reference\n7.5. wordbreaker command reference\n8. SphinxQL reference\n8.1. SELECT syntax\n8.2. SELECT @@system_variable syntax\n8.3. SHOW META syntax\n8.4. SHOW WARNINGS syntax\n8.5. SHOW STATUS syntax\n8.6. INSERT and REPLACE syntax\n8.7. REPLACE syntax\n8.8. DELETE syntax\n8.9. SET syntax\n8.10. SET TRANSACTION syntax\n8.11. BEGIN, COMMIT, and ROLLBACK syntax\n8.12. BEGIN syntax\n8.13. ROLLBACK syntax\n8.14. CALL SNIPPETS syntax\n8.15. CALL KEYWORDS syntax\n8.16. SHOW TABLES syntax\n8.17. DESCRIBE syntax\n8.18. CREATE FUNCTION syntax\n8.19. DROP FUNCTION syntax\n8.20. SHOW VARIABLES syntax\n8.21. SHOW COLLATION syntax\n8.22. SHOW CHARACTER SET syntax\n8.23. UPDATE syntax\n8.24. ALTER syntax\n8.25. ATTACH INDEX syntax\n8.26. FLUSH RTINDEX syntax\n8.27. FLUSH RAMCHUNK syntax\n8.28. TRUNCATE RTINDEX syntax\n8.29. SHOW AGENT STATUS\n8.30. SHOW PROFILE syntax\n8.31. SHOW INDEX STATUS syntax\n8.32. SHOW INDEX SETTINGS syntax\n8.33. OPTIMIZE INDEX syntax\n8.34. SHOW PLAN syntax\n8.35. SHOW DATABASES syntax\n8.36. CREATE PLUGIN syntax\n8.37. DROP PLUGIN syntax\n8.38. SHOW PLUGINS syntax\n8.39. SHOW THREADS syntax\n8.40. Multi-statement queries\n8.41. Comment syntax\n8.42. List of SphinxQL reserved keywords\n8.43. SphinxQL upgrade notes, version 2.0.1-beta\n9. API reference\n9.1. General API functions\n9.1.1. GetLastError\n9.1.2. GetLastWarning\n9.1.3. SetServer\n9.1.4. SetRetries\n9.1.5. SetConnectTimeout\n9.1.6. SetArrayResult\n9.1.7. IsConnectError\n9.2. General query settings\n9.2.1. SetLimits\n9.2.2. SetMaxQueryTime\n9.2.3. SetOverride\n9.2.4. SetSelect\n9.3. Full-text search query settings\n9.3.1. SetMatchMode\n9.3.2. SetRankingMode\n9.3.3. SetSortMode\n9.3.4. SetWeights\n9.3.5. SetFieldWeights\n9.3.6. SetIndexWeights\n9.4. Result set filtering settings\n9.4.1. SetIDRange\n9.4.2. SetFilter\n9.4.3. SetFilterRange\n9.4.4. SetFilterFloatRange\n9.4.5. SetGeoAnchor\n9.4.6. SetFilterString\n9.5. GROUP BY settings\n9.5.1. SetGroupBy\n9.5.2. SetGroupDistinct\n9.6. Querying\n9.6.1. Query\n9.6.2. AddQuery\n9.6.3. RunQueries\n9.6.4. ResetFilters\n9.6.5. ResetGroupBy\n9.7. Additional functionality\n9.7.1. BuildExcerpts\n9.7.2. UpdateAttributes\n9.7.3. BuildKeywords\n9.7.4. EscapeString\n9.7.5. Status\n9.7.6. FlushAttributes\n9.8. Persistent connections\n9.8.1. Open\n9.8.2. Close\n10. MySQL storage engine (SphinxSE)\n10.1. SphinxSE overview\n10.2. Installing SphinxSE\n10.2.1. Compiling MySQL 5.0.x with SphinxSE\n10.2.2. Compiling MySQL 5.1.x with SphinxSE\n10.2.3. Checking SphinxSE installation\n10.3. Using SphinxSE\n10.4. Building snippets (excerpts) via MySQL\n11. Reporting bugs\n12. sphinx.conf options reference\n12.1. Data source configuration options\n12.1.1. type\n12.1.2. sql_host\n12.1.3. sql_port\n12.1.4. sql_user\n12.1.5. sql_pass\n12.1.6. sql_db\n12.1.7. sql_sock\n12.1.8. mysql_connect_flags\n12.1.9. mysql_ssl_cert, mysql_ssl_key, mysql_ssl_ca\n12.1.10. odbc_dsn\n12.1.11. sql_query_pre\n12.1.12. sql_query\n12.1.13. sql_joined_field\n12.1.14. sql_query_range\n12.1.15. sql_range_step\n12.1.16. sql_query_killlist\n12.1.17. sql_attr_uint\n12.1.18. sql_attr_bool\n12.1.19. sql_attr_bigint\n12.1.20. sql_attr_timestamp\n12.1.21. sql_attr_float\n12.1.22. sql_attr_multi\n12.1.23. sql_attr_string\n12.1.24. sql_attr_json\n12.1.25. sql_column_buffers\n12.1.26. sql_field_string\n12.1.27. sql_file_field\n12.1.28. sql_query_post\n12.1.29. sql_query_post_index\n12.1.30. sql_ranged_throttle\n12.1.31. xmlpipe_command\n12.1.32. xmlpipe_field\n12.1.33. xmlpipe_field_string\n12.1.34. xmlpipe_attr_uint\n12.1.35. xmlpipe_attr_bigint\n12.1.36. xmlpipe_attr_bool\n12.1.37. xmlpipe_attr_timestamp\n12.1.38. xmlpipe_attr_float\n12.1.39. xmlpipe_attr_multi\n12.1.40. xmlpipe_attr_multi_64\n12.1.41. xmlpipe_attr_string\n12.1.42. xmlpipe_attr_json\n12.1.43. xmlpipe_fixup_utf8\n12.1.44. mssql_winauth\n12.1.45. unpack_zlib\n12.1.46. unpack_mysqlcompress\n12.1.47. unpack_mysqlcompress_maxsize\n12.1.48. csvpipe_delimiter\n12.2. Index configuration options\n12.2.1. type\n12.2.2. source\n12.2.3. path\n12.2.4. docinfo\n12.2.5. mlock\n12.2.6. morphology\n12.2.7. dict\n12.2.8. index_sp\n12.2.9. index_zones\n12.2.10. min_stemming_len\n12.2.11. stopwords\n12.2.12. wordforms\n12.2.13. embedded_limit\n12.2.14. exceptions\n12.2.15. min_word_len\n12.2.16. charset_table\n12.2.17. ignore_chars\n12.2.18. min_prefix_len\n12.2.19. min_infix_len\n12.2.20. max_substring_len\n12.2.21. prefix_fields\n12.2.22. infix_fields\n12.2.23. ngram_len\n12.2.24. ngram_chars\n12.2.25. phrase_boundary\n12.2.26. phrase_boundary_step\n12.2.27. html_strip\n12.2.28. html_index_attrs\n12.2.29. html_remove_elements\n12.2.30. local\n12.2.31. agent\n12.2.32. agent_persistent\n12.2.33. agent_blackhole\n12.2.34. agent_connect_timeout\n12.2.35. agent_query_timeout\n12.2.36. preopen\n12.2.37. inplace_enable\n12.2.38. inplace_hit_gap\n12.2.39. inplace_docinfo_gap\n12.2.40. inplace_reloc_factor\n12.2.41. inplace_write_factor\n12.2.42. index_exact_words\n12.2.43. overshort_step\n12.2.44. stopword_step\n12.2.45. hitless_words\n12.2.46. expand_keywords\n12.2.47. blend_chars\n12.2.48. blend_mode\n12.2.49. rt_mem_limit\n12.2.50. rt_field\n12.2.51. rt_attr_uint\n12.2.52. rt_attr_bool\n12.2.53. rt_attr_bigint\n12.2.54. rt_attr_float\n12.2.55. rt_attr_multi\n12.2.56. rt_attr_multi_64\n12.2.57. rt_attr_timestamp\n12.2.58. rt_attr_string\n12.2.59. rt_attr_json\n12.2.60. ha_strategy\n12.2.61. bigram_freq_words\n12.2.62. bigram_index\n12.2.63. index_field_lengths\n12.2.64. regexp_filter\n12.2.65. stopwords_unstemmed\n12.2.66. global_idf\n12.2.67. rlp_context\n12.2.68. ondisk_attrs\n12.3. indexer program configuration options\n12.3.1. mem_limit\n12.3.2. max_iops\n12.3.3. max_iosize\n12.3.4. max_xmlpipe2_field\n12.3.5. write_buffer\n12.3.6. max_file_field_buffer\n12.3.7. on_file_field_error\n12.3.8. lemmatizer_cache\n12.4. searchd program configuration options\n12.4.1. listen\n12.4.2. log\n12.4.3. query_log\n12.4.4. query_log_format\n12.4.5. read_timeout\n12.4.6. client_timeout\n12.4.7. max_children\n12.4.8. pid_file\n12.4.9. seamless_rotate\n12.4.10. preopen_indexes\n12.4.11. unlink_old\n12.4.12. attr_flush_period\n12.4.13. max_packet_size\n12.4.14. mva_updates_pool\n12.4.15. max_filters\n12.4.16. max_filter_values\n12.4.17. listen_backlog\n12.4.18. read_buffer\n12.4.19. read_unhinted\n12.4.20. max_batch_queries\n12.4.21. subtree_docs_cache\n12.4.22. subtree_hits_cache\n12.4.23. workers\n12.4.24. dist_threads\n12.4.25. binlog_path\n12.4.26. binlog_flush\n12.4.27. binlog_max_log_size\n12.4.28. snippets_file_prefix\n12.4.29. collation_server\n12.4.30. collation_libc_locale\n12.4.31. mysql_version_string\n12.4.32. rt_flush_period\n12.4.33. thread_stack\n12.4.34. expansion_limit\n12.4.35. watchdog\n12.4.36. prefork_rotation_throttle\n12.4.37. sphinxql_state\n12.4.38. ha_ping_interval\n12.4.39. ha_period_karma\n12.4.40. persistent_connections_limit\n12.4.41. rt_merge_iops\n12.4.42. rt_merge_maxiosize\n12.4.43. predicted_time_costs\n12.4.44. shutdown_timeout\n12.4.45. ondisk_attrs_default\n12.4.46. query_log_min_msec\n12.4.47. agent_connect_timeout\n12.4.48. agent_query_timeout\n12.4.49. agent_retry_count\n12.4.50. agent_retry_delay\n12.5. Common section configuration options\n12.5.1. lemmatizer_base\n12.5.2. on_json_attr_error\n12.5.3. json_autoconv_numbers\n12.5.4. json_autoconv_keynames\n12.5.5. rlp_root\n12.5.6. rlp_environment\n12.5.7. rlp_max_batch_size\n12.5.8. rlp_max_batch_docs\n12.5.9. plugin_dir\nA. Sphinx revision history\nA.1. Version 2.2.11-release, 19 jul 2016\nA.2. Version 2.2.10-release, 07 sep 2015\nA.3. Version 2.2.9-release, 16 apr 2015\nA.4. Version 2.2.8-release, 09 mar 2015\nA.5. Version 2.2.7-release, 20 jan 2015\nA.6. Version 2.2.6-release, 13 nov 2014\nA.7. Version 2.2.5-release, 06 oct 2014\nA.8. Version 2.2.4-release, 11 sep 2014\nA.9. Version 2.2.3-beta, 13 may 2014\nA.10. Version 2.2.2-beta, 11 feb 2014\nA.11. Version 2.2.1-beta, 13 nov 2013\nA.12. Version 2.1.9-release, 03 jul 2014\nA.13. Version 2.1.8-release, 28 apr 2014\nA.14. Version 2.1.7-release, 30 mar 2014\nA.15. Version 2.1.6-release, 24 feb 2014\nA.16. Version 2.1.5-release, 22 jan 2014\nA.17. Version 2.1.4-release, 18 dec 2013\nA.18. Version 2.1.3-release, 12 nov 2013\nA.19. Version 2.1.2-release, 10 oct 2013\nA.20. Version 2.1.1-beta, 20 feb 2013\nA.21. Version 2.0.11-dev, xx xxx xxxx\nA.22. Version 2.0.10-release, 22 jan 2014\nA.23. Version 2.0.9-release, 26 aug 2013\nA.24. Version 2.0.8-release, 26 apr 2013\nA.25. Version 2.0.7-release, 26 mar 2013\nA.26. Version 2.0.6-release, 22 oct 2012\nA.27. Version 2.0.5-release, 28 jul 2012\nA.28. Version 2.0.4-release, 02 mar 2012\nA.29. Version 2.0.3-release, 23 dec 2011\nA.30. Version 2.0.2-beta, 15 nov 2011\nA.31. Version 2.0.1-beta, 22 apr 2011\nA.32. Version 1.10-beta, 19 jul 2010\nA.33. Version 0.9.9-release, 02 dec 2009\nA.34. Version 0.9.9-rc2, 08 apr 2009\nA.35. Version 0.9.9-rc1, 17 nov 2008\nA.36. Version 0.9.8.1, 30 oct 2008\nA.37. Version 0.9.8, 14 jul 2008\nA.38. Version 0.9.7, 02 apr 2007\nA.39. Version 0.9.7-rc2, 15 dec 2006\nA.40. Version 0.9.7-rc1, 26 oct 2006\nA.41. Version 0.9.6, 24 jul 2006\nA.42. Version 0.9.6-rc1, 26 jun 2006\n\nList of Tables5.1. \n\nList of Examples3.1. Ranged query usage example\n3.2. xmlpipe2 document stream\n3.3. Fully automated live updates\n4.1. RT index declaration\n5.1. Boolean query example\n5.2. Extended matching mode: query example\n\nChapter ",
+ "fonte": "site",
+ "respostas": [
+  {
+   "por": "gemma-4-31b",
+   "resposta": {
+    "serve": "search",
+    "role": "Full-text search engine for indexing and querying notes",
+    "place": [
+     "network_service"
+    ],
+    "mechanism": [
+     "full_text"
+    ],
+    "mcp": "no",
+    "windows": "yes",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "stable",
+    "doubt": false,
+    "evidence": "Free open-source SQL full-text search engine; 2.5. Installing Sphinx on Windows; no mention of MCP"
+   }
+  },
+  {
+   "por": "ising-calibration-1.5-31b",
+   "resposta": {
+    "serve": "search",
+    "role": "Full-text search engine for indexing and querying Markdown notes in the hub.",
+    "place": [
+     "disk",
+     "network_service"
+    ],
+    "mechanism": [
+     "bm25",
+     "full_text",
+     "vector",
+     "hybrid",
+     "grep",
+     "graph",
+     "reranker",
+     "embeddings",
+     "other"
+    ],
+    "mcp": "yes",
+    "windows": "yes",
+    "portuguese": "yes",
+    "license": "GPL-2.0",
+    "maturity": "stable",
+    "doubt": false,
+    "evidence": "The README explicitly states that Sphinx is a 'Free open-source SQL full-text search engine' and provides detailed documentation on its features, including support for Portuguese morphology and charset tables. It also describes the searchd daemon, which can be accessed via MCP, and confirms compatibility with Windows through the installation section."
+   }
+  }
+ ]
+}

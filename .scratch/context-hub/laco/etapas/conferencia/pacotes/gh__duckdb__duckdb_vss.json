@@ -1,0 +1,55 @@
+{
+ "chave": "gh:duckdb/duckdb_vss",
+ "nomes": [
+  "duckdb_vss",
+  "DuckDB vss"
+ ],
+ "urls": [
+  "https://github.com/duckdb/duckdb_vss"
+ ],
+ "readme_cortado": false,
+ "readme": "# DuckDB-VSS\n\nVector Similarity Search for DuckDB\n\nThis is an experimental extension for DuckDB that adds indexing support to accelerate Vector Similarity Search using DuckDB's new fixed-size `ARRAY` type added in version v0.10.0. \nThis extension is based on the [usearch](https://github.com/unum-cloud/usearch) library and serves as a proof of concept for providing a custom index type, in this case a HNSW index, from within an extension and exposing it to DuckDB.\n\n## Usage\n\nTo create a new HNSW index on a table with an `ARRAY` column, use the `CREATE INDEX` statement with the `USING HNSW` clause. For example:\n```sql\nCREATE TABLE my_vector_table (vec FLOAT[3]);\nINSERT INTO my_vector_table SELECT array_value(a,b,c) FROM range(1,10) ra(a), range(1,10) rb(b), range(1,10) rc(c);\nCREATE INDEX my_hnsw_index ON my_vector_table USING HNSW (vec);\n```\n\nThe index will then be used to accelerate queries that use a `ORDER BY` clause evaluating one of the supported distance metric functions against the indexed columns and a constant vector, followed by a `LIMIT` clause. For example:\n```sql\nSELECT * FROM my_vector_table ORDER BY array_distance(vec, [1,2,3]::FLOAT[3]) LIMIT 3;\n\n# We can verify that the index is being used by checking the EXPLAIN output \n# and looking for the HNSW_INDEX_SCAN node in the plan\n\nEXPLAIN SELECT * FROM my_vector_table ORDER BY array_distance(vec, [1,2,3]::FLOAT[3]) LIMIT 3;\n\n┌───────────────────────────┐\n│         PROJECTION        │\n│   ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─   │\n│             #0            │\n└─────────────┬─────────────┘                             \n┌─────────────┴─────────────┐\n│         PROJECTION        │\n│   ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─   │\n│            vec            │\n│array_distance(vec, [1.0, 2│\n│         .0, 3.0])         │\n└─────────────┬─────────────┘                             \n┌─────────────┴─────────────┐\n│      HNSW_INDEX_SCAN      │\n│   ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─   │\n│   t1 (HNSW INDEX SCAN :   │\n│           my_idx)         │\n│   ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─   │\n│            vec            │\n│   ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─   │\n│           EC: 3           │\n└───────────────────────────┘               \n```\n\nBy default the HNSW index will be created using the euclidean distance `l2sq` (L2-norm squared) metric, matching DuckDBs `array_distance` function, but other distance metrics can be used by specifying the `metric` option during index creation. For example:\n```sql\nCREATE INDEX my_hnsw_cosine_index ON my_vector_table USING HNSW (vec) WITH (metric = 'cosine');\n```\n\nThe following table shows the supported distance metrics and their corresponding DuckDB functions\n\n| Description | Metric | Function                       |\n| --- | --- |--------------------------------|\n| Euclidean distance | `l2sq` | `array_distance`               |\n| Cosine similarity | `cosine` | `array_cosine_distance`        |\n| Inner product | `ip` | `array_negative_inner_product` |\n\n## Pre-filtered searches\n\nStatic `WHERE` filters that DuckDB can push into the table scan are applied\nbefore the HNSW search. This allows the index scan to return up to the requested\nnumber of qualifying nearest neighbors instead of finding the unfiltered top-k\nand discarding rows afterward.\n\n```sql\nSELECT id\nFROM items\nWHERE category = 'electronics'\nORDER BY array_distance(vec, [0.5, 0.5, 0.5]::FLOAT[3])\nLIMIT 10;\n```\n\nThe current implementation builds a transaction-visible filter bitmap with an\nO(n) scan over the filter columns for each query. Pre-filtering is enabled by\ndefault. Large constant `IN` lists that DuckDB lowers to a MARK join are also\nincluded in the bitmap when they compare a direct base-table column. They fall\nback to a sequential scan when pre-filtering is disabled; directly pushed\nfilters continue to use post-filtering instead:\n\n```sql\nSET hnsw_prefilter = false;\n```\n\nFiltered search remains approximate. Increasing `hnsw_ef_search` can improve\nrecall for selective filters. Predicates DuckDB keeps as separate operators,\nsuch as some computed expressions, are not currently pushed into the HNSW\nsearch.\n\nSee the [HNSW prefilter verification guide](docs/hnsw_prefilter_verification.md)\nfor a complete self-checking example covering prefiltering, complex-filter\nfallback, and post-filter underfilling.\n\n## Inserts, Updates,  Deletes and Re-Compaction\n\nThe HNSW index does support inserting, updating and deleting rows from the table after index creation. However, there are two things to keep in mind:  \n- Its faster to create the index after the table has been populated with data as the initial bulk load can make better use of parallelism on large tables.\n- Deletes are not immediately reflected in the index, but are instead \"marked\" as deleted, which can cause the index to grow stale over time and negatively impact query quality and performance.\n\nTo address this, you can call the `PRAGMA hnsw_compact_index('<index name>')` pragma function to trigger a re-compaction of the index pruning deleted items, or re-create the index after a significant number of updates.\n\n## Limitations \n\n- Only vectors consisting of `FLOAT`s are supported at the moment.\n- The index itself is not buffer managed and must be able to fit into RAM memory. \n\nWith that said, the index will be persisted into the database if you run DuckDB with a disk-backed database file. But there is no incremental updates, so every time DuckDB performs a checkpoint the entire index will be serialized to disk and overwrite its previous blocks. Similarly, the index will be deserialized back into main memory in its entirety after a restart of the database, although this will be deferred until you first access the table associated with the index. Depending on how large the index is, the deserialization process may take some time, but it should be faster than simply dropping and re-creating the index. \n\n---\n\n## Building the extension\n\n### Build steps\nTo build the extension, run:\n```sh\nmake\n```\nThe main binaries that will be built are:\n```sh\n./build/release/duckdb\n./build/release/test/unittest\n./build/release/extension/vss/vss.duckdb_extension\n```\n- `duckdb` is the binary for the duckdb shell with the extension code automatically loaded.\n- `unittest` is the test runner of duckdb. Again, the extension is already linked into the binary.\n- `vss.duckdb_extension` is the loadable binary as it would be distributed.\n\n## Running the extension\nTo run the extension code, simply start the shell with `./build/release/duckdb`.\n\n## Running the tests\nThes SQL tests can be run using:\n```sh\nmake test\n```\n",
+ "fonte": "readme",
+ "respostas": [
+  {
+   "por": "diffusiongemma-26b-a4b-it",
+   "resposta": {
+    "serve": "search",
+    "role": "provides vector similarity search using HNSW indexing within DuckDB",
+    "place": [
+     "library"
+    ],
+    "mechanism": [
+     "vector"
+    ],
+    "mcp": "no",
+    "windows": "unknown",
+    "portuguese": "no",
+    "license": "unknown",
+    "maturity": "alpha",
+    "doubt": true,
+    "evidence": "This is an experimental extension for DuckDB... serves as a proof of concept"
+   }
+  },
+  {
+   "por": "mistral-nemo",
+   "resposta": {
+    "serve": "none",
+    "role": "",
+    "place": [
+     "n/a"
+    ],
+    "mechanism": [
+     "n/a"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "unknown",
+    "doubt": false,
+    "evidence": "Not related to a personal context hub or its components."
+   }
+  }
+ ]
+}

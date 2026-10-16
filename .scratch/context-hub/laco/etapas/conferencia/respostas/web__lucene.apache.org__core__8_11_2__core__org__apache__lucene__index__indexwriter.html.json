@@ -1,0 +1,34 @@
+{
+ "chave": "web:lucene.apache.org/core/8_11_2/core/org/apache/lucene/index/indexwriter.html",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T21:30:35Z",
+ "resultado": "corrige",
+ "conferencia": {
+  "resultado": "corrige",
+  "final": {
+   "serve": "search",
+   "role": "Lucene IndexWriter: creates and maintains a full-text index (add, update, delete documents).",
+   "place": [
+    "library"
+   ],
+   "mechanism": [
+    "full_text"
+   ],
+   "mcp": "no",
+   "windows": "unknown",
+   "portuguese": "unknown",
+   "license": "Apache-2.0",
+   "maturity": "stable",
+   "doubt": false,
+   "evidence": "An IndexWriter creates and maintains an index."
+  },
+  "o_que_mudou": [
+   "mechanism: bm25 removed, README does not mention BM25",
+   "windows: yes -> unknown",
+   "mcp: -> no",
+   "place: inside_db_mcp -> library",
+   "doubt: true -> false"
+  ],
+  "nota": "Core indexing API of Lucene; relevant only if the hub builds a Lucene-based index."
+ }
+}

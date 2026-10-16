@@ -1,0 +1,137 @@
+# protobuf-net
+
+![protobuf-net logo](https://raw.githubusercontent.com/protobuf-net/protobuf-net/main/protobuf-net-48.png) protobuf-net is a contract based serializer for .NET code, that happens to write data in the "protocol buffers" serialization format engineered by Google. The API, however, is very different to Google's, and follows typical .NET patterns (it is broadly comparable, in usage, to `XmlSerializer`, `DataContractSerializer`, etc). It should work for most .NET languages that write standard types and can use attributes.
+
+[![.NET](https://github.com/protobuf-net/protobuf-net/actions/workflows/dotnet.yml/badge.svg)](https://github.com/protobuf-net/protobuf-net/actions/workflows/dotnet.yml)
+
+Recent changes are on [the releases page](https://github.com/protobuf-net/protobuf-net/releases); older
+history is in [the release notes](https://docs.protobuf-net.dev/releasenotes).
+
+> **New: [protobuf-net.Connect](https://connect.protobuf-net.dev)** — the
+> [Connect protocol](https://connectrpc.com) for .NET. gRPC semantics over ordinary HTTP, so unary and
+> one-way streaming work over **HTTP/1.1**, through proxies and CDNs that will not carry gRPC. Reuses
+> protobuf-net.Grpc contracts unchanged; AOT-first; full conformance both directions.
+
+## Online tools: [protobuf-net.dev](https://protobuf-net.dev/)
+
+Free, browser-based, and nothing to install — and **it all runs locally**: it is a static site, so your
+schemas and payloads never leave your machine. You can:
+
+- **generate C#/VB types from a `.proto` schema** — the same code generation as the
+  [`protogen` global tool](https://www.nuget.org/packages/protobuf-net.Protogen)
+- **decode a raw protobuf payload**, without needing the schema that produced it
+
+Documentation is at [docs.protobuf-net.dev](https://docs.protobuf-net.dev/).
+
+## Supported Runtimes
+- .NET 6.0+ (.NET 5 etc will use .NET Standard 2.1)
+- .NET Standard 2.0, 2.1
+- .NET Framework 4.6.2+
+
+## Native AOT and trimming
+
+From 3.3, protobuf-net can generate serializers **at build time** from code-first contracts, making native AOT and trimming work — and improving cold start even on ordinary JIT builds. See [the AOT documentation](https://docs.protobuf-net.dev/aot).
+
+The [build tools](https://docs.protobuf-net.dev/build_tools) (analyzers that validate contracts, and this generator) are included in the protobuf-net package by default; opt out with `<ProtoBufDisableBuildTools>true</ProtoBufDisableBuildTools>`.
+
+## Runtime Installation
+
+All stable and some pre-release packages are available on NuGet.
+
+You can use the following command in the Package Manager Console:
+```ps
+Install-Package protobuf-net
+```
+
+| Package | NuGet Stable | NuGet Pre-release | Downloads |
+| ------- | ------------ | ----------------- | --------- |
+| [protobuf-net](https://www.nuget.org/packages/protobuf-net/) | [![protobuf-net](https://img.shields.io/nuget/v/protobuf-net.svg)](https://www.nuget.org/packages/protobuf-net/) | [![protobuf-net](https://img.shields.io/nuget/vpre/protobuf-net.svg)](https://www.nuget.org/packages/protobuf-net/) | [![protobuf-net](https://img.shields.io/nuget/dt/protobuf-net.svg)](https://www.nuget.org/packages/protobuf-net/) |
+
+## Basic usage
+
+### 1 First Decorate your classes
+```csharp
+[ProtoContract]
+class Person {
+    [ProtoMember(1)]
+    public int Id {get;set;}
+    [ProtoMember(2)]
+    public string Name {get;set;}
+    [ProtoMember(3)]
+    public Address Address {get;set;}
+}
+[ProtoContract]
+class Address {
+    [ProtoMember(1)]
+    public string Line1 {get;set;}
+    [ProtoMember(2)]
+    public string Line2 {get;set;}
+}
+```
+Note that unlike XmlSerializer, the member-names are not encoded in the data - instead, you must pick an integer to identify each member. Additionally, to show intent it is necessary to show that we intend this type to be serialized (i.e. that it is a data contract).
+
+### 2 Serialize your data
+
+This writes a 32 byte file to "person.bin" :
+```csharp
+var person = new Person {
+    Id = 12345, Name = "Fred",
+    Address = new Address {
+        Line1 = "Flat 1",
+        Line2 = "The Meadows"
+    }
+};
+using (var file = File.Create("person.bin")) {
+    Serializer.Serialize(file, person);
+}
+```
+
+### 3 Deserialize your data
+
+This reads the data back from "person.bin" :
+```csharp
+Person newPerson;
+using (var file = File.OpenRead("person.bin")) {
+    newPerson = Serializer.Deserialize<Person>(file);
+}
+```
+
+### Notes 
+
+#### Notes for Identifiers
+
+* they must be positive integers (for best portability, they should be `<= 536870911` and not in the range `19000-19999`)
+* they must be unique within a single type but the same numbers can be re-used in sub-types if inheritance is enabled 
+* the identifiers must not conflict with any inheritance identifiers (discussed later) 
+* lower numbers take less space - don't start at 100,000,000 
+* the identifier is important; you can change the member-name, or shift it between a property and a field, but changing the identifier changes the data 
+
+## Advanced subjects
+
+### Inheritance
+
+Inheritance must be explicitly declared, in a similar way that it must for XmlSerializer and DataContractSerializer. This is done via [ProtoInclude(...)] on each type with known sub-types: 
+
+```csharp
+[ProtoContract]
+[ProtoInclude(7, typeof(SomeDerivedType))]
+class SomeBaseType {...}
+
+[ProtoContract]
+class SomeDerivedType {...}
+```
+There is no special significance in the 7 above; it is an integer key, just like every [ProtoMember(...)]. It must be unique in terms of SomeBaseType (no other [ProtoInclude(...)] or [ProtoMember(...)] in SomeBaseType can use 7), but does not need to be unique globally. 
+
+### .proto file
+
+As an alternative to writing your classes and decorating them, you can generate your types from a .proto schema using the `protogen` tool,
+[available as a multi-platform "global tool"](https://www.nuget.org/packages/protobuf-net.Protogen), or in your browser at
+[protobuf-net.dev](https://protobuf-net.dev/) (see [Online tools](#online-tools-protobuf-netdev), above).
+
+### Alternative to attributes
+
+In v2+, everything that can be done with attributes can also be configured at runtime via `RuntimeTypeModel`. The Serializer.* methods are basically just shortcuts to RuntimeTypeModel.Default.*, so to manipulate the behaviour of Serializer.*, you must configure RuntimeTypeModel.Default. 
+
+## Support
+
+I try to be responsive to [Stack Overflow questions in the `protobuf-net` tag](https://stackoverflow.com/questions/tagged/protobuf-net), [issues logged on GitHub](https://github.com/protobuf-net/protobuf-net), [email](mailto:marc.gravell@gmail.com), etc. I don't currently offer a paid support channel. If I've helped you, feel free to [buy me a coffee](https://buymeacoff.ee/marcgravell) or see the "Sponsor" link [at the top of the GitHub page](https://github.com/protobuf-net/protobuf-net).

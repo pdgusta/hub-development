@@ -1,0 +1,264 @@
+Pony is a Python ORM 
+
+ with beautiful 
+ query syntax
+
+ Write your database queries using 
+
+ Python generators & lambdas
+
+ Try PonyORM now
+ Support PonyORM
+
+ Free open-source software
+
+ Github
+
+ Twitter
+
+ Telegram
+
+ Join the newsletter
+
+ Custom software development
+
+ Tweak Pony ORM to meet specific requirements or develop a complete app using Python, TypeScript and ReactJS. The team of software development experts from our partner AgileCode can provide custom development for your project. Email us to info at ponyorm.org with a summary of your needs and we will give you an estimate of time and price.
+
+ Get estimate
+
+ Easy to use and powerful 
+
+ database query syntax
+
+ Using Pony object-relational mapper you can concentrate on
+ writing business logic of your application and use Python
+ syntax for interacting with the database. Pony translates such
+ queries into SQL and executes them in the database in the most
+ efficient way.
+
+ Learn more
+
+ Here is Pony query example:
+
+ select(c for c in Customer if sum(c.orders.price) > 1000)
+
+ which is being translated into the following SQL:
+
+ PostgreSQL
+
+ MySQL
+
+ SQLite
+
+ Oracle
+
+ SELECT "c"."id"
+
+ FROM "customer" "c"
+
+   LEFT JOIN "order" "order-1"
+
+     ON "c"."id" = "order-1"."customer"
+
+ GROUP BY "c"."id"
+
+ HAVING coalesce(SUM("order-1"."total_price"), 0) > 1000
+
+ SELECT `c`.`id`
+
+ FROM `customer` `c`
+
+   LEFT JOIN `order` `order-1`
+
+     ON `c`.`id` = `order-1`.`customer`
+
+ GROUP BY `c`.`id`
+
+ HAVING coalesce(SUM(`order-1`.`total_price`), 0) > 1000
+
+ SELECT "c"."id"
+
+ FROM "Customer" "c"
+
+   LEFT JOIN "Order" "order-1"
+
+     ON "c"."id" = "order-1"."customer"
+
+ GROUP BY "c"."id"
+
+ HAVING coalesce(SUM("order-1"."total_price"), 0) > 1000
+
+ SELECT "c"."id"
+
+ FROM "CUSTOMER" "c"
+
+   LEFT JOIN "ORDER" "order-1"
+
+     ON "c"."id" = "order-1"."customer"
+
+ GROUP BY "c"."id"
+
+ HAVING coalesce(SUM("order-1"."total_price"), 0) > 1000
+
+ Online tool 
+
+ for database design
+
+ You can start modeling your application right now.
+ Once your data diagram is ready, you can start using it with Pony
+ ORM or get SQL statements for creating tables.
+
+ Learn more
+
+Easy to start with, quick to learn
+
+ If you know Python you already know how to write queries with Pony.
+
+Scalable and powerful
+
+ Pony is good for beginners due to its pythonic syntax. But besides this it also provides
+ great performance due to smart caching.
+
+Up-to-date with the latest database features
+
+ Pony now supports a native database JSON data type that enables efficient access to data in JSON
+ format.
+
+ Testimonials from Pony ORM users
+
+ Pony is by far the best SQL ORM for fast prototyping, thanks to its Entity-Relationship
+ Diagram Editor and its pythonic style. It's my first choice when dealing with an SQL
+ database oriented application. The learning curve is very lean and you can start using
+ it
+ really fast.
+
+Gabriel Ilie
+
+Software developer
+
+ It's certainly the most intuitive & Pythonistic approach to querying databases and is
+ very similar to LINQ in that aspect.
+
+Omer Katz
+
+ Very passionate software developer
+ http://omerkatz.com/
+
+ I use Pony in production. It allows me to create webapps much
+ faster than any other ORM I've tried, and produces sensible, performant SQL both in
+ production with Postgres and when testing with SQLite.
+
+Matt
+
+Software Developer
+
+ I use Pony ORM for several projects. Here is one of
+ them: https://smiles.everypony.ru/
+
+Andrey Kashlak
+
+ Software developer
+
+ PonyORM pythonic queries are just fun to work with. Of all the main ORM's out there,
+ Pony is the one with the most intuitive interface, most of the time when you get one of
+ those "I bet this should work" moments, it actually does! Easy to set up, easy to work
+ with, it even has a great Entity Relationship Diagram editor that throws out the code
+ you'll need to start your project. I really recommend you try PonyORM on your next
+ project.
+
+Pedro Baumann
+
+Full Stack Developer
+ www.ondoheer.com/
+
+ I think that Pony ORM is the best ORM in terms of convenience and ease of use.
+ Currently I'm working on developing an ORM for Nim language
+ (nim-lang.org) and I get a
+ lot of inspiration from Pony.
+
+Konstantin Molchanov
+
+ Software development enthusiast
+
+ I choose Pony ORM for its performance and ability to write clear and concise code
+ using domain-specific language (DSL). The absence of DSL in SQLAlchemy was the main
+ reason I was looking for an alternative to it, because without using DSL the code looks
+ heavy and cumbersome.
+
+Anatoly Shipitsin
+
+ Expert of IT Department
+
+ I like Pony ORM for it being intuitive. First queries I wrote without reading the
+ documentation, and it was crucial for me in the beginning. When I started working on
+ my project I didn't have experience neither with Python, nor with Pony. Later I used
+ documentation, which covered all questions that I had.
+
+Pavel Frolov
+
+Software developer
+
+ Pony ORM is a great software. Its integration with the Python language using generator
+ expression is superb and makes it easy to write queries using known syntax instead of
+ using a new language. Coming from C#/LINQ world I find it very intuitive, powerful and
+ nice to use, so any C# developer coming to Python should definitely try this.
+
+Tomislav Tustonic
+
+Software Engineer
+
+ Pony is great! Because of using the advantages of Python comprehensive. At all I like it
+ very much.
+
+Vahid Mardani
+
+ https://github.com/pylover
+
+ At this point in time, I wouldn't even consider using a different ORM for projects.
+
+Nicholas Brochu
+
+Maker of digital and physical things.
+
+ @nbrochu
+
+ We have been using Pony ORM in our projects for several years.
+The query syntax is very intuitive which makes writing the business logic really an easy task.
+The sub-collections is a real gem! Especially when using the attribute lifting feature and collection sorting.
+
+Mark Korenberg
+
+CTO at
+
+ Ideco.ru
+
+ Other Pony ORM features
+
+ Licensed under Apache 2.0
+
+ Great for start-ups and researchers
+
+ Easy to do aggregations
+
+ Reliability and safety - no SQL injections possible
+
+ Supports major relational databases: SQLite, PostgreSQL, MySQL, Oracle
+
+ Stable API
+
+ Many years of development
+
+ Get help from the PonyORM community
+
+ Join us on Telegram. Meet the PonyORM team, chat with the community members, and get your questions answered on our community Telegram group.
+
+ Post your PonyORM questions on Stack Overflow.
+
+ Report an issue. Submit bug reports, suggest new features, or follow development on our GitHub
+ repo.
+
+ Reach us on Twitter.
+
+ Check the messages from our mail list archive.
+
+Join the newsletter

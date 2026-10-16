@@ -1,0 +1,62 @@
+{
+ "chave": "gh:getzep/zep",
+ "urls": [
+  "https://github.com/getzep/zep",
+  "https://getzep.com",
+  "https://getzep.com/",
+  "https://www.getzep.com",
+  "https://github.com/tryzep/zep"
+ ],
+ "tipos": [
+  "service",
+  "library",
+  "tool"
+ ],
+ "termos": [
+  "zep-ai",
+  "zep-cloud",
+  "LLM memory",
+  "semantic memory",
+  "vector store",
+  "Zep Hybrid",
+  "Memory Store",
+  "Vector Search",
+  "Metadata",
+  "zep memory",
+  "ai agent memory",
+  "RAG pipeline",
+  "AI memory",
+  "vector search",
+  "hybrid retrieval",
+  "agent knowledge base",
+  "metadata filtering",
+  "zep vector store",
+  "local vector DB",
+  "zep memory layer ai agent",
+  "agent memory",
+  "entity extraction",
+  "long-term memory",
+  "accent stripping",
+  "hybrid search"
+ ],
+ "mencoes": 10,
+ "familias": [
+  "agnes",
+  "gpt-oss"
+ ],
+ "primeira_onda": 2,
+ "nomes": [
+  "Zep",
+  "Zep (zep-go)"
+ ],
+ "resumos": [
+  "Camada de memória e busca para agentes de IA com endpoint MCP integrado, suporte a embeddings e filtragem de documentos armazenados localmente.",
+  "An open‑source memory store for LLMs that provides hybrid full‑text and embedding‑based search over documents.",
+  "会話メモとベクトル検索を統合したオープンソースプロジェクトで、フロントマター等のメタデータでハイブリッド検索ができる。",
+  "Open-source memory layer for AI agents with vector search, entity extraction, and structured metadata filtering; supports local deployment."
+ ],
+ "readme_status": "ok",
+ "readme_nome": "README.md",
+ "readme_cortado": false,
+ "readme": "<p align=\"center\">\n  <a href=\"https://www.getzep.com/\">\n    <img src=\"https://github.com/user-attachments/assets/119c5682-9654-4257-8922-56b7cb8ffd73\" width=\"150\" alt=\"Zep Logo\">\n  </a>\n</p>\n\n<h1 align=\"center\">Zep Cloud: Examples & Integrations</h1>\n\n<p align=\"center\">\n  <a href=\"https://discord.gg/W8Kw6bsgXQ\"><img\n    src=\"https://img.shields.io/badge/Discord-%235865F2.svg?&logo=discord&logoColor=white\"\n    alt=\"Chat on Discord\"\n  /></a>\n  <a href=\"https://twitter.com/intent/follow?screen_name=zep_ai\" target=\"_new\"><img alt=\"Twitter Follow\" src=\"https://img.shields.io/twitter/follow/zep_ai\"></a>\n</p>\n\n## About This Repository\n\nThis repository is **not** Zep's product or service. It contains **example code, framework\nintegrations, and tools** for building agent memory with [Zep Cloud](https://www.getzep.com/),\nZep's managed agent memory platform.\n\nTo use Zep Cloud, sign up at [www.getzep.com](https://www.getzep.com/) and read the\ndocumentation at [help.getzep.com](https://help.getzep.com). Zep's official SDKs are:\n\n- **Python**: `pip install zep-cloud`\n- **TypeScript/JavaScript**: `npm install @getzep/zep-cloud`\n- **Go**: `go get github.com/getzep/zep-go/v3`\n\n> Looking for the open-source temporal knowledge graph framework that powers Zep? See\n> [Graphiti](https://github.com/getzep/graphiti).\n\n## Contents\n\n| Project / directory | Description |\n|---------------------|-------------|\n| [`examples/`](examples/) | Example apps and snippets in Python, TypeScript, and Go |\n| [`integrations/`](integrations/) | Agent-framework integration packages |\n| [`ingestion/`](ingestion/) | `zep-ingest` — bulk data ingestion pipeline (Slack, documents, email, JSON/CSV, fact triples) |\n| [`ontology/`](ontology/) | Default ontology definitions |\n| [Build with Zep](https://github.com/getzep/building-with-zep-plugin) | Agent plugin for Claude Code, Codex, and Cursor (separate repository) |\n| [Zep Memory](https://github.com/getzep/zep-memory-plugin) | Agent plugin for Claude Desktop/Cowork and ChatGPT Work (separate repository) |\n| [`benchmarks/`](benchmarks/) | Memory benchmarks (LoCoMo, LongMemEval) |\n| [`zep-eval-harness/`](zep-eval-harness/) | Evaluation harness for ingestion and retrieval |\n| [`legacy/`](legacy/) | Deprecated Zep Community Edition (unsupported) |\n\n## Integrations\n\nFramework integration packages live under [`integrations/`](integrations/), organized\nframework-first then language: `integrations/<framework>/<language>/`. Each package is built,\ntested, and released independently.\n\n- **Python**: Google ADK, Microsoft Agent Framework, Microsoft AutoGen, AG2, CrewAI, LangGraph, LiveKit, Pydantic AI, Strands Agents\n- **TypeScript**: Google ADK, Mastra, Vercel AI SDK\n- **Go**: Google ADK\n\n\nSee [`integrations/README.md`](integrations/README.md) for packages, release status, and\nlinks, and [`integrations/CLAUDE.md`](integrations/CLAUDE.md) for conventions.\n\n## Contributing\n\nWe welcome contributions. See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines covering code,\ndocumentation, bug reports, and community examples.\n\n## Community Edition (Deprecated)\n\nZep Community Edition is no longer supported. Its code has been moved to the\n[`legacy/`](legacy/) folder. Read more in\n[Announcing a New Direction for Zep's Open Source Strategy](https://blog.getzep.com/announcing-a-new-direction-for-zeps-open-source-strategy/).\n"
+}

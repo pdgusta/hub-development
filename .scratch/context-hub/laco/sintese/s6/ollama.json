@@ -1,0 +1,57 @@
+{
+ "nome": "Ollama",
+ "nome_canonico": "ollama/ollama",
+ "chave": "gh:ollama/ollama",
+ "url": "https://github.com/ollama/ollama",
+ "serve": "stack",
+ "area": "llm_runtime",
+ "identidade": "ok (ollama.ai e o site do mesmo projeto; a URL do GitHub confere)",
+ "windows": "yes: 'Ollama runs as a native Windows application'; sem Docker nem WSL; instala sem Administrador no diretorio do usuario",
+ "mcp": "nao_aplicavel",
+ "portugues": "nao_verificado: depende do modelo de embedding escolhido; a documentacao nao afirma suporte a pt",
+ "markdown_frontmatter": "nao_aplicavel",
+ "atualizacao": "nao_aplicavel",
+ "embeddings_endpoint": "yes: serve embeddings em /api/embed e em /v1/embeddings (compat. OpenAI), base http://localhost:11434/v1/",
+ "recursos": "instalacao de pelo menos 4GB de disco; modelos de dezenas a centenas de GB; GPU NVIDIA/AMD opcional; Windows 10 22H2+",
+ "licenca": "MIT",
+ "ultimo_release": "2026-10-14, v0.40.4",
+ "atividade": "ultimo commit 2026-10-13",
+ "maturidade": "stable",
+ "encaixe": "Alternativa local ao FreeLLMAPI para gerar embeddings e LLM, com base_url OpenAI-compativel; servico local em cada maquina. Impedimento: duplica o gateway ja decidido e consome disco e RAM.",
+ "evidencias": [
+  {
+   "campo": "windows",
+   "url": "https://raw.githubusercontent.com/ollama/ollama/main/docs/windows.mdx",
+   "citacao": "Ollama runs as a native Windows application, including NVIDIA and AMD Radeon GPU support."
+  },
+  {
+   "campo": "embeddings_endpoint",
+   "url": "https://raw.githubusercontent.com/ollama/ollama/main/docs/api/openai-compatibility.mdx",
+   "citacao": "### `/v1/embeddings`"
+  },
+  {
+   "campo": "embeddings_endpoint",
+   "url": "https://raw.githubusercontent.com/ollama/ollama/main/docs/capabilities/embeddings.mdx",
+   "citacao": "curl -X POST http://localhost:11434/api/embed"
+  },
+  {
+   "campo": "recursos",
+   "url": "https://raw.githubusercontent.com/ollama/ollama/main/docs/windows.mdx",
+   "citacao": "You'll need at least 4GB of space for the binary install."
+  },
+  {
+   "campo": "licenca",
+   "url": "https://raw.githubusercontent.com/ollama/ollama/main/LICENSE",
+   "citacao": "MIT License"
+  },
+  {
+   "campo": "ultimo_release",
+   "url": "https://github.com/ollama/ollama/releases.atom",
+   "citacao": "v0.40.4, updated 2026-10-14T00:17:11Z"
+  }
+ ],
+ "nao_verificado": [
+  "suporte a portugues dos modelos de embedding",
+  "RAM necessaria por modelo"
+ ]
+}

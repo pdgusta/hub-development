@@ -1,0 +1,76 @@
+The standard for distributed coordination
+Naming, configuration management, synchronization, and group services — battle-tested coordination primitives in a simple, highly reliable interface.
+DownloadRead Documentation
+
+zkCli.sh
+
+$ bin/zkCli.sh -server 127.0.0.1:2181
+Connecting to 127.0.0.1:2181
+Welcome to ZooKeeper!
+JLine support is enabled
+[zk: 127.0.0.1:2181(CONNECTED) 0] create /myapp "config_data"
+Created /myapp
+[zk: 127.0.0.1:2181(CONNECTED) 1] get /myapp
+config_data
+[zk: 127.0.0.1:2181(CONNECTED) 2] ls /
+[myapp, zookeeper]
+[zk: 127.0.0.1:2181(CONNECTED) 3] 
+
+Why ZooKeeper
+A proven coordination kernel trusted by Kafka, Hadoop, HBase, and many other distributed systems.
+
+High Performance
+In-memory messaging with sub-millisecond latency; handles tens of thousands of requests per second.
+
+Simple & Reliable
+A clean hierarchical namespace modeled after a file system makes coordination logic easy to reason about.
+
+Ordered Operations
+Every update is stamped with a monotonically increasing zxid, giving clients a total ordering guarantee.
+
+Fault-Tolerant
+Replicated across an ensemble of servers; survives node failures automatically with no data loss.
+
+Use Cases
+Common patterns and distributed systems problems where ZooKeeper excels.
+
+Leader Election
+Elect a single master among distributed workers reliably using ephemeral znodes and watches.
+
+Distributed Locking
+Implement mutexes and read/write locks across cluster nodes without a single point of failure.
+
+Service Discovery
+Register and look up live service instances dynamically as nodes join or leave the cluster.
+
+Configuration Management
+Propagate config changes to all nodes instantly with watches — no polling required.
+
+Cluster Membership
+Track which nodes are alive in real time using ephemeral nodes and group membership recipes.
+
+Barrier Synchronization
+Coordinate phased computations so all workers start and finish a phase together.
+
+A Vibrant Community
+ZooKeeper is a top-level Apache project with an active community of users and contributors. Join discussions, read the documentation, and help shape the roadmap.
+Mailing ListsContributeCredits
+News
+ZooKeeper release announcements and project news.
+Slack Channel
+Chat with the community on #zookeeper in the ASF Slack workspace.
+Security
+Report vulnerabilities and review known CVEs.
+
+Getting Started
+Up and running with ZooKeeper in a few simple steps.
+
+1. Download
+Grab the latest stable release and verify checksums.
+Learn more 
+2. Quick Start
+Set up a single ZooKeeper server and learn the basics of the CLI.
+Learn more 
+3. Write a Client
+Follow the basic tutorial to implement distributed primitives like barriers and queues.
+Learn more

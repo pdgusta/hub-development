@@ -1,0 +1,56 @@
+{
+ "chave": "gh:bjascob/lemminflect",
+ "nomes": [
+  "Lemminflect"
+ ],
+ "urls": [
+  "https://github.com/bjascob/Lemminflect",
+  "https://github.com/bjascob/lemminflect"
+ ],
+ "readme_cortado": false,
+ "readme": "# ![(icon)](docs/img/favicon.ico) &nbsp; LemmInflect\n\n**A python module for English lemmatization and inflection.**\n\n\n## About\nLemmInflect uses a dictionary approach to lemmatize English words and inflect them into forms\nspecified by a user supplied [Universal Dependencies](https://universaldependencies.org/u/pos/)\nor [Penn Treebank](https://www.ling.upenn.edu/courses/Fall_2003/ling001/penn_treebank_pos.html)\ntag.  The library works with out-of-vocabulary (OOV) words by applying neural network techniques\nto classify word forms and choose the appropriate morphing rules.\n\nThe system acts as a standalone module or as an extension to the [spaCy](https://spacy.io/) NLP system.\n\nThe dictionary and morphology rules are derived from the\n[NIH's SPECIALIST Lexicon](https://lhncbc.nlm.nih.gov/LSG/Projects/lexicon/current/web/index.html)\nwhich contains an extensive set information on English word forms.\n\nA more simplistic inflection only system is available as [pyInflect](https://github.com/bjascob/pyInflect).\nLemmInflect was created to address some of the shortcoming of that project and add features, such as...\n\n* Independence from the spaCy lemmatizer\n* Neural nets to disambiguate out of vocab morphology\n* Unigrams to dismabiguate spellings and multiple word forms\n\n\n## Documentation\nFor the latest documentation, see **[ReadTheDocs](https://lemminflect.readthedocs.io/en/latest/)**.\n\n\n## Accuracy of the Lemmatizer\nThe accuracy of LemmInflect and several other popular NLP utilities was tested using the\n[Automatically Generated Inflection Database (AGID)](http://wordlist.aspell.net/other) as a\nbaseline. This is not a \"gold\" standard dataset but it has an extensive list of\nlemmas and their corresponding inflections and appears to be generaly a \"good\" set for testing.\nEach inflection was lemmatized by the test software and then compared to the original value in the\ncorpus. The test included 119,194 different inflected words.\n\n```\n| Package                      | Verb  |  Noun | ADJ/ADV | Overall |  Speed   |\n|-----------------------------------------------------------------------------|\n| LemmInflect 0.2.3            | 96.1% | 95.4% |  93.9%  |  95.6%  |  42.0 uS |\n| Stanza 1.5.0 + CoreNLP 4.5.4 | 94.0% | 96.4% |  93.1%  |  95.5%  |  30.0 us |\n| spaCy 3.5.0                  | 79.5% | 88.9% |  60.5%  |  84.7%  | 393.0 uS |\n| NLTK 3.8.1                   | 53.3% | 52.2% |  53.3%  |  52.6%  |  12.0 uS |\n|-----------------------------------------------------------------------------|\n```\nSpeed is in micro-seconds per lemma and was conducted on a i9-7940x CPU. Note, since Stanza is making\ncalls to the java CoreNLP software, all 120K test cases were grouped into a single call. For Spacy,\nall pipeline components were disabled except the lemmatizer. The high per lemma time is probably\na reflection of the general overhead of the pipeline architecture.\n\n\n## Requirements and Installation\nThe only external requirement to run LemmInflect is `numpy` which is used for the matrix math that drives the neural nets.  These nets are relatively small and don't require significant CPU power to run.\n\nTo install do..\n\n`pip3 install lemminflect`\n\nThe project was built and tested under Python 3 and Ubuntu but should run on any Linux, Windows, Mac, etc.. system.  It is untested under Python 2 but may function in that environment with minimal or no changes.\n\nThe code base also includes library functions and scripts to create the various data files and neural nets.  This includes such things as...\n* Unigram Extraction from the Gutenberg and Billion Word Corpra\n* Python scripts for loading and parsing the SPECIALIST Lexicon\n* Nerual network training based on Keras and Tensorflow\n\nNone of these are required for run-time operation.  However, if you want of modify the system, see the [documentation](https://lemminflect.readthedocs.io/en/latest/test_dev/) for more info.\n\n\n## Library Usage\nTo lemmatize a word use the method `getLemma()`.  This takes a word and a Universal Dependencies tag and returns the lemmas as a list of possible spellings.  The dictionary system is used first, and if no lemma is found, the rules system is employed.\n```\n> from lemminflect import getLemma\ngetLemma('watches', upos='VERB')\n('watch',)\n```\nTo inflect words, use the method `getInflection`.   This takes a lemma and a Penn Treebank tag and returns a tuple of the specific inflection(s) associated with that tag.  Similary to above, the dictionary is used first and then inflection rules are applied if needed..\n```\n> from lemminflect import getInflection\n> getInflection('watch', tag='VBD')\n('watched',)\n\n> getInflection('xxwatch', tag='VBD')\n('xxwatched',)\n```\nThe library provides lower-level functions to access the dictionary and the OOV rules directly.  For a detailed description see [Lemmatizer](https://lemminflect.readthedocs.io/en/latest/lemmatizer/) or [Inflections](https://lemminflect.readthedocs.io/en/latest/inflections/).\n\n\n## Usage as a Spacy Extension\nTo use as an extension, you need spaCy version 2.0 or later.  Versions 1.9 and earlier do not support the extension methods used here.\n\nTo setup the extension, first import `lemminflect`.  This will create new `lemma` and `inflect` methods for each spaCy `Token`. The methods operate similarly to the methods described above, with the exception that a string is returned, containing the most common spelling, rather than a tuple.\n```\n> import spacy\n> import lemminflect\n> nlp = spacy.load('en_core_web_sm')\n> doc = nlp('I am testing this example.')\n> doc[2]._.lemma()\ntest\n\n> doc[4]._.inflect('NNS')\nexamples\n```\n\n## Issues\nIf you find a bug, please report it on the [GitHub issues list](https://github.com/bjascob/LemmInflect/issues).  However be aware that when in comes to returning the correct inflection there are a number of different types of issues that can arise.  Some of these are not  readily fixable.  Issues with inflected forms include...\n* Multiple spellings for an inflection (ie.. arthroplasties, arthroplastyes or arthroplastys)\n* Mass form and plural types (ie.. people vs peoples)\n* Forms that depend on context (ie.. further vs farther)\n* Infections that are not fully specified by the tag (ie.. be/VBD can be \"was\" or \"were\")\n\nOne common issue is that some forms of the verb \"be\" are not completely specified by the treekbank tag.  For instance be/VBD inflects to either \"was\" or \"were\" and be/VBP inflects to either \"am\", or \"are\".  In order to disambiguate these forms, other words in the sentence need to be inspected.  At this time, LemmInflect doesn't include this functionality.\n",
+ "fonte": "readme",
+ "respostas": [
+  {
+   "por": "gpt-oss-20b",
+   "resposta": {
+    "serve": "none",
+    "role": "",
+    "place": [
+     "library"
+    ],
+    "mechanism": [
+     "other"
+    ],
+    "mcp": "no",
+    "windows": "yes",
+    "portuguese": "no",
+    "license": "unknown",
+    "maturity": "unknown",
+    "doubt": false,
+    "evidence": "A python module for English lemmatization and inflection. The system acts as a standalone module or as an extension to the spaCy NLP system."
+   }
+  },
+  {
+   "por": "codestral",
+   "resposta": {
+    "serve": "stack",
+    "role": "lemmatization and inflection for English",
+    "place": [
+     "disk",
+     "library"
+    ],
+    "mechanism": [
+     "other"
+    ],
+    "mcp": "unknown",
+    "windows": "yes",
+    "portuguese": "no",
+    "license": "unknown",
+    "maturity": "unknown",
+    "doubt": false,
+    "evidence": "The project was built and tested under Python 3 and Ubuntu but should run on any Linux, Windows, Mac, etc.. system."
+   }
+  }
+ ]
+}

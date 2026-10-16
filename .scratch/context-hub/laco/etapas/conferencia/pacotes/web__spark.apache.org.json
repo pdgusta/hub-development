@@ -1,0 +1,39 @@
+{
+ "chave": "web:spark.apache.org",
+ "nomes": [
+  "Apache Spark",
+  "Apache Spark (para pré-processamento de embeddings e BM25)",
+  "Spark"
+ ],
+ "urls": [
+  "https://spark.apache.org/",
+  "https://spark.apache.org"
+ ],
+ "readme_cortado": false,
+ "readme": "[Apache Spark™ - Unified Engine for large-scale data analytics]\n\nUnified engine for large-scale data analytics\n Get Started\n\nWhat is Apache Spark™?\n\nApache Spark™ is a multi-language engine for executing data engineering,\n data science, and machine learning on single-node machines or clusters.\n\nSimple.\nFast.\nScalable.\nUnified.\n\n Key features\n\nBatch/streaming data\n\nUnify the processing of your data in batches and real-time streaming, using your preferred language: Python, SQL, Scala, Java or R.\n\nSQL analytics\n\nExecute fast, distributed ANSI SQL queries for dashboarding and ad-hoc reporting. Runs faster than most data warehouses.\n\nData science at scale\n\nPerform Exploratory Data Analysis (EDA) on petabyte-scale data without having to resort to downsampling\n\nMachine learning\n\nTrain machine learning algorithms on a laptop and use the same code to scale to fault-tolerant clusters of thousands of machines.\n\nRun now\n\nInstall with 'pip'\n\n$ pip install pyspark\n\n$ pyspark\n\nUse the official Docker image\n\n$ docker run -it --rm spark:python3 /opt/spark/bin/pyspark\n\ndf = spark.read.json(\"logs.json\")\ndf.where(\"age > 21\").select(\"name.first\").show()\n\n# Every record contains a label and feature vector\ndf = spark.createDataFrame(data, [\"label\", \"features\"])\n\n# Split the data into train/test datasets\ntrain_df, test_df = df.randomSplit([.80, .20], seed=42)\n\n# Set hyperparameters for the algorithm\nrf = RandomForestRegressor(numTrees=100)\n\n# Fit the model to the training data\nmodel = rf.fit(train_df)\n\n# Generate predictions on the test dataset.\nmodel.transform(test_df).show()\n\ndf = spark.read.csv(\"accounts.csv\", header=True)\n\n# Select subset of features and filter for balance > 0\nfiltered_df = df.select(\"AccountBalance\", \"CountOfDependents\").filter(\"AccountBalance > 0\")\n\n# Generate summary statistics\nfiltered_df.summary().show()\n\nRun now\n\n$ docker run -it --rm spark /opt/spark/bin/spark-sql\n\nspark-sql>\n\nSELECT\n name.first AS first_name,\n name.last AS last_name,\n age\nFROM json.`logs.json`\n WHERE age > 21;\n\nRun now\n\n$ docker run -it --rm spark /opt/spark/bin/spark-shell\n\nscala>\n\nval df = spark.read.json(\"logs.json\")\ndf.where(\"age > 21\")\n .select(\"name.first\").show()\n\nRun now\n\n$ docker run -it --rm spark /opt/spark/bin/spark-shell\n\nscala>\n\nDataset df = spark.read().json(\"logs.json\");\ndf.where(\"age > 21\")\n .select(\"name.first\").show();\n\nRun now\n\n$ docker run -it --rm spark:r /opt/spark/bin/sparkR\n\n>\n\ndf <- read.json(path = \"logs.json\")\ndf <- filter(df, df$age > 21)\nhead(select(df, df$name.first))\n\nThe most widely-used\n engine for scalable computing\n\nThousands of\n companies, including 80% of the Fortune 500, use Apache Spark™.\nOver 2,000 contributors to\n the open source project from industry and academia.\n\nEcosystem\n\nApache Spark™ integrates with your favorite frameworks, helping to scale them to thousands of machines.\n\nData science and Machine learning\n\nSQL analytics and BI\n\nStorage and Infrastructure\n\nSpark SQL engine: under the hood\n\nApache Spark™ is built on an advanced distributed SQL engine\n for large-scale data\n\n Adaptive Query Execution\n\nSpark SQL adapts the execution plan at runtime, such as automatically setting the number of reducers and join algorithms.\n\n Support for ANSI SQL\n\nUse the same SQL you’re already comfortable with.\n\n Structured and unstructured data\n\nSpark SQL works on structured tables and unstructured data such as JSON or images.\n\nTPC-DS 1TB No-Stats With vs. Without Adaptive Query Execution\n\nAccelerates TPC-DS queries up to 8x\n\nJoin the community\n\nSpark has a thriving open source community, with\n contributors from around the globe building features, documentation and assisting other users.\n\n Mailing list\n\n Source code\n\n News and events\n\n How to contribute\n\n Issue tracking\n\n Committers",
+ "fonte": "site",
+ "respostas": [
+  {
+   "por": "claude-haiku-5-5",
+   "resposta": {
+    "serve": "stack",
+    "role": "Distributed batch and streaming data processing engine for large-scale preprocessing",
+    "place": [
+     "disk",
+     "network_service",
+     "library"
+    ],
+    "mechanism": [
+     "n/a"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "stable",
+    "doubt": false,
+    "evidence": "multi-language engine for executing data engineering, data science, and machine learning on single-node machines or clusters"
+   }
+  }
+ ]
+}

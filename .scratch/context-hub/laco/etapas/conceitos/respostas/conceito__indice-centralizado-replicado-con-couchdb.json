@@ -1,0 +1,23 @@
+{
+ "chave": "conceito:indice-centralizado-replicado-con-couchdb",
+ "modelo": "ising-calibration-1.5-31b",
+ "ts": "2026-10-13T20:21:37Z",
+ "resposta": {
+  "concept_en": "centralized replicated index with couchdb",
+  "serve": "search",
+  "role": "A single, centralized search index hosted on one machine that is queried by multiple clients via MCP, while the underlying Markdown files are replicated from CouchDB.",
+  "mechanism": [
+   "full_text"
+  ],
+  "place": [
+   "network_service"
+  ],
+  "tools_on_card": [
+   "CouchDB",
+   "MCP server"
+  ],
+  "doubt": false,
+  "evidence": "Una máquina aloja el índice de búsqueda y ambas Windows consultan el mismo motor vía MCP mientras los .md se replican desde CouchDB."
+ },
+ "via": "freellmapi"
+}

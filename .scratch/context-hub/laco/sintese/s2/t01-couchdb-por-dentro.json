@@ -1,0 +1,100 @@
+{
+  "tema": "t01-couchdb-por-dentro",
+  "consultas": [
+    "docs.couchdb.org ddocs/nouveau (fetch)",
+    "CouchDB 3.5 Nouveau release notes Windows Lucene",
+    "couchdb nouveau portuguese analyzer lucene",
+    "docs.couchdb.org install/nouveau (fetch)",
+    "docs.couchdb.org ddocs/nouveau.rst.txt fonte crua",
+    "docs.couchdb.org ddocs/search (Clouseau/Dreyfus)",
+    "docs.couchdb.org whatsnew/3.5",
+    "github rnewson/couchdb-lucene",
+    "docs.couchdb.org api/database/find (Mango text)",
+    "CouchDB Windows installer Nouveau Clouseau included msi Java 21",
+    "docs.couchdb.org install/search (Clouseau)"
+  ],
+  "achados": [
+    {
+      "nome": "CouchDB Nouveau (Lucene)",
+      "url_fonte": "https://docs.couchdb.org/en/latest/ddocs/nouveau.html",
+      "o_que_e": "Busca Lucene em design docs, servida por servidor Java (Dropwizard) separado; consulta por GET/POST em /db/_design/d/_nouveau/idx.",
+      "lugar": ["inside_db_mcp", "network_service"],
+      "mecanismo": ["full_text", "bm25"],
+      "mcp": "no", "windows": "unknown", "portugues": "yes",
+      "licenca": "Apache-2.0 (CouchDB; nao conferido no repo do Nouveau)",
+      "ultimo_release": "CouchDB 3.5.2 (Lucene 10.4.0; data nao informada na pagina)",
+      "maturidade": "beta",
+      "encaixe": "O MCP do banco criaria o design doc com index em Nouveau (campo analyzer portuguese) e chamaria _nouveau no proprio CouchDB; exige JVM 21 na tailnet de cada maquina.",
+      "evidencias": [
+        {"url": "https://docs.couchdb.org/en/latest/_sources/ddocs/nouveau.rst.txt", "citacao": "Nouveau is an experimental feature."},
+        {"url": "https://docs.couchdb.org/en/latest/_sources/ddocs/nouveau.rst.txt", "citacao": "* portuguese"},
+        {"url": "https://docs.couchdb.org/en/latest/install/nouveau.html", "citacao": "Nouveau server is runtime-compatible with Java 21 or higher."},
+        {"url": "https://docs.couchdb.org/en/latest/whatsnew/3.5.html", "citacao": "New Nouveau indexes use Lucene 10 by default."},
+        {"url": "https://docs.couchdb.org/en/latest/whatsnew/3.5.html", "citacao": "Enable EUnit/Elixir/Nouveau tests on Windows."}
+      ],
+      "nao_verificado": [
+        "Se o servidor Nouveau roda de fato no Windows nativo em producao (a pagina de instalacao so mostra comando Linux; so o CI de testes no Windows foi conferido)",
+        "Se o instalador MSI do CouchDB inclui o Nouveau",
+        "Stopwords do analisador portugues configuraveis (README antigo dizia que nao)",
+        "Data do release 3.5.2",
+        "Qualidade da busca vetorial/semantica: Nouveau e so texto, sem embeddings"
+      ]
+    },
+    {
+      "nome": "Clouseau / Dreyfus (busca Lucene classica do CouchDB)",
+      "url_fonte": "https://docs.couchdb.org/en/latest/ddocs/search.html",
+      "o_que_e": "Plugin de busca Lucene via servico Java (Clouseau) ligado ao cluster; precede o Nouveau; analisador PortugueseAnalyzer listado.",
+      "lugar": ["inside_db_mcp", "network_service"],
+      "mecanismo": ["full_text", "bm25"],
+      "mcp": "no", "windows": "unknown", "portugues": "yes",
+      "licenca": "unknown",
+      "ultimo_release": "unknown (pagina: Added in version 3.0)",
+      "maturidade": "stable",
+      "encaixe": "Alternativa ao Nouveau com a mesma ideia (indice via design doc); exige JDK 21+ e Clouseau ligado ao cluster. Sem sinal de preferencia em relacao ao Nouveau.",
+      "evidencias": [
+        {"url": "https://docs.couchdb.org/en/latest/ddocs/search.html", "citacao": "org.apache.lucene.analysis.pt.PortugueseAnalyzer"},
+        {"url": "https://docs.couchdb.org/en/latest/install/search.html", "citacao": "Java JDKs 21 and later"},
+        {"url": "https://docs.couchdb.org/en/latest/whatsnew/3.5.html", "citacao": "Enable Clouseau for the Windows CI"}
+      ],
+      "nao_verificado": [
+        "Rodar Clouseau no Windows fora do CI",
+        "Anuncio de descontinuacao em favor do Nouveau (a pagina de novidades 3.5 nao menciona)",
+        "Licenca e data do ultimo release do Clouseau"
+      ]
+    },
+    {
+      "nome": "couchdb-lucene",
+      "url_fonte": "https://github.com/rnewson/couchdb-lucene",
+      "o_que_e": "Integracao Lucene externa para CouchDB, repositorio arquivado em 2023; exige Java 8.",
+      "lugar": ["network_service"],
+      "mecanismo": ["full_text", "bm25"],
+      "mcp": "no", "windows": "unknown", "portugues": "unknown",
+      "licenca": "Apache-2.0",
+      "ultimo_release": "unknown (aba Releases vazia)",
+      "maturidade": "archived",
+      "encaixe": "Descartar: arquivado, Java 8, substituido por Nouveau/Clouseau dentro do CouchDB.",
+      "evidencias": [
+        {"url": "https://github.com/rnewson/couchdb-lucene", "citacao": "Java 1.8 is required; Oracle Java 8 or OpenJDK 8 are recommended."}
+      ],
+      "nao_verificado": ["Texto literal do aviso de arquivamento (resumo da pagina: arquivado em 4 maio 2023)", "Suporte a Windows"]
+    },
+    {
+      "nome": "Mango text index ($text)",
+      "url_fonte": "https://docs.couchdb.org/en/latest/api/database/find.html",
+      "o_que_e": "Indice type text do Mango, consultado com $text; depende do Clouseau instalado; um indice text por banco.",
+      "lugar": ["inside_db_mcp"],
+      "mecanismo": ["full_text"],
+      "mcp": "no", "windows": "unknown", "portugues": "unknown",
+      "licenca": "Apache-2.0 (CouchDB)",
+      "ultimo_release": "CouchDB 3.5.x",
+      "maturidade": "stable",
+      "encaixe": "Caminho mais simples de consulta (_find com $text) para o MCP, mas herda a exigencia do Clouseau e permite so um indice text por banco; Nouveau tem tipo de indice no Mango (nota 3.5: 'Mango: document Nouveau index type').",
+      "evidencias": [
+        {"url": "https://docs.couchdb.org/en/latest/api/database/find.html", "citacao": "The use of the $text operator requires a \"text\" index."},
+        {"url": "https://docs.couchdb.org/en/latest/whatsnew/3.5.html", "citacao": "Mango: document Nouveau index type."}
+      ],
+      "nao_verificado": ["Analisador de portugues no indice text do Mango", "Sintaxe do indice Mango tipo nouveau (so a existencia na nota de versao)"]
+    }
+  ],
+  "lacunas": "Nao achei fonte primaria sobre rodar o servidor Nouveau (ou Clouseau) no Windows nativo fora do CI, nem se o MSI o inclui; a pagina de instalacao so mostra comando Linux e pede Java 21. Nao existe vetor/embedding no CouchDB (so texto). Nenhum MCP de CouchDB com busca Nouveau foi procurado nesta varredura (fora do tema). O nome do analisador e 'portuguese' na fonte crua (uma busca resumiu como 'portugese', erro do resumo)."
+}

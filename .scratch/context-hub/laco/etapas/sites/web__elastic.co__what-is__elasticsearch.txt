@@ -1,0 +1,271 @@
+Skip to main content
+
+OPEN SOURCE SEARCH, ANALYTICS, AND AI PLATFORM
+
+Elasticsearch
+
+Elasticsearch is an open source, distributed search and analytics engine built for speed, scale, and AI applications. As a retrieval platform, it stores structured, unstructured, and vector data in real time — delivering fast hybrid and vector search, powering observability and security analytics, and enabling AI-driven applications with high performance, accuracy, and relevance.
+
+Start free trial
+View webinar
+
+What makes Elasticsearch a search, analytics, and AI powerhouse?
+
+It's because Elasticsearch is a …
+
+Datastore
+
+Store everything. Search anything. Structured, unstructured, and vectors — all under one roof with efficient columnar storage. For us, data is just data.
+
+Vector database
+
+Semantic meets syntax. Text, image, and multi-modal vectors — all in one API. Billions of embeddings, deployable anywhere you need.
+
+Analytics engine
+
+Think faster. Act smarter. Real-time data analytics move with speed to aggregate and transform even high-cardinality data instantly.
+
+Search engine
+
+Shockingly relevant. Full-text, filters, vectors, and scoring. Real-time search and precision at scale — built for developers, loved by data.
+
+Geospatial engine
+
+Put your data on the map. Literally. Search it, shape it, and show it off with geo-distance, polygons, and hexagonal spatial analytics.
+
+Inference service
+
+Run Jina AI's high-performance models alongside frontier LLMs, right where your data lives, without managing infrastructure. Orchestrate across search, RAG, and agent workflows through a unified control plane.
+
+Serious capabilities. Surprisingly simple.
+
+Lightning-fast search performance
+
+Millisecond-latency search, powered by Lucene. Instant answers, no matter how fast data moves.Build search applications
+
+Global distributed scalability
+
+Scale effortlessly. Elasticsearch autoscales, rebalances, replicates, and powers through petabytes — with no downtime and no drama. Need global reach? Cross-cluster search delivers federated search without the fuss.
+
+Versatile data and use case flexibility
+
+Text? Timestamps? Vectors? Yes. One platform to do it all. From search to observability to security, Elasticsearch is built once and reused everywhere. Developed for whatever else your data dreams up.
+
+Advanced search and relevance
+
+Fuzzy, semantic, or precise — Elasticsearch finds significance in your data. Full-text search, semantic search with Jina models, and hybrid search with filters, ranking, and reranking for unmatched relevance.
+
+Smart storage and deep search
+
+Elasticsearch delivers performant, searchable, cost-effective data storage. From hot tier on local disks to searchable snapshots on object storage, get speed and savings — no compromises needed.
+
+Connected and integrated
+
+Built-in connectors, common schemas, and open standards. Ingest fast with APIs, clients, and pipelines. Elasticsearch meets your data where it lives to connect, ship, analyze, and search all data types.
+
+From bare metal to serverless. It's your call.
+
+From a laptop to a hundred‑node cluster, Elasticsearch works the same everywhere. On‑premises, in the cloud, or across clouds — we'll be there.
+
+Elastic Cloud Serverless
+
+Do less with serverless
+
+Hassle-free operations with a fully managed serverless offering — the easiest way to ramp up search, observability, and security.
+
+See pricingStart free trial
+
+Elastic Cloud Hosted
+
+Deploy hosted Elasticsearch and Kibana on AWS, Google Cloud, and Azure
+
+Spin up a fully loaded deployment on the cloud provider you choose. As the company behind Elasticsearch, we bring our features and support to your Elastic clusters in the cloud.
+
+See pricingStart free trial
+
+On-Prem
+
+Download Elasticsearch
+
+Grab a fresh installation and start running Elasticsearch on your machine in just a few steps.
+
+Download
+
+Build with a rich ecosystem and integrations
+350+ integrations, endless flexibility. Elasticsearch meets your data where it lives — with APIs, language clients, and ingest pipelines that make it simple to connect, ship, and search from anywhere.
+
+Code with the language you use today
+Code it your way. Clients for Java, Python, GO, and much more — plus raw API access when you want it. Fast, easy, flexible, and designed to support your projects on Elasticsearch.
+
+Get hands-on with Elasticsearch
+
+Check out Elasticsearch Labs, the one-stop destination to learn how to build search experiences like GenAI, embedding models, reranking capabilities, and much more.
+
+Store any data
+
+Securely store, analyze, and scale all data types — structured, unstructured, time-series, logs, events, geospatial, vectors, and more. No need to move data to a central location or refactor data to fit.
+
+POST /my-index/_doc/1
+{ "timestamp": "2025-02-19T14:30:00Z", "log_level": "ERROR", "message": "Unauthorized access attempt detected", "event_id": "abc123xyz", "user": { "id": "user_456", "username": "jdoe", "ip_address": "192.168.1.100" }, "geo": { "lat": 39.7392, "lon": -104.9903, "city": "Denver", "region": "Colorado", "country": "US" }, "http": { "method": "POST", "url": "/admin/login", "status_code": 401, "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)" }, "security": { "alert_type": "Failed Login", "severity": "high", "action_taken": "Blocked IP", "detection_engine": "SIEM" }, "server": { "hostname": "webserver-01", "environment": "production" } } }
+
+Semantic search
+
+Keyword-based search falls short when users need results based on meaning, not just exact matches. Elasticsearch enables semantic search with dense and sparse vectors, hybrid retrieval, and advanced relevance tuning — powering AI-driven applications that understand intent and context for more accurate results.
+
+FROM search-movies
+ | EVAL len = length(semantic_title)
+ | EVAL semantic_title = to_upper(semantic_title)
+ | KEEP semantic_title, len
+ | SORT len DESC
+
+Rerank search
+
+Returning relevant results isn't just about matching terms — it's about ranking what matters most. Elasticsearch enhances search quality with reranking techniques, using vector search, hybrid retrieval, and machine learning to refine and prioritize the best results for each query.
+
+FROM my-index*
+| EVAL distance = ST_DISTANCE(TO_GEOPOINT(location, city_location))
+| KEEP timestamp, user.username, location, distance, city_location
+| SORT distance ASC
+
+Geospatial search & analytics
+
+Scaling geospatial search is challenging with large datasets and real-time location updates. Elasticsearch enables fast geospatial search, mapping, and geo-hex analytics while optimizing query performance at scale.
+
+FROM security-logs
+| LOOKUP JOIN envs_lkp ON clientip
+| WHERE environment IS NOT NULL
+| KEEP @timestamp, clientip, environment
+| EVAL env = CONCAT(environment, " Environment")
+| LOOKUP JOIN blocked_lkp ON clientip
+| LOOKUP JOIN emp_lkp ON clientip
+| WHERE ST_INTERSECTS(
+ "POLYGON((109.4 18.1, 109.6 18.1, 109.6 18.3, 109.4 18.3, 109.4 18.1))"::geo_shape,
+ client_location
+ )
+| STATS COUNT(action) BY emp_no, first_name
+
+Time series analysis
+
+Monitoring modern applications and infrastructure requires real-time insights across signals, telemetry, logs, metrics, and traces. Elasticsearch powers observability solutions with scalable data ingestion, fast search, and advanced analytics — helping teams detect issues, troubleshoot performance, and optimize system health efficiently.
+
+FROM my-index*
+| WHERE http.status_code >= 500
+| STATS failure_count = COUNT(*) BY server.hostname
+| SORT failure_count DESC
+| KEEP server.hostname, failure_count
+
+Threat hunting
+
+Detecting and investigating security threats requires analyzing massive volumes of logs in real time. Elasticsearch powers SIEM solutions with high-speed log ingestion, scalable AI threat detection, and fast search across structured and unstructured security data so teams can identify anomalies and respond to threats faster.
+
+FROM my-index*
+| WHERE log_level == "ERROR" OR security.severity == "high"
+| SORT timestamp DESC
+| KEEP timestamp, user.username, message, security.alert_type, security.severity, http.status_code
+
+POST /my-index/_doc/1
+{ "timestamp": "2025-02-19T14:30:00Z", "log_level": "ERROR", "message": "Unauthorized access attempt detected", "event_id": "abc123xyz", "user": { "id": "user_456", "username": "jdoe", "ip_address": "192.168.1.100" }, "geo": { "lat": 39.7392, "lon": -104.9903, "city": "Denver", "region": "Colorado", "country": "US" }, "http": { "method": "POST", "url": "/admin/login", "status_code": 401, "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)" }, "security": { "alert_type": "Failed Login", "severity": "high", "action_taken": "Blocked IP", "detection_engine": "SIEM" }, "server": { "hostname": "webserver-01", "environment": "production" } } }
+
+Text? Timestamps? Vectors? Yes.
+
+Elasticsearch powers search, observability, and security all from one platform — built once, reused everywhere. With flexible APIs for AI search, vector retrieval, and more, it delivers fast results at any scale.
+
+Application search
+
+Full-text, fuzzy, and semantic search across websites, mobile apps, internal tools, or SaaS platforms with blazing-fast results and advanced ranking.
+
+Build search apps
+
+Ecommerce & product discovery
+
+Enable fast, relevant product search and filtering using hybrid relevance (lexical + vector), synonyms, personalization, and custom scoring.
+
+Find out about ecommerce search
+
+AI-powered search & RAG
+
+Integrate dense vector search with Jina AI models, hybrid ranking, and LLMs for GenAI experiences. Elasticsearch handles vector ingestion, storage, search, and reranking in one stack.
+
+Explore RAG
+
+Log analytics
+
+Ingest logs from apps, infra, and cloud services. Analyze in real time with ES|QL, categorization, and fast filtering — whether stored on local disk or object storage via searchable snapshots or Elasticsearch logsdb index mode.
+
+Monitor all your logs
+
+Application and infra monitoring
+
+Ingest, analyze, and visualize OpenTelemetry data in Elastic for unified observability. Correlate traces, metrics, and logs to ensure critical systems are available and performant.
+
+Dive into APM
+
+LLM observability
+
+Track and improve LLM usage, performance, and cost. Identify safety issues, latency spikes, and output drift in real time.
+
+Get LLM visibility
+
+SIEM
+
+Detect, investigate, and respond to evolving threats with AI-driven security analytics. Use detection rules, entity analytics, and curated ML jobs for real-time threat monitoring.
+
+SIEM simplified
+
+Threat hunting
+
+Dive into petabytes of endpoint, multi-cloud, and network data. Use context and AI insights with ES|QL joins to enrich, filter, and pivot indicators.
+
+Explore threat hunting
+
+AI for SOC
+
+Automate SOC triage and response with AI-powered search, speeding investigations and surfacing threats across structured and unstructured data.
+
+AI for SOC
+
+Built for builders
+
+Developers like you are powering the next-gen search AI apps that scale anywhere with Elastic.
+
+See more customer stories
+
+Customer spotlight
+
+Chat Leap uses Elastic to power global campaigns reaching millions of customers for everything from Black Friday sales to global sporting events.
+
+Learn more
+
+Customer spotlight
+
+Brolly greatly streamlined its entire incident management with Elastic Observability.
+
+Learn more
+
+Customer spotlight
+
+Lawrence Livermore National Laboratory maximizes its HPC system availability for ground-breaking national security and scientific research with Elastic Security.
+
+Learn more
+
+Join the neighborhood
+
+Explore what other developers are doing with Elasticsearch, ask questions, and get help when you get stuck.
+
+Discuss
+
+Dive into Elastic forums — discuss, learn, teach, troubleshoot, and explore with the global community.
+
+Join our discussion forum
+
+Meetup
+
+Talk shop, share search wins, and network with peers at your local Elastic community meetup.
+
+Attend a meetup
+
+Slack
+
+Slack off the right way — join the Elastic Slack channel and stay connected with fellow search ninjas.
+
+Join our community Slack

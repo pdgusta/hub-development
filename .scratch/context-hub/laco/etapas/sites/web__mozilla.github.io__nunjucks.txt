@@ -1,0 +1,151 @@
+Tweet
+
+Nunjucks
+
+ A rich and powerful templating language for JavaScript.
+
+ x
+
+Node
+
+ Just use npm to install it:
+
+$ npm install nunjucks
+
+ Getting Started →
+
+Browser
+
+ Grab nunjucks.js
+ (min) for the full
+ library, or
+ grab nunjucks-slim.js
+ (min) for a slim
+ version that only works with precompiled templates. Read
+ more about the differences of these files in Getting Started.
+
+ Getting Started →
+
+Download
+
+GitHub
+
+Templating Docs
+
+API Docs
+
+FAQ
+
+ You've been looking for a more sophisticated templating
+ engine for JavaScript. Here it is.
+
+Rich Powerful language with block
+ inheritance, autoescaping, macros, asynchronous
+ control, and more. Heavily inspired by jinja2
+
+Fast & Lean High-performant. Small 8K
+ gzipped runtime with precompiled templates in the browser
+
+Extensible Crazy extensible with custom filters and extensions
+
+Everywhere Available in node and all modern web browsers, with
+ thorough precompilation options
+
+{% extends "base.html" %}
+
+{% block header %}
+<h1>{{ title }}</h1>
+{% endblock %}
+
+{% block content %}
+<ul>
+ {% for name, item in items %}
+ <li>{{ name }}: {{ item }}</li>
+ {% endfor %}
+</ul>
+{% endblock %}
+
+ Getting Started →
+
+Who's Using It?
+
+Firefox Marketplace
+
+ “Nunjucks has allowed us to port all of our existing
+ templates from a Django project to something that's easier
+ to manage. By moving our templates to the client, transfer
+ sizes are reduced and page responsiveness increases
+ significantly. Our API supplies data, meaning we can
+ decouple testing the front-end from testing the back-end.
+ Nunjucks has made our app feel native.”
+
+– Matt Basta, Firefox Marketplace team
+
+Mozilla Webmaker
+
+ Webmaker from the
+ Mozilla Foundation encourages people to create. Using web
+ technologies, you can create visually rich media with a
+ powerful real-time tool. Using nunjucks, it was easy to
+ collaborate on the templates and implement complex
+ features such as localization. There haven't been any
+ problems with performance or stability.
+
+Apostrophe CMS
+
+ “P'unk Avenue chose Nunjucks as the template language for the
+ Apostrophe
+ content management system, an open source CMS for node
+ developers. We chose Nunjucks because of its close
+ relationship with the Jinja and Twig languages, and
+ also for its test coverage and robust
+ implementation.”
+
+ – Tom Boutell, Senior Developer at P'unk Avenue
+
+ And many, many more...
+
+More Examples
+
+ Use any of the builtin filters to work with variables, and
+ even create your own.
+
+{{ foo | title }}
+{{ foo | join(",") }}
+{{ foo | replace("foo", "bar") | capitalize }}
+
+ Use keyword arguments to any function or filter
+
+{{ foo(1, 2, bar=3, baz=4) }}
+{{ bar | transform(level=2) }}
+
+ Template inheritance allows you to reuse templates in a powerful
+ way. Define skeleton structures that child templates fill in.
+
+{% extends "base.html" %}
+
+{% block header %}
+<h3>{{ subtitle }}</h3>
+{% endblock %}
+
+{% block content %}
+<h1>{{ page.title }}</h1>
+<p>{{ page.content }}</p>
+{% endblock %}
+
+ You can even write asynchronous templates if you need to make
+ asynchronous calls in filters! Take advantage
+ of asyncAll
+ to execute all iterations in parallel,
+ assuming lookup is asynchronous.
+
+<h1>Posts</h1>
+<ul>
+{% asyncAll item in items %}
+ <li>{{ item.id | lookup }}</li>
+{% endall %}
+</ul>
+
+ That's just the beginning. Check the the docs for a whole range of powerful features!
+
+ Getting Started →

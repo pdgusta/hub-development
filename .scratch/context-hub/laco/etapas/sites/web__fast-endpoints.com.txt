@@ -1,0 +1,67 @@
+ASP.NET Minimal APIs Made Easy... 
+FastEndpoints is a developer friendly alternative to Minimal APIs & MVC 
+
+It nudges you towards the REPR Design Pattern (Request-Endpoint-Response) for convenient & maintainable endpoint creation with virtually no boilerplate. 
+Performance is on par with Minimal APIs and does noticeably better than MVC Controllers in
+ synthetic benchmarks. 
+ Star on Github Get Started 
+
+public class MyRequest 
+{
+ public string FirstName { get; set; }
+ public string LastName { get; set; } 
+} 
+
+public class MyResponse 
+{
+ public string FullName { get; set; }
+ public string Message { get; set; } 
+} 
+
+public class MyEndpoint : Endpoint<MyRequest, MyResponse>
+{
+ public override void Configure()
+ {
+ Post("/hello/world");
+ AllowAnonymous();
+ }
+
+ public override async Task HandleAsync(MyRequest r, CancellationToken c)
+ {
+ await Send.OkAsync(new()
+ {
+ FullName = $"{r.FirstName} {r.LastName}",
+ Message = "Welcome to FastEndpoints..." 
+ });
+ }
+} 
+
+Funded By The Community 
+Meet Our Sponsors 
+
+Rapid Development 
+With These Handy Features & More 
+
+1 Define endpoints in multiple class files (even in deeply nested folders)
+11 Convenient business logic validation & error responses
+2 Auto discovery & registration of endpoints
+12 Easy access to environment & configuration settings
+3 Attribute-free endpoint definitions (no attribute argument type restrictions)
+13 API versioning
+4 Secure by default & supports most auth providers
+14 Built-in support for JWT Bearer auth scheme
+5 Supports policy/permission/role/claim based security
+15 In-process pub/sub event notifications (with auto discovery)
+6 Declarative security policy building (within each endpoint)
+16 Easy Server-Sent-Events for real-time data streaming
+7 Supports any IOC container compatible with ASP.NET
+17 Convenient integration testing (route-less & strongly-typed)
+8 Constructor & property injection of endpoint dependencies
+18 Easy model binding from route/query/json body/claims/forms/headers
+9 Supports swagger/serilog/etc.
+19 Easy file handling (multipart/form-data)
+10 Model validation with FluentValidation rules
+20 And anything else the Minimal APIs can do... 
+
+Made Possible By 
+Our Community Of Code Heroes 55

@@ -1,0 +1,75 @@
+{
+ "chave": "gh:eyeseast/python-frontmatter",
+ "nomes": [
+  "python‑frontmatter",
+  "python-frontmatter",
+  "Python-Frontmatter",
+  "Python Frontmatter",
+  "frontmatter",
+  "Python-frontmatter",
+  "Frontmatter Parser (python-frontmatter)",
+  "Frontmatter Parser",
+  "Front-Matter-Parser",
+  "Frontmatter Parser (yaml/python)"
+ ],
+ "urls": [
+  "https://github.com/eyeseast/python-frontmatter",
+  "https://github.com/andym3/python-frontmatter",
+  "https://github.com/buildamac/python-frontmatter",
+  "https://github.com/carous/python-frontmatter",
+  "https://github.com/cursey/python-frontmatter",
+  "https://github.com/ericmjl/python-frontmatter",
+  "https://github.com/eyalkn/python-frontmatter",
+  "https://github.com/eyalks/python-frontmatter",
+  "https://github.com/eyalroz/python-frontmatter",
+  "https://github.com/eyapanda/python-frontmatter",
+  "https://github.com/gff/python-frontmatter",
+  "https://github.com/greg/python-frontmatter",
+  "https://github.com/grug/python-frontmatter",
+  "https://github.com/heyju/python-frontmatter",
+  "https://github.com/jacobgil/python-frontmatter",
+  "https://github.com/jacobwgillespie/python-frontmatter",
+  "https://github.com/jaredks/python-frontmatter",
+  "https://github.com/jazzband/python-frontmatter",
+  "https://github.com/jbweston/python-frontmatter",
+  "https://github.com/jonathanslenders/python-frontmatter",
+  "https://github.com/leonardomso/python-frontmatter",
+  "https://pypi.org/project/python-frontmatter/",
+  "https://github.com/eyطور/python-frontmatter",
+  "https://github.com/matter/python-frontmatter",
+  "https://github.com/mattermatter/python-frontmatter",
+  "https://github.com/olefredley/python-frontmatter",
+  "https://github.com/readthedocs/python-frontmatter",
+  "https://github.com/eyalk/Frontmatter",
+  "https://github.com/eyesee/frontmatter",
+  "https://github.com/jackm321/python-frontmatter",
+  "https://github.com/starks/python-frontmatter",
+  "https://github.com/st3/python-front-matter",
+  "https://github.com/jreese/frontmatter-python"
+ ],
+ "readme_cortado": false,
+ "readme": "# Python Frontmatter\n\n[Front matter](https://docs.github.com/en/contributing/writing-for-github-docs/using-yaml-frontmatter) offers a useful way to add arbitrary, structured metadata to text documents, regardless of type.\n\nThis is a small package to load and parse files (or just text) with YAML (or JSON, TOML or other) front matter.\n\n[![Tests](https://github.com/eyeseast/python-frontmatter/workflows/Test/badge.svg)](https://github.com/eyeseast/python-frontmatter/actions?query=workflow%3ATest)\n[![PyPI](https://img.shields.io/pypi/v/python-frontmatter.svg)](https://pypi.org/project/python-frontmatter/)\n\n**[Documentation](https://python-frontmatter.readthedocs.io/en/latest/)**\n\n## Install:\n\n```shell\n# with pip\npip install python-frontmatter\n\n# or uv\nuv add python-frontmatter\n\n# local development, with uv\nuv sync\n```\n\n## Usage:\n\n```python\n>>> import frontmatter\n\n```\n\nLoad a post from a filename:\n\n```python\n>>> post = frontmatter.load('tests/yaml/hello-world.txt')\n\n```\n\nOr a file (or file-like object):\n\n```python\n>>> with open('tests/yaml/hello-world.txt') as f:\n...     post = frontmatter.load(f)\n\n```\n\nOr load from text:\n\n```python\n>>> with open('tests/yaml/hello-world.txt') as f:\n...     post = frontmatter.loads(f.read())\n\n```\n\nIf the file has a [Byte-Order Mark](https://en.wikipedia.org/wiki/Byte_order_mark) (BOM), strip it off first. An easy way to do this is by using the [`utf-8-sig`](https://docs.python.org/3/library/codecs.html?highlight=utf%208%20sig#module-encodings.utf_8_sig) encoding:\n\n```python\n>>> with open('tests/yaml/hello-world.txt', encoding=\"utf-8-sig\") as f:\n...     post = frontmatter.load(f)\n\n```\n\nAccess content:\n\n```python\n>>> print(post.content)\nWell, hello there, world.\n\n# this works, too\n>>> print(post)\nWell, hello there, world.\n\n```\n\nUse metadata (metadata gets proxied as post keys):\n\n```python\n>>> print(post['title'])\nHello, world!\n\n```\n\nMetadata is a dictionary, with some handy proxies:\n\n```python\n>>> sorted(post.keys())\n['layout', 'title']\n\n>>> from pprint import pprint\n>>> post['excerpt'] = 'tl;dr'\n>>> pprint(post.metadata)\n{'excerpt': 'tl;dr', 'layout': 'post', 'title': 'Hello, world!'}\n\n```\n\nIf you don't need the whole post object, just parse:\n\n```python\n>>> with open('tests/yaml/hello-world.txt') as f:\n...     metadata, content = frontmatter.parse(f.read())\n>>> print(metadata['title'])\nHello, world!\n\n```\n\nWrite back to plain text, too:\n\n```python\n>>> print(frontmatter.dumps(post)) # doctest: +NORMALIZE_WHITESPACE\n---\nexcerpt: tl;dr\nlayout: post\ntitle: Hello, world!\n---\nWell, hello there, world.\n\n```\n\nOr write to a file (or file-like object):\n\n```python\n>>> from io import StringIO\n>>> f = StringIO()\n>>> frontmatter.dump(post, f)\n>>> print(f.getvalue()) # doctest: +NORMALIZE_WHITESPACE\n---\nexcerpt: tl;dr\nlayout: post\ntitle: Hello, world!\n---\nWell, hello there, world.\n\n```\n\nFor more examples, see files in the `tests/` directory. Each sample file has a corresponding `.result.json` file showing the expected parsed output. See also the `examples/` directory, which covers more ways to customize input and output.\n",
+ "fonte": "readme",
+ "respostas": [
+  {
+   "por": "claude-haiku-5-5",
+   "resposta": {
+    "serve": "stack",
+    "role": "Parse YAML frontmatter from notes to filter and read their metadata.",
+    "place": [
+     "library"
+    ],
+    "mechanism": [
+     "n/a"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "unknown",
+    "doubt": false,
+    "evidence": "load and parse files (or just text) with YAML (or JSON, TOML or other) front matter"
+   }
+  }
+ ]
+}

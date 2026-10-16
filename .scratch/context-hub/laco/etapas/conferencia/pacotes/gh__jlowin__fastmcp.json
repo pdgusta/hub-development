@@ -1,0 +1,60 @@
+{
+ "chave": "gh:jlowin/fastmcp",
+ "nomes": [
+  "FastMCP"
+ ],
+ "urls": [
+  "https://github.com/jlowin/fastmcp",
+  "https://github.com/fastmcp/fastmcp",
+  "https://github.com/anthropics/fastmcp",
+  "https://github.com/lastmile-ai/fastmcp"
+ ],
+ "readme_cortado": false,
+ "readme": "<div align=\"center\">\n\n<!-- omit in toc -->\n\n<picture>\n  <source width=\"550\" media=\"(prefers-color-scheme: dark)\" srcset=\"https://raw.githubusercontent.com/PrefectHQ/fastmcp/main/docs/assets/brand/f-watercolor-waves-4-dark.png\">\n  <source width=\"550\" media=\"(prefers-color-scheme: light)\" srcset=\"https://raw.githubusercontent.com/PrefectHQ/fastmcp/main/docs/assets/brand/f-watercolor-waves-4.png\">\n  <img width=\"550\" alt=\"FastMCP Logo\" src=\"https://raw.githubusercontent.com/PrefectHQ/fastmcp/main/docs/assets/brand/f-watercolor-waves-2.png\">\n</picture>\n\n# FastMCP 🚀\n\n<strong>Move fast and make things.</strong>\n\n*Made with 💙 by [Prefect](https://www.prefect.io/)*\n\n[![Docs](https://img.shields.io/badge/docs-gofastmcp.com-blue)](https://gofastmcp.com)\n[![Discord](https://img.shields.io/badge/community-discord-5865F2?logo=discord&logoColor=white)](https://discord.gg/uu8dJCgttd)\n[![PyPI - Version](https://img.shields.io/pypi/v/fastmcp.svg)](https://pypi.org/project/fastmcp)\n[![TypeScript](https://img.shields.io/npm/v/%40prefecthq%2Ffastmcp-ts?label=typescript&color=3178c6)](https://github.com/PrefectHQ/fastmcp-ts)\n[![Tests](https://github.com/PrefectHQ/fastmcp/actions/workflows/run-tests.yml/badge.svg)](https://github.com/PrefectHQ/fastmcp/actions/workflows/run-tests.yml)\n[![License](https://img.shields.io/github/license/PrefectHQ/fastmcp.svg)](https://github.com/PrefectHQ/fastmcp/blob/main/LICENSE)\n\n<a href=\"https://trendshift.io/repositories/21461\" target=\"_blank\"><img src=\"https://trendshift.io/api/badge/repositories/21461\" alt=\"prefecthq%2Ffastmcp | Trendshift\" style=\"width: 250px; height: 55px;\" width=\"250\" height=\"55\"/></a>\n</div>\n\n---\n\nThe [Model Context Protocol](https://modelcontextprotocol.io/) (MCP) connects LLMs to tools and data. FastMCP is a full MCP application framework for servers, clients, and interactive apps. A server starts with ordinary Python:\n\n```python\nfrom fastmcp import FastMCP\n\nmcp = FastMCP(\"Demo 🚀\")\n\n@mcp.tool\ndef add(a: int, b: int) -> int:\n    \"\"\"Add two numbers\"\"\"\n    return a + b\n\nif __name__ == \"__main__\":\n    mcp.run()\n```\n\n## Why FastMCP\n\nBuilding an effective MCP application is harder than it looks. FastMCP handles all of it. Declare a tool with a Python function, and the schema, validation, and documentation are generated automatically. Connect to a server with a URL, and transport negotiation, authentication, and protocol lifecycle are managed for you. You focus on your logic, and the MCP part just works: **with FastMCP, best practices are built in.**\n\n**That's why FastMCP is the standard framework for working with MCP.** FastMCP 1.0 was incorporated into the official MCP Python SDK in 2024. Today, the actively maintained standalone project is downloaded a million times a day, and some version of FastMCP powers 70% of MCP servers across all languages.\n\nFastMCP has three pillars:\n\n<table>\n<tr>\n<td align=\"center\" valign=\"top\" width=\"33%\">\n<a href=\"https://gofastmcp.com/servers/server\">\n<img src=\"https://raw.githubusercontent.com/PrefectHQ/fastmcp/main/docs/assets/images/servers-card.png\" alt=\"Servers\" />\n<br /><strong>Servers</strong>\n</a>\n<br />Expose tools, resources, and prompts to LLMs.\n</td>\n<td align=\"center\" valign=\"top\" width=\"33%\">\n<a href=\"https://gofastmcp.com/apps/overview\">\n<img src=\"https://raw.githubusercontent.com/PrefectHQ/fastmcp/main/docs/assets/images/apps-card.png\" alt=\"Apps\" />\n<br /><strong>Apps</strong>\n</a>\n<br />Give your tools interactive UIs rendered directly in the conversation.\n</td>\n<td align=\"center\" valign=\"top\" width=\"33%\">\n<a href=\"https://gofastmcp.com/clients/client\">\n<img src=\"https://raw.githubusercontent.com/PrefectHQ/fastmcp/main/docs/assets/images/clients-card.png\" alt=\"Clients\" />\n<br /><strong>Clients</strong>\n</a>\n<br />Connect to any MCP server — local or remote, programmatic or CLI.\n</td>\n</tr>\n</table>\n\n**[Servers](https://gofastmcp.com/servers/server)** wrap your Python functions into MCP-compliant tools, resources, and prompts. **[Clients](https://gofastmcp.com/clients/client)** connect to any server with full protocol support. And **[Apps](https://gofastmcp.com/apps/overview)** give your tools interactive UIs rendered directly in the conversation.\n\n**Building in TypeScript?** [FastMCP for TypeScript](https://github.com/PrefectHQ/fastmcp-ts) is the official counterpart, built and maintained by the same team. Same pillars, same ideas, `npm install @prefecthq/fastmcp-ts`.\n\nReady to build? Start with the [installation guide](https://gofastmcp.com/getting-started/installation) or jump straight to the [quickstart](https://gofastmcp.com/getting-started/quickstart).\n\n## Scale MCP with Horizon\n\nFastMCP handles the MCP application layer. **[Prefect Horizon](https://www.prefect.io/horizon?utm_source=github&utm_medium=readme&utm_campaign=readme_horizon&utm_content=readme_body)** is the enterprise MCP gateway for scaling servers and tools across teams, with centralized governance over how they are deployed, discovered, secured, and used.\n\nFastMCP and Horizon are built by the same team at [Prefect](https://www.prefect.io/).\n\nDeploy FastMCP servers from GitHub with branch previews and instant rollback. Create a private registry of every MCP your company uses. Secure access with SSO and tool-level RBAC. Get audit logs, observability, and governance across your MCP stack. Remix approved tools into purpose-built endpoints for teams and agents.\n\nStart with FastMCP. [Scale with Horizon →](https://www.prefect.io/horizon?utm_source=github&utm_medium=readme&utm_campaign=readme_horizon&utm_content=readme_cta)\n\n## Installation\n\nWe recommend adding FastMCP to your project with [uv](https://docs.astral.sh/uv/):\n\n```bash\nuv add fastmcp\n```\n\nFor full installation instructions, including verification and upgrading, see the [**Installation Guide**](https://gofastmcp.com/getting-started/installation).\n\n**Upgrading?** We have guides for:\n- [Upgrading from FastMCP 3](https://gofastmcp.com/getting-started/upgrading/from-fastmcp-3)\n- [Upgrading from FastMCP 2](https://gofastmcp.com/getting-started/upgrading/from-fastmcp-2)\n- [Upgrading from MCP SDK v1](https://gofastmcp.com/getting-started/upgrading/from-mcp-sdk-v1) or [v2](https://gofastmcp.com/getting-started/upgrading/from-mcp-sdk-v2)\n- [Upgrading from the low-level SDK v1](https://gofastmcp.com/getting-started/upgrading/from-low-level-sdk-v1) or [v2](https://gofastmcp.com/getting-started/upgrading/from-low-level-sdk-v2)\n\n## 📚 Documentation\n\nFastMCP's complete documentation is available at **[gofastmcp.com](https://gofastmcp.com)**, including detailed guides, API references, and advanced patterns.\n\nDocumentation is also available in [llms.txt format](https://llmstxt.org/), which is a simple markdown standard that LLMs can consume easily:\n\n- [`llms.txt`](https://gofastmcp.com/llms.txt) is essentially a sitemap, listing all the pages in the documentation.\n- [`llms-full.txt`](https://gofastmcp.com/llms-full.txt) contains the entire documentation. Note this may exceed the context window of your LLM.\n\n**Community:** Join our [Discord server](https://discord.gg/uu8dJCgttd) to connect with other FastMCP developers and share what you're building.\n\n## Contributing\n\nStart with [CONTRIBUTING.md](CONTRIBUTING.md) for accepted contributions and the issue-assignment workflow, then follow the [Contributing Guide](https://gofastmcp.com/development/contributing) for setup and validation. Agents should read [AGENTS.md](AGENTS.md).\n",
+ "fonte": "readme",
+ "respostas": [
+  {
+   "por": "ministral-14b",
+   "resposta": {
+    "serve": "stack",
+    "role": "MCP server/framework for agent tool/data access",
+    "place": [
+     "network_service",
+     "library"
+    ],
+    "mechanism": [
+     "n/a"
+    ],
+    "mcp": "yes",
+    "windows": "unknown",
+    "portuguese": "no",
+    "license": "Apache-2.0",
+    "maturity": "stable",
+    "doubt": false,
+    "evidence": "\"FastMCP is a full MCP application framework for servers, clients, and interactive apps... agents read and write through an MCP server.\""
+   }
+  },
+  {
+   "por": "gemma-4-31b",
+   "resposta": {
+    "serve": "stack",
+    "role": "Framework for building MCP servers, clients, and interactive apps",
+    "place": [
+     "library",
+     "network_service"
+    ],
+    "mechanism": [
+     "other",
+     "n/a"
+    ],
+    "mcp": "yes",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "stable",
+    "doubt": false,
+    "evidence": "FastMCP is a full MCP application framework for servers, clients, and interactive apps."
+   }
+  }
+ ]
+}

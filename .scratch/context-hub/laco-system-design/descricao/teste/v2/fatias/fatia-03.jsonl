@@ -1,0 +1,24 @@
+{"n": 3, "pergunta": "Qual a relação entre a **pasta não replicada** (que só existe em uma máquina) e a **iniciativa STRATA** se ela precisa de arquivos que só estão lá?", "tipo": "relacao"}
+{"n": 13, "pergunta": "Se um agente de código tentar acessar uma pasta não replicada através do MCP, ele recebe uma mensagem de erro ou a pasta é invisível?", "tipo": "falha"}
+{"n": 23, "pergunta": "Se o banco local (CouchDB) de uma máquina falhar temporariamente durante uma gravação de um agente, quem garante que a operação não seja perdida e como o sistema recupera o estado?", "tipo": "quem-usa"}
+{"n": 33, "pergunta": "Se o **Sincronizador** de uma máquina estiver desligado, mas o **Banco** local ainda estiver ativo e sincronizando com o par remoto, quem garante que as alterações feitas no disco pela outra máquina (através do **Sincronizador** dela) sejam refletidas no disco local quando o sincronizador local for ligado novamente?", "tipo": "responsavel"}
+{"n": 43, "pergunta": "Por que as **iniciativas de cliente** (como STRATA, VOEGOL) têm uma *casa* própria no hub, mas o Gustavo ainda precisa identificar manualmente qual é a próxima ação em cada uma, sem um sistema automático de priorização ou estado?", "tipo": "por-que"}
+{"n": 53, "pergunta": "Quando o maestro do Maestri tenta alterar algo no Acervo do maestro sem a minha autorização, o que acontece?", "tipo": "quando"}
+{"n": 63, "pergunta": "E se o Sincronizador de linha de comando tentar gravar um arquivo com ponto no nome que o Gustavo acabou de criar acidental no Obsidian?", "tipo": "falha"}
+{"n": 73, "pergunta": "Se um agente do Maestri precisar acessar arquivos da iniciativa **STRATA**, quem decide se ele pode ler ou editar e como isso é controlado?", "tipo": "responsavel"}
+{"n": 83, "pergunta": "Se um **cliente** (computador externo) tenta acessar o hub através de um **par** que está com a rede **Tailscale** instável, como o **MCP do banco** se comporta ao tentar servir os dados, e o que acontece se a conexão cair no meio de uma leitura?", "tipo": "relacao"}
+{"n": 93, "pergunta": "Se um par for desativado temporariamente, como o sistema avisa e o que o Gustavo precisa fazer para resolver?", "tipo": "ordem"}
+{"n": 103, "pergunta": "Se a camada de busca for atualizada em uma máquina, como a outra máquina garante que os embeddings locais permaneçam consistentes para a consulta dos agentes?", "tipo": "se-x"}
+{"n": 113, "pergunta": "O que muda entre buscar trechos pela Camada de busca do par ligado e o cliente baixar arquivos inteiros para procurar localmente?", "tipo": "diferenca"}
+{"n": 123, "pergunta": "Por que uma colisão real retida no banco desta máquina não impede que as demais notas continuem replicando para o outro par?", "tipo": "por-que"}
+{"n": 133, "pergunta": "Quem é responsável por garantir que as informações da iniciativa STRATA sejam gravadas na pasta certa sem eu pedir?", "tipo": "responsavel"}
+{"n": 143, "pergunta": "Se o **cliente** acessar o **hub** e tentar ler uma **colisão real** não resolvida em um arquivo da pasta `operations/`, como o **MCP do banco** exibe essa situação e o que o **cliente** pode fazer?", "tipo": "grupo"}
+{"n": 153, "pergunta": "E se a **checagem de início de sessão** do **Vigia** falhar silenciosamente porque o serviço que a executa está sobrecarregado, e um agente comece a trabalhar com uma **Nota de retomada** obsoleta sem que o Gustavo ou qualquer outro agente perceba?", "tipo": "falha"}
+{"n": 163, "pergunta": "Se o Gustavo criar uma pasta com um nome que começa com ponto (.) dentro do hub, o que acontece?", "tipo": "se-x"}
+{"n": 173, "pergunta": "O que a camada de busca não entrega para o agente se o embedding local ainda não estiver atualizado?", "tipo": "o-que-nao-faz"}
+{"n": 183, "pergunta": "Se um computador de sandbox de cliente acessar o hub por um par, o que garante que ele não consiga apagar a STRATA?", "tipo": "se-x"}
+{"n": 193, "pergunta": "Onde vive o contrato do hub para eu ler ao iniciar a sessão?", "tipo": "onde-vive"}
+{"n": 203, "pergunta": "Como o sincronizador interage com o banco e a vista Markdown?", "tipo": "relacao"}
+{"n": 213, "pergunta": "Qual a relação entre o Contrato do hub, o arquivo AGENTS.md e as Skills nas pastas globais quando um agente inicia a sessão?", "tipo": "relacao"}
+{"n": 223, "pergunta": "De que forma o MCP do banco garante que um agente não escreva em uma nota que Gustavo acabou de alterar durante o processo de leitura?", "tipo": "se-x"}
+{"n": 233, "pergunta": "Se o **banco** em uma máquina fica indisponível por tempo indeterminado (por exemplo, por um crash do CouchDB), como isso afeta o **maestro do Maestri** que estava usando o hub naquela máquina, e o que acontece quando o banco volta?", "tipo": "relacao"}

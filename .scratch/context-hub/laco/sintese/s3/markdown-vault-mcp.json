@@ -1,0 +1,64 @@
+{
+ "nome": "markdown-vault-mcp",
+ "url": "https://github.com/pvliesdonk/markdown-vault-mcp",
+ "papel": "disco+MCP pronto",
+ "windows": "nao_verificado (CI só ubuntu-latest; pyproject sem classificador de SO; docs citam Docker, uv, .deb/.rpm)",
+ "mcp": "yes: próprio, stdio (`markdown-vault-mcp serve`) e streamable HTTP (Docker), com ferramentas de leitura e escrita",
+ "portugues": "Sem stemmer/stopwords documentados (FTS5 SQLite; tokenizer não citado). Embeddings: fastembed (padrão BAAI/bge-small-en-v1.5, inglês, configurável), Ollama, OpenAI-compatível, Voyage; multilíngue só por configuração.",
+ "markdown_frontmatter": "yes: campos do frontmatter YAML viram filtros de busca; notas longas divididas por títulos; wikilinks e backlinks.",
+ "atualizacao": "Indexação por hash (arquivo inalterado não é reparseado); watcher watchdog com debounce de 2 s (extra file-watcher); reindex no boot (BOOT_REINDEX); ferramenta reindex manual.",
+ "embeddings_endpoint": "yes: provider openai com OPENAI_BASE_URL para qualquer endpoint OpenAI-compatível; Ollama; fastembed local.",
+ "recursos": "Python >=3.11; vetores em memória: ~70 MB para 23 mil chunks a 768 dim, ~900 MiB com 10x e 1024 dim; FastEmbed in-process ~1-2 GB; um vault por servidor.",
+ "licenca": "MIT",
+ "ultimo_release": "v5.1.0, 7 out 2026",
+ "atividade": "último commit 13 out 2026",
+ "maturidade": "stable (v5, ativo, CI e cobertura)",
+ "encaixe": "Serviço/MCP por máquina sobre a pasta, com busca híbrida, filtros de frontmatter e escrita. Impedimentos: Windows nativo não confirmado, escrita concorrente com o LiveSync, português sem tokenização dedicada.",
+ "evidencias": [
+  {
+   "campo": "mcp",
+   "url": "https://github.com/pvliesdonk/markdown-vault-mcp",
+   "citacao": "A client that runs a command (stdio). ... markdown-vault-mcp serve"
+  },
+  {
+   "campo": "markdown_frontmatter",
+   "url": "https://github.com/pvliesdonk/markdown-vault-mcp",
+   "citacao": "YAML frontmatter fields become search filters, and long notes are split at their headings."
+  },
+  {
+   "campo": "embeddings_endpoint",
+   "url": "https://github.com/pvliesdonk/markdown-vault-mcp",
+   "citacao": "Any OpenAI-compatible endpoint works with openai plus OPENAI_BASE_URL"
+  },
+  {
+   "campo": "atualizacao",
+   "url": "https://github.com/pvliesdonk/markdown-vault-mcp/blob/main/docs/reference/configuration.md",
+   "citacao": "MARKDOWN_VAULT_MCP_FILE_WATCHER_DEBOUNCE_S | 2.0 | Seconds of quiet after the last filesystem event before reindexing."
+  },
+  {
+   "campo": "atualizacao",
+   "url": "https://github.com/pvliesdonk/markdown-vault-mcp",
+   "citacao": "Indexing is hash-based: unchanged files are never re-parsed"
+  },
+  {
+   "campo": "recursos",
+   "url": "https://github.com/pvliesdonk/markdown-vault-mcp",
+   "citacao": "about 70 MB for 23,000 chunks at 768 dimensions, about 900 MiB at ten times that and 1,024 dimensions"
+  },
+  {
+   "campo": "windows",
+   "url": "https://github.com/pvliesdonk/markdown-vault-mcp/blob/main/.github/workflows/ci.yml",
+   "citacao": "runs-on: ubuntu-latest (jobs de teste)"
+  },
+  {
+   "campo": "licenca",
+   "url": "https://github.com/pvliesdonk/markdown-vault-mcp/blob/main/pyproject.toml",
+   "citacao": "license = \"MIT\""
+  }
+ ],
+ "nao_verificado": [
+  "Windows nativo",
+  "tokenizer FTS5 / português",
+  "modelo multilíngue recomendado"
+ ]
+}

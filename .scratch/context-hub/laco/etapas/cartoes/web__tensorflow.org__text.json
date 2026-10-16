@@ -1,0 +1,31 @@
+{
+ "chave": "web:tensorflow.org/text",
+ "urls": [
+  "https://www.tensorflow.org/text"
+ ],
+ "tipos": [
+  "library"
+ ],
+ "termos": [
+  "NLP",
+  "TF-IDF",
+  "Universal Sentence Encoder",
+  "TensorFlow"
+ ],
+ "mencoes": 1,
+ "familias": [
+  "mistral"
+ ],
+ "primeira_onda": 2,
+ "nomes": [
+  "Tensortflow Text (TF-IDF + Embeddings)"
+ ],
+ "resumos": [
+  "Biblioteca do TensorFlow para processamento de texto, incluindo modelos de embeddings (como Universal Sentence Encoder) e suporte a BM25 via integração com Elasticsearch ou FAISS."
+ ],
+ "fonte": "site",
+ "readme_status": "ok",
+ "readme_nome": "https://www.tensorflow.org/text",
+ "readme_cortado": false,
+ "readme": "[Text  |  TensorFlow]\n\nSkip to main content\n\n English\n\n Español\n\n Español – América Latina\n\n Français\n\n Indonesia\n\n Italiano\n\n Polski\n\n Português\n\n Português – Brasil\n\n Tiếng Việt\n\n Türkçe\n\n Русский\n\n עברית\n\n العربيّة\n\n فارسی\n\n हिंदी\n\n বাংলা\n\n ภาษาไทย\n\n 中文 – 简体\n\n 中文 – 繁體\n\n 日本語\n\n 한국어\n\n GitHub\n\n Sign in\n\n Text\n\n Keras and TensorFlow text processing tools\n\n TensorFlow\n\n Resources\n\n Text\n\n Stay organized with collections\n\n Save and categorize content based on your preferences.\n\nTensorFlow provides two libraries for text and natural language processing: KerasNLP and TensorFlow Text. KerasNLP is a high-level natural language processing (NLP) library that includes modern transformer-based models as well as lower-level tokenization utilities. It's the recommended solution for most NLP use cases. Built on TensorFlow Text, KerasNLP abstracts low-level text processing operations into an API that's designed for ease of use. But if you prefer not to work with the Keras API, or you need access to the lower-level text processing ops, you can use TensorFlow Text directly.\n\nimport keras_nlp\nimport tensorflow_datasets as tfds\n\nimdb_train, imdb_test = tfds.load(\n \"imdb_reviews\",\n split=[\"train\", \"test\"],\n as_supervised=True,\n batch_size=16,\n)\n# Load a BERT model.\nclassifier = keras_nlp.models.BertClassifier.from_preset(\"bert_base_en_uncased\")\n# Fine-tune on IMDb movie reviews.\nclassifier.fit(imdb_train, validation_data=imdb_test)\n# Predict two new examples.\nclassifier.predict([\"What an amazing movie!\", \"A total waste of my time.\"])\nSee the quickstart on GitHub.\n\nThe easiest way to get started processing text in TensorFlow is to use KerasNLP. KerasNLP is a natural language processing library that supports workflows built from modular components that have state-of-the-art preset weights and architectures. You can use KerasNLP components with their out-of-the-box configuration. If you need more control, you can easily customize components. KerasNLP emphasizes in-graph computation for all workflows so you can expect easy productionization using the TensorFlow ecosystem. \nKerasNLP is an extension of the core Keras API, and all the high-level KerasNLP modules are Layers or Models. If you're familiar with Keras, you already understand most of KerasNLP. \nTo learn more, see KerasNLP.\n\nimport tensorflow as tf\nimport tensorflow_text as tf_text\n\ndef preprocess(vocab_lookup_table, example_text):\n\n # Normalize text\n tf_text.normalize_utf8(example_text)\n\n # Tokenize into words\n word_tokenizer = tf_text.WhitespaceTokenizer()\n tokens = word_tokenizer.tokenize(example_text)\n\n # Tokenize into subwords\n subword_tokenizer = tf_text.WordpieceTokenizer(\n vocab_lookup_table, token_out_type=tf.int64)\n subtokens = subword_tokenizer.tokenize(tokens).merge_dims(1, -1)\n\n # Apply padding\n padded_inputs = tf_text.pad_model_inputs(subtokens, max_seq_length=16)\n return padded_inputs\n\nRun in a Notebook\n\nKerasNLP provides high-level text processing modules that are available as layers or models. If you need access to lower-level tools, you can use TensorFlow Text. TensorFlow Text provides you with a rich collection of ops and libraries to help you work with input in text form such as raw text strings or documents. These libraries can perform the preprocessing regularly required by text-based models, and include other features useful for sequence modeling. \nYou can extract powerful syntactic and semantic text features from inside the TensorFlow graph as input to your neural net. \nIntegrating preprocessing with the TensorFlow graph provides the following benefits:\n\nFacilitates a large toolkit for working with text\n\nAllows integration with a large suite of TensorFlow tools to support\n projects from problem definition through training, evaluation, and launch\n\nReduces complexity at serving time and prevents training-serving skew\n\nIn addition to the above, you do not need to worry about tokenization in training being\n different than the tokenization at inference, or managing preprocessing scripts.\n\nText Pre-processing\n\nEnd-to-end preprocessing Learn how to perform end-to-end BERT preprocessing on text.\n\nSubword tokenization Learn how to generate subword vocabularies from text.\n\nText Classification\n\nText Classification with BERT Learn how to classify text with the BERT model.\n\nText Classification with RNNs Classify text using Recurrent Neural Networks.\n\nText Generation\n\nText translation with transformer models Use Transformer models to translate text.\n\nText translation with seq2seq models Learn how to translate text with sequence-to-sequence models.\n\n TF Text on the TensorFlow Blog\n\n Read on the TensorFlow Blog\n\n TF Text on GitHub\n\n View on GitHub\n\n [[[\"Easy to understand\",\"easyToUnderstand\",\"thumb-up\"],[\"Solved my problem\",\"solvedMyProblem\",\"thumb-up\"],[\"Other\",\"otherUp\",\"thumb-up\"]],[[\"Missing the information I need\",\"missingTheInformationINeed\",\"thumb-down\"],[\"Too complicated / too many steps\",\"tooComplicatedTooManySteps\",\"thumb-down\"],[\"Out of date\",\"outOfDate\",\"thumb-down\"],[\"Samples / code issue\",\"samplesCodeIssue\",\"thumb-down\"],[\"Other\",\"otherDown\",\"thumb-down\"]],[],[],[]]"
+}

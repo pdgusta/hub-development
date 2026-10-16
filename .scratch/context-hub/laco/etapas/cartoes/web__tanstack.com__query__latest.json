@@ -1,0 +1,57 @@
+{
+ "chave": "web:tanstack.com/query/latest",
+ "urls": [
+  "https://tanstack.com/query/latest"
+ ],
+ "tipos": [
+  "library"
+ ],
+ "termos": [
+  "Tanstack Query",
+  "React",
+  "клиентский поиск",
+  "TanStack Query hybrid search",
+  "client-side caching",
+  "MCP integration",
+  "reactive caching",
+  "search aggregation",
+  "MCP proxy",
+  "client-side search",
+  "flexsearch",
+  "faiss",
+  "TanStack Query",
+  "busca client-side",
+  "filtros dinâmicos",
+  "MCP",
+  "offline search",
+  "IndexedDB vector storage",
+  "hybrid search frontend",
+  "offline caching",
+  "client-side sync"
+ ],
+ "mencoes": 7,
+ "familias": [
+  "mistral"
+ ],
+ "primeira_onda": 2,
+ "nomes": [
+  "Tanstack Query + LocalStorage (для простых случаев)",
+  "TanStack Query (com custom hooks para busca)",
+  "Tanstack Query (Stitching search layers)",
+  "TanStack Query (with custom search layer)",
+  "TanStack Query (com TanStack Table)",
+  "Tanstack Query（React Query） + LocalStorage/IndexedDB",
+  "Tanstack Query (with localStorage/IndexedDB)"
+ ],
+ "resumos": [
+  "Лёгкий клиентский слой для кеширования и фильтрации локальных данных (не для больших баз).",
+  "Biblioteca para gerenciamento de estado em aplicações React/Vue, pode ser usada para orquestrar busca híbrida (BM25 + embeddings) em camadas locais.",
+  "Client-side data-fetching layer to combine BM25 (Pyserini) and semantic (Weaviate/Sentence Transformers) results for hybrid ranking.",
+  "Client-side data-fetching library that can orchestrate local hybrid search (e.g., combining BM25 via `flexsearch` and embeddings via `faiss`)."
+ ],
+ "fonte": "site",
+ "readme_status": "ok",
+ "readme_nome": "https://tanstack.com/query/latest",
+ "readme_cortado": false,
+ "readme": "[TanStack Query]\n\nSearch\n\nAsk AI\n\nQuery Docs\n\nReact\nv5LatestSearch...\n K\n\nQueryMenuMenu\n\nBuilt in publicPartner-backedSponsor-supported\n\nReact\nv5Latest\n\nMenu\n\nHome\n\nBlog\n\nFrameworks\n\nContributors\n\nNPM Stats\n\nCommunity Resources\n\nGitHub \n\nDiscord \n\nQuery\nThe server-state standard for modern frontend apps.\nQuery gives async data a cache, a lifecycle, and declarative APIs for fetching, sharing, refetching, mutating, and observing server state.\nDocsCopy Query prompt\n\nquery client\n\nstale0/3 fresh['issues', 'router-cache']Router dashboardfetchingP04s stale['issues', 'project-detail']Project detailfetchingP08s stale['issues', 'offline-queue']Offline mutation queuefetchingP012s stale\n\nLive off\nBump priority\n\nuseQuery()\n['issues', 'router-cache']\nComponents declare the data they need. The cache coordinates fetches, subscribers, freshness, retries, and background updates.\nstatussuccess\nfetchStatusfetching\nisStaletrue\nobservers0\nstaleTime4,000\nupdatedprimed\nmutationidle\n2.7Btotal downloads88,063,082weekly downloads50,420GitHub stars\n\nServer and client state are not the same\n\nDeadly defaultsQuery keysState ManagementDevtools\n\nDeadly defaults kill boring work.\nCaching, request deduplication, retries, background refetching, window-focus updates, and garbage collection arrive wired for real applications.\n\nCache lifecycle\nKeep data useful while the network catches up.\nStale data can remain valuable. Render from cache immediately, refresh quietly, and clean up only after the last observer leaves.\n\n1\nFetch\nA query function resolves data while Query owns cancellation, retries, and deduplication.\n\n2\nShare\nEvery observer reads the same cache entry instead of issuing another request.\n\n3\nRevalidate\nStale data stays visible while a background request refreshes it.\n\n4\nCollect\nUnused data remains available briefly, then garbage collection removes it.\n\nMutations\nWrites update the world, then the cache.\nOptimistic UI, pending state, recovery, invalidation, and reconciliation stay explicit instead of scattering through components.\n\noptimistic write\nsetQueryData(['todos'], next)\n\nserver mutation\nawait saveTodo(todo)\n\ntargeted refresh\ninvalidateQueries({ queryKey: ['todos'] })\n\nrollback path\nonError: restoreSnapshot\n\nPartners\n\nGold\n\nSilver\n\nBronze\n\nOSS Sponsors\n\nSponsors get special perks like private discord channels, priority issue requests, and direct support!\nBecome a Sponsor\nView Previous Partners"
+}

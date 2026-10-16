@@ -1,0 +1,30 @@
+{
+ "chave": "web:lucene.apache.org/core/8_11_0/analyzers-common/org/apache/lucene/analysis/pt/portugueselightstemfilter.html",
+ "urls": [
+  "https://lucene.apache.org/core/8_11_0/analyzers-common/org/apache/lucene/analysis/pt/PortugueseLightStemFilter.html"
+ ],
+ "tipos": [
+  "library"
+ ],
+ "termos": [
+  "Lucene PortugueseLightStemFilter",
+  "LightStemmer",
+  "PortugueseLightStem"
+ ],
+ "mencoes": 1,
+ "familias": [
+  "gpt-oss"
+ ],
+ "primeira_onda": 3,
+ "nomes": [
+  "Portuguese Light Stemmer"
+ ],
+ "resumos": [
+  "A lightweight stemming filter for Portuguese in Apache Lucene, using a reduced rule set compared to the full Snowball stemmer."
+ ],
+ "fonte": "site",
+ "readme_status": "ok",
+ "readme_nome": "https://lucene.apache.org/core/8_11_0/analyzers-common/org/apache/lucene/analysis/pt/PortugueseLightStemFilter.html",
+ "readme_cortado": false,
+ "readme": "[PortugueseLightStemFilter (Lucene 8.11.0 API)]\n\nSkip navigation links\n\nOverview\n\nPackage\n\nClass\n\nUse\n\nTree\n\nDeprecated\n\nHelp\n\nPrev Class\n\nNext Class\n\nFrames\n\nNo Frames\n\nAll Classes\n\nSummary: \n\nNested | \n\nField | \n\nConstr | \n\nMethod\n\nDetail: \n\nField | \n\nConstr | \n\nMethod\n\norg.apache.lucene.analysis.pt\n\nClass PortugueseLightStemFilter\n\njava.lang.Object\n\norg.apache.lucene.util.AttributeSource\n\norg.apache.lucene.analysis.TokenStream\n\norg.apache.lucene.analysis.TokenFilter\n\norg.apache.lucene.analysis.pt.PortugueseLightStemFilter\n\nAll Implemented Interfaces:\nCloseable, AutoCloseable\n\npublic final class PortugueseLightStemFilter\nextends TokenFilter\n\nA TokenFilter that applies PortugueseLightStemmer to stem \n Portuguese words.\n\n To prevent terms from being stemmed use an instance of\n SetKeywordMarkerFilter or a custom TokenFilter that sets\n the KeywordAttribute before this TokenStream.\n\nNested Class Summary\n\nNested classes/interfaces inherited from class org.apache.lucene.util.AttributeSource\nAttributeSource.State\n\nField Summary\n\nFields inherited from class org.apache.lucene.analysis.TokenFilter\ninput\n\nFields inherited from class org.apache.lucene.analysis.TokenStream\nDEFAULT_TOKEN_ATTRIBUTE_FACTORY\n\nConstructor Summary\n\nConstructors \n\nConstructor and Description\n\nPortugueseLightStemFilter(TokenStream input) \n\nMethod Summary\n\nAll Methods Instance Methods Concrete Methods \n\nModifier and Type\nMethod and Description\n\nboolean\nincrementToken() \n\nMethods inherited from class org.apache.lucene.analysis.TokenFilter\nclose, end, reset\n\nMethods inherited from class org.apache.lucene.util.AttributeSource\naddAttribute, addAttributeImpl, captureState, clearAttributes, cloneAttributes, copyTo, endAttributes, equals, getAttribute, getAttributeClassesIterator, getAttributeFactory, getAttributeImplsIterator, hasAttribute, hasAttributes, hashCode, reflectAsString, reflectWith, removeAllAttributes, restoreState, toString\n\nMethods inherited from class java.lang.Object\nclone, finalize, getClass, notify, notifyAll, wait, wait, wait\n\nConstructor Detail\n\nPortugueseLightStemFilter\n\npublic PortugueseLightStemFilter(TokenStream input)\n\nMethod Detail\n\nincrementToken\n\npublic boolean incrementToken()\n throws IOException\n\nSpecified by:\nincrementToken in class TokenStream\nThrows:\nIOException\n\nSkip navigation links\n\nOverview\n\nPackage\n\nClass\n\nUse\n\nTree\n\nDeprecated\n\nHelp\n\nPrev Class\n\nNext Class\n\nFrames\n\nNo Frames\n\nAll Classes\n\nSummary: \n\nNested | \n\nField | \n\nConstr | \n\nMethod\n\nDetail: \n\nField | \n\nConstr | \n\nMethod\n\n Copyright © 2000-2021 Apache Software Foundation. All Rights Reserved."
+}

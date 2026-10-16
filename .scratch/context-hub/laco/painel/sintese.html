@@ -1,0 +1,831 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A mesa da busca</title>
+<link rel="stylesheet" href="fontes/sintese.css">
+<style>
+:root{
+  --mesa:#e6ebe0; --carta:#fffdf6; --carta2:#f4f1e6; --ink:#1d1b16; --mu:#6b6a5f; --fa:#a9a898; --line:#dedacb;
+  --leve:#2f6bd8; --alcance:#0b8f84; --robusta:#df4f17; --sandbox:#8a4ad4; --reserva:#6d7280;
+  --sim:#15934a; --parcial:#c98a0b; --nao:#d23a2c; --nv:#6c5ce7;
+  --ouro:#b88010; --verso1:#20324a; --verso2:#2c4566;
+  --grat:#0b8f84; --haiku:#c98a0b; --sonnet:#7a4fd6; --opus:#d23a2c;
+  --brilho:#f6f8f2; --pontos:rgba(29,27,22,.05);
+  --sombra:0 1px 1px rgba(40,38,20,.06),0 6px 18px rgba(40,38,20,.10);
+  --sombra2:0 2px 2px rgba(40,38,20,.08),0 18px 40px rgba(40,38,20,.18);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --mesa:#0d231d; --carta:#1a1f1c; --carta2:#232a26; --ink:#efece2; --mu:#9fa697; --fa:#5d6a60; --line:#2e3833;
+  --leve:#6d9cff; --alcance:#2fd0c0; --robusta:#ff7a3d; --sandbox:#b48cff; --reserva:#a3a9b5;
+  --sim:#3fd17b; --parcial:#f2b52e; --nao:#ff6b5c; --nv:#a49bff;
+  --ouro:#f2c14e; --verso1:#16243a; --verso2:#22385a;
+  --grat:#2fd0c0; --haiku:#f2b52e; --sonnet:#b48cff; --opus:#ff6b5c;
+  --brilho:#143a2f; --pontos:rgba(255,255,255,.035);
+  --sombra:0 1px 1px rgba(0,0,0,.3),0 8px 20px rgba(0,0,0,.35);
+  --sombra2:0 2px 2px rgba(0,0,0,.35),0 20px 44px rgba(0,0,0,.5);
+}}
+:root[data-theme="dark"]{
+  --mesa:#0d231d; --carta:#1a1f1c; --carta2:#232a26; --ink:#efece2; --mu:#9fa697; --fa:#5d6a60; --line:#2e3833;
+  --leve:#6d9cff; --alcance:#2fd0c0; --robusta:#ff7a3d; --sandbox:#b48cff; --reserva:#a3a9b5;
+  --sim:#3fd17b; --parcial:#f2b52e; --nao:#ff6b5c; --nv:#a49bff;
+  --ouro:#f2c14e; --verso1:#16243a; --verso2:#22385a;
+  --grat:#2fd0c0; --haiku:#f2b52e; --sonnet:#b48cff; --opus:#ff6b5c;
+  --brilho:#143a2f; --pontos:rgba(255,255,255,.035);
+  --sombra:0 1px 1px rgba(0,0,0,.3),0 8px 20px rgba(0,0,0,.35);
+  --sombra2:0 2px 2px rgba(0,0,0,.35),0 20px 44px rgba(0,0,0,.5);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--mesa)}
+body{font-family:"Bricolage Grotesque",system-ui,sans-serif;font-optical-sizing:auto;font-size:14px;line-height:1.35;color:var(--ink);
+  background:radial-gradient(1300px 760px at 50% 26%,var(--brilho) 0%,transparent 72%),radial-gradient(circle at 1px 1px,var(--pontos) 1px,transparent 1.4px) 0 0/7px 7px,var(--mesa);
+  min-height:100vh;padding-bottom:56px}
+.mono{font-family:"DM Mono",ui-monospace,monospace}
+a{color:inherit}
+.ic{width:18px;height:18px;flex:none;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.wrap{max-width:1540px;margin:0 auto;padding:0 24px}
+
+/* topo */
+.topo{padding:18px 0 8px}
+.topo .wrap{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.olho{font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--mu);font-weight:600}
+h1{font-size:40px;line-height:1;font-weight:800;font-stretch:78%;letter-spacing:-.01em;margin-top:4px}
+h1 em{font-style:normal;color:var(--robusta)}
+.links{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap}
+.bt{display:inline-flex;align-items:center;gap:7px;padding:7px 13px;border-radius:999px;background:var(--carta);border:1px solid var(--line);
+  font:600 12.5px "Bricolage Grotesque",sans-serif;color:var(--ink);text-decoration:none;cursor:pointer;box-shadow:var(--sombra)}
+.bt .ic{width:15px;height:15px}
+.bt:hover{border-color:var(--ink)}
+
+/* mesa */
+.jogo{display:grid;grid-template-columns:330px minmax(0,1fr) 330px;gap:26px;align-items:start;margin-top:8px}
+.rot{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--mu);display:flex;align-items:center;gap:8px}
+.rot::after{content:"";flex:1;height:1px;background:color-mix(in srgb,var(--mu) 35%,transparent)}
+.carta{background:var(--carta);border-radius:16px;box-shadow:var(--sombra);position:relative}
+
+/* descoberta */
+.regra{border:2px solid var(--ink);overflow:hidden;cursor:help}
+.regra .faixa{background:var(--ink);color:var(--carta);padding:8px 14px;display:flex;align-items:center;gap:8px;font-weight:800;font-stretch:80%;font-size:15px;letter-spacing:.04em;text-transform:uppercase}
+.regra .faixa .ic{width:16px;height:16px}
+.regra svg.dg{display:block;width:100%;height:auto}
+.troca{display:flex;align-items:center;justify-content:center;gap:10px;padding:0 12px 14px;font-weight:700;font-size:16px}
+.troca s{color:var(--mu);font-weight:500;text-decoration-thickness:2px;text-decoration-color:var(--nao)}
+.troca b{color:var(--robusta);font-size:20px;font-stretch:85%}
+.troca .seta{color:var(--mu)}
+
+/* lugares */
+.lugares{padding:12px 12px 10px;margin-top:16px}
+.lugares table{width:100%;border-collapse:separate;border-spacing:0}
+.lugares th{font-weight:600;font-size:10.5px;color:var(--mu);padding:0 0 6px;vertical-align:bottom;line-height:1.1}
+.lugares th.sit{width:44px;text-align:center;cursor:pointer;border-radius:8px;padding:4px 1px 6px}
+.lugares th.sit .ic{width:20px;height:20px;display:block;margin:0 auto 3px;color:var(--ink)}
+.lugares th.sit:hover,.lugares th.sit.on{background:color-mix(in srgb,var(--ink) 8%,transparent)}
+.lugares th.sit.on .ic{color:var(--robusta)}
+.lugares td{padding:5px 0;border-top:1px solid var(--line);text-align:center}
+.lugares td.nome{text-align:left;font-weight:600;font-size:13px;white-space:nowrap;cursor:help}
+.lugares td.nome span{display:inline-flex;align-items:center;gap:7px}
+.lugares td.nome .ic{width:17px;height:17px;color:var(--c,var(--mu))}
+.lugares tr.fora td.nome{color:var(--mu);font-weight:500;text-decoration:line-through;text-decoration-color:color-mix(in srgb,var(--nao) 60%,transparent)}
+.lugares tr.fora td.nome .ic{color:var(--fa)}
+.pt{display:inline-block;width:14px;height:14px;border-radius:50%;vertical-align:middle;cursor:help}
+.pt.s{background:var(--c,var(--sim))}
+.pt.p{background:linear-gradient(90deg,var(--c,var(--sim)) 50%,transparent 50%);box-shadow:inset 0 0 0 2px var(--c,var(--sim))}
+.pt.n{box-shadow:inset 0 0 0 1.5px var(--fa);opacity:.7}
+tr.fora .pt.s,tr.fora .pt.p{--c:var(--fa)}
+.legenda{display:flex;gap:12px;font-size:11px;color:var(--mu);margin-top:8px;align-items:center;flex-wrap:wrap}
+.legenda .pt{width:11px;height:11px;margin-right:4px;--c:var(--mu)}
+tr.apaga{opacity:.22}
+
+/* centro */
+.centro{display:flex;flex-direction:column;align-items:center}
+.trofeu{width:min(100%,600px);border:2px dashed color-mix(in srgb,var(--ouro) 75%,transparent);border-radius:16px;padding:10px 16px;display:flex;align-items:center;gap:14px;
+  background:color-mix(in srgb,var(--ouro) 9%,transparent);cursor:help}
+.trofeu .ic{width:36px;height:36px;color:var(--ouro);stroke-width:1.6}
+.trofeu .t1{font-weight:800;font-size:17px;font-stretch:85%}
+.trofeu .t2{font-size:12px;color:var(--mu)}
+.trofeu .gu{margin-left:auto;text-align:right}
+.trofeu .gu b{display:block;font-size:24px;font-weight:800;font-stretch:78%;color:var(--ouro);line-height:1}
+.trofeu .gu span{font-size:11px;color:var(--mu)}
+.duelo{display:grid;grid-template-columns:268px minmax(200px,1fr) 268px;align-items:center;margin-top:14px;width:100%;max-width:840px}
+
+/* carta de caminho */
+.cam{--c:var(--leve);border:3px solid var(--c);overflow:hidden;cursor:pointer;transition:transform .18s ease,box-shadow .18s ease,opacity .2s;text-align:left;font:inherit;color:inherit;width:100%;display:block}
+.cam:hover,.cam:focus-visible{transform:translateY(-4px) rotate(-.4deg);box-shadow:var(--sombra2);outline:none}
+.cam .cab{background:var(--c);color:#fff;padding:9px 12px 8px;display:flex;align-items:center;gap:8px}
+.cam .cab .nm{font-weight:800;font-stretch:76%;font-size:21px;line-height:1;text-transform:uppercase;letter-spacing:.01em}
+.cam .cab .naipes{margin-left:auto;display:flex;gap:4px}
+.cam .cab .naipes .ic{width:18px;height:18px}
+.cam .lema{font-size:12.5px;color:var(--mu);padding:8px 12px 0;font-style:italic}
+.cam .dias{display:flex;align-items:baseline;gap:6px;padding:0 12px}
+.cam .dias b{font:800 64px/1 "Bricolage Grotesque";font-stretch:75%;color:var(--c);letter-spacing:-.02em}
+.cam .dias span{font-size:13px;font-weight:700}
+.cam .dias i{font-style:normal;font-size:10.5px;color:var(--mu);margin-left:auto;text-align:right;max-width:80px;line-height:1.15}
+.attrs{list-style:none;margin:6px 10px 10px;border-radius:10px;background:var(--carta2);padding:3px 10px}
+.attrs li{display:flex;align-items:center;gap:8px;padding:6px 0;font-size:12.5px;border-top:1px dashed var(--line)}
+.attrs li:first-child{border-top:0}
+.attrs li>.ic{width:16px;height:16px;color:var(--mu)}
+.attrs li .k{color:var(--mu)}
+.attrs li .v{margin-left:auto;font-weight:700;display:flex;align-items:center;gap:4px}
+.attrs .v .ic{width:15px;height:15px;stroke-width:2.4}
+.ok{color:var(--sim)} .no{color:var(--nao)}
+.cov{display:flex;gap:3px}
+.cov .ic{width:15px;height:15px}
+.cov .s{color:var(--c)} .cov .p{color:var(--c);opacity:.5} .cov .n{color:var(--fa);opacity:.45}
+.cam .vence{margin:0 10px 12px;padding:7px 10px;border-radius:10px;border:1.5px solid var(--c);font-size:12px;font-weight:700;display:flex;gap:7px;align-items:center}
+.cam .vence .ic{width:16px;height:16px;color:var(--c)}
+.virar{position:absolute;right:12px;top:44px;background:var(--ink);color:var(--carta);font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;border-radius:999px;opacity:0;transition:opacity .15s}
+.cam:hover .virar,.cam:focus-visible .virar{opacity:1}
+
+/* bancada */
+.banca{display:flex;flex-direction:column;align-items:center;padding:0 8px;position:relative}
+.banca .tit{display:flex;align-items:center;gap:6px;font-weight:800;font-stretch:78%;font-size:17px;text-transform:uppercase;letter-spacing:.03em}
+.banca .tit .ic{width:22px;height:22px}
+.banca .sub{font-size:11.5px;color:var(--mu);margin-top:2px;text-align:center}
+.tok{display:flex;align-items:center;gap:8px;background:var(--carta);border:1.5px solid var(--ink);border-radius:999px;padding:5px 12px 5px 5px;font-weight:700;font-size:12.5px;box-shadow:var(--sombra);cursor:help;margin-top:10px;white-space:nowrap}
+.tok .mg{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font:500 10px/1 "DM Mono";color:#fff;flex:none}
+.vs{font:800 30px/1 "Bricolage Grotesque";font-stretch:75%;margin-top:6px;color:var(--ouro)}
+.medidas{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;margin-top:12px;width:100%;max-width:236px}
+.medidas div{display:flex;flex-direction:column;align-items:center;gap:3px;font-size:10px;text-align:center;color:var(--mu);line-height:1.1;cursor:help;padding:6px 2px;border-radius:8px;background:color-mix(in srgb,var(--carta) 75%,transparent)}
+.medidas .ic{width:18px;height:18px;color:var(--ink)}
+.corpus{margin-top:8px;font-size:12px;font-weight:700;text-align:center}
+.corpus span{font-family:"DM Mono";font-weight:500;color:var(--mu)}
+.rumo{display:flex;justify-content:space-between;width:100%;margin-top:10px;font:800 12.5px "Bricolage Grotesque";white-space:nowrap}
+.rumo .l{color:var(--alcance)} .rumo .r{color:var(--robusta)}
+
+/* fatos */
+.fatos{margin-top:22px;width:100%;max-width:640px}
+.fatos .linha{display:flex;justify-content:center;gap:22px;margin-top:10px}
+.fato{width:122px;perspective:700px;cursor:pointer;background:none;border:0;font:inherit;color:inherit;text-align:center;display:flex;flex-direction:column;justify-content:flex-start}
+.fatos .linha{align-items:flex-start}
+.fato .gira{position:relative;height:150px;transition:transform .5s;transform-style:preserve-3d}
+.fato:hover .gira,.fato:focus-visible .gira,.fato.aberto .gira{transform:rotateY(180deg)}
+.fato:focus-visible{outline:none}
+.fato .lado{position:absolute;inset:0;border-radius:12px;backface-visibility:hidden;box-shadow:var(--sombra);display:flex;flex-direction:column;align-items:center;justify-content:center}
+.fato .verso{background:repeating-linear-gradient(45deg,var(--verso1) 0 6px,var(--verso2) 6px 12px);border:4px solid var(--carta);color:#fff}
+.fato .verso b{font:800 56px/1 "Bricolage Grotesque";font-stretch:75%;color:#f2c14e;text-shadow:0 2px 0 rgba(0,0,0,.3)}
+.fato .verso span{font:500 11px "DM Mono";opacity:.8;margin-top:2px}
+.fato .frente{background:var(--carta);border:2px solid var(--ouro);transform:rotateY(180deg);padding:10px;font-size:11.5px;line-height:1.3;font-weight:600}
+.fato .frente .ic{width:22px;height:22px;color:var(--ouro);margin-bottom:6px}
+.fato .leg{margin-top:9px;font-weight:800;font-size:14px;line-height:1.1}
+.fato .leg2{font-size:11.5px;color:var(--mu)}
+
+/* coluna direita */
+.mini{--c:var(--leve);display:grid;grid-template-columns:8px 1fr auto;border:2px solid color-mix(in srgb,var(--c) 70%,transparent);overflow:hidden;cursor:pointer;width:100%;text-align:left;font:inherit;color:inherit;margin-top:12px;transition:transform .15s,box-shadow .15s,opacity .2s}
+.mini:nth-child(odd){transform:rotate(-.6deg)} .mini:nth-child(even){transform:rotate(.5deg)}
+.mini:hover,.mini:focus-visible{transform:translateY(-3px);box-shadow:var(--sombra2);outline:none}
+.mini .tira{background:var(--c)}
+.mini .meio{padding:9px 10px}
+.mini .nm{display:flex;align-items:center;gap:6px;font-weight:800;font-stretch:78%;font-size:17px;text-transform:uppercase;color:var(--c)}
+.mini .nm .ic{width:16px;height:16px}
+.mini .ki{font-size:12px;color:var(--mu);margin-top:3px;display:block}
+.mini .cov{margin-top:7px}
+.mini .d{padding:9px 12px;text-align:right;display:flex;flex-direction:column;justify-content:center;border-left:1px dashed var(--line)}
+.mini .d b{font:800 34px/1 "Bricolage Grotesque";font-stretch:75%;color:var(--c)}
+.mini .d span{font-size:10.5px;color:var(--mu)}
+.descarte{margin-top:20px;position:relative;height:196px}
+.morto{position:absolute;left:0;right:20px;background:var(--carta);border-radius:12px;border:1.5px solid var(--line);padding:9px 12px;display:flex;align-items:center;gap:10px;box-shadow:var(--sombra);cursor:help;color:var(--mu);transition:transform .15s}
+.morto .ic{width:22px;height:22px;color:var(--fa)}
+.morto b{display:block;color:var(--ink);font-size:13.5px;text-decoration:line-through;text-decoration-color:var(--nao);text-decoration-thickness:2px}
+.morto span{font-size:11.5px}
+.morto:nth-child(1){top:0;transform:rotate(-2.5deg)}
+.morto:nth-child(2){top:62px;left:14px;right:6px;transform:rotate(1.8deg)}
+.morto:nth-child(3){top:124px;left:4px;right:14px;transform:rotate(-1deg)}
+.morto:hover{z-index:3;transform:rotate(0) translateY(-2px);box-shadow:var(--sombra2)}
+.carimbo{position:absolute;right:-4px;top:-12px;z-index:4;border:2.5px solid var(--nao);color:var(--nao);font-weight:800;font-stretch:75%;font-size:15px;letter-spacing:.12em;padding:1px 9px;border-radius:6px;transform:rotate(9deg);background:color-mix(in srgb,var(--carta) 85%,transparent);pointer-events:none}
+
+/* montes (parte de baixo) */
+.divisa{display:flex;align-items:center;gap:14px;margin:38px 0 16px;color:var(--mu);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;font-weight:700}
+.divisa::before,.divisa::after{content:"";flex:1;height:1px;background:color-mix(in srgb,var(--mu) 35%,transparent)}
+.divisa .pilha{display:flex;padding-left:9px}
+.divisa .pilha i{width:16px;height:22px;border-radius:3px;background:var(--carta);border:1px solid var(--line);margin-left:-9px;box-shadow:var(--sombra)}
+.monte{padding:18px 20px}
+.monte h2{display:flex;align-items:baseline;gap:12px;font-weight:800;font-stretch:78%;font-size:22px;text-transform:uppercase;letter-spacing:.01em;flex-wrap:wrap}
+.monte h2 .big{font:800 64px/.85 "Bricolage Grotesque";font-stretch:72%}
+.monte h2 small{font-size:13px;font-weight:500;text-transform:none;color:var(--mu);font-stretch:100%}
+.regua-grid{display:grid;grid-template-columns:1.15fr 1fr 1fr;gap:28px;margin-top:12px}
+.sub2{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--mu);margin:14px 0 7px;display:flex;align-items:center;gap:6px}
+.sub2:first-child{margin-top:0}
+.crit{display:grid;grid-template-columns:minmax(0,1fr) repeat(6,26px) 46px;align-items:center;gap:5px 4px}
+.crit .h{display:flex;justify-content:center;color:var(--mu);cursor:help}
+.crit .h .ic{width:17px;height:17px}
+.crit .nm{font-weight:700;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:help}
+.crit .mt{font:500 10.5px "DM Mono";color:var(--mu);text-align:right}
+.crit .lin{grid-column:1/-1;height:1px;background:var(--line)}
+.pip{width:21px;height:21px;border-radius:6px;display:grid;place-items:center;margin:auto;cursor:help}
+.pip .ic{width:13px;height:13px;stroke-width:2.8}
+.pip.s{background:color-mix(in srgb,var(--sim) 18%,transparent);color:var(--sim)}
+.pip.n{background:color-mix(in srgb,var(--nao) 15%,transparent);color:var(--nao)}
+.pip.v{box-shadow:inset 0 0 0 1.5px var(--nv);color:var(--nv);font:500 11px "DM Mono"}
+.chips{display:flex;flex-wrap:wrap;gap:5px}
+.chip{display:inline-flex;align-items:center;gap:5px;padding:3px 9px;border-radius:999px;font-size:12px;font-weight:600;background:var(--carta2);border:1px solid var(--line);cursor:help;white-space:nowrap}
+.chip.ok{background:color-mix(in srgb,var(--sim) 12%,var(--carta));border-color:color-mix(in srgb,var(--sim) 40%,transparent)}
+.chip.no{background:color-mix(in srgb,var(--nao) 10%,var(--carta));border-color:color-mix(in srgb,var(--nao) 35%,transparent)}
+.chip.pa{background:color-mix(in srgb,var(--parcial) 12%,var(--carta));border-color:color-mix(in srgb,var(--parcial) 40%,transparent)}
+.chip.mu{color:var(--mu)}
+.chip .ic{width:12px;height:12px;stroke-width:2.6}
+.chip.ok .ic{color:var(--sim)} .chip.no .ic{color:var(--nao)} .chip.pa .ic{color:var(--parcial)}
+.chip.st{text-decoration:line-through;text-decoration-color:var(--nao);color:var(--mu)}
+.parede{display:grid;grid-template-columns:.8fr 40px 1.2fr;align-items:stretch;margin-top:4px}
+.lado2{border-radius:12px;padding:10px;background:var(--carta2)}
+.lado2 h4{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;display:flex;align-items:center;gap:6px;margin-bottom:6px}
+.muro{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px}
+.muro .ic{width:26px;height:26px}
+.muro i{width:3px;flex:1;background:repeating-linear-gradient(var(--ink) 0 6px,transparent 6px 10px);opacity:.35}
+.grande-x{font:800 48px/1 "Bricolage Grotesque";color:var(--nao)}
+.emb{display:flex;gap:12px;align-items:center;margin-top:4px}
+.emb .n{font:800 40px/1 "Bricolage Grotesque";font-stretch:75%;color:var(--alcance);cursor:help}
+.emb .t{font-size:12px;color:var(--mu)} .emb .t b{color:var(--ink);font-size:13.5px;display:block}
+.grupos{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.grupo{border-radius:12px;padding:9px 10px;background:var(--carta2);border-top:4px solid var(--g,var(--mu))}
+.grupo h4{font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px;display:flex;align-items:center;gap:6px}
+.grupo h4 .ic{width:15px;height:15px;color:var(--g)}
+.reforca{margin-top:10px;display:flex;align-items:center;gap:8px;font-weight:700;font-size:13px;padding:8px 10px;border-radius:10px;border:1.5px dashed var(--robusta);cursor:help}
+.reforca .ic{color:var(--robusta)}
+
+.baixo{display:grid;grid-template-columns:1.08fr 1fr;gap:22px;margin-top:22px}
+.areas{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:12px}
+.area{border-radius:12px;background:var(--carta2);padding:8px 9px;cursor:help;display:flex;flex-direction:column;gap:6px;min-height:92px}
+.area .top{display:flex;align-items:baseline;gap:6px}
+.area .top b{font:800 26px/1 "Bricolage Grotesque";font-stretch:75%}
+.area .top span{font-size:11.5px;font-weight:700;line-height:1.1}
+.area .chips{gap:3px}
+.area .chip{font-size:11px;padding:2px 7px}
+.py{display:flex;align-items:center;gap:12px;margin-top:12px;padding:10px 12px;border-radius:12px;background:color-mix(in srgb,var(--sim) 10%,var(--carta2));cursor:help}
+.py svg{width:34px;height:34px;flex:none}
+.py b{font-size:15px}
+.py span{font-size:12px;color:var(--mu)}
+.conc{margin-top:12px;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.conc .chip{background:transparent;border-style:dashed}
+
+.funil{margin-top:14px;display:flex;align-items:flex-end;gap:6px}
+.degrau{flex:1;display:flex;flex-direction:column;align-items:center;cursor:help;min-width:0}
+.degrau .bloco{width:100%;max-width:62px;border-radius:5px;background:repeating-linear-gradient(0deg,var(--carta) 0 3px,var(--line) 3px 4px);border:1.5px solid color-mix(in srgb,var(--q) 75%,transparent);border-bottom-width:5px;box-shadow:var(--sombra);transition:transform .15s}
+.degrau b{font:800 20px/1 "Bricolage Grotesque";font-stretch:75%;margin-top:6px}
+.degrau span{font-size:10.5px;color:var(--mu);text-align:center;line-height:1.1}
+.degrau:hover .bloco{transform:translateY(-3px)}
+.quem{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.quem div{display:flex;align-items:center;gap:7px;cursor:help;padding:5px 11px 5px 8px;border-radius:999px;background:var(--carta2)}
+.quem i{width:10px;height:10px;border-radius:50%;background:var(--q)}
+.quem b{font:800 18px/1 "Bricolage Grotesque";font-stretch:78%}
+.quem span{font-size:11px;color:var(--mu)}
+.dupla{display:grid;grid-template-columns:1.2fr 1fr;gap:18px;margin-top:6px}
+.barra{display:grid;grid-template-columns:110px 1fr 36px;align-items:center;gap:8px;font-size:12px;margin-top:6px;cursor:help}
+.barra .tr{height:12px;border-radius:999px;background:var(--carta2);overflow:hidden}
+.barra .tr i{display:block;height:100%;border-radius:999px;background:var(--q)}
+.barra b{font:500 12px "DM Mono";text-align:right}
+.erro{display:flex;gap:18px;margin-top:4px}
+.erro div{cursor:help}
+.erro b{font:800 36px/1 "Bricolage Grotesque";font-stretch:75%}
+.erro span{display:block;font-size:11.5px;color:var(--mu)}
+
+/* dica e carta ampliada */
+#dica{position:fixed;z-index:50;max-width:350px;background:var(--ink);color:var(--carta);padding:10px 12px;border-radius:10px;font-size:12.5px;line-height:1.4;pointer-events:none;opacity:0;transition:opacity .12s;box-shadow:var(--sombra2);left:0;top:0}
+#dica.on{opacity:1}
+#dica b{color:#f2c14e}
+:root[data-theme="dark"] #dica b{color:#8a5a00}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) #dica b{color:#8a5a00}}
+#dica ul,#dica ol{margin:4px 0 0 16px}
+.fundo{position:fixed;inset:0;z-index:40;background:rgba(0,0,0,.55);display:none;align-items:center;justify-content:center;padding:20px}
+.fundo.on{display:flex}
+.ampla{--c:var(--leve);width:min(940px,100%);max-height:calc(100vh - 40px);overflow:auto;border:4px solid var(--c);border-radius:20px;background:var(--carta);box-shadow:var(--sombra2);animation:entra .28s cubic-bezier(.2,.9,.3,1.2)}
+@keyframes entra{from{transform:scale(.85) rotate(-3deg);opacity:0}to{transform:none;opacity:1}}
+.ampla .cab{background:var(--c);color:#fff;padding:14px 18px;display:flex;align-items:center;gap:12px}
+.ampla .cab .ic{width:22px;height:22px}
+.ampla .cab .nm{font-weight:800;font-stretch:75%;font-size:32px;text-transform:uppercase;line-height:1}
+.ampla .cab .ds{margin-left:auto;text-align:right}
+.ampla .cab .ds b{font:800 40px/1 "Bricolage Grotesque";font-stretch:72%}
+.ampla .cab .ds span{display:block;font-size:11px;opacity:.9}
+.ampla .fecha{background:rgba(255,255,255,.22);border:0;color:#fff;width:34px;height:34px;border-radius:50%;cursor:pointer;display:grid;place-items:center}
+.ampla .corpo{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:14px 18px 20px}
+.bloco2{background:var(--carta2);border-radius:12px;padding:10px 12px}
+.bloco2 h5{display:flex;align-items:center;gap:6px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:800;margin-bottom:6px;color:var(--c)}
+.bloco2 h5 .ic{width:15px;height:15px}
+.bloco2 ul{list-style:none}
+.bloco2 li{font-size:12.5px;padding:3px 0 3px 12px;position:relative;line-height:1.35}
+.bloco2 li::before{content:"";position:absolute;left:0;top:10px;width:5px;height:5px;border-radius:50%;background:var(--c)}
+.bloco2.largo{grid-column:span 2}
+.ampla .cobre{display:flex;gap:16px;padding:12px 18px 0;flex-wrap:wrap}
+.ampla .cobre div{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:600}
+.ampla .cobre .ic{width:18px;height:18px}
+
+.foco .cam:not(.vale),.foco .mini:not(.vale){opacity:.25;filter:grayscale(.8)}
+
+.jogo>*,.duelo>*,.baixo>*,.regua-grid>*{min-width:0}
+@media (max-width:1250px){
+  .jogo{grid-template-columns:minmax(0,1fr)}
+  .regua-grid,.baixo{grid-template-columns:1fr}
+}
+@media (max-width:760px){
+  h1{font-size:30px}
+  body{overflow-x:clip}
+  .duelo{grid-template-columns:minmax(0,1fr);gap:18px}
+  .lugares{overflow-x:auto}
+  .lugares th.sit{width:36px;font-size:9.5px}
+  .lugares td.nome{font-size:12px}
+  .trofeu{flex-wrap:wrap}.trofeu .gu{margin-left:0;text-align:left}
+  .crit{grid-template-columns:minmax(0,1fr) repeat(6,22px) 0}
+  .crit .mt{display:none}
+  .funil b{font-size:15px}.degrau span{font-size:9px}
+  
+  .areas{grid-template-columns:repeat(2,1fr)}
+  .ampla .corpo{grid-template-columns:1fr}.bloco2.largo{grid-column:auto}
+  .dupla,.grupos,.parede{grid-template-columns:1fr}
+  .muro{flex-direction:row;padding:6px 0}.muro i{height:3px;width:auto;flex:1}
+  .fatos .linha{gap:10px}.fato{width:96px}
+  .wrap{padding:0 16px}
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-agente" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2.5"/><path d="M7 9l3 3-3 3M12.5 15h4.5"/></symbol>
+  <symbol id="i-cliente" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="10.5" rx="1.5"/><path d="M2 19h20M10 9.5h4M12 7.5v4"/></symbol>
+  <symbol id="i-sandbox" viewBox="0 0 24 24"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M4 7.5l8 4.5 8-4.5M12 12v9"/></symbol>
+  <symbol id="i-tailfora" viewBox="0 0 24 24"><g fill="currentColor" stroke="none"><circle cx="6" cy="6" r="1.9"/><circle cx="12" cy="6" r="1.9"/><circle cx="18" cy="6" r="1.9" opacity=".35"/><circle cx="6" cy="12" r="1.9"/><circle cx="12" cy="12" r="1.9"/><circle cx="18" cy="12" r="1.9"/><circle cx="6" cy="18" r="1.9" opacity=".35"/><circle cx="12" cy="18" r="1.9"/><circle cx="18" cy="18" r="1.9" opacity=".35"/></g><path d="M3 21L21 3"/></symbol>
+  <symbol id="i-obsfecha" viewBox="0 0 24 24"><path d="M9.5 2.5l6.5 3.8 2.6 7.6-5.2 7.3-6.2-2-2.3-7.9z"/><path d="M9.5 2.5l2 8 7.1 3.4M11.5 10.5l-4.3 8.8"/><path d="M3 21L21 3" stroke-width="2.2"/></symbol>
+  <symbol id="i-obsidian" viewBox="0 0 24 24"><path d="M9.5 2.5l6.5 3.8 2.6 7.6-5.2 7.3-6.2-2-2.3-7.9z"/><path d="M9.5 2.5l2 8 7.1 3.4M11.5 10.5l-4.3 8.8"/></symbol>
+  <symbol id="i-disco" viewBox="0 0 24 24"><path d="M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></symbol>
+  <symbol id="i-chave" viewBox="0 0 24 24"><circle cx="7.5" cy="12" r="4"/><path d="M11.5 12H21M18 12v3.5M21 12v2.5"/></symbol>
+  <symbol id="i-repasse" viewBox="0 0 24 24"><path d="M4 8h14l-3.5-3.5M20 16H6l3.5 3.5"/></symbol>
+  <symbol id="i-rede" viewBox="0 0 24 24"><rect x="4" y="3.5" width="16" height="7" rx="1.5"/><rect x="4" y="13.5" width="16" height="7" rx="1.5"/><path d="M8 7h.01M8 17h.01M12 7h4M12 17h4"/></symbol>
+  <symbol id="i-pacote" viewBox="0 0 24 24"><path d="M4 7.5l8-4 8 4v9l-8 4-8-4z"/><path d="M4 7.5l8 4 8-4M12 11.5v9M8 5.5l8 4"/></symbol>
+  <symbol id="i-banco" viewBox="0 0 24 24"><ellipse cx="12" cy="5.5" rx="7" ry="2.5"/><path d="M5 5.5v13c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5v-13M5 12c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5"/></symbol>
+  <symbol id="i-cadeado" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="9.5" rx="2"/><path d="M8 11V8a4 4 0 018 0v3M12 15v2"/></symbol>
+  <symbol id="i-win" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M3 5.3l7.6-1.1v7.3H3zM11.7 4.1L21 2.8v8.7h-9.3zM3 12.5h7.6v7.4L3 18.8zM11.7 12.5H21v8.8l-9.3-1.3z"/></symbol>
+  <symbol id="i-pt" viewBox="0 0 24 24"><path d="M3.5 4.5h17v11.5H10l-4.5 4v-4h-2z"/><text x="12" y="13.4" font-size="8" text-anchor="middle" fill="currentColor" stroke="none" font-weight="800" font-family="DM Mono,monospace">pt</text></symbol>
+  <symbol id="i-api" viewBox="0 0 24 24"><path d="M9 3v5M15 3v5M6 8h12v3a6 6 0 01-12 0zM12 17v4"/></symbol>
+  <symbol id="i-olho" viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></symbol>
+  <symbol id="i-filtro" viewBox="0 0 24 24"><path d="M3 4h18l-7 8.5V19l-4 2v-8.5z"/></symbol>
+  <symbol id="i-mcp" viewBox="0 0 24 24"><path d="M4 11.5l7.2-7.2a3 3 0 014.3 4.2l-5.6 5.7"/><path d="M9.6 14.2l5.9-5.9a3 3 0 014.2 4.2l-6 6a.9.9 0 000 1.3l1.3 1.3"/><path d="M13.4 6.4l-5.9 5.9a3 3 0 004.2 4.2l5.9-5.9"/></symbol>
+  <symbol id="i-trofeu" viewBox="0 0 24 24"><path d="M8 3.5h8v5.5a4 4 0 01-8 0zM8 5.5H4.5a3.5 3.5 0 003.7 4.4M16 5.5h3.5a3.5 3.5 0 01-3.7 4.4M12 13v3.5M8.5 21h7M10 16.5h4V21h-4z"/></symbol>
+  <symbol id="i-bancada" viewBox="0 0 24 24"><path d="M9 3h6M10 3v6l-5.2 9.2A2 2 0 006.5 21h11a2 2 0 001.7-2.8L14 9V3"/><path d="M7.3 15h9.4"/></symbol>
+  <symbol id="i-alvo" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1" fill="currentColor"/></symbol>
+  <symbol id="i-camadas" viewBox="0 0 24 24"><path d="M12 3l9 5-9 5-9-5z"/><path d="M3 13l9 5 9-5"/></symbol>
+  <symbol id="i-nuvem" viewBox="0 0 24 24"><path d="M7 18.5a4.5 4.5 0 01-.6-9A6 6 0 0118 8a4.6 4.6 0 01-1 10.5z"/></symbol>
+  <symbol id="i-raio" viewBox="0 0 24 24"><path d="M13 2.5L5 13.5h6l-1 8 8-11h-6z"/></symbol>
+  <symbol id="i-chip" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="1.5"/><path d="M9 3v3M15 3v3M9 18v3M15 18v3M3 9h3M3 15h3M18 9h3M18 15h3"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+  <symbol id="i-ok" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7"/></symbol>
+  <symbol id="i-til" viewBox="0 0 24 24"><path d="M5 13.5c2-3 4-3 7 0s5 3 7 0"/></symbol>
+  <symbol id="i-doc" viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4M9 12h6M9 16h6"/></symbol>
+  <symbol id="i-lista" viewBox="0 0 24 24"><path d="M9 6h11M9 12h11M9 18h11"/><circle cx="4.5" cy="6" r="1" fill="currentColor"/><circle cx="4.5" cy="12" r="1" fill="currentColor"/><circle cx="4.5" cy="18" r="1" fill="currentColor"/></symbol>
+  <symbol id="i-tema" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 3.5a8.5 8.5 0 010 17z" fill="currentColor"/></symbol>
+  <symbol id="i-pecas" viewBox="0 0 24 24"><path d="M10 4h4v3a2 2 0 104 0V4h2v6h-3a2 2 0 100 4h3v6h-6v-3a2 2 0 10-4 0v3H4v-6h3a2 2 0 100-4H4V4z"/></symbol>
+  <symbol id="i-obra" viewBox="0 0 24 24"><path d="M3 21h18M5 21V10l7-5 7 5v11M9 21v-6h6v6"/></symbol>
+  <symbol id="i-alerta" viewBox="0 0 24 24"><path d="M12 3l9.5 17h-19z"/><path d="M12 10v4.5M12 17.5h.01"/></symbol>
+  <symbol id="i-pausa" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M10 9v6M14 9v6"/></symbol>
+  <symbol id="i-peso" viewBox="0 0 24 24"><path d="M6.5 8h11l2.5 12H4zM9.5 8a2.5 2.5 0 015 0"/></symbol>
+  <symbol id="i-lampada" viewBox="0 0 24 24"><path d="M9 18h6M10 21h4M12 3a6 6 0 00-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0012 3z"/></symbol>
+</svg>
+
+<header class="topo">
+  <div class="wrap">
+    <div>
+      <div class="olho">pesquisa ampla · síntese · 13–14/10/2026</div>
+      <h1>Onde a busca do hub vai <em>morar?</em></h1>
+    </div>
+    <nav class="links">
+      <a class="bt" href="../../../../exploracao/anexos/pesquisa-50-inventario.md" data-tip="inv"><svg class="ic"><use href="#i-lista"/></svg>inventário completo</a>
+      <a class="bt" href="../../../../exploracao/anexos/pesquisa-50-sintese.md" data-tip="txt"><svg class="ic"><use href="#i-doc"/></svg>síntese em texto</a>
+      <button class="bt" id="tema" type="button"><svg class="ic"><use href="#i-tema"/></svg>tema</button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+<section class="jogo" id="jogo">
+
+  <!-- ESQUERDA: a regra da casa e os 6 lugares -->
+  <div>
+    <div class="rot">regra da casa</div>
+    <div class="carta regra" data-tip="desc" style="margin-top:10px">
+      <div class="faixa"><svg class="ic"><use href="#i-lampada"/></svg>a descoberta</div>
+      <svg class="dg" viewBox="0 0 320 160" aria-label="O CouchDB só tem pedaços cifrados; o MCP tem a frase-senha e enxerga o texto">
+        <g transform="translate(14,24)">
+          <ellipse cx="44" cy="10" rx="40" ry="10" fill="none" stroke="var(--mu)" stroke-width="2"/>
+          <path d="M4 10v74c0 5.5 18 10 40 10s40-4.5 40-10V10" fill="none" stroke="var(--mu)" stroke-width="2"/>
+          <g fill="var(--mu)" opacity=".5">
+            <rect x="14" y="28" width="14" height="10" rx="2"/><rect x="31" y="28" width="22" height="10" rx="2"/><rect x="56" y="28" width="16" height="10" rx="2"/>
+            <rect x="14" y="42" width="24" height="10" rx="2"/><rect x="41" y="42" width="12" height="10" rx="2"/><rect x="56" y="42" width="16" height="10" rx="2"/>
+            <rect x="14" y="56" width="12" height="10" rx="2"/><rect x="29" y="56" width="20" height="10" rx="2"/><rect x="52" y="56" width="20" height="10" rx="2"/>
+            <rect x="14" y="70" width="30" height="10" rx="2"/><rect x="47" y="70" width="25" height="10" rx="2"/>
+          </g>
+          <circle cx="78" cy="4" r="14" fill="var(--carta)" stroke="var(--nao)" stroke-width="2"/>
+          <use href="#i-cadeado" x="68" y="-6" width="20" height="20" class="ic" style="color:var(--nao)"/>
+          <text x="44" y="114" text-anchor="middle" font-size="13" font-weight="800" fill="var(--ink)">CouchDB</text>
+          <text x="44" y="128" text-anchor="middle" font-size="11" fill="var(--mu)">pedaços cifrados</text>
+        </g>
+        <path d="M108 72 C140 72 150 72 180 72" fill="none" stroke="var(--mu)" stroke-width="2" stroke-dasharray="4 4"/>
+        <path d="M176 66l7 6-7 6" fill="none" stroke="var(--mu)" stroke-width="2"/>
+        <text x="145" y="62" text-anchor="middle" font-size="10.5" fill="var(--mu)">mudanças</text>
+        <g transform="translate(136,84)"><circle cx="11" cy="11" r="8" fill="none" stroke="var(--nao)" stroke-width="2"/><path d="M17 17l6 6M3 19L19 3" stroke="var(--nao)" stroke-width="2"/></g>
+        <text x="147" y="124" text-anchor="middle" font-size="10.5" fill="var(--nao)" font-weight="700">busca do</text>
+        <text x="147" y="137" text-anchor="middle" font-size="10.5" fill="var(--nao)" font-weight="700">banco: cega</text>
+        <g transform="translate(190,38)">
+          <rect x="0" y="0" width="68" height="68" rx="16" fill="color-mix(in srgb,var(--robusta) 14%,var(--carta))" stroke="var(--robusta)" stroke-width="2.5"/>
+          <use href="#i-chave" x="14" y="14" width="40" height="40" class="ic" style="color:var(--robusta)"/>
+          <text x="34" y="86" text-anchor="middle" font-size="13" font-weight="800" fill="var(--ink)">MCP</text>
+          <text x="34" y="100" text-anchor="middle" font-size="11" fill="var(--mu)">frase-senha</text>
+        </g>
+        <path d="M262 72h18" stroke="var(--robusta)" stroke-width="2.5"/><path d="M276 66l7 6-7 6" fill="none" stroke="var(--robusta)" stroke-width="2.5"/>
+        <g transform="translate(288,50)">
+          <rect x="0" y="0" width="26" height="34" rx="3" fill="var(--carta)" stroke="var(--ink)" stroke-width="2"/>
+          <path d="M6 9h14M6 15h14M6 21h14M6 27h9" stroke="var(--ink)" stroke-width="1.8"/>
+          <text x="13" y="50" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">texto</text>
+        </g>
+      </svg>
+      <div class="troca"><s>dentro do banco</s><span class="seta">→</span><b>dentro do MCP</b></div>
+    </div>
+
+    <div class="carta lugares" id="lugares">
+      <div class="rot" style="margin-bottom:8px">6 lugares × 5 situações</div>
+      <table>
+        <thead><tr><th></th>
+          <th class="sit" data-s="0" data-tip="s0"><svg class="ic"><use href="#i-agente"/></svg>agente</th>
+          <th class="sit" data-s="1" data-tip="s1"><svg class="ic"><use href="#i-cliente"/></svg>cliente</th>
+          <th class="sit" data-s="2" data-tip="s2"><svg class="ic"><use href="#i-sandbox"/></svg>sandbox</th>
+          <th class="sit" data-s="3" data-tip="s3"><svg class="ic"><use href="#i-tailfora"/></svg>tailnet caiu</th>
+          <th class="sit" data-s="4" data-tip="s4"><svg class="ic"><use href="#i-obsfecha"/></svg>Obsidian fechado</th>
+        </tr></thead>
+        <tbody id="tl"></tbody>
+      </table>
+      <div class="legenda"><span><i class="pt s"></i>atende</span><span><i class="pt p"></i>em parte</span><span><i class="pt n"></i>não</span><span style="margin-left:auto">ícone = filtro</span></div>
+    </div>
+  </div>
+
+  <!-- CENTRO: o duelo -->
+  <div class="centro">
+    <div class="trofeu" data-tip="trofeu">
+      <svg class="ic"><use href="#i-trofeu"/></svg>
+      <div><div class="t1">a carta vencedora vai aqui</div><div class="t2">ticket "Camada de busca"</div></div>
+      <div class="gu"><b>Gustavo decide</b><span>o teste dá o placar</span></div>
+    </div>
+
+    <div class="duelo">
+      <button class="carta cam" id="c-alcance" data-k="alcance" type="button"></button>
+
+      <div class="banca">
+                <div class="tit"><svg class="ic"><use href="#i-bancada"/></svg>teste de bancada</div>
+        <div class="sub">o resultado escolhe a carta</div>
+        <div class="tok" data-tip="ohs"><span class="mg" style="background:#7c3aed">OHS</span>obsidian-hybrid-search</div>
+        <div class="vs">×</div>
+        <div class="tok" data-tip="mm" style="margin-top:2px"><span class="mg" style="background:#0f766e">MM</span>memtomem</div>
+        <div class="medidas">
+          <div data-tip="m1"><svg class="ic"><use href="#i-alvo"/></svg>acerto top 5</div>
+          <div data-tip="m2"><svg class="ic"><use href="#i-camadas"/></svg>léxica × híbrida</div>
+          <div data-tip="m3"><svg class="ic"><use href="#i-nuvem"/></svg>local × gateway</div>
+          <div data-tip="m4"><svg class="ic"><use href="#i-raio"/></svg>reindexar</div>
+          <div data-tip="m5"><svg class="ic"><use href="#i-chip"/></svg>memória</div>
+          <div data-tip="m6"><svg class="ic"><use href="#i-win"/></svg>sem WSL</div>
+        </div>
+        <div class="corpus">30–40 perguntas <span>· pt + en</span></div>
+        <div class="rumo"><span class="l">◀ acerta em pt</span><span class="r">pt pesa ▶</span></div>
+      </div>
+
+      <button class="carta cam" id="c-robusta" data-k="robusta" type="button"></button>
+    </div>
+
+    <div class="fatos">
+      <div class="rot">antes do teste · 3 cartas viradas</div>
+      <div class="linha">
+        <button class="fato" type="button" data-tip="f1"><div class="gira"><div class="lado verso"><b>?</b><span>fato 1</span></div><div class="lado frente"><svg class="ic"><use href="#i-nuvem"/></svg>O FreeLLMAPI serve um modelo de embeddings multilíngue? Qual?</div></div><div class="leg">embeddings</div><div class="leg2">no FreeLLMAPI?</div></button>
+        <button class="fato" type="button" data-tip="f2"><div class="gira"><div class="lado verso"><b>?</b><span>fato 2</span></div><div class="lado frente"><svg class="ic"><use href="#i-chave"/></svg>Em que linguagem é o MCP do banco (o fork do es617)?</div></div><div class="leg">linguagem</div><div class="leg2">do MCP do banco?</div></button>
+        <button class="fato" type="button" data-tip="f3"><div class="gira"><div class="lado verso"><b>?</b><span>fato 3</span></div><div class="lado frente"><svg class="ic"><use href="#i-disco"/></svg>A regra do LiveSync que ignora pastas com ponto vale para arquivos com ponto?</div></div><div class="leg">arquivo com ponto</div><div class="leg2">o LiveSync ignora?</div></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- DIREITA: as outras cartas e o descarte -->
+  <div>
+    <div class="rot">outras cartas</div>
+    <div id="minis"></div>
+    <div class="rot" style="margin-top:22px">descarte</div>
+    <div class="descarte">
+      <div class="morto" data-tip="d1"><svg class="ic"><use href="#i-banco"/></svg><div><b>busca nativa do CouchDB</b><span>cega: só pedaços cifrados</span></div></div>
+      <div class="morto" data-tip="d2"><svg class="ic"><use href="#i-rede"/></svg><div><b>serviço na rede</b><span>pesado · não lê a pasta</span></div></div>
+      <div class="morto" data-tip="d3"><svg class="ic"><use href="#i-obsidian"/></svg><div><b>lado do Obsidian</b><span>só com o Obsidian aberto</span></div></div>
+      <div class="carimbo">FORA</div>
+    </div>
+  </div>
+</section>
+
+<div class="divisa"><span class="pilha"><i></i><i></i><i></i></span>o baralho que levou à resposta</div>
+
+<!-- A RÉGUA -->
+<section class="carta monte">
+  <h2><span class="big" style="color:var(--nao)">0</span>ferramenta pronta faz as 6<small>· a régua do hub · passe o mouse em tudo</small></h2>
+  <div class="regua-grid">
+    <div>
+      <div class="sub2">as que mais se aproximam</div>
+      <div class="crit" id="crit"></div>
+      <div class="sub2" style="margin-top:16px">prontas, com um impedimento</div>
+      <div class="chips" id="imped"></div>
+      <div class="sub2">fora pela premissa</div>
+      <div class="chips" id="premissa"></div>
+      <div class="sub2">motores e serviços · sem alimentador</div>
+      <div class="chips" id="motores"></div>
+    </div>
+    <div>
+      <div class="sub2"><svg class="ic" style="width:14px;height:14px"><use href="#i-pt"/></svg>português na parte léxica</div>
+      <div class="parede">
+        <div class="lado2" data-tip="ferr" style="cursor:help">
+          <h4>ferramentas</h4>
+          <div class="grande-x">✗</div>
+          <div class="chips" style="margin-top:6px"><span class="chip no">SQLite FTS5</span><span class="chip mu">porter = inglês</span></div>
+        </div>
+        <div class="muro"><i></i><svg class="ic"><use href="#i-pt"/></svg><i></i></div>
+        <div class="lado2">
+          <h4>motores</h4>
+          <div class="chips" id="motorespt"></div>
+        </div>
+      </div>
+      <div class="sub2" style="margin-top:16px"><svg class="ic" style="width:14px;height:14px"><use href="#i-camadas"/></svg>metade semântica</div>
+      <div class="emb"><div class="n" data-tip="gemma">0,649</div><div class="t"><b>EmbeddingGemma-300m</b>13º de 93 no MTEB-BR</div></div>
+      <div class="chips" id="embs" style="margin-top:8px"></div>
+    </div>
+    <div>
+      <div class="sub2">os mais citados do catálogo · veredito</div>
+      <div class="grupos" id="grupos"></div>
+      <div class="reforca" data-tip="reforca"><svg class="ic"><use href="#i-pecas"/></svg>não muda a recomendação · dá peças à Robusta</div>
+    </div>
+  </div>
+</section>
+
+<div class="baixo">
+  <section class="carta monte">
+    <h2><span class="big" style="color:var(--alcance)">184</span>peças de stack<small>· 12 áreas · só o que a régua confirmou</small></h2>
+    <div class="areas" id="areas"></div>
+    <div class="py" data-tip="py">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path fill="#3776ab" d="M15.9 3c-6.6 0-6.2 2.9-6.2 2.9v3h6.3v.9H7.2S3 8.3 3 15s3.7 6.4 3.7 6.4h2.2v-3.1s-.1-3.7 3.6-3.7h6.2s3.5.1 3.5-3.4V5.6S22.7 3 15.9 3zm-3.4 2a1.1 1.1 0 110 2.2 1.1 1.1 0 010-2.2z"/><path fill="#ffd43b" d="M16.1 29c6.6 0 6.2-2.9 6.2-2.9v-3H16v-.9h8.8S29 22.7 29 16s-3.7-6.4-3.7-6.4h-2.2v3.1s.1 3.7-3.6 3.7h-6.2s-3.5-.1-3.5 3.4v6.6S9.3 29 16.1 29zm3.4-2a1.1 1.1 0 110-2.2 1.1 1.1 0 010 2.2z"/></svg>
+      <div><b>MCP do banco em Python = todas as peças com Windows confirmado</b><br><span>em Node, o SDK do MCP e o PouchDB não têm CI no Windows</span></div>
+    </div>
+    <div class="conc" id="conc"></div>
+  </section>
+
+  <section class="carta monte">
+    <h2><span class="big">5526</span>→ 353 → 91<small>· como se chegou aqui</small></h2>
+    <div class="funil" id="funil"></div>
+    <div class="quem" id="quem"></div>
+    <div class="dupla">
+      <div>
+        <div class="sub2">acerto da triagem</div>
+        <div class="barra" data-tip="tri"><span>2 gratuitos juntos</span><span class="tr"><i style="width:83%;--q:var(--grat)"></i></span><b>83%</b></div>
+        <div class="barra" data-tip="tri"><span>Haiku</span><span class="tr"><i style="width:75%;--q:var(--haiku)"></i></span><b>75%</b></div>
+        <div class="barra" data-tip="tri"><span>1 gratuito</span><span class="tr"><i style="width:70%;--q:color-mix(in srgb,var(--grat) 45%,transparent)"></i></span><b>70%</b></div>
+      </div>
+      <div>
+        <div class="sub2">erro grave na auditoria</div>
+        <div class="erro">
+          <div data-tip="e1"><b class="ok">2,8%</b><span>projetos com fonte</span></div>
+          <div data-tip="e2"><b class="no">12,5%</b><span>conceitos sem fonte</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="sub2" style="margin-top:14px">aprendizados</div>
+    <div class="chips" id="aprend"></div>
+  </section>
+</div>
+</main>
+
+<div id="dica" role="tooltip"></div>
+<div class="fundo" id="fundo"><div class="ampla" id="ampla" role="dialog" aria-modal="true"></div></div>
+
+<script>
+/* ===== dados (fonte: exploracao/anexos/pesquisa-50-sintese.md) ===== */
+const SIT=[['i-agente','agente na máquina'],['i-cliente','cliente pela tailnet'],['i-sandbox','sandbox sem tailnet'],['i-tailfora','tailnet fora do ar'],['i-obsfecha','Obsidian fechado']];
+
+const LUG=[
+ {ic:'i-disco',nome:'disco',c:'--leve',cov:['s','n','n','s','s'],
+  nota:['sim','não (só com repasse)','não','sim, local','sim'],
+  tip:'<b>Disco de cada máquina</b> · ferramenta pronta<ul><li>léxico: as ferramentas usam FTS5 sem stemmer de português; motores com pt: Tantivy, Bleve, Xapian; grep: ripgrep</li><li>vetor/híbrido: obsidian-hybrid-search, memtomem, LocalVectorSearchMcp, markdown-vault-mcp, zvec-grep</li><li>pronto hoje: sim, com ressalvas</li></ul>Carta: <b>Leve</b>'},
+ {ic:'i-repasse',nome:'disco + repasse',c:'--alcance',cov:['s','s','n','s','s'],
+  nota:['sim','sim (MCP agregado da máquina)','não','sim, local','sim'],
+  tip:'<b>MCP do banco repassando à busca do disco</b><ul><li>léxico e vetor: os da ferramenta de disco</li><li>pronto hoje: sim — TBXark/mcp-proxy, 1MCP ou o mount do FastMCP (se o MCP for Python)</li></ul>Carta: <b>Leve com alcance</b>'},
+ {ic:'i-chave',nome:'dentro do MCP',c:'--robusta',cov:['s','s','n','s','s'],
+  nota:['sim','sim (o mesmo MCP de leitura)','não','sim, na máquina local','sim'],
+  tip:'<b>Dentro do MCP do banco</b> · índice do MCP, alimentado pelo feed de mudanças do CouchDB<ul><li>léxico com pt, conforme a linguagem: Tantivy (Rust/Python), Bleve (Go), Lucene.NET (.NET), Xapian (C++, GPL) ou FTS5 com fts5-snowball</li><li>vetor: sqlite-vec, LanceDB, FAISS ou hnswlib; embeddings pelo FreeLLMAPI ou ONNX local</li><li>pronto hoje: <b>não — é montagem</b></li></ul>Carta: <b>Robusta</b>'},
+ {ic:'i-pacote',nome:'cópia leve',c:'--sandbox',cov:['p','s','s','s','s'],
+  nota:['sim (redundante)','sim','sim (pacote levado junto)','sim','sim'],
+  tip:'<b>Cópia leve no cliente ou na sandbox</b><ul><li>léxico: Pagefind (stemmer pt), Orama (stemmer pt), SQLite FTS5 exportado; lunr.js e elasticlunr.js estão parados</li><li>vetor: Orama com vetores pré-calculados</li><li>pronto hoje: sim, para leitura; sem MCP (a montar: um MCP mínimo sobre o pacote)</li></ul>Carta: <b>Para sandbox</b>'},
+ {ic:'i-rede',nome:'serviço na rede',fora:1,cov:['s','s','n','p','s'],
+  nota:['sim','sim','não','só na máquina que hospeda','sim'],
+  tip:'<b>Serviço na rede</b> · descartado<ul><li>léxico: OpenSearch (portuguese), Meilisearch (Charabia, sem stemmer documentado), Manticore</li><li>vetor: Meilisearch híbrido, Qdrant, OpenSearch k-NN</li><li>pronto hoje: sim, mas pesado e sem leitura da pasta</li></ul>'},
+ {ic:'i-obsidian',nome:'lado do Obsidian',fora:1,cov:['p','n','n','s','n'],
+  nota:['só com o Obsidian aberto','não','não','sim, local','não'],
+  tip:'<b>Lado do Obsidian</b> · descartado<ul><li>léxico: Omnisearch (BM25), a busca do Obsidian (Local REST API, CLI)</li><li>semântica: Smart Connections e Copilot com Miyo</li><li>pronto hoje: só com o Obsidian aberto</li></ul>'}
+];
+
+const CAM={
+ alcance:{nome:'Leve com alcance',c:'--alcance',naipes:['i-disco','i-repasse'],lema:'compra tempo',dias:'1,5–2',diasN:'~1 da Leve + 0,5 a 1',cov:LUG[1].cov,
+  pt:0,ptT:'FTS5 sem pt',pronto:'quase tudo',mat:'alpha / beta',vence:'vence se a pronta acertar em pt',
+  blocos:[
+   ['i-pecas','Peças',['a Leve em cada máquina: obsidian-hybrid-search ou memtomem sobre a pasta do hub','TBXark/mcp-proxy ou 1MCP em cada máquina, juntando o MCP do banco (só leitura, para clientes) e o MCP de busca','um endpoint HTTP com token, só na tailnet, como o MCP de leitura já decidido']],
+   ['i-ok','Pronto',['o proxy (binário Windows)','tudo o que a Leve já traz: busca híbrida, vigia do disco, MCP, filtros por frontmatter']],
+   ['i-obra','Falta montar · ~0,5 a 1 dia a mais',['a configuração do proxy','o token','a permissão da tag dos clientes na tailnet','o teste em cada harness']],
+   ['i-lampada','Ganho',['os clientes ganham busca sem cópia']],
+   ['i-alerta','Riscos',['mais um processo por máquina','dois MCPs com nomes de ferramentas que precisam ser coerentes','herda os da Leve: alpha/beta, BM25 sem stemmer de português']],
+   ['i-bancada','O teste prova',['latência pela tailnet','que o proxy repassa ferramentas stdio no Windows','e tudo o que a Leve precisa provar']]
+  ]},
+ robusta:{nome:'Robusta',c:'--robusta',naipes:['i-chave'],lema:'compra controle e português',dias:'5–8',diasN:'estimativa, não medida',cov:LUG[2].cov,
+  pt:1,ptT:'Tantivy e outros',pronto:'só as peças',mat:'construção própria',vence:'vence se o pt léxico pesar',
+  blocos:[
+   ['i-pecas','Peças',['o fork do MCP do es617 (já decidido, com controle de revisão) ganha um índice próprio por máquina','léxico: Tantivy (stemmer pt) ou SQLite FTS5 + fts5-snowball; conforme a linguagem, Bleve (Go), Lucene.NET (.NET) ou Xapian (C++, GPL)','vetor: sqlite-vec ou LanceDB; FAISS ou hnswlib se o vetor ficar à parte','idioma por nota com o lingua-py; fusão RRF; rerank bge-reranker-v2-m3 opcional','embeddings pelo FreeLLMAPI, com reserva local em ONNX (FastEmbed ou e5-small)','alimentado pelo feed de mudanças do CouchDB local, com o texto já decifrado pelo MCP','divisão por título e frontmatter como filtro','ferramentas search e get ao lado das de gravação (buscar, gravar e estado do sync)']],
+   ['i-ok','Pronto',['as peças: bibliotecas estáveis']],
+   ['i-obra','Falta montar · ~5 a 8 dias (estimativa)',['o consumidor do feed de mudanças','montar o texto a partir dos pedaços (o MCP já faz isso para ler)','o esquema do índice e a reindexação total','as ferramentas MCP e os testes','a linguagem do MCP define a biblioteca: Python (tantivy-py, sqlite-vec, LanceDB, SDK do MCP v2 com CI no Windows), Node (Orama, sqlite-vec, SDK sem CI no Windows), Go (Bleve) ou .NET (Lucene.NET)']],
+   ['i-lampada','Ganhos',['um índice só para agentes locais e clientes','não depende do vigia do disco nem do Obsidian','português léxico de verdade','escrita e busca no mesmo processo: a busca vê a gravação na hora']],
+   ['i-alerta','Riscos',['construção própria (manutenção)','cada máquina reconstrói o próprio índice (não replica)','custo dos embeddings na carga inicial (cota do FreeLLMAPI)']],
+   ['i-bancada','O teste prova',['antes, um protótipo de 1 dia: Tantivy + sqlite-vec alimentados pelo feed de mudanças','tempo de reindexação total do conteúdo real','qualidade contra a Leve','estabilidade do consumidor do feed com a cifragem de ponta a ponta']]
+  ]},
+ leve:{nome:'Leve',c:'--leve',naipes:['i-disco'],lema:'base da Leve com alcance',dias:'1',diasN:'estimativa',cov:LUG[0].cov,ki:'pronta no disco · sem clientes',
+  blocos:[
+   ['i-pecas','Peças',['obsidian-hybrid-search ou memtomem em cada máquina, sobre a pasta do hub, como MCP stdio do agente local','embeddings pelo FreeLLMAPI (OPENAI_BASE_URL), com o e5-small local de reserva','a escrita continua no MCP do banco']],
+   ['i-ok','Pronto',['a busca híbrida','o vigia do disco','o MCP','os filtros por frontmatter (no obsidian-hybrid-search)']],
+   ['i-obra','Falta montar · ~1 dia',['instalação e configuração nas duas máquinas','exclusão explícita do .obsidian-hybrid-search.db','checar se o FreeLLMAPI serve o modelo de embeddings escolhido (não verificado)','a entrada no contrato e nas portas de entrada (contrato global, skill e MCP de cada harness)']],
+   ['i-repasse','Convivência',['só leitura','o vigia pega o que o CLI do LiveSync grava','o índice fica local e não viaja: cada máquina reindexa']],
+   ['i-alerta','Riscos',['alpha/beta','BM25 sem stemmer de português','clientes sem busca']],
+   ['i-bancada','O teste prova',['qualidade em português (léxica e semântica)','tempo de reindexação depois de uma rajada do LiveSync','consumo de memória','a instalação no Windows sem WSL']]
+  ]},
+ sandbox:{nome:'Para sandbox',c:'--sandbox',naipes:['i-pacote'],lema:'complemento, não alternativa',dias:'1–2',diasN:'estimativa',cov:LUG[3].cov,ki:'depois · na 1ª sandbox de verdade',
+  blocos:[
+   ['i-pecas','Peças',['uma tarefa agendada em cada máquina gera um pacote Pagefind (stemmer pt) ou um SQLite FTS5 só de leitura, a partir da pasta (só o que o contrato permitir sair)','a sandbox leva o pacote junto','um MCP mínimo de leitura sobre o pacote, ou a ferramenta da própria sandbox']],
+   ['i-obra','Falta montar · ~1 a 2 dias',['o gerador','o filtro do que sai','o MCP mínimo']],
+   ['i-alerta','Riscos',['fica velho até a próxima exportação','dado de cliente sai da máquina: segue a regra de dados de cliente']],
+   ['i-bancada','O teste prova',['só o tamanho e o tempo de geração; a qualidade é a do Pagefind']]
+  ]},
+ reserva:{nome:'Reserva',c:'--reserva',naipes:['i-chave','i-disco','i-pacote'],lema:'Robusta + Leve + Para sandbox',dias:'soma',diasN:'das três cartas',cov:['s','s','s','s','s'],ki:'só se a busca virar caminho crítico',
+  blocos:[
+   ['i-pecas','Peças',['a Robusta como principal e a Leve como reserva na máquina: se o MCP do banco cair, o agente local ainda busca no disco','a Para sandbox cobre a sandbox']],
+   ['i-obra','Custo',['Robusta + Leve + Para sandbox','só se justifica se a busca virar caminho crítico do contrato (o checkpoint e a nota de retomada já dependem do disco, não da busca)']]
+  ]}
+};
+
+const CRIT=[['i-win','Windows nativo'],['i-mcp','MCP'],['i-pt','português na parte léxica'],['i-api','endpoint OpenAI-compatível para embeddings'],['i-olho','acompanha o disco sozinha (vigia)'],['i-filtro','filtra por frontmatter']];
+const REGUA=[ // windows, mcp, pt, endpoint, vigia, frontmatter
+ ['obsidian-hybrid-search','beta',['s','s','n','s','s','s'],'<b>obsidian-hybrid-search</b> · beta<ul><li>CI em 3 sistemas, MCP stdio e HTTP, OPENAI_BASE_URL</li><li>vigia chokidar, filtro por frontmatter, e5 multilíngue e reranker opcional</li><li>BM25 do SQLite FTS5: sem stemmer de pt</li><li>índice: <b>arquivo</b> .obsidian-hybrid-search.db na raiz do cofre; se a regra do LiveSync cobre arquivo com ponto não foi verificado, então pede exclusão explícita no CLI e no plugin</li></ul>'],
+ ['memtomem','alpha',['s','s','n','s','s','v'],'<b>memtomem</b> · alpha<ul><li>CI no Windows, MCP stdio, BASE_URL</li><li>vigia dentro do processo, divisão por título</li><li>filtro por campo arbitrário do frontmatter: não verificado</li><li>BM25 do SQLite FTS5: sem stemmer de pt</li><li>índice fora da pasta: convivência segura com o LiveSync</li></ul>'],
+ ['LocalVectorSearchMcp','0.1.x',['s','s','n','s','s','n'],'<b>LocalVectorSearchMcp</b> · .NET 10, 0.1.x<ul><li>CI no Windows, vigia opcional, endpoint OpenAI</li><li>não filtra por campo do frontmatter</li><li>FTS5 sem stemmer de pt</li></ul>'],
+ ['markdown-vault-mcp','v5',['v','s','n','s','s','s'],'<b>markdown-vault-mcp</b> · v5, estável<ul><li>filtro por frontmatter e endpoint OpenAI</li><li><b>Windows não verificado</b> (CI só Ubuntu)</li><li><b>grava notas na pasta</b>: só entraria com a escrita desligada, porque a escrita do hub é do MCP do banco</li><li>índice fora da pasta</li></ul>']
+];
+const IMPED=[['qmd','Windows não verificado; só modelos GGUF locais, sem endpoint'],['ck','sem endpoint; otimizado para código; sem busca semântica no binário Windows. Índice em .ck/ (convivência segura)'],['grepai','feito para código; sem commit desde 10/09'],['vexor','sem vigia; filtro por frontmatter não confirmado'],['devrag','só reindexa na partida; só vetor'],['zvec-grep','endpoint remoto só aceita o provedor Qwen; frontmatter não verificado. Índice em .zvec-grep/ (convivência segura). Era da recomendação antiga'],['obsidian-semantic-mcp','só Ollama; Node 24'],['obsidian-brain','sem endpoint OpenAI; grava notas na pasta (só entraria com a escrita desligada)'],['kb-index','indexação agendada, sem vigia'],['local-notes-search-mcp','indexação manual; só vetor']];
+const PREM=[['Typesense','só WSL ou Docker'],['vault-cortex','Docker; modelos só em inglês'],['Omnisearch','exige o Obsidian aberto, que pode ficar fechado; serve de conveniência na máquina'],['Local REST API','exige o Obsidian aberto'],['Smart Connections','exige o Obsidian aberto']];
+const MOT=[['Meilisearch','binário Windows; MCP embutido experimental; embedder REST configurável; stemmer de pt não documentado'],['Qdrant','binário Windows e MCP oficial, mas só com FastEmbed'],['OpenSearch','zip com JDK; analisador portuguese/brazilian e MCP oficial; pesado (JVM, cluster)'],['Manticore','licença GPLv3; Docker para o Buddy']];
+const MOTPT=[['Tantivy','Language::Portuguese'],['Lucene','PortugueseAnalyzer (stemmer RSLP, Light e Minimal); também no OpenSearch e no Nouveau'],['Bleve','analisador pt pronto (minúsculas, stopwords, stemmer light); CI no Windows'],['Xapian','stemmer Snowball de pt e stopwords'],['Elasticsearch','analisador portuguese, com stopwords e stemmer light'],['Solr','quatro stemmers de português'],['Lucene.NET','PortugueseAnalyzer com stopwords e Snowball (beta)'],['Orama','@orama/stemmers'],['Pagefind','stemming pt'],['Qdrant','índice de texto do payload com Snowball por idioma'],['Snowball','o algoritmo de pt (europeu e brasileiro), peça para um analisador próprio']];
+const EMBS=[['ok','e5-small','multilingual-e5-small: padrão de várias ferramentas; MIT, 384 dimensões, prefixos query:/passage:, limite de 512 tokens'],['ok','bge-m3','a opção de qualidade; MIT, 8K de contexto, ~1,2 GB no Ollama'],['ok','granite · Qwen3','granite-embedding-107m-multilingual e Qwen3-Embedding-0.6B: ambos Apache-2.0'],['ok','rerank bge-v2-m3','bge-reranker-v2-m3, com versão ONNX'],['ok','lingua-py','detecta pt e en offline, wheels Windows; escolhe o analisador por nota. A precisão cai em textos curtos e em notas que misturam os dois idiomas'],['no','Jina v3','licença CC-BY-NC: evitar'],['pa','pt+en misturado?','não há benchmark em notas Markdown que misturam pt e en; o teste de bancada tem de medir isso']];
+const GRUPOS=[
+ ['--nao','i-x','fora pela premissa',[['Weaviate','só com WSL ou Docker'],['Milvus','o servidor só roda com WSL ou Docker; o Milvus Lite, embutido em Python, roda no Windows'],['pgvector','exigiria um PostgreSQL ao lado do CouchDB'],['pg_bigm','exigiria um PostgreSQL ao lado do CouchDB'],['Pyserini','Windows não verificado, Java 21 e PyTorch; serve de bancada, não de busca do hub']]],
+ ['--parcial','i-peso','pesados · pt e MCP',[['Elasticsearch','zip Windows com JDK, analisador portuguese e MCP oficial; licença AGPL, SSPL ou ELv2. Exagero para duas máquinas'],['Solr','testado no Windows, quatro stemmers de pt; o MCP da Apache (em incubação) pede Docker. Exagero para duas máquinas']]],
+ ['--mu','i-pausa','parados ou sem pt',[['Whoosh','último release em 2016, sem stemmer de pt'],['lunr.js','parado desde 2020'],['elasticlunr.js','procura mantenedor'],['Chroma','busca léxica só por substring ou regex'],['Haystack','framework grande: serviria só de cola'],['LlamaIndex','framework grande: serviria só de cola'],['Silver Searcher','The Silver Searcher: grep parado'],['Platinum Searcher','The Platinum Searcher: grep parado']]],
+ ['--sim','i-pecas','peças para montar',[['Bleve','Go, CI no Windows, analisador pt'],['Xapian','C++, GPL, stemmer pt'],['Lucene.NET','.NET, beta, analisador pt'],['Snowball','algoritmo de stemmer pt'],['stopwords-pt','lista de 2016, sem stemmer'],['FAISS','wheels Windows; só vetor'],['hnswlib','CI no Windows; só vetor'],['Annoy','CI no Windows; só vetor'],['ripgrep','a escolha para o grep no disco: binário Windows, ativo'],['ripgrep-all','PDF e DOCX; AGPL'],['Zoekt','Windows não verificado; foco em repositórios']]]
+];
+const AREAS=[
+ ['MCP',10,[['ok','SDK Python v2.3','CI no Windows; a v2 mudou a API e pede Python 3.11+'],['ok','servidores de referência','CI no Windows; modelos, não produção'],['pa','SDK TypeScript','v2.3; Windows não verificado: CI só Ubuntu']],'FastMCP (4.1, mount), mcp-go, rmcp (Rust), proxies'],
+ ['Sync e CouchDB',18,[['pa','PouchDB','9.0.0 (2024); sem CI no Windows; cliente JS que replica, útil a um MCP em Node ou à cópia leve, mas não substitui o LiveSync']],'couchdb-python, couchdb-nano, feed de mudanças, Mango, views, Yjs (CRDT)'],
+ ['Markdown e frontmatter',32,[['ok','python-frontmatter','1.3.0 (2026)'],['ok','PyYAML','6.0.3, wheels Windows; usar safe_load'],['pa','gray-matter','Node; último release em 2019']],'remark e remark-frontmatter, unified, markdown-it(-py), mistune, Goldmark, js-yaml'],
+ ['Texto em português',21,[['ok','lingua-py','detecta pt e en, wheels Windows'],['ok','spaCy','3.8, modelos pt_core_news, opcional'],['pa','stopwords-pt','lista de 2016']],'NLTK, Stanza, Unidecode, UDPipe, OpenNLP'],
+ ['Embeddings e rerank',18,[['ok','ONNX Runtime','1.31, wheels Windows; plano B ao FreeLLMAPI'],['pa','Transformers','5.19; pesado (PyTorch)'],['pa','ort','Rust, RC, Windows não verificado']],'FastEmbed, sentence-transformers, XLM-RoBERTa, Transformers.js'],
+ ['Modelos locais',8,[['ok','Ollama','0.40, app nativa no Windows, base_url OpenAI; duplica o FreeLLMAPI'],['no','LocalAI','só Docker ou WSL'],['no','GPT4All','parado, sem endpoint de embeddings']],'LiteLLM, llamafile, llama-cpp-python'],
+ ['Extração de texto',12,[['ok','Docling','2.138; Windows; PDF/DOCX/PPTX/HTML → Markdown; tem MCP; idiomas do OCR não verificados. O mais completo para anexos (até 200 MiB)'],['ok','pandoc','3.12, binário Windows; GPL, usar como processo'],['pa','Apache Tika','4.1, Java 17']],'Unstructured, MarkItDown/PyMuPDF, Marker, Trafilatura'],
+ ['Bancos',23,[['ok','SQLite','3.54, DLL nativa; índice derivado, não replica'],['pa','rusqlite','Rust'],['no','SurrealDB','trocaria o CouchDB; licença BSL e outra replicação']],'DuckDB, RocksDB, diskcache, LevelDB'],
+ ['Eventos e vigias',14,[['ok','Watchman','binário Windows, ativo; é um serviço a mais'],['pa','watchdog','6.0, ReadDirectoryChangesW; sem release desde 2024-11; não filtra os eventos duplicados das rajadas do LiveSync']],'NATS, nng, Celery, Chokidar (o vigia do obsidian-hybrid-search). NATS, nng e Redis Streams ficaram de fora: mensageria que o hub não usa'],
+ ['Agentes e RAG',9,[['no','n8n','início rápido com Docker, Windows não verificado, licença Sustainable Use']],'LangChain, Mem0, Pydantic AI, Langfuse. LangChain e LlamaIndex ficaram de fora: pesados para um índice pequeno'],
+ ['Obsidian',6,[['pa','obsidian-api','só tipos, para um plugin próprio'],['no','Dataview','0.5.70, sem release desde 2025-04; exige o Obsidian aberto'],['no','Templater','AGPL, executa JS e comandos; exige o Obsidian aberto']],'Advanced URI'],
+ ['Serviço e outros',7,[['mu','FastAPI','serviço e API (1 entidade), só README'],['mu','Git · Docker · fzf','outros (6 entidades), só README']],'Mais 6 entidades ficaram sem área: os modelos divergiram. Fora da régua por já estarem decididos: CouchDB, a especificação do MCP e o registro de plugins do Obsidian; também Node.js, DistilBERT e fastText (DistilBERT, GloVe e fastText não são busca de trechos)']
+];
+const CONC=[['busca híbrida',67],['BM25',25],['filtro por frontmatter',15],['stemming',14],['filtro por metadados',13],['stemming em pt',9],['remoção de acentos',0],['RRF',0]];
+const FUNIL=[
+ [5526,'itens','--grat','<b>Laço · 5 ondas</b><br>98 células → 5526 itens<br>novos por onda: 100%, 76%, 37%, 27%, 22%<br>FreeLLMAPI (267 modelos) · 7388 tentativas, gratuitas'],
+ [5433,'limpos','--sonnet','<b>Limpar</b><ul><li>298 ambíguos decididos; 193 em quarentena</li><li>606 READMEs de 1439 repositórios (620 inventados)</li><li>767 sites com texto; 874 cartões de conceito</li><li>Tear (Sonnet) e scripts · custo não medido</li></ul>'],
+ [1363,'triados','--haiku','<b>Triagem</b><ul><li>1363 repositórios e sites, metade para cada lado; 874 conceitos</li><li>FreeLLMAPI (2 modelos por item): 4,70 milhões de tokens gratuitos</li><li>Haiku 5.5: 12,0 milhões</li></ul>'],
+ [1063,'conferidos','--sonnet','<b>Conferência</b><br>1063 itens úteis, com dúvida ou com divergência<br>Sonnet 5.5 (Salina, Tear e Osmose) · 14,2 milhões de tokens'],
+ [195,'auditados','--opus','<b>Auditoria</b><br>195 itens (10% da conferência e 10% dos conceitos)<br>Opus 5.5 · 2,56 milhões de tokens'],
+ [475,'entidades','--sonnet','<b>Consolidar</b><br>475 entidades úteis (240 de busca, 235 de stack); 292 conceitos<br>script e 1 juiz Sonnet · 0,05 milhão<br><br><b>Atualidade</b> (ao lado)<br>10 temas, 80 achados com citação · Sonnet com web · 0,73 milhão'],
+ [353,'juntadas','--sonnet','<b>Junção</b><br>475 → 353 entidades: 169 de busca, 184 de stack<br>ex.: o Elasticsearch juntou 25 variações<br>script e 1 juiz Sonnet (a 1ª rodada foi descartada) · 0,14 milhão<br><br><b>Stack por área</b><br>184 entidades em 12 áreas; 178 em acordo, 6 divergentes · FreeLLMAPI, ~600 tentativas gratuitas'],
+ [91,'fichas de régua','--sonnet','<b>Régua com citação: 91 fichas</b><ul><li>1ª régua: 36 finalistas (13 do catálogo, 23 de fora) · 0,90 milhão Sonnet</li><li>2ª régua: 55 do catálogo, por regra gravada (27 de busca, 28 de stack) · 1,04 milhão Sonnet</li><li>no catálogo, 40 das 169 de busca e 28 das 184 de stack têm régua; as outras só têm o que o README diz</li></ul>']
+];
+const QUEM=[['--grat','grátis','≈8 mil tentativas','<b>Modelos gratuitos (FreeLLMAPI)</b><br>laço: 7388 tentativas · stack por área: ~600 · triagem: 4,70 milhões de tokens'],['--haiku','12,0 mi','Haiku','<b>Haiku 5.5</b> · triagem: 12,0 milhões de tokens'],['--sonnet','≈17,1 mi','Sonnet','<b>Sonnet 5.5</b> (soma da tabela)<br>conferência 14,2 · 2ª régua 1,04 · 1ª régua 0,90 · atualidade 0,73 · junção 0,14 · consolidar 0,05 milhões'],['--opus','2,56 mi','Opus','<b>Opus 5.5</b> · auditoria: 2,56 milhões de tokens']];
+const APR=[
+ ['gerador sem web inventa','<b>Geradores sem busca na web inventam e envelhecem.</b> Nenhum modelo do FreeLLMAPI buscou, mesmo quando o pedido mandava. De 52% a 76% das URLs eram reais, e nenhuma candidata atual apareceu.<ul><li>amplitude: modelos gratuitos</li><li>atualidade: subagentes com busca na web em temas estreitos (0,73 milhão; achou o que o laço não achou)</li><li>régua: subagentes com web na lista curta</li></ul>'],
+ ['2 gratuitos > 1 Haiku','<b>Dois modelos gratuitos que concordam valem mais que um Haiku</b> (83% contra 75%). A divergência entre eles é o melhor filtro para mandar à conferência.'],
+ ['cadeia ok com fonte','<b>A cadeia triagem → Sonnet → Opus é confiável para projetos com fonte</b> (2,8% de erro grave). Para conceitos sem fonte, não (12,5%): conceitos pedem outra régua.'],
+ ['juntar ≠ chave','<b>A junção por chave não junta entidades.</b> De 475 sobraram 353; o Elasticsearch juntou 25 variações. O passo certo:<ul><li>candidatos por script (repositório comum e nome contido)</li><li>um juiz que vê <b>todos</b> os membros do grupo (na 1ª rodada o mais citado faltava e o juiz o deixou de fora em 19 grupos)</li><li>ajustes do maestro gravados em arquivo</li></ul>'],
+ ['a URL manda','<b>Os nomes vêm da memória dos modelos; a URL manda.</b> "Local Search Engine" era o Bleve, "PageAssist" o GPT4All, "pt" o The Platinum Searcher e "Portuguese Stemming" o stopwords-pt. A régua confere a identidade pela URL antes de tudo.'],
+ ['lista curta com regra','<b>A lista curta precisa de regra gravada.</b> Montada à mão, a 1ª lista tinha só 12 itens do catálogo e pareceu ter "36 finalistas" quando havia 475 entidades úteis. A 2ª régua escolheu por regra gravada, e o inventário completo vai em anexo, gerado por script.'],
+ ['custo por item','<b>Tokens por item</b><ul><li>triagem Haiku com README: 14 mil</li><li>conceito: 3,3 mil</li><li>conferência Sonnet: 13,4 mil</li><li>auditoria Opus: 13 a 15 mil</li><li>régua com web: ~26 mil (1ª) e ~19 mil (2ª, identidade pela URL)</li><li>juiz de junção (46 grupos): ~74 mil por rodada</li><li>classificação da stack: ~3,3 tentativas gratuitas</li><li>tema de atualidade: ~73 mil</li></ul>O piloto sempre veio antes da leva.'],
+ ['operação','<b>Operação</b><ul><li>despachantes finos, teto de 40% de contexto e /clear entre frentes</li><li>mensagem para recruta ocupado fica sem Enter: conferir com check</li><li>/clear pela CLI no Git Bash pede MSYS_NO_PATHCONV=1</li><li>processos longos fora do Claude Code (Start-Process)</li><li>índice começando em zero dito por extenso no prompt (um lote foi repetido por engano)</li><li>a API do GitHub limita subagentes com web: usar feeds atom e raw.githubusercontent</li><li>os painéis leem um .js regravado por script a cada 60 s, sem chamar modelo; o serviço precisa sobreviver a arquivo ruim</li></ul>'],
+ ['limites','<b>Limites</b><ul><li>Windows não verificado em markdown-vault-mcp, qmd, Nouveau/Clouseau, sparfenyuk/mcp-proxy, FastMCP, txtai, SDK TypeScript do MCP, PouchDB, Zoekt, Pyserini, pg_bigm, ort, n8n e Templater</li><li>a API do GitHub limitou a 2ª régua: várias datas vieram de feeds e tags ou ficaram não verificadas; o MCP do Weaviate foi rebaixado</li><li>a área de cada item de stack veio de modelos gratuitos, sem fonte primária</li><li>nenhuma medição de qualidade em pt foi feita: é trabalho do teste</li><li>as estimativas de dias não foram medidas</li><li>o catálogo reflete a memória dos modelos; a atualidade cobriu 10 temas</li><li>1032 itens só com nome e uma citação ficaram fora da triagem por decisão do Gustavo</li><li>os arquivos de régua copiam citações; as fontes não foram relidas</li></ul>']
+];
+const TIPS={
+ inv:'Tudo o que a pesquisa achou, gerado por script: 169 entidades de busca, 184 de stack por área, 292 conceitos, 92 fichas de régua e o que ficou de fora, com a regra de cada exclusão.',
+ txt:'A síntese em texto, fonte de todos os números desta página.',
+ desc:'<b>Por que a busca do banco está fechada</b><ul><li>o CouchDB tem busca, mas só léxica: Nouveau (Lucene 10, servidor JVM à parte, experimental, analisador portuguese), Clouseau (PortugueseAnalyzer) e o índice de texto do Mango; nenhum tem vetor, e o Windows nativo não foi verificado</li><li>ele indexaria o que está no banco, e o LiveSync grava as notas em pedaços cifrados de ponta a ponta</li><li>o texto só existe decifrado no disco de cada máquina e no MCP, que tem a frase-senha</li></ul><b>Consequência:</b> um índice "dentro do banco" é um índice do MCP, alimentado pelo feed de mudanças do CouchDB. Ele não depende do vigia do disco e serve os clientes pela tailnet sem cópia.',
+ s0:'<b>Agente na máquina</b> · clique para filtrar', s1:'<b>Cliente pela tailnet</b> · clique para filtrar', s2:'<b>Sandbox sem tailnet</b> · clique para filtrar', s3:'<b>Tailnet fora do ar</b> · clique para filtrar', s4:'<b>Obsidian fechado</b> · clique para filtrar',
+ trofeu:'<b>Recomendação</b> (a decisão é do Gustavo, no ticket "Camada de busca")<ol><li>teste de bancada obsidian-hybrid-search × memtomem, no disco, sobre uma cópia de conteúdo real em pt e en</li><li>a pronta acerta bem em pt → <b>Leve com alcance</b>; o pt léxico pesa, ou os clientes precisam de busca igual à local → <b>Robusta</b>, com protótipo de 1 dia antes</li><li><b>Para sandbox</b> quando surgir a primeira sandbox de verdade</li></ol>O teste substitui a recomendação antiga (zvec-grep × memtomem): o zvec-grep ficou atrás na régua.',
+ ohs:'<b>obsidian-hybrid-search</b> · beta<br>a que mais se aproxima da régua: CI em 3 sistemas, filtro por frontmatter, vigia chokidar, OPENAI_BASE_URL, e5 multilíngue e reranker multilíngue opcional. Falha no BM25 sem stemmer de pt.',
+ mm:'<b>memtomem</b> · alpha<br>CI no Windows, vigia, BASE_URL, divisão por título. Filtro por campo arbitrário do frontmatter não verificado. Falha no BM25 sem stemmer de pt.',
+ m1:'acerto nos 5 primeiros e MRR', m2:'BM25 sozinho contra a busca híbrida', m3:'e5-small local contra o embedding do FreeLLMAPI', m4:'reindexação depois de uma rajada do CLI do LiveSync', m5:'consumo de memória', m6:'instalação no Windows sem WSL',
+ f1:'Se o FreeLLMAPI serve um modelo de embeddings multilíngue, e qual. A Leve depende disso (OPENAI_BASE_URL), e a Robusta usa o mesmo caminho, com ONNX local de reserva.',
+ f2:'A linguagem do MCP do es617 define a biblioteca da Robusta: Python (tantivy-py, sqlite-vec, LanceDB, SDK do MCP v2 com CI no Windows), Node (Orama, sqlite-vec, SDK sem CI no Windows), Go (Bleve) ou .NET (Lucene.NET).',
+ f3:'O LiveSync não leva ao banco pastas com ponto. O obsidian-hybrid-search guarda o índice num <b>arquivo</b> .obsidian-hybrid-search.db na raiz do cofre: se a regra não cobrir arquivos, ele precisa de exclusão explícita no CLI e no plugin.',
+ d1:'<b>Busca nativa do CouchDB</b> (Nouveau, Clouseau, Mango): indexaria pedaços cifrados, sem o texto. Além disso, só léxica e com Windows não verificado.',
+ d2:'<b>Serviço na rede</b> (OpenSearch, Meilisearch, Qdrant, Manticore): pronto, mas pesado, e nenhum lê a pasta: todos exigem um alimentador próprio. Com a tailnet fora, só atende na máquina que hospeda.',
+ d3:'<b>Lado do Obsidian</b> (Omnisearch, Local REST API, Smart Connections): exige o Obsidian aberto, que pode ficar fechado. Serve de conveniência na máquina, não de camada de busca.',
+ ferr:'As ferramentas prontas para agentes usam o FTS5 do SQLite com unicode61 ou porter; o porter é stemmer de inglês. O unicode61 com remove_diacritics=2 resolve os acentos; o fts5-snowball daria o stemmer, mas é extensão a compilar, com Windows não verificado.',
+ gemma:'EmbeddingGemma-300m: o melhor modelo aberto pequeno no MTEB-BR (0,649, 13º de 93; arXiv 2607.04581). A licença Gemma exige aceite.',
+ reforca:'A 2ª régua cobriu os motores mais citados do catálogo e reforça a recomendação. Para montar um índice próprio há bibliotecas com analisador de pt e Windows confirmado: Bleve, Xapian, Lucene.NET, e Snowball com stopwords-pt como peças soltas.',
+ py:'<b>O que a stack muda na construção</b><ul><li>em Python, todas as peças têm Windows confirmado: SDK do MCP v2, python-frontmatter/PyYAML, lingua-py, ONNX Runtime e tantivy-py</li><li>o vigia de uma ferramenta de disco tem de aguentar as rajadas do LiveSync: o watchdog não filtra eventos duplicados, e o Watchman é um serviço a mais</li><li>anexos (até 200 MiB) entram na busca só por extração: Docling, pandoc ou Tika</li><li>nenhum candidato substitui o CouchDB/LiveSync com vantagem</li></ul>O encaixe dado pelos modelos gratuitos é generoso (94 das 184 como "central"); aqui vale só o que a régua confirmou.',
+ tri:'Triagem contra o veredito final, só nos itens conferidos.',
+ e1:'Projetos: o veredito do Sonnet errou o essencial em 3 de 107 itens.',
+ e2:'Conceitos sem fonte: 11 erros graves em 88.'
+};
+
+/* ===== render ===== */
+const $=s=>document.querySelector(s);
+const ic=id=>`<svg class="ic"><use href="#${id}"/></svg>`;
+let tipN=0;const tip=h=>{const k='t'+(tipN++);TIPS[k]=h;return k};
+
+$('#tl').innerHTML=LUG.map(l=>`<tr class="${l.fora?'fora':''}" data-cov="${l.cov.join('')}" style="${l.c?'--c:var('+l.c+')':''}">
+ <td class="nome" data-tip="${tip(l.tip)}"><span>${ic(l.ic)}${l.nome}</span></td>
+ ${l.cov.map((v,j)=>`<td><i class="pt ${v}" data-tip="${tip('<b>'+l.nome+'</b> · '+SIT[j][1]+': '+l.nota[j])}"></i></td>`).join('')}</tr>`).join('');
+
+const covHTML=cov=>`<span class="cov">${cov.map((v,j)=>`<span class="${v}">${ic(SIT[j][0])}</span>`).join('')}</span>`;
+function cartaGrande(k){
+ const c=CAM[k],n=c.cov.filter(v=>v!=='n').length;
+ return `<div class="cab"><span class="nm">${c.nome}</span><span class="naipes">${c.naipes.map(ic).join('')}</span></div>
+ <div class="lema">${c.lema}</div>
+ <div class="dias"><b>${c.dias}</b><span>dias</span><i>${c.diasN}</i></div>
+ <ul class="attrs">
+  <li>${ic('i-alvo')}<span class="k">alcance</span><span class="v">${covHTML(c.cov)} <span class="mono" style="font-size:11px">${n}/5</span></span></li>
+  <li>${ic('i-pt')}<span class="k">pt léxico</span><span class="v ${c.pt?'ok':'no'}">${ic(c.pt?'i-ok':'i-x')}${c.ptT}</span></li>
+  <li>${ic('i-ok')}<span class="k">pronto hoje</span><span class="v">${c.pronto}</span></li>
+  <li>${ic('i-alerta')}<span class="k">maturidade</span><span class="v">${c.mat}</span></li>
+ </ul>
+ <div class="vence">${ic('i-trofeu')}${c.vence}</div><span class="virar">virar ↻</span>`;
+}
+['alcance','robusta'].forEach(k=>{const el=$('#c-'+k);el.style.setProperty('--c','var('+CAM[k].c+')');el.innerHTML=cartaGrande(k);el.dataset.cov=CAM[k].cov.join('')});
+$('#minis').innerHTML=['leve','sandbox','reserva'].map(k=>{const c=CAM[k];return `<button class="carta mini" type="button" data-k="${k}" data-cov="${c.cov.join('')}" style="--c:var(${c.c})">
+ <span class="tira"></span><span class="meio"><span class="nm">${c.naipes.map(ic).join('')}${c.nome}</span><span class="ki">${c.ki}</span>${covHTML(c.cov)}</span>
+ <span class="d"><b>${c.dias}</b><span>${c.dias==='soma'?'das três':c.dias==='1'?'dia':'dias'}</span></span></button>`}).join('');
+
+$('#crit').innerHTML='<span></span>'+CRIT.map(c=>`<span class="h" data-tip="${tip(c[1])}">${ic(c[0])}</span>`).join('')+'<span></span>'+
+ REGUA.map(r=>`<span class="lin"></span><span class="nm" data-tip="${tip(r[3])}">${r[0]}</span>${r[2].map((v,j)=>`<span class="pip ${v}" data-tip="${tip(r[0]+' · '+CRIT[j][1]+': '+(v==='s'?'sim':v==='n'?'não':'não verificado'))}">${v==='s'?ic('i-ok'):v==='n'?ic('i-x'):'?'}</span>`).join('')}<span class="mt">${r[1]}</span>`).join('');
+const chips=(arr,cls='')=>arr.map(a=>`<span class="chip ${cls}" data-tip="${tip('<b>'+a[0]+'</b><br>'+a[1])}">${a[0]}</span>`).join('');
+$('#imped').innerHTML=chips(IMPED,'pa');
+$('#premissa').innerHTML=chips(PREM,'st');
+$('#motores').innerHTML=chips(MOT,'mu');
+$('#motorespt').innerHTML=MOTPT.map(a=>`<span class="chip ok" data-tip="${tip('<b>'+a[0]+'</b><br>'+a[1])}">${ic('i-ok')}${a[0]}</span>`).join('');
+$('#embs').innerHTML=EMBS.map(a=>`<span class="chip ${a[0]}" data-tip="${tip('<b>'+a[1]+'</b><br>'+a[2])}">${ic(a[0]==='ok'?'i-ok':a[0]==='no'?'i-x':'i-alerta')}${a[1]}</span>`).join('');
+$('#grupos').innerHTML=GRUPOS.map(g=>`<div class="grupo" style="--g:var(${g[0]})"><h4>${ic(g[1])}${g[2]}</h4><div class="chips">${chips(g[3],g[0]==='--nao'?'st':g[0]==='--sim'?'ok':'')}</div></div>`).join('');
+
+$('#areas').innerHTML=AREAS.map(a=>`<div class="area" data-tip="${tip('<b>'+a[0]+'</b> · '+a[1]+' entidades<br>também no catálogo (só README): '+a[3])}">
+ <div class="top"><b>${a[1]}</b><span>${a[0]}</span></div>
+ <div class="chips">${a[2].map(p=>`<span class="chip ${p[0]}" data-tip="${tip('<b>'+p[1]+'</b><br>'+p[2])}">${p[0]==='mu'?'':ic(p[0]==='ok'?'i-ok':p[0]==='no'?'i-x':'i-til')}${p[1]}</span>`).join('')}</div></div>`).join('');
+$('#conc').innerHTML=`<span class="sub2" style="margin:0 6px 0 0">292 conceitos</span>`+CONC.map(c=>`<span class="chip" style="font-size:${c[1]?10.5+c[1]/67*8:11}px" data-tip="${tip('<b>'+c[0]+'</b>'+(c[1]?' · '+c[1]+' cartões':'')+'<br>Os mais citados confirmam o que a busca precisa ter. Nenhum conceito trouxe peça nova.')}">${c[0]}${c[1]?' <span class="mono" style="color:var(--mu);font-size:10px">'+c[1]+'</span>':''}</span>`).join('');
+
+$('#funil').innerHTML=FUNIL.map(f=>`<div class="degrau" data-tip="${tip(f[3])}" style="--q:var(${f[2]})"><div class="bloco" style="height:${Math.round(14+Math.sqrt(f[0]/5526)*100)}px"></div><b>${f[0]}</b><span>${f[1]}</span></div>`).join('');
+$('#quem').innerHTML=QUEM.map(q=>`<div style="--q:var(${q[0]})" data-tip="${tip(q[3])}"><i></i><b>${q[1]}</b><span>${q[2]}</span></div>`).join('');
+$('#aprend').innerHTML=APR.map(a=>`<span class="chip${a[0]==='limites'?' pa':''}" data-tip="${tip(a[1])}">${a[0]==='limites'?ic('i-alerta'):ic('i-lampada')}${a[0]}</span>`).join('');
+
+/* ===== dica ===== */
+const D=$('#dica');let alvo=null;
+function mostra(el,x,y){const h=TIPS[el.dataset.tip];if(!h)return;D.innerHTML=h;D.classList.add('on');posiciona(x,y)}
+function posiciona(x,y){const r=D.getBoundingClientRect();let L=x+16,T=y+16;if(L+r.width>innerWidth-8)L=x-r.width-12;if(T+r.height>innerHeight-8)T=Math.max(8,y-r.height-12);D.style.left=Math.max(8,L)+'px';D.style.top=T+'px'}
+document.addEventListener('mouseover',e=>{const el=e.target.closest('[data-tip]');if(el!==alvo){alvo=el;if(el)mostra(el,e.clientX,e.clientY);else D.classList.remove('on')}});
+document.addEventListener('mousemove',e=>{if(alvo)posiciona(e.clientX,e.clientY)});
+document.addEventListener('focusin',e=>{const el=e.target.closest('[data-tip]');if(el){const r=el.getBoundingClientRect();mostra(el,r.left,r.bottom)}});
+document.addEventListener('focusout',()=>D.classList.remove('on'));
+
+/* ===== carta ampliada ===== */
+const F=$('#fundo'),A=$('#ampla');
+function abre(k){const c=CAM[k];A.style.setProperty('--c','var('+c.c+')');
+ A.innerHTML=`<div class="cab"><span style="display:flex;gap:6px">${c.naipes.map(ic).join('')}</span><span class="nm">${c.nome}</span>
+  <span class="ds"><b>${c.dias}${c.dias==='soma'?'':c.dias==='1'?' dia':' dias'}</b><span>${c.diasN} · ${c.lema}</span></span>
+  <button class="fecha" type="button" aria-label="fechar">${ic('i-x')}</button></div>
+  <div class="cobre">${c.cov.map((v,j)=>`<div style="color:${v==='n'?'var(--fa)':'var(--ink)'}"><span style="color:${v==='n'?'var(--fa)':'var(--c)'};display:flex">${ic(SIT[j][0])}</span>${SIT[j][1]}${v==='n'?' ✗':v==='p'?' ~':' ✓'}</div>`).join('')}</div>
+  <div class="corpo">${c.blocos.map(b=>`<div class="bloco2 ${b[2].length>5?'largo':''}"><h5>${ic(b[0])}${b[1]}</h5><ul>${b[2].map(x=>'<li>'+x+'</li>').join('')}</ul></div>`).join('')}</div>`;
+ F.classList.add('on');D.classList.remove('on');const f=A.querySelector('.fecha');f.onclick=fecha;f.focus();}
+function fecha(){F.classList.remove('on')}
+F.addEventListener('click',e=>{if(e.target===F)fecha()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')fecha()});
+document.querySelectorAll('.cam,.mini').forEach(el=>el.addEventListener('click',()=>abre(el.dataset.k)));
+document.querySelectorAll('.fato').forEach(el=>el.addEventListener('click',()=>el.classList.toggle('aberto')));
+
+/* ===== filtro por situação ===== */
+document.querySelectorAll('th.sit').forEach(th=>th.addEventListener('click',()=>{
+ const s=+th.dataset.s,on=!th.classList.contains('on');
+ document.querySelectorAll('th.sit').forEach(t=>t.classList.remove('on'));
+ $('#jogo').classList.toggle('foco',on);
+ document.querySelectorAll('#tl tr').forEach(tr=>tr.classList.toggle('apaga',on&&tr.dataset.cov[s]==='n'));
+ document.querySelectorAll('.cam,.mini').forEach(c=>c.classList.toggle('vale',on&&c.dataset.cov[s]!=='n'));
+ if(on)th.classList.add('on');
+}));
+
+/* ===== tema ===== */
+const R=document.documentElement;
+try{const t=localStorage.getItem('tema-sintese');if(t)R.dataset.theme=t}catch(e){}
+const q=new URLSearchParams(location.search).get('tema');if(q)R.dataset.theme=q;
+const ab=new URLSearchParams(location.search).get('abrir');if(ab&&CAM[ab])abre(ab);
+$('#tema').onclick=()=>{const escuro=R.dataset.theme?R.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;R.dataset.theme=escuro?'light':'dark';try{localStorage.setItem('tema-sintese',R.dataset.theme)}catch(e){}};
+</script>
+</body>
+</html>

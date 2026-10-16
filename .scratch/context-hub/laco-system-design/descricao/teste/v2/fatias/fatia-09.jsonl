@@ -1,0 +1,24 @@
+{"n": 9, "pergunta": "O que o hub não faz com uma divergência que o Gustavo ainda não resolveu manualmente na tela de três vias?", "tipo": "o-que-nao-faz"}
+{"n": 19, "pergunta": "Se o **contrato do hub** (`AGENTS.md`) for alterado diretamente no disco por um **agente de código** (sem passar pelo **banco**), como o **sincronizador** detecta e corrige isso?", "tipo": "se-x"}
+{"n": 29, "pergunta": "Se eu adicionar um arquivo sobre a iniciativa STRATA, em qual pasta ele deve parar e como é sincronizado?", "tipo": "ordem"}
+{"n": 39, "pergunta": "O que acontece se eu tentar abrir dois agentes diferentes para editar o mesmo arquivo de nota ao mesmo tempo?", "tipo": "quando"}
+{"n": 49, "pergunta": "Se o Gustavo resolver uma colisão, o que acontece com as duas versões da nota?", "tipo": "diferenca"}
+{"n": 59, "pergunta": "Quando a conexão entre as duas máquinas falha temporariamente, mas o Sincronizador continua tentando, o que acontece com as mudanças pendentes na outra máquina quando a rede volta?", "tipo": "quando"}
+{"n": 69, "pergunta": "Se um **cliente** (computador externo) tentar acessar arquivos da pasta **reference/** (conhecimento de referência) que contenham dados confidenciais de um cliente específico (como a **STRATA**), quem controla o acesso e como o sistema diferencia referência pública de referência restrita?", "tipo": "responsavel"}
+{"n": 79, "pergunta": "Se eu acessar o hub por um cliente, posso editar notas diretamente no disco?", "tipo": "relacao"}
+{"n": 89, "pergunta": "Se a nota for criada no Obsidian na máquina de trabalho, o que muda nos arquivos `.md`, no banco e na outra máquina?", "tipo": "diferenca"}
+{"n": 99, "pergunta": "Onde vive a notificação de colisão real quando o Gustavo e um agente editam o mesmo arquivo Markdown simultaneamente em máquinas diferentes?", "tipo": "onde-vive"}
+{"n": 109, "pergunta": "Em que ordem acontece a checagem de divergência quando o maestro tenta sincronizar após ficar offline por 20 minutos?", "tipo": "ordem"}
+{"n": 119, "pergunta": "As portas de entrada fazem parte do grupo de acesso?", "tipo": "grupo"}
+{"n": 129, "pergunta": "O que o hub não faz quando uma nota de retomada é sobrescrita, mas o hook de fim de sessão não é acionado?", "tipo": "o-que-nao-faz"}
+{"n": 139, "pergunta": "Onde fica o histórico de versões dos arquivos do hub, e como o agente o acessa?", "tipo": "onde-vive"}
+{"n": 149, "pergunta": "Se um recruta tentar gravar uma nova decisão em um arquivo dentro de uma sessão na raiz do hub (por exemplo, em `reference/`), mas o arquivo estiver acima do limite de tamanho para o sincronizador (200 MiB), o que acontece e como o maestro resolve?", "tipo": "se-x"}
+{"n": 159, "pergunta": "As portas de entrada estão no grupo de caminhos que permitem o acesso ao hub por diferentes meios?", "tipo": "grupo"}
+{"n": 169, "pergunta": "Se o Sincronizador falhar ao gravar uma nota que o Gustavo acabou de editar no Obsidian, qual versão permanece no banco?", "tipo": "falha"}
+{"n": 179, "pergunta": "Quando um cliente (sandbox sem cópia própria) acessa o hub, o que ele consegue ver e alterar?", "tipo": "quando"}
+{"n": 189, "pergunta": "Durante uma sessão no Maestri, se o *MCP do banco* de um par falhar (por exemplo, a conexão com o CouchDB local cair), como os recrutas continuam operando e quem é responsável por restaurar o acesso ao contexto sem perder o progresso do canvas?", "tipo": "quem-usa"}
+{"n": 199, "pergunta": "O que o hub não faz se um cliente tentar acessar um arquivo que está em uma pasta compartilhada sem permissão explícita?", "tipo": "o-que-nao-faz"}
+{"n": 209, "pergunta": "Quando o Sincronizador detecta que a rede Tailscale foi interrompida, o que acontece com as alterações pendentes?", "tipo": "quando"}
+{"n": 219, "pergunta": "Quem lê a mensagem de erro do MCP do banco quando duas gravações concorrentes tentam salvar a mesma nota?", "tipo": "quem-usa"}
+{"n": 229, "pergunta": "Como um cliente que usa uma sandbox pode ler dados do hub sem risco de apagar as informações originais?", "tipo": "quem-usa"}
+{"n": 239, "pergunta": "Se o outro par tentar gravar uma nova versão de um arquivo que está em colisão real nesta máquina (e o Gustavo ainda não resolveu), como o MCP do outro par lida com o conflito e o que é mostrado ao agente que tentou gravar?", "tipo": "onde-vive"}

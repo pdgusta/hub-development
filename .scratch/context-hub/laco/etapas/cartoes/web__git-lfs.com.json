@@ -1,0 +1,30 @@
+{
+ "chave": "web:git-lfs.com",
+ "urls": [
+  "https://git-lfs.com/"
+ ],
+ "tipos": [
+  "tool"
+ ],
+ "termos": [
+  "Git LFS",
+  "大容量ファイル",
+  "バージョン管理"
+ ],
+ "mencoes": 1,
+ "familias": [
+  "mistral"
+ ],
+ "primeira_onda": 2,
+ "nomes": [
+  "Git LFS (Large File Storage)"
+ ],
+ "resumos": [
+  "Markdownファイルの大容量データをGitに保存するためのツール。`ripgrep`で検索した結果をGit LFSで管理し、MCP経由でローカルに同期"
+ ],
+ "fonte": "site",
+ "readme_status": "ok",
+ "readme_nome": "https://git-lfs.com/",
+ "readme_cortado": false,
+ "readme": "[Git Large File Storage | Git Large File Storage (LFS) replaces large files such as audio samples, videos, datasets, and graphics with text pointers inside Git, while storing the file contents on a rem]\n\nAn open source Git extension for versioning large files\n\nGit Large File Storage (LFS) replaces large files such as audio samples, videos, datasets, and graphics with text pointers inside Git, while storing the file contents on a remote server like GitHub.com or GitHub Enterprise.\n\n Download v3.8.0 (Windows)\n\n Download v3.8.0 (Mac - Intel Silicon)  \n\n Download v3.8.0 (Mac - Apple Silicon)\n\n Homebrew: brew install git-lfs\n\n MacPorts:    port install git-lfs\n\n Install v3.8.0 via PackageCloud (Linux)\n\n Download v3.8.0 (Linux - x86-64)\n\nHow it works:\n\n Git LFS security update: All users should update to 3.7.1 or newer.\n\nGetting Started\n\n Download and install the Git command line extension. Once downloaded and installed, set up Git LFS for your user account by running:\n\ngit lfs install\n\nYou only need to run this once per user account.\n\nIn each Git repository where you want to use Git LFS, select the file types you'd like Git LFS to manage (or directly edit your .gitattributes). You can configure additional file extensions at anytime.\n\ngit lfs track \"*.psd\"\n\nNow make sure .gitattributes is tracked:\n\ngit add .gitattributes\n\nNote that defining the file types Git LFS should track will not, by itself, convert any pre-existing files to Git LFS, such as files on other branches or in your prior commit history. To do that, use the git lfs migrate(1) command, which has a range of options designed to suit various potential use cases.\n\nThere is no step three. Just commit and push as you normally would; for instance, if your current branch is named main:\n\ngit add file.psd\ngit commit -m \"Add design file\"\ngit push origin main\n\nCheck out our wiki, discussion forum, and documentation for help with any questions you might have!\n\nGit LFS is an open source project\n\nTo start a discussion, file an issue, or contribute to the project, head over to the repository\n or read our guide to contributing.\n\nIf you're interested in integrating Git LFS into another tool or product, you might want to read the\n API specification\n or check out our reference server implementation.\n\nFeatures\n\nLarge file versioning\n\nVersion large files—even those as large as a couple GB in size—with Git.\n\nMore repository space\n\nHost more in your Git repositories. External file storage makes it easy to keep your repository at a manageable size.\n\nFaster cloning and fetching\n\nDownload less data. This means faster cloning and fetching from repositories that deal with large files.\n\nSame Git workflow\n\nWork like you always do on Git—no need for additional commands, secondary storage systems, or toolsets.\n\nSame access controls and permissions\n\nKeep the same access controls and permissions for large files as the rest of your Git repository when working with a remote host like GitHub."
+}

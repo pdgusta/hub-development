@@ -1,0 +1,29 @@
+{
+ "chave": "gh:aio-libs/aiopg",
+ "urls": [
+  "https://github.com/aio-libs/aiopg"
+ ],
+ "tipos": [
+  "library"
+ ],
+ "termos": [
+  "PostgreSQL",
+  "asyncio",
+  "psycopg2"
+ ],
+ "mencoes": 1,
+ "familias": [
+  "dots3"
+ ],
+ "primeira_onda": 5,
+ "nomes": [
+  "aiopg"
+ ],
+ "resumos": [
+  "Asyncio PostgreSQL driver using psycopg2."
+ ],
+ "readme_status": "ok",
+ "readme_nome": "README.rst",
+ "readme_cortado": false,
+ "readme": "aiopg\n=====\n.. image:: https://github.com/aio-libs/aiopg/workflows/CI/badge.svg\n   :target: https://github.com/aio-libs/aiopg/actions?query=workflow%3ACI\n.. image:: https://codecov.io/gh/aio-libs/aiopg/branch/master/graph/badge.svg\n   :target: https://codecov.io/gh/aio-libs/aiopg\n.. image:: https://badges.gitter.im/Join%20Chat.svg\n    :target: https://gitter.im/aio-libs/Lobby\n    :alt: Chat on Gitter\n\n**aiopg** is a library for accessing a PostgreSQL_ database\nfrom the asyncio_ (PEP-3156/tulip) framework. It wraps\nasynchronous features of the Psycopg database driver.\n\nExample\n-------\n\n.. code:: python\n\n    import asyncio\n    import aiopg\n\n    dsn = 'dbname=aiopg user=aiopg password=passwd host=127.0.0.1'\n\n    async def go():\n        pool = await aiopg.create_pool(dsn)\n        async with pool.acquire() as conn:\n            async with conn.cursor() as cur:\n                await cur.execute(\"SELECT 1\")\n                ret = []\n                async for row in cur:\n                    ret.append(row)\n                assert ret == [(1,)]\n\n    loop = asyncio.get_event_loop()\n    loop.run_until_complete(go())\n\n\nExample of SQLAlchemy optional integration\n------------------------------------------\n\n.. code:: python\n\n   import asyncio\n   from aiopg.sa import create_engine\n   import sqlalchemy as sa\n\n   metadata = sa.MetaData()\n\n   tbl = sa.Table('tbl', metadata,\n       sa.Column('id', sa.Integer, primary_key=True),\n       sa.Column('val', sa.String(255)))\n\n   async def create_table(engine):\n       async with engine.acquire() as conn:\n           await conn.execute('DROP TABLE IF EXISTS tbl')\n           await conn.execute('''CREATE TABLE tbl (\n                                     id serial PRIMARY KEY,\n                                     val varchar(255))''')\n\n   async def go():\n       async with create_engine(user='aiopg',\n                                database='aiopg',\n                                host='127.0.0.1',\n                                password='passwd') as engine:\n\n           async with engine.acquire() as conn:\n               await conn.execute(tbl.insert().values(val='abc'))\n\n               async for row in conn.execute(tbl.select()):\n                   print(row.id, row.val)\n\n   loop = asyncio.get_event_loop()\n   loop.run_until_complete(go())\n\n.. _PostgreSQL: http://www.postgresql.org/\n.. _asyncio: https://docs.python.org/3/library/asyncio.html\n\nPlease use::\n\n   $ make test\n\nfor executing the project's unittests.\nSee https://aiopg.readthedocs.io/en/stable/contributing.html for details\non how to set up your environment to run the tests.\n"
+}

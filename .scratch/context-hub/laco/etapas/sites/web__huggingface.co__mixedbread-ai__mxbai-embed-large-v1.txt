@@ -1,0 +1,362 @@
+The crispy sentence embedding family from Mixedbread.
+
+ 🍞 Looking for a simple end-to-end retrieval solution? Meet Omni, our multimodal and multilingual model. Get in touch for access. 
+
+ mixedbread-ai/mxbai-embed-large-v1
+
+Here, we provide several ways to produce sentence embeddings. Please note that you have to provide the prompt Represent this sentence for searching relevant passages: for query if you want to use it for retrieval. Besides that you don't need any prompt. Our model also supports Matryoshka Representation Learning and binary quantization.
+
+ Quickstart
+
+Here, we provide several ways to produce sentence embeddings. Please note that you have to provide the prompt Represent this sentence for searching relevant passages: for query if you want to use it for retrieval. Besides that you don't need any prompt.
+
+ sentence-transformers
+
+python -m pip install -U sentence-transformers
+
+from sentence_transformers import SentenceTransformer
+from sentence_transformers.util import cos_sim
+from sentence_transformers.quantization import quantize_embeddings
+
+# 1. Specify preffered dimensions
+dimensions = 512
+
+# 2. load model
+model = SentenceTransformer("mixedbread-ai/mxbai-embed-large-v1", truncate_dim=dimensions)
+
+# The prompt used for query retrieval tasks:
+# query_prompt = 'Represent this sentence for searching relevant passages: '
+
+query = "A man is eating a piece of bread"
+docs = [
+ "A man is eating food.",
+ "A man is eating pasta.",
+ "The girl is carrying a baby.",
+ "A man is riding a horse.",
+]
+
+# 2. Encode
+query_embedding = model.encode(query, prompt_name="query")
+# Equivalent Alternatives:
+# query_embedding = model.encode(query_prompt + query)
+# query_embedding = model.encode(query, prompt=query_prompt)
+
+docs_embeddings = model.encode(docs)
+
+# Optional: Quantize the embeddings
+binary_query_embedding = quantize_embeddings(query_embedding, precision="ubinary")
+binary_docs_embeddings = quantize_embeddings(docs_embeddings, precision="ubinary")
+
+similarities = cos_sim(query_embedding, docs_embeddings)
+print('similarities:', similarities)
+
+ Transformers
+
+from typing import Dict
+
+import torch
+import numpy as np
+from transformers import AutoModel, AutoTokenizer
+from sentence_transformers.util import cos_sim
+
+# For retrieval you need to pass this prompt. Please find our more in our blog post.
+def transform_query(query: str) -> str:
+ """ For retrieval, add the prompt for query (not for documents).
+ """
+ return f'Represent this sentence for searching relevant passages: {query}'
+
+# The model works really well with cls pooling (default) but also with mean pooling.
+def pooling(outputs: torch.Tensor, inputs: Dict, strategy: str = 'cls') -> np.ndarray:
+ if strategy == 'cls':
+ outputs = outputs[:, 0]
+ elif strategy == 'mean':
+ outputs = torch.sum(
+ outputs * inputs["attention_mask"][:, :, None], dim=1) / torch.sum(inputs["attention_mask"], dim=1, keepdim=True)
+ else:
+ raise NotImplementedError
+ return outputs.detach().cpu().numpy()
+
+# 1. load model
+model_id = 'mixedbread-ai/mxbai-embed-large-v1'
+tokenizer = AutoTokenizer.from_pretrained(model_id)
+model = AutoModel.from_pretrained(model_id).cuda()
+
+docs = [
+ transform_query('A man is eating a piece of bread'),
+ "A man is eating food.",
+ "A man is eating pasta.",
+ "The girl is carrying a baby.",
+ "A man is riding a horse.",
+]
+
+# 2. encode
+inputs = tokenizer(docs, padding=True, return_tensors='pt')
+for k, v in inputs.items():
+ inputs[k] = v.cuda()
+outputs = model(**inputs).last_hidden_state
+embeddings = pooling(outputs, inputs, 'cls')
+
+similarities = cos_sim(embeddings[0], embeddings[1:])
+print('similarities:', similarities)
+
+ Transformers.js
+
+If you haven't already, you can install the Transformers.js JavaScript library from NPM using:
+
+npm i @huggingface/transformers
+
+You can then use the model to compute embeddings like this:
+
+import { pipeline, cos_sim } from "@huggingface/transformers";
+
+// Create a feature extraction pipeline
+const extractor = await pipeline("feature-extraction", "mixedbread-ai/mxbai-embed-large-v1", {
+ dtype: "fp32", // Options: "fp32", "fp16", "q8"
+});
+
+// Generate sentence embeddings
+const docs = [
+ "Represent this sentence for searching relevant passages: A man is eating a piece of bread",
+ "A man is eating food.",
+ "A man is eating pasta.",
+ "The girl is carrying a baby.",
+ "A man is riding a horse.",
+]
+const output = await extractor(docs, { pooling: "cls" });
+
+// Compute similarity scores
+const [source_embeddings, ...document_embeddings ] = output.tolist();
+const similarities = document_embeddings.map(x => cos_sim(source_embeddings, x));
+console.log(similarities); // [0.7919578577247139, 0.6369278664248345, 0.16512018371357193, 0.3620778366720027]
+
+ Using API
+
+You can use the model via our API as follows:
+
+from mixedbread_ai.client import MixedbreadAI, EncodingFormat
+from sklearn.metrics.pairwise import cosine_similarity
+import os
+
+mxbai = MixedbreadAI(api_key="{MIXEDBREAD_API_KEY}")
+
+english_sentences = [
+ 'What is the capital of Australia?',
+ 'Canberra is the capital of Australia.'
+] 
+
+res = mxbai.embeddings(
+ input=english_sentences,
+ model="mixedbread-ai/mxbai-embed-large-v1",
+ normalized=True,
+ encoding_format=[EncodingFormat.FLOAT, EncodingFormat.UBINARY, EncodingFormat.INT_8],
+ dimensions=512
+)
+
+encoded_embeddings = res.data[0].embedding
+print(res.dimensions, encoded_embeddings.ubinary, encoded_embeddings.float_, encoded_embeddings.int_8)
+
+The API comes with native int8 and binary quantization support! Check out the docs for more information.
+
+ Infinity
+
+docker run --gpus all -v $PWD/data:/app/.cache -p "7997":"7997" \
+michaelf34/infinity:0.0.68 \
+v2 --model-id mixedbread-ai/mxbai-embed-large-v1 --revision "main" --dtype float16 --engine torch --port 7997
+
+ Evaluation
+
+As of March 2024, our model archives SOTA performance for Bert-large sized models on the MTEB. It ourperforms commercial models like OpenAIs text-embedding-3-large and matches the performance of model 20x it's size like the echo-mistral-7b. Our model was trained with no overlap of the MTEB data, which indicates that our model generalizes well across several domains, tasks and text length. We know there are some limitations with this model, which will be fixed in v2. 
+
+Model
+Avg (56 datasets)
+Classification (12 datasets)
+Clustering (11 datasets)
+PairClassification (3 datasets)
+Reranking (4 datasets)
+Retrieval (15 datasets)
+STS (10 datasets)
+Summarization (1 dataset)
+
+mxbai-embed-large-v1
+64.68
+75.64
+46.71
+87.2
+60.11
+54.39
+85.00
+32.71
+
+bge-large-en-v1.5
+64.23
+75.97
+46.08
+87.12
+60.03
+54.29
+83.11
+31.61
+
+mxbai-embed-2d-large-v1
+63.25
+74.14
+46.07
+85.89
+58.94
+51.42
+84.9
+31.55
+
+nomic-embed-text-v1
+62.39
+74.12
+43.91
+85.15
+55.69
+52.81
+82.06
+30.08
+
+jina-embeddings-v2-base-en
+60.38
+73.45
+41.73
+85.38
+56.98
+47.87
+80.7
+31.6
+
+Proprietary Models
+
+OpenAI text-embedding-3-large
+64.58
+75.45
+49.01
+85.72
+59.16
+55.44
+81.73
+29.92
+
+Cohere embed-english-v3.0
+64.47
+76.49
+47.43
+85.84
+58.01
+55.00
+82.62
+30.18
+
+OpenAI text-embedding-ada-002
+60.99
+70.93
+45.90
+84.89
+56.32
+49.25
+80.97
+30.80
+
+Please find more information in our blog post. 
+
+ Matryoshka and Binary Quantization
+
+Embeddings in their commonly used form (float arrays) have a high memory footprint when used at scale. Two approaches to solve this problem are Matryoshka Representation Learning (MRL) and (Binary) Quantization. While MRL reduces the number of dimensions of an embedding, binary quantization transforms the value of each dimension from a float32 into a lower precision (int8 or even binary). The model supports both approaches! 
+
+You can also take it one step further, and combine both MRL and quantization. This combination of binary quantization and MRL allows you to reduce the memory usage of your embeddings significantly. This leads to much lower costs when using a vector database in particular. You can read more about the technology and its advantages in our blog post.
+
+ Community
+
+Please join our Discord Community and share your feedback and thoughts! We are here to help and also always happy to chat.
+
+ License
+
+Apache 2.0
+
+ Citation
+
+@online{emb2024mxbai,
+ title={Open Source Strikes Bread - New Fluffy Embeddings Model},
+ author={Sean Lee and Aamir Shakir and Darius Koenig and Julius Lipp},
+ year={2024},
+ url={https://www.mixedbread.ai/blog/mxbai-embed-large-v1},
+}
+
+@article{li2023angle,
+ title={AnglE-optimized Text Embeddings},
+ author={Li, Xianming and Li, Jing},
+ journal={arXiv preprint arXiv:2309.12871},
+ year={2023}
+}
+
+Downloads last month 1,937,300 
+
+Safetensors 
+
+Model size 
+0.3B params 
+
+Tensor type 
+F16 
+· 
+
+Files info 
+
+ Model tree for mixedbread-ai/mxbai-embed-large-v1 
+
+Adapters 
+ 2 models
+
+Finetunes 
+ 56 models
+
+Quantizations 
+ 15 models 
+
+ Spaces using mixedbread-ai/mxbai-embed-large-v1 100 
+
+ Collection including mixedbread-ai/mxbai-embed-large-v1 
+
+crispy sentence embedding family • 5 items • Updated Oct 14, 2024 • 27 
+
+ Paper for mixedbread-ai/mxbai-embed-large-v1 
+
+ Paper • 2309.12871 • Published Sep 22, 2023 • 3 
+
+ Evaluation results 
+
+accuracy on MTEB AmazonCounterfactualClassification (en) test set self-reported 
+
+75.045
+
+ap on MTEB AmazonCounterfactualClassification (en) test set self-reported 
+
+37.736
+
+f1 on MTEB AmazonCounterfactualClassification (en) test set self-reported 
+
+68.927
+
+accuracy on MTEB AmazonPolarityClassification test set self-reported 
+
+93.840
+
+ap on MTEB AmazonPolarityClassification test set self-reported 
+
+90.932
+
+f1 on MTEB AmazonPolarityClassification test set self-reported 
+
+93.830
+
+accuracy on MTEB AmazonReviewsClassification (en) test set self-reported 
+
+49.184
+
+f1 on MTEB AmazonReviewsClassification (en) test set self-reported 
+
+48.742 
+
+ Expand 982 evaluations

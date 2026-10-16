@@ -1,0 +1,55 @@
+{
+ "chave": "web:elastic.co/guide/en/logstash/current/index.html",
+ "nomes": [
+  "CouchDB Change Feed + Kibana (via Logstash + BM25)",
+  "Elasticsearch Logstash Integration"
+ ],
+ "urls": [
+  "https://www.elastic.co/guide/en/logstash/current/index.html"
+ ],
+ "readme_cortado": false,
+ "readme": "[Logstash | Logstash]\n\nDocs\n\n /\n\n Reference\n\n /\n\n Ingestion tools\n\nLogstash\n\nLogstash is an open source data collection engine with real-time pipelining capabilities.\nLogstash can dynamically unify data from disparate sources and normalize the data into destinations of your choice.\nCleanse and democratize all your data for diverse advanced downstream analytics and visualization use cases.\n\nWhile Logstash originally drove innovation in log collection, its capabilities extend well beyond that use case.\nAny type of event can be enriched and transformed with a broad array of input, filter, and output plugins, with many native codecs further simplifying the ingestion process.\nLogstash accelerates your insights by harnessing a greater volume and variety of data.\n\n Logstash to Elastic Cloud Serverless\n\nYou’ll use the Logstash Elasticsearch output plugin to send data to Elastic Cloud Serverless.\nNote these differences between Elasticsearch Serverless and both Elastic Cloud Hosted and self-managed Elasticsearch:\n\nUse API keys to access Elastic Cloud Serverless from Logstash as it does not support native user authentication.\nAny user-based security settings in your Elasticsearch output plugin configuration are ignored and may cause errors.\n\nElastic Cloud Serverless uses data streams and data lifecycle management (DLM) instead of index lifecycle management (ILM). Any ILM settings in your Elasticsearch output plugin configuration are ignored and may cause errors.\n\nLogstash monitoring is available through the Logstash Integration in Elastic Observability on Elastic Cloud Serverless.\n\nKnown issue for Logstash to Elasticsearch Serverless.\nThe logstash-output-elasticsearch hosts setting defaults to port :9200.\nSet the value to port :443 instead.",
+ "fonte": "site",
+ "respostas": [
+  {
+   "por": "diffusiongemma-26b-a4b-it",
+   "resposta": {
+    "serve": "stack",
+    "role": "Data ingestion engine for collecting, transforming, and normalizing data from sources to destinations.",
+    "place": [
+     "network_service"
+    ],
+    "mechanism": [
+     "other"
+    ],
+    "mcp": "no",
+    "windows": "unknown",
+    "portuguese": "no",
+    "license": "unknown",
+    "maturity": "stable",
+    "doubt": true,
+    "evidence": "Logstash is an open source data collection engine with real-time pipelining capabilities."
+   }
+  },
+  {
+   "por": "nemotron-3-super-120b",
+   "resposta": {
+    "serve": "none",
+    "role": "",
+    "place": [
+     "n/a"
+    ],
+    "mechanism": [
+     "n/a"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "unknown",
+    "doubt": false,
+    "evidence": "Logstash is an open source data collection engine with real-time pipelining capabilities."
+   }
+  }
+ ]
+}

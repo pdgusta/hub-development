@@ -1,0 +1,23 @@
+{
+ "chave": "conceito:portuguese-text-normalization",
+ "modelo": "diffusiongemma-26b-a4b-it",
+ "ts": "2026-10-13T20:21:28Z",
+ "resposta": {
+  "concept_en": "portuese text normalization",
+  "serve": "search",
+  "role": "Prepares Portuguese text by removing accents and stemming to improve search accuracy.",
+  "mechanism": [
+   "full_text"
+  ],
+  "place": [
+   "inside_db_mcp"
+  ],
+  "tools_on_card": [
+   "RediSearch",
+   "Snowball"
+  ],
+  "doubt": false,
+  "evidence": "Accent folding and Snowball stemming configuration for RediSearch to handle Portuguese."
+ },
+ "via": "freellmapi"
+}

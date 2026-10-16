@@ -1,0 +1,32 @@
+{
+ "chave": "gh:unum-cloud/usearch",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T21:55:38Z",
+ "resultado": "corrige",
+ "conferencia": {
+  "resultado": "corrige",
+  "final": {
+   "mcp": "unknown",
+   "windows": "yes",
+   "portuguese": "unknown",
+   "license": "unknown",
+   "maturity": "unknown",
+   "doubt": false,
+   "serve": "search",
+   "role": "Single-file HNSW vector index library for similarity search, servable from disk via memory mapping",
+   "place": [
+    "library",
+    "disk"
+   ],
+   "mechanism": [
+    "vector"
+   ],
+   "evidence": "Similarity Search & Clustering Engine for Vectors; Linux, macOS, Windows; view large indexes from disk; Python/JS/Rust bindings"
+  },
+  "o_que_mudou": [
+   "mechanism: vector+hybrid -> vector, README shows only vector ANN, no built-in text or hybrid ranking",
+   "mcp: unknown (kept)"
+  ],
+  "nota": "Embeddable vector index for note embeddings; needs own embedding model and MCP layer, no text ranking."
+ }
+}

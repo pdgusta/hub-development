@@ -1,0 +1,93 @@
+{
+ "chave": "gh:stanfordnlp/glove",
+ "nomes": [
+  "GloVe",
+  "GloVe Portuguese Embeddings",
+  "GloVe Embeddings"
+ ],
+ "urls": [
+  "https://github.com/stanfordnlp/GloVe",
+  "https://nlp.stanford.edu/projects/glove/",
+  "https://github.com/stanfordnlp/glove"
+ ],
+ "readme_cortado": false,
+ "readme": "## GloVe: Global Vectors for Word Representation\n\n\n| nearest neighbors of <br/> <em>frog</em> | Litoria             |  Leptodactylidae | Rana | Eleutherodactylus |\n| --- | ------------------------------- | ------------------- | ---------------- | ------------------- |\n| Pictures | <img src=\"https://nlp.stanford.edu/projects/glove/images/litoria.jpg\"></img> | <img src=\"https://nlp.stanford.edu/projects/glove/images/leptodactylidae.jpg\"></img> | <img src=\"https://nlp.stanford.edu/projects/glove/images/rana.jpg\"></img> | <img src=\"https://nlp.stanford.edu/projects/glove/images/eleutherodactylus.jpg\"></img> |\n\n| Comparisons | man -> woman             |  city -> zip | comparative -> superlative |\n| --- | ------------------------|-------------------------|-------------------------|\n| GloVe Geometry | <img src=\"https://nlp.stanford.edu/projects/glove/images/man_woman_small.jpg\"></img>  | <img src=\"https://nlp.stanford.edu/projects/glove/images/city_zip_small.jpg\"></img> | <img src=\"https://nlp.stanford.edu/projects/glove/images/comparative_superlative_small.jpg\"></img> |\n\nWe provide an implementation of the GloVe model for learning word representations, and describe how to download web-dataset vectors or train your own. See the [project page](https://nlp.stanford.edu/projects/glove/) or the [paper](https://nlp.stanford.edu/pubs/glove.pdf) for more information on glove vectors. For documentation and analysis of 2024 vectors, please see the [report](https://arxiv.org/abs/2507.18103)\n\n## Download pre-trained word vectors \\*\\***NEW 2024 VECTORS**\\*\\*\nThe links below contain word vectors obtained from the respective corpora. If you want word vectors trained on massive web datasets, you need only download one of these text files! Pre-trained word vectors are made available under the <a href=\"https://opendatacommons.org/licenses/pddl/\">Public Domain Dedication and License</a>.\n<div class=\"entry\">\n<ul style=\"padding-left:0px; margin-top:0px; margin-bottom:0px\">\n  <li> **NEW!!** 2024 Dolma (220B tokens, 1.2M vocab, uncased, 300d vectors, 1.6 GB download): <a href=\"https://nlp.stanford.edu/data/wordvecs/glove.2024.dolma.300d.zip\">glove.2024.dolma.300d.zip</a> </li>\n  <li> **NEW!!** 2024 Wikipedia + Gigaword 5 (11.9B tokens, 1.2M vocab, uncased, 300d vectors, 1.6 GB download): <a href=\"https://nlp.stanford.edu/data/wordvecs/glove.2024.wikigiga.300d.zip\">glove.2024.wikigiga.300d.zip</a> </li>\n  <li> **NEW!!** 2024 Wikipedia + Gigaword 5 (11.9B tokens, 1.2M vocab, uncased, 200d vectors, 1.1 GB download): <a href=\"https://nlp.stanford.edu/data/wordvecs/glove.2024.wikigiga.200d.zip\">glove.2024.wikigiga.200d.zip</a> </li>\n  <li> **NEW!!** 2024 Wikipedia + Gigaword 5 (11.9B tokens, 1.2M vocab, uncased, 100d vectors, 560 MB download): <a href=\"https://nlp.stanford.edu/data/wordvecs/glove.2024.wikigiga.100d.zip\">glove.2024.wikigiga.100d.zip</a> </li>\n   <li> **NEW!!** 2024 Wikipedia + Gigaword 5 (11.9B tokens, 1.2M vocab, uncased, 50d vectors, 290 MB download): <a href=\"https://nlp.stanford.edu/data/wordvecs/glove.2024.wikigiga.50d.zip\">glove.2024.wikigiga.50d.zip</a> </li>\n  <li> Common Crawl (42B tokens, 1.9M vocab, uncased, 300d vectors, 1.75 GB download): <a href=\"https://huggingface.co/stanfordnlp/glove/resolve/main/glove.42B.300d.zip\">glove.42B.300d.zip</a> [<a href=\"https://nlp.stanford.edu/data/wordvecs/glove.42B.300d.zip\">mirror</a>] </li>\n  <li> Common Crawl (840B tokens, 2.2M vocab, cased, 300d vectors, 2.03 GB download): <a href=\"https://huggingface.co/stanfordnlp/glove/resolve/main/glove.840B.300d.zip\">glove.840B.300d.zip</a> [<a href=\"https://nlp.stanford.edu/data/wordvecs/glove.840B.300d.zip\">mirror</a>] </li>\n  <li> Wikipedia 2014 + Gigaword 5 (6B tokens, 400K vocab, uncased, 300d vectors, 822 MB download): <a href=\"https://huggingface.co/stanfordnlp/glove/resolve/main/glove.6B.zip\">glove.6B.zip</a> [<a href=\"https://nlp.stanford.edu/data/wordvecs/glove.6B.zip\">mirror</a>] </li>\n  <li> Twitter (2B tweets, 27B tokens, 1.2M vocab, uncased, 200d vectors, 1.42 GB download): <a href=\"https://huggingface.co/stanfordnlp/glove/resolve/main/glove.twitter.27B.zip\">glove.twitter.27B.zip</a> [<a href=\"https://nlp.stanford.edu/data/wordvecs/glove.twitter.27B.zip\">mirror</a>] </li>\n</ul>\n</div>\n\n## Train word vectors on a new corpus\n\n<img src=\"https://travis-ci.org/stanfordnlp/GloVe.svg?branch=master\"></img>\n\nIf the web datasets above don't match the semantics of your end use case, you can train word vectors on your own corpus.\n\n    $ git clone https://github.com/stanfordnlp/glove\n    $ cd glove && make\n    $ ./demo.sh\n\nMake sure you have the following prerequisites installed when running the steps above:\n\n* GNU Make\n* GCC (Clang pretending to be GCC is fine)\n* Python and NumPy\n\nThe demo.sh script downloads a small corpus, consisting of the first 100M characters of Wikipedia. It collects unigram counts, constructs and shuffles cooccurrence data, and trains a simple version of the GloVe model. It also runs a word analogy evaluation script in python to verify word vector quality. More details about training on your own corpus can be found by reading [demo.sh](https://github.com/stanfordnlp/GloVe/blob/master/demo.sh) or the [src/README.md](https://github.com/stanfordnlp/GloVe/tree/master/src)\n\n## 2024 Vector Documentation \nThe training scripts and data preprocessing pipeline used for training the 2024 vectors can be found in the Training_README.md\n\nAnalysis and more documentation for the new vectors can be found in this [report](https://arxiv.org/abs/2507.18103)\n\n### License\nAll work contained in this package is licensed under the Apache License, Version 2.0. See the include LICENSE file.\n",
+ "fonte": "readme",
+ "respostas": [
+  {
+   "por": "gemma-4-31b",
+   "resposta": {
+    "serve": "search",
+    "role": "provide word embeddings for semantic search",
+    "place": [
+     "disk",
+     "library"
+    ],
+    "mechanism": [
+     "embeddings",
+     "vector"
+    ],
+    "mcp": "no",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "Apache-2.0",
+    "maturity": "stable",
+    "doubt": false,
+    "evidence": "implementation of the GloVe model for learning word representations; no mention of MCP or Windows"
+   }
+  },
+  {
+   "por": "llama-3.2-90b-vision",
+   "resposta": {
+    "serve": "search",
+    "role": "word embeddings for search",
+    "place": [
+     "library"
+    ],
+    "mechanism": [
+     "embeddings"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "Apache-2.0",
+    "maturity": "stable",
+    "doubt": true,
+    "evidence": "None"
+   }
+  }
+ ],
+ "conferencia_sonnet": {
+  "chave": "gh:stanfordnlp/glove",
+  "modelo": "claude-sonnet-5-5",
+  "ts": "2026-10-13T12:00:00Z",
+  "resultado": "corrige",
+  "conferencia": {
+   "resultado": "corrige",
+   "final": {
+    "serve": "stack",
+    "role": "Static word-embedding vectors and training code (not passage search)",
+    "place": [
+     "library",
+     "disk"
+    ],
+    "mechanism": [
+     "embeddings"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "Apache-2.0",
+    "maturity": "stable",
+    "doubt": false,
+    "evidence": "implementation of the GloVe model for learning word representations; pretrained vectors under PDDL; code under Apache 2.0"
+   },
+   "o_que_mudou": [
+    "serve: search -> stack, word vectors are a building block, not a search layer",
+    "mcp: no -> unknown, README does not say",
+    "doubt: false"
+   ],
+   "nota": "Old word-level vectors, English corpora; little use for passage search in pt/en compared with modern embedding models."
+  }
+ }
+}

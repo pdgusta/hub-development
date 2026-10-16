@@ -1,0 +1,45 @@
+Docs
+
+ /
+
+ Reference
+
+ /
+
+ Elasticsearch
+
+ /
+
+ Elasticsearch plugins
+
+ /
+
+ Analysis plugins
+
+ICU analysis plugin
+
+The ICU Analysis plugin integrates the Lucene ICU module into Elasticsearch, adding extended Unicode support using the ICU libraries, including better analysis of Asian languages, Unicode normalization, Unicode-aware case folding, collation support, and transliteration.
+
+ ICU analysis and backwards compatibility
+
+From time to time, the ICU library receives updates such as adding new characters and emojis, and improving collation (sort) orders. These changes may or may not affect search and sort orders, depending on which characters sets you are using.
+
+While we restrict ICU upgrades to major versions, you may find that an index created in the previous major version will need to be reindexed in order to return correct (and correctly ordered) results, and to take advantage of new characters.
+
+Installation
+
+This plugin can be installed using the plugin manager:
+
+sudo bin/elasticsearch-plugin install analysis-icu
+
+The plugin must be installed on every node in the cluster, and each node must be restarted after installation.
+
+You can download this plugin for offline install from https://artifacts.elastic.co/downloads/elasticsearch-plugins/analysis-icu/analysis-icu-9.5.5.zip. To verify the .zip file, use the SHA hash or ASC key.
+
+Removal
+
+The plugin can be removed with the following command:
+
+sudo bin/elasticsearch-plugin remove analysis-icu
+
+The node must be stopped before removing the plugin.

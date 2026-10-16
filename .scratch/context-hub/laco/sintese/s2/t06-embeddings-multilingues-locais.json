@@ -1,0 +1,374 @@
+{
+ "tema": "t06-embeddings-multilingues-locais",
+ "consultas": [
+  "model cards: multilingual-e5-small, embeddinggemma-300m, bge-m3, nomic-embed-text-v2-moe, granite-107m, jina-v3, Qwen3-Embedding-0.6B",
+  "fastembed README e Supported Models",
+  "ollama bge-m3 / embeddinggemma",
+  "MTEB multilingual embedding Portuguese benchmark MIRACL pt 2026",
+  "Qwen3-Embedding-0.6B GGUF llama.cpp Windows",
+  "MTEB-BR Brazilian Portuguese embedding benchmark"
+ ],
+ "achados": [
+  {
+   "nome": "EmbeddingGemma-300m",
+   "url_fonte": "https://huggingface.co/google/embeddinggemma-300m",
+   "o_que_e": "Embedding multilíngue de 308M parâmetros do Google, 768 dims com Matryoshka, 2048 tokens, checkpoints quantizados.",
+   "lugar": [
+    "library",
+    "light_client"
+   ],
+   "mecanismo": [
+    "embeddings",
+    "vector"
+   ],
+   "mcp": "unknown",
+   "windows": "unknown",
+   "portugues": "yes",
+   "licenca": "gemma (termos Google, não OSI)",
+   "ultimo_release": "set/2025 (post de lançamento); versão posterior não verificada",
+   "maturidade": "stable",
+   "encaixe": "Melhor custo-benefício open pequeno no MTEB-BR (13º de 93, 0.649): embeddings no disco via Ollama ou ONNX; prefixos de query/documento obrigatórios; licença Gemma exige aceite.",
+   "evidencias": [
+    {
+     "url": "https://huggingface.co/google/embeddinggemma-300m",
+     "citacao": "trained with data in 100+ spoken languages"
+    },
+    {
+     "url": "https://huggingface.co/google/embeddinggemma-300m",
+     "citacao": "Maximum input context length of 2048 tokens"
+    },
+    {
+     "url": "https://arxiv.org/pdf/2607.04581",
+     "citacao": "embeddinggemma-300m ranks 13th"
+    },
+    {
+     "url": "https://huggingface.co/blog/embeddinggemma",
+     "citacao": "task: search result | query: "
+    },
+    {
+     "url": "https://ollama.com/library/embeddinggemma",
+     "citacao": "This model requires Ollama v0.11.10 or later"
+    }
+   ],
+   "nao_verificado": [
+    "Windows nativo testado",
+    "ativações não suportam float16 (card)",
+    "cota/latência no FreeLLMAPI"
+   ]
+  },
+  {
+   "nome": "multilingual-e5-small",
+   "url_fonte": "https://huggingface.co/intfloat/multilingual-e5-small",
+   "o_que_e": "Embedding multilíngue de 118M, 384 dims, 512 tokens, licença MIT; português listado no card.",
+   "lugar": [
+    "library",
+    "light_client"
+   ],
+   "mecanismo": [
+    "embeddings",
+    "vector"
+   ],
+   "mcp": "unknown",
+   "windows": "unknown",
+   "portugues": "yes",
+   "licenca": "MIT",
+   "ultimo_release": "2023 (não verificado na fonte)",
+   "maturidade": "stable",
+   "encaixe": "Menor opção viável para indexar notas no disco de cada máquina via FastEmbed/ONNX; exige prefixos query:/passage:; limite de 512 tokens obriga chunking.",
+   "evidencias": [
+    {
+     "url": "https://huggingface.co/intfloat/multilingual-e5-small/raw/main/README.md",
+     "citacao": "license: mit"
+    },
+    {
+     "url": "https://huggingface.co/intfloat/multilingual-e5-small/raw/main/README.md",
+     "citacao": "- pt"
+    },
+    {
+     "url": "https://arxiv.org/pdf/2607.04581",
+     "citacao": "multilingual-e5-small                           118M 384                 512"
+    }
+   ],
+   "nao_verificado": [
+    "prefixo query:/passage: (fora do trecho lido)",
+    "score do e5-small no MTEB-BR (não extraído)",
+    "data de release"
+   ]
+  },
+  {
+   "nome": "BGE-M3",
+   "url_fonte": "https://huggingface.co/BAAI/bge-m3",
+   "o_que_e": "Embedding de 568M, 1024 dims, 8192 tokens, 100+ idiomas, MIT.",
+   "lugar": [
+    "library",
+    "network_service"
+   ],
+   "mecanismo": [
+    "embeddings",
+    "vector",
+    "hybrid"
+   ],
+   "mcp": "unknown",
+   "windows": "unknown",
+   "portugues": "yes",
+   "licenca": "MIT",
+   "ultimo_release": "MIRACL atualizado 01/07/2024",
+   "maturidade": "stable",
+   "encaixe": "Candidato de qualidade para serviço local (Ollama, 1.2GB) ou gateway; contexto longo reduz chunking; mais pesado que e5-small e EmbeddingGemma em CPU.",
+   "evidencias": [
+    {
+     "url": "https://huggingface.co/BAAI/bge-m3",
+     "citacao": "It can support more than 100 working languages."
+    },
+    {
+     "url": "https://ollama.com/library/bge-m3",
+     "citacao": "8K context window"
+    },
+    {
+     "url": "https://huggingface.co/BAAI/bge-m3",
+     "citacao": "License: mit"
+    }
+   ],
+   "nao_verificado": [
+    "nota de MIRACL pt (só imagem)",
+    "Mean22 do bge-m3 no MTEB-BR (listado, não extraído)",
+    "Windows"
+   ]
+  },
+  {
+   "nome": "nomic-embed-text-v2-moe",
+   "url_fonte": "https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe",
+   "o_que_e": "MoE de 475M (305M ativos), 768 dims com Matryoshka até 256, 512 tokens, ~100 idiomas, Apache-2.0.",
+   "lugar": [
+    "library"
+   ],
+   "mecanismo": [
+    "embeddings",
+    "vector"
+   ],
+   "mcp": "unknown",
+   "windows": "unknown",
+   "portugues": "unknown",
+   "licenca": "Apache-2.0",
+   "ultimo_release": "unknown",
+   "maturidade": "stable",
+   "encaixe": "Alternativa Apache-2.0 com dimensão reduzível (índice menor); português não citado nominalmente; não aparece entre os destaques do MTEB-BR lido.",
+   "evidencias": [
+    {
+     "url": "https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe",
+     "citacao": "Supports flexible dimension from 768 to 256 through Matryoshka representation learning"
+    },
+    {
+     "url": "https://huggingface.co/nomic-ai/nomic-embed-text-v2-moe",
+     "citacao": "Maximum input length is 512 tokens"
+    }
+   ],
+   "nao_verificado": [
+    "português especificamente",
+    "MIRACL 65.80 e BEIR 52.86 vindos só do resumo do fetch",
+    "runtime Windows"
+   ]
+  },
+  {
+   "nome": "Qwen3-Embedding-0.6B",
+   "url_fonte": "https://huggingface.co/Qwen/Qwen3-Embedding-0.6B",
+   "o_que_e": "0.6B, 1024 dims (32 a 1024), contexto 32k, 100+ idiomas, Apache-2.0, instruction-aware, MTEB multilíngue 64.33.",
+   "lugar": [
+    "library",
+    "network_service"
+   ],
+   "mecanismo": [
+    "embeddings",
+    "vector"
+   ],
+   "mcp": "unknown",
+   "windows": "unknown",
+   "portugues": "yes",
+   "licenca": "Apache-2.0",
+   "ultimo_release": "unknown",
+   "maturidade": "stable",
+   "encaixe": "Maior qualidade em tamanho ainda local; GGUF comunitário roda em llama.cpp/llama-server (OpenAI-compatível) no Windows; consome mais CPU que modelos de 300M.",
+   "evidencias": [
+    {
+     "url": "https://huggingface.co/Qwen/Qwen3-Embedding-0.6B/raw/main/README.md",
+     "citacao": "Embedding Dimension: Up to 1024, supports user-defined output dimensions ranging from 32 to 1024"
+    },
+    {
+     "url": "https://arxiv.org/pdf/2607.04581",
+     "citacao": "Qwen3-Embedding-0.6B                            596M 1024 32768"
+    }
+   ],
+   "nao_verificado": [
+    "GGUF oficial (só comunitários, vistos em listagem de busca)",
+    "Mean22 MTEB-BR do 0.6B",
+    "uso de instrução em llama.cpp"
+   ]
+  },
+  {
+   "nome": "granite-embedding-107m-multilingual",
+   "url_fonte": "https://huggingface.co/ibm-granite/granite-embedding-107m-multilingual",
+   "o_que_e": "Embedding IBM de 107M, 384 dims, 512 tokens, Apache-2.0; português na lista; R2 (97M e 311M, 8192 tokens) existe.",
+   "lugar": [
+    "library",
+    "light_client"
+   ],
+   "mecanismo": [
+    "embeddings",
+    "vector"
+   ],
+   "mcp": "unknown",
+   "windows": "unknown",
+   "portugues": "yes",
+   "licenca": "Apache-2.0",
+   "ultimo_release": "unknown (R2 citada no MTEB-BR)",
+   "maturidade": "stable",
+   "encaixe": "Alternativa Apache-2.0 menor que e5-small; a R2 de 97M com 8192 tokens reduz chunking; comparar com e5-small.",
+   "evidencias": [
+    {
+     "url": "https://huggingface.co/ibm-granite/granite-embedding-107m-multilingual/raw/main/README.md",
+     "citacao": "license: apache-2.0"
+    },
+    {
+     "url": "https://arxiv.org/pdf/2607.04581",
+     "citacao": "granite-embedding-97m-multilingual-r2           97M 384 8192"
+    }
+   ],
+   "nao_verificado": [
+    "scores de português",
+    "data de release da R2",
+    "Windows"
+   ]
+  },
+  {
+   "nome": "Jina embeddings v3 / v5-text-small",
+   "url_fonte": "https://huggingface.co/jinaai/jina-embeddings-v3",
+   "o_que_e": "jina-v3 tem licença CC-BY-NC-4.0; v5-text-small (596M, 1024 dims) aparece no MTEB-BR com 0.643.",
+   "lugar": [
+    "library"
+   ],
+   "mecanismo": [
+    "embeddings"
+   ],
+   "mcp": "unknown",
+   "windows": "unknown",
+   "portugues": "yes",
+   "licenca": "CC-BY-NC-4.0 (v3); v5 não verificada",
+   "ultimo_release": "unknown",
+   "maturidade": "stable",
+   "encaixe": "Evitar v3 por licença não comercial se o hub atender clientes; v5 exige conferir licença.",
+   "evidencias": [
+    {
+     "url": "https://huggingface.co/jinaai/jina-embeddings-v3/raw/main/README.md",
+     "citacao": "license: cc-by-nc-4.0"
+    },
+    {
+     "url": "https://arxiv.org/pdf/2607.04581",
+     "citacao": "jina-embeddings-v5-text-small   0.797"
+    }
+   ],
+   "nao_verificado": [
+    "licença do v5",
+    "dimensão e contexto do v3"
+   ]
+  },
+  {
+   "nome": "FastEmbed (Qdrant)",
+   "url_fonte": "https://github.com/qdrant/fastembed",
+   "o_que_e": "Biblioteca Python de embeddings via ONNX Runtime sem PyTorch; aceita modelos custom como multilingual-e5-small.",
+   "lugar": [
+    "library"
+   ],
+   "mecanismo": [
+    "embeddings"
+   ],
+   "mcp": "no",
+   "windows": "unknown",
+   "portugues": "unknown",
+   "licenca": "Apache-2.0",
+   "ultimo_release": "sem releases na página",
+   "maturidade": "stable",
+   "encaixe": "Runtime leve para embeddings no disco; a lista oficial traz multilingual-e5-large e paraphrase-multilingual, mas não bge-m3 nem jina v3.",
+   "evidencias": [
+    {
+     "url": "https://github.com/qdrant/fastembed",
+     "citacao": "We use the ONNX Runtime, which is faster than PyTorch."
+    },
+    {
+     "url": "https://qdrant.github.io/fastembed/examples/Supported_Models/",
+     "citacao": "intfloat/multilingual-e5-large | 1024 | 2.240 | mit"
+    }
+   ],
+   "nao_verificado": [
+    "suporte a Windows",
+    "versão atual",
+    "e5-small nativo vs custom"
+   ]
+  },
+  {
+   "nome": "Ollama (bge-m3, embeddinggemma)",
+   "url_fonte": "https://ollama.com/library/bge-m3",
+   "o_que_e": "Runtime local que serve embeddings; bge-m3 567M, 1.2GB, 8K contexto; embeddinggemma 622MB, 2K, exige Ollama 0.11.10+.",
+   "lugar": [
+    "network_service"
+   ],
+   "mecanismo": [
+    "embeddings",
+    "proxy"
+   ],
+   "mcp": "no",
+   "windows": "unknown",
+   "portugues": "yes",
+   "licenca": "unknown",
+   "ultimo_release": "unknown",
+   "maturidade": "stable",
+   "encaixe": "Serviço local por máquina como alternativa ao FreeLLMAPI para embeddings, sem depender de cota externa.",
+   "evidencias": [
+    {
+     "url": "https://ollama.com/library/bge-m3",
+     "citacao": "8K context window"
+    },
+    {
+     "url": "https://ollama.com/library/embeddinggemma",
+     "citacao": "This model requires Ollama v0.11.10 or later"
+    }
+   ],
+   "nao_verificado": [
+    "Windows nativo e endpoint /v1/embeddings (não conferidos)",
+    "licença do Ollama"
+   ]
+  },
+  {
+   "nome": "MTEB-BR (benchmark)",
+   "url_fonte": "https://arxiv.org/pdf/2607.04581",
+   "o_que_e": "Benchmark de 22 tarefas nativas em português do Brasil, 93 modelos; ranking Mean22; jul/2026.",
+   "lugar": [
+    "library"
+   ],
+   "mecanismo": [
+    "other"
+   ],
+   "mcp": "no",
+   "windows": "unknown",
+   "portugues": "yes",
+   "licenca": "unknown",
+   "ultimo_release": "arXiv 2607.04581v2 (jul/2026)",
+   "maturidade": "stable",
+   "encaixe": "Fonte para escolher o modelo: EmbeddingGemma-300m 0.649 em 13º; Qwen3-Embedding-8B 0.670; ranking global prediz o pt só moderadamente (rho=0.75).",
+   "evidencias": [
+    {
+     "url": "https://arxiv.org/pdf/2607.04581",
+     "citacao": "embeddinggemma-300m             open                          1.7B   0.6490"
+    },
+    {
+     "url": "https://huggingface.co/MTEB-BR",
+     "citacao": "interactive ranking, 93 models × 22 tasks, with Pareto chart"
+    }
+   ],
+   "nao_verificado": [
+    "posição de e5-small, bge-m3, Qwen3-0.6B e granite 107m (só os 15 primeiros extraídos)",
+    "avaliação em notas Markdown (domínio diferente)"
+   ]
+  }
+ ],
+ "lacunas": "Sem MIRACL pt por modelo na fonte; sem teste de Windows nativo para nenhum runtime; sem benchmark em notas Markdown pt/en misturadas; Mean22 dos modelos pequenos (e5-small, granite, bge-m3) não extraído do PDF."
+}

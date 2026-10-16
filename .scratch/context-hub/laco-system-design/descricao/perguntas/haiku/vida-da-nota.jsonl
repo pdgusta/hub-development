@@ -1,0 +1,40 @@
+{"pergunta": "Se eu crio uma nota nova no Obsidian, em qual pasta ela cai?", "tipo": "onde-vive", "lente": "vida-da-nota", "cita": ["Obsidian", "raiz do hub"]}
+{"pergunta": "Se um agente cria uma nota nova numa sessão, ele escolhe a pasta sozinho ou pergunta antes?", "tipo": "se-x", "lente": "vida-da-nota", "cita": ["agente", "contrato do hub", "AGENTS.md"]}
+{"pergunta": "Quem decide que uma conversa virou nota, e não só fica no chat?", "tipo": "responsavel", "lente": "vida-da-nota", "cita": ["agente", "checkpoint", "memória privada da ferramenta"]}
+{"pergunta": "Uma ideia jogada de qualquer jeito, sem pasta certa, onde ela fica guardada até virar nota de verdade?", "tipo": "onde-vive", "lente": "vida-da-nota", "cita": ["inbox", "Gustavo"]}
+{"pergunta": "Por que a captura rápida tem pasta própria em vez de ir direto para a pasta da iniciativa?", "tipo": "por-que", "lente": "vida-da-nota", "cita": ["inbox", "iniciativa"]}
+{"pergunta": "Uma nota nova de cliente é criada na máquina em que eu estou ou sempre na mesma máquina?", "tipo": "onde-vive", "lente": "vida-da-nota", "cita": ["clients", "máquina", "cliente"]}
+{"pergunta": "Uma nota de referência que foi promovida: quem decide que ela subiu de nível e para onde ela vai?", "tipo": "responsavel", "lente": "vida-da-nota", "cita": ["reference", "promoção", "Gustavo"]}
+{"pergunta": "Qual é a diferença entre uma nota que mora numa pasta de operação e uma que mora numa pasta de iniciativa?", "tipo": "diferenca", "lente": "vida-da-nota", "cita": ["operations", "initiatives"]}
+{"pergunta": "Se eu edito uma nota no Obsidian numa máquina e um agente grava na mesma nota na outra máquina antes da sincronização, o que aparece quando as duas chegam?", "tipo": "falha", "lente": "vida-da-nota", "cita": ["Obsidian", "agente", "sincronizador", "colisão real"]}
+{"pergunta": "Se eu e um agente mudamos trechos diferentes da mesma nota em máquinas diferentes, a nota fica inteira ou alguém perde alguma coisa?", "tipo": "se-x", "lente": "vida-da-nota", "cita": ["colisão real", "banco"]}
+{"pergunta": "Se a mesma frase da mesma nota muda nas duas máquinas, o que acontece com essa nota e com o resto do hub?", "tipo": "se-x", "lente": "vida-da-nota", "cita": ["colisão real", "sincronizador"]}
+{"pergunta": "Quando um agente vai salvar uma nota, ele confere se alguém mexeu nela desde que ele leu?", "tipo": "se-x", "lente": "vida-da-nota", "cita": ["agente", "MCP do banco", "versão"]}
+{"pergunta": "Um agente pode escrever direto no arquivo .md do disco, sem passar pelo banco?", "tipo": "o-que-nao-faz", "lente": "vida-da-nota", "cita": ["agente", "arquivo .md", "banco", "sincronizador"]}
+{"pergunta": "Se eu renomeio uma nota no Obsidian, a nota antiga some e a nova aparece na outra máquina?", "tipo": "se-x", "lente": "vida-da-nota", "cita": ["Obsidian", "sincronizador"]}
+{"pergunta": "Se eu apago uma nota de vez, ela desaparece das duas máquinas e também da cópia no GitHub?", "tipo": "se-x", "lente": "vida-da-nota", "cita": ["sincronizador", "GitHub", "banco"]}
+{"pergunta": "Se eu apago uma nota por engano, dá para recuperá-la e por quanto tempo?", "tipo": "falha", "lente": "vida-da-nota", "cita": ["banco", "GitHub", "histórico de versões"]}
+{"pergunta": "Quem mantém a nota de retomada em dia: o agente, uma regra do contrato ou um mecanismo que obriga?", "tipo": "responsavel", "lente": "vida-da-nota", "cita": ["nota de retomada", "regra global", "hook Stop"]}
+{"pergunta": "Se eu interrompo a resposta do agente no meio, a nota de retomada continua sendo atualizada?", "tipo": "falha", "lente": "vida-da-nota", "cita": ["nota de retomada", "hook Stop"]}
+{"pergunta": "Quando a nota de retomada é sobrescrita, quem guarda o que ela dizia antes?", "tipo": "responsavel", "lente": "vida-da-nota", "cita": ["nota de retomada", "git", "decisões"]}
+{"pergunta": "Qual é a relação entre a nota de retomada e a iniciativa a que ela pertence?", "tipo": "relacao", "lente": "vida-da-nota", "cita": ["nota de retomada", "iniciativa"]}
+{"pergunta": "Um trabalho começado numa máquina pode ser retomado na outra sem eu copiar nada à mão?", "tipo": "se-x", "lente": "vida-da-nota", "cita": ["nota de retomada", "máquina", "banco"]}
+{"pergunta": "Quando uma sessão nova abre a pasta de uma iniciativa, como ela sabe qual nota de retomada deve abrir primeiro?", "tipo": "ordem", "lente": "vida-da-nota", "cita": ["sessão nova", "nota de retomada", "checagem de início de sessão"]}
+{"pergunta": "Se a pasta onde a sessão começa não diz qual é o trabalho, o agente procura pela busca, pergunta ao Gustavo ou adivinha?", "tipo": "se-x", "lente": "vida-da-nota", "cita": ["agente", "camada de busca"]}
+{"pergunta": "Uma nota arquivada aparece nos resultados quando um agente faz uma busca comum?", "tipo": "o-que-nao-faz", "lente": "vida-da-nota", "cita": ["arquivo", "camada de busca"]}
+{"pergunta": "Qual nome vale para a pasta de arquivo de cada área: _archive ou _arquivo?", "tipo": "diferenca", "lente": "vida-da-nota", "cita": ["_archive", "_arquivo"]}
+{"pergunta": "Por que o arquivo fica dentro de cada pasta de primeiro nível e não numa pasta única do hub?", "tipo": "por-que", "lente": "vida-da-nota", "cita": ["arquivo", "raiz do hub"]}
+{"pergunta": "Quando eu mando uma iniciativa para o arquivo e a outra máquina ainda está editando uma nota dela, o que acontece?", "tipo": "falha", "lente": "vida-da-nota", "cita": ["script de arquivamento", "outra máquina", "sincronizador"]}
+{"pergunta": "Quem decide que uma iniciativa terminou e pode ir para o arquivo: o Gustavo, o agente ou uma regra?", "tipo": "responsavel", "lente": "vida-da-nota", "cita": ["iniciativa", "arquivo", "Gustavo"]}
+{"pergunta": "Depois de arquivada, uma nota pode voltar para a pasta de trabalho, e por qual caminho?", "tipo": "ordem", "lente": "vida-da-nota", "cita": ["arquivo", "script"]}
+{"pergunta": "Uma nota que fica muito tempo sem mudar é arquivada sozinha, ou só quando alguém manda?", "tipo": "quando", "lente": "vida-da-nota", "cita": ["operations", "arquivo", "Gustavo"]}
+{"pergunta": "Uma nota criada numa máquina leva quanto tempo para aparecer na outra quando as duas estão ligadas?", "tipo": "quando", "lente": "vida-da-nota", "cita": ["sincronizador", "banco", "máquina"]}
+{"pergunta": "Se a outra máquina está desligada quando eu crio uma nota aqui, quando ela recebe a nota ao ligar?", "tipo": "se-x", "lente": "vida-da-nota", "cita": ["máquina", "banco", "divergência"]}
+{"pergunta": "Um arquivo grande, como um PDF de 60 MB, chega à outra máquina ou fica para trás sem aviso?", "tipo": "falha", "lente": "vida-da-nota", "cita": ["arquivo binário", "sincronizador", "vigia"]}
+{"pergunta": "Quando um arquivo binário, como um xlsx, colide entre as máquinas, qual versão fica e o que eu perco?", "tipo": "falha", "lente": "vida-da-nota", "cita": ["arquivo binário", "vigia", "versão mais nova"]}
+{"pergunta": "Qual é a diferença entre o que a cópia do GitHub guarda e o que a outra máquina recebe de fato?", "tipo": "diferenca", "lente": "vida-da-nota", "cita": ["GitHub", "sincronizador", "outra máquina"]}
+{"pergunta": "O GitHub também entrega uma nota à outra máquina, ou só guarda uma cópia de segurança?", "tipo": "o-que-nao-faz", "lente": "vida-da-nota", "cita": ["GitHub", "outra máquina"]}
+{"pergunta": "Uma pasta que não é replicada entra na cópia de segurança do GitHub?", "tipo": "o-que-nao-faz", "lente": "vida-da-nota", "cita": ["pasta não replicada", "GitHub"]}
+{"pergunta": "Uma nota de cliente que mora numa pasta não replicada consegue ser lida pela outra máquina, e como?", "tipo": "quem-usa", "lente": "vida-da-nota", "cita": ["pasta não replicada", "SSH", "outra máquina"]}
+{"pergunta": "Uma nota de cliente pode pertencer ao mesmo tempo à pasta do cliente e à iniciativa dela, e como isso aparece para o agente?", "tipo": "grupo", "lente": "vida-da-nota", "cita": ["clients", "iniciativa", "agente"]}
+{"pergunta": "Quem além do Gustavo lê uma nota de retomada: o outro par, um cliente ou só o agente da sessão seguinte?", "tipo": "quem-usa", "lente": "vida-da-nota", "cita": ["nota de retomada", "outro par", "cliente"]}

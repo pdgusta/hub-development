@@ -1,0 +1,40 @@
+{
+ "chave": "gh:go-yaml/yaml",
+ "urls": [
+  "https://github.com/go-yaml/yaml"
+ ],
+ "tipos": [
+  "library"
+ ],
+ "termos": [
+  "go yaml",
+  "golang yaml",
+  "go",
+  "yaml",
+  "parser",
+  "yaml go",
+  "go-yaml",
+  "gopkg.in/yaml.v3"
+ ],
+ "mencoes": 4,
+ "familias": [
+  "gpt-oss",
+  "mistral",
+  "nemotron"
+ ],
+ "primeira_onda": 2,
+ "nomes": [
+  "go-yaml",
+  "yaml-golang"
+ ],
+ "resumos": [
+  "Go implementation of YAML that is compatible with the standard library's encoding/json.",
+  "A Go library for parsing and emitting YAML 1.2, used in many Go projects.",
+  "A YAML 1.2 parser and emitter for Go.",
+  "A reliable and fast YAML parser and emitter for Go, compatible with YAML 1.2."
+ ],
+ "readme_status": "ok",
+ "readme_nome": "README.md",
+ "readme_cortado": false,
+ "readme": "# THIS PROJECT IS UNMAINTAINED\n\nThis was one of my first Go projects, bootstapped over the christmas break of 2010 and well maintained for over a decade, often with help from contributors. Sadly, in the last few years my own free time, both personal and professional, became less common, and none of the contributions turned into more extensive long term engagements. I was hoping to address the situation by moving it into a dedicated professional team at a more resourceful home such as Canonical, Google, etc, but that hasn't materialized in time either.  So I'm now taking the more explicit action of clearly labeling the project as unmaintained, to inform the community of what should already be obvious by now.\n\nThere's still a chance I may come back and bring this project to where I wish it should go, but something else will have to change for this to be viable.  Unfortunately, despite my own lack of time for the project, I cannot just \"hand off\" maintenance to an individual or to a small group either, due to the likelyhood of the project going back into an unmaintained, unstable, or even abused state.\n\nSorry about that.\n\n_-- Gustavo Niemeyer_\n\n# ORIGINAL README\n\n## YAML support for the Go language\n\nIntroduction\n------------\n\nThe yaml package enables Go programs to comfortably encode and decode YAML\nvalues. It was developed within [Canonical](https://www.canonical.com) as\npart of the [juju](https://juju.ubuntu.com) project, and is based on a\npure Go port of the well-known [libyaml](http://pyyaml.org/wiki/LibYAML)\nC library to parse and generate YAML data quickly and reliably.\n\nCompatibility\n-------------\n\nThe yaml package supports most of YAML 1.2, but preserves some behavior\nfrom 1.1 for backwards compatibility.\n\nSpecifically, as of v3 of the yaml package:\n\n - YAML 1.1 bools (_yes/no, on/off_) are supported as long as they are being\n   decoded into a typed bool value. Otherwise they behave as a string. Booleans\n   in YAML 1.2 are _true/false_ only.\n - Octals encode and decode as _0777_ per YAML 1.1, rather than _0o777_\n   as specified in YAML 1.2, because most parsers still use the old format.\n   Octals in the  _0o777_ format are supported though, so new files work.\n - Does not support base-60 floats. These are gone from YAML 1.2, and were\n   actually never supported by this package as it's clearly a poor choice.\n\nand offers backwards\ncompatibility with YAML 1.1 in some cases.\n1.2, including support for\nanchors, tags, map merging, etc. Multi-document unmarshalling is not yet\nimplemented, and base-60 floats from YAML 1.1 are purposefully not\nsupported since they're a poor design and are gone in YAML 1.2.\n\nInstallation and usage\n----------------------\n\nThe import path for the package is *gopkg.in/yaml.v3*.\n\nTo install it, run:\n\n    go get gopkg.in/yaml.v3\n\nAPI documentation\n-----------------\n\nIf opened in a browser, the import path itself leads to the API documentation:\n\n  - [https://gopkg.in/yaml.v3](https://gopkg.in/yaml.v3)\n\nAPI stability\n-------------\n\nThe package API for yaml v3 will remain stable as described in [gopkg.in](https://gopkg.in).\n\n\nLicense\n-------\n\nThe yaml package is licensed under the MIT and Apache License 2.0 licenses.\nPlease see the LICENSE file for details.\n\n\nExample\n-------\n\n```Go\npackage main\n\nimport (\n        \"fmt\"\n        \"log\"\n\n        \"gopkg.in/yaml.v3\"\n)\n\nvar data = `\na: Easy!\nb:\n  c: 2\n  d: [3, 4]\n`\n\n// Note: struct fields must be public in order for unmarshal to\n// correctly populate the data.\ntype T struct {\n        A string\n        B struct {\n                RenamedC int   `yaml:\"c\"`\n                D        []int `yaml:\",flow\"`\n        }\n}\n\nfunc main() {\n        t := T{}\n    \n        err := yaml.Unmarshal([]byte(data), &t)\n        if err != nil {\n                log.Fatalf(\"error: %v\", err)\n        }\n        fmt.Printf(\"--- t:\\n%v\\n\\n\", t)\n    \n        d, err := yaml.Marshal(&t)\n        if err != nil {\n                log.Fatalf(\"error: %v\", err)\n        }\n        fmt.Printf(\"--- t dump:\\n%s\\n\\n\", string(d))\n    \n        m := make(map[interface{}]interface{})\n    \n        err = yaml.Unmarshal([]byte(data), &m)\n        if err != nil {\n                log.Fatalf(\"error: %v\", err)\n        }\n        fmt.Printf(\"--- m:\\n%v\\n\\n\", m)\n    \n        d, err = yaml.Marshal(&m)\n        if err != nil {\n                log.Fatalf(\"error: %v\", err)\n        }\n        fmt.Printf(\"--- m dump:\\n%s\\n\\n\", string(d))\n}\n```\n\nThis example will generate the following output:\n\n```\n--- t:\n{Easy! {2 [3 4]}}\n\n--- t dump:\na: Easy!\nb:\n  c: 2\n  d: [3, 4]\n\n\n--- m:\nmap[a:Easy! b:map[c:2 d:[3 4]]]\n\n--- m dump:\na: Easy!\nb:\n  c: 2\n  d:\n  - 3\n  - 4\n```\n\n"
+}

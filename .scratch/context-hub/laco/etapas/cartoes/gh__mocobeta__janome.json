@@ -1,0 +1,31 @@
+{
+ "chave": "gh:mocobeta/janome",
+ "urls": [
+  "https://github.com/mocobeta/janome"
+ ],
+ "tipos": [
+  "library"
+ ],
+ "termos": [
+  "janome",
+  "python nlp",
+  "morphological analysis",
+  "neologd dict"
+ ],
+ "mencoes": 2,
+ "familias": [
+  "agnes"
+ ],
+ "primeira_onda": 4,
+ "nomes": [
+  "Janome"
+ ],
+ "resumos": [
+  "A Python-based Japanese morphological analyzer that serves as a user-friendly wrapper around Juman++ for NLP workflows.",
+  "Python 3.x 対応の純粋Python形態素解析ライブラリで、MeCab 不要・pip install 一発で利用可能なローカル解析ツール。"
+ ],
+ "readme_status": "ok",
+ "readme_nome": "README.rst",
+ "readme_cortado": false,
+ "readme": "=======\nJanome\n=======\n\n.. image:: https://github.com/mocobeta/janome/workflows/Checks/badge.svg\n    :target: https://github.com/mocobeta/janome/actions?query=workflow%3AChecks\n\n.. image:: https://coveralls.io/repos/github/mocobeta/janome/badge.svg?branch=master\n    :target: https://coveralls.io/github/mocobeta/janome?branch=master\n\n.. image:: https://img.shields.io/pypi/dm/Janome.svg\n    :target: https://pypistats.org/packages/janome\n\n.. image:: https://img.shields.io/conda/v/conda-forge/janome\n    :target: https://anaconda.org/conda-forge/janome\n\nJanome is a Japanese morphological analysis engine written in pure Python.\n\nGeneral documentation:\n\nhttps://janome.mocobeta.dev/en/ (English)\n\nhttps://janome.mocobeta.dev/ja/ (Japanese)\n\nRequirements\n=============\n\nPython 3.10+ is required.\n\nInstall\n========\n\n[Note] This consumes about 500 MB memory for building.\n\n.. code:: bash\n\n  (venv) $ pip install janome\n\nRun\n====\n\n.. code:: bash\n\n  (venv) $ python\n  >>> from janome.tokenizer import Tokenizer\n  >>> t = Tokenizer()\n  >>> for token in t.tokenize('すもももももももものうち'):\n  ...     print(token)\n  ...\n  すもも 名詞,一般,*,*,*,*,すもも,スモモ,スモモ\n  も    助詞,係助詞,*,*,*,*,も,モ,モ\n  もも  名詞,一般,*,*,*,*,もも,モモ,モモ\n  も    助詞,係助詞,*,*,*,*,も,モ,モ\n  もも  名詞,一般,*,*,*,*,もも,モモ,モモ\n  の    助詞,連体化,*,*,*,*,の,ノ,ノ\n  うち  名詞,非自立,副詞可能,*,*,*,うち,ウチ,ウチ\n\nLicense\n========\n\nLicensed under Apache License 2.0 and uses the MeCab-IPADIC dictionary/statistical model.\n\nSee LICENSE.txt and NOTICE.txt for license details.\n\nAcknowledgement\n================\n\nSpecial thanks to @ikawaha, @takuyaa, @nakagami and @janome_oekaki.\n\nCopyright\n==========\n\nCopyright(C) 2015-2025, Tomoko Uchida. All rights reserved.\n"
+}

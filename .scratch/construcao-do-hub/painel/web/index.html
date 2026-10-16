@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Construção do hub</title>
+<link rel="stylesheet" href="painel.css">
+</head>
+<body>
+<!-- Painel da construção: só lê a pasta da execução (contrato.md). Nenhum controle manda nada para a execução.
+     Regiões: placar, alertas, centro (rede de agentes + linha dos tickets), gaveta de detalhe, faixa de leitura. -->
+<header class="placar" id="placar">
+  <div class="marca-titulo">
+    <h1 id="titulo">Construção do hub</h1>
+    <ol class="fases" id="fases" aria-label="Fases"></ol>
+  </div>
+  <div class="numero" id="p-trab">
+    <span class="rotulo">Trabalhando agora</span>
+    <span class="valor"><b id="p-trab-n">–</b> <span class="de">de <span id="p-trab-de">–</span></span></span>
+    <span class="nota" id="p-trab-nota"></span>
+  </div>
+  <div class="numero" id="p-feitos">
+    <span class="rotulo">Tickets feitos</span>
+    <span class="valor"><b id="p-feitos-n">–</b> <span class="de">de <span id="p-feitos-de">–</span></span></span>
+    <span class="barra" aria-hidden="true"><span id="p-feitos-barra"></span></span>
+  </div>
+  <div class="numero" id="p-desde">
+    <span class="rotulo">Rodando desde</span>
+    <span class="valor"><b id="p-desde-h">–</b></span>
+    <span class="nota" id="p-desde-ha"></span>
+  </div>
+  <div class="leitura" id="leitura" role="status">
+    <span class="pulso" aria-hidden="true"></span><span id="leitura-txt">lendo…</span>
+    <button type="button" class="problemas" id="b-problemas" hidden></button>
+  </div>
+</header>
+
+<section class="alertas" id="alertas" aria-label="O que travou, falhou, estourou a hora ou espera você">
+  <ul id="alertas-lista"></ul>
+</section>
+
+<main class="centro" id="centro">
+  <section class="rede" id="rede" aria-label="Agentes e conversas">
+    <div class="rede-cab"><h2>Agentes</h2><span class="legenda-rede" id="legenda-rede"></span></div>
+    <div class="rede-campo" id="rede-campo">
+      <svg class="fios" id="fios" aria-hidden="true"></svg>
+    </div>
+  </section>
+  <section class="metro" id="metro" aria-label="Tickets por etapa">
+    <div class="rede-cab"><h2>Tickets</h2><span class="legenda-rede">a etapa diz o estado</span></div>
+    <ol class="linha" id="linha"></ol>
+  </section>
+  <aside class="gaveta" id="gaveta" aria-labelledby="g-titulo" hidden>
+    <div class="g-cab">
+      <div id="g-marca"></div>
+      <h2 id="g-titulo" tabindex="-1"></h2>
+      <button type="button" class="fechar" id="g-fechar" aria-label="Fechar o detalhe (Esc)">×</button>
+    </div>
+    <div class="g-corpo" id="g-corpo"></div>
+  </aside>
+</main>
+
+<footer class="faixa" id="faixa" aria-live="polite"><span id="faixa-txt"></span></footer>
+<div class="vazio" id="ilegivel" hidden></div>
+
+<script src="leitor.js"></script>
+<script src="tela.js"></script>
+</body>
+</html>

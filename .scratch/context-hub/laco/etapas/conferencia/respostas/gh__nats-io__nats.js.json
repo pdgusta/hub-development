@@ -1,0 +1,31 @@
+{
+ "chave": "gh:nats-io/nats.js",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T21:22:37Z",
+ "resultado": "corrige",
+ "conferencia": {
+  "resultado": "corrige",
+  "final": {
+   "serve": "stack",
+   "role": "JavaScript/TypeScript clients for NATS (Deno, Node, Bun, browser), if the hub needs messaging between parts.",
+   "place": [
+    "library"
+   ],
+   "mechanism": [
+    "n/a"
+   ],
+   "mcp": "unknown",
+   "windows": "unknown",
+   "portuguese": "unknown",
+   "license": "Apache-2.0",
+   "maturity": "stable",
+   "doubt": false,
+   "evidence": "Direct API over Core NATS and JetStream as exposed by nats-server; Apache 2.0; stable, conservative versioning."
+  },
+  "o_que_mudou": [
+   "mechanism: other -> n/a, a messaging client has no search mechanism",
+   "portuguese: no -> unknown, README does not address language"
+  ],
+  "nota": "Possible transport client for Node-based hub parts if NATS is adopted; not a search layer."
+ }
+}

@@ -1,0 +1,33 @@
+{
+ "chave": "gh:flairnlp/flair",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T21:08:39Z",
+ "resultado": "corrige",
+ "conferencia": {
+  "resultado": "corrige",
+  "final": {
+   "serve": "stack",
+   "role": "NLP framework (NER, sentiment, tagging) with word and document embeddings",
+   "place": [
+    "library"
+   ],
+   "mechanism": [
+    "embeddings"
+   ],
+   "mcp": "unknown",
+   "windows": "unknown",
+   "portuguese": "unknown",
+   "license": "MIT",
+   "maturity": "stable",
+   "doubt": false,
+   "evidence": "A powerful NLP library; a text embedding library; pip install flair; MIT license"
+  },
+  "o_que_mudou": [
+   "serve: search/stack -> stack, it is a tagging/NER framework, not a retrieval layer",
+   "mcp: no -> unknown, README does not mention MCP",
+   "portuguese: yes -> unknown, README names no Portuguese model",
+   "mechanism: drop full_text/vector, only embeddings is stated"
+  ],
+  "nota": "Marginal: NER and classification framework with embeddings; not a retrieval tool, better embedding options exist for the hub."
+ }
+}

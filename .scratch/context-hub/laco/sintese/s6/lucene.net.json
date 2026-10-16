@@ -1,0 +1,53 @@
+{
+ "nome": "Lucene.NET",
+ "nome_canonico": "Apache Lucene.NET",
+ "chave": "gh:apache/lucenenet",
+ "url": "https://github.com/apache/lucenenet",
+ "serve": "search",
+ "area": null,
+ "identidade": "ok. As URLs lucene-net e lucenenet-contrib dão 404; lucene.net redireciona para apache/lucenenet.",
+ "windows": "yes: biblioteca .NET que roda em Windows; build documentado com PowerShell no Windows.",
+ "mcp": "no: a biblioteca não traz servidor MCP; não achei MCP de terceiros na fonte.",
+ "portugues": "yes: PortugueseAnalyzer (stopwords em portuguese_stop.txt, usa Snowball) e PortugueseStemmer (RSLP) em Lucene.Net.Analysis.Common.",
+ "markdown_frontmatter": "no: biblioteca de índice; não lê Markdown nem frontmatter, o chamador monta os campos.",
+ "atualizacao": "manual: a aplicação grava no IndexWriter; sem watcher na biblioteca.",
+ "embeddings_endpoint": "nao_verificado (README não menciona embeddings/vetores).",
+ "recursos": "runtime .NET (net8.0, net6.0, netstandard2.0/2.1, net462); memória e disco: nao_verificado.",
+ "licenca": "Apache-2.0",
+ "ultimo_release": "4.8.0-beta00018 (2026-06-22, feed de releases); README ainda chama 3.0.3 de 'Latest Release Version'",
+ "atividade": "commit de 2026-10-13 (feed de commits)",
+ "maturidade": "beta (4.8, 'still in Beta'; 'extremely stable')",
+ "encaixe": "Biblioteca de palavra-chave dentro de um MCP do banco escrito em .NET, no disco de cada máquina. Bom analisador de português; impedimento: nada pronto (sem MCP, sem Markdown) e exige stack .NET.",
+ "evidencias": [
+  {
+   "campo": "windows",
+   "url": "https://github.com/apache/lucenenet",
+   "citacao": "runs everywhere .NET runs, including Windows, Unix, macOS, Android and iOS."
+  },
+  {
+   "campo": "portugues",
+   "url": "https://github.com/apache/lucenenet/blob/master/src/Lucene.Net.Analysis.Common/Analysis/Pt/PortugueseAnalyzer.cs",
+   "citacao": "public sealed class PortugueseAnalyzer : StopwordAnalyzerBase"
+  },
+  {
+   "campo": "maturidade",
+   "url": "https://github.com/apache/lucenenet",
+   "citacao": "Lucene.NET version 4.8 (still in Beta)"
+  },
+  {
+   "campo": "licenca",
+   "url": "https://github.com/apache/lucenenet/blob/master/LICENSE.txt",
+   "citacao": "Apache License Version 2.0"
+  },
+  {
+   "campo": "ultimo_release",
+   "url": "https://github.com/apache/lucenenet/releases",
+   "citacao": "v4.8.0-beta00018"
+  }
+ ],
+ "nao_verificado": [
+  "embeddings",
+  "memória e disco",
+  "MCP de terceiros"
+ ]
+}

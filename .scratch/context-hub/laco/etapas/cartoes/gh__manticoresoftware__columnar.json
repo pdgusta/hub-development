@@ -1,0 +1,34 @@
+{
+ "chave": "gh:manticoresoftware/columnar",
+ "urls": [
+  "https://github.com/manticoresoftware/columnar",
+  "https://github.com/manticoresoftware/manticore-columnar-lib"
+ ],
+ "tipos": [
+  "library"
+ ],
+ "termos": [
+  "Columnar Storage",
+  "Fast Filtering",
+  "Analytical Queries",
+  "columnar storage",
+  "attribute filtering"
+ ],
+ "mencoes": 2,
+ "familias": [
+  "gemini",
+  "nemotron"
+ ],
+ "primeira_onda": 2,
+ "nomes": [
+  "Manticore Columnar Library"
+ ],
+ "resumos": [
+  "Spaltenorientierte Speicher-Engine, die sehr schnelle Filterung auf Frontmatter-Attributen ermöglicht.",
+  "Columnar storage library used by Manticore for fast attribute filtering and aggregation on frontmatter-like fields."
+ ],
+ "readme_status": "ok",
+ "readme_nome": "README.md",
+ "readme_cortado": false,
+ "readme": "<p align=\"center\">\n  <a href=\"https://manticoresearch.com\" target=\"_blank\" rel=\"noopener\">\n    <img src=\"https://manticoresearch.com/manticore-logo-central.svg\" width=\"15%\" alt=\"Manicore Search Logo\">\n  </a>\n</p>\n\n<h1 align=\"center\">\n  Manticore Columnar Library\n</h1>\n\nManticore Columnar Library is a column-oriented storage and secondary indexing library, aiming to provide **decent performance with low memory footprint at big data volume**.\nWhen used in combination with [Manticore Search](https://github.com/manticoresoftware/manticoresearch) can be beneficial for those looking for:\n1. log analytics including rich free text search capabities (which is missing in e.g. [Clickhouse](https://github.com/ClickHouse/ClickHouse) - great tool for metrics analytics)\n2. faster / low resource consumption log/metrics analytics. Since the library and Manticore Search are both written in C++ with low level optimizations in mind, in many cases the performance / RAM consumption is better than in Lucene / SOLR / Elasticsearch\n3. running log / metric analytics in docker / kubernetes. Manticore Search + the library can work with as little as 30 megabytes of RAM which Elasticsearch / Clickhouse can't. It also starts in less than a second or a few seconds in the worst case. Since the overhead is so little you can afford having more nodes of Manticore Search + the library than Elasticsearch. More nodes and quicker start means higher high availability and agility.\n4. powerful SQL for logs/metrics analytics and everything else [Manticore Search](https://github.com/manticoresoftware/manticoresearch) can give you\n\n## Getting started\n\n### Requirements\n\n1. CPU: with SSE >= 4.2\n2. Architecture: arm64 or x86_64 \n3. OS: Debian-based OS (Debian, Ubuntu, Mint), RHEL-based (RHEL, Centos, Alma, Oracle Linux, Amazon Linux) OS, Windows, MacOS\n\n### Installation from yum/apt repositories\n#### Ubuntu, Debian:\n```bash\nwget https://repo.manticoresearch.com/manticore-repo.noarch.deb\nsudo dpkg -i manticore-repo.noarch.deb\nsudo apt update\nsudo apt install manticore-columnar-lib\n```\n\n#### Centos:\n```bash\nsudo yum install https://repo.manticoresearch.com/manticore-repo.noarch.rpm\nsudo yum install manticore-columnar-lib\n```\n\n`searchd -v` should include `columnar x.y.z`, e.g.:\n```bash\nroot@srv# searchd -v\nManticore 6.0.2 89c7a5139@230210 (columnar 2.0.0 a7c703d@230130) (secondary 2.0.0 a7c703d@230130)\n```\n\n### Basic usage:\n1. Read https://manual.manticoresearch.com/Creating_a_table/Data_types#Row-wise-and-columnar-attribute-storages\n2. Create plain or real-time table specifying that the columnar storage should be used\n\n## Benchmarks\n\n### Log analytics - 6x faster than Elasticsearch\n\nhttps://db-benchmarks.com/test-logs10m/#elasticsearch-tuned-vs-manticore-search-columnar-storage\n\n![logs_es_msc](https://db-benchmarks.com/test-logs10m/est_msc.png)\n\n### Log analytics - 1.4x faster than Clickhouse\n\nhttps://db-benchmarks.com/test-logs10m/#clickhouse-vs-manticore-search-columnar-storage\n\n![logs_es_ch](https://db-benchmarks.com/test-logs10m/ch_msc.png)\n\n### Medium data - 110M Hackernews comments - 5x faster than Elasticsearch\n\nhttps://db-benchmarks.com/test-hn/#manticore-search-columnar-storage-vs-elasticsearch\n\n![hn_es_msc](https://db-benchmarks.com/test-hn/msc_es.png)\n\n### Medium data - 110M Hackernews comments - 11x faster than Clickhouse\n\nhttps://db-benchmarks.com/test-hn/#manticore-search-columnar-storage-vs-clickhouse\n\n![hn_msc_ch](https://db-benchmarks.com/test-hn/msc_ch.png)\n\n### Big data - 1.7B NYC taxi rides - 4x faster than Elasticsearch\n\nhttps://db-benchmarks.com/test-taxi/#manticore-search-vs-elasticsearch\n\n![taxi_ms_es](https://db-benchmarks.com/test-taxi/ms_es.png)\n\n### Big data - 1.7B NYC taxi rides - 1.8x faster than Clickhouse\n\nhttps://db-benchmarks.com/test-taxi/#manticore-search-vs-clickhouse\n\n![taxi_ms_ch](https://db-benchmarks.com/test-taxi/ms_ch.png)\n\n\n"
+}

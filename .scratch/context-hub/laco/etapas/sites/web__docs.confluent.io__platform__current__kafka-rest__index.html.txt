@@ -1,0 +1,296 @@
+Home
+
+ Platform
+
+ Confluent REST Proxy for Apache Kafka on Confluent Platform
+
+ Ask
+
+ Copy as markdown
+
+ View as plain text
+
+Confluent REST Proxy for Apache Kafka on Confluent Platform
+
+The Confluent REST Proxy provides a RESTful interface to an Apache Kafka® cluster, making it
+easy to produce and consume messages, view the state of the cluster, and perform
+administrative actions without using the native Kafka protocol or clients.
+
+Ready to build?
+
+Sign up for Confluent Cloud with your cloud marketplace account and unlock $1000 in free credits: AWS Marketplace, Google Cloud Marketplace, or Microsoft Azure Marketplace.
+
+Some example use cases are:
+
+Reporting data to Kafka from any frontend application built in any language not supported by official Confluent clients
+
+Ingesting messages into a stream processing framework that doesn’t yet support Kafka
+
+Scripting administrative actions
+
+Security plugin
+
+The REST Proxy Security Plugin is a plugin for REST Proxy that helps
+authenticate incoming requests and propagates the authenticated
+principal to requests to Kafka. This plugin enables REST Proxy clients
+to use the multi-tenant security features of the Kafka broker.
+Always install this plugin when using REST Proxy in Confluent Enterprise in a
+production environment.
+For more information, see Deploy Secure Standalone REST Proxy in Confluent Platform and
+REST Proxy Security Plugins in Confluent Platform.
+
+REST Proxy Admin REST APIs
+
+The Admin REST APIs allow you to create and manage topics, manage MDS,
+and produce and consume to topics. The Admin REST APIs are available in
+these forms:
+
+Deploy |cs|,
+which exposes Admin REST APIs directly on the brokers by default.
+Confluent Platform ships with Confluent Server.
+
+Admin REST APIs are being incrementally added to /cloud/current/, as documented at /cloud/current/.
+
+Deploy standalone |crest| nodes,
+which, in addition to Produce and Consume REST APIs, also offer Admin
+REST APIs as of API v3.
+
+API availability
+
+There is a difference between the REST APIs available on Kafka brokers deployed
+with Confluent Server and the REST APIs available with Standalone REST Proxy. Confluent Server provides
+several REST APIs that are not available in the open-source Apache Kafka® distribution
+provided with Standalone Kafka REST Proxy. The following REST API endpoints are
+only available with a Confluent Server deployment:
+
+Configs
+
+/clusters/{cluster_id}/topics/{topic_name}/default-configs
+
+Broker
+
+/clusters/{cluster_id}/brokers:delete
+
+/clusters/{cluster_id}/brokers/{broker_id}:unregister
+
+The GET version of the following endpoint is available in open-source Kafka
+REST APis. The DELETE option is available only with REST that runs with a Confluent Server
+deployment.
+
+/clusters/{cluster_id}/brokers/{broker_id}
+
+Cluster Linking
+
+/clusters/{cluster_id}/links
+/clusters/{cluster_id}/links/{link_name}
+/clusters/{cluster_id}/links/{link_name}/configs
+/clusters/{cluster_id}/links/{link_name}/configs/{config_name}
+/clusters/{cluster_id}/links/{link_name}/configs:alter
+/clusters/{cluster_id}/links/{link_name}/mirrors
+/clusters/{cluster_id}/links/-/mirrors
+/clusters/{cluster_id}/links/{link_name}/mirrors/{mirror_topic_name}
+/clusters/{cluster_id}/links/{link_name}/mirrors:promote
+/clusters/{cluster_id}/links/{link_name}/mirrors:failover
+/clusters/{cluster_id}/links/{link_name}/mirrors:pause
+/clusters/{cluster_id}/links/{link_name}/mirrors:resume
+
+BalancerStatus
+
+/clusters/{cluster_id}/balancer
+/clusters/{cluster_id}/balancer/any-uneven-load
+
+BrokerTask
+
+/clusters/{cluster_id}/brokers/-/tasks
+/clusters/{cluster_id}/brokers/{broker_id}/tasks
+/clusters/{cluster_id}/brokers/-/tasks/{task_type}
+/clusters/{cluster_id}/brokers/{broker_id}/tasks/{task_type}
+
+BrokerReplicaExclusion
+
+/clusters/{cluster_id}/broker-replica-exclusions
+/clusters/{cluster_id}/broker-replica-exclusions/{broker_id}
+/clusters/{cluster_id}/broker-replica-exclusions:create
+/clusters/{cluster_id}/broker-replica-exclusions:delete
+
+RemoveBrokerTask
+
+/clusters/{cluster_id}/remove-broker-tasks
+/clusters/{cluster_id}/remove-broker-tasks/{broker_id}
+
+ReplicaStatus
+
+/clusters/{cluster_id}/topics/-/partitions/-/replica-status
+/clusters/{cluster_id}/topics/{topic_name}/partitions/-/replica-status
+/clusters/{cluster_id}/topics/{topic_name}/partitions/{partition_id}/replica-status
+
+REST that runs with a Confluent Server deployment provides the full set of REST APIs. REST
+that runs in a Standalone deployment consists of the open-source Kafka REST APIs
+only. For more information about the open-source Kafka REST APIs available, see
+Kafka REST Proxy and the
+openapi yaml.
+
+Features
+
+The following features are currently exposed and available through
+Confluent REST.
+
+Metadata - Read most metadata about the cluster, including
+brokers, topics, partitions, and configurations, with GET requests for the corresponding URLs.
+
+Producers - Instead of exposing producer objects, the API accepts produce
+requests targeted at specific topics or partitions and routes them all through
+a small pool of producers.
+
+Producer configuration - Producer instances share resources, so
+you cannot set configuration files on a per-request basis. Adjust
+settings globally by passing new producer settings in the
+REST Proxy configuration. For example,
+you might pass in the compression.type option to enable site-wide
+compression to reduce storage and network overhead.
+
+Consumers - Consumers are stateful and tied to specific REST Proxy
+instances. Offset commit can be automatic or explicitly requested
+by the user. Currently limited to one thread per consumer; use two
+or more consumers for higher throughput. The REST Proxy uses either
+the high level consumer, API v1, or the new 0.9 consumer, API v2,
+to support consumer-groups that can read from topics. Note: use
+v2 API instead of the v1 API.
+
+Consumer configuration - Consumer instances do not share resources,
+though they share underlying server resources. Limited
+configuration options are available through the API. Adjust
+settings globally by passing consumer settings in the
+REST Proxy configuration.
+
+Data formats - The REST Proxy can read and write data using JSON,
+raw bytes encoded with base64, or JSON-encoded Avro, Protobuf,
+or JSON Schema. With Avro, Protobuf, or JSON Schema, the system
+registers schemas and validates them against Schema Registry.
+
+|crest| clusters and load balancing - The REST Proxy supports
+two or more instances running together to spread load and can safely
+run behind load balancing mechanisms, for example round robin DNS,
+discovery services, or load balancers, as long as instances are
+configured correctly.
+
+Simple consumer - Use the high-level consumer. Use
+low-level read operations only for specific cases, such as
+retrieving messages at specific offsets.
+
+See also
+
+For an example that shows how to set Docker environment variables for Confluent Platform running on KRaft, see the Confluent Platform demo.
+Refer to the demo’s docker-compose.yml file for a configuration reference.
+
+Admin operations - Use the API v3 to
+create or delete topics, and update or reset topic configurations.
+For examples, see the |confluent| Admin REST APIs demo.
+Start the demo by cloning the Confluent demo-scene repository from
+GitHub, then follow the guide for the |confluent| Admin REST APIs
+demo.
+
+Here’s a list of features that aren’t yet supported:
+
+Multi-topic Produce Requests - Currently each produce request can
+address only a single topic or topic-partition. Most use cases do
+not require multi-topic produce requests; they add complexity to
+the API, and clients can easily split data across requests if
+necessary
+
+Most Producer/Consumer Overrides in Requests - Only a few key
+overrides are available in the API. Administrators can set global
+overrides. The reason is twofold. First, proxies are multi-tenant,
+so most user-requested overrides need restrictions to ensure they do
+not impact other users. Second, tying the API too much to the
+implementation restricts future API improvements; this is important
+with the new upcoming consumer implementation.
+
+Allow different serializer for key and value - Currently, REST Proxy chooses the serializer based on the Content-Type header;
+as a result, the serializer for key and value must be the same in this design.
+
+Installation
+
+Before starting the REST Proxy, start Kafka and Schema Registry. For installation
+instructions, see Install Confluent Platform On-Premises.
+
+Deployment
+
+Starting the Confluent REST Proxy service is simple after its dependencies
+are running:
+
+# Start the REST Proxy. The default settings automatically work with the
+# default settings for local Kafka nodes.
+<path-to-confluent>/bin/kafka-rest-start etc/kafka-rest/kafka-rest.properties
+
+If you installed Debian or RPM packages, run kafka-rest-start
+as it will be on your PATH. The kafka-rest.properties file contains
+configuration settings. The default configuration
+included with the REST Proxy has convenient defaults for a local testing
+setup and should be modified for a production deployment. By default, the server
+starts bound to port 8082 and does not specify a unique instance ID (required to
+safely run multiple proxies concurrently).
+
+If you started the service in the background, use the following
+command to stop it:
+
+bin/kafka-rest-stop
+
+Development
+
+To build a development version, you might need development versions of
+common,
+rest-utils, and
+schema-registry. After
+installing these, build the Confluent REST Proxy
+with Maven. All the standard lifecycle phases work. During development, use
+
+mvn -f kafka-rest/pom.xml compile
+
+to build,
+
+mvn -f kafka-rest/pom.xml test
+
+to run the unit and integration tests, and
+
+mvn exec:java
+
+to run an instance of the proxy against a local Kafka cluster (using the default
+configuration included with Kafka).
+
+To create a packaged version, optionally skipping the tests:
+
+mvn -f kafka-rest/pom.xml package [-DskipTests]
+
+This produces a version ready for production in
+target/kafka-rest-$VERSION-package containing a directory layout similar
+to the packaged binary versions. Produce a standalone fat jar using the
+standalone profile:
+
+mvn -f kafka-rest/pom.xml package -P standalone [-DskipTests]
+
+generating
+target/kafka-rest-$VERSION-standalone.jar, which includes all the
+dependencies as well.
+
+To run a local Kafka and REST Proxy cluster, for testing:
+
+./testing/environments/minimal/run.sh
+
+Suggested Resources
+
+To learn more see this tutorial: Getting Started with Apache Kafka and Confluent REST Proxy.
+
+Blog post: Putting Apache Kafka to REST: Confluent REST Proxy 6.0
+
+Blog post: Use Cases and Architectures for HTTP and REST APIs with Apache Kafka
+
+Confluent Admin REST APIs demo
+
+ Give feedback about this page
+
+ Confluent REST Proxy for Apache Kafka on Confluent Platform
+
+ Get started
+
+ Search the docs or ask a question

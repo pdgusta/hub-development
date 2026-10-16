@@ -1,0 +1,30 @@
+{
+ "chave": "web:django-rest-swagger.readthedocs.io",
+ "urls": [
+  "https://django-rest-swagger.readthedocs.io/"
+ ],
+ "tipos": [
+  "service"
+ ],
+ "termos": [
+  "Swagger",
+  "UI",
+  "documentation"
+ ],
+ "mencoes": 1,
+ "familias": [
+  "liquid"
+ ],
+ "primeira_onda": 5,
+ "nomes": [
+  "drf-swagger"
+ ],
+ "resumos": [
+  "Provides Swagger UI integration for Django REST Framework APIs to document and test endpoints."
+ ],
+ "fonte": "site",
+ "readme_status": "ok",
+ "readme_nome": "https://django-rest-swagger.readthedocs.io/",
+ "readme_cortado": false,
+ "readme": "[Django REST Swagger]\n\nDocs »\n\nHome\n\n Edit on GitHub\n\nDjango REST Swagger\n\nSwagger/OpenAPI Documentation Generator for Django REST Framework\n\nNote: you are viewing documentation for version 2, using Django REST Framework 3.5+ and CoreAPI. Documentation for previous versions is available here.\n\nInstallation\n\n$ pip install django-rest-swagger\n\nAdd 'rest_framework_swagger' to INSTALLED_APPS in Django settings.\n\nsettings.py\n\nINSTALLED_APPS = [\n ...\n 'rest_framework_swagger',\n ...\n]\n\nQuick start\n\nTo quickly get started, use the get_swagger_view shortcut. This will produce\na schema view which uses common settings. For more advanced usage, please see\nthe schemas section.\n\nExample\n\nviews.py\n\nfrom django.conf.urls import url\nfrom rest_framework_swagger.views import get_swagger_view\n\nschema_view = get_swagger_view(title='Pastebin API')\n\nurlpatterns = [\n url(r'^$', schema_view)\n]\n\nView in the browser\n\nExample app\n\nAn example based on the Django REST Tutorial ships with the project. It and can be optionally locally using Docker, or deployed for free on heroku.\n\nDeploy with Heroku\n\nLog in credentials are:\n\nusername: amy\npassword: amy\n\nDocker Instructions\n\nEnsure Docker Docker is installed on your system.\n\nFirst, clone the repository:\n\n$ git clone https://github.com/marcgibbons/django-rest-swagger\n\nTo quickly get up and running using the Docker image, simply run:\n\n$ ./run_example.sh\n\nThe initial run may take several minutes to build. Once complete, the \napplication will be available at http://localhost:8000\n\nLog in credentials are:\n\nusername: amy\npassword: amy\n\nChanges in 2.0\n\nVersion 2.0 is fundamentally different from previous versions and leverages the new schema generation features introduced in Django REST Framework 3.4. Introspection is performed by the framework and uses CoreAPI to store definitions. This is a breaking change from previous versions which were responsible for introspection as well as overrides.\n\nNew:\n\nSwaggerUI and the OpenAPI spec are renderer classes (simpler configuration)\n\nSwaggerUI 2.1.6\n\nImproved performance\n\nAllow multiple instances of Swagger UI in a single Django project\n\nAllow rendering the OpenAPI JSON spec independently\n\nImproved control of authentication mechanisms\n\nDeprecated:\n\nYAML docstrings\n\nLicense\n\nCopyright (c) 2013-2016, Marc Gibbons\nAll rights reserved.\n\nRedistribution and use in source and binary forms, with or without\nmodification, are permitted provided that the following conditions are met:\n\n1. Redistributions of source code must retain the above copyright notice, this\n list of conditions and the following disclaimer.\n2. Redistributions in binary form must reproduce the above copyright notice,\n this list of conditions and the following disclaimer in the documentation\n and/or other materials provided with the distribution.\n\nTHIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\" AND\nANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED\nWARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE\nDISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR\nANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES\n(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;\nLOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND\nON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT\n(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS\nSOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE."
+}

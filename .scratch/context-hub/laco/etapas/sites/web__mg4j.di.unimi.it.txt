@@ -1,0 +1,436 @@
+MG4J: high-performance text
+ indexing for Java™
+
+Note: this site is in archival
+ state—MG4J is no longer developed.
+
+MG4J is a free
+ full-text search engine for large document collections written in Java. MG4J is a
+ highly customisable, high-performance, full-fledged search engine providing
+ state-of-the-art features (such as BM25/BM25F
+ scoring) and new research algorithms.
+
+The main points of MG4J are:
+
+Powerful indexing. Support for document collections and
+ factories makes it possible to analyse, index and query consistently large
+ document collections, providing easy-to-understand snippets that highlight
+ relevant passages in the retrieved documents.
+
+Efficiency. MG4J can index without effort the TREC GOV2
+ collection (document factories are provided to this purpose) and scales to
+ hundreds of millions of documents. Its new quasi-succinct
+ indices provide unprecedented performance. See the results for the GOV2
+ and ClueWeb12
+ collections in the ongoing reproducibility
+ experiment for comparison with other engines.
+
+Multi-index interval semantics. When you submit a query, MG4J
+ returns, for each index, a list of intervals satisfying the query. This provides
+ the base for several high-precision scorers and for very efficient implementation
+ of sophisticated operators. The intervals are built in linear time using new research
+ algorithms.
+
+Expressive operators. MG4J goes far beyond the bag-of-words
+ model, providing efficient implementation of phrase queries, proximity
+ restrictions, ordered conjunction, and combined multiple-index queries. Each
+ operator is represented internally by an abstract object, so you can easily plug
+ in your favourite syntax.
+
+Virtual fields. MG4J supports virtual fields—fields
+ containing text for a different, virtual document; the typical example is
+ anchor text, which must be attributed to the target document.
+
+Flexibility. You can build much smaller indices by dropping term
+ positions, or even term counts. It's up to you. Several different types of codes
+ can be chosen to balance efficiency and index size. Documents coming from a
+ collection can be renumbered (e.g., to match a static rank or experiment with
+ indexing techniques).
+
+Openness. The document collection/factory interfaces provide an
+ easy way to present your own data representation to MG4J, making it a breeze to set
+ up a web-based search engine accessing directly your data. Every element along the
+ path of query resolution (parsers, document-iterator builders, query engines,
+ etc.) can be substituted with your own versions.
+
+Distributed processing. Indices can be built for a collection
+ split in several parts, and combined later. Combination of indices allows
+ non-contiguous indices and even the same document can be split across different
+ collections (e.g., when indexing anchor text).
+
+Multithreading. Indices can be queried and scored
+ concurrently.
+
+Clustering. Indices can be clustered both lexically and
+ documentally (possibly after a partitioning). The clustering system is completely
+ open, and user-defined strategies decide how to combine documents from different
+ sources. This architecture makes it possible, for instance, to load in RAM the
+ part of an index that contains terms appearing more frequently in user
+ queries.
+
+The starting point for understanding MG4J is a look at the tutorial, which explains how to index a sample
+ collection and query the newly constructed index from the command line or using a
+ browser. Then, the Javadoc class documentation can
+ provide more insights.
+
+MG4J is free
+ software distributed under the GNU Lesser General Public License. If you
+ find MG4J useful, we kindly ask you to quote the following reference:
+
+@INPROCEEDINGS{BoVTREC2005,
+ title = "{M}{G}4{J} at {T}{R}{E}{C} 2005",
+ author="Paolo Boldi and Sebastiano Vigna",
+ year = 2005,
+ booktitle = "The Fourteenth Text REtrieval Conference (TREC 2005) Proceedings",
+ editor = "Ellen M. Voorhees and Lori P. Buckland",
+ publisher = "NIST",
+ series = "Special Papers",
+ number = "SP 500-266",
+ note = "\texttt{\small http://mg4j.di.unimi.it/}",
+}
+
+Installation
+
+You can grab MG4J from Maven
+ Central. Otherwise, you just have to install the .jar file coming
+ with the distribution and the dependencies, which are gathered for your convenience in
+ a tarball.
+
+Citations
+
+Here you can find (in no particular order) research papers that have
+ been written using MG4J. The list is not exhaustive, and we will be happy to include
+ works that are missing.
+
+ 1
+ Bob Goodwin, Michael Hopcroft, Dan Luu, Alex
+ Clemmer, Mihaela Curmei, Sameh Elnikety, and Yuxiong He.
+ Bitfunnel: Revisiting signatures for search.
+ In Proceedings of the 40th International ACM SIGIR Conference on Research
+ and Development in Information Retrieval, SIGIR '17, pages 605−614, New
+ York, NY, USA, 2017. ACM.
+
+ 2
+ Valentin Tablan, Kalina Bontcheva, Ian
+ Roberts, and Hamish Cunningham.
+ Mímir: An open-source semantic search framework for interactive
+ information seeking and discovery.
+ Web Semantics: Science, Services and Agents on the World Wide Web,
+ 30(Supplement C):52−68, 2015.
+
+ 3
+ Jimmy Lin, Matt Crane, Andrew Trotman, Jamie
+ Callan, Ishan Chattopadhyaya, John Foley, Grant Ingersoll, Craig Macdonald,
+ and Sebastiano Vigna.
+ Toward reproducible baselines: The open-source IR reproducibility challenge.
+ In Nicola Ferro, Fabio Crestani, Marie Francine Moens, Josiane Mothe, Fabrizio
+ Silvestri, Maria Giorgio Di Nunzio, Claudia Hauff, and Gianmaria Silvello,
+ editors, Advances in Information Retrieval: 38th European Conference on
+ IR Research, ECIR 2016, Padua, Italy, March 20-23, 2016. Proceedings,
+ pages 408−420. Springer International Publishing, 2016.
+
+The Open-Source IR Reproducibility Challenge brought together developers of
+ open-source search engines to provide reproducible baselines of their systems
+ in a common environment on Amazon EC2. The product is a repository that
+ contains all code necessary to generate competitive ad hoc retrieval
+ baselines, such that with a single script, anyone with a copy of the
+ collection can reproduce the submitted runs. Our vision is that these results
+ would serve as widely accessible points of comparison in future IR research.
+ This project represents an ongoing effort, but we describe the first phase of
+ the challenge that was organized as part of a workshop at SIGIR 2015. We have
+ succeeded modestly so far, achieving our main goals on the Gov2 collection
+ with seven open-source search engines. In this paper, we describe our
+ methodology, share experimental results, and discuss lessons learned as well
+ as next steps. 
+Github
+ repository.
+
+ 4
+ Kyumars Sheykh Esmaili, Shahin Salavati, and
+ Anwitaman Datta.
+ Towards kurdish information retrieval.
+ ACM Transactions on Asian and Low−Resource Language Information
+ Processing (TALLIP), 13(2):7:1−7:18, 2014.
+
+ 5
+ Uma Sawant and Soumen Chakrabarti.
+ Learning joint query interpretation and response ranking.
+ In Proceedings of the 22Nd International Conference on World Wide
+ Web, WWW '13, pages 1099−1110, New York, NY, USA, 2013. ACM.
+
+ 6
+ Hamish Cunningham, Valentin Tablan, Angus
+ Roberts, and Kalina Bontcheva.
+ Getting more out of biomedical documents with gate's full lifecycle open
+ source text analytics.
+ PLoS computational biology, 9(2):e1002854, 2013.
+
+ 7
+ Sebastiano Vigna.
+ Quasi-succinct indices.
+ In Stefano Leonardi, Alessandro Panconesi, Paolo Ferragina, and Aristides
+ Gionis, editors, Proceedings of the 6th ACM International Conference on
+ Web Search and Data Mining, WSDM'13, pages 83−92. ACM, 2013.
+
+Compressed inverted indices in use today are based on the idea of gap
+ compression: documents pointers are stored in increasing order, and the gaps
+ between successive document pointers are stored using suitable codes which
+ represent smaller gaps using less bits. Additional data such as counts and
+ positions is stored using similar techniques. A large body of research has
+ been built in the last 30 years around gap compression, including theoretical
+ modeling of the gap distribution, specialized instantaneous codes suitable
+ for gap encoding, and ad hoc document reorderings which increase the
+ efficiency of instantaneous codes. This paper proposes to represent an index
+ using a different architecture based on quasi-succinct representation of
+ monotone sequences. We show that, besides being theoretically elegant and
+ simple, the new index provides expected constant-time operations, space
+ savings, and, in practice, significant performance improvements on
+ conjunctive, phrasal and proximity queries. 
+PDF
+ version. Quasi-succinct indices are now the default indices in MG4J.
+
+ 8
+ Kerstin Denecke, Peter Dolog, and Pavel Smrz.
+ Making use of social media data in public health.
+ In Proceedings of the 21st international conference companion on World
+ Wide Web, pages 243−246, New York, NY, USA, 2012. ACM.
+
+ 9
+ Soumen Chakrabarti, Sasidhar Kasturi, Bharath
+ Balakrishnan, Ganesh Ramakrishnan, and Rohit Saraf.
+ Compressed data structures for annotated web search.
+ In Alain Mille, Fabien L. Gandon, Jacques Misselis, Michael Rabinovich, and
+ Steffen Staab, editors, Proceedings of the 21st World Wide Web Conference
+ 2012, WWW 2012, Lyon, France, April 16-20, 2012, pages 121−130. ACM,
+ 2012.
+
+ 10
+ Pavel Smrz and Lubomir Otrusina.
+ Finding indicators of epidemiological events by analysing messages from
+ twitter and other social networks.
+ In Proceedings of the second international workshop on Web science and
+ information exchange in the medical web, pages 7−10. ACM, 2011.
+
+ 11
+ Soumen Chakrabarti, Devshree Sane, and Ganesh
+ Ramakrishnan.
+ Web-scale entity-relation search architecture.
+ In Proceedings of the 20th International Conference Companion on
+ World-Wide Web, pages 21−22, New York, NY, USA, 2011. ACM.
+
+ 12
+ Hamish Cunningham, Valentin Tablan, Ian
+ Roberts, Mark A. Greenwood, and Niraj Aswani.
+ Information extraction and semantic annotation for multi-paradigm information
+ management.
+ In Mihai Lupu, Katja Mayer, John Tait, Anthony J. Trippe, and W. Bruce Croft,
+ editors, Current Challenges in Patent Information Retrieval,
+ volume 29 of The Information Retrieval Series, pages 307−327.
+ Springer Berlin Heidelberg, 2011.
+
+ 13
+ Frank Hopfgartner and Joemon Jose.
+ Semantic user profiling techniques for personalised multimedia recommendation.
+ Multimedia Systems, 16(4):255−274, 2010.
+
+ 14
+ Jeffrey Pound, Peter Mika, and Hugo Zaragoza.
+ Ad-hoc object retrieval in the web of data.
+ In Proceedings of the 19th international conference on World wide
+ web, pages 771−780. ACM, 2010.
+
+ 15
+ Erik Graf, Ingo Frommholz, Mounia Lalmas, and
+ Keith van Rijsbergen.
+ Knowledge modeling in prior art search.
+ In Advances in Multidisciplinary Retrieval, volume 6107 of
+ Lecture Notes in Computer Science, pages 31−46. Springer,
+ 2010.
+
+ 16
+ Eneko Agirre, Olatz Ansa, Xabier Arregi,
+ Maddalen Lopez de Lacalle, Arantxa Otegi, Xabier Saralegi, and Hugo Zaragoza.
+ Using semantic relatedness and word sense disambiguation for (CL)IR.
+ In 10th Workshop of the Cross-Language Evaluation Forum, CLEF 2009.
+ Multilingual Information Access Evaluation I. Text Retrieval
+ Experiments, volume 6241 of Lecture Notes in Computer Science,
+ pages 166−173. Springer, 2010.
+
+ 17
+ Eneko Agirre, Olatz Ansa, Xabier Arregi,
+ Maddalen Lopez de Lacalle, Arantxa Otegi, Xabier Saralegi, and Hugo Zaragoza.
+ Elhuyar-IXA: Semantic relatedness and cross-lingual passage retrieval.
+ In 10th Workshop of the Cross-Language Evaluation Forum, CLEF 2009.
+ Multilingual Information Access Evaluation I. Text Retrieval
+ Experiments, volume 6241 of Lecture Notes in Computer Science,
+ pages 273−280. Springer, 2010.
+
+ 18
+ Nuno Cardoso, PatrÃ­cia Sousa, and MÃ¡rio J.
+ Silva.
+ Experiments with geographic evidence extracted from documents.
+ In Evaluating Systems for Multilingual and Multimodal Information Access.
+ 9th Workshop of the Cross-Language Evaluation Forum, CLEF 2008, volume
+ 5706 of Lecture Notes in Computer Science, pages 885−893. Springer,
+ 2009.
+
+ 19
+ Fabien Campagne.
+ Objective and automated protocols for the evaluation of biomedical search
+ engines using No Title Evaluation protocols.
+ BMC bioinformatics, 9(1):132, 2008.
+
+ 20
+ Nuno Cardoso, PatrÃ­cia Sousa, and MÃ¡rio J.
+ Silva.
+ The University of Lisbon at GeoCLEF 2008.
+ In Working Notes for CLEF 2008, pages 17−19, 2008.
+
+ 21
+ Diana Santos, Nuno Cardoso, Paula Carvalho,
+ Iustin Dornescu, Sven Hartrumpf, Johannes Leveling, and Yvonne Skalban.
+ GikiP at GeoCLEF 2008: Joining GIR and QA forces for querying
+ Wikipedia.
+ In Evaluating Systems for Multilingual and Multimodal Information
+ Access, volume 5706 of Lecture Notes in Computer Science, pages
+ 894−905. Springer, 2009.
+
+ 22
+ Nuno Cardoso, David Cruz, Marcirio Chaves, and
+ MÃ¡rio Silva.
+ Using geographic signatures as query and document scopes in geographic IR.
+ In Advances in Multilingual and Multimodal Information Retrieval,
+ volume 5152 of Lecture Notes in Computer Science, pages 802−810.
+ Springer, 2008.
+
+ 23
+ Nuno Cardoso, David Cruz, Marcirio Chaves, and
+ MÃ¡rio J. Silva.
+ The University of Lisbon at GeoCLEF 2007.
+ In Working Notes for CLEF 2007, 2007.
+
+ 24
+ Kevin C. Dorff, Matthew J. Wood, and Fabien
+ Campagne.
+ Twease at TREC 2006: Breaking and fixing BM25 scoring with query
+ expansion, a biologically inspired double mutant recovery experiment.
+ In Proceedings of the Text Retrieval Conference, 2006.
+
+ 25
+ Lei Shi and Fabien Campagne.
+ Building a protein name dictionary from full text: a machine learning term
+ extraction approach.
+ BMC bioinformatics, 6(1):88, 2005.
+
+ 26
+ Peter Mika.
+ Distributed indexing for semantic search.
+ In Proceedings of the 3rd International Semantic Search Workshop,
+ pages 1−4. ACM, 2010.
+
+ 27
+ Nuno Cardoso, Mário J. Silva, and Diana
+ Santos.
+ Handling implicit geographic evidence for geographic IR.
+ In Proceedings of the 17th ACM conference on Information and knowledge
+ management, CIKM '08, pages 1383−1384. ACM, 2008.
+
+ 28
+ Roi Blanco and Alvaro Barreiro.
+ Document identifier reassignment through dimensionality reduction.
+ In Proc. of the 27th European Conference on Information Retrieval Research
+ ECIR2005, number 3408 in Lecture Notes in Computer Science, pages
+ 375−387, 2005.
+
+ 29
+ Roi Blanco and Alvaro Barreiro.
+ Tsp and cluster-based solutions to the reassignment of document identifiers.
+ Information Retrieval, 9(4):499−517, 2006.
+
+ 30
+ Roi Blanco and Alvaro Barreiro.
+ A software architecture for effective document identifier reassignment.
+ In Roberto Moreno Díaz, Franz Pichler, and Alexis Quesada Arencibia,
+ editors, Computer Aided Systems Theory - EUROCAST 2005, 10th
+ International Conference on Computer Aided Systems Theory, Las Palmas de Gran
+ Canaria, Spain, February 7-11, 2005, Revised Selected Papers, volume
+ 3643 of Lecture Notes in Computer Science, pages 254−262. Springer,
+ 2005.
+
+ 31
+ Minsuk Lee, Weiqing Wang, and Hong Yu.
+ Exploring supervised and unsupervised methods to detect topics in biomedical
+ text.
+ BMC Bioinformatics, 7(140), 2006.
+
+Quick Links
+
+Introduction
+
+Installation
+
+Citations
+
+Download (big) (Java ≥ 8)
+
+Binary tarball
+
+Source tarball
+
+Dependencies tarball
+
+Maven 
+
+Documentation (big)
+
+README
+
+CHANGES
+
+Manual (HTML)
+
+Manual (PDF)
+
+API
+
+Papers
+
+A paper about
+ the algorithms for minimal-interval semantics used in MG4J.
+
+A paper describing
+ the quasi-succinct indices used by MG4J since version 5.0.
+
+A preprint
+ about the skipping structures used in MG4J (a short version appeared in the proceedings of
+ SPIRE 2005).
+
+Didattica
+
+Programmazione
+
+Algoritmica per il web
+
+Web Algorithmics
+
+Documentation
+
+The Graph–Fibrations Home Page 
+
+Come scrivere un'email 
+
+Dispense di informatica teorica 
+
+BS/Delete Mini-HOWTO 
+
+Profiles
+
+ORCID 
+
+Google Scholar 
+
+GitHub 
+
+Validation
+
+This is valid HTML5

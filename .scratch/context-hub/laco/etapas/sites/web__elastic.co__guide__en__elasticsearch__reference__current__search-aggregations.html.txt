@@ -1,0 +1,281 @@
+Docs
+
+ /
+
+ Explore and analyze
+
+ /
+
+ Querying and filtering
+
+Aggregations
+
+An aggregation summarizes your data as metrics, statistics, or other analytics. Aggregations help you answer questions like:
+
+What’s the average load time for my website?
+
+Who are my most valuable customers based on transaction volume?
+
+What would be considered a large file on my network?
+
+How many products are in each product category?
+
+Elasticsearch organizes aggregations into three categories:
+
+Metric aggregations that calculate metrics, such as a sum or average, from field values.
+
+Bucket aggregations that group documents into buckets, also called bins, based on field values, ranges, or other criteria.
+
+Pipeline aggregations that take input from other aggregations instead of documents or fields.
+
+Run an aggregation
+
+You can run aggregations as part of a search by specifying the search API's aggs parameter. The following search runs a terms aggregation on my-field:
+
+ GET /my-index-000001/_search
+ {
+ "aggs": {
+ "my-agg-name": {
+ "terms": {
+ "field": "my-field"
+ }
+ }
+ }
+}
+
+Aggregation results are in the response’s aggregations object:
+
+{
+ "took": 78,
+ "timed_out": false,
+ "_shards": {
+ "total": 1,
+ "successful": 1,
+ "skipped": 0,
+ "failed": 0
+ },
+ "hits": {
+ "total": {
+ "value": 5,
+ "relation": "eq"
+ },
+ "max_score": 1.0,
+ "hits": [...]
+ },
+ "aggregations": {
+ "my-agg-name": {
+ "doc_count_error_upper_bound": 0,
+ "sum_other_doc_count": 0,
+ "buckets": []
+ }
+ }
+}
+
+Results for the my-agg-name aggregation.
+
+Change an aggregation’s scope
+
+Use the query parameter to limit the documents on which an aggregation runs:
+
+ GET /my-index-000001/_search
+ {
+ "query": {
+ "range": {
+ "@timestamp": {
+ "gte": "now-1d/d",
+ "lt": "now/d"
+ }
+ }
+ },
+ "aggs": {
+ "my-agg-name": {
+ "terms": {
+ "field": "my-field"
+ }
+ }
+ }
+}
+
+Return only aggregation results
+
+By default, searches containing an aggregation return both search hits and aggregation results. To return only aggregation results, set size to 0:
+
+ GET /my-index-000001/_search
+ {
+ "size": 0,
+ "aggs": {
+ "my-agg-name": {
+ "terms": {
+ "field": "my-field"
+ }
+ }
+ }
+}
+
+Run multiple aggregations
+
+You can specify multiple aggregations in the same request:
+
+ GET /my-index-000001/_search
+ {
+ "aggs": {
+ "my-first-agg-name": {
+ "terms": {
+ "field": "my-field"
+ }
+ },
+ "my-second-agg-name": {
+ "avg": {
+ "field": "my-other-field"
+ }
+ }
+ }
+}
+
+Run sub-aggregations
+
+Bucket aggregations support bucket or metric sub-aggregations. For example, a terms aggregation with an avg sub-aggregation calculates an average value for each bucket of documents. There is no level or depth limit for nesting sub-aggregations.
+
+ GET /my-index-000001/_search
+ {
+ "aggs": {
+ "my-agg-name": {
+ "terms": {
+ "field": "my-field"
+ },
+ "aggs": {
+ "my-sub-agg-name": {
+ "avg": {
+ "field": "my-other-field"
+ }
+ }
+ }
+ }
+ }
+}
+
+The response nests sub-aggregation results under their parent aggregation:
+
+{
+ ...
+ "aggregations": {
+ "my-agg-name": {
+ "doc_count_error_upper_bound": 0,
+ "sum_other_doc_count": 0,
+ "buckets": [
+ {
+ "key": "foo",
+ "doc_count": 5,
+ "my-sub-agg-name": {
+ "value": 75.0
+ }
+ }
+ ]
+ }
+ }
+}
+
+Results for the parent aggregation, my-agg-name.
+
+Results for my-agg-name's sub-aggregation, my-sub-agg-name.
+
+Add custom metadata
+
+Use the meta object to associate custom metadata with an aggregation:
+
+ GET /my-index-000001/_search
+ {
+ "aggs": {
+ "my-agg-name": {
+ "terms": {
+ "field": "my-field"
+ },
+ "meta": {
+ "my-metadata-field": "foo"
+ }
+ }
+ }
+}
+
+The response returns the meta object in place:
+
+{
+ ...
+ "aggregations": {
+ "my-agg-name": {
+ "meta": {
+ "my-metadata-field": "foo"
+ },
+ "doc_count_error_upper_bound": 0,
+ "sum_other_doc_count": 0,
+ "buckets": []
+ }
+ }
+}
+
+Return the aggregation type
+
+By default, aggregation results include the aggregation’s name but not its type. To return the aggregation type, use the typed_keys query parameter.
+
+ GET /my-index-000001/_search?typed_keys
+ {
+ "aggs": {
+ "my-agg-name": {
+ "histogram": {
+ "field": "my-field",
+ "interval": 1000
+ }
+ }
+ }
+}
+
+The response returns the aggregation type as a prefix to the aggregation’s name.
+
+ Important
+
+Some aggregations return a different aggregation type from the type in the request. For example, the terms, significant terms, and percentiles aggregations return different aggregations types depending on the data type of the aggregated field.
+
+{
+ ...
+ "aggregations": {
+ "histogram#my-agg-name": {
+ "buckets": []
+ }
+ }
+}
+
+The aggregation type, histogram, followed by a # separator and the aggregation’s name, my-agg-name.
+
+Use scripts in an aggregation
+
+When a field doesn’t exactly match the aggregation you need, you should aggregate on a runtime field:
+
+ GET /my-index-000001/_search?size=0
+ {
+ "runtime_mappings": {
+ "message.length": {
+ "type": "long",
+ "script": "emit(doc['message.keyword'].value.length())"
+ }
+ },
+ "aggs": {
+ "message_length": {
+ "histogram": {
+ "interval": 10,
+ "field": "message.length"
+ }
+ }
+ }
+}
+
+Scripts calculate field values dynamically, which adds a little overhead to the aggregation. In addition to the time spent calculating, some aggregations like terms and filters can’t use some of their optimizations with runtime fields. In total, performance costs for using a runtime field varies from aggregation to aggregation.
+
+Aggregation caches
+
+For faster responses, Elasticsearch caches the results of frequently run aggregations in the shard request cache. To get cached results, use the same preference string for each search. If you don’t need search hits, set size to 0 to avoid filling the cache.
+
+Elasticsearch routes searches with the same preference string to the same shards. If the shards' data doesn’t change between searches, the shards return cached aggregation results.
+
+Limits for long values
+
+When running aggregations, Elasticsearch uses double values to hold and represent numeric data. As a result, aggregations on long numbers greater than 253 are approximate.

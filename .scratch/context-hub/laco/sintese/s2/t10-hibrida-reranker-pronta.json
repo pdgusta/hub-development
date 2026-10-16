@@ -1,0 +1,131 @@
+{
+  "tema": "t10-hibrida-reranker-pronta",
+  "consultas": [
+    "bge-reranker-v2-m3 multilingual cross-encoder reranker ONNX CPU Windows",
+    "jina-reranker-v2-base-multilingual license model card",
+    "txtai hybrid search sparse dense release 2026",
+    "FastEmbed rerank TextCrossEncoder supported models multilingual",
+    "Haystack hybrid retrieval DocumentJoiner reciprocal rank fusion SentenceTransformersSimilarityRanker",
+    "Weaviate embedded Windows support hybrid search",
+    "Qwen3-Reranker 0.6B GGUF llama.cpp rerank endpoint multilingual",
+    "LanceDB hybrid search RRFReranker CrossEncoderReranker full-text search"
+  ],
+  "achados": [
+    {
+      "nome": "BAAI/bge-reranker-v2-m3",
+      "url_fonte": "https://huggingface.co/BAAI/bge-reranker-v2-m3",
+      "o_que_e": "Reranker cross-encoder multilíngue de 0,6B parâmetros, Apache-2.0, usável via sentence-transformers CrossEncoder, transformers ou FlagEmbedding.",
+      "lugar": ["library", "disk"],
+      "mecanismo": ["reranker"],
+      "mcp": "no", "windows": "unknown", "portugues": "yes",
+      "licenca": "apache-2.0", "ultimo_release": "desconhecido (página não informa data)", "maturidade": "stable",
+      "encaixe": "Segundo estágio sobre candidatos do BM25/vetor, chamado pelo MCP do banco ou por serviço local; 0,6B F32 pesado em CPU, avaliar variante ONNX/quantizada.",
+      "evidencias": [
+        {"url": "https://huggingface.co/BAAI/bge-reranker-v2-m3", "citacao": "License: apache-2.0"},
+        {"url": "https://huggingface.co/BAAI/bge-reranker-v2-m3", "citacao": "possesses strong multilingual capabilities, easy to deploy, with fast inference"}
+      ],
+      "nao_verificado": ["desempenho específico em português", "latência em CPU Windows", "qualidade das variantes INT8"]
+    },
+    {
+      "nome": "onnx-community/bge-reranker-v2-m3-ONNX",
+      "url_fonte": "https://huggingface.co/onnx-community/bge-reranker-v2-m3-ONNX",
+      "o_que_e": "Conversão automática em ONNX do bge-reranker-v2-m3, com exemplo em Transformers.js; rodaria em ONNX Runtime sem PyTorch.",
+      "lugar": ["library", "disk"],
+      "mecanismo": ["reranker"],
+      "mcp": "no", "windows": "unknown", "portugues": "yes",
+      "licenca": "não declarada na página (modelo base: apache-2.0)", "ultimo_release": "desconhecido", "maturidade": "beta",
+      "encaixe": "Reranker sem Python/PyTorch, via onnxruntime ou Transformers.js em Node (mesmo runtime de um MCP em TypeScript).",
+      "evidencias": [
+        {"url": "https://huggingface.co/onnx-community/bge-reranker-v2-m3-ONNX", "citacao": "an ONNX version of BAAI/bge-reranker-v2-m3"}
+      ],
+      "nao_verificado": ["tamanhos dos arquivos e variantes quantizadas", "licença na página", "uso correto com par consulta/documento (o exemplo passa uma string só)", "Windows"]
+    },
+    {
+      "nome": "jinaai/jina-reranker-v2-base-multilingual",
+      "url_fonte": "https://huggingface.co/jinaai/jina-reranker-v2-base-multilingual",
+      "o_que_e": "Reranker cross-encoder multilíngue de 278M parâmetros, com ONNX; licença não comercial.",
+      "lugar": ["library", "disk"],
+      "mecanismo": ["reranker"],
+      "mcp": "no", "windows": "unknown", "portugues": "unknown",
+      "licenca": "CC-BY-NC-4.0", "ultimo_release": "2024-06-25 (segundo página da Jina, não conferido no HF)", "maturidade": "stable",
+      "encaixe": "Alternativa menor ao bge-reranker; uso pessoal/pesquisa apenas pela licença. Está na lista do FastEmbed. Marcado como depreciado pela Jina.",
+      "evidencias": [
+        {"url": "https://huggingface.co/jinaai/jina-reranker-v2-base-multilingual", "citacao": "licenced for research and evaluation purposes under CC-BY-NC-4.0"}
+      ],
+      "nao_verificado": ["lista de idiomas incluindo português", "depreciação (vista só em página da Jina via busca)", "uso comercial do hub"]
+    },
+    {
+      "nome": "qdrant/fastembed (TextCrossEncoder)",
+      "url_fonte": "https://github.com/qdrant/fastembed",
+      "o_que_e": "Biblioteca Python de embeddings densos/esparsos e rerank cross-encoder via ONNX, sem PyTorch; aceita modelos customizados.",
+      "lugar": ["library"],
+      "mecanismo": ["embeddings", "reranker", "vector"],
+      "mcp": "no", "windows": "unknown", "portugues": "unknown",
+      "licenca": "Apache-2.0", "ultimo_release": "não informado na página (busca cita fastembed 0.8.0 em índice do CERN, não conferido)", "maturidade": "stable",
+      "encaixe": "Camada única para embeddings e rerank locais em CPU, em processo auxiliar; add_custom_model permite registrar o bge-reranker-v2-m3.",
+      "evidencias": [
+        {"url": "https://github.com/qdrant/fastembed", "citacao": "Text cross encoders can also be extended with models which are not in the list of supported models."}
+      ],
+      "nao_verificado": ["Windows", "se jina-reranker-v2-multilingual segue na lista atual (só por resultado de busca)", "versão atual", "uso de ONNX sem PyTorch (não visto na página)"]
+    },
+    {
+      "nome": "LanceDB hybrid search + rerankers",
+      "url_fonte": "https://docs.lancedb.com/reranking/cross_encoder.md",
+      "o_que_e": "Busca híbrida (vetor + FTS) com RRFReranker padrão e CrossEncoderReranker opcional; exige índice FTS na coluna de texto.",
+      "lugar": ["library", "disk"],
+      "mecanismo": ["hybrid", "full_text", "vector", "reranker"],
+      "mcp": "no", "windows": "unknown", "portugues": "unknown",
+      "licenca": "não conferido", "ultimo_release": "desconhecido", "maturidade": "stable",
+      "encaixe": "Híbrida pronta no disco; cross-encoder padrão é inglês (TinyBERT), trocar model_name por modelo multilíngue. Analisador de português do FTS não conferido.",
+      "evidencias": [
+        {"url": "https://docs.lancedb.com/reranking/cross_encoder.md", "citacao": "reranker = CrossEncoderReranker()"},
+        {"url": "https://docs.lancedb.com/reranking/cross_encoder.md", "citacao": "cross-encoder/ms-marco-TinyBERT-L-6"}
+      ],
+      "nao_verificado": ["Windows", "licença", "stemmer de português no FTS", "RRF como padrão (visto só em resultado de busca)"]
+    },
+    {
+      "nome": "Haystack 2.29 MultiRetriever / DocumentJoiner",
+      "url_fonte": "https://haystack.deepset.ai/release-notes/2.29.0",
+      "o_que_e": "MultiRetriever experimental roda retrievers em paralelo e funde por RRF; DocumentJoiner já oferecia RRF.",
+      "lugar": ["library"],
+      "mecanismo": ["hybrid", "bm25", "vector"],
+      "mcp": "unknown", "windows": "unknown", "portugues": "unknown",
+      "licenca": "não conferido", "ultimo_release": "2.29.0 (sem data na página)", "maturidade": "beta",
+      "encaixe": "Framework pesado demais para o hub; útil só como referência do padrão BM25 + embeddings + RRF.",
+      "evidencias": [
+        {"url": "https://haystack.deepset.ai/release-notes/2.29.0", "citacao": "runs multiple text retrievers in parallel"}
+      ],
+      "nao_verificado": ["data da release", "licença", "Windows", "SentenceTransformersSimilarityRanker"]
+    },
+    {
+      "nome": "ggml-org/Qwen3-Reranker-0.6B-Q8_0-GGUF",
+      "url_fonte": "https://huggingface.co/ggml-org/Qwen3-Reranker-0.6B-Q8_0-GGUF",
+      "o_que_e": "GGUF Q8_0 do Qwen3-Reranker-0.6B, Apache-2.0, servido pelo llama-server; reranker pequeno via llama.cpp.",
+      "lugar": ["network_service", "disk"],
+      "mecanismo": ["reranker"],
+      "mcp": "no", "windows": "unknown", "portugues": "unknown",
+      "licenca": "apache-2.0", "ultimo_release": "desconhecido", "maturidade": "beta",
+      "encaixe": "Serviço local único (llama-server) para embeddings e rerank, sem Python; endpoint /v1/rerank e flags de rerank não conferidos na fonte.",
+      "evidencias": [
+        {"url": "https://huggingface.co/ggml-org/Qwen3-Reranker-0.6B-Q8_0-GGUF", "citacao": "./llama-server -hf ggml-org/Qwen3-Reranker-0.6B-Q8_0-GGUF:Q8_0"}
+      ],
+      "nao_verificado": ["flags --rerank --pooling rank e endpoint /v1/rerank (só por busca)", "relatos de scores incorretos em conversões GGUF", "Windows", "português"]
+    },
+    {
+      "nome": "neuml/txtai",
+      "url_fonte": "https://github.com/neuml/txtai",
+      "o_que_e": "Banco de embeddings que une índices esparso e denso, grafo e SQL; API web e MCP; Apache-2.0.",
+      "lugar": ["library", "network_service"],
+      "mecanismo": ["hybrid", "vector", "graph"],
+      "mcp": "yes", "windows": "unknown", "portugues": "unknown",
+      "licenca": "Apache-2.0", "ultimo_release": "não informado (README cita 9.0)", "maturidade": "stable",
+      "encaixe": "Híbrida pronta (esparso+denso) com MCP próprio, como serviço lateral sobre o disco; reranker/similarity não conferido.",
+      "evidencias": [
+        {"url": "https://github.com/neuml/txtai", "citacao": "Web and Model Context Protocol (MCP) APIs"},
+        {"url": "https://github.com/neuml/txtai", "citacao": "txtai is open-source under an Apache 2.0 license."}
+      ],
+      "nao_verificado": ["versão e data atuais", "Windows", "pipeline de reranking", "português no índice esparso"]
+    }
+  ],
+  "lacunas": "Weaviate embedded: nada conferido em fonte primária (só fórum antigo e resenhas; Windows não confirmado). LlamaIndex não pesquisado. Sem número de desempenho em português dos rerankers (MIRACL pt) nem latência em CPU Windows. Nenhuma peça de híbrida+reranker com MCP pronto, Windows e português confirmados juntos."
+}

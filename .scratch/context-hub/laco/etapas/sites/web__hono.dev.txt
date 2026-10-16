@@ -1,0 +1,31 @@
+Skip to content
+
+HonoWeb application framework
+Fast, lightweight, built on Web Standards. Support for any JavaScript runtime.
+
+Get Started
+View on GitHub
+$ npm create hono@latest
+
+import { Hono } from 'hono'
+
+const app = new Hono()
+app.get('/', (c) => c.text('Hello Hono!'))
+
+export default app
+
+🚀
+Ultrafast & Lightweight
+The router RegExpRouter is really fast. The hono/tiny preset is under 14kB. Using only Web Standard APIs.
+
+🌍
+Multi-runtime
+Works on Cloudflare, Fastly, Deno, Bun, AWS, or Node.js. The same code runs on all platforms.
+
+🔋
+Batteries Included
+Hono has built-in middleware, custom middleware, third-party middleware, and helpers. Batteries included.
+
+😃
+Delightful DX
+Super clean APIs. First-class TypeScript support. Now, we've got "Types".

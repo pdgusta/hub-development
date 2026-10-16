@@ -1,0 +1,31 @@
+{
+ "chave": "web:lucene.apache.org/core/8_11_2/highlighter/org/apache/lucene/search/vectorhighlight/package-summary.html",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T21:30:35Z",
+ "resultado": "corrige",
+ "conferencia": {
+  "resultado": "corrige",
+  "final": {
+   "serve": "search",
+   "role": "Highlighter that builds snippets from stored term vectors, with offsets.",
+   "place": [
+    "library"
+   ],
+   "mechanism": [
+    "full_text"
+   ],
+   "mcp": "no",
+   "windows": "unknown",
+   "portuguese": "unknown",
+   "license": "Apache-2.0",
+   "maturity": "stable",
+   "doubt": false,
+   "evidence": "Another highlighter implementation based on term vectors."
+  },
+  "o_que_mudou": [
+   "mechanism: unknown role; doubt true -> false, README is clear: term-vector highlighter, not dense vectors",
+   "card name 'Vector Similarity (DenseVector)' is wrong"
+  ],
+  "nota": "Snippet highlighting for Lucene results; marginal, only if Lucene is adopted."
+ }
+}

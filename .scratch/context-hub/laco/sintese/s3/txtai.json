@@ -1,0 +1,61 @@
+{
+ "nome": "txtai",
+ "url": "https://github.com/neuml/txtai",
+ "papel": "peça embutida / serviço",
+ "windows": "nao_verificado (instalação tem seção Windows e exige C++ Build Tools para dependências opcionais; sem wheel/CI confirmado)",
+ "mcp": "yes (a API hospeda endpoints MCP e OpenAI-compatíveis; HTTP via uvicorn)",
+ "portugues": "Depende do modelo: o recomendado é all-MiniLM-L6-v2 (sem multilíngue nomeado na README); modelos transformers são configuráveis, então um multilíngue pode ser escolhido. Sem stemmer/stopwords de português verificados.",
+ "markdown_frontmatter": "Há pipelines de extração/segmentação, mas Markdown e frontmatter não foram confirmados.",
+ "atualizacao": "Sem watcher confirmado; índice atualizado por upsert/delete via API; reconciliação com disco é do hub (nao_verificado).",
+ "embeddings_endpoint": "Método litellm (embeddings via LiteLLM, que aceita api_base de endpoint OpenAI-compatível com prefixo openai/); a página do txtai não cita api_base, então depende da documentação do LiteLLM. Também modelos locais.",
+ "recursos": "Python >=3.11, pip install txtai; extras opcionais; imagens Docker. Torch/transformers pesados para modelos locais; números: nao_verificado.",
+ "licenca": "Apache-2.0",
+ "ultimo_release": "v9.14.0 (PyPI 2026-10-06)",
+ "atividade": "commits em 2026-10-13 (feed)",
+ "maturidade": "stable",
+ "encaixe": "Serviço na rede ou processo local que expõe MCP próprio e embeddings via gateway. Impedimento: ambiente Python pesado e Windows nativo não confirmado.",
+ "evidencias": [
+  {
+   "campo": "mcp",
+   "url": "https://neuml.github.io/txtai/api/",
+   "citacao": "The API also supports hosting OpenAI-compatible and Model Context Protocol (MCP) endpoints."
+  },
+  {
+   "campo": "licenca",
+   "url": "https://github.com/neuml/txtai",
+   "citacao": "open-source under an Apache 2.0 license"
+  },
+  {
+   "campo": "recursos",
+   "url": "https://github.com/neuml/txtai",
+   "citacao": "Python 3.11+ is supported."
+  },
+  {
+   "campo": "embeddings_endpoint",
+   "url": "https://neuml.github.io/txtai/embeddings/configuration/vectors/",
+   "citacao": "Builds embeddings using a LiteLLM model."
+  },
+  {
+   "campo": "embeddings_endpoint",
+   "url": "https://docs.litellm.ai/docs/embedding/supported_embedding",
+   "citacao": "model = \"openai/<your-llm-name>\" ... api_base=\"http://0.0.0.0:4000/\" # set API Base of your Custom OpenAI Endpoint"
+  },
+  {
+   "campo": "windows",
+   "url": "https://neuml.github.io/txtai/install/",
+   "citacao": "Optional dependencies require C++ Build Tools"
+  },
+  {
+   "campo": "ultimo_release",
+   "url": "https://pypi.org/pypi/txtai/json",
+   "citacao": "txtai 9.14.0"
+  }
+ ],
+ "nao_verificado": [
+  "Windows nativo (sem CI/wheel confirmado)",
+  "Markdown e frontmatter",
+  "atualização automática do índice",
+  "RAM/disco",
+  "repasse de api_base do txtai ao LiteLLM"
+ ]
+}

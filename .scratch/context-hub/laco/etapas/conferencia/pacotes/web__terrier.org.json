@@ -1,0 +1,62 @@
+{
+ "chave": "web:terrier.org",
+ "nomes": [
+  "Terrier",
+  "Terrier IR Platform"
+ ],
+ "urls": [
+  "http://terrier.org/",
+  "https://terrier.org/",
+  "https://ir.dcs.gla.ac.uk/terrier/",
+  "https://terrier.org"
+ ],
+ "readme_cortado": false,
+ "readme": "[Terrier IR Platform - Homepage]\n\nWelcome to the Terrier IR Platform\n\nTerrier is a highly flexible, efficient, and effective open source search engine, readily deployable on large-scale collections of documents. Terrier implements state-of-the-art indexing and retrieval functionalities, and provides an ideal platform for the rapid development and evaluation of large-scale retrieval applications. \n\nTerrier is open source, and is a comprehensive, flexible and transparent platform for research and experimentation in \ntext retrieval. \nResearch \ncan \neasily be carried out on standard TREC and CLEF test collections. \n\nTerrier is written in Java, and is developed by the Information Retrieval Group within the School of Computing Science at the University of Glasgow.\n\nDownload\n\nTerrier - v5.5\n20-05-2021\n\nOther download options\n\nFeature Overview\n\nEfficient\n\n Terrier can index large corpora of documents, and provides multiple\nindexing strategies, such as multi-pass and large-scale single-pass indexing. Real-time indexing of document streams are also supported via updatable index structures.\n\nEffective\n\n State-of-the-art retrieval approaches are provided, such as Divergence From Randomness, BM25F, as well as term dependence proximity models. Support for supervised ranking models via Learning to Rank is also built-in.\n\nFlexible\n\nTerrier is ideal for performing information retrieval experiments. It can index and perform batch retrieval experiments for all known TREC test collections. Tools to evaluate experiments results are also included.\n\nMulti-lingual\n\nTerrier uses UTF internally, and can support corporas written in languages other than English.\n\nExtensible\n\nTerrier follows a plugin architecture, and is easy to extend to develop new retrieval techniques, add new ranking features or experiment with low-level functionality such as index compression.\n\nInteractive\n\nView search results in a handy desktop search application, online using JSP web interfaces or using the provided website search application. Plan and execute experiments in notebooks using Terrier-Spark.\n\n Tweets by TerrierTeam \n\nEngage\n\nLearn More\n\nTerrier has extensive documentation about indexing and retrieval, as well as about running experiments using TREC test collections.\n\nAsk\n\nGot an issue or question, search our issues and pull requests. Did you not find an answer? Open a new issue!\n\nContribute\n\nFound a bug, or want to improve Terrier? You can contribute by forking and sending a pull request on Github.\n\nCopyright © 2021 University of Glasgow | All Rights Reserved",
+ "fonte": "site",
+ "respostas": [
+  {
+   "por": "north-mini-code",
+   "resposta": {
+    "serve": "search",
+    "role": "Provides indexing and retrieval for the hub's search layer",
+    "place": [
+     "network_service",
+     "library"
+    ],
+    "mechanism": [
+     "bm25"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "unknown",
+    "doubt": false,
+    "evidence": "Terrier is a highly flexible, efficient, and effective open source search engine, readily deployable on large-scale collections of documents."
+   }
+  },
+  {
+   "por": "mistral-code-fim",
+   "resposta": {
+    "serve": "search",
+    "role": "search engine for large document collections",
+    "place": [
+     "disk",
+     "network_service"
+    ],
+    "mechanism": [
+     "bm25",
+     "full_text",
+     "other"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "yes",
+    "license": "unknown",
+    "maturity": "stable",
+    "doubt": false,
+    "evidence": "Terrier is a search engine, supports UTF and BM25, and can be deployed on large-scale collections."
+   }
+  }
+ ]
+}

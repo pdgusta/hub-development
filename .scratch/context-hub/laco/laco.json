@@ -1,0 +1,330 @@
+{
+ "formato": 1,
+ "id": "pesquisa-ampla",
+ "titulo": "Pesquisa ampla: lugares e mecanismos de busca",
+ "ticket": "50",
+ "execucao": {
+  "id": "ampla-2026-10-13",
+  "inicio": "2026-10-13T11:22:00-03:00",
+  "terminou_em": "2026-10-13T15:13:09-03:00"
+ },
+ "nos": [
+  {
+   "id": "plano",
+   "titulo": "Plano",
+   "papel": "etapa",
+   "detalhe": "98 células da onda 1: 7 ângulos, 7 línguas, 2 formulações"
+  },
+  {
+   "id": "despachante",
+   "titulo": "Despachante",
+   "papel": "etapa",
+   "detalhe": "tabela de modelos do gateway a cada 60 s"
+  },
+  {
+   "id": "geradores",
+   "titulo": "Geradores",
+   "papel": "etapa",
+   "detalhe": "grupos pt-es, en-de-ru e zh-ja"
+  },
+  {
+   "id": "juntador",
+   "titulo": "Juntador",
+   "papel": "etapa",
+   "detalhe": "fecha a onda, junta o catálogo, cria a bola de neve"
+  },
+  {
+   "id": "ambiguos",
+   "titulo": "Ambíguos",
+   "papel": "fora-dos-scripts",
+   "detalhe": "o recruta Tear (Sonnet 5.5) decidiu juntar, separar ou quarentena, em catalogo/decisoes.jsonl"
+  },
+  {
+   "id": "parada",
+   "titulo": "Parada",
+   "papel": "decisao",
+   "detalhe": "parou depois da onda 5, por decisão do Gustavo; a regra do gate não chegou a valer"
+  },
+  {
+   "id": "teto",
+   "titulo": "Teto",
+   "papel": "controle",
+   "detalhe": "tentativas ou horas, o que vier antes"
+  },
+  {
+   "id": "mare",
+   "titulo": "Maré de novos",
+   "papel": "observador",
+   "detalhe": "a curva de novos por onda",
+   "carta": "painel-mare"
+  },
+  {
+   "id": "chat",
+   "titulo": "Estado no chat",
+   "papel": "observador",
+   "detalhe": "o estado no chat a cada 10 min; na partida, recrutas Bússola, Faísca, Brasa e Centelha acompanharam os processos e foram dispensados"
+  },
+  {
+   "id": "conferencia",
+   "titulo": "Conferência",
+   "papel": "fora-dos-scripts",
+   "detalhe": "conferidor sobre os mais citados e as sementes"
+  },
+  {
+   "id": "auditoria",
+   "titulo": "Auditoria",
+   "papel": "fora-dos-scripts",
+   "detalhe": "auditoria por amostra"
+  },
+  {
+   "id": "sintese",
+   "titulo": "Síntese",
+   "papel": "fora-dos-scripts",
+   "detalhe": "a síntese do maestro",
+   "carta": "painel-sintese"
+  }
+ ],
+ "ligacoes": [
+  {
+   "de": "plano",
+   "para": "geradores",
+   "palavra": "células",
+   "tipo": "segue"
+  },
+  {
+   "de": "despachante",
+   "para": "geradores",
+   "palavra": "modelos",
+   "tipo": "segue"
+  },
+  {
+   "de": "geradores",
+   "para": "juntador",
+   "palavra": "respostas",
+   "tipo": "segue"
+  },
+  {
+   "de": "juntador",
+   "para": "ambiguos",
+   "palavra": "ambíguos",
+   "tipo": "segue"
+  },
+  {
+   "de": "ambiguos",
+   "para": "juntador",
+   "palavra": "decisões",
+   "tipo": "segue"
+  },
+  {
+   "de": "juntador",
+   "para": "parada",
+   "palavra": "taxa",
+   "tipo": "segue"
+  },
+  {
+   "de": "parada",
+   "para": "geradores",
+   "palavra": "repete",
+   "tipo": "repete"
+  },
+  {
+   "de": "parada",
+   "para": "conferencia",
+   "palavra": "fim",
+   "tipo": "segue"
+  },
+  {
+   "de": "conferencia",
+   "para": "auditoria",
+   "palavra": "amostra",
+   "tipo": "segue"
+  },
+  {
+   "de": "auditoria",
+   "para": "sintese",
+   "palavra": "síntese",
+   "tipo": "segue"
+  },
+  {
+   "de": "teto",
+   "para": "despachante",
+   "palavra": "limita",
+   "tipo": "condiciona"
+  },
+  {
+   "de": "mare",
+   "para": "juntador",
+   "palavra": "observa",
+   "tipo": "observa"
+  },
+  {
+   "de": "chat",
+   "para": "geradores",
+   "palavra": "observa",
+   "tipo": "observa"
+  }
+ ],
+ "controles": [
+  {
+   "id": "gate_novos",
+   "no": "parada",
+   "rotulo": "novos por onda abaixo de",
+   "tipo": "numero",
+   "faixa": [
+    0.01,
+    0.5
+   ],
+   "escala": "porcento",
+   "unidade": "de novos",
+   "quando_vale": "proxima-onda",
+   "releitura": "ao-ligar",
+   "configurado": {
+    "arquivo": "config.json",
+    "campo": "gate_novos"
+   }
+  },
+  {
+   "id": "teto-tentativas",
+   "no": "teto",
+   "rotulo": "tentativas, no máximo",
+   "tipo": "inteiro",
+   "faixa": [
+    100,
+    20000
+   ],
+   "unidade": "tentativas",
+   "aceita_nulo": true,
+   "nulo": "sem limite",
+   "quando_vale": "agora",
+   "releitura": "continua",
+   "configurado": {
+    "declarado": 20000
+   }
+  },
+  {
+   "id": "teto-horas",
+   "no": "teto",
+   "rotulo": "horas, no máximo",
+   "tipo": "duracao",
+   "unidade": "h",
+   "faixa": [
+    0.5,
+    12
+   ],
+   "aceita_nulo": true,
+   "nulo": "sem limite",
+   "quando_vale": "agora",
+   "releitura": "continua",
+   "configurado": {
+    "declarado": 6
+   }
+  },
+  {
+   "id": "trabalhadores_por_gerador",
+   "no": "geradores",
+   "rotulo": "trabalhadores por gerador",
+   "tipo": "inteiro",
+   "faixa": [
+    1,
+    40
+   ],
+   "unidade": "trabalhadores",
+   "quando_vale": "ao-reiniciar",
+   "releitura": "ao-ligar",
+   "configurado": {
+    "declarado": 20
+   }
+  },
+  {
+   "id": "excluir_manual",
+   "no": "despachante",
+   "rotulo": "modelos que não recebem pedidos",
+   "tipo": "lista",
+   "itens": {
+    "max": 500,
+    "comprimento": 200
+   },
+   "quando_vale": "ao-reiniciar",
+   "releitura": "ao-ligar",
+   "configurado": {
+    "arquivo": "config.json",
+    "campo": "excluir_manual"
+   }
+  }
+ ],
+ "capacidades": [
+  {
+   "id": "parar-apos-onda"
+  },
+  {
+   "id": "parar-de-despachar"
+  }
+ ],
+ "contadores": [
+  {
+   "id": "tentativas",
+   "no": "teto",
+   "rotulo": "tentativas",
+   "tipo": "inteiro",
+   "origem": {
+    "arquivo": "estado/laco_final.json",
+    "campo": "tentativas"
+   }
+  },
+  {
+   "id": "itens",
+   "no": "juntador",
+   "rotulo": "itens no catálogo",
+   "tipo": "inteiro",
+   "origem": {
+    "arquivo": "estado/laco_final.json",
+    "campo": "itens"
+   }
+  },
+  {
+   "id": "curva",
+   "no": "parada",
+   "rotulo": "novos por onda",
+   "tipo": "serie",
+   "campos": [
+    "onda",
+    "novos",
+    "taxa_novos"
+   ],
+   "origem": {
+    "arquivo": "estado/laco_final.json",
+    "campo": "ondas"
+   }
+  },
+  {
+   "id": "modelos",
+   "no": "despachante",
+   "rotulo": "modelos usados",
+   "tipo": "inteiro",
+   "origem": {
+    "arquivo": "estado/laco_final.json",
+    "campo": "modelos_usados"
+   }
+  }
+ ],
+ "sinal": {
+  "fontes": [
+   {
+    "arquivo": "estado/laco_final.json",
+    "campo": "terminou_em",
+    "formato": "iso"
+   }
+  ],
+  "sem_sinal_apos_s": 300
+ },
+ "parado": {
+  "sqlite": "estado/laco.db",
+  "tabela": "controle",
+  "onde": {
+   "chave": "parar"
+  },
+  "coluna": "valor",
+  "json": true,
+  "ausente": false
+ }
+}

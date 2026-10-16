@@ -1,0 +1,35 @@
+{
+ "chave": "web:huggingface.co/intfloat/e5-small-v2",
+ "nomes": [
+  "E5-small-v2",
+  "intfloat/e5-small-v2"
+ ],
+ "urls": [
+  "https://huggingface.co/intfloat/e5-small-v2"
+ ],
+ "readme_cortado": false,
+ "readme": "[intfloat/e5-small-v2 · Hugging Facegoogle-tensorflow]\n\nE5-small-v2\n\nText Embeddings by Weakly-Supervised Contrastive Pre-training.\nLiang Wang, Nan Yang, Xiaolong Huang, Binxing Jiao, Linjun Yang, Daxin Jiang, Rangan Majumder, Furu Wei, arXiv 2022\n\nThis model has 12 layers and the embedding size is 384.\n\n Usage\n\nBelow is an example to encode queries and passages from the MS-MARCO passage ranking dataset.\n\nimport torch.nn.functional as F\n\nfrom torch import Tensor\nfrom transformers import AutoTokenizer, AutoModel\n\ndef average_pool(last_hidden_states: Tensor,\n attention_mask: Tensor) -> Tensor:\n last_hidden = last_hidden_states.masked_fill(~attention_mask[..., None].bool(), 0.0)\n return last_hidden.sum(dim=1) / attention_mask.sum(dim=1)[..., None]\n\n# Each input text should start with \"query: \" or \"passage: \".\n# For tasks other than retrieval, you can simply use the \"query: \" prefix.\ninput_texts = ['query: how much protein should a female eat',\n 'query: summit define',\n \"passage: As a general guideline, the CDC's average requirement of protein for women ages 19 to 70 is 46 grams per day. But, as you can see from this chart, you'll need to increase that if you're expecting or training for a marathon. Check out the chart below to see how much protein you should be eating each day.\",\n \"passage: Definition of summit for English Language Learners. : 1 the highest point of a mountain : the top of a mountain. : 2 the highest level. : 3 a meeting or series of meetings between the leaders of two or more governments.\"]\n\ntokenizer = AutoTokenizer.from_pretrained('intfloat/e5-small-v2')\nmodel = AutoModel.from_pretrained('intfloat/e5-small-v2')\n\n# Tokenize the input texts\nbatch_dict = tokenizer(input_texts, max_length=512, padding=True, truncation=True, return_tensors='pt')\n\noutputs = model(**batch_dict)\nembeddings = average_pool(outputs.last_hidden_state, batch_dict['attention_mask'])\n\n# normalize embeddings\nembeddings = F.normalize(embeddings, p=2, dim=1)\nscores = (embeddings[:2] @ embeddings[2:].T) * 100\nprint(scores.tolist())\n\n Training Details\n\nPlease refer to our paper at https://arxiv.org/pdf/2212.03533.pdf.\n\n Benchmark Evaluation\n\nCheck out unilm/e5 to reproduce evaluation results \non the BEIR and MTEB benchmark.\n\n Support for Sentence Transformers\n\nBelow is an example for usage with sentence_transformers.\n\nfrom sentence_transformers import SentenceTransformer\nmodel = SentenceTransformer('intfloat/e5-small-v2')\ninput_texts = [\n 'query: how much protein should a female eat',\n 'query: summit define',\n \"passage: As a general guideline, the CDC's average requirement of protein for women ages 19 to 70 is 46 grams per day. But, as you can see from this chart, you'll need to increase that if you're expecting or training for a marathon. Check out the chart below to see how much protein you should be eating each day.\",\n \"passage: Definition of summit for English Language Learners. : 1 the highest point of a mountain : the top of a mountain. : 2 the highest level. : 3 a meeting or series of meetings between the leaders of two or more governments.\"\n]\nembeddings = model.encode(input_texts, normalize_embeddings=True)\n\nPackage requirements\n\npip install sentence_transformers~=2.2.2\n\nContributors: michaelfeil\n\n FAQ\n\n1. Do I need to add the prefix \"query: \" and \"passage: \" to input texts?\n\nYes, this is how the model is trained, otherwise you will see a performance degradation.\n\nHere are some rules of thumb:\n\nUse \"query: \" and \"passage: \" correspondingly for asymmetric tasks such as passage retrieval in open QA, ad-hoc information retrieval.\n\nUse \"query: \" prefix for symmetric tasks such as semantic similarity, paraphrase retrieval.\n\nUse \"query: \" prefix if you want to use embeddings as features, such as linear probing classification, clustering.\n\n2. Why are my reproduced results slightly different from reported in the model card?\n\nDifferent versions of transformers and pytorch could cause negligible but non-zero performance differences.\n\n3. Why does the cosine similarity scores distribute around 0.7 to 1.0?\n\nThis is a known and expected behavior as we use a low temperature 0.01 for InfoNCE contrastive loss. \n\nFor text embedding tasks like text retrieval or semantic similarity, \nwhat matters is the relative order of the scores instead of the absolute values, \nso this should not be an issue.\n\n Citation\n\nIf you find our paper or models helpful, please consider cite as follows:\n\n@article{wang2022text,\n title={Text Embeddings by Weakly-Supervised Contrastive Pre-training},\n author={Wang, Liang and Yang, Nan and Huang, Xiaolong and Jiao, Binxing and Yang, Linjun and Jiang, Daxin and Majumder, Rangan and Wei, Furu},\n journal={arXiv preprint arXiv:2212.03533},\n year={2022}\n}\n\n Limitations\n\nThis model only works for English texts. Long texts will be truncated to at most 512 tokens.\n\nDownloads last month 871,434 \n\nSafetensors \n\nModel size \n33.4M params \n\nTensor type \nI64 \n·F32 \n· \n\nFiles info \n\n Model tree for intfloat/e5-small-v2 \n\nAdapters \n 3 models\n\nFinetunes \n 44 models\n\nQuantizations \n 15 models \n\n Spaces using intfloat/e5-small-v2 100 \n\n Collection including intfloat/e5-small-v2 \n\n 3 items • Updated Feb 17, 2025 \n\n Papers for intfloat/e5-small-v2 \n\n Paper • 2212.03533 • Published Dec 7, 2022 • 2 \n\n Paper • 2210.07316 • Published Oct 13, 2022 • 9 \n\n Paper • 2104.08663 • Published Apr 17, 2021 • 5 \n\n Evaluation results \n\naccuracy on MTEB AmazonCounterfactualClassification (en) test set self-reported \n\n77.597\n\nap on MTEB AmazonCounterfactualClassification (en) test set self-reported \n\n41.671\n\nf1 on MTEB AmazonCounterfactualClassification (en) test set self-reported \n\n71.865\n\naccuracy on MTEB AmazonPolarityClassification test set self-reported \n\n91.266\n\nap on MTEB AmazonPolarityClassification test set self-reported \n\n87.676\n\nf1 on MTEB AmazonPolarityClassification test set self-reported \n\n91.243\n\naccuracy on MTEB AmazonReviewsClassification (en) test set self-reported \n\n45.882\n\nf1 on MTEB AmazonReviewsClassification (en) test set self-reported \n\n45.081 \n\n Expand 982 evaluations",
+ "fonte": "site",
+ "respostas": [
+  {
+   "por": "claude-haiku-5-5",
+   "resposta": {
+    "serve": "search",
+    "role": "Embeddings densos para busca semântica, apenas em inglês",
+    "place": [
+     "library"
+    ],
+    "mechanism": [
+     "vector"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "no",
+    "license": "unknown",
+    "maturity": "unknown",
+    "doubt": false,
+    "evidence": "This model only works for English texts. Long texts will be truncated to at most 512 tokens."
+   }
+  }
+ ]
+}

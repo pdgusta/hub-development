@@ -1,0 +1,49 @@
+{
+ "nome": "SQLite",
+ "nome_canonico": "SQLite",
+ "chave": "web:sqlite.org/index.html",
+ "url": "https://www.sqlite.org/",
+ "serve": "stack",
+ "area": "storage_db",
+ "identidade": "ok",
+ "windows": "yes: binários nativos x64 oficiais (DLL e ferramentas), sem WSL.",
+ "mcp": "nao_aplicavel",
+ "portugues": "nao_aplicavel",
+ "markdown_frontmatter": "nao_aplicavel",
+ "atualizacao": "nao_aplicavel",
+ "embeddings_endpoint": "nao_aplicavel",
+ "recursos": "Biblioteca embutida; DLL de 1,38 MiB e ferramentas de 6,66 MiB (download oficial).",
+ "licenca": "nao_verificado na página de download (aponta para copyright.html)",
+ "ultimo_release": "3.54.0 (data não exibida na página de download)",
+ "atividade": "nao_verificado",
+ "maturidade": "stable",
+ "encaixe": "Índice derivado local (FTS/vetores via extensão carregável .dll) em cada máquina, ao lado do CouchDB, sem Docker. Impedimento: não replica; é só índice reconstruível; carregar extensões exige habilitar.",
+ "evidencias": [
+  {
+   "campo": "windows",
+   "url": "https://www.sqlite.org/download.html",
+   "citacao": "sqlite-dll-win-x64-3540000.zip (1.38 MiB) DLL for Windows x64, SQLite version 3.54.0."
+  },
+  {
+   "campo": "ultimo_release",
+   "url": "https://www.sqlite.org/download.html",
+   "citacao": "Complete canonical source tree for SQLite version 3.54.0"
+  },
+  {
+   "campo": "encaixe",
+   "url": "https://www.sqlite.org/loadext.html",
+   "citacao": "extension loading is turned off by default"
+  },
+  {
+   "campo": "encaixe",
+   "url": "https://www.sqlite.org/loadext.html",
+   "citacao": "Windows uses '.dll'"
+  }
+ ],
+ "nao_verificado": [
+  "licenca",
+  "data do release",
+  "atividade",
+  "FTS5 incluído nos binários"
+ ]
+}

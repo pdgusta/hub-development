@@ -1,0 +1,33 @@
+{
+ "chave": "gh:seanmonstar/warp",
+ "urls": [
+  "https://github.com/seanmonstar/warp",
+  "https://crates.io/crates/warp"
+ ],
+ "tipos": [
+  "library"
+ ],
+ "termos": [
+  "web framework",
+  "rust",
+  "filter",
+  "warp",
+  "Filter"
+ ],
+ "mencoes": 2,
+ "familias": [
+  "nemotron"
+ ],
+ "primeira_onda": 5,
+ "nomes": [
+  "warp"
+ ],
+ "resumos": [
+  "Composable, lightweight Rust web framework ideal for crafting custom search endpoints.",
+  "Lightweight, composable web framework for Rust that can also serve as an MCP endpoint with minimal boilerplate."
+ ],
+ "readme_status": "ok",
+ "readme_nome": "README.md",
+ "readme_cortado": false,
+ "readme": "# warp\n\n[![crates.io](https://img.shields.io/crates/v/warp.svg)](https://crates.io/crates/warp)\n[![Released API docs](https://docs.rs/warp/badge.svg)](https://docs.rs/warp)\n[![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)\n[![GHA Build Status](https://github.com/seanmonstar/warp/workflows/CI/badge.svg)](https://github.com/seanmonstar/warp/actions?query=workflow%3ACI)\n[![Discord chat][discord-badge]][discord-url]\n\nA super-easy, composable, web server framework for warp speeds.\n\nThe fundamental building block of `warp` is the `Filter`: they can be combined\nand composed to express rich requirements on requests.\n\nThanks to its `Filter` system, warp provides these out of the box:\n\n* Path routing and parameter extraction\n* Header requirements and extraction\n* Query string deserialization\n* JSON and Form bodies\n* Multipart form data\n* Static Files and Directories\n* Websockets\n* Access logging\n* Gzip, Deflate, and Brotli compression\n\nSince it builds on top of [hyper](https://hyper.rs), you automatically get:\n\n- HTTP/1\n- HTTP/2\n- Asynchronous\n- One of the fastest HTTP implementations\n- Tested and **correct**\n\n## Example\n\nAdd warp and Tokio to your dependencies:\n\n```toml\ntokio = { version = \"1\", features = [\"full\"] }\nwarp = { version = \"0.4\", features = [\"server\"] }\n```\n\nAnd then get started in your `main.rs`:\n\n```rust\nuse warp::Filter;\n\n#[tokio::main]\nasync fn main() {\n    // GET /hello/warp => 200 OK with body \"Hello, warp!\"\n    let hello = warp::path!(\"hello\" / String)\n        .map(|name| format!(\"Hello, {}!\", name));\n\n    warp::serve(hello)\n        .run(([127, 0, 0, 1], 3030))\n        .await;\n}\n```\n\nFor more information you can check the [docs](https://docs.rs/warp) or the [examples](https://github.com/seanmonstar/warp/tree/master/examples).\n\n[discord-badge]: https://img.shields.io/discord/500028886025895936.svg?logo=discord\n[discord-url]: https://discord.gg/RFsPjyt\n"
+}

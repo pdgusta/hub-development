@@ -1,0 +1,191 @@
+Docs
+
+ /
+
+ Deploy and manage
+
+ /
+
+ Deploy
+
+ /
+
+ Self-managed cluster
+
+Install Elasticsearch
+
+This section includes information on how to set up Elasticsearch and get it running, including:
+
+Configuring your system to support Elasticsearch, and the bootstrap checks that are run at startup to verify these configurations
+
+Downloading, installing, and starting Elasticsearch using each supported installation method
+
+To quickly set up Elasticsearch and Kibana in Docker for local development or testing, jump to Install Elasticsearch locally (quickstart).
+
+ Simplify the deployment process
+
+Self-managed clusters are useful for local development, and for exploring Elasticsearch features. However, Elastic offers several deployment options that can simplify the process of deploying and managing multi-node deployments, especially in production. They also allow you to deploy and manage multiple deployments from a single surface.
+
+Managed by Elastic:
+
+Elastic Cloud Serverless
+
+Elastic Cloud Hosted
+
+Self-hosted options:
+
+Elastic Cloud on Kubernetes
+
+Elastic Cloud Enterprise
+
+For a comparison of these deployment options, refer to Choosing your deployment type and Detailed deployment comparison.
+
+Installation methods
+
+If you want to install and manage Elasticsearch yourself, you can:
+
+Run Elasticsearch using a Linux, MacOS, or Windows install package.
+
+Run Elasticsearch in a Docker container.
+
+ Tip
+
+To try out Elastic Stack on your own machine, we recommend using Docker and running both Elasticsearch and Kibana. For more information, see Install Elasticsearch locally (quickstart). This setup is not suitable for production use.
+
+ Use dedicated hosts
+
+In production, we recommend you run Elasticsearch on a dedicated host or as a primary service. Several Elasticsearch features, such as automatic JVM heap sizing, assume that Elasticsearch is the only resource-intensive application on the host or container. For example, you might run Metricbeat alongside Elasticsearch for cluster statistics, but a resource-heavy Logstash deployment should be on its own host.
+
+Elasticsearch install packages
+
+Elasticsearch is provided in the following package formats.
+
+Each linked guide provides the following details:
+
+Download and installation instructions
+
+Information on enrolling a newly installed node in an existing cluster
+
+Instructions on starting Elasticsearch manually and, if applicable, as a service or daemon
+
+Instructions on connecting clients to your new cluster
+
+Archive or package contents information
+
+Security certificate and key information
+
+Special considerations such as firewalls and proxy servers are not covered.
+
+Before you start, make sure that you configure your system.
+
+Format
+Description
+Instructions
+
+Linux and MacOS tar.gz archives
+The tar.gz archives are available for installation on any Linux distribution and MacOS.
+Install Elasticsearch from archive on Linux or MacOS
+
+Windows .zip archive
+The zip archive is suitable for installation on Windows.
+Install Elasticsearch with .zip on Windows
+
+deb
+The deb package is suitable for Debian, Ubuntu, and other Debian-based systems. Debian packages can be downloaded from the Elasticsearch website or from our Debian repository.
+Install Elasticsearch with Debian Package
+
+rpm
+The rpm package is suitable for installation on Red Hat, Centos, SLES, OpenSuSE and other RPM-based systems. RPM packages can be downloaded from the Elasticsearch website or from our RPM repository.
+Install Elasticsearch with RPM
+
+Elasticsearch container images
+
+You can also run Elasticsearch inside a docker container image. Docker container images may be downloaded from the Elastic Docker Registry.
+
+You can use Docker Compose to deploy multiple nodes at once.
+
+Install Elasticsearch with Docker
+
+Version compatibility
+
+When installing the Elastic Stack, you must use the same version across the entire stack. For example, if you are using Elasticsearch 9.5.5, you install Beats 9.5.5, APM Server 9.5.5, Elasticsearch Hadoop 9.5.5, Kibana 9.5.5, and Logstash 9.5.5.
+
+If you’re upgrading an existing installation, see Upgrade your deployment, cluster, or orchestrator for information about how to ensure compatibility with 9.5.5.
+
+Installation order
+
+If you're deploying the Elastic Stack in a self-managed cluster, then install the Elastic Stack products you want to use in the following order:
+
+Elasticsearch
+
+Kibana
+
+Logstash
+
+Elastic Agent or Beats
+
+APM
+
+Elasticsearch Hadoop
+
+Installing in this order ensures that the components each product depends on are in place.
+
+ Tip
+
+If you're deploying a production environment and you plan to use trusted CA-signed certificates for Elasticsearch, then you should do so before you deploy Fleet and Elastic Agent. If new security certificates are configured, any Elastic Agents need to be reinstalled, so we recommend that you set up Fleet and Elastic Agent with the appropriate certificates in place.
+
+Required ports
+
+This table shows the ports that must be accessible in order to operate an Elasticsearch cluster. The Elasticsearch REST and Kibana interfaces must be open to external users in order for the cluster to be usable. The transport API must be accessible between Elasticsearch nodes in the cluster, and to any external clients using the transport API.
+
+By default, Elasticsearch will try to listen to the first port in the specified range. If the port is taken, it will try the next one.
+
+These settings can be overridden in the relevant configuration file.
+
+Port
+Access type
+Purpose
+Setting
+
+9200 and onwards
+HTTP (REST)
+REST API for Elasticsearch. This is the primary interface used for access to the cluster from external sources, including Kibana and Logstash.
+Elasticsearch http.port
+
+9300 and onwards
+TCP
+Transport API. Used for intra-cluster communications and client access via the transport API (Java client).
+Elasticsearch transport.port
+
+5601
+HTTP
+Kibana default access port.
+Kibana server.port
+
+Additional ports might be required for optional Elastic Stack components. Refer to the installation guide for the component that you want to install.
+
+Supported operating systems and JVMs
+
+The matrix of officially supported operating systems and JVMs is available in the Elastic Support Matrix. Elasticsearch is tested on the listed platforms, but it is possible that it will work on other platforms too.
+
+Java (JVM) Version
+
+Elasticsearch is built using Java, and includes a bundled version of OpenJDK within each distribution. We strongly recommend using the bundled JVM in all installations of Elasticsearch.
+
+The bundled JVM is treated the same as any other dependency of Elasticsearch in terms of support and maintenance. This means that Elastic takes responsibility for keeping it up to date, and reacts to security issues and bug reports as needed to address vulnerabilities and other bugs in Elasticsearch. Elastic's support of the bundled JVM is subject to Elastic's support policy and end-of-life schedule and is independent of the support policy and end-of-life schedule offered by the original supplier of the JVM. Elastic does not support using the bundled JVM for purposes other than running Elasticsearch.
+
+ Tip
+
+Elasticsearch uses only a subset of the features offered by the JVM. Bugs and security issues in the bundled JVM often relate to features that Elasticsearch does not use. Such issues do not apply to Elasticsearch. Elastic analyzes reports of security vulnerabilities in all its dependencies, including in the bundled JVM, and will issue an Elastic Security Advisory if such an advisory is needed.
+
+If you decide to run Elasticsearch using a version of Java that is different from the bundled one, prefer to use the latest release of a LTS version of Java which is listed in the support matrix. Although such a configuration is supported, if you encounter a security issue or other bug in your chosen JVM then Elastic may not be able to help unless the issue is also present in the bundled JVM. Instead, you must seek assistance directly from the supplier of your chosen JVM. You must also take responsibility for reacting to security and bug announcements from the supplier of your chosen JVM. Elasticsearch may not perform optimally if using a JVM other than the bundled one. Elasticsearch is closely coupled to certain OpenJDK-specific features, so it may not work correctly with JVMs that are not OpenJDK. Elasticsearch will refuse to start if you attempt to use a known-bad JVM version.
+
+To use your own version of Java, set the ES_JAVA_HOME environment variable to the path to your own JVM installation. The bundled JVM is located within the jdk subdirectory of the Elasticsearch home directory. You may remove this directory if using your own JVM.
+
+ Warning
+
+Don't use third-party Java agents that attach to the JVM. Such agents can be harmful to Elasticsearch stability and performance. In some cases they may cause nodes to freeze, crash, or fail to start up, or to lose or corrupt your data.
+
+Third-party dependencies
+
+Refer to Elastic Stack third-party dependencies for the complete list of dependencies.

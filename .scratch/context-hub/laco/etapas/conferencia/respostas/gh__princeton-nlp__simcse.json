@@ -1,0 +1,34 @@
+{
+ "chave": "gh:princeton-nlp/simcse",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T12:00:00Z",
+ "resultado": "corrige",
+ "conferencia": {
+  "resultado": "corrige",
+  "final": {
+   "serve": "stack",
+   "role": "Research code and pretrained models for sentence embeddings (contrastive learning), with simple encode/similarity/search helper",
+   "place": [
+    "library"
+   ],
+   "mechanism": [
+    "embeddings",
+    "vector"
+   ],
+   "mcp": "no",
+   "windows": "unknown",
+   "portuguese": "unknown",
+   "license": "unknown",
+   "maturity": "unknown",
+   "doubt": false,
+   "evidence": "Provides sentence embedding tool: model.encode, model.similarity, build_index/search (faiss optional); models are bert/roberta English uncased variants."
+  },
+  "o_que_mudou": [
+   "serve: search/stack -> stack, embedding model library not a search layer",
+   "license: MIT -> unknown, not stated in README",
+   "portuguese: no -> unknown, README does not say",
+   "maturity: stable -> unknown, research code, not stated"
+  ],
+  "nota": "Academic English embedding models; not a ready search layer, little use for Portuguese notes."
+ }
+}

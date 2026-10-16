@@ -1,0 +1,84 @@
+{
+ "chave": "web:camel.apache.org/components/latest/nats-component.html",
+ "nomes": [
+  "Componente NATS do Apache Camel"
+ ],
+ "urls": [
+  "https://camel.apache.org/components/latest/nats-component.html"
+ ],
+ "readme_cortado": true,
+ "readme": "[Nats :: Apache Camel]\n\nCamel Components 4.22.x (LTS) \n User manual \n Camel Core \nCamel Components \n Next (Pre-release) \n 4.22.x (LTS) \n 4.18.x (LTS) \nCamel Spring Boot \n Next (Pre-release) \n 4.22.x (LTS) \n 4.18.x (LTS) \nCamel Quarkus \n Next (Pre-release) \n 3.40.x \n 3.33.x \nKamelet Catalog \n Next (Pre-release) \n 4.22.x \n 4.18.x (LTS) \nCamel K \n Next (Pre-release) \n 2.11.x \n 2.10.x \nCamel Kafka Connector \n Next (Pre-release) \nCamel Karaf \n 4.9.x \n\nCamel Components \nNats \n\nSince Camel 2.17 \n\nBoth producer and consumer are supported \n\nNATS is a fast and reliable messaging platform. \n\nMaven users will need to add the following dependency to their pom.xml for this component. \n\n<dependency>\n <groupId>org.apache.camel</groupId>\n <artifactId>camel-nats</artifactId>\n <!-- use the same version as your Camel core version -->\n <version>x.y.z</version>\n</dependency> \n\nURI format \n\nnats:topic[?options] \n\nWhere topic is the topic name \n\nConfiguring Options \n\nCamel components are configured on two separate levels: \n\ncomponent level \n\nendpoint level \n\nConfiguring Component Options \n\nAt the component level, you set general and shared configurations that are, then, inherited by the endpoints. It is the highest configuration level. \n\nFor example, a component may have security settings, credentials for authentication, urls for network connection and so forth. \n\nSome components only have a few options, and others may have many. Because components typically have pre-configured defaults that are commonly used, then you may often only need to configure a few options on a component; or none at all. \n\nYou can configure components using: \n\nthe Component DSL. \n\nin a configuration file (application.properties, *.yaml files, etc). \n\ndirectly in the Java code. \n\nConfiguring Endpoint Options \n\nYou usually spend more time setting up endpoints because they have many options. These options help you customize what you want the endpoint to do. The options are also categorized into whether the endpoint is used as a consumer (from), as a producer (to), or both. \n\nConfiguring endpoints is most often done directly in the endpoint URI as path and query parameters. You can also use the Endpoint DSL and DataFormat DSL as a type safe way of configuring endpoints and data formats in Java. \n\nA good practice when configuring options is to use Property Placeholders. \n\nProperty placeholders provide a few benefits: \n\nThey help prevent using hardcoded urls, port numbers, sensitive information, and other settings. \n\nThey allow externalizing the configuration from the code. \n\nThey help the code to become more flexible and reusable. \n\nThe following two sections list all the options, firstly for the component followed by the endpoint. \n\nComponent Options \n\nThe Nats component supports the following options which are listed below. \n\n Name Description Default Type \n\n configuration (common) \n\nTo use a shared configuration. \nNatsConfiguration \n\n connectionTimeout (common) \n\nTimeout for connection attempts. (in milliseconds). \n2000 \nint \n\n flushConnection (common) \n\nDefine if we want to flush connection when stopping or not. \ntrue \nboolean \n\n flushTimeout (common) \n\nSet the flush timeout (in milliseconds). \n1000 \nint \n\n jetstreamEnabled (common) \n\nSets whether to enable JetStream support for this endpoint. \nfalse \nboolean \n\n jetstreamName (common) \n\nSets the name of the JetStream stream to use. \nString \n\n maxPingsOut (common) \n\nmaximum number of pings have not received a response allowed by the client. \n2 \nint \n\n maxReconnectAttempts (common) \n\nMax reconnection attempts. \n60 \nint \n\n noEcho (common) \n\nTurn off echo. If supported by the gnatsd version you are connecting to this flag will prevent the server from echoing messages back to the connection if it has subscriptions on the subject being published to. \nfalse \nboolean \n\n noRandomizeServers (common) \n\nWhether or not randomizing the order of servers for the connection attempts. \nfalse \nboolean \n\n pedantic (common) \n\nWhether or not running in pedantic mode (this affects performance). \nfalse \nboolean \n\n pingInterval (common) \n\nPing interval to be aware if connection is still alive (in milliseconds). \n120000 \nint \n\n reconnect (common) \n\nWhether or not using reconnection feature. \ntrue \nboolean \n\n reconnectTimeWait (common) \n\nWaiting time before attempts reconnection (in milliseconds). \n2000 \nint \n\n requestCleanupInterval (common) \n\nInterval to clean up cancelled/timed out requests. \n5000 \nint \n\n servers (common) \n\nURLs to one or more NAT servers. Use comma to separate URLs when specifying multiple servers. \nString \n\n verbose (common) \n\nWhether or not running in verbose mode. \nfalse \nboolean \n\n ackPolicy (consumer) \n\nAcknowledgement mode. none = Messages are acknowledged as soon as the server sends them (danger: messages that Camel failed to process is also ack). Clients do not need to ack. all = All messages with a sequence number less than the message acked are also acknowledged. E.g. reading a batch of messages 1..100. Ack on message 100 will acknowledge 1..99 as well. explicit (default) = Each message is acknowledged individually by Camel after the message has been processed, this ensures the message is only ack if success and nack if processing failed due to an exception during routing. Message can be acked out of sequence and create gaps of unacknowledged messages in the consumer. \n\nEnum values: \n\nNone \n\nAll \n\nExplicit \nExplicit \nAckPolicy \n\n ackWait (consumer) \n\nAfter a message is delivered to a consumer, the server waits 30 seconds (default) for an acknowledgement. If none arrives (timeout), the message becomes eligible for redelivery. \n30000 \nlong \n\n bridgeErrorHandler (consumer) \n\nAllows for bridging the consumer to the Camel routing Error Handler, which mean any exceptions (if possible) occurred while the Camel consumer is trying to pickup incoming messages, or the likes, will now be processed as a message and handled by the routing Error Handler. Important: This is only possible if the 3rd party component allows Camel to be alerted if an exception was thrown. Some components handle this internally only, and therefore bridgeErrorHandler is not possible. In other situations we may improve the Camel component to hook into the 3rd party component and make this possible for future releases. By default the consumer will use the org.apache.camel.spi.ExceptionHandler to deal with exceptions, that will be logged at WARN or ERROR level and ignored. \nfalse \nboolean \n\n durableName (consumer) \n\nSets the name to assign to the JetStream durable consumer. Setting this value makes the consumer durable. The value is used to set the durable() field in the underlying NATS ConsumerConfiguration.Builder. \nString \n\n manualAck (consumer) \n\nWhether to allow doing manual acknowledgment via NatsManualAck. If this option is enabled then an instance of NatsManualAck is stored on the org.apache.camel.Exchange message header, which allows end users to access this API and perform manual ack/nak/term operations via the JetStream consumer. When enabled, the automatic acknowledgment on exchange completion is disabled. If the user does not call any ack method, the message remains unacknowledged and NATS will redeliver it after the ackWait timeout expires. This option is only applicable when JetStream is enabled (jetstreamEnabled=true). It has no effect when ackPolicy=None since the server acknowledges messages automatically on delivery. \nfalse \nboolean \n\n maxDeliver (consumer) \n\nMaximum number of attempts to deliver a message from Nats to a consumer. Once MaxDeliver is reached, the NATS server stops attempting to deliver that specific message. The message is not deleted, it remains in the stream but is simply skipped. It is recommended to set this option to a sensible value in case a message is poison and can not successfully be processed and would always keep failing. \nlong \n\n maxMessages (consumer) \n\nStop receiving messages from a topic we are subscribing to after maxMessages. \nString \n\n nackWait (consumer) \n\nFor negative acknowledgements (NAK), redelivery is delayed by 5 seconds (default). Setting this to 0 or negative makes the redelivery immediately. Be careful as this can cause the consumer to keep re-processing the same message over and over again due to intermediate error that last a while. \n5000 \nlong \n\n poolSize (consumer) \n\nConsumer thread pool size (default is 10). \n10 \nint \n\n pullBatchSize (consumer) \n\nMaximum number of messages to fetch per pull request when using a JetStream Pull Subscription. Only used when \\{code pullSubscription=true}. \n10 \nint \n\n pullFetchTimeout (consumer) \n\nMaximum time (in milliseconds) to wait for a batch of messages to be available on the server during a single fetch when using a JetStream Pull Subscription. Only used when \\{code pullSubscription=true}. \n1000 \nlong \n\n pullSubscription (consumer) \n\nSets the consumer subscription type for JetStream. Set to true to use a Pull Subscription (consumer explicitly requests messages). Set to false to use a Push Subscription (messages are automatically delivered). \ntrue \nboolean \n\n queueName (consumer) \n\nThe Queue name if we are using nats for a queue configuration. \nString \n\n replyToDisabled (consumer) \n\nCan be used to turn off sending back reply message in the consumer. \nfalse \nboolean \n\n consumerConfiguration (consumer (advanced)) \n\nSets a custom ConsumerConfiguration object for the JetStream consumer. This is an advanced option typically used when you need to configure properties not exposed as simple Camel URI parameters. When set, this object will be used to build the final consumer subscription options. \nConsumerConfiguration \n\n lazyStartProducer (producer) \n\nWhether the producer should be started lazy (on the first message). By starting lazy you can use this to allow CamelContext and routes to startup in situations where a producer may otherwise fail during starting and cause the route to fail being started. By deferring this startup to be lazy then the startup failure can be handled during routing messages via Camel’s routing error handlers. Beware that when the first message is processed then creating and starting the producer may take a little time and prolong the total processing time of the processing. \nfalse \nboolean \n\n replySubject (producer) \n\nthe subject to which subscribers should send response. \nString \n\n requestTimeout (producer) \n\nRequest timeout in milliseconds. \n20000 \nlong \n\n autowiredEnabled (advanced) \n\nWhether autowiring is enabled. This is used for automatic autowiring options (the option must be marked as autowired) by looking up in the registry to find if there is a single instance of matching type, which then gets configured on the component. This can be used for automatic configuring JDBC data sources, JMS connection factories, AWS Clients, etc. \ntrue \nboolean \n\n connection (advanced) \n\nReference an already instantiated connection to Nats server. \nConnection \n\n headerFilterStrategy (advanced) \n\nTo use a custom header filter strategy. \nHeaderFilterStrategy \n\n jetstreamAsync (advanced) \n\nSets whether to operate JetStream requests asynchronously. \ntrue \nboolean \n\n traceConnection (advanced) \n\nWhether or not connection trace messages should be printed to standard out for fine grained debugging of connection issues. \nfalse \nboolean \n\n credentialsFilePath (security) \n\nIf we use useCredentialsFile to true we’ll need to set the credentialsFilePath option. It can be loaded by default from classpath, but you can prefix with classpath:, file:, or http: to load the resource from different systems. \nString \n\n secure (security) \n\nSet secure option indicating TLS is required. \nfalse \nboolean \n\n sslContextParameters (security) \n\nTo configure security using SSLContextParameters. \nSSLContextParameters \n\n useGlobalSslContextParameters (security) \n\nEnable usage of global SSL context parameters. \nfalse \nboolean \n\nEndpoint Options \n\nThe Nats endpoint is configured using URI syntax: \n\nnats:topic \n\nWith the following path and query parameters",
+ "fonte": "site",
+ "respostas": [
+  {
+   "por": "gpt-oss-20b",
+   "resposta": {
+    "serve": "none",
+    "role": "",
+    "place": [
+     "library"
+    ],
+    "mechanism": [
+     "other"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "unknown",
+    "doubt": true,
+    "evidence": "Camel Components 4.22.x (LTS)"
+   }
+  },
+  {
+   "por": "llama-3.2-11b-vision-instruct",
+   "resposta": {
+    "serve": "none",
+    "role": "",
+    "place": [
+     "n/a"
+    ],
+    "mechanism": [
+     "n/a"
+    ],
+    "mcp": "unknown",
+    "windows": "yes",
+    "portuguese": "no",
+    "license": "unknown",
+    "maturity": "unknown",
+    "doubt": true,
+    "evidence": ""
+   }
+  }
+ ],
+ "conferencia_sonnet": {
+  "chave": "web:camel.apache.org/components/latest/nats-component.html",
+  "modelo": "claude-sonnet-5-5",
+  "ts": "2026-10-13T21:45:35Z",
+  "resultado": "rejeita",
+  "conferencia": {
+   "resultado": "rejeita",
+   "final": {
+    "serve": "none",
+    "role": "",
+    "place": [
+     "n/a"
+    ],
+    "mechanism": [
+     "n/a"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "unknown",
+    "doubt": false,
+    "evidence": "NATS is a fast and reliable messaging platform."
+   },
+   "o_que_mudou": [
+    "doubt: true -> false, Camel NATS connector is not useful to the hub"
+   ],
+   "nota": "Conector Java de mensageria NATS para Camel; irrelevante para busca e sincronização do hub."
+  }
+ }
+}

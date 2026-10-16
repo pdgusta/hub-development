@@ -1,0 +1,63 @@
+{
+ "chave": "gh:opensearch-project/k-nn",
+ "nomes": [
+  "Elasticsearch KNN Plugin",
+  "Elasticsearch k-NN plugin",
+  "Elasticsearch k-NN Plugin",
+  "Elasticsearch k‑NN Plugin",
+  "Elastic k‑NN plugin"
+ ],
+ "urls": [
+  "https://github.com/opensearch-project/k-NN",
+  "https://github.com/opendistro-for-elasticsearch/k-NN",
+  "https://www.elastic.co/guide/en/elasticsearch/plugins/current/knn.html",
+  "https://www.elastic.co/guide/en/elasticsearch/plugins/knn/current/knn.html",
+  "https://www.elastic.co/guide/en/elasticsearch/reference/current/knn-search.html",
+  "https://www.elastic.co/guide/en/elasticsearch/plugins/knn/knn.html"
+ ],
+ "readme_cortado": false,
+ "readme": "[![Build and Test k-NN](https://github.com/opensearch-project/k-NN/actions/workflows/CI.yml/badge.svg)](https://github.com/opensearch-project/k-NN/actions/workflows/CI.yml)\n[![codecov](https://codecov.io/gh/opensearch-project/k-NN/branch/main/graph/badge.svg?token=PYQO2GW39S)](https://codecov.io/gh/opensearch-project/k-NN)\n[![Documentation](https://img.shields.io/badge/doc-reference-blue)](https://opensearch.org/docs/search-plugins/knn/index/)\n[![Chat](https://img.shields.io/badge/chat-on%20forums-blue)](https://forum.opensearch.org/c/plugins/k-nn/48)\n![PRs welcome!](https://img.shields.io/badge/PRs-welcome!-success)\n\n# OpenSearch k-NN\n- [Welcome!](#welcome)\n- [Project Resources](#project-resources)\n- [Credits and  Acknowledgments](#credits-and-acknowledgments)\n- [Code of Conduct](#code-of-conduct)\n- [License](#license)\n- [Copyright](#copyright)\n\n## Welcome!\n\n**OpenSearch k-NN** enables you to run the nearest neighbor search on billions of documents across thousands of dimensions with the same ease as running any regular OpenSearch query. You can use aggregations and filter clauses to further refine your similarity search operations. k-NN similarity search powers use cases such as product recommendations, fraud detection, image and video search, related document search, and more.\n\n## Project Resources\n\n* [Project Website](https://opensearch.org/)\n* [Downloads](https://opensearch.org/downloads.html)\n* [Documentation](https://opensearch.org/docs/search-plugins/knn/index/)\n* Need help? Try the [Forum](https://forum.opensearch.org/c/plugins/k-nn/48)\n* [Project Principles](https://opensearch.org/#principles)\n* [Contributing to OpenSearch k-NN](CONTRIBUTING.md)\n* [Maintainer Responsibilities](MAINTAINERS.md)\n* [Release Management](RELEASING.md)\n* [Admin Responsibilities](ADMINS.md)\n* [Security](SECURITY.md)\n\n## Credits and Acknowledgments\n\nThis project uses two similarity search libraries to perform Approximate Nearest Neighbor Search: the Apache 2.0-licensed [Non-Metric Space Library](https://github.com/nmslib/nmslib/) and the MIT licensed [Faiss library](https://github.com/facebookresearch/faiss). Thank you to all who have contributed to those projects including Bilegsaikhan Naidan, Leonid Boytsov, Yury Malkov and David Novak for nmslib and Hervé Jégou, Matthijs Douze, Jeff Johnson and Lucas Hosseini for Faiss.\n\n## Code of Conduct\n\nThis project has adopted the [Amazon Open Source Code of Conduct](CODE_OF_CONDUCT.md). For more information see the [Code of Conduct FAQ](https://aws.github.io/code-of-conduct-faq), or contact [opensource-codeofconduct@amazon.com](mailto:opensource-codeofconduct@amazon.com) with any additional questions or comments.\n\n## License\n\nThis project is licensed under the [Apache v2.0 License](LICENSE.txt).\n\n## Copyright\n\nCopyright OpenSearch Contributors. See [NOTICE](NOTICE.txt) for details.\n",
+ "fonte": "readme",
+ "respostas": [
+  {
+   "por": "diffusiongemma-26b-a4b-it",
+   "resposta": {
+    "serve": "search",
+    "role": "provides nearest neighbor search for document vectors to support similarity search operations",
+    "place": [
+     "network_service"
+    ],
+    "mechanism": [
+     "vector"
+    ],
+    "mcp": "no",
+    "windows": "unknown",
+    "portuguese": "no",
+    "license": "Apache-2.0",
+    "maturity": "stable",
+    "doubt": true,
+    "evidence": "enables you to run the nearest neighbor search on billions of documents; related document search."
+   }
+  },
+  {
+   "por": "codestral-2508",
+   "resposta": {
+    "serve": "search",
+    "role": "nearest neighbor search for OpenSearch",
+    "place": [
+     "network_service"
+    ],
+    "mechanism": [
+     "vector"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "Apache-2.0",
+    "maturity": "beta",
+    "doubt": true,
+    "evidence": "enables nearest neighbor search on billions of documents; runs as a plugin for OpenSearch"
+   }
+  }
+ ]
+}

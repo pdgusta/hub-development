@@ -1,0 +1,163 @@
+{
+  "envio": "a97e9fe8-5f4a-4235-af13-d8819185c2fb",
+  "tipo": "resposta",
+  "enviada": "2026-10-15T08:31:39-03:00",
+  "alvo": {
+    "tipo": "rodada",
+    "id": "2026-10-15-laco-do-system-design-r1",
+    "titulo": "O laço do system design"
+  },
+  "ticket": "56",
+  "substitui": null,
+  "rodada": {
+    "id": "2026-10-15-laco-do-system-design-r1",
+    "base": "b31cedd963e5fd4ed05c26dc867699afe739c763080f62036574b5ce842a1819",
+    "titulo": "O laço do system design",
+    "ticket": "56",
+    "perguntas": [
+      {
+        "id": "etapas",
+        "titulo": "As etapas",
+        "tipo": "proposta",
+        "recomendada": [],
+        "opcoes": [],
+        "proposta": {
+          "colunas": [
+            "etapa",
+            "o que faz",
+            "quem",
+            "sai daqui"
+          ],
+          "linhas": [
+            {
+              "id": "video",
+              "etapa": "1. Absorver o vídeo",
+              "o que faz": "legenda ou transcrição; lista das skills e técnicas citadas; leitura da fonte primária de cada uma; o que serve ao Designer e o que não serve",
+              "quem": "Designer (transcrição pelo FreeLLMAPI)",
+              "sai daqui": "relatório do vídeo e uma lista de mudanças propostas para o Designer"
+            },
+            {
+              "id": "aval-video",
+              "etapa": "2. Espera você: as mudanças no Designer",
+              "o que faz": "você aceita, corta ou acrescenta mudanças da lista",
+              "quem": "você, numa rodada",
+              "sai daqui": "as mudanças aceitas, aplicadas antes de desenhar"
+            },
+            {
+              "id": "insumo",
+              "etapa": "3. Reunir o conteúdo",
+              "o que faz": "as peças do hub e as ligações entre elas, tiradas das decisões já fechadas no mapa, mais a régua acima",
+              "quem": "Designer",
+              "sai daqui": "uma lista do que entra no desenho, com o papel de cada peça"
+            },
+            {
+              "id": "conceitos",
+              "etapa": "4. Três conceitos diferentes",
+              "o que faz": "três formas de cidade de verdade diferentes entre si (não variações de cor), cada uma em esboço rápido",
+              "quem": "especialista em system design e diagramas",
+              "sai daqui": "três esboços com uma frase cada"
+            },
+            {
+              "id": "critica",
+              "etapa": "5. Crítica de UI e UX",
+              "o que faz": "cada esboço contra a régua: poluição visual, espaço disputado, disposição, separação lógica; nota e defeitos de cada um",
+              "quem": "especialista em UI e UX",
+              "sai daqui": "um parecer por esboço"
+            },
+            {
+              "id": "escolha",
+              "etapa": "6. Espera você: qual conceito",
+              "o que faz": "você escolhe um, mistura ou recusa todos (aí volta à etapa 4)",
+              "quem": "você, numa carta no portal",
+              "sai daqui": "o conceito escolhido"
+            },
+            {
+              "id": "construir",
+              "etapa": "7. Construir e revisar",
+              "o que faz": "o especialista em diagramas constrói; o de UI e UX revisa sobre capturas reais da tela; o Prumo revisa o código; repete até o de UI e UX aprovar",
+              "quem": "os dois especialistas e o Prumo",
+              "sai daqui": "o system design novo, numa página à parte"
+            },
+            {
+              "id": "entrega",
+              "etapa": "8. Espera você: aprovar",
+              "o que faz": "você aprova ou recusa; só com o aprovado o system-design.html é trocado",
+              "quem": "você, numa carta no portal",
+              "sai daqui": "o system design novo no lugar do antigo"
+            }
+          ],
+          "pode": [
+            "editar",
+            "remover",
+            "adicionar"
+          ]
+        }
+      },
+      {
+        "id": "especialistas",
+        "titulo": "Quem são os dois especialistas",
+        "tipo": "escolha",
+        "recomendada": [
+          "A"
+        ],
+        "opcoes": [
+          {
+            "chave": "A",
+            "texto": "Dois recrutas novos, cada um com papel próprio no acervo do maestro (\"Especialista em diagramas de system design\" e \"Especialista em UI e UX\"), Claude Opus 5.5 com esforço alto; o Designer coordena. Ficam disponíveis para outros visuais depois"
+          },
+          {
+            "chave": "B",
+            "texto": "Dois subagentes do Designer, que somem ao fim do laço: mais barato, mas sem papel que fique no acervo"
+          },
+          {
+            "chave": "C",
+            "texto": "Como a A, mas o de UI e UX roda no Codex (GPT 6.1 Sol), para a crítica vir de outro modelo"
+          }
+        ],
+        "proposta": null
+      },
+      {
+        "id": "teto",
+        "titulo": "Quantas voltas na etapa 7",
+        "tipo": "escolha",
+        "recomendada": [
+          "A"
+        ],
+        "opcoes": [
+          {
+            "chave": "A",
+            "texto": "Até 3 voltas de construir e revisar; se o de UI e UX não aprovar na terceira, para e espera você. Estimativa: uns 600 mil tokens do Claude no laço inteiro (etapas 1 a 8)"
+          },
+          {
+            "chave": "B",
+            "texto": "Até 5 voltas, uns 900 mil tokens"
+          },
+          {
+            "chave": "C",
+            "texto": "Sem teto: só para quando o de UI e UX aprovar"
+          }
+        ],
+        "proposta": null
+      },
+      {
+        "id": "algo-mais",
+        "titulo": "Algo mais?",
+        "tipo": "texto",
+        "recomendada": [],
+        "opcoes": [],
+        "proposta": null
+      }
+    ]
+  },
+  "corpo_hash": "eb2086945a6af1c27f4de11155544a18814a65cac93a45896923f57da8790867",
+  "corpo": {
+    "tipo": "resposta",
+    "rodada": "2026-10-15-laco-do-system-design-r1",
+    "base": "b31cedd963e5fd4ed05c26dc867699afe739c763080f62036574b5ce842a1819",
+    "respostas": {
+      "algo-mais": {
+        "texto": "não quero essa proposta aqui, quero que a proposta ja esteja na página de laços"
+      }
+    }
+  }
+}

@@ -1,0 +1,776 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>O plano de construção</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,600;0,6..96,800;1,6..96,500;1,6..96,700&family=Jost:wght@400;500;600;700&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --linho:#efe6d4; --linho2:#e6dbc5; --papel:#fbf7ee; --tinta:#2a2420; --tinta2:#5b4a3a; --suave:#8b7a64;
+  --fita:#f1cf63; --fita-borda:#c9a53b; --alf:#2f8a57; --vermelho:#b8322c;
+  --e1:#3346b8; --e2:#b8322c; --e3:#2f7a4c; --e4:#c98f00; --e6:#7a3a8c; --e9:#d0602a;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--linho);color:var(--tinta);font:16px/1.5 Jost,system-ui,sans-serif;
+  background-image:repeating-linear-gradient(0deg,rgba(80,60,30,.045) 0 1px,transparent 1px 4px),repeating-linear-gradient(90deg,rgba(80,60,30,.04) 0 1px,transparent 1px 4px)}
+.folha{max-width:1120px;margin:0 auto;padding:40px 28px 60px}
+h1,h2{font-family:"Bodoni Moda",serif;font-weight:800;letter-spacing:-.01em;margin:0}
+h1{font-size:64px;line-height:1}
+h1 em,h2 em{font-style:italic;font-weight:500;color:var(--vermelho)}
+.mono{font-family:"Courier Prime",monospace}
+/* capa */
+.capa{display:grid;grid-template-columns:1.25fr 1fr;gap:36px;align-items:center;padding:8px 0 26px}
+.etiq{display:inline-block;font:700 13px/1 "Courier Prime",monospace;letter-spacing:.08em;text-transform:uppercase;background:var(--papel);border:1.5px dashed var(--tinta2);padding:7px 11px;border-radius:3px;margin-bottom:18px}
+.sub{font-size:20px;color:var(--tinta2);margin:16px 0 0;max-width:34em}
+.legenda{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px 18px;margin-top:24px;padding:16px 18px;background:var(--papel);border-radius:6px;box-shadow:0 1px 0 rgba(0,0,0,.06);outline:1.5px dashed #c9b998;outline-offset:-7px}
+.legenda div{display:flex;gap:10px;align-items:center;font-size:14.5px}
+.legenda svg{flex:none}
+.capa-arte svg{width:100%;height:auto;display:block}
+.glossario{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 0;padding:0;list-style:none}
+.glossario li{font-size:13.5px;background:rgba(255,255,255,.55);border:1px solid #d7c8a8;border-radius:20px;padding:5px 12px}
+.glossario b{font-weight:600}
+/* peças (seções) */
+.peca{position:relative;background:var(--papel);border-radius:4px;margin:46px 0 0;padding:34px 34px 38px;box-shadow:0 2px 0 rgba(70,50,20,.08),0 12px 28px -18px rgba(70,50,20,.35)}
+.peca::before{content:"";position:absolute;inset:9px;border:1.6px dashed #cdbd9c;border-radius:3px;pointer-events:none}
+.peca::after{content:"";position:absolute;left:0;right:0;bottom:-9px;height:10px;
+  background:linear-gradient(135deg,var(--papel) 50%,transparent 50%) 0 0/14px 10px repeat-x,linear-gradient(225deg,var(--papel) 50%,transparent 50%) 0 0/14px 10px repeat-x}
+.cab{display:grid;grid-template-columns:70px 1fr;gap:18px;align-items:center;position:relative}
+.botao{width:64px;height:64px;border-radius:50%;background:var(--vermelho);color:#fff;display:grid;place-items:center;font:800 30px/1 "Bodoni Moda",serif;position:relative;box-shadow:inset 0 0 0 5px rgba(255,255,255,.18),0 2px 0 rgba(0,0,0,.18)}
+.botao::before,.botao::after{content:"";position:absolute;width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.55);top:11px;left:11px;box-shadow:37px 0 0 rgba(255,255,255,.55),0 37px 0 rgba(255,255,255,.55),37px 37px 0 rgba(255,255,255,.55)}
+.botao::after{display:none}
+.cab .q{font:700 12.5px/1 "Courier Prime",monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--suave);margin-bottom:6px}
+h2{font-size:36px;line-height:1.08}
+.problema{display:flex;gap:12px;align-items:flex-start;margin:22px 0 6px;font-size:16.5px;max-width:52em}
+.tag{flex:none;font:700 11.5px/1 "Courier Prime",monospace;letter-spacing:.08em;text-transform:uppercase;padding:6px 9px 5px;border-radius:3px;background:var(--tinta);color:var(--papel);margin-top:2px}
+.tag.ok{background:var(--alf)}
+.tag.alt{background:#fff;color:var(--tinta);border:1.5px solid var(--tinta)}
+/* tear */
+.moldura{width:100%;margin-top:18px}
+.cena{width:100%;height:auto;display:block}
+.cab-tear text{font:700 12px "Courier Prime",monospace;letter-spacing:.08em;text-transform:uppercase;fill:var(--suave)}
+.linha-cab{stroke:#d9caa9;stroke-width:1.2}
+.fita{fill:var(--fita);stroke:var(--fita-borda);stroke-width:1.2}
+.risco{stroke:#6b5420;stroke-width:1}
+.fita-num{font:800 22px "Bodoni Moda",serif;fill:var(--tinta)}
+.portao{fill:var(--papel);stroke:var(--alf);stroke-width:2}
+.portao-g{fill:none;stroke:var(--alf);stroke-width:1.6;stroke-linecap:round}
+.alf-check{fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.fio{stroke-width:3.4;stroke-linecap:round;fill:none}
+.torcao{stroke:#fff;stroke-opacity:.45;stroke-width:1.3;stroke-dasharray:1.5 5}
+.capa-fio{stroke:var(--papel);stroke-width:8}
+.alinhavo{stroke-width:2.6;stroke-dasharray:11 8;stroke-linecap:round;fill:none}
+.tecido{fill:#fffdf8;stroke:#d6c6a4;stroke-width:1.2;filter:drop-shadow(0 1.5px 0 rgba(90,70,30,.12))}
+.c0 .tecido{fill:#fdf1d8}
+.c11 .tecido{fill:#eef3e9}
+.pesponto{fill:none;stroke:#cdbb95;stroke-width:1.1;stroke-dasharray:4 3.5}
+.ic{color:var(--tinta)}
+.t{fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.p{fill:currentColor}
+.nome{font:600 18px Jost,sans-serif;fill:var(--tinta)}
+.faixa{font:400 12px "Courier Prime",monospace;fill:var(--suave)}
+.entrega{font:400 13px Jost,sans-serif;fill:var(--tinta2)}
+.no{stroke:#fff;stroke-width:2}
+.no-ex{fill:var(--papel);stroke-width:2.4;stroke-dasharray:3 2.4}
+.chip{fill:#fff;stroke-width:1.4}
+.chip-ex{fill:var(--papel);stroke-width:1.4;stroke-dasharray:4 3}
+.chip-todas{fill:var(--tinta)}
+.chip-todas + .chip-t{fill:#fff;font-weight:600}
+.chip-t{font:500 12.5px Jost,sans-serif;fill:var(--tinta)}
+.nota-ex{font:italic 600 12.5px "Bodoni Moda",serif;fill:var(--tinta2)}
+.usa-nada{font:italic 500 13.5px Jost,sans-serif;fill:var(--suave)}
+.nota-alinhavo path{fill:none;stroke:var(--tinta2);stroke-width:1.2}
+.nota-alinhavo text{font:italic 600 12.5px "Bodoni Moda",serif;fill:var(--tinta2)}
+.leia{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:22px}
+.leia div{font-size:14.5px;background:var(--linho);border-radius:4px;padding:12px 14px}
+.leia b{display:block;font-family:"Bodoni Moda",serif;font-size:17px;margin-bottom:2px}
+.duas{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:22px}
+.lado{border-radius:4px;padding:18px 20px;position:relative}
+.lado.com{background:#eaf3ec;border:1.6px solid var(--alf)}
+.lado.sem{background:#f6eee9;border:1.6px dashed #9b8f84}
+.lado h3{font:700 19px "Bodoni Moda",serif;margin:8px 0 8px}
+.lado p{margin:6px 0;font-size:15px}
+.lado ul{margin:6px 0;padding-left:20px;font-size:15px}
+.mini svg{width:100%;height:auto;display:block;margin:6px 0}
+.fato{font-size:13.5px;color:var(--tinta2);border-top:1px dashed #b9a98c;margin-top:10px;padding-top:8px}
+/* etapa 0 */
+.bacia{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:22px}
+.amostra{background:#fff;border:1.4px solid #d6c6a4;border-radius:3px;padding:18px 18px 16px;position:relative}
+.amostra::before{content:"";position:absolute;left:-1px;right:-1px;top:-8px;height:9px;
+  background:linear-gradient(45deg,#fff 50%,transparent 50%) 0 0/12px 9px repeat-x,linear-gradient(-45deg,#fff 50%,transparent 50%) 0 0/12px 9px repeat-x}
+.amostra .ic-a{width:44px;height:44px;color:var(--tinta)}
+.amostra h3{font:700 18px/1.2 "Bodoni Moda",serif;margin:8px 0 6px}
+.amostra .k{font:700 11.5px "Courier Prime",monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--suave);margin-top:10px}
+.amostra p{margin:3px 0;font-size:14.5px}
+.sel{display:inline-block;font:700 12px "Courier Prime",monospace;background:var(--fita);border:1px solid var(--fita-borda);border-radius:3px;padding:2px 6px;margin:3px 4px 0 0}
+.fita-mini .fm-num,.fila-fichas .fm-num{font:700 15px "Bodoni Moda",serif;fill:var(--tinta)}
+.fita-mini .feito{fill:#fff;opacity:.7}
+.xis-c{fill:var(--vermelho);stroke:#fff;stroke-width:2}
+.xis{stroke:#fff;stroke-width:2.4;stroke-linecap:round}
+/* q3 */
+.q3{display:grid;grid-template-columns:1fr 1.05fr;gap:22px;margin-top:22px;align-items:start}
+.q3 > div{background:var(--linho);border-radius:4px;padding:10px}
+.cena-q3{width:100%;height:auto;display:block}
+.q3-tit{font:700 13px "Courier Prime",monospace;letter-spacing:.06em;text-transform:uppercase;fill:var(--tinta2)}
+.barra{stroke:#8a6a45;stroke-width:6;stroke-linecap:round}
+.ramo-ontem{fill:none;stroke:#9b8f84;stroke-width:3;stroke-linecap:round}
+.commit{fill:#9b8f84;stroke:#fff;stroke-width:1.5}
+.q3-n{font:700 12px "Courier Prime",monospace;fill:var(--tinta2)}
+.q3-p{font:400 13px Jost,sans-serif;fill:var(--tinta2)}
+.q3-lbl{font:600 14px Jost,sans-serif;fill:var(--tinta)}
+.q3-mono{font:700 13px "Courier Prime",monospace;fill:var(--tinta)}
+.q3-etapa{font:italic 700 15px "Bodoni Moda",serif;fill:var(--tinta)}
+.seta-q3{fill:none;stroke:#5b4a3a;stroke-width:1.8}
+.ic-grande{color:var(--tinta2)}
+.integra{stroke:var(--tinta);stroke-width:6;stroke-linecap:round}
+.etapa-laco{fill:none;stroke:var(--alf);stroke-width:3.2}
+.ponta{fill:var(--papel);stroke:var(--tinta);stroke-width:2.4}
+.juncao{fill:var(--alf);stroke:#fff;stroke-width:2}
+.consulta{fill:none;stroke:var(--suave);stroke-width:1.6;stroke-dasharray:2 5;stroke-linecap:round}
+/* q4 */
+.ciclo{list-style:none;margin:24px 0 0;padding:0;display:grid;grid-template-columns:repeat(6,1fr);gap:0;position:relative}
+.ciclo::before{content:"";position:absolute;left:6%;right:6%;top:31px;border-top:3.4px solid var(--tinta2)}
+.ciclo li{position:relative;text-align:center;padding:0 6px;font-size:14px}
+.ciclo .ic-c{width:62px;height:62px;border-radius:50%;background:#fff;border:2px solid var(--tinta2);display:grid;place-items:center;margin:0 auto 8px;position:relative;z-index:1}
+.ciclo .ic-c svg{width:32px;height:32px}
+.ciclo li.voce .ic-c{background:var(--vermelho);border-color:var(--vermelho);color:#fff}
+.ciclo li.passa .ic-c{background:var(--alf);border-color:var(--alf);color:#fff}
+.ciclo b{display:block;font:700 15.5px "Bodoni Moda",serif}
+.ciclo .quem{font:700 11px "Courier Prime",monospace;text-transform:uppercase;letter-spacing:.06em;color:var(--suave)}
+.volta{margin:12px 0 0;text-align:right;font:italic 600 15px "Bodoni Moda",serif;color:var(--tinta2)}
+.ficha-e-fila{display:grid;grid-template-columns:330px 1fr;gap:26px;margin-top:22px;align-items:center}
+.ficha{background:#fff;border:1.6px solid var(--tinta2);border-radius:4px 30px 30px 4px;padding:18px 26px 16px 20px;position:relative;box-shadow:3px 4px 0 rgba(70,50,20,.12);transform:rotate(-1.2deg)}
+.ficha::before{content:"";position:absolute;right:18px;top:20px;width:12px;height:12px;border-radius:50%;border:2px solid var(--tinta2);background:var(--linho)}
+.ficha .ft{font:700 12px "Courier Prime",monospace;text-transform:uppercase;letter-spacing:.08em;color:var(--suave)}
+.ficha .fn{font:700 20px "Bodoni Moda",serif;margin:2px 0 10px}
+.campo{display:grid;grid-template-columns:28px 1fr;gap:8px;align-items:center;padding:6px 0;border-bottom:1px dashed #cdbd9c;font-size:14.5px}
+.campo:last-child{border-bottom:0}
+.campo svg{width:24px;height:24px;color:var(--tinta2)}
+.campo .branco{font-family:"Courier Prime",monospace;color:#b6a684;float:right}
+.ajuste{font:italic 600 14px "Bodoni Moda",serif;color:var(--vermelho);margin-top:8px;display:flex;gap:6px;align-items:center}
+.ajuste svg{width:20px;height:20px}
+.fila-fichas{width:100%;height:auto;display:block}
+.cordao{stroke:#8a6a45;stroke-width:1.2}
+.ficha-usada{fill:#d9cdb3;stroke:#a8987a}
+.ficha-viva{fill:var(--vermelho);stroke:#7e1f1a}
+.ficha-futura{fill:#fff;stroke:#b6a684;stroke-dasharray:3 2}
+/* lembrete */
+.lembrete{margin-top:46px;padding:22px 26px;background:rgba(255,255,255,.45);border:1.5px dashed var(--tinta2);border-radius:4px}
+.lembrete h2{font-size:26px}
+.alfinetes{list-style:none;margin:14px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px 18px}
+.alfinetes li{display:flex;gap:10px;align-items:flex-start;font-size:14.5px}
+.alfinetes .cab-alf{flex:none;width:14px;height:14px;border-radius:50%;background:var(--vermelho);margin-top:4px;box-shadow:0 0 0 2px #fff,1px 2px 0 2px rgba(0,0,0,.15)}
+/* resumo */
+.resumo{margin-top:46px}
+.resumo h2{font-size:30px;margin-bottom:12px}
+.resumo ol{list-style:none;margin:0;padding:0;counter-reset:r}
+.resumo li{counter-increment:r;display:grid;grid-template-columns:54px 1fr;gap:14px;align-items:start;padding:14px 0;border-top:1.5px dashed #c9b998}
+.resumo li::before{content:counter(r);width:44px;height:44px;border-radius:50%;background:var(--vermelho);color:#fff;display:grid;place-items:center;font:800 22px "Bodoni Moda",serif}
+.resumo b{font-family:"Bodoni Moda",serif;font-size:18.5px}
+.resumo p{margin:3px 0 0;font-size:15px;color:var(--tinta2)}
+.rodape{margin-top:34px;font-size:12.5px;color:var(--suave)}
+.arraste{display:none}
+.tear-celular{display:none}
+.ontem{display:grid;grid-template-columns:1fr 130px;gap:8px;align-items:center}
+.gav{display:flex;flex-direction:column;align-items:center;text-align:center;gap:2px;font-size:13px;color:var(--tinta2)}
+.gav b{color:var(--tinta);font-weight:600}
+.gav small{font-size:12px;line-height:1.3}
+.ic-gav{width:62px;height:62px;color:var(--tinta2)}
+.seta-gav{font-weight:600;color:var(--tinta)}
+.seta-gav::after{content:" →"}
+.tm{list-style:none;margin:14px 0 0;padding:0}
+.tm-i{display:grid;grid-template-columns:40px 1fr;gap:10px;margin-bottom:12px}
+.tm-n{background:var(--fita);border:1px solid var(--fita-borda);border-radius:3px;display:grid;place-items:center;font:800 22px "Bodoni Moda",serif;position:relative}
+.tm-i:not(:last-child) .tm-n::after{content:"";position:absolute;bottom:-15px;left:50%;margin-left:-8px;width:16px;height:16px;border-radius:50%;background:var(--papel);border:2px solid var(--alf);box-sizing:border-box;z-index:1}
+.tm-c{background:#fffdf8;border:1.2px solid #d6c6a4;border-radius:3px;padding:10px 12px;outline:1.1px dashed #cdbb95;outline-offset:-6px}
+.c0 .tm-c{background:#fdf1d8}.c11 .tm-c{background:#eef3e9}
+.tm-nome{font:600 17px Jost,sans-serif;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.tm-ic{width:22px;height:22px;color:var(--tinta)}
+.faixa-h{font:400 12px "Courier Prime",monospace;color:var(--suave)}
+.tm-e{font-size:13.5px;color:var(--tinta2);margin:2px 0 6px}
+.tm-usa{display:flex;flex-wrap:wrap;gap:5px;align-items:center;font-size:13px}
+.tm-usa i{color:var(--suave)}
+.tm-k{font:700 11px "Courier Prime",monospace;text-transform:uppercase;letter-spacing:.06em;color:var(--suave);margin-right:2px}
+.mchip{border:1.4px solid var(--c);border-radius:12px;padding:1px 9px 1px 20px;position:relative;background:#fff}
+.mchip::before{content:"";position:absolute;left:6px;top:50%;margin-top:-4.5px;width:9px;height:9px;border-radius:50%;background:var(--c)}
+.mchip.ex{border-style:dashed;background:var(--papel)}
+.mchip.ex::before{background:none;border:1.6px solid var(--c);box-sizing:border-box}
+.mchip.escuro{background:var(--tinta);color:#fff;border-color:var(--tinta);padding-left:10px}
+.mchip.escuro::before{display:none}
+.tm-nasce{margin-top:6px;font-size:13px;display:flex;gap:6px;align-items:center;color:var(--c);font-weight:600}
+
+@media (max-width:820px){
+  .folha{padding:26px 16px 44px}
+  h1{font-size:44px}
+  .sub{font-size:17px}
+  .capa{grid-template-columns:1fr;gap:12px}
+  .peca{padding:26px 18px 30px}
+  .cab{grid-template-columns:1fr;gap:8px}
+  .botao{width:52px;height:52px;font-size:25px}
+  .botao::before{top:9px;left:9px;box-shadow:29px 0 0 rgba(255,255,255,.55),0 29px 0 rgba(255,255,255,.55),29px 29px 0 rgba(255,255,255,.55)}
+  h2{font-size:28px}
+  .moldura{display:none}
+  .tear-celular{display:block}
+  .ontem{grid-template-columns:1fr}
+  .seta-gav::after{content:" ↓"}
+  .q3 > div.integ,.rola{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .q3 .integ .cena-q3{width:470px;max-width:none}
+  .rola .fila-fichas{width:600px;max-width:none}
+  .arraste{display:block;font:700 12px "Courier Prime",monospace;color:var(--suave);margin-top:12px}
+  .leia,.duas,.bacia,.q3,.ficha-e-fila{grid-template-columns:1fr}
+  .ciclo{grid-template-columns:1fr;row-gap:14px}
+  .ciclo::before{left:30px;right:auto;top:20px;bottom:20px;border-top:0;border-left:3.4px solid var(--tinta2)}
+  .ciclo li{display:grid;grid-template-columns:62px 1fr;column-gap:14px;text-align:left;align-items:center;padding:0}
+  .ciclo .ic-c{margin:0;grid-row:1/4}
+  .volta{text-align:left;padding-left:4px}
+  .ficha{transform:none}
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<defs>
+ <symbol id="i-frasco" viewBox="0 0 24 24"><path d="M9 3h6M10 3v6L4.5 18.5A2 2 0 0 0 6.2 21.5h11.6a2 2 0 0 0 1.7-3L14 9V3" class="t"/><path d="M7 15h10" class="t"/><circle cx="10" cy="18" r="1" class="p"/><circle cx="14" cy="17.5" r="1.3" class="p"/></symbol>
+ <symbol id="i-pastas" viewBox="0 0 24 24"><path d="M3 5h6l2 2h9v4H3z" class="t"/><path d="M6 11v8h4M6 15h4" class="t"/><rect x="10" y="13" width="9" height="4" rx="1" class="t"/><rect x="10" y="17" width="9" height="4" rx="1" class="t"/></symbol>
+ <symbol id="i-banco" viewBox="0 0 24 24"><ellipse cx="12" cy="5.5" rx="7.5" ry="2.8" class="t"/><path d="M4.5 5.5v13c0 1.5 3.4 2.8 7.5 2.8s7.5-1.3 7.5-2.8v-13M4.5 12c0 1.5 3.4 2.8 7.5 2.8s7.5-1.3 7.5-2.8" class="t"/></symbol>
+ <symbol id="i-porta" viewBox="0 0 24 24"><path d="M5 21V4.5L14 3v18zM14 5h5v16h-5M3 21h18" class="t"/><circle cx="11.5" cy="12.5" r="1.1" class="p"/></symbol>
+ <symbol id="i-lupa" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5" class="t"/><path d="M15.5 15.5 21 21" class="t"/></symbol>
+ <symbol id="i-escudo" viewBox="0 0 24 24"><path d="M12 3l7.5 3v5.5c0 4.8-3.2 8.2-7.5 9.5-4.3-1.3-7.5-4.7-7.5-9.5V6z" class="t"/><path d="M9 9l6 6M15 9l-6 6" class="t"/></symbol>
+ <symbol id="i-olho" viewBox="0 0 24 24"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z" class="t"/><circle cx="12" cy="12" r="3" class="t"/></symbol>
+ <symbol id="i-marcador" viewBox="0 0 24 24"><path d="M6.5 3h11v18l-5.5-4-5.5 4z" class="t"/><path d="M9.5 8h5" class="t"/></symbol>
+ <symbol id="i-livros" viewBox="0 0 24 24"><rect x="3.5" y="4" width="4" height="16" class="t"/><rect x="7.5" y="6" width="4" height="14" class="t"/><path d="M13 7.2l3.8-1 3.7 13.6-3.8 1z" class="t"/></symbol>
+ <symbol id="i-caixa" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="5" rx="1" class="t"/><path d="M4.5 9v10.5h15V9M9.5 13h5" class="t"/></symbol>
+ <symbol id="i-chave" viewBox="0 0 24 24"><path d="M14.5 6.5a4.5 4.5 0 0 0 5.8 5.8L13 19.6a2.1 2.1 0 0 1-3-3l7.3-7.3" class="t" transform="rotate(0)"/><path d="M8 3v4M5 7h6v3a3 3 0 0 1-6 0zM8 13v3" class="t"/></symbol>
+ <symbol id="i-camisa" viewBox="0 0 24 24"><path d="M8.5 3.5 3 6.5l2 4.5 2.2-1V21h9.6V10l2.2 1 2-4.5-5.5-3c-.6 1.6-1.9 2.5-3.5 2.5s-2.9-.9-3.5-2.5z" class="t"/><path d="M12 9v11" class="t" stroke-dasharray="1.5 2"/></symbol>
+ <symbol id="i-lapis" viewBox="0 0 24 24"><path d="M4 20l1-4.5L16 4.5l3.5 3.5L8.5 19z M14 7l3.5 3.5" class="t"/></symbol>
+ <symbol id="i-etiqueta" viewBox="0 0 24 24"><path d="M3 12V4h8l10 10-7 7z" class="t"/><circle cx="7.5" cy="8" r="1.5" class="t"/></symbol>
+ <symbol id="i-agulha" viewBox="0 0 24 24"><path d="M20 4 6.5 17.5 4 20l1-3.5L18.5 3z" class="t"/><path d="M17 5.5l1.5 1.5" class="t"/><path d="M5 18c3 3 8-1 11 2" class="t" stroke-dasharray="2 2"/></symbol>
+ <symbol id="i-no" viewBox="0 0 24 24"><path d="M3 12h7M14 12h7" class="t"/><circle cx="12" cy="12" r="3.2" class="t"/><path d="M10.6 12l1 1 2-2.2" class="t"/></symbol>
+ <symbol id="i-gaveta" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="1.5" class="t"/><path d="M3 12h18M10 8h4M10 16h4" class="t"/></symbol>
+ <symbol id="i-pessoa" viewBox="0 0 24 24"><circle cx="12" cy="7.5" r="3.5" class="t"/><path d="M5 20c.8-4 3.6-6 7-6s6.2 2 7 6" class="t"/></symbol>
+ <symbol id="i-chip" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2" class="t"/><path d="M9 3v3M15 3v3M9 18v3M15 18v3M3 9h3M3 15h3M18 9h3M18 15h3" class="t"/></symbol>
+ <symbol id="i-tela" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="1.5" class="t"/><path d="M9 21h6M12 17v4M7 9h4v4H7zM13 9h4v4h-4z" class="t"/></symbol>
+ <symbol id="carretel" viewBox="0 0 22 28"><rect x="1" y="1" width="20" height="4" rx="1.5" fill="#8a6a45"/><rect x="1" y="23" width="20" height="4" rx="1.5" fill="#8a6a45"/><rect x="3.5" y="5" width="15" height="18" fill="currentColor"/><path d="M3.5 8.5h15M3.5 12h15M3.5 15.5h15M3.5 19h15" stroke="#fff" stroke-opacity=".35" stroke-width="1"/></symbol>
+</defs>
+</svg>
+<main class="folha">
+
+<header class="capa">
+  <div>
+    <span class="etiq">Carta do plano · construção do hub</span>
+    <h1>O plano de <em>construção</em></h1>
+    <p class="sub">O hub é costurado uma etapa por vez, de cima para baixo. Cada etapa usa a entrega <b>de verdade</b> das que vieram antes.</p>
+    <div class="legenda" aria-label="Como ler">
+      <div><svg width="46" height="16"><line x1="2" y1="8" x2="44" y2="8" stroke="#3346b8" stroke-width="3.4" stroke-linecap="round"/></svg>fio: uma entrega que desce para as etapas de baixo</div>
+      <div><svg width="46" height="28"><use href="#carretel" x="12" y="0" width="22" height="28" style="color:#b8322c"/></svg>carretel: a etapa onde a entrega nasce</div>
+      <div><svg width="46" height="16"><line x1="2" y1="8" x2="44" y2="8" stroke="#b6a684" stroke-width="2"/><circle cx="23" cy="8" r="5.5" fill="#2f7a4c" stroke="#fff" stroke-width="2"/></svg>nó: a etapa usa essa entrega</div>
+      <div><svg width="46" height="16"><line x1="2" y1="8" x2="44" y2="8" stroke="#7a3a8c" stroke-width="2.6" stroke-dasharray="11 8" stroke-linecap="round"/></svg>alinhavo: vai com exemplo, troca pelo real depois</div>
+      <div><svg width="46" height="20"><g transform="translate(23 10)"><circle r="8.5" fill="#fbf7ee" stroke="#2f8a57" stroke-width="2"/><path d="M-3.6 -4.2v8.4M3.6 -4.2v8.4M-3.6 -1.4h7.2M-3.6 1.6h7.2" fill="none" stroke="#2f8a57" stroke-width="1.6" stroke-linecap="round"/></g></svg>portão: a próxima só começa quando esta passar</div>
+    </div>
+  </div>
+  <div class="capa-arte" aria-hidden="true">
+    <svg viewBox="0 0 420 300">
+      <rect x="40" y="40" width="300" height="220" rx="4" fill="#fffdf8" stroke="#d6c6a4"/>
+      <rect x="50" y="50" width="280" height="200" rx="2" fill="none" stroke="#cdbb95" stroke-dasharray="4 3.5"/>
+      <g stroke-width="3.4" stroke-linecap="round" fill="none">
+        <path d="M90 70 V230" stroke="#3346b8"/><path d="M130 100 V230" stroke="#b8322c"/><path d="M170 130 V230" stroke="#2f7a4c"/>
+        <path d="M210 160 V230" stroke="#c98f00"/><path d="M250 120 V190" stroke="#7a3a8c" stroke-dasharray="11 8" stroke-width="2.6"/><path d="M250 190 V230" stroke="#7a3a8c"/>
+      </g>
+      <g fill="#fff" stroke-width="2"><circle cx="90" cy="160" r="6" fill="#3346b8" stroke="#fff"/><circle cx="130" cy="190" r="6" fill="#b8322c" stroke="#fff"/><circle cx="170" cy="210" r="6" fill="#2f7a4c" stroke="#fff"/></g>
+      <use href="#carretel" x="79" y="56" width="22" height="28" style="color:#3346b8"/>
+      <use href="#carretel" x="119" y="86" width="22" height="28" style="color:#b8322c"/>
+      <use href="#carretel" x="159" y="116" width="22" height="28" style="color:#2f7a4c"/>
+      <use href="#carretel" x="199" y="146" width="22" height="28" style="color:#c98f00"/>
+      <use href="#carretel" x="239" y="176" width="22" height="28" style="color:#7a3a8c"/>
+      <path d="M58 250 L 370 40" stroke="#9aa0a6" stroke-width="5" stroke-linecap="round"/>
+      <path d="M58 250 L 370 40" stroke="#e8eaed" stroke-width="2" stroke-linecap="round"/>
+      <ellipse cx="355" cy="50" rx="7" ry="2.5" transform="rotate(-34 355 50)" fill="#efe6d4" stroke="#7d848b" stroke-width="1.4"/>
+      <path d="M356 50 C 390 80, 380 150, 400 170 S 390 250, 340 270" fill="none" stroke="#b8322c" stroke-width="2" stroke-dasharray="7 5"/>
+      <rect x="10" y="262" width="210" height="24" rx="3" fill="#f1cf63" stroke="#c9a53b"/>
+      <g font-family="Bodoni Moda,serif" font-weight="700" font-size="13" fill="#2a2420"><text x="22" y="279">0</text><text x="52" y="279">1</text><text x="82" y="279">2</text><text x="112" y="279">3</text><text x="142" y="279">4</text><text x="172" y="279">5</text><text x="202" y="279">…</text></g>
+    </svg>
+  </div>
+  <ul class="glossario" aria-label="Palavras da carta">
+    <li><b>faixa</b> = o nome antigo de cada pedaço do spec</li>
+    <li><b>hub de ensaio</b> = um hub de teste, com notas de mentira</li>
+    <li><b>MCP</b> = a porta pela qual os agentes leem e gravam no banco</li>
+    <li><b>porteiros (hooks)</b> = scripts que o Claude Code, o Codex e o Copilot rodam antes ou depois de cada ação</li>
+    <li><b>integração</b> = o ramo do git onde cada etapa pronta é juntada</li>
+  </ul>
+</header>
+
+<!-- 1 -->
+<section class="peca" id="q1">
+  <div class="cab"><div class="botao">1</div><div><div class="q">pergunta 1 · a ordem</div><h2>Uma etapa depois da outra, <em>nesta ordem</em></h2></div></div>
+  <p class="problema"><span class="tag">problema</span><span>As 10 faixas do spec se pedem umas às outras. Em que ordem fazer, para que cada uma use a peça <b>real</b> da outra, e não uma imitação?</span></p>
+  <div class="tear-celular"><ol class="tm"><li class="tm-i c0"><div class="tm-n">0</div><div class="tm-c"><div class="tm-nome"><svg class="tm-ic"><use href="#i-frasco"/></svg>Provas de risco</div><div class="tm-e">testa 3 coisas nunca verificadas que podem derrubar o desenho</div><div class="tm-usa"><span class="tm-k">usa</span><i>nada</i></div></div></li><li class="tm-i"><div class="tm-n">1</div><div class="tm-c"><div class="tm-nome"><svg class="tm-ic"><use href="#i-pastas"/></svg>Esqueleto e contrato <span class="faixa-h">faixa 1</span></div><div class="tm-e">pastas · contrato que todo agente lê (AGENTS.md) fichas das notas · verificador · hub de ensaio</div><div class="tm-usa"><span class="tm-k">usa</span><i>nada</i></div><div class="tm-nasce" style="--c:#3346b8"><svg width="14" height="18"><use href="#carretel" width="14" height="18" style="color:#3346b8"/></svg>nasce aqui: hub de ensaio · contrato · verificador</div></div></li><li class="tm-i"><div class="tm-n">2</div><div class="tm-c"><div class="tm-nome"><svg class="tm-ic"><use href="#i-banco"/></svg>Banco e vista .md <span class="faixa-h">faixa 4</span></div><div class="tm-e">2 bancos de ensaio · sincronizador (LiveSync) as notas também como arquivos .md</div><div class="tm-usa"><span class="tm-k">usa</span><span class="mchip" style="--c:#3346b8">hub de ensaio</span></div><div class="tm-nasce" style="--c:#b8322c"><svg width="14" height="18"><use href="#carretel" width="14" height="18" style="color:#b8322c"/></svg>nasce aqui: banco</div></div></li><li class="tm-i"><div class="tm-n">3</div><div class="tm-c"><div class="tm-nome"><svg class="tm-ic"><use href="#i-porta"/></svg>MCP do banco <span class="faixa-h">faixa 5</span></div><div class="tm-e">a porta dos agentes ao banco: grava com versão, mostra conflito, diz o estado do hub</div><div class="tm-usa"><span class="tm-k">usa</span><span class="mchip" style="--c:#b8322c">banco</span><span class="mchip ex" style="--c:#7a3a8c">estado da vigia: exemplo, o real vem na 6</span></div><div class="tm-nasce" style="--c:#2f7a4c"><svg width="14" height="18"><use href="#carretel" width="14" height="18" style="color:#2f7a4c"/></svg>nasce aqui: MCP</div></div></li><li class="tm-i"><div class="tm-n">4</div><div class="tm-c"><div class="tm-nome"><svg class="tm-ic"><use href="#i-lupa"/></svg>Busca <span class="faixa-h">faixa 3</span></div><div class="tm-e">a busca local · o teste de aceite</div><div class="tm-usa"><span class="tm-k">usa</span><span class="mchip" style="--c:#3346b8">hub de ensaio</span></div><div class="tm-nasce" style="--c:#c98f00"><svg width="14" height="18"><use href="#carretel" width="14" height="18" style="color:#c98f00"/></svg>nasce aqui: busca</div></div></li><li class="tm-i"><div class="tm-n">5</div><div class="tm-c"><div class="tm-nome"><svg class="tm-ic"><use href="#i-escudo"/></svg>Guardas no disco <span class="faixa-h">faixa 6</span></div><div class="tm-e">porteiros que recusam a gravação errada e avisam a leitura grande</div><div class="tm-usa"><span class="tm-k">usa</span><span class="mchip" style="--c:#3346b8">verificador</span><span class="mchip" style="--c:#c98f00">busca</span><span class="mchip" style="--c:#2f7a4c">MCP</span></div></div></li><li class="tm-i"><div class="tm-n">6</div><div class="tm-c"><div class="tm-nome"><svg class="tm-ic"><use href="#i-olho"/></svg>Vigia <span class="faixa-h">faixa 7</span></div><div class="tm-e">vigia de 5 em 5 min · o estado · os avisos</div><div class="tm-usa"><span class="tm-k">usa</span><span class="mchip" style="--c:#b8322c">banco</span><span class="mchip" style="--c:#2f7a4c">MCP</span><span class="mchip ex" style="--c:#d0602a">item da cópia: exemplo, o real vem na 9</span></div><div class="tm-nasce" style="--c:#7a3a8c"><svg width="14" height="18"><use href="#carretel" width="14" height="18" style="color:#7a3a8c"/></svg>nasce aqui: estado da vigia</div></div></li><li class="tm-i"><div class="tm-n">7</div><div class="tm-c"><div class="tm-nome"><svg class="tm-ic"><use href="#i-marcador"/></svg>Retomada <span class="faixa-h">faixa 2</span></div><div class="tm-e">porteiros de início e de fim de sessão (a nota de onde parei)</div><div class="tm-usa"><span class="tm-k">usa</span><span class="mchip" style="--c:#3346b8">contrato</span><span class="mchip" style="--c:#7a3a8c">estado da vigia</span><span class="mchip" style="--c:#2f7a4c">MCP</span></div></div></li><li class="tm-i"><div class="tm-n">8</div><div class="tm-c"><div class="tm-nome"><svg class="tm-ic"><use href="#i-livros"/></svg>Skills e acervo <span class="faixa-h">faixa 9</span></div><div class="tm-e">qual skill usar · a família maestro-* a guarda do acervo</div><div class="tm-usa"><span class="tm-k">usa</span><span class="mchip" style="--c:#3346b8">hub de ensaio</span></div></div></li><li class="tm-i"><div class="tm-n">9</div><div class="tm-c"><div class="tm-nome"><svg class="tm-ic"><use href="#i-caixa"/></svg>Manutenção e cliente <span class="faixa-h">faixa 10</span></div><div class="tm-e">arquivar · cópia diária · ponte e kit para as máquinas de cliente</div><div class="tm-usa"><span class="tm-k">usa</span><span class="mchip" style="--c:#c98f00">busca</span><span class="mchip" style="--c:#2f7a4c">MCP</span><span class="mchip" style="--c:#7a3a8c">vigia</span><span class="mchip" style="--c:#b8322c">banco</span></div><div class="tm-nasce" style="--c:#d0602a"><svg width="14" height="18"><use href="#carretel" width="14" height="18" style="color:#d0602a"/></svg>nasce aqui: item da cópia diária</div></div></li><li class="tm-i"><div class="tm-n">10</div><div class="tm-c"><div class="tm-nome"><svg class="tm-ic"><use href="#i-chave"/></svg>Kit das suas 2 máquinas <span class="faixa-h">faixa 8</span></div><div class="tm-e">o instalador que liga tudo no Claude Code, no Codex e no Copilot</div><div class="tm-usa"><span class="tm-k">usa</span><span class="mchip escuro">os pedaços de todas as etapas</span></div></div></li><li class="tm-i c11"><div class="tm-n">11</div><div class="tm-c"><div class="tm-nome"><svg class="tm-ic"><use href="#i-camisa"/></svg>Junção</div><div class="tm-e">junta e prova o hub de ensaio inteiro</div><div class="tm-usa"><span class="tm-k">usa</span><span class="mchip escuro">tudo, junto e de verdade</span></div></div></li></ol></div>
+  <div class="moldura">
+<svg class="cena tear" viewBox="0 0 1100 1188" role="img" aria-label="As etapas de 0 a 11, de cima para baixo, com fios coloridos ligando o que cada etapa entrega às etapas de baixo que usam">
+<g class="cab-tear">
+<text x="38" y="44" text-anchor="middle">etapa</text>
+<text x="86" y="44">o que entrega</text>
+<text x="561" y="44">fios</text>
+<text x="800" y="44">usa de verdade</text>
+<line x1="18" y1="58" x2="990" y2="58" class="linha-cab"/>
+</g>
+<rect x="20" y="70" width="38" height="1078" rx="3" class="fita"/>
+<line x1="20" y1="74" x2="30" y2="74" class="risco"/>
+<line x1="20" y1="83" x2="25" y2="83" class="risco"/>
+<line x1="20" y1="92" x2="25" y2="92" class="risco"/>
+<line x1="20" y1="101" x2="25" y2="101" class="risco"/>
+<line x1="20" y1="110" x2="25" y2="110" class="risco"/>
+<line x1="20" y1="119" x2="30" y2="119" class="risco"/>
+<line x1="20" y1="128" x2="25" y2="128" class="risco"/>
+<line x1="20" y1="137" x2="25" y2="137" class="risco"/>
+<line x1="20" y1="146" x2="25" y2="146" class="risco"/>
+<line x1="20" y1="155" x2="25" y2="155" class="risco"/>
+<line x1="20" y1="164" x2="30" y2="164" class="risco"/>
+<line x1="20" y1="173" x2="25" y2="173" class="risco"/>
+<line x1="20" y1="182" x2="25" y2="182" class="risco"/>
+<line x1="20" y1="191" x2="25" y2="191" class="risco"/>
+<line x1="20" y1="200" x2="25" y2="200" class="risco"/>
+<line x1="20" y1="209" x2="30" y2="209" class="risco"/>
+<line x1="20" y1="218" x2="25" y2="218" class="risco"/>
+<line x1="20" y1="227" x2="25" y2="227" class="risco"/>
+<line x1="20" y1="236" x2="25" y2="236" class="risco"/>
+<line x1="20" y1="245" x2="25" y2="245" class="risco"/>
+<line x1="20" y1="254" x2="30" y2="254" class="risco"/>
+<line x1="20" y1="263" x2="25" y2="263" class="risco"/>
+<line x1="20" y1="272" x2="25" y2="272" class="risco"/>
+<line x1="20" y1="281" x2="25" y2="281" class="risco"/>
+<line x1="20" y1="290" x2="25" y2="290" class="risco"/>
+<line x1="20" y1="299" x2="30" y2="299" class="risco"/>
+<line x1="20" y1="308" x2="25" y2="308" class="risco"/>
+<line x1="20" y1="317" x2="25" y2="317" class="risco"/>
+<line x1="20" y1="326" x2="25" y2="326" class="risco"/>
+<line x1="20" y1="335" x2="25" y2="335" class="risco"/>
+<line x1="20" y1="344" x2="30" y2="344" class="risco"/>
+<line x1="20" y1="353" x2="25" y2="353" class="risco"/>
+<line x1="20" y1="362" x2="25" y2="362" class="risco"/>
+<line x1="20" y1="371" x2="25" y2="371" class="risco"/>
+<line x1="20" y1="380" x2="25" y2="380" class="risco"/>
+<line x1="20" y1="389" x2="30" y2="389" class="risco"/>
+<line x1="20" y1="398" x2="25" y2="398" class="risco"/>
+<line x1="20" y1="407" x2="25" y2="407" class="risco"/>
+<line x1="20" y1="416" x2="25" y2="416" class="risco"/>
+<line x1="20" y1="425" x2="25" y2="425" class="risco"/>
+<line x1="20" y1="434" x2="30" y2="434" class="risco"/>
+<line x1="20" y1="443" x2="25" y2="443" class="risco"/>
+<line x1="20" y1="452" x2="25" y2="452" class="risco"/>
+<line x1="20" y1="461" x2="25" y2="461" class="risco"/>
+<line x1="20" y1="470" x2="25" y2="470" class="risco"/>
+<line x1="20" y1="479" x2="30" y2="479" class="risco"/>
+<line x1="20" y1="488" x2="25" y2="488" class="risco"/>
+<line x1="20" y1="497" x2="25" y2="497" class="risco"/>
+<line x1="20" y1="506" x2="25" y2="506" class="risco"/>
+<line x1="20" y1="515" x2="25" y2="515" class="risco"/>
+<line x1="20" y1="524" x2="30" y2="524" class="risco"/>
+<line x1="20" y1="533" x2="25" y2="533" class="risco"/>
+<line x1="20" y1="542" x2="25" y2="542" class="risco"/>
+<line x1="20" y1="551" x2="25" y2="551" class="risco"/>
+<line x1="20" y1="560" x2="25" y2="560" class="risco"/>
+<line x1="20" y1="569" x2="30" y2="569" class="risco"/>
+<line x1="20" y1="578" x2="25" y2="578" class="risco"/>
+<line x1="20" y1="587" x2="25" y2="587" class="risco"/>
+<line x1="20" y1="596" x2="25" y2="596" class="risco"/>
+<line x1="20" y1="605" x2="25" y2="605" class="risco"/>
+<line x1="20" y1="614" x2="30" y2="614" class="risco"/>
+<line x1="20" y1="623" x2="25" y2="623" class="risco"/>
+<line x1="20" y1="632" x2="25" y2="632" class="risco"/>
+<line x1="20" y1="641" x2="25" y2="641" class="risco"/>
+<line x1="20" y1="650" x2="25" y2="650" class="risco"/>
+<line x1="20" y1="659" x2="30" y2="659" class="risco"/>
+<line x1="20" y1="668" x2="25" y2="668" class="risco"/>
+<line x1="20" y1="677" x2="25" y2="677" class="risco"/>
+<line x1="20" y1="686" x2="25" y2="686" class="risco"/>
+<line x1="20" y1="695" x2="25" y2="695" class="risco"/>
+<line x1="20" y1="704" x2="30" y2="704" class="risco"/>
+<line x1="20" y1="713" x2="25" y2="713" class="risco"/>
+<line x1="20" y1="722" x2="25" y2="722" class="risco"/>
+<line x1="20" y1="731" x2="25" y2="731" class="risco"/>
+<line x1="20" y1="740" x2="25" y2="740" class="risco"/>
+<line x1="20" y1="749" x2="30" y2="749" class="risco"/>
+<line x1="20" y1="758" x2="25" y2="758" class="risco"/>
+<line x1="20" y1="767" x2="25" y2="767" class="risco"/>
+<line x1="20" y1="776" x2="25" y2="776" class="risco"/>
+<line x1="20" y1="785" x2="25" y2="785" class="risco"/>
+<line x1="20" y1="794" x2="30" y2="794" class="risco"/>
+<line x1="20" y1="803" x2="25" y2="803" class="risco"/>
+<line x1="20" y1="812" x2="25" y2="812" class="risco"/>
+<line x1="20" y1="821" x2="25" y2="821" class="risco"/>
+<line x1="20" y1="830" x2="25" y2="830" class="risco"/>
+<line x1="20" y1="839" x2="30" y2="839" class="risco"/>
+<line x1="20" y1="848" x2="25" y2="848" class="risco"/>
+<line x1="20" y1="857" x2="25" y2="857" class="risco"/>
+<line x1="20" y1="866" x2="25" y2="866" class="risco"/>
+<line x1="20" y1="875" x2="25" y2="875" class="risco"/>
+<line x1="20" y1="884" x2="30" y2="884" class="risco"/>
+<line x1="20" y1="893" x2="25" y2="893" class="risco"/>
+<line x1="20" y1="902" x2="25" y2="902" class="risco"/>
+<line x1="20" y1="911" x2="25" y2="911" class="risco"/>
+<line x1="20" y1="920" x2="25" y2="920" class="risco"/>
+<line x1="20" y1="929" x2="30" y2="929" class="risco"/>
+<line x1="20" y1="938" x2="25" y2="938" class="risco"/>
+<line x1="20" y1="947" x2="25" y2="947" class="risco"/>
+<line x1="20" y1="956" x2="25" y2="956" class="risco"/>
+<line x1="20" y1="965" x2="25" y2="965" class="risco"/>
+<line x1="20" y1="974" x2="30" y2="974" class="risco"/>
+<line x1="20" y1="983" x2="25" y2="983" class="risco"/>
+<line x1="20" y1="992" x2="25" y2="992" class="risco"/>
+<line x1="20" y1="1001" x2="25" y2="1001" class="risco"/>
+<line x1="20" y1="1010" x2="25" y2="1010" class="risco"/>
+<line x1="20" y1="1019" x2="30" y2="1019" class="risco"/>
+<line x1="20" y1="1028" x2="25" y2="1028" class="risco"/>
+<line x1="20" y1="1037" x2="25" y2="1037" class="risco"/>
+<line x1="20" y1="1046" x2="25" y2="1046" class="risco"/>
+<line x1="20" y1="1055" x2="25" y2="1055" class="risco"/>
+<text x="44" y="127" text-anchor="middle" class="fita-num">0</text>
+<g transform="translate(39 163.0)"><circle r="8.5" class="portao"/><path d="M-3.6 -4.2v8.4M3.6 -4.2v8.4M-3.6 -1.4h7.2M-3.6 1.6h7.2" class="portao-g"/></g>
+<text x="44" y="217" text-anchor="middle" class="fita-num">1</text>
+<g transform="translate(39 253.0)"><circle r="8.5" class="portao"/><path d="M-3.6 -4.2v8.4M3.6 -4.2v8.4M-3.6 -1.4h7.2M-3.6 1.6h7.2" class="portao-g"/></g>
+<text x="44" y="307" text-anchor="middle" class="fita-num">2</text>
+<g transform="translate(39 343.0)"><circle r="8.5" class="portao"/><path d="M-3.6 -4.2v8.4M3.6 -4.2v8.4M-3.6 -1.4h7.2M-3.6 1.6h7.2" class="portao-g"/></g>
+<text x="44" y="397" text-anchor="middle" class="fita-num">3</text>
+<g transform="translate(39 433.0)"><circle r="8.5" class="portao"/><path d="M-3.6 -4.2v8.4M3.6 -4.2v8.4M-3.6 -1.4h7.2M-3.6 1.6h7.2" class="portao-g"/></g>
+<text x="44" y="487" text-anchor="middle" class="fita-num">4</text>
+<g transform="translate(39 523.0)"><circle r="8.5" class="portao"/><path d="M-3.6 -4.2v8.4M3.6 -4.2v8.4M-3.6 -1.4h7.2M-3.6 1.6h7.2" class="portao-g"/></g>
+<text x="44" y="577" text-anchor="middle" class="fita-num">5</text>
+<g transform="translate(39 613.0)"><circle r="8.5" class="portao"/><path d="M-3.6 -4.2v8.4M3.6 -4.2v8.4M-3.6 -1.4h7.2M-3.6 1.6h7.2" class="portao-g"/></g>
+<text x="44" y="667" text-anchor="middle" class="fita-num">6</text>
+<g transform="translate(39 703.0)"><circle r="8.5" class="portao"/><path d="M-3.6 -4.2v8.4M3.6 -4.2v8.4M-3.6 -1.4h7.2M-3.6 1.6h7.2" class="portao-g"/></g>
+<text x="44" y="757" text-anchor="middle" class="fita-num">7</text>
+<g transform="translate(39 793.0)"><circle r="8.5" class="portao"/><path d="M-3.6 -4.2v8.4M3.6 -4.2v8.4M-3.6 -1.4h7.2M-3.6 1.6h7.2" class="portao-g"/></g>
+<text x="44" y="847" text-anchor="middle" class="fita-num">8</text>
+<g transform="translate(39 883.0)"><circle r="8.5" class="portao"/><path d="M-3.6 -4.2v8.4M3.6 -4.2v8.4M-3.6 -1.4h7.2M-3.6 1.6h7.2" class="portao-g"/></g>
+<text x="44" y="937" text-anchor="middle" class="fita-num">9</text>
+<g transform="translate(39 973.0)"><circle r="8.5" class="portao"/><path d="M-3.6 -4.2v8.4M3.6 -4.2v8.4M-3.6 -1.4h7.2M-3.6 1.6h7.2" class="portao-g"/></g>
+<text x="44" y="1027" text-anchor="middle" class="fita-num">10</text>
+<g transform="translate(39 1063.0)"><circle r="8.5" class="portao"/><path d="M-3.6 -4.2v8.4M3.6 -4.2v8.4M-3.6 -1.4h7.2M-3.6 1.6h7.2" class="portao-g"/></g>
+<text x="44" y="1117" text-anchor="middle" class="fita-num">11</text>
+<line x1="566" y1="208" x2="566" y2="1108" stroke="#3346b8" class="fio"/>
+<line x1="566" y1="208" x2="566" y2="1108" class="torcao"/>
+<line x1="604" y1="298" x2="604" y2="1108" stroke="#b8322c" class="fio"/>
+<line x1="604" y1="298" x2="604" y2="1108" class="torcao"/>
+<line x1="642" y1="388" x2="642" y2="1108" stroke="#2f7a4c" class="fio"/>
+<line x1="642" y1="388" x2="642" y2="1108" class="torcao"/>
+<line x1="680" y1="478" x2="680" y2="1108" stroke="#c98f00" class="fio"/>
+<line x1="680" y1="478" x2="680" y2="1108" class="torcao"/>
+<line x1="718" y1="388" x2="718" y2="658" stroke="#7a3a8c" class="alinhavo"/>
+<line x1="718" y1="658" x2="718" y2="1108" stroke="#7a3a8c" class="fio"/>
+<line x1="718" y1="658" x2="718" y2="1108" class="torcao"/>
+<line x1="756" y1="658" x2="756" y2="928" stroke="#d0602a" class="alinhavo"/>
+<line x1="756" y1="928" x2="756" y2="1108" stroke="#d0602a" class="fio"/>
+<line x1="756" y1="928" x2="756" y2="1108" class="torcao"/>
+<line x1="520" y1="208" x2="566" y2="208" class="capa-fio"/>
+<line x1="520" y1="208" x2="566" y2="208" stroke="#3346b8" class="fio"/>
+<line x1="520" y1="298" x2="604" y2="298" class="capa-fio"/>
+<line x1="520" y1="298" x2="604" y2="298" stroke="#b8322c" class="fio"/>
+<line x1="520" y1="388" x2="642" y2="388" class="capa-fio"/>
+<line x1="520" y1="388" x2="642" y2="388" stroke="#2f7a4c" class="fio"/>
+<line x1="520" y1="478" x2="680" y2="478" class="capa-fio"/>
+<line x1="520" y1="478" x2="680" y2="478" stroke="#c98f00" class="fio"/>
+<line x1="520" y1="658" x2="718" y2="658" class="capa-fio"/>
+<line x1="520" y1="658" x2="718" y2="658" stroke="#7a3a8c" class="fio"/>
+<line x1="520" y1="928" x2="756" y2="928" class="capa-fio"/>
+<line x1="520" y1="928" x2="756" y2="928" stroke="#d0602a" class="fio"/>
+<g class="cartao c0">
+<polygon points="76,80.0 520,80.0 513,87.0 520,94.0 513,101.0 520,108.0 513,115.0 520,122.0 513,129.0 520,136.0 513,143.0 520,150.0 513,156.0 520,156.0 76,156.0" class="tecido"/>
+<rect x="82" y="86.0" width="422" height="64" rx="2" class="pesponto"/>
+<use href="#i-frasco" x="92" y="101" width="34" height="34" class="ic"/>
+<text x="140" y="110" class="nome">Provas de risco
+</text>
+<text x="140" y="129" class="entrega">testa 3 coisas nunca verificadas</text>
+<text x="140" y="145" class="entrega">que podem derrubar o desenho</text>
+</g>
+<g class="cartao">
+<polygon points="76,170.0 520,170.0 513,177.0 520,184.0 513,191.0 520,198.0 513,205.0 520,212.0 513,219.0 520,226.0 513,233.0 520,240.0 513,246.0 520,246.0 76,246.0" class="tecido"/>
+<rect x="82" y="176.0" width="422" height="64" rx="2" class="pesponto"/>
+<use href="#i-pastas" x="92" y="191" width="34" height="34" class="ic"/>
+<text x="140" y="200" class="nome">Esqueleto e contrato
+<tspan class="faixa" dx="8">faixa 1</tspan>
+</text>
+<text x="140" y="219" class="entrega">pastas · contrato que todo agente lê (AGENTS.md)</text>
+<text x="140" y="235" class="entrega">fichas das notas · verificador · hub de ensaio</text>
+</g>
+<g class="cartao">
+<polygon points="76,260.0 520,260.0 513,267.0 520,274.0 513,281.0 520,288.0 513,295.0 520,302.0 513,309.0 520,316.0 513,323.0 520,330.0 513,336.0 520,336.0 76,336.0" class="tecido"/>
+<rect x="82" y="266.0" width="422" height="64" rx="2" class="pesponto"/>
+<use href="#i-banco" x="92" y="281" width="34" height="34" class="ic"/>
+<text x="140" y="290" class="nome">Banco e vista .md
+<tspan class="faixa" dx="8">faixa 4</tspan>
+</text>
+<text x="140" y="309" class="entrega">2 bancos de ensaio · sincronizador (LiveSync)</text>
+<text x="140" y="325" class="entrega">as notas também como arquivos .md</text>
+</g>
+<g class="cartao">
+<polygon points="76,350.0 520,350.0 513,357.0 520,364.0 513,371.0 520,378.0 513,385.0 520,392.0 513,399.0 520,406.0 513,413.0 520,420.0 513,426.0 520,426.0 76,426.0" class="tecido"/>
+<rect x="82" y="356.0" width="422" height="64" rx="2" class="pesponto"/>
+<use href="#i-porta" x="92" y="371" width="34" height="34" class="ic"/>
+<text x="140" y="380" class="nome">MCP do banco
+<tspan class="faixa" dx="8">faixa 5</tspan>
+</text>
+<text x="140" y="399" class="entrega">a porta dos agentes ao banco: grava com versão,</text>
+<text x="140" y="415" class="entrega">mostra conflito, diz o estado do hub</text>
+</g>
+<g class="cartao">
+<polygon points="76,440.0 520,440.0 513,447.0 520,454.0 513,461.0 520,468.0 513,475.0 520,482.0 513,489.0 520,496.0 513,503.0 520,510.0 513,516.0 520,516.0 76,516.0" class="tecido"/>
+<rect x="82" y="446.0" width="422" height="64" rx="2" class="pesponto"/>
+<use href="#i-lupa" x="92" y="461" width="34" height="34" class="ic"/>
+<text x="140" y="476" class="nome">Busca
+<tspan class="faixa" dx="8">faixa 3</tspan>
+</text>
+<text x="140" y="495" class="entrega">a busca local · o teste de aceite</text>
+</g>
+<g class="cartao">
+<polygon points="76,530.0 520,530.0 513,537.0 520,544.0 513,551.0 520,558.0 513,565.0 520,572.0 513,579.0 520,586.0 513,593.0 520,600.0 513,606.0 520,606.0 76,606.0" class="tecido"/>
+<rect x="82" y="536.0" width="422" height="64" rx="2" class="pesponto"/>
+<use href="#i-escudo" x="92" y="551" width="34" height="34" class="ic"/>
+<text x="140" y="560" class="nome">Guardas no disco
+<tspan class="faixa" dx="8">faixa 6</tspan>
+</text>
+<text x="140" y="579" class="entrega">porteiros que recusam a gravação errada</text>
+<text x="140" y="595" class="entrega">e avisam a leitura grande</text>
+</g>
+<g class="cartao">
+<polygon points="76,620.0 520,620.0 513,627.0 520,634.0 513,641.0 520,648.0 513,655.0 520,662.0 513,669.0 520,676.0 513,683.0 520,690.0 513,696.0 520,696.0 76,696.0" class="tecido"/>
+<rect x="82" y="626.0" width="422" height="64" rx="2" class="pesponto"/>
+<use href="#i-olho" x="92" y="641" width="34" height="34" class="ic"/>
+<text x="140" y="656" class="nome">Vigia
+<tspan class="faixa" dx="8">faixa 7</tspan>
+</text>
+<text x="140" y="675" class="entrega">vigia de 5 em 5 min · o estado · os avisos</text>
+</g>
+<g class="cartao">
+<polygon points="76,710.0 520,710.0 513,717.0 520,724.0 513,731.0 520,738.0 513,745.0 520,752.0 513,759.0 520,766.0 513,773.0 520,780.0 513,786.0 520,786.0 76,786.0" class="tecido"/>
+<rect x="82" y="716.0" width="422" height="64" rx="2" class="pesponto"/>
+<use href="#i-marcador" x="92" y="731" width="34" height="34" class="ic"/>
+<text x="140" y="740" class="nome">Retomada
+<tspan class="faixa" dx="8">faixa 2</tspan>
+</text>
+<text x="140" y="759" class="entrega">porteiros de início e de fim de sessão</text>
+<text x="140" y="775" class="entrega">(a nota de onde parei)</text>
+</g>
+<g class="cartao">
+<polygon points="76,800.0 520,800.0 513,807.0 520,814.0 513,821.0 520,828.0 513,835.0 520,842.0 513,849.0 520,856.0 513,863.0 520,870.0 513,876.0 520,876.0 76,876.0" class="tecido"/>
+<rect x="82" y="806.0" width="422" height="64" rx="2" class="pesponto"/>
+<use href="#i-livros" x="92" y="821" width="34" height="34" class="ic"/>
+<text x="140" y="830" class="nome">Skills e acervo
+<tspan class="faixa" dx="8">faixa 9</tspan>
+</text>
+<text x="140" y="849" class="entrega">qual skill usar · a família maestro-*</text>
+<text x="140" y="865" class="entrega">a guarda do acervo</text>
+</g>
+<g class="cartao">
+<polygon points="76,890.0 520,890.0 513,897.0 520,904.0 513,911.0 520,918.0 513,925.0 520,932.0 513,939.0 520,946.0 513,953.0 520,960.0 513,966.0 520,966.0 76,966.0" class="tecido"/>
+<rect x="82" y="896.0" width="422" height="64" rx="2" class="pesponto"/>
+<use href="#i-caixa" x="92" y="911" width="34" height="34" class="ic"/>
+<text x="140" y="920" class="nome">Manutenção e cliente
+<tspan class="faixa" dx="8">faixa 10</tspan>
+</text>
+<text x="140" y="939" class="entrega">arquivar · cópia diária · ponte e kit</text>
+<text x="140" y="955" class="entrega">para as máquinas de cliente</text>
+</g>
+<g class="cartao">
+<polygon points="76,980.0 520,980.0 513,987.0 520,994.0 513,1001.0 520,1008.0 513,1015.0 520,1022.0 513,1029.0 520,1036.0 513,1043.0 520,1050.0 513,1056.0 520,1056.0 76,1056.0" class="tecido"/>
+<rect x="82" y="986.0" width="422" height="64" rx="2" class="pesponto"/>
+<use href="#i-chave" x="92" y="1001" width="34" height="34" class="ic"/>
+<text x="140" y="1010" class="nome">Kit das suas 2 máquinas
+<tspan class="faixa" dx="8">faixa 8</tspan>
+</text>
+<text x="140" y="1029" class="entrega">o instalador que liga tudo no</text>
+<text x="140" y="1045" class="entrega">Claude Code, no Codex e no Copilot</text>
+</g>
+<g class="cartao c11">
+<polygon points="76,1070.0 520,1070.0 513,1077.0 520,1084.0 513,1091.0 520,1098.0 513,1105.0 520,1112.0 513,1119.0 520,1126.0 513,1133.0 520,1140.0 513,1146.0 520,1146.0 76,1146.0" class="tecido"/>
+<rect x="82" y="1076.0" width="422" height="64" rx="2" class="pesponto"/>
+<use href="#i-camisa" x="92" y="1091" width="34" height="34" class="ic"/>
+<text x="140" y="1106" class="nome">Junção
+</text>
+<text x="140" y="1125" class="entrega">junta e prova o hub de ensaio inteiro</text>
+</g>
+<use href="#carretel" x="555" y="194" width="22" height="28" style="color:#3346b8"/>
+<use href="#carretel" x="593" y="284" width="22" height="28" style="color:#b8322c"/>
+<use href="#carretel" x="631" y="374" width="22" height="28" style="color:#2f7a4c"/>
+<use href="#carretel" x="669" y="464" width="22" height="28" style="color:#c98f00"/>
+<use href="#carretel" x="707" y="644" width="22" height="28" style="color:#7a3a8c"/>
+<use href="#carretel" x="745" y="914" width="22" height="28" style="color:#d0602a"/>
+<circle cx="566" cy="298" r="5.5" fill="#3346b8" class="no"/>
+<circle cx="604" cy="388" r="5.5" fill="#b8322c" class="no"/>
+<circle cx="718" cy="388" r="6.5" stroke="#7a3a8c" class="no-ex"/>
+<circle cx="566" cy="478" r="5.5" fill="#3346b8" class="no"/>
+<circle cx="566" cy="568" r="5.5" fill="#3346b8" class="no"/>
+<circle cx="680" cy="568" r="5.5" fill="#c98f00" class="no"/>
+<circle cx="642" cy="568" r="5.5" fill="#2f7a4c" class="no"/>
+<circle cx="604" cy="658" r="5.5" fill="#b8322c" class="no"/>
+<circle cx="642" cy="658" r="5.5" fill="#2f7a4c" class="no"/>
+<circle cx="756" cy="658" r="6.5" stroke="#d0602a" class="no-ex"/>
+<circle cx="566" cy="748" r="5.5" fill="#3346b8" class="no"/>
+<circle cx="718" cy="748" r="5.5" fill="#7a3a8c" class="no"/>
+<circle cx="642" cy="748" r="5.5" fill="#2f7a4c" class="no"/>
+<circle cx="566" cy="838" r="5.5" fill="#3346b8" class="no"/>
+<circle cx="680" cy="928" r="5.5" fill="#c98f00" class="no"/>
+<circle cx="642" cy="928" r="5.5" fill="#2f7a4c" class="no"/>
+<circle cx="718" cy="928" r="5.5" fill="#7a3a8c" class="no"/>
+<circle cx="604" cy="928" r="5.5" fill="#b8322c" class="no"/>
+<circle cx="566" cy="1018" r="5.5" fill="#3346b8" class="no"/>
+<circle cx="604" cy="1018" r="5.5" fill="#b8322c" class="no"/>
+<circle cx="642" cy="1018" r="5.5" fill="#2f7a4c" class="no"/>
+<circle cx="680" cy="1018" r="5.5" fill="#c98f00" class="no"/>
+<circle cx="718" cy="1018" r="5.5" fill="#7a3a8c" class="no"/>
+<circle cx="756" cy="1018" r="5.5" fill="#d0602a" class="no"/>
+<circle cx="566" cy="1108" r="5.5" fill="#3346b8" class="no"/>
+<circle cx="604" cy="1108" r="5.5" fill="#b8322c" class="no"/>
+<circle cx="642" cy="1108" r="5.5" fill="#2f7a4c" class="no"/>
+<circle cx="680" cy="1108" r="5.5" fill="#c98f00" class="no"/>
+<circle cx="718" cy="1108" r="5.5" fill="#7a3a8c" class="no"/>
+<circle cx="756" cy="1108" r="5.5" fill="#d0602a" class="no"/>
+<text x="802" y="123" class="usa-nada">nada: vem primeiro</text>
+<text x="802" y="213" class="usa-nada">nada: é a base</text>
+<g><rect x="800" y="287" width="124" height="22" rx="11" class="chip" stroke="#3346b8"/><circle cx="811" cy="298" r="4.5" fill="#3346b8" stroke="#3346b8" stroke-width="1.6"/><text x="821" y="302" class="chip-t">hub de ensaio</text></g>
+<g><rect x="800" y="364" width="66" height="22" rx="11" class="chip" stroke="#b8322c"/><circle cx="811" cy="375" r="4.5" fill="#b8322c" stroke="#b8322c" stroke-width="1.6"/><text x="821" y="379" class="chip-t">banco</text></g>
+<g><rect x="800" y="391" width="205" height="22" rx="11" class="chip-ex" stroke="#7a3a8c"/><circle cx="811" cy="402" r="4.5" fill="none" stroke="#7a3a8c" stroke-width="1.6"/><text x="821" y="406" class="chip-t">estado da vigia: exemplo</text></g>
+<text x="1013" y="406" class="nota-ex">o real vem na 6</text>
+<g><rect x="800" y="467" width="124" height="22" rx="11" class="chip" stroke="#3346b8"/><circle cx="811" cy="478" r="4.5" fill="#3346b8" stroke="#3346b8" stroke-width="1.6"/><text x="821" y="482" class="chip-t">hub de ensaio</text></g>
+<g><rect x="800" y="557" width="110" height="22" rx="11" class="chip" stroke="#3346b8"/><circle cx="811" cy="568" r="4.5" fill="#3346b8" stroke="#3346b8" stroke-width="1.6"/><text x="821" y="572" class="chip-t">verificador</text></g>
+<g><rect x="916" y="557" width="66" height="22" rx="11" class="chip" stroke="#c98f00"/><circle cx="927" cy="568" r="4.5" fill="#c98f00" stroke="#c98f00" stroke-width="1.6"/><text x="937" y="572" class="chip-t">busca</text></g>
+<g><rect x="988" y="557" width="58" height="22" rx="11" class="chip" stroke="#2f7a4c"/><circle cx="999" cy="568" r="4.5" fill="#2f7a4c" stroke="#2f7a4c" stroke-width="1.6"/><text x="1009" y="572" class="chip-t">MCP</text></g>
+<g><rect x="800" y="634" width="66" height="22" rx="11" class="chip" stroke="#b8322c"/><circle cx="811" cy="645" r="4.5" fill="#b8322c" stroke="#b8322c" stroke-width="1.6"/><text x="821" y="649" class="chip-t">banco</text></g>
+<g><rect x="872" y="634" width="58" height="22" rx="11" class="chip" stroke="#2f7a4c"/><circle cx="883" cy="645" r="4.5" fill="#2f7a4c" stroke="#2f7a4c" stroke-width="1.6"/><text x="893" y="649" class="chip-t">MCP</text></g>
+<g><rect x="800" y="661" width="190" height="22" rx="11" class="chip-ex" stroke="#d0602a"/><circle cx="811" cy="672" r="4.5" fill="none" stroke="#d0602a" stroke-width="1.6"/><text x="821" y="676" class="chip-t">item da cópia: exemplo</text></g>
+<text x="998" y="676" class="nota-ex">o real vem na 9</text>
+<g><rect x="800" y="737" width="88" height="22" rx="11" class="chip" stroke="#3346b8"/><circle cx="811" cy="748" r="4.5" fill="#3346b8" stroke="#3346b8" stroke-width="1.6"/><text x="821" y="752" class="chip-t">contrato</text></g>
+<g><rect x="894" y="737" width="139" height="22" rx="11" class="chip" stroke="#7a3a8c"/><circle cx="905" cy="748" r="4.5" fill="#7a3a8c" stroke="#7a3a8c" stroke-width="1.6"/><text x="915" y="752" class="chip-t">estado da vigia</text></g>
+<g><rect x="1039" y="737" width="58" height="22" rx="11" class="chip" stroke="#2f7a4c"/><circle cx="1050" cy="748" r="4.5" fill="#2f7a4c" stroke="#2f7a4c" stroke-width="1.6"/><text x="1060" y="752" class="chip-t">MCP</text></g>
+<g><rect x="800" y="827" width="124" height="22" rx="11" class="chip" stroke="#3346b8"/><circle cx="811" cy="838" r="4.5" fill="#3346b8" stroke="#3346b8" stroke-width="1.6"/><text x="821" y="842" class="chip-t">hub de ensaio</text></g>
+<g><rect x="800" y="917" width="66" height="22" rx="11" class="chip" stroke="#c98f00"/><circle cx="811" cy="928" r="4.5" fill="#c98f00" stroke="#c98f00" stroke-width="1.6"/><text x="821" y="932" class="chip-t">busca</text></g>
+<g><rect x="872" y="917" width="58" height="22" rx="11" class="chip" stroke="#2f7a4c"/><circle cx="883" cy="928" r="4.5" fill="#2f7a4c" stroke="#2f7a4c" stroke-width="1.6"/><text x="893" y="932" class="chip-t">MCP</text></g>
+<g><rect x="936" y="917" width="66" height="22" rx="11" class="chip" stroke="#7a3a8c"/><circle cx="947" cy="928" r="4.5" fill="#7a3a8c" stroke="#7a3a8c" stroke-width="1.6"/><text x="957" y="932" class="chip-t">vigia</text></g>
+<g><rect x="1008" y="917" width="66" height="22" rx="11" class="chip" stroke="#b8322c"/><circle cx="1019" cy="928" r="4.5" fill="#b8322c" stroke="#b8322c" stroke-width="1.6"/><text x="1029" y="932" class="chip-t">banco</text></g>
+<g><rect x="800" y="1005" width="188" height="26" rx="13" class="chip-todas"/><text x="894" y="1023" text-anchor="middle" class="chip-t">os pedaços de todas as etapas</text></g>
+<g><rect x="800" y="1095" width="188" height="26" rx="13" class="chip-todas"/><text x="894" y="1113" text-anchor="middle" class="chip-t">tudo, junto e de verdade</text></g>
+</svg>
+  </div>
+  <div class="leia">
+    <div><b>Leia uma linha</b>a cor diz de onde veio o que a etapa usa. Quase tudo nasceu numa etapa acima; os dois alinhavos são a exceção.</div>
+    <div><b>Só dois alinhavos</b>nenhum por causa da segunda máquina: são o estado da vigia na etapa 3 e o item da cópia diária na etapa 6.</div>
+    <div><b>Entre duas etapas, um portão</b>a próxima só começa quando a anterior passar na revisão e for juntada.</div>
+  </div>
+  <div class="duas">
+    <div class="lado com"><span class="tag ok">com a escolha</span><h3>Em fila, peça real</h3>
+      <p>Cada etapa costura em cima do que já existe e foi revisado. O exemplo (dublê) só fica onde o real exigiria a segunda máquina, e nos dois alinhavos.</p></div>
+    <div class="lado sem"><span class="tag alt">alternativa · o plano anterior</span><h3>Todas ao mesmo tempo, com dublês</h3>
+      <p>Cada faixa trabalha contra imitações das outras ("entrega cedo no minuto N") e tudo se junta no fim.</p>
+      <p class="fato">Ontem, nesse formato: 5 dos 10 ramos com trabalho parcial, nenhum com teste de ponta a ponta verde.</p></div>
+  </div>
+</section>
+
+<!-- 2 -->
+<section class="peca" id="q2">
+  <div class="cab"><div class="botao">2</div><div><div class="q">pergunta 2 · a etapa 0</div><h2>Antes de cortar, <em>lavar o tecido</em></h2></div></div>
+  <p class="problema"><span class="tag">problema</span><span>Três peças do desenho nunca foram testadas. Se uma falhar, o desenho muda. Melhor saber antes de costurar qualquer coisa em cima.</span></p>
+  <div class="bacia">
+    <div class="amostra"><svg class="ic-a"><use href="#i-banco"/></svg>
+      <h3>Dois bancos copiando um para o outro</h3>
+      <p>com os documentos do sincronizador (LiveSync): é assim que as suas duas máquinas ficam iguais.</p>
+      <div class="k">hoje</div><p>nunca verificado</p>
+      <div class="k">se falhar, atinge</div><p><span class="sel">2 banco</span><span class="sel">3 MCP</span><span class="sel">6 vigia</span><span class="sel">9 manutenção</span></p></div>
+    <div class="amostra"><svg class="ic-a"><use href="#i-pastas"/></svg>
+      <h3>Pastas com ponto ficam de fora, mesmo lá dentro</h3>
+      <p><span class="mono">projeto/.git</span>, <span class="mono">projeto/.venv</span>, <span class="mono">projeto/.secrets</span>: o que tem ponto, dentro de outra pasta, não pode ir para o banco nem para a outra máquina.</p>
+      <div class="k">hoje</div><p>já vazaram uma vez no Windows; a regra nova (<span class="mono">.livesync/ignore</span>) nunca foi testada</p>
+      <div class="k">se falhar, atinge</div><p><span class="sel">2 banco</span></p></div>
+    <div class="amostra"><svg class="ic-a"><use href="#i-escudo"/></svg>
+      <h3>Os porteiros do Codex com acesso total</h3>
+      <p>o Codex do hub roda com acesso total nas duas máquinas (o modo restrito falha nesta).</p>
+      <div class="k">hoje</div><p>porteiros provados só no modo restrito</p>
+      <div class="k">se falhar, atinge</div><p><span class="sel">5 guardas</span><span class="sel">6 vigia</span><span class="sel">7 retomada</span><span class="sel">8 skills</span><span class="sel">10 kit</span></p></div>
+  </div>
+  <div class="duas">
+    <div class="lado com"><span class="tag ok">com a etapa 0</span><h3>O defeito aparece antes de tudo</h3>
+      <div class="mini"><svg viewBox="0 0 420 64" class="fita-mini" role="img" aria-label="Com a etapa 0: o defeito aparece na etapa 0, antes de tudo"><rect x="6" y="18" width="408" height="26" rx="3" class="fita"/><text x="24" y="36" text-anchor="middle" class="fm-num">0</text><text x="58" y="36" text-anchor="middle" class="fm-num">1</text><text x="92" y="36" text-anchor="middle" class="fm-num">2</text><text x="126" y="36" text-anchor="middle" class="fm-num">3</text><text x="160" y="36" text-anchor="middle" class="fm-num">4</text><text x="194" y="36" text-anchor="middle" class="fm-num">5</text><text x="228" y="36" text-anchor="middle" class="fm-num">6</text><text x="262" y="36" text-anchor="middle" class="fm-num">7</text><text x="296" y="36" text-anchor="middle" class="fm-num">8</text><text x="330" y="36" text-anchor="middle" class="fm-num">9</text><text x="364" y="36" text-anchor="middle" class="fm-num">10</text><text x="398" y="36" text-anchor="middle" class="fm-num">11</text><g transform="translate(24 10)"><circle r="9" class="xis-c"/><path d="M-4 -4l8 8M4 -4l-8 8" class="xis"/></g></svg></div>
+      <p>Se falhar, muda-se o desenho com nada costurado em cima.</p></div>
+    <div class="lado sem"><span class="tag alt">sem a etapa 0</span><h3>O defeito aparece no meio da fila</h3>
+      <div class="mini"><svg viewBox="0 0 420 64" class="fita-mini" role="img" aria-label="Sem a etapa 0: o defeito aparece na etapa 5, com as etapas 0 a 4 já feitas"><rect x="6" y="18" width="408" height="26" rx="3" class="fita"/><rect x="9" y="20" width="30" height="22" rx="2" class="feito"/><text x="24" y="36" text-anchor="middle" class="fm-num">0</text><rect x="43" y="20" width="30" height="22" rx="2" class="feito"/><text x="58" y="36" text-anchor="middle" class="fm-num">1</text><rect x="77" y="20" width="30" height="22" rx="2" class="feito"/><text x="92" y="36" text-anchor="middle" class="fm-num">2</text><rect x="111" y="20" width="30" height="22" rx="2" class="feito"/><text x="126" y="36" text-anchor="middle" class="fm-num">3</text><rect x="145" y="20" width="30" height="22" rx="2" class="feito"/><text x="160" y="36" text-anchor="middle" class="fm-num">4</text><text x="194" y="36" text-anchor="middle" class="fm-num">5</text><text x="228" y="36" text-anchor="middle" class="fm-num">6</text><text x="262" y="36" text-anchor="middle" class="fm-num">7</text><text x="296" y="36" text-anchor="middle" class="fm-num">8</text><text x="330" y="36" text-anchor="middle" class="fm-num">9</text><text x="364" y="36" text-anchor="middle" class="fm-num">10</text><text x="398" y="36" text-anchor="middle" class="fm-num">11</text><g transform="translate(194 10)"><circle r="9" class="xis-c"/><path d="M-4 -4l8 8M4 -4l-8 8" class="xis"/></g></svg></div>
+      <p>Na etapa que usa a peça (a 2 ou a 5), com as de cima já feitas e a fila parada ali.</p></div>
+  </div>
+</section>
+
+<!-- 3 -->
+<section class="peca" id="q3">
+  <div class="cab"><div class="botao">3</div><div><div class="q">pergunta 3 · os ramos de ontem</div><h2>Retalhos de ontem: <em>na gaveta</em>, não no corte</h2></div></div>
+  <p class="problema"><span class="tag">problema</span><span>Ontem cada faixa abriu o seu ramo ao mesmo tempo. O que fazer com eles agora que a construção vai em fila?</span></p>
+  <div class="q3">
+    <div class="ontem"><svg viewBox="0 0 330 245" class="cena-q3 ramos" role="img" aria-label="Os dez ramos de ontem, cinco com trabalho parcial"><text x="12" y="22" class="q3-tit">ontem: 10 ramos, um por faixa</text><line x1="20" y1="44" x2="300" y2="44" class="barra"/><path d="M20 44 C 20 80, 26 110, 20 150" class="ramo-ontem"/><circle cx="22" cy="84" r="4.5" class="commit"/><circle cx="22" cy="106" r="4.5" class="commit"/><text x="20" y="170" text-anchor="middle" class="q3-n">01</text><path d="M51 44 C 51 80, 57 110, 51 150" class="ramo-ontem"/><circle cx="53" cy="84" r="4.5" class="commit"/><text x="51" y="170" text-anchor="middle" class="q3-n">02</text><path d="M82 44 C 82 80, 88 110, 82 150" class="ramo-ontem"/><circle cx="84" cy="84" r="4.5" class="commit"/><text x="82" y="170" text-anchor="middle" class="q3-n">03</text><path d="M113 44 C 113 80, 119 110, 113 150" class="ramo-ontem"/><text x="113" y="170" text-anchor="middle" class="q3-n">04</text><path d="M144 44 C 144 80, 150 110, 144 150" class="ramo-ontem"/><text x="144" y="170" text-anchor="middle" class="q3-n">05</text><path d="M175 44 C 175 80, 181 110, 175 150" class="ramo-ontem"/><text x="175" y="170" text-anchor="middle" class="q3-n">06</text><path d="M206 44 C 206 80, 212 110, 206 150" class="ramo-ontem"/><circle cx="208" cy="84" r="4.5" class="commit"/><text x="206" y="170" text-anchor="middle" class="q3-n">07</text><path d="M237 44 C 237 80, 243 110, 237 150" class="ramo-ontem"/><text x="237" y="170" text-anchor="middle" class="q3-n">08</text><path d="M268 44 C 268 80, 274 110, 268 150" class="ramo-ontem"/><circle cx="270" cy="84" r="4.5" class="commit"/><text x="268" y="170" text-anchor="middle" class="q3-n">09</text><path d="M299 44 C 299 80, 305 110, 299 150" class="ramo-ontem"/><text x="299" y="170" text-anchor="middle" class="q3-n">10</text><text x="12" y="196" class="q3-p">● trabalho parcial (5 ramos)</text><text x="12" y="214" class="q3-p">nenhum com teste de ponta a ponta verde</text><text x="12" y="232" class="q3-p">escritos para o spec antigo</text><defs><marker id="ponta-q3" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 10 5 0 10z" fill="#5b4a3a"/></marker></defs></svg><div class="gav"><span class="seta-gav">renomeia</span><svg class="ic-gav"><use href="#i-gaveta"/></svg><b>gaveta</b><span class="mono">ontem/faixa-NN</span><small>e saem as pastas de trabalho de cada ramo</small></div></div>
+    <div class="integ"><svg viewBox="0 0 460 300" class="cena-q3" role="img" aria-label="Cada etapa nasce da ponta da integração e volta para ela; a gaveta só é consultada"><text x="12" y="22" class="q3-tit">hoje: cada etapa nasce da ponta</text><line x1="20" y1="170" x2="440" y2="170" class="integra"/><text x="22" y="220" class="q3-lbl">integração</text><text x="22" y="236" class="q3-p">o ramo onde cada etapa pronta é juntada</text><path d="M40 170 C 48 96, 142 96, 150 170" class="etapa-laco"/><text x="95.0" y="100" text-anchor="middle" class="q3-etapa">etapa 0</text><path d="M150 170 C 158 96, 252 96, 260 170" class="etapa-laco"/><text x="205.0" y="100" text-anchor="middle" class="q3-etapa">etapa 1</text><path d="M260 170 C 268 96, 362 96, 370 170" class="etapa-laco"/><text x="315.0" y="100" text-anchor="middle" class="q3-etapa">etapa 2</text><circle cx="40" cy="170" r="6.5" class="ponta"/><circle cx="150" cy="170" r="6.5" class="juncao"/><circle cx="260" cy="170" r="6.5" class="juncao"/><circle cx="370" cy="170" r="6.5" class="juncao"/><text x="40" y="192" text-anchor="middle" class="q3-p">ponta</text><text x="150" y="190" text-anchor="middle" class="q3-p">juntou = ponta nova</text><text x="420" y="175" class="q3-p">…</text><use href="#i-gaveta" x="330" y="236" width="38" height="38" class="ic-grande"/><path d="M350 234 C 345 200, 330 150, 318 128" class="consulta"/><text x="349" y="290" text-anchor="middle" class="q3-p">a gaveta só se consulta</text></svg></div>
+  </div>
+  <p class="arraste">← o quadro da integração se arrasta para o lado →</p>
+  <div class="duas">
+    <div class="lado com"><span class="tag ok">com a escolha</span><h3>Guardar e recomeçar da ponta</h3>
+      <ul><li>os ramos viram <span class="mono">ontem/faixa-NN</span>, só para consulta</li><li>cada etapa nasce da ponta da integração, com todas as etapas anteriores dentro</li></ul></div>
+    <div class="lado sem"><span class="tag alt">sem a escolha</span><h3>Continuar o ramo de ontem</h3>
+      <ul><li>o ramo nasceu sem as etapas de hoje</li><li>foi escrito para o spec antigo, antes das 23 escolhas</li></ul></div>
+  </div>
+</section>
+
+<!-- 4 -->
+<section class="peca" id="q4">
+  <div class="cab"><div class="botao">4</div><div><div class="q">pergunta 4 · como cada etapa é feita</div><h2>Uma ficha antes de cada etapa, <em>você ajusta</em></h2></div></div>
+  <p class="problema"><span class="tag">problema</span><span>Quem constrói, quem revisa, com que modelo e quantos no canvas? A resposta pode mudar de uma etapa para outra.</span></p>
+  <ol class="ciclo">
+    <li><div class="ic-c"><svg><use href="#i-etiqueta"/></svg></div><div class="quem">maestro</div><b>propõe a ficha</b>da próxima etapa</li>
+    <li class="voce"><div class="ic-c"><svg><use href="#i-lapis"/></svg></div><div class="quem">você</div><b>ajusta</b>e libera</li>
+    <li><div class="ic-c"><svg><use href="#i-agulha"/></svg></div><div class="quem">quem a ficha diz</div><b>constrói</b>a etapa</li>
+    <li><div class="ic-c"><svg><use href="#i-lupa"/></svg></div><div class="quem">quem a ficha diz</div><b>revisa</b></li>
+    <li class="passa"><div class="ic-c"><svg><use href="#i-no"/></svg></div><div class="quem">passou</div><b>junta</b>na integração</li>
+    <li><div class="ic-c"><svg><use href="#i-etiqueta"/></svg></div><div class="quem">maestro</div><b>a ficha seguinte</b>só agora</li>
+  </ol>
+  <p class="volta">↺ volta ao primeiro passo: 12 voltas, da etapa 0 à junção</p>
+  <div class="ficha-e-fila">
+    <div class="ficha" aria-label="A ficha de uma etapa">
+      <div class="ft">ficha da etapa</div><div class="fn">o que você ajusta</div>
+      <div class="campo"><svg><use href="#i-agulha"/></svg><span>quem constrói <span class="branco">____</span></span></div>
+      <div class="campo"><svg><use href="#i-lupa"/></svg><span>quem revisa <span class="branco">____</span></span></div>
+      <div class="campo"><svg><use href="#i-chip"/></svg><span>qual modelo <span class="branco">____</span></span></div>
+      <div class="campo"><svg><use href="#i-tela"/></svg><span>quantos no canvas <span class="branco">____</span></span></div>
+      <div class="ajuste"><svg><use href="#i-lapis"/></svg>o maestro preenche, você risca e troca</div>
+    </div>
+    <div class="rola"><svg viewBox="0 0 620 160" class="fila-fichas" role="img" aria-label="Exemplo: no meio da etapa 3, as fichas de 0 a 2 já foram usadas e as de 4 a 11 estão em branco"><rect x="6" y="84" width="608" height="32" rx="3" class="fita"/><text x="34" y="106" text-anchor="middle" class="fm-num">0</text><line x1="16" y1="84" x2="16" y2="58" class="cordao"/><g transform="translate(16 40) rotate(-10)"><path d="M-6 -12h16l10 12-10 12h-16z" class="ficha-usada"/><circle cx="0" cy="0" r="2.6" fill="#fff"/></g><text x="84" y="106" text-anchor="middle" class="fm-num">1</text><line x1="66" y1="84" x2="66" y2="58" class="cordao"/><g transform="translate(66 40) rotate(-10)"><path d="M-6 -12h16l10 12-10 12h-16z" class="ficha-usada"/><circle cx="0" cy="0" r="2.6" fill="#fff"/></g><text x="134" y="106" text-anchor="middle" class="fm-num">2</text><line x1="116" y1="84" x2="116" y2="58" class="cordao"/><g transform="translate(116 40) rotate(-10)"><path d="M-6 -12h16l10 12-10 12h-16z" class="ficha-usada"/><circle cx="0" cy="0" r="2.6" fill="#fff"/></g><text x="184" y="106" text-anchor="middle" class="fm-num">3</text><line x1="166" y1="84" x2="166" y2="58" class="cordao"/><g transform="translate(166 40) rotate(-10)"><path d="M-6 -12h16l10 12-10 12h-16z" class="ficha-viva"/><circle cx="0" cy="0" r="2.6" fill="#fff"/></g><text x="234" y="106" text-anchor="middle" class="fm-num">4</text><line x1="216" y1="84" x2="216" y2="58" class="cordao"/><g transform="translate(216 40) rotate(-10)"><path d="M-6 -12h16l10 12-10 12h-16z" class="ficha-futura"/><circle cx="0" cy="0" r="2.6" fill="#fff"/></g><text x="284" y="106" text-anchor="middle" class="fm-num">5</text><line x1="266" y1="84" x2="266" y2="58" class="cordao"/><g transform="translate(266 40) rotate(-10)"><path d="M-6 -12h16l10 12-10 12h-16z" class="ficha-futura"/><circle cx="0" cy="0" r="2.6" fill="#fff"/></g><text x="334" y="106" text-anchor="middle" class="fm-num">6</text><line x1="316" y1="84" x2="316" y2="58" class="cordao"/><g transform="translate(316 40) rotate(-10)"><path d="M-6 -12h16l10 12-10 12h-16z" class="ficha-futura"/><circle cx="0" cy="0" r="2.6" fill="#fff"/></g><text x="384" y="106" text-anchor="middle" class="fm-num">7</text><line x1="366" y1="84" x2="366" y2="58" class="cordao"/><g transform="translate(366 40) rotate(-10)"><path d="M-6 -12h16l10 12-10 12h-16z" class="ficha-futura"/><circle cx="0" cy="0" r="2.6" fill="#fff"/></g><text x="434" y="106" text-anchor="middle" class="fm-num">8</text><line x1="416" y1="84" x2="416" y2="58" class="cordao"/><g transform="translate(416 40) rotate(-10)"><path d="M-6 -12h16l10 12-10 12h-16z" class="ficha-futura"/><circle cx="0" cy="0" r="2.6" fill="#fff"/></g><text x="484" y="106" text-anchor="middle" class="fm-num">9</text><line x1="466" y1="84" x2="466" y2="58" class="cordao"/><g transform="translate(466 40) rotate(-10)"><path d="M-6 -12h16l10 12-10 12h-16z" class="ficha-futura"/><circle cx="0" cy="0" r="2.6" fill="#fff"/></g><text x="534" y="106" text-anchor="middle" class="fm-num">10</text><line x1="516" y1="84" x2="516" y2="58" class="cordao"/><g transform="translate(516 40) rotate(-10)"><path d="M-6 -12h16l10 12-10 12h-16z" class="ficha-futura"/><circle cx="0" cy="0" r="2.6" fill="#fff"/></g><text x="584" y="106" text-anchor="middle" class="fm-num">11</text><line x1="566" y1="84" x2="566" y2="58" class="cordao"/><g transform="translate(566 40) rotate(-10)"><path d="M-6 -12h16l10 12-10 12h-16z" class="ficha-futura"/><circle cx="0" cy="0" r="2.6" fill="#fff"/></g><text x="84" y="140" text-anchor="middle" class="q3-p">já feitas</text><text x="166" y="18" text-anchor="middle" class="q3-lbl">exemplo: a de agora</text><text x="234" y="140" class="q3-p">em branco: cada uma se escreve na hora dela</text></svg></div>
+  </div>
+  <div class="duas">
+    <div class="lado com"><span class="tag ok">com a escolha</span><h3>Uma ficha por etapa, na hora</h3>
+      <p>A ficha da etapa 6 se escreve depois que a 5 passou, já sabendo como a 5 foi.</p></div>
+    <div class="lado sem"><span class="tag alt">alternativa · o plano anterior</span><h3>Uma receita só, para todas, antes</h3>
+      <p>Um worker por faixa, todos juntos, uma hora de execução, fixado antes de começar.</p></div>
+  </div>
+</section>
+
+<aside class="lembrete">
+  <h2>Para a hora de cada etapa</h2>
+  <p style="margin:6px 0 0;color:var(--tinta2);font-size:15px">Não se decide agora. Cada pergunta volta na ficha da sua etapa.</p>
+  <ul class="alfinetes">
+    <li><span class="cab-alf"></span><span><span class="sel">0</span><span class="sel">2</span><span class="sel">3</span><span class="sel">6</span> os bancos de ensaio no Docker</span></li>
+    <li><span class="cab-alf"></span><span><span class="sel">1</span> copiar ou não os pilotos do vault</span></li>
+    <li><span class="cab-alf"></span><span><span class="sel">4</span> autorização e cota para o teste único do gemini (pelo FreeLLMAPI)</span></li>
+    <li><span class="cab-alf"></span><span><span class="sel">7</span><span class="sel">10</span> login do Claude Code, Codex e Copilot na pasta de usuário de ensaio</span></li>
+    <li><span class="cab-alf"></span><span><span class="sel">8</span> três lacunas sem dono: o registro do aval para mudar o contrato; o modelo do verificador da guarda; o erro quando uma peça some</span></li>
+  </ul>
+</aside>
+
+<section class="resumo">
+  <h2>As quatro perguntas, na ordem da rodada</h2>
+  <ol>
+    <li><div><b>A construção em etapas, uma depois da outra, nesta ordem</b><p>etapa 0, depois as 10 faixas na ordem da fita, e a junção; cada uma usa a entrega real das de cima, com só dois alinhavos.</p></div></li>
+    <li><div><b>A etapa 0 de provas de risco</b><p>testa primeiro os dois bancos copiando entre si, as pastas com ponto de fora e os porteiros do Codex com acesso total.</p></div></li>
+    <li><div><b>Os ramos de ontem</b><p>guardados como <span class="mono">ontem/faixa-NN</span> para consulta; cada etapa recomeça da ponta da integração.</p></div></li>
+    <li><div><b>Como você diz ao maestro como executar cada etapa</b><p>antes de cada etapa, o maestro propõe a ficha (quem constrói, quem revisa, qual modelo, quantos no canvas) e você ajusta.</p></div></li>
+  </ol>
+</section>
+
+<p class="rodape">Fontes: proposta de etapas do maestro (16/10), spec da construção (o que cada faixa pede das outras), lições do revisor Prisma.</p>
+</main>
+</body>
+</html>

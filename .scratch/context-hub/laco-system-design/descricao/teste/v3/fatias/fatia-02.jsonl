@@ -1,0 +1,24 @@
+{"n": 2, "pergunta": "Em que ordem o maestro do Maestri acessa o acervo do maestro, escolhe um papel e grava a instância dele numa casa de iniciativa, considerando a guarda que exige aval do Gustavo para alterar o acervo?", "tipo": "ordem"}
+{"n": 12, "pergunta": "Se uma pasta com ponto no nome, como .config, for editada diretamente no disco, o sincronizador levará essas mudanças para o par de máquinas?", "tipo": "o-que-nao-faz"}
+{"n": 22, "pergunta": "Qual a relação entre o **Vault** (cofre antigo) e o **GitHub privado** quando um arquivo é copiado do Vault para o hub, mas depois é editado no Obsidian sem passar pelo sync?", "tipo": "relacao"}
+{"n": 32, "pergunta": "Onde ficam as versões conflitantes de um arquivo que eu editei pelo cliente, mas o Gustavo alterou a mesma nota na máquina pessoal enquanto eu estava offline?", "tipo": "onde-vive"}
+{"n": 42, "pergunta": "Quem é responsável por decidir se um arquivo grande demais (acima de 200 MiB) deve ser movido para a *pasta não replicada* ou descartado, e quem aciona essa decisão?", "tipo": "quem-usa"}
+{"n": 52, "pergunta": "Quando o Sincronizador está offline, quem garante que as alterações feitas no disco não fiquem desatualizadas para o outro par?", "tipo": "responsavel"}
+{"n": 62, "pergunta": "Por que o hub não permite que o Gustavo edite arquivos na pasta não replicada (SSH) diretamente, exigindo que ele use a máquina local?", "tipo": "por-que"}
+{"n": 72, "pergunta": "Se o GitHub privado faz backup diário, mas o agente modifica um arquivo que ainda não foi replicado, o que ocorre com a versão no GitHub?", "tipo": "relacao"}
+{"n": 82, "pergunta": "Se o maestro do Maestri criar uma equipe de agentes que entram em conflito na mesma nota, como eu resolvo isso na tela de três vias?", "tipo": "falha"}
+{"n": 92, "pergunta": "Caso o maestro tente gravar uma mudança numa nota de retomada e o MCP do banco retorne um conflito de versão, o hook do agente é capaz de disparar uma resolução automática ou ele interrompe o fluxo?", "tipo": "falha"}
+{"n": 102, "pergunta": "E se a Pasta não replicada for modificada em uma máquina e o outro par tentar acessá-la via sincronização local?", "tipo": "falha"}
+{"n": 112, "pergunta": "Se o cliente tentar usar o hub sem estar conectado a um par, o que acontece?", "tipo": "o-que-nao-faz"}
+{"n": 122, "pergunta": "Se um agente tentar gravar uma nota enquanto o Gustavo está editando o mesmo arquivo no Obsidian, quem detecta o conflito primeiro?", "tipo": "quem-usa"}
+{"n": 132, "pergunta": "Quando a replicação do banco via Tailscale sofre um atraso de mais de 30 segundos, como o maestro lida com a divergência de notas de retomada durante a próxima sessão?", "tipo": "quando"}
+{"n": 142, "pergunta": "O que muda entre o cliente usar o Contrato do hub (AGENTS.md e skills globais) que o par ligado expõe e o cliente trazer o próprio contrato?", "tipo": "diferenca"}
+{"n": 152, "pergunta": "Quem pode acessar os arquivos da iniciativa TRF3 se o banco CouchDB estiver offline?", "tipo": "quem-usa"}
+{"n": 162, "pergunta": "O que acontece se eu tentar ler uma nota maior que 200 MiB pelo MCP de um par?", "tipo": "relacao"}
+{"n": 172, "pergunta": "Por que o hub usa uma rede privada Tailscale para comunicar com as máquinas?", "tipo": "por-que"}
+{"n": 182, "pergunta": "Se o Gustavo mover uma nota de uma pasta para outra no disco, o que acontece?", "tipo": "o-que-nao-faz"}
+{"n": 192, "pergunta": "Se um agente de código (como o Copilot) precisar ler um arquivo da pasta `initiatives/VOEGOL/` para executar uma tarefa, quem é responsável por trazer o trecho certo sem que o agente precise vasculhar todo o arquivo?", "tipo": "quem-usa"}
+{"n": 202, "pergunta": "Se a outra máquina recebe um arquivo que já está em seu banco, mas com metadados alterados (por exemplo, data de modificação), como ela lida com essa discrepância?", "tipo": "responsavel"}
+{"n": 212, "pergunta": "Se um cliente acessar o hub apenas como leitor via porta de entrada, onde o conteúdo que ele vê é servido (do banco local, do cache, etc.)?", "tipo": "se-x"}
+{"n": 222, "pergunta": "Se o agente iniciar em uma sessão fora do Hub, qual porta de entrada é usada e que grupo gerencia o acesso?", "tipo": "se-x"}
+{"n": 232, "pergunta": "O Vigia me avisa se houver uma divergência em um arquivo de cliente que eu ainda não vi?", "tipo": "onde-vive"}

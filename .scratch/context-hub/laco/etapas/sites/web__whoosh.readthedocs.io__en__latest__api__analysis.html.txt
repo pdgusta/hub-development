@@ -1,0 +1,782 @@
+Docs »
+
+Whoosh API »
+
+analysis module
+
+ Edit on Bitbucket
+
+analysis module¶
+
+Classes and functions for turning a piece of text into an indexable stream
+of “tokens” (usually equivalent to words). There are three general classes
+involved in analysis:
+
+Tokenizers are always at the start of the text processing pipeline. They take
+a string and yield Token objects (actually, the same token object over and
+over, for performance reasons) corresponding to the tokens (words) in the
+text.
+
+Every tokenizer is a callable that takes a string and returns an iterator of
+tokens.
+
+Filters take the tokens from the tokenizer and perform various
+transformations on them. For example, the LowercaseFilter converts all tokens
+to lowercase, which is usually necessary when indexing regular English text.
+
+Every filter is a callable that takes a token generator and returns a token
+generator.
+
+Analyzers are convenience functions/classes that “package up” a tokenizer and
+zero or more filters into a single unit. For example, the StandardAnalyzer
+combines a RegexTokenizer, LowercaseFilter, and StopFilter.
+
+Every analyzer is a callable that takes a string and returns a token
+iterator. (So Tokenizers can be used as Analyzers if you don’t need any
+filtering).
+
+You can compose tokenizers and filters together using the | character:
+
+my_analyzer = RegexTokenizer() | LowercaseFilter() | StopFilter()
+
+The first item must be a tokenizer and the rest must be filters (you can’t put
+a filter first or a tokenizer after the first item).
+
+Analyzers¶
+
+whoosh.analysis.IDAnalyzer(lowercase=False)¶
+
+Deprecated, just use an IDTokenizer directly, with a LowercaseFilter if
+desired.
+
+whoosh.analysis.KeywordAnalyzer(lowercase=False, commas=False)¶
+
+Parses whitespace- or comma-separated tokens.
+
+>>> ana = KeywordAnalyzer()
+>>> [token.text for token in ana("Hello there, this is a TEST")]
+["Hello", "there,", "this", "is", "a", "TEST"]
+
+Parameters:
+
+lowercase – whether to lowercase the tokens.
+
+commas – if True, items are separated by commas rather than
+whitespace.
+
+whoosh.analysis.RegexAnalyzer(expression='\\w+(\\.?\\w+)*', gaps=False)¶
+
+Deprecated, just use a RegexTokenizer directly.
+
+whoosh.analysis.SimpleAnalyzer(expression=<_sre.SRE_Pattern object>, gaps=False)¶
+
+Composes a RegexTokenizer with a LowercaseFilter.
+
+>>> ana = SimpleAnalyzer()
+>>> [token.text for token in ana("Hello there, this is a TEST")]
+["hello", "there", "this", "is", "a", "test"]
+
+Parameters:
+
+expression – The regular expression pattern to use to extract tokens.
+
+gaps – If True, the tokenizer splits on the expression, rather
+than matching on the expression.
+
+whoosh.analysis.StandardAnalyzer(expression=<_sre.SRE_Pattern object>, stoplist=frozenset(['and', 'is', 'it', 'an', 'as', 'at', 'have', 'in', 'yet', 'if', 'from', 'for', 'when', 'by', 'to', 'you', 'be', 'we', 'that', 'may', 'not', 'with', 'tbd', 'a', 'on', 'your', 'this', 'of', 'us', 'will', 'can', 'the', 'or', 'are']), minsize=2, maxsize=None, gaps=False)¶
+
+Composes a RegexTokenizer with a LowercaseFilter and optional
+StopFilter.
+
+>>> ana = StandardAnalyzer()
+>>> [token.text for token in ana("Testing is testing and testing")]
+["testing", "testing", "testing"]
+
+Parameters:
+
+expression – The regular expression pattern to use to extract tokens.
+
+stoplist – A list of stop words. Set this to None to disable
+the stop word filter.
+
+minsize – Words smaller than this are removed from the stream.
+
+maxsize – Words longer that this are removed from the stream.
+
+gaps – If True, the tokenizer splits on the expression, rather
+than matching on the expression.
+
+whoosh.analysis.StemmingAnalyzer(expression=<_sre.SRE_Pattern object>, stoplist=frozenset(['and', 'is', 'it', 'an', 'as', 'at', 'have', 'in', 'yet', 'if', 'from', 'for', 'when', 'by', 'to', 'you', 'be', 'we', 'that', 'may', 'not', 'with', 'tbd', 'a', 'on', 'your', 'this', 'of', 'us', 'will', 'can', 'the', 'or', 'are']), minsize=2, maxsize=None, gaps=False, stemfn=<function stem>, ignore=None, cachesize=50000)¶
+
+Composes a RegexTokenizer with a lower case filter, an optional stop
+filter, and a stemming filter.
+
+>>> ana = StemmingAnalyzer()
+>>> [token.text for token in ana("Testing is testing and testing")]
+["test", "test", "test"]
+
+Parameters:
+
+expression – The regular expression pattern to use to extract tokens.
+
+stoplist – A list of stop words. Set this to None to disable
+the stop word filter.
+
+minsize – Words smaller than this are removed from the stream.
+
+maxsize – Words longer that this are removed from the stream.
+
+gaps – If True, the tokenizer splits on the expression, rather
+than matching on the expression.
+
+ignore – a set of words to not stem.
+
+cachesize – the maximum number of stemmed words to cache. The larger
+this number, the faster stemming will be but the more memory it will
+use. Use None for no cache, or -1 for an unbounded cache.
+
+whoosh.analysis.FancyAnalyzer(expression='\\s+', stoplist=frozenset(['and', 'is', 'it', 'an', 'as', 'at', 'have', 'in', 'yet', 'if', 'from', 'for', 'when', 'by', 'to', 'you', 'be', 'we', 'that', 'may', 'not', 'with', 'tbd', 'a', 'on', 'your', 'this', 'of', 'us', 'will', 'can', 'the', 'or', 'are']), minsize=2, maxsize=None, gaps=True, splitwords=True, splitnums=True, mergewords=False, mergenums=False)¶
+
+Composes a RegexTokenizer with an IntraWordFilter, LowercaseFilter, and
+StopFilter.
+
+>>> ana = FancyAnalyzer()
+>>> [token.text for token in ana("Should I call getInt or get_real?")]
+["should", "call", "getInt", "get", "int", "get_real", "get", "real"]
+
+Parameters:
+
+expression – The regular expression pattern to use to extract tokens.
+
+stoplist – A list of stop words. Set this to None to disable
+the stop word filter.
+
+minsize – Words smaller than this are removed from the stream.
+
+maxsize – Words longer that this are removed from the stream.
+
+gaps – If True, the tokenizer splits on the expression, rather
+than matching on the expression.
+
+whoosh.analysis.NgramAnalyzer(minsize, maxsize=None)¶
+
+Composes an NgramTokenizer and a LowercaseFilter.
+
+>>> ana = NgramAnalyzer(4)
+>>> [token.text for token in ana("hi there")]
+["hi t", "i th", " the", "ther", "here"]
+
+whoosh.analysis.NgramWordAnalyzer(minsize, maxsize=None, tokenizer=None, at=None)¶
+
+whoosh.analysis.LanguageAnalyzer(lang, expression=<_sre.SRE_Pattern object>, gaps=False, cachesize=50000)¶
+
+Configures a simple analyzer for the given language, with a
+LowercaseFilter, StopFilter, and StemFilter.
+
+>>> ana = LanguageAnalyzer("es")
+>>> [token.text for token in ana("Por el mar corren las liebres")]
+['mar', 'corr', 'liebr']
+
+The list of available languages is in whoosh.lang.languages.
+You can use whoosh.lang.has_stemmer() and
+whoosh.lang.has_stopwords() to check if a given language has a
+stemming function and/or stop word list available.
+
+Parameters:
+
+expression – The regular expression pattern to use to extract tokens.
+
+gaps – If True, the tokenizer splits on the expression, rather
+than matching on the expression.
+
+cachesize – the maximum number of stemmed words to cache. The larger
+this number, the faster stemming will be but the more memory it will
+use.
+
+Tokenizers¶
+
+class whoosh.analysis.IDTokenizer¶
+
+Yields the entire input string as a single token. For use in indexed but
+untokenized fields, such as a document’s path.
+
+>>> idt = IDTokenizer()
+>>> [token.text for token in idt("/a/b 123 alpha")]
+["/a/b 123 alpha"]
+
+class whoosh.analysis.RegexTokenizer(expression=<_sre.SRE_Pattern object>, gaps=False)¶
+
+Uses a regular expression to extract tokens from text.
+
+>>> rex = RegexTokenizer()
+>>> [token.text for token in rex(u("hi there 3.141 big-time under_score"))]
+["hi", "there", "3.141", "big", "time", "under_score"]
+
+Parameters:
+
+expression – A regular expression object or string. Each match
+of the expression equals a token. Group 0 (the entire matched text)
+is used as the text of the token. If you require more complicated
+handling of the expression match, simply write your own tokenizer.
+
+gaps – If True, the tokenizer splits on the expression, rather
+than matching on the expression.
+
+class whoosh.analysis.CharsetTokenizer(charmap)¶
+
+Tokenizes and translates text according to a character mapping object.
+Characters that map to None are considered token break characters. For all
+other characters the map is used to translate the character. This is useful
+for case and accent folding.
+
+This tokenizer loops character-by-character and so will likely be much
+slower than RegexTokenizer.
+
+One way to get a character mapping object is to convert a Sphinx charset
+table file using whoosh.support.charset.charset_table_to_dict().
+
+>>> from whoosh.support.charset import charset_table_to_dict
+>>> from whoosh.support.charset import default_charset
+>>> charmap = charset_table_to_dict(default_charset)
+>>> chtokenizer = CharsetTokenizer(charmap)
+>>> [t.text for t in chtokenizer(u'Stra\xdfe ABC')]
+[u'strase', u'abc']
+
+The Sphinx charset table format is described at
+http://www.sphinxsearch.com/docs/current.html#conf-charset-table.
+
+Parameters:charmap – a mapping from integer character numbers to unicode
+characters, as used by the unicode.translate() method.
+
+whoosh.analysis.SpaceSeparatedTokenizer()¶
+
+Returns a RegexTokenizer that splits tokens by whitespace.
+
+>>> sst = SpaceSeparatedTokenizer()
+>>> [token.text for token in sst("hi there big-time, what's up")]
+["hi", "there", "big-time,", "what's", "up"]
+
+whoosh.analysis.CommaSeparatedTokenizer()¶
+
+Splits tokens by commas.
+
+Note that the tokenizer calls unicode.strip() on each match of the regular
+expression.
+
+>>> cst = CommaSeparatedTokenizer()
+>>> [token.text for token in cst("hi there, what's , up")]
+["hi there", "what's", "up"]
+
+class whoosh.analysis.NgramTokenizer(minsize, maxsize=None)¶
+
+Splits input text into N-grams instead of words.
+
+>>> ngt = NgramTokenizer(4)
+>>> [token.text for token in ngt("hi there")]
+["hi t", "i th", " the", "ther", "here"]
+
+Note that this tokenizer does NOT use a regular expression to extract
+words, so the grams emitted by it will contain whitespace, punctuation,
+etc. You may want to massage the input or add a custom filter to this
+tokenizer’s output.
+
+Alternatively, if you only want sub-word grams without whitespace, you
+could combine a RegexTokenizer with NgramFilter instead.
+
+Parameters:
+
+minsize – The minimum size of the N-grams.
+
+maxsize – The maximum size of the N-grams. If you omit
+this parameter, maxsize == minsize.
+
+class whoosh.analysis.PathTokenizer(expression='[^/]+')¶
+
+A simple tokenizer that given a string "/a/b/c" yields tokens
+["/a", "/a/b", "/a/b/c"].
+
+Filters¶
+
+class whoosh.analysis.PassFilter¶
+
+An identity filter: passes the tokens through untouched.
+
+class whoosh.analysis.LoggingFilter(logger=None)¶
+
+Prints the contents of every filter that passes through as a debug
+log entry.
+
+Parameters:target – the logger to use. If omitted, the “whoosh.analysis”
+logger is used.
+
+class whoosh.analysis.MultiFilter(**kwargs)¶
+
+Chooses one of two or more sub-filters based on the ‘mode’ attribute
+of the token stream.
+
+Use keyword arguments to associate mode attribute values with
+instantiated filters.
+
+>>> iwf_for_index = IntraWordFilter(mergewords=True, mergenums=False)
+>>> iwf_for_query = IntraWordFilter(mergewords=False, mergenums=False)
+>>> mf = MultiFilter(index=iwf_for_index, query=iwf_for_query)
+
+This class expects that the value of the mode attribute is consistent
+among all tokens in a token stream.
+
+class whoosh.analysis.TeeFilter(*filters)¶
+
+Interleaves the results of two or more filters (or filter chains).
+
+NOTE: because it needs to create copies of each token for each sub-filter,
+this filter is quite slow.
+
+>>> target = "ALFA BRAVO CHARLIE"
+>>> # In one branch, we'll lower-case the tokens
+>>> f1 = LowercaseFilter()
+>>> # In the other branch, we'll reverse the tokens
+>>> f2 = ReverseTextFilter()
+>>> ana = RegexTokenizer(r"\S+") | TeeFilter(f1, f2)
+>>> [token.text for token in ana(target)]
+["alfa", "AFLA", "bravo", "OVARB", "charlie", "EILRAHC"]
+
+To combine the incoming token stream with the output of a filter chain, use
+TeeFilter and make one of the filters a PassFilter.
+
+>>> f1 = PassFilter()
+>>> f2 = BiWordFilter()
+>>> ana = RegexTokenizer(r"\S+") | TeeFilter(f1, f2) | LowercaseFilter()
+>>> [token.text for token in ana(target)]
+["alfa", "alfa-bravo", "bravo", "bravo-charlie", "charlie"]
+
+class whoosh.analysis.ReverseTextFilter¶
+
+Reverses the text of each token.
+
+>>> ana = RegexTokenizer() | ReverseTextFilter()
+>>> [token.text for token in ana("hello there")]
+["olleh", "ereht"]
+
+class whoosh.analysis.LowercaseFilter¶
+
+Uses unicode.lower() to lowercase token text.
+
+>>> rext = RegexTokenizer()
+>>> stream = rext("This is a TEST")
+>>> [token.text for token in LowercaseFilter(stream)]
+["this", "is", "a", "test"]
+
+class whoosh.analysis.StripFilter¶
+
+Calls unicode.strip() on the token text.
+
+class whoosh.analysis.StopFilter(stoplist=frozenset(['and', 'is', 'it', 'an', 'as', 'at', 'have', 'in', 'yet', 'if', 'from', 'for', 'when', 'by', 'to', 'you', 'be', 'we', 'that', 'may', 'not', 'with', 'tbd', 'a', 'on', 'your', 'this', 'of', 'us', 'will', 'can', 'the', 'or', 'are']), minsize=2, maxsize=None, renumber=True, lang=None)¶
+
+Marks “stop” words (words too common to index) in the stream (and by
+default removes them).
+
+Make sure you precede this filter with a LowercaseFilter.
+
+>>> stopper = RegexTokenizer() | StopFilter()
+>>> [token.text for token in stopper(u"this is a test")]
+["test"]
+>>> es_stopper = RegexTokenizer() | StopFilter(lang="es")
+>>> [token.text for token in es_stopper(u"el lapiz es en la mesa")]
+["lapiz", "mesa"]
+
+The list of available languages is in whoosh.lang.languages.
+You can use whoosh.lang.has_stopwords() to check if a given language
+has a stop word list available.
+
+Parameters:
+
+stoplist – A collection of words to remove from the stream.
+This is converted to a frozenset. The default is a list of
+common English stop words.
+
+minsize – The minimum length of token texts. Tokens with
+text smaller than this will be stopped. The default is 2.
+
+maxsize – The maximum length of token texts. Tokens with text
+larger than this will be stopped. Use None to allow any length.
+
+renumber – Change the ‘pos’ attribute of unstopped tokens
+to reflect their position with the stopped words removed.
+
+lang – Automatically get a list of stop words for the given
+language
+
+class whoosh.analysis.StemFilter(stemfn=<function stem>, lang=None, ignore=None, cachesize=50000)¶
+
+Stems (removes suffixes from) the text of tokens using the Porter
+stemming algorithm. Stemming attempts to reduce multiple forms of the same
+root word (for example, “rendering”, “renders”, “rendered”, etc.) to a
+single word in the index.
+
+>>> stemmer = RegexTokenizer() | StemFilter()
+>>> [token.text for token in stemmer("fundamentally willows")]
+["fundament", "willow"]
+
+You can pass your own stemming function to the StemFilter. The default
+is the Porter stemming algorithm for English.
+
+>>> stemfilter = StemFilter(stem_function)
+
+You can also use one of the Snowball stemming functions by passing the
+lang keyword argument.
+
+>>> stemfilter = StemFilter(lang="ru")
+
+The list of available languages is in whoosh.lang.languages.
+You can use whoosh.lang.has_stemmer() to check if a given language has
+a stemming function available.
+
+By default, this class wraps an LRU cache around the stemming function. The
+cachesize keyword argument sets the size of the cache. To make the
+cache unbounded (the class caches every input), use cachesize=-1. To
+disable caching, use cachesize=None.
+
+If you compile and install the py-stemmer library, the
+PyStemmerFilter provides slightly easier access to the language
+stemmers in that library.
+
+Parameters:
+
+stemfn – the function to use for stemming.
+
+lang – if not None, overrides the stemfn with a language stemmer
+from the whoosh.lang.snowball package.
+
+ignore – a set/list of words that should not be stemmed. This is
+converted into a frozenset. If you omit this argument, all tokens
+are stemmed.
+
+cachesize – the maximum number of words to cache. Use -1 for
+an unbounded cache, or None for no caching.
+
+class whoosh.analysis.CharsetFilter(charmap)¶
+
+Translates the text of tokens by calling unicode.translate() using the
+supplied character mapping object. This is useful for case and accent
+folding.
+
+The whoosh.support.charset module has a useful map for accent folding.
+
+>>> from whoosh.support.charset import accent_map
+>>> retokenizer = RegexTokenizer()
+>>> chfilter = CharsetFilter(accent_map)
+>>> [t.text for t in chfilter(retokenizer(u'café'))]
+[u'cafe']
+
+Another way to get a character mapping object is to convert a Sphinx
+charset table file using
+whoosh.support.charset.charset_table_to_dict().
+
+>>> from whoosh.support.charset import charset_table_to_dict
+>>> from whoosh.support.charset import default_charset
+>>> retokenizer = RegexTokenizer()
+>>> charmap = charset_table_to_dict(default_charset)
+>>> chfilter = CharsetFilter(charmap)
+>>> [t.text for t in chfilter(retokenizer(u'Stra\xdfe'))]
+[u'strase']
+
+The Sphinx charset table format is described at
+http://www.sphinxsearch.com/docs/current.html#conf-charset-table.
+
+Parameters:charmap – a dictionary mapping from integer character numbers to
+unicode characters, as required by the unicode.translate() method.
+
+class whoosh.analysis.NgramFilter(minsize, maxsize=None, at=None)¶
+
+Splits token text into N-grams.
+
+>>> rext = RegexTokenizer()
+>>> stream = rext("hello there")
+>>> ngf = NgramFilter(4)
+>>> [token.text for token in ngf(stream)]
+["hell", "ello", "ther", "here"]
+
+Parameters:
+
+minsize – The minimum size of the N-grams.
+
+maxsize – The maximum size of the N-grams. If you omit this
+parameter, maxsize == minsize.
+
+at – If ‘start’, only take N-grams from the start of each word.
+if ‘end’, only take N-grams from the end of each word. Otherwise,
+take all N-grams from the word (the default).
+
+class whoosh.analysis.IntraWordFilter(delims=u'-_'"()!@#$%^&*[]{}<>\|;:, ./?`~=+', splitwords=True, splitnums=True, mergewords=False, mergenums=False)¶
+
+Splits words into subwords and performs optional transformations on
+subword groups. This filter is funtionally based on yonik’s
+WordDelimiterFilter in Solr, but shares no code with it.
+
+Split on intra-word delimiters, e.g. Wi-Fi -> Wi, Fi.
+
+When splitwords=True, split on case transitions,
+e.g. PowerShot -> Power, Shot.
+
+When splitnums=True, split on letter-number transitions,
+e.g. SD500 -> SD, 500.
+
+Leading and trailing delimiter characters are ignored.
+
+Trailing possesive “‘s” removed from subwords,
+e.g. O’Neil’s -> O, Neil.
+
+The mergewords and mergenums arguments turn on merging of subwords.
+
+When the merge arguments are false, subwords are not merged.
+
+PowerShot -> 0:Power, 1:Shot (where 0 and 1 are token
+positions).
+
+When one or both of the merge arguments are true, consecutive runs of
+alphabetic and/or numeric subwords are merged into an additional token with
+the same position as the last sub-word.
+
+PowerShot -> 0:Power, 1:Shot, 1:PowerShot
+
+A’s+B’s&C’s -> 0:A, 1:B, 2:C, 2:ABC
+
+Super-Duper-XL500-42-AutoCoder! -> 0:Super, 1:Duper, 2:XL,
+2:SuperDuperXL,
+3:500, 4:42, 4:50042, 5:Auto, 6:Coder,
+6:AutoCoder
+
+When using this filter you should use a tokenizer that only splits on
+whitespace, so the tokenizer does not remove intra-word delimiters before
+this filter can see them, and put this filter before any use of
+LowercaseFilter.
+
+>>> rt = RegexTokenizer(r"\S+")
+>>> iwf = IntraWordFilter()
+>>> lcf = LowercaseFilter()
+>>> analyzer = rt | iwf | lcf
+
+One use for this filter is to help match different written representations
+of a concept. For example, if the source text contained wi-fi, you
+probably want wifi, WiFi, wi-fi, etc. to match. One way of doing this
+is to specify mergewords=True and/or mergenums=True in the analyzer used
+for indexing, and mergewords=False / mergenums=False in the analyzer used
+for querying.
+
+>>> iwf_i = IntraWordFilter(mergewords=True, mergenums=True)
+>>> iwf_q = IntraWordFilter(mergewords=False, mergenums=False)
+>>> iwf = MultiFilter(index=iwf_i, query=iwf_q)
+>>> analyzer = RegexTokenizer(r"\S+") | iwf | LowercaseFilter()
+
+(See MultiFilter.)
+
+Parameters:
+
+delims – a string of delimiter characters.
+
+splitwords – if True, split at case transitions,
+e.g. PowerShot -> Power, Shot
+
+splitnums – if True, split at letter-number transitions,
+e.g. SD500 -> SD, 500
+
+mergewords – merge consecutive runs of alphabetic subwords into
+an additional token with the same position as the last subword.
+
+mergenums – merge consecutive runs of numeric subwords into an
+additional token with the same position as the last subword.
+
+class whoosh.analysis.CompoundWordFilter(wordset, keep_compound=True)¶
+
+Given a set of words (or any object with a __contains__ method),
+break any tokens in the stream that are composites of words in the word set
+into their individual parts.
+
+Given the correct set of words, this filter can break apart run-together
+words and trademarks (e.g. “turbosquid”, “applescript”). It can also be
+useful for agglutinative languages such as German.
+
+The keep_compound argument lets you decide whether to keep the
+compound word in the token stream along with the word segments.
+
+>>> cwf = CompoundWordFilter(wordset, keep_compound=True)
+>>> analyzer = RegexTokenizer(r"\S+") | cwf
+>>> [t.text for t in analyzer("I do not like greeneggs and ham")
+["I", "do", "not", "like", "greeneggs", "green", "eggs", "and", "ham"]
+>>> cwf.keep_compound = False
+>>> [t.text for t in analyzer("I do not like greeneggs and ham")
+["I", "do", "not", "like", "green", "eggs", "and", "ham"]
+
+Parameters:
+
+wordset – an object with a __contains__ method, such as a
+set, containing strings to look for inside the tokens.
+
+keep_compound – if True (the default), the original compound
+token will be retained in the stream before the subwords.
+
+class whoosh.analysis.BiWordFilter(sep='-')¶
+
+Merges adjacent tokens into “bi-word” tokens, so that for example:
+
+"the", "sign", "of", "four"
+
+becomes:
+
+"the-sign", "sign-of", "of-four"
+
+This can be used to create fields for pseudo-phrase searching, where if
+all the terms match the document probably contains the phrase, but the
+searching is faster than actually doing a phrase search on individual word
+terms.
+
+The BiWordFilter is much faster than using the otherwise equivalent
+ShingleFilter(2).
+
+class whoosh.analysis.ShingleFilter(size=2, sep='-')¶
+
+Merges a certain number of adjacent tokens into multi-word tokens, so
+that for example:
+
+"better", "a", "witty", "fool", "than", "a", "foolish", "wit"
+
+with ShingleFilter(3, ' ') becomes:
+
+'better a witty', 'a witty fool', 'witty fool than', 'fool than a',
+'than a foolish', 'a foolish wit'
+
+This can be used to create fields for pseudo-phrase searching, where if
+all the terms match the document probably contains the phrase, but the
+searching is faster than actually doing a phrase search on individual word
+terms.
+
+If you’re using two-word shingles, you should use the functionally
+equivalent BiWordFilter instead because it’s faster than
+ShingleFilter.
+
+class whoosh.analysis.DelimitedAttributeFilter(delimiter='^', attribute='boost', default=1.0, type=<type 'float'>)¶
+
+Looks for delimiter characters in the text of each token and stores the
+data after the delimiter in a named attribute on the token.
+
+The defaults are set up to use the ^ character as a delimiter and store
+the value after the ^ as the boost for the token.
+
+>>> daf = DelimitedAttributeFilter(delimiter="^", attribute="boost")
+>>> ana = RegexTokenizer("\\S+") | DelimitedAttributeFilter()
+>>> for t in ana(u("image render^2 file^0.5"))
+... print("%r %f" % (t.text, t.boost))
+'image' 1.0
+'render' 2.0
+'file' 0.5
+
+Note that you need to make sure your tokenizer includes the delimiter and
+data as part of the token!
+
+Parameters:
+
+delimiter – a string that, when present in a token’s text,
+separates the actual text from the “data” payload.
+
+attribute – the name of the attribute in which to store the
+data on the token.
+
+default – the value to use for the attribute for tokens that
+don’t have delimited data.
+
+type – the type of the data, for example str or float.
+This is used to convert the string value of the data before
+storing it in the attribute.
+
+class whoosh.analysis.DoubleMetaphoneFilter(primary_boost=1.0, secondary_boost=0.5, combine=False)¶
+
+Transforms the text of the tokens using Lawrence Philips’s Double
+Metaphone algorithm. This algorithm attempts to encode words in such a way
+that similar-sounding words reduce to the same code. This may be useful for
+fields containing the names of people and places, and other uses where
+tolerance of spelling differences is desireable.
+
+Parameters:
+
+primary_boost – the boost to apply to the token containing the
+primary code.
+
+secondary_boost – the boost to apply to the token containing the
+secondary code, if any.
+
+combine – if True, the original unencoded tokens are kept in the
+stream, preceding the encoded tokens.
+
+class whoosh.analysis.SubstitutionFilter(pattern, replacement)¶
+
+Performs a regular expression substitution on the token text.
+
+This is especially useful for removing text from tokens, for example
+hyphens:
+
+ana = RegexTokenizer(r"\S+") | SubstitutionFilter("-", "")
+
+Because it has the full power of the re.sub() method behind it, this filter
+can perform some fairly complex transformations. For example, to take
+tokens like 'a=b', 'c=d', 'e=f' and change them to 'b=a', 'd=c',
+'f=e':
+
+# Analyzer that swaps the text on either side of an equal sign
+rt = RegexTokenizer(r"\S+")
+sf = SubstitutionFilter("([^/]*)/(./*)", r"\2/\1")
+ana = rt | sf
+
+Parameters:
+
+pattern – a pattern string or compiled regular expression object
+describing the text to replace.
+
+replacement – the substitution text.
+
+Token classes and functions¶
+
+class whoosh.analysis.Token(positions=False, chars=False, removestops=True, mode='', **kwargs)¶
+
+Represents a “token” (usually a word) extracted from the source text being
+indexed.
+
+See “Advanced analysis” in the user guide for more information.
+
+Because object instantiation in Python is slow, tokenizers should create
+ONE SINGLE Token object and YIELD IT OVER AND OVER, changing the attributes
+each time.
+
+This trick means that consumers of tokens (i.e. filters) must never try to
+hold onto the token object between loop iterations, or convert the token
+generator into a list. Instead, save the attributes between iterations,
+not the object:
+
+def RemoveDuplicatesFilter(self, stream):
+ # Removes duplicate words.
+ lasttext = None
+ for token in stream:
+ # Only yield the token if its text doesn't
+ # match the previous token.
+ if lasttext != token.text:
+ yield token
+ lasttext = token.text
+
+...or, call token.copy() to get a copy of the token object.
+
+Parameters:
+
+positions – Whether tokens should have the token position in the
+‘pos’ attribute.
+
+chars – Whether tokens should have character offsets in the
+‘startchar’ and ‘endchar’ attributes.
+
+removestops – whether to remove stop words from the stream (if
+the tokens pass through a stop filter).
+
+mode – contains a string describing the purpose for which the
+analyzer is being called, i.e. ‘index’ or ‘query’.
+
+whoosh.analysis.unstopped(tokenstream)¶
+
+Removes tokens from a token stream where token.stopped = True.

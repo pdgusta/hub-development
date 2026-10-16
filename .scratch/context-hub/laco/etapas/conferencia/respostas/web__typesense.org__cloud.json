@@ -1,0 +1,33 @@
+{
+ "chave": "web:typesense.org/cloud",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T21:11:31Z",
+ "resultado": "corrige",
+ "conferencia": {
+  "resultado": "corrige",
+  "final": {
+   "serve": "search",
+   "role": "Hosted SaaS version of the Typesense search engine (managed clusters)",
+   "place": [
+    "network_service"
+   ],
+   "mechanism": [
+    "full_text",
+    "vector",
+    "embeddings"
+   ],
+   "mcp": "unknown",
+   "windows": "unknown",
+   "portuguese": "unknown",
+   "license": "unknown",
+   "maturity": "stable",
+   "doubt": false,
+   "evidence": "Typesense Cloud is the hosted SaaS version of our Open Source product; GPU Acceleration for efficient embedding generation; Run Typesense Locally or in CI"
+  },
+  "o_que_mudou": [
+   "mechanism: vector, other -> full_text, vector, embeddings, per README",
+   "maturity/windows kept stable/unknown"
+  ],
+  "nota": "Managed hosting of Typesense; relevant only if the hub accepts sending notes to a SaaS, otherwise the self-hosted engine is the option."
+ }
+}

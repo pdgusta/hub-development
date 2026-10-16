@@ -1,0 +1,71 @@
+{
+ "chave": "gh:valeriansaliou/sonic",
+ "nomes": [
+  "Sonic",
+  "Sonic (como capa de indexación subyacente)",
+  "Sonic Search Server"
+ ],
+ "urls": [
+  "https://github.com/valeriansaliou/sonic",
+  "https://values.dev sonic/",
+  "https://sonic.rs",
+  "https://valueseric.com/sonic/",
+  "https://sonic.search",
+  "https://valueseric.github.io/sonic/",
+  "https://github.com/sonic-io/sonic",
+  "https://github.com/sonicsearch/sonic",
+  "https://github.com/quasilyte/sonic"
+ ],
+ "readme_cortado": true,
+ "readme": "# Sonic\n\n[![dependency status](https://deps.rs/repo/github/valeriansaliou/sonic/status.svg)](https://deps.rs/repo/github/valeriansaliou/sonic) [![Buy Me A Coffee](https://img.shields.io/badge/buy%20me%20a%20coffee-donate-yellow.svg)](https://www.buymeacoffee.com/valeriansaliou)\n\n**Sonic is a fast, lightweight and schema-less search backend. It ingests search texts and identifier tuples that can then be queried against in a microsecond's time.**\n\nSonic can be used as a simple alternative to super-heavy and full-featured search backends such as Elasticsearch in some use-cases. It is capable of normalizing natural language search queries, auto-completing a search query and providing the most relevant results for a query. Sonic is an identifier index, rather than a document index; when queried, it returns IDs that can then be used to refer to the matched documents in an external database.\n\nA strong attention to performance and code cleanliness has been given when designing Sonic. It aims at being crash-free, super-fast and puts minimum strain on server resources (our measurements have shown that Sonic - when under load - responds to search queries in the μs range, eats ~30MB RAM and has a low CPU footprint; [see our benchmarks](https://github.com/valeriansaliou/sonic#how-fast--lightweight-is-it)).\n\n_Tested at Rust version: `rustc 1.98.0 (88d9e12ae 2026-08-18)`_\n\n**🇫🇷 Crafted in Nantes, France.**\n\n**📰 The Sonic project was initially announced in [a post on my personal journal](https://journal.valeriansaliou.name/announcing-sonic-a-super-light-alternative-to-elasticsearch/).**\n\n![Sonic](https://valeriansaliou.github.io/sonic/images/banner.jpg)\n\n> _« Sonic » is the mascot of the Sonic project. I drew it to look like a psychedelic hipster hedgehog._\n\n## Who uses it?\n\n<table>\n<tr>\n<td align=\"center\"><a href=\"https://crisp.chat/\"><img src=\"https://valeriansaliou.github.io/sonic/images/logo-crisp.png\" width=\"64\" alt=\"Crisp logo\" /></a></td>\n<td align=\"center\"><a href=\"https://scrumpy.io/\"><img src=\"https://valeriansaliou.github.io/sonic/images/logo-scrumpy.png\" width=\"64\" alt=\"Scrumpy logo\" /></a></td>\n</tr>\n<tr>\n<td align=\"center\">Crisp</td>\n<td align=\"center\">Scrumpy</td>\n</tr>\n</table>\n\n_👋 You use Sonic and you want to be listed there? [Contact me](https://valeriansaliou.name/)._\n\n## Demo\n\nSonic is integrated in all Crisp search products on the [Crisp](https://crisp.chat/) platform. It is used to index half a billion objects on a $5/mth 1-vCPU SSD cloud server (as of 2019). Crisp users use it to search in their messages, conversations, contacts, helpdesk articles and more.\n\n**You can test Sonic live on: [Crisp Helpdesk](https://help.crisp.chat/), and get an idea of the speed and relevance of Sonic search results. You can also test search suggestions from there: start typing at least 2 characters for a word, and get suggested a full word (press the tab key to expand suggestion). _Both search and suggestions are powered by Sonic._**\n\n![Demo on Crisp Helpdesk search](https://valeriansaliou.github.io/sonic/images/crisp-search-demo.gif)\n\n> _Sonic fuzzy search in helpdesk articles at its best. Lookup for any word or group of terms, get results instantly._\n\n## Features\n\n* **Search terms are stored in collections, organized in buckets**; you may use a single bucket, or a bucket per user on your platform if you need to search in separate indexes.\n* **Search results return object identifiers**, that can be resolved from an external database if you need to enrich the search results. This makes Sonic a simple word index, that points to identifier results. Sonic doesn't store any direct textual data in its index, but it still holds a word graph for auto-completion and typo corrections.\n* **Search query typos are corrected** if there are not enough exact-match results for a given word in a search query, Sonic tries to correct the word and tries against alternate words. You're allowed to make mistakes when searching.\n* **Insert and remove items in the index**; index-altering operations are light and can be committed to the server while it is running. A background tasker handles the job of consolidating the index so that the entries you have pushed or popped are quickly made available for search.\n* **Auto-complete any word** in real-time via the suggest operation. This helps build a snappy word suggestion feature in your end-user search interface.\n* **Full Unicode compatibility** on 80+ most spoken languages in the world. Sonic removes useless stop words from any text (eg. 'the' in English), after guessing the text language. This ensures any searched or ingested text is clean before it hits the index; [see languages](https://github.com/valeriansaliou/sonic#which-text-languages-are-supported).\n* **Simple protocol (Sonic Channel)**, that let you search your index, manage data ingestion (push in the index, pop from the index, flush a collection, flush a bucket, etc.) and perform administrative actions. Sonic Channel was designed to be lightweight on resources and simple to integrate with; [read protocol specification](https://github.com/valeriansaliou/sonic/blob/master/PROTOCOL.md).\n* **Easy-to-use libraries**, that let you connect to Sonic from your apps; [see libraries](https://github.com/valeriansaliou/sonic#-sonic-channel-libraries).\n\n## How to use it?\n\n### Installation\n\nSonic is built in Rust. To install it, either download a version from the [Sonic releases](https://github.com/valeriansaliou/sonic/releases) page, use `cargo install` or pull the source code from `master`.\n\n**👉 Install from packages:**\n\nSonic provides [pre-built packages](https://packagecloud.io/valeriansaliou/sonic) for Debian-based systems (Debian, Ubuntu, etc.).\n\n**Important: Sonic only provides 64 bits packages targeting Debian 12 for now (codename: `bookworm`). You might still be able to use them on other Debian versions, as well as Ubuntu (although they rely on a specific `glibc` version that might not be available on older or newer systems).**\n\nFirst, add the Sonic APT repository (eg. for Debian `bookworm`):\n\n```bash\necho \"deb [signed-by=/usr/share/keyrings/valeriansaliou_sonic.gpg] https://packagecloud.io/valeriansaliou/sonic/debian/ bookworm main\" > /etc/apt/sources.list.d/valeriansaliou_sonic.list\n```\n\n```bash\ncurl -fsSL https://packagecloud.io/valeriansaliou/sonic/gpgkey | gpg --dearmor -o /usr/share/keyrings/valeriansaliou_sonic.gpg\n```\n\n```bash\napt-get update\n```\n\nThen, install the Sonic package:\n\n```bash\napt-get install sonic\n```\n\nThen, edit the pre-filled Sonic configuration file:\n\n```bash\nnano /etc/sonic.cfg\n```\n\nFinally, restart Sonic:\n\n```bash\nservice sonic restart\n```\n\n**👉 Install from source:**\n\nIf you pulled the source code from Git, you can build it using `cargo`:\n\n```bash\ncargo build --locked --release\n```\n\nYou can find the built binaries in the `./target/release` directory.\n\n_Install `build-essential`, `clang`, `libclang-dev`, `libc6-dev`, `g++` and `llvm-dev` to be able to compile the required RocksDB dependency._\n\nNote that the following optional features can be enabled upon building Sonic: `allocator-jemalloc`, `tokenizer-chinese` and `tokenizer-japanese` (some might be already enabled by default).\n\n**👉 Install from Cargo:**\n\nYou can install Sonic directly with `cargo install`:\n\n```bash\ncargo install sonic-server\n```\n\nEnsure that your `$PATH` is properly configured to source the Crates binaries, and then run Sonic using the `sonic` command.\n\n_Install `build-essential`, `clang`, `libclang-dev`, `libc6-dev`, `g++` and `llvm-dev` to be able to compile the required RocksDB dependency._\n\n**👉 Install from Docker Hub:**\n\nYou might find it convenient to run Sonic via Docker. You can find the pre-built Sonic image on Docker Hub as [valeriansaliou/sonic](https://hub.docker.com/r/valeriansaliou/sonic/).\n\nFirst, pull the `valeriansaliou/sonic` image:\n\n```bash\ndocker pull valeriansaliou/sonic:v1.10.2\n```\n\nThen, seed it a configuration file and run it (replace `/path/to/your/sonic/config.cfg` with the path to your configuration file):\n\n```bash\ndocker run -p 1491:1491 -v /path/to/your/sonic/config.cfg:/etc/sonic/config.toml -v /path/to/your/sonic/store/:/var/lib/sonic/store/ valeriansaliou/sonic:v1.4.9\n```\n\nIn the configuration file, ensure that:\n\n* `channel.inet` is set to `0.0.0.0:1491` (this lets Sonic be reached from outside the container)\n* `store.kv.path` is set to `/var/lib/sonic/store/kv/` (this lets the external KV store directory be reached by Sonic)\n* `store.fst.path` is set to `/var/lib/sonic/store/fst/` (this lets the external FST store directory be reached by Sonic)\n\nSonic will be reachable from `tcp://localhost:1491`.\n\n**👉 Install from another source (non-official):**\n\nOther installation sources are available:\n\n* **Homebrew (macOS)**: `brew install sonic` ([see formula](https://formulae.brew.sh/formula/sonic))\n\n_Note that those sources are non-official, meaning that they are not owned nor maintained by the Sonic project owners. The latest Sonic version available on those sources might be outdated, in comparison to the latest version available through the Sonic project._\n\n### Configuration\n\nUse the sample [config.cfg](https://github.com/valeriansaliou/sonic/blob/master/config.cfg) configuration file and adjust it to your own environment.\n\n_If you are looking to fine-tune your configuration, you may read our [detailed configuration documentation](https://github.com/valeriansaliou/sonic/blob/master/CONFIGURATION.md)._\n\n### Run Sonic\n\nSonic can be run as such:\n\n`./sonic -c /path/to/config.cfg`\n\n## Perform searches and manage objects\n\nBoth searches and object management (i.e. data ingestion) is handled via the Sonic Channel protocol only. As we want to keep things simple with Sonic (similarly to how Redis does it), Sonic does not offer a HTTP endpoint or similar; connecting via Sonic Channel is the way to go when you need to interact with the Sonic search database.\n\nSonic distributes official libraries, that let you integrate Sonic to your apps easily. Click on a library below to see library integration documentation and code.\n\n_If you are looking for details on the raw Sonic Channel TCP-based protocol, you can read our [detailed protocol documentation](https://github.com/valeriansaliou/sonic/blob/master/PROTOCOL.md). It can prove handy if you are looking to code your own Sonic Channel library._\n\n### 📦 Sonic Channel Libraries\n\n#### 1️⃣ Official Libraries\n\nSonic distributes official Sonic integration libraries for your programming language (official means that those libraries have been reviewed and validated by a core maintainer):\n\n* **NodeJS**:\n  * **[node-sonic-channel](https://www.npmjs.com/package/sonic-channel)** by [@valeriansaliou](https://github.com/valeriansaliou)\n    * Battle tested by [Crisp](https://crisp.chat/)\n* **Rust**:\n  * **[sonic_client](https://crates.io/crates/sonic_client)** by [@RemiBardon](https://github.com/RemiBardon)\n    * Modern and flexible implementation, maintained alongside Sonic\n* **PHP**:\n  * **[psonic](https://github.com/ppshobi/psonic)** by [@ppshobi](https://github.com/ppshobi)\n\n#### 2️⃣ Community Libraries\n\nYou can find below a list of Sonic integrations provided by the community (many thanks to them!):\n\n* **Rust**:\n  * **[sonic-channel](https://github.com/pleshevskiy/sonic-channel)** by [@pleshevskiy](https://github.com/pleshevskiy)\n  * ~~**[sonic_client](https://github.com/FrontMage/sonic_client)** by [@FrontMage](https://github.com/FrontMage)~~\n    * Replaced by **[sonic_client](https://crates.io/crates/sonic_client)** by [@RemiBardon](https://github.com/RemiBardon), many thanks again for the ownership transfer!\n* **Python**:\n  * **[asonic](https://github.com/moshe/asonic)** by [@moshe](https://github.com/moshe)\n  * **[python-sonic-client](https://github.com/xmonader/python-sonic-client)** by [@xmonader](https://github.com/xmonader)\n  * **[pysonic-channel](https://github.com/AlongWY/pysonic)** by [@AlongWY](https://github.com/AlongWY)\n* **Ruby**:\n  * **[sonic-ruby]",
+ "fonte": "readme",
+ "respostas": [
+  {
+   "por": "gemma-4-31b",
+   "resposta": {
+    "serve": "search",
+    "role": "fast, lightweight search backend providing identifier index for documents",
+    "place": [
+     "network_service"
+    ],
+    "mechanism": [
+     "full_text",
+     "other"
+    ],
+    "mcp": "no",
+    "windows": "unknown",
+    "portuguese": "yes",
+    "license": "unknown",
+    "maturity": "stable",
+    "doubt": false,
+    "evidence": "Sonic is a fast, lightweight and schema-less search backend. ... Full Unicode compatibility on 80+ most spoken languages"
+   }
+  },
+  {
+   "por": "llama-3.2-11b-vision-instruct",
+   "resposta": {
+    "serve": "search",
+    "role": "Fast, lightweight search backend for indexing and querying",
+    "place": [
+     "disk",
+     "network_service",
+     "library"
+    ],
+    "mechanism": [
+     "bm25",
+     "full_text",
+     "vector",
+     "hybrid",
+     "other"
+    ],
+    "mcp": "no",
+    "windows": "yes",
+    "portuguese": "yes",
+    "license": "unknown",
+    "maturity": "beta",
+    "doubt": false,
+    "evidence": "Sonic is a fast, lightweight and schema-less search backend. It ingests search texts and identifier tuples that can then be queried against in a microsecond's time."
+   }
+  }
+ ]
+}

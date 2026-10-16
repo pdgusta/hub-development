@@ -1,0 +1,64 @@
+{
+  "metodo": "Johnny.Decimal",
+  "fontes": [
+    {"url": "https://johnnydecimal.com/documentation/introduction", "acessada_em": "2026-10-10", "status": "ok"},
+    {"url": "https://johnnydecimal.com/", "acessada_em": "2026-10-10", "status": "ok"}
+  ],
+  "o_que_e": {
+    "resumo": "Sistema que ajuda a organizar informações com uma estrutura simples de IDs numerados: cada item recebe um ID único, e um índice liga tudo. Segundo a home, é gratuito, funciona melhor com o Obsidian e o usuário controla seus próprios dados.",
+    "citacao": "Johnny.Decimal is a system that helps you be more organised. It gives you a simple structure so you can easily find your stuff. Everything gets an ID like 12.12 Home insurance & claims. The system is free. Use it at home or work. It works best with an app like Obsidian, but use whatever you want. You control your own data.",
+    "url": "https://johnnydecimal.com/"
+  },
+  "nivel_raiz": [
+    {
+      "categoria": "Áreas (cabinets, por exemplo 10-19 Life admin)",
+      "o_que_mora": "Cada área é um 'armário' que abriga categorias. A página dá exemplos de áreas (life admin, home business, tennis club), sem regra fixa de quais áreas existem. Cada área tem espaço para 10 categorias.",
+      "citacao": "Each cabinet has space for 10 drawers, so we categorise what we want to store.",
+      "url": "https://johnnydecimal.com/documentation/introduction"
+    },
+    {
+      "categoria": "Categorias (drawers, por exemplo 15 Travel)",
+      "o_que_mora": "Cada categoria é uma 'gaveta' dentro de uma área, com um número e um nome, e reúne IDs de folders relacionados. Exemplo da fonte: 15 Travel contém 15.22 Travel insurance, 15.23 Loyalty programs e 15.24 Checklists.",
+      "citacao": "The drawers are category folders.",
+      "url": "https://johnnydecimal.com/documentation/introduction"
+    },
+    {
+      "categoria": "IDs (folders, por exemplo 15.22 Travel insurance)",
+      "o_que_mora": "Cada ID é uma pasta numerada onde ficam os arquivos do item. Formato: dois dígitos, ponto, dois dígitos.",
+      "citacao": "It always has two digits, a decimal, and two digits.",
+      "url": "https://johnnydecimal.com/documentation/introduction"
+    }
+  ],
+  "criterio_de_separacao": {
+    "resumo": "A fonte descreve a categorização pelo que se quer guardar, dentro de limite de 10 por nível; não define regra formal para decidir a categoria de cada item.",
+    "citacao": "Each cabinet has space for 10 drawers, so we categorise what we want to store.",
+    "url": "https://johnnydecimal.com/documentation/introduction"
+  },
+  "quando_termina_ou_envelhece": {
+    "resumo": null,
+    "citacao": null,
+    "url": null
+  },
+  "conteudo_compartilhado_ou_reaproveitado": {
+    "resumo": null,
+    "citacao": null,
+    "url": null
+  },
+  "pastas_versus_tags_ou_links": {
+    "resumo": "Usa hierarquia de pastas numeradas (áreas, categorias e IDs), não tags. Menciona um índice que liga tudo, sem detalhar se é link entre itens ou propriedade. Não consta nas duas páginas uma organização por propriedades.",
+    "citacao": "And you create an index to link everything together.",
+    "url": "https://johnnydecimal.com/documentation/introduction"
+  },
+  "pensado_para_agentes_de_ia": {
+    "resumo": "Sim, em parte: a home diz que um assistente de IA conectado ao sistema (JDHQ) lê o sistema diretamente e pode mover o usuário para os sistemas pré-prontos em um processo guiado. A fonte não detalha como isso funciona.",
+    "citacao": "Ask your AI where your insurance renewal goes and it's only guessing. Connect it to JDHQ and it reads the system directly. It can 'move you in' to Life Admin or Small Business in a safe, guided process.",
+    "url": "https://johnnydecimal.com/"
+  },
+  "nao_verificado": [
+    "quando_termina_ou_envelhece",
+    "conteudo_compartilhado_ou_reaproveitado",
+    "criterio_de_separacao (regra formal de categorização não encontrada nas páginas lidas)",
+    "detalhes técnicos do JDHQ e dos utilitários open-source (links não seguidos, por regra da tarefa)",
+    "seções 'Saving files', 'Keeping notes', 'The Librarian' e 'The JDex' (não acessadas, por regra da tarefa)"
+  ]
+}

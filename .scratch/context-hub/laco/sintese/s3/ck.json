@@ -1,0 +1,65 @@
+{
+ "nome": "ck",
+ "url": "https://github.com/BeaconBay/ck",
+ "papel": "disco+MCP pronto",
+ "windows": "yes: releases com ck-0.8.1-x86_64-pc-windows-msvc.zip (e aarch64); CI em Ubuntu, Windows e macOS; cargo install ck-search",
+ "mcp": "yes: 'ck --serve', stdio; ferramentas semantic_search, regex_search, hybrid_search, index_status, reindex, health_check",
+ "portugues": "Modelos FastEmbed: bge-small (padrão), mxbai-xsmall, nomic-v1.5, jina-code; README não declara multilíngue nem stemmer/stopwords. Português: nao_verificado.",
+ "markdown_frontmatter": "Indexa Markdown com chunking por títulos/seções (tree-sitter). Uso de frontmatter (filtro/campo): não documentado.",
+ "atualizacao": "Sem watcher: buscas semânticas e híbridas criam e atualizam os índices antes de rodar (delta por chunk, hash); 'ck --add' e tool 'reindex' manuais.",
+ "embeddings_endpoint": "no para OpenAI-compatível: embeddings locais FastEmbed/ONNX; o único backend de API visto no código é Mixedbread (feature cargo); base_url genérico não encontrado.",
+ "recursos": "Binário único em Rust (MSRV 1.88); índice em .ck/ ao lado dos arquivos (~2x o tamanho da fonte); modelo baixado em %LOCALAPPDATA%\\ck\\cache\\models; ~1M LOC indexadas em <2 min.",
+ "licenca": "MIT OR Apache-2.0",
+ "ultimo_release": "2026-10-11, 0.8.1",
+ "atividade": "último commit 2026-10-11",
+ "maturidade": "beta (versão 0.x, roadmap com itens pendentes; classificação inferida)",
+ "encaixe": "Disco de cada máquina, MCP stdio com binário único, bom no Windows. Impedimentos: otimizado para código, modelos provavelmente só em inglês, sem endpoint de embeddings externo, sem frontmatter.",
+ "evidencias": [
+  {
+   "campo": "windows",
+   "url": "https://github.com/BeaconBay/ck/releases/tag/0.8.1",
+   "citacao": "ck-0.8.1-x86_64-pc-windows-msvc.zip"
+  },
+  {
+   "campo": "windows",
+   "url": "https://github.com/BeaconBay/ck",
+   "citacao": "The CI pipeline runs on Ubuntu, Windows, and macOS to ensure cross-platform compatibility."
+  },
+  {
+   "campo": "mcp",
+   "url": "https://github.com/BeaconBay/ck",
+   "citacao": "claude mcp add ck-search -s user -- ck --serve"
+  },
+  {
+   "campo": "atualizacao",
+   "url": "https://github.com/BeaconBay/ck",
+   "citacao": "Semantic and hybrid searches transparently create and refresh their indexes before running."
+  },
+  {
+   "campo": "embeddings_endpoint",
+   "url": "https://github.com/BeaconBay/ck/blob/main/ck-embed/src/lib.rs",
+   "citacao": "\"mixedbread\" => { #[cfg(feature = \"mixedbread\")]"
+  },
+  {
+   "campo": "portugues",
+   "url": "https://github.com/BeaconBay/ck",
+   "citacao": "bge-small (default): 400-token chunks ... nomic-v1.5 ... jina-code"
+  },
+  {
+   "campo": "markdown_frontmatter",
+   "url": "https://github.com/BeaconBay/ck",
+   "citacao": "Markdown | ✅ | ✅ | ✅ | Headings, sections, code blocks"
+  },
+  {
+   "campo": "licenca",
+   "url": "https://github.com/BeaconBay/ck/blob/main/Cargo.toml",
+   "citacao": "license = \"MIT OR Apache-2.0\""
+  }
+ ],
+ "nao_verificado": [
+  "suporte a português dos modelos",
+  "uso de frontmatter",
+  "base_url OpenAI-compatível (nada encontrado)",
+  "consumo de RAM"
+ ]
+}

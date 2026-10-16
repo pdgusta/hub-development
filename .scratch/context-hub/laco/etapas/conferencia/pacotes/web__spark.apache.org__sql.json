@@ -1,0 +1,35 @@
+{
+ "chave": "web:spark.apache.org/sql",
+ "nomes": [
+  "Apache Spark SQL"
+ ],
+ "urls": [
+  "https://spark.apache.org/sql/"
+ ],
+ "readme_cortado": false,
+ "readme": "[Spark SQL & DataFrames | Apache Spark]\n\nSpark SQL & DataFrames\n\n Spark SQL is Apache Spark's module for working with structured data.\n\nIntegrated\n\n Seamlessly mix SQL queries with Spark programs.\n\n Spark SQL lets you query structured data inside Spark programs, using either SQL or a familiar DataFrame API. Usable in Java, Scala, Python and R.\n\n results = spark.sql(\n  \"SELECT * FROM people\")\n\n names = results.map(lambda p: p.name)\n\nApply functions to results of SQL queries.\n\nUniform data access\n\n Connect to any data source the same way.\n\n DataFrames and SQL provide a common way to access a variety of data sources, including Hive, Avro, Parquet, ORC, JSON, and JDBC. You can even join data across these sources.\n\n spark.read.json(\"s3n://...\")\n  .registerTempTable(\"json\")\n\n results = spark.sql(\n\n   \"\"\"SELECT * \n\n      FROM people\n\n      JOIN json ...\"\"\")\n\nQuery and join different data sources.\n\nHive integration\n\n Run SQL or HiveQL queries on existing warehouses.\n\n Spark SQL supports the HiveQL syntax as well as Hive SerDes and UDFs, allowing\n you to access existing Hive warehouses.\n\nSpark SQL can use existing Hive metastores, SerDes, and UDFs.\n\nStandard connectivity\n\n Connect through JDBC or ODBC.\n\n A server mode provides industry standard JDBC and ODBC connectivity for business intelligence tools.\n\nUse your existing BI tools to query big data.\n\nPerformance & scalability\n\n Spark SQL includes a cost-based optimizer, columnar storage and code generation to make queries fast.\n At the same time, it scales to thousands of nodes and multi hour queries using the Spark engine, which provides full mid-query fault tolerance.\n Don't worry about using a different engine for historical data.\n\nCommunity\n\n Spark SQL is developed as part of Apache Spark. It thus gets\n tested and updated with each Spark release.\n\n If you have questions about the system, ask on the\n Spark mailing lists.\n\n The Spark SQL developers welcome contributions. If you'd like to help out,\n read how to\n contribute to Spark, and send us a patch!\n\nGetting started\n\n To get started with Spark SQL:\n\nDownload Spark. It includes Spark SQL as a module.\n\nRead the Spark SQL and DataFrame guide to learn the API.\n\n Download Apache Spark\nIncludes Spark SQL\n\n Latest News\n\nSpark 3.5.9 released\n (Jul 16, 2026)\n\nSpark 4.1.3 released\n (Jul 15, 2026)\n\nSpark 4.0.4 released\n (Jul 15, 2026)\n\nSpark 4.2.0 released\n (Jul 14, 2026)\n\nArchive\n\n Download Spark\n\n Built-in Libraries:\n\nSQL and DataFrames\n\nSpark Streaming\n\nMLlib (machine learning)\n\nGraphX (graph)\n\n Third-Party Projects",
+ "fonte": "site",
+ "respostas": [
+  {
+   "por": "claude-haiku-5-5",
+   "resposta": {
+    "serve": "stack",
+    "role": "Distributed SQL engine to query and transform structured and JSON data",
+    "place": [
+     "library",
+     "network_service"
+    ],
+    "mechanism": [
+     "n/a"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "stable",
+    "doubt": false,
+    "evidence": "Spark SQL is Apache Spark's module for working with structured data... query structured data inside Spark programs, using either SQL or a familiar DataFrame API"
+   }
+  }
+ ]
+}

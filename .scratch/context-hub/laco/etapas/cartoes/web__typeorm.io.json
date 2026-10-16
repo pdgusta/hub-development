@@ -1,0 +1,30 @@
+{
+ "chave": "web:typeorm.io",
+ "urls": [
+  "https://typeorm.io/"
+ ],
+ "tipos": [
+  "assembly"
+ ],
+ "termos": [
+  "SQLite BM25",
+  "SQLite vector search",
+  "TypeORM full-text search"
+ ],
+ "mencoes": 1,
+ "familias": [
+  "mistral"
+ ],
+ "primeira_onda": 3,
+ "nomes": [
+  "TypeORM + SQLite（自定义解决方案）"
+ ],
+ "resumos": [
+  "使用TypeORM + SQLite本地存储，结合`sqlite-vss`（向量搜索）和`fuzzywuzzy`/`rapidfuzz`（BM25近似），葡萄牙语处理需自行添加NLP库（如`spaCy`或`nltk`）。"
+ ],
+ "fonte": "site",
+ "readme_status": "ok",
+ "readme_nome": "https://typeorm.io/",
+ "readme_cortado": false,
+ "readme": "[TypeORM - Code with Confidence. Query with Power. | TypeORM]\n\nSkip to main content\n\nTypeORM 1.0 is here! Check the release notes and upgrading guide.\n\nFlexible Patterns\nSupports both DataMapper and ActiveRecord patterns, giving you the flexibility to choose what works best for your project.\n\nTypeScript First\nBuilt from the ground up with TypeScript support, providing complete type safety for your database models.\n\nMulti-Database Support\nWorks with MySQL, PostgreSQL, MariaDB, SQLite, MS SQL Server, Oracle, MongoDB, and more.\n\nPowerful QueryBuilder\nElegant syntax for building complex queries with joins, pagination, and caching.\n\nMigrations & Schema\nFirst-class support for database migrations with automatic generation.\n\nCross-Platform\nWorks in Node.js, browsers, mobile, and desktop applications.\n\nElegant, Type-Safe API\nTypeORM provides a beautiful, simple API for interacting with your database that takes full advantage of TypeScript's type system. Choose between DataMapper and ActiveRecord patterns - both are fully supported.\n\nEntity Definition\nData Mapper\nActive Record\n\nimport { Entity, PrimaryGeneratedColumn, Column } from \"typeorm\"\n\n@Entity()\n\nexport class User {\n\n @PrimaryGeneratedColumn()\n\n id: number\n\n @Column()\n\n firstName: string\n\n @Column()\n\n lastName: string\n\n @Column()\n\n age: number\n\n}\n\nSupported Databases\n\nCockroachDB\n\nGoogle Spanner\n\nMariaDB\n\nMongoDB\n\nMS SQL Server\n\nMySQL\n\nOracle\n\nPostgreSQL\n\nSAP HANA\n\nSQLite\nAll logos are trademarks of their respective owners, used for identification purposes only.\n\nWorks Everywhere\nTypeORM runs in NodeJS, Browser, Cordova, Ionic, React Native, NativeScript, Expo, and Electron platforms.\n NodeJS Browser Mobile React Native Electron\n\nMaintained By\nMeet the Team\n\nReady to Get Started?\nTypeORM makes database interaction a breeze. Join thousands of developers who are already building better applications with TypeORM.\nRead the DocsStar on GitHub"
+}

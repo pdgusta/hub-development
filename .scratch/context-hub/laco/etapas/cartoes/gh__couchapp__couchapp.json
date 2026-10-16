@@ -1,0 +1,28 @@
+{
+ "chave": "gh:couchapp/couchapp",
+ "urls": [
+  "https://github.com/couchapp/couchapp"
+ ],
+ "tipos": [
+  "tool"
+ ],
+ "termos": [
+  "CouchDB CouchApp",
+  "CouchDB app packaging"
+ ],
+ "mencoes": 1,
+ "familias": [
+  "mistral"
+ ],
+ "primeira_onda": 3,
+ "nomes": [
+  "CouchDB CouchApp"
+ ],
+ "resumos": [
+  "A tool for packaging CouchDB applications."
+ ],
+ "readme_status": "ok",
+ "readme_nome": "README.rst",
+ "readme_cortado": false,
+ "readme": "CouchApp: Standalone CouchDB Application Development Made Simple\n================================================================\n.. image:: https://img.shields.io/travis/couchapp/couchapp/master.png?style=flat-square\n   :target: https://travis-ci.org/couchapp/couchapp\n\n.. image:: https://img.shields.io/coveralls/couchapp/couchapp/master.png?style=flat-square\n   :target: https://coveralls.io/r/couchapp/couchapp\n\n.. image:: https://readthedocs.org/projects/couchapp/badge/?version=latest&style=flat-square\n   :target: https://couchapp.readthedocs.org/en/latest\n\n\nCouchApp is designed to structure standalone CouchDB application\ndevelopment for maximum application portability.\n\nCouchApp is a set of scripts and a `jQuery <http://jquery.com>`_ plugin\ndesigned  to bring clarity and order to the freedom of\n`CouchDB <http://couchdb.apache.org>`_'s document-based approach.\n\nAlso, be sure to checkout our Erlang-based sibling,\n`erica <https://github.com/benoitc/erica>`_.\n\n.. contents:: Table of Contents\n\n\nWrite apps using just JavaScript and HTML\n-----------------------------------------\n\nRender HTML documents using JavaScript templates run by CouchDB. You'll\nget parallelism and cacheability, **using only HTML and JS.** Building\nstandalone CouchDB applications according to correct principles affords\nyou options not found on other platforms.\n\nDeploy your apps to the client\n++++++++++++++++++++++++++++++\n\nCouchDB's replication means that programs running locally can still be\nsocial. Applications control replication data-flows, so publishing\nmessages and subscribing to other people is easy. Your users will see\nthe benefits of the web without the hassle of requiring always-on\nconnectivity.\n\nInstallation\n------------\n\nCouchapp requires Python 2.6 or greater but not in Python3.\nCouchapp is most easily installed using the latest versions of the standard\npython packaging tools, ``setuptools`` and ``pip``.\nThey may be installed like so::\n\n    $ curl -O https://bootstrap.pypa.io/get-pip.py\n    $ sudo python get-pip.py\n\nInstalling couchapp is then simply a matter of::\n\n    $ pip install couchapp\n\nor this way if you cannot access the root (or due to SIP on macOS),\nthen find the executable at ``~/.local/bin``.\nFor more info about ``--user``, please checkout ``pip help install``::\n\n    $ pip install --user couchapp\n\nTo install/upgrade a development version of couchapp::\n\n    $ pip install -e git+http://github.com/couchapp/couchapp.git#egg=Couchapp\n\nNote: Some installations need to use *sudo* command before each command\nline.\n\nNote: On debian system don't forget to install python-dev.\n\nTo install on Windows follow instructions `here\n<https://couchapp.readthedocs.org/en/latest/couchapp/install.html#installing-on-windows>`_.\n\nMore installation options on the `website\n<https://couchapp.readthedocs.org/en/latest/couchapp/install.html>`_.\n\nGetting started\n---------------\n\nRead the `tutorial <https://couchapp.readthedocs.org/en/latest/couchapp/gettingstarted.html>`_.\n\nDocumentation\n-------------\n\nThe document of ``master`` branch is available at\nhttps://couchapp.readthedocs.io/en/latest.\n\nBranch ``stable-1.0`` is here: http://couchapp.readthedocs.io/en/stable-1.0/\n\nTesting\n-------\n\nWe use `nose <http://nose.readthedocs.org/>`_. and\n`nose-testconfig <https://pypi.python.org/pypi/nose-testconfig>`_. for setting\nup and running tests.\n\n::\n\n    $ python setup.py nosetests\n\nConfig\n++++++\n\nOur ``nosetests`` will run with options listed in ``setup.cfg``.\n\nIn the ``tests`` directory, copy ``config.sample.ini`` to ``config.ini``, tweak\nthe settings, and then modify your ``setup.cfg``::\n\n    [nosetests]\n    ...\n    tc-file=tests/config.ini\n\nCoverage\n++++++++\n\nIf you're wanting to examine code coverage reports (because you've got big\nplans to make our tests better!), you can browse around the ``cover`` dir ::\n\n    $ cd cover\n    $ python2 -m SimpleHTTPServer\n\nor (if you prefer python3)::\n\n    $ python3 -m http.server\n\nDebug\n+++++\n\nIf you want to debug the failed run with ``pdb``, add the following option to\n``setup.cfg``::\n\n    [nosetests]\n    ...\n    pdb=1\n\nThanks for testing ``couchapp``!\n\nBuilding the docs\n-----------------\n\nWe generate the document via ``sphinx``.\n\nFirst, prepare our building env.\nWe need ``sphinx``::\n\n    $ cd docs/\n    $ pip install sphinx\n\nTo build it, just issue::\n\n    $ make html\n\nAnd sphinx will generate static html at *docs/_build/html*.\nWe can browse the site from this dir already.\n\nOther resources\n---------------\n\n* `List of CouchApps <https://couchapp.readthedocs.org/en/latest/user/list-of-couchapps.html>`_\n"
+}

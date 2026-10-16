@@ -1,0 +1,36 @@
+{
+ "chave": "web:ml.dask.org",
+ "urls": [
+  "https://ml.dask.org/"
+ ],
+ "tipos": [
+  "library"
+ ],
+ "termos": [
+  "dask-ml",
+  "distributed TF-IDF",
+  "embedding pipelines",
+  "parallel processing",
+  "machine learning",
+  "large datasets"
+ ],
+ "mencoes": 2,
+ "familias": [
+  "llama",
+  "mistral"
+ ],
+ "primeira_onda": 4,
+ "nomes": [
+  "Dask-ML (scikit-learn integration)",
+  "Dask-ML"
+ ],
+ "resumos": [
+  "Enables distributed machine learning pipelines (including TF-IDF, embeddings) using Dask for scaling semantic search workloads.",
+  "A library for parallelizing machine learning workflows"
+ ],
+ "fonte": "site",
+ "readme_status": "ok",
+ "readme_nome": "https://ml.dask.org/",
+ "readme_cortado": false,
+ "readme": "[Dask-ML — dask-ml 2025.1.1 documentation]\n\nToggle navigation sidebar\n\n Theme by the Executable Book Project\n\nToggle navigation\n\n .rst\n\n .pdf\n\n Contents\n\nDask-ML\n\n Contents \n\nDask-ML¶\n\nDask-ML provides scalable machine learning in Python using Dask alongside\npopular machine learning libraries like Scikit-Learn, XGBoost, and others.\n\nYou can try Dask-ML on a small cloud instance by clicking the following button:\n\nDimensions of Scale¶\n\nPeople may run into scaling challenges along a couple dimensions, and Dask-ML\noffers tools for addressing each.\n\nChallenge 1: Scaling Model Size¶\n\nThe first kind of scaling challenge comes when from your models growing so\nlarge or complex that it affects your workflow (shown along the vertical axis\nabove). Under this scaling challenge tasks like model training, prediction, or\nevaluation steps will (eventually) complete, they just take too long. You’ve\nbecome compute bound.\n\nTo address these challenges you’d continue to use the collections you know and\nlove (like the NumPy ndarray, pandas DataFrame, or XGBoost DMatrix)\nand use a Dask Cluster to parallelize the workload on many machines. The\nparallelization can occur through one of our integrations (like Dask’s\njoblib backend to parallelize Scikit-Learn directly) or one of\nDask-ML’s estimators (like our hyper-parameter optimizers).\n\nChallenge 2: Scaling Data Size¶\n\nThe second type of scaling challenge people face is when their datasets grow\nlarger than RAM (shown along the horizontal axis above). Under this scaling\nchallenge, even loading the data into NumPy or pandas becomes impossible.\n\nTo address these challenges, you’d use Dask’s one of Dask’s high-level\ncollections like\n(Dask Array, Dask DataFrame or Dask Bag) combined with one of Dask-ML’s\nestimators that are designed to work with Dask collections. For example you\nmight use Dask Array and one of our preprocessing estimators in\ndask_ml.preprocessing, or one of our ensemble methods in\ndask_ml.ensemble.\n\nNot Everyone needs Scalable Machine Learning¶\n\nIt’s worth emphasizing that not everyone needs scalable machine learning. Tools\nlike sampling can be effective. Always plot your learning curve.\n\nScikit-Learn API¶\n\nIn all cases Dask-ML endeavors to provide a single unified interface around the\nfamiliar NumPy, Pandas, and Scikit-Learn APIs. Users familiar with\nScikit-Learn should feel at home with Dask-ML.\n\nPartner with other distributed libraries¶\n\nOther machine learning libraries like XGBoost already have\ndistributed solutions that work quite well. Dask-ML makes no attempt to\nre-implement these systems. Instead, Dask-ML makes it easy to use normal Dask\nworkflows to prepare and set up data, then it deploys XGBoost\nalongside Dask, and hands the data over.\n\nfrom dask_ml.xgboost import XGBRegressor\n\nest = XGBRegressor(...)\nest.fit(train, train_labels)\n\nSee Dask-ML + XGBoost for more information.\n\nnext\n\nInstallation"
+}

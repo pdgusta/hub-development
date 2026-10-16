@@ -1,0 +1,48 @@
+{
+ "chave": "gh:obsidianmd/obsidian-api",
+ "urls": [
+  "https://github.com/obsidianmd/obsidian-api"
+ ],
+ "tipos": [
+  "tool",
+  "library",
+  "concept"
+ ],
+ "termos": [
+  "obsidian api",
+  "custom plugins",
+  "database access",
+  "Obsidian Community Plugins",
+  "Obsidian API docs",
+  "Obsidian API",
+  "Obsidian SDK",
+  "Obsidian plugin development",
+  "Obsidian",
+  "API",
+  "linking",
+  "search"
+ ],
+ "mencoes": 4,
+ "familias": [
+  "agnes",
+  "gpt-oss",
+  "mistral",
+  "nemotron"
+ ],
+ "primeira_onda": 2,
+ "nomes": [
+  "Obsidian API (Community Plugin)",
+  "Obsidian Plugin API",
+  "Obsidian API"
+ ],
+ "resumos": [
+  "API experimental para crear plugins personalizados que interactúen con la base de datos de Obsidian, útil para integrar motores de búsqueda externos.",
+  "API oficial do ecossistema Obsidian para criar plugins que leem, indexam e pesquisam o vault local de notas Markdown.",
+  "Interface oficial para criar plugins que interagem com o vault, arquivos Markdown e frontmatter no Obsidian.",
+  "The official API surface for extending Obsidian, allowing programmatic access to notes, links, and frontmatter for custom search solutions."
+ ],
+ "readme_status": "ok",
+ "readme_nome": "README.md",
+ "readme_cortado": false,
+ "readme": "## Obsidian API\n\nType definitions for the latest [Obsidian](https://obsidian.md) API.\n\n### Documentation\n\nYou can browse our Plugin API documentation at https://docs.obsidian.md/\n\nFor an example on how to create Obsidian plugins, use the template at https://github.com/obsidianmd/obsidian-sample-plugin\n\n### Issues and API requests\n\nFor issues with the API, or to make requests for new APIs, please go to our forum: https://forum.obsidian.md/c/developers-api/14\n\n### Plugin structure\n\n`manifest.json`\n\n- `id` the ID of your plugin.\n- `name` the display name of your plugin.\n- `author` the plugin author's name.\n- `version` the version of your plugin.\n- `minAppVersion` the minimum required Obsidian version for your plugin.\n- `description` the long description of your plugin.\n- `isDesktopOnly` whether your plugin uses NodeJS or Electron APIs.\n- `authorUrl` (optional) a URL to your own website.\n- `fundingUrl` (optional) a link for users to donation to show appreciation and support plugin development.\n\n`main.js`\n\n- This is the main entry point of your plugin.\n- Import any Obsidian API using `require('obsidian')`\n- Import NodeJS or Electron API using `require('fs')` or `require('electron')`\n- Must export a default class which extends `Plugin`\n- Must bundle all external dependencies into this file, using Rollup, Webpack, or another javascript bundler.\n\n### App Architecture\n\n##### The app is organized into a few major modules:\n\n- `App`, the global object that owns everything else. You can access this via `this.app` inside your plugin. The `App` interface provides accessors for the following interfaces.\n- `Vault`, the interface that lets you interact with files and folders in the vault.\n- `Workspace`, the interface that lets you interact with panes on the screen.\n- `MetadataCache`, the interface that contains cached metadata about each markdown file, including headings, links, embeds, tags, and blocks.\n\n##### Additionally, by inheriting `Plugin`, you can:\n- Add a ribbon icon using `this.addRibbonIcon`.\n- Add a status bar (bottom) element using `this.addStatusBarItem`.\n- Add a global command, optionally with a default hotkey, using `this.addCommand`.\n- Add a plugin settings tab using `this.addSettingTab`.\n- Register a new kind of view using `this.registerView`.\n- Save and load plugin data using `this.loadData` and `this.saveData`.\n\n##### Registering events\n\nFor registering events from any event interfaces, such as `App` and `Workspace`, please use `this.registerEvent`, which will automatically detach your event handler when your plugin unloads:\n```\nthis.registerEvent(app.on('event-name', callback));\n```\n\nIf you register DOM events for elements that persist on the page after your plugin unloads, such as `window` or `document` events, please use `this.registerDomEvent`:\n```\nthis.registerDomEvent(element, 'click', callback);\n```\n\nIf you use `setInterval`, please use `this.registerInterval`:\n```\nthis.registerInterval(setInterval(callback, 1000));\n```\n"
+}

@@ -1,0 +1,45 @@
+Moby
+
+project
+
+An open framework to assemble specialized container systems without reinventing the wheel.
+
+What is Moby?
+
+Moby is an open framework created by Docker to assemble specialized container systems without reinventing the wheel. It provides a “lego set” of dozens of standard components and a framework for assembling them into custom platforms. At the core of Moby is a framework to assemble specialized container systems which provides:
+
+Components
+
+A library of containerized components for all vital aspects of a container system: OS, container runtime, orchestration, infrastructure management, networking, storage, security, build, image distribution, etc.
+
+Tools
+
+Tools to assemble the components into runnable artifacts for a variety of platforms and architectures: bare metal (both x86 and Arm); executables for Linux, Mac and Windows; VM images for popular cloud and virtualization providers.
+
+Assemblies
+
+A set of reference assemblies which can be used as-is, modified, or used as inspiration to create your own. All Moby components are containers, so creating new components is as easy as building a new OCI-compatible container.
+
+Moby uses containerd as the default container runtime.
+
+Moby IS RECOMMENDED for anyone who wants to assemble a container-based system.
+
+Hackers who want to customize or patch their Docker build
+
+System engineers or integrators building a container system
+
+Infrastructure providers looking to adapt existing container systems to their environment
+
+Container enthusiasts who want to experiment with the latest container tech
+
+Open-source developers looking to test their project in a variety of different systems
+
+Anyone curious about Docker internals and how it’s built
+
+Moby is NOT recommended for the following use cases:
+
+Application developers looking for an easy way to run their applications in containers. We recommend Docker CE instead.
+
+Enterprise IT and development teams looking for a ready-to-use, commercially supported container platform. We recommend Mirantis Container Runtime instead.
+
+Anyone curious about containers and looking for an easy way to learn. We recommend the docker.com website instead

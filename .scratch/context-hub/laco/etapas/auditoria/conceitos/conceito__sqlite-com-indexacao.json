@@ -1,0 +1,29 @@
+{
+ "chave": "conceito:sqlite-com-indexacao",
+ "modelo": "claude-opus-5-5",
+ "ts": "2026-10-13T23:35:52Z",
+ "tipo": "conceito",
+ "resultado": "discorda",
+ "auditoria": {
+  "resultado": "discorda",
+  "erro": "tools_on_card vazio, mas o card nomeia SQLite no nome e nos termos. Mechanism full_text é inferência: o card fala só em índices locais; FTS5 seria o caso de texto completo.",
+  "final": {
+   "concept_en": "sqlite with indexing",
+   "serve": "search",
+   "role": "store note data in SQLite and build local indexes (e.g. FTS5) for fast retrieval",
+   "mechanism": [
+    "full_text"
+   ],
+   "place": [
+    "disk"
+   ],
+   "tools_on_card": [
+    "SQLite"
+   ],
+   "doubt": false,
+   "evidence": "Armazenar dados em SQLite e criar índices locais para busca rápida."
+  },
+  "gravidade": "leve",
+  "nota": "Índice local em SQLite (com FTS5) é base forte para a camada de busca do hub: arquivo único, roda no Windows, sem servidor."
+ }
+}

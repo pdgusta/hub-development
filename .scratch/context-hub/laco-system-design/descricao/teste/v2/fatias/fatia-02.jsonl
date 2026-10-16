@@ -1,0 +1,24 @@
+{"n": 2, "pergunta": "O 'Tela de três vias' faz parte do grupo de interfaces que vivem no Obsidian?", "tipo": "grupo"}
+{"n": 12, "pergunta": "O que o sincronizador do outro par não faz quando recebe um arquivo com ponto no nome?", "tipo": "o-que-nao-faz"}
+{"n": 22, "pergunta": "Se a sincronização parar por 15 minutos, como eu fico sab que algo deu errado?", "tipo": "onde-vive"}
+{"n": 32, "pergunta": "Se a rede privada do Tailscale cair, como o banco lida com as mudanças quando as máquinas volt a ser conectadas?", "tipo": "quem-usa"}
+{"n": 42, "pergunta": "E se o Gustavo editar uma nota no Obsidian e, antes do sincronizador pegar, um agente ler a versão antiga via MCP e gravar por cima, o que impede a perda silenciosa?", "tipo": "falha"}
+{"n": 52, "pergunta": "O que muda entre a proteção de edição concorrente (critério 5) quando dois agentes — maestro e recruta — gravam no mesmo arquivo via MCP do banco, e quando o maestro e o Gustavo editam o mesmo arquivo (um via MCP, outro no Obsidian)?", "tipo": "diferenca"}
+{"n": 62, "pergunta": "Quem assegura que a Camada de busca indexe corretamente a nota recém‑criada para que agentes de código a encontrem sem ler todo o hub?", "tipo": "responsavel"}
+{"n": 72, "pergunta": "Se o Tailscale cair durante uma divergência, as mudanças do Gustavo em uma máquina são perdidas se ele tentar resincronizar depois?", "tipo": "falha"}
+{"n": 82, "pergunta": "Se o banco da máquina A receber uma atualização, mas a máquina B estiver offline, o que acontece quando a máquina B voltar a funcionar?", "tipo": "se-x"}
+{"n": 92, "pergunta": "Por que o contrato do hub é definido como file-first, exigindo que informações sejam gravadas no lugar certo sem intervenção manual do Gustavo?", "tipo": "por-que"}
+{"n": 102, "pergunta": "Se a rede **Tailscale** entre os pares falhar e um agente tentar gravar dados da **SBF** em um dos bancos, quem garante que a operação seja bloqueada até a rede ser restabelecida e como o sistema evita vazamentos?", "tipo": "responsavel"}
+{"n": 112, "pergunta": "Se a busca local não consegue encontrar o trecho que preciso, o que o agente faz?", "tipo": "quem-usa"}
+{"n": 122, "pergunta": "Quando o Maestri tenta usar um papel ou skill que não está no acervo do maestro porque foi removido pelo Gustavo, o que acontece e como eu descubro o erro?", "tipo": "quando"}
+{"n": 132, "pergunta": "O que muda quando a camada de busca expira ou falha e o agente precisa buscar manualmente?", "tipo": "diferenca"}
+{"n": 142, "pergunta": "Quem é responsável por testar o comportamento do hub quando um arquivo grande (acima de 200 MiB) é editado?", "tipo": "responsavel"}
+{"n": 152, "pergunta": "Se a outra máquina desligar o Tailscale enquanto eu estou no meio de uma edição no Obsidian e depois reconectar, como o sincronizador vai lidar com as mudanças não enviadas durante o período offline, especialmente se houver conflitos?", "tipo": "diferenca"}
+{"n": 162, "pergunta": "Quem detecta que uma mudança feita no banco de uma máquina não chegou à outra porque a conexão Tailscale está caída?", "tipo": "quem-usa"}
+{"n": 172, "pergunta": "Se a conexão Tailscale falhar temporariamente e depois for restabelecida, como o hub reconcilia as mudanças pendentes e evita divergências silenciosas?", "tipo": "se-x"}
+{"n": 182, "pergunta": "O GitHub privado atua como cópia de segurança, mas pode conter conflitos de colisão de notas que ainda não foram resolvidos no banco CouchDB local?", "tipo": "falha"}
+{"n": 192, "pergunta": "Se um cliente sem cópia própria tentar escrever diretamente em um arquivo do hub, o que acontece?", "tipo": "falha"}
+{"n": 202, "pergunta": "Como a camada de busca encontra o trecho certo sem ler tudo, mesmo se eu estiver num cliente?", "tipo": "relacao"}
+{"n": 212, "pergunta": "O que muda entre a replicação de uma alteração feita pelo maestro no banco local e a replicação de uma alteração feita pelo Obsidian do Gustavo no mesmo arquivo, considerando que o sincronizador também conta como escritor?", "tipo": "diferenca"}
+{"n": 222, "pergunta": "Se o MCP do banco recebe uma gravação que tem um campo de meta dados alterado pela outra máquina simultaneamente, em que ordem os agentes recebem a mensagem de conflito e são solicitados a resolver?", "tipo": "ordem"}
+{"n": 232, "pergunta": "O que muda entre o cliente usar uma sessão no Maestri (via par ligado) e uma sessão direta na raiz do hub pelo MCP do banco?", "tipo": "diferenca"}

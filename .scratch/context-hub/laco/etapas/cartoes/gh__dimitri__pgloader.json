@@ -1,0 +1,30 @@
+{
+ "chave": "gh:dimitri/pgloader",
+ "urls": [
+  "https://github.com/dimitri/pgloader"
+ ],
+ "tipos": [
+  "tool"
+ ],
+ "termos": [
+  "CouchDB to Postgres",
+  "migration",
+  "ETL",
+  "JSON import"
+ ],
+ "mencoes": 1,
+ "familias": [
+  "free"
+ ],
+ "primeira_onda": 4,
+ "nomes": [
+  "pgloader"
+ ],
+ "resumos": [
+  "ETL tool that can migrate CouchDB JSON documents into PostgreSQL with automatic schema discovery."
+ ],
+ "readme_status": "ok",
+ "readme_nome": "README.md",
+ "readme_cortado": false,
+ "readme": "# pgloader\n\n[![pgloader v4 CI](https://github.com/dimitri/pgloader/actions/workflows/clojure-integration-tests.yml/badge.svg?branch=v4-clojure-rewrite)](https://github.com/dimitri/pgloader/actions/workflows/clojure-integration-tests.yml)\n[![Read The Docs](https://readthedocs.org/projects/pgloader/badge/?version=latest&style=plastic)](http://pgloader.readthedocs.io/en/latest/)\n\npgloader is a data loading tool for PostgreSQL, using the `COPY` command.\n\nIts main advantage over just using `COPY` or `\\copy`, and over using a\n*Foreign Data Wrapper*, is its transaction behaviour, where *pgloader*\nwill keep a separate file of rejected data, but continue trying to\n`copy` good data in your database.\n\nThe default PostgreSQL behaviour is transactional, which means that\n*any* erroneous line in the input data (file or remote database) will\nstop the entire bulk load for the table.\n\npgloader also implements data reformatting, a typical example of that\nbeing the transformation of MySQL datestamps `0000-00-00` and\n`0000-00-00 00:00:00` to PostgreSQL `NULL` value (because our calendar\nnever had a *year zero*).\n\n## Version 4 — Clojure/JVM rewrite\n\npgloader v4 is a full rewrite in Clojure, distributed as a single\nself-contained JAR requiring **Java 21 or later**. It is a drop-in\nreplacement for v3 and accepts the same `.load` file syntax and\ncommand-line flags.\n\nKey improvements over v3:\n\n- **Single JAR** — no native dependencies, no SBCL, no shared libraries\n- **JDBC connection strings** — use `jdbc:mysql://`, `jdbc:postgresql://`,\n  `jdbc:sqlserver://` etc. everywhere; driver-specific parameters pass\n  through unchanged\n- **Java heap** — no more Common Lisp heap exhaustion on large migrations;\n  tune with standard `-Xmx` JVM flag\n- **SSL via URI** — use `?sslmode=require` / `?sslmode=disable` in the\n  connection string instead of `--no-ssl-cert-verification`\n\n## Documentation\n\nFull documentation is available at\n[https://pgloader.readthedocs.io/](https://pgloader.readthedocs.io/en/latest/).\n\n```\n$ java -jar pgloader.jar --help\npgloader [ option ... ] SOURCE TARGET\n  --help                          Show usage and exit.\n  --version                       Display pgloader version and exit.\n  --quiet                         Be quiet.\n  --verbose                       Be verbose.\n  --debug                         Display debug level information.\n  --client-min-messages           Filter logs seen at the console (default: info)\n  --log-min-messages              Filter logs seen in the logfile (default: info)\n  --logfile                       Filename where to send the logs.\n  --summary                       Filename where to copy the summary.\n  --root-dir                      Output root directory (default: /tmp/pgloader/).\n  --list-encodings                List pgloader known encodings and exit.\n  --dry-run                       Check connections only, don't load anything.\n  --on-error-stop                 Stop on first error instead of continuing.\n```\n\n## Usage\n\nYou can either give a command file to pgloader or run it all from the\ncommand line, see the\n[pgloader quick start](https://pgloader.readthedocs.io/en/latest/tutorial/tutorial.html#pgloader-quick-start)\nfor more details.\n\n    $ java -jar pgloader.jar --help\n    $ java -jar pgloader.jar <file.load>\n\nFor example, for a full migration from SQLite:\n\n    $ createdb newdb\n    $ java -jar pgloader.jar ./test/sqlite/sqlite.db postgresql:///newdb\n\nOr for a full migration from MySQL, including schema definition (tables,\nindexes, foreign keys, comments) and parallel loading of the corrected data:\n\n    $ createdb pagila\n    $ java -jar pgloader.jar mysql://user@localhost/sakila postgresql:///pagila\n\n## INSTALL\n\n### Java (v4 — recommended)\n\npgloader v4 requires **Java 21 or later**\n([Temurin](https://adoptium.net/), OpenJDK, or any compatible distribution).\n\nDownload the latest pre-release JAR — this URL always points to the most\nrecent build from the `v4-clojure-rewrite` branch:\n\n    $ curl -L -o pgloader.jar \\\n        https://github.com/dimitri/pgloader/releases/download/v4-dev/pgloader.jar\n    $ java -jar pgloader.jar --version\n\nTo make it available system-wide:\n\n    $ sudo install -m 755 pgloader.jar /usr/local/lib/pgloader.jar\n    $ echo '#!/bin/sh\\nexec java -jar /usr/local/lib/pgloader.jar \"$@\"' \\\n        | sudo tee /usr/local/bin/pgloader\n    $ sudo chmod 755 /usr/local/bin/pgloader\n    $ pgloader --version\n\n### Docker\n\nThe latest image is built by CI on every push to `v4-clojure-rewrite`:\n\n    $ docker pull ghcr.io/dimitri/pgloader:latest\n    $ docker run --rm -it ghcr.io/dimitri/pgloader:latest pgloader --version\n\n### Debian / Ubuntu (v3)\n\nThe v3 package is available in the Debian and Ubuntu repositories:\n\n    $ apt-get install pgloader\n\nA v4 Debian package is planned.\n\n## LICENCE\n\npgloader is available under [The PostgreSQL\nLicence](http://www.postgresql.org/about/licence/).\n"
+}

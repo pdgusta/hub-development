@@ -1,0 +1,65 @@
+{
+ "nome": "Tantivy / tantivy-py",
+ "url": "https://github.com/quickwit-oss/tantivy",
+ "papel": "peça embutida",
+ "windows": "yes (README do tantivy: Linux, macOS e Windows; tantivy-py tem wheels win_amd64 no PyPI)",
+ "mcp": "no",
+ "portugues": "Stemmer de português (enum Language inclui Portuguese; 17 línguas latinas na README). Stopwords e ascii folding não confirmados na página lida. Só texto: sem embeddings.",
+ "markdown_frontmatter": "Não indexa Markdown por si; é biblioteca de busca de texto. Campos do esquema (ex. do frontmatter) e chunking seriam montados pelo hub.",
+ "atualizacao": "Sem watcher; reconciliação com disco por conta do hub. Semântica de commit incremental: nao_verificado.",
+ "embeddings_endpoint": "Não usa embeddings (busca lexical).",
+ "recursos": "Biblioteca Rust com mmap; tantivy-py é wheel Python >=3.10, sem JVM. RAM/disco: nao_verificado.",
+ "licenca": "MIT (tantivy e tantivy-py)",
+ "ultimo_release": "tantivy 0.26.2 (feed 2026-09-08); tantivy-py 0.26.2 (PyPI 2026-09-17)",
+ "atividade": "commits em 2026-10-13 (tantivy) e 2026-10-09 (tantivy-py), pelos feeds",
+ "maturidade": "stable (0.x, ativo)",
+ "encaixe": "Dentro do MCP do banco como motor lexical rápido com stemmer de português; o lado vetorial precisa de outra peça. Impedimento: sem vetores e sem reconciliação pronta.",
+ "evidencias": [
+  {
+   "campo": "portugues",
+   "url": "https://docs.rs/tantivy/latest/tantivy/tokenizer/enum.Language.html",
+   "citacao": "enum Language: ... Norwegian, Portuguese, Romanian, Russian ..."
+  },
+  {
+   "campo": "portugues",
+   "url": "https://github.com/quickwit-oss/tantivy",
+   "citacao": "stemming available for 17 Latin languages"
+  },
+  {
+   "campo": "windows",
+   "url": "https://github.com/quickwit-oss/tantivy",
+   "citacao": "supports Linux, macOS, and Windows"
+  },
+  {
+   "campo": "windows",
+   "url": "https://pypi.org/pypi/tantivy/json",
+   "citacao": "tantivy-0.26.2-cp311-cp311-win_amd64.whl"
+  },
+  {
+   "campo": "licenca",
+   "url": "https://github.com/quickwit-oss/tantivy",
+   "citacao": "MIT license"
+  },
+  {
+   "campo": "recursos",
+   "url": "https://github.com/quickwit-oss/tantivy",
+   "citacao": "Mmap directory"
+  },
+  {
+   "campo": "encaixe",
+   "url": "https://github.com/quickwit-oss/tantivy-py",
+   "citacao": "Python bindings for Tantivy the full-text search engine library written in Rust."
+  },
+  {
+   "campo": "ultimo_release",
+   "url": "https://github.com/quickwit-oss/tantivy-py/releases.atom",
+   "citacao": "Python Tantivy 0.26.2"
+  }
+ ],
+ "nao_verificado": [
+  "Windows na README do tantivy-py (só wheels no PyPI)",
+  "StopWordFilter e AsciiFoldingFilter",
+  "RAM/disco",
+  "semântica de atualização incremental"
+ ]
+}

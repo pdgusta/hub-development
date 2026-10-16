@@ -1,0 +1,65 @@
+{
+ "nome": "LocalVectorSearchMcp",
+ "url": "https://github.com/DimonSmart/LocalVectorSearchMcp",
+ "papel": "disco+MCP pronto",
+ "windows": "yes: CI com matriz ubuntu-latest, windows-latest e macOS; publica binário local-vector-search-mcp.exe / DimonSmart.LocalVectorSearchMcp.Server.exe. Instalação: `dotnet tool install --global DimonSmart.LocalVectorSearchMcp` (.NET 10).",
+ "mcp": "yes: servidor próprio, stdio, 18 ferramentas (kb_search, kb_read, kb_patch, kb_reindex...); listado no MCP Registry. HTTP remoto direto fora do escopo.",
+ "portugues": "Sem stemmer de português; léxico por SQLite FTS5 com BM25 (tokenizer não declarado na fonte lida). Semântico com bge-m3 (multilíngue) por padrão via Ollama, configurável.",
+ "markdown_frontmatter": "Só Markdown (`**/*.md`). Chunking por elementos/títulos (`includeHeadingContext: true`, maxChunkBytes 4096). `includeFrontMatter: true` coloca o frontmatter no texto do chunk, mas filtro por campo não aparece. Filtro por pathPrefix e glob. Também edita Markdown por ponteiro semântico (kb_patch), se allowWrites.",
+ "atualizacao": "Opt-in `watchFiles: true` / `--watch-files`: observa criar/editar/renomear/apagar e reconcilia com pequeno debounce; reindex também por kb_reindex (assíncrono) ou CLI --reindex.",
+ "embeddings_endpoint": "Sim: provider openai-compatible com `endpoint` e `apiKey` (padrão http://localhost:11434/v1, bge-m3:latest); endpoint remoto exige `allowRemoteEndpoint: true`. Gateway local serve. Também `provider: none` (só FTS5 lexical). Sem endpoint, hybrid cai para lexical.",
+ "recursos": ".NET 10 SDK para instalar (runtime para executar, ou binário self-contained); SQLite FTS5 + sqlite-vec por projeto em .local-vector-search-mcp/index.db. Números de memória: nao_verificado.",
+ "licenca": "MIT (página do pacote NuGet)",
+ "ultimo_release": "v0.1.3, 2026-10-11 (NuGet 0.1.0 a 0.1.3)",
+ "atividade": "último commit 2026-10-11 (feed atom)",
+ "maturidade": "alpha/beta inicial (versão 0.1.x, semanas de vida)",
+ "encaixe": "Disco de cada máquina: um servidor stdio por pasta, com watcher e BM25 + vetor via FreeLLMAPI. Impedimentos: .NET 10, 0.1.x recente, um índice por projeto, sem filtro por campo do frontmatter.",
+ "evidencias": [
+  {
+   "campo": "windows",
+   "url": "https://raw.githubusercontent.com/DimonSmart/LocalVectorSearchMcp/main/.github/workflows/ci.yml",
+   "citacao": "os: - ubuntu-latest - windows-latest"
+  },
+  {
+   "campo": "mcp",
+   "url": "https://github.com/DimonSmart/LocalVectorSearchMcp",
+   "citacao": "The MCP server exposes eighteen tools."
+  },
+  {
+   "campo": "atualizacao",
+   "url": "https://raw.githubusercontent.com/DimonSmart/LocalVectorSearchMcp/main/docs/configuration.md",
+   "citacao": "`watchFiles` observes external Markdown create, edit, rename, and delete events and reconciles affected index entries after a short debounce."
+  },
+  {
+   "campo": "embeddings_endpoint",
+   "url": "https://raw.githubusercontent.com/DimonSmart/LocalVectorSearchMcp/main/docs/configuration.md",
+   "citacao": "provider: openai-compatible endpoint: http://localhost:11434/v1 ... allowRemoteEndpoint: false"
+  },
+  {
+   "campo": "recursos",
+   "url": "https://github.com/DimonSmart/LocalVectorSearchMcp",
+   "citacao": "Install the .NET tool (requires .NET 10)"
+  },
+  {
+   "campo": "markdown_frontmatter",
+   "url": "https://raw.githubusercontent.com/DimonSmart/LocalVectorSearchMcp/main/docs/configuration.md",
+   "citacao": "includeHeadingContext: true includeFrontMatter: true"
+  },
+  {
+   "campo": "licenca",
+   "url": "https://www.nuget.org/packages/DimonSmart.LocalVectorSearchMcp",
+   "citacao": "MIT license"
+  },
+  {
+   "campo": "ultimo_release",
+   "url": "https://github.com/DimonSmart/LocalVectorSearchMcp/releases.atom",
+   "citacao": "v0.1.3 updated 2026-10-11T21:03:01Z"
+  }
+ ],
+ "nao_verificado": [
+  "tokenizer FTS5 e remoção de acentos",
+  "uso de frontmatter como filtro",
+  "consumo de memória",
+  "licença no arquivo LICENSE (404 no raw; MIT só pela página NuGet)"
+ ]
+}

@@ -1,0 +1,52 @@
+{
+ "nome": "onnxruntime",
+ "nome_canonico": "ONNX Runtime (microsoft/onnxruntime)",
+ "chave": "gh:microsoft/onnxruntime",
+ "url": "https://github.com/microsoft/onnxruntime",
+ "identidade": "ok (a URL crates.io/onnxruntime é o crate Rust antigo; peça principal verificada: microsoft/onnxruntime)",
+ "windows": "yes: wheels win_amd64 no PyPI (onnxruntime-1.31.0-cp311/cp312/cp313-win_amd64.whl); doc de instalação: \"Windows builds require Visual C++ 2019 runtime.\" Sem WSL/Docker.",
+ "portugues": "nao_aplicavel: é só o runtime; português depende do modelo ONNX multilíngue carregado, não do runtime.",
+ "embeddings_endpoint": "nao_aplicavel: executa modelos ONNX in-process, sem endpoint; não substitui o FreeLLMAPI, serviria para embedding local offline.",
+ "recursos": "Wheel win_amd64 de ~14 MB; memória e disco dependem do modelo (nao_verificado em número). Instala por pip/NuGet/npm.",
+ "licenca": "MIT",
+ "ultimo_release": "v1.31.0 (2026-10-09)",
+ "atividade": "último push 2026-10-14 (API GitHub)",
+ "maturidade": "stable (PyPI: Development Status :: 5 - Production/Stable)",
+ "encaixe": "Motor local de inferência para embeddings/rerank em ONNX em cada máquina Windows, plano B ao FreeLLMAPI. Não fala com CouchDB nem MCP; precisa de wrapper (Python/Rust) e modelo multilíngue.",
+ "evidencias": [
+  {
+   "campo": "windows",
+   "url": "https://pypi.org/pypi/onnxruntime/json",
+   "citacao": "onnxruntime-1.31.0-cp312-cp312-win_amd64.whl"
+  },
+  {
+   "campo": "windows",
+   "url": "https://onnxruntime.ai/docs/install/",
+   "citacao": "Windows builds require Visual C++ 2019 runtime."
+  },
+  {
+   "campo": "licenca",
+   "url": "https://github.com/microsoft/onnxruntime",
+   "citacao": "This project is licensed under the MIT License."
+  },
+  {
+   "campo": "ultimo_release",
+   "url": "https://api.github.com/repos/microsoft/onnxruntime/releases",
+   "citacao": "v1.31.0 2026-10-09T04:51:32Z"
+  },
+  {
+   "campo": "maturidade",
+   "url": "https://pypi.org/pypi/onnxruntime/json",
+   "citacao": "Development Status :: 5 - Production/Stable"
+  }
+ ],
+ "nao_verificado": [
+  "memória/disco em número",
+  "modelo multilíngue específico"
+ ],
+ "serve": "stack",
+ "area": "embeddings_rerank",
+ "mcp": "nao_aplicavel",
+ "markdown_frontmatter": "nao_aplicavel",
+ "atualizacao": "nao_aplicavel"
+}

@@ -1,0 +1,66 @@
+{
+  "envio": "327bd044-59bd-4ba2-a48e-5d3500e50b11",
+  "tipo": "resposta",
+  "enviada": "2026-10-15T20:39:50-03:00",
+  "alvo": {
+    "tipo": "rodada",
+    "id": "2026-10-15-roteamento-de-skills-r1",
+    "titulo": "Como a skill certa dispara na hora certa"
+  },
+  "ticket": "15",
+  "substitui": null,
+  "rodada": {
+    "id": "2026-10-15-roteamento-de-skills-r1",
+    "base": "8a4dcb3e5cb7ce5e9ea5e19ece00d87344df4df7941bbf7c6a49de3cafec5c5a",
+    "titulo": "Como a skill certa dispara na hora certa",
+    "ticket": "15",
+    "perguntas": [
+      {
+        "id": "disparo",
+        "titulo": "Como o hub faz a skill certa disparar",
+        "tipo": "escolha",
+        "recomendada": [
+          "A"
+        ],
+        "opcoes": [
+          {
+            "chave": "A",
+            "texto": "Tabela de roteamento e hook de entrada. Uma tabela em `agents/skills/routing.yml` guarda só o que a descrição não resolve: gatilho (palavras do pedido, tipo de nota pelo caminho, papel do recruta) → skill. Na entrada de cada pedido, um hook sem IA confere a tabela e injeta \"use a skill X\" no contexto. Os briefs e as skills de processo citam a skill pelo nome em cada passo. O verificador do fim registra se a skill indicada rodou, sem obrigar, e esse registro mostra qual linha da tabela precisa de ajuste"
+          },
+          {
+            "chave": "B",
+            "texto": "Como a A, mas obrigando: se a tabela indicou uma skill e ela não rodou, o verificador do fim faz o agente voltar e rodá-la. Mais garantido, mas força skill quando o gatilho casou por engano"
+          },
+          {
+            "chave": "C",
+            "texto": "Só texto: a tabela fica no `AGENTS.md` da raiz, e os briefs citam a skill pelo nome. Sem hook, mais simples de construir, e o mesmo arranjo que falhou na frente da cidade"
+          }
+        ],
+        "proposta": null
+      },
+      {
+        "id": "algo-mais",
+        "titulo": "Algo mais?",
+        "tipo": "texto",
+        "recomendada": [],
+        "opcoes": [],
+        "proposta": null
+      }
+    ]
+  },
+  "corpo_hash": "fda628aff6502f43a6405efc5196f094106c15ee076f38d4304af53ad6fe49d5",
+  "corpo": {
+    "tipo": "resposta",
+    "rodada": "2026-10-15-roteamento-de-skills-r1",
+    "base": "8a4dcb3e5cb7ce5e9ea5e19ece00d87344df4df7941bbf7c6a49de3cafec5c5a",
+    "respostas": {
+      "disparo": {
+        "escolha": [
+          "A"
+        ],
+        "outra": null,
+        "comentario": null
+      }
+    }
+  }
+}

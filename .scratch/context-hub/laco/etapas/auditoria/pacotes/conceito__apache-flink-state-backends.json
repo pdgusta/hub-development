@@ -1,0 +1,46 @@
+{
+ "chave": "conceito:apache-flink-state-backends",
+ "chaves_do_catalogo": [
+  "web:ci.apache.org/projects/flink/flinkdocs-stable/concepts/runtime/state.html"
+ ],
+ "nomes": [
+  "Apache Flink State Backends (RocksDB)"
+ ],
+ "mencoes": 1,
+ "familias": [
+  "agnes"
+ ],
+ "resumos": [
+  "Managed keyed state for tracking which documents have been indexed, enabling idempotent upserts and incremental sync without reprocessing the full knowledge base."
+ ],
+ "termos": [
+  "rocksdb",
+  "keyed state",
+  "incremental sync",
+  "idempotent upsert"
+ ],
+ "urls": [
+  "https://ci.apache.org/projects/flink/flinkdocs-stable/concepts/runtime/state.html"
+ ],
+ "triagem": {
+  "chave": "conceito:apache-flink-state-backends",
+  "modelo": "claude-haiku-5-5",
+  "ts": "2026-10-13T20:34:47Z",
+  "resposta": {
+   "concept_en": "keyed state backend",
+   "serve": "stack",
+   "role": "Track indexed documents for incremental, idempotent sync.",
+   "mechanism": [
+    "n/a"
+   ],
+   "place": [
+    "disk"
+   ],
+   "tools_on_card": [
+    "RocksDB"
+   ],
+   "doubt": false,
+   "evidence": "Managed keyed state for tracking which documents have been indexed, enabling idempotent upserts and incremental sync without reprocessing the full knowledge base."
+  }
+ }
+}

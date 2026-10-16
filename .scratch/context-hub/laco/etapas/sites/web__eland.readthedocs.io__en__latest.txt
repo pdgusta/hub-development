@@ -1,0 +1,396 @@
+Skip to content
+
+ eland 9.2.0 documentation
+
+API Reference
+
+Supported Pandas APIs
+
+DataFrame
+
+eland.DataFrame
+
+eland.DataFrame.index
+
+eland.DataFrame.columns
+
+eland.DataFrame.dtypes
+
+eland.DataFrame.select_dtypes
+
+eland.DataFrame.values
+
+eland.DataFrame.empty
+
+eland.DataFrame.shape
+
+eland.DataFrame.ndim
+
+eland.DataFrame.size
+
+eland.DataFrame.head
+
+eland.DataFrame.keys
+
+eland.DataFrame.tail
+
+eland.DataFrame.get
+
+eland.DataFrame.query
+
+eland.DataFrame.sample
+
+eland.DataFrame.iterrows
+
+eland.DataFrame.itertuples
+
+eland.DataFrame.agg
+
+eland.DataFrame.aggregate
+
+eland.DataFrame.groupby
+
+eland.groupby.DataFrameGroupBy
+
+eland.groupby.DataFrameGroupBy.agg
+
+eland.groupby.DataFrameGroupBy.aggregate
+
+eland.groupby.DataFrameGroupBy.count
+
+eland.groupby.DataFrameGroupBy.mad
+
+eland.groupby.DataFrameGroupBy.max
+
+eland.groupby.DataFrameGroupBy.mean
+
+eland.groupby.DataFrameGroupBy.median
+
+eland.groupby.DataFrameGroupBy.min
+
+eland.groupby.DataFrameGroupBy.nunique
+
+eland.groupby.DataFrameGroupBy.std
+
+eland.groupby.DataFrameGroupBy.sum
+
+eland.groupby.DataFrameGroupBy.var
+
+eland.groupby.DataFrameGroupBy.quantile
+
+eland.groupby.GroupBy
+
+eland.DataFrame.count
+
+eland.DataFrame.describe
+
+eland.DataFrame.info
+
+eland.DataFrame.max
+
+eland.DataFrame.mean
+
+eland.DataFrame.min
+
+eland.DataFrame.median
+
+eland.DataFrame.mad
+
+eland.DataFrame.std
+
+eland.DataFrame.var
+
+eland.DataFrame.sum
+
+eland.DataFrame.nunique
+
+eland.DataFrame.mode
+
+eland.DataFrame.quantile
+
+eland.DataFrame.idxmax
+
+eland.DataFrame.idxmin
+
+eland.DataFrame.drop
+
+eland.DataFrame.filter
+
+eland.DataFrame.hist
+
+eland.DataFrame.es_info
+
+eland.DataFrame.es_match
+
+eland.DataFrame.es_query
+
+eland.DataFrame.es_dtypes
+
+eland.DataFrame.info
+
+eland.DataFrame.to_numpy
+
+eland.DataFrame.to_csv
+
+eland.DataFrame.to_html
+
+eland.DataFrame.to_json
+
+eland.DataFrame.to_string
+
+eland.DataFrame.to_pandas
+
+Series
+
+eland.Series
+
+eland.Series.index
+
+eland.Series.dtype
+
+eland.Series.dtypes
+
+eland.Series.shape
+
+eland.Series.name
+
+eland.Series.empty
+
+eland.Series.ndim
+
+eland.Series.size
+
+eland.Series.head
+
+eland.Series.tail
+
+eland.Series.sample
+
+eland.Series.add
+
+eland.Series.sub
+
+eland.Series.subtract
+
+eland.Series.mul
+
+eland.Series.multiply
+
+eland.Series.div
+
+eland.Series.divide
+
+eland.Series.truediv
+
+eland.Series.floordiv
+
+eland.Series.mod
+
+eland.Series.pow
+
+eland.Series.radd
+
+eland.Series.rsub
+
+eland.Series.rsubtract
+
+eland.Series.rmul
+
+eland.Series.rmultiply
+
+eland.Series.rdiv
+
+eland.Series.rdivide
+
+eland.Series.rtruediv
+
+eland.Series.rfloordiv
+
+eland.Series.rmod
+
+eland.Series.rpow
+
+eland.Series.describe
+
+eland.Series.max
+
+eland.Series.mean
+
+eland.Series.min
+
+eland.Series.sum
+
+eland.Series.median
+
+eland.Series.mad
+
+eland.Series.std
+
+eland.Series.var
+
+eland.Series.nunique
+
+eland.Series.unique
+
+eland.Series.value_counts
+
+eland.Series.mode
+
+eland.Series.quantile
+
+eland.Series.rename
+
+eland.Series.isna
+
+eland.Series.notna
+
+eland.Series.isnull
+
+eland.Series.notnull
+
+eland.Series.isin
+
+eland.Series.filter
+
+eland.Series.hist
+
+eland.Series.to_string
+
+eland.Series.to_numpy
+
+eland.Series.to_pandas
+
+eland.Series.es_info
+
+eland.Series.es_match
+
+eland.Series.es_dtype
+
+eland.Series.es_dtypes
+
+Machine Learning
+
+eland.ml.MLModel
+
+eland.ml.MLModel.predict
+
+eland.ml.MLModel.import_model
+
+eland.ml.MLModel.exists_model
+
+eland.ml.MLModel.delete_model
+
+Index
+
+eland.Index
+
+General Utility Functions
+
+eland.pandas_to_eland
+
+eland.eland_to_pandas
+
+Input/Output
+
+eland.csv_to_eland
+
+Machine Learning
+
+eland.ml.MLModel
+
+eland.ml.MLModel.predict
+
+eland.ml.MLModel.import_model
+
+eland.ml.MLModel.exists_model
+
+eland.ml.MLModel.delete_model
+
+Examples
+
+Eland Demo Notebook
+
+Introduction to Eland Webinar
+
+Online retail analysis using Eland
+
+Development
+
+Contributing to Eland
+
+Implementation Details
+
+ Back to top
+
+ View this page
+
+Eland: DataFrames and Machine Learning backed by Elasticsearch¶
+
+Date: May 05, 2026 Version: 9.2.0
+
+Useful links:
+Source Repository |
+Issues & Ideas |
+Q&A Support
+
+Eland is a Python Elasticsearch client for exploring and analyzing data
+in Elasticsearch with a familiar Pandas-compatible API.
+
+Where possible the package uses existing Python APIs and data structures to make it easy to switch between numpy,
+pandas, scikit-learn to their Elasticsearch powered equivalents. In general, the data resides in Elasticsearch and
+not in memory, which allows Eland to access large datasets stored in Elasticsearch.
+
+Installing Eland¶
+
+Eland can be installed from PyPI via pip:
+
+$ python -m pip install eland
+
+Eland can also be installed from Conda Forge with Conda:
+
+$ conda install -c conda-forge eland
+
+Getting Started¶
+
+If it’s your first time using Eland we recommend looking through the
+Examples documentation for ideas on what Eland is capable of.
+
+If you’re new to Elasticsearch we recommend reading the documentation.
+
+API Reference
+
+Supported Pandas APIs
+
+DataFrame
+
+Series
+
+Machine Learning
+
+Index
+
+General Utility Functions
+
+Input/Output
+
+Development
+
+Contributing to Eland
+
+Implementation Details
+
+Examples
+
+Eland Demo Notebook
+
+Introduction to Eland Webinar
+
+Online retail analysis using Eland
+
+ On this page
+
+Eland: DataFrames and Machine Learning backed by Elasticsearch
+
+Installing Eland
+
+Getting Started

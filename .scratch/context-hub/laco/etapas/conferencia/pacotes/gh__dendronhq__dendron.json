@@ -1,0 +1,71 @@
+{
+ "chave": "gh:dendronhq/dendron",
+ "nomes": [
+  "Dendron",
+  "Dendron Search (CLI)",
+  "MCP (Markdown CouchDB Plugin) for Dendron",
+  "Dendron Workspace Indexing (via `dendron index`)",
+  "Dendron Search"
+ ],
+ "urls": [
+  "https://github.com/dendronhq/dendron",
+  "https://www.dendron.so",
+  "https://www.dendron.so/",
+  "https://dendron.so",
+  "https://dendron.so/",
+  "https://dendron.org/",
+  "https://github.com/dendronhq/dendron/tree/main/plugins/search",
+  "https://github.com/dendronhq/dendron/tree/main/plugins/mcp",
+  "https://github.com/dendronhq/dendron/tree/main/docs/CLI.md",
+  "https://github.com/dendron/dendron",
+  "https://github.com/dendron-project/dendron",
+  "https://github.com/dendronhq/dendron-search"
+ ],
+ "readme_cortado": true,
+ "readme": "[![StandWithUkraine](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/badges/StandWithUkraine.svg)](https://github.com/vshymanskyy/StandWithUkraine/blob/main/docs/README.md)\n\n[![dendronhq on Twitter](https://img.shields.io/twitter/follow/dendronhq?style=social)](https://link.dendron.so/twitter)\n[![Dendron on YouTube](https://img.shields.io/youtube/channel/subscribers/UC8GQLj4KZhN8WcJPiKXtcRQ?style=social)](https://link.dendron.so/youtube)\n[![Discord](https://img.shields.io/discord/717965437182410783?color=blueviolet&label=Discord&style=flat-square)](https://link.dendron.so/discord)\n[![VS Code Installs of Dendron](https://img.shields.io/visual-studio-marketplace/i/dendron.dendron?label=VS%20Code%20Installs%20of%20Dendron&color=blue&style=flat-square)](https://link.dendron.so/vscode)\n\n<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->\n[![All Contributors](https://img.shields.io/badge/all_contributors-244-orange.svg?style=flat-square)](#contributors-)\n<!-- ALL-CONTRIBUTORS-BADGE:END -->\n\n# Dendron\n\n[Dendron is currently in maintenace only, active development has ceased.](https://github.com/dendronhq/dendron/discussions/3890)\n\n![Dendron Logo](https://foundation-prod-assetspublic53c57cce-8cpvgjldwysl.s3-us-west-2.amazonaws.com/assets/logo-256.png)\n\nDendron is an **open-source, local-first, markdown-based, note-taking tool**. It's a personal knowledge management solution (PKM) built specifically for developers and integrates natively with IDEs like [VS Code](https://code.visualstudio.com/) and [VSCodium](https://vscodium.com/).\n\n## Motivation\n\n> \"We are overwhelmed with information and we don't have the tools to properly index and filter through it. [The development of these tools, which] will give society access to and command over the inherited knowledge of the ages [should] be the first objective of our scientist\" - Vannevar Bush, 1945\n\n## Why\n\n\nMost PKM tools help you create notes but slam into a wall retrieving them once your knowledge base reaches a certain size threshold. That threshold varies with the tool, but virtually everything stops working past 10k notes unless the user was extremely diligent about organizing their knowledge. Past this threshold, entropy wins and every query becomes a keyword search and scrolling through pages of results.\n\n\n> Dendron's mission is to help **humans organize, find, and work with any amount of knowledge**.\n\nIt not only helps you create notes but also retrieve them - retrieval works as well with ten notes as it does with ten thousand.\n\n## How\n\nDendron builds on top of the past five decades of programming languages and developer tooling. We apply the key lessons from software to the management of general knowledge.\nWe make managing general knowledge like managing code and your PKM like an IDE.\n\n## Design Principles\n\n### Developer Centric\n\nDendron aims to create a world class developer experience for managing knowledge.\n\nOur goal is to provide a tool with the efficiency of Vim, the extensibility of Emacs, and the approachability of VS Code.\n\nWhat this means:\n\n- dendron features are text centric and composables\n- dendron provides the lowest friction interface for working with your knowledge base\n- dendron optimizes for efficiency, speed, and keyboard focused ux\n- dendron comes with sane defaults and the ability to customize to your liking\n- dendron can be extended along any dimension\n\n### Gradual Structure\n\nDendron extends markdown with structural primitives to make it easier to manage at scale and tooling on top to work with this structure.\n\nDifferent knowledge bases require different levels of structure - a PKM used for keeping daily journals is different than a company wide knowledge base used by thousands of developers.\n\nDendron works with any level of structure, meaning you can take free form notes when starting out and gradually layer on more structure as your knowledge base grows more.\n\n### Flexible and Consistent\n\nDendron is both flexible and consistent. It provides a consistent structure for all your notes and gives you the flexibility to change that structure.\n\nIn Dendron, you can refactor notes and Dendron will make sure that your PKM is consistent throughout. This means that you have the best of both worlds: a basic structure for the organization but the flexibility to change it.\n\n## Features\n\nDendron has hundreds of features. The following is a list of highlights.\n\n### It's just Plaintext\n\n- manage using git\n- use git blame to see individual edits\n- edit in anything that works on text files (eg. Vim)\n\n<a href=\"https://www.loom.com/share/67b90027de974702a78753158822e96b\">\n    <img style=\"\" src=\"https://org-dendron-public-assets.s3.amazonaws.com/images/67b90027de974702a78753158822e96b.gif\">\n</a>\n\n### Markdown and More\n\n- create diagrams using mermaid\n- write math using katex\n- embed notes (and parts of notes) in multiple places using note references\n\n<a href=\"https://www.loom.com/share/f7e710a3c3454e75a2938d2cbed359d9\">\n    <img style=\"\" src=\"https://org-dendron-public-assets.s3.amazonaws.com/images/f7e710a3c3454e75a2938d2cbed359d9.gif\">\n</a>\n\n### Lookup\n\n- one unified way to find and create notes\n- quickly traverse and create new hierarchies\n\n<a href=\"https://www.loom.com/share/29ec0fe0964648feae08387a7bb8c45f\">\n    <img style=\"\" src=\"https://org-dendron-public-assets.s3.amazonaws.com/images/29ec0fe0964648feae08387a7bb8c45f.gif\">\n</a>\n\n### Schema\n\n- ensure consistency for your knowledge base\n- get autocomplete hints when creating new notes\n- automatically apply common templates to notes on creation\n\n<a href=\"https://www.loom.com/share/faee68959647441e86b9c4c183384ce5\">\n    <img style=\"\" src=\"https://org-dendron-public-assets.s3.amazonaws.com/images/faee68959647441e86b9c4c183384ce5.gif\">\n</a>\n\n### Navigation\n\n- explore relationships using backlinks\n- navigate to notes, headers and arbitrary blocks\n- visualize your knowledge base using the graph view\n\n<a href=\"https://www.loom.com/share/2d365d965c104af2a1501d789aa2d2b1\">\n    <img style=\"\" src=\"https://org-dendron-public-assets.s3.amazonaws.com/images/2d365d965c104af2a1501d789aa2d2b1.gif\">\n  </a>\n\n### Refactor\n\n- restructure your knowledge base without breaking links\n- rename a single note or refactor using arbitrary regex\n- rename and move individual sections within notes\n\n<a href=\"https://www.loom.com/share/b1a84decc53f4639b5bc60c885c56543\">\n    <img style=\"\" src=\"https://org-dendron-public-assets.s3.amazonaws.com/images/b1a84decc53f4639b5bc60c885c56543.gif\">\n</a>\n\n### Vaults\n\n- mix and match knowledge using vaults, a git backed folder for your notes\n- use vaults to separate concerns, like personal notes and work notes\n- publish vaults on git to collaborate and share knowledge with others\n\n<a href=\"https://www.loom.com/share/c51e457ac2b0415ca91a8929411add64\">\n    <img style=\"\" src=\"https://org-dendron-public-assets.s3.amazonaws.com/images/c51e457ac2b0415ca91a8929411add64.gif\">\n  </a>\n\n### Publish\n\n- export your knowledge base as a static (nextjs) site\n- lookup locally and share globally with generated links\n- manage what you publish using fine grained permissions on a per vault, per hierarchy and per note basis\n\n<a href=\"https://www.loom.com/share/727537e0fd49481cac2accc2b3362fa3\">\n    <img style=\"\" src=\"https://org-dendron-public-assets.s3.amazonaws.com/images/727537e0fd49481cac2accc2b3362fa3.gif\">\n  </a>\n\n## Use Cases\n\n- personal knowledge management (PKM)\n- documentation\n- meeting notes\n- tasks and todos\n- blogging\n- customer relationship management\n\n## Getting Started\n\nInterested in trying out Dendron? Jump right in with the [Getting Started Guide](https://wiki.dendron.so/notes/678c77d9-ef2c-4537-97b5-64556d6337f1/)!\n\n## Join Us\n\nDendron wouldn't be what it is today without our wonderful set of members and supporters.\n\n### Community Calendar\n\nWe have a bunch of community events that we host throughout the week. You can stay up to date on whats happening by taking a look at our community calendar!\n\n- View and register for upcoming [Dendron Community Events on Luma](https://link.dendron.so/luma)\n\n### Dendron Newsletter\n\n- [Subscribe to the Dendron Newsletter](https://link.dendron.so/newsletter)\n\nDendron sends out a weekly newsletter highlighting:\n\n- Latest release features\n- Latest [Dendron blog](https://blog.dendron.so) posts\n- Insights from the [Dendron Discord](https://link.dendron.so/discord) community\n- RFC updates and [GitHub discussions](https://link.dendron.so/6WvK)\n- and more!\n\n### Join other Dendrologists\n\nThere are a variety of ways to connect with Dendron devs, contributors, and other members of the Dendron community:\n\n- Join the [Dendron on Discord](https://link.dendron.so/discord)\n- Follow [Dendron on Twitter (`@dendronhq`)](https://link.dendron.so/twitter)\n- Checkout [Dendron on GitHub](https://link.dendron.so/github)\n- Read the [Dendron Blog](https://blog.dendron.so/)\n- Subscribe to the [Dendron Newsletter](https://link.dendron.so/newsletter)\n\n## Contributors ✨\n\nDendron wouldn't be what it is today without help from the wonderful gardeners 👨‍🌾👩‍🌾\n\nIf you would like to contribute (docs, code, finance, or advocacy), you can find instructions to do so [here](https://wiki.dendron.so/notes/125c990b-6fe7-4ada-a65f-44cbde8b33f0.html). For setup of local development environment run `./setup.sh` which automates the setup.\n\n<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->\n<!-- prettier-ignore-start -->\n<!-- markdownlint-disable -->\n<table>\n  <tbody>\n    <tr>\n      <td align=\"center\"><a href=\"https://github.com/lsernau\"><img src=\"https://avatars.githubusercontent.com/u/4541943?v=4?s=100\" width=\"100px;\" alt=\"lsernau\"/><br /><sub><b>lsernau</b></sub></a><br /><a href=\"https://github.com/dendronhq/dendron/issues?q=author%3Alsernau\" title=\"Bug reports\">🐛</a> <a href=\"#financial-lsernau\" title=\"Financial\">💵</a></td>\n      <td align=\"center\"><a href=\"http://kaangenc.me/\"><img src=\"https://avatars.githubusercontent.com/u/1008124?v=4?s=100\" width=\"100px;\" alt=\"Kaan Genç\"/><br /><sub><b>Kaan Genç</b></sub></a><br /><a href=\"https://github.com/dendronhq/dendron/commits?author=SeriousBug\" title=\"Documentation\">📖</a> <a href=\"https://github.com/dendronhq/dendron/commits?author=SeriousBug\" title=\"Code\">💻</a></td>\n      <td align=\"center\"><a href=\"https://mandarvaze.bitbucket.io/\"><img src=\"https://avatars.githubusercontent.com/u/46438?v=4?s=100\" width=\"100px;\" alt=\"Mandar Vaze\"/><br /><sub><b>Mandar Vaze</b></sub></a><br /><a href=\"https://github.com/dendronhq/dendron/commits?author=mandarvaze\" title=\"Documentation\">📖</a></td>\n      <td align=\"center\"><a href=\"https://www.henryfellerhoff.com/\"><img src=\"https://avatars.githubusercontent.com/u/48483883?v=4?s=100\" width=\"100px;\" alt=\"hfellerhoff\"/><br /><sub><b>hfellerhoff</b></sub></a><br /><a href=\"https://github.com/dendronhq/dendron/commits?author=hfellerhoff\" title=\"Documentation\">📖</a></td>\n      <td align=\"center\"><a href=\"https://d3vr.me/\"><img src=\"https://avatars.githubusercontent.com/u/1549990?v=4?s=100\" width=\"100px;\" alt=\"Fayçal\"/><br /><sub><b>Fayçal</b></sub></a><br /><a href=\"https://github.com/dendronhq/dendron/commits?author=d3vr\" title=\"Documentation\">📖</a> <a href=\"https://github.com/dendronhq/dendron/issues?q=author%3Ad3vr\" title=\"Bug reports\">🐛</a></td>\n      <td align=\"center\"><a href=\"https://github.com/BASSMAN\"><img src=\"https://avatars.githubusercontent.com/u/363783?v=4?s=100\" width=\"100px;\" alt=\"Ronald\"/><br /><sub><b>Ronald</b></sub></a><br /><a href=\"https://github.com/dendronhq/dendron/issues?q=author%3ABASSMAN\" title=\"Bug reports\">🐛</a> <a href=\"#financial-BASSMAN\" title=\"Financial\">💵</a></td>\n      <td align=\"center\"><a href=\"https://github.com/Simon-Claudius\"><img src=\"https://avatars.githubusercontent.com/u/45047368?v=4?s=100\" width=\"100px;\" alt=\"Simon-Claudius\"/><br /><sub><b>Simon-Claudius</b></sub></a><br /><a href=\"https://github.com/dendronhq/dendron/issues?q=author%3ASimon-Claudius\" title=\"Bug reports\">🐛</a></td>\n    </tr>\n",
+ "fonte": "readme",
+ "respostas": [
+  {
+   "por": "gemma-4-31b",
+   "resposta": {
+    "serve": "none",
+    "role": "",
+    "place": [
+     "n/a"
+    ],
+    "mechanism": [
+     "n/a"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "archived",
+    "doubt": false,
+    "evidence": "Dendron is currently in maintenace only, active development has ceased."
+   }
+  },
+  {
+   "por": "voxtral-small",
+   "resposta": {
+    "serve": "none",
+    "role": "note-taking tool",
+    "place": [
+     "disk",
+     "library"
+    ],
+    "mechanism": [
+     "full_text",
+     "n/a"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "archived",
+    "doubt": true,
+    "evidence": "Dendron is currently in maintenace only, active development has ceased."
+   }
+  }
+ ]
+}

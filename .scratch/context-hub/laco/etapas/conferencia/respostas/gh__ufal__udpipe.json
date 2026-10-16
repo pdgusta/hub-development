@@ -1,0 +1,33 @@
+{
+ "chave": "gh:ufal/udpipe",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T21:55:34Z",
+ "resultado": "corrige",
+ "conferencia": {
+  "resultado": "corrige",
+  "final": {
+   "serve": "stack",
+   "role": "Tokenization, tagging, lemmatization and dependency parsing of text; could feed lemma-based indexing.",
+   "place": [
+    "library",
+    "cli"
+   ],
+   "mechanism": [
+    "other"
+   ],
+   "mcp": "no",
+   "windows": "yes",
+   "portuguese": "unknown",
+   "license": "MPL-2.0 (models CC BY-NC-SA)",
+   "maturity": "unknown",
+   "doubt": false,
+   "evidence": "\"trainable pipeline for tokenization, tagging, lemmatization and dependency parsing\"; \"binary for Linux/Windows/OS X\"; models for nearly all UD treebanks"
+  },
+  "o_que_mudou": [
+   "serve: none -> stack, lemmatization is useful for indexing",
+   "portuguese: yes -> unknown, README does not name Portuguese",
+   "license: MPL-2.0 -> MPL-2.0 (models CC BY-NC-SA)"
+  ],
+  "nota": "Lemmatizer usable for Portuguese indexing; models are non-commercial licensed."
+ }
+}

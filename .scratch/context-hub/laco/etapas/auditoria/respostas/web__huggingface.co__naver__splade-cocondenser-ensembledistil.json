@@ -1,0 +1,31 @@
+{
+ "chave": "web:huggingface.co/naver/splade-cocondenser-ensembledistil",
+ "modelo": "claude-opus-5-5",
+ "ts": "2026-10-13T23:21:07Z",
+ "tipo": "conferencia",
+ "resultado": "discorda",
+ "auditoria": {
+  "resultado": "discorda",
+  "erro": "mechanism: 'sparse' não existe no enum; busca esparsa aprendida cabe em embeddings + other. A licença CC BY-NC-SA citada é do artigo, então unknown está certo.",
+  "final": {
+   "serve": "search",
+   "role": "SPLADE sparse encoder for passage retrieval (English MS MARCO); learned sparse retrieval",
+   "place": [
+    "library"
+   ],
+   "mechanism": [
+    "embeddings",
+    "other"
+   ],
+   "mcp": "unknown",
+   "windows": "unknown",
+   "portuguese": "unknown",
+   "license": "unknown",
+   "maturity": "unknown",
+   "doubt": false,
+   "evidence": "SPLADE Sparse Encoder, MS MARCO dev MRR@10 38.3; usable via sentence-transformers SparseEncoder"
+  },
+  "gravidade": "leve",
+  "nota": "Modelo SPLADE esparso treinado em MS MARCO (inglês); encaixe fraco para notas pt/en, útil só como referência de busca esparsa aprendida."
+ }
+}

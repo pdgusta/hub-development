@@ -1,0 +1,58 @@
+{
+ "nome": "pgvector",
+ "nome_canonico": "pgvector (pgvector/pgvector)",
+ "chave": "gh:pgvector/pgvector",
+ "url": "https://github.com/pgvector/pgvector",
+ "serve": "search",
+ "area": null,
+ "identidade": "ok: extensão do PostgreSQL. Das URLs listadas, facebookresearch/pgvector e yambin/pgvector são forks/outros; vale pgvector/pgvector",
+ "windows": "yes: compila com nmake/MSVC e instala em PostgreSQL nativo; o CI roda em windows-2022 e windows-2025 (exige servidor PostgreSQL no Windows, que o hub não tem)",
+ "mcp": "no: extensão de banco, sem MCP; MCP de terceiros não verificado",
+ "portugues": "nao_aplicavel como busca de texto (só vetores); português depende do modelo de embeddings; busca lexical seria o full-text do Postgres, não verificado",
+ "markdown_frontmatter": "no: guarda vetores em colunas; sem leitura de Markdown",
+ "atualizacao": "manual: a aplicação grava os vetores por INSERT/UPDATE; índices HNSW/IVFFlat acompanham as linhas",
+ "embeddings_endpoint": "sem endpoint: recebe vetores prontos; quem gera é a aplicação (um gateway OpenAI-compatível serviria). Limites: vector até 2.000 dimensões, halfvec até 4.000 com índice",
+ "recursos": "roda dentro do servidor PostgreSQL 13+; números de memória e disco não verificados",
+ "licenca": "PostgreSQL License (o GitHub marca NOASSERTION)",
+ "ultimo_release": "v0.8.7 (2026-10-01)",
+ "atividade": "último commit 2026-10-01",
+ "maturidade": "stable",
+ "encaixe": "Só serviria se o hub ganhasse um PostgreSQL por máquina, em paralelo ao CouchDB. Impedimento: segundo banco, sem WSL/Docker, fora do LiveSync; vetores separados das notas.",
+ "evidencias": [
+  {
+   "campo": "windows",
+   "url": "https://raw.githubusercontent.com/pgvector/pgvector/master/README.md",
+   "citacao": "Ensure C++ support in Visual Studio is installed ... Then use `nmake` to build"
+  },
+  {
+   "campo": "windows",
+   "url": "https://raw.githubusercontent.com/pgvector/pgvector/master/.github/workflows/build.yml",
+   "citacao": "os: windows-2025"
+  },
+  {
+   "campo": "postgres",
+   "url": "https://raw.githubusercontent.com/pgvector/pgvector/master/README.md",
+   "citacao": "Compile and install the extension (supports Postgres 13+)"
+  },
+  {
+   "campo": "embeddings_endpoint",
+   "url": "https://raw.githubusercontent.com/pgvector/pgvector/master/README.md",
+   "citacao": "`vector` - up to 2,000 dimensions"
+  },
+  {
+   "campo": "licenca",
+   "url": "https://raw.githubusercontent.com/pgvector/pgvector/master/LICENSE",
+   "citacao": "Portions Copyright (c) 1996-2026, PostgreSQL Global Development Group"
+  },
+  {
+   "campo": "ultimo_release",
+   "url": "https://raw.githubusercontent.com/pgvector/pgvector/master/CHANGELOG.md",
+   "citacao": "## 0.8.7 (2026-10-01)"
+  }
+ ],
+ "nao_verificado": [
+  "recursos em números",
+  "busca lexical/português via Postgres",
+  "MCP de terceiros"
+ ]
+}

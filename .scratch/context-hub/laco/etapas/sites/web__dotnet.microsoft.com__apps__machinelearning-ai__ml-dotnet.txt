@@ -1,0 +1,265 @@
+Skip to main content
+
+ .NET 
+
+ What is .NET?
+ Why choose .NET?
+
+ C#
+ Web
+ Cloud
+ AI
+ Data
+ Game development
+ Mobile & desktop
+ App modernization
+
+ Learn
+
+ Download
+
+ Docs
+
+ Community
+
+ Customer stories
+
+ .NET Conf
+
+ LIVE TV
+
+Theme
+
+ Microsoft Security
+ Azure
+ Dynamics 365
+ Microsoft 365
+ Microsoft Teams
+ Windows 365
+
+ Microsoft AI
+ Azure Space
+ Mixed reality
+ Microsoft HoloLens
+ Microsoft Viva
+ Quantum computing
+ Sustainability
+
+ Education
+ Automotive
+ Financial services
+ Government
+ Healthcare
+ Manufacturing
+ Retail
+
+ Find a partner
+ Become a partner
+ Partner Network
+ Microsoft Marketplace
+ Software companies
+
+ Blog
+ Microsoft Advertising
+ Developer Center
+ Documentation
+ Events
+ Licensing
+ Microsoft Learn
+ Microsoft Research
+
+ View Sitemap
+
+.NET Conf 2026 
+
+ Join us November 10-13 to celebrate the launch of .NET 11 and learn what's new! 
+
+ Learn more 
+
+ × 
+
+ML.NET 
+
+An open source and cross-platform machine learning framework 
+
+ Get started 
+
+Supported on Windows, Linux, and macOS 
+
+Built for .NET developers 
+
+With ML.NET, you can use your existing .NET skills to easily integrate ML into your .NET apps without any prior ML experience. 
+
+Custom ML made easy with AutoML 
+
+ML.NET offers AutoML and productive tools to help you easily build, train, and deploy high-quality custom ML models. 
+
+Extended with TensorFlow & more 
+
+ML.NET allows you to leverage other popular ML libraries like Infer.NET, TensorFlow, and ONNX for additional ML scenarios. 
+
+Trusted and proven at scale 
+
+Use the same ML framework used by recognized Microsoft products like Power BI, Microsoft Defender, Outlook, and Bing. 
+
+ C# 
+
+ F# 
+
+//Step 1. Create an ML Context 
+var ctx = new MLContext(); 
+
+//Step 2. Read in the input data from a text file for model training 
+IDataView trainingData = ctx.Data 
+ .LoadFromTextFile<ModelInput>(dataPath, hasHeader: true); 
+
+//Step 3. Build your data processing and training pipeline 
+var pipeline = ctx.Transforms.Text 
+ .FeaturizeText("Features", nameof(SentimentIssue.Text)) 
+ .Append(ctx.BinaryClassification.Trainers 
+ .LbfgsLogisticRegression("Label", "Features")); 
+
+//Step 4. Train your model 
+ITransformer trainedModel = pipeline.Fit(trainingData); 
+
+//Step 5. Make predictions using your trained model 
+var predictionEngine = ctx.Model 
+ .CreatePredictionEngine<ModelInput, ModelOutput>(trainedModel); 
+
+var sampleStatement = new ModelInput() { Text = "This is a horrible movie" }; 
+
+var prediction = predictionEngine.Predict(sampleStatement); 
+
+//Step 1. Create an ML Context 
+let ctx = MLContext() 
+
+//Step 2. Read in the input data from a text file 
+let trainingData = ctx.Data.LoadFromTextFile<ModelInput>(dataPath, hasHeader=true) 
+
+//Step 3. Build your data processing and training pipeline 
+let scope = ctx.BinaryClassification.Trainers.LbfgsLogisticRegression("Label", "Features") 
+let pipeline = ctx.Transforms.Text.FeaturizeText("Features", "Text").Append(scope) 
+
+//Step 4. Train your model 
+let trainedModel = pipeline.Fit(trainingData) 
+
+//Step 5. Make predictions using your model 
+let predictionEngine = ctx.Model.CreatePredictionEngine<ModelInput, ModelOutput>(trainedModel) 
+
+let sampleStatement = { Label = false; Text = "This is a horrible movie" } 
+
+let prediction = predictionEngine.Predict(sampleStatement) 
+
+Built for .NET developers 
+
+With ML.NET, you can create custom ML models using C# or F# without having to leave the .NET ecosystem. 
+
+ML.NET lets you re-use all the knowledge, skills, code, and libraries you already have as a .NET developer so that you can easily integrate machine learning into your web, mobile, desktop, games, and IoT apps. 
+
+ Dig deeper: What is ML.NET? 
+
+Sentiment analysis 
+
+Analyze the sentiment of customer reviews using a binary classification algorithm. 
+
+Product recommendation 
+
+Recommend products based on purchase history using a matrix factorization algorithm. 
+
+Price prediction 
+
+Predict taxi fares based on parameters such as distance traveled using a regression algorithm. 
+
+Customer segmentation 
+
+Identify groups of customers with similar profiles using a clustering algorithm. 
+
+Object detection 
+
+Recognize objects in an image using an ONNX deep learning model. 
+
+Fraud detection 
+
+Detect fraudulent credit card transactions using a binary classification algorithm. 
+
+Sales spike detection 
+
+Detect spikes and changes in product sales using an anomaly detection model. 
+
+Image classification 
+
+Classify images (for example, broccoli vs. pizza) using a TensorFlow deep learning model. 
+
+Sales forecasting 
+
+Forecast future sales for products using a regression algorithm. 
+
+You can find more ML.NET samples on GitHub, or take a look at the ML.NET tutorials. 
+
+Custom ML made easy with AutoML 
+
+ML.NET offers the ML.NET CLI to make it super easy to build custom ML Models. 
+
+This tool uses Automated ML (AutoML), a cutting edge technology that automates the process of building best performing models for your Machine Learning scenario. All you have to do is load your data, and AutoML takes care of the rest of the model building process. 
+
+ View sample code on GitHub 
+
+Extended with TensorFlow & more 
+
+ML.NET has been designed as an extensible platform so that you can consume other popular ML frameworks (TensorFlow, ONNX, Infer.NET, and more) and have access to even more machine learning scenarios, like image classification, object detection, and more. 
+
+Data sourced from Machine Learning at Microsoft with ML.NET paper. Results for sentiment analysis, using ~900 MB of an Amazon review dataset. Higher accuracy and lower runtime are better. 
+
+High performance and accuracy 
+
+Using a 9GB Amazon review data set, ML.NET trained a sentiment analysis model with 95% accuracy. Other popular machine learning frameworks failed to process the dataset due to memory errors. Training on 10% of the data set, to let all the frameworks complete training, ML.NET demonstrated the highest speed and accuracy. 
+
+The performance evaluation found similar results in other machine learning scenarios, including click-through rate prediction and flight delay prediction. 
+
+ Read the ML.NET performance paper 
+
+ Read customer stories 
+
+Ready to get started? 
+
+Our step-by-step tutorial will help you get ML.NET running on your computer. 
+
+ Get started 
+
+ Follow us 
+
+ Feedback 
+
+ English (United States) 
+
+ Español 
+
+ Français (France) 
+
+ Indonesia (Indonesia) 
+
+ Italiano (Italia) 
+
+ 日本語 
+
+ 한국어 
+
+ Português (Brasil) 
+
+ Русский (Россия) 
+
+ 中文（简体） 
+
+ 中文（台灣） 
+
+ Your Privacy Choices
+
+ Consumer Health Privacy
+
+ Powered by .NET 11.0.0-rc.1.26425.128
+ Contact Microsoft
+ Support
+ Privacy & Cookies
+ Manage cookies
+ Terms of Use
+ Trademarks

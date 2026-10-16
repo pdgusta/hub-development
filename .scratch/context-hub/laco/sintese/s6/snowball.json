@@ -1,0 +1,53 @@
+{
+ "nome": "Snowball",
+ "nome_canonico": "Snowball (snowballstem/snowball)",
+ "chave": "gh:snowballstem/snowball",
+ "url": "https://github.com/snowballstem/snowball",
+ "serve": "search",
+ "area": null,
+ "identidade": "ok: snowballstem.org e o repositório snowballstem/snowball são o compilador e os algoritmos; os forks shankarpandala (404) e shibukawa são de terceiros. Não é motor de busca, só stemmer.",
+ "windows": "yes, com ressalva: compilador em C99, build com GNU make; o README trata de compilar de/para Windows (EXEEXT=.exe). Não vi CI windows-latest. Os stemmers gerados (Python, Java, C#...) rodam onde a linguagem roda.",
+ "mcp": "no: não é serviço; sem MCP.",
+ "portugues": "yes: algoritmo de stemming português, 'aims to work with both European Portuguese and Brazilian Portuguese', e lista de stopwords portuguesas no site.",
+ "markdown_frontmatter": "nao_aplicavel: opera sobre palavras, não sobre documentos.",
+ "atualizacao": "nao_aplicavel",
+ "embeddings_endpoint": "nao_aplicavel: não usa embeddings.",
+ "recursos": "C99 e GNU make para compilar; biblioteca minúscula. Números: nao_verificado.",
+ "licenca": "BSD (site: 'Copyright (c) 2001, Dr Martin Porter' e outros; texto exato do COPYING nao_verificado)",
+ "ultimo_release": "v3.1.1 (2026-06-03, feed); NEWS mostra 3.2.0 ainda não lançada",
+ "atividade": "commit de 2026-09-24 (feed)",
+ "maturidade": "stable",
+ "encaixe": "Peça de normalização (radical em português) dentro do analisador de um índice de palavra-chave; não é motor sozinho. Impedimento: precisa de wrapper na linguagem do índice; radical não é lema.",
+ "evidencias": [
+  {
+   "campo": "portugues",
+   "url": "https://snowballstem.org/algorithms/portuguese/stemmer.html",
+   "citacao": "This stemming algorithm aims to work with both European Portuguese and Brazilian Portuguese."
+  },
+  {
+   "campo": "windows",
+   "url": "https://github.com/snowballstem/snowball",
+   "citacao": "If you're cross-compiling to or from Microsoft Windows, you'll need to also work around an assumption in libstemmer's Makefile"
+  },
+  {
+   "campo": "identidade",
+   "url": "https://github.com/snowballstem/snowball",
+   "citacao": "Snowball is a small string processing language for creating stemming algorithms for use in Information Retrieval"
+  },
+  {
+   "campo": "licenca",
+   "url": "https://snowballstem.org/license.html",
+   "citacao": "Copyright (c) 2001, Dr Martin Porter"
+  },
+  {
+   "campo": "ultimo_release",
+   "url": "https://github.com/snowballstem/snowball/releases",
+   "citacao": "v3.1.1"
+  }
+ ],
+ "nao_verificado": [
+  "texto da licença no COPYING",
+  "CI windows-latest",
+  "memória e disco"
+ ]
+}

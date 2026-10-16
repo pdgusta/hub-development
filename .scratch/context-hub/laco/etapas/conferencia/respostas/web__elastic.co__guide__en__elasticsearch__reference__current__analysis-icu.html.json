@@ -1,0 +1,32 @@
+{
+ "chave": "web:elastic.co/guide/en/elasticsearch/reference/current/analysis-icu.html",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T21:57:22Z",
+ "resultado": "corrige",
+ "conferencia": {
+  "resultado": "corrige",
+  "final": {
+   "serve": "search",
+   "role": "Elasticsearch plugin adding Unicode normalization, case folding, collation and transliteration",
+   "place": [
+    "library"
+   ],
+   "mechanism": [
+    "full_text"
+   ],
+   "mcp": "unknown",
+   "windows": "unknown",
+   "portuguese": "unknown",
+   "license": "unknown",
+   "maturity": "unknown",
+   "doubt": false,
+   "evidence": "The ICU Analysis plugin integrates the Lucene ICU module into Elasticsearch, adding extended Unicode support ... Unicode normalization, Unicode-aware case folding, collation support, and transliteration."
+  },
+  "o_que_mudou": [
+   "serve: stack -> search, it is a text analysis component for search",
+   "place: inside_db_mcp -> library, a plugin installed in Elasticsearch nodes",
+   "doubt: true -> false, README is clear"
+  ],
+  "nota": "Helpful only with Elasticsearch; accent-aware folding helps Portuguese search."
+ }
+}

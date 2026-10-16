@@ -1,0 +1,71 @@
+{
+ "chave": "gh:microsoft/mcp",
+ "urls": [
+  "https://github.com/microsoft/mcp",
+  "https://github.com/microsoft/MCP"
+ ],
+ "tipos": [
+  "concept",
+  "tool"
+ ],
+ "termos": [
+  "AI agent",
+  "Data source integration",
+  "Standardized protocol",
+  "Model-Centric Protocol",
+  "MCP",
+  "Microsoft",
+  "agent protocol",
+  "tool server",
+  "MCP handler",
+  "custom MCP service",
+  "search backend",
+  "communication protocol",
+  "custom protocol",
+  "system integration",
+  "Model Context Protocol",
+  "AI context protocol",
+  "MCP gRPC bindings",
+  "Windows agent communication",
+  "Machine Communication Protocol",
+  "system interoperability",
+  "inter-component communication",
+  "protocol",
+  "agent communication",
+  "data access protocol",
+  "management protocol",
+  "local protocol",
+  "machine communication protocol",
+  "Management Control Protocol",
+  "Zugriffsprotokoll",
+  "message passing",
+  "CouchDB access"
+ ],
+ "mencoes": 21,
+ "familias": [
+  "gpt-oss",
+  "ising",
+  "mistral",
+  "nemotron",
+  "qwen"
+ ],
+ "primeira_onda": 1,
+ "nomes": [
+  "MCP (Model-Centric Protocol)",
+  "MCP",
+  "MCP Protocol (spec)",
+  "MCP Protocol",
+  "Model Context Protocol (MCP) Specification",
+  "MCP (Message Control Protocol) + gRPC"
+ ],
+ "resumos": [
+  "MCP は、AI エージェントが外部データソース（CouchDB、ファイルシステムなど）と対話するための標準化されたプロトコルです。エージェントは、MCP サーバーを介してノートブックにアクセスします。",
+  "Framework que expone funciones y datos locales a agentes IA mediante el protocolo MCP.",
+  "Protocolo para comunicación máquina-máquina; requiere implementar un *handler* para exponer la capa de búsqueda (ej: adaptador para Meilisearch/Weaviate).",
+  "A protocol for communication between different systems, possibly custom or specific to the context."
+ ],
+ "readme_status": "ok",
+ "readme_nome": "README.md",
+ "readme_cortado": true,
+ "readme": "# 🌟 Microsoft MCP Servers\n\n## 📘 What is MCP?\n\n**Model Context Protocol (MCP)** is an open protocol that standardizes how applications provide context to large language models (LLMs). It allows AI applications to connect with various data sources and tools in a consistent manner, enhancing their capabilities and flexibility. MCP follows a client-server architecture:\n\n- **MCP Hosts**: Applications like AI assistants or IDEs that initiate connections.\n- **MCP Clients**: Connectors within the host application that maintain 1:1 connections with servers.\n- **MCP Servers**: Services that provide context and capabilities through the standardized MCP.\n\nFor more details, visit the [official MCP website](https://modelcontextprotocol.io).\n\n## 📁 Which MCP Servers are built from this repository?\n\nThis repository contains core libraries, test frameworks, engineering systems, pipelines, and tooling for Microsoft MCP Server contributors to unify engineering investments; and reduce duplication and divergence:\n\n| MCP Server           |  README              | Source Code             |    CHANGELOG          | Releases             | Documentation             | Troubleshooting             | Support             |\n|:---------------------|:--------------------:|:-----------------------:|:---------------------:|:--------------------:|:-------------------------:|:---------------------------:|:-------------------:|\n| Azure MCP            | [Azure MCP README]   | [Azure MCP Source Code] | [Azure MCP CHANGELOG] | [Azure MCP Releases] | [Azure MCP Documentation] | [Azure MCP Troubleshooting] | [Azure MCP Support] |\n| Microsoft Fabric MCP | [Fabric MCP README]  | [Fabric MCP Source Code] | [Fabric MCP CHANGELOG] | [Fabric MCP Releases] | [Fabric Documentation] | [Fabric MCP Troubleshooting] | [Fabric MCP Support] |\n\n[Azure MCP README]: https://github.com/microsoft/mcp/blob/main/servers/Azure.Mcp.Server/README.md\n[Azure MCP CHANGELOG]: https://github.com/microsoft/mcp/blob/main/servers/Azure.Mcp.Server/CHANGELOG.md\n[Azure MCP Source Code]: https://github.com/microsoft/mcp/blob/main/servers/Azure.Mcp.Server\n[Azure MCP Releases]: https://github.com/microsoft/mcp/releases?q=Azure.Mcp.Server-\n[Azure MCP Documentation]: https://learn.microsoft.com/azure/developer/azure-mcp-server/\n[Azure MCP Troubleshooting]: https://github.com/microsoft/mcp/blob/main/servers/Azure.Mcp.Server/TROUBLESHOOTING.md\n[Azure MCP Support]: https://github.com/microsoft/mcp/blob/main/servers/Azure.Mcp.Server/SUPPORT.md\n\n[Fabric MCP README]: https://github.com/microsoft/mcp/blob/main/servers/Fabric.Mcp.Server/README.md\n[Fabric MCP CHANGELOG]: https://github.com/microsoft/mcp/blob/main/servers/Fabric.Mcp.Server/CHANGELOG.md\n[Fabric MCP Source Code]: https://github.com/microsoft/mcp/blob/main/servers/Fabric.Mcp.Server\n[Fabric MCP Releases]: https://github.com/microsoft/mcp/releases?q=Fabric.Mcp.Server-\n[Fabric Documentation]: https://learn.microsoft.com/fabric/\n[Fabric MCP Troubleshooting]: https://github.com/microsoft/mcp/blob/main/servers/Fabric.Mcp.Server/TROUBLESHOOTING.md\n[Fabric MCP Support]: https://github.com/microsoft/mcp/blob/main/servers/Fabric.Mcp.Server/SUPPORT.md\n\n\n## 📚 Which MCP Servers are available from Microsoft?\n\n### <img height=\"18\" width=\"18\" src=\"https://cdn-dynmedia-1.microsoft.com/is/content/microsoftcorp/acom_social_icon_azure\" alt=\"Microsoft Azure Logo\" /> Azure\n- **REPOSITORY**: [microsoft/mcp](https://github.com/microsoft/mcp/tree/main/servers/Azure.Mcp.Server#readme)\n- **DESCRIPTION**: All Azure MCP tools in a single server.  The Azure MCP Server implements the MCP specification to create a seamless connection between AI agents and Azure services.  Azure MCP Server can be used alone or with the GitHub Copilot for Azure extension in VS Code.\n- **CATEGORY**: `CLOUD AND INFRASTRUCTURE`\n- **TYPE**: `Local`\n- **INSTALL**: [![Install Azure MCP in VS Code](https://img.shields.io/badge/VS_Code-0098FF?style=flat-square&logo=visualstudiocode&logoColor=white)](https://vscode.dev/redirect?url=vscode:extension/ms-azuretools.vscode-azure-mcp-server) [![Install Azure MCP in VS Code Insiders](https://img.shields.io/badge/VS_Code_Insiders-24bfa5?style=flat-square&logo=visualstudiocode&logoColor=white)](https://vscode.dev/redirect?url=vscode-insiders:extension/ms-azuretools.vscode-azure-mcp-server) [![Install Azure MCP in Visual Studio](https://img.shields.io/badge/Visual_Studio-C16FDE?style=flat-square&logo=visualstudio&logoColor=white)](https://marketplace.visualstudio.com/items?itemName=github-copilot-azure.GitHubCopilotForAzure2022) [![Install Azure MCP in IntelliJ](https://img.shields.io/badge/IntelliJ%20IDEA-1495b1?style=flat-square&logo=intellijidea&logoColor=white)](https://plugins.jetbrains.com/plugin/8053) [![Install Azure MCP in Eclipse](https://img.shields.io/badge/Eclipse-b6ae1d?style=flat-square&logo=eclipse&logoColor=white)](https://marketplace.eclipse.org/content/azure-toolkit-eclipse) [![Install Azure MCP in Claude Code](https://img.shields.io/badge/Claude_Code-Install-orange?style=flat-square)](https://github.com/microsoft/mcp/tree/main/servers/Azure.Mcp.Server#claude-code)\n\n### ✨ Microsoft Foundry\n- **DOCUMENTATION**: [Get started with Foundry MCP Server](https://learn.microsoft.com/azure/ai-foundry/mcp/get-started?view=foundry&tabs=user)\n- **DESCRIPTION**: A Model Context Protocol server for Microsoft Foundry, providing a unified set of tools for models, knowledge, evaluation, and more.\n- **CATEGORY**: `CLOUD AND INFRASTRUCTURE`\n- **TYPE**: `REMOTE` - `https://mcp.ai.azure.com`\n- **INSTALL**: [![Install Microsoft Foundry MCP in VS Code](https://img.shields.io/badge/VS_Code-0098FF?style=flat-square&logo=visualstudiocode&logoColor=ffffff)](https://vscode.dev/redirect?url=vscode:mcp/install?%7B%22name%22%3A%22foundry-mcp-remote%22%2C%22type%22%3A%22http%22%2C%22url%22%3A%22https%3A%2F%2Fmcp.ai.azure.com%22%7D) [![Install Microsoft Foundry in VS Code Insiders](https://img.shields.io/badge/VS_Code_Insiders-24bfa5?style=flat-square&logo=visualstudiocode&logoColor=ffffff)](https://vscode.dev/redirect?url=vscode-insiders:mcp/install?%7B%22name%22%3A%22foundry-mcp-remote%22%2C%22type%22%3A%22http%22%2C%22url%22%3A%22https%3A%2F%2Fmcp.ai.azure.com%22%7D)\n\n### <img height=\"18\" width=\"18\" src=\"https://cdn-dynmedia-1.microsoft.com/is/content/microsoftcorp/acom_social_icon_azure\" alt=\"Microsoft Azure Logo\" /> Azure Resource Manager\n- **REPOSITORY**: [Azure/Azure-Resource-Manager-MCP](https://github.com/Azure/Azure-Resource-Manager-MCP)\n- **DESCRIPTION**: A Model Context Protocol server with tools to use Azure Resource Graph to retrieve and filter information about Azure resources in a customer's subscription, and tools to manage ARM template deployments.\n- **CATEGORY**: `CLOUD AND INFRASTRUCTURE`\n- **TYPE**: `REMOTE` - `https://mcp.management.azure.com`\n- **INSTALL**: [![Install Azure Resource Manager MCP in VS Code](https://img.shields.io/badge/VS_Code-0098FF?style=flat-square&logo=visualstudiocode&logoColor=ffffff)](https://vscode.dev/redirect?url=vscode:mcp/install?%7B%22name%22%3A%22arm-mcp-remote%22%2C%22type%22%3A%22http%22%2C%22url%22%3A%22https%3A%2F%2Fmcp.management.azure.com%22%7D) [![Install Azure Resource Manager MCP in VS Code Insiders](https://img.shields.io/badge/VS_Code_Insiders-24bfa5?style=flat-square&logo=visualstudiocode&logoColor=ffffff)](https://vscode.dev/redirect?url=vscode-insiders:mcp/install?%7B%22name%22%3A%22arm-mcp-remote%22%2C%22type%22%3A%22http%22%2C%22url%22%3A%22https%3A%2F%2Fmcp.management.azure.com%22%7D)\n\n### <img height=\"18\" width=\"18\" src=\"https://cdn-dynmedia-1.microsoft.com/is/content/microsoftcorp/1062064-Products-1.2-24x24\" alt=\"Microsoft Azure DevOps Logo\" /> Azure DevOps\n- **REPOSITORY**: [Azure DevOps MCP Server](https://github.com/microsoft/azure-devops-mcp)\n- **DESCRIPTION**: This TypeScript project provides a local MCP server for Azure DevOps, enabling you to perform a wide range of Azure DevOps tasks directly from your code editor.\n- **CATEGORY**: `DEVELOPER TOOLS`\n- **TYPE**: `Local`\n- **INSTALL**: [![Install Azure DevOps in VS Code](https://img.shields.io/badge/VS_Code-0098FF?style=flat-square&logo=visualstudiocode&logoColor=white)](https://insiders.vscode.dev/redirect/mcp/install?name=ado&type=stdio&command=npx&args=%5B%22-y%22%2C%22%40azure-devops%2Fmcp%22%2C%22%24%7Binput%3Aado_org%7D%22%5D&inputs=%5B%7B%22id%22%3A%22ado_org%22%2C%22type%22%3A%22promptString%22%2C%22description%22%3A%22Azure%20DevOps%20organization%20name%20(e.g.%20contoso)%22%7D%5D) [![Install Azure DevOps in VS Code Insiders](https://img.shields.io/badge/VS_Code_Insiders-24bfa5?style=flat-square&logo=visualstudiocode&logoColor=white)](https://insiders.vscode.dev/redirect/mcp/install?name=ado&quality=insiders&type=stdio&command=npx&args=%5B%22-y%22%2C%22%40azure-devops%2Fmcp%22%2C%22%24%7Binput%3Aado_org%7D%22%5D&inputs=%5B%7B%22id%22%3A%22ado_org%22%2C%22type%22%3A%22promptString%22%2C%22description%22%3A%22Azure%20DevOps%20organization%20name%20(e.g.%20contoso)%22%7D%5D) [![Install Azure DevOps in Visual Studio](https://img.shields.io/badge/Visual_Studio-C16FDE?style=flat-square&logo=visualstudio&logoColor=white)](https://github.com/microsoft/azure-devops-mcp/blob/main/docs/GETTINGSTARTED.md#%EF%B8%8F-visual-studio-2022--github-copilot)\n\n\n### ☸️ Azure Kubernetes Service (AKS)\n- **REPOSITORY**: [Azure/aks-mcp](https://github.com/Azure/aks-mcp)\n- **DESCRIPTION**: An MCP server that enables AI assistants to interact with Azure Kubernetes Service (AKS) clusters. It serves as a bridge between AI tools and AKS, translating natural language requests into AKS operations and returning the results in a format the AI tools can understand.\n- **CATEGORY**: `CLOUD AND INFRASTRUCTURE`\n- **TYPE**: `Local`\n- **INSTALL**: [![Install AKS MCP in VS Code](https://img.shields.io/badge/VS_Code-0098FF?style=flat-square&logo=visualstudiocode&logoColor=white)](https://vscode.dev/redirect?url=vscode:extension/ms-kubernetes-tools.vscode-aks-tools) [![Install AKS MCP in VS Code Insiders](https://img.shields.io/badge/VS_Code_Insiders-24bfa5?style=flat-square&logo=visualstudiocode&logoColor=white)](https://vscode.dev/redirect?url=vscode-insiders:extension/ms-kubernetes-tools.vscode-aks-tools) [![Install AKS MCP in Visual Studio](https://img.shields.io/badge/Visual_Studio-C16FDE?style=flat-square&logo=visualstudio&logoColor=white)](https://github.com/Azure/aks-mcp)\n\n### 💻 Binlog MCP Server\n- **REPOSITORY**: [dotnet/skills](https://github.com/dotnet/skills)\n- **DESCRIPTION**: A Model Context Protocol (MCP) server for analyzing MSBuild binary logs (`.binlog` files). Exposes structured access to build errors, warnings, targets, tasks, and properties so AI agents can triage CI failures and answer build-diagnostic questions.\n- **CATEGORY**: `DEVELOPER TOOLS`\n- **TYPE**: `Local`\n- **INSTALL**: .NET global tool from [NuGet.org](https://www.nuget.org/packages/Microsoft.AITools.BinlogMcp) — `dotnet tool install --global Microsoft.AITools.BinlogMcp`\n\n### <img height=\"18\" width=\"18\" src=\"https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png\" alt=\"GitHub Logo\" /> GitHub\n- **REPOSITORY**: [github/github-mcp-server](https://github.com/github/github-mcp-server)\n- **DESCRIPTION**: Access GitHub repositories, issues, and pull requests through secure API integration.\n- **CATEGORY**: `DEVELOPER TOOLS`\n- **TYPE**: `REMOTE` - `https://api.githubcopilot.com/mcp`\n- **INSTALL**: [![Install GitHub MCP in VS Code](https://img.shields.io/badge/VS_Code-0098FF?style=flat-square&logo=visualstudiocode&logoColor=white)](https://insiders.vscode.dev/redirect/mcp/install?name=github&config=%7B%22type%22%3A%20%22http%22%2C%22url%22%3A%20%22https%3A%2F%2Fapi.githubcopilot.com%2Fmcp%2F%22%7D) [![Install GitHub MCP in VS Code Insiders](https://img.shields.io/badge/VS_Code_Insiders-24bfa5?style=flat-square&logo=visualstudiocode&logoColor=white)](https://insiders.vscode.dev/redirect/mcp/install?name=github&config=%7B%22type%22%3A%20%22http%22%2C%22url%22"
+}

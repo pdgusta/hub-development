@@ -1,0 +1,28 @@
+{
+ "chave": "gh:zeromq/jeromq",
+ "urls": [
+  "https://github.com/zeromq/jeromq"
+ ],
+ "tipos": [
+  "library"
+ ],
+ "termos": [
+  "JeroMQ",
+  "Java ZeroMQ"
+ ],
+ "mencoes": 1,
+ "familias": [
+  "mistral"
+ ],
+ "primeira_onda": 4,
+ "nomes": [
+  "Zeromq4j"
+ ],
+ "resumos": [
+  "Java bindings for ZeroMQ, useful for Java-based search layers."
+ ],
+ "readme_status": "ok",
+ "readme_nome": "README.md",
+ "readme_cortado": false,
+ "readme": "\n# JeroMQ\n\nPure Java implementation of libzmq (http://zeromq.org).\n\n[![CircleCI](https://circleci.com/gh/zeromq/jeromq.svg?style=svg)](https://circleci.com/gh/zeromq/jeromq)\n[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=zeromq_jeromq&metric=alert_status)](https://sonarcloud.io/dashboard?id=zeromq_jeromq)\n[![Coverage Status](https://coveralls.io/repos/github/zeromq/jeromq/badge.svg?branch=master)](https://coveralls.io/github/zeromq/jeromq?branch=master)\n[![Maven Central](https://img.shields.io/maven-central/v/org.zeromq/jeromq.svg)](https://maven-badges.herokuapp.com/maven-central/org.zeromq/jeromq)\n[![Javadocs](http://www.javadoc.io/badge/org.zeromq/jeromq.svg)](http://www.javadoc.io/doc/org.zeromq/jeromq)\n\n## Features\n\n* Based on libzmq 4.1.7.\n* ZMTP/3.0 (http://rfc.zeromq.org/spec:23).\n* tcp:// protocol and inproc:// is compatible with zeromq.\n* ipc:// protocol works only between jeromq (uses tcp://127.0.0.1:port internally).\n\n* Securities\n  * [PLAIN](http://rfc.zeromq.org/spec:24).\n  * [CURVE](http://rfc.zeromq.org/spec:25).\n\n* Performance that's not too bad, compared to native libzmq.\n  * 4.5M messages (100B) per sec.\n  * [Performance](https://github.com/zeromq/jeromq/wiki/Performance).\n* Exactly same developer experience with zeromq and jzmq.\n \n* TCP KeepAlive Count, Idle and Interval are known to only work with JVM 13 and later.\n\n## Unsupported\n\n* ipc:// protocol with zeromq. Java doesn't support UNIX domain socket.\n* pgm:// protocol. Cannot find a pgm Java implementation.\n* norm:// protocol. Cannot find a Java implementation.\n* tipc:// protocol. Cannot find a Java implementation.\n\n* GSSAPI mechanism is not yet implemented.\n\n* Interrupting threads is still unsupported: library is NOT Thread.interrupt safe.\n\n## Contributing\n\nContributions welcome! See [CONTRIBUTING.md](CONTRIBUTING.md) for details about the contribution process and useful development tasks.\n\n## Usage\n\n### Maven\n\nAdd it to your Maven project's `pom.xml`:\n\n```xml\n    <dependency>\n      <groupId>org.zeromq</groupId>\n      <artifactId>jeromq</artifactId>\n      <version>0.6.0</version>\n    </dependency>\n\n    <!-- for the latest SNAPSHOT -->\n    <dependency>\n      <groupId>org.zeromq</groupId>\n      <artifactId>jeromq</artifactId>\n      <version>0.6.0</version>\n    </dependency>\n\n    <!-- If you can't find the latest snapshot -->\n    <repositories>\n      <repository>\n        <id>sonatype-nexus-snapshots</id>\n        <url>https://oss.sonatype.org/content/repositories/snapshots</url>\n        <releases>\n          <enabled>false</enabled>\n        </releases>\n        <snapshots>\n          <enabled>true</enabled>\n        </snapshots>\n       </repository>\n    </repositories>\n```\n\n### Ant\n\nTo generate an ant build file from `pom.xml`, issue the following command:\n\n```bash\nmvn ant:ant\n```\n\n## Getting started\n\n### Simple example\n\nHere is how you might implement a server that prints the messages it receives\nand responds to them with \"Hello, world!\":\n\n```java\nimport org.zeromq.SocketType;\nimport org.zeromq.ZMQ;\nimport org.zeromq.ZContext;\n\npublic class hwserver\n{\n    public static void main(String[] args) throws Exception\n    {\n        try (ZContext context = new ZContext()) {\n            // Socket to talk to clients\n            ZMQ.Socket socket = context.createSocket(SocketType.REP);\n            socket.bind(\"tcp://*:5555\");\n\n            while (!Thread.currentThread().isInterrupted()) {\n                // Block until a message is received\n                byte[] reply = socket.recv(0);\n\n                // Print the message\n                System.out.println(\n                    \"Received: [\" + new String(reply, ZMQ.CHARSET) + \"]\"\n                );\n\n                // Send a response\n                String response = \"Hello, world!\";\n                socket.send(response.getBytes(ZMQ.CHARSET), 0);\n            }\n        }\n    }\n}\n```\n\n### More examples\n\nThe JeroMQ [translations of the zguide examples](jeromq-core/src/test/java/guide) are a good\nreference for recommended usage.\n\n### Documentation\n\nFor API-level documentation, see the\n[Javadocs](http://www.javadoc.io/doc/org.zeromq/jeromq).\n\nThis repo also has a [doc](doc/) folder, which contains assorted \"how to do X\"\nguides and other useful information about various topics related to using\nJeroMQ.\n\n## License\n\nAll source files are copyright © 2007-2024 contributors as noted in the AUTHORS file.\n\nFree use of this software is granted under the terms of the Mozilla Public License 2.0. For details see the file `LICENSE` included with the JeroMQ distribution.\n"
+}

@@ -1,0 +1,33 @@
+{
+ "chave": "gh:nextapps-de/flexsearch",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T21:22:37Z",
+ "resultado": "corrige",
+ "conferencia": {
+  "resultado": "corrige",
+  "final": {
+   "serve": "search",
+   "role": "Biblioteca de busca full-text para navegador e Node.js, com índices persistentes (SQLite, Redis, IndexedDB etc.).",
+   "place": [
+    "library",
+    "disk"
+   ],
+   "mechanism": [
+    "full_text"
+   ],
+   "mcp": "no",
+   "windows": "unknown",
+   "portuguese": "unknown",
+   "license": "unknown",
+   "maturity": "stable",
+   "doubt": false,
+   "evidence": "README: 'Next-Generation full-text search library for Browser and Node.js'; Persistent Indexes (SQLite, Redis, Postgres...); charset Latin; sem menção a MCP."
+  },
+  "o_que_mudou": [
+   "mechanism: full_text,bm25 -> full_text, README não diz que usa BM25",
+   "place: library,light_client,disk -> library,disk, light_client não sustentado",
+   "mcp: unknown -> no, README não menciona MCP"
+  ],
+  "nota": "Índice full-text leve em JS com persistência; serve para a busca, mas precisa de wrapper MCP próprio."
+ }
+}

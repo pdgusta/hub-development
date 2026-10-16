@@ -1,0 +1,1315 @@
+Docs
+
+ /
+
+ Reference
+
+ /
+
+ Elasticsearch
+
+Elasticsearch REST APIs
+
+Elasticsearch exposes REST APIs that are used by the UI components and can be called directly to configure and access Elasticsearch features.
+
+For API reference information, go to Elasticsearch API and Elasticsearch Serverless API.
+
+This section includes:
+
+API conventions
+
+Common options
+
+Compatibility
+
+Examples
+
+API endpoints
+
+Behavioral analytics
+
+The behavioral analytics APIs enable you to create and manage analytics collections and retrieve information about analytics collections. Behavioral Analytics is an analytics event collection platform. You can use it to analyze your users' searching and clicking behavior. Leverage this information to improve the relevance of your search results and identify gaps in your content.
+
+API
+Description
+
+Get Collections
+Lists all behavioral analytics collections.
+
+Create Collection
+Creates a new behavioral analytics collection.
+
+Delete Collection
+Deletes a behavioral analytics collection.
+
+Create Event
+Sends a behavioral analytics event to a collection.
+
+Compact and aligned text (CAT)
+
+The compact and aligned text (CAT) APIs return human-readable text as a response, instead of a JSON object. The CAT APIs aim are intended only for human consumption using the Kibana console or command line. They are not intended for use by applications. For application consumption, it's recommend to use a corresponding JSON API.
+
+API
+Description
+
+Get aliases
+Returns index aliases.
+
+Get allocation
+Provides a snapshot of shard allocation across nodes.
+
+Get component templates
+Returns information about component templates.
+
+Get count
+Returns document count for specified indices.
+
+Get fielddata
+Shows fielddata memory usage by field.
+
+Get health
+Returns cluster health status.
+
+Get help
+Shows help for CAT APIs.
+
+Get index information
+Returns index statistics.
+
+Get master
+Returns information about the elected master node.
+
+Get ml data frame analytics
+Returns data frame analytics jobs.
+
+Get ml datafeeds
+Returns information about datafeeds.
+
+Get ml jobs
+Returns anomaly detection jobs.
+
+Get ml trained models
+Returns trained machine learning models.
+
+Get nodeattrs
+Returns custom node attributes.
+
+Get node information
+Returns cluster node info and statistics.
+
+Get pending tasks
+Returns cluster pending tasks.
+
+Get plugins
+Returns information about installed plugins.
+
+Get recovery
+Returns shard recovery information.
+
+Get repositories
+Returns snapshot repository information.
+
+Get segments
+Returns low-level segment information.
+
+Get shard information
+Returns shard allocation across nodes.
+
+Get snapshots
+Returns snapshot information.
+
+Get tasks
+Returns information about running tasks.
+
+Get templates
+Returns index template information.
+
+Get thread pool
+Returns thread pool statistics.
+
+Get transforms
+Returns transform information.
+
+Cluster
+
+The cluster APIs enable you to retrieve information about your infrastructure on cluster, node, or shard level. You can manage cluster settings and voting configuration exceptions, collect node statistics and retrieve node information.
+
+API
+Description
+
+Get cluster health
+Returns health status of the cluster.
+
+Get cluster info
+Returns basic information about the cluster.
+
+Reroute cluster
+Manually reassigns shard allocations.
+
+Get cluster state
+Retrieves the current cluster state.
+
+Explain shard allocation
+Get explanations for shard allocations in the cluster.
+
+Update cluster settings
+Updates persistent or transient cluster settings.
+
+Get cluster stats
+Returns cluster-wide statistics, including node, index, and shard metrics.
+
+Get cluster pending tasks
+Lists cluster-level tasks that are pending execution.
+
+Get cluster settings
+Retrieves the current cluster-wide settings, including persistent and transient settings.
+
+Get cluster remote info
+Returns information about configured remote clusters for cross-cluster search and replication.
+
+Update cluster voting config exclusions
+Update the cluster voting config exclusions by node IDs or node names.
+
+Delete voting config exclusions
+Clears voting configuration exclusions, allowing previously excluded nodes to participate in master elections.
+
+Exclude nodes from voting
+Excludes nodes from voting in master elections.
+
+Clear voting config exclusions
+Clears voting config exclusions.
+
+Cluster - Health
+
+The cluster - health API provides you a report with the health status of an Elasticsearch cluster.
+
+API
+Description
+
+Get cluster health report
+Returns health status of the cluster, including index-level details.
+
+Connector
+
+The connector and sync jobs APIs provide a convenient way to create and manage Elastic connectors and sync jobs in an internal index.
+
+API
+Description
+
+Get connector
+Retrieves a connector configuration.
+
+Put connector
+Creates or updates a connector configuration.
+
+Delete connector
+Deletes a connector configuration.
+
+Start connector sync job
+Starts a sync job for a connector.
+
+Get connector sync job
+Retrieves sync job details for a connector.
+
+Get all connectors
+Retrieves a list of all connector configurations.
+
+Get all connector sync jobs
+Retrieves a list of all connector sync jobs.
+
+Delete connector sync job
+Deletes a connector sync job.
+
+The connector and sync jobs APIs provide a convenient way to create and manage Elastic connectors and sync jobs in an internal index.
+
+API
+Description
+
+Get connector
+Retrieves a connector configuration.
+
+Put connector
+Creates or updates a connector configuration.
+
+Delete connector
+Deletes a connector configuration.
+
+Start connector sync job
+Starts a sync job for a connector.
+
+Get connector sync job
+Retrieves sync job details for a connector.
+
+Cross-cluster replication (CCR)
+
+The cross-cluster replication (CCR) APIs enable you to run cross-cluster replication operations, such as creating and managing follower indices or auto-follow patterns. With CCR, you can replicate indices across clusters to continue handling search requests in the event of a datacenter outage, prevent search volume from impacting indexing throughput, and reduce search latency by processing search requests in geo-proximity to the user.
+
+API
+Description
+
+Create or update auto-follow pattern
+Creates or updates an auto-follow pattern.
+
+Delete auto-follow pattern
+Deletes an auto-follow pattern.
+
+Get auto-follow pattern
+Retrieves auto-follow pattern configuration.
+
+Pause auto-follow pattern
+Pauses an auto-follow pattern.
+
+Resume auto-follow pattern
+Resumes a paused auto-follow pattern.
+
+Forget follower
+Removes follower retention leases from leader index.
+
+Create follower
+Creates a follower index.
+
+Get follower
+Retrieves information about follower indices.
+
+Get follower stats
+Retrieves stats about follower indices.
+
+Pause follower
+Pauses replication of a follower index.
+
+Resume follower
+Resumes replication of a paused follower index.
+
+Unfollow index
+Converts a follower index into a regular index.
+
+Get CCR stats
+Retrieves overall CCR statistics for the cluster.
+
+Data stream
+
+The data stream APIs enable you to create and manage data streams and data stream lifecycles. A data stream lets you store append-only time series data across multiple indices while giving you a single named resource for requests. Data streams are well-suited for logs, events, metrics, and other continuously generated data.
+
+API
+Description
+
+Create data stream
+Creates a new data stream.
+
+Delete data stream
+Deletes an existing data stream.
+
+Get data stream
+Retrieves one or more data streams.
+
+Modify data stream
+Updates the backing index configuration for a data stream.
+
+Promote data stream write index
+Promotes a backing index to be the write index.
+
+Data streams stats
+Returns statistics about data streams.
+
+Migrate to data stream
+Migrates an index or indices to a data stream.
+
+Document
+
+The document APIs enable you to create and manage documents in an Elasticsearch index.
+
+API
+Description
+
+Index document
+Indexes a document into a specific index.
+
+Get document
+Retrieves a document by ID.
+
+Delete document
+Deletes a document by ID.
+
+Update document
+Updates a document using a script or partial doc.
+
+Bulk
+Performs multiple indexing or delete operations in a single API call.
+
+Multi-get document
+Retrieves multiple documents by ID in one request.
+
+Update documents by query
+Updates documents that match a query.
+
+Delete documents by query
+Deletes documents that match a query.
+
+Get term vectors
+Retrieves term vectors for a document.
+
+Multi-termvectors
+Retrieves term vectors for multiple documents.
+
+Reindex
+Copies documents from one index to another.
+
+Reindex Rethrottle
+Changes the throttle for a running reindex task.
+
+Explain
+Explains how a document matches (or doesn't match) a query.
+
+Get source
+Retrieves the source of a document by ID.
+
+Exists
+Checks if a document exists by ID.
+
+Enrich
+
+The enrich APIs enable you to manage enrich policies. An enrich policy is a set of configuration options used to add the right enrich data to the right incoming documents.
+
+API
+Description
+
+Create or update enrich policy
+Creates or updates an enrich policy.
+
+Get enrich policy
+Retrieves enrich policy definitions.
+
+Delete enrich policy
+Deletes an enrich policy.
+
+Execute enrich policy
+Executes an enrich policy to create an enrich index.
+
+Get enrich stats
+Returns enrich coordinator and policy execution statistics.
+
+EQL
+
+The EQL APIs enable you to run EQL-related operations. Event Query Language (EQL) is a query language for event-based time series data, such as logs, metrics, and traces.
+
+API
+Description
+
+Submit EQL search
+Runs an EQL search.
+
+Get EQL search status
+Retrieves the status of an asynchronous EQL search.
+
+Get EQL search results
+Retrieves results of an asynchronous EQL search.
+
+Delete EQL search
+Cancels an asynchronous EQL search.
+
+ES|QL
+
+The ES|QL APIs enable you to run ES|QL-related operations. The Elasticsearch Query Language (ES|QL) provides a powerful way to filter, transform, and analyze data stored in Elasticsearch, and in the future in other runtimes.
+
+API
+Description
+
+ES|QL Query
+Executes an ES
+QL query using a SQL-like syntax.
+
+ES|QL Async Submit
+Submits an ES
+QL query to run asynchronously.
+
+ES|QL Async Get
+Retrieves results of an asynchronous ES
+QL query.
+
+ES|QL Async Delete
+Cancels an asynchronous ES
+QL query.
+
+Features
+
+The feature APIs enable you to introspect and manage features provided by Elasticsearch and Elasticsearch plugins.
+
+API
+Description
+
+Get Features
+Lists all available features in the cluster.
+
+Reset Features
+Resets internal state for system features.
+
+Fleet
+
+The Fleet APIs support Fleet’s use of Elasticsearch as a data store for internal agent and action data.
+
+API
+Description
+
+Run Multiple Fleet Searches
+Runs several Fleet searches with a single API request.
+
+Run a Fleet Search
+Runs a Fleet search.
+
+Get global checkpoints
+Get the current global checkpoints for an index.
+
+Graph explore
+
+The graph explore APIs enable you to extract and summarize information about the documents and terms in an Elasticsearch data stream or index.
+
+API
+Description
+
+Graph Explore
+Discovers relationships between indexed terms using relevance-based graph exploration.
+
+Index
+
+The index APIs enable you to manage individual indices, index settings, aliases, mappings, and index templates.
+
+API
+Description
+
+Create index
+Creates a new index with optional settings and mappings.
+
+Delete index
+Deletes an existing index.
+
+Get index
+Retrieves information about one or more indices.
+
+Open index
+Opens a closed index to make it available for operations.
+
+Close index
+Closes an index to free up resources.
+
+Shrink index
+Shrinks an existing index into a new index with fewer primary shards.
+
+Split index
+Splits an existing index into a new index with more primary shards.
+
+Clone index
+Clones an existing index into a new index.
+
+Check alias
+Manages index aliases.
+
+Update field mappings
+Updates index mappings.
+
+Get field mappings
+Retrieves index mappings.
+
+Get index settings
+Retrieves settings for one or more indices.
+
+Update index settings
+Updates index-level settings dynamically.
+
+Get index templates
+Retrieves legacy index templates.
+
+Put index template
+Creates or updates a legacy index template.
+
+Delete index template
+Deletes a legacy index template.
+
+Get composable index templates
+Retrieves composable index templates.
+
+Put composable index template
+Creates or updates a composable index template.
+
+Delete composable index template
+Deletes a composable index template.
+
+Get index alias
+Retrieves index aliases.
+
+Delete index alias
+Deletes index aliases.
+
+Refresh index
+Refreshes one or more indices, making recent changes searchable.
+
+Flush index
+Performs a flush operation on one or more indices.
+
+Clear index cache
+Clears caches associated with one or more indices.
+
+Force merge index
+Merges index segments to reduce their number and improve performance.
+
+Rollover index
+Rolls over an alias to a new index when conditions are met.
+
+Resolve index
+Resolves expressions to index names, aliases, and data streams.
+
+Simulate index template
+Simulates the application of a composable index template.
+
+Simulate template
+Simulates the application of a legacy index template.
+
+Get mapping
+Retrieves mapping definitions for one or more indices.
+
+Put mapping
+Updates mapping definitions for one or more indices.
+
+Reload search analyzers
+Reloads search analyzers for one or more indices.
+
+Shrink index
+Shrinks an existing index into a new index with fewer primary shards.
+
+Split index
+Splits an existing index into a new index with more primary shards.
+
+Clone index
+Clones an existing index into a new index.
+
+Index lifecycle management
+
+The index lifecycle management APIs enable you to set up policies to automatically manage the index lifecycle.
+
+API
+Description
+
+Put Lifecycle Policy
+Creates or updates an ILM policy.
+
+Get Lifecycle Policy
+Retrieves one or more ILM policies.
+
+Delete Lifecycle Policy
+Deletes an ILM policy.
+
+Explain Lifecycle
+Shows the current lifecycle step for indices.
+
+Move to Step
+Manually moves an index to the next step in its lifecycle.
+
+Retry Lifecycle Step
+Retries the current lifecycle step for failed indices.
+
+Start ILM
+Starts the ILM plugin.
+
+Stop ILM
+Stops the ILM plugin.
+
+Get ILM Status
+Returns the status of the ILM plugin.
+
+Inference
+
+The inference APIs enable you to create inference endpoints and integrate with machine learning models of different services - such as Amazon Bedrock, Anthropic, Azure AI Studio, Cohere, Google AI, Groq, Mistral, OpenAI, or HuggingFace.
+
+API
+Description
+
+Put Inference Endpoint
+Creates an inference endpoint.
+
+Get Inference Endpoint
+Retrieves one or more inference endpoints.
+
+Delete Inference Endpoint
+Deletes an inference endpoint.
+
+Infer
+Runs inference using a deployed model.
+
+Info
+
+The info API provides basic build, version, and cluster information.
+
+API
+Description
+
+Get cluster information
+Returns basic information about the cluster.
+
+Ingest
+
+The ingest APIs enable you to manage tasks and resources related to ingest pipelines and processors.
+
+API
+Description
+
+Create or update pipeline
+Creates or updates an ingest pipeline.
+
+Get pipeline
+Retrieves one or more ingest pipelines.
+
+Delete pipeline
+Deletes an ingest pipeline.
+
+Simulate pipeline
+Simulates a document through an ingest pipeline.
+
+Get built-in grok patterns
+Returns a list of built-in grok patterns.
+
+Licensing
+
+The licensing APIs enable you to manage your licenses.
+
+API
+Description
+
+Get license
+Retrieves the current license for the cluster.
+
+Update license
+Updates the license for the cluster.
+
+Delete license
+Removes the current license.
+
+Start basic license
+Starts a basic license.
+
+Start trial license
+Starts a trial license.
+
+Get the trial status
+Returns the status of the current trial license.
+
+Logstash
+
+The logstash APIs enable you to manage pipelines that are used by Logstash Central Management.
+
+API
+Description
+
+Create or update Logstash pipeline
+Creates or updates a Logstash pipeline.
+
+Get Logstash pipeline
+Retrieves one or more Logstash pipelines.
+
+Delete Logstash pipeline
+Deletes a Logstash pipeline.
+
+Machine learning
+
+The machine learning APIs enable you to retrieve information related to the Elastic Stack machine learning features.
+
+API
+Description
+
+Get machine learning memory stats
+Gets information about how machine learning jobs and trained models are using memory.
+
+Get machine learning info
+Gets defaults and limits used by machine learning.
+
+Set upgrade mode
+Sets a cluster wide upgrade_mode setting that prepares machine learning indices for an upgrade.
+
+Get ML job stats
+Retrieves usage statistics for ML jobs.
+
+Get ML calendar events
+Retrieves scheduled events for ML calendars.
+
+Get ML filters
+Retrieves ML filters.
+
+Put ML filter
+Creates or updates an ML filter.
+
+Delete ML filter
+Deletes an ML filter.
+
+Get ML info
+Gets overall ML info.
+
+Get ML model snapshots
+Retrieves model snapshots for ML jobs.
+
+Revert ML model snapshot
+Reverts an ML job to a previous model snapshot.
+
+Delete expired ML data
+Deletes expired ML results and model snapshots.
+
+Machine learning anomaly detection
+
+The machine learning anomaly detection APIs enable you to perform anomaly detection activities.
+
+API
+Description
+
+Put Job
+Creates an anomaly detection job.
+
+Get Job
+Retrieves configuration info for anomaly detection jobs.
+
+Delete Job
+Deletes an anomaly detection job.
+
+Open Job
+Opens an existing anomaly detection job.
+
+Close anomaly detection jobs
+Closes an anomaly detection job.
+
+Flush Job
+Forces any buffered data to be processed.
+
+Forecast Job
+Generates forecasts for anomaly detection jobs.
+
+Get Buckets
+Retrieves bucket results from a job.
+
+Get Records
+Retrieves anomaly records for a job.
+
+Get calendar configuration info
+Gets calendar configuration information.
+
+Create a calendar
+Create a calendar.
+
+Delete a calendar
+Delete a calendar.
+
+Delete events from a calendar
+Delete events from a calendar.
+
+Add anomaly detection job to calendar
+Add an anomaly detection job to a calendar.
+
+Delete anomaly detection jobs from calendar
+Deletes anomaly detection jobs from a calendar.
+
+Get datafeeds configuration info
+Get configuration information for a datafeed.
+
+Create datafeed
+Creates a datafeed.
+
+Delete a datafeed
+Deletes a datafeed.
+
+Delete expired ML data
+Delete all job results, model snapshots and forecast data that have exceeded their retention days period.
+
+Delete expired ML data
+Delete all job results, model snapshots and forecast data that have exceeded their retention days period.
+
+Get filters
+Get a single filter or all filters.
+
+Get anomaly detection job results for influencers
+Get anomaly detection job results for entities that contributed to or are to blame for anomalies.
+
+Get anomaly detection job stats
+Get anomaly detection job stats.
+
+Get anomaly detection jobs configuration info
+You can get information for multiple anomaly detection jobs in a single API request by using a group name, a comma-separated list of jobs, or a wildcard expression.
+
+Machine learning data frame analytics
+
+The machine learning data frame analytics APIs enable you to perform data frame analytics activities.
+
+API
+Description
+
+Create a data frame analytics job
+Creates a data frame analytics job.
+
+Get data frame analytics job configuration info
+Retrieves configuration and results for analytics jobs.
+
+Delete a data frame analytics job
+Deletes a data frame analytics job.
+
+Start a data frame analytics job
+Starts a data frame analytics job.
+
+Stop data frame analytics jobs
+Stops a running data frame analytics job.
+
+Machine learning trained models
+
+The machine learning trained models APIs enable you to perform model management operations.
+
+API
+Description
+
+Put Trained Model
+Uploads a trained model for inference.
+
+Get Trained Models
+Retrieves configuration and stats for trained models.
+
+Delete Trained Model
+Deletes a trained model.
+
+Start Deployment
+Starts a trained model deployment.
+
+Stop Deployment
+Stops a trained model deployment.
+
+Get Deployment Stats
+Retrieves stats for deployed models.
+
+Migration
+
+The migration APIs power Kibana's Upgrade Assistant feature.
+
+API
+Description
+
+Deprecation Info
+Retrieves deprecation warnings for cluster and indices.
+
+Get Feature Upgrade Status
+Checks upgrade status of system features.
+
+Post Feature Upgrade
+Upgrades internal system features after a version upgrade.
+
+Query rules
+
+Query rules enable you to configure per-query rules that are applied at query time to queries that match the specific rule. Query rules are organized into rulesets, collections of query rules that are matched against incoming queries. Query rules are applied using the rule query. If a query matches one or more rules in the ruleset, the query is re-written to apply the rules before searching. This allows pinning documents for only queries that match a specific term.
+
+API
+Description
+
+Create or update query ruleset
+Creates or updates a query ruleset.
+
+Get query ruleset
+Retrieves one or more query rulesets.
+
+Delete query ruleset
+Deletes a query ruleset.
+
+Rollup
+
+The rollup APIs enable you to create, manage, and retrieve information about rollup jobs.
+
+API
+Description
+
+Create or update rollup job
+Creates or updates a rollup job for summarizing historical data.
+
+Get rollup jobs
+Retrieves configuration for one or more rollup jobs.
+
+Delete rollup job
+Deletes a rollup job.
+
+Start rollup job
+Starts a rollup job.
+
+Stop rollup job
+Stops a running rollup job.
+
+Get rollup capabilities
+Returns the capabilities of rollup jobs.
+
+Search rollup data
+Searches rolled-up data using a rollup index.
+
+Script
+
+Use the script support APIs to get a list of supported script contexts and languages. Use the stored script APIs to manage stored scripts and search templates.
+
+API
+Description
+
+Add or update stored script
+Adds or updates a stored script.
+
+Get stored script
+Retrieves a stored script.
+
+Delete stored script
+Deletes a stored script.
+
+Execute Painless script
+Executes a script using the Painless language.
+
+Get script contexts
+Returns available script execution contexts.
+
+Get script languages
+Returns available scripting languages.
+
+Search
+
+The search APIs enable you to search and aggregate data stored in Elasticsearch indices and data streams.
+
+API
+Description
+
+Search
+Executes a search query on one or more indices.
+
+Multi search
+Executes multiple search requests in a single API call.
+
+Search template
+Executes a search using a stored or inline template.
+
+Render search template
+Renders a search template with parameters.
+
+Explain search
+Explains how a document scores against a query.
+
+Get field capabilities
+Returns the capabilities of fields across indices.
+
+Scroll search
+Efficiently retrieves large numbers of results (pagination).
+
+Clear scroll
+Clears search contexts for scroll requests.
+
+Search application
+
+The search application APIs enable you to manage tasks and resources related to Search Applications.
+
+API
+Description
+
+Create or update search application
+Creates or updates a search application.
+
+Get search application
+Retrieves a search application by name.
+
+Delete search application
+Deletes a search application.
+
+Search search application
+Executes a search using a search application.
+
+Searchable snapshots
+
+The searchable snapshots APIs enable you to perform searchable snapshots operations.
+
+API
+Description
+
+Mount searchable snapshot
+Mounts a snapshot as a searchable index.
+
+Clear searchable snapshot cache
+Clears the cache of searchable snapshots.
+
+Get searchable snapshot stats
+Returns stats about searchable snapshots.
+
+Security
+
+The security APIs enable you to perform security activities, and add, update, retrieve, and remove application privileges, role mappings, and roles. You can also create and update API keys and create and invalidate bearer tokens.
+
+API
+Description
+
+Create or update user
+Creates or updates a user in the native realm.
+
+Get user
+Retrieves one or more users.
+
+Delete user
+Deletes a user from the native realm.
+
+Create or update role
+Creates or updates a role.
+
+Get role
+Retrieves one or more roles.
+
+Delete role
+Deletes a role.
+
+Create API key
+Creates an API key for access without basic auth.
+
+Invalidate API key
+Invalidates one or more API keys.
+
+Authenticate
+Retrieves information about the authenticated user.
+
+Snapshot and restore
+
+The snapshot and restore APIs enable you to set up snapshot repositories, manage snapshot backups, and restore snapshots to a running cluster.
+
+API
+Description
+
+Clean up snapshot repository
+Removes stale data from a repository.
+
+Clone snapshot
+Clones indices from a snapshot into a new snapshot.
+
+Get snapshot
+Retrieves information about snapshots.
+
+Create snapshot
+Creates a snapshot of one or more indices.
+
+Delete snapshot
+Deletes a snapshot from a repository.
+
+Get snapshot repository
+Retrieves information about snapshot repositories.
+
+Create or update snapshot repository
+Registers or updates a snapshot repository.
+
+Delete snapshot repository
+Deletes a snapshot repository.
+
+Restore snapshot
+Restores a snapshot.
+
+Analyze snapshot repository
+Analyzes a snapshot repository for correctness and performance.
+
+Verify snapshot repository
+Verifies access to a snapshot repository.
+
+Get snapshot status
+Gets the status of a snapshot.
+
+Snapshot lifecycle management
+
+The snapshot lifecycle management APIs enable you to set up policies to automatically take snapshots and control how long they are retained.
+
+API
+Description
+
+Get snapshot lifecycle policy
+Retrieves one or more snapshot lifecycle policies.
+
+Create or update snapshot lifecycle policy
+Creates or updates a snapshot lifecycle policy.
+
+Delete snapshot lifecycle policy
+Deletes a snapshot lifecycle policy.
+
+Execute snapshot lifecycle policy
+Triggers a snapshot lifecycle policy manually.
+
+Execute snapshot retention
+Manually apply the retention policy to force immediate removal of snapshots that are expired according to the snapshot lifecycle policy retention rules.
+
+Get snapshot lifecycle stats
+Returns statistics about snapshot lifecycle executions.
+
+Get snapshot lifecycle status
+Returns the status of the snapshot lifecycle management feature.
+
+Start snapshot lifecycle management
+Starts the snapshot lifecycle management feature.
+
+Stop snapshot lifecycle management
+Stops the snapshot lifecycle management feature.
+
+SQL
+
+The SQL APIs enable you to run SQL queries on Elasticsearch indices and data streams.
+
+API
+Description
+
+Clear SQL cursor
+Clears the server-side cursor for an SQL search.
+
+Delete async SQL search
+Deletes an async SQL search.
+
+Get async SQL search results
+Retrieves results of an async SQL query.
+
+Get async SQL search status
+Gets the current status of an async SQL search or a stored synchronous SQL search.
+
+SQL query
+Executes an SQL query.
+
+Translate SQL
+Translates SQL into Elasticsearch DSL.
+
+Synonyms
+
+The synonyms management APIs provide a convenient way to define and manage synonyms in an internal system index. Related synonyms can be grouped in a "synonyms set".
+
+API
+Description
+
+Get synonym set
+Retrieves a synonym set by ID.
+
+Create of update synonym set
+Creates or updates a synonym set.
+
+Delete synonym set
+Deletes a synonym set.
+
+Get synonym rule
+
+Get synonym sets
+Lists all synonym sets.
+
+Task management
+
+The task management APIs enable you to retrieve information about tasks or cancel tasks running in a cluster.
+
+API
+Description
+
+Cancel a task
+Cancels a running task.
+
+Get task information
+
+Get all tasks
+Retrieves information about running tasks.
+
+Text structure
+
+The text structure APIs enable you to find the structure of a text field in an Elasticsearch index.
+
+API
+Description
+
+Find the structure of a text field
+
+Find the structure of a text message
+
+Find the structure of a text file
+Analyzes a text file and returns its structure.
+
+Test a Grok pattern
+
+Transform
+
+The transform APIs enable you to create and manage transforms.
+
+API
+Description
+
+Get transforms
+Retrieves configuration for one or more transforms.
+
+Create a transform
+Creates or updates a transform job.
+
+Get transform stats
+Get usage information for transforms.
+
+Preview transform
+Previews the results of a transform job.
+
+Reset a transform
+Previews the results of a transform job.
+
+Delete transform
+Deletes a transform job.
+
+Schedule a transform
+Previews the results of a transform job.
+
+Start transform
+Starts a transform job.
+
+Stop transform
+Stops a running transform job.
+
+Update transform
+Updates certain properties of a transform.
+
+Upgrade all transforms
+Updates certain properties of a transform.
+
+Usage
+
+The usage API provides usage information about the installed X-Pack features.
+
+API
+Description
+
+Get information
+Gets information about build details, license status, and a list of features currently available under the installed license.
+
+Get usage information
+Get information about the features that are currently enabled and available under the current license.
+
+Watcher
+
+You can use Watcher to watch for changes or anomalies in your data and perform the necessary actions in response.
+
+API
+Description
+
+Acknowledge a watch
+Acknowledges a watch action.
+
+Activate a watch
+Activates a watch.
+
+Deactivates a watch
+Deactivates a watch.
+
+Get a watch
+Retrieves a watch by ID.
+
+Create or update a watch
+Creates or updates a watch.
+
+Delete a watch
+Deletes a watch.
+
+Run a watch
+Executes a watch manually.
+
+Get Watcher index settings
+Get settings for the Watcher internal index
+
+Update Watcher index settings
+Update settings for the Watcher internal index
+
+Query watches
+Get all registered watches in a paginated manner and optionally filter watches by a query.
+
+Start the watch service
+Starts the Watcher service.
+
+Get Watcher statistics
+Returns statistics about the Watcher service.
+
+Stop the watch service
+Stops the Watcher service.

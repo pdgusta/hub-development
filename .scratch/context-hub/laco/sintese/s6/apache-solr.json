@@ -1,0 +1,75 @@
+{
+ "nome": "Solr",
+ "nome_canonico": "Apache Solr (apache/solr)",
+ "chave": "gh:apache/solr",
+ "url": "https://github.com/apache/solr",
+ "serve": "search",
+ "area": null,
+ "identidade": "ok. A primeira URL do item era um espaço em branco; verificado apache/solr, que a documentação coloca sobre o Lucene.",
+ "windows": "yes: 'Solr is tested on several versions of Linux, macOS and Windows.'; início com bin\\solr.cmd start. Requer JRE 21 ou superior.",
+ "mcp": "yes (projeto Apache, incubando): apache/solr-mcp, stdio padrão e HTTP, Java 25+ e Docker listados como pré-requisitos, sem release; tem ferramenta index-markdown-documents. Solr em si não traz MCP.",
+ "portugues": "yes: quatro stemmers de português (Snowball, PortugueseStem, Light e Minimal), stopwords de exemplo do Lucene e ASCIIFoldingFilter para acentos.",
+ "markdown_frontmatter": "Solr em si não lê Markdown; via apache/solr-mcp: 'extracting front matter, title, headings, and body text'. Divisão por título: nao_verificado.",
+ "atualizacao": "manual: indexação por API/ferramenta MCP; sem watcher na fonte.",
+ "embeddings_endpoint": "Módulo text-to-vector usa LangChain4j com OpenAI, Mistral, Cohere e Hugging Face; baseUrl existe nos exemplos, mas a doc não documenta endpoints OpenAI-compatíveis: nao_verificado para gateway local. Aceita vetores prontos.",
+ "recursos": "JVM, heap padrão do bin/solr 512m (-m); RAM/disco do servidor: a doc de requisitos não traz números.",
+ "licenca": "Apache-2.0",
+ "ultimo_release": "9.11.0 (04/10/2026); 10.0.0 (03/03/2026), exigindo Java 21",
+ "atividade": "Release 9.11.0 em 04/10/2026; data do último commit nao_verificado",
+ "maturidade": "stable",
+ "encaixe": "Serviço de busca com português nativo, Windows e MCP Apache próprio, mas pesado: JVM 21 e o MCP exige Java 25 e Docker, vetado no Windows nativo. Cabe como serviço na rede; impedimento é o MCP com Docker.",
+ "evidencias": [
+  {
+   "campo": "windows",
+   "url": "https://solr.apache.org/guide/solr/latest/deployment-guide/system-requirements.html",
+   "citacao": "Solr is tested on several versions of Linux, macOS and Windows."
+  },
+  {
+   "campo": "windows",
+   "url": "https://solr.apache.org/guide/solr/latest/deployment-guide/installing-solr.html",
+   "citacao": "If you are running Windows, you can start Solr by running bin\\solr.cmd instead."
+  },
+  {
+   "campo": "mcp",
+   "url": "https://github.com/apache/solr-mcp",
+   "citacao": "Prerequisites: Java 25+, Docker and Docker Compose, Git."
+  },
+  {
+   "campo": "markdown_frontmatter",
+   "url": "https://github.com/apache/solr-mcp",
+   "citacao": "extracting front matter, title, headings, and body text"
+  },
+  {
+   "campo": "portugues",
+   "url": "https://solr.apache.org/guide/solr/latest/indexing-guide/language-analysis.html",
+   "citacao": "Solr includes four stemmers for Portuguese"
+  },
+  {
+   "campo": "embeddings_endpoint",
+   "url": "https://solr.apache.org/guide/solr/latest/query-guide/text-to-vector.html",
+   "citacao": "dev.langchain4j.model.openai.OpenAiEmbeddingModel; baseUrl https://api.openai.com/v1"
+  },
+  {
+   "campo": "recursos",
+   "url": "https://solr.apache.org/guide/solr/latest/deployment-guide/solr-control-script-reference.html",
+   "citacao": "Default: 512m"
+  },
+  {
+   "campo": "ultimo_release",
+   "url": "https://solr.apache.org/news.html",
+   "citacao": "4 October 2026: Apache Solr 9.11.0"
+  },
+  {
+   "campo": "licenca",
+   "url": "https://github.com/apache/solr",
+   "citacao": "Apache-2.0 license"
+  }
+ ],
+ "nao_verificado": [
+  "data do último commit",
+  "divisão por título no solr-mcp",
+  "base_url OpenAI-compatível local",
+  "RAM/disco numéricos",
+  "Windows nativo do solr-mcp (exige Docker)"
+ ]
+}

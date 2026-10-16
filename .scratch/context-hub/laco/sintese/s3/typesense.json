@@ -1,0 +1,54 @@
+{
+ "nome": "Typesense",
+ "url": "https://github.com/typesense/typesense",
+ "papel": "serviço na rede",
+ "windows": "only_wsl_or_docker: docs de instalação cobrem Windows só via WSL (DEB Ubuntu); issue #1001 (2023-05-09), mantenedor: \"There are a few Linux specific things we are doing, so Typesense will have trouble compiling in Windows until we address them.\"",
+ "mcp": "third_party: avarant/typesense-mcp-server (Python, uv) e suhail-ak-s typesense-mcp-server (npm); nenhum oficial encontrado",
+ "portugues": "Campo locale (padrão inglês); stem:true usa stemmer Snowball escolhido pelo locale (pt é código ISO 639, não citado na página). Stopwords não cobertos; acentos: definir locale ajuda a mantê-los.",
+ "markdown_frontmatter": "Não indexa Markdown; documentos JSON, esquema por coleção.",
+ "atualizacao": "Manual via API; sem watcher.",
+ "embeddings_endpoint": "yes: auto-embedding com model_config.url customizável em /v1/embeddings (model_name deve começar com openai); modelos locais ts/e5-small, ts/all-MiniLM-L12-v2; busca híbrida com rank fusion.",
+ "recursos": "Binário C++ único; índice em memória (README: ~900MB RAM em um dataset de exemplo, ~14GB em outro).",
+ "licenca": "GPL-3.0",
+ "ultimo_release": "Version 30.2 (feed de releases atualizado em 2026-04-09)",
+ "atividade": "2026-10-13 (feed de commits)",
+ "maturidade": "stable",
+ "encaixe": "Serviço de rede em Linux/Docker; não roda nas máquinas Windows nativas. Só serviria em outra máquina; impedimento: sem Windows nativo, índice em RAM.",
+ "evidencias": [
+  {
+   "campo": "windows",
+   "url": "https://github.com/typesense/typesense/issues/1001",
+   "citacao": "There are a few Linux specific things we are doing, so Typesense will have trouble compiling in Windows until we address them."
+  },
+  {
+   "campo": "windows",
+   "url": "https://typesense.org/docs/guide/install-typesense.html",
+   "citacao": "Windows (WSL)"
+  },
+  {
+   "campo": "embeddings_endpoint",
+   "url": "https://typesense.org/docs/29.0/api/vector-search.html",
+   "citacao": "The model_name within model_config must begin with openai; customizing the base URL in the model_config"
+  },
+  {
+   "campo": "portugues",
+   "url": "https://typesense.org/docs/29.0/api/collections.html",
+   "citacao": "Language selection for stemmer is automatically made from the value of the locale property."
+  },
+  {
+   "campo": "licenca",
+   "url": "https://raw.githubusercontent.com/typesense/typesense/master/LICENSE.txt",
+   "citacao": "GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007"
+  },
+  {
+   "campo": "recursos",
+   "url": "https://github.com/typesense/typesense",
+   "citacao": "Typesense is a single binary; Took up about 900MB of RAM when indexed in Typesense"
+  }
+ ],
+ "nao_verificado": [
+  "mudanças de Windows após 2023",
+  "stopwords de português",
+  "data exata do release 30.2"
+ ]
+}

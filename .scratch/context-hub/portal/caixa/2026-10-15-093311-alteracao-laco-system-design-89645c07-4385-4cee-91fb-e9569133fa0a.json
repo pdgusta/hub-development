@@ -1,0 +1,127 @@
+{
+  "envio": "89645c07-4385-4cee-91fb-e9569133fa0a",
+  "tipo": "alteracao-laco",
+  "enviada": "2026-10-15T09:33:11-03:00",
+  "alvo": {
+    "tipo": "laco",
+    "id": "system-design",
+    "titulo": "System design: a cidade nova"
+  },
+  "ticket": "56",
+  "substitui": null,
+  "laco": {
+    "id": "system-design",
+    "titulo": "System design: a cidade nova",
+    "ticket": "56",
+    "execucao": {
+      "id": "system-design-proposta",
+      "inicio": null,
+      "terminou_em": null
+    },
+    "revisao": "e83115bda604e837a5801d58575226ffaf456eacfa1d84b0e80265f0bb2b26ab",
+    "no": {
+      "id": "equipe",
+      "titulo": "Subir a equipe",
+      "papel": "etapa"
+    },
+    "capacidades": [
+      {
+        "id": "parar-de-despachar"
+      }
+    ],
+    "situacao": "desconhecido",
+    "controle": {
+      "id": "esforco_equipe",
+      "no": "equipe",
+      "rotulo": "esforço da equipe",
+      "tipo": "escolha",
+      "faixa": null,
+      "opcoes": [
+        {
+          "valor": "medium",
+          "rotulo": "médio"
+        },
+        {
+          "valor": "high",
+          "rotulo": "alto"
+        },
+        {
+          "valor": "xhigh",
+          "rotulo": "muito alto"
+        }
+      ],
+      "itens": null,
+      "unidade": null,
+      "escala": null,
+      "aceita_nulo": false,
+      "nulo": null,
+      "quando_vale": "proxima-execucao",
+      "releitura": "manual",
+      "configurado": {
+        "valor": "high",
+        "como": "lido",
+        "fonte": "config.json → esforco_equipe",
+        "hora": "2026-10-15T09:24:02-03:00",
+        "ilegivel": null
+      },
+      "em_uso": {
+        "estado": "nao-confirmado",
+        "valor": null,
+        "como": null,
+        "fonte": null,
+        "hora": null,
+        "ilegivel": null,
+        "diverge": false
+      },
+      "precondicoes": {},
+      "definicao": {
+        "id": "esforco_equipe",
+        "no": "equipe",
+        "rotulo": "esforço da equipe",
+        "tipo": "escolha",
+        "quando_vale": "proxima-execucao",
+        "releitura": "manual",
+        "configurado": {
+          "arquivo": "config.json",
+          "campo": "esforco_equipe"
+        },
+        "opcoes": [
+          {
+            "valor": "medium",
+            "rotulo": "médio"
+          },
+          {
+            "valor": "high",
+            "rotulo": "alto"
+          },
+          {
+            "valor": "xhigh",
+            "rotulo": "muito alto"
+          }
+        ]
+      },
+      "origem_configurado": {
+        "arquivo": "config.json",
+        "campo": "esforco_equipe"
+      }
+    }
+  },
+  "corpo_hash": "9b369ad027facd70a246b6e8815b25302b69f0011ae94fad9031538a3f01a95e",
+  "corpo": {
+    "tipo": "alteracao-laco",
+    "laco": "system-design",
+    "execucao": "system-design-proposta",
+    "operacao": "mudar-controle",
+    "no": "equipe",
+    "controle": "esforco_equipe",
+    "antes": {
+      "tipo": "escolha",
+      "valor": "high"
+    },
+    "depois": {
+      "tipo": "escolha",
+      "valor": "medium"
+    },
+    "revisao": "e83115bda604e837a5801d58575226ffaf456eacfa1d84b0e80265f0bb2b26ab"
+  }
+}

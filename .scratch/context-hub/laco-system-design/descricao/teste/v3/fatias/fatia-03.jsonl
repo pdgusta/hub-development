@@ -1,0 +1,24 @@
+{"n": 3, "pergunta": "Se o MCP do banco ficar indisponível, quem garante que os agentes ainda possam ler e escrever no hub?", "tipo": "responsavel"}
+{"n": 13, "pergunta": "Se o Gustavo move um arquivo da pasta inbox para a pasta de operations, como o sincronronizador propaga essa mudança do disco para o banco e de lá para a outra máquina?", "tipo": "ordem"}
+{"n": 23, "pergunta": "Quando surge uma divergência porque uma máquina ficou muito tempo desligada do par, o que acontece se eu não abrir a tela de três vias imediatamente?", "tipo": "quando"}
+{"n": 33, "pergunta": "Por que o hub não resolve automaticamente conflitos de edição concorrente (duas gravações no mesmo arquivo sem uma ver a outra), exigindo que o Gustavo use a tela de três vias?", "tipo": "por-que"}
+{"n": 43, "pergunta": "Se o **banco** (CouchDB) em uma máquina corromper dados por um erro interno, como o **sincronizador** detecta e recupera a consistência com o outro par?", "tipo": "o-que-nao-faz"}
+{"n": 53, "pergunta": "A nota de retomada faz parte do grupo de arquivos que são atualizados automaticamente após cada interação com um agente?", "tipo": "grupo"}
+{"n": 63, "pergunta": "Quando um cliente altera um arquivo no hub, o que acontece com a cópia na máquina do Gustavo?", "tipo": "quando"}
+{"n": 73, "pergunta": "Por que o **Obsidian** e o **Claude Desktop** podem editar arquivos `.md` diretamente, mas não há uma regra sobre quem decide se um arquivo deve ser `.md` ou outro formato (como PDF ou imagem) para uma iniciativa como a **TRF3**?", "tipo": "por-que"}
+{"n": 83, "pergunta": "Qual é o fluxo de uma nota que sai do vault antigo para ser trabalhada apenas no hub?", "tipo": "ordem"}
+{"n": 93, "pergunta": "O que muda quando o GitHub privado faz a cópia de segurança diária enquanto o cliente tem alterações pendentes no par ligado?", "tipo": "diferenca"}
+{"n": 103, "pergunta": "Se um cliente externo acessar o hub via MCP, como o sistema impede que ele apague um arquivo por engano?", "tipo": "quem-usa"}
+{"n": 113, "pergunta": "Se um agente de código (como o Copilot) ler uma nota da pasta `operations/` e depois eu mover essa nota para `_archive/operations/`, o agente ainda consegue encontrar esse conteúdo?", "tipo": "quem-usa"}
+{"n": 123, "pergunta": "Por que a **camada de busca** ainda está em escolha entre duas ferramentas, mesmo que o critério 1 do hub exija que agentes encontrem trechos corretos *sem ler tudo*?", "tipo": "por-que"}
+{"n": 133, "pergunta": "Se o *sincronizador* de uma máquina tenta replicar um arquivo que já está em colisão não resolvida (duas versões retidas), onde ele coloca a nova versão e como o *hub* sinaliza isso para o Gustavo?", "tipo": "onde-vive"}
+{"n": 143, "pergunta": "O que o maestro do Maestri não faz quando uma equipe de recrutas precisa consultar uma nota de retomada que está retida em colisão real?", "tipo": "o-que-nao-faz"}
+{"n": 153, "pergunta": "Onde vivem os arquivos que estão em divergência?", "tipo": "onde-vive"}
+{"n": 163, "pergunta": "Se um maestro adiciona um novo skill ao acervo do maestro, essa alteração requer aprovação do Gustavo antes de ser disponibilizada aos demais maestros?", "tipo": "grupo"}
+{"n": 173, "pergunta": "Se o **contrato do hub** (`AGENTS.md`) for alterado diretamente no disco por um agente (sem passar pelo **file-first**), como o sistema detecta a inconsistência e o que acontece com as próximas sessões de agentes que dependem desse arquivo?", "tipo": "se-x"}
+{"n": 183, "pergunta": "Se eu abrir o hub pelo Maestri para ler uma nota da iniciativa VOEGOL e, no meio, o Gustavo editar a mesma nota no seu Obsidian, o que eu vejo quando tento salvar uma resposta?", "tipo": "ordem"}
+{"n": 193, "pergunta": "O vigia faz parte do grupo de mecanismos que monitoram e notificam sobre problemas no hub?", "tipo": "grupo"}
+{"n": 203, "pergunta": "Quando o Maestro do Maestri abre uma sessão, como ele determina quais peças do Acervo do maestro deve oferecer aos agentes recrutas?", "tipo": "relacao"}
+{"n": 213, "pergunta": "O que muda entre a checagem de início de sessão do agente abrir a nota de retomada e encontrar o campo 'próximo passo' vazio porque o hook de fim de resposta falhou silenciosamente na sessão anterior, e a mesma checagem encontrar a nota íntegra?", "tipo": "diferenca"}
+{"n": 223, "pergunta": "Se o Gustavo tentar acessar a **pasta não replicada** de uma máquina pelo SSH enquanto o **Sincronizador** está desligado, como o sistema garante que as alterações feitas via SSH não afetem o banco ou o par principal?", "tipo": "diferenca"}
+{"n": 233, "pergunta": "Se o cliente tentar acessar uma iniciativa de cliente sem permissão, o que acontece?", "tipo": "o-que-nao-faz"}

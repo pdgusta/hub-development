@@ -1,0 +1,50 @@
+{
+ "chave": "gh:chyh1990/yaml-rust",
+ "urls": [
+  "https://github.com/chyh1990/yaml-rust",
+  "https://github.com/brendanzab/yaml-rust",
+  "https://docs.rs/yaml-rust/0.4.5/yaml_rust/",
+  "https://github.com/krisprice/yaml-rust"
+ ],
+ "tipos": [
+  "library"
+ ],
+ "termos": [
+  "yaml rust",
+  "yaml-rust",
+  "rust yaml parser",
+  "ordered yaml rust",
+  "yaml",
+  "rust yaml",
+  "YAML",
+  "Rust",
+  "parser",
+  "1.2",
+  "libyaml",
+  "YAML parser",
+  "streaming"
+ ],
+ "mencoes": 6,
+ "familias": [
+  "agnes",
+  "gpt-oss",
+  "mistral",
+  "nemotron"
+ ],
+ "primeira_onda": 4,
+ "nomes": [
+  "yaml-rs",
+  "yaml-rust",
+  "yaml‑rust"
+ ],
+ "resumos": [
+  "A YAML 1.2 parser and emitter for Rust.",
+  "Rust 语言的 YAML 解析库，提供安全的流式读取并保持映射顺序",
+  "A pure Rust YAML 1.2 parser and emitter.",
+  "A pure Rust YAML parser and emitter, compliant with YAML 1.2."
+ ],
+ "readme_status": "ok",
+ "readme_nome": "README.md",
+ "readme_cortado": false,
+ "readme": "# yaml-rust\n\nThe missing YAML 1.2 implementation for Rust.\n\n[![Travis](https://travis-ci.org/chyh1990/yaml-rust.svg?branch=master)](https://travis-ci.org/chyh1990/yaml-rust)\n[![AppVeyor](https://ci.appveyor.com/api/projects/status/scf47535ckp4ylg4?svg=true)](https://ci.appveyor.com/project/chyh1990/yaml-rust)\n[![crates.io](https://img.shields.io/crates/v/yaml-rust.svg)](https://crates.io/crates/yaml-rust)\n[![docs.rs](https://img.shields.io/badge/api-rustdoc-blue.svg)](https://docs.rs/yaml-rust)\n\n`yaml-rust` is a pure Rust YAML 1.2 implementation,\nwhich enjoys the memory safety\nproperty and other benefits from the Rust language.\nThe parser is heavily influenced by `libyaml` and `yaml-cpp`.\n\n## Quick Start\n\nAdd the following to the Cargo.toml of your project:\n\n```toml\n[dependencies]\nyaml-rust = \"0.4\"\n```\n\nand import:\n\n```rust\nextern crate yaml_rust;\n```\n\nUse `yaml::YamlLoader` to load the YAML documents and access it\nas Vec/HashMap:\n\n```rust\nextern crate yaml_rust;\nuse yaml_rust::{YamlLoader, YamlEmitter};\n\nfn main() {\n    let s =\n\"\nfoo:\n    - list1\n    - list2\nbar:\n    - 1\n    - 2.0\n\";\n    let docs = YamlLoader::load_from_str(s).unwrap();\n\n    // Multi document support, doc is a yaml::Yaml\n    let doc = &docs[0];\n\n    // Debug support\n    println!(\"{:?}\", doc);\n\n    // Index access for map & array\n    assert_eq!(doc[\"foo\"][0].as_str().unwrap(), \"list1\");\n    assert_eq!(doc[\"bar\"][1].as_f64().unwrap(), 2.0);\n\n    // Chained key/array access is checked and won't panic,\n    // return BadValue if they are not exist.\n    assert!(doc[\"INVALID_KEY\"][100].is_badvalue());\n\n    // Dump the YAML object\n    let mut out_str = String::new();\n    {\n        let mut emitter = YamlEmitter::new(&mut out_str);\n        emitter.dump(doc).unwrap(); // dump the YAML object to a String\n    }\n    println!(\"{}\", out_str);\n}\n```\n\nNote that `yaml_rust::Yaml` implements `Index<&'a str>` & `Index<usize>`:\n\n* `Index<usize>` assumes the container is an Array\n* `Index<&'a str>` assumes the container is a string to value Map\n* otherwise, `Yaml::BadValue` is returned\n\nIf your document does not conform to this convention (e.g. map with\ncomplex type key), you can use the `Yaml::as_XXX` family API to access your\ndocuments.\n\n## Features\n\n* Pure Rust\n* Ruby-like Array/Hash access API\n* Low-level YAML events emission\n\n## Specification Compliance\n\nThis implementation aims to provide YAML parser fully compatible with\nthe YAML 1.2 specification. The parser can correctly parse almost all\nexamples in the specification, except for the following known bugs:\n\n* Empty plain scalar in certain contexts\n\nHowever, the widely used library `libyaml` also fails to parse these examples,\nso it may not be a huge problem for most users.\n\n## Goals\n\n* Encoder\n* Tag directive\n* Alias while deserialization\n\n## Minimum Rust version policy\n\nThis crate's minimum supported `rustc` version is 1.31 (released with Rust 2018, after v0.4.3), as this is the currently known minimum version for [`regex`](https://crates.io/crates/regex#minimum-rust-version-policy) as well.\n\n## License\n\nLicensed under either of\n\n * Apache License, Version 2.0 ([LICENSE-APACHE](LICENSE-APACHE) or http://www.apache.org/licenses/LICENSE-2.0)\n * MIT license ([LICENSE-MIT](LICENSE-MIT) or http://opensource.org/licenses/MIT)\n\nat your option.\n\n## Contribution\n\nFork & PR on Github.\n\nUnless you explicitly state otherwise, any contribution intentionally submitted\nfor inclusion in the work by you, as defined in the Apache-2.0 license, shall be dual licensed as above, without any\nadditional terms or conditions.\n"
+}

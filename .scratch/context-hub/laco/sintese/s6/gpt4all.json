@@ -1,0 +1,53 @@
+{
+ "nome": "GPT4All",
+ "nome_canonico": "nomic-ai/gpt4all",
+ "chave": "gh:nomic-ai/gpt4all",
+ "url": "https://github.com/nomic-ai/gpt4all",
+ "serve": "stack",
+ "area": "llm_runtime",
+ "identidade": "ok",
+ "windows": "yes: instalador gpt4all-installer-win64.exe e build ARM; pip install gpt4all",
+ "mcp": "nao_aplicavel",
+ "portugues": "nao_verificado: README e docs nao afirmam suporte a pt",
+ "markdown_frontmatter": "nao_aplicavel",
+ "atualizacao": "nao_aplicavel",
+ "embeddings_endpoint": "no: o servidor local (localhost:4891/v1, so 127.0.0.1) lista /v1/models, /v1/completions e /v1/chat/completions; embeddings locais vao pela biblioteca nomic/Embed4All, nao por endpoint",
+ "recursos": "app desktop; exemplo do README carrega LLM de 4,66GB; Windows exige Intel i3 2a geracao ou AMD Bulldozer ou melhor",
+ "licenca": "MIT",
+ "ultimo_release": "2025-02-24, v3.10.0 (ordem do feed de releases)",
+ "atividade": "ultimo commit 2025-05-27",
+ "maturidade": "stable (sem release ha mais de 1 ano)",
+ "encaixe": "App de chat com LocalDocs sobre pastas; nao entra no pipeline do hub alem de runtime local de LLM. Impedimentos: servidor so em localhost, sem endpoint de embeddings, depende do app aberto, projeto parado.",
+ "evidencias": [
+  {
+   "campo": "windows",
+   "url": "https://github.com/nomic-ai/gpt4all",
+   "citacao": "https://gpt4all.io/installers/gpt4all-installer-win64.exe"
+  },
+  {
+   "campo": "embeddings_endpoint",
+   "url": "https://raw.githubusercontent.com/nomic-ai/gpt4all/main/gpt4all-bindings/python/docs/gpt4all_api_server/home.md",
+   "citacao": "only listens on localhost (127.0.0.1)"
+  },
+  {
+   "campo": "embeddings_endpoint",
+   "url": "https://raw.githubusercontent.com/nomic-ai/gpt4all/main/gpt4all-bindings/python/docs/gpt4all_api_server/home.md",
+   "citacao": "| POST | `/v1/chat/completions` | Generate chat completions |"
+  },
+  {
+   "campo": "licenca",
+   "url": "https://github.com/nomic-ai/gpt4all",
+   "citacao": "MIT license (painel do repositorio)"
+  },
+  {
+   "campo": "ultimo_release",
+   "url": "https://github.com/nomic-ai/gpt4all/releases.atom",
+   "citacao": "v3.10.0, updated 2025-02-24T22:16:14Z"
+  }
+ ],
+ "nao_verificado": [
+  "suporte a portugues",
+  "formatos aceitos pelo LocalDocs",
+  "data exata do ultimo release (feed ordena por data de tag)"
+ ]
+}

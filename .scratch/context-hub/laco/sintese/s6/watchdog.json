@@ -1,0 +1,57 @@
+{
+ "nome": "Watchdog",
+ "nome_canonico": "watchdog (gorakhargosh/watchdog)",
+ "chave": "gh:gorakhargosh/watchdog",
+ "url": "https://github.com/gorakhargosh/watchdog",
+ "serve": "stack",
+ "area": "events_jobs",
+ "identidade": "ok",
+ "windows": "yes: usa ReadDirectoryChangesW no Windows; a PyPI publica a wheel py3-none-win_amd64 (6.0.0).",
+ "mcp": "nao_aplicavel",
+ "portugues": "nao_aplicavel",
+ "markdown_frontmatter": "nao_aplicavel",
+ "atualizacao": "nao_aplicavel",
+ "embeddings_endpoint": "nao_aplicavel",
+ "recursos": "Biblioteca Python (3.9+) em processo; sem número de memória/disco na fonte. Em Windows usa threads de ReadDirectoryChangesW.",
+ "licenca": "Apache-2.0 (PyPI e arquivo LICENSE)",
+ "ultimo_release": "6.0.0, publicado em 2024-11-01 (PyPI); a lista de releases do GitHub mostra 6.0.0 como a mais recente",
+ "atividade": "último commit em 2026-10-13 (feed de commits do GitHub)",
+ "maturidade": "stable (classifier 'Development Status :: 5 - Production/Stable')",
+ "encaixe": "Observador de arquivos em Python em cada máquina: dispara reindexação quando o LiveSync grava notas na pasta. Conversa com LiveSync e Obsidian. Impedimento: não filtra eventos duplicados do LiveSync; sem release desde 2024-11.",
+ "evidencias": [
+  {
+   "campo": "windows",
+   "url": "https://github.com/gorakhargosh/watchdog",
+   "citacao": "Windows (ReadDirectoryChangesW with I/O completion ports; ReadDirectoryChangesW worker threads)"
+  },
+  {
+   "campo": "windows",
+   "url": "https://pypi.org/project/watchdog/",
+   "citacao": "watchdog-6.0.0-py3-none-win_amd64.whl"
+  },
+  {
+   "campo": "maturidade",
+   "url": "https://github.com/gorakhargosh/watchdog/blob/master/setup.py",
+   "citacao": "Development Status :: 5 - Production/Stable"
+  },
+  {
+   "campo": "licenca",
+   "url": "https://github.com/gorakhargosh/watchdog/blob/master/LICENSE",
+   "citacao": "Apache License Version 2.0, January 2004"
+  },
+  {
+   "campo": "ultimo_release",
+   "url": "https://github.com/gorakhargosh/watchdog/releases",
+   "citacao": "6.0.0 (2024-11-01)"
+  },
+  {
+   "campo": "atividade",
+   "url": "https://github.com/gorakhargosh/watchdog/commits/HEAD.atom",
+   "citacao": "updated 2026-10-13T09:46:47Z"
+  }
+ ],
+ "nao_verificado": [
+  "memória e CPU reais em pasta grande",
+  "comportamento com os pedaços cifrados do LiveSync"
+ ]
+}

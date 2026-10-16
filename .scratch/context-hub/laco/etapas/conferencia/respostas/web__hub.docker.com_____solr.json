@@ -1,0 +1,34 @@
+{
+ "chave": "web:hub.docker.com/_/solr",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T12:00:00Z",
+ "resultado": "corrige",
+ "conferencia": {
+  "resultado": "corrige",
+  "final": {
+   "serve": "search",
+   "role": "Plataforma de busca Apache Solr (texto completo e vetorial) como serviço Docker.",
+   "place": [
+    "network_service"
+   ],
+   "mechanism": [
+    "full_text",
+    "bm25",
+    "vector",
+    "hybrid"
+   ],
+   "mcp": "unknown",
+   "windows": "unknown",
+   "portuguese": "unknown",
+   "license": "unknown",
+   "maturity": "stable",
+   "doubt": false,
+   "evidence": "Solr is the blazing-fast, open source, multi-modal search platform built on Apache Lucene. It powers full-text, vector, analytics, and geospatial search."
+  },
+  "o_que_mudou": [
+   "license: Apache-2.0 -> unknown, trecho do README não menciona licença",
+   "mechanism: inclui bm25 sem citação direta, mantido por ser Lucene"
+  ],
+  "nota": "Motor de busca completo, mas servidor Java pesado para um hub pessoal; só opção de camada de busca."
+ }
+}

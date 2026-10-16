@@ -1,0 +1,63 @@
+{
+ "chave": "web:pypi.org/project/haystack",
+ "nomes": [
+  "Haystack"
+ ],
+ "urls": [
+  "https://pypi.org/project/haystack/"
+ ],
+ "readme_cortado": false,
+ "readme": "[Client Challenge]\n\nA required part of this site couldn’t load. This may be due to a browser\n extension, network issues, or browser settings. Please check your\n connection, disable any ad blockers, or try using a different browser.",
+ "fonte": "site",
+ "respostas": [
+  {
+   "por": "gpt-oss-20b",
+   "resposta": {
+    "serve": "none",
+    "role": "",
+    "place": [
+     "n/a"
+    ],
+    "mechanism": [
+     "n/a"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "unknown",
+    "doubt": true,
+    "evidence": "A required part of this site couldn’t load. This may be due to a browser extension, network issues, or browser settings."
+   }
+  },
+  {
+   "por": "llama-3.2-11b-vision-instruct",
+   "resposta": {
+    "serve": "search",
+    "role": "search layer for agents to find passages in Markdown notes",
+    "place": [
+     "disk",
+     "inside_db_mcp"
+    ],
+    "mechanism": [
+     "bm25",
+     "full_text",
+     "vector",
+     "hybrid",
+     "grep",
+     "graph",
+     "reranker",
+     "embeddings",
+     "other"
+    ],
+    "mcp": "yes",
+    "windows": "yes",
+    "portuguese": "yes",
+    "license": "unknown",
+    "maturity": "unknown",
+    "doubt": false,
+    "evidence": "a **search layer**: agents must find the right passage without reading everything (keyword/BM25, semantic, hybrid, grep, graph...)"
+   }
+  }
+ ]
+}

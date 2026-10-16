@@ -1,0 +1,33 @@
+{
+ "chave": "web:couchdb.apache.org/docs/stable/views/index.html",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T21:45:34Z",
+ "resultado": "corrige",
+ "conferencia": {
+  "resultado": "corrige",
+  "final": {
+   "serve": "stack",
+   "role": "CouchDB documentation: the document database and replication layer the hub's LiveSync stores notes in.",
+   "place": [
+    "disk",
+    "network_service"
+   ],
+   "mechanism": [
+    "other"
+   ],
+   "mcp": "unknown",
+   "windows": "yes",
+   "portuguese": "unknown",
+   "license": "unknown",
+   "maturity": "stable",
+   "doubt": false,
+   "evidence": "Apache CouchDB 3.5.3 Documentation; install on Windows, OS X or Linux; replication, views, Mango queries."
+  },
+  "o_que_mudou": [
+   "mechanism: n/a -> other, replication/views/Mango are the real mechanisms",
+   "doubt: true/false -> false, README allows a decision",
+   "maturity: unknown -> stable, documented release 3.5.3"
+  ],
+  "nota": "CouchDB is the hub's note store; its replication and Mango/view queries are core to sync and indexing."
+ }
+}

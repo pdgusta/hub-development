@@ -1,0 +1,101 @@
+{
+ "chave": "gh:quickwit-oss/tantivy-py",
+ "nomes": [
+  "tantivy-py",
+  "Tantivy",
+  "Tantivy-py",
+  "Tantivy (via tantivy-python)",
+  "PydanticX / PydanticElastic — wait: actually Tantivy (via tantivy-python)",
+  "TantivyPy"
+ ],
+ "urls": [
+  "https://github.com/quickwit-oss/tantivy-py",
+  "https://pypi.org/project/tantivy/",
+  "https://github.com/quickwit-oss/tantivy-python",
+  "https://github.com/tantivy/pytantivy"
+ ],
+ "readme_cortado": false,
+ "readme": "[![Build Status](https://travis-ci.org/quickwit-inc/tantivy-py.svg?branch=master)](https://travis-ci.org/quickwit-inc/tantivy-py)\n[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)\n[![Docs](https://readthedocs.org/projects/tantivy-py/badge/?version=latest&style=flat-default)](https://tantivy-py.readthedocs.io/en/latest/)\n\ntantivy-py\n==========\n\nPython bindings for [Tantivy](https://github.com/quickwit-oss/tantivy) the full-text search engine library written in Rust.\n\n# Installation\n\nThe bindings can be installed using from pypi using pip:\n\n    pip install tantivy\n\nIf no binary wheel is present for your operating system the bindings will be\nbuild from source, this means that Rust needs to be installed before building\ncan succeed.\n\n# Documentation\n\nPlease see [the documentation](https://tantivy-py.readthedocs.io/en/latest/) for more information.\n\n# Contributing\n\nPlease see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on how to contribute.\n",
+ "fonte": "readme",
+ "respostas": [
+  {
+   "por": "ministral-14b",
+   "resposta": {
+    "serve": "search",
+    "role": "Full-text search engine library for Markdown indexing (Python bindings)",
+    "place": [
+     "disk",
+     "library"
+    ],
+    "mechanism": [
+     "full_text",
+     "bm25",
+     "other"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "MIT",
+    "maturity": "unknown",
+    "doubt": true,
+    "evidence": "Python bindings for Tantivy, a full-text search engine library; no mention of MCP, Windows, or Portuguese support."
+   }
+  },
+  {
+   "por": "ising-calibration-1.5-31b",
+   "resposta": {
+    "serve": "search",
+    "role": "Provides full-text search capabilities for the hub's Markdown notes, allowing agents to quickly locate relevant passages.",
+    "place": [
+     "disk",
+     "library"
+    ],
+    "mechanism": [
+     "full_text",
+     "bm25"
+    ],
+    "mcp": "no",
+    "windows": "yes",
+    "portuguese": "unknown",
+    "license": "MIT",
+    "maturity": "stable",
+    "doubt": false,
+    "evidence": "The README explicitly states that tantivy-py is a Python binding for the Tantivy full-text search engine, which is used to index and search the hub's notes. The installation instructions confirm it is a library that can be installed via pip, and the build status badge indicates active development and stability."
+   }
+  }
+ ],
+ "conferencia_sonnet": {
+  "chave": "gh:quickwit-oss/tantivy-py",
+  "modelo": "claude-sonnet-5-5",
+  "ts": "2026-10-13T12:00:00Z",
+  "resultado": "corrige",
+  "conferencia": {
+   "resultado": "corrige",
+   "final": {
+    "serve": "search",
+    "role": "Python bindings for Tantivy, a Rust full-text search engine library; could index the hub's Markdown notes locally.",
+    "place": [
+     "library"
+    ],
+    "mechanism": [
+     "full_text"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "MIT",
+    "maturity": "unknown",
+    "doubt": false,
+    "evidence": "Python bindings for Tantivy the full-text search engine library written in Rust; pip install tantivy; License: MIT badge."
+   },
+   "o_que_mudou": [
+    "mechanism: full_text,bm25 -> full_text, README does not mention BM25",
+    "windows: yes -> unknown, README does not mention Windows",
+    "mcp: no -> unknown, README silent",
+    "maturity: stable -> unknown, README does not say",
+    "place: disk,library -> library, README only shows a pip library"
+   ],
+   "nota": "Embeddable full-text engine usable as the hub's search index behind an MCP server; needs a wrapper since it is only a library."
+  }
+ }
+}

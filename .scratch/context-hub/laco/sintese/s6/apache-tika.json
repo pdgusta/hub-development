@@ -1,0 +1,65 @@
+{
+ "nome": "Lucene (via Apache Tika)",
+ "nome_canonico": "Apache Tika",
+ "chave": "gh:apache/tika",
+ "url": "https://github.com/apache/tika",
+ "identidade": "ok; item juntava Lucene + Tika, verifiquei a peça principal: Apache Tika (Lucene não aparece na README)",
+ "serve": "stack",
+ "area": "text_extraction",
+ "windows": "yes (inferido, JVM): projeto Java 17 com wrapper Windows (\"on Windows, use mvnw.cmd\"); sem WSL/Docker; declaração explícita de execução em Windows não achada.",
+ "mcp": "nao_aplicavel",
+ "portugues": "parcial: existe o módulo tika-langdetect (detecção de idioma); extração de texto não depende do idioma. Detalhe de português nao_verificado.",
+ "markdown_frontmatter": "Emite Markdown: \"As of 4.0.0 it emits Markdown by default\", saída para LLM/RAG. Uso do frontmatter YAML nao_verificado.",
+ "atualizacao": "nao_aplicavel",
+ "embeddings_endpoint": "nao_aplicavel",
+ "recursos": "JVM: \"Tika is based on Java 17\" (4.x). tika-server faz o parsing fora do processo via tika-pipes (4.0.0). Memória/disco em número nao_verificado.",
+ "licenca": "Apache-2.0",
+ "ultimo_release": "4.1.0 (2026-09-26 no Maven Central; site diz 29/09/2026); suporte 3.3.3 em 2026-10-09",
+ "atividade": "3.3.3 anunciado 2026-10-13 (site); data do último commit nao_verificado",
+ "maturidade": "stable",
+ "encaixe": "Extrair texto de PDF/Office de anexos antes de ir ao banco, como tika-server local ou jar em cada Windows. Para notas já em Markdown é desnecessário; exige Java 17. Não indexa (isso é Lucene/outro).",
+ "evidencias": [
+  {
+   "campo": "identidade",
+   "url": "https://github.com/apache/tika",
+   "citacao": "detects and extracts metadata and text from over a thousand different file types"
+  },
+  {
+   "campo": "markdown_frontmatter",
+   "url": "https://github.com/apache/tika",
+   "citacao": "As of 4.0.0 it emits Markdown by default"
+  },
+  {
+   "campo": "recursos",
+   "url": "https://github.com/apache/tika",
+   "citacao": "Tika is based on Java 17 and uses the Maven 3 build system."
+  },
+  {
+   "campo": "windows",
+   "url": "https://github.com/apache/tika",
+   "citacao": "on Windows, use `mvnw.cmd` instead"
+  },
+  {
+   "campo": "ultimo_release",
+   "url": "https://tika.apache.org/",
+   "citacao": "Apache Tika 4.1.0 has been released!"
+  },
+  {
+   "campo": "ultimo_release",
+   "url": "https://repo1.maven.org/maven2/org/apache/tika/tika-core/",
+   "citacao": "4.1.0/ 2026-09-26 15:33"
+  },
+  {
+   "campo": "licenca",
+   "url": "https://github.com/apache/tika",
+   "citacao": "Apache License, Version 2.0"
+  }
+ ],
+ "nao_verificado": [
+  "execução do tika-server em Windows (declaração explícita)",
+  "português na detecção de idioma",
+  "recursos em número",
+  "data do último commit",
+  "uso do frontmatter"
+ ]
+}

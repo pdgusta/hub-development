@@ -1,0 +1,99 @@
+Skip to content
+
+Microsoft Orleans
+Build business-critical distributed services in .NET. 
+Orleans combines the virtual actor model with runtime support for clustering, failure recovery, persistence, durable jobs, transactions, and streams.
+Get startedExplore docsView samples
+
+Features for stateful distributed applicationsSection titled “Features for stateful distributed applications”
+
+Orleans combines a distributed programming model with runtime capabilities for building and operating stateful services. It is used across Microsoft to run critical services at large scale.
+
+Virtual actors
+
+Model application entities as grains with stable identities, isolated behavior, and turn-based execution. Explore grains.
+Durable state
+
+Persist grain state with providers for Azure, AWS, Google Cloud, relational databases, Redis, and custom storage systems. Explore persistence.
+Streams and event processing
+
+Connect producers and consumers using managed, persistent, or in-memory stream providers. Explore streaming.
+Durable scheduling and execution
+
+Run activation-scoped callbacks, recurring durable reminders, and distributed one-time jobs. Explore timers and reminders and durable jobs.
+Transactions
+
+Coordinate supported persistent state across grains using ACID transactions with serializable isolation. Explore transactions.
+Event sourcing
+
+Represent grain state as an ordered sequence of events using configurable log-consistency providers. Explore event sourcing.
+Elastic scaling and load balancing
+
+Add or remove silos while resource-aware placement directs new activations; memory-pressure shedding reclaims capacity, and opt-in balancing or repartitioning migrates eligible activations. Explore placement and load balancing.
+Fault tolerance
+
+Detect failed silos and reactivate grains on healthy hosts, restoring state written to durable storage. Explore clusters and recovery.
+
+Common application scenariosSection titled “Common application scenarios”
+
+Orleans is well suited to applications with many independently addressable entities whose state and work partition by identity. Explore the full scenarios and use cases guide.
+
+AI agents and conversational sessions
+
+Manage conversation state, tool configuration, pending work, and coordination for each agent session. Read about AI agent scenarios.
+Fraud, risk, and real-time decisioning
+
+Apply rapidly changing account, market, policy, or event state to low-latency decisions. Read about decisioning scenarios.
+IoT and digital twins
+
+Represent devices and assets with stable identities, evolving state, ordered commands, and scheduled work. Read about IoT scenarios.
+Monitoring and job orchestration
+
+Track resources, health, quotas, jobs, dependencies, retries, and progress over time. Read about orchestration scenarios.
+Multiplayer and online games
+
+Coordinate players, rooms, matches, presence, progression, and authoritative session state. Read about game scenarios.
+Commerce and reservations
+
+Manage carts, orders, accounts, reservations, subscriptions, and customer context. Read about commerce scenarios.
+
+Programming modelSection titled “Programming model”
+
+Define a grain contract, implement it as an ordinary .NET class, and call it from anywhere in the cluster.
+
+Define a grain
+Counter.cs
+
+public interface ICounter : IGrainWithStringKey
+
+{
+
+ Task<int> Add(int value);
+
+}
+
+public sealed class Counter : Grain, ICounter
+
+{
+
+ private int _value;
+
+ public Task<int> Add(int value) =>
+
+ Task.FromResult(_value += value);
+
+}
+
+Call it from a client or another grain
+Program.cs
+
+var counter = client.GetGrain<ICounter>("orders");
+
+var total = await counter.Add(1);
+
+Start buildingSection titled “Start building”
+
+Build your first appCreate a silo, define a grain, and make your first distributed call.
+Read the docsExplore grains, hosting, deployment, streaming, persistence, and runtime concepts.
+Browse samplesLearn from complete applications and focused examples in this repository.
+Join the projectRead the source, open an issue, or contribute to Orleans on GitHub.Close

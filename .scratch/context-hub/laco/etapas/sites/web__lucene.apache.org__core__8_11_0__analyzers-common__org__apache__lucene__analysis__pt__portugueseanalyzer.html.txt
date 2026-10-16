@@ -1,0 +1,264 @@
+Skip navigation links
+
+Overview
+
+Package
+
+Class
+
+Use
+
+Tree
+
+Deprecated
+
+Help
+
+Prev Class
+
+Next Class
+
+Frames
+
+No Frames
+
+All Classes
+
+Summary: 
+
+Nested | 
+
+Field | 
+
+Constr | 
+
+Method
+
+Detail: 
+
+Field | 
+
+Constr | 
+
+Method
+
+org.apache.lucene.analysis.pt
+
+Class PortugueseAnalyzer
+
+java.lang.Object
+
+org.apache.lucene.analysis.Analyzer
+
+org.apache.lucene.analysis.StopwordAnalyzerBase
+
+org.apache.lucene.analysis.pt.PortugueseAnalyzer
+
+All Implemented Interfaces:
+Closeable, AutoCloseable
+
+public final class PortugueseAnalyzer
+extends StopwordAnalyzerBase
+
+Analyzer for Portuguese.
+
+Since:
+3.1
+
+Nested Class Summary
+
+Nested classes/interfaces inherited from class org.apache.lucene.analysis.Analyzer
+Analyzer.ReuseStrategy, Analyzer.TokenStreamComponents
+
+Field Summary
+
+Fields 
+
+Modifier and Type
+Field and Description
+
+static String
+DEFAULT_STOPWORD_FILE
+
+File containing default Portuguese stopwords.
+
+Fields inherited from class org.apache.lucene.analysis.StopwordAnalyzerBase
+stopwords
+
+Fields inherited from class org.apache.lucene.analysis.Analyzer
+GLOBAL_REUSE_STRATEGY, PER_FIELD_REUSE_STRATEGY
+
+Constructor Summary
+
+Constructors 
+
+Constructor and Description
+
+PortugueseAnalyzer()
+
+Builds an analyzer with the default stop words: DEFAULT_STOPWORD_FILE.
+
+PortugueseAnalyzer(CharArraySet stopwords)
+
+Builds an analyzer with the given stop words.
+
+PortugueseAnalyzer(CharArraySet stopwords,
+ CharArraySet stemExclusionSet)
+
+Builds an analyzer with the given stop words.
+
+Method Summary
+
+All Methods Static Methods Instance Methods Concrete Methods 
+
+Modifier and Type
+Method and Description
+
+protected Analyzer.TokenStreamComponents
+createComponents(String fieldName)
+
+Creates a
+ Analyzer.TokenStreamComponents
+ which tokenizes all the text in the provided Reader.
+
+static CharArraySet
+getDefaultStopSet()
+
+Returns an unmodifiable instance of the default stop words set.
+
+protected TokenStream
+normalize(String fieldName,
+ TokenStream in) 
+
+Methods inherited from class org.apache.lucene.analysis.StopwordAnalyzerBase
+getStopwordSet, loadStopwordSet, loadStopwordSet, loadStopwordSet
+
+Methods inherited from class org.apache.lucene.analysis.Analyzer
+attributeFactory, close, getOffsetGap, getPositionIncrementGap, getReuseStrategy, getVersion, initReader, initReaderForNormalization, normalize, setVersion, tokenStream, tokenStream
+
+Methods inherited from class java.lang.Object
+clone, equals, finalize, getClass, hashCode, notify, notifyAll, toString, wait, wait, wait
+
+Field Detail
+
+DEFAULT_STOPWORD_FILE
+
+public static final String DEFAULT_STOPWORD_FILE
+
+File containing default Portuguese stopwords.
+
+See Also:
+Constant Field Values
+
+Constructor Detail
+
+PortugueseAnalyzer
+
+public PortugueseAnalyzer()
+
+Builds an analyzer with the default stop words: DEFAULT_STOPWORD_FILE.
+
+PortugueseAnalyzer
+
+public PortugueseAnalyzer(CharArraySet stopwords)
+
+Builds an analyzer with the given stop words.
+
+Parameters:
+stopwords - a stopword set
+
+PortugueseAnalyzer
+
+public PortugueseAnalyzer(CharArraySet stopwords,
+ CharArraySet stemExclusionSet)
+
+Builds an analyzer with the given stop words. If a non-empty stem exclusion set is
+ provided this analyzer will add a SetKeywordMarkerFilter before
+ stemming.
+
+Parameters:
+stopwords - a stopword set
+stemExclusionSet - a set of terms not to be stemmed
+
+Method Detail
+
+getDefaultStopSet
+
+public static CharArraySet getDefaultStopSet()
+
+Returns an unmodifiable instance of the default stop words set.
+
+Returns:
+default stop words set.
+
+createComponents
+
+protected Analyzer.TokenStreamComponents createComponents(String fieldName)
+
+Creates a
+ Analyzer.TokenStreamComponents
+ which tokenizes all the text in the provided Reader.
+
+Specified by:
+createComponents in class Analyzer
+Returns:
+A
+ Analyzer.TokenStreamComponents
+ built from an StandardTokenizer filtered with
+ LowerCaseFilter, StopFilter
+ , SetKeywordMarkerFilter if a stem exclusion set is
+ provided and PortugueseLightStemFilter.
+
+normalize
+
+protected TokenStream normalize(String fieldName,
+ TokenStream in)
+
+Overrides:
+normalize in class Analyzer
+
+Skip navigation links
+
+Overview
+
+Package
+
+Class
+
+Use
+
+Tree
+
+Deprecated
+
+Help
+
+Prev Class
+
+Next Class
+
+Frames
+
+No Frames
+
+All Classes
+
+Summary: 
+
+Nested | 
+
+Field | 
+
+Constr | 
+
+Method
+
+Detail: 
+
+Field | 
+
+Constr | 
+
+Method
+
+ Copyright © 2000-2021 Apache Software Foundation. All Rights Reserved.

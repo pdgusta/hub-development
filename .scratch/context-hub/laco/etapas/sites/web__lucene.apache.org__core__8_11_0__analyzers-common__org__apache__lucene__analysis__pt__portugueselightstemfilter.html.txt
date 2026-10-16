@@ -1,0 +1,174 @@
+Skip navigation links
+
+Overview
+
+Package
+
+Class
+
+Use
+
+Tree
+
+Deprecated
+
+Help
+
+Prev Class
+
+Next Class
+
+Frames
+
+No Frames
+
+All Classes
+
+Summary: 
+
+Nested | 
+
+Field | 
+
+Constr | 
+
+Method
+
+Detail: 
+
+Field | 
+
+Constr | 
+
+Method
+
+org.apache.lucene.analysis.pt
+
+Class PortugueseLightStemFilter
+
+java.lang.Object
+
+org.apache.lucene.util.AttributeSource
+
+org.apache.lucene.analysis.TokenStream
+
+org.apache.lucene.analysis.TokenFilter
+
+org.apache.lucene.analysis.pt.PortugueseLightStemFilter
+
+All Implemented Interfaces:
+Closeable, AutoCloseable
+
+public final class PortugueseLightStemFilter
+extends TokenFilter
+
+A TokenFilter that applies PortugueseLightStemmer to stem 
+ Portuguese words.
+
+ To prevent terms from being stemmed use an instance of
+ SetKeywordMarkerFilter or a custom TokenFilter that sets
+ the KeywordAttribute before this TokenStream.
+
+Nested Class Summary
+
+Nested classes/interfaces inherited from class org.apache.lucene.util.AttributeSource
+AttributeSource.State
+
+Field Summary
+
+Fields inherited from class org.apache.lucene.analysis.TokenFilter
+input
+
+Fields inherited from class org.apache.lucene.analysis.TokenStream
+DEFAULT_TOKEN_ATTRIBUTE_FACTORY
+
+Constructor Summary
+
+Constructors 
+
+Constructor and Description
+
+PortugueseLightStemFilter(TokenStream input) 
+
+Method Summary
+
+All Methods Instance Methods Concrete Methods 
+
+Modifier and Type
+Method and Description
+
+boolean
+incrementToken() 
+
+Methods inherited from class org.apache.lucene.analysis.TokenFilter
+close, end, reset
+
+Methods inherited from class org.apache.lucene.util.AttributeSource
+addAttribute, addAttributeImpl, captureState, clearAttributes, cloneAttributes, copyTo, endAttributes, equals, getAttribute, getAttributeClassesIterator, getAttributeFactory, getAttributeImplsIterator, hasAttribute, hasAttributes, hashCode, reflectAsString, reflectWith, removeAllAttributes, restoreState, toString
+
+Methods inherited from class java.lang.Object
+clone, finalize, getClass, notify, notifyAll, wait, wait, wait
+
+Constructor Detail
+
+PortugueseLightStemFilter
+
+public PortugueseLightStemFilter(TokenStream input)
+
+Method Detail
+
+incrementToken
+
+public boolean incrementToken()
+ throws IOException
+
+Specified by:
+incrementToken in class TokenStream
+Throws:
+IOException
+
+Skip navigation links
+
+Overview
+
+Package
+
+Class
+
+Use
+
+Tree
+
+Deprecated
+
+Help
+
+Prev Class
+
+Next Class
+
+Frames
+
+No Frames
+
+All Classes
+
+Summary: 
+
+Nested | 
+
+Field | 
+
+Constr | 
+
+Method
+
+Detail: 
+
+Field | 
+
+Constr | 
+
+Method
+
+ Copyright © 2000-2021 Apache Software Foundation. All Rights Reserved.

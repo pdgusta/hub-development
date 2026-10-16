@@ -1,0 +1,49 @@
+      169 +- **Confirmo** a segunda instância do Worker 10: a mesma linha de comando, só `READ_ONLY=true` e o token trocados. Duas                                              
+      170 +  instâncias do es617 sobre o mesmo CouchDB não foram testadas; é o teste 5 da faixa.                                                                                
+      171 +- **Faixa 6:** a mensagem de recusa cita `write_note` com `base_rev` (o valor que `read_note` devolve). O nome do                                                    
+      172 +  servidor nos harnesses é do kit (faixa 8); proponho `hub-banco` e `hub-banco-leitura`.                                                                             
+      173 +- **Faixa 4, E2EE muda o R1:** o `r1.py` do spike grava o pedaço em texto claro (`{"data": ..., "type": "leaf"}`), o                                                 
+      174 +  que só vale sem E2EE. Com E2EE, o fork grava pelo caminho de cifrar do próprio upstream e só troca a revisão-pai. Se                                               
+      175 +  isso não fechar na hora, é a parte que vai ao Fable 5.1 médio, e a faixa entrega o R1 sem E2EE documentado.                                                        
+      176 +- **Ritmo da hora (10 subagentes):** min 0–10 clonar, compilar e subir o upstream contra a 5996, `.env.modelo` e                                                     
+      177 +  dublês prontos; min 10–40 em paralelo (a) R1, (b) conflito visível, (c) `instructions` e descrições, (d)                                                           
+      178 +  `estado_do_hub` e a instância de leitura, (e) o roteiro de testes e2e; min 40–50 E2EE e o `05-mcp-banco.ps1`;                                                      
+      179 +  min 50–60 revisão dos Prumos e o estado gravado. A guarda de frontmatter (g) só entra se sobrar tempo.                                                             
+      180 +                                                                                                                                                                     
+      181  ## Conferência das decisões (Prumo)
+      182  
+      183  Volta 1: o corte candidato e as linhas dos Workers 1, 2 e 8 contra o `map.md` e os Answers. Inventário completo, com a
+
+● Update(plano.md)
+  ⎿  Added 4 lines
+      344    tailnet: `ready-for-human`; o tempo "edição no outro par → busca" com o LiveSync de verdade; o gemini ligado, que é
+      345    escolha do Gustavo (09). A reserva Robusta continua onde está (`bancada-busca/scripts/robusta/`).
+      346  
+      347 +- (Worker 5, volta 1) Da faixa 5: publicar o fork no GitHub e a PR do R1 ao upstream (es617), que são para fora;                                                     
+      348 +  a validação de frontmatter dentro do MCP, se não couber; o MCP do banco no Claude Desktop pela ponte `mcp-remote`                                                  
+      349 +  e o teste dos três harnesses com o MCP pronto, capturando a requisição do Codex (dependem do login de ensaio).                                                     
+      350 +                                                                                                                                                                     
+      351  ## Perguntas ao Gustavo
+      352  
+      353  - (Worker 2, volta 1) **CouchDB descartável no Docker local conta como "serviço"?** As faixas 4, 5 e 7 precisam de
+
+● Now the question at the end of the plan, my notes, and the voltas line.
+ 
+  Ran 1 shell command 
+
+● Volta 1, Worker 5: fiquei com a faixa 5, o MCP do banco com controle de versão. É uma cópia nossa (fork) do servidor MCP es617, e a faixa está gravada no plano.md:
+  - O que muda no fork: gravar exige a versão lida, e gravar sobre versão velha vira conflito visível em vez de sobrescrever. O início do AGENTS.md entra nas instruções do MCP a cada
+    conexão.
+  - O que mais entrega: a ferramenta estado_do_hub, que lê o estado da vigia; uma segunda instância só de leitura; e a criptografia ponta a ponta.
+  - Como se prova: 8 testes automáticos contra um banco de teste local.
+
+  Também registrei as fronteiras com as faixas 1, 4, 6, 7, 8 e 10, absorvi os itens da faixa 5 apontados pelo Prumo e deixei uma pergunta ao Gustavo sobre onde mora o fork. Mudou o
+  plano: sim.
+
+✻ Baked for 20m 50s · done 9:35 PM
+
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+❯ 
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  ⬆ /gsd-update │ Opus 5.5 │ planejamento █░░░░░░░░░ 16%
+  ⏵⏵ auto mode on (shift+tab to cycle) · ← 2 agents

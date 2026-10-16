@@ -1,0 +1,45 @@
+{
+ "nome": "Obsidian Local REST API (+MCP)",
+ "url": "https://github.com/coddingtonbear/obsidian-local-rest-api",
+ "papel": "lado do Obsidian",
+ "windows": "yes, indireto: plugin do Obsidian; sem prova específica de CI",
+ "mcp": "yes: 'The plugin includes a built-in MCP server at /mcp/' (HTTP; roda dentro do Obsidian)",
+ "portugues": "nao_verificado (sem menção a stemmer/acentos)",
+ "markdown_frontmatter": "Busca full-text /search/simple/ e estruturada JsonLogic /search/ sobre 'metadata (frontmatter, tags, path, content)'; PATCH em heading, block e frontmatter; sem chunking",
+ "atualizacao": "Consulta o vault vivo dentro do Obsidian (índice próprio não documentado)",
+ "embeddings_endpoint": "não usa embeddings no núcleo",
+ "recursos": "plugin dentro do Obsidian; HTTPS porta 27124 (certificado autoassinado), HTTP opcional 27123",
+ "licenca": "MIT",
+ "ultimo_release": "5.4.0 (6 out, 2026 provável)",
+ "atividade": "545 commits; data do último: nao_verificado",
+ "maturidade": "stable (v5.x)",
+ "encaixe": "Lado do Obsidian em cada máquina, MCP pronto. Impedimento: exige Obsidian aberto; busca lexical simples, sem semântica; sandboxes sem tailnet não alcançam.",
+ "evidencias": [
+  {
+   "campo": "mcp",
+   "url": "https://github.com/coddingtonbear/obsidian-local-rest-api",
+   "citacao": "The plugin includes a built-in MCP server at `/mcp/`"
+  },
+  {
+   "campo": "markdown_frontmatter",
+   "url": "https://github.com/coddingtonbear/obsidian-local-rest-api",
+   "citacao": "Supported target types: heading, block, frontmatter."
+  },
+  {
+   "campo": "recursos",
+   "url": "https://github.com/coddingtonbear/obsidian-local-rest-api",
+   "citacao": "HTTPS port 27124; optional plain-HTTP endpoint on port 27123"
+  },
+  {
+   "campo": "licenca",
+   "url": "https://github.com/coddingtonbear/obsidian-local-rest-api",
+   "citacao": "MIT license"
+  }
+ ],
+ "nao_verificado": [
+  "portugues",
+  "como a busca simples funciona (índice ou varredura)",
+  "data do último commit",
+  "CI Windows"
+ ]
+}

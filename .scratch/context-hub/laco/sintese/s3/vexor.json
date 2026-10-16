@@ -1,0 +1,70 @@
+{
+ "nome": "vexor",
+ "url": "https://github.com/scarletkc/vexor",
+ "papel": "disco+MCP pronto",
+ "windows": "yes",
+ "mcp": "yes: servidor stdio embutido (`vexor mcp`), ferramentas vexor_search e vexor_index",
+ "portugues": "Sem stemmer/stopwords de português. Embeddings multilíngues configuráveis: modelo local `intfloat/multilingual-e5-small` ou provider remoto/custom; BM25 com pré-tokenizador Bert multilíngue; FlashRank multilíngue opcional.",
+ "markdown_frontmatter": "Indexa Markdown; modo `outline` divide por hierarquia de títulos com breadcrumbs. Uso de frontmatter como filtro: nao_verificado.",
+ "atualizacao": "Auto-index na busca quando o índice falta ou está obsoleto (`auto_index`); `vexor_index` manual; resultado sinaliza `stale_line_range` se o arquivo mudou. Watcher de disco não documentado para CLI/MCP.",
+ "embeddings_endpoint": "yes: provider `custom` é OpenAI-compatível e exige model + base_url; também openai/gemini/voyageai/local.",
+ "recursos": "Python >=3.10 (pip/pipx/uv) ou binário standalone sem Python; modelo local via extra `vexor[local]` (ONNX). RAM/disco: nao_verificado.",
+ "licenca": "MIT",
+ "ultimo_release": "v0.30.0, 27 set (página de releases sem ano; presumido 2026)",
+ "atividade": "último commit 2 out 2026",
+ "maturidade": "beta (0.x, ativo)",
+ "encaixe": "Disco de cada máquina, MCP stdio local sobre a pasta; embeddings via FreeLLMAPI com provider custom. Impedimento: foco em arquivos/código, sem filtro por frontmatter confirmado, sem watcher.",
+ "evidencias": [
+  {
+   "campo": "windows",
+   "url": "https://github.com/scarletkc/vexor/blob/main/.github/workflows/publish.yml",
+   "citacao": "os: windows-latest ... artifact-suffix: windows.exe"
+  },
+  {
+   "campo": "windows",
+   "url": "https://github.com/scarletkc/vexor",
+   "citacao": "Download standalone binary from releases (no Python required)"
+  },
+  {
+   "campo": "mcp",
+   "url": "https://github.com/scarletkc/vexor",
+   "citacao": "Vexor ships a built-in MCP stdio server ... `vexor mcp`"
+  },
+  {
+   "campo": "embeddings_endpoint",
+   "url": "https://github.com/scarletkc/vexor/blob/main/docs/configuration.md",
+   "citacao": "`custom` is OpenAI-compatible and requires both `model` and `base_url`."
+  },
+  {
+   "campo": "portugues",
+   "url": "https://github.com/scarletkc/vexor/blob/main/docs/configuration.md",
+   "citacao": "vexor local --setup --model intfloat/multilingual-e5-small"
+  },
+  {
+   "campo": "portugues",
+   "url": "https://github.com/scarletkc/vexor/blob/main/docs/configuration.md",
+   "citacao": "BM25 uses a multilingual tokenizer (Bert pre-tokenizer)"
+  },
+  {
+   "campo": "markdown_frontmatter",
+   "url": "https://github.com/scarletkc/vexor/blob/main/docs/cli.md",
+   "citacao": "outline | Chunk Markdown by heading hierarchy with breadcrumbs"
+  },
+  {
+   "campo": "atualizacao",
+   "url": "https://github.com/scarletkc/vexor/blob/main/docs/mcp.md",
+   "citacao": "Missing or stale indexes are built automatically when `auto_index` is enabled"
+  },
+  {
+   "campo": "licenca",
+   "url": "https://github.com/scarletkc/vexor",
+   "citacao": "[MIT]"
+  }
+ ],
+ "nao_verificado": [
+  "frontmatter como filtro",
+  "watcher de disco",
+  "consumo de RAM/disco",
+  "ano exato do release (página mostra 27 Sep)"
+ ]
+}

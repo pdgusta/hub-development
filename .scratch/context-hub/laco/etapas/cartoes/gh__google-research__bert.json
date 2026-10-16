@@ -1,0 +1,69 @@
+{
+ "chave": "gh:google-research/bert",
+ "urls": [
+  "https://github.com/google-research/bert",
+  "https://tfhub.dev/google/bert_multi_cased_L-12_H-768_A-12/4",
+  "https://huggingface.co/bert-base-multilingual-cased",
+  "https://en.wikipedia.org/wiki/BERT_(language_model)",
+  "https://arxiv.org/abs/1810.04805",
+  "https://bert-book.com/"
+ ],
+ "tipos": [
+  "library",
+  "concept",
+  "tool"
+ ],
+ "termos": [
+  "BERT",
+  "transformers",
+  "embeddings",
+  "mBERT",
+  "Bidirectional Encoder Representations from Transformers",
+  "BERT Models",
+  "Multilingual BERT",
+  "多言語モデル",
+  "埋め込み",
+  "Google",
+  "transformer models",
+  "multilingual embeddings",
+  "multilingual BERT",
+  "text classification",
+  "Transformers",
+  "NLP",
+  "pre-trained model",
+  "Language Model",
+  "cross-lingual",
+  "Google AI",
+  "Transformer",
+  "语义检索",
+  "language model",
+  "NLP, machine learning, embeddings",
+  "bert-model"
+ ],
+ "mencoes": 26,
+ "familias": [
+  "cohere",
+  "gpt-oss",
+  "llama",
+  "mistral",
+  "qwen"
+ ],
+ "primeira_onda": 1,
+ "nomes": [
+  "BERT",
+  "mBERT",
+  "M-BERT",
+  "DistilBERT",
+  "mBERT (Multilingual BERT)"
+ ],
+ "resumos": [
+  "Modelo de linguagem com suporte multilíngue para embeddings.",
+  "Versão multilíngue do BERT para embeddings.",
+  "A transformer-based model developed by Google for natural language understanding tasks.",
+  "Eine Mehrsprachige Version des BERT-Modells."
+ ],
+ "readme_status": "ok",
+ "readme_nome": "README.md",
+ "readme_cortado": true,
+ "readme": "# BERT\n\n**\\*\\*\\*\\*\\* New March 11th, 2020: Smaller BERT Models \\*\\*\\*\\*\\***\n\nThis is a release of 24 smaller BERT models (English only, uncased, trained with WordPiece masking) referenced in [Well-Read Students Learn Better: On the Importance of Pre-training Compact Models](https://arxiv.org/abs/1908.08962).\n\nWe have shown that the standard BERT recipe (including model architecture and training objective) is effective on a wide range of model sizes, beyond BERT-Base and BERT-Large. The smaller BERT models are intended for environments with restricted computational resources. They can be fine-tuned in the same manner as the original BERT models. However, they are most effective in the context of knowledge distillation, where the fine-tuning labels are produced by a larger and more accurate teacher.\n\nOur goal is to enable research in institutions with fewer computational resources and encourage the community to seek directions of innovation alternative to increasing model capacity.\n\nYou can download all 24 from [here][all], or individually from the table below:\n\n|   |H=128|H=256|H=512|H=768|\n|---|:---:|:---:|:---:|:---:|\n| **L=2**  |[**2/128 (BERT-Tiny)**][2_128]|[2/256][2_256]|[2/512][2_512]|[2/768][2_768]|\n| **L=4**  |[4/128][4_128]|[**4/256 (BERT-Mini)**][4_256]|[**4/512 (BERT-Small)**][4_512]|[4/768][4_768]|\n| **L=6**  |[6/128][6_128]|[6/256][6_256]|[6/512][6_512]|[6/768][6_768]|\n| **L=8**  |[8/128][8_128]|[8/256][8_256]|[**8/512 (BERT-Medium)**][8_512]|[8/768][8_768]|\n| **L=10** |[10/128][10_128]|[10/256][10_256]|[10/512][10_512]|[10/768][10_768]|\n| **L=12** |[12/128][12_128]|[12/256][12_256]|[12/512][12_512]|[**12/768 (BERT-Base)**][12_768]|\n\nNote that the BERT-Base model in this release is included for completeness only; it was re-trained under the same regime as the original model.\n\nHere are the corresponding GLUE scores on the test set:\n\n|Model|Score|CoLA|SST-2|MRPC|STS-B|QQP|MNLI-m|MNLI-mm|QNLI(v2)|RTE|WNLI|AX|\n|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|\n|BERT-Tiny|64.2|0.0|83.2|81.1/71.1|74.3/73.6|62.2/83.4|70.2|70.3|81.5|57.2|62.3|21.0|\n|BERT-Mini|65.8|0.0|85.9|81.1/71.8|75.4/73.3|66.4/86.2|74.8|74.3|84.1|57.9|62.3|26.1|\n|BERT-Small|71.2|27.8|89.7|83.4/76.2|78.8/77.0|68.1/87.0|77.6|77.0|86.4|61.8|62.3|28.6|\n|BERT-Medium|73.5|38.0|89.6|86.6/81.6|80.4/78.4|69.6/87.9|80.0|79.1|87.7|62.2|62.3|30.5|\n\nFor each task, we selected the best fine-tuning hyperparameters from the lists below, and trained for 4 epochs:\n- batch sizes: 8, 16, 32, 64, 128\n- learning rates: 3e-4, 1e-4, 5e-5, 3e-5\n\nIf you use these models, please cite the following paper:\n\n```\n@article{turc2019,\n  title={Well-Read Students Learn Better: On the Importance of Pre-training Compact Models},\n  author={Turc, Iulia and Chang, Ming-Wei and Lee, Kenton and Toutanova, Kristina},\n  journal={arXiv preprint arXiv:1908.08962v2 },\n  year={2019}\n}\n```\n\n[2_128]: https://storage.googleapis.com/bert_models/2020_02_20/uncased_L-2_H-128_A-2.zip\n[2_256]: https://storage.googleapis.com/bert_models/2020_02_20/uncased_L-2_H-256_A-4.zip\n[2_512]: https://storage.googleapis.com/bert_models/2020_02_20/uncased_L-2_H-512_A-8.zip\n[2_768]: https://storage.googleapis.com/bert_models/2020_02_20/uncased_L-2_H-768_A-12.zip\n[4_128]: https://storage.googleapis.com/bert_models/2020_02_20/uncased_L-4_H-128_A-2.zip\n[4_256]: https://storage.googleapis.com/bert_models/2020_02_20/uncased_L-4_H-256_A-4.zip\n[4_512]: https://storage.googleapis.com/bert_models/2020_02_20/uncased_L-4_H-512_A-8.zip\n[4_768]: https://storage.googleapis.com/bert_models/2020_02_20/uncased_L-4_H-768_A-12.zip\n[6_128]: https://storage.googleapis.com/bert_models/2020_02_20/uncased_L-6_H-128_A-2.zip\n[6_256]: https://storage.googleapis.com/bert_models/2020_02_20/uncased_L-6_H-256_A-4.zip\n[6_512]: https://storage.googleapis.com/bert_models/2020_02_20/uncased_L-6_H-512_A-8.zip\n[6_768]: https://storage.googleapis.com/bert_models/2020_02_20/uncased_L-6_H-768_A-12.zip\n[8_128]: https://storage.googleapis.com/bert_models/2020_02_20/uncased_L-8_H-128_A-2.zip\n[8_256]: https://storage.googleapis.com/bert_models/2020_02_20/uncased_L-8_H-256_A-4.zip\n[8_512]: https://storage.googleapis.com/bert_models/2020_02_20/uncased_L-8_H-512_A-8.zip\n[8_768]: https://storage.googleapis.com/bert_models/2020_02_20/uncased_L-8_H-768_A-12.zip\n[10_128]: https://storage.googleapis.com/bert_models/2020_02_20/uncased_L-10_H-128_A-2.zip\n[10_256]: https://storage.googleapis.com/bert_models/2020_02_20/uncased_L-10_H-256_A-4.zip\n[10_512]: https://storage.googleapis.com/bert_models/2020_02_20/uncased_L-10_H-512_A-8.zip\n[10_768]: https://storage.googleapis.com/bert_models/2020_02_20/uncased_L-10_H-768_A-12.zip\n[12_128]: https://storage.googleapis.com/bert_models/2020_02_20/uncased_L-12_H-128_A-2.zip\n[12_256]: https://storage.googleapis.com/bert_models/2020_02_20/uncased_L-12_H-256_A-4.zip\n[12_512]: https://storage.googleapis.com/bert_models/2020_02_20/uncased_L-12_H-512_A-8.zip\n[12_768]: https://storage.googleapis.com/bert_models/2020_02_20/uncased_L-12_H-768_A-12.zip\n[all]: https://storage.googleapis.com/bert_models/2020_02_20/all_bert_models.zip\n\n**\\*\\*\\*\\*\\* New May 31st, 2019: Whole Word Masking Models \\*\\*\\*\\*\\***\n\nThis is a release of several new models which were the result of an improvement\nthe pre-processing code.\n\nIn the original pre-processing code, we randomly select WordPiece tokens to\nmask. For example:\n\n`Input Text: the man jumped up , put his basket on phil ##am ##mon ' s head`\n`Original Masked Input: [MASK] man [MASK] up , put his [MASK] on phil\n[MASK] ##mon ' s head`\n\nThe new technique is called Whole Word Masking. In this case, we always mask\n*all* of the the tokens corresponding to a word at once. The overall masking\nrate remains the same.\n\n`Whole Word Masked Input: the man [MASK] up , put his basket on [MASK] [MASK]\n[MASK] ' s head`\n\nThe training is identical -- we still predict each masked WordPiece token\nindependently. The improvement comes from the fact that the original prediction\ntask was too 'easy' for words that had been split into multiple WordPieces.\n\nThis can be enabled during data generation by passing the flag\n`--do_whole_word_mask=True` to `create_pretraining_data.py`.\n\nPre-trained models with Whole Word Masking are linked below. The data and\ntraining were otherwise identical, and the models have identical structure and\nvocab to the original models. We only include BERT-Large models. When using\nthese models, please make it clear in the paper that you are using the Whole\nWord Masking variant of BERT-Large.\n\n*   **[`BERT-Large, Uncased (Whole Word Masking)`](https://storage.googleapis.com/bert_models/2019_05_30/wwm_uncased_L-24_H-1024_A-16.zip)**:\n    24-layer, 1024-hidden, 16-heads, 340M parameters\n\n*   **[`BERT-Large, Cased (Whole Word Masking)`](https://storage.googleapis.com/bert_models/2019_05_30/wwm_cased_L-24_H-1024_A-16.zip)**:\n    24-layer, 1024-hidden, 16-heads, 340M parameters\n\nModel                                    | SQUAD 1.1 F1/EM | Multi NLI Accuracy\n---------------------------------------- | :-------------: | :----------------:\nBERT-Large, Uncased (Original)           | 91.0/84.3       | 86.05\nBERT-Large, Uncased (Whole Word Masking) | 92.8/86.7       | 87.07\nBERT-Large, Cased (Original)             | 91.5/84.8       | 86.09\nBERT-Large, Cased (Whole Word Masking)   | 92.9/86.7       | 86.46\n\n**\\*\\*\\*\\*\\* New February 7th, 2019: TfHub Module \\*\\*\\*\\*\\***\n\nBERT has been uploaded to [TensorFlow Hub](https://tfhub.dev). See\n`run_classifier_with_tfhub.py` for an example of how to use the TF Hub module,\nor run an example in the browser on\n[Colab](https://colab.sandbox.google.com/github/google-research/bert/blob/master/predicting_movie_reviews_with_bert_on_tf_hub.ipynb).\n\n**\\*\\*\\*\\*\\* New November 23rd, 2018: Un-normalized multilingual model + Thai +\nMongolian \\*\\*\\*\\*\\***\n\nWe uploaded a new multilingual model which does *not* perform any normalization\non the input (no lower casing, accent stripping, or Unicode normalization), and\nadditionally inclues Thai and Mongolian.\n\n**It is recommended to use this version for developing multilingual models,\nespecially on languages with non-Latin alphabets.**\n\nThis does not require any code changes, and can be downloaded here:\n\n*   **[`BERT-Base, Multilingual Cased`](https://storage.googleapis.com/bert_models/2018_11_23/multi_cased_L-12_H-768_A-12.zip)**:\n    104 languages, 12-layer, 768-hidden, 12-heads, 110M parameters\n\n**\\*\\*\\*\\*\\* New November 15th, 2018: SOTA SQuAD 2.0 System \\*\\*\\*\\*\\***\n\nWe released code changes to reproduce our 83% F1 SQuAD 2.0 system, which is\ncurrently 1st place on the leaderboard by 3%. See the SQuAD 2.0 section of the\nREADME for details.\n\n**\\*\\*\\*\\*\\* New November 5th, 2018: Third-party PyTorch and Chainer versions of\nBERT available \\*\\*\\*\\*\\***\n\nNLP researchers from HuggingFace made a\n[PyTorch version of BERT available](https://github.com/huggingface/pytorch-pretrained-BERT)\nwhich is compatible with our pre-trained checkpoints and is able to reproduce\nour results. Sosuke Kobayashi also made a\n[Chainer version of BERT available](https://github.com/soskek/bert-chainer)\n(Thanks!) We were not involved in the creation or maintenance of the PyTorch\nimplementation so please direct any questions towards the authors of that\nrepository.\n\n**\\*\\*\\*\\*\\* New November 3rd, 2018: Multilingual and Chinese models available\n\\*\\*\\*\\*\\***\n\nWe have made two new BERT models available:\n\n*   **[`BERT-Base, Multilingual`](https://storage.googleapis.com/bert_models/2018_11_03/multilingual_L-12_H-768_A-12.zip)\n    (Not recommended, use `Multilingual Cased` instead)**: 102 languages,\n    12-layer, 768-hidden, 12-heads, 110M parameters\n*   **[`BERT-Base, Chinese`](https://storage.googleapis.com/bert_models/2018_11_03/chinese_L-12_H-768_A-12.zip)**:\n    Chinese Simplified and Traditional, 12-layer, 768-hidden, 12-heads, 110M\n    parameters\n\nWe use character-based tokenization for Chinese, and WordPiece tokenization for\nall other languages. Both models should work out-of-the-box without any code\nchanges. We did update the implementation of `BasicTokenizer` in\n`tokenization.py` to support Chinese character tokenization, so please update if\nyou forked it. However, we did not change the tokenization API.\n\nFor more, see the\n[Multilingual README](https://github.com/google-research/bert/blob/master/multilingual.md).\n\n**\\*\\*\\*\\*\\* End new information \\*\\*\\*\\*\\***\n\n## Introduction\n\n**BERT**, or **B**idirectional **E**ncoder **R**epresentations from\n**T**ransformers, is a new method of pre-training language representations which\nobtains state-of-the-art results on a wide array of Natural Language Processing\n(NLP) tasks.\n\nOur academic paper which describes BERT in detail and provides full results on a\nnumber of tasks can be found here:\n[https://arxiv.org/abs/1810.04805](https://arxiv.org/abs/1810.04805).\n\nTo give a few numbers, here are the results on the\n[SQuAD v1.1](https://rajpurkar.github.io/SQuAD-explorer/) question answering\ntask:\n\nSQuAD v1.1 Leaderboard (Oct 8th 2018) | Test EM  | Test F1\n------------------------------------- | :------: | :------:\n1st Place Ensemble - BERT             | **87.4** | **93.2**\n2nd Place Ensemble - nlnet            | 86.0     | 91.7\n1st Place Single Model - BERT         | **85.1** | **91.8**\n2nd Place Single Model - nlnet        | 83.5     | 90.1\n\nAnd several natural language inference tasks:\n\nSystem                  | MultiNLI | Question NLI | SWAG\n----------------------- | :------: | :----------: | :------:\nBERT                    | **86.7** | **91.1**     | **86.3**\nOpenAI GPT (Prev. SOTA) | 82.2     | 88.1         | 75.0\n\nPlus many other tasks.\n\nMoreover, these results were all obtained with almost no task-specific neural\nnetwork architecture design.\n\nIf you already know what BERT is and you just want to get started, you can\n[download the pre-trained models](#pre-trained-models) and\n[run a state-of-the-art fine-tuning](#fine-tuning-with-bert) in only a few\nminutes.\n\n## "
+}

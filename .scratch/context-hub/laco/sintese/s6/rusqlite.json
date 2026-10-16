@@ -1,0 +1,47 @@
+{
+ "nome": "rusqlite",
+ "nome_canonico": "rusqlite",
+ "chave": "gh:rusqlite/rusqlite",
+ "url": "https://github.com/rusqlite/rusqlite",
+ "serve": "stack",
+ "area": "storage_db",
+ "identidade": "ok",
+ "windows": "yes: feature bundled compila o SQLite junto; CI no AppVeyor (Windows); vcpkg para MSVC.",
+ "mcp": "nao_aplicavel",
+ "portugues": "nao_aplicavel",
+ "markdown_frontmatter": "nao_aplicavel",
+ "atualizacao": "nao_aplicavel",
+ "embeddings_endpoint": "nao_aplicavel",
+ "recursos": "Biblioteca Rust; sem números na fonte.",
+ "licenca": "MIT",
+ "ultimo_release": "v0.40.2, 08 Aug (ano não exibido); v0.40.1 trouxe SQLite 3.53.2",
+ "atividade": "nao_verificado (API do GitHub deu 403)",
+ "maturidade": "stable",
+ "encaixe": "Binding para escrever em Rust um MCP/indexador sobre SQLite em cada máquina; features loadable_extension, vtab, load_extension. Impedimento: exige toolchain Rust; só vale se o MCP próprio for em Rust.",
+ "evidencias": [
+  {
+   "campo": "windows",
+   "url": "https://github.com/rusqlite/rusqlite",
+   "citacao": "This is a good option for cases where linking to SQLite is complicated, such as Windows."
+  },
+  {
+   "campo": "licenca",
+   "url": "https://github.com/rusqlite/rusqlite",
+   "citacao": "Rusqlite and libsqlite3-sys are available under the MIT license."
+  },
+  {
+   "campo": "ultimo_release",
+   "url": "https://github.com/rusqlite/rusqlite/releases",
+   "citacao": "v0.40.2 ... 08 Aug: Lower MSRV to 1.88.0."
+  },
+  {
+   "campo": "encaixe",
+   "url": "https://github.com/rusqlite/rusqlite",
+   "citacao": "load_extension: allows loading dynamic library-based SQLite extensions."
+  }
+ ],
+ "nao_verificado": [
+  "atividade (último commit)",
+  "ano dos releases"
+ ]
+}

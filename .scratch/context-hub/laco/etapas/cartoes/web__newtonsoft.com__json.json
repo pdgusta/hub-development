@@ -1,0 +1,29 @@
+{
+ "chave": "web:newtonsoft.com/json",
+ "urls": [
+  "https://www.newtonsoft.com/json"
+ ],
+ "tipos": [
+  "library"
+ ],
+ "termos": [
+  "Newtonsoft.Json",
+  "JSON.NET with YAML"
+ ],
+ "mencoes": 1,
+ "familias": [
+  "mistral"
+ ],
+ "primeira_onda": 4,
+ "nomes": [
+  "JToken/YamlDotNet (Newtonsoft.Json)"
+ ],
+ "resumos": [
+  "Newtonsoft.Json 提供 JSON/YAML 解析（通过扩展），但主要面向 JSON，YAML 支持有限。"
+ ],
+ "fonte": "site",
+ "readme_status": "ok",
+ "readme_nome": "https://www.newtonsoft.com/json",
+ "readme_cortado": false,
+ "readme": "[Json.NET - Newtonsoft]\n\nInstall with NuGet (recommended)\n\n PM> Install-Package Newtonsoft.Json\n\n or\n\n Install via VS Package Management window.\n\nDirect Download\n\n ZIP file containing Json.NET assemblies and source code:\n\n Json.NET\n\nJson.NET\n\n Popular high-performance JSON framework for .NET\n\n Download\n\n Source code\n\n Version 13.0.4\n\nProduct product = new Product();\nproduct.Name = \"Apple\";\nproduct.Expiry = new DateTime(2008, 12, 28);\nproduct.Sizes = new string[] { \"Small\" };\n\nstring json = JsonConvert.SerializeObject(product);\n// {\n// \"Name\": \"Apple\",\n// \"Expiry\": \"2008-12-28T00:00:00\",\n// \"Sizes\": [\n// \"Small\"\n// ]\n// }\n\n Serialize JSON\n\nstring json = @\"{\n 'Name': 'Bad Boys',\n 'ReleaseDate': '1995-4-7T00:00:00',\n 'Genres': [\n 'Action',\n 'Comedy'\n ]\n}\";\n\nMovie m = JsonConvert.DeserializeObject<Movie>(json);\n\nstring name = m.Name;\n// Bad Boys\n\n Deserialize JSON\n\nJArray array = new JArray();\narray.Add(\"Manual text\");\narray.Add(new DateTime(2000, 5, 23));\n\nJObject o = new JObject();\no[\"MyArray\"] = array;\n\nstring json = o.ToString();\n// {\n// \"MyArray\": [\n// \"Manual text\",\n// \"2000-05-23T00:00:00\"\n// ]\n// }\n\n LINQ to JSON\n\n World-class JSON Serializer\n Serialize and deserialize any .NET object with Json.NET's powerful JSON serializer.\n\n LINQ to JSON\n Create, parse, query and modify JSON using Json.NET's JObject, JArray and JValue objects.\n\n JSON Path\n Query JSON with an XPath-like syntax. Find out more about JSON Path\n here.\n\n High Performance\n 50% faster than DataContractJsonSerializer, and 250% faster than JavaScriptSerializer.\n\n Easy To Use\n Json.NET makes the simple easy and the complex possible.\n\n XML Support\n If you need it, Json.NET supports converting between XML and JSON.\n\n Open Source\n Json.NET is open source software and is completely\n free for commercial use.\n\n Run Anywhere\n Json.NET supports Windows, MacOS, Linux, iOS and Android.\n\n Most Popular .NET library\n Over 1 billion downloads and counting, Json.NET is the number one library on NuGet.\n\nHelp\n\n Json.NET Documentation\n Json.NET documentation is the first place to go for help.\n It includes over 100 code samples.\n\n Stack Overflow\n Stack Overflow\n has an active Json.NET community and is a great place to ask questions.\n\nLicensing\n\nJson.NET is open source under the MIT license and is free for commercial use.\n\nThanks\n\n Thanks to Allie Brosh for all the things.\n\nFeature Comparison\n\n 70\n Json.NET\n\n 26\n DataContractJsonSerializer\n\n 12\n JavaScriptSerializer\n\n Json.NET\n DataContractJsonSerializer\n JavaScriptSerializer\n\n Supports JSON\n\n Supports BSON\n\n Supports JSONPath\n\n Supports .NET 2.0\n\n Supports .NET 3.5\n\n Supports .NET 4.0\n\n Supports .NET 4.5\n\n Supports Silverlight\n\n Supports Windows Phone\n\n Supports Windows Store\n\n Supports Xamarin\n\n Open Source\n\n MIT License\n\n LINQ to JSON\n\n Thread Safe\n\n XPath-like JSON query syntax\n\n Indented JSON support\n\n Deserializes IList, IEnumerable, ICollection, IDictionary properties\n\n Serializes circular references\n\n Supports serializing objects by reference\n\n Deserializes polymorphic properties and collections\n\n Supports including type names with JSON\n\n Globally customize serialization process\n\n Supports excluding null values when serializing\n\n Supports SerializationBinder\n\n Conditional property serialization\n\n Includes line number information in errors\n\n Converts XML to JSON and JSON to XML\n\n Camel case JSON property names\n\n Non-default constructors support\n\n Serialization error handling\n\n Supports populating an existing object\n\n Efficiently serializes byte arrays as base64 text\n\n Handles NaN, Infinity, -Infinity and undefined\n\n Handles JavaScript constructors\n\n Serializes .NET 4.0 dynamic objects\n\n Serializes ISerializable objects\n\n Supports serializing enums to their text name\n\n JSON recursion limit support\n\n Attribute property name customization\n\n Attribute property order customization\n\n Attribute property required customization\n\n Supports ISO8601 dates\n\n Supports JavaScript constructor dates\n\n Supports Microsoft AJAX dates\n\n Unquoted property names support\n\n Raw JSON support\n\n Supports reading and writing comments\n\n Deserializes anonymous types\n\n Opt-in property serialization\n\n Opt-out property serialization\n\n Efficiently stream reading and writing JSON\n\n Single or double quote JSON content\n\n Supports overriding a type's serialization\n\n Supports OnDeserialized, OnSerializing, OnSerialized and OnDeserializing attributes\n\n Supports serializing private properties\n\n DataMember attribute support\n\n MetdataType attribute support\n\n DefaultValue attribute support\n\n Serializes DataSets and DataTables\n\n Serailizes Entity Framework\n\n Serializes nHibernate\n\n Case-insensitive property deserialization\n\n Diagnostic tracing\n\n Serializes read-only and immutable collections\n\n Supports serialization extension data\n\n Serializes F# discriminated unions\n\n Serializes F# collections\n\n Supports merging JSON\n\nPerformance Comparison"
+}

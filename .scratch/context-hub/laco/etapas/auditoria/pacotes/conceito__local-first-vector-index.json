@@ -1,0 +1,46 @@
+{
+ "chave": "conceito:local-first-vector-index",
+ "chaves_do_catalogo": [
+  "nome:localfirstvectorindex"
+ ],
+ "nomes": [
+  "Local-First Vector Index (Concept)"
+ ],
+ "mencoes": 1,
+ "familias": [
+  "mistral"
+ ],
+ "resumos": [
+  "Use FAISS or HNSWLib (via Python/Rust bindings) to build an offline vector index for embeddings, paired with a lightweight BM25 index for keyword queries."
+ ],
+ "termos": [
+  "FAISS",
+  "HNSW",
+  "offline embeddings",
+  "local vector search"
+ ],
+ "urls": [],
+ "triagem": {
+  "chave": "conceito:local-first-vector-index",
+  "modelo": "claude-haiku-5-5",
+  "ts": "2026-10-13T20:34:11Z",
+  "resposta": {
+   "concept_en": "local vector index",
+   "serve": "search",
+   "role": "Índice vetorial offline com FAISS ou HNSWLib, junto de um BM25 para palavras-chave",
+   "mechanism": [
+    "vector",
+    "bm25"
+   ],
+   "place": [
+    "library"
+   ],
+   "tools_on_card": [
+    "FAISS",
+    "HNSWLib"
+   ],
+   "doubt": false,
+   "evidence": "Use FAISS or HNSWLib (via Python/Rust bindings) to build an offline vector index for embeddings, paired with a lightweight BM25 index"
+  }
+ }
+}

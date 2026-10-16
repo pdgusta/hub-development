@@ -1,0 +1,40 @@
+{"pergunta": "Para que serve o context hub, em uma frase que eu entenderia sem conhecer o Gustavo?", "tipo": "por-que", "lente": "leitor-novo", "cita": ["context hub"]}
+{"pergunta": "Qual é a diferença entre o context hub e o cofre do Obsidian que o Gustavo já usa?", "tipo": "diferenca", "lente": "leitor-novo", "cita": ["context hub", "Obsidian", "vault ai-operating-system"]}
+{"pergunta": "Em que o context hub se diferencia de um repositório git comum?", "tipo": "diferenca", "lente": "leitor-novo", "cita": ["context hub", "git"]}
+{"pergunta": "Onde a informação mora de verdade: nos arquivos .md ou dentro de um banco?", "tipo": "onde-vive", "lente": "leitor-novo", "cita": ["banco", "arquivos .md"]}
+{"pergunta": "O context hub é um sistema de backup?", "tipo": "o-que-nao-faz", "lente": "leitor-novo", "cita": ["context hub", "GitHub"]}
+{"pergunta": "Se o Gustavo edita uma nota no Obsidian, para onde essa edição vai?", "tipo": "se-x", "lente": "leitor-novo", "cita": ["Obsidian", "banco"]}
+{"pergunta": "Se um agente grava um arquivo direto no disco, a outra máquina fica sabendo?", "tipo": "se-x", "lente": "leitor-novo", "cita": ["agente", "sincronizador", "outra máquina"]}
+{"pergunta": "Se uma das duas máquinas está desligada, a outra continua trabalhando no hub?", "tipo": "se-x", "lente": "leitor-novo", "cita": ["máquina", "par"]}
+{"pergunta": "Qual é a relação entre as duas máquinas: uma manda e a outra recebe, ou as duas trocam mudanças direto?", "tipo": "relacao", "lente": "leitor-novo", "cita": ["máquina", "par"]}
+{"pergunta": "Se as duas máquinas editam a mesma nota entre um sync e outro, o que acontece?", "tipo": "falha", "lente": "leitor-novo", "cita": ["colisão real", "sincronizador"]}
+{"pergunta": "Se as duas máquinas mudam trechos diferentes da mesma nota, o hub junta sozinho?", "tipo": "se-x", "lente": "leitor-novo", "cita": ["colisão real", "sincronizador"]}
+{"pergunta": "Se uma máquina não consegue enviar as próprias mudanças por dias, quem avisa o Gustavo?", "tipo": "falha", "lente": "leitor-novo", "cita": ["vigia", "divergência"]}
+{"pergunta": "Se o Gustavo interromper o agente no meio de uma resposta, a nota de retomada fica em dia?", "tipo": "falha", "lente": "leitor-novo", "cita": ["nota de retomada", "hook Stop"]}
+{"pergunta": "Um arquivo de imagem ou PDF editado nas duas máquinas: o hub avisa ou escolhe uma versão sozinho?", "tipo": "falha", "lente": "leitor-novo", "cita": ["divergência", "arquivo binário"]}
+{"pergunta": "Se o GitHub fica fora do ar, o hub para de funcionar?", "tipo": "falha", "lente": "leitor-novo", "cita": ["GitHub", "sincronizador"]}
+{"pergunta": "Um arquivo grande, como um vídeo de 1 GB, viaja para a outra máquina?", "tipo": "o-que-nao-faz", "lente": "leitor-novo", "cita": ["limite de tamanho", "sincronizador"]}
+{"pergunta": "Se o Gustavo pede a um agente para apagar uma nota, a nota some das duas máquinas?", "tipo": "se-x", "lente": "leitor-novo", "cita": ["agente", "máquina"]}
+{"pergunta": "Qual é a primeira coisa que um agente faz ao abrir uma sessão no hub?", "tipo": "ordem", "lente": "leitor-novo", "cita": ["AGENTS.md", "nota de retomada", "Claude Code"]}
+{"pergunta": "Quando o agente termina uma tarefa, a nota de retomada é gravada antes ou depois da resposta ao Gustavo?", "tipo": "ordem", "lente": "leitor-novo", "cita": ["nota de retomada", "hook Stop"]}
+{"pergunta": "Quem escreve a nota de retomada: o agente, um hook ou o Gustavo?", "tipo": "responsavel", "lente": "leitor-novo", "cita": ["nota de retomada", "hook Stop"]}
+{"pergunta": "Por que o hub não tem um arquivo CLAUDE.md?", "tipo": "por-que", "lente": "leitor-novo", "cita": ["CLAUDE.md", "AGENTS.md"]}
+{"pergunta": "Onde mora o arquivo de instruções que um agente lê ao chegar no hub?", "tipo": "onde-vive", "lente": "leitor-novo", "cita": ["AGENTS.md"]}
+{"pergunta": "A pasta de um cliente faz parte do mesmo grupo que a pasta de um estudo sem cliente?", "tipo": "grupo", "lente": "leitor-novo", "cita": ["clients/", "initiatives/"]}
+{"pergunta": "Em que pasta vai uma iniciativa sem cliente, como um estudo pessoal?", "tipo": "onde-vive", "lente": "leitor-novo", "cita": ["initiatives/"]}
+{"pergunta": "Quem usa a camada de busca: o Gustavo, os agentes, ou os dois?", "tipo": "quem-usa", "lente": "leitor-novo", "cita": ["camada de busca"]}
+{"pergunta": "A camada de busca enxerga as pastas que não são replicadas, que ficam só numa máquina?", "tipo": "o-que-nao-faz", "lente": "leitor-novo", "cita": ["camada de busca", "pasta não replicada"]}
+{"pergunta": "Um agente de um computador de passagem consegue gravar no hub?", "tipo": "quem-usa", "lente": "leitor-novo", "cita": ["cliente", "par"]}
+{"pergunta": "Qual é a relação entre a camada de busca e o banco?", "tipo": "relacao", "lente": "leitor-novo", "cita": ["camada de busca", "banco"]}
+{"pergunta": "Por que a camada de busca existe, se o agente já pode abrir os arquivos?", "tipo": "por-que", "lente": "leitor-novo", "cita": ["camada de busca"]}
+{"pergunta": "Por que a pasta não replicada existe, em vez de copiar tudo para as duas máquinas?", "tipo": "por-que", "lente": "leitor-novo", "cita": ["pasta não replicada"]}
+{"pergunta": "Quem decide quais pastas um agente pode ler quando houver dado de cliente?", "tipo": "responsavel", "lente": "leitor-novo", "cita": ["controle de acesso", "dado de cliente"]}
+{"pergunta": "Quando o hub começa a valer de verdade, e não só como prova de conceito?", "tipo": "quando", "lente": "leitor-novo", "cita": ["prova de conceito", "context hub"]}
+{"pergunta": "Quando o contrato file-first entra em uso?", "tipo": "quando", "lente": "leitor-novo", "cita": ["contrato file-first"]}
+{"pergunta": "Por que o Gustavo escolheu um banco central em vez de um servidor na nuvem?", "tipo": "por-que", "lente": "leitor-novo", "cita": ["servidor", "CouchDB", "nuvem"]}
+{"pergunta": "Se o hub para no meio de uma gravação, a nota pode ficar pela metade?", "tipo": "falha", "lente": "leitor-novo", "cita": ["sincronizador", "nota"]}
+{"pergunta": "O context hub guarda a conversa inteira que o agente teve com o Gustavo?", "tipo": "o-que-nao-faz", "lente": "leitor-novo", "cita": ["nota de retomada", "context hub"]}
+{"pergunta": "Qual é a diferença entre a nota de retomada e uma conversa salva do agente?", "tipo": "diferenca", "lente": "leitor-novo", "cita": ["nota de retomada"]}
+{"pergunta": "A pasta agents/ faz parte do mesmo grupo das pastas de conteúdo, como clients/?", "tipo": "grupo", "lente": "leitor-novo", "cita": ["agents/", "clients/"]}
+{"pergunta": "Se um conteúdo é copiado do cofre antigo para o hub, o que acontece com a versão que ficou no cofre antigo?", "tipo": "se-x", "lente": "leitor-novo", "cita": ["vault ai-operating-system", "context hub"]}
+{"pergunta": "Quem vê o aviso quando uma máquina trava: a própria máquina, a outra, ou o agente que abre a próxima sessão?", "tipo": "falha", "lente": "leitor-novo", "cita": ["vigia", "notificação do Windows", "checagem de início de sessão"]}

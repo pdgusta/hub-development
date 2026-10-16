@@ -1,0 +1,589 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Protótipo: divergência e edição concorrente</title>
+<style>
+  :root {
+    --bg: #fafaf8; --card: #ffffff; --ink: #1d1d1b; --muted: #6b6b66; --line: #e4e3de;
+    --accent: #2f5fa7; --accent-soft: #e7eef9;
+    --ok: #2e7d4f; --ok-soft: #e5f3ea; --warn: #9a6a00; --warn-soft: #fbf1d9;
+    --bad: #b3261e; --bad-soft: #fbe6e4; --pend: #fff4c2;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #161616; --card: #1f1f1f; --ink: #ecebe6; --muted: #9a9a94; --line: #34332f;
+      --accent: #7aa7ec; --accent-soft: #1f2a3b;
+      --ok: #7cc79a; --ok-soft: #1c2b22; --warn: #e3b64f; --warn-soft: #2f2817;
+      --bad: #f08a80; --bad-soft: #3a1f1d; --pend: #3b3418;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink);
+    font: 15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  main { max-width: 1180px; margin: 0 auto; padding: 24px 16px 64px; }
+  h1 { font-size: 22px; margin: 0 0 4px; }
+  h2 { font-size: 16px; margin: 0 0 10px; }
+  h3 { font-size: 14px; margin: 0 0 6px; }
+  p { margin: 0 0 8px; }
+  .muted { color: var(--muted); }
+  .small { font-size: 13px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; margin-top: 16px; }
+  .grid3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+  .grid2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  @media (max-width: 860px) { .grid3, .grid2 { grid-template-columns: 1fr; } }
+  .panel { border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; }
+  .pill { display: inline-block; border-radius: 99px; padding: 1px 10px; font-size: 12px; font-weight: 600; }
+  .pill.ok { background: var(--ok-soft); color: var(--ok); }
+  .pill.warn { background: var(--warn-soft); color: var(--warn); }
+  .pill.bad { background: var(--bad-soft); color: var(--bad); }
+  .file { margin: 8px 0; font: 12.5px/1.45 ui-monospace, Consolas, monospace; }
+  .file .name { color: var(--muted); }
+  .file .name.irma { color: var(--bad); font-weight: 600; }
+  .file ol { margin: 2px 0 0; padding-left: 26px; }
+  .file li.pend { background: var(--pend); }
+  .kv { display: grid; grid-template-columns: max-content 1fr; gap: 2px 10px; font-size: 13px; margin: 6px 0; }
+  .kv dt { color: var(--muted); }
+  .kv dd { margin: 0; }
+  button { font: inherit; font-size: 13px; border: 1px solid var(--line); background: var(--card); color: var(--ink);
+    border-radius: 6px; padding: 4px 10px; cursor: pointer; margin: 2px 4px 2px 0; }
+  button:hover:not(:disabled) { border-color: var(--accent); }
+  button.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+  button.on { background: var(--accent-soft); border-color: var(--accent); color: var(--accent); font-weight: 600; }
+  button:disabled { opacity: .45; cursor: default; }
+  select, input { font: inherit; font-size: 13px; padding: 3px 6px; border: 1px solid var(--line); border-radius: 6px; background: var(--card); color: var(--ink); }
+  .row { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 6px 0; }
+  .alert { border-left: 3px solid var(--warn); background: var(--warn-soft); padding: 6px 10px; border-radius: 4px; margin: 4px 0; font-size: 13px; }
+  .alert.bad { border-color: var(--bad); background: var(--bad-soft); }
+  .canal { font-size: 11px; color: var(--muted); }
+  .toast { font-size: 12.5px; border: 1px solid var(--line); border-radius: 6px; padding: 4px 8px; margin: 3px 0; }
+  .log { font-size: 13px; max-height: 260px; overflow: auto; }
+  .ev { padding: 3px 0; border-bottom: 1px dashed var(--line); }
+  .ev.ok { color: var(--ok); } .ev.aviso { color: var(--warn); } .ev.perda { color: var(--bad); font-weight: 600; }
+  .last { background: var(--accent-soft); border-radius: 8px; padding: 8px 12px; margin-top: 12px; font-size: 13.5px; }
+  .tabs { display: flex; flex-wrap: wrap; gap: 4px; border-bottom: 1px solid var(--line); margin-bottom: 10px; }
+  .tabs button { border-radius: 6px 6px 0 0; margin: 0; }
+  .steps ol { padding-left: 22px; margin: 6px 0; }
+  .steps li { margin: 4px 0; }
+  .steps li.done { color: var(--muted); }
+  .steps li.done button { text-decoration: line-through; }
+  .policy { display: grid; grid-template-columns: max-content 1fr; gap: 6px 14px; align-items: center; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Divergência e edição concorrente: protótipo</h1>
+  <p class="muted small">PROTÓTIPO DESCARTÁVEL do ticket "Divergência e edição concorrente" (mapa do context hub). Tudo roda em memória; nenhum git de verdade é usado.</p>
+
+  <div class="card">
+    <h2>A pergunta</h2>
+    <p>O hub tem uma cópia em cada máquina (notebook da ARMIS e máquina pessoal), e o GitHub privado é o ponto de encontro.
+      Em cada máquina, um sincronizador agendado (no estilo do git-sync) roda a cada 15 minutos: grava tudo o que mudou no disco,
+      busca o que veio do GitHub, junta e envia.</p>
+    <p><b>O que conta como divergência "não silenciosa", onde o aviso aparece, e o que fazer quando duas gravações no mesmo arquivo
+      não se veem</b>: entre as duas máquinas (critério 4) e entre dois agentes na mesma máquina (critério 5)?</p>
+    <p class="small muted">Simplificações: o git real junta por blocos de linhas, e linhas vizinhas também podem colidir; aqui a junção é linha a linha.
+      Os arquivos têm três linhas. Os agentes A e B ficam no notebook. "Editar direto no disco" vale para o Gustavo no Obsidian ou para um agente sem proteção nenhuma.</p>
+  </div>
+
+  <div class="card">
+    <h2>Políticas em teste</h2>
+    <div class="policy small" id="politicas"></div>
+    <p class="small muted" style="margin-top:8px">Trocar a política não apaga o estado. Para comparar, escolha a política e recomece o roteiro.</p>
+  </div>
+
+  <div class="card">
+    <h2>Estado atual <span class="muted small" id="relogio"></span></h2>
+    <div id="ultima"></div>
+    <div class="grid3" style="margin-top:12px" id="paineis"></div>
+    <div class="grid2" style="margin-top:12px">
+      <div class="panel"><h3>Agentes no notebook</h3><div id="agentes"></div></div>
+      <div class="panel"><h3>Histórico</h3><div class="log" id="log"></div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Mexer à vontade</h2>
+    <div class="row">
+      <button class="primary" data-a='{"tipo":"tempo"}'>Passar 15 min (os sincronizadores ligados rodam)</button>
+      <button id="reset">Recomeçar do zero</button>
+    </div>
+    <div class="row">
+      <b class="small">Editar direto no disco:</b>
+      <select id="e-maq"><option value="notebook">Notebook ARMIS</option><option value="pessoal">Máquina pessoal</option></select>
+      <select id="e-arq"></select>
+      <select id="e-lin"><option>1</option><option>2</option><option>3</option></select>
+      <input id="e-txt" placeholder="texto novo (vazio = automático)" size="28">
+      <button id="e-go">Editar</button>
+    </div>
+    <div class="row">
+      <b class="small">Agente:</b>
+      <select id="g-ag"><option value="A">Agente A (Claude Code)</option><option value="B">Agente B (Codex)</option></select>
+      <select id="g-arq"></select>
+      <button id="g-ler">Ler o arquivo</button>
+      <select id="g-lin"><option>1</option><option>2</option><option>3</option></select>
+      <input id="g-txt" placeholder="texto novo (vazio = automático)" size="24">
+      <button id="g-gravar">Gravar a linha</button>
+      <button id="g-cair">Cair sem gravar</button>
+    </div>
+  </div>
+
+  <div class="card steps">
+    <h2>Roteiros</h2>
+    <div class="tabs" id="tabs"></div>
+    <div id="roteiro"></div>
+  </div>
+</main>
+
+<script>
+// ============================================================
+// Módulo puro: o modelo de sync, divergência e concorrência.
+// Sem DOM. A página só chama Hub.inicial, Hub.aplicar e Hub.avisos.
+// ============================================================
+const Hub = (() => {
+  const MAQUINAS = ['notebook', 'pessoal'];
+  const NOME = { notebook: 'Notebook ARMIS', pessoal: 'Máquina pessoal' };
+  const INTERVALO = 15;      // minutos entre execuções do sincronizador
+  const PRAZO_TRAVA = 45;    // minutos até uma trava expirar sozinha
+  const ARQUIVOS_INICIAIS = {
+    'iniciativas/context-hub/estado.md': ['Fase: planejamento', 'Próxima ação: ticket 08', 'Bloqueio: nenhum'],
+    'notas/decisoes.md': ['Sync: GitHub privado', 'Busca: em aberto', 'Contrato: em aberto'],
+  };
+
+  const clone = o => JSON.parse(JSON.stringify(o));
+  const igual = (a, b) => JSON.stringify(a) === JSON.stringify(b);
+  const versaoDe = linhas => { let h = 7; for (const c of (linhas || []).join('\n')) h = (h * 31 + c.charCodeAt(0)) >>> 0; return h.toString(16).slice(-5); };
+  const ehIrma = caminho => caminho.includes('.conflito-');
+  const nomeIrma = (caminho, m) => caminho.replace(/\.md$/, `.conflito-${m}.md`);
+  const canonicaDe = irma => irma.replace(/\.conflito-[a-z]+\.md$/, '.md');
+
+  function inicial(politicas) {
+    const maq = {};
+    for (const m of MAQUINAS) maq[m] = {
+      disco: clone(ARQUIVOS_INICIAIS),     // o que está no disco agora
+      base: clone(ARQUIVOS_INICIAIS),      // o que foi visto no GitHub na última sync
+      versaoBase: 1,
+      rede: true, sincronizador: true,
+      ultimaOk: 0, pendenteDesde: null,
+      colisao: null,                       // { colisoes, desde } quando a política é "parar"
+      notificacoes: [],
+    };
+    return {
+      t: 0,
+      politicas: Object.assign({ colisao: 'parar', mesmaMaquina: 'nenhuma', limite: 30 }, politicas || {}),
+      github: { versao: 1, arquivos: clone(ARQUIVOS_INICIAIS), log: [{ versao: 1, de: 'início', t: 0 }] },
+      maq,
+      agentes: {
+        A: { nome: 'Agente A (Claude Code)', vivo: true, leituras: {} },
+        B: { nome: 'Agente B (Codex)', vivo: true, leituras: {} },
+      },
+      travas: {},                          // caminho -> { dono, ate }
+      eventos: [],
+    };
+  }
+
+  // Junção de três vias, linha a linha (aproxima o rebase do git).
+  function juntar(base, local, remoto) {
+    const resultado = {}, colisoes = [];
+    const caminhos = new Set([...Object.keys(base), ...Object.keys(local), ...Object.keys(remoto)]);
+    for (const p of caminhos) {
+      const b = base[p], l = local[p], r = remoto[p];
+      if (igual(l, r)) { if (l) resultado[p] = clone(l); continue; }
+      if (!l || !r) {                      // criado ou apagado de um lado
+        const existe = l || r;
+        if (b && igual(existe, b)) continue;           // o outro lado apagou e este não mexeu
+        resultado[p] = clone(existe); continue;
+      }
+      if (!b) { colisoes.push({ arquivo: p, linha: 1, local: l.join(' / '), remoto: r.join(' / ') }); resultado[p] = clone(r); continue; }
+      const n = Math.max(b.length, l.length, r.length), saida = [];
+      for (let i = 0; i < n; i++) {
+        const bi = b[i], li = l[i], ri = r[i];
+        if (li === ri) saida.push(li);
+        else if (li === bi) saida.push(ri);
+        else if (ri === bi) saida.push(li);
+        else { colisoes.push({ arquivo: p, linha: i + 1, local: li, remoto: ri }); saida.push(ri); }
+      }
+      resultado[p] = saida.filter(x => x !== undefined);
+    }
+    return { resultado, colisoes };
+  }
+
+  function evento(s, tipo, texto) { s.eventos.push({ t: s.t, tipo, texto }); }
+  function notificar(s, m, texto) {
+    s.maq[m].notificacoes.push({ t: s.t, texto });
+    evento(s, 'aviso', `${NOME[m]} mostra uma notificação do Windows: "${texto}"`);
+  }
+  function marcarPendente(s, m) {
+    const M = s.maq[m];
+    if (igual(M.disco, M.base)) M.pendenteDesde = null;
+    else if (M.pendenteDesde === null) M.pendenteDesde = s.t;
+  }
+  function enviar(s, m, conteudo) {
+    const M = s.maq[m];
+    s.github.versao += 1;
+    s.github.arquivos = clone(conteudo);
+    s.github.log.push({ versao: s.github.versao, de: NOME[m], t: s.t });
+    M.disco = clone(conteudo); M.base = clone(conteudo); M.versaoBase = s.github.versao;
+    M.pendenteDesde = null; M.ultimaOk = s.t;
+  }
+
+  // Uma execução do sincronizador numa máquina.
+  function ciclo(s, m) {
+    const M = s.maq[m], G = s.github;
+    if (!M.rede) { notificar(s, m, 'Sync falhou: sem acesso ao GitHub'); return; }
+    if (M.colisao) { notificar(s, m, `Sync parado: colisão em ${resumoColisoes(M.colisao.colisoes)} esperando resolução`); return; }
+    const localMudou = !igual(M.disco, M.base);
+    const remotoMudou = G.versao !== M.versaoBase;
+    if (!localMudou && !remotoMudou) { M.ultimaOk = s.t; return; }
+    if (!remotoMudou) { enviar(s, m, M.disco); evento(s, 'ok', `${NOME[m]} enviou suas edições ao GitHub (versão ${G.versao}).`); return; }
+    if (!localMudou) {
+      M.disco = clone(G.arquivos); M.base = clone(G.arquivos); M.versaoBase = G.versao; M.ultimaOk = s.t;
+      evento(s, 'ok', `${NOME[m]} recebeu a versão ${G.versao} do GitHub e atualizou o disco.`); return;
+    }
+    const { resultado, colisoes } = juntar(M.base, M.disco, G.arquivos);
+    if (!colisoes.length) {
+      enviar(s, m, resultado);
+      evento(s, 'ok', `${NOME[m]}: as duas máquinas mudaram coisas diferentes; o git juntou sozinho e enviou (versão ${G.versao}).`);
+      return;
+    }
+    if (s.politicas.colisao === 'parar') {
+      M.colisao = { colisoes, desde: s.t };
+      evento(s, 'aviso', `${NOME[m]}: colisão real (${resumoColisoes(colisoes)}). Política "parar": a junção é desfeita, o disco fica com a versão local e nada desta máquina é enviado, nem as edições sem colisão.`);
+      notificar(s, m, `Colisão em ${resumoColisoes(colisoes)}: sync parado`);
+      return;
+    }
+    // Política "cópia irmã": o GitHub vence no arquivo original; a versão local vira um arquivo irmão.
+    const final = clone(resultado), arquivos = [...new Set(colisoes.map(c => c.arquivo))];
+    for (const a of arquivos) final[nomeIrma(a, m)] = clone(M.disco[a]);
+    enviar(s, m, final);
+    evento(s, 'aviso', `${NOME[m]}: colisão real (${resumoColisoes(colisoes)}). Política "cópia irmã": o original fica com a versão do GitHub, a versão local vira ${arquivos.map(a => nomeIrma(a, m)).join(', ')}, e o sync segue (versão ${G.versao}).`);
+    notificar(s, m, `Colisão: cópia de conflito criada para ${arquivos.join(', ')}`);
+  }
+
+  function resumoColisoes(colisoes) {
+    return colisoes.map(c => `${c.arquivo.split('/').pop()} linha ${c.linha}`).join(', ');
+  }
+
+  function resolver(s, m) {
+    const M = s.maq[m], G = s.github;
+    if (M.colisao) {
+      const { resultado, colisoes } = juntar(M.base, M.disco, G.arquivos);
+      for (const c of colisoes) resultado[c.arquivo][c.linha - 1] = `${c.local} + ${c.remoto}`;
+      M.colisao = null;
+      enviar(s, m, resultado);
+      evento(s, 'ok', `${NOME[m]}: colisão resolvida juntando as duas versões; o sync volta a rodar (versão ${G.versao}).`);
+      return;
+    }
+    const irmas = Object.keys(M.disco).filter(ehIrma);
+    if (!irmas.length) { evento(s, 'info', `${NOME[m]}: não há nada a resolver.`); return; }
+    for (const f of irmas) {
+      const c = canonicaDe(f), orig = M.disco[c] || [], irma = M.disco[f];
+      M.disco[c] = orig.map((linha, i) => (irma[i] !== undefined && irma[i] !== linha) ? `${linha} + ${irma[i]}` : linha);
+      delete M.disco[f];
+      evento(s, 'ok', `${NOME[m]}: cópia ${f.split('/').pop()} revisada e juntada ao original; a cópia foi apagada. Sai na próxima sync.`);
+    }
+    marcarPendente(s, m);
+  }
+
+  function editar(s, { maquina, arquivo, linha, texto }) {
+    const M = s.maq[maquina];
+    if (!M.disco[arquivo]) { evento(s, 'info', `${arquivo} não existe em ${NOME[maquina]}.`); return; }
+    M.disco[arquivo][linha - 1] = texto;
+    marcarPendente(s, maquina);
+    evento(s, 'info', `${NOME[maquina]}: edição direta no disco, ${arquivo.split('/').pop()} linha ${linha} = "${texto}".`);
+  }
+
+  function ler(s, { agente, arquivo }) {
+    const ag = s.agentes[agente], M = s.maq.notebook;
+    if (!ag.vivo) { evento(s, 'info', `${ag.nome} caiu e não faz mais nada nesta simulação.`); return; }
+    if (s.politicas.mesmaMaquina === 'trava') {
+      const tr = s.travas[arquivo];
+      if (tr && tr.dono !== agente) {
+        evento(s, 'aviso', `${ag.nome} não consegue pegar ${arquivo.split('/').pop()}: travado por ${s.agentes[tr.dono].nome} até ${tr.ate} min. Fica esperando.`);
+        return;
+      }
+      s.travas[arquivo] = { dono: agente, ate: s.t + PRAZO_TRAVA };
+    }
+    ag.leituras[arquivo] = { linhas: clone(M.disco[arquivo]), versao: versaoDe(M.disco[arquivo]) };
+    evento(s, 'info', `${ag.nome} leu ${arquivo.split('/').pop()} (versão ${versaoDe(M.disco[arquivo])})${s.politicas.mesmaMaquina === 'trava' ? ' e pegou a trava' : ''}.`);
+  }
+
+  function gravar(s, { agente, arquivo, linha, texto }) {
+    const ag = s.agentes[agente], M = s.maq.notebook, pol = s.politicas.mesmaMaquina;
+    if (!ag.vivo) { evento(s, 'info', `${ag.nome} caiu e não faz mais nada nesta simulação.`); return; }
+    const lido = ag.leituras[arquivo];
+    if (!lido) { evento(s, 'aviso', `${ag.nome} não leu ${arquivo.split('/').pop()} e não pode gravar (as ferramentas de edição exigem ler antes).`); return; }
+    const disco = M.disco[arquivo];
+    if (pol === 'versao' && versaoDe(disco) !== lido.versao) {
+      delete ag.leituras[arquivo];
+      evento(s, 'aviso', `Gravação de ${ag.nome} recusada: o arquivo mudou desde a leitura (versão ${lido.versao} → ${versaoDe(disco)}). O agente precisa ler de novo e refazer.`);
+      return;
+    }
+    if (pol === 'trava') {
+      const tr = s.travas[arquivo];
+      if (!tr || tr.dono !== agente) { delete ag.leituras[arquivo]; evento(s, 'aviso', `Gravação de ${ag.nome} recusada: ele não tem a trava. Precisa ler de novo.`); return; }
+      delete s.travas[arquivo];
+    }
+    // O agente grava o arquivo inteiro a partir do que leu, com a sua mudança.
+    const novo = clone(lido.linhas); novo[linha - 1] = texto;
+    disco.forEach((atual, i) => {
+      if (i !== linha - 1 && atual !== lido.linhas[i])
+        evento(s, 'perda', `PERDA SILENCIOSA: a gravação de ${ag.nome} desfez "${atual}" (linha ${i + 1}), que entrou depois da leitura. No mundo real ninguém veria isto; só o protótipo sabe.`);
+    });
+    M.disco[arquivo] = novo;
+    ag.leituras[arquivo] = { linhas: clone(novo), versao: versaoDe(novo) };
+    marcarPendente(s, 'notebook');
+    evento(s, 'info', `${ag.nome} gravou ${arquivo.split('/').pop()} linha ${linha} = "${texto}".`);
+  }
+
+  function aplicar(estado, acao) {
+    const s = clone(estado);
+    switch (acao.tipo) {
+      case 'tempo':
+        s.t += INTERVALO;
+        for (const [arq, tr] of Object.entries(s.travas)) if (tr.ate <= s.t) { delete s.travas[arq]; evento(s, 'info', `A trava de ${arq.split('/').pop()} expirou.`); }
+        for (const m of MAQUINAS) if (s.maq[m].sincronizador) ciclo(s, m);
+        evento(s, 'info', `Agora são ${s.t} min.`);
+        break;
+      case 'sincronizar': ciclo(s, acao.maquina); break;
+      case 'rede': s.maq[acao.maquina].rede = !s.maq[acao.maquina].rede;
+        evento(s, 'info', `${NOME[acao.maquina]}: rede ${s.maq[acao.maquina].rede ? 'voltou' : 'caiu (ou a credencial do GitHub parou de valer)'}.`); break;
+      case 'sincronizador': s.maq[acao.maquina].sincronizador = !s.maq[acao.maquina].sincronizador;
+        evento(s, 'info', `${NOME[acao.maquina]}: sincronizador ${s.maq[acao.maquina].sincronizador ? 'religado' : 'parou de rodar (ex.: a tarefa agendada sumiu), sem avisar ninguém'}.`); break;
+      case 'editar': editar(s, acao); break;
+      case 'ler': ler(s, acao); break;
+      case 'gravar': gravar(s, acao); break;
+      case 'cair': s.agentes[acao.agente].vivo = false;
+        evento(s, 'info', `${s.agentes[acao.agente].nome} caiu (sessão fechada) sem gravar.`); break;
+      case 'resolver': resolver(s, acao.maquina); break;
+      case 'politica': s.politicas[acao.chave] = acao.valor;
+        evento(s, 'info', `Política trocada: ${acao.chave} = ${acao.valor}.`); break;
+    }
+    return s;
+  }
+
+  // O que um aviso mostraria em cada máquina, e por qual canal.
+  function avisos(s, m) {
+    const M = s.maq[m], out = [];
+    const semSync = s.t - M.ultimaOk;
+    if (M.colisao) {
+      out.push({ grave: true, texto: `Colisão real em ${resumoColisoes(M.colisao.colisoes)}. O sync desta máquina está parado desde ${M.colisao.desde} min, e nenhuma edição daqui chega à outra máquina.`, canais: ['notificação do Windows', 'início de sessão do agente'] });
+    } else if (semSync >= s.politicas.limite) {
+      const motivo = !M.sincronizador ? 'o sincronizador não está rodando' : (!M.rede ? 'sem acesso ao GitHub' : 'falha');
+      const pend = M.pendenteDesde !== null ? `Há edição local parada desde ${M.pendenteDesde} min.` : 'Esta máquina pode estar trabalhando sobre conteúdo velho.';
+      out.push({ grave: true, texto: `Sem sincronizar há ${semSync} min (${motivo}). ${pend}`,
+        canais: M.sincronizador ? ['notificação do Windows', 'início de sessão do agente'] : ['início de sessão do agente (só ele: ninguém mais roda para avisar)'] });
+    }
+    for (const f of Object.keys(M.disco).filter(ehIrma))
+      out.push({ grave: false, texto: `Cópia de conflito esperando revisão: ${f}`, canais: ['início de sessão do agente', 'aparece na busca'] });
+    return out;
+  }
+
+  function situacao(s, m) {
+    const M = s.maq[m];
+    if (M.colisao) return { classe: 'bad', texto: 'Colisão: sync parado' };
+    if (!M.rede) return { classe: 'bad', texto: 'Sem acesso ao GitHub' };
+    if (!M.sincronizador) return { classe: 'bad', texto: 'Sincronizador parado' };
+    if (Object.keys(M.disco).some(ehIrma)) return { classe: 'warn', texto: 'Cópia de conflito aberta' };
+    if (M.pendenteDesde !== null) return { classe: 'warn', texto: 'Edição local ainda não enviada' };
+    if (M.versaoBase !== s.github.versao) return { classe: 'warn', texto: 'Atrás do GitHub' };
+    return { classe: 'ok', texto: 'Em dia' };
+  }
+
+  return { inicial, aplicar, avisos, situacao, juntar, MAQUINAS, NOME, ARQUIVOS_INICIAIS, ehIrma };
+})();
+
+// ============================================================
+// Página: casca descartável sobre o módulo.
+// ============================================================
+const ARQS = Object.keys(Hub.ARQUIVOS_INICIAIS);
+const curto = p => p.split('/').pop();
+const esc = t => String(t).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+let estado = Hub.inicial();
+let ultimos = [];
+
+function despachar(acao) {
+  const antes = estado.eventos.length;
+  estado = Hub.aplicar(estado, acao);
+  ultimos = estado.eventos.slice(antes);
+  render();
+}
+function recomecar() { estado = Hub.inicial(estado.politicas); ultimos = []; }
+
+const OPCOES = {
+  colisao: [['parar', 'Parar e avisar'], ['irma', 'Cópia irmã e seguir']],
+  mesmaMaquina: [['nenhuma', 'Nenhuma proteção'], ['versao', 'Conferir a versão ao gravar'], ['trava', 'Trava por arquivo']],
+  limite: [[30, '30 min'], [60, '60 min'], [120, '2 h']],
+};
+const ROTULO_POL = { colisao: 'Colisão real entre máquinas', mesmaMaquina: 'Dois agentes na mesma máquina', limite: 'Avisar quando não sincroniza há' };
+
+function renderArquivos(M, base) {
+  return Object.keys(M.disco).sort().map(p => {
+    const linhas = M.disco[p].map((l, i) => {
+      const pend = base && (!base[p] || base[p][i] !== l);
+      return `<li class="${pend ? 'pend' : ''}">${esc(l)}</li>`;
+    }).join('');
+    return `<div class="file"><div class="name ${Hub.ehIrma(p) ? 'irma' : ''}">${esc(p)}</div><ol>${linhas}</ol></div>`;
+  }).join('');
+}
+
+function render() {
+  document.getElementById('relogio').textContent = `· ${estado.t} min desde o início`;
+
+  document.getElementById('politicas').innerHTML = Object.keys(OPCOES).map(k =>
+    `<div>${ROTULO_POL[k]}</div><div>${OPCOES[k].map(([v, r]) =>
+      `<button class="${estado.politicas[k] == v ? 'on' : ''}" data-a='${JSON.stringify({ tipo: 'politica', chave: k, valor: v })}'>${r}</button>`).join('')}</div>`).join('');
+
+  document.getElementById('ultima').innerHTML = ultimos.length
+    ? `<div class="last"><b>O que a última ação mudou:</b>${ultimos.map(e => `<div class="ev ${e.tipo}">${esc(e.texto)}</div>`).join('')}</div>` : '';
+
+  const G = estado.github;
+  const painelG = `<div class="panel"><h3>GitHub privado (ponto de encontro)</h3>
+    <dl class="kv"><dt>Versão</dt><dd>${G.versao}</dd><dt>Últimos envios</dt><dd>${G.log.slice(-3).reverse().map(l => `v${l.versao} de ${esc(l.de)} (${l.t} min)`).join('<br>')}</dd></dl>
+    ${renderArquivos({ disco: G.arquivos }, null)}</div>`;
+
+  const paineisM = Hub.MAQUINAS.map(m => {
+    const M = estado.maq[m], sit = Hub.situacao(estado, m), av = Hub.avisos(estado, m);
+    return `<div class="panel"><h3>${Hub.NOME[m]} <span class="pill ${sit.classe}">${sit.texto}</span></h3>
+      <dl class="kv">
+        <dt>Última sync ok</dt><dd>${M.ultimaOk} min</dd>
+        <dt>Versão vista</dt><dd>${M.versaoBase}</dd>
+        <dt>Edição pendente desde</dt><dd>${M.pendenteDesde === null ? '—' : M.pendenteDesde + ' min'}</dd>
+      </dl>
+      <div class="row">
+        <button data-a='${JSON.stringify({ tipo: 'sincronizar', maquina: m })}'>Sincronizar agora</button>
+        <button class="${M.rede ? '' : 'on'}" data-a='${JSON.stringify({ tipo: 'rede', maquina: m })}'>${M.rede ? 'Derrubar rede' : 'Religar rede'}</button>
+        <button class="${M.sincronizador ? '' : 'on'}" data-a='${JSON.stringify({ tipo: 'sincronizador', maquina: m })}'>${M.sincronizador ? 'Parar sincronizador' : 'Religar sincronizador'}</button>
+        ${(M.colisao || Object.keys(M.disco).some(Hub.ehIrma)) ? `<button class="primary" data-a='${JSON.stringify({ tipo: 'resolver', maquina: m })}'>Resolver (juntar as duas versões)</button>` : ''}
+      </div>
+      <div class="small muted">Disco (amarelo = ainda não enviado):</div>
+      ${renderArquivos(M, M.base)}
+      <div class="small"><b>Aviso que uma sessão de agente veria aqui:</b></div>
+      ${av.length ? av.map(a => `<div class="alert ${a.grave ? 'bad' : ''}">${esc(a.texto)}<div class="canal">por: ${a.canais.join(' · ')}</div></div>`).join('') : '<div class="small muted">nenhum</div>'}
+      <div class="small" style="margin-top:6px"><b>Notificações do Windows:</b></div>
+      ${M.notificacoes.length ? M.notificacoes.slice(-3).reverse().map(n => `<div class="toast">${n.t} min · ${esc(n.texto)}</div>`).join('') : '<div class="small muted">nenhuma</div>'}
+    </div>`;
+  }).join('');
+  document.getElementById('paineis').innerHTML = painelG + paineisM;
+
+  document.getElementById('agentes').innerHTML = Object.entries(estado.agentes).map(([id, ag]) => {
+    const lidos = Object.entries(ag.leituras).map(([p, l]) => `${esc(curto(p))} (versão ${l.versao})`).join(', ') || 'nada';
+    const travas = Object.entries(estado.travas).filter(([, t]) => t.dono === id).map(([p, t]) => `${esc(curto(p))} até ${t.ate} min`).join(', ');
+    return `<div style="margin-bottom:8px"><b>${esc(ag.nome)}</b> ${ag.vivo ? '' : '<span class="pill bad">caiu</span>'}
+      <div class="small">Leu: ${lidos}${travas ? `<br>Trava: ${travas}` : ''}</div></div>`;
+  }).join('') + `<div class="small muted">Política atual: ${OPCOES.mesmaMaquina.find(o => o[0] === estado.politicas.mesmaMaquina)[1]}.</div>`;
+
+  document.getElementById('log').innerHTML = estado.eventos.slice().reverse().map(e =>
+    `<div class="ev ${e.tipo}">${e.t} min · ${esc(e.texto)}</div>`).join('') || '<div class="muted small">vazio</div>';
+
+  renderRoteiro();
+}
+
+// ---------------- Roteiros ----------------
+const E = 'iniciativas/context-hub/estado.md', D = 'notas/decisoes.md';
+const ROTEIROS = [
+  { titulo: 'Caminho feliz', texto: 'O Gustavo edita no notebook; no ciclo seguinte a edição chega ao GitHub e à máquina pessoal. Observe as duas máquinas voltarem a "Em dia".',
+    passos: [
+      ['Notebook: editar estado.md linha 2', { tipo: 'editar', maquina: 'notebook', arquivo: E, linha: 2, texto: 'Próxima ação: ticket 09' }],
+      ['Passar 15 min', { tipo: 'tempo' }],
+    ] },
+  { titulo: 'Mesmo arquivo, linhas diferentes', texto: 'As duas máquinas mexem no mesmo arquivo entre duas syncs, mas em linhas diferentes. Observe que isto não é colisão: o git junta sozinho, e ninguém precisa ser avisado.',
+    passos: [
+      ['Notebook: editar estado.md linha 2', { tipo: 'editar', maquina: 'notebook', arquivo: E, linha: 2, texto: 'Próxima ação: ticket 09' }],
+      ['Pessoal: editar estado.md linha 3', { tipo: 'editar', maquina: 'pessoal', arquivo: E, linha: 3, texto: 'Bloqueio: rede do notebook' }],
+      ['Passar 15 min (o notebook envia; a pessoal junta e envia)', { tipo: 'tempo' }],
+      ['Passar 15 min (o notebook recebe)', { tipo: 'tempo' }],
+    ] },
+  { titulo: 'Colisão real entre máquinas', texto: 'As duas máquinas mudam a mesma linha. A pessoal também mexe em decisoes.md, sem colisão. Rode com "Parar e avisar" e depois com "Cópia irmã". Observe o que acontece com a edição de decisoes.md em cada política, o que cada máquina vê e onde aparece o aviso.',
+    passos: [
+      ['Notebook: estado.md linha 1', { tipo: 'editar', maquina: 'notebook', arquivo: E, linha: 1, texto: 'Fase: spike da busca' }],
+      ['Pessoal: estado.md linha 1', { tipo: 'editar', maquina: 'pessoal', arquivo: E, linha: 1, texto: 'Fase: protótipo do sync' }],
+      ['Pessoal: decisoes.md linha 2', { tipo: 'editar', maquina: 'pessoal', arquivo: D, linha: 2, texto: 'Busca: markdown-vault-mcp' }],
+      ['Passar 15 min', { tipo: 'tempo' }],
+      ['Passar 15 min', { tipo: 'tempo' }],
+      ['Pessoal: resolver', { tipo: 'resolver', maquina: 'pessoal' }],
+      ['Passar 15 min', { tipo: 'tempo' }],
+      ['Passar 15 min', { tipo: 'tempo' }],
+    ] },
+  { titulo: 'Sincronizador parado em silêncio', texto: 'A tarefa agendada da máquina pessoal some (atualização do Windows, perfil trocado). Ninguém roda para mandar notificação. Observe que só a checagem no início de sessão percebe, e que o notebook não tem como saber.',
+    passos: [
+      ['Pessoal: parar o sincronizador', { tipo: 'sincronizador', maquina: 'pessoal' }],
+      ['Pessoal: editar decisoes.md linha 3', { tipo: 'editar', maquina: 'pessoal', arquivo: D, linha: 3, texto: 'Contrato: zonas por iniciativa' }],
+      ['Passar 15 min', { tipo: 'tempo' }],
+      ['Passar 15 min', { tipo: 'tempo' }],
+      ['Passar 15 min', { tipo: 'tempo' }],
+      ['Pessoal: religar o sincronizador', { tipo: 'sincronizador', maquina: 'pessoal' }],
+      ['Passar 15 min', { tipo: 'tempo' }],
+    ] },
+  { titulo: 'Sem rede no notebook', texto: 'A rede do notebook cai (ou a credencial do GitHub deixa de valer). O sincronizador roda, falha e notifica a cada ciclo. Observe que aqui os dois canais funcionam, e que a edição volta a fluir sozinha.',
+    passos: [
+      ['Notebook: derrubar a rede', { tipo: 'rede', maquina: 'notebook' }],
+      ['Notebook: editar estado.md linha 3', { tipo: 'editar', maquina: 'notebook', arquivo: E, linha: 3, texto: 'Bloqueio: VPN da ARMIS' }],
+      ['Passar 15 min', { tipo: 'tempo' }],
+      ['Passar 15 min', { tipo: 'tempo' }],
+      ['Notebook: religar a rede', { tipo: 'rede', maquina: 'notebook' }],
+      ['Passar 15 min', { tipo: 'tempo' }],
+    ] },
+  { titulo: 'Dois agentes no mesmo arquivo', texto: 'No notebook, A e B leem o mesmo arquivo; B grava a linha 2, depois A grava a linha 3 a partir do que leu antes. Rode com cada uma das três proteções. Observe a perda silenciosa sem proteção, a recusa com a versão, e a espera com a trava.',
+    passos: [
+      ['A lê estado.md', { tipo: 'ler', agente: 'A', arquivo: E }],
+      ['B lê estado.md', { tipo: 'ler', agente: 'B', arquivo: E }],
+      ['B grava a linha 2', { tipo: 'gravar', agente: 'B', arquivo: E, linha: 2, texto: 'Próxima ação: spike' }],
+      ['A grava a linha 3', { tipo: 'gravar', agente: 'A', arquivo: E, linha: 3, texto: 'Bloqueio: aguardando Gustavo' }],
+      ['A lê de novo', { tipo: 'ler', agente: 'A', arquivo: E }],
+      ['A grava a linha 3 de novo', { tipo: 'gravar', agente: 'A', arquivo: E, linha: 3, texto: 'Bloqueio: aguardando Gustavo' }],
+    ] },
+  { titulo: 'O sincronizador também grava', texto: 'O agente A lê um arquivo no notebook. Enquanto ele pensa, chega pelo sync uma edição feita na máquina pessoal. Então A grava. Rode com cada proteção. Observe que, sem conferir a versão, A desfaz a edição da outra máquina, e o sync leva o estrago de volta para lá. Nenhum alerta de sync dispara, porque para o git está tudo certo.',
+    passos: [
+      ['A lê estado.md', { tipo: 'ler', agente: 'A', arquivo: E }],
+      ['Pessoal: editar estado.md linha 1', { tipo: 'editar', maquina: 'pessoal', arquivo: E, linha: 1, texto: 'Fase: construção' }],
+      ['Passar 15 min (a pessoal envia)', { tipo: 'tempo' }],
+      ['Passar 15 min (o notebook recebe no disco)', { tipo: 'tempo' }],
+      ['A grava a linha 2', { tipo: 'gravar', agente: 'A', arquivo: E, linha: 2, texto: 'Próxima ação: spike' }],
+      ['Passar 15 min', { tipo: 'tempo' }],
+      ['Passar 15 min', { tipo: 'tempo' }],
+    ] },
+  { titulo: 'Trava esquecida', texto: 'Com a trava por arquivo, A pega a trava e a sessão dele cai. Observe quanto tempo B fica bloqueado, e que nada avisa o Gustavo.',
+    passos: [
+      ['Escolher "Trava por arquivo"', { tipo: 'politica', chave: 'mesmaMaquina', valor: 'trava' }],
+      ['A lê estado.md (pega a trava)', { tipo: 'ler', agente: 'A', arquivo: E }],
+      ['A cai sem gravar', { tipo: 'cair', agente: 'A' }],
+      ['B tenta ler estado.md', { tipo: 'ler', agente: 'B', arquivo: E }],
+      ['Passar 15 min', { tipo: 'tempo' }],
+      ['B tenta de novo', { tipo: 'ler', agente: 'B', arquivo: E }],
+      ['Passar 15 min', { tipo: 'tempo' }],
+      ['Passar 15 min', { tipo: 'tempo' }],
+      ['B tenta de novo', { tipo: 'ler', agente: 'B', arquivo: E }],
+    ] },
+];
+let aba = 0, passo = -1;   // passo -1 = roteiro ainda não começou
+
+function renderRoteiro() {
+  document.getElementById('tabs').innerHTML = ROTEIROS.map((r, i) =>
+    `<button class="${i === aba ? 'on' : ''}" data-aba="${i}">${i + 1}. ${esc(r.titulo)}</button>`).join('');
+  const r = ROTEIROS[aba];
+  document.getElementById('roteiro').innerHTML = `<p>${esc(r.texto)}</p>
+    <button class="primary" id="comecar">${passo < 0 ? 'Começar' : 'Recomeçar'} (volta ao estado inicial, mantém as políticas)</button>
+    <ol>${r.passos.map(([rot], i) => `<li class="${i < passo ? 'done' : ''}"><button data-passo="${i}" ${passo < 0 || i !== passo ? 'disabled' : ''}>${esc(rot)}</button></li>`).join('')}</ol>`;
+}
+
+document.addEventListener('click', ev => {
+  const b = ev.target.closest('button'); if (!b) return;
+  if (b.dataset.a) return despachar(JSON.parse(b.dataset.a));
+  if (b.dataset.aba) { aba = +b.dataset.aba; passo = -1; return renderRoteiro(); }
+  if (b.id === 'comecar') { recomecar(); passo = 0; return render(); }
+  if (b.dataset.passo) { const i = +b.dataset.passo; passo = i + 1; return despachar(ROTEIROS[aba].passos[i][1]); }
+  if (b.id === 'reset') { recomecar(); passo = -1; return render(); }
+  const val = id => document.getElementById(id).value;
+  if (b.id === 'e-go') return despachar({ tipo: 'editar', maquina: val('e-maq'), arquivo: val('e-arq'), linha: +val('e-lin'), texto: val('e-txt') || `editado em ${val('e-maq')} aos ${estado.t} min` });
+  if (b.id === 'g-ler') return despachar({ tipo: 'ler', agente: val('g-ag'), arquivo: val('g-arq') });
+  if (b.id === 'g-gravar') return despachar({ tipo: 'gravar', agente: val('g-ag'), arquivo: val('g-arq'), linha: +val('g-lin'), texto: val('g-txt') || `gravado por ${val('g-ag')} aos ${estado.t} min` });
+  if (b.id === 'g-cair') return despachar({ tipo: 'cair', agente: val('g-ag') });
+});
+
+for (const id of ['e-arq', 'g-arq']) document.getElementById(id).innerHTML = ARQS.map(a => `<option value="${a}">${curto(a)}</option>`).join('');
+render();
+</script>
+</body>
+</html>

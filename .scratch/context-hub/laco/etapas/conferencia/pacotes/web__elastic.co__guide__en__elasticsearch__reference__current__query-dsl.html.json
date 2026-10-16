@@ -1,0 +1,66 @@
+{
+ "chave": "web:elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html",
+ "nomes": [
+  "Elasticsearch Query DSL",
+  "Query DSL",
+  "Elasticsearch Query DSL para Filtros Complexos",
+  "Frontmatter query DSL"
+ ],
+ "urls": [
+  "https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html"
+ ],
+ "readme_cortado": false,
+ "readme": "[Query DSL | Elastic Docs]\n\nDocs\n\n /\n\n Explore and analyze\n\n /\n\n Querying and filtering\n\n /\n\n Query languages\n\nQuery DSL\n\nWhat's Query DSL?\n\nQuery DSL is a full-featured JSON-style query language that enables complex searching, filtering, and aggregations. It is the original and most powerful query language for Elasticsearch today.\n\nThe _search endpoint accepts queries written in Query DSL syntax.\n\nSearch and filter with Query DSL\n\nQuery DSL supports a wide range of search techniques, including the following:\n\nFull-text search: Search text that has been analyzed and indexed to support phrase or proximity queries, fuzzy matches, and more.\n\nKeyword search: Search for exact matches using keyword fields.\n\nSemantic search: Search semantic_text fields using dense or sparse vector search on embeddings generated in your Elasticsearch cluster.\n\nVector search: Search for similar dense vectors using the kNN algorithm for embeddings generated outside of Elasticsearch.\n\nGeospatial search: Search for locations and calculate spatial relationships using geospatial queries.\n\nYou can also filter data using Query DSL. Filters enable you to include or exclude documents by retrieving documents that match specific field-level criteria. A query that uses the filter parameter indicates filter context.\n\nAnalyze with Query DSL\n\nAggregations are the primary tool for analyzing Elasticsearch data using Query DSL. Aggregations enable you to build complex summaries of your data and gain insight into key metrics, patterns, and trends.\n\nBecause aggregations leverage the same data structures used for search, they are also very fast. This enables you to analyze and visualize your data in real time. You can search documents, filter results, and perform analytics at the same time, on the same data, in a single request. That means aggregations are calculated in the context of the search query.\n\nThe following aggregation types are available:\n\nMetric: Calculate metrics, such as a sum or average, from field values.\n\nBucket: Group documents into buckets based on field values, ranges, or other criteria.\n\nPipeline: Run aggregations on the results of other aggregations.\n\nRun aggregations by specifying the search API's aggs parameter. Learn more in Run an aggregation.\n\nHow does it work?\n\nThink of the Query DSL as an AST (Abstract Syntax Tree) of queries, consisting of two types of clauses:\n\nLeaf query clauses: Leaf query clauses look for a particular value in a particular field, such as the match, term or range queries. These queries can be used by themselves.\n\nCompound query clauses: Compound query clauses wrap other leaf or compound queries and are used to combine multiple queries in a logical fashion (such as the bool or dis_max query), or to alter their behavior (such as the constant_score query).\n\nQuery clauses behave differently depending on whether they are used in query context or filter context.\n\nAllow expensive queries: Certain types of queries will generally execute slowly due to the way they are implemented, which can affect the stability of the cluster. Those queries can be categorized as follows:\n\nQueries that need to do linear scans to identify matches:\n\nscript queries\n\nqueries on numeric, date, boolean, ip, geo_point or keyword fields that are not indexed but have doc values enabled\n\nQueries that have a high up-front cost:\n\nfuzzy queries (except on wildcard fields)\n\nregexp queries (except on wildcard fields)\n\nprefix queries (except on wildcard fields or those without index_prefixes)\n\nwildcard queries (except on wildcard fields)\n\nrange queries on text and keyword fields\n\nJoining queries\n\nQueries that may have a high per-document cost:\n\nscript_score queries\n\npercolate queries\n\nThe execution of such queries can be prevented by setting the value of the search.allow_expensive_queries setting to false (defaults to true).\n\nQuery and filter context\n\nRelevance scores\n\nBy default, Elasticsearch sorts matching search results by relevance score, which measures how well each document matches a query.\n\nThe relevance score is a positive floating point number, returned in the _score metadata field of the search API. The higher the _score, the more relevant the document. While each query type can calculate relevance scores differently, score calculation also depends on whether the query clause is run in a query or filter context.\n\nQuery context\n\nIn the query context, a query clause answers the question How well does this document match this query clause? Besides deciding whether or not the document matches, the query clause also calculates a relevance score in the _score metadata field.\n\nQuery context is in effect whenever a query clause is passed to a query parameter, such as the query parameter in the search API.\n\nFilter context\n\nA filter answers the binary question “Does this document match this query clause?”. The answer is simply \"yes\" or \"no\". Filtering has several benefits:\n\nSimple binary logic: In a filter context, a query clause determines document matches based on a yes/no criterion, without score calculation.\n\nPerformance: Because they don’t compute relevance scores, filters execute faster than queries.\n\nCaching: Elasticsearch automatically caches frequently used filters, speeding up subsequent search performance.\n\nResource efficiency: Filters consume less CPU resources compared to full-text queries.\n\nQuery combination: Filters can be combined with scored queries to refine result sets efficiently.\n\nFilters are particularly effective for querying structured data and implementing \"must have\" criteria in complex searches.\n\nStructured data refers to information that is highly organized and formatted in a predefined manner. In the context of Elasticsearch, this typically includes:\n\nNumeric fields (integers, floating-point numbers)\n\nDates and timestamps\n\nBoolean values\n\nKeyword fields (exact match strings)\n\nGeo-points and geo-shapes\n\nUnlike full-text fields, structured data has a consistent, predictable format, making it ideal for precise filtering operations.\n\nCommon filter applications include:\n\nDate range checks: for example is the timestamp field between 2015 and 2016\n\nSpecific field value checks: for example is the status field equal to \"published\" or is the author field equal to \"John Doe\"\n\nFilter context applies when a query clause is passed to a filter parameter, such as:\n\nfilter or must_not parameters in bool queries\n\nfilter parameter in constant_score queries\n\nfilter aggregations\n\nFilters optimize query performance and efficiency, especially for structured data queries and when combined with full-text searches.\n\nExample of query and filter contexts\n\nBelow is an example of query clauses being used in query and filter context in the search API. This query will match documents where all of the following conditions are met:\n\nThe title field contains the word search.\n\nThe content field contains the word elasticsearch.\n\nThe status field contains the exact word published.\n\nThe publish_date field contains a date from 1 Jan 2015 onwards.\n\n GET /_search\n {\n \"query\": {\n \"bool\": {\n \"must\": [\n { \"match\": { \"title\": \"Search\" }},\n { \"match\": { \"content\": \"Elasticsearch\" }}\n ],\n \"filter\": [\n { \"term\": { \"status\": \"published\" }},\n { \"range\": { \"publish_date\": { \"gte\": \"2015-01-01\" }}}\n ]\n }\n }\n}\n\nThe query parameter indicates query context.\n\nThe bool and two match clauses are used in query context, which means that they are used to score how well each document matches.\n\nThe filter parameter indicates filter context. Its term and range clauses are used in filter context. They will filter out documents which do not match, but they will not affect the score for matching documents.\n\n Warning\n\nScores calculated for queries in query context are represented as single precision floating point numbers; they have only 24 bits for significand’s precision. Score calculations that exceed the significand’s precision will be converted to floats with loss of precision.\n\n Tip\n\nUse query clauses in query context for conditions which should affect the score of matching documents (i.e. how well does the document match), and use all other query clauses in filter context.",
+ "fonte": "site",
+ "respostas": [
+  {
+   "por": "ministral-3-8b",
+   "resposta": {
+    "serve": "search",
+    "role": "full-text, semantic, vector, and keyword search engine for indexed data",
+    "place": [
+     "inside_db_mcp",
+     "network_service",
+     "library"
+    ],
+    "mechanism": [
+     "full_text",
+     "vector",
+     "hybrid",
+     "embeddings",
+     "grep",
+     "graph"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "stable",
+    "doubt": true,
+    "evidence": "Supports full-text search, semantic search, vector search, keyword search, and aggregations. No mention of MCP, Windows, or Portuguese support in README."
+   }
+  },
+  {
+   "por": "diffusiongemma-26b-a4b-it",
+   "resposta": {
+    "serve": "search",
+    "role": "JSON-style query language for complex searching, filtering, and aggregations in Elasticsearch.",
+    "place": [
+     "network_service"
+    ],
+    "mechanism": [
+     "full_text",
+     "vector",
+     "hybrid"
+    ],
+    "mcp": "no",
+    "windows": "unknown",
+    "portuguese": "no",
+    "license": "unknown",
+    "maturity": "stable",
+    "doubt": true,
+    "evidence": "Query DSL is a full-featured JSON-style query language that enables complex searching, filtering, and aggregations."
+   }
+  }
+ ]
+}

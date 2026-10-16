@@ -1,0 +1,93 @@
+Skip to main content
+
+Fast OR Consistent?
+Choose Both.
+Apache Ignite is a distributed database for mission-critical high-velocity applications that require in-memory performance.
+Scale across memory and disk without compromise.
+
+Distributed systems make you choose.
+Event streams: Fast OR Consistent?
+Distributed state: Fast OR Durable?
+Data integrity: Eventual OR ACID?
+Microservices: Simple OR Scalable?
+Apache Ignite eliminates the trade-off.
+Speed. Scale. Consistency. Durability. Queryability.
+Get StartedExplore Use Cases
+
+Start Building With Apache Ignite
+
+Get up and running in minutes. Apache Ignite provides a memory-first distributed SQL database that eliminates the scale/speed trade-off for high-velocity workloads.
+Configure a cluster in under 5 minutesRun SQL queries on your distributed dataStore and retrieve data with the Java APIPersist your in-memory data
+View Client Documentation
+
+Java.NETC++PythonSQL/CLI
+Copy
+
+// Connect to the cluster
+IgniteClient client = IgniteClient.builder()
+ .addresses("127.0.0.1:10800")
+ .build();
+
+// Create a table
+String createTableSql = "CREATE TABLE IF NOT EXISTS Person ("
+ + "id INT PRIMARY KEY,"
+ + "name VARCHAR,"
+ + "age INT"
+ + ")";
+client.sql().execute(null, createTableSql);
+
+// Insert data
+String insertSql = "INSERT INTO Person (id, name, age) VALUES (?, ?, ?)";
+client.sql().execute(null, insertSql, 1, "John Doe", 30);
+client.sql().execute(null, insertSql, 2, "Jane Smith", 28);
+
+// Query data
+client.sql().execute(null, "SELECT * FROM Person WHERE age > ?", 25)
+ .forEachRemaining(row -> {
+ System.out.println("ID: " + row.intValue("id") +
+ ", Name: " + row.stringValue("name") +
+ ", Age: " + row.intValue("age"));
+ });
+
+// Close the client
+client.close();
+
+Apache Ignite Use Cases
+
+Event Stream Processing 
+And Enrichment
+Fast OR Consistent? Enrich high-throughput event streams with consistent reference data. Memory-first architecture delivers low-latency lookups while maintaining ACID guarantees. Eliminate cache invalidation complexity.Learn More
+
+Session Management 
+And Caching At Scale
+Fast OR Durable? Any-node session access with automatic failover and zero data loss. Low-latency session retrieval with ACID guarantees eliminates sticky sessions while maintaining consistency.Learn More
+
+Microservices 
+State Management
+Simple OR Scalable? Distributed ACID transactions across service boundaries eliminate saga complexity. Significant infrastructure cost reduction potential through system consolidation.Learn More
+
+Join The Community At Events And Meetups Worldwide
+
+Ignite Virtual Meetup
+Experts and practitioners give online talks and presentations and share their Apache Ignite experience.
+
+Online
+Regularly
+
+Ignite Summit
+This virtual conference is a chance to learn more about up-to-date in-memory computing solutions.
+There are speakers from industry-leading companies and hundreds of participants from all over the world.
+
+Online
+Annually
+
+Other Events
+Join us for conferences, presentations, and webinars to learn more about in-memory computing technologies.
+
+ONLINE and OFFLINE
+Regularly
+View All Events
+
+Ready To Start?
+Discover our quick start guides and build your first application in 5-10 minutes
+Quick Start Guide

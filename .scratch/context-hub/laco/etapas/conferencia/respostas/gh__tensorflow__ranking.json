@@ -1,0 +1,33 @@
+{
+ "chave": "gh:tensorflow/ranking",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T22:03:22Z",
+ "resultado": "corrige",
+ "conferencia": {
+  "resultado": "corrige",
+  "final": {
+   "mcp": "no",
+   "windows": "unknown",
+   "portuguese": "unknown",
+   "license": "unknown",
+   "doubt": false,
+   "serve": "stack",
+   "role": "TensorFlow library for learning-to-rank models (losses, metrics, scoring functions)",
+   "place": [
+    "library"
+   ],
+   "mechanism": [
+    "reranker"
+   ],
+   "maturity": "unknown",
+   "evidence": "library for Learning-to-Rank (LTR) techniques on the TensorFlow platform; losses, MRR and NDCG metrics."
+  },
+  "o_que_mudou": [
+   "serve: search -> stack, training library not a search layer",
+   "mechanism: other -> reranker",
+   "windows: no -> unknown, README only gives Linux install",
+   "maturity: stable -> unknown"
+  ],
+  "nota": "Training library for rankers; relevant only if the hub trains its own reranker, which is heavy."
+ }
+}

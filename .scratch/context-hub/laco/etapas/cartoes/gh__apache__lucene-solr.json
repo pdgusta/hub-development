@@ -1,0 +1,49 @@
+{
+ "chave": "gh:apache/lucene-solr",
+ "urls": [
+  "https://github.com/apache/lucene-solr/tree/trunk/solr/core/src/java/org/apache/solr/search/vector",
+  "https://github.com/apache/lucene-solr/tree/trunk/solr/core/src/java/org/apache/solr/analysis/pt",
+  "https://solr.apache.org/guides/7_7/analyzers-and-tokenizers/",
+  "https://github.com/apache/lucene-solr/blob/master/lucene/analysis/common/src/java/org/apache/lucene/analysis/pt/PortugueseStemmer.java"
+ ],
+ "tipos": [
+  "assembly",
+  "library",
+  "service"
+ ],
+ "termos": [
+  "近傍検索",
+  "HNSW",
+  "ベクトルデータベース",
+  "PT analyzer",
+  "stemming",
+  "accent folding",
+  "Solr PT",
+  "Apache Lucene analyzer",
+  "PortugueseStemmer",
+  "ICUAnalysisFilter",
+  "Portuguese Analyzer"
+ ],
+ "mencoes": 5,
+ "familias": [
+  "gemma",
+  "llama",
+  "mistral"
+ ],
+ "primeira_onda": 2,
+ "nomes": [
+  "Solr Vector Search Module",
+  "Solr Portuguese Analyzer",
+  "Portuguese Stemmer"
+ ],
+ "resumos": [
+  "Solr 8.11+からベクトル検索（近傍検索）をサポートするモジュールで、埋め込ding ベクトルをインデックス化・検索可能にする。",
+  "Pre-built Solr analyzers for Portuguese tokenization, stemming, and accent removal (e.g., `PortugueseStemFilter`).",
+  "Apache Solr’s built-in or customizable Portuguese analyzers for BM25 and hybrid search.",
+  "Built-in linguistic tools for handling Portuguese-specific stemming, stop words, and normalization."
+ ],
+ "readme_status": "ok",
+ "readme_nome": "README.md",
+ "readme_cortado": false,
+ "readme": "<!--\n    Licensed to the Apache Software Foundation (ASF) under one or more\n    contributor license agreements.  See the NOTICE file distributed with\n    this work for additional information regarding copyright ownership.\n    The ASF licenses this file to You under the Apache License, Version 2.0\n    the \"License\"); you may not use this file except in compliance with\n    the License.  You may obtain a copy of the License at\n\n        http://www.apache.org/licenses/LICENSE-2.0\n\n    Unless required by applicable law or agreed to in writing, software\n    distributed under the License is distributed on an \"AS IS\" BASIS,\n    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n    See the License for the specific language governing permissions and\n    limitations under the License.\n -->\n\n# Apache Lucene and Solr have separate repositories now!\n\nSolr has become a top-level Apache project and main line \ndevelopment for Lucene and Solr is happening in each \nproject's git repository now:\n\n- Lucene: <https://gitbox.apache.org/repos/asf/lucene.git>\n- Solr: <https://gitbox.apache.org/repos/asf/solr.git>\n\nDevelopment for bugfixes of 8.11.x releases remains on branch\n`branch_8_11` in the shared repository:\n\n- https://gitbox.apache.org/repos/asf/lucene-solr.git\n\n## GitHub forks?\n\nIf you are using GitHub, make a clone of the corresponding repository\nmirror and create your pull requests against the main branch:\n\n- Lucene: <https://github.com/apache/lucene>\n- Solr: <https://github.com/apache/solr>\n\n"
+}

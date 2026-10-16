@@ -1,0 +1,57 @@
+{
+ "chave": "web:nodejs.org",
+ "urls": [
+  "https://nodejs.org/",
+  "https://nodejs.org"
+ ],
+ "tipos": [
+  "service",
+  "tool",
+  "concept"
+ ],
+ "termos": [
+  "runtime",
+  "JavaScript",
+  "TypeScript",
+  "node runtime",
+  "javascript server",
+  "local service",
+  "Node",
+  "JS Runtime",
+  "Backend",
+  "JavaScript runtime",
+  "Node.js",
+  "server-side JavaScript",
+  "backend",
+  "server",
+  "Runtime",
+  "V8",
+  "node",
+  "nodejs"
+ ],
+ "mencoes": 12,
+ "familias": [
+  "agnes",
+  "cohere",
+  "gemini",
+  "gemma",
+  "mistral",
+  "nemotron",
+  "qwen"
+ ],
+ "primeira_onda": 2,
+ "nomes": [
+  "Node.js"
+ ],
+ "resumos": [
+  "The runtime typically used to glue markdown-it, gray-matter, and MCP servers together.",
+  "JavaScript runtime environment required to run Fuse.js and build the local search service for Windows machines.",
+  "Die JavaScript-Laufzeitumgebung, auf der der Typesense Node.js-Client und benutzerdefinierte MCP-Server ausgeführt werden.",
+  "Runtime environment to build the glue layer between PouchDB, the search engine, and MCP."
+ ],
+ "fonte": "site",
+ "readme_status": "ok",
+ "readme_nome": "https://nodejs.org/",
+ "readme_cortado": false,
+ "readme": "[Node.js — Run JavaScript Everywhere]\n\nSkip to content\n\nRun JavaScript Everywhere\nNode.js® is a free, open-source, cross-platform JavaScript runtime environment\nthat lets developers create servers, web apps, command line tools and scripts.\n\nGet Node.js®Get Node.js®Get security support\nfor EOL Node.js versions\n\nNode.js is proudly supported by the partners above and more.\n\nCreate an HTTP ServerWrite TestsRead and Hash a FileStreams PipelineWork with Threads\n\n// server.mjs\nimport { createServer } from 'node:http';\n\nconst server = createServer((req, res) => {\n res.writeHead(200, { 'Content-Type': 'text/plain' });\n res.end('Hello World!\\n');\n});\n\n// starts a simple http server locally on port 3000\nserver.listen(3000, '127.0.0.1', () => {\n console.log('Listening on 127.0.0.1:3000');\n});\n\n// run with `node server.mjs`\nJavaScriptCopy to clipboard\n\n// tests.mjs\nimport assert from 'node:assert';\nimport test from 'node:test';\n\ntest('that 1 is equal 1', () => {\n assert.strictEqual(1, 1);\n});\n\ntest('that throws as 1 is not equal 2', () => {\n // throws an exception because 1 != 2\n assert.strictEqual(1, 2);\n});\n\n// run with `node tests.mjs`\nJavaScriptCopy to clipboard\n\n// crypto.mjs\nimport { createHash } from 'node:crypto';\nimport { readFile } from 'node:fs/promises';\n\nconst hasher = createHash('sha1');\n\nhasher.setEncoding('hex');\n// ensure you have a `package.json` file for this test!\nhasher.write(await readFile('package.json'));\nhasher.end();\n\nconst fileHash = hasher.read();\n\n// run with `node crypto.mjs`\nJavaScriptCopy to clipboard\n\n// streams.mjs\nimport { createReadStream, createWriteStream } from 'node:fs';\nimport { pipeline } from 'node:stream/promises';\nimport { createGzip } from 'node:zlib';\n\n// ensure you have a `package.json` file for this test!\nawait pipeline(\n createReadStream('package.json'),\n createGzip(),\n createWriteStream('package.json.gz')\n);\n\n// run with `node streams.mjs`\nJavaScriptCopy to clipboard\n\n// threads.mjs\nimport { Worker, isMainThread,\n workerData, parentPort } from 'node:worker_threads';\n\nif (isMainThread) {\n const data = 'some data';\n const worker = new Worker(import.meta.filename, { workerData: data });\n worker.on('message', msg => console.log('Reply from Thread:', msg));\n} else {\n const source = workerData;\n parentPort.postMessage(btoa(source.toUpperCase()));\n}\n\n// run with `node threads.mjs`\nJavaScriptCopy to clipboard\nLearn more what Node.js is able to offer with our Learning materials."
+}

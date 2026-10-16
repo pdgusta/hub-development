@@ -1,0 +1,50 @@
+{
+ "nome": "Tantivy / tantivy-py",
+ "url": "https://github.com/quickwit-oss/tantivy",
+ "papel": "peça embutida",
+ "windows": "yes (README: supports Linux, macOS, and Windows; tantivy-py 0.26.2 tem wheels win_amd64)",
+ "mcp": "no (biblioteca de busca)",
+ "portugues": "Stemmer Portuguese existe no enum Language (18 idiomas); stopwords e ascii folding não confirmados na fonte lida.",
+ "markdown_frontmatter": "Não indexa Markdown; só texto em campos (inclui JSON field). Frontmatter e chunking por conta da aplicação.",
+ "atualizacao": "Nenhuma própria; indexação incremental via API; a aplicação reindexa.",
+ "embeddings_endpoint": "Não usa embeddings (só BM25 lexical).",
+ "recursos": "Biblioteca Rust, startup <10ms, mmap; tantivy-py como wheel Python.",
+ "licenca": "MIT",
+ "ultimo_release": "tantivy 0.26.2 (crates.io, 2026-09-08); tantivy-py 0.26.2 (PyPI, 2026-09-17)",
+ "atividade": "releases em set 2026; data do último commit não verificada",
+ "maturidade": "stable (versão 0.x)",
+ "encaixe": "Componente lexical embutido no MCP do banco, em cada máquina; BM25 com stemmer PT. Impedimento: sem vetores nem ingestão; cobre só metade da busca híbrida.",
+ "evidencias": [
+  {
+   "campo": "windows",
+   "url": "https://github.com/quickwit-oss/tantivy",
+   "citacao": "Tantivy works on stable Rust and supports Linux, macOS, and Windows."
+  },
+  {
+   "campo": "portugues",
+   "url": "https://docs.rs/tantivy/latest/tantivy/tokenizer/enum.Language.html",
+   "citacao": "Language enum variants include Portuguese (18 variants)"
+  },
+  {
+   "campo": "licenca",
+   "url": "https://github.com/quickwit-oss/tantivy",
+   "citacao": "MIT license"
+  },
+  {
+   "campo": "recursos",
+   "url": "https://github.com/quickwit-oss/tantivy",
+   "citacao": "Tiny startup time (<10ms), perfect for command-line tools"
+  },
+  {
+   "campo": "ultimo_release",
+   "url": "https://crates.io/api/v1/crates/tantivy",
+   "citacao": "max_version 0.26.2, updated_at 2026-09-08"
+  }
+ ],
+ "nao_verificado": [
+  "stopwords PT",
+  "ascii folding",
+  "data do último commit",
+  "MCP de terceiros"
+ ]
+}

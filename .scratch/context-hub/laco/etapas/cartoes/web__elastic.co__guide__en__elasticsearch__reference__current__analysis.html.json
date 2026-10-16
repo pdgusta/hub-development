@@ -1,0 +1,51 @@
+{
+ "chave": "web:elastic.co/guide/en/elasticsearch/reference/current/analysis.html",
+ "urls": [
+  "https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis.html"
+ ],
+ "tipos": [
+  "service",
+  "concept",
+  "tool"
+ ],
+ "termos": [
+  "Elasticsearch BM25",
+  "Elasticsearch hybrid search",
+  "Elasticsearch custom analyzers",
+  "text analysis",
+  "analyzers",
+  "elasticsearch",
+  "analyzer",
+  "bm25",
+  "テキスト解析",
+  "アナライザー",
+  "ポルトガル語処理",
+  "Elasticsearch Portuguese stemmer",
+  "Elasticsearch filters",
+  "Custom Analyzer",
+  "Language Analyzer"
+ ],
+ "mencoes": 6,
+ "familias": [
+  "mistral",
+  "nemotron"
+ ],
+ "primeira_onda": 2,
+ "nomes": [
+  "Elasticsearch (with BM25 plugin + custom analyzers)",
+  "Elasticsearch Analysis",
+  "Elasticsearch Analyzer",
+  "Elasticsearch (with custom analyzers)"
+ ],
+ "resumos": [
+  "Full-text search engine with BM25 scoring, accent handling via custom analyzers, and embeddings via plugins like `sentence-transformers` (hybrid search). Supports frontmatter filtering via custom scripts.",
+  "Framework for text processing, including tokenization, normalization, and stemming.",
+  "Built‑in text analysis (standard, language, custom) with accent removal, stemming, and stop‑word handling for PT and EN.",
+  "テキスト解析（トークナイザー、フィルター）をカスタマイズし、ポルトガル語のアクセントや語幹処理をサポート"
+ ],
+ "fonte": "site",
+ "readme_status": "ok",
+ "readme_nome": "https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis.html",
+ "readme_cortado": false,
+ "readme": "[Text analysis | Elastic Docs]\n\nDocs\n\n /\n\n Manage data\n\n /\n\n The Elasticsearch data store\n\nText analysis\n\nText analysis is the process of converting unstructured text, like the body of an email or a product description, into a structured format that’s optimized for search.\n\nText analysis enables Elasticsearch to perform full-text search, where the search returns all relevant results rather than only exact matches. For example, if you search for Quick fox jumps, you probably want the document that contains A quick brown fox jumps over the lazy dog, and you might also want documents that contain related words like fast fox or foxes leap.\n\nElasticsearch performs text analysis when indexing or searching text fields. If your index does not contain text fields, no further setup is needed; you can skip the pages in this section. If you do use text fields or your text searches aren’t returning results as expected, configuring text analysis can often help. You should also look into analysis configuration if you’re using Elasticsearch to:\n\nBuild a search engine\n\nMine unstructured data\n\nFine-tune search for a specific language\n\nPerform lexicographic or linguistic research\n\nTokenization\n\nAnalysis makes full-text search possible through tokenization: breaking a text down into smaller chunks, called tokens. In most cases, these tokens are individual words.\n\nIf you index the phrase the quick brown fox jumps as a single string and the user searches for quick fox, it isn’t considered a match. However, if you tokenize the phrase and index each word separately, the terms in the query string can be looked up individually. This means they can be matched by searches for quick fox, fox brown, or other variations.\n\nNormalization\n\nTokenization enables matching on individual terms, but each token is still matched literally. This means:\n\nA search for Quick would not match quick, even though you likely want either term to match the other\n\nAlthough fox and foxes share the same root word, a search for foxes would not match fox or vice versa.\n\nA search for jumps would not match leaps. While they don’t share a root word, they are synonyms and have a similar meaning.\n\nTo solve these problems, text analysis can normalize these tokens into a standard format. This allows you to match tokens that are not exactly the same as the search terms, but similar enough to still be relevant. For example:\n\nQuick can be lowercased: quick.\n\nfoxes can be stemmed, or reduced to its root word: fox.\n\njump and leap are synonyms and can be indexed as a single word: jump.\n\nTo ensure search terms match these words as intended, you can apply the same tokenization and normalization rules to the query string. For example, a search for Foxes leap can be normalized to a search for fox jump.\n\nCustomize text analysis\n\nText analysis is performed by an analyzer, a set of rules that govern the entire process.\n\nElasticsearch includes a default analyzer, called the standard analyzer, which works well for most use cases right out of the box.\n\nIf you want to tailor your search experience, you can choose a different built-in analyzer or even configure a custom one. A custom analyzer gives you control over each step of the analysis process, including:\n\nChanges to the text before tokenization\n\nHow text is converted to tokens\n\nNormalization changes made to tokens before indexing or search"
+}

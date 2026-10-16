@@ -1,0 +1,29 @@
+{
+ "chave": "conceito:messagepack-with-bm25",
+ "modelo": "claude-opus-5-5",
+ "ts": "2026-10-13T23:35:52Z",
+ "tipo": "conceito",
+ "resultado": "discorda",
+ "auditoria": {
+  "resultado": "discorda",
+  "erro": "mechanism 'bm25' descreve o dado transportado, não a técnica; o conceito é serialização binária, então mechanism deveria ser 'other'.",
+  "final": {
+   "concept_en": "messagepack serialization",
+   "serve": "stack",
+   "role": "Binary transport format for BM25 result lists",
+   "mechanism": [
+    "other"
+   ],
+   "place": [
+    "n/a"
+   ],
+   "tools_on_card": [
+    "MessagePack"
+   ],
+   "doubt": false,
+   "evidence": "Using MessagePack to transmit BM25 search results efficiently."
+  },
+  "gravidade": "leve",
+  "nota": "Marginal para o hub: o MCP usa JSON-RPC, e listas de resultados de notas são pequenas; serialização binária não traz ganho relevante."
+ }
+}

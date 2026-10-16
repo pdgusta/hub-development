@@ -1,0 +1,31 @@
+{
+ "chave": "conceito:jina-embeddings",
+ "modelo": "claude-opus-5-5",
+ "ts": "2026-10-13T23:37:22Z",
+ "tipo": "conceito",
+ "resultado": "discorda",
+ "auditoria": {
+  "resultado": "discorda",
+  "erro": "concept_en 'embeddings' genérico demais: o card nomeia Jina Embeddings. place só 'library' omite a API hospedada da Jina (network_service); os modelos também rodam localmente.",
+  "final": {
+   "concept_en": "jina embeddings",
+   "serve": "search",
+   "role": "Embedding models for semantic search over notes",
+   "mechanism": [
+    "embeddings",
+    "vector"
+   ],
+   "place": [
+    "library",
+    "network_service"
+   ],
+   "tools_on_card": [
+    "Jina"
+   ],
+   "doubt": false,
+   "evidence": "Integração de modelos de embeddings para busca semântica."
+  },
+  "gravidade": "leve",
+  "nota": "Modelos de embedding multilíngues da Jina (v3 cobre português) são candidatos à perna semântica do hub, via API ou localmente; a URL aponta a documentação antiga do framework Jina."
+ }
+}

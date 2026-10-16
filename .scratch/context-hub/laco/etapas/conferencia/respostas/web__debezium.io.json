@@ -1,0 +1,30 @@
+{
+ "chave": "web:debezium.io",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T00:00:00Z",
+ "resultado": "rejeita",
+ "conferencia": {
+  "resultado": "rejeita",
+  "final": {
+   "serve": "none",
+   "role": "",
+   "place": [
+    "n/a"
+   ],
+   "mechanism": [
+    "n/a"
+   ],
+   "mcp": "unknown",
+   "windows": "unknown",
+   "portuguese": "unknown",
+   "license": "Apache-2.0",
+   "maturity": "stable",
+   "doubt": false,
+   "evidence": "CDC from relational/NoSQL databases listed (PostgreSQL, MongoDB, SQLite...); CouchDB is not among sources."
+  },
+  "o_que_mudou": [
+   "serve: stack -> none, no CouchDB source and heavy Kafka-style infrastructure"
+  ],
+  "nota": "Change data capture platform for production databases; CouchDB (the hub's store) is not a supported source, so it does not fit."
+ }
+}

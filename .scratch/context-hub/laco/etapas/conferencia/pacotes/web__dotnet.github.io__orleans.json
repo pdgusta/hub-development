@@ -1,0 +1,35 @@
+{
+ "chave": "web:dotnet.github.io/orleans",
+ "nomes": [
+  "Orleans"
+ ],
+ "urls": [
+  "https://dotnet.github.io/orleans/"
+ ],
+ "readme_cortado": false,
+ "readme": "[Microsoft Orleans — Distributed applications for .NET]\n\nSkip to content\n\nMicrosoft Orleans\nBuild business-critical distributed services in .NET. \nOrleans combines the virtual actor model with runtime support for clustering, failure recovery, persistence, durable jobs, transactions, and streams.\nGet startedExplore docsView samples\n\nFeatures for stateful distributed applicationsSection titled “Features for stateful distributed applications”\n\nOrleans combines a distributed programming model with runtime capabilities for building and operating stateful services. It is used across Microsoft to run critical services at large scale.\n\nVirtual actors\n\nModel application entities as grains with stable identities, isolated behavior, and turn-based execution. Explore grains.\nDurable state\n\nPersist grain state with providers for Azure, AWS, Google Cloud, relational databases, Redis, and custom storage systems. Explore persistence.\nStreams and event processing\n\nConnect producers and consumers using managed, persistent, or in-memory stream providers. Explore streaming.\nDurable scheduling and execution\n\nRun activation-scoped callbacks, recurring durable reminders, and distributed one-time jobs. Explore timers and reminders and durable jobs.\nTransactions\n\nCoordinate supported persistent state across grains using ACID transactions with serializable isolation. Explore transactions.\nEvent sourcing\n\nRepresent grain state as an ordered sequence of events using configurable log-consistency providers. Explore event sourcing.\nElastic scaling and load balancing\n\nAdd or remove silos while resource-aware placement directs new activations; memory-pressure shedding reclaims capacity, and opt-in balancing or repartitioning migrates eligible activations. Explore placement and load balancing.\nFault tolerance\n\nDetect failed silos and reactivate grains on healthy hosts, restoring state written to durable storage. Explore clusters and recovery.\n\nCommon application scenariosSection titled “Common application scenarios”\n\nOrleans is well suited to applications with many independently addressable entities whose state and work partition by identity. Explore the full scenarios and use cases guide.\n\nAI agents and conversational sessions\n\nManage conversation state, tool configuration, pending work, and coordination for each agent session. Read about AI agent scenarios.\nFraud, risk, and real-time decisioning\n\nApply rapidly changing account, market, policy, or event state to low-latency decisions. Read about decisioning scenarios.\nIoT and digital twins\n\nRepresent devices and assets with stable identities, evolving state, ordered commands, and scheduled work. Read about IoT scenarios.\nMonitoring and job orchestration\n\nTrack resources, health, quotas, jobs, dependencies, retries, and progress over time. Read about orchestration scenarios.\nMultiplayer and online games\n\nCoordinate players, rooms, matches, presence, progression, and authoritative session state. Read about game scenarios.\nCommerce and reservations\n\nManage carts, orders, accounts, reservations, subscriptions, and customer context. Read about commerce scenarios.\n\nProgramming modelSection titled “Programming model”\n\nDefine a grain contract, implement it as an ordinary .NET class, and call it from anywhere in the cluster.\n\nDefine a grain\nCounter.cs\n\npublic interface ICounter : IGrainWithStringKey\n\n{\n\n Task<int> Add(int value);\n\n}\n\npublic sealed class Counter : Grain, ICounter\n\n{\n\n private int _value;\n\n public Task<int> Add(int value) =>\n\n Task.FromResult(_value += value);\n\n}\n\nCall it from a client or another grain\nProgram.cs\n\nvar counter = client.GetGrain<ICounter>(\"orders\");\n\nvar total = await counter.Add(1);\n\nStart buildingSection titled “Start building”\n\nBuild your first appCreate a silo, define a grain, and make your first distributed call.\nRead the docsExplore grains, hosting, deployment, streaming, persistence, and runtime concepts.\nBrowse samplesLearn from complete applications and focused examples in this repository.\nJoin the projectRead the source, open an issue, or contribute to Orleans on GitHub.Close",
+ "fonte": "site",
+ "respostas": [
+  {
+   "por": "claude-haiku-5-5",
+   "resposta": {
+    "serve": "stack",
+    "role": "Per-agent session state and coordination in a .NET distributed cluster",
+    "place": [
+     "library",
+     "network_service"
+    ],
+    "mechanism": [
+     "other"
+    ],
+    "mcp": "no",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "unknown",
+    "doubt": false,
+    "evidence": "AI agents and conversational sessions: Manage conversation state, tool configuration, pending work, and coordination for each agent session."
+   }
+  }
+ ]
+}

@@ -1,0 +1,29 @@
+{
+ "chave": "web:weaviate.io/developers/weaviate/api/graphql",
+ "urls": [
+  "https://weaviate.io/developers/weaviate/api/graphql"
+ ],
+ "tipos": [
+  "service"
+ ],
+ "termos": [
+  "Weaviate GraphQL",
+  "Weaviate Query Language"
+ ],
+ "mencoes": 1,
+ "familias": [
+  "mistral"
+ ],
+ "primeira_onda": 2,
+ "nomes": [
+  "Weaviate GraphQL API"
+ ],
+ "resumos": [
+  "GraphQL-API, um Weaviate zu nutzen und Abfragen zu stellen."
+ ],
+ "fonte": "site",
+ "readme_status": "ok",
+ "readme_nome": "https://weaviate.io/developers/weaviate/api/graphql",
+ "readme_cortado": false,
+ "readme": "[Search (GraphQL | gRPC) | Weaviate DocumentationGitHub]\n\nLLM/AI Agent Notice: For the most important and up-to-date Weaviate information, see https://weaviate.io/llms.txt\nSkip to main content\n\nIntroducing Engram — managed memory for AI agents, built on Weaviate\n\nGo to documentation:\n\n⌘U\n✕\n\nWeaviate Database\nDevelop AI applications using Weaviate's APIs and tools\n\nDeploy\nDeploy, configure, and maintain Weaviate Database\n\nQuery Agent\nRun agentic search over your Weaviate Cloud collections\n\nWeaviate Cloud\nManage and scale Weaviate in the cloud\n\nEngram\nPersistent memory for LLM agents and applications\n\nAdditional resources\n\nIntegrations\nWeaviate Academy\n\nNeed help?\n\nAsk AI Assistant⌘K\nSupport\nCommunity Forum\nContributor guide\n\nCopy page\n\nOn this page\n\nGraphQL on Weaviate Cloud\n\nNew Weaviate Cloud clusters are created with GraphQL disabled (the DISABLE_GRAPHQL environment variable is set to true). To query your data on Weaviate Cloud, use a client library or the REST Search endpoints.\n\nAPI​\n\nWeaviate offers GraphQL and gRPC APIs for queries.\n\nWe recommend using a Weaviate client library, which abstracts away the underlying API calls and makes it easier to integrate Weaviate into your application.\n\nHowever, you can query Weaviate directly using GraphQL with a POST request to the /graphql endpoint, or write your own gRPC calls based on the gRPC protobuf specification.\n\nAll references​\n\nAll references have their individual subpages. Click on one of the references below for more information.\n\nObject-level queries\n\nAggregate\n\nSearch operators\n\nConditional filters\n\nAdditional operators\n\nAdditional properties\n\nExplore\n\nGraphQL API​\n\nWhy GraphQL?​\n\nGraphQL is a query language built on using graph data structures. It is an efficient method of data retrieval and mutation, since it mitigates the common over-fetching and under-fetching problems of other query languages.\n\nGraphQL is case-sensitive\n\nGraphQL is case-sensitive (reference), so make sure to use the correct casing when writing your queries.\n\nQuery structure​\n\nYou can POST a GraphQL query to Weaviate as follows:\n\ncurl http://localhost/v1/graphql -X POST -H 'Content-type: application/json' -d '{GraphQL query}'\n\nA GraphQL JSON object is defined as:\n\n{\n \"query\": \"{ # GRAPHQL QUERY }\"\n}\n\nGraphQL queries follow a defined structure. Queries are structured as follows:\n\n{\n <Function> {\n <Collection> {\n <property>\n _<underscore-property>\n }\n }\n}\n\nLimitations​\n\nGraphQL integer data currently only supports int32, and does not support int64. This means that currently integer data fields in Weaviate with integer values larger than int32, will not be returned using GraphQL queries. We are working on solving this issue. As current workaround is to use a string instead.\n\nConsistency level​\n\nGraphQL (Get) queries are run with a tunable consistency level.\n\ngRPC API​\n\nStarting with Weaviate v1.19.0, a gRPC interface is being progressively added to Weaviate.\n\ngRPC is a high-performance, open-source universal RPC framework that is contract-based and can be used in any environment. It is based on HTTP/2 and Protocol Buffers, and is therefore very fast and efficient.\n\nRead more about the gRPC API here.\n\nQuestions and feedback​\n\nHave a question or feedback? Here's how to reach us.\n\nCommunity Forum\nAsk questions and connect with other developers on our Community forum.\nSupport\nWeaviate Cloud user or customer? Find the right channel on the Support page.\n\nAPI\nAll references\nGraphQL API\nWhy GraphQL?\nQuery structure\nLimitations\nConsistency level\ngRPC API\nQuestions and feedback\n\nWas this page helpful?\nYesNo"
+}

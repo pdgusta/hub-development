@@ -1,0 +1,122 @@
+{
+  "envio": "b3c81523-c3e7-48da-bbc4-b1f47c0076fa",
+  "tipo": "resposta",
+  "enviada": "2026-10-16T19:21:23-03:00",
+  "alvo": {
+    "tipo": "rodada",
+    "id": "2026-10-16-ticket-05-perguntas-do-trilho",
+    "titulo": "Frontmatter imposto: três perguntas do Trilho"
+  },
+  "ticket": "16",
+  "substitui": null,
+  "rodada": {
+    "id": "2026-10-16-ticket-05-perguntas-do-trilho",
+    "base": "95fd7a5ff254f978e04b7a9698b974dd513a34346c10d196e095f977a8743d43",
+    "titulo": "Frontmatter imposto: três perguntas do Trilho",
+    "ticket": "16",
+    "perguntas": [
+      {
+        "id": "escopo-do-verificador",
+        "titulo": "O que mais o verificador faz, e em qual ticket",
+        "tipo": "escolha",
+        "recomendada": [
+          "A"
+        ],
+        "opcoes": [
+          {
+            "chave": "A",
+            "texto": "Um ticket novo, o 27 (\"O verificador cuida das pastas: `index.md`, links `par://`, `other/` e o fim da resposta\"), na etapa 1, depois do 05 e do 06, porque os links e o `local: true` do `index.md` dependem do gerador de exclusões; o 05 fica do tamanho de hoje e revisável"
+          },
+          {
+            "chave": "B",
+            "texto": "Tudo entra no 05: um ticket só, maior, que não termina sem o 06 (a fila do Trilho para até o 06 andar)"
+          },
+          {
+            "chave": "C",
+            "texto": "As quatro tarefas ficam para depois da construção (o hub de ensaio sai sem `index.md` automático, sem correção de links e sem o verificador no fim da resposta)"
+          }
+        ],
+        "proposta": null
+      },
+      {
+        "id": "tabela-stage-status",
+        "titulo": "Como o `stage` de cada tipo vira o `status` comum",
+        "tipo": "escolha",
+        "recomendada": [
+          "A"
+        ],
+        "opcoes": [
+          {
+            "chave": "A",
+            "texto": "A tabela do Trilho, como está no texto acima"
+          },
+          {
+            "chave": "B",
+            "texto": "A tabela do Trilho, mas o que terminou vira \"superada\": `done` (ficha e plano), `delivered` e o `closed` do caso passam de \"em uso\" para \"superada\""
+          },
+          {
+            "chave": "C",
+            "texto": "Outra tabela: escreva no \"Algo mais?\" o que muda"
+          }
+        ],
+        "proposta": null
+      },
+      {
+        "id": "operacao-e-iniciativa",
+        "titulo": "O que mora em `operations/` conta como iniciativa?",
+        "tipo": "escolha",
+        "recomendada": [
+          "A"
+        ],
+        "opcoes": [
+          {
+            "chave": "A",
+            "texto": "Não conta: só `clients/<cliente>/<iniciativa>/` e `initiatives/<iniciativa>/` exigem `initiative`; nota em `operations/<operação>/` leva só os campos comuns, sem `initiative`"
+          },
+          {
+            "chave": "B",
+            "texto": "Conta: `operations/<operação>/` também exige `initiative`, com o nome da operação, para filtrar por ela como se filtra por iniciativa"
+          }
+        ],
+        "proposta": null
+      },
+      {
+        "id": "algo-mais",
+        "titulo": "Algo mais?",
+        "tipo": "texto",
+        "recomendada": [],
+        "opcoes": [],
+        "proposta": null
+      }
+    ]
+  },
+  "corpo_hash": "ddc973398865777e7a469a576d8712da683179f904cdc1002ce8e885a856e2d8",
+  "corpo": {
+    "tipo": "resposta",
+    "rodada": "2026-10-16-ticket-05-perguntas-do-trilho",
+    "base": "95fd7a5ff254f978e04b7a9698b974dd513a34346c10d196e095f977a8743d43",
+    "respostas": {
+      "escopo-do-verificador": {
+        "escolha": [
+          "A"
+        ],
+        "outra": null,
+        "comentario": null
+      },
+      "tabela-stage-status": {
+        "escolha": [
+          "A"
+        ],
+        "outra": null,
+        "comentario": null
+      },
+      "operacao-e-iniciativa": {
+        "escolha": [
+          "A"
+        ],
+        "outra": null,
+        "comentario": null
+      }
+    }
+  }
+}

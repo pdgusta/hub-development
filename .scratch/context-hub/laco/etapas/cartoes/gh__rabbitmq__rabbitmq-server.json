@@ -1,0 +1,67 @@
+{
+ "chave": "gh:rabbitmq/rabbitmq-server",
+ "urls": [
+  "https://github.com/rabbitmq/rabbitmq-server",
+  "https://www.rabbitmq.com",
+  "https://www.rabbitmq.com/",
+  "https://rabbitmq.com"
+ ],
+ "tipos": [
+  "service",
+  "library",
+  "assembly",
+  "tool"
+ ],
+ "termos": [
+  "message broker",
+  "AMQP",
+  "queues",
+  "RabbitMQ broker",
+  "AMQP broker",
+  "Erlang",
+  "MQTT",
+  "message queue",
+  "RabbitMQ",
+  "queue",
+  "RabbitMQ Streams",
+  "MQTT plugin",
+  "Mensajería",
+  "Broker",
+  "Message Broker",
+  "RabbitMQ + Erlang",
+  "Pub/Sub",
+  "Message Queues",
+  "rabbitmq",
+  "rabbitmq c++",
+  "rabbitmq windows",
+  "amqp",
+  "broker",
+  "pub/sub"
+ ],
+ "mencoes": 25,
+ "familias": [
+  "cohere",
+  "dots3",
+  "free",
+  "gemini",
+  "gpt-oss",
+  "llama",
+  "mistral",
+  "nemotron"
+ ],
+ "primeira_onda": 1,
+ "nomes": [
+  "RabbitMQ",
+  "RabbitMQ / RabbitMQ Cluster"
+ ],
+ "resumos": [
+  "Message broker supporting multiple protocols, often used for real-time communication.",
+  "Broker AMQP de código aberto que oferece filas, troca de mensagens e suporte a tópicos, adequado para cenários de integração local.",
+  "Robust message broker implementing AMQP, useful for decoupling MCP communication between agents and the search layer.",
+  "A robust open-source message broker implementing the AMQP protocol."
+ ],
+ "readme_status": "ok",
+ "readme_nome": "README.md",
+ "readme_cortado": false,
+ "readme": "# RabbitMQ Server\n\n[![CI](https://github.com/rabbitmq/rabbitmq-server/actions/workflows/test-make.yaml/badge.svg)](https://github.com/rabbitmq/rabbitmq-server/actions/workflows/test-make.yaml)\n\n[RabbitMQ](https://rabbitmq.com) is a [feature rich](https://www.rabbitmq.com/docs),\nmulti-protocol messaging and streaming broker. It supports:\n\n * AMQP 1.0\n * AMQP 0-9-1\n * [RabbitMQ Stream Protocol](https://www.rabbitmq.com/docs/streams)\n * MQTT 3.1, 3.1.1, and 5.0\n * STOMP 1.0 through 1.2\n * [MQTT over WebSocket](https://www.rabbitmq.com/docs/web-mqtt)\n * [STOMP over WebSocket](https://www.rabbitmq.com/docs/web-stomp)\n * AMQP 1.0 over WebSocket (supported in [VMware Tanzu RabbitMQ](https://www.vmware.com/products/app-platform/tanzu-rabbitmq))\n\n\n## Installation\n\n * [Currently supported](https://www.rabbitmq.com/release-information) released series\n * [Installation guides](https://www.rabbitmq.com/docs/download) for various platforms\n * [Kubernetes Cluster Operator](https://www.rabbitmq.com/kubernetes/operator/operator-overview)\n * [Changelog](https://www.rabbitmq.com/release-information)\n * [Releases](https://github.com/rabbitmq/rabbitmq-server/releases) on GitHub\n * [Community Support Eligibility Policy](https://github.com/rabbitmq/rabbitmq-server/blob/main/COMMUNITY_SUPPORT.md)\n * [Supported Erlang versions](https://www.rabbitmq.com/docs/which-erlang)\n\n\n## Tutorials and Documentation\n\n * [RabbitMQ tutorials](https://www.rabbitmq.com/tutorials) and their [executable versions on GitHub](https://github.com/rabbitmq/rabbitmq-tutorials)\n * [Documentation guides](https://rabbitmq.com/docs/)\n * [RabbitMQ blog](https://blog.rabbitmq.com/)\n\nSome key doc guides include\n\n * [CLI tools guide](https://www.rabbitmq.com/docs/cli)\n * [Clustering](https://www.rabbitmq.com/docs/clustering) and [Cluster Formation](https://www.rabbitmq.com/docs/cluster-formation)\n * [Configuration guide](https://www.rabbitmq.com/docs/configure)\n * [Client libraries and tools](https://www.rabbitmq.com/client-libraries/devtools)\n * [Upgrading](https://www.rabbitmq.com/docs/upgrade)\n * [Kubernetes Cluster Operator](https://www.rabbitmq.com/kubernetes/operator/operator-overview)\n * [Quorum queues](https://www.rabbitmq.com/docs/quorum-queues): a replicated, data safety- and consistency-oriented queue type\n * [Streams](https://www.rabbitmq.com/docs/streams): a persistent and replicated append-only log with non-destructive consumer semantics\n * [Runtime Parameters](https://www.rabbitmq.com/docs/parameters)\n * [Policies](https://www.rabbitmq.com/docs/policies)\n * [Monitoring](https://www.rabbitmq.com/docs/monitoring) and [Prometheus/Grafana](https://www.rabbitmq.com/docs/prometheus)\n * [Production checklist](https://www.rabbitmq.com/docs/production-checklist)\n\nRabbitMQ documentation is also [developed on GitHub](https://github.com/rabbitmq/rabbitmq-website/).\n\n## Commercial Features and Support\n\n * [Commercial editions of RabbitMQ](https://tanzu.vmware.com/rabbitmq)\n * [Commercial edition for Kubernetes](https://docs.vmware.com/en/VMware-RabbitMQ-for-Kubernetes/1/rmq/installation.html)\n * [Commercial support](https://tanzu.vmware.com/rabbitmq/oss) from [Broadcom](https://vmware.com) for open source RabbitMQ\n\n## Getting Help from the Community\n\nPlease read the [Community Support Eligibility Policy](https://github.com/rabbitmq/rabbitmq-server/blob/main/COMMUNITY_SUPPORT.md) document\nfirst.\n\nThe recommended community forums are\n\n * [GitHub Discussions](https://github.com/rabbitmq/rabbitmq-server/discussions/)\n * [Community Discord server](https://rabbitmq.com/discord/)\n * `#rabbitmq` on [Libera Chat](https://libera.chat/)\n\n\n## Contributing\n\nSee [CONTRIBUTING.md](./CONTRIBUTING.md) and our [development process overview](https://www.rabbitmq.com/github).\n\nQuestions about contributing, internals and so on are very welcome in [GitHub Discussions](https://github.com/rabbitmq/rabbitmq-server/discussions)\nor [community Discord server](https://www.rabbitmq.com/discord/) in the `contributors` channel.\n\n\n## Licensing\n\nRabbitMQ server is [licensed under the MPL 2.0](LICENSE-MPL-RabbitMQ).\n\n[Community Support Eligibility Policy](https://github.com/rabbitmq/rabbitmq-server/blob/main/COMMUNITY_SUPPORT.md)\ndocument explains the open source RabbitMQ support policy adopted by the RabbitMQ Core Team.\n\n\n## AI Agent Instructions\n\nSee `AGENTS.md`.\n\n\n## Building From Source and Packaging\n\n * [Contributor resources](https://github.com/rabbitmq/contribute)\n * [Building RabbitMQ from Source](https://www.rabbitmq.com/docs/build-server)\n * [Building RabbitMQ Distribution Packages](https://www.rabbitmq.com/docs/build-server)\n\n\n## Copyright\n\n(c) 2007-2026 Broadcom. All Rights Reserved. The term “Broadcom” refers to Broadcom Inc. and/or its subsidiaries.\n"
+}

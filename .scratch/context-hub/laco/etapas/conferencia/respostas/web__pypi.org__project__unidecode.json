@@ -1,0 +1,32 @@
+{
+ "chave": "web:pypi.org/project/unidecode",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T21:23:19Z",
+ "resultado": "corrige",
+ "conferencia": {
+  "resultado": "corrige",
+  "final": {
+   "serve": "stack",
+   "role": "Python library transliterating Unicode text to ASCII (accent folding for slugs and normalized keys)",
+   "place": [
+    "library"
+   ],
+   "mechanism": [
+    "other"
+   ],
+   "mcp": "no",
+   "windows": "unknown",
+   "portuguese": "unknown",
+   "license": "GPL-2.0-or-later",
+   "maturity": "stable",
+   "doubt": false,
+   "evidence": "\"ASCII transliterations of Unicode text\"; \"the function unidecode() takes Unicode data and tries to represent it in ASCII characters\"; \"Nothing except Python itself\" required."
+  },
+  "o_que_mudou": [
+   "mechanism: n/a -> other, text normalization",
+   "mcp: unknown -> no, plain library",
+   "doubt: true -> false"
+  ],
+  "nota": "Útil só como dobra de acentos ao indexar pt-BR; é biblioteca pequena, com ressalvas de qualidade."
+ }
+}

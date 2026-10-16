@@ -1,0 +1,30 @@
+{
+ "chave": "web:boost.org/doc/libs/release/doc/html/property_tree.html",
+ "urls": [
+  "https://www.boost.org/doc/libs/release/doc/html/property_tree.html"
+ ],
+ "tipos": [
+  "library"
+ ],
+ "termos": [
+  "boost",
+  "property_tree",
+  "C++"
+ ],
+ "mencoes": 1,
+ "familias": [
+  "gpt-oss"
+ ],
+ "primeira_onda": 4,
+ "nomes": [
+  "Boost.PropertyTree"
+ ],
+ "resumos": [
+  "Boost 的属性树库，虽不原生支持 YAML，但可通过第三方适配器读取 YAML 内容。"
+ ],
+ "fonte": "site",
+ "readme_status": "ok",
+ "readme_nome": "https://www.boost.org/doc/libs/release/doc/html/property_tree.html",
+ "readme_cortado": false,
+ "readme": "[Chapter 29. Boost.PropertyTree]\n\nBoost\n C++ Libraries\n\n ...one of the most highly\n regarded and expertly designed C++ library projects in the\n world. — Herb Sutter and Andrei\n Alexandrescu, C++\n Coding Standards\n\n Search...\n\nChapter 29. Boost.PropertyTree\n\nMarcin Kalicinski\n\nSebastian Redl\n\nCopyright © 2008-2010 Marcin Kalicinski\n\nCopyright © 2010-2013 Sebastian\n Redl\n\n Distributed under the Boost Software License, Version 1.0. (See accompanying\n file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)\n\nTable of Contents\n\nWhat is Property Tree?\nFive Minute Tutorial\nProperty Tree as a Container\nProperty Tree Synopsis\nHow to Populate a Property Tree\n\nXML Parser\nJSON Parser\nINI Parser\nINFO Parser\n\nHow to Access Data in a Property\n Tree\nAppendices\nReference\n\nHeader <boost/property_tree/exceptions.hpp>\nHeader <boost/property_tree/id_translator.hpp>\nHeader <boost/property_tree/info_parser.hpp>\nHeader <boost/property_tree/ini_parser.hpp>\nHeader <boost/property_tree/json_parser.hpp>\nHeader <boost/property_tree/ptree.hpp>\nHeader <boost/property_tree/ptree_fwd.hpp>\nHeader <boost/property_tree/ptree_serialization.hpp>\nHeader <boost/property_tree/stream_translator.hpp>\nHeader <boost/property_tree/string_path.hpp>\nHeader <boost/property_tree/xml_parser.hpp>\n\nWhat is Property Tree?\n\n The Property Tree library provides a data structure that stores an arbitrarily\n deeply nested tree of values, indexed at each level by some key. Each node\n of the tree stores its own value, plus an ordered list of its subnodes and\n their keys. The tree allows easy access to any of its nodes by means of a path,\n which is a concatenation of multiple keys.\n\n In addition, the library provides parsers and generators for a number of data\n formats that can be represented by such a tree, including XML, INI, and JSON.\n\n Property trees are versatile data structures, but are particularly suited for\n holding configuration data. The tree provides its own, tree-specific interface,\n and each node is also an STL-compatible Sequence for its child nodes.\n\n Conceptually, then, a node can be thought of as the following structure:\n\nstruct ptree\n{\n data_type data; // data associated with the node\n list< pair<key_type, ptree> > children; // ordered list of named children\n};\n\n Both key_type and data_type are configurable to some extent, but will usually\n be std::string or std::wstring, and the parsers only work with this kind of\n tree.\n\n Many software projects develop a similar tool at some point of their lifetime,\n and property tree originated the same way. We hope the library can save many\n from reinventing the wheel."
+}

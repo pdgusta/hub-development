@@ -1,0 +1,116 @@
+Skip to main content
+
+ English
+
+ Español
+
+ Español – América Latina
+
+ Français
+
+ Indonesia
+
+ Italiano
+
+ Polski
+
+ Português
+
+ Português – Brasil
+
+ Tiếng Việt
+
+ Türkçe
+
+ Русский
+
+ עברית
+
+ العربيّة
+
+ فارسی
+
+ हिंदी
+
+ বাংলা
+
+ ภาษาไทย
+
+ 中文 – 简体
+
+ 中文 – 繁體
+
+ 日本語
+
+ 한국어
+
+ GitHub
+
+ Sign in
+
+ Quantum
+
+ A quantum ML library for rapid prototyping of hybrid quantum-classical models. Leverage Google’s quantum computing frameworks, all from within TensorFlow.
+
+ TensorFlow
+
+ Resources
+
+ Quantum
+
+ Stay organized with collections
+
+ Save and categorize content based on your preferences.
+
+# A hybrid quantum-classical model.
+model = tf.keras.Sequential([
+ # Quantum circuit data comes in inside of tensors.
+ tf.keras.Input(shape=(), dtype=tf.dtypes.string),
+
+ # Parametrized Quantum Circuit (PQC) provides output
+ # data from the input circuits run on a quantum computer.
+ tfq.layers.PQC(my_circuit, [cirq.Z(q1), cirq.X(q0)]),
+
+ # Output data from quantum computer passed through model.
+ tf.keras.layers.Dense(50)
+])
+
+ TensorFlow Quantum (TFQ) is a quantum machine learning library for rapid prototyping of hybrid quantum-classical ML models. Research in quantum algorithms and applications can leverage Google’s quantum computing frameworks, all from within TensorFlow. 
+ TensorFlow Quantum focuses on quantum data and building hybrid quantum-classical models. It integrates quantum computing algorithms and logic designed in Cirq, and provides quantum computing primitives compatible with existing TensorFlow APIs, along with high-performance quantum circuit simulators. Read more in the TensorFlow Quantum white paper. 
+ Start with the overview, then run the notebook tutorials. 
+
+ Distributed TensorFlow Quantum
+
+ Read on TensorFlow blog
+
+ Power of quantum data
+
+ Read on TensorFlow blog
+
+ User Journey: Owen
+
+ Read on TensorFlow blog
+
+ Announcing
+TensorFlow Quantum
+
+ Read on the Google AI blog
+
+ TensorFlow Quantum
+Research Snippets
+
+ View on GitHub
+
+ TensorFlow Quantum (TF Dev Summit '20)
+
+ Watch the video
+
+ Programming a quantum computer with Cirq
+
+ Watch the video
+
+ TensorFlow Quantum on GitHub
+
+ View on GitHub
+
+ [[["Easy to understand","easyToUnderstand","thumb-up"],["Solved my problem","solvedMyProblem","thumb-up"],["Other","otherUp","thumb-up"]],[["Missing the information I need","missingTheInformationINeed","thumb-down"],["Too complicated / too many steps","tooComplicatedTooManySteps","thumb-down"],["Out of date","outOfDate","thumb-down"],["Samples / code issue","samplesCodeIssue","thumb-down"],["Other","otherDown","thumb-down"]],[],[],[]]

@@ -1,0 +1,53 @@
+{
+ "nome": "Zoekt",
+ "nome_canonico": "Zoekt (sourcegraph/zoekt, fork mantido do google/zoekt)",
+ "chave": "gh:sourcegraph/zoekt",
+ "url": "https://github.com/sourcegraph/zoekt",
+ "serve": "search",
+ "area": null,
+ "identidade": "ok (README: fonte mantida desde 2017, fork de google/zoekt)",
+ "windows": "nao_verificado: README so documenta go install e Docker; CI do repo usa so ubuntu-latest; sem binario nem aviso sobre Windows",
+ "mcp": "no: sem MCP na fonte; expoe JSON API (-rpc, /api/search) e gRPC",
+ "portugues": "Sem stemmer nem stopwords; busca substring/regexp por trigramas, UTF-8 e case-insensitive; sem remocao de acentos citada",
+ "markdown_frontmatter": "Indexa qualquer texto UTF-8 (voltado a codigo); nao usa frontmatter nem divide por titulo",
+ "atualizacao": "zoekt-indexserver rebusca e reindexa periodicamente; zoekt-local-sync sincroniza repositorios git locais; reindexacao manual com zoekt-index",
+ "embeddings_endpoint": "nao usa embeddings (opcao BM25 no ranking)",
+ "recursos": "Go; indice em disco ~3,5x o corpus, SSD local e RAM >= corpus +20% (FAQ); shard < 4G",
+ "licenca": "Apache-2.0",
+ "ultimo_release": "sem releases nem tags no GitHub (go install @latest)",
+ "atividade": "2026-10-09 (ultimo commit)",
+ "maturidade": "stable (sem versionamento formal; mantido pela Sourcegraph)",
+ "encaixe": "Servico na rede ou disco de cada maquina, indexando pasta de notas: regex rapido. Impedimentos: foco em repositorios git, sem MCP, Windows nao documentado, indice de ~3,5x e trabalha sobre arquivos, nao sobre o banco cifrado.",
+ "evidencias": [
+  {
+   "campo": "mcp",
+   "url": "https://github.com/sourcegraph/zoekt#readme",
+   "citacao": "it exposes a simple JSON search API at http://localhost:6070/api/search"
+  },
+  {
+   "campo": "recursos",
+   "url": "https://github.com/sourcegraph/zoekt/blob/main/doc/faq.md",
+   "citacao": "local SSD to store the index file (which is 3.5x the corpus size), and have at least 20% more RAM than the corpus size"
+  },
+  {
+   "campo": "portugues",
+   "url": "https://github.com/sourcegraph/zoekt/blob/main/doc/design.md",
+   "citacao": "Zoekt assumes that files are UTF-8 encoded"
+  },
+  {
+   "campo": "atualizacao",
+   "url": "https://github.com/sourcegraph/zoekt#readme",
+   "citacao": "The index server can be configured to periodically fetch and reindex repositories"
+  },
+  {
+   "campo": "windows",
+   "url": "https://github.com/sourcegraph/zoekt/blob/main/.github/workflows/ci.yml",
+   "citacao": "runs-on: ubuntu-latest"
+  }
+ ],
+ "nao_verificado": [
+  "Windows nativo",
+  "MCP de terceiros",
+  "tratamento de acentos"
+ ]
+}

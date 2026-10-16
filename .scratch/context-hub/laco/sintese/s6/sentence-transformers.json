@@ -1,0 +1,48 @@
+{
+ "nome": "sentence-transformers",
+ "nome_canonico": "Sentence Transformers (UKPLab/sentence-transformers)",
+ "chave": "gh:ukplab/sentence-transformers",
+ "url": "https://github.com/UKPLab/sentence-transformers",
+ "serve": "search",
+ "identidade": "ok: URL canônica UKPLab/sentence-transformers. Biblioteca de embeddings e rerank, não motor de busca.",
+ "windows": "yes: wheel pura Python (py3-none-any) no PyPI e CI com windows-latest; depende de PyTorch (wheel Windows do PyTorch não conferida aqui).",
+ "mcp": "no",
+ "portugues": "yes: 'pretrained models for more than 100 languages'; rerank via CrossEncoder; a escolha do modelo multilíngue fica com o hub.",
+ "markdown_frontmatter": "no: recebe strings; não lê Markdown nem frontmatter, não divide por título.",
+ "atualizacao": "manual: biblioteca, sem watcher; quem chama decide quando recalcular.",
+ "embeddings_endpoint": "só modelo local (carrega modelos Hugging Face em PyTorch, com extras onnx e openvino); não é cliente de base_url OpenAI-compatível.",
+ "recursos": "Python 3.10+, PyTorch 2.2+, transformers v5; modelos de centenas de MB a GB, CPU ou GPU; sem número na fonte.",
+ "licenca": "Apache-2.0",
+ "ultimo_release": "6.1.0, 2026-09-18 (PyPI)",
+ "atividade": "release de 2026-09-18; 3.235 commits no main; data do último commit não verificada",
+ "maturidade": "stable",
+ "encaixe": "Gerar embeddings multilíngues e rerank localmente em cada máquina, como alternativa ao FreeLLMAPI, atrás do MCP do banco. Impedimento: PyTorch pesado no Windows e sem leitura de Markdown.",
+ "evidencias": [
+  {
+   "campo": "portugues",
+   "url": "https://github.com/UKPLab/sentence-transformers",
+   "citacao": "pretrained models for more than 100 languages"
+  },
+  {
+   "campo": "recursos",
+   "url": "https://github.com/UKPLab/sentence-transformers",
+   "citacao": "We recommend Python 3.10+, PyTorch 2.2+, and transformers v5.0+."
+  },
+  {
+   "campo": "windows",
+   "url": "https://raw.githubusercontent.com/UKPLab/sentence-transformers/main/.github/workflows/tests.yml",
+   "citacao": "os: [ubuntu-latest, windows-latest]"
+  },
+  {
+   "campo": "ultimo_release",
+   "url": "https://pypi.org/project/sentence-transformers/",
+   "citacao": "6.1.0 enviado em 2026-09-18, sentence_transformers-6.1.0-py3-none-any.whl"
+  }
+ ],
+ "nao_verificado": [
+  "wheel Windows do PyTorch",
+  "data do último commit",
+  "memória e disco em números"
+ ],
+ "area": null
+}

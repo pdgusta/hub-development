@@ -1,0 +1,30 @@
+{
+ "chave": "gh:getkin/kin-openapi",
+ "modelo": "claude-opus-5-5",
+ "ts": "2026-10-13T23:19:08Z",
+ "tipo": "conferencia",
+ "resultado": "discorda",
+ "auditoria": {
+  "resultado": "discorda",
+  "erro": "doubt: card is broken (name 'frontmatter' points to kin-openapi, an OpenAPI library with no frontmatter package in README); Sonnet set doubt false and did not flag the mismatch.",
+  "final": {
+   "serve": "none",
+   "role": "",
+   "place": [
+    "n/a"
+   ],
+   "mechanism": [
+    "n/a"
+   ],
+   "mcp": "unknown",
+   "windows": "unknown",
+   "portuguese": "unknown",
+   "license": "MIT",
+   "maturity": "unknown",
+   "doubt": true,
+   "evidence": "A Go project for handling OpenAPI files. Card names 'frontmatter' at kin-openapi/tree/master/frontmatter, which the README never mentions: name/URL mismatch."
+  },
+  "gravidade": "grave",
+  "nota": "kin-openapi em si não serve; o cartão quebrado esconde um parser de front matter em Go que nunca foi avaliado."
+ }
+}

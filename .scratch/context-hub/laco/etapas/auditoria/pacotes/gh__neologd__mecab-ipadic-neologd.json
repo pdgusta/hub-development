@@ -1,0 +1,86 @@
+{
+ "chave": "gh:neologd/mecab-ipadic-neologd",
+ "nomes": [
+  "TinySegmenter (Japanese, but adaptable)",
+  "MeCab (versión portuguesa: **MeCab-pt**)"
+ ],
+ "urls": [
+  "https://github.com/neologd/mecab-ipadic-neologd/wiki/Release",
+  "https://github.com/neologd/mecab-ipadic-neologd"
+ ],
+ "readme_cortado": false,
+ "readme": "# mecab-ipadic-NEologd : Neologism dictionary for MeCab\n<img src=\"https://raw.githubusercontent.com/neologd/mecab-ipadic-neologd/images/neologd-logo-September2016.png\" width=\"250\">\n\n[![Build Status](https://travis-ci.org/neologd/mecab-ipadic-neologd.svg?branch=master)](https://travis-ci.org/neologd/mecab-ipadic-neologd)\n\n## For Japanese\nREADME.ja.md is written in Japanese.\n\n- https://github.com/neologd/mecab-ipadic-neologd/blob/master/README.ja.md\n\n## Documentation\nYou can find more detailed documentation and examples in the following wiki.\n\n- https://github.com/neologd/mecab-ipadic-neologd/wiki/Home\n\n## Overview\nmecab-ipadic-NEologd is customized system dictionary for MeCab.\n\nThis dictionary includes many neologisms (new word), which are extracted from many language resources on the Web.\n\nWhen you analyze the Web documents, it's better to use this system dictionary and default one (ipadic) together.\n\n## Pros and Cons\n### Pros\n- Recorded about 3.22 million pairs(including duplicate entries) of surface/furigana(kana indicating the pronunciation of kanji) of the words such as the named entity that can not be tokenized correctly using default system dictionary of MeCab.\n- Update process of this dictionary will automatically run on development server.\n    - I'm planning to renew this dictionary at least updating twice weekly\n        - Every Monday and Thursday\n- When renewing by utilizing the language resources on Web, a new named entity can be recorded.\n    - The resources are being utilized at present are as follows.\n        - Dump data of hatena keyword\n        - Japanese postal code number data download (ken_all.lzh)\n        - The name-of-the-station list of whole country of Japan\n        - The entry data of the person names (last name / first name)\n        - The entry data of emojis from Unicode 10.0 and Emoji 5.0\n        - The entry data of Kaomoji strings\n        - The entry data of adverbs\n        - The entry data of adjectives\n        - The entry data of adjective verbs\n        - The entry data of interjections\n        - The entry data of orthographic variant of general nouns\n        - The entry data of orthographic variant of nouns used as verb form\n- A lot of documents, which crawled from Web\n    - I'm planning to record the words such as the named entity, which will be extracted from other new language resource.\n\n### Cons\n- Classification of the named entity is insufficient\n    - Ex. Some person names and a product name are classified into the same named entity category.\n- Not named entity word is recorded as named entity too.\n- Since the manual checking to all the named entities can't conduct, it may have made a mistake in matching of surface of the named entity and furigana of the named entity.\n- Corresponding to only UTF-8\n    - You should install the UTF-8 version of MeCab\n\n## Getting started\n\n### Memory requirements\n- Required: 2GB of RAM\n- Recommend: 6GB of RAM\n    - Current maximum binary size is 1.2GB\n\n### Dependencies\n\nWe build mecab-ipadic-NEologd using the source code of mecab-ipadic at installing phase.\n\nYou should install following libraries using apt or yum, homebrew, source-code.\n\n- C++ Compiler\n    - Operation on GCC-4.4.7 and Apple LLVM version 6.0 are confirmed\n- iconv (libiconv)\n    - Use to convert the character code of IPADIC\n- mecab\n    - We use bin/mecab and bin/mecab-config\n- mecab-ipadic\n    - One of a dictionary of MeCab\n        - Use to test at the time of installation\n        - If you install it using source code, you should select the UTF-8 as a character code\n\n    ./configure --with-charset=utf8; make; sudo make install\n\n- xz\n    - Use to decompress a xz package of a seed of mecab-ipadic-NEologd\n\nPlease install at any time other lack library.\n\n#### Examples\n- On CentOS\n\n    $ sudo rpm -ivh http://packages.groonga.org/centos/groonga-release-1.1.0-1.noarch.rpm\n\n    $ sudo yum install mecab mecab-devel mecab-ipadic git make curl xz patch\n\n- On Fedora\n\n    $ sudo yum install mecab mecab-devel mecab-ipadic git make curl xz\n\n- On Ubuntu\n\n    $ sudo aptitude install mecab libmecab-dev mecab-ipadic-utf8 git make curl xz-utils file\n\n- On MacOSX\n\n    $ brew install mecab mecab-ipadic git curl xz\n\n### Preparation of installing\nA seed data of the dictionary will distribute via GitHub repository.\n\nIn first time, you should execute the following command to 'git clone'.\n\n    $ git clone --depth 1 https://github.com/neologd/mecab-ipadic-neologd.git\n\nOR\n\n    $ git clone --depth 1 git@github.com:neologd/mecab-ipadic-neologd.git\n\nIf you need all log of mecab-ipadic-neologd.git, you should clone the repository without '--depth 1'\n\n### How to install/update mecab-ipadic-NEologd\n#### Step.1\nMove to a directory of the repository which was cloned in the above preparation.\n\n    $ cd mecab-ipadic-neologd\n\n#### Step.2\n\nYou can install or can update(overwritten) the recent mecab-ipadic-NEologd by following command.\n\n    $ ./bin/install-mecab-ipadic-neologd -n\n\nYou can check the directory path to install it.\n\n    $ echo `mecab-config --dicdir`\"/mecab-ipadic-neologd\"\n\nIf you installed some mecab-config, you should set the path of the mecab-config which you want to use.\n\nIf you use following command, you can check useful command line option.\n\n    $ ./bin/install-mecab-ipadic-neologd -h\n\n### How to use mecab-ipadic-NEologd\nWhen you want to use mecab-ipadic-NEologd, you should set the path of custom system dictionary(*/lib/mecab/dic/mecab-ipadic-neologd/) as -d option of MeCab.\n\n#### Example (on CentOS)\n$ mecab -d /usr/local/lib/mecab/dic/mecab-ipadic-neologd/\n\n## Example of output of MeCab\n### When you use mecab-ipadic-NEologd\n    $ echo \"8月3日に放送された「中居正広の金曜日のスマイルたちへ」(TBS系)で、1日たった5分でぽっこりおなかを解消するというダイエット方法を紹介。キンタロー。のダイエットにも密着。\" | mecab -d /usr/local/lib/mecab/dic/mecab\n    8月3日\t名詞,固有名詞,一般,*,*,*,8月3日,ハチガツミッカ,ハチガツミッカ\n    に\t助詞,格助詞,一般,*,*,*,に,ニ,ニ\n    放送\t名詞,サ変接続,*,*,*,*,放送,ホウソウ,ホーソー\n    さ\t動詞,自立,*,*,サ変・スル,未然レル接続,する,サ,サ\n    れ\t動詞,接尾,*,*,一段,連用形,れる,レ,レ\n    た\t助動詞,*,*,*,特殊・タ,基本形,た,タ,タ\n    「\t記号,括弧開,*,*,*,*,「,「,「\n    中居正広の金曜日のスマイルたちへ\t名詞,固有名詞,一般,*,*,*,中居正広の金曜日のスマイルたちへ,ナカイマサヒロノキンヨウビノスマイルタチヘ,ナカイマサヒロノキンヨービノスマイルタチヘ\n    」(\t記号,一般,*,*,*,*,*\n    TBS\t名詞,固有名詞,一般,*,*,*,TBS,ティービーエス,ティービーエス\n    系\t名詞,接尾,一般,*,*,*,系,ケイ,ケイ\n    )\t記号,一般,*,*,*,*,*\n    で\t助動詞,*,*,*,特殊・ダ,連用形,だ,デ,デ\n    、\t記号,読点,*,*,*,*,、,、,、\n    1日\t名詞,固有名詞,一般,*,*,*,1日,ツイタチ,ツイタチ\n    たった\t副詞,助詞類接続,*,*,*,*,たった,タッタ,タッタ\n    5分\t名詞,固有名詞,一般,*,*,*,5分,ゴフン,ゴフン\n    で\t助詞,格助詞,一般,*,*,*,で,デ,デ\n    ぽっこり\t副詞,一般,*,*,*,*,ぽっこり,ポッコリ,ポッコリ\n    おなか\t名詞,一般,*,*,*,*,おなか,オナカ,オナカ\n    を\t助詞,格助詞,一般,*,*,*,を,ヲ,ヲ\n    解消\t名詞,サ変接続,*,*,*,*,解消,カイショウ,カイショー\n    する\t動詞,自立,*,*,サ変・スル,基本形,する,スル,スル\n    という\t助詞,格助詞,連語,*,*,*,という,トイウ,トユウ\n    ダイエット方法\t名詞,固有名詞,一般,*,*,*,ダイエット方法,ダイエットホウホウ,ダイエットホウホー\n    を\t助詞,格助詞,一般,*,*,*,を,ヲ,ヲ\n    紹介\t名詞,サ変接続,*,*,*,*,紹介,ショウカイ,ショーカイ\n    。\t記号,句点,*,*,*,*,。,。,。\n    キンタロー。\t名詞,固有名詞,一般,*,*,*,キンタロー。,キンタロー,キンタロー\n    に\t助詞,格助詞,一般,*,*,*,に,ニ,ニ\n    も\t助詞,係助詞,*,*,*,*,も,モ,モ\n    密着\t名詞,サ変接続,*,*,*,*,密着,ミッチャク,ミッチャク\n    。\t記号,句点,*,*,*,*,。,。,。\n    EOS\n\n#### What's the point of the above result\n\n- MeCab can parse the words which are recorded in mecab-ipadic-NEologd correctly\n    - \"中居正広の金曜日のスマイルたちへ(To Friday's smile by Masahiro Nakai)\" is a new word\n        - This word could parse correctly because of updating of the language resources on Web\n- Almost all of the entry of mecab-ipadic-NEologd has the value of furigana field\n- Recording frequent time expressions and quantitative expressions in advance\n- Expressions frequently appearing in News and SNS will be made into one word\n- Positively make the name of famous people Named Entity\n- Famous \"。 is the end of sentence\" problem solved\n\n### When you use default system dictionary\n    $ echo \"8月3日に放送された「中居正広の金曜日のスマイルたちへ」(TBS系)で、1日たった5分でぽっこりおなかを解消するというダイエット方法を紹介。キンタロー。にも密着。\" | mecab\n    8\t名詞,数,*,*,*,*,*\n    月\t名詞,一般,*,*,*,*,月,ツキ,ツキ\n    3\t名詞,数,*,*,*,*,*\n    日\t名詞,接尾,助数詞,*,*,*,日,ニチ,ニチ\n    に\t助詞,格助詞,一般,*,*,*,に,ニ,ニ\n    放送\t名詞,サ変接続,*,*,*,*,放送,ホウソウ,ホーソー\n    さ\t動詞,自立,*,*,サ変・スル,未然レル接続,する,サ,サ\n    れ\t動詞,接尾,*,*,一段,連用形,れる,レ,レ\n    た\t助動詞,*,*,*,特殊・タ,基本形,た,タ,タ\n    「\t記号,括弧開,*,*,*,*,「,「,「\n    中居\t名詞,固有名詞,人名,姓,*,*,中居,ナカイ,ナカイ\n    正広\t名詞,固有名詞,人名,名,*,*,正広,マサヒロ,マサヒロ\n    の\t助詞,連体化,*,*,*,*,の,ノ,ノ\n    金曜日\t名詞,副詞可能,*,*,*,*,金曜日,キンヨウビ,キンヨービ\n    の\t助詞,連体化,*,*,*,*,の,ノ,ノ\n    スマイル\t名詞,一般,*,*,*,*,スマイル,スマイル,スマイル\n    たち\t名詞,接尾,一般,*,*,*,たち,タチ,タチ\n    へ\t助詞,格助詞,一般,*,*,*,へ,ヘ,エ\n    」(\t名詞,サ変接続,*,*,*,*,*\n    TBS\t名詞,一般,*,*,*,*,*\n    系\t名詞,接尾,一般,*,*,*,系,ケイ,ケイ\n    )\t名詞,サ変接続,*,*,*,*,*\n    で\t助詞,格助詞,一般,*,*,*,で,デ,デ\n    、\t記号,読点,*,*,*,*,、,、,、\n    1\t名詞,数,*,*,*,*,*\n    日\t名詞,接尾,助数詞,*,*,*,日,ニチ,ニチ\n    たっ\t動詞,自立,*,*,五段・タ行,連用タ接続,たつ,タッ,タッ\n    た\t助動詞,*,*,*,特殊・タ,基本形,た,タ,タ\n    5\t名詞,数,*,*,*,*,*\n    分\t名詞,接尾,助数詞,*,*,*,分,フン,フン\n    で\t助動詞,*,*,*,特殊・ダ,連用形,だ,デ,デ\n    ぽ\t形容詞,接尾,*,*,形容詞・アウオ段,ガル接続,ぽい,ポ,ポ\n    っ\t動詞,非自立,*,*,五段・カ行促音便,連用タ接続,く,ッ,ッ\n    こり\t動詞,自立,*,*,一段,連用形,こりる,コリ,コリ\n    おなか\t名詞,一般,*,*,*,*,おなか,オナカ,オナカ\n    を\t助詞,格助詞,一般,*,*,*,を,ヲ,ヲ\n    解消\t名詞,サ変接続,*,*,*,*,解消,カイショウ,カイショー\n    する\t動詞,自立,*,*,サ変・スル,基本形,する,スル,スル\n    という\t助詞,格助詞,連語,*,*,*,という,トイウ,トユウ\n    ダイエット\t名詞,サ変接続,*,*,*,*,ダイエット,ダイエット,ダイエット\n    方法\t名詞,一般,*,*,*,*,方法,ホウホウ,ホーホー\n    を\t助詞,格助詞,一般,*,*,*,を,ヲ,ヲ\n    紹介\t名詞,サ変接続,*,*,*,*,紹介,ショウカイ,ショーカイ\n    。\t記号,句点,*,*,*,*,。,。,。\n    キンタロー\t名詞,一般,*,*,*,*,*\n    。\t記号,句点,*,*,*,*,。,。,。\n    に\t助詞,格助詞,一般,*,*,*,に,ニ,ニ\n    も\t助詞,係助詞,*,*,*,*,も,モ,モ\n    密着\t名詞,サ変接続,*,*,*,*,密着,ミッチャク,ミッチャク\n    。\t記号,句点,*,*,*,*,。,。,。\n    EOS\n\n## To evaluate or to reproduce a research result\nWe release the tag for mainly research purpose.\n\n- https://github.com/neologd/mecab-ipadic-neologd/releases/\n\nIt is very useful for the following applications.\n\n- Experiments for evaluation of a research result\n- Reproducibility of a experimental result of others\n- Creation of the processing results of morphological analysis that doesn't update forever\n\nIf you are the beginner of NLP, I recommend that you use the latest version of master branch.\n\n## Bibtex\n\nPlease use the following bibtex, when you refer mecab-ipadic-NEologd from your papers.\n\n    @INPROCEEDINGS{sato2017mecabipadicneologdnlp2017,\n        author    = {Toshinori Sato, Taiichi Hashimoto and Manabu Okumura},\n        title     = {Implementation of a word segmentation dictionary called mecab-ipadic-NEologd and study on how to use it effectively for information retrieval (in Japanese)},\n        booktitle = \"Proceedings of the Twenty-three\n        Annual Meeting of the Association for Natural Language Processing\",\n        year      = \"2017\",\n        pages     = \"NLP2017-B6-1\",\n        publisher = \"The Association for Natural Language Processing\",\n    }\n    @INPROCEEDINGS{sato2016neologdipsjnl229,\n        author    = {Toshinori Sato, Taiichi Hashimoto and Manabu Okumura},\n        title     = {Operation of a word segmentation dictionary generation system called NEologd (in Japanese)},\n        booktitle = \"Information Processing Society of Japan, Special Interest Group on Natural Language Processing (IPSJ-SIGNL)\",\n        year      = \"2016\",\n        pages     = \"NL-229-15\",\n        publisher = \"Information Processing Society of Japan\",\n    }\n    @misc{sato2015mecabipadicneologd,\n        title  = {Neologism dictionary based on the language resources on the Web for Mecab},\n        author = {Toshinori, Sato},\n        url    = {https://github.com/neologd/mecab-ipadic-neologd},\n        year   = {2015}\n    }\n\n## Star please !!\nPlease star this github repository if mecab-ipadic-NEologd is very useful to your project ;)\n\n## Copyrights\nCopyright (c) 2015-2019 Toshinori Sato (@overlast) All rights reserved.\n\nWe select the 'Apache License, Version 2.0'. Please check following link.\n\n- https://github.com/neologd/mecab-ipadic-neologd/blob/master/COPYING\n",
+ "fonte": "readme",
+ "respostas": [
+  {
+   "por": "gemma-4-31b",
+   "resposta": {
+    "serve": "none",
+    "role": "",
+    "place": [
+     "n/a"
+    ],
+    "mechanism": [
+     "n/a"
+    ],
+    "mcp": "no",
+    "windows": "unknown",
+    "portuguese": "no",
+    "license": "Apache-2.0",
+    "maturity": "stable",
+    "doubt": false,
+    "evidence": ""
+   }
+  },
+  {
+   "por": "llama-3.2-90b-vision",
+   "resposta": {
+    "serve": "none",
+    "role": "",
+    "place": [
+     "n/a"
+    ],
+    "mechanism": [
+     "other"
+    ],
+    "mcp": "no",
+    "windows": "unknown",
+    "portuguese": "no",
+    "license": "Apache-2.0",
+    "maturity": "unknown",
+    "doubt": true,
+    "evidence": ""
+   }
+  }
+ ],
+ "conferencia_sonnet": {
+  "chave": "gh:neologd/mecab-ipadic-neologd",
+  "modelo": "claude-sonnet-5-5",
+  "ts": "2026-10-13T21:22:40Z",
+  "resultado": "rejeita",
+  "conferencia": {
+   "resultado": "rejeita",
+   "final": {
+    "serve": "none",
+    "role": "",
+    "place": [
+     "n/a"
+    ],
+    "mechanism": [
+     "n/a"
+    ],
+    "mcp": "no",
+    "windows": "unknown",
+    "portuguese": "no",
+    "license": "Apache-2.0",
+    "maturity": "stable",
+    "doubt": false,
+    "evidence": "Neologism dictionary for MeCab, a Japanese morphological analyzer; Japanese text only."
+   },
+   "o_que_mudou": [
+    "doubt: segunda resposta true -> false"
+   ],
+   "nota": "Dicionario japones para o MeCab; sem utilidade para notas em portugues e ingles."
+  }
+ }
+}

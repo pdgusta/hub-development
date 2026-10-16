@@ -1,0 +1,57 @@
+{
+ "nome": "CouchDB Nouveau",
+ "url": "https://docs.couchdb.org/en/latest/ddocs/nouveau.html",
+ "papel": "dentro do banco",
+ "windows": "nao_verificado: a documentação não menciona Windows. Roda como `java -jar nouveau.jar server nouveau.yaml` (Java 21+), então em tese JVM no Windows; sem confirmação oficial.",
+ "mcp": "no (recurso do CouchDB; MCP teria de ser escrito por cima das consultas HTTP _nouveau).",
+ "portugues": "Sim: analisadores por idioma incluem portuguese, standard e outros, além do custom `simple_asciifolding`; `default_analyzer` e `field_analyzers` por campo; teste em `_nouveau_analyze`.",
+ "markdown_frontmatter": "Não indexa arquivo Markdown: indexa documentos JSON do CouchDB por função JS `index(type,name,value,options)` num design doc. Campos de frontmatter só se estiverem no documento (o LiveSync grava notas como chunks, não campos). Tipos: text, string, double, stored. Sem chunking por título.",
+ "atualizacao": "Automática pelo banco: o índice acompanha as mudanças dos documentos (commitIntervalSeconds: 30 na amostra de config), inclusive as que chegam por replicação.",
+ "embeddings_endpoint": "Não usa embeddings: só Lucene lexical (Lucene Query Parser Syntax). Busca vetorial não aparece na página.",
+ "recursos": "Servidor Nouveau separado em JVM (Java 21+), DropWizard, jar com dependências no mesmo diretório; heap/memória: nao_verificado (a página não dá -Xmx).",
+ "licenca": "nao_verificado nas páginas lidas (CouchDB em geral é Apache-2.0)",
+ "ultimo_release": "nao_verificado",
+ "atividade": "nao_verificado",
+ "maturidade": "alpha/experimental: \"Nouveau is an experimental feature\"; versões futuras podem mudar endpoints e invalidar índices; Lucene 9 para 10.",
+ "encaixe": "Dentro do CouchDB de cada máquina, sem copiar notas. Impedimentos: experimental, JVM extra, notas do LiveSync são chunks (não texto do arquivo), sem semântica e sem MCP.",
+ "evidencias": [
+  {
+   "campo": "maturidade",
+   "url": "https://docs.couchdb.org/en/latest/ddocs/nouveau.html",
+   "citacao": "Nouveau is an experimental feature."
+  },
+  {
+   "campo": "portugues",
+   "url": "https://docs.couchdb.org/en/latest/ddocs/nouveau.html",
+   "citacao": "arabic, chinese, english, french, german, japanese, portuguese, russian, spanish, standard"
+  },
+  {
+   "campo": "recursos",
+   "url": "https://docs.couchdb.org/en/latest/install/nouveau.html",
+   "citacao": "java -jar /path/to/nouveau.jar server /path/to/nouveau.yaml"
+  },
+  {
+   "campo": "recursos",
+   "url": "https://docs.couchdb.org/en/latest/install/nouveau.html",
+   "citacao": "runtime-compatible with Java 21 or higher"
+  },
+  {
+   "campo": "atualizacao",
+   "url": "https://docs.couchdb.org/en/latest/install/nouveau.html",
+   "citacao": "commitIntervalSeconds: 30"
+  },
+  {
+   "campo": "markdown_frontmatter",
+   "url": "https://docs.couchdb.org/en/latest/ddocs/nouveau.html",
+   "citacao": "index(type, name, value, options) ... text, string, double, stored"
+  }
+ ],
+ "nao_verificado": [
+  "Windows",
+  "licença",
+  "último release",
+  "memória/heap",
+  "tamanho de índice",
+  "comportamento com documentos de chunks do LiveSync"
+ ]
+}

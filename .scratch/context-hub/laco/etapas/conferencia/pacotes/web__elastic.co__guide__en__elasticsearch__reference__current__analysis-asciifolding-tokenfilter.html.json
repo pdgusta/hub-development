@@ -1,0 +1,54 @@
+{
+ "chave": "web:elastic.co/guide/en/elasticsearch/reference/current/analysis-asciifolding-tokenfilter.html",
+ "nomes": [
+  "Elasticsearch Ascii Folding Token Filter"
+ ],
+ "urls": [
+  "https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-asciifolding-tokenfilter.html"
+ ],
+ "readme_cortado": false,
+ "readme": "[ASCII folding token filter | Elasticsearch Reference]\n\nDocs\n\n /\n\n Reference\n\n /\n\n Elasticsearch\n\n /\n\n Text analysis components\n\n /\n\n Token filter reference\n\nASCII folding token filter\n\nConverts alphabetic, numeric, and symbolic characters that are not in the Basic Latin Unicode block (first 127 ASCII characters) to their ASCII equivalent, if one exists. For example, the filter changes à to a.\n\nThis filter uses Lucene’s ASCIIFoldingFilter.\n\nExample\n\nThe following analyze API request uses the asciifolding filter to drop the diacritical marks in açaí à la carte:\n\n GET /_analyze\n {\n \"tokenizer\" : \"standard\",\n \"filter\" : [\"asciifolding\"],\n \"text\" : \"açaí à la carte\"\n}\n\nThe filter produces the following tokens:\n\n[ acai, a, la, carte ]\n\nAdd to an analyzer\n\nThe following create index API request uses the asciifolding filter to configure a new custom analyzer.\n\n PUT /asciifold_example\n {\n \"settings\": {\n \"analysis\": {\n \"analyzer\": {\n \"standard_asciifolding\": {\n \"tokenizer\": \"standard\",\n \"filter\": [ \"asciifolding\" ]\n }\n }\n }\n }\n}\n\nConfigurable parameters\n\npreserve_original\n(Optional, Boolean) If true, emit both original tokens and folded tokens. Defaults to false.\n\nCustomize\n\nTo customize the asciifolding filter, duplicate it to create the basis for a new custom token filter. You can modify the filter using its configurable parameters.\n\nFor example, the following request creates a custom asciifolding filter with preserve_original set to true:\n\n PUT /asciifold_example\n {\n \"settings\": {\n \"analysis\": {\n \"analyzer\": {\n \"standard_asciifolding\": {\n \"tokenizer\": \"standard\",\n \"filter\": [ \"my_ascii_folding\" ]\n }\n },\n \"filter\": {\n \"my_ascii_folding\": {\n \"type\": \"asciifolding\",\n \"preserve_original\": true\n }\n }\n }\n }\n}",
+ "fonte": "site",
+ "respostas": [
+  {
+   "por": "ising-calibration-1.5-31b",
+   "resposta": {
+    "serve": "stack",
+    "role": "Token filter for normalizing text to ASCII, used in Elasticsearch analysis pipelines.",
+    "place": [
+     "library"
+    ],
+    "mechanism": [
+     "other"
+    ],
+    "mcp": "no",
+    "windows": "unknown",
+    "portuguese": "no",
+    "license": "unknown",
+    "maturity": "stable",
+    "doubt": false,
+    "evidence": "The project is a component of Elasticsearch's text analysis framework, specifically a token filter for ASCII normalization. It is not a standalone search service or MCP server, but rather a library function used within the Elasticsearch stack."
+   }
+  },
+  {
+   "por": "dots3-note-preview",
+   "resposta": {
+    "serve": "search",
+    "role": "Normalizes accented characters for indexing and search.",
+    "place": [
+     "network_service"
+    ],
+    "mechanism": [
+     "full_text"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "yes",
+    "license": "unknown",
+    "maturity": "unknown",
+    "doubt": false,
+    "evidence": "Converts alphabetic, numeric, and symbolic characters to ASCII; example uses Portuguese text; no mention of MCP or Windows."
+   }
+  }
+ ]
+}

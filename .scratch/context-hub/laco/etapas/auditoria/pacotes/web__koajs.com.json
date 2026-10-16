@@ -1,0 +1,86 @@
+{
+ "chave": "web:koajs.com",
+ "nomes": [
+  "Koa.js"
+ ],
+ "urls": [
+  "https://koajs.com/"
+ ],
+ "readme_cortado": true,
+ "readme": "[Koa - next generation web framework for node.js]\n\nIntroduction\nApplication\nContext\nRequest\nResponse\nLinks\n\nKoa\nnext generation web framework for node.js\n\nIntroduction\nKoa is a new web framework designed by the team behind Express,\nwhich aims to be a smaller, more expressive, and more robust foundation\nfor web applications and APIs. By leveraging async functions, Koa allows you\nto ditch callbacks and greatly increase error-handling. Koa does not bundle any\nmiddleware within its core, and it provides an elegant suite of methods that make\nwriting servers fast and enjoyable.\n\nInstallation\n\n Koa requires node v18.0.0 or higher for ES2015 and async function support.\n\n You can quickly install a supported version of Node with your favorite version manager:\n\n$ nvm install 22\n$ npm i koa\n$ node my-koa-app.js\nApplication\n\n A Koa application is an object containing an array of middleware functions\n which are composed and executed in a stack-like manner upon request. Koa is similar to many\n other middleware systems that you may have encountered such as Ruby's Rack, Connect, and so on -\n however a key design decision was made to provide high level \"sugar\" at the otherwise low-level\n middleware layer. This improves interoperability, robustness, and makes writing middleware much\n more enjoyable.\n\n This includes methods for common tasks like content-negotiation, cache freshness, proxy support, and redirection\n among others. Despite supplying a reasonably large number of helpful methods Koa maintains a small footprint, as\n no middleware are bundled.\n\n The obligatory hello world application:\n\nconst Koa = require('koa');\nconst app = new Koa();\n\napp.use(async ctx => {\n ctx.body = 'Hello World';\n});\n\napp.listen(3000);\nCascading\n\n Koa middleware cascade in a more traditional way as you may be used to with similar tools -\n this was previously difficult to make user friendly with Node's use of callbacks.\n However with async functions we can achieve \"true\" middleware. Contrasting Connect's implementation which\n simply passes control through series of functions until one returns, Koa invoke \"downstream\", then\n control flows back \"upstream\".\n\n The following example responds with \"Hello World\", however first the request flows through\n the x-response-time and logging middleware to mark when the request started, then yields control through the response middleware. When a middleware invokes next()\n the function suspends and passes control to the next middleware defined. After there are no more\n middleware to execute downstream, the stack will unwind and each middleware is resumed to perform\n its upstream behaviour.\n\nconst Koa = require('koa');\nconst app = new Koa();\n\n// logger\n\napp.use(async (ctx, next) => {\n await next();\n const rt = ctx.response.get('X-Response-Time');\n console.log(`${ctx.method} ${ctx.url} - ${rt}`);\n});\n\n// x-response-time\n\napp.use(async (ctx, next) => {\n const start = Date.now();\n await next();\n const ms = Date.now() - start;\n ctx.set('X-Response-Time', `${ms}ms`);\n});\n\n// response\n\napp.use(async ctx => {\n ctx.body = 'Hello World';\n});\n\napp.listen(3000);\nSettings\n\n Application settings are properties on the app instance, currently\n the following are supported:\n\napp.env defaulting to the NODE_ENV or \"development\"\n\napp.keys array of signed cookie keys\n\napp.proxy when true proxy header fields will be trusted\n\napp.subdomainOffset offset of .subdomains to ignore, default to 2\n\napp.proxyIpHeader proxy ip header, default to X-Forwarded-For\n\napp.maxIpsCount max ips read from proxy ip header, default to 0 (means infinity)\n\napp.asyncLocalStorage<Boolean|asyncLocalStorage> - pass true or an instance of AsyncLocalStorage to enable async local storage. See below for details.\n\nYou can pass the settings to the constructor:\n\nconst Koa = require('koa');\nconst app = new Koa({ proxy: true });\nor dynamically:\n\nconst Koa = require('koa');\nconst app = new Koa();\napp.proxy = true;\n\napp.listen(...)\n\n A Koa application is not a 1-to-1 representation of an HTTP server.\n One or more Koa applications may be mounted together to form larger\n applications with a single HTTP server.\n\n Create and return an HTTP server, passing the given arguments to\n Server#listen(). These arguments are documented on nodejs.org. The following is a useless Koa application bound to port 3000:\n\nconst Koa = require('koa');\nconst app = new Koa();\napp.listen(3000);\n The app.listen(...) method is simply sugar for the following:\n\nconst http = require('http');\nconst Koa = require('koa');\nconst app = new Koa();\nhttp.createServer(app.callback()).listen(3000);\n This means you can spin up the same application as both HTTP and HTTPS\n or on multiple addresses:\n\nconst http = require('http');\nconst https = require('https');\nconst Koa = require('koa');\nconst app = new Koa();\nhttp.createServer(app.callback()).listen(3000);\nhttps.createServer(app.callback()).listen(3001);\napp.callback()\n\n Return a callback function suitable for the http.createServer()\n method to handle a request.\n You may also use this callback function to mount your Koa app in a\n Connect/Express app.\n\napp.use(function)\n\n Add the given middleware function to this application.\n app.use() returns this, so is chainable.\n\napp.use(someMiddleware)\napp.use(someOtherMiddleware)\napp.listen(3000)\n Is the same as\n\napp.use(someMiddleware)\n .use(someOtherMiddleware)\n .listen(3000)\n See Middleware for\n more information.\n\napp.keys=\n\n Set signed cookie keys.\n\n These are passed to KeyGrip,\n however you may also pass your own KeyGrip instance. For\n example the following are acceptable:\n\napp.keys = ['OEK5zjaAMPc3L6iK7PyUjCOziUH3rsrMKB9u8H07La1SkfwtuBoDnHaaPCkG5Brg', 'MNKeIebviQnCPo38ufHcSfw3FFv8EtnAe1xE02xkN1wkCV1B2z126U44yk2BQVK7'];\napp.keys = new KeyGrip(['OEK5zjaAMPc3L6iK7PyUjCOziUH3rsrMKB9u8H07La1SkfwtuBoDnHaaPCkG5Brg', 'MNKeIebviQnCPo38ufHcSfw3FFv8EtnAe1xE02xkN1wkCV1B2z126U44yk2BQVK7'], 'sha256');\n For security reasons, please ensure that the key is long enough and random.\n\n These keys may be rotated and are used when signing cookies\n with the { signed: true } option:\n\nctx.cookies.set('name', 'tobi', { signed: true });\napp.context\n\n app.context is the prototype from which ctx is created.\n You may add additional properties to ctx by editing app.context.\n This is useful for adding properties or methods to ctx to be used across your entire app,\n which may be more performant (no middleware) and/or easier (fewer require()s)\n at the expense of relying more on ctx, which could be considered an anti-pattern.\n\n For example, to add a reference to your database from ctx:\n\napp.context.db = db();\n\napp.use(async ctx => {\n console.log(ctx.db);\n});\nNote:\n\nMany properties on ctx are defined using getters, setters, and Object.defineProperty(). You can only edit these properties (not recommended) by using Object.defineProperty() on app.context. See https://github.com/koajs/koa/issues/652.\n\nMounted apps currently use their parent's ctx and settings. Thus, mounted apps are really just groups of middleware.\n\napp.currentContext\n\nNew in Koa v3.\n\nIf asyncLocalStorage is enabled, this will return the current context for the request. For example:\n\nconst app = new Koa({ asyncLocalStorage: true })\n\napp.use(async (ctx, next) => {\n callSomeFunction()\n})\n\nfunction callSomeFunction () {\n app.currentContext = {} /* ctx of the middleware above */\n}\nStarting in v3.1.0, you can also pass your own AsyncLocalStorage instance:\n\nconst asyncLocalStorage = new AsyncLocalStorage()\nconst app = new Koa({ asyncLocalStorage })\n\napp.use(async (ctx, next) => {\n callSomeFunction()\n})\n\nfunction callSomeFunction () {\n const ctx = asyncLocalStorage.getStore()\n}\nUse this to pass key request details like request ID or the user to your internal services.\n\nError Handling\n\n By default outputs all errors to stderr unless app.silent is true.\n The default error handler also won't output errors when err.status is 404 or err.expose is true.\n To perform custom error-handling logic such as centralized logging you can add an \"error\" event listener:\n\napp.on('error', err => {\n log.error('server error', err)\n});\n If an error is in the req/res cycle and it is not possible to respond to the client, the Context instance is also passed:\n\napp.on('error', (err, ctx) => {\n log.error('server error', err, ctx)\n});\n When an error occurs and it is still possible to respond to the client, aka no data has been written to the socket, Koa will respond\n appropriately with a 500 \"Internal Server Error\". In either case\n an app-level \"error\" is emitted for logging purposes.\n\nContext\n\n A Koa Context encapsulates Node's request and response objects\n into a single object which provides many helpful methods for writing\n web applications and APIs.\n These operations are used so frequently in HTTP server development\n that they are added at this level instead of a higher level framework,\n which would force middleware to re-implement this common functionality.\n\n A Context is created per request, and is referenced in middleware\n as the receiver, or the ctx identifier, as shown in the following\n snippet:\n\napp.use(async ctx => {\n ctx; // is the Context\n ctx.request; // is a Koa Request\n ctx.response; // is a Koa Response\n});\n Many of the context's accessors and methods simply delegate to their ctx.request or ctx.response\n equivalents for convenience, and are otherwise identical. For example ctx.type and ctx.length\n delegate to the response object, and ctx.path and ctx.method delegate to the request.\n\nAPI\n\n Context specific methods and accessors.\n\nctx.req\n\n Node's request object.\n\nctx.res\n\n Node's response object.\n\n Bypassing Koa's response handling is not supported. Avoid using the following Node properties:\n\nres.statusCode\n\nres.writeHead()\n\nres.write()\n\nres.end()\n\nctx.request\n\n A Koa Request object.\n\nctx.response\n\n A Koa Response object.\n\nctx.state\n\n The recommended namespace for passing information through middleware and to your frontend views.\n\nctx.state.user = await User.find(id);\nctx.app\n\n Application instance reference.\n\nctx.app.emit\n\n Koa applications extend an internal EventEmitter. ctx.app.emit emits an event with a type, defined by the first argument. For each event you can hook up \"listeners\", which is a function that is called when the event is emitted. Consult the error handling docs for more information.\n\nctx.cookies.get(name, [options])\n\n Get cookie name with options:\n\nsigned the cookie requested should be signed\n\nKoa uses the cookies module where options are simply passed.\n\nctx.cookies.set(name, value, [options])\n\n Set cookie name to value with options:\n\nmaxAge: a number representing the milliseconds from Date.now() for expiry.\n\nexpires: a Date object indicating the cookie's expiration date (expires at the end of session by default).\n\npath: a string indicating the path of the cookie (/ by default).\n\ndomain: a string indicating the domain of the cookie (no default).\n\nsecure: a boolean indicating whether the cookie is only to be sent over HTTPS (false by default for HTTP, true by default for HTTPS). Read more about this option.\n\nhttpOnly: a boolean indicating whether the cookie is only to be sent over HTTP(S), and not made available to client JavaScript (true by default).\n\npartitioned: a boolean indicating whether to partition the cookie in Chrome for the CHIPS Update (false by default). If this is true, Cookies from embedded sites will be partitioned and only readable from the same top level site from which it was created.\n\npriority: a string indicating the cookie priority. This can be set to 'low', 'medium', or 'high'.\n\nsameSite: a boolean or string indicating whether the cookie is a \"same site\" cookie (false by default). This can be set to 'strict', 'lax', 'none', or true (which maps to 'strict').\n\nsigned: a boolean indicating whether the cookie is to be signed (false by default). If this is true, another cookie of the same name with the .sig suffix appended will also be sent, with a 27-byte url-safe base64 SHA1 value representing the hash of cookie-name=cookie-value against the first Keygrip key. This signature key is used to",
+ "fonte": "site",
+ "respostas": [
+  {
+   "por": "ising-calibration-1.5-31b",
+   "resposta": {
+    "serve": "stack",
+    "role": "Web framework for building APIs and web applications, providing middleware composition and context management.",
+    "place": [
+     "disk",
+     "network_service"
+    ],
+    "mechanism": [
+     "other"
+    ],
+    "mcp": "no",
+    "windows": "unknown",
+    "portuguese": "no",
+    "license": "MIT",
+    "maturity": "stable",
+    "doubt": false,
+    "evidence": "Koa is a well-established web framework for Node.js, known for its middleware-centric approach and async function support. It is not a search engine or a database, but rather a server-side framework used to build web services and APIs. The README explicitly states it is a 'web framework' and provides examples of how to use it to create HTTP servers."
+   }
+  },
+  {
+   "por": "gemma-4-31b",
+   "resposta": {
+    "serve": "stack",
+    "role": "foundation for building web applications and APIs, potentially for MCP servers",
+    "place": [
+     "network_service",
+     "library"
+    ],
+    "mechanism": [
+     "n/a"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "stable",
+    "doubt": false,
+    "evidence": "web framework for node.js; foundation for web applications and APIs"
+   }
+  }
+ ],
+ "conferencia_sonnet": {
+  "chave": "web:koajs.com",
+  "modelo": "claude-sonnet-5-5",
+  "ts": "2026-10-13T21:31:35Z",
+  "resultado": "rejeita",
+  "conferencia": {
+   "resultado": "rejeita",
+   "final": {
+    "serve": "none",
+    "role": "",
+    "place": [
+     "library"
+    ],
+    "mechanism": [
+     "n/a"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "stable",
+    "doubt": false,
+    "evidence": "next generation web framework for node.js"
+   },
+   "o_que_mudou": [
+    "serve: stack -> none, generic web framework, not a hub component"
+   ],
+   "nota": "Generic Node web framework; not a search or stack part of the hub."
+  }
+ }
+}

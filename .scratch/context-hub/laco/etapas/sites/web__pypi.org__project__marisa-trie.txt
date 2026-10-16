@@ -1,0 +1,4892 @@
+Skip to main content
+ Switch to mobile version
+
+marisa-trie 1.4.1
+
+Static memory-efficient and fast Trie-like structures for Python.
+
+ pip install marisa-trie
+
+ Copy PIP instructions
+
+MARISA Trie
+
+Tip
+
+Become my boss to help me work on this awesome software, and make the world better:
+
+Static memory-efficient Trie-like structures for Python (3.9+)
+based on marisa-trie C++ library.
+
+String data in a MARISA-trie may take up to 50x-100x less memory than
+in a standard Python dict; the raw lookup speed is comparable; trie also
+provides fast advanced methods like prefix search.
+
+Note
+
+There are official SWIG-based Python bindings included
+in C++ library distribution; this package provides alternative
+Cython-based pip-installable Python bindings.
+
+Installation
+
+python -m pip install -U marisa-trie
+
+Usage
+
+See tutorial and API for details.
+
+For immutable str -> str mappings, use marisa_trie.StringTrie
+(implemented as two internal tries plus a compact ID mapping table).
+
+Current limitations
+
+The library is not tested with mingw32 compiler;
+
+.prefixes() method of BytesTrie and RecordTrie is quite slow
+and doesn’t have iterator counterpart;
+
+read() and write() methods don’t work with file-like objects
+(they work only with real files; pickling works fine for file-like objects);
+
+Trie, BytesTrie and RecordTrie provide keys() and
+items() methods but no values() method.
+
+License
+
+Wrapper code is licensed under MIT License.
+
+Bundled marisa-trie C++ library is dual-licensed under
+LGPL or BSD 2-clause license.
+
+CHANGES
+
+1.4.1 (2026-04-08)
+
+Publish Windows ARM64 wheels (#140).
+
+1.4.0 (2026-03-10)
+
+Initial free-threading support and testing (#128).
+
+Added StringTrie: an immutable str -> str mapping backed by two
+MARISA tries and a fixed-width 4-byte key-ID to value-ID table (#138).
+
+1.3.1 (2025-08-26)
+
+Set the Cython language level to “3” (#126)
+
+1.3.0 (2025-08-16)
+
+Updated libmarisa-trie to the latest version (0.2.7) (#116).
+
+Dropped Python 3.7, 3.8 support (#112, #120).
+
+Added Python 3.13 support (#112).
+
+Rebuild Cython wrapper with Cython 3.1.3 (#119, [4d564de](4d564de332191c3fe33aa2240cae2494c597bba2)).
+
+Moved static project metadata to pyproject.toml (#120).
+
+Updated metadata license to include the bundled one from marisa-trie as well (#120).
+
+Add Cython as build dependency (#122).
+
+1.2.1 (2024-10-12)
+
+Publish Python 3.13 wheels (only CPython ones, PyPy ones are skipped until https://github.com/pypa/distutils/issues/283 is fixed).
+
+Rebuild Cython wrapper with Cython 3.0.11.
+
+1.2.0 (2024-06-05)
+
+Added Python 3.13 support (#105).
+
+Rebuild Cython wrapper with Cython 3.0.10 (#105).
+
+1.1.1 (2024-05-06)
+
+Publish Linux aarch64 wheels (#101).
+
+1.1.0 (2023-10-06)
+
+Added Python 3.12 support.
+
+1.0.0 (2023-09-03)
+
+Dropped Python 2.7, 3.4, 3.5, 3.6 support.
+
+Added Trie.map() (#90).
+
+Rebuilt Cython wrapper with Cython 3.0.2.
+
+Fixed benchmark documentation typos (#89).
+
+0.8.0 (2023-03-25)
+
+Add Trie.iter_prefixes_with_ids() method to return (prefix, id) pairs (#83).
+
+Rebuild Cython wrapper with Cython 0.29.33 (#88).
+
+0.7.8 (2022-10-25)
+
+Added Python 3.11 support.
+
+Rebuild Cython wrapper with Cython 0.29.32.
+
+0.7.7 (2021-08-04)
+
+Restored Python 2.7 support.
+
+Fixed README image references not working on Windows.
+
+0.7.6 (2021-07-28)
+
+Wheels are now published for all platforms.
+
+Fixed ResourceWarning: unclosed file in setup.py.
+
+Run black on the entire source code.
+
+Moved the QA/CI to GitHub.
+
+Rebuild Cython wrapper with Cython 0.29.24.
+
+Updated libmarisa-trie to the latest version (0.2.6).
+
+Fixed failing tests and usage of deprecated methods.
+
+Expanded supported Python version (2.7, 3.4 - 3.10).
+
+0.7.5 (2018-04-10)
+
+Removed redundant DeprecationWarning messages in Trie.save and
+Trie.load.
+
+Dropped support for Python 2.6.
+
+Rebuild Cython wrapper with Cython 0.28.1.
+
+0.7.4 (2017-03-27)
+
+Fixed packaging issue, MANIFEST.in was not updated after libmarisa-trie
+became a submodule.
+
+0.7.3 (2017-02-14)
+
+Added BinaryTrie for storing arbitrary sequences of bytes, e.g. IP
+addresses (thanks Tomasz Melcer);
+
+Deprecated Trie.has_keys_with_prefix which can be trivially implemented in
+terms of Trie.iterkeys;
+
+Deprecated Trie.read and Trie.write which onlywork for “real” files
+and duplicate the functionality of load and save. See issue #31 on
+GitHub;
+
+Updated libmarisa-trie to the latest version. Yay, 64-bit Windows support.
+
+Rebuilt Cython wrapper with Cython 0.25.2.
+
+0.7.2 (2015-04-21)
+
+packaging issue is fixed.
+
+0.7.1 (2015-04-21)
+
+setup.py is switched to setuptools;
+
+a tiny speedup;
+
+wrapper is rebuilt with Cython 0.22.
+
+0.7 (2014-12-15)
+
+trie1 == trie2 and trie1 != trie2 now work (thanks Sergei Lebedev);
+
+for key in trie: is fixed (thanks Sergei Lebedev);
+
+wrapper is rebuilt with Cython 0.21.1 (thanks Sergei Lebedev);
+
+https://bitbucket.org/kmike/marisa-trie repo is no longer supported.
+
+0.6 (2014-02-22)
+
+New Trie methods: __getitem__, get, items, iteritems.
+trie[u'key'] is now the same as trie.key_id(u'key').
+
+small optimization for BytesTrie.get.
+
+wrapper is rebuilt with Cython 0.20.1.
+
+0.5.3 (2014-02-08)
+
+small Trie.restore_key optimization (it should work 5-15% faster)
+
+0.5.2 (2014-02-08)
+
+fix Trie.restore_key method - it was reading past declared string length;
+
+rebuild wrapper with Cython 0.20.
+
+0.5.1 (2013-10-03)
+
+has_keys_with_prefix(prefix) method (thanks
+Matt Hickford)
+
+0.5 (2013-05-07)
+
+BytesTrie.iterkeys, BytesTrie.iteritems,
+RecordTrie.iterkeys and RecordTrie.iteritems methods;
+
+wrapper is rebuilt with Cython 0.19;
+
+value_separator parameter for BytesTrie and RecordTrie.
+
+0.4 (2013-02-28)
+
+improved trie building: weights optional parameter;
+
+improved trie building: unnecessary input sorting is removed;
+
+wrapper is rebuilt with Cython 0.18;
+
+bundled marisa-trie C++ library is updated to svn r133.
+
+0.3.8 (2013-01-03)
+
+Rebuild wrapper with Cython pre-0.18;
+
+update benchmarks.
+
+0.3.7 (2012-09-21)
+
+Update bundled marisa-trie C++ library (this may fix more mingw issues);
+
+Python 3.3 support is back.
+
+0.3.6 (2012-09-05)
+
+much faster (3x-7x) .items() and .keys() methods for all tries;
+faster (up to 3x) .prefixes() method for Trie.
+
+0.3.5 (2012-08-30)
+
+Pickling of RecordTrie is fixed (thanks lazarou for the report);
+
+error messages should become more useful.
+
+0.3.4 (2012-08-29)
+
+Issues with mingw32 should be resolved (thanks Susumu Yata).
+
+0.3.3 (2012-08-27)
+
+.get(key, default=None) method for BytesTrie and RecordTrie;
+
+small README improvements.
+
+0.3.2 (2012-08-26)
+
+Small code cleanup;
+
+load, read and mmap methods returns ‘self’;
+
+I can’t run tests (via tox) under Python 3.3 so it is
+removed from supported versions for now.
+
+0.3.1 (2012-08-23)
+
+.prefixes() support for RecordTrie and BytesTrie.
+
+0.3 (2012-08-23)
+
+RecordTrie and BytesTrie are introduced;
+
+IntTrie class is removed (probably temporary?);
+
+dumps/loads methods are renamed to tobytes/frombytes;
+
+benchmark & tests improvements;
+
+support for MARISA-trie config options is added.
+
+0.2 (2012-08-19)
+
+Pickling/unpickling support;
+
+dumps/loads methods;
+
+python 3.3 workaround;
+
+improved tests;
+
+benchmarks.
+
+0.1 (2012-08-17)
+
+Initial release.
+
+Project links
+
+ Source
+
+Key dates
+
+ PyPI data
+
+Data sourced directly from PyPI's database.
+
+ Released: 
+ Apr 8, 2026
+
+ Latest release
+
+2 maintainers 
+
+ PyPI data
+
+Data sourced directly from PyPI's database.
+
+ kmike
+
+ T2
+
+Credits
+
+Author: 
+ Mikhail Korobov
+
+License expression 
+
+ MIT AND (BSD-2-Clause OR LGPL-2.1-or-later)
+
+ View SPDX License List
+
+Requires
+
+Python >=3.9
+
+Provides Extra
+
+ test
+
+Classifiers
+
+ Development Status
+
+ 4 - Beta
+
+ Intended Audience
+
+ Developers
+
+ Science/Research
+
+ Programming Language
+
+ Cython
+
+ Python
+
+ Python :: 3
+
+ Python :: 3.9
+
+ Python :: 3.10
+
+ Python :: 3.11
+
+ Python :: 3.12
+
+ Python :: 3.13
+
+ Python :: 3.14
+
+ Python :: Free Threading :: 2 - Beta
+
+ Python :: Implementation :: CPython
+
+ Topic
+
+ Scientific/Engineering :: Information Analysis
+
+ Software Development :: Libraries :: Python Modules
+
+ Text Processing :: Linguistic
+
+ Report project as malware
+
+Metadata
+
+Project links
+
+ Source
+
+Key dates
+
+ PyPI data
+
+Data sourced directly from PyPI's database.
+
+ Released: 
+ Apr 8, 2026
+
+ Latest release
+
+2 maintainers 
+
+ PyPI data
+
+Data sourced directly from PyPI's database.
+
+ kmike
+
+ T2
+
+Credits
+
+Author: 
+ Mikhail Korobov
+
+License expression 
+
+ MIT AND (BSD-2-Clause OR LGPL-2.1-or-later)
+
+ View SPDX License List
+
+Requires
+
+Python >=3.9
+
+Provides Extra
+
+ test
+
+Classifiers
+
+ Development Status
+
+ 4 - Beta
+
+ Intended Audience
+
+ Developers
+
+ Science/Research
+
+ Programming Language
+
+ Cython
+
+ Python
+
+ Python :: 3
+
+ Python :: 3.9
+
+ Python :: 3.10
+
+ Python :: 3.11
+
+ Python :: 3.12
+
+ Python :: 3.13
+
+ Python :: 3.14
+
+ Python :: Free Threading :: 2 - Beta
+
+ Python :: Implementation :: CPython
+
+ Topic
+
+ Scientific/Engineering :: Information Analysis
+
+ Software Development :: Libraries :: Python Modules
+
+ Text Processing :: Linguistic
+
+ Report project as malware
+
+Release files for marisa-trie 1.4.1
+
+For a detailed explanation of source distributions (sdists) and built distributions (wheels), please see the package formats documentation. 
+
+Source distribution (sdist) 
+
+ Source distribution for marisa-trie 1.4.1
+
+ File
+ Size
+ Uploaded
+
+ marisa_trie-1.4.1.tar.gz
+
+ 261.6 kB
+
+ Apr 8, 2026
+
+ Details
+
+Built distributions (wheels) 
+
+ Search wheels
+
+ Table of built distributions (wheels) for marisa-trie 1.4.1
+
+ File
+
+ Interpreter
+
+ Interpreter
+ CPython 3.9
+ CPython 3.10
+ CPython 3.11
+ CPython 3.12
+ CPython 3.13
+ CPython 3.14
+
+ ABI
+
+ ABI
+ CPython 3.9
+ CPython 3.10
+ CPython 3.11
+ CPython 3.12
+ CPython 3.13
+ CPython 3.13 free-threading
+ CPython 3.14
+ CPython 3.14 free-threading
+
+ Platform
+
+ Platform
+ macOS 10.9+ x86-64
+ macOS 10.13+ x86-64
+ macOS 10.15+ x86-64
+ macOS 11.0+ ARM64
+ Linux glibc 2.24+ ARM64
+ Linux glibc 2.24+ x86-64
+ Linux glibc 2.28+ ARM64
+ Linux glibc 2.28+ x86-64
+ Linux musl 1.2+ ARM64
+ Linux musl 1.2+ x86-64
+ Windows x86-32
+ Windows x86-64
+ Windows ARM64
+
+ Reset
+
+ marisa_trie-1.4.1-cp314-cp314t-win_arm64.whl
+
+ 151.5 kB
+
+ Apr 8, 2026
+
+ CPython 3.14
+
+ CPython 3.14 free-threading
+
+ Windows ARM64
+
+ Details
+
+ marisa_trie-1.4.1-cp314-cp314t-win_amd64.whl
+
+ 199.1 kB
+
+ Apr 8, 2026
+
+ CPython 3.14
+
+ CPython 3.14 free-threading
+
+ Windows x86-64
+
+ Details
+
+ marisa_trie-1.4.1-cp314-cp314t-win32.whl
+
+ 160.7 kB
+
+ Apr 8, 2026
+
+ CPython 3.14
+
+ CPython 3.14 free-threading
+
+ Windows x86-32
+
+ Details
+
+ marisa_trie-1.4.1-cp314-cp314t-musllinux_1_2_x86_64.whl
+
+ 2.5 MB
+
+ Apr 8, 2026
+
+ CPython 3.14
+
+ CPython 3.14 free-threading
+
+ Linux musl 1.2+ x86-64
+
+ Details
+
+ marisa_trie-1.4.1-cp314-cp314t-musllinux_1_2_aarch64.whl
+
+ 2.4 MB
+
+ Apr 8, 2026
+
+ CPython 3.14
+
+ CPython 3.14 free-threading
+
+ Linux musl 1.2+ ARM64
+
+ Details
+
+ marisa_trie-1.4.1-cp314-cp314t-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl
+
+ 1.5 MB
+
+ Apr 8, 2026
+
+ CPython 3.14
+
+ CPython 3.14 free-threading
+
+ Linux glibc 2.28+ x86-64, Linux glibc 2.24+ x86-64
+
+ Details
+
+ marisa_trie-1.4.1-cp314-cp314t-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl
+
+ 1.5 MB
+
+ Apr 8, 2026
+
+ CPython 3.14
+
+ CPython 3.14 free-threading
+
+ Linux glibc 2.24+ ARM64, Linux glibc 2.28+ ARM64
+
+ Details
+
+ marisa_trie-1.4.1-cp314-cp314t-macosx_11_0_arm64.whl
+
+ 203.0 kB
+
+ Apr 8, 2026
+
+ CPython 3.14
+
+ CPython 3.14 free-threading
+
+ macOS 11.0+ ARM64
+
+ Details
+
+ marisa_trie-1.4.1-cp314-cp314t-macosx_10_15_x86_64.whl
+
+ 214.8 kB
+
+ Apr 8, 2026
+
+ CPython 3.14
+
+ CPython 3.14 free-threading
+
+ macOS 10.15+ x86-64
+
+ Details
+
+ marisa_trie-1.4.1-cp314-cp314-win_arm64.whl
+
+ 146.1 kB
+
+ Apr 8, 2026
+
+ CPython 3.14
+
+ CPython 3.14
+
+ Windows ARM64
+
+ Details
+
+ marisa_trie-1.4.1-cp314-cp314-win_amd64.whl
+
+ 173.3 kB
+
+ Apr 8, 2026
+
+ CPython 3.14
+
+ CPython 3.14
+
+ Windows x86-64
+
+ Details
+
+ marisa_trie-1.4.1-cp314-cp314-win32.whl
+
+ 143.0 kB
+
+ Apr 8, 2026
+
+ CPython 3.14
+
+ CPython 3.14
+
+ Windows x86-32
+
+ Details
+
+ marisa_trie-1.4.1-cp314-cp314-musllinux_1_2_x86_64.whl
+
+ 2.5 MB
+
+ Apr 8, 2026
+
+ CPython 3.14
+
+ CPython 3.14
+
+ Linux musl 1.2+ x86-64
+
+ Details
+
+ marisa_trie-1.4.1-cp314-cp314-musllinux_1_2_aarch64.whl
+
+ 2.4 MB
+
+ Apr 8, 2026
+
+ CPython 3.14
+
+ CPython 3.14
+
+ Linux musl 1.2+ ARM64
+
+ Details
+
+ marisa_trie-1.4.1-cp314-cp314-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl
+
+ 1.5 MB
+
+ Apr 8, 2026
+
+ CPython 3.14
+
+ CPython 3.14
+
+ Linux glibc 2.28+ x86-64, Linux glibc 2.24+ x86-64
+
+ Details
+
+ marisa_trie-1.4.1-cp314-cp314-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl
+
+ 1.5 MB
+
+ Apr 8, 2026
+
+ CPython 3.14
+
+ CPython 3.14
+
+ Linux glibc 2.28+ ARM64, Linux glibc 2.24+ ARM64
+
+ Details
+
+ marisa_trie-1.4.1-cp314-cp314-macosx_11_0_arm64.whl
+
+ 192.3 kB
+
+ Apr 8, 2026
+
+ CPython 3.14
+
+ CPython 3.14
+
+ macOS 11.0+ ARM64
+
+ Details
+
+ marisa_trie-1.4.1-cp314-cp314-macosx_10_15_x86_64.whl
+
+ 207.6 kB
+
+ Apr 8, 2026
+
+ CPython 3.14
+
+ CPython 3.14
+
+ macOS 10.15+ x86-64
+
+ Details
+
+ marisa_trie-1.4.1-cp313-cp313t-win_arm64.whl
+
+ 146.6 kB
+
+ Apr 8, 2026
+
+ CPython 3.13
+
+ CPython 3.13 free-threading
+
+ Windows ARM64
+
+ Details
+
+ marisa_trie-1.4.1-cp313-cp313t-win_amd64.whl
+
+ 186.6 kB
+
+ Apr 8, 2026
+
+ CPython 3.13
+
+ CPython 3.13 free-threading
+
+ Windows x86-64
+
+ Details
+
+ marisa_trie-1.4.1-cp313-cp313t-win32.whl
+
+ 154.0 kB
+
+ Apr 8, 2026
+
+ CPython 3.13
+
+ CPython 3.13 free-threading
+
+ Windows x86-32
+
+ Details
+
+ marisa_trie-1.4.1-cp313-cp313t-musllinux_1_2_x86_64.whl
+
+ 2.5 MB
+
+ Apr 8, 2026
+
+ CPython 3.13
+
+ CPython 3.13 free-threading
+
+ Linux musl 1.2+ x86-64
+
+ Details
+
+ marisa_trie-1.4.1-cp313-cp313t-musllinux_1_2_aarch64.whl
+
+ 2.4 MB
+
+ Apr 8, 2026
+
+ CPython 3.13
+
+ CPython 3.13 free-threading
+
+ Linux musl 1.2+ ARM64
+
+ Details
+
+ marisa_trie-1.4.1-cp313-cp313t-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl
+
+ 1.5 MB
+
+ Apr 8, 2026
+
+ CPython 3.13
+
+ CPython 3.13 free-threading
+
+ Linux glibc 2.28+ x86-64, Linux glibc 2.24+ x86-64
+
+ Details
+
+ marisa_trie-1.4.1-cp313-cp313t-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl
+
+ 1.5 MB
+
+ Apr 8, 2026
+
+ CPython 3.13
+
+ CPython 3.13 free-threading
+
+ Linux glibc 2.24+ ARM64, Linux glibc 2.28+ ARM64
+
+ Details
+
+ marisa_trie-1.4.1-cp313-cp313t-macosx_11_0_arm64.whl
+
+ 202.0 kB
+
+ Apr 8, 2026
+
+ CPython 3.13
+
+ CPython 3.13 free-threading
+
+ macOS 11.0+ ARM64
+
+ Details
+
+ marisa_trie-1.4.1-cp313-cp313t-macosx_10_13_x86_64.whl
+
+ 213.4 kB
+
+ Apr 8, 2026
+
+ CPython 3.13
+
+ CPython 3.13 free-threading
+
+ macOS 10.13+ x86-64
+
+ Details
+
+ marisa_trie-1.4.1-cp313-cp313-win_arm64.whl
+
+ 139.6 kB
+
+ Apr 8, 2026
+
+ CPython 3.13
+
+ CPython 3.13
+
+ Windows ARM64
+
+ Details
+
+ marisa_trie-1.4.1-cp313-cp313-win_amd64.whl
+
+ 168.9 kB
+
+ Apr 8, 2026
+
+ CPython 3.13
+
+ CPython 3.13
+
+ Windows x86-64
+
+ Details
+
+ marisa_trie-1.4.1-cp313-cp313-win32.whl
+
+ 138.7 kB
+
+ Apr 8, 2026
+
+ CPython 3.13
+
+ CPython 3.13
+
+ Windows x86-32
+
+ Details
+
+ marisa_trie-1.4.1-cp313-cp313-musllinux_1_2_x86_64.whl
+
+ 2.5 MB
+
+ Apr 8, 2026
+
+ CPython 3.13
+
+ CPython 3.13
+
+ Linux musl 1.2+ x86-64
+
+ Details
+
+ marisa_trie-1.4.1-cp313-cp313-musllinux_1_2_aarch64.whl
+
+ 2.4 MB
+
+ Apr 8, 2026
+
+ CPython 3.13
+
+ CPython 3.13
+
+ Linux musl 1.2+ ARM64
+
+ Details
+
+ marisa_trie-1.4.1-cp313-cp313-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl
+
+ 1.5 MB
+
+ Apr 8, 2026
+
+ CPython 3.13
+
+ CPython 3.13
+
+ Linux glibc 2.28+ x86-64, Linux glibc 2.24+ x86-64
+
+ Details
+
+ marisa_trie-1.4.1-cp313-cp313-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl
+
+ 1.5 MB
+
+ Apr 8, 2026
+
+ CPython 3.13
+
+ CPython 3.13
+
+ Linux glibc 2.28+ ARM64, Linux glibc 2.24+ ARM64
+
+ Details
+
+ marisa_trie-1.4.1-cp313-cp313-macosx_11_0_arm64.whl
+
+ 190.1 kB
+
+ Apr 8, 2026
+
+ CPython 3.13
+
+ CPython 3.13
+
+ macOS 11.0+ ARM64
+
+ Details
+
+ marisa_trie-1.4.1-cp313-cp313-macosx_10_13_x86_64.whl
+
+ 206.6 kB
+
+ Apr 8, 2026
+
+ CPython 3.13
+
+ CPython 3.13
+
+ macOS 10.13+ x86-64
+
+ Details
+
+ marisa_trie-1.4.1-cp312-cp312-win_arm64.whl
+
+ 139.7 kB
+
+ Apr 8, 2026
+
+ CPython 3.12
+
+ CPython 3.12
+
+ Windows ARM64
+
+ Details
+
+ marisa_trie-1.4.1-cp312-cp312-win_amd64.whl
+
+ 168.5 kB
+
+ Apr 8, 2026
+
+ CPython 3.12
+
+ CPython 3.12
+
+ Windows x86-64
+
+ Details
+
+ marisa_trie-1.4.1-cp312-cp312-win32.whl
+
+ 138.9 kB
+
+ Apr 8, 2026
+
+ CPython 3.12
+
+ CPython 3.12
+
+ Windows x86-32
+
+ Details
+
+ marisa_trie-1.4.1-cp312-cp312-musllinux_1_2_x86_64.whl
+
+ 2.5 MB
+
+ Apr 8, 2026
+
+ CPython 3.12
+
+ CPython 3.12
+
+ Linux musl 1.2+ x86-64
+
+ Details
+
+ marisa_trie-1.4.1-cp312-cp312-musllinux_1_2_aarch64.whl
+
+ 2.4 MB
+
+ Apr 8, 2026
+
+ CPython 3.12
+
+ CPython 3.12
+
+ Linux musl 1.2+ ARM64
+
+ Details
+
+ marisa_trie-1.4.1-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl
+
+ 1.5 MB
+
+ Apr 8, 2026
+
+ CPython 3.12
+
+ CPython 3.12
+
+ Linux glibc 2.28+ x86-64, Linux glibc 2.24+ x86-64
+
+ Details
+
+ marisa_trie-1.4.1-cp312-cp312-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl
+
+ 1.5 MB
+
+ Apr 8, 2026
+
+ CPython 3.12
+
+ CPython 3.12
+
+ Linux glibc 2.28+ ARM64, Linux glibc 2.24+ ARM64
+
+ Details
+
+ marisa_trie-1.4.1-cp312-cp312-macosx_11_0_arm64.whl
+
+ 191.0 kB
+
+ Apr 8, 2026
+
+ CPython 3.12
+
+ CPython 3.12
+
+ macOS 11.0+ ARM64
+
+ Details
+
+ marisa_trie-1.4.1-cp312-cp312-macosx_10_13_x86_64.whl
+
+ 206.7 kB
+
+ Apr 8, 2026
+
+ CPython 3.12
+
+ CPython 3.12
+
+ macOS 10.13+ x86-64
+
+ Details
+
+ marisa_trie-1.4.1-cp311-cp311-win_arm64.whl
+
+ 142.6 kB
+
+ Apr 8, 2026
+
+ CPython 3.11
+
+ CPython 3.11
+
+ Windows ARM64
+
+ Details
+
+ marisa_trie-1.4.1-cp311-cp311-win_amd64.whl
+
+ 175.1 kB
+
+ Apr 8, 2026
+
+ CPython 3.11
+
+ CPython 3.11
+
+ Windows x86-64
+
+ Details
+
+ marisa_trie-1.4.1-cp311-cp311-win32.whl
+
+ 140.6 kB
+
+ Apr 8, 2026
+
+ CPython 3.11
+
+ CPython 3.11
+
+ Windows x86-32
+
+ Details
+
+ marisa_trie-1.4.1-cp311-cp311-musllinux_1_2_x86_64.whl
+
+ 2.5 MB
+
+ Apr 8, 2026
+
+ CPython 3.11
+
+ CPython 3.11
+
+ Linux musl 1.2+ x86-64
+
+ Details
+
+ marisa_trie-1.4.1-cp311-cp311-musllinux_1_2_aarch64.whl
+
+ 2.4 MB
+
+ Apr 8, 2026
+
+ CPython 3.11
+
+ CPython 3.11
+
+ Linux musl 1.2+ ARM64
+
+ Details
+
+ marisa_trie-1.4.1-cp311-cp311-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl
+
+ 1.5 MB
+
+ Apr 8, 2026
+
+ CPython 3.11
+
+ CPython 3.11
+
+ Linux glibc 2.28+ x86-64, Linux glibc 2.24+ x86-64
+
+ Details
+
+ marisa_trie-1.4.1-cp311-cp311-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl
+
+ 1.5 MB
+
+ Apr 8, 2026
+
+ CPython 3.11
+
+ CPython 3.11
+
+ Linux glibc 2.24+ ARM64, Linux glibc 2.28+ ARM64
+
+ Details
+
+ marisa_trie-1.4.1-cp311-cp311-macosx_11_0_arm64.whl
+
+ 192.7 kB
+
+ Apr 8, 2026
+
+ CPython 3.11
+
+ CPython 3.11
+
+ macOS 11.0+ ARM64
+
+ Details
+
+ marisa_trie-1.4.1-cp311-cp311-macosx_10_9_x86_64.whl
+
+ 208.6 kB
+
+ Apr 8, 2026
+
+ CPython 3.11
+
+ CPython 3.11
+
+ macOS 10.9+ x86-64
+
+ Details
+
+ marisa_trie-1.4.1-cp310-cp310-win_arm64.whl
+
+ 142.2 kB
+
+ Apr 8, 2026
+
+ CPython 3.10
+
+ CPython 3.10
+
+ Windows ARM64
+
+ Details
+
+ marisa_trie-1.4.1-cp310-cp310-win_amd64.whl
+
+ 174.5 kB
+
+ Apr 8, 2026
+
+ CPython 3.10
+
+ CPython 3.10
+
+ Windows x86-64
+
+ Details
+
+ marisa_trie-1.4.1-cp310-cp310-win32.whl
+
+ 141.0 kB
+
+ Apr 8, 2026
+
+ CPython 3.10
+
+ CPython 3.10
+
+ Windows x86-32
+
+ Details
+
+ marisa_trie-1.4.1-cp310-cp310-musllinux_1_2_x86_64.whl
+
+ 2.5 MB
+
+ Apr 8, 2026
+
+ CPython 3.10
+
+ CPython 3.10
+
+ Linux musl 1.2+ x86-64
+
+ Details
+
+ marisa_trie-1.4.1-cp310-cp310-musllinux_1_2_aarch64.whl
+
+ 2.4 MB
+
+ Apr 8, 2026
+
+ CPython 3.10
+
+ CPython 3.10
+
+ Linux musl 1.2+ ARM64
+
+ Details
+
+ marisa_trie-1.4.1-cp310-cp310-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl
+
+ 1.5 MB
+
+ Apr 8, 2026
+
+ CPython 3.10
+
+ CPython 3.10
+
+ Linux glibc 2.28+ x86-64, Linux glibc 2.24+ x86-64
+
+ Details
+
+ marisa_trie-1.4.1-cp310-cp310-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl
+
+ 1.5 MB
+
+ Apr 8, 2026
+
+ CPython 3.10
+
+ CPython 3.10
+
+ Linux glibc 2.28+ ARM64, Linux glibc 2.24+ ARM64
+
+ Details
+
+ marisa_trie-1.4.1-cp310-cp310-macosx_11_0_arm64.whl
+
+ 193.7 kB
+
+ Apr 8, 2026
+
+ CPython 3.10
+
+ CPython 3.10
+
+ macOS 11.0+ ARM64
+
+ Details
+
+ marisa_trie-1.4.1-cp310-cp310-macosx_10_9_x86_64.whl
+
+ 209.9 kB
+
+ Apr 8, 2026
+
+ CPython 3.10
+
+ CPython 3.10
+
+ macOS 10.9+ x86-64
+
+ Details
+
+ marisa_trie-1.4.1-cp39-cp39-win_arm64.whl
+
+ 142.9 kB
+
+ Apr 8, 2026
+
+ CPython 3.9
+
+ CPython 3.9
+
+ Windows ARM64
+
+ Details
+
+ marisa_trie-1.4.1-cp39-cp39-win_amd64.whl
+
+ 175.1 kB
+
+ Apr 8, 2026
+
+ CPython 3.9
+
+ CPython 3.9
+
+ Windows x86-64
+
+ Details
+
+ marisa_trie-1.4.1-cp39-cp39-win32.whl
+
+ 141.3 kB
+
+ Apr 8, 2026
+
+ CPython 3.9
+
+ CPython 3.9
+
+ Windows x86-32
+
+ Details
+
+ marisa_trie-1.4.1-cp39-cp39-musllinux_1_2_x86_64.whl
+
+ 2.5 MB
+
+ Apr 8, 2026
+
+ CPython 3.9
+
+ CPython 3.9
+
+ Linux musl 1.2+ x86-64
+
+ Details
+
+ marisa_trie-1.4.1-cp39-cp39-musllinux_1_2_aarch64.whl
+
+ 2.4 MB
+
+ Apr 8, 2026
+
+ CPython 3.9
+
+ CPython 3.9
+
+ Linux musl 1.2+ ARM64
+
+ Details
+
+ marisa_trie-1.4.1-cp39-cp39-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl
+
+ 1.5 MB
+
+ Apr 8, 2026
+
+ CPython 3.9
+
+ CPython 3.9
+
+ Linux glibc 2.28+ x86-64, Linux glibc 2.24+ x86-64
+
+ Details
+
+ marisa_trie-1.4.1-cp39-cp39-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl
+
+ 1.5 MB
+
+ Apr 8, 2026
+
+ CPython 3.9
+
+ CPython 3.9
+
+ Linux glibc 2.28+ ARM64, Linux glibc 2.24+ ARM64
+
+ Details
+
+ marisa_trie-1.4.1-cp39-cp39-macosx_11_0_arm64.whl
+
+ 194.9 kB
+
+ Apr 8, 2026
+
+ CPython 3.9
+
+ CPython 3.9
+
+ macOS 11.0+ ARM64
+
+ Details
+
+ marisa_trie-1.4.1-cp39-cp39-macosx_10_9_x86_64.whl
+
+ 211.1 kB
+
+ Apr 8, 2026
+
+ CPython 3.9
+
+ CPython 3.9
+
+ macOS 10.9+ x86-64
+
+ Details
+
+ Total release size: 70.6 MB
+
+ Release files
+ / marisa_trie-1.4.1.tar.gz
+
+ Download URL
+
+ marisa_trie-1.4.1.tar.gz
+
+ Size
+ 261.6 kB
+
+ Tags
+
+ Source
+
+SHA-256 checksum 
+
+ How to use checksums
+
+ 44ce3bdbeb7c950d463e460184fc3e18702df9ef0edb826bac672fd789fb1d20
+
+BLAKE2b-256 checksum 
+
+ How to use checksums
+
+ 775de235921b5b74818cb65b557fa05cc6201c2c1612d4866ff75c835bcf808d
+
+ Upload date
+
+ Apr 8, 2026
+
+Uploaded using Trusted Publishing? 
+
+ What is trusted publishing?
+
+No 
+
+ Uploaded via
+
+ twine/6.1.0 CPython/3.13.12
+
+ Release files
+ / marisa_trie-1.4.1-cp314-cp314t-win_arm64.whl
+
+ Download URL
+
+ marisa_trie-1.4.1-cp314-cp314t-win_arm64.whl
+
+ Size
+ 151.5 kB
+
+ Tags
+
+ CPython 3.14
+ CPython 3.14 free-threading
+ Windows ARM64
+
+SHA-256 checksum 
+
+ How to use checksums
+
+ 41b789fca01625288260a1db113dfb958866ae0d02887610950fd8b0c9e5dcfd
+
+BLAKE2b-256 checksum 
+
+ How to use checksums
+
+ baab693f98813cc0484c99da4fe9b73ca65b7dd15ab8eb4f23d9a6a77c8852f9
+
+ Upload date
+
+ Apr 8, 2026
+
+Uploaded using Trusted Publishing? 
+
+ What is trusted publishing?
+
+No 
+
+ Uploaded via
+
+ twine/6.1.0 CPython/3.13.12
+
+ Release files
+ / marisa_trie-1.4.1-cp314-cp314t-win_amd64.whl
+
+ Download URL
+
+ marisa_trie-1.4.1-cp314-cp314t-win_amd64.whl
+
+ Size
+ 199.1 kB
+
+ Tags
+
+ CPython 3.14
+ CPython 3.14 free-threading
+ Windows x86-64
+
+SHA-256 checksum 
+
+ How to use checksums
+
+ 4d04ddd3b1e909fed542cba20cc0c2ed4534b479ed2e8809a5182417b8165e29
+
+BLAKE2b-256 checksum 
+
+ How to use checksums
+
+ 6132dcff70d08a146ca94a2934ca9e3ff641bf1f0e5a7785714874ac5f085c57
+
+ Upload date
+
+ Apr 8, 2026
+
+Uploaded using Trusted Publishing? 
+
+ What is trusted publishing?
+
+No 
+
+ Uploaded via
+
+ twine/6.1.0 CPython/3.13.12
+
+ Release files
+ / marisa_trie-1.4.1-cp314-cp314t-win32.whl
+
+ Download URL
+
+ marisa_trie-1.4.1-cp314-cp314t-win32.whl
+
+ Size
+ 160.7 kB
+
+ Tags
+
+ CPython 3.14
+ CPython 3.14 free-threading
+ Windows x86-32
+
+SHA-256 checksum 
+
+ How to use checksums
+
+ 5154262cc60f88950f6390218e2358b4894cfcb5f22d366dfe9f2f5a7baa4b54
+
+BLAKE2b-256 checksum 
+
+ How to use checksums
+
+ 539db553a2a3b1809f376a5ecf03b1e3f267e3c95c39fd0448d275b1b5399452
+
+ Upload date
+
+ Apr 8, 2026
+
+Uploaded using Trusted Publishing? 
+
+ What is trusted publishing?
+
+No 
+
+ Uploaded via
+
+ twine/6.1.0 CPython/3.13.12
+
+ Release files
+ / marisa_trie-1.4.1-cp314-cp314t-musllinux_1_2_x86_64.whl
+
+ Download URL
+
+ marisa_trie-1.4.1-cp314-cp314t-musllinux_1_2_x86_64.whl
+
+ Size
+ 2.5 MB
+
+ Tags
+
+ CPython 3.14
+ CPython 3.14 free-threading
+ Linux musl 1.2+ x86-64
+
+SHA-256 checksum 
+
+ How to use checksums
+
+ 7f38aad7e083d2dff8916571f31cb46a761b2d424a0b40d35881b8f108646574
+
+BLAKE2b-256 checksum 
+
+ How to use checksums
+
+ ec27e923abac9c578dd6b8726e03c433af6847538fb4db252befd68b9f5a0550
+
+ Upload date
+
+ Apr 8, 2026
+
+Uploaded using Trusted Publishing? 
+
+ What is trusted publishing?
+
+No 
+
+ Uploaded via
+
+ twine/6.1.0 CPython/3.13.12
+
+ Release files
+ / marisa_trie-1.4.1-cp314-cp314t-musllinux_1_2_aarch64.whl
+
+ Download URL
+
+ marisa_trie-1.4.1-cp314-cp314t-musllinux_1_2_aarch64.whl
+
+ Size
+ 2.4 MB
+
+ Tags
+
+ CPython 3.14
+ CPython 3.14 free-threading
+ Linux musl 1.2+ ARM64
+
+SHA-256 checksum 
+
+ How to use checksums
+
+ fe64ef107dfad7caeb1f3b49be4893572833f6c3b52312c33b40b80aaa3e9fb8
+
+BLAKE2b-256 checksum 
+
+ How to use checksums
+
+ 05d6b4d74f2575df3be12cbbab084dbf1db70ca6c9934ca3946d79fc45a8e83b
+
+ Upload date
+
+ Apr 8, 2026
+
+Uploaded using Trusted Publishing? 
+
+ What is trusted publishing?
+
+No 
+
+ Uploaded via
+
+ twine/6.1.0 CPython/3.13.12
+
+ Release files
+ / marisa_trie-1.4.1-cp314-cp314t-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl
+
+ Download URL
+
+ marisa_trie-1.4.1-cp314-cp314t-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl
+
+ Size
+ 1.5 MB
+
+ Tags
+
+ CPython 3.14
+ CPython 3.14 free-threading
+ Linux glibc 2.24+ x86-64
+ Linux glibc 2.28+ x86-64
+
+SHA-256 checksum 
+
+ How to use checksums
+
+ faa9ec37e2393e86ca3cb2e568447730654dc3292097232cec1c646f257deac5
+
+BLAKE2b-256 checksum 
+
+ How to use checksums
+
+ b35714c5a667663797add840a755bef63b82eca1a07e64fc046875e294af5af0
+
+ Upload date
+
+ Apr 8, 2026
+
+Uploaded using Trusted Publishing? 
+
+ What is trusted publishing?
+
+No 
+
+ Uploaded via
+
+ twine/6.1.0 CPython/3.13.12
+
+ Release files
+ / marisa_trie-1.4.1-cp314-cp314t-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl
+
+ Download URL
+
+ marisa_trie-1.4.1-cp314-cp314t-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl
+
+ Size
+ 1.5 MB
+
+ Tags
+
+ CPython 3.14
+ CPython 3.14 free-threading
+ Linux glibc 2.24+ ARM64
+ Linux glibc 2.28+ ARM64
+
+SHA-256 checksum 
+
+ How to use checksums
+
+ 05dd3921622063b82d0c7fc51e79ba509d69a5ee72a6a2c24ee68782e5152c46
+
+BLAKE2b-256 checksum 
+
+ How to use checksums
+
+ 54a6ec11c67e5914873aa5e464c0a83f8b31b3bc6961a71d72a8cafe3591dbcb
+
+ Upload date
+
+ Apr 8, 2026
+
+Uploaded using Trusted Publishing? 
+
+ What is trusted publishing?
+
+No 
+
+ Uploaded via
+
+ twine/6.1.0 CPython/3.13.12
+
+ Release files
+ / marisa_trie-1.4.1-cp314-cp314t-macosx_11_0_arm64.whl
+
+ Download URL
+
+ marisa_trie-1.4.1-cp314-cp314t-macosx_11_0_arm64.whl
+
+ Size
+ 203.0 kB
+
+ Tags
+
+ CPython 3.14
+ CPython 3.14 free-threading
+ macOS 11.0+ ARM64
+
+SHA-256 checksum 
+
+ How to use checksums
+
+ 1d52339b0e879f60c8d3f52affc4a4f9acf27692c0bde63d1bd0f9f59b55dc8b
+
+BLAKE2b-256 checksum 
+
+ How to use checksums
+
+ 6cc3a11da7513a7eb99e9dcbe46eee97e53c9cb66f4ed253caed46f5d2492f0a
+
+ Upload date
+
+ Apr 8, 2026
+
+Uploaded using Trusted Publishing? 
+
+ What is trusted publishing?
+
+No 
+
+ Uploaded via
+
+ twine/6.1.0 CPython/3.13.12
+
+ Release files
+ / marisa_trie-1.4.1-cp314-cp314t-macosx_10_15_x86_64.whl
+
+ Download URL
+
+ marisa_trie-1.4.1-cp314-cp314t-macosx_10_15_x86_64.whl
+
+ Size
+ 214.8 kB
+
+ Tags
+
+ CPython 3.14
+ CPython 3.14 free-threading
+ macOS 10.15+ x86-64
+
+SHA-256 checksum 
+
+ How to use checksums
+
+ faffeed161b22e343915afb2765a1f6d3cf49faa032a0725abbc69a3b22e0fba
+
+BLAKE2b-256 checksum 
+
+ How to use checksums
+
+ 30f13e9f3be8ccfd97ddde488a4eb9c7b7a603f1f7ee73d13814483146238c16
+
+ Upload date
+
+ Apr 8, 2026
+
+Uploaded using Trusted Publishing? 
+
+ What is trusted publishing?
+
+No 
+
+ Uploaded via
+
+ twine/6.1.0 CPython/3.13.12
+
+ Release files
+ / marisa_trie-1.4.1-cp314-cp314-win_arm64.whl
+
+ Download URL
+
+ marisa_trie-1.4.1-cp314-cp314-win_arm64.whl
+
+ Size
+ 146.1 kB
+
+ Tags
+
+ CPython 3.14
+ Windows ARM64
+
+SHA-256 checksum 
+
+ How to use checksums
+
+ 4bc5d9f65d4a126dc14e32656dbc57a817ac619de731c4a64653285bf3b5e2c2
+
+BLAKE2b-256 checksum 
+
+ How to use checksums
+
+ 3dac6a9415c619b3b6fc3bc5a2cc93b3e5e8d61804c95604f20379468ee2214a
+
+ Upload date
+
+ Apr 8, 2026
+
+Uploaded using Trusted Publishing? 
+
+ What is trusted publishing?
+
+No 
+
+ Uploaded via
+
+ twine/6.1.0 CPython/3.13.12
+
+ Release files
+ / marisa_trie-1.4.1-cp314-cp314-win_amd64.whl
+
+ Download URL
+
+ marisa_trie-1.4.1-cp314-cp314-win_amd64.whl
+
+ Size
+ 173.3 kB
+
+ Tags
+
+ CPython 3.14
+ Windows x86-64
+
+SHA-256 checksum 
+
+ How to use checksums
+
+ e2c8bc2e6ede8f0ea697b050017bb65d43542507c71b32af6e6f1e14a613f9cc
+
+BLAKE2b-256 checksum 
+
+ How to use checksums
+
+ 137facb58830aed8dac2509a06ef476f6e59767eca09f08e23f3c8eaf7cfc323
+
+ Upload date
+
+ Apr 8, 2026
+
+Uploaded using Trusted Publishing? 
+
+ What is trusted publishing?
+
+No 
+
+ Uploaded via
+
+ twine/6.1.0 CPython/3.13.12
+
+ Release files
+ / marisa_trie-1.4.1-cp314-cp314-win32.whl
+
+ Download URL
+
+ marisa_trie-1.4.1-cp314-cp314-win32.whl
+
+ Size
+ 143.0 kB
+
+ Tags
+
+ CPython 3.14
+ Windows x86-32
+
+SHA-256 checksum 
+
+ How to use checksums
+
+ c6fbfa7f7c2f59c48be942bba848f2e378c69286abf93ecbe0b068feb1c22fbc
+
+BLAKE2b-256 checksum 
+
+ How to use checksums
+
+ beeae79d0471e32a0681d6f9f59560f5dd9748202e1b415340cf8bba338fe123
+
+ Upload date
+
+ Apr 8, 2026
+
+Uploaded using Trusted Publishing? 
+
+ What is trusted publishing?
+
+No 
+
+ Uploaded via
+
+ twine/6.1.0 CPython/3.13.12
+
+ Release files
+ / marisa_trie-1.4.1-cp314-cp314-musllinux_1_2_x86_64.whl
+
+ Download URL
+
+ marisa_trie-1.4.1-cp314-cp314-musllinux_1_2_x86_64.whl
+
+ Size
+ 2.5 MB
+
+ Tags
+
+ CPython 3.14
+ Linux musl 1.2+ x86-64
+
+SHA-256 checksum 
+
+ How to use checksums
+
+ 554308b2b5b034a703c64a0c146383d9aec98538a834c4d985114cbaa987a013
+
+BLAKE2b-256 checksum 
+
+ How to use checksums
+
+ 72ecedf909d5770c75aef4c94bae7dbaba56e9877b822ef6fa82b07958dd45bb
+
+ Upload date
+
+ Apr 8, 2026
+
+Uploaded using Trusted Publishing? 
+
+ What is trusted publishing?
+
+No 
+
+ Uploaded via
+
+ twine/6.1.0 CPython/3.13.12
+
+ Release files
+ / marisa_trie-1.4.1-cp314-cp314-musllinux_1_2_aarch64.whl
+
+ Download URL
+
+ marisa_trie-1.4.1-cp314-cp314-musllinux_1_2_aarch64.whl
+
+ Size
+ 2.4 MB
+
+ Tags
+
+ CPython 3.14
+ Linux musl 1.2+ ARM64
+
+SHA-256 checksum 
+
+ How to use checksums
+
+ 880606b64b776c0bbd85f89cbeabf294a33dd3820971618d28bcd12fe4d1406b
+
+BLAKE2b-256 checksum 
+
+ How to use checksums
+
+ 51341fbe625a8644ee49a6829dc2a2a22d6be6ad2d26b8b06ffe22f8aa50b6eb
+
+ Upload date
+
+ Apr 8, 2026
+
+Uploaded using Trusted Publishing? 
+
+ What is trusted publishing?
+
+No 
+
+ Uploaded via
+
+ twine/6.1.0 CPython/3.13.12
+
+ Release files
+ / marisa_trie-1.4.1-cp314-cp314-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl
+
+ Download URL
+
+ marisa_trie-1.4.1-cp314-cp314-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl
+
+ Size
+ 1.5 MB
+
+ Tags
+
+ CPython 3.14
+ Linux glibc 2.24+ x86-64
+ Linux glibc 2.28+ x86-64
+
+SHA-256 checksum 
+
+ How to use checksums
+
+ 0b99c8e692cec4e172a8362832d0b1149dc126591e49643dc0c128505ea7a1cd
+
+BLAKE2b-256 checksum 
+
+ How to use checksums
+
+ 6661a4f1e474809cbb08df715d63f7680568d457c2b543a53964b969d94be7b0
+
+ Upload date
+
+ Apr 8, 2026
+
+Uploaded using Trusted Publishing? 
+
+ What is trusted publishing?
+
+No 
+
+ Uploaded via
+
+ twine/6.1.0 CPython/3.13.12
+
+ Release files
+ / marisa_trie-1.4.1-cp314-cp314-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl
+
+ Download URL
+
+ marisa_trie-1.4.1-cp314-cp314-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl
+
+ Size
+ 1.5 MB
+
+ Tags
+
+ CPython 3.14
+ Linux glibc 2.24+ ARM64
+ Linux glibc 2.28+ ARM64
+
+SHA-256 checksum 
+
+ How to use checksums
+
+ f5a6215df91c16ce4e2f674ee92a3352d4a0be30b0635ec60f4c2ef55cc7f0e2
+
+BLAKE2b-256 checksum 
+
+ How to use checksums
+
+ 3360fddeebbc819873e3f23a09d01226e12911ee5d23252473bdf038aaf1c928
+
+ Upload date
+
+ Apr 8, 2026
+
+Uploaded using Trusted Publishing? 
+
+ What is trusted publishing?
+
+No 
+
+ Uploaded via
+
+ twine/6.1.0 CPython/3.13.12
+
+ Release files
+ / marisa_trie-1.4.1-cp314-cp314-macosx_11_0_arm64.whl
+
+ Download URL
+
+ marisa_trie-1.4.1-cp314-cp314-macosx_11_0_arm64.whl
+
+ Size
+ 192.3 kB
+
+ Tags
+
+ CPython 3.14
+ macOS 11.0+ ARM64
+
+SHA-256 checksum 
+
+ How to use checksums
+
+ 638fb84afc3219038648ea4814e4923914790d7e4491679ef14023459e4a8148
+
+BLAKE2b-256 checksum 
+
+ How to use checksums
+
+ 520b2a670dd3c163836e516181469e34d9abdd9fee7e88183bfd66dd3cdc0ecc
+
+ Upload date
+
+ Apr 8, 2026
+
+Uploaded using Trusted Publishing? 
+
+ What is trusted publishing?
+
+No 
+
+ Uploaded via
+
+ twine/6.1.0 CPython/3.13.12
+
+ Release files
+ / marisa_trie-1.4.1-cp314-cp314-macosx_10_15_x86_64.whl
+
+ Download URL
+
+ marisa_trie-1.4.1-cp314-cp314-macosx_10_15_x86_64.whl
+
+ Size
+ 207.6 kB
+
+ Tags
+
+ CPython 3.14
+ macOS 10.15+ x86-64
+
+SHA-256 checksum 
+
+ How to use checksums
+
+ 4d8f3b6f7e93922d1a71c67cf285ddb5f7bc551407db2e12ba76a5f5df326449
+
+BLAKE2b-256 checksum 
+
+ How to use checksums
+
+ af9483532d3ddb47db51571f6005bf227676abb9f0b490e56faefeaa74303ad1
+
+ Upload date
+
+ Apr 8, 2026
+
+Uploaded using Trusted Publishing? 
+
+ What is trusted publishing?
+
+No 
+
+ Uploaded via
+
+ twine/6.1.0 CPython/3.13.12
+
+ Release files
+ / marisa_trie-1.4.1-cp313-cp313t-win_arm64.whl
+
+ Download URL
+
+ marisa_trie-1.4.1-cp313-cp313t-win_arm64.whl
+
+ Size
+ 146.6 kB
+
+ Tags
+
+ CPython 3.13
+ CPython 3.13 free-threading
+ Windows ARM64
+
+SHA-256 checksum 
+
+ How to use checksums
+
+ 0b2e53f87c01b99c59cda37411a234c704a95d12f4787aeb29572fa9302f2b93
+
+BLAKE2b-256 checksum 
+
+ How to use checksums
+
+ 8284514da5bd3ee051e800caf1ce687b7727a92b643416cc678dc47d3eface97
+
+ Upload date
+
+ Apr 8, 2026
+
+Uploaded using Trusted Publishing? 
+
+ What is trusted publishing?
+
+No 
+
+ Uploaded via
+
+ twine/6.1.0 CPython/3.13.12
+
+ Release files
+ / marisa_trie-1.4.1-cp313-cp313t-win_amd64.whl
+
+ Download URL
+
+ marisa_trie-1.4.1-cp313-cp313t-win_amd64.whl
+
+ Size
+ 186.6 kB
+
+ Tags
+
+ CPython 3.13
+ CPython 3.13 free-threading
+ Windows x86-64
+
+SHA-256 checksum 
+
+ How to use checksums
+
+ 932e97f23815c999d8d641f79c934fe1c841eab34bd01051552822e78bba919c
+
+BLAKE2b-256 checksum 
+
+ How to use checksums
+
+ 02e589ae70c984c178a5cf0fa95c8c47aab129b73641ec3729ff56cc5039abc1
+
+ Upload date
+
+ Apr 8, 2026
+
+Uploaded using Trusted Publishing? 
+
+ What is trusted publishing?
+
+No 
+
+ Uploaded via
+
+ twine/6.1.0 CPython/3.13.12
+
+ Release files
+ / marisa_trie-1.4.1-cp313-cp313t-win32.whl
+
+ Download URL
+
+ marisa_trie-1.4.1-cp313-cp313t-win32.whl
+
+ Size
+ 154.0 kB
+
+ Tags
+
+ CPython 3.13
+ CPython 3.13 free-threading
+ Windows x86-32
+
+SHA-256 checksum 
+
+ How to use checksums
+
+ 50b2bbfc6612e0b5f7bd399c3097e166e5dab2b79a58e9b956ef9127b90d2d6e
+
+BLAKE2b-256 checksum 
+
+ How to use checksums
+
+ 6400ad53cf35464937b7719ed7a6e21354418f998df9002944cfa5f14903f460
+
+ Upload date
+
+ Apr 8, 2026
+
+Uploaded using Trusted Publishing? 
+
+ What is trusted publishing?
+
+No 
+
+ Uploaded via
+
+ twine/6.1.0 CPython/3.13.12
+
+ Release files
+ / marisa_trie-1.4.1-cp313-cp313t-musllinux_1_2_x86_64.whl
+
+ Download URL
+
+ marisa_trie-1.4.1-cp313-cp313t-musllinux_1_2_x86_64.whl
+
+ Size
+ 2.5 MB
+
+ Tags
+
+ CPython 3.13
+ CPython 3.13 free-threading
+ Linux musl 1.2+ x86-64
+
+SHA-256 checksum 
+
+ How to use checksums
+
+ 6e494d5e88da58695fa9e2efc222de808ebd36b306a2c7162256d00fb06e733e
+
+BLAKE2b-256 checksum 
+
+ How to use checksums
+
+ 288bf9cb7fab4a0053dd9caed573791ab292f8b890a31bd5f159ef21dbe40e63
+
+ Upload date
+
+ Apr 8, 2026
+
+Uploaded using Trusted Publishing? 
+
+ What is trusted publishing?
+
+No 
+
+ Uploaded via
+
+ twine/6.1.0 CPython/3.13.12
+
+ Release files
+ / marisa_trie-1.4.1-cp313-cp313t-musllinux_1_2_aarch64.whl
+
+ Download URL
+
+ marisa_trie-1.4.1-cp313-cp313t-musllinux_1_2_aarch64.whl
+
+ Size
+ 2.4 MB
+
+ Tags
+
+ CPython 3.13
+ CPython 3.13 free-threading
+ Linux musl 1.2+ ARM64
+
+SHA-256 checksum 
+
+ How to use checksums
+
+ 0666b071851fff8b687bc6c0c899c7ce1cb6119399ed8c3c4f4526aca876a5e2
+
+BLAKE2b-256 checksum 
+
+ How to use checksums
+
+ 60422d80e091d2b92f7175be488f554565d0e0a432b1d61c4804177e0ec9ecce
+
+ Upload date
+
+ Apr 8, 2026
+
+Uploaded using Trusted Publishing? 
+
+ What is trusted publishing?
+
+No 
+
+ Uploaded via
+
+ twine/6.1.0 CPython/3.13.12
+
+ Release files
+ / marisa_trie-1.4.1-cp313-cp313t-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl
+
+ Download URL
+
+ marisa_trie-1.4.1-cp313-cp313t-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl
+
+ Size
+ 1.5 MB
+
+ Tags
+
+ CPython 3.13
+ CPython 3.13 free-threading
+ Linux glibc 2.24+ x86-64
+ Linux glibc 2.28+ x86-64
+
+SHA-256 checksum 
+
+ How to use checksums
+
+ 8e759fb722a16b7db6a5fcb2ffe8c2feabf4a6143b487d21388bc5c156a79e90
+
+BLAKE2b-256 checksum 
+
+ How to use checksums
+
+ 8aa9fe6aa360eba3178cd74796b5e0d6d07a1afabe5b09b54fa8c2aa693a53c8
+
+ Upload date
+
+ Apr 8, 2026
+
+Uploaded using Trusted Publishing? 
+
+ What is trusted publishing?
+
+No 
+
+ Uploaded via
+
+ twine/6.1.0 CPython/3.13.12
+
+ Release files
+ / marisa_trie-1.4.1-cp313-cp313t-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl
+
+ Download URL
+
+ marisa_trie-1.4.1-cp313-cp313t-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl
+
+ Size
+ 1.5 MB
+
+ Tags
+
+ CPython 3.13
+ CPython 3.13 free-threading
+ Linux glibc 2.24+ ARM64
+ Linux glibc 2.28+ ARM64
+
+SHA-256 checksum 
+
+ How to use checksums
+
+ cc68d4cdd7f1be60786888497f50c6fb8ad4f17bbec1d7accfc3fe69e725a329
+
+BLAKE2b-256 checksum 
+
+ How to use checksums
+
+ 2a0d0ea5e7f0aaa11c29aadaf121b6de275a6807d9712ef28ea4a6025bcab2e4
+
+ Upload date
+
+ Apr 8, 2026
+
+Uploaded using Trusted Publishing? 
+
+ What is trusted publishing?
+
+No 
+
+ Uploaded via
+
+ twine/6.1.0 CPython/3.13.12
+
+ Release files
+ / marisa_trie-1.4.1-cp313-cp313t-macosx_11_0_arm64.whl
+
+ Download URL
+
+ marisa_trie-1.4.1-cp313-cp313t-macosx_11_0_arm64.whl
+
+ Size
+ 202.0 kB
+
+ Tags
+
+ CPython 3.13
+ CPython 3.13 free-threading
+ macOS 11.0+ ARM64
+
+SHA-256 checksum 
+
+ How to use checksums
+
+ a8775892a5a96df359fa8853e6132b9504dfcc2ecebd27bb617cc5be6ffeb13d
+
+BLAKE2b-256 checksum 
+
+ How to use checksums
+
+ aef15c77eea2ff285e47e8a523385f023075a452455ffa55804df95e4b569a12
+
+ Upload date
+
+ Apr 8, 2026
+
+Uploaded using Trusted Publishing? 
+
+ What is trusted publishing?
+
+No 
+
+ Uploaded via
+
+ twine/6.1.0 CPython/3.13.12
+
+ Release files
+ / marisa_trie-1.4.1-cp313-cp313t-macosx_10_13_x86_64.whl
+
+ Download URL
+
+ marisa_trie-1.4.1-cp313-cp313t-macosx_10_13_x86_64.whl
+
+ Size
+ 213.4 kB
+
+ Tags
+
+ CPython 3.13
+ CPython 3.13 free-threading
+ macOS 10.13+ x86-64
+
+SHA-256 checksum 
+
+ How to use checksums
+
+ efa5b4f8202c199ef7f4afe00ca4e406ea77b3940355595aabea8e9b393a22b1
+
+BLAKE2b-256 checksum 
+
+ How to use checksums
+
+ 75b53823948064c63fd76777910b45481c6e251c9d4c3f261ca23d51b758dc91
+
+ Upload date
+
+ Apr 8, 2026
+
+Uploaded using Trusted Publishing? 
+
+ What is trusted publishing?
+
+No 
+
+ Uploaded via
+
+ twine/6.1.0 CPython/3.13.12
+
+ Release files
+ / marisa_trie-1.4.1-cp313-cp313-win_arm64.whl
+
+ Download URL
+
+ marisa_trie-1.4.1-cp313-cp313-win_arm64.whl
+
+ Size
+ 139.6 kB
+
+ Tags
+
+ CPython 3.13
+ Windows ARM64
+
+SHA-256 checksum 
+
+ How to use checksums
+
+ ab28fda06ef2e488240a17d3f9947447e7f1786ad04fb29584ab4a27fde656f4
+
+BLAKE2b-256 checksum 
+
+ How to use checksums
+
+ da91bd06914afcb70710f684be44cf5435742d175d49c3de021ee62f7eb8c4e4
+
+ Upload date
+
+ Apr 8, 2026
+
+Uploaded using Trusted Publishing? 
+
+ What is trusted publishing?
+
+No 
+
+ Uploaded via
+
+ twine/6.1.0 CPython/3.13.12
+
+ Release files
+ / marisa_trie-1.4.1-cp313-cp313-win_amd64.whl
+
+ Download URL
+
+ marisa_trie-1.4.1-cp313-cp313-win_amd64.whl
+
+ Size
+ 168.9 kB
+
+ Tags
+
+ CPython 3.13
+ Windows x86-64
+
+SHA-256 checksum 
+
+ How to use checksums
+
+ 6a5d45561a5e6563a0f934899a097d69e74111181b162de4b64cceb31f1bf44b
+
+BLAKE2b-256 checksum 
+
+ How to use checksums
+
+ 6867b35e8b14757ce5daffd5c4c1ab0bb9b3e3c7611e82fe5ab2707489a176c4
+
+ Upload date
+
+ Apr 8, 2026
+
+Uploaded using Trusted Publishing? 
+
+ What is trusted publishing?
+
+No 
+
+ Uploaded via
+
+ twine/6.1.0 CPython/3.13.12
+
+ Release files
+ / marisa_trie-1.4.1-cp313-cp313-win32.whl
+
+ Download URL
+
+ marisa_trie-1.4.1-cp313-cp313-win32.whl
+
+ Size
+ 138.7 kB
+
+ Tags
+
+ CPython 3.13
+ Windows x86-32
+
+SHA-256 checksum 
+
+ How to use checksums
+
+ a56d6daf4449ae5f6825a03f9fabb97e56527fb44bc4a608944a872794f662d5
+
+BLAKE2b-256 checksum 
+
+ How to use checksums
+
+ fed150c0ed09c99e4cd3ff7276f1a50a148c7bd4e585271215d3a05f74228bf9
+
+ Upload date
+
+ Apr 8, 2026
+
+Uploaded using Trusted Publishing? 
+
+ What is trusted publishing?
+
+No 
+
+ Uploaded via
+
+ twine/6.1.0 CPython/3.13.12
+
+ Release files
+ / marisa_trie-1.4.1-cp313-cp313-musllinux_1_2_x86_64.whl
+
+ Download URL
+
+ marisa_trie-1.4.1-cp313-cp313-musllinux_1_2_x86_64.whl
+
+ Size
+ 2.5 MB
+
+ Tags
+
+ CPython 3.13
+ Linux musl 1.2+ x86-64
+
+SHA-256 checksum 
+
+ How to use checksums
+
+ 658f49e4e825b4e4257f53f455e214cd0e161ab326e569562cc8ff8f67a48506
+
+BLAKE2b-256 checksum 
+
+ How to use checksums
+
+ 49a32596d55ee48ed15a4d0de5a9ebd27de49888a029ffa521717c282df63efc
+
+ Upload date
+
+ Apr 8, 2026
+
+Uploaded using Trusted Publishing? 
+
+ What is trusted publishing?
+
+No 
+
+ Uploaded via
+
+ twine/6.1.0 CPython/3.13.12
+
+ Release files
+ / marisa_trie-1.4.1-cp313-cp313-musllinux_1_2_aarch64.whl
+
+ Download URL
+
+ marisa_trie-1.4.1-cp313-cp313-musllinux_1_2_aarch64.whl
+
+ Size
+ 2.4 MB
+
+ Tags
+
+ CPython 3.13
+ Linux musl 1.2+ ARM64
+
+SHA-256 checksum 
+
+ How to use checksums
+
+ 71ab0be7b380d65871986d61839814153f55307ff593bac22109e65e804f07d4
+
+BLAKE2b-256 checksum 
+
+ How to use checksums
+
+ 885ced86ad8683237dff8cdeb117b3b0664005e05bc221535301621ed474857d
+
+ Upload date
+
+ Apr 8, 2026
+
+Uploaded using Trusted Publishing? 
+
+ What is trusted publishing?
+
+No 
+
+ Uploaded via
+
+ twine/6.1.0 CPython/3.13.12
+
+ Release files
+ / marisa_trie-1.4.1-cp313-cp313-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl
+
+ Download URL
+
+ marisa_trie-1.4.1-cp313-cp313-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl
+
+ Size
+ 1.5 MB
+
+ Tags
+
+ CPython 3.13
+ Linux glibc 2.24+ x86-64
+ Linux glibc 2.28+ x86-64
+
+SHA-256 checksum 
+
+ How to use checksums
+
+ eaa3db575cb757f98d2754bcab5e1e0b2a884dc611964ac2659be13b58ef32e8
+
+BLAKE2b-256 checksum 
+
+ How to use checksums
+
+ 1bdccbb5e8416ff5d193847b0e838b0b525773af7b6f4e1e4a33728d1b097fcb
+
+ Upload date
+
+ Apr 8, 2026
+
+Uploaded using Trusted Publishing? 
+
+ What is trusted publishing?
+
+No 
+
+ Uploaded via
+
+ twine/6.1.0 CPython/3.13.12
+
+ Release files
+ / marisa_trie-1.4.1-cp313-cp313-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl
+
+ Download URL
+
+ marisa_trie-1.4.1-cp313-cp313-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl
+
+ Size
+ 1.5 MB
+
+ Tags
+
+ CPython 3.13
+ Linux glibc 2.24+ ARM64
+ Linux glibc 2.28+ ARM64
+
+SHA-256 checksum 
+
+ How to use checksums
+
+ 84ce9b69a0516a52169d28e27ea14f015f6daf467fc8cb661eb841565d728ccf
+
+BLAKE2b-256 checksum 
+
+ How to use checksums
+
+ dc416ae103ef7448320a7324f9866a253d595159ffe367c11e06baabb92ca4d2
+
+ Upload date
+
+ Apr 8, 2026
+
+Uploaded using Trusted Publishing? 
+
+ What is trusted publishing?
+
+No 
+
+ Uploaded via
+
+ twine/6.1.0 CPython/3.13.12
+
+ Release files
+ / marisa_trie-1.4.1-cp313-cp313-macosx_11_0_arm64.whl
+
+ Download URL
+
+ marisa_trie-1.4.1-cp313-cp313-macosx_11_0_arm64.whl
+
+ Size
+ 190.1 kB
+
+ Tags
+
+ CPython 3.13
+ macOS 11.0+ ARM64
+
+SHA-256 checksum 
+
+ How to use checksums
+
+ 21ff39c29d900b44876913c96d0e2c550417450340fef5c8848111796a7f9de1
+
+BLAKE2b-256 checksum 
+
+ How to use checksums
+
+ 4f1b7b03330888306166e96801acb5086eaf5ddc112d2ab8c03c8de478da7346
+
+ Upload date
+
+ Apr 8, 2026
+
+Uploaded using Trusted Publishing? 
+
+ What is trusted publishing?
+
+No 
+
+ Uploaded via
+
+ twine/6.1.0 CPython/3.13.12
+
+ Release files
+ / marisa_trie-1.4.1-cp313-cp313-macosx_10_13_x86_64.whl
+
+ Download URL
+
+ marisa_trie-1.4.1-cp313-cp313-macosx_10_13_x86_64.whl
+
+ Size
+ 206.6 kB
+
+ Tags
+
+ CPython 3.13
+ macOS 10.13+ x86-64
+
+SHA-256 checksum 
+
+ How to use checksums
+
+ cde5209f0904209866e5c2ff5bdadc3d57bc9368ad3e26eac72a16d863e83dc0
+
+BLAKE2b-256 checksum 
+
+ How to use checksums
+
+ 91dfa6b189cfdfc45fc402833fa067b1625a8ec4ef5446a8d7c08c5c84ea835e
+
+ Upload date
+
+ Apr 8, 2026
+
+Uploaded using Trusted Publishing? 
+
+ What is trusted publishing?
+
+No 
+
+ Uploaded via
+
+ twine/6.1.0 CPython/3.13.12
+
+ Release files
+ / marisa_trie-1.4.1-cp312-cp312-win_arm64.whl
+
+ Download URL
+
+ marisa_trie-1.4.1-cp312-cp312-win_arm64.whl
+
+ Size
+ 139.7 kB
+
+ Tags
+
+ CPython 3.12
+ Windows ARM64
+
+SHA-256 checksum 
+
+ How to use checksums
+
+ 59375ab1e4e4cee87d318b6b3dffa91c599c89afd920ef53428235f4326ba1d6
+
+BLAKE2b-256 checksum 
+
+ How to use checksums
+
+ 8ff8ae0dcbf79498b7aa00dae740982c9812fa95339bc6549ea63b4ad15eeb58
+
+ Upload date
+
+ Apr 8, 2026
+
+Uploaded using Trusted Publishing? 
+
+ What is trusted publishing?
+
+No 
+
+ Uploaded via
+
+ twine/6.1.0 CPython/3.13.12
+
+ Release files
+ / marisa_trie-1.4.1-cp312-cp312-win_amd64.whl
+
+ Download URL
+
+ marisa_trie-1.4.1-cp312-cp312-win_amd64.whl
+
+ Size
+ 168.5 kB
+
+ Tags
+
+ CPython 3.12
+ Windows x86-64
+
+SHA-256 checksum 
+
+ How to use checksums
+
+ fc9bc6de7197cdd1f32b72566cc7ac75c465d6f2191bba51d17edfae2b5ca8b0
+
+BLAKE2b-256 checksum 
+
+ How to use checksums
+
+ 737d419114325f1bb4c2202c20f19f424f9dea1cc38de7cd1fae60d991e99b69
+
+ Upload date
+
+ Apr 8, 2026
+
+Uploaded using Trusted Publishing? 
+
+ What is trusted publishing?
+
+No 
+
+ Uploaded via
+
+ twine/6.1.0 CPython/3.13.12
+
+ Release files
+ / marisa_trie-1.4.1-cp312-cp312-win32.whl
+
+ Download URL
+
+ marisa_trie-1.4.1-cp312-cp312-win32.whl
+
+ Size
+ 138.9 kB
+
+ Tags
+
+ CPython 3.12
+ Windows x86-32
+
+SHA-256 checksum 
+
+ How to use checksums
+
+ 63cd2870f3890f2657610ed437110713e87972da0dc4d3e6303d370c9b28d215
+
+BLAKE2b-256 checksum 
+
+ How to use checksums
+
+ 23effa342fdbc0c055030b93007dff5393675705071a14621e3f81bfb52eb970
+
+ Upload date
+
+ Apr 8, 2026
+
+Uploaded using Trusted Publishing? 
+
+ What is trusted publishing?
+
+No 
+
+ Uploaded via
+
+ twine/6.1.0 CPython/3.13.12
+
+ Release files
+ / marisa_trie-1.4.1-cp312-cp312-musllinux_1_2_x86_64.whl
+
+ Download URL
+
+ marisa_trie-1.4.1-cp312-cp312-musllinux_1_2_x86_64.whl
+
+ Size
+ 2.5 MB
+
+ Tags
+
+ CPython 3.12
+ Linux musl 1.2+ x86-64
+
+SHA-256 checksum 
+
+ How to use checksums
+
+ e7f9603cc8a57dca847febf45349c51916c3e1340eb6ee064baabf181398dc79
+
+BLAKE2b-256 checksum 
+
+ How to use checksums
+
+ 5cd70ba8bcaeee68a8e6cbc61b47825370a6c8a523ab16ea42e8728dec2213bc
+
+ Upload date
+
+ Apr 8, 2026
+
+Uploaded using Trusted Publishing? 
+
+ What is trusted publishing?
+
+No 
+
+ Uploaded via
+
+ twine/6.1.0 CPython/3.13.12
+
+ Release files
+ / marisa_trie-1.4.1-cp312-cp312-musllinux_1_2_aarch64.whl
+
+ Download URL
+
+ marisa_trie-1.4.1-cp312-cp312-musllinux_1_2_aarch64.whl
+
+ Size
+ 2.4 MB
+
+ Tags
+
+ CPython 3.12
+ Linux musl 1.2+ ARM64
+
+SHA-256 checksum 
+
+ How to use checksums
+
+ d8da4dea083209301430d80c8a33d0a5ecb6a270c904743505adceaae4fface2
+
+BLAKE2b-256 checksum 
+
+ How to use checksums
+
+ 5173339e8fab2e8cea88e9e0fd78aeb8ccdd3f8656d228dae2cb698f667a0fe7
+
+ Upload date
+
+ Apr 8, 2026
+
+Uploaded using Trusted Publishing? 
+
+ What is trusted publishing?
+
+No 
+
+ Uploaded via
+
+ twine/6.1.0 CPython/3.13.12
+
+ Release files
+ / marisa_trie-1.4.1-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl
+
+ Download URL
+
+ marisa_trie-1.4.1-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl
+
+ Size
+ 1.5 MB
+
+ Tags
+
+ CPython 3.12
+ Linux glibc 2.24+ x86-64
+ Linux glibc 2.28+ x86-64
+
+SHA-256 checksum 
+
+ How to use checksums
+
+ 4d51bdd22a7238ef4d681effd7c224a267ddae054b64b1cec9ce95bbcd2b6a88
+
+BLAKE2b-256 checksum 
+
+ How to use checksums
+
+ bb95cd6e73d0857608f2946f3bc5ccac86488073b96fb37bc1b45b0184268bed
+
+ Upload date
+
+ Apr 8, 2026
+
+Uploaded using Trusted Publishing? 
+
+ What is trusted publishing?
+
+No 
+
+ Uploaded via
+
+ twine/6.1.0 CPython/3.13.12
+
+ Release files
+ / marisa_trie-1.4.1-cp312-cp312-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl
+
+ Download URL
+
+ marisa_trie-1.4.1-cp312-cp312-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl
+
+ Size
+ 1.5 MB
+
+ Tags
+
+ CPython 3.12
+ Linux glibc 2.24+ ARM64
+ Linux glibc 2.28+ ARM64
+
+SHA-256 checksum 
+
+ How to use checksums
+
+ 7bed50d39ff1391a67b9383a7f3c458a1a0cb40fe8dd16952f813fbf8939eeff
+
+BLAKE2b-256 checksum 
+
+ How to use checksums
+
+ 150c376e21c62bd0e658a5e9f6b8912f3116591778c639857ad374c7639ceebe
+
+ Upload date
+
+ Apr 8, 2026
+
+Uploaded using Trusted Publishing? 
+
+ What is trusted publishing?
+
+No 
+
+ Uploaded via
+
+ twine/6.1.0 CPython/3.13.12
+
+ Release files
+ / marisa_trie-1.4.1-cp312-cp312-macosx_11_0_arm64.whl
+
+ Download URL
+
+ marisa_trie-1.4.1-cp312-cp312-macosx_11_0_arm64.whl
+
+ Size
+ 191.0 kB
+
+ Tags
+
+ CPython 3.12
+ macOS 11.0+ ARM64
+
+SHA-256 checksum 
+
+ How to use checksums
+
+ 87e65dff37d1b9edea7bc7a8e935c851ec4934f2e56071a4501ce8db97b579a4
+
+BLAKE2b-256 checksum 
+
+ How to use checksums
+
+ f78bcc34313149486dfc13e84303e12d61fd55788b37d92c3e082cc3d142e776
+
+ Upload date
+
+ Apr 8, 2026
+
+Uploaded using Trusted Publishing? 
+
+ What is trusted publishing?
+
+No 
+
+ Uploaded via
+
+ twine/6.1.0 CPython/3.13.12
+
+ Release files
+ / marisa_trie-1.4.1-cp312-cp312-macosx_10_13_x86_64.whl
+
+ Download URL
+
+ marisa_trie-1.4.1-cp312-cp312-macosx_10_13_x86_64.whl
+
+ Size
+ 206.7 kB
+
+ Tags
+
+ CPython 3.12
+ macOS 10.13+ x86-64
+
+SHA-256 checksum 
+
+ How to use checksums
+
+ 63964dedbf49ef0d17cb32d368f13ec71ca0ec026976b1cc24cb6a993d05752a
+
+BLAKE2b-256 checksum 
+
+ How to use checksums
+
+ b3b789811f7eba6e92386279376df81cfa281ab99e30f7e4f5a5e04d8dba6b99
+
+ Upload date
+
+ Apr 8, 2026
+
+Uploaded using Trusted Publishing? 
+
+ What is trusted publishing?
+
+No 
+
+ Uploaded via
+
+ twine/6.1.0 CPython/3.13.12
+
+ Release files
+ / marisa_trie-1.4.1-cp311-cp311-win_arm64.whl
+
+ Download URL
+
+ marisa_trie-1.4.1-cp311-cp311-win_arm64.whl
+
+ Size
+ 142.6 kB
+
+ Tags
+
+ CPython 3.11
+ Windows ARM64
+
+SHA-256 checksum 
+
+ How to use checksums
+
+ 59a5c286329a5defa33c40cce1f16c9829e4128b57ecc851ac32a7d1071913d5
+
+BLAKE2b-256 checksum 
+
+ How to use checksums
+
+ fe8cac1851b7c9ce881343bf0639c902aaa2b767a31dc79d6af5950413a6ba66
+
+ Upload date
+
+ Apr 8, 2026
+
+Uploaded using Trusted Publishing? 
+
+ What is trusted publishing?
+
+No 
+
+ Uploaded via
+
+ twine/6.1.0 CPython/3.13.12
+
+ Release files
+ / marisa_trie-1.4.1-cp311-cp311-win_amd64.whl
+
+ Download URL
+
+ marisa_trie-1.4.1-cp311-cp311-win_amd64.whl
+
+ Size
+ 175.1 kB
+
+ Tags
+
+ CPython 3.11
+ Windows x86-64
+
+SHA-256 checksum 
+
+ How to use checksums
+
+ c74606bd7e0066f20cf7187de44c955ba3b4ce85159a43f8cd8b0ee982ea4c4c
+
+BLAKE2b-256 checksum 
+
+ How to use checksums
+
+ d5b03f793c5f7727ca1d36f9d53b9fc48804942918a9f460b6d46988770677b2
+
+ Upload date
+
+ Apr 8, 2026
+
+Uploaded using Trusted Publishing? 
+
+ What is trusted publishing?
+
+No 
+
+ Uploaded via
+
+ twine/6.1.0 CPython/3.13.12
+
+ Release files
+ / marisa_trie-1.4.1-cp311-cp311-win32.whl
+
+ Download URL
+
+ marisa_trie-1.4.1-cp311-cp311-win32.whl
+
+ Size
+ 140.6 kB
+
+ Tags
+
+ CPython 3.11
+ Windows x86-32
+
+SHA-256 checksum 
+
+ How to use checksums
+
+ c059562d5aea86bf623a2c440b8595a86c0de553ca96986e4d36f25d07570d5b
+
+BLAKE2b-256 checksum 
+
+ How to use checksums
+
+ 325684fe4788b29a81e00efb4c97f3c1b7cae0dbda14369dc7ee2659823bfd83
+
+ Upload date
+
+ Apr 8, 2026
+
+Uploaded using Trusted Publishing? 
+
+ What is trusted publishing?
+
+No 
+
+ Uploaded via
+
+ twine/6.1.0 CPython/3.13.12
+
+ Release files
+ / marisa_trie-1.4.1-cp311-cp311-musllinux_1_2_x86_64.whl
+
+ Download URL
+
+ marisa_trie-1.4.1-cp311-cp311-musllinux_1_2_x86_64.whl
+
+ Size
+ 2.5 MB
+
+ Tags
+
+ CPython 3.11
+ Linux musl 1.2+ x86-64
+
+SHA-256 checksum 
+
+ How to use checksums
+
+ f7024c2cb001442fe04b9720be105bbe01ff2d7f357b70fa44d42272abf7da1f
+
+BLAKE2b-256 checksum 
+
+ How to use checksums
+
+ fdd7c5f5cd9eb32a34447971ee3430410b19087564137d62da7bd348b40e684a
+
+ Upload date
+
+ Apr 8, 2026
+
+Uploaded using Trusted Publishing? 
+
+ What is trusted publishing?
+
+No 
+
+ Uploaded via
+
+ twine/6.1.0 CPython/3.13.12
+
+ Release files
+ / marisa_trie-1.4.1-cp311-cp311-musllinux_1_2_aarch64.whl
+
+ Download URL
+
+ marisa_trie-1.4.1-cp311-cp311-musllinux_1_2_aarch64.whl
+
+ Size
+ 2.4 MB
+
+ Tags
+
+ CPython 3.11
+ Linux musl 1.2+ ARM64
+
+SHA-256 checksum 
+
+ How to use checksums
+
+ 3ac478766ff9381f1bc18f39f694388f64c20cfa8cb2b308e41ece2b4ce05467
+
+BLAKE2b-256 checksum 
+
+ How to use checksums
+
+ b8a0c717ffb7697f059cde03b75c9facf6fd4ee18ce720513156bb03e875d215
+
+ Upload date
+
+ Apr 8, 2026
+
+Uploaded using Trusted Publishing? 
+
+ What is trusted publishing?
+
+No 
+
+ Uploaded via
+
+ twine/6.1.0 CPython/3.13.12
+
+ Release files
+ / marisa_trie-1.4.1-cp311-cp311-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl
+
+ Download URL
+
+ marisa_trie-1.4.1-cp311-cp311-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl
+
+ Size
+ 1.5 MB
+
+ Tags
+
+ CPython 3.11
+ Linux glibc 2.24+ x86-64
+ Linux glibc 2.28+ x86-64
+
+SHA-256 checksum 
+
+ How to use checksums
+
+ 29eb718078431518d13037830c50023333721b146ca58eb78889aabfa60f4c33
+
+BLAKE2b-256 checksum 
+
+ How to use checksums
+
+ da23086b81133baccbc05feb2fbc4113c70775352f3b9851dc8a20d69b2db44f
+
+ Upload date
+
+ Apr 8, 2026
+
+Uploaded using Trusted Publishing? 
+
+ What is trusted publishing?
+
+No 
+
+ Uploaded via
+
+ twine/6.1.0 CPython/3.13.12
+
+ Release files
+ / marisa_trie-1.4.1-cp311-cp311-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl
+
+ Download URL
+
+ marisa_trie-1.4.1-cp311-cp311-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl
+
+ Size
+ 1.5 MB
+
+ Tags
+
+ CPython 3.11
+ Linux glibc 2.24+ ARM64
+ Linux glibc 2.28+ ARM64
+
+SHA-256 checksum 
+
+ How to use checksums
+
+ 284ff4b2a63f00e175c7fe88d18c23a556c988ce705eb8e15a65e60ad7f86a98
+
+BLAKE2b-256 checksum 
+
+ How to use checksums
+
+ b73fd1d67e1ae5058dfcbb3756f75a26ea203acae875584636d360fd4a38b248
+
+ Upload date
+
+ Apr 8, 2026
+
+Uploaded using Trusted Publishing? 
+
+ What is trusted publishing?
+
+No 
+
+ Uploaded via
+
+ twine/6.1.0 CPython/3.13.12
+
+ Release files
+ / marisa_trie-1.4.1-cp311-cp311-macosx_11_0_arm64.whl
+
+ Download URL
+
+ marisa_trie-1.4.1-cp311-cp311-macosx_11_0_arm64.whl
+
+ Size
+ 192.7 kB
+
+ Tags
+
+ CPython 3.11
+ macOS 11.0+ ARM64
+
+SHA-256 checksum 
+
+ How to use checksums
+
+ 3a6404610eca835cf179c4407bcaa00d7acfbf3fd7aafcc1413d3adc262b554c
+
+BLAKE2b-256 checksum 
+
+ How to use checksums
+
+ 11672a8870ef1c42412ace3d656830902893fad6239434cde749f6654f907b41
+
+ Upload date
+
+ Apr 8, 2026
+
+Uploaded using Trusted Publishing? 
+
+ What is trusted publishing?
+
+No 
+
+ Uploaded via
+
+ twine/6.1.0 CPython/3.13.12
+
+ Release files
+ / marisa_trie-1.4.1-cp311-cp311-macosx_10_9_x86_64.whl
+
+ Download URL
+
+ marisa_trie-1.4.1-cp311-cp311-macosx_10_9_x86_64.whl
+
+ Size
+ 208.6 kB
+
+ Tags
+
+ CPython 3.11
+ macOS 10.9+ x86-64
+
+SHA-256 checksum 
+
+ How to use checksums
+
+ 579d1498e6b9e8f139b36601d2ea35e9239e849ff1615f3c3fc8df8ce4d3a936
+
+BLAKE2b-256 checksum 
+
+ How to use checksums
+
+ 3d941ad851729ba0cdbc269bdd72b4b725cfbf5a25e4186fd12e56836d2d52ba
+
+ Upload date
+
+ Apr 8, 2026
+
+Uploaded using Trusted Publishing? 
+
+ What is trusted publishing?
+
+No 
+
+ Uploaded via
+
+ twine/6.1.0 CPython/3.13.12
+
+ Release files
+ / marisa_trie-1.4.1-cp310-cp310-win_arm64.whl
+
+ Download URL
+
+ marisa_trie-1.4.1-cp310-cp310-win_arm64.whl
+
+ Size
+ 142.2 kB
+
+ Tags
+
+ CPython 3.10
+ Windows ARM64
+
+SHA-256 checksum 
+
+ How to use checksums
+
+ b10988ddeb8a37fd85ab03c043c5dd6fcc8f63d54af770bc27cb9722292b2a8c
+
+BLAKE2b-256 checksum 
+
+ How to use checksums
+
+ 1e87c65aeaeed6d8563a7522215bdc9d676a6978f8bb27071d7b59a5337a2ff9
+
+ Upload date
+
+ Apr 8, 2026
+
+Uploaded using Trusted Publishing? 
+
+ What is trusted publishing?
+
+No 
+
+ Uploaded via
+
+ twine/6.1.0 CPython/3.13.12
+
+ Release files
+ / marisa_trie-1.4.1-cp310-cp310-win_amd64.whl
+
+ Download URL
+
+ marisa_trie-1.4.1-cp310-cp310-win_amd64.whl
+
+ Size
+ 174.5 kB
+
+ Tags
+
+ CPython 3.10
+ Windows x86-64
+
+SHA-256 checksum 
+
+ How to use checksums
+
+ 1bbdad06145ee68dd8c9280318339a401d671844420add7c48eeeddd1cc61fa8
+
+BLAKE2b-256 checksum 
+
+ How to use checksums
+
+ fa81bdd4ce80ab15bc422377f123ac6c49b91396a71623cac7bc8198f1c4e016
+
+ Upload date
+
+ Apr 8, 2026
+
+Uploaded using Trusted Publishing? 
+
+ What is trusted publishing?
+
+No 
+
+ Uploaded via
+
+ twine/6.1.0 CPython/3.13.12
+
+ Release files
+ / marisa_trie-1.4.1-cp310-cp310-win32.whl
+
+ Download URL
+
+ marisa_trie-1.4.1-cp310-cp310-win32.whl
+
+ Size
+ 141.0 kB
+
+ Tags
+
+ CPython 3.10
+ Windows x86-32
+
+SHA-256 checksum 
+
+ How to use checksums
+
+ b8315d2ec3fd52a7c439d8cf3b4fe5ea67dc46c1fd66d7bc814d2c699e831e18
+
+BLAKE2b-256 checksum 
+
+ How to use checksums
+
+ 124c64698d167825e53f1cd375db6d9357a87ecec1a00d12f6f3651f8a858457
+
+ Upload date
+
+ Apr 8, 2026
+
+Uploaded using Trusted Publishing? 
+
+ What is trusted publishing?
+
+No 
+
+ Uploaded via
+
+ twine/6.1.0 CPython/3.13.12
+
+ Release files
+ / marisa_trie-1.4.1-cp310-cp310-musllinux_1_2_x86_64.whl
+
+ Download URL
+
+ marisa_trie-1.4.1-cp310-cp310-musllinux_1_2_x86_64.whl
+
+ Size
+ 2.5 MB
+
+ Tags
+
+ CPython 3.10
+ Linux musl 1.2+ x86-64
+
+SHA-256 checksum 
+
+ How to use checksums
+
+ c0ff2ea31a3f2ee5fcabcc77db8e5f5967d8e5614daa537262fe7617941fa262
+
+BLAKE2b-256 checksum 
+
+ How to use checksums
+
+ c3cc726372806ddd3dd4f7458b15ca890eb52f4a33e86260cff868ddc4a0f797
+
+ Upload date
+
+ Apr 8, 2026
+
+Uploaded using Trusted Publishing? 
+
+ What is trusted publishing?
+
+No 
+
+ Uploaded via
+
+ twine/6.1.0 CPython/3.13.12
+
+ Release files
+ / marisa_trie-1.4.1-cp310-cp310-musllinux_1_2_aarch64.whl
+
+ Download URL
+
+ marisa_trie-1.4.1-cp310-cp310-musllinux_1_2_aarch64.whl
+
+ Size
+ 2.4 MB
+
+ Tags
+
+ CPython 3.10
+ Linux musl 1.2+ ARM64
+
+SHA-256 checksum 
+
+ How to use checksums
+
+ ef8f430292df0faa6a639bbba64a5e2ac09dfb967e8752d51f0bf9dd11f16b96
+
+BLAKE2b-256 checksum 
+
+ How to use checksums
+
+ e8eaff378bf751f053cb4dd6082cc6bcffef62af765aa39f974250323586015a
+
+ Upload date
+
+ Apr 8, 2026
+
+Uploaded using Trusted Publishing? 
+
+ What is trusted publishing?
+
+No 
+
+ Uploaded via
+
+ twine/6.1.0 CPython/3.13.12
+
+ Release files
+ / marisa_trie-1.4.1-cp310-cp310-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl
+
+ Download URL
+
+ marisa_trie-1.4.1-cp310-cp310-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl
+
+ Size
+ 1.5 MB
+
+ Tags
+
+ CPython 3.10
+ Linux glibc 2.24+ x86-64
+ Linux glibc 2.28+ x86-64
+
+SHA-256 checksum 
+
+ How to use checksums
+
+ ecd2f16e19f441efc6755cd09703126ee27a496b9c50f179877c00975c150189
+
+BLAKE2b-256 checksum 
+
+ How to use checksums
+
+ c1e91197d04f35791607d01c010ae0de55ca53de574f21774625af0da3b573f8
+
+ Upload date
+
+ Apr 8, 2026
+
+Uploaded using Trusted Publishing? 
+
+ What is trusted publishing?
+
+No 
+
+ Uploaded via
+
+ twine/6.1.0 CPython/3.13.12
+
+ Release files
+ / marisa_trie-1.4.1-cp310-cp310-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl
+
+ Download URL
+
+ marisa_trie-1.4.1-cp310-cp310-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl
+
+ Size
+ 1.5 MB
+
+ Tags
+
+ CPython 3.10
+ Linux glibc 2.24+ ARM64
+ Linux glibc 2.28+ ARM64
+
+SHA-256 checksum 
+
+ How to use checksums
+
+ 89de7c0e6afd395b773b5adeb8ab1f315186b6538a34bbfaf73b049e3b555c2a
+
+BLAKE2b-256 checksum 
+
+ How to use checksums
+
+ 43df309e88b3c2bbf2abdc9f62a4ebc313b24130edddecca2889db9dbd74c765
+
+ Upload date
+
+ Apr 8, 2026
+
+Uploaded using Trusted Publishing? 
+
+ What is trusted publishing?
+
+No 
+
+ Uploaded via
+
+ twine/6.1.0 CPython/3.13.12
+
+ Release files
+ / marisa_trie-1.4.1-cp310-cp310-macosx_11_0_arm64.whl
+
+ Download URL
+
+ marisa_trie-1.4.1-cp310-cp310-macosx_11_0_arm64.whl
+
+ Size
+ 193.7 kB
+
+ Tags
+
+ CPython 3.10
+ macOS 11.0+ ARM64
+
+SHA-256 checksum 
+
+ How to use checksums
+
+ def32aa8edaec6d4229922dacb87e9d70d6bfb8ea994a13c9fcbfbee86e0b281
+
+BLAKE2b-256 checksum 
+
+ How to use checksums
+
+ 87963fc7b2e94c1da93636582acc7d56eb186c4d2cb2c01b0b2c2a177ca11061
+
+ Upload date
+
+ Apr 8, 2026
+
+Uploaded using Trusted Publishing? 
+
+ What is trusted publishing?
+
+No 
+
+ Uploaded via
+
+ twine/6.1.0 CPython/3.13.12
+
+ Release files
+ / marisa_trie-1.4.1-cp310-cp310-macosx_10_9_x86_64.whl
+
+ Download URL
+
+ marisa_trie-1.4.1-cp310-cp310-macosx_10_9_x86_64.whl
+
+ Size
+ 209.9 kB
+
+ Tags
+
+ CPython 3.10
+ macOS 10.9+ x86-64
+
+SHA-256 checksum 
+
+ How to use checksums
+
+ bc306a82f0dbece8f790bd4cfa0d7ad2dad1db9fb911395b07e7ae9862501bd2
+
+BLAKE2b-256 checksum 
+
+ How to use checksums
+
+ ed56ec51c02b083ccd25ce3f1cf13b9c575c05497d18f9386ac51314bc62fea8
+
+ Upload date
+
+ Apr 8, 2026
+
+Uploaded using Trusted Publishing? 
+
+ What is trusted publishing?
+
+No 
+
+ Uploaded via
+
+ twine/6.1.0 CPython/3.13.12
+
+ Release files
+ / marisa_trie-1.4.1-cp39-cp39-win_arm64.whl
+
+ Download URL
+
+ marisa_trie-1.4.1-cp39-cp39-win_arm64.whl
+
+ Size
+ 142.9 kB
+
+ Tags
+
+ CPython 3.9
+ Windows ARM64
+
+SHA-256 checksum 
+
+ How to use checksums
+
+ 90a7d313a1a1edb18c43c7cfdf1f7958c2fca73746d0581087ab1683d9a4d661
+
+BLAKE2b-256 checksum 
+
+ How to use checksums
+
+ 8cf5ad32aa79c809ea59769cf996bae31b790fc97fb38aaaa9b05340077eadc8
+
+ Upload date
+
+ Apr 8, 2026
+
+Uploaded using Trusted Publishing? 
+
+ What is trusted publishing?
+
+No 
+
+ Uploaded via
+
+ twine/6.1.0 CPython/3.13.12
+
+ Release files
+ / marisa_trie-1.4.1-cp39-cp39-win_amd64.whl
+
+ Download URL
+
+ marisa_trie-1.4.1-cp39-cp39-win_amd64.whl
+
+ Size
+ 175.1 kB
+
+ Tags
+
+ CPython 3.9
+ Windows x86-64
+
+SHA-256 checksum 
+
+ How to use checksums
+
+ 26514be092531fced812709407e37d1a260a3aeb81524755cd40642860e58ef5
+
+BLAKE2b-256 checksum 
+
+ How to use checksums
+
+ 3aba2bb40d08d2ee3d93840b50671cabc0971c4261f92a1c5478e30c1a9e9396
+
+ Upload date
+
+ Apr 8, 2026
+
+Uploaded using Trusted Publishing? 
+
+ What is trusted publishing?
+
+No 
+
+ Uploaded via
+
+ twine/6.1.0 CPython/3.13.12
+
+ Release files
+ / marisa_trie-1.4.1-cp39-cp39-win32.whl
+
+ Download URL
+
+ marisa_trie-1.4.1-cp39-cp39-win32.whl
+
+ Size
+ 141.3 kB
+
+ Tags
+
+ CPython 3.9
+ Windows x86-32
+
+SHA-256 checksum 
+
+ How to use checksums
+
+ 863cc513cd11b847bcd48abe65f8d9efb5d1a528adeeb323424199fed9f5cdfd
+
+BLAKE2b-256 checksum 
+
+ How to use checksums
+
+ ce102c32cc5ca703e77236a95dbcba70bdb3d7b0d535450f54416cee1af4fb1b
+
+ Upload date
+
+ Apr 8, 2026
+
+Uploaded using Trusted Publishing? 
+
+ What is trusted publishing?
+
+No 
+
+ Uploaded via
+
+ twine/6.1.0 CPython/3.13.12
+
+ Release files
+ / marisa_trie-1.4.1-cp39-cp39-musllinux_1_2_x86_64.whl
+
+ Download URL
+
+ marisa_trie-1.4.1-cp39-cp39-musllinux_1_2_x86_64.whl
+
+ Size
+ 2.5 MB
+
+ Tags
+
+ CPython 3.9
+ Linux musl 1.2+ x86-64
+
+SHA-256 checksum 
+
+ How to use checksums
+
+ 802f1cf5d559a3111a0784f542832e365d538e0146463d9fa5fef268302c7e86
+
+BLAKE2b-256 checksum 
+
+ How to use checksums
+
+ c2a4e9ce69126f84f949d55902d7a4b7dfe14d39e89ae0e7a8a34ec1b4ef799c
+
+ Upload date
+
+ Apr 8, 2026
+
+Uploaded using Trusted Publishing? 
+
+ What is trusted publishing?
+
+No 
+
+ Uploaded via
+
+ twine/6.1.0 CPython/3.13.12
+
+ Release files
+ / marisa_trie-1.4.1-cp39-cp39-musllinux_1_2_aarch64.whl
+
+ Download URL
+
+ marisa_trie-1.4.1-cp39-cp39-musllinux_1_2_aarch64.whl
+
+ Size
+ 2.4 MB
+
+ Tags
+
+ CPython 3.9
+ Linux musl 1.2+ ARM64
+
+SHA-256 checksum 
+
+ How to use checksums
+
+ 8a2dd82090d733dfb10a141bf86dcdd044dcebcf4d48c72e2048fc72b4b339d1
+
+BLAKE2b-256 checksum 
+
+ How to use checksums
+
+ 969628d5d0112c93527ed620f68c488bbd3bf13b32d3bf410c028b9ea5e762b8
+
+ Upload date
+
+ Apr 8, 2026
+
+Uploaded using Trusted Publishing? 
+
+ What is trusted publishing?
+
+No 
+
+ Uploaded via
+
+ twine/6.1.0 CPython/3.13.12
+
+ Release files
+ / marisa_trie-1.4.1-cp39-cp39-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl
+
+ Download URL
+
+ marisa_trie-1.4.1-cp39-cp39-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl
+
+ Size
+ 1.5 MB
+
+ Tags
+
+ CPython 3.9
+ Linux glibc 2.24+ x86-64
+ Linux glibc 2.28+ x86-64
+
+SHA-256 checksum 
+
+ How to use checksums
+
+ 925b51ed02300a0db5148752e13f16d3b5d216822828f9b48b78bb2b85a81e5f
+
+BLAKE2b-256 checksum 
+
+ How to use checksums
+
+ 7459a3bb736cb915ad0a091add2318e1254b8794c8715a0224febb1f547f521e
+
+ Upload date
+
+ Apr 8, 2026
+
+Uploaded using Trusted Publishing? 
+
+ What is trusted publishing?
+
+No 
+
+ Uploaded via
+
+ twine/6.1.0 CPython/3.13.12
+
+ Release files
+ / marisa_trie-1.4.1-cp39-cp39-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl
+
+ Download URL
+
+ marisa_trie-1.4.1-cp39-cp39-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl
+
+ Size
+ 1.5 MB
+
+ Tags
+
+ CPython 3.9
+ Linux glibc 2.24+ ARM64
+ Linux glibc 2.28+ ARM64
+
+SHA-256 checksum 
+
+ How to use checksums
+
+ 4a0b5bbd424e57b482f579d9a532bf3f9a8f2c4165175d92790cb0aa8c1c1f52
+
+BLAKE2b-256 checksum 
+
+ How to use checksums
+
+ 835e8dff1ab8bd4d3341eb0e758055590de1fc8667bc6dfef2a37cc2195b2946
+
+ Upload date
+
+ Apr 8, 2026
+
+Uploaded using Trusted Publishing? 
+
+ What is trusted publishing?
+
+No 
+
+ Uploaded via
+
+ twine/6.1.0 CPython/3.13.12
+
+ Release files
+ / marisa_trie-1.4.1-cp39-cp39-macosx_11_0_arm64.whl
+
+ Download URL
+
+ marisa_trie-1.4.1-cp39-cp39-macosx_11_0_arm64.whl
+
+ Size
+ 194.9 kB
+
+ Tags
+
+ CPython 3.9
+ macOS 11.0+ ARM64
+
+SHA-256 checksum 
+
+ How to use checksums
+
+ 78a7bd2650607762a2411475544d1497e2865e0853daf0e17aa9e9555f205148
+
+BLAKE2b-256 checksum 
+
+ How to use checksums
+
+ 08ee934d116666855a14eb0f30052cd0c3c34482a1a4a570866ba6e46b64d9fa
+
+ Upload date
+
+ Apr 8, 2026
+
+Uploaded using Trusted Publishing? 
+
+ What is trusted publishing?
+
+No 
+
+ Uploaded via
+
+ twine/6.1.0 CPython/3.13.12
+
+ Release files
+ / marisa_trie-1.4.1-cp39-cp39-macosx_10_9_x86_64.whl
+
+ Download URL
+
+ marisa_trie-1.4.1-cp39-cp39-macosx_10_9_x86_64.whl
+
+ Size
+ 211.1 kB
+
+ Tags
+
+ CPython 3.9
+ macOS 10.9+ x86-64
+
+SHA-256 checksum 
+
+ How to use checksums
+
+ 94e9671fb7aeee0ba81988156e984b90520c721bb9c00e65d7eb4757960c7f3b
+
+BLAKE2b-256 checksum 
+
+ How to use checksums
+
+ 1d95c44f437ca86d4fec60ba7bd8a2740813e1e7e9e10dae66969ca5324af6c0
+
+ Upload date
+
+ Apr 8, 2026
+
+Uploaded using Trusted Publishing? 
+
+ What is trusted publishing?
+
+No 
+
+ Uploaded via
+
+ twine/6.1.0 CPython/3.13.12
+
+ Release history
+
+ Release notifications |
+ RSS feed 
+
+ This release
+
+ 1.4.1
+ This release
+
+ Apr 8, 2026
+
+ 73 release files
+
+ 1.4.0
+
+ Mar 10, 2026
+
+ 65 release files
+
+ Pre-release
+
+ 1.3.2.dev0
+
+ Aug 26, 2025
+
+ 65 release files
+
+ 1.3.1
+
+ Aug 26, 2025
+
+ 65 release files
+
+ 1.3.0
+
+ Aug 16, 2025
+
+ 65 release files
+
+ 1.2.1
+
+ Oct 12, 2024
+
+ 76 release files
+
+ 1.2.0
+
+ Jun 5, 2024
+
+ 88 release files
+
+ 1.1.1
+
+ May 6, 2024
+
+ 88 release files
+
+ 1.1.0
+
+ Oct 6, 2023
+
+ 69 release files
+
+ 1.0.0
+
+ Sep 3, 2023
+
+ 60 release files
+
+ 0.8.0
+
+ Mar 25, 2023
+
+ 63 release files
+
+ 0.7.8
+
+ Oct 25, 2022
+
+ 63 release files
+
+ 0.7.7
+
+ Aug 4, 2021
+
+ 36 release files
+
+ 0.7.6
+
+ Jul 28, 2021
+
+ 29 release files
+
+ 0.7.5
+
+ Apr 10, 2018
+
+ 2 release files
+
+ 0.7.4
+
+ Mar 27, 2017
+
+ 17 release files
+
+ 0.7.3
+
+ Feb 14, 2017
+
+ 0.7.2
+
+ Apr 21, 2015
+
+ 6 release files
+
+ 0.7.1
+
+ Apr 21, 2015
+
+ 1 release file
+
+ 0.7
+
+ Dec 15, 2014
+
+ 1 release file
+
+ 0.6
+
+ Feb 22, 2014
+
+ 1 release file
+
+ 0.5.3
+
+ Feb 8, 2014
+
+ 1 release file
+
+ 0.5.2
+
+ Feb 8, 2014
+
+ 1 release file
+
+ 0.5.1
+
+ Oct 3, 2013
+
+ 1 release file
+
+ 0.5
+
+ May 6, 2013
+
+ 1 release file
+
+ 0.4
+
+ Feb 27, 2013
+
+ 1 release file
+
+ 0.3.8
+
+ Jan 2, 2013
+
+ 1 release file
+
+ 0.3.7
+
+ Sep 21, 2012
+
+ 1 release file
+
+ 0.3.6
+
+ Sep 5, 2012
+
+ 1 release file
+
+ 0.3.5
+
+ Aug 30, 2012
+
+ 1 release file
+
+ 0.3.4
+
+ Aug 29, 2012
+
+ 1 release file
+
+ 0.3.3
+
+ Aug 27, 2012
+
+ 1 release file
+
+ 0.3.2
+
+ Aug 26, 2012
+
+ 1 release file
+
+ 0.3.1
+
+ Aug 23, 2012
+
+ 1 release file
+
+ 0.3
+
+ Aug 23, 2012
+
+ 1 release file
+
+ 0.2
+
+ Aug 19, 2012
+
+ 1 release file
+
+ 0.1
+
+ Aug 17, 2012
+
+ 1 release file
+
+ Anthropic, PBC
+ Visionary sponsor
+
+ Bloomberg
+ Visionary sponsor
+
+ Hudson River Trading
+ Visionary sponsor
+
+ Meta
+ Visionary sponsor
+
+ NVIDIA
+ Visionary sponsor
+
+ Microsoft
+ Sustainability sponsor
+
+ Depot
+ Continuous Integration
+
+ AWS
+ Cloud computing and Security Sponsor
+
+ Datadog
+ Monitoring
+
+ Fastly
+ CDN
+
+ Google
+ Download Analytics
+
+ Sentry
+ Error logging
+
+ StatusPage
+ Status page
+
+"PyPI", "Python Package Index", and the blocks logos are registered trademarks of the Python Software Foundation.
+
+ © 2026 Python Software Foundation
+
+ Site map
+
+Deployed from f43a0f7

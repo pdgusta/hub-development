@@ -1,0 +1,41 @@
+{
+ "chave": "web:bottlepy.org",
+ "urls": [
+  "https://bottlepy.org/"
+ ],
+ "tipos": [
+  "library"
+ ],
+ "termos": [
+  "Microframework",
+  "Python",
+  "microframework",
+  "single file",
+  "WSGI",
+  "single-file",
+  "Single-file",
+  "Minimalist"
+ ],
+ "mencoes": 7,
+ "familias": [
+  "cohere",
+  "free",
+  "llama",
+  "mistral"
+ ],
+ "primeira_onda": 3,
+ "nomes": [
+  "Bottle"
+ ],
+ "resumos": [
+  "A fast, simple and lightweight WSGI micro web-framework for Python.",
+  "Single-file Python micro web-framework for small web applications and APIs",
+  "A fast, simple and lightweight WSGI micro web-framework",
+  "Fast, simple and lightweight WSGI micro web-framework for Python."
+ ],
+ "fonte": "site",
+ "readme_status": "ok",
+ "readme_nome": "https://bottlepy.org/",
+ "readme_cortado": false,
+ "readme": "[Bottle: Python Web Framework — Bottle 0.14-dev documentation]\n\nBottle: Python Web Framework¶\n\nBottle is a fast, simple and lightweight WSGI micro web-framework for Python. It is distributed as a single file module and has no dependencies other than the Python Standard Library.\n\nRouting: Requests to function-call mapping with support for clean and dynamic URLs.\n\nTemplates: Fast and pythonic built-in template engine and support for mako, jinja2 and cheetah templates.\n\nUtilities: Convenient access to form data, file uploads, cookies, headers and other HTTP features.\n\nServer: Built-in HTTP development server and support for a wide range of WSGI capable HTTP server (e.g. gunicorn, paste or cheroot).\n\nExample: “Hello World” in a bottle\n\nfrom bottle import route, run, template\n\n@route('/hello/<name>')\ndef index(name):\n return template('<b>Hello {{name}}</b>!', name=name)\n\nrun(host='localhost', port=8080)\n\nRun this script or paste it into a Python console, then point your browser to http://localhost:8080/hello/world. That’s it.\n\nDownload and Install¶\n\nInstall the latest stable release with pip install bottle or download bottle.py (unstable) into your project directory. There are no hard [1] dependencies other than the Python standard library.\n\nDead Snakes¶\n\nBottle up to version 0.12 supported an absurd range of Python versions, some of which reached their end-of-life well over a decade ago. Starting with Bottle 0.13 we ensure backwards compatibility with maintained versions of Python only. Outdated Python versions may still work, but are no longer tested for compatibility.\n\nIf you are in the unfortunate position to have to rely on “dead snakes” for production, just stick with Bottle 0.12 (LTS) or whichever release of Bottle still supports it. Everyone else should upgrade regularly to benefit from new features and improvements.\n\nPython Support Matrix¶\n\nBottle Release\n\nPython 2\n\nPython 3\n\n0.12\n\n2.5 - 2.7\n\n3.2 - 3.12\n\n0.13\n\n2.7\n\n>=3.8 [2]\n\n0.14 (planned)\n\ndropped\n\n>=3.9 [2]\n\nDocumentation¶\n\nGetting Started\n\nUser’s Guide\n\nInstallation\n\nHello World!\n\nThe Application Object\n\nDebug Mode\n\nCommand Line Interface\n\nRequest Routing\n\nServing Assets\n\nGenerating content\n\nError handling\n\nRequest Data\n\nTemplates\n\nStructuring Applications\n\nGlossary\n\nAPI Reference\n\nGlobal functions\n\nGlobal decorators\n\nRequest Context\n\nHelper Functions\n\nExceptions\n\nThe Bottle Class\n\nThe Request Object\n\nThe Response Object\n\nData Structures\n\nRequest routing\n\nTemplating\n\nHTTP utilities\n\nMisc utilities\n\nRelease Notes\n\nRelease 0.14 (in development)\n\nRelease 0.13\n\nRelease 0.12\n\nRelease 0.11\n\nRelease 0.10\n\nRelease 0.9\n\nRelease 0.8\n\nF.A.Q.\n\nGeneral questions\n\nCommon errors and pitfalls\n\nRecipes for common tasks\n\nAdvanced Topics\n\nRequest Routing\n\nRule Syntax\n\nWildcard Filters\n\nLegacy Syntax\n\nExplicit routing configuration\n\nConfiguration\n\nConfiguration Basics\n\nNaming Convention\n\nLoad configuration from a File\n\nLoad configuration from a python module\n\nLoading configuration from a dict\n\nListening to configuration changes\n\nFilters and other Meta Data\n\nAPI Documentation\n\nSimpleTemplate\n\nSimpleTemplate Syntax\n\nTemplate Functions\n\nSimpleTemplate API\n\nDeployment\n\nScaling for Production\n\nAsynchronous Applications\n\nThe Limits of Synchronous WSGI\n\nGreenlets to the rescue\n\nEvent Callbacks\n\nFinally: WebSockets\n\nPlugins\n\nUsing Plugins\n\nPlugin Basics\n\nManaging Plugins\n\nConfiguring Plugins\n\nWriting Plugins\n\nPlugin API\n\nThe Route Context\n\nRuntime optimizations\n\nCommon patterns\n\nPlugin Example: SQLitePlugin\n\n3rd Party Plugins\n\nAdditional Notes\n\nToDo Application Example\n\nGoals\n\nPrior to Starting …\n\nWriting a Web-Based ToDo Application with Bottle\n\nDeployment\n\nFinal Words\n\nComplete Example Listing\n\nDevelopment\n\nDeveloper Notes\n\nGet involved\n\nGet the Sources\n\nReleases and Updates\n\nRepository Structure\n\nSubmitting Patches\n\nContributors\n\nLicense¶\n\nCode and documentation are available according to the MIT License:\n\nCopyright (c) 2009-2025, Marcel Hellkamp.\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in\nall copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN\nTHE SOFTWARE.\n\nThe Bottle logo however is NOT covered by that license. It is allowed to\nuse the logo as a link to the bottle homepage or in direct context with\nthe unmodified library. In all other cases please ask first.\n\nFootnotes\n\n[1]\n\nUsage of the template or server adapter classes requires the corresponding template or server modules.\n\n[2]\n(1,2)\n\nBottle often still works with recently discontinued Python 3.x versions. We will not intentionally break compatibility, but also no longer test against those versions. Use at your own risk.\n\n Bottle is a fast, simple and lightweight WSGI micro web-framework for Python.\n\nTable of Contents\n\nGetting Started\n\nUser’s Guide\n\nAPI Reference\n\nRelease Notes\n\nF.A.Q.\n\nAdvanced Topics\n\nRequest Routing\n\nConfiguration\n\nSimpleTemplate\n\nDeployment\n\nAsynchronous Applications\n\nPlugins\n\nUsing Plugins\n\nWriting Plugins\n\n3rd Party Plugins\n\nAdditional Notes\n\nToDo Application Example\n\nDevelopment\n\nDeveloper Notes\n\nContributors\n\nReleases\n\nThis is the documentation for Bottle-0.14-dev, which is\n not released yet.\n\nBottle dev (next)\n\nBottle 0.13 (stable)\n\nBottle 0.12 (LTS)\n\nLinks\n\nDocumentation\n\nPython Package Index\n\nSources at GitHub\n\nMailing list\n\nQuick search\n\n © Copyright 2009-2026, Marcel Hellkamp"
+}

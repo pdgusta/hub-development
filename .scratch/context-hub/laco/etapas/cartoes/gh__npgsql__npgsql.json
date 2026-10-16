@@ -1,0 +1,28 @@
+{
+ "chave": "gh:npgsql/npgsql",
+ "urls": [
+  "https://github.com/npgsql/npgsql"
+ ],
+ "tipos": [
+  "library"
+ ],
+ "termos": [
+  "Npgsql",
+  "PostgreSQL検索"
+ ],
+ "mencoes": 1,
+ "familias": [
+  "mistral"
+ ],
+ "primeira_onda": 4,
+ "nomes": [
+  "Npgsql (PostgreSQL for Offline Indexing)"
+ ],
+ "resumos": [
+  "PostgreSQLを用いたオフラインインデックス化（BM25 + ベクトル）に対応可能。"
+ ],
+ "readme_status": "ok",
+ "readme_nome": "README.md",
+ "readme_cortado": false,
+ "readme": "# Npgsql - the .NET data provider for PostgreSQL\n\n[![stable](https://img.shields.io/nuget/v/Npgsql.svg?label=stable)](https://www.nuget.org/packages/Npgsql/)\n[![next patch](https://img.shields.io/myget/npgsql/v/npgsql.svg?label=next%20patch)](https://www.myget.org/feed/npgsql/package/nuget/Npgsql)\n[![daily builds (vnext)](https://img.shields.io/myget/npgsql-vnext/v/npgsql.svg?label=vnext)](https://www.myget.org/feed/npgsql-vnext/package/nuget/Npgsql)\n[![build](https://github.com/npgsql/npgsql/actions/workflows/build.yml/badge.svg)](https://github.com/npgsql/npgsql/actions/workflows/build.yml)\n[![gitter](https://img.shields.io/badge/gitter-join%20chat-brightgreen.svg)](https://gitter.im/npgsql/npgsql)\n\n## What is Npgsql?\n\nNpgsql is the open source .NET data provider for PostgreSQL. It allows you to connect and interact with PostgreSQL server using .NET.\n\nFor the full documentation, please visit [the Npgsql website](https://www.npgsql.org). For the Entity Framework Core provider that works with this provider, see [Npgsql.EntityFrameworkCore.PostgreSQL](https://github.com/npgsql/efcore.pg).\n\n## Quickstart\n\nHere's a basic code snippet to get you started:\n\n```csharp\nusing Npgsql;\n\nvar connString = \"Host=myserver;Username=mylogin;Password=mypass;Database=mydatabase\";\n\nvar dataSourceBuilder = new NpgsqlDataSourceBuilder(connString);\nvar dataSource = dataSourceBuilder.Build();\n\nvar conn = await dataSource.OpenConnectionAsync();\n\n// Insert some data\nawait using (var cmd = new NpgsqlCommand(\"INSERT INTO data (some_field) VALUES (@p)\", conn))\n{\n    cmd.Parameters.AddWithValue(\"p\", \"Hello world\");\n    await cmd.ExecuteNonQueryAsync();\n}\n\n// Retrieve all rows\nawait using (var cmd = new NpgsqlCommand(\"SELECT some_field FROM data\", conn))\nawait using (var reader = await cmd.ExecuteReaderAsync())\n{\n    while (await reader.ReadAsync())\n        Console.WriteLine(reader.GetString(0));\n}\n```\n\n## Key features\n\n* High-performance PostgreSQL driver. Regularly figures in the top contenders on the [TechEmpower Web Framework Benchmarks](https://www.techempower.com/benchmarks/).\n* Full support of most PostgreSQL types, including advanced ones such as arrays, enums, ranges, multiranges, composites, JSON, PostGIS and others.\n* Highly-efficient bulk import/export API.\n* Failover, load balancing and general multi-host support.\n* Great integration with Entity Framework Core via [Npgsql.EntityFrameworkCore.PostgreSQL](https://www.nuget.org/packages/Npgsql.EntityFrameworkCore.PostgreSQL).\n\nFor the full documentation, please visit the Npgsql website at [https://www.npgsql.org](https://www.npgsql.org).\n"
+}

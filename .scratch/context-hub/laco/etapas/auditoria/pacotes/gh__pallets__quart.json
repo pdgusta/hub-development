@@ -1,0 +1,92 @@
+{
+ "chave": "gh:pallets/quart",
+ "nomes": [
+  "Quart"
+ ],
+ "urls": [
+  "https://github.com/pallets/quart",
+  "https://quart.palletsprojects.com/",
+  "https://pgjones.gitlab.io/quart/",
+  "https://gitlab.com/pgjones/quart",
+  "https://quart.readthedocs.io/",
+  "https://quart.palletsprojects.com",
+  "https://quart.palletspro.io/",
+  "https://pgjones.github.io/quart/",
+  "https://python-quart.readthedocs.io/"
+ ],
+ "readme_cortado": false,
+ "readme": "<div align=\"center\"><img src=\"https://raw.githubusercontent.com/pallets/quart/refs/heads/main/docs/_static/quart-name.svg\" alt=\"\" height=\"150\"></div>\n\n# Quart\n\nQuart is an async Python web application framework. Using Quart you can,\n\n- render and serve HTML templates,\n- write (RESTful) JSON APIs,\n- serve WebSockets,\n- stream request and response data,\n- do pretty much anything over the HTTP or WebSocket protocols.\n\n## Quickstart\n\nInstall from PyPI using an installer such as pip.\n\n```\n$ pip install quart\n```\n\nSave the following as `app.py`. This shows off rendering a template, returning\nJSON data, and using a WebSocket.\n\n```python\nfrom quart import Quart, render_template, websocket\n\napp = Quart(__name__)\n\n@app.route(\"/\")\nasync def hello():\n    return await render_template(\"index.html\")\n\n@app.route(\"/api\")\nasync def json():\n    return {\"hello\": \"world\"}\n\n@app.websocket(\"/ws\")\nasync def ws():\n    while True:\n        await websocket.send(\"hello\")\n        await websocket.send_json({\"hello\": \"world\"})\n```\n\n```\n$ quart run\n * Running on http://127.0.0.1:5000 (CTRL + C to quit)\n```\n\nTo deploy this app in a production setting see the [deployment] documentation.\n\n[deployment]: https://quart.palletsprojects.com/en/latest/tutorials/deployment.html\n\n## Contributing\n\nQuart is developed on [GitHub]. If you come across a bug, or have a feature\nrequest, please open an [issue]. To contribute a fix or implement a feature,\nfollow our [contributing guide].\n\n[GitHub]: https://github.com/pallets/quart\n[issue]: https://github.com/pallets/quart/issues\n[contributing guide]: https://github.com/pallets/quart/blob/main/CONTRIBUTING.md\n\n## Help\n\nIf you need help with your code, the Quart [documentation] and [cheatsheet] are\nthe best places to start. You can ask for help on the [Discussions tab] or on\nour [Discord chat].\n\n[documentation]: https://quart.palletsprojects.com\n[cheatsheet]: https://quart.palletsprojects.com/en/latest/reference/cheatsheet.html\n[Discussions tab]: https://github.com/pallets/quart/discussions\n[Discord chat]: https://discord.gg\n\n## Relationship with Flask\n\nQuart is an asyncio reimplementation of the popular [Flask] web application\nframework. This means that if you understand Flask you understand Quart.\n\nLike Flask, Quart has an ecosystem of extensions for more specific needs. In\naddition, a number of the Flask extensions work with Quart.\n\n[Flask]: https://flask.palletsprojects.com\n\n### Migrating from Flask\n\nIt should be possible to migrate to Quart from Flask by a find and replace of\n`flask` to `quart` and then adding `async` and `await` keywords. See the\n[migration] documentation for more help.\n\n[migration]: https://quart.palletsprojects.com/en/latest/how_to_guides/flask_migration.html\n",
+ "fonte": "readme",
+ "respostas": [
+  {
+   "por": "llama-3.2-11b-vision-instruct",
+   "resposta": {
+    "serve": "none",
+    "role": "",
+    "place": [
+     "n/a"
+    ],
+    "mechanism": [
+     "n/a"
+    ],
+    "mcp": "unknown",
+    "windows": "yes",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "unknown",
+    "doubt": true,
+    "evidence": ""
+   }
+  },
+  {
+   "por": "voxtral-small-2507",
+   "resposta": {
+    "serve": "none",
+    "role": "",
+    "place": [
+     "n/a"
+    ],
+    "mechanism": [
+     "n/a"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "unknown",
+    "doubt": true,
+    "evidence": "Quart is an async Python web application framework."
+   }
+  }
+ ],
+ "conferencia_sonnet": {
+  "chave": "gh:pallets/quart",
+  "modelo": "claude-sonnet-5-5",
+  "ts": "2026-10-13T21:22:35Z",
+  "resultado": "rejeita",
+  "conferencia": {
+   "resultado": "rejeita",
+   "final": {
+    "serve": "none",
+    "role": "",
+    "place": [
+     "n/a"
+    ],
+    "mechanism": [
+     "n/a"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "unknown",
+    "doubt": false,
+    "evidence": "Quart is an async Python web application framework (asyncio reimplementation of Flask); not a search or stack component."
+   },
+   "o_que_mudou": [
+    "doubt: true -> false, README is clear"
+   ],
+   "nota": "Framework web assincrono generico; nao e busca nem peca da stack do hub."
+  }
+ }
+}

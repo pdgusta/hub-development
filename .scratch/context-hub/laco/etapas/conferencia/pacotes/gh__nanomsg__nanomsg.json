@@ -1,0 +1,58 @@
+{
+ "chave": "gh:nanomsg/nanomsg",
+ "nomes": [
+  "nanomsg",
+  "Nanomsg"
+ ],
+ "urls": [
+  "https://github.com/nanomsg/nanomsg",
+  "https://nanomsg.org/",
+  "https://nanomsg.org"
+ ],
+ "readme_cortado": false,
+ "readme": "Welcome to nanomsg\n==================\n\n[![Release](https://img.shields.io/github/release/nanomsg/nanomsg.svg)](https://github.com/nanomsg/nanomsg/releases/latest)\n[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/nanomsg/nanomsg/blob/master/COPYING)\n[![Linux](https://img.shields.io/github/actions/workflow/status/nanomsg/nanomsg/linux.yml?branch=master&logoColor=grey&logo=linux&label=)](https://github.com/nanomsg/nanomsg/actions/workflows/linux.yml)\n[![Windows](https://img.shields.io/github/actions/workflow/status/nanomsg/nanomsg/windows.yml?branch=master&logoColor=grey&logo=windows&label=)](https://github.com/nanomsg/nanomsg/actions/workflows/windows.yml)\n[![Darwin](https://img.shields.io/github/actions/workflow/status/nanomsg/nanomsg/darwin.yml?branch=master&logoColor=grey&logo=apple&label=)](https://github.com/nanomsg/nanomsg/actions/workflows/darwin.yml)\n[![Discord](https://img.shields.io/discord/639573728212156478?label=&logo=discord)](https://discord.com/channels/639573728212156478/639574516812742686)\n\nThe nanomsg library is a simple high-performance implementation of several\n\"scalability protocols\". These scalability protocols are light-weight messaging\nprotocols which can be used to solve a number of very common messaging\npatterns, such as request/reply, publish/subscribe, surveyor/respondent,\nand so forth.  These protocols can run over a variety of transports such\nas TCP, UNIX sockets, and even WebSocket.\n\nFor more information check the [website](http://nanomsg.org).\n\nPrerequisites\n-------------\n\n1. Windows.\n   * Windows Vista or newer (Windows XP and 2003 are *NOT* supported)\n   * Microsoft Visual Studio 2010 (including C++) or newer, or mingw-w64.\n     (Specifically mingw and older Microsoft compilers are *NOT* supported,\n     and we do not test mingw-w64 at all, so YMMV.)\n   * CMake 2.8.12 or newer, available in $PATH as `cmake`\n\n2. POSIX (Linux, MacOS X, UNIX)\n   * ANSI C compiler supporting C89\n   * POSIX pthreads (should be present on all modern POSIX systems)\n   * BSD sockets support for both TCP and UNIX domain sockets\n   * CMake (http://cmake.org) 2.8.12 or newer, available in $PATH as `cmake`\n\n3. Documentation (optional)\n   * asciidoctor (http://asciidoctor.org/) available as `asciidoctor`\n   * If not present, docs are not formatted, but left in readable ASCII\n   * Available on-line at http://nanomsg.org/documentation\n\nQuick Build Instructions\n------------------------\n\nThese steps here are the minimum steps to get a default Debug\nbuild.  Using CMake you can do many other things, including\nsetting additional variables, setting up for static builds, or\ngeneration project or solution files for different development\nenvironments.  Please check the CMake website for all the various\noptions that CMake supports.\n\n## POSIX\n\nThis assumes you have a shell in the project directory, and have\nthe cmake and suitable compilers (and any required supporting tools\nlike linkers or archivers) on your path.\n\n1.  `% mkdir build`\n2.  `% cd build`\n3.  `% cmake ..`\n4.  `% cmake --build .`\n5.  `% ctest .`\n6.  `% sudo cmake --build . --target install`\n7.  `% sudo ldconfig` (if on Linux)\n\n## Windows\n\nThis assumes you are in a command or powershell window and have\nthe appropriate variables setup to support Visual Studio, typically\nby running `vcvarsall.bat` or similar with the appropriate argument(s).\nIt also assumes you are in the project directory.\n\n1.  `md build`\n2.  `cd build`\n3.  `cmake ..`\n4.  `cmake --build . --config Debug`\n5.  `ctest -C Debug .`\n6.  `cmake --build . --config Debug --target install`\n    *NB:* This may have to be done using an Administrator account.\n\nAlternatively, you can build and install nanomsg using [vcpkg](https://github.com/microsoft/vcpkg/) dependency manager:\n\n1.  `git clone https://github.com/Microsoft/vcpkg.git`\n2.  `cd vcpkg`\n3.  `./bootstrap-vcpkg.bat`\n4.  `./vcpkg integrate install`\n5.  `./vcpkg install nanomsg`\n\nThe nanomsg port in vcpkg is kept up to date by microsoft team members and community contributors.\nIf the version is out of date, please [create an issue or pull request](https://github.com/Microsoft/vcpkg) on the vcpkg repository.\n\nStatic Library\n--------------\n\nWe normally build a dynamic library (.so or .DLL) by default.\n\nIf you want a static library (.a or .LIB), configure by passing\n`-DNN_STATIC_LIB=ON` to the first `cmake` command.\n\n### POSIX\n\nPOSIX systems will need to link with the libraries normally used when building\nnetwork applications.  For some systems this might mean -lnsl or -lsocket.\n\n### Windows\n\nYou will also need to define `NN_STATIC_LIB` in your compilation environment\nwhen building programs that use this library.  This is required because of\nthe way Windows changes symbol names depending on whether the symbols should\nbe exported in a DLL or not.\n\nWhen using the .LIB on Windows, you will also need to link with the\nws2_32, mswsock, and advapi32 libraries, as nanomsg depends on them.\n\nSupport\n-------\n\nThis library is considered to be in \"sustaining\" mode, which means that new\nfeature development has ended, and bug fixes are made only when strictly\nnecessary for severe issues.\n\nNew development is now occurring in the [NNG](https://github.com/nanomsg/nng)\nproject, which offers both protocol and API compatibility with this project.\nPlease consider using NNG for new projects.\n\nPlease see the file SUPPORT for more details.\n",
+ "fonte": "readme",
+ "respostas": [
+  {
+   "por": "ising-calibration-1.5-31b",
+   "resposta": {
+    "serve": "stack",
+    "role": "Provides low-level messaging transport for the hub's components.",
+    "place": [
+     "disk",
+     "network_service"
+    ],
+    "mechanism": [
+     "other"
+    ],
+    "mcp": "no",
+    "windows": "yes",
+    "portuguese": "no",
+    "license": "MIT",
+    "maturity": "stable",
+    "doubt": false,
+    "evidence": "The README explicitly states that nanomsg is a 'simple high-performance implementation of several \"scalability protocols\"' used for messaging patterns like request/reply and publish/subscribe. It provides build instructions for both POSIX and Windows systems, confirming its cross-platform support. While it is not a search engine or an MCP server itself, it serves as a critical underlying transport layer for the hub's infrastructure."
+   }
+  },
+  {
+   "por": "gemma-4-31b",
+   "resposta": {
+    "serve": "stack",
+    "role": "messaging library for scalability protocols like request/reply and publish/subscribe",
+    "place": [
+     "library"
+    ],
+    "mechanism": [
+     "other"
+    ],
+    "mcp": "unknown",
+    "windows": "yes",
+    "portuguese": "unknown",
+    "license": "MIT",
+    "maturity": "archived",
+    "doubt": false,
+    "evidence": "nanomsg library... scalability protocols... Windows Vista or newer"
+   }
+  }
+ ]
+}

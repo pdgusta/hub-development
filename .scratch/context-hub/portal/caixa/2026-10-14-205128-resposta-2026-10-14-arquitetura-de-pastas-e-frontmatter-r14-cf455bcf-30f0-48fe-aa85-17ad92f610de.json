@@ -1,0 +1,549 @@
+{
+  "envio": "cf455bcf-30f0-48fe-aa85-17ad92f610de",
+  "tipo": "resposta",
+  "enviada": "2026-10-14T20:51:28-03:00",
+  "alvo": {
+    "tipo": "rodada",
+    "id": "2026-10-14-arquitetura-de-pastas-e-frontmatter-r14",
+    "titulo": "O que entra em cada bloco, a ficha, segredos e scripts"
+  },
+  "ticket": "12",
+  "substitui": null,
+  "rodada": {
+    "id": "2026-10-14-arquitetura-de-pastas-e-frontmatter-r14",
+    "base": "5aa5044eaf1950ee3a146d9bd4fef28eff5091e14a07d3ad86fb2b3e4b3c87f0",
+    "titulo": "O que entra em cada bloco, a ficha, segredos e scripts",
+    "ticket": "12",
+    "perguntas": [
+      {
+        "id": "blocos",
+        "titulo": "O que entra em cada bloco",
+        "tipo": "proposta",
+        "recomendada": [],
+        "opcoes": [],
+        "proposta": {
+          "colunas": [
+            "bloco",
+            "entra",
+            "não entra"
+          ],
+          "linhas": [
+            {
+              "id": "inputs",
+              "bloco": "inputs/",
+              "entra": "o que veio de fora: kickoff, PDF e planilha do cliente, e-mails, exports",
+              "não entra": "o que você produziu a partir disso (vai para research/ ou deliverables/)"
+            },
+            {
+              "id": "research",
+              "bloco": "research/",
+              "entra": "levantamento, pesquisa, análise, discovery, comparação de opções",
+              "não entra": "a decisão tomada (vai para decisions.md) e o desenho final (design/)"
+            },
+            {
+              "id": "design",
+              "bloco": "design/",
+              "entra": "arquitetura, especificação, desenho da solução, o detalhe de uma decisão grande",
+              "não entra": "planos de execução (plans/)"
+            },
+            {
+              "id": "plans",
+              "bloco": "plans/",
+              "entra": "planos, roteiros, tickets e backlog maior que o tasks.md",
+              "não entra": "a pendência simples do dia (tasks.md)"
+            },
+            {
+              "id": "deliverables",
+              "bloco": "deliverables/",
+              "entra": "o que é entregue, com versão no nome: documentos, relatórios, apresentações",
+              "não entra": "rascunhos de trabalho (research/ ou design/)"
+            },
+            {
+              "id": "evidence",
+              "bloco": "evidence/",
+              "entra": "prints, logs e exports que provam um fato",
+              "não entra": "imagens de documento entregue (deliverables/)"
+            },
+            {
+              "id": "runs",
+              "bloco": "runs/",
+              "entra": "trabalho de agentes: briefs, handoffs, execuções e revisões, uma subpasta por execução",
+              "não entra": "a personalização do Maestri (maestro/)"
+            },
+            {
+              "id": "tools",
+              "bloco": "tools/",
+              "entra": "scripts de apoio desta iniciativa",
+              "não entra": "código de produto, que mora no repositório próprio"
+            },
+            {
+              "id": "procedures",
+              "bloco": "procedures/",
+              "entra": "runbooks, SOPs, passo a passo de operação",
+              "não entra": "o registro de cada caso (cases/)"
+            },
+            {
+              "id": "cases",
+              "bloco": "cases/",
+              "entra": "um arquivo por caso ou incidente",
+              "não entra": "o procedimento genérico (procedures/)"
+            },
+            {
+              "id": "queries",
+              "bloco": "queries/",
+              "entra": "consultas salvas (KQL, SQL) e seus resultados de referência",
+              "não entra": "scripts (tools/)"
+            },
+            {
+              "id": "knowledge",
+              "bloco": "knowledge/",
+              "entra": "base de conhecimento própria da iniciativa",
+              "não entra": "conhecimento geral, que vai para a raiz reference/"
+            },
+            {
+              "id": "notes",
+              "bloco": "notes/",
+              "entra": "anotações de estudo",
+              "não entra": "o material do curso (inputs/)"
+            },
+            {
+              "id": "labs",
+              "bloco": "labs/",
+              "entra": "exercícios e ambientes de laboratório",
+              "não entra": "senhas (ver a pergunta dos segredos)"
+            },
+            {
+              "id": "other",
+              "bloco": "other/",
+              "entra": "o que não cabe em nenhum bloco; com três parecidos, propõe-se um bloco novo",
+              "não entra": "o que cabe num bloco existente"
+            }
+          ],
+          "pode": [
+            "editar",
+            "reordenar",
+            "adicionar",
+            "remover"
+          ]
+        }
+      },
+      {
+        "id": "ficha",
+        "titulo": "Os campos da ficha (`initiative.md`)",
+        "tipo": "proposta",
+        "recomendada": [],
+        "opcoes": [],
+        "proposta": {
+          "colunas": [
+            "campo",
+            "valores",
+            "de onde vem"
+          ],
+          "linhas": [
+            {
+              "id": "id",
+              "campo": "id",
+              "valores": "kebab-case, estável",
+              "de onde vem": "vault, igual"
+            },
+            {
+              "id": "title",
+              "campo": "title",
+              "valores": "nome usado fora (Loop, cliente)",
+              "de onde vem": "vault, igual"
+            },
+            {
+              "id": "kind",
+              "campo": "kind",
+              "valores": "projeto de cliente, investigação, operação contínua, produto, frente de planejamento, spike, estudo, referência",
+              "de onde vem": "novo: o tipo de trabalho que escolhe a pilha de blocos"
+            },
+            {
+              "id": "size",
+              "campo": "size",
+              "valores": "change, initiative, project, study, idea",
+              "de onde vem": "vault: o type de hoje, que mede tamanho"
+            },
+            {
+              "id": "status",
+              "campo": "status",
+              "valores": "doing, backlog, on-hold, done, archived",
+              "de onde vem": "vault, igual"
+            },
+            {
+              "id": "blocks",
+              "campo": "blocks",
+              "valores": "lista dos blocos em uso",
+              "de onde vem": "novo: o verificador e o mapa do AGENTS.md leem daqui"
+            },
+            {
+              "id": "workspace",
+              "campo": "workspace",
+              "valores": "onde mais o trabalho vive (Loop, repositório)",
+              "de onde vem": "vault, igual"
+            },
+            {
+              "id": "parent",
+              "campo": "parent",
+              "valores": "id da iniciativa mãe",
+              "de onde vem": "vault, igual"
+            },
+            {
+              "id": "related",
+              "campo": "related",
+              "valores": "ids relacionados",
+              "de onde vem": "vault, igual"
+            },
+            {
+              "id": "cadence",
+              "campo": "cadence",
+              "valores": "monthly, quarterly, none",
+              "de onde vem": "vault, igual"
+            },
+            {
+              "id": "updated_at",
+              "campo": "updated_at",
+              "valores": "AAAA-MM-DD",
+              "de onde vem": "vault, igual"
+            }
+          ],
+          "pode": [
+            "editar",
+            "reordenar",
+            "adicionar",
+            "remover"
+          ]
+        }
+      },
+      {
+        "id": "segredos",
+        "titulo": "Onde ficam senhas e tokens",
+        "tipo": "escolha",
+        "recomendada": [
+          "A"
+        ],
+        "opcoes": [
+          {
+            "chave": "A",
+            "texto": "Nunca no hub. Ficam no KeePass que você já usa (visto no TRF3); o hub guarda só o nome da entrada, e o script lê a senha de uma variável de ambiente da máquina"
+          },
+          {
+            "chave": "B",
+            "texto": "Numa pasta com ponto, `.secrets/`, dentro da iniciativa, fora do `.git`, contando que o LiveSync ignora pastas com ponto"
+          },
+          {
+            "chave": "C",
+            "texto": "No arquivo `.env` de cada spike, como hoje, só com o `.gitignore`"
+          }
+        ],
+        "proposta": null
+      },
+      {
+        "id": "scripts",
+        "titulo": "Scripts de apoio",
+        "tipo": "escolha",
+        "recomendada": [
+          "C"
+        ],
+        "opcoes": [
+          {
+            "chave": "A",
+            "texto": "Sempre em `tools/`, dentro da iniciativa no hub"
+          },
+          {
+            "chave": "B",
+            "texto": "Sempre num repositório próprio, fora do hub, mesmo quando é um script só"
+          },
+          {
+            "chave": "C",
+            "texto": "Em `tools/` enquanto são scripts de apoio; viram repositório próprio quando ganham testes, dependências ou uso fora da iniciativa"
+          }
+        ],
+        "proposta": null
+      },
+      {
+        "id": "algo-mais",
+        "titulo": "Algo mais?",
+        "tipo": "texto",
+        "recomendada": [],
+        "opcoes": [],
+        "proposta": null
+      }
+    ]
+  },
+  "corpo_hash": "fa159d7381cfe90228ea2b20aea1a274039be4f2c0eb0b2a2cfdbd9bc80d7f05",
+  "corpo": {
+    "tipo": "resposta",
+    "rodada": "2026-10-14-arquitetura-de-pastas-e-frontmatter-r14",
+    "base": "5aa5044eaf1950ee3a146d9bd4fef28eff5091e14a07d3ad86fb2b3e4b3c87f0",
+    "respostas": {
+      "blocos": {
+        "linhas": [
+          {
+            "id": "inputs",
+            "ativa": true,
+            "valores": {
+              "bloco": "inputs/",
+              "entra": "o que veio de fora: kickoff, PDF e planilha do cliente, e-mails, exports",
+              "não entra": "o que você produziu a partir disso (vai para research/ ou deliverables/)"
+            }
+          },
+          {
+            "id": "research",
+            "ativa": true,
+            "valores": {
+              "bloco": "research/",
+              "entra": "levantamento, pesquisa, análise, discovery, comparação de opções",
+              "não entra": "a decisão tomada (vai para decisions.md) e o desenho final (design/)"
+            }
+          },
+          {
+            "id": "design",
+            "ativa": true,
+            "valores": {
+              "bloco": "design/",
+              "entra": "arquitetura, especificação, desenho da solução, o detalhe de uma decisão grande",
+              "não entra": "planos de execução (plans/)"
+            }
+          },
+          {
+            "id": "plans",
+            "ativa": true,
+            "valores": {
+              "bloco": "plans/",
+              "entra": "planos, roteiros, tickets e backlog maior que o tasks.md",
+              "não entra": "a pendência simples do dia (tasks.md)"
+            }
+          },
+          {
+            "id": "deliverables",
+            "ativa": true,
+            "valores": {
+              "bloco": "deliverables/",
+              "entra": "o que é entregue, com versão no nome: documentos, relatórios, apresentações",
+              "não entra": "rascunhos de trabalho (research/ ou design/)"
+            }
+          },
+          {
+            "id": "evidence",
+            "ativa": true,
+            "valores": {
+              "bloco": "evidence/",
+              "entra": "prints, logs e exports que provam um fato",
+              "não entra": "imagens de documento entregue (deliverables/)"
+            }
+          },
+          {
+            "id": "tools",
+            "ativa": true,
+            "valores": {
+              "bloco": "tools/",
+              "entra": "scripts de apoio desta iniciativa",
+              "não entra": "código de produto, que mora no repositório próprio"
+            }
+          },
+          {
+            "id": "runs",
+            "ativa": true,
+            "valores": {
+              "bloco": "runs/",
+              "entra": "execuções e revisões, uma subpasta por execução",
+              "não entra": "a personalização do Maestri (maestro/)"
+            }
+          },
+          {
+            "id": "nova-1",
+            "ativa": true,
+            "valores": {
+              "bloco": "work/",
+              "entra": "trabalho de agentes: briefs, handoffs, contexto antes de clear",
+              "não entra": ""
+            }
+          },
+          {
+            "id": "procedures",
+            "ativa": true,
+            "valores": {
+              "bloco": "procedures/",
+              "entra": "runbooks, SOPs, passo a passo de operação",
+              "não entra": "o registro de cada caso (cases/)"
+            }
+          },
+          {
+            "id": "cases",
+            "ativa": true,
+            "valores": {
+              "bloco": "cases/",
+              "entra": "um arquivo por caso ou incidente",
+              "não entra": "o procedimento genérico (procedures/)"
+            }
+          },
+          {
+            "id": "queries",
+            "ativa": true,
+            "valores": {
+              "bloco": "queries/",
+              "entra": "consultas salvas (KQL, SQL) e seus resultados de referência",
+              "não entra": "scripts (tools/)"
+            }
+          },
+          {
+            "id": "knowledge",
+            "ativa": true,
+            "valores": {
+              "bloco": "knowledge/",
+              "entra": "base de conhecimento própria da iniciativa",
+              "não entra": "conhecimento geral, que vai para a raiz reference/"
+            }
+          },
+          {
+            "id": "notes",
+            "ativa": true,
+            "valores": {
+              "bloco": "notes/",
+              "entra": "anotações de estudo",
+              "não entra": "o material do curso (inputs/)"
+            }
+          },
+          {
+            "id": "labs",
+            "ativa": true,
+            "valores": {
+              "bloco": "labs/",
+              "entra": "exercícios e ambientes de laboratório",
+              "não entra": "senhas (ver a pergunta dos segredos)"
+            }
+          },
+          {
+            "id": "other",
+            "ativa": true,
+            "valores": {
+              "bloco": "other/",
+              "entra": "o que não cabe em nenhum bloco; com três parecidos, propõe-se um bloco novo",
+              "não entra": "o que cabe num bloco existente"
+            }
+          }
+        ],
+        "comentario": "sugira algo para o 'não entra' do work/ e melhore ou incremente o texto do 'entra' do work/"
+      },
+      "ficha": {
+        "linhas": [
+          {
+            "id": "id",
+            "ativa": true,
+            "valores": {
+              "campo": "id",
+              "valores": "kebab-case, estável",
+              "de onde vem": "vault, igual"
+            }
+          },
+          {
+            "id": "title",
+            "ativa": true,
+            "valores": {
+              "campo": "title",
+              "valores": "nome usado fora (Loop, cliente)",
+              "de onde vem": "vault, igual"
+            }
+          },
+          {
+            "id": "kind",
+            "ativa": true,
+            "valores": {
+              "campo": "kind",
+              "valores": "projeto de cliente, investigação, operação contínua, produto, frente de planejamento, spike, estudo, referência",
+              "de onde vem": "novo: o tipo de trabalho que escolhe a pilha de blocos"
+            }
+          },
+          {
+            "id": "size",
+            "ativa": true,
+            "valores": {
+              "campo": "size",
+              "valores": "change, initiative, project, study, idea",
+              "de onde vem": "vault: o type de hoje, que mede tamanho"
+            }
+          },
+          {
+            "id": "status",
+            "ativa": true,
+            "valores": {
+              "campo": "status",
+              "valores": "doing, backlog, on-hold, done, archived",
+              "de onde vem": "vault, igual"
+            }
+          },
+          {
+            "id": "blocks",
+            "ativa": true,
+            "valores": {
+              "campo": "blocks",
+              "valores": "lista dos blocos em uso",
+              "de onde vem": "novo: o verificador e o mapa do AGENTS.md leem daqui"
+            }
+          },
+          {
+            "id": "workspace",
+            "ativa": true,
+            "valores": {
+              "campo": "workspace",
+              "valores": "onde mais o trabalho vive (Loop, repositório)",
+              "de onde vem": "vault, igual"
+            }
+          },
+          {
+            "id": "parent",
+            "ativa": true,
+            "valores": {
+              "campo": "parent",
+              "valores": "id da iniciativa mãe",
+              "de onde vem": "vault, igual"
+            }
+          },
+          {
+            "id": "related",
+            "ativa": true,
+            "valores": {
+              "campo": "related",
+              "valores": "ids relacionados",
+              "de onde vem": "vault, igual"
+            }
+          },
+          {
+            "id": "cadence",
+            "ativa": true,
+            "valores": {
+              "campo": "cadence",
+              "valores": "weekly, monthly, quarterly, none",
+              "de onde vem": "vault, igual"
+            }
+          },
+          {
+            "id": "updated_at",
+            "ativa": true,
+            "valores": {
+              "campo": "updated_at",
+              "valores": "AAAA-MM-DD",
+              "de onde vem": "vault, igual"
+            }
+          }
+        ],
+        "comentario": "ok"
+      },
+      "segredos": {
+        "escolha": [
+          "B"
+        ],
+        "outra": null,
+        "comentario": "Essa opção selecionada, porém senhas de CONTAS que acessam tenant ficam o KeePass"
+      },
+      "scripts": {
+        "escolha": [
+          "C"
+        ],
+        "outra": null,
+        "comentario": null
+      }
+    }
+  }
+}

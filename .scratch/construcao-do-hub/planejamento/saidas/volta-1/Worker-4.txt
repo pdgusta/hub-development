@@ -1,0 +1,49 @@
+      192 +  do item 6 da faixa 4 sai com E2EE.                                                                                                                                 
+      193 +                                                                                                                                                                     
+      194  ## Revisão (Prumo e Prumo 2)
+      195  
+      196  (como e quando cada faixa passa pelos dois, dentro da hora)
+
+● Update(C:\Projetos\context-hub\.scratch\construcao-do-hub\planejamento\plano.md)
+  ⎿  Added 4 lines
+      204    nativo no notebook pessoal e a instalação de verdade em `~/.claude`, `~/.codex` e `~/.copilot`: tudo
+      205    `ready-for-human`, com o Gustavo.
+      206  
+      207 +- (Worker 4, volta 1) Da faixa 4: o plugin LiveSync no Obsidian (configuração por tela, com `syncMaxSizeInMB` 200 e a                                                
+      208 +  exclusão; o Setup URI sai pronto do kit se o CLI o gerar, não verificado); registrar de verdade a tarefa agendada do                                               
+      209 +  sincronizador; a tela de colisão de três vias (ticket 25, "logo depois da construção").                                                                            
+      210 +                                                                                                                                                                     
+      211  - (Worker 9, volta 1) Da faixa 9: o **verificador em outro modelo** que a guarda exige antes de alterar peça (ticket
+      212    40) entra na hora só se a fonte primária confirmar um hook de modelo no Claude Code (o 16 pede medir "um hook `agent`
+      213    em Sonnet"); sem isso, a guarda sai com o aval do Gustavo e o verificador fica para a próxima execução. Também ficam:
+
+● Update(C:\Projetos\context-hub\.scratch\construcao-do-hub\planejamento\plano.md)
+  ⎿  Added 4 lines
+      226  - (Worker 2, volta 1) **CouchDB descartável no Docker local conta como "serviço"?** As faixas 4, 5 e 7 precisam de
+      227    CouchDB em porta local, só durante a hora, apagado ao fim. Recomendação: liberar contêineres de ensaio em
+      228    127.0.0.1, sem tarefa agendada de verdade (a tarefa do sincronizador e da vigia roda em laço no terminal).
+      229 +  - (Worker 4, volta 1) Fato para esta pergunta: **o Docker Desktop está desligado agora** (`docker ps` em                                                           
+      230 +    2026-10-15 não acha o pipe do motor). Então o aval inclui ligar o Docker Desktop antes da hora. Recomendação: o                                                  
+      231 +    Gustavo liga o Docker Desktop antes de a execução começar e o desliga ao fim. A alternativa, o CouchDB nativo do                                                 
+      232 +    Windows, também é serviço e é instalação nova.                                                                                                                   
+      233  - (Worker 2, volta 1) **Login dos harnesses no HOME de ensaio.** Provar que Codex e Copilot leem o contrato num
+      234    `CODEX_HOME`/`COPILOT_HOME` de ensaio pede uma sessão autenticada lá. Recomendação: copiar só o arquivo de login
+      235    para o HOME de ensaio e apagá-lo ao fim; a alternativa é provar só a forma dos arquivos, sem rodar o harness.
+  
+  Ran 2 shell commands 
+
+● Todas as minhas edições ficaram no plano. Falta corrigir as notas (a vigia ficou com a faixa 7, ainda sem dono, e não com o Worker 8) e registrar a volta.
+ 
+  Ran 1 shell command 
+
+● Volta 1, Worker 4: fiquei com a faixa 4 (banco e vista .md). São dois CouchDB de ensaio nesta máquina, um para o par A e outro para o par B, que replicam entre si nos dois sentidos,
+  e o CLI do LiveSync faz o papel de sincronizador. Gravei também a fronteira do banco de ensaio: a E2EE já está decidida (ticket 34) e muda o trabalho das faixas 5 e 7. Na pergunta
+  sobre o banco de ensaio, anotei que o Docker Desktop está desligado agora. O plano mudou: sim.
+
+✻ Baked for 19m 32s · done 9:33 PM
+
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+❯ 
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  ⬆ /gsd-update │ Opus 5.5 │ planejamento █░░░░░░░░░ 16%
+  ⏵⏵ auto mode on (shift+tab to cycle) · ← 2 agents

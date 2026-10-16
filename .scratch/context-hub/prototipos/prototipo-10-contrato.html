@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contrato de retomada</title>
+<style>
+  :root {
+    --bg: #fafaf8; --card: #ffffff; --ink: #1d1d1b; --muted: #6b6b66; --line: #d9d8d2;
+    --accent: #2f5fa7; --accent-soft: #e7eef9;
+    --ok: #2e7d4f; --ok-soft: #e5f3ea; --warn: #9a6a00; --warn-soft: #fbf1d9;
+    --bad: #b3261e; --bad-soft: #fbe6e4; --gray-soft: #efeee9;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #161616; --card: #1f1f1f; --ink: #ecebe6; --muted: #9a9a94; --line: #3a3934;
+      --accent: #7aa7ec; --accent-soft: #1f2a3b;
+      --ok: #7cc79a; --ok-soft: #1c2b22; --warn: #e3b64f; --warn-soft: #2f2817;
+      --bad: #f08a80; --bad-soft: #3a1f1d; --gray-soft: #2a2a28;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink);
+    font: 16px/1.6 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  main { max-width: 900px; margin: 0 auto; padding: 28px 16px 72px; }
+  h1 { font-size: 24px; margin: 0 0 4px; }
+  h2 { font-size: 19px; margin: 0 0 10px; }
+  p { margin: 0 0 10px; }
+  ul { margin: 0 0 10px; padding-left: 22px; }
+  .muted { color: var(--muted); }
+  .small { font-size: 14px; }
+  section { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 18px 20px; margin-top: 18px; }
+  .analogia { border-left: 4px solid var(--accent); background: var(--accent-soft); padding: 8px 12px; border-radius: 6px; margin: 10px 0; }
+  .pergunta { border: 2px solid var(--accent); border-radius: 10px; padding: 10px 14px; margin-top: 14px; }
+  .pergunta b.q { color: var(--accent); }
+  svg { width: 100%; height: auto; display: block; margin: 8px 0; }
+  svg text { fill: var(--ink); font: 13px system-ui, sans-serif; }
+  svg .t-muted { fill: var(--muted); font-size: 12px; }
+  svg .t-big { font-size: 14px; font-weight: 600; }
+  svg .t-bad { fill: var(--bad); font-weight: 700; }
+  svg .t-ok { fill: var(--ok); font-weight: 700; }
+  .b-ok { fill: var(--ok-soft); stroke: var(--ok); }
+  .b-acc { fill: var(--accent-soft); stroke: var(--accent); }
+  .b-gray { fill: var(--gray-soft); stroke: var(--muted); }
+  .b-bad { fill: var(--bad-soft); stroke: var(--bad); }
+  .b-warn { fill: var(--warn-soft); stroke: var(--warn); }
+  .seta { stroke: var(--ink); stroke-width: 1.6; fill: none; marker-end: url(#ponta); }
+  .seta-bad { stroke: var(--bad); stroke-width: 1.6; fill: none; stroke-dasharray: 5 4; }
+  table { border-collapse: collapse; width: 100%; font-size: 14px; margin: 8px 0; }
+  th, td { padding: 6px 8px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; }
+  td.c { text-align: center; font-weight: 700; }
+  .sim { color: var(--ok); } .nao { color: var(--bad); }
+  .nota { font: 13.5px/1.55 ui-monospace, Consolas, monospace; background: var(--bg); border: 1px dashed var(--line);
+    border-radius: 8px; padding: 10px 14px; white-space: pre-wrap; margin: 8px 0; }
+</style>
+</head>
+<body>
+<main>
+
+<h1>Contrato de retomada: o processo que o hub vai impor</h1>
+<p class="muted small">Ticket "Contrato file-first: zonas e checkpoint". Lê de cima para baixo; cada parte termina numa
+pergunta, a mesma de <code>respostas.md</code>.</p>
+
+<section>
+  <h2>O que esta página é</h2>
+  <p>É o desenho do <b>processo</b>, para o hub pronto. Nada aqui é aplicado agora às sessões desta frente; a
+  construção vem depois, em "Passagem para a construção".</p>
+  <div class="analogia">Na sua analogia: isto é o processo de criar sabores novos, não um sabor.</div>
+  <p>O processo tem um objetivo só: <b>qualquer sessão nova retoma um trabalho de onde a anterior parou, usando só o
+  que está no disco.</b> A sessão nova pode ser de outro agente, outro modelo ou outra máquina.</p>
+  <div class="analogia">A imagem que guia o resto é a <b>passagem de plantão</b> num hospital. A enfermeira que sai
+  escreve a passagem; a que chega nunca viu o paciente, lê e continua o tratamento. Ninguém liga para casa da
+  enfermeira anterior para perguntar. Se a passagem não foi escrita, o paciente fica sem o remédio.</div>
+
+  <svg viewBox="0 0 860 230" role="img" aria-label="Sessão A escreve a nota de retomada; sessão B lê e continua">
+    <defs>
+      <marker id="ponta" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--ink)"/></marker>
+    </defs>
+    <rect x="10" y="40" width="200" height="80" rx="10" class="b-acc"/>
+    <text x="110" y="70" text-anchor="middle" class="t-big">Sessão A</text>
+    <text x="110" y="92" text-anchor="middle" class="t-muted">Claude, no notebook</text>
+
+    <path class="seta" d="M210,80 L320,80"/>
+    <text x="265" y="70" text-anchor="middle" class="t-muted">checkpoint</text>
+
+    <rect x="325" y="30" width="210" height="100" rx="10" class="b-ok"/>
+    <text x="430" y="60" text-anchor="middle" class="t-big">Nota de retomada</text>
+    <text x="430" y="82" text-anchor="middle" class="t-muted">no disco, sincronizada</text>
+    <text x="430" y="102" text-anchor="middle" class="t-muted">(a passagem de plantão)</text>
+
+    <path class="seta" d="M535,80 L645,80"/>
+    <text x="590" y="70" text-anchor="middle" class="t-muted">lê primeiro</text>
+
+    <rect x="650" y="40" width="200" height="80" rx="10" class="b-acc"/>
+    <text x="750" y="70" text-anchor="middle" class="t-big">Sessão B</text>
+    <text x="750" y="92" text-anchor="middle" class="t-muted">Codex, na outra máquina</text>
+
+    <rect x="10" y="160" width="200" height="56" rx="10" class="b-bad"/>
+    <text x="110" y="184" text-anchor="middle" class="t-big">chat, scratchpad, memória privada</text>
+    <text x="110" y="204" text-anchor="middle" class="t-muted">morrem ou não chegam</text>
+    <path class="seta-bad" d="M210,188 L645,110"/>
+    <text x="440" y="168" text-anchor="middle" class="t-bad">✗ a sessão B não vê</text>
+  </svg>
+  <p class="small">São três decisões: <b>o que</b> a nota precisa ter, <b>quando</b> ela é escrita sem você pedir, e
+  <b>como</b> a sessão seguinte a acha.</p>
+</section>
+
+<section>
+  <h2>1. O que conta como "suficiente"</h2>
+  <p>Proposta: cada trabalho tem <b>uma</b> nota de retomada, curta, com sete campos. Um exemplo inventado, só para
+  mostrar a forma:</p>
+  <div class="nota">Objetivo: manual de onboarding do cliente X no modelo da ARMIS
+Onde parou: seções 1 a 3 revisadas; a 4 está no rascunho
+Próximo passo: revisar a seção 4 contra o checklist de marca
+Decisões: usar o modelo 2026 (porquê: o antigo não tem a capa nova) → ver decisões
+Tentado e não deu certo: converter direto do Word antigo; quebra as tabelas
+Perguntas abertas: o cliente quer versão em inglês?
+Arquivos em jogo: rascunho.docx, checklist-marca.md</div>
+  <p><b>O teste de suficiência:</b> um agente que nunca viu o trabalho, lendo só a nota e o que ela aponta, consegue
+  dar o próximo passo sem perguntar nada que já foi respondido.</p>
+  <ul class="small">
+    <li><b>É sobrescrita, não acumulada.</b> A nota diz o estado de agora; o histórico fica nas decisões e no git.
+    É a lição do vault sobre arquivos que só crescem.</li>
+    <li><b>Aponta em vez de copiar.</b> A decisão mora num lugar; a nota tem só a linha e o ponteiro.</li>
+    <li><b>Marca o que é fato e o que é hipótese.</b> Quem chega não sabe o que já foi conferido.</li>
+    <li><b>Memória privada da ferramenta não conta.</b> O que só a memória do Claude sabe, o Codex e a outra máquina
+    não sabem.</li>
+  </ul>
+  <p class="small">O que sobrevive à sessão: a nota, as decisões e os arquivos do trabalho (zonas canônica e de
+  trabalho). O que morre com ela: o chat e o scratchpad (zona efêmera).</p>
+  <div class="pergunta"><b class="q">Q1.</b> Uma nota de retomada por trabalho, com esses sete campos, sobrescrita,
+  e o teste de suficiência como critério? <b>Recomendação:</b> sim.</div>
+</section>
+
+<section>
+  <h2>2. Quando a nota é escrita</h2>
+  <p>A lição do vault: uma falha se corrige com mecanismo, nunca com regra nova. "O agente lembra de escrever" é
+  regra. Precisa de algo que dispare sozinho.</p>
+  <div class="analogia">Três formas de garantir a passagem de plantão:<br>
+  <b>Regra:</b> a enfermeira promete escrever antes de sair. Funciona quando ela lembra.<br>
+  <b>Hook ao fim de cada resposta:</b> um supervisor que, toda vez que ela termina uma tarefa, lê a <i>última</i>
+  anotação e pergunta "atualizou a passagem?".<br>
+  <b>Revisão pós-sessão:</b> uma empresa de fora que, depois do turno, revê a gravação inteira e escreve a passagem.
+  Pega tudo, mas é de fora: não pode ver paciente sigiloso.</div>
+
+  <svg viewBox="0 0 860 210" role="img" aria-label="Linha do tempo de uma sessão com os furos de cada gatilho">
+    <line x1="30" y1="60" x2="830" y2="60" style="stroke:var(--muted);stroke-width:2"/>
+    <circle cx="110" cy="60" r="7" style="fill:var(--accent)"/>
+    <text x="110" y="35" text-anchor="middle">resposta</text>
+    <circle cx="260" cy="60" r="7" style="fill:var(--accent)"/>
+    <text x="260" y="35" text-anchor="middle">algo dito no meio</text>
+    <text x="260" y="20" text-anchor="middle" class="t-muted">de uma resposta longa</text>
+    <circle cx="420" cy="60" r="7" style="fill:var(--warn)"/>
+    <text x="420" y="35" text-anchor="middle">você aperta Esc</text>
+    <circle cx="580" cy="60" r="7" style="fill:var(--warn)"/>
+    <text x="580" y="35" text-anchor="middle">compactação</text>
+    <circle cx="740" cy="60" r="7" style="fill:var(--bad)"/>
+    <text x="740" y="35" text-anchor="middle">/clear ou fim</text>
+
+    <rect x="30" y="90" width="800" height="30" rx="6" class="b-warn"/>
+    <text x="40" y="110">Regra: depende de o agente lembrar em cada ponto</text>
+    <rect x="30" y="128" width="800" height="30" rx="6" class="b-acc"/>
+    <text x="40" y="148">Hook ao fim da resposta</text>
+    <text x="260" y="148" text-anchor="middle" class="t-bad">✗ não vê</text>
+    <text x="420" y="148" text-anchor="middle" class="t-bad">✗ não roda</text>
+    <rect x="30" y="166" width="800" height="30" rx="6" class="b-ok"/>
+    <text x="40" y="186">Revisão pós-sessão</text>
+    <text x="740" y="186" text-anchor="middle" class="t-ok">✓ lê tudo aqui</text>
+  </svg>
+
+  <table>
+    <tr><th>Situação</th><th>Regra</th><th>Hook ao fim da resposta</th><th>Revisão pós-sessão</th></tr>
+    <tr><td>O agente esquece de atualizar a nota</td><td class="c nao">✗</td><td class="c sim">✓</td><td class="c sim">✓</td></tr>
+    <tr><td>Algo importante dito no meio de uma resposta longa</td><td class="c nao">✗</td><td class="c nao">✗</td><td class="c sim">✓</td></tr>
+    <tr><td>Você interrompe com Esc</td><td class="c nao">✗</td><td class="c nao">✗</td><td class="c sim">✓</td></tr>
+    <tr><td>Trabalho com dado de cliente</td><td class="c sim">✓</td><td class="c sim">✓</td><td class="c nao">✗</td></tr>
+    <tr><td>Custo</td><td>nenhum</td><td>uma chamada de modelo por resposta</td><td>uma leitura por sessão</td></tr>
+  </table>
+  <p class="small">A revisão não serve para cliente porque usaria o FreeLLMAPI, que repassa o texto para provedores de
+  fora. O hook usa o modelo do próprio harness, que já está vendo a sessão.</p>
+  <p class="small muted">Fonte: documentação oficial de hooks do Claude Code (<code>code.claude.com/docs/en/hooks</code>),
+  conferida em 2026-10-03: o <code>Stop</code> roda ao fim da resposta e não roda em interrupção; um hook do tipo
+  <code>prompt</code> vê só a última mensagem; o <code>SessionEnd</code> roda no <code>/clear</code> e na saída. Não
+  verificado: equivalentes no Codex e no Copilot; se o <code>SessionEnd</code> roda quando a janela é fechada à força.</p>
+  <div class="pergunta"><b class="q">Q2.</b> Quais gatilhos? <b>Recomendação:</b> os três juntos. A regra fica no
+  contrato, o hook ao fim da resposta é o mecanismo principal e a revisão pós-sessão é a rede de segurança, só em
+  trabalhos sem dado de cliente.</div>
+</section>
+
+<section>
+  <h2>3. Como a sessão seguinte acha a nota</h2>
+  <div class="analogia">A enfermeira que chega não procura a passagem pelo hospital: ela fica sempre no mesmo
+  lugar, na prancheta do leito.</div>
+  <svg viewBox="0 0 860 200" role="img" aria-label="Início de sessão: checagem, identificar o trabalho, ler a nota">
+    <rect x="10" y="60" width="160" height="70" rx="10" class="b-acc"/>
+    <text x="90" y="90" text-anchor="middle" class="t-big">Sessão começa</text>
+    <text x="90" y="110" text-anchor="middle" class="t-muted">qualquer agente</text>
+    <path class="seta" d="M170,95 L230,95"/>
+    <rect x="235" y="60" width="190" height="70" rx="10" class="b-warn"/>
+    <text x="330" y="88" text-anchor="middle" class="t-big">Checagem de início</text>
+    <text x="330" y="108" text-anchor="middle" class="t-muted">já decidida: sync ok?</text>
+    <path class="seta" d="M425,80 L515,40"/>
+    <path class="seta" d="M425,110 L515,150"/>
+    <rect x="520" y="10" width="160" height="60" rx="10" class="b-ok"/>
+    <text x="600" y="36" text-anchor="middle" class="t-big">a pasta diz o trabalho</text>
+    <text x="600" y="54" text-anchor="middle" class="t-muted">abre a nota dele</text>
+    <rect x="520" y="120" width="160" height="60" rx="10" class="b-gray"/>
+    <text x="600" y="146" text-anchor="middle" class="t-big">a pasta não diz</text>
+    <text x="600" y="164" text-anchor="middle" class="t-muted">busca pelo nome ou pergunta</text>
+    <path class="seta" d="M680,40 L740,85"/>
+    <path class="seta" d="M680,150 L740,105"/>
+    <rect x="745" y="65" width="105" height="60" rx="10" class="b-acc"/>
+    <text x="797" y="92" text-anchor="middle" class="t-big">continua</text>
+    <text x="797" y="110" text-anchor="middle" class="t-muted">do próximo passo</text>
+  </svg>
+  <p class="small">A checagem de início de sessão já foi decidida em "Divergência e edição concorrente" (ela confere o
+  sync). A proposta é que ela também abra a nota do trabalho. A pasta onde a sessão abre (a do workspace do
+  Maestri, por exemplo) diz qual é o trabalho. Quando a pasta não diz, o agente acha a nota pela camada de busca,
+  pelo nome que você der, ou pergunta.</p>
+  <div class="pergunta"><b class="q">Q3.</b> A checagem de início de sessão também abre a nota do trabalho, que a pasta
+  identifica, com a busca como plano B? <b>Recomendação:</b> sim. Como cada harness faz isso fica para "Acesso dos
+  agentes: decisão".</div>
+</section>
+
+</main>
+</body>
+</html>

@@ -1,0 +1,33 @@
+{
+ "chave": "web:textblob.readthedocs.io/en/dev",
+ "urls": [
+  "https://textblob.readthedocs.io/en/dev/"
+ ],
+ "tipos": [
+  "library"
+ ],
+ "termos": [
+  "Portuguese stemmer TextBlob",
+  "TextBlob PT",
+  "pattern stemmer"
+ ],
+ "mencoes": 2,
+ "familias": [
+  "cohere",
+  "nemotron"
+ ],
+ "primeira_onda": 3,
+ "nomes": [
+  " Portuguese Stemmer (TextBlob)",
+  "TextBlob Portuguese (via pattern)"
+ ],
+ "resumos": [
+  "A simple NLP library with a Portuguese stemmer, suitable for basic text processing tasks.",
+  "Provides simple Portuguese noun phrase extraction and can use pattern‑based stemmers."
+ ],
+ "fonte": "site",
+ "readme_status": "ok",
+ "readme_nome": "https://textblob.readthedocs.io/en/dev/",
+ "readme_cortado": false,
+ "readme": "[TextBlob: Simplified Text Processing — TextBlob 0.19.0 documentation]\n\nNavigation\n\n index\n\n modules |\n\n next |\n\nTextBlob 0.19.0 documentation »\n\nTextBlob: Simplified Text Processing \n\nTextBlob: Simplified Text Processing¶\n\nRelease v0.19.0. (Changelog)\n\nTextBlob is a Python library for processing textual data. It provides a simple API for diving into common natural language processing (NLP) tasks such as part-of-speech tagging, noun phrase extraction, sentiment analysis, classification, and more.\n\nfrom textblob import TextBlob\n\ntext = \"\"\"\nThe titular threat of The Blob has always struck me as the ultimate movie\nmonster: an insatiably hungry, amoeba-like mass able to penetrate\nvirtually any safeguard, capable of--as a doomed doctor chillingly\ndescribes it--\"assimilating flesh on contact.\nSnide comparisons to gelatin be damned, it's a concept with the most\ndevastating of potential consequences, not unlike the grey goo scenario\nproposed by technological theorists fearful of\nartificial intelligence run rampant.\n\"\"\"\n\nblob = TextBlob(text)\nblob.tags # [('The', 'DT'), ('titular', 'JJ'),\n# ('threat', 'NN'), ('of', 'IN'), ...]\n\nblob.noun_phrases # WordList(['titular threat', 'blob',\n# 'ultimate movie monster',\n# 'amoeba-like mass', ...])\n\nfor sentence in blob.sentences:\n print(sentence.sentiment.polarity)\n# 0.060\n# -0.341\n\nTextBlob stands on the giant shoulders of NLTK and pattern, and plays nicely with both.\n\nFeatures¶\n\nNoun phrase extraction\n\nPart-of-speech tagging\n\nSentiment analysis\n\nClassification (Naive Bayes, Decision Tree)\n\nTokenization (splitting text into words and sentences)\n\nWord and phrase frequencies\n\nParsing\n\nn-grams\n\nWord inflection (pluralization and singularization) and lemmatization\n\nSpelling correction\n\nAdd new models or languages through extensions\n\nWordNet integration\n\nGet it now¶\n\n$ pip install -U textblob\n$ python -m textblob.download_corpora\n\nReady to dive in? Go on to the Quickstart guide.\n\nGuide¶\n\nLicense\n\nInstallation\n\nInstalling/Upgrading From the PyPI\n\nWith conda\n\nFrom Source\n\nGet the bleeding edge version\n\nMigrating from older versions (<=0.7.1)\n\nTutorial: Quickstart\n\nCreate a TextBlob\n\nPart-of-speech Tagging\n\nNoun Phrase Extraction\n\nSentiment Analysis\n\nTokenization\n\nWords Inflection and Lemmatization\n\nWordNet Integration\n\nWordLists\n\nSpelling Correction\n\nGet Word and Noun Phrase Frequencies\n\nParsing\n\nTextBlobs Are Like Python Strings!\n\nn-grams\n\nGet Start and End Indices of Sentences\n\nTutorial: Building a Text Classification System\n\nLoading Data and Creating a Classifier\n\nClassifying Text\n\nClassifying TextBlobs\n\nEvaluating Classifiers\n\nUpdating Classifiers with New Data\n\nFeature Extractors\n\nNext Steps\n\nAdvanced Usage: Overriding Models and the Blobber Class\n\nSentiment Analyzers\n\nTokenizers\n\nNoun Phrase Chunkers\n\nPOS Taggers\n\nParsers\n\nBlobber: A TextBlob Factory\n\nExtensions\n\nAvailable extensions\n\nAPI Reference\n\nBlob Classes\n\nBase Classes\n\nTokenizers\n\nPOS Taggers\n\nNoun Phrase Extractors\n\nSentiment Analyzers\n\nParsers\n\nClassifiers\n\nBlobber\n\nFile Formats\n\nWordnet\n\nExceptions\n\nProject info¶\n\nChangelog\n\nAuthors\n\nContributing guidelines\n\n TextBlob is a Python library for processing textual data. It\n provides a consistent API for diving into common natural language processing\n (NLP) tasks such as part-of-speech tagging, noun phrase extraction, sentiment\n analysis, and more.\n\nUseful Links\n\nTextBlob @ PyPI\n\nTextBlob @ GitHub\n\nIssue Tracker\n\nStay Informed\n\nQuick search\n\n© Copyright Steven Loria and contributors."
+}

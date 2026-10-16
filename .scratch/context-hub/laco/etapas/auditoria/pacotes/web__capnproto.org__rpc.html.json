@@ -1,0 +1,82 @@
+{
+ "chave": "web:capnproto.org/rpc.html",
+ "nomes": [
+  "Cap'n Proto RPC"
+ ],
+ "urls": [
+  "https://capnproto.org/rpc.html"
+ ],
+ "readme_cortado": true,
+ "readme": "[Cap'n Proto: RPC Protocol]\n\nDiscuss on Groups\n View on GitHub\n\nRPC Protocol\n\nIntroduction\n\nTime Travel! (Promise Pipelining)\n\nCap’n Proto RPC employs TIME TRAVEL! The results of an RPC call are returned to the client\ninstantly, before the server even receives the initial request!\n\nThere is, of course, a catch: The results can only be used as part of a new request sent to the\nsame server. If you want to use the results for anything else, you must wait.\n\nThis is useful, however: Say that, as in the picture, you want to call foo(), then call bar()\non its result, i.e. bar(foo()). Or – as is very common in object-oriented programming – you\nwant to call a method on the result of another call, i.e. foo().bar(). With any traditional RPC\nsystem, this will require two network round trips. With Cap’n Proto, it takes only one. In fact,\nyou can chain any number of such calls together – with diamond dependencies and everything – and\nCap’n Proto will collapse them all into one round trip.\n\nBy now you can probably imagine how it works: if you execute bar(foo()), the client sends two\nmessages to the server, one saying “Please execute foo()”, and a second saying “Please execute\nbar() on the result of the first call”. These messages can be sent together – there’s no need\nto wait for the first call to actually return.\n\nTo make programming to this model easy, in your code, each call returns a “promise”. Promises\nwork much like JavaScript promises or promises/futures in other languages: the promise is returned\nimmediately, but you must later call wait() on it, or call then() to register an asynchronous\ncallback.\n\nHowever, Cap’n Proto promises support an additional feature:\npipelining. The promise\nactually has methods corresponding to whatever methods the final result would have, except that\nthese methods may only be used for the purpose of calling back to the server. Moreover, a\npipelined promise can be used in the parameters to another call without waiting.\n\nBut isn’t that just syntax sugar?\n\nOK, fair enough. In a traditional RPC system, we might solve our problem by introducing a new\nmethod foobar() which combines foo() and bar(). Now we’ve eliminated the round trip, without\ninventing a whole new RPC protocol.\n\nThe problem is, this kind of arbitrary combining of orthogonal features quickly turns elegant\nobject-oriented protocols into ad-hoc messes.\n\nFor example, consider the following interface:\n\n# A happy, object-oriented interface!\n\ninterface Node {}\n\ninterface Directory extends(Node) {\n list @0 () -> (list: List(Entry));\n struct Entry {\n name @0 :Text;\n file @1 :Node;\n }\n\n create @1 (name :Text) -> (node :Node);\n open @2 (name :Text) -> (node :Node);\n delete @3 (name :Text);\n link @4 (name :Text, node :Node);\n}\n\ninterface File extends(Node) {\n size @0 () -> (size: UInt64);\n read @1 (startAt :UInt64, amount :UInt64) -> (data: Data);\n write @2 (startAt :UInt64, data :Data);\n truncate @3 (size :UInt64);\n}\n\nThis is a very clean interface for interacting with a file system. But say you are using this\ninterface over a satellite link with 1000ms latency. Now you have a problem: simply reading the\nfile foo in directory bar takes four round trips!\n\n# pseudocode\nbar = root.open(\"bar\"); # 1\nfoo = bar.open(\"foo\"); # 2\nsize = foo.size(); # 3\ndata = foo.read(0, size); # 4\n# The above is four calls but takes only one network\n# round trip with Cap'n Proto!\n\nIn such a high-latency scenario, making your interface elegant is simply not worth 4x the latency.\nSo now you’re going to change it. You’ll probably do something like:\n\nIntroduce a notion of path strings, so that you can specify “foo/bar” rather than make two\nseparate calls.\n\nMerge the File and Directory interfaces into a single Filesystem interface, where every\ncall takes a path as an argument.\n\n# A sad, singleton-ish interface.\n\ninterface Filesystem {\n list @0 (path :Text) -> (list :List(Text));\n create @1 (path :Text, data :Data);\n delete @2 (path :Text);\n link @3 (path :Text, target :Text);\n\n fileSize @4 (path :Text) -> (size: UInt64);\n read @5 (path :Text, startAt :UInt64, amount :UInt64)\n -> (data :Data);\n readAll @6 (path :Text) -> (data: Data);\n write @7 (path :Text, startAt :UInt64, data :Data);\n truncate @8 (path :Text, size :UInt64);\n}\n\nWe’ve now solved our latency problem… but at what cost?\n\nWe now have to implement path string manipulation, which is always a headache.\n\nIf someone wants to perform multiple operations on a file or directory, we now either have to\nre-allocate resources for every call or we have to implement some sort of cache, which tends to\nbe complicated and error-prone.\n\nWe can no longer give someone a specific File or a Directory – we have to give them a\nFilesystem and a path.\n\nBut what if they are buggy and have hard-coded some path other than the one we specified?\n\nOr what if we don’t trust them, and we really want them to access only one particular File or\nDirectory and not have permission to anything else. Now we have to implement authentication\nand authorization systems! Arrgghh!\n\nEssentially, in our quest to avoid latency, we’ve resorted to using a singleton-ish design, and\nsingletons are evil.\n\nPromise Pipelining solves all of this!\n\nWith pipelining, our 4-step example can be automatically reduced to a single round trip with no\nneed to change our interface at all. We keep our simple, elegant, singleton-free interface, we\ndon’t have to implement path strings, caching, authentication, or authorization, and yet everything\nperforms as well as we can possibly hope for.\n\nExample code\n\nThe calculator example\nuses promise pipelining. Take a look at the client side in particular.\n\nDistributed Objects\n\nAs you’ve noticed by now, Cap’n Proto RPC is a distributed object protocol. Interface references –\nor, as we more commonly call them, capabilities – are a first-class type. You can pass a\ncapability as a parameter to a method or embed it in a struct or list. This is a huge difference\nfrom many modern RPC-over-HTTP protocols that only let you address global URLs, or other RPC\nsystems like Protocol Buffers and Thrift that only let you address singleton objects exported at\nstartup. The ability to dynamically introduce new objects and pass around references to them\nallows you to use the same design patterns over the network that you use locally in object-oriented\nprogramming languages. Many kinds of interactions become vastly easier to express given the\nricher vocabulary.\n\nDidn’t CORBA prove this doesn’t work?\n\nNo!\n\nCORBA failed for many reasons, with the usual problems of design-by-committee being a big one.\n\nHowever, the biggest reason for CORBA’s failure is that it tried to make remote calls look the\nsame as local calls. Cap’n Proto does NOT do this – remote calls have a different kind of API\ninvolving promises, and accounts for the presence of a network introducing latency and\nunreliability.\n\nAs shown above, promise pipelining is absolutely critical to making object-oriented interfaces work\nin the presence of latency. If remote calls look the same as local calls, there is no opportunity\nto introduce promise pipelining, and latency is inevitable. Any distributed object protocol which\ndoes not support promise pipelining cannot – and should not – succeed. Thus the failure of CORBA\n(and DCOM, etc.) was inevitable, but Cap’n Proto is different.\n\nHandling disconnects\n\nNetworks are unreliable. Occasionally, connections will be lost. When this happens, all\ncapabilities (object references) served by the connection will become disconnected. Any further\ncalls addressed to these capabilities will throw “disconnected” exceptions. When this happens, the\nclient will need to create a new connection and try again. All Cap’n Proto applications with\nlong-running connections (and probably short-running ones too) should be prepared to catch\n“disconnected” exceptions and respond appropriately.\n\nOn the server side, when all references to an object have been “dropped” (either because the\nclients explicitly dropped them or because they became disconnected), the object will be closed\n(in C++, the destructor is called; in GC’d languages, a close() method is called). This allows\nservers to easily allocate per-client resources without having to clean up on a timeout or risk\nleaking memory.\n\nSecurity\n\nCap’n Proto interface references are\ncapabilities. That is, they both\ndesignate an object to call and confer permission to call it. When a new object is created, only\nthe creator is initially able to call it. When the object is passed over a network connection,\nthe receiver gains permission to make calls – but no one else does. In fact, it is impossible\nfor others to access the capability without consent of either the host or the receiver because\nthe host only assigns it an ID specific to the connection over which it was sent.\n\nCapability-based design patterns – which largely boil down to object-oriented design patterns –\nwork great with Cap’n Proto. Such patterns tend to be much more adaptable than traditional\nACL-based security, making it easy to keep security tight and avoid confused-deputy attacks while\nminimizing pain for legitimate users. That said, you can of course implement ACLs or any other\npattern on top of capabilities.\n\nFor an extended discussion of what capabilities are and why they are often easier and more powerful\nthan ACLs, see Mark Miller’s\n“An Ode to the Granovetter Diagram” and\nCapability Myths Demolished.\n\nProtocol Features\n\nCap’n Proto’s RPC protocol has the following notable features. Since the protocol is complicated,\nthe feature set has been divided into numbered “levels”, so that implementations may declare which\nfeatures they have covered by advertising a level number.\n\nLevel 1: Object references and promise pipelining, as described above.\n\nLevel 2: Persistent capabilities. You may request to “save” a capability, receiving a\npersistent token which can be used to “restore” it in the future (on a new connection). Not\nall capabilities can be saved; the host app must implement support for it. Building this into\nthe protocol makes it possible for a Cap’n-Proto-based data store to transparently save\nstructures containing capabilities without knowledge of the particular capability types or the\napplication built on them, as well as potentially enabling more powerful analysis and\nvisualization of stored data.\n\nLevel 3: Three-way interactions. A network of Cap’n Proto vats (nodes) can pass object\nreferences to each other and automatically form direct connections as needed. For instance, if\nAlice (on machine A) sends Bob (on machine B) a reference to Carol (on machine C), then machine B\nwill form a new connection to machine C so that Bob can call Carol directly without proxying\nthrough machine A.\n\nLevel 4: Reference equality / joining. If you receive a set of capabilities from different\nparties which should all point to the same underlying objects, you can verify securely that they\nin fact do. This is subtle, but enables many security patterns that rely on one party being able\nto verify that two or more other parties agree on something (imagine a digital escrow agent).\nSee E’s page on equality.\n\nEncryption\n\nAt this time, Cap’n Proto does not specify an encryption scheme, but as it is a simple byte\nstream protocol, it can easily be layered on top of SSL/TLS or other such protocols.\n\nSpecification\n\nThe Cap’n Proto RPC protocol is defined in terms of Cap’n Proto serialization schemas. The\ndocumentation is inline. See\nrpc.capnp.\n\nCap’n Proto’s RPC protocol is based heavily on\nCapTP, the distributed capability protocol\nused by the E programming language. Lots of useful material\nfor understanding capabilities can be found at those links.\n\nThe protocol is complex, but the functionality it supports is conceptually simple. Just as TCP\nis a complex protocol that implements the simple concept of a byte stream, Cap’n Proto RPC is a\ncomplex protocol that implements the simple concept of objects with callable methods.\n\nIntroduction\n\nNews\n\nInstallation\n\nSchema Language\n\nEncoding\n\nR",
+ "fonte": "site",
+ "respostas": [
+  {
+   "por": "nemotron-3-super-120b",
+   "resposta": {
+    "serve": "none",
+    "role": "",
+    "place": [
+     "n/a"
+    ],
+    "mechanism": [
+     "n/a"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "unknown",
+    "doubt": false,
+    "evidence": "Cap’n Proto RPC employs TIME TRAVEL! The results of an RPC call are returned to the client instantly, before the server even receives the initial request!"
+   }
+  },
+  {
+   "por": "aya-expanse-32b",
+   "resposta": {
+    "serve": "none",
+    "role": "",
+    "place": [
+     "n/a"
+    ],
+    "mechanism": [
+     "n/a"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "no",
+    "license": "unknown",
+    "maturity": "unknown",
+    "doubt": true,
+    "evidence": ""
+   }
+  }
+ ],
+ "conferencia_sonnet": {
+  "chave": "web:capnproto.org/rpc.html",
+  "modelo": "claude-sonnet-5-5",
+  "ts": "2026-10-13T21:45:35Z",
+  "resultado": "confirma",
+  "conferencia": {
+   "resultado": "confirma",
+   "final": {
+    "serve": "none",
+    "role": "",
+    "place": [
+     "n/a"
+    ],
+    "mechanism": [
+     "n/a"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "unknown",
+    "doubt": false,
+    "evidence": "Cap'n Proto RPC employs TIME TRAVEL! The results of an RPC call are returned to the client instantly"
+   },
+   "o_que_mudou": [],
+   "nota": "Documentation page of an RPC protocol; not relevant to search, sync or agent tooling of the hub."
+  }
+ }
+}

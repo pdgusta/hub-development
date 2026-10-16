@@ -1,0 +1,34 @@
+{
+ "chave": "web:pycouchdb.readthedocs.io",
+ "nomes": [
+  "Whoosh + `PyCouchDB` (sincronización bidireccional)"
+ ],
+ "urls": [
+  "https://pycouchdb.readthedocs.io/"
+ ],
+ "readme_cortado": false,
+ "readme": "[py-couchdb — py-couchdb 1.17.1 documentation]\n\npy-couchdb¶\n\nRelease v1.17.\n\npy-couchdb is a BSD-3-Clause licensed, modern pure Python CouchDB client.\n\nCurrently there are several libraries for Python to connect to CouchDB. Why one more? It’s very simple.\nAll seem to be not maintained, all libraries use standard Python libraries for http requests, and are not compatible with Python3.\n\nAdvantages of py-couchdb¶\n\nUses requests for http requests (much faster than the standard library)\n\nCouchDB 2.x and CouchDB 3.x compatible\n\nAlso compatible with pypy.\n\nExample:\n\n>>> import pycouchdb\n>>> server = pycouchdb.Server(\"http://admin:admin@localhost:5984/\")\n>>> server.info()['version']\n'1.2.1'\n\nUser guide¶\n\nThis part of the documentation gives a simple introduction on py-couchdb usage.\n\nInstallation\n\nDistribute & Pip\n\nCheeseshop Mirror\n\nGet the Code\n\nQuickstart\n\nConnect to a server\n\nAuthentication\n\nCreate, obtain and delete a database\n\nCreate, obtain and delete a document\n\nQuerying a database\n\nSubscribe to a changes stream feed\n\nPagination\n\nLogging\n\nEnable logging\n\nFormatting example\n\nPrivacy\n\nDeveloper Interface\n\nServer\n\nDatabase\n\npy-couchdb\n\nNavigation\n\nInstallation\n\nQuickstart\n\nLogging\n\nDeveloper Interface\n\nRelated Topics\n\nDocumentation overview\n\nNext: Installation\n\n ©2026, Andrey Antukh.\n\n |\n Powered by Sphinx 8.2.3\n & Alabaster 1.0.0\n\n |\n Page source",
+ "fonte": "site",
+ "respostas": [
+  {
+   "por": "claude-haiku-5-5",
+   "resposta": {
+    "serve": "stack",
+    "role": "Cliente Python para ler o changes feed do CouchDB e alimentar indexação",
+    "place": [
+     "library"
+    ],
+    "mechanism": [
+     "n/a"
+    ],
+    "mcp": "no",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "BSD-3-Clause",
+    "maturity": "stable",
+    "doubt": false,
+    "evidence": "py-couchdb is a BSD-3-Clause licensed, modern pure Python CouchDB client. Subscribe to a changes stream feed"
+   }
+  }
+ ]
+}

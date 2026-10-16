@@ -1,0 +1,30 @@
+{
+ "chave": "conceito:groq",
+ "modelo": "claude-opus-5-5",
+ "ts": "2026-10-13T23:35:42Z",
+ "tipo": "conceito",
+ "resultado": "discorda",
+ "auditoria": {
+  "resultado": "discorda",
+  "erro": "serve: Groq is a cloud-only LLM inference API on proprietary LPU hardware; it cannot be mirrored locally and 'groq-lite' is not a known project. The 'local mirror' concept does not exist, so serve should be none.",
+  "final": {
+   "concept_en": "groq cloud llm inference api",
+   "serve": "none",
+   "role": "",
+   "mechanism": [
+    "n/a"
+   ],
+   "place": [
+    "n/a"
+   ],
+   "tools_on_card": [
+    "Groq",
+    "groq-lite"
+   ],
+   "doubt": false,
+   "evidence": "GroqのAPIをローカルでミラーリングし、Copilot/Codexと連携した検索レイヤーを構築"
+  },
+  "gravidade": "grave",
+  "nota": "Hallucinated card: Groq is only a hosted inference provider, not a local search or offline agent component for the hub."
+ }
+}

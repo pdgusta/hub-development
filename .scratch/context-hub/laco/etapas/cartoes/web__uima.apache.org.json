@@ -1,0 +1,31 @@
+{
+ "chave": "web:uima.apache.org",
+ "urls": [
+  "https://uima.apache.org/"
+ ],
+ "tipos": [
+  "library"
+ ],
+ "termos": [
+  "UIMA",
+  "unstructured content analysis",
+  "component architecture"
+ ],
+ "mencoes": 2,
+ "familias": [
+  "mistral"
+ ],
+ "primeira_onda": 3,
+ "nomes": [
+  "Apache UIMA"
+ ],
+ "resumos": [
+  "A component architecture and framework for the analysis of unstructured content such as text, audio, and video.",
+  "A component architecture for the analysis of unstructured content such as text, audio, and video."
+ ],
+ "fonte": "site",
+ "readme_status": "ok",
+ "readme_nome": "https://uima.apache.org/",
+ "readme_cortado": false,
+ "readme": "[Apache UIMA - Apache UIMA]\n\nApache UIMA\n\nGeneral\n\n Home\n\n Downloads\n\n Documentation\n\n News\n\n Publications\n\n Issue tracker \n\n Wiki \n\n Powered By UIMA \n\nCommunity\n\n Get Involved\n\n Mailing Lists\n\n Contribution Policies\n\n FAQ\n\n Project Guidelines\n\nComponents & Tools\n\n Annotators\n\n Tools & Servers\n\n Addons and Sandbox\n\n UIMA Ruta\n\n uimaFIT \n\n External Resources\n\nDevelopment\n\n Quick Start: building\n\n Building from Source\n\n One-time setups\n\n Source Code\n\n Doing a UIMA release\n\n Doing a CVE (Apache) \n\n Eclipse Update Sites\n\n GIT\n\n Code Conventions\n\n UIMA Specification (OASIS)\n\n Project Team\n\n Maven Use\n\n Updating this Website\n\nEvents and Conferences\n\n COLING 2014\n\n GSCL 2013\n\n IKS 2009\n\n GSCL 2009\n\n LSM 2009\n\n LREC 2008\n\n GLDV 2007\n\nASF\n\n License \n\n ASF Sponsors \n\n ASF Sponsorship \n\n Security\n\n Welcome to the Apache UIMA project\n\n Welcome to the Apache UIMA™ project. Our goal is to support a thriving community of users and\n developers of UIMA frameworks, tools, and annotators, \n facilitating the analysis of unstructured content such as text, audio and\n video.\n\nWhat is UIMA?\n\n Unstructured Information Management applications are\n software systems that analyze large volumes of\n unstructured information in order to discover knowledge\n that is relevant to an end user. An example UIM\n application might ingest plain text and identify\n entities, such as persons, places, organizations; or\n relations, such as works-for or located-at.\n\nUIMA enables applications to be decomposed into components,\n for example \"language identification\" => \"language\n specific segmentation\" => \"sentence boundary\n detection\" => \"entity detection (person/place names\n etc.)\". Each component implements interfaces defined\n by the framework and provides self-describing\n metadata via XML descriptor files. The framework manages\n these components and the data flow between them.\n Components are written in Java or C++; the data that\n flows between components is designed for efficient\n mapping between these languages.\n\nUIMA additionally\n provides capabilities to wrap components as network\n services, and can scale to very large volumes by\n replicating processing pipelines over a cluster of\n networked nodes.\n\n Apache UIMA is an Apache-licensed open source\n implementation of the \n UIMA specification [pdf]\n [doc] (that\n specification is, in turn, being developed concurrently\n by a technical committee within\n OASIS\n , a standards organization). We invite and encourage you\n to participate in both the implementation and\n specification efforts.\n\nHere you can find:\n\nFrameworks\n\nComponents, and\n\nInfrastructure,\n\nall licensed under the Apache license. The dashed-line boxes\n above are placeholders for possible future additions.\n\n The Frameworks run the components, and are available for both Java and\n C++. The \n Java Framework supports running both Java and non-Java\n components (using the C++ framework). The \n C++ framework, besides\n supporting annotators written in C/C++, also supports Perl, Python, and \n TCL annotators.\n\nThe frameworks support configuring and running pipelines of\n Annotator components. These components do the actual work\n of analyzing the unstructured information. Users can write\n their own annotators, or configure and use pre-existing \n annotators. Some annotators are available as part of this project;\n others are contained in various repositories on the internet.\n GitHub.com lists over \n 900 repositories that have dependencies on \n the UIMA Java SDK core.\n\nIn 2018, the internals of the UIMA Java framework were redesigned for a tighter integration with Java \n including for example, \n Java Streams\n support for working with annotations, and for \n supporting higher performance on modern processors with memory caches. This is available as Version 3.x.x\n of the UIMA Java SDK, and associated components. Version 2 continues to be supported, but new work should\n use version 3.\n\nAn extensive rule-based scripting language\n (RUTA), an associated analysis engine built on top of UIMA, and an Eclipse-based tooling workbench for interactively\n developing and testing the rules, is part of this project.\n\n Additional infrastructure support components include a simple\n server that can receive REST requests and return annotation results,\n for use by other web services.\n\nThe Addons and Sandbox is for Addons (Annotators and other things) for UIMA, and\n a place where new ideas are developed for potential incorporation into the project.\n\n UIMA News\n\nClick News for a listing of releases and other news.\n\n Home\n Privacy Policy\n\n Copyright © 2006-2024, The Apache Software Foundation.\n\n Apache UIMA, UIMA, the Apache UIMA logo and the Apache Feather logo are trademarks of The Apache Software Foundation.\n\n All other marks mentioned may be trademarks or registered trademarks of their respective owners.\n\n Contact us"
+}

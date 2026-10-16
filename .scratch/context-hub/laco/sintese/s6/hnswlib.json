@@ -1,0 +1,63 @@
+{
+ "nome": "HNSWlib",
+ "nome_canonico": "hnswlib (nmslib/hnswlib)",
+ "chave": "gh:nmslib/hnswlib",
+ "url": "https://github.com/nmslib/hnswlib",
+ "serve": "search",
+ "area": null,
+ "identidade": "ok: índice HNSW de vizinhos mais próximos em C++ header-only com bindings Python; jlmelville/hnswlib é fork; hnswlib.com não conferido",
+ "windows": "yes: o CI roda `pip install .` em windows-latest (Python 3.9-3.13); o PyPI tem só sdist (0.8.0), então instalar exige compilador C++ (MSVC)",
+ "mcp": "no: biblioteca de índice, sem MCP; MCP de terceiros não verificado",
+ "portugues": "nao_aplicavel: só vetores; o idioma vem do modelo de embeddings",
+ "markdown_frontmatter": "no: guarda vetores com ids numéricos; sem texto nem metadados",
+ "atualizacao": "manual: add_items insere/atualiza, mark_deleted marca, save_index/load_index persistem em um arquivo",
+ "embeddings_endpoint": "sem endpoint: recebe vetores prontos (numpy); um gateway OpenAI-compatível geraria os vetores fora dela",
+ "recursos": "índice em RAM com max_elements fixo em init_index; números não verificados",
+ "licenca": "Apache-2.0",
+ "ultimo_release": "v0.9.0 (2026-03-28); README já anuncia 0.10.0rc2, não estável",
+ "atividade": "último commit 2026-09-14",
+ "maturidade": "beta",
+ "encaixe": "Índice vetorial em memória dentro do MCP do banco, por máquina, reconstruível dos pedaços no CouchDB. Impedimento: só vetores, sem texto, metadados nem busca lexical; precisa compilar no Windows.",
+ "evidencias": [
+  {
+   "campo": "windows",
+   "url": "https://raw.githubusercontent.com/nmslib/hnswlib/master/.github/workflows/build.yml",
+   "citacao": "os: [ubuntu, windows, macos]"
+  },
+  {
+   "campo": "windows",
+   "url": "https://pypi.org/pypi/hnswlib/json",
+   "citacao": "hnswlib-0.8.0.tar.gz (único arquivo; sem wheel)"
+  },
+  {
+   "campo": "licenca",
+   "url": "https://api.github.com/repos/nmslib/hnswlib",
+   "citacao": "license: Apache-2.0"
+  },
+  {
+   "campo": "ultimo_release",
+   "url": "https://api.github.com/repos/nmslib/hnswlib/releases/latest",
+   "citacao": "tag_name: v0.9.0, published 2026-03-28"
+  },
+  {
+   "campo": "atualizacao",
+   "url": "https://raw.githubusercontent.com/nmslib/hnswlib/master/README.md",
+   "citacao": "`save_index(path_to_index)` saves the index from persistence."
+  },
+  {
+   "campo": "recursos",
+   "url": "https://raw.githubusercontent.com/nmslib/hnswlib/master/README.md",
+   "citacao": "`init_index(max_elements, M = 16, ef_construction = 200, ...)` initializes the index from with no elements."
+  },
+  {
+   "campo": "maturidade",
+   "url": "https://raw.githubusercontent.com/nmslib/hnswlib/master/README.md",
+   "citacao": "version 0.10.0rc2 (release candidate — not a stable PyPI upload)"
+  }
+ ],
+ "nao_verificado": [
+  "recursos em números",
+  "MCP de terceiros",
+  "maturidade (beta é julgamento; a fonte não rotula)"
+ ]
+}

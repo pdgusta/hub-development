@@ -1,0 +1,34 @@
+{
+ "chave": "web:elastic.co/guide/en/elasticsearch/reference/current/indices-aliases.html",
+ "nomes": [
+  "Elasticsearch Index Aliases"
+ ],
+ "urls": [
+  "https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-aliases.html"
+ ],
+ "readme_cortado": false,
+ "readme": "[Create or update an alias | Elasticsearch API documentation]\n\nShow more\n\n Use\n\n to navigate results,\n ENTER\n to select one,\n ESC\n to close\n\nType in any word to easily find the endpoint, property or group of operations you are looking for.\n\n API\n\nNo results found for query: \n Search in all APIs\n\nAn error occured while performing your search, please contact Bump.sh support if it persists.\n\n Dismiss highlight\n\n Show more\n\n Create or update an alias\n\n Generally available; Added in 1.3.0\n\n Ask AI\n\n View as Markdown\n\n Copy as Markdown\n\n POST\n\n /_aliases\n\n Api key auth\n\n Basic auth\n\n Bearer auth\n\nAdds a data stream or index to an alias.\n\n Query parameters\n\n master_timeout\n\n string\n\nPeriod to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.\n\nDefault value is 30s.\n\n timeout\n\n string\n\nPeriod to wait for a response.\nIf no response is received before the timeout expires, the request fails and returns an error.\n\nDefault value is 30s.\n\n application/json\n\n Body\n\n Required\n\n actions\n\n array[object]\n\nActions to perform.\n\n Hide actions attributes\n Show actions attributes\n object\n\n add\n\n object\n\nAdds a data stream or index to an alias.\nIf the alias doesn’t exist, the add action creates it.\n\n Hide add attributes\n Show add attributes\n object\n\n alias\n\n string\n\nAlias for the action.\nIndex alias names support date math.\n\n aliases\n\n string | array[string]\n\nAliases for the action.\nIndex alias names support date math.\n\n filter\n\n object\n\nQuery used to limit documents the alias can access.\n\n External documentation\n\n index\n\n string\n\nData stream or index for the action.\nSupports wildcards (*).\n\n indices\n\n string | array[string]\n\nData streams or indices for the action.\nSupports wildcards (*).\n\n index_routing\n\n string\n\nValue used to route indexing operations to a specific shard.\nIf specified, this overwrites the routing value for indexing operations.\nData stream aliases don’t support this parameter.\n\n is_hidden\n\n boolean\n\nIf true, the alias is hidden.\n\nDefault value is false.\n\n is_write_index\n\n boolean\n\nIf true, sets the write index or data stream for the alias.\n\n routing\n\n string\n\nValue used to route indexing and search operations to a specific shard.\nData stream aliases don’t support this parameter.\n\n search_routing\n\n string\n\nValue used to route search operations to a specific shard.\nIf specified, this overwrites the routing value for search operations.\nData stream aliases don’t support this parameter.\n\n must_exist\n\n boolean\n\nIf true, the alias must exist to perform the action.\n\nDefault value is false.\n\n remove\n\n object\n\nRemoves a data stream or index from an alias.\n\n Hide remove attributes\n Show remove attributes\n object\n\n alias\n\n string\n\nAlias for the action.\nIndex alias names support date math.\n\n aliases\n\n string | array[string]\n\nAliases for the action.\nIndex alias names support date math.\n\n index\n\n string\n\nData stream or index for the action.\nSupports wildcards (*).\n\n indices\n\n string | array[string]\n\nData streams or indices for the action.\nSupports wildcards (*).\n\n must_exist\n\n boolean\n\nIf true, the alias must exist to perform the action.\n\nDefault value is false.\n\n remove_index\n\n object\n\nDeletes an index.\nYou cannot use this action on aliases or data streams.\n\n Hide remove_index attributes\n Show remove_index attributes\n object\n\n index\n\n string\n\nData stream or index for the action.\nSupports wildcards (*).\n\n indices\n\n string | array[string]\n\nData streams or indices for the action.\nSupports wildcards (*).\n\n must_exist\n\n boolean\n\nIf true, the alias must exist to perform the action.\n\nDefault value is false.\n\n Responses\n\n 200\n\n application/json\n\n Hide response attribute\n Show response attribute\n object\n\n acknowledged\n\n boolean\n Required\n\nFor a successful response, this value is always true. On failure, an exception is returned instead.\n\nPOST _aliases\n{\n \"actions\": [\n {\n \"add\": {\n \"index\": \"logs-nginx.access-prod\",\n \"alias\": \"logs\"\n }\n }\n ]\n}\n\nresp = client.indices.update_aliases(\n actions=[\n {\n \"add\": {\n \"index\": \"logs-nginx.access-prod\",\n \"alias\": \"logs\"\n }\n }\n ],\n)\n\nconst response = await client.indices.updateAliases({\n actions: [\n {\n add: {\n index: \"logs-nginx.access-prod\",\n alias: \"logs\",\n },\n },\n ],\n});\n\nresponse = client.indices.update_aliases(\n body: {\n \"actions\": [\n {\n \"add\": {\n \"index\": \"logs-nginx.access-prod\",\n \"alias\": \"logs\"\n }\n }\n ]\n }\n)\n\n$resp = $client->indices()->updateAliases([\n \"body\" => [\n \"actions\" => array(\n [\n \"add\" => [\n \"index\" => \"logs-nginx.access-prod\",\n \"alias\" => \"logs\",\n ],\n ],\n ),\n ],\n]);\n\ncurl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"actions\":[{\"add\":{\"index\":\"logs-nginx.access-prod\",\"alias\":\"logs\"}}]}' \"$ELASTICSEARCH_URL/_aliases\"\n\nvar response = await client.Indices\n .UpdateAliasesAsync(d1 => d1\n .Actions(d2 => d2\n .Add(d3 => d3\n .Alias(\"logs\")\n .Index(\"logs-nginx.access-prod\")\n )\n )\n );\n\nclient.indices().updateAliases(u -> u\n .actions(a -> a\n .add(ad -> ad\n .alias(\"logs\")\n .index(\"logs-nginx.access-prod\")\n )\n )\n);\n\n An example body for a `POST _aliases` request.\n\n{\n \"actions\": [\n {\n \"add\": {\n \"index\": \"logs-nginx.access-prod\",\n \"alias\": \"logs\"\n }\n }\n ]\n}",
+ "fonte": "site",
+ "respostas": [
+  {
+   "por": "claude-haiku-5-5",
+   "resposta": {
+    "serve": "stack",
+    "role": "Manage index aliases for zero-downtime index swaps during reindexing",
+    "place": [
+     "network_service"
+    ],
+    "mechanism": [
+     "n/a"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "stable",
+    "doubt": true,
+    "evidence": "\"Generally available; Added in 1.3.0\" / \"Adds a data stream or index to an alias.\""
+   }
+  }
+ ]
+}

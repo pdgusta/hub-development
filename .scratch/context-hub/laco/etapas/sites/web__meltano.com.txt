@@ -1,0 +1,413 @@
+OPEN
+
+Dependable data by
+default
+Meltano is an ETL platform built on open-source foundations, 
+ engineered by experts for cloud scale, efficiency, and reliability.
+Book a demo 
+
+Loved by data teams
+
+Reduce 
+cost
+Pay for the workloads you actually run. Costs stay predictable as data volumes grow, whether you self-manage Meltano or use a managed orchestrator.Learn more
+
+Increase 
+efficiency
+Build, adjust, and debug connectors directly. You are not blocked by ticket queues, and support is available when you need it, not as a gatekeeper.Learn more
+
+Centralize 
+movement
+Run all pipelines in one place, across databases, files, SaaS tools, internal systems, and workflows like dbt.Learn more
+
+Remove 
+constraints
+Add new sources, apply transformations before the warehouse, adjust connectors, and let teams contribute pipelines without artificial limits.Learn more
+
+MELTANO
+ModelMeltano Models your data stack as code and provides built-in release management and governance using Git and GitHub workflows.
+Implement controlled CI/CD pipelines for developing, testing, and promoting pipeline changes with full traceability and auditability.
+Enforce strong governance and security with isolated customer environments, secure credential storage and encrypted data transfer.
+Named Meltano environments, local development environments and deployment management into development and production workspaces are just some of the ways we help you make your data reliable by default. 
+Learn more
+
+UICLIAIAPICode
+
+CLI
+
+# Model your environments as code
+meltano environment add dev
+meltano environment add prod
+
+# Build and test against dev
+meltano --environment=dev run tap-salesforce target-snowflake
+
+# Promote through a reviewed pull request
+git switch -c salesforce-pipeline
+git commit -am "Add Salesforce pipeline"
+gh pr create --base main --fill
+
+# Once merged, the same project runs in prod
+meltano --environment=prod run tap-salesforce target-snowflake
+
+Claude
+
+Promote this week's changes from dev to production.
+
+Used Meltano Cloud
+
+list_workspaces
+get_workspace_repository
+publish_changes
+Acme (dev) deploys from develop and Acme (prod) from main. PR #42 merged develop into main this morning, approved and passing CI.
+I've published main at 4f2c9e1 to Acme (prod). Every promotion is a reviewed commit, so it's auditable and easy to roll back.
+Reply to Claude…
+
+API
+
+API=https://app.meltano.com/api
+AUTH="Authorization: Bearer $MELTANO_TOKEN"
+
+# Deploy the latest commit of your workspace repo
+curl -X POST -H "$AUTH" \
+ $API/workspaces/$WORKSPACE_ID/deployments
+
+# 202 Accepted
+# {"id": "8b0e2f4c-…", "status": "QUEUED", …}
+
+meltano.yml
+
+default_environment: dev
+environments:
+ - name: dev
+ config:
+ plugins:
+ loaders:
+ - name: target-snowflake
+ config:
+ default_target_schema: dev_${USER}
+ - name: prod
+ config:
+ plugins:
+ loaders:
+ - name: target-snowflake
+ config:
+ default_target_schema: analytics
+plugins:
+ extractors:
+ - name: tap-salesforce
+ variant: meltanolabs
+ config:
+ # Secrets come from the environment, never from Git
+ client_secret: $SALESFORCE_CLIENT_SECRET
+
+MELTANO
+ Extract and LoadMeltano supports 600+ pre-built connectors, making it straightforward for data teams to extract and load data via the UI, CLI, API, or AI.
+Connect and ingest data from SaaS applications, REST APIs, semi-structured data (JSON and XML), and relational databases.
+Choose your replication strategy: full, incremental, or log-based. Batch or near real-time. Configured in code.
+Built-in idempotency keeps your pipelines consistent and self-correcting. Backfills are simple. Duplicates are handled automatically.
+Meltano HubMeltano SDK
+
+UICLIAIAPICode
+
+CLI
+
+meltano add tap-postgres
+meltano add target-snowflake
+
+meltano config set tap-postgres sqlalchemy_url postgresql://warehouse:warehouse@localhost:5432/warehouse
+
+meltano run tap-postgres target-snowflake
+
+Claude
+
+Sync our Salesforce deals into Snowflake every hour.
+
+Used Meltano Cloud
+
+find_connector
+add_connector
+create_pipeline
+run_pipeline
+Done. I added the Salesforce connector, selected the Account and Opportunity streams, and scheduled salesforce-to-snowflake to run hourly.
+The first run finished in 2m 14s and loaded 48,312 rows. Later runs are incremental.
+Reply to Claude…
+
+API
+
+API=https://app.meltano.com/api
+AUTH="Authorization: Bearer $MELTANO_TOKEN"
+PIPELINES=$API/workspaces/$WORKSPACE_ID/pipelines
+
+# Initialise a pipeline, then create it with its config
+ID=$(curl -s -X POST -H "$AUTH" $PIPELINES | jq -r .id)
+
+curl -X PUT -H "$AUTH" $PIPELINES/$ID \
+ -H "Content-Type: application/hal+json" \
+ -d '{
+ "name": "salesforce-to-snowflake",
+ "dataComponents": ["tap-salesforce", "Snowflake"],
+ "schedule": "0 0 * * * *"
+ }'
+
+# 201 Created
+
+pipelines/salesforce-to-snowflake.yml
+
+version: pipelines/v0.1
+data_components:
+ - tap-salesforce
+ - Snowflake
+properties:
+ tap-salesforce.start_date: "2025-01-01T00:00:00Z"
+ tap-salesforce.select_fields_by_default: true
+# Hourly, on the hour (cron with seconds)
+schedule: 0 0 * * * *
+timeout: 1800
+max_retries: 2
+
+MELTANO
+TransformMeltano integrates directly with dbt™ for transformation and Elementary for data validation, both configured and version-controlled inside your Meltano project.
+Manage your data models in version control. Every change is tracked, reviewable, and reversible.
+Build and test models in plain SQL using your IDE or an AI assistant. No proprietary language, no lock-in.
+Data quality checks run automatically. Schema drift, completeness gaps, and anomalous values are caught before they reach your analysts.
+Learn more
+
+UICLIAIAPICode
+
+CLI
+
+meltano add --plugin-type transformer dbt
+
+claude --inline “Add a job model with data quality tests to this meltano dbt project”
+
+meltano invoke dbt show job
+
+meltano invoke dbt run test
+
+Claude
+
+Last night's dbt run failed. What happened?
+
+Used Meltano Cloud
+
+list_runs
+get_run_logs
+diagnose_pipeline
+dbt-build failed on the test not_null_fct_revenue_amount: 37 opportunities synced yesterday have no amount yet. That field is optional in Salesforce until a deal is priced.
+I'd make that test a warning rather than an error, so one unpriced deal doesn't block the whole build. Want me to open a pull request?
+Reply to Claude…
+
+API
+
+API=https://app.meltano.com/api
+AUTH="Authorization: Bearer $MELTANO_TOKEN"
+
+# Find the latest dbt-build run
+curl -H "$AUTH" \
+ "$API/pipelines/$PIPELINE_ID/jobs?size=1&sort=created,desc"
+
+# {"id": "f31c9a07-…", "status": "ERROR", "exitCode": 1, …}
+
+# Stream its logs as NDJSON
+curl -H "$AUTH" -H "Accept: application/x-ndjson" \
+ $API/jobs/$JOB_ID/logs
+
+transform/models/marts/fct_revenue.yml
+
+version: 2
+
+models:
+ - name: fct_revenue
+ description: Closed-won opportunities, one row per deal.
+ columns:
+ - name: opportunity_id
+ tests:
+ - unique
+ - not_null
+ - name: amount
+ tests:
+ - not_null:
+ config:
+ severity: warn
+ tests:
+ - elementary.volume_anomalies:
+ timestamp_column: close_date
+
+MELTANO
+Analytics and NotebooksMeltano helps data teams prepare dependable data for their Analytics and Notebooks.
+Omni, Power BI, Looker, Sigma, or any other BI Tool
+Cube, dbt™, Snowflake, Preset or any other Semantic Layer
+Built-in support for running Notebooks
+Learn more
+
+UICLIAIAPICode
+
+CLI
+
+meltano add extractor tap-postgres
+meltano add loader target-snowflake
+
+cookiecutter https://github.com/meltano/sdk \
+--directory="cookiecutter/tap-template
+# source_name: my-api
+meltano add --custom extractor tap-my-api
+
+meltano add utility dbt-snowflake
+meltano add --custom utility my-script.py
+
+meltano run tap-postgres target-snowflake dbt-snowflake
+meltano run tap-my-api target-snowflake my-script.py
+
+Claude
+
+Is the revenue report up to date for this morning's board meeting?
+
+Used Meltano Cloud
+
+list_pipelines
+get_pipeline_metrics
+run_pipeline
+Not quite. revenue-report last ran at 02:40, before the 06:00 Salesforce sync.
+I re-ran it and the notebook finished at 08:12, so the report now includes every deal closed up to 08:00.
+Reply to Claude…
+
+API
+
+API=https://app.meltano.com/api
+AUTH="Authorization: Bearer $MELTANO_TOKEN"
+
+# Pull the data behind a dataset into any tool, as CSV
+curl -H "$AUTH" -H "Accept: text/csv" \
+ $API/datasets/$DATASET_ID/data \
+ -o closed-won-by-week.csv
+
+analyze/datasets/closed-won-by-week.yml
+
+version: datasets/v0.2
+source: Salesforce
+title: Closed-won revenue by week
+questions: How much revenue did we close each week this quarter?
+description: |-
+ Weekly closed-won amount from fct_revenue.
+
+ #revenue #salesforce
+metadata: |-
+ {
+ "name": "fct_revenue",
+ "label": "Closed-won revenue",
+ "related_table": {
+ "columns": [{"name": "week", "label": "Week"}],
+ "aggregates": [{"name": "amount", "label": "Revenue"}]
+ }
+ }
+visualisation: '{"chartjs-chart": {"chartType": "bar"}}'
+query: |-
+ SELECT
+ date_trunc('week', close_date) "fct_revenue.week"
+ , sum(amount) "fct_revenue.amount"
+ FROM fct_revenue
+ WHERE close_date >= date_trunc('quarter', current_date)
+ GROUP BY 1
+ ORDER BY 1
+
+MELTANO
+OrchestrateMeltano Cloud provides robust and built-in orchestration for data operations with dozens of pipelines. Teams with hundreds of pipelines can use Meltano for Extract and Load and Apache Airflow®, Dagster or Orchestra.
+Monitor system health, ingestion job status, and pipeline performance with integrated monitoring, logging, and alerting.
+Schedule and automate pipelines to match business cadence and support end-to-end data workflows.
+Quickly troubleshoot and recover from issues with detailed logs, diagnostics, and the ability to perform full or partial re-syncs to correct data inconsistencies.
+Learn more 
+
+UICLIAIAPICode
+
+CLI
+
+# Chain EL and dbt into one job
+meltano job add salesforce-to-revenue \
+ --tasks "[tap-salesforce target-snowflake, dbt-snowflake:build]"
+meltano job list
+
+# Run the whole chain locally, with a time limit
+meltano run --timeout 1800 salesforce-to-revenue
+
+# Push to your workspace: Meltano Cloud's built-in
+# orchestration schedules, triggers and retries it
+git commit -am "Add salesforce-to-revenue job"
+git push
+
+Claude
+
+Run dbt as soon as the Salesforce sync finishes, and retry it if it fails.
+
+Used Meltano Cloud
+
+get_pipeline_config
+create_pipeline
+Created dbt-build. It runs whenever salesforce-to-snowflake succeeds, retries up to 3 times, and times out after 25 minutes.
+Tonight's chain: salesforce-to-snowflake → dbt-build → revenue-report.
+Reply to Claude…
+
+API
+
+API=https://app.meltano.com/api
+AUTH="Authorization: Bearer $MELTANO_TOKEN"
+
+# Run a pipeline on demand
+curl -X POST -H "$AUTH" $API/pipelines/$PIPELINE_ID/jobs
+
+# 201 Created
+# {"id": "5d27e1b8-…", "type": "PIPELINE_RUN", "status": "QUEUED", …}
+
+# Check on it
+curl -H "$AUTH" $API/jobs/$JOB_ID
+
+# {"status": "COMPLETE", "exitCode": 0, …}
+
+pipelines/dbt-build.yml
+
+version: pipelines/v0.1
+data_components:
+ - dbt-snowflake
+ - Snowflake
+actions:
+ - dbt-snowflake:build
+# Runs whenever the upstream pipeline succeeds
+triggered_by:
+ - salesforce-to-snowflake
+timeout: 1500
+max_retries: 3
+
+MarketingLogisticsE-commerceFinance
+
+Example connectorsEstd. savings
+Facebook Ads45-65%
+Google Ads45-65%
+MySQL55-75%
+Bing Ads45-65%
+GA445-65%
+
+All estimates are based on our standard plan and 
+estimated with a company with 1-200 employees.
+Avg. savings: 57%
+Calculate savings
+
+The same connectors 
+30 to 40% less cost.Calculate savings
+
+Join 5,500+ 
+on SlackChat and learn from other users
+
+Contribute 
+on GitHubView code and issue tracker
+
+Success Stories
+
+Case StudyThe Little Bike Company Boosts Monthly Productivity by 20% with Meltano’s Streamlined Solution
+
+Case StudyMVF Makes ETL 7x Cheaper While Migrating 1B+ Rows Across 60+ Sources
+
+Case StudyHow Resident Advisor Escaped Year-Long ETL Firefighting
+
+Intrigued?
+You haven’t seen nothing yet!
+Book a demo

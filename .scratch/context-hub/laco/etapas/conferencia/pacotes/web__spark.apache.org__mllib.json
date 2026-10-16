@@ -1,0 +1,37 @@
+{
+ "chave": "web:spark.apache.org/mllib",
+ "nomes": [
+  "MLlib",
+  "Spark MLlib",
+  "Spark-ML"
+ ],
+ "urls": [
+  "https://spark.apache.org/mllib/",
+  "https://spark.apache.org/docs/latest/ml-guide.html"
+ ],
+ "readme_cortado": false,
+ "readme": "[MLlib | Apache Spark]\n\nMLlib\n\n MLlib is Apache Spark's scalable machine learning library.\n\nEase of use\n\n Usable in Java, Scala, Python, and R.\n\n MLlib fits into Spark's\n APIs and interoperates with NumPy\n in Python (as of Spark 0.9) and R libraries (as of Spark 1.5).\n You can use any Hadoop data source (e.g. HDFS, HBase, or local files), making it\n easy to plug into Hadoop workflows.\n\n data = spark.read.format(\"libsvm\")\\\n\n   .load(\"hdfs://...\")\n\n model = KMeans(k=10).fit(data)\n\nCalling MLlib in Python\n\nPerformance\n\n High-quality algorithms, 100x faster than MapReduce.\n\n Spark excels at iterative computation, enabling MLlib to run fast.\n At the same time, we care about algorithmic performance:\n MLlib contains high-quality algorithms that leverage iteration, and\n can yield better results than the one-pass approximations sometimes used on MapReduce.\n\nLogistic regression in Hadoop and Spark\n\nRuns everywhere\n\n Spark runs on Hadoop, Apache Mesos, Kubernetes, standalone, or in the cloud, against diverse data sources.\n\n You can run Spark using its standalone cluster mode, \n on EC2, \n on Hadoop YARN, \n on Mesos, or \n on Kubernetes.\n Access data in HDFS, \n Apache Cassandra, \n Apache HBase,\n Apache Hive, \n and hundreds of other data sources.\n\nAlgorithms\n\n MLlib contains many algorithms and utilities.\n\n ML algorithms include:\n\nClassification: logistic regression, naive Bayes,...\n\nRegression: generalized linear regression, survival regression,...\n\nDecision trees, random forests, and gradient-boosted trees\n\nRecommendation: alternating least squares (ALS)\n\nClustering: K-means, Gaussian mixtures (GMMs),...\n\nTopic modeling: latent Dirichlet allocation (LDA)\n\nFrequent itemsets, association rules, and sequential pattern mining\n\n ML workflow utilities include:\n\nFeature transformations: standardization, normalization, hashing,...\n\nML Pipeline construction\n\nModel evaluation and hyper-parameter tuning\n\nML persistence: saving and loading models and Pipelines\n\n Other utilities include:\n\nDistributed linear algebra: SVD, PCA,...\n\nStatistics: summary statistics, hypothesis testing,...\n\nRefer to the MLlib guide for usage examples.\n\nCommunity\n\n MLlib is developed as part of the Apache Spark project. It thus gets\n tested and updated with each Spark release.\n\n If you have questions about the library, ask on the\n Spark mailing lists.\n\n MLlib is still a rapidly growing project and welcomes contributions. If you'd like to submit an algorithm to MLlib,\n read how to\n contribute to Spark and send us a patch!\n\nGetting started\n\n To get started with MLlib:\n\nDownload Spark. MLlib is included as a module.\n\nRead the MLlib guide, which includes\n various usage examples.\n\nLearn how to deploy Spark on a cluster\n if you'd like to run in distributed mode. You can also run locally on a multicore machine\n without any setup.\n\n Download Apache Spark\nIncludes MLlib\n\n Latest News\n\nSpark 3.5.9 released\n (Jul 16, 2026)\n\nSpark 4.1.3 released\n (Jul 15, 2026)\n\nSpark 4.0.4 released\n (Jul 15, 2026)\n\nSpark 4.2.0 released\n (Jul 14, 2026)\n\nArchive\n\n Download Spark\n\n Built-in Libraries:\n\nSQL and DataFrames\n\nSpark Streaming\n\nMLlib (machine learning)\n\nGraphX (graph)\n\n Third-Party Projects",
+ "fonte": "site",
+ "respostas": [
+  {
+   "por": "claude-haiku-5-5",
+   "resposta": {
+    "serve": "stack",
+    "role": "Distributed ML library with feature transforms and pipelines; no search stated",
+    "place": [
+     "library"
+    ],
+    "mechanism": [
+     "n/a"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "stable",
+    "doubt": true,
+    "evidence": "MLlib is Apache Spark's scalable machine learning library... Feature transformations: standardization, normalization, hashing... ML Pipeline construction"
+   }
+  }
+ ]
+}

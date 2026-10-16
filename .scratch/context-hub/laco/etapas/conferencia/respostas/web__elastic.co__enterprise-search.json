@@ -1,0 +1,35 @@
+{
+ "chave": "web:elastic.co/enterprise-search",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T12:00:00Z",
+ "resultado": "corrige",
+ "conferencia": {
+  "resultado": "corrige",
+  "final": {
+   "serve": "search",
+   "role": "Elasticsearch: hybrid lexical and vector search platform with Agent Builder exposing MCP",
+   "place": [
+    "network_service"
+   ],
+   "mechanism": [
+    "full_text",
+    "vector",
+    "hybrid"
+   ],
+   "mcp": "yes",
+   "windows": "unknown",
+   "portuguese": "unknown",
+   "license": "AGPL",
+   "maturity": "stable",
+   "doubt": false,
+   "evidence": "Elasticsearch and Kibana are open source under the AGPL license; connect external clients over MCP and A2A."
+  },
+  "o_que_mudou": [
+   "place: [network_service, library] -> [network_service], library not supported",
+   "mechanism: removed 'other', bm25 not stated",
+   "windows: yes -> unknown, page does not say",
+   "portuguese: yes -> unknown, page does not say"
+  ],
+  "nota": "Elasticsearch is a heavy server but offers hybrid search and MCP; plausible but operationally costly search backend for the hub."
+ }
+}

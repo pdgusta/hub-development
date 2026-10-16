@@ -1,0 +1,24 @@
+{"n": 7, "pergunta": "Se o MCP do banco tentar gravar um arquivo que já foi eliminado em outra máquina, como o conflito é resolvido?", "tipo": "se-x"}
+{"n": 17, "pergunta": "Quando um recrutado usa a camada de busca para encontrar uma informação em uma pasta com ponto no nome (como `.config/`), o que acontece e por que isso não aparece nos resultados?", "tipo": "quando"}
+{"n": 27, "pergunta": "O que o GitHub privado não faz quando o maestro precisa recuperar uma versão de nota em colisão real?", "tipo": "o-que-nao-faz"}
+{"n": 37, "pergunta": "Quando eu dou uma ordem para o agente do Maestri resolver uma colisão em uma nota, onde eu encontro as três versões para decidir qual é a correta (a minha, a do agente, e a comum)?", "tipo": "onde-vive"}
+{"n": 47, "pergunta": "Se o outro par grava um arquivo que não está em pastas de ponto (pasta oculta) e você tem uma sessão de agente que tenta ler esse arquivo, como o seu par lida com essa leitura proibida?", "tipo": "responsavel"}
+{"n": 57, "pergunta": "Se o maestro tenta aplicar uma skill global do contrato do hub que excede o limite de 200 MiB de transferência do sincronizador, o que acontece?", "tipo": "se-x"}
+{"n": 67, "pergunta": "E se um agente falhar ao tentar atualizar a Nota de retomada logo no fim de uma sessão porque o CouchDB local está inacessível?", "tipo": "falha"}
+{"n": 77, "pergunta": "O que muda entre o agente que tem permissão de escrita na raiz `operations/` e o agente que só tem permissão de leitura na raiz `clients/VOEGOL`?", "tipo": "diferenca"}
+{"n": 87, "pergunta": "Por que o maestro recebe uma notificação do Vigia quando há um conflito de colisão real na nota que ele está revisando?", "tipo": "por-que"}
+{"n": 97, "pergunta": "Se uma **pasta não replicada** (que só existe em uma máquina) é acessada por um **agente de código** na outra máquina via SSH, e alguém edita o arquivo localmente na máquina original, como o **sincronizador** ou o **vigia** reagem a essa inconsistência?", "tipo": "relacao"}
+{"n": 107, "pergunta": "Se o usuário do Obsidian fizer um merge manual de duas versões de uma nota, o que acontece no banco?", "tipo": "se-x"}
+{"n": 117, "pergunta": "Por que o Vigia só checa de 5 em 5 minutos e qual o risco de uma colisão não ser vista imediatamente pelo Gustavo durante esse intervalo?", "tipo": "por-que"}
+{"n": 127, "pergunta": "Se o maestro do Maestri criar uma nova iniciativa no canvas, como o hub garante que essa estrutura apareça instantaneamente no disco da máquina pessoal?", "tipo": "falha"}
+{"n": 137, "pergunta": "O que o Agente de código não faz ao abrir uma sessão em uma subpasta que ainda não foi sincronizada?", "tipo": "o-que-nao-faz"}
+{"n": 147, "pergunta": "Como um agente de código rodando fora do Maestri garante que não vai acessar informações sensíveis que não deveria ver?", "tipo": "quem-usa"}
+{"n": 157, "pergunta": "Se um arquivo grande (mais de 200 MiB) for editado no Obsidian e salvo, o que não é feito pelo sincronizador?", "tipo": "o-que-nao-faz"}
+{"n": 167, "pergunta": "Em que ordem acontece que o agente lê a nota, faz alteração e a versão conflitante aparece no MCP do banco?", "tipo": "ordem"}
+{"n": 177, "pergunta": "Se duas máquinas diferentes recebem simultaneamente atualizações distintas de um mesmo arquivo via MCP, qual a ordem de detecção de conflito: versão local vs remota, criação de colisão real, notificação pelo Vigia?", "tipo": "ordem"}
+{"n": 187, "pergunta": "Se o Gustavo decide trocar a ferramenta da camada de busca (ainda em escolha entre duas) na máquina pessoal, quem é responsável por replicar a nova configuração e reindexar tudo no notebook do trabalho sem quebrar o contrato dos agentes ativos?", "tipo": "responsavel"}
+{"n": 197, "pergunta": "O que o hub não faz quando uma iniciativa de cliente (por exemplo STRATA) tem seu diretório movido para dentro da pasta _archive sem atualizar o registro de estado?", "tipo": "o-que-nao-faz"}
+{"n": 207, "pergunta": "Quem é responsável por sincronizar as mudanças entre as máquinas quando o Sincronizador está desligado?", "tipo": "diferenca"}
+{"n": 217, "pergunta": "Se o MCP do banco recebe uma gravação de um agente sem credenciais válidas, qual a ordem de rejeição, registro e notificação que o hub realiza?", "tipo": "ordem"}
+{"n": 227, "pergunta": "Se eu estou no cliente (sandbox) e peço para o agente ler uma nota de uma iniciativa do cliente SBF, mas o agente não encontra o arquivo, onde eu deveria ter colocado o arquivo para que ele pudesse acessá-lo?", "tipo": "onde-vive"}
+{"n": 237, "pergunta": "Quando o vigia descarta um arquivo binário por erro, o que acontece com o estado do hub?", "tipo": "quando"}

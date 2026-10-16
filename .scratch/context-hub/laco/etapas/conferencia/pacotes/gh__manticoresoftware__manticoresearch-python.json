@@ -1,0 +1,57 @@
+{
+ "chave": "gh:manticoresoftware/manticoresearch-python",
+ "nomes": [
+  "Manticore Python Client"
+ ],
+ "urls": [
+  "https://github.com/manticoresoftware/manticoresearch-python"
+ ],
+ "readme_cortado": false,
+ "readme": "# Manticore Python client\n\nСlient for Manticore Search.\n\n\n❗ WARNING: this is a development version of the client. The latest release's readme is https://github.com/manticoresoftware/manticoresearch-python/tree/11.2.0\n\n## Requirements.\n\nMinimum Manticore Search version is >= 2.5.1 with HTTP protocol enabled.\n\n| **manticoresearch-python*   | **Manticore Search**                | **Python**     | **Compatibility**        |\n| --------------------------- | ----------------------------------- | -------------- | ------------------------ |\n| `manticoresearch-devel`     | `dev` (latest development version)  | 3.4 or newer   | ✅ Fully Compatible       |\n| 11.2.0 or newer             | 28.6.6 or newer                     | 3.4 or newer   | ✅ Fully Compatible       |\n| 11.2.0 or newer             | 17.5.1 to 28.6.6                    | 3.4 or newer   | ⚠️ Partially Compatible  |\n| 11.0.0 to 11.2.0            | 28.6.6 or newer                     | 3.4 or newer   | ⚠️ Partially Compatible  |\n| 11.0.0 to 11.2.0            | 17.5.1 to 28.6.6                    | 3.4 or newer   | ✅ Fully Compatible       |\n| 8.0.0 to 11.0.0             | 17.5.1 to 28.6.6                    | 3.4 or newer   | ⚠️ Partially Compatible  |\n| 8.0.0 to 11.0.0             | 9.2.14 to 17.5.1                    | 3.4 or newer   | ✅ Fully Compatible       |\n| 6.0.0 to 8.0.0              | 9.2.14 to 17.5.1                    | 3.4 or newer   | ⚠️ Partially Compatible |\n| 6.0.0 to 8.0.0              | 7.0.0 to 9.2.14                     | 3.4 or newer   | ✅ Fully Compatible     |\n| 6.0.0 to 8.0.0              | 6.2.1 to 7.0.0                      | 3.4 or newer   | ⚠️ Partially Compatible |\n| 3.3.1 to 6.0.0              | 7.0.0 to 9.2.14                     | 3.4 or newer   | ⚠️ Partially Compatible |\n| 3.3.1 to 6.0.0              | 6.2.1 to 7.0.0                      | 3.4 or newer   | ✅ Fully Compatible     |\n| 2.0.0 to 3.3.1              | 6.2.0 to 7.0.0                      | 3.4 or newer   | ⚠️ Partially Compatible |\n| 2.0.0 to 3.3.1              | 4.2.1 to 6.2.0                      | 3.4 or newer   | ✅ Fully Compatible     |\n| 1.0.6 to 2.0.0              | 4.0.2 to 4.2.1                      | 3.4 or newer   | ✅ Fully Compatible     |\n| 1.0.5 to 1.0.6              | 4.0.2 to 4.2.1                      | 2.7 or newer   | ⚠️ Partially Compatible |\n| 1.0.5 to 1.0.6              | 2.5.1 to 4.0.2                      | 2.7 or newer   | ✅ Fully Compatible     |\n\n## Installation & Usage\n### pip install\n\nIf the python package is hosted on a repository, you can install directly using:\n\n```sh\npip install git+https://github.com/manticoresoftware/manticoresearch-python.git\n```\n(you may need to run `pip` with root permission: `sudo pip install git+https://github.com/manticoresoftware/manticoresearch-python.git`)\n\nThen import the package:\n```python\nimport manticoresearch\n```\n\n### Setuptools\n\nInstall via [Setuptools](http://pypi.python.org/pypi/setuptools).\n\n```sh\npython setup.py install --user\n```\n(or `sudo python setup.py install` to install the package for all users)\n\nThen import the package:\n```python\nimport manticoresearch\n```\n\n## Getting Started\n\nPlease follow the [installation procedure](#installation--usage) and then run the following:\n\n```python\nimport manticoresearch\nfrom manticoresearch.rest import ApiException\nfrom pprint import pprint\n\n# Defining the host is optional and defaults to http://127.0.0.1:9308\n# See configuration.py for a list of all supported configuration parameters.\nconfiguration = manticoresearch.Configuration(\n    host = \"http://127.0.0.1:9308\"\n)\n\n\n\n# Enter a context with an instance of the API client\nwith manticoresearch.ApiClient(configuration) as api_client:\n    # Create instances of API classes\n    indexApi = manticoresearch.IndexApi(api_client)\n    searchApi = manticoresearch.SearchApi(api_client)\n    utilsApi = manticoresearch.UtilsApi(api_client)\n\n    try:\n        # Perform insert and search operations    \n        newDoc = {\"title\" : \"Crossbody Bag with Tassel\", \"price\": 19.85}\n        insert_request = InsertDocumentRequest(index=\"products\", doc=newDoc)\n        indexApi.insert(insert_request)\n        \n        # Check out the structure of the autocreated 'products' table\n        sql_response = utilsApi.sql('DESC products');\n        print(\"The response of UtilsApi->sql:\\n\")\n        pprint(sql_response) \n\n        newDoc = {\"title\" : \"Pet Hair Remover Glove\", \"price\": 7.99}\n        insert_request = InsertDocumentRequest(index=\"products\", doc=newDoc)\n        indexApi.insert(insert_request)\n        \n        query_highlight = Highlight()\n        query_highlight.fields = {\"title\":{}}\n        search_query = SearchQuery(query_string=\"@title bag\")\n        search_request = SearchRequest(index=\"products\", query=search_query, highlight=query_highlight)\n        search_response = searchApi.search(search_request)    \n        print(\"The response of SearchApi->search:\\n\")\n        pprint(search_response)\n\n        # Alternatively, you can pass all request arguments as a complex JSON object        \n        indexApi.insert({\"index\": \"products\", \"doc\" : {\"title\" : \"Crossbody Bag with Tassel\", \"price\" : 19.85}})\n        indexApi.insert({\"index\": \"products\", \"doc\" : {\"title\" : \"Pet Hair Remover Glove\", \"price\" : 7.99}})\n        search_response = searchApi.search({\"index\": \"products\", \"query\": {\"query_string\": \"@title bag\"}, \"highlight\":{\"fields\":{\"title\":{}}}})\n        print(\"The response of SearchApi->search:\\n\")\n        pprint(search_response)\n    except ApiException as e:\n        print(\"Exception when calling Api method: %s\\n\" % e)\n```\n\n## Documentation for API Endpoints\n\nAll URIs are relative to *http://127.0.0.1:9308*\n\nClass | Method | HTTP request | Description\n------------ | ------------- | ------------- | -------------\n*IndexApi* | [**bulk**](docs/IndexApi.md#bulk) | **POST** /bulk | Bulk table operations\n*IndexApi* | [**delete**](docs/IndexApi.md#delete) | **POST** /delete | Delete a document in a table\n*IndexApi* | [**insert**](docs/IndexApi.md#insert) | **POST** /insert | Create a new document in a table\n*IndexApi* | [**partial_replace**](docs/IndexApi.md#partial_replace) | **POST** /{table}/_update/{id} | Partially replaces a document in a table\n*IndexApi* | [**replace**](docs/IndexApi.md#replace) | **POST** /replace | Replace new document in a table\n*IndexApi* | [**update**](docs/IndexApi.md#update) | **POST** /update | Update a document in a table\n*SearchApi* | [**autocomplete**](docs/SearchApi.md#autocomplete) | **POST** /autocomplete | Performs an autocomplete search on a table\n*SearchApi* | [**percolate**](docs/SearchApi.md#percolate) | **POST** /pq/{table}/search | Perform reverse search on a percolate table\n*SearchApi* | [**search**](docs/SearchApi.md#search) | **POST** /search | Performs a search on a table\n*UtilsApi* | [**sql**](docs/UtilsApi.md#sql) | **POST** /sql | Perform SQL requests\n*UtilsApi* | [**token**](docs/UtilsApi.md#token) | **POST** /token | Create or rotate a bearer token\n\n\n## Documentation For Models\n\n - [AggBucket](docs/AggBucket.md)\n - [AggBucketsResult](docs/AggBucketsResult.md)\n - [AggComposite](docs/AggComposite.md)\n - [AggCompositeSource](docs/AggCompositeSource.md)\n - [AggCompositeTerm](docs/AggCompositeTerm.md)\n - [AggDateHistogram](docs/AggDateHistogram.md)\n - [AggHistogram](docs/AggHistogram.md)\n - [AggMedianAbsoluteDeviation](docs/AggMedianAbsoluteDeviation.md)\n - [AggMetric](docs/AggMetric.md)\n - [AggPercentileRanks](docs/AggPercentileRanks.md)\n - [AggPercentiles](docs/AggPercentiles.md)\n - [AggRange](docs/AggRange.md)\n - [AggTDigest](docs/AggTDigest.md)\n - [AggTerms](docs/AggTerms.md)\n - [Aggregation](docs/Aggregation.md)\n - [AutocompleteRequest](docs/AutocompleteRequest.md)\n - [BoolFilter](docs/BoolFilter.md)\n - [BulkResponse](docs/BulkResponse.md)\n - [Chat](docs/Chat.md)\n - [DeleteDocumentRequest](docs/DeleteDocumentRequest.md)\n - [DeleteResponse](docs/DeleteResponse.md)\n - [ErrorResponse](docs/ErrorResponse.md)\n - [FacetBucketStatus](docs/FacetBucketStatus.md)\n - [FacetFilterMode](docs/FacetFilterMode.md)\n - [FulltextFilter](docs/FulltextFilter.md)\n - [GeoDistance](docs/GeoDistance.md)\n - [GeoDistanceLocationAnchor](docs/GeoDistanceLocationAnchor.md)\n - [Highlight](docs/Highlight.md)\n - [HighlightFieldOption](docs/HighlightFieldOption.md)\n - [HighlightFields](docs/HighlightFields.md)\n - [HitsHits](docs/HitsHits.md)\n - [Hybrid](docs/Hybrid.md)\n - [InsertDocumentRequest](docs/InsertDocumentRequest.md)\n - [Join](docs/Join.md)\n - [JoinCond](docs/JoinCond.md)\n - [JoinOn](docs/JoinOn.md)\n - [Knn](docs/Knn.md)\n - [KnnQuery](docs/KnnQuery.md)\n - [Match](docs/Match.md)\n - [MatchAll](docs/MatchAll.md)\n - [PercolateRequest](docs/PercolateRequest.md)\n - [PercolateRequestQuery](docs/PercolateRequestQuery.md)\n - [QueryFilter](docs/QueryFilter.md)\n - [Range](docs/Range.md)\n - [RangeFilter](docs/RangeFilter.md)\n - [ReplaceDocumentRequest](docs/ReplaceDocumentRequest.md)\n - [ResponseError](docs/ResponseError.md)\n - [ResponseErrorDetails](docs/ResponseErrorDetails.md)\n - [ScriptField](docs/ScriptField.md)\n - [ScriptFieldScript](docs/ScriptFieldScript.md)\n - [SearchQuery](docs/SearchQuery.md)\n - [SearchRequest](docs/SearchRequest.md)\n - [SearchResponse](docs/SearchResponse.md)\n - [SearchResponseHits](docs/SearchResponseHits.md)\n - [SourceRules](docs/SourceRules.md)\n - [SqlObjResponse](docs/SqlObjResponse.md)\n - [SqlResponse](docs/SqlResponse.md)\n - [SuccessResponse](docs/SuccessResponse.md)\n - [UpdateDocumentRequest](docs/UpdateDocumentRequest.md)\n - [UpdateResponse](docs/UpdateResponse.md)\n\n\n<a id=\"documentation-for-authorization\"></a>\n## Documentation For Authorization\n\n\nAuthentication schemes defined for the API:\n<a id=\"basicAuth\"></a>\n### basicAuth\n\n- **Type**: HTTP basic authentication\n\n<a id=\"bearerAuth\"></a>\n### bearerAuth\n\n- **Type**: Bearer authentication\n\n\n## Author\n\ninfo@manticoresearch.com\n\n",
+ "fonte": "readme",
+ "respostas": [
+  {
+   "por": "gpt-oss-20b",
+   "resposta": {
+    "serve": "search",
+    "role": "Python client for Manticore Search",
+    "place": [
+     "library"
+    ],
+    "mechanism": [
+     "full_text"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "no",
+    "license": "unknown",
+    "maturity": "beta",
+    "doubt": false,
+    "evidence": "Client for Manticore Search."
+   }
+  },
+  {
+   "por": "gemma-4-31b",
+   "resposta": {
+    "serve": "search",
+    "role": "Python client to interface with Manticore Search engine",
+    "place": [
+     "library"
+    ],
+    "mechanism": [
+     "full_text",
+     "hybrid",
+     "vector",
+     "other"
+    ],
+    "mcp": "no",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "beta",
+    "doubt": false,
+    "evidence": "Сlient for Manticore Search. ... searchApi = manticoresearch.SearchApi(api_client)"
+   }
+  }
+ ]
+}

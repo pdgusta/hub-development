@@ -1,0 +1,39 @@
+{
+ "chave": "gh:nodeca/js-yaml",
+ "nomes": [
+  "js-yaml",
+  "YAML.js",
+  "yamljs"
+ ],
+ "urls": [
+  "https://github.com/nodeca/js-yaml",
+  "https://github.com/jazzband/js-yaml",
+  "https://github.com/js-yaml/js-yaml",
+  "https://github.com/node-yaml/js-yaml"
+ ],
+ "readme_cortado": false,
+ "readme": "# js-yaml\n\n[![CI](https://github.com/nodeca/js-yaml/actions/workflows/ci.yml/badge.svg)](https://github.com/nodeca/js-yaml/actions/workflows/ci.yml)\n[![NPM version](https://img.shields.io/npm/v/js-yaml.svg)](https://www.npmjs.org/package/js-yaml)\n\n> YAML 1.2 parser and serializer for JavaScript.\n\n__[Online demo](https://nodeca.github.io/js-yaml/)__\n\n- Supports the YAML 1.2 and YAML 1.1 specifications.\n- Passes the entire [YAML Test Suite](https://github.com/yaml/yaml-test-suite).\n\n\n### [Documentation >>](https://nodeca.github.io/js-yaml/doc/)\n\n\n##### Install\n\n```bash\nnpm install js-yaml\n```\n\n\n##### Usage\n\n```js\nimport { load } from 'js-yaml'\n\ntry {\n  const document = load('greeting: hello')\n  console.log(document.greeting)\n} catch (e) {\n  console.error(e)\n}\n```\n\n```js\nimport { dump } from 'js-yaml'\n\nconst source = dump({ greeting: 'hello' })\nconsole.log(source)\n```\n\n[More usage examples](docs/usage.md).\n",
+ "fonte": "readme",
+ "respostas": [
+  {
+   "por": "claude-haiku-5-5",
+   "resposta": {
+    "serve": "stack",
+    "role": "Parse YAML frontmatter and config in a Node-based MCP server or Obsidian plugin.",
+    "place": [
+     "library"
+    ],
+    "mechanism": [
+     "n/a"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "unknown",
+    "doubt": false,
+    "evidence": "YAML 1.2 parser and serializer for JavaScript. Supports the YAML 1.2 and YAML 1.1 specifications. Usage: import { load } from 'js-yaml'"
+   }
+  }
+ ]
+}

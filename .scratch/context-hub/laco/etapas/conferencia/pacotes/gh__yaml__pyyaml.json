@@ -1,0 +1,48 @@
+{
+ "chave": "gh:yaml/pyyaml",
+ "nomes": [
+  "PyYAML",
+  "pyyaml",
+  "PyYaml",
+  "Whoosh + PyYAML"
+ ],
+ "urls": [
+  "https://github.com/yaml/pyyaml",
+  "https://pyyaml.org/",
+  "https://pyyaml.org",
+  "https://pyyaml.org/wiki/PyYAMLDocumentation",
+  "https://pypi.org/project/PyYAML/",
+  "https://pyyaml.org/wiki/PyYAML",
+  "https://pyyaml.readthedocs.io/en/",
+  "https://pyyaml.readthedocs.org/",
+  "https://github.com/pyyaml/pyyaml",
+  "https://github.com/PyYAML/PyYAML",
+  "https://github.com/pyyaml/pyYAML",
+  "https://github.com/psbecker/pyyaml"
+ ],
+ "readme_cortado": false,
+ "readme": "PyYAML\n======\n\nA full-featured YAML processing framework for Python\n\n## Installation\n\nTo install, type `python setup.py install`.\n\nBy default, the `setup.py` script checks whether LibYAML is installed and if\nso, builds and installs LibYAML bindings.\nTo skip the check and force installation of LibYAML bindings, use the option\n`--with-libyaml`: `python setup.py --with-libyaml install`.\nTo disable the check and skip building and installing LibYAML bindings, use\n`--without-libyaml`: `python setup.py --without-libyaml install`.\n\nWhen LibYAML bindings are installed, you may use fast LibYAML-based parser and\nemitter as follows:\n\n    >>> yaml.load(stream, Loader=yaml.CLoader)\n    >>> yaml.dump(data, Dumper=yaml.CDumper)\n\nIf you don't trust the input YAML stream, you should use:\n\n    >>> yaml.safe_load(stream)\n\n## Testing\n\nPyYAML includes a comprehensive test suite.\n\nTo run the complete local test suite, type:\n\n    make test\n\nThis creates a local Python environment, runs the pure Python tests, builds a\nlocal copy of LibYAML, and then runs the LibYAML extension tests. The local\nLibYAML build is pinned by `LIBYAML-REF`, which defaults to `0.2.5`.\n\nTo run only one test mode:\n\n    make test-python\n    make test-libyaml\n\nTo test with a specific Python version:\n\n    make test PYTHON-VERSION=3.13.5\n\n## Further Information\n\n* For more information, check the\n  [PyYAML homepage](https://github.com/yaml/pyyaml).\n\n* [PyYAML tutorial and reference](http://pyyaml.org/wiki/PyYAMLDocumentation).\n\n* Discuss PyYAML with the maintainers on\n  Matrix at https://matrix.to/#/#pyyaml:yaml.io or\n  IRC #pyyaml irc.libera.chat\n\n* Submit bug reports and feature requests to the\n  [PyYAML bug tracker](https://github.com/yaml/pyyaml/issues).\n\n## License\n\nThe PyYAML module was written by Kirill Simonov <xi@resolvent.net>.\nIt is currently maintained by the YAML and Python communities.\n\nPyYAML is released under the MIT license.\n\nSee the file LICENSE for more details.\n",
+ "fonte": "readme",
+ "respostas": [
+  {
+   "por": "claude-haiku-5-5",
+   "resposta": {
+    "serve": "stack",
+    "role": "Parse YAML metadata blocks in the hub's Markdown notes",
+    "place": [
+     "library"
+    ],
+    "mechanism": [
+     "n/a"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "no",
+    "license": "MIT",
+    "maturity": "unknown",
+    "doubt": false,
+    "evidence": "\"A full-featured YAML processing framework for Python\"; \"If you don't trust the input YAML stream, you should use: yaml.safe_load(stream)\""
+   }
+  }
+ ]
+}

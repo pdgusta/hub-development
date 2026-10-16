@@ -1,0 +1,131 @@
+{
+ "_nota": "Pesquisa de modelos de embeddings (ticket 54). Ângulos x línguas x formulações. As sementes ocultas ficam em sementes.json, que os geradores nunca leem.",
+ "formato": "Reply ONLY with one JSON object, no other text: {\"items\":[{\"name\":\"exact model or service name\",\"url\":\"https://... (Hugging Face model page or official docs) or empty string if you are not sure it exists\",\"kind\":\"model|api|family|leaderboard|technique|reranker\",\"summary\":\"one sentence, in {lingua_nome}, with size, languages and license if you know them\",\"terms\":[\"other model names or terms worth searching next\"]}]}. List up to 12 items. Never invent a URL or a model name: if you are not sure, use \"\" for the URL.",
+ "linguas": {
+  "pt": {
+   "nome": "Portuguese",
+   "contexto": "Contexto: um acervo de notas técnicas em Markdown (milhares de arquivos, em português do Brasil e inglês, com termos técnicos misturados) usado por agentes de IA em duas máquinas Windows sem GPU. Precisamos de um modelo de embeddings para a busca semântica e híbrida dessas notas: roda localmente em CPU (ONNX, GGUF, sentence-transformers) ou por uma API com nível gratuito ou barato. Importam: qualidade em busca (retrieval) em português e inglês, memória, velocidade, tamanho do contexto, dimensões e licença."
+  },
+  "en": {
+   "nome": "English",
+   "contexto": "Context: a collection of technical Markdown notes (thousands of files, in Brazilian Portuguese and English, with mixed technical terms) used by AI agents on two Windows machines without a GPU. We need an embedding model for semantic and hybrid search over these notes: running locally on CPU (ONNX, GGUF, sentence-transformers) or through an API with a free or cheap tier. What matters: retrieval quality in Portuguese and English, memory, speed, context length, dimensions and license."
+  },
+  "zh": {
+   "nome": "Chinese",
+   "contexto": "背景：一个技术类 Markdown 笔记库（数千个文件，巴西葡萄牙语和英语混合，夹杂技术术语），由两台没有 GPU 的 Windows 电脑上的 AI 智能体使用。我们需要一个嵌入（embedding）模型，用于这些笔记的语义检索和混合检索：可以在 CPU 上本地运行（ONNX、GGUF、sentence-transformers），或通过有免费或低价额度的 API 调用。关注点：葡萄牙语和英语的检索质量、内存、速度、上下文长度、向量维度和许可证。"
+  }
+ },
+ "angulos": {
+  "placares": {
+   "pt": [
+    "Quais modelos de embeddings têm os melhores resultados de busca (retrieval) multilíngue nos placares públicos, como MTEB e MMTEB, e em português especificamente? Use o nome exato do modelo.",
+    "Se fosse escolher hoje o modelo de embeddings mais forte para busca em português e inglês, quais seriam os candidatos, pelos resultados publicados?"
+   ],
+   "en": [
+    "Which embedding models have the best multilingual retrieval results on public leaderboards such as MTEB and MMTEB, and for Portuguese specifically? Use the exact model name.",
+    "If you had to pick today the strongest embedding model for Portuguese and English retrieval, which candidates would you consider, based on published results?"
+   ],
+   "zh": [
+    "在 MTEB、MMTEB 等公开排行榜上，哪些嵌入模型的多语言检索成绩最好？葡萄牙语方面呢？请写出准确的模型名称。",
+    "如果今天要为葡萄牙语和英语检索选择最强的嵌入模型，根据公开结果，你会考虑哪些候选？"
+   ]
+  },
+  "locais": {
+   "pt": [
+    "Quais modelos de embeddings multilíngues rodam bem localmente em CPU no Windows (ONNX, GGUF, llama.cpp, Ollama, FastEmbed, sentence-transformers), com boa qualidade em português?",
+    "Que modelos de embeddings abertos dá para rodar offline num notebook sem GPU e ainda ter boa busca em português e inglês?"
+   ],
+   "en": [
+    "Which multilingual embedding models run well locally on CPU on Windows (ONNX, GGUF, llama.cpp, Ollama, FastEmbed, sentence-transformers) with good Portuguese quality?",
+    "Which open embedding models can run offline on a laptop without a GPU and still give good Portuguese and English retrieval?"
+   ],
+   "zh": [
+    "哪些多语言嵌入模型可以在 Windows 的 CPU 上本地良好运行（ONNX、GGUF、llama.cpp、Ollama、FastEmbed、sentence-transformers），并且葡萄牙语效果好？",
+    "哪些开源嵌入模型能在没有 GPU 的笔记本上离线运行，同时葡萄牙语和英语检索效果仍然不错？"
+   ]
+  },
+  "apis": {
+   "pt": [
+    "Quais provedores oferecem modelos de embeddings por API com nível gratuito ou muito barato e boa qualidade multilíngue? Diga o nome exato do modelo de cada provedor.",
+    "Que APIs de embeddings compatíveis com a API da OpenAI existem, e quais modelos multilíngues elas servem?"
+   ],
+   "en": [
+    "Which providers offer embedding models through an API with a free or very cheap tier and good multilingual quality? Give the exact model name for each provider.",
+    "Which OpenAI-compatible embedding APIs exist, and which multilingual models do they serve?"
+   ],
+   "zh": [
+    "哪些服务商通过 API 提供嵌入模型，并有免费或很便宜的额度、多语言质量好？请写出每个服务商的准确模型名称。",
+    "有哪些兼容 OpenAI 接口的嵌入 API？它们提供哪些多语言模型？"
+   ]
+  },
+  "portugues": {
+   "pt": [
+    "Que modelos de embeddings ou de sentenças foram treinados ou ajustados especificamente para português (do Brasil ou de Portugal)?",
+    "Que projetos acadêmicos ou da comunidade brasileira e portuguesa publicaram modelos de embeddings para busca em português?"
+   ],
+   "en": [
+    "Which embedding or sentence models were trained or fine-tuned specifically for Portuguese (Brazilian or European)?",
+    "Which academic or community projects from Brazil or Portugal have published embedding models for Portuguese retrieval?"
+   ],
+   "zh": [
+    "有哪些嵌入模型或句向量模型是专门为葡萄牙语（巴西或葡萄牙）训练或微调的？",
+    "巴西或葡萄牙的学术或社区项目发布过哪些用于葡萄牙语检索的嵌入模型？"
+   ]
+  },
+  "pequenos": {
+   "pt": [
+    "Quais modelos de embeddings pequenos (até uns 600 milhões de parâmetros) têm a melhor relação entre qualidade multilíngue de busca e velocidade?",
+    "Que modelos de embeddings leves suportam Matryoshka ou quantização para reduzir memória sem perder muita qualidade em português?"
+   ],
+   "en": [
+    "Which small embedding models (up to about 600 million parameters) have the best trade-off between multilingual retrieval quality and speed?",
+    "Which lightweight embedding models support Matryoshka or quantization to cut memory without losing much Portuguese quality?"
+   ],
+   "zh": [
+    "哪些小型嵌入模型（大约 6 亿参数以内）在多语言检索质量和速度之间取得最好的平衡？",
+    "哪些轻量嵌入模型支持 Matryoshka 或量化，能减少内存而葡萄牙语质量损失不大？"
+   ]
+  },
+  "tecnicas": {
+   "pt": [
+    "Que técnicas melhoram a busca semântica em notas técnicas bilíngues (embeddings com instrução, Matryoshka, late interaction tipo ColBERT, vetores esparsos tipo SPLADE, rerankers), e quais modelos as implementam?",
+    "Quais rerankers multilíngues servem para reordenar resultados de busca em português, e rodam em CPU ou por API?"
+   ],
+   "en": [
+    "Which techniques improve semantic search over bilingual technical notes (instruction-tuned embeddings, Matryoshka, ColBERT-style late interaction, SPLADE-style sparse vectors, rerankers), and which models implement them?",
+    "Which multilingual rerankers work for reordering Portuguese search results, and run on CPU or through an API?"
+   ],
+   "zh": [
+    "哪些技术能改善双语技术笔记的语义检索（指令式嵌入、Matryoshka、ColBERT 式后期交互、SPLADE 式稀疏向量、重排序模型），哪些模型实现了这些技术？",
+    "哪些多语言重排序（reranker）模型适合对葡萄牙语检索结果重新排序，并能在 CPU 上或通过 API 运行？"
+   ]
+  }
+ },
+ "bola_de_neve": {
+  "alternativas": {
+   "pt": "Quais são as alternativas ao modelo \"{x}\" para esse uso? Inclua modelos parecidos e concorrentes, com o nome exato.",
+   "en": "What are the alternatives to the model \"{x}\" for this use? Include similar and competing models, with exact names.",
+   "zh": "对于这个用途，模型 \"{x}\" 有哪些替代方案？请包括类似和竞争的模型，并写出准确名称。"
+  },
+  "montar_com": {
+   "pt": "Com que outros modelos ou peças \"{x}\" costuma ser usado nessa busca (reranker, versão quantizada, servidor de inferência)?",
+   "en": "Which other models or pieces is \"{x}\" usually paired with for this search (reranker, quantized version, inference server)?",
+   "zh": "在这种检索中，\"{x}\" 通常与哪些其他模型或组件搭配使用（重排序模型、量化版本、推理服务器）？"
+  },
+  "termo": {
+   "pt": "Quais modelos de embeddings implementam \"{x}\" e servem para essa busca?",
+   "en": "Which embedding models implement \"{x}\" and fit this search?",
+   "zh": "哪些嵌入模型实现了 \"{x}\"，并适合这种检索？"
+  }
+ },
+ "metades_da_divisao": [
+  {
+   "sufixo": "a",
+   "instrucao": "List only concrete models and API models (kind model or api), at most 6."
+  },
+  {
+   "sufixo": "b",
+   "instrucao": "List only families, leaderboards, techniques and rerankers (kind family, leaderboard, technique or reranker), at most 6."
+  }
+ ]
+}

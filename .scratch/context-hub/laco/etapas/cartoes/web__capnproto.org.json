@@ -1,0 +1,63 @@
+{
+ "chave": "web:capnproto.org",
+ "urls": [
+  "https://capnproto.org/",
+  "https://capnproto.org",
+  "https://capnproto.org/index.html"
+ ],
+ "tipos": [
+  "library",
+  "concept"
+ ],
+ "termos": [
+  "capnproto",
+  "capnproto c++",
+  "capnproto windows",
+  "serialization format",
+  "RPC system",
+  "serialization",
+  "RPC",
+  "Cap'n Proto",
+  "Remote Procedure Call",
+  "serialização de dados",
+  "desempenho",
+  "zero-copy",
+  "binary serialization",
+  "capnp",
+  "Cap'n Proto RPC",
+  "schema serialization",
+  "flatbuffers",
+  "IDL",
+  "data interchange",
+  "FlatBuffers",
+  "Protocol Buffers",
+  "Apache Arrow",
+  "schemas",
+  "IPC"
+ ],
+ "mencoes": 19,
+ "familias": [
+  "agnes",
+  "gemma",
+  "gpt-oss",
+  "llama",
+  "mistral",
+  "nemotron",
+  "qwen"
+ ],
+ "primeira_onda": 4,
+ "nomes": [
+  "Cap'n Proto"
+ ],
+ "resumos": [
+  "Sistema de serialização e RPC eficiente, projetado para desempenho e interoperabilidade.",
+  "A data interchange format and RPC system that can be used with ZeroMQ.",
+  "Protocolo de serialização binária eficiente para comunicação entre processos e armazenamento.",
+  "Uma linguagem de serialização de dados binários para a construção de sistemas de comunicação eficientes e escaláveis."
+ ],
+ "fonte": "site",
+ "readme_status": "ok",
+ "readme_nome": "https://capnproto.org/",
+ "readme_cortado": false,
+ "readme": "[Cap'n Proto: Introduction]\n\nDiscuss on Groups\n View on GitHub\n\nIntroduction\n\nCap’n Proto is an insanely fast data interchange format and capability-based RPC system. Think\nJSON, except binary. Or think Protocol Buffers, except faster.\nIn fact, in benchmarks, Cap’n Proto is INFINITY TIMES faster than Protocol Buffers.\n\nThis benchmark is, of course, unfair. It is only measuring the time to encode and decode a message\nin memory. Cap’n Proto gets a perfect score because there is no encoding/decoding step. The Cap’n\nProto encoding is appropriate both as a data interchange format and an in-memory representation, so\nonce your structure is built, you can simply write the bytes straight out to disk!\n\nBut doesn’t that mean the encoding is platform-specific?\n\nNO! The encoding is defined byte-for-byte independent of any platform. However, it is designed to\nbe efficiently manipulated on common modern CPUs. Data is arranged like a compiler would arrange a\nstruct – with fixed widths, fixed offsets, and proper alignment. Variable-sized elements are\nembedded as pointers. Pointers are offset-based rather than absolute so that messages are\nposition-independent. Integers use little-endian byte order because most CPUs are little-endian,\nand even big-endian CPUs usually have instructions for reading little-endian data.\n\nDoesn’t that make backwards-compatibility hard?\n\nNot at all! New fields are always added to the end of a struct (or replace padding space), so\nexisting field positions are unchanged. The recipient simply needs to do a bounds check when\nreading each field. Fields are numbered in the order in which they were added, so Cap’n Proto\nalways knows how to arrange them for backwards-compatibility.\n\nWon’t fixed-width integers, unset optional fields, and padding waste space on the wire?\n\nYes. However, since all these extra bytes are zeros, when bandwidth matters, we can apply an\nextremely fast Cap’n-Proto-specific compression scheme to remove them. Cap’n Proto calls this\n“packing” the message; it achieves similar (better, even) message sizes to protobuf encoding, and\nit’s still faster.\n\nWhen bandwidth really matters, you should apply general-purpose compression, like\nzlib or LZ4, regardless of your\nencoding format.\n\nIsn’t this all horribly insecure?\n\nNo no no! To be clear, we’re NOT just casting a buffer pointer to a struct pointer and calling it a day.\n\nCap’n Proto generates classes with accessor methods that you use to traverse the message. These accessors validate pointers before following them. If a pointer is invalid (e.g. out-of-bounds), the library can throw an exception or simply replace the value with a default / empty object (your choice).\n\nThus, Cap’n Proto checks the structural integrity of the message just like any other serialization protocol would. And, just like any other protocol, it is up to the app to check the validity of the content.\n\nCap’n Proto was built to be used in Sandstorm.io, and is now heavily used in Cloudflare Workers, two environments where security is a major concern. Cap’n Proto has undergone fuzzing and expert security review. Our response to security issues was once described by security guru Ben Laurie as “the most awesome response I’ve ever had.” (Please report all security issues to kenton@cloudflare.com.)\n\nAre there other advantages?\n\nGlad you asked!\n\nIncremental reads: It is easy to start processing a Cap’n Proto message before you have\nreceived all of it since outer objects appear entirely before inner objects (as opposed to most\nencodings, where outer objects encompass inner objects).\n\nRandom access: You can read just one field of a message without parsing the whole thing.\n\nmmap: Read a large Cap’n Proto file by memory-mapping it. The OS won’t even read in the\nparts that you don’t access.\n\nInter-language communication: Calling C++ code from, say, Java or Python tends to be painful\nor slow. With Cap’n Proto, the two languages can easily operate on the same in-memory data\nstructure.\n\nInter-process communication: Multiple processes running on the same machine can share a\nCap’n Proto message via shared memory. No need to pipe data through the kernel. Calling another\nprocess can be just as fast and easy as calling another thread.\n\nArena allocation: Manipulating Protobuf objects tends to be bogged down by memory\nallocation, unless you are very careful about object reuse. Cap’n Proto objects are always\nallocated in an “arena” or “region” style, which is faster and promotes cache locality.\n\nTiny generated code: Protobuf generates dedicated parsing and serialization code for every\nmessage type, and this code tends to be enormous. Cap’n Proto generated code is smaller by an\norder of magnitude or more. In fact, usually it’s no more than some inline accessor methods!\n\nTiny runtime library: Due to the simplicity of the Cap’n Proto format, the runtime library\ncan be much smaller.\n\nTime-traveling RPC: Cap’n Proto features an RPC system that implements time travel\nsuch that call results are returned to the client before the request even arrives at the server!\n\nWhy do you pick on Protocol Buffers so much?\n\nBecause it’s easy to pick on myself. :) I, Kenton Varda, was the primary author of Protocol Buffers\nversion 2, which is the version that Google released open source. Cap’n Proto is the result of\nyears of experience working on Protobufs, listening to user feedback, and thinking about how\nthings could be done better.\n\nNote that I no longer work for Google. Cap’n Proto is not, and never has been, affiliated with Google.\n\nOK, how do I get started?\n\nTo install Cap’n Proto, head over to the installation page. If you’d like to help\nhack on Cap’n Proto, such as by writing bindings in other languages, let us know on the\ndiscussion group. If you’d like to receive e-mail\nupdates about future releases, add yourself to the\nannouncement list.\n\nDevelop\nDiscuss\nStay Updated\nTwitter\n\nIntroduction\n\nNews\n\nInstallation\n\nSchema Language\n\nEncoding\n\nRPC Protocol\n\nThe capnp Tool\n\nC++ Serialization\n\nC++ RPC\n\nOther Languages\n\nRoad Map\n\nFAQ"
+}

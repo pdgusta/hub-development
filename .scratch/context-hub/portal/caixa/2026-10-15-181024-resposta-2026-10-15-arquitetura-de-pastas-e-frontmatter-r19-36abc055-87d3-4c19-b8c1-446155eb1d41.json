@@ -1,0 +1,69 @@
+{
+  "envio": "36abc055-87d3-4c19-b8c1-446155eb1d41",
+  "tipo": "resposta",
+  "enviada": "2026-10-15T18:10:24-03:00",
+  "alvo": {
+    "tipo": "rodada",
+    "id": "2026-10-15-arquitetura-de-pastas-e-frontmatter-r19",
+    "titulo": "O esboço da árvore, e o status comum ao lado do ciclo de cada tipo"
+  },
+  "ticket": "12",
+  "substitui": null,
+  "rodada": {
+    "id": "2026-10-15-arquitetura-de-pastas-e-frontmatter-r19",
+    "base": "4ef1fe9bc23fc22689745a690444e34eb6ce9130a66462a913b1b1c16ec4d641",
+    "titulo": "O esboço da árvore, e o status comum ao lado do ciclo de cada tipo",
+    "ticket": "12",
+    "perguntas": [
+      {
+        "id": "status-e-ciclo",
+        "titulo": "Como o status comum convive com o ciclo de cada tipo",
+        "tipo": "escolha",
+        "recomendada": [
+          "A"
+        ],
+        "opcoes": [
+          {
+            "chave": "A",
+            "texto": "Dois campos: o ciclo do tipo vai em `stage` (quem escreve preenche: aberta, respondida etc.), e o `status` comum (rascunho, em uso, superada) fica em toda nota. Nos tipos com ciclo, o verificador deriva o `status` do `stage` por uma tabela no esquema do tipo (respondida → em uso; abandonada → superada); nos outros, quem escreve preenche o `status`. O filtro \"vigente\" é o mesmo em qualquer pasta"
+          },
+          {
+            "chave": "B",
+            "texto": "Um campo só, `status`: nos tipos com ciclo, os valores do tipo; nos outros, rascunho, em uso, superada. Cada esquema marca quais dos seus valores contam como vigentes, e a busca filtra o vigente por essa marca. Menos campos, mas o filtro depende do tipo"
+          },
+          {
+            "chave": "C",
+            "texto": "Dois campos preenchidos à mão, `stage` e `status`, sem derivação: mais simples de construir, mas os dois podem se contradizer"
+          }
+        ],
+        "proposta": null
+      },
+      {
+        "id": "algo-mais",
+        "titulo": "Algo mais?",
+        "tipo": "texto",
+        "recomendada": [],
+        "opcoes": [],
+        "proposta": null
+      }
+    ]
+  },
+  "corpo_hash": "52292a0a54492d7b02e1c5542e5c95e872a1a51a1f2dbf08e4e6455ee09b52f7",
+  "corpo": {
+    "tipo": "resposta",
+    "rodada": "2026-10-15-arquitetura-de-pastas-e-frontmatter-r19",
+    "base": "4ef1fe9bc23fc22689745a690444e34eb6ce9130a66462a913b1b1c16ec4d641",
+    "respostas": {
+      "status-e-ciclo": {
+        "escolha": [
+          "A"
+        ],
+        "outra": null,
+        "comentario": null
+      },
+      "algo-mais": {
+        "texto": "Eu estou prevendo algo que vai surgir e é melhor já remediar. Em alguns arquivos podem surgir referências cruzadas e links a arquivos que são 'local: true', ou que referenciam arquivos em pastas com ponto, ou algum caso que não previ ainda. Nesses casos eu acho melhor o link ser do tipo <par_id>/<pasta_raiz>/<subpastas>, ao invés de só './<pasta_raiz>/' ou '~/<pasta_raiz>/' ou até 'C:/<pasta_raiz>/'. Tem até a opção de ser '<par_id>/C:/context-hub/...', ou sei lá. O que acha? Quais casos acha isso útil? Em que cenário seria bom usar essa forma pra links? Todos? nenhum? só quando claramente referencia pastas ou arquivos que o outro par não saberia? É um mistério kk"
+      }
+    }
+  }
+}

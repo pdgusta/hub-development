@@ -1,0 +1,55 @@
+{
+ "chave": "web:docs.rs/async-std/1.9.0/async_std",
+ "nomes": [
+  "Rust Async"
+ ],
+ "urls": [
+  "https://docs.rs/async-std/1.9.0/async_std/"
+ ],
+ "readme_cortado": false,
+ "readme": "[async_std - Rust]\n\n[−][src]Crate async_std\n\nAsync version of the Rust standard library\n\nasync-std is a foundation of portable Rust software, a set of minimal and battle-tested\nshared abstractions for the broader Rust ecosystem. It offers std types, like\nFuture and Stream, library-defined operations on language primitives,\nstandard macros, I/O and multithreading, among many other things.\n\nasync-std is available from crates.io. Once included, async-std can be accessed\nin use statements through the path async_std, as in use async_std::future.\n\nHow to read this documentation\n\nIf you already know the name of what you are looking for, the fastest way to\nfind it is to use the search\nbar at the top of the page.\n\nOtherwise, you may want to jump to one of these useful sections:\n\nasync_std::* modules\n\nAsync macros\n\nThe Async Prelude\n\nCargo.toml feature flags\n\nExamples\n\nIf this is your first time, the documentation for async-std is\nwritten to be casually perused. Clicking on interesting things should\ngenerally lead you to interesting places. Still, there are important bits\nyou don't want to miss, so read on for a tour of the async-std and\nits documentation!\n\nOnce you are familiar with the contents of async-std you may\nbegin to find the verbosity of the prose distracting. At this stage in your\ndevelopment you may want to press the [-] button near the top of the\npage to collapse it into a more skimmable view.\n\nWhile you are looking at that [-] button also notice the [src]\nbutton. Rust's API documentation comes with the source code and you are\nencouraged to read it. The async-std source is generally high\nquality and a peek behind the curtains is often enlightening.\n\nModules in this crate are organized in the same way as in std, except blocking\nfunctions have been replaced with async functions and threads have been replaced with\nlightweight tasks.\n\nYou can find more information, reading materials, and other resources here:\n\nThe async-std website\n\nThe async-std book\n\nGitHub repository\n\nList of code examples\n\nDiscord chat\n\nWhat is in the async-std documentation?\n\nFirst, async-std is divided into a number of focused\nmodules, all listed further down this page. These modules are\nthe bedrock upon which async Rust is forged, and they have mighty names\nlike async_std::os and async_std::task. Modules' documentation\ntypically includes an overview of the module along with examples, and are\na smart place to start familiarizing yourself with the library.\n\nSecond, async-std defines The Async Prelude, a small collection\nof items - mostly traits - that should be imported into every module of\nevery async crate. The traits in the prelude are pervasive, making the\nprelude documentation a good entry point to learning about the library.\n\nAnd finally, async-std exports a number of async macros, and\nlists them on this page.\n\nContributing changes to the documentation\n\nCheck out async-std's contribution guidelines here.\nThe source for this documentation can be found on GitHub.\nTo contribute changes, make sure you read the guidelines first, then submit\npull requests for your suggested changes.\n\nContributions are appreciated! If you see a part of the docs that can be\nimproved, submit a PR, or chat with us first on\nDiscord.\n\nA tour of async-std\n\nThe rest of this crate documentation is dedicated to pointing out notable\nfeatures of async-std.\n\nPlatform abstractions and I/O\n\nBesides basic data types, async-std is largely concerned with\nabstracting over differences in common platforms, most notably Windows and\nUnix derivatives.\n\nCommon types of I/O, including files, TCP, UDP, are defined in the\nio, fs, and net modules.\n\nThe task module contains async-std's task abstractions. sync\ncontains further primitive shared memory types. channel contains the channel types for message passing.\n\nTimeouts, intervals, and delays\n\nasync-std provides several methods to manipulate time:\n\ntask::sleep to wait for a duration to pass without blocking.\n\nstream::interval for emitting an event at a set interval.\n\nfuture::timeout to time-out futures if they don't resolve within a\nset interval.\n\nExamples\n\nAll examples require the \"attributes\" feature to be enabled.\nThis feature is not enabled by default because it significantly impacts\ncompile times. See task::block_on for an alternative way to start\nexecuting tasks.\n\nCall an async function from the main function:\n\nasync fn say_hello() {\n println!(\"Hello, world!\");\n}\n\n#[async_std::main]\nasync fn main() {\n say_hello().await;\n}\n\nAwait two futures concurrently, and return a tuple of their output:\n\nuse async_std::prelude::*;\n\n#[async_std::main]\nasync fn main() {\n let a = async { 1u8 };\n let b = async { 2u8 };\n assert_eq!(a.join(b).await, (1u8, 2u8))\n}\n\nCreate a UDP server that echoes back each received message to the sender:\n\nuse async_std::net::UdpSocket;\n\n#[async_std::main]\nasync fn main() -> std::io::Result<()> {\n let socket = UdpSocket::bind(\"127.0.0.1:8080\").await?;\n println!(\"Listening on {}\", socket.local_addr()?);\n\n let mut buf = vec![0u8; 1024];\n\n loop {\n let (recv, peer) = socket.recv_from(&mut buf).await?;\n let sent = socket.send_to(&buf[..recv], &peer).await?;\n println!(\"Sent {} out of {} bytes to {}\", sent, recv, peer);\n }\n}\n\nFeatures\n\nItems marked with\nunstable\nare available only when the unstable Cargo feature is enabled:\n\n[dependencies.async-std]\nversion = \"1.7.0\"\nfeatures = [\"unstable\"]\n\nItems marked with\nattributes\nare available only when the attributes Cargo feature is enabled:\n\n[dependencies.async-std]\nversion = \"1.7.0\"\nfeatures = [\"attributes\"]\n\nCompatibility with the tokio 1.0 runtime is also simultaneously possible\nusing the tokio1 Cargo feature:\n\n[dependencies.async-std]\nversion = \"1.7.0\"\nfeatures = [\"tokio1\"]\n\nCompatibility with the tokio 0.2 runtime is possible using the tokio02\nCargo feature:\n\n[dependencies.async-std]\nversion = \"1.7.0\"\nfeatures = [\"tokio02\"]\n\nCompatibility with the tokio 0.3 runtime is also simultaneously possible\nusing the tokio03 Cargo feature:\n\n[dependencies.async-std]\nversion = \"1.7.0\"\nfeatures = [\"tokio03\"]\n\nAdditionally it's possible to only use the core traits and combinators by\nonly enabling the std Cargo feature:\n\n[dependencies.async-std]\nversion = \"1.7.0\"\ndefault-features = false\nfeatures = [\"std\"]\n\nAnd to use async-std on no_std targets that only support alloc only\nenable the alloc Cargo feature:\n\n[dependencies.async-std]\nversion = \"1.7.0\"\ndefault-features = false\nfeatures = [\"alloc\"]\n\nRuntime configuration\n\nSeveral environment variables are available to tune the async-std\nruntime:\n\nASYNC_STD_THREAD_COUNT: The number of threads that the\nasync-std runtime will start. By default, this is one per logical\ncpu as reported by the num_cpus crate, which may be\ndifferent than the number of physical cpus. Async-std will panic\nif this is set to any value other than a positive integer.\n\nASYNC_STD_THREAD_NAME: The name that async-std's runtime\nthreads report to the operating system. The default value is\n\"async-std/runtime\".\n\nModules\n\nchannel\nChannels\n\nfs\nFilesystem manipulation operations.\n\nfuture\nAsynchronous values.\n\nio\nTraits, helpers, and type definitions for core I/O functionality.\n\nnet\nNetworking primitives for TCP/UDP communication.\n\nos\nOS-specific extensions.\n\npath\nCross-platform path manipulation.\n\npinunstable\nTypes that pin data to its location in memory.\n\nprelude\nThe async prelude.\n\nprocessunstable\nA module for working with processes.\n\nstream\nComposable asynchronous iteration.\n\nsync\nSynchronization primitives.\n\ntask\nTypes and traits for working with asynchronous tasks.\n\nMacros\n\neprintunstable\nPrints to the standard error.\n\neprintlnunstable\nPrints to the standard error, with a newline.\n\nprintunstable\nPrints to the standard output.\n\nprintlnunstable\nPrints to the standard output, with a newline.\n\ntask_local\nDeclares task-local values.\n\nwrite\nWrites formatted data into a buffer.\n\nwriteln\nWrite formatted data into a buffer, with a newline appended.\n\nAttribute Macros\n\nmainattributes\nEnables an async main function.\n\ntestattributes\nEnables an async test function.",
+ "fonte": "site",
+ "respostas": [
+  {
+   "por": "north-mini-code",
+   "resposta": {
+    "serve": "none",
+    "role": "",
+    "place": [
+     "n/a"
+    ],
+    "mechanism": [
+     "n/a"
+    ],
+    "mcp": "unknown",
+    "windows": "yes",
+    "portuguese": "no",
+    "license": "unknown",
+    "maturity": "unknown",
+    "doubt": false,
+    "evidence": "Async version of the Rust standard library; abstracting over differences in common platforms, most notably Windows and Unix derivatives.; The async-std website"
+   }
+  },
+  {
+   "por": "mistral-code-fim",
+   "resposta": {
+    "serve": "stack",
+    "role": "async runtime for agents",
+    "place": [
+     "disk",
+     "inside_db_mcp"
+    ],
+    "mechanism": [
+     "other"
+    ],
+    "mcp": "unknown",
+    "windows": "yes",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "stable",
+    "doubt": false,
+    "evidence": "async-std is a foundation of portable Rust software, offers std types like Future and Stream, and supports Windows."
+   }
+  }
+ ]
+}

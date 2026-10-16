@@ -1,0 +1,25 @@
+{
+ "chave": "conceito:spacy-+-couchdb",
+ "modelo": "ministral-3-8b",
+ "ts": "2026-10-13T20:19:25Z",
+ "resposta": {
+  "concept_en": "metadata_filtering_with_spacy",
+  "serve": "stack",
+  "role": "processes CouchDB docs via spaCy for NLP-based metadata filtering (tags, language)",
+  "mechanism": [
+   "full_text",
+   "other"
+  ],
+  "place": [
+   "inside_db_mcp"
+  ],
+  "tools_on_card": [
+   "spaCy",
+   "CouchDB",
+   "MCP"
+  ],
+  "doubt": true,
+  "evidence": "spaCy para procesar frontmatter/texto CouchDB; filtrar por metadatos (`tags`, `language`). Sin detalles técnicos claros."
+ },
+ "via": "freellmapi"
+}

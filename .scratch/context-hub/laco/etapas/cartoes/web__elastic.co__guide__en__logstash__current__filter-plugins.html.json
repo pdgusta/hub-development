@@ -1,0 +1,30 @@
+{
+ "chave": "web:elastic.co/guide/en/logstash/current/filter-plugins.html",
+ "urls": [
+  "https://www.elastic.co/guide/en/logstash/current/filter-plugins.html"
+ ],
+ "tipos": [
+  "library"
+ ],
+ "termos": [
+  "logstash filter",
+  "data transformation",
+  "grok"
+ ],
+ "mencoes": 1,
+ "familias": [
+  "mistral"
+ ],
+ "primeira_onda": 3,
+ "nomes": [
+  "Logstash Filter Plugins"
+ ],
+ "resumos": [
+  "Plugins for transforming and enriching data, including text processing and frontmatter parsing."
+ ],
+ "fonte": "site",
+ "readme_status": "ok",
+ "readme_nome": "https://www.elastic.co/guide/en/logstash/current/filter-plugins.html",
+ "readme_cortado": false,
+ "readme": "[Filter plugins | Logstash Plugins]\n\nDocs\n\n /\n\n Reference\n\n /\n\n Ingestion tools\n\n /\n\n Logstash Plugins\n\nFilter plugins\n\nA filter plugin performs intermediary processing on an event. Filters are often applied conditionally depending on the\ncharacteristics of the event.\n\nThe following filter plugins are available below. For a list of Elastic supported plugins, please consult the Support Matrix.\n\nPlugin\nDescription\nGithub repository\n\nage\nCalculates the age of an event by subtracting the event timestamp from the current timestamp\nlogstash-filter-age\n\naggregate\nAggregates information from several events originating with a single task\nlogstash-filter-aggregate\n\nalter\nPerforms general alterations to fields that the mutate filter does not handle\nlogstash-filter-alter\n\nbytes\nParses string representations of computer storage sizes, such as \"123 MB\" or \"5.6gb\", into their numeric value in bytes\nlogstash-filter-bytes\n\ncidr\nChecks IP addresses against a list of network blocks\nlogstash-filter-cidr\n\ncipher\nApplies or removes a cipher to an event\nlogstash-filter-cipher\n\nclone\nDuplicates events\nlogstash-filter-clone\n\ncsv\nParses comma-separated value data into individual fields\nlogstash-filter-csv\n\ndate\nParses dates from fields to use as the Logstash timestamp for an event\nlogstash-filter-date\n\nde_dot\nComputationally expensive filter that removes dots from a field name\nlogstash-filter-de_dot\n\ndissect\nExtracts unstructured event data into fields using delimiters\nlogstash-filter-dissect\n\ndns\nPerforms a standard or reverse DNS lookup\nlogstash-filter-dns\n\ndrop\nDrops all events\nlogstash-filter-drop\n\nelapsed\nCalculates the elapsed time between a pair of events\nlogstash-filter-elapsed\n\nelastic_integration\nProvides additional Logstash processing on data from Elastic integrations\nlogstash-filter-elastic_integration\n\nelasticsearch\nCopies fields from previous log events in Elasticsearch to current events\nlogstash-filter-elasticsearch\n\nenvironment\nStores environment variables as metadata sub-fields\nlogstash-filter-environment\n\nextractnumbers\nExtracts numbers from a string\nlogstash-filter-extractnumbers\n\nfingerprint\nFingerprints fields by replacing values with a consistent hash\nlogstash-filter-fingerprint\n\ngeoip\nAdds geographical information about an IP address\nlogstash-filter-geoip\n\ngrok\nParses unstructured event data into fields\nlogstash-filter-grok\n\nhttp\nProvides integration with external web services/REST APIs\nlogstash-filter-http\n\ni18n\nRemoves special characters from a field\nlogstash-filter-i18n\n\njava_uuid\nGenerates a UUID and adds it to each processed event\ncore plugin\n\njdbc_streaming\nEnrich events with your database data\nlogstash-integration-jdbc\n\njson\nParses JSON events\nlogstash-filter-json\n\njson_encode\nSerializes a field to JSON\nlogstash-filter-json_encode\n\nkv\nParses key-value pairs\nlogstash-filter-kv\n\nmemcached\nProvides integration with external data in Memcached\nlogstash-filter-memcached\n\nmetricize\nTakes complex events containing a number of metrics and splits these up into multiple events, each holding a single metric\nlogstash-filter-metricize\n\nmetrics\nAggregates metrics\nlogstash-filter-metrics\n\nmutate\nPerforms mutations on fields\nlogstash-filter-mutate\n\nprune\nPrunes event data based on a list of fields to blacklist or whitelist\nlogstash-filter-prune\n\nrange\nChecks that specified fields stay within given size or length limits\nlogstash-filter-range\n\nruby\nExecutes arbitrary Ruby code\nlogstash-filter-ruby\n\nsleep\nSleeps for a specified time span\nlogstash-filter-sleep\n\nsplit\nSplits multi-line messages, strings, or arrays into distinct events\nlogstash-filter-split\n\nsyslog_pri\nParses the PRI (priority) field of a syslog message\nlogstash-filter-syslog_pri\n\nthreats_classifier\nEnriches security logs with information about the attacker’s intent\nlogstash-filter-threats_classifier\n\nthrottle\nThrottles the number of events\nlogstash-filter-throttle\n\ntld\nReplaces the contents of the default message field with whatever you specify in the configuration\nlogstash-filter-tld\n\ntranslate\nReplaces field contents based on a hash or YAML file\nlogstash-filter-translate\n\ntruncate\nTruncates fields longer than a given length\nlogstash-filter-truncate\n\nurldecode\nDecodes URL-encoded fields\nlogstash-filter-urldecode\n\nuseragent\nParses user agent strings into fields\nlogstash-filter-useragent\n\nuuid\nAdds a UUID to events\nlogstash-filter-uuid\n\nwurfl_device_detection\nEnriches logs with device information such as brand, model, OS\nlogstash-filter-wurfl_device_detection\n\nxml\nParses XML into fields\nlogstash-filter-xml"
+}

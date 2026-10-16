@@ -1,0 +1,64 @@
+{
+  "envio": "5fb4bc42-ff3b-4229-9597-c038d6d583e4",
+  "tipo": "resposta",
+  "enviada": "2026-10-16T19:06:27-03:00",
+  "alvo": {
+    "tipo": "rodada",
+    "id": "2026-10-16-onde-mora-o-codigo-do-hub",
+    "titulo": "Onde mora o código do próprio hub"
+  },
+  "ticket": "16",
+  "substitui": null,
+  "rodada": {
+    "id": "2026-10-16-onde-mora-o-codigo-do-hub",
+    "base": "60011639aa5df95befb046ccd0d78b0963496636305c4d8688c50bed7fa34279",
+    "titulo": "Onde mora o código do próprio hub",
+    "ticket": "16",
+    "perguntas": [
+      {
+        "id": "codigo-do-hub",
+        "titulo": "Onde mora o código do hub",
+        "tipo": "escolha",
+        "recomendada": [
+          "A"
+        ],
+        "opcoes": [
+          {
+            "chave": "A",
+            "texto": "Cada peça é uma skill com scripts em `agents/skills/<peça>/` (a busca, a vigia, as guardas, o kit de par, a manutenção), com o seu código, os seus testes e o fragmento de hook, como o spec já faz com a vigia e a \"nova iniciativa\"; não muda o que foi decidido para a raiz nem para `agents/` (e a pasta global de skills continua levando só as de uso geral)"
+          },
+          {
+            "chave": "B",
+            "texto": "Abrir pastas de oficina novas dentro de `agents/` (`agents/kit/`, `agents/hooks/`, `agents/mods/`, `agents/test/`): código separado das skills, mas amplia o conteúdo de `agents/` decidido"
+          },
+          {
+            "chave": "C",
+            "texto": "Pastas de código na raiz do repositório (`kit/`, `hooks/`, `mods/`, `busca/`), como o spec antigo: muda a raiz decidida"
+          }
+        ],
+        "proposta": null
+      },
+      {
+        "id": "algo-mais",
+        "titulo": "Algo mais?",
+        "tipo": "texto",
+        "recomendada": [],
+        "opcoes": [],
+        "proposta": null
+      }
+    ]
+  },
+  "corpo_hash": "2ba9ecf97f75e89079dab02ccb9dc537341d7b6314b56d895755d65545cd7179",
+  "corpo": {
+    "tipo": "resposta",
+    "rodada": "2026-10-16-onde-mora-o-codigo-do-hub",
+    "base": "60011639aa5df95befb046ccd0d78b0963496636305c4d8688c50bed7fa34279",
+    "respostas": {
+      "codigo-do-hub": {
+        "escolha": [],
+        "outra": null,
+        "comentario": "qual a diferença entre isso tudo virar skill e ficar só no agents/ ?"
+      }
+    }
+  }
+}

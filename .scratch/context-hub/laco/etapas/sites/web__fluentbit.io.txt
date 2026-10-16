@@ -1,0 +1,121 @@
+Deployed Over Fifteen Billion Times
+
+An End to End
+Observability Pipeline
+
+Fluent Bit is a super fast, lightweight, and highly scalable logging, metrics, and traces processor and forwarder. It is the preferred choice for cloud and containerized environments.
+
+ TRY NOW
+
+ DOWNLOAD NOW
+
+Latest stable release
+
+ v5.1.3
+ Released on September 30, 2026
+ Read the notes »
+
+pipeline:
+ inputs:
+ - name: tail
+ path: /var/log/system.log
+ tag: app.logs
+
+ processors:
+ - name: opentelemetry_envelope
+ - name: record_modifier
+ record:
+ service.name: checkout
+
+ outputs:
+ - name: opentelemetry
+ match: *
+ host: otel-gateway.monitoring.svc
+ port: 4318
+ logs_uri: /v1/logs
+
+OpenTelemetry
+
+OpenTelemetry-native, built for real-world pipelines
+
+Fluent Bit provides native OpenTelemetry support through OTLP ingestion and delivery, while operating efficiently across hybrid environments. As a high-performance data plane, it moves, processes, and routes telemetry data at scale across logs, metrics, and traces.
+
+ Built for practical routing, enrichment, and delivery across modern environments
+
+Native OTLP ingestion and delivery for modern telemetry pipelines
+
+Efficient routing across hybrid, cloud, and on-prem environments
+
+High-performance processing across logs, metrics, and traces
+
+Built-in enrichment, buffering, and stream processing capabilities
+
+Read how it works
+
+Trusted by some of the world’s largest and most complex organizations
+
+Designed with performance in mind
+
+ A robust, lightweight, and portable architecture for high throughput with low CPU and memory usage from any data source to any destination. 
+
+Scalable
+
+Proven across distributed cloud and container environments. Highly available with I/O handlers to store data for disaster recovery.
+
+> 1pb data throughput across thousands of sources and destinations daily
+
+Flexible
+
+Granular management of data parsing and routing. Filtering and enrichment to optimize security and minimize cost.
+
+> 1 Billion sources managed by Fluent Bit - from IoT Devices to Windows and Linux servers.
+
+Efficient
+
+Lightweight, asynchronous design optimizes resource usage: CPU, memory, disk I/O, network. No more OOM errors!
+
+~ 450kb minimal footprint maximizes asset support. Zero external dependencies.
+
+Extensible
+
+Integration with all your technology - cloud native services, containers, streaming processors, and data backends.
+
+Over 100 built-in plugins for inputs, filters, analytics tools and outputs.
+
+ Star 
+
+Fluent Bit is a CNCF graduated project under the Fluent organization. 
+
+We are part of a large open source community. No vendor lock-in. 
+
+The Fluent Bit Advantage
+
+ Fluent Bit is purpose built for high scale data observability in any dynamic, distributed environment 
+
+Event-Driven Architecture
+
+Fully event driven design, leverages the operating system API for performance and reliability. All operations to collect and deliver data are asynchronous
+
+Dynamic Routing
+
+Optimized data parsing and routing to improve security and reduce overall cost. Distribute data to multiple destinations with a zero copy strategy
+
+Flexible Configuration
+
+Simple, granular controls enable detailed orchestration and management of data collection and transfer across your entire ecosystem
+
+Robust I/O Handler
+
+An abstracted I/O layer supports high-scale read/write operations and enables optimized data routing and support for stream processing
+
+Upstream Manager
+
+Removes challenges with handling TCP connections to upstream data sources. Simplifies connection process, manages timeout/network exceptions and Keepalived states
+
+Security & TLS
+
+When delivering data to destinations, output connectors inherit full TLS capabilities in an abstracted way. Add your certificates as required.
+
+Stay Updated
+
+Leave your email and get connected with our lastest news, relases and more.

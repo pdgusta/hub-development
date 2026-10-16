@@ -1,0 +1,31 @@
+{
+ "chave": "gh:modelcontextprotocol/servers",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T21:22:44Z",
+ "resultado": "corrige",
+ "conferencia": {
+  "resultado": "corrige",
+  "final": {
+   "serve": "stack",
+   "role": "Reference MCP servers (filesystem, git, memory, fetch) as examples and starting points",
+   "place": [
+    "disk"
+   ],
+   "mechanism": [
+    "n/a"
+   ],
+   "mcp": "yes",
+   "windows": "yes",
+   "portuguese": "unknown",
+   "license": "Apache-2.0 (new contributions) + MIT (existing)",
+   "maturity": "unknown",
+   "doubt": false,
+   "evidence": "reference implementations ... not production-ready; On Windows, wrap npx with cmd /c"
+  },
+  "o_que_mudou": [
+   "portuguese: no -> unknown, README does not say",
+   "license: Apache-2.0 -> Apache-2.0 + MIT, README states both"
+  ],
+  "nota": "Servidores de referência (filesystem, memory, git) servem de modelo para o servidor MCP do hub; README avisa que não são para produção."
+ }
+}

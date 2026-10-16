@@ -1,0 +1,47 @@
+<!doctype html><meta charset="utf-8"><title>harness cenarios</title>
+<body><iframe id="p" src="/conceitos/mistura/mistura.html" style="width:1280px;height:1000px;border:0"></iframe><pre id="out">rodando</pre>
+<script>
+var q=new URLSearchParams(location.search),W=q.get('w')||'1280';document.getElementById('p').style.width=W+'px';
+var fr=document.getElementById('p');
+function esp(ms){return new Promise(function(r){setTimeout(r,ms)})}
+function sobre(d){var n=0;var ms=[].slice.call(d.querySelectorAll('.marca-passo'));var ts=[].slice.call(d.querySelectorAll('svg.cidade text')).filter(function(t){return !t.closest('.marca-passo')});ms.forEach(function(m){var a=m.getBoundingClientRect();ts.forEach(function(t){var b=t.getBoundingClientRect();if(b.width&&a.left<b.right&&a.right>b.left&&a.top<b.bottom&&a.bottom>b.top)n++})});return n}
+function rot(e){return e.getAttribute('data-item')||e.getAttribute('data-ligacao')||e.getAttribute('data-grupo')||e.tagName}
+fr.onload=async function(){
+ var out={largura:W,cenarios:[]};
+ try{
+ var d=fr.contentDocument,w=fr.contentWindow;await esp(300);
+ var bots=[].slice.call(d.querySelectorAll('[data-cen]'));
+ out.botoes=bots.length;
+ for(var b of bots){
+  var id=b.getAttribute('data-cen'),c={id:id,nome:b.textContent.trim(),passos:[]};
+  b.click();await esp(30);
+  var N=parseInt((d.getElementById('cen-num').textContent.match(/de (\d+)/)||[0,0])[1]);c.N=N;
+  c.aria_pressed=b.getAttribute('aria-pressed');c.foco_apos_clicar=d.activeElement&&d.activeElement.id;
+  for(var n=1;n<=N;n++){
+   var ac=[].slice.call(d.querySelectorAll('.aceso')),ag=[].slice.call(d.querySelectorAll('.agora')).filter(function(e){return e.closest('svg')&&e.classList.contains('aceso')});
+   var novos=[].slice.call(d.querySelectorAll('[data-cenario]')).filter(function(e){return (' '+e.getAttribute('data-cenario')+' ').indexOf(' '+id+':'+n+' ')>=0});
+   c.passos.push({n:n,texto:d.getElementById('cen-txt').textContent,rotulo:d.getElementById('cen-num').textContent,
+     marcados_no_passo:novos.map(rot),acesos_total:ac.length,agora:ag.map(rot),marcas:d.querySelectorAll('.marca-passo').length,
+     prox_desabilitado:d.getElementById('cen-prox').disabled,ant_desabilitado:d.getElementById('cen-ant').disabled,
+     painel_oculto:d.getElementById('cen-passo').hidden,corpo_cen:d.body.classList.contains('cen'),falha_no_passo:/falha ou em aberto/.test(d.getElementById('cen-num').textContent),acesos_falha:d.querySelectorAll('.falha').length,marcas_falha:d.querySelectorAll('.marca-passo.falha').length,sobreposicao_marca_texto:sobre(d)});
+   if(n<N){d.getElementById('cen-prox').click();await esp(20)}
+  }
+  // voltar com a seta esquerda
+  var antes=N;w.dispatchEvent(new w.KeyboardEvent('keydown',{key:'ArrowLeft',bubbles:true}));d.dispatchEvent(new w.KeyboardEvent('keydown',{key:'ArrowLeft',bubbles:true}));await esp(20);
+  c.seta_esquerda_volta_passo=d.getElementById('cen-num').textContent;
+  d.getElementById('cen-sair').click();await esp(20);
+  c.depois_de_sair={acesos:d.querySelectorAll('.aceso').length,agora:d.querySelectorAll('.agora').length,marcas:d.querySelectorAll('.marca-passo').length,corpo_cen:d.body.classList.contains('cen'),painel_oculto:d.getElementById('cen-passo').hidden,foco_voltou_ao_botao:d.activeElement===b};
+  // esc
+  b.click();await esp(20);d.dispatchEvent(new w.KeyboardEvent('keydown',{key:'Escape',bubbles:true}));await esp(20);
+  c.depois_de_esc={acesos:d.querySelectorAll('.aceso').length,corpo_cen:d.body.classList.contains('cen'),painel_oculto:d.getElementById('cen-passo').hidden};
+  out.cenarios.push(c);
+ }
+ // clicar de novo no mesmo botao liga e desliga
+ var b0=bots[0];b0.click();await esp(20);d.getElementById('cen-prox').click();await esp(20);b0.click();await esp(20);out.clicar_de_novo_no_mesmo_botao={cen:d.body.classList.contains('cen'),texto:d.getElementById('cen-num').textContent};d.getElementById('cen-sair').click();
+ // dados marcados
+ out.data_cenario_total=d.querySelectorAll('[data-cenario]').length;
+ var ids={};d.querySelectorAll('[data-cenario]').forEach(function(e){e.getAttribute('data-cenario').split(' ').forEach(function(t){var m=t.split(':')[0];ids[m]=(ids[m]||0)+1})});out.marcados_por_cenario=ids;
+ }catch(e){out.erro=String(e)}
+ document.getElementById('out').textContent=JSON.stringify(out);document.title='pronto';
+};
+</script>

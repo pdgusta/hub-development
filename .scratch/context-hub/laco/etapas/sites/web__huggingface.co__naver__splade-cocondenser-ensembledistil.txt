@@ -1,0 +1,108 @@
+SPLADE CoCondenser EnsembleDistil
+
+SPLADE model for passage retrieval. For additional details, please visit:
+
+paper: https://arxiv.org/abs/2205.04733
+
+code: https://github.com/naver/splade
+
+MRR@10 (MS MARCO dev)
+R@1000 (MS MARCO dev)
+
+splade-cocondenser-ensembledistil
+38.3
+98.3
+
+ Model Details
+
+This is a SPLADE Sparse Encoder model. It maps sentences & paragraphs to a 30522-dimensional sparse vector space and can be used for semantic search and sparse retrieval.
+
+ Model Description
+
+Model Type: SPLADE Sparse Encoder
+
+Base model: Luyu/co-condenser-marco
+
+Maximum Sequence Length: 512 tokens (256 for evaluation reproduction)
+
+Output Dimensionality: 30522 dimensions
+
+Similarity Function: Dot Product
+
+ Full Model Architecture
+
+SparseEncoder(
+ (0): MLMTransformer({'max_seq_length': 512, 'do_lower_case': False}) with MLMTransformer model: BertForMaskedLM 
+ (1): SpladePooling({'pooling_strategy': 'max', 'activation_function': 'relu', 'word_embedding_dimension': 30522})
+)
+
+ Usage
+
+ Direct Usage (Sentence Transformers)
+
+First install the Sentence Transformers library:
+
+pip install -U sentence-transformers
+
+Then you can load this model and run inference.
+
+from sentence_transformers import SparseEncoder
+
+# Download from the 🤗 Hub
+model = SparseEncoder("naver/splade-cocondenser-ensembledistil")
+# Run inference
+queries = ["what causes aging fast"]
+documents = [
+ "UV-A light, specifically, is what mainly causes tanning, skin aging, and cataracts, UV-B causes sunburn, skin aging and skin cancer, and UV-C is the strongest, and therefore most effective at killing microorganisms. Again â\x80\x93 single words and multiple bullets.",
+ "Answers from Ronald Petersen, M.D. Yes, Alzheimer's disease usually worsens slowly. But its speed of progression varies, depending on a person's genetic makeup, environmental factors, age at diagnosis and other medical conditions. Still, anyone diagnosed with Alzheimer's whose symptoms seem to be progressing quickly â\x80\x94 or who experiences a sudden decline â\x80\x94 should see his or her doctor.",
+ "Bell's palsy and Extreme tiredness and Extreme fatigue (2 causes) Bell's palsy and Extreme tiredness and Hepatitis (2 causes) Bell's palsy and Extreme tiredness and Liver pain (2 causes) Bell's palsy and Extreme tiredness and Lymph node swelling in children (2 causes)",
+]
+query_embeddings = model.encode_query(queries)
+document_embeddings = model.encode_document(documents)
+print(query_embeddings.shape, document_embeddings.shape)
+# [1, 30522] [3, 30522]
+
+# Get the similarity scores for the embeddings
+similarities = model.similarity(query_embeddings, document_embeddings)
+print(similarities)
+# tensor([[ 9.9933, 10.8691, 3.4265]])
+
+ Citation
+
+If you use our checkpoint, please cite our work:
+
+@misc{https://doi.org/10.48550/arxiv.2205.04733,
+ doi = {10.48550/ARXIV.2205.04733},
+ url = {https://arxiv.org/abs/2205.04733},
+ author = {Formal, Thibault and Lassance, Carlos and Piwowarski, Benjamin and Clinchant, Stéphane},
+ keywords = {Information Retrieval (cs.IR), Computation and Language (cs.CL), FOS: Computer and information sciences, FOS: Computer and information sciences},
+ title = {From Distillation to Hard Negative Sampling: Making Sparse Neural IR Models More Effective},
+ publisher = {arXiv},
+ year = {2022},
+ copyright = {Creative Commons Attribution Non Commercial Share Alike 4.0 International}
+}
+
+Downloads last month 258,355 
+
+ Model tree for naver/splade-cocondenser-ensembledistil 
+
+Finetunes 
+ 5 models
+
+Merges 
+ 1 model
+
+Quantizations 
+ 2 models 
+
+ Dataset used to train naver/splade-cocondenser-ensembledistil 
+
+ Spaces using naver/splade-cocondenser-ensembledistil 24 
+
+ Collection including naver/splade-cocondenser-ensembledistil 
+
+Our SPLADE models • 4 items • Updated Jun 28, 2024 • 8 
+
+ Paper for naver/splade-cocondenser-ensembledistil 
+
+ Paper • 2205.04733 • Published May 10, 2022 • 3

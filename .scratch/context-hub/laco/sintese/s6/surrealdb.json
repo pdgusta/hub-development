@@ -1,0 +1,60 @@
+{
+ "nome": "SurrealDB",
+ "nome_canonico": "SurrealDB",
+ "chave": "web:surrealdb.com",
+ "url": "https://surrealdb.com",
+ "serve": "stack",
+ "area": "storage_db",
+ "identidade": "ok",
+ "windows": "yes: instalação nativa por script PowerShell, Chocolatey ou Scoop; executável único; pode exigir VC++ Redistributable.",
+ "mcp": "yes: servidor MCP citado no README ('MCP (Model Context Protocol) server for LLM and AI-agent integration'); transporte nao_verificado.",
+ "portugues": "nao_verificado",
+ "markdown_frontmatter": "nao_aplicavel",
+ "atualizacao": "nao_aplicavel",
+ "embeddings_endpoint": "nao_verificado (tem busca vetorial; origem dos embeddings não conferida)",
+ "recursos": "README: 'low memory usage and cpu requirements'; sem números; a doc de instalação no Windows não dá requisitos.",
+ "licenca": "BSL 1.1 no motor; SDKs Apache-2.0/MIT",
+ "ultimo_release": "v3.3.0, 28 Sep (ano não exibido; Latest); v3.2.5 em 06 Oct",
+ "atividade": "4.759 commits; data do último commit nao_verificado",
+ "maturidade": "stable",
+ "encaixe": "Alternativa ao CouchDB como banco único (FTS, vetor, grafo, MCP) por máquina. Impedimento: abandona a replicação mestre-mestre do CouchDB/LiveSync, que não é equivalente; BSL.",
+ "evidencias": [
+  {
+   "campo": "windows",
+   "url": "https://surrealdb.com/docs/surrealdb/installation/windows",
+   "citacao": "iwr https://windows.surrealdb.com -useb | iex"
+  },
+  {
+   "campo": "windows",
+   "url": "https://surrealdb.com/docs/surrealdb/installation/windows",
+   "citacao": "packaged as a single executable file"
+  },
+  {
+   "campo": "mcp",
+   "url": "https://github.com/surrealdb/surrealdb",
+   "citacao": "MCP (Model Context Protocol) server for LLM and AI-agent integration"
+  },
+  {
+   "campo": "licenca",
+   "url": "https://github.com/surrealdb/surrealdb",
+   "citacao": "Business Source License 1.1"
+  },
+  {
+   "campo": "ultimo_release",
+   "url": "https://github.com/surrealdb/surrealdb/releases",
+   "citacao": "v3.3.0 ... 28 Sep (Latest)"
+  },
+  {
+   "campo": "recursos",
+   "url": "https://github.com/surrealdb/surrealdb",
+   "citacao": "low memory usage and cpu requirements"
+  }
+ ],
+ "nao_verificado": [
+  "portugues",
+  "transporte MCP",
+  "embeddings",
+  "data do último commit",
+  "replicação entre nós equivalente a mestre-mestre"
+ ]
+}

@@ -1,0 +1,36 @@
+{
+ "chave": "web:sourcegraph.com",
+ "nomes": [
+  "Sourcegraph",
+  "Sourcegraph Semantic Code Search"
+ ],
+ "urls": [
+  "https://sourcegraph.com/",
+  "https://sourcegraph.com"
+ ],
+ "readme_cortado": false,
+ "readme": "[Code Understanding, Oversight and Evolution | Sourcegraph]\n\nThe context layer for your entire codebase \nEmpower agents and developers to make faster decisions, improve AI-generated code, and\n execute code changes at scale. Get a demo → \n\nNow generally available \nIntroducing Agentic Batch Changes \nThe frontier agent for code changes at scale. Learn more → \n\nTrusted by 200+ enterprise engineering teams \n\nThe problem \n\nA tidal wave of code is coming.\n Code is growing faster than teams can understand or control it. \n\nAgents see only fragments of the enterprise codebase, rebuilding context for each task. As agent adoption grows, that blind spot becomes inconsistency, missed changes, and risk at scale. This is where engineering teams lose control. \n\nThe solution \n\nTake back control with complete codebase context \nSourcegraph indexes all of your repositories across the entire codebase, intelligently\n empowering agents with full context, driving improved outcomes. Execute the same task with dramatically different results. \n\n Coding AgentAgent \n\n Read models/user.go \n\nI'll add a Role field to the User struct and update the store methods.| I'll add a Role field to the User struct and update the store methods. \n\n Edit models/user.go — added Role string field\n\n Edit database/user_store.go — updated Create/Update\n\nDone! I've added: Done! I've added: \nRole field to the User struct Role field to the User struct\nUpdated Create and Update to persist the role Updated Create and Update to persist the role\nAdded a GetByRole query method Added a GetByRole query method \nYou'll want to add a migration for the new column and update your auth checks. \n\n What the agent missed \n Auth middleware — no role check, any user can access admin routes\n API response DTO — role never returned to clients\n Audit logging — role changes not tracked, no compliance trail\n /admin frontend routes — no guard, UI still accessible to all\n Invite flow — new users created without a default role\n 4 integration tests — assert on user shape, will break \n\n Coding AgentAgent + Sourcegraph MCP sg mcp \n\n sg_keyword_search \"User struct\" across 2,847 repositories \n\n Found 31 files referencing User across 7 layers \nmodels/user.go\nmiddleware/auth.go\napi/dto/user_response.go\nroutes/admin/guard.ts \n+27 more files\n\nThis is a cross-cutting change. Here's my plan:| This is a cross-cutting change. Here's my plan: \n\n Plan 8 steps \n\n1. DB migration 2. Model 3. Auth middleware 4. API DTO 5. Audit logging 6. Invite flow 7. Frontend 8. Tests \n\n Edit 12 files across 7 layers \n\nComplete. All layers updated, tests passing. Full diff ready for review.| Complete. All layers updated, tests passing. Full diff ready for review. \n\n Nothing missed \n Auth middleware API response DTO Audit logging Frontend routes Invite flow Integration tests \n\nStripe makes their fleet of internal AI agents more effective with the Sourcegraph MCP server Read more ↗ \n\n\"Minions are connected to MCP… this is how they gather context: internal docs, ticket details, build statuses, and code intelligence via Sourcegraph search.\" \n\n Sourcegraph \nUnderstand.Oversee.Evolve. \nThe platform that gives you control of your codebase. \n\nCode understanding. Understand your codebase, completely. Agents are only as good as the context they receive. Sourcegraph\n gives them full codebase intelligence. \n\nDeep Search. Ask complex questions in natural language. Get grounded answers with citations. Used by\n engineering, support, and go-to market teams. \n\nHow are versioned docs deployed to sourcegraph.com? \nWill Dollman, Security Engineer\n\nHow do we handle database migrations and schema changes across services? \nErik Seliger, Software Engineer\n\nWhat design tokens and color variables are used across our UI components? \nTaiyab Raja, Product Designer\n\nIs there a way to limit or allocate searches on an individual or team level for Deep Search? \nAshley Singh, Account Executive \n\nMCP Server. Make every token count. Give agents complete, SCIP-powered context to produce reliable\n results with fewer retries and lower inference spend. \n\nCode Search. Search your entire codebase with exact, deterministic, and exhaustive results. Trusted by\n enterprise teams for over a decade. \n\nCode oversight. Keep up with what's changing. Understand system-wide impact before changes ship. Track patterns, monitor\n risk, and stay ahead of issues as code evolves. \n\nCode Insights. Track migrations, adoption, and risk across your codebase over time. \n\nCode Monitoring. Alert agents and teams when code changes. \n\nLiving Documentation. A continuously updated knowledge base of your codebase. \n\nCodebase evolution. Execute changes safely and at scale. Making one change is easy. Making it everywhere, correctly, is not. \n\n New batch change \n› \n\nOnboardingModernizationCode healthSecurity Run \n\nAgentic Batch Changes. AI agent for large-scale code changes. Migrate, modernize, and remediate across every repository\n with full control. \n\nBuilt for Big Code \nTrusted. Scalable. Enterprise-ready. \n\nSOC2 Type II + ISO27001 Compliance. Your code and data stay secure.\n\nZero data retention. Your LLM inference is never stored beyond what's required and never shared with third parties.\n\nBuilt to scale. Handles the world's largest monorepos and multi-repo architectures.\n\nEnterprise authentication. SSO (SAML, OpenID Connect, OAuth), SCIM provisioning and lifecycle management, and RBAC for secure, centralized authentication.\n\nDedicated support. Account Managers + Support Engineers provide dedicated help. \n\nGuide \nThe Sourcegraph guide to surviving Big Code \nDiscover 100 ways to understand, oversee, and evolve large codebases. This guide explores practical ways for navigating Big Code and keeping your team and agents in control. Download guide \n\nTake control of your codebase \n\nUnderstand it. Oversee it. Evolve it with confidence at Big Code scale. Get a demo → \n✕ \n\nCodeScaleBench Report \nLearn how Sourcegraph makes agents faster, cheaper, and more accurate. Download →",
+ "fonte": "site",
+ "respostas": [
+  {
+   "por": "claude-haiku-5-5",
+   "resposta": {
+    "serve": "search",
+    "role": "Exact keyword code search with an MCP server for agents over repositories",
+    "place": [
+     "network_service"
+    ],
+    "mechanism": [
+     "full_text"
+    ],
+    "mcp": "yes",
+    "windows": "unknown",
+    "portuguese": "no",
+    "license": "unknown",
+    "maturity": "stable",
+    "doubt": true,
+    "evidence": "Code Search. Search your entire codebase with exact, deterministic, and exhaustive results. MCP Server. Make every token count."
+   }
+  }
+ ]
+}

@@ -1,0 +1,46 @@
+{
+ "chave": "web:spark.apache.org/docs/latest/api/python",
+ "urls": [
+  "https://spark.apache.org/docs/latest/api/python/",
+  "https://spark.apache.org/docs/latest/api/python/getting_started/quickstart.html"
+ ],
+ "tipos": [
+  "library",
+  "tool"
+ ],
+ "termos": [
+  "spark",
+  "apache spark",
+  "pyspark",
+  "SparkSession",
+  "udfs",
+  "Spark",
+  "RDD",
+  "DataFrame",
+  "Apache Spark",
+  "PySpark SQL",
+  "PySpark MLlib"
+ ],
+ "mencoes": 5,
+ "familias": [
+  "agnes",
+  "free",
+  "gpt-oss",
+  "mistral"
+ ],
+ "primeira_onda": 4,
+ "nomes": [
+  "PySpark"
+ ],
+ "resumos": [
+  "The Python API for Apache Spark, enabling parallel data processing in Python.",
+  "API Python para Apache Spark, permitindo processamento paralelo de grandes volumes de dados em memória.",
+  "Python API for Spark enabling notebook-driven ETL pipelines to parse markdown frontmatter into structured schemas before search indexing.",
+  "Enables distributed data processing using Resilient Distributed Datasets (RDDs) and DataFrames."
+ ],
+ "fonte": "site",
+ "readme_status": "ok",
+ "readme_nome": "https://spark.apache.org/docs/latest/api/python/",
+ "readme_cortado": false,
+ "readme": "[PySpark Overview — PySpark 4.2.0 documentation]\n\nSkip to main content\n\n GitHub\n\n PyPI\n\nPySpark Overview#\n\nDate: Jul 11, 2026 Version: 4.2.0\n\nUseful links:\nLive Notebook | GitHub | Issues | Examples | Community | Stack Overflow | Dev Mailing List | User Mailing List\n\nPySpark is the Python API for Apache Spark. It enables you to perform real-time,\nlarge-scale data processing in a distributed environment using Python. It also provides a PySpark\nshell for interactively analyzing your data.\n\nPySpark combines Python’s learnability and ease of use with the power of Apache Spark\nto enable processing and analysis of data at any size for everyone familiar with Python.\n\nPySpark supports all of Spark’s features such as Spark SQL,\nDataFrames, Structured Streaming, Machine Learning (MLlib), Pipelines and Spark Core.\n\nPython Spark Connect Client\n\nSpark Connect is a client-server architecture within Apache Spark that\nenables remote connectivity to Spark clusters from any application.\nPySpark provides the client for the Spark Connect server, allowing\nSpark to be used as a service.\n\nQuickstart: Spark Connect\n\nLive Notebook: Spark Connect\n\nSpark Connect Overview\n\nEager vs Lazy: Spark Connect vs Spark Classic\n\nSpark SQL and DataFrames\n\nSpark SQL is Apache Spark’s module for working with structured data.\nIt allows you to seamlessly mix SQL queries with Spark programs.\nWith PySpark DataFrames you can efficiently read, write, transform,\nand analyze data using Python and SQL.\nWhether you use Python or SQL, the same underlying execution\nengine is used so you will always leverage the full power of Spark.\n\nQuickstart: DataFrame\n\nLive Notebook: DataFrame\n\nSpark SQL API Reference\n\nPandas API on Spark\n\nPandas API on Spark allows you to scale your pandas workload to any size\nby running it distributed across multiple nodes. If you are already familiar\nwith pandas and want to leverage Spark for big data, pandas API on Spark makes\nyou immediately productive and lets you migrate your applications without modifying the code.\nYou can have a single codebase that works both with pandas (tests, smaller datasets)\nand with Spark (production, distributed datasets) and you can switch between the\npandas API and the Pandas API on Spark easily and without overhead.\n\nPandas API on Spark aims to make the transition from pandas to Spark easy but\nif you are new to Spark or deciding which API to use, we recommend using PySpark\n(see Spark SQL and DataFrames).\n\nQuickstart: Pandas API on Spark\n\nLive Notebook: Pandas API on Spark\n\nPandas API on Spark Reference\n\nStructured Streaming\n\nStructured Streaming is a scalable and fault-tolerant stream processing engine built on the Spark SQL engine.\nYou can express your streaming computation the same way you would express a batch computation on static data.\nThe Spark SQL engine will take care of running it incrementally and continuously and updating the final result\nas streaming data continues to arrive.\n\nStructured Streaming Programming Guide\n\nStructured Streaming API Reference\n\nMachine Learning (MLlib)\n\nBuilt on top of Spark, MLlib is a scalable machine learning library that provides\na uniform set of high-level APIs that help users create and tune practical machine\nlearning pipelines.\n\nMachine Learning Library (MLlib) Programming Guide\n\nMachine Learning (MLlib) API Reference\n\nDeclarative Pipelines\n\nSpark Declarative Pipelines (SDP) is a declarative framework for building reliable,\nmaintainable, and testable data pipelines on Spark. SDP simplifies ETL development by allowing\nyou to focus on the transformations you want to apply to your data, rather than the mechanics\nof pipeline execution.\n\nPipelines API Reference\n\nSpark Core and RDDs\n\nSpark Core is the underlying general execution engine for the Spark platform that all\nother functionality is built on top of. It provides RDDs (Resilient Distributed Datasets)\nand in-memory computing capabilities.\n\nNote that the RDD API is a low-level API which can be difficult to use and you do not get\nthe benefit of Spark’s automatic query optimization capabilities.\nWe recommend using DataFrames (see Spark SQL and DataFrames above)\ninstead of RDDs as it allows you to express what you want more easily and lets Spark automatically\nconstruct the most efficient query for you.\n\nSpark Core API Reference\n\nSpark Streaming (Legacy)\n\nSpark Streaming is an extension of the core Spark API that enables scalable,\nhigh-throughput, fault-tolerant stream processing of live data streams.\n\nNote that Spark Streaming is the previous generation of Spark’s streaming engine.\nIt is a legacy project and it is no longer being updated.\nThere is a newer and easier to use streaming engine in Spark called\nStructured Streaming which you\nshould use for your streaming applications and pipelines.\n\nSpark Streaming Programming Guide (Legacy)\n\nSpark Streaming API Reference (Legacy)\n\n Show Source"
+}

@@ -1,0 +1,37 @@
+       6 ("Decisions so far") e os Answers de 02, 09, 10, 11, 12, 14, 15, 25, 33, 34, 36, 40, mais os comentários do ticket 16.
+       7 Gravei no `plano.md` a seção "Conferência das decisões (Prumo)": o que nenhuma faixa pega, o que contraria decisão e as
+       8 decisões que caíram (para ninguém construir).
+       9 
+      10 ### Inventário das decisões que viram construção (fonte por ticket)
+     … +54 lines 
+ 
+  Ran 3 shell commands 
+
+● Volta 1 feita: conferi as faixas contra as decisões do hub e gravei a seção "Conferência das decisões (Prumo)" no plano.md (mudou o plano: sim).
+  
+  Duas coisas contrariam decisão e precisam de correção:
+  - Faixa 2 (Worker 2): no Claude Code, o fim da resposta é um mod, não um hook. O ticket 14 refinou o 10. Por isso, a prova com claude -p só vale se o
+    mod carregar nesse modo, o que não está verificado.
+  - Faixa 1 (Worker 1): a pasta agents/bin/ não aparece em nenhuma decisão. Pelo ticket 12, "nova iniciativa" é uma skill que cria a pasta por script.
+    Proponho agents/skills/nova-iniciativa/, ou registrar agents/bin/ como decisão nova na spec.
+  
+  O que nenhuma faixa pegava, com a faixa que eu sugiro para cada item:
+  - as duas instâncias do MCP do banco por máquina, uma só de leitura e uma com escrita;
+  - o Claude Desktop (pasta conectada no Cowork e a ponte mcp-remote);
+  - o gemini configurado, testado uma vez e deixado desligado;
+  - o estado da vigia no Copilot e no Codex, além do Claude Code;
+  - os testes do acervo pedidos no ticket 16;
+  - a rota do proxy para clientes que gravam;
+  - as cinco lacunas de dono do ticket 16 (por exemplo, quem apaga o _archive/ depois de 30 dias);
+  - a tela de colisão de três vias, que fica para outra execução.
+ 
+  A seção também lista as decisões que caíram, para ninguém construí-las (por exemplo, o marcador de raiz e o GitHub como ponto de encontro do sync), e o
+  que está fora do escopo. O inventário completo, com a fonte de cada item, está em agentes/Prumo.md.
+
+✻ Crunched for 18m 54s · done 9:33 PM
+
+─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+❯ Volta 2 da rodada Ralph de planejamento
+─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  ⬆ /gsd-update │ Opus 5.5 │ planejamento █░░░░░░░░░ 16%
+  ⏵⏵ auto mode on (shift+tab to cycle) · ← 2 agents

@@ -1,0 +1,33 @@
+{
+ "chave": "gh:tensorflow/similarity",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T22:03:22Z",
+ "resultado": "corrige",
+ "conferencia": {
+  "resultado": "corrige",
+  "final": {
+   "mcp": "no",
+   "windows": "unknown",
+   "portuguese": "unknown",
+   "license": "unknown",
+   "doubt": false,
+   "serve": "stack",
+   "role": "TensorFlow library to train embedding models for metric learning and index them for nearest-neighbor lookup",
+   "place": [
+    "library"
+   ],
+   "mechanism": [
+    "vector",
+    "embeddings"
+   ],
+   "maturity": "beta",
+   "evidence": "library for similarity learning ... indexing subsystems ... searchable via approximate nearest neighbor search; still in beta."
+  },
+  "o_que_mudou": [
+   "serve: stack/search -> stack, training library not a ready search layer",
+   "mechanism: long list -> vector, embeddings",
+   "license: Apache-2.0 -> unknown, not stated in README"
+  ],
+  "nota": "Image-oriented metric-learning training library; little use for Markdown text search over MCP."
+ }
+}

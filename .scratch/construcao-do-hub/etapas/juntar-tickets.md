@@ -1,0 +1,41 @@
+# Juntar tickets em `integracao` (integrador, desde 2026-10-16)
+
+O integrador junta em `integracao` cada ticket que passou na revisão, roda os testes e resolve o ticket. O maestro só
+orquestra: passa o próximo ticket ao construtor depois do seu aviso. Regras comuns da construção:
+`regras-da-construcao.md` (leia inteiras); valem aqui também.
+
+## Quando
+
+Um construtor avisa: "ticket NN passou na revisão, ramo ticket-NN, testes ..., relatório ...". O maestro também pode
+pedir uma junção.
+
+## Passos
+
+1. **Confira o parecer** do revisor (`etapas/<etapa>/parecer-<construtor>.md`): a última rodada diz "passa" e o HEAD
+   conferido é o do ramo `ticket-NN`, ou os commits depois dele só mexem em evidência ou relatório (confira com
+   `git diff <HEAD do parecer> ticket-NN --stat`). Código mudado depois do parecer: não junte; devolva ao construtor
+   para pedir nova rodada ao revisor.
+2. **Junte** na worktree de junção `C:\context-hub-wt\integracao` (ramo `integracao`; nunca troque de ramo nela):
+   ```
+   git merge --no-ff ticket-NN -m "Junta ticket NN: <título do ticket>" -m "Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>"
+   ```
+   Conflito: `git merge --abort`, nada resolvido por você; avise o construtor e o maestro com os arquivos em conflito.
+3. **Rode os testes** de `integracao` inteiros: todo `*.test.mjs` de `agents/code/test/` (e de `agents/test/` enquanto
+   existir), com `node --test "<padrão entre aspas>"`, e os de cada ticket juntado como o relatório dele manda.
+   - Teste que chama harness de verdade (`codex exec`, `claude -p`, `copilot -p`), copia login ou sobe Docker: rode só
+     se a árvore juntada difere, nos arquivos dele, da que o revisor testou (`git diff ticket-NN HEAD -- <pasta>`);
+     se é idêntica, não rode e escreva o porquê. Docker só em `127.0.0.1`, nomes `hub-ensaio-*`, apagados ao fim.
+   - Teste vermelho: se o commit de junção é o seu e acabou de nascer, desfaça com `git reset --hard ORIG_HEAD`;
+     avise o construtor e o maestro com a saída.
+4. **Resolva o ticket**: em `issues/NN-*.md`, `Status: resolved` e um comentário (data, hora, "integrador", hash da
+   junção, testes rodados e o resultado, ressalvas do parecer). Lição do relatório ou do parecer que serve a outro
+   ticket: um comentário curto no ticket dono, citando a origem.
+5. **Registre** uma linha em `etapas/registro-de-juncoes.md` (data, hora, ticket, hash, testes).
+6. **Avise**: `maestri ask "Claude Code" "Integrador: ticket NN juntado (<hash>), testes <resultado>; ressalvas: <...>"`.
+   Depois avise os outros construtores ativos (`maestri list`) que `integracao` andou para `<hash>`, numa linha.
+
+## Nunca
+
+- Mexer em `main`, nos ramos `tentativa-paralela/*`, nos ramos ou worktrees dos construtores; `git push`; consertar
+  código de ticket (quem conserta é o construtor); apagar worktree ou ramo (a limpeza é no fim, a pedido do maestro).
+- Subagentes; nada global de verdade; `taskkill` por nome.

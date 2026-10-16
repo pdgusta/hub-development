@@ -1,0 +1,1 @@
+- 2026-10-16: Brasa parou a pedido; até aqui só li as regras e o brief e listei o material (nenhum código, worktree ou contêiner).

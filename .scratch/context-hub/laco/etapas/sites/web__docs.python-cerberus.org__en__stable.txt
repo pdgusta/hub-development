@@ -1,0 +1,328 @@
+Hide navigation sidebar
+
+Hide table of contents sidebar
+
+Skip to content
+
+ Cerberus — Data validation for Python
+
+Installation
+
+Usage
+
+Validation Schemas
+
+Validation Rules
+
+Normalization Rules
+
+Errors & Error Handling
+
+Extending
+
+Contributing
+
+API
+
+FAQ
+
+External resources
+
+Cerberus Changelog
+
+Upgrading to Cerberus 1.0
+
+Authors
+
+Contact
+
+License
+
+ Back to top
+
+ View this page
+
+Toggle Light / Dark / Auto color theme
+
+Toggle table of contents sidebar
+
+Welcome to Cerberus¶
+
+CERBERUS, n. The watch-dog of Hades, whose duty it was to guard the
+entrance; everybody, sooner or later, had to go there, and nobody wanted to
+carry off the entrance.
+- Ambrose Bierce, The Devil’s Dictionary
+
+Cerberus provides powerful yet simple and lightweight data validation
+functionality out of the box and is designed to be easily extensible, allowing
+for custom validation. It has no dependencies and is thoroughly.
+
+At a Glance¶
+
+You define a validation schema and pass it to an instance of the
+Validator class:
+
+>>> schema = {'name': {'type': 'string'}}
+>>> v = Validator(schema)
+
+Then you simply invoke the validate() to validate
+a dictionary against the schema. If validation succeeds, True is returned:
+
+>>> document = {'name': 'john doe'}
+>>> v.validate(document)
+True
+
+Table of Contents¶
+
+Installation
+
+Stable Version
+
+Development Version
+
+Usage
+
+Basic Usage
+
+Allowing the Unknown
+
+Requiring all
+
+Fetching Processed Documents
+
+Warnings
+
+Validation Schemas
+
+Registries
+
+Validation
+
+Serialization
+
+Validation Rules
+
+allow_unknown
+
+allowed
+
+allof
+
+anyof
+
+check_with
+
+contains
+
+dependencies
+
+empty
+
+excludes
+
+forbidden
+
+items
+
+keysrules
+
+meta
+
+min, max
+
+minlength, maxlength
+
+noneof
+
+nullable
+
+*of-rules
+
+oneof
+
+readonly
+
+regex
+
+require_all
+
+required
+
+schema (dict)
+
+schema (list)
+
+type
+
+valuesrules
+
+Normalization Rules
+
+Renaming Of Fields
+
+Purging Unknown Fields
+
+Default Values
+
+Value Coercion
+
+Errors & Error Handling
+
+Error Handlers
+
+Python interfaces
+
+Extending
+
+Custom Rules
+
+Custom Data Types
+
+Methods that can be referenced by the check_with rule
+
+Custom Coercers
+
+Custom Default Setters
+
+Limitations
+
+Attaching Configuration Data And Instantiating Custom Validators
+
+Relevant Validator-attributes
+
+Contributing
+
+Making Changes
+
+Submitting Changes
+
+Running the Tests
+
+API
+
+Validator Class
+
+Rules Set & Schema Registry
+
+Type Definitions
+
+Error Handlers
+
+Python Error Representations
+
+Exceptions
+
+Utilities
+
+Schema Validation Schema
+
+FAQ
+
+Can I use Cerberus to validate objects?
+
+Are Cerberus validators thread-safe, can they be used in different threads?
+
+External resources
+
+Community forums
+
+7 Best Python Libraries For Validating Data (February 2018)
+
+Nicola Iarocci: Cerberus, or Data Validation for Humans (November 2017)
+
+Henry Ölsner: Validate JSON data using cerberus (March 2016)
+
+Cerberus Changelog
+
+Version 1.3.5
+
+Version 1.3.4
+
+Version 1.3.3
+
+Version 1.3.2
+
+Version 1.3.1
+
+Version 1.3
+
+Version 1.2
+
+Version 1.1
+
+Version 1.0.1
+
+Version 1.0
+
+Version 0.9.2
+
+Version 0.9.1
+
+Version 0.9
+
+Version 0.8.1
+
+Version 0.8
+
+Version 0.7.2
+
+Version 0.7.1
+
+Version 0.7
+
+Version 0.6
+
+Version 0.5
+
+Version 0.4.0
+
+Version 0.3.0
+
+Version 0.2.0
+
+Version 0.1.0
+
+Version 0.0.3
+
+Version 0.0.2
+
+Version 0.0.1
+
+Upgrading to Cerberus 1.0
+
+Major Additions
+
+Deprecations
+
+Authors
+
+Core maintainers
+
+Contributors
+
+Contact
+
+Blog
+
+Mailing List
+
+Issues tracker
+
+GitHub repository
+
+License
+
+Copyright Notice¶
+
+Cerberus is an open source project by Nicola Iarocci. See the original LICENSE for more
+information.
+
+ On this page
+
+Welcome to Cerberus
+
+At a Glance
+
+Table of Contents
+
+Copyright Notice

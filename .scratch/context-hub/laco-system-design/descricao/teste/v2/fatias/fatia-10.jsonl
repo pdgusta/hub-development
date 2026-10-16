@@ -1,0 +1,24 @@
+{"n": 10, "pergunta": "O que muda se um agente gravar no banco através do MCP enquanto eu estou com a mesma nota aberta no Obsidian?", "tipo": "diferenca"}
+{"n": 20, "pergunta": "Existe risco de o contrato do hub ser sobrescrito por uma versão antiga se a outra máquina realizar uma alteração durante a atualização automática via link simbólico?", "tipo": "relacao"}
+{"n": 30, "pergunta": "Por que o sincronizador deve ignorar pastas com ponto no nome e o que isso pode afetar a organização de arquivos internos?", "tipo": "por-que"}
+{"n": 40, "pergunta": "Quem mantém a consistência entre os bancos CouchDB de cada par, garantindo que qualquer divergência seja detectada imediatamente?", "tipo": "responsavel"}
+{"n": 50, "pergunta": "Se o **camada de busca** estiver desativada em uma máquina, como os agentes encontram trechos relevantes em arquivos grandes da **raiz** `reference/` sem ler tudo?", "tipo": "o-que-nao-faz"}
+{"n": 60, "pergunta": "Se eu pedir ao agente para apagar uma nota que eu mesmo criei, o que acontece?", "tipo": "se-x"}
+{"n": 70, "pergunta": "O que ocorre se a última nota de retomada for corrompida por um erro de disco, mas o agente ainda tenta iniciar uma sessão baseada nela?", "tipo": "falha"}
+{"n": 80, "pergunta": "Qual a diferença de como um recruta recebe uma informação que acabou de ser sincronizada pelo Tailscale de uma informação que veio da cópia de segurança do GitHub?", "tipo": "diferenca"}
+{"n": 90, "pergunta": "Quando a rede Tailscale se desconecta durante uma gravação, em que ordem o Vigia dispara a notificação de sync parado?", "tipo": "ordem"}
+{"n": 100, "pergunta": "Por que as raízes do hub são organizadas em seis pastas do primeiro nível?", "tipo": "por-que"}
+{"n": 110, "pergunta": "O que muda entre o Gustavo editar uma nota em `clients/STRATA/` e um agente de código editar a mesma nota ao mesmo tempo?", "tipo": "diferenca"}
+{"n": 120, "pergunta": "O que a vista Markdown não faz quando o Gustavo edita um arquivo diretamente no disco enquanto o Obsidian está fechado e o sincronizador está desligado?", "tipo": "o-que-nao-faz"}
+{"n": 130, "pergunta": "A pasta não replicada pertence ao grupo de áreas que não são sincronizadas entre as máquinas?", "tipo": "grupo"}
+{"n": 140, "pergunta": "O que acontece se o cliente precisar de acesso a uma iniciativa de cliente específica?", "tipo": "ordem"}
+{"n": 150, "pergunta": "E se um Cliente conectar ao hub através de um Par que está offline, tentando ler um arquivo que só existe na outra máquina?", "tipo": "falha"}
+{"n": 160, "pergunta": "Por que as **raízes** do hub (como `clients/`, `initiatives/`) são pastas fixas e não podem ser renomeadas ou movidas, mesmo que o Gustavo queira reorganizar?", "tipo": "por-que"}
+{"n": 170, "pergunta": "Por que o backup diário no GitHub privado é feito a partir de apenas um dos pares, e o outro par não força um push próprio se o primeiro estiver offline no horário agendado?", "tipo": "por-que"}
+{"n": 180, "pergunta": "O que acontece se o Claude Desktop tentar gravar uma nota no exato momento em que eu estou salvando uma alteração via Obsidian?", "tipo": "quem-usa"}
+{"n": 190, "pergunta": "E se o sincronizador de uma das máquinas parar de funcionar enquanto eu edito uma nota no Obsidian?", "tipo": "falha"}
+{"n": 200, "pergunta": "Se eu movo uma iniciativa concluída (ex: VOEGOL) da raiz `clients/` para `clients/_archive/` pelo Obsidian, o Banco registra a movimentação, o Sincronizador replica para o outro par e a Camada de busca atualiza os embeddings localmente nas duas máquinas?", "tipo": "quem-usa"}
+{"n": 210, "pergunta": "Por que o **vigia** (que avisa sobre colisões e sync parado) não notifica o cliente se detectar problemas no par que ele está usando?", "tipo": "por-que"}
+{"n": 220, "pergunta": "Quando um arquivo de iniciativa, como VOEGOL, é movido para o diretório _archive/, o que acontece?", "tipo": "quando"}
+{"n": 230, "pergunta": "O que o outro par não faz quando a *camada de busca* retorna resultados incompletos porque os embeddings locais foram atualizados recentemente, mas a replicação dos embeddings para o banco ainda não ocorreu?", "tipo": "o-que-nao-faz"}
+{"n": 240, "pergunta": "Se um agente de um cliente tentar acessar o contrato do hub, como o sistema bloqueia esse acesso?", "tipo": "ordem"}

@@ -1,0 +1,84 @@
+{
+  "metodo": "Diretório .claude do Claude Code",
+  "fontes": [
+    {"url": "https://code.claude.com/docs/en/claude-directory.md", "acessada_em": "2026-10-10", "status": "ok"}
+  ],
+  "o_que_e": {
+    "resumo": "Pasta de configuração que o Claude Code lê no projeto (.claude/) e na home do usuário (~/.claude), organizando instruções, configurações, skills, subagentes, workflows, regras e memória automática.",
+    "citacao": "Where Claude Code reads CLAUDE.md, settings.json, hooks, skills, commands, subagents, workflows, rules, and auto memory. Explore the .claude directory in your project and ~/.claude in your home directory.",
+    "url": "https://code.claude.com/docs/en/claude-directory.md"
+  },
+  "nivel_raiz": [
+    {
+      "categoria": ".claude/ (projeto)",
+      "o_que_mora": "Configuração específica do projeto: settings.json, settings.local.json, rules/, skills/, commands/, output-styles/, agents/, workflows/, agent-memory/ e agent-memory-local/.",
+      "citacao": "Everything Claude Code reads that is specific to this project. If you use git, commit most files here so your team shares them; a few, like settings.local.json, are gitignored when Claude Code saves settings to them.",
+      "url": "https://code.claude.com/docs/en/claude-directory.md"
+    },
+    {
+      "categoria": "CLAUDE.md (raiz do projeto ou .claude/CLAUDE.md)",
+      "o_que_mora": "Instruções do projeto: convenções, comandos comuns e contexto arquitetural.",
+      "citacao": "Project-specific instructions that shape how Claude works in this repository. Put your conventions, common commands, and architectural context here so Claude operates with the same assumptions your team does.",
+      "url": "https://code.claude.com/docs/en/claude-directory.md"
+    },
+    {
+      "categoria": ".mcp.json (raiz do projeto)",
+      "o_que_mora": "Servidores MCP de escopo de projeto, compartilhados com a equipe.",
+      "citacao": "Project-scoped MCP servers, shared with your team",
+      "url": "https://code.claude.com/docs/en/claude-directory.md"
+    },
+    {
+      "categoria": ".worktreeinclude (raiz do projeto)",
+      "o_que_mora": "Lista de arquivos ignorados pelo git a copiar para novos worktrees.",
+      "citacao": "Gitignored files to copy into new worktrees",
+      "url": "https://code.claude.com/docs/en/claude-directory.md"
+    },
+    {
+      "categoria": "~/.claude/ (global)",
+      "o_que_mora": "Configuração pessoal que vale para todos os projetos: CLAUDE.md global, settings.json, rules/, skills/, commands/, output-styles/, workflows/, agent-memory/, projects/ (memória automática) e plugins/.",
+      "citacao": "The global counterpart to your project .claude/ directory. Files here apply to every project you work in and are never committed to any repository.",
+      "url": "https://code.claude.com/docs/en/claude-directory.md"
+    },
+    {
+      "categoria": "~/.claude.json",
+      "o_que_mora": "Estado pessoal que não pertence ao settings.json: sessão OAuth, decisões de confiança por projeto, servidores MCP pessoais e toggles de interface.",
+      "citacao": "Holds state that does not belong in settings.json: OAuth session, per-project trust decisions, your personal MCP servers, and UI toggles.",
+      "url": "https://code.claude.com/docs/en/claude-directory.md"
+    },
+    {
+      "categoria": "Memória automática (~/.claude/projects/<projeto>/memory/)",
+      "o_que_mora": "Notas que o Claude escreve para si mesmo ao longo das sessões, com um MEMORY.md como índice e arquivos de tópico lidos sob demanda.",
+      "citacao": "Auto memory lets Claude accumulate knowledge across sessions without you writing anything.",
+      "url": "https://code.claude.com/docs/en/claude-directory.md"
+    }
+  ],
+  "criterio_de_separacao": {
+    "resumo": "O escopo decide a pasta: o que é do projeto e deve ser compartilhado com a equipe fica em .claude/ e vai para o git; o que é pessoal e vale para todos os projetos fica em ~/.claude/. Para regras, o frontmatter paths: decide se a regra carrega no início da sessão ou só ao tocar arquivos correspondentes.",
+    "citacao": "Commit project files to git to share them with your team; files in `~/.claude` are personal configuration that applies across all your projects.",
+    "url": "https://code.claude.com/docs/en/claude-directory.md"
+  },
+  "quando_termina_ou_envelhece": {
+    "resumo": "A fonte não diz que itens expiram ou envelhecem automaticamente. Diz que a memória automática é editável e que o índice MEMORY.md tem limite de leitura (200 linhas ou 25KB); CLAUDE.md longo deve ser dividido em regras.",
+    "citacao": "These are plain markdown. Edit or delete them anytime",
+    "url": "https://code.claude.com/docs/en/claude-directory.md"
+  },
+  "conteudo_compartilhado_ou_reaproveitado": {
+    "resumo": "Compartilhamento por git: arquivos de .claude/ commitados são compartilhados com a equipe; arquivos de ~/.claude/ não são commitados e valem para todos os projetos do usuário. Plugins e marketplaces ficam em ~/.claude/plugins.",
+    "citacao": "Same as project .claude/rules/ but applies everywhere.",
+    "url": "https://code.claude.com/docs/en/claude-directory.md"
+  },
+  "pastas_versus_tags_ou_links": {
+    "resumo": "Organização por pastas e por caminho de arquivo. Não há tags nem links entre arquivos para organizar. Há frontmatter YAML (campos como paths:, name, description) que configura cada arquivo, e paths: com globs escopa regras a diretórios ou tipos de arquivo.",
+    "citacao": "Use <C>paths:</C> frontmatter with globs to scope rules to directories or file types",
+    "url": "https://code.claude.com/docs/en/claude-directory.md"
+  },
+  "pensado_para_agentes_de_ia": {
+    "resumo": "Sim. A pasta é lida pelo próprio Claude Code e seus arquivos são instruções para o agente (CLAUDE.md, rules, skills, subagents, memória). Configurações em settings.json são impostas pelo harness, não apenas sugeridas ao modelo.",
+    "citacao": "Like CLAUDE.md, rules are guidance Claude reads, not configuration Claude Code enforces. For guaranteed behavior use hooks or permissions.",
+    "url": "https://code.claude.com/docs/en/claude-directory.md"
+  },
+  "nao_verificado": [
+    "quando_termina_ou_envelhece: prazo de validade ou regra de envelhecimento dos arquivos (não citado na fonte)",
+    "conteudo_compartilhado_ou_reaproveitado: mecanismo de reuso entre projetos além de git e plugins (não detalhado na fonte)"
+  ]
+}

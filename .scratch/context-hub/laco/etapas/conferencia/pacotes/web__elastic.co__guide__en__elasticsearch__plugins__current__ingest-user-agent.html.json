@@ -1,0 +1,56 @@
+{
+ "chave": "web:elastic.co/guide/en/elasticsearch/plugins/current/ingest-user-agent.html",
+ "nomes": [
+  "Elasticsearch Ingest User Agent Processor",
+  "Elasticsearch Ingest User Agent Plugin"
+ ],
+ "urls": [
+  "https://www.elastic.co/guide/en/elasticsearch/plugins/current/ingest-user-agent.html",
+  "https://www.elastic.co/guide/en/elasticsearch/reference/current/ingest-user-agent.html"
+ ],
+ "readme_cortado": false,
+ "readme": "[User agent processor | Elasticsearch Reference]\n\nDocs\n\n /\n\n Reference\n\n /\n\n Elasticsearch\n\n /\n\n Processor reference\n\nUser agent processor\n\nThe user_agent processor extracts details from the user agent string a browser sends with its web requests. This processor adds this information by default under the user_agent field.\n\nThe user-agent module ships by default with the regexes.yaml made available by uap-java with an Apache 2.0 license. For more details see https://github.com/ua-parser/uap-core.\n\nUsing the user_agent Processor in a Pipeline\n\nName\nRequired\nDefault\nDescription\n\nfield\nyes\n-\nThe field containing the user agent string.\n\ntarget_field\nno\nuser_agent\nThe field that will be filled with the user agent details.\n\nregex_file\nno\n-\nThe name of the file in the config/user-agent* directory containing the regular expressions for parsing the user agent string. Both the directory and the file have to be created before starting Elasticsearch. If not specified, the user-agent module uses the regexes.yaml file from the uap-core package that it ships with (see below). \n\n* Before version 9.4, this directory was named config/ingest-user-agent.\n\nproperties\nno\n[name, os, device, original, version]\nControls what properties are added to target_field.\n\nextract_device_type\nno\nfalse\n\n Extracts device type from the user agent string on a best-effort basis.\n\nignore_missing\nno\nfalse\nIf true and field does not exist, the processor quietly exits without modifying the document\n\nHere is an example that adds the user agent details to the user_agent field based on the agent field:\n\n PUT _ingest/pipeline/user_agent\n {\n \"description\" : \"Add user agent information\",\n \"processors\" : [\n {\n \"user_agent\" : {\n \"field\" : \"agent\"\n }\n }\n ]\n}\n PUT my-index-000001/_doc/my_id?pipeline=user_agent\n {\n \"agent\": \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36\"\n}\n GET my-index-000001/_doc/my_id\n\nWhich returns\n\n{\n \"found\": true,\n \"_index\": \"my-index-000001\",\n \"_id\": \"my_id\",\n \"_version\": 1,\n \"_seq_no\": 22,\n \"_primary_term\": 1,\n \"_source\": {\n \"agent\": \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36\",\n \"user_agent\": {\n \"name\": \"Chrome\",\n \"original\": \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36\",\n \"version\": \"51.0.2704.103\",\n \"os\": {\n \"name\": \"Mac OS X\",\n \"version\": \"10.10.5\",\n \"full\": \"Mac OS X 10.10.5\"\n },\n \"device\" : {\n \"name\" : \"Mac\"\n }\n }\n }\n}\n\nUsing a custom regex file\n\nTo use a custom regex file for parsing the user agents, that file has to be put into the config/user-agent directory and has to have a .yml filename extension. The file has to be present at node startup, any changes to it or any new files added while the node is running will not have any effect.\n\n Note\n\nBefore version 9.4, this directory was named config/ingest-user-agent. The old directory name is still supported as a fallback but is deprecated.\n\nIn practice, it will make most sense for any custom regex file to be a variant of the default file, either a more recent version or a customised version.\n\nThe default file included in the user-agent module is regexes.yaml from the uap-core package: https://github.com/ua-parser/uap-core/blob/master/regexes.yaml\n\nNode Settings\n\nThe user_agent processor supports the following settings:\n\nuser_agent.cache_size \n\nThe maximum number of results that should be cached. Defaults to 1000.\ningest.user_agent.cache_size \n\n Deprecated in 9.4\n\nUse user_agent.cache_size instead.\n\nThe maximum number of results that should be cached. Defaults to 1000.\n\nNote that these settings are node settings and apply to all user_agent processors, i.e. there is one cache for all defined user_agent processors.",
+ "fonte": "site",
+ "respostas": [
+  {
+   "por": "llama-3.2-90b-vision",
+   "resposta": {
+    "serve": "none",
+    "role": "",
+    "place": [
+     "n/a"
+    ],
+    "mechanism": [
+     "other"
+    ],
+    "mcp": "no",
+    "windows": "unknown",
+    "portuguese": "no",
+    "license": "Apache-2.0",
+    "maturity": "unknown",
+    "doubt": true,
+    "evidence": ""
+   }
+  },
+  {
+   "por": "nemotron-3-super-120b",
+   "resposta": {
+    "serve": "none",
+    "role": "",
+    "place": [
+     "library"
+    ],
+    "mechanism": [
+     "n/a"
+    ],
+    "mcp": "no",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "Apache-2.0",
+    "maturity": "unknown",
+    "doubt": false,
+    "evidence": "The user_agent processor extracts details from the user agent string a browser sends with its web requests."
+   }
+  }
+ ]
+}

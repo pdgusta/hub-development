@@ -1,0 +1,69 @@
+{
+ "nome": "qmd",
+ "url": "https://github.com/tobi/qmd",
+ "papel": "disco+MCP pronto",
+ "windows": "nao_verificado: README só menciona Windows no default de paralelismo CUDA; CI do repo roda ubuntu-latest e macos-latest, sem windows-latest; instalação via npm/bun.",
+ "mcp": "yes: 'qmd mcp', stdio por padrão; 'qmd mcp --http' (Streamable HTTP em localhost:8181, endpoints /mcp, /query, /metadata, sem autenticação)",
+ "portugues": "BM25 com tokenizador FTS5 'porter unicode61' (stemmer porter é de inglês). Embedding padrão embeddinggemma-300M descrito como English-optimized; Qwen3-Embedding-0.6B (119 idiomas) configurável via QMD_EMBED_MODEL ou models.embed. Stopwords pt: nao_verificado.",
+ "markdown_frontmatter": "Indexa Markdown (foco do projeto); chunking por regex (~900 tokens, 15% overlap); markdown sempre regex. Frontmatter opcional namespaced 'qmd: metadata:' habilita filtro tipado em todas as superfícies; demais campos ficam só como texto.",
+ "atualizacao": "Manual: 'qmd update' reindexa e 'qmd embed' gera vetores; hook opcional por coleção (update: 'git pull'); sem watcher verificado.",
+ "embeddings_endpoint": "no: só modelos GGUF locais via node-llama-cpp (embed, rerank, expansão de consulta); sem base_url OpenAI na documentação.",
+ "recursos": "Node.js >=22 ou Bun >=1.0; três GGUF baixados no primeiro uso: embeddinggemma ~300 MB, reranker ~640 MB, expansão de consulta ~1,1 GB; SQLite (FTS5 + vetores); GPU opcional.",
+ "licenca": "MIT",
+ "ultimo_release": "2026-08-16, v2.8.3",
+ "atividade": "último commit 2026-10-06",
+ "maturidade": "stable (versão 2.x, sem aviso de alpha/beta; classificação inferida)",
+ "encaixe": "Disco de cada máquina via MCP stdio, ou serviço HTTP na rede. Impedimentos: Windows não verificado (CI sem Windows), sem endpoint OpenAI para embeddings, reindexação manual, modelos grandes.",
+ "evidencias": [
+  {
+   "campo": "mcp",
+   "url": "https://github.com/tobi/qmd",
+   "citacao": "By default, QMD's MCP server uses stdio ... qmd mcp --http  # localhost:8181"
+  },
+  {
+   "campo": "windows",
+   "url": "https://github.com/tobi/qmd/blob/main/.github/workflows/ci.yml",
+   "citacao": "os: [ubuntu-latest, macos-latest]"
+  },
+  {
+   "campo": "windows",
+   "url": "https://github.com/tobi/qmd",
+   "citacao": "Windows CUDA defaults to `1` because parallel CUDA contexts can crash"
+  },
+  {
+   "campo": "portugues",
+   "url": "https://github.com/tobi/qmd",
+   "citacao": "embeddinggemma (default) — English-optimized, small footprint; Qwen3-Embedding — Multilingual (119 languages including CJK)"
+  },
+  {
+   "campo": "portugues",
+   "url": "https://github.com/tobi/qmd/blob/main/src/store.ts",
+   "citacao": "tokenize='porter unicode61'"
+  },
+  {
+   "campo": "markdown_frontmatter",
+   "url": "https://github.com/tobi/qmd",
+   "citacao": "Documents can opt into typed metadata through a namespaced frontmatter block"
+  },
+  {
+   "campo": "embeddings_endpoint",
+   "url": "https://github.com/tobi/qmd",
+   "citacao": "all running locally via node-llama-cpp with GGUF models."
+  },
+  {
+   "campo": "recursos",
+   "url": "https://github.com/tobi/qmd",
+   "citacao": "Node.js >= 22; embeddinggemma-300M-Q8_0 ~300MB; qwen3-reranker-0.6b-q8_0 ~640MB; qmd-query-expansion-1.7B ~1.1GB"
+  },
+  {
+   "campo": "atualizacao",
+   "url": "https://github.com/tobi/qmd",
+   "citacao": "does not re-index on its own. Run `qmd update` after changing `path`"
+  }
+ ],
+ "nao_verificado": [
+  "funcionamento nativo no Windows",
+  "stopwords pt e remoção de acentos do FTS",
+  "existência de watcher"
+ ]
+}

@@ -1,0 +1,267 @@
+For teams with a codebase and no docs.
+Documentation, written from your actual code.
+Point DocSpell at a repo. It reads the code, works out what's worth documenting, and writes it up. You edit, you publish, you're done by lunch.
+Start freeSee an example
+
+github.com/docspell/docspell/blob/main/lib/actions/billing.tsdocspell.dev/docspell/server-actions/checkout
+
+app/
+components/
+lib/
+actions/
+billing.ts
+github.ts
+publish.ts
+stripe.ts
+README.md
+
+1"use server"
+2
+3import { stripe, priceIdFor, type Interval } from "@/lib/stripe"
+4
+5// Starts a Stripe Checkout session for upgrading to Pro.
+6// Creates the Stripe customer on first checkout, so the
+7// customer portal works later without a second one.
+8export async function startCheckout(plan: "pro" | "team", interval: Interval) {
+9 const user = await getDbUser()
+10 if (plan === "team") return fail("Team is sales-only for now")
+11
+12 let customerId = user.stripeCustomerId
+13 if (!customerId) customerId = await createCustomer(user)
+14
+15 const session = await stripe().checkout.sessions.create({
+16 customer: customerId,
+17 mode: "subscription",
+18 line_items: [{ price: await priceIdFor(plan, interval), quantity: 1 }],
+19 })
+20 return { success: true, data: { url: session.url } }
+21}
+
+DocSpell
+Search⌘K
+
+Getting started
+📘What DocSpell is
+
+Server actions
+💳Checkout
+🔗GitHub sync
+🚀Publishing
+
+Libraries
+⚡Stripe client
+
+Server actions
+💳Checkout
+Starts a Stripe Checkout session for upgrading to Pro. 
+
+Creates the Stripe customer on first checkout, so the customer portal works later without a second one. 
+Parameters
+
+NameTypeDescription
+plan"pro" | "team"The plan to buy.
+intervalIntervalMonthly or yearly.Team is sales-only for now. The action rejects it server-side, so the UI is never the only guard.
+Returns
+A url for the hosted Stripe Checkout page. Redirect the user there.
+Where it's called
+The upgrade button on the billing page.Settings → Billing. Pro starts checkout, Team goes to sales.
+
+On this page
+Parameters
+Returns
+Where it's called
+Reading lib/actions/billing.ts
+
+Plates · Screens
+Both sides of the product.
+Real screens, not mockups
+
+I.The published site
+
+What your readers see. Search, light and dark mode, and an outline that follows them down the page.
+1Search reads every word, not just titles
+2The sidebar is your page tree
+3The outline tracks the reader's scroll
+II.The editor
+III.Slash menu
+IV.Edit with AI
+V.Dashboard
+VI.Readers
+
+docspell.dev/docspell
+
+123Plate I of VI
+
+§1
+Connect a repository.
+Pick a repo, a branch, and the folders that matter. DocSpell reads it like a new hire would on day one: entry points, routes, config, and that README you keep meaning to finish.1
+1The branch and folders are saved with the doc space, so the next run reads the same slice of the repo.
+
+Doc space · settings
+Connect a repo, pick a branch and the folders that matter.
+
+§2
+Tell it who the docs are for.
+Beginners or senior engineers? Short pages or thorough ones? Set the tone once and DocSpell plans the pages around it, so you don't get one giant wall of text.2
+2Tone, audience and length are saved too. A rerun starts from the same settings.
+
+Generate documentation
+Tone, audience and page length. Set it once and it sticks for next time.
+
+§3
+Edit it, then ship it.
+Every page is written from the files it describes and lands in a proper block editor. Fix a sentence, move a section, drop in a screenshot. Hit publish and it's a fast docs site with search.3
+3Drafts stay private until you publish, and every publish is kept as a version you can restore.
+
+Editor
+Real pages in a real editor. What you see here is what gets published.
+
+§4
+Keep up when the code moves.
+Docs go stale because nobody notices the code changed. DocSpell remembers which files each page came from, so when they change you can regenerate just that page instead of rewriting everything.4
+4It compares each source file's git hash, one GitHub call per doc space, and lists the pages that drifted.
+
+Generating
+Watch it work. Each page shows up the moment it's written.
+
+Specimens · Try it live
+Poke at the real thing.
+These run against DocSpell's own published docs, right now. Nothing here is a recording.
+Specimen A. Search, as a reader sees it
+
+Search DocSpell's docs
+custom domainpublishregenerateeditorSpecimen B. The same question, asked by an agent
+
+MCP search_docsllms.txt/docspell/mcp
+→ tools/call search_docs {"query": "custom domain"}
+Every doc space gets an MCP endpoint and an llms.txt. Point Claude or Cursor at the URL.
+Specimen C. Your accent colour
+
+Pick any colour. DocSpell keeps the hue and adjusts the shade until links pass 4.5:1 contrast on both the light and the dark page, so nobody ships unreadable docs by accident.
+#6D5CB8
+
+Writing
+The editor
+Publishing
+
+Blocks
+Every page lands in a block editor. Rewrite a paragraph or drop in a screenshot.
+light#6D5CB85.2:1
+
+Writing
+The editor
+Publishing
+
+Blocks
+Every page lands in a block editor. Rewrite a paragraph or drop in a screenshot.
+dark#8071C14.5:1adjusted from #6D5CB8
+
+Fold-out · Live site
+The real site, at any width.
+This is DocSpell's own docs site, live, not a picture of it. Drag the edge to see it on a phone. There's no separate mobile setup.
+
+PhoneTabletDesktop… px wide← Drag either edge →
+
+docspell.dev/docspell
+
+Index · Features
+Also in the box.
+Page references are links.
+
+A
+Accent colourSpec. CAny colour, adjusted until links are readable.
+AnalyticsPl. VIWhat people read and where they came from. No cookies.
+
+B
+Block editorPl. II, Pl. IIIHeadings, code, callouts, images, tables.
+
+C
+Custom domainsdocsdocs.yourcompany.com, HTTPS included.
+
+D
+Drafts & version history§3Publish when you're ready. Roll back any page.
+
+E
+Edit with AIPl. IVRewrite just the paragraph you selected.
+
+G
+GitHub§1Pick a repo, a branch and the folders that matter.
+
+L
+Link previewsEvery page unfurls as its own card in Slack, Discord and X.
+llms.txt & MCPSpec. BAn endpoint for AI agents on every doc space.
+
+M
+Markdown in and outBring your old docs. Take them with you any time.
+MobileFold-outThe same docs on a phone, no setup.
+
+P
+Private docsApp. AKeep a doc space off the public web.
+
+R
+Regenerating a page§4When its files change, rewrite just that page.
+
+S
+SearchSpec. A, Pl. IReaders search every word, not just titles.
+
+T
+TemplatesStart from API reference, guides, or a wiki.
+Tone & audience§2Set once, reused on every run.
+
+Y
+Your brandingSpec. CLogo, accent colour, navbar, footer, your own CSS.
+
+Appendix A · Pricing
+Pricing.Billing intervalMonthlyYearly
+Tick what you need. The table points at the cheapest plan that has all of it.Plan to showFreeProTeam
+
+Pro
+$12 / mo, billed $144 yearly, save $48
+Start with Pro
+Plan comparison
+Feature
+
+Free
+$0 free forever
+Get started
+
+Pro
+$12 / mo, billed $144 yearly, save $48
+Start with Pro
+
+Team
+$39 / mo, billed $468 yearly, save $120
+Talk to us
+Doc spaces1UnlimitedUnlimited
+AI doc generation1 generation100 / monthUnlimited
+GitHub repositoriesIncludedIncludedIncluded
+Inline AI editing·Not includedIncludedIncluded
+Private docs·Not includedIncludedIncluded
+Custom domain·Not includedIncludedIncluded
+Branding & custom CSS·Not includedIncludedIncluded
+Remove “Powered by DocSpell”·Not includedIncludedIncluded
+AnalyticsBasicFullFull
+
+Appendix B · Questions
+Questions.Ask anything
+Anything else, write to hello@docspell.dev.
+
+Which languages does it understand?+
+
+Pretty much all of them. DocSpell reads your source as text, so TypeScript, Python, Go, Rust, whatever you've got. It does best when the code has sensible module boundaries and at least a short README.Copy link to this answerDoes DocSpell keep my source code?+
+
+No. Files are pulled from GitHub while a generation runs and sent to the AI model to write the pages. We keep the pages it writes, not your code.Copy link to this answerWhat do I get on the free plan?+
+
+One AI generation from your own repo, the full editor, and publishing with no time limit. The pricing table above always has the current limits.Copy link to this answerCan I edit what the AI writes?+
+
+Yes, and you should. Every page lands in the editor as a normal page. Rewrite it, reorganise it, or delete it.Copy link to this answerWhat happens when my code changes?+
+
+Each page remembers the files it was written from. When those change, you can regenerate that one page without touching the rest of your docs.Copy link to this answerCan I use my own domain?+
+
+Yes, on paid plans. Add a CNAME pointing at DocSpell and we sort out the certificate.Copy link to this answerCan I cancel any time?+
+
+Yes. Cancel from billing and you keep your plan until the end of the period you paid for. The refund policy has the details.Copy link to this answer
+
+Point it at a repo. Have docs by lunch.
+Start free, on your own code. No card needed.
+Start freeSee an example

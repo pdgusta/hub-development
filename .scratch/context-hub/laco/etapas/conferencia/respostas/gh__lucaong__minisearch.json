@@ -1,0 +1,33 @@
+{
+ "chave": "gh:lucaong/minisearch",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T21:22:46Z",
+ "resultado": "corrige",
+ "conferencia": {
+  "resultado": "corrige",
+  "final": {
+   "serve": "search",
+   "role": "Motor de busca full-text em memoria (JS) para indexar notas Markdown do hub, com prefixo, fuzzy e boost",
+   "place": [
+    "library"
+   ],
+   "mechanism": [
+    "full_text",
+    "fuzzy"
+   ],
+   "mcp": "no",
+   "windows": "unknown",
+   "portuguese": "unknown",
+   "license": "unknown",
+   "maturity": "stable",
+   "doubt": false,
+   "evidence": "MiniSearch is a tiny but powerful in-memory fulltext search engine written in JavaScript. Exact match, prefix search, fuzzy match, field boosting. Default tokenizer splits on Unicode space or punctuation; no stemming."
+  },
+  "o_que_mudou": [
+   "place: library+inside_db_mcp -> library, README so descreve biblioteca",
+   "mechanism: bm25 removido, README diz apenas 'modern ranking algorithm'; adicionado fuzzy",
+   "portuguese: no -> unknown, tokenizador Unicode sem stemming, README nao fala de idiomas"
+  ],
+  "nota": "Biblioteca JS leve de busca full-text em memoria; serve de camada de busca embutida em um servidor MCP, sem stemming em portugues."
+ }
+}

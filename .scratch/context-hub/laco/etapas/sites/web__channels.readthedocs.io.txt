@@ -1,0 +1,279 @@
+Django Channels
+
+ View page source
+
+Django Channels
+
+Channels is a project that takes Django and extends its abilities beyond
+HTTP - to handle WebSockets, chat protocols, IoT protocols, and more. It’s
+built on a Python specification called ASGI.
+
+Channels builds upon the native ASGI support in Django. Whilst Django still handles
+traditional HTTP, Channels gives you the choice to handle other connections in
+either a synchronous or asynchronous style.
+
+To get started understanding Channels, read our Introduction,
+which will walk through how things work.
+
+Note
+
+This is documentation for the 4.x series of Channels. If you are looking
+for documentation for older versions, you can select 3.x, 2.x, or
+1.x from the versions selector in the bottom-left corner.
+
+Projects
+
+Channels is comprised of several packages:
+
+Channels, the Django integration layer
+
+Daphne, the HTTP and Websocket termination server
+
+asgiref, the base ASGI library
+
+channels_redis, the Redis channel layer backend (optional)
+
+This documentation covers the system as a whole; individual release notes and
+instructions can be found in the individual repositories.
+
+Topics
+
+Introduction
+
+Turtles All The Way Down
+
+Scopes and Events
+
+What is a Consumer?
+
+Routing and Multiple Protocols
+
+Cross-Process Communication
+
+Django Integration
+
+Installation
+
+Type checking support
+
+Installing the latest development version
+
+Tutorial
+
+Tutorial Part 1: Basic Setup
+
+Tutorial Part 2: Implement a Chat Server
+
+Tutorial Part 3: Rewrite Chat Server as Asynchronous
+
+Tutorial Part 4: Automated Testing
+
+Consumers
+
+Basic Layout
+
+Scope
+
+Generic Consumers
+
+Routing
+
+ProtocolTypeRouter
+
+URLRouter
+
+ChannelNameRouter
+
+Database Access
+
+Database Connections
+
+database_sync_to_async
+
+aclose_old_connections
+
+Channel Layers
+
+Configuration
+
+Synchronous Functions
+
+What To Send Over The Channel Layer
+
+Single Channels
+
+Groups
+
+Using Outside Of Consumers
+
+Sessions
+
+Basic Usage
+
+Session Persistence
+
+Authentication
+
+Django authentication
+
+Custom Authentication
+
+How to log a user in/out
+
+Security
+
+WebSockets
+
+Testing
+
+Setting Up Async Tests
+
+ApplicationCommunicator
+
+HttpCommunicator
+
+WebsocketCommunicator
+
+ChannelsLiveServerTestCase
+
+Worker and Background Tasks
+
+Sending
+
+Receiving and Consumers
+
+Deploying
+
+Configuring the ASGI application
+
+Setting up a channel backend
+
+Run protocol servers
+
+HTTP and WebSocket
+
+Alternative Web Servers
+
+Example Setups
+
+Troubleshooting
+
+ImproperlyConfigured exception
+
+Reference
+
+ASGI
+
+Summary
+
+Composability
+
+Protocol Specifications
+
+Channel Layer Specification
+
+Abstract
+
+Overview
+
+Specification Details
+
+Copyright
+
+Community Projects
+
+Contributing
+
+What can I work on?
+
+I’m a novice contributor/developer - can I help?
+
+How do I get started and run the tests?
+
+How do I do a release?
+
+Support
+
+Making bugs reproducible
+
+How to help the Channels project
+
+Release Notes
+
+4.3.2 Release Notes
+
+4.3.1 Release Notes
+
+4.3.0 Release Notes
+
+4.2.2 Release Notes
+
+4.2.1 Release Notes
+
+4.2.0 Release Notes
+
+4.1.0 Release Notes
+
+4.0.0 Release Notes
+
+3.0.5 Release Notes
+
+3.0.4 Release Notes
+
+3.0.3 Release Notes
+
+3.0.2 Release Notes
+
+3.0.1 Release Notes
+
+3.0.0 Release Notes
+
+2.4.0 Release Notes
+
+2.3.0 Release Notes
+
+2.2.0 Release Notes
+
+2.1.7 Release Notes
+
+2.1.6 Release Notes
+
+2.1.5 Release Notes
+
+2.1.4 Release Notes
+
+2.1.3 Release Notes
+
+2.1.2 Release Notes
+
+2.1.1 Release Notes
+
+2.1.0 Release Notes
+
+2.0.2 Release Notes
+
+2.0.1 Release Notes
+
+2.0.0 Release Notes
+
+1.1.6 Release Notes
+
+1.1.5 Release Notes
+
+1.1.4 Release Notes
+
+1.1.3 Release Notes
+
+1.1.2 Release Notes
+
+1.1.1 Release Notes
+
+1.1.0 Release Notes
+
+1.0.3 Release Notes
+
+1.0.2 Release Notes
+
+1.0.1 Release Notes
+
+1.0.0 Release Notes

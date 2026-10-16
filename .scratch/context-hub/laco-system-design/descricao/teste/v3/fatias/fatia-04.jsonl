@@ -1,0 +1,24 @@
+{"n": 4, "pergunta": "Quando o GitHub privado faz backup diário e algum arquivo foi modificado após o último backup, o que acontece?", "tipo": "quando"}
+{"n": 14, "pergunta": "Quando uma iniciativa é movida para o arquivo, como o arquivo `_archive/` é atualizado automaticamente?", "tipo": "quando"}
+{"n": 24, "pergunta": "Se um cliente usar o hub via MCP de um par, ele consegue acessar arquivos da pasta não replicada que deveriam ser privados?", "tipo": "falha"}
+{"n": 34, "pergunta": "Qual a relação entre o contrato do hub e as skills dos agentes?", "tipo": "relacao"}
+{"n": 44, "pergunta": "Se um **agente de código** (como o Claude Code) tentar gravar em um arquivo que está em **divergência** (porque a outra máquina não sincronizou há mais de 24 horas), como o sistema impede a sobrescrição silenciosa e o que o agente vê?", "tipo": "falha"}
+{"n": 54, "pergunta": "Por que o **Vigia** não avisa se um arquivo em uma **pasta não replicada** for modificado localmente, mesmo que isso possa afetar o trabalho de agentes que dependem de dados consistentes, se essa pasta não faz parte do sync?", "tipo": "por-que"}
+{"n": 64, "pergunta": "Por que arquivos com ponto no nome são ignorados pelo sincronizador?", "tipo": "por-que"}
+{"n": 74, "pergunta": "Quando o Gustavo edita uma nota no Obsidian, como o LiveSync garante que a alteração vai para o banco?", "tipo": "quando"}
+{"n": 84, "pergunta": "Se o **LiveSync** (plugin do Obsidian) para de funcionar por causa de uma atualização do sistema, como o **sincronizador** (versão de linha de comando) compensa essa falha e evita que edições fiquem retidas em apenas uma máquina?", "tipo": "relacao"}
+{"n": 94, "pergunta": "Se um agente tentar gravar uma mudança em um arquivo que já foi alterado pelo Gustavo na outra máquina, o que não acontece automaticamente?", "tipo": "o-que-nao-faz"}
+{"n": 104, "pergunta": "Se o Gustavo mover um arquivo da pasta `operations/` para a pasta `_archive/` dentro da mesma raiz, quem é responsável por garantir que o arquivo não volte a aparecer em outras pastas ou iniciativas?", "tipo": "quem-usa"}
+{"n": 114, "pergunta": "Por que o MCP do banco verifica a versão lida antes de gravar e como lida com conflitos simultâneos de agentes diferentes?", "tipo": "por-que"}
+{"n": 124, "pergunta": "Quem decide quando uma *iniciativa* (como STRATA ou VOEGOL) deve ser movida para o `_archive/` e quem executa essa ação no *hub*?", "tipo": "quem-usa"}
+{"n": 134, "pergunta": "Se eu renomear uma raiz (por exemplo, `clients/` para `clientes/`) no disco pela linha de comando, o Sincronizador percebe que a estrutura mudou e tenta sincronizar a nova pasta, ou o Vigia me avisa que a hierarquia do hub foi alterada manualmente?", "tipo": "quem-usa"}
+{"n": 144, "pergunta": "Os arquivos que ficam na 'pasta não replicada' podem ser enviados para o GitHub privado?", "tipo": "onde-vive"}
+{"n": 154, "pergunta": "Se eu pedir para um recruta atualizar a nota de retomada e o Gustavo estiver editando o mesmo arquivo no Obsidian simultaneamente, qual versão vai prevalecer no banco de dados?", "tipo": "diferenca"}
+{"n": 164, "pergunta": "Se o **Vigia** detectar que um arquivo foi **descartado** (por exemplo, excluído acidentalmente), como o sistema recupera ou sinaliza sua versão anterior no **banco** ou no **GitHub privado**?", "tipo": "se-x"}
+{"n": 174, "pergunta": "Como as alterações feitas diretamente nos arquivos Markdown no Obsidian são transformadas de volta para o banco de dados CouchDB?", "tipo": "por-que"}
+{"n": 184, "pergunta": "Onde eu edito as habilidades específicas que os recrutas da equipe do TRF3 vão precisar, se eu quiser criar uma nova skill só para eles?", "tipo": "onde-vive"}
+{"n": 194, "pergunta": "Por que as Raízes têm pastas específicas como `clients/` e `operations/` e o que ocorre se um usuário cria uma nova pasta de nível superior?", "tipo": "por-que"}
+{"n": 204, "pergunta": "E se a rede privada do Tailscale cair e as duas máquinas acumularem mudanças diferentes por um tempo superior ao limite do Vigia?", "tipo": "falha"}
+{"n": 214, "pergunta": "Se o cliente tentar acessar o context hub e houver um arquivo grande demais para viajar, o que acontece?", "tipo": "falha"}
+{"n": 224, "pergunta": "Como o **contrato do hub** (AGENTS.md) é atualizado quando o Gustavo altera uma **skill** em uma das pastas globais, e o que acontece se um **agente** tentar usar uma versão desatualizada?", "tipo": "relacao"}
+{"n": 234, "pergunta": "Onde o GitHub privado faz backup do hub e como o Gustavo recupera um arquivo excluído acidentalmente?", "tipo": "onde-vive"}

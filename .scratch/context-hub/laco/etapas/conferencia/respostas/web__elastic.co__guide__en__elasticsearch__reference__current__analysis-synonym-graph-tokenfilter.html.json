@@ -1,0 +1,31 @@
+{
+ "chave": "web:elastic.co/guide/en/elasticsearch/reference/current/analysis-synonym-graph-tokenfilter.html",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T21:57:12Z",
+ "resultado": "corrige",
+ "conferencia": {
+  "resultado": "corrige",
+  "final": {
+   "serve": "search",
+   "role": "Synonym graph token filter handling multi-word synonyms at search time",
+   "place": [
+    "network_service"
+   ],
+   "mechanism": [
+    "full_text"
+   ],
+   "mcp": "unknown",
+   "windows": "unknown",
+   "portuguese": "unknown",
+   "license": "unknown",
+   "maturity": "unknown",
+   "doubt": false,
+   "evidence": "The synonym_graph token filter allows to easily handle synonyms, including multi-word synonyms correctly during the analysis process."
+  },
+  "o_que_mudou": [
+   "mechanism: other / bm25,full_text,hybrid,other -> full_text, it is an analysis token filter for full-text search",
+   "doubt: true -> false, README is clear"
+  ],
+  "nota": "Multi-word synonym handling for search analyzers, relevant only if Elasticsearch is adopted."
+ }
+}

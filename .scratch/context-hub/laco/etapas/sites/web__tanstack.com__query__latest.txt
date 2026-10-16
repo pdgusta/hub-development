@@ -1,0 +1,115 @@
+Search
+
+Ask AI
+
+Query Docs
+
+React
+v5LatestSearch...
+ K
+
+QueryMenuMenu
+
+Built in publicPartner-backedSponsor-supported
+
+React
+v5Latest
+
+Menu
+
+Home
+
+Blog
+
+Frameworks
+
+Contributors
+
+NPM Stats
+
+Community Resources
+
+GitHub 
+
+Discord 
+
+Query
+The server-state standard for modern frontend apps.
+Query gives async data a cache, a lifecycle, and declarative APIs for fetching, sharing, refetching, mutating, and observing server state.
+DocsCopy Query prompt
+
+query client
+
+stale0/3 fresh['issues', 'router-cache']Router dashboardfetchingP04s stale['issues', 'project-detail']Project detailfetchingP08s stale['issues', 'offline-queue']Offline mutation queuefetchingP012s stale
+
+Live off
+Bump priority
+
+useQuery()
+['issues', 'router-cache']
+Components declare the data they need. The cache coordinates fetches, subscribers, freshness, retries, and background updates.
+statussuccess
+fetchStatusfetching
+isStaletrue
+observers0
+staleTime4,000
+updatedprimed
+mutationidle
+2.7Btotal downloads88,063,082weekly downloads50,420GitHub stars
+
+Server and client state are not the same
+
+Deadly defaultsQuery keysState ManagementDevtools
+
+Deadly defaults kill boring work.
+Caching, request deduplication, retries, background refetching, window-focus updates, and garbage collection arrive wired for real applications.
+
+Cache lifecycle
+Keep data useful while the network catches up.
+Stale data can remain valuable. Render from cache immediately, refresh quietly, and clean up only after the last observer leaves.
+
+1
+Fetch
+A query function resolves data while Query owns cancellation, retries, and deduplication.
+
+2
+Share
+Every observer reads the same cache entry instead of issuing another request.
+
+3
+Revalidate
+Stale data stays visible while a background request refreshes it.
+
+4
+Collect
+Unused data remains available briefly, then garbage collection removes it.
+
+Mutations
+Writes update the world, then the cache.
+Optimistic UI, pending state, recovery, invalidation, and reconciliation stay explicit instead of scattering through components.
+
+optimistic write
+setQueryData(['todos'], next)
+
+server mutation
+await saveTodo(todo)
+
+targeted refresh
+invalidateQueries({ queryKey: ['todos'] })
+
+rollback path
+onError: restoreSnapshot
+
+Partners
+
+Gold
+
+Silver
+
+Bronze
+
+OSS Sponsors
+
+Sponsors get special perks like private discord channels, priority issue requests, and direct support!
+Become a Sponsor
+View Previous Partners

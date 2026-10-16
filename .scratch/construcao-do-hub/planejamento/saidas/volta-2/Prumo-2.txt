@@ -1,0 +1,45 @@
+                          
+      229 +  com `npm install` (faixa 5), o CLI do LiveSync (faixa 4).                                                                                                          
+      230 +- `C:\context-hub` criado com `.git`, as dez worktrees, os hooks de evento do painel em cada uma e o hub de ensaio.                                                  
+      231 +- Conferidos aqui: Node v24.19.0, Python 3.12.10, git 2.55, ripgrep 14.1.1, modo de desenvolvedor ligado.                                                            
+      232 +                                                                                                                                                                     
+      233 +### Riscos de tamanho (Prumo 2, volta 1)                                                                                                                             
+      234 +                                                                                                                                                                     
+      235 +- **Faixa 5:** o ticket 26 estima a guarda de revisão do MCP em 1 a 2 dias. Na hora cabe o núcleo (`write_note` com                                                  
+      236 +  `base_rev` que recusa versão velha com conflito visível, mais o `instructions`); candidata a Fable.                                                                
+      237 +- **Faixa 4:** o ticket 30 estima a montagem em 3 a 3,5 dias. Na hora cabem os dois CouchDB locais replicando e o CLI                                                
+      238 +  espelhando nos dois sentidos.                                                                                                                                      
+      239 +                                                                                                                                                                     
+      240  ## Fica para outra execução
+      241  
+      242  - (Worker 1, volta 1) Trazer esta frente (a prova de conceito) para o hub: "Como esta prova de conceito vira o hub
+
+● Update(plano.md)
+  ⎿  Added 6 lines
+      275  - (Worker 2, volta 1) **Login dos harnesses no HOME de ensaio.** Provar que Codex e Copilot leem o contrato num
+      276    `CODEX_HOME`/`COPILOT_HOME` de ensaio pede uma sessão autenticada lá. Recomendação: copiar só o arquivo de login
+      277    para o HOME de ensaio e apagá-lo ao fim; a alternativa é provar só a forma dos arquivos, sem rodar o harness.
+      278 +  - (Prumo 2, volta 1) Terceira saída, sem copiar login (crivo item 7): o Claude Code tem `--setting-sources                                                         
+      279 +    project,local`, `--settings <arquivo>` e `--mcp-config` com `--strict-mcp-config` (conferido no `claude --help`),                                                
+      280 +    então roda com o login atual e hooks e MCP de ensaio sem gravar em `~/.claude`; o Codex tem `-c chave=valor`                                                     
+      281 +    sobre o `config.toml` (`codex --help`), mas hooks por `-c` são **não verificados**; o Copilot só tem o                                                           
+      282 +    `COPILOT_HOME` (não verificado se há outra saída). Recomendação do Prumo 2: Claude Code e Codex por essas opções;                                                
+      283 +    o Copilot ao vivo `ready-for-human`.                                                                                                                             
+      284  - (Worker 1, volta 1) **Copiar os pilotos já desejados nesta execução?** O ticket 02 diz que `armis-docs`,
+      285    `armis-brand` e a skill `armis-docx` são copiados do vault "quando o Gustavo disser". Recomendação: sim, só cópia
+      286    (o vault não muda), pela faixa 1, depois do esqueleto pronto; se não, ficam para outra execução.
+
+  Ran 2 shell commands 
+
+● Prumo 2, volta 1: gravei no plano.md (seção "Revisão") um crivo de construção de 8 itens que toda faixa precisa passar, o rito de revisão durante a hora e o que tem de estar pronto
+  antes dela. O Docker Desktop está parado nesta máquina, e as faixas 4, 5 e 7 dependem dele. Gravei também que as fontes do mapa estimam a faixa 5 em 1 a 2 dias e a faixa 4 em 3 a
+  3,5 dias, com o núcleo de cada uma que cabe na hora, e uma forma de testar sem copiar login (vale para Claude Code e Codex; o Copilot ao vivo fica ready-for-human). Notas em
+  agentes/Prumo 2.md; mudou o plano: sim.
+
+✻ Cogitated for 21m 44s · done 9:36 PM · 1 shell still running
+
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+❯ 
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  ⬆ /gsd-update │ Opus 5.5 │ planejamento █░░░░░░░░░ 13%
+  ⏵⏵ auto mode on · 1 shell · ← 2 agents

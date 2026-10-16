@@ -1,0 +1,228 @@
+Open source AI analytics 
+you can verify
+
+Metabase gives you answers guided by your semantic layer — your metrics
+ and business logic — whether reached by an agent or a teammate. Inspect
+ the query behind every answer.
+
+Try Metabase Cloud free
+
+Deploy Metabase Open Source
+
+Total Accounts
+
+Accounts added per year, by source
+
+Payments received per quarter by plan
+
+ Chat with Metabot
+
+ Which plan drives the most revenue?
+ Which source added the most accounts in 2026?
+ How much did total accounts grow last year?
+
+Which plan drives the most revenue?
+
+Basic drives the most by a wide margin: $4.27M, 64% of total revenue.
+
+ Data Sources
+
+ Invoices
+ Data library
+
+Business is second at $2.23M (33%), and Premium trails at $205K (3%).
+
+That’s the inverse of what you’d expect. The lowest tier pulls in the most revenue, likely on customer volume alone. Could be an opening to upsell Basic accounts into Business.
+
+Want me to scope @Total Revenue by Plan to a specific time period?
+
+Which source added the most accounts in 2026?
+
+Organic added the most in 2026: 62 accounts, ahead of Google at 30. LinkedIn, Invite, and Facebook make up the rest.
+
+ Data Sources
+
+ Accounts
+ Data library
+
+The bigger signal is that 2026 is tracking below recent years across every source, so even the top channel is down on its usual pace. The slowdown is broad, not one channel falling off.
+
+Want me to compare @New Accounts by Source, 2026 vs 2025?
+
+How much did total accounts grow last year?
+
+Total accounts grew 11% last year, from 1,098 to 1,217, adding 119 net new accounts.
+
+ Data Sources
+
+ Accounts
+ Data library
+
+That’s a step down from the prior year’s pace, so growth is still positive but decelerating. Most of the gain landed in the back half of the year.
+
+Want me to break @Total Accounts down by source or plan?
+
+ Chat with Metabot
+
+Trusted by 100,000+ companies 
+ Watch a 1-minute demo 
+
+Deploy in minutes, scale infinitely
+
+Start simple. Keep your data secure and compliant as you grow.
+ From pre-seed to post-IPO.
+
+ docker run -d -p 3000:3000 metabase/metabase 
+Always open source 
+
+Run the script to spin up your free, self-hosted instance in minutes.
+ Ships with AI features. Used by millions worldwide.
+
+Connect your data and your tools 
+
+Query and visualize data from your database or warehouse. Work with
+ your data via the MCP server, CLI, APIs, Slack, and more.
+
+Enterprise-grade security 
+
+We treat your data the way we’d want ours — it’s secure and compliant
+ (SOC1, SOC2, GDPR, CCPA, and more).
+
+Business Intelligence
+
+Analytics your team will use and trust
+
+Teams can explore data on their own, guided to correct answers
+ with a trustworthy foundation. Your data team can curate a
+ governed semantic layer of canonical tables and metrics in Data
+ Studio.
+
+Query data in plain English with AI 
+
+AI on all plans so anyone can explore data, visualize results, and
+ answer their own questions. Ask Metabot AI or connect to the MCP
+ server, click on charts to find the "why" with built-in drilldowns, or
+ spin up a no-code query with the visual query builder.
+
+Explore Metabase AI
+
+"I don't need to ask an engineer to get me some special data from
+ our customer database, I can make that query on my own and help out
+ the customer in minutes vs hours or days."
+ Peer Richelsen Co-founder, Cal.com 
+
+Share reports and create custom insights 
+
+Filter and breakout interactive dashboards. Combine charts with text
+ in Documents for collaborative reporting. Set up subscriptions and
+ alerts to keep everyone in the loop.
+
+Explore interactive dashboards
+
+"Metabase continues to be the most effective way for us to build
+ reporting efficiently — a 90/10 solution to data analytics at a cost
+ effective price."
+ Derrick Mar CTO, Pathrise 
+
+Guide people to the right answers 
+
+Curate your semantic layer in Data Studio to make your data usable and
+ correct for humans and AI. Define trusted, reusable metrics, and mark
+ vetted data sources so everyone builds on consistent, accurate
+ foundations.
+
+Explore Data Studio
+
+"We love official collections — between those and models, it tells
+ people, 'This is where you start. And this is only where you
+ start!'"
+ Dave Holmes-Kinsella Head of Data Science, Synctera 
+
+Embedded Analytics
+
+Put production-grade analytics into your app without drama
+
+Embed dashboards, visualizations, and self-serve reporting in your
+ SaaS app. Multi-tenant, customizable analytics components, with
+ plumbing and permissions built in.
+
+import {
+ MetabaseProvider,
+ InteractiveQuestion,
+ defineEmbeddingSdkConfig
+} from "@metabase/embedding-sdk-react";
+
+const config = defineEmbeddingSdkConfig({
+ metabaseInstanceUrl: "https://metabase.example.com", // Required
+ authProviderUri: "https://app.example.com/sso/metabase", // SSO
+});
+
+<MetabaseProvider config={config}>
+ <InteractiveQuestion questionId={42} />
+</MetabaseProvider> 
+
+Way less engineering overhead than rolling your own in-app
+ reporting
+
+Data teams and non-technical teammates can work with data without
+ bugging devs.
+
+Self-host or deploy on Metabase Cloud
+
+Start with simple charts, embed full dashboards, or use the SDK
+ for advanced setups as your needs grow.
+
+Customizable to fit your product 
+
+White-labeling, dynamic styling, and interactive controls from
+ view-only to full data discovery with a low-code integration.
+
+Metabase scales as you grow 
+
+Advanced features for managing lots of users and compliance. Flexible even
+ as your tooling or workflow evolves.
+
+Multi-tenant data segregation 
+ Granular permissions to make sure
+ people see what they need to, and nothing else.
+
+Secure and simple access 
+
+Integrate with SSO IdPs (SAML, LDAP, JWT, Google) and map to Metabase
+ groups.
+
+Drop into SQL 
+
+When you need an escape hatch into SQL to run raw queries, tweak logic, or join tables, you're covered.
+
+Track data and dashboard usage 
+ No more unused dashboards.
+ Inspect user behavior across content, data access and downloads.
+
+Keep dashboards snappy 
+
+Go faster with result and model caching. No schedulers or pipelines needed.
+
+Test and deploy safely 
+
+Spin up staging environments without touching prod. Export configs, models, and dashboards to test or
+ scale across multiple instances.
+
+Analytics that people straight up love 
+ I discovered Metabase while wrestling with analytics complexity, and you didn’t just solve the problem — you changed how I think about business intelligence. That’s rare. Stewart Buchanan Metabase is the best BI tool for engineers hands down Prady I'm surprised Metabase isn't talked about more. The team seems laser-focused on every UX detail, making BI accessible to many more functions in an org. Of course, we self-host our Metabase instance on @render, and it Just Works™. Anurag Goel metabase is love Peer Richelsen If you’re building internal dashboards and analytics for your startup I highly recommend giving Metabase a try. By far the best and easiest tool I’ve used even for complex, in-depth analytics dashboards Mentor I'm a big fan of Metabase. Write SQL - show chart. Christopher Winslett Metabase is the most impressive piece of software I’ve used in a long time. If you have data you want to understand give it a try. It’s so easy to spin up Ryan Wilson In terms of BI, there is no second best to Metabase. Roberto just setup a metabase instance at my friends startup and now the ops team is using it left right and centre. The model feature is a game changer. h/t to Metabase for building the most delightful and well thought tool for non tech folks. 0xAHD I’m forgetting how to write SQL queries 🤔 It’s all Metabase’s fault for having such an awesome query editor Carlo Licciardi Metabase is amazing. If you're a founder, especially non technical, get your engineers to install and set it up. It's transformational! Neto TIL about Metabase. Wow, the time we've wasted not using this is incalculable. Derek Morgan I love simple and efficient tools that are straightforward. I've been using Metabase and it is simply lovely Mariana Medeiros Metabase is really really awesome. I love the speed of implementation for new dashboards and reports. Totally awesome. Can't wait for new features. Might as well learn some clojure and contrib myself! Kwamina Dare Metabase proves you can add power without taking away simplicity. Amjad Masad Searching for a relatively hassle-free reporting and dashboarding tool to hook up to your database? Can't recommend Metabase enough - lovely interface, and really great functionality out of a jar or Docker file. It's brilliant! Shane Lynn 
+
+See more love for Metabase
+
+Ready to get started? 
+
+We could keep typing, or you could just try it. AI on all plans. 100k+
+ teams already love it.
+
+ Try Metabase Cloud free 
+Deploy Metabase Open Source
+
+Free 14-day trial
+
+Super-fast setup
+
+Open source

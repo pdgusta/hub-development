@@ -1,0 +1,103 @@
+{
+ "chave": "web:arangodb.com",
+ "nomes": [
+  "Federated Search (ArangoDB)",
+  "Federated Search",
+  "ArangoDB"
+ ],
+ "urls": [
+  "https://www.arangodb.com/",
+  "https://www.arangodb.com"
+ ],
+ "readme_cortado": false,
+ "readme": "[Arango Contextual Data Platform]\n\nSkip to ContentSkip to MenuSkip to Footer \n\nContext changes everything. \nThe graph-nativedata foundation for agentic AI. \n\nGive every agent, app, and AI workload the same live view of your business. Consistent answers. Explainable decisions. \nProduction-ready from day one.\n\nWhat’s New in 4.0 \nExplore the Platform \n\nWatch: The Context Gap — Why Frankenstacks can’t solve it and how Arango does \n\nProven in 200+ production environments worldwide \n\nBuild context once.\nReuse it everywhere. \nArango ingests fragmented enterprise data and builds a graph-native context layer that your AI agent, app, and workload queries directly. \nNo pipelines rebuilding context at runtime. One platform with all the data models from source data to AI output. \n\nHow we’re different \n Arango’s Contextual Data Layer sits between your enterprise data sources and your AI agents, apps, and LLMs. Fragmented data from dozens of systems flows in. The platform connects, understands, retrieves, governs, and persists it as a unified contextual data layer built on a graph-native multimodel data foundation.\n\nWhat Arango’s contextual data layer delivers in production. \n\nExplainable Answers \nAgents grounded in a unified live contextual data layer produce outcomes that are explainable. \n\nFaster Time to Production  \nAutoGraph, Auto Ingest and Retrieval, and pre-built MCP integrations cut the time to build and operate a reliable, scalable AI data architecture. \n\nTraceable Decisions \nGraph-native lineage means you can trace every decision back to the source. Auditable end to end. \n\nSimplified Data Architecture \nOne platform replaces the need to glue together graph, vector, document, key-value, and search. Less to build, less to maintain. \n\nEnterprise-Grade \nHA/DR, RBAC, elastic scaling, and deployment flexibility built into the platform, not bolted on afterward. \n\nMassive Scale. Made Easy. \nHorizontal scale across graph, vector, document, key-value, and search. No rebuilds required. \n\nPROVEN IN PRODUCTION \nPerformance,\nefficiency,\nand trust. \n\n2000x \nFaster workloads \nQuery, index, and analyze enterprise data in real-time. Arango’s unified architecture eliminates the overhead of moving data between systems. \n\n70% \nSimpler Stack \nReplace dozens of bolted-together components with one governed platform. Less infrastructure to build, maintain, and debug. \n\nArango is our AI data platform of choice because it delivers performance, scalability, and flexibility that others can’t. As our knowledge graphs grow past 100k+ nodes and edges, Arango scaled effortlessly. \n\n— Joe Eaton, Distinguished Engineer, NVIDIA \n\nWhy leading organizations choose Arango. \n\nCustomer Stories \n\nOther platforms give you building blocks. Arango automates the hardest parts. \nA Frankenstack makes your team do all the work: build the graph, tune the retrieval, write queries across multiple systems. Arango automates the three hardest parts. \n\nAutoGraph\nAuto Ingestion\nDeep Search\nAQLizer\n\nYour enterprise knowledge graph builds itself \nMost knowledge graph projects spend months on ontology design before anything ships. Arango AutoGraph ingests your enterprise data and automatically builds a governed knowledge graph: the foundation of your live contextual data layer. Entities extracted. Relationships resolved. Schema maintained as your data changes. Production in weeks, not months. \n AutoGraph ingests structured, semi-structured, and unstructured enterprise data and automatically builds a governed knowledge graph. Entities extracted. Relationships resolved. Schema maintained as your data changes. \n\nData that’s retrieval-ready before the first query \nMost platforms store your data and hope retrieval sorts it out. It doesn’t. Arango determines the optimal processing depth for each data domain at ingestion: entity extraction, chunking, partitioning. Your contextual data layer is structured for accurate retrieval the moment data lands. No chunk-size experiments. No embedding model roulette. Quality is decided at ingestion, not at query time. \n Arango analyzes the complexity of incoming data and selects the right ingestion strategy automatically. Complex data gets full entity extraction, relationship mapping, and ontology generation. Simpler data gets chunked, embedded, and indexed. Every data domain is retrieval-ready on the way in. \n\nThe right retrieval strategy for every query, chosen automatically \nMost RAG setups pick one retrieval strategy and hope it works for every question. Arango Deep Search evaluates each query against your contextual data layer at runtime and selects the best approach: GraphRAG for multi-hop reasoning across your knowledge graph, VectorRAG for semantic search across embeddings, or both. Your context layer does the work. No retrieval pipelines to build or maintain. \n Arango Deep Search evaluates each query at runtime and routes to the right retrieval strategy: graph traversal for multi-hop relationship walks, vector search for embedding similarity, or document lookup for full-text retrieval. Results are merged, ranked, and filtered into one contextual answer. \n\nAsk in plain language, query across every data model \nArango AQLizer lets teams ask natural language questions against your contextual data layer and automatically generates optimized queries. Explore relationships across entities and systems, investigate operational patterns without writing complex queries. Natural language to graph-native querying, with the full analytical power of ArangoDB. \n AQLizer translates natural language questions into optimized AQL queries across every data model: graph, vector, document, and key-value. One query language. One platform. No context switching between systems. \n\nFOR DEVELOPERS \nBuild AI agents, assistants,\nand apps faster. \nEverything you need to go from zero to production. \n\nExplore AutoGraph \nAutomatically build a knowledge graph with your own data. \n\nDocs & Drivers \nOfficial drivers and code samples for every major language and framework. \n\nStart Building \nDownload and start building locally in minutes. \n\nYour favorite stack, ready to go. \n\nReady to eliminate the Frankenstack?  \n\nGive your AI the context it needs. \nTalk to our team and see how Arango gives your AI agents, assistants, and apps the trusted foundation they need to work in production. \n\nBook a Demo",
+ "fonte": "site",
+ "respostas": [
+  {
+   "por": "dots3-note-preview",
+   "resposta": {
+    "serve": "search",
+    "role": "Provide hybrid graph, vector, and full-text search over notes via MCP",
+    "place": [
+     "network_service",
+     "disk"
+    ],
+    "mechanism": [
+     "hybrid",
+     "full_text",
+     "vector",
+     "graph"
+    ],
+    "mcp": "yes",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "stable",
+    "doubt": true,
+    "evidence": "serve: 'Deep Search... graph traversal, vector search, or document lookup for full-text retrieval'; mcp: 'pre-built MCP integrations'; windows: not mentioned"
+   }
+  },
+  {
+   "por": "north-mini-code",
+   "resposta": {
+    "serve": "search",
+    "role": "Provides federated search and hybrid retrieval for Markdown notes",
+    "place": [
+     "disk",
+     "network_service",
+     "inside_db_mcp"
+    ],
+    "mechanism": [
+     "bm25",
+     "full_text",
+     "vector",
+     "graph",
+     "hybrid"
+    ],
+    "mcp": "yes",
+    "windows": "unknown",
+    "portuguese": "no",
+    "license": "unknown",
+    "maturity": "stable",
+    "doubt": false,
+    "evidence": "Deep Search routes to graph traversal, vector search, or full‑text retrieval. pre‑built MCP integrations cut the time to build and operate a reliable, scalable AI data architecture."
+   }
+  }
+ ],
+ "conferencia_sonnet": {
+  "chave": "web:arangodb.com",
+  "modelo": "claude-sonnet-5-5",
+  "ts": "2026-10-13T12:00:00Z",
+  "resultado": "corrige",
+  "conferencia": {
+   "resultado": "corrige",
+   "final": {
+    "serve": "stack",
+    "role": "Graph-native multimodel database platform with built-in graph, vector and full-text retrieval and MCP integrations",
+    "place": [
+     "network_service"
+    ],
+    "mechanism": [
+     "hybrid",
+     "full_text",
+     "vector",
+     "graph"
+    ],
+    "mcp": "yes",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "stable",
+    "doubt": false,
+    "evidence": "Deep Search routes to graph traversal, vector search or full-text retrieval; 'pre-built MCP integrations'; marketing page for a database platform"
+   },
+   "o_que_mudou": [
+    "serve: search -> stack, it is a server database platform, not a note search layer",
+    "portuguese: no -> unknown, README does not say",
+    "place: dropped disk and inside_db_mcp, only a network service is supported",
+    "doubt: true -> false"
+   ],
+   "nota": "Heavy enterprise graph DB platform; hub already uses CouchDB, so only a reference for graph/hybrid retrieval, not a search layer."
+  }
+ }
+}

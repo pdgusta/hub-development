@@ -1,0 +1,28 @@
+{
+ "chave": "gh:cltk/cltk",
+ "urls": [
+  "https://github.com/cltk/cltk"
+ ],
+ "tipos": [
+  "library"
+ ],
+ "termos": [
+  "CLTK Portuguese",
+  "Historical Portuguese NLP"
+ ],
+ "mencoes": 1,
+ "familias": [
+  "mistral"
+ ],
+ "primeira_onda": 5,
+ "nomes": [
+  "CLTK (Classical and Modern Portuguese)"
+ ],
+ "resumos": [
+  "A toolkit for historical and modern Portuguese NLP, including stemming, tokenization, and semantic resources."
+ ],
+ "readme_status": "ok",
+ "readme_nome": "README.md",
+ "readme_cortado": false,
+ "readme": "The Classical Language Toolkit (CLTK) is a Python library offering natural language processing (NLP) for pre-modern languages.\n\n## Installation\n\nFor the CLTK's latest version:\n\n```bash\npip install cltk\n```\n\nOptional extras\n\n- GenAI (OpenAI-backed annotation):\n\n```bash\npip install \"cltk[openai]\"\n```\n\n- Stanza (discriminative NLP backends powered by Stanford Stanza):\n\n```bash\npip install \"cltk[stanza]\"\n```\n\nYou can combine extras, for example:\n\n```bash\npip install \"cltk[openai,stanza]\"\n\n# or include local LLM support as well\npip install \"cltk[openai,stanza,ollama]\"\n```\n\n- Local LLMs via Ollama:\n\nInstall the optional extra and ensure an Ollama server is running locally:\n\n```bash\npip install \"cltk[ollama]\"\n```\n\nBy default, when using `backend='ollama'`, CLTK uses the model `llama3.1:8b`. To choose a different local model, pass the `model` parameter to `NLP(...)`, e.g. `qwen2.5:14b`, `gemma2:27b`, `llama3.1:70b`, or any Ollama model string.\n\n### Choosing a model\n\n- OpenAI backend (GenAI in the cloud):\n\n```python\nfrom cltk import NLP\n\n# Default model is \"gpt-5-mini\" when backend='openai'\nnlp = NLP('lati1261', backend='openai')\n\n# Choose a specific model\nnlp_big = NLP('lati1261', backend='openai', model='gpt-5')\n\n# Requires OPENAI_API_KEY to be set in the environment\n# (e.g., via a .env file or shell env var)\n```\n\n- Ollama backend (local LLMs):\n\n```python\nfrom cltk import NLP\n\n# Default model is \"llama3.1:8b\" when backend='ollama'\nnlp_local = NLP('lati1261', backend='ollama')\n\n# Choose a specific local model (any installed/pullable Ollama model)\nnlp_qwen = NLP('lati1261', backend='ollama', model='qwen2.5:14b')\n\n# To use the hosted Ollama Cloud, set OLLAMA_CLOUD_API_KEY\n# and choose backend='ollama-cloud'. The same model strings apply.\n```\n\nFor more information, see [Installation docs](https://docs.cltk.org/en/latest/installation.html) or, to install from source, [Development](https://docs.cltk.org/en/latest/development.html).\n\nPre-1.0 software remains available on the [branch v0.1.x](https://github.com/cltk/cltk/tree/v0.1.x) and docs at <https://legacy.cltk.org>. Install it with `pip install \"cltk<1.0\"`.\n\n## Documentation\n\nDocumentation at <https://docs.cltk.org>.\n\n## Citation\n\nWhen using the CLTK, please cite [the following publication](https://aclanthology.org/2021.acl-demo.3), including the DOI:\n\nJohnson, Kyle P., Patrick J. Burns, John Stewart, Todd Cook, Clément Besnier, and William J. B. Mattingly. \"The Classical Language Toolkit: An NLP Framework for Pre-Modern Languages.\" In *Proceedings of the 59th Annual Meeting of the Association for Computational Linguistics and the 11th International Joint Conference on Natural Language Processing: System Demonstrations*, pp. 20-29. 2021. 10.18653/v1/2021.acl-demo.3\n\nThe complete BibTeX entry:\n\n```bibtex\n@inproceedings{johnson-etal-2021-classical,\n    title = \"The {C}lassical {L}anguage {T}oolkit: {A}n {NLP} Framework for Pre-Modern Languages\",\n    author = \"Johnson, Kyle P.  and\n      Burns, Patrick J.  and\n      Stewart, John  and\n      Cook, Todd  and\n      Besnier, Cl{\\'e}ment  and\n      Mattingly, William J. B.\",\n    booktitle = \"Proceedings of the 59th Annual Meeting of the Association for Computational Linguistics and the 11th International Joint Conference on Natural Language Processing: System Demonstrations\",\n    month = aug,\n    year = \"2021\",\n    address = \"Online\",\n    publisher = \"Association for Computational Linguistics\",\n    url = \"https://aclanthology.org/2021.acl-demo.3\",\n    doi = \"10.18653/v1/2021.acl-demo.3\",\n    pages = \"20--29\",\n    abstract = \"This paper announces version 1.0 of the Classical Language Toolkit (CLTK), an NLP framework for pre-modern languages. The vast majority of NLP, its algorithms and software, is created with assumptions particular to living languages, thus neglecting certain important characteristics of largely non-spoken historical languages. Further, scholars of pre-modern languages often have different goals than those of living-language researchers. To fill this void, the CLTK adapts ideas from several leading NLP frameworks to create a novel software architecture that satisfies the unique needs of pre-modern languages and their researchers. Its centerpiece is a modular processing pipeline that balances the competing demands of algorithmic diversity with pre-configured defaults. The CLTK currently provides pipelines, including models, for almost 20 languages.\",\n}\n```\n\n## License\n\nCopyright (c) 2014–present Kyle P. Johnson under the [MIT License](https://github.com/cltk/cltk/blob/master/LICENSE).\n"
+}

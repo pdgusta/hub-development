@@ -1,0 +1,54 @@
+{
+ "chave": "web:ibm.com/quantum",
+ "nomes": [
+  "IBM Quantum"
+ ],
+ "urls": [
+  "https://www.ibm.com/quantum"
+ ],
+ "readme_cortado": false,
+ "readme": "[IBM Quantum Computing | Home Qiskit logo]\n\nWhat's new at IBM Quantum?Check out the latest tools, updates, and resources delivered in the past quarter. Learn more\n\nNow live: IBM Quantum Nighthawk r2\nHigher circuit throughput leads to accelerated real-world quantum workloads so you can achieve more with the same capacity. Early demonstrations show advantage large-scale applications running up to 12x faster than IBM Quantum Heron.\n\nRead the blogGet access\n\nBringing useful quantum computing to the world\n\nIBM Quantum® is a full-stack quantum computing provider. Access the world’s largest fleet of 100+ qubit quantum computers and performant Qiskit software tools with IBM Quantum Platform.\n\nTrusted by 300+ clients and partners\n\nPause\n\nIBM quantum computers offer the speed, scale, and quality necessary to power scientific discovery. Their modular design enables integration with classical resources for quantum-centric demonstrations of advantage.\n\nAccelerate algorithm and application development with Qiskit Functions, a catalog of IBM and third-party services.\n\nv2.5.2(opens in a new tab)\n\nQiskit \n\nQiskit is the world’s most popular and performant open-source software stack for quantum computing and algorithms research. Build, optimize, and execute quantum workloads at scale.\nLearn moreGet started(opens in a new tab)\n\nPython\n\nC\n\nC++\n\nimport qiskit\n\ndef main():\n # Build a bell state\n qc = qiskit.QuantumCircuit(2, 2)\n qc.h(0)\n qc.cx(0, 1)\n qc.measure(0, 0)\n qc.measure(1, 1)\n\n#include <qiskit.h>\n\nint main(int argc, char *arv[]) {\n // Build a bell state\n QkCircuit *qc = qk_circuit_new(2, 2);\n uint32_t h_qargs[1] = {0, };\n qk_circuit_gate(qc, QkGate_H, h_qargs, NULL);\n uint32_t cx_qargs[2] = {0, 1};\n qk_circuit_gate(qc, QkGate_CX, cx_qargs, NULL);\n for (uint32_t i = 0; i < 2; i++) {\n qk_circuit_measure(qc, i, i);\n }\n qk_circuit_free(qc);\n}\n\n#include <circuit/quantumcircuit.hpp>\n\nusing namespace Qiskit::circuit;\n\nint main() {\n QuantumRegister qr(2);\n ClassicalRegister cr(2);\n QuantumCircuit circ(qr, cr);\n circ.h(0);\n circ.cx(0, 1);\n circ.measure(0, 0);\n circ.measure(1, 1);\n}\n\nDiscovering advantage together\n\nThe IBM Quantum Network includes academic institutions, industry clients, startups, and other partners advancing quantum computing. Discover the benefits of participating in the world’s largest network of quantum innovators.\nLearn more\n\n300+\nTotal network members\n\n60+\nStartup partners\n\n100+\nCompleted prototypes \n\"Prototype\" here refers to a joint technical demonstration that evaluates the feasibility of a selected use case.\n\n5K+\nResearch papers \nResearch papers on arXiv using Qiskit and/or IBM quantum hardware\n\nAdvancing algorithms and applications research\n\nIBM is collaborating with client and partners across industry and academia to develop new algorithms and applications that go beyond classical computing. Explore the research we are driving to solve society’s toughest problems.\nView latest research\n\nLatest news\n\nWhat's new at IBM Quantum Q3 2026\n\nQiskit beyond Python: Fortran, C++, and Julia\n\nDirected execution: Scaling a research platform for quantum error correction\n\nThe continuous path from error mitigation to fault-tolerant quantum computing\n\nGet started for free\n\nAccess quantum computers, documentation, and courses on IBM Quantum Platform. Sign up today to get 10 free minutes of execution time per month on our 100+ qubit quantum computers.\nExplore the platform\n\nScale to fault tolerance\n\nIBM has the most practical path to realizing fault-tolerant quantum computing. Our roadmap charts the engineering milestones required to build quantum systems with hundreds of logical qubits capable of running millions of quantum gates by the end of the decade.\nExplore the roadmap",
+ "fonte": "site",
+ "respostas": [
+  {
+   "por": "nemotron-3-super-120b",
+   "resposta": {
+    "serve": "none",
+    "role": "",
+    "place": [
+     "n/a"
+    ],
+    "mechanism": [
+     "n/a"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "unknown",
+    "doubt": false,
+    "evidence": "IBM Quantum® is a full-stack quantum computing provider. Access the world’s largest fleet of 100+ qubit quantum computers and performant Qiskit software tools with IBM Quantum Platform."
+   }
+  },
+  {
+   "por": "voxtral-small-2507",
+   "resposta": {
+    "serve": "none",
+    "role": "",
+    "place": [
+     "n/a"
+    ],
+    "mechanism": [
+     "n/a"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "unknown",
+    "doubt": true,
+    "evidence": "IBM Quantum is a full-stack quantum computing provider, unrelated to the hub's needs."
+   }
+  }
+ ]
+}

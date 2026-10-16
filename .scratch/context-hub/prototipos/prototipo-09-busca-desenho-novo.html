@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Busca, desenho novo</title>
+<link rel="stylesheet" href="fontes/desenho-novo.css">
+<style>
+  :root{
+    --paper:#f3f0e8; --ink:#111; --soft:#5b5852; --rule:#111; --red:#e5301b; --blue:#1d4ed8;
+    --green:#0f7a43; --hl:#ffe14d; --card:#fffdf7; --gray:#d9d4c7;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.5 Archivo,system-ui,sans-serif}
+  main{max-width:1120px;margin:0 auto;padding:0 16px 80px}
+  .mono{font-family:"JetBrains Mono",ui-monospace,monospace}
+  /* cabeçalho cartaz */
+  header{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:end;border-bottom:10px solid var(--ink);padding:40px 0 18px}
+  header h1{font:400 clamp(48px,9vw,112px)/.86 "Archivo Black",sans-serif;letter-spacing:-.03em;margin:0;text-transform:uppercase}
+  header h1 span{color:var(--red)}
+  header .meta{text-align:right;font:500 13px/1.6 "JetBrains Mono",monospace}
+  header .meta b{display:inline-block;background:var(--ink);color:var(--paper);padding:2px 8px;margin-bottom:6px}
+  .faixa{display:flex;flex-wrap:wrap;gap:10px 28px;padding:12px 0;border-bottom:2px solid var(--ink);font:500 13px "JetBrains Mono",monospace}
+  .nv{background:linear-gradient(180deg,transparent 30%,var(--hl) 30%,var(--hl) 92%,transparent 92%);padding:0 3px}
+  /* seções */
+  section{display:grid;grid-template-columns:150px minmax(0,1fr);gap:0 28px;padding:44px 0 36px;border-bottom:2px solid var(--ink)}
+  .num{font:400 120px/.8 "Archivo Black",sans-serif;color:var(--red);letter-spacing:-.05em}
+  .num small{display:block;font:700 12px/1.3 "JetBrains Mono",monospace;color:var(--ink);letter-spacing:.08em;margin-top:14px;text-transform:uppercase}
+  h2{font:400 clamp(28px,4vw,42px)/1 "Archivo Black",sans-serif;text-transform:uppercase;letter-spacing:-.02em;margin:0 0 14px}
+  .lead{font-size:20px;line-height:1.4;max-width:62ch;margin:0 0 18px}
+  .ana{display:grid;grid-template-columns:54px 1fr;gap:14px;align-items:start;background:var(--ink);color:var(--paper);padding:16px 18px;margin:20px 0;max-width:820px}
+  .ana svg{width:54px;height:54px}
+  .ana b{color:var(--hl)}
+  svg.dg{width:100%;height:auto;display:block;margin:10px 0 4px;background:var(--card);border:2px solid var(--ink)}
+  svg.dg text:not([font-family]){font-family:Archivo,sans-serif}
+  /* pergunta */
+  .perg{margin-top:26px;border:3px solid var(--ink);background:var(--card);position:relative}
+  .perg .tit{display:flex;gap:14px;align-items:center;background:var(--red);color:#fff;padding:10px 16px;font:400 22px/1.15 "Archivo Black",sans-serif;text-transform:uppercase}
+  .perg .tit .mono{font-size:13px;background:#fff;color:var(--red);padding:3px 8px;white-space:nowrap}
+  .ops{display:grid;grid-template-columns:1fr 1fr;gap:0}
+  .op{padding:14px 16px;border-top:2px solid var(--ink)}
+  .op+.op{border-left:2px solid var(--ink)}
+  .op h4{margin:0 0 6px;font:700 13px "JetBrains Mono",monospace;text-transform:uppercase;letter-spacing:.04em}
+  .op.rec{background:#fff6c9}
+  .op.rec h4::after{content:"  ★ recomendada";color:var(--red)}
+  .op p{margin:0;font-size:15.5px}
+  /* formatos */
+  .trays{display:grid;grid-template-columns:1.1fr 1fr .9fr;gap:14px;margin:18px 0}
+  .tray{border:2px solid var(--ink);background:var(--card);padding:14px}
+  .tray h3{margin:0 0 4px;font:400 18px "Archivo Black",sans-serif;text-transform:uppercase}
+  .tray .k{font:500 12px "JetBrains Mono",monospace;color:var(--soft);margin-bottom:12px}
+  .files{display:flex;flex-wrap:wrap;gap:8px}
+  .f{width:62px;height:76px;border:2px solid var(--ink);position:relative;display:flex;align-items:flex-end;justify-content:center;padding-bottom:8px;font:700 13px "JetBrains Mono",monospace;background:#fff;clip-path:polygon(0 0,72% 0,100% 20%,100% 100%,0 100%)}
+  .f::before{content:"";position:absolute;right:-2px;top:-2px;width:28%;height:20%;background:var(--ink)}
+  .f.t{background:#e3f4e9}.f.b{background:#fde8e4}.f.o{background:#ebe8e0;color:var(--soft)}
+  .tray.must{border-width:4px;border-color:var(--green)}
+  .tray.must h3{color:var(--green)}
+  .tray.bonus h3{color:var(--red)}
+  /* tabela */
+  .tab{border:3px solid var(--ink);background:var(--card);margin-top:14px;overflow-x:auto}
+  table{border-collapse:collapse;width:100%;font-size:15px;table-layout:fixed;min-width:640px}
+  th,td{padding:10px 12px;border-bottom:1px solid var(--gray);vertical-align:top;text-align:left}
+  col.k{width:22%}
+  thead th{background:var(--ink);color:var(--paper);font:400 20px "Archivo Black",sans-serif}
+  thead th small{display:block;font:700 11px "JetBrains Mono",monospace;margin-top:4px;letter-spacing:.06em}
+  thead th.c-ent small{color:var(--hl)} thead th.c-res small{color:var(--gray)}
+  thead th.c-res{background:#3a3832}
+  tbody th{font:700 12px/1.35 "JetBrains Mono",monospace;text-transform:uppercase;letter-spacing:.03em;width:21%}
+  tbody th small{display:block;text-transform:none;color:var(--soft);font-weight:500;letter-spacing:0}
+  tbody tr:nth-child(even){background:#f7f4ec}
+  .ok{color:var(--green);font-weight:700}.no{color:var(--red);font-weight:700}
+  td.star{background:#e3f4e9!important;outline:3px solid var(--green);outline-offset:-3px}
+  .sai{border:3px solid var(--ink);border-top:0;padding:10px 12px;font-size:15px;color:var(--soft);background:var(--card)}
+  .sai b:first-child{text-decoration:line-through;text-decoration-color:var(--red);text-decoration-thickness:3px;color:var(--ink)}
+  .sai span{font:700 11px "JetBrains Mono",monospace;background:var(--red);color:#fff;padding:2px 6px;margin:0 8px}
+  .virou{display:grid;grid-template-columns:1fr 60px 1fr;align-items:center;gap:0;margin:22px 0;border:3px solid var(--ink);background:var(--card)}
+  .virou>div{padding:16px}
+  .virou .seta{font:400 40px "Archivo Black";text-align:center;color:var(--red)}
+  .virou .antes{color:var(--soft)}
+  .virou .antes b{text-decoration:line-through;text-decoration-color:var(--red);text-decoration-thickness:2px}
+  .virou .depois{background:#e3f4e9;align-self:stretch}
+  .virou h5{margin:0 0 4px;font:700 11px "JetBrains Mono",monospace;text-transform:uppercase;letter-spacing:.08em}
+  .passos{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+  .passos span{border:2px solid var(--ink);padding:6px 10px;font:500 13px "JetBrains Mono",monospace;background:var(--card)}
+  footer{padding:20px 0;font:500 12px "JetBrains Mono",monospace;color:var(--soft)}
+  @media (max-width:760px){
+    header{grid-template-columns:1fr} header .meta{text-align:left}
+    section{grid-template-columns:1fr} .num{font-size:72px;margin-bottom:10px}
+    .ops,.trays,.virou{grid-template-columns:1fr} .op+.op{border-left:0}
+    .virou .seta{transform:rotate(90deg)}
+  }
+</style>
+</head>
+<body>
+<main>
+
+<header>
+  <h1>Busca,<br><span>desenho</span> novo</h1>
+  <div class="meta"><b>CAMADA DE BUSCA · RODADA 4</b><br>2026-10-13<br>explica, não simula<br>nada instalado nem testado</div>
+</header>
+<div class="faixa">
+  <span>leia de cima para baixo</span>
+  <span>cada bloco termina numa pergunta da nota "Rodada atual"</span>
+  <span><span class="nv">amarelo = não verificado</span></span>
+</div>
+
+<!-- 01 -->
+<section>
+  <div class="num">01<small>o que<br>mudou</small></div>
+  <div>
+    <h2>A busca perdeu dois empregos</h2>
+    <p class="lead">Na rodada 1 a busca seria a porta única do agente: achar, gravar e mostrar o sync. Hoje gravar e vigiar já têm dono. Sobra <b>achar</b>.</p>
+    <svg class="dg" viewBox="0 0 1000 330" role="img" aria-label="Antes: a busca fazia três coisas. Agora: busca acha, MCP do banco grava, vigia mostra o sync">
+      <defs>
+        <marker id="a1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10z" fill="#111"/></marker>
+        <marker id="a2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10z" fill="#e5301b"/></marker>
+      </defs>
+      <text x="30" y="40" font-size="13" font-weight="700" fill="#5b5852" font-family="JetBrains Mono">ANTES · RODADA 1</text>
+      <rect x="30" y="58" width="300" height="240" fill="#ebe8e0" stroke="#111" stroke-width="2"/>
+      <text x="50" y="96" font-size="26" font-family="Archivo Black">BUSCA</text>
+      <text x="50" y="118" font-size="13" fill="#5b5852">porta única do agente</text>
+      <g font-size="17" font-weight="700">
+        <rect x="50" y="138" width="260" height="40" fill="#fff" stroke="#111" stroke-width="2"/><text x="66" y="164">🔍 achar</text>
+        <rect x="50" y="186" width="260" height="40" fill="#fff" stroke="#111" stroke-width="2"/><text x="66" y="212">✎ gravar</text>
+        <rect x="50" y="234" width="260" height="40" fill="#fff" stroke="#111" stroke-width="2"/><text x="66" y="260">◷ estado do sync</text>
+      </g>
+      <path d="M345 178 L400 178" stroke="#e5301b" stroke-width="5" marker-end="url(#a2)"/>
+      <text x="580" y="40" font-size="13" font-weight="700" fill="#e5301b" font-family="JetBrains Mono">AGORA · TRÊS DONOS</text>
+      <g>
+        <rect x="420" y="58" width="180" height="200" fill="#111"/>
+        <text x="440" y="96" font-size="20" font-family="Archivo Black" fill="#ffe14d">BUSCA</text>
+        <text x="440" y="150" font-size="44">🔍</text>
+        <text x="440" y="200" font-size="19" font-weight="700" fill="#fff">só acha</text>
+        <text x="440" y="224" font-size="13" fill="#d9d4c7">lê a vista em disco</text>
+        <rect x="610" y="58" width="180" height="200" fill="#fff" stroke="#111" stroke-width="2"/>
+        <text x="630" y="96" font-size="20" font-family="Archivo Black">MCP DO BANCO</text>
+        <text x="630" y="150" font-size="44">✎</text>
+        <text x="630" y="200" font-size="19" font-weight="700">grava</text>
+        <text x="630" y="224" font-size="13" fill="#5b5852">confere a versão</text>
+        <rect x="800" y="58" width="180" height="200" fill="#fff" stroke="#111" stroke-width="2"/>
+        <text x="820" y="96" font-size="20" font-family="Archivo Black">VIGIA</text>
+        <text x="820" y="150" font-size="44">◷</text>
+        <text x="820" y="200" font-size="19" font-weight="700">estado do sync</text>
+        <text x="820" y="224" font-size="13" fill="#5b5852">a cada 5 min</text>
+      </g>
+      <rect x="420" y="270" width="560" height="34" fill="#e3f4e9" stroke="#0f7a43" stroke-width="2"/>
+      <text x="436" y="292" font-size="14" font-weight="700" fill="#0f7a43">⟳ sincronizador mantém a vista em disco viva · Obsidian pode ficar fechado</text>
+    </svg>
+    <div class="ana">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#ffe14d" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5a2 2 0 0 1 2-2h12v18H6a2 2 0 0 1-2-2z"/><path d="M4 19a2 2 0 0 1 2-2h12M9 7h6"/></svg>
+      <div>Uma biblioteca. Antes, um só balcão achava livros, recebia devoluções e contava empréstimos. Agora são três funcionários: o <b>fichário</b> só aponta a estante (busca), o <b>protocolo</b> registra cada entrada conferindo a edição (MCP do banco) e o <b>porteiro</b> diz se a outra filial está em dia (vigia).</div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 -->
+<section>
+  <div class="num">02<small>onde<br>ela mora</small></div>
+  <div>
+    <h2>Busca no disco de cada máquina</h2>
+    <p class="lead">Cada máquina busca no próprio disco. Quem não tem disco do hub pergunta pela tailnet ao serviço de busca de uma delas.</p>
+    <svg class="dg" viewBox="0 0 1000 450" role="img" aria-label="Duas máquinas, cada uma com agente, MCP do banco, CouchDB, busca e vista em disco; cliente sem disco busca pela tailnet">
+      <defs>
+        <marker id="b1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#111"/></marker>
+        <marker id="b2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#e5301b"/></marker>
+        <marker id="b3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#0f7a43"/></marker>
+      </defs>
+      <!-- máquinas -->
+      <rect x="20" y="30" width="444" height="300" fill="none" stroke="#111" stroke-width="3"/>
+      <rect x="20" y="30" width="200" height="26" fill="#111"/><text x="30" y="48" font-size="13" font-weight="700" fill="#fff" font-family="JetBrains Mono">MÁQUINA 1 · NOTEBOOK</text>
+      <rect x="536" y="30" width="444" height="300" fill="none" stroke="#111" stroke-width="3"/>
+      <rect x="780" y="30" width="200" height="26" fill="#111"/><text x="790" y="48" font-size="13" font-weight="700" fill="#fff" font-family="JetBrains Mono">MÁQUINA 2 · PESSOAL</text>
+      <g font-size="15" font-weight="700">
+        <!-- m1 linha de cima -->
+        <rect x="40" y="80" width="104" height="56" fill="#fff" stroke="#111" stroke-width="2"/><text x="92" y="113" text-anchor="middle">🤖 agente</text>
+        <rect x="190" y="80" width="104" height="56" fill="#fff" stroke="#111" stroke-width="2"/><text x="242" y="106" text-anchor="middle">MCP do</text><text x="242" y="124" text-anchor="middle">banco</text>
+        <rect x="340" y="80" width="104" height="56" fill="#fff" stroke="#111" stroke-width="2"/><text x="392" y="113" text-anchor="middle">CouchDB</text>
+        <!-- m1 linha de baixo -->
+        <rect x="190" y="230" width="104" height="56" fill="#111"/><text x="242" y="256" text-anchor="middle" fill="#ffe14d">BUSCA</text><text x="242" y="275" text-anchor="middle" fill="#fff" font-size="12" font-weight="500">só acha</text>
+        <rect x="340" y="230" width="104" height="56" fill="#e3f4e9" stroke="#0f7a43" stroke-width="2"/><text x="392" y="256" text-anchor="middle">vista</text><text x="392" y="275" text-anchor="middle" font-size="12" font-weight="500">em disco</text>
+        <!-- m2 espelhada -->
+        <rect x="556" y="80" width="104" height="56" fill="#fff" stroke="#111" stroke-width="2"/><text x="608" y="113" text-anchor="middle">CouchDB</text>
+        <rect x="706" y="80" width="104" height="56" fill="#fff" stroke="#111" stroke-width="2"/><text x="758" y="106" text-anchor="middle">MCP do</text><text x="758" y="124" text-anchor="middle">banco</text>
+        <rect x="856" y="80" width="104" height="56" fill="#fff" stroke="#111" stroke-width="2"/><text x="908" y="113" text-anchor="middle">🤖 agente</text>
+        <rect x="556" y="230" width="104" height="56" fill="#e3f4e9" stroke="#0f7a43" stroke-width="2"/><text x="608" y="256" text-anchor="middle">vista</text><text x="608" y="275" text-anchor="middle" font-size="12" font-weight="500">em disco</text>
+        <rect x="706" y="230" width="104" height="56" fill="#111"/><text x="758" y="256" text-anchor="middle" fill="#ffe14d">BUSCA</text><text x="758" y="275" text-anchor="middle" fill="#fff" font-size="12" font-weight="500">só acha</text>
+      </g>
+      <g font-size="12" font-weight="700" font-family="JetBrains Mono">
+        <!-- m1 setas -->
+        <path d="M144 100 L188 100" stroke="#111" stroke-width="2" marker-end="url(#b1)"/><text x="166" y="92" text-anchor="middle">grava</text>
+        <path d="M294 108 L338 108" stroke="#111" stroke-width="2" marker-end="url(#b1)"/>
+        <path d="M92 136 L92 258 L188 258" fill="none" stroke="#e5301b" stroke-width="2.5" marker-end="url(#b2)"/><text x="100" y="200" fill="#e5301b">pergunta</text>
+        <path d="M294 258 L338 258" stroke="#e5301b" stroke-width="2.5" marker-end="url(#b2)"/><text x="316" y="250" text-anchor="middle" fill="#e5301b">lê</text>
+        <path d="M392 138 L392 228" stroke="#0f7a43" stroke-width="2.5" marker-start="url(#b3)" marker-end="url(#b3)"/><text x="398" y="178" fill="#0f7a43">sincro-</text><text x="398" y="192" fill="#0f7a43">nizador</text>
+        <!-- m2 setas -->
+        <path d="M856 100 L812 100" stroke="#111" stroke-width="2" marker-end="url(#b1)"/><text x="834" y="92" text-anchor="middle">grava</text>
+        <path d="M706 108 L662 108" stroke="#111" stroke-width="2" marker-end="url(#b1)"/>
+        <path d="M908 136 L908 258 L812 258" fill="none" stroke="#e5301b" stroke-width="2.5" marker-end="url(#b2)"/><text x="900" y="200" text-anchor="end" fill="#e5301b">pergunta</text>
+        <path d="M706 258 L662 258" stroke="#e5301b" stroke-width="2.5" marker-end="url(#b2)"/><text x="684" y="250" text-anchor="middle" fill="#e5301b">lê</text>
+        <path d="M608 138 L608 228" stroke="#0f7a43" stroke-width="2.5" marker-start="url(#b3)" marker-end="url(#b3)"/><text x="602" y="178" text-anchor="end" fill="#0f7a43">sincro-</text><text x="602" y="192" text-anchor="end" fill="#0f7a43">nizador</text>
+        <!-- réplica -->
+        <path d="M446 104 L554 104" stroke="#1d4ed8" stroke-width="2.5" marker-start="url(#b1)" marker-end="url(#b1)"/>
+        <text x="500" y="94" text-anchor="middle" fill="#1d4ed8">réplica</text><text x="500" y="124" text-anchor="middle" fill="#1d4ed8">tailnet</text>
+      </g>
+      <!-- cliente sem disco -->
+      <rect x="132" y="372" width="220" height="60" fill="#fff" stroke="#111" stroke-width="2" stroke-dasharray="6 4"/>
+      <text x="146" y="396" font-size="15" font-weight="700">☁ cliente sem disco</text>
+      <text x="146" y="416" font-size="12.5" fill="#5b5852">sandbox · máquina de passagem</text>
+      <path d="M242 370 L242 290" stroke="#e5301b" stroke-width="2.5" stroke-dasharray="7 5" marker-end="url(#b2)"/>
+      <text x="252" y="356" font-size="12" font-weight="700" fill="#e5301b" font-family="JetBrains Mono">pergunta · tailnet</text>
+      <rect x="470" y="372" width="510" height="60" fill="#fff6c9" stroke="#111" stroke-width="2"/>
+      <text x="486" y="396" font-size="14" font-weight="700">a busca responde pela rede?</text>
+      <rect x="484" y="404" width="200" height="18" fill="#ffe14d"/>
+      <text x="486" y="417" font-size="13"><tspan font-weight="700" fill="#5b5852">nenhuma pesquisa olhou ainda</tspan> · é o que decide entre A e B</text>
+    </svg>
+
+    <p style="margin:26px 0 6px;font:700 13px 'JetBrains Mono',monospace;text-transform:uppercase">Alternativa B · busca dentro do MCP do banco</p>
+    <svg class="dg" viewBox="0 0 1000 170" role="img" aria-label="Alternativa B: o agente fala com uma porta só, o MCP do banco que grava e acha com índice próprio">
+      <defs><marker id="c1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#111"/></marker></defs>
+      <rect x="30" y="50" width="150" height="70" fill="#fff" stroke="#111" stroke-width="2"/><text x="105" y="83" text-anchor="middle" font-size="15" font-weight="700">🤖 agente</text><text x="105" y="104" text-anchor="middle" font-size="12" fill="#5b5852">ou cliente</text>
+      <path d="M182 85 L300 85" stroke="#111" stroke-width="2.5" marker-end="url(#c1)"/><text x="241" y="76" text-anchor="middle" font-size="12" font-weight="700" font-family="JetBrains Mono">porta única</text>
+      <rect x="302" y="22" width="380" height="126" fill="#fff" stroke="#111" stroke-width="3"/>
+      <text x="318" y="46" font-size="15" font-family="Archivo Black">MCP DO BANCO · fork</text>
+      <rect x="318" y="62" width="160" height="70" fill="#ebe8e0" stroke="#111" stroke-width="1.5"/><text x="398" y="94" text-anchor="middle" font-size="15" font-weight="700">✎ grava</text><text x="398" y="114" text-anchor="middle" font-size="12" fill="#5b5852">já planejado</text>
+      <rect x="506" y="62" width="160" height="70" fill="#111"/><text x="586" y="94" text-anchor="middle" font-size="15" font-weight="700" fill="#ffe14d">🔍 acha</text><text x="586" y="114" text-anchor="middle" font-size="12" fill="#fff">índice construído por nós</text>
+      <path d="M684 85 L790 85" stroke="#111" stroke-width="2.5" marker-end="url(#c1)"/>
+      <rect x="792" y="50" width="170" height="70" fill="#fff" stroke="#111" stroke-width="2"/><text x="877" y="91" text-anchor="middle" font-size="15" font-weight="700">CouchDB</text>
+      <rect x="506" y="140" width="160" height="24" fill="#e5301b"/><text x="586" y="157" text-anchor="middle" font-size="12.5" font-weight="700" fill="#fff" font-family="JetBrains Mono">custo: 3 a 7 dias</text>
+    </svg>
+    <p style="font-size:14px;color:var(--soft);margin:4px 0 0">Custo estimado na pesquisa de montagem (CouchDB, LiveSync e MCP).</p>
+
+    <div class="ana">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#ffe14d" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V9l7-5 7 5v12M9 21v-6h6v6"/></svg>
+      <div>Cada máquina é uma <b>filial</b> com estante própria (a vista em disco), reabastecida sozinha pelo caminhão (sincronizador). O fichário de cada filial só olha a própria estante. Quem não tem filial <b>telefona</b> para uma e pergunta. A alternativa é um <b>balcão único</b> que registra e acha, mas aí o fichário teria de ser feito por nós.</div>
+    </div>
+
+    <div class="perg">
+      <div class="tit"><span class="mono">pergunta 78</span>O que a busca faz agora?</div>
+      <div class="ops">
+        <div class="op rec"><h4>A</h4><p>Só <b>acha</b>, lendo a vista em disco de cada máquina. Clientes sem disco buscam pela tailnet no serviço de busca de uma das máquinas.</p></div>
+        <div class="op"><h4>B</h4><p>A busca mora <b>dentro do MCP do banco</b>: uma porta só para achar e gravar. Custo: construir o índice, de 3 a 7 dias.</p></div>
+      </div>
+      <div class="op" style="border-top:2px solid var(--ink)"><p><b>Recomendação:</b> A. B fica de reserva se nenhuma candidata conseguir responder pela rede.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 -->
+<section>
+  <div class="num">03<small>o que<br>ela lê</small></div>
+  <div>
+    <h2>O disco agora tem de tudo</h2>
+    <p class="lead">O sincronizador traz para o disco todo arquivo comum até <b>200 MiB</b>, não só <code>.md</code>. Pastas com ponto ficam fora. A pergunta é o que a busca é obrigada a achar.</p>
+    <div class="trays">
+      <div class="tray must">
+        <h3>Obrigatório</h3><div class="k">texto · o leitor abre direto</div>
+        <div class="files"><div class="f t">.md</div><div class="f t">.txt</div><div class="f t">.csv</div></div>
+      </div>
+      <div class="tray bonus">
+        <h3>Conta ponto</h3><div class="k">documento · precisa extrair o texto</div>
+        <div class="files"><div class="f b">.docx</div><div class="f b">.pdf</div><div class="f b">.xlsx</div></div>
+        <p style="margin:12px 0 0;font-size:14px"><span class="nv">se alguma candidata lê esses formatos: não verificado</span></p>
+      </div>
+      <div class="tray">
+        <h3>Fora da cobrança</h3><div class="k">vai ao disco · a busca não é cobrada</div>
+        <div class="files"><div class="f o">.py</div><div class="f o">.json</div><div class="f o">.png</div></div>
+      </div>
+    </div>
+    <div class="ana">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#ffe14d" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l9-4 9 4v10l-9 4-9-4z"/><path d="M3 7l9 4 9-4M12 11v10"/></svg>
+      <div>Na estante há <b>livros abertos</b> e <b>caixas lacradas</b>. O fichário tem de catalogar os livros. Abrir as caixas e catalogar o que há dentro é bônus: exigir isso agora poderia reprovar todo candidato antes da audição.</div>
+    </div>
+    <div class="perg">
+      <div class="tit"><span class="mono">pergunta 79</span>Que arquivos a busca precisa achar?</div>
+      <div class="ops">
+        <div class="op rec"><h4>A</h4><p>Obrigatório só texto: <code>.md</code>, <code>.txt</code>, <code>.csv</code>. Achar dentro de <code>.docx</code>, <code>.pdf</code> e <code>.xlsx</code> conta ponto no teste.</p></div>
+        <div class="op"><h4>B</h4><p>Achar dentro de <code>.docx</code>, <code>.pdf</code> e <code>.xlsx</code> também é obrigatório.</p></div>
+      </div>
+      <div class="op" style="border-top:2px solid var(--ink)"><p><b>Recomendação:</b> A. As pesquisas anteriores não olharam esses formatos, e exigir agora poderia eliminar todas antes do teste.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 -->
+<section>
+  <div class="num">04<small>quem<br>disputa</small></div>
+  <div>
+    <h2>As candidatas, com a régua nova</h2>
+    <p class="lead">A régua mudou: agora pesa responder pela rede, onde fica o índice e aguentar um disco que o sincronizador reescreve o tempo todo. Gravar saiu da conta.</p>
+
+    <div class="virou">
+      <div class="antes"><h5>Antes</h5>O índice do zvec-grep mora numa pasta com ponto dentro do hub (<code>.zvec-grep\</code>): <b>problema, teria de ser excluído do sync</b>.</div>
+      <div class="seta">→</div>
+      <div class="depois"><h5 style="color:var(--green)">Agora · vantagem</h5><b>Pasta com ponto não viaja.</b> Cada máquina fica com o próprio índice, sem regra extra e sem índice indo de uma máquina para a outra.</div>
+    </div>
+
+    <div class="tab">
+    <table>
+      <thead><tr><th></th><th class="c-ent">zvec-grep<small>ENTRA</small></th><th class="c-ent">memtomem<small>ENTRA</small></th><th class="c-res">ck<small>RESERVA DO ZVEC-GREP</small></th></tr></thead>
+      <tbody>
+        <tr><th>Windows</th><td><span class="ok">sim</span> · testes automáticos em Windows; laço de reindexação relatado no Windows</td><td><span class="ok">sim</span> · testes automáticos em Windows</td><td>binário para Windows; testes automáticos sem Windows</td></tr>
+        <tr><th>pt-BR</th><td>modelos multilíngues; busca por palavra <span class="no">não tira acento nem reduz</span> "colisões" a "colisão"</td><td>modelo multilíngue por padrão; <span class="nv">português não citado na documentação</span></td><td><span class="no">só modelos em inglês</span></td></tr>
+        <tr><th>Frontmatter <small>cabeçalho da nota</small></th><td><span class="no">ignora</span> · proposta de correção aberta</td><td>filtra por etiqueta; <span class="nv">filtrar por outro campo: não verificado</span></td><td><span class="no">não</span></td></tr>
+        <tr><th>Responde pela rede</th><td><span class="nv">não verificado</span></td><td><span class="nv">não verificado</span></td><td><span class="nv">não verificado</span></td></tr>
+        <tr><th>Onde fica o índice</th><td class="star"><code>.zvec-grep\</code> dentro do hub · <span class="ok">pasta com ponto: não viaja</span></td><td>fora do hub, na pasta do usuário · <span class="ok">não viaja</span></td><td><code>.ck\</code> na pasta (com ponto) ou fora, por configuração</td></tr>
+        <tr><th>Aguenta disco reescrito</th><td>vigia o disco e reconcilia a cada hora; <span class="nv">com reescrita o tempo todo: não verificado</span></td><td>vigia o disco; <span class="nv">o que mudou com ele parado: não verificado</span></td><td><span class="ok">refaz o que mudou antes de cada busca</span></td></tr>
+        <tr><th>Outros formatos</th><td>PDF no roteiro, ainda não; <span class="nv">.docx e .xlsx: não verificado</span></td><td><span class="nv">não verificado</span></td><td><span class="nv">não verificado</span></td></tr>
+        <tr><th>FreeLLMAPI</th><td>só imitando um nome de modelo fixo</td><td>aceita endereço próprio; <span class="nv">o FreeLLMAPI: não verificado</span></td><td><span class="no">não</span></td></tr>
+        <tr><th>Maturidade</th><td>versão 0.2 · 3,9 mil estrelas · bugs que corrompem o índice</td><td>"alpha" · 15 estrelas · criado em março</td><td>versão 0.7 · 1,7 mil estrelas</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="sai"><b>markdown-vault-mcp</b> <span>SAI</span> a vantagem dele era <b>gravar</b> conferindo a versão, e gravar saiu da busca · sem testes em Windows</div>
+
+    <p style="margin:22px 0 4px;font:700 13px 'JetBrains Mono',monospace;text-transform:uppercase">Antes do teste · pesquisa curta nas fontes</p>
+    <div class="passos"><span>responde pela rede?</span><span>onde guarda o índice?</span><span>aguenta disco reescrito?</span><span>lê .docx .pdf .xlsx?</span><span>aceita o FreeLLMAPI?</span></div>
+
+    <div class="ana">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#ffe14d" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+      <div>Uma <b>audição</b>: duas candidatas tocam a mesma partitura (o seu conteúdo real) e a reserva espera na coxia. Antes, alguém confere se elas cabem no palco novo: <b>rede, índice, disco que muda</b>. A audição só começa quando você disser.</div>
+    </div>
+
+    <div class="perg">
+      <div class="tit"><span class="mono">pergunta 80</span>Quem entra no teste lado a lado?</div>
+      <div class="op" style="border-top:0;background:#fff6c9"><p><b>Recomendação:</b> <b>zvec-grep contra memtomem</b>, com o ck de reserva; o markdown-vault-mcp sai. Antes do teste, a pesquisa curta acima. O teste só roda quando você disser.</p></div>
+    </div>
+  </div>
+</section>
+
+<footer>Camada de busca · rodada 4 · 2026-10-13 · a página da rodada 1 continua em prototipo-09-busca.html</footer>
+</main>
+</body>
+</html>

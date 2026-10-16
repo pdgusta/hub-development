@@ -1,0 +1,99 @@
+{
+  "envio": "04e0593a-6eeb-4680-bbee-c7da82e138c8",
+  "tipo": "resposta",
+  "enviada": "2026-10-14T19:26:44-03:00",
+  "alvo": {
+    "tipo": "rodada",
+    "id": "2026-10-14-arquitetura-de-pastas-e-frontmatter-r11",
+    "titulo": "Núcleo e blocos, a partir de como você já trabalha"
+  },
+  "ticket": "12",
+  "substitui": null,
+  "rodada": {
+    "id": "2026-10-14-arquitetura-de-pastas-e-frontmatter-r11",
+    "base": "0a5cb30e5186c0535a78aba99cbd865b7c4c13c89401943a3f5ee342a7b039e5",
+    "titulo": "Núcleo e blocos, a partir de como você já trabalha",
+    "ticket": "12",
+    "perguntas": [
+      {
+        "id": "nucleo",
+        "titulo": "O núcleo de toda iniciativa",
+        "tipo": "escolha",
+        "recomendada": [
+          "A"
+        ],
+        "opcoes": [
+          {
+            "chave": "A",
+            "texto": "As sete seções de hoje, cada uma no seu arquivo: `initiative.md` (ficha, descrição, fontes), `retomada.md` (o Estado, sobrescrito), `tasks.md` (só pendências abertas), `decisions.md` (uma linha por decisão), `context.md` (só fatos estáveis) e `log/AAAA-MM.md` (o diário, um arquivo por mês)"
+          },
+          {
+            "chave": "B",
+            "texto": "O `initiative.md` como hoje, com tudo, e só o Estado à parte, em `retomada.md`"
+          },
+          {
+            "chave": "C",
+            "texto": "`initiative.md` (ficha, descrição, contexto, fontes, pendências e decisões) + `retomada.md` + `log/AAAA-MM.md`"
+          }
+        ],
+        "proposta": null
+      },
+      {
+        "id": "blocos",
+        "titulo": "Como o resto da pasta se monta",
+        "tipo": "escolha",
+        "recomendada": [
+          "B"
+        ],
+        "opcoes": [
+          {
+            "chave": "A",
+            "texto": "Um modelo pronto por tipo de trabalho, escolhido ao criar a pasta"
+          },
+          {
+            "chave": "B",
+            "texto": "Blocos com um nome só, somados conforme o trabalho pede: `inputs/` (o que veio de fora), `research/`, `design/`, `plans/`, `deliverables/`, `evidence/` (prints e logs de prova), `runs/` (briefs, handoffs e revisões de agentes), `tools/` (scripts de apoio), operação (`procedures/`, `cases/`, `queries/`), `knowledge/`, estudo (`notes/`, `labs/`)"
+          },
+          {
+            "chave": "C",
+            "texto": "Só o núcleo; cada iniciativa cria as subpastas quando precisar"
+          }
+        ],
+        "proposta": null
+      },
+      {
+        "id": "algo-mais",
+        "titulo": "Algo mais?",
+        "tipo": "texto",
+        "recomendada": [],
+        "opcoes": [],
+        "proposta": null
+      }
+    ]
+  },
+  "corpo_hash": "ec8f9fe022d044c276b8527dc7e9be331e073c129ee039b2e02c7a320634f944",
+  "corpo": {
+    "tipo": "resposta",
+    "rodada": "2026-10-14-arquitetura-de-pastas-e-frontmatter-r11",
+    "base": "0a5cb30e5186c0535a78aba99cbd865b7c4c13c89401943a3f5ee342a7b039e5",
+    "respostas": {
+      "nucleo": {
+        "escolha": [
+          "A"
+        ],
+        "outra": null,
+        "comentario": null
+      },
+      "blocos": {
+        "escolha": [
+          "B"
+        ],
+        "outra": null,
+        "comentario": "Perfeito e para os agentes sempre continuarem colocando nesse padrão, o ideal é ter em algum lugar, uma descrição breve de cada bloco para o agente saber qual bloco usar. Se realmente não se encaixar em nenhum bloco, deve ter algum bloco genérico que pode concentrar vários tipos 'órfãos'. Tudo deve ser bem 'achável' facilmente pelos agentes pelo AGENTS.md em alguns pulos. Pra em nenhuma execução terem que ficar listando todos os caracteres ou todos os arquivos de subpastas pra achar o que buscava. Outra coisa e principal: preciso de um mecanismo que sirva para não deixar pastas ou subpastas terem arquivos sem nada os referenciando. Em alguns casos um novo 'bloco' sendo empilhado e um novo link a ele sendo criado no AGENTS.md da iniciativa, vai bastar. Mas terão casos que o bloco receberá tantas subpastas e algum arquivo relevante ficará tão fundo que apenas a referência à pasta lá no agents.md, não vai bastar. Entende mais ou menos?"
+      },
+      "algo-mais": {
+        "texto": "A carta prototipo-12-ritmos ta perfeita, agora sim, parabéns. Tanto ao seu levantamento quanto ao design. Gostei dessa sugestão de 'blocos de nome único + pilha sugerida'. Vai servir bastante e ter isso sempre utilizável vai ser ótimo. Qual será a estratégia pra isso ser tanto utilizável como fácil dos agentes 'consumirem' ou saberem se localizar no context-hub?"
+      }
+    }
+  }
+}

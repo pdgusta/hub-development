@@ -1,0 +1,35 @@
+{
+ "chave": "gh:mozilla-ocho/llamafile",
+ "urls": [
+  "https://github.com/Mozilla-Ocho/llamafile"
+ ],
+ "tipos": [
+  "tool"
+ ],
+ "termos": [
+  "llamafile",
+  "mozilla llamafile",
+  "local executable embeddings",
+  "local openai api alternative",
+  "LLM single-file",
+  "Mozilla Ocho"
+ ],
+ "mencoes": 3,
+ "familias": [
+  "gemini",
+  "mistral"
+ ],
+ "primeira_onda": 3,
+ "nomes": [
+  "Llamafile"
+ ],
+ "resumos": [
+  "A single-file executable that runs LLMs and embedding models locally across multiple platforms.",
+  "A single-file executable that distributes and runs LLMs and embedding models locally across multiple platforms.",
+  "A single-file distribution of LLMs for offline use, including embedding models."
+ ],
+ "readme_status": "ok",
+ "readme_nome": "README.md",
+ "readme_cortado": false,
+ "readme": "# llamafile\n\n<img src=\"docs/images/llamafile-640x640.png\" width=\"320\" height=\"320\"\n     alt=\"[line drawing of llama animal head in front of slightly open manilla folder filled with files]\">\n\n[![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://github.com/mozilla-ai/llamafile/blob/main/LICENSE)\n[![ci status](https://github.com/mozilla-ai/llamafile/actions/workflows/ci.yml/badge.svg)](https://github.com/mozilla-ai/llamafile/actions/workflows/ci.yml)\n[![Based on llama.cpp](https://img.shields.io/badge/llama.cpp-7f5ee54-orange.svg)](https://github.com/ggml-org/llama.cpp/commit/7f5ee54)\n[![Based on whisper.cpp](https://img.shields.io/badge/whisper.cpp-2eeeba5-green.svg)](https://github.com/ggml-org/whisper.cpp/commit/2eeeba5)\n[![Discord](https://dcbadge.limes.pink/api/server/YuMNeuKStr?style=flat)](https://discord.gg/YuMNeuKStr)\n[![Mozilla Builders](https://img.shields.io/badge/Builders-6E6E6E?logo=mozilla&logoColor=white&labelColor=4A4A4A)](https://builders.mozilla.org/)\n\n**llamafile lets you distribute and run LLMs with a single file.**\n\nllamafile is a [Mozilla Builders](https://builders.mozilla.org/) project (see its [announcement blog post](https://hacks.mozilla.org/2023/11/introducing-llamafile/)), now revamped by [Mozilla.ai](https://www.mozilla.ai/open-tools/llamafile). \n\nOur goal is to make open LLMs much more\naccessible to both developers and end users. We're doing that by\ncombining [llama.cpp](https://github.com/ggerganov/llama.cpp) with [Cosmopolitan Libc](https://github.com/jart/cosmopolitan) into one\nframework that collapses all the complexity of LLMs down to\na single-file executable (called a \"llamafile\") that runs\nlocally on most operating systems and CPU architectures, with no installation.\n\nllamafile also includes **[whisperfile](https://docs.mozilla.ai/llamafile/whisperfile)**, a single-file speech-to-text tool built on [whisper.cpp](https://github.com/ggerganov/whisper.cpp) and the same Cosmopolitan packaging. It supports transcription and translation of audio files across all the same platforms, with no installation required.\n\n\n## v0.10.*\n\n**llamafile versions starting from 0.10.0 use a new build system**, aimed at keeping our code more easily \naligned with the latest versions of llama.cpp. This means they support more recent models and functionalities,\nbut at the same time they might be missing some of\nthe features you were accustomed to (check out [this doc](README_0.10.0.md) for a high-level description of what has been done). If you liked\nthe \"classic experience\" more, you will always be able to access the previous versions from our\n[releases](https://github.com/mozilla-ai/llamafile/releases) page. Our pre-built llamafiles always\nshow which version of the server they have been bundled with ([0.9.* example](https://huggingface.co/mozilla-ai/llava-v1.5-7b-llamafile), [0.10.* example](https://huggingface.co/mozilla-ai/llamafile_0.10)), so you will always know\nwhich version of the software you are downloading.\n\n\n> **We want to hear from you!**\nWhether you are a new user or a long-time fan, please share what you find most valuable about llamafile and what would make it more useful for you.\n[Read more via the blog](https://blog.mozilla.ai/llamafile-returns/) and add your voice to the discussion [here](https://github.com/mozilla-ai/llamafile/discussions/809).\n\n\n## Quick Start\n\nDownload and run your first llamafile in minutes:\n\n```sh\n# Download an example model (Qwen3.5 0.8B)\ncurl -LO https://huggingface.co/mozilla-ai/llamafile_0.10/resolve/main/Qwen3.5-0.8B-Q8_0.llamafile\n\n# Make it executable (macOS/Linux/BSD)\nchmod +x Qwen3.5-0.8B-Q8_0.llamafile\n\n# Run it\n./Qwen3.5-0.8B-Q8_0.llamafile\n```\n\nWe chose this model because that's the smallest one we have\nbuilt a llamafile for, so most likely to work out-of-the-box for you.\nIf you have powerful hardware and/or GPUs, [feel free to choose](https://docs.mozilla.ai/llamafile/getting-started/pre-built-llamafiles)\nlarger and more expressive models which should provide more accurate\nresponses.\n\n**Windows users:** Rename the file to add `.exe` extension before running.\n\n**Note - Only executables under 4GB can run on Windows, so any llamafile above 4GB won't work. Download the [llamafile](https://github.com/mozilla-ai/llamafile/releases) binary and run it with any [external weights/models(GGUF)](https://docs.mozilla.ai/llamafile/getting-started/quickstart#using-llamafile-with-external-weights).**\n\n## Documentation\n\nCheck the full documentation at [docs.mozilla.ai/llamafile](https://docs.mozilla.ai/llamafile), or directly jump into one of the following subsections:\n\n- [Quickstart](https://docs.mozilla.ai/llamafile/getting-started/quickstart)\n- [Pre-built llamafiles](https://docs.mozilla.ai/llamafile/getting-started/pre-built-llamafiles)\n- [Running a llamafile](https://docs.mozilla.ai/llamafile/using-llamafile/running_llamafile)\n- [Creating llamafiles](https://docs.mozilla.ai/llamafile/using-llamafile/creating_llamafiles)\n- [Source installation](https://docs.mozilla.ai/llamafile/using-llamafile/source_installation)\n- [Technical details](https://docs.mozilla.ai/llamafile/reference/technical_details)\n- [Supported Systems](https://docs.mozilla.ai/llamafile/reference/support)\n- [Troubleshooting](https://docs.mozilla.ai/llamafile/reference/troubleshooting)\n- [Whisperfile](https://docs.mozilla.ai/llamafile/whisperfile)\n\n\n## Licensing\n\nWhile the llamafile project is Apache 2.0-licensed, our changes\nto llama.cpp and whisper.cpp are licensed under MIT (just like the projects\nthemselves) so as to remain compatible and upstreamable in the future,\nshould that be desired.\n\nThe llamafile logo on this page was generated with the assistance of DALL·E 3.\n\n\n[![Star History Chart](https://api.star-history.com/svg?repos=Mozilla-Ocho/llamafile&type=Date)](https://star-history.com/#Mozilla-Ocho/llamafile&Date)\n"
+}

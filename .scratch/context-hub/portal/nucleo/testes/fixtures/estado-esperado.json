@@ -1,0 +1,629 @@
+{
+  "projeto": {
+    "nome": "Horta do bairro",
+    "gerado_em": "2026-10-14T12:00:00-03:00",
+    "codigos": {}
+  },
+  "destino": {
+    "texto": "A horta comunitária do bairro plantada e funcionando na primeira estação, cumprindo os três critérios de aceite:",
+    "criterios": [
+      {
+        "n": 1,
+        "palavra": "acha o canteiro",
+        "texto": "cada vizinho acha o próprio canteiro sem perguntar, pela sinalização e pelo mapa dos canteiros"
+      },
+      {
+        "n": 2,
+        "palavra": "água sozinha",
+        "texto": "a água chega aos canteiros sozinha, sem ninguém carregar balde"
+      },
+      {
+        "n": 3,
+        "palavra": "partilha justa",
+        "texto": "a colheita é dividida com regra combinada, sem briga"
+      }
+    ]
+  },
+  "tickets": [
+    {
+      "numero": "01",
+      "titulo": "Escolher o terreno",
+      "tipo": "grilling",
+      "estado": "resolved",
+      "estado_cru": "resolved",
+      "bloqueado_por": [],
+      "bloqueios_abertos": [],
+      "bloqueios_inexistentes": [],
+      "bloqueia": [
+        "02",
+        "03"
+      ],
+      "cartas": [],
+      "arquivo": "issues/01-escolher-o-terreno.md"
+    },
+    {
+      "numero": "02",
+      "titulo": "Água: poço ou rede",
+      "tipo": "research",
+      "estado": "resolved",
+      "estado_cru": "resolved",
+      "bloqueado_por": [
+        "01"
+      ],
+      "bloqueios_abertos": [],
+      "bloqueios_inexistentes": [],
+      "bloqueia": [
+        "03",
+        "05"
+      ],
+      "cartas": [
+        "regas-do-poco"
+      ],
+      "arquivo": "issues/02-agua-poco-ou-rede.md"
+    },
+    {
+      "numero": "03",
+      "titulo": "Canteiros e caminhos",
+      "tipo": "prototype",
+      "estado": "claimed",
+      "estado_cru": "claimed",
+      "bloqueado_por": [
+        "01",
+        "02"
+      ],
+      "bloqueios_abertos": [],
+      "bloqueios_inexistentes": [],
+      "bloqueia": [
+        "04",
+        "07"
+      ],
+      "cartas": [
+        "mapa-dos-canteiros"
+      ],
+      "arquivo": "issues/03-canteiros-e-caminhos.md"
+    },
+    {
+      "numero": "04",
+      "titulo": "Composteira",
+      "tipo": "task",
+      "estado": "open",
+      "estado_cru": "open",
+      "bloqueado_por": [
+        "03"
+      ],
+      "bloqueios_abertos": [
+        "03"
+      ],
+      "bloqueios_inexistentes": [],
+      "bloqueia": [
+        "10"
+      ],
+      "cartas": [],
+      "arquivo": "issues/04-composteira.md"
+    },
+    {
+      "numero": "05",
+      "titulo": "Horário de rega",
+      "tipo": "grilling",
+      "estado": "open",
+      "estado_cru": "open",
+      "bloqueado_por": [
+        "02",
+        "99"
+      ],
+      "bloqueios_abertos": [],
+      "bloqueios_inexistentes": [
+        "99"
+      ],
+      "bloqueia": [
+        "10"
+      ],
+      "cartas": [],
+      "arquivo": "issues/05-horario-de-rega.md"
+    },
+    {
+      "numero": "06",
+      "titulo": "Placas e sinalização",
+      "tipo": "task",
+      "estado": "open",
+      "estado_cru": "open",
+      "bloqueado_por": [
+        "07"
+      ],
+      "bloqueios_abertos": [
+        "07"
+      ],
+      "bloqueios_inexistentes": [],
+      "bloqueia": [
+        "07"
+      ],
+      "cartas": [],
+      "arquivo": "issues/06-placas-e-sinalizacao.md"
+    },
+    {
+      "numero": "07",
+      "titulo": "Mutirão de abertura",
+      "tipo": "task",
+      "estado": "open",
+      "estado_cru": "open",
+      "bloqueado_por": [
+        "06",
+        "03"
+      ],
+      "bloqueios_abertos": [
+        "03",
+        "06"
+      ],
+      "bloqueios_inexistentes": [],
+      "bloqueia": [
+        "06",
+        "10"
+      ],
+      "cartas": [],
+      "arquivo": "issues/07-mutirao-de-abertura.md"
+    },
+    {
+      "numero": "08",
+      "titulo": "Estufa",
+      "tipo": "research",
+      "estado": "wontfix",
+      "estado_cru": "wontfix",
+      "bloqueado_por": [],
+      "bloqueios_abertos": [],
+      "bloqueios_inexistentes": [],
+      "bloqueia": [],
+      "cartas": [],
+      "arquivo": "issues/08-estufa.md"
+    },
+    {
+      "numero": "09",
+      "titulo": "Galinheiro",
+      "tipo": "task",
+      "estado": "desconhecido",
+      "estado_cru": "parked",
+      "bloqueado_por": [],
+      "bloqueios_abertos": [],
+      "bloqueios_inexistentes": [],
+      "bloqueia": [],
+      "cartas": [],
+      "arquivo": "issues/09-galinheiro.md"
+    },
+    {
+      "numero": "10",
+      "titulo": "Colheita e partilha",
+      "tipo": "task",
+      "estado": "open",
+      "estado_cru": "open",
+      "bloqueado_por": [
+        "04",
+        "05",
+        "07"
+      ],
+      "bloqueios_abertos": [
+        "04",
+        "05",
+        "07"
+      ],
+      "bloqueios_inexistentes": [],
+      "bloqueia": [],
+      "cartas": [],
+      "arquivo": "issues/10-colheita-e-partilha.md"
+    }
+  ],
+  "plano_de_voo": {
+    "camadas": [
+      [
+        "03",
+        "05"
+      ],
+      [
+        "04",
+        "07"
+      ],
+      [
+        "06",
+        "10"
+      ]
+    ],
+    "ciclos": [
+      {
+        "tickets": [
+          "06",
+          "07"
+        ],
+        "aresta_ignorada": [
+          "07",
+          "06"
+        ]
+      }
+    ]
+  },
+  "decisoes": [
+    {
+      "numero": "01",
+      "titulo": "Escolher o terreno",
+      "resumo": "o lote da esquina da rua das Flores, por ser plano, ensolarado e já ter cerca."
+    },
+    {
+      "numero": "02",
+      "titulo": "Água: poço ou rede",
+      "resumo": "poço com bomba solar; a rede da rua custa taxa mensal e falha no verão."
+    }
+  ],
+  "fora": {
+    "nao_especificado": [
+      "Quem cuida da horta nas férias de janeiro.",
+      "Se haverá canteiro para a escola."
+    ],
+    "fora_do_escopo": [
+      "Venda de excedente na feira: fica para depois da primeira colheita.",
+      "Criação de abelhas (Q2)."
+    ]
+  },
+  "radar": [
+    {
+      "tema": "Cisterna de chuva",
+      "gatilho": "o poço baixar no inverno"
+    },
+    {
+      "tema": "**Estufa** para mudas",
+      "gatilho": "a primeira geada estragar as mudas"
+    },
+    {
+      "tema": "Feira de excedente",
+      "gatilho": "a primeira colheita sobrar"
+    }
+  ],
+  "glossario": [
+    {
+      "termo": "Canteiro",
+      "definicao": "Um retângulo de terra elevado, de um vizinho ou de uma família, dentro da horta.",
+      "evite": "lote, vaga"
+    },
+    {
+      "termo": "Mutirão",
+      "definicao": "Um dia de trabalho coletivo marcado pela associação, com tarefa definida antes.",
+      "evite": "evento, reunião"
+    },
+    {
+      "termo": "Partilha",
+      "definicao": "A regra combinada de dividir a colheita entre quem cuidou do canteiro e a caixa comum da horta.",
+      "evite": null
+    },
+    {
+      "termo": "Rega",
+      "definicao": "A ida de água do poço até os canteiros, por gravidade ou por bomba.",
+      "evite": "irrigação"
+    }
+  ],
+  "cartas": [
+    {
+      "id": "mapa-dos-canteiros",
+      "titulo": "Mapa dos canteiros",
+      "arquivo": "cartas/mapa-dos-canteiros.html",
+      "pasta": "cartas",
+      "proposito": "o desenho da horta de bater o olho",
+      "ticket": "03",
+      "ticket_titulo": "Canteiros e caminhos",
+      "decisao": "canteiros elevados de 1,2 m com caminhos de 60 cm",
+      "data": {
+        "valor": "2026-09-20",
+        "tipo": "feita"
+      },
+      "situacao": "vigente",
+      "mestra": true,
+      "url": "/carta/mapa-dos-canteiros/",
+      "substitui": null,
+      "substitui_titulo": null,
+      "substituida_por": null,
+      "substituida_por_titulo": null,
+      "situacao_efetiva": "vigente"
+    },
+    {
+      "id": "regas-do-poco",
+      "titulo": "Regas do poço",
+      "arquivo": "cartas/regas-do-poco.html",
+      "pasta": "cartas",
+      "proposito": "comparar poço e rede da rua",
+      "ticket": "02",
+      "ticket_titulo": "Água: poço ou rede",
+      "decisao": "poço com bomba solar",
+      "data": {
+        "valor": "2026-10-14",
+        "tipo": "modificado"
+      },
+      "situacao": "historica",
+      "mestra": false,
+      "url": "/carta/regas-do-poco/",
+      "substitui": null,
+      "substitui_titulo": null,
+      "substituida_por": null,
+      "substituida_por_titulo": null,
+      "situacao_efetiva": "historica"
+    }
+  ],
+  "rodadas": [
+    {
+      "id": "2026-09-15-escolher-o-terreno-r1",
+      "titulo": "Qual lote vira a horta",
+      "ticket": "01",
+      "ticket_titulo": "Escolher o terreno",
+      "aberta": "2026-09-15",
+      "estado": "absorvida",
+      "carta": null,
+      "contexto": "A associação visitou três lotes. Dois são planos; só um já tem cerca.",
+      "base": "c22c3aaf5c2e067eaa7824eaa79ee6aa3fc020297078b4e72b7783b2760f47bb",
+      "perguntas": [
+        {
+          "id": "lote",
+          "titulo": "Qual lote",
+          "tipo": "escolha",
+          "recomendada": [
+            "flores"
+          ],
+          "opcoes": [
+            {
+              "chave": "flores",
+              "texto": "esquina da rua das Flores (plano, cercado)"
+            },
+            {
+              "chave": "igreja",
+              "texto": "terreno atrás da igreja (plano, sem cerca)"
+            },
+            {
+              "chave": "morro",
+              "texto": "encosta do morro (barato, inclinado)"
+            }
+          ],
+          "porque": "O da rua das Flores dispensa a cerca, que custaria o orçamento inteiro.",
+          "proposta": null
+        }
+      ],
+      "respondida": true,
+      "ultima_resposta": "2026-09-16-093000-resposta-2026-09-15-escolher-o-terreno-r1-7f3a2c10-5b8e-4d21-9a6f-0c3e5d7b9a11",
+      "malformada": false,
+      "erro": null,
+      "arquivo": "portal/rodadas/2026-09-15-escolher-o-terreno-r1.md"
+    },
+    {
+      "id": "2026-10-01-canteiros-e-caminhos-r2",
+      "titulo": "Como ficam os canteiros",
+      "ticket": "03",
+      "ticket_titulo": "Canteiros e caminhos",
+      "aberta": "2026-10-01",
+      "estado": "aberta",
+      "carta": "mapa-dos-canteiros",
+      "contexto": "O terreno comporta oito canteiros em duas fileiras. A carta mostra a disposição proposta.\nFalta decidir a largura, o que plantar primeiro e a ordem do mutirão.",
+      "base": "f86a878ec66152e90adb02dab82d1ad5c8a93bef0403c1ae49426416b2163f2b",
+      "perguntas": [
+        {
+          "id": "largura",
+          "titulo": "Largura do canteiro",
+          "tipo": "escolha",
+          "recomendada": [
+            "media"
+          ],
+          "opcoes": [
+            {
+              "chave": "estreito",
+              "texto": "90 cm (alcança do meio com um braço)"
+            },
+            {
+              "chave": "media",
+              "texto": "1,2 m (padrão das hortas da cidade)"
+            },
+            {
+              "chave": "largo",
+              "texto": "1,5 m (mais terra, mais difícil de alcançar)"
+            }
+          ],
+          "porque": "1,2 m é o que a prefeitura usa e dá para alcançar o meio dos dois lados.",
+          "proposta": null
+        },
+        {
+          "id": "primeiras",
+          "titulo": "O que plantar primeiro",
+          "tipo": "varias",
+          "recomendada": [
+            "alface",
+            "cebolinha"
+          ],
+          "opcoes": [
+            {
+              "chave": "alface",
+              "texto": "alface (45 dias)"
+            },
+            {
+              "chave": "cebolinha",
+              "texto": "cebolinha (60 dias)"
+            },
+            {
+              "chave": "tomate",
+              "texto": "tomate (precisa de estaca)"
+            },
+            {
+              "chave": "abobora",
+              "texto": "abóbora (ocupa muito espaço)"
+            }
+          ],
+          "porque": "Alface e cebolinha dão colheita rápida e animam o mutirão seguinte.",
+          "proposta": null
+        },
+        {
+          "id": "mutirao",
+          "titulo": "Ordem das tarefas do mutirão",
+          "tipo": "proposta",
+          "recomendada": [],
+          "opcoes": [],
+          "porque": "A ordem segue a dependência natural: não dá para montar sem limpar.",
+          "proposta": {
+            "colunas": [
+              "tarefa",
+              "quem",
+              "tempo"
+            ],
+            "linhas": [
+              {
+                "id": "limpar",
+                "tarefa": "limpar o terreno",
+                "quem": "todos",
+                "tempo": "2 h"
+              },
+              {
+                "id": "montar",
+                "tarefa": "montar os canteiros",
+                "quem": "carpinteiros",
+                "tempo": "3 h"
+              },
+              {
+                "id": "placas",
+                "tarefa": "fixar as placas",
+                "quem": "crianças",
+                "tempo": "1 h"
+              }
+            ],
+            "pode": [
+              "editar",
+              "reordenar",
+              "ligar",
+              "adicionar",
+              "remover"
+            ]
+          }
+        },
+        {
+          "id": "pode-comecar",
+          "titulo": "Pode começar o mutirão no sábado?",
+          "tipo": "aprovar",
+          "recomendada": [],
+          "opcoes": [],
+          "porque": null,
+          "proposta": null
+        },
+        {
+          "id": "algo-mais",
+          "titulo": "Algo mais?",
+          "tipo": "texto",
+          "recomendada": [],
+          "opcoes": [],
+          "porque": null,
+          "proposta": null
+        }
+      ],
+      "respondida": false,
+      "ultima_resposta": null,
+      "malformada": false,
+      "erro": null,
+      "arquivo": "portal/rodadas/2026-10-01-canteiros-e-caminhos-r2.md"
+    },
+    {
+      "id": "2026-10-02-composteira-r1",
+      "titulo": "Onde fica a composteira",
+      "ticket": "04",
+      "ticket_titulo": "Composteira",
+      "aberta": "2026-10-02",
+      "estado": "aberta",
+      "carta": null,
+      "contexto": "Três cantos possíveis.",
+      "base": "bbe3abf4d70f57cb0c11e721e0b37a2df53084cfaab2db5f0cb9d572487e4ee8",
+      "perguntas": [],
+      "respondida": false,
+      "ultima_resposta": null,
+      "malformada": true,
+      "erro": "pergunta \"Qual canto\" sem id",
+      "arquivo": "portal/rodadas/2026-10-02-composteira-r1.md"
+    }
+  ],
+  "caixa": [
+    {
+      "arquivo": "2026-09-16-093000-resposta-2026-09-15-escolher-o-terreno-r1-7f3a2c10-5b8e-4d21-9a6f-0c3e5d7b9a11",
+      "tipo": "resposta",
+      "alvo": {
+        "tipo": "rodada",
+        "id": "2026-09-15-escolher-o-terreno-r1",
+        "titulo": "Qual lote vira a horta"
+      },
+      "ticket": "01",
+      "enviada": "2026-09-16T09:30:00-03:00",
+      "envio": "7f3a2c10-5b8e-4d21-9a6f-0c3e5d7b9a11",
+      "estado": "lida",
+      "aviso": null,
+      "substitui": null,
+      "substituida": false
+    },
+    {
+      "arquivo": "2026-10-03-090000-comentario-ticket-04-c2d4e6f8-1a3b-4c5d-8e7f-9a0b1c2d3e4f",
+      "tipo": "comentario",
+      "alvo": {
+        "tipo": "ticket",
+        "id": "04",
+        "titulo": "Composteira"
+      },
+      "ticket": "04",
+      "enviada": "2026-10-03T09:00:00-03:00",
+      "envio": "c2d4e6f8-1a3b-4c5d-8e7f-9a0b1c2d3e4f",
+      "estado": "nova",
+      "aviso": "pendente",
+      "substitui": null,
+      "substituida": false
+    },
+    {
+      "arquivo": "2026-10-14-215930-alteracao-laco-pesquisa-de-regas-5b0c7e2a-3f41-4d8e-9a17-2c6e8f0b4d31",
+      "tipo": "alteracao-laco",
+      "alvo": {
+        "tipo": "laco",
+        "id": "pesquisa-de-regas",
+        "titulo": "Pesquisa de horários de rega"
+      },
+      "ticket": "05",
+      "enviada": "2026-10-14T21:59:30-03:00",
+      "envio": "5b0c7e2a-3f41-4d8e-9a17-2c6e8f0b4d31",
+      "estado": "aplicado",
+      "aviso": null,
+      "substitui": null,
+      "substituida": false
+    },
+    {
+      "arquivo": "2026-10-14-215930-alteracao-laco-pesquisa-de-regas-8d2f4a61-7c3b-4e95-b0a8-1f6d3c9e2a74",
+      "tipo": "alteracao-laco",
+      "alvo": {
+        "tipo": "laco",
+        "id": "pesquisa-de-regas",
+        "titulo": "Pesquisa de horários de rega"
+      },
+      "ticket": "05",
+      "enviada": "2026-10-14T21:59:30-03:00",
+      "envio": "8d2f4a61-7c3b-4e95-b0a8-1f6d3c9e2a74",
+      "estado": "lida",
+      "aviso": null,
+      "substitui": null,
+      "substituida": false
+    }
+  ],
+  "aviso": {
+    "disponivel": false,
+    "motivo": "fora do canvas: MAESTRI_PIPE e MAESTRI_TERMINAL_ID ausentes"
+  },
+  "problemas": [
+    {
+      "arquivo": "issues/05-horario-de-rega.md",
+      "mensagem": "Blocked by aponta para ticket inexistente: 99"
+    },
+    {
+      "arquivo": "issues/07-mutirao-de-abertura.md",
+      "mensagem": "ciclo de dependência entre 06 e 07; a aresta 07 → 06 foi ignorada no plano de voo"
+    },
+    {
+      "arquivo": "issues/09-galinheiro.md",
+      "mensagem": "Status desconhecido: \"parked\""
+    },
+    {
+      "arquivo": "portal/caixa/2026-10-03-091500-aprovacao-carta-regas-do-poco-e5f6a7b8-9c0d-4e1f-a2b3-c4d5e6f7a8b9.md",
+      "mensagem": "mensagem sem dados: o .json irmão não existe"
+    },
+    {
+      "arquivo": "portal/rodadas/2026-10-02-composteira-r1.md",
+      "mensagem": "rodada malformada: pergunta \"Qual canto\" sem id"
+    }
+  ]
+}

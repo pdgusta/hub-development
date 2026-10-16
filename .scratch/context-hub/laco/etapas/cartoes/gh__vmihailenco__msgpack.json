@@ -1,0 +1,28 @@
+{
+ "chave": "gh:vmihailenco/msgpack",
+ "urls": [
+  "https://github.com/vmihailenco/msgpack"
+ ],
+ "tipos": [
+  "library"
+ ],
+ "termos": [
+  "msgpack",
+  "MessagePack Go"
+ ],
+ "mencoes": 1,
+ "familias": [
+  "nemotron"
+ ],
+ "primeira_onda": 5,
+ "nomes": [
+  "msgpack-go"
+ ],
+ "resumos": [
+  "Feature-rich MessagePack implementation for Go with codec extensions."
+ ],
+ "readme_status": "ok",
+ "readme_nome": "README.md",
+ "readme_cortado": false,
+ "readme": "# MessagePack encoding for Golang\n\n[![Build Status](https://travis-ci.org/vmihailenco/msgpack.svg)](https://travis-ci.org/vmihailenco/msgpack)\n[![PkgGoDev](https://pkg.go.dev/badge/github.com/vmihailenco/msgpack/v5)](https://pkg.go.dev/github.com/vmihailenco/msgpack/v5)\n[![Documentation](https://img.shields.io/badge/msgpack-documentation-informational)](https://msgpack.uptrace.dev/)\n[![Chat](https://discordapp.com/api/guilds/752070105847955518/widget.png)](https://discord.gg/rWtp5Aj)\n\n> msgpack is brought to you by :star: [**uptrace/uptrace**](https://github.com/uptrace/uptrace).\n> Uptrace is an [open source APM](https://uptrace.dev/get/open-source-apm.html) and blazingly fast\n> [distributed tracing tool](https://get.uptrace.dev/compare/distributed-tracing-tools.html) powered\n> by OpenTelemetry and ClickHouse. Give it a star as well!\n\n## Resources\n\n- [Documentation](https://msgpack.uptrace.dev)\n- [Chat](https://discord.gg/rWtp5Aj)\n- [Reference](https://pkg.go.dev/github.com/vmihailenco/msgpack/v5)\n- [Examples](https://pkg.go.dev/github.com/vmihailenco/msgpack/v5#pkg-examples)\n\n## Features\n\n- Primitives, arrays, maps, structs, time.Time and interface{}.\n- Appengine \\*datastore.Key and datastore.Cursor.\n- [CustomEncoder]/[CustomDecoder] interfaces for custom encoding.\n- [Extensions](https://pkg.go.dev/github.com/vmihailenco/msgpack/v5#example-RegisterExt) to encode\n  type information.\n- Renaming fields via `msgpack:\"my_field_name\"` and alias via `msgpack:\"alias:another_name\"`.\n- Omitting individual empty fields via `msgpack:\",omitempty\"` tag or all\n  [empty fields in a struct](https://pkg.go.dev/github.com/vmihailenco/msgpack/v5#example-Marshal-OmitEmpty).\n- [Map keys sorting](https://pkg.go.dev/github.com/vmihailenco/msgpack/v5#Encoder.SetSortMapKeys).\n- Encoding/decoding all\n  [structs as arrays](https://pkg.go.dev/github.com/vmihailenco/msgpack/v5#Encoder.UseArrayEncodedStructs)\n  or\n  [individual structs](https://pkg.go.dev/github.com/vmihailenco/msgpack/v5#example-Marshal-AsArray).\n- [Encoder.SetCustomStructTag] with [Decoder.SetCustomStructTag] can turn msgpack into drop-in\n  replacement for any tag.\n- Simple but very fast and efficient\n  [queries](https://pkg.go.dev/github.com/vmihailenco/msgpack/v5#example-Decoder.Query).\n\n[customencoder]: https://pkg.go.dev/github.com/vmihailenco/msgpack/v5#CustomEncoder\n[customdecoder]: https://pkg.go.dev/github.com/vmihailenco/msgpack/v5#CustomDecoder\n[encoder.setcustomstructtag]:\n  https://pkg.go.dev/github.com/vmihailenco/msgpack/v5#Encoder.SetCustomStructTag\n[decoder.setcustomstructtag]:\n  https://pkg.go.dev/github.com/vmihailenco/msgpack/v5#Decoder.SetCustomStructTag\n\n## Installation\n\nmsgpack supports 2 last Go versions and requires support for\n[Go modules](https://github.com/golang/go/wiki/Modules). So make sure to initialize a Go module:\n\n```shell\ngo mod init github.com/my/repo\n```\n\nAnd then install msgpack/v5 (note _v5_ in the import; omitting it is a popular mistake):\n\n```shell\ngo get github.com/vmihailenco/msgpack/v5\n```\n\n## Quickstart\n\n```go\nimport \"github.com/vmihailenco/msgpack/v5\"\n\nfunc ExampleMarshal() {\n    type Item struct {\n        Foo string\n    }\n\n    b, err := msgpack.Marshal(&Item{Foo: \"bar\"})\n    if err != nil {\n        panic(err)\n    }\n\n    var item Item\n    err = msgpack.Unmarshal(b, &item)\n    if err != nil {\n        panic(err)\n    }\n    fmt.Println(item.Foo)\n    // Output: bar\n}\n```\n\n## See also\n\n- [Golang ORM](https://github.com/uptrace/bun) for PostgreSQL, MySQL, MSSQL, and SQLite\n- [Golang PostgreSQL](https://bun.uptrace.dev/postgres/)\n- [Golang HTTP router](https://github.com/uptrace/bunrouter)\n- [Golang ClickHouse ORM](https://github.com/uptrace/go-clickhouse)\n\n## Contributors\n\nThanks to all the people who already contributed!\n\n<a href=\"https://github.com/vmihailenco/msgpack/graphs/contributors\">\n  <img src=\"https://contributors-img.web.app/image?repo=vmihailenco/msgpack\" />\n</a>\n"
+}

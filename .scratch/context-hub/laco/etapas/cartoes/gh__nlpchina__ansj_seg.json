@@ -1,0 +1,36 @@
+{
+ "chave": "gh:nlpchina/ansj_seg",
+ "urls": [
+  "https://github.com/NLPchina/ansj_seg"
+ ],
+ "tipos": [
+  "library"
+ ],
+ "termos": [
+  "ansj",
+  "segmentation",
+  "tokenizer",
+  "NLP",
+  "Chinese NLP",
+  "tokenization",
+  "POS tagging"
+ ],
+ "mencoes": 2,
+ "familias": [
+  "mistral",
+  "nemotron"
+ ],
+ "primeira_onda": 5,
+ "nomes": [
+  "Ansj_seg",
+  "Ansj Chinese Analysis"
+ ],
+ "resumos": [
+  "Java-based Chinese NLP toolkit providing word segmentation, POS tagging, and NER that can be adapted for custom tokenization in other languages.",
+  "A Chinese NLP library that includes tokenization and part-of-speech tagging, useful for Portuguese text processing."
+ ],
+ "readme_status": "ok",
+ "readme_nome": "README.md",
+ "readme_cortado": false,
+ "readme": "Ansj中文分词\n==================\n\n [![1.X Build Status](https://travis-ci.org/NLPchina/ansj_seg.svg?branch=master)](https://travis-ci.org/NLPchina/ansj_seg) [![Gitter](https://badges.gitter.im/NLPchina/ansj_seg.svg)](https://gitter.im/NLPchina/ansj_seg?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)\n\n\n#####  使用帮助\n* 开发文档：[3.x版本及之前](http://nlpchina.github.io/ansj_seg/)，[5.x版本及之后](https://github.com/NLPchina/ansj_seg/wiki)\n\n\n\n##### 摘要\n> 这是一个基于n-Gram+CRF+HMM的中文分词的java实现。\n\n> 分词速度达到每秒钟大约200万字左右（mac air下测试），准确率能达到96%以上。\n\n> 目前实现了中文分词、中文姓名识别、用户自定义词典、关键字提取、自动摘要、关键字标记等功能。\n\n> 可以应用到自然语言处理等方面，适用于对分词效果要求高的各种项目。\n\n\n\n\n#####  maven\n\n````\n        \n        <dependency>\n            <groupId>org.ansj</groupId>\n            <artifactId>ansj_seg</artifactId>\n            <version>5.1.1</version>\n        </dependency>\n    \n````\n\n#####  调用demo\n\n如果你第一次下载只想测试测试效果可以调用这个简易接口\n\n<pre><code>\n String str = \"欢迎使用ansj_seg,(ansj中文分词)在这里如果你遇到什么问题都可以联系我.我一定尽我所能.帮助大家.ansj_seg更快,更准,更自由!\" ;\n System.out.println(ToAnalysis.parse(str));\n \n ﻿欢迎/v,使用/v,ansj/en,_,seg/en,,,(,ansj/en,中文/nz,分词/n,),在/p,这里/r,如果/c,你/r,遇到/v,什么/r,问题/n,都/d,可以/v,联系/v,我/r,./m,我/r,一定/d,尽我所能/l,./m,帮助/v,大家/r,./m,ansj/en,_,seg/en,更快/d,,,更/d,准/a,,,更/d,自由/a,!\n</code></pre>\n\n\n#####  Join Us\n\n想了很久，不管有没有人帮忙吧。我写上来，如果你有兴趣，有热情可以联系我。\n\n* 补充文档，增加调用实例和说明\n* 增加一些规则性Recognition，举例[身份证号码识别](https://github.com/NLPchina/ansj_seg/blob/master/src/main/java/org/ansj/recognition/impl/IDCardRecognition.java)，目前未完成的有 `时间识别`，`IP地址识别`，`邮箱识别`，`网址识别`，`词性识别`等...\n* 提供更加优化的CRF模型。替换ansj的默认模型。\n* 补充测试用例，n多地方测试不完全。如果你有兴趣可以帮忙啦！\n* 重构人名识别模型。增加机构名识别等模型。\n* 增加句法文法分析\n* 实现lstm的分词方式\n* 拾遗补漏...\n\n"
+}

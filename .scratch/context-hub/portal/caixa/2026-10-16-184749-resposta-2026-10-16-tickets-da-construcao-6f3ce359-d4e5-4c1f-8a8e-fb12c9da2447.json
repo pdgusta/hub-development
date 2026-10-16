@@ -1,0 +1,92 @@
+{
+  "envio": "6f3ce359-d4e5-4c1f-8a8e-fb12c9da2447",
+  "tipo": "resposta",
+  "enviada": "2026-10-16T18:47:49-03:00",
+  "alvo": {
+    "tipo": "rodada",
+    "id": "2026-10-16-tickets-da-construcao",
+    "titulo": "Os tickets da construção"
+  },
+  "ticket": "16",
+  "substitui": null,
+  "rodada": {
+    "id": "2026-10-16-tickets-da-construcao",
+    "base": "0eb5315ba4d4ed30983d9e2eee4fe51255ddd9567e3145cdd483d181dde98db6",
+    "titulo": "Os tickets da construção",
+    "ticket": "16",
+    "perguntas": [
+      {
+        "id": "granularidade",
+        "titulo": "O tamanho dos tickets",
+        "tipo": "escolha",
+        "recomendada": [
+          "A"
+        ],
+        "opcoes": [
+          {
+            "chave": "A",
+            "texto": "Está certo: 26 fatias, cada uma de uma sessão"
+          },
+          {
+            "chave": "B",
+            "texto": "Grosso demais: quebrar mais (diga quais no \"Algo mais?\")"
+          },
+          {
+            "chave": "C",
+            "texto": "Fino demais: juntar (diga quais no \"Algo mais?\")"
+          }
+        ],
+        "proposta": null
+      },
+      {
+        "id": "bloqueios",
+        "titulo": "Os bloqueios",
+        "tipo": "escolha",
+        "recomendada": [
+          "A"
+        ],
+        "opcoes": [
+          {
+            "chave": "A",
+            "texto": "Estão certos: cada ticket só espera o que de fato o trava"
+          },
+          {
+            "chave": "B",
+            "texto": "Algum bloqueio está errado (diga qual no \"Algo mais?\")"
+          }
+        ],
+        "proposta": null
+      },
+      {
+        "id": "algo-mais",
+        "titulo": "Algo mais?",
+        "tipo": "texto",
+        "recomendada": [],
+        "opcoes": [],
+        "proposta": null
+      }
+    ]
+  },
+  "corpo_hash": "84959c012b6506d872761e91aac76c70ea633d1ffb7ec52460b64ee98a2c3bcb",
+  "corpo": {
+    "tipo": "resposta",
+    "rodada": "2026-10-16-tickets-da-construcao",
+    "base": "0eb5315ba4d4ed30983d9e2eee4fe51255ddd9567e3145cdd483d181dde98db6",
+    "respostas": {
+      "granularidade": {
+        "escolha": [
+          "A"
+        ],
+        "outra": null,
+        "comentario": "não eram 11 etapas? Pq viraram 26? O que isso impacta no plano?"
+      },
+      "bloqueios": {
+        "escolha": [
+          "A"
+        ],
+        "outra": null,
+        "comentario": null
+      }
+    }
+  }
+}

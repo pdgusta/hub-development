@@ -1,0 +1,60 @@
+{
+ "nome": "kb-index",
+ "url": "https://github.com/ZhengchenTao/kb-index",
+ "papel": "disco+MCP pronto",
+ "windows": "yes (por documentação, sem CI): README diz \"On Windows the `Scripts` directory is often not on PATH; `python -m kbindex.cli` and `python -m kbindex.mcp_server` work everywhere\" e usa SO_EXCLUSIVEADDRUSE no Windows. Python puro (numpy, pyyaml, mcp). Workflows só em .gitea; nenhum CI Windows visto.",
+ "mcp": "yes: servidor próprio kb-index-mcp; stdio ou HTTP streamable stateless em loopback (`--http 127.0.0.1:47291`); ferramentas search, grep, neighbors, read_doc (somente leitura).",
+ "portugues": "Sem stemmer/stopwords de português. BM25 via SQLite FTS5 com tokenizer trigram (README: \"trigram tokenizer, so CJK text works\"); trigram tolera variação de forma mas não é análise linguística, e remoção de acentos não é declarada. Português depende do modelo de embeddings, configurável (gemini-embedding-001 por padrão; qualquer OpenAI-compatível).",
+ "markdown_frontmatter": "Indexa Markdown (include globs, também outros arquivos). Chunking por título (\"Chunk along headings\", rótulos `file > H1 > H2`; max 1200, min 30). Grafo de [[wikilinks]] e links relativos. Frontmatter YAML: não usado como filtro (nada na fonte); filtros são repos e domains por prefixo de caminho.",
+ "atualizacao": "Manual/agendado: `idx index` incremental (git por blob sha; diretórios por mtime+size+hash), pensado para rodar via cron/agendador. Sem watcher. O servidor MCP lê um index.db publicado e recarrega vetores quando o mtime do arquivo muda.",
+ "embeddings_endpoint": "Sim: provider openai com `base_url` (OpenAI, Ollama, LM Studio, vLLM, TEI, nuvem), gemini, ou `hash` offline. Chave via variável de ambiente (`api_key_env`). Serve para FreeLLMAPI; exige calibrar `threshold` por modelo.",
+ "recursos": "Python 3.12+ e git; SQLite + numpy (sem torch/SDKs, sem banco vetorial). MCP ~175 MB por processo com OPENBLAS_NUM_THREADS=1 (README). Vetores em memória: busca bruta 16k x 1536 em poucos ms. Dockerfile do indexador é opcional (pip funciona).",
+ "licenca": "MIT",
+ "ultimo_release": "nenhum release/tag publicado; pyproject version 0.2.0",
+ "atividade": "último commit 2026-10-10 (feed atom do GitHub); 2 commits no total, 0 estrelas",
+ "maturidade": "beta (classifier \"Development Status :: 4 - Beta\"); repositório novo e de um autor só",
+ "encaixe": "Cópia leve no disco de cada máquina: index.db construído por script e servido por MCP local. Impedimentos: indexador agendado (sem watcher), sem português linguístico, sem frontmatter, projeto de 2 commits.",
+ "evidencias": [
+  {
+   "campo": "mcp",
+   "url": "https://github.com/ZhengchenTao/kb-index",
+   "citacao": "kb-index-mcp --db /tmp/kb/index.db --http 127.0.0.1:47291   # shared HTTP server"
+  },
+  {
+   "campo": "portugues",
+   "url": "https://github.com/ZhengchenTao/kb-index",
+   "citacao": "BM25 leg (SQLite FTS5, trigram tokenizer, so CJK text works)"
+  },
+  {
+   "campo": "embeddings_endpoint",
+   "url": "https://github.com/ZhengchenTao/kb-index",
+   "citacao": "Gemini, any OpenAI-compatible endpoint (OpenAI, Ollama, LM Studio, vLLM, TEI, most cloud vendors), or an offline `hash` provider"
+  },
+  {
+   "campo": "atualizacao",
+   "url": "https://github.com/ZhengchenTao/kb-index",
+   "citacao": "Run `docker compose run --rm kb-index index` from cron or a scheduler."
+  },
+  {
+   "campo": "windows",
+   "url": "https://github.com/ZhengchenTao/kb-index",
+   "citacao": "On Windows the `Scripts` directory is often not on PATH; `python -m kbindex.cli` and `python -m kbindex.mcp_server` work everywhere."
+  },
+  {
+   "campo": "recursos",
+   "url": "https://github.com/ZhengchenTao/kb-index",
+   "citacao": "Single-threaded it is ~175 MB"
+  },
+  {
+   "campo": "licenca",
+   "url": "https://raw.githubusercontent.com/ZhengchenTao/kb-index/main/pyproject.toml",
+   "citacao": "license = \"MIT\""
+  }
+ ],
+ "nao_verificado": [
+  "CI em Windows (só .gitea/workflows, conteúdo não lido)",
+  "remoção de acentos no FTS5 trigram",
+  "uso de frontmatter",
+  "data exata do primeiro commit"
+ ]
+}

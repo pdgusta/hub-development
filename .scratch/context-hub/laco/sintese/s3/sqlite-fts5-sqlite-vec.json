@@ -1,0 +1,69 @@
+{
+ "nome": "SQLite FTS5 + sqlite-vec",
+ "url": "https://github.com/asg017/sqlite-vec",
+ "papel": "peça embutida",
+ "windows": "yes",
+ "mcp": "no (nenhum MCP próprio; o MCP seria do hub)",
+ "portugues": "FTS5: unicode61 com remove_diacritics (padrão 1; 2 remove em todos os latinos); o stemmer porter é só inglês, sem stemmer de português nativo. sqlite-vec não lida com texto: o português vem do modelo de embeddings escolhido.",
+ "markdown_frontmatter": "Não indexa Markdown por si; é biblioteca SQL. Frontmatter e chunking por título teriam de ser feitos pelo hub; vec0 aceita colunas de metadados (TEXT, INTEGER, FLOAT, BOOLEAN; máx. 16) para filtro no KNN.",
+ "atualizacao": "Sem watcher. FTS5 com tabela de conteúdo externo exige triggers ou o comando rebuild; reconciliação com disco/LiveSync é do hub.",
+ "embeddings_endpoint": "Não gera embeddings; só armazena e busca vetores. Qualquer endpoint (inclusive o gateway OpenAI-compatível) pode alimentar, chamado pelo código do hub.",
+ "recursos": "C puro, sem dependências; roda onde o SQLite roda. Bindings Python/Node/Ruby/Go/Rust. Wheel win_amd64 no PyPI (sqlite-vec 0.1.9, 2026-03-31).",
+ "licenca": "sqlite-vec: Apache-2.0 e MIT (dupla); SQLite/FTS5: domínio público (nao_verificado nesta rodada)",
+ "ultimo_release": "v0.1.9 estável (PyPI 2026-03-31); pré-releases v0.1.10-alpha.3/4 no GitHub (feed 2026-05-18)",
+ "atividade": "último commit no feed: 2026-05-18",
+ "maturidade": "beta (README: pre-v1, mudanças que quebram são esperadas)",
+ "encaixe": "Cópia leve dentro do MCP do banco ou no disco de cada máquina: um .db único com BM25 + vetores. Impedimento: pré-v1, sem stemmer de português, reconciliação com o LiveSync por conta do hub.",
+ "evidencias": [
+  {
+   "campo": "windows",
+   "url": "https://github.com/asg017/sqlite-vec",
+   "citacao": "runs anywhere SQLite runs (Linux/MacOS/Windows, in the browser with WASM, Raspberry Pis, etc.)"
+  },
+  {
+   "campo": "windows",
+   "url": "https://pypi.org/pypi/sqlite-vec/json",
+   "citacao": "sqlite_vec-0.1.9-py3-none-win_amd64.whl"
+  },
+  {
+   "campo": "maturidade",
+   "url": "https://github.com/asg017/sqlite-vec",
+   "citacao": "`sqlite-vec` is a pre-v1, so expect breaking changes!"
+  },
+  {
+   "campo": "recursos",
+   "url": "https://github.com/asg017/sqlite-vec",
+   "citacao": "Written in pure C, no dependencies"
+  },
+  {
+   "campo": "portugues",
+   "url": "https://www.sqlite.org/fts5.html",
+   "citacao": "The porter stemmer algorithm is designed for use with English language terms only"
+  },
+  {
+   "campo": "portugues",
+   "url": "https://www.sqlite.org/fts5.html",
+   "citacao": "If it is set to \"1\" or \"2\", then diacritics are removed from Latin script characters"
+  },
+  {
+   "campo": "atualizacao",
+   "url": "https://www.sqlite.org/fts5.html",
+   "citacao": "It is still the responsibility of the user to ensure that the contents of an external content FTS5 table are kept up to date with the content table."
+  },
+  {
+   "campo": "markdown_frontmatter",
+   "url": "https://alexgarcia.xyz/sqlite-vec/features/vec0.html",
+   "citacao": "A maximum of 16 metadata columns can be declared in a `vec0` virtual table."
+  },
+  {
+   "campo": "ultimo_release",
+   "url": "https://github.com/asg017/sqlite-vec/releases.atom",
+   "citacao": "v0.1.10-alpha.4"
+  }
+ ],
+ "nao_verificado": [
+  "licença exata do SQLite (domínio público)",
+  "se vec0 é só força bruta (sem ANN)",
+  "data exata do último commit (feed atom mostra 2026-05-18)"
+ ]
+}

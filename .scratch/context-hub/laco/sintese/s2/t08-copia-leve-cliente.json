@@ -1,0 +1,93 @@
+{
+  "tema": "t08-copia-leve-cliente",
+  "consultas": [
+    "github CloudCannon/pagefind README (fetch)",
+    "pagefind.app docs multilingual (fetch)",
+    "pagefind.app docs node-api (fetch)",
+    "github lucaong/minisearch README (fetch) + MiniSearch.ts",
+    "github oramasearch/orama README + LICENSE + docs supported-languages",
+    "github phiresky/sql.js-httpvfs README",
+    "github API releases: pagefind, minisearch, orama, flexsearch, sqlite-vec, sql.js-httpvfs",
+    "github nextapps-de/flexsearch README",
+    "sqlite.org wasm docs / fts5 (fetch)"
+  ],
+  "achados": [
+    {
+      "nome": "Pagefind",
+      "url_fonte": "https://github.com/pagefind/pagefind",
+      "o_que_e": "Indexador que gera bundle estatico de busca em fragmentos, carregados sob demanda no navegador; API Node/Python indexa registros arbitrarios, nao so HTML.",
+      "lugar": ["light_client", "disk"],
+      "mecanismo": ["full_text"],
+      "mcp": "no", "windows": "unknown", "portugues": "yes",
+      "licenca": "MIT", "ultimo_release": "v1.5.2 (2026-04-12)", "maturidade": "stable",
+      "encaixe": "Sandbox sem rede recebe pasta de bundle gerada na maquina com addCustomRecord a partir das notas; busca no browser ou JS. Reindexacao completa a cada build, sem incremental verificado.",
+      "evidencias": [
+        {"url": "https://pagefind.app/docs/multilingual/", "citacao": "Portuguese — pt | UI Translations ✅ | Word Stemming ✅"},
+        {"url": "https://pagefind.app/docs/node-api/", "citacao": "addCustomRecord can be used to build the entire index from scratch"},
+        {"url": "https://pagefind.app/docs/node-api/", "citacao": "await index.writeFiles({ outputPath: \"public/pagefind\" })"}
+      ],
+      "nao_verificado": ["binario nativo no Windows (npm pagefind)", "indexacao incremental", "tamanho do indice por N notas", "busca fora do navegador (Node puro, sem DOM) para agente em sandbox"]
+    },
+    {
+      "nome": "MiniSearch",
+      "url_fonte": "https://github.com/lucaong/minisearch",
+      "o_que_e": "Biblioteca JS minuscula de busca full-text em memoria, sem dependencias, com add/remove incremental e tokenizador e processTerm customizaveis.",
+      "lugar": ["library", "light_client"],
+      "mecanismo": ["full_text", "bm25"],
+      "mcp": "no", "windows": "yes", "portugues": "no",
+      "licenca": "MIT", "ultimo_release": "v7.2.0 (tag; ultimo commit 2025-09-16)", "maturidade": "stable",
+      "encaixe": "Indice em memoria reconstruido ou serializado no cliente leve/sandbox; portugues exige stemmer externo via processTerm. Sem atividade desde set/2025.",
+      "evidencias": [
+        {"url": "https://github.com/lucaong/minisearch", "citacao": "Documents can be added and removed from the index at any time."},
+        {"url": "https://github.com/lucaong/minisearch", "citacao": "No stemming is performed"}
+      ],
+      "nao_verificado": ["serializacao toJSON/loadJSON (nao achada no README; o codigo tem autoVacuum, serializacao nao conferida)", "BM25 como ranking (nao citado na fonte lida)", "tamanho do indice"]
+    },
+    {
+      "nome": "Orama",
+      "url_fonte": "https://github.com/oramasearch/orama",
+      "o_que_e": "Motor de busca JS em navegador, servidor ou edge, com full-text, vetorial e hibrido, stemming em 30 idiomas e plugin de persistencia.",
+      "lugar": ["library", "light_client"],
+      "mecanismo": ["full_text", "vector", "hybrid", "bm25"],
+      "mcp": "no", "windows": "unknown", "portugues": "yes",
+      "licenca": "Apache-2.0 (LICENSE.md; API do GitHub marca NOASSERTION)", "ultimo_release": "v3.1.18 (2025-12-19); push em 2026-10-08", "maturidade": "stable",
+      "encaixe": "Cliente leve com busca hibrida em JS; vetores viriam do gateway de embeddings, indice persistido por plugin e copiado ao cliente. Mais pesado que MiniSearch.",
+      "evidencias": [
+        {"url": "https://docs.orama.com/docs/orama-js/supported-languages", "citacao": "Portuguese (linha da tabela de idiomas com ✅)"},
+        {"url": "https://github.com/oramasearch/orama", "citacao": "Orama supports both vector and hybrid search by just setting `mode: 'vector'`"},
+        {"url": "https://github.com/oramasearch/orama", "citacao": "Plugin Data Persistence"}
+      ],
+      "nao_verificado": ["coluna do stemmer vs. tokenizer na tabela de idiomas (so a linha Portuguese foi vista)", "tamanho do indice serializado", "Windows (e JS puro, nao testado)"]
+    },
+    {
+      "nome": "FlexSearch 0.8",
+      "url_fonte": "https://github.com/nextapps-de/flexsearch",
+      "o_que_e": "Biblioteca JS de busca full-text; a v0.8 traz indices persistentes em IndexedDB, Redis, SQLite, Postgres, MongoDB e Clickhouse.",
+      "lugar": ["library", "light_client"],
+      "mecanismo": ["full_text"],
+      "mcp": "no", "windows": "unknown", "portugues": "unknown",
+      "licenca": "Apache-2.0", "ultimo_release": "0.8.2 (2025-05-21); push em 2026-06-28", "maturidade": "stable",
+      "encaixe": "Alternativa de indice JS no cliente com persistencia em IndexedDB ou SQLite; portugues nao conferido, nao ha vantagem clara sobre MiniSearch/Orama.",
+      "evidencias": [
+        {"url": "https://github.com/nextapps-de/flexsearch", "citacao": "The latest generation v0.8 introduce Persistent Indexes"},
+        {"url": "https://github.com/nextapps-de/flexsearch", "citacao": "IndexedDB (Browser)"}
+      ],
+      "nao_verificado": ["suporte a portugues", "Windows", "qualidade do ranking"]
+    },
+    {
+      "nome": "sql.js-httpvfs",
+      "url_fonte": "https://github.com/phiresky/sql.js-httpvfs",
+      "o_que_e": "VFS de SQLite somente leitura sobre HTTP Range requests, para consultar um .sqlite (inclusive tabelas FTS) hospedado estaticamente.",
+      "lugar": ["light_client", "network_service"],
+      "mecanismo": ["full_text"],
+      "mcp": "no", "windows": "unknown", "portugues": "unknown",
+      "licenca": "Apache-2.0", "ultimo_release": "sem release publicado; ultimo push 2024-08-06", "maturidade": "unknown",
+      "encaixe": "Em teoria um SQLite FTS5 exportado serviria clientes via tailnet sem baixar tudo. Sem manutencao desde 2024 e somente leitura: pouco indicado.",
+      "evidencias": [
+        {"url": "https://github.com/phiresky/sql.js-httpvfs", "citacao": "a read-only HTTP-Range-request based virtual file system for SQLite"}
+      ],
+      "nao_verificado": ["FTS5 explicitamente (README so cita 'FTS table')", "maturidade/abandono", "funciona em sandbox sem tailnet? (nao: exige HTTP)"]
+    }
+  ],
+  "lacunas": "Nao achei fonte conferida para: sincronizacao incremental de indice estatico (Pagefind e MiniSearch regeram ou exigem reconstruir; incremental nao verificado), tamanho do indice por numero de notas em qualquer motor, lunr (nao pesquisado a fundo; tende a abandono), SQLite WASM oficial com FTS5 habilitado (pagina sqlite.org/wasm nao confirmou), e SQLite FTS5 em portugues (tokenizer porter e so ingles; ver t05). Nao ha pacote pronto 'cliente leve sincronizado do CouchDB'."
+}

@@ -1,0 +1,90 @@
+Universal AI layer for building frameworks and agents
+A unified TypeScript SDK for building AI apps with modern streaming, fallbacks, and multi-model support—powered by Vercel
+
+For humans
+For agents
+$npm install ainpm install ai
+
+Text GenerationImage GenerationSpeechTranscriptionVideo Generation
+
+generate-text.tsRun it withAI GatewayProviderCustom
+
+import { generateText } from 'ai';
+
+const { text } = await generateText({
+ model: 'spacexai/grok-4.7',
+ prompt: 'Explain the concept of quantum entanglement.',
+});
+
+console.log(text);
+
+Explain quantum entanglement in simple terms.
+
+Entanglement is nature's way of keeping a secret between two particles. Once entangled, observing one instantly reveals information about the other — no signal needed, no matter how far apart they are.
+
+See all supported LLM models
+Weekly downloads31M
+GitHub stars27.3K
+Contributors730+
+Models supported100+
+The framework agnostic AI toolkit
+The open-source AI toolkit designed to help developers build AI-powered applications and agents with React, Next.js, Vue, Svelte, Node.js, and more.
+Next.js
+React
+Svelte
+Angular
+Vue
+Nuxt
+Solid
+
+Multi-provider support
+Switch providers with one line of code.
+
+Streaming that just works
+Real-time responses without custom parsing.
+
+Built-in fallbacks
+Reliable production behavior by default.
+
+AI Gateway compatible
+Route to any model through one endpoint.
+
+AI SDK Core
+A unified API for generating text, structured objects, tool calls, and building agents with LLMs.
+
+AI SDK UI
+A set of framework-agnostic hooks for quickly building chat and generative user interfaces.AI Playground
+
+Text GenerationText GenerationSpeechSpeechTranscriptionTranscriptionImage GenerationImage GenerationVideo GenerationVideo Generation
+
+codepreview
+
+Explain quantum entanglement.
+
+Two particles stay linked, so measuring one instantly determines the other — even across a great distance.
+Ask a question…
+
+Scale with confidence
+Plug the AI SDK into an entire ecosystem designed for modern AI applications that scale.
+
+Vercel AI GatewayAccess 100+ models with no markup or having to manage multiple API keys.$ npm i ai
+
+Vercel SandboxRun agent-generated code securely and at scale.$ npm i @vercel/sandbox
+
+Workflows
+NEWBuild long-running AI agents and apps that can suspend, resume, and survive function timeouts.$ npm i workflow
+
+AI ElementsA UI component library and custom registry built to build AI-native applications faster.$ npx ai-elements
+What builders say about the AI SDK“We built a full AI agent with 40+ tools, resumable streams, and multi-step reasoning on AI SDK. Every hard problem we’d solved with duct tape before, streaming, tool call repair, message management, tool based UI, they already had a clean API for.”Adir DuchanSenior AI Engineer, Elementor“OpenCode uses AI SDK.”Dax RaadCEO & Founder, OpenCode
+
+Build with the AI SDK today
+Get started with the AI SDK by using our recipes or templates.
+Read the docs
+
+$npm i ainpm i ai
+
+Chatbot Starter TemplateLearn how to build a full-featured AI chatbot with persistence, multi-modal chat, and more.Copy install prompt
+
+Build a Slackbot AgentLearn how to build a Slackbot that responds to direct messages and mentions in channels.Copy install prompt
+
+Build a SQL AgentLearn how to build an app that interacts with a PostgreSQL database using natural language.Copy install prompt

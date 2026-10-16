@@ -1,0 +1,32 @@
+{
+ "chave": "gh:manticoresoftware/manticoresearch-python",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T21:22:44Z",
+ "resultado": "corrige",
+ "conferencia": {
+  "resultado": "corrige",
+  "final": {
+   "serve": "stack",
+   "role": "Python HTTP client library for a Manticore Search server",
+   "place": [
+    "library"
+   ],
+   "mechanism": [
+    "other"
+   ],
+   "mcp": "no",
+   "windows": "unknown",
+   "portuguese": "unknown",
+   "license": "unknown",
+   "maturity": "unknown",
+   "doubt": false,
+   "evidence": "Client for Manticore Search. ... Minimum Manticore Search version is >= 2.5.1 with HTTP protocol enabled."
+  },
+  "o_que_mudou": [
+   "serve: search -> stack, e so cliente do servidor, nao motor de busca",
+   "mechanism: full_text,hybrid,vector,other -> other, a busca vem do servidor",
+   "maturity: beta -> unknown, README so diz versao de desenvolvimento"
+  ],
+  "nota": "Util apenas se o hub usar Manticore e quiser script Python; o cliente em si nao busca."
+ }
+}

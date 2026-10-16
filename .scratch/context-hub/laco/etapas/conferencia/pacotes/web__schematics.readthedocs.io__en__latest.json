@@ -1,0 +1,34 @@
+{
+ "chave": "web:schematics.readthedocs.io/en/latest",
+ "nomes": [
+  "Schematics"
+ ],
+ "urls": [
+  "https://schematics.readthedocs.io/en/latest/"
+ ],
+ "readme_cortado": false,
+ "readme": "[Schematics — Schematics 2.1.0 documentation]\n\nDocs »\n\nSchematics\n\n Edit on GitHub\n\nSchematics¶\n\nPython Data Structures for Humans™.\n\nAbout\n\nExample\n\nInstalling\n\nGetting Started\n\nDocumentation\n\nDevelopment\n\nTesting & Coverage\n\nPlease note that the documentation is currently somewhat out of date.\n\nAbout¶\n\nSchematics is a Python library to combine types into structures, validate them,\nand transform the shapes of your data based on simple descriptions.\n\nThe internals are similar to ORM type systems, but there is no database layer\nin Schematics. Instead, we believe that building a database\nlayer is made significantly easier when Schematics handles everything but\nwriting the query.\n\nFurther, it can be used for a range of tasks where having a database involved\nmay not make sense.\n\nSome common use cases:\n\nDesign and document specific data structures\n\nConvert structures to and from different formats such as JSON or MsgPack\n\nValidate API inputs\n\nRemove fields based on access rights of some data’s recipient\n\nDefine message formats for communications protocols, like an RPC\n\nCustom persistence layers\n\nExample¶\n\nThis is a simple Model.\n\n>>> from schematics.models import Model\n>>> from schematics.types import StringType, URLType\n>>> class Person(Model):\n... name = StringType(required=True)\n... website = URLType()\n...\n>>> person = Person({'name': u'Joe Strummer',\n... 'website': 'http://soundcloud.com/joestrummer'})\n>>> person.name\nu'Joe Strummer'\n\nSerializing the data to JSON.\n\n>>> import json\n>>> json.dumps(person.to_primitive())\n{\"name\": \"Joe Strummer\", \"website\": \"http://soundcloud.com/joestrummer\"}\n\nLet’s try validating without a name value, since it’s required.\n\n>>> person = Person()\n>>> person.website = 'http://www.amontobin.com/'\n>>> person.validate()\nTraceback (most recent call last):\n File \"<stdin>\", line 1, in <module>\n File \"schematics/models.py\", line 231, in validate\n raise DataError(e.messages)\nschematics.exceptions.DataError: {'name': ['This field is required.']}\n\nAdd the field and validation passes:\n\n>>> person = Person()\n>>> person.name = 'Amon Tobin'\n>>> person.website = 'http://www.amontobin.com/'\n>>> person.validate()\n>>>\n\nInstalling¶\n\nInstall stable releases of Schematics with pip.\n\n$ pip install schematics\n\nSee the Install Guide for more detail.\n\nGetting Started¶\n\nNew Schematics users should start with the Quickstart Guide. That is the\nfastest way to get a look at what Schematics does.\n\nDocumentation¶\n\nSchematics exists to make a few concepts easy to glue together. The types\nallow us to describe units of data, models let us put them together into\nstructures with fields. We can then import data, check if it looks correct,\nand easily serialize the results into any format we need.\n\nThe User’s Guide provides the high-level concepts, but the API documentation and\nthe code itself provide the most accurate reference.\n\nUser's Guide\n\nTypes\n\nCoercion\n\nConversion\n\nValidation\n\nCustom types\n\nMore Information\n\nModels\n\nSimple Model\n\nModel Configuration\n\nModel Mocking\n\nMore Information\n\nExporting\n\nTerminology\n\nConverting Data\n\nCompound Types\n\nCustomizing Output\n\nMore Information\n\nImporting\n\nCompound Types\n\nMore Information\n\nValidation\n\nValidation Errors\n\nExtending Validation\n\nMore Information\n\nExtending\n\nSimple Example\n\nTaking it a step further\n\nAPI Reference\n\nschematics.models\n\nschematics.validation\n\nschematics.transforms\n\nschematics.types\n\nschematics.contrib\n\nDevelopment¶\n\nWe welcome ideas and code. We ask that you follow some of our guidelines\nthough.\n\nSee the Developer’s Guide for more information.\n\nTesting & Coverage¶\n\nRun coverage and check the missing statements.\n\n$ coverage run --source schematics -m py.test && coverage report",
+ "fonte": "site",
+ "respostas": [
+  {
+   "por": "claude-haiku-5-5",
+   "resposta": {
+    "serve": "stack",
+    "role": "Validate and convert structured data, such as MCP tool inputs, in Python.",
+    "place": [
+     "library"
+    ],
+    "mechanism": [
+     "other"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "unknown",
+    "doubt": false,
+    "evidence": "Validate API inputs ... Define message formats for communications protocols, like an RPC ... documentation is currently somewhat out of date"
+   }
+  }
+ ]
+}

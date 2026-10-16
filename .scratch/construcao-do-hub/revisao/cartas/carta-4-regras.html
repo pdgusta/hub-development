@@ -1,0 +1,777 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ficha, porteiros e acervo</title>
+<style>
+:root{
+  --papel:#f6f3ea; --papel-2:#ece7d9; --tinta:#1c1b19; --tinta-2:#5d5a52; --linha:#1c1b19;
+  --agente:#2f6fdd; --agente-claro:#dbe6fb;
+  --gustavo:#e0701f; --gustavo-claro:#fbe3cf;
+  --mecanismo:#f2c230; --mecanismo-claro:#fbefc4;
+  --acervo:#7a4fd0; --acervo-claro:#e7ddf8;
+  --ok:#23885a; --ok-claro:#d6efe2;
+  --nao:#cf3d33; --nao-claro:#f8dcd8;
+  --aberto:#8a8578;
+  --sans:"Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --cond:"Bahnschrift", "Arial Narrow", "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --papel:#1b1a17; --papel-2:#26241f; --tinta:#efebe1; --tinta-2:#aaa596; --linha:#efebe1;
+    --agente:#7aa6f5; --agente-claro:#1f2c44;
+    --gustavo:#f39a55; --gustavo-claro:#40291a;
+    --mecanismo:#f2c230; --mecanismo-claro:#3c3418;
+    --acervo:#ad8cf0; --acervo-claro:#2f2442;
+    --ok:#4cc58a; --ok-claro:#173528;
+    --nao:#f0736a; --nao-claro:#43201d;
+    --aberto:#8f8a7d;
+  }
+}
+:root[data-theme="dark"]{
+  --papel:#1b1a17; --papel-2:#26241f; --tinta:#efebe1; --tinta-2:#aaa596; --linha:#efebe1;
+  --agente:#7aa6f5; --agente-claro:#1f2c44;
+  --gustavo:#f39a55; --gustavo-claro:#40291a;
+  --mecanismo:#f2c230; --mecanismo-claro:#3c3418;
+  --acervo:#ad8cf0; --acervo-claro:#2f2442;
+  --ok:#4cc58a; --ok-claro:#173528;
+  --nao:#f0736a; --nao-claro:#43201d;
+  --aberto:#8f8a7d;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--papel);color:var(--tinta);font-family:var(--sans);line-height:1.35;
+  background-image:radial-gradient(color-mix(in srgb,var(--tinta) 7%,transparent) 1px,transparent 1.2px);
+  background-size:22px 22px}
+.folha{max-width:1240px;margin:0 auto;padding:28px 16px 64px}
+
+/* capa */
+.capa{display:grid;grid-template-columns:1.1fr 1fr;gap:28px;align-items:center;border:3px solid var(--linha);
+  background:var(--papel);padding:28px 32px;position:relative}
+.capa .selo{font:700 13px var(--cond);letter-spacing:.18em;text-transform:uppercase;color:var(--tinta-2)}
+.capa h1{font:800 64px/0.95 var(--cond);margin:10px 0 14px;letter-spacing:-.01em}
+.capa h1 span{display:block}
+.capa .sub{font:600 19px var(--sans);color:var(--tinta-2);margin:0}
+.capa .sub b{color:var(--tinta)}
+.capa .ferr{display:flex;gap:18px;margin-top:22px;align-items:center;font:600 14px var(--sans)}
+.capa .ferr .caixa{display:flex;align-items:center;gap:8px;border:2px solid var(--linha);padding:6px 12px;border-radius:30px;background:var(--papel)}
+.capa .ferr svg{width:26px;height:26px}
+.capa svg.desenho{width:100%;height:auto}
+
+/* peças */
+.pecas{margin-top:26px;border:3px solid var(--linha);background:var(--papel);padding:18px 22px 20px}
+.pecas h2,.resumo h2{font:800 22px var(--cond);text-transform:uppercase;letter-spacing:.12em;margin:0 0 14px;display:flex;align-items:center;gap:12px}
+.pecas h2::after,.resumo h2::after{content:"";flex:1;border-top:2px dashed var(--linha)}
+.grade-pecas{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px}
+.peca{display:flex;flex-direction:column;align-items:center;text-align:center;gap:4px;padding:10px 6px 8px;border:2px solid var(--linha);background:var(--papel)}
+.peca svg{width:54px;height:54px}
+.peca b{font:700 15px var(--sans)}
+.peca small{font:500 12.5px var(--sans);color:var(--tinta-2)}
+.cores{display:flex;flex-wrap:wrap;gap:16px;margin-top:14px;font:600 13.5px var(--sans);color:var(--tinta-2)}
+.cores i{display:inline-block;width:14px;height:14px;border:2px solid var(--linha);vertical-align:-2px;margin-right:6px}
+
+/* passos */
+.passo{margin-top:34px;border:3px solid var(--linha);background:var(--papel);position:relative;padding:22px 24px 24px}
+.passo .num{position:absolute;left:18px;top:10px;font:800 104px/1 var(--cond);color:var(--tinta)}
+.passo .num::after{content:"";display:block;width:70px;border-top:4px solid var(--linha);margin-top:4px}
+.passo h2{font:800 30px/1.05 var(--cond);margin:4px 0 6px 116px}
+.passo .chave{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 14px 116px;padding:0;list-style:none}
+.passo .chave+.problema{margin-top:30px}
+.passo .chave li{font:600 13.5px var(--sans);border:1.5px solid var(--linha);border-radius:4px;padding:2px 9px;background:var(--papel-2)}
+.problema{border:2px dashed var(--linha);background:var(--papel-2);padding:8px 10px 4px;position:relative}
+.problema .rot{position:absolute;top:-13px;left:14px;background:var(--papel);border:2px solid var(--linha);font:800 12.5px var(--cond);letter-spacing:.14em;text-transform:uppercase;padding:2px 10px}
+.problema svg{width:100%;height:auto;display:block}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:20px}
+.lado{border:2.5px solid var(--linha);background:var(--papel);position:relative;padding:28px 12px 12px;margin:0}
+.lado .marca{position:absolute;top:-18px;left:12px;display:flex;align-items:center;gap:8px;background:var(--papel);padding:0 8px 0 0;font:800 15px var(--cond);text-transform:uppercase;letter-spacing:.08em}
+.lado .marca svg{width:34px;height:34px}
+.lado.ok{box-shadow:6px 6px 0 var(--ok-claro)}
+.lado.nao{box-shadow:6px 6px 0 var(--nao-claro)}
+.lado svg.cena{width:100%;height:auto;display:block}
+.tags{list-style:none;padding:0;margin:8px 0 0;display:flex;flex-wrap:wrap;gap:6px}
+.tags li{font:600 13.5px var(--sans);padding:3px 10px 3px 8px;border-radius:30px;border:1.5px solid}
+.tags li::before{font-weight:800;margin-right:6px}
+.tags .mais{border-color:var(--ok);background:var(--ok-claro)}
+.tags .mais::before{content:"+";color:var(--ok)}
+.tags .menos{border-color:var(--nao);background:var(--nao-claro)}
+.tags .menos::before{content:"−";color:var(--nao)}
+.tags .atencao{border-color:var(--aberto);border-style:dashed;background:transparent;color:var(--tinta-2)}
+.tags .atencao::before{content:"?";color:var(--tinta-2)}
+.rodape{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;align-items:center;font:600 13.5px var(--sans);color:var(--tinta-2)}
+.rodape .fixo{border:1.5px solid var(--linha);color:var(--tinta);padding:3px 10px;background:var(--papel-2)}
+.rodape .fixo b{font-weight:800}
+
+/* svg */
+.t{font:600 15px var(--sans);fill:var(--tinta)}
+.t-p{font:600 14px var(--sans);fill:var(--tinta-2)}
+.t-g{font:800 17px var(--cond);fill:var(--tinta)}
+.t-ok{font:700 14px var(--sans);fill:var(--ok)}
+.t-nao{font:700 14px var(--sans);fill:var(--nao)}
+.m{text-anchor:middle}
+.ln{fill:none;stroke:var(--linha);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.seta{fill:none;stroke:var(--linha);stroke-width:2.5;stroke-linecap:round;marker-end:url(#ponta)}
+.seta-ok{fill:none;stroke:var(--ok);stroke-width:2.8;stroke-linecap:round;marker-end:url(#ponta-ok)}
+.seta-nao{fill:none;stroke:var(--nao);stroke-width:2.8;stroke-linecap:round;marker-end:url(#ponta-nao)}
+.trac{stroke-dasharray:6 6}
+.c-ag{color:var(--agente)} .c-gu{color:var(--gustavo)} .c-me{color:var(--tinta)} .c-ac{color:var(--acervo)}
+.c-ok{color:var(--ok)} .c-nao{color:var(--nao)} .c-ab{color:var(--aberto)}
+.f-ag{fill:var(--agente-claro)} .f-gu{fill:var(--gustavo-claro)} .f-me{fill:var(--mecanismo-claro)} .f-ac{fill:var(--acervo-claro)}
+.f-ok{fill:var(--ok-claro)} .f-nao{fill:var(--nao-claro)} .f-p{fill:var(--papel)} .f-p2{fill:var(--papel-2)}
+.hach{fill:url(#hachura)}
+.pilha,.leitura{display:none}
+.pilha{list-style:none;margin:6px 0 4px;padding:0}
+.pilha li{display:grid;grid-template-columns:44px 1fr;gap:12px;align-items:center;padding:8px 0;font:600 15px var(--sans)}
+.pilha li+li{border-top:1.5px dashed color-mix(in srgb,var(--linha) 45%,transparent)}
+.pilha svg{width:44px;height:44px}
+.pilha .pergunta{font:800 17px/1.2 var(--cond);background:var(--mecanismo-claro);margin:4px -6px 0;padding:10px 6px;border-top:0}
+.leitura{margin:8px 2px 0;font:600 15px/1.45 var(--sans)}
+.leitura .ok{color:var(--ok);font-weight:800}
+.leitura .nao{color:var(--nao);font-weight:800}
+
+/* resumo */
+.resumo{margin-top:40px;border:3px solid var(--linha);background:var(--papel);padding:20px 24px 22px}
+.resumo ol{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.resumo li{display:grid;grid-template-columns:44px 44px 1fr;gap:14px;align-items:center;border-bottom:1.5px dashed color-mix(in srgb,var(--linha) 40%,transparent);padding-bottom:10px}
+.resumo li:last-child{border-bottom:0;padding-bottom:0}
+.resumo .n{font:800 34px/1 var(--cond);text-align:center}
+.resumo svg{width:40px;height:40px}
+.resumo p{margin:0;font:600 16.5px var(--sans)}
+.resumo p small{display:block;font:500 13.5px var(--sans);color:var(--tinta-2);margin-top:2px}
+.fim{margin-top:18px;text-align:center;font:700 13px var(--cond);letter-spacing:.2em;text-transform:uppercase;color:var(--tinta-2)}
+
+@media (max-width:900px){
+  .capa{grid-template-columns:1fr;padding:20px}
+  .capa h1{font-size:44px}
+  .passo{padding:86px 14px 18px}
+  .passo h2,.passo .chave{margin-left:0}
+  .passo .num{font-size:66px;left:14px}
+  .passo .num::after{width:44px}
+  .duo{grid-template-columns:1fr;gap:30px}
+  .problema>svg{display:none}
+  .pilha{display:block}
+  .cena text,.cena .so-largo{display:none}
+  .leitura{display:block}
+}
+</style>
+</head>
+<body>
+
+<!-- biblioteca de peças desenhadas -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <marker id="ponta" viewBox="0 0 10 10" refX="7.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="var(--linha)"/></marker>
+    <marker id="ponta-ok" viewBox="0 0 10 10" refX="7.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="var(--ok)"/></marker>
+    <marker id="ponta-nao" viewBox="0 0 10 10" refX="7.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="var(--nao)"/></marker>
+    <pattern id="hachura" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="8" height="8" fill="var(--nao-claro)"/><path d="M0 0V8" stroke="var(--nao)" stroke-width="2.4"/></pattern>
+  </defs>
+  <symbol id="i-nota" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 5h28l12 12v42H12z" fill="var(--papel)"/><path d="M40 5v12h12"/>
+    <rect x="17" y="11" width="21" height="14" rx="1.5" fill="var(--mecanismo-claro)" stroke-width="2.4"/>
+    <path d="M20.5 15.5h11M20.5 20.5h7" stroke-width="2.2"/>
+    <path d="M18 34h28M18 41h28M18 48h20"/>
+  </symbol>
+  <symbol id="i-lupa" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="26" cy="26" r="16" fill="var(--papel)"/><path d="M19 26l5 5 9-10" stroke-width="3"/><path d="M38 38l17 17" stroke-width="7"/>
+  </symbol>
+  <symbol id="i-cancela" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="7" y="18" width="9" height="38" rx="2" fill="var(--papel)"/><path d="M3 57h17"/>
+    <rect x="16" y="20" width="45" height="10" rx="2" fill="var(--mecanismo)"/>
+    <path d="M26 20l-6 10M36 20l-6 10M46 20l-6 10M56 20l-6 10" stroke="#1c1b19" stroke-width="2.6"/>
+    <circle cx="11.5" cy="25" r="2.5" fill="currentColor"/>
+  </symbol>
+  <symbol id="i-robo" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="11" y="19" width="42" height="32" rx="8" fill="var(--agente-claro)"/>
+    <circle cx="24.5" cy="34" r="3.6" fill="currentColor"/><circle cx="39.5" cy="34" r="3.6" fill="currentColor"/>
+    <path d="M26 43.5h12"/><path d="M32 19v-8"/><circle cx="32" cy="8" r="3" fill="currentColor"/><path d="M11 33H6M53 33h5"/>
+  </symbol>
+  <symbol id="i-pessoa" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="32" cy="17" r="10" fill="var(--gustavo-claro)"/><path d="M12 59c0-15 9-24 20-24s20 9 20 24" fill="var(--gustavo-claro)"/>
+  </symbol>
+  <symbol id="i-engrenagem" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M32 5v9M32 50v9M5 32h9M50 32h9M12.9 12.9l6.4 6.4M44.7 44.7l6.4 6.4M12.9 51.1l6.4-6.4M44.7 19.3l6.4-6.4" stroke-width="7"/>
+    <circle cx="32" cy="32" r="17" fill="var(--mecanismo-claro)"/><circle cx="32" cy="32" r="6" fill="var(--papel)"/>
+  </symbol>
+  <symbol id="i-faisca" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M28 6c2 15 6 20 20 25-14 5-18 10-20 25-2-15-6-20-20-25 14-5 18-10 20-25z" fill="var(--acervo-claro)"/>
+    <path d="M51 6c.8 5 2.3 6.7 7 8-4.7 1.3-6.2 3-7 8-.8-5-2.3-6.7-7-8 4.7-1.3 6.2-3 7-8z"/>
+  </symbol>
+  <symbol id="i-estante" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="6" y="6" width="52" height="52" rx="2" fill="var(--acervo-claro)"/><path d="M6 32h52"/>
+    <path d="M13 29V13M19 29V11M25 29V15M31 29V12M13 55V39M19 55V37M26 55V41"/>
+    <rect x="35" y="44" width="16" height="12" rx="2" fill="var(--papel)"/><path d="M38.5 44v-4.5a4.5 4.5 0 0 1 9 0V44"/>
+  </symbol>
+  <symbol id="i-atalho" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M10 54V34a16 16 0 0 1 16-16h26"/><path d="M43 8l11 10-11 10"/>
+    <circle cx="10" cy="56" r="3" fill="currentColor"/>
+  </symbol>
+  <symbol id="i-casa" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M6 30L32 8l26 22"/><path d="M13 25v32h38V25"/><rect x="27" y="40" width="10" height="17"/>
+  </symbol>
+  <symbol id="i-casa-ensaio" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="5 4">
+    <path d="M6 30L32 8l26 22"/><path d="M13 25v32h38V25"/><rect x="27" y="40" width="10" height="17" stroke-dasharray="none"/>
+  </symbol>
+  <symbol id="i-pasta" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M5 16h20l5 6h29v32H5z" fill="var(--papel-2)"/>
+  </symbol>
+  <symbol id="i-terminal" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="5" y="11" width="54" height="42" rx="5" fill="var(--papel-2)"/><path d="M5 21h54"/>
+    <path d="M14 31l7 6-7 6M26 44h11"/><circle cx="11" cy="16" r="1.4" fill="currentColor"/><circle cx="16" cy="16" r="1.4" fill="currentColor"/>
+  </symbol>
+  <symbol id="i-copilot" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M8 38c0-12 8-19 24-19s24 7 24 19-8 15-24 15S8 50 8 38z" fill="var(--agente-claro)"/>
+    <ellipse cx="22.5" cy="36" rx="6.5" ry="5.5" fill="var(--papel)"/><ellipse cx="41.5" cy="36" rx="6.5" ry="5.5" fill="var(--papel)"/>
+    <path d="M29 36h6M20 13l4 6M44 13l-4 6"/>
+  </symbol>
+  <symbol id="i-sino" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M17 44V30a15 15 0 0 1 30 0v14l5 5H12z" fill="var(--mecanismo-claro)"/><path d="M27 55a5 5 0 0 0 10 0"/><path d="M32 15v-5"/>
+  </symbol>
+  <symbol id="i-lapis" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 52l4-13L43 12l9 9-27 27z" fill="var(--gustavo-claro)"/><path d="M37 18l9 9M16 39l9 9"/>
+  </symbol>
+  <symbol id="i-mapa" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M5 14l17-6 20 6 17-6v42l-17 6-20-6-17 6z" fill="var(--ok-claro)"/><path d="M22 8v42M42 14v42"/>
+    <path d="M10 34c6-6 10 2 16-3s9-7 13 0 8 2 14-6" stroke-dasharray="3 4"/>
+  </symbol>
+  <symbol id="i-varinha" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M8 56L38 26" stroke-width="5"/><path d="M45 6l2.6 7.4L55 16l-7.4 2.6L45 26l-2.6-7.4L35 16l7.4-2.6z" fill="var(--mecanismo)"/>
+    <path d="M56 34l1 3 3 1-3 1-1 3-1-3-3-1 3-1z" fill="currentColor"/>
+  </symbol>
+  <symbol id="i-placa" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M28 59V6"/><path d="M28 10h22l7 7-7 7H28z" fill="var(--mecanismo)"/><path d="M28 30H12l-7 7 7 7h16z" fill="var(--papel)"/><path d="M20 59h16"/>
+  </symbol>
+  <symbol id="i-trecho" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M6 22h52v20H6z" fill="var(--agente-claro)" stroke-dasharray="5 3"/><path d="M13 32h30"/>
+  </symbol>
+  <symbol id="i-balao" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M8 10h48v32H26l-12 11V42H8z" fill="var(--papel-2)"/><path d="M16 21h32M16 30h22"/>
+  </symbol>
+  <symbol id="i-moeda" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="32" cy="32" r="22" fill="var(--mecanismo-claro)"/><path d="M32 18v28M39 24.5c-2-3.5-12-3.5-13 1.5s13 4.5 13 10.5-12 6-14 2"/>
+  </symbol>
+  <symbol id="i-sim" viewBox="0 0 64 64"><circle cx="32" cy="32" r="28" fill="var(--ok)"/><path d="M18 33l9 9 19-20" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-nao" viewBox="0 0 64 64"><circle cx="32" cy="32" r="28" fill="var(--nao)"/><path d="M21 21l22 22M43 21L21 43" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round"/></symbol>
+  <symbol id="i-feliz" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="32" cy="20" r="13" fill="var(--papel)"/><circle cx="27" cy="18" r="1.6" fill="currentColor"/><circle cx="37" cy="18" r="1.6" fill="currentColor"/><path d="M26 24c3 3.5 9 3.5 12 0"/>
+    <path d="M32 33v16M32 49l-8 12M32 49l8 12M32 38l-12-8M32 38l12-8"/>
+  </symbol>
+  <symbol id="i-confuso" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="28" cy="22" r="13" fill="var(--papel)"/><circle cx="23" cy="20" r="1.6" fill="currentColor"/><circle cx="33" cy="20" r="1.6" fill="currentColor"/><path d="M23 28c3-2 7-2 10 0"/>
+    <path d="M28 35v14M28 49l-8 12M28 49l8 12M28 40l-12 4M28 40l10-10"/>
+    <path d="M47 8c0-4 9-4 9 1 0 4-5 4-5 9" stroke-width="3.2"/><circle cx="51" cy="24" r="1.8" fill="currentColor"/>
+  </symbol>
+</svg>
+
+<main class="folha">
+
+<!-- CAPA -->
+<header class="capa">
+  <div>
+    <div class="selo">Manual de montagem · carta 4 de 4 · 7 escolhas</div>
+    <h1><span>Ficha,</span><span>porteiros</span><span>e acervo</span></h1>
+    <p class="sub">As regras que o hub <b>impõe sozinho</b>: quem completa a ficha da nota, quem barra a gravação errada, quem guarda as skills do maestro.</p>
+    <div class="ferr">
+      <span class="caixa"><svg viewBox="0 0 64 64"><use href="#i-sim"/></svg>com a escolha</span>
+      <span class="caixa"><svg viewBox="0 0 64 64"><use href="#i-nao"/></svg>sem ela / a alternativa</span>
+    </div>
+  </div>
+  <svg class="desenho" viewBox="0 0 560 330" role="img" aria-label="Uma nota com ficha, um porteiro e a estante do acervo, desenhados como peças de um kit">
+    <rect x="18" y="18" width="524" height="294" class="ln f-p2" stroke-dasharray="9 7"/>
+    <use href="#i-nota" x="46" y="70" width="150" height="150" class="c-me"/>
+    <path class="seta" d="M98 66C98 40 120 34 132 50"/>
+    <text x="150" y="44" class="t-g">FICHA</text>
+    <use href="#i-cancela" x="214" y="98" width="150" height="150" class="c-me"/>
+    <text x="289" y="270" class="t-g m">PORTEIRO</text>
+    <use href="#i-estante" x="386" y="86" width="132" height="132" class="c-ac"/>
+    <text x="452" y="246" class="t-g m">ACERVO</text>
+    <text x="121" y="246" class="t-g m">NOTA</text>
+    <use href="#i-lupa" x="150" y="168" width="70" height="70" class="c-me"/>
+    <path d="M30 300h500" class="ln"/>
+  </svg>
+</header>
+
+<!-- PEÇAS -->
+<section class="pecas" aria-label="Peças desta carta">
+  <h2>Peças</h2>
+  <div class="grade-pecas">
+    <div class="peca"><svg viewBox="0 0 64 64"><use href="#i-nota" class="c-me"/></svg><b>nota com ficha</b><small>ficha = frontmatter, os campos do topo</small></div>
+    <div class="peca"><svg viewBox="0 0 64 64"><use href="#i-lupa" class="c-me"/></svg><b>verificador</b><small>confere e completa a ficha</small></div>
+    <div class="peca"><svg viewBox="0 0 64 64"><use href="#i-cancela" class="c-me"/></svg><b>porteiro</b><small>hook: roda sozinho antes ou depois do agente agir</small></div>
+    <div class="peca"><svg viewBox="0 0 64 64"><use href="#i-engrenagem" class="c-me"/></svg><b>script</b><small>regra fixa, sem IA</small></div>
+    <div class="peca"><svg viewBox="0 0 64 64"><use href="#i-faisca" class="c-ac"/></svg><b>modelo de IA</b><small>julga, mas custa</small></div>
+    <div class="peca"><svg viewBox="0 0 64 64"><use href="#i-robo" class="c-ag"/></svg><b>agente</b><small>Claude Code, Codex, Copilot</small></div>
+    <div class="peca"><svg viewBox="0 0 64 64"><use href="#i-pessoa" class="c-gu"/></svg><b>Gustavo</b><small>edita no Obsidian, dá o aval</small></div>
+    <div class="peca"><svg viewBox="0 0 64 64"><use href="#i-estante" class="c-ac"/></svg><b>acervo</b><small>skills do maestro, com cadeado</small></div>
+    <div class="peca"><svg viewBox="0 0 64 64"><use href="#i-atalho" class="c-me"/></svg><b>atalho</b><small>junction: a mesma pasta vista de outro lugar</small></div>
+    <div class="peca"><svg viewBox="0 0 64 64"><use href="#i-casa-ensaio" class="c-me"/></svg><b>casa de ensaio</b><small>HOME falso, para testar sem tocar no real</small></div>
+    <div class="peca"><svg viewBox="0 0 64 64"><use href="#i-mapa" class="c-me"/></svg><b>mapa</b><small>o AGENTS.md da iniciativa</small></div>
+    <div class="peca"><svg viewBox="0 0 64 64"><use href="#i-trecho" class="c-ag"/></svg><b>troca de trecho</b><small>muda só um pedaço do arquivo</small></div>
+  </div>
+  <div class="cores">
+    <span><i style="background:var(--agente-claro);border-color:var(--agente)"></i>agente</span>
+    <span><i style="background:var(--gustavo-claro);border-color:var(--gustavo)"></i>Gustavo</span>
+    <span><i style="background:var(--mecanismo)"></i>mecanismo do hub</span>
+    <span><i style="background:var(--acervo-claro);border-color:var(--acervo)"></i>acervo e IA</span>
+    <span><i style="background:var(--ok)"></i>dá certo</span>
+    <span><i style="background:var(--nao)"></i>dá errado</span>
+  </div>
+</section>
+
+<!-- PASSO 1 -->
+<section class="passo" id="p1">
+  <div class="num">1</div>
+  <h2>O verificador só preenche o que dá para deduzir</h2>
+  <ul class="chave"><li>fim da resposta</li><li>completar a ficha</li><li>troca de trecho</li><li>relê antes de gravar</li></ul>
+  <div class="problema"><span class="rot">o problema</span>
+    <svg viewBox="0 0 1160 170" role="img" aria-label="O Gustavo edita a nota no Obsidian enquanto o verificador vai gravar a ficha da mesma nota">
+      <use href="#i-pessoa" x="70" y="30" width="96" height="96" class="c-gu"/>
+      <use href="#i-lapis" x="150" y="70" width="52" height="52" class="c-gu"/>
+      <text x="130" y="152" class="t m">Gustavo edita</text>
+      <path class="seta" d="M226 86H468"/><text x="347" y="76" class="t-p m">escreve</text>
+      <use href="#i-nota" x="490" y="18" width="130" height="130" class="c-me"/>
+      <text x="555" y="166" class="t-g m">A MESMA NOTA</text>
+      <path class="seta" d="M904 86H644"/><text x="774" y="76" class="t-p m">grava</text>
+      <use href="#i-lupa" x="930" y="30" width="96" height="96" class="c-me"/>
+      <text x="978" y="152" class="t m">verificador completa a ficha</text>
+      <use href="#i-engrenagem" x="1072" y="40" width="54" height="54" class="c-me"/>
+      <text x="1099" y="112" class="t-p m">sincronizador</text><text x="1099" y="128" class="t-p m">também grava</text>
+    </svg>
+    <ol class="pilha"><li><svg viewBox="0 0 64 64"><use href="#i-pessoa" class="c-gu"/></svg><span>Gustavo edita a nota no Obsidian</span></li><li><svg viewBox="0 0 64 64"><use href="#i-engrenagem" class="c-me"/></svg><span>o sincronizador também grava nela</span></li><li><svg viewBox="0 0 64 64"><use href="#i-lupa" class="c-me"/></svg><span>o verificador vai completar a ficha</span></li><li class="pergunta"><svg viewBox="0 0 64 64"><use href="#i-nota" class="c-me"/></svg><span>a mesma nota, ao mesmo tempo: como gravar sem apagar ninguém?</span></li></ol>
+  </div>
+  <div class="duo">
+    <figure class="lado ok">
+      <div class="marca"><svg viewBox="0 0 64 64"><use href="#i-sim"/></svg>com a escolha</div>
+      <svg class="cena" viewBox="0 0 560 220" role="img" aria-label="Lê, relê para ver se é igual, troca só a ficha">
+        <rect x="8" y="8" width="168" height="140" class="ln f-p2"/>
+        <use href="#i-nota" x="24" y="22" width="86" height="86" class="c-me"/><use href="#i-lupa" x="92" y="54" width="62" height="62" class="c-me"/>
+        <text x="92" y="136" class="t-g m">1 · LÊ</text>
+        <path class="seta" d="M180 78H192"/>
+        <rect x="196" y="8" width="168" height="140" class="ln f-p2"/>
+        <use href="#i-nota" x="212" y="22" width="86" height="86" class="c-me"/><use href="#i-lupa" x="280" y="54" width="62" height="62" class="c-me"/>
+        <text x="300" y="44" class="t-g">= ?</text>
+        <text x="280" y="136" class="t-g m">2 · RELÊ</text>
+        <path class="seta" d="M368 78H380"/>
+        <rect x="384" y="8" width="168" height="140" class="ln f-p2"/>
+        <use href="#i-nota" x="420" y="18" width="96" height="96" class="c-me"/>
+        <rect x="443" y="32" width="38" height="27" rx="3" fill="none" stroke="var(--ok)" stroke-width="4"/>
+        <text x="468" y="136" class="t-g m">3 · SÓ A FICHA</text>
+        <use href="#i-pessoa" x="16" y="160" width="50" height="50" class="c-gu so-largo"/>
+        <text x="74" y="184" class="t">edição do Gustavo</text><text x="74" y="204" class="t-ok">fica inteira</text>
+        <use href="#i-nao" x="282" y="168" width="22" height="22" class="so-largo"/>
+        <text x="312" y="184" class="t">mudou entre 1 e 2?</text><text x="312" y="204" class="t-nao">refaz ou devolve ao agente</text>
+      </svg>
+      <p class="leitura">lê → relê: igual? → troca só a ficha. Edição do Gustavo <span class="ok">fica inteira</span>; se a nota mudou, <span class="nao">refaz ou devolve ao agente</span>.</p>
+      <ul class="tags"><li class="mais">nada escrito por outro se perde</li><li class="mais">só campos do caminho, da ficha ou da data</li><li class="atencao">o instante entre reler e gravar não foi medido</li></ul>
+    </figure>
+    <figure class="lado nao">
+      <div class="marca"><svg viewBox="0 0 64 64"><use href="#i-nao"/></svg>sem ela: regrava o arquivo</div>
+      <svg class="cena" viewBox="0 0 560 220" role="img" aria-label="O verificador regrava a nota inteira e a edição do Gustavo some">
+        <use href="#i-lupa" x="24" y="40" width="96" height="96" class="c-me"/>
+        <path class="seta-nao" d="M130 88H226"/><text x="178" y="76" class="t-nao m">regrava tudo</text>
+        <rect x="244" y="22" width="132" height="132" class="hach" stroke="var(--nao)" stroke-width="2"/>
+        <use href="#i-nota" x="250" y="28" width="120" height="120" class="c-me" opacity=".85"/>
+        <use href="#i-pessoa" x="420" y="30" width="80" height="80" class="c-gu"/>
+        <use href="#i-lapis" x="480" y="64" width="46" height="46" class="c-gu"/>
+        <path d="M478 66l46 46M524 66l-46 46" stroke="var(--nao)" stroke-width="5" stroke-linecap="round"/>
+        <text x="470" y="140" class="t m">edição do Gustavo</text><text x="470" y="160" class="t-nao m">apagada</text>
+        <text x="310" y="190" class="t-p m">o mesmo vale para o que o sincronizador acabou de trazer</text>
+      </svg>
+      <p class="leitura">regrava o arquivo inteiro → edição do Gustavo <span class="nao">apagada</span>; o mesmo vale para o que o sincronizador acabou de trazer.</p>
+      <ul class="tags"><li class="mais">mais simples de escrever</li><li class="menos">pode apagar a edição de outro</li><li class="menos">fura a regra "nenhuma gravação sem conferir a versão"</li></ul>
+    </figure>
+  </div>
+  <div class="rodape">
+    <span class="fixo"><b>dá para deduzir</b> = tipo · iniciativa · título · data de mudança</span>
+    <span class="fixo">índices e links: a mesma guarda</span>
+  </div>
+</section>
+
+<!-- PASSO 2 -->
+<section class="passo" id="p2">
+  <div class="num">2</div>
+  <h2>O porteiro monta a nota final antes de conferir a ficha</h2>
+  <ul class="chave"><li>porteiro antes da gravação</li><li>troca de trecho</li><li>nota fora do esquema é barrada</li></ul>
+  <div class="problema"><span class="rot">o problema</span>
+    <svg viewBox="0 0 1160 170" role="img" aria-label="O agente manda só um pedaço; o porteiro precisa saber se a nota final segue a ficha">
+      <use href="#i-robo" x="70" y="28" width="100" height="100" class="c-ag"/>
+      <text x="120" y="152" class="t m">agente muda uma linha</text>
+      <path class="seta" d="M190 80H330"/>
+      <use href="#i-trecho" x="340" y="30" width="110" height="110" class="c-ag"/>
+      <text x="395" y="140" class="t-g m">SÓ O PEDAÇO</text>
+      <path class="seta" d="M466 80H590"/>
+      <use href="#i-cancela" x="604" y="18" width="116" height="116" class="c-me"/>
+      <text x="662" y="156" class="t m">porteiro</text>
+      <text x="770" y="62" class="t-g">A NOTA VAI FICAR</text>
+      <text x="770" y="86" class="t-g">CERTA NA FICHA?</text>
+      <use href="#i-nota" x="996" y="22" width="110" height="110" class="c-ab"/>
+      <path d="M1022 34h44v28h-44z" fill="none" stroke="var(--nao)" stroke-width="3" stroke-dasharray="5 4"/>
+      <text x="1051" y="156" class="t-p m">a ficha fica longe da troca</text>
+    </svg>
+    <ol class="pilha"><li><svg viewBox="0 0 64 64"><use href="#i-robo" class="c-ag"/></svg><span>o agente muda uma linha</span></li><li><svg viewBox="0 0 64 64"><use href="#i-trecho" class="c-ag"/></svg><span>e manda só o pedaço</span></li><li><svg viewBox="0 0 64 64"><use href="#i-cancela" class="c-me"/></svg><span>o porteiro confere antes de gravar</span></li><li class="pergunta"><svg viewBox="0 0 64 64"><use href="#i-nota" class="c-ab"/></svg><span>a nota vai ficar certa na ficha? a ficha fica longe da troca</span></li></ol>
+  </div>
+  <div class="duo">
+    <figure class="lado ok">
+      <div class="marca"><svg viewBox="0 0 64 64"><use href="#i-sim"/></svg>com a escolha</div>
+      <svg class="cena" viewBox="0 0 560 220" role="img" aria-label="Nota atual mais o pedaço dá a nota final, que o verificador confere">
+        <use href="#i-nota" x="10" y="30" width="96" height="96" class="c-me"/>
+        <text x="58" y="146" class="t-p m">nota atual</text>
+        <text x="122" y="90" class="t-g m" style="font-size:34px">+</text>
+        <use href="#i-trecho" x="136" y="30" width="96" height="96" class="c-ag"/>
+        <text x="184" y="146" class="t-p m">o pedaço</text>
+        <text x="248" y="90" class="t-g m" style="font-size:34px">=</text>
+        <rect x="266" y="26" width="104" height="104" class="f-ok" stroke="var(--ok)" stroke-width="2"/>
+        <use href="#i-nota" x="270" y="30" width="96" height="96" class="c-me"/>
+        <text x="318" y="146" class="t-g m">NOTA FINAL</text>
+        <path class="seta" d="M376 78H390"/>
+        <use href="#i-lupa" x="394" y="44" width="68" height="68" class="c-me"/>
+        <path class="seta-ok" d="M466 62l32-20"/><text x="502" y="42" class="t-ok">passa</text>
+        <path class="seta-nao" d="M466 96l32 20"/><text x="502" y="126" class="t-nao">barra</text>
+        <rect x="10" y="168" width="20" height="20" class="ln f-p2"/>
+        <text x="40" y="184" class="t">arquivo novo: confere direto o que vai ser gravado</text>
+      </svg>
+      <p class="leitura">nota atual + o pedaço = nota final → verificador: <span class="ok">passa</span> ou <span class="nao">barra</span>. Arquivo novo: confere direto.</p>
+      <ul class="tags"><li class="mais">confere a nota como ela vai ficar</li><li class="mais">a troca de trecho continua livre</li><li class="atencao">ainda não testado</li></ul>
+    </figure>
+    <figure class="lado nao">
+      <div class="marca"><svg viewBox="0 0 64 64"><use href="#i-nao"/></svg>sem ela: olha só o pedaço</div>
+      <svg class="cena" viewBox="0 0 560 220" role="img" aria-label="O porteiro olha só o pedaço, que não tem ficha, e ou barra tudo ou deixa passar sem conferir">
+        <use href="#i-trecho" x="16" y="36" width="96" height="96" class="c-ag"/>
+        <path class="seta" d="M120 84H170"/>
+        <use href="#i-cancela" x="176" y="30" width="100" height="100" class="c-me"/>
+        <use href="#i-confuso" x="270" y="20" width="70" height="70" class="c-me"/>
+        <text x="305" y="112" class="t-p m">cadê a ficha?</text>
+        <path class="seta-nao" d="M350 70l52-30"/><text x="410" y="38" class="t-nao">barra toda troca</text>
+        <path class="seta-nao" d="M350 98l52 30"/><text x="410" y="136" class="t-nao">ou deixa passar</text><text x="410" y="154" class="t-nao">sem conferir</text>
+        <text x="280" y="200" class="t-p m">os dois saem errados: trava o trabalho ou entra nota fora do esquema</text>
+      </svg>
+      <p class="leitura">o porteiro vê só o pedaço, sem ficha → <span class="nao">barra toda troca</span> ou <span class="nao">deixa passar sem conferir</span>.</p>
+      <ul class="tags"><li class="menos">trava a edição comum</li><li class="menos">ou deixa entrar ficha quebrada</li></ul>
+    </figure>
+  </div>
+</section>
+
+<!-- PASSO 3 -->
+<section class="passo" id="p3">
+  <div class="num">3</div>
+  <h2>A conferência do fim da resposta é um script, sem IA</h2>
+  <ul class="chave"><li>fim de cada resposta</li><li>nota de retomada</li><li>devolve ou solta</li></ul>
+  <div class="problema"><span class="rot">o problema</span>
+    <svg viewBox="0 0 1160 170" role="img" aria-label="Ao fim da resposta, alguém precisa conferir se a nota de retomada reflete o trabalho">
+      <use href="#i-robo" x="70" y="28" width="100" height="100" class="c-ag"/>
+      <text x="120" y="152" class="t m">agente termina a resposta</text>
+      <path class="seta" d="M190 80H330"/>
+      <use href="#i-nota" x="346" y="20" width="116" height="116" class="c-me"/>
+      <text x="404" y="156" class="t m">nota de retomada</text>
+      <text x="520" y="62" class="t-g">A NOTA CONTA O QUE FOI FEITO?</text>
+      <text x="520" y="88" class="t-p">se não conta, o agente volta e grava; se conta, segue</text>
+      <text x="520" y="132" class="t-p">quem confere:</text>
+      <use href="#i-engrenagem" x="630" y="104" width="44" height="44" class="c-me"/>
+      <text x="690" y="132" class="t-g">OU</text>
+      <use href="#i-faisca" x="726" y="102" width="46" height="46" class="c-ac"/>
+      <text x="784" y="132" class="t-g">?</text>
+    </svg>
+    <ol class="pilha"><li><svg viewBox="0 0 64 64"><use href="#i-robo" class="c-ag"/></svg><span>o agente termina a resposta</span></li><li><svg viewBox="0 0 64 64"><use href="#i-nota" class="c-me"/></svg><span>a nota de retomada deve contar o que foi feito</span></li><li class="pergunta"><svg viewBox="0 0 64 64"><use href="#i-engrenagem" class="c-me"/></svg><span>quem confere se a nota conta: um script ou um modelo de IA?</span></li></ol>
+  </div>
+  <div class="duo">
+    <figure class="lado ok">
+      <div class="marca"><svg viewBox="0 0 64 64"><use href="#i-sim"/></svg>com a escolha: script</div>
+      <svg class="cena" viewBox="0 0 560 220" role="img" aria-label="O script pergunta se a nota mudou; sim solta, não devolve ao agente">
+        <use href="#i-robo" x="14" y="56" width="84" height="84" class="c-ag"/>
+        <path class="seta" d="M108 98H160"/>
+        <use href="#i-engrenagem" x="168" y="54" width="92" height="92" class="c-me"/>
+        <text x="214" y="168" class="t-g m">A NOTA MUDOU?</text>
+        <path class="seta-ok" d="M272 82l64-34"/><text x="344" y="44" class="t-ok">sim → solta</text>
+        <path class="seta-nao" d="M272 116l64 30"/><text x="344" y="156" class="t-nao">não → devolve</text>
+        <path class="seta-nao trac" d="M340 170C260 214 80 212 56 146"/>
+      </svg>
+      <p class="leitura">o script pergunta "a nota mudou?": <span class="ok">sim → solta</span> · <span class="nao">não → devolve ao agente</span>.</p>
+      <ul class="tags"><li class="mais">local, de graça, na hora</li><li class="mais">não lê a conversa</li><li class="menos">vê se mudou, não se ficou boa</li></ul>
+    </figure>
+    <figure class="lado nao">
+      <div class="marca"><svg viewBox="0 0 64 64"><use href="#i-nao"/></svg>a alternativa: um modelo julga</div>
+      <svg class="cena" viewBox="0 0 560 220" role="img" aria-label="Um modelo de IA lê a conversa e a nota e julga se basta">
+        <use href="#i-balao" x="14" y="20" width="80" height="80" class="c-me"/><text x="54" y="114" class="t-p m">a conversa</text>
+        <use href="#i-nota" x="14" y="122" width="70" height="70" class="c-me"/><text x="100" y="166" class="t-p">a nota</text>
+        <path class="seta" d="M106 64C150 64 160 90 186 96"/><path class="seta" d="M150 158C170 150 176 126 190 116"/>
+        <use href="#i-faisca" x="196" y="56" width="96" height="96" class="c-ac"/>
+        <text x="244" y="172" class="t-g m">BASTA?</text>
+        <use href="#i-moeda" x="330" y="34" width="46" height="46" class="c-me"/><text x="388" y="64" class="t">custa</text>
+        <circle cx="353" cy="118" r="21" class="ln f-p"/><path d="M353 104v14l9 6" class="ln"/><text x="388" y="124" class="t">demora</text>
+        <use href="#i-balao" x="330" y="150" width="46" height="46" class="c-nao"/><text x="388" y="180" class="t">lê dado de cliente</text>
+      </svg>
+      <p class="leitura">o modelo lê a conversa e a nota e julga se basta: <span class="nao">custa · demora · lê dado de cliente</span>.</p>
+      <ul class="tags"><li class="mais">julga a qualidade da nota</li><li class="menos">custo e espera a cada resposta</li><li class="menos">a conversa sai para o modelo</li></ul>
+    </figure>
+  </div>
+  <div class="rodape">
+    <span class="fixo"><b>já fora, por decisão:</b> revisão depois da sessão · FreeLLMAPI</span>
+    <span>a escolha aqui vai além: nenhum modelo, de nenhum tipo</span>
+  </div>
+</section>
+
+<!-- PASSO 4 -->
+<section class="passo" id="p4">
+  <div class="num">4</div>
+  <h2>O lembrete e a guarda do acervo valem em qualquer pasta</h2>
+  <ul class="chave"><li>regra geral: fora do hub, o porteiro sai na hora</li><li>exceção: o acervo</li><li>a guarda olha o arquivo real</li></ul>
+  <div class="problema"><span class="rot">o problema</span>
+    <svg viewBox="0 0 1160 190" role="img" aria-label="O maestro pode abrir fora do hub, e a estante do acervo também aparece por um atalho fora do hub">
+      <rect x="20" y="18" width="470" height="160" class="ln f-p" stroke-width="3"/>
+      <use href="#i-casa" x="34" y="26" width="40" height="40" class="c-me"/><text x="82" y="52" class="t-g">HUB</text>
+      <use href="#i-estante" x="196" y="52" width="104" height="104" class="c-ac"/>
+      <text x="248" y="172" class="t m">acervo do maestro</text>
+      <use href="#i-cancela" x="360" y="70" width="80" height="80" class="c-me"/>
+      <text x="400" y="166" class="t-p m">porteiros</text>
+      <path d="M520 18v160" class="ln trac"/>
+      <text x="540" y="44" class="t-g">FORA DO HUB</text>
+      <use href="#i-terminal" x="550" y="64" width="90" height="90" class="c-me"/>
+      <text x="595" y="172" class="t m">maestro abre aqui</text>
+      <use href="#i-pasta" x="760" y="64" width="90" height="90" class="c-me"/>
+      <text x="805" y="172" class="t m">pasta global das skills</text>
+      <use href="#i-atalho" x="866" y="40" width="70" height="70" class="c-me"/>
+      <path class="seta trac" d="M900 44C860 4 340 4 272 48"/>
+      <text x="664" y="46" class="t-p">o atalho leva à mesma estante</text>
+      <text x="960" y="96" class="t-g">VALE A</text><text x="960" y="120" class="t-g">REGRA GERAL?</text>
+    </svg>
+    <ol class="pilha"><li><svg viewBox="0 0 64 64"><use href="#i-estante" class="c-ac"/></svg><span>o acervo do maestro fica no hub</span></li><li><svg viewBox="0 0 64 64"><use href="#i-cancela" class="c-me"/></svg><span>regra geral: fora do hub, o porteiro sai na hora</span></li><li><svg viewBox="0 0 64 64"><use href="#i-terminal" class="c-me"/></svg><span>o maestro pode abrir fora do hub</span></li><li><svg viewBox="0 0 64 64"><use href="#i-atalho" class="c-me"/></svg><span>a pasta global das skills leva à mesma estante, por atalho</span></li><li class="pergunta"><svg viewBox="0 0 64 64"><use href="#i-estante" class="c-ac"/></svg><span>vale a regra geral para o acervo?</span></li></ol>
+  </div>
+  <div class="duo">
+    <figure class="lado ok">
+      <div class="marca"><svg viewBox="0 0 64 64"><use href="#i-sim"/></svg>com a escolha</div>
+      <svg class="cena" viewBox="0 0 560 230" role="img" aria-label="Fora do hub, o lembrete chega e a gravação pelo atalho é barrada até o aval">
+        <use href="#i-terminal" x="10" y="20" width="76" height="76" class="c-me"/>
+        <path class="seta-ok" d="M92 58H140"/>
+        <use href="#i-sino" x="146" y="22" width="70" height="70" class="c-me"/>
+        <text x="228" y="52" class="t">"comece pelo acervo"</text><text x="228" y="74" class="t-ok">chega em qualquer pasta</text>
+        <use href="#i-robo" x="10" y="124" width="76" height="76" class="c-ag"/>
+        <path class="seta" d="M92 162H128"/>
+        <use href="#i-atalho" x="132" y="130" width="50" height="50" class="c-me"/>
+        <path class="seta" d="M188 162H220"/>
+        <use href="#i-cancela" x="222" y="122" width="76" height="76" class="c-me"/>
+        <text x="260" y="216" class="t-p m">olha o arquivo real</text>
+        <path class="seta" d="M304 162H336"/>
+        <use href="#i-pessoa" x="340" y="128" width="62" height="62" class="c-gu"/>
+        <text x="412" y="156" class="t">pede o aval</text><text x="412" y="178" class="t-ok">estante protegida</text>
+      </svg>
+      <p class="leitura">maestro fora do hub: o lembrete "comece pelo acervo" <span class="ok">chega</span>. Agente grava pelo atalho → o porteiro olha o arquivo real → <span class="ok">pede o aval</span>.</p>
+      <ul class="tags"><li class="mais">todo maestro acha o acervo</li><li class="mais">o atalho não fura a guarda</li><li class="atencao">aval no Claude Code; Codex e Copilot recusam e apontam a pasta de propostas</li><li class="mais">o uso das skills é anotado em qualquer pasta</li></ul>
+    </figure>
+    <figure class="lado nao">
+      <div class="marca"><svg viewBox="0 0 64 64"><use href="#i-nao"/></svg>sem ela: regra geral para tudo</div>
+      <svg class="cena" viewBox="0 0 560 230" role="img" aria-label="Fora do hub, os porteiros dormem: o lembrete não chega e a gravação pelo atalho passa">
+        <use href="#i-terminal" x="10" y="20" width="76" height="76" class="c-me"/>
+        <path class="seta" d="M92 58H140" opacity=".35"/>
+        <use href="#i-sino" x="146" y="22" width="70" height="70" class="c-ab" opacity=".55"/>
+        <path d="M150 26l62 62" stroke="var(--nao)" stroke-width="5" stroke-linecap="round"/>
+        <text x="228" y="52" class="t">lembrete</text><text x="228" y="74" class="t-nao">não chega</text>
+        <use href="#i-robo" x="10" y="124" width="76" height="76" class="c-ag"/>
+        <path class="seta-nao" d="M92 162H128"/>
+        <use href="#i-atalho" x="132" y="130" width="50" height="50" class="c-me"/>
+        <path class="seta-nao" d="M188 162H220"/>
+        <use href="#i-cancela" x="222" y="122" width="76" height="76" class="c-ab" opacity=".45"/>
+        <text x="284" y="126" class="t-g">z z</text>
+        <path class="seta-nao" d="M304 162H336"/>
+        <use href="#i-estante" x="340" y="128" width="62" height="62" class="c-ac"/>
+        <text x="412" y="156" class="t">grava sem aval</text><text x="412" y="178" class="t-nao">estante aberta</text>
+      </svg>
+      <p class="leitura">fora do hub, os porteiros dormem: o lembrete <span class="nao">não chega</span> e a gravação pelo atalho passa <span class="nao">sem aval</span>.</p>
+      <ul class="tags"><li class="mais">uma regra só, sem exceção</li><li class="menos">maestro fora do hub não acha o acervo</li><li class="menos">o atalho vira porta dos fundos</li></ul>
+    </figure>
+  </div>
+  <div class="rodape">
+    <span class="fixo"><b>em aberto:</b> a marca que o Maestri põe no terminal vale para o maestro e para os recrutas, então o lembrete também chega aos recrutas</span>
+  </div>
+</section>
+
+<!-- PASSO 5 -->
+<section class="passo" id="p5">
+  <div class="num">5</div>
+  <h2>Testar as skills do Copilot na casa de ensaio por uma lista extra</h2>
+  <ul class="chave"><li>casa de ensaio (HOME falso)</li><li>Copilot</li><li>lista extra de pastas de skills</li></ul>
+  <div class="problema"><span class="rot">o problema</span>
+    <svg viewBox="0 0 1160 170" role="img" aria-label="Quando o Copilot é apontado para a casa de ensaio, ele para de ler a estante de skills">
+      <use href="#i-casa" x="60" y="20" width="110" height="110" class="c-me"/>
+      <text x="115" y="152" class="t m">casa de verdade</text>
+      <text x="115" y="168" class="t-p m">não se toca no ensaio</text>
+      <use href="#i-casa-ensaio" x="300" y="20" width="110" height="110" class="c-me"/>
+      <text x="355" y="152" class="t m">casa de ensaio</text>
+      <use href="#i-copilot" x="330" y="64" width="50" height="50" class="c-ag"/>
+      <path class="seta" d="M430 76H560"/><text x="495" y="66" class="t-p m">procura as skills</text>
+      <use href="#i-estante" x="580" y="22" width="104" height="104" class="c-ab" opacity=".4"/>
+      <path d="M580 22l104 104M684 22L580 126" stroke="var(--nao)" stroke-width="5" stroke-linecap="round"/>
+      <text x="632" y="152" class="t m">some a estante</text>
+      <text x="740" y="66" class="t-g">CONTRATO, MCP E PORTEIROS:</text>
+      <text x="740" y="90" class="t-ok">testados ✓</text>
+      <text x="740" y="122" class="t-g">SKILLS DO COPILOT:</text>
+      <text x="740" y="146" class="t-nao">sem teste ✗</text>
+    </svg>
+    <ol class="pilha"><li><svg viewBox="0 0 64 64"><use href="#i-casa" class="c-me"/></svg><span>casa de verdade: não se toca no ensaio</span></li><li><svg viewBox="0 0 64 64"><use href="#i-casa-ensaio" class="c-me"/></svg><span>o Copilot é testado na casa de ensaio</span></li><li><svg viewBox="0 0 64 64"><use href="#i-estante" class="c-ab"/></svg><span>ali ele para de ler a estante de skills</span></li><li class="pergunta"><svg viewBox="0 0 64 64"><use href="#i-copilot" class="c-ag"/></svg><span>contrato, MCP e porteiros: testados; skills do Copilot: sem teste</span></li></ol>
+  </div>
+  <div class="duo">
+    <figure class="lado ok">
+      <div class="marca"><svg viewBox="0 0 64 64"><use href="#i-sim"/></svg>com a escolha</div>
+      <svg class="cena" viewBox="0 0 560 220" role="img" aria-label="Uma placa aponta o Copilot para o atalho de ensaio e a estante aparece">
+        <use href="#i-casa-ensaio" x="10" y="20" width="110" height="110" class="c-me"/>
+        <use href="#i-copilot" x="40" y="64" width="50" height="50" class="c-ag"/>
+        <path class="seta" d="M128 80H170"/>
+        <use href="#i-placa" x="174" y="22" width="100" height="100" class="c-me"/>
+        <text x="224" y="146" class="t m">lista extra de</text><text x="224" y="164" class="t m">pastas de skills</text>
+        <path class="seta-ok" d="M282 80H322"/>
+        <use href="#i-atalho" x="324" y="40" width="64" height="64" class="c-me"/>
+        <text x="356" y="124" class="t-p m">atalho de ensaio</text>
+        <path class="seta-ok" d="M394 74H422"/>
+        <use href="#i-estante" x="428" y="22" width="104" height="104" class="c-ac"/>
+        <text x="480" y="146" class="t-ok m">skills à vista</text>
+        <text x="280" y="204" class="t-p m">o nome técnico da lista: COPILOT_SKILLS_DIRS</text>
+      </svg>
+      <p class="leitura">casa de ensaio → lista extra de pastas de skills → atalho de ensaio → <span class="ok">skills à vista</span>.</p>
+      <ul class="tags"><li class="mais">skills do Copilot testadas antes</li><li class="atencao">prova o caminho extra, não o caminho de sempre</li><li class="atencao">a instalação real segue com o Gustavo</li></ul>
+    </figure>
+    <figure class="lado nao">
+      <div class="marca"><svg viewBox="0 0 64 64"><use href="#i-nao"/></svg>sem ela: só no passo real</div>
+      <svg class="cena" viewBox="0 0 560 220" role="img" aria-label="As skills do Copilot só são vistas no passo real, na casa de verdade, pelo Gustavo">
+        <use href="#i-casa-ensaio" x="10" y="20" width="110" height="110" class="c-me"/>
+        <use href="#i-copilot" x="40" y="64" width="50" height="50" class="c-ag"/>
+        <text x="65" y="152" class="t-nao m">skills: sem teste</text>
+        <path class="seta trac" d="M134 76H246"/><text x="190" y="66" class="t-p m">depois</text>
+        <use href="#i-casa" x="260" y="20" width="110" height="110" class="c-me"/>
+        <use href="#i-pessoa" x="380" y="40" width="80" height="80" class="c-gu"/>
+        <text x="365" y="152" class="t m">primeira prova das skills:</text><text x="365" y="172" class="t m">na instalação de verdade</text>
+        <use href="#i-confuso" x="470" y="30" width="80" height="80" class="c-me"/>
+      </svg>
+      <p class="leitura">na casa de ensaio, skills do Copilot <span class="nao">sem teste</span>; a primeira prova é na instalação de verdade, com o Gustavo.</p>
+      <ul class="tags"><li class="mais">nada a mais para configurar</li><li class="menos">erro nas skills só aparece na casa real</li></ul>
+    </figure>
+  </div>
+</section>
+
+<!-- PASSO 6 -->
+<section class="passo" id="p6">
+  <div class="num">6</div>
+  <h2>O campo "iniciativa" só é cobrado em nota de iniciativa</h2>
+  <ul class="chave"><li>ficha comum a toda nota</li><li>campo initiative</li><li>lido do caminho</li></ul>
+  <div class="problema"><span class="rot">o problema</span>
+    <svg viewBox="0 0 1160 160" role="img" aria-label="A ficha de toda nota tem o campo iniciativa, lido do caminho; mas reference e inbox não pertencem a iniciativa nenhuma">
+      <g font-family="Consolas, monospace">
+        <use href="#i-pasta" x="40" y="22" width="44" height="44" class="c-me"/><text x="92" y="50" class="t">clients/ › cliente › <tspan font-weight="800">iniciativa</tspan> › nota</text>
+        <use href="#i-pasta" x="40" y="86" width="44" height="44" class="c-me"/><text x="92" y="114" class="t">initiatives/ › <tspan font-weight="800">iniciativa</tspan> › nota</text>
+        <use href="#i-pasta" x="580" y="22" width="44" height="44" class="c-me"/><text x="632" y="50" class="t">reference/ › nota</text>
+        <use href="#i-pasta" x="580" y="86" width="44" height="44" class="c-me"/><text x="632" y="114" class="t">inbox/ › nota</text>
+      </g>
+      <text x="300" y="150" class="t-ok m">o caminho diz a iniciativa</text>
+      <text x="720" y="150" class="t-nao m">o caminho não diz iniciativa nenhuma</text>
+      <rect x="880" y="30" width="250" height="90" rx="4" class="f-me" stroke="var(--linha)" stroke-width="2.5"/>
+      <text x="900" y="62" class="t-g">FICHA DA NOTA</text>
+      <text x="900" y="92" class="t" font-family="Consolas, monospace">initiative: ?</text>
+    </svg>
+    <ol class="pilha"><li><svg viewBox="0 0 64 64"><use href="#i-pasta" class="c-me"/></svg><span>clients/ › cliente › iniciativa › nota e initiatives/ › iniciativa › nota: o caminho diz a iniciativa</span></li><li><svg viewBox="0 0 64 64"><use href="#i-pasta" class="c-me"/></svg><span>reference/ e inbox/: o caminho não diz iniciativa nenhuma</span></li><li class="pergunta"><svg viewBox="0 0 64 64"><use href="#i-nota" class="c-me"/></svg><span>a ficha de toda nota tem "initiative": cobrar em todas?</span></li></ol>
+  </div>
+  <div class="duo">
+    <figure class="lado ok">
+      <div class="marca"><svg viewBox="0 0 64 64"><use href="#i-sim"/></svg>com a escolha</div>
+      <svg class="cena" viewBox="0 0 560 200" role="img" aria-label="Notas de iniciativa recebem o campo preenchido; notas de reference e inbox ficam dispensadas">
+        <use href="#i-nota" x="14" y="16" width="70" height="70" class="c-me"/><text x="96" y="44" class="t">nota de iniciativa</text>
+        <use href="#i-sim" x="96" y="56" width="22" height="22"/><text x="126" y="74" class="t-ok">preenchido pelo verificador</text>
+        <use href="#i-nota" x="14" y="112" width="70" height="70" class="c-me"/><text x="96" y="140" class="t">reference/ · inbox/</text>
+        <circle cx="107" cy="163" r="10" fill="none" stroke="var(--aberto)" stroke-width="3" stroke-dasharray="3 3"/><text x="126" y="170" class="t-p">dispensado; o valor fica para o esquema</text>
+        <use href="#i-feliz" x="430" y="40" width="110" height="110" class="c-me"/>
+      </svg>
+      <p class="leitura">nota de iniciativa: <span class="ok">preenchido pelo verificador</span> · reference/ e inbox/: dispensado, o esquema decide.</p>
+      <ul class="tags"><li class="mais">nenhuma nota recusada por um campo que não se aplica</li><li class="atencao">é um esclarecimento: o esquema dá a palavra final</li></ul>
+    </figure>
+    <figure class="lado nao">
+      <div class="marca"><svg viewBox="0 0 64 64"><use href="#i-nao"/></svg>sem ela: cobrado em toda nota</div>
+      <svg class="cena" viewBox="0 0 560 200" role="img" aria-label="Com o campo exigido em toda nota, as de reference e inbox são recusadas ou ganham um valor inventado">
+        <use href="#i-nota" x="14" y="16" width="70" height="70" class="c-me"/><text x="96" y="44" class="t">nota de iniciativa</text>
+        <use href="#i-sim" x="96" y="56" width="22" height="22"/><text x="126" y="74" class="t-ok">igual</text>
+        <use href="#i-nota" x="14" y="112" width="70" height="70" class="c-me"/><text x="96" y="140" class="t">reference/ · inbox/</text>
+        <use href="#i-nao" x="96" y="152" width="22" height="22"/><text x="126" y="170" class="t-nao">recusada, ou com valor inventado</text>
+        <use href="#i-confuso" x="430" y="40" width="110" height="110" class="c-me"/>
+      </svg>
+      <p class="leitura">nota de iniciativa: igual · reference/ e inbox/: <span class="nao">recusada, ou com valor inventado</span>.</p>
+      <ul class="tags"><li class="mais">regra igual para todas</li><li class="menos">referência e captura rápida esbarram na ficha</li></ul>
+    </figure>
+  </div>
+</section>
+
+<!-- PASSO 7 -->
+<section class="passo" id="p7">
+  <div class="num">7</div>
+  <h2>"Nova iniciativa" já cria o mapa da iniciativa</h2>
+  <ul class="chave"><li>script "nova iniciativa"</li><li>seis arquivos do núcleo</li><li>AGENTS.md = mapa e regras próprias</li></ul>
+  <div class="problema"><span class="rot">o problema</span>
+    <svg viewBox="0 0 1160 170" role="img" aria-label="O script cria a pasta com seis arquivos; quem cria o mapa da iniciativa?">
+      <use href="#i-varinha" x="60" y="30" width="100" height="100" class="c-me"/>
+      <text x="110" y="156" class="t m">"nova iniciativa"</text>
+      <path class="seta" d="M176 80H250"/>
+      <g>
+        <use href="#i-nota" x="262" y="22" width="60" height="60" class="c-me"/><text x="292" y="98" class="t-p m">initiative</text>
+        <use href="#i-nota" x="342" y="22" width="60" height="60" class="c-me"/><text x="372" y="98" class="t-p m">retomada</text>
+        <use href="#i-nota" x="422" y="22" width="60" height="60" class="c-me"/><text x="452" y="98" class="t-p m">tasks</text>
+        <use href="#i-nota" x="502" y="22" width="60" height="60" class="c-me"/><text x="532" y="98" class="t-p m">decisions</text>
+        <use href="#i-nota" x="582" y="22" width="60" height="60" class="c-me"/><text x="612" y="98" class="t-p m">context</text>
+        <use href="#i-nota" x="662" y="22" width="60" height="60" class="c-me"/><text x="692" y="98" class="t-p m">log</text>
+      </g>
+      <text x="492" y="138" class="t-g m">NÚCLEO: 6 ARQUIVOS</text>
+      <path d="M262 114h460" class="ln"/>
+      <text x="772" y="72" class="t-g" style="font-size:34px">+</text>
+      <rect x="810" y="18" width="110" height="110" class="ln f-p2" stroke-dasharray="7 6"/>
+      <use href="#i-mapa" x="826" y="34" width="78" height="78" class="c-ab" opacity=".55"/>
+      <text x="865" y="152" class="t m">o mapa (AGENTS.md)</text>
+      <text x="950" y="78" class="t-g" style="font-size:44px">?</text>
+    </svg>
+    <ol class="pilha"><li><svg viewBox="0 0 64 64"><use href="#i-varinha" class="c-me"/></svg><span>o script "nova iniciativa"</span></li><li><svg viewBox="0 0 64 64"><use href="#i-pasta" class="c-me"/></svg><span>cria o núcleo: initiative · retomada · tasks · decisions · context · log</span></li><li class="pergunta"><svg viewBox="0 0 64 64"><use href="#i-mapa" class="c-ab"/></svg><span>e o mapa (AGENTS.md) da iniciativa: quem cria?</span></li></ol>
+  </div>
+  <div class="duo">
+    <figure class="lado ok">
+      <div class="marca"><svg viewBox="0 0 64 64"><use href="#i-sim"/></svg>com a escolha</div>
+      <svg class="cena" viewBox="0 0 560 200" role="img" aria-label="O script cria os seis arquivos e o mapa; o agente que chega lê o mapa">
+        <use href="#i-varinha" x="10" y="40" width="80" height="80" class="c-me"/>
+        <path class="seta-ok" d="M98 80H132"/>
+        <use href="#i-pasta" x="136" y="20" width="130" height="130" class="c-me"/>
+        <text x="201" y="104" class="t-g m">6</text>
+        <text x="236" y="70" class="t-g" style="font-size:28px">+</text>
+        <use href="#i-mapa" x="262" y="40" width="80" height="80" class="c-me"/>
+        <path class="seta" d="M420 80H352"/>
+        <use href="#i-robo" x="430" y="36" width="88" height="88" class="c-ag"/>
+        <text x="270" y="172" class="t m">toda iniciativa nasce com o seu mapa</text>
+      </svg>
+      <p class="leitura">o script cria os seis + o mapa → <span class="ok">toda iniciativa nasce com o seu mapa</span>, e o agente lê o mapa ao chegar.</p>
+      <ul class="tags"><li class="mais">o agente sempre acha o mapa local</li><li class="menos">arquivo existe mesmo sem regra própria</li></ul>
+    </figure>
+    <figure class="lado nao">
+      <div class="marca"><svg viewBox="0 0 64 64"><use href="#i-nao"/></svg>a alternativa: à mão, quando precisar</div>
+      <svg class="cena" viewBox="0 0 560 200" role="img" aria-label="O script cria só os seis arquivos; o mapa é feito à mão quando surgir regra própria">
+        <use href="#i-varinha" x="10" y="40" width="80" height="80" class="c-me"/>
+        <path class="seta" d="M98 80H132"/>
+        <use href="#i-pasta" x="136" y="20" width="130" height="130" class="c-me"/>
+        <text x="201" y="104" class="t-g m">6</text>
+        <path class="seta trac" d="M282 80H344"/><text x="313" y="70" class="t-p m">depois</text>
+        <use href="#i-lapis" x="350" y="40" width="70" height="70" class="c-gu"/>
+        <use href="#i-mapa" x="420" y="40" width="80" height="80" class="c-me"/>
+        <text x="280" y="172" class="t m">o mapa só nasce quando houver regra própria</text>
+      </svg>
+      <p class="leitura">o script cria só os seis; o mapa nasce à mão, <span class="nao">só quando houver regra própria</span>.</p>
+      <ul class="tags"><li class="mais">só quem precisa tem o arquivo</li><li class="menos">depende de alguém lembrar de criar</li></ul>
+    </figure>
+  </div>
+</section>
+
+<!-- RESUMO -->
+<section class="resumo" aria-label="Resumo das escolhas">
+  <h2>Lista de conferência</h2>
+  <ol>
+    <li><span class="n">1</span><svg viewBox="0 0 64 64"><use href="#i-lupa" class="c-me"/></svg><p>O verificador só preenche o que dá para deduzir, trocando o trecho e relendo antes de gravar<small>tipo, iniciativa, título e data; se a nota mudou, refaz ou devolve</small></p></li>
+    <li><span class="n">2</span><svg viewBox="0 0 64 64"><use href="#i-cancela" class="c-me"/></svg><p>O porteiro monta a nota final antes de conferir a ficha<small>nota atual + o pedaço trocado; arquivo novo vai direto</small></p></li>
+    <li><span class="n">3</span><svg viewBox="0 0 64 64"><use href="#i-engrenagem" class="c-me"/></svg><p>A conferência do fim da resposta é um script, sem modelo nenhum<small>"a nota mudou?": solta ou devolve</small></p></li>
+    <li><span class="n">4</span><svg viewBox="0 0 64 64"><use href="#i-estante" class="c-ac"/></svg><p>O lembrete e a guarda do acervo valem em qualquer pasta; a guarda olha o arquivo real<small>inclusive pelo atalho; maestro e recruta ainda não se distinguem</small></p></li>
+    <li><span class="n">5</span><svg viewBox="0 0 64 64"><use href="#i-placa" class="c-me"/></svg><p>As skills do Copilot são testadas na casa de ensaio por uma lista extra de pastas<small>não substitui a instalação real</small></p></li>
+    <li><span class="n">6</span><svg viewBox="0 0 64 64"><use href="#i-nota" class="c-me"/></svg><p>O campo "iniciativa" só é cobrado onde o caminho mostra uma iniciativa<small>esclarecimento; o esquema decide o resto</small></p></li>
+    <li><span class="n">7</span><svg viewBox="0 0 64 64"><use href="#i-mapa" class="c-me"/></svg><p>O script "nova iniciativa" já cria o mapa (AGENTS.md) da iniciativa<small>junto com os seis arquivos do núcleo</small></p></li>
+  </ol>
+</section>
+<p class="fim">fim da carta 4</p>
+
+</main>
+</body>
+</html>

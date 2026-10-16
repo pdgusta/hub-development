@@ -1,0 +1,46 @@
+{
+ "chave": "web:tensorflow.org",
+ "urls": [
+  "https://www.tensorflow.org/",
+  "https://www.tensorflow.org/guide/embedding",
+  "https://www.tensorflow.org/api_docs/python/tf/embeddings"
+ ],
+ "tipos": [
+  "library",
+  "tool"
+ ],
+ "termos": [
+  "AI agent",
+  "machine learning",
+  "deep learning",
+  "Python library",
+  "TF",
+  "machine learning framework",
+  "tensorflow embeddings",
+  "tf",
+  "TensorFlow",
+  "embeddings"
+ ],
+ "mencoes": 5,
+ "familias": [
+  "allam",
+  "llama",
+  "qwen"
+ ],
+ "primeira_onda": 1,
+ "nomes": [
+  "TensorFlow Embeddings",
+  "TensorFlow"
+ ],
+ "resumos": [
+  "Eine Bibliothek für die Implementierung von Vektorsuche mit TensorFlow.",
+  "TensorFlow is an open-source machine learning framework.",
+  "An end-to-end open-source platform for machine learning.",
+  "A TensorFlow module for working with embeddings, including tools for creating and training custom embedding models"
+ ],
+ "fonte": "site",
+ "readme_status": "ok",
+ "readme_nome": "https://www.tensorflow.org/",
+ "readme_cortado": false,
+ "readme": "[TensorFlow]\n\nSkip to main content\n\n English\n\n Español – América Latina\n\n Français\n\n Português – Brasil\n\n 中文 – 简体\n\n 中文 – 繁體\n\n 日本語\n\n 한국어\n\n GitHub\n\n Sign in\n\n TensorFlow\n\n Stay organized with collections\n\n Save and categorize content based on your preferences.\n\n An end-to-end platform for machine learning\n\n Install TensorFlow\n\n Get started with TensorFlow\n\nTensorFlow makes it easy to create ML models that can run in any environment.\nLearn how to use the intuitive APIs through interactive code samples.\n\n View tutorials\n\nimport tensorflow as tf\nmnist = tf.keras.datasets.mnist\n\n(x_train, y_train),(x_test, y_test) = mnist.load_data()\nx_train, x_test = x_train / 255.0, x_test / 255.0\n\nmodel = tf.keras.models.Sequential([\n tf.keras.layers.Flatten(input_shape=(28, 28)),\n tf.keras.layers.Dense(128, activation='relu'),\n tf.keras.layers.Dropout(0.2),\n tf.keras.layers.Dense(10, activation='softmax')\n])\n\nmodel.compile(optimizer='adam',\n loss='sparse_categorical_crossentropy',\n metrics=['accuracy'])\n\nmodel.fit(x_train, y_train, epochs=5)\nmodel.evaluate(x_test, y_test)\n\n Run quickstart\n\n Solve real-world problems with ML\n\nExplore examples of how TensorFlow is used to advance research and build AI-powered applications.\n\n TENSORFLOW.JS\n\n Catch up on the latest from the Web AI Summit\n\nExplore the latest advancements in running models client-side with speakers from Chrome, MediaPipe, Intel, Hugging Face, Microsoft, LangChain, and more. \n\n Watch now\n\n close\n\n TensorFlow GNN\n\n Analyze relational data using graph neural networks\n\nGNNs can process complex relationships between objects, making them a powerful technique for traffic forecasting, medical discovery, and more. \n\n Learn about TF GNN\n\n TensorFlow Agents\n\n Build recommendation systems with reinforcement learning\n\nLearn how Spotify uses the TensorFlow ecosystem to design an extendable offline simulator and train RL Agents to generate playlists. \n\n Read the blog\n\n What's new in TensorFlow\n\nRead the latest announcements from the TensorFlow team and community.\n\n Explore the ecosystem\n\nDiscover production-tested tools to accelerate modeling, deployment, and other workflows.\n\n Library\n\n TensorFlow.js\n\n Train and run models directly in the browser using JavaScript or Node.js.\n\n Library\n\n LiteRT\n\n Deploy ML on mobile and edge devices such as Android, iOS, Raspberry Pi, and Edge TPU.\n\n API\n\n tf.data\n\n Preprocess data and create input pipelines for ML models.\n\n Library\n\n TFX\n\n Create production ML pipelines and implement MLOps best practices.\n\n API\n\n tf.keras\n\n Create ML models with TensorFlow's high-level API.\n\n Resource\n\n Kaggle Models\n\n Find pre-trained models ready for fine-tuning and deployment.\n\n Resource\n\n TensorFlow Datasets\n\n Browse the collection of standard datasets for initial training and validation.\n\n Tool\n\n TensorBoard\n\n Visualize and track development of ML models.\n\n ML models & datasets\n\n Pretrained models and ready-to-use datasets for image, text, audio, and video use cases.\n\n Libraries & extensions\n\n Packages for domain-specific applications and APIs for languages other than Python.\n\n Developer tools\n\n Tools to evaluate models, optimize performance, and productionize ML workflows.\n\n Join the community\n\nCollaborate, find support, and share your projects by joining interest groups or attending developer events.\n\n Get involved\n\n Learn ML\n\nNew to machine learning? Begin with TensorFlow's curated curriculums or browse the resource library of books, online courses, and videos.\n\n Explore resources\n\n Stay connected\n\n Learn the latest in machine learning and TensorFlow by following our channels or signing up for the newsletter. View past newsletters in the archive.\n\n Forum\n\n X\n\n YouTube\n\n Linkedin\n\n Forum\n\n X\n\n YouTube\n\n Linkedin\n\n Start building with TensorFlow\n\n Install TensorFlow\n\n Explore tutorials\n\n [[[\"Easy to understand\",\"easyToUnderstand\",\"thumb-up\"],[\"Solved my problem\",\"solvedMyProblem\",\"thumb-up\"],[\"Other\",\"otherUp\",\"thumb-up\"]],[[\"Missing the information I need\",\"missingTheInformationINeed\",\"thumb-down\"],[\"Too complicated / too many steps\",\"tooComplicatedTooManySteps\",\"thumb-down\"],[\"Out of date\",\"outOfDate\",\"thumb-down\"],[\"Samples / code issue\",\"samplesCodeIssue\",\"thumb-down\"],[\"Other\",\"otherDown\",\"thumb-down\"]],[],[],[]]"
+}

@@ -1,0 +1,34 @@
+{
+ "chave": "gh:yuin/goldmark-meta",
+ "nomes": [
+  "goldmark-meta"
+ ],
+ "urls": [
+  "https://github.com/yuin/goldmark-meta"
+ ],
+ "readme_cortado": false,
+ "readme": "goldmark-meta\n=========================\n[![GoDev][godev-image]][godev-url]\n\n[godev-image]: https://pkg.go.dev/badge/github.com/yuin/goldmark-meta/v2\n[godev-url]: https://pkg.go.dev/github.com/yuin/goldmark-meta/v2\n\n\ngoldmark-meta is an extension for the [goldmark](http://github.com/yuin/goldmark) \nthat allows you to define document metadata in YAML format.\n\nUsage\n--------------------\n### Compatiblity\ngoldmark-meta/v2 is compatible with goldmark/v2.\n\n### Installation\n\n```\ngo get github.com/yuin/goldmark-meta/v2\n```\n\n### Markdown syntax\n\nYAML metadata block is a leaf block that can not have any markdown element\nas a child.\n\nYAML metadata must start with a **YAML metadata separator**.\nThis separator must be at first line of the document.\n\nA **YAML metadata separator** is a line that only `---`.\n\nYAML metadata must end with a **YAML metadata separator**.\n\nYou can define objects as a 1st level item. At deeper level, you can define \nany kind of YAML element.\n\nExample:\n\n```\n---\nTitle: goldmark-meta\nSummary: Add YAML metadata to the document\nTags:\n    - markdown\n    - goldmark\n---\n\n# Heading 1\n```\n\n\n### Access the metadata\n\n```go\nimport (\n    \"fmt\"\n    \"github.com/yuin/goldmark/v2/parser\"\n    \"github.com/yuin/goldmark/v2/ast\"\n    \"github.com/yuin/goldmark-meta/v2\"\n)\n\nfunc main() {\n\tsource := []byte(`---\nTitle: goldmark-meta\nSummary: Add YAML metadata to the document\nTags:\n    - markdown\n    - goldmark\n---\n`)\n\n\tdocument := parser.New(\n\t\tparser.WithExtensions(\n\t\t\tmeta.Parser,\n\t\t),\n\t).Parse(source)\n\tmetaData := document.(*ast.Document).Metadata()\n\ttitle := metaData[\"Title\"]\n\tfmt.Print(title)\n}\n```\n\n### Render the metadata as a table\n\nUse `meta.WithTable()` on the HTML renderer extension:\n\n```go\nimport (\n    \"bytes\"\n    \"fmt\"\n    \"github.com/yuin/goldmark/v2/parser\"\n    \"github.com/yuin/goldmark/v2/renderer/html\"\n    \"github.com/yuin/goldmark-meta/v2\"\n)\n\nfunc main() {\n    source := []byte(`---\nTitle: goldmark-meta\nSummary: Add YAML metadata to the document\nTags:\n    - markdown\n    - goldmark\n---\n\n# Hello goldmark-meta\n`)\n    p := parser.New(\n        parser.WithExtensions(\n            meta.Parser,\n        ),\n    )\n    r := html.New(\n        html.WithExtensions(\n            meta.NewHTMLRenderer(meta.WithTable()),\n        ),\n    )\n    document := p.Parse(source)\n\n    var buf bytes.Buffer\n    if err := r.Render(&buf, source, document); err != nil {\n        panic(err)\n    }\n    fmt.Print(buf.String())\n}\n```\n\n\nLicense\n--------------------\nMIT\n\nAuthor\n--------------------\nYusuke Inuzuka\n",
+ "fonte": "readme",
+ "respostas": [
+  {
+   "por": "claude-haiku-5-5",
+   "resposta": {
+    "serve": "stack",
+    "role": "Extract YAML front matter from Markdown notes in a Go service",
+    "place": [
+     "library"
+    ],
+    "mechanism": [
+     "n/a"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "no",
+    "license": "MIT",
+    "maturity": "unknown",
+    "doubt": false,
+    "evidence": "\"an extension for the goldmark that allows you to define document metadata in YAML format\"; Markdown document metadata access"
+   }
+  }
+ ]
+}

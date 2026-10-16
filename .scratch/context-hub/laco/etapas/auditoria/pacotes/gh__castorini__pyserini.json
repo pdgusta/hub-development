@@ -1,0 +1,105 @@
+{
+ "chave": "gh:castorini/pyserini",
+ "nomes": [
+  "Pyserini",
+  "Pyserini (Anserini)",
+  "Qdrant + `pyserini` (BM25 integration)",
+  "Pyserini (для BM25 с расширением на португальский)",
+  "Pyserini (BM25 with Anserini)",
+  "Pyserini (BM25 + FAISS bridge)",
+  "Stemming with Pyserini",
+  "Pyserini (Lucene-based Search)",
+  "pyserini",
+  "Pyserini (BM25 + Frontmatter Filtering)"
+ ],
+ "urls": [
+  "https://github.com/castorini/pyserini"
+ ],
+ "readme_cortado": true,
+ "readme": "# Pyserini <img src=\"docs/pyserini-logo.png\" width=\"300\" />\n\n[![PyPI](https://img.shields.io/pypi/v/pyserini?color=brightgreen)](https://pypi.org/project/pyserini/)\n[![PyPI Downloads](https://static.pepy.tech/badge/pyserini)](https://pepy.tech/projects/pyserini)\n[![PyPI Downloads](https://static.pepy.tech/badge/pyserini/week)](https://pepy.tech/projects/pyserini)\n[![Maven Central](https://img.shields.io/maven-central/v/io.anserini/anserini?color=brightgreen)](https://search.maven.org/search?q=a:anserini)\n[![Generic badge](https://img.shields.io/badge/Lucene-v10.5.0-brightgreen.svg)](https://archive.apache.org/dist/lucene/java/10.5.0/)\n[![LICENSE](https://img.shields.io/badge/license-Apache-blue.svg?style=flat)](https://www.apache.org/licenses/LICENSE-2.0)\n\nPyserini is a Python toolkit for reproducible information retrieval research with sparse and dense representations.\nRetrieval using sparse representations is provided via integration with our group's [Anserini](http://anserini.io/) IR toolkit, which is built on Lucene.\nRetrieval using dense representations is provided via integration with Facebook's [Faiss](https://github.com/facebookresearch/faiss) library.\n\nPyserini is primarily designed to provide effective, reproducible, and easy-to-use first-stage retrieval in a multi-stage ranking architecture.\nOur toolkit is self-contained as a standard Python package and comes with queries, relevance judgments, [prebuilt indexes](docs/prebuilt-indexes.md), and evaluation scripts for many commonly used IR test collections.\nWith Pyserini, it's easy to reproduce runs on a number of standard IR test collections!\n\nFor additional details, [our paper](https://dl.acm.org/doi/10.1145/3404835.3463238) in SIGIR 2021 provides a nice overview.\n\n✨ Pyserini provides a [REST API](docs/usage-rest.md) as well as an [MCP server](docs/usage-mcp.md)!\n\n✨ Guide to working with the [MS MARCO 2.1 Document Corpus](docs/experiments-msmarco-v2.1.md) for TREC RAG Tracks.\n\n## 🎬 Installation\n\nInstall via PyPI:\n\n```bash\npip install pyserini\n```\n\nPyserini is built on Python 3.12 (other versions might work, but YMMV) and Java 21 (due to its dependency on [Anserini](http://anserini.io/)).\n\n❗ A `pip` installation will automatically pull in major dependencies such as [PyTorch](https://pytorch.org/), [🤗 Transformers](https://github.com/huggingface/transformers), and the [ONNX Runtime](https://onnxruntime.ai/).\nSometimes `pip` has issues pulling in the \"right\" versions; if this is the case, it might make sense to install these dependencies first (selecting the right version by hand, perhaps via `conda`).\n\n❗ Parts of Pyserini depend on [Faiss](https://github.com/facebookresearch/faiss).\nIt's not included in the dependencies list because there is a proliferation of variants (`faiss-cpu`, `faiss-gpu`, etc.), so it's easier if you install the right variant yourself.\n\nMultimodal support (e.g., image search) has been pushed into an `optional` package.\nIf you need it, install `'pyserini[optional]'`\n\nThe software ecosystem is rapidly evolving and a potential source of frustration is incompatibility among different versions of underlying dependencies.\nWe provide additional detailed installation instructions in [our detailed installation guide](./docs/installation.md).\n\nIf you're planning on just _using_ Pyserini, then the `pip` instruction (without the optional dependencies) should be fine.\nHowever, if you're planning on contributing to the codebase or want to work with the latest not-yet-released features, you'll need a development installation.\nInstructions are provided in [our detailed installation guide](./docs/installation.md#development-installation).\n\n## 🙋 How do I search?\n\nPyserini supports different types of retrieval models.\nSee [this guide](docs/usage-search.md) for details on how to search common corpora in IR and NLP research\n(e.g., MS MARCO, NaturalQuestions, BEIR, etc.) using indexes that we have already built for you.\nHere are direct links into the guide:\n\n+ [Traditional lexical models](docs/usage-search.md#traditional-lexical-models) (e.g., BM25) using Lucene.\n+ [Learned sparse retrieval models](docs/usage-search.md#learned-sparse-retrieval-models) (e.g., uniCOIL, SPLADE, etc.) using Lucene.\n+ [Learned dense retrieval models](docs/usage-search.md#learned-dense-retrieval-models) (e.g., DPR, Contriever, BGE, etc.) using Lucene or Faiss.\n+ [Hybrid retrieval models](docs/usage-search.md#hybrid-retrieval-models) (e.g., dense-sparse fusion).\n\nOnce you get the top-_k_ results, you'll actually want to fetch the document text...\nSee [this guide](docs/usage-fetch.md) for how.\n\n## 🙋 How do I index my own corpus?\n\nWell, it depends on what type of retrieval model you want to search with:\n\n+ [Building a BM25 Index (Direct Java Implementation)](docs/usage-index.md#building-a-bm25-index-direct-java-implementation)\n+ [Building a BM25 Index (Embeddable Python Implementation)](docs/usage-index.md#building-a-bm25-index-embeddable-python-implementation)\n+ [Building a Sparse Vector Index](docs/usage-index.md#building-a-sparse-vector-index)\n+ [Building a Dense Vector Index](docs/usage-index.md#building-a-dense-vector-index)\n\nThe steps are different for different classes of models:\n[this guide](docs/usage-index.md) (same as the links above) describes the details.\n\n## 🙋 Additional FAQs\n\n+ [How do I configure search?](docs/usage-interactive-search.md#how-do-i-configure-search) (Guide to Interactive Search)\n+ [How do I manually download indexes?](docs/usage-interactive-search.md#how-do-i-manually-download-indexes) (Guide to Interactive Search)\n+ [How do I clean up or delete my indexes?](docs/usage-interactive-search.md#how-do-i-manually-remove-indexes) (Guide to Interactive Search)\n+ [How do I iterate over index terms and access term statistics?](docs/usage-indexreader.md#how-do-i-iterate-over-index-terms-and-access-term-statistics) (Index Reader API)\n+ [How do I traverse postings?](docs/usage-indexreader.md#how-do-i-traverse-postings) (Index Reader API)\n+ [How do I access and manipulate term vectors?](docs/usage-indexreader.md#how-do-i-access-and-manipulate-term-vectors) (Index Reader API)\n+ [How do I compute the tf-idf or BM25 score of a document?](docs/usage-indexreader.md#how-do-i-compute-the-tf-idf-or-BM25-score-of-a-document) (Index Reader API)\n+ [How do I access basic index statistics?](docs/usage-indexreader.md#how-do-i-access-basic-index-statistics) (Index Reader API)\n+ [How do I access underlying Lucene analyzers?](docs/usage-analyzer.md) (Analyzer API)\n+ [How do I build custom Lucene queries?](docs/usage-querybuilder.md) (Query Builder API)\n+ [How do I iterate over raw collections?](docs/usage-collection.md) (Collection API)\n\n## ⚗️ Reproducibility\n\nWith Pyserini, it's easy to [reproduce](docs/reproducibility.md) runs on a number of standard IR test collections!\nWe provide a number of [prebuilt indexes](docs/prebuilt-indexes.md) that directly support reproducibility \"out of the box\".\n\nIn our [SIGIR 2022 paper](https://dl.acm.org/doi/10.1145/3477495.3531749), we introduced \"two-click reproductions\" that allow anyone to reproduce experimental runs with only two clicks (i.e., copy and paste).\nDocumentation is organized into reproduction matrices for different corpora that provide a summary of different experimental conditions and query sets:\n\n+ [MS MARCO V1 Passage](https://castorini.github.io/pyserini/2cr/msmarco-v1-passage.html)\n+ [MS MARCO V1 Document](https://castorini.github.io/pyserini/2cr/msmarco-v1-doc.html)\n+ [MS MARCO V2 Passage](https://castorini.github.io/pyserini/2cr/msmarco-v2-passage.html)\n+ [MS MARCO V2 Document](https://castorini.github.io/pyserini/2cr/msmarco-v2-doc.html)\n+ [BEIR](https://castorini.github.io/pyserini/2cr/beir.html)\n+ [Mr.TyDi](https://castorini.github.io/pyserini/2cr/mrtydi.html)\n+ [MIRACL](https://castorini.github.io/pyserini/2cr/miracl.html)\n+ [Open-Domain Question Answering](https://castorini.github.io/pyserini/2cr/odqa.html)\n+ [CIRAL](https://castorini.github.io/pyserini/2cr/ciral.html)\n\nFor more details, see our paper on [Building a Culture of Reproducibility in Academic Research](https://arxiv.org/abs/2212.13534).\n\nAdditional reproduction guides below provide detailed step-by-step instructions.\n\n<details>\n<summary>Sparse Retrieval</summary>\n\n### Sparse Retrieval\n\n+ Reproducing [Robust04 baselines for ad hoc retrieval](docs/experiments-robust04.md)\n+ Reproducing the [BM25 baseline for MS MARCO V1 Passage Ranking](docs/experiments-msmarco-passage.md)\n+ Reproducing the [BM25 baseline for MS MARCO V1 Document Ranking](docs/experiments-msmarco-doc.md)\n+ Reproducing the [multi-field BM25 baseline for MS MARCO V1 Document Ranking from Elasticsearch](docs/experiments-elastic.md)\n+ Reproducing [BM25 baselines on the MS MARCO V2 Collections](docs/experiments-msmarco-v2.md)\n+ Reproducing LTR filtering experiments: [MS MARCO V1 Passage](docs/experiments-ltr-msmarco-passage-reranking.md), [MS MARCO V1 Document](docs/experiments-ltr-msmarco-document-reranking.md)\n+ Reproducing IRST experiments on the [MS MARCO V1 Collections](docs/experiments-msmarco-irst.md)\n+ Reproducing DeepImpact: [MS MARCO V1 Passage](docs/experiments-deepimpact.md)\n+ Reproducing uniCOIL with doc2query-T5: [MS MARCO V1](docs/experiments-unicoil.md), [MS MARCO V2](docs/experiments-msmarco-v2-unicoil.md)\n+ Reproducing uniCOIL with TILDE: [MS MARCO V1 Passage](docs/experiments-unicoil-tilde-expansion.md), [MS MARCO V2 Passage](docs/experiments-msmarco-v2-unicoil-tilde-expansion.md)\n+ Reproducing SPLADEv2: [MS MARCO V1 Passage](docs/experiments-spladev2.md)\n+ Reproducing [Mr. TyDi experiments](https://github.com/castorini/mr.tydi/blob/main/README.md#1-bm25)\n+ Reproducing [BM25 baselines for HC4](docs/experiments-hc4-v1.0.md)\n+ Reproducing [BM25 baselines for HC4 on NeuCLIR22](docs/experiments-hc4-neuclir22.md)\n+ Reproducing [SLIM experiments](docs/experiments-slim.md)\n+ [Baselines](docs/experiments-kilt.md) for [KILT](https://github.com/facebookresearch/KILT): a benchmark for Knowledge Intensive Language Tasks\n+ [Baselines](docs/experiments-tripclick-doc.md) for [TripClick](https://tripdatabase.github.io/tripclick/): a large-scale dataset of click logs in the health domain\n+ [Baselines](https://github.com/castorini/anserini/blob/master/docs/experiments-fever.md) (in Anserini) for the [FEVER (Fact Extraction and VERification)](https://fever.ai/) dataset\n\n</details>\n<details>\n<summary>Dense Retrieval</summary>\n\n### Dense Retrieval\n\n+ Reproducing TCT-ColBERTv1 experiments: [MS MARCO V1](docs/experiments-tct_colbert.md)\n+ Reproducing TCT-ColBERTv2 experiments: [MS MARCO V1](docs/experiments-tct_colbert-v2.md), [MS MARCO V2](docs/experiments-msmarco-v2-tct_colbert-v2.md)\n+ Reproducing [DPR experiments](docs/experiments-dpr.md)\n+ Reproducing [BPR experiments](docs/experiments-bpr.md)\n+ Reproducing [ANCE experiments](docs/experiments-ance.md)\n+ Reproducing [DistilBERT KD experiments](docs/experiments-distilbert_kd.md)\n+ Reproducing [DistilBERT Balanced Topic Aware Sampling experiments](docs/experiments-distilbert_tasb.md)\n+ Reproducing [SBERT dense retrieval experiments](docs/experiments-sbert.md)\n+ Reproducing [ADORE dense retrieval experiments](docs/experiments-adore.md)\n+ Reproducing [Vector PRF experiments](docs/experiments-vector-prf.md)\n+ Reproducing [ANCE-PRF experiments](docs/experiments-ance-prf.md)\n+ Reproducing [Mr. TyDi experiments](https://github.com/castorini/mr.tydi/blob/main/README.md#2-mdpr)\n+ Reproducing [DKRR experiments](docs/experiments-dkrr.md)\n\n</details>\n<details>\n<summary>Hybrid Sparse-Dense Retrieval</summary>\n\n### Hybrid Sparse-Dense Retrieval\n\n+ Reproducing [uniCOIL + TCT-ColBERTv2 experiments on the MS MARCO V2 Collections](docs/experiments-msmarco-v2-hybrid.md)\n\n</details>\n<details>\n<summary>Available Corpora</summary>\n\n### Available Corpora\n\n| Corpora                                                                                                                                   |   Size | Checksum           ",
+ "fonte": "readme",
+ "respostas": [
+  {
+   "por": "ministral-8b",
+   "resposta": {
+    "serve": "search",
+    "role": "BM25, vector, hybrid search engine for Markdown/IR research",
+    "place": [
+     "inside_db_mcp",
+     "network_service",
+     "library"
+    ],
+    "mechanism": [
+     "bm25",
+     "vector",
+     "hybrid",
+     "embeddings"
+    ],
+    "mcp": "yes",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "Apache-2.0",
+    "maturity": "stable",
+    "doubt": false,
+    "evidence": "«Pyserini provides a REST API as well as an MCP server! ... Retrieval using sparse representations via Anserini (Lucene) and dense via Faiss. Supports BM25, vector, hybrid models.»"
+   }
+  },
+  {
+   "por": "north-mini-code",
+   "resposta": {
+    "serve": "search",
+    "role": "Provides BM25, dense, hybrid retrieval for Markdown notes via MCP server",
+    "place": [
+     "disk",
+     "inside_db_mcp"
+    ],
+    "mechanism": [
+     "bm25",
+     "vector",
+     "hybrid"
+    ],
+    "mcp": "yes",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "Apache-2.0",
+    "maturity": "unknown",
+    "doubt": false,
+    "evidence": "Pyserini provides a REST API as well as an MCP server! ... supports different types of retrieval models (e.g., BM25, dense, hybrid)."
+   }
+  }
+ ],
+ "conferencia_sonnet": {
+  "chave": "gh:castorini/pyserini",
+  "modelo": "claude-sonnet-5-5",
+  "ts": "2026-10-13T20:23:02Z",
+  "resultado": "corrige",
+  "conferencia": {
+   "resultado": "corrige",
+   "final": {
+    "serve": "search",
+    "role": "Python toolkit for BM25 (Lucene/Anserini), learned sparse and dense (Faiss) retrieval, with REST API and MCP server",
+    "place": [
+     "library",
+     "network_service"
+    ],
+    "mechanism": [
+     "bm25",
+     "vector",
+     "hybrid",
+     "embeddings"
+    ],
+    "mcp": "yes",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "Apache-2.0",
+    "maturity": "stable",
+    "doubt": false,
+    "evidence": "«Pyserini provides a REST API as well as an MCP server! ... sparse via Anserini (Lucene), dense via Faiss; hybrid dense-sparse fusion; Python 3.12 and Java 21»"
+   },
+   "o_que_mudou": [
+    "place: inside_db_mcp/disk -> library,network_service, it is a Python library with REST/MCP server, not inside a DB"
+   ],
+   "nota": "Real BM25+dense+hybrid search with an MCP server, but research-oriented and needs Java 21 and PyTorch; heavy for Markdown notes."
+  }
+ }
+}

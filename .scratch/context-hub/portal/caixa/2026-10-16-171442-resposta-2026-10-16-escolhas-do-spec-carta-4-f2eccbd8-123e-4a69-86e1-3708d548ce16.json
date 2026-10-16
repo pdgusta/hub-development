@@ -1,0 +1,216 @@
+{
+  "envio": "f2eccbd8-123e-4a69-86e1-3708d548ce16",
+  "tipo": "resposta",
+  "enviada": "2026-10-16T17:14:42-03:00",
+  "alvo": {
+    "tipo": "rodada",
+    "id": "2026-10-16-escolhas-do-spec-carta-4",
+    "titulo": "Escolhas do spec, carta 4: ficha, porteiros e acervo"
+  },
+  "ticket": "16",
+  "substitui": null,
+  "rodada": {
+    "id": "2026-10-16-escolhas-do-spec-carta-4",
+    "base": "ed1e10a3acc3155d9b67a7dabe56a1202c0ce8e85ffd5eb452186e9fc7e2176a",
+    "titulo": "Escolhas do spec, carta 4: ficha, porteiros e acervo",
+    "ticket": "16",
+    "perguntas": [
+      {
+        "id": "verificador",
+        "titulo": "1. O verificador só preenche o que dá para deduzir",
+        "tipo": "escolha",
+        "recomendada": [
+          "A"
+        ],
+        "opcoes": [
+          {
+            "chave": "A",
+            "texto": "Aceitar: lê, relê logo antes de gravar e troca só a ficha (tipo, iniciativa, título, data de mudança); se a nota mudou no meio, refaz ou devolve ao agente, e a sua edição fica inteira"
+          },
+          {
+            "chave": "B",
+            "texto": "Regravar o arquivo inteiro (mais simples, mas pode apagar a sua edição ou o que o sincronizador acabou de trazer)"
+          }
+        ],
+        "proposta": null
+      },
+      {
+        "id": "porteiro",
+        "titulo": "2. O porteiro monta a nota final antes de conferir a ficha",
+        "tipo": "escolha",
+        "recomendada": [
+          "A"
+        ],
+        "opcoes": [
+          {
+            "chave": "A",
+            "texto": "Aceitar: nota atual + o pedaço trocado = nota final, e o verificador confere essa nota; arquivo novo é conferido direto"
+          },
+          {
+            "chave": "B",
+            "texto": "O porteiro olha só o pedaço trocado (sem a ficha à vista, ele barra toda troca ou deixa passar sem conferir)"
+          }
+        ],
+        "proposta": null
+      },
+      {
+        "id": "fim-sem-ia",
+        "titulo": "3. A conferência do fim da resposta é um script, sem IA",
+        "tipo": "escolha",
+        "recomendada": [
+          "A"
+        ],
+        "opcoes": [
+          {
+            "chave": "A",
+            "texto": "Aceitar: um script pergunta \"a nota de retomada mudou?\"; se mudou, solta, se não, devolve ao agente (local, de graça, na hora, mas não julga se a nota ficou boa)"
+          },
+          {
+            "chave": "B",
+            "texto": "Um modelo de IA lê a conversa e a nota e julga se basta (julga a qualidade, mas custa, demora e manda a conversa, com dado de cliente, para o modelo)"
+          }
+        ],
+        "proposta": null
+      },
+      {
+        "id": "acervo-qualquer-pasta",
+        "titulo": "4. O lembrete e a guarda do acervo valem em qualquer pasta",
+        "tipo": "escolha",
+        "recomendada": [
+          "A"
+        ],
+        "opcoes": [
+          {
+            "chave": "A",
+            "texto": "Aceitar: fora do hub, o lembrete \"comece pelo acervo\" chega ao maestro e a guarda olha o arquivo real, então gravar no acervo pelo atalho também pede o seu aval (exceção à regra \"fora do hub, o porteiro sai na hora\")"
+          },
+          {
+            "chave": "B",
+            "texto": "Regra geral para tudo: fora do hub os porteiros não agem, o lembrete não chega e a gravação pelo atalho passa sem aval"
+          }
+        ],
+        "proposta": null
+      },
+      {
+        "id": "skills-copilot",
+        "titulo": "5. Testar as skills do Copilot no ensaio por uma lista extra",
+        "tipo": "escolha",
+        "recomendada": [
+          "A"
+        ],
+        "opcoes": [
+          {
+            "chave": "A",
+            "texto": "Aceitar: no ensaio, o Copilot acha as skills por uma lista extra de pastas (a variável `COPILOT_SKILLS_DIRS`), que prova o caminho extra; a instalação de verdade ainda fica com você"
+          },
+          {
+            "chave": "B",
+            "texto": "Sem teste no ensaio: a primeira prova das skills do Copilot é na instalação de verdade"
+          }
+        ],
+        "proposta": null
+      },
+      {
+        "id": "campo-iniciativa",
+        "titulo": "6. O campo \"iniciativa\" só é cobrado em nota de iniciativa",
+        "tipo": "escolha",
+        "recomendada": [
+          "A"
+        ],
+        "opcoes": [
+          {
+            "chave": "A",
+            "texto": "Aceitar: em nota de iniciativa o verificador preenche; em referência e em entrada fica dispensado, e o esquema de cada tipo dá a palavra final"
+          },
+          {
+            "chave": "B",
+            "texto": "Cobrado em toda nota (referência e captura rápida esbarram na ficha, recusadas ou com valor inventado)"
+          }
+        ],
+        "proposta": null
+      },
+      {
+        "id": "mapa-iniciativa",
+        "titulo": "7. \"Nova iniciativa\" já cria o mapa da iniciativa",
+        "tipo": "escolha",
+        "recomendada": [
+          "A"
+        ],
+        "opcoes": [
+          {
+            "chave": "A",
+            "texto": "Aceitar: o script \"nova iniciativa\" cria, com os seis arquivos do núcleo, o `AGENTS.md` da iniciativa, e o agente sempre acha o mapa local"
+          },
+          {
+            "chave": "B",
+            "texto": "À mão, quando precisar: o mapa só nasce quando houver regra própria, e depende de alguém lembrar de criar"
+          }
+        ],
+        "proposta": null
+      },
+      {
+        "id": "algo-mais",
+        "titulo": "Algo mais?",
+        "tipo": "texto",
+        "recomendada": [],
+        "opcoes": [],
+        "proposta": null
+      }
+    ]
+  },
+  "corpo_hash": "362e36fead5f4f81b72851703e8f45cb3d9295a44bdfdab85734da50f80a9ee0",
+  "corpo": {
+    "tipo": "resposta",
+    "rodada": "2026-10-16-escolhas-do-spec-carta-4",
+    "base": "ed1e10a3acc3155d9b67a7dabe56a1202c0ce8e85ffd5eb452186e9fc7e2176a",
+    "respostas": {
+      "verificador": {
+        "escolha": [
+          "A"
+        ],
+        "outra": null,
+        "comentario": null
+      },
+      "porteiro": {
+        "escolha": [
+          "A"
+        ],
+        "outra": null,
+        "comentario": null
+      },
+      "fim-sem-ia": {
+        "escolha": [],
+        "outra": null,
+        "comentario": "pq essa opção não é um hook ou claude mod, mas sim um script? Não precisa alterar o design visual"
+      },
+      "acervo-qualquer-pasta": {
+        "escolha": [
+          "A"
+        ],
+        "outra": null,
+        "comentario": null
+      },
+      "skills-copilot": {
+        "escolha": [
+          "A"
+        ],
+        "outra": null,
+        "comentario": null
+      },
+      "campo-iniciativa": {
+        "escolha": [
+          "A"
+        ],
+        "outra": null,
+        "comentario": null
+      },
+      "mapa-iniciativa": {
+        "escolha": [
+          "B"
+        ],
+        "outra": null,
+        "comentario": null
+      }
+    }
+  }
+}

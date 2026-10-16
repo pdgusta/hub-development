@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>A amostra da cidade</title>
+<link rel="stylesheet" href="fontes-carta/carta.css">
+<style>
+:root {
+  --papel: #f3eadb;
+  --cartao: #fbf6ec;
+  --linha: #d9cdb8;
+  --linha-forte: #bfae92;
+  --tinta: #2b2117;
+  --tinta-fraca: #55463a;
+  --apagado: #6e6054;
+  --madeira: #7a4f2a;
+  --madeira-escura: #5a3a1f;
+  --musgo: #3f6b32;
+  --terracota: #9c3a22;
+  --letreiro: "Fraunces", Georgia, serif;
+  --texto: "Nunito Sans", "Segoe UI", system-ui, sans-serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--papel); color: var(--tinta); }
+body { font-family: var(--texto); font-size: 16px; font-weight: 500; line-height: 1.45; }
+
+/* a faixa do topo, em duas linhas: título e pergunta; o que mudou e como navegar */
+.faixa { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 8px 32px; align-items: center; padding: 12px 24px 10px; }
+.faixa h1 { margin: 0; font-family: var(--letreiro); font-weight: 650; font-size: 25px; line-height: 1.15; }
+.faixa h1 small { font-family: var(--texto); font-size: 14.5px; font-weight: 600; color: var(--apagado); margin-left: 10px; }
+.mudou { display: flex; flex-wrap: wrap; gap: 6px 8px; margin: 0; padding: 0; list-style: none; }
+.mudou li { display: flex; align-items: center; gap: 7px; font-size: 14px; background: var(--cartao); border: 1px solid var(--linha); border-radius: 999px; padding: 2px 11px 2px 8px; }
+.mudou svg { flex: none; }
+.pergunta { margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 2px 18px; font-size: 14.5px; color: var(--tinta-fraca); justify-content: flex-end; }
+.pergunta b { color: var(--tinta); }
+.pergunta code { font-family: Consolas, ui-monospace, monospace; font-size: .92em; }
+.navegar { margin: 0; font-size: 14px; color: var(--tinta-fraca); text-align: right; }
+.navegar b { color: var(--tinta); }
+
+/* a moldura de madeira em volta do canvas */
+.moldura { margin: 0 12px 12px; padding: 7px; border-radius: 16px; background: linear-gradient(180deg, var(--madeira), var(--madeira-escura)); box-shadow: 0 2px 4px rgba(60, 40, 20, .18), 0 10px 26px rgba(60, 40, 20, .18); }
+.moldura iframe { display: block; width: 100%; border: 0; border-radius: 10px; background: #f6f1e7; }
+kbd { font-family: var(--texto); font-size: 12.5px; font-weight: 750; color: var(--tinta); background: #fbf3e4; border: 1px solid #d8c3a0; border-bottom-width: 2px; border-radius: 5px; padding: 0 5px; }
+
+@media (max-width: 1100px) {
+  .faixa { grid-template-columns: minmax(0, 1fr); }
+  .pergunta { justify-content: flex-start; }
+  .navegar { text-align: left; }
+}
+@media (max-width: 700px) {
+  .faixa { grid-template-columns: minmax(0, 1fr); padding: 14px 16px 12px; }
+  .faixa h1 { font-size: 23px; }
+  .moldura { margin: 0 6px 10px; padding: 5px; border-radius: 12px; }
+  .faixa h1 small { display: block; margin: 3px 0 0; }
+}
+</style>
+</head>
+<body>
+<header class="faixa">
+  <h1>A cidade em tela inteira<small>a mistura aprovada, agora como página final</small></h1>
+  <ul class="pergunta">
+    <li><b>Aprovar:</b> substitui o <code>system-design.html</code> no portal "System design" do Maestri</li>
+    <li><b>Recusar:</b> diga o que mudar</li>
+  </ul>
+  <ul class="mudou" aria-label="O que mudou desde a mistura">
+    <li><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18M3 12h18M12 3l-3 3M12 3l3 3M12 21l-3-3M12 21l3-3M3 12l3-3M3 12l3 3M21 12l-3-3M21 12l-3 3" fill="none" stroke="#7a4f2a" stroke-width="2" stroke-linecap="round"/></svg>canvas que se arrasta e aproxima</li>
+    <li><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="#1f5f73" stroke-width="2.2"/><path d="M15.5 15.5L21 21M8 10.5h5M10.5 8v5" stroke="#1f5f73" stroke-width="2.2" stroke-linecap="round"/></svg>mais nomes ao aproximar</li>
+    <li><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5" fill="none" stroke="#8a6a3a" stroke-width="2.2"/><path d="M12 7.5V12l3 2.2" fill="none" stroke="#8a6a3a" stroke-width="2.2" stroke-linecap="round"/></svg>relógio e caderno com nome</li>
+  </ul>
+  <p class="navegar"><b>Como navegar:</b> botão direito ou um dedo arrasta · <kbd>Ctrl</kbd> + roda ou pinça: zoom · <kbd>Shift</kbd> + roda: para os lados · clique: ficha</p>
+</header>
+
+<div class="moldura">
+  <iframe id="quadro" src="amostra.html" title="A cidade e quem a aciona: a amostra, em canvas"></iframe>
+</div>
+
+<script>
+(function () {
+  /* A amostra é um canvas do tamanho da janela dela. Se a faixa do topo é baixa, a carta inteira cabe na tela sem rolar;
+     se é alta (telas estreitas), o quadro ganha a altura da tela e a faixa sai de vista com uma rolada. */
+  var quadro = document.getElementById('quadro');
+  var faixa = document.querySelector('.faixa');
+  function medir() {
+    var alto = window.innerHeight;
+    var junto = alto - faixa.offsetHeight - 26;
+    var h = junto >= alto * 0.7 ? junto : alto - 24;
+    quadro.style.height = Math.max(480, Math.round(h)) + 'px';
+  }
+  window.addEventListener('resize', medir);
+  medir();
+})();
+</script>
+</body>
+</html>

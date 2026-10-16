@@ -1,0 +1,58 @@
+{
+ "nome": "1MCP agent",
+ "url": "https://github.com/1mcp-app/agent",
+ "papel": "repasse de MCP",
+ "windows": "yes (CI de binários com windows-latest e teste do binário no Windows; instalador de tarefa agendada testado em windows-latest; instalação via npm)",
+ "mcp": "yes (agrega servidores MCP; expõe streamable HTTP em http://127.0.0.1:3050/mcp e proxy stdio via `1mcp proxy`)",
+ "portugues": "nao_aplicavel",
+ "markdown_frontmatter": "nao_aplicavel",
+ "atualizacao": "nao_aplicavel (repasse; sem índice)",
+ "embeddings_endpoint": "nao usa embeddings",
+ "recursos": "Node/npm (npm install -g @1mcp/agent) ou binários; sem número de memória na fonte; inicialização stdio mais lenta segundo o README",
+ "licenca": "Apache-2.0",
+ "ultimo_release": "v0.39.1 no feed de releases (2026-10-12); package.json já em 0.39.2",
+ "atividade": "commit em 2026-10-13",
+ "maturidade": "beta (0.x, muito ativo)",
+ "encaixe": "Serviço local em cada máquina agregando MCPs para vários agentes, com modo CLI de descoberta progressiva. Impedimento: foco em reduzir tools no contexto, mais pesado que um repasse simples.",
+ "evidencias": [
+  {
+   "campo": "mcp",
+   "url": "https://github.com/1mcp-app/agent",
+   "citacao": "`1mcp serve` aggregates your MCP servers"
+  },
+  {
+   "campo": "mcp",
+   "url": "https://github.com/1mcp-app/agent",
+   "citacao": "claude mcp add -t http 1mcp \"http://127.0.0.1:3050/mcp?app=claude-code\""
+  },
+  {
+   "campo": "windows",
+   "url": "https://github.com/1mcp-app/agent/blob/main/.github/workflows/build-binaries.yml",
+   "citacao": "- os: windows-latest ... Test binary functionality (Windows)"
+  },
+  {
+   "campo": "windows",
+   "url": "https://github.com/1mcp-app/agent/blob/main/.github/workflows/test-and-validate.yml",
+   "citacao": "test-windows-installer: runs-on: windows-latest"
+  },
+  {
+   "campo": "recursos",
+   "url": "https://github.com/1mcp-app/agent",
+   "citacao": "npm install -g @1mcp/agent"
+  },
+  {
+   "campo": "recursos",
+   "url": "https://github.com/1mcp-app/agent",
+   "citacao": "1MCP startup is slower than a thin standalone stdio setup."
+  },
+  {
+   "campo": "licenca",
+   "url": "https://github.com/1mcp-app/agent",
+   "citacao": "LICENSE for the Apache 2.0 license"
+  }
+ ],
+ "nao_verificado": [
+  "memória em execução",
+  "versão exata do último release na página de releases (feed mostra 0.39.1)"
+ ]
+}

@@ -1,0 +1,54 @@
+{
+ "chave": "gh:hashicorp/hcl",
+ "nomes": [
+  "HCL"
+ ],
+ "urls": [
+  "https://github.com/hashicorp/hcl"
+ ],
+ "readme_cortado": false,
+ "readme": "# HCL\n\nHCL is a toolkit for creating structured configuration languages that are\nboth human- and machine-friendly, for use with command-line tools.\nAlthough intended to be generally useful, it is primarily targeted\ntowards devops tools, servers, etc.\n\n> **NOTE:** This is major version 2 of HCL, whose Go API is incompatible with\n> major version 1. Both versions are available for selection in Go Modules\n> projects. HCL 2 _cannot_ be imported from Go projects that are not using Go Modules. For more information, see\n> [our version selection guide](https://github.com/hashicorp/hcl/wiki/Version-Selection).\n\nHCL has both a _native syntax_, intended to be pleasant to read and write for\nhumans, and a JSON-based variant that is easier for machines to generate\nand parse.\n\nThe HCL native syntax is inspired by [libucl](https://github.com/vstakhov/libucl),\n[nginx configuration](http://nginx.org/en/docs/beginners_guide.html#conf_structure),\nand others.\n\nIt includes an expression syntax that allows basic inline computation and,\nwith support from the calling application, use of variables and functions\nfor more dynamic configuration languages.\n\nHCL provides a set of constructs that can be used by a calling application to\nconstruct a configuration language. The application defines which attribute\nnames and nested block types are expected, and HCL parses the configuration\nfile, verifies that it conforms to the expected structure, and returns\nhigh-level objects that the application can use for further processing.\n\n```go\npackage main\n\nimport (\n\t\"log\"\n\n\t\"github.com/hashicorp/hcl/v2/hclsimple\"\n)\n\ntype Config struct {\n\tIOMode  string        `hcl:\"io_mode\"`\n\tService ServiceConfig `hcl:\"service,block\"`\n}\n\ntype ServiceConfig struct {\n\tProtocol   string          `hcl:\"protocol,label\"`\n\tType       string          `hcl:\"type,label\"`\n\tListenAddr string          `hcl:\"listen_addr\"`\n\tProcesses  []ProcessConfig `hcl:\"process,block\"`\n}\n\ntype ProcessConfig struct {\n\tType    string   `hcl:\"type,label\"`\n\tCommand []string `hcl:\"command\"`\n}\n\nfunc main() {\n\tvar config Config\n\terr := hclsimple.DecodeFile(\"config.hcl\", nil, &config)\n\tif err != nil {\n\t\tlog.Fatalf(\"Failed to load configuration: %s\", err)\n\t}\n\tlog.Printf(\"Configuration is %#v\", config)\n}\n```\n\nA lower-level API is available for applications that need more control over\nthe parsing, decoding, and evaluation of configuration. For more information,\nsee [the package documentation](https://pkg.go.dev/github.com/hashicorp/hcl/v2).\n\n## Why?\n\nNewcomers to HCL often ask: why not JSON, YAML, etc?\n\nWhereas JSON and YAML are formats for serializing data structures, HCL is\na syntax and API specifically designed for building structured configuration\nformats.\n\nHCL attempts to strike a compromise between generic serialization formats\nsuch as JSON and configuration formats built around full programming languages\nsuch as Ruby. HCL syntax is designed to be easily read and written by humans,\nand allows _declarative_ logic to permit its use in more complex applications.\n\nHCL is intended as a base syntax for configuration formats built\naround key-value pairs and hierarchical blocks whose structure is well-defined\nby the calling application, and this definition of the configuration structure\nallows for better error messages and more convenient definition within the\ncalling application.\n\nIt can't be denied that JSON is very convenient as a _lingua franca_\nfor interoperability between different pieces of software. Because of this,\nHCL defines a common configuration model that can be parsed from either its\nnative syntax or from a well-defined equivalent JSON structure. This allows\nconfiguration to be provided as a mixture of human-authored configuration\nfiles in the native syntax and machine-generated files in JSON.\n\n## Information Model and Syntax\n\nHCL is built around two primary concepts: _attributes_ and _blocks_. In\nnative syntax, a configuration file for a hypothetical application might look\nsomething like this:\n\n```hcl\nio_mode = \"async\"\n\nservice \"http\" \"web_proxy\" {\n  listen_addr = \"127.0.0.1:8080\"\n  \n  process \"main\" {\n    command = [\"/usr/local/bin/awesome-app\", \"server\"]\n  }\n\n  process \"mgmt\" {\n    command = [\"/usr/local/bin/awesome-app\", \"mgmt\"]\n  }\n}\n```\n\nThe JSON equivalent of this configuration is the following:\n\n```json\n{\n  \"io_mode\": \"async\",\n  \"service\": {\n    \"http\": {\n      \"web_proxy\": {\n        \"listen_addr\": \"127.0.0.1:8080\",\n        \"process\": {\n          \"main\": {\n            \"command\": [\"/usr/local/bin/awesome-app\", \"server\"]\n          },\n          \"mgmt\": {\n            \"command\": [\"/usr/local/bin/awesome-app\", \"mgmt\"]\n          },\n        }\n      }\n    }\n  }\n}\n```\n\nRegardless of which syntax is used, the API within the calling application\nis the same. It can either work directly with the low-level attributes and\nblocks, for more advanced use-cases, or it can use one of the _decoder_\npackages to declaratively extract into either Go structs or dynamic value\nstructures.\n\nAttribute values can be expressions as well as just literal values:\n\n```hcl\n# Arithmetic with literals and application-provided variables\nsum = 1 + addend\n\n# String interpolation and templates\nmessage = \"Hello, ${name}!\"\n\n# Application-provided functions\nshouty_message = upper(message)\n```\n\nAlthough JSON syntax doesn't permit direct use of expressions, the interpolation\nsyntax allows use of arbitrary expressions within JSON strings:\n\n```json\n{\n  \"sum\": \"${1 + addend}\",\n  \"message\": \"Hello, ${name}!\",\n  \"shouty_message\": \"${upper(message)}\"\n}\n```\n\nFor more information, see the detailed specifications:\n\n* [Syntax-agnostic Information Model](spec.md)\n* [HCL Native Syntax](hclsyntax/spec.md)\n* [JSON Representation](json/spec.md)\n\n## Changes in 2.0\n\nVersion 2.0 of HCL combines the features of HCL 1.0 with those of the\ninterpolation language HIL to produce a single configuration language that\nsupports arbitrary expressions.\n\nThis new version has a completely new parser and Go API, with no direct\nmigration path. Although the syntax is similar, the implementation takes some\nvery different approaches to improve on some \"rough edges\" that existed with\nthe original implementation and to allow for more robust error handling.\n\nIt's possible to import both HCL 1 and HCL 2 into the same program using Go's\n_semantic import versioning_ mechanism:\n\n```go\nimport (\n    hcl1 \"github.com/hashicorp/hcl\"\n    hcl2 \"github.com/hashicorp/hcl/v2\"\n)\n```\n\n## Acknowledgements\n\nHCL was heavily inspired by [libucl](https://github.com/vstakhov/libucl),\nby [Vsevolod Stakhov](https://github.com/vstakhov).\n\nHCL and HIL originate in [HashiCorp Terraform](https://terraform.io/),\nwith the original parsers for each written by\n[Mitchell Hashimoto](https://github.com/mitchellh).\n\nThe original HCL parser was ported to pure Go (from yacc) by\n[Fatih Arslan](https://github.com/fatih). The structure-related portions of\nthe new native syntax parser build on that work.\n\nThe original HIL parser was ported to pure Go (from yacc) by\n[Martin Atkins](https://github.com/apparentlymart). The expression-related\nportions of the new native syntax parser build on that work.\n\nHCL 2, which merged the original HCL and HIL languages into this single new\nlanguage, builds on design and prototyping work by\n[Martin Atkins](https://github.com/apparentlymart) in\n[zcl](https://github.com/zclconf/go-zcl).\n",
+ "fonte": "readme",
+ "respostas": [
+  {
+   "por": "gemma-4-31b",
+   "resposta": {
+    "serve": "stack",
+    "role": "toolkit for creating structured configuration languages for hub components",
+    "place": [
+     "library"
+    ],
+    "mechanism": [
+     "other"
+    ],
+    "mcp": "no",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "stable",
+    "doubt": false,
+    "evidence": "HCL is a toolkit for creating structured configuration languages"
+   }
+  },
+  {
+   "por": "codestral-2508",
+   "resposta": {
+    "serve": "stack",
+    "role": "configuration language for devops tools",
+    "place": [
+     "library"
+    ],
+    "mechanism": [
+     "n/a"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "MPL-2.0",
+    "maturity": "stable",
+    "doubt": false,
+    "evidence": "HCL is a toolkit for creating structured configuration languages for devops tools, servers, etc."
+   }
+  }
+ ]
+}

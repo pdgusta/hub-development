@@ -1,0 +1,57 @@
+{
+ "chave": "gh:languagemachines/ucto",
+ "nomes": [
+  "Ucto Portuguese Stemmer"
+ ],
+ "urls": [
+  "https://github.com/LanguageMachines/ucto"
+ ],
+ "readme_cortado": false,
+ "readme": "[![GitHub build](https://github.com/LanguageMachines/ucto/actions/workflows/ucto.yml/badge.svg?branch=master)](https://github.com/LanguageMachines/ucto/actions/)\n[![Language Machines Badge](http://applejack.science.ru.nl/lamabadge.php/ucto)](http://applejack.science.ru.nl/languagemachines/)\n[![DOI](https://zenodo.org/badge/9028617.svg)](https://zenodo.org/badge/latestdoi/9028617)\n[![GitHub release](https://img.shields.io/github/release/LanguageMachines/ucto.svg)](https://GitHub.com/LanguageMachines/ucto/releases/)\n[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)\n\n# Ucto - A rule-based tokeniser\n\n    KNAW Humanities Cluster\n    Centre for Language and Speech technology, Radboud University Nijmegen\n    Induction of Linguistic Knowledge Research Group, Tilburg University\n\n**Website**: https://languagemachines.github.io/ucto/\n\nUcto tokenizes text files: it separates words from punctuation, and splits\nsentences. This is one of the first tasks for almost any Natural Language\nProcessing application. Ucto offers several other basic preprocessing steps\nsuch as changing case that you can all use to make your text suited for further\nprocessing such as indexing, part-of-speech tagging, or machine translation.\n\nUcto comes with tokenisation rules for several languages (packaged separately)\nand can be easily extended to suit other languages. It has been incorporated\nfor tokenizing Dutch text in Frog (https://languagemachines.github.io/frog),\nour Dutch morpho-syntactic processor.\n\nThe software is intended to be used from the command-line by researchers in\nNatural Language Processing or related areas, as well as software developers.\nAn [Ucto python binding](https://github.com/proycon/python-ucto) is also available\nseparately.\n\nFeatures:\n\n- Comes with tokenization rules for English, Dutch, French, Italian, Turkish,\n  Spanish, Portuguese and Swedish; easily extendible to other languages. Rules\n  consists of regular expressions and lists. They are\n  packaged separately as [uctodata](https://github.com/LanguageMachines/uctodata).\n- Recognizes units, currencies, abbreviations, and simple dates and times like dd-mm-yyyy\n- Recognizes paired quote spans, sentences, and paragraphs.\n- Produces UTF8 encoding and NFC output normalization, optionally accepting\n  other input encodings as well.\n- Ligature normalization (can undo for isntance fi,fl as single codepoints).\n- Optional conversion to all lowercase or uppercase.\n- Supports [FoLiA XML](https://proycon.github.io/folia)\n\nUcto was written by Maarten van Gompel and Ko van der Sloot. Work on Ucto was\nfunded by NWO, the Netherlands Organisation for Scientific Research, under the\nImplicit Linguistics project, the CLARIN-NL program, and the CLARIAH project.\n\nThis software is available under the GNU Public License v3 (see the file\nCOPYING).\n\n## Demo\n\n![Ucto demo](https://raw.githubusercontent.com/CLARIAH/wp3-demos/master/ucto.gif)\n\n## Installation\n\nTo install Ucto, first consult whether your distribution's package manager has\nan up-to-date package:\n\n* Alpine Linux users can do `apk install ucto`.\n* Debian/Ubuntu users can do `apt install ucto` but this version will likely be significantly out of date!\n* Arch Linux users can install Frog via the [AUR](https://aur.archlinux.org/packages/ucto).\n* macOS users with [homebrew](https://brew.sh/) can do: `brew tap fbkarsdorp/homebrew-lamachine && brew install ucto`\n* An OCI container image is also available and can be used with Docker: `docker pull proycon/ucto`. Alternatively, you can build an OCI container image yourself using the provided `Dockerfile` in this repository.\n\nTo compile and install manually from source: \n\n    $ bash bootstrap.sh\n    $ ./configure\n    $ make\n    $ sudo make install\n\nIf you want to *automatically* download, compile and install the latest stable versions of\nthe required dependencies, then run `./build-deps.sh` prior to the above. You\ncan pass a target directory prefix as first argument and you may need to\nprepend `sudo` to ensure you can install there. The dependencies are:\n\n* [ticcutils](https://github.com/LanguageMachine/ticcutils) - A shared utility library\n* [libfolia](https://github.com/LanguageMachines/libfolia)  - A library for the FoLiA format.\n* [uctodata](https://github.com/LanguageMachines/uctodata)  - Data files for ucto, packaged separately\n\nIf you already have these dependencies, e.g. through a package manager or manually installed, then you should skip this step. \n\nYou will still need to take care to install the following 3rd party\ndependencies through your distribution's package manager, as they are not\nprovided by our script:\n\n* ``icu`` - A C++ library for Unicode and Globalization support. On Debian/Ubuntu systems, install the package libicu-dev.\n* ``libxml2`` - An XML library. On Debian/Ubuntu systems install the package libxml2-dev.\n* ``libexttextcat`` - A language detection package. \n* A sane build environment with a C++ compiler (e.g. gcc 4.9 or above or clang), make, autotools, libtool, pkg-config\n\n## Usage\n\nTokenize an english text file to standard output, tokens will be\nspace-seperated, sentences delimiter by ``<utt>``:\n\n    $ ucto -L eng yourfile.txt\n\nThe -L flag specifies the language (as a three letter iso-639-3 code), provided\na configuration file exists for that language. The configurations are provided\nseparately, for various languages, in the\n[uctodata](https://github.com/LanguageMachines/uctodata) package. Note that\nolder versions of ucto used different two-letter codes, so you may need to\nupdate the way you invoke ucto.\n\nTo output to file instead of standard output, just add another\npositional argument with the desired output filename.\n\nIf you want each sentence on a separate line (i.e. newline delimited rather than delimited by\n``<utt>``), then pass the ``-n`` flag. If each sentence is already on one line\nin the input and you want to leave it at that, pass the ``-m`` flag.\n\nTokenize plaintext to [FoLiA XML](https://proycon.github.io/folia) using the ``-X`` flag, you can specify an ID\nfor the FoLiA document using the ``--id=`` flag.\n\n    $ ucto -L eng -X --id=hamlet hamlet.txt hamlet.folia.xml\n\nNote that in the FoLiA XML output, ucto encodes the class of the token (date, url, smiley, etc...) based\non the rule that matched.\n\nFor further documentation consult the [ucto\ndocumentation](https://ucto.readthedocs.io/en/latest/).\n\n## Container Usage\n\nA pre-made container image can be obtained from Docker Hub as follows:\n\n``docker pull proycon/ucto``\n\nAlternatively, you can build a docker container as follows, make sure you are in the root of this repository:\n\n``docker build -t proycon/ucto .``\n\nThis builds the latest stable release, if you want to use the latest development version\nfrom the git repository instead, do:\n\n``docker build -t proycon/ucto --build-arg VERSION=development .``\n\nRun the container interactively as follows, you can pass any additional arguments that ``ucto`` takes.\n\n``docker run -t -i proycon/ucto``\n\nAdd the ``-v /path/to/your/data:/data`` parameter (before `-t`) if you want to mount your data volume into the container at `/data`.\n\n## Webservice\n\nIf you are looking to run Ucto as a webservice yourself,  please see https://github.com/proycon/ucto_webservice . It is not included in this repository.\n",
+ "fonte": "readme",
+ "respostas": [
+  {
+   "por": "gemma-4-31b",
+   "resposta": {
+    "serve": "search",
+    "role": "Tokenize Portuguese and English text for indexing in the search layer",
+    "place": [
+     "disk",
+     "library"
+    ],
+    "mechanism": [
+     "other"
+    ],
+    "mcp": "no",
+    "windows": "unknown",
+    "portuguese": "yes",
+    "license": "GPL-3.0",
+    "maturity": "stable",
+    "doubt": false,
+    "evidence": "make your text suited for further processing such as indexing; Rules for English... Portuguese; intended to be used from the command-line"
+   }
+  },
+  {
+   "por": "codestral",
+   "resposta": {
+    "serve": "search",
+    "role": "tokenizer for search layer",
+    "place": [
+     "disk",
+     "network_service"
+    ],
+    "mechanism": [
+     "full_text",
+     "other"
+    ],
+    "mcp": "unknown",
+    "windows": "yes",
+    "portuguese": "yes",
+    "license": "GPL-3.0-only",
+    "maturity": "stable",
+    "doubt": false,
+    "evidence": "Ucto tokenizes text files for NLP, supports Portuguese, and can be used as a command-line tool or webservice."
+   }
+  }
+ ]
+}

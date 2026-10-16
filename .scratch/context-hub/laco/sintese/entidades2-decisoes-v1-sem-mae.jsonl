@@ -1,0 +1,46 @@
+{"grupo": "Meilisearch", "entidades": [{"principal": "web:docs.meilisearch.com", "mesmo": ["web:meilisearch.com/docs/learn/advanced/embeddings"], "parte": ["gh:meilisearch/meilisearch-python", "web:meilisearch.com/docs/learn/search/hybrid_search", "web:meilisearch.com/cloud", "gh:meilisearch/meilisearch-js", "gh:meilisearch/meilisearch-cli"]}], "nota": ""}
+{"grupo": "Elasticsearch (modo local)", "entidades": [{"principal": "web:elastic.co", "mesmo": ["gh:elastic/elasticsearch"], "parte": ["gh:elastic/elasticsearch-py", "web:elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html", "gh:elastic/elasticsearch-net", "web:elastic.co/guide/en/elasticsearch/plugins/current/analysis-icu.html", "gh:elasticsearch/elasticsearch-py", "web:elastic.co/guide/en/elasticsearch/reference/current/analysis-synonym-tokenfilter.html", "gh:elastic/elasticsearch-java", "web:elastic.co/guide/en/elasticsearch/reference/current/security-settings.html", "web:elastic.co/guide/en/elasticsearch/reference/current/indices-aliases.html", "web:elastic.co/guide/en/elasticsearch/reference/current/snapshot-restore.html", "web:elastic.co/guide/en/elasticsearch/reference/current/search-aggregations.html", "web:elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-filter-aggregation.html", "gh:elastic/elasticsearch-js", "gh:elastic/elasticsearch-analysis-phonetic", "web:elastic.co/guide/en/elasticsearch/client", "web:elastic.co/guide/en/elasticsearch/reference/current/analysis-lang-analyzer.html", "web:elastic.co/guide/en/elasticsearch/reference/current/analysis-synonym-graph-tokenfilter.html", "gh:elastic/go-elasticsearch", "web:elastic.co/guide/en/elasticsearch/client/index.html", "web:elastic.co/guide/en/elasticsearch/reference/current/analysis-stemmer-tokenfilter.html", "web:elastic.co/guide/en/elasticsearch/reference/current/docs-index_.html", "web:elastic.co/guide/en/elasticsearch/reference/current/mapping.html", "web:elastic.co/guide/en/elasticsearch/reference/current/snapshots-repositories.html", "web:elastic.co/guide/en/elasticsearch/reference/current/analysis-asciifolding-tokenfilter.html", "web:elastic.co/guide/en/elasticsearch/reference/current/query-dsl-percolate-query.html"]}, {"principal": "web:elastic.co/guide/en/kibana/current/index.html", "mesmo": ["web:elastic.co/guide/en/kibana/current/discover.html"], "parte": []}], "nota": "Kibana vira entidade própria; k-NN é do OpenSearch; AWS Elasticsearch Service e o plugin LTR da o19s são de terceiros."}
+{"grupo": "Qdrant", "entidades": [{"principal": "web:hub.docker.com/r/qdrant/qdrant", "mesmo": [], "parte": ["web:qdrant.tech/documentation/hybrid-search", "gh:qdrant/qdrant-client"], "nome": "Qdrant"}], "nota": "Nenhum membro é a página do projeto; imagem Docker usada como principal."}
+{"grupo": "Typesense", "entidades": [{"principal": "web:hub.docker.com/r/typesense/typesense", "mesmo": ["web:typesense.org/docs/latest/api/hybrid-search.html"], "parte": ["gh:typesense/typesense-js", "web:typesense.org/cloud", "gh:typesense/typesense-python", "gh:typesense/typesense-instantsearch-adapter"]}], "nota": ""}
+{"grupo": "Whoosh", "entidades": [{"principal": "web:whoosh.readthedocs.io/en/latest/analysis.html", "mesmo": [], "parte": ["web:whoosh.readthedocs.io/en/latest/api/analysis.html"]}], "nota": "Pydantic e PyCouchDB são projetos próprios (combinações do rótulo)."}
+{"grupo": "Weaviate", "entidades": [{"principal": "web:weaviate.io/developers/weaviate/modules/hybrid-search", "mesmo": [], "parte": ["web:weaviate.io/developers/weaviate/installation/docker-compose", "web:weaviate.io/developers/weaviate/api/graphql", "web:weaviate.io/developers/weaviate/client-libraries", "gh:weaviate/weaviate-python-client", "web:weaviate.io/developers/weaviate/installation/kubernetes"]}], "nota": ""}
+{"grupo": "Milvus", "entidades": [{"principal": "web:hub.docker.com/r/milvusdb/milvus", "mesmo": [], "parte": ["gh:milvus-io/pymilvus", "gh:milvus-io/milvus-lite"]}], "nota": "Milvus Lite tratado como modo/parte do Milvus."}
+{"grupo": "Chroma", "entidades": [], "nota": ""}
+{"grupo": "Apache Lucene", "entidades": [{"principal": "web:lucene.apache.org/core", "mesmo": ["web:lucene.apache.org/core/docs/analysis/index.html"], "parte": ["web:lucene.apache.org/core/8_11_0/analyzers-common/org/apache/lucene/analysis/pt/package-summary.html", "web:lucene.apache.org/core/8_11_2/queryparser/org/apache/lucene/queryparser/classic/package-summary.html", "web:lucene.apache.org/core/8_11_0/queryparser/org/apache/lucene/queryparser/classic/queryparser.html", "web:lucene.apache.org/core/8_11_2/highlighter/org/apache/lucene/search/vectorhighlight/package-summary.html", "web:lucene.apache.org/core/8_11_2/core/org/apache/lucene/index/indexwriter.html"]}, {"principal": "web:icu.apache.org/icu4j", "mesmo": ["web:icu.unicode.org"], "parte": []}], "nota": "Tika, Lucene.NET e CouchDB-Lucene são projetos próprios."}
+{"grupo": "Solr", "entidades": [{"principal": "web:lucene.apache.org/solr", "mesmo": ["web:solr.apache.org/downloads.html"], "parte": ["web:solr.apache.org/guide/8_11/analysis.html", "web:hub.docker.com/_/solr", "web:solr.apache.org/guide/8_11/language-analysis.html", "web:solr.apache.org/guide/solr/latest/query-guide/faceting.html", "web:lucene.apache.org/solr/guide/8_11/other-parsers.html"]}], "nota": "pysolr e solr-node-client são clientes de terceiros, fora."}
+{"grupo": "OpenSearch", "entidades": [{"principal": "gh:opensearch-project/opensearch-py", "mesmo": ["web:opensearch-project.github.io/opensearch-py"], "parte": []}], "nota": ""}
+{"grupo": "SQLite-vec", "entidades": [{"principal": "web:sqlite.org/index.html", "mesmo": ["web:sqlite.org/download.html"], "parte": ["web:docs.python.org/3/library/sqlite3.html", "web:sqlite.org/loadext.html"]}], "nota": "SQLite é principal; vss, sqlean, utils, node-sqlite3 e rusqlite são projetos de terceiros. sqlite3 do Python tratado como parte."}
+{"grupo": "LangChain", "entidades": [{"principal": "web:python.langchain.com/docs/integrations/document_loaders", "mesmo": [], "parte": ["web:python.langchain.com/docs/integrations/text_embedding"]}], "nota": "LocalAI é projeto próprio."}
+{"grupo": "Haystack", "entidades": [{"principal": "gh:django-haystack/django-haystack", "mesmo": ["web:django-haystack.readthedocs.io/en/latest"], "parte": []}], "nota": "Django Haystack, não o Haystack da deepset."}
+{"grupo": "spaCy", "entidades": [{"principal": "web:spacy.io/usage/models", "mesmo": [], "parte": ["gh:explosion/spacy-models", "web:spacy.io/api/lemmatizer"]}], "nota": "PyCouchDB é projeto próprio."}
+{"grupo": "lunr.js", "entidades": [], "nota": ""}
+{"grupo": "Xapian", "entidades": [], "nota": ""}
+{"grupo": "FastAPI", "entidades": [], "nota": ""}
+{"grupo": "DuckDB", "entidades": [], "nota": ""}
+{"grupo": "Ollama MCP", "entidades": [], "nota": ""}
+{"grupo": "LlamaIndex", "entidades": [], "nota": ""}
+{"grupo": "fastText", "entidades": [], "nota": ""}
+{"grupo": "FastEmbed", "entidades": [], "nota": ""}
+{"grupo": "Manticore Search", "entidades": [], "nota": ""}
+{"grupo": "NATS JetStream", "entidades": [{"principal": "gh:nats-io/nats-server", "mesmo": [], "parte": ["gh:nats-io/nats.go", "gh:nats-io/nats.js", "gh:nats-io/nats.net"]}], "nota": "Temporal é projeto próprio."}
+{"grupo": "pouchdb", "entidades": [], "nota": ""}
+{"grupo": "Ripgrep", "entidades": [], "nota": ""}
+{"grupo": "Logstash", "entidades": [], "nota": ""}
+{"grupo": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2", "entidades": [], "nota": ""}
+{"grupo": "remark-frontmatter", "entidades": [{"principal": "gh:remarkjs/remark", "mesmo": [], "parte": ["gh:remarkjs/remark-lint", "gh:remarkjs/remark-math", "gh:remarkjs/remark-toc", "gh:remarkjs/remark-gfm"]}], "nota": "Plugins do ecossistema remark tratados como parte."}
+{"grupo": "Redis", "entidades": [{"principal": "web:redis.io/topics/streams-intro", "mesmo": [], "parte": ["gh:redis/redis-py", "web:redis.io/docs/stack/streams"]}], "nota": ""}
+{"grupo": "FastMCP / mcp-sdk", "entidades": [], "nota": ""}
+{"grupo": "OpenNLP", "entidades": [], "nota": ""}
+{"grupo": "Jina AI", "entidades": [], "nota": ""}
+{"grupo": "front-matter", "entidades": [], "nota": ""}
+{"grupo": "DocArray", "entidades": [], "nota": ""}
+{"grupo": "Cohere", "entidades": [{"principal": "web:cohere.com/embeddings", "mesmo": [], "parte": ["gh:cohere-ai/cohere-python"]}], "nota": "BGE Reranker é da BAAI, fora."}
+{"grupo": "RethinkDB (Change Feeds + Search)", "entidades": [], "nota": ""}
+{"grupo": "tantivy-py", "entidades": [{"principal": "web:github.com/tantivy-search", "mesmo": ["web:docs.rs/tantivy/latest/tantivy"], "parte": []}], "nota": ""}
+{"grupo": "Goldmark", "entidades": [], "nota": ""}
+{"grupo": "SPLADE", "entidades": [], "nota": ""}
+{"grupo": "Contriever", "entidades": [], "nota": ""}
+{"grupo": "MCP + LiteLLM Proxy", "entidades": [], "nota": ""}
+{"grupo": "Jina Embeddings", "entidades": [], "nota": ""}
+{"grupo": "mixedbread-ai/mxbai-embed-large-v1", "entidades": [], "nota": ""}
+{"grupo": "cmark-gfm", "entidades": [], "nota": ""}

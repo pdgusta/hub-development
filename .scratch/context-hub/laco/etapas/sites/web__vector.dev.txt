@@ -1,0 +1,224 @@
+New
+Vector version 0.59.0
+
+A lightweight, ultra-fast tool for building observability pipelines
+
+Quickstart
+
+Vector Remap Language
+
+Components
+
+Take control of your observability data
+
+Collect, transform, and route all your logs and metrics with one simple tool.
+
+Why Vector?
+
+Ultra fast and reliable
+Built in Rust, Vector is blistering fast, memory efficient, and designed to handle the most demanding workloads.
+
+End to end
+Vector strives to be the only tool you need to get observability data from A to B, deploying as a daemon, sidecar, or aggregator.
+
+Unified
+Vector supports logs and metrics, making it easy to collect and process all your observability data.
+
+Vendor neutral
+Vector doesn’t favor any specific vendor platforms and fosters a fair, open ecosystem with your best interests in mind. Lock-in free and future proof.
+
+Programmable transforms
+Vector’s highly configurable transforms give you the full power of programmable runtimes. Handle complex use cases without limitation.
+
+Clear guarantees
+Guarantees matter, and Vector is clear on which guarantees it provides, helping you make the appropriate trade-offs for your use case.
+
+A complete, end-to-end platform.
+
+Deploy Vector in a variety of roles to suit your use case.
+Get data from point A to point B without patching tools together.
+
+Distributed
+
+Centralized
+
+Stream based
+
+Learn more about the distributed deployment topology for Vector
+
+Learn more about the centralized deployment topology for Vector
+
+Learn more about the stream-based deployment topology for Vector
+
+Easy to configure
+
+A simple, composable format enables you to build flexible pipelines
+
+Redacted Datadog Agent logs to Datadog
+
+Kafka topic to Elasticsearch
+
+Kubernetes logs to AWS S3
+
+Splunk HEC to Datadog
+
+/etc/vector/vector.yaml
+
+sources:
+ datadog_agent:
+ type: "datadog_agent"
+ address: "0.0.0.0:80"
+
+transforms:
+ remove_sensitive_user_info:
+ type: "remap"
+ inputs: ["datadog_agent"]
+ source: |
+ redact(., filters: ["us_social_security_number"])
+
+sinks:
+ datadog_backend:
+ type: "datadog_logs"
+ inputs: ["remove_sensitive_user_info"]
+ default_api_key: "${DATADOG_API_KEY}"
+
+sources:
+ kafka_in:
+ type: "kafka"
+ bootstrap_servers: "10.14.22.123:9092,10.14.23.332:9092"
+ group_id: "vector-logs"
+ key_field: "message"
+ topics: ["logs-*"]
+
+transforms:
+ json_parse:
+ type: "remap"
+ inputs: ["kafka_in"]
+ source: |
+ parsed, err = parse_json(.message)
+ if err != null {
+ log(err, level: "error")
+ }
+ . |= object(parsed) ?? {}
+
+sinks:
+ elasticsearch_out:
+ type: "elasticsearch"
+ inputs: ["json_parse"]
+ endpoint: "http://10.24.32.122:9000"
+ index: "logs-via-kafka"
+
+sources:
+ k8s_in:
+ type: "kubernetes_logs"
+
+sinks:
+ aws_s3_out:
+ type: "aws_s3"
+ inputs: ["k8s_in"]
+ bucket: "k8s-logs"
+ region: "us-east-1"
+ compression: "gzip"
+ encoding:
+ codec: "json"
+
+sources:
+ splunk_hec_in:
+ type: "splunk_hec"
+ address: "0.0.0.0:8080"
+ token: "${SPLUNK_HEC_TOKEN}"
+
+sinks:
+ datadog_out:
+ type: "datadog_logs"
+ inputs: ["splunk_hec_in"]
+ default_api_key: "${DATADOG_API_KEY}"
+Configuration examples are in YAML but Vector also supports TOML and JSON
+
+Installs everywhere
+
+Packaged as a single binary. No dependencies, no runtime, and memory safe.
+
+Single binary
+X86_64, ARM64/v7
+No runtime
+Memory safe
+
+Install with a one-liner:
+
+For humans
+For machines
+
+curl --proto '=https' --tlsv1.2 -sSfL https://sh.vector.dev | bash
+
+curl --proto '=https' --tlsv1.2 -sSfL https://sh.vector.dev | bash -s -- -y
+
+Or choose your preferred method:
+
+Platforms
+
+Package managers
+
+Operating systems
+
+Manual
+
+Highly flexible processing topologies
+
+A wide range of sources, transforms, and sinks to choose from
+
+47
+sources
+AMQP
+Apache Metrics
+AWS ECS metrics
+AWS Kinesis Firehose
+AWS S3
+AWS SQS
+Datadog agent
+Demo Logs
+dnstap
+Docker logs
+18
+transforms
+Remap with VRL
+Aggregate
+AWS EC2 metadata
+Dedupe
+Delay
+Exclusive Route
+Filter
+Incremental to Absolute
+Log to metric
+Lua
+61
+sinks
+AMQP
+AppSignal
+AWS Cloudwatch logs
+AWS Cloudwatch metrics
+AWS Kinesis Data Firehose logs
+AWS Kinesis Streams logs
+AWS S3
+AWS SNS
+AWS SQS
+Axiom
+
+Backed by a strong open source community
+
+22k+
+GitHub stars
+800+
+Contributors
+1B+
+Downloads
+40
+Countries
+
+View GitHub repo
+Chat with us on Discord
+
+Sign up to receive emails on the latest Vector content and new releases
+×
+
+Thank you for joining our Updates Newsletter

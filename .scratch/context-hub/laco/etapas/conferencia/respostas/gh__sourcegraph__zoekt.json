@@ -1,0 +1,30 @@
+{
+ "chave": "gh:sourcegraph/zoekt",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T22:00:16Z",
+ "resultado": "confirma",
+ "conferencia": {
+  "resultado": "confirma",
+  "final": {
+   "serve": "search",
+   "role": "Busca por substring e regex com índice de trigramas, voltada a código; API JSON/gRPC",
+   "place": [
+    "disk",
+    "network_service"
+   ],
+   "mechanism": [
+    "grep",
+    "bm25"
+   ],
+   "windows": "unknown",
+   "maturity": "unknown",
+   "evidence": "\"fast substring and regexp matching on source code\"; \"Alternative BM25 scoring (using the UseBM25Scoring option)\"",
+   "mcp": "unknown",
+   "portuguese": "unknown",
+   "license": "unknown",
+   "doubt": false
+  },
+  "o_que_mudou": [],
+  "nota": "Motor de busca textual rápido com opção BM25, feito para código, mas indexa repositórios git/diretórios, serve como referência para busca lexical."
+ }
+}

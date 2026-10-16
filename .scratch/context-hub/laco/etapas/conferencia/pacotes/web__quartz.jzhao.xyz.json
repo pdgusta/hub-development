@@ -1,0 +1,55 @@
+{
+ "chave": "web:quartz.jzhao.xyz",
+ "nomes": [
+  "Quartz"
+ ],
+ "urls": [
+  "https://quartz.jzhao.xyz"
+ ],
+ "readme_cortado": false,
+ "readme": "[Welcome to Quartz 5SearchDark modeLight modeReader mode]\n\nQuartz 5\n\nSearch\n\nExplorer\n\nWelcome to Quartz 5\nSep 20, 20263 min read\n\nQuartz is a fast, batteries-included static-site generator that transforms Markdown content into fully functional websites. Thousands of students, developers, and teachers are already using Quartz to publish personal notes, websites, and digital gardens to the web.\n\n🪴 Get Started\n\nQuartz requires at least Node v22 and npm v10.9.2 to function correctly. Ensure you have these installed on your machine before continuing. See the prerequisites for help installing them.\n\nGitHub users \n\nYou can also use the GitHub template to create your repository in one click, then clone that instead. See Option A in the installation guide.\n\n# 1. Clone the Quartz repository\ngit clone https://github.com/jackyzha0/quartz.git\ncd quartz\n\n# 2. Install dependencies\nnpm i\n\n# 3. Initialize your site (choose a template, set your base URL, import content)\nnpx quartz create\n\n# 4. Install plugins referenced by your chosen template\nnpx quartz plugin install --from-config\n\n# 5. Preview your site locally\nnpx quartz build --serve\n\nYour site is now running at http://localhost:8080. From here:\n\nWrite content in the content/ folder\n\nPush to GitHub with npx quartz sync\n\nDeploy to GitHub Pages, Cloudflare, Netlify, or Vercel\n\nFor the full walkthrough, see the Getting Started guide.\n\nReturning User?\n\nAlready have a Quartz repository and cloning it on a new machine?\n\ngit clone https://github.com/<your-username>/<your-repo>.git\ncd <your-repo>\nnpm ci\nnpx quartz plugin install\nnpx quartz build --serve\n\nTip\n\nIf you hit build errors on a fresh clone, try npx quartz plugin install --latest to refresh plugins to their latest versions. See troubleshooting > Plugins fail to build on a fresh clone for details.\n\n🔧 Features\n\nObsidian compatibility, full-text search, graph view, wikilinks, transclusions, Backlinks, Latex, syntax highlighting, popover previews, Docker Support, internationalization, comments and many more right out of the box\n\nHot-reload on configuration edits and incremental rebuilds for content edits\n\nSimple JSX layouts and page components\n\nRidiculously fast page loads and tiny bundle sizes\n\nFully-customizable parsing, filtering, and page generation through plugins\n\nFor a comprehensive list of features, visit the features page. You can read more about the why behind these features on the philosophy page and a technical overview on the architecture page.\n\n🚧 Troubleshooting + Updating\n\nHaving trouble with Quartz? Try searching for your issue using the search feature or check the troubleshooting page. If you haven’t already, upgrade to the newest version of Quartz to see if this fixes your issue.\n\nIf you’re still having trouble, feel free to submit an issue if you feel you found a bug or ask for help in our Discord Community. You can also browse the community page for third-party plugins and resources.\n\nGraph View\n\nTable of Contents\n🪴 Get Started\nReturning User?\n🔧 Features\n🚧 Troubleshooting + Updating\n\nBacklinks\nGetting Started",
+ "fonte": "site",
+ "respostas": [
+  {
+   "por": "voxtral-small",
+   "resposta": {
+    "serve": "none",
+    "role": "",
+    "place": [
+     "n/a"
+    ],
+    "mechanism": [
+     "n/a"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "unknown",
+    "doubt": true,
+    "evidence": "Quartz is a static-site generator for Markdown content, unrelated to search layer or hub stack."
+   }
+  },
+  {
+   "por": "diffusiongemma-26b-a4b-it",
+   "resposta": {
+    "serve": "stack",
+    "role": "Static site generator to transform Markdown notes into functional websites and digital gardens.",
+    "place": [
+     "disk"
+    ],
+    "mechanism": [
+     "full_text",
+     "graph"
+    ],
+    "mcp": "no",
+    "windows": "yes",
+    "portuguese": "yes",
+    "license": "unknown",
+    "maturity": "stable",
+    "doubt": true,
+    "evidence": "full-text search, graph view; internationalization; Obsidian compatibility"
+   }
+  }
+ ]
+}

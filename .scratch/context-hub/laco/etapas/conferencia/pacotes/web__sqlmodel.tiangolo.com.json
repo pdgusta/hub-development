@@ -1,0 +1,54 @@
+{
+ "chave": "web:sqlmodel.tiangolo.com",
+ "nomes": [
+  "SQLModel"
+ ],
+ "urls": [
+  "https://sqlmodel.tiangolo.com/"
+ ],
+ "readme_cortado": false,
+ "readme": "[SQLModel - SQLModel]\n\nSkip to content\n\n¶\n\n SQLModel, SQL databases in Python, designed for simplicity, compatibility, and robustness.\n\nDocumentation: https://sqlmodel.tiangolo.com\n\nSource Code: https://github.com/fastapi/sqlmodel\n\nSQLModel is a library for interacting with SQL databases from Python code, with Python objects. It is designed to be intuitive, easy to use, highly compatible, and robust.\n\nSQLModel is based on Python type annotations, and powered by Pydantic and SQLAlchemy.\n\nThe key features are:\n\nIntuitive to write: Great editor support. Completion everywhere. Less time debugging. Designed to be easy to use and learn. Less time reading docs.\n\nEasy to use: It has sensible defaults and does a lot of work underneath to simplify the code you write.\n\nCompatible: It is designed to be compatible with FastAPI, Pydantic, and SQLAlchemy.\n\nExtensible: You have all the power of SQLAlchemy and Pydantic underneath.\n\nShort: Minimize code duplication. A single type annotation does a lot of work. No need to duplicate models in SQLAlchemy and Pydantic.\n\nSponsors¶\n\nSQL Databases in FastAPI¶\n\nSQLModel is designed to simplify interacting with SQL databases in FastAPI applications, it was created by the same author. 😁\n\nIt combines SQLAlchemy and Pydantic and tries to simplify the code you write as much as possible, allowing you to reduce the code duplication to a minimum, but while getting the best developer experience possible.\n\nSQLModel is, in fact, a thin layer on top of Pydantic and SQLAlchemy, carefully designed to be compatible with both.\n\nRequirements¶\n\nA recent and currently supported version of Python.\n\nAs SQLModel is based on Pydantic and SQLAlchemy, it requires them. They will be automatically installed when you install SQLModel.\n\nInstallation¶\n\nFirst, install uv, and then add SQLModel to your project:\n\n$ uv add sqlmodel\n---> 100%\n\nIf you prefer to use pip, install sqlmodel inside a virtual environment. See the installation guide for the alternative steps.\n\nExample¶\n\nFor an introduction to databases, SQL, and everything else, see the SQLModel documentation.\n\nHere's a quick example. ✨\n\nA SQL Table¶\n\nImagine you have a SQL table called hero with:\n\nid\n\nname\n\nsecret_name\n\nage\n\nAnd you want it to have this data:\n\nid\nname\nsecret_name\nage\n\n1\nDeadpond\nDive Wilson\nnull\n\n2\nSpider-Boy\nPedro Parqueador\nnull\n\n3\nRusty-Man\nTommy Sharp\n48\n\nCreate a SQLModel Model¶\n\nThen you could create a SQLModel model like this:\n\nfrom sqlmodel import Field, SQLModel\n\nclass Hero(SQLModel, table=True):\n id: int | None = Field(default=None, primary_key=True)\n name: str\n secret_name: str\n age: int | None = None\n\nThat class Hero is a SQLModel model, the equivalent of a SQL table in Python code.\n\nAnd each of those class attributes is equivalent to each table column.\n\nCreate Rows¶\n\nThen you could create each row of the table as an instance of the model:\n\nhero_1 = Hero(name=\"Deadpond\", secret_name=\"Dive Wilson\")\nhero_2 = Hero(name=\"Spider-Boy\", secret_name=\"Pedro Parqueador\")\nhero_3 = Hero(name=\"Rusty-Man\", secret_name=\"Tommy Sharp\", age=48)\n\nThis way, you can use conventional Python code with classes and instances that represent tables and rows, and that way communicate with the SQL database.\n\nEditor Support¶\n\nEverything is designed for you to get the best developer experience possible, with the best editor support.\n\nIncluding autocompletion:\n\nAnd inline errors:\n\nWrite to the Database¶\n\nYou can learn a lot more about SQLModel by quickly following the tutorial, but if you need a taste right now of how to put all that together and save to the database, you can do this:\n\nfrom sqlmodel import Field, Session, SQLModel, create_engine\n\nclass Hero(SQLModel, table=True):\n id: int | None = Field(default=None, primary_key=True)\n name: str\n secret_name: str\n age: int | None = None\n\nhero_1 = Hero(name=\"Deadpond\", secret_name=\"Dive Wilson\")\nhero_2 = Hero(name=\"Spider-Boy\", secret_name=\"Pedro Parqueador\")\nhero_3 = Hero(name=\"Rusty-Man\", secret_name=\"Tommy Sharp\", age=48)\n\nengine = create_engine(\"sqlite:///database.db\")\n\nSQLModel.metadata.create_all(engine)\n\nwith Session(engine) as session:\n session.add(hero_1)\n session.add(hero_2)\n session.add(hero_3)\n session.commit()\n\nThat will save a SQLite database with the 3 heroes.\n\nSelect from the Database¶\n\nThen you could write queries to select from that same database, for example with:\n\nfrom sqlmodel import Field, Session, SQLModel, create_engine, select\n\nclass Hero(SQLModel, table=True):\n id: int | None = Field(default=None, primary_key=True)\n name: str\n secret_name: str\n age: int | None = None\n\nengine = create_engine(\"sqlite:///database.db\")\n\nwith Session(engine) as session:\n statement = select(Hero).where(Hero.name == \"Spider-Boy\")\n hero = session.exec(statement).first()\n print(hero)\n\nEditor Support Everywhere¶\n\nSQLModel was carefully designed to give you the best developer experience and editor support, even after selecting data from the database:\n\nSQLAlchemy and Pydantic¶\n\nThat class Hero is a SQLModel model.\n\nBut at the same time, ✨ it is a SQLAlchemy model ✨. So, you can combine it and use it with other SQLAlchemy models, or you could easily migrate applications with SQLAlchemy to SQLModel.\n\nAnd at the same time, ✨ it is also a Pydantic model ✨. You can use inheritance with it to define all your data models while avoiding code duplication. That makes it very easy to use with FastAPI.\n\nLicense¶\n\nThis project is licensed under the terms of the MIT license.\n\n Back to top",
+ "fonte": "site",
+ "respostas": [
+  {
+   "por": "diffusiongemma-26b-a4b-it",
+   "resposta": {
+    "serve": "stack",
+    "role": "Python library for interacting with SQL databases using Pydantic and SQLAlchemy models.",
+    "place": [
+     "library"
+    ],
+    "mechanism": [
+     "other"
+    ],
+    "mcp": "no",
+    "windows": "yes",
+    "portuguese": "no",
+    "license": "MIT",
+    "maturity": "stable",
+    "doubt": false,
+    "evidence": "SQLModel is a library for interacting with SQL databases from Python code... This project is licensed under the terms of the MIT license."
+   }
+  },
+  {
+   "por": "codestral-2508",
+   "resposta": {
+    "serve": "none",
+    "role": "",
+    "place": [
+     "n/a"
+    ],
+    "mechanism": [
+     "n/a"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "MIT",
+    "maturity": "unknown",
+    "doubt": true,
+    "evidence": "SQLModel is a library for SQL databases in Python, not related to search, MCP, or Windows."
+   }
+  }
+ ]
+}

@@ -1,0 +1,24 @@
+{"n": 5, "pergunta": "Por que o contrato do hub, o AGENTS.md, é replicado em cada harness sem a necessidade de intervenção do Gustavo?", "tipo": "por-que"}
+{"n": 15, "pergunta": "Onde fica registrado o log de erro quando o sincronizador descarta um arquivo binário dentro de uma pasta de operações?", "tipo": "onde-vive"}
+{"n": 25, "pergunta": "Se o Gustavo cola um arquivo binário de 250 MiB na pasta da iniciativa STRATA no disco, quem é responsável por avisar que ele foi descartado da replicação e não viajou para o outro par?", "tipo": "responsavel"}
+{"n": 35, "pergunta": "Qual é o comportamento do sistema se um arquivo binário for descartado pelo processo de checagem?", "tipo": "diferenca"}
+{"n": 45, "pergunta": "Quem lê as instruções do contrato do hub?", "tipo": "quem-usa"}
+{"n": 55, "pergunta": "Se o **GitHub privado** falha em fazer a cópia de segurança diária do **banco**, como o **vigia** ou outro mecanismo alerta o Gustavo sobre isso, e qual é o impacto se essa falha persistir por mais de um dia?", "tipo": "relacao"}
+{"n": 65, "pergunta": "Se o MCP do banco rejeitar uma gravação por conflito de versão, onde a versão conflitante fica armazenada até ser resolvida?", "tipo": "se-x"}
+{"n": 75, "pergunta": "Se um cliente usar o hub via MCP, ele consegue enxergar arquivos da pasta não replicada que o Gustavo queria manter escondidos?", "tipo": "falha"}
+{"n": 85, "pergunta": "Uma colisão real de versões faz parte do grupo de problemas que eu, como maestro, consigo resolver sozinho sem a tela de três vias do Gustavo?", "tipo": "grupo"}
+{"n": 95, "pergunta": "Se um arquivo da pasta não replicada de um par for acessado pela outra máquina, como o sistema avisa que aquele dado não está sincronizado?", "tipo": "ordem"}
+{"n": 105, "pergunta": "Se o cliente for conectado via MCP, ele pode criar novos arquivos na raiz ou apenas ler?", "tipo": "grupo"}
+{"n": 115, "pergunta": "Quando o agente tenta editar um arquivo que já está sendo editado por outro agente na outra máquina, o que acontece?", "tipo": "quando"}
+{"n": 125, "pergunta": "Se a Tela de três vias for aberta por Gustavo, onde fica a informação de cada versão?", "tipo": "se-x"}
+{"n": 135, "pergunta": "Qual a relação entre o MCP do banco e a integridade dos dados quando um agente tenta gravar um arquivo enquanto a outra máquina está realizando uma sincronização pesada?", "tipo": "relacao"}
+{"n": 145, "pergunta": "O que o **Vigia** não faz se o **Maestri** está rodando e uma colisão aparece, mas o Gustavo não tem o Obsidian aberto para resolver?", "tipo": "o-que-nao-faz"}
+{"n": 155, "pergunta": "Se o sincronizador de linha de comando travar em uma tarefa agendada, como o Vigia notifica o Gustavo sobre o sync travado?", "tipo": "quem-usa"}
+{"n": 165, "pergunta": "Se o outro par iniciar uma sessão no Contrato do hub enquanto a conexão Tailscale está caida, o que acontece com as instruções que o agente tenta acessar?", "tipo": "quem-usa"}
+{"n": 175, "pergunta": "Quando o **banco** (CouchDB) em uma máquina trava ou fica indisponível por mais de 5 minutos, como o **maestro do Maestri** que está usando essa máquina consegue acessar as informações necessárias para continuar trabalhando?", "tipo": "quando"}
+{"n": 185, "pergunta": "Se o **Gustavo** editar um arquivo `.md` no Obsidian enquanto um **agente de código** está lendo-o (sem bloqueio), quem é responsável por garantir que o agente receba a versão atualizada sem conflitos ocultos?", "tipo": "responsavel"}
+{"n": 195, "pergunta": "Se o GitHub privado for clonado por uma terceira parte (por exemplo, um ataque ao histórico de commits), como o hub garante que as versões antigas de arquivos da iniciativa VOEGOL não contenham metadados ou anotações que possam revelar informações confidenciais não presentes nas versões atuais?", "tipo": "se-x"}
+{"n": 205, "pergunta": "Se uma equipe de recrutas precisar usar uma peça pronta do acervo do maestro, o que o maestro deve fazer?", "tipo": "se-x"}
+{"n": 215, "pergunta": "Se um cliente acessar o context hub através de um par ligado, como o sistema garante que ele só veja os arquivos da iniciativa dele?", "tipo": "ordem"}
+{"n": 225, "pergunta": "Se eu acessar o hub por um cliente e tentar gravar uma nota em uma pasta que não existe mais (por exemplo, movida para `_archive/`), o que acontece?", "tipo": "relacao"}
+{"n": 235, "pergunta": "Por que a **camada de busca** (ainda em escolha entre ferramentas) não prioriza a busca por *embeddings* em arquivos não replicados (pasta não replicada), mesmo que eles sejam acessíveis via SSH, se o objetivo é centralizar o contexto?", "tipo": "por-que"}

@@ -1,0 +1,56 @@
+{
+ "chave": "web:marshmallow.readthedocs.io",
+ "nomes": [
+  "Marshmallow",
+  "marshmallow"
+ ],
+ "urls": [
+  "https://marshmallow.readthedocs.io/",
+  "https://marshmallow.readthedocs.io/en/stable/"
+ ],
+ "readme_cortado": false,
+ "readme": "[marshmallow 4.3.1 documentationContentsMenuExpandLight modeDark modeAuto light/dark, in light modeAuto light/dark, in dark mode]\n\nSkip to content\n\nHome\n\nUsage guide\n\nInstallation\n\nQuickstart\n\nNesting schemas\n\nCustom fields\n\nExtending schemas\n\nPre-processing and post-processing\n\nSchema-level validation\n\nUsing original input data\n\nOverriding how attributes are accessed\n\nCustom error handling\n\nCustom class Meta options\n\nCustom error messages\n\nExamples\n\nValidating package.json\n\nQuotes API (Flask + SQLAlchemy)\n\nInflection (camel-cased keys)\n\nAPI reference\n\nTop-level API\n\nSchema\n\nFields\n\nDecorators\n\nValidators\n\nUtility functions\n\nContext (experimental)\n\nExceptions\n\nPrivate API\n\nTypes\n\nClass registry\n\nError store\n\nProject info\n\nWhy marshmallow?\n\nChangelog\n\nUpgrading to newer releases\n\nWho’s using marshmallow?\n\nLicense\n\nAuthors\n\nContributing\n\nCode of Conduct\n\nKudos\n\nDonate\n\nUseful links\n\nmarshmallow @ PyPI\n\nmarshmallow @ GitHub\n\nIssue Tracker\n\nEcosystem\n\n Back to top\n\n View this page\n\n Edit this page\n\nmarshmallow¶\n\nObject serialization and deserialization, lightweight and fluffy.\n\nRelease v4.3.1. (Changelog)\n\nmarshmallow is an ORM/ODM/framework-agnostic library for converting complex datatypes, such as objects, to and from native Python datatypes.\n\nfrom datetime import date\nfrom pprint import pprint\n\nfrom marshmallow import Schema, fields\n\nclass ArtistSchema(Schema):\n name = fields.Str()\n\nclass AlbumSchema(Schema):\n title = fields.Str()\n release_date = fields.Date()\n artist = fields.Nested(ArtistSchema())\n\nbowie = dict(name=\"David Bowie\")\nalbum = dict(artist=bowie, title=\"Hunky Dory\", release_date=date(1971, 12, 17))\n\nschema = AlbumSchema()\nresult = schema.dump(album)\npprint(result, indent=2)\n# { 'artist': {'name': 'David Bowie'},\n# 'release_date': '1971-12-17',\n# 'title': 'Hunky Dory'}\n\nIn short, marshmallow schemas can be used to:\n\nValidate input data.\n\nDeserialize input data to app-level objects.\n\nSerialize app-level objects to primitive Python types. The serialized objects can then be rendered to standard formats such as JSON for use in an HTTP API.\n\nGet it now¶\n\n$ pip install -U marshmallow\n\nReady to get started? Go on to the Quickstart or check out some examples.\n\nUpgrading from an older version?¶\n\nSee the Upgrading to newer releases page for notes on getting your code up-to-date with the latest version.\n\nWhy another library?¶\n\nSee this document to learn about what makes marshmallow unique.\n\nSponsors¶\n\nmarshmallow is sponsored by Route4Me.\n\nSupport this project by becoming a sponsor (or ask your company to support this project by becoming a sponsor).\nYour logo will be displayed here with a link to your website. [Become a sponsor]\n\nUsage guide¶\n\nUsage guide\n\nInstallation\n\nInstalling/upgrading from the PyPI\n\nGet the bleeding edge version\n\nQuickstart\n\nDeclaring schemas\n\nSerializing objects (“dumping”)\n\nFiltering output\n\nDeserializing objects (“loading”)\n\nHandling collections of objects\n\nValidation\n\nRequired fields\n\nPartial loading\n\nSpecifying defaults\n\nHandling unknown fields\n\nValidation without deserialization\n\n“Read-only” and “write-only” fields\n\nSpecifying serialization/deserialization keys\n\nNext steps\n\nNesting schemas\n\nSpecifying which fields to nest\n\nPartial loading\n\nTwo-way nesting\n\nNesting a schema within itself\n\nNext steps\n\nCustom fields\n\nCreating a field class\n\nMethod fields\n\nFunction fields\n\nMethod and Function field deserialization\n\nUsing context\n\nCustomizing error messages\n\nNext steps\n\nExtending schemas\n\nPre-processing and post-processing\n\nSchema-level validation\n\nUsing original input data\n\nOverriding how attributes are accessed\n\nCustom error handling\n\nCustom class Meta options\n\nCustom error messages\n\nExamples\n\nValidating package.json\n\nQuotes API (Flask + SQLAlchemy)\n\nInflection (camel-cased keys)\n\nAPI reference¶\n\nAPI reference\n\nTop-level API\n\nSchema\n\nFields\n\nDecorators\n\nValidators\n\nUtility functions\n\nContext (experimental)\n\nExceptions\n\nPrivate API\n\nProject info¶\n\nProject info\n\nWhy marshmallow?\n\nChangelog\n\nUpgrading to newer releases\n\nWho’s using marshmallow?\n\nLicense\n\nAuthors\n\nContributing\n\nCode of Conduct\n\nKudos\n\nDonate\n\n On this page\n\nmarshmallow\n\nGet it now\n\nUpgrading from an older version?\n\nWhy another library?\n\nSponsors\n\nUsage guide\n\nAPI reference\n\nProject info",
+ "fonte": "site",
+ "respostas": [
+  {
+   "por": "codestral-2508",
+   "resposta": {
+    "serve": "none",
+    "role": "",
+    "place": [
+     "n/a"
+    ],
+    "mechanism": [
+     "n/a"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "unknown",
+    "doubt": true,
+    "evidence": "Marshmallow is an ORM/ODM-agnostic library for serializing/deserializing data; no mention of search, MCP, or Windows."
+   }
+  },
+  {
+   "por": "diffusiongemma-26b-a4b-it",
+   "resposta": {
+    "serve": "stack",
+    "role": "Object serialization, deserialization, and data validation for complex datatypes.",
+    "place": [
+     "library"
+    ],
+    "mechanism": [
+     "other"
+    ],
+    "mcp": "no",
+    "windows": "yes",
+    "portuguese": "no",
+    "license": "unknown",
+    "maturity": "stable",
+    "doubt": true,
+    "evidence": "library for converting complex datatypes, such as objects, to and from native Python datatypes."
+   }
+  }
+ ]
+}

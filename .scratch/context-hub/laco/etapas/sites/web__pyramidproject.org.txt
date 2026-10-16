@@ -1,0 +1,348 @@
+Pyramid
+
+ The Start Small,
+ Finish Big 
+
+ Stay Finished Framework
+
+ Projects with ambition
+ start small
+ but
+ finish big
+ and must
+ stay finished. 
+
+ You need a Python web framework that
+ supports your decisions, 
+
+ by artisans for artisans.
+
+Quick Start
+
+ from wsgiref.simple_server import make_server
+from pyramid.config import Configurator
+from pyramid.response import Response
+
+def hello_world(request):
+ return Response('Hello World!')
+
+if __name__ == '__main__':
+ with Configurator() as config:
+ config.add_route('hello', '/')
+ config.add_view(hello_world, route_name='hello')
+ app = config.make_wsgi_app()
+ server = make_server('0.0.0.0', 6543, app)
+ server.serve_forever()
+
+Pyramid makes it easy to write web applications. You can
+ start small with this "hello world" minimal
+ request/response web app. This may take you far, especially while
+ learning. As your application grows, Pyramid offers many features
+ that make writing complex software take less effort.
+
+Pyramid works in all supported versions of Python. Our
+ installation
+ instructions
+ will help you get Pyramid up and running.
+
+Pyramid's
+ quick
+ tutorial
+ will take you step by step through writing a single file
+ application, forms, database integration, and authentication.
+
+Developers may dive in to Pyramid's
+ narrative
+ documentation,
+ or browse the extensive
+ API reference.
+ Pyramid has a rich pool of helpful resources
+ from which to draw. Extending Pyramid
+ is a curated and filterable list of add-ons, packages, and applications
+ built to work with Pyramid.
+
+ When You Need Pyramid
+
+Megaframeworks make decisions for you. But if you don't fit their viewpoint, you end up
+ fighting their decisions. Microframeworks force no decisions, making it easy to start. But
+ as your application grows, you're on your own.
+
+In both cases, the focus is on the start: either too much or too little. Either way,
+ finishing and staying finished is hard. You need a finishing-focused framework with an
+ architectural design that scales down to getting started, then up as your application grows.
+
+Pyramid was made for just this. It's a Goldilocks Solution: not too small, not too big,
+ just right.
+
+Pyramid The Start Small, Finish Big, Stay
+ Finished Framework.
+
+ Start Small
+
+Getting started quickly and simply is a key attraction of lightweight frameworks. Equally, you get to
+ choose what approaches to use for templating, database, security, and more, or use a convenient starting
+ point with a scaffold. Pyramid excels at scaling down to the first hour of learning, while avoiding the
+ pitfalls of framework magic.
+
+Start as a single-file module with little first-hour complexity
+
+Use a convenient scaffold to generate a sample project with your combination of
+ subsystems
+
+Choose from a variety of templating, database, security solutions and more using the
+ quality and convenience of Pyramid's add-on system
+
+Tap into a variety of high-quality documentation for evaluating, trying out, or doing
+ advanced development with Pyramid
+
+Ask the growing Pyramid community for tips and successes
+
+ Finish Big
+
+Ambitious projects aspire to grow big without losing their dignity. Pyramid is uniquely equipped to scale
+ with you. Its configuration, extension, and add-on system gives the skeleton to support your ambitions, and
+ its architecture ensures that you don't lose those performance and quality features you started with.
+
+Include and configure Pyramid add-ons inside your application
+
+Override and customize core code and add-ons from the outside, without forking
+
+Build and deliver re-usable subsystems inside and outside our organization
+
+Less magic by forgoing globals and import side-effects
+
+Use the configuration system to keep your wiring separate from your code
+
+Numerous extension facilities built into the framework
+
+Use Pyramid as a "framework framework" to craft your own special-purpose,
+ domain-specific web system
+
+Gain insight from our long-standing culture of systems that organically get big
+
+ Stay Finished
+
+Pyramid's simple first hour helps you get started and its extensability helps you finish your ambitions.
+ There's life after shipping. Pyramid helps keep your application finished by understanding the full life
+ cycle of a professional web application.
+
+Deep commitment to API stability and bug fixing over the 120+ software
+ releases
+
+Culture of 100% test and documentation coverage makes Pyramid a future-proof choice
+
+Keeping configuration out of code means less forking and side-effects
+
+Long history of repeatable deployments provides a community culture of helpful tips
+
+Top-notch performance even as Pyramid grows
+
+Deep extensibility and large-scale design patterns means you won't
+ outgrow it
+
+Strong following of Python practices (WSGI, packages, virtual environments, first to
+ support Python 3) means you won't be out of the Python mainstream
+
+ Supports Your Decisions
+
+Full-stack frameworks provide built-in value by telling you what to do. But doing something different, or
+ using something better, leads to the dreaded "fighting the framework". Pyramid starts from a very small
+ base, providing many high-quality choices.
+
+Don't waste time fighting the framework's decisions
+
+"Only pay for what you eat" means less magic to live with in production
+
+No bundled templating system but instead, three very high-quality
+ add-ons for Chameleon, Jinja2 and Mako
+
+Several form systems covering most of the common design tastes
+
+Choose your database, with add-on support for
+ SQLAlchemy and others
+
+ By Artisans, For Artisans
+
+The Pyramid team has been doing ambitious Python web frameworks since 1995. We have built small systems and
+ huge systems. From this, we delight in helping others who appreciate quality and dream big.
+
+Craftsmanship with seriousness of
+ purpose and honesty
+
+From the start, a deep
+ commitment to quality
+
+Builders of the first open source application server
+
+Bootstrapper of the PSF and member of its first board
+
+Support letting quality artisans add real value by quickly but durably
+ making specific experiences
+
+Pyramid Features
+
+To demonstrate these features, install Pyramid,
+ click to expand and copy the code sample into a
+ file, run the application with env/bin/python demo.py, and use curl or a browser
+ to request
+ http://0.0.0.0:6543.
+
+ from wsgiref.simple_server import make_server
+from pyramid.config import Configurator
+from pyramid.response import Response
+from pyramid.view import view_config
+
+@view_config(
+ route_name='home'
+)
+def home(request):
+ return Response('Welcome!')
+
+if __name__ == '__main__':
+ with Configurator() as config:
+ config.add_route('home', '/')
+ config.scan()
+ app = config.make_wsgi_app()
+ server = make_server('0.0.0.0', 6543, app)
+ server.serve_forever()
+
+ Function Decorators
+
+Pyramid is written in Python. All the features you know and love
+ in the Python language, such as function decorators, are available
+ to Pyramid developers. Here we show the function named
+ home that returns a response. The function has a
+ decorator @view_config which has a route assigned to
+ it also named home.
+
+ from wsgiref.simple_server import make_server
+from pyramid.config import Configurator
+from pyramid.response import Response
+from pyramid.view import view_config
+
+@view_config(
+ route_name='home',
+ request_method='POST'
+)
+def home(request):
+ return Response('Welcome!')
+
+if __name__ == '__main__':
+ with Configurator() as config:
+ config.add_route('home', '/')
+ config.scan()
+ app = config.make_wsgi_app()
+ server = make_server('0.0.0.0', 6543, app)
+ server.serve_forever()
+
+ Predicates
+
+A test which returns True or False, and
+ which narrows the set of circumstances in which views or routes may
+ be called. Here we use predicates to limit matching of a view
+ callable to a route name of home and to the
+ POST HTTP request method.
+
+ from wsgiref.simple_server import make_server
+from pyramid.config import Configurator
+from pyramid.view import view_config
+
+@view_config(
+ route_name='home',
+ renderer='json'
+)
+def home(request):
+ return {"a": 1, "b": 2}
+
+if __name__ == '__main__':
+ with Configurator() as config:
+ config.add_route('home', '/')
+ config.scan()
+ app = config.make_wsgi_app()
+ server = make_server('0.0.0.0', 6543, app)
+ server.serve_forever()
+
+ Renderers
+
+Convert non-response return values that are later consumed by
+ renderers. Using a renderer can make writing views that require
+ templating or other serialization, like JSON, less
+ tedious.
+
+ """
+1. Run `env/bin/pip install pyramid_jinja2`
+2. Copy this template and put it in `templates/home.jinja2`:
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <title>{{ greet }}, {{ name }}</title>
+</head>
+<body>
+<h1>{{ greet }}, {{ name }}</h1>
+</body>
+</html>
+"""
+from wsgiref.simple_server import make_server
+from pyramid.config import Configurator
+from pyramid.view import view_config
+
+@view_config(
+ route_name='home',
+ renderer='templates/home.jinja2'
+)
+def home(request):
+ return {"greet": 'Welcome', "name": 'Akhenaten'}
+
+if __name__ == '__main__':
+ with Configurator() as config:
+ config.include('pyramid_jinja2')
+ config.add_route('home', '/')
+ config.scan()
+ app = config.make_wsgi_app()
+ server = make_server('0.0.0.0', 6543, app)
+ server.serve_forever()
+
+ Asset Specifications
+
+Allows specifying the location of assets in a package. Here the
+ asset is specified as a Jinja2 template home.jinja2,
+ located in a subdirectory named templates. Within a
+ package myapp, a colon delimits the package name from
+ the location of the asset relative to the package, for example
+ renderer='myapp:templates/home.jinja2'.
+
+ from wsgiref.simple_server import make_server
+from pyramid.config import Configurator
+from pyramid.events import NewRequest
+from pyramid.events import NewResponse
+from pyramid.events import subscriber
+from pyramid.response import Response
+from pyramid.view import view_config
+
+@view_config(
+ route_name='home',
+)
+def home(request):
+ return Response('Welcome!')
+
+@subscriber(NewRequest, NewResponse)
+def mysubscriber(event):
+ print(event)
+
+if __name__ == '__main__':
+ with Configurator() as config:
+ config.add_route('home', '/')
+ config.scan()
+ app = config.make_wsgi_app()
+ server = make_server('0.0.0.0', 6543, app)
+ server.serve_forever()
+
+ Events and Subscribers
+
+An event is an object broadcast at interesting points during the
+ lifetime of an application. A subscriber to an event allows you to
+ run some code, such as resizing an uploaded image, sending email,
+ or sending a message to a remote system. Here the decorated
+ subscriber will be called for more than one event type,
+ specifically for every new request and response objects.

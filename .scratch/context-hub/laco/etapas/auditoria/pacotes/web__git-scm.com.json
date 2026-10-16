@@ -1,0 +1,87 @@
+{
+ "chave": "web:git-scm.com",
+ "nomes": [
+  "Git"
+ ],
+ "urls": [
+  "https://git-scm.com/"
+ ],
+ "readme_cortado": false,
+ "readme": "[Git]\n\nGit is a free and open source\n distributed version control system designed to handle everything from small to\n very large projects with speed and efficiency.\n\n Git is lightning fast and has a huge ecosystem of\n GUIs,\n hosting services, and\n command-line tools.\n\n Pro Git\n by Scott Chacon and Ben Straub is available to\n read online for free.\n Dead tree versions are available on Amazon.com.\n\nLatest source release\n 2.56.0\n Release Notes\n (2026-09-28)\n\n Install\n\n GitHub Repository",
+ "fonte": "site",
+ "respostas": [
+  {
+   "por": "mistral-code",
+   "resposta": {
+    "serve": "stack",
+    "role": "version control for the hub",
+    "place": [
+     "disk",
+     "network_service"
+    ],
+    "mechanism": [
+     "n/a"
+    ],
+    "mcp": "unknown",
+    "windows": "yes",
+    "portuguese": "unknown",
+    "license": "GPL-2.0",
+    "maturity": "stable",
+    "doubt": false,
+    "evidence": "Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency. Git is lightning fast and has a huge ecosystem of GUIs, hosting services, and command-line tools."
+   }
+  },
+  {
+   "por": "dots3-note-preview",
+   "resposta": {
+    "serve": "stack",
+    "role": "Version control for the notes folder",
+    "place": [
+     "disk"
+    ],
+    "mechanism": [
+     "n/a"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "stable",
+    "doubt": false,
+    "evidence": "Git is a free and open source distributed version control system"
+   }
+  }
+ ],
+ "conferencia_sonnet": {
+  "chave": "web:git-scm.com",
+  "modelo": "claude-sonnet-5-5",
+  "ts": "2026-10-13T21:45:06Z",
+  "resultado": "corrige",
+  "conferencia": {
+   "resultado": "corrige",
+   "final": {
+    "serve": "stack",
+    "role": "version control for the notes folder (history/backup)",
+    "place": [
+     "disk"
+    ],
+    "mechanism": [
+     "n/a"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "stable",
+    "doubt": false,
+    "evidence": "Git is a free and open source distributed version control system; latest source release 2.56.0 (2026-09-28)"
+   },
+   "o_que_mudou": [
+    "windows: yes -> unknown, page does not say",
+    "license: GPL-2.0 -> unknown, page only says open source",
+    "place: disk,network_service -> disk"
+   ],
+   "nota": "Controle de versao para backup e historico das notas; peca de apoio da stack."
+  }
+ }
+}

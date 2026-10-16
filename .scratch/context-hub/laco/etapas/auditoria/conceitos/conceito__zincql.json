@@ -1,0 +1,29 @@
+{
+ "chave": "conceito:zincql",
+ "modelo": "claude-opus-5-5",
+ "ts": "2026-10-13T23:35:52Z",
+ "tipo": "conceito",
+ "resultado": "discorda",
+ "auditoria": {
+  "resultado": "discorda",
+  "erro": "place 'library' errado: ZincSearch é servidor (network_service). tools_on_card deveria ser ZincSearch, citado no card; 'ZincDB'/'ZincQL' não são produtos conhecidos, então doubt deveria ser true.",
+  "final": {
+   "concept_en": "sql-like query language",
+   "serve": "search",
+   "role": "SQL-like query language for filters and combined searches in ZincSearch.",
+   "mechanism": [
+    "other"
+   ],
+   "place": [
+    "network_service"
+   ],
+   "tools_on_card": [
+    "ZincSearch"
+   ],
+   "doubt": true,
+   "evidence": "Lenguaje de consulta tipo SQL para ZincDB que permite expresar filtros y combinaciones de búsqueda."
+  },
+  "gravidade": "leve",
+  "nota": "Provável nome inventado; o que existe é a consulta do ZincSearch (servidor leve de texto completo), alternativa a Elasticsearch, sem MCP próprio."
+ }
+}

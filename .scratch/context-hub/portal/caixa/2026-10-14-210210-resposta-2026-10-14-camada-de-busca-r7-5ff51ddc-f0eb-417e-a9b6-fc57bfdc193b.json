@@ -1,0 +1,92 @@
+{
+  "envio": "5ff51ddc-f0eb-417e-a9b6-fc57bfdc193b",
+  "tipo": "resposta",
+  "enviada": "2026-10-14T21:02:10-03:00",
+  "alvo": {
+    "tipo": "rodada",
+    "id": "2026-10-14-camada-de-busca-r7",
+    "titulo": "Onde a busca do hub mora"
+  },
+  "ticket": "09",
+  "substitui": null,
+  "rodada": {
+    "id": "2026-10-14-camada-de-busca-r7",
+    "base": "76adcf1b1fb343416e173a5449bc128a78a60d04745f51ff2bf95951f18c2278",
+    "titulo": "Onde a busca do hub mora",
+    "ticket": "09",
+    "perguntas": [
+      {
+        "id": "onde",
+        "titulo": "Onde a busca mora",
+        "tipo": "escolha",
+        "recomendada": [
+          "A"
+        ],
+        "opcoes": [
+          {
+            "chave": "A",
+            "texto": "Leve com alcance: uma ferramenta pronta no disco de cada máquina, e um proxy de MCP (TBXark/mcp-proxy ou 1MCP) que junta a busca e o MCP do banco num endereço só na tailnet, para os clientes. Cerca de 0,5 a 1 dia além da instalação"
+          },
+          {
+            "chave": "B",
+            "texto": "Robusta: um índice próprio dentro do MCP do banco, em Node (o MCP do es617 é TypeScript), com português léxico (Orama com stemmer `pt`) e vetores (sqlite-vec), alimentado pelas mudanças do CouchDB. Estimativa de 5 a 8 dias, não medida, com um protótipo de 1 dia antes"
+          },
+          {
+            "chave": "C",
+            "texto": "Começar com A e fazer já o protótipo de 1 dia de B, para comparar os dois no mesmo teste antes de fechar"
+          }
+        ],
+        "proposta": null
+      },
+      {
+        "id": "ferramenta",
+        "titulo": "Qual ferramenta pronta, se for A ou C",
+        "tipo": "escolha",
+        "recomendada": [
+          "ohs"
+        ],
+        "opcoes": [
+          {
+            "chave": "ohs",
+            "texto": "obsidian-hybrid-search"
+          },
+          {
+            "chave": "memtomem",
+            "texto": "memtomem"
+          }
+        ],
+        "proposta": null
+      },
+      {
+        "id": "algo-mais",
+        "titulo": "Algo mais?",
+        "tipo": "texto",
+        "recomendada": [],
+        "opcoes": [],
+        "proposta": null
+      }
+    ]
+  },
+  "corpo_hash": "749454071aa5ad39c61d4c6ae2b8420501e472449f1a22c7b03bf23e70aec1c6",
+  "corpo": {
+    "tipo": "resposta",
+    "rodada": "2026-10-14-camada-de-busca-r7",
+    "base": "76adcf1b1fb343416e173a5449bc128a78a60d04745f51ff2bf95951f18c2278",
+    "respostas": {
+      "onde": {
+        "escolha": [
+          "C"
+        ],
+        "outra": null,
+        "comentario": null
+      },
+      "ferramenta": {
+        "escolha": [
+          "ohs"
+        ],
+        "outra": null,
+        "comentario": null
+      }
+    }
+  }
+}

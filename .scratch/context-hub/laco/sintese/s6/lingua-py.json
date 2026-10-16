@@ -1,0 +1,57 @@
+{
+ "nome": "lingua-py",
+ "nome_canonico": "pemistahl/lingua-py",
+ "chave": "gh:pemistahl/lingua-py",
+ "url": "https://github.com/pemistahl/lingua-py",
+ "serve": "stack",
+ "area": "text_pt",
+ "identidade": "ok (pacote PyPI: lingua-language-detector)",
+ "windows": "yes: wheels win_amd64 e win_arm64 no PyPI (2.2.0, cp312-cp314); CI do build roda windows-latest",
+ "mcp": "nao_aplicavel",
+ "portugues": "yes: detecta 75 idiomas, incluindo Portuguese e English; funciona offline depois de instalado",
+ "markdown_frontmatter": "nao_aplicavel",
+ "atualizacao": "nao_aplicavel",
+ "embeddings_endpoint": "nao_aplicavel",
+ "recursos": "Python >=3.12 com extensao nativa Rust; poucas dezenas de MB de memoria em execucao segundo o README; modo de baixa acuracia ~11,8 s para 3000 textos x 75 idiomas, multi-thread",
+ "licenca": "Apache-2.0",
+ "ultimo_release": "2026-03-09, Lingua 2.2.0",
+ "atividade": "ultimo commit 2026-03-09",
+ "maturidade": "stable",
+ "encaixe": "Detecta pt ou en de cada nota antes de indexar, para escolher analisador e stopwords; biblioteca dentro do MCP do banco em cada maquina. Impedimento: acuracia cai em textos curtos e em notas mistas pt/en.",
+ "evidencias": [
+  {
+   "campo": "windows",
+   "url": "https://pypi.org/pypi/lingua-language-detector/json",
+   "citacao": "lingua_language_detector-2.2.0-cp313-cp313-win_amd64.whl"
+  },
+  {
+   "campo": "windows",
+   "url": "https://github.com/pemistahl/lingua-rs/blob/main/.github/workflows/python-build.yml",
+   "citacao": "os: [ ubuntu-latest, macos-latest, windows-latest ]"
+  },
+  {
+   "campo": "portugues",
+   "url": "https://github.com/pemistahl/lingua-py",
+   "citacao": "Once the library has been downloaded, it can be used completely offline."
+  },
+  {
+   "campo": "recursos",
+   "url": "https://github.com/pemistahl/lingua-py",
+   "citacao": "Even when taking all language models into account, the library uses only a few dozen megabytes of memory during runtime."
+  },
+  {
+   "campo": "licenca",
+   "url": "https://github.com/pemistahl/lingua-py",
+   "citacao": "Apache-2.0 license (painel do repositorio)"
+  },
+  {
+   "campo": "ultimo_release",
+   "url": "https://github.com/pemistahl/lingua-py/releases.atom",
+   "citacao": "Lingua 2.2.0, updated 2026-03-09T15:29:28Z"
+  }
+ ],
+ "nao_verificado": [
+  "acuracia em notas mistas pt/en",
+  "tamanho em disco do wheel"
+ ]
+}

@@ -1,0 +1,35 @@
+{
+ "chave": "web:docs.ray.io/en/latest/ray-air/index.html",
+ "urls": [
+  "https://docs.ray.io/en/latest/ray-air/index.html",
+  "https://docs.ray.io/en/latest/air/index.html"
+ ],
+ "tipos": [
+  "tool"
+ ],
+ "termos": [
+  "Ray data processing",
+  "Ray model serving",
+  "Ray AIR",
+  "AI Libraries",
+  "workflow"
+ ],
+ "mencoes": 2,
+ "familias": [
+  "mistral",
+  "nemotron"
+ ],
+ "primeira_onda": 5,
+ "nomes": [
+  "Ray AIR"
+ ],
+ "resumos": [
+  "A library for scalable data processing and model serving, including search indexing.",
+  "Fornece componentes prontos para ingestão, treinamento e serving de modelos de busca."
+ ],
+ "fonte": "site",
+ "readme_status": "ok",
+ "readme_nome": "https://docs.ray.io/en/latest/ray-air/index.html",
+ "readme_cortado": false,
+ "readme": "[Ray for ML Infrastructure — Ray 2.59.0]\n\nSkip to main content\n\n Back to top\n\nTry Ray with $100 credit — Start now×\nRay 2.59 enables token authentication by default for local clusters, and Ray 2.61 extends it to all clusters. Read the rollout details×\n\nSystem Settings\n\nLight\n\nDark\n\n Choose version \n\n Try Managed Ray\n\nRay for ML Infrastructure#\n\nTip\n\nWe’d love to hear from you if you are using Ray to build an ML platform! Fill out this short form to get involved.\n\nRay and its AI libraries provide a unified compute runtime for teams looking to simplify their ML platform.\nRay’s libraries such as Ray Train, Ray Data, and Ray Serve can be used to compose end-to-end ML workflows, providing features and APIs for\ndata preprocessing as part of training, and transitioning from training to serving.\n\nWhy Ray for ML Infrastructure?#\n\nRay’s AI libraries simplify the ecosystem of machine learning frameworks, platforms, and tools, by providing a seamless, unified, and open experience for scalable ML:\n\n1. Seamless Dev to Prod: Ray’s AI libraries reduce friction going from development to production. With Ray and its libraries, the same Python code scales seamlessly from a laptop to a large cluster.\n\n2. Unified ML API and Runtime: Ray’s APIs enable swapping between popular frameworks, such as XGBoost, PyTorch, and Hugging Face, with minimal code changes. Everything from training to serving runs on a single runtime (Ray + KubeRay).\n\n3. Open and Extensible: Ray is fully open-source and can run on any cluster, cloud, or Kubernetes. Build custom components and integrations on top of scalable developer APIs.\n\nExample ML Platforms built on Ray#\n\nMerlin is Shopify’s ML platform built on Ray. It enables fast-iteration and scaling of distributed applications such as product categorization and recommendations.\n\nShopify’s Merlin architecture built on Ray.#\n\nSpotify uses Ray for advanced applications that include personalizing content recommendations for home podcasts, and personalizing Spotify Radio track sequencing.\n\nHow Ray ecosystem empowers ML scientists and engineers at Spotify.#\n\nThe following highlights feature companies leveraging Ray’s unified API to build simpler, more flexible ML platforms.\n\n[Blog] The Magic of Merlin - Shopify’s New ML Platform\n\n[Slides] Large Scale Deep Learning Training and Tuning with Ray\n\n[Blog] Griffin: How Instacart’s ML Platform Tripled in a year\n\n[Talk] Predibase - A low-code deep learning platform built for scale\n\n[Blog] Building a ML Platform with Kubeflow and Ray on GKE\n\n[Talk] Ray Summit Panel - ML Platform on Ray\n\nDeploying Ray for ML platforms#\n\nThis page describes how you might use or deploy Ray in your infrastructure. There are two main deployment patterns – pick and choose, and within existing platforms.\n\nThe core idea is that Ray can be complementary to your existing infrastructure and integration tools.\n\nDesign Principles#\n\nRay and its libraries handle the heavyweight compute aspects of AI apps and services.\n\nRay relies on external integrations (e.g., Tecton, MLFlow, W&B) for Storage and Tracking.\n\nWorkflow Orchestrators (e.g., AirFlow) are an optional component that can be used for scheduling recurring jobs, launching new Ray clusters for jobs, and running non-Ray compute steps.\n\nLightweight orchestration of task graphs within a single Ray app can be handled using Ray tasks.\n\nRay libraries can be used independently, within an existing ML platform, or to build a Ray-native ML platform.\n\nPick and choose your own libraries#\n\nYou can pick and choose which Ray AI libraries you want to use.\n\nThis is applicable if you are an ML engineer who wants to independently use a Ray library for a specific AI app or service use case and do not need to integrate with existing ML platforms.\n\nFor example, Alice wants to use RLlib to train models for her work project. Bob wants to use Ray Serve to deploy his model pipeline. In both cases, Alice and Bob can leverage these libraries independently without any coordination.\n\nThis scenario describes most usages of Ray libraries today.\n\nIn the above diagram:\n\nOnly one library is used – showing that you can pick and choose and do not need to replace all of your ML infrastructure to use Ray.\n\nYou can use one of Ray’s many deployment modes to launch and manage Ray clusters and Ray applications.\n\nRay AI libraries can read data from external storage systems such as Amazon S3 / Google Cloud Storage, as well as store results there.\n\nExisting ML Platform integration#\n\nYou may already have an existing machine learning platform but want to use some subset of Ray’s ML libraries. For example, an ML engineer wants to use Ray within the ML Platform their organization has purchased (e.g., SageMaker, Vertex).\n\nRay can complement existing machine learning platforms by integrating with existing pipeline/workflow orchestrators, storage, and tracking services, without requiring a replacement of your entire ML platform.\n\nIn the above diagram:\n\nA workflow orchestrator such as AirFlow, Oozie, SageMaker Pipelines, etc. is responsible for scheduling and creating Ray clusters and running Ray apps and services. The Ray application may be part of a larger orchestrated workflow (e.g., Spark ETL, then Training on Ray).\n\nLightweight orchestration of task graphs can be handled entirely within Ray. External workflow orchestrators will integrate nicely but are only needed if running non-Ray steps.\n\nRay clusters can also be created for interactive use (e.g., Jupyter notebooks, Google Colab, Databricks Notebooks, etc.).\n\nRay Train, Data, and Serve provide integration with Feature Stores like Feast for Training and Serving.\n\nRay Train and Tune provide integration with tracking services such as MLFlow and Weights & Biases.\n\n On this page\n\n Edit\n on GitHub"
+}

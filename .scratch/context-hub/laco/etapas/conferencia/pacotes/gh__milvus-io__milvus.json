@@ -1,0 +1,87 @@
+{
+ "chave": "gh:milvus-io/milvus",
+ "nomes": [
+  "Milvus",
+  "Milvus (LightningDB 或 Standalone)",
+  "Milvus（本地版）",
+  "Milvus (Local Mode)",
+  "Milvus (с локальным режимом)",
+  "Milvus (mit `annoy`-Backend)",
+  "Zilliz Cloud / Milvus",
+  "Milvus（或 Weaviate）",
+  "Milvus (core vector database)",
+  "Milvus (com extensões para BM25)",
+  "Milvus Lite",
+  "Milvus (biblioteca de vectores con soporte para BM25 en versiones recientes)"
+ ],
+ "urls": [
+  "https://github.com/milvus-io/milvus",
+  "https://milvus.io/",
+  "https://milvus.io",
+  "https://milvus.ai/",
+  "https://milvus.io/docs/offline_mode.md",
+  "https://www.milvus.io",
+  "https://milvus.io/docs/indexes.md",
+  "https://www.milvus.io/",
+  "https://milvus.io/docs/index.html",
+  "https://milvus.io/io/",
+  "https://milvus.ai",
+  "https://zilliz.com/cloud",
+  "https://milvus.com/",
+  "https://milvus.dev/",
+  "https://github.com/milvusdb/milvus",
+  "https://github.com/zilliztech/Milvus"
+ ],
+ "readme_cortado": true,
+ "readme": "<img src=\"https://github.com/user-attachments/assets/51e33300-7f85-43ff-a05a-3a0317a961f3\" alt=\"milvus banner\">\n\n<div class=\"column\" align=\"middle\">\n  <a href=\"https://github.com/milvus-io/milvus/blob/master/LICENSE\"><img height=\"20\" src=\"https://img.shields.io/github/license/milvus-io/milvus\" alt=\"license\"/></a>\n  <a href=\"https://milvus.io/docs/install_standalone-docker.md\"><img src=\"https://img.shields.io/docker/pulls/milvusdb/milvus\" alt=\"docker-pull-count\"/></a>\n  <a href=\"https://milvus.io/docs/roadmap.md\"><img src=\"https://img.shields.io/badge/2025-roadmap-orange\" alt=\"fully-managed-milvus\"/></a>\n  <a href=\"https://cloud.zilliz.com/signup?utm_source=partner&utm_medium=referral&utm_campaign=2024-11-04_web_github-readme_global\"><img src=\"https://img.shields.io/badge/fully_managed-milvus-blue\" alt=\"fully-managed-milvus\"/></a>\n  <a href=\"https://milvus.io/docs/tutorials-overview.md\"><img src=\"https://img.shields.io/badge/tutorials-green\" alt=\"tutorials\"/></a>\n  <a href=\"https://milvus.io/slack\"><img src=\"https://img.shields.io/badge/Slack-%234A154B.svg?style=flat&logo=slack&logoColor=white\" alt=\"slack\"/></a>\n  <a href=\"https://discord.gg/mKc3R95yE5\"><img height=\"20\" src=\"https://img.shields.io/badge/Discord-%235865F2.svg?style=for-the-badge&logo=discord&logoColor=white\" alt=\"discord\"/></a>\n  <a href=\"https://x.com/milvusio\"><img src=\"https://img.shields.io/twitter/follow/milvusio\" alt=\"twitter\"/></a>\n</div>\n\n<div align=\"center\">\n<a href=\"https://trendshift.io/repositories/1026\" target=\"_blank\"><img src=\"https://trendshift.io/api/badge/repositories/1026\" alt=\"milvus-io%2Fmilvus | Trendshift\" style=\"width: 250px; height: 55px;\" width=\"250\" height=\"55\"/></a>\n</div>\n\n## What is Milvus?\n\n🐦 [Milvus](https://milvus.io/) is a high-performance vector database built for scale. It powers AI applications by efficiently organizing and searching vast amounts of unstructured data, such as text, images, and multi-modal information.\n\n🧑‍💻 Written in Go and C++, Milvus implements hardware acceleration for CPU/GPU to achieve best-in-class vector search performance. Thanks to its [fully-distributed and K8s-native architecture](https://milvus.io/docs/overview.md#What-Makes-Milvus-so-Scalable), Milvus can scale horizontally, handle tens of thousands of search queries on billions of vectors, and keep data fresh with real-time streaming updates. Milvus also supports [Standalone mode](https://milvus.io/docs/install_standalone-docker.md) for single machine deployment. [Milvus Lite](https://milvus.io/docs/milvus_lite.md) is a lightweight version good for quickstart in python with `pip install`.\n\nWant to use Milvus with zero setup? Try out [Zilliz Cloud ☁️](https://cloud.zilliz.com/signup?utm_source=partner&utm_medium=referral&utm_campaign=2024-11-04_web_github-readme_global) for free. Milvus is available as a fully managed service on Zilliz Cloud, with [Serverless](https://zilliz.com/serverless?utm_source=partner&utm_medium=referral&utm_campaign=2024-11-04_web_github-readme_global), [Dedicated](https://zilliz.com/cloud?utm_source=partner&utm_medium=referral&utm_campaign=2024-11-04_web_github-readme_global) and [BYOC](https://zilliz.com/bring-your-own-cloud?utm_source=partner&utm_medium=referral&utm_campaign=2024-11-04_web_github-readme_global) options available.\n\nFor questions about how to use Milvus, join the community on [Discord](https://discord.gg/33mfvwep3J) to get help. For reporting problems, file bugs and feature requests in GitHub [Issues](https://github.com/milvus-io/milvus/issues) or ask in [Discussions](https://github.com/milvus-io/milvus/discussions).\n\nThe Milvus open-source project is\nunder [LF AI & Data Foundation](https://lfaidata.foundation/projects/milvus/), distributed with [Apache 2.0](https://github.com/milvus-io/milvus/blob/master/LICENSE) License, with Zilliz as its major contributor.\n\n## Quickstart\n\n```python\n$ pip install -U pymilvus\n```\nThis installs `pymilvus`, the Python SDK for Milvus. Use `MilvusClient` to create a client:\n```python\nfrom pymilvus import MilvusClient\n```\n\n* You can also try Milvus Lite for quickstart by installing `pymilvus[milvus-lite]`. To create a local vector database, simply instantiate a client with a local file name for persisting data:\n\n  ```python\n  client = MilvusClient(\"milvus_demo.db\")\n  ```\n\n* You can also specify the credentials to connect to your deployed [Milvus server](https://milvus.io/docs/authenticate.md?tab=docker) or [Zilliz Cloud](https://docs.zilliz.com/docs/quick-start):\n\n  ```python\n  client = MilvusClient(\n    uri=\"<endpoint_of_self_hosted_milvus_or_zilliz_cloud>\",\n    token=\"<username_and_password_or_zilliz_cloud_api_key>\")\n  ```\n\nWith the client, you can create collection:\n```python\nclient.create_collection(\n    collection_name=\"demo_collection\",\n    dimension=768,  # The vectors we will use in this demo have 768 dimensions\n)\n```\n\nIngest data:\n```python\nres = client.insert(collection_name=\"demo_collection\", data=data)\n```\n\nPerform vector search:\n\n```python\nquery_vectors = embedding_fn.encode_queries([\"Who is Alan Turing?\", \"What is AI?\"])\nres = client.search(\n    collection_name=\"demo_collection\",  # target collection\n    data=query_vectors,  # a list of one or more query vectors, supports batch\n    limit=2,  # how many results to return (topK)\n    output_fields=[\"vector\", \"text\", \"subject\"],  # what fields to return\n)\n```\n\n## Why Milvus\n\nMilvus is designed to handle vector search at scale. It stores vectors, which are learned representations of unstructured data, together with other scalar data types such as integers, strings, and JSON objects. Users can conduct efficient vector search with metadata filtering or hybrid search. Here are why developers choose Milvus as the vector database for AI applications:\n\n**High Performance at Scale and High Availability**  \n  * Milvus features a [distributed architecture](https://milvus.io/docs/architecture_overview.md ) that separates [compute](https://milvus.io/docs/data_processing.md#Data-query) and [storage](https://milvus.io/docs/data_processing.md#Data-insertion). Milvus can horizontally scale and adapt to diverse traffic patterns, achieving optimal performance by independently increasing query nodes for read-heavy workload and data node for write-heavy workload. The stateless microservices on K8s allow [quick recovery](https://milvus.io/docs/coordinator_ha.md#Coordinator-HA) from failure, ensuring high availability. The support for [replicas](https://milvus.io/docs/replica.md) further enhances fault tolerance and throughput by loading data segments on multiple query nodes. See [benchmark](https://zilliz.com/vector-database-benchmark-tool) for performance comparison.\n\n\n**Support for Various Vector Index Types and Hardware Acceleration**  \n  * Milvus separates the system and core vector search engine, allowing it to support all major vector index types that are optimized for different scenarios, including HNSW, IVF, FLAT (brute-force), SCANN, and DiskANN, with [quantization-based](https://milvus.io/docs/index.md?tab=floating#IVFPQ) variations and [mmap](https://milvus.io/docs/mmap.md). Milvus optimizes vector search for advanced features such as [metadata filtering](https://milvus.io/docs/scalar_index.md#Scalar-Index) and [range search](https://milvus.io/docs/single-vector-search.md#Range-search). Additionally, Milvus implements hardware acceleration to enhance vector search performance and supports GPU indexing, such as NVIDIA's [CAGRA](https://github.com/rapidsai/cuvs).\n\n\n**Flexible Multi-tenancy and Hot/Cold Storage**\n  * Milvus supports [multi-tenancy](https://milvus.io/docs/multi_tenancy.md#Multi-tenancy-strategies) through isolation at database, collection, partition, or partition key level. The flexible strategies allow a single cluster to handle hundreds to millions of tenants, also ensures optimized search performance and flexible access control. Milvus enhances cost-effectiveness with hot/cold storage. Frequently accessed hot data can be stored in memory or on SSDs for better performance, while less-accessed cold data is kept on slower, cost-effective storage. This mechanism can significantly reduce costs while maintaining high performance for critical tasks.\n\n**Sparse Vector for Full Text Search and Hybrid Search**\n  * In addition to semantic search through dense vector, Milvus also natively supports [full text search](https://milvus.io/docs/full-text-search.md) with BM25 as well as learned sparse embeddings such as SPLADE and BGE-M3. Users can store sparse vectors and dense vectors in the same collection, and define functions to rerank results from multiple search requests. See examples of [Hybrid Search with semantic search + full text search](https://milvus.io/docs/full_text_search_with_milvus.md).\n\n**Data Security and Fine-grain Access Control**\n  * Milvus ensures data security by implementing mandatory user authentication, TLS encryption, and Role-Based Access Control (RBAC). User authentication ensures that only authorized users with valid credentials can access the database, while TLS encryption secures all communications within the network. Additionally, RBAC allows for fine-grained access control by assigning specific permissions to users based on their roles. These features make Milvus a robust and secure choice for enterprise applications, protecting sensitive data from unauthorized access and potential breaches.\n\nMilvus is trusted by AI developers to build applications such as text and image search, Retrieval-Augmented Generation (RAG), and recommendation systems. Milvus powers [many mission-critical businesses](https://milvus.io/use-cases) for startups and enterprises.\n\n## Demos and Tutorials\n\nHere is a selection of demos and tutorials to show how to build various types of AI applications made with Milvus:\n\nYou can explore a comprehensive [Tutorials Overview](https://milvus.io/docs/tutorials-overview.md) covering topics such as Retrieval-Augmented Generation (RAG), Semantic Search, Hybrid Search, Question Answering, Recommendation Systems, and various quick-start guides. These resources are designed to help you get started quickly and efficiently.\n\n| Tutorial | Use Case | Related Milvus Features |\n| -------- | -------- | --------- |\n| [Build RAG with Milvus](https://milvus.io/docs/build-rag-with-milvus.md) |  RAG | vector search |\n| [Advanced RAG Optimizations](https://milvus.io/docs/how_to_enhance_your_rag.md) | RAG | vector search, full text search |\n| [Full Text Search with Milvus](https://milvus.io/docs/full_text_search_with_milvus.md) | Text Search | full text search |\n| [Hybrid Search with Milvus](https://milvus.io/docs/hybrid_search_with_milvus.md) | Hybrid Search | hybrid search, multi vector, dense embedding, sparse embedding |\n| [Image Search with Milvus](https://milvus.io/docs/image_similarity_search.md) | Semantic Search | vector search, dynamic field |\n| [Multimodal Search using Multi Vectors](https://milvus.io/docs/multimodal_rag_with_milvus.md) | Semantic Search | multi vector, hybrid search |\n| [Movie Recommendation with Milvus](https://milvus.io/docs/movie_recommendation_with_milvus.md) | Recommendation System | vector search |\n| [Graph RAG with Milvus](https://milvus.io/docs/graph_rag_with_milvus.md) | RAG | graph search |\n| [Contextual Retrieval with Milvus](https://milvus.io/docs/contextual_retrieval_with_milvus.md) | Quickstart | vector search |\n| [Vector Visualization](https://milvus.io/docs/vector_visualization.md) | Quickstart | vector search |\n| [HDBSCAN Clustering with Milvus](https://milvus.io/docs/hdbscan_clustering_with_milvus.md) | Quickstart | vector search |\n| [Use ColPali for Multi-Modal Retrieval with Milvus](https://milvus.io/docs/use_ColPali_with_milvus.md) | Quickstart | vector search |\n\n<table>\n  <tr>\n    <td width=\"30%\">\n      <a href=\"https://milvus.io/milvus-demos\">\n        <img src=\"https://assets.zilliz.com/image_search_59a64e4f22.gif\" />\n      </a>\n    </td>\n    <td width=\"30%\">\n<a href=\"https://milvus.io/milvu",
+ "fonte": "readme",
+ "respostas": [
+  {
+   "por": "codestral",
+   "resposta": {
+    "serve": "search",
+    "role": "vector database for semantic/hybrid search",
+    "place": [
+     "disk",
+     "network_service"
+    ],
+    "mechanism": [
+     "vector",
+     "hybrid",
+     "bm25",
+     "embeddings"
+    ],
+    "mcp": "unknown",
+    "windows": "yes",
+    "portuguese": "unknown",
+    "license": "Apache-2.0",
+    "maturity": "stable",
+    "doubt": false,
+    "evidence": "Milvus is a high-performance vector database built for scale. It powers AI applications by efficiently organizing and searching vast amounts of unstructured data, such as text, images, and multi-modal information. Milvus supports Standalone mode for single machine deployment. Milvus is available as a fully managed service on Zilliz Cloud, with Serverless, Dedicated and BYOC options available."
+   }
+  },
+  {
+   "por": "nemotron-3-super-120b",
+   "resposta": {
+    "serve": "search",
+    "role": "Provides vector and hybrid (BM25) search over markdown notes",
+    "place": [
+     "network_service",
+     "library"
+    ],
+    "mechanism": [
+     "vector",
+     "bm25",
+     "hybrid"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "Apache-2.0",
+    "maturity": "stable",
+    "doubt": false,
+    "evidence": "Milvus also supports full text search with BM25 as well as learned sparse embeddings such as SPLADE and BGE-M3. Users can conduct efficient vector search with metadata filtering or hybrid search."
+   }
+  }
+ ]
+}

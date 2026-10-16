@@ -1,0 +1,33 @@
+{
+ "chave": "web:opensearch.org/docs/latest/security",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T21:24:54Z",
+ "resultado": "corrige",
+ "conferencia": {
+  "resultado": "corrige",
+  "final": {
+   "serve": "stack",
+   "role": "Encryption, authentication, access control and audit logging for an OpenSearch cluster",
+   "place": [
+    "network_service"
+   ],
+   "mechanism": [
+    "other"
+   ],
+   "mcp": "unknown",
+   "windows": "unknown",
+   "portuguese": "unknown",
+   "license": "unknown",
+   "maturity": "unknown",
+   "doubt": false,
+   "evidence": "\"Security in OpenSearch is built around four main features... Encryption, Authentication, Access control, Audit logging\""
+  },
+  "o_que_mudou": [
+   "mechanism: [full_text,vector,hybrid,...] -> [other], security is not a search mechanism",
+   "portuguese: no -> unknown",
+   "license: Apache-2.0 -> unknown, not stated on page",
+   "maturity: stable -> unknown"
+  ],
+  "nota": "Só relevante se o hub adotar OpenSearch; segurança de cluster, não busca."
+ }
+}

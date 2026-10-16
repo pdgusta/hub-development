@@ -1,0 +1,34 @@
+{
+ "chave": "gh:huggingface/transformers.js",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T21:08:40Z",
+ "resultado": "corrige",
+ "conferencia": {
+  "resultado": "corrige",
+  "final": {
+   "serve": "stack",
+   "role": "Run Hugging Face models (embeddings, sentence similarity, text tasks) in the browser or JS via ONNX Runtime, no server",
+   "place": [
+    "library"
+   ],
+   "mechanism": [
+    "embeddings"
+   ],
+   "mcp": "no",
+   "windows": "unknown",
+   "portuguese": "unknown",
+   "license": "unknown",
+   "maturity": "stable",
+   "doubt": false,
+   "evidence": "Run Transformers directly in your browser, with no need for a server; uses ONNX Runtime; sentence-similarity and embeddings pipelines; npm i @huggingface/transformers"
+  },
+  "o_que_mudou": [
+   "serve: search -> stack, it is a model runtime, not a search layer",
+   "place: disk/network_service -> library",
+   "mechanism: vector/embeddings -> embeddings",
+   "license: MIT/unknown -> unknown, README only shows a license badge",
+   "portuguese: yes -> unknown, not stated"
+  ],
+  "nota": "JS runtime for embedding models; could generate embeddings inside an Obsidian plugin or Node MCP without a server."
+ }
+}

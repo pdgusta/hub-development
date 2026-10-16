@@ -1,0 +1,59 @@
+View page source
+ Edit this page
+ Create child page
+ Create documentation issue
+ Create project issue
+
+Protobuf
+Protobuf is a language-neutral, platform-neutral extensible mechanism for serializing structured data.
+What Is Protobuf?
+Protobuf (“Protocol Buffers”) is Google’s language-neutral, platform-neutral,
+extensible mechanism for serializing structured data – think XML, but smaller,
+faster, and simpler. You define how you want your data to be structured once,
+then you can use special generated source code to easily write and read your
+structured data to and from a variety of data streams and using a variety of
+languages.
+Pick Your Favorite Language
+Protobuf supports generated code in C++, C#, Dart, Go,
+Java, Kotlin, Objective-C, Python, Rust, and Ruby. With proto3,
+you can also work with PHP.
+Example Implementation
+
+edition = "2024";
+
+message Person {
+ string name = 1;
+ int32 id = 2;
+ string email = 3;
+}
+
+Figure 1. A proto definition.
+
+// Java code
+Person john = Person.newBuilder()
+ .setId(1234)
+ .setName("John Doe")
+ .setEmail("jdoe@example.com")
+ .build();
+output = new FileOutputStream(args[0]);
+john.writeTo(output);
+
+Figure 2. Using a generated class to persist data.
+
+// C++ code
+Person john;
+fstream input(argv[1],
+ ios::in | ios::binary);
+john.ParseFromIstream(&input);
+id = john.id();
+name = john.name();
+email = john.email();
+
+Figure 3. Using a generated class to parse persisted data.
+How Do I Start?
+Download
+and install the Protobuf compiler.
+Read the
+overview.
+Try the tutorial for your
+chosen language.

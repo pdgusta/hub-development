@@ -1,0 +1,35 @@
+{
+ "chave": "gh:containers/podman-compose",
+ "urls": [
+  "https://github.com/containers/podman-compose"
+ ],
+ "tipos": [
+  "tool"
+ ],
+ "termos": [
+  "container orchestration",
+  "docker‑compose compatible",
+  "Podman",
+  "multi‑service",
+  "podman-compose",
+  "compose alternative",
+  "multi‑container"
+ ],
+ "mencoes": 2,
+ "familias": [
+  "nemotron"
+ ],
+ "primeira_onda": 5,
+ "nomes": [
+  "Podman Compose",
+  "podman-compose"
+ ],
+ "resumos": [
+  "A utility to define and run multi‑container Podman applications, simplifying deployment of search services.",
+  "Drop‑in replacement for docker‑compose that works with Podman (or other OCI runtimes) to define multi‑container apps."
+ ],
+ "readme_status": "ok",
+ "readme_nome": "README.md",
+ "readme_cortado": false,
+ "readme": "# Podman Compose\n## [![Tests](https://github.com/containers/podman-compose/actions/workflows/test.yml/badge.svg)](https://github.com/containers/podman-compose/actions/workflows/test.yml)\n\nAn implementation of [Compose Spec](https://compose-spec.io/) with [Podman](https://podman.io/) backend.\nThis project focuses on:\n\n* rootless\n* daemon-less process model, we directly execute podman, no running daemon.\n\nThis project only depends on:\n\n* `podman`\n* a podman network backend with DNS name resolution available. This allows containers to be able to resolve each other if they are on the same network.\n  * either: [podman dnsname plugin](https://github.com/containers/dnsname) with CNI network backend: It is usually found in the `podman-plugins` or `podman-dnsname` distro packages, those packages are not pulled by default and you need to install them.\n  * or: [netavark](https://github.com/containers/netavark)/[aardvark-dns](https://github.com/containers/aardvark-dns): Both are usually installed on new installations of podman 4.\n* Python 3.9 or newer\n* [PyYAML](https://pyyaml.org/)\n* [python-dotenv](https://pypi.org/project/python-dotenv/)\n\nAnd it's formed as a single Python file script that you can drop into your PATH and run.\n\n## References:\n\n* [spec.md](https://github.com/compose-spec/compose-spec/blob/master/spec.md)\n* [docker-compose compose-file-v3](https://docs.docker.com/compose/compose-file/compose-file-v3/)\n* [docker-compose compose-file-v2](https://docs.docker.com/compose/compose-file/compose-file-v2/)\n\n## Alternatives\n\nAs in [this article](https://fedoramagazine.org/use-docker-compose-with-podman-to-orchestrate-containers-on-fedora/) you can setup a `podman.socket` and use unmodified `docker-compose` that talks to that socket but in this case you lose the process-model (ex. `docker-compose build` will send a possibly large context tarball to the daemon)\n\nFor production-like single-machine containerized environment consider\n\n- [k3s](https://k3s.io) | [k3s github](https://github.com/rancher/k3s)\n- [MiniKube](https://minikube.sigs.k8s.io/)\n\nFor the real thing (multi-node clusters) check any production\nOpenShift/Kubernetes distribution like [OKD](https://www.okd.io/).\n\n## Versions\n\nIf you have legacy version of `podman` (before 3.1.0) you might need to stick with legacy `podman-compose` `0.1.x` branch.\nThe legacy branch 0.1.x uses mappings and workarounds to compensate for rootless limitations.\n\nModern podman versions (>=3.4) do not have those limitations, and thus you can use latest and stable 1.x branch.\n\nIf you are upgrading from `podman-compose` version `0.1.x` then we no longer have global option `-t` to set mapping type\nlike `hostnet`. If you desire that behavior, pass it the standard way like `network_mode: host` in the YAML.\n\n\n## Installation\n\n### Pip\n\nInstall the latest stable version from PyPI:\n\n```bash\npip3 install podman-compose\n```\n\npass `--user` to install inside a regular user's home without being root.\n\nOr latest development version from GitHub:\n\n```bash\npip3 install https://github.com/containers/podman-compose/archive/main.tar.gz\n```\n\n### Package repositories\n\npodman-compose is available from the following package repositories:\n\nDebian:\n\n```bash\nsudo apt install podman-compose\n```\n\nFedora (starting from f31) repositories:\n\n```bash\nsudo dnf install podman-compose\n```\n\nHomebrew:\n\n```bash\nbrew install podman-compose\n```\n\n### Generate binary using docker/podman locally\nThis script will download the repo, generate the binary using [this Dockerfile](https://github.com/containers/podman-compose/blob/main/Dockerfile), and place the binary in the directory where you called this script.\n```bash\nsh -c \"$(curl -sSL https://raw.githubusercontent.com/containers/podman-compose/main/scripts/download_and_build_podman-compose.sh)\"\n```\n\n### Manual\n\n```bash\ncurl -o /usr/local/bin/podman-compose https://raw.githubusercontent.com/containers/podman-compose/main/podman_compose.py\nchmod +x /usr/local/bin/podman-compose\n```\n\nor inside your home\n\n```bash\ncurl -o ~/.local/bin/podman-compose https://raw.githubusercontent.com/containers/podman-compose/main/podman_compose.py\nchmod +x ~/.local/bin/podman-compose\n```\n\n## Tests\n\npodman-compose is tested via unit and integration tests.\n\nUnit tests can be run via the following:\n\n```shell\npython3 -m unittest discover tests/unit\n```\n\nIntegration tests can be run via the following:\n\n```shell\npython3 -m unittest discover tests/integration\n```\n\n# Contributing guide\n\nIf you are a user or a developer and want to contribute please check the [CONTRIBUTING](CONTRIBUTING.md) section\n"
+}

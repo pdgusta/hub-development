@@ -1,0 +1,35 @@
+{
+ "chave": "gh:manticoresoftware/columnar",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T21:22:44Z",
+ "resultado": "corrige",
+ "conferencia": {
+  "resultado": "corrige",
+  "final": {
+   "serve": "stack",
+   "role": "Column-oriented storage and secondary indexing library plugin for Manticore Search",
+   "place": [
+    "library",
+    "disk"
+   ],
+   "mechanism": [
+    "other"
+   ],
+   "mcp": "no",
+   "windows": "yes",
+   "portuguese": "unknown",
+   "license": "unknown",
+   "maturity": "stable",
+   "doubt": false,
+   "evidence": "column-oriented storage and secondary indexing library; OS: ... Windows, MacOS"
+  },
+  "o_que_mudou": [
+   "serve: search -> stack, e componente de armazenamento do Manticore, nao busca por si",
+   "mechanism: full_text -> other",
+   "place: ajustado para library+disk",
+   "doubt: true -> false",
+   "maturity: unknown -> stable, instalacao por repositorios e benchmarks"
+  ],
+  "nota": "So tem valor se o hub adotar Manticore Search; sozinha e apenas armazenamento colunar para analitica."
+ }
+}

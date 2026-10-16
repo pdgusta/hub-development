@@ -1,0 +1,59 @@
+Overview
+ CBOR
+
+ Specification
+ Spec
+
+ Implementations
+ Impl
+
+ Tools
+
+CBOR
+
+RFC 8949 Concise Binary Object Representation
+
+“The Concise Binary Object Representation (CBOR) is a data format whose design goals include the possibility of extremely small code size, fairly small message size, and extensibility without the need for version negotiation.”
+
+JSON data model
+
+ CBOR is based on the wildly successful JSON data model: numbers, strings, arrays, maps (called objects in JSON), and a few values such as false, true, and null.
+
+No Schema needed
+
+ One of the major practical wins of JSON is that successful data interchange is possible without casting a schema in concrete.
+ This works much better in a world where both ends of a communication relationship may be evolving at high speed.
+
+Embracing binary
+
+ Some applications that would like to use JSON need to transport binary data, such as encryption keys, graphic data, or sensor values.
+ In JSON, these data need to be encoded (usually in base64 format), adding complexity and bulk.
+
+Concise encoding
+
+ Some applications also benefit from CBOR itself being encoded in binary. This saves bulk and allows faster processing.
+ One of the major motivators for the development of CBOR was the Internet of Things, which will include very simple, inexpensive nodes where this counts.
+
+Stable format
+
+ CBOR is defined in an Internet Standard,
+ RFC 8949.
+ The format has been designed to be stable for decades.
+
+Extensible
+
+ To be able to grow with its applications and to incorporate future developments, a format specification needs to be extensible.
+ CBOR defines
+ tags
+ as a mechanism to identify data that warrants additional information beyond the basic data model.
+ Both future RFCs and third parties can define tags, so innovation is “permissionless” but can still be coordinated.
+
+ Carsten Bormann
+ •
+ TZI
+ • 2014–2020
+
+ Feedback:
+ Create a github issue
+ (free github account required) or
+ just send mail

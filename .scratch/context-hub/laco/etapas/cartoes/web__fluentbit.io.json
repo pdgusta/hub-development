@@ -1,0 +1,30 @@
+{
+ "chave": "web:fluentbit.io",
+ "urls": [
+  "https://fluentbit.io"
+ ],
+ "tipos": [
+  "tool"
+ ],
+ "termos": [
+  "Fluentbit",
+  "Fluentd alternative",
+  "Log forwarding"
+ ],
+ "mencoes": 1,
+ "familias": [
+  "gemini"
+ ],
+ "primeira_onda": 3,
+ "nomes": [
+  "Fluent Bit"
+ ],
+ "resumos": [
+  "Ein extrem leichtgewichtiger und schneller Log-Prozessor und Forwarder, der sich ideal für lokale Umgebungen und Edge-Szenarien eignet."
+ ],
+ "fonte": "site",
+ "readme_status": "ok",
+ "readme_nome": "https://fluentbit.io",
+ "readme_cortado": false,
+ "readme": "[fluentbit]\n\nDeployed Over Fifteen Billion Times\n\nAn End to End\nObservability Pipeline\n\nFluent Bit is a super fast, lightweight, and highly scalable logging, metrics, and traces processor and forwarder. It is the preferred choice for cloud and containerized environments.\n\n TRY NOW\n\n DOWNLOAD NOW\n\nLatest stable release\n\n v5.1.3\n Released on September 30, 2026\n Read the notes »\n\npipeline:\n inputs:\n - name: tail\n path: /var/log/system.log\n tag: app.logs\n\n processors:\n - name: opentelemetry_envelope\n - name: record_modifier\n record:\n service.name: checkout\n\n outputs:\n - name: opentelemetry\n match: *\n host: otel-gateway.monitoring.svc\n port: 4318\n logs_uri: /v1/logs\n\nOpenTelemetry\n\nOpenTelemetry-native, built for real-world pipelines\n\nFluent Bit provides native OpenTelemetry support through OTLP ingestion and delivery, while operating efficiently across hybrid environments. As a high-performance data plane, it moves, processes, and routes telemetry data at scale across logs, metrics, and traces.\n\n Built for practical routing, enrichment, and delivery across modern environments\n\nNative OTLP ingestion and delivery for modern telemetry pipelines\n\nEfficient routing across hybrid, cloud, and on-prem environments\n\nHigh-performance processing across logs, metrics, and traces\n\nBuilt-in enrichment, buffering, and stream processing capabilities\n\nRead how it works\n\nTrusted by some of the world’s largest and most complex organizations\n\nDesigned with performance in mind\n\n A robust, lightweight, and portable architecture for high throughput with low CPU and memory usage from any data source to any destination. \n\nScalable\n\nProven across distributed cloud and container environments. Highly available with I/O handlers to store data for disaster recovery.\n\n> 1pb data throughput across thousands of sources and destinations daily\n\nFlexible\n\nGranular management of data parsing and routing. Filtering and enrichment to optimize security and minimize cost.\n\n> 1 Billion sources managed by Fluent Bit - from IoT Devices to Windows and Linux servers.\n\nEfficient\n\nLightweight, asynchronous design optimizes resource usage: CPU, memory, disk I/O, network. No more OOM errors!\n\n~ 450kb minimal footprint maximizes asset support. Zero external dependencies.\n\nExtensible\n\nIntegration with all your technology - cloud native services, containers, streaming processors, and data backends.\n\nOver 100 built-in plugins for inputs, filters, analytics tools and outputs.\n\n Star \n\nFluent Bit is a CNCF graduated project under the Fluent organization. \n\nWe are part of a large open source community. No vendor lock-in. \n\nThe Fluent Bit Advantage\n\n Fluent Bit is purpose built for high scale data observability in any dynamic, distributed environment \n\nEvent-Driven Architecture\n\nFully event driven design, leverages the operating system API for performance and reliability. All operations to collect and deliver data are asynchronous\n\nDynamic Routing\n\nOptimized data parsing and routing to improve security and reduce overall cost. Distribute data to multiple destinations with a zero copy strategy\n\nFlexible Configuration\n\nSimple, granular controls enable detailed orchestration and management of data collection and transfer across your entire ecosystem\n\nRobust I/O Handler\n\nAn abstracted I/O layer supports high-scale read/write operations and enables optimized data routing and support for stream processing\n\nUpstream Manager\n\nRemoves challenges with handling TCP connections to upstream data sources. Simplifies connection process, manages timeout/network exceptions and Keepalived states\n\nSecurity & TLS\n\nWhen delivering data to destinations, output connectors inherit full TLS capabilities in an abstracted way. Add your certificates as required.\n\nStay Updated\n\nLeave your email and get connected with our lastest news, relases and more."
+}

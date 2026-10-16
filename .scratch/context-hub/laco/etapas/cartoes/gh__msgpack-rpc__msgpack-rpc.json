@@ -1,0 +1,28 @@
+{
+ "chave": "gh:msgpack-rpc/msgpack-rpc",
+ "urls": [
+  "https://github.com/msgpack-rpc/msgpack-rpc"
+ ],
+ "tipos": [
+  "library"
+ ],
+ "termos": [
+  "MsgPack-RPC",
+  "RPC with MsgPack"
+ ],
+ "mencoes": 1,
+ "familias": [
+  "mistral"
+ ],
+ "primeira_onda": 5,
+ "nomes": [
+  "MessagePack-RPC"
+ ],
+ "resumos": [
+  "Remote Procedure Call (RPC) protocol using MessagePack for serialization."
+ ],
+ "readme_status": "ok",
+ "readme_nome": "README.md",
+ "readme_cortado": false,
+ "readme": "MessagePack\n===========\n\nExtremely efficient object serialization library. It's like JSON, but very fast and small.\n\n\n## What's MessagePack?\n\n**MessagePack** is a binary-based efficient object serialization library. It enables to exchange structured objects between many languages like JSON. But unlike JSON, it is very fast and small.\n\nTypical small integer (like flags or error code) is saved only in 1 byte, and typical short string only needs 1 byte except the length of the string itself. \\[1,2,3\\] (3 elements array) is serialized in 4 bytes using MessagePack as follows:\n\n    require 'msgpack'\n    msg = [1,2,3].to_msgpack  #=> \"\\x93\\x01\\x02\\x03\"\n    MessagePack.unpack(msg)   #=> [1,2,3]\n\n**MessagePack-RPC** is cross-language RPC library for client, server and cluster applications. Because it releases you from complicated network programming completely and provides well-designed API, you can easily implement advanced network applications with MessagePack-RPC.\n\n    require 'msgpack/rpc'\n    class MyHandler\n      def add(x,y) return x+y end\n    end\n    svr = MessagePack::RPC::Server.new\n    svr.listen('0.0.0.0', 18800, MyHandler.new)\n    svr.run\n\n    require 'msgpack/rpc'\n    c = MessagePack::RPC::Client.new('127.0.0.1',18800)\n    result = c.call(:add, 1, 2)  #=> 3\n\n\n## Getting Started\n\nUsage and other documents about implementations in each language are found at [the web site.](http://msgpack.org/)\n\n## Implementations\n\n- [C++](https://github.com/msgpack-rpc/msgpack-rpc-cpp)\n- [C#](https://github.com/yfakariya/msgpack-rpc-cli)\n- [Go](https://github.com/msgpack-rpc/msgpack-rpc-go)\n- [PHP](https://github.com/msgpack-rpc/msgpack-rpc-php)\n- [Python](https://github.com/msgpack-rpc/msgpack-rpc-python)\n- [Ruby](https://github.com/msgpack-rpc/msgpack-rpc-ruby)\n- [Erlang/OTP](https://github.com/msgpack-rpc/msgpack-rpc-erlang)\n- [Java](https://github.com/msgpack-rpc/msgpack-rpc-java)\n- [D](https://github.com/msgpack-rpc/msgpack-rpc-d)\n- [Perl](https://metacpan.org/release/MsgPack-RPC)\n\n## Learn More\n\n- [Web Site](http://msgpack.org/)\n- [Sources](https://github.com/msgpack-rpc/msgpack-rpc)\n"
+}

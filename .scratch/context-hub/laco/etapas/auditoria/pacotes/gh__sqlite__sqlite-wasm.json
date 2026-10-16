@@ -1,0 +1,86 @@
+{
+ "chave": "gh:sqlite/sqlite-wasm",
+ "nomes": [
+  "SQLite WASM"
+ ],
+ "urls": [
+  "https://github.com/sqlite/sqlite-wasm"
+ ],
+ "readme_cortado": false,
+ "readme": "# SQLite Wasm\n\nSQLite Wasm conveniently wrapped as an ES Module.\n\n## Installation\n\n```bash\nnpm install @sqlite.org/sqlite-wasm\n```\n\n## Bug reports\n\n> [!Warning]\n>\n> This project wraps the code of [SQLite Wasm](https://sqlite.org/wasm/doc/trunk/index.md) with _no_\n> changes, apart from added TypeScript types. Please do _not_ file issues or feature requests\n> regarding the underlying SQLite Wasm code here. Instead, please follow the\n> [SQLite bug filing instructions](https://www.sqlite.org/src/wiki?name=Bug+Reports). Filing\n> TypeScript type related issues and feature requests is fine.\n\n## Node.js support\n\n> [!Warning]\n>\n> Node.js is currently only supported for in-memory databases without persistence.\n\n## Usage\n\nThere are two ways to use SQLite Wasm:\n\n- [in a worker](#in-a-worker-with-opfs-if-available)\n- [in the main thread](#in-the-main-thread-without-opfs)\n\nOnly the worker versions allow you to use the origin private file system (OPFS) storage back-end.\n\n### In a worker (with OPFS if available):\n\n> [!Warning]\n>\n> For this to work, you need to set the following headers on your server:\n>\n> `Cross-Origin-Opener-Policy: same-origin`\n>\n> `Cross-Origin-Embedder-Policy: require-corp`\n\n```js\n// In `main.js`.\nconst worker = new Worker('worker.js', { type: 'module' });\n```\n\n```js\n// In `worker.js`.\nimport sqlite3InitModule from '@sqlite.org/sqlite-wasm';\n\nconst start = (sqlite3) => {\n  console.log('Running SQLite3 version', sqlite3.version.libVersion);\n  const db =\n    'opfs' in sqlite3\n      ? new sqlite3.oo1.OpfsDb('/mydb.sqlite3')\n      : new sqlite3.oo1.DB('/mydb.sqlite3', 'ct');\n  console.log(\n    'opfs' in sqlite3\n      ? `OPFS is available, created persisted database at ${db.filename}`\n      : `OPFS is not available, created transient database ${db.filename}`,\n  );\n  // Your SQLite code here.\n};\n\nconst initializeSQLite = async () => {\n  try {\n    console.log('Loading and initializing SQLite3 module...');\n    const sqlite3 = await sqlite3InitModule();\n    console.log('Done initializing. Running demo...');\n    start(sqlite3);\n  } catch (err) {\n    console.error('Initialization error:', err.name, err.message);\n  }\n};\n\ninitializeSQLite();\n```\n\nThe `db` object above implements the\n[Object-Oriented API #1](https://sqlite.org/wasm/doc/trunk/api-oo1.md).\n\n### In the main thread (without OPFS):\n\n```js\nimport sqlite3InitModule from '@sqlite.org/sqlite-wasm';\n\nconst start = (sqlite3) => {\n  log('Running SQLite3 version', sqlite3.version.libVersion);\n  const db = new sqlite3.oo1.DB('/mydb.sqlite3', 'ct');\n  // Your SQLite code here.\n};\nconst initializeSQLite = async () => {\n  try {\n    console.log('Loading and initializing SQLite3 module...');\n    const sqlite3 = await sqlite3InitModule();\n    console.log('Done initializing. Running demo...');\n    start(sqlite3);\n  } catch (err) {\n    console.error('Initialization error:', err.name, err.message);\n  }\n};\n\ninitializeSQLite();\n```\n\nThe `db` object above implements the\n[Object-Oriented API #1](https://sqlite.org/wasm/doc/trunk/api-oo1.md).\n\n## Usage with vite\n\nIf you are using [vite](https://vitejs.dev/), you need to add the following config option in\n`vite.config.js`:\n\n```js\nimport { defineConfig } from 'vite';\n\nexport default defineConfig({\n  server: {\n    headers: {\n      'Cross-Origin-Opener-Policy': 'same-origin',\n      'Cross-Origin-Embedder-Policy': 'require-corp',\n    },\n  },\n  optimizeDeps: {\n    exclude: ['@sqlite.org/sqlite-wasm'],\n  },\n});\n```\n\nCheck out a [sample project](https://stackblitz.com/edit/vitejs-vite-ttrbwh?file=main.js) that shows\nthis in action.\n\n## Demo\n\nSee the [demo](https://github.com/sqlite/sqlite-wasm/tree/main/demo) folder for examples of how to\nuse this in the main thread and in a worker. (Note that the worker variant requires special HTTP\nheaders, so it can't be hosted on GitHub Pages.) An example that shows how to use this with vite is\navailable on [StackBlitz](https://stackblitz.com/edit/vitejs-vite-ttrbwh?file=main.js).\n\n## Projects using this package\n\nSee the list of [npm dependents](https://www.npmjs.com/browse/depended/@sqlite.org/sqlite-wasm) for\nthis package.\n\n## Deploying a new version\n\n(These steps can only be executed by maintainers.)\n\n1. Manually trigger the [GitHub Actions workflow](../../actions/workflows/build-wasm.yml). By\n   default, it uses the latest SQLite tag. This pull request will contain the latest `sqlite3.wasm`\n   and related bindings.\n\n2. Once the above pull request is validated and merged, update the version number in `package.json`,\n   reflecting the current [SQLite version number](https://sqlite.org/download.html) and add a build\n   identifier suffix like `-build1`. The complete version number should read something like\n   `3.41.2-build1`.\n\n## Building the SQLite Wasm locally\n\n1. Build the Docker image:\n\n   ```bash\n   docker build -t sqlite-wasm-builder:env .\n   ```\n\n2. Run the build:\n\n   **Unix (Linux/macOS):**\n\n   ```bash\n   docker run --rm \\\n     -e SQLITE_REF=\"master\" \\\n     -v \"$(pwd)/out\":/out \\\n     -v \"$(pwd)/src/bin\":/src/bin \\\n     sqlite-wasm-builder:env build\n   ```\n\n   **Windows (PowerShell):**\n\n   ```powershell\n   docker run --rm `\n     -e SQLITE_REF=\"master\" `\n     -v \"${PWD}/out:/out\" `\n     -v \"${PWD}/src/bin:/src/bin\" `\n     sqlite-wasm-builder:env build\n   ```\n\n   **Windows (Command Prompt):**\n\n   ```cmd\n   docker run --rm ^\n     -e SQLITE_REF=\"master\" ^\n     -v \"%cd%/out:/out\" ^\n     -v \"%cd%/src/bin:/src/bin\" ^\n     sqlite-wasm-builder:env build\n   ```\n\n## Running tests\n\nThe test suite consists of Node.js tests and browser-based tests (using Vitest Browser Mode). Tests\naim to sanity-check the exported scripts. We test for correct exports and **very** basic\nfunctionality.\n\n1. Install dependencies:\n\n   ```bash\n   npm install\n   ```\n\n2. Install Playwright browsers (required for browser tests):\n\n   ```bash\n   npx playwright install chromium --with-deps --no-shell\n   ```\n\n3. Run all tests:\n\n   ```bash\n   npm test\n   ```\n\n## Deprecations\n\nThe Worker1 and Promiser1 APIs are, as of 2026-04-15, deprecated. They _will not be removed_, but\nthey also will not be extended further. It is their author's considered opinion that they are too\nfragile, too imperformant, and too limited for any non-toy software, and their use is _actively\ndiscouraged_. The \"correct\" way to use this library is documented in [Usage](#usage) section above.\n\n## License\n\nApache 2.0.\n\n## Acknowledgements\n\nThis project is based on [SQLite Wasm](https://sqlite.org/wasm), which it conveniently wraps as an\nES Module and publishes to npm as\n[`@sqlite.org/sqlite-wasm`](https://www.npmjs.com/package/@sqlite.org/sqlite-wasm).\n",
+ "fonte": "readme",
+ "respostas": [
+  {
+   "por": "gemma-4-31b",
+   "resposta": {
+    "serve": "stack",
+    "role": "Embedded database for indexing or local storage within the hub stack",
+    "place": [
+     "library"
+    ],
+    "mechanism": [
+     "full_text",
+     "other"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "Apache-2.0",
+    "maturity": "stable",
+    "doubt": false,
+    "evidence": "README does not mention mcp or windows support for the runtime, only for building the wasm locally."
+   }
+  },
+  {
+   "por": "mistral-code-fim",
+   "resposta": {
+    "serve": "stack",
+    "role": "database for agents",
+    "place": [
+     "disk",
+     "inside_db_mcp"
+    ],
+    "mechanism": [
+     "n/a"
+    ],
+    "mcp": "unknown",
+    "windows": "yes",
+    "portuguese": "unknown",
+    "license": "Apache-2.0",
+    "maturity": "stable",
+    "doubt": false,
+    "evidence": "SQLite Wasm works on Windows (no explicit mention of WSL), and the hub uses MCP for sync."
+   }
+  }
+ ],
+ "conferencia_sonnet": {
+  "chave": "gh:sqlite/sqlite-wasm",
+  "modelo": "claude-sonnet-5-5",
+  "ts": "2026-10-13T22:03:21Z",
+  "resultado": "rejeita",
+  "conferencia": {
+   "resultado": "rejeita",
+   "final": {
+    "serve": "none",
+    "role": "",
+    "place": [
+     "library"
+    ],
+    "mechanism": [
+     "n/a"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "Apache-2.0",
+    "maturity": "stable",
+    "doubt": false,
+    "evidence": "SQLite Wasm conveniently wrapped as an ES Module"
+   },
+   "o_que_mudou": [
+    "serve: stack -> none, browser/Wasm wrapper of SQLite, no search, MCP or sync role in README"
+   ],
+   "nota": "Browser-oriented SQLite Wasm wrapper; README gives no search, MCP or sync capability for the hub."
+  }
+ }
+}

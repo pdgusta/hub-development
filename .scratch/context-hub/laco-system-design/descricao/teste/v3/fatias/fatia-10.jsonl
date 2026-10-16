@@ -1,0 +1,24 @@
+{"n": 10, "pergunta": "Se o Sincronizador for interrompido enquanto um arquivo de 180 MiB está sendo copiado, o que acontece com a versão parcial e quem decide se ela é descartada?", "tipo": "responsavel"}
+{"n": 20, "pergunta": "Quando inicio uma sessão a partir de uma subpasta usando a porta de entrada “session/subfolder”, quais diretórios são montados como raiz?", "tipo": "quando"}
+{"n": 30, "pergunta": "Se o Gustavo editar um arquivo `.md` do `operations/` diretamente no disco (sem o Obsidian aberto), quem garante que as alterações cheguem ao banco e à outra máquina?", "tipo": "responsavel"}
+{"n": 40, "pergunta": "O GitHub privado faz parte do grupo de soluções que permitem a restauração completa do hub caso ambas as cópias locais falhem simultaneamente?", "tipo": "grupo"}
+{"n": 50, "pergunta": "Se o MCP do banco detectar que a versão de um documento lida por um agente difere da última versão, quem decide como o conflito será resolvido?", "tipo": "responsavel"}
+{"n": 60, "pergunta": "Se o **sincronizador** tentar replicar um arquivo de 210 MiB (acima do limite de 200 MiB) e falhar, como o **Vigia** trata isso e o que acontece com a sincronização das pastas menores no mesmo diretório?", "tipo": "se-x"}
+{"n": 70, "pergunta": "Se o **GitHub privado** deixar de fazer backups automáticos por um dia, quem é responsável por garantir que a cópia de segurança seja restaurada manualmente e como isso é feito?", "tipo": "falha"}
+{"n": 80, "pergunta": "Se dois agentes editarem simultaneamente a mesma nota, como o sistema detecta e notifica a colisão?", "tipo": "relacao"}
+{"n": 90, "pergunta": "Se eu fizer commit manual no GitHub privado para restaurar uma versão anterior de uma nota, como o hub reconcilia essa versão com o banco e com o disco nas duas máquinas?", "tipo": "ordem"}
+{"n": 100, "pergunta": "O que acontece se o agente faz uma alteração enquanto o Vigia detecta que o binário foi descartado?", "tipo": "relacao"}
+{"n": 110, "pergunta": "Se o cliente tentar usar o hub durante uma colisão real, o que acontece?", "tipo": "o-que-nao-faz"}
+{"n": 120, "pergunta": "Se o cliente tentar acessar o context hub e houver uma nota de retomada desatualizada, o que acontece?", "tipo": "falha"}
+{"n": 130, "pergunta": "Depois que uma iniciativa da VOEGOL é concluída, para qual pasta ela é movida?", "tipo": "onde-vive"}
+{"n": 140, "pergunta": "Quando o agente de código tenta sobrescrever um arquivo que já foi modificado pela outra máquina dentro do limite de tempo, o que acontece?", "tipo": "quando"}
+{"n": 150, "pergunta": "Por que o Sincronizador existe para garantir que alterações feitas diretamente no disco sejam refletidas no Banco e vice-versa?", "tipo": "por-que"}
+{"n": 160, "pergunta": "Se o maestro do Maestri tentar usar uma skill da pasta `agents/skills/` que não foi aprovada pelo Gustavo, quem bloqueia essa ação e por quê?", "tipo": "quem-usa"}
+{"n": 170, "pergunta": "O que o hub não faz quando o cliente tenta acessar um arquivo que está em colisão e ainda não foi resolvido?", "tipo": "o-que-nao-faz"}
+{"n": 180, "pergunta": "Se o Obsidian estiver fechado e o sincronizador rodando, o que acontece com uma nota que o Gustavo acabou de salvar direto no disco?", "tipo": "ordem"}
+{"n": 190, "pergunta": "Qual a relação entre o Cliente e o Maestro do Maestri quando o cliente tenta ler um arquivo da iniciativa STRATA?", "tipo": "relacao"}
+{"n": 200, "pergunta": "Se a máquina de trabalho ficar desligada por vários dias e eu fizer alterações na máquina pessoal, o que acontece quando eu a ligar?", "tipo": "se-x"}
+{"n": 210, "pergunta": "A nota de retomada faz parte do grupo de arquivos que são forçados a atualizar ao término de cada resposta gerada por agente?", "tipo": "grupo"}
+{"n": 220, "pergunta": "Onde fica a pasta que eu posso usar para guardar arquivos temporários que só eu preciso, sem que eles sejam sincronizados ou vistos pelo outro par?", "tipo": "onde-vive"}
+{"n": 230, "pergunta": "Se o **contrato do hub** (o `AGENTS.md`) for editado diretamente no disco por um agente sem passar pelo **sync**, e depois o Gustavo abrir o arquivo no Obsidian, qual versão ele vê e como o hub resolve o conflito?", "tipo": "falha"}
+{"n": 240, "pergunta": "Por que a **Nota de retomada** é sobrescrita a cada sessão, mas o hook que obriga a mantê-la atualizada só é acionado no início das sessões dos agentes — e não também quando o Gustavo edita manualmente?", "tipo": "por-que"}

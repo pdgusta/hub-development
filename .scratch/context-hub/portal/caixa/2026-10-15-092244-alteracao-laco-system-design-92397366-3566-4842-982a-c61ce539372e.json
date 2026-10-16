@@ -1,0 +1,108 @@
+{
+  "envio": "92397366-3566-4842-982a-c61ce539372e",
+  "tipo": "alteracao-laco",
+  "enviada": "2026-10-15T09:22:44-03:00",
+  "alvo": {
+    "tipo": "laco",
+    "id": "system-design",
+    "titulo": "System design: a cidade nova"
+  },
+  "ticket": "56",
+  "substitui": null,
+  "laco": {
+    "id": "system-design",
+    "titulo": "System design: a cidade nova",
+    "ticket": "56",
+    "execucao": {
+      "id": "system-design-proposta",
+      "inicio": null,
+      "terminou_em": null
+    },
+    "revisao": "775c1479c560b5b0b036fd2f26791449180e4c4b0147a31db5b065a8113703e3",
+    "no": {
+      "id": "teto",
+      "titulo": "Teto",
+      "papel": "controle"
+    },
+    "capacidades": [
+      {
+        "id": "parar-de-despachar"
+      }
+    ],
+    "situacao": "desconhecido",
+    "controle": {
+      "id": "orcamento_tokens",
+      "no": "teto",
+      "rotulo": "orçamento do laço",
+      "tipo": "inteiro",
+      "faixa": [
+        500000,
+        5000000
+      ],
+      "opcoes": null,
+      "itens": null,
+      "unidade": "tokens do Claude",
+      "escala": null,
+      "aceita_nulo": false,
+      "nulo": null,
+      "quando_vale": "proxima-execucao",
+      "releitura": "manual",
+      "configurado": {
+        "valor": 1600000,
+        "como": "lido",
+        "fonte": "config.json → orcamento_tokens",
+        "hora": "2026-10-15T09:14:05-03:00",
+        "ilegivel": null
+      },
+      "em_uso": {
+        "estado": "nao-confirmado",
+        "valor": null,
+        "como": null,
+        "fonte": null,
+        "hora": null,
+        "ilegivel": null,
+        "diverge": false
+      },
+      "precondicoes": {},
+      "definicao": {
+        "id": "orcamento_tokens",
+        "no": "teto",
+        "rotulo": "orçamento do laço",
+        "tipo": "inteiro",
+        "quando_vale": "proxima-execucao",
+        "releitura": "manual",
+        "configurado": {
+          "arquivo": "config.json",
+          "campo": "orcamento_tokens"
+        },
+        "faixa": [
+          500000,
+          5000000
+        ],
+        "unidade": "tokens do Claude"
+      },
+      "origem_configurado": {
+        "arquivo": "config.json",
+        "campo": "orcamento_tokens"
+      }
+    }
+  },
+  "corpo_hash": "9a5a5de22fcebf5d7cb9304da701e0092fbab6025c2498c5a8f92b9e3f1f86e2",
+  "corpo": {
+    "tipo": "alteracao-laco",
+    "laco": "system-design",
+    "execucao": "system-design-proposta",
+    "operacao": "mudar-controle",
+    "no": "teto",
+    "controle": "orcamento_tokens",
+    "antes": {
+      "tipo": "inteiro",
+      "valor": 1600000
+    },
+    "depois": {
+      "tipo": "inteiro",
+      "valor": 5000000
+    },
+    "revisao": "775c1479c560b5b0b036fd2f26791449180e4c4b0147a31db5b065a8113703e3"
+  }
+}

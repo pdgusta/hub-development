@@ -1,0 +1,55 @@
+{
+ "nome": "Meilisearch",
+ "url": "https://github.com/meilisearch/meilisearch",
+ "papel": "serviço na rede",
+ "windows": "yes: binário meilisearch-windows-amd64.exe nos assets do release v1.55.0; docs: \"Windows Server 2022 or later. Windows OS 10+ may work but is not officially supported.\"",
+ "mcp": "yes: MCP embutido no servidor, POST /mcp, transporte HTTP (bearer token), v1.54+, feature experimental mcpRoute; 4 ferramentas somente leitura (listIndexes, describeIndex, searchInIndexes, facetSearch). Pacote Python meilisearch-mcp (stdio) está deprecado.",
+ "portugues": "Tokenizador Charabia lista Portuguese no grupo Latin: decomposição, minúsculas, remoção de nonspacing marks (acentos). Stemmer e stopwords: não mencionados na página de idiomas.",
+ "markdown_frontmatter": "Não indexa Markdown nem frontmatter por conta própria: recebe documentos JSON; o chamador faz parse/chunking. Campos viram filtros/facetas.",
+ "atualizacao": "Manual via API de documentos (add/update/delete); sem watcher de disco.",
+ "embeddings_endpoint": "Embedder source rest com url, apiKey, request e response configuráveis: serve para gateway com API REST de embeddings (compatibilidade OpenAI não afirmada em texto; restrição a URL local não documentada). Busca híbrida disponível.",
+ "recursos": "Binário único (Rust). Sem número de RAM/disco na página de instalação.",
+ "licenca": "MIT (Community Edition); recursos Enterprise (sharding, snapshots S3) sob BSL/comercial",
+ "ultimo_release": "v1.55.0 (2026-10-12)",
+ "atividade": "2026-10-13 (feed de commits)",
+ "maturidade": "stable (MCP embutido experimental)",
+ "encaixe": "Serviço local em cada máquina (processo Windows), alimentado pelo MCP do banco; ou serviço na rede. Impedimento: ingestão de Markdown/frontmatter é por conta própria; MCP embutido é experimental.",
+ "evidencias": [
+  {
+   "campo": "windows",
+   "url": "https://github.com/meilisearch/meilisearch/releases/expanded_assets/v1.55.0",
+   "citacao": "meilisearch-windows-amd64.exe"
+  },
+  {
+   "campo": "windows",
+   "url": "https://www.meilisearch.com/docs/learn/self_hosted/install_meilisearch_locally",
+   "citacao": "Windows Server 2022 or later. Windows OS 10+ may work but is not officially supported."
+  },
+  {
+   "campo": "mcp",
+   "url": "https://www.meilisearch.com/docs/getting_started/integrations/mcp",
+   "citacao": "built-in MCP server at POST /mcp; Meilisearch v1.54 or later; experimental mcpRoute"
+  },
+  {
+   "campo": "portugues",
+   "url": "https://www.meilisearch.com/docs/resources/help/language",
+   "citacao": "Latin (English, French, Spanish, Italian, Portuguese, etc.); Decomposition, lowercase, nonspacing-marks removal"
+  },
+  {
+   "campo": "embeddings_endpoint",
+   "url": "https://www.meilisearch.com/docs/learn/ai_powered_search/configure_rest_embedder",
+   "citacao": "Setting an embedder name, a source, and a url is mandatory for all REST embedders."
+  },
+  {
+   "campo": "licenca",
+   "url": "https://github.com/meilisearch/meilisearch",
+   "citacao": "Fully open source under the MIT license; Enterprise: Not allowed in production without a commercial agreement"
+  }
+ ],
+ "nao_verificado": [
+  "stemmer/stopwords de português",
+  "RAM/disco",
+  "se o rest embedder aceita URL localhost/privada",
+  "CI windows-latest"
+ ]
+}

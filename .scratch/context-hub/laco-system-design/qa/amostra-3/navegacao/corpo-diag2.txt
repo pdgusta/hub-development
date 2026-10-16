@@ -1,0 +1,24 @@
+const EXPR_BANCO = `(function(){var r=document.querySelector('[data-item="Banco local"]').getBoundingClientRect();return {x:r.left+r.width/2,y:r.top+r.height/2}})()`;
+const FICHA = `document.getElementById('ficha').classList.contains('aberta')`;
+const PEC = process.env.PECA || 'amostra.html';
+R.peca = PEC;
+for (const [W,H] of [[1920,1080],[320,640]]) {
+  const T = {}; R.tamanhos[`${W}x${H}`] = T; T.rodadas = [];
+  for (const espera of [200, 1200]) for (const rep of [1,2]) {
+    await abrir(W,H,true);
+    const b = await ev(EXPR_BANCO); const r = {espera, rep};
+    await toqueEv('touchStart',[{x:b.x-40,y:b.y-20,id:0}]); for(let i=1;i<=6;i++){ await toqueEv('touchMove',[{x:b.x-40+i*40/3,y:b.y-20+i*20/3,id:0}]); await esp(10);}
+    await toqueEv('touchEnd',[{x:b.x+40,y:b.y+20,id:0}]); await esp(espera);
+    r.tentativas = [];
+    for (let k=0;k<3;k++) {
+      const b2 = await ev(EXPR_BANCO);
+      await toqueEv('touchStart',[{x:b2.x,y:b2.y,id:0}]); await toqueEv('touchEnd',[{x:b2.x,y:b2.y,id:0}]); await esp(250);
+      const f = await ev(FICHA); r.tentativas.push(f); if (f) break;
+    }
+    T.rodadas.push(r);
+  }
+  await cmd('Emulation.setTouchEmulationEnabled',{enabled:false});
+}
+fs.writeFileSync(SAIDA, JSON.stringify(R,null,1));
+try{ws.close()}catch{}
+edge.kill(); srv.close(); setTimeout(()=>process.exit(0),500);

@@ -1,0 +1,31 @@
+{
+ "chave": "gh:elastic/go-elasticsearch",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T20:24:10Z",
+ "resultado": "corrige",
+ "conferencia": {
+  "resultado": "corrige",
+  "final": {
+   "serve": "search",
+   "role": "Official Go client to index and query an Elasticsearch search server.",
+   "place": [
+    "library"
+   ],
+   "mechanism": [
+    "other"
+   ],
+   "mcp": "unknown",
+   "windows": "unknown",
+   "portuguese": "unknown",
+   "license": "Apache-2.0",
+   "maturity": "stable",
+   "doubt": false,
+   "evidence": "The official Go client for Elasticsearch; esutil.BulkIndexer helper; Apache 2 license."
+  },
+  "o_que_mudou": [
+   "doubt: true -> false, README clearly says official client",
+   "maturity: unknown -> stable, official versioned client (v8/v9)"
+  ],
+  "nota": "Only a client for an external Elasticsearch server; useful if the hub adopts Elasticsearch, but Go and server weight make it a marginal fit."
+ }
+}

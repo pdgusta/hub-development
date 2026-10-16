@@ -1,0 +1,49 @@
+      28 +### Vigia (proposta ao Worker 7): o que a faixa entregaria                                                                                                            
+      29 +                                                                                                                                                                      
+      30  1. `vigia` (um comando, uma passada): lê o CouchDB local e grava o estado. Confere, como no Answer do 33:
+      31     - replicações pelo `_scheduler/docs` (parada há mais de 15 min com o outro par ligado = divergência; outro par
+      32       desligado = só informa a hora da última troca);
+
+● Update(C:\Projetos\context-hub\.scratch\construcao-do-hub\planejamento\agentes\Worker 8.md)
+  ⎿  Added 5 lines, removed 3 lines
+       91  
+       92  ### Para a próxima volta
+       93  
+       94 -- Ver quem assumiu banco, hooks e MCP e fechar com eles, por `maestri ask`, o caminho e o esquema do estado.                                                         
+       95 -- Conferir se o GitHub de cópia diária e o comando do `_archive/` têm dono; não são da minha faixa.                                                                  
+       94 +- Fechar com os donos das faixas 3 e 5 (URL e token no `.env.modelo`) e das faixas 2, 6, 7 e 9 (formato do fragmento                                                 
+       95 +  de hook e do mod), por `maestri ask`, e com o Worker 7 o caminho e o esquema do estado da vigia.                                                                   
+       96 +- Conferir se a faixa 8 cabe na hora: são três harnesses vezes contrato, skills, MCP e hooks, mais a retirada do GSD;                                                
+       97 +  dividir por harness entre subagentes.                                                                                                                              
+       98  
+       97 -### Proposta de corte inteiro (só sugestão, para os outros compararem; não gravei no plano)                                                                          
+       99 +### Meu corte inicial (antes de ver o do Worker 2; quase igual, ficou o dele)                                                                                        
+      100  
+      101  1. raiz e contrato (seis raízes, `AGENTS.md`, `agents/`, esquemas de frontmatter, `.git`, sem `CLAUDE.md`);
+      102  2. banco do par A (CouchDB + sincronizador CLI, exclusão `**/.*`, 200 MiB, `mark-resolved`);
+ 
+  Ran 2 shell commands 
+
+● Assumi a faixa 8 (kit de par e portas dos harnesses) e propus 3 fronteiras para ninguém esperar ninguém: as URLs e tokens do MCP pelo .env, o formato do fragmento de hook e o
+  arquivo de estado da vigia. As minhas edições continuam no plano.md depois das gravações dos outros workers. Mudou o plano: sim.
+  
+  - A faixa: kit/par/instalar.ps1, que pode rodar várias vezes com o mesmo resultado, tem -WhatIf e guarda cópia e hash antes de mexer em qualquer arquivo. Ele liga o contrato por
+    link simbólico, as skills por junction, o MCP e os hooks nos três harnesses, e tira o GSD do escopo global. Tudo isso só num HOME de ensaio.
+  - A prova: rodar o kit duas vezes (a segunda não muda nada) e desfazer sem sobra.
+  - Por que a 8: comecei pela vigia, mas o Worker 2 já tinha gravado um corte em 10 faixas em que a vigia é a faixa 7. Fiquei com a 8 para manter "faixa N = Worker N" e não colidir
+    com o Worker 7. O que pensei da vigia ficou como proposta a ele.
+  - Para o Prumo conferir: o "juntar com o GSD" no arquivo de instruções do Copilot (ticket 42) parece superado pelo ticket 15, que tira o GSD do escopo global.
+  - Risco no ensaio: o COPILOT_HOME desliga ~/.agents/skills, então ele não prova a junction das skills no Copilot. Ainda não conferi se trocar o HOME inteiro resolve.
+
+  As notas estão em C:\Projetos\context-hub\.scratch\construcao-do-hub\planejamento\agentes\Worker 8.md e a linha da volta 1 já está no voltas.md.
+  
+  Resposta ao maestro: volta 1 · Worker 8 · assumi a faixa 8 (kit de par e portas dos harnesses) e propus as fronteiras do MCP pelo .env, do fragmento de hook e do estado da vigia ·
+  mudou o plano: sim.
+
+✻ Crunched for 15m 24s · done 9:29 PM
+
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+❯ 
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  ⬆ /gsd-update │ Opus 5.5 │ planejamento █░░░░░░░░░ 13%
+  ⏵⏵ auto mode on (shift+tab to cycle) · ← 2 agents

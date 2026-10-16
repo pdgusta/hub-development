@@ -1,0 +1,33 @@
+{
+ "chave": "gh:valeriansaliou/sonic",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T21:55:38Z",
+ "resultado": "corrige",
+ "conferencia": {
+  "resultado": "corrige",
+  "final": {
+   "mcp": "no",
+   "windows": "unknown",
+   "portuguese": "unknown",
+   "license": "unknown",
+   "maturity": "stable",
+   "doubt": false,
+   "serve": "search",
+   "role": "Lightweight identifier-index search backend (Sonic Channel TCP protocol), returns IDs for external documents",
+   "place": [
+    "network_service"
+   ],
+   "mechanism": [
+    "full_text"
+   ],
+   "evidence": "Sonic is a fast, lightweight and schema-less search backend; Sonic Channel protocol only, no HTTP endpoint; full Unicode on 80+ languages; Debian packages, Docker"
+  },
+  "o_que_mudou": [
+   "mechanism: full_text+other -> full_text, word index with typo correction and autocomplete",
+   "windows: yes/unknown -> unknown, README only shows Debian/Docker/cargo",
+   "portuguese: yes, supported by 80+ language claim (kept)",
+   "maturity: beta/stable -> stable, used in production at Crisp"
+  ],
+  "nota": "Light local search server for notes, but returns IDs only and needs an MCP wrapper plus a Windows build check."
+ }
+}

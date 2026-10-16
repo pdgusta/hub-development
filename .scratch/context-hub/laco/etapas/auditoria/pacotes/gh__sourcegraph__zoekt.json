@@ -1,0 +1,66 @@
+{
+ "chave": "gh:sourcegraph/zoekt",
+ "nomes": [
+  "Zoekt"
+ ],
+ "urls": [
+  "https://github.com/sourcegraph/zoekt"
+ ],
+ "readme_cortado": false,
+ "readme": "# Zoekt: fast code search\n\n    \"Zoekt, en gij zult spinazie eten\" - Jan Eertink\n\n    (\"seek, and ye shall eat spinach\" - My primary school teacher)\n\nZoekt is a text search engine intended for use with source\ncode. (Pronunciation: roughly as you would pronounce \"zooked\" in English)\n\n**Note:** This has been the maintained source for Zoekt since 2017, when it was forked from the\noriginal repository [github.com/google/zoekt](https://github.com/google/zoekt).\n\n## Background\n\nZoekt supports fast substring and regexp matching on source code, with a rich query language\nthat includes boolean operators (and, or, not). It can search individual repositories, and search\nacross many repositories in a large codebase. Zoekt ranks search results using a combination of code-related signals\nlike whether the match is on a symbol. Because of its general design based on trigram indexing and syntactic\nparsing, it works well for a variety of programming languages.\n\nThe two main ways to use the project are\n* Through individual commands, to index repositories and perform searches through Zoekt's [query language](doc/query_syntax.md)\n* Or, through the indexserver and webserver, which support syncing repositories from a code host and searching them through a web UI or API\n\nFor more details on Zoekt's design, see the [docs directory](doc/).\n\n## Usage\n\n### Installation\n\nInstall the commands you need with `go install`, as shown below. The examples\nuse the latest released version and assume that Go's binary installation\ndirectory is on your `PATH`.\n\n**Note**: It is also recommended to install [Universal ctags](https://github.com/universal-ctags/ctags), as symbol\ninformation is a key signal in ranking search results. See [ctags.md](doc/ctags.md) for more information.\n\n### Command-based usage\n\nZoekt supports indexing and searching repositories on the command line. This is most helpful\nfor simple local usage, or for testing and development.\n\n#### Indexing a local git repo\n\n    go install github.com/sourcegraph/zoekt/cmd/zoekt-git-index@latest\n    zoekt-git-index -index ~/.zoekt /path/to/repo\n\n#### Synchronizing local git repos\n\n`zoekt-local-sync` recursively discovers Git repositories under one or more\nroots. Repository names are relative to their root; the command fails before\nchanging the index if two repositories have the same name. By default the\ncommand previews the repositories that would be removed and indexed; pass `-f`\nto apply the sync. The supplied roots are the complete desired set for the\nindex directory, so repositories not found beneath them are removed. Use\nseparate index directories for repository sets that should be managed\nindependently:\n\n    go install github.com/sourcegraph/zoekt/cmd/zoekt-local-sync@latest\n    go install github.com/sourcegraph/zoekt/cmd/zoekt-git-index@latest\n    zoekt-local-sync -index ~/.zoekt ~/src\n    zoekt-local-sync -index ~/.zoekt -f ~/src\n\nThe `list` and `remove` subcommands inspect and explicitly remove repositories.\nRemoval, like synchronization, previews by default and requires `-f` to apply:\n\n    zoekt-local-sync list -index ~/.zoekt\n    zoekt-local-sync remove -index ~/.zoekt path/to/repo\n    zoekt-local-sync remove -index ~/.zoekt -f path/to/repo\n\n#### Indexing a local directory (not git-specific)\n\n    go install github.com/sourcegraph/zoekt/cmd/zoekt-index@latest\n    zoekt-index -index ~/.zoekt /path/to/repo\n\n#### Searching an index\n\n    go install github.com/sourcegraph/zoekt/cmd/zoekt@latest\n    zoekt 'hello'\n    zoekt 'hello file:README'\n\n### Zoekt services\n\nZoekt also contains an index server and web server to support larger-scale indexing and searching\nof remote repositories. The index server can be configured to periodically fetch and reindex repositories\nfrom a code host. The webserver can be configured to serve search results through a web UI or API.\n\n#### Indexing a GitHub organization\n\n    go install github.com/sourcegraph/zoekt/cmd/zoekt-indexserver@latest\n    go install github.com/sourcegraph/zoekt/cmd/zoekt-mirror-github@latest\n    go install github.com/sourcegraph/zoekt/cmd/zoekt-git-index@latest\n\n    echo YOUR_GITHUB_TOKEN_HERE > token.txt\n    echo '[{\"GitHubOrg\": \"apache\", \"CredentialPath\": \"token.txt\"}]' > config.json\n\n    zoekt-indexserver -mirror_config config.json -data_dir ~/.zoekt/\n\nThis will fetch all repos under 'github.com/apache', then index the repositories. The indexserver takes care of\nperiodically fetching and indexing new data, and cleaning up logfiles. See [config.go](cmd/zoekt-indexserver/config.go)\nfor more details on this configuration.\n\n#### Starting the web server\n\n    go install github.com/sourcegraph/zoekt/cmd/zoekt-webserver@latest\n    zoekt-webserver -index ~/.zoekt/\n\nThis will start a web server with a simple search UI at http://localhost:6070.\nSee the [query syntax docs](doc/query_syntax.md) for more details on the query\nlanguage.\n\n#### Container image\n\nZoekt publishes a single container image at `ghcr.io/sourcegraph/zoekt`. It\nincludes the Zoekt binaries, `git`, and `universal-ctags`. By default it runs\n`zoekt-webserver` against `/data/index`:\n\n    docker run --rm -p 6070:6070 -v \"$PWD/index:/data/index\" ghcr.io/sourcegraph/zoekt\n\nYou can override the default command to run `zoekt-indexserver` instead. This\nexample stores cloned repositories, logs, and indexes in the named Docker\nvolume `zoekt-data` and reads a mounted mirror config file:\n\n    docker run --rm \\\n      -v \"$PWD/config.json:/config.json:ro\" \\\n      -v \"$PWD/token.txt:/home/zoekt/token.txt:ro\" \\\n      -v zoekt-data:/data \\\n      ghcr.io/sourcegraph/zoekt \\\n      zoekt-indexserver -mirror_config /config.json -data_dir /data\n\nIf you start the web server with `-rpc`, it exposes a [simple JSON search\nAPI](doc/json-api.md) at `http://localhost:6070/api/search`.\n\nThe JSON API supports advanced features including:\n- Alternative BM25 scoring (using the `UseBM25Scoring` option)\n- Context lines around matches (using the `NumContextLines` option)\n\nFinally, the web server exposes a [gRPC API](grpc/protos/zoekt/webserver/v1/webserver.proto)\nthat supports structured query objects, streaming search results, and advanced\nsearch options.\n\n## Acknowledgements\n\nThanks to Han-Wen Nienhuys for creating Zoekt. Thanks to Alexander Neubeck for\ncoming up with this idea, and helping Han-Wen Nienhuys flesh it out.\n",
+ "fonte": "readme",
+ "respostas": [
+  {
+   "por": "claude-haiku-5-5",
+   "resposta": {
+    "serve": "search",
+    "role": "Busca por substring e regex com índice de trigramas, voltada a código",
+    "place": [
+     "disk",
+     "network_service"
+    ],
+    "mechanism": [
+     "grep",
+     "bm25"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "unknown",
+    "doubt": false,
+    "evidence": "\"fast substring and regexp matching on source code\"; \"Alternative BM25 scoring (using the UseBM25Scoring option)\""
+   }
+  }
+ ],
+ "conferencia_sonnet": {
+  "chave": "gh:sourcegraph/zoekt",
+  "modelo": "claude-sonnet-5-5",
+  "ts": "2026-10-13T22:00:16Z",
+  "resultado": "confirma",
+  "conferencia": {
+   "resultado": "confirma",
+   "final": {
+    "serve": "search",
+    "role": "Busca por substring e regex com índice de trigramas, voltada a código; API JSON/gRPC",
+    "place": [
+     "disk",
+     "network_service"
+    ],
+    "mechanism": [
+     "grep",
+     "bm25"
+    ],
+    "windows": "unknown",
+    "maturity": "unknown",
+    "evidence": "\"fast substring and regexp matching on source code\"; \"Alternative BM25 scoring (using the UseBM25Scoring option)\"",
+    "mcp": "unknown",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "doubt": false
+   },
+   "o_que_mudou": [],
+   "nota": "Motor de busca textual rápido com opção BM25, feito para código, mas indexa repositórios git/diretórios, serve como referência para busca lexical."
+  }
+ }
+}

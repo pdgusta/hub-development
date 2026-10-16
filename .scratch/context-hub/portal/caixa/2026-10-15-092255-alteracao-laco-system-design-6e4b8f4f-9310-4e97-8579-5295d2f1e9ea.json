@@ -1,0 +1,108 @@
+{
+  "envio": "6e4b8f4f-9310-4e97-8579-5295d2f1e9ea",
+  "tipo": "alteracao-laco",
+  "enviada": "2026-10-15T09:22:55-03:00",
+  "alvo": {
+    "tipo": "laco",
+    "id": "system-design",
+    "titulo": "System design: a cidade nova"
+  },
+  "ticket": "56",
+  "substitui": null,
+  "laco": {
+    "id": "system-design",
+    "titulo": "System design: a cidade nova",
+    "ticket": "56",
+    "execucao": {
+      "id": "system-design-proposta",
+      "inicio": null,
+      "terminou_em": null
+    },
+    "revisao": "775c1479c560b5b0b036fd2f26791449180e4c4b0147a31db5b065a8113703e3",
+    "no": {
+      "id": "teto",
+      "titulo": "Teto",
+      "papel": "controle"
+    },
+    "capacidades": [
+      {
+        "id": "parar-de-despachar"
+      }
+    ],
+    "situacao": "desconhecido",
+    "controle": {
+      "id": "voltas_conceitos",
+      "no": "teto",
+      "rotulo": "voltas dos conceitos",
+      "tipo": "inteiro",
+      "faixa": [
+        1,
+        6
+      ],
+      "opcoes": null,
+      "itens": null,
+      "unidade": "voltas",
+      "escala": null,
+      "aceita_nulo": false,
+      "nulo": null,
+      "quando_vale": "proxima-execucao",
+      "releitura": "manual",
+      "configurado": {
+        "valor": 3,
+        "como": "lido",
+        "fonte": "config.json → voltas_conceitos",
+        "hora": "2026-10-15T09:14:05-03:00",
+        "ilegivel": null
+      },
+      "em_uso": {
+        "estado": "nao-confirmado",
+        "valor": null,
+        "como": null,
+        "fonte": null,
+        "hora": null,
+        "ilegivel": null,
+        "diverge": false
+      },
+      "precondicoes": {},
+      "definicao": {
+        "id": "voltas_conceitos",
+        "no": "teto",
+        "rotulo": "voltas dos conceitos",
+        "tipo": "inteiro",
+        "quando_vale": "proxima-execucao",
+        "releitura": "manual",
+        "configurado": {
+          "arquivo": "config.json",
+          "campo": "voltas_conceitos"
+        },
+        "faixa": [
+          1,
+          6
+        ],
+        "unidade": "voltas"
+      },
+      "origem_configurado": {
+        "arquivo": "config.json",
+        "campo": "voltas_conceitos"
+      }
+    }
+  },
+  "corpo_hash": "f688cde9b1d570c69602dd99dc6ca435defe4bde45df754089ee20667fbe6078",
+  "corpo": {
+    "tipo": "alteracao-laco",
+    "laco": "system-design",
+    "execucao": "system-design-proposta",
+    "operacao": "mudar-controle",
+    "no": "teto",
+    "controle": "voltas_conceitos",
+    "antes": {
+      "tipo": "inteiro",
+      "valor": 3
+    },
+    "depois": {
+      "tipo": "inteiro",
+      "valor": 4
+    },
+    "revisao": "775c1479c560b5b0b036fd2f26791449180e4c4b0147a31db5b065a8113703e3"
+  }
+}

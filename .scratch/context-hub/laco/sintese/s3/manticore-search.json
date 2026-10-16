@@ -1,0 +1,56 @@
+{
+ "nome": "Manticore Search",
+ "url": "https://github.com/manticoresoftware/manticoresearch",
+ "papel": "serviço na rede",
+ "windows": "yes parcial: instalador com binários nativos, mas a doc recomenda WSL; Manticore Buddy exige Docker e os binários nativos não suportam replicação",
+ "mcp": "nao_verificado: README e manual não citam MCP; nenhum servidor oficial achado",
+ "portugues": "morphology com stem_en/stem_enru e libstemmer_* (snowball; libstemmer_pt nao_verificado); embeddings multilíngues conforme o modelo escolhido",
+ "markdown_frontmatter": "no: indexa linhas/campos de tabela (SQL/HTTP); Markdown e frontmatter exigem pipeline externo",
+ "atualizacao": "nao_verificado: sem watcher de disco; escrita por INSERT/REPLACE via API (indexador externo)",
+ "embeddings_endpoint": "yes: auto embeddings com MODEL_NAME e API_URL customizável (exemplo OpenAI-compatível, OpenRouter); também modelos locais",
+ "recursos": "C++ binário; ~40MB RSS com instância vazia; Docker para o Buddy no Windows",
+ "licenca": "GPLv3 ou posterior",
+ "ultimo_release": "29.9.0 (data nao_verificado)",
+ "atividade": "ativa (14.092 commits; data do último nao_verificado)",
+ "maturidade": "stable",
+ "encaixe": "Serviço na rede possível; híbrido BM25+vetor com API_URL para o FreeLLMAPI. Impedimentos: Docker para o Buddy no Windows, sem MCP e sem indexação de Markdown.",
+ "evidencias": [
+  {
+   "campo": "windows",
+   "url": "https://manual.manticoresearch.com/Installation/Windows",
+   "citacao": "native Windows binaries, which require Docker for Manticore Buddy ... The native Windows binaries do not support replication."
+  },
+  {
+   "campo": "windows",
+   "url": "https://manual.manticoresearch.com/Installation/Windows",
+   "citacao": "Installing Manticore via WSL2 is the recommended method"
+  },
+  {
+   "campo": "embeddings_endpoint",
+   "url": "https://manual.manticoresearch.com/Searching/KNN",
+   "citacao": "API_URL ... Optional. Custom API endpoint URL."
+  },
+  {
+   "campo": "recursos",
+   "url": "https://raw.githubusercontent.com/manticoresoftware/manticoresearch/master/README.md",
+   "citacao": "around 40MB RSS for an empty instance"
+  },
+  {
+   "campo": "licenca",
+   "url": "https://raw.githubusercontent.com/manticoresoftware/manticoresearch/master/README.md",
+   "citacao": "distributed under GPLv3 or later"
+  },
+  {
+   "campo": "ultimo_release",
+   "url": "https://github.com/manticoresoftware/manticoresearch/releases/latest",
+   "citacao": "redireciona para release-29.9.0"
+  }
+ ],
+ "nao_verificado": [
+  "MCP",
+  "libstemmer português",
+  "data do release e do último commit",
+  "remoção de acentos (charset_table)",
+  "atualização automática"
+ ]
+}

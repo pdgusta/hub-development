@@ -1,0 +1,34 @@
+{
+ "chave": "gh:silverbulletmd/silverbullet",
+ "urls": [
+  "https://github.com/silverbulletmd/silverbullet",
+  "https://silverbullet.md/"
+ ],
+ "tipos": [
+  "tool"
+ ],
+ "termos": [
+  "SilverBullet",
+  "SilverBullet AI",
+  "Neovim notes search",
+  "Silverbullet queries",
+  "Markdown as database"
+ ],
+ "mencoes": 2,
+ "familias": [
+  "gemma",
+  "nemotron"
+ ],
+ "primeira_onda": 1,
+ "nomes": [
+  "SilverBullet"
+ ],
+ "resumos": [
+  "Aplicación de notas de código abierto basada en Neovim y Markdown que ofrece búsqueda de texto completo y permite agregar búsqueda semántica mediante plugins de IA.",
+  "MarkdownをデータソースとするWebノートアプリ。フロントmatterをクエリし、強力なフィルタリングが実行可能。"
+ ],
+ "readme_status": "ok",
+ "readme_nome": "README.md",
+ "readme_cortado": false,
+ "readme": "![GitHub Repo stars](https://img.shields.io/github/stars/silverbulletmd/silverbullet)\n![Docker Pulls](https://img.shields.io/docker/pulls/zefhemel/silverbullet)\n![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/silverbulletmd/silverbullet/total)\n![GitHub contributors](https://img.shields.io/github/contributors/silverbulletmd/silverbullet)\n[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/silverbulletmd/silverbullet)\n\n# SilverBullet\nSilverBullet is a Programmable, Private, Browser-based, Open Source, Self Hosted, Personal Knowledge Database — a fancy term for a \"notes app on steroids\".\n\n_Yowza!_ That surely is a lot of adjectives to describe a browser-based Markdown editor programmable with Lua.\n\nLet’s get more specific.\n\nSilverBullet combines a clean live-preview editor with wiki-style linking, a built-in database and query language, and a fully integrated Space Lua scripting environment, turning your notes into a programmable system that grows with you.\n\nIn SilverBullet you keep your content as a collection of Markdown Pages (called a Space). You navigate your space using the Page Picker like a traditional notes app, or through Links like a wiki (except they are bi-directional).\n\nIf you are the **writer** type, you’ll appreciate SilverBullet as a clean Markdown editor with Live Preview. If you have more of an **outliner** personality, SilverBullet has Outlining tools for you. Productivity freak? Have a look at Tasks. More of a **database** person? You will appreciate Objects and Queries (SLIQ). \n\nAnd if you are comfortable **programming** a little bit — now we’re really talking. You will love _dynamically generating content_ with Space Lua (SilverBullet’s Lua dialect), or to use it to create custom Commands, Page Templates or Widgets.\n\nYou were told there’s no such thing as a silver bullet. You were told wrong.\n\n[Much more detail can be found on silverbullet.md](https://silverbullet.md)\n\n## Installing SilverBullet\nCheck out the [instructions](https://docs.silverbullet.md/Install).\n\n## Developing SilverBullet\nSilverBullet's frontend (\"client\") is written in [TypeScript](https://www.typescriptlang.org/) and built on top of the excellent [CodeMirror 6](https://codemirror.net/) editor component. Additional UI is built using [Preact](https://preactjs.com). [ESBuild](https://esbuild.github.io) is used to build the frontend.\n\nThe server backend is written in [Rust](https://www.rust-lang.org/) (a Cargo workspace). It serves the pre-built client bundle, the file/space HTTP API, authentication, and a headless-Chrome runtime for server-side Lua.\n\n## Code structure\n* `bin/silverbullet/`: The standalone `silverbullet` server binary (Rust) (this is the one you generally run)\n* `bin/sb/`: The `sb` CLI client (Rust)\n* `bin/plug-compile.ts`: the plug compiler\n* `client/`: The SilverBullet client (browser, TypeScript)\n* `server/`: The SilverBullet server library (Rust): HTTP router, handlers, auth, runtime seam\n* `server-common/`: Shared Rust crate (space primitives, shared types)\n* `server-runtime-chrome/`: Headless-Chrome runtime backend (Rust)\n* `plugs`: Set of built-in plugs (TypeScript) that are distributed with SilverBullet\n* `libraries`: A set of libraries (space scripts, page templates, slash templates) distributed with SilverBullet (Space Lua)\n* `plug-api/`: Useful APIs for use in plugs and published to NPM\n  * `lib/`: Useful libraries to be used in plugs\n  * `syscalls/`: TypeScript wrappers around syscalls\n  * `types/`: Various (client) types that can be references from plugs\n* `scripts/`: Useful scripts\n* `docs/`: documentation (published as docs.silverbullet.md and bundled as Desktop's Help)\n\n### Requirements\n* [Node.js](https://nodejs.org/) 24+ and npm 10+: Used to build the frontend (client) and plugs\n* [Rust](https://www.rust-lang.org/tools/install) (stable, via `rustup`): Used to build the server\n\nThe project includes `.nvmrc` and `.node-version` files. If you use [nvm](https://github.com/nvm-sh/nvm) or another Node version manager, it will automatically use the correct Node.js version:\n\n```shell\nnvm use  # If using nvm\n```\n\nFirst, install dependencies:\n\n```shell\nmake setup\n```\n\nTo create a (release) build:\n\n```shell\nmake\n```\n\nThis will produce `silverbullet` and `cli` binaries in `./target/release/`, run `./target/release/silverbullet` to run the server.\n\n### Development workflow\n\nSilverBullet has two halves you rebuild **independently**:\n\n* The **client** (TypeScript: `client/`) is built by ESBuild into `client_bundle/`, which the server then serves.\n* The **server** (Rust: `server/`, `server-common/`, `server-runtime-chrome/`, `bin/silverbullet/`) is a compiled binary.\n\nRun the server in development with `cargo run`. A **debug** build serves the client bundle **live from `client_bundle/` on disk** (a release build embeds it instead):\n\n```shell\nnpm run build\ncargo run <PATH-TO-YOUR-DATA-FOLDER>\n```\n\n**When you change only the client** (TypeScript in `client/`): you do **not** need to restart the server. Rebuild just the client bundle and reload the page in your browser — the debug server serves the freshly-built bundle straight from disk:\n\n```shell\nnpm run build\n```\n\nTo build a self-contained **release** binary (with the client bundle embedded), and run it:\n\n```shell\nmake\n./target/release/silverbullet <PATH-TO-YOUR-DATA-FOLDER>\n```\n\n### Useful development tasks\n\n```shell\n# Clean all generated files\nmake clean\n# Typecheck and lint all code\nmake check\n# Format all code\nmake fmt\n# Run all tests\nmake test\n# Run benchmarks\nmake bench\n```\n\n### Build a docker container\nNote, you do not need Node.js nor Rust locally installed for this to work:\n\n```shell\ndocker build -t silverbullet .\n```\n\nTo run:\n```shell\ndocker run -p 3000:3000 -v <PATH-TO-YOUR-DATA-FOLDER>:/data silverbullet\n```\n"
+}

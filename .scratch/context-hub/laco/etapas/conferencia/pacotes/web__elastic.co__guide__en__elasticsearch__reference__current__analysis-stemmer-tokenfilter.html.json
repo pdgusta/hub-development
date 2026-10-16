@@ -1,0 +1,34 @@
+{
+ "chave": "web:elastic.co/guide/en/elasticsearch/reference/current/analysis-stemmer-tokenfilter.html",
+ "nomes": [
+  "Elasticsearch Stemmer Token Filter"
+ ],
+ "urls": [
+  "https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-stemmer-tokenfilter.html"
+ ],
+ "readme_cortado": false,
+ "readme": "[Stemmer token filter | Elasticsearch Reference]\n\nDocs\n\n /\n\n Reference\n\n /\n\n Elasticsearch\n\n /\n\n Text analysis components\n\n /\n\n Token filter reference\n\nStemmer token filter\n\nProvides algorithmic stemming for several languages, some with additional variants. For a list of supported languages, see the language parameter.\n\nWhen not customized, the filter uses the porter stemming algorithm for English.\n\nExample\n\nThe following analyze API request uses the stemmer filter’s default porter stemming algorithm to stem the foxes jumping quickly to the fox jump quickli:\n\n GET /_analyze\n {\n \"tokenizer\": \"standard\",\n \"filter\": [ \"stemmer\" ],\n \"text\": \"the foxes jumping quickly\"\n}\n\nThe filter produces the following tokens:\n\n[ the, fox, jump, quickli ]\n\nAdd to an analyzer\n\nThe following create index API request uses the stemmer filter to configure a new custom analyzer.\n\n PUT /my-index-000001\n {\n \"settings\": {\n \"analysis\": {\n \"analyzer\": {\n \"my_analyzer\": {\n \"tokenizer\": \"whitespace\",\n \"filter\": [ \"stemmer\" ]\n }\n }\n }\n }\n}\n\nConfigurable parameters\n\nlanguage\n(Optional, string) Language-dependent stemming algorithm used to stem tokens. If both this and the name parameter are specified, the language parameter argument is used.\n\n Valid values for language\n\nValid values are sorted by language. Defaults to english. Recommended algorithms are bolded.\n\nArabic: arabic\n\nArmenian: armenian\n\nBasque: basque\n\nBengali:bengali\n\nBrazilian Portuguese:brazilian\n\nBulgarian:bulgarian\n\nCatalan:catalan\n\nCzech:czech\n\nDanish:danish\n\nDutch\n\ndutch\n\ndutch_kp\n\n Deprecated in 8.16.0\n\nThis language was deprecated in 8.16.0.\n\nEnglish:\n\nenglish\n\nlight_english\n\nlovins\n\n Deprecated in 8.16.0\n\nThis language was deprecated in 8.16.0.\n\nminimal_english\n\nporter2\n\npossessive_english\n\nEstonian:estonian\n\nFinnish:\n\nfinnish\n\nlight_finnish\n\nFrench:\n\nlight_french\n\nfrench\n\nminimal_french\n\nGalician:\n\ngalician\n\nminimal_galician (Plural step only)\n\nGerman:\n\nlight_german,\n\ngerman\n\nminimal_german\n\nGreek:greek\n\nHindi:hindi\n\nHungarian:\n\nhungarian\n\nlight_hungarian\n\nIndonesian:indonesian\n\nIrish:irish\n\nItalian:\n\nlight_italian\n\nitalian\n\nKurdish (Sorani):sorani\n\nLatvian:latvian\n\nLithuanian:lithuanian\n\nNorwegian (Bokmål):\n\nnorwegian\n\nlight_norwegian\n\nminimal_norwegian\n\nNorwegian (Nynorsk):\n\nlight_nynorsk\n\nminimal_nynorsk\n\nPersian:persian\n\nPortuguese:\n\nlight_portuguese\n\nminimal_portuguese\n\nportuguese\n\nportuguese_rslp\n\nRomanian:romanian\n\nRussian:\n\nrussian\n\nlight_russian\n\nSerbian:serbian\n\nSpanish:\n\nlight_spanish\n\nspanish\n\nspanish_plural\n\nSwedish:\n\nswedish\n\nlight_swedish\n\nTurkish:turkish\n\nname\nAn alias for the language parameter. If both this and the language parameter are specified, the language parameter argument is used.\n\nCustomize\n\nTo customize the stemmer filter, duplicate it to create the basis for a new custom token filter. You can modify the filter using its configurable parameters.\n\nFor example, the following request creates a custom stemmer filter that stems words using the light_german algorithm:\n\n PUT /my-index-000001\n {\n \"settings\": {\n \"analysis\": {\n \"analyzer\": {\n \"my_analyzer\": {\n \"tokenizer\": \"standard\",\n \"filter\": [\n \"lowercase\",\n \"my_stemmer\"\n ]\n }\n },\n \"filter\": {\n \"my_stemmer\": {\n \"type\": \"stemmer\",\n \"language\": \"light_german\"\n }\n }\n }\n }\n}",
+ "fonte": "site",
+ "respostas": [
+  {
+   "por": "claude-haiku-5-5",
+   "resposta": {
+    "serve": "search",
+    "role": "Portuguese stemmer token filter for matching word forms in pt-BR text",
+    "place": [
+     "network_service"
+    ],
+    "mechanism": [
+     "full_text"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "yes",
+    "license": "unknown",
+    "maturity": "unknown",
+    "doubt": false,
+    "evidence": "Provides algorithmic stemming for several languages ... Portuguese: light_portuguese, minimal_portuguese, portuguese, portuguese_rslp"
+   }
+  }
+ ]
+}

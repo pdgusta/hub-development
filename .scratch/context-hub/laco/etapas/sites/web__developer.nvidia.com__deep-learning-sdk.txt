@@ -1,0 +1,170 @@
+Join Netflix, Fidelity, and NVIDIA to learn best practices for building, training, and deploying modern recommender systems.    Register Free 
+
+DEEP LEARNING SOFTWARE 
+
+NVIDIA CUDA-X AI is a complete deep learning software stack for researchers and software developers to build high performance GPU-accelerated applications for conversational AI, recommendation systems and computer vision. CUDA-X AI libraries deliver world leading performance for both training and inference across industry benchmarks such as MLPerf. 
+
+Every deep learning framework including PyTorch, TensorFlow and JAX is accelerated on single GPUs, as well as scale up to multi-GPU and multi-node configurations. Framework developers and researchers use the flexibility of GPU-optimized CUDA-X AI libraries to accelerate new frameworks and model architectures. 
+
+Built on CUDA-X, NVIDIA’s unified programming model provides a way to develop deep learning applications on the desktop or datacenter, and deploy them to datacenters, resource constrained IoT devices as well as automotive platforms with minimal to no code changes. 
+
+The NVIDIA® NGC™ catalog provides pre-trained models, training scripts, optimized framework containers and inference engines for popular deep learning models. NVIDIA AI Toolkit includes libraries for transfer learning, fine tuning, optimizing and deploying pre-trained models across a broad set of industries and AI workloads 
+
+There are over a hundred repos on NVIDIA Github covering products, demos, samples and tutorials to get started. 
+
+Integrated with Every Framework 
+
+Deep learning frameworks offer building blocks for designing, training and validating deep neural networks, through a high level programming interface. Widely used deep learning frameworks such as PyTorch, TensorFlow, and JAX rely on GPU-accelerated libraries such as cuDNN and TensorRT to deliver high-performance GPU accelerated training and inference. 
+
+You can find containerized frameworks in NGC with the latest GPU-optimizations and integrated with CUDA libraries and drivers. The containerized frameworks are verified and tested as part of monthly releases, to deliver the best performance across multiple edge and cloud platforms. To learn more about integrations with frameworks, resources and examples to get started, visit the Deep Learning Frameworks page. 
+
+Deep Learning Training 
+
+CUDA-X AI libraries accelerate deep learning training in every framework with high-performance optimizations delivering world leading performance on GPUs across applications such as conversational AI, natural language understanding, recommenders, and computer vision. The latest GPU performance is always available in the Deep Learning Training Performance page. 
+
+With GPU-accelerated frameworks, you can take advantage of optimizations including mixed precision compute on Tensor Cores, accelerate a diverse set of models, and easily scale training jobs from a single GPU to DGX SuperPods containing thousands of GPUs. 
+
+NVIDIA Performance on MLPerf 0.6 AI Benchmarks 
+
+ResNet-50 v1.5 Time to Solution on V100 
+
+MXNet | Batch Size refer to CNN V100 Training table below | Precision: Mixed | Dataset: ImageNet2012 | Convergence criteria - refer to MLPerf requirements 
+
+As deep learning is being applied to complex tasks such as language understanding and conversational AI, there has been an explosion in the size of models and compute resources required to train them. A common approach is to start from a model pre-trained on a generic dataset, and fine tune it for a specific industry, domain, and use case. NVIDIA AI toolkit provides libraries and tools to start from pre-trained models to perform transfer learning and fine tuning so you can maximize the performance and accuracy of your AI application. 
+
+ DALI 
+
+Data Loading Library (DALI) is a GPU-accelerated data augmentation and image loading library for optimizing data pipelines of deep learning frameworks. 
+
+ Learn More... 
+
+ cuDNN 
+
+CUDA Deep Neural Network (cuDNN) is a high-performance library with building blocks for deep neural network applications including deep learning primitives for convolutions, activation functions, and tensor transformations. 
+ Learn More... 
+
+ NCCL 
+
+NVIDIA Collective Communications Library (NCCL) accelerates multi-GPU communication with routines, such as all-gather, reduce, and broadcast that scale up to eight GPUs. 
+
+ Learn More... 
+
+ NeMo 
+
+NVIDIA Neural Modules (NeMo) is an open-source toolkit to build state-of-the-art neural networks for AI accelerated speech and language applications. 
+
+ Learn More... 
+
+ TAO Toolkit 
+
+TAO Toolkit is a python based toolkit to accelerate AI training by optimizing pre-trained models and applying transfer learning to achieve higher accuracy. Trained models can be pruned and deployed efficiently on NVIDIA edge platforms using DeepStream SDK and TensorRT to create a high performant AI system. 
+ Learn More... 
+
+ DIGITS 
+
+NVIDIA Deep Learning GPU Training System (DIGITS) is an interactive tool to manage data, design and train computer vision networks on multi-GPU systems, monitor performance in real time to select the best performing model for deployment. 
+
+ Learn More... 
+
+ AI-Assisted Annotation Toolkit 
+
+AI-Assisted Annotation Toolkit is a toolkit that can make any medical viewer AI-Ready through Client APIs and pre-trained models. 
+
+ Learn More... 
+
+Deep Learning Inference 
+
+CUDA-X AI includes high performance deep learning inference SDKs that minimize latency and maximize throughput for applications such as computer vision, conversational AI and recommenders in production environments. Applications developed with NVIDIA’s inference SDKs can deliver up to 40x higher inference performance on GPUs versus CPU-only platforms. 
+
+Built on the CUDA unified platform, NVIDIA’s CUDA-X inference solution provides an easy way to take a model developed on your desktop in any framework, apply optimizations and deploy it for inference in the datacenter as well as the edge. 
+
+Conversational AI and recommendation systems application pipelines execute 20-30 models, each with millions of parameters, for a single customer query. The pipeline needs to complete in under 300 ms for the application to appear responsive, placing very tight latency requirements on each model. Using high-performance optimizations and lower precision inference (FP16 and INT8) you can get dramatically higher performance on GPUs than alternative platforms. 
+
+The latest GPU performance is always available in the Deep Learning Inference Performance page. 
+
+Inference Image Classification on CNNs with TensorRT 
+
+ResNet-50 v1.5 Throughput 
+
+ DGX-1: 1x NVIDIA V100-SXM2-16GB, E5-2698 v4 2.2 GHz | TensorRT 6.0 | Batch Size = 128 | 19.12-py3 | Precision: Mixed | Dataset: Synthetic 
+
+Supermicro SYS-4029GP-TRT T4: 1x NVIDIA T4, Gold 6240 2.6 GHz | TensorRT 6.0 | Batch Size = 128 | 19.12-py3 | Precision: INT8 | Dataset: Synthetic 
+
+ResNet-50 v1.5 Latency 
+
+ DGX-2: 1x NVIDIA V100-SXM3-32GB, Xeon Platinum 8168 2.7 GHz | TensorRT 6.0 | Batch Size = 1 | 19.12-py3 | Precision: INT8 | Dataset: Synthetic 
+
+Supermicro SYS-4029GP-TRT T4: 1x NVIDIA T4, Gold 6240 2.6 GHz | TensorRT 6.0 | Batch Size = 1 | 19.12-py3 | Precision: INT8 | Dataset: Synthetic 
+
+ TensorRT 
+
+NVIDIA TensorRT is an SDK for high-performance deep learning inference. It includes a deep learning inference optimizer and runtime that delivers low latency and high-throughput for deep learning inference applications. 
+ Learn More... 
+
+ DeepStream SDK 
+
+DeepStream SDK is a complete streaming analytics toolkit for multi-sensor processing, AI-based video and image understanding. 
+
+ Learn More... 
+
+ NVIDIA Triton Inference Server 
+
+NVIDIA Triton Inference Server is open source inference serving software to serve DL models that maximes GPU utilization, and is integrated with Kubernetes for orchestration, metrics, and auto-scaling. 
+
+ Learn More... 
+
+ NVIDIA Riva 
+
+ NVIDIA Riva is an SDK for building and deploying AI applications that fuse vision, speech and other sensors. It offers a complete workflow to build, train and deploy GPU-accelerated AI systems that can use visual cues such as gestures and gaze along with speech in context. 
+ Learn More... 
+
+Pre-Trained Models & DL Software from the NGC catalog 
+
+The NVIDIA® NGC™ catalog is the hub for GPU-optimized software for deep learning and machine learning. The AI software is updated monthly and is available through containers which can be deployed easily on GPU-powered systems in workstations, on-premises servers, at the edge, and in the cloud. The NGC™ catalog also offers pre-trained models and model scripts that developers can leverage to quickly build their own models with their datasets. In addition, the NGC™ catalog offers SDKs to build industry specific AI solutions and Helm registry for easy software deployment, giving faster time-to-solution. 
+
+The goal of the NGC™ catalog is to provide easy access to AI software so data scientists and developers can focus on building AI solutions. 
+
+ Deep Learning Software Containers 
+
+DL software containers like TensorFlow, PyTorch, and TensorRT are constantly updated with efficient libraries to provide better performance and the software is released monthly. This allows users to achieve faster training and inference performance on the same hardware by simply pulling the latest version of the container. The software is tested on single and multi-GPU systems, on workstations, servers, and cloud instances, giving a consistent experience across compute platforms. 
+ Learn More... 
+
+ Pre-Trained Models 
+
+NVIDIA® NGC™ catalog offers pre-trained models for a variety of common AI applications including text-to-speech, automatic speech recognition, and natural language processing. Users can re-train NVIDIA® NGC™ catalog models with their own datasets much faster than starting from scratch, saving valuable time. In addition, these pre-trained models offer high accuracy and have won MLPerf benchmarks, which can be fine-tuned on custom datasets to achieve unparalleled performance and accuracy. 
+
+ Learn More... 
+
+ Scripts 
+
+NVIDIA® NGC™ catalog offers step-by-step instructions and scripts for creating deep learning models, with sample performance and accuracy metrics to compare your results. These scripts utilize best practices to build lean and highly accurate models while giving the flexibility to customize the models for your use case. 
+
+ Learn more... 
+
+Developer and DevOps Tools 
+
+NVIDIA developer tools work on desktop and edge environments providing unique insight into complex CPU-GPU applications for deep learning, machine learning and HPC applications. This enables developers to build, debug, profile, and optimize performance of these applications effectively. Kubernetes on NVIDIA GPUs enables enterprises to scale up training and inference deployment to multi-cloud GPU clusters seamlessly. 
+
+ NSIGHT Systems 
+
+Nsight Systems is a system-wide performance analysis tool designed to visualize an application’s algorithms, help you identify the largest opportunities to optimize, and tune to scale efficiently across any quantity or size of CPUs and GPUs.
+
+ DLProf 
+
+Deep Learning Profiler (DLProf) is a profiling tool to visualize GPU utilization, operations supported by Tensor Core and their usage during execution. 
+
+ Kubernetes on NVIDIA GPUs 
+
+Kubernetes on NVIDIA GPUs enables enterprises to scale up training and inference deployment to multi-cloud GPU clusters seamlessly. Developers can wrap their GPU-accelerated applications along with their dependencies into a single package and deploy with Kubernetes and deliver the best performance on NVIDIA GPUs, regardless of the deployment environment. 
+
+ NSIGHT Compute 
+
+Nsight Compute is an interactive kernel profiler for deep learning applications built directly using CUDA. It provides detailed performance metrics and API debugging via GUI or command line interfaces. Nsight Compute also provides a customizable and data-driven user interface and metric collection that can be extended with analysis scripts for post-processing results. 
+
+ Feature Map Explorer 
+
+Feature Map Explorer (FME) enables visualization of four-dimensional, image-based feature map data using a range of views, from low-level channel visualizations to detailed numerical information about the full feature map tensor and each channel slice. 
+
+ Back to Top 
+
+ Join now

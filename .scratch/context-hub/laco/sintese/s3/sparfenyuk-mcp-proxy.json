@@ -1,0 +1,48 @@
+{
+ "nome": "sparfenyuk/mcp-proxy",
+ "url": "https://github.com/sparfenyuk/mcp-proxy",
+ "papel": "repasse de MCP",
+ "windows": "nao_verificado (README e classifiers PyPI listam só MacOS/Linux/Unix; CI só ubuntu-latest; Python puro, instalável via uv/pipx)",
+ "mcp": "yes (é proxy MCP; stdio->SSE/StreamableHTTP e SSE->stdio; servidores nomeados em /servers/NAME/)",
+ "portugues": "nao_aplicavel (não indexa conteúdo)",
+ "markdown_frontmatter": "nao_aplicavel",
+ "atualizacao": "nao_aplicavel (repasse; sem índice)",
+ "embeddings_endpoint": "nao usa embeddings",
+ "recursos": "Python >=3.10 (uv tool install mcp-proxy); sem número de memória na fonte",
+ "licenca": "MIT",
+ "ultimo_release": "v0.13.0 (feed de releases atualizado 2026-10-10)",
+ "atividade": "commit em 2026-10-10",
+ "maturidade": "beta (versão 0.x, ativo)",
+ "encaixe": "Serviço ou processo ao lado do MCP do banco, convertendo stdio<->HTTP para clientes sem stdio. Impedimento: Windows não declarado nem testado em CI.",
+ "evidencias": [
+  {
+   "campo": "mcp",
+   "url": "https://github.com/sparfenyuk/mcp-proxy",
+   "citacao": "The `mcp-proxy` is a tool that lets you switch between server transports. There are two supported modes: 1. stdio to SSE/StreamableHTTP 2. SSE to stdio"
+  },
+  {
+   "campo": "windows",
+   "url": "https://github.com/sparfenyuk/mcp-proxy/blob/main/pyproject.toml",
+   "citacao": "\"Operating System :: MacOS\", \"Operating System :: POSIX :: Linux\", \"Operating System :: Unix\""
+  },
+  {
+   "campo": "windows",
+   "url": "https://github.com/sparfenyuk/mcp-proxy/blob/main/.github/workflows/ci.yaml",
+   "citacao": "runs-on: ubuntu-latest (todos os jobs)"
+  },
+  {
+   "campo": "recursos",
+   "url": "https://github.com/sparfenyuk/mcp-proxy/blob/main/pyproject.toml",
+   "citacao": "requires-python = \">=3.10\""
+  },
+  {
+   "campo": "licenca",
+   "url": "https://github.com/sparfenyuk/mcp-proxy/blob/main/LICENSE",
+   "citacao": "MIT License Copyright (c) 2024 Sergey Parfenyuk"
+  }
+ ],
+ "nao_verificado": [
+  "funcionamento real no Windows nativo",
+  "consumo de memória"
+ ]
+}

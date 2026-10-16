@@ -1,0 +1,41 @@
+s faixas 6 e 9; `livesync-commonlib` para decifrar, como no ticket 0
+           9): (a) `vigia passada`: uma passada lê o CouchDB local (`_scheduler/docs`; conflitos abertos; ramo apagado de binário pela resolução por `mtime`), o disco (arquivo 
+           acima de 200 MiB), se o sincronizador está vivo e se o outro par responde; com E2EE, decifra o caminho com a frase-senha do `.env`; grava `estado.json` por troca atô
+           mica; (b) notificação do Windows **só quando o estado piora** em relação à passada anterior; (c) `vigia recuperar <caminho>` grava a versão perdida do binário num ar
+           quivo ao lado; (d) `hooks/07-vigia/`: hook de início de sessão nos três harnesses que injeta o resumo (com o outro par desligado, só a hora da última troca), o progr
+           ama do `notify` do Codex, o script de `statusLine` do Copilot e `mods/07-vigia/` (Claude Code, estado o tempo todo); (e) a tarefa agendada de 5 min como XML e `kit/p
+           ar/07-vigia.ps1` só com `-WhatIf` (registrar é `ready-for-human`); na hora, a vigia roda em laço no terminal; (f) se couber: Config Doctor travando o plugin
+      128  
+      129 -**Como se prova (testing decisions, de ponta a ponta):** `node --test` com um CouchDB dublê (respostas gravadas) e o disco do hub de ensaio, oito cenários dão o `est
+          -ado.json` esperado: tudo em ordem; conflito de texto; binário descartado; replicação parada há mais de 15 min com o outro par ligado (`divergencia`); outro par desli
+          -gado (`informa`, com a hora da última troca); arquivo de 201 MiB (`fsutil file createnew`, rápido); sincronizador parado; item `copia_diaria` da faixa 10. A notifica
+          -ção sai só na passada que piora (notificador dublê; uma real à vista do Gustavo, se ele quiser). `vigia recuperar` devolve os bytes do ramo apagado. Ponta a ponta no
+          - CouchDB de ensaio (porta 5997, com E2EE): no retrato da faixa 4, a vigia acusa o conflito e o binário **pelo caminho decifrado**; o hook de início, rodado com a ent
+          -rada JSON de cada harness, devolve o resumo; o mod e a `statusLine` mostram o estado de um arquivo de exemplo                                                        
+      129 +**Como se prova (testing decisions, de ponta a ponta):** `node --test` com um CouchDB dublê (respostas gravadas) e o disco do hub de ensaio, oito cenários dão o `est
+          +ado.json` esperado: tudo em ordem; conflito de texto; binário descartado; replicação parada há mais de 15 min com o outro par ligado (`divergencia`); outro par desli
+          +gado (`informa`, com a hora da última troca); arquivo de 201 MiB (`fsutil file createnew`, rápido); sincronizador parado; item `copia-diaria` da faixa 10 (`informa`,
+          + com notificação). Estado em `C:\context-hub\.local\vigia\estado.json` (fora do banco e do `.git`), com `nivel` por item e o do topo igual ao pior. A notificação sai
+          + só na passada que piora (notificador dublê; uma real à vista do Gustavo, se ele quiser). `vigia recuperar` devolve os bytes do ramo apagado. Ponta a ponta no CouchD
+          +B de ensaio (porta 5997, com E2EE): no retrato da faixa 4, a vigia acusa o conflito e o binário **pelo caminho decifrado**; o hook de início, rodado com a entrada JS
+          +ON de cada harness, devolve o resumo; o mod e a `statusLine` mostram o estado de um arquivo de exemplo                                                               
+      130  
+      131  **Como segue sem esperar as outras faixas:** banco (faixa 4): uso o `.env.modelo` e as portas do Worker 4 desde o minuto 0; até o retrato do item 6 chegar, forjo o c
+           onflito e o ramo apagado no meu CouchDB (5997) pela API e começo sem E2EE, ligando a frase-senha antes do fim. Outro par: `HUB_OUTRO_PAR_URL` (no ensaio, o CouchDB B
+            do Worker 4 ou um dublê parado). Kit (faixa 8): entrego `hooks/07-vigia/fragmento.json` no minuto 15, no formato do Worker 8, e o kit liga o `notify` do Codex ao me
+           u programa. Faixa 2: hook de início próprio, separado do da nota. Faixa 10: só leio o item `copia_diaria`. Não espero ninguém
+      132  
+  
+  Ran 1 shell command 
+
+● Volta 2 · Worker 7: corrigi dois erros da faixa 7 na spec.md. Troquei o caminho agents/vigia/ (o ticket 12 não prevê essa pasta) por agents/skills/vigia/, que o Prumo ainda
+  confirma. Também troquei copia_diaria por copia-diaria e pus no critério de aceite o caminho do estado.json e o nível de cada item. Fica uma pendência que vale para todas as faixas:
+  hooks/, mods/, kit/ e agents/test/ também não estão no ticket 12. Mudou o plano: não.
+
+✻ Cogitated for 4m 49s · done 9:41 PM
+
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+❯ 
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  ⬆ /gsd-update │ Opus 5.5 │ planejamento █░░░░░░░░░ 19%
+  ⏵⏵ auto mode on (shift+tab to cycle) · ← 2 agents

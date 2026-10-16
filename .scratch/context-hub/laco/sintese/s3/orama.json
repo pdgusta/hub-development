@@ -1,0 +1,56 @@
+{
+ "nome": "Orama",
+ "url": "https://github.com/oramasearch/orama",
+ "papel": "cópia leve no cliente",
+ "windows": "yes (biblioteca JS/TS em Node, navegador, Deno, Bun; sem binário; CI Windows nao_verificado)",
+ "mcp": "nao_verificado: sem servidor MCP próprio achado; seria preciso embrulhar",
+ "portugues": "yes: @orama/stemmers inclui Portuguese (31 idiomas) e stopwords; embeddings: plugin local TensorFlow.js 512 dim (multilíngue nao_verificado) ou vetores próprios",
+ "markdown_frontmatter": "no: indexa documentos JS com schema; Markdown/frontmatter exigem parse externo (frontmatter vira campo/filtro se mapeado)",
+ "atualizacao": "no: índice em memória; insert/update/remove por código; persistência por plugin; sem watcher",
+ "embeddings_endpoint": "parcial: aceita vetor vector[N] gerado por qualquer endpoint (você chama o FreeLLMAPI); o plugin oficial é só local (TensorFlow.js), sem base_url",
+ "recursos": "JS puro; Node ou navegador; núcleo descrito como menos de 2kb; índice inteiro em RAM",
+ "licenca": "Apache-2.0",
+ "ultimo_release": "3.1.18 (2025-12-19)",
+ "atividade": "npm modificado 2026-07-27; 1.095 commits; data do último commit nao_verificado",
+ "maturidade": "stable",
+ "encaixe": "Cópia leve no cliente/sandbox: índice serializado carregado no navegador ou Node sem tailnet. Impedimentos: sem MCP, sem watcher, índice em RAM, precisa de gerador do índice.",
+ "evidencias": [
+  {
+   "campo": "portugues",
+   "url": "https://raw.githubusercontent.com/oramasearch/orama/main/packages/stemmers/README.md",
+   "citacao": "Right now, Orama supports 31 languages and stemmers out of the box: ... Portuguese"
+  },
+  {
+   "campo": "embeddings_endpoint",
+   "url": "https://raw.githubusercontent.com/oramasearch/orama/main/packages/plugin-embeddings/README.md",
+   "citacao": "generate fast text embeddings at insert and search time offline, directly on your machine - no OpenAI needed!"
+  },
+  {
+   "campo": "embeddings_endpoint",
+   "url": "https://github.com/oramasearch/orama",
+   "citacao": "mode: 'vector' with a vector[size] schema field"
+  },
+  {
+   "campo": "licenca",
+   "url": "https://github.com/oramasearch/orama",
+   "citacao": "Apache 2.0"
+  },
+  {
+   "campo": "ultimo_release",
+   "url": "https://registry.npmjs.org/@orama/orama",
+   "citacao": "dist-tags latest 3.1.18, publicado 2025-12-19"
+  },
+  {
+   "campo": "recursos",
+   "url": "https://github.com/oramasearch/orama",
+   "citacao": "less than 2kb; browser, server, edge"
+  }
+ ],
+ "nao_verificado": [
+  "MCP",
+  "Windows em CI",
+  "último commit",
+  "modelo do plugin ser multilíngue",
+  "persistência em disco detalhes"
+ ]
+}

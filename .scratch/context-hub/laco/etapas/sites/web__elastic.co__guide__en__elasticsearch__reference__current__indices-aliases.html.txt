@@ -1,0 +1,362 @@
+Show more
+
+ Use
+
+ to navigate results,
+ ENTER
+ to select one,
+ ESC
+ to close
+
+Type in any word to easily find the endpoint, property or group of operations you are looking for.
+
+ API
+
+No results found for query: 
+ Search in all APIs
+
+An error occured while performing your search, please contact Bump.sh support if it persists.
+
+ Dismiss highlight
+
+ Show more
+
+ Create or update an alias
+
+ Generally available; Added in 1.3.0
+
+ Ask AI
+
+ View as Markdown
+
+ Copy as Markdown
+
+ POST
+
+ /_aliases
+
+ Api key auth
+
+ Basic auth
+
+ Bearer auth
+
+Adds a data stream or index to an alias.
+
+ Query parameters
+
+ master_timeout
+
+ string
+
+Period to wait for a connection to the master node.
+If no response is received before the timeout expires, the request fails and returns an error.
+
+Default value is 30s.
+
+ timeout
+
+ string
+
+Period to wait for a response.
+If no response is received before the timeout expires, the request fails and returns an error.
+
+Default value is 30s.
+
+ application/json
+
+ Body
+
+ Required
+
+ actions
+
+ array[object]
+
+Actions to perform.
+
+ Hide actions attributes
+ Show actions attributes
+ object
+
+ add
+
+ object
+
+Adds a data stream or index to an alias.
+If the alias doesn’t exist, the add action creates it.
+
+ Hide add attributes
+ Show add attributes
+ object
+
+ alias
+
+ string
+
+Alias for the action.
+Index alias names support date math.
+
+ aliases
+
+ string | array[string]
+
+Aliases for the action.
+Index alias names support date math.
+
+ filter
+
+ object
+
+Query used to limit documents the alias can access.
+
+ External documentation
+
+ index
+
+ string
+
+Data stream or index for the action.
+Supports wildcards (*).
+
+ indices
+
+ string | array[string]
+
+Data streams or indices for the action.
+Supports wildcards (*).
+
+ index_routing
+
+ string
+
+Value used to route indexing operations to a specific shard.
+If specified, this overwrites the routing value for indexing operations.
+Data stream aliases don’t support this parameter.
+
+ is_hidden
+
+ boolean
+
+If true, the alias is hidden.
+
+Default value is false.
+
+ is_write_index
+
+ boolean
+
+If true, sets the write index or data stream for the alias.
+
+ routing
+
+ string
+
+Value used to route indexing and search operations to a specific shard.
+Data stream aliases don’t support this parameter.
+
+ search_routing
+
+ string
+
+Value used to route search operations to a specific shard.
+If specified, this overwrites the routing value for search operations.
+Data stream aliases don’t support this parameter.
+
+ must_exist
+
+ boolean
+
+If true, the alias must exist to perform the action.
+
+Default value is false.
+
+ remove
+
+ object
+
+Removes a data stream or index from an alias.
+
+ Hide remove attributes
+ Show remove attributes
+ object
+
+ alias
+
+ string
+
+Alias for the action.
+Index alias names support date math.
+
+ aliases
+
+ string | array[string]
+
+Aliases for the action.
+Index alias names support date math.
+
+ index
+
+ string
+
+Data stream or index for the action.
+Supports wildcards (*).
+
+ indices
+
+ string | array[string]
+
+Data streams or indices for the action.
+Supports wildcards (*).
+
+ must_exist
+
+ boolean
+
+If true, the alias must exist to perform the action.
+
+Default value is false.
+
+ remove_index
+
+ object
+
+Deletes an index.
+You cannot use this action on aliases or data streams.
+
+ Hide remove_index attributes
+ Show remove_index attributes
+ object
+
+ index
+
+ string
+
+Data stream or index for the action.
+Supports wildcards (*).
+
+ indices
+
+ string | array[string]
+
+Data streams or indices for the action.
+Supports wildcards (*).
+
+ must_exist
+
+ boolean
+
+If true, the alias must exist to perform the action.
+
+Default value is false.
+
+ Responses
+
+ 200
+
+ application/json
+
+ Hide response attribute
+ Show response attribute
+ object
+
+ acknowledged
+
+ boolean
+ Required
+
+For a successful response, this value is always true. On failure, an exception is returned instead.
+
+POST _aliases
+{
+ "actions": [
+ {
+ "add": {
+ "index": "logs-nginx.access-prod",
+ "alias": "logs"
+ }
+ }
+ ]
+}
+
+resp = client.indices.update_aliases(
+ actions=[
+ {
+ "add": {
+ "index": "logs-nginx.access-prod",
+ "alias": "logs"
+ }
+ }
+ ],
+)
+
+const response = await client.indices.updateAliases({
+ actions: [
+ {
+ add: {
+ index: "logs-nginx.access-prod",
+ alias: "logs",
+ },
+ },
+ ],
+});
+
+response = client.indices.update_aliases(
+ body: {
+ "actions": [
+ {
+ "add": {
+ "index": "logs-nginx.access-prod",
+ "alias": "logs"
+ }
+ }
+ ]
+ }
+)
+
+$resp = $client->indices()->updateAliases([
+ "body" => [
+ "actions" => array(
+ [
+ "add" => [
+ "index" => "logs-nginx.access-prod",
+ "alias" => "logs",
+ ],
+ ],
+ ),
+ ],
+]);
+
+curl -X POST -H "Authorization: ApiKey $ELASTIC_API_KEY" -H "Content-Type: application/json" -d '{"actions":[{"add":{"index":"logs-nginx.access-prod","alias":"logs"}}]}' "$ELASTICSEARCH_URL/_aliases"
+
+var response = await client.Indices
+ .UpdateAliasesAsync(d1 => d1
+ .Actions(d2 => d2
+ .Add(d3 => d3
+ .Alias("logs")
+ .Index("logs-nginx.access-prod")
+ )
+ )
+ );
+
+client.indices().updateAliases(u -> u
+ .actions(a -> a
+ .add(ad -> ad
+ .alias("logs")
+ .index("logs-nginx.access-prod")
+ )
+ )
+);
+
+ An example body for a `POST _aliases` request.
+
+{
+ "actions": [
+ {
+ "add": {
+ "index": "logs-nginx.access-prod",
+ "alias": "logs"
+ }
+ }
+ ]
+}

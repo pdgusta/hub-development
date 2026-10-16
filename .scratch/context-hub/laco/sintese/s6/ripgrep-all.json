@@ -1,0 +1,52 @@
+{
+ "nome": "ripgrep-all",
+ "nome_canonico": "ripgrep-all (rga)",
+ "chave": "gh:phiresky/ripgrep-all",
+ "url": "https://github.com/phiresky/ripgrep-all",
+ "serve": "search",
+ "area": null,
+ "identidade": "ok",
+ "windows": "yes: binario msvc na release v0.10.9 (o v0.10.10 nao traz asset windows); README diz que choco/scoop e o unico metodo suportado, pois o binario solto nao traz dependencias (pdftotext, pandoc, ffmpeg); release.yml compila x86_64-pc-windows-msvc em windows-2025",
+ "mcp": "no: nao ha MCP na fonte (README/repositorio); e um CLI",
+ "portugues": "nao_aplicavel como indexador: e grep regex sobre texto extraido, sem stemmer; sem recurso de portugues citado",
+ "markdown_frontmatter": "Le Markdown como texto puro (ripgrep); pandoc converte docx/epub etc. para texto; nao indexa, nao interpreta frontmatter nem divide por titulo",
+ "atualizacao": "nenhuma: sem indice; cada busca varre os arquivos, com cache em SQLite do texto extraido (AppData\\Local\\ripgrep-all no Windows)",
+ "embeddings_endpoint": "nao usa embeddings",
+ "recursos": "Rust, binario unico + dependencias externas (ripgrep, pandoc, poppler, ffmpeg); cache em disco com --rga-cache-max-blob-len; numero de RAM/disco nao dado na fonte",
+ "licenca": "AGPL-3.0-or-later (Cargo.toml; a API do GitHub mostra NOASSERTION)",
+ "ultimo_release": "2025-11-09, v0.10.10",
+ "atividade": "2026-09-17 (ultimo commit)",
+ "maturidade": "stable (0.x, ativo)",
+ "encaixe": "Disco de cada maquina: grep em PDF/DOCX/anexos fora do banco, sem indice nem MCP. Impedimento: roda sobre arquivos, nao sobre o CouchDB cifrado em pedacos do LiveSync; AGPL e dependencias externas no Windows.",
+ "evidencias": [
+  {
+   "campo": "windows",
+   "url": "https://github.com/phiresky/ripgrep-all#windows",
+   "citacao": "installing via chocolatey or scoop is the only supported download method. If you download the binary from releases manually, you will not get the dependencies"
+  },
+  {
+   "campo": "windows",
+   "url": "https://github.com/phiresky/ripgrep-all/releases/tag/v0.10.9",
+   "citacao": "ripgrep_all-v0.10.9-x86_64-pc-windows-msvc.zip"
+  },
+  {
+   "campo": "licenca",
+   "url": "https://raw.githubusercontent.com/phiresky/ripgrep-all/master/Cargo.toml",
+   "citacao": "license = \"AGPL-3.0-or-later\""
+  },
+  {
+   "campo": "atualizacao",
+   "url": "https://github.com/phiresky/ripgrep-all#readme",
+   "citacao": "rga caches the extracted text, if it is small enough, to a database"
+  },
+  {
+   "campo": "markdown_frontmatter",
+   "url": "https://github.com/phiresky/ripgrep-all#readme",
+   "citacao": "Uses pandoc to convert binary/unreadable text documents to plain markdown-like text"
+  }
+ ],
+ "nao_verificado": [
+  "uso de RAM/disco em numero",
+  "MCP de terceiros"
+ ]
+}

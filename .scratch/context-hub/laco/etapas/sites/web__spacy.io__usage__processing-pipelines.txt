@@ -1,0 +1,1073 @@
+Guides
+Select page...Get started › InstallationGet started › Models & LanguagesGet started › Facts & FiguresGet started › spaCy 101Get started › New in v3.7Get started › New in v3.6Get started › New in v3.5Guides › Linguistic FeaturesGuides › Rule-based MatchingGuides › Processing PipelinesGuides › Embeddings & TransformersGuides › Large Language ModelsGuides › Training ModelsGuides › Layers & Model ArchitecturesGuides › spaCy ProjectsGuides › Saving & LoadingGuides › Memory ManagementGuides › VisualizersResources › Project TemplatesResources › v2.x DocumentationResources › Custom Solutions
+Get started
+Installation
+Models & Languages
+Facts & Figures
+spaCy 101
+New in v3.7
+New in v3.6
+New in v3.5
+Guides
+Linguistic Features
+Rule-based Matching
+Processing Pipelines
+Processing Text
+Pipelines & Components
+Custom Components
+Component Data
+Type Hints & Validation
+Trainable Components
+Extension Attributes
+Plugins & Wrappers
+Embeddings & Transformers
+Large Language Models
+Training Models
+Layers & Model Architectures
+spaCy Projects
+Saving & Loading
+Memory Management
+Visualizers
+Resources
+Project Templates
+v2.x Documentation
+Custom Solutions
+
+When you call nlp on a text, spaCy first tokenizes the text to produce a Doc
+object. The Doc is then processed in several different steps – this is also
+referred to as the processing pipeline. The pipeline used by the
+trained pipelines typically include a tagger, a lemmatizer, a parser
+and an entity recognizer. Each pipeline component returns the processed Doc,
+which is then passed on to the next component.
+
+Name: ID of the pipeline component.
+
+Component: spaCy’s implementation of the component.
+
+Creates: Objects, attributes and properties modified and set by the
+component.
+
+NameComponentCreatesDescription
+tokenizerTokenizerDocSegment text into tokens.
+processing pipeline
+taggerTaggerToken.tagAssign part-of-speech tags.
+parserDependencyParserToken.head, Token.dep, Doc.sents, Doc.noun_chunksAssign dependency labels.
+nerEntityRecognizerDoc.ents, Token.ent_iob, Token.ent_typeDetect and label named entities.
+lemmatizerLemmatizerToken.lemmaAssign base forms.
+textcatTextCategorizerDoc.catsAssign document labels.
+customcustom componentsDoc._.xxx, Token._.xxx, Span._.xxxAssign custom attributes, methods or properties.
+
+The capabilities of a processing pipeline always depend on the components, their
+models and how they were trained. For example, a pipeline for named entity
+recognition needs to include a trained named entity recognizer component with a
+statistical model and weights that enable it to make predictions of entity
+labels. This is why each pipeline specifies its components and their settings in
+the config:
+
+Does the order of pipeline components matter?¶
+
+The statistical components like the tagger or parser are typically independent
+and don’t share any data between each other. For example, the named entity
+recognizer doesn’t use any features set by the tagger and parser, and so on.
+This means that you can swap them, or remove single components from the pipeline
+without affecting the others. However, components may share a “token-to-vector”
+component like Tok2Vec or Transformer.
+You can read more about this in the docs on
+embedding layers.
+Custom components may also depend on annotations set by other components. For
+example, a custom lemmatizer may need the part-of-speech tags assigned, so it’ll
+only work if it’s added after the tagger. The parser will respect pre-defined
+sentence boundaries, so if a previous component in the pipeline sets them, its
+dependency predictions may be different. Similarly, it matters if you add the
+EntityRuler before or after the statistical entity
+recognizer: if it’s added before, the entity recognizer will take the existing
+entities into account when making predictions. The
+EntityLinker, which resolves named entities to knowledge
+base IDs, should be preceded by a pipeline component that recognizes entities
+such as the EntityRecognizer.
+
+Why is the tokenizer special?¶
+
+The tokenizer is a “special” component and isn’t part of the regular pipeline.
+It also doesn’t show up in nlp.pipe_names. The reason is that there can only
+really be one tokenizer, and while all other pipeline components take a Doc
+and return it, the tokenizer takes a string of text and turns it into a
+Doc. You can still customize the tokenizer, though. nlp.tokenizer is
+writable, so you can either create your own
+Tokenizer class from scratch,
+or even replace it with an
+entirely custom function.
+
+Processing text 
+When you call nlp on a text, spaCy will tokenize it and then call each
+component on the Doc, in order. It then returns the processed Doc that you
+can work with.
+
+When processing large volumes of text, the statistical models are usually more
+efficient if you let them work on batches of texts. spaCy’s
+nlp.pipe method takes an iterable of texts and yields
+processed Doc objects. The batching is done internally.
+
+💡Tips for efficient processing
+
+Process the texts as a stream using nlp.pipe and
+buffer them in batches, instead of one-by-one. This is usually much more
+efficient.
+
+Only apply the pipeline components you need. Getting predictions from the
+model that you don’t actually need adds up and becomes very inefficient at
+scale. To prevent this, use the disable keyword argument to disable
+components you don’t need – either when loading a pipeline, or during
+processing with nlp.pipe. See the section on
+disabling pipeline components for more details and examples.
+
+In this example, we’re using nlp.pipe to process a
+(potentially very large) iterable of texts as a stream. Because we’re only
+accessing the named entities in doc.ents (set by the ner component), we’ll
+disable all other components during processing. nlp.pipe yields Doc objects,
+so we can iterate over them and access the named entity predictions:
+
+✏️ Things to try 
+
+Also disable the "ner" component. You’ll see that the doc.ents are now
+empty, because the entity recognizer didn’t run.
+
+Editable CodespaCy v3.7 · Python 3 · via Binder
+
+run
+Important note
+When using nlp.pipe, keep in mind that it returns a
+generator that
+yields Doc objects – not a list. So if you want to use it like a list, you’ll
+have to call list() on it first:
+
+You can use the as_tuples option to pass additional context along with each
+doc when using nlp.pipe. If as_tuples is True, then
+the input should be a sequence of (text, context) tuples and the output will
+be a sequence of (doc, context) tuples. For example, you can pass metadata in
+the context and save it in a custom attribute:
+
+Editable CodespaCy v3.7 · Python 3 · via Binder
+
+run
+Multiprocessing 
+spaCy includes built-in support for multiprocessing with
+nlp.pipe using the n_process option:
+
+Depending on your platform, starting many processes with multiprocessing can add
+a lot of overhead. In particular, the default start method spawn used in
+macOS/OS X (as of Python 3.8) and in Windows can be slow for larger models
+because the model data is copied in memory for each new process. See the
+Python docs on multiprocessing
+for further details.
+For shorter tasks and in particular with spawn, it can be faster to use a
+smaller number of processes with a larger batch size. The optimal batch_size
+setting will depend on the pipeline components, the length of your documents,
+the number of processes and how much memory is available.
+
+Multiprocessing on GPU
+Multiprocessing is not generally recommended on GPU because RAM is too limited.
+If you want to try it out, be aware that it is only possible using spawn due
+to limitations in CUDA.
+Multiprocessing with transformer models
+In Linux, transformer models may hang or deadlock with multiprocessing due to an
+issue in PyTorch. One
+suggested workaround is to use spawn instead of fork and another is to limit
+the number of threads before loading any models using
+torch.set_num_threads(1).
+
+Pipelines and built-in components 
+spaCy makes it very easy to create your own pipelines consisting of reusable
+components – this includes spaCy’s default tagger, parser and entity recognizer,
+but also your own custom processing functions. A pipeline component can be added
+to an already existing nlp object, specified when initializing a
+Language class, or defined within a
+pipeline package.
+
+config.cfg (excerpt) 
+
+When you load a pipeline, spaCy first consults the
+meta.json and
+config.cfg. The config tells spaCy what language
+class to use, which components are in the pipeline, and how those components
+should be created. spaCy will then do the following:
+
+Load the language class and data for the given ID via
+get_lang_class and initialize it. The
+Language class contains the shared vocabulary, tokenization rules and the
+language-specific settings.
+
+Iterate over the pipeline names and look up each component name in the
+[components] block. The factory tells spaCy which
+component factory to use for adding the
+component with add_pipe. The settings are passed
+into the factory.
+
+Make the model data available to the Language class by calling
+from_disk with the path to the data directory.
+
+So when you call this…
+
+… the pipeline’s config.cfg tells spaCy to use the language "en" and the
+pipeline
+["tok2vec", "tagger", "parser", "ner", "attribute_ruler", "lemmatizer"]. spaCy
+will then initialize spacy.lang.en.English, and create each pipeline component
+and add it to the processing pipeline. It’ll then load in the model data from
+the data directory and return the modified Language class for you to use as
+the nlp object.
+Changed in v3.0
+spaCy v3.0 introduces a config.cfg, which includes more detailed settings for
+the pipeline, its components and the training process.
+You can export the config of your current nlp object by calling
+nlp.config.to_disk.
+Fundamentally, a spaCy pipeline package consists of three components:
+the weights, i.e. binary data loaded in from a directory, a pipeline of
+functions called in order, and language data like the tokenization rules and
+language-specific settings. For example, a Spanish NER pipeline requires
+different weights, language data and components than an English parsing and
+tagging pipeline. This is also why the pipeline state is always held by the
+Language class. spacy.load puts this all
+together and returns an instance of Language with a pipeline set and access to
+the binary data:
+
+spacy.load under the hood (abstract example)
+When you call nlp on a text, spaCy will tokenize it and then call each
+component on the Doc, in order. Since the model data is loaded, the
+components can access it to assign annotations to the Doc object, and
+subsequently to the Token and Span which are only views of the Doc, and
+don’t own any data themselves. All components return the modified document,
+which is then processed by the next component in the pipeline.
+
+The pipeline under the hood
+The current processing pipeline is available as nlp.pipeline, which returns a
+list of (name, component) tuples, or nlp.pipe_names, which only returns a
+list of human-readable component names.
+
+Built-in pipeline components 
+spaCy ships with several built-in pipeline components that are registered with
+string names. This means that you can initialize them by calling
+nlp.add_pipe with their names and spaCy will know
+how to create them. See the API documentation for a full list of
+available pipeline components and component functions.
+
+Usage 
+
+String nameComponentDescription
+taggerTaggerAssign part-of-speech-tags.
+parserDependencyParserAssign dependency labels.
+nerEntityRecognizerAssign named entities.
+entity_linkerEntityLinkerAssign knowledge base IDs to named entities. Should be added after the entity recognizer.
+entity_rulerEntityRulerAssign named entities based on pattern rules and dictionaries.
+textcatTextCategorizerAssign text categories: exactly one category is predicted per document.
+textcat_multilabelMultiLabel_TextCategorizerAssign text categories in a multi-label setting: zero, one or more labels per document.
+lemmatizerLemmatizerAssign base forms to words using rules and lookups.
+trainable_lemmatizerEditTreeLemmatizerAssign base forms to words.
+morphologizerMorphologizerAssign morphological features and coarse-grained POS tags.
+attribute_rulerAttributeRulerAssign token attribute mappings and rule-based exceptions.
+senterSentenceRecognizerAssign sentence boundaries.
+sentencizerSentencizerAdd rule-based sentence segmentation without the dependency parse.
+tok2vecTok2VecAssign token-to-vector embeddings.
+transformerTransformerAssign the tokens and outputs of a transformer model.
+Disabling, excluding and modifying components 
+If you don’t need a particular component of the pipeline – for example, the
+tagger or the parser, you can disable or exclude it. This can sometimes make
+a big difference and improve loading and inference speed. There are two
+different mechanisms you can use:
+
+Disable: The component and its data will be loaded with the pipeline, but
+it will be disabled by default and not run as part of the processing
+pipeline. To run it, you can explicitly enable it by calling
+nlp.enable_pipe. When you save out the nlp
+object, the disabled component will be included but disabled by default.
+
+Exclude: Don’t load the component and its data with the pipeline. Once
+the pipeline is loaded, there will be no reference to the excluded component.
+
+Disabled and excluded component names can be provided to
+spacy.load as a list.
+
+💡 Optional pipeline components 
+
+The disable mechanism makes it easy to distribute pipeline packages with
+optional components that you can enable or disable at runtime. For instance,
+your pipeline may include a statistical and a rule-based component for
+sentence segmentation, and you can choose which one to run depending on your
+use case.
+
+For example, spaCy’s trained pipelines like
+en_core_web_sm contain both a parser and
+senter that perform sentence segmentation, but the senter is disabled by
+default.
+
+In addition to disable, spacy.load() also accepts enable. If enable is
+set, all components except for those in enable are disabled. If enable and
+disable conflict (i.e. the same component is included in both), an error is
+raised.
+
+Changed in v3.0
+As of v3.0, the disable keyword argument specifies components to load but
+disable, instead of components to not load at all. Those components can now be
+specified separately using the new exclude keyword argument.
+As a shortcut, you can use the nlp.select_pipes
+context manager to temporarily disable certain components for a given block. At
+the end of the with block, the disabled pipeline components will be restored
+automatically. Alternatively, select_pipes returns an object that lets you
+call its restore() method to restore the disabled components when needed. This
+can be useful if you want to prevent unnecessary code indentation of large
+blocks.
+
+Disable for block
+If you want to disable all pipes except for one or a few, you can use the
+enable keyword. Just like the disable keyword, it takes a list of pipe
+names, or a string defining just one pipe.
+
+The nlp.pipe method also supports a disable keyword
+argument if you only want to disable components during processing:
+
+Finally, you can also use the remove_pipe method
+to remove pipeline components from an existing pipeline, the
+rename_pipe method to rename them, or the
+replace_pipe method to replace them with a
+custom component entirely (more details on this in the section on
+custom components).
+
+The Language object exposes different attributes
+that let you inspect all available components and the components that currently
+run as part of the pipeline.
+
+Example 
+
+NameDescription
+nlp.pipeline(name, component) tuples of the processing pipeline, in order.
+nlp.pipe_namesPipeline component names, in order.
+nlp.componentsAll (name, component) tuples, including disabled components.
+nlp.component_namesAll component names, including disabled components.
+nlp.disabledNames of components that are currently disabled.
+Sourcing components from existing pipelines v3.0
+Pipeline components that are independent can also be reused across pipelines.
+Instead of adding a new blank component, you can also copy an existing component
+from a trained pipeline by setting the source argument on
+nlp.add_pipe. The first argument will then be
+interpreted as the name of the component in the source pipeline – for instance,
+"ner". This is especially useful for
+training a pipeline because it lets you mix
+and match components and create fully custom pipeline packages with updated
+trained components and new components trained on your data.
+Important note for trained components
+When reusing components across pipelines, keep in mind that the vocabulary,
+vectors and model settings must match. If a trained pipeline includes
+word vectors and the component
+uses them as features, the pipeline you copy it to needs to have the same
+vectors available – otherwise, it won’t be able to make the same predictions.
+
+In training config 
+
+Instead of providing a factory, component blocks in the training
+config can also define a source. The string needs
+to be a loadable spaCy pipeline package or path.
+
+By default, sourced components will be updated with your data during training.
+If you want to preserve the component as-is, you can “freeze” it if the
+pipeline is not using a shared Tok2Vec layer:
+
+Editable CodespaCy v3.7 · Python 3 · via Binder
+
+run
+Analyzing pipeline components v3.0
+The nlp.analyze_pipes method analyzes the
+components in the current pipeline and outputs information about them like the
+attributes they set on the Doc and Token, whether
+they retokenize the Doc and which scores they produce during training. It will
+also show warnings if components require values that aren’t set by previous
+component – for instance, if the entity linker is used but no component that
+runs before it sets named entities. Setting pretty=True will pretty-print a
+table instead of only returning the structured data.
+
+✏️ Things to try 
+
+Add the components "ner" and "sentencizer" before the
+"entity_linker". The analysis should now show no problems, because
+requirements are met.
+
+Editable CodespaCy v3.7 · Python 3 · via Binder
+
+run
+
+Example output
+
+Structured
+
+Pretty
+Important note
+The pipeline analysis is static and does not actually run the components.
+This means that it relies on the information provided by the components
+themselves. If a custom component declares that it assigns an attribute but it
+doesn’t, the pipeline analysis won’t catch that.
+
+Creating custom pipeline components 
+A pipeline component is a function that receives a Doc object, modifies it and
+returns it – for example, by using the current weights to make a prediction and
+set some annotation on the document. By adding a component to the pipeline,
+you’ll get access to the Doc at any point during processing – instead of
+only being able to modify it afterwards.
+
+Example 
+
+ArgumentTypeDescription
+docDocThe Doc object processed by the previous component.
+RETURNSDocThe Doc object processed by this pipeline component.
+The @Language.component decorator lets you turn a
+simple function into a pipeline component. It takes at least one argument, the
+name of the component factory. You can use this name to add an instance of
+your component to the pipeline. It can also be listed in your pipeline config,
+so you can save, load and train pipelines using your component.
+Custom components can be added to the pipeline using the
+add_pipe method. Optionally, you can either specify
+a component to add it before or after, tell spaCy to add it first or
+last in the pipeline, or define a custom name. If no name is set and no
+name attribute is present on your component, the function name is used.
+
+Example 
+
+ArgumentDescription
+lastIf set to True, component is added last in the pipeline (default). bool
+firstIf set to True, component is added first in the pipeline. bool
+beforeString name or index to add the new component before. Union[str, int]
+afterString name or index to add the new component after. Union[str, int]
+Changed in v3.0
+As of v3.0, components need to be registered using the
+@Language.component or
+@Language.factory decorator so spaCy knows that a
+function is a component. nlp.add_pipe now takes the
+string name of the component factory instead of the component function. This
+doesn’t only save you lines of code, it also allows spaCy to validate and track
+your custom components, and make sure they can be saved and loaded.
+
+Examples: Simple stateless pipeline components 
+The following component receives the Doc in the pipeline and prints some
+information about it: the number of tokens, the part-of-speech tags of the
+tokens and a conditional message based on the document length. The
+@Language.component decorator lets you register the
+component under the name "info_component".
+
+✏️ Things to try 
+
+Add the component first in the pipeline by setting first=True. You’ll see
+that the part-of-speech tags are empty, because the component now runs
+before the tagger and the tags aren’t available yet.
+
+Change the component name or remove the name argument. You should see
+this change reflected in nlp.pipe_names.
+
+Print nlp.pipeline. You’ll see a list of tuples describing the component
+name and the function that’s called on the Doc object in the pipeline.
+
+Change the first argument to @Language.component, the name, to something
+else. spaCy should now complain that it doesn’t know a component of the
+name "info_component".
+
+Editable CodespaCy v3.7 · Python 3 · via Binder
+
+run
+Here’s another example of a pipeline component that implements custom logic to
+improve the sentence boundaries set by the dependency parser. The custom logic
+should therefore be applied after tokenization, but before the dependency
+parsing – this way, the parser can also take advantage of the sentence
+boundaries.
+
+✏️ Things to try 
+
+Print [token.dep_ for token in doc] with and without the custom pipeline
+component. You’ll see that the predicted dependency parse changes to match
+the sentence boundaries.
+
+Remove the else block. All other tokens will now have is_sent_start set
+to None (missing value), the parser will assign sentence boundaries in
+between.
+
+Editable CodespaCy v3.7 · Python 3 · via Binder
+
+run
+Component factories and stateful components 
+Component factories are callables that take settings and return a pipeline
+component function. This is useful if your component is stateful and if you
+need to customize their creation, or if you need access to the current nlp
+object or the shared vocab. Component factories can be registered using the
+@Language.factory decorator and they need at least
+two named arguments that are filled in automatically when the component is
+added to the pipeline:
+
+Example 
+
+ArgumentDescription
+nlpThe current nlp object. Can be used to access the shared vocab. Language
+nameThe instance name of the component in the pipeline. This lets you identify different instances of the same component. str
+All other settings can be passed in by the user via the config argument on
+nlp.add_pipe. The
+@Language.factory decorator also lets you define a
+default_config that’s used as a fallback.
+
+With config
+
+How is @Language.factory different from @Language.component?¶
+
+The @Language.component decorator is essentially a
+shortcut for stateless pipeline components that don’t need any settings.
+This means you don’t have to always write a function that returns your function
+if there’s no state to be passed through – spaCy can just take care of this for
+you. The following two code examples are equivalent:
+
+Can I add the @Language.factory decorator to a class?¶
+
+Yes, the @Language.factory decorator can be added to
+a function or a class. If it’s added to a class, it expects the __init__
+method to take the arguments nlp and name, and will populate all other
+arguments from the config. That said, it’s often cleaner and more intuitive to
+make your factory a separate function. That’s also how spaCy does it internally.
+Language-specific factories v3.0
+There are many use cases where you might want your pipeline components to be
+language-specific. Sometimes this requires entirely different implementation per
+language, sometimes the only difference is in the settings or data. spaCy allows
+you to register factories of the same name on both the Language base
+class, as well as its subclasses like English or German. Factories are
+resolved starting with the specific subclass. If the subclass doesn’t define a
+component of that name, spaCy will check the Language base class.
+Here’s an example of a pipeline component that overwrites the normalized form of
+a token, the Token.norm_ with an entry from a language-specific lookup table.
+It’s registered twice under the name "token_normalizer" – once using
+@English.factory and once using @German.factory:
+
+Editable CodespaCy v3.7 · Python 3 · via Binder
+
+run
+Implementation details
+Under the hood, language-specific factories are added to the
+factories registry prefixed with the language code,
+e.g. "en.token_normalizer". When resolving the factory in
+nlp.add_pipe, spaCy first checks for a
+language-specific version of the factory using nlp.lang and if none is
+available, falls back to looking up the regular factory name.
+Example: Stateful component with settings 
+This example shows a stateful pipeline component for handling acronyms:
+based on a dictionary, it will detect acronyms and their expanded forms in both
+directions and add them to a list as the custom doc._.acronyms
+extension attribute. Under the hood, it uses
+the PhraseMatcher to find instances of the phrases.
+The factory function takes three arguments: the shared nlp object and
+component instance name, which are passed in automatically by spaCy, and a
+case_sensitive config setting that makes the matching and acronym detection
+case-sensitive.
+
+✏️ Things to try 
+
+Change the config passed to nlp.add_pipe and set "case_sensitive" to
+True. You should see that the expanded acronym for “LOL” isn’t detected
+anymore.
+
+Add some more terms to the DICTIONARY and update the processed text so
+they’re detected.
+
+Add a name argument to nlp.add_pipe to change the component name. Print
+nlp.pipe_names to see the change reflected in the pipeline.
+
+Print the config of the current nlp object with
+print(nlp.config.to_str()) and inspect the [components] block. You
+should see an entry for the acronyms component, referencing the factory
+acronyms and the config settings.
+
+Editable CodespaCy v3.7 · Python 3 · via Binder
+
+run
+
+Initializing and serializing component data 
+Many stateful components depend on data resources like dictionaries and
+lookup tables that should ideally be configurable. For example, it makes
+sense to make the DICTIONARY in the above example an argument of the
+registered function, so the AcronymComponent can be re-used with different
+data. One logical solution would be to make it an argument of the component
+factory, and allow it to be initialized with different dictionaries.
+
+config.cfg 
+
+However, passing in the dictionary directly is problematic, because it means
+that if a component saves out its config and settings, the
+config.cfg will include a dump of the entire data,
+since that’s the config the component was created with. It will also fail if the
+data is not JSON-serializable.
+Option 1: Using a registered function 
+
+Pros: can load anything in Python, easy to add to and configure via
+config
+
+Cons: requires the function and its dependencies to be available at
+runtime
+
+If what you’re passing in isn’t JSON-serializable – e.g. a custom object like a
+model – saving out the component config becomes
+impossible because there’s no way for spaCy to know how that object was
+created, and what to do to create it again. This makes it much harder to save,
+load and train custom pipelines with custom components. A simple solution is to
+register a function that returns your resources. The
+registry lets you map string names to functions
+that create objects, so given a name and optional arguments, spaCy will know how
+to recreate the object. To register a function that returns your custom
+dictionary, you can use the @spacy.registry.misc decorator with a single
+argument, the name:
+
+What’s the misc registry? 
+
+The registry provides different categories for
+different types of functions – for example, model architectures, tokenizers or
+batchers. misc is intended for miscellaneous functions that don’t fit
+anywhere else.
+
+Registered function for assets
+In your default_config (and later in your
+training config), you can now refer to the function
+registered under the name "acronyms.slang_dict.v1" using the @misc key. This
+tells spaCy how to create the value, and when your component is created, the
+result of the registered function is passed in as the key "dictionary".
+
+config.cfg 
+
+Using a registered function also means that you can easily include your custom
+components in pipelines that you train. To make sure spaCy
+knows where to find your custom @misc function, you can pass in a Python file
+via the argument --code. If someone else is using your component, all they
+have to do to customize the data is to register their own function and swap out
+the name. Registered functions can also take arguments, by the way, that can
+be defined in the config as well – you can read more about this in the docs on
+training with custom code.
+Option 2: Save data with the pipeline and load it in once on initialization 
+
+Pros: lets components save and load their own data and reflect user
+changes, load in data assets before training without depending on them at
+runtime
+
+Cons: requires more component methods, more complex config and data
+flow
+
+Just like models save out their binary weights when you call
+nlp.to_disk, components can also serialize any
+other data assets – for instance, an acronym dictionary. If a pipeline component
+implements its own to_disk and from_disk methods, those will be called
+automatically by nlp.to_disk and will receive the path to the directory to
+save to or load from. The component can then perform any custom saving or
+loading. If a user makes changes to the component data, they will be reflected
+when the nlp object is saved. For more examples of this, see the usage guide
+on serialization methods.
+
+About the data path 
+
+The path argument spaCy passes to the serialization methods consists of the
+path provided by the user, plus a directory of the component name. This means
+that when you call nlp.to_disk("/path"), the acronyms component will
+receive the directory path /path/acronyms and can then create files in this
+directory.
+
+Custom serialization methods
+Now the component can save to and load from a directory. The only remaining
+question: How do you load in the initial data? In Python, you could just
+call the pipe’s from_disk method yourself. But if you’re adding the component
+to your training config, spaCy will need to know how
+to set it up, from start to finish, including the data to initialize it with.
+While you could use a registered function or a file loader like
+srsly.read_json.v1 as an argument of the
+component factory, this approach is problematic: the component factory runs
+every time the component is created. This means it will run when creating
+the nlp object before training, but also every time a user loads your
+pipeline. So your runtime pipeline would either depend on a local path on your
+file system, or it’s loaded twice: once when the component is created, and then
+again when the data is by from_disk.
+
+config.cfg
+
+config.cfg
+
+To solve this, your component can implement a separate method, initialize,
+which will be called by nlp.initialize if
+available. This typically happens before training, but not at runtime when the
+pipeline is loaded. For more background on this, see the usage guides on the
+config lifecycle and
+custom initialization.
+A component’s initialize method needs to take at least two named
+arguments: a get_examples callback that gives it access to the training
+examples, and the current nlp object. This is mostly used by trainable
+components so they can initialize their models and label schemes from the data,
+so we can ignore those arguments here. All other arguments on the method can
+be defined via the config – in this case a dictionary data.
+
+config.cfg 
+
+Custom initialize method
+When nlp.initialize runs before training (or when
+you call it in your own code), the
+[initialize] block of the config is
+loaded and used to construct the nlp object. The custom acronym component will
+then be passed the data loaded from the JSON file. After training, the nlp
+object is saved to disk, which will run the component’s to_disk method. When
+the pipeline is loaded back into spaCy later to use it, the from_disk method
+will load the data back in.
+
+Python type hints and validation v3.0
+spaCy’s configs are powered by our machine learning library Thinc’s
+configuration system, which supports
+type hints and even
+advanced type annotations
+using pydantic. If your component
+factory provides type hints, the values that are passed in will be checked
+against the expected types. If the value can’t be cast to an integer, spaCy
+will raise an error. pydantic also provides strict types like StrictFloat,
+which will force the value to be an integer and raise an error if it’s not – for
+instance, if your config defines a float.
+If you’re not using
+strict types,
+values that can be cast to the given type will still be accepted. For
+example, 1 can be cast to a float or a bool type, but not to a
+List[str]. However, if the type is
+StrictFloat,
+only a float will be accepted.
+The following example shows a custom pipeline component for debugging. It can be
+added anywhere in the pipeline and logs information about the nlp object and
+the Doc that passes through. The log_level config setting lets the user
+customize what log statements are shown – for instance, "INFO" will show info
+logs and more critical logging statements, whereas "DEBUG" will show
+everything. The value is annotated as a StrictStr, so it will only accept a
+string value.
+
+✏️ Things to try 
+
+Change the config passed to nlp.add_pipe to use the log level "INFO".
+You should see that only the statement logged with logger.info is shown.
+
+Change the config passed to nlp.add_pipe so that it contains unexpected
+values – for example, a boolean instead of a string: "log_level": False.
+You should see a validation error.
+
+Check out the docs on pydantic’s
+constrained types
+and write a type hint for log_level that only accepts the exact string
+values "DEBUG", "INFO" or "CRITICAL".
+
+Editable CodespaCy v3.7 · Python 3 · via Binder
+
+run
+
+Trainable components v3.0
+spaCy’s TrainablePipe class helps you implement your own
+trainable components that have their own model instance, make predictions over
+Doc objects and can be updated using spacy train. This
+lets you plug fully custom machine learning components into your pipeline.
+You’ll need the following:
+
+Model: A Thinc Model instance. This
+can be a model implemented in Thinc, or
+a wrapped model implemented in
+PyTorch, TensorFlow, MXNet or a fully custom solution. The model must take a
+list of Doc objects as input and can have any type of output.
+
+TrainablePipe subclass: A subclass of TrainablePipe that
+implements at least two methods: TrainablePipe.predict
+and TrainablePipe.set_annotations.
+
+Component factory: A component factory registered with
+@Language.factory that takes the nlp object and
+component name and optional settings provided by the config and returns an
+instance of your trainable component.
+
+Example 
+
+NameDescription
+predictApply the component’s model to a batch of Doc objects (without modifying them) and return the scores.
+set_annotationsModify a batch of Doc objects, using pre-computed scores generated by predict.
+By default, TrainablePipe.__init__ takes the shared vocab,
+the Model and the name of the component
+instance in the pipeline, which you can use as a key in the losses. All other
+keyword arguments will become available as TrainablePipe.cfg
+and will also be serialized with the component.
+
+Why components should be passed a Model instance, not create it
+
+spaCy’s config system resolves the config describing
+the pipeline components and models bottom-up. This means that it will
+first create a Model from a registered architecture,
+validate its arguments and then pass the object forward to the component. This
+means that the config can express very complex, nested trees of objects – but
+the objects don’t have to pass the model settings all the way down to the
+components. It also makes the components more modular and lets you
+swap different architectures
+in your config, and re-use model definitions.
+
+config.cfg (excerpt)
+Your trainable pipeline component factories should therefore always take a
+model argument instead of instantiating the
+Model inside the component. To register
+custom architectures, you can use the
+@spacy.registry.architectures decorator. Also see
+the training guide for details.
+For some use cases, it makes sense to also overwrite additional methods to
+customize how the model is updated from examples, how it’s initialized, how the
+loss is calculated and to add evaluation scores to the training output.
+NameDescription
+updateLearn from a batch of Example objects containing the predictions and gold-standard annotations, and update the component’s model.
+initializeInitialize the model. Typically calls into Model.initialize and can be passed custom arguments via the [initialize] config block that are only loaded during training or when you call nlp.initialize, not at runtime.
+get_lossReturn a tuple of the loss and the gradient for a batch of Example objects.
+scoreScore a batch of Example objects and return a dictionary of scores. The @Language.factory decorator can define the default_score_weights of the component to decide which keys of the scores to display during training and how they count towards the final score.
+📖Custom trainable components and models
+For more details on how to implement your own trainable components and model
+architectures, and plug existing models implemented in PyTorch or TensorFlow
+into your spaCy pipeline, see the usage guide on
+layers and model architectures.
+
+Extension attributes 
+spaCy allows you to set any custom attributes and methods on the Doc, Span
+and Token, which become available as Doc._, Span._ and Token._ – for
+example, Token._.my_attr. This lets you store additional information relevant
+to your application, add new features and functionality to spaCy, and implement
+your own models trained with other machine learning libraries. It also lets you
+take advantage of spaCy’s data structures and the Doc object as the “single
+source of truth”.
+
+Why ._ and not just a top-level attribute?¶
+
+Writing to a ._ attribute instead of to the Doc directly keeps a clearer
+separation and makes it easier to ensure backwards compatibility. For example,
+if you’ve implemented your own .coref property and spaCy claims it one day,
+it’ll break your code. Similarly, just by looking at the code, you’ll
+immediately know what’s built-in and what’s custom – for example,
+doc.sentiment is spaCy, while doc._.sent_score isn’t.
+
+How is the ._ implemented?¶
+
+Extension definitions – the defaults, methods, getters and setters you pass in
+to set_extension – are stored in class attributes on the Underscore class.
+If you write to an extension attribute, e.g. doc._.hello = True, the data is
+stored within the Doc.user_data dictionary. To keep the
+underscore data separate from your other dictionary entries, the string "._."
+is placed before the name, in a tuple.
+There are three main types of extensions, which can be defined using the
+Doc.set_extension,
+Span.set_extension and
+Token.set_extension methods.
+
+Description 
+
+Attribute extensions. Set a default value for an attribute, which can be
+overwritten manually at any time. Attribute extensions work like “normal”
+variables and are the quickest way to store arbitrary information on a Doc,
+Span or Token.
+
+Property extensions. Define a getter and an optional setter function. If
+no setter is provided, the extension is immutable. Since the getter and
+setter functions are only called when you retrieve the attribute, you can
+also access values of previously added attribute extensions. For example, a
+Doc getter can average over Token attributes. For Span extensions,
+you’ll almost always want to use a property – otherwise, you’d have to write
+to every possible Span in the Doc to set up the values correctly.
+
+Method extensions. Assign a function that becomes available as an object
+method. Method extensions are always immutable. For more details and
+implementation ideas, see
+these examples.
+
+Before you can access a custom extension, you need to register it using the
+set_extension method on the object you want to add it to, e.g. the Doc. Keep
+in mind that extensions are always added globally and not just on a
+particular instance. If an attribute of the same name already exists, or if
+you’re trying to access an attribute that hasn’t been registered, spaCy will
+raise an AttributeError.
+
+Example
+
+Usage example 
+
+Once you’ve registered your custom attribute, you can also use the built-in
+set, get and has methods to modify and retrieve the attributes. This is
+especially useful it you want to pass in a string instead of calling
+doc._.my_attr.
+Example: Pipeline component for GPE entities and country meta data via a REST API 
+This example shows the implementation of a pipeline component that fetches
+country meta data via the REST Countries API, sets
+entity annotations for countries and sets custom attributes on the Doc and
+Span – for example, the capital, latitude/longitude coordinates and even the
+country flag.
+
+Editable CodespaCy v3.7 · Python 3 · via Binder
+
+run
+In this case, all data can be fetched on initialization in one request. However,
+if you’re working with text that contains incomplete country names, spelling
+mistakes or foreign-language versions, you could also implement a
+like_country-style getter function that makes a request to the search API
+endpoint and returns the best-matching result.
+User hooks 
+While it’s generally recommended to use the Doc._, Span._ and Token._
+proxies to add your own custom attributes, spaCy offers a few exceptions to
+allow customizing the built-in methods like
+Doc.similarity or Doc.vector with
+your own hooks, which can rely on components you train yourself. For instance,
+you can provide your own on-the-fly sentence segmentation algorithm or document
+similarity method.
+Hooks let you customize some of the behaviors of the Doc, Span or Token
+objects by adding a component to the pipeline. For instance, to customize the
+Doc.similarity method, you can add a component that
+sets a custom function to doc.user_hooks["similarity"]. The built-in
+Doc.similarity method will check the user_hooks dict, and delegate to your
+function if you’ve set one. Similar results can be achieved by setting functions
+to Doc.user_span_hooks and Doc.user_token_hooks.
+
+Implementation note 
+
+The hooks live on the Doc object because the Span and Token objects are
+created lazily, and don’t own any data. They just proxy to their parent Doc.
+This turns out to be convenient here – we only have to worry about installing
+hooks in one place.
+
+NameCustomizes
+user_hooksDoc.similarity, Doc.vector, Doc.has_vector, Doc.vector_norm, Doc.sents
+user_token_hooksToken.similarity, Token.vector, Token.has_vector, Token.vector_norm, Token.conjuncts
+user_span_hooksSpan.similarity, Span.vector, Span.has_vector, Span.vector_norm, Span.root
+
+Add custom similarity hooks
+
+Developing plugins and wrappers 
+We’re very excited about all the new possibilities for community extensions and
+plugins in spaCy, and we can’t wait to see what you build with it! To get you
+started, here are a few tips, tricks and best
+practices. See here for examples of other spaCy
+extensions.
+Usage ideas 
+
+Adding new features and hooking in models. For example, a sentiment
+analysis model, or your preferred solution for lemmatization or sentiment
+analysis. spaCy’s built-in tagger, parser and entity recognizer respect
+annotations that were already set on the Doc in a previous step of the
+pipeline.
+
+Integrating other libraries and APIs. For example, your pipeline component
+can write additional information and data directly to the Doc or Token as
+custom attributes, while making sure no information is lost in the process.
+This can be output generated by other libraries and models, or an external
+service with a REST API.
+
+Debugging and logging. For example, a component which stores and/or
+exports relevant information about the current state of the processed
+document, and insert it at any point of your pipeline.
+
+Best practices 
+Extensions can claim their own ._ namespace and exist as standalone packages.
+If you’re developing a tool or library and want to make it easy for others to
+use it with spaCy and add it to their pipeline, all you have to do is expose a
+function that takes a Doc, modifies it and returns it.
+
+Make sure to choose a descriptive and specific name for your pipeline
+component class, and set it as its name attribute. Avoid names that are too
+common or likely to clash with built-in or a user’s other custom components.
+While it’s fine to call your package "spacy_my_extension", avoid component
+names including "spacy", since this can easily lead to confusion.
+
+When writing to Doc, Token or Span objects, use getter functions
+wherever possible, and avoid setting values explicitly. Tokens and spans don’t
+own any data themselves, and they’re implemented as C extension classes – so
+you can’t usually add new attributes to them like you could with most pure
+Python objects.
+
+Always add your custom attributes to the global Doc, Token or Span
+objects, not a particular instance of them. Add the attributes as early as
+possible, e.g. in your extension’s __init__ method or in the global scope
+of your module. This means that in the case of namespace collisions, the user
+will see an error immediately, not just when they run their pipeline.
+
+If your extension is setting properties on the Doc, Token or Span,
+include an option to let the user to change those attribute names. This
+makes it easier to avoid namespace collisions and accommodate users with
+different naming preferences. We recommend adding an attrs argument to the
+__init__ method of your class so you can write the names to class attributes
+and reuse them across your component.
+
+Ideally, extensions should be standalone packages with spaCy and
+optionally, other packages specified as a dependency. They can freely assign
+to their own ._ namespace, but should stick to that. If your extension’s
+only job is to provide a better .similarity implementation, and your docs
+state this explicitly, there’s no problem with writing to the
+user_hooks and overwriting spaCy’s built-in
+method. However, a third-party extension should never silently overwrite
+built-ins, or attributes set by other extensions.
+
+If you’re looking to publish a pipeline package that depends on a custom
+pipeline component, you can either require it in the package’s
+dependencies, or – if the component is specific and lightweight – choose to
+ship it with your pipeline package. Just make sure the
+@Language.component or
+@Language.factory decorator that registers the
+custom component runs in your package’s __init__.py or is exposed via an
+entry point.
+
+Once you’re ready to share your extension with others, make sure to add docs
+and installation instructions (you can always link to this page for more
+info). Make it easy for others to install and use your extension, for example
+by uploading it to PyPi. If you’re sharing your
+code on GitHub, don’t forget to tag it with
+spacy and
+spacy-extension
+to help people find it.
+
+Wrapping other models and libraries 
+Let’s say you have a custom entity recognizer that takes a list of strings and
+returns their BILUO tags. Given an
+input like ["A", "text", "about", "Facebook"], it will predict and return
+["O", "O", "O", "U-ORG"]. To integrate it into your spaCy pipeline and make it
+add those entities to the doc.ents, you can wrap it in a custom pipeline
+component function and pass it the token texts from the Doc object received by
+the component.
+The training.biluo_tags_to_spans is very
+helpful here, because it takes a Doc object and token-based BILUO tags and
+returns a sequence of Span objects in the Doc with added labels. So all your
+wrapper has to do is compute the entity spans and overwrite the doc.ents.
+
+How the doc.ents work 
+
+When you add spans to the doc.ents, spaCy will automatically resolve them
+back to the underlying tokens and set the Token.ent_type and Token.ent_iob
+attributes. By definition, each token can only be part of one entity, so
+overlapping entity spans are not allowed.
+
+The custom_ner_wrapper can then be added to a blank pipeline using
+nlp.add_pipe. You can also replace the existing
+entity recognizer of a trained pipeline with
+nlp.replace_pipe.
+Here’s another example of a custom model, your_custom_model, that takes a list
+of tokens and returns lists of fine-grained part-of-speech tags, coarse-grained
+part-of-speech tags, dependency labels and head token indices. Here, we can use
+the Doc.from_array to create a new Doc object using
+those values. To create a numpy array we need integers, so we can look up the
+string labels in the StringStore. The
+doc.vocab.strings.add method comes in handy here,
+because it returns the integer ID of the string and makes sure it’s added to
+the vocab. This is especially important if the custom model uses a different
+label scheme than spaCy’s default models.
+
+Example: spacy-stanza 
+
+For an example of an end-to-end wrapper for statistical tokenization, tagging
+and parsing, check out
+spacy-stanza. It uses a very
+similar approach to the example in this section – the only difference is that
+it fully replaces the nlp object instead of providing a pipeline component,
+since it also needs to handle tokenization.
+
+Sentence boundaries and heads
+If you create a Doc object with dependencies and heads, spaCy is able to
+resolve the sentence boundaries automatically. However, note that the HEAD
+value used to construct a Doc is the token index relative to the current
+token – e.g. -1 for the previous token. The CoNLL format typically annotates
+heads as 1-indexed absolute indices with 0 indicating the root. If that’s
+the case in your annotations, you need to convert them first:
+
+📖Advanced usage, serialization and entry points
+For more details on how to write and package custom components, make them
+available to spaCy via entry points and implement your own serialization
+methods, check out the usage guide on
+saving and loading.
+
+Suggest editsRead nextEmbeddings & Transformers

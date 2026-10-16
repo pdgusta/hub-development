@@ -1,0 +1,56 @@
+{
+ "chave": "gh:stopwords-iso/stopwords-pt",
+ "urls": [
+  "https://github.com/stopwords-iso/stopwords-pt"
+ ],
+ "tipos": [
+  "library",
+  "concept"
+ ],
+ "termos": [
+  "Portuguese stemming",
+  "Snowball stemmer",
+  "BM25 preprocessing",
+  "Portuguese NLP",
+  "stemming",
+  "tokenization",
+  "text normalization",
+  "Portuguese",
+  "NLP",
+  "ポルトガル語",
+  "語幹抽出",
+  "Porter Stemmer",
+  "Snowball",
+  "tokenizer",
+  "stemming for search",
+  "stemming/lemmatization",
+  "BM25 tuning",
+  "typeguard for text preprocessing"
+ ],
+ "mencoes": 8,
+ "familias": [
+  "gpt-oss",
+  "mistral"
+ ],
+ "primeira_onda": 2,
+ "nomes": [
+  "Portuguese Stemming (Snowball/Porter)",
+  "Portuguese Stemmer (e.g., `stemmer` or `nltk`)",
+  "Portuguese Stemmer",
+  "Portuguese stemming",
+  "Portuguese Stemming",
+  "Portuguese Stemming (Snowball/PortStem)",
+  "Portuguese Stemmer (Snowball/PortStem)",
+  "Portuguese Stemmer (Snowball/PyStem)"
+ ],
+ "resumos": [
+  "Librerías para normalización de raíces en portugués (ej: `stemmer` en Python o `snowball` en Rust) para mejorar BM25.",
+  "Portuguese stemming/tokenization tools (e.g., `stemmer` or NLTK’s `SnowballStemmer` for Portuguese) to preprocess text for BM25.",
+  "A library for stemming Portuguese words.",
+  "ポルトガル語の語幹抽出を行うアルゴリズム。"
+ ],
+ "readme_status": "ok",
+ "readme_nome": "README.md",
+ "readme_cortado": false,
+ "readme": "Stopwords Portuguese (PT)\n=======\n\n[![Build Status](https://travis-ci.org/stopwords-iso/stopwords-pt.svg?branch=master)](https://travis-ci.org/stopwords-iso/stopwords-pt)\n\nThe most comprehensive collection of stopwords for the portuguese language.\n\nA [multiple language](https://github.com/stopwords-iso/stopwords-iso) collection is also available.\n\n### Usage\n\nThe collection comes in a\n[JSON format](https://raw.githubusercontent.com/stopwords-iso/stopwords-pt/master/stopwords-pt.json) and a\n[text format](https://raw.githubusercontent.com/stopwords-iso/stopwords-pt/master/stopwords-pt.txt).\nYou are free to use this collection any way you like.\nIt is only currently published on [npm](https://www.npmjs.com/stopwords-pt) and [bower](https://bower.io).\n\n```sh\n$ npm install stopwords-pt\n```\n\n```sh\n$ bower install stopwords-pt\n```\n\n```js\n// Node\nconst stopwords = require('stopwords-pt'); // array of stopwords\n```\n\n### Contributing\n\nIf you wish to remove or update some of the stopwords, please file an issue first before sending a PR on the repo of the specific language.\n\nIf you would like to add a stopword or a new set of stopwords, please add them as a new text file insie the `raw` directory then send a PR.\n\nPlease send a separate PR on the [main repo](https://github.com/stopwords-iso/stopwords-iso) to credit the source of the added stopwords.\n\n### Credits\n\nAll stopwords sources are [listed on the main repo](https://github.com/stopwords-iso/stopwords-iso/blob/master/CREDITS.md).\n"
+}

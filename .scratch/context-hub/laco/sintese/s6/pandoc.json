@@ -1,0 +1,47 @@
+{
+ "nome": "pandoc",
+ "nome_canonico": "pandoc",
+ "chave": "gh:jgm/pandoc",
+ "url": "https://github.com/jgm/pandoc",
+ "serve": "stack",
+ "area": "text_extraction",
+ "identidade": "ok (jgm/pandoc, conversor universal de marcação)",
+ "windows": "yes: instalador msi, zip, choco e winget, binário nativo.",
+ "mcp": "nao_aplicavel",
+ "portugues": "nao_verificado: conversor de formatos, sem busca; o manual não foi lido quanto a idioma.",
+ "markdown_frontmatter": "nao_aplicavel",
+ "atualizacao": "nao_aplicavel",
+ "embeddings_endpoint": "nao_aplicavel",
+ "recursos": "CLI sem serviço. Binário avulso; o disco só pesa para PDF via LaTeX (MiKTeX); sem número de RAM na fonte.",
+ "licenca": "GPL-2.0 (README: GPLv2+)",
+ "ultimo_release": "2026-10-08, 3.12.1",
+ "atividade": "2026-10-13",
+ "maturidade": "stable",
+ "encaixe": "Importador de docx/html/epub para Markdown, rodando como CLI em cada máquina Windows ou chamado pelo MCP do banco. Não fala com CouchDB, LiveSync nem FreeLLMAPI. Impedimento: GPL, só se usado como processo externo.",
+ "evidencias": [
+  {
+   "campo": "windows",
+   "url": "https://pandoc.org/installing.html",
+   "citacao": "winget install --source winget --exact --id JohnMacFarlane.Pandoc"
+  },
+  {
+   "campo": "windows",
+   "url": "https://pandoc.org/installing.html",
+   "citacao": "Simply unzip this file and move the binaries to a directory of your choice."
+  },
+  {
+   "campo": "licenca",
+   "url": "https://github.com/jgm/pandoc",
+   "citacao": "license-GPLv2+"
+  },
+  {
+   "campo": "ultimo_release",
+   "url": "https://api.github.com/repos/jgm/pandoc/releases/latest",
+   "citacao": "tag_name 3.12.1, published_at 2026-10-08"
+  }
+ ],
+ "nao_verificado": [
+  "portugues",
+  "consumo de RAM"
+ ]
+}

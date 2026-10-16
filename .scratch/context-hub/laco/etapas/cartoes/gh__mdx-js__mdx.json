@@ -1,0 +1,37 @@
+{
+ "chave": "gh:mdx-js/mdx",
+ "urls": [
+  "https://github.com/mdx-js/mdx",
+  "https://mdxjs.com/"
+ ],
+ "tipos": [
+  "library",
+  "assembly"
+ ],
+ "termos": [
+  "mdx parser",
+  "mdx-js",
+  "markdown jsx",
+  "markdown-jsx",
+  "markdown components",
+  "frontmatter support"
+ ],
+ "mencoes": 2,
+ "familias": [
+  "gpt-oss",
+  "nemotron"
+ ],
+ "primeira_onda": 2,
+ "nomes": [
+  "mdx",
+  "MDX"
+ ],
+ "resumos": [
+  "A JSX‑enabled markdown parser for JavaScript that can be combined with AST tools to isolate heading‑based blocks.",
+  "Markdown with JSX support that allows embedding components and can include frontmatter for metadata."
+ ],
+ "readme_status": "ok",
+ "readme_nome": "readme.md",
+ "readme_cortado": false,
+ "readme": "[![MDX][githubusercontent-logo]][website]\n\n# Markdown for the component era\n\n[![Build][build-badge]][build]\n[![Coverage][coverage-badge]][coverage]\n[![Sponsors][sponsors-badge]][collective]\n[![Backers][backers-badge]][collective]\n[![Chat][chat-badge]][chat]\n\n[MDX][website] is an authorable format that lets you seamlessly write JSX in\nyour markdown documents.\nYou can import components, such as interactive charts or alerts, and embed them\nwithin your content.\nThis makes writing long-form content with components a blast.\n🚀\n\n```mdx\nimport {Chart} from './snowfall.js'\nexport const year = 2013\n\n# Last year’s snowfall\n\nIn {year}, the snowfall was above average.\nIt was followed by a warm spring which caused\nflood conditions in many of the nearby rivers.\n\n<Chart year={year} color=\"#fcb32c\" />\n```\n\nSee [§ What is MDX](https://mdxjs.com/docs/what-is-mdx/) for more info on the\nformat.\nSee [§ Playground](https://mdxjs.com/playground/) to try it out.\n\n## What is this?\n\nThis GitHub repository contains several packages for compiling the MDX format to\nJavaScript, integrating with bundlers such as webpack and Rollup, and for using\nit with frameworks such as React, Preact, and Vue.\n\nSee [§ Getting started](https://mdxjs.com/getting-started/) for how to\nintegrate MDX into your project.\n\n## Security\n\nSee [§ Security][security] on our site for information.\n\n## Contribute\n\nSee [§ Contribute][contribute] on our site for ways to get started.\nSee [§ Support][support] for ways to get help.\n\nThis project has a [code of conduct][coc].\nBy interacting with this repository, organization, or community you agree to\nabide by its terms.\n\n## Sponsor\n\nSee [§ Sponsor][sponsor] on our site for how to help financially.\n\n<table>\n<tr valign=\"middle\">\n<td width=\"20%\" align=\"center\" rowspan=\"2\" colspan=\"2\">\n  <a href=\"https://vercel.com\">Vercel</a><br><br>\n  <a href=\"https://vercel.com\"><img src=\"https://avatars1.githubusercontent.com/u/14985020?s=256&v=4\" width=\"128\"></a>\n</td>\n<td width=\"20%\" align=\"center\" rowspan=\"2\" colspan=\"2\">\n  <a href=\"https://motif.land\">Motif</a><br><br>\n  <a href=\"https://motif.land\"><img src=\"https://avatars1.githubusercontent.com/u/74457950?s=256&v=4\" width=\"128\"></a>\n</td>\n<td width=\"20%\" align=\"center\" rowspan=\"2\" colspan=\"2\">\n  <a href=\"https://www.hashicorp.com\">HashiCorp</a><br><br>\n  <a href=\"https://www.hashicorp.com\"><img src=\"https://avatars1.githubusercontent.com/u/761456?s=256&v=4\" width=\"128\"></a>\n</td>\n<td width=\"20%\" align=\"center\" rowspan=\"2\" colspan=\"2\">\n  <a href=\"https://www.gitbook.com\">GitBook</a><br><br>\n  <a href=\"https://www.gitbook.com\"><img src=\"https://avatars1.githubusercontent.com/u/7111340?s=256&v=4\" width=\"128\"></a>\n</td>\n<td width=\"20%\" align=\"center\" rowspan=\"2\" colspan=\"2\">\n  <a href=\"https://www.gatsbyjs.org\">Gatsby</a><br><br>\n  <a href=\"https://www.gatsbyjs.org\"><img src=\"https://avatars1.githubusercontent.com/u/12551863?s=256&v=4\" width=\"128\"></a>\n</td>\n</tr>\n<tr valign=\"middle\"></tr>\n<tr valign=\"middle\">\n<td width=\"20%\" align=\"center\" rowspan=\"2\" colspan=\"2\">\n  <a href=\"https://www.netlify.com\">Netlify</a><br><br>\n  <!--OC has a sharper image-->\n  <a href=\"https://www.netlify.com\"><img src=\"https://images.opencollective.com/netlify/4087de2/logo/256.png\" width=\"128\"></a>\n</td>\n<td width=\"10%\" align=\"center\">\n  <a href=\"https://www.coinbase.com\">Coinbase</a><br><br>\n  <a href=\"https://www.coinbase.com\"><img src=\"https://avatars1.githubusercontent.com/u/1885080?s=256&v=4\" width=\"64\"></a>\n</td>\n<td width=\"10%\" align=\"center\">\n  <a href=\"https://themeisle.com\">ThemeIsle</a><br><br>\n  <a href=\"https://themeisle.com\"><img src=\"https://avatars1.githubusercontent.com/u/58979018?s=128&v=4\" width=\"64\"></a>\n</td>\n<td width=\"10%\" align=\"center\">\n  <a href=\"https://expo.io\">Expo</a><br><br>\n  <a href=\"https://expo.io\"><img src=\"https://avatars1.githubusercontent.com/u/12504344?s=128&v=4\" width=\"64\"></a>\n</td>\n<td width=\"10%\" align=\"center\">\n  <a href=\"https://boostnote.io\">Boost Note</a><br><br>\n  <a href=\"https://boostnote.io\"><img src=\"https://images.opencollective.com/boosthub/6318083/logo/128.png\" width=\"64\"></a>\n</td>\n<td width=\"10%\" align=\"center\">\n  <a href=\"https://markdown.space\">Markdown Space</a><br><br>\n  <a href=\"https://markdown.space\"><img src=\"https://images.opencollective.com/markdown-space/e1038ed/logo/128.png\" width=\"64\"></a>\n</td>\n<td width=\"10%\" align=\"center\">\n  <a href=\"https://www.holloway.com\">Holloway</a><br><br>\n  <a href=\"https://www.holloway.com\"><img src=\"https://avatars1.githubusercontent.com/u/35904294?s=128&v=4\" width=\"64\"></a>\n</td>\n<td width=\"10%\"></td>\n<td width=\"10%\"></td>\n</tr>\n<tr valign=\"middle\">\n<td width=\"100%\" align=\"center\" colspan=\"8\">\n  <br>\n  <a href=\"https://opencollective.com/unified\"><strong>You?</strong></a>\n  <br><br>\n</td>\n</tr>\n</table>\n\n## License\n\n[MIT][] © Compositor and [Vercel][]\n\n[backers-badge]: https://opencollective.com/unified/backers/badge.svg\n\n[build]: https://github.com/mdx-js/mdx/actions\n\n[build-badge]: https://github.com/mdx-js/mdx/workflows/main/badge.svg\n\n[chat]: https://github.com/mdx-js/mdx/discussions\n\n[chat-badge]: https://img.shields.io/badge/chat-discussions-success.svg\n\n[coc]: https://github.com/mdx-js/.github/blob/main/code-of-conduct.md\n\n[collective]: https://opencollective.com/unified\n\n[contribute]: https://mdxjs.com/community/contribute/\n\n[coverage]: https://codecov.io/github/mdx-js/mdx\n\n[coverage-badge]: https://img.shields.io/codecov/c/github/mdx-js/mdx/main.svg\n\n[githubusercontent-logo]: https://raw.githubusercontent.com/mdx-js/.github/5a63e56/image/cover.svg?sanitize=true\n\n[mit]: license\n\n[security]: https://mdxjs.com/getting-started/#security\n\n[sponsor]: https://mdxjs.com/community/sponsor/\n\n[sponsors-badge]: https://opencollective.com/unified/sponsors/badge.svg\n\n[support]: https://mdxjs.com/community/support/\n\n[vercel]: https://vercel.com\n\n[website]: https://mdxjs.com\n"
+}

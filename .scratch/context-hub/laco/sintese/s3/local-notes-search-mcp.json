@@ -1,0 +1,59 @@
+{
+ "nome": "local-notes-search-mcp",
+ "url": "https://github.com/Furkiozknn/local-notes-search-mcp",
+ "papel": "disco+MCP pronto",
+ "windows": "yes (medido pelo autor, sem CI Windows): README \"Measured on the author's machine (Windows 11, Python 3.12, uv 0.12.5, 30 September 2026)\" e linha de testes \"Windows, model download blocked: 84 passed, 23 skipped\". CI roda só ubuntu-latest (4 jobs).",
+ "mcp": "yes: servidor próprio, stdio (ferramentas index_directory, search_notes, ask_notes, list_indexed_files, remove_directory).",
+ "portugues": "Embeddings multilíngues por padrão: sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2 (384-d), configurável via LOCAL_NOTES_SEARCH_MODEL. Busca só vetorial: sem BM25, stemmer ou stopwords. README foca turco/inglês, mas modelo cobre português (cobertura de PT: nao_verificado na fonte).",
+ "markdown_frontmatter": "Indexa .md e .txt/.py/.json/.yaml etc. Chunking por linhas (1500 caracteres + 200 de overlap), não por título. Sem uso de frontmatter. Filtro só por path_prefix (aplicado depois da busca vetorial, com over-fetch 4xtop_k).",
+ "atualizacao": "Manual: `index_directory` é chamado a pedido, pula arquivos inalterados por hash de conteúdo e remove os apagados. Sem watcher.",
+ "embeddings_endpoint": "Não: só modelo local fastembed ONNX (nome configurável), sem base_url. Não serve ao FreeLLMAPI. ask_notes usa Groq/Mistral via litellm, opcional, só para resposta, não para embeddings.",
+ "recursos": "Python 3.10-3.13 + uv; modelo ~0,22 GB baixado do Hugging Face na primeira vez (cache em ~/.local-notes-search/models); SQLite + sqlite-vec, sem daemon. Instalação medida: uv sync 22 s.",
+ "licenca": "MIT",
+ "ultimo_release": "nenhum release/tag publicado",
+ "atividade": "último commit 2026-10-13 (feed atom); 43 commits, 0 estrelas",
+ "maturidade": "beta/novo (sem releases; 107 testes, autor único, projeto de setembro de 2026)",
+ "encaixe": "Cópia leve no disco de cada máquina, via stdio. Impedimentos: escritor único SQLite, indexação manual, só vetorial e sem endpoint de embeddings; chunk por linha, sem título nem frontmatter.",
+ "evidencias": [
+  {
+   "campo": "windows",
+   "url": "https://github.com/Furkiozknn/local-notes-search-mcp",
+   "citacao": "Measured on the author's machine (Windows 11, Python 3.12, uv 0.12.5, 30 September 2026)"
+  },
+  {
+   "campo": "portugues",
+   "url": "https://github.com/Furkiozknn/local-notes-search-mcp",
+   "citacao": "`paraphrase-multilingual-MiniLM-L12-v2`, 384 dims ... actually multilingual"
+  },
+  {
+   "campo": "embeddings_endpoint",
+   "url": "https://github.com/Furkiozknn/local-notes-search-mcp",
+   "citacao": "Local embedding here is the **only** path"
+  },
+  {
+   "campo": "atualizacao",
+   "url": "https://github.com/Furkiozknn/local-notes-search-mcp",
+   "citacao": "Unchanged files are skipped via a cheap hash check"
+  },
+  {
+   "campo": "markdown_frontmatter",
+   "url": "https://github.com/Furkiozknn/local-notes-search-mcp",
+   "citacao": "Line-based chunker 1500 chars + 200 overlap never splits a line"
+  },
+  {
+   "campo": "mcp",
+   "url": "https://github.com/Furkiozknn/local-notes-search-mcp",
+   "citacao": "Register `local_notes_search.py` as a **stdio** MCP server"
+  },
+  {
+   "campo": "maturidade",
+   "url": "https://github.com/Furkiozknn/local-notes-search-mcp",
+   "citacao": "Single-writer SQLite. Concurrent ... calls from *separate processes* can collide on writes."
+  }
+ ],
+ "nao_verificado": [
+  "CI em Windows (CI só ubuntu)",
+  "cobertura do modelo para português (README fala em turco/inglês)",
+  "datas de release (não há)"
+ ]
+}

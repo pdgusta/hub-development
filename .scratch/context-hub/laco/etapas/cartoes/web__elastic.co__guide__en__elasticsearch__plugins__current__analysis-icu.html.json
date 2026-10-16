@@ -1,0 +1,58 @@
+{
+ "chave": "web:elastic.co/guide/en/elasticsearch/plugins/current/analysis-icu.html",
+ "urls": [
+  "https://www.elastic.co/guide/en/elasticsearch/plugins/current/analysis-icu.html",
+  "https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-icu-plugin.html"
+ ],
+ "tipos": [
+  "library",
+  "concept",
+  "tool"
+ ],
+ "termos": [
+  "stemming",
+  "acentos",
+  "portugués",
+  "icu",
+  "snowball",
+  "stemmer",
+  "elasticsearch icu plugin",
+  "portuguese stemming",
+  "portuguese stemming elasticsearch",
+  "icu tokenizer",
+  "Portuguese Standard Analyzer",
+  "analysis-icu",
+  "ICU Analyzer",
+  "文字正規化",
+  "icu-analyzer",
+  "ICULucene",
+  "org.apache.lucene.analysis.icu",
+  "ICU Analysis Plugin",
+  "Elasticsearch ICU"
+ ],
+ "mencoes": 9,
+ "familias": [
+  "agnes",
+  "gpt-oss",
+  "mistral"
+ ],
+ "primeira_onda": 3,
+ "nomes": [
+  "Elasticsearch Analysis ICU Plugin",
+  "Analisador de Português (Portuguese Analyzer)",
+  "Elasticsearch Analysis-Icu Plugin",
+  "Portuguese Language Plugin (analysis‑icu)",
+  "ICU Analyzer plugin"
+ ],
+ "resumos": [
+  "Plugin para Elasticsearch que soporta normalización de acentos y raíces lingüísticas (ej. portugués).",
+  "Conjunto de tokenizers, filtros de stemmer e normalização que tratam acentos e radicais da língua portuguesa.",
+  "ポルトガル語のアクセントと語幹処理をサポートするElasticsearchプラグイン",
+  "Elasticsearch 用の ICU 分析プラグインで、ポルトガル語のアクセントや語幹処理に対応"
+ ],
+ "fonte": "site",
+ "readme_status": "ok",
+ "readme_nome": "https://www.elastic.co/guide/en/elasticsearch/plugins/current/analysis-icu.html",
+ "readme_cortado": false,
+ "readme": "[ICU analysis plugin | Elasticsearch Reference]\n\nDocs\n\n /\n\n Reference\n\n /\n\n Elasticsearch\n\n /\n\n Elasticsearch plugins\n\n /\n\n Analysis plugins\n\nICU analysis plugin\n\nThe ICU Analysis plugin integrates the Lucene ICU module into Elasticsearch, adding extended Unicode support using the ICU libraries, including better analysis of Asian languages, Unicode normalization, Unicode-aware case folding, collation support, and transliteration.\n\n ICU analysis and backwards compatibility\n\nFrom time to time, the ICU library receives updates such as adding new characters and emojis, and improving collation (sort) orders. These changes may or may not affect search and sort orders, depending on which characters sets you are using.\n\nWhile we restrict ICU upgrades to major versions, you may find that an index created in the previous major version will need to be reindexed in order to return correct (and correctly ordered) results, and to take advantage of new characters.\n\nInstallation\n\nThis plugin can be installed using the plugin manager:\n\nsudo bin/elasticsearch-plugin install analysis-icu\n\nThe plugin must be installed on every node in the cluster, and each node must be restarted after installation.\n\nYou can download this plugin for offline install from https://artifacts.elastic.co/downloads/elasticsearch-plugins/analysis-icu/analysis-icu-9.5.5.zip. To verify the .zip file, use the SHA hash or ASC key.\n\nRemoval\n\nThe plugin can be removed with the following command:\n\nsudo bin/elasticsearch-plugin remove analysis-icu\n\nThe node must be stopped before removing the plugin."
+}

@@ -1,0 +1,34 @@
+{
+ "chave": "gh:elastic/elasticsearch",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T20:24:07Z",
+ "resultado": "corrige",
+ "conferencia": {
+  "resultado": "corrige",
+  "final": {
+   "serve": "search",
+   "role": "Distributed search engine (Elasticsearch); README given covers only docs authoring, not features.",
+   "place": [
+    "network_service"
+   ],
+   "mechanism": [
+    "full_text"
+   ],
+   "mcp": "unknown",
+   "windows": "unknown",
+   "portuguese": "unknown",
+   "license": "unknown",
+   "maturity": "unknown",
+   "doubt": false,
+   "evidence": "README is the docs guide for Elasticsearch: 'guide for writing, editing, and building the Elasticsearch docs'; no feature, license or platform claims."
+  },
+  "o_que_mudou": [
+   "serve: none/stack -> search, project is the Elasticsearch search engine",
+   "mechanism: bm25,vector,hybrid,embeddings -> full_text, README supports none of the neural claims",
+   "portuguese: yes -> unknown",
+   "license: Apache-2.0 -> unknown, README does not state it",
+   "maturity: stable -> unknown"
+  ],
+  "nota": "Heavy JVM search server; a possible search backend but README is docs-only and nothing here shows MCP or Windows fit."
+ }
+}

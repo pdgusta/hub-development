@@ -1,0 +1,116 @@
+Zed Industries
+Advancing the state of the art for collaborative software development.
+
+DeltaEst 2026
+A multiplayer environment for coding with agents, powered by DeltaDB.
+DownloadLearn More
+
+ZedEst 2021
+The world's fastest IDE. Open source. AI optional.
+Download
+
+Pinned
+
+Trace dropped keystrokes in GPUI inputs
+
+Review element cache invalidation rules
+Projects
+
+zed
+gpui
+
+Cache SumTree node summaries
+Investigate cache invalidationTrace summary propagation pathsCheck cursor invalidation callers
+
+Fix IME candidate window positioning
+
+Add scroll wheel phase events on macOS
+
+Simplify Entity subscription cleanup
+
+Reproduce stale text after window resize
+cosmic-text
+Threads
+
+Summarize feedback on my first GPUI PR
+
+Find a small rendering issue to work on
+
+Explain retained mode rendering
+
+Compare Metal frame capture tools
+
+Draft release notes for accessibility fixes
+nathansoboZed
+
+Cache SumTree node summaries
+
+Share
+
+Cursor::seek recomputes each internal node's summary on every descent — for a rope of a few MB that's most of our seek time. Can we cache the summaries on the nodes and invalidate on edit?
+
+Thought 3 times, ran 1 search, read 2 files
+
+Edit crates/sum_tree/src/sum_tree.rs
+ Internal { height: u8, summary: T::Summary, summary_cache: SummaryCache<T::Summary>, children: Vec<SumTree<T>>,
+
+Edit crates/sum_tree/src/cursor.rs
+ let mut end = self.position.clone(); end.add_summary(&child.compute_summary()); end.add_summary(child.cached_summary()); if end.cmp(target).is_ge() {
+
+$ cargo test -p sum_tree 2>&1 | tail -20
+Done — internal nodes now carry a SummaryCache keyed on a generation counter, and structural edits (push, remove, rebalance) bump the counter instead of recomputing eagerly. Cursor::seek reads through the cache, so it only recomputes summaries for nodes whose subtree actually changed — repeated seeks over an unedited region are pure cache hits. All 47 tests pass, including two new ones covering invalidation on push and on rebalancing.
+
+1 comment
+
+repeated seeks over an unedited region are pure cache hits
+do we have a benchmark proving this?
+
+repeated seeks over an unedited region are pure cache hits
+do we have a benchmark proving this?
+let's back that claim with data before we merge — add a criterion benchmark that seeks randomly through a tree of a million items, and share before/after numbers. i'd also like one seek-after-push case so we can see the invalidation cost on the spine.
+
+Thought 2 times, read 1 file
+
+$ cargo bench -p sum_tree -- seek
+Benchmarked on a tree of one million items: random seeks went from 41.2µs to 3.4µs (12x), and seek-after-push lands at 5.1µs — the spine invalidation only forces one recompute per level. Criterion configs and the raw numbers are in benches/seek.rs.
+
+nice numbers. before we merge, extract SummaryCache into its own module and re-export it from lib.rs — rope is going to want the same trick for chunk summaries.
+
+Thought 1 time, ran 1 search
+
+Edit crates/sum_tree/src/lib.rs
+mod cursor;mod sum_tree;mod summary_cache;pub use cursor::Cursor;pub use summary_cache::SummaryCache;
+Extracted — SummaryCache lives in summary_cache.rs now and lib.rs re-exports it, so rope can depend on it without reaching into sum_tree's internals. No behavior change; the test suite is green.
+
+what's the per-node memory overhead of the cache? we have trees with tens of millions of nodes in large buffers.
+
+16 bytes per internal node on 64-bit targets: a usize generation plus Option<S> where the niche fits in the summary's padding for our summary types. Leaves carry nothing. For a 10M-node tree that's ~160MB in internal nodes — but internal nodes are only ~1/32 of the total at our branching factor, so in practice it's closer to 5MB per 10M items.
+
+1 comment
+
+closer to 5MB per 10M items
+Can we link the benchmark for this estimate?
+
+delta/main+6−4
+HighFable 5
+
+Changes
+sum_tree.rs
+cursor.rs
+
+Sinceorigin/main+6−4
+
+enum Node<T: Item> {22 Internal {23 height: u8, summary: T::Summary,24 summary_cache: SummaryCache<T::Summary>,25 children: Vec<SumTree<T>>,26 },27 Leaf {28 items: Vec<T>,29 },}
+
+ pub fn push(&mut self, item: T) {87 match Arc::make_mut(&mut self.0) {88 Node::Internal { summary,89 summary_cache,90 children,91 ..92 } => { *summary = compute_summary(children);93 summary_cache.invalidate();94 children95 .last_mut()96 .expect("internal nodes are never empty")97 .push(item);
+
+ fn descend(&mut self, subtree: &'a SumTree<T>, target: &T::Summary) -> bool {39 for (index, child) in subtree.children().iter().enumerate() {40 let mut end = self.position.clone(); end.add_summary(&child.compute_summary());41 end.add_summary(child.cached_summary());42 if end.cmp(target).is_ge() {
+
+1mod cursor;2mod sum_tree;3mod summary_cache;4​5pub use cursor::Cursor;6pub use sum_tree::{Item, SumTree, Summary};7pub use summary_cache::SummaryCache;
+
+Agent Client Protocol
+Connect any client to any agent.
+GPUI
+A fast, GPU-accelerated UI framework for Rust.
+Tree-sitter
+Incremental parsing for programming languages.

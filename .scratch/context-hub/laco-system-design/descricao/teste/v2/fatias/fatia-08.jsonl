@@ -1,0 +1,24 @@
+{"n": 8, "pergunta": "Quando o **sincronizador** tenta replicar uma pasta com mais de 200 MiB (como uma pasta temporária de testes), o que acontece com os arquivos que estão dentro dela e como o Gustavo é notificado?", "tipo": "quando"}
+{"n": 18, "pergunta": "A colisão real e divergência fazem parte do grupo de problemas que exigem ação?", "tipo": "grupo"}
+{"n": 28, "pergunta": "Quando o cliente externo conecta via MCP mas a rede privada cai, e o cliente tenta ler uma nota de retomada, o que acontece com a camada de busca e qual notificação o vigia gera?", "tipo": "quando"}
+{"n": 38, "pergunta": "Se o agente falhar ao tentar atualizar a nota de retomada ao fim de uma resposta, como o sistema garante que a próxima sessão saiba onde parou?", "tipo": "grupo"}
+{"n": 48, "pergunta": "O que acontece se a sincronização parar de funcionar por mais de 15 minutos e as máquinas estiverem ligadas?", "tipo": "por-que"}
+{"n": 58, "pergunta": "Se o sincronizador travar ao processar um arquivo da iniciativa AVIANCA, o dado fica visível de forma incompleta na máquina oposta?", "tipo": "falha"}
+{"n": 68, "pergunta": "Como a camada de busca lida com a diferença entre o que está gravado no banco CouchDB e o que ainda está pendente de sincronização entre as duas máquinas?", "tipo": "diferenca"}
+{"n": 78, "pergunta": "O que o hub não faz quando um arquivo em conflito é editado manualmente sem passar pela tela de três vias?", "tipo": "o-que-nao-faz"}
+{"n": 88, "pergunta": "Se o Gustavo editar um arquivo na máquina A, o que acontece na máquina B?", "tipo": "se-x"}
+{"n": 98, "pergunta": "Por que a camada de busca precisa rodar localmente nas duas máquinas em vez de consultar um serviço único centralizado?", "tipo": "por-que"}
+{"n": 108, "pergunta": "Por que os dados de uma iniciativa como a STRATA ficam presos em apenas uma casa do hub?", "tipo": "por-que"}
+{"n": 118, "pergunta": "Como são tratados os conflitos de edição entre a máquina do trabalho e a pessoal?", "tipo": "ordem"}
+{"n": 128, "pergunta": "O que o sistema não faz se eu tentar editar uma nota ao mesmo tempo que o Gustavo está editando no Obsidian?", "tipo": "o-que-nao-faz"}
+{"n": 138, "pergunta": "Se eu criar uma pasta com um ponto no nome dentro do hub, o que o sincronizador faz ao tentar enviar essa dados para a outra máquina?", "tipo": "quando"}
+{"n": 148, "pergunta": "Se o outro par recebe um arquivo que foi criado em `clients/` com um nome que já existe em seu disco, como a camada de busca resolve o conflito de nome?", "tipo": "quem-usa"}
+{"n": 158, "pergunta": "Onde vivo as instruções do **contrato do hub** (como o `AGENTS.md`) se eu acessar o hub pelo cliente e o arquivo global não foi sincronizado porque o sincronizador está desatualizado?", "tipo": "onde-vive"}
+{"n": 168, "pergunta": "Quais pastas de primeiro nível compõem as raízes do hub e para onde vão os arquivos que são finalizados?", "tipo": "grupo"}
+{"n": 178, "pergunta": "Se um agente de código (como o Copilot) lê um arquivo grande (mais de 200 MiB) e tenta editá-lo, quem bloqueia a operação e o que o agente recebe como resposta?", "tipo": "ordem"}
+{"n": 188, "pergunta": "Se o Gustavo editar o contrato do hub na outra máquina, em quanto tempo essa alteração deve refletir na minha sessão de agente?", "tipo": "diferenca"}
+{"n": 198, "pergunta": "As cópias no GitHub privado servem para recuperar dados de cliente se o CouchDB for corrompido?", "tipo": "onde-vive"}
+{"n": 208, "pergunta": "Se eu editar uma **nota de retomada** de uma iniciativa (como VOEGOL) e o hook que atualiza ela falhar, como faço para garantir que a próxima sessão do agente veja a versão correta?", "tipo": "falha"}
+{"n": 218, "pergunta": "Se a rede privada do Tailscale cair por muito tempo, como o sincronizador lida com o acúmulo de mudanças quando a conexão voltar?", "tipo": "quem-usa"}
+{"n": 228, "pergunta": "O que acontece se o maestro gravar algo em uma nota ao mesmo tempo em que a outra máquina altera o mesmo arquivo?", "tipo": "relacao"}
+{"n": 238, "pergunta": "Se o MCP do banco ficar inacessível por 20 minutos, como as duas máquinas mantêm consistência quando voltam online?", "tipo": "falha"}

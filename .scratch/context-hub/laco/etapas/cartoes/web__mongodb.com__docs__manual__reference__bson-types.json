@@ -1,0 +1,51 @@
+{
+ "chave": "web:mongodb.com/docs/manual/reference/bson-types",
+ "urls": [
+  "https://www.mongodb.com/docs/manual/reference/bson-types/",
+  "https://bsonspec.org/",
+  "https://bsonspec.org"
+ ],
+ "tipos": [
+  "library",
+  "concept",
+  "tool"
+ ],
+ "termos": [
+  "BSON",
+  "bson-python",
+  "bson-c++",
+  "mongodb bson",
+  "bson",
+  "binary JSON",
+  "MongoDB",
+  "serialização binária",
+  "documentos",
+  "document store",
+  "Binary JSON",
+  "binary serialization"
+ ],
+ "mencoes": 8,
+ "familias": [
+  "cohere",
+  "dots3",
+  "gemma",
+  "gpt-oss",
+  "mistral",
+  "nemotron"
+ ],
+ "primeira_onda": 5,
+ "nomes": [
+  "BSON"
+ ],
+ "resumos": [
+  "BSON é um formato de serialização binária que estende JSON com tipos adicionais e tamanho fixo, utilizado com frequência em bancos de dados NoSQL.",
+  "Formato binário para JSON, usado em bancos como MongoDB, adequado para armazenar documentos com estrutura flexível.",
+  "Um formato de serialização binária para documentos, usado principalmente pelo MongoDB.",
+  "Representação binária de documentos JSON usada pelo MongoDB, útil para persistência de frontmatter estruturado."
+ ],
+ "fonte": "site",
+ "readme_status": "ok",
+ "readme_nome": "https://bsonspec.org/",
+ "readme_cortado": false,
+ "readme": "[BSON (Binary JSON) Serialization]\n\nBSON\n\n}\n\n 01000010\n\n 01010011\n\n 01001111\n\n 01001110\n\n{\n\nBSON, short for Bin­ary JSON, is a bin­ary-en­coded seri­al­iz­a­tion of JSON-like doc­u­ments. Like JSON, BSON sup­ports the em­bed­ding of doc­u­ments and ar­rays with­in oth­er doc­u­ments and ar­rays. BSON also con­tains ex­ten­sions that al­low rep­res­ent­a­tion of data types that are not part of the JSON spec. For ex­ample, BSON has a Date type and a BinData type.\n\nBSON can be com­pared to bin­ary inter­change for­mats, like Proto­col Buf­fers. BSON is more \"schema-less\" than Proto­col Buf­fers, which can give it an ad­vant­age in flex­ib­il­ity but also a slight dis­ad­vant­age in space ef­fi­ciency (BSON has over­head for field names with­in the seri­al­ized data).\n\nBSON was de­signed to have the fol­low­ing three char­ac­ter­ist­ics:\n\nLightweight\n\nKeep­ing spa­tial over­head to a min­im­um is im­port­ant for any data rep­res­ent­a­tion format, es­pe­cially when used over the net­work.\n\nTraversable\n\nBSON is de­signed to be tra­versed eas­ily. This is a vi­tal prop­erty in its role as the primary data rep­res­ent­a­tion for Mon­goDB.\n\nEfficient\n\nEn­cod­ing data to BSON and de­cod­ing from BSON can be per­formed very quickly in most lan­guages due to the use of C data types.\n\n specification\n\n implementations\n\n FAQ\n\n discussion\n\n Creative Commons — CC0"
+}

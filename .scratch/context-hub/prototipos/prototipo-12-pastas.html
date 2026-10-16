@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Raiz do hub</title>
+<style>
+  :root {
+    --bg: #fafaf8; --card: #ffffff; --ink: #1d1d1b; --muted: #6b6b66; --line: #d9d8d2;
+    --accent: #2f5fa7; --accent-soft: #e7eef9;
+    --ok: #2e7d4f; --ok-soft: #e5f3ea; --warn: #9a6a00; --warn-soft: #fbf1d9;
+    --bad: #b3261e; --bad-soft: #fbe6e4; --gray-soft: #efeee9;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #161616; --card: #1f1f1f; --ink: #ecebe6; --muted: #9a9a94; --line: #3a3934;
+      --accent: #7aa7ec; --accent-soft: #1f2a3b;
+      --ok: #7cc79a; --ok-soft: #1c2b22; --warn: #e3b64f; --warn-soft: #2f2817;
+      --bad: #f08a80; --bad-soft: #3a1f1d; --gray-soft: #2a2a28;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink);
+    font: 16px/1.6 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  main { max-width: 900px; margin: 0 auto; padding: 28px 16px 72px; }
+  h1 { font-size: 24px; margin: 0 0 4px; }
+  h2 { font-size: 19px; margin: 0 0 10px; }
+  p { margin: 0 0 10px; }
+  ul { margin: 0 0 10px; padding-left: 22px; }
+  .muted { color: var(--muted); }
+  .small { font-size: 14px; }
+  section { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 18px 20px; margin-top: 18px; }
+  .analogia { border-left: 4px solid var(--accent); background: var(--accent-soft); padding: 8px 12px; border-radius: 6px; margin: 10px 0; }
+  .pergunta { border: 2px solid var(--accent); border-radius: 10px; padding: 10px 14px; margin-top: 14px; }
+  .pergunta b.q { color: var(--accent); }
+  .tipo { border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; margin: 10px 0; }
+  .tipo h3 { font-size: 16px; margin: 0 0 4px; }
+  .tipo .ex { font-size: 14px; color: var(--muted); margin-bottom: 4px; }
+  .tag { display: inline-block; font-size: 12px; padding: 1px 8px; border-radius: 999px; margin: 2px 4px 2px 0; background: var(--gray-soft); }
+  .tag.bad { background: var(--bad-soft); color: var(--bad); }
+  .tag.ok { background: var(--ok-soft); color: var(--ok); }
+  .tag.warn { background: var(--warn-soft); color: var(--warn); }
+  table { border-collapse: collapse; width: 100%; font-size: 14px; margin: 8px 0; }
+  th, td { padding: 6px 8px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; }
+  .scroll { overflow-x: auto; }
+</style>
+</head>
+<body>
+<main>
+
+<h1>O que mora na raiz do hub</h1>
+<p class="muted small">Ticket "Arquitetura de pastas e frontmatter do hub", rodada 2. É uma descoberta: antes de escolher
+como cortar a árvore, vamos levantar quais tipos de coisa você tem. A pergunta está no fim e também na nota
+"Rodada atual".</p>
+
+<section>
+  <h2>Por que a raiz importa no seu dia a dia</h2>
+  <p>A raiz é a primeira coisa que você vê ao abrir o hub no Obsidian, e a primeira que um agente vê ao abrir uma sessão.
+  Mas o motivo de ela merecer cuidado é outro: <b>é no nível da raiz que o hub trata coisas diferentes de jeitos
+  diferentes</b>. Por exemplo:</p>
+  <ul>
+    <li><b>Dado de cliente</b> talvez precise ficar numa máquina só (pasta não replicada).</li>
+    <li><b>Skills e contrato</b> precisam estar num caminho fixo, que os harnesses carregam sozinhos.</li>
+    <li><b>Trabalho que termina</b> vai para o arquivo; <b>trabalho que não termina</b> (uma operação) precisa ser
+      compactado de tempos em tempos (lição 3 de "Lições do vault").</li>
+    <li><b>Conhecimento de referência</b> é o que a busca mais consulta e o que mais vale manter limpo.</li>
+  </ul>
+  <div class="analogia">Pense numa casa: a raiz são os cômodos. Você não decide os cômodos pelo formato dos móveis, e
+  sim pelo que acontece em cada um: cozinha tem água e exaustor, quarto tem porta que tranca, garagem dá para a rua.
+  Um tipo de raiz só faz sentido se o que mora nele <b>se comporta de um jeito próprio</b>.</div>
+</section>
+
+<section>
+  <h2>Tipos candidatos, tirados do que você usa hoje</h2>
+  <p class="small muted">Fontes: suas pastas em <code>C:\Projetos</code> e <code>Documents\Projetos</code>, as iniciativas e
+  as pastas do vault e os workspaces do Maestri. Os exemplos são só nomes de iniciativa.</p>
+
+  <div class="tipo">
+    <h3>1. Clientes</h3>
+    <div class="ex">VOEGOL (migração de app, cross-tenant), TRF3 (Intune), ELEMENTIS (migração M365), SBF (investigação), Riachuelo, AVIANCA</div>
+    <span class="tag bad">dado de cliente</span><span class="tag">tem fim</span><span class="tag">arquiva ao terminar</span>
+    <p class="small">Trabalho para um cliente da ARMIS, com começo e fim. É o candidato natural a ficar numa máquina só.</p>
+  </div>
+
+  <div class="tipo">
+    <h3>2. Operações contínuas</h3>
+    <div class="ex">SOC STRATA (casos, relatório recorrente), SOPs de incidente</div>
+    <span class="tag bad">dado de cliente</span><span class="tag warn">não termina</span><span class="tag">compacta, não arquiva</span>
+    <p class="small">Rotina sem fim. Os casos se acumulam, então precisa de uma regra de compactação, não de arquivo.</p>
+  </div>
+
+  <div class="tipo">
+    <h3>3. Produtos e frentes próprias</h3>
+    <div class="ex">videos-transcriptor, freellmapi-mcp, soc-as-code, report-generator, os-shell, animations, esta frente do context hub</div>
+    <span class="tag ok">sem dado de cliente</span><span class="tag">tem fim ou versões</span>
+    <p class="small">O que você constrói. O código continua no repositório de cada um; no hub ficam o planejamento, as
+    decisões e a nota de retomada.</p>
+  </div>
+
+  <div class="tipo">
+    <h3>4. Estudo e laboratório</h3>
+    <div class="ex">certificações, Agent365-Training, spikes (FNS, LiveSync), testes de modelo (deep-seek), meta-prompting</div>
+    <span class="tag ok">sem dado de cliente</span><span class="tag">exploratório</span>
+    <p class="small">Experimentos e aprendizado. Quando dão algo que serve de novo, o resultado sobe para o conhecimento.</p>
+  </div>
+
+  <div class="tipo">
+    <h3>5. Conhecimento de referência</h3>
+    <div class="ex">armis-docs, armis-brand, playbooks de remediação (device e user), documentação de Cloud PKI</div>
+    <span class="tag ok">reaproveitado</span><span class="tag">a busca vive aqui</span>
+    <p class="small">O que serve a vários trabalhos. Entra por promoção explícita (lição 10). É o tipo em que vale manter o
+    texto curto e limpo.</p>
+  </div>
+
+  <div class="tipo">
+    <h3>6. Oficina dos agentes</h3>
+    <div class="ex">contrato global, skills (armis-docx), papéis e equipes do Maestri, perfil de cada máquina</div>
+    <span class="tag warn">caminho fixo</span><span class="tag warn">muda com aval</span>
+    <p class="small">O que faz os agentes funcionarem. Os harnesses leem daqui por caminho fixo, e só isto (mais exclusões
+    grandes) pede aval (lição 6).</p>
+  </div>
+
+  <div class="tipo">
+    <h3>7. Entrada</h3>
+    <div class="ex">o <code>inbox/</code> do vault</div>
+    <span class="tag">temporário</span><span class="tag">esvaziado pelo checkpoint</span>
+    <p class="small">Captura rápida do que ainda não tem lugar. Só faz sentido se o checkpoint fizer a triagem
+    (lição 14); senão, vira um depósito que só cresce.</p>
+  </div>
+
+  <div class="tipo">
+    <h3>8. Arquivo</h3>
+    <div class="ex">o <code>archive/</code> do vault</div>
+    <span class="tag">encerrado</span><span class="tag">a busca pode ignorar</span>
+    <p class="small">O que terminou. Sai do caminho sem ser apagado.</p>
+  </div>
+
+  <div class="tipo">
+    <h3>9. Pessoal?</h3>
+    <div class="ex">não encontrei nada nas pastas, por isso é pergunta</div>
+    <span class="tag">a confirmar</span>
+    <p class="small">O hub é a casa de tudo. Se algo da sua vida fora do trabalho entra nele (finanças, saúde, casa,
+    carreira), provavelmente pede um cômodo próprio, inclusive para decidir se vai para o notebook da ARMIS.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Os mesmos tipos, lado a lado</h2>
+  <div class="scroll">
+  <table>
+    <tr><th>Tipo</th><th>Dado de cliente</th><th>Termina?</th><th>Quem mais lê</th><th>Destino quando envelhece</th></tr>
+    <tr><td>1. Clientes</td><td>sim</td><td>sim</td><td>você e os agentes do caso</td><td>arquivo</td></tr>
+    <tr><td>2. Operações contínuas</td><td>sim</td><td>não</td><td>agentes da rotina</td><td>compactar</td></tr>
+    <tr><td>3. Produtos e frentes</td><td>não</td><td>por versão</td><td>agentes que trabalham no repositório</td><td>arquivo</td></tr>
+    <tr><td>4. Estudo e laboratório</td><td>não</td><td>sim</td><td>você</td><td>promover ou arquivar</td></tr>
+    <tr><td>5. Conhecimento</td><td>às vezes</td><td>não</td><td>a busca, todos</td><td>revisar</td></tr>
+    <tr><td>6. Oficina dos agentes</td><td>não</td><td>não</td><td>os harnesses, sozinhos</td><td>versionar</td></tr>
+    <tr><td>7. Entrada</td><td>às vezes</td><td>em dias</td><td>o checkpoint</td><td>esvaziar</td></tr>
+    <tr><td>8. Arquivo</td><td>às vezes</td><td>já terminou</td><td>quase ninguém</td><td>fica</td></tr>
+  </table>
+  </div>
+  <p class="small muted">Esses quatro critérios (dado de cliente, se termina, quem lê, o destino) são o que separa um cômodo
+  do outro. Se dois tipos têm as mesmas respostas, provavelmente são um cômodo só.</p>
+</section>
+
+<section>
+  <h2>O que fica para a próxima rodada</h2>
+  <p>Com os tipos confirmados, voltamos à pergunta de como organizar: quais tipos viram pastas na raiz e o que vai dentro
+  de cada uma. A rodada 1 tentou pular esta etapa.</p>
+  <p>Se quiser comparar com métodos conhecidos de organizar notas (PARA, Johnny.Decimal e outros), dá para abrir uma
+  pesquisa em fonte primária. Por ora, nada disso foi conferido.</p>
+</section>
+
+<section class="pergunta">
+  <p><b class="q">R14. Quais destes tipos existem de verdade na sua rotina? Quais você juntaria, separaria ou acrescentaria?</b></p>
+  <p>Minha leitura: <b>1, 2, 3, 5, 6 e 8 se comportam cada um de um jeito próprio</b>. O 4 (estudo) pode ser um cômodo próprio
+  ou entrar no 3, se você trata os experimentos como frentes. O 7 (entrada) só vale se o checkpoint fizer a triagem. O 9
+  (pessoal) depende de você.</p>
+</section>
+
+</main>
+</body>
+</html>

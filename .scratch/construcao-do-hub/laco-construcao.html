@@ -1,0 +1,460 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>O laço da construção</title>
+<link rel="stylesheet" href="fontes-carta/carta.css">
+<style>
+:root {
+  --papel: #f6f3ec;
+  --bairro: #ebe5d8;
+  --cartao: #fffdf8;
+  --tinta: #1f1d1b;
+  --tinta-fraca: #4d4842;
+  --apagado: #6d665d;
+  --linha: #d8d0c1;
+  --construtor: #e8611a;
+  --integrador: #1d9148;
+  --testador: #1466ad;
+  --pesquisador: #e9ae00;
+  --prumo-d: #d0242c;
+  --prumo-c: #7a3d9e;
+  --fable: #0b8f95;
+  --ensaio: #7d776f;
+  --cond: "Barlow Condensed", "Arial Narrow", sans-serif;
+  --texto: "Barlow", "Segoe UI", system-ui, sans-serif;
+  --mono: Consolas, ui-monospace, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--papel); color: var(--tinta); }
+body { font-family: var(--texto); font-size: 16px; font-weight: 500; line-height: 1.4; }
+code { font-family: var(--mono); font-size: .9em; }
+
+/* a faixa do topo: placa de estação, preta */
+.placa { background: var(--tinta); color: #fff; padding: 14px 24px 13px; display: flex; flex-wrap: wrap; align-items: center; gap: 8px 28px; }
+.placa h1 { margin: 0; font-family: var(--cond); font-weight: 800; font-size: 34px; line-height: 1; letter-spacing: .01em; text-transform: uppercase; }
+.placa h1 small { display: block; font-family: var(--texto); font-weight: 500; font-size: 15px; letter-spacing: 0; text-transform: none; color: #cfc8bd; margin-top: 5px; }
+.placa ul { margin: 0 0 0 auto; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 8px 10px; }
+.placa li { display: flex; align-items: center; gap: 8px; font-size: 15px; }
+.placa li b { font-family: var(--cond); font-weight: 800; font-size: 16px; text-transform: uppercase; letter-spacing: .03em; border-radius: 999px; padding: 2px 11px; }
+.placa .sim b { background: var(--integrador); }
+.placa .nao b { background: #fff; color: var(--tinta); }
+
+/* o mapa */
+.quadro { overflow-x: auto; padding: 8px 12px 4px; }
+.mapa { display: block; width: 100%; min-width: 980px; height: auto; }
+.mapa text { font-family: var(--texto); font-size: 13px; font-weight: 500; fill: var(--tinta-fraca); }
+.mapa .nome { font-family: var(--cond); font-weight: 800; font-size: 19px; fill: var(--tinta); letter-spacing: .02em; }
+.mapa .fase { font-family: var(--cond); font-weight: 800; font-size: 27px; fill: var(--tinta); }
+.mapa .forte { font-weight: 700; fill: var(--tinta); }
+.mapa .mono { font-family: var(--mono); font-size: 12.5px; fill: var(--tinta-fraca); }
+.mapa .rotulo { font-family: var(--cond); font-weight: 700; font-size: 15px; letter-spacing: .04em; fill: var(--apagado); }
+.dica { display: none; margin: 0 16px 6px; font-size: 13px; color: var(--apagado); }
+
+/* as perguntas da rodada */
+.perguntas { padding: 6px 24px 8px; display: grid; gap: 18px; }
+.pergunta { background: var(--cartao); border: 1px solid var(--linha); border-radius: 14px; padding: 14px 18px 16px; }
+.pergunta h2 { margin: 0 0 12px; display: flex; align-items: center; gap: 10px; font-family: var(--cond); font-weight: 800; font-size: 23px; text-transform: uppercase; letter-spacing: .02em; }
+.pergunta h2 .num { display: inline-grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: var(--tinta); color: #fff; font-size: 18px; }
+.opcoes { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr); gap: 14px; }
+.opcao { border: 1px solid var(--linha); border-radius: 10px; padding: 10px 12px 12px; background: #fff; }
+.opcao.rec { border: 2px solid var(--tinta); }
+.opcao header { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+.letra { display: inline-grid; place-items: center; width: 24px; height: 24px; border-radius: 6px; background: var(--tinta); color: #fff; font-family: var(--cond); font-weight: 800; font-size: 16px; }
+.opcao:not(.rec) .letra { background: #fff; color: var(--tinta); border: 2px solid var(--tinta); }
+.opcao header strong { font-family: var(--cond); font-weight: 800; font-size: 18px; text-transform: uppercase; letter-spacing: .02em; }
+.selo { margin-left: auto; font-size: 12px; font-weight: 700; color: var(--integrador); border: 1.5px solid var(--integrador); border-radius: 999px; padding: 0 8px; white-space: nowrap; }
+.opcao p { margin: 6px 0 0; font-size: 14px; color: var(--tinta-fraca); }
+.opcao svg { display: block; width: 100%; height: auto; }
+
+/* os papéis da opção recomendada */
+.papeis { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px 12px; margin: 0; padding: 0; list-style: none; }
+.papeis li { display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 0 9px; align-items: start; }
+.papeis svg { width: 34px; height: 34px; }
+.papeis b { display: block; font-family: var(--cond); font-weight: 800; font-size: 17px; line-height: 1.1; text-transform: uppercase; letter-spacing: .02em; }
+.papeis span { display: block; font-size: 13.5px; line-height: 1.3; color: var(--tinta-fraca); }
+.papeis i { font-style: normal; color: var(--prumo-d); font-weight: 600; }
+
+.nao-verificado { margin: 4px 24px 22px; display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; font-size: 13.5px; color: var(--tinta-fraca); }
+.nao-verificado strong { font-family: var(--cond); font-weight: 800; font-size: 15px; text-transform: uppercase; letter-spacing: .04em; color: var(--apagado); }
+.nao-verificado span { background: var(--cartao); border: 1px dashed var(--ensaio); border-radius: 999px; padding: 1px 10px; }
+
+@media (max-width: 1050px) {
+  .opcoes { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .opcao.rec { grid-column: 1 / -1; }
+}
+@media (max-width: 1000px) {
+  .dica { display: block; }
+}
+@media (max-width: 700px) {
+  .placa { padding: 14px 16px 12px; }
+  .placa h1 { font-size: 28px; }
+  .placa ul { margin-left: 0; }
+  .quadro { padding: 6px 6px 2px; }
+  .perguntas { padding: 6px 12px 8px; }
+  .pergunta { padding: 12px 12px 14px; }
+  .opcoes { grid-template-columns: minmax(0, 1fr); }
+  .papeis { grid-template-columns: minmax(0, 1fr); }
+  .nao-verificado { margin: 4px 12px 18px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ícones dos papéis: brancos, sobre o círculo da cor do papel -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-martelo" viewBox="0 0 24 24"><g fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M13 4.5l6.5 6.5-2.6 2.6-6.5-6.5z"/><path d="M12.2 9.8L4.6 17.4a1.6 1.6 0 0 0 2.3 2.3l7.6-7.6"/></g></symbol>
+    <symbol id="i-juncao" viewBox="0 0 24 24"><g fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"><circle cx="7" cy="5.5" r="2"/><circle cx="7" cy="18.5" r="2"/><circle cx="17.5" cy="12" r="2"/><path d="M7 7.5v9M7 8.5c0 3.5 3 3.5 8.5 3.5"/></g></symbol>
+    <symbol id="i-aceite" viewBox="0 0 24 24"><g fill="none" stroke="#fff" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4.5" width="14" height="16" rx="2"/><path d="M9 4.5V3h6v1.5M8.6 12.8l2.4 2.4 4.6-4.8"/></g></symbol>
+    <symbol id="i-lupa" viewBox="0 0 24 24"><g fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6"/><path d="M15 15l5 5"/></g></symbol>
+    <symbol id="i-prumo" viewBox="0 0 24 24"><path d="M12 2.5v5.5" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/><path d="M7.5 8h9L12 21z" fill="#fff"/></symbol>
+    <symbol id="i-estrela" viewBox="0 0 24 24"><path d="M12 2.8l2.7 5.9 6.4.7-4.8 4.3 1.4 6.3L12 16.8 6.3 20l1.4-6.3L2.9 9.4l6.4-.7z" fill="#fff"/></symbol>
+    <symbol id="i-relogio" viewBox="0 0 24 24"><g fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"><circle cx="12" cy="12" r="8"/><path d="M12 7.5V12l3 2"/></g></symbol>
+    <symbol id="i-despacha" viewBox="0 0 24 24"><g fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 12h6.5M10 12l8-6.5M10 12h9M10 12l8 6.5"/><path d="M16 4.5l2 1-1 2M17 16.5l1 2-2 1M17 10l2 2-2 2"/></g></symbol>
+    <symbol id="i-casa" viewBox="0 0 24 24"><g fill="none" stroke="#fff" stroke-width="2.3" stroke-linejoin="round"><path d="M4 11l8-7 8 7v9H4z"/><path d="M10 20v-5h4v5" stroke-dasharray="2 1.6"/></g></symbol>
+    <symbol id="i-guarda" viewBox="0 0 24 24"><path d="M12 3l7 3v5.5c0 4.4-3 7.7-7 9.5-4-1.8-7-5.1-7-9.5V6z" fill="none" stroke="#fff" stroke-width="2.3" stroke-linejoin="round"/></symbol>
+  </defs>
+</svg>
+
+<header class="placa">
+  <h1>O laço da construção<small>do spec ao ticket feito: 3 fases, 12 recrutas, todos ligados entre si</small></h1>
+  <ul>
+    <li class="sim"><b>Aprovar</b>o laço roda como no mapa</li>
+    <li class="nao"><b>Recusar</b>diga o que mudar</li>
+  </ul>
+</header>
+
+<div class="quadro">
+<svg class="mapa" viewBox="0 0 1200 800" role="img" aria-label="Mapa do laço: três fases, depois o giro da execução, em que cada ticket passa pelo construtor, pelos dois Prumos, pelo testador e pelo integrador até ficar feito">
+  <defs>
+    <marker id="ponta-verde" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="4.2" markerHeight="4.2" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#1d9148"/></marker>
+    <marker id="ponta-vermelha" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#d0242c"/></marker>
+    <marker id="ponta-escura" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#1f1d1b"/></marker>
+    <marker id="ponta-cinza" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#7d776f"/></marker>
+  </defs>
+
+  <!-- os 12 recrutas, como legenda de cores -->
+  <text x="300" y="62" class="nome">12 RECRUTAS</text>
+  <text x="420" y="62">Claude Opus 5.5 alto · andar "Construção" do Maestri</text>
+  <g>
+    <circle cx="315" cy="108" r="15" fill="#e8611a"/><use href="#i-martelo" x="305" y="98" width="20" height="20"/>
+    <circle cx="351" cy="108" r="15" fill="#e8611a"/><use href="#i-martelo" x="341" y="98" width="20" height="20"/>
+    <circle cx="387" cy="108" r="15" fill="#e8611a"/><use href="#i-martelo" x="377" y="98" width="20" height="20"/>
+    <circle cx="423" cy="108" r="15" fill="#e8611a"/><use href="#i-martelo" x="413" y="98" width="20" height="20"/>
+    <circle cx="459" cy="108" r="15" fill="#e8611a"/><use href="#i-martelo" x="449" y="98" width="20" height="20"/>
+    <circle cx="495" cy="108" r="15" fill="#e8611a"/><use href="#i-martelo" x="485" y="98" width="20" height="20"/>
+    <circle cx="531" cy="108" r="15" fill="#e8611a"/><use href="#i-martelo" x="521" y="98" width="20" height="20"/>
+    <circle cx="590" cy="108" r="15" fill="#1d9148"/><use href="#i-juncao" x="580" y="98" width="20" height="20"/>
+    <circle cx="626" cy="108" r="15" fill="#1466ad"/><use href="#i-aceite" x="616" y="98" width="20" height="20"/>
+    <circle cx="662" cy="108" r="15" fill="#e9ae00"/><use href="#i-lupa" x="652" y="98" width="20" height="20"/>
+    <circle cx="750" cy="108" r="15" fill="#d0242c"/><use href="#i-prumo" x="740" y="98" width="20" height="20"/>
+    <circle cx="786" cy="108" r="15" fill="#7a3d9e"/><use href="#i-prumo" x="776" y="98" width="20" height="20"/>
+  </g>
+  <text x="423" y="146" text-anchor="middle" class="forte">7 construtores</text>
+  <text x="626" y="146" text-anchor="middle" font-size="12.5">integrador · testador · pesquisador</text>
+  <text x="768" y="146" text-anchor="middle" class="forte">2 Prumos</text>
+
+  <!-- todos ligados entre si -->
+  <g id="malha" stroke="#1f1d1b" stroke-opacity=".28" stroke-width="1"></g>
+  <g id="malha-nos"></g>
+  <text x="920" y="160" text-anchor="middle" class="forte">todos ligados entre si</text>
+  <text x="920" y="176" text-anchor="middle" class="mono">maestri connect</text>
+
+  <!-- o painel: só mostra -->
+  <rect x="1104" y="76" width="52" height="36" rx="5" fill="#fff" stroke="#1f1d1b" stroke-width="3"/>
+  <path d="M1112 102l9-9 7 6 10-12 10 7" fill="none" stroke="#1466ad" stroke-width="2.4" stroke-linejoin="round"/>
+  <path d="M1124 112v7M1136 112v7M1118 120h24" stroke="#1f1d1b" stroke-width="3" stroke-linecap="round"/>
+  <text x="1160" y="142" text-anchor="end" class="nome" font-size="17">PAINEL</text>
+  <text x="1160" y="158" text-anchor="end">só mostra</text>
+  <text x="1160" y="174" text-anchor="end" font-size="12.5">hooks gravam os eventos</text>
+  <path d="M1130 184V198" stroke="#1f1d1b" stroke-width="2" stroke-dasharray="2 4" stroke-linecap="round"/>
+
+  <!-- as 3 fases -->
+  <text x="40" y="44" class="rotulo">3 FASES</text>
+  <path d="M110 92V382Q110 410 138 410H312" fill="none" stroke="#1f1d1b" stroke-width="9" stroke-linejoin="round"/>
+
+  <circle cx="110" cy="92" r="13" fill="#fff" stroke="#1f1d1b" stroke-width="5"/>
+  <text x="136" y="94" class="fase">Spec</text>
+  <text x="136" y="112" class="mono">/to-spec → spec.md</text>
+
+  <rect x="98" y="150" width="24" height="24" rx="6" fill="#fff" stroke="#1f1d1b" stroke-width="3"/>
+  <path d="M104.5 162.5l4 4 7-8" fill="none" stroke="#1d9148" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="136" y="160" class="forte">2 Prumos revisam</text>
+  <text x="136" y="177">você aprova no portal</text>
+
+  <circle cx="110" cy="232" r="13" fill="#fff" stroke="#1f1d1b" stroke-width="5"/>
+  <text x="136" y="234" class="fase">Tickets</text>
+  <text x="136" y="252" class="mono">/to-tickets</text>
+  <text x="136" y="268" font-size="12.5">fatias verticais · ≤ 1 h</text>
+
+  <rect x="98" y="290" width="24" height="24" rx="6" fill="#fff" stroke="#1f1d1b" stroke-width="3"/>
+  <path d="M104.5 302.5l4 4 7-8" fill="none" stroke="#1d9148" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="136" y="300" class="forte">2 Prumos revisam</text>
+  <text x="136" y="317">você aprova no portal</text>
+
+  <circle cx="110" cy="368" r="13" fill="#fff" stroke="#1f1d1b" stroke-width="5"/>
+  <text x="136" y="370" class="fase">Execução</text>
+  <text x="136" y="388" class="mono">/implement-spec</text>
+
+  <!-- o bairro onde o hub nasce -->
+  <rect x="285" y="198" width="895" height="486" rx="26" fill="#ebe5d8"/>
+  <text x="1160" y="228" text-anchor="end" class="mono forte" font-size="15">C:\context-hub</text>
+  <text x="1160" y="246" text-anchor="end" font-size="12.5">cada construtor: ramo e pasta próprios</text>
+
+  <!-- volta: destrava os próximos -->
+  <path d="M1120 432V616Q1120 640 1096 640H354Q330 640 330 616V432" fill="none" stroke="#1d9148" stroke-width="7" stroke-linejoin="round" marker-end="url(#ponta-verde)"/>
+  <text x="470" y="664" text-anchor="middle" class="forte" fill="#1d9148" style="fill:#1d9148">destrava os próximos · nova onda</text>
+
+  <!-- o giro -->
+  <g transform="translate(905 548)">
+    <path d="M-17 -6A18 18 0 1 1 -6 17" fill="none" stroke="#1f1d1b" stroke-width="4.5" stroke-linecap="round"/>
+    <path d="M-26 -10L-17 -1L-9 -11" fill="none" stroke="#1f1d1b" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <text x="936" y="542" class="nome" font-size="22">O GIRO</text>
+  <text x="936" y="561">em ondas, até não sobrar</text>
+  <text x="936" y="578">ticket que um agente faça</text>
+
+  <!-- 1 hora: divide ou Fable -->
+  <path d="M430 349V252Q430 236 414 236H346Q330 236 330 252V389" fill="none" stroke="#1f1d1b" stroke-width="3" stroke-dasharray="7 6" marker-end="url(#ponta-escura)"/>
+  <path d="M430 252Q430 236 446 236H612" fill="none" stroke="#0b8f95" stroke-width="3" stroke-dasharray="7 6" marker-end="url(#ponta-escura)"/>
+  <text x="380" y="228" text-anchor="middle" font-size="12.5">maestro divide</text>
+  <text x="540" y="228" text-anchor="middle" font-size="12.5">ou Fable</text>
+  <circle cx="430" cy="300" r="17" fill="#e8611a" stroke="#fff" stroke-width="3"/>
+  <use href="#i-relogio" x="418" y="288" width="24" height="24"/>
+  <text x="455" y="297" class="nome" font-size="18">60 MIN</text>
+  <text x="455" y="314">para · grava o estado</text>
+
+  <!-- Fable -->
+  <circle cx="640" cy="236" r="20" fill="#0b8f95" stroke="#fff" stroke-width="3"/>
+  <use href="#i-estrela" x="627" y="223" width="26" height="26"/>
+  <text x="667" y="233" class="nome" font-size="18">FABLE 5.1 médio</text>
+  <text x="667" y="250">só a parte difícil</text>
+
+  <!-- recusa: volta ao construtor; duas recusas chamam o Fable -->
+  <path d="M910 391V346Q910 330 894 330H600Q584 330 580 344" fill="none" stroke="#d0242c" stroke-width="3" stroke-dasharray="7 6" marker-end="url(#ponta-vermelha)"/>
+  <path d="M690 391V330M800 391V330" stroke="#d0242c" stroke-width="3" stroke-dasharray="7 6"/>
+  <path d="M646 330V262" stroke="#d0242c" stroke-width="3" stroke-dasharray="7 6" marker-end="url(#ponta-vermelha)"/>
+  <text x="656" y="300" font-size="12.5" class="forte" style="fill:#d0242c">2 recusas</text>
+  <text x="790" y="321" text-anchor="middle" class="forte" style="fill:#d0242c">recusou → volta ao construtor</text>
+
+  <!-- pesquisador de fonte -->
+  <path d="M395 575V500L440 455" fill="none" stroke="#e9ae00" stroke-width="7" stroke-linejoin="round"/>
+  <circle cx="395" cy="578" r="15" fill="#e9ae00" stroke="#fff" stroke-width="3"/>
+  <use href="#i-lupa" x="385" y="568" width="20" height="20"/>
+  <text x="418" y="574" class="nome" font-size="16">PESQUISADOR</text>
+  <text x="418" y="591">fonte primária, antes</text>
+
+  <!-- HOME de ensaio -->
+  <path d="M545 455L600 510V560" fill="none" stroke="#7d776f" stroke-width="4" stroke-dasharray="8 6" stroke-linejoin="round"/>
+  <circle cx="600" cy="576" r="16" fill="#7d776f" stroke="#fff" stroke-width="3"/>
+  <use href="#i-casa" x="589" y="565" width="22" height="22"/>
+  <text x="624" y="572" class="nome" font-size="16">HOME DE ENSAIO</text>
+  <text x="624" y="589" class="mono" font-size="12">~/.claude · ~/.codex · ~/.copilot</text>
+  <text x="624" y="605" font-size="12.5">hooks · serviços</text>
+  <path d="M600 595V706" stroke="#7d776f" stroke-width="3" stroke-dasharray="6 5" marker-end="url(#ponta-cinza)"/>
+
+  <!-- os 7 construtores: 7 trilhos em paralelo -->
+  <g fill="none" stroke-linejoin="round">
+    <g stroke="#ebe5d8" stroke-width="11">
+      <path d="M350 410L392 365H560L602 410"/><path d="M350 410L392 380H560L602 410"/><path d="M350 410L392 395H560L602 410"/>
+      <path d="M350 410H602"/>
+      <path d="M350 410L392 425H560L602 410"/><path d="M350 410L392 440H560L602 410"/><path d="M350 410L392 455H560L602 410"/>
+    </g>
+    <g stroke="#e8611a" stroke-width="6">
+      <path d="M350 410L392 365H560L602 410"/><path d="M350 410L392 380H560L602 410"/><path d="M350 410L392 395H560L602 410"/>
+      <path d="M350 410H602"/>
+      <path d="M350 410L392 425H560L602 410"/><path d="M350 410L392 440H560L602 410"/><path d="M350 410L392 455H560L602 410"/>
+    </g>
+  </g>
+  <g fill="#fff" stroke="#1f1d1b" stroke-width="2.2">
+    <circle cx="476" cy="365" r="5"/><circle cx="476" cy="380" r="5"/><circle cx="476" cy="395" r="5"/><circle cx="476" cy="410" r="5"/>
+    <circle cx="476" cy="425" r="5"/><circle cx="476" cy="440" r="5"/><circle cx="476" cy="455" r="5"/>
+  </g>
+  <path d="M430 317V362" stroke="#e8611a" stroke-width="5"/>
+  <text x="481" y="490" text-anchor="middle" class="nome" style="fill:#b5480f">7 CONSTRUTORES</text>
+  <text x="481" y="508" text-anchor="middle">1 ticket inteiro, com testes</text>
+  <text x="481" y="525" text-anchor="middle">até 10 subagentes cada</text>
+
+  <!-- o caminho de um ticket -->
+  <path d="M600 410H1120" stroke="#1f1d1b" stroke-width="9"/>
+
+  <circle cx="330" cy="410" r="20" fill="#1f1d1b" stroke="#fff" stroke-width="3"/>
+  <use href="#i-despacha" x="318" y="398" width="24" height="24"/>
+  <text x="308" y="452" text-anchor="end" class="nome" font-size="18">MAESTRO</text>
+  <text x="308" y="469" text-anchor="end">despacha · não constrói</text>
+
+  <circle cx="690" cy="410" r="19" fill="#d0242c" stroke="#fff" stroke-width="3"/>
+  <use href="#i-prumo" x="678" y="398" width="24" height="24"/>
+  <text x="690" y="452" text-anchor="middle" class="nome" font-size="17">PRUMO</text>
+  <text x="690" y="469" text-anchor="middle">das decisões</text>
+
+  <circle cx="800" cy="410" r="19" fill="#7a3d9e" stroke="#fff" stroke-width="3"/>
+  <use href="#i-prumo" x="788" y="398" width="24" height="24"/>
+  <text x="800" y="452" text-anchor="middle" class="nome" font-size="17">PRUMO</text>
+  <text x="800" y="469" text-anchor="middle">da construção</text>
+
+  <circle cx="910" cy="410" r="19" fill="#1466ad" stroke="#fff" stroke-width="3"/>
+  <use href="#i-aceite" x="898" y="398" width="24" height="24"/>
+  <text x="910" y="452" text-anchor="middle" class="nome" font-size="17">TESTADOR</text>
+  <text x="910" y="469" text-anchor="middle">como quem usa</text>
+
+  <circle cx="1020" cy="410" r="19" fill="#1d9148" stroke="#fff" stroke-width="3"/>
+  <use href="#i-juncao" x="1008" y="398" width="24" height="24"/>
+  <text x="1020" y="452" text-anchor="middle" class="nome" font-size="17">INTEGRADOR</text>
+  <text x="1020" y="469" text-anchor="middle">junta no principal</text>
+
+  <rect x="1098" y="388" width="44" height="44" rx="10" fill="#1f1d1b" stroke="#fff" stroke-width="3"/>
+  <path d="M1109 410.5l7.5 7.5 14-15" fill="none" stroke="#fff" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="1120" y="374" text-anchor="middle" class="nome" font-size="20">FEITO</text>
+
+  <!-- fica com você -->
+  <rect x="285" y="712" width="895" height="74" rx="18" fill="#fff" stroke="#1f1d1b" stroke-width="2" stroke-dasharray="7 5"/>
+  <circle cx="306" cy="749" r="17" fill="#1f1d1b"/>
+  <circle cx="306" cy="743" r="5" fill="#fff"/><path d="M296 758a10 8 0 0 1 20 0" fill="#fff"/>
+  <text x="334" y="745" class="nome">COM VOCÊ</text>
+  <text x="334" y="763" font-size="12.5">ticket seu, fora do laço</text>
+  <text x="614" y="745" class="forte">instalação de verdade</text>
+  <text x="614" y="763" font-size="12.5">cópia e hash antes</text>
+  <text x="824" y="745" class="forte">notebook</text>
+  <text x="824" y="763" font-size="12.5">o segundo par</text>
+  <text x="990" y="745" class="forte">consulta ao TI</text>
+  <text x="990" y="763" font-size="12.5">antes do Tailscale</text>
+
+  <!-- tudo em arquivo -->
+  <g transform="translate(40 560)">
+    <path d="M0 0h20l8 8v26H0z" fill="#fff" stroke="#1f1d1b" stroke-width="2.5" stroke-linejoin="round"/>
+    <path d="M20 0v8h8M5 16h16M5 22h16M5 28h10" fill="none" stroke="#1f1d1b" stroke-width="2"/>
+    <text x="40" y="12" class="forte">tudo em arquivo</text>
+    <text x="40" y="30" font-size="12.5">um /clear não perde nada</text>
+  </g>
+  <g transform="translate(40 618)">
+    <text x="0" y="12" class="forte">sem limite de tokens</text>
+    <text x="0" y="30" font-size="12.5">até 10 subagentes por agente</text>
+  </g>
+</svg>
+</div>
+<p class="dica">arraste o mapa para os lados →</p>
+
+<main class="perguntas">
+  <section class="pergunta">
+    <h2><span class="num">1</span>Como os 12 se dividem</h2>
+    <div class="opcoes">
+      <article class="opcao rec">
+        <header><span class="letra">A</span><strong>Papéis separados</strong><span class="selo">recomendada</span></header>
+        <ul class="papeis">
+          <li><svg viewBox="0 0 34 34"><circle cx="17" cy="17" r="16" fill="#e8611a"/><use href="#i-martelo" x="6" y="6" width="22" height="22"/></svg><div><b>7 construtores</b><span>1 ticket inteiro, com testes</span><span><i>✕</i> integrar · aprovar a si</span></div></li>
+          <li><svg viewBox="0 0 34 34"><circle cx="17" cy="17" r="16" fill="#1d9148"/><use href="#i-juncao" x="6" y="6" width="22" height="22"/></svg><div><b>Integrador</b><span>fila · bloqueios · junção</span><span><i>✕</i> construir</span></div></li>
+          <li><svg viewBox="0 0 34 34"><circle cx="17" cy="17" r="16" fill="#1466ad"/><use href="#i-aceite" x="6" y="6" width="22" height="22"/></svg><div><b>Testador de aceite</b><span>o critério, já junto</span><span><i>✕</i> consertar: devolve</span></div></li>
+          <li><svg viewBox="0 0 34 34"><circle cx="17" cy="17" r="16" fill="#e9ae00"/><use href="#i-lupa" x="6" y="6" width="22" height="22"/></svg><div><b>Pesquisador de fonte</b><span>fonte primária, antes do uso</span><span><i>✕</i> código do hub</span></div></li>
+          <li><svg viewBox="0 0 34 34"><circle cx="17" cy="17" r="16" fill="#d0242c"/><use href="#i-prumo" x="6" y="6" width="22" height="22"/></svg><div><b>Prumo das decisões</b><span>contra as decisões do hub</span><span><i>✕</i> código</span></div></li>
+          <li><svg viewBox="0 0 34 34"><circle cx="17" cy="17" r="16" fill="#7a3d9e"/><use href="#i-prumo" x="6" y="6" width="22" height="22"/></svg><div><b>Prumo da construção</b><span>código · testes · segurança</span><span><i>✕</i> código</span></div></li>
+        </ul>
+      </article>
+      <article class="opcao">
+        <header><span class="letra">B</span><strong>Mais mãos</strong></header>
+        <svg viewBox="0 0 260 74" aria-label="9 construtores, 1 integrador e os 2 Prumos, que também testam e conferem a fonte">
+          <g fill="#e8611a"><circle cx="14" cy="22" r="10"/><circle cx="38" cy="22" r="10"/><circle cx="62" cy="22" r="10"/><circle cx="86" cy="22" r="10"/><circle cx="110" cy="22" r="10"/><circle cx="134" cy="22" r="10"/><circle cx="158" cy="22" r="10"/><circle cx="182" cy="22" r="10"/><circle cx="206" cy="22" r="10"/></g>
+          <circle cx="236" cy="22" r="10" fill="#1d9148"/>
+          <circle cx="14" cy="56" r="10" fill="#d0242c"/><circle cx="38" cy="56" r="10" fill="#7a3d9e"/>
+          <text x="58" y="61" font-family="Barlow, sans-serif" font-size="14" font-weight="600" fill="#4d4842">+ teste + fonte</text>
+          <circle cx="170" cy="56" r="9" fill="none" stroke="#1466ad" stroke-width="2.5" stroke-dasharray="3 3"/><circle cx="196" cy="56" r="9" fill="none" stroke="#e9ae00" stroke-width="2.5" stroke-dasharray="3 3"/>
+        </svg>
+        <p>9 construtores; os Prumos acumulam teste e fonte. Menos olhos separados.</p>
+      </article>
+      <article class="opcao">
+        <header><span class="letra">C</span><strong>Com guardião</strong></header>
+        <svg viewBox="0 0 260 74" aria-label="6 construtores, integrador, testador, pesquisador, guardião do ambiente e os 2 Prumos">
+          <g fill="#e8611a"><circle cx="14" cy="22" r="10"/><circle cx="38" cy="22" r="10"/><circle cx="62" cy="22" r="10"/><circle cx="86" cy="22" r="10"/><circle cx="110" cy="22" r="10"/><circle cx="134" cy="22" r="10"/></g>
+          <circle cx="164" cy="22" r="10" fill="#1d9148"/><circle cx="188" cy="22" r="10" fill="#1466ad"/><circle cx="212" cy="22" r="10" fill="#e9ae00"/>
+          <circle cx="14" cy="56" r="10" fill="#d0242c"/><circle cx="38" cy="56" r="10" fill="#7a3d9e"/>
+          <circle cx="76" cy="56" r="12" fill="#7d776f"/><use href="#i-guarda" x="67" y="47" width="18" height="18"/>
+          <text x="96" y="61" font-family="Barlow, sans-serif" font-size="14" font-weight="600" fill="#4d4842">guardião do ambiente</text>
+        </svg>
+        <p>6 construtores; um guardião cuida do HOME de ensaio, dos serviços e da instalação.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="pergunta">
+    <h2><span class="num">2</span>A 1 hora vale para</h2>
+    <div class="opcoes">
+      <article class="opcao rec">
+        <header><span class="letra">A</span><strong>Cada ticket</strong><span class="selo">recomendada</span></header>
+        <svg viewBox="0 0 520 108" aria-label="Cada ticket tem até 60 minutos; o que passa para, grava o estado e é dividido pelo maestro ou vai ao Fable">
+          <g font-family="Barlow, sans-serif" font-size="14" font-weight="600" fill="#4d4842">
+            <rect x="0" y="10" width="170" height="16" rx="8" fill="#e8611a"/>
+            <rect x="0" y="36" width="240" height="16" rx="8" fill="#e8611a"/>
+            <rect x="0" y="62" width="300" height="16" rx="8" fill="#e8611a"/>
+            <path d="M300 4V96" stroke="#1f1d1b" stroke-width="2.5" stroke-dasharray="5 4"/>
+            <text x="300" y="104" text-anchor="middle" font-weight="800" fill="#1f1d1b">60 min</text>
+            <path d="M306 70H346" stroke="#1f1d1b" stroke-width="2.5"/>
+            <path d="M346 70l12-14h40M346 70l12 14h40" fill="none" stroke="#1f1d1b" stroke-width="2.5" stroke-linejoin="round"/>
+            <rect x="398" y="47" width="30" height="13" rx="6.5" fill="#e8611a"/><rect x="432" y="47" width="30" height="13" rx="6.5" fill="#e8611a"/>
+            <circle cx="410" cy="84" r="11" fill="#0b8f95"/><use href="#i-estrela" x="401" y="75" width="18" height="18"/>
+            <text x="468" y="58">divide</text>
+            <text x="428" y="89">Fable</text>
+            <text x="312" y="38" font-size="13">para · grava o estado</text>
+          </g>
+        </svg>
+        <p>Ao bater 60 minutos o construtor para e grava o estado; o maestro divide o ticket ou chama o Fable.</p>
+      </article>
+      <article class="opcao">
+        <header><span class="letra">B</span><strong>Cada volta</strong></header>
+        <svg viewBox="0 0 260 74" aria-label="Voltas de até uma hora, com placar no fim de cada uma">
+          <g font-family="Barlow, sans-serif" font-size="13" font-weight="700" fill="#4d4842">
+            <rect x="0" y="26" width="72" height="18" rx="5" fill="#1f1d1b"/><rect x="88" y="26" width="72" height="18" rx="5" fill="#1f1d1b"/><rect x="176" y="26" width="72" height="18" rx="5" fill="#1f1d1b"/>
+            <text x="36" y="39" text-anchor="middle" fill="#fff">1 h</text><text x="124" y="39" text-anchor="middle" fill="#fff">1 h</text><text x="212" y="39" text-anchor="middle" fill="#fff">1 h</text>
+            <path d="M80 8V50M168 8V50" stroke="#1d9148" stroke-width="2.5"/><path d="M80 8h12l-4 5 4 5H80M168 8h12l-4 5 4 5h-12" fill="#1d9148"/>
+            <text x="124" y="69" text-anchor="middle">placar entre voltas</text>
+          </g>
+        </svg>
+        <p>Cada volta dura até 1 hora; no fim, todos gravam e você vê o placar.</p>
+      </article>
+      <article class="opcao">
+        <header><span class="letra">C</span><strong>Tudo em 1 hora</strong></header>
+        <svg viewBox="0 0 260 74" aria-label="A execução inteira em uma hora; o resto fica para outra">
+          <defs><pattern id="hachura" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><path d="M0 0V7" stroke="#b9b1a4" stroke-width="3"/></pattern></defs>
+          <g font-family="Barlow, sans-serif" font-size="13" font-weight="700" fill="#4d4842">
+            <rect x="0" y="26" width="160" height="18" rx="5" fill="#1f1d1b"/>
+            <rect x="166" y="26" width="90" height="18" rx="5" fill="url(#hachura)" stroke="#b9b1a4" stroke-width="1.5"/>
+            <text x="80" y="39" text-anchor="middle" fill="#fff">1 h</text>
+            <path d="M163 14V56" stroke="#d0242c" stroke-width="3"/>
+            <text x="211" y="66" text-anchor="middle">fica para outra</text>
+          </g>
+        </svg>
+        <p>A execução inteira em 1 hora; o que não couber fica para outra.</p>
+      </article>
+    </div>
+  </section>
+</main>
+
+<p class="nao-verificado"><strong>Ainda não verificado</strong><span>recruta pela CLI com Opus 5.5 alto</span><span>hooks de projeto numa pasta de trabalho</span><span>10 subagentes e Fable médio</span></p>
+
+<script>
+(function () {
+  /* a malha "todos ligados entre si": 12 pontos, cada um ligado aos outros 11 */
+  var cores = ['#e8611a','#e8611a','#e8611a','#e8611a','#e8611a','#e8611a','#e8611a','#1d9148','#1466ad','#e9ae00','#d0242c','#7a3d9e'];
+  var cx = 920, cy = 98, r = 36, ns = 'http://www.w3.org/2000/svg';
+  var malha = document.getElementById('malha'), nos = document.getElementById('malha-nos'), p = [];
+  for (var i = 0; i < 12; i++) {
+    var a = -Math.PI / 2 + i * Math.PI / 6;
+    p.push([cx + r * Math.cos(a), cy + r * Math.sin(a)]);
+  }
+  for (var i = 0; i < 12; i++) for (var j = i + 1; j < 12; j++) {
+    var l = document.createElementNS(ns, 'line');
+    l.setAttribute('x1', p[i][0]); l.setAttribute('y1', p[i][1]); l.setAttribute('x2', p[j][0]); l.setAttribute('y2', p[j][1]);
+    malha.appendChild(l);
+  }
+  for (var i = 0; i < 12; i++) {
+    var c = document.createElementNS(ns, 'circle');
+    c.setAttribute('cx', p[i][0]); c.setAttribute('cy', p[i][1]); c.setAttribute('r', 6);
+    c.setAttribute('fill', cores[i]); c.setAttribute('stroke', '#f6f3ec'); c.setAttribute('stroke-width', 2);
+    nos.appendChild(c);
+  }
+})();
+</script>
+</body>
+</html>

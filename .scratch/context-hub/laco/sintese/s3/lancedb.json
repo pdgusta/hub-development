@@ -1,0 +1,71 @@
+{
+ "nome": "LanceDB",
+ "url": "https://github.com/lancedb/lancedb",
+ "papel": "peça embutida",
+ "windows": "yes (wheel win_amd64 no PyPI; CI não verificado)",
+ "mcp": "no (sem MCP oficial na página; MCP de terceiros existe, nao_verificado)",
+ "portugues": "FTS nativo com stem, stopwords e ascii_folding; português consta nas listas de stemming e de stop-words embutidas. Padrão language=English, então é preciso configurar. Embeddings multilíngues dependem do modelo escolhido.",
+ "markdown_frontmatter": "Não indexa Markdown por si; é banco vetorial/colunar. Frontmatter vira colunas filtráveis com SQL; chunking por título seria do hub.",
+ "atualizacao": "Sem watcher. Linhas novas ficam sem índice até o FTS alcançar (wait_for_index); reconciliação com o disco é do hub.",
+ "embeddings_endpoint": "A função de embedding OpenAI do registro expõe só name, dim, use_azure: sem base_url documentado. Dá para gerar embeddings por fora (gateway) ou com função customizada e gravar os vetores.",
+ "recursos": "Biblioteca embutida (Rust, bindings Python/Node/Rust), sem servidor; binding Python exige Python >=3.10. RAM/disco: nao_verificado.",
+ "licenca": "Apache-2.0",
+ "ultimo_release": "0.40.0 (PyPI 2026-10-07); pré-release v0.41.0-beta.6 (feed 2026-10-12)",
+ "atividade": "commits em 2026-10-13 (feed)",
+ "maturidade": "stable (0.x, releases semanais, beta em curso)",
+ "encaixe": "Dentro do MCP do banco, em disco local de cada máquina, com FTS nativo + vetor. Impedimento: formato de dados próprio (pasta Lance) e sem base_url de embeddings na função oficial.",
+ "evidencias": [
+  {
+   "campo": "embeddings_endpoint",
+   "url": "https://docs.lancedb.com/integrations/embedding/openai",
+   "citacao": "use_azure | bool | False | Set true to use Azure OpenAI SDK (tabela sem base_url)"
+  },
+  {
+   "campo": "portugues",
+   "url": "https://docs.lancedb.com/indexing/fts-index",
+   "citacao": "language | default \"English\" | Language for stemming and stop-word filters."
+  },
+  {
+   "campo": "portugues",
+   "url": "https://docs.lancedb.com/indexing/fts-index",
+   "citacao": "ascii_folding | True | Normalize accented characters"
+  },
+  {
+   "campo": "atualizacao",
+   "url": "https://docs.lancedb.com/indexing/fts-index",
+   "citacao": "can time out if writes keep adding rows faster than the index catches up"
+  },
+  {
+   "campo": "licenca",
+   "url": "https://github.com/lancedb/lancedb",
+   "citacao": "Apache-2.0 license"
+  },
+  {
+   "campo": "encaixe",
+   "url": "https://github.com/lancedb/lancedb",
+   "citacao": "embedded retrieval library for multimodal AI"
+  },
+  {
+   "campo": "windows",
+   "url": "https://pypi.org/pypi/lancedb/json",
+   "citacao": "lancedb-0.40.0-cp310-abi3-win_amd64.whl"
+  },
+  {
+   "campo": "ultimo_release",
+   "url": "https://github.com/lancedb/lancedb/releases.atom",
+   "citacao": "LanceDB v0.41.0-beta.6"
+  },
+  {
+   "campo": "recursos",
+   "url": "https://docs.lancedb.com/indexing/fts-index",
+   "citacao": "The current FTS implementation is Lance-native."
+  }
+ ],
+ "nao_verificado": [
+  "CI com windows-latest",
+  "MCP oficial",
+  "uso de RAM/disco",
+  "base_url via kwargs (não documentado, pode existir)",
+  "lista completa de línguas de stop-words (português confirmado só pelo resumo da página)"
+ ]
+}

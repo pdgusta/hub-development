@@ -1,0 +1,30 @@
+{
+ "chave": "web:jobqueue.dask.org",
+ "urls": [
+  "https://jobqueue.dask.org/"
+ ],
+ "tipos": [
+  "library"
+ ],
+ "termos": [
+  "dask jobqueue",
+  "offline task scheduling",
+  "batch processing"
+ ],
+ "mencoes": 1,
+ "familias": [
+  "mistral"
+ ],
+ "primeira_onda": 4,
+ "nomes": [
+  "Dask-Jobqueue"
+ ],
+ "resumos": [
+  "Submit Dask tasks to local queues (e.g., Windows Task Scheduler) for offline processing of Markdown files."
+ ],
+ "fonte": "site",
+ "readme_status": "ok",
+ "readme_nome": "https://jobqueue.dask.org/",
+ "readme_cortado": false,
+ "readme": "[Dask-Jobqueue — Dask-jobqueue 0.9.0+14.g55b9727 documentation]\n\nSkip to main content\n\n Back to top\n\nDask-jobqueue 0.9.0+14.g55b9727 documentation\n\n.rst\n\n.pdf\n\nDask-Jobqueue\n\n Contents \n\nDask-Jobqueue#\n\nEasily deploy Dask on job queuing systems like PBS, Slurm, MOAB, SGE, LSF, and HTCondor.\n\nThe dask-jobqueue project makes it easy to deploy Dask on common job queuing\nsystems typically found in high performance supercomputers, academic research\ninstitutions, and other clusters.\n\nThere are two common deployment patterns for Dask on HPC, Dynamic Clusters and Batch Runners, and dask-jobqueue has support for both.\n\nDynamic Clusters#\n\nA Dynamic Cluster is a Dask cluster where new workers can be added dynamically while the cluster is running.\n\nIn an HPC environment this generally means that the Dask Scheduler is run in the same location as the client code,\nusually on a single compute node. Then workers for the Dask cluster are submitted as additional jobs to the job\nqueue scheduler.\n\nThis pattern works well on clusters where it is favourable to submit many small jobs.\n\nsrun -n 1 dynamic_workload.py\n\n# dynamic_workload.py\nfrom dask_jobqueue.slurm import SLURMCluster\ncluster = SLURMCluster()\ncluster.adapt(minimum=1, maximum=10) # Tells Dask to call `srun -n 1 ...` when it needs new workers\n\nfrom dask.distributed import Client\nclient = Client(cluster) # Connect this local process to remote workers\n\nimport dask.array as da\nx = ... # Dask commands now use these distributed resources\n\nBenefits\n\nClusters can autoscale as a workload progresses.\n\nSmall gaps in the HPC that would be otherwise unused can be backfilled.\n\nA workload can run slowly with a few workers during busy times and then scale up during quiet times.\n\nWorkloads in intaractive environments can scale up and down as users run code manually.\n\nYou don’t need to wait for all nodes to be available before your workload starts, so jobs often start sooner.\n\nTo learn more see the Dynamic Cluster documentation.\n\nBatch Runners#\n\nA Batch Runner is a Dask cluster where the whole workload, including the client code, scheduler and workers\nare submitted as a single allocation to the job queue scheduler. All of the processes within the workload coordinate\nduring startup and then work together to compute the Dask workload.\n\nThis pattern works well where large jobs are prioritised and node locality is important.\n\nsrun -n 12 python batch_workload.py\n\n# batch_workload.py\nfrom dask_jobqueue.slurm import SLURMRunner\ncluster = SLURMRunner() # Boostraps all the processes into a client + scheduler + 10 workers\n\n# Only the client process will continue past this point\n\nfrom dask.distributed import Client\nclient = Client(cluster) # Connect this client process to remote workers\n\nimport dask.array as da\nx = ... # Dask commands now use these distributed resources\n\nBenefits\n\nWorkers are generally colocated physically on the machine, so communication is faster, expecially with UCX.\n\nSubmitting many small jobs can be frowned upon on some HPCs, submitting a single large job is more typical of other HPC workloads.\n\nAll workers are guaranteed to be available when the job starts which can avoid oversubscribing workers.\n\nClusters comprised of one large allocation tends to be more reliable than many small allocations.\n\nAll processes have the same start and wall time.\n\nTo learn more see the Batch Runner documentation.\n\nMore details#\n\nA good entry point to know more about how to use dask-jobqueue is\nTalks & Tutorials.\n\nGetting Started\n\nInstalling\n\nTalks & Tutorials\n\nDynamic Clusters\n\nOverview\n\nInteractive Use\n\nHow this works\n\nConfiguration\n\nConfigure Dask-Jobqueue\n\nExample Deployments\n\nConfiguration Examples\n\nAdvanced tips and tricks\n\nClusters API\n\nBatch Runners\n\nOverview\n\nWriting your own runners\n\nRunners API\n\nHelp & Reference\n\nHow to debug\n\nChangelog\n\nDevelopment Guidelines\n\nHistory\n\n Contents"
+}

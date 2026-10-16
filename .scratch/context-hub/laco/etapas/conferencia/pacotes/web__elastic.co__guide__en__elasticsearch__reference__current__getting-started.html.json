@@ -1,0 +1,62 @@
+{
+ "chave": "web:elastic.co/guide/en/elasticsearch/reference/current/getting-started.html",
+ "nomes": [
+  "Elasticsearch (local)"
+ ],
+ "urls": [
+  "https://www.elastic.co/guide/en/elasticsearch/reference/current/getting-started.html"
+ ],
+ "readme_cortado": false,
+ "readme": "[Get started with search | Elastic Docs]\n\nDocs\n\n /\n\n Solutions and use cases\n\n /\n\n Search use case\n\nGet started with search\n\nNew to search with Elasticsearch? Start building a search experience by setting up your first deployment, refining your search goals, and adding data. These core search capabilities are available to you regardless of your deployment type, solution, or project type.\n\n Note\n\nIf you're looking for an introduction to the Elastic Stack or the Elasticsearch product, go to Elastic fundamentals or The Elasticsearch data store.\n\n Agent skill available\n\nA skill is available to help AI agents with this topic.\n\nThis skill guides users through search concepts and helps create a working search use case. \nLearn more about agent skills for Elastic\n\n Copy install command\n\n Choose your deployment type\n\nElastic provides several self-managed and Elastic-managed options.\n\nTo get started, choose one of these options:\n\nCreate a Serverless project.\n\nCreate a local development installation.\n\nCheck out the full list of deployment types to learn more.\n\nCreate a Serverless project\n\nFor simplicity and speed, use Elastic Cloud Serverless.\n\n Create a serverless project\n\nChoose a Serverless project configuration\n\nBoth Elasticsearch projects and Elasticsearch Vector Database projects support vector search and use the same query APIs.\n\nProject type\nWhen to choose\n\nElasticsearch project\nFor general-purpose data storage and search, including mixed lexical, time series, and analytics workloads, or when you need to run custom models on machine learning nodes\n\nElasticsearch Vector Database project\nWhen embeddings and similarity search are central to your workload, such as RAG, recommendations, semantic search, hybrid search, or multimodal search\n\nThere are two options to create a serverless project:\n\nIf you're a new user, sign up for a free 14-day trial to create a serverless project. For more information about Elastic Cloud trials, refer to Trial features.\n\nIf you're an existing customer, log in to Elastic Cloud. On the home page, you can create a serverless project. You need the admin predefined role or an equivalent custom role to create projects. Refer to User roles and privileges.\n\nCreate a local development installation\n\nCreate a local development installation in Docker:\n\ncurl -fsSL https://elastic.co/start-local | sh\n\n (Optional) Try out a quickstart\n\nGet hands-on experience with Elasticsearch using guided tutorials that walk you through common search scenarios:\n\nIndex and search basics: Learn how to create indices, add documents, and perform searches\n\nKeyword search with Python: Build your first search query with Python\n\nSemantic search: Implement semantic search with vector embeddings using the semantic_text workflow\n\n Identify your search goals\n\nDepending on your use case, you can choose multiple search approaches, for example full-text and semantic search.\nEach approach affects your options for storing and querying your data.\n\nIf you're unsure which approaches match your goals, you can try them out with sample data. For example, Semantic search quickstart.\n\nIf you prefer to ingest your data first and transform or reindex it as needed later, skip to the next step.\n\n Ingest your data\n\nIf your goals include vector or semantic AI-powered search, create vectorized data with built-in and third-party natural language processing (NLP) models and store it in an Elasticsearch vector database.\nThe approach that requires the least configuration involves adding semantic_text fields when ingesting your data.\nThis method is described in Semantic search with semantic_text.\n\nTo learn about adding data for other search goals, go to Ingest for search use cases.\nFor a broader overview of ingestion options, go to Ingest: Bring your data to Elastic.\n\nIf you're not ready to add your own data, you can use sample data or create small data sets when you follow the instructions in the quickstarts.\n\nThe Elasticsearch home page in the UI also provides workflow guides for creating indices and ready-to-use code examples for ingesting data by using REST APIs.\n\n Build your search queries\n\nYour next steps will be to choose a method to write queries and interact with Elasticsearch.\nYou can pick a programming language client that matches your application and choose which query languages you will use to express your search logic.\nEach decision builds on the previous ones, offering flexibility to mix and match approaches based on your needs.\n\nRelated resources\n\nUse these resources to learn more about Elasticsearch or get started in a different way:\n\nEvaluate the Elasticsearch solution\n\nDetailed deployment comparison\n\nGet started with Query DSL search and filters\n\nGet started with ES|QL queries\n\nAnalyze eCommerce data with aggregations using Query DSL",
+ "fonte": "site",
+ "respostas": [
+  {
+   "por": "gemma-4-31b",
+   "resposta": {
+    "serve": "search",
+    "role": "Provide lexical, vector, and hybrid search capabilities for the hub's notes",
+    "place": [
+     "network_service"
+    ],
+    "mechanism": [
+     "bm25",
+     "full_text",
+     "vector",
+     "hybrid",
+     "embeddings"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "stable",
+    "doubt": false,
+    "evidence": "Get started with search; Elasticsearch Vector Database projects support vector search... hybrid search; Create a local development installation in Docker"
+   }
+  },
+  {
+   "por": "voxtral-small-2507",
+   "resposta": {
+    "serve": "search",
+    "role": "search layer for agents",
+    "place": [
+     "network_service"
+    ],
+    "mechanism": [
+     "bm25",
+     "full_text",
+     "vector",
+     "hybrid",
+     "other"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "unknown",
+    "doubt": true,
+    "evidence": "Supports search, vector search, and hybrid search."
+   }
+  }
+ ]
+}

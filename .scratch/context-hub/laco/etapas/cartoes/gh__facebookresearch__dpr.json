@@ -1,0 +1,74 @@
+{
+ "chave": "gh:facebookresearch/dpr",
+ "urls": [
+  "https://github.com/facebookresearch/DPR",
+  "https://docs.haystack.deepset.ai/docs/densepassageretriever",
+  "https://github.com/facebookresearch/dpr",
+  "https://arxiv.org/abs/2004.04906"
+ ],
+ "tipos": [
+  "library",
+  "concept"
+ ],
+ "termos": [
+  "DPR",
+  "Dense Passage Retriever",
+  "密集文本检索",
+  "busca de passagens",
+  "embeddings",
+  "Transformer",
+  "Embeddings",
+  "denotation propagation",
+  "RAG",
+  "Hugging Face Transformers",
+  "Passage Retrieval",
+  "cross-attention retrieval",
+  "hybrid dense-sparse",
+  "密集 Passage 检索",
+  "双编码器",
+  "FAISS索引",
+  "Passage retrieval",
+  "dense retriever",
+  "dpr",
+  "dense passage retriever",
+  "semantic search",
+  "passage retrieval",
+  "busca de passagem densa",
+  "precisão",
+  "sentence-bert",
+  "retrieval",
+  "Dense Retrieval",
+  "Dual-Encoder Models",
+  "dense retrieval",
+  "dual-encoder",
+  "DPR embeddings",
+  "bi-encoder"
+ ],
+ "mencoes": 17,
+ "familias": [
+  "llama",
+  "mistral",
+  "nemotron"
+ ],
+ "primeira_onda": 1,
+ "nomes": [
+  "Dense Passage Retriever (DPR)",
+  "Dense Passage Retriever",
+  "DensePassageRetriever",
+  "DPR (Denotation Propagation Retrieval)",
+  "Dense Passage Retrieval",
+  "Dense Passage Retrieval (DPR)",
+  "DPR",
+  "DPR (Dense Passage Retrieval)"
+ ],
+ "resumos": [
+  "Implementação de busca por palavra e por sentido para reranking em modelos de linguagem",
+  "一种用于密集文本检索的库，支持语义检索",
+  "Um modelo de busca de passagens que pode ser usado para buscar notas em Markdown com base em embeddings",
+  "Haystack-Komponente für semantische Suche mit Embeddings (z. B. Sentence-BERT)."
+ ],
+ "readme_status": "ok",
+ "readme_nome": "README.md",
+ "readme_cortado": true,
+ "readme": "# Dense Passage Retrieval\n\nDense Passage Retrieval (`DPR`) - is a set of tools and models for state-of-the-art open-domain Q&A research.\nIt is based on the following paper:\n\nVladimir Karpukhin, Barlas Oguz, Sewon Min, Patrick Lewis, Ledell Wu, Sergey Edunov, Danqi Chen, Wen-tau Yih. [Dense Passage Retrieval for Open-Domain Question Answering.](https://arxiv.org/abs/2004.04906) Proceedings of the 2020 Conference on Empirical Methods in Natural Language Processing (EMNLP), pages 6769–6781, 2020.\n\nIf you find this work useful, please cite the following paper:\n\n```\n@inproceedings{karpukhin-etal-2020-dense,\n    title = \"Dense Passage Retrieval for Open-Domain Question Answering\",\n    author = \"Karpukhin, Vladimir and Oguz, Barlas and Min, Sewon and Lewis, Patrick and Wu, Ledell and Edunov, Sergey and Chen, Danqi and Yih, Wen-tau\",\n    booktitle = \"Proceedings of the 2020 Conference on Empirical Methods in Natural Language Processing (EMNLP)\",\n    month = nov,\n    year = \"2020\",\n    address = \"Online\",\n    publisher = \"Association for Computational Linguistics\",\n    url = \"https://www.aclweb.org/anthology/2020.emnlp-main.550\",\n    doi = \"10.18653/v1/2020.emnlp-main.550\",\n    pages = \"6769--6781\",\n}\n```\n\nIf you're interesting in reproducing experimental results in the paper based on our model checkpoints (i.e., don't want to train the encoders from scratch), you might consider using the [Pyserini toolkit](https://github.com/castorini/pyserini/blob/master/docs/experiments-dpr.md), which has the experiments nicely packaged in via `pip`.\nTheir toolkit also reports higher BM25 and hybrid scores.\n\n## Features\n1. Dense retriever model is based on bi-encoder architecture.\n2. Extractive Q&A reader&ranker joint model inspired by [this](https://arxiv.org/abs/1911.03868) paper.\n3. Related data pre- and post- processing tools.\n4. Dense retriever component for inference time logic is based on FAISS index.\n\n## New (March 2021) release\nDPR codebase is upgraded with a number of enhancements and new models.\nMajor changes:\n1. [Hydra](https://hydra.cc/)-based configuration for all the command line tools exept the data loader (to be converted soon)\n2. Pluggable data processing layer to support custom datasets\n3. New retrieval model checkpoint with better perfromance.\n\n## New (March 2021) retrieval model\nA new bi-encoder model trained on NQ dataset only is now provided: a new checkpoint, training data, retrieval results and wikipedia embeddings.\nIt is trained on the original DPR NQ train set and its version where hard negatives are mined using DPR index itself using the previous NQ checkpoint.\nA Bi-encoder model is trained from scratch using this new training data combined with our original NQ training data. This training scheme gives a nice retrieval performance boost.\n\nNew vs old top-k documents retrieval accuracy on NQ test set (3610 questions).\n\n| Top-k passages        | Original DPR NQ model           | New DPR model  |\n| ------------- |:-------------:| -----:|\n| 1      | 45.87 | 52.47 |\n| 5      | 68.14      |   72.24 |\n| 20  | 79.97      |    81.33 |\n| 100  | 85.87      |    87.29 |\n\nNew model downloadable resources names (see how to use download_data script below):\n\nCheckpoint: checkpoint.retriever.single-adv-hn.nq.bert-base-encoder\n\nNew training data: data.retriever.nq-adv-hn-train\n\nRetriever resutls for NQ test set: data.retriever_results.nq.single-adv-hn.test\n\nWikipedia embeddings: data.retriever_results.nq.single-adv-hn.wikipedia_passages\n\n\n## Installation\n\nInstallation from the source. Python's virtual or Conda environments are recommended.\n\n```bash\ngit clone git@github.com:facebookresearch/DPR.git\ncd DPR\npip install .\n```\n\nDPR is tested on Python 3.6+ and PyTorch 1.2.0+.\nDPR relies on third-party libraries for encoder code implementations.\nIt currently supports Huggingface (version <=3.1.0) BERT, Pytext BERT and Fairseq RoBERTa encoder models.\nDue to generality of the tokenization process, DPR uses Huggingface tokenizers as of now. So Huggingface is the only required dependency, Pytext & Fairseq are optional.\nInstall them separately if you want to use those encoders.\n\n\n## Resources & Data formats\nFirst, you need to prepare data for either retriever or reader training.\nEach of the DPR components has its own input/output data formats. \nYou can see format descriptions below.\nDPR provides NQ & Trivia preprocessed datasets (and model checkpoints) to be downloaded from the cloud using our dpr/data/download_data.py tool. One needs to specify the resource name to be downloaded. Run 'python data/download_data.py' to see all options.\n\n```bash\npython data/download_data.py \\\n\t--resource {key from download_data.py's RESOURCES_MAP}  \\\n\t[optional --output_dir {your location}]\n```\nThe resource name matching is prefix-based. So if you need to download all data resources, just use --resource data.\n\n## Retriever input data format\nThe default data format of the Retriever training data is JSON.\nIt contains pools of 2 types of negative passages per question, as well as positive passages and some additional information.\n\n```\n[\n  {\n\t\"question\": \"....\",\n\t\"answers\": [\"...\", \"...\", \"...\"],\n\t\"positive_ctxs\": [{\n\t\t\"title\": \"...\",\n\t\t\"text\": \"....\"\n\t}],\n\t\"negative_ctxs\": [\"...\"],\n\t\"hard_negative_ctxs\": [\"...\"]\n  },\n  ...\n]\n```\n\nElements' structure  for negative_ctxs & hard_negative_ctxs is exactly the same as for positive_ctxs.\nThe preprocessed data available for downloading also contains some extra attributes which may be useful for model modifications (like bm25 scores per passage). Still, they are not currently in use by DPR.\n\nYou can download prepared NQ dataset used in the paper by using 'data.retriever.nq' key prefix. Only dev & train subsets are available in this format.\nWe also provide question & answers only CSV data files for all train/dev/test splits. Those are used for the model evaluation since our NQ preprocessing step looses a part of original samples set.\nUse 'data.retriever.qas.*' resource keys to get respective sets for evaluation.\n\n```bash\npython data/download_data.py\n\t--resource data.retriever\n\t[optional --output_dir {your location}]\n```\n\n## DPR data formats and custom processing \nOne can use their own data format and custom data parsing & loading logic by inherting from DPR's Dataset classes in dpr/data/{biencoder|retriever|reader}_data.py files and implementing load_data() and __getitem__() methods. See [DPR hydra configuration](https://github.com/facebookresearch/DPR/blob/master/conf/README.md) instructions.\n\n\n## Retriever training\nRetriever training quality depends on its effective batch size. The one reported in the paper used 8 x 32GB GPUs.\nIn order to start training on one machine:\n```bash\npython train_dense_encoder.py \\\ntrain_datasets=[list of train datasets, comma separated without spaces] \\\ndev_datasets=[list of dev datasets, comma separated without spaces] \\\ntrain=biencoder_local \\\noutput_dir={path to checkpoints dir}\n```\n\nExample for NQ dataset\n\n```bash\npython train_dense_encoder.py \\\ntrain_datasets=[nq_train] \\\ndev_datasets=[nq_dev] \\\ntrain=biencoder_local \\\noutput_dir={path to checkpoints dir}\n```\n\nDPR uses HuggingFace BERT-base as the encoder by default. Other ready options include Fairseq's ROBERTA and Pytext BERT models.\nOne can select them by either changing encoder configuration files (conf/encoder/hf_bert.yaml) or providing a new configuration file in conf/encoder dir and enabling it with encoder={new file name} command line parameter. \n\nNotes:\n- If you want to use pytext bert or fairseq roberta, you will need to download pre-trained weights and specify encoder.pretrained_file parameter. Specify the dir location of the downloaded files for 'pretrained.fairseq.roberta-base' resource prefix for RoBERTa model or the file path for pytext BERT (resource name 'pretrained.pytext.bert-base.model').\n- Validation and checkpoint saving happens according to train.eval_per_epoch parameter value.\n- There is no stop condition besides a specified amount of epochs to train (train.num_train_epochs configuration parameter).\n- Every evaluation saves a model checkpoint.\n- The best checkpoint is logged in the train process output.\n- Regular NLL classification loss validation for bi-encoder training can be replaced with average rank evaluation. It aggregates passage and question vectors from the input data passages pools, does large similarity matrix calculation for those representations and then averages the rank of the gold passage for each question. We found this metric more correlating with the final retrieval performance vs nll classification loss. Note however that this average rank validation works differently in DistributedDataParallel vs DataParallel PyTorch modes. See train.val_av_rank_* set of parameters to enable this mode and modify its settings.\n\nSee the section 'Best hyperparameter settings' below as e2e example for our best setups.\n\n## Retriever inference\n\nGenerating representation vectors for the static documents dataset is a highly parallelizable process which can take up to a few days if computed on a single GPU. You might want to use multiple available GPU servers by running the script on each of them independently and specifying their own shards.\n\n```bash\npython generate_dense_embeddings.py \\\n\tmodel_file={path to biencoder checkpoint} \\\n\tctx_src={name of the passages resource, set to dpr_wiki to use our original wikipedia split} \\\n\tshard_id={shard_num, 0-based} num_shards={total number of shards} \\\n\tout_file={result files location + name PREFX}\t\n```\n\nThe name of the resource for ctx_src parameter \nor just the source name from conf/ctx_sources/default_sources.yaml file.\n\nNote: you can use much large batch size here compared to training mode. For example, setting batch_size 128 for 2 GPU(16gb) server should work fine.\nYou can download already generated wikipedia embeddings from our original model (trained on NQ dataset) using resource key 'data.retriever_results.nq.single.wikipedia_passages'. \nEmbeddings resource name for the new better model 'data.retriever_results.nq.single-adv-hn.wikipedia_passages'\n\nWe generally use the following params on 50 2-gpu nodes: batch_size=128 shard_id=0 num_shards=50\n\n\n\n## Retriever validation against the entire set of documents:\n\n```bash\n\npython dense_retriever.py \\\n\tmodel_file={path to a checkpoint downloaded from our download_data.py as 'checkpoint.retriever.single.nq.bert-base-encoder'} \\\n\tqa_dataset={the name os the test source} \\\n\tctx_datatsets=[{list of passage sources's names, comma separated without spaces}] \\\n\tencoded_ctx_files=[{list of encoded document files glob expression, comma separated without spaces}] \\\n\tout_file={path to output json file with results} \n\t\n```\n\nFor example, If your generated embeddings fpr two passages set as ~/myproject/embeddings_passages1/wiki_passages_* and ~/myproject/embeddings_passages2/wiki_passages_* files and want to evaluate on NQ dataset:\n\n```bash\npython dense_retriever.py \\\n\tmodel_file={path to a checkpoint file} \\\n\tqa_dataset=nq_test \\\n\tctx_datatsets=[dpr_wiki] \\\n\tencoded_ctx_files=[\\\"~/myproject/embeddings_passages1/wiki_passages_*\\\",\\\"~/myproject/embeddings_passages2/wiki_passages_*\\\"] \\\n\tout_file={path to output json file with results} \n```\n\n\nThe tool writes retrieved results for subsequent reader model training into specified out_file.\nIt is a json with the following format:\n\n```\n[\n    {\n        \"question\": \"...\",\n        \"answers\": [\"...\", \"...\", ... ],\n        \"ctxs\": [\n            {\n                \"id\": \"...\", # passage id from database tsv file\n                \"title\": \"\",\n                \"text\": \"....\",\n                \"score\": \"...\",  # retriever score\n                \"has_answer\": true|false\n     },\n]\n```\nResults are sorted by their similarity score, from most relevant to least relevant.\n\nBy default, dense_retriever uses exhaustive search process, but you can opt in to use lossy index types.\nWe provide HNSW and HNSW_SQ index options.\nEnabled them by indexer=hnsw or indexer=hnsw_sq command"
+}

@@ -1,0 +1,61 @@
+{
+ "chave": "gh:aio-libs/aiohttp",
+ "urls": [
+  "https://github.com/aio-libs/aiohttp",
+  "https://docs.aiohttp.org/",
+  "https://docs.aiohttp.org/en/stable/",
+  "https://aiohttp-cafe.com/",
+  "https://docs.aiohttp.org"
+ ],
+ "tipos": [
+  "library"
+ ],
+ "termos": [
+  "asyncio",
+  "web",
+  "client",
+  "async HTTP",
+  "server",
+  "network",
+  "async http",
+  "websocket client",
+  "aiohttp",
+  "http client",
+  "http server",
+  "HTTP",
+  "REST API",
+  "MCP Server",
+  "async web framework",
+  "HTTP server",
+  "aiohttp client",
+  "async",
+  "Python",
+  "AIOHTTP",
+  "web server"
+ ],
+ "mencoes": 11,
+ "familias": [
+  "cohere",
+  "dots3",
+  "gemma",
+  "liquid",
+  "llama",
+  "mistral"
+ ],
+ "primeira_onda": 3,
+ "nomes": [
+  "Aiohttp",
+  "aiohttp",
+  "AIOHTTP"
+ ],
+ "resumos": [
+  "A coroutine-based TCP/HTTP protocol library for asyncio that provides a powerful web framework and client.",
+  "aiohttp is an asynchronous HTTP client and server library for Python, enabling fast network applications.",
+  "Async HTTP client/server library with WebSocket support for building real‑time applications.",
+  "Asynchronous HTTP client/server framework for Python."
+ ],
+ "readme_status": "ok",
+ "readme_nome": "README.rst",
+ "readme_cortado": false,
+ "readme": "==================================\nAsync http client/server framework\n==================================\n\n.. image:: https://raw.githubusercontent.com/aio-libs/aiohttp/master/docs/aiohttp-plain.svg\n   :height: 64px\n   :width: 64px\n   :alt: aiohttp logo\n\n|\n\n.. image:: https://github.com/aio-libs/aiohttp/workflows/CI/badge.svg\n   :target: https://github.com/aio-libs/aiohttp/actions?query=workflow%3ACI\n   :alt: GitHub Actions status for master branch\n\n.. image:: https://codecov.io/gh/aio-libs/aiohttp/branch/master/graph/badge.svg\n   :target: https://codecov.io/gh/aio-libs/aiohttp\n   :alt: codecov.io status for master branch\n\n.. image:: https://badge.fury.io/py/aiohttp.svg\n   :target: https://pypi.org/project/aiohttp\n   :alt: Latest PyPI package version\n\n.. image:: https://img.shields.io/pypi/dm/aiohttp\n   :target: https://pypistats.org/packages/aiohttp\n   :alt: Downloads count\n\n.. image:: https://readthedocs.org/projects/aiohttp/badge/?version=latest\n   :target: https://docs.aiohttp.org/\n   :alt: Latest Read The Docs\n\n.. image:: https://img.shields.io/endpoint?url=https://codspeed.io/badge.json\n   :target: https://codspeed.io/aio-libs/aiohttp\n   :alt: Codspeed.io status for aiohttp\n\n\nKey Features\n============\n\n- Supports both client and server side of HTTP protocol.\n- Supports both client and server Web-Sockets out-of-the-box and avoids\n  Callback Hell.\n- Provides Web-server with middleware and pluggable routing.\n\n\nGetting started\n===============\n\nClient\n------\n\nTo get something from the web:\n\n.. code-block:: python\n\n  import aiohttp\n  import asyncio\n\n  async def main():\n\n      async with aiohttp.ClientSession() as session:\n          async with session.get('https://python.org') as response:\n\n              print(\"Status:\", response.status)\n              print(\"Content-type:\", response.headers['content-type'])\n\n              html = await response.text()\n              print(\"Body:\", html[:15], \"...\")\n\n  asyncio.run(main())\n\nThis prints:\n\n.. code-block::\n\n    Status: 200\n    Content-type: text/html; charset=utf-8\n    Body: <!doctype html> ...\n\nComing from `requests <https://requests.readthedocs.io/>`_ ? Read `why we need so many lines <https://aiohttp.readthedocs.io/en/latest/http_request_lifecycle.html>`_.\n\nServer\n------\n\nAn example using a simple server:\n\n.. code-block:: python\n\n    # examples/server_simple.py\n    from aiohttp import web\n\n    async def handle(request):\n        name = request.match_info.get('name', \"Anonymous\")\n        text = \"Hello, \" + name\n        return web.Response(text=text)\n\n    async def wshandle(request):\n        ws = web.WebSocketResponse()\n        await ws.prepare(request)\n\n        async for msg in ws:\n            if msg.type == web.WSMsgType.text:\n                await ws.send_str(\"Hello, {}\".format(msg.data))\n            elif msg.type == web.WSMsgType.binary:\n                await ws.send_bytes(msg.data)\n            elif msg.type == web.WSMsgType.close:\n                break\n\n        return ws\n\n\n    app = web.Application()\n    app.add_routes([web.get('/', handle),\n                    web.get('/echo', wshandle),\n                    web.get('/{name}', handle)])\n\n    if __name__ == '__main__':\n        web.run_app(app)\n\n\nDocumentation\n=============\n\nhttps://aiohttp.readthedocs.io/\n\n\nDemos\n=====\n\nhttps://github.com/aio-libs/aiohttp-demos\n\n\nExternal links\n==============\n\n* `Third party libraries\n  <https://aiohttp.readthedocs.io/en/latest/third_party.html>`_\n* `Built with aiohttp\n  <https://aiohttp.readthedocs.io/en/latest/built_with.html>`_\n* `Powered by aiohttp\n  <https://aiohttp.readthedocs.io/en/latest/powered_by.html>`_\n\nFeel free to make a Pull Request for adding your link to these pages!\n\n\nCommunication channels\n======================\n\n*aio-libs Discussions*: https://github.com/aio-libs/aiohttp/discussions\n\n*Matrix*: `#aio-libs:matrix.org <https://matrix.to/#/#aio-libs:matrix.org>`_\n\nWe support `Stack Overflow\n<https://stackoverflow.com/questions/tagged/aiohttp>`_.\nPlease add *aiohttp* tag to your question there.\n\nRequirements\n============\n\n- multidict_\n- yarl_\n- frozenlist_\n\nOptionally you may install the aiodns_ library (highly recommended for sake of speed).\n\n.. _aiodns: https://pypi.python.org/pypi/aiodns\n.. _multidict: https://pypi.python.org/pypi/multidict\n.. _frozenlist: https://pypi.org/project/frozenlist/\n.. _yarl: https://pypi.python.org/pypi/yarl\n\n\nKeepsafe\n========\n\nThe aiohttp community would like to thank Keepsafe\n(https://www.getkeepsafe.com) for its support in the early days of\nthe project.\n\n\nSource code\n===========\n\nThe latest developer version is available in a GitHub repository:\nhttps://github.com/aio-libs/aiohttp\n\nBenchmarks\n==========\n\nIf you are interested in efficiency, the AsyncIO community maintains a\nlist of benchmarks on the official wiki:\nhttps://github.com/python/asyncio/wiki/Benchmarks\n\n--------\n\n.. image:: https://img.shields.io/matrix/aio-libs:matrix.org?label=Discuss%20on%20Matrix%20at%20%23aio-libs%3Amatrix.org&logo=matrix&server_fqdn=matrix.org&style=flat\n   :target: https://matrix.to/#/%23aio-libs:matrix.org\n   :alt: Matrix Room — #aio-libs:matrix.org\n\n.. image:: https://img.shields.io/matrix/aio-libs-space:matrix.org?label=Discuss%20on%20Matrix%20at%20%23aio-libs-space%3Amatrix.org&logo=matrix&server_fqdn=matrix.org&style=flat\n   :target: https://matrix.to/#/%23aio-libs-space:matrix.org\n   :alt: Matrix Space — #aio-libs-space:matrix.org\n\n.. image:: https://insights.linuxfoundation.org/api/badge/health-score?project=aiohttp\n   :target: https://insights.linuxfoundation.org/project/aiohttp\n   :alt: LFX Health Score\n"
+}

@@ -1,0 +1,167 @@
+{
+  "tema": "t04-mcp-proxy-roteador",
+  "consultas": [
+    "MetaMCP aggregator MCP servers github",
+    "sparfenyuk mcp-proxy stdio to streamable HTTP github",
+    "MCP gateway open source aggregate multiple MCP servers 2026 docker mcp gateway",
+    "IBM ContextForge MCP gateway federation",
+    "FastMCP proxy mount compose MCP servers create_proxy ProxyClient documentation",
+    "MCP tool search progressive discovery gateway tool search reduce context MCP aggregator 2026",
+    "API GitHub (metadados e releases) de metamcp, mcp-proxy (sparfenyuk, TBXark, punkpeye), docker/mcp-gateway, 1mcp-app/agent, IBM/mcp-context-forge, Kuadrant/mcp-gateway, PrefectHQ/fastmcp",
+    "README raw dos mesmos repositórios (Windows, agregação, filtros)",
+    "code.claude.com/docs/en/mcp (tool search)"
+  ],
+  "achados": [
+    {
+      "nome": "sparfenyuk/mcp-proxy",
+      "url_fonte": "https://github.com/sparfenyuk/mcp-proxy",
+      "o_que_e": "Ponte entre transportes MCP: stdio para SSE/Streamable HTTP e o inverso; expõe vários servidores stdio nomeados em /servers/<nome>/.",
+      "lugar": ["network_service", "light_client"],
+      "mecanismo": ["proxy"],
+      "mcp": "yes", "windows": "unknown", "portugues": "unknown",
+      "licenca": "MIT", "ultimo_release": "v0.13.0 (2026-10-10)", "maturidade": "stable",
+      "encaixe": "Cliente stdio-only fala com o MCP do banco pela tailnet (modo stdio->HTTP), ou um proxy expõe o MCP de busca do disco com --named-server ao lado do MCP do banco.",
+      "evidencias": [
+        {"url": "https://github.com/sparfenyuk/mcp-proxy", "citacao": "Named servers ... will be accessible under `/servers/<server-name>/`"},
+        {"url": "https://github.com/sparfenyuk/mcp-proxy", "citacao": "make sure to enforce it on the `mcp-proxy` side by passing `--transport=streamablehttp`"},
+        {"url": "https://github.com/sparfenyuk/mcp-proxy", "citacao": "`where.exe mcp-proxy` (Windows)"}
+      ],
+      "nao_verificado": ["Funcionamento real no Windows: README só cita where.exe; classificadores do pyproject listam apenas MacOS e Linux", "Não agrega num único endpoint: cada servidor nomeado tem sua rota"]
+    },
+    {
+      "nome": "TBXark/mcp-proxy",
+      "url_fonte": "https://github.com/TBXark/mcp-proxy",
+      "o_que_e": "Proxy em Go que agrega tools, prompts e resources de vários servidores MCP (stdio, sse, streamable-http) atrás de um único endpoint HTTP.",
+      "lugar": ["network_service", "db_mcp_forwarding"],
+      "mecanismo": ["proxy"],
+      "mcp": "yes", "windows": "unknown", "portugues": "unknown",
+      "licenca": "MIT", "ultimo_release": "v1.1.0 (2026-09-15)", "maturidade": "stable",
+      "encaixe": "Binário Go único: agregaria o MCP do banco e um MCP de busca no disco num só endpoint por máquina, sem Docker nem Node.",
+      "evidencias": [
+        {"url": "https://github.com/TBXark/mcp-proxy", "citacao": "Proxy multiple MCP clients: aggregate tools, prompts, and resources from many servers."},
+        {"url": "https://github.com/TBXark/mcp-proxy", "citacao": "supports `stdio`, `sse`, and `streamable-http` client types"}
+      ],
+      "nao_verificado": ["Windows: README não menciona; Go compila para Windows, mas não conferido o binário de release", "Tratamento de colisão de nomes de tools não conferido (docs/configuration.md não lido)"]
+    },
+    {
+      "nome": "1MCP Agent (1mcp-app/agent)",
+      "url_fonte": "https://github.com/1mcp-app/agent",
+      "o_que_e": "Runtime que agrega vários servidores MCP em um só, com presets, filtros e modo opcional de carga preguiçosa (tool_list, tool_schema, tool_invoke).",
+      "lugar": ["network_service", "light_client"],
+      "mecanismo": ["proxy"],
+      "mcp": "yes", "windows": "unknown", "portugues": "unknown",
+      "licenca": "Apache-2.0", "ultimo_release": "v0.39.1 (2026-10-12)", "maturidade": "beta",
+      "encaixe": "Agregador npm (Node) com lazy loading que reduz o esquema de tools no contexto; serviria para juntar MCP do banco e busca do disco por máquina.",
+      "evidencias": [
+        {"url": "https://github.com/1mcp-app/agent", "citacao": "`1mcp serve` aggregates your MCP servers"},
+        {"url": "https://github.com/1mcp-app/agent", "citacao": "keeps the backend discovery and invocation surface at `tool_list`, `tool_schema`, and `tool_invoke`"}
+      ],
+      "nao_verificado": ["Windows não afirmado no README (instalação por npm install -g @1mcp/agent)", "Versão 0.x: maturidade beta é inferida do número de versão"]
+    },
+    {
+      "nome": "MetaMCP",
+      "url_fonte": "https://github.com/metatool-ai/metamcp",
+      "o_que_e": "Agregador/gateway MCP em Docker: agrupa servidores em namespaces, renomeia tools, aplica middleware e publica endpoints SSE, Streamable HTTP e OpenAPI.",
+      "lugar": ["network_service"],
+      "mecanismo": ["proxy"],
+      "mcp": "yes", "windows": "unknown", "portugues": "unknown",
+      "licenca": "MIT", "ultimo_release": "v2.4.22 (2025-12-19); último push 2026-06-22", "maturidade": "beta",
+      "encaixe": "Pesado para o caso: Docker mais banco próprio. Só faria sentido como gateway único na tailnet para clientes sem cópia.",
+      "evidencias": [
+        {"url": "https://github.com/metatool-ai/metamcp", "citacao": "Multiple MCP servers in the namespace will be aggregated and emitted as a MetaMCP endpoint"},
+        {"url": "https://github.com/metatool-ai/metamcp", "citacao": "If your MCP requires dependencies other than `uvx` or `npx`, you need to customize the Dockerfile"}
+      ],
+      "nao_verificado": ["Windows nativo (sem WSL) não confirmado: o projeto é entregue em Docker", "Sem release desde dez/2025 e sem push desde jun/2026: ritmo de manutenção baixo"]
+    },
+    {
+      "nome": "Docker MCP Gateway (docker/mcp-gateway)",
+      "url_fonte": "https://github.com/docker/mcp-gateway",
+      "o_que_e": "Plugin da CLI do Docker que roda servidores MCP em contêineres isolados e os expõe por um gateway (stdio ou rede), com catálogo e perfis.",
+      "lugar": ["network_service"],
+      "mecanismo": ["proxy"],
+      "mcp": "yes", "windows": "yes", "portugues": "unknown",
+      "licenca": "MIT", "ultimo_release": "sem release latest na API; último push 2026-09-23", "maturidade": "stable",
+      "encaixe": "Exige Docker Desktop no Windows; contraria a premissa de NTFS nativo sem camada extra. Só útil se o Docker já estiver presente.",
+      "evidencias": [
+        {"url": "https://github.com/docker/mcp-gateway", "citacao": "Docker Desktop `4.59+` (with MCP Toolkit feature enabled)"},
+        {"url": "https://github.com/docker/mcp-gateway", "citacao": "It can work in Docker Desktop or independently."}
+      ],
+      "nao_verificado": ["Windows 'yes' vem de Docker Desktop, não de execução nativa; modo independente no Windows não conferido", "Sem tag de release encontrada na API"]
+    },
+    {
+      "nome": "IBM ContextForge (mcp-context-forge)",
+      "url_fonte": "https://github.com/IBM/mcp-context-forge",
+      "o_que_e": "Gateway, registro e proxy de IA na frente de MCP, A2A e REST/gRPC, com descoberta, guardrails, plugins; traduz stdio para SSE/HTTP.",
+      "lugar": ["network_service"],
+      "mecanismo": ["proxy"],
+      "mcp": "yes", "windows": "yes", "portugues": "unknown",
+      "licenca": "Apache-2.0", "ultimo_release": "v1.0.11 (2026-09-28)", "maturidade": "beta",
+      "encaixe": "Superdimensionado (Postgres/Redis em produção, SQLite em dev); só como referência de padrão de federação e do tradutor stdio->SSE.",
+      "evidencias": [
+        {"url": "https://github.com/IBM/mcp-context-forge", "citacao": "Windows (PowerShell) quick-start"},
+        {"url": "https://github.com/IBM/mcp-context-forge", "citacao": "python3 -m mcpgateway.translate --stdio \"uvx mcp-server-git\" --expose-sse --port 9000"}
+      ],
+      "nao_verificado": ["Texto atual do README sobre suporte oficial e maturidade (a busca citou alpha e NO OFFICIAL SUPPORT na 0.7.0; o repo agora está na 1.0.11, não relido)"]
+    },
+    {
+      "nome": "Kuadrant/mcp-gateway",
+      "url_fonte": "https://github.com/Kuadrant/mcp-gateway",
+      "o_que_e": "Gateway MCP baseado em Envoy, integrado a Istio e Gateway API, com autenticação, autorização e limite de taxa.",
+      "lugar": ["network_service"],
+      "mecanismo": ["proxy"],
+      "mcp": "yes", "windows": "no", "portugues": "unknown",
+      "licenca": "Apache-2.0", "ultimo_release": "v1.0.1 (2026-09-25)", "maturidade": "stable",
+      "encaixe": "Descartável: pressupõe Kubernetes e Envoy; sem encaixe em duas máquinas Windows.",
+      "evidencias": [
+        {"url": "https://github.com/Kuadrant/mcp-gateway", "citacao": "An envoy-based MCP Gateway that integrates with Istio and policy attachment mechanisms for authN, authZ, rate limiting and more."}
+      ],
+      "nao_verificado": ["Windows 'no' é inferência (Kubernetes/Envoy), sem frase da fonte"]
+    },
+    {
+      "nome": "punkpeye/mcp-proxy",
+      "url_fonte": "https://github.com/punkpeye/mcp-proxy",
+      "o_que_e": "Biblioteca e CLI TypeScript: proxy Streamable HTTP e SSE para servidores MCP stdio (npx mcp-proxy -- comando).",
+      "lugar": ["library", "network_service"],
+      "mecanismo": ["proxy"],
+      "mcp": "yes", "windows": "unknown", "portugues": "unknown",
+      "licenca": "MIT", "ultimo_release": "v6.7.19 (2026-09-21)", "maturidade": "stable",
+      "encaixe": "Ponte leve via npx para expor por HTTP um MCP stdio de busca no disco; não agrega vários servidores.",
+      "evidencias": [
+        {"url": "https://github.com/punkpeye/mcp-proxy", "citacao": "A TypeScript streamable HTTP and SSE proxy for MCP servers that use stdio transport."},
+        {"url": "https://github.com/punkpeye/mcp-proxy", "citacao": "npx mcp-proxy --upstreamProtocol auto -- my-modern-mcp-server"}
+      ],
+      "nao_verificado": ["Windows: README tem a flag --shell, mas não afirma suporte"]
+    },
+    {
+      "nome": "FastMCP: create_proxy e mount (composição)",
+      "url_fonte": "https://gofastmcp.com/servers/providers/proxy.md",
+      "o_que_e": "Framework Python/TS de servidores MCP; create_proxy() fronta servidor remoto ou local e mount() incorpora vários proxies num servidor com prefixos automáticos.",
+      "lugar": ["library", "inside_db_mcp", "db_mcp_forwarding"],
+      "mecanismo": ["proxy"],
+      "mcp": "yes", "windows": "unknown", "portugues": "unknown",
+      "licenca": "Apache-2.0", "ultimo_release": "v4.1.0 (2026-10-08)", "maturidade": "stable",
+      "encaixe": "Se o MCP do banco for escrito em FastMCP, ele mesmo monta um proxy para o MCP de busca no disco e expõe tudo num endpoint: padrão de composição dentro do código.",
+      "evidencias": [
+        {"url": "https://gofastmcp.com/servers/providers/proxy.md", "citacao": "`create_proxy()` accepts URLs, file paths, and transports directly."},
+        {"url": "https://gofastmcp.com/servers/providers/proxy.md", "citacao": "Combine multiple servers with automatic namespacing"}
+      ],
+      "nao_verificado": ["Windows: a página não menciona", "Assinatura de prefixo em mount() não documentada na página lida"]
+    },
+    {
+      "nome": "Tool search do Claude Code (carga adiada de tools MCP)",
+      "url_fonte": "https://code.claude.com/docs/en/mcp",
+      "o_que_e": "Recurso do cliente: adia as definições das tools MCP até serem necessárias; ativo por padrão, controlado por ENABLE_TOOL_SEARCH.",
+      "lugar": ["light_client"],
+      "mecanismo": ["other"],
+      "mcp": "yes", "windows": "unknown", "portugues": "unknown",
+      "licenca": "n/a (recurso do produto)", "ultimo_release": "n/a (docs citam v2.1.221)", "maturidade": "stable",
+      "encaixe": "Diminui a objeção de somar servidores: agregar MCP do banco e MCP de busca custa pouco contexto no Claude Code; Codex e Copilot não foram conferidos.",
+      "evidencias": [
+        {"url": "https://code.claude.com/docs/en/mcp", "citacao": "Tool search keeps MCP context usage low by deferring tool definitions until Claude needs them."},
+        {"url": "https://code.claude.com/docs/en/mcp", "citacao": "ENABLE_TOOL_SEARCH=false claude"}
+      ],
+      "nao_verificado": ["Comportamento equivalente em Codex e Copilot", "Windows: a página não faz distinção"]
+    }
+  ],
+  "lacunas": "Nenhum agregador conferido afirma com texto de fonte suporte a Windows nativo sem Docker/WSL (mcp-proxy sparfenyuk cita where.exe; ContextForge tem quick-start PowerShell via pip); falta teste real, que não foi pedido. O padrão 'MCP do banco repassa a busca a ferramenta no disco' não aparece pronto em nenhum projeto: é composição via proxy (FastMCP mount, TBXark, 1MCP). Colisão de nomes de tools em TBXark e 1MCP não conferida. Foram 6 consultas web mais leituras diretas de API e README do GitHub."
+}

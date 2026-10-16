@@ -1,0 +1,96 @@
+{
+  "envio": "cbd97f53-0565-4b26-9726-14428f96e553",
+  "tipo": "resposta",
+  "enviada": "2026-10-15T17:32:29-03:00",
+  "alvo": {
+    "tipo": "rodada",
+    "id": "2026-10-15-como-os-agentes-gravam-r3",
+    "titulo": "A busca como porta de leitura, e a gravação com o banco fora"
+  },
+  "ticket": "11",
+  "substitui": null,
+  "rodada": {
+    "id": "2026-10-15-como-os-agentes-gravam-r3",
+    "base": "503cad61ab8dff076063f506de0df6eb6f0d0a8e8022b58fd61ddc928df5f4a5",
+    "titulo": "A busca como porta de leitura, e a gravação com o banco fora",
+    "ticket": "11",
+    "perguntas": [
+      {
+        "id": "luva",
+        "titulo": "A busca é a única porta de leitura?",
+        "tipo": "escolha",
+        "recomendada": [
+          "A"
+        ],
+        "opcoes": [
+          {
+            "chave": "A",
+            "texto": "Não. A busca é a porta de entrada: o contrato manda buscar antes de abrir arquivos e ler só o trecho que importa, e o agente pode ler no disco o que a busca apontou. Sem hook de leitura"
+          },
+          {
+            "chave": "B",
+            "texto": "Meio-termo: um hook avisa (sem recusar) quando o agente abre um arquivo grande do hub, acima de um tamanho que a construção mede, sem ter buscado antes na sessão"
+          },
+          {
+            "chave": "C",
+            "texto": "Sim, porta única: um hook recusa a leitura de `.md` do hub fora da busca. Os agentes leem só trechos, e o que não está na busca (anexos sem texto extraído, imagens) fica fora do alcance deles"
+          }
+        ],
+        "proposta": null
+      },
+      {
+        "id": "banco-fora",
+        "titulo": "O que o agente faz quando a porta do banco está fora do ar",
+        "tipo": "escolha",
+        "recomendada": [
+          "A"
+        ],
+        "opcoes": [
+          {
+            "chave": "A",
+            "texto": "A troca de trecho segue no disco, como sempre; a regravação inteira espera a porta voltar: o agente avisa você na resposta e anota a pendência na nota de retomada. Nenhuma gravação sem guarda de versão"
+          },
+          {
+            "chave": "B",
+            "texto": "O hook libera a regravação inteira no disco enquanto a porta estiver fora e registra cada uma num log para conferir depois. O trabalho não para, mas essas gravações não conferem a versão"
+          },
+          {
+            "chave": "C",
+            "texto": "O agente refaz a regravação inteira como uma sequência de trocas de trecho no disco, cada uma conferida pelo próprio trecho. Funciona na maioria dos casos; em arquivo muito mudado, vira muitas trocas"
+          }
+        ],
+        "proposta": null
+      },
+      {
+        "id": "algo-mais",
+        "titulo": "Algo mais?",
+        "tipo": "texto",
+        "recomendada": [],
+        "opcoes": [],
+        "proposta": null
+      }
+    ]
+  },
+  "corpo_hash": "248f9392422be2c174b6b949dc19630e9866a27f4ba305c30241999f7aead4e4",
+  "corpo": {
+    "tipo": "resposta",
+    "rodada": "2026-10-15-como-os-agentes-gravam-r3",
+    "base": "503cad61ab8dff076063f506de0df6eb6f0d0a8e8022b58fd61ddc928df5f4a5",
+    "respostas": {
+      "luva": {
+        "escolha": [
+          "B"
+        ],
+        "outra": null,
+        "comentario": "e qual seria o comportamento quando o agente \"ja buscou x arquivo antes na sessão\"?"
+      },
+      "banco-fora": {
+        "escolha": [
+          "A"
+        ],
+        "outra": null,
+        "comentario": null
+      }
+    }
+  }
+}

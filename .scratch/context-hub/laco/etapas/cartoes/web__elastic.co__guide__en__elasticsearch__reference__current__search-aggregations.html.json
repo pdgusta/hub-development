@@ -1,0 +1,46 @@
+{
+ "chave": "web:elastic.co/guide/en/elasticsearch/reference/current/search-aggregations.html",
+ "urls": [
+  "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations.html"
+ ],
+ "tipos": [
+  "service",
+  "library",
+  "tool",
+  "concept"
+ ],
+ "termos": [
+  "data analysis",
+  "metrics",
+  "analytics",
+  "metadata filtering",
+  "faceted search",
+  "aggregation queries",
+  "frontmatter analysis",
+  "Elasticsearch Aggregations",
+  "Data Analysis",
+  "Elasticsearch aggregations",
+  "Search aggregations"
+ ],
+ "mencoes": 5,
+ "familias": [
+  "llama",
+  "mistral"
+ ],
+ "primeira_onda": 3,
+ "nomes": [
+  "Elasticsearch Aggregations",
+  "Elasticsearch Aggregations for Frontmatter Filters"
+ ],
+ "resumos": [
+  "Funcionalidades para realizar agregações e análises de dados no Elasticsearch, como contagens, médias e estatísticas.",
+  "Uses Elasticsearch’s aggregations to filter results by frontmatter fields (e.g., `tags`, `language`).",
+  "Aggregation framework for filtering and analyzing frontmatter metadata (e.g., tags, categories).",
+  "データの集計と分析機能"
+ ],
+ "fonte": "site",
+ "readme_status": "ok",
+ "readme_nome": "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations.html",
+ "readme_cortado": false,
+ "readme": "[Aggregations | Elastic Docs]\n\nDocs\n\n /\n\n Explore and analyze\n\n /\n\n Querying and filtering\n\nAggregations\n\nAn aggregation summarizes your data as metrics, statistics, or other analytics. Aggregations help you answer questions like:\n\nWhat’s the average load time for my website?\n\nWho are my most valuable customers based on transaction volume?\n\nWhat would be considered a large file on my network?\n\nHow many products are in each product category?\n\nElasticsearch organizes aggregations into three categories:\n\nMetric aggregations that calculate metrics, such as a sum or average, from field values.\n\nBucket aggregations that group documents into buckets, also called bins, based on field values, ranges, or other criteria.\n\nPipeline aggregations that take input from other aggregations instead of documents or fields.\n\nRun an aggregation\n\nYou can run aggregations as part of a search by specifying the search API's aggs parameter. The following search runs a terms aggregation on my-field:\n\n GET /my-index-000001/_search\n {\n \"aggs\": {\n \"my-agg-name\": {\n \"terms\": {\n \"field\": \"my-field\"\n }\n }\n }\n}\n\nAggregation results are in the response’s aggregations object:\n\n{\n \"took\": 78,\n \"timed_out\": false,\n \"_shards\": {\n \"total\": 1,\n \"successful\": 1,\n \"skipped\": 0,\n \"failed\": 0\n },\n \"hits\": {\n \"total\": {\n \"value\": 5,\n \"relation\": \"eq\"\n },\n \"max_score\": 1.0,\n \"hits\": [...]\n },\n \"aggregations\": {\n \"my-agg-name\": {\n \"doc_count_error_upper_bound\": 0,\n \"sum_other_doc_count\": 0,\n \"buckets\": []\n }\n }\n}\n\nResults for the my-agg-name aggregation.\n\nChange an aggregation’s scope\n\nUse the query parameter to limit the documents on which an aggregation runs:\n\n GET /my-index-000001/_search\n {\n \"query\": {\n \"range\": {\n \"@timestamp\": {\n \"gte\": \"now-1d/d\",\n \"lt\": \"now/d\"\n }\n }\n },\n \"aggs\": {\n \"my-agg-name\": {\n \"terms\": {\n \"field\": \"my-field\"\n }\n }\n }\n}\n\nReturn only aggregation results\n\nBy default, searches containing an aggregation return both search hits and aggregation results. To return only aggregation results, set size to 0:\n\n GET /my-index-000001/_search\n {\n \"size\": 0,\n \"aggs\": {\n \"my-agg-name\": {\n \"terms\": {\n \"field\": \"my-field\"\n }\n }\n }\n}\n\nRun multiple aggregations\n\nYou can specify multiple aggregations in the same request:\n\n GET /my-index-000001/_search\n {\n \"aggs\": {\n \"my-first-agg-name\": {\n \"terms\": {\n \"field\": \"my-field\"\n }\n },\n \"my-second-agg-name\": {\n \"avg\": {\n \"field\": \"my-other-field\"\n }\n }\n }\n}\n\nRun sub-aggregations\n\nBucket aggregations support bucket or metric sub-aggregations. For example, a terms aggregation with an avg sub-aggregation calculates an average value for each bucket of documents. There is no level or depth limit for nesting sub-aggregations.\n\n GET /my-index-000001/_search\n {\n \"aggs\": {\n \"my-agg-name\": {\n \"terms\": {\n \"field\": \"my-field\"\n },\n \"aggs\": {\n \"my-sub-agg-name\": {\n \"avg\": {\n \"field\": \"my-other-field\"\n }\n }\n }\n }\n }\n}\n\nThe response nests sub-aggregation results under their parent aggregation:\n\n{\n ...\n \"aggregations\": {\n \"my-agg-name\": {\n \"doc_count_error_upper_bound\": 0,\n \"sum_other_doc_count\": 0,\n \"buckets\": [\n {\n \"key\": \"foo\",\n \"doc_count\": 5,\n \"my-sub-agg-name\": {\n \"value\": 75.0\n }\n }\n ]\n }\n }\n}\n\nResults for the parent aggregation, my-agg-name.\n\nResults for my-agg-name's sub-aggregation, my-sub-agg-name.\n\nAdd custom metadata\n\nUse the meta object to associate custom metadata with an aggregation:\n\n GET /my-index-000001/_search\n {\n \"aggs\": {\n \"my-agg-name\": {\n \"terms\": {\n \"field\": \"my-field\"\n },\n \"meta\": {\n \"my-metadata-field\": \"foo\"\n }\n }\n }\n}\n\nThe response returns the meta object in place:\n\n{\n ...\n \"aggregations\": {\n \"my-agg-name\": {\n \"meta\": {\n \"my-metadata-field\": \"foo\"\n },\n \"doc_count_error_upper_bound\": 0,\n \"sum_other_doc_count\": 0,\n \"buckets\": []\n }\n }\n}\n\nReturn the aggregation type\n\nBy default, aggregation results include the aggregation’s name but not its type. To return the aggregation type, use the typed_keys query parameter.\n\n GET /my-index-000001/_search?typed_keys\n {\n \"aggs\": {\n \"my-agg-name\": {\n \"histogram\": {\n \"field\": \"my-field\",\n \"interval\": 1000\n }\n }\n }\n}\n\nThe response returns the aggregation type as a prefix to the aggregation’s name.\n\n Important\n\nSome aggregations return a different aggregation type from the type in the request. For example, the terms, significant terms, and percentiles aggregations return different aggregations types depending on the data type of the aggregated field.\n\n{\n ...\n \"aggregations\": {\n \"histogram#my-agg-name\": {\n \"buckets\": []\n }\n }\n}\n\nThe aggregation type, histogram, followed by a # separator and the aggregation’s name, my-agg-name.\n\nUse scripts in an aggregation\n\nWhen a field doesn’t exactly match the aggregation you need, you should aggregate on a runtime field:\n\n GET /my-index-000001/_search?size=0\n {\n \"runtime_mappings\": {\n \"message.length\": {\n \"type\": \"long\",\n \"script\": \"emit(doc['message.keyword'].value.length())\"\n }\n },\n \"aggs\": {\n \"message_length\": {\n \"histogram\": {\n \"interval\": 10,\n \"field\": \"message.length\"\n }\n }\n }\n}\n\nScripts calculate field values dynamically, which adds a little overhead to the aggregation. In addition to the time spent calculating, some aggregations like terms and filters can’t use some of their optimizations with runtime fields. In total, performance costs for using a runtime field varies from aggregation to aggregation.\n\nAggregation caches\n\nFor faster responses, Elasticsearch caches the results of frequently run aggregations in the shard request cache. To get cached results, use the same preference string for each search. If you don’t need search hits, set size to 0 to avoid filling the cache.\n\nElasticsearch routes searches with the same preference string to the same shards. If the shards' data doesn’t change between searches, the shards return cached aggregation results.\n\nLimits for long values\n\nWhen running aggregations, Elasticsearch uses double values to hold and represent numeric data. As a result, aggregations on long numbers greater than 253 are approximate."
+}

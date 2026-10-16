@@ -1,0 +1,34 @@
+{
+ "chave": "gh:rnewson/couchdb-lucene",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T12:00:00Z",
+ "resultado": "corrige",
+ "conferencia": {
+  "resultado": "corrige",
+  "final": {
+   "serve": "search",
+   "role": "Servidor JVM standalone que indexa documentos do CouchDB com Lucene e responde buscas full-text via proxy do CouchDB.",
+   "place": [
+    "network_service"
+   ],
+   "mechanism": [
+    "full_text"
+   ],
+   "mcp": "no",
+   "windows": "unknown",
+   "portuguese": "yes",
+   "license": "unknown",
+   "maturity": "unknown",
+   "doubt": false,
+   "evidence": "Runs in a standalone JVM; CouchDB proxies _fti to it; index functions in design docs; analyzers include brazilian, snowball; Tika attachment indexing."
+  },
+  "o_que_mudou": [
+   "serve: stack/search -> search, full-text over CouchDB",
+   "place: library -> network_service, standalone JVM",
+   "portuguese: no -> yes, brazilian analyzer listed",
+   "maturity: stable/unknown -> unknown, README silent",
+   "doubt: true -> false"
+  ],
+  "nota": "Busca full-text Lucene diretamente sobre o CouchDB do hub, com analisador brazilian; candidato forte, mas exige JVM e README e antigo."
+ }
+}

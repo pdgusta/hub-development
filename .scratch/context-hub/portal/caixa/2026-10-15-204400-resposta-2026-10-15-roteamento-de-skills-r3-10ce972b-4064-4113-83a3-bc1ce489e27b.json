@@ -1,0 +1,66 @@
+{
+  "envio": "10ce972b-4064-4113-83a3-bc1ce489e27b",
+  "tipo": "resposta",
+  "enviada": "2026-10-15T20:44:00-03:00",
+  "alvo": {
+    "tipo": "rodada",
+    "id": "2026-10-15-roteamento-de-skills-r3",
+    "titulo": "Quem ajusta a tabela de roteamento"
+  },
+  "ticket": "15",
+  "substitui": null,
+  "rodada": {
+    "id": "2026-10-15-roteamento-de-skills-r3",
+    "base": "9745fcaa580236640206a0ff2eb02261b9b070ee7226a02b44305ef66eb499c4",
+    "titulo": "Quem ajusta a tabela de roteamento",
+    "ticket": "15",
+    "perguntas": [
+      {
+        "id": "ajuste",
+        "titulo": "Quem ajusta a tabela quando o registro aponta erro",
+        "tipo": "escolha",
+        "recomendada": [
+          "A"
+        ],
+        "opcoes": [
+          {
+            "chave": "A",
+            "texto": "O maestro junta os erros do registro numa proposta em `agents/maestro/propostas/` (a linha, o que errou, quantas vezes e a correção), e a correção só entra com o seu aval, na mesma guarda do resto do acervo"
+          },
+          {
+            "chave": "B",
+            "texto": "O maestro corrige a tabela sozinho e avisa em uma linha. Mais rápido, mas a tabela muda sem você ver"
+          },
+          {
+            "chave": "C",
+            "texto": "Ninguém ajusta pelo registro: a tabela só muda quando você pede"
+          }
+        ],
+        "proposta": null
+      },
+      {
+        "id": "algo-mais",
+        "titulo": "Algo mais?",
+        "tipo": "texto",
+        "recomendada": [],
+        "opcoes": [],
+        "proposta": null
+      }
+    ]
+  },
+  "corpo_hash": "95bce5fa2e169bc0787472d8a159a6ca025628b6c9b14f8bd7d9fbce1919204d",
+  "corpo": {
+    "tipo": "resposta",
+    "rodada": "2026-10-15-roteamento-de-skills-r3",
+    "base": "9745fcaa580236640206a0ff2eb02261b9b070ee7226a02b44305ef66eb499c4",
+    "respostas": {
+      "ajuste": {
+        "escolha": [
+          "B"
+        ],
+        "outra": null,
+        "comentario": null
+      }
+    }
+  }
+}

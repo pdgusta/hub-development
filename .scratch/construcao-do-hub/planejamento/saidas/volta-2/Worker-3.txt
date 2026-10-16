@@ -1,0 +1,49 @@
+
+  Deixei uma pergunta ao Gustavo: liberar nesta hora o teste único do gemini pelo FreeLLMAPI. Esse teste depende de o Docker estar ligado, e hoje ele está desligado.
+
+✻ Crunched for 20m 58s · done 9:35 PM
+
+❯ Volta 2 da rodada Ralph de planejamento. Leia e siga C:/Projetos/context-hub/.scratch/construcao-do-hub/planejamento/PROMPT.md (é o mesmo em toda volta). Esta é a volta 2.          
+  
+  Ran 3 shell commands 
+
+● 3 minutos: confiro só a parte da busca na spec.
+  
+  Ran 1 shell command 
+
+● Update(spec.md)
+  ⎿  Added 1 line, removed 1 line
+       95  
+       96  **Como se prova (testing decisions, de ponta a ponta):** `busca/testes/aceite.mjs` (Node ≥ 22, sem pacote de fora, MCP Streamable HTTP por `fetch`: `initialize` e `t
+           ools/call search`) contra o hub de ensaio: uma pergunta em pt-BR por palavra (`fulltext`) e uma por paráfrase sem palavra em comum (`semantic`) acham a nota esperada
+            entre as 3 primeiras; uma nota criada no disco durante o teste aparece na busca em até 60 s (mede e grava o tempo); nada com ponto no caminho aparece; `status` most
+           ra indexadas = `.md` válidos, e a lista das recusadas por YAML inválido sai no relatório; pedido com `Host` estranho é recusado. Roda duas vezes seguidas (a segunda 
+           reaproveita o índice)
+       97  
+       98 -**Como segue sem esperar as outras faixas:** hub de ensaio (Worker 2): copio no minuto 0 e escrevo as notas e as perguntas de aceite eu mesmo, sem esperar a faixa 1;
+          - exclusão de `local: true` (faixa 1): leio a lista gerada se existir, senão só o padrão de ponto, e entra na segunda passada; kit (faixa 8): só a URL no `.env.modelo
+          -` e o meu `03-busca.ps1`; proxy (faixa 10): ela usa a URL; um dublê não é preciso, o servidor de verdade sobe no minuto 10–15; LiveSync (faixa 4): não preciso dele; 
+          -o tempo "edição no par B → busca no par B" fica para o teste de aceite final, se as duas faixas terminarem                                                           
+       98 +**Como segue sem esperar as outras faixas:** hub de ensaio (Worker 2): copio no minuto 0 e escrevo as notas e as perguntas de aceite eu mesmo, sem esperar a faixa 1;
+          + exclusão de `local: true` (faixa 1): leio a lista gerada se existir, senão só o padrão de ponto, e entra na segunda passada; kit (faixa 8): só a URL no `.env.modelo
+          +` e o meu `03-busca.ps1`; `.gitignore` da raiz (faixa 1): pede a linha `.obsidian-hybrid-search.db*`; atenção, o obsidian-hybrid-search respeita o `.gitignore` por p
+          +adrão (`OBSIDIAN_RESPECT_GITIGNORE=true`, README 0.16.2), então o que a faixa 1 puser lá também sai da busca; proxy (faixa 10): ela usa a URL; um dublê não é preciso
+          +, o servidor de verdade sobe no minuto 10–15; **não verificado** se o TBXark/mcp-proxy repassa o `Host` do cliente (o servidor só aceita os `Host` permitidos): se re
+          +passar, subo com `--allowed-host` para o endereço do proxy que a faixa 10 disser; a baixa do modelo arctic (tamanho não medido) começa no minuto 0, em segundo plano;
+          + LiveSync (faixa 4): não preciso dele; o tempo "edição no par B → busca no par B" fica para o teste de aceite final, se as duas faixas terminarem                    
+       99  
+      100  ### Worker 4
+      101  
+
+  Ran 1 shell command 
+
+● Volta 2 · Worker 3: a parte da busca na spec já batia com o plano e faltavam três avisos, que acrescentei nela: a linha que a faixa 1 põe no .gitignore também tira o arquivo da
+  busca; o proxy da faixa 10 pode barrar a busca pelo cabeçalho Host (não verificado); e a baixa do modelo arctic começa no minuto 0. O plano não mudou.
+
+✻ Crunched for 1m 46s · done 9:38 PM
+
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+❯ 
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  ⬆ /gsd-update │ Opus 5.5 │ planejamento █░░░░░░░░░ 16%
+  ⏵⏵ auto mode on (shift+tab to cycle) · ← 2 agents

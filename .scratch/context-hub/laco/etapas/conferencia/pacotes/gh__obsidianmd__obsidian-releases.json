@@ -1,0 +1,70 @@
+{
+ "chave": "gh:obsidianmd/obsidian-releases",
+ "nomes": [
+  "Obsidian Plugin API",
+  "Obsidian Search Plugin",
+  "Obsidian Metadata Menu",
+  "Obsidian Graph View",
+  "Obsidian QuickAdd (for Automation)",
+  "Obsidian Community Plugins (e.g., 'Search with Tags')",
+  "Obsidian Community Plugins",
+  "Obsidian GitHub Repository",
+  "Obsidian Plugin Marketplace"
+ ],
+ "urls": [
+  "https://github.com/obsidianmd/obsidian-releases",
+  "https://github.com/obsidianmd/obsidian-releases/blob/master/release-notes.md#search-plugin",
+  "https://github.com/obsidianmd/obsidian-releases/blob/master/release-notes.md#metadata-menu",
+  "https://github.com/obsidianmd/obsidian-releases/blob/master/release-notes.md#graph-view",
+  "https://github.com/obsidianmd/obsidian-releases/blob/master/release-notes.md#quickadd",
+  "https://github.com/obsidianmd/obsidian-releases/tree/master/community-plugins",
+  "https://obsidian.md/plugins"
+ ],
+ "readme_cortado": false,
+ "readme": "## About this repo\n\nThis repo is used for hosting public releases of Obsidian, as well as our community plugins & themes directories.\n\nObsidian is not open source software and this repo _DOES NOT_ contain the source code of Obsidian. However, if you wish to contribute to Obsidian, you can easily do so with our extensive plugin system. A plugin guide can be found here: https://docs.obsidian.md\n\nThis repo does not accept issues, if you have questions or issues with plugins, please go to their own repo to file them. If you have questions or issues about core Obsidian itself, please post them to our community: https://obsidian.md/community\n\n## Submit your plugin or theme\n\nYou can find a detailed explanation for submitting your [plugin here](https://docs.obsidian.md/Plugins/Releasing/Submit+your+plugin) and your [theme here](https://docs.obsidian.md/Themes/App+themes/Submit+your+theme).\n\n## Policies\n\nAll submissions must conform with our [developer policies](https://docs.obsidian.md/Developer+policies)\n\n### How community plugins are pulled\n\n- Obsidian will read the list of plugins in `community-plugins.json`.\n- The `name`, `author` and `description` fields are used for searching.\n- When the user opens the detail page of your plugin, Obsidian will pull the `manifest.json` and `README.md` from your GitHub repo).\n- The `manifest.json` in your repo will only be used to figure out the latest version. Actual files are fetched from your GitHub releases.\n- If your `manifest.json` requires a version of Obsidian that's higher than the running app, your `versions.json` will be consulted to find the latest version of your plugin that is compatible.\n- When the user chooses to install your plugin, Obsidian will look for your GitHub releases tagged identically to the version inside `manifest.json`.\n- Obsidian will download `manifest.json`, `main.js`, and `styles.css` (if available), and store them in the proper location inside the vault.\n\n### Announcing the First Public Release of your Plugin/Theme\n\n- Once admitted to the plugin/theme community, you can announce the public availability of your plugin/theme:\n  - [in the forums](https://forum.obsidian.md/c/share-showcase/9) as a showcase, and\n  - [on the Discord Server](https://discord.gg/veuWUTm) in the channel `#updates`. (You need the `developer` role to be able to post in that channel; [you can get that role here](https://discord.com/channels/686053708261228577/702717892533157999/830492034807758859).)\n- You can also announce the first working version of your plugin as a public beta before \"officially\" submitting it to the plugin/theme browser. That way, you can acquire some beta testers for feedback. It's recommended to use the [BRAT Plugin](https://obsidian.md/plugins?id=obsidian42-brat) to make the installation as easy as possible for interested beta testers.\n",
+ "fonte": "readme",
+ "respostas": [
+  {
+   "por": "gemma-4-31b",
+   "resposta": {
+    "serve": "none",
+    "role": "",
+    "place": [
+     "n/a"
+    ],
+    "mechanism": [
+     "n/a"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "unknown",
+    "doubt": false,
+    "evidence": ""
+   }
+  },
+  {
+   "por": "codestral-2508",
+   "resposta": {
+    "serve": "stack",
+    "role": "hosts community plugins including search tools",
+    "place": [
+     "disk",
+     "inside_db_mcp"
+    ],
+    "mechanism": [
+     "full_text",
+     "other"
+    ],
+    "mcp": "unknown",
+    "windows": "yes",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "stable",
+    "doubt": true,
+    "evidence": "This repo hosts community plugins, including search tools, and runs on Windows. No mention of MCP or Portuguese."
+   }
+  }
+ ]
+}

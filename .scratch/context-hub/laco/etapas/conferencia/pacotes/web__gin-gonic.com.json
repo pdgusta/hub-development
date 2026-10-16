@@ -1,0 +1,54 @@
+{
+ "chave": "web:gin-gonic.com",
+ "nomes": [
+  "Gin"
+ ],
+ "urls": [
+  "https://gin-gonic.com/"
+ ],
+ "readme_cortado": false,
+ "readme": "[Gin Web Framework | Gin Web Framework]\n\nSkip to content\n\nGin Web Framework\nThe fastest full-featured web framework for Go. Crystal clear.\nRead the docsDownload\n\nWhat is Gin?Section titled “What is Gin?”\n\nGin is a web framework written in Golang. It features a Martini-like API, but with performance up to 40 times faster than Martini. If you need performance and productivity, you will love Gin.\n\nFast\n\nRadix tree based routing, small memory foot print. No reflection. Predictable API performance.\nMiddleware support\n\nAn incoming HTTP request can be handled by a chain of middleware and the final action. For example: Logger, Authorization, GZIP and finally post a message in the DB.\nCrash-free\n\nGin can catch a panic occurred during a HTTP request and recover it. This way, your server will be always available. It’s also possible to report this panic to Sentry for example!\nJSON validation\n\nGin can parse and validate the JSON of a request, checking, for example, the existence of required values.\nRoutes grouping\n\nOrganize your routes better. Authorization required vs non required, different API versions. In addition, groups can be nested infinitely without degrading performance.\nError management\n\nGin provides a convenient way to collect all the errors occurred during a HTTP request. Eventually, middleware can write them to a log file, to a database and send them through the network.\nRendering built-in\n\nGin provides an easy to use API for JSON, XML and HTML rendering.\nExtendable\n\nCreating new middleware is so easy, just check out the sample code.\n\nHow to use Gin?Section titled “How to use Gin?”\n\nWe provide API usage examples and list some publicly known Gin users.\n\nHow to contribute to Gin?Section titled “How to contribute to Gin?”\n\nHelp people on the discussion forums\n\nTell us your success stories using Gin\n\nTell us how we can improve Gin and help us do it\n\nContribute to an existing library",
+ "fonte": "site",
+ "respostas": [
+  {
+   "por": "diffusiongemma-26b-a4b-it",
+   "resposta": {
+    "serve": "stack",
+    "role": "Web framework to build the network services or MCP servers for the hub",
+    "place": [
+     "network_service"
+    ],
+    "mechanism": [
+     "other"
+    ],
+    "mcp": "unknown",
+    "windows": "yes",
+    "portuguese": "no",
+    "license": "unknown",
+    "maturity": "stable",
+    "doubt": true,
+    "evidence": "The fastest full-featured web framework for Go. ... send them ... through the network."
+   }
+  },
+  {
+   "por": "mistral-code-fim",
+   "resposta": {
+    "serve": "stack",
+    "role": "web framework for Go",
+    "place": [
+     "network_service"
+    ],
+    "mechanism": [
+     "n/a"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "stable",
+    "doubt": true,
+    "evidence": "Gin is a web framework written in Golang. It features a Martini-like API, but with performance up to 40 times faster than Martini."
+   }
+  }
+ ]
+}

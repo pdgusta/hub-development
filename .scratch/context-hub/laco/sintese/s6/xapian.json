@@ -1,0 +1,60 @@
+{
+ "nome": "Xapian",
+ "nome_canonico": "Xapian (xapian/xapian)",
+ "chave": "gh:xapian/xapian",
+ "url": "https://github.com/xapian/xapian",
+ "serve": "search",
+ "area": null,
+ "identidade": "ok: biblioteca C++ de busca full-text (Open Source Search Engine Library); omega e bindings são módulos do mesmo repositório",
+ "windows": "yes: instalável por compilação nativa; o CI do projeto roda MSVC 2022/2026 e MSYS2 mingw64 em windows-2022/2025. Bindings Python no Windows não verificados.",
+ "mcp": "no: é biblioteca, sem servidor MCP próprio; MCP de terceiros não verificado",
+ "portugues": "yes: stemmer Snowball de português (pt) e outros 30+ idiomas; stopwords e remoção de acentos não verificados",
+ "markdown_frontmatter": "no: indexa o que o código do aplicativo lhe passar; não entende Markdown nem frontmatter (indexação de .md pelo Omega não verificada)",
+ "atualizacao": "manual: o aplicativo chama a API de indexação; sem watcher próprio",
+ "embeddings_endpoint": "nao_usa_embeddings: busca probabilística BM25 clássica, sem vetores",
+ "recursos": "nao_verificado em números; biblioteca embarcada em C++, índice em disco local",
+ "licenca": "GPL-2.0-or-later",
+ "ultimo_release": "2.1.0 (2026-08-13)",
+ "atividade": "último commit 2026-10-10",
+ "maturidade": "stable",
+ "encaixe": "Índice lexical em disco de cada máquina, com stemmer pt, dentro do MCP do banco. Impedimento: biblioteca C++ sem MCP nem Markdown; exige cola em código e binários Windows próprios.",
+ "evidencias": [
+  {
+   "campo": "licenca",
+   "url": "https://xapian.org/",
+   "citacao": "Xapian is an Open Source Search Engine Library, released under the GPL v2+."
+  },
+  {
+   "campo": "ultimo_release",
+   "url": "https://xapian.org/download",
+   "citacao": "The latest stable release is 2.1.0 ... released on 2026-08-13."
+  },
+  {
+   "campo": "portugues",
+   "url": "https://raw.githubusercontent.com/xapian/xapian/master/xapian-core/include/xapian/stem.h",
+   "citacao": "portuguese (pt)"
+  },
+  {
+   "campo": "portugues",
+   "url": "https://xapian.org/docs/stemming.html",
+   "citacao": "Xapian uses the Snowball Stemming Algorithms which provide stemmers for more than 30 languages."
+  },
+  {
+   "campo": "windows",
+   "url": "https://xapian.org/docs/install.html",
+   "citacao": "Xapian can be built on UNIX systems (including macOS), and also Microsoft Windows systems using GCC with mingw or cygwin, or MSVC."
+  },
+  {
+   "campo": "windows",
+   "url": "https://raw.githubusercontent.com/xapian/xapian/master/.github/workflows/ci.yml",
+   "citacao": "msvc2022:\n    runs-on: 'windows-2022'"
+  }
+ ],
+ "nao_verificado": [
+  "bindings Python no Windows",
+  "stopwords e remoção de acentos",
+  "uso de memória e disco",
+  "MCP de terceiros",
+  "indexação de Markdown pelo Omega"
+ ]
+}

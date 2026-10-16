@@ -1,0 +1,60 @@
+{
+ "chave": "gh:snakeyaml/snakeyaml",
+ "nomes": [
+  "SnakeYAML",
+  "snakeyaml"
+ ],
+ "urls": [
+  "https://github.com/snakeyaml/snakeyaml",
+  "https://bitbucket.org/asomov/snakeyaml",
+  "https://bitbucket.org/asomov/snakeyaml/wiki/documentation",
+  "https://bitbucket.org/snakeyaml/snakeyaml",
+  "https://bitbucket.org/snakeyaml/snakeyaml/src/master/",
+  "https://yaml.org/snakeyaml.html"
+ ],
+ "readme_cortado": false,
+ "readme": "***The art of simplicity is a puzzle of complexity.***\n\n## CVE ##\n\nWhen you are here because of some vulnerability report please be \naware that it is most probably a **false positive**.\n\nWhen you use SnakeYAML \n[to configure your application](https://codeberg.org/snakeyaml/snakeyaml/wiki/CVE-2022-1471) \nyou are totally safe.\n\n### When a low quality tooling is complaining ###\n\n1. Go to the issue tracker of your low quality tooling and file a bug report about a false positive. You will be impressed with the amount of bugs already created and ignored (this makes the tool low quality - the bugs are created but ignored). The big amount of already reported issues should not stop you - they must be aware of the stream of false positives they produce.\n2. Go to your manager or security specialist and present this information. If you pay for the low quality tooling they cannot leave it unattended.\n3. Develop further and be happy !\n\n## Overview ##\n[YAML](http://yaml.org) is a data serialization format designed for human readability and interaction with scripting languages.\n\nSnakeYAML is a YAML 1.1 processor for the Java Virtual Machine version 8+.\nFor YAML 1.2 (which is a superset of JSON) you may have a look at [SnakeYAML Engine](https://codeberg.org/snakeyaml/snakeyaml-engine)\n\n## SnakeYAML features ##\n\n* a **complete** [YAML 1.1 processor](http://yaml.org/spec/1.1/current.html). (If you need YAML **1.2** support have a look [here](https://codeberg.org/snakeyaml/snakeyaml-engine)). In particular, SnakeYAML can parse all examples from the specification.\n* Unicode support including UTF-8/UTF-16 input/output.\n* high-level API for serializing and deserializing native Java objects.\n* support for all types from the [YAML types repository](http://yaml.org/type/index.html).\n* relatively sensible error messages.\n* when you plan to feed the parser with untrusted data please study the settings which allow to restrict incoming data.\n\n\n## Info ##\n * [Changes](https://codeberg.org/snakeyaml/snakeyaml/wiki/Changes)\n * [Documentation](https://codeberg.org/snakeyaml/snakeyaml/wiki)\n * [CVE and untrusted data](https://codeberg.org/snakeyaml/snakeyaml/wiki/CVE_N_NIST)\n\n## Contribute ##\n* GIT [is now used](https://codeberg.org/snakeyaml/snakeyaml/wiki/Migration%20to%20Git) to dance with the [source code](https://codeberg.org/snakeyaml/snakeyaml/src).\n* If you find a bug in SnakeYAML, please [file a bug report](https://codeberg.org/snakeyaml/snakeyaml/issues?status=new&status=open&is_spam=!spam).\n* You may discuss SnakeYAML at\n[the mailing list](http://groups.google.com/group/snakeyaml-core).\n* [Slack workspace](https://app.slack.com/client/T26CKL7FU/D02URJSL2KS)\n* Telegram group is removed because of the spam\n* [YAML community](https://matrix.to/#/%23chat:yaml.io)\n\n## JMH microbenchmarks ##\n\nTo execute the [JMH](https://github.com/openjdk/jmh) microbenchmarks locally via Maven:\n\n```shell\n./mvnw jmh:benchmark\n```\nThis will produce console results such as the following, as well as a `./jmh-result.json` that can be\nvisualized via https://jmh.morethan.io/ .\n\n```text\nBenchmark                    (entries)  Mode  Cnt    Score     Error  Units\nEmitterBenchmark.emitScalar        N/A  avgt    3    0.299 ±   0.047  us/op\nParseBenchmark.load               1000  avgt    3    1.388 ±   0.103  ms/op\nParseBenchmark.load             100000  avgt    3  258.281 ± 367.009  ms/op\nParseBenchmark.parse              1000  avgt    3    0.886 ±   0.163  ms/op\nParseBenchmark.parse            100000  avgt    3   94.930 ±   3.995  ms/op\n```\n",
+ "fonte": "readme",
+ "respostas": [
+  {
+   "por": "nemotron-3-super-120b",
+   "resposta": {
+    "serve": "none",
+    "role": "",
+    "place": [
+     "n/a"
+    ],
+    "mechanism": [
+     "n/a"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "unknown",
+    "doubt": false,
+    "evidence": "SnakeYAML is a YAML 1.1 processor for the Java Virtual Machine version 8+."
+   }
+  },
+  {
+   "por": "voxtral-small-2507",
+   "resposta": {
+    "serve": "none",
+    "role": "",
+    "place": [
+     "library"
+    ],
+    "mechanism": [
+     "n/a"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "unknown",
+    "doubt": true,
+    "evidence": "SnakeYAML is a YAML 1.1 processor for the Java Virtual Machine version 8+."
+   }
+  }
+ ]
+}

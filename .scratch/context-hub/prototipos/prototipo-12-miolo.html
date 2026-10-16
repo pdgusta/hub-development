@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Miolo da iniciativa</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/fraunces@5.3.0/index.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/nunito-sans@5.3.0/index.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/jetbrains-mono@5.3.0/index.css">
+<style>
+  :root {
+    color-scheme: light;
+    --bg: #f3eadb; --card: #fbf6ec; --line: #d9cdb8; --ink: #2b2117; --fraco: #55463a;
+    --terracota: #9c3a22; --petroleo: #1f5f73; --musgo: #3f6b32; --tijolo: #9b2a1c;
+    --pedra: #5a544b; --madeira: #7a4f2a;
+    --petroleo-v: #e2edef; --musgo-v: #e6eedc; --tijolo-v: #f5e1da; --pedra-v: #ebe6dd;
+    --madeira-v: #f0e3d3; --terracota-v: #f6e2d6;
+    --f-tit: "Fraunces Variable", Georgia, serif;
+    --f-txt: "Nunito Sans Variable", "Segoe UI", sans-serif;
+    --f-mono: "JetBrains Mono Variable", Consolas, monospace;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--bg); color: var(--ink); }
+  body {
+    font: 15px/1.45 var(--f-txt);
+    background-image:
+      radial-gradient(circle at 1px 1px, rgba(122,79,42,.10) 1px, transparent 0);
+    background-size: 22px 22px;
+  }
+  main { max-width: 1520px; margin: 0 auto; padding: 22px 20px 48px; }
+  svg.i { width: 18px; height: 18px; flex: none; vertical-align: -3px; }
+  .mono { font-family: var(--f-mono); }
+
+  /* topo */
+  header.topo { display: grid; grid-template-columns: 1fr auto; gap: 18px; align-items: end;
+    border-bottom: 2px solid var(--ink); padding-bottom: 14px; }
+  .selo { font-size: 14px; color: var(--fraco); display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+  .selo b { color: var(--terracota); font-weight: 700; }
+  .aberta { border: 1.5px solid var(--terracota); color: var(--terracota); border-radius: 999px; padding: 1px 10px; font-weight: 700; }
+  h1 { font-family: var(--f-tit); font-weight: 600; font-size: 40px; line-height: 1.08; margin: 6px 0 0;
+    color: var(--terracota); letter-spacing: -.01em; font-variation-settings: "SOFT" 60, "opsz" 72; }
+  h1 em { font-style: italic; color: var(--ink); }
+  .decidido { display: flex; flex-direction: column; gap: 6px; align-items: flex-end; }
+  .decidido .rot { font-size: 14px; color: var(--musgo); font-weight: 700; display: flex; gap: 6px; align-items: center; }
+  .pilula { display: inline-flex; gap: 8px; align-items: center; background: var(--card); border: 1.5px solid var(--musgo);
+    border-radius: 8px; padding: 4px 10px; font-size: 14px; }
+  .pilula .mono { font-size: 14px; }
+
+  /* legenda */
+  .legenda { display: flex; flex-wrap: wrap; gap: 8px 18px; margin: 14px 0 6px; font-size: 14px; color: var(--fraco); align-items: center; }
+  .legenda span.k { display: inline-flex; align-items: center; gap: 6px; }
+  .sw { width: 14px; height: 14px; border-radius: 3px; display: inline-block; border: 2px solid; }
+
+  /* matriz */
+  .matriz { display: grid; grid-template-columns: 112px repeat(5, minmax(0, 1fr)); column-gap: 12px; }
+  .cab { padding: 10px 0 8px; border-bottom: 1.5px dashed var(--line); }
+  .cab .nome { font-family: var(--f-tit); font-size: 22px; font-weight: 600; display: flex; gap: 8px; align-items: center; }
+  .cab .nome svg { width: 22px; height: 22px; color: var(--madeira); }
+  .cab .tipo { font-size: 14px; color: var(--fraco); }
+  .linha-rot { grid-column: 1; padding-top: 14px; }
+  .letra { font-family: var(--f-tit); font-size: 54px; line-height: .9; font-weight: 700; color: var(--ink);
+    font-variation-settings: "SOFT" 100, "WONK" 1; }
+  .letra.hoje { font-size: 26px; line-height: 1.1; }
+  .linha-rot .diz { font-size: 14px; color: var(--fraco); margin-top: 6px; line-height: 1.3; }
+  .rec { display: inline-block; margin-top: 6px; background: var(--terracota); color: #fff; font-size: 14px; font-weight: 700;
+    border-radius: 6px; padding: 1px 8px; }
+  .faixa-sep { grid-column: 1 / -1; height: 0; border-top: 2px solid var(--ink); margin: 18px 0 0; }
+
+  /* pasta (forma de pasta com aba) */
+  .pasta { position: relative; background: var(--card); border: 1.5px solid var(--line); border-radius: 0 8px 8px 8px;
+    padding: 10px 10px 10px; margin-top: 26px; }
+  .pasta::before { content: attr(data-aba); position: absolute; top: -24px; left: -1.5px; height: 24px;
+    background: var(--card); border: 1.5px solid var(--line); border-bottom: none; border-radius: 7px 7px 0 0;
+    padding: 2px 10px 0; font: 14px/20px var(--f-mono); color: var(--fraco); white-space: nowrap; max-width: 100%;
+    overflow: hidden; text-overflow: ellipsis; }
+  .grupo { margin-top: 8px; }
+  .grupo:first-child { margin-top: 0; }
+  .grupo .g { font-size: 14px; font-weight: 700; display: flex; gap: 6px; align-items: center; margin-bottom: 4px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 4px; }
+  .chip { font: 14px/1.25 var(--f-mono); padding: 2px 6px; border-radius: 5px; border: 1.5px solid; background: #fff8; white-space: nowrap;
+    max-width: 100%; overflow: hidden; text-overflow: ellipsis; }
+  .c-musgo { color: var(--musgo); border-color: var(--musgo); background: var(--musgo-v); }
+  .c-madeira { color: var(--madeira); border-color: var(--madeira); background: var(--madeira-v); }
+  .c-pedra { color: var(--pedra); border-color: #b7ad9e; background: var(--pedra-v); }
+  .c-tijolo { color: var(--tijolo); border-color: var(--tijolo); background: var(--tijolo-v); }
+  .c-petroleo { color: var(--petroleo); border-color: var(--petroleo); background: var(--petroleo-v); }
+  .g.musgo { color: var(--musgo); } .g.madeira { color: var(--madeira); } .g.pedra { color: var(--pedra); } .g.tijolo { color: var(--tijolo); }
+  .sai { font-size: 14px; color: var(--madeira); display: flex; gap: 4px; align-items: center; margin-top: 4px; font-weight: 700; }
+
+  /* mudança */
+  .mud { display: flex; flex-direction: column; align-items: center; padding-top: 10px; }
+  .mud svg { width: 26px; height: 40px; color: var(--ink); }
+  .mud .pal { font-size: 14px; font-weight: 700; color: var(--ink); background: var(--bg); padding: 0 6px; margin-top: -4px; }
+  .mud .dest { font: 14px/1.3 var(--f-mono); color: var(--musgo); background: var(--card); border: 1.5px solid var(--musgo); border-radius: 6px;
+    padding: 2px 8px; margin-top: 4px; text-align: center; overflow-wrap: anywhere; }
+  .mud-rot { grid-column: 1; padding-top: 24px; font-size: 14px; color: var(--fraco); }
+  .mud-rot b { font-family: var(--f-tit); font-size: 20px; color: var(--ink); display: block; }
+
+  /* faixa núcleo que atravessa as colunas */
+  .nucleo { grid-column: 2 / -1; margin-top: 14px; background: var(--petroleo); color: #fff; border-radius: 10px;
+    padding: 8px 14px; display: flex; align-items: center; gap: 10px 22px; flex-wrap: wrap; position: relative; }
+  .nucleo .tt { font-family: var(--f-tit); font-size: 19px; font-weight: 600; }
+  .nucleo .it { display: inline-flex; gap: 6px; align-items: center; font: 14px var(--f-mono); }
+  .nucleo .it small { font: 14px var(--f-txt); opacity: .9; }
+  .nucleo .it svg { color: #fff; }
+  .nucleo .igual { margin-left: auto; font-size: 14px; font-weight: 700; background: #fff; color: var(--petroleo); border-radius: 999px; padding: 1px 10px; }
+  .col-cell { padding-top: 10px; }
+  .modelo { background: var(--card); border: 2px solid var(--musgo); border-radius: 10px; padding: 8px 10px; height: 100%; }
+  .modelo .mt { font-family: var(--f-tit); font-weight: 600; font-size: 17px; color: var(--musgo); display: flex; gap: 6px; align-items: center; line-height: 1.15; }
+  .modelo .mt svg { width: 20px; height: 20px; }
+  .modelo .chips { margin-top: 6px; }
+  .modelo .liga { margin-top: 8px; font-size: 14px; color: var(--madeira); display: flex; gap: 6px; align-items: center; font-weight: 700; }
+  .modelo .fora { margin-top: 6px; font-size: 14px; color: var(--tijolo); display: flex; gap: 6px; align-items: center; font-weight: 700; }
+
+  /* acervo */
+  .acervo { grid-column: 2 / -1; margin-top: 10px; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; font-size: 14px; color: var(--fraco); }
+  .acervo .peca { display: inline-flex; gap: 6px; align-items: center; border: 1.5px dashed var(--musgo); border-radius: 8px; padding: 3px 9px; color: var(--musgo); background: var(--card); }
+  .acervo .peca.extra { border-style: solid; font-weight: 700; }
+
+  /* B: esqueleto */
+  .esq { background: var(--card); border: 2px solid var(--pedra); border-radius: 10px; padding: 8px; display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+  .slot { height: 34px; border-radius: 6px; border: 1.5px solid var(--pedra); background: var(--pedra-v); display: flex; align-items: center; justify-content: center; gap: 4px; font-size: 14px; color: var(--pedra); }
+  .slot.vazia { border: 1.5px dashed var(--tijolo); background: transparent; color: var(--tijolo); }
+  .slot.mal { border-color: var(--tijolo); background: var(--tijolo-v); color: var(--tijolo); }
+  .molde { grid-column: 2 / -1; margin-top: 14px; border: 2px solid var(--pedra); border-radius: 10px; padding: 7px 14px; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; background: var(--pedra-v); }
+  .molde .tt { font-family: var(--f-tit); font-size: 19px; font-weight: 600; color: var(--pedra); }
+  .alerta { display: inline-flex; gap: 6px; align-items: center; font-size: 14px; font-weight: 700; color: var(--tijolo); background: var(--tijolo-v); border: 1.5px solid var(--tijolo); border-radius: 999px; padding: 2px 10px; }
+
+  /* C: livre */
+  .livre { position: relative; height: 100%; min-height: 128px; border: 2px dashed var(--fraco); background: var(--card); padding: 10px; }
+  .livre .chip { position: relative; }
+  .livre .q { position: absolute; right: 8px; bottom: 6px; font-family: var(--f-tit); font-size: 30px; color: var(--tijolo); line-height: 1; }
+  .livre.f1 { border-radius: 26px 6px 30px 8px; transform: rotate(-1.2deg); }
+  .livre.f2 { border-radius: 4px; border-style: dotted; transform: rotate(.8deg); }
+  .livre.f3 { border-radius: 40px 40px 10px 10px; transform: rotate(-.5deg); }
+  .livre.f4 { border-radius: 10px 36px 6px 36px; transform: rotate(1.3deg); }
+  .livre.f5 { border-radius: 50px 10px 50px 10px; transform: rotate(-1.6deg); }
+  .livre .chips { gap: 6px 4px; }
+  .livre .chip:nth-child(2n) { transform: rotate(-3deg); }
+  .livre .chip:nth-child(3n) { transform: rotate(2.5deg); }
+
+  .riscos { grid-column: 2 / -1; display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
+
+  /* rodapé */
+  footer.pe { margin-top: 26px; border-top: 2px solid var(--ink); padding-top: 12px; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .bilhete { background: var(--card); border: 1.5px solid var(--line); border-left: 6px solid var(--terracota); border-radius: 8px; padding: 8px 12px; font-size: 14px; display: flex; gap: 10px; align-items: center; }
+  .bilhete b { color: var(--terracota); }
+  .bilhete.t { border-left-color: var(--tijolo); }
+  .bilhete.t b { color: var(--tijolo); }
+
+  @media (max-width: 1300px) {
+    .cab .nome { font-size: 17px !important; gap: 6px; }
+    .cab .nome svg { width: 18px; height: 18px; }
+  }
+  @media (max-width: 1360px) {
+    h1 { font-size: 34px; }
+    .matriz { grid-template-columns: 96px repeat(5, minmax(0, 1fr)); column-gap: 9px; }
+    .letra { font-size: 46px; }
+    .cab .nome { font-size: 19px; }
+  }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-pasta" viewBox="0 0 24 24"><path d="M3 6.5a1.5 1.5 0 0 1 1.5-1.5h4.6l2 2.2h8.4A1.5 1.5 0 0 1 21 8.7v9.8a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 18.5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+    <symbol id="i-ficha" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8 8h8M8 12h8M8 16h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="i-marca" viewBox="0 0 24 24"><path d="M6 3h12v18l-6-4.5L6 21z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+    <symbol id="i-caixa" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="5" rx="1" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M5 9v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V9M10 13h4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="i-batuta" viewBox="0 0 24 24"><path d="M4 20 17 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="18.5" cy="5.5" r="2.2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M4 14c2 0 3 1 3 3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-dasharray="2 2"/></symbol>
+    <symbol id="i-elo" viewBox="0 0 24 24"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="i-chave" viewBox="0 0 24 24"><circle cx="8" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 12h9M18 12v3M21 12v2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="i-codigo" viewBox="0 0 24 24"><path d="m8 7-5 5 5 5M16 7l5 5-5 5M14 4l-4 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-engrenagem" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.3 5.3l2.1 2.1M16.6 16.6l2.1 2.1M5.3 18.7l2.1-2.1M16.6 7.4l2.1-2.1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="i-folha" viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M14 3v4h4" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
+    <symbol id="i-maleta" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M9 7V5h6v2M3 12h18" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
+    <symbol id="i-ferramenta" viewBox="0 0 24 24"><path d="M14.5 6.5a4 4 0 0 0 5 5L12 19a2.1 2.1 0 0 1-3-3l7.5-7.5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="m4 20 3-3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="i-frasco" viewBox="0 0 24 24"><path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 1.8 3h10.4A2 2 0 0 0 19 18l-5-9V3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M7 15h10" stroke="currentColor" stroke-width="1.8"/></symbol>
+    <symbol id="i-ciclo" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 1-14 5.3M4 12A8 8 0 0 1 18 6.7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M18 3v4h-4M6 21v-4h4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-bussola" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m15.5 8.5-2 5-5 2 2-5z" fill="currentColor"/></symbol>
+    <symbol id="i-seta" viewBox="0 0 26 40"><path d="M13 2v32" stroke="currentColor" stroke-width="2.4"/><path d="M5 26l8 10 8-10" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/></symbol>
+    <symbol id="i-sai" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-alerta" viewBox="0 0 24 24"><path d="M12 3 2 20h20z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M12 10v4M12 17v.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-lupa" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m15 15 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-ok" viewBox="0 0 24 24"><path d="m4 12.5 5 5L20 6.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  </defs>
+</svg>
+
+<main>
+  <header class="topo">
+    <div>
+      <div class="selo">Arquitetura de pastas e frontmatter do hub <span>·</span> rodada 8 <span class="aberta">aberta</span></div>
+      <h1>O que fica <em>dentro</em> da pasta de uma iniciativa?</h1>
+    </div>
+    <div class="decidido">
+      <div class="rot"><svg class="i"><use href="#i-ok"/></svg>já decidido</div>
+      <span class="pilula"><svg class="i" style="color:var(--musgo)"><use href="#i-pasta"/></svg><span class="mono">clients/&lt;cliente&gt;/&lt;iniciativa&gt;/</span></span>
+      <span class="pilula"><svg class="i" style="color:var(--musgo)"><use href="#i-pasta"/></svg><span class="mono">initiatives/&lt;iniciativa&gt;/</span></span>
+      <span class="pilula"><svg class="i" style="color:var(--madeira)"><use href="#i-codigo"/></svg>código fica no repositório <svg class="i" style="color:var(--madeira)"><use href="#i-elo"/></svg>link</span>
+    </div>
+  </header>
+
+  <div class="legenda">
+    <span class="k"><i class="sw" style="border-color:var(--musgo);background:var(--musgo-v)"></i>trabalho</span>
+    <span class="k"><i class="sw" style="border-color:var(--madeira);background:var(--madeira-v)"></i>código</span>
+    <span class="k"><i class="sw" style="border-color:#b7ad9e;background:var(--pedra-v)"></i>execução e ferramentas</span>
+    <span class="k"><i class="sw" style="border-color:var(--tijolo);background:var(--tijolo-v)"></i>senha e token</span>
+    <span class="k"><i class="sw" style="border-color:var(--petroleo);background:var(--petroleo)"></i>núcleo pequeno</span>
+    <span class="k"><i class="sw" style="border-color:var(--terracota);background:var(--terracota)"></i>a pergunta</span>
+  </div>
+
+  <div class="matriz">
+    <!-- cabeçalhos -->
+    <div class="cab"></div>
+    <div class="cab"><div class="nome"><svg><use href="#i-bussola"/></svg>context-hub</div><div class="tipo">planejamento</div></div>
+    <div class="cab"><div class="nome"><svg><use href="#i-maleta"/></svg>voegol</div><div class="tipo">cliente</div></div>
+    <div class="cab"><div class="nome"><svg><use href="#i-codigo"/></svg>videos-transcriptor</div><div class="tipo">repositório de código</div></div>
+    <div class="cab"><div class="nome"><svg><use href="#i-codigo"/></svg>freellmapi</div><div class="tipo">repositório de código</div></div>
+    <div class="cab"><div class="nome"><svg><use href="#i-frasco"/></svg>spikes</div><div class="tipo">spike-fns · spike-livesync</div></div>
+
+    <!-- HOJE -->
+    <div class="linha-rot"><div class="letra hoje">Hoje</div><div class="diz mono">C:\Projetos\</div><div class="diz">cada um com um formato</div></div>
+
+    <div class="pasta" data-aba="context-hub/">
+      <div class="grupo"><div class="g musgo"><svg class="i"><use href="#i-folha"/></svg>planejamento</div>
+        <div class="chips"><span class="chip c-musgo">.scratch/</span><span class="chip c-musgo">issues/</span><span class="chip c-musgo">map.md</span><span class="chip c-musgo">prototipos/</span><span class="chip c-musgo">portal/</span><span class="chip c-musgo">exploracao/</span><span class="chip c-musgo">GLOSSARY.md</span><span class="chip c-musgo">AGENTS.md</span><span class="chip c-musgo">docs/agents/</span></div></div>
+      <div class="grupo"><div class="g pedra"><svg class="i"><use href="#i-engrenagem"/></svg>ferramentas</div>
+        <div class="chips"><span class="chip c-pedra">.git/</span><span class="chip c-pedra">.maestri/</span></div></div>
+    </div>
+
+    <div class="pasta" data-aba="voegol/">
+      <div class="grupo"><div class="g musgo"><svg class="i"><use href="#i-folha"/></svg>entregas</div>
+        <div class="chips"><span class="chip c-musgo">README.md</span><span class="chip c-musgo">outputs/runs/</span><span class="chip c-musgo">docs/ · vazia</span></div></div>
+      <div class="grupo"><div class="g madeira"><svg class="i"><use href="#i-codigo"/></svg>código</div>
+        <div class="chips"><span class="chip c-madeira">Scripts/</span><span class="chip c-madeira">Tests/</span></div></div>
+    </div>
+
+    <div class="pasta" data-aba="videos-transcriptor/">
+      <div class="grupo"><div class="g madeira"><svg class="i"><use href="#i-codigo"/></svg>código</div>
+        <div class="chips"><span class="chip c-madeira">videos_transcriptor/</span><span class="chip c-madeira">tests/</span><span class="chip c-madeira">bin/</span><span class="chip c-madeira">pyproject.toml</span></div></div>
+      <div class="grupo"><div class="g musgo"><svg class="i"><use href="#i-folha"/></svg>planejamento</div>
+        <div class="chips"><span class="chip c-musgo">architecture*.md ×4</span><span class="chip c-musgo">.planning/</span><span class="chip c-musgo">.gsd/</span><span class="chip c-musgo">docs/</span></div></div>
+      <div class="grupo"><div class="g pedra"><svg class="i"><use href="#i-engrenagem"/></svg>execução</div>
+        <div class="chips"><span class="chip c-pedra">inputs/</span><span class="chip c-pedra">outputs/</span><span class="chip c-pedra">models/</span><span class="chip c-pedra">logs/</span><span class="chip c-pedra">.venv/</span><span class="chip c-pedra">.git/</span></div></div>
+    </div>
+
+    <div class="pasta" data-aba="freellmapi/">
+      <div class="grupo"><div class="g madeira"><svg class="i"><use href="#i-codigo"/></svg>código</div>
+        <div class="chips"><span class="chip c-madeira">server/</span><span class="chip c-madeira">client/</span><span class="chip c-madeira">cli/</span><span class="chip c-madeira">desktop/</span><span class="chip c-madeira">shared/</span><span class="chip c-madeira">docker/</span><span class="chip c-madeira">scripts/</span><span class="chip c-madeira">+ 13 itens</span></div></div>
+      <div class="grupo"><div class="g musgo"><svg class="i"><use href="#i-folha"/></svg>documentação</div>
+        <div class="chips"><span class="chip c-musgo">docs/</span><span class="chip c-musgo">README.md</span></div></div>
+      <div class="grupo"><div class="g tijolo"><svg class="i"><use href="#i-chave"/></svg>segredo</div>
+        <div class="chips"><span class="chip c-tijolo">.env</span></div></div>
+    </div>
+
+    <div class="pasta" data-aba="spike-*/">
+      <div class="grupo"><div class="g pedra"><svg class="i"><use href="#i-engrenagem"/></svg>cofres de teste e logs</div>
+        <div class="chips"><span class="chip c-pedra">cofre-a/ cofre-b/ …</span><span class="chip c-pedra">logs/</span><span class="chip c-pedra">*.log</span><span class="chip c-pedra">e2ee-db-1/</span></div></div>
+      <div class="grupo"><div class="g madeira"><svg class="i"><use href="#i-codigo"/></svg>scripts</div>
+        <div class="chips"><span class="chip c-madeira">*.py</span><span class="chip c-madeira">livesync-src/</span></div></div>
+      <div class="grupo"><div class="g musgo"><svg class="i"><use href="#i-folha"/></svg>achados</div>
+        <div class="chips"><span class="chip c-musgo">docs/</span><span class="chip c-musgo">amostras/</span><span class="chip c-musgo">telas/</span></div></div>
+      <div class="grupo"><div class="g tijolo"><svg class="i"><use href="#i-chave"/></svg>soltos</div>
+        <div class="chips"><span class="chip c-tijolo">credenciais*.txt</span><span class="chip c-tijolo">token*.txt ×5</span><span class="chip c-tijolo">.env</span></div></div>
+    </div>
+
+    <!-- MUDANÇA -->
+    <div class="mud-rot"><b>mudança</b>para o hub</div>
+    <div class="mud"><svg><use href="#i-seta"/></svg><span class="dest">initiatives/<wbr>context-hub/</span></div>
+    <div class="mud"><svg><use href="#i-seta"/></svg><span class="dest">clients/voegol/<wbr>&lt;iniciativa&gt;/</span></div>
+    <div class="mud"><svg><use href="#i-seta"/></svg><span class="dest">initiatives/<wbr>videos-transcriptor/</span></div>
+    <div class="mud"><svg><use href="#i-seta"/></svg><span class="dest">initiatives/<wbr>freellmapi/</span></div>
+    <div class="mud"><svg><use href="#i-seta"/></svg><span class="dest">initiatives/<wbr>&lt;spike&gt;/</span></div>
+
+    <!-- A -->
+    <div class="faixa-sep"></div>
+    <div class="linha-rot" style="grid-row: span 3"><div class="letra">A</div><div class="diz">núcleo + modelo pronto por tipo</div><span class="rec">recomendada</span></div>
+    <div class="nucleo">
+      <span class="tt">núcleo</span>
+      <span class="it"><svg class="i"><use href="#i-ficha"/></svg>README.md <small>ficha</small></span>
+      <span class="it"><svg class="i"><use href="#i-marca"/></svg>retomada.md</span>
+      <span class="it"><svg class="i"><use href="#i-caixa"/></svg>_archive/</span>
+      <span class="it"><svg class="i"><use href="#i-batuta"/></svg>maestro/ <small>opcional</small></span>
+      <span class="igual">igual em todas</span>
+    </div>
+    <div class="col-cell"><div class="modelo"><div class="mt"><svg><use href="#i-ferramenta"/></svg>produto ou ferramenta</div>
+      <div class="chips"><span class="chip c-musgo">tickets</span><span class="chip c-musgo">decisões</span><span class="chip c-musgo">glossário</span></div></div></div>
+    <div class="col-cell"><div class="modelo"><div class="mt"><svg><use href="#i-maleta"/></svg>cliente com entregas</div>
+      <div class="chips"><span class="chip c-musgo">documentos de entrada</span><span class="chip c-musgo">entregáveis</span><span class="chip c-musgo">reuniões</span></div></div></div>
+    <div class="col-cell"><div class="modelo"><div class="mt"><svg><use href="#i-codigo"/></svg>produto com código</div>
+      <div class="chips"><span class="chip c-musgo">tickets</span><span class="chip c-musgo">decisões</span><span class="chip c-musgo">glossário</span></div>
+      <div class="liga"><svg class="i"><use href="#i-elo"/></svg>link → repositório</div></div></div>
+    <div class="col-cell"><div class="modelo"><div class="mt"><svg><use href="#i-codigo"/></svg>produto com código</div>
+      <div class="chips"><span class="chip c-musgo">tickets</span><span class="chip c-musgo">decisões</span><span class="chip c-musgo">glossário</span></div>
+      <div class="liga"><svg class="i"><use href="#i-elo"/></svg>link → repositório</div></div></div>
+    <div class="col-cell"><div class="modelo"><div class="mt"><svg><use href="#i-frasco"/></svg>pesquisa ou spike</div>
+      <div class="chips"><span class="chip c-musgo">fontes</span><span class="chip c-musgo">resultados</span><span class="chip c-musgo">conclusão</span></div>
+      <div class="fora"><svg class="i"><use href="#i-chave"/></svg>senhas → rodada própria</div></div></div>
+    <div class="acervo">
+      <svg class="i" style="color:var(--musgo)"><use href="#i-pasta"/></svg><b style="color:var(--musgo)">acervo de modelos</b> escolhido ao criar a pasta, ajustável depois:
+      <span class="peca"><svg class="i"><use href="#i-maleta"/></svg>cliente</span>
+      <span class="peca"><svg class="i"><use href="#i-codigo"/></svg>produto</span>
+      <span class="peca extra"><svg class="i"><use href="#i-ciclo"/></svg>operação contínua · SOC STRATA</span>
+      <span class="peca"><svg class="i"><use href="#i-frasco"/></svg>pesquisa ou spike</span>
+    </div>
+
+    <!-- B -->
+    <div class="faixa-sep"></div>
+    <div class="linha-rot" style="grid-row: span 3"><div class="letra">B</div><div class="diz">um esqueleto único</div></div>
+    <div class="molde">
+      <span class="tt">mesmo esqueleto</span>
+      <svg class="i" style="color:var(--pedra)"><use href="#i-pasta"/></svg><svg class="i" style="color:var(--pedra)"><use href="#i-pasta"/></svg><svg class="i" style="color:var(--pedra)"><use href="#i-pasta"/></svg><svg class="i" style="color:var(--pedra)"><use href="#i-pasta"/></svg>
+      <span style="font-size:14px;color:var(--pedra)">as mesmas subpastas em todas</span>
+    </div>
+    <div class="col-cell"><div class="esq"><div class="slot"><svg class="i"><use href="#i-pasta"/></svg></div><div class="slot vazia">vazia</div><div class="slot"><svg class="i"><use href="#i-pasta"/></svg></div><div class="slot mal">mal usada</div></div></div>
+    <div class="col-cell"><div class="esq"><div class="slot vazia">vazia</div><div class="slot"><svg class="i"><use href="#i-pasta"/></svg></div><div class="slot mal">mal usada</div><div class="slot vazia">vazia</div></div></div>
+    <div class="col-cell"><div class="esq"><div class="slot"><svg class="i"><use href="#i-pasta"/></svg></div><div class="slot mal">mal usada</div><div class="slot vazia">vazia</div><div class="slot"><svg class="i"><use href="#i-pasta"/></svg></div></div></div>
+    <div class="col-cell"><div class="esq"><div class="slot"><svg class="i"><use href="#i-pasta"/></svg></div><div class="slot vazia">vazia</div><div class="slot vazia">vazia</div><div class="slot"><svg class="i"><use href="#i-pasta"/></svg></div></div></div>
+    <div class="col-cell"><div class="esq"><div class="slot vazia">vazia</div><div class="slot mal">mal usada</div><div class="slot"><svg class="i"><use href="#i-pasta"/></svg></div><div class="slot vazia">vazia</div></div></div>
+    <div class="riscos">
+      <span class="alerta"><svg class="i"><use href="#i-alerta"/></svg>tipos diferentes no mesmo molde</span>
+      <span class="alerta"><svg class="i"><use href="#i-alerta"/></svg>pastas vazias ou mal usadas</span>
+    </div>
+
+    <!-- C -->
+    <div class="faixa-sep"></div>
+    <div class="linha-rot" style="grid-row: span 3"><div class="letra">C</div><div class="diz">só o núcleo; o resto livre</div></div>
+    <div class="nucleo">
+      <span class="tt">núcleo</span>
+      <span class="it"><svg class="i"><use href="#i-ficha"/></svg>README.md <small>ficha</small></span>
+      <span class="it"><svg class="i"><use href="#i-marca"/></svg>retomada.md</span>
+      <span class="it"><svg class="i"><use href="#i-caixa"/></svg>_archive/</span>
+      <span class="it"><svg class="i"><use href="#i-batuta"/></svg>maestro/ <small>opcional</small></span>
+      <span class="igual">igual em todas</span>
+    </div>
+    <div class="col-cell"><div class="livre f1"><div class="chips"><span class="chip c-musgo">issues/</span><span class="chip c-musgo">map.md</span><span class="chip c-musgo">prototipos/</span><span class="chip c-musgo">portal/</span></div><span class="q">?</span></div></div>
+    <div class="col-cell"><div class="livre f2"><div class="chips"><span class="chip c-musgo">outputs/runs/</span><span class="chip c-musgo">docs/</span></div><span class="q">?</span></div></div>
+    <div class="col-cell"><div class="livre f3"><div class="chips"><span class="chip c-musgo">architecture*.md</span><span class="chip c-musgo">.planning/</span><span class="chip c-musgo">.gsd/</span></div><span class="q">?</span></div></div>
+    <div class="col-cell"><div class="livre f4"><div class="chips"><span class="chip c-musgo">docs/</span><span class="chip c-musgo">README.md</span></div><span class="q">?</span></div></div>
+    <div class="col-cell"><div class="livre f5"><div class="chips"><span class="chip c-musgo">amostras/</span><span class="chip c-musgo">telas/</span><span class="chip c-musgo">docs/</span></div><span class="q">?</span></div></div>
+    <div class="riscos">
+      <span class="alerta"><svg class="i"><use href="#i-alerta"/></svg>cada agente inventa um formato</span>
+      <span class="alerta"><svg class="i"><use href="#i-lupa"/></svg>busca e retomada sem caminho fixo</span>
+    </div>
+  </div>
+
+  <footer class="pe">
+    <div class="bilhete"><svg class="i" style="color:var(--terracota)"><use href="#i-marca"/></svg><span><b>próximas rodadas:</b> as subpastas de cada modelo e o frontmatter da ficha</span></div>
+    <div class="bilhete t"><svg class="i" style="color:var(--tijolo)"><use href="#i-chave"/></svg><span><b>rodada própria:</b> senhas e tokens soltos nas pastas de spike</span></div>
+  </footer>
+</main>
+</body>
+</html>

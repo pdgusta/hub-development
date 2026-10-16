@@ -1,0 +1,54 @@
+{
+ "chave": "web:eland.readthedocs.io/en/latest",
+ "nomes": [
+  "Eland"
+ ],
+ "urls": [
+  "https://eland.readthedocs.io/en/latest/"
+ ],
+ "readme_cortado": false,
+ "readme": "[eland 9.2.0 documentationContentsMenuExpandLight modeDark modeAuto light/dark, in light modeAuto light/dark, in dark mode]\n\nSkip to content\n\n eland 9.2.0 documentation\n\nAPI Reference\n\nSupported Pandas APIs\n\nDataFrame\n\neland.DataFrame\n\neland.DataFrame.index\n\neland.DataFrame.columns\n\neland.DataFrame.dtypes\n\neland.DataFrame.select_dtypes\n\neland.DataFrame.values\n\neland.DataFrame.empty\n\neland.DataFrame.shape\n\neland.DataFrame.ndim\n\neland.DataFrame.size\n\neland.DataFrame.head\n\neland.DataFrame.keys\n\neland.DataFrame.tail\n\neland.DataFrame.get\n\neland.DataFrame.query\n\neland.DataFrame.sample\n\neland.DataFrame.iterrows\n\neland.DataFrame.itertuples\n\neland.DataFrame.agg\n\neland.DataFrame.aggregate\n\neland.DataFrame.groupby\n\neland.groupby.DataFrameGroupBy\n\neland.groupby.DataFrameGroupBy.agg\n\neland.groupby.DataFrameGroupBy.aggregate\n\neland.groupby.DataFrameGroupBy.count\n\neland.groupby.DataFrameGroupBy.mad\n\neland.groupby.DataFrameGroupBy.max\n\neland.groupby.DataFrameGroupBy.mean\n\neland.groupby.DataFrameGroupBy.median\n\neland.groupby.DataFrameGroupBy.min\n\neland.groupby.DataFrameGroupBy.nunique\n\neland.groupby.DataFrameGroupBy.std\n\neland.groupby.DataFrameGroupBy.sum\n\neland.groupby.DataFrameGroupBy.var\n\neland.groupby.DataFrameGroupBy.quantile\n\neland.groupby.GroupBy\n\neland.DataFrame.count\n\neland.DataFrame.describe\n\neland.DataFrame.info\n\neland.DataFrame.max\n\neland.DataFrame.mean\n\neland.DataFrame.min\n\neland.DataFrame.median\n\neland.DataFrame.mad\n\neland.DataFrame.std\n\neland.DataFrame.var\n\neland.DataFrame.sum\n\neland.DataFrame.nunique\n\neland.DataFrame.mode\n\neland.DataFrame.quantile\n\neland.DataFrame.idxmax\n\neland.DataFrame.idxmin\n\neland.DataFrame.drop\n\neland.DataFrame.filter\n\neland.DataFrame.hist\n\neland.DataFrame.es_info\n\neland.DataFrame.es_match\n\neland.DataFrame.es_query\n\neland.DataFrame.es_dtypes\n\neland.DataFrame.info\n\neland.DataFrame.to_numpy\n\neland.DataFrame.to_csv\n\neland.DataFrame.to_html\n\neland.DataFrame.to_json\n\neland.DataFrame.to_string\n\neland.DataFrame.to_pandas\n\nSeries\n\neland.Series\n\neland.Series.index\n\neland.Series.dtype\n\neland.Series.dtypes\n\neland.Series.shape\n\neland.Series.name\n\neland.Series.empty\n\neland.Series.ndim\n\neland.Series.size\n\neland.Series.head\n\neland.Series.tail\n\neland.Series.sample\n\neland.Series.add\n\neland.Series.sub\n\neland.Series.subtract\n\neland.Series.mul\n\neland.Series.multiply\n\neland.Series.div\n\neland.Series.divide\n\neland.Series.truediv\n\neland.Series.floordiv\n\neland.Series.mod\n\neland.Series.pow\n\neland.Series.radd\n\neland.Series.rsub\n\neland.Series.rsubtract\n\neland.Series.rmul\n\neland.Series.rmultiply\n\neland.Series.rdiv\n\neland.Series.rdivide\n\neland.Series.rtruediv\n\neland.Series.rfloordiv\n\neland.Series.rmod\n\neland.Series.rpow\n\neland.Series.describe\n\neland.Series.max\n\neland.Series.mean\n\neland.Series.min\n\neland.Series.sum\n\neland.Series.median\n\neland.Series.mad\n\neland.Series.std\n\neland.Series.var\n\neland.Series.nunique\n\neland.Series.unique\n\neland.Series.value_counts\n\neland.Series.mode\n\neland.Series.quantile\n\neland.Series.rename\n\neland.Series.isna\n\neland.Series.notna\n\neland.Series.isnull\n\neland.Series.notnull\n\neland.Series.isin\n\neland.Series.filter\n\neland.Series.hist\n\neland.Series.to_string\n\neland.Series.to_numpy\n\neland.Series.to_pandas\n\neland.Series.es_info\n\neland.Series.es_match\n\neland.Series.es_dtype\n\neland.Series.es_dtypes\n\nMachine Learning\n\neland.ml.MLModel\n\neland.ml.MLModel.predict\n\neland.ml.MLModel.import_model\n\neland.ml.MLModel.exists_model\n\neland.ml.MLModel.delete_model\n\nIndex\n\neland.Index\n\nGeneral Utility Functions\n\neland.pandas_to_eland\n\neland.eland_to_pandas\n\nInput/Output\n\neland.csv_to_eland\n\nMachine Learning\n\neland.ml.MLModel\n\neland.ml.MLModel.predict\n\neland.ml.MLModel.import_model\n\neland.ml.MLModel.exists_model\n\neland.ml.MLModel.delete_model\n\nExamples\n\nEland Demo Notebook\n\nIntroduction to Eland Webinar\n\nOnline retail analysis using Eland\n\nDevelopment\n\nContributing to Eland\n\nImplementation Details\n\n Back to top\n\n View this page\n\nEland: DataFrames and Machine Learning backed by Elasticsearch¶\n\nDate: May 05, 2026 Version: 9.2.0\n\nUseful links:\nSource Repository |\nIssues & Ideas |\nQ&A Support\n\nEland is a Python Elasticsearch client for exploring and analyzing data\nin Elasticsearch with a familiar Pandas-compatible API.\n\nWhere possible the package uses existing Python APIs and data structures to make it easy to switch between numpy,\npandas, scikit-learn to their Elasticsearch powered equivalents. In general, the data resides in Elasticsearch and\nnot in memory, which allows Eland to access large datasets stored in Elasticsearch.\n\nInstalling Eland¶\n\nEland can be installed from PyPI via pip:\n\n$ python -m pip install eland\n\nEland can also be installed from Conda Forge with Conda:\n\n$ conda install -c conda-forge eland\n\nGetting Started¶\n\nIf it’s your first time using Eland we recommend looking through the\nExamples documentation for ideas on what Eland is capable of.\n\nIf you’re new to Elasticsearch we recommend reading the documentation.\n\nAPI Reference\n\nSupported Pandas APIs\n\nDataFrame\n\nSeries\n\nMachine Learning\n\nIndex\n\nGeneral Utility Functions\n\nInput/Output\n\nDevelopment\n\nContributing to Eland\n\nImplementation Details\n\nExamples\n\nEland Demo Notebook\n\nIntroduction to Eland Webinar\n\nOnline retail analysis using Eland\n\n On this page\n\nEland: DataFrames and Machine Learning backed by Elasticsearch\n\nInstalling Eland\n\nGetting Started",
+ "fonte": "site",
+ "respostas": [
+  {
+   "por": "codestral",
+   "resposta": {
+    "serve": "none",
+    "role": "",
+    "place": [
+     "n/a"
+    ],
+    "mechanism": [
+     "n/a"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "unknown",
+    "doubt": true,
+    "evidence": "Eland is a Python Elasticsearch client for exploring and analyzing data in Elasticsearch with a familiar Pandas-compatible API."
+   }
+  },
+  {
+   "por": "nemotron-3-super-120b",
+   "resposta": {
+    "serve": "none",
+    "role": "",
+    "place": [
+     "n/a"
+    ],
+    "mechanism": [
+     "n/a"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "unknown",
+    "doubt": false,
+    "evidence": "Eland is a Python Elasticsearch client for exploring and analyzing data in Elasticsearch with a familiar Pandas-compatible API."
+   }
+  }
+ ]
+}

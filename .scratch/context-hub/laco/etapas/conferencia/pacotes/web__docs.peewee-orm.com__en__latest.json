@@ -1,0 +1,55 @@
+{
+ "chave": "web:docs.peewee-orm.com/en/latest",
+ "nomes": [
+  "Peewee"
+ ],
+ "urls": [
+  "http://docs.peewee-orm.com/en/latest/",
+  "http://docs.peewee-orm.com/"
+ ],
+ "readme_cortado": false,
+ "readme": "[peewee — peewee 4.5.3 documentation]\n\npeewee¶\n\nPeewee is a simple and small ORM. It has few (but expressive) concepts, making\nit easy to learn and intuitive to use.\n\nPeewee is a single module with no required dependencies and has been running\nproduction workloads of all sizes since 2010.\n\nflexible query-builder that exposes full power of SQL\n\nsupports sqlite, mysql, mariadb, postgresql.\n\nasyncio support\n\nschema migrations with diff-based generation (pwmigrate)\n\ntons of extensions\n\nuse with flask, fastapi, pydantic\nand more\n\nPeewee’s source code is hosted on GitHub.\n\nNew to peewee? These may help:\n\nQuickstart\n\nExample twitter app\n\nUsing peewee interactively\n\nModels and fields\n\nQuerying\n\nRelationships and joins\n\nExtensive library of SQL / Peewee examples\n\nFlask setup or FastAPI setup\n\nContents:¶\n\nInstalling and Testing\n\nInstalling from Source\n\nRunning Tests\n\nSupported Drivers\n\nQuickstart\n\nModel Definition\n\nCreate the Tables\n\nWriting Data\n\nReading Data\n\nSimple Aggregates\n\nClose the Connection\n\nWorking with Existing Databases\n\nWhat Next\n\nExample app\n\nRunning the Example\n\nCode Structure\n\nCreating Tables\n\nDatabase Connection\n\nMaking Queries\n\nStoring Data\n\nSubqueries\n\nOther Topics\n\nMore Examples\n\nDatabase\n\nUsing SQLite\n\nUsing Postgresql\n\nUsing MySQL / MariaDB\n\nConnection Parameters\n\nInitializing the Database\n\nConnecting via URL\n\nConnection Lifecycle\n\nConnection Pooling\n\nExecuting SQL\n\nDatabase Errors\n\nLogging Queries\n\nQuery Hooks\n\nTesting Peewee Applications\n\nAdding a Custom Database Driver\n\nModels and Fields\n\nModel Inheritance\n\nFields\n\nForeignKeyField\n\nDate and Time Fields\n\nJSONField\n\nBitField and BigBitField\n\nModel Settings\n\nIndexes and Constraints\n\nPrimary Keys\n\nTable Constraints\n\nCreating Tables\n\nMigrations\n\nAdvanced Topics\n\nRelationships and Joins\n\nModel Definitions\n\nForeign Keys\n\nBack-references\n\nThe N+1 Problem\n\nJoins\n\nRelated-instance Names\n\nMany-to-Many Relationships\n\nAvoiding N+1 with eager loading\n\nQuerying\n\nSelecting Records\n\nRetrieving a Single Record\n\nFiltering\n\nSorting\n\nPagination, Limiting, and Offsetting\n\nCounting\n\nAggregates and GROUP BY\n\nScalar Values\n\nRow Types\n\nIterating Over Large Result Sets\n\nWindow Functions\n\nCommon Table Expressions\n\nWriting Data\n\nInserting Records\n\nBulk Inserts\n\nUpdating Records\n\nUpsert\n\nDeleting Records\n\nReturning Clause\n\nQuery Operators\n\nThree Valued Logic\n\nUser-Defined Operators\n\nExpressions\n\nSQL Functions\n\nSQL Helper\n\nSecurity and SQL Injection\n\nTransactions\n\ndb.atomic\n\nManual Commit / Rollback\n\nNesting Transactions\n\nExplicit Transaction\n\nExplicit Savepoints\n\nRunning Code After Commit\n\nAutocommit Mode\n\nSQLite Transaction Locking Modes\n\nPostgresql Isolation Notes\n\nSchema Management\n\nCreating Tables\n\nDropping Tables\n\nSchemaManager\n\nSchema Migrations\n\nIntrospecting an Existing Schema\n\nAsync Support\n\nInstallation\n\nExample\n\nHow it works\n\nAsync Model Methods\n\nExecuting queries\n\nGeneral purpose wrapper\n\nAsync Helper Methods\n\nTransactions\n\nConnection Management\n\nSharp Corners\n\nWhy no await User.select()?\n\nAPI Reference\n\nFramework Integration\n\nFlask\n\nFastAPI\n\nQuart\n\nStarlette\n\nLitestar\n\naiohttp\n\nDjango\n\nBottle\n\nFalcon\n\nPyramid\n\nSanic\n\nCherryPy\n\nGeneral Pattern for Any Framework\n\nUsing Peewee Interactively\n\nQuery Builder\n\nDeclaring tables\n\nSelect queries\n\nInsert Queries\n\nUpdate Queries\n\nDelete Queries\n\nQuery Objects\n\nMore\n\nQuery Examples Library\n\nModel Definitions\n\nSchema Creation\n\nBasic Exercises\n\nJoins and Subqueries\n\nModifying Data\n\nAggregation\n\nDates and Times\n\nString\n\nRecursion\n\nAPI Reference\n\nDatabase\n\nModel\n\nFields\n\nSchema Manager\n\nQuery-builder\n\nQueries\n\nQuery-builder Internals\n\nConstants and Helpers\n\nPlayhouse Reference\n\nSQLite\n\nImplementations\n\nPRAGMA statements\n\nUser-Defined Functions\n\nLocking Mode for Transactions\n\nCySqlite\n\nAPSW\n\nSQLCipher\n\nSqliteQueueDatabase\n\nSQLite-Specific Fields\n\nSQLite JSON\n\nFull-text search\n\nUser-Defined Function Collection\n\nPostgresql\n\nGetting Started\n\nPostgresqlExtDatabase\n\npsycopg2 vs psycopg3\n\nJSON Support\n\nHStore\n\nArrays\n\nInterval\n\nDateTimeTZ Field\n\nFull-Text Search\n\nServer-Side Cursors\n\nCockroachDB\n\nMySQL and MariaDB\n\nMySQLConnectorDatabase\n\nPooledMySQLConnectorDatabase\n\nMariaDBConnectorDatabase\n\nPooledMariaDBConnectorDatabase\n\nMatch()\n\nDatabase Tooling\n\nDatabase URLs\n\nConnection Pooling\n\nSchema Migrations\n\nMigration Runner\n\nSchema Diff\n\nReflection\n\npwiz - Model Generator\n\nTest Utilities\n\nORM Utilities\n\nShortcuts\n\nPydantic Integration\n\nHybrid Attributes\n\nKey/Value Store\n\nSignals\n\nDataSet\n\nExtra Field Types\n\nFlask Utilities\n\nRecipes\n\nOptimistic Locking\n\nGet-or-Create Safely\n\nEager-loading for a list view\n\nTop Item Per Group\n\nTop N Per Group\n\nBulk-Loading with Explicit Primary Keys\n\nCustom SQLite Functions\n\nDate Arithmetic Across Databases\n\nContributing\n\nRunning the tests\n\nPatches\n\nBugs\n\nQuestions\n\nNote¶\n\nIf you find any bugs, odd behavior, or have an idea for a new feature please\ndon’t hesitate to open an issue\non GitHub.\n\nIndices and tables¶\n\nIndex\n\nModule Index\n\nSearch Page\n\npeewee\n\nNavigation\n\nInstalling and Testing\n\nQuickstart\n\nExample app\n\nDatabase\n\nModels and Fields\n\nRelationships and Joins\n\nQuerying\n\nWriting Data\n\nQuery Operators\n\nTransactions\n\nSchema Management\n\nAsync Support\n\nFramework Integration\n\nUsing Peewee Interactively\n\nQuery Builder\n\nQuery Examples Library\n\nAPI Reference\n\nSQLite\n\nPostgresql\n\nMySQL and MariaDB\n\nDatabase Tooling\n\nORM Utilities\n\nRecipes\n\nContributing\n\nRelated Topics\n\nDocumentation overview\n\nNext: Installing and Testing\n\nQuick search\n\n ©charles leifer.\n\n |\n Powered by Sphinx 5.3.0\n & Alabaster 0.7.16\n\n |\n Page source",
+ "fonte": "site",
+ "respostas": [
+  {
+   "por": "gemma-4-31b",
+   "resposta": {
+    "serve": "stack",
+    "role": "ORM for database interactions in the hub stack",
+    "place": [
+     "library"
+    ],
+    "mechanism": [
+     "other"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "stable",
+    "doubt": false,
+    "evidence": "Peewee is a simple and small ORM."
+   }
+  },
+  {
+   "por": "gpt-oss-20b",
+   "resposta": {
+    "serve": "stack",
+    "role": "database ORM for local SQLite",
+    "place": [
+     "library"
+    ],
+    "mechanism": [
+     "other"
+    ],
+    "mcp": "no",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "unknown",
+    "doubt": false,
+    "evidence": "\"Peewee is a simple and small ORM. It has few (but expressive) concepts, making it easy to learn and intuitive to use.\""
+   }
+  }
+ ]
+}

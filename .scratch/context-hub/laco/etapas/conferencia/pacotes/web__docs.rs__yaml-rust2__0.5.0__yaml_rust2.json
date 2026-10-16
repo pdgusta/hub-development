@@ -1,0 +1,54 @@
+{
+ "chave": "web:docs.rs/yaml-rust2/0.5.0/yaml_rust2",
+ "nomes": [
+  "yaml-rust2"
+ ],
+ "urls": [
+  "https://docs.rs/yaml-rust2/0.5.0/yaml_rust2/"
+ ],
+ "readme_cortado": false,
+ "readme": "[yaml_rust2 - Rust]\n\nCrate yaml_rust2source · [−]Expand description\n\nYAML 1.2 implementation in pure Rust.\n\n§Usage\n\nThis crate is on github and can be used by adding\nyaml-rust2 to the dependencies in your project’s Cargo.toml.\n\n[dependencies]\nyaml-rust2 = \"0.5.0\"\n\n§Examples\n\nParse a string into Vec<Yaml> and then serialize it as a YAML string.\n\nuse yaml_rust2::{YamlLoader, YamlEmitter};\n\nlet docs = YamlLoader::load_from_str(\"[1, 2, 3]\").unwrap();\nlet doc = &docs[0]; // select the first YAML document\nassert_eq!(doc[0].as_i64().unwrap(), 1); // access elements by index\n\nlet mut out_str = String::new();\nlet mut emitter = YamlEmitter::new(&mut out_str);\nemitter.dump(doc).unwrap(); // dump the YAML object to a String\n\nRe-exports§\n\npub use crate::emitter::EmitError;\n\npub use crate::emitter::YamlEmitter;\n\npub use crate::parser::Event;\n\npub use crate::scanner::ScanError;\n\npub use crate::yaml::Yaml;\n\npub use crate::yaml::YamlLoader;\nModules§\n\nemitter\n\nparser\n\nscanner\n\nyaml",
+ "fonte": "site",
+ "respostas": [
+  {
+   "por": "llama-3.2-11b-vision-instruct",
+   "resposta": {
+    "serve": "none",
+    "role": "",
+    "place": [
+     "n/a"
+    ],
+    "mechanism": [
+     "n/a"
+    ],
+    "mcp": "unknown",
+    "windows": "yes",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "unknown",
+    "doubt": true,
+    "evidence": ""
+   }
+  },
+  {
+   "por": "mistral-code",
+   "resposta": {
+    "serve": "none",
+    "role": "",
+    "place": [
+     "library"
+    ],
+    "mechanism": [
+     "n/a"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "unknown",
+    "doubt": true,
+    "evidence": "YAML 1.2 implementation in pure Rust. This crate is on github and can be used by adding yaml-rust2 to the dependencies in your project’s Cargo.toml."
+   }
+  }
+ ]
+}

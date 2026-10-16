@@ -1,0 +1,56 @@
+{
+ "nome": "Pagefind",
+ "url": "https://github.com/pagefind/pagefind",
+ "papel": "cópia leve no cliente",
+ "windows": "yes (binários x86_64 e aarch64 pc-windows-msvc nas releases)",
+ "mcp": "nao_verificado: sem MCP achado; não é servidor, gera bundle estático",
+ "portugues": "yes: stemming para Portuguese (pt, também pt-br); diacríticos nao_verificado; sem embeddings",
+ "markdown_frontmatter": "parcial: foco em HTML; Markdown só via addCustomRecord (Node API) com content, language, meta e filters planos (chaves para strings/arrays); parse de frontmatter é externo",
+ "atualizacao": "no: reconstrói o bundle por execução (CLI ou Node API); sem watcher nem incremental documentado",
+ "embeddings_endpoint": "não usa embeddings (busca lexical estática no navegador)",
+ "recursos": "binário único em Rust (~5 MB compactado); npx/pip/cargo também; RAM nao_verificado",
+ "licenca": "MIT",
+ "ultimo_release": "v1.5.2 (2026-04-12)",
+ "atividade": "1.555 commits; data do último commit nao_verificado",
+ "maturidade": "stable",
+ "encaixe": "Cópia leve no cliente/sandbox: bundle estático gerado a partir das notas, servido sem tailnet. Impedimentos: sem busca semântica, sem MCP, regeneração total e API orientada a HTML.",
+ "evidencias": [
+  {
+   "campo": "windows",
+   "url": "https://github.com/pagefind/pagefind/releases",
+   "citacao": "pagefind-v1.5.2-x86_64-pc-windows-msvc.tar.gz"
+  },
+  {
+   "campo": "portugues",
+   "url": "https://pagefind.app/docs/multilingual/",
+   "citacao": "lista de stemming inclui Portuguese; pt com UI translations"
+  },
+  {
+   "campo": "markdown_frontmatter",
+   "url": "https://pagefind.app/docs/node-api/",
+   "citacao": "Useful for adding non-HTML content to the search results."
+  },
+  {
+   "campo": "markdown_frontmatter",
+   "url": "https://pagefind.app/docs/node-api/",
+   "citacao": "strictly a flat object of keys to arrays of string values."
+  },
+  {
+   "campo": "atualizacao",
+   "url": "https://pagefind.app/docs/",
+   "citacao": "Pagefind runs after your static generator, and outputs a static search bundle"
+  },
+  {
+   "campo": "licenca",
+   "url": "https://github.com/pagefind/pagefind",
+   "citacao": "MIT license"
+  }
+ ],
+ "nao_verificado": [
+  "MCP",
+  "último commit",
+  "RAM",
+  "remoção de acentos",
+  "incremental"
+ ]
+}

@@ -1,0 +1,87 @@
+{
+ "chave": "gh:tensorflow/ranking",
+ "nomes": [
+  "TensorFlow Ranking"
+ ],
+ "urls": [
+  "https://github.com/tensorflow/ranking"
+ ],
+ "readme_cortado": false,
+ "readme": "# TensorFlow Ranking\n\nTensorFlow Ranking is a library for Learning-to-Rank (LTR) techniques on the\nTensorFlow platform. It contains the following components:\n\n*   Commonly used loss functions including pointwise, pairwise, and listwise\n    losses.\n*   Commonly used ranking metrics like\n    [Mean Reciprocal Rank (MRR)](https://en.wikipedia.org/wiki/Mean_reciprocal_rank)\n    and\n    [Normalized Discounted Cumulative Gain (NDCG)](https://en.wikipedia.org/wiki/Discounted_cumulative_gain).\n*   [Multi-item (also known as groupwise) scoring functions](https://arxiv.org/abs/1811.04415).\n*   [LambdaLoss](https://ai.google/research/pubs/pub47258) implementation for\n    direct ranking metric optimization.\n*   [Unbiased Learning-to-Rank](http://www.cs.cornell.edu/people/tj/publications/joachims_etal_17a.pdf)\n    from biased feedback data.\n\nWe envision that this library will provide a convenient open platform for\nhosting and advancing state-of-the-art ranking models based on deep learning\ntechniques, and thus facilitate both academic research and industrial\napplications.\n\n## Tutorial Slides\n\nTF-Ranking was presented at premier conferences in Information Retrieval,\n[SIGIR 2019](https://sigir.org/sigir2019/program/tutorials/) and\n[ICTIR 2019](http://ictir2019.org/program/#tutorials)! The slides are available\n[here](http://bendersky.github.io/res/TF-Ranking-ICTIR-2019.pdf).\n\n## Demos\n\nWe provide a demo, with no installation required, to get started on using\nTF-Ranking. This demo runs on a\n[colaboratory notebook](https://research.google.com/colaboratory/faq.html), an\ninteractive Python environment. Using sparse features and embeddings in\nTF-Ranking\n[![Run in Google Colab](https://www.tensorflow.org/images/colab_logo_32px.png)](https://colab.research.google.com/github/tensorflow/ranking/blob/master/tensorflow_ranking/examples/handling_sparse_features.ipynb).\nThis demo demonstrates how to:\n\n*   Use sparse/embedding features\n*   Process data in TFRecord format\n*   Tensorboard integration in colab notebook, for Estimator API\n\nAlso see [Running Scripts](#running-scripts) for executable scripts.\n\n## Linux Installation\n\n### Stable Builds\n\nTo install the latest version from\n[PyPI](https://pypi.org/project/tensorflow-ranking/), run the following:\n\n```shell\n# Installing with the `--upgrade` flag ensures you'll get the latest version.\npip install --user --upgrade tensorflow_ranking\n```\n\nTo force a Python 3-specific install, replace `pip` with `pip3` in the above\ncommands. For additional installation help, guidance installing prerequisites,\nand (optionally) setting up virtual environments, see the\n[TensorFlow installation guide](https://www.tensorflow.org/install).\n\nNote: Since TensorFlow is now included as a dependency of the TensorFlow Ranking\npackage (in `setup.py`). If you wish to use different versions of TensorFlow\n(e.g., `tensorflow-gpu`), you may need to uninstall the existing verison and\nthen install your desired version:\n\n```shell\n$ pip uninstall tensorflow\n$ pip install tensorflow-gpu\n```\n\n### Installing from Source\n\n1.  To build TensorFlow Ranking locally, you will need to install:\n\n    *   [Bazel](https://docs.bazel.build/versions/master/install.html), an open\n        source build tool.\n\n        ```shell\n        $ sudo apt-get update && sudo apt-get install bazel\n        ```\n\n    *   [Pip](https://pypi.org/project/pip/), a Python package manager.\n\n        ```shell\n        $ sudo apt-get install python-pip\n        ```\n\n    *   [VirtualEnv](https://virtualenv.pypa.io/en/stable/installation/), a tool\n        to create isolated Python environments.\n\n        ```shell\n        $ pip install --user virtualenv\n        ```\n\n2.  Clone the TensorFlow Ranking repository.\n\n    ```shell\n    $ git clone https://github.com/tensorflow/ranking.git\n    ```\n\n3.  Build TensorFlow Ranking wheel file and store them in `/tmp/ranking_pip`\n    folder.\n\n    ```shell\n    $ cd ranking  # The folder which was cloned in Step 2.\n    $ bazel build //tensorflow_ranking/tools/pip_package:build_pip_package\n    $ bazel-bin/tensorflow_ranking/tools/pip_package/build_pip_package /tmp/ranking_pip\n    ```\n\n4.  Install the wheel package using pip. Test in virtualenv, to avoid clash with\n    any system dependencies.\n\n    ```shell\n    $ ~/.local/bin/virtualenv -p python3 /tmp/tfr\n    $ source /tmp/tfr/bin/activate\n    (tfr) $ pip install /tmp/ranking_pip/tensorflow_ranking*.whl\n    ```\n\n    In some cases, you may want to install a specific version of tensorflow,\n    e.g., `tensorflow-gpu` or `tensorflow==2.0.0`. To do so you can either\n\n    ```shell\n    (tfr) $ pip uninstall tensorflow\n    (tfr) $ pip install tensorflow==2.0.0\n    ```\n\n    or\n\n    ```shell\n    (tfr) $ pip uninstall tensorflow\n    (tfr) $ pip install tensorflow-gpu\n    ```\n\n5.  Run all TensorFlow Ranking tests.\n\n    ```shell\n    (tfr) $ bazel test //tensorflow_ranking/...\n    ```\n\n6.  Invoke TensorFlow Ranking package in python (within virtualenv).\n\n    ```shell\n    (tfr) $ python -c \"import tensorflow_ranking\"\n    ```\n\n## Running Scripts\n\nFor ease of experimentation, we also provide\n[a TFRecord example](https://github.com/tensorflow/ranking/blob/master/tensorflow_ranking/examples/tf_ranking_tfrecord.py)\nand\n[a LIBSVM example](https://github.com/tensorflow/ranking/blob/master/tensorflow_ranking/examples/tf_ranking_libsvm.py)\nin the form of executable scripts. This is particularly useful for\nhyperparameter tuning, where the hyperparameters are supplied as flags to the\nscript.\n\n### TFRecord Example\n\n1.  Set up the data and directory.\n\n    ```shell\n    MODEL_DIR=/tmp/tf_record_model && \\\n    TRAIN=tensorflow_ranking/examples/data/train_elwc.tfrecord && \\\n    EVAL=tensorflow_ranking/examples/data/eval_elwc.tfrecord && \\\n    VOCAB=tensorflow_ranking/examples/data/vocab.txt\n    ```\n\n2.  Build and run.\n\n    ```shell\n    rm -rf $MODEL_DIR && \\\n    bazel build -c opt \\\n    tensorflow_ranking/examples/tf_ranking_tfrecord_py_binary && \\\n    ./bazel-bin/tensorflow_ranking/examples/tf_ranking_tfrecord_py_binary \\\n    --train_path=$TRAIN \\\n    --eval_path=$EVAL \\\n    --vocab_path=$VOCAB \\\n    --model_dir=$MODEL_DIR \\\n    --data_format=example_list_with_context\n    ```\n\n### LIBSVM Example\n\n1.  Set up the data and directory.\n\n    ```shell\n    OUTPUT_DIR=/tmp/libsvm && \\\n    TRAIN=tensorflow_ranking/examples/data/train.txt && \\\n    VALI=tensorflow_ranking/examples/data/vali.txt && \\\n    TEST=tensorflow_ranking/examples/data/test.txt\n    ```\n\n2.  Build and run.\n\n    ```shell\n    rm -rf $OUTPUT_DIR && \\\n    bazel build -c opt \\\n    tensorflow_ranking/examples/tf_ranking_libsvm_py_binary && \\\n    ./bazel-bin/tensorflow_ranking/examples/tf_ranking_libsvm_py_binary \\\n    --train_path=$TRAIN \\\n    --vali_path=$VALI \\\n    --test_path=$TEST \\\n    --output_dir=$OUTPUT_DIR \\\n    --num_features=136 \\\n    --num_train_steps=100\n    ```\n\n### TensorBoard\n\nThe training results such as loss and metrics can be visualized using\n[Tensorboard](https://github.com/tensorflow/tensorboard/blob/master/README.md).\n\n1.  (Optional) If you are working on remote server, set up port forwarding with\n    this command.\n\n    ```shell\n    $ ssh <remote-server> -L 8888:127.0.0.1:8888\n    ```\n\n2.  Install Tensorboard and invoke it with the following commands.\n\n    ```shell\n    (tfr) $ pip install tensorboard\n    (tfr) $ tensorboard --logdir $OUTPUT_DIR\n    ```\n\n### Jupyter Notebook\n\nAn example jupyter notebook is available in\n`tensorflow_ranking/examples/handling_sparse_features.ipynb`.\n\n1.  To run this notebook, first follow the steps in installation to set up\n    `virtualenv` environment with tensorflow_ranking package installed.\n\n2.  Install jupyter within virtualenv.\n\n    ```shell\n    (tfr) $ pip install jupyter\n    ```\n\n3.  Start a jupyter notebook instance on remote server.\n\n    ```shell\n    (tfr) $ jupyter notebook tensorflow_ranking/examples/handling_sparse_features.ipynb \\\n            --NotebookApp.allow_origin='https://colab.research.google.com' \\\n            --port=8888\n    ```\n\n4.  (Optional) If you are working on remote server, set up port forwarding with\n    this command.\n\n    ```shell\n    $ ssh <remote-server> -L 8888:127.0.0.1:8888\n    ```\n\n5.  Running the notebook.\n\n    *   Start jupyter notebook on your local machine at\n        [http://localhost:8888/](http://localhost:8888/) and browse to the\n        ipython notebook.\n\n    *   An alternative is to use colaboratory notebook via\n        [colab.research.google.com](http://colab.research.google.com) and open\n        the notebook in the browser. Choose local runtime and link to port 8888.\n\n## References\n\n+   Rama Kumar Pasumarthi, Sebastian Bruch, Xuanhui Wang, Cheng Li, Michael\n    Bendersky, Marc Najork, Jan Pfeifer, Nadav Golbandi, Rohan Anil, Stephan\n    Wolf. _TF-Ranking: Scalable TensorFlow Library for Learning-to-Rank._\n    [KDD 2019.](https://ai.google/research/pubs/pub48160)\n\n+   Qingyao Ai, Xuanhui Wang, Sebastian Bruch, Nadav Golbandi, Michael\n    Bendersky, Marc Najork. _Learning Groupwise Scoring Functions Using Deep\n    Neural Networks._ [ICTIR 2019](https://ai.google/research/pubs/pub48348)\n\n+   Xuanhui Wang, Michael Bendersky, Donald Metzler, and Marc Najork. _Learning\n    to Rank with Selection Bias in Personal Search._\n    [SIGIR 2016.](https://ai.google/research/pubs/pub45286)\n\n+   Xuanhui Wang, Cheng Li, Nadav Golbandi, Mike Bendersky, Marc Najork. _The\n    LambdaLoss Framework for Ranking Metric Optimization_.\n    [CIKM 2018.](https://ai.google/research/pubs/pub47258)\n\n### Citation\n\nIf you use TensorFlow Ranking in your research and would like to cite it, we\nsuggest you use the following citation:\n\n    @inproceedings{TensorflowRankingKDD2019,\n       author = {Rama Kumar Pasumarthi and Sebastian Bruch and Xuanhui Wang and Cheng Li and Michael Bendersky and Marc Najork and Jan Pfeifer and Nadav Golbandi and Rohan Anil and Stephan Wolf},\n       title = {TF-Ranking: Scalable TensorFlow Library for Learning-to-Rank},\n       booktitle = {Proceedings of the 25th ACM SIGKDD International Conference on Knowledge Discovery and Data Mining},\n       year = {2019},\n       pages = {2970--2978},\n       location = {Anchorage, AK}\n    }\n",
+ "fonte": "readme",
+ "respostas": [
+  {
+   "por": "diffusiongemma-26b-a4b-it",
+   "resposta": {
+    "serve": "search",
+    "role": "Library for building Learning-to-Rank (LTR) models to optimize search result ordering.",
+    "place": [
+     "library"
+    ],
+    "mechanism": [
+     "other"
+    ],
+    "mcp": "no",
+    "windows": "no",
+    "portuguese": "no",
+    "license": "unknown",
+    "maturity": "stable",
+    "doubt": false,
+    "evidence": "library for Learning-to-Rank (LTR) techniques; optimize search result ordering"
+   }
+  },
+  {
+   "por": "gpt-oss-20b",
+   "resposta": {
+    "serve": "none",
+    "role": "",
+    "place": [
+     "n/a"
+    ],
+    "mechanism": [
+     "other"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "unknown",
+    "doubt": false,
+    "evidence": "TensorFlow Ranking is a library for Learning-to-Rank (LTR) techniques on the TensorFlow platform."
+   }
+  }
+ ],
+ "conferencia_sonnet": {
+  "chave": "gh:tensorflow/ranking",
+  "modelo": "claude-sonnet-5-5",
+  "ts": "2026-10-13T22:03:22Z",
+  "resultado": "corrige",
+  "conferencia": {
+   "resultado": "corrige",
+   "final": {
+    "mcp": "no",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "doubt": false,
+    "serve": "stack",
+    "role": "TensorFlow library for learning-to-rank models (losses, metrics, scoring functions)",
+    "place": [
+     "library"
+    ],
+    "mechanism": [
+     "reranker"
+    ],
+    "maturity": "unknown",
+    "evidence": "library for Learning-to-Rank (LTR) techniques on the TensorFlow platform; losses, MRR and NDCG metrics."
+   },
+   "o_que_mudou": [
+    "serve: search -> stack, training library not a search layer",
+    "mechanism: other -> reranker",
+    "windows: no -> unknown, README only gives Linux install",
+    "maturity: stable -> unknown"
+   ],
+   "nota": "Training library for rankers; relevant only if the hub trains its own reranker, which is heavy."
+  }
+ }
+}

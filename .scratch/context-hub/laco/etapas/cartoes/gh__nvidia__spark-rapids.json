@@ -1,0 +1,30 @@
+{
+ "chave": "gh:nvidia/spark-rapids",
+ "urls": [
+  "https://github.com/NVIDIA/spark-rapids"
+ ],
+ "tipos": [
+  "tool"
+ ],
+ "termos": [
+  "Spark RAPIDS",
+  "GPU Spark",
+  "RAPIDS Spark plugin",
+  "cuDF Spark"
+ ],
+ "mencoes": 1,
+ "familias": [
+  "nemotron"
+ ],
+ "primeira_onda": 5,
+ "nomes": [
+  "NVIDIA Spark RAPIDS Plugin"
+ ],
+ "resumos": [
+  "Plugin that accelerates Apache Spark SQL and DataFrame operations on GPUs using RAPIDS cuDF and cuML."
+ ],
+ "readme_status": "ok",
+ "readme_nome": "README.md",
+ "readme_cortado": false,
+ "readme": "# NVIDIA cuDF plugin for Apache Spark\nNOTE: For the latest stable [README.md](https://github.com/NVIDIA/cudf-spark/blob/main/README.md) ensure you are on the main branch.\n\nThe NVIDIA cuDF plugin for [Apache Spark](https://spark.apache.org) provides a plugin library that\nleverages GPUs to accelerate processing via the [cuDF](https://github.com/NVIDIA/cudf) (CUDA\nDataFrame) libraries.\n\nDocumentation on the current release can be found [here](https://nvidia.github.io/cudf-spark/).\n\nTo get started and try the plugin out use the [getting started guide](https://docs.nvidia.com/spark-rapids/user-guide/latest/getting-started/overview.html).\n\n[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/NVIDIA/cudf-spark)\n\nNote: The NVIDIA cuDF plugin for Apache Spark was formerly known as the RAPIDS Accelerator for\nApache Spark.  The RAPIDS name will be sunset over time.  GitHub links from `spark-rapids` will\nredirect to `cudf-spark`.  Artifact names will remain the same for now.\n\n## Compatibility\n\nThe SQL plugin tries to produce results that are bit for bit identical with Apache Spark.\nOperator compatibility is documented [here](./docs/compatibility.md)\n\n## Tuning\n\nTo get started tuning your job and get the most performance out of it please start with the\n[tuning guide](https://docs.nvidia.com/spark-rapids/user-guide/latest/tuning-guide.html).\n\n## Configuration\n\nThe plugin has a set of Spark configs that control its behavior and are documented\n[here](docs/configs.md).\n\n## Issues & Questions\n\nWe use github to track bugs, feature requests, and answer questions. File an\n[issue](https://github.com/NVIDIA/cudf-spark/issues/new/choose) for a bug or feature request. Ask\nor answer a question on the [discussion board](https://github.com/NVIDIA/cudf-spark/discussions).\n\n## Download\n\nThe jar files for the most recent release can be retrieved from the [download](https://nvidia.github.io/cudf-spark/docs/download.html)\npage.\n\n## Building From Source\n\nSee the [build instructions in the contributing guide](CONTRIBUTING.md#building-from-source).\n\n## Testing\n\nTests are described [here](tests/README.md).\n\n## Integration\nThe cuDF plugin provides some APIs for doing zero copy data transfer into other GPU enabled\napplications.  It is described\n[here](https://docs.nvidia.com/spark-rapids/user-guide/latest/additional-functionality/ml-integration.html).\n\nCurrently, we are working with XGBoost to try to provide this integration out of the box.\n\nYou may need to disable RMM caching when exporting data to an ML library as that library\nwill likely want to use all of the GPU's memory and if it is not aware of RMM it will not have\naccess to any of the memory that RMM is holding.\n\n## Qualification and Profiling tools\n\nThe Qualification and Profiling tools are available in the\n[NVIDIA/cudf-spark-tools](https://github.com/NVIDIA/cudf-spark-tools) repository.\n\nPlease refer to [Qualification tool documentation](https://docs.nvidia.com/spark-rapids/user-guide/latest/qualification/overview.html)\nand [Profiling tool documentation](https://docs.nvidia.com/spark-rapids/user-guide/latest/profiling/overview.html)\nfor more details on how to use the tools.\n\n## Dependency for External Projects\n\nIf you develop functionality on top of the cuDF plugin (we currently limit support to\nGPU-accelerated UDFs) we recommend you declare the distribution artifact as a `provided` dependency.\n\n```xml\n<dependency>\n    <groupId>com.nvidia</groupId>\n    <artifactId>rapids-4-spark_2.12</artifactId>\n    <version>26.12.0-SNAPSHOT</version>\n    <scope>provided</scope>\n</dependency>\n```\n"
+}

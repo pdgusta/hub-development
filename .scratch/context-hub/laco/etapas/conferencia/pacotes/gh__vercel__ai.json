@@ -1,0 +1,54 @@
+{
+ "chave": "gh:vercel/ai",
+ "nomes": [
+  "Recall MCP Server (by Vercel AI SDK ecosystem)"
+ ],
+ "urls": [
+  "https://github.com/vercel/ai/blob/main/packages/react/misc/examples/retrieval-mcp/README.md"
+ ],
+ "readme_cortado": false,
+ "readme": "packages/ai/README.md\n",
+ "fonte": "readme",
+ "respostas": [
+  {
+   "por": "nemotron-3-super-120b",
+   "resposta": {
+    "serve": "none",
+    "role": "",
+    "place": [
+     "n/a"
+    ],
+    "mechanism": [
+     "n/a"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "unknown",
+    "doubt": true,
+    "evidence": ""
+   }
+  },
+  {
+   "por": "qwen2.5-vl-72b",
+   "resposta": {
+    "serve": "search",
+    "role": "Facilitates retrieval of relevant passages for agents.",
+    "place": [
+     "inside_db_mcp"
+    ],
+    "mechanism": [
+     "other"
+    ],
+    "mcp": "yes",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "unknown",
+    "doubt": true,
+    "evidence": "agents must find the right passage without reading everything (keyword/BM25, semantic, hybrid, grep, graph...), over Markdown in Portuguese (pt-BR) and English, reachable by agents over MCP;"
+   }
+  }
+ ]
+}

@@ -1,0 +1,126 @@
+{
+  "envio": "d6f47073-e2be-4f3a-9823-23b19bac4350",
+  "tipo": "resposta",
+  "enviada": "2026-10-15T16:18:24-03:00",
+  "alvo": {
+    "tipo": "rodada",
+    "id": "2026-10-15-arquitetura-de-pastas-e-frontmatter-r16",
+    "titulo": "Índices, anexos e títulos, com a busca decidida"
+  },
+  "ticket": "12",
+  "substitui": null,
+  "rodada": {
+    "id": "2026-10-15-arquitetura-de-pastas-e-frontmatter-r16",
+    "base": "e65b8664fff552455a30f91ee6eec2e50e7404001edabc4b56dab64a59e17728",
+    "titulo": "Índices, anexos e títulos, com a busca decidida",
+    "ticket": "12",
+    "perguntas": [
+      {
+        "id": "indices-e-busca",
+        "titulo": "Como índices e busca se dividem",
+        "tipo": "escolha",
+        "recomendada": [
+          "A"
+        ],
+        "opcoes": [
+          {
+            "chave": "A",
+            "texto": "A busca é a porta para achar; o catálogo de blocos e o mapa do `AGENTS.md` da iniciativa dizem onde gravar. O `index.md` existe só na pasta que guarda arquivo que a busca não lê (prints, scripts, `.csv`, `.txt`, logs, zip), com uma linha por arquivo dizendo o que é. Pasta só de `.md`, mesmo que cresça, não tem `index.md`. O verificador do fim da resposta inscreve como \"sem descrição\" o arquivo que a busca não lê e não tem linha, e avisa a nota com YAML que a busca rejeitaria"
+          },
+          {
+            "chave": "B",
+            "texto": "Igual à A, mas o `index.md` existe também em toda pasta que cresce, mesmo só com `.md` (a sua correção na rodada \"Como o agente acha tudo\"), como sumário para navegar sem buscar"
+          },
+          {
+            "chave": "C",
+            "texto": "Só a busca, sem `index.md`. O verificador cobra só o texto dos anexos (pergunta abaixo) e o YAML válido; prints, scripts, `.csv` e `.txt` ficam invisíveis para a busca"
+          }
+        ],
+        "proposta": null
+      },
+      {
+        "id": "texto-dos-anexos",
+        "titulo": "Onde mora o texto extraído dos anexos",
+        "tipo": "escolha",
+        "recomendada": [
+          "A"
+        ],
+        "opcoes": [
+          {
+            "chave": "A",
+            "texto": "Num arquivo irmão, ao lado do anexo: `proposta-v2.pdf` ganha `proposta-v2.pdf.md`, com `title` (o nome do documento), `source` (o arquivo de origem) e `extractor` (Docling ou pandoc, com a versão) no frontmatter. Vale para PDF, Word, PowerPoint, Excel e HTML. Replica para a outra máquina e vai ao git com o resto. O anexo com texto dispensa linha no `index.md`"
+          },
+          {
+            "chave": "B",
+            "texto": "Numa pasta `extracted/` dentro da iniciativa, que repete o caminho de cada anexo (`extracted/inputs/proposta-v2.pdf.md`), com o mesmo frontmatter da A. Os blocos ficam só com os originais; a busca aponta para o original pelo campo `source`"
+          },
+          {
+            "chave": "C",
+            "texto": "Fora da vista que replica: cada máquina extrai o texto sozinha, numa pasta fora do git e do LiveSync, e a busca é configurada para lê-la (`OBSIDIAN_INCLUDE_PATTERNS`). Nada dobra no banco nem no GitHub, mas cada máquina gasta o tempo do Docling nos mesmos arquivos, e o texto não tem histórico"
+          }
+        ],
+        "proposta": null
+      },
+      {
+        "id": "titulos",
+        "titulo": "O título das notas do núcleo e os nomes alternativos da iniciativa",
+        "tipo": "escolha",
+        "recomendada": [
+          "A"
+        ],
+        "opcoes": [
+          {
+            "chave": "A",
+            "texto": "Os arquivos do núcleo ganham `title` com o nome da iniciativa (\"Retomada · VOEGOL cross-tenant\", \"Decisões · VOEGOL cross-tenant\"). A skill \"nova iniciativa\" os escreve, e o verificador completa o que faltar, como o `log/` de um mês novo, a partir do `title` da ficha. A ficha ganha o campo `aliases`: siglas, o nome no Loop, o nome antigo no vault"
+          },
+          {
+            "chave": "B",
+            "texto": "Só a ficha ganha `aliases`. Os arquivos do núcleo ficam sem `title`, e o agente que já sabe a iniciativa filtra a busca pela pasta dela"
+          },
+          {
+            "chave": "C",
+            "texto": "Nada muda: a ficha fica com os campos da rodada 14, e os arquivos do núcleo, sem frontmatter"
+          }
+        ],
+        "proposta": null
+      },
+      {
+        "id": "algo-mais",
+        "titulo": "Algo mais?",
+        "tipo": "texto",
+        "recomendada": [],
+        "opcoes": [],
+        "proposta": null
+      }
+    ]
+  },
+  "corpo_hash": "f98bd42631c0a104f24f007b73f66fbb575239de1a9be55e9930c181c5d8ce71",
+  "corpo": {
+    "tipo": "resposta",
+    "rodada": "2026-10-15-arquitetura-de-pastas-e-frontmatter-r16",
+    "base": "e65b8664fff552455a30f91ee6eec2e50e7404001edabc4b56dab64a59e17728",
+    "respostas": {
+      "indices-e-busca": {
+        "escolha": [
+          "B"
+        ],
+        "outra": null,
+        "comentario": null
+      },
+      "texto-dos-anexos": {
+        "escolha": [
+          "A"
+        ],
+        "outra": null,
+        "comentario": null
+      },
+      "titulos": {
+        "escolha": [
+          "A"
+        ],
+        "outra": null,
+        "comentario": null
+      }
+    }
+  }
+}

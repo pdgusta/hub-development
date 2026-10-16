@@ -1,0 +1,30 @@
+{
+ "chave": "web:xapian.org/docs/omega",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T21:08:38Z",
+ "resultado": "confirma",
+ "conferencia": {
+  "resultado": "confirma",
+  "final": {
+   "serve": "search",
+   "role": "Omega: Xapian-based website search application (indexer scriptindex, CGI front end); would need wrapping to reach agents.",
+   "place": [
+    "network_service"
+   ],
+   "mechanism": [
+    "full_text"
+   ],
+   "mcp": "unknown",
+   "windows": "unknown",
+   "portuguese": "unknown",
+   "license": "unknown",
+   "maturity": "unknown",
+   "doubt": false,
+   "evidence": "Docs index: scriptindex, CGI Parameters, OmegaScript, Term Prefixes, Character Encodings"
+  },
+  "o_que_mudou": [
+   "doubt: true -> false, the docs index is enough to classify"
+  ],
+  "nota": "Full-text search app over Xapian; a possible keyword layer but needs an MCP wrapper."
+ }
+}

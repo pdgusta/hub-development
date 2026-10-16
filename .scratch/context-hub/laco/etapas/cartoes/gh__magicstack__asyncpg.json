@@ -1,0 +1,29 @@
+{
+ "chave": "gh:magicstack/asyncpg",
+ "urls": [
+  "https://github.com/MagicStack/asyncpg"
+ ],
+ "tipos": [
+  "library"
+ ],
+ "termos": [
+  "PostgreSQL",
+  "asyncio",
+  "database"
+ ],
+ "mencoes": 1,
+ "familias": [
+  "dots3"
+ ],
+ "primeira_onda": 5,
+ "nomes": [
+  "asyncpg"
+ ],
+ "resumos": [
+  "Asyncio PostgreSQL database driver."
+ ],
+ "readme_status": "ok",
+ "readme_nome": "README.rst",
+ "readme_cortado": false,
+ "readme": "asyncpg -- A fast PostgreSQL Database Client Library for Python/asyncio\n=======================================================================\n\n.. image:: https://github.com/MagicStack/asyncpg/workflows/Tests/badge.svg\n   :target: https://github.com/MagicStack/asyncpg/actions?query=workflow%3ATests+branch%3Amaster\n   :alt: GitHub Actions status\n.. image:: https://img.shields.io/pypi/v/asyncpg.svg\n   :target: https://pypi.python.org/pypi/asyncpg\n\n**asyncpg** is a database interface library designed specifically for\nPostgreSQL and Python/asyncio.  asyncpg is an efficient, clean implementation\nof PostgreSQL server binary protocol for use with Python's ``asyncio``\nframework.  You can read more about asyncpg in an introductory\n`blog post <http://magic.io/blog/asyncpg-1m-rows-from-postgres-to-python/>`_.\n\nasyncpg requires Python 3.9 or later and is supported for PostgreSQL\nversions 9.5 to 19.  Other PostgreSQL versions or other databases\nimplementing the PostgreSQL protocol *may* work, but are not being\nactively tested.\n\n\nDocumentation\n-------------\n\nThe project documentation can be found\n`here <https://magicstack.github.io/asyncpg/current/>`_.\n\n\nPerformance\n-----------\n\nIn our testing asyncpg is, on average, **5x** faster than psycopg3.\n\n.. image:: https://raw.githubusercontent.com/MagicStack/asyncpg/master/performance.png?fddca40ab0\n    :target: https://gistpreview.github.io/?0ed296e93523831ea0918d42dd1258c2\n\nThe above results are a geometric mean of benchmarks obtained with PostgreSQL\n`client driver benchmarking toolbench <https://github.com/MagicStack/pgbench>`_\nin June 2023 (click on the chart to see full details).\n\n\nFeatures\n--------\n\nasyncpg implements PostgreSQL server protocol natively and exposes its\nfeatures directly, as opposed to hiding them behind a generic facade\nlike DB-API.\n\nThis enables asyncpg to have easy-to-use support for:\n\n* **prepared statements**\n* **scrollable cursors**\n* **partial iteration** on query results\n* automatic encoding and decoding of composite types, arrays,\n  and any combination of those\n* straightforward support for custom data types\n\n\nInstallation\n------------\n\nasyncpg is available on PyPI.  When not using GSSAPI/SSPI authentication it\nhas no dependencies.  Use pip to install::\n\n    $ pip install asyncpg\n\nIf you need GSSAPI/SSPI authentication, use::\n\n    $ pip install 'asyncpg[gssauth]'\n\nFor more details, please `see the documentation\n<https://magicstack.github.io/asyncpg/current/installation.html>`_.\n\n\nBasic Usage\n-----------\n\n.. code-block:: python\n\n    import asyncio\n    import asyncpg\n\n    async def run():\n        conn = await asyncpg.connect(user='user', password='password',\n                                     database='database', host='127.0.0.1')\n        values = await conn.fetch(\n            'SELECT * FROM mytable WHERE id = $1',\n            10,\n        )\n        await conn.close()\n\n    asyncio.run(run())\n\n\nLicense\n-------\n\nasyncpg is developed and distributed under the Apache 2.0 license.\n"
+}

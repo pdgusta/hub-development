@@ -1,0 +1,55 @@
+{
+ "chave": "web:temporal.io",
+ "nomes": [
+  "NATS + Temporal (for workflows)"
+ ],
+ "urls": [
+  "https://temporal.io/"
+ ],
+ "readme_cortado": false,
+ "readme": "[Durable Execution Solutions | Temporal]\n\nSkip to main content\n\nWe’re heading to Vegas for AWS re:Invent | Booth #738 | Book a meeting › \n\nThe world’s best AI runs on Temporal \n\nBuild applications the way OpenAI, Lovable, Replit, Cursor, and Retool do with our open-source platform. Add agentic capabilities to any application with your framework of choice. \n Get Started for Free Run Locally \n\nWrite code as if failure doesn’t exist \n\nDistributed systems break, APIs fail, networks flake, and services crash. That’s not your problem anymore. Managing reliability shouldn’t mean constant firefighting.\n\nTemporal Workflows automatically capture state at every step, and in the event of failure, can pick up exactly where they left off.\n\nNo lost progress, no orphaned processes, and no manual recovery required. \n\nYou have to see it to believe it \n\nTemporal doesn’t work like anything you’ve used before. Watch how we guarantee the Durable Execution of your code in the face of any failure. \n Watch a Demo \n\nHow It Works \nCreate failproof apps using our SDKs \n\nWrite your business logic in the programming languages you already use with our native SDKs. Your days of writing reconciliation logic or boilerplate code are over. \n\nBuild Workflows that handle failures for you \n\nWrite your business logic as code as a Temporal Workflow. Workflows might involve moving money between bank accounts, processing orders, deploying cloud infrastructure, training an AI model, or something else entirely.\n\nBecause the full running state of a Workflow is durable and fault tolerant by default, your business logic can be recovered, replayed, or paused at any point. \n\nWrite Activities to handle and retry failure-prone logic \n\nAPIs fail, networks time out, and users abandon sessions.\n\nTemporal treats these interactions as Activities: functions that retry automatically and recover seamlessly. \n\nReplace your brittle state machines \n\nThe Temporal Service persists the state of your application and has built-in retries, task queues, signals, and timers, to make sure your code always picks up where it left off.\n\nHost the Temporal Service yourself as part of the open-source project, or let us host it for you with Temporal Cloud. \n\nGet full visibility into your running code \n\nNo more wasting time sifting through logs. Get visibility into the exact state of each of your Workflow executions. \n\nCommon patterns and use cases \n\nAgents, MCP, & AI Pipelines \n\nDevelop agents that survive real-world chaos, reliable MCP & orchestrate training pipelines. \n\nHumans-in-the-Loop \n\nNo more duct-taping Workflows around human input: just clean, durable orchestration. \n\nCompensating Patterns (Saga) \n\nMake Saga easy: what if Saga was simply a try...catch? \n\nLong-running Workflows \n\nRun Workflows for days, weeks, or months without losing progress or adding complexity. \n\nOrder Fulfillment \n\nOne bad service shouldn’t break the cart. Temporal keeps the order moving. \n\nDurable Ledgers \n\nTrack transactions with code you can trust down to the last cent. \n\nCI/CD \n\nDeploy with confidence. Temporal gives you clean retries, rollbacks, and visibility. \n\nCustomer Acquisition \n\nRoute leads, onboard users, and engage customers without dropped steps or hacks. \n\nDAG \n\nDon’t glue together DAGs with bash and hope. Temporal does it right. \n\nGlobal enterprises and top startups choose Temporal \n\nNVIDIA manages their GPU fleet across clouds with Temporal \n Watch NVIDIA's talk \n\nSalesforce migrated their monolith to Temporal \n Watch Salesforce's talk \n\nTwilio left their homegrown systems for Temporal Cloud \n Watch Twilio's talk \n\nDescript improved their AI uptime with Temporal \n Watch Descript's talk \n\nDurable execution is a core requirement for modern AI systems, and Temporal offers a compelling platform to help build it in from the start. As AI systems become more complex and long-running, durability is as important as performance. Temporal plays a role in how we think about reliable execution at scale, supporting teams in focusing on product development. \n\nVenkat Venkataramani \nVP of App Infrastructure, OpenAI • Former CEO & Co-founder of Rockset \n\nTemporal's technology satisfied all of these requirements out of the box and allowed our developers to focus on business logic.\nWithout Temporal's technology, we would've spent a significant amount of time rebuilding Temporal and would've very likely done a worse job. \n\nMitchell Hashimoto \nCo-founder, Superlogical & HashiCorp \n\nCommitted to the open-source community \n100% open-source \n\nMIT-licensed, built in the open, and backed by a thriving developer community. \n\n23,668 Stars \n\nAs Reliable as Gravity \nFully battle tested, 9 years in production \n\nTemporal was built with over 20 years of development from the minds behind AWS SQS, AWS SWF, Azure Durable functions, and the Cadence project that powers Uber. \n\nDeploy it your way \nOne platform, two great hosting paths \n\nTemporal is an open-source project that you are free to use and host in your own environment. You can also let us host the Temporal Service for you with Temporal Cloud. Either way, we never see your code.\n\nSign up for Temporal Cloud and get $150 in free credits › \n\nBuild invincible applications \n Get started Code Base Join our community",
+ "fonte": "site",
+ "respostas": [
+  {
+   "por": "gemma-4-31b",
+   "resposta": {
+    "serve": "stack",
+    "role": "Durable execution and orchestration for agents and AI pipelines",
+    "place": [
+     "network_service"
+    ],
+    "mechanism": [
+     "other"
+    ],
+    "mcp": "yes",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "MIT",
+    "maturity": "stable",
+    "doubt": false,
+    "evidence": "Develop agents that survive real-world chaos, reliable MCP & orchestrate training pipelines."
+   }
+  },
+  {
+   "por": "mistral-code-fim",
+   "resposta": {
+    "serve": "stack",
+    "role": "workflow orchestration for agents",
+    "place": [
+     "network_service",
+     "inside_db_mcp"
+    ],
+    "mechanism": [
+     "other"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "MIT",
+    "maturity": "stable",
+    "doubt": true,
+    "evidence": "Agents, MCP, & AI Pipelines; 9 years in production; MIT-licensed"
+   }
+  }
+ ]
+}

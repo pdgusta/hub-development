@@ -1,0 +1,30 @@
+{
+ "chave": "web:django-ninja.dev",
+ "urls": [
+  "https://django-ninja.dev/"
+ ],
+ "tipos": [
+  "library"
+ ],
+ "termos": [
+  "FastAPI for Django",
+  "Pydantic",
+  "Async API"
+ ],
+ "mencoes": 1,
+ "familias": [
+  "gemini"
+ ],
+ "primeira_onda": 5,
+ "nomes": [
+  "django-ninja"
+ ],
+ "resumos": [
+  "型安全なAPIを高速に構築でき、MCPのJSONスキーマ定義と親和性が高いDjango用APIフレームワーク。"
+ ],
+ "fonte": "site",
+ "readme_status": "ok",
+ "readme_nome": "https://django-ninja.dev/",
+ "readme_cortado": false,
+ "readme": "[Django Ninja]\n\nSkip to content\n\nDjango Ninja - Fast Django REST Framework¶\n\n RUSSIA INVADED UKRAINE - Please read\n\nDjango Ninja is a web framework for building APIs with Django and Python 3.6+ type hints.\n\nKey features:\n\nEasy: Designed to be easy to use and intuitive.\n\nFAST execution: Very high performance thanks to Pydantic and async support. \n\nFast to code: Type hints and automatic docs lets you focus only on business logic.\n\nStandards-based: Based on the open standards for APIs: OpenAPI (previously known as Swagger) and JSON Schema.\n\nDjango friendly: (obviously) has good integration with the Django core and ORM.\n\nProduction ready: Used by multiple companies on live projects (If you use Django Ninja and would like to publish your feedback, please email [email protected]).\n\nBenchmarks:\n\nInstallation¶\n\npip install django-ninja\n\nQuick Example¶\n\nStart a new Django project (or use an existing one)\n\ndjango-admin startproject apidemo\n\nin urls.py\n\nfrom django.contrib import admin\nfrom django.urls import path\nfrom ninja import NinjaAPI\n\napi = NinjaAPI()\n\n@api.get(\"/add\")\ndef add(request, a: int, b: int):\n return {\"result\": a + b}\n\nurlpatterns = [\n path(\"admin/\", admin.site.urls),\n path(\"api/\", api.urls),\n]\n\nNow, run it as usual:\n\n./manage.py runserver\n\nNote: You don't have to add Django Ninja to your installed apps for it to work.\n\nCheck it¶\n\nOpen your browser at http://127.0.0.1:8000/api/add?a=1&b=2\n\nYou will see the JSON response as:\n\n{\"result\": 3}\n\nNow you've just created an API that:\n\nreceives an HTTP GET request at /api/add\n\ntakes, validates and type-casts GET parameters a and b\n\ndecodes the result to JSON\n\ngenerates an OpenAPI schema for defined operation\n\nInteractive API docs¶\n\nNow go to http://127.0.0.1:8000/api/docs\n\nYou will see the automatic, interactive API documentation (provided by the OpenAPI / Swagger UI or Redoc):\n\nRecap¶\n\nIn summary, you declare the types of parameters, body, etc. once only, as function parameters. \n\nYou do that with standard modern Python types.\n\nYou don't have to learn a new syntax, the methods or classes of a specific library, etc.\n\nJust standard Python 3.6+.\n\nFor example, for an int:\n\na: int\n\nor, for a more complex Item model:\n\nclass Item(Schema):\n foo: str\n bar: float\n\ndef operation(a: Item):\n ...\n\n... and with that single declaration you get:\n\nEditor support, including:\n\nCompletion\n\nType checks\n\nValidation of data:\n\nAutomatic and clear errors when the data is invalid\n\nValidation, even for deeply nested JSON objects\n\nConversion of input data coming from the network, to Python data and types, and reading from:\n\nJSON\n\nPath parameters\n\nQuery parameters\n\nCookies\n\nHeaders\n\nForms\n\nFiles\n\nAutomatic, interactive API documentation\n\nThis project was heavily inspired by FastAPI (developed by Sebastián Ramírez)\n\n Back to top"
+}

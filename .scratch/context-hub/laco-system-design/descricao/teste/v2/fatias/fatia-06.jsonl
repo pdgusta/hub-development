@@ -1,0 +1,24 @@
+{"n": 6, "pergunta": "Se o agente usa a camada de busca para solicitar um trecho de uma nota que está em uma pasta `clients/` protegida, mas o arquivo não está replicado, o que ocorre?", "tipo": "grupo"}
+{"n": 16, "pergunta": "Se um cliente conectado ao MCP do outro par tentar ler um arquivo da pasta `operations/` enquanto esta máquina está com o sincronizador desligado, o que o outro par mostra ao cliente e como ele lida com a falta de atualização?", "tipo": "onde-vive"}
+{"n": 26, "pergunta": "Se um agente tentar gravar uma nova skill diretamente no acervo do maestro, qual é o processo de segurança para que isso seja aceado?", "tipo": "se-x"}
+{"n": 36, "pergunta": "Se o sincronizador desta máquina falhar ao tentar enviar uma alteração no arquivo `AGENTS.md` para o outro par, o que o outro par faz com a versão que tinha antes da falha?", "tipo": "onde-vive"}
+{"n": 46, "pergunta": "Quando o maestro decide replicar um contrato do hub para uma equipe, quem valida que o contrato está dentro do acervo aprovado?", "tipo": "responsavel"}
+{"n": 56, "pergunta": "Em que ordem acontece que a máquina pessoal perde a conexão de rede por mais de 15 minutos, o sincronizador para e a vigia envia notificação?", "tipo": "ordem"}
+{"n": 66, "pergunta": "Se o MCP do banco ficar indisponível durante uma gravação de um recruta, como o sistema assegura que a versão lida anteriormente não seja sobrescrita por erro?", "tipo": "falha"}
+{"n": 76, "pergunta": "Quem percebe que um agente novo, ao iniciar sessão via porta de entrada “Maestri”, não tem as skills do Contrato do hub carregadas por falha de link simbólico?", "tipo": "quem-usa"}
+{"n": 86, "pergunta": "Quando eu recupero o hub a partir do GitHub privado, o que acontece com as mudanças que estavam apenas no banco local?", "tipo": "quando"}
+{"n": 96, "pergunta": "O que o agente de código não faz ao tentar ler o contrato do hub (`AGENTS.md`) se ele está sendo executado em um sandbox sem chaves de acesso?", "tipo": "o-que-nao-faz"}
+{"n": 106, "pergunta": "Onde vive a notificação de que uma Colisão real travou a replicação de uma nota essencial para o recruta trabalhar, se o Vigia avisa no Windows mas o maestro roda headless num sandbox remoto?", "tipo": "onde-vive"}
+{"n": 116, "pergunta": "Onde a **camada de busca** guarda os embeddings quando a ferramenta escolhida para gerá-los falha e precisa ser substituída por outra em uma das máquinas?", "tipo": "onde-vive"}
+{"n": 126, "pergunta": "Por que o **GitHub privado** faz backup diário do hub inteiro, em vez de só sincronizar as mudanças como o Tailscale faz entre as máquinas?", "tipo": "por-que"}
+{"n": 136, "pergunta": "Caso duas máquinas diferentes criem simultaneamente uma nota com o mesmo identificador em uma mesma raiz, o MCP do banco gera um conflito ou cria duas notas distintas?", "tipo": "grupo"}
+{"n": 146, "pergunta": "Quem é responsável por decidir qual ferramenta será usada na Camada de busca?", "tipo": "responsavel"}
+{"n": 156, "pergunta": "Por que os arquivos de uma iniciativa de cliente moram em uma casa só e não são espalhados pelo hub?", "tipo": "por-que"}
+{"n": 166, "pergunta": "O que o MCP do banco não faz se a versão da nota que eu li mudou enquanto eu processava a edição?", "tipo": "o-que-nao-faz"}
+{"n": 176, "pergunta": "Quando o outro par faz uma alteração que gera uma colisão “real” (divergência), como o seu par notifica o Gustavo e oferece a Tela de três vias para resolução?", "tipo": "responsavel"}
+{"n": 186, "pergunta": "Se um arquivo Markdown maior que 200 MiB for criado na pasta `operations/` e o Sincronizador tentar replicá‑lo, o que acontece?", "tipo": "se-x"}
+{"n": 196, "pergunta": "Quem é responsável por gerenciar as chaves de acesso e a segurança da rede Tailscale que permite a replicação entre as máquinas?", "tipo": "responsavel"}
+{"n": 206, "pergunta": "Se o maestro recruta uma equipe de agentes e o sincronizador de uma máquina está parado há mais de 15 minutos sem o vigia avisar, o que acontece com a nota de retomada da equipe?", "tipo": "se-x"}
+{"n": 216, "pergunta": "O que muda no outro par se o sincronizador local tentar enviar um arquivo de 250 MiB que o Gustavo criou na máquina pessoal?", "tipo": "diferenca"}
+{"n": 226, "pergunta": "Onde o banco do context hub vive?", "tipo": "onde-vive"}
+{"n": 236, "pergunta": "O que o Maestro do Maestri não faz ao selecionar um Acervo do maestro que ainda não foi aprovado pelo Gustavo?", "tipo": "o-que-nao-faz"}

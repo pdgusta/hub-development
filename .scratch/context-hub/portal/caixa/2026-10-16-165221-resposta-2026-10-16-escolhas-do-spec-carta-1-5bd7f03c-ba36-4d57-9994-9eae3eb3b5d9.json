@@ -1,0 +1,204 @@
+{
+  "envio": "5bd7f03c-ba36-4d57-9994-9eae3eb3b5d9",
+  "tipo": "resposta",
+  "enviada": "2026-10-16T16:52:21-03:00",
+  "alvo": {
+    "tipo": "rodada",
+    "id": "2026-10-16-escolhas-do-spec-carta-1",
+    "titulo": "Escolhas do spec, carta 1: gravar e ler no banco"
+  },
+  "ticket": "16",
+  "substitui": null,
+  "rodada": {
+    "id": "2026-10-16-escolhas-do-spec-carta-1",
+    "base": "ef85348e43f1e758b47075b0b8288c7ccc6d2934a2240224d9e7ed0f8e1575cd",
+    "titulo": "Escolhas do spec, carta 1: gravar e ler no banco",
+    "ticket": "16",
+    "perguntas": [
+      {
+        "id": "conflito",
+        "titulo": "1. Conflito à vista",
+        "tipo": "escolha",
+        "recomendada": [
+          "A"
+        ],
+        "opcoes": [
+          {
+            "chave": "A",
+            "texto": "Aceitar: ver o conflito de dois jeitos, um aviso com as duas versões ao ler a nota e uma ferramenta que lista todos os conflitos abertos"
+          },
+          {
+            "chave": "B",
+            "texto": "Só o aviso ao ler a nota"
+          },
+          {
+            "chave": "C",
+            "texto": "Só a ferramenta que lista os conflitos"
+          }
+        ],
+        "proposta": null
+      },
+      {
+        "id": "cabeca",
+        "titulo": "2. A cabeça do contrato",
+        "tipo": "escolha",
+        "recomendada": [
+          "A"
+        ],
+        "opcoes": [
+          {
+            "chave": "A",
+            "texto": "Aceitar: um bloco marcado no `AGENTS.md`, relido a cada conexão, sem cópia, posto antes do texto que o MCP já traz; a manutenção só confere se ele existe e cabe em 2.000 caracteres"
+          },
+          {
+            "chave": "B",
+            "texto": "Relida, mas depois do texto que o MCP já traz (o Claude Code corta o fim e a cabeça pode chegar pela metade)"
+          },
+          {
+            "chave": "C",
+            "texto": "Um texto copiado e fixo na configuração do MCP (se o `AGENTS.md` mudar, a cópia fica velha)"
+          }
+        ],
+        "proposta": null
+      },
+      {
+        "id": "regra-curta",
+        "titulo": "3. A regra curta",
+        "tipo": "escolha",
+        "recomendada": [
+          "A"
+        ],
+        "opcoes": [
+          {
+            "chave": "A",
+            "texto": "Aceitar: \"antes de gravar, leia `AGENTS.md`\" em todas as ferramentas de gravação, e a segunda frase (\"grave com a versão lida; conflito = releia e refaça\") só nas que recebem a versão (gravar e editar); apagar e mover ficam com a guarda a definir"
+          },
+          {
+            "chave": "B",
+            "texto": "A segunda frase nas quatro ferramentas, mesmo nas que não recebem a versão"
+          },
+          {
+            "chave": "C",
+            "texto": "Só a primeira frase, em todas"
+          }
+        ],
+        "proposta": null
+      },
+      {
+        "id": "nome-estado",
+        "titulo": "4. O nome da ferramenta de estado",
+        "tipo": "escolha",
+        "recomendada": [
+          "A"
+        ],
+        "opcoes": [
+          {
+            "chave": "A",
+            "texto": "Aceitar: `estado_do_hub`, que devolve o estado da vigia e, sem arquivo, \"estado indisponível\" (nunca \"em ordem\")"
+          },
+          {
+            "chave": "B",
+            "texto": "Outro nome, em inglês como as vizinhas (diga qual no \"Algo mais?\")"
+          }
+        ],
+        "proposta": null
+      },
+      {
+        "id": "guiches",
+        "titulo": "5. Quantos guichês por máquina",
+        "tipo": "escolha",
+        "recomendada": [
+          "A"
+        ],
+        "opcoes": [
+          {
+            "chave": "A",
+            "texto": "Aceitar: dois por máquina, um de leitura e um de escrita, e o de escrita atende também o cliente pelo proxy (os dois juntos ainda não foram testados)"
+          },
+          {
+            "chave": "B",
+            "texto": "Três: um de escrita só para o cliente, separado do que os agentes da máquina usam"
+          }
+        ],
+        "proposta": null
+      },
+      {
+        "id": "caminho-embaralhado",
+        "titulo": "6. Cifra de ponta a ponta com o caminho embaralhado",
+        "tipo": "escolha",
+        "recomendada": [
+          "A"
+        ],
+        "opcoes": [
+          {
+            "chave": "A",
+            "texto": "Aceitar: o banco cifra o conteúdo e também o caminho das notas (como no teste de disco e banco sem o Obsidian); o MCP e a vigia usam a frase-senha para ler o caminho em claro"
+          },
+          {
+            "chave": "B",
+            "texto": "Cifrar só o conteúdo: o caminho fica legível no banco (nomes de clientes e de notas à vista para quem abrir o banco)"
+          }
+        ],
+        "proposta": null
+      },
+      {
+        "id": "algo-mais",
+        "titulo": "Algo mais?",
+        "tipo": "texto",
+        "recomendada": [],
+        "opcoes": [],
+        "proposta": null
+      }
+    ]
+  },
+  "corpo_hash": "160f264a7c326c5a2698786ae8d1d6f84b6be6093d7ee3912d34d083cc41613c",
+  "corpo": {
+    "tipo": "resposta",
+    "rodada": "2026-10-16-escolhas-do-spec-carta-1",
+    "base": "ef85348e43f1e758b47075b0b8288c7ccc6d2934a2240224d9e7ed0f8e1575cd",
+    "respostas": {
+      "conflito": {
+        "escolha": [
+          "A"
+        ],
+        "outra": null,
+        "comentario": null
+      },
+      "cabeca": {
+        "escolha": [
+          "A"
+        ],
+        "outra": null,
+        "comentario": null
+      },
+      "regra-curta": {
+        "escolha": [
+          "A"
+        ],
+        "outra": null,
+        "comentario": null
+      },
+      "nome-estado": {
+        "escolha": [
+          "A"
+        ],
+        "outra": null,
+        "comentario": null
+      },
+      "guiches": {
+        "escolha": [
+          "B"
+        ],
+        "outra": null,
+        "comentario": null
+      },
+      "caminho-embaralhado": {
+        "escolha": [
+          "A"
+        ],
+        "outra": null,
+        "comentario": null
+      }
+    }
+  }
+}

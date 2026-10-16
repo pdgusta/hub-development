@@ -1,0 +1,32 @@
+{
+ "chave": "gh:naver/splade",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T20:02:33Z",
+ "resultado": "confirma",
+ "conferencia": {
+  "resultado": "confirma",
+  "final": {
+   "serve": "search",
+   "role": "Modelo neural de recuperação esparsa (expansão lexical via BERT MLM) com treino, indexação e busca sobre índice invertido.",
+   "place": [
+    "library"
+   ],
+   "mechanism": [
+    "other",
+    "embeddings"
+   ],
+   "mcp": "no",
+   "windows": "unknown",
+   "portuguese": "unknown",
+   "license": "unknown",
+   "maturity": "unknown",
+   "doubt": false,
+   "evidence": "SPLADE is a neural retrieval model which learns query/document sparse expansion via the BERT MLM head; code to perform training, indexing and retrieval"
+  },
+  "o_que_mudou": [
+   "mcp: unknown -> no, README é só código de pesquisa em Python sem interface MCP",
+   "doubt: true -> false, README basta para decidir"
+  ],
+  "nota": "Recuperação esparsa aprendida, candidata a camada de busca, mas treinada em MS MARCO inglês e sem menção a português."
+ }
+}

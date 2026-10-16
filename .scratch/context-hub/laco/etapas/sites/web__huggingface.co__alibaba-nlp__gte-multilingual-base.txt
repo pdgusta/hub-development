@@ -1,0 +1,287 @@
+gte-multilingual-base
+
+The gte-multilingual-base model is the latest in the GTE (General Text Embedding) family of models, featuring several key attributes:
+
+High Performance: Achieves state-of-the-art (SOTA) results in multilingual retrieval tasks and multi-task representation model evaluations when compared to models of similar size.
+
+Training Architecture: Trained using an encoder-only transformers architecture, resulting in a smaller model size. Unlike previous models based on decode-only LLM architecture (e.g., gte-qwen2-1.5b-instruct), this model has lower hardware requirements for inference, offering a 10x increase in inference speed.
+
+Long Context: Supports text lengths up to 8192 tokens.
+
+Multilingual Capability: Supports over 70 languages.
+
+Elastic Dense Embedding: Support elastic output dense representation while maintaining the effectiveness of downstream tasks, which significantly reduces storage costs and improves execution efficiency.
+
+Sparse Vectors: In addition to dense representations, it can also generate sparse vectors.
+
+Paper: mGTE: Generalized Long-Context Text Representation and Reranking Models for Multilingual Text Retrieval
+
+ Model Information
+
+Model Size: 305M
+
+Embedding Dimension: 768
+
+Max Input Tokens: 8192
+
+ Usage
+
+It is recommended to install xformers and enable unpadding for acceleration,
+refer to enable-unpadding-and-xformers.
+
+How to use it offline: new-impl/discussions/2
+
+How to use with TEI: refs/pr/7
+
+ Get Dense Embeddings with Transformers
+
+# Requires transformers>=4.36.0
+
+import torch.nn.functional as F
+from transformers import AutoModel, AutoTokenizer
+
+input_texts = [
+ "what is the capital of China?",
+ "how to implement quick sort in python?",
+ "北京",
+ "快排算法介绍"
+]
+
+model_name_or_path = 'Alibaba-NLP/gte-multilingual-base'
+tokenizer = AutoTokenizer.from_pretrained(model_name_or_path)
+model = AutoModel.from_pretrained(model_name_or_path, trust_remote_code=True)
+
+# Tokenize the input texts
+batch_dict = tokenizer(input_texts, max_length=8192, padding=True, truncation=True, return_tensors='pt')
+
+outputs = model(**batch_dict)
+
+dimension=768 # The output dimension of the output embedding, should be in [128, 768]
+embeddings = outputs.last_hidden_state[:, 0][:dimension]
+
+embeddings = F.normalize(embeddings, p=2, dim=1)
+scores = (embeddings[:1] @ embeddings[1:].T) * 100
+print(scores.tolist())
+
+# [[0.3016996383666992, 0.7503870129585266, 0.3203084468841553]]
+
+ Use with sentence-transformers
+
+# Requires sentence-transformers>=3.0.0
+
+from sentence_transformers import SentenceTransformer
+
+input_texts = [
+ "what is the capital of China?",
+ "how to implement quick sort in python?",
+ "北京",
+ "快排算法介绍"
+]
+
+model_name_or_path="Alibaba-NLP/gte-multilingual-base"
+model = SentenceTransformer(model_name_or_path, trust_remote_code=True)
+embeddings = model.encode(input_texts, normalize_embeddings=True) # embeddings.shape (4, 768)
+
+# sim scores
+scores = model.similarity(embeddings[:1], embeddings[1:])
+
+print(scores.tolist())
+# [[0.301699697971344, 0.7503870129585266, 0.32030850648880005]]
+
+ Use with infinity
+
+Usage via docker and infinity, MIT Licensed.
+
+docker run --gpus all -v $PWD/data:/app/.cache -p "7997":"7997" \
+michaelf34/infinity:0.0.69 \
+v2 --model-id Alibaba-NLP/gte-multilingual-base --revision "main" --dtype float16 --batch-size 32 --device cuda --engine torch --port 7997
+
+ Use with Text Embeddings Inference (TEI)
+
+Usage via Docker and Text Embeddings Inference (TEI):
+
+CPU:
+
+docker run --platform linux/amd64 \
+ -p 8080:80 \
+ -v $PWD/data:/data \
+ --pull always \
+ ghcr.io/huggingface/text-embeddings-inference:cpu-1.7 \
+ --model-id Alibaba-NLP/gte-multilingual-base \
+ --dtype float16
+
+GPU:
+
+docker run --gpus all \
+ -p 8080:80 \
+ -v $PWD/data:/data \
+ --pull always \
+ ghcr.io/huggingface/text-embeddings-inference:1.7 \
+ --model-id Alibaba-NLP/gte-multilingual-base \
+ --dtype float16
+
+Then you can send requests to the deployed API via the OpenAI-compatible v1/embeddings route (more information about the OpenAI Embeddings API):
+
+curl https://0.0.0.0:8080/v1/embeddings \
+ -H "Content-Type: application/json" \
+ -d '{
+ "input": [
+ "what is the capital of China?",
+ "how to implement quick sort in python?",
+ "北京",
+ "快排算法介绍"
+ ],
+ "model": "Alibaba-NLP/gte-multilingual-base",
+ "encoding_format": "float"
+ }'
+
+ Use with custom code to get dense embeddings and sparse token weights
+
+# You can find the script gte_embedding.py in https://huggingface.co/Alibaba-NLP/gte-multilingual-base/blob/main/scripts/gte_embedding.py
+
+from gte_embedding import GTEEmbeddidng
+
+model_name_or_path = 'Alibaba-NLP/gte-multilingual-base'
+model = GTEEmbeddidng(model_name_or_path)
+query = "中国的首都在哪儿"
+
+docs = [
+ "what is the capital of China?",
+ "how to implement quick sort in python?",
+ "北京",
+ "快排算法介绍"
+]
+
+embs = model.encode(docs, return_dense=True,return_sparse=True)
+print('dense_embeddings vecs', embs['dense_embeddings'])
+print('token_weights', embs['token_weights'])
+pairs = [(query, doc) for doc in docs]
+dense_scores = model.compute_scores(pairs, dense_weight=1.0, sparse_weight=0.0)
+sparse_scores = model.compute_scores(pairs, dense_weight=0.0, sparse_weight=1.0)
+hybrid_scores = model.compute_scores(pairs, dense_weight=1.0, sparse_weight=0.3)
+
+print('dense_scores', dense_scores)
+print('sparse_scores', sparse_scores)
+print('hybrid_scores', hybrid_scores)
+
+# dense_scores [0.85302734375, 0.257568359375, 0.76953125, 0.325439453125]
+# sparse_scores [0.0, 0.0, 4.600879669189453, 1.570279598236084]
+# hybrid_scores [0.85302734375, 0.257568359375, 2.1497951507568356, 0.7965233325958252]
+
+ Evaluation
+
+We validated the performance of the gte-multilingual-base model on multiple downstream tasks, including multilingual retrieval, cross-lingual retrieval, long text retrieval, and general text representation evaluation on the MTEB Leaderboard, among others.
+
+ Retrieval Task
+
+Retrieval results on MIRACL and MLDR (multilingual), MKQA (crosslingual), BEIR and LoCo (English).
+
+Detail results on MLDR
+
+Detail results on LoCo
+
+ MTEB
+
+Results on MTEB English, Chinese, French, Polish
+
+More detailed experimental results can be found in the paper.
+
+ Cloud API Services
+
+In addition to the open-source GTE series models, GTE series models are also available as commercial API services on Alibaba Cloud.
+
+Embedding Models: Three versions of the text embedding models are available: text-embedding-v1/v2/v3, with v3 being the latest API service.
+
+ReRank Models: The gte-rerank model service is available.
+
+Note that the models behind the commercial APIs are not entirely identical to the open-source models.
+
+ Citation
+
+If you find our paper or models helpful, please consider cite:
+
+@inproceedings{zhang2024mgte,
+ title={mGTE: Generalized Long-Context Text Representation and Reranking Models for Multilingual Text Retrieval},
+ author={Zhang, Xin and Zhang, Yanzhao and Long, Dingkun and Xie, Wen and Dai, Ziqi and Tang, Jialong and Lin, Huan and Yang, Baosong and Xie, Pengjun and Huang, Fei and others},
+ booktitle={Proceedings of the 2024 Conference on Empirical Methods in Natural Language Processing: Industry Track},
+ pages={1393--1412},
+ year={2024}
+}
+
+Downloads last month 1,445,061 
+
+Safetensors 
+
+Model size 
+0.3B params 
+
+Tensor type 
+F16 
+· 
+
+Files info 
+
+ Model tree for Alibaba-NLP/gte-multilingual-base 
+
+Adapters 
+ 1 model
+
+Finetunes 
+ 106 models
+
+Quantizations 
+ 17 models 
+
+ Spaces using Alibaba-NLP/gte-multilingual-base 63 
+
+ Collection including Alibaba-NLP/gte-multilingual-base 
+
+General Text Embedding Models Released by Tongyi Lab of Alibaba Group • 20 items • Updated Mar 2 • 35 
+
+ Papers for Alibaba-NLP/gte-multilingual-base 
+
+ Paper • 2407.19669 • Published Jul 29, 2024 • 26 
+
+ Paper • 2402.07440 • Published Feb 12, 2024 • 1 
+
+ Paper • 2402.03216 • Published Feb 5, 2024 • 10 
+
+ Paper • 2210.09984 • Published Oct 18, 2022 • 2 
+
+ Paper • 2104.08663 • Published Apr 17, 2021 • 5 
+
+ Evaluation results 
+
+v_measure on MTEB 8TagsClustering test set self-reported 
+
+33.667
+
+cos_sim_spearman on MTEB AFQMC validation set self-reported 
+
+43.548
+
+cos_sim_spearman on MTEB ATEC test set self-reported 
+
+48.912
+
+accuracy on MTEB AllegroReviews test set self-reported 
+
+41.690
+
+v_measure on MTEB AlloProfClusteringP2P test set self-reported 
+
+54.202
+
+v_measure on MTEB AlloProfClusteringS2S test set self-reported 
+
+44.341
+
+map on MTEB AlloprofReranking test set self-reported 
+
+64.915
+
+ndcg_at_10 on MTEB AlloprofRetrieval test set self-reported 
+
+53.638 
+
+ Expand 405 evaluations

@@ -1,0 +1,32 @@
+{
+ "chave": "web:docs.couchdb.org/en/stable/api/document/attachments.html",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T21:45:38Z",
+ "resultado": "corrige",
+ "conferencia": {
+  "resultado": "corrige",
+  "final": {
+   "serve": "stack",
+   "role": "CouchDB attachment API: store, fetch and delete binary files on documents, with range requests",
+   "place": [
+    "network_service"
+   ],
+   "mechanism": [
+    "n/a"
+   ],
+   "mcp": "unknown",
+   "windows": "unknown",
+   "portuguese": "unknown",
+   "license": "unknown",
+   "maturity": "stable",
+   "doubt": false,
+   "evidence": "PUT/GET/DELETE /{db}/{docid}/{attname}; HTTP Range Requests supported"
+  },
+  "o_que_mudou": [
+   "role: Markdown attachments -> generic file attachments, README does not mention Markdown",
+   "place: drop inside_db_mcp and disk, it is an HTTP API",
+   "doubt: true -> false"
+  ],
+  "nota": "Relevant to how the hub stores binary files in CouchDB; no search value."
+ }
+}

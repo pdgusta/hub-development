@@ -1,0 +1,30 @@
+{
+ "chave": "web:elastic.co/guide/en/elasticsearch/client/java-rest/current/java-rest-high.html",
+ "urls": [
+  "https://www.elastic.co/guide/en/elasticsearch/client/java-rest/current/java-rest-high.html"
+ ],
+ "tipos": [
+  "library"
+ ],
+ "termos": [
+  "java client",
+  "REST high level",
+  "Java API"
+ ],
+ "mencoes": 1,
+ "familias": [
+  "gpt-oss"
+ ],
+ "primeira_onda": 4,
+ "nomes": [
+  "Elasticsearch Java High Level REST Client"
+ ],
+ "resumos": [
+  "Official Java client for building queries, ingest pipelines and filter aggregations programmatically."
+ ],
+ "fonte": "site",
+ "readme_status": "ok",
+ "readme_nome": "https://www.elastic.co/guide/en/elasticsearch/client/java-rest/current/java-rest-high.html",
+ "readme_cortado": false,
+ "readme": "[Java High Level REST Client | Java REST Client [7.17] | Elastic]\n\nWARNING: Deprecated in 7.15.0. \n\n The Java REST Client is deprecated in favor of the \n Java API Client.\n\n« Overview\n\nGetting started »\n\nElastic Docs\n›Java REST Client [7.17]\n\nJava High Level REST Clientedit\n\n IMPORTANT: This documentation is no longer updated. Refer to Elastic's version policy and the latest documentation.\n\nJava High Level REST Clientedit\n\nDeprecated in 7.15.0.\n\nThe High Level REST Client is deprecated in favour of the Java API Client.\n\nThe High Level Rest Client version 7.17 can work with Elasticsearch 8.x with compatibility mode enabled.\n\nThe Java High Level REST Client works on top of the Java Low Level REST client.\nIts main goal is to expose API specific methods, that accept request objects as\nan argument and return response objects, so that request marshalling and\nresponse un-marshalling is handled by the client itself.\n\nEach API can be called synchronously or asynchronously. The synchronous\nmethods return a response object, while the asynchronous methods, whose names\nend with the async suffix, require a listener argument that is notified\n(on the thread pool managed by the low level client) once a response or an\nerror is received.\n\nThe Java High Level REST Client depends on the Elasticsearch core project.\nIt accepts the same request arguments as the TransportClient and returns\nthe same response objects.\n\n« Overview\n\nGetting started »\n\nMost Popular\n\nVideo\n\nGet Started with Elasticsearch\n\nVideo\n\nIntro to Kibana\n\nVideo\n\nELK for Logs & Metrics"
+}

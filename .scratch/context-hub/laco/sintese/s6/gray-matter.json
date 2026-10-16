@@ -1,0 +1,54 @@
+{
+ "nome": "Markdown 解析器（如 gray-matter 或 frontmatter）",
+ "nome_canonico": "gray-matter (jonschlinkert/gray-matter)",
+ "chave": "gh:jonschlinkert/gray-matter",
+ "url": "https://github.com/jonschlinkert/gray-matter",
+ "serve": "stack",
+ "area": "markdown_frontmatter",
+ "identidade": "O nome era genérico (gray-matter ou frontmatter); a URL aponta gray-matter, verificado. As outras URLs do lote (gray-matter/gray-matter etc.) não eram o projeto.",
+ "windows": "yes (inferido): biblioteca JavaScript pura, install por npm, engines node >=6.0, sem dependência nativa. Sem CI Windows conferido.",
+ "mcp": "nao_aplicavel",
+ "portugues": "nao_verificado: lida com texto UTF-8 via js-yaml; o README não fala de idiomas.",
+ "markdown_frontmatter": "Lê front matter de string ou arquivo: YAML por padrão, também JSON, TOML e CoffeeScript, com delimitadores e engines custom; devolve data + content. Não divide por título.",
+ "atualizacao": "nao_aplicavel",
+ "embeddings_endpoint": "nao_aplicavel",
+ "recursos": "Biblioteca em processo; custo desprezível (número: nao_verificado).",
+ "licenca": "MIT",
+ "ultimo_release": "2019-01-11, 4.0.2 (tag); package.json no master diz 4.0.3",
+ "atividade": "último commit 2025-06-14",
+ "maturidade": "stable (madura, manutenção lenta)",
+ "encaixe": "Parser de frontmatter para um MCP ou script em Node que leia as notas do Obsidian. Conversa com o MCP e o LiveSync só pelos arquivos. Impedimento: depende do js-yaml 3.x e quase não tem release.",
+ "evidencias": [
+  {
+   "campo": "markdown_frontmatter",
+   "url": "https://raw.githubusercontent.com/jonschlinkert/gray-matter/master/README.md",
+   "citacao": "Parses YAML front matter by default, but also has support for YAML, JSON, TOML or Coffee Front-Matter, with options to set custom delimiters."
+  },
+  {
+   "campo": "windows",
+   "url": "https://raw.githubusercontent.com/jonschlinkert/gray-matter/master/package.json",
+   "citacao": "\"engines\": { \"node\": \">=6.0\" }; \"js-yaml\": \"^3.13.1\""
+  },
+  {
+   "campo": "licenca",
+   "url": "https://raw.githubusercontent.com/jonschlinkert/gray-matter/master/package.json",
+   "citacao": "\"license\": \"MIT\""
+  },
+  {
+   "campo": "ultimo_release",
+   "url": "https://github.com/jonschlinkert/gray-matter/releases.atom",
+   "citacao": "4.0.2, updated 2019-01-11T02:43:52Z"
+  },
+  {
+   "campo": "atividade",
+   "url": "https://github.com/jonschlinkert/gray-matter/commits/HEAD.atom",
+   "citacao": "updated 2025-06-14T20:27:38Z"
+  }
+ ],
+ "nao_verificado": [
+  "CI Windows",
+  "português",
+  "recursos em número",
+  "se existe release npm posterior a 4.0.2"
+ ]
+}

@@ -1,0 +1,66 @@
+{
+  "envio": "48ab1f38-5c28-48da-9a14-fa9eda190871",
+  "tipo": "resposta",
+  "enviada": "2026-10-15T20:42:48-03:00",
+  "alvo": {
+    "tipo": "rodada",
+    "id": "2026-10-15-roteamento-de-skills-r2",
+    "titulo": "Quais skills cada agente enxerga"
+  },
+  "ticket": "15",
+  "substitui": null,
+  "rodada": {
+    "id": "2026-10-15-roteamento-de-skills-r2",
+    "base": "a00fddae6745b19288b6f028b20f556c9a8d57c3a9464f9b2d48b8b3c81c937a",
+    "titulo": "Quais skills cada agente enxerga",
+    "ticket": "15",
+    "perguntas": [
+      {
+        "id": "escopo",
+        "titulo": "Quais skills cada agente enxerga",
+        "tipo": "escolha",
+        "recomendada": [
+          "A"
+        ],
+        "opcoes": [
+          {
+            "chave": "A",
+            "texto": "Em duas camadas. A junction global leva só as skills de uso geral (a busca, o FreeLLMAPI, o fluxo do Matt Pocock, a família `maestro-*` e as poucas que servem a qualquer trabalho). As skills de um papel ficam no acervo e entram só na pasta daquele papel, pela receita de setup. O kit tira do escopo global o que não é do hub (o GSD) e guarda uma cópia antes. A tabela de roteamento cobre as duas camadas"
+          },
+          {
+            "chave": "B",
+            "texto": "Tudo global: todas as skills do acervo pela junction, para todos os agentes, e a tabela de roteamento decide qual usar. Mais simples, mas cada agente carrega dezenas de descrições que não usa"
+          },
+          {
+            "chave": "C",
+            "texto": "Por iniciativa: cada iniciativa escolhe as suas no `maestro/` dela, além das de uso geral. Mais fino, mas mais uma lista para manter em cada iniciativa"
+          }
+        ],
+        "proposta": null
+      },
+      {
+        "id": "algo-mais",
+        "titulo": "Algo mais?",
+        "tipo": "texto",
+        "recomendada": [],
+        "opcoes": [],
+        "proposta": null
+      }
+    ]
+  },
+  "corpo_hash": "453d67584c864fd80cccdd0e61d4e0c3cdb49b67f07b669a9215ef30762b60c6",
+  "corpo": {
+    "tipo": "resposta",
+    "rodada": "2026-10-15-roteamento-de-skills-r2",
+    "base": "a00fddae6745b19288b6f028b20f556c9a8d57c3a9464f9b2d48b8b3c81c937a",
+    "respostas": {
+      "escopo": {
+        "escolha": [
+          "A"
+        ],
+        "outra": null,
+        "comentario": null
+      }
+    }
+  }
+}

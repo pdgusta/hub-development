@@ -1,0 +1,24 @@
+{"n": 6, "pergunta": "Se duas máquinas estão desconectadas da rede privada (Tailscale) por mais de 24 horas, como o **Vigia** e o **Sincronizador** lidam com arquivos em **divergência** quando a conexão é restabelecida e há alterações conflitantes em ambos os lados?", "tipo": "relacao"}
+{"n": 16, "pergunta": "Se o Gustavo alterar o Contrato do hub diretamente no disco, o que acontece com as máquinas pares?", "tipo": "se-x"}
+{"n": 26, "pergunta": "Uma nota de retomada de uma iniciativa como STRATA faz parte do grupo de arquivos que eu devo abrir obrigatoriamente no início de cada sessão?", "tipo": "grupo"}
+{"n": 36, "pergunta": "Quem é responsável por garantir que uma nota editada no Obsidian do Gustavo apareça no CouchDB da máquina pessoal?", "tipo": "responsavel"}
+{"n": 46, "pergunta": "Se eu precisar buscar um termo que está guardado na pasta não replicada, eu vou conseguir encontrá-lo?", "tipo": "se-x"}
+{"n": 56, "pergunta": "Por que os embeddings de busca rodam localmente nas duas máquinas em vez de usarem um serviço de nuvem?", "tipo": "por-que"}
+{"n": 66, "pergunta": "O que muda entre um cliente (sandbox) tentar ler uma nota via MCP do banco do par ligado enquanto o sincronizador desse par está descartando um arquivo binário grande demais, e o mesmo cliente tentar ler a mesma nota 10 minutos depois?", "tipo": "diferenca"}
+{"n": 76, "pergunta": "O 'Pasta não replicada' faz parte do grupo de componentes que vivem apenas em uma máquina?", "tipo": "grupo"}
+{"n": 86, "pergunta": "Se eu edito uma nota que está dentro de uma pasta que começa com ponto, a outra máquina sincroniza essa alteração ou a ignora?", "tipo": "responsavel"}
+{"n": 96, "pergunta": "O que acontece se um agente tentar gravar uma nota que já foi alterada por outra máquina, sem que o sync tenha atualizado a versão local?", "tipo": "diferenca"}
+{"n": 106, "pergunta": "Se o cliente permanece conectado enquanto a rede privada cai, qual a ordem de fallback que o hub utiliza para garantir que as alterações sejam sincronizadas ao reconectar?", "tipo": "ordem"}
+{"n": 116, "pergunta": "Se o **sincronizador** de uma máquina falhar ao tentar replicar um arquivo grande (acima de 200 MiB) e a outra máquina também estiver offline, como o sistema garante que o arquivo não seja perdido e quem deve intervir?", "tipo": "falha"}
+{"n": 126, "pergunta": "Se um **cliente** (computador externo sem cópia do hub) faz uma leitura no hub via **MCP do banco**, mas o par ligado a ele está desatualizado por falta de rede, o que o cliente vê e como o **vigia** alerta o Gustavo?", "tipo": "relacao"}
+{"n": 136, "pergunta": "A camada de busca está no grupo de ferramentas que ainda não têm uma escolha definitiva?", "tipo": "grupo"}
+{"n": 146, "pergunta": "Se o cliente tentar editar um arquivo do hub via a pair, o que acontece?", "tipo": "se-x"}
+{"n": 156, "pergunta": "Em que ordem acontece que o Sincronizador falha e o arquivo grande não viaja para a outra máquina?", "tipo": "ordem"}
+{"n": 166, "pergunta": "Onde vivem as skills dos agentes?", "tipo": "onde-vive"}
+{"n": 176, "pergunta": "Se eu deletar um arquivo de uma iniciativa de cliente no Obsidian, o sincronizador garante que ele também seja apagado no banco e na outra máquina?", "tipo": "falha"}
+{"n": 186, "pergunta": "O que o GitHub privado não faz se a conexão de upload falha repetidamente durante a cópia diária?", "tipo": "o-que-nao-faz"}
+{"n": 196, "pergunta": "O que eu faço se o vigia avisar de uma divergência que o hub não conseguiu resolver sozinho e eu ainda não vi no?", "tipo": "quem-usa"}
+{"n": 206, "pergunta": "Se o Gustavo editar o `AGENTS.md` (contrato do hub) na outra máquina e, ao mesmo tempo, um agente na minha máquina tentar usar uma skill desatualizada, como o MCP do banco garante que o agente receba a versão correta do contrato em vez de continuar com a antiga até o próximo sync?", "tipo": "ordem"}
+{"n": 216, "pergunta": "Se um arquivo da iniciativa TRF3 for excluído acidentalmente, quem pode restaurá-lo?", "tipo": "quem-usa"}
+{"n": 226, "pergunta": "Se o vigia detecta uma divergência não resolvida, como o outro par é notificado?", "tipo": "grupo"}
+{"n": 236, "pergunta": "Se a outra máquina detecta que o arquivo que recebeu possui metadados de versão conflitantes com o que já está no banco, qual é o processo de resolução?", "tipo": "responsavel"}

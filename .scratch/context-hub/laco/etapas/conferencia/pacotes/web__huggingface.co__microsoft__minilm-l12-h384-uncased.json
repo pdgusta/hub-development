@@ -1,0 +1,56 @@
+{
+ "chave": "web:huggingface.co/microsoft/minilm-l12-h384-uncased",
+ "nomes": [
+  "MiniLM"
+ ],
+ "urls": [
+  "https://huggingface.co/microsoft/MiniLM-L12-H384-uncased"
+ ],
+ "readme_cortado": false,
+ "readme": "[microsoft/MiniLM-L12-H384-uncased · Hugging Facegoogle-tensorflow]\n\nMiniLM: Small and Fast Pre-trained Models for Language Understanding and Generation\n\nMiniLM is a distilled model from the paper \"MiniLM: Deep Self-Attention Distillation for Task-Agnostic Compression of Pre-Trained Transformers\".\n\nPlease find the information about preprocessing, training and full details of the MiniLM in the original MiniLM repository.\n\nPlease note: This checkpoint can be an inplace substitution for BERT and it needs to be fine-tuned before use!\n\n English Pre-trained Models\n\nWe release the uncased 12-layer model with 384 hidden size distilled from an in-house pre-trained UniLM v2 model in BERT-Base size.\n\nMiniLMv1-L12-H384-uncased: 12-layer, 384-hidden, 12-heads, 33M parameters, 2.7x faster than BERT-Base\n\n Fine-tuning on NLU tasks\n\nWe present the dev results on SQuAD 2.0 and several GLUE benchmark tasks.\n\nModel\n#Param\nSQuAD 2.0\nMNLI-m\nSST-2\nQNLI\nCoLA\nRTE\nMRPC\nQQP\n\nBERT-Base\n109M\n76.8\n84.5\n93.2\n91.7\n58.9\n68.6\n87.3\n91.3\n\nMiniLM-L12xH384\n33M\n81.7\n85.7\n93.0\n91.5\n58.5\n73.3\n89.5\n91.3\n\n Citation\n\nIf you find MiniLM useful in your research, please cite the following paper:\n\n@misc{wang2020minilm,\n title={MiniLM: Deep Self-Attention Distillation for Task-Agnostic Compression of Pre-Trained Transformers},\n author={Wenhui Wang and Furu Wei and Li Dong and Hangbo Bao and Nan Yang and Ming Zhou},\n year={2020},\n eprint={2002.10957},\n archivePrefix={arXiv},\n primaryClass={cs.CL}\n}\n\nDownloads last month 54,593 \n\n Model tree for microsoft/MiniLM-L12-H384-uncased \n\nFinetunes \n 152 models\n\nQuantizations \n 11 models \n\n Spaces using microsoft/MiniLM-L12-H384-uncased 11 \n\n Papers for microsoft/MiniLM-L12-H384-uncased \n\n Paper • 2002.10957 • Published Feb 25, 2020 • 2 \n\n Paper • 1810.04805 • Published Oct 11, 2018 • 33",
+ "fonte": "site",
+ "respostas": [
+  {
+   "por": "llama-3.2-90b-vision",
+   "resposta": {
+    "serve": "search",
+    "role": "Language understanding and generation",
+    "place": [
+     "library"
+    ],
+    "mechanism": [
+     "embeddings"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "no",
+    "license": "unknown",
+    "maturity": "unknown",
+    "doubt": true,
+    "evidence": "None"
+   }
+  },
+  {
+   "por": "ministral-14b",
+   "resposta": {
+    "serve": "search",
+    "role": "lightweight embedding model for semantic search in Portuguese/English",
+    "place": [
+     "library",
+     "inside_db_mcp"
+    ],
+    "mechanism": [
+     "vector",
+     "embeddings"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "unknown",
+    "doubt": true,
+    "evidence": "README mentions 'English Pre-trained Models' and 'distilled from UniLM v2' but no explicit Portuguese support or MCP/Windows compatibility. Useful for embeddings/search layer ('MiniLM: Deep Self-Attention Distillation for Task-Agnostic Compression')."
+   }
+  }
+ ]
+}

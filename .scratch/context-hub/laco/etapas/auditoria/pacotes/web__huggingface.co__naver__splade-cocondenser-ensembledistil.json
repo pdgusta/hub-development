@@ -1,0 +1,92 @@
+{
+ "chave": "web:huggingface.co/naver/splade-cocondenser-ensembledistil",
+ "nomes": [
+  "naver/splade-cocondenser-ensembledistil"
+ ],
+ "urls": [
+  "https://huggingface.co/naver/splade-cocondenser-ensembledistil"
+ ],
+ "readme_cortado": false,
+ "readme": "[naver/splade-cocondenser-ensembledistil · Hugging Face]\n\nSPLADE CoCondenser EnsembleDistil\n\nSPLADE model for passage retrieval. For additional details, please visit:\n\npaper: https://arxiv.org/abs/2205.04733\n\ncode: https://github.com/naver/splade\n\nMRR@10 (MS MARCO dev)\nR@1000 (MS MARCO dev)\n\nsplade-cocondenser-ensembledistil\n38.3\n98.3\n\n Model Details\n\nThis is a SPLADE Sparse Encoder model. It maps sentences & paragraphs to a 30522-dimensional sparse vector space and can be used for semantic search and sparse retrieval.\n\n Model Description\n\nModel Type: SPLADE Sparse Encoder\n\nBase model: Luyu/co-condenser-marco\n\nMaximum Sequence Length: 512 tokens (256 for evaluation reproduction)\n\nOutput Dimensionality: 30522 dimensions\n\nSimilarity Function: Dot Product\n\n Full Model Architecture\n\nSparseEncoder(\n (0): MLMTransformer({'max_seq_length': 512, 'do_lower_case': False}) with MLMTransformer model: BertForMaskedLM \n (1): SpladePooling({'pooling_strategy': 'max', 'activation_function': 'relu', 'word_embedding_dimension': 30522})\n)\n\n Usage\n\n Direct Usage (Sentence Transformers)\n\nFirst install the Sentence Transformers library:\n\npip install -U sentence-transformers\n\nThen you can load this model and run inference.\n\nfrom sentence_transformers import SparseEncoder\n\n# Download from the 🤗 Hub\nmodel = SparseEncoder(\"naver/splade-cocondenser-ensembledistil\")\n# Run inference\nqueries = [\"what causes aging fast\"]\ndocuments = [\n \"UV-A light, specifically, is what mainly causes tanning, skin aging, and cataracts, UV-B causes sunburn, skin aging and skin cancer, and UV-C is the strongest, and therefore most effective at killing microorganisms. Again â\\x80\\x93 single words and multiple bullets.\",\n \"Answers from Ronald Petersen, M.D. Yes, Alzheimer's disease usually worsens slowly. But its speed of progression varies, depending on a person's genetic makeup, environmental factors, age at diagnosis and other medical conditions. Still, anyone diagnosed with Alzheimer's whose symptoms seem to be progressing quickly â\\x80\\x94 or who experiences a sudden decline â\\x80\\x94 should see his or her doctor.\",\n \"Bell's palsy and Extreme tiredness and Extreme fatigue (2 causes) Bell's palsy and Extreme tiredness and Hepatitis (2 causes) Bell's palsy and Extreme tiredness and Liver pain (2 causes) Bell's palsy and Extreme tiredness and Lymph node swelling in children (2 causes)\",\n]\nquery_embeddings = model.encode_query(queries)\ndocument_embeddings = model.encode_document(documents)\nprint(query_embeddings.shape, document_embeddings.shape)\n# [1, 30522] [3, 30522]\n\n# Get the similarity scores for the embeddings\nsimilarities = model.similarity(query_embeddings, document_embeddings)\nprint(similarities)\n# tensor([[ 9.9933, 10.8691, 3.4265]])\n\n Citation\n\nIf you use our checkpoint, please cite our work:\n\n@misc{https://doi.org/10.48550/arxiv.2205.04733,\n doi = {10.48550/ARXIV.2205.04733},\n url = {https://arxiv.org/abs/2205.04733},\n author = {Formal, Thibault and Lassance, Carlos and Piwowarski, Benjamin and Clinchant, Stéphane},\n keywords = {Information Retrieval (cs.IR), Computation and Language (cs.CL), FOS: Computer and information sciences, FOS: Computer and information sciences},\n title = {From Distillation to Hard Negative Sampling: Making Sparse Neural IR Models More Effective},\n publisher = {arXiv},\n year = {2022},\n copyright = {Creative Commons Attribution Non Commercial Share Alike 4.0 International}\n}\n\nDownloads last month 258,355 \n\n Model tree for naver/splade-cocondenser-ensembledistil \n\nFinetunes \n 5 models\n\nMerges \n 1 model\n\nQuantizations \n 2 models \n\n Dataset used to train naver/splade-cocondenser-ensembledistil \n\n Spaces using naver/splade-cocondenser-ensembledistil 24 \n\n Collection including naver/splade-cocondenser-ensembledistil \n\nOur SPLADE models • 4 items • Updated Jun 28, 2024 • 8 \n\n Paper for naver/splade-cocondenser-ensembledistil \n\n Paper • 2205.04733 • Published May 10, 2022 • 3",
+ "fonte": "site",
+ "respostas": [
+  {
+   "por": "ministral-14b",
+   "resposta": {
+    "serve": "search",
+    "role": "semantic sparse retrieval for Portuguese/English Markdown passages via MCP",
+    "place": [
+     "inside_db_mcp",
+     "network_service",
+     "library"
+    ],
+    "mechanism": [
+     "vector",
+     "hybrid",
+     "embeddings"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "CC-BY-NC-SA-4.0",
+    "maturity": "unknown",
+    "doubt": true,
+    "evidence": "SPLADE model for semantic search over text; hub needs hybrid search (BM25/semantic) for Portuguese/English Markdown. README lacks MCP/Windows/language support details."
+   }
+  },
+  {
+   "por": "gemma-4-31b",
+   "resposta": {
+    "serve": "search",
+    "role": "Sparse encoder for semantic search and passage retrieval",
+    "place": [
+     "library"
+    ],
+    "mechanism": [
+     "vector"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "unknown",
+    "doubt": false,
+    "evidence": "SPLADE model for passage retrieval... can be used for semantic search and sparse retrieval"
+   }
+  }
+ ],
+ "conferencia_sonnet": {
+  "chave": "web:huggingface.co/naver/splade-cocondenser-ensembledistil",
+  "modelo": "claude-sonnet-5-5",
+  "ts": "2026-10-13T21:31:35Z",
+  "resultado": "corrige",
+  "conferencia": {
+   "resultado": "corrige",
+   "final": {
+    "serve": "search",
+    "role": "SPLADE sparse encoder for passage retrieval (English MS MARCO); learned sparse retrieval",
+    "place": [
+     "library"
+    ],
+    "mechanism": [
+     "sparse",
+     "embeddings"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "unknown",
+    "doubt": false,
+    "evidence": "SPLADE Sparse Encoder, MS MARCO dev MRR@10 38.3; usable via sentence-transformers SparseEncoder"
+   },
+   "o_que_mudou": [
+    "doubt: true -> false",
+    "license: CC-BY-NC-SA-4.0 -> unknown, not in README text read",
+    "mechanism: vector/hybrid/embeddings -> sparse/embeddings, learned sparse vectors",
+    "place: dropped inside_db_mcp/network_service, README says library only"
+   ],
+   "nota": "English-trained MS MARCO sparse model; no Portuguese support stated, so weak fit for PT/EN notes."
+  }
+ }
+}

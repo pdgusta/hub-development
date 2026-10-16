@@ -1,0 +1,190 @@
+{
+  "envio": "3dc9cc9e-0c18-4276-835f-8b59f8c1ba8a",
+  "tipo": "resposta",
+  "enviada": "2026-10-15T14:50:42-03:00",
+  "alvo": {
+    "tipo": "rodada",
+    "id": "2026-10-15-laco-do-system-design-r7",
+    "titulo": "O que você faz na prática"
+  },
+  "ticket": "56",
+  "substitui": null,
+  "rodada": {
+    "id": "2026-10-15-laco-do-system-design-r7",
+    "base": "4025693250b6d44df77868d6bf538957c3ce7c825af1d22114c2b43452cd4e66",
+    "titulo": "O que você faz na prática",
+    "ticket": "56",
+    "perguntas": [
+      {
+        "id": "g1",
+        "titulo": "Suas máquinas ficam ligadas juntas no dia a dia? Você desliga, hiberna ou fecha o notebook à noite e fora do expediente?",
+        "tipo": "texto",
+        "recomendada": [],
+        "opcoes": [],
+        "proposta": null
+      },
+      {
+        "id": "g2",
+        "titulo": "Quando você pede a um agente para ler, alterar ou remover algo do hub, por onde pede no dia a dia: Claude Code na raiz, um workspace do Maestri, o Claude Desktop, o VS Code, outro?",
+        "tipo": "texto",
+        "recomendada": [],
+        "opcoes": [],
+        "proposta": null
+      },
+      {
+        "id": "g3",
+        "titulo": "Quando você cria uma nota nova no Obsidian, onde ela deve nascer: em `inbox/`, na pasta da iniciativa aberta, ou onde você clicar?",
+        "tipo": "texto",
+        "recomendada": [],
+        "opcoes": [],
+        "proposta": null
+      },
+      {
+        "id": "g4",
+        "titulo": "\"Remova isto\" para você quer dizer apagar ou arquivar? E quem decide que uma iniciativa terminou e roda a mudança para o `_archive/`: você, ou o agente quando percebe?",
+        "tipo": "texto",
+        "recomendada": [],
+        "opcoes": [],
+        "proposta": null
+      },
+      {
+        "id": "g5",
+        "titulo": "Você costuma editar no Obsidian uma nota que um agente está trabalhando ao mesmo tempo?",
+        "tipo": "texto",
+        "recomendada": [],
+        "opcoes": [],
+        "proposta": null
+      },
+      {
+        "id": "g6",
+        "titulo": "Você aceita que conteúdo de cliente vá para o repositório privado do GitHub na cópia diária, e para os modelos na nuvem que os agentes usam? Há iniciativa de cliente que não pode?",
+        "tipo": "texto",
+        "recomendada": [],
+        "opcoes": [],
+        "proposta": null
+      },
+      {
+        "id": "g7",
+        "titulo": "Que arquivos que não são texto (docx, xlsx, imagem, PDF) você edita nas duas máquinas?",
+        "tipo": "texto",
+        "recomendada": [],
+        "opcoes": [],
+        "proposta": null
+      },
+      {
+        "id": "g8",
+        "titulo": "Quem usa hoje um computador sem cópia do hub: só você numa sandbox ou máquina de passagem, ou também agentes de outras pessoas? Com que frequência?",
+        "tipo": "texto",
+        "recomendada": [],
+        "opcoes": [],
+        "proposta": null
+      },
+      {
+        "id": "g9",
+        "titulo": "Onde você quer ver um aviso do hub quando está só no Obsidian, sem sessão de agente aberta? A notificação do Windows basta?",
+        "tipo": "texto",
+        "recomendada": [],
+        "opcoes": [],
+        "proposta": null
+      },
+      {
+        "id": "g10",
+        "titulo": "Quantos agentes costumam trabalhar ao mesmo tempo na mesma iniciativa, na mesma máquina?",
+        "tipo": "texto",
+        "recomendada": [],
+        "opcoes": [],
+        "proposta": null
+      },
+      {
+        "id": "g11",
+        "titulo": "Quem cuida da operação: montar uma máquina nova, revogar a chave de uma máquina devolvida, responder um aviso, religar o que parou? Você mesmo, ou um agente com você vendo?",
+        "tipo": "texto",
+        "recomendada": [],
+        "opcoes": [],
+        "proposta": null
+      },
+      {
+        "id": "g12",
+        "titulo": "Em que situação você ligaria os embeddings do Google na busca?",
+        "tipo": "texto",
+        "recomendada": [],
+        "opcoes": [],
+        "proposta": null
+      },
+      {
+        "id": "g13",
+        "titulo": "O que você pede ao Claude Desktop sobre o hub: só perguntas, ou também alterações em notas?",
+        "tipo": "texto",
+        "recomendada": [],
+        "opcoes": [],
+        "proposta": null
+      },
+      {
+        "id": "g14",
+        "titulo": "Você quer chegar ao hub pelo celular ou pela web?",
+        "tipo": "texto",
+        "recomendada": [],
+        "opcoes": [],
+        "proposta": null
+      },
+      {
+        "id": "algo-mais",
+        "titulo": "Algo mais?",
+        "tipo": "texto",
+        "recomendada": [],
+        "opcoes": [],
+        "proposta": null
+      }
+    ]
+  },
+  "corpo_hash": "cacbf66a4fd480a97907ae2f0f310876f585d7db690cf009bfbe2868c95fc266",
+  "corpo": {
+    "tipo": "resposta",
+    "rodada": "2026-10-15-laco-do-system-design-r7",
+    "base": "4025693250b6d44df77868d6bf538957c3ce7c825af1d22114c2b43452cd4e66",
+    "respostas": {
+      "g1": {
+        "texto": "Sim, ficam ligadas juntas no dia a dia e eu raramente fecho ambos os notebooks fora do expediente."
+      },
+      "g2": {
+        "texto": "A porta principal continua sendo a sessão na raiz do context hub, mas podem surgir casos onde a sessão vai estar fora do hub e vai ser cliente dele. Nesse caso a sessão deve funcionar tal qual uma aberta na raíz, carregando os MCPs de busca e seguindo os padrões de como alterar arquivos e etc."
+      },
+      "g3": {
+        "texto": "raramente vou criar nota nova direto no obsidian, essa é a verdade, mas vou manter o padrão de criar no inbox/ e pedir a agentes para colocar no lugar certo. Vou criar no inbox mesmo que eu saiba que aquela nota deve ou ser padronizada devidamente e movida pra pasta correta, ou o conteúdo dela absorvido numa nota existente. Mas em qualquer caso ela vai só nascer no inbox."
+      },
+      "g4": {
+        "texto": "Remover vai significar mover pro '_archive/' por tempo determinado e se não surgir necessidade de recuperação (passar 30 dias), é porque pode ser removida tranquilamente. Eu posso pedir para remover do '_archive/' antes dos 30 dias ou pedir remoção diretamente. Os agentes só removem com essa minha permissão ou ao passar 30 dias."
+      },
+      "g5": {
+        "texto": "Não, impossível. Se acontecer eu aceito a colisão sem proteção."
+      },
+      "g6": {
+        "texto": "não existe iniciativa de cliente que não pode ir pro repo privado do github,"
+      },
+      "g7": {
+        "texto": "tínhamos tratado esse caso, você esqueceu."
+      },
+      "g8": {
+        "texto": "hoje um cliente sem cópia do hub pode ser e vai ser: eu numa sandbox, agentes meus numa sandbox, máquina de passagem. Frequência indefinida, a possibilidade existe."
+      },
+      "g9": {
+        "texto": "A notificação do windows basta."
+      },
+      "g10": {
+        "texto": "Eu costumo trabalhar isoladamente com 1 agente por iniciativa, em alguns casos o mesmo agente vai trabalhar em mais de uma iniciativa ou pasta do hub. Não quero proteção disso por enquanto."
+      },
+      "g11": {
+        "texto": "Majoritariamente um agente comigo vendo, exceto quando são ações que realmente só eu consigo executar."
+      },
+      "g12": {
+        "texto": "Eu naõ quero depender disso em toda busca por sentido, mas quero deixar como opção."
+      },
+      "g13": {
+        "texto": "Também alterações em notas e em arquivos."
+      },
+      "g14": {
+        "texto": "Por enquanto não. Pela 'web' eu entendo como um novo cliente (pela tailnet) que já estamos trabalhando para atender."
+      }
+    }
+  }
+}

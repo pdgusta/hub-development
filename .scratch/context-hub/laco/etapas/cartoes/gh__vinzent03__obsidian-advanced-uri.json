@@ -1,0 +1,43 @@
+{
+ "chave": "gh:vinzent03/obsidian-advanced-uri",
+ "urls": [
+  "https://github.com/Vinzent03/obsidian-advanced-uri",
+  "https://github.com/brederr/obsidian-advanced-uri"
+ ],
+ "tipos": [
+  "tool"
+ ],
+ "termos": [
+  "URI handler",
+  "programmatic control",
+  "uri avançado",
+  "link obsidian",
+  "parâmetros",
+  "obsidian-uri",
+  "advanced uri",
+  "obsidian plugin",
+  "obsidian://",
+  "obsidian-advanced-uri",
+  "vault-uri"
+ ],
+ "mencoes": 4,
+ "familias": [
+  "agnes",
+  "mistral",
+  "nemotron"
+ ],
+ "primeira_onda": 4,
+ "nomes": [
+  "Obsidian Advanced URI"
+ ],
+ "resumos": [
+  "A plugin for handling custom URIs to interact with Obsidian programmatically.",
+  "Estende os URIs do Obsidian para abrir notas com parâmetros de busca, filtros e ações personalizáveis.",
+  "Enables external apps to trigger Obsidian commands via a custom URI scheme, allowing invocation of search plugins and other functionality.",
+  "Community Obsidian plugin that exposes deep URI-based control over vault operations, file opening, and commands—often used as a bridge between external tools and Obsidian."
+ ],
+ "readme_status": "ok",
+ "readme_nome": "README.md",
+ "readme_cortado": false,
+ "readme": "# Advanced URI\n\nA plugin for [Obsidian](https://obsidian.md)\n\n📚 [Documentation](https://publish.obsidian.md/advanced-uri-doc)\n\n## Overview\n\n[Advanced URI](https://github.com/Vinzent03/obsidian-advanced-uri) allows you to control many different features in Obsidian just by opening some URIs. Because they are just text and don't require any mouse clicks or keyboard inputs, they are perfect to automate your Obsidian workflow.\n\nYou can for example\n\n- [open files, workspaces, headings, blocks, lines, and settings](https://publish.obsidian.md/advanced-uri-doc/Actions/Navigation)\n- [open files in tabs, splits, windows, popovers, or silently in the background](https://publish.obsidian.md/advanced-uri-doc/Concepts/Navigation%20Parameters)\n- [switch between reading, source, and live preview mode](https://publish.obsidian.md/advanced-uri-doc/Concepts/Navigation%20Parameters)\n- [edit, overwrite, append, prepend, and create files](https://publish.obsidian.md/advanced-uri-doc/Actions/Writing)\n- [append or prepend content to a specific heading, block, or line](https://publish.obsidian.md/advanced-uri-doc/Actions/Writing)\n- [write clipboard content to notes, including daily notes](https://publish.obsidian.md/advanced-uri-doc/Actions/Writing)\n- [open bookmarks](https://publish.obsidian.md/advanced-uri-doc/Actions/Bookmarks)\n- [automated search and replace in a file, including RegEx](https://publish.obsidian.md/advanced-uri-doc/Actions/Search)\n- [call Obsidian commands and plugin commands](https://publish.obsidian.md/advanced-uri-doc/Actions/Commands)\n- [edit, read, and focus frontmatter properties](https://publish.obsidian.md/advanced-uri-doc/Actions/Frontmatter)\n- [navigate using file paths, file names, aliases, daily notes, or frontmatter UIDs](https://publish.obsidian.md/advanced-uri-doc/Concepts/File%20identifiers)\n- [create robust links that keep working after notes are renamed using ID in properties](https://publish.obsidian.md/advanced-uri-doc/Concepts/File%20identifiers)\n- [focus canvas nodes and control the canvas viewport](https://publish.obsidian.md/advanced-uri-doc/Actions/Canvas)\n- [open Obsidian settings, plugin settings, themes, and community plugin pages](https://publish.obsidian.md/advanced-uri-doc/Actions/Settings%20navigation)\n- [check whether a file exists, update community plugins, or enable/disable plugins](https://publish.obsidian.md/advanced-uri-doc/Actions/Miscellaneous)\n\nPlease read the [documentation](https://publish.obsidian.md/advanced-uri-doc) for a detailed explanation.\n\n## Installation\n\n### From Obsidian\n\n1. Open `Settings -> Community plugins`.\n2. Disable `Restricted mode`.\n3. Install [Advanced URI](obsidian://show-plugin?id=obsidian-advanced-uri).\n\nIf the link does not work, open `Browse community plugins` and search for `Advanced URI`.\n\n4. Enable the plugin.\n\n### From GitHub\n\n1. Download the [latest release](https://github.com/Vinzent03/obsidian-advanced-uri/releases/latest).\n2. Move `manifest.json`, `styles.css` and `main.js` to `<vault>/.obsidian/plugins/obsidian-advanced-uri`.\n3. Reload Obsidian.\n4. Open `Settings -> Community plugins` and disable `Restricted mode`.\n5. Enable `Advanced URI`.\n\n## Basic Usage\n\nAdvanced URI uses the `obsidian://adv-uri` URI scheme. You pass parameters in the query string to tell Obsidian what to do.\n\nFor example, to open `Home Index/today.md`, encode the file path and use it as `filepath`:\n\n```uri\nobsidian://adv-uri?filepath=Home%20Index%2Ftoday\n```\n\nYou can launch these URIs in several ways:\n\n- Enter them in your browser address bar.\n- Use them in markdown links inside Obsidian.\n- Open them from scripts or a terminal.\n- Use the plugin's helper commands to copy generated URIs for files, daily notes, search and replace actions, commands, and canvas views.\n\nExample markdown link:\n\n```md\n[Open note](obsidian://adv-uri?filepath=Home%20Index%2Ftoday)\n```\n\nExample terminal command on Linux:\n\n```bash\nxdg-open \"obsidian://adv-uri?filepath=Home%20Index%2Ftoday\"\n```\n\nFor parameter details, encoding rules, and more actions, see the [full documentation](https://publish.obsidian.md/advanced-uri-doc).\n\n## Examples\n\n### Append content from the clipboard to today's daily note\n\n```uri\nobsidian://adv-uri?vault=<your-vault>&daily=true&clipboard=true&mode=append\n```\n\n### Export a file to PDF by calling the command \"Export to PDF\" via its command ID\n\n```uri\nobsidian://adv-uri?vault=<your-vault>&filepath=<your-file>&commandid=workspace%3Aexport-pdf\n```\n\n### Open heading in a file\n\n```uri\nobsidian://adv-uri?vault=<your-vault>&filepath=my-file&heading=Goal\n```\n\n### Open a note by alias or file name\n\n```uri\nobsidian://adv-uri?vault=<your-vault>&filename=Brain%20Dumps\n```\n\n### Append content below a heading in today's daily note\n\n```uri\nobsidian://adv-uri?vault=<your-vault>&daily=true&heading=Inbox&data=-%20New%20idea&mode=append\n```\n\n### Open a file silently without focusing it\n\n```uri\nobsidian://adv-uri?vault=<your-vault>&filepath=my-file&openmode=silent\n```\n\n### Reveal a file or folder in File Explorer\n\n```uri\nobsidian://adv-uri?vault=<your-vault>&filepath=Attachments&reveal=true\n```\n\n### Open the editor settings at a specific section\n\n```uri\nobsidian://adv-uri?vault=<your-vault>&settingid=editor&settingsection=Behavior\n```\n\n### Check whether a file exists\n\n```uri\nobsidian://adv-uri?vault=<your-vault>&filepath=my-file&exists=true\n```\n\nIf you find this plugin useful and would like to support its development, you can support me on [Ko-fi](https://Ko-fi.com/Vinzent).\n\n[![Ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/F1F195IQ5)\n"
+}

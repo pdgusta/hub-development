@@ -1,0 +1,85 @@
+{
+ "chave": "web:arangodb.com/docs/stable/http",
+ "nomes": [
+  "ArangoDB REST API"
+ ],
+ "urls": [
+  "https://www.arangodb.com/docs/stable/http/"
+ ],
+ "readme_cortado": false,
+ "readme": "[HTTP API Documentation • ArangoDB 3.11]\n\nArangoDB 3.11 reached End of Life (EOL) and is no longer supported.\nThis documentation is outdated. Please see the most recent stable version.\nHTTP API Documentation\nAll functionality of ArangoDB servers is provided via a RESTful API over the HTTP protocol, and you can call the API endpoints directly, via database drivers, or other tools\nArangoDB servers expose an application programming interface (API) for managing\nthe database system. It is based on the HTTP protocol that powers the\nworld wide web. All interactions with a server are ultimately carried out via\nthis HTTP API.\nYou can use the API by sending HTTP requests to the server directly, but the\nmore common way of communicating with the server is via a database driver.\nA driver abstracts the complexity of the API away by providing a simple\ninterface for your programming language or environment and handling things like\nauthentication, connection pooling, asynchronous requests, and multi-part replies\nin the background. You can also use ArangoDB’s web interface,\nthe arangosh shell, or other tools.\nThe API documentation is relevant for you in the following cases:\nYou want to build or extend a driver.\nYou want to utilize a feature that isn’t exposed by your driver or tool.\nYou need to send many requests and avoid any overhead that a driver or tool might add.\nYou operate a server instance and need to perform administrative actions via the API.\nYou are interested in how the low-level communication works.\nRESTful API \nThe API adheres to the design principles of REST \n(Representational State Transfer). A REST API is a specific type of HTTP API\nthat uses HTTP methods to represent operations on resources (mainly GET,\nPOST, PATCH, PUT, and DELETE), and resources are identified by URIs.\nA resource can be a database record, a server log, or any other data entity or\nobject. The communication between client and server is stateless.\nA request URL can look like this:\nhttp://localhost:8529/_db/DATABASE/_api/document/COLLECTION/KEY?returnOld=true&keepNull=false\nhttp is the scheme, which is https if you use TLS encryption\nhttp: is the protocol\nlocalhost is the hostname, which can be an IP address or domain name including subdomains\n8529 is the port\n/_db/DATABASE/_api/document/COLLECTION/KEY is the pathname\n?returnOld=true&keepNull=false is the search string\nreturnOld=true&keepNull=false is the query string\nThe HTTP API documentation mainly describes the available endpoints, like\nfor updating a document, creating a graph, and so on. Each endpoint description\nstarts with the HTTP method and the pathname, like PATCH /_api/document/{collection}/{key}.\nThe PATCH method is for updating, PUT for replacing, POST for creating\n(or triggering an action), DELETE for removing, GET for reading,\nHEAD for reading metadata only\n/_api/document/… is the path of ArangoDB’s HTTP API for handling documents\nand can be preceded by /_db/{database} with {database} replaced by a\ndatabase name to select another database than the default _system database\n{collection} and {key} are placeholders called Path Parameters that\nyou have to replace with a collection name and document key in this case\nThe pathname can be followed by a question mark and the so-called\nQuery Parameters, which is a series of key/value pairs separated by\nampersands to set options, like /_api/document/COLLECTION/KEY?returnOld=true&keepNull=false\nSome endpoints allow you to specify HTTP headers in the request\n(not in the URL), like If-Match: \"REVISION\"\nA Request Body is the payload you may need to send, typically JSON data\nResponses are the possible HTTP responses in reply to your request in terms\nof the HTTP status code and typically a JSON payload with a result or error information\nOn the wire, a simplified HTTP request can look like this:\nPATCH /_api/document/coll1/docA?returnOld=true HTTP/1.1\nHost: localhost:8529\nAuthorization: Basic cm9vdDo=\nIf-Match: \"_hV2oH9y---\"\nContent-Type: application/json; charset=utf-8\nContent-Length: 20\n\n{\"attr\":\"new value\"}\n\nAnd a simplified HTTP response can look like this:\nHTTP/1.1 202 Accepted\nEtag: \"_hV2r5XW---\"\nLocation: /_db/_system/_api/document/coll1/docA\nServer: ArangoDB\nConnection: Keep-Alive\nContent-Type: application/json; charset=utf-8\nContent-Length: 160\n\n{\"_id\":\"coll1/docA\",\"_key\":\"docA\",\"_rev\":\"_hV2r5XW---\",\"_oldRev\":\"_hV2oH9y---\",\"old\":{\"_key\":\"docA\",\"_id\":\"coll1/docA\",\"_rev\":\"_hV2oH9y---\",\"attr\":\"value\"}}\n\nSwagger specification \nArangoDB’s RESTful HTTP API is documented using the industry-standard\nOpenAPI Specification, more specifically OpenAPI version 3.1 .\nYou can explore the API with the interactive Swagger UI using the\nArangoDB web interface.\nClick SUPPORT in the main navigation of the web interface.\nClick the Rest API tab.\nClick a section and endpoint to view the description and parameters.\n\nOn this page",
+ "fonte": "site",
+ "respostas": [
+  {
+   "por": "dots3-note-preview",
+   "resposta": {
+    "serve": "none",
+    "role": "",
+    "place": [
+     "n/a"
+    ],
+    "mechanism": [
+     "n/a"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "unknown",
+    "doubt": false,
+    "evidence": "ArangoDB 3.11 reached End of Life (EOL) and is no longer supported. All functionality of ArangoDB servers is provided via a RESTful API. http://localhost:8529"
+   }
+  },
+  {
+   "por": "mistral-small-3.2-24b",
+   "resposta": {
+    "serve": "stack",
+    "role": "database backend for sync or MCP",
+    "place": [
+     "network_service",
+     "library"
+    ],
+    "mechanism": [
+     "n/a"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "archived",
+    "doubt": true,
+    "evidence": "ArangoDB 3.11 reached End of Life (EOL) and is no longer supported. HTTP API Documentation"
+   }
+  }
+ ],
+ "conferencia_sonnet": {
+  "chave": "web:arangodb.com/docs/stable/http",
+  "modelo": "claude-sonnet-5-5",
+  "ts": "2026-10-13T20:02:33Z",
+  "resultado": "rejeita",
+  "conferencia": {
+   "resultado": "rejeita",
+   "final": {
+    "serve": "none",
+    "role": "",
+    "place": [
+     "n/a"
+    ],
+    "mechanism": [
+     "n/a"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "archived",
+    "doubt": false,
+    "evidence": "ArangoDB 3.11 reached End of Life (EOL) and is no longer supported. All functionality of ArangoDB servers is provided via a RESTful API"
+   },
+   "o_que_mudou": [
+    "serve: stack/none -> none, documentação da API HTTP de um banco desatualizado (3.11 EOL), não resolve busca nem sync do hub"
+   ],
+   "nota": "Documentação da API HTTP do ArangoDB, versão fim de vida; o hub usa CouchDB, não precisa de outro banco."
+  }
+ }
+}

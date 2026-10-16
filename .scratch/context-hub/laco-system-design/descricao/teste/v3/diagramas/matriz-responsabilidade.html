@@ -1,0 +1,580 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Matriz de responsabilidade do context hub</title>
+<style>
+:root {
+  --bg: #fbfaf7;
+  --fg: #1d1d1b;
+  --muted: #6b6a64;
+  --line: #d9d6cc;
+  --head: #ecE9df;
+  --grp: #e2ddd0;
+  --accent: #2f5d7c;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #1a1b1e;
+    --fg: #ece9e1;
+    --muted: #a3a097;
+    --line: #3a3b40;
+    --head: #25262b;
+    --grp: #2d2e34;
+    --accent: #8fb8d4;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #1a1b1e;
+  --fg: #ece9e1;
+  --muted: #a3a097;
+  --line: #3a3b40;
+  --head: #25262b;
+  --grp: #2d2e34;
+  --accent: #8fb8d4;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: system-ui, "Segoe UI", Roboto, sans-serif;
+  font-size: 15px;
+  line-height: 1.45;
+  padding: 16px;
+}
+h1 { font-size: 22px; margin: 0 0 6px; }
+h2 { font-size: 17px; margin: 28px 0 8px; color: var(--accent); }
+p { margin: 6px 0; max-width: 90ch; }
+.muted { color: var(--muted); }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 14px; margin: 10px 0 14px; font-size: 13px; }
+.legend span b { font-family: ui-monospace, Consolas, monospace; color: var(--accent); }
+.wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
+table { border-collapse: collapse; width: 100%; min-width: 880px; }
+th, td { border-bottom: 1px solid var(--line); padding: 6px 8px; text-align: left; vertical-align: top; font-size: 13px; }
+thead th { background: var(--head); position: sticky; top: 0; font-size: 13px; }
+tr.grp th { background: var(--grp); color: var(--accent); font-size: 13px; padding: 8px; }
+td.comp { font-weight: 600; min-width: 170px; }
+td.st { font-family: ui-monospace, Consolas, monospace; font-size: 12px; color: var(--muted); min-width: 120px; }
+td.na { color: var(--muted); font-style: italic; }
+td.gap { color: var(--accent); }
+.note { font-size: 13px; color: var(--muted); }
+</style>
+</head>
+<body>
+
+<h1>Matriz de responsabilidade do context hub</h1>
+<p class="muted">Teste v3 da descrição de design (<code>descricao-do-hub.md</code>, 2026-10-15). Cada componente nas linhas; dono, quem aciona, quem lê e quem só vê nas colunas. Estado de cada linha na última coluna, com as marcas da seção 0 da descrição.</p>
+<p class="note">Regras da seção 4 da descrição: <b>Dono</b> decide como o componente é e responde por ele; <b>Aciona</b> faz agir ou grava; <b>Lê</b> usa o conteúdo ou o resultado; <b>Só vê</b> enxerga o estado sem usar o conteúdo. "—" = ninguém, segundo as fontes. "não dito" = a descrição não traz esse dado (ver o .md, seção Faltou).</p>
+
+<div class="legend">
+  <span><b>[D]</b> decidido</span>
+  <span><b>[C]</b> em curso</span>
+  <span><b>[R7]</b> rodada 7</span>
+  <span><b>[R11]</b> ticket 11</span>
+  <span><b>[A]</b> a decidir</span>
+  <span><b>[G]</b> com o Gustavo</span>
+  <span><b>[NV]</b> não verificado</span>
+  <span><b>[L]</b> leitura do Tech lead</span>
+  <span><b>[P]</b> prática</span>
+</div>
+
+<div class="wrap">
+<table>
+<thead>
+<tr>
+  <th>Componente</th>
+  <th>Dono</th>
+  <th>Aciona</th>
+  <th>Lê</th>
+  <th>Só vê</th>
+  <th>Estado</th>
+</tr>
+</thead>
+<tbody>
+
+<tr class="grp"><th colspan="6">4.1 Núcleo de dados e portas</th></tr>
+<tr>
+  <td class="comp">Banco local (CouchDB)</td>
+  <td>Gustavo</td>
+  <td>sincronizador, plugin, porta do banco, replicação do outro par</td>
+  <td>porta do banco, porta de leitura, sincronizador, plugin, replicação do outro par</td>
+  <td>vigia</td>
+  <td class="st">[D] Revisão do sync; Onde o servidor mora</td>
+</tr>
+<tr>
+  <td class="comp">Vista Markdown (disco)</td>
+  <td>Gustavo</td>
+  <td>sincronizador, plugin, Gustavo (Obsidian, Explorador), agentes (disco)</td>
+  <td>Gustavo, camada de busca, agentes (disco), cópia diária</td>
+  <td>—</td>
+  <td class="st">[D] Markdown: vista ou fonte; Camada de busca</td>
+</tr>
+<tr>
+  <td class="comp">Sincronizador</td>
+  <td>Gustavo</td>
+  <td>Agendador do Windows</td>
+  <td>disco e banco</td>
+  <td>vigia (se está vivo)</td>
+  <td class="st">[D] Revisão do sync</td>
+</tr>
+<tr>
+  <td class="comp">Obsidian com o plugin de sync</td>
+  <td>Gustavo</td>
+  <td>Gustavo (abre, fecha, edita, resolve conflito)</td>
+  <td>Gustavo</td>
+  <td>vigia (assistente travado)</td>
+  <td class="st">[D] Revisão do sync</td>
+</tr>
+<tr>
+  <td class="comp">Assistente de configuração do plugin</td>
+  <td>Gustavo</td>
+  <td>atualização do plugin</td>
+  <td>—</td>
+  <td>Gustavo, vigia (Gustavo responde)</td>
+  <td class="st">[D] Teste: disco e banco</td>
+</tr>
+<tr>
+  <td class="comp">Regra de exclusão</td>
+  <td>Gustavo</td>
+  <td>kit de par (configura)</td>
+  <td>sincronizador, plugin</td>
+  <td>—</td>
+  <td class="st">[D] Revisão do sync</td>
+</tr>
+<tr>
+  <td class="comp">Porta do banco (MCP)</td>
+  <td>Gustavo</td>
+  <td>agentes (ler e gravar); Claude Desktop pela ponte (ler)</td>
+  <td>agentes; Claude Desktop (leitura)</td>
+  <td>—</td>
+  <td class="st">[D] Como a verdade viaja; gravação do Desktop: [R7] pedida, caminho [A]</td>
+</tr>
+<tr>
+  <td class="comp">Porta de leitura (segundo MCP)</td>
+  <td>Gustavo</td>
+  <td>clientes</td>
+  <td>clientes</td>
+  <td>—</td>
+  <td class="st">[D] Onde o servidor mora; gravação do cliente: [R11], ver .md A3</td>
+</tr>
+<tr>
+  <td class="comp">Camada de busca</td>
+  <td>Gustavo</td>
+  <td>agentes, clientes</td>
+  <td>agentes, clientes</td>
+  <td>—</td>
+  <td class="st">[D] Camada de busca; regra de rede para cliente [A]</td>
+</tr>
+<tr>
+  <td class="comp">Índice da busca</td>
+  <td>Gustavo</td>
+  <td>camada de busca</td>
+  <td>camada de busca</td>
+  <td>—</td>
+  <td class="st">[D] Camada de busca</td>
+</tr>
+<tr>
+  <td class="comp">Ponte mcp-remote (Claude Desktop)</td>
+  <td>Gustavo</td>
+  <td>Claude Desktop</td>
+  <td>—</td>
+  <td>—</td>
+  <td class="st">[D] Portas de entrada do hub</td>
+</tr>
+
+<tr class="grp"><th colspan="6">4.2 Vigilância</th></tr>
+<tr>
+  <td class="comp">Vigia</td>
+  <td>Gustavo</td>
+  <td>Agendador do Windows</td>
+  <td>banco, sincronizador, plugin (estado)</td>
+  <td>—</td>
+  <td class="st">[D] Revisão do sync; quem religa se parar: lacuna [A]</td>
+</tr>
+<tr>
+  <td class="comp">Avisos (notificação, estado curto)</td>
+  <td>Gustavo</td>
+  <td>vigia</td>
+  <td>checagem de sessão (estado curto)</td>
+  <td>Gustavo, agentes</td>
+  <td class="st">[D] Revisão do sync</td>
+</tr>
+<tr>
+  <td class="comp">Mod de estado (Claude Code)</td>
+  <td>Gustavo</td>
+  <td>vigia (o estado que mostra)</td>
+  <td>—</td>
+  <td>Gustavo e o agente, na sessão do Claude Code</td>
+  <td class="st">[D] Revisão do sync</td>
+</tr>
+<tr>
+  <td class="comp">Comando de recuperar binário</td>
+  <td>Gustavo</td>
+  <td>agente com o Gustavo vendo</td>
+  <td>—</td>
+  <td>—</td>
+  <td class="st">[D] Revisão do sync; [R7]</td>
+</tr>
+
+<tr class="grp"><th colspan="6">4.3 Disciplina do agente</th></tr>
+<tr>
+  <td class="comp">Contrato (AGENTS.md da raiz)</td>
+  <td>Gustavo</td>
+  <td>ligações da ferramenta; a sessão ao abrir; agente edita só dentro do hub (ver .md A5)</td>
+  <td>todo agente; cliente (o começo)</td>
+  <td>—</td>
+  <td class="st">[D] Lições do vault; aval do Gustavo a cada mudança; registro do aval [A]</td>
+</tr>
+<tr>
+  <td class="comp">Ligações da ferramenta</td>
+  <td>Gustavo</td>
+  <td>kit de par</td>
+  <td>cada ferramenta, ao abrir</td>
+  <td>—</td>
+  <td class="st">[D] Portas de entrada do hub; Lições do vault</td>
+</tr>
+<tr>
+  <td class="comp">Kit de par</td>
+  <td>Gustavo</td>
+  <td>agente com o Gustavo vendo; o Gustavo no que só ele consegue [R7]</td>
+  <td>—</td>
+  <td>—</td>
+  <td class="st">[D] Onde o servidor mora</td>
+</tr>
+<tr>
+  <td class="comp">Checagem de sessão</td>
+  <td>Gustavo</td>
+  <td>toda sessão de agente, ao abrir (alcance por ferramenta: ver .md I3)</td>
+  <td>estado curto; nota de retomada</td>
+  <td>agente</td>
+  <td class="st">[D] Contrato file-first</td>
+</tr>
+<tr>
+  <td class="comp">Checkpoint (hook de fim de resposta)</td>
+  <td>Gustavo</td>
+  <td>fim de cada resposta (alcance por ferramenta: ver .md I3)</td>
+  <td>nota de retomada; memória privada</td>
+  <td>—</td>
+  <td class="st">[D] Contrato file-first; quem percebe se falhar: lacuna [A]</td>
+</tr>
+<tr>
+  <td class="comp">Guarda do acervo</td>
+  <td>Gustavo</td>
+  <td>tentativa de gravar no acervo</td>
+  <td>—</td>
+  <td>Gustavo (pedido de aval)</td>
+  <td class="st">[D] Maestri: padrão e liberdade; aval depois do verificador</td>
+</tr>
+<tr>
+  <td class="comp">Verificador (outro modelo)</td>
+  <td>Gustavo (regra da seção 4)</td>
+  <td>guarda do acervo</td>
+  <td>a alteração proposta</td>
+  <td>—</td>
+  <td class="st">[D] Maestri: padrão e liberdade; tempo real [NV]</td>
+</tr>
+<tr>
+  <td class="comp">Hook de uso</td>
+  <td>Gustavo</td>
+  <td>uso de uma peça</td>
+  <td>—</td>
+  <td>—</td>
+  <td class="st">[D] Maestri: padrão e liberdade; fora do Claude Code: [A]</td>
+</tr>
+<tr>
+  <td class="comp">Lembrete do maestro</td>
+  <td>Gustavo</td>
+  <td>abertura de terminal do Maestri</td>
+  <td>—</td>
+  <td>maestro</td>
+  <td class="st">[D] Maestri: padrão e liberdade</td>
+</tr>
+<tr>
+  <td class="comp">Script do _archive/</td>
+  <td>Gustavo</td>
+  <td>agente, quando o Gustavo pede [R7]</td>
+  <td>estado do outro par</td>
+  <td>—</td>
+  <td class="st">[D] Portas de entrada do hub; aval: pedido de remoção [R7]</td>
+</tr>
+
+<tr class="grp"><th colspan="6">4.4 Conteúdo</th></tr>
+<tr>
+  <td class="comp">Raízes e árvore</td>
+  <td>Gustavo</td>
+  <td>agentes e Gustavo (gravam); o script (move ao _archive/)</td>
+  <td>todos que leem o hub: Gustavo, agentes, Claude Desktop, clientes</td>
+  <td>—</td>
+  <td class="st">[D] Glossário; Lições do vault</td>
+</tr>
+<tr>
+  <td class="comp">Iniciativa</td>
+  <td>Gustavo (decide nascer e terminar)</td>
+  <td>agentes trabalham nela</td>
+  <td>os mesmos</td>
+  <td>—</td>
+  <td class="st">[D] Workloads piloto; fim pedido pelo Gustavo [R7]</td>
+</tr>
+<tr>
+  <td class="comp">Nota de retomada (retomada.md)</td>
+  <td>Gustavo (como todo conteúdo; ver .md A6)</td>
+  <td>agente da sessão, obrigado pelo checkpoint</td>
+  <td>checagem de sessão, qualquer sessão nova, Gustavo, clientes (leitura)</td>
+  <td>—</td>
+  <td class="st">[D] Contrato file-first; quem confere que ficou certa: só o checkpoint [D]</td>
+</tr>
+<tr>
+  <td class="comp">inbox/</td>
+  <td>Gustavo</td>
+  <td>Gustavo, agentes</td>
+  <td>checkpoint (triagem)</td>
+  <td>—</td>
+  <td class="st">[D] Glossário; Lições do vault</td>
+</tr>
+<tr>
+  <td class="comp">reference/ (promoção)</td>
+  <td>Gustavo</td>
+  <td>checkpoint (promove)</td>
+  <td>todos</td>
+  <td>—</td>
+  <td class="st">[D] Lições do vault</td>
+</tr>
+<tr>
+  <td class="comp">Acervo do maestro</td>
+  <td>Gustavo</td>
+  <td>maestro (acrescenta sozinho; altera com aval)</td>
+  <td>maestro, recrutas (os papéis)</td>
+  <td>—</td>
+  <td class="st">[D] Maestri: padrão e liberdade</td>
+</tr>
+<tr>
+  <td class="comp">Propostas (agents/maestro/propostas/)</td>
+  <td>Gustavo</td>
+  <td>Codex e Copilot gravam</td>
+  <td>maestro no Claude Code (avalia)</td>
+  <td>—</td>
+  <td class="st">[D] Maestri: padrão e liberdade</td>
+</tr>
+<tr>
+  <td class="comp">Registro de uso</td>
+  <td>Gustavo</td>
+  <td>hook de uso</td>
+  <td>maestro</td>
+  <td>—</td>
+  <td class="st">[D] Maestri: padrão e liberdade</td>
+</tr>
+<tr>
+  <td class="comp">Versão local de peça</td>
+  <td>Gustavo</td>
+  <td>maestro</td>
+  <td>maestro; biblioteca do Maestri do workspace</td>
+  <td>—</td>
+  <td class="st">[D] Maestri: padrão e liberdade</td>
+</tr>
+<tr>
+  <td class="comp">Catálogo de blocos e skill "nova iniciativa"</td>
+  <td>Gustavo</td>
+  <td>agente cria pasta pela skill</td>
+  <td>agentes</td>
+  <td>—</td>
+  <td class="st">[C] Arquitetura de pastas; aval para mudar a skill [C]</td>
+</tr>
+<tr>
+  <td class="comp">Segredos (.secrets/)</td>
+  <td>Gustavo</td>
+  <td>Gustavo, agentes</td>
+  <td>agentes da máquina</td>
+  <td>—</td>
+  <td class="st">[C] Arquitetura de pastas; ver 8.16 (nada impede segredo em nota) [A]</td>
+</tr>
+<tr>
+  <td class="comp">Pasta não replicada</td>
+  <td>Gustavo</td>
+  <td>— (nenhuma existe hoje)</td>
+  <td>—</td>
+  <td>—</td>
+  <td class="st">[D] Mapa (Out of scope); mecanismo [A]</td>
+</tr>
+
+<tr class="grp"><th colspan="6">4.5 Máquina, rede e fora</th></tr>
+<tr>
+  <td class="comp">Cópia local (git) e tarefa diária</td>
+  <td>Gustavo</td>
+  <td>Agendador do Windows</td>
+  <td>—</td>
+  <td>—</td>
+  <td class="st">[D] Revisão do sync</td>
+</tr>
+<tr>
+  <td class="comp">Cópia no GitHub</td>
+  <td>Gustavo</td>
+  <td>tarefa diária (push); restauração: agente com o Gustavo vendo [R7] (ver .md A4)</td>
+  <td>Gustavo, em restauração</td>
+  <td>—</td>
+  <td class="st">[D] Revisão do sync; procedimento de restaurar [G, 16]</td>
+</tr>
+<tr>
+  <td class="comp">Nó da rede, rede privada, grants</td>
+  <td>Gustavo</td>
+  <td>pares, clientes</td>
+  <td>—</td>
+  <td>—</td>
+  <td class="st">[D] Onde o servidor mora; dá chave: Gustavo; revoga: agente com o Gustavo vendo [R7]</td>
+</tr>
+<tr>
+  <td class="comp">Credenciais do par</td>
+  <td>Gustavo</td>
+  <td>kit de par</td>
+  <td>banco, portas, sincronizador, plugin, git</td>
+  <td>—</td>
+  <td class="st">[D] Onde o servidor mora</td>
+</tr>
+<tr>
+  <td class="comp">Biblioteca do Maestri (~/.maestri)</td>
+  <td>Gustavo</td>
+  <td>app Maestri; maestro, pela linha de comando do Maestri</td>
+  <td>Maestri, ao abrir terminais</td>
+  <td>—</td>
+  <td class="st">[D] Maestri: padrão e liberdade</td>
+</tr>
+<tr>
+  <td class="comp">Pasta do papel (.maestri/roles/&lt;id&gt;/)</td>
+  <td>Gustavo</td>
+  <td>app Maestri (grava ao criar e ao editar o papel)</td>
+  <td>o agente do terminal</td>
+  <td>—</td>
+  <td class="st">[D] Testes do papel do Maestri</td>
+</tr>
+<tr>
+  <td class="comp">Memória privada da ferramenta</td>
+  <td>Gustavo</td>
+  <td>a própria ferramenta</td>
+  <td>a mesma ferramenta, na mesma máquina</td>
+  <td>—</td>
+  <td class="st">[D] Contrato file-first; outro agente lê: [NV]</td>
+</tr>
+<tr>
+  <td class="comp">FreeLLMAPI (gateway de modelos)</td>
+  <td>Gustavo</td>
+  <td>agentes (roteamento); busca (Google, se ligado)</td>
+  <td>—</td>
+  <td>—</td>
+  <td class="st">[P] Passagem para a construção</td>
+</tr>
+<tr>
+  <td class="comp">Embeddings na nuvem (Google, desligado)</td>
+  <td>Gustavo</td>
+  <td>busca, se ligado</td>
+  <td>—</td>
+  <td>—</td>
+  <td class="st">[D] Camada de busca; Gustavo liga; [R7]</td>
+</tr>
+<tr>
+  <td class="comp">Controle de acesso por pasta</td>
+  <td>Gustavo, depois (ver .md A8)</td>
+  <td>—</td>
+  <td>—</td>
+  <td>—</td>
+  <td class="st">[D] Mapa (Out of scope); fora deste projeto</td>
+</tr>
+
+<tr class="grp"><th colspan="6">Componentes sem linha na seção 4 (inventário das seções 3.2 a 3.4)</th></tr>
+<tr>
+  <td class="comp">Núcleo da iniciativa (ficha, retomada, tasks, decisions, context, log)</td>
+  <td>Gustavo (regra de conteúdo, seção 4)</td>
+  <td class="gap">não dito</td>
+  <td class="gap">não dito</td>
+  <td class="gap">não dito</td>
+  <td class="st">[C] Arquitetura de pastas; sem linha em 4.4 (F1)</td>
+</tr>
+<tr>
+  <td class="comp">Blocos da iniciativa</td>
+  <td>Gustavo (regra de conteúdo)</td>
+  <td class="gap">não dito</td>
+  <td class="gap">não dito</td>
+  <td class="gap">não dito</td>
+  <td class="st">[C] Arquitetura de pastas; sem linha em 4.4 (F2)</td>
+</tr>
+<tr>
+  <td class="comp">Variante de setup</td>
+  <td>Gustavo (regra de conteúdo)</td>
+  <td class="gap">não dito</td>
+  <td class="gap">não dito</td>
+  <td class="gap">não dito</td>
+  <td class="st">[D] Maestri: padrão e liberdade; sem linha em 4.4 (F3)</td>
+</tr>
+<tr>
+  <td class="comp">Skills do hub (agents/skills/)</td>
+  <td>Gustavo (regra de conteúdo)</td>
+  <td class="gap">não dito</td>
+  <td class="gap">não dito</td>
+  <td class="gap">não dito</td>
+  <td class="st">[D] Portas de entrada do hub; sem linha em 4.4 (F4)</td>
+</tr>
+<tr>
+  <td class="comp">Cliente (computador ou sandbox)</td>
+  <td class="gap">não dito</td>
+  <td>Gustavo (chave temporária); agentes do cliente (consulta)</td>
+  <td>agentes do cliente, pela porta de leitura</td>
+  <td>quem está no cliente, só o que o agente mostra</td>
+  <td class="st">[D] Onde o servidor mora; sem linha em 4.5 (F5)</td>
+</tr>
+<tr>
+  <td class="comp">Rede da empresa (Tailscale da empresa)</td>
+  <td class="gap">não dito</td>
+  <td class="gap">não dito</td>
+  <td class="gap">não dito</td>
+  <td class="gap">não dito</td>
+  <td class="st">[D] Ligar as máquinas com segurança; sem linha em 4.5 (F6)</td>
+</tr>
+<tr>
+  <td class="comp">Vault ai-operating-system (referência)</td>
+  <td class="gap">não dito</td>
+  <td class="gap">não dito</td>
+  <td>agentes (direto no disco, só leitura)</td>
+  <td class="gap">não dito</td>
+  <td class="st">[D] Workloads piloto; sem linha em 4 (F7)</td>
+</tr>
+<tr>
+  <td class="comp">Sessão na raiz do hub (porta principal)</td>
+  <td>Gustavo (regra de conteúdo)</td>
+  <td>Gustavo, agentes</td>
+  <td>os três harnesses leem o AGENTS.md da raiz</td>
+  <td>—</td>
+  <td class="st">[D] Portas de entrada do hub; sem linha em 4 (F8)</td>
+</tr>
+<tr>
+  <td class="comp">Maestri (workspace e papel)</td>
+  <td>Gustavo</td>
+  <td>maestro, recrutas</td>
+  <td>maestro, recrutas (workspace na pasta da iniciativa; o que cruza, na raiz)</td>
+  <td>—</td>
+  <td class="st">[D] Maestri: padrão e liberdade; sem linha em 4 (F8)</td>
+</tr>
+<tr>
+  <td class="comp">Claude Desktop (porta de entrada)</td>
+  <td>Gustavo</td>
+  <td>Gustavo, pelo app</td>
+  <td>leitura pela ponte; gravação pedida [R7], caminho [A] (ver .md A2)</td>
+  <td>—</td>
+  <td class="st">[D] Portas de entrada do hub; sem linha em 4 (F8)</td>
+</tr>
+<tr>
+  <td class="comp">Cliente pelo MCP de um par (sem cópia)</td>
+  <td>Gustavo (porta de leitura)</td>
+  <td>sandbox, máquina de passagem</td>
+  <td>o cliente, pelas instruções do MCP e pela descrição das ferramentas</td>
+  <td>—</td>
+  <td class="st">[D] Portas de entrada do hub; sem linha em 4 (F8)</td>
+</tr>
+
+</tbody>
+</table>
+</div>
+
+<p class="note" style="margin-top:16px">Lacunas que a descrição deixa em aberto aparecem como "lacuna [A]" nas células: quem religa a vigia parada, quem percebe checkpoint ou checagem que falham, quem atualiza a cabeça do contrato no MCP, quem confere os 30 dias do _archive/ e o que o agente faz com a porta do banco fora do ar (seção 11, 8.5 a 8.7, 8.18). Detalhes e origem em <code>diagramas/matriz-responsabilidade.md</code>.</p>
+
+</body>
+</html>

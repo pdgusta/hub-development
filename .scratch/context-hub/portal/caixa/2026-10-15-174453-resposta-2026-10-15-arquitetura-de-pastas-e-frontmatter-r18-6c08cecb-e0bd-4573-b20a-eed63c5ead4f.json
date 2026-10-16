@@ -1,0 +1,126 @@
+{
+  "envio": "6c08cecb-e0bd-4573-b20a-eed63c5ead4f",
+  "tipo": "resposta",
+  "enviada": "2026-10-15T17:44:53-03:00",
+  "alvo": {
+    "tipo": "rodada",
+    "id": "2026-10-15-arquitetura-de-pastas-e-frontmatter-r18",
+    "titulo": "O padrão de frontmatter de cada tipo de nota, e como a máquina o impõe"
+  },
+  "ticket": "12",
+  "substitui": null,
+  "rodada": {
+    "id": "2026-10-15-arquitetura-de-pastas-e-frontmatter-r18",
+    "base": "64217e44da88b0af61dd0c6284da9c980bf5fbbf045b6729b9f198d93ac15460",
+    "titulo": "O padrão de frontmatter de cada tipo de nota, e como a máquina o impõe",
+    "ticket": "12",
+    "perguntas": [
+      {
+        "id": "padrao-por-tipo",
+        "titulo": "O padrão de cada tipo de nota",
+        "tipo": "escolha",
+        "recomendada": [
+          "A"
+        ],
+        "opcoes": [
+          {
+            "chave": "A",
+            "texto": "O catálogo acima: campos comuns em toda nota e campos próprios por tipo, com os obrigatórios marcados e valores fechados onde há ciclo. Ajustes de campo você diz em \"Algo mais?\""
+          },
+          {
+            "chave": "B",
+            "texto": "O catálogo acima, mas só com os obrigatórios; os opcionais saem e entram quando o uso pedir"
+          },
+          {
+            "chave": "C",
+            "texto": "O catálogo acima, e mais um campo comum `status` em toda nota (rascunho, em uso, superada), para filtrar o que está vigente em qualquer pasta"
+          }
+        ],
+        "proposta": null
+      },
+      {
+        "id": "imposicao",
+        "titulo": "Como a máquina impõe o padrão",
+        "tipo": "escolha",
+        "recomendada": [
+          "A"
+        ],
+        "opcoes": [
+          {
+            "chave": "A",
+            "texto": "Em camadas: hook antes da gravação no disco recusa nota fora do esquema (Claude Code, Codex, Copilot); o MCP do banco recusa do mesmo jeito; o verificador no fim de cada resposta preenche o derivável e devolve o resto ao agente, que não encerra a resposta enquanto faltar; no Obsidian, o modelo por pasta do Templater faz a nota nascer com o frontmatter do tipo"
+          },
+          {
+            "chave": "B",
+            "texto": "Só o verificador no fim de cada resposta (preenche e devolve ao agente), sem hook antes da gravação: menos construção, mas a nota fora do padrão chega a existir no disco até o fim da resposta"
+          },
+          {
+            "chave": "C",
+            "texto": "Como a A, sem o Templater: notas suas no Obsidian nascem sem frontmatter e o verificador da próxima resposta de agente completa"
+          }
+        ],
+        "proposta": null
+      },
+      {
+        "id": "cartao-da-pasta",
+        "titulo": "Onde a pasta declara que recebe `index.md` e que é local",
+        "tipo": "escolha",
+        "recomendada": [
+          "A"
+        ],
+        "opcoes": [
+          {
+            "chave": "A",
+            "texto": "O `index.md` é o cartão da pasta: o frontmatter dele declara `summary: auto` (o verificador mantém a lista) e `local: true` ou `false` (o marcador da pasta local). O verificador cria o `index.md` sozinho quando a pasta chega a 10 arquivos ou guarda arquivo que a busca não lê; para tornar uma pasta local, cria-se o `index.md` com `local: true`. Um arquivo só por pasta, e a busca acha a descrição dela"
+          },
+          {
+            "chave": "B",
+            "texto": "Um arquivo marcador separado em cada pasta que precisa (`_pasta.yml`, fora da busca), com `index` e `local`; o `index.md` fica só como sumário"
+          },
+          {
+            "chave": "C",
+            "texto": "Uma lista central em `agents/frontmatter/pastas.yml` com as pastas que recebem `index.md` e as locais; nada dentro da pasta"
+          }
+        ],
+        "proposta": null
+      },
+      {
+        "id": "algo-mais",
+        "titulo": "Algo mais?",
+        "tipo": "texto",
+        "recomendada": [],
+        "opcoes": [],
+        "proposta": null
+      }
+    ]
+  },
+  "corpo_hash": "df1ff034daf2f66eee2e59cccf9d7385fb3469ce820271549ee7f1cc188a059d",
+  "corpo": {
+    "tipo": "resposta",
+    "rodada": "2026-10-15-arquitetura-de-pastas-e-frontmatter-r18",
+    "base": "64217e44da88b0af61dd0c6284da9c980bf5fbbf045b6729b9f198d93ac15460",
+    "respostas": {
+      "padrao-por-tipo": {
+        "escolha": [
+          "C"
+        ],
+        "outra": null,
+        "comentario": "A + C"
+      },
+      "imposicao": {
+        "escolha": [
+          "C"
+        ],
+        "outra": null,
+        "comentario": null
+      },
+      "cartao-da-pasta": {
+        "escolha": [
+          "A"
+        ],
+        "outra": null,
+        "comentario": null
+      }
+    }
+  }
+}

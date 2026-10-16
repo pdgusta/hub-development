@@ -1,0 +1,30 @@
+{
+ "chave": "web:weaviate.io/developers/weaviate/api/graphql",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T21:12:08Z",
+ "resultado": "corrige",
+ "conferencia": {
+  "resultado": "corrige",
+  "final": {
+   "serve": "search",
+   "role": "Consultar o Weaviate por GraphQL ou gRPC; interface de consulta do servidor",
+   "place": [
+    "network_service"
+   ],
+   "mechanism": [
+    "other"
+   ],
+   "mcp": "unknown",
+   "windows": "unknown",
+   "portuguese": "unknown",
+   "license": "unknown",
+   "maturity": "unknown",
+   "doubt": false,
+   "evidence": "Weaviate offers GraphQL and gRPC APIs for queries; POST to /graphql endpoint; GraphQL disabled by default on new Weaviate Cloud clusters"
+  },
+  "o_que_mudou": [
+   "doubt: true -> false, README descreve claramente a API"
+  ],
+  "nota": "Interface de consulta do Weaviate; relevante so se o Weaviate for adotado, e a busca em si vem das paginas de busca hibrida/vetorial."
+ }
+}

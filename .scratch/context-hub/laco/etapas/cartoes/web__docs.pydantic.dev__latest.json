@@ -1,0 +1,32 @@
+{
+ "chave": "web:docs.pydantic.dev/latest",
+ "urls": [
+  "https://docs.pydantic.dev/latest/"
+ ],
+ "tipos": [
+  "library"
+ ],
+ "termos": [
+  "Whoosh Pydantic, frontmatter Whoosh, filtrado BM25 frontmatter",
+  "Pydantic YAML",
+  "数据模型 frontmatter"
+ ],
+ "mencoes": 2,
+ "familias": [
+  "mistral"
+ ],
+ "primeira_onda": 2,
+ "nomes": [
+  "Whoosh + `Pydantic` (frontmatter)",
+  "Pydantic + YAML (Python)"
+ ],
+ "resumos": [
+  "Validar y filtrar frontmatter en documentos (ej. `title`, `tags`) usando Pydantic para crear campos personalizados en Whoosh (ej. `frontmatter_tags: BM25` o `frontmatter_date: range`).",
+  "Pydantic 用于数据验证，可结合 YAML 解析器（如 `ruamel.yaml`）处理 frontmatter 为数据模型，支持多语言"
+ ],
+ "fonte": "site",
+ "readme_status": "ok",
+ "readme_nome": "https://docs.pydantic.dev/latest/",
+ "readme_cortado": false,
+ "readme": "[Pydantic Validation | Pydantic Docs]\n\nSkip to content \n\nPydantic Validation \n\nDocumentation for version: v2.14.1.\n\nPydantic is the most widely used data validation library for Python.\n\nFast and extensible, Pydantic plays nicely with your linters/IDE/brain. Define how data should be in pure, canonical Python 3.10+; validate it with Pydantic.\n\nSign up for our newsletter, The Pydantic Stack, with updates & tutorials on Pydantic, Logfire, and Pydantic AI:\n\nWhy use Pydantic?\n\nPowered by type hints — with Pydantic, schema validation and serialization are controlled by type annotations; less to learn, less code to write, and integration with your IDE and static analysis tools. Learn more…\n\nSpeed — Pydantic’s core validation logic is written in Rust. As a result, Pydantic is among the fastest data validation libraries for Python. Learn more…\n\nJSON Schema — Pydantic models can emit JSON Schema, allowing for easy integration with other tools. Learn more…\n\nStrict and Lax mode — Pydantic can run in either strict mode (where data is not converted) or lax mode where Pydantic tries to coerce data to the correct type where appropriate. Learn more…\n\nDataclasses, TypedDicts and more — Pydantic supports validation of many standard library types including dataclass and TypedDict. Learn more…\n\nCustomisation — Pydantic allows custom validators and serializers to alter how data is processed in many powerful ways. Learn more…\n\nEcosystem — around 8,000 packages on PyPI use Pydantic, including massively popular libraries like\nFastAPI, huggingface, Django Ninja, SQLModel, & LangChain. Learn more…\n\nBattle tested — Pydantic is downloaded over 550M times/month and is used by all FAANG companies and 20 of the 25 largest companies on NASDAQ. If you’re trying to do something with Pydantic, someone else has probably already done it. Learn more…\n\nInstalling Pydantic is as simple as: pip install pydantic\n\nPydantic examples\n\nTo see Pydantic at work, let’s start with a simple example, creating a custom class that inherits from BaseModel:\n\n Validation Successful \nfrom datetime import datetime\n\nfrom pydantic import BaseModel, PositiveInt\n\nclass User(BaseModel):\n id: int # (1)\n name: str = 'John Doe' # (2)\n signup_ts: datetime | None # (3)\n tastes: dict[str, PositiveInt] # (4)\n\nexternal_data = {\n 'id': 123,\n 'signup_ts': '2019-06-01 12:22', # (5)\n 'tastes': {\n 'wine': 9,\n b'cheese': 7, # (6)\n 'cabbage': '1', # (7)\n },\n}\n\nuser = User(**external_data) # (8)\n\nprint(user.id) # (9)\n#> 123\nprint(user.model_dump()) # (10)\n\"\"\"\n{\n 'id': 123,\n 'name': 'John Doe',\n 'signup_ts': datetime.datetime(2019, 6, 1, 12, 22),\n 'tastes': {'wine': 9, 'cheese': 7, 'cabbage': 1},\n}\n\"\"\" \n\nid is of type int; the annotation-only declaration tells Pydantic that this field is required. Strings,\nbytes, or floats will be coerced to integers if possible; otherwise an exception will be raised.\n\nname is a string; because it has a default, it is not required.\n\nsignup_ts is a datetime field that is required, but the value None may be provided;\nPydantic will process either a Unix timestamp integer (e.g. 1496498400)\nor a string representing the date and time.\n\ntastes is a dictionary with string keys and positive integer values. The PositiveInt type is\nshorthand for Annotated[int, annotated_types.Gt(0)].\n\nThe input here is an ISO 8601 formatted datetime, but Pydantic will\nconvert it to a datetime object.\n\nThe key here is bytes, but Pydantic will take care of coercing it to a string.\n\nSimilarly, Pydantic will coerce the string '1' to the integer 1.\n\nWe create instance of User by passing our external data to User as keyword arguments.\n\nWe can access fields as attributes of the model.\n\nWe can convert the model to a dictionary with model_dump().\n\nIf validation fails, Pydantic will raise an error with a breakdown of what was wrong:\n\n Validation Error \n# continuing the above example...\n\nfrom datetime import datetime\nfrom pydantic import BaseModel, PositiveInt, ValidationError\n\nclass User(BaseModel):\n id: int\n name: str = 'John Doe'\n signup_ts: datetime | None\n tastes: dict[str, PositiveInt]\n\nexternal_data = {'id': 'not an int', 'tastes': {}} # (1)\n\ntry:\n User(**external_data) # (2)\nexcept ValidationError as e:\n print(e.errors())\n \"\"\"\n [\n {\n 'type': 'int_parsing',\n 'loc': ('id',),\n 'msg': 'Input should be a valid integer, unable to parse string as an integer',\n 'input': 'not an int',\n 'url': 'https://errors.pydantic.dev/2/v/int_parsing',\n },\n {\n 'type': 'missing',\n 'loc': ('signup_ts',),\n 'msg': 'Field required',\n 'input': {'id': 'not an int', 'tastes': {}},\n 'url': 'https://errors.pydantic.dev/2/v/missing',\n },\n ]\n \"\"\" \n\nThe input data is wrong here — id is not a valid integer, and signup_ts is missing.\n\nTrying to instantiate User will raise a ValidationError with a list of errors.\n\nWho is using Pydantic?\n\nHundreds of organisations and packages are using Pydantic. Some of the prominent companies and organizations around the world who are using Pydantic include:\n\nFor a more comprehensive list of open-source projects using Pydantic see the\nlist of dependents on github, or you can find some awesome projects using Pydantic in awesome-pydantic. \n Was this page helpful? \n Thanks for your feedback!"
+}

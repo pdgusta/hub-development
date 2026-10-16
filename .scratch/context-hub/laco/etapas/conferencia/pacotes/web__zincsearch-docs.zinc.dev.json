@@ -1,0 +1,57 @@
+{
+ "chave": "web:zincsearch-docs.zinc.dev",
+ "nomes": [
+  "ZincSearch"
+ ],
+ "urls": [
+  "https://zincsearch-docs.zinc.dev",
+  "https://zincsearch-docs.zinc.dev/"
+ ],
+ "readme_cortado": false,
+ "readme": "[zincsearch]\n\nSkip to content\n\nWelcome to ZincSearch\n\nWhy ZincSearch\n\nZincSearch was started since there was no search engine that was available that could serve my needs.\n\nWhile Elasticsearch is a very good product, it is complex and requires lots of resources and is more than a decade old. I built ZincSearch so it becomes easier for folks to use full text search indexing without doing a lot of work.\n\nYou may also want to read the initial blog regarding launch of ZincSearch\n\nFeatures:\n\nProvides full text indexing capability\n\nSingle binary for installation and running. Binaries available under releases for multiple platforms.\n\nEmbedded Web UI for querying data written in Vue\n\nFull Compatibility with Elasticsearch APIs for ingestion of data (single record and bulk API)\n\nCompatibility with Elasticsearch DSL for querying data. Check /es endpoints (This is work in progress. If somerthing does not work, let us know by raising a github issue)\n\nOut of the box authentication\n\nSchema less - No need to define schema upfront and different documents in the same index can have different fields.\n\nAggregation support\n\nHighlight support\n\nProject Status:\n\nZincSearch is in Pre GA (General Availability) and will be marked as production ready at v1.0.0 .",
+ "fonte": "site",
+ "respostas": [
+  {
+   "por": "llama-3.2-11b-vision-instruct",
+   "resposta": {
+    "serve": "search",
+    "role": "Provides full text indexing capability",
+    "place": [
+     "disk",
+     "network_service"
+    ],
+    "mechanism": [
+     "full_text",
+     "other"
+    ],
+    "mcp": "no",
+    "windows": "yes",
+    "portuguese": "no",
+    "license": "unknown",
+    "maturity": "beta",
+    "doubt": false,
+    "evidence": "Provides full text indexing capability\nSingle binary for installation and running. Binaries available under releases for multiple platforms."
+   }
+  },
+  {
+   "por": "codestral-2508",
+   "resposta": {
+    "serve": "search",
+    "role": "full-text search engine",
+    "place": [
+     "network_service"
+    ],
+    "mechanism": [
+     "full_text"
+    ],
+    "mcp": "unknown",
+    "windows": "yes",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "beta",
+    "doubt": false,
+    "evidence": "Provides full text indexing capability, Single binary for installation and running. Binaries available under releases for multiple platforms."
+   }
+  }
+ ]
+}

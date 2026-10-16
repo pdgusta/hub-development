@@ -1,0 +1,33 @@
+{
+ "chave": "gh:cohere-ai/cohere-python",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T20:33:47Z",
+ "resultado": "corrige",
+ "conferencia": {
+  "resultado": "corrige",
+  "final": {
+   "serve": "stack",
+   "role": "SDK Python para a API da Cohere (embeddings, chat, rerank) como cliente de embeddings hospedado.",
+   "place": [
+    "library"
+   ],
+   "mechanism": [
+    "embeddings"
+   ],
+   "mcp": "no",
+   "windows": "unknown",
+   "portuguese": "unknown",
+   "license": "unknown",
+   "maturity": "unknown",
+   "doubt": false,
+   "evidence": "co.embed(model=\"embed-english-v3.0\", texts=[...], input_type=\"search_document\"); pip install cohere"
+  },
+  "o_que_mudou": [
+   "serve: none -> stack, o README mostra cliente de embeddings e rerank da Cohere",
+   "mechanism: n/a -> embeddings",
+   "mcp: unknown -> no, README não menciona MCP",
+   "doubt: true -> false"
+  ],
+  "nota": "Cliente de embeddings/rerank hospedado; útil como opção de camada de busca, mas depende de API paga externa e de modelos em inglês."
+ }
+}

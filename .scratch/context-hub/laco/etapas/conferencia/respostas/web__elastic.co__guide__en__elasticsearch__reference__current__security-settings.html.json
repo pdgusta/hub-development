@@ -1,0 +1,32 @@
+{
+ "chave": "web:elastic.co/guide/en/elasticsearch/reference/current/security-settings.html",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T21:43:20Z",
+ "resultado": "corrige",
+ "conferencia": {
+  "resultado": "corrige",
+  "final": {
+   "serve": "stack",
+   "role": "Security settings reference (auth, realms, TLS, audit) for Elasticsearch",
+   "place": [
+    "network_service"
+   ],
+   "mechanism": [
+    "other"
+   ],
+   "mcp": "unknown",
+   "windows": "unknown",
+   "portuguese": "unknown",
+   "license": "unknown",
+   "maturity": "unknown",
+   "doubt": false,
+   "evidence": "You configure xpack.security settings to enable anonymous access and perform message authentication"
+  },
+  "o_que_mudou": [
+   "serve: none/stack split -> stack, relevant only if Elasticsearch is adopted",
+   "doubt: true -> false",
+   "mcp/portuguese: no -> unknown, README does not say"
+  ],
+  "nota": "Config reference for Elasticsearch security; only matters if the hub runs Elasticsearch."
+ }
+}

@@ -1,0 +1,22 @@
+{
+ "chave": "conceito:whoosh-accent-filter",
+ "modelo": "mistral-code",
+ "ts": "2026-10-13T20:22:54Z",
+ "resposta": {
+  "concept_en": "accent normalization",
+  "serve": "search",
+  "role": "normalize accents in Portuguese text before indexing",
+  "mechanism": [
+   "full_text"
+  ],
+  "place": [
+   "library"
+  ],
+  "tools_on_card": [
+   "whoosh"
+  ],
+  "doubt": false,
+  "evidence": "Whoosh’s `LowercaseFilter` + custom `StemmingFilter` or `RegexFilter` to strip Portuguese accents (e.g., `café` → `cafe`) before indexing."
+ },
+ "via": "freellmapi"
+}

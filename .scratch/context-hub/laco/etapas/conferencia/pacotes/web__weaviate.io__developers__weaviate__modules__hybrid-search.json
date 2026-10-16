@@ -1,0 +1,39 @@
+{
+ "chave": "web:weaviate.io/developers/weaviate/modules/hybrid-search",
+ "nomes": [
+  "Weaviate Hybrid Search"
+ ],
+ "urls": [
+  "https://weaviate.io/developers/weaviate/modules/hybrid-search",
+  "https://www.semantic-search.dev/docs/weaviate/using-modules/hybrid-search",
+  "https://weaviate.io/",
+  "https://weaviate.io"
+ ],
+ "readme_cortado": false,
+ "readme": "[The AI database developers love | Weaviate]\n\nSkip to main content\n\nInside Weaviate's MCP Ecosystem - Register for the webinar \n\nNewWeaviate Engram - Personalized AI experiences\nDesign, build and ship complete AI experiences\nVector search, RAG, and memory - all in one open-source platform.\nStart buildingDocumentation\n\nTrusted By AI Teams\n\nPlatform Services\nEverything you need to build with AI\nFour core capabilities, one unified platform - deployment-agnostic and open source.\n\nVector Database\nStore, index, and search high-dimensional vectors at any scale. The foundation for search, RAG, and agents.Explore\n\nQuery Agent\nAsk questions in natural language. Query Agent translates intent into optimized database queries automatically.Explore\n\nEmbeddings\nBuilt-in vector generation from text, images, and more. No external embedding pipeline required.Explore\n\nEngram\nCreate personalized AI experiences that learn and adapt to each user over time.Explore\n\nUSE CASES\nReal stories. Real results.\nWith over 20M open source downloads and thousands of customers, Weaviate is a core piece of the stack for leading startups, scale-ups, and enterprises.\n\nRAG\n\n“I need peace of mind. When we are scaling our systems, I don't want to worry about scalability and uptime of our vector database as it serves as a core foundation supporting all our services.”\n\nDr. Hirak Chhatbar,\nCo-Founder and CTORead Case Study\n\n200+\nHours saved on database maintenance\n\n9B\nVectors in production\n\nSEARCH\n\n“Weaviate stood out as it’s clearly built for production use, not just testing. It was the only solution with an efficient tenant system that scaled to our workload of tens of thousands of segmented indexes.”\n\nAaron Edwards,\nFounderRead Case Study\n\n50K+\nTenants stored in a single cluster\n\n6.1M+\nCustomer questions answered\n\nENTERPRISE\n\n“Many large banks focus on quick AI wins but there’s a big opportunity to reinvent research workflows from start to finish in an AI-native way.”\n\nSeán Kilgarriff,\nProduct Lead & Founding TeamRead Case Study\n\n42M\nVectors in production\n\n1DAY\nEnterprise deployment\n\nSECURITY\n\n“Before MarvelX, I implemented Weaviate in banking where security was really important. Being able to have trust in something battle-tested is very important.”\n\nAli el Hassouni,\nFounderRead Case Study\n\n10×\nImproved processing output\n\n99.9%\nFaster turnaround\n\nRAG\n\n“Accuracy — how good the answer is — is the first thing we want to optimize for. That’s how we found Weaviate.”\n\nKerry Chang,\nHead of Product EngineeringRead Case Study\n\n450+\nData types supported\n\n50K+\nTenants stored\n\nRAG\n\n“I need peace of mind. When we are scaling our systems, I don't want to worry about scalability and uptime of our vector database as it serves as a core foundation supporting all our services.”\n\nDr. Hirak Chhatbar,\nCo-Founder and CTORead Case Study\n\n200+\nHours saved on database maintenance\n\n9B\nVectors in production\n\nSEARCH\n\n“Weaviate stood out as it’s clearly built for production use, not just testing. It was the only solution with an efficient tenant system that scaled to our workload of tens of thousands of segmented indexes.”\n\nAaron Edwards,\nFounderRead Case Study\n\n50K+\nTenants stored in a single cluster\n\n6.1M+\nCustomer questions answered\n\nENTERPRISE\n\n“Many large banks focus on quick AI wins but there’s a big opportunity to reinvent research workflows from start to finish in an AI-native way.”\n\nSeán Kilgarriff,\nProduct Lead & Founding TeamRead Case Study\n\n42M\nVectors in production\n\n1DAY\nEnterprise deployment\n\nSECURITY\n\n“Before MarvelX, I implemented Weaviate in banking where security was really important. Being able to have trust in something battle-tested is very important.”\n\nAli el Hassouni,\nFounderRead Case Study\n\n10×\nImproved processing output\n\n99.9%\nFaster turnaround\n\nRAG\n\n“Accuracy — how good the answer is — is the first thing we want to optimize for. That’s how we found Weaviate.”\n\nKerry Chang,\nHead of Product EngineeringRead Case Study\n\n450+\nData types supported\n\n50K+\nTenants stored\n\nDEVELOPER EXPERIENCE\nProduction-ready AI applications, faster\nSpin up a cluster, point it at your data, and go. Weaviate can take care of embeddings, ranking, and auto-scaling so you can ship features, not infrastructure.\nQuickstartAgent SkillsCloud Console & ToolsDeploymentIntegrationsDeveloper ResourcesExplore Demos\n\nQuickstart\nUse SDKs for Python, Go, TypeScript, or JavaScript, or connect to GraphQL or REST APIs.\n\nAgent Skills\n\nCloud Console & Tools\n\nDeployment\n\nIntegrations\n\nDeveloper Resources\n\nExplore Demos\n\nSEARCHVECTORIZERAGTENANTSINDEXAGENTS\n\n# Select collection\ncollection = client.collections.get(\"SupportTickets\")\n\n# Pure vector search\nresponse = collection.query.near_vector(\n near_vector=[0.1, 0.1, 0.1],\n limit=5\n)\n\n# Semantic search\nresponse = collection.query.near_text(\n query=\"login issues after OS upgrade\",\n limit=5\n)\n\n# Hybrid search (vector + keyword)\nresponse = collection.query.hybrid(\n query=\"login issues after OS upgrade\",\n alpha=0.75,\n limit=5\n)\n\nWHY WEAVIATE?\nEasy start, boundless scale, deploy anywhere\nOne foundation for search, RAG, agents, and everything that comes next.\n\nAI-first features under one roof\nAvoid separate systems and complex data pipelines. Write less custom code and build AI apps faster.\n\nBillion-scale architecture\nAdapt to any workload. Scale seamlessly as you grow up or out, all while optimizing costs.\n\nA partner in innovation\nFuel your AI products with cutting-edge features and first-class support from our global team of experts.\n\nWhere the AI builders build\nGet AI database tutorials, training, courses, resources, and support for builders of all levels.\n\nProduction-ready for Enterprise\nMeet enterprise requirements and run securely in our cloud or yours.\n\nSecurity & governance\nGlobal scalability\nMulti-tenancy\nObservability\nHigh availability\nRBAC, SOC 2, and HIPAA\n\nBEFORE WEAVIATE\nWITH WEAVIATE\n\nGET STARTED\nLet's build together\nSpin up a cluster, point it at your data, and go. Weaviate can take care of embeddings, ranking, and auto-scaling so you can ship features, not infrastructure.\n\nStart with Cloud\n\nFree tier\nUsage based pricing\nEnterprise options\nSupport\nSee pricing\n\nBuild on your own\n\nSign up for cloud\nCreate your first dataset\nConnect an LLM\nBuild your AI app\nStart building",
+ "fonte": "site",
+ "respostas": [
+  {
+   "por": "claude-haiku-5-5",
+   "resposta": {
+    "serve": "search",
+    "role": "Vector database with hybrid BM25/vector search for agent retrieval over notes",
+    "place": [
+     "network_service"
+    ],
+    "mechanism": [
+     "hybrid",
+     "vector",
+     "embeddings"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "unknown",
+    "doubt": false,
+    "evidence": "Open-source platform: \"Vector search, RAG, and memory - all in one open-source platform.\" Also \"Inside Weaviate's MCP Ecosystem\" (no MCP server description)."
+   }
+  }
+ ]
+}

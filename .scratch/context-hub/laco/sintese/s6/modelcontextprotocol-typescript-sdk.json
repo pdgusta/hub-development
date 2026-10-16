@@ -1,0 +1,57 @@
+{
+ "nome": "MCP TypeScript SDK",
+ "nome_canonico": "modelcontextprotocol/typescript-sdk",
+ "chave": "gh:modelcontextprotocol/typescript-sdk",
+ "url": "https://github.com/modelcontextprotocol/typescript-sdk",
+ "serve": "stack",
+ "area": "mcp",
+ "identidade": "ok (a main é a v2: pacotes @modelcontextprotocol/server e /client; a v1, @modelcontextprotocol/sdk, está no branch v1.x)",
+ "windows": "nao_verificado: o CI da main usa só ubuntu-latest (Node 20, 22, 24) e não achei menção ao Windows; é JavaScript puro em Node, Bun e Deno, mas a fonte não prova",
+ "mcp": "yes: SDK para servidores e clientes MCP, com Streamable HTTP e stdio, em Node.js, Bun e Deno",
+ "portugues": "nao_aplicavel",
+ "markdown_frontmatter": "nao_aplicavel",
+ "atualizacao": "nao_aplicavel",
+ "embeddings_endpoint": "nao_aplicavel",
+ "recursos": "biblioteca Node/Bun/Deno; CI testa Node 20, 22 e 24; sem número de memória ou disco",
+ "licenca": "Apache-2.0 para contribuições novas, código existente em MIT (README e LICENSE)",
+ "ultimo_release": "v2.3.1, 2026-10-05 (v1.32.1 também em 2026-10-05, linha v1.x)",
+ "atividade": "último commit 2026-10-13",
+ "maturidade": "stable (v2 'the stable release line')",
+ "encaixe": "Alternativa em Node para o MCP do banco, no mesmo runtime JS do PouchDB/nano falando com o CouchDB. Impedimento: sem CI Windows comprovado; v2 recente, com migração da v1.",
+ "evidencias": [
+  {
+   "campo": "maturidade",
+   "url": "https://github.com/modelcontextprotocol/typescript-sdk",
+   "citacao": "This is the `main` branch: v2 of the SDK ... the stable release line"
+  },
+  {
+   "campo": "mcp",
+   "url": "https://github.com/modelcontextprotocol/typescript-sdk",
+   "citacao": "MCP server libraries (tools/resources/prompts, Streamable HTTP, stdio, auth helpers)"
+  },
+  {
+   "campo": "windows",
+   "url": "https://raw.githubusercontent.com/modelcontextprotocol/typescript-sdk/main/.github/workflows/main.yml",
+   "citacao": "runs-on: ubuntu-latest; node-version: [20, 22, 24] (sem windows)"
+  },
+  {
+   "campo": "licenca",
+   "url": "https://github.com/modelcontextprotocol/typescript-sdk",
+   "citacao": "licensed under the Apache License 2.0 for new contributions, with existing code under MIT"
+  },
+  {
+   "campo": "ultimo_release",
+   "url": "https://github.com/modelcontextprotocol/typescript-sdk/releases.atom",
+   "citacao": "2.3.1 updated 2026-10-05T11:54:56Z"
+  },
+  {
+   "campo": "atividade",
+   "url": "https://github.com/modelcontextprotocol/typescript-sdk/commits/main.atom",
+   "citacao": "updated 2026-10-13T12:11:15Z"
+  }
+ ],
+ "nao_verificado": [
+  "execução no Windows (sem CI windows)",
+  "memória em execução"
+ ]
+}

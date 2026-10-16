@@ -1,0 +1,56 @@
+{
+ "chave": "gh:tmikolov/word2vec",
+ "urls": [
+  "https://github.com/tmikolov/word2vec",
+  "https://code.google.com/archive/p/word2vec/",
+  "https://radimrehurek.com/gensim/models/word2vec.html"
+ ],
+ "tipos": [
+  "library",
+  "tool"
+ ],
+ "termos": [
+  "neural network embeddings",
+  "skip-gram",
+  "CBOW",
+  "Word2Vec",
+  "Google Word2Vec",
+  "word2vec",
+  "gensim",
+  "cbow",
+  "word embeddings",
+  "natural language processing",
+  "Word Embeddings",
+  "Neural Networks",
+  "词嵌入",
+  "词向量化",
+  "semantic search",
+  "embeddings",
+  "multilingual word embeddings",
+  "Google",
+  "Skip-gram"
+ ],
+ "mencoes": 13,
+ "familias": [
+  "cohere",
+  "gpt-oss",
+  "llama",
+  "mistral",
+  "qwen"
+ ],
+ "primeira_onda": 1,
+ "nomes": [
+  "Word2Vec",
+  "Word2Vec (Gensim)"
+ ],
+ "resumos": [
+  "Erzeugt Wortvektoren durch Vorhersage von Nachbarwörtern in einem Kontextfenster.",
+  "Word2Vec ist ein Word Embedding-Modell, das auf neuronalen Netzen basiert und für Englisch trainiert wurde.",
+  "A group of related models that are used to produce word embeddings.",
+  "Klassisches Skip‑Gram/CBOW‑Modell für dichte Wortvektoren, leicht offline einsetzbar."
+ ],
+ "readme_status": "ok",
+ "readme_nome": "README.txt",
+ "readme_cortado": false,
+ "readme": "Tools for computing distributed representtion of words\n------------------------------------------------------\n\nWe provide an implementation of the Continuous Bag-of-Words (CBOW) and the Skip-gram model (SG), as well as several demo scripts.\n\nGiven a text corpus, the word2vec tool learns a vector for every word in the vocabulary using the Continuous\nBag-of-Words or the Skip-Gram neural network architectures. The user should to specify the following:\n - desired vector dimensionality\n - the size of the context window for either the Skip-Gram or the Continuous Bag-of-Words model\n - training algorithm: hierarchical softmax and / or negative sampling\n - threshold for downsampling the frequent words \n - number of threads to use\n - the format of the output word vector file (text or binary)\n\nUsually, the other hyper-parameters such as the learning rate do not need to be tuned for different training sets. \n\nThe script demo-word.sh downloads a small (100MB) text corpus from the web, and trains a small word vector model. After the training\nis finished, the user can interactively explore the similarity of the words.\n\nMore information about the scripts is provided at https://code.google.com/p/word2vec/\n\n"
+}

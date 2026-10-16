@@ -1,0 +1,85 @@
+{
+ "chave": "web:palletsprojects.com/p/jinja",
+ "nomes": [
+  "Jinja2"
+ ],
+ "urls": [
+  "https://palletsprojects.com/p/jinja/",
+  "https://jinja.palletsprojects.com/"
+ ],
+ "readme_cortado": false,
+ "readme": "[Pallets]\n\nJinja\n\nJinja is a fast, expressive, extensible templating engine. Special\nplaceholders in the template allow writing code similar to Python\nsyntax. Then the template is passed data to render the final document.\n\nIt includes:\n\nTemplate inheritance and inclusion.\n\nDefine and import macros within templates.\n\nHTML templates can use autoescaping to prevent XSS from untrusted\nuser input.\n\nA sandboxed environment can safely render untrusted templates.\n\nAsyncIO support for generating templates and calling async\nfunctions.\n\nI18N support with Babel.\n\nTemplates are compiled to optimized Python code just-in-time and\ncached, or can be compiled ahead-of-time.\n\nExceptions point to the correct line in templates to make debugging\neasier.\n\nExtensible filters, tests, functions, and even syntax.\n\nJinja's philosophy is that while application logic belongs in Python if\npossible, it shouldn't make the template designer's job difficult by\nrestricting functionality too much.\n\n{% extends \"base.html\" %}\n{% block title %}Members{% endblock %}\n{% block content %}\n <ul>\n {% for user in users %}\n <li><a href=\"{{ user.url }}\">{{ user.username }}</a></li>\n {% endfor %}\n </ul>\n{% endblock %}",
+ "fonte": "site",
+ "respostas": [
+  {
+   "por": "diffusiongemma-26b-a4b-it",
+   "resposta": {
+    "serve": "stack",
+    "role": "Templating engine for generating documents or HTML from Python data",
+    "place": [
+     "library"
+    ],
+    "mechanism": [
+     "other"
+    ],
+    "mcp": "no",
+    "windows": "yes",
+    "portuguese": "no",
+    "license": "unknown",
+    "maturity": "stable",
+    "doubt": false,
+    "evidence": "Jinja is a fast, expressive, extensible templating engine."
+   }
+  },
+  {
+   "por": "gemini-3.5-flash-lite",
+   "resposta": {
+    "serve": "stack",
+    "role": "Templating engine for generating documents or MCP responses.",
+    "place": [
+     "library"
+    ],
+    "mechanism": [
+     "n/a"
+    ],
+    "mcp": "no",
+    "windows": "unknown",
+    "portuguese": "no",
+    "license": "unknown",
+    "maturity": "stable",
+    "doubt": false,
+    "evidence": "Jinja is a fast, expressive, extensible templating engine."
+   }
+  }
+ ],
+ "conferencia_sonnet": {
+  "chave": "web:palletsprojects.com/p/jinja",
+  "modelo": "claude-sonnet-5-5",
+  "ts": "2026-10-13T21:24:58Z",
+  "resultado": "rejeita",
+  "conferencia": {
+   "resultado": "rejeita",
+   "final": {
+    "serve": "none",
+    "role": "",
+    "place": [
+     "n/a"
+    ],
+    "mechanism": [
+     "n/a"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "unknown",
+    "doubt": false,
+    "evidence": "Jinja is a fast, expressive, extensible templating engine"
+   },
+   "o_que_mudou": [
+    "serve: stack -> none"
+   ],
+   "nota": "Motor de templates generico; nao e parte da stack de busca, sync ou MCP do hub."
+  }
+ }
+}

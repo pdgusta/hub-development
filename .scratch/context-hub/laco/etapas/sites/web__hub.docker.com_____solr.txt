@@ -1,0 +1,159 @@
+solr
+
+Docker Official Image•
+
+100M+•
+1.0K
+Solr is the blazing-fast, open source, multi-modal search platform built on Apache Lucene.
+Databases & storage
+
+OverviewTags
+
+solr Docker official image overview
+
+⁠Quick reference
+
+Maintained by:
+
+the Apache Solr project⁠
+
+Where to get help:
+
+the Solr Community⁠
+
+⁠Supported tags and respective Dockerfile links
+
+10.0.0, 10.0, 10, latest⁠
+
+10.0.0-slim, 10.0-slim, 10-slim, slim⁠
+
+9.11.0, 9.11, 9⁠
+
+9.11.0-slim, 9.11-slim, 9-slim⁠
+
+9.10.1, 9.10⁠
+
+9.10.1-slim, 9.10-slim⁠
+
+⁠Quick reference (cont.)
+
+Where to file issues:
+
+The Solr Users mailing list⁠
+
+Supported architectures: (more info⁠)
+
+amd64⁠, arm64v8⁠, ppc64le⁠, riscv64⁠, s390x⁠
+
+Published image artifact details:
+
+repo-info repo's repos/solr/ directory⁠ (history⁠)
+
+(image metadata, transfer size, etc)
+
+Image updates:
+
+official-images repo's library/solr label⁠
+
+official-images repo's library/solr file⁠ (history⁠)
+
+Source of this description:
+
+docs repo's solr/ directory⁠ (history⁠)
+
+⁠What is Solr?
+
+Solr is the blazing-fast, open source, multi-modal search platform built on Apache Lucene. It powers full-text, vector, analytics, and geospatial search at many of the world's largest organizations. Other major features include Kubernetes integration, streaming, highlighting, faceting, and spellchecking.
+
+Learn more on Apache Solr homepage⁠ and in the Apache Solr Reference Guide⁠.
+
+⁠How to use this Docker image
+
+Full documentation can be found in the Solr Reference Guide's Docker section⁠.
+
+To run a single Solr server:
+
+$ docker run -p 8983:8983 -t solr
+Copy
+
+Then with a web browser go to http://localhost:8983/⁠ to see the Solr Admin Console.
+
+⁠About this repository
+
+This repository is available on github.com/apache/solr-docker⁠, but the image is built and maintained in the official Solr repo github.com/apache/solr⁠.
+
+Please direct any usage questions to the Solr users mailing list⁠.
+
+⁠History
+
+This project was started in 2015 by Martijn Koster⁠ in the github.com/docker-solr/docker-solr⁠ repository. In 2019, the maintainership and copyright was transferred to the Apache Solr project. Many thanks to Martijn for all your contributions over the years!
+
+⁠Image Variants
+
+The solr images come in many flavors, each designed for a specific use case.
+
+⁠solr:<version>
+
+This is the defacto image. If you are unsure about what your needs are, you probably want to use this one. It is designed to be used both as a throw away container (mount your source code and start the container to start your app), as well as the base to build other images off of.
+
+⁠solr:<version>-slim
+
+This image does not contain the common packages contained in the default tag and only contains the minimal packages needed to run solr. Unless you are working in an environment where only the solr image will be deployed and you have space constraints, we highly recommend using the default image of this repository.
+
+⁠License
+
+Solr is licensed under the Apache License, Version 2.0⁠.
+
+This repository is also licensed under the Apache License, Version 2.0⁠.
+
+Copyright 2015-2022 The Apache Software Foundation
+
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+Copy
+
+Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+
+As with all Docker images, these likely also contain other software which may be under other licenses (such as Bash, etc from the base distribution, along with any direct or indirect dependencies of the primary software being contained).
+
+Some additional license information which was able to be auto-detected might be found in the repo-info repository's solr/ directory⁠.
+
+As for any pre-built image usage, it is the image user's responsibility to ensure that any use of this image complies with any relevant licenses for all software contained within.
+
+Tag summary
+
+Recent tags
+
+latestRecent tags
+
+Content type
+Image
+
+Digest
+sha256:4316295f1…
+
+Size
+448.9 MB
+
+Last updated
+8 days ago
+
+docker pull solrCopy
+
+This week's pulls
+
+Pulls:
+183,808
+Last week
+
+Learn more⁠
+
+About Official Images
+
+Docker Official Images are a curated set of Docker open source and drop-in solution repositories.Why Official Images?
+These images have clear documentation, promote best practices, and are designed for the most common use cases.
+
+Archive
+
+Go back

@@ -1,0 +1,622 @@
+{
+ "formato": 1,
+ "id": "system-design",
+ "titulo": "System design: a cidade nova",
+ "ticket": "56",
+ "execucao": {
+  "id": "system-design-2026-10-15",
+  "inicio": "2026-10-15T09:35:20-03:00",
+  "terminou_em": null
+ },
+ "nos": [
+  {
+   "id": "maestro",
+   "titulo": "Maestro orquestra",
+   "papel": "fora-dos-scripts",
+   "detalhe": "plano inteiro em laco-system-design/orquestracao.md; nada começou; você só aprova a direção visual e a troca final"
+  },
+  {
+   "id": "video",
+   "titulo": "Colher as skills",
+   "papel": "etapa",
+   "detalhe": "feito: 258 quadros, dez Haiku 5.5, 8 coleções e perto de 90 skills (skills-do-video.md)"
+  },
+  {
+   "id": "fonte",
+   "titulo": "Ler na fonte",
+   "papel": "etapa",
+   "detalhe": "um Haiku 5.5 por coleção lê repositório, licença, SKILL.md, referências e scripts; uma ficha por skill: o que faz, a description que dispara a skill sozinha, o que precisa para rodar, riscos; nada instalado"
+  },
+  {
+   "id": "categorias",
+   "titulo": "Montar categorias",
+   "papel": "etapa",
+   "detalhe": "um Sonnet 5.5 agrupa as skills pelo que fazem, com nomes tirados do conteúdo; em cada categoria: o que resolve, sobreposições, qual fica e quais disputam o mesmo gatilho"
+  },
+  {
+   "id": "julgar",
+   "titulo": "Julgar categorias",
+   "papel": "decisao",
+   "detalhe": "o maestro confere cobertura, conflito de gatilho, segurança dos scripts e a description de cada skill; reprova com lista de ajustes e volta às categorias"
+  },
+  {
+   "id": "suite",
+   "titulo": "Suíte aprovada",
+   "papel": "etapa",
+   "detalhe": "lista final por categoria e por papel; entra no acervo do maestro para outros visuais e projetos"
+  },
+  {
+   "id": "texto-hub",
+   "titulo": "Texto do hub",
+   "papel": "etapa",
+   "detalhe": "o Tech lead escreve o texto padrão que descreve o hub (peças, papéis, ligações, fluxos, sem implementação), base para qualquer diagrama"
+  },
+  {
+   "id": "conferir-texto",
+   "titulo": "Maestro confere o texto",
+   "papel": "decisao",
+   "detalhe": "cada rodada o maestro confere contra as decisões fechadas e aponta o que falta, sobra ou contradiz; volta ao Tech lead até concordarem"
+  },
+  {
+   "id": "equipe",
+   "titulo": "Subir a equipe",
+   "papel": "etapa",
+   "detalhe": "quatro recrutas com papel no acervo e pasta própria: UI engineer, UX revisor, Tech lead, QA tester; skills da suíte em .claude/skills de cada pasta, invocação autônoma, conferida pelo maestro"
+  },
+  {
+   "id": "regua",
+   "titulo": "A régua",
+   "papel": "controle",
+   "detalhe": "os critérios (linhas sem se cruzar, vista de cima, distância entre itens, nomes claros, cidade com papel para cada item, reinventar a forma) aplicados também por skills da suíte que medem gosto e percepção, como a tastemaker; quais, sai do julgamento das categorias"
+  },
+  {
+   "id": "conceitos",
+   "titulo": "Conceitos de cidade",
+   "papel": "etapa",
+   "detalhe": "o UI engineer faz amostras de direção visual: formas de cidade realmente diferentes, lado a lado atrás de um seletor; só o bastante para mostrar a direção"
+  },
+  {
+   "id": "porta",
+   "titulo": "Porta: Tech lead e UX revisor",
+   "papel": "decisao",
+   "detalhe": "o Tech lead mede a congruência com o texto do hub e o UX revisor a régua; nota por dimensão e consertos; reprovado volta aos conceitos"
+  },
+  {
+   "id": "direcao",
+   "titulo": "Você aprova a direção",
+   "papel": "decisao",
+   "detalhe": "a única parada sua antes de construir: uma carta com os conceitos que passaram e o parecer da porta; escolher, misturar ou recusar todos"
+  },
+  {
+   "id": "amostra",
+   "titulo": "Construir a amostra",
+   "papel": "etapa",
+   "detalhe": "o UI engineer constrói a direção aprovada como amostra inicial, numa página à parte, sem tocar o system-design.html"
+  },
+  {
+   "id": "testar",
+   "titulo": "Testar e revisar",
+   "papel": "etapa",
+   "detalhe": "o QA tester testa larguras, contraste, teclado, links e desempenho; UX revisor e Tech lead revisam; o Prumo revisa o código; sem os três, volta a construir"
+  },
+  {
+   "id": "teto",
+   "titulo": "Teto",
+   "papel": "controle",
+   "detalhe": "voltas máximas de cada laço interno e orçamento de tokens; ao bater, o laço para e espera você"
+  },
+  {
+   "id": "entrega",
+   "titulo": "Você vê a amostra",
+   "papel": "decisao",
+   "detalhe": "a troca do system-design.html, ou a peça inteira a partir da amostra, só com o seu aval"
+  }
+ ],
+ "ligacoes": [
+  {
+   "de": "video",
+   "para": "fonte",
+   "palavra": "lista",
+   "tipo": "segue"
+  },
+  {
+   "de": "fonte",
+   "para": "categorias",
+   "palavra": "fichas",
+   "tipo": "segue"
+  },
+  {
+   "de": "categorias",
+   "para": "julgar",
+   "palavra": "categorias",
+   "tipo": "segue"
+  },
+  {
+   "de": "julgar",
+   "para": "categorias",
+   "palavra": "ajustar",
+   "tipo": "repete"
+  },
+  {
+   "de": "julgar",
+   "para": "suite",
+   "palavra": "aprovada",
+   "tipo": "segue"
+  },
+  {
+   "de": "suite",
+   "para": "texto-hub",
+   "palavra": "base",
+   "tipo": "segue"
+  },
+  {
+   "de": "texto-hub",
+   "para": "conferir-texto",
+   "palavra": "texto",
+   "tipo": "segue"
+  },
+  {
+   "de": "conferir-texto",
+   "para": "texto-hub",
+   "palavra": "rodada",
+   "tipo": "repete"
+  },
+  {
+   "de": "conferir-texto",
+   "para": "equipe",
+   "palavra": "acordo",
+   "tipo": "segue"
+  },
+  {
+   "de": "equipe",
+   "para": "conceitos",
+   "palavra": "equipe",
+   "tipo": "segue"
+  },
+  {
+   "de": "conceitos",
+   "para": "porta",
+   "palavra": "amostras",
+   "tipo": "segue"
+  },
+  {
+   "de": "porta",
+   "para": "conceitos",
+   "palavra": "reprova",
+   "tipo": "repete"
+  },
+  {
+   "de": "porta",
+   "para": "direcao",
+   "palavra": "passaram",
+   "tipo": "segue"
+  },
+  {
+   "de": "direcao",
+   "para": "conceitos",
+   "palavra": "recusa",
+   "tipo": "repete"
+  },
+  {
+   "de": "direcao",
+   "para": "amostra",
+   "palavra": "aprovada",
+   "tipo": "segue"
+  },
+  {
+   "de": "amostra",
+   "para": "testar",
+   "palavra": "amostra",
+   "tipo": "segue"
+  },
+  {
+   "de": "testar",
+   "para": "amostra",
+   "palavra": "volta",
+   "tipo": "repete"
+  },
+  {
+   "de": "testar",
+   "para": "entrega",
+   "palavra": "aprovada",
+   "tipo": "segue"
+  },
+  {
+   "de": "regua",
+   "para": "conceitos",
+   "palavra": "régua",
+   "tipo": "condiciona"
+  },
+  {
+   "de": "regua",
+   "para": "porta",
+   "palavra": "régua",
+   "tipo": "condiciona"
+  },
+  {
+   "de": "suite",
+   "para": "equipe",
+   "palavra": "skills",
+   "tipo": "condiciona"
+  },
+  {
+   "de": "teto",
+   "para": "porta",
+   "palavra": "limite",
+   "tipo": "condiciona"
+  },
+  {
+   "de": "teto",
+   "para": "testar",
+   "palavra": "limite",
+   "tipo": "condiciona"
+  },
+  {
+   "de": "maestro",
+   "para": "video",
+   "palavra": "orquestra",
+   "tipo": "condiciona"
+  },
+  {
+   "de": "suite",
+   "para": "regua",
+   "palavra": "skills",
+   "tipo": "condiciona"
+  }
+ ],
+ "controles": [
+  {
+   "id": "fonte_modelo",
+   "no": "fonte",
+   "rotulo": "modelo de quem lê as skills",
+   "tipo": "escolha",
+   "quando_vale": "proxima-execucao",
+   "releitura": "manual",
+   "configurado": {
+    "arquivo": "config.json",
+    "campo": "fonte_modelo"
+   },
+   "opcoes": [
+    {
+     "valor": "claude-opus-5-5",
+     "rotulo": "Claude Opus 5.5"
+    },
+    {
+     "valor": "claude-sonnet-5-5",
+     "rotulo": "Claude Sonnet 5.5"
+    },
+    {
+     "valor": "claude-haiku-5-5",
+     "rotulo": "Claude Haiku 5.5"
+    },
+    {
+     "valor": "gpt-6.1-sol",
+     "rotulo": "GPT 6.1 Sol (Codex)"
+    }
+   ]
+  },
+  {
+   "id": "categorias_modelo",
+   "no": "categorias",
+   "rotulo": "modelo de quem monta as categorias",
+   "tipo": "escolha",
+   "quando_vale": "proxima-execucao",
+   "releitura": "manual",
+   "configurado": {
+    "arquivo": "config.json",
+    "campo": "categorias_modelo"
+   },
+   "opcoes": [
+    {
+     "valor": "claude-opus-5-5",
+     "rotulo": "Claude Opus 5.5"
+    },
+    {
+     "valor": "claude-sonnet-5-5",
+     "rotulo": "Claude Sonnet 5.5"
+    },
+    {
+     "valor": "claude-haiku-5-5",
+     "rotulo": "Claude Haiku 5.5"
+    },
+    {
+     "valor": "gpt-6.1-sol",
+     "rotulo": "GPT 6.1 Sol (Codex)"
+    }
+   ]
+  },
+  {
+   "id": "voltas_categorias",
+   "no": "julgar",
+   "rotulo": "voltas de categorias",
+   "tipo": "inteiro",
+   "quando_vale": "proxima-execucao",
+   "releitura": "manual",
+   "configurado": {
+    "arquivo": "config.json",
+    "campo": "voltas_categorias"
+   },
+   "faixa": [
+    1,
+    6
+   ],
+   "unidade": "voltas"
+  },
+  {
+   "id": "techlead_modelo",
+   "no": "texto-hub",
+   "rotulo": "modelo do Tech lead",
+   "tipo": "escolha",
+   "quando_vale": "proxima-execucao",
+   "releitura": "manual",
+   "configurado": {
+    "arquivo": "config.json",
+    "campo": "techlead_modelo"
+   },
+   "opcoes": [
+    {
+     "valor": "claude-opus-5-5",
+     "rotulo": "Claude Opus 5.5"
+    },
+    {
+     "valor": "claude-sonnet-5-5",
+     "rotulo": "Claude Sonnet 5.5"
+    },
+    {
+     "valor": "claude-haiku-5-5",
+     "rotulo": "Claude Haiku 5.5"
+    },
+    {
+     "valor": "gpt-6.1-sol",
+     "rotulo": "GPT 6.1 Sol (Codex)"
+    }
+   ]
+  },
+  {
+   "id": "rodadas_texto",
+   "no": "conferir-texto",
+   "rotulo": "rodadas do texto do hub",
+   "tipo": "inteiro",
+   "quando_vale": "proxima-execucao",
+   "releitura": "manual",
+   "configurado": {
+    "arquivo": "config.json",
+    "campo": "rodadas_texto"
+   },
+   "faixa": [
+    1,
+    6
+   ],
+   "unidade": "rodadas"
+  },
+  {
+   "id": "uiengineer_modelo",
+   "no": "conceitos",
+   "rotulo": "modelo do UI engineer",
+   "tipo": "escolha",
+   "quando_vale": "proxima-execucao",
+   "releitura": "manual",
+   "configurado": {
+    "arquivo": "config.json",
+    "campo": "uiengineer_modelo"
+   },
+   "opcoes": [
+    {
+     "valor": "claude-opus-5-5",
+     "rotulo": "Claude Opus 5.5"
+    },
+    {
+     "valor": "claude-sonnet-5-5",
+     "rotulo": "Claude Sonnet 5.5"
+    },
+    {
+     "valor": "claude-haiku-5-5",
+     "rotulo": "Claude Haiku 5.5"
+    },
+    {
+     "valor": "gpt-6.1-sol",
+     "rotulo": "GPT 6.1 Sol (Codex)"
+    }
+   ]
+  },
+  {
+   "id": "conceitos_qtd",
+   "no": "conceitos",
+   "rotulo": "quantos conceitos",
+   "tipo": "inteiro",
+   "quando_vale": "proxima-execucao",
+   "releitura": "manual",
+   "configurado": {
+    "arquivo": "config.json",
+    "campo": "conceitos_qtd"
+   },
+   "faixa": [
+    2,
+    5
+   ],
+   "unidade": "conceitos"
+  },
+  {
+   "id": "uxrevisor_modelo",
+   "no": "porta",
+   "rotulo": "modelo do UX revisor",
+   "tipo": "escolha",
+   "quando_vale": "proxima-execucao",
+   "releitura": "manual",
+   "configurado": {
+    "arquivo": "config.json",
+    "campo": "uxrevisor_modelo"
+   },
+   "opcoes": [
+    {
+     "valor": "claude-opus-5-5",
+     "rotulo": "Claude Opus 5.5"
+    },
+    {
+     "valor": "claude-sonnet-5-5",
+     "rotulo": "Claude Sonnet 5.5"
+    },
+    {
+     "valor": "claude-haiku-5-5",
+     "rotulo": "Claude Haiku 5.5"
+    },
+    {
+     "valor": "gpt-6.1-sol",
+     "rotulo": "GPT 6.1 Sol (Codex)"
+    }
+   ]
+  },
+  {
+   "id": "qa_modelo",
+   "no": "testar",
+   "rotulo": "modelo do QA tester",
+   "tipo": "escolha",
+   "quando_vale": "proxima-execucao",
+   "releitura": "manual",
+   "configurado": {
+    "arquivo": "config.json",
+    "campo": "qa_modelo"
+   },
+   "opcoes": [
+    {
+     "valor": "claude-opus-5-5",
+     "rotulo": "Claude Opus 5.5"
+    },
+    {
+     "valor": "claude-sonnet-5-5",
+     "rotulo": "Claude Sonnet 5.5"
+    },
+    {
+     "valor": "claude-haiku-5-5",
+     "rotulo": "Claude Haiku 5.5"
+    },
+    {
+     "valor": "gpt-6.1-sol",
+     "rotulo": "GPT 6.1 Sol (Codex)"
+    }
+   ]
+  },
+  {
+   "id": "esforco_equipe",
+   "no": "equipe",
+   "rotulo": "esforço da equipe",
+   "tipo": "escolha",
+   "quando_vale": "proxima-execucao",
+   "releitura": "manual",
+   "configurado": {
+    "arquivo": "config.json",
+    "campo": "esforco_equipe"
+   },
+   "opcoes": [
+    {
+     "valor": "medium",
+     "rotulo": "médio"
+    },
+    {
+     "valor": "high",
+     "rotulo": "alto"
+    },
+    {
+     "valor": "xhigh",
+     "rotulo": "muito alto"
+    }
+   ]
+  },
+  {
+   "id": "voltas_conceitos",
+   "no": "teto",
+   "rotulo": "voltas dos conceitos",
+   "tipo": "inteiro",
+   "quando_vale": "proxima-execucao",
+   "releitura": "manual",
+   "configurado": {
+    "arquivo": "config.json",
+    "campo": "voltas_conceitos"
+   },
+   "faixa": [
+    1,
+    6
+   ],
+   "unidade": "voltas"
+  },
+  {
+   "id": "voltas_amostra",
+   "no": "teto",
+   "rotulo": "voltas da amostra",
+   "tipo": "inteiro",
+   "quando_vale": "proxima-execucao",
+   "releitura": "manual",
+   "configurado": {
+    "arquivo": "config.json",
+    "campo": "voltas_amostra"
+   },
+   "faixa": [
+    1,
+    6
+   ],
+   "unidade": "voltas"
+  },
+  {
+   "id": "orcamento_tokens",
+   "no": "teto",
+   "rotulo": "orçamento do laço",
+   "tipo": "inteiro",
+   "quando_vale": "proxima-execucao",
+   "releitura": "manual",
+   "configurado": {
+    "arquivo": "config.json",
+    "campo": "orcamento_tokens"
+   },
+   "faixa": [
+    500000,
+    5000000
+   ],
+   "unidade": "tokens do Claude"
+  }
+ ],
+ "capacidades": [
+  {
+   "id": "parar-de-despachar"
+  }
+ ],
+ "contadores": [
+  {
+   "id": "fase",
+   "no": "maestro",
+   "rotulo": "fase",
+   "tipo": "texto",
+   "origem": {
+    "arquivo": "estado.json",
+    "campo": "fase"
+   }
+  },
+  {
+   "id": "voltas_feitas",
+   "no": "testar",
+   "rotulo": "voltas feitas",
+   "tipo": "inteiro",
+   "origem": {
+    "arquivo": "estado.json",
+    "campo": "voltas_feitas"
+   }
+  },
+  {
+   "id": "tokens_gastos",
+   "no": "teto",
+   "rotulo": "tokens gastos (Claude)",
+   "tipo": "inteiro",
+   "origem": {
+    "arquivo": "estado.json",
+    "campo": "tokens_gastos"
+   }
+  }
+ ],
+ "sinal": {
+  "fontes": [
+   {
+    "mtime": "sinal.txt"
+   }
+  ],
+  "sem_sinal_apos_s": 3600
+ }
+}

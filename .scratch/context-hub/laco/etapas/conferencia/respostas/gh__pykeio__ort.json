@@ -1,0 +1,30 @@
+{
+ "chave": "gh:pykeio/ort",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T12:00:00Z",
+ "resultado": "corrige",
+ "conferencia": {
+  "resultado": "corrige",
+  "final": {
+   "role": "Rust ONNX Runtime bindings to run embedding models locally.",
+   "place": [
+    "library"
+   ],
+   "mechanism": [
+    "embeddings"
+   ],
+   "mcp": "unknown",
+   "windows": "unknown",
+   "portuguese": "unknown",
+   "license": "unknown",
+   "maturity": "unknown",
+   "doubt": false,
+   "evidence": "Rust interface for hardware-accelerated inference on ONNX models; FastEmbed-rs uses ort for vector embeddings, reranking locally",
+   "serve": "stack"
+  },
+  "o_que_mudou": [
+   "serve: search -> stack, it is an inference runtime, not a search tool"
+  ],
+  "nota": "Runtime de inferência ONNX em Rust para embeddings locais; peça de baixo nível da pilha."
+ }
+}

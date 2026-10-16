@@ -1,0 +1,55 @@
+{
+ "chave": "web:qdrant.github.io/fastembed",
+ "nomes": [
+  "Pydantic / fastembed"
+ ],
+ "urls": [
+  "https://qdrant.github.io/fastembed/"
+ ],
+ "readme_cortado": false,
+ "readme": "[FastEmbed]\n\nSkip to content\n\n If you're using FastEmbed from Qdrant, join the\n\n Qdrant Discord server\n\n to get help and share your work! Or check out Qdrant Cloud to\n get started with vector search!\n\n⚡️ What is FastEmbed?\n\nFastEmbed is a lightweight, fast, Python library built for embedding generation. We support popular text models. Please open a Github issue if you want us to add a new model.\n\nLight & Fast\n\nQuantized model weights\n\nONNX Runtime for inference\n\nAccuracy/Recall\n\nBetter than OpenAI Ada-002\n\nDefault is Flag Embedding, which has shown good results on the MTEB leaderboard\n\nList of supported models - including multilingual models\n\nHere is an example for Retrieval Embedding Generation and how to use FastEmbed with Qdrant.\n\n🚀 Installation\n\nTo install the FastEmbed library, pip works:\n\npip install fastembed\n\n📖 Usage\n\nfrom fastembed import TextEmbedding\n\ndocuments: list[str] = [\n \"passage: Hello, World!\",\n \"query: Hello, World!\",\n \"passage: This is an example passage.\",\n \"fastembed is supported by and maintained by Qdrant.\"\n]\nembedding_model = TextEmbedding()\nembeddings: list[np.ndarray] = embedding_model.embed(documents)\n\nUsage with Qdrant\n\nInstallation with Qdrant Client in Python:\n\npip install qdrant-client[fastembed]\n\nMight have to use pip install 'qdrant-client[fastembed]' on zsh.\n\nfrom qdrant_client import QdrantClient\n\n# Initialize the client\nclient = QdrantClient(\":memory:\") # Using an in-process Qdrant\n\n# Prepare your documents, metadata, and IDs\ndocs = [\"Qdrant has Langchain integrations\", \"Qdrant also has Llama Index integrations\"]\nmetadata = [\n {\"source\": \"Langchain-docs\"},\n {\"source\": \"Llama-index-docs\"},\n]\nids = [42, 2]\n\nclient.add(\n collection_name=\"demo_collection\",\n documents=docs,\n metadata=metadata,\n ids=ids\n)\n\nsearch_result = client.query(\n collection_name=\"demo_collection\",\n query_text=\"This is a query document\"\n)\nprint(search_result)",
+ "fonte": "site",
+ "respostas": [
+  {
+   "por": "nemotron-3-super-120b",
+   "resposta": {
+    "serve": "search",
+    "role": "Generate text embeddings for semantic search over markdown notes",
+    "place": [
+     "library"
+    ],
+    "mechanism": [
+     "embeddings"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "yes",
+    "license": "unknown",
+    "maturity": "unknown",
+    "doubt": false,
+    "evidence": ""
+   }
+  },
+  {
+   "por": "ising-calibration-1.5-31b",
+   "resposta": {
+    "serve": "search",
+    "role": "Generates embeddings for text passages and queries, enabling semantic search and retrieval in the context hub.",
+    "place": [
+     "library"
+    ],
+    "mechanism": [
+     "vector",
+     "embeddings"
+    ],
+    "mcp": "no",
+    "windows": "yes",
+    "portuguese": "yes",
+    "license": "unknown",
+    "maturity": "stable",
+    "doubt": false,
+    "evidence": "The README explicitly states that FastEmbed is a library for embedding generation, supporting popular text models including multilingual ones. It provides a clear example of how to use the library to embed documents and perform a search query, indicating it is a stable and functional component for the search layer."
+   }
+  }
+ ]
+}

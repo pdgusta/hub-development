@@ -1,0 +1,127 @@
+Hackage :: [Package]
+
+Browse
+
+What's new
+
+Upload
+
+User accounts
+
+pandoc-types: Types for representing a structured document
+
+ [ bsd3, library, text ]
+ [ Propose Tags ]
+ [ Report a vulnerability ]
+
+Text.Pandoc.Definition defines the Pandoc data
+structure, which is used by pandoc to represent
+structured documents. This module used to live
+in the pandoc package, but starting with pandoc 1.7, it
+has been split off, so that other packages can use it
+without drawing in all of pandoc's dependencies, and
+pandoc itself can depend on packages (like citeproc-hs)
+that use them.
+Text.Pandoc.Builder provides functions for building
+up Pandoc structures programmatically.
+Text.Pandoc.Generic provides generic functions for
+manipulating Pandoc documents.
+Text.Pandoc.Walk provides faster, nongeneric functions
+for manipulating Pandoc documents.
+Text.Pandoc.JSON provides functions for serializing
+and deserializing a Pandoc structure to and from JSON.
+
+Modules
+[Index] [Quick Jump]
+
+Text
+Pandoc
+Text.Pandoc.Arbitrary
+Text.Pandoc.Builder
+Text.Pandoc.Definition
+Text.Pandoc.Generic
+Text.Pandoc.JSON
+Text.Pandoc.Walk
+
+Downloads
+pandoc-types-1.23.1.2.tar.gz [browse] (Cabal source package)
+Package description (as included in the package)
+
+Maintainer's Corner
+
+Package maintainers
+
+ JohnMacFarlane
+
+For package maintainers and hackage trustees
+
+ edit package information
+
+Candidates
+
+ No Candidates
+
+ Versions [RSS]
+ 1.7, 1.8, 1.8.0.2, 1.8.2, 1.9, 1.9.0.1, 1.9.0.2, 1.9.1, 1.10, 1.12, 1.12.1, 1.12.1.1, 1.12.1.2, 1.12.2, 1.12.2.1, 1.12.2.2, 1.12.2.3, 1.12.3, 1.12.3.1, 1.12.3.2, 1.12.3.3, 1.12.4, 1.12.4.1, 1.12.4.2, 1.12.4.3, 1.12.4.4, 1.12.4.5, 1.12.4.6, 1.12.4.7, 1.16, 1.16.0.1, 1.16.1, 1.16.1.1, 1.17, 1.17.0.1, 1.17.0.2, 1.17.0.3, 1.17.0.4, 1.17.0.5, 1.17.1, 1.17.2, 1.17.3, 1.17.3.1, 1.17.4, 1.17.4.1, 1.17.4.2, 1.17.5, 1.17.5.1, 1.17.5.2, 1.17.5.3, 1.17.5.4, 1.17.6, 1.17.6.1, 1.19, 1.20, 1.21, 1.22, 1.22.1, 1.22.2, 1.22.2.1, 1.23, 1.23.0.1, 1.23.1, 1.23.1.1, 1.23.1.2 (info)
+
+ Change log
+ changelog
+
+ Dependencies
+ aeson (>=0.6.2 && <2.4), base (>=4.15 && <5), bytestring (>=0.9 && <0.13), containers (>=0.3), deepseq (>=1.4.1 && <1.6), QuickCheck (>=2.10 && <2.19), syb (>=0.1 && <0.8), text, transformers (>=0.2 && <0.7) [details]
+
+ License
+ BSD-3-Clause
+
+ Copyright
+ (c) 2006-2023 John MacFarlane
+
+ Author
+ John MacFarlane
+
+ Maintainer
+ jgm@berkeley.edu
+
+ Uploaded
+ by JohnMacFarlane at 2026-06-01T10:44:07Z
+
+ Category
+ Text
+
+ Home page
+
+ https://pandoc.org/
+
+ Bug tracker
+
+ https://github.com/jgm/pandoc-types/issues
+
+ Source repo
+ head: git clone https://github.com/jgm/pandoc-types.git
+
+ Distributions
+ Arch:1.23.1.2, Fedora:1.23.1.1, LTSHaskell:1.23.1.2, Stackage:1.23.1.2
+
+ Reverse Dependencies
+ 79 direct, 127 indirect [details]
+
+ Downloads
+ 163188 total (243 in the last 30 days)
+
+ Rating
+ 2.5 (votes: 3)
+ [estimated by Bayesian average]
+
+ Your Rating
+
+λ
+
+λ
+
+λ
+
+ Status
+ Docs available [build log]
+Last success reported on 2026-06-01 [all 1 reports]
+
+ Produced by hackage and Cabal 3.16.1.0.

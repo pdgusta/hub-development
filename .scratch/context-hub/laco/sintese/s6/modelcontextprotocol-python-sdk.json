@@ -1,0 +1,57 @@
+{
+ "nome": "FastMCP / mcp-sdk",
+ "nome_canonico": "modelcontextprotocol/python-sdk",
+ "chave": "gh:modelcontextprotocol/python-sdk",
+ "url": "https://github.com/modelcontextprotocol/python-sdk",
+ "serve": "stack",
+ "area": "mcp",
+ "identidade": "ok com ressalva: o nome junta o SDK oficial (pacote mcp, classe MCPServer na v2) e o projeto FastMCP; verificada a peça principal, o SDK oficial em Python. A URL anthropics/mcp-python-sdk é nome antigo",
+ "windows": "yes: o CI roda em matriz ubuntu-latest e windows-latest (shared.yml); requer Python 3.11+",
+ "mcp": "yes: SDK para servidores e clientes MCP; transportes stdio, Streamable HTTP e SSE",
+ "portugues": "nao_aplicavel",
+ "markdown_frontmatter": "nao_aplicavel",
+ "atualizacao": "nao_aplicavel",
+ "embeddings_endpoint": "nao_aplicavel",
+ "recursos": "biblioteca Python 3.11+, sem número de memória ou disco na fonte",
+ "licenca": "MIT (LICENSE e README)",
+ "ultimo_release": "v2.3.0, 2026-10-02",
+ "atividade": "último commit 2026-10-13",
+ "maturidade": "stable (linha v2, com guia de migração da v1)",
+ "encaixe": "Base para escrever o MCP do banco em Python, ligando o CouchDB (por HTTP) e o FreeLLMAPI; roda nativo no Windows. Impedimento: a v2 mudou a API e exige Python 3.11+.",
+ "evidencias": [
+  {
+   "campo": "mcp",
+   "url": "https://github.com/modelcontextprotocol/python-sdk",
+   "citacao": "Speak every standard transport: stdio, Streamable HTTP, and SSE"
+  },
+  {
+   "campo": "windows",
+   "url": "https://raw.githubusercontent.com/modelcontextprotocol/python-sdk/main/.github/workflows/shared.yml",
+   "citacao": "os: [ubuntu-latest, windows-latest]"
+  },
+  {
+   "campo": "licenca",
+   "url": "https://github.com/modelcontextprotocol/python-sdk",
+   "citacao": "This project is licensed under the MIT License."
+  },
+  {
+   "campo": "ultimo_release",
+   "url": "https://github.com/modelcontextprotocol/python-sdk/releases.atom",
+   "citacao": "v2.3.0 updated 2026-10-02T22:02:27Z"
+  },
+  {
+   "campo": "atividade",
+   "url": "https://github.com/modelcontextprotocol/python-sdk/commits/main.atom",
+   "citacao": "updated 2026-10-13T09:20:58Z"
+  },
+  {
+   "campo": "requisito",
+   "url": "https://github.com/modelcontextprotocol/python-sdk",
+   "citacao": "Python 3.11+."
+  }
+ ],
+ "nao_verificado": [
+  "relação formal entre o MCPServer da v2 e o pacote FastMCP independente",
+  "memória em execução"
+ ]
+}

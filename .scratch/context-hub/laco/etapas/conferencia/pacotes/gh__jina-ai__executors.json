@@ -1,0 +1,79 @@
+{
+ "chave": "gh:jina-ai/executors",
+ "nomes": [
+  "Jina Executors",
+  "BM25 Indexer Executor",
+  "Sentence‑Transformers Encoder Executor",
+  "Markdown Reader Executor",
+  "Filter Executor",
+  "Jina Executors (Jina AI)",
+  "Jina Hub (BM25 Executor)",
+  "Jina Hub (Vector Executor)",
+  "Jina Hub (Filter Executor)",
+  "Jina Hub (Indexing Executor)"
+ ],
+ "urls": [
+  "https://github.com/jina-ai/executors",
+  "https://github.com/jina-ai/executors/tree/main/jina_executors/indexers/bm25",
+  "https://github.com/jina-ai/executors/tree/main/jina_executors/encoders/sentence_transformers",
+  "https://github.com/jina-ai/executors/tree/main/jina_executors/readers/markdown",
+  "https://github.com/jina-ai/executors/tree/main/jina_executors/crafters/filter",
+  "https://github.com/jina-ai/executors/tree/master/executors/search/bm25",
+  "https://github.com/jina-ai/executors/tree/master/executors/search/vector",
+  "https://github.com/jina-ai/executors/tree/master/executors/filter",
+  "https://github.com/jina-ai/executors/tree/master/executors/indexing"
+ ],
+ "readme_cortado": false,
+ "readme": "> ⚠️ Please do **not** commit your new Executor to this repository. This repository is **only** for Jina engineers to better manage in-house executors in a centralized way. You *may* submit PRs to fix bugs/add features to the existing ones.\n\n\n# Executors (internal-only)\n\nTo develop your own Executor, please use [`jina hub new`](https://docs.jina.ai/advanced/hub/create-hub-executor/) and **create your own Executor repo**.\n\nHere is the complete guide: https://docs.jina.ai/advanced/hub/\n\n## Remark to Internal Developers\n\n### Using this repository as a package\n\nNotice that we have a `setup.py` in this repository. \nThis is **NOT recommended** practice for **external developers** of Executors. \nWe added this in order to ease local development for **internal developers**.\n\nThis file, along with the `__init__.py`s in each of the folders, do not matter when using the Executors via the `jinahub://` syntax, [above](#jinahub).\n\n### CompoundExecutors\n\nIf you want to develop a `CompoundExecutor`-type Executor based on one of the classes provided in this package, you can either:\n\n- fork this repo and add it as a separate folder. Start with `jina hub new`, and then follow the design patterns we have established in [here](jinahub/indexers/compound) and in the [docs](https://docs.jina.ai/fundamentals/executor/).\n- copy-paste the class you want to have a component of your `CompoundExecutor`, and add it as a class in your Executor's package\n\n",
+ "fonte": "readme",
+ "respostas": [
+  {
+   "por": "gpt-oss-20b",
+   "resposta": {
+    "serve": "search",
+    "role": "BM25 indexer, vector search, markdown reader, filter executor",
+    "place": [
+     "library"
+    ],
+    "mechanism": [
+     "bm25",
+     "vector",
+     "embeddings",
+     "other"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "unknown",
+    "doubt": true,
+    "evidence": "This repository is only for Jina engineers to better manage in‑house executors. BM25 Indexer Executor"
+   }
+  },
+  {
+   "por": "ministral-8b",
+   "resposta": {
+    "serve": "search",
+    "role": "BM25 vector hybrid search indexing for Markdown content",
+    "place": [
+     "inside_db_mcp",
+     "network_service",
+     "library"
+    ],
+    "mechanism": [
+     "bm25",
+     "vector",
+     "embeddings",
+     "hybrid"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "unknown",
+    "doubt": true,
+    "evidence": "BM25 Indexer Executor, Sentence-Transformers Encoder Executor, Markdown Reader Executor; internal-only repo for Jina AI's in-house executors."
+   }
+  }
+ ]
+}

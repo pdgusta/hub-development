@@ -1,0 +1,22 @@
+{
+ "chave": "conceito:sqlite-diff-sqlite-ann",
+ "modelo": "claude-haiku-5-5",
+ "ts": "2026-10-13T20:33:15Z",
+ "resposta": {
+  "concept_en": "incremental vector index update",
+  "serve": "search",
+  "role": "Keep vector index in sync as synced notes change: delete stale rows, re-embed.",
+  "mechanism": [
+   "vector"
+  ],
+  "place": [
+   "library"
+  ],
+  "tools_on_card": [
+   "sqlite-diff",
+   "sqlite-ann"
+  ],
+  "doubt": true,
+  "evidence": "Concepts around maintaining vector index consistency as the CouchDB-synced markdown corpus changes"
+ }
+}

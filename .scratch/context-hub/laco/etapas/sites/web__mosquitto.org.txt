@@ -1,0 +1,245 @@
+Eclipse Mosquitto is an open source (EPL/EDL licensed) message broker that
+ implements the MQTT protocol versions 5.0, 3.1.1 and 3.1. Mosquitto
+ is lightweight and is suitable for use on all devices from low
+ power single board computers to full servers.
+
+The MQTT protocol provides a lightweight method of carrying
+ out messaging using a publish/subscribe model. This makes it
+ suitable for Internet of Things messaging such as with low
+ power sensors or mobile devices such as phones, embedded
+ computers or microcontrollers.
+
+The Mosquitto project also provides a C library for
+ implementing MQTT clients, and the very popular mosquitto_pub
+ and mosquitto_sub command line MQTT clients.
+
+Mosquitto is part of the Eclipse
+ Foundation, and is an iot.eclipse.org
+ project, with its development driven by Cedalo.
+
+Help shape the future of Mosquitto
+
+Take our short quiz (~60 seconds) to share what you're building and what challenges you're facing.
+
+We'll share key insights from the community.
+
+Take the Quiz
+
+Download and Security
+
+Mosquitto is highly versatile and available for a wide range of
+ platforms. Go to the dedicated download
+ page to find the source or binaries for your platform.
+
+For details on recent releases, check the Change Log.
+
+Use the security page to find out
+ how to report vulnerabilities or responses to past security
+ issues.
+
+Test
+
+Setting up your own Mosquitto instance is quick and straightforward, but for added convenience
+ the Mosquitto Project
+ runs a test MQTT server at
+ test.mosquitto.org, which 
+ supports various testing options, such as:
+
+plain MQTT
+
+MQTT over TLS
+
+MQTT over TLS (with client certificate)
+
+MQTT over WebSockets
+
+MQTT over WebSockets with TLS
+
+Alternatively, sign up for the Cedalo MQTT Platform trial,
+ which combines the Pro Edition for Mosquitto MQTT broker and
+ the Management Center for Mosquitto web UI, to test advanced
+ MQTT broker features in various scenarios.
+
+Community
+
+You can engage with the Mosquitto community through various channels:
+
+Report bugs or submit changes on the Github repository
+
+Talk to other users on the Mosquitto mailing list
+ or on Matrix.
+
+Get help from the forums.
+
+Cite Mosquitto in your academic work.
+
+Support
+
+Support is always available from the community channels on a best effort basis.
+
+Cedalo provides comprehensive open-source Mosquitto support:
+
+Hosted or on-premises instances
+
+Consulting on Mosquitto usage
+
+Custom development tailored to your needs
+
+Training
+
+Learn more about MQTT with Cedalo’s MQTT Academy
+ - a completely free resource designed for beginners and experienced professionals.
+
+The courses cover everything from the basics of MQTT to more advanced topics.
+ Sign up and remember to share your feedback!
+
+Related Projects
+
+Several tools and platforms complement Mosquitto and can enhance its capabilities to accommodate a variety of use cases:
+
+Paho provides MQTT
+ client library implementations in a wide variety of
+ languages.
+
+Streamsheets is an
+ easy to use web based real time spreadsheet interface that can
+ be used to process incoming data from a variety of sources,
+ such as MQTT, OPC-UA, and REST. Developers and non-developers
+ can use Streamsheets to control processes and build dashboards
+ for example. Mosquitto is a core component of Streamsheets.
+
+What is an MQTT broker?
+
+An MQTT message broker is a central component that enables
+ communication between clients and IoT devices using the MQTT protocol.
+ It follows the publish-subscribe (pub/sub) messaging model, which plays
+ a crucial role in managing MQTT connections and performing data
+ transmission. The broker receives messages from publishers, verifies
+ their publishing rights, and queues messages according to their Quality
+ of Service (QoS) levels. It further identifies authorised subscribers
+ and routes them to appropriate subscribers.
+
+As the backbone of the MQTT ecosystem, the broker ensures secure and
+ reliable message delivery across devices, making it essential for
+ efficient IoT communication and data exchange.
+
+Types of MQTT broker
+
+MQTT message broker type comparison:
+
+Type
+ Description
+
+Open-source MQTT broker
+
+Often available at minimal or no cost, these brokers offer the flexibility to modify the code to suit your specific requirements.
+
+They are typically maintained by open-source communities, and are ideal for testing, prototyping, personal projects and small to medium-scale applications.
+
+Examples: Mosquitto
+
+Cloud MQTT broker
+
+An online MQTT broker hosted and run by a cloud service provider that manages infrastructure, providing scalability and reducing maintenance efforts.
+
+These brokers are ideal for large-scale IoT deployments.
+
+Examples: AWS IoT Core and Azure IoT Hub.
+
+On-premises (local, self-hosted) MQTT broker
+
+Installed and hosted directly on an individual’s or organisation’s servers/infrastructure for complete control over broker environment, data security, and configuration.
+
+Local MQTT broker setups are ideal for organizations that must meet stringent regulatory requirements and maintain full control over their data.
+
+Examples: Pro Edition for Mosquitto
+
+Enterprise MQTT broker
+
+Commercial-grade MQTT broker that offers rich features and robust support for mission-critical IoT applications.
+
+Examples: Pro Edition for Mosquitto
+
+What is an IoT MQTT broker used for?
+
+An MQTT broker is applicable in various use cases across industries
+ such as manufacturing, healthcare, automotive, smart home systems, and
+ more.
+
+ Using an MQTT broker as a data transmission solution can help
+ manufacturers generate real-time insights into machinery
+ performance to drive smarter operations. By collecting sensor data
+ such as temperature, pressure, and vibration, manufacturers can
+ implement predictive maintenance measures and improve overall
+ efficiency by reducing downtime.
+
+ It can also be applied to energy management systems to aggregate
+ electricity usage data from smart meters across distributed
+ locations. This allows energy providers to track consumption
+ patterns, identify disruptions, and maintain grid stability.
+ Moreover, performing such monitoring can also help optimize energy
+ distribution and enable rapid response to outages.
+
+How to choose the right MQTT message broker for your needs
+
+Consider the following factors when selecting an MQTT broker for your deployment:
+
+Capability
+ Description
+
+Features
+
+ To meet the demands of enterprise or mission-critical applications,
+ the broker must offer advanced capabilities like High Availability,
+ enhanced logging and security, integrations with various services
+ and databases, MQTT broker management and monitoring, REST APIs,
+ and more.
+
+Clustering
+
+ To ensure the continuous operation of your deployment in the event
+ of downtime, the broker must support High Availability clustering.
+
+Scalability
+
+ With growing system demands, the broker must possess robust
+ scalability features to efficiently manage increasing MQTT message
+ volumes and client connections.
+
+Security
+
+ To guarantee data security and protection, the broker must offer
+ security mechanisms such as authentication and authorization,
+ client access via credentials, TLS encryption, access control lists
+ (ACLs), and more.
+
+Administration and Monitoring
+
+ Efficient broker management requires a web UI that enables instance
+ and cluster configuration, user and client management, performance
+ metric monitoring, and provides an overview of the entire setup.
+
+Difference between Open-Source and Enterprise Pro Edition for Mosquitto MQTT Broker
+
+Feature
+ Open-source Mosquitto
+ Pro Mosquitto
+
+License
+ Open source (Free)
+ Commercial license
+
+Deployment options
+ On-premises
+ Cloud or on-premises
+
+Feature set
+ Core MQTT features
+ High Availability, various integrations, REST APIs, persistent queuing, etc.
+
+Support
+ Community-based via forums
+ Dedicated professional support from Cedalo experts
+
+ For a complete open-source vs Pro Edition for Mosquitto MQTT broker
+ features list, refer to this PDF comparison.

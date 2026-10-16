@@ -1,0 +1,45 @@
+{
+  "metodo": "Memória de agentes no Letta (camadas de memória)",
+  "fontes": [
+    {"url": "https://docs.letta.com/guides/agents/memory", "acessada_em": "2026-10-10", "status": "ok"}
+  ],
+  "o_que_e": {
+    "resumo": "Na página, a memória do Letta é organizada em blocos (strings editáveis pelo agente via ferramentas de memória ou pelo desenvolvedor via API), e os blocos anexados a um agente ficam no contexto, fixados no system prompt. A página é uma introdução a agentes com estado (stateful agents) e descreve blocos de memória de forma geral.",
+    "citacao": "Memory (organized into blocks) are pieces of context (strings) that are editable by agents via memory tools (and directly by the developer via the API).",
+    "url": "https://docs.letta.com/guides/agents/memory"
+  },
+  "nivel_raiz": [],
+  "criterio_de_separacao": {
+    "resumo": "A fonte não define critério de separação entre categorias de memória. Diz apenas que blocos anexados a um agente ficam no contexto (in-context) e que o estado é persistido em banco de dados, inclusive após sair da janela de contexto.",
+    "citacao": "memory blocks that are attached to an agent are in-context (pinned to the system prompt).",
+    "url": "https://docs.letta.com/guides/agents/memory"
+  },
+  "quando_termina_ou_envelhece": {
+    "resumo": "A fonte diz que o estado é persistido e nunca perdido, mas não descreve expiração, esquecimento, resumo ou envelhecimento dos blocos de memória. Compactação aparece apenas como menção nas mensagens, sem detalhamento.",
+    "citacao": "In Letta, all state, includes memories, user messages, reasoning, tool calls, are all persisted in a database, so they are never lost, even once evicted from the context window.",
+    "url": "https://docs.letta.com/guides/agents/memory"
+  },
+  "conteudo_compartilhado_ou_reaproveitado": {
+    "resumo": "Um mesmo bloco de memória pode ser anexado a vários agentes ao mesmo tempo, chamado de blocos compartilhados (shared blocks).",
+    "citacao": "Memory blocks can be attached to multiple agents at once (“shared blocks”).",
+    "url": "https://docs.letta.com/guides/agents/memory"
+  },
+  "pastas_versus_tags_ou_links": {
+    "resumo": "Não verificado: a página não diz se o método usa pastas, tags, links ou propriedades para organizar a memória. Menus laterais citam 'Folders' e 'Files', mas sem descrição na própria página.",
+    "citacao": null,
+    "url": null
+  },
+  "pensado_para_agentes_de_ia": {
+    "resumo": "Sim. A própria página trata de agentes de IA com estado: a memória é editável pelo agente via ferramentas e as memórias importantes são injetadas na janela de contexto do LLM.",
+    "citacao": "Important “core” memories are injected into the context window of the LLM, and the agent can modify its own memories through tools.",
+    "url": "https://docs.letta.com/guides/agents/memory"
+  },
+  "nao_verificado": [
+    "nivel_raiz (a página não nomeia categorias de primeiro nível da memória; 'Archival memory' e 'Context hierarchy' aparecem só no menu lateral, sem conteúdo nesta fonte)",
+    "criterio_de_separacao (detalhe além do estado in-context)",
+    "quando_termina_ou_envelhece (expiração, esquecimento, resumo ou limites de tamanho dos blocos)",
+    "pastas_versus_tags_ou_links",
+    "limite de caracteres ou tamanho dos blocos",
+    "funcionamento das ferramentas de memória (nomes e comportamento) além da descrição geral"
+  ]
+}

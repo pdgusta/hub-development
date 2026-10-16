@@ -1,0 +1,30 @@
+{
+ "chave": "conceito:postgresql-logical-replication-wal2json",
+ "modelo": "claude-opus-5-5",
+ "ts": "2026-10-13T23:35:42Z",
+ "tipo": "conceito",
+ "resultado": "concorda",
+ "auditoria": {
+  "resultado": "concorda",
+  "erro": "",
+  "final": {
+   "concept_en": "postgresql logical decoding",
+   "serve": "none",
+   "role": "",
+   "mechanism": [
+    "n/a"
+   ],
+   "place": [
+    "n/a"
+   ],
+   "tools_on_card": [
+    "wal2json",
+    "pgoutput"
+   ],
+   "doubt": false,
+   "evidence": "Reprodução lógica que permite capturar o WAL e transformar em eventos JSON para consumo externo."
+  },
+  "gravidade": "nenhuma",
+  "nota": "PostgreSQL change capture; the hub's CouchDB already offers its own _changes feed, so this does not apply."
+ }
+}

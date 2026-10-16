@@ -1,0 +1,29 @@
+{
+ "chave": "web:docs.llamaindex.ai/en/stable/module_guides/loading/ingestion_pipeline",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T21:51:57Z",
+ "resultado": "confirma",
+ "conferencia": {
+  "resultado": "confirma",
+  "final": {
+   "serve": "stack",
+   "role": "Ingestion pipeline: chunk, extract, embed and cache nodes, with docstore dedup and vector store upsert",
+   "place": [
+    "library"
+   ],
+   "mechanism": [
+    "embeddings",
+    "vector"
+   ],
+   "mcp": "unknown",
+   "windows": "unknown",
+   "portuguese": "unknown",
+   "license": "unknown",
+   "maturity": "unknown",
+   "doubt": false,
+   "evidence": "Transformations applied to input data, nodes cached or inserted into a vector database; docstore detects duplicate documents by hash"
+  },
+  "o_que_mudou": [],
+  "nota": "Useful as incremental indexing stage: hash-based dedup and caching avoid re-embedding unchanged notes."
+ }
+}

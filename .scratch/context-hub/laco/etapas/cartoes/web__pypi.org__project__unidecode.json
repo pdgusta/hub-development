@@ -1,0 +1,73 @@
+{
+ "chave": "web:pypi.org/project/unidecode",
+ "urls": [
+  "https://pypi.org/project/Unidecode/",
+  "https://pypi.org/project/unidecode/"
+ ],
+ "tipos": [
+  "library"
+ ],
+ "termos": [
+  "Normalization",
+  "Diacritics removal",
+  "normalization",
+  "diacritics",
+  "accent removal",
+  "transliteration",
+  "ASCII transliteration",
+  "unidecode",
+  "unicode transliterate",
+  "python unidecode",
+  "normalização de texto",
+  "acentos em busca",
+  "unicode",
+  "ascii",
+  "text conversion",
+  "Diacritics",
+  "text normalization",
+  "PT-BR text processing",
+  "unicode transliteration",
+  "stemming helper",
+  "slugification",
+  "accent normalization",
+  "text preprocessing",
+  "ascii conversion",
+  "ASCII folding",
+  "Unicode",
+  "tokenization",
+  "Unidecode library",
+  "Unicode to ASCII",
+  "accent stripping",
+  "unicode to ascii",
+  "Text normalization",
+  "diacritics removal"
+ ],
+ "mencoes": 24,
+ "familias": [
+  "agnes",
+  "gemma",
+  "gpt-oss",
+  "mistral",
+  "nemotron",
+  "qwen"
+ ],
+ "primeira_onda": 1,
+ "nomes": [
+  "Unidecode",
+  "unidecode",
+  "Unidecode (referência)",
+  "Unidecode (normalização de texto)",
+  "Portuguese Accent Normalization (Unidecode)"
+ ],
+ "resumos": [
+  "Transliterates Unicode characters to ASCII to handle Portuguese accents in keyword search.",
+  "Library to transliterate Unicode characters to ASCII, essential for handling Portuguese accents in keyword search.",
+  "Transliterates Unicode characters to ASCII to handle Portuguese accents in search.",
+  "A library for transliterating non-ASCII characters into ASCII, useful for handling Portuguese accents."
+ ],
+ "fonte": "site",
+ "readme_status": "ok",
+ "readme_nome": "https://pypi.org/project/Unidecode/",
+ "readme_cortado": true,
+ "readme": "[Unidecode · PyPI]\n\nSkip to main content\n Switch to mobile version\n\nUnidecode 1.4.0\n\nASCII transliterations of Unicode text\n\n pip install Unidecode\n\n Copy PIP instructions\n\nIt often happens that you have text data in Unicode, but you need to\nrepresent it in ASCII. For example when integrating with legacy code that\ndoesn’t support Unicode, or for ease of entry of non-Roman names on a US\nkeyboard, or when constructing ASCII machine identifiers from human-readable\nUnicode strings that should still be somewhat intelligible. A popular example\nof this is when making an URL slug from an article title.\n\nUnidecode is not a replacement for fully supporting Unicode for strings in\nyour program. There are a number of caveats that come with its use,\nespecially when its output is directly visible to users. Please read the rest\nof this README before using Unidecode in your project.\n\nIn most of examples listed above you could represent Unicode characters as\n??? or \\\\15BA\\\\15A0\\\\1610, to mention two extreme cases. But that’s\nnearly useless to someone who actually wants to read what the text says.\n\nWhat Unidecode provides is a middle road: the function unidecode() takes\nUnicode data and tries to represent it in ASCII characters (i.e., the\nuniversally displayable characters between 0x00 and 0x7F), where the\ncompromises taken when mapping between two character sets are chosen to be\nnear what a human with a US keyboard would choose.\n\nThe quality of resulting ASCII representation varies. For languages of\nwestern origin it should be between perfect and good. On the other hand\ntransliteration (i.e., conveying, in Roman letters, the pronunciation\nexpressed by the text in some other writing system) of languages like\nChinese, Japanese or Korean is a very complex issue and this library does\nnot even attempt to address it. It draws the line at context-free\ncharacter-by-character mapping. So a good rule of thumb is that the further\nthe script you are transliterating is from Latin alphabet, the worse the\ntransliteration will be.\n\nGenerally Unidecode produces better results than simply stripping accents from\ncharacters (which can be done in Python with built-in functions). It is based\non hand-tuned character mappings that for example also contain ASCII\napproximations for symbols and non-Latin alphabets.\n\nNote that some people might find certain transliterations offending. Most\ncommon examples include characters that are used in multiple languages. A user\nexpects a character to be transliterated in their language but Unidecode uses a\ntransliteration for a different language. It’s best to not use Unidecode for\nstrings that are directly visible to users of your application. See also the\nFrequently Asked Questions section for more info on common problems.\n\nThis is a Python port of Text::Unidecode Perl module by Sean M. Burke\n<sburke@cpan.org>.\n\nModule content\n\nThis library contains a function that takes a string object, possibly\ncontaining non-ASCII characters, and returns a string that can be safely\nencoded to ASCII:\n\n>>> from unidecode import unidecode\n>>> unidecode('kožušček')\n'kozuscek'\n>>> unidecode('30 \\U0001d5c4\\U0001d5c6/\\U0001d5c1')\n'30 km/h'\n>>> unidecode('\\u5317\\u4EB0')\n'Bei Jing '\n\nYou can also specify an errors argument to unidecode() that determines\nwhat Unidecode does with characters that are not present in its transliteration\ntables. The default is 'ignore' meaning that Unidecode will ignore those\ncharacters (replace them with an empty string). 'strict' will raise a\nUnidecodeError. The exception object will contain an index attribute that\ncan be used to find the offending character. 'replace' will replace them\nwith '?' (or another string, specified in the replace_str argument).\n'preserve' will keep the original, non-ASCII character in the string. Note\nthat if 'preserve' is used the string returned by unidecode() will not\nbe ASCII-encodable!:\n\n>>> unidecode('\\ue000') # unidecode does not have replacements for Private Use Area characters\n''\n>>> unidecode('\\ue000', errors='strict')\nTraceback (most recent call last):\n...\nunidecode.UnidecodeError: no replacement found for character '\\ue000' in position 0\n\nA utility is also included that allows you to transliterate text from the\ncommand line in several ways. Reading from standard input:\n\n$ echo hello | unidecode\nhello\n\nfrom a command line argument:\n\n$ unidecode -c hello\nhello\n\nor from a file:\n\n$ unidecode hello.txt\nhello\n\nThe default encoding used by the utility depends on your system locale. You can\nspecify another encoding with the -e argument. See unidecode --help for\na full list of available options.\n\nRequirements\n\nNothing except Python itself. Unidecode supports Python 3.7 or later.\n\nYou need a Python build with “wide” Unicode characters (also called “UCS-4\nbuild”) in order for Unidecode to work correctly with characters outside of\nBasic Multilingual Plane (BMP). Common characters outside BMP are bold, italic,\nscript, etc. variants of the Latin alphabet intended for mathematical notation.\nSurrogate pair encoding of “narrow” builds is not supported in Unidecode.\n\nIf your Python build supports “wide” Unicode the following expression will\nreturn True:\n\n>>> import sys\n>>> sys.maxunicode > 0xffff\nTrue\n\nSee PEP 261 for details\nregarding support for “wide” Unicode characters in Python.\n\nInstallation\n\nTo install the latest version of Unidecode from the Python package index, use\nthese commands:\n\n$ pip install unidecode\n\nTo install Unidecode from the source distribution and run unit tests, use:\n\n$ python setup.py install\n$ python setup.py test\n\nFrequently asked questions\n\nGerman umlauts are transliterated incorrectly\n\nLatin letters “a”, “o” and “u” with diaeresis are transliterated by\nUnidecode as “a”, “o”, “u”, not according to German rules “ae”, “oe”,\n“ue”. This is intentional and will not be changed. Rationale is that these\nletters are used in languages other than German (for example, Finnish and\nTurkish). German text transliterated without the extra “e” is much more\nreadable than other languages transliterated using German rules. A\nworkaround is to do your own replacements of these characters before\npassing the string to unidecode().\n\nJapanese Kanji is transliterated as Chinese\n\nSame as with Latin letters with accents discussed in the answer above, the\nUnicode standard encodes letters, not letters in a certain language or\ntheir meaning. With Japanese and Chinese this is even more evident because\nthe same letter can have very different transliterations depending on the\nlanguage it is used in. Since Unidecode does not do language-specific\ntransliteration (see next question), it must decide on one. For certain\ncharacters that are used in both Japanese and Chinese the decision was to\nuse Chinese transliterations. If you intend to transliterate Japanese,\nChinese or Korean text please consider using other libraries which do\nlanguage-specific transliteration, such as Unihandecode.\n\nUnidecode should support localization (e.g. a language or country parameter, inspecting system locale, etc.)\n\nLanguage-specific transliteration is a complicated problem and beyond the\nscope of this library. Changes related to this will not be accepted. Please\nconsider using other libraries which do provide this capability, such as\nUnihandecode.\n\nUnidecode should automatically detect the language of the text being transliterated\n\nLanguage detection is a completely separate problem and beyond the scope of\nthis library.\n\nUnidecode should use a permissive license such as MIT or the BSD license.\n\nThe maintainer of Unidecode believes that providing access to source code\non redistribution is a fair and reasonable request when basing products on\nvoluntary work of many contributors. If the license is not suitable for\nyou, please consider using other libraries, such as text-unidecode.\n\nUnidecode produces completely wrong results (e.g. “u” with diaeresis transliterating as “A 1/4 “)\n\nThe strings you are passing to Unidecode have been wrongly decoded\nsomewhere in your program. For example, you might be decoding utf-8 encoded\nstrings as latin1. With a misconfigured terminal, locale and/or a text\neditor this might not be immediately apparent. Inspect your strings with\nrepr() and consult the\nUnicode HOWTO.\n\nWhy does Unidecode not replace \\u and \\U backslash escapes in my strings?\n\nUnidecode knows nothing about escape sequences. Interpreting these sequences\nand replacing them with actual Unicode characters in string literals is the\ntask of the Python interpreter. If you are asking this question you are\nvery likely misunderstanding the purpose of this library. Consult the\nUnicode HOWTO and possibly\nthe unicode_escape encoding in the standard library.\n\nI’ve upgraded Unidecode and now some URLs on my website return 404 Not Found.\n\nThis is an issue with the software that is running your website, not\nUnidecode. Occasionally, new versions of Unidecode library are released\nwhich contain improvements to the transliteration tables. This means that\nyou cannot rely that unidecode() output will not change across\ndifferent versions of Unidecode library. If you use unidecode() to\ngenerate URLs for your website, either generate the URL slug once and store\nit in the database or lock your dependency of Unidecode to one specific\nversion.\n\nSome of the issues in this section are discussed in more detail in this blog\npost.\n\nPerformance notes\n\nBy default, unidecode() optimizes for the use case where most of the strings\npassed to it are already ASCII-only and no transliteration is necessary (this\ndefault might change in future versions).\n\nFor performance critical applications, two additional functions are exposed:\n\nunidecode_expect_ascii() is optimized for ASCII-only inputs (approximately\n5 times faster than unidecode_expect_nonascii() on 10 character strings,\nmore on longer strings), but slightly slower for non-ASCII inputs.\n\nunidecode_expect_nonascii() takes approximately the same amount of time on\nASCII and non-ASCII inputs, but is slightly faster for non-ASCII inputs than\nunidecode_expect_ascii().\n\nApart from differences in run time, both functions produce identical results.\nFor most users of Unidecode, the difference in performance should be\nnegligible.\n\nSource\n\nYou can get the latest development version of Unidecode with:\n\n$ git clone https://www.tablix.org/~avian/git/unidecode.git\n\nThere is also an official mirror of this repository on GitHub at\nhttps://github.com/avian2/unidecode\n\nContact\n\nPlease make sure to read the Frequently asked questions section above before\ncontacting the maintainer.\n\nBug reports, patches and suggestions for Unidecode can be sent to\ntomaz.solc@tablix.org.\n\nAlternatively, you can also open a ticket or pull request at\nhttps://github.com/avian2/unidecode\n\nCopyright\n\nOriginal character transliteration tables:\n\nCopyright 2001, Sean M. Burke <sburke@cpan.org>, all rights reserved.\n\nPython code and later additions:\n\nCopyright 2025, Tomaž Šolc <tomaz.solc@tablix.org>\n\nThis program is free software; you can redistribute it and/or modify it\nunder the terms of the GNU General Public License as published by the Free\nSoftware Foundation; either version 2 of the License, or (at your option)\nany later version.\n\nThis program is distributed in the hope that it will be useful, but WITHOUT\nANY WARRANTY; without even the implied warranty of MERCHANTABILITY or\nFITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for\nmore details.\n\nYou should have received a copy of the GNU General Public License along\nwith this program; if not, write to the Free Software Foundation, Inc., 51\nFranklin Street, Fifth Floor, Boston, MA 02110-1301 USA. The programs and\ndocumentation in this dist are distributed in the hope that they will be\nuseful, but without any warranty; without even the implied warranty of\nmerchantability or fitness for a particular purpose.\n\nKey dates\n\n PyPI data\n\nData sourced directly from PyPI's database.\n\n Released: \n Apr 24, 2025\n\n Latest release\n\n2 maintainers \n\n PyPI data\n\nData sourced directly from P"
+}

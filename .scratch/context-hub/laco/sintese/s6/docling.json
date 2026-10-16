@@ -1,0 +1,48 @@
+{
+ "nome": "Docling",
+ "nome_canonico": "Docling (docling-project/docling, antes DS4SD/docling)",
+ "chave": "gh:ds4sd/docling",
+ "url": "https://github.com/DS4SD/docling",
+ "serve": "stack",
+ "area": "text_extraction",
+ "identidade": "ok: a URL DS4SD/docling redireciona para docling-project/docling (LF AI & Data)",
+ "windows": "yes: README diz funcionar em Windows, x86_64 e arm64; pip install docling, Python 3.10+.",
+ "mcp": "nao_aplicavel",
+ "portugues": "nao_verificado: README cita OCR extenso para PDFs escaneados, mas não lista idiomas nem afirma suporte multilíngue.",
+ "markdown_frontmatter": "nao_aplicavel",
+ "atualizacao": "nao_aplicavel",
+ "embeddings_endpoint": "nao_aplicavel",
+ "recursos": "Biblioteca Python com modelos de layout e OCR; a fonte lida não dá números de RAM ou disco.",
+ "licenca": "MIT (código; modelos têm licenças próprias)",
+ "ultimo_release": "2026-10-12, v2.138.0",
+ "atividade": "2026-10-13",
+ "maturidade": "stable",
+ "encaixe": "Extrai PDF, DOCX, PPTX, XLSX e HTML para Markdown no disco de cada máquina, ou via docling-mcp-server (uvx) ao lado do MCP do banco. Fora de CouchDB e LiveSync. Impedimento: pesado, sem idiomas de OCR confirmados.",
+ "evidencias": [
+  {
+   "campo": "windows",
+   "url": "https://github.com/docling-project/docling",
+   "citacao": "Works on macOS, Linux and Windows environments for both x86_64 and arm64 architectures."
+  },
+  {
+   "campo": "licenca",
+   "url": "https://github.com/docling-project/docling",
+   "citacao": "The Docling codebase is under MIT license."
+  },
+  {
+   "campo": "mcp",
+   "url": "https://docling-project.github.io/docling/usage/mcp/",
+   "citacao": "Docling supports the development of AI agents by providing an MCP Server."
+  },
+  {
+   "campo": "ultimo_release",
+   "url": "https://api.github.com/repos/docling-project/docling/releases/latest",
+   "citacao": "tag_name v2.138.0, published_at 2026-10-12"
+  }
+ ],
+ "nao_verificado": [
+  "portugues/idiomas de OCR",
+  "RAM e disco",
+  "transporte do MCP"
+ ]
+}

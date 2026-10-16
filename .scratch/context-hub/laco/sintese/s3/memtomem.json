@@ -1,0 +1,64 @@
+{
+ "nome": "memtomem",
+ "url": "https://github.com/memtomem/memtomem",
+ "papel": "disco+MCP pronto",
+ "windows": "yes: CI com windows-latest (test-windows-shard); instalação via uv/pipx",
+ "mcp": "yes: servidor próprio memtomem-server, stdio; HTTP streamable e SSE opcionais (--transport http), sem autenticação própria",
+ "portugues": "Embeddings ONNX multilingual-e5-small (padrão do preset) ou bge-m3 (1024d) são multilíngues; docs citam KR/EN/JP/CN, português não listado explicitamente. BM25 via SQLite FTS5; tokenizador kiwipiepy só para coreano; stemmer/stopwords de português: nao_verificado.",
+ "markdown_frontmatter": "Indexa .md (além de json/yaml/toml/py/js/ts); chunking por título (heading-aware). Frontmatter usado para tags, valid_from/valid_to (filtro as_of) e redaction; filtro por campo arbitrário de frontmatter: nao_verificado.",
+ "atualizacao": "Watcher de arquivos dentro do processo MCP (eventos nativos fora do macOS; polling opcional), fila de 1000 eventos com rescan ao estourar; arquivos pré-existentes exigem 'mm index' uma vez; reindexação incremental por SHA-256 de chunk.",
+ "embeddings_endpoint": "yes: provider openai com MEMTOMEM_EMBEDDING__BASE_URL; código do embedder 'Calls any OpenAI-compatible /v1/embeddings endpoint'. Também ONNX local, Ollama, ou só BM25 (padrão, provider none).",
+ "recursos": "Python >=3.12 (uv/pipx); instalação mínima ~50 MB, com [all] ~340 MB, modelo e5-small ~490 MB, bge-m3 ~2,3 GB; índice em SQLite.",
+ "licenca": "Apache-2.0 (CLA exigido)",
+ "ultimo_release": "2026-10-08, v0.6.8",
+ "atividade": "último commit 2026-10-13",
+ "maturidade": "alpha (README: Alpha, APIs and defaults may change between 0.x releases)",
+ "encaixe": "Serviço no disco de cada máquina apontando para a pasta de notas; MCP stdio pronto e embeddings pelo FreeLLMAPI via base_url. Impedimentos: alpha, pt sem tokenizador próprio.",
+ "evidencias": [
+  {
+   "campo": "maturidade",
+   "url": "https://github.com/memtomem/memtomem",
+   "citacao": "Alpha — APIs, defaults, and on-disk config surfaces may still change between 0.x releases."
+  },
+  {
+   "campo": "windows",
+   "url": "https://github.com/memtomem/memtomem/blob/main/.github/workflows/ci.yml",
+   "citacao": "test-windows-shard ... runs-on: windows-latest"
+  },
+  {
+   "campo": "mcp",
+   "url": "https://github.com/memtomem/memtomem/blob/main/docs/guides/mcp-clients.md",
+   "citacao": "memtomem-server also supports two MCP network transports: Streamable HTTP ... Server-Sent Events"
+  },
+  {
+   "campo": "embeddings_endpoint",
+   "url": "https://github.com/memtomem/memtomem/blob/main/packages/memtomem/src/memtomem/embedding/openai.py",
+   "citacao": "Calls any OpenAI-compatible /v1/embeddings endpoint. Set base_url to a custom host"
+  },
+  {
+   "campo": "portugues",
+   "url": "https://github.com/memtomem/memtomem/blob/main/docs/guides/embeddings.md",
+   "citacao": "multilingual-e5-small | ONNX | 384 | ONNX default; multilingual (KR/EN/JP/CN) on CPU (~490 MB)"
+  },
+  {
+   "campo": "atualizacao",
+   "url": "https://github.com/memtomem/memtomem/blob/main/docs/guides/reference/core-memory-tools.md",
+   "citacao": "The watcher is reactive — it reindexes files when the filesystem emits modify / create / move events."
+  },
+  {
+   "campo": "markdown_frontmatter",
+   "url": "https://github.com/memtomem/memtomem",
+   "citacao": "Semantic chunking — heading-aware Markdown ... Incremental indexing — chunk-level SHA-256 diff"
+  },
+  {
+   "campo": "recursos",
+   "url": "https://github.com/memtomem/memtomem",
+   "citacao": "about 50 MB installed instead of about 340 MB, before any model download"
+  }
+ ],
+ "nao_verificado": [
+  "stemmer/stopwords de português no BM25",
+  "filtro por campo arbitrário de frontmatter",
+  "comportamento do watcher com gravações do LiveSync em NTFS"
+ ]
+}

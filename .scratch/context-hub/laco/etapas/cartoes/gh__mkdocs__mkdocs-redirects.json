@@ -1,0 +1,42 @@
+{
+ "chave": "gh:mkdocs/mkdocs-redirects",
+ "urls": [
+  "https://github.com/mkdocs/mkdocs-redirects",
+  "https://github.com/datarobot/mkdocs-redirects",
+  "https://github.com/gerardog/mkdocs-redirects"
+ ],
+ "tipos": [
+  "library",
+  "tool"
+ ],
+ "termos": [
+  "URL routing",
+  "MkDocs plugin",
+  "mkdocs",
+  "redirects",
+  "SEO",
+  "mkdocs redirects",
+  "URL",
+  "redirecionamento",
+  "docs"
+ ],
+ "mencoes": 3,
+ "familias": [
+  "gpt-oss",
+  "mistral"
+ ],
+ "primeira_onda": 4,
+ "nomes": [
+  "mkdocs-redirects",
+  "Mkdocs-Redirects"
+ ],
+ "resumos": [
+  "Plugin for URL redirects in MkDocs, indirectly useful for search result routing (e.g., frontmatter filters).",
+  "Plugin para mkdocs que adiciona redirecionamentos de URLs.",
+  "Gerencia redirecionamentos de URLs dentro do site gerado."
+ ],
+ "readme_status": "ok",
+ "readme_nome": "README.md",
+ "readme_cortado": false,
+ "readme": "# mkdocs-redirects\n\n**Plugin for [`mkdocs`](https://www.mkdocs.org/) to create page redirects (e.g. for moved/renamed pages)**\n\nInitially developed by [DataRobot](https://www.datarobot.com/).\n\n[![PyPI](https://img.shields.io/pypi/v/mkdocs-redirects)](https://pypi.org/project/mkdocs-redirects/)\n[![License](https://img.shields.io/github/license/mkdocs/mkdocs-redirects)](https://github.com/mkdocs/mkdocs-redirects/blob/master/LICENSE.md)\n[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/mkdocs/mkdocs-redirects/ci.yml.svg)](https://github.com/mkdocs/mkdocs-redirects/actions?query=event%3Apush+branch%3Amaster)\n\n## Installing\n\nInstall with pip:\n\n```bash\npip install mkdocs-redirects\n```\n\n## Using\n\nTo use this plugin, specify your desired redirects in the plugin's `redirect_maps` setting in your `mkdocs.yml`:\n\n```yaml\nplugins:\n  - redirects:\n      redirect_maps:\n        'old.md': 'new.md'\n        'old/file.md': 'new/file.md'\n        'some_file.md': 'http://external.url.com/foobar'\n```\n\n> **Note**  \n> Don't forget that specifying the `plugins` setting will override the defaults if you didn't already have it set! See [this page](https://www.mkdocs.org/user-guide/configuration/#plugins) for more information.\n\nThe redirects map should take the form of a key/value pair:\n\n- The key of each redirect is the original _markdown doc_ (relative to the `docs_dir` path).\n  - This plugin will handle the filename resolution during the `mkdocs build` process.\n    This should be set to what the original markdown doc's filename was (or what it _would be_ if it existed), not the final HTML file rendered by MkDocs\n- The value is the _redirect target_. This can take the following forms:\n  - Path of the _markdown doc_ you wish to be redirected to (relative to `docs_dir`)\n    - This plugin will handle the filename resolution during the `mkdocs build` process.\n      This should be set to what the markdown doc's filename is, not the final HTML file rendered by MkDocs\n  - External URL (e.g. `http://example.com`)\n\nDuring the `mkdocs build` process, this plugin will create `.html` files in `site_dir` for each of the \"old\" file that redirects to the \"new\" path.\nIt will produce a warning if any problems are encountered or of the redirect target doesn't actually exist (useful if you have `strict: true` set).\n\n### `use_directory_urls`\n\nIf you have `use_directory_urls: true` set (which is the default), this plugin will modify the redirect targets to the _directory_ URL, not the _actual_ `index.html` filename.\nHowever, it will create the `index.html` file for each target in the correct place so URL resolution works.\n\nFor example, a redirect map of `'old/dir/README.md': 'new/dir/README.md'` will result in an HTML file created at `$site_dir/old/dir/index.html` which redirects to `../../new/dir/`.\n\nAdditionally, a redirect map of `'old/dir/doc_name.md': 'new/dir/doc_name.md'` will result in `$site_dir/old/dir/doc_name/index.html` redirecting to `../../new/dir/doc_name/`.\n\nThis mimics the behavior of how MkDocs builds the site dir without this plugin.\n\n## Developing\n\nDev dependencies and tasks are managed with [Hatch](https://hatch.pypa.io/). Tasks run in their own environment, created on the fly if missing, in a separate directory tree.\n\nTo run all checks and fixes:\n\n```bash\nhatch run all\n```\n\nYou can learn about individual commands from the output, or by inspecting `scripts` in [pyproject.toml](pyproject.toml).\n\n## Releasing\n\nA release is published to PyPI through GitHub Actions whenever a new tag is pushed.\n\nSo, to create a release, run `.tools/release.sh x.y.z` (which bumps the version in `__init__.py`, checks the build, creates a commit and a tag `vx.y.z`, and pushes it to GitHub).\n\nThen fill out a GitHub release with release notes.\n"
+}

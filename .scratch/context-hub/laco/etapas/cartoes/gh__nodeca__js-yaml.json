@@ -1,0 +1,71 @@
+{
+ "chave": "gh:nodeca/js-yaml",
+ "urls": [
+  "https://github.com/nodeca/js-yaml",
+  "https://github.com/jazzband/js-yaml",
+  "https://github.com/js-yaml/js-yaml",
+  "https://github.com/node-yaml/js-yaml"
+ ],
+ "tipos": [
+  "library",
+  "tool"
+ ],
+ "termos": [
+  "Node.js YAML",
+  "JS YAML",
+  "yaml",
+  "javascript",
+  "nodejs",
+  "parser",
+  "dumper",
+  "yaml parser",
+  "yaml library",
+  "yaml javascript",
+  "js-yaml",
+  "javascript yaml",
+  "nodeca yaml",
+  "YAML parser",
+  "serialization",
+  "parsing",
+  "yaml parse nodejs",
+  "YAML 1.2",
+  "node yaml",
+  "JavaScript",
+  "TypeScript",
+  "YAML",
+  "yaml-parser",
+  "nodeca-yaml",
+  "yaml-frontmatter-parse",
+  "node.js",
+  "Node.js",
+  "yamljs",
+  "YAML 解析 Node.js",
+  "js yaml",
+  "npm yaml"
+ ],
+ "mencoes": 22,
+ "familias": [
+  "agnes",
+  "gemma",
+  "gpt-oss",
+  "mistral",
+  "nemotron",
+  "qwen"
+ ],
+ "primeira_onda": 2,
+ "nomes": [
+  "js-yaml",
+  "YAML.js",
+  "yamljs"
+ ],
+ "resumos": [
+  "The most popular JavaScript library for parsing and dumping YAML.",
+  "JavaScript 中用于处理 YAML 数据的库。",
+  "A JavaScript YAML parser and dumper for Node.js and browsers, supporting YAML 1.2.",
+  "A YAML parser and emitter for JavaScript."
+ ],
+ "readme_status": "ok",
+ "readme_nome": "README.md",
+ "readme_cortado": false,
+ "readme": "# js-yaml\n\n[![CI](https://github.com/nodeca/js-yaml/actions/workflows/ci.yml/badge.svg)](https://github.com/nodeca/js-yaml/actions/workflows/ci.yml)\n[![NPM version](https://img.shields.io/npm/v/js-yaml.svg)](https://www.npmjs.org/package/js-yaml)\n\n> YAML 1.2 parser and serializer for JavaScript.\n\n__[Online demo](https://nodeca.github.io/js-yaml/)__\n\n- Supports the YAML 1.2 and YAML 1.1 specifications.\n- Passes the entire [YAML Test Suite](https://github.com/yaml/yaml-test-suite).\n\n\n### [Documentation >>](https://nodeca.github.io/js-yaml/doc/)\n\n\n##### Install\n\n```bash\nnpm install js-yaml\n```\n\n\n##### Usage\n\n```js\nimport { load } from 'js-yaml'\n\ntry {\n  const document = load('greeting: hello')\n  console.log(document.greeting)\n} catch (e) {\n  console.error(e)\n}\n```\n\n```js\nimport { dump } from 'js-yaml'\n\nconst source = dump({ greeting: 'hello' })\nconsole.log(source)\n```\n\n[More usage examples](docs/usage.md).\n"
+}

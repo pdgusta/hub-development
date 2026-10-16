@@ -1,0 +1,24 @@
+{"n": 5, "pergunta": "Se a rede **Tailscale** entre os pares falhar por mais de 24 horas, como o **banco** em cada máquina se comporta e como o Gustavo é alertado para resolver a **divergência** acumulada?", "tipo": "se-x"}
+{"n": 15, "pergunta": "Quando o Gustavo salva um arquivo .md no Obsidian, qual a sequência de passos entre Vista Markdown, Sincronizador, Banco e MCP para que a mudança seja propagada ao outro par?", "tipo": "ordem"}
+{"n": 25, "pergunta": "Quem é responsável por manter a nota de retomada atualizada após um agente terminar de uma tarefa?", "tipo": "responsavel"}
+{"n": 35, "pergunta": "Se eu iniciar a sessão numa subpasta de `clients/VOEGOL/` (Porta de entrada) em vez da raiz, a checagem de início de sessão do Vigia ainda abre a Nota de retomada correta e varre divergências em todo o hub ou só naquela subárvore?", "tipo": "falha"}
+{"n": 45, "pergunta": "Qual é o comportamento do sincronizador ao encontrar um arquivo de 250 MiB em uma das pastas do hub?", "tipo": "grupo"}
+{"n": 55, "pergunta": "Como o maestro deve proceder quando uma nota de retomada aponta para um arquivo que está em uma pasta não replicada?", "tipo": "relacao"}
+{"n": 65, "pergunta": "O **LiveSync** (plugin do Obsidian) faz parte do grupo de quem pode ser desativado temporariamente pelo Gustavo, gerando uma **divergência** entre os pares?", "tipo": "grupo"}
+{"n": 75, "pergunta": "Se o agente grava uma alteração em um arquivo .md, qual a sequência de passos entre o Sincronizador, o MCP do banco e o Vigia para garantir que a mudança seja replicada e notificada?", "tipo": "ordem"}
+{"n": 85, "pergunta": "Quando um arquivo é movido para o `_archive/` de uma **raiz**, como o **sincronizador** e a **camada de busca** tratam esse arquivo em relação aos agentes que ainda podem estar referenciando seu caminho antigo?", "tipo": "relacao"}
+{"n": 95, "pergunta": "Quando eu adiciono uma nova iniciativa na pasta initiatives, ela aparece instantaneamente na outra máquina?", "tipo": "grupo"}
+{"n": 105, "pergunta": "Por que uma **divergência** entre duas máquinas não impede que um **agente de código** continue lendo do **banco**, mesmo que a versão esteja desatualizada?", "tipo": "por-que"}
+{"n": 115, "pergunta": "Se a máquina de trabalho do Gustavo for comprometida, os dados de cliente da iniciativa AVIANCA permanecem protegidos apenas na máquina pessoal ou são expostos?", "tipo": "grupo"}
+{"n": 125, "pergunta": "O que muda entre a nota de retomada mantida pelo maestro ao fim de cada resposta e a nota de retomada que um recruta deveria manter, se o hook de fim de resposta vale para ambos?", "tipo": "diferenca"}
+{"n": 135, "pergunta": "Um arquivo grande demais faz parte do grupo de casos que impedem a viagem entre as máquinas?", "tipo": "grupo"}
+{"n": 145, "pergunta": "Quando um agente termina uma tarefa de escrita na AVIANCA, o que a nota de retomada não faz automaticamente se o hook de finalização falhar?", "tipo": "o-que-nao-faz"}
+{"n": 155, "pergunta": "Como um cliente sabe se o hub está sincronizando corretamente entre as máquinas?", "tipo": "onde-vive"}
+{"n": 165, "pergunta": "Se o Agente de código grava em um arquivo que já está em _archive/, o que acontece?", "tipo": "falha"}
+{"n": 175, "pergunta": "Se o cliente tentar usar a Camada de busca para buscar um trecho de texto em um arquivo que não está replicado, o que acontece?", "tipo": "se-x"}
+{"n": 185, "pergunta": "Por que os arquivos grandes demais para viajar ficam retidos no hub?", "tipo": "por-que"}
+{"n": 195, "pergunta": "Ao solicitar ao maestro do Maestri a criação de um novo papel a partir do Acervo do maestro, quais são os passos internos que copiam o papel para a pasta `agents/skills/` e atualizam o contrato?", "tipo": "ordem"}
+{"n": 205, "pergunta": "Se eu edito uma nota na máquina pessoal e, por erro, apago acidentalmente a pasta inteira `inbox/` antes que o sincronizador termine de enviar as mudanças, como recupero o que foi perdido e o que acontece na outra máquina?", "tipo": "relacao"}
+{"n": 215, "pergunta": "Por que clientes que usam o hub via sandbox possuem apenas acesso de leitura por padrão e não têm uma cópia própria?", "tipo": "por-que"}
+{"n": 225, "pergunta": "Onde eu entro para resolver uma colisão de notas que o sincronizador não conseguiu juntar sozinho?", "tipo": "quem-usa"}
+{"n": 235, "pergunta": "Se o **GitHub privado** deixar de fazer a cópia diária do hub por um dia (por exemplo, por falha no script), como o Gustavo recupera arquivos que foram modificados ou excluídos no hub nas últimas 24 horas, se não há backup incremental?", "tipo": "por-que"}

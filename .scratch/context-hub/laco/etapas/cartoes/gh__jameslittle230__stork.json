@@ -1,0 +1,54 @@
+{
+ "chave": "gh:jameslittle230/stork",
+ "urls": [
+  "https://github.com/jameslittle230/stork",
+  "https://stork-search.com",
+  "https://stork-search.net",
+  "https://github.com/stork-search/stork"
+ ],
+ "tipos": [
+  "tool",
+  "library"
+ ],
+ "termos": [
+  "Stork search",
+  "static site search",
+  "Stork search engine",
+  "BM25 implementation",
+  "Markdown",
+  "frontmatter",
+  "MCP",
+  "CouchDB",
+  "stork-search",
+  "stork index",
+  "stork documentation search",
+  "static search",
+  "WASM search",
+  "offline",
+  "BM25",
+  "Markdown indexing"
+ ],
+ "mencoes": 6,
+ "familias": [
+  "cohere",
+  "gpt-oss",
+  "liquid",
+  "mistral",
+  "nemotron"
+ ],
+ "primeira_onda": 2,
+ "nomes": [
+  "Stork",
+  "Stork (search engine)"
+ ],
+ "resumos": [
+  "Static‑site search engine written in Rust, generating a compact index with BM25 ranking and optional post‑processing for semantic embeddings.",
+  "A search engine library that supports BM25 and can be extended for semantic search.",
+  "Project management framework for organizing markdown codebases with frontmatter support and MCP integration",
+  "A fast, language‑aware static search engine for markdown documentation, supporting BM25 ranking and offline use."
+ ],
+ "readme_status": "ok",
+ "readme_nome": "readme.md",
+ "readme_cortado": false,
+ "readme": "# Stork\n\n<table><tr><td>\n\n**Project update**: [I'm winding down my work with Stork.](https://github.com/jameslittle230/stork/discussions/360)\n\nThanks to everyone who enjoyed using Stork over the past few years!  \n-James\n  \n</td></tr></table>\n\n---\n\nImpossibly fast web search, made for static sites.\n\n[![Crates.io](https://img.shields.io/crates/v/stork-search)](https://crates.io/crates/stork-search)\n[![Codecov](https://img.shields.io/codecov/c/gh/jameslittle230/stork)](https://codecov.io/gh/jameslittle230/stork)\n![GitHub branch checks state](https://img.shields.io/github/checks-status/jameslittle230/stork/master)\n\nStork is a library for creating beautiful, fast, and accurate full-text search interfaces on the web.\n\nIt comes in two parts. First, it's a **command-line tool** that indexes content and creates a search index file that you can upload to a web server. Second, it's a **Javascript library** that uses that index file to build an interactive search interface that displays optimal search results immediately to your user, as they type.\n\nStork is built with Rust, and the Javascript library uses WebAssembly behind the scenes. It's easy to get started and is even easier to customize so it fits your needs. It's perfect for Jamstack sites and personal blogs, but can be used wherever you need an interactive search bar.\n\nCurrently in development by [James Little](https://jameslittle.me)\n\n![Gif of Stork in Action](https://files.stork-search.net/marketing/1.0.0-video.gif)\n\n## Getting Started\n\nLet's put a search box online that searches within the text of the [Federalist Papers](https://www.youtube.com/watch?v=DPgE7PNzXag).\n\n> **See this demo live at <https://stork-search.net>.**\n\n```html\n<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <title>Federalist Search</title>\n  </head>\n  <body>\n    <div class=\"stork-wrapper\">\n      <input data-stork=\"federalist\" class=\"stork-input\" />\n      <div data-stork=\"federalist-output\" class=\"stork-output\"></div>\n    </div>\n    <script src=\"https://files.stork-search.net/stork.js\"></script>\n    <script>\n      stork.register(\n        \"federalist\",\n        \"http://files.stork-search.net/federalist.st\"\n      );\n    </script>\n  </body>\n</html>\n```\n\n### Step 1: Include the HTML\n\nStork hooks into existing HTML that you include on your page. Each Stork instance has to have an input hook and a results list; those two elements should be placed in a wrapper, though the wrapper is optional.\n\nThe input hook should have the `data-stork=\"federalist\"` attribute, where `federalist` is the name with which you register that search instance. (This way, you can have multiple, independent search boxes on a page, all pointing to different instances.) It doesn't have to be `federalist` -- you can change it to whatever you want.\n\nThe results list should be an empty `<div>` tag with the attribute `data-stork=\"federalist-results\"`. Again, here, you can change `federalist` to whatever you want.\n\nThe classes in the example above (`stork-input`, `stork-output`) are for the theme. Most Stork themes assume the format above; the theme documentation will tell you if it requires something different. You can also design your own theme, at which point the styling and class names are up to you.\n\n### Step 2: Include the Javascript\n\nYou need to include `stork.js`, which you can either load from the Stork CDN or host yourself. This will load the Stork WebAssembly blob and create the Stork object, which will allow for registering and configuring indices.\n\nThen, you should register at least one index:\n\n```javascript\nstork.register(\"federalist\", \"http://files.stork-search.net/federalist.st\");\n```\n\nThe search index you build needs to be stored somewhere with a public URL. To register\n\nThis registers the index stored at `http://files.stork-search.net/federalist.st` under the name `federalist`; the `data-stork` attributes in the HTML will hook into this name.\n\nFinally, you can set some configuration options for how your search bar will interact with the index and with the page.\n\n## Building your own index\n\nYou probably don't want to add an interface to your own website that lets you search through the Federalist papers. Here's how to make your search bar yours.\n\nTo build an index, you need the Stork executable on your computer, which you can install at the [latest Github release](https://github.com/jameslittle230/stork/releases) or by running `cargo install stork-search --locked` if you have a Rust toolchain installed.\n\nThe search index is based on a document structure: you give Stork a list of documents on disk and include some metadata about those documents, and Stork will build its search index based on the contents of those documents.\n\nFirst, you need a configuration file that describes, among other things, that list of files:\n\n```toml\n[input]\nbase_directory = \"test/federalist\"\nfiles = [\n    {path = \"federalist-1.txt\", url = \"/federalist-1/\", title = \"Introduction\"},\n    {path = \"federalist-2.txt\", url = \"/federalist-2/\", title = \"Concerning Dangers from Foreign Force and Influence\"},\n    {path = \"federalist-3.txt\", url = \"/federalist-3/\", title = \"Concerning Dangers from Foreign Force and Influence 2\"},\n    {path = \"federalist-4.txt\", url = \"/federalist-4/\", title = \"Concerning Dangers from Foreign Force and Influence 3\"},\n    {path = \"federalist-5.txt\", url = \"/federalist-5/\", title = \"Concerning Dangers from Foreign Force and Influence 4\"},\n    {path = \"federalist-6.txt\", url = \"/federalist-6/\", title = \"Concerning Dangers from Dissensions Between the States\"},\n    {path = \"federalist-7.txt\", url = \"/federalist-7/\", title = \"Concerning Dangers from Dissensions Between the States 2\"},\n    {path = \"federalist-8.txt\", url = \"/federalist-8/\", title = \"The Consequences of Hostilities Between the States\"},\n    {path = \"federalist-9.txt\", url = \"/federalist-9/\", title = \"The Union as a Safeguard Against Domestic Faction and Insurrection\"},\n    {path = \"federalist-10.txt\", url = \"/federalist-10/\", title = \"The Union as a Safeguard Against Domestic Faction and Insurrection 2\"}\n]\n```\n\nThis TOML file describes the base directory of all your documents, then lists out each document along with the web URL at which that document will be found, along with that document's title.\n\nFrom there, you can build your search index by running:\n\n```bash\n$ stork build --input federalist.toml --output federalist.st\n```\n\nThis will create a new file at `federalist.st`. You can search through it with the same command line tool:\n\n```bash\n$ stork search --index federalist.st --query \"liberty\"\n```\n\nTo embed a Stork search interface on your website, first upload the index file to your web server, then pass its URL to the `stork.register()` function in your web page's Javascript.\n\n## Going further\n\nYou can read more documentation and learn more about customization at the project's website: <https://stork-search.net>.\n\n# Development\n\nTo build Stork, you'll need:\n\n- [Rust](https://www.rust-lang.org), using the stable toolchain\n- [wasm-pack](https://github.com/rustwasm/wasm-pack)\n- [yarn](https://yarnpkg.com)\n- [Just](https://github.com/casey/just) if you want to use the same build scripts I do (otherwise you can read the Justfile and run the scripts manually)\n\nThe repository is structured like a [typical Cargo workspace](https://doc.rust-lang.org/cargo/reference/workspaces.html), with some modifications.\n\n- The `stork-*` directories hold Rust packages. `stork-cli` and `stork-wasm` are the top-level packages; everything else is a dependency.\n- `js` holds the Javascript source code.\n- `test-assets` holds binary assets required by Stork's functional tests.\n- `local-dev` holds configuration files, corpora, and index files required to build and run the test webpage used for local development.\n\nYou can build the project using either the Rust entrypoint or the Javascript entrypoint (build instructions are listed below). After you've built the project, you'll see three more directories:\n\n- `target` holds the output binary build artifacts\n- `pkg` holds intermediate WASM build artifacts\n- `dist` holds the final build artifacts for the web.\n\nIf you're interested in extracting the final Stork build artifacts, you can extract the following files after building the project with `yarn build`:\n\n- `/target/release/stork`\n- `/dist/stork.js`\n- `/dist/stork.wasm`\n\n## Building the project for production\n\n- `just build-indexer` will build the indexer binary to `target/release/stork`\n- `just build-js` will build the WASM binary and the Javascript bridging code to the `dist` directory\n- `just build-federalist-index` will build the federalist.st index file that's referenced throughout the project. It will output to `local-dev/test-indexes/federalist.st`.\n\n### Building the project for development\n\n- `just build-indexer-dev` will build the indexer binary\n- `cargo run -- <CLI OPTIONS>` will run the indexer binary\n- `just build-dev-site` will build the WASM and Javascript bridge code, build the federalist.st index, and package the development site\n- `./scripts/serve.sh` will serve the development site\n\nTake a look at the project's Justfile for more available scripts.\n"
+}

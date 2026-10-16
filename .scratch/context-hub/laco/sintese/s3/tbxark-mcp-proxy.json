@@ -1,0 +1,49 @@
+{
+ "nome": "TBXark/mcp-proxy",
+ "url": "https://github.com/TBXark/mcp-proxy",
+ "papel": "repasse de MCP",
+ "windows": "yes (binário windows_amd64 nos releases; go install)",
+ "mcp": "yes (agrega vários servidores MCP; entrada SSE ou streamable HTTP; clientes stdio, sse, streamable-http)",
+ "portugues": "nao_aplicavel",
+ "markdown_frontmatter": "nao_aplicavel",
+ "atualizacao": "nao_aplicavel (repasse; sem índice)",
+ "embeddings_endpoint": "nao usa embeddings",
+ "recursos": "binário único em Go; sem número de memória na fonte (Docker é opcional)",
+ "licenca": "MIT",
+ "ultimo_release": "v1.1.0 (feed de releases atualizado 2026-09-15)",
+ "atividade": "commit em 2026-09-15",
+ "maturidade": "stable (v1.x)",
+ "encaixe": "Serviço na rede ou no disco de cada máquina agregando o MCP do banco e outros num único endpoint HTTP. Impedimento: lançar servidores stdio via npx/uvx exige Node/Python locais.",
+ "evidencias": [
+  {
+   "campo": "mcp",
+   "url": "https://github.com/TBXark/mcp-proxy",
+   "citacao": "An MCP proxy that aggregates multiple MCP servers behind a single HTTP entrypoint."
+  },
+  {
+   "campo": "mcp",
+   "url": "https://github.com/TBXark/mcp-proxy",
+   "citacao": "Flexible config: supports `stdio`, `sse`, and `streamable-http` client types."
+  },
+  {
+   "campo": "windows",
+   "url": "https://github.com/TBXark/mcp-proxy/releases/tag/v1.1.0",
+   "citacao": "mcp-proxy_1.1.0_windows_amd64.tar.gz"
+  },
+  {
+   "campo": "recursos",
+   "url": "https://github.com/TBXark/mcp-proxy",
+   "citacao": "go install github.com/tbxark/mcp-proxy@latest"
+  },
+  {
+   "campo": "licenca",
+   "url": "https://github.com/TBXark/mcp-proxy",
+   "citacao": "This project is licensed under the MIT License."
+  }
+ ],
+ "nao_verificado": [
+  "CI com windows-latest",
+  "memória em execução",
+  "data exata do último commit na branch principal além do feed"
+ ]
+}

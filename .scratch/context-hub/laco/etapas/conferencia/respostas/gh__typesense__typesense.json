@@ -1,0 +1,36 @@
+{
+ "chave": "gh:typesense/typesense",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T12:00:00Z",
+ "resultado": "corrige",
+ "conferencia": {
+  "resultado": "corrige",
+  "final": {
+   "serve": "search",
+   "role": "Fast typo-tolerant search engine with keyword, vector, hybrid and semantic search; single C++ binary",
+   "place": [
+    "disk",
+    "network_service"
+   ],
+   "mechanism": [
+    "bm25",
+    "full_text",
+    "vector",
+    "hybrid",
+    "embeddings"
+   ],
+   "mcp": "unknown",
+   "windows": "no",
+   "portuguese": "unknown",
+   "license": "unknown",
+   "maturity": "stable",
+   "doubt": false,
+   "evidence": "Binaries published for Linux and Mac only; Docker image available; hybrid/semantic search built in"
+  },
+  "o_que_mudou": [
+   "windows: unknown -> no, binaries only for Linux/Mac (Docker needed)",
+   "license: Apache-2.0 -> unknown, README excerpt does not state it"
+  ],
+  "nota": "Strong search-engine candidate (hybrid, embeddings) but needs Docker on Windows and a server process."
+ }
+}

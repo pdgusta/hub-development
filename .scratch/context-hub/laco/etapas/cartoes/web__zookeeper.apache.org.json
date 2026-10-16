@@ -1,0 +1,35 @@
+{
+ "chave": "web:zookeeper.apache.org",
+ "urls": [
+  "https://zookeeper.apache.org/"
+ ],
+ "tipos": [
+  "service"
+ ],
+ "termos": [
+  "zookeeper",
+  "config management",
+  "ZooKeeper",
+  "distributed configuration",
+  "distributed synchronization"
+ ],
+ "mencoes": 2,
+ "familias": [
+  "gpt-oss",
+  "mistral"
+ ],
+ "primeira_onda": 2,
+ "nomes": [
+  "Apache ZooKeeper",
+  "ZooKeeper"
+ ],
+ "resumos": [
+  "Coordination service used by SolrCloud to manage cluster state and configuration.",
+  "ZooKeeperは、分散アプリケーションの構成と同期を管理するためのサービスです。"
+ ],
+ "fonte": "site",
+ "readme_status": "ok",
+ "readme_nome": "https://zookeeper.apache.org/",
+ "readme_cortado": false,
+ "readme": "[Apache ZooKeeper]\n\nThe standard for distributed coordination\nNaming, configuration management, synchronization, and group services — battle-tested coordination primitives in a simple, highly reliable interface.\nDownloadRead Documentation\n\nzkCli.sh\n\n$ bin/zkCli.sh -server 127.0.0.1:2181\nConnecting to 127.0.0.1:2181\nWelcome to ZooKeeper!\nJLine support is enabled\n[zk: 127.0.0.1:2181(CONNECTED) 0] create /myapp \"config_data\"\nCreated /myapp\n[zk: 127.0.0.1:2181(CONNECTED) 1] get /myapp\nconfig_data\n[zk: 127.0.0.1:2181(CONNECTED) 2] ls /\n[myapp, zookeeper]\n[zk: 127.0.0.1:2181(CONNECTED) 3] \n\nWhy ZooKeeper\nA proven coordination kernel trusted by Kafka, Hadoop, HBase, and many other distributed systems.\n\nHigh Performance\nIn-memory messaging with sub-millisecond latency; handles tens of thousands of requests per second.\n\nSimple & Reliable\nA clean hierarchical namespace modeled after a file system makes coordination logic easy to reason about.\n\nOrdered Operations\nEvery update is stamped with a monotonically increasing zxid, giving clients a total ordering guarantee.\n\nFault-Tolerant\nReplicated across an ensemble of servers; survives node failures automatically with no data loss.\n\nUse Cases\nCommon patterns and distributed systems problems where ZooKeeper excels.\n\nLeader Election\nElect a single master among distributed workers reliably using ephemeral znodes and watches.\n\nDistributed Locking\nImplement mutexes and read/write locks across cluster nodes without a single point of failure.\n\nService Discovery\nRegister and look up live service instances dynamically as nodes join or leave the cluster.\n\nConfiguration Management\nPropagate config changes to all nodes instantly with watches — no polling required.\n\nCluster Membership\nTrack which nodes are alive in real time using ephemeral nodes and group membership recipes.\n\nBarrier Synchronization\nCoordinate phased computations so all workers start and finish a phase together.\n\nA Vibrant Community\nZooKeeper is a top-level Apache project with an active community of users and contributors. Join discussions, read the documentation, and help shape the roadmap.\nMailing ListsContributeCredits\nNews\nZooKeeper release announcements and project news.\nSlack Channel\nChat with the community on #zookeeper in the ASF Slack workspace.\nSecurity\nReport vulnerabilities and review known CVEs.\n\nGetting Started\nUp and running with ZooKeeper in a few simple steps.\n\n1. Download\nGrab the latest stable release and verify checksums.\nLearn more \n2. Quick Start\nSet up a single ZooKeeper server and learn the basics of the CLI.\nLearn more \n3. Write a Client\nFollow the basic tutorial to implement distributed primitives like barriers and queues.\nLearn more"
+}

@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mapa de grupos e lugares</title>
+<style>
+:root { --bg:#ffffff; --ink:#1d2330; --muted:#5b6474; }
+body { margin:0; padding:16px; background:var(--bg); color:var(--ink);
+  font-family: system-ui, "Segoe UI", Arial, sans-serif; }
+h1 { font-size:20px; margin:0 0 6px; }
+p.nota { font-size:13px; color:var(--muted); max-width:1100px; margin:0 0 12px; line-height:1.45; }
+.wrap { width:100%; max-width:1480px; overflow-x:auto; }
+svg { width:100%; height:auto; display:block; }
+ol.ligacoes { font-size:13px; line-height:1.5; max-width:1100px; padding-left:22px; }
+h2 { font-size:15px; margin:18px 0 6px; }
+.titulo { font-size:20px; font-weight:700; fill:#1d2330; }
+.sub { font-size:12px; fill:#5b6474; }
+.lh { font-size:14px; font-weight:700; fill:#2b3446; }
+.gh { font-size:12px; font-weight:700; fill:#2f4f86; }
+.ct { font-size:12px; font-weight:600; fill:#1d2330; }
+.cs { font-size:10.5px; fill:#4a5263; }
+.bd { fill:#1d2330; }
+.bdt { font-size:10px; font-weight:700; fill:#ffffff; }
+.ln { stroke:#1d2330; stroke-width:1.6; fill:none; }
+.ln.dash { stroke-dasharray:5 4; }
+.mk { fill:#1d2330; }
+.comp { fill:#ffffff; stroke:#7a8aa8; stroke-width:1; }
+.comp.dash { fill:#fffbef; stroke:#b7872e; stroke-dasharray:5 3; }
+.ator { fill:#fff3e0; stroke:#c07a20; stroke-width:1.2; }
+.grp { fill:#eef3fb; stroke:#8aa0c8; stroke-width:1; }
+.lugar-maq { fill:#f3f5f9; stroke:#7d8798; stroke-width:2; }
+.lugar-sessao { fill:#edf9f2; stroke:#4f9e74; stroke-width:1.5; }
+.lugar-cfg { fill:#f8f0fd; stroke:#8a5bb8; stroke-width:1.5; }
+.lugar-fora { fill:#fff8ec; stroke:#c07a20; stroke-width:1.5; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { --bg:#15181f; --ink:#e6e9ef; --muted:#aab2c0; }
+}
+:root[data-theme="dark"] { --bg:#15181f; --ink:#e6e9ef; --muted:#aab2c0; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .titulo { fill:#e6e9ef; }
+  :root:not([data-theme="light"]) .sub { fill:#aab2c0; }
+  :root:not([data-theme="light"]) .lh { fill:#d7dce6; }
+  :root:not([data-theme="light"]) .gh { fill:#9db8e6; }
+  :root:not([data-theme="light"]) .ct { fill:#e6e9ef; }
+  :root:not([data-theme="light"]) .cs { fill:#aab2c0; }
+  :root:not([data-theme="light"]) .bd { fill:#e6e9ef; }
+  :root:not([data-theme="light"]) .bdt { fill:#15181f; }
+  :root:not([data-theme="light"]) .ln { stroke:#e6e9ef; }
+  :root:not([data-theme="light"]) .mk { fill:#e6e9ef; }
+  :root:not([data-theme="light"]) .comp { fill:#222833; stroke:#6f7f9c; }
+  :root:not([data-theme="light"]) .comp.dash { fill:#2a2618; stroke:#c9963e; }
+  :root:not([data-theme="light"]) .ator { fill:#33270f; stroke:#d08c2a; }
+  :root:not([data-theme="light"]) .grp { fill:#1a2333; stroke:#5a7ab0; }
+  :root:not([data-theme="light"]) .lugar-maq { fill:#1b1f28; stroke:#6b7588; }
+  :root:not([data-theme="light"]) .lugar-sessao { fill:#152a22; stroke:#4f9e74; }
+  :root:not([data-theme="light"]) .lugar-cfg { fill:#241a2e; stroke:#9a6cc8; }
+  :root:not([data-theme="light"]) .lugar-fora { fill:#2a2116; stroke:#c07a20; }
+}
+:root[data-theme="dark"] .titulo { fill:#e6e9ef; }
+:root[data-theme="dark"] .sub { fill:#aab2c0; }
+:root[data-theme="dark"] .lh { fill:#d7dce6; }
+:root[data-theme="dark"] .gh { fill:#9db8e6; }
+:root[data-theme="dark"] .ct { fill:#e6e9ef; }
+:root[data-theme="dark"] .cs { fill:#aab2c0; }
+:root[data-theme="dark"] .bd { fill:#e6e9ef; }
+:root[data-theme="dark"] .bdt { fill:#15181f; }
+:root[data-theme="dark"] .ln { stroke:#e6e9ef; }
+:root[data-theme="dark"] .mk { fill:#e6e9ef; }
+:root[data-theme="dark"] .comp { fill:#222833; stroke:#6f7f9c; }
+:root[data-theme="dark"] .comp.dash { fill:#2a2618; stroke:#c9963e; }
+:root[data-theme="dark"] .ator { fill:#33270f; stroke:#d08c2a; }
+:root[data-theme="dark"] .grp { fill:#1a2333; stroke:#5a7ab0; }
+:root[data-theme="dark"] .lugar-maq { fill:#1b1f28; stroke:#6b7588; }
+:root[data-theme="dark"] .lugar-sessao { fill:#152a22; stroke:#4f9e74; }
+:root[data-theme="dark"] .lugar-cfg { fill:#241a2e; stroke:#9a6cc8; }
+:root[data-theme="dark"] .lugar-fora { fill:#2a2116; stroke:#c07a20; }
+</style>
+</head>
+<body>
+<h1>Mapa de grupos e lugares</h1>
+<p class="nota">Lugares (quadros grandes): a máquina do par, com a sessão do agente e a configuração da ferramenta dentro dela,
+e as coisas fora das máquinas. Grupos (faixas azuis) reúnem o que fica junto e por quê; componentes (caixas) vivem dentro do
+seu grupo. Os tracejados marcam o que ainda não existe, está em curso ou é lacuna. Os números ligam os extremos de cada
+ligação principal; a lista está abaixo do desenho.</p>
+<div class="wrap">
+<svg viewBox="0 0 1480 1080" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="t1 d1">
+<title id="t1">Mapa de grupos e lugares do context hub</title>
+<desc id="d1">Lugares: máquina do par, com sessão do agente e configuração da ferramenta dentro; fora das máquinas à esquerda. Grupos e componentes dentro de cada lugar; setas e números para as ligações principais.</desc>
+<defs>
+<marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+<path class="mk" d="M0,0 L10,5 L0,10 z"/>
+</marker>
+</defs>
+<text x="20" y="32" class="titulo">Mapa de grupos e lugares: context hub (prova de conceito)</text>
+<text x="20" y="54" class="sub">Cada componente dentro do seu grupo; cada grupo dentro do lugar onde vive de fato.</text>
+<rect x="336" y="72" width="290" height="58" rx="6" class="ator"/>
+<text x="346" y="89" class="ct">Gustavo</text>
+<text x="346" y="103" class="cs">edita no Obsidian e no Explorador; pede aos agentes</text>
+<rect x="656" y="72" width="340" height="58" rx="6" class="ator"/>
+<text x="666" y="89" class="ct">Claude Desktop (fora do hub)</text>
+<text x="666" y="103" class="cs">lê pela ponte mcp-remote até a porta do banco</text>
+<rect x="320" y="156" width="1140" height="904" rx="10" class="lugar-maq"/>
+<text x="332" y="176" class="lh">MÁQUINA DO PAR: Windows, disco NTFS, hub em C:\context-hub</text>
+<rect x="336" y="200" width="290" height="228" rx="8" class="grp"/>
+<text x="346" y="219" class="gh">Portas do par</text>
+<rect x="346" y="236" width="270" height="54" rx="6" class="comp"/>
+<text x="356" y="253" class="ct">Porta do banco (MCP do fork)</text>
+<text x="356" y="267" class="cs">lê com versão; grava levando a versão lida</text>
+<text x="356" y="280" class="cs">guarda de versão: a construir</text>
+<rect x="346" y="300" width="270" height="54" rx="6" class="comp"/>
+<text x="356" y="317" class="ct">Porta de leitura (MCP, só leitura)</text>
+<text x="356" y="331" class="cs">token; na rede privada, só para clientes</text>
+<rect x="346" y="364" width="270" height="54" rx="6" class="comp"/>
+<text x="356" y="381" class="ct">Camada de busca (arctic, MCP HTTP)</text>
+<text x="356" y="395" class="cs">palavra e sentido sobre a vista do disco</text>
+<text x="356" y="408" class="cs">índice .obsidian-hybrid-search.db por máquina</text>
+<rect x="656" y="200" width="340" height="228" rx="8" class="grp"/>
+<text x="666" y="219" class="gh">Núcleo de dados do par</text>
+<rect x="666" y="236" width="320" height="54" rx="6" class="comp"/>
+<text x="676" y="253" class="ct">Banco local (CouchDB)</text>
+<text x="676" y="267" class="cs">a verdade: notas, histórico, conflitos; cifrado</text>
+<text x="676" y="280" class="cs">cada par tem o seu; replica com o outro</text>
+<rect x="666" y="300" width="320" height="54" rx="6" class="comp"/>
+<text x="676" y="317" class="ct">Vista Markdown (disco)</text>
+<text x="676" y="331" class="cs">os .md que o Gustavo vê e edita no Obsidian</text>
+<text x="676" y="344" class="cs">gerada do banco; a edição volta ao banco</text>
+<rect x="666" y="364" width="320" height="54" rx="6" class="comp"/>
+<text x="676" y="381" class="ct">Sincronizador (agendado)</text>
+<text x="676" y="395" class="cs">disco e banco nos dois sentidos, em cerca de 2 s</text>
+<text x="676" y="408" class="cs">roda no logon e repete a cada minuto</text>
+<rect x="1026" y="200" width="418" height="228" rx="8" class="grp"/>
+<text x="1036" y="219" class="gh">Vigilância</text>
+<rect x="1036" y="236" width="398" height="54" rx="6" class="comp"/>
+<text x="1046" y="253" class="ct">Vigia (a cada 5 min, agendada)</text>
+<text x="1046" y="267" class="cs">confere troca, conflitos, sincronizador e divergência</text>
+<text x="1046" y="280" class="cs">grava estado curto; avisa quando piora</text>
+<rect x="1036" y="300" width="398" height="54" rx="6" class="comp"/>
+<text x="1046" y="317" class="ct">Avisos</text>
+<text x="1046" y="331" class="cs">notificação do Windows quando piora</text>
+<text x="1046" y="344" class="cs">estado curto no início de sessão; estado na tela</text>
+<rect x="1036" y="364" width="398" height="54" rx="6" class="comp dash"/>
+<text x="1046" y="381" class="ct">Quem religa a vigia se ela parar</text>
+<text x="1046" y="395" class="cs">lacuna: ninguém decidiu quem percebe nem religa</text>
+<rect x="336" y="450" width="290" height="290" rx="8" class="grp"/>
+<text x="346" y="469" class="gh">Periferia do par</text>
+<rect x="346" y="486" width="270" height="54" rx="6" class="comp"/>
+<text x="356" y="503" class="ct">Obsidian com plugin de sync</text>
+<text x="356" y="517" class="cs">onde o Gustavo edita e resolve conflito</text>
+<text x="356" y="530" class="cs">pode fechar; se aberto, leva ao banco</text>
+<rect x="346" y="550" width="270" height="54" rx="6" class="comp"/>
+<text x="356" y="567" class="ct">Cópia local (git) e tarefa diária</text>
+<text x="356" y="581" class="cs">commit e push do ramo da máquina no GitHub</text>
+<text x="356" y="594" class="cs">uma vez por dia; nunca puxa nem escreve no hub</text>
+<rect x="346" y="614" width="270" height="54" rx="6" class="comp"/>
+<text x="356" y="631" class="ct">Nó da rede privada (Tailscale)</text>
+<text x="356" y="645" class="cs">põe o par na rede; só no Windows</text>
+<text x="356" y="658" class="cs">chave do nó vence em 180 dias</text>
+<rect x="346" y="678" width="270" height="54" rx="6" class="comp"/>
+<text x="356" y="695" class="ct">Credenciais e segredos</text>
+<text x="356" y="709" class="cs">senha, frase-senha, token, chave do GitHub</text>
+<text x="356" y="722" class="cs">ficam na máquina; .secrets/ fica fora do git</text>
+<rect x="656" y="450" width="340" height="290" rx="8" class="grp"/>
+<text x="666" y="469" class="gh">Conteúdo no disco</text>
+<rect x="666" y="486" width="320" height="54" rx="6" class="comp"/>
+<text x="676" y="503" class="ct">Raízes e iniciativas</text>
+<text x="676" y="517" class="cs">seis raízes; cada iniciativa com núcleo e blocos</text>
+<text x="676" y="530" class="cs">o que termina vai para o _archive da raiz</text>
+<rect x="666" y="550" width="320" height="54" rx="6" class="comp"/>
+<text x="676" y="567" class="ct">Nota de retomada (retomada.md)</text>
+<text x="676" y="581" class="cs">sete campos; sobrescrita; uma por trabalho</text>
+<text x="676" y="594" class="cs">a checagem de sessão a abre</text>
+<rect x="666" y="614" width="320" height="54" rx="6" class="comp"/>
+<text x="676" y="631" class="ct">Acervo do maestro</text>
+<text x="676" y="645" class="cs">agents/skills/maestro-*: opções, não regras</text>
+<text x="676" y="658" class="cs">o maestro acrescenta; alterar pede aval</text>
+<rect x="666" y="678" width="320" height="54" rx="6" class="comp"/>
+<text x="676" y="695" class="ct">Contrato (AGENTS.md) e skills</text>
+<text x="676" y="709" class="cs">regras do hub; skills em agents/skills</text>
+<text x="676" y="722" class="cs">chegam às ferramentas por junção</text>
+<rect x="1026" y="450" width="418" height="290" rx="10" class="lugar-sessao"/>
+<text x="1038" y="470" class="lh">SESSÃO DO AGENTE (um por harness aberto)</text>
+<rect x="1036" y="486" width="398" height="54" rx="6" class="comp"/>
+<text x="1046" y="503" class="ct">Agente de código</text>
+<text x="1046" y="517" class="cs">Claude Code, Codex e Copilot; no Maestri ou fora</text>
+<text x="1046" y="530" class="cs">lê o contrato da raiz ao abrir</text>
+<rect x="1036" y="550" width="398" height="54" rx="6" class="comp"/>
+<text x="1046" y="567" class="ct">Maestro, recrutas e subagentes</text>
+<text x="1046" y="581" class="cs">o maestro começa pelo acervo; recruta tem papel</text>
+<text x="1046" y="594" class="cs">subagente roda dentro de quem o chamou</text>
+<rect x="1036" y="614" width="398" height="54" rx="6" class="comp"/>
+<text x="1046" y="631" class="ct">Chat, scratchpad e raciocínio</text>
+<text x="1046" y="645" class="cs">morrem com a sessão; o que importa vai ao hub</text>
+<text x="1046" y="658" class="cs">o checkpoint leva ao hub o que só ela sabe</text>
+<rect x="1036" y="678" width="398" height="54" rx="6" class="comp"/>
+<text x="1046" y="695" class="ct">Porta principal: sessão na raiz do hub</text>
+<text x="1046" y="709" class="cs">a checagem de sessão abre a nota de retomada</text>
+<text x="1046" y="722" class="cs">lê o estado da vigia antes de começar</text>
+<rect x="336" y="770" width="1108" height="270" rx="10" class="lugar-cfg"/>
+<text x="348" y="790" class="lh">CONFIGURAÇÃO DA FERRAMENTA (perfil do usuário): ~/.claude, ~/.codex, ~/.copilot, ~/.agents, ~/.maestri</text>
+<rect x="346" y="800" width="454" height="230" rx="8" class="grp"/>
+<text x="356" y="819" class="gh">Disciplina do agente: hooks</text>
+<rect x="358" y="830" width="430" height="32" rx="6" class="comp"/>
+<text x="368" y="844" class="ct">Checagem de sessão (hook de início)</text>
+<text x="368" y="857" class="cs">lê o estado da vigia; abre a nota de retomada</text>
+<rect x="358" y="866" width="430" height="32" rx="6" class="comp"/>
+<text x="368" y="880" class="ct">Checkpoint (hook de fim de resposta)</text>
+<text x="368" y="893" class="cs">faz o agente gravar o que a resposta mudou</text>
+<rect x="358" y="902" width="430" height="32" rx="6" class="comp"/>
+<text x="368" y="916" class="ct">Guarda do acervo (hook, Claude Code)</text>
+<text x="368" y="929" class="cs">recusa ou pede aval; verificador em outro modelo</text>
+<rect x="358" y="938" width="430" height="32" rx="6" class="comp"/>
+<text x="368" y="952" class="ct">Registro de uso (hook)</text>
+<text x="368" y="965" class="cs">quem usou qual peça do acervo, por máquina</text>
+<rect x="358" y="974" width="430" height="32" rx="6" class="comp"/>
+<text x="368" y="988" class="ct">Lembrete do maestro (hook)</text>
+<text x="368" y="1001" class="cs">só em terminal do Maestri; manda começar pelo acervo</text>
+<rect x="810" y="800" width="624" height="230" rx="8" class="grp"/>
+<text x="820" y="819" class="gh">Ligações, memória e configuração de MCP</text>
+<rect x="822" y="830" width="600" height="32" rx="6" class="comp"/>
+<text x="832" y="844" class="ct">Ligações da ferramenta</text>
+<text x="832" y="857" class="cs">import, link simbólico ou junção: contrato e skills do hub</text>
+<rect x="822" y="866" width="600" height="32" rx="6" class="comp"/>
+<text x="832" y="880" class="ct">Memória privada da ferramenta</text>
+<text x="832" y="893" class="cs">automática, no perfil do usuário; não é o hub</text>
+<rect x="822" y="902" width="600" height="32" rx="6" class="comp"/>
+<text x="832" y="916" class="ct">Configuração de MCP</text>
+<text x="832" y="929" class="cs">aponta a ferramenta para a porta do banco e a camada de busca</text>
+<rect x="822" y="938" width="600" height="32" rx="6" class="comp dash"/>
+<text x="832" y="952" class="ct">Mod do Claude Code (em curso)</text>
+<text x="832" y="965" class="cs">avisos na tela com o estado do sync; ainda não decidido</text>
+<rect x="822" y="974" width="600" height="32" rx="6" class="comp"/>
+<text x="832" y="988" class="ct">Biblioteca do Maestri (~/.maestri)</text>
+<text x="832" y="1001" class="cs">fora do hub; o maestro a confere contra o acervo</text>
+<rect x="20" y="180" width="280" height="880" rx="10" class="lugar-fora"/>
+<text x="32" y="200" class="lh">FORA DAS MÁQUINAS</text>
+<rect x="32" y="212" width="256" height="214" rx="8" class="grp"/>
+<text x="42" y="231" class="gh">Ponte entre máquinas</text>
+<rect x="42" y="240" width="236" height="48" rx="6" class="ator"/>
+<text x="52" y="254" class="ct">Cliente (sandbox ou passagem)</text>
+<text x="52" y="267" class="cs">consulta; só lê; sem cópia do hub</text>
+<rect x="42" y="304" width="236" height="48" rx="6" class="comp"/>
+<text x="52" y="318" class="ct">Rede privada (Tailscale)</text>
+<text x="52" y="331" class="cs">único caminho entre pares e clientes</text>
+<rect x="42" y="368" width="236" height="48" rx="6" class="comp"/>
+<text x="52" y="382" class="ct">Outro par (máquina B)</text>
+<text x="52" y="395" class="cs">mesma forma; troca de mudanças pela rede</text>
+<rect x="32" y="520" width="256" height="96" rx="8" class="grp"/>
+<text x="42" y="539" class="gh">Cópia de segurança</text>
+<rect x="42" y="553" width="236" height="48" rx="6" class="comp"/>
+<text x="52" y="567" class="ct">Cópia no GitHub</text>
+<text x="52" y="580" class="cs">repositório privado; um ramo por máquina</text>
+<rect x="32" y="640" width="256" height="214" rx="8" class="grp"/>
+<text x="42" y="659" class="gh">Referência e modelos</text>
+<rect x="42" y="672" width="236" height="48" rx="6" class="comp"/>
+<text x="52" y="686" class="ct">Vault ai-operating-system</text>
+<text x="52" y="699" class="cs">só referência; o hub não grava nele</text>
+<rect x="42" y="732" width="236" height="48" rx="6" class="comp"/>
+<text x="52" y="746" class="ct">FreeLLMAPI (gateway de modelos)</text>
+<text x="52" y="759" class="cs">máquina pessoal; embeddings e roteamento simples</text>
+<rect x="42" y="792" width="236" height="48" rx="6" class="comp dash"/>
+<text x="52" y="806" class="ct">Embeddings do Google (desligado)</text>
+<text x="52" y="819" class="cs">se ligado, o texto indexado vai ao Google</text>
+<rect x="32" y="870" width="256" height="170" rx="8" class="grp"/>
+<text x="42" y="889" class="gh">Legenda</text>
+<rect x="42" y="902" width="32" height="16" rx="6" class="comp"/>
+<text x="84" y="914" class="cs">existe e está decidido</text>
+<rect x="42" y="924" width="32" height="16" rx="6" class="comp dash"/>
+<text x="84" y="936" class="cs">a construir, em curso ou a decidir</text>
+<text x="84" y="950" class="cs">lacunas aparecem assim também</text>
+<line x1="42" y1="972" x2="74" y2="972" class="ln" marker-end="url(#ah)"/>
+<text x="84" y="976" class="cs">ligação desenhada</text>
+<circle cx="58" cy="996" r="9" class="bd"/><text x="58" y="999.5" class="bdt" text-anchor="middle">5</text>
+<text x="84" y="1000" class="cs">número = ligação da lista</text>
+<text x="42" y="1026" class="cs">NV = não verificado</text>
+<line x1="616" y1="263" x2="666" y2="263" class="ln" marker-end="url(#ah)" marker-start="url(#ah)"/>
+<circle cx="641" cy="263" r="9" class="bd"/><text x="641" y="266.5" class="bdt" text-anchor="middle">20</text>
+<line x1="1036" y1="263" x2="986" y2="263" class="ln" marker-end="url(#ah)"/>
+<circle cx="1011" cy="263" r="9" class="bd"/><text x="1011" y="266.5" class="bdt" text-anchor="middle">11</text>
+<line x1="826" y1="428" x2="826" y2="450" class="ln" marker-end="url(#ah)" marker-start="url(#ah)"/>
+<circle cx="846" cy="439" r="9" class="bd"/><text x="846" y="442.5" class="bdt" text-anchor="middle">12</text>
+<line x1="1240" y1="770" x2="1240" y2="740" class="ln" marker-end="url(#ah)"/>
+<circle cx="1240" cy="755" r="9" class="bd"/><text x="1240" y="758.5" class="bdt" text-anchor="middle">8</text>
+<line x1="900" y1="770" x2="900" y2="740" class="ln" marker-end="url(#ah)"/>
+<circle cx="900" cy="755" r="9" class="bd"/><text x="900" y="758.5" class="bdt" text-anchor="middle">9</text>
+<line x1="278" y1="328" x2="346" y2="327" class="ln" marker-end="url(#ah)"/>
+<circle cx="312" cy="327" r="9" class="bd"/><text x="312" y="330.5" class="bdt" text-anchor="middle">3</text>
+<line x1="160" y1="288" x2="160" y2="304" class="ln" marker-end="url(#ah)"/>
+<line x1="160" y1="352" x2="160" y2="368" class="ln" marker-end="url(#ah)" marker-start="url(#ah)"/>
+<circle cx="190" cy="360" r="9" class="bd"/><text x="190" y="363.5" class="bdt" text-anchor="middle">4</text>
+<line x1="346" y1="577" x2="278" y2="577" class="ln" marker-end="url(#ah)"/>
+<circle cx="312" cy="577" r="9" class="bd"/><text x="312" y="580.5" class="bdt" text-anchor="middle">15</text>
+<circle cx="612" cy="72" r="9" class="bd"/><text x="612" y="75.5" class="bdt" text-anchor="middle">1</text>
+<circle cx="602" cy="486" r="9" class="bd"/><text x="602" y="489.5" class="bdt" text-anchor="middle">1</text>
+<circle cx="578" cy="486" r="9" class="bd"/><text x="578" y="489.5" class="bdt" text-anchor="middle">13</text>
+<circle cx="972" cy="236" r="9" class="bd"/><text x="972" y="239.5" class="bdt" text-anchor="middle">13</text>
+<circle cx="972" cy="300" r="9" class="bd"/><text x="972" y="303.5" class="bdt" text-anchor="middle">1</text>
+<circle cx="948" cy="300" r="9" class="bd"/><text x="948" y="303.5" class="bdt" text-anchor="middle">7</text>
+<circle cx="924" cy="300" r="9" class="bd"/><text x="924" y="303.5" class="bdt" text-anchor="middle">14</text>
+<circle cx="982" cy="72" r="9" class="bd"/><text x="982" y="75.5" class="bdt" text-anchor="middle">2</text>
+<circle cx="602" cy="236" r="9" class="bd"/><text x="602" y="239.5" class="bdt" text-anchor="middle">2</text>
+<circle cx="578" cy="236" r="9" class="bd"/><text x="578" y="239.5" class="bdt" text-anchor="middle">5</text>
+<circle cx="264" cy="392.0" r="9" class="bd"/><text x="264" y="395.5" class="bdt" text-anchor="middle">4</text>
+<circle cx="948" cy="236" r="9" class="bd"/><text x="948" y="239.5" class="bdt" text-anchor="middle">4</text>
+<circle cx="264" cy="264.0" r="9" class="bd"/><text x="264" y="267.5" class="bdt" text-anchor="middle">3</text>
+<circle cx="602" cy="300" r="9" class="bd"/><text x="602" y="303.5" class="bdt" text-anchor="middle">3</text>
+<circle cx="1420" cy="486" r="9" class="bd"/><text x="1420" y="489.5" class="bdt" text-anchor="middle">5</text>
+<circle cx="1396" cy="486" r="9" class="bd"/><text x="1396" y="489.5" class="bdt" text-anchor="middle">6</text>
+<circle cx="1372" cy="486" r="9" class="bd"/><text x="1372" y="489.5" class="bdt" text-anchor="middle">7</text>
+<circle cx="1348" cy="486" r="9" class="bd"/><text x="1348" y="489.5" class="bdt" text-anchor="middle">19</text>
+<circle cx="1420" cy="550" r="9" class="bd"/><text x="1420" y="553.5" class="bdt" text-anchor="middle">5</text>
+<circle cx="602" cy="364" r="9" class="bd"/><text x="602" y="367.5" class="bdt" text-anchor="middle">6</text>
+<circle cx="578" cy="364" r="9" class="bd"/><text x="578" y="367.5" class="bdt" text-anchor="middle">14</text>
+<circle cx="554" cy="364" r="9" class="bd"/><text x="554" y="367.5" class="bdt" text-anchor="middle">16</text>
+<circle cx="774" cy="918.0" r="9" class="bd"/><text x="774" y="921.5" class="bdt" text-anchor="middle">10</text>
+<circle cx="972" cy="614" r="9" class="bd"/><text x="972" y="617.5" class="bdt" text-anchor="middle">10</text>
+<circle cx="972" cy="364" r="9" class="bd"/><text x="972" y="367.5" class="bdt" text-anchor="middle">11</text>
+<circle cx="774" cy="846.0" r="9" class="bd"/><text x="774" y="849.5" class="bdt" text-anchor="middle">8</text>
+<circle cx="774" cy="882.0" r="9" class="bd"/><text x="774" y="885.5" class="bdt" text-anchor="middle">8</text>
+<circle cx="972" cy="550" r="9" class="bd"/><text x="972" y="553.5" class="bdt" text-anchor="middle">9</text>
+<circle cx="264" cy="577.0" r="9" class="bd"/><text x="264" y="580.5" class="bdt" text-anchor="middle">15</text>
+<circle cx="264" cy="816.0" r="9" class="bd"/><text x="264" y="819.5" class="bdt" text-anchor="middle">16</text>
+<circle cx="240" cy="816.0" r="9" class="bd"/><text x="240" y="819.5" class="bdt" text-anchor="middle">17</text>
+<circle cx="264" cy="756.0" r="9" class="bd"/><text x="264" y="759.5" class="bdt" text-anchor="middle">17</text>
+<circle cx="602" cy="614" r="9" class="bd"/><text x="602" y="617.5" class="bdt" text-anchor="middle">18</text>
+<circle cx="264" cy="328.0" r="9" class="bd"/><text x="264" y="331.5" class="bdt" text-anchor="middle">18</text>
+<circle cx="264" cy="696.0" r="9" class="bd"/><text x="264" y="699.5" class="bdt" text-anchor="middle">19</text>
+</svg>
+</div>
+<h2>Ligações principais</h2>
+<ol class="ligacoes">
+<li>O Gustavo edita no Obsidian (o plugin leva ao banco com o Obsidian aberto) ou no Explorador (o sincronizador leva ao banco).</li>
+<li>O Claude Desktop lê pela ponte mcp-remote até a porta do banco; gravar por essa ponte está em aberto.</li>
+<li>O cliente consulta pela rede privada, só leitura, com token, na porta de leitura de um par.</li>
+<li>Os pares trocam as próprias mudanças pela rede privada; o banco de cada um envia ao do outro.</li>
+<li>O agente de código e o maestro leem e gravam pela porta do banco, levando a versão lida.</li>
+<li>O agente pergunta à camada de busca e recebe o trecho, não o arquivo inteiro.</li>
+<li>O agente pode editar o disco direto, sem conferir versão (ainda a decidir).</li>
+<li>Os hooks de início e de fim de resposta rodam dentro da sessão do agente.</li>
+<li>O checkpoint mantém a nota de retomada em dia.</li>
+<li>A guarda do acervo recusa ou pede aval antes de alterar uma peça do acervo.</li>
+<li>A vigia lê o banco e o sincronizador e avisa quando a divergência piora.</li>
+<li>O núcleo de dados mantém a vista do disco, que é o conteúdo do hub.</li>
+<li>O Obsidian, com o plugin aberto, leva ao banco as edições do Gustavo.</li>
+<li>A camada de busca indexa a vista do disco da própria máquina.</li>
+<li>A cópia local manda a vista ao GitHub uma vez por dia, um ramo por máquina.</li>
+<li>A camada de busca pode usar embeddings do Google; hoje desligado (tracejado).</li>
+<li>O gateway FreeLLMAPI, na máquina pessoal, serve o embedding do Google e o roteamento de tarefas simples.</li>
+<li>O nó da rede privada põe a máquina na rede privada do Tailscale.</li>
+<li>O agente lê a vault antiga como referência; o hub não grava nela.</li>
+<li>A porta do banco e o banco local trocam a verdade: a porta lê e grava no CouchDB.</li>
+</ol>
+</body>
+</html>

@@ -1,0 +1,32 @@
+{
+ "chave": "gh:facebookresearch/contriever",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T21:08:30Z",
+ "resultado": "corrige",
+ "conferencia": {
+  "resultado": "corrige",
+  "final": {
+   "serve": "search",
+   "role": "Pre-trained dense retriever models (Contriever, multilingual mContriever) plus training and evaluation code.",
+   "place": [
+    "library",
+    "disk"
+   ],
+   "mechanism": [
+    "vector",
+    "embeddings"
+   ],
+   "mcp": "unknown",
+   "windows": "unknown",
+   "portuguese": "unknown",
+   "license": "unknown",
+   "maturity": "unknown",
+   "doubt": false,
+   "evidence": "mcontriever: pre-trained on 29 languages using data from CC-net; loaded via HuggingFace transformers; Portuguese not listed in the visible text"
+  },
+  "o_que_mudou": [
+   "portuguese: yes -> unknown, README gives 29 languages but visible text never names Portuguese"
+  ],
+  "nota": "Research-grade embedding models with a multilingual variant; a candidate embedder but needs own indexing and serving."
+ }
+}

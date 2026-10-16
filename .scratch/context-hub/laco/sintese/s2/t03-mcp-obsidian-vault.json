@@ -1,0 +1,133 @@
+{
+ "tema": "t03-mcp-obsidian-vault",
+ "consultas": [
+  "Obsidian vault MCP server semantic search hybrid 2026 github",
+  "MCP server markdown folder full-text search BM25 SQLite Windows obsidian",
+  "obsidian-mcp-server search_notes MCP vault local REST API semantic",
+  "obsidian-hybrid-search MCP github full-text fuzzy semantic graph",
+  "memocean-mcp github Obsidian BM25 SQLite",
+  "obsidian-brain MCP server github semantic search knowledge graph vault",
+  "fetch github READMEs: aliasunder/vault-cortex, planexhq/markdown-mcp, flowing-abyss/obsidian-hybrid-search, pvliesdonk/markdown-vault-mcp, ChannelLabAI/memocean, DalecB/obsidian-semantic-mcp, maxkuminov/obsidian-mcp, sweir1/obsidian-brain"
+ ],
+ "achados": [
+  {
+   "nome": "aliasunder/vault-cortex",
+   "url_fonte": "https://github.com/aliasunder/vault-cortex",
+   "o_que_e": "Servidor MCP independente para cofres Obsidian: busca híbrida FTS5 + sqlite-vec + RRF + reranker cross-encoder, OAuth 2.1, memória estruturada.",
+   "lugar": ["inside_db_mcp", "network_service"],
+   "mecanismo": ["full_text", "vector", "hybrid", "reranker"],
+   "mcp": "yes", "windows": "yes", "portugues": "unknown",
+   "licenca": "MIT (imagem :remote embute obsidian-headless proprietário)", "ultimo_release": "não exibido na página", "maturidade": "unknown",
+   "encaixe": "Referência de arquitetura (FTS5+vec+RRF+rerank locais ~45MB) a copiar dentro do MCP do banco; uso direto exige Docker e lê .md em disco, não CouchDB.",
+   "evidencias": [
+    {"url": "https://github.com/aliasunder/vault-cortex", "citacao": "hybrid search, structured memory, task management, files, OAuth 2.1"},
+    {"url": "https://github.com/aliasunder/vault-cortex", "citacao": "WINDOWS_MODE"}
+   ],
+   "nao_verificado": ["modelo de embedding usado e suporte a português", "data de release", "Windows só via Docker Desktop (conferido apenas o modo WINDOWS_MODE)"]
+  },
+  {
+   "nome": "flowing-abyss/obsidian-hybrid-search (OHS)",
+   "url_fonte": "https://github.com/flowing-abyss/obsidian-hybrid-search",
+   "o_que_e": "CLI e MCP de busca híbrida para Obsidian: BM25 FTS5, fuzzy de título, vetor, RRF, reranker opcional, grafo de links.",
+   "lugar": ["disk", "inside_db_mcp", "network_service"],
+   "mecanismo": ["bm25", "full_text", "vector", "hybrid", "reranker", "graph", "embeddings"],
+   "mcp": "yes", "windows": "unknown", "portugues": "unknown",
+   "licenca": "MIT", "ultimo_release": "não exibido (Releases vazio; 621 commits, rodapé 2026)", "maturidade": "unknown",
+   "encaixe": "Candidato a busca em disco: MCP stdio via npx ou HTTP (ohs serve); embeddings default multilingual-e5-small local ou API OpenAI-compatível (FreeLLMAPI).",
+   "evidencias": [
+    {"url": "https://github.com/flowing-abyss/obsidian-hybrid-search", "citacao": "Xenova/multilingual-e5-small"},
+    {"url": "https://github.com/flowing-abyss/obsidian-hybrid-search", "citacao": "stateless MCP Streamable HTTP"}
+   ],
+   "nao_verificado": ["Windows nativo (README não menciona)", "português (README diz 100+ idiomas sem nomear pt)", "benchmarks são autorrelatados", "se exige o app Obsidian instalado"]
+  },
+  {
+   "nome": "DalecB/obsidian-semantic-mcp",
+   "url_fonte": "https://github.com/DalecB/obsidian-semantic-mcp",
+   "o_que_e": "MCP somente leitura sobre cofre Obsidian: índice SQLite local, busca híbrida vetor + FTS5 com bônus de título/caminho/heading, embeddings via Ollama bge-m3.",
+   "lugar": ["disk", "inside_db_mcp"],
+   "mecanismo": ["full_text", "vector", "hybrid", "embeddings"],
+   "mcp": "yes", "windows": "yes", "portugues": "unknown",
+   "licenca": "MIT", "ultimo_release": "0.3.1 (página também cita 0.2.1)", "maturidade": "alpha",
+   "encaixe": "Prova de Windows nativo (cmd /c npx) e bge-m3 multilíngue com URL Ollama remota; serve de modelo, mas é early preview.",
+   "evidencias": [
+    {"url": "https://glama.ai/mcp/servers/knqe7im3mr", "citacao": "early preview"},
+    {"url": "https://glama.ai/mcp/servers/knqe7im3mr", "citacao": "cmd /c npx"}
+   ],
+   "nao_verificado": ["fonte lida foi a listagem Glama, não o README do GitHub", "português explícito"]
+  },
+  {
+   "nome": "sweir1/obsidian-brain",
+   "url_fonte": "https://github.com/sweir1/obsidian-brain",
+   "o_que_e": "MCP Node independente: embeddings por heading + BM25 FTS5 com RRF, PageRank/Louvain, edição de notas; lê .md do disco.",
+   "lugar": ["disk", "inside_db_mcp"],
+   "mecanismo": ["bm25", "vector", "hybrid", "graph", "embeddings"],
+   "mcp": "yes", "windows": "unknown", "portugues": "unknown",
+   "licenca": "Apache-2.0", "ultimo_release": "v1.7.24 (2026-05-16)", "maturidade": "stable",
+   "encaixe": "Opção de busca em disco por stdio; chunking por heading é ideia reaproveitável; modelo default ~34MB provavelmente inglês (não conferido).",
+   "evidencias": [
+    {"url": "https://github.com/sweir1/obsidian-brain", "citacao": "v1.7.24"},
+    {"url": "https://github.com/sweir1/obsidian-brain", "citacao": "Apache License 2.0"}
+   ],
+   "nao_verificado": ["Windows", "modelo default e idiomas", "stable é inferência pela cadência de releases"]
+  },
+  {
+   "nome": "pvliesdonk/markdown-vault-mcp (informação nova sobre já conhecido)",
+   "url_fonte": "https://github.com/pvliesdonk/markdown-vault-mcp",
+   "o_que_e": "MCP genérico para pasta Markdown: FTS5 BM25 + semântica, provedores de embedding openai/voyage/ollama/fastembed, stdio e HTTP.",
+   "lugar": ["disk", "inside_db_mcp"],
+   "mecanismo": ["full_text", "bm25", "vector", "hybrid", "embeddings"],
+   "mcp": "yes", "windows": "unknown", "portugues": "unknown",
+   "licenca": "MIT", "ultimo_release": "PyPI 3.0.4 listado; data não conferida", "maturidade": "stable",
+   "encaixe": "Embedding via qualquer endpoint OpenAI-compatível (OPENAI_BASE_URL) casa com o FreeLLMAPI; stemmer de português no FTS5 não conferido.",
+   "evidencias": [
+    {"url": "https://github.com/pvliesdonk/markdown-vault-mcp", "citacao": "openai, voyage, ollama, or fastembed"},
+    {"url": "https://pypi.org/project/markdown-vault-mcp/3.0.4/", "citacao": "Generic markdown vault MCP server with FTS5 + semantic search"}
+   ],
+   "nao_verificado": ["Windows", "stemming/português", "data do release 3.0.4"]
+  },
+  {
+   "nome": "planexhq/markdown-mcp",
+   "url_fonte": "https://github.com/planexhq/markdown-mcp",
+   "o_que_e": "MCP somente leitura sobre cofre Markdown: BM25, filtros de frontmatter, fragmentos por heading, backlinks; TypeScript.",
+   "lugar": ["disk", "inside_db_mcp"],
+   "mecanismo": ["bm25", "full_text", "graph"],
+   "mcp": "yes", "windows": "no", "portugues": "unknown",
+   "licenca": "MIT", "ultimo_release": "não exibido (Releases vazio)", "maturidade": "unknown",
+   "encaixe": "Descartável como está: Windows só via WSL, sem CI nativo; útil só como modelo de busca com filtro de frontmatter.",
+   "evidencias": [
+    {"url": "https://github.com/planexhq/markdown-mcp", "citacao": "Windows is supported via WSL; native Windows is not CI-tested."}
+   ],
+   "nao_verificado": ["stemming/português", "data de release"]
+  },
+  {
+   "nome": "ChannelLabAI/memocean (memocean-mcp)",
+   "url_fonte": "https://github.com/ChannelLabAI/memocean",
+   "o_que_e": "MCP Python para cofres Obsidian: BM25 FTS5 com fallback INSTR, otimizado para CJK, SQLite puro; KNN bge-m3 e rerank Haiku opcionais.",
+   "lugar": ["inside_db_mcp", "disk"],
+   "mecanismo": ["bm25", "full_text", "hybrid", "grep"],
+   "mcp": "yes", "windows": "unknown", "portugues": "unknown",
+   "licenca": "MIT", "ultimo_release": "não exibido; Glama marca manutenção como Stale", "maturidade": "unknown",
+   "encaixe": "Baixo: foco em CJK, deploy Debian, add-ons dependem de Anthropic; interessa só a ideia FTS5 com fallback de substring.",
+   "evidencias": [
+    {"url": "https://glama.ai/mcp/servers/dm67trt8qs", "citacao": "BM25/INSTR hybrid search — CJK-optimized, pure SQLite, no embeddings needed"}
+   ],
+   "nao_verificado": ["fonte lida foi a listagem Glama", "Windows", "benchmark 94.4% Hit@5 é autorrelatado e não conferido"]
+  },
+  {
+   "nome": "maxkuminov/obsidian-mcp",
+   "url_fonte": "https://github.com/maxkuminov/obsidian-mcp",
+   "o_que_e": "Servidor MCP Python/FastAPI com PostgreSQL: FTS tsvector (config configurável, ex. simple ou norwegian), pgvector, grafo de wikilinks, bge-m3 default.",
+   "lugar": ["network_service"],
+   "mecanismo": ["full_text", "vector", "hybrid", "graph", "embeddings"],
+   "mcp": "yes", "windows": "no", "portugues": "unknown",
+   "licenca": "MIT", "ultimo_release": "não exibido (380 commits)", "maturidade": "unknown",
+   "encaixe": "Não encaixa: exige container Linux e PostgreSQL; Windows fora de escopo. Útil só como desenho de referência.",
+   "evidencias": [
+    {"url": "https://github.com/maxkuminov/obsidian-mcp", "citacao": "macOS and Windows hosts are out of scope; run the container on a Linux VM."},
+    {"url": "https://github.com/maxkuminov/obsidian-mcp", "citacao": "bge-m3 is multilingual"}
+   ],
+   "nao_verificado": ["lista exata de configs FTS (README cita english, simple, norwegian como exemplos; portuguese não conferido)", "final da página não lido (10k caracteres)"]
+  }
+ ],
+ "lacunas": "Nenhum servidor conferido mostra stemmer/analisador de português no BM25 nem lê CouchDB/LiveSync; todos assumem pasta .md em disco. Windows nativo só confirmado em obsidian-semantic-mcp (alpha) e vault-cortex (via Docker). Datas de release quase sempre ausentes nas páginas. Não conferidos: cyanheads/obsidian-mcp-server, MCPs de Local REST API, obsidian-mcp (Voyage/Cohere) e mcp-rest (Smart Connections), vistos apenas em listagens."
+}

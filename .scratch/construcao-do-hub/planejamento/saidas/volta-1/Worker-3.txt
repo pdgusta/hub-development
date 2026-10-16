@@ -1,0 +1,49 @@
+
+  ⎿  Added 4 lines
+      340    Windows do Gustavo; o Config Doctor, se a leitura sem o Obsidian aberto não sair na hora (não verificado como
+      341    detectar); a vigia no segundo par, com o outro par pela tailnet. Todos `ready-for-human` ou próxima execução.
+      342  
+      343 +- (Worker 3, volta 1) Da faixa 3: ligar a busca no boot de cada par (tarefa agendada) e o `--host` na interface da                                                   
+      344 +  tailnet: `ready-for-human`; o tempo "edição no outro par → busca" com o LiveSync de verdade; o gemini ligado, que é                                                
+      345 +  escolha do Gustavo (09). A reserva Robusta continua onde está (`bancada-busca/scripts/robusta/`).                                                                  
+      346 +                                                                                                                                                                     
+      347  ## Perguntas ao Gustavo
+      348  
+      349  - (Worker 2, volta 1) **CouchDB descartável no Docker local conta como "serviço"?** As faixas 4, 5 e 7 precisam de
+ 
+  Searched for 1 pattern, read 1 file, ran 1 shell command 
+
+● Plano gravado; falta só a minha nota de agente.
+
+● Write(agentes\Worker 3.md)
+  ⎿  Wrote 38 lines to agentes\Worker 3.md
+       1 # Worker 3: notas
+       2 
+       3 ## Faixa: 3, Busca (assumida na volta 1)
+       4 
+       5 Linha completa no `plano.md` (tabela de faixas), fronteiras em "Worker 3 (volta 1)", pergunta do gemini em
+       6 "Perguntas ao Gustavo".
+       7 
+       8 ## Fatos com fonte
+       9 
+      10 - obsidian-hybrid-search **0.16.2** (`npm view`, 2026-10-15), repo `flowing-abyss/obsidian-hybrid-search`. README
+     … +28 lines 
+
+● Assumi a faixa 3 (busca) e mudei o plano. Ao fim da hora, um teste automático pergunta ao servidor de busca, montado com o obsidian-hybrid-search 0.16.2 e o modelo arctic em
+  127.0.0.1:3939. Ele confere que uma pergunta em pt-BR por palavra e outra por paráfrase acham a nota certa, que uma nota nova aparece em até 60 s e que nada com ponto no caminho
+  entra no índice.
+
+  Combinei no plano o que a busca troca com as faixas 1, 8 e 10:
+  - Faixa 1: o arquivo do índice fica fora do git.
+  - Faixa 8: o kit lê a URL da busca do .env.
+  - Faixa 10: o proxy pode barrar a busca pelo cabeçalho Host. Não verifiquei isso, e a saída está anotada.
+  
+  Deixei uma pergunta ao Gustavo: liberar nesta hora o teste único do gemini pelo FreeLLMAPI. Esse teste depende de o Docker estar ligado, e hoje ele está desligado.
+
+✻ Crunched for 20m 58s · done 9:35 PM
+
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+❯ 
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  ⬆ /gsd-update │ Opus 5.5 │ planejamento █░░░░░░░░░ 14%
+  ⏵⏵ auto mode on (shift+tab to cycle) · ← 2 agents

@@ -1,0 +1,29 @@
+{
+ "chave": "web:fast-endpoints.com",
+ "urls": [
+  "https://fast-endpoints.com/"
+ ],
+ "tipos": [
+  "library"
+ ],
+ "termos": [
+  "ASP.NET Core",
+  "API layer"
+ ],
+ "mencoes": 1,
+ "familias": [
+  "gemma"
+ ],
+ "primeira_onda": 4,
+ "nomes": [
+  "FastEndpoints"
+ ],
+ "resumos": [
+  "Lightweight framework to build the REST API that the MCP server calls to query the search layer."
+ ],
+ "fonte": "site",
+ "readme_status": "ok",
+ "readme_nome": "https://fast-endpoints.com/",
+ "readme_cortado": false,
+ "readme": "[FastEndpoints]\n\nASP.NET Minimal APIs Made Easy... \nFastEndpoints is a developer friendly alternative to Minimal APIs & MVC \n\nIt nudges you towards the REPR Design Pattern (Request-Endpoint-Response) for convenient & maintainable endpoint creation with virtually no boilerplate. \nPerformance is on par with Minimal APIs and does noticeably better than MVC Controllers in\n synthetic benchmarks. \n Star on Github Get Started \n\npublic class MyRequest \n{\n public string FirstName { get; set; }\n public string LastName { get; set; } \n} \n\npublic class MyResponse \n{\n public string FullName { get; set; }\n public string Message { get; set; } \n} \n\npublic class MyEndpoint : Endpoint<MyRequest, MyResponse>\n{\n public override void Configure()\n {\n Post(\"/hello/world\");\n AllowAnonymous();\n }\n\n public override async Task HandleAsync(MyRequest r, CancellationToken c)\n {\n await Send.OkAsync(new()\n {\n FullName = $\"{r.FirstName} {r.LastName}\",\n Message = \"Welcome to FastEndpoints...\" \n });\n }\n} \n\nFunded By The Community \nMeet Our Sponsors \n\nRapid Development \nWith These Handy Features & More \n\n1 Define endpoints in multiple class files (even in deeply nested folders)\n11 Convenient business logic validation & error responses\n2 Auto discovery & registration of endpoints\n12 Easy access to environment & configuration settings\n3 Attribute-free endpoint definitions (no attribute argument type restrictions)\n13 API versioning\n4 Secure by default & supports most auth providers\n14 Built-in support for JWT Bearer auth scheme\n5 Supports policy/permission/role/claim based security\n15 In-process pub/sub event notifications (with auto discovery)\n6 Declarative security policy building (within each endpoint)\n16 Easy Server-Sent-Events for real-time data streaming\n7 Supports any IOC container compatible with ASP.NET\n17 Convenient integration testing (route-less & strongly-typed)\n8 Constructor & property injection of endpoint dependencies\n18 Easy model binding from route/query/json body/claims/forms/headers\n9 Supports swagger/serilog/etc.\n19 Easy file handling (multipart/form-data)\n10 Model validation with FluentValidation rules\n20 And anything else the Minimal APIs can do... \n\nMade Possible By \nOur Community Of Code Heroes 55"
+}

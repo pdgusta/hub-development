@@ -1,0 +1,34 @@
+{
+ "chave": "gh:opensearch-project/opensearch-plugins",
+ "urls": [
+  "https://github.com/opensearch-project/OpenSearch-plugins/tree/main/knn",
+  "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-knn.html"
+ ],
+ "tipos": [
+  "library"
+ ],
+ "termos": [
+  "vector search",
+  "faiss",
+  "ann",
+  "approximate nearest neighbor",
+  "knn"
+ ],
+ "mencoes": 2,
+ "familias": [
+  "gpt-oss"
+ ],
+ "primeira_onda": 3,
+ "nomes": [
+  "KNN plugin",
+  "k-NN plugin"
+ ],
+ "resumos": [
+  "KNN プラグインは OpenSearch で高速なベクトル検索を提供し、dense_vector フィールドと連携して埋め込み検索を実装できます。",
+  "ベクトル検索を高速化する近傍探索プラグイン。"
+ ],
+ "readme_status": "ok",
+ "readme_nome": "README.md",
+ "readme_cortado": false,
+ "readme": "<img src=\"https://opensearch.org/assets/img/opensearch-logo-themed.svg\" height=\"64px\">\n\n- [OpenSearch Plugins](#opensearch-plugins)\n  - [Naming Conventions](#naming-conventions)\n  - [Managing OpenSearch Plugins](#managing-opensearch-plugins)\n  - [Building Plugins with OpenSearch](#building-plugins-with-opensearch)\n  - [Upgrading Plugins to work with OpenSearch](#upgrading-plugins-to-work-with-opensearch)\n  - [Installing Plugins](#installing-plugins)\n  - [Developing Plugins for OpenSearch](#developing-plugins-for-opensearch)\n  - [Workflows](#workflows)\n  - [Plugin Release Notes](#plugin-release-notes)\n  - [Headers](#headers)\n  - [Standards](#standards)\n- [Contributing](#contributing)\n- [License](#license)\n- [Copyright](#copyright)\n\n## OpenSearch Plugins\n\nThis repository contains all the things you ever wanted to know about OpenSearch plugins.\n\n### Naming Conventions\n\nSee [CONVENTIONS](CONVENTIONS.md).\n\n### Managing OpenSearch Plugins\n\nWe use [meta](https://github.com/mateodelnorte/meta) to manage OpenSearch plugins as a set. See [META](META.md) for more information.\n\n### Building Plugins with OpenSearch\n\nUntil OpenSearch and other artifacts are published to Maven Central [OpenSearch#581](https://github.com/opensearch-project/OpenSearch/issues/581), plugins may require building all their dependencies and publishing them to Maven local.\n\nSee [BUILDING](BUILDING.md#building-plugins-with-opensearch) for details.\n\n### Upgrading Plugins to work with OpenSearch\n\nTo upgrade your existing plugins to work with OpenSearch, see [UPGRADING](./UPGRADING.md).\n\n### Installing Plugins\n\nSee [INSTALLING](INSTALLING.md) for details.\n\n### Developing Plugins for OpenSearch\n\nSee [DEVELOPING_PLUGINS](BUILDING.md#developing-new-plugins-for-opensearch) for details.\n\n### Workflows\n\nSee [WORKFLOWS](WORKFLOWS.md) for useful workflows that can be added.\n\n### Plugin Release Notes\n\nPlugins generally use a standard format for release notes, see [RELEASE_NOTES](./RELEASE_NOTES.md).\n\n### Headers\n\nSee [HEADERS](HEADERS.md) for details of headers including licenses.\n\n### Standards\n\nSee [STANDARDS](STANDARDS.md) for information regarding plugin standards.\n\n## Contributing\n\nSee [CONTRIBUTING](CONTRIBUTING.md) for more information.\n\n## License\n\nThis project is licensed under the [Apache v2.0 License](LICENSE).\n\n## Copyright\n\nCopyright OpenSearch Contributors. See [NOTICE](NOTICE) for details.\n"
+}

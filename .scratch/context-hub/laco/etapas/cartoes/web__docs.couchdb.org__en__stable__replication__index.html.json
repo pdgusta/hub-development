@@ -1,0 +1,40 @@
+{
+ "chave": "web:docs.couchdb.org/en/stable/replication/index.html",
+ "urls": [
+  "https://docs.couchdb.org/en/stable/replication/index.html",
+  "https://docs.couchdb.org/en/stable/replication/"
+ ],
+ "tipos": [
+  "concept",
+  "tool"
+ ],
+ "termos": [
+  "replication",
+  "sync",
+  "external",
+  "CouchDB",
+  "CouchDB sync",
+  "CouchDB replication"
+ ],
+ "mencoes": 3,
+ "familias": [
+  "llama",
+  "mistral",
+  "nemotron"
+ ],
+ "primeira_onda": 2,
+ "nomes": [
+  "couchdb-replicator",
+  "CouchDB Replicator"
+ ],
+ "resumos": [
+  "Replication mechanism that can sync CouchDB to external search engines",
+  "A tool for replicating a CouchDB database to another database or system.",
+  "Built-in replication mechanism for CouchDB that can sync data between instances."
+ ],
+ "fonte": "site",
+ "readme_status": "ok",
+ "readme_nome": "https://docs.couchdb.org/en/stable/replication/index.html",
+ "readme_cortado": false,
+ "readme": "[2. Replication — Apache CouchDB® 3.5 Documentation]\n\n2. Replication\n\n View page source\n\n2. Replication\n\nReplication is an incremental one way process involving two databases\n(a source and a destination).\n\nThe aim of replication is that at the end of the process, all active\ndocuments in the source database are also in the destination database\nand all documents that were deleted in the source database are also\ndeleted in the destination database (if they even existed).\n\nThe replication process only copies the last revision of a document, so all\nprevious revisions that were only in the source database are not copied to the\ndestination database.\n\n2.1. Introduction to Replication\n\n2.1.1. Transient and Persistent Replication\n\n2.1.2. Triggering, Stopping and Monitoring Replications\n\n2.1.3. Replication Procedure\n\n2.1.4. Master - Master replication\n\n2.1.5. Controlling which Documents to Replicate\n\n2.1.6. Migrating Data to Clients\n\n2.2. Replicator Database\n\n2.2.1. Basics\n\n2.2.2. Documents describing the same replication\n\n2.2.3. Replication Scheduler\n\n2.2.4. Replication states\n\n2.2.5. Compatibility Mode\n\n2.2.6. Canceling replications\n\n2.2.7. Server restart\n\n2.2.8. Clustering\n\n2.2.9. Additional Replicator Databases\n\n2.2.10. Fair Share Job Scheduling\n\n2.2.11. Replicating the replicator database\n\n2.2.12. Delegations\n\n2.2.13. Selector Objects\n\n2.2.14. Specifying Usernames and Passwords\n\n2.2.15. Using an IBM IAM apikey\n\n2.2.16. Replicate Winning Revisions Only\n\n2.3. Replication and conflict model\n\n2.3.1. CouchDB replication\n\n2.3.2. Conflict avoidance\n\n2.3.3. Revision tree\n\n2.3.4. Working with conflicting documents\n\n2.3.5. Multiple document API\n\n2.3.6. View map functions\n\n2.3.7. Merging and revision history\n\n2.3.8. Comparison with other replicating data stores\n\n2.4. CouchDB Replication Protocol\n\n2.4.1. Preface\n\n2.4.2. Replication Protocol Algorithm\n\n2.4.3. Protocol Robustness\n\n2.4.4. Error Responses\n\n2.4.5. Optimisations\n\n2.4.6. API Reference\n\n2.4.7. Reference"
+}

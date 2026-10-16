@@ -1,0 +1,36 @@
+{
+ "chave": "gh:neuml/txtai",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T21:22:37Z",
+ "resultado": "corrige",
+ "conferencia": {
+  "resultado": "corrige",
+  "final": {
+   "serve": "search",
+   "role": "Framework de busca semântica com banco de embeddings (vetorial esparso/denso, grafo, SQL), com API web e MCP.",
+   "place": [
+    "library",
+    "network_service"
+   ],
+   "mechanism": [
+    "vector",
+    "hybrid",
+    "graph",
+    "embeddings"
+   ],
+   "mcp": "yes",
+   "windows": "unknown",
+   "portuguese": "unknown",
+   "license": "Apache-2.0",
+   "maturity": "stable",
+   "doubt": false,
+   "evidence": "README: embeddings database com índices esparsos e densos, grafos e SQL; 'Web and Model Context Protocol (MCP) APIs'; Apache 2.0; roda local."
+  },
+  "o_que_mudou": [
+   "doubt: true -> false, README basta para decidir",
+   "windows: yes -> unknown, README não cita Windows",
+   "maturity: beta -> stable, projeto com releases e CI"
+  ],
+  "nota": "Busca semântica híbrida com MCP nativo; candidato forte à camada de busca do hub."
+ }
+}

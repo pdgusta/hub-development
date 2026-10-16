@@ -1,0 +1,70 @@
+{
+  "metodo": "Filesystem Hierarchy Standard (FHS) 3.0, Linux Foundation",
+  "fontes": [
+    {"url": "https://refspecs.linuxfoundation.org/FHS_3.0/fhs/ch02.html", "acessada_em": "2026-10-10", "status": "ok"},
+    {"url": "https://refspecs.linuxfoundation.org/FHS_3.0/fhs/ch03.html", "acessada_em": "2026-10-10", "status": "ok"}
+  ],
+  "o_que_e": {
+    "resumo": "Padrão que define a organização de diretórios de um sistema de arquivos compatível com UNIX, separando arquivos por compartilhabilidade (compartilhável ou não) e por variabilidade (estático ou variável). O capítulo 3 descreve o sistema de arquivos raiz.",
+    "citacao": "It is possible to define two independent distinctions among files: shareable vs. unshareable and variable vs. static.",
+    "url": "https://refspecs.linuxfoundation.org/FHS_3.0/fhs/ch02.html"
+  },
+  "nivel_raiz": [
+    {
+      "categoria": "/ (sistema de arquivos raiz)",
+      "o_que_mora": "Conteúdo mínimo para iniciar, restaurar, recuperar e reparar o sistema. O capítulo 3 também diz que aplicações nunca devem criar ou exigir arquivos especiais ou subdiretórios no diretório raiz.",
+      "citacao": "The contents of the root filesystem must be adequate to boot, restore, recover, and/or repair the system.",
+      "url": "https://refspecs.linuxfoundation.org/FHS_3.0/fhs/ch03.html"
+    },
+    {
+      "categoria": "Arquivos estáticos (exemplos do layout: /usr, /etc, /opt, /boot)",
+      "o_que_mora": "Binários, bibliotecas, documentação e outros arquivos que não mudam sem intervenção do administrador. O layout de exemplo lista /usr, /etc, /opt e /boot na linha 'static', mas o HTML extraído não deixa claro em qual coluna (compartilhável ou não compartilhável) cada um fica.",
+      "citacao": "\"Static\" files include binaries, libraries, documentation files and other files that do not change without system administrator intervention.",
+      "url": "https://refspecs.linuxfoundation.org/FHS_3.0/fhs/ch02.html"
+    },
+    {
+      "categoria": "Arquivos variáveis (/var)",
+      "o_que_mora": "Arquivos que não são estáticos, como correio, spool e arquivos de run/lock. O capítulo 2 cita /var/mail, /var/run, /var/spool/news e /var/lock como exemplos. Todos os arquivos variáveis de /usr foram transferidos para /var.",
+      "citacao": "\"Variable\" files are files that are not static. ... the /var hierarchy was created and all variable files were transferred from /usr to /var.",
+      "url": "https://refspecs.linuxfoundation.org/FHS_3.0/fhs/ch02.html"
+    },
+    {
+      "categoria": "/home",
+      "o_que_mora": "Diretórios pessoais dos usuários (opcional, segundo o título da seção).",
+      "citacao": "/home : User home directories (optional)",
+      "url": "https://refspecs.linuxfoundation.org/FHS_3.0/fhs/ch03.html"
+    }
+  ],
+  "criterio_de_separacao": {
+    "resumo": "Duas distinções independentes decidem o local: compartilhável x não compartilhável, e variável x estático. Arquivos que diferem em qualquer uma delas devem ficar em diretórios diferentes.",
+    "citacao": "In general, files that differ in either of these respects should be located in different directories.",
+    "url": "https://refspecs.linuxfoundation.org/FHS_3.0/fhs/ch02.html"
+  },
+  "quando_termina_ou_envelhece": {
+    "resumo": null,
+    "citacao": null,
+    "url": null
+  },
+  "conteudo_compartilhado_ou_reaproveitado": {
+    "resumo": "Compartilhável é o que pode ser guardado em um host e usado em outros. Não compartilhável é o que não pode. O padrão cita como exemplo: arquivos de diretórios home são compartilháveis; arquivos de lock de dispositivo não são. Como a raiz costuma ser específica de cada sistema, ela nem sempre é compartilhável.",
+    "citacao": "\"Shareable\" files are those that can be stored on one host and used on others. \"Unshareable\" files are those that are not shareable. For example, the files in user home directories are shareable whereas device lock files are not.",
+    "url": "https://refspecs.linuxfoundation.org/FHS_3.0/fhs/ch02.html"
+  },
+  "pastas_versus_tags_ou_links": {
+    "resumo": "Usa pastas. A separação é feita por diretórios diferentes (e, por consequência, por sistemas de arquivos diferentes). Não há menção a tags, links ou propriedades como mecanismo de organização.",
+    "citacao": "This makes it easy to store files with different usage characteristics on different filesystems.",
+    "url": "https://refspecs.linuxfoundation.org/FHS_3.0/fhs/ch02.html"
+  },
+  "pensado_para_agentes_de_ia": {
+    "resumo": null,
+    "citacao": null,
+    "url": null
+  },
+  "nao_verificado": [
+    "quando_termina_ou_envelhece",
+    "pensado_para_agentes_de_ia",
+    "nivel_raiz: categorias /bin, /boot (corpo da seção), /dev, /lib, /media, /mnt, /opt (corpo), /root, /run, /sbin, /srv e /tmp: a fonte só trouxe títulos de seção no HTML extraído, sem o texto de propósito",
+    "nivel_raiz: mapeamento exato de cada diretório de exemplo para as células compartilhável/não compartilhável x estático/variável (tabela do capítulo 2 perdeu a estrutura no HTML)",
+    "ch03.html: o texto extraído cobre as seções 3.1 e 3.2; as seções 3.3 em diante aparecem só como índice"
+  ]
+}

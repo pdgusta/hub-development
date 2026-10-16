@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Mapa dos canteiros</title>
+<style>
+  body { margin: 0; font-family: sans-serif; background: #f3efe4; color: #2b3a2b; }
+  main { padding: 24px; }
+  svg { width: 100%; max-width: 640px; display: block; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Mapa dos canteiros</h1>
+  <p>Oito canteiros elevados e dois caminhos.</p>
+  <svg viewBox="0 0 320 180" role="img" aria-label="oito canteiros em duas fileiras">
+    <rect width="320" height="180" fill="#d9c7a0"/>
+    <g fill="#6b9b5a">
+      <rect x="20" y="20" width="60" height="50"/><rect x="90" y="20" width="60" height="50"/>
+      <rect x="170" y="20" width="60" height="50"/><rect x="240" y="20" width="60" height="50"/>
+      <rect x="20" y="110" width="60" height="50"/><rect x="90" y="110" width="60" height="50"/>
+      <rect x="170" y="110" width="60" height="50"/><rect x="240" y="110" width="60" height="50"/>
+    </g>
+    <rect x="0" y="80" width="320" height="20" fill="#b89b6a"/>
+    <rect x="155" y="0" width="12" height="180" fill="#b89b6a"/>
+  </svg>
+  <script src="dados.js"></script>
+  <script>document.querySelector('p').textContent += ' ' + (window.CANTEIROS || 0) + ' nomeados.';</script>
+</main>
+</body>
+</html>

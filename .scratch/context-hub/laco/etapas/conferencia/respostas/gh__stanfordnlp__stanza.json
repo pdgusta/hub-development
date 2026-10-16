@@ -1,0 +1,32 @@
+{
+ "chave": "gh:stanfordnlp/stanza",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T12:00:00Z",
+ "resultado": "corrige",
+ "conferencia": {
+  "resultado": "corrige",
+  "final": {
+   "serve": "stack",
+   "role": "Python NLP pipeline (tokenization, POS, lemma, parsing, NER) for 60+ languages",
+   "place": [
+    "library"
+   ],
+   "mechanism": [
+    "other"
+   ],
+   "mcp": "unknown",
+   "windows": "unknown",
+   "portuguese": "unknown",
+   "license": "Apache-2.0",
+   "maturity": "stable",
+   "doubt": false,
+   "evidence": "The Stanford NLP Group's official Python NLP library ... 60+ languages; Apache License 2.0"
+  },
+  "o_que_mudou": [
+   "mechanism: embeddings -> other, README describes linguistic analysis not embeddings",
+   "portuguese: yes -> unknown, README never names Portuguese",
+   "mcp: no -> unknown"
+  ],
+  "nota": "Could supply lemmatization for Portuguese text preprocessing, but heavy PyTorch dependency; marginal for the hub."
+ }
+}

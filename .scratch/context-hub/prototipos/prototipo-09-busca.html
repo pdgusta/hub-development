@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Camada de busca</title>
+<style>
+  :root {
+    --bg: #fafaf8; --card: #ffffff; --ink: #1d1d1b; --muted: #6b6b66; --line: #d9d8d2;
+    --accent: #2f5fa7; --accent-soft: #e7eef9;
+    --ok: #2e7d4f; --ok-soft: #e5f3ea; --warn: #9a6a00; --warn-soft: #fbf1d9;
+    --bad: #b3261e; --bad-soft: #fbe6e4; --gray-soft: #efeee9;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #161616; --card: #1f1f1f; --ink: #ecebe6; --muted: #9a9a94; --line: #3a3934;
+      --accent: #7aa7ec; --accent-soft: #1f2a3b;
+      --ok: #7cc79a; --ok-soft: #1c2b22; --warn: #e3b64f; --warn-soft: #2f2817;
+      --bad: #f08a80; --bad-soft: #3a1f1d; --gray-soft: #2a2a28;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink);
+    font: 16px/1.6 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  main { max-width: 900px; margin: 0 auto; padding: 28px 16px 72px; }
+  h1 { font-size: 24px; margin: 0 0 4px; }
+  h2 { font-size: 19px; margin: 0 0 10px; }
+  p { margin: 0 0 10px; }
+  ul { margin: 0 0 10px; padding-left: 22px; }
+  .muted { color: var(--muted); }
+  .small { font-size: 14px; }
+  section { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 18px 20px; margin-top: 18px; }
+  .analogia { border-left: 4px solid var(--accent); background: var(--accent-soft); padding: 8px 12px; border-radius: 6px; margin: 10px 0; }
+  .pergunta { border: 2px solid var(--accent); border-radius: 10px; padding: 10px 14px; margin-top: 14px; }
+  .pergunta b.q { color: var(--accent); }
+  svg { width: 100%; height: auto; display: block; margin: 8px 0; }
+  svg text { fill: var(--ink); font: 13px system-ui, sans-serif; }
+  svg .t-muted { fill: var(--muted); font-size: 12px; }
+  svg .t-big { font-size: 14px; font-weight: 600; }
+  .b-ok { fill: var(--ok-soft); stroke: var(--ok); }
+  .b-acc { fill: var(--accent-soft); stroke: var(--accent); }
+  .b-gray { fill: var(--gray-soft); stroke: var(--muted); }
+  .b-warn { fill: var(--warn-soft); stroke: var(--warn); }
+  .seta { stroke: var(--ink); stroke-width: 1.6; fill: none; marker-end: url(#ponta); }
+  .tabela { overflow-x: auto; }
+  table { border-collapse: collapse; width: 100%; font-size: 14px; margin: 8px 0; min-width: 640px; }
+  th, td { padding: 6px 8px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; }
+  .sim { color: var(--ok); font-weight: 600; } .nao { color: var(--bad); font-weight: 600; } .talvez { color: var(--warn); font-weight: 600; }
+  tr.rec td:first-child { border-left: 4px solid var(--accent); }
+</style>
+</head>
+<body>
+<main>
+
+<h1>Camada de busca: quem entra no spike</h1>
+<p class="muted small">Ticket "Camada de busca", rodada 1 (2026-10-04). A página explica a escolha e termina na mesma
+pergunta de <code>respostas.md</code>. Ela só explica: nada foi instalado nem testado. O spike roda quando você pedir.</p>
+
+<section>
+  <h2>1. O que a camada de busca faz</h2>
+  <p>O hub vai ter centenas de notas. O agente não pode ler tudo a cada pergunta, então alguém precisa apontar
+  o <b>trecho</b> certo: um parágrafo sob um título, e não o arquivo inteiro.</p>
+  <div class="analogia">Pense no <b>índice remissivo</b> no fim de um livro técnico. Você procura "colisão" e ele
+  manda para a página 214, não para o capítulo 9. A camada de busca é esse índice, com duas diferenças: ela se
+  refaz sozinha quando uma página muda e também entende sinônimos.</div>
+  <p>Pela Q12, o agente fala com a camada por um <b>MCP</b> que faz três coisas. Os tickets anteriores já tiraram
+  parte do peso de cima dela:</p>
+  <svg viewBox="0 0 860 200" role="img" aria-label="Três trabalhos do MCP: achar, gravar, mostrar o estado do sync">
+    <defs><marker id="ponta" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--ink)"/></marker></defs>
+    <rect x="330" y="10" width="200" height="50" rx="10" class="b-acc"/>
+    <text x="430" y="40" text-anchor="middle" class="t-big">MCP da camada de busca</text>
+    <path d="M380,60 L140,100" class="seta"/><path d="M430,60 L430,100" class="seta"/><path d="M480,60 L720,100" class="seta"/>
+    <rect x="20" y="105" width="250" height="85" rx="10" class="b-ok"/>
+    <text x="145" y="128" text-anchor="middle" class="t-big">Achar o trecho</text>
+    <text x="145" y="150" text-anchor="middle">o trabalho central desta escolha</text>
+    <text x="145" y="170" text-anchor="middle" class="t-muted">critério 1 do destino</text>
+    <rect x="305" y="105" width="250" height="85" rx="10" class="b-warn"/>
+    <text x="430" y="128" text-anchor="middle" class="t-big">Gravar</text>
+    <text x="430" y="150" text-anchor="middle">conferindo a versão (ticket 08)</text>
+    <text x="430" y="170" text-anchor="middle" class="t-muted">o "como" é de "Como os agentes gravam"</text>
+    <rect x="590" y="105" width="250" height="85" rx="10" class="b-gray"/>
+    <text x="715" y="128" text-anchor="middle" class="t-big">Estado do sync</text>
+    <text x="715" y="150" text-anchor="middle">o sincronizador grava; só ler</text>
+    <text x="715" y="170" text-anchor="middle" class="t-muted">o MCP não é dono do sync (07, 08)</text>
+  </svg>
+  <p>O que pesa na escolha é <b>achar bem em pt-BR</b>. A gravação vale como bônus, se já vier conferindo a versão.
+  O estado do sync é ler um arquivo que o sincronizador escreve, e qualquer candidata ganha isso com pouco esforço.</p>
+</section>
+
+<section>
+  <h2>2. Duas maneiras de achar, e onde o pt-BR complica</h2>
+  <p><b>Por palavra (BM25):</b> conta quantas vezes a palavra aparece e quão rara ela é. É rápida e exata, mas
+  literal.<br><b>Por sentido (embeddings):</b> transforma cada trecho num ponto num mapa de significados, e
+  "sincronizador travou" fica perto de "sync parou". As boas camadas fazem as duas coisas e misturam os resultados
+  (busca híbrida).</p>
+  <div class="analogia">BM25 é o funcionário que procura a palavra exata no arquivo de fichas. Embedding é o
+  bibliotecário que entende o que você quis dizer. Juntos, um cobre o tropeço do outro.</div>
+  <p>Em pt-BR, a busca por palavra tropeça em duas coisas:</p>
+  <ul>
+    <li><b>Acento:</b> se o agente procura "decisao" e a nota diz "decisão", sem remover acento a palavra não casa.</li>
+    <li><b>Flexão:</b> "colisão" e "colisões", "gravar" e "gravou". Um <i>stemmer</i> reduz as palavras à raiz.
+    O stemmer do SQLite (porter) é só para inglês: <i>"designed for use with English language terms only"</i>
+    (<a href="https://www.sqlite.org/fts5.html">SQLite FTS5, §4.3.3</a>).</li>
+  </ul>
+  <p>Por isso, em pt-BR, a parte de embeddings, com um modelo multilíngue, carrega mais peso que em inglês.</p>
+</section>
+
+<section>
+  <h2>3. As candidatas que as pesquisas deixaram</h2>
+  <p class="small muted">Fontes: exploração §10.2 e §10.4.1, "zvec-grep na camada de busca" e "turbovec na camada de
+  busca". O que está em <span class="talvez">amarelo</span> não foi verificado.</p>
+  <div class="tabela">
+  <table>
+    <tr><th>Candidata</th><th>Windows</th><th>pt-BR</th><th>Frontmatter</th><th>Grava</th><th>Acompanha edição externa</th><th>Maturidade</th></tr>
+    <tr class="rec"><td><b>markdown-vault-mcp</b></td>
+      <td class="talvez">README não cita; CI só Ubuntu</td>
+      <td class="talvez">BM25 com stemmer inglês; acento provavelmente removido (padrão do SQLite, não conferido no código); embeddings multilíngues por escolha</td>
+      <td class="sim">filtra</td>
+      <td class="sim">sim, com etag (<code>if_match</code>)</td>
+      <td class="sim">watcher + reconciliação no arranque (com o git gerenciado desligado)</td>
+      <td>v5, 34 estrelas, versões maiores rápidas</td></tr>
+    <tr class="rec"><td><b>zvec-grep</b></td>
+      <td class="sim">nativo, CI em windows-latest</td>
+      <td class="nao">BM25 sem stemmer e sem tirar acento; modelos multilíngues</td>
+      <td class="nao">ignora (PR aberta)</td>
+      <td class="nao">não: o MCP só busca</td>
+      <td class="sim">watcher + reconciliação a cada hora</td>
+      <td>v0.2, 3,9 mil estrelas, bugs que corrompem o índice</td></tr>
+    <tr><td>grooveseek</td>
+      <td class="sim">binário Windows</td>
+      <td class="sim">bge-m3 para texto não inglês</td>
+      <td class="sim">filtra</td>
+      <td class="talvez">não conferido</td>
+      <td class="sim">o watcher cobre <code>git pull</code></td>
+      <td>8 estrelas</td></tr>
+    <tr><td>obsidian-hybrid-search</td>
+      <td class="talvez">não conferido</td>
+      <td class="sim">multilingual-e5-small</td>
+      <td class="sim">filtra (CLI)</td>
+      <td class="talvez">não conferido</td>
+      <td class="talvez">não conferido</td>
+      <td>107 estrelas; banco dentro do vault por padrão</td></tr>
+    <tr><td>qmd</td><td class="nao">sem suporte oficial (não conferido)</td><td colspan="5" class="muted">fora: o hub mora no NTFS ("Windows ou WSL")</td></tr>
+    <tr><td>turbovec</td><td colspan="6" class="muted">fora: é uma peça de índice vetorial, uma camada abaixo das outras</td></tr>
+  </table>
+  </div>
+</section>
+
+<section>
+  <h2>4. Recomendação: markdown-vault-mcp contra zvec-grep</h2>
+  <p>As duas são <b>apostas opostas</b>, e é isso que torna o spike informativo:</p>
+  <ul>
+    <li><b>markdown-vault-mcp</b> faz tudo o que a Q12 pede (achar, filtrar por frontmatter, gravar conferindo a
+    versão), mas não se sabe se roda bem no Windows. O spike responde a isso.</li>
+    <li><b>zvec-grep</b> roda no Windows com certeza e tem a comunidade maior, mas só acha. Se vencer, a gravação
+    fica com as ferramentas nativas ou com um MCP pequeno à parte, e "Como os agentes gravam" decide.</li>
+  </ul>
+  <p><b>Por que não o grooveseek:</b> no papel ele é o mais redondo para pt-BR no Windows, mas tem 8 estrelas e é
+  mantido por uma pessoa. Se as duas candidatas falharem no spike, ele é o reserva natural. <b>Por que não o
+  obsidian-hybrid-search:</b> o banco dentro da pasta entra no sync por padrão, e o Windows não foi conferido.</p>
+  <div class="analogia">É como testar dois carros antes de comprar: um completo, mas importado, sem saber se há
+  oficina na sua cidade; outro com oficina em toda esquina, mas sem porta-malas. O test-drive diz qual falta pesa mais.</div>
+  <p class="small muted">Ficam para as próximas rodadas deste ticket: o que o spike mede e com que conteúdo, se o
+  FreeLLMAPI entra como embedding no spike, e o critério de vitória.</p>
+</section>
+
+<section>
+  <h2>Pergunta da rodada</h2>
+  <div class="pergunta"><b class="q">R1.</b> As duas candidatas do spike são o <b>markdown-vault-mcp</b> e o
+  <b>zvec-grep</b>, com o grooveseek de reserva? Se quiser trocar uma delas, diga qual e por quê.</div>
+</section>
+
+</main>
+</body>
+</html>

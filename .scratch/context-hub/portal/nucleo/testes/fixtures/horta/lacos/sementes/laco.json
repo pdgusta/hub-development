@@ -1,0 +1,230 @@
+{
+  "formato": 1,
+  "id": "censo-de-sementes",
+  "titulo": "Censo de sementes da vizinhança",
+  "ticket": "10",
+  "execucao": {
+    "id": "sementes-2026-10-13",
+    "inicio": "2026-10-13T11:22:00-03:00",
+    "terminou_em": "2026-10-13T15:13:09-03:00"
+  },
+  "nos": [
+    {
+      "id": "plano",
+      "titulo": "Plano",
+      "papel": "etapa",
+      "detalhe": "as ruas da onda 1"
+    },
+    {
+      "id": "geradores",
+      "titulo": "Geradores",
+      "papel": "etapa",
+      "detalhe": "visitas por rua"
+    },
+    {
+      "id": "juntador",
+      "titulo": "Juntador",
+      "papel": "etapa",
+      "detalhe": "junta o catálogo de sementes"
+    },
+    {
+      "id": "parada",
+      "titulo": "Parada",
+      "papel": "decisao",
+      "detalhe": "parou depois da onda 3, por decisão do grupo; a regra do gate não chegou a valer"
+    },
+    {
+      "id": "teto",
+      "titulo": "Teto",
+      "papel": "controle",
+      "detalhe": "tentativas ou horas, o que vier antes"
+    },
+    {
+      "id": "mare",
+      "titulo": "Maré de novos",
+      "papel": "observador",
+      "detalhe": "a curva de novos por onda",
+      "carta": "mapa-dos-canteiros"
+    },
+    {
+      "id": "sintese",
+      "titulo": "Síntese",
+      "papel": "fora-dos-scripts",
+      "detalhe": "a síntese do maestro"
+    }
+  ],
+  "ligacoes": [
+    {
+      "de": "plano",
+      "para": "geradores",
+      "palavra": "ruas",
+      "tipo": "segue"
+    },
+    {
+      "de": "geradores",
+      "para": "juntador",
+      "palavra": "visitas",
+      "tipo": "segue"
+    },
+    {
+      "de": "juntador",
+      "para": "parada",
+      "palavra": "taxa",
+      "tipo": "segue"
+    },
+    {
+      "de": "parada",
+      "para": "geradores",
+      "palavra": "repete",
+      "tipo": "repete"
+    },
+    {
+      "de": "parada",
+      "para": "sintese",
+      "palavra": "fim",
+      "tipo": "segue"
+    },
+    {
+      "de": "teto",
+      "para": "geradores",
+      "palavra": "limita",
+      "tipo": "condiciona"
+    },
+    {
+      "de": "mare",
+      "para": "juntador",
+      "palavra": "observa",
+      "tipo": "observa"
+    }
+  ],
+  "controles": [
+    {
+      "id": "gate_novos",
+      "no": "parada",
+      "rotulo": "novos por onda abaixo de",
+      "tipo": "numero",
+      "faixa": [
+        0.01,
+        0.5
+      ],
+      "escala": "porcento",
+      "unidade": "de novos",
+      "quando_vale": "proxima-onda",
+      "releitura": "ao-ligar",
+      "configurado": {
+        "arquivo": "config.json",
+        "campo": "gate_novos"
+      }
+    },
+    {
+      "id": "teto-tentativas",
+      "no": "teto",
+      "rotulo": "tentativas, no máximo",
+      "tipo": "inteiro",
+      "faixa": [
+        100,
+        20000
+      ],
+      "unidade": "tentativas",
+      "aceita_nulo": true,
+      "nulo": "sem limite",
+      "quando_vale": "agora",
+      "releitura": "continua",
+      "configurado": {
+        "declarado": 2000
+      }
+    },
+    {
+      "id": "excluir_manual",
+      "no": "geradores",
+      "rotulo": "ruas que não recebem visitas",
+      "tipo": "lista",
+      "itens": {
+        "max": 500,
+        "comprimento": 200
+      },
+      "quando_vale": "ao-reiniciar",
+      "releitura": "ao-ligar",
+      "configurado": {
+        "arquivo": "config.json",
+        "campo": "excluir_manual"
+      }
+    }
+  ],
+  "capacidades": [
+    {
+      "id": "parar-apos-onda"
+    },
+    {
+      "id": "parar-de-despachar"
+    }
+  ],
+  "contadores": [
+    {
+      "id": "tentativas",
+      "no": "teto",
+      "rotulo": "tentativas",
+      "tipo": "inteiro",
+      "origem": {
+        "arquivo": "estado/laco_final.json",
+        "campo": "tentativas"
+      }
+    },
+    {
+      "id": "itens",
+      "no": "juntador",
+      "rotulo": "sementes no catálogo",
+      "tipo": "inteiro",
+      "origem": {
+        "arquivo": "estado/laco_final.json",
+        "campo": "itens"
+      }
+    },
+    {
+      "id": "curva",
+      "no": "parada",
+      "rotulo": "novos por onda",
+      "tipo": "serie",
+      "campos": [
+        "onda",
+        "novos",
+        "taxa_novos"
+      ],
+      "origem": {
+        "arquivo": "estado/laco_final.json",
+        "campo": "ondas"
+      }
+    },
+    {
+      "id": "ultima-taxa",
+      "no": "parada",
+      "rotulo": "taxa da última onda",
+      "tipo": "numero",
+      "escala": "porcento",
+      "origem": {
+        "arquivo": "estado/laco_final.json",
+        "campo": "ondas.-1.taxa_novos"
+      }
+    }
+  ],
+  "sinal": {
+    "fontes": [
+      {
+        "arquivo": "estado/laco_final.json",
+        "campo": "terminou_em",
+        "formato": "iso"
+      }
+    ],
+    "sem_sinal_apos_s": 300
+  },
+  "parado": {
+    "sqlite": "estado/laco.db",
+    "tabela": "controle",
+    "onde": {
+      "chave": "parar"
+    },
+    "coluna": "valor",
+    "json": true,
+    "ausente": false
+  }
+}

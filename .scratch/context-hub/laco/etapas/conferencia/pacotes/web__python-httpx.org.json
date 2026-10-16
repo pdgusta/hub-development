@@ -1,0 +1,55 @@
+{
+ "chave": "web:python-httpx.org",
+ "nomes": [
+  "HTTPX"
+ ],
+ "urls": [
+  "https://www.python-httpx.org"
+ ],
+ "readme_cortado": false,
+ "readme": "[HTTPX]\n\nSkip to content\n\nHTTPX\n\nA next-generation HTTP client for Python.\n\nHTTPX is a fully featured HTTP client for Python 3, which provides sync and async APIs, and support for both HTTP/1.1 and HTTP/2.\n\nInstall HTTPX using pip:\n\n$ pip install httpx\n\nNow, let's get started:\n\n>>> import httpx\n>>> r = httpx.get('https://www.example.org/')\n>>> r\n<Response [200 OK]>\n>>> r.status_code\n200\n>>> r.headers['content-type']\n'text/html; charset=UTF-8'\n>>> r.text\n'<!doctype html>\\n<html>\\n<head>\\n<title>Example Domain</title>...'\n\nOr, using the command-line client.\n\n# The command line client is an optional dependency.\n$ pip install 'httpx[cli]'\n\nWhich now allows us to use HTTPX directly from the command-line...\n\nSending a request...\n\nFeatures\n\nHTTPX builds on the well-established usability of requests, and gives you:\n\nA broadly requests-compatible API.\n\nStandard synchronous interface, but with async support if you need it.\n\nHTTP/1.1 and HTTP/2 support.\n\nAbility to make requests directly to WSGI applications or ASGI applications.\n\nStrict timeouts everywhere.\n\nFully type annotated.\n\n100% test coverage.\n\nPlus all the standard features of requests...\n\nInternational Domains and URLs\n\nKeep-Alive & Connection Pooling\n\nSessions with Cookie Persistence\n\nBrowser-style SSL Verification\n\nBasic/Digest Authentication\n\nElegant Key/Value Cookies\n\nAutomatic Decompression\n\nAutomatic Content Decoding\n\nUnicode Response Bodies\n\nMultipart File Uploads\n\nHTTP(S) Proxy Support\n\nConnection Timeouts\n\nStreaming Downloads\n\n.netrc Support\n\nChunked Requests\n\nDocumentation\n\nFor a run-through of all the basics, head over to the QuickStart.\n\nFor more advanced topics, see the Advanced section,\nthe async support section, or the HTTP/2 section.\n\nThe Developer Interface provides a comprehensive API reference.\n\nTo find out about tools that integrate with HTTPX, see Third Party Packages.\n\nDependencies\n\nThe HTTPX project relies on these excellent libraries:\n\nhttpcore - The underlying transport implementation for httpx.\n\nh11 - HTTP/1.1 support.\n\ncertifi - SSL certificates.\n\nidna - Internationalized domain name support.\n\nsniffio - Async library autodetection.\n\nAs well as these optional installs:\n\nh2 - HTTP/2 support. (Optional, with httpx[http2])\n\nsocksio - SOCKS proxy support. (Optional, with httpx[socks])\n\nrich - Rich terminal support. (Optional, with httpx[cli])\n\nclick - Command line client support. (Optional, with httpx[cli])\n\nbrotli or brotlicffi - Decoding for \"brotli\" compressed responses. (Optional, with httpx[brotli])\n\nzstandard - Decoding for \"zstd\" compressed responses. (Optional, with httpx[zstd])\n\nA huge amount of credit is due to requests for the API layout that\nmuch of this work follows, as well as to urllib3 for plenty of design\ninspiration around the lower-level networking details.\n\nInstallation\n\nInstall with pip:\n\n$ pip install httpx\n\nOr, to include the optional HTTP/2 support, use:\n\n$ pip install httpx[http2]\n\nTo include the optional brotli and zstandard decoders support, use:\n\n$ pip install httpx[brotli,zstd]\n\nHTTPX requires Python 3.9+",
+ "fonte": "site",
+ "respostas": [
+  {
+   "por": "voxtral-small-2507",
+   "resposta": {
+    "serve": "stack",
+    "role": "HTTP client for network requests",
+    "place": [
+     "network_service",
+     "library"
+    ],
+    "mechanism": [
+     "n/a"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "unknown",
+    "maturity": "stable",
+    "doubt": true,
+    "evidence": "HTTPX is a fully featured HTTP client for Python 3, which provides sync and async APIs, and support for both HTTP/1.1 and HTTP/2."
+   }
+  },
+  {
+   "por": "diffusiongemma-26b-a4b-it",
+   "resposta": {
+    "serve": "stack",
+    "role": "An HTTP client for making sync and async requests to network services or APIs.",
+    "place": [
+     "library"
+    ],
+    "mechanism": [
+     "n/a"
+    ],
+    "mcp": "no",
+    "windows": "yes",
+    "portuguese": "no",
+    "license": "unknown",
+    "maturity": "stable",
+    "doubt": false,
+    "evidence": "A next-generation HTTP client for Python... provides sync and async APIs"
+   }
+  }
+ ]
+}

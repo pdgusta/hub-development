@@ -1,0 +1,257 @@
+Docs »
+
+Whoosh API »
+
+index module
+
+ Edit on Bitbucket
+
+index module¶
+
+Contains the main functions/classes for creating, maintaining, and using
+an index.
+
+Functions¶
+
+whoosh.index.create_in(dirname, schema, indexname=None)¶
+
+Convenience function to create an index in a directory. Takes care of
+creating a FileStorage object for you.
+
+Parameters:
+
+dirname – the path string of the directory in which to create the
+index.
+
+schema – a whoosh.fields.Schema object describing the
+index’s fields.
+
+indexname – the name of the index to create; you only need to specify
+this if you are creating multiple indexes within the same storage
+object.
+
+Returns:
+Index
+
+whoosh.index.open_dir(dirname, indexname=None, readonly=False, schema=None)¶
+
+Convenience function for opening an index in a directory. Takes care of
+creating a FileStorage object for you. dirname is the filename of the
+directory in containing the index. indexname is the name of the index to
+create; you only need to specify this if you have multiple indexes within
+the same storage object.
+
+Parameters:
+
+dirname – the path string of the directory in which to create the
+index.
+
+indexname – the name of the index to create; you only need to specify
+this if you have multiple indexes within the same storage object.
+
+whoosh.index.exists_in(dirname, indexname=None)¶
+
+Returns True if dirname contains a Whoosh index.
+
+Parameters:
+
+dirname – the file path of a directory.
+
+indexname – the name of the index. If None, the default index name is
+used.
+
+whoosh.index.exists(storage, indexname=None)¶
+
+Deprecated; use storage.index_exists().
+
+Parameters:
+
+storage – a store.Storage object.
+
+indexname – the name of the index. If None, the default index name is
+used.
+
+whoosh.index.version_in(dirname, indexname=None)¶
+
+Returns a tuple of (release_version, format_version), where
+release_version is the release version number of the Whoosh code that
+created the index – e.g. (0, 1, 24) – and format_version is the version
+number of the on-disk format used for the index – e.g. -102.
+
+You should avoid attaching significance to the second number (the index
+version). This is simply a version number for the TOC file and probably
+should not have been exposed in a public interface. The best way to check
+if the current version of Whoosh can open an index is to actually try to
+open it and see if it raises a whoosh.index.IndexVersionError exception.
+
+Note that the release and format version are available as attributes on the
+Index object in Index.release and Index.version.
+
+Parameters:
+
+dirname – the file path of a directory containing an index.
+
+indexname – the name of the index. If None, the default index name is
+used.
+
+Returns:
+((major_ver, minor_ver, build_ver), format_ver)
+
+whoosh.index.version(storage, indexname=None)¶
+
+Returns a tuple of (release_version, format_version), where
+release_version is the release version number of the Whoosh code that
+created the index – e.g. (0, 1, 24) – and format_version is the version
+number of the on-disk format used for the index – e.g. -102.
+
+You should avoid attaching significance to the second number (the index
+version). This is simply a version number for the TOC file and probably
+should not have been exposed in a public interface. The best way to check
+if the current version of Whoosh can open an index is to actually try to
+open it and see if it raises a whoosh.index.IndexVersionError exception.
+
+Note that the release and format version are available as attributes on the
+Index object in Index.release and Index.version.
+
+Parameters:
+
+storage – a store.Storage object.
+
+indexname – the name of the index. If None, the default index name is
+used.
+
+Returns:
+((major_ver, minor_ver, build_ver), format_ver)
+
+Base class¶
+
+class whoosh.index.Index¶
+
+Represents an indexed collection of documents.
+
+add_field(fieldname, fieldspec)¶
+
+Adds a field to the index’s schema.
+
+Parameters:
+
+fieldname – the name of the field to add.
+
+fieldspec – an instantiated whoosh.fields.FieldType
+object.
+
+close()¶
+
+Closes any open resources held by the Index object itself. This may
+not close all resources being used everywhere, for example by a
+Searcher object.
+
+doc_count()¶
+
+Returns the total number of UNDELETED documents in this index.
+
+doc_count_all()¶
+
+Returns the total number of documents, DELETED OR UNDELETED,
+in this index.
+
+field_length(fieldname)¶
+
+Returns the total length of the field across all documents.
+
+is_empty()¶
+
+Returns True if this index is empty (that is, it has never had any
+documents successfully written to it.
+
+last_modified()¶
+
+Returns the last modified time of the index, or -1 if the backend
+doesn’t support last-modified times.
+
+latest_generation()¶
+
+Returns the generation number of the latest generation of this
+index, or -1 if the backend doesn’t support versioning.
+
+max_field_length(fieldname)¶
+
+Returns the maximum length of the field across all documents.
+
+optimize()¶
+
+Optimizes this index, if necessary.
+
+reader(reuse=None)¶
+
+Returns an IndexReader object for this index.
+
+Parameters:reuse – an existing reader. Some implementations may recycle
+resources from this existing reader to create the new reader. Note
+that any resources in the “recycled” reader that are not used by
+the new reader will be CLOSED, so you CANNOT use it afterward.
+
+Return type:whoosh.reading.IndexReader
+
+refresh()¶
+
+Returns a new Index object representing the latest generation
+of this index (if this object is the latest generation, or the backend
+doesn’t support versioning, returns self).
+
+Returns:Index
+
+remove_field(fieldname)¶
+
+Removes the named field from the index’s schema. Depending on the
+backend implementation, this may or may not actually remove existing
+data for the field from the index. Optimizing the index should always
+clear out existing data for a removed field.
+
+searcher(**kwargs)¶
+
+Returns a Searcher object for this index. Keyword arguments are
+passed to the Searcher object’s constructor.
+
+Return type:whoosh.searching.Searcher
+
+up_to_date()¶
+
+Returns True if this object represents the latest generation of
+this index. Returns False if this object is not the latest generation
+(that is, someone else has updated the index since you opened this
+object).
+
+writer(**kwargs)¶
+
+Returns an IndexWriter object for this index.
+
+Return type:whoosh.writing.IndexWriter
+
+Implementation¶
+
+class whoosh.index.FileIndex(storage, schema=None, indexname='MAIN')¶
+
+Exceptions¶
+
+exception whoosh.index.LockError¶
+
+exception whoosh.index.IndexError¶
+
+Generic index error.
+
+exception whoosh.index.IndexVersionError(msg, version, release=None)¶
+
+Raised when you try to open an index using a format that the current
+version of Whoosh cannot read. That is, when the index you’re trying to
+open is either not backward or forward compatible with this version of
+Whoosh.
+
+exception whoosh.index.OutOfDateError¶
+
+Raised when you try to commit changes to an index which is not the
+latest generation.
+
+exception whoosh.index.EmptyIndexError¶
+
+Raised when you try to work with an index that has no indexed terms.

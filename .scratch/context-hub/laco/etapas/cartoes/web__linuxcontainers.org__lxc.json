@@ -1,0 +1,37 @@
+{
+ "chave": "web:linuxcontainers.org/lxc",
+ "urls": [
+  "https://linuxcontainers.org/lxc/"
+ ],
+ "tipos": [
+  "concept",
+  "tool"
+ ],
+ "termos": [
+  "lxc",
+  "lxd",
+  "linux containers",
+  "Linux Containers",
+  "LXC",
+  "system containers"
+ ],
+ "mencoes": 2,
+ "familias": [
+  "gpt-oss",
+  "nemotron"
+ ],
+ "primeira_onda": 4,
+ "nomes": [
+  "LXC/LXD",
+  "LXC"
+ ],
+ "resumos": [
+  "Linux Containers and its management daemon LXD provide lightweight VM-like isolation for Linux workloads",
+  "Userspace interface for Linux kernel containment features, providing lightweight system containers."
+ ],
+ "fonte": "site",
+ "readme_status": "ok",
+ "readme_nome": "https://linuxcontainers.org/lxc/",
+ "readme_cortado": false,
+ "readme": "[Linux Containers - LXC - Introduction]\n\nLXC\n\nIntroduction\n\nWhat's LXC?¶\n\nLXC is a userspace interface for the Linux kernel containment features. Through a powerful API and simple tools, it lets Linux users easily create and manage system or application containers.\n\nFeatures¶\n\nCurrent LXC uses the following kernel features to contain processes:\n\nKernel namespaces (ipc, uts, mount, pid, network and user)\n\nApparmor and SELinux profiles\n\nSeccomp policies\n\nChroots (using pivot_root)\n\nKernel capabilities\n\nCGroups (control groups)\n\nLXC containers are often considered as something in the middle between a chroot and a full fledged virtual machine. The goal of LXC is to create an environment as close as possible to a standard Linux installation but without the need for a separate kernel.\n\nComponents¶\n\nLXC is currently made of a few separate components:\n\nThe liblxc library\n\nSeveral language bindings for the API:\n\npython3\n\nlua\n\nGo\n\nruby\n\nHaskell\n\nA set of standard tools to control the containers\n\nDistribution container templates\n\nLicensing¶\n\nLXC is free software, most of the code is released under the terms of the GNU LGPLv2.1+ license, some Android compatibility bits are released under a standard 2-clause BSD license and some binaries and templates are released under the GNU GPLv2 license.\n\nThe default license for the project is the GNU LGPLv2.1+.\n\nSupport¶\n\nLXC's stable release support relies on the Linux distributions and their own commitment to pushing stable fixes and security updates.\n\nBased on the needs and available resources from the various distributions, specific versions of LXC can enjoy long term support with frequent bugfix updates.\n\nOther releases will typically be maintained on a best effort basis which typically means until the next stable release is out.\n\nExtended support¶\n\nLXC 6.0 and 5.0 are long term support releases:\n\nLXC 6.0 will be supported until June 1st 2029\n\nLXC 5.0 will be supported until June 1st 2027"
+}

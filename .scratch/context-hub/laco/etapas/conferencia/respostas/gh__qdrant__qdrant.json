@@ -1,0 +1,35 @@
+{
+ "chave": "gh:qdrant/qdrant",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T22:03:31Z",
+ "resultado": "corrige",
+ "conferencia": {
+  "resultado": "corrige",
+  "final": {
+   "serve": "search",
+   "role": "Motor e banco de dados vetorial (Rust) com busca densa, esparsa, hibrida e filtros por payload; servico REST/gRPC.",
+   "place": [
+    "network_service"
+   ],
+   "mechanism": [
+    "vector",
+    "hybrid",
+    "embeddings"
+   ],
+   "mcp": "unknown",
+   "windows": "unknown",
+   "portuguese": "unknown",
+   "license": "Apache-2.0",
+   "maturity": "unknown",
+   "doubt": false,
+   "evidence": "Qdrant is a vector similarity search engine and vector database; Hybrid Search with RRF/DBSF fusion; docker run -p 6333:6333 qdrant/qdrant."
+  },
+  "o_que_mudou": [
+   "mechanism: bm25/full_text removed, README cita vetores esparsos e fusao, nao BM25",
+   "role: Markdown/MCP/Portuguese claims removed, not in README",
+   "maturity: stable -> unknown",
+   "place: disk removed"
+  ],
+  "nota": "Candidato forte a camada de busca vetorial e hibrida do hub, via servico local; MCP e Windows nao confirmados."
+ }
+}

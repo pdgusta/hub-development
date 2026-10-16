@@ -1,0 +1,70 @@
+{
+ "nome": "devrag",
+ "url": "https://github.com/tomohiro-owada/devrag",
+ "papel": "disco+MCP pronto",
+ "windows": "yes (binário devrag-windows-x64 no release; release.yml usa windows-latest)",
+ "mcp": "yes: servidor próprio, stdio (tools search, index_markdown, list_documents, delete_document, reindex_document); também CLI",
+ "portugues": "Modelo multilingual-e5-small (ONNX, 384 dim), '100+ languages'; configurável em model.name. Sem stemmer/stopwords (só vetor, sem FTS).",
+ "markdown_frontmatter": "Indexa .md por glob; uso de frontmatter não confirmado; chunking por tamanho (chunk_size 500 caracteres); filtros só por diretório e padrão de arquivo; sem busca por palavra-chave (schema: documents, chunks, vec_chunks).",
+ "atualizacao": "Sync completo na partida do servidor (compara mtime do disco com o banco: adiciona/atualiza/remove); sem watcher confirmado; depois exige reiniciar ou index/reindex manual.",
+ "embeddings_endpoint": "Só modelo local ONNX (baixado do Hugging Face na primeira execução); sem base_url.",
+ "recursos": "Binário único Go, sem Python; sqlite-vec; modelo e5-small; README: startup 2,3 s e indexação de 100 arquivos em 8,5 s (M2); RAM não informada.",
+ "licenca": "MIT (declarado no README; arquivo LICENSE não encontrado na raiz)",
+ "ultimo_release": "v1.4.4, 2026-04-15",
+ "atividade": "último commit 2026-04-15",
+ "maturidade": "beta (v1.x, 1 mantenedor)",
+ "encaixe": "Disco de cada máquina, binário simples no Windows. Impedimentos: reindexa só no boot, sem keyword nem frontmatter, sem endpoint de embeddings.",
+ "evidencias": [
+  {
+   "campo": "windows",
+   "url": "https://raw.githubusercontent.com/tomohiro-owada/devrag/main/.github/workflows/release.yml",
+   "citacao": "os: windows-latest ... binary_name: devrag-windows-x64.exe"
+  },
+  {
+   "campo": "mcp",
+   "url": "https://github.com/tomohiro-owada/devrag",
+   "citacao": "\"devrag\": { \"type\": \"stdio\", \"command\": \"/usr/local/bin/devrag\" }"
+  },
+  {
+   "campo": "portugues",
+   "url": "https://github.com/tomohiro-owada/devrag",
+   "citacao": "\"name\": \"multilingual-e5-small\", \"dimensions\": 384 ... Supports 100+ languages"
+  },
+  {
+   "campo": "markdown_frontmatter",
+   "url": "https://github.com/tomohiro-owada/devrag",
+   "citacao": "`chunk_size`: Document chunk size in characters"
+  },
+  {
+   "campo": "atualizacao",
+   "url": "https://raw.githubusercontent.com/tomohiro-owada/devrag/main/internal/indexer/sync.go",
+   "citacao": "if !timeEqual(fsMtime, dbMtime) { // Updated file: mtime differs"
+  },
+  {
+   "campo": "atualizacao",
+   "url": "https://raw.githubusercontent.com/tomohiro-owada/devrag/main/cmd/main.go",
+   "citacao": "5. Sync documents (MCP mode does full sync; CLI skips for speed)"
+  },
+  {
+   "campo": "embeddings_endpoint",
+   "url": "https://github.com/tomohiro-owada/devrag",
+   "citacao": "Single Binary - No Python, models auto-download on first run"
+  },
+  {
+   "campo": "licenca",
+   "url": "https://github.com/tomohiro-owada/devrag",
+   "citacao": "## License MIT License"
+  },
+  {
+   "campo": "ultimo_release",
+   "url": "https://github.com/tomohiro-owada/devrag/releases.atom",
+   "citacao": "v1.4.4 updated 2026-04-15T22:43:00Z"
+  }
+ ],
+ "nao_verificado": [
+  "frontmatter e heading no markdown.go (código não lido por completo)",
+  "RAM em execução",
+  "arquivo LICENSE",
+  "se há watcher fora do sync de boot"
+ ]
+}

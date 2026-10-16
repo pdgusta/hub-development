@@ -1,0 +1,454 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Painel do laço</title>
+<style>
+:root{
+  --bg:#f1ece0; --bg2:#e8e1d0; --pn:#fffcf4; --ln:#d9cfb9; --ink:#0c2336; --mu:#6d7c88; --fa:#a9b4bc;
+  --sea:#0a8fa3; --sea2:#5cc6d3; --deep:#0b4f6c; --foam:#d7f2f4;
+  --gate:#e2462f; --ok:#1f9d63; --voo:#0a8fa3; --pend:#c9d3da; --adi:#d99a00; --div:#7b5cd6; --esg:#c2223f; --can:#8a949b;
+  --inv:#d0573e; --tru:#e08a1e; --prov:#6b7f94; --cota:#d9a400; --sum:#a0a7ad;
+  --glow:0 0 0 transparent;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#041220; --bg2:#06192b; --pn:#081d31; --ln:#123250; --ink:#e4f2f8; --mu:#7d9bb2; --fa:#3c5a73;
+  --sea:#2fd0dd; --sea2:#1b8fa6; --deep:#0c3a57; --foam:#bff6f9;
+  --gate:#ff6a52; --ok:#46d68f; --voo:#2fd0dd; --pend:#1d3a54; --adi:#f2c14e; --div:#a68bff; --esg:#ff4d6d; --can:#5d7385;
+  --inv:#ff7a5c; --tru:#ffa53d; --prov:#7f97ad; --cota:#f2c14e; --sum:#55697a;
+}}
+:root[data-theme="dark"]{
+  --bg:#041220; --bg2:#06192b; --pn:#081d31; --ln:#123250; --ink:#e4f2f8; --mu:#7d9bb2; --fa:#3c5a73;
+  --sea:#2fd0dd; --sea2:#1b8fa6; --deep:#0c3a57; --foam:#bff6f9;
+  --gate:#ff6a52; --ok:#46d68f; --voo:#2fd0dd; --pend:#1d3a54; --adi:#f2c14e; --div:#a68bff; --esg:#ff4d6d; --can:#5d7385;
+  --inv:#ff7a5c; --tru:#ffa53d; --prov:#7f97ad; --cota:#f2c14e; --sum:#55697a;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--bg);color:var(--ink)}
+body{font-family:Bahnschrift,"DIN Alternate","Segoe UI",system-ui,sans-serif;font-variant-numeric:tabular-nums;
+  min-height:100vh;padding:18px 22px 28px;
+  background-image:repeating-linear-gradient(0deg,transparent 0 31px,color-mix(in srgb,var(--ln) 45%,transparent) 31px 32px),
+                   repeating-linear-gradient(90deg,transparent 0 31px,color-mix(in srgb,var(--ln) 30%,transparent) 31px 32px);}
+.cn{font-stretch:75%}
+.sc{font-stretch:87.5%}
+/* cabeçalho */
+header{display:flex;align-items:center;gap:18px;margin-bottom:16px;flex-wrap:wrap}
+.marca{display:flex;align-items:center;gap:12px}
+.marca svg{width:46px;height:46px}
+.marca b{display:block;font-size:13px;letter-spacing:.32em;color:var(--mu);font-weight:600}
+.marca strong{display:block;font-size:30px;line-height:1;font-stretch:75%;font-weight:700;letter-spacing:.02em}
+.ondaN{margin-left:6px;display:flex;align-items:baseline;gap:8px;padding:4px 16px;border-radius:999px;background:var(--ink);color:var(--bg)}
+.ondaN span{font-size:13px;letter-spacing:.25em;font-weight:600}
+.ondaN strong{font-size:34px;font-stretch:75%;line-height:1.05}
+.esp{flex:1}
+.vivo{display:flex;align-items:center;gap:8px;font-size:14px;letter-spacing:.2em;font-weight:700;color:var(--ok)}
+.vivo i{width:11px;height:11px;border-radius:50%;background:currentColor;box-shadow:0 0 0 0 currentColor;animation:bate 1.6s infinite}
+.vivo.fim{color:var(--gate)} .vivo.fim i{animation:none;border-radius:2px}
+.vivo.velho{color:var(--adi)}
+@keyframes bate{0%{box-shadow:0 0 0 0 color-mix(in srgb,currentColor 60%,transparent)}70%{box-shadow:0 0 0 10px transparent}100%{box-shadow:0 0 0 0 transparent}}
+.relogio{display:flex;align-items:center;gap:8px;color:var(--mu);font-size:13px}
+.relogio svg{width:22px;height:22px}
+.tema{border:1px solid var(--ln);background:var(--pn);color:var(--ink);width:36px;height:36px;border-radius:50%;cursor:pointer;display:grid;place-items:center}
+.tema svg{width:18px;height:18px}
+/* grade */
+main{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:14px}
+.p{background:var(--pn);border:1px solid var(--ln);border-radius:18px;padding:14px 16px;position:relative;overflow:hidden;min-width:0}
+.rt{display:flex;align-items:center;gap:8px;font-size:12px;letter-spacing:.28em;font-weight:700;color:var(--mu);text-transform:uppercase;margin-bottom:6px}
+.rt svg{width:18px;height:18px;flex:none}
+.c8{grid-column:span 8}.c4{grid-column:span 4}.c5{grid-column:span 5}.c7{grid-column:span 7}.c3{grid-column:span 3}.c6{grid-column:span 6}
+@media (max-width:1100px){.c8,.c4,.c5,.c7,.c6{grid-column:span 12}.c3{grid-column:span 6}}
+@media (max-width:640px){body{padding:12px 16px}.c3{grid-column:span 12}}
+.big{font-weight:700;font-stretch:75%;line-height:.9}
+.mu{color:var(--mu)}
+/* maré */
+.mare{display:flex;gap:14px;align-items:stretch}
+.mare svg.m{flex:1;min-width:0;height:auto}
+.lado{width:210px;flex:none;display:flex;flex-direction:column;gap:14px;justify-content:center}
+@media (max-width:640px){.mare{flex-direction:column}.lado{width:auto;flex-direction:row;flex-wrap:wrap}}
+.k{display:flex;flex-direction:column}
+.k small{font-size:11px;letter-spacing:.22em;color:var(--mu);font-weight:700;text-transform:uppercase}
+.k .big{font-size:72px}
+.k .md{font-size:38px;font-weight:700;font-stretch:75%;line-height:1}
+.seta{font-size:15px;color:var(--mu);display:flex;align-items:center;gap:6px}
+.trilha{display:flex;gap:8px;align-items:center}
+.trilha i{width:24px;height:24px;border-radius:50%;border:2.5px dashed var(--gate)}
+.trilha i.on{background:var(--gate);border-style:solid}
+.trilha span{font-size:12px;color:var(--mu);letter-spacing:.06em}
+.flut{animation:flut 3.4s ease-in-out infinite}
+@keyframes flut{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+.fimfaixa{position:absolute;right:-46px;top:22px;transform:rotate(35deg);background:var(--gate);color:#fff;font-weight:700;letter-spacing:.25em;font-size:13px;padding:6px 60px}
+/* medidores */
+.teto{display:grid;grid-template-rows:1fr 1fr;gap:6px;height:calc(100% - 26px)}
+.ga{display:flex;align-items:center;gap:12px}
+.ga svg{width:150px;flex:none}
+.ga .k .big{font-size:52px}
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;letter-spacing:.08em;padding:4px 10px;border-radius:999px;border:1.5px solid currentColor;margin-top:6px;width:max-content}
+/* onda atual */
+.oa{display:flex;gap:14px;align-items:flex-start}
+.oa .k .big{font-size:64px}
+.mat{flex:1;min-width:0}
+.mat svg{width:100%;height:auto;display:block}
+.voo{animation:pis 1.1s ease-in-out infinite}
+@keyframes pis{0%,100%{opacity:1}50%{opacity:.25}}
+.leg{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:10px;font-size:13px}
+.leg span{display:flex;align-items:center;gap:6px}
+.leg i{width:11px;height:11px;border-radius:3px;display:inline-block}
+.leg b{font-stretch:75%;font-size:17px}
+/* pulso */
+.pulso{display:flex;gap:14px;align-items:center}
+.pulso svg{flex:1;min-width:0;height:auto}
+.pulso .lado{width:150px}
+.pulso .k .big{font-size:48px}
+/* barras */
+.bars{display:flex;flex-direction:column;gap:6px;margin-top:6px}
+.br{display:grid;grid-template-columns:92px minmax(0,1fr) 52px;align-items:center;gap:8px;font-size:13px}
+.br .t{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.br .v{text-align:right;font-weight:700;font-stretch:75%;font-size:16px}
+.br .b{height:12px;border-radius:6px;background:var(--bg2);overflow:hidden}
+.br .b i{display:block;height:100%;border-radius:6px}
+.stk{display:flex;height:34px;border-radius:10px;overflow:hidden;margin:8px 0 10px}
+.stk i{display:block;height:100%}
+/* nuvem */
+.nuvem{display:flex;flex-wrap:wrap;gap:4px 12px;align-items:baseline;margin-top:6px;line-height:1.05}
+.lc{display:inline-block;width:28px;font-size:11px;letter-spacing:.08em;color:var(--sea)}
+.nuvem span{font-weight:700;font-stretch:75%;white-space:nowrap}
+.nuvem sup{font-size:11px;color:var(--mu);font-weight:400;margin-left:2px}
+/* sementes */
+.sem{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.sem svg{width:30px;height:30px}
+footer{margin-top:14px;color:var(--mu);font-size:12px;display:flex;gap:16px;flex-wrap:wrap}
+</style>
+</head>
+<body>
+<header>
+  <div class="marca">
+    <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="22" fill="none" stroke="var(--sea)" stroke-width="3"/><path d="M6 27c4-6 8-6 12 0s8 6 12 0 8-6 12 0" fill="none" stroke="var(--sea)" stroke-width="3" stroke-linecap="round"/><path d="M9 34c3-4 6-4 9 0s6 4 9 0 6-4 9 0" fill="none" stroke="var(--sea2)" stroke-width="2.5" stroke-linecap="round"/><circle cx="24" cy="14" r="3" fill="var(--gate)"/></svg>
+    <div><b>LAÇO · PESQUISA AMPLA</b><strong>maré de novos</strong></div>
+  </div>
+  <div class="ondaN"><span>ONDA</span><strong id="hOnda">–</strong></div>
+  <div class="esp"></div>
+  <div class="vivo" id="hVivo"><i></i><span>AO VIVO</span></div>
+  <div class="relogio" title="próxima leitura"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="var(--ln)" stroke-width="3"/><circle id="anel" cx="12" cy="12" r="9" fill="none" stroke="var(--sea)" stroke-width="3" stroke-dasharray="56.5" stroke-dashoffset="0" transform="rotate(-90 12 12)"/></svg><span id="hIdade">–</span></div>
+  <button class="tema" id="tema" title="claro / escuro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 0 0 0 16z" fill="currentColor"/></svg></button>
+</header>
+
+<main>
+  <section class="p c8" id="pMare">
+    <div class="rt"><svg viewBox="0 0 24 24" fill="none" stroke="var(--sea)" stroke-width="2" stroke-linecap="round"><path d="M2 15c3-4 5-4 8 0s5 4 8 0 3-3 4-2"/><path d="M2 20c3-3 5-3 8 0s5 3 8 0"/></svg>itens novos por onda · rumo à linha dos 5%</div>
+    <div class="mare"><svg class="m" id="gMare" viewBox="0 0 1000 380"></svg><div class="lado" id="lMare"></div></div>
+  </section>
+
+  <section class="p c4">
+    <div class="rt"><svg viewBox="0 0 24 24" fill="none" stroke="var(--gate)" stroke-width="2" stroke-linecap="round"><path d="M4 17a8 8 0 1 1 16 0"/><path d="M12 17l4-6"/></svg>teto · quanto falta</div>
+    <div class="teto" id="gTeto"></div>
+  </section>
+
+  <section class="p c5">
+    <div class="rt"><svg viewBox="0 0 24 24" fill="none" stroke="var(--sea)" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5" stroke-dasharray="2 2"/></svg>onda atual · cada quadrado é um pedido</div>
+    <div class="oa" id="gOnda"></div>
+  </section>
+
+  <section class="p c7">
+    <div class="rt"><svg viewBox="0 0 24 24" fill="none" stroke="var(--ok)" stroke-width="2" stroke-linecap="round"><path d="M2 12h4l2-6 4 12 3-9 2 3h5"/></svg>pulso · chamadas por minuto · últimas 2 h</div>
+    <div class="pulso" id="gPulso"></div>
+  </section>
+
+  <section class="p c4" id="pEst"><div class="rt"><svg viewBox="0 0 24 24" fill="none" stroke="var(--inv)" stroke-width="2" stroke-linecap="round"><path d="M12 3l9 16H3z"/><path d="M12 10v4M12 17v.5"/></svg>destino das chamadas</div><div id="gEst"></div></section>
+  <section class="p c4"><div class="rt"><svg viewBox="0 0 24 24" fill="none" stroke="var(--sea)" stroke-width="2"><rect x="5" y="7" width="14" height="11" rx="3"/><path d="M12 3v4M9 12h.01M15 12h.01M9 15h6"/></svg>modelos</div><div id="gMod"></div></section>
+  <section class="p c4"><div class="rt"><svg viewBox="0 0 24 24" fill="none" stroke="var(--ok)" stroke-width="2" stroke-linecap="round"><path d="M12 21v-8"/><path d="M12 13c0-5 4-8 8-8 0 5-4 8-8 8zM12 15c0-4-3-6-7-6 0 4 3 6 7 6z"/></svg>sementes ocultas · conferência</div><div id="gSem"></div></section>
+
+  <section class="p c3"><div class="rt"><svg viewBox="0 0 24 24" fill="none" stroke="var(--sea)" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg>línguas</div><div id="gLin"></div></section>
+  <section class="p c3"><div class="rt"><svg viewBox="0 0 24 24" fill="none" stroke="var(--div)" stroke-width="2"><circle cx="7" cy="7" r="3"/><circle cx="17" cy="7" r="3"/><circle cx="12" cy="17" r="3"/><path d="M8.5 9.5l2 5M15.5 9.5l-2 5"/></svg>famílias de modelo</div><div id="gFam"></div></section>
+  <section class="p c3"><div class="rt"><svg viewBox="0 0 24 24" fill="none" stroke="var(--prov)" stroke-width="2"><rect x="4" y="4" width="16" height="6" rx="1.5"/><rect x="4" y="14" width="16" height="6" rx="1.5"/><path d="M8 7h.01M8 17h.01"/></svg>provedores</div><div id="gPro"></div></section>
+  <section class="p c3"><div class="rt"><svg viewBox="0 0 24 24" fill="none" stroke="var(--adi)" stroke-width="2" stroke-linejoin="round"><path d="M12 3l2.7 5.6 6.1.8-4.5 4.2 1.1 6-5.4-3-5.4 3 1.1-6-4.5-4.2 6.1-.8z"/></svg>mais citados</div><div id="gCit"></div></section>
+</main>
+<footer><span id="fGer">–</span><span>lê dados.js a cada 30 s</span></footer>
+
+<script>
+(function(){
+  var raiz = document.documentElement;
+  try { var t = localStorage.getItem('painel-laco-tema'); if (t) raiz.setAttribute('data-theme', t); } catch(e){}
+  document.getElementById('tema').onclick = function(){
+    var escuro = raiz.getAttribute('data-theme') ? raiz.getAttribute('data-theme') === 'dark'
+               : matchMedia('(prefers-color-scheme: dark)').matches;
+    var novo = escuro ? 'light' : 'dark';
+    raiz.setAttribute('data-theme', novo);
+    try { localStorage.setItem('painel-laco-tema', novo); } catch(e){}
+  };
+})();
+
+var NF = new Intl.NumberFormat('pt-BR');
+function n(v){ return NF.format(Math.round(v||0)); }
+function pc(v){ return Math.round((v||0)*100) + '%'; }
+function mil(v){ v = v||0; return v >= 10000 ? (v/1000).toLocaleString('pt-BR',{maximumFractionDigits:1}) + ' mil' : n(v); }
+function hm(seg){ seg = Math.max(0, seg||0); var h = Math.floor(seg/3600), m = Math.floor(seg%3600/60); return h + 'h' + String(m).padStart(2,'0'); }
+function esc(s){ return String(s==null?'':s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+function $(id){ return document.getElementById(id); }
+
+var ultimaLeitura = Date.now();
+
+/* ---------- MARÉ: cada onda fechada é uma onda do mar; altura = parte de itens novos ---------- */
+function mare(D){
+  var H = D.historico || [], gate = D.gate || 0.05, fim = !!D.terminou;
+  var B = 330, T = 34, AL = B - T, X0 = 70, X1 = 980;
+  function y(t){ return B - Math.sqrt(Math.max(0, Math.min(1, t))) * AL; }   // raiz: os 5% ficam visíveis
+  // projeção pelo ritmo das duas últimas ondas
+  var proj = [];
+  if (!fim && H.length >= 2) {
+    var a = H[H.length-2].taxa_novos, b = H[H.length-1].taxa_novos, r = a > 0 ? b/a : 1;
+    if (r > 0 && r < 1) { var v = b, abaixo = 0; while (abaixo < 2 && proj.length < 14) { v *= r; proj.push(v); if (v < gate) abaixo++; } }
+  }
+  var slots = Math.max(6, H.length + (fim ? 0 : 1), H.length + proj.length);
+  slots = Math.min(slots, 16);
+  var sw = (X1 - X0 - 12) / (slots + 0.6), aw = sw * 1.1;
+  function cx(i){ return X0 + 6 + aw + sw * i; }
+  function onda(i, t){
+    var c = cx(i), top = y(t);
+    return 'M' + (c-aw) + ',' + B + ' C' + (c-aw*0.42) + ',' + B + ' ' + (c-aw*0.4) + ',' + top + ' ' + c + ',' + top +
+           ' C' + (c+aw*0.4) + ',' + top + ' ' + (c+aw*0.42) + ',' + B + ' ' + (c+aw) + ',' + B + ' Z';
+  }
+  var s = '<defs><linearGradient id="gm" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--sea)"/><stop offset="1" stop-color="var(--deep)"/></linearGradient>' +
+          '<linearGradient id="gg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--gate)"/><stop offset="1" stop-color="var(--deep)"/></linearGradient></defs>';
+  // réguas
+  [1, .5, .25].forEach(function(t){
+    s += '<line x1="' + X0 + '" x2="' + X1 + '" y1="' + y(t) + '" y2="' + y(t) + '" stroke="var(--ln)" stroke-width="1"/>' +
+         '<text x="' + (X0-10) + '" y="' + (y(t)+5) + '" text-anchor="end" font-size="15" fill="var(--mu)">' + pc(t) + '</text>';
+  });
+  // fundo do mar
+  s += '<rect x="' + X0 + '" y="' + B + '" width="' + (X1-X0) + '" height="6" rx="3" fill="var(--deep)" opacity=".5"/>';
+  // ondas fechadas
+  H.forEach(function(o, i){
+    var t = o.taxa_novos || 0, sob = t < gate;
+    s += '<path d="' + onda(i, Math.max(t, 0.004)) + '" fill="url(#' + (sob ? 'gg' : 'gm') + ')" opacity=".93" stroke="var(--foam)" stroke-width="2"/>';
+    s += '<text x="' + cx(i) + '" y="' + (y(t) - 12) + '" text-anchor="middle" font-size="' + (sw > 120 ? 34 : 24) + '" font-weight="700" font-stretch="75%" fill="var(--ink)">' + pc(t) + '</text>';
+    s += '<text x="' + cx(i) + '" y="' + (B + 30) + '" text-anchor="middle" font-size="18" font-weight="700" fill="var(--mu)">' + o.onda + '</text>';
+    s += '<text x="' + cx(i) + '" y="' + (B + 46) + '" text-anchor="middle" font-size="12" fill="var(--mu)">+' + n(o.novos) + '</text>';
+  });
+  // onda em curso
+  if (!fim) {
+    var i = H.length, tg = proj.length ? proj[0] : (H.length ? H[H.length-1].taxa_novos * .8 : .6);
+    s += '<g class="flut"><path d="' + onda(i, tg) + '" fill="var(--sea)" fill-opacity=".12" stroke="var(--sea)" stroke-width="2.5" stroke-dasharray="7 6"/>' +
+         '<text x="' + cx(i) + '" y="' + (y(tg) - 12) + '" text-anchor="middle" font-size="30" font-weight="700" fill="var(--sea)">?</text></g>';
+    s += '<text x="' + cx(i) + '" y="' + (B + 30) + '" text-anchor="middle" font-size="18" font-weight="700" fill="var(--sea)">' + (D.onda || i+1) + '</text>';
+    s += '<text x="' + cx(i) + '" y="' + (B + 46) + '" text-anchor="middle" font-size="12" fill="var(--sea)">em curso</text>';
+  }
+  // projeção pontilhada
+  if (proj.length) {
+    var k0 = H.length - 1, pts = [cx(k0) + ',' + y(H[k0].taxa_novos)], alvo = -1;
+    proj.forEach(function(v, j){ var k = k0 + 1 + j; if (k < slots) { pts.push(cx(k) + ',' + y(v)); if (alvo < 0 && v < gate) alvo = k; } });
+    s += '<polyline points="' + pts.join(' ') + '" fill="none" stroke="var(--mu)" stroke-width="2" stroke-dasharray="2 7" stroke-linecap="round"/>';
+    pts.slice(1).forEach(function(p){ var q = p.split(','); s += '<circle cx="' + q[0] + '" cy="' + q[1] + '" r="4" fill="var(--pn)" stroke="var(--mu)" stroke-width="2"/>'; });
+    if (alvo >= 0) {
+      var ax = cx(alvo);
+      s += '<text x="' + ax + '" y="' + (y(gate) - 40) + '" text-anchor="middle" font-size="13" fill="var(--mu)">no ritmo</text>' +
+           '<text x="' + ax + '" y="' + (y(gate) - 22) + '" text-anchor="middle" font-size="13" fill="var(--mu)">de agora</text>' +
+           '<text x="' + ax + '" y="' + (B + 30) + '" text-anchor="middle" font-size="18" font-weight="700" fill="var(--mu)">' + (H[k0].onda + (alvo - k0)) + '</text>';
+    }
+  }
+  // linha dos 5%
+  var yg = y(gate);
+  s += '<line x1="' + (X0-4) + '" x2="' + X1 + '" y1="' + yg + '" y2="' + yg + '" stroke="var(--gate)" stroke-width="3" stroke-dasharray="12 7"/>' +
+       '<text x="' + (X0-10) + '" y="' + (yg+6) + '" text-anchor="end" font-size="18" font-weight="700" fill="var(--gate)">' + pc(gate) + '</text>' +
+       '<text x="' + X1 + '" y="' + (yg - 9) + '" text-anchor="end" font-size="14" font-weight="700" letter-spacing="3" fill="var(--gate)">PARADA</text>';
+  $('gMare').innerHTML = s;
+
+  // lateral: última taxa, catálogo, trilha das 2 ondas
+  var ult = H[H.length-1], ant = H[H.length-2], seq = 0;
+  for (var j = H.length - 1; j >= 0 && H[j].taxa_novos < gate; j--) seq++;
+  var l = '';
+  l += '<div class="k"><small>novos · onda ' + (ult ? ult.onda : '–') + '</small><span class="big" style="color:' + (ult && ult.taxa_novos < gate ? 'var(--gate)' : 'var(--sea)') + '">' + (ult ? pc(ult.taxa_novos) : '–') + '</span>' +
+       (ant ? '<span class="seta">antes ' + pc(ant.taxa_novos) + ' <svg width="16" height="16" viewBox="0 0 16 16"><path d="M8 2v11M3 8l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2"/></svg></span>' : '') + '</div>';
+  l += '<div class="k"><small>catálogo</small><span class="md">' + n(D.catalogo_itens) + '</span><span class="seta">' + n(D.itens_brutos) + ' brutos</span></div>';
+  l += '<div class="k"><small>2 ondas &lt; 5% = fim</small><div class="trilha"><i class="' + (seq >= 1 ? 'on' : '') + '"></i><i class="' + (seq >= 2 ? 'on' : '') + '"></i><span>' + Math.min(seq,2) + ' de 2</span></div></div>';
+  $('lMare').innerHTML = l;
+  var faixa = $('pMare').querySelector('.fimfaixa');
+  if (fim && !faixa) $('pMare').insertAdjacentHTML('beforeend', '<div class="fimfaixa">PAROU</div>');
+  if (!fim && faixa) faixa.remove();
+}
+
+/* ---------- TETO: dois medidores de combustível ---------- */
+function medidor(frac, cor){
+  frac = Math.max(0, Math.min(1, frac));
+  var r = 60, cx = 75, cy = 76, L = Math.PI * r;
+  var ang = Math.PI * (1 - frac), px = cx + r * Math.cos(ang), py = cy - r * Math.sin(ang);
+  var risc = '';
+  for (var i = 0; i <= 10; i++) { var a = Math.PI * (1 - i/10), r1 = r + 10, r2 = r + (i % 5 ? 14 : 19);
+    risc += '<line x1="' + (cx + r1*Math.cos(a)) + '" y1="' + (cy - r1*Math.sin(a)) + '" x2="' + (cx + r2*Math.cos(a)) + '" y2="' + (cy - r2*Math.sin(a)) + '" stroke="var(--fa)" stroke-width="2"/>'; }
+  return '<svg viewBox="-6 -8 162 96">' + risc +
+    '<path d="M15,76 A60,60 0 0 1 135,76" fill="none" stroke="var(--bg2)" stroke-width="16" stroke-linecap="round"/>' +
+    '<path d="M15,76 A60,60 0 0 1 135,76" fill="none" stroke="' + cor + '" stroke-width="16" stroke-linecap="round" stroke-dasharray="' + (L*frac) + ' ' + L + '"/>' +
+    '<line x1="' + cx + '" y1="' + cy + '" x2="' + px + '" y2="' + py + '" stroke="var(--ink)" stroke-width="3" stroke-linecap="round"/>' +
+    '<circle cx="' + cx + '" cy="' + cy + '" r="7" fill="var(--ink)"/>' +
+    '</svg>';
+}
+function teto(D){
+  var usadoT = D.teto_tentativas ? D.tentativas / D.teto_tentativas : 0;
+  var total = (D.horas || 0) * 3600, gasto = (D.agora || 0) - (D.inicio || 0), usadoH = total ? gasto / total : 0;
+  function cor(f){ return f > .85 ? 'var(--gate)' : f > .6 ? 'var(--adi)' : 'var(--sea)'; }
+  // quem acaba antes, no ritmo de agora
+  var ritmo = gasto > 0 ? D.tentativas / gasto : 0, antes = '';
+  if (!D.terminou && ritmo > 0 && total) {
+    var segT = (D.teto_tentativas - D.tentativas) / ritmo, segH = total - gasto;
+    antes = segT < segH ? 'tentativas' : 'relógio';
+  }
+  var s = '';
+  s += '<div class="ga">' + medidor(usadoT, cor(usadoT)) + '<div class="k"><small>tentativas · faltam</small><span class="big">' + mil((D.teto_tentativas||0) - (D.tentativas||0)) + '</span><span class="seta">' + n(D.tentativas) + ' de ' + n(D.teto_tentativas) + ' · ' + pc(usadoT) + '</span>' +
+       (antes === 'tentativas' ? '<span class="chip" style="color:var(--gate)">acaba antes</span>' : '') + '</div></div>';
+  s += '<div class="ga">' + medidor(usadoH, cor(usadoH)) + '<div class="k"><small>horas · faltam</small><span class="big">' + hm(total - gasto) + '</span><span class="seta">' + hm(gasto) + ' de ' + hm(total) + ' · ' + pc(usadoH) + '</span>' +
+       (antes === 'relógio' ? '<span class="chip" style="color:var(--gate)">acaba antes</span>' : '') + '</div></div>';
+  $('gTeto').innerHTML = s;
+}
+
+/* ---------- ONDA ATUAL: matriz de pedidos ---------- */
+var ESTP = [
+  ['aceito','aceito','var(--ok)'], ['dividido','dividido','var(--div)'], ['esgotado','esgotado','var(--esg)'], ['cancelado','cancelado','var(--can)'],
+  ['adiado','adiado','var(--adi)'], ['em_voo','em voo','var(--voo)'], ['pendente','na fila','var(--pend)']
+];
+function ondaAtual(D){
+  var P = D.pedidos_da_onda || {}, tot = 0;
+  ESTP.forEach(function(e){ tot += P[e[0]] || 0; });
+  var fin = (P.aceito||0) + (P.dividido||0) + (P.esgotado||0) + (P.cancelado||0), falta = tot - fin;
+  var W = 600, cols = Math.max(20, Math.ceil(Math.sqrt(tot * 2.6))), cel = W / cols, rows = Math.ceil(tot / cols) || 1;
+  var g = cel * 0.18, s = '', k = 0;
+  ESTP.forEach(function(e){
+    var q = P[e[0]] || 0;
+    for (var i = 0; i < q; i++, k++) {
+      var x = (k % cols) * cel, y = Math.floor(k / cols) * cel;
+      if (e[0] === 'pendente') s += '<rect x="' + (x+g/2+.6) + '" y="' + (y+g/2+.6) + '" width="' + (cel-g-1.2) + '" height="' + (cel-g-1.2) + '" rx="1.5" fill="none" stroke="var(--fa)" stroke-width="1.2"/>';
+      else s += '<rect' + (e[0] === 'em_voo' && !D.terminou ? ' class="voo" style="animation-delay:' + (i*0.13 % 1.1).toFixed(2) + 's"' : '') + ' x="' + (x+g/2) + '" y="' + (y+g/2) + '" width="' + (cel-g) + '" height="' + (cel-g) + '" rx="1.5" fill="' + e[2] + '"/>';
+    }
+  });
+  var leg = '<div class="leg">' + ESTP.map(function(e){ var q = P[e[0]] || 0; return q ? '<span><i style="' + (e[0]==='pendente' ? 'border:1.5px solid var(--fa)' : 'background:' + e[2]) + '"></i>' + e[1] + ' <b>' + n(q) + '</b></span>' : ''; }).join('') + '</div>';
+  $('gOnda').innerHTML =
+    '<div class="k" style="width:120px;flex:none"><small>prontos</small><span class="big">' + pc(tot ? fin / tot : 0) + '</span><span class="seta">faltam ' + n(falta) + '</span><span class="seta">' + n(tot) + ' pedidos</span></div>' +
+    '<div class="mat"><svg viewBox="0 0 ' + W + ' ' + (rows * cel) + '">' + s + '</svg>' + leg + '</div>';
+}
+
+/* ---------- PULSO: osciloscópio de 120 minutos ---------- */
+function pulso(D){
+  var C = (D.chamadas_por_minuto || []).slice(0, 120), A = (D.aceitas_por_minuto || []).slice(0, 120);
+  var W = 900, Hh = 200, top = 14, base = 170, N = 120;
+  var mx = Math.max(10, Math.max.apply(null, C.concat([0]))); mx = Math.ceil(mx / 10) * 10;
+  function X(i){ return W - 10 - i * (W - 50) / (N - 1); }   // índice 0 = agora, à direita
+  function Y(v){ return base - (v / mx) * (base - top); }
+  var s = '<defs><linearGradient id="ga" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--ok)" stop-opacity=".55"/><stop offset="1" stop-color="var(--ok)" stop-opacity=".03"/></linearGradient></defs>';
+  [0, 30, 60, 90, 119].forEach(function(m){
+    s += '<line x1="' + X(m) + '" x2="' + X(m) + '" y1="' + top + '" y2="' + base + '" stroke="var(--ln)"/>' +
+         '<text x="' + X(m) + '" y="' + (base + 22) + '" text-anchor="' + (m === 0 ? 'end' : 'middle') + '" font-size="14" fill="var(--mu)">' + (m === 0 ? 'agora' : m === 119 ? '−2 h' : '−' + m + ' min') + '</text>';
+  });
+  s += '<line x1="' + X(119) + '" x2="' + X(0) + '" y1="' + Y(mx) + '" y2="' + Y(mx) + '" stroke="var(--ln)" stroke-dasharray="3 5"/>' +
+       '<text x="' + (X(119) - 6) + '" y="' + (Y(mx) + 5) + '" text-anchor="end" font-size="13" fill="var(--mu)">' + mx + '</text>';
+  // silêncios (3+ minutos sem chamada)
+  for (var i = 0, ini = -1; i <= C.length; i++) {
+    if (i < C.length && !C[i]) { if (ini < 0) ini = i; }
+    else { if (ini >= 0 && i - ini >= 3) s += '<rect x="' + X(i-1) + '" y="' + top + '" width="' + (X(ini) - X(i-1)) + '" height="' + (base - top) + '" fill="var(--gate)" opacity=".12"/>'; ini = -1; }
+  }
+  var area = 'M' + X(0) + ',' + base, lin = '', linA = '';
+  A.forEach(function(v, i){ area += ' L' + X(i) + ',' + Y(v); linA += (i ? ' L' : 'M') + X(i) + ',' + Y(v); });
+  area += ' L' + X(A.length - 1) + ',' + base + ' Z';
+  C.forEach(function(v, i){ lin += (i ? ' L' : 'M') + X(i) + ',' + Y(v); });
+  s += '<path d="' + area + '" fill="url(#ga)"/><path d="' + linA + '" fill="none" stroke="var(--ok)" stroke-width="1.6" opacity=".9"/>' +
+       '<path d="' + lin + '" fill="none" stroke="var(--sea)" stroke-width="2.6" stroke-linejoin="round"/>';
+  if (!D.terminou) s += '<circle cx="' + X(0) + '" cy="' + Y(C[0]||0) + '" r="6" fill="var(--sea)"><animate attributeName="r" values="5;10;5" dur="1.4s" repeatCount="indefinite"/><animate attributeName="opacity" values="1;.4;1" dur="1.4s" repeatCount="indefinite"/></circle>';
+  function media(v, k){ var x = 0; for (var i = 0; i < k; i++) x += v[i] || 0; return x / k; }
+  var c10 = media(C, 10), a10 = media(A, 10), calado = C.slice(0, 3).every(function(v){ return !v; });
+  $('gPulso').innerHTML = '<svg viewBox="0 0 ' + W + ' ' + Hh + '">' + s + '</svg>' +
+    '<div class="lado"><div class="k"><small style="color:var(--sea)">chamadas/min</small><span class="big" style="color:var(--sea)">' + n(c10) + '</span></div>' +
+    '<div class="k"><small style="color:var(--ok)">aceitas/min</small><span class="big" style="color:var(--ok)">' + n(a10) + '</span></div>' +
+    '<span class="seta">média 10 min · ' + (c10 ? pc(a10 / c10) : '–') + ' aceitas</span>' +
+    (calado && !D.terminou ? '<span class="chip" style="color:var(--gate)">silêncio</span>' : '') + '</div>';
+}
+
+/* ---------- destino das chamadas ---------- */
+var ESTC = [['aceito','aceita','var(--ok)'], ['invalido','inválida','var(--inv)'], ['provedor','erro do provedor','var(--prov)'],
+            ['truncado','truncada','var(--tru)'], ['cota','sem cota','var(--cota)'], ['sumiu','sumiu','var(--sum)']];
+function destino(D){
+  var E = D.estados_das_chamadas || {}, tot = 0, extra = [];
+  Object.keys(E).forEach(function(k){ tot += E[k]; if (!ESTC.some(function(e){ return e[0] === k; })) extra.push([k, k, 'var(--fa)']); });
+  var L = ESTC.concat(extra).filter(function(e){ return E[e[0]]; });
+  var stk = L.map(function(e){ return '<i style="width:' + (E[e[0]] / tot * 100) + '%;background:' + e[2] + '" title="' + e[1] + '"></i>'; }).join('');
+  $('gEst').innerHTML = '<div style="display:flex;align-items:baseline;gap:10px"><span class="big" style="font-size:58px;color:var(--ok)">' + pc(tot ? (E.aceito || 0) / tot : 0) + '</span><span class="mu">aceitas de ' + n(tot) + '</span></div>' +
+    '<div class="stk">' + stk + '</div><div class="leg">' + L.map(function(e){ return '<span><i style="background:' + e[2] + '"></i>' + esc(e[1]) + ' <b>' + n(E[e[0]]) + '</b></span>'; }).join('') + '</div>';
+}
+
+/* ---------- modelos: um ponto por modelo ---------- */
+function modelos(D){
+  var M = D.modelos || {}, tot = M.total || 0, ap = M.aptos || 0, fo = M.fora_agora || 0, s = '';
+  var cols = 30, r = 5.2, p = 14, rows = Math.ceil(tot / cols);
+  for (var i = 0; i < tot; i++) {
+    var x = 8 + (i % cols) * p, y = 8 + Math.floor(i / cols) * p;
+    if (i < ap - fo) s += '<circle cx="' + x + '" cy="' + y + '" r="' + r + '" fill="var(--ok)"/>';
+    else if (i < ap) s += '<circle cx="' + x + '" cy="' + y + '" r="' + (r-1) + '" fill="none" stroke="var(--adi)" stroke-width="2"/>';
+    else s += '<circle cx="' + x + '" cy="' + y + '" r="2" fill="var(--fa)"/>';
+  }
+  $('gMod').innerHTML = '<div style="display:flex;align-items:baseline;gap:10px"><span class="big" style="font-size:58px;color:var(--ok)">' + n(ap - fo) + '</span><span class="mu">trabalhando agora</span></div>' +
+    '<svg viewBox="0 0 ' + (cols * p + 2) + ' ' + (rows * p + 2) + '" style="width:100%;margin:8px 0">' + s + '</svg>' +
+    '<div class="leg"><span><i style="background:var(--ok);border-radius:50%"></i>aptos <b>' + n(ap - fo) + '</b></span><span><i style="border:2px solid var(--adi);border-radius:50%"></i>esperando a cota <b>' + n(fo) + '</b></span><span><i style="background:var(--fa);border-radius:50%;transform:scale(.5)"></i>fora da lista <b>' + n(tot - ap) + '</b></span></div>';
+}
+
+/* ---------- sementes ocultas ---------- */
+function sementes(D){
+  var S = D.sementes || {}, ach = S.achadas || 0, tot = S.total || 0, s = '';
+  for (var i = 0; i < tot; i++) {
+    var ok = i < ach;
+    s += '<svg viewBox="0 0 30 30"><circle cx="15" cy="15" r="12" fill="' + (ok ? 'var(--ok)' : 'none') + '" stroke="' + (ok ? 'var(--ok)' : 'var(--fa)') + '" stroke-width="2" stroke-dasharray="' + (ok ? '0' : '3 3') + '"/>' +
+         (ok ? '<path d="M9 15.5l4 4 8-9" fill="none" stroke="var(--pn)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>' : '<circle cx="15" cy="15" r="2.5" fill="var(--fa)"/>') + '</svg>';
+  }
+  $('gSem').innerHTML = '<div style="display:flex;align-items:baseline;gap:10px"><span class="big" style="font-size:58px">' + n(ach) + '<span class="mu" style="font-size:34px"> / ' + n(tot) + '</span></span><span class="mu">achadas no catálogo</span></div>' +
+    '<div class="sem">' + s + '</div><span class="seta">plantadas sem o laço saber; todas achadas = varredura confiável</span>';
+}
+
+/* ---------- barras ---------- */
+function barras(id, obj, cor, max, rotulo){
+  var L = Object.keys(obj || {}).map(function(k){ return [k, obj[k]]; }).sort(function(a, b){ return b[1] - a[1]; });
+  var tot = L.reduce(function(x, e){ return x + e[1]; }, 0);
+  if (L.length > max) { var resto = L.slice(max - 1).reduce(function(x, e){ return x + e[1]; }, 0); L = L.slice(0, max - 1); L.push(['outros', resto]); }
+  var top = L.length ? Math.max.apply(null, L.map(function(e){ return e[1]; })) : 1;
+  $(id).innerHTML = '<div class="bars">' + L.map(function(e){
+    return '<div class="br"><span class="t">' + (rotulo ? rotulo(e[0]) : esc(e[0])) + '</span><span class="b"><i style="width:' + (e[1] / top * 100) + '%;background:' + (e[0] === 'outros' ? 'var(--fa)' : cor) + '"></i></span><span class="v">' + n(e[1]) + '</span></div>';
+  }).join('') + '</div>';
+}
+var LING = {pt:'português', es:'espanhol', en:'inglês', de:'alemão', ru:'russo', zh:'chinês', ja:'japonês'};
+
+function citados(D){
+  var M = D.mais_citados || [], mx = M.length ? M[0].mencoes : 1, mn = M.length ? M[M.length-1].mencoes : 0;
+  $('gCit').innerHTML = '<div class="nuvem">' + M.map(function(e, i){
+    var f = mx === mn ? 1 : (e.mencoes - mn) / (mx - mn), fs = 15 + f * 19;
+    return '<span style="font-size:' + fs.toFixed(1) + 'px;color:' + (i < 3 ? 'var(--ink)' : 'var(--mu)') + '">' + esc(e.nome) + '<sup>' + n(e.mencoes) + '</sup></span>';
+  }).join('') + '</div>';
+}
+
+function desenhar(){
+  var D = window.DADOS; if (!D) return;
+  $('hOnda').textContent = D.onda || '–';
+  var idade = D.gerado_em ? (Date.now() - Date.parse(D.gerado_em)) / 1000 : 0;
+  var v = $('hVivo');
+  v.className = 'vivo' + (D.terminou ? ' fim' : idade > 300 ? ' velho' : '');
+  v.querySelector('span').textContent = D.terminou ? 'TERMINOU' : idade > 300 ? 'SEM SINAL' : 'AO VIVO';
+  $('fGer').textContent = 'dados de ' + (D.gerado_em ? new Date(D.gerado_em).toLocaleString('pt-BR') : '–');
+  [mare, teto, ondaAtual, pulso, destino, modelos, sementes, citados].forEach(function(f){ try { f(D); } catch(e){ console.error(f.name, e); } });
+  try {
+    barras('gLin', D.aceitas_por_lingua, 'var(--sea)', 7, function(k){ return '<b class="lc">' + esc(k).toUpperCase() + '</b>' + (LING[k] || ''); });
+    barras('gFam', D.aceitas_por_familia, 'var(--div)', 8);
+    barras('gPro', D.aceitas_por_provedor, 'var(--prov)', 8);
+  } catch(e){ console.error(e); }
+}
+
+function recarregar(){
+  var velho = document.getElementById('dadosjs'), s = document.createElement('script');
+  s.src = 'dados.js?t=' + Date.now();
+  s.onload = function(){ ultimaLeitura = Date.now(); desenhar(); if (velho) velho.remove(); s.id = 'dadosjs'; };
+  s.onerror = function(){ s.remove(); };
+  document.head.appendChild(s);
+}
+setInterval(recarregar, 30000);
+setInterval(function(){
+  var D = window.DADOS, f = Math.min(1, (Date.now() - ultimaLeitura) / 30000);
+  $('anel').setAttribute('stroke-dashoffset', (56.5 * f).toFixed(1));
+  if (D && D.gerado_em) { var s = Math.max(0, Math.round((Date.now() - Date.parse(D.gerado_em)) / 1000)); $('hIdade').textContent = s < 120 ? 'há ' + s + ' s' : 'há ' + Math.round(s / 60) + ' min'; }
+}, 1000);
+</script>
+<script id="dadosjs" src="dados.js" onload="desenhar()"></script>
+</body>
+</html>

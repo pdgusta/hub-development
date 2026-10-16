@@ -1,0 +1,126 @@
+{
+  "envio": "b77740b3-465e-44cb-90a7-af09c06e5af3",
+  "tipo": "resposta",
+  "enviada": "2026-10-15T16:10:49-03:00",
+  "alvo": {
+    "tipo": "rodada",
+    "id": "2026-10-15-acesso-dos-agentes-decisao-r7",
+    "titulo": "Acesso dos agentes: o Codex no hub e o endereço dos clientes"
+  },
+  "ticket": "14",
+  "substitui": null,
+  "rodada": {
+    "id": "2026-10-15-acesso-dos-agentes-decisao-r7",
+    "base": "3c9e03ed71647802a24990e2b96eb4d3f52333f318c381871e6583a897791900",
+    "titulo": "Acesso dos agentes: o Codex no hub e o endereço dos clientes",
+    "ticket": "14",
+    "perguntas": [
+      {
+        "id": "codex-modo",
+        "titulo": "Como o Codex roda no hub",
+        "tipo": "escolha",
+        "recomendada": [
+          "A"
+        ],
+        "opcoes": [
+          {
+            "chave": "A",
+            "texto": "Com acesso total (`danger-full-access`) em todo Codex do hub, nas duas máquinas: shell e `apply_patch` gravam (testado), sem isolamento do sistema. A proteção do hub fica nos hooks (início, fim e a recusa antes da ferramenta) e no contrato. O kit roda o teste mínimo do sandbox elevado a cada atualização do Codex e avisa quando ele passar; voltar ao sandbox fica para você decidir nessa hora"
+          },
+          {
+            "chave": "B",
+            "texto": "Sandbox não elevado (`workspace-write` com `windows.sandbox=\"unelevated\"`): grava pelo `apply_patch`, e o hook de fim solta (testado), mas o shell não abre o PowerShell da loja. Para ter shell, o kit teria de apontar outro PowerShell (o do Windows ou um instalado fora da loja), o que não foi testado. Modo que a documentação chama de legado, com isolamento de rede mais fraco"
+          },
+          {
+            "chave": "C",
+            "texto": "Antes de decidir, um teste curto pelo recruta Codex: achar o processo que segura o `node_repl.exe` e ver se o sandbox elevado volta; o não elevado com um PowerShell fora da loja; e os hooks rodando com acesso total. Custo estimado: cerca de 1 hora do recruta, na cota do Codex"
+          }
+        ],
+        "proposta": null
+      },
+      {
+        "id": "codex-fim-vigia",
+        "titulo": "O fim da resposta e a vigia no Codex",
+        "tipo": "escolha",
+        "recomendada": [
+          "A"
+        ],
+        "opcoes": [
+          {
+            "chave": "A",
+            "texto": "O fim pelo hook `Stop` (devolve e solta, testado) e a recusa antes da ferramenta pelo `PreToolUse` (testado), sem correlato de mod. A vigia fica na checagem de início, com o `notify` no fim de cada turno como reserva: ele dispara a notificação do Windows quando há divergência (a notificação em si não foi testada). O app-server e o SDK ficam guardados como reserva, se um dia um hook não bastar. E o maestro publica, na sua conta do GitHub, o comentário acima na issue #20244 (a conta logada no `gh` desta máquina não foi conferida; o maestro confere antes e mostra o link depois)"
+          },
+          {
+            "chave": "B",
+            "texto": "Igual à A, sem publicar nada: o recurso fica só no radar, e o maestro confere a #20244 quando o Codex for atualizado"
+          },
+          {
+            "chave": "C",
+            "texto": "Igual à A, e mais um teste do caminho pelo nome da conversa: um programa ao lado do Codex renomeia a conversa com o estado da vigia, e a barra de estado e o título do terminal mostram o nome. Custo estimado: cerca de 1 hora do recruta Codex; ninguém sabe se um programa separado alcança o Codex já aberto, e a conversa passa a ter o estado da vigia como nome"
+          }
+        ],
+        "proposta": null
+      },
+      {
+        "id": "endereco-clientes",
+        "titulo": "O endereço dos clientes para a busca e o banco",
+        "tipo": "escolha",
+        "recomendada": [
+          "A"
+        ],
+        "opcoes": [
+          {
+            "chave": "A",
+            "texto": "O TBXark/mcp-proxy em cada par, preso ao endereço da tailnet, numa porta só, com uma rota e um token por servidor: `/busca/mcp` (o obsidian-hybrid-search, que passa a escutar só em 127.0.0.1) e `/banco/mcp` (a instância só de leitura). Se \"Como os agentes gravam no hub\" ligar a gravação do cliente, ela vira uma terceira rota, `/banco-escrita/mcp`, com outro token. O cliente leva duas entradas de MCP no mesmo endereço, com o token de uma variável de ambiente. Os agentes do próprio par seguem direto nos MCP locais, em 127.0.0.1"
+          },
+          {
+            "chave": "B",
+            "texto": "O 1MCP em cada par, preso à tailnet: um endereço só (`/mcp`) com as ferramentas da busca e do banco juntas, e a escolha de ferramentas por cliente. A autenticação passa a ser OAuth 2.1 em vez do token fixo testado nos três harnesses"
+          },
+          {
+            "chave": "C",
+            "texto": "Sem proxy: o cliente aponta para os dois servidores, cada um exposto na tailnet. O MCP do banco só de leitura vai com o token dele; o obsidian-hybrid-search abre para a rede com a opção de host, sem token, até a construção mostrar se ele aceita um. Uma peça a menos"
+          }
+        ],
+        "proposta": null
+      },
+      {
+        "id": "algo-mais",
+        "titulo": "Algo mais?",
+        "tipo": "texto",
+        "recomendada": [],
+        "opcoes": [],
+        "proposta": null
+      }
+    ]
+  },
+  "corpo_hash": "441b0591585dece400b16e3eea89610953523c5bba8ddcba840199a0d9806ff7",
+  "corpo": {
+    "tipo": "resposta",
+    "rodada": "2026-10-15-acesso-dos-agentes-decisao-r7",
+    "base": "3c9e03ed71647802a24990e2b96eb4d3f52333f318c381871e6583a897791900",
+    "respostas": {
+      "codex-modo": {
+        "escolha": [
+          "A"
+        ],
+        "outra": null,
+        "comentario": null
+      },
+      "codex-fim-vigia": {
+        "escolha": [
+          "C"
+        ],
+        "outra": null,
+        "comentario": null
+      },
+      "endereco-clientes": {
+        "escolha": [
+          "A"
+        ],
+        "outra": null,
+        "comentario": null
+      }
+    }
+  }
+}

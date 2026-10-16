@@ -1,0 +1,92 @@
+{
+  "envio": "72be303d-de2e-4539-87f9-3eed4c2584ce",
+  "tipo": "resposta",
+  "enviada": "2026-10-15T17:49:12-03:00",
+  "alvo": {
+    "tipo": "rodada",
+    "id": "2026-10-15-acesso-dos-agentes-decisao-r8",
+    "titulo": "A vigia no Codex pelo nome da conversa: o teste passou"
+  },
+  "ticket": "14",
+  "substitui": null,
+  "rodada": {
+    "id": "2026-10-15-acesso-dos-agentes-decisao-r8",
+    "base": "14791aeca4788b0495c47c0b5da7eb00fb13eca597a67dd2d56568600a2902a8",
+    "titulo": "A vigia no Codex pelo nome da conversa: o teste passou",
+    "ticket": "14",
+    "perguntas": [
+      {
+        "id": "vigia-codex",
+        "titulo": "A vigia na tela do Codex",
+        "tipo": "escolha",
+        "recomendada": [
+          "A"
+        ],
+        "opcoes": [
+          {
+            "chave": "A",
+            "texto": "Fica como decidido na rodada anterior: a vigia na checagem de início e a notificação do Windows no fim de cada turno quando há divergência. O caminho pelo servidor compartilhado fica guardado como reserva, documentado com o teste, até o Codex ter um item de estado próprio"
+          },
+          {
+            "chave": "B",
+            "texto": "O kit adota o servidor compartilhado: o Codex do hub abre sempre ligado a ele, e um programa ao lado põe o estado da vigia no rodapé e no título. Mais construção e mais uma peça viva em cada máquina; a construção testa as horas seguidas, a queda e o Maestri"
+          }
+        ],
+        "proposta": null
+      },
+      {
+        "id": "comentario-20244",
+        "titulo": "O comentário na issue do Codex",
+        "tipo": "escolha",
+        "recomendada": [
+          "A"
+        ],
+        "opcoes": [
+          {
+            "chave": "A",
+            "texto": "Você publica: o maestro deixa o texto novo pronto num arquivo para você colar na issue #20244, na sua conta"
+          },
+          {
+            "chave": "B",
+            "texto": "O maestro instala o `gh` (winget), você faz o login uma vez (`! gh auth login` neste terminal), e o maestro publica o texto novo e mostra o link"
+          },
+          {
+            "chave": "C",
+            "texto": "Não publica: o pedido fica só no radar, e o maestro confere a #20244 quando o Codex for atualizado"
+          }
+        ],
+        "proposta": null
+      },
+      {
+        "id": "algo-mais",
+        "titulo": "Algo mais?",
+        "tipo": "texto",
+        "recomendada": [],
+        "opcoes": [],
+        "proposta": null
+      }
+    ]
+  },
+  "corpo_hash": "e81a6f4d7af556debee25cfe743a336c7974cde70b789df039a8910f31f7b2af",
+  "corpo": {
+    "tipo": "resposta",
+    "rodada": "2026-10-15-acesso-dos-agentes-decisao-r8",
+    "base": "14791aeca4788b0495c47c0b5da7eb00fb13eca597a67dd2d56568600a2902a8",
+    "respostas": {
+      "vigia-codex": {
+        "escolha": [
+          "A"
+        ],
+        "outra": null,
+        "comentario": null
+      },
+      "comentario-20244": {
+        "escolha": [
+          "C"
+        ],
+        "outra": null,
+        "comentario": null
+      }
+    }
+  }
+}

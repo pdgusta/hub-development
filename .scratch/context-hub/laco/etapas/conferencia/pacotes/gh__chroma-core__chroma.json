@@ -1,0 +1,96 @@
+{
+ "chave": "gh:chroma-core/chroma",
+ "nomes": [
+  "Chroma",
+  "ChromaDB",
+  "Chroma (本地向量数据库)",
+  "ChromaDB (Offline-Modus)",
+  "Ollama + ChromaDB (Local VectorDB)",
+  "ローカルベクトルデータベース",
+  "ChromaDB (Local Embedding + BM25 Hybrid Search)",
+  "Chroma (Hybrid Search DB)",
+  "Chroma DB",
+  "Chroma (biblioteca local para embeddings + BM25)",
+  "Chroma / LanceDB / FAISS (Local VectorStores)",
+  "ChromaDB (local vector DB) + Dendron"
+ ],
+ "urls": [
+  "https://github.com/chroma-core/chroma",
+  "https://www.chroma.com/",
+  "https://www.trychroma.com/",
+  "https://www.trychroma.com",
+  "https://www.chromchromabs/",
+  "https://www.chroma.dev/",
+  "https://trychroma.com",
+  "https://www.chroma.db/",
+  "https://www.chroma.io/",
+  "https://chromadb.readthedocs.io",
+  "https://chroma.db/",
+  "https://docs.trychroma.com/",
+  "https://docs.trychroma.com",
+  "https://chromadb.com",
+  "https://www.chroma..com/",
+  "https://www.chromaabs.com/",
+  "https://chromadb.com/",
+  "https://www.chromadb.com/",
+  "https://trychroma.com/",
+  "https://github.com/hnmr/chroma",
+  "https://github.com/nomic-ai/chroma",
+  "https://github.com/chroma-ai/chroma",
+  "https://github.com/chroma-data/chroma",
+  "https://github.com/spikeio/chromadb"
+ ],
+ "readme_cortado": false,
+ "readme": "![Chroma](./docs/assets/chroma-wordmark-color.png#gh-light-mode-only)\n![Chroma](./docs/assets/chroma-wordmark-white.png#gh-dark-mode-only)\n\n<p align=\"center\">\n    <b>Chroma - the open-source data infrastructure for AI</b>. <br />\n</p>\n\n<p align=\"center\">\n  <a href=\"https://discord.gg/MMeYNTmh3x\" target=\"_blank\">\n      <img src=\"https://img.shields.io/discord/1073293645303795742?cacheSeconds=3600\" alt=\"Discord\">\n  </a> |\n  <a href=\"https://github.com/chroma-core/chroma/blob/master/LICENSE\" target=\"_blank\">\n      <img src=\"https://img.shields.io/badge/License-Apache_2.0-blue.svg\" alt=\"License\">\n  </a> |\n  <a href=\"https://docs.trychroma.com/\" target=\"_blank\">\n      Docs\n  </a> |\n  <a href=\"https://www.trychroma.com/\" target=\"_blank\">\n      Homepage\n  </a>\n</p>\n\n```bash\npip install chromadb # python client\n# for javascript, npm install chromadb!\n# for client-server mode, chroma run --path /chroma_db_path\n```\n\n## Chroma Cloud\n\nOur hosted service, Chroma Cloud, powers serverless vector, hybrid, and full-text search. It's extremely fast, cost-effective, scalable and painless. Create a DB and try it out in under 30 seconds with $5 of free credits.\n\n[Get started with Chroma Cloud](https://trychroma.com/signup)\n\n## API\n\nThe core API is only 4 functions (run our [💡 Google Colab](https://colab.research.google.com/drive/1QEzFyqnoFxq7LUGyP1vzR4iLt9PpCDXv?usp=sharing)):\n\n```python\nimport chromadb\n# setup Chroma in-memory, for easy prototyping. Can add persistence easily!\nclient = chromadb.Client()\n\n# Create collection. get_collection, get_or_create_collection, delete_collection also available!\ncollection = client.create_collection(\"all-my-documents\")\n\n# Add docs to the collection. Can also update and delete. Row-based API coming soon!\ncollection.add(\n    documents=[\"This is document1\", \"This is document2\"], # we handle tokenization, embedding, and indexing automatically. You can skip that and add your own embeddings as well\n    metadatas=[{\"source\": \"notion\"}, {\"source\": \"google-docs\"}], # filter on these!\n    ids=[\"doc1\", \"doc2\"], # unique for each doc\n)\n\n# Query/search 2 most similar results. You can also .get by id\nresults = collection.query(\n    query_texts=[\"This is a query document\"],\n    n_results=2,\n    # where={\"metadata_field\": \"is_equal_to_this\"}, # optional filter\n    # where_document={\"$contains\":\"search_string\"}  # optional filter\n)\n```\n\nLearn about all features on our [Docs](https://docs.trychroma.com)\n\n## Get involved\n\nChroma is a rapidly developing project. We welcome PR contributors and ideas for how to improve the project.\n- [Join the conversation on Discord](https://discord.com/invite/chromadb) - `#contributing` channel\n- [Review the 🛣️ Roadmap and contribute your ideas](https://docs.trychroma.com/docs/overview/oss#roadmap)\n- [Grab an issue and open a PR](https://github.com/chroma-core/chroma/issues) - [`Good first issue tag`](https://github.com/chroma-core/chroma/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22)\n- [Read our contributing guide](https://docs.trychroma.com/docs/overview/oss#contributing)\n\n**Release Cadence**\nWe currently release new tagged versions of the `pypi` and `npm` packages on Mondays. Hotfixes go out at any time during the week.\n\n## License\n\n[Apache 2.0](./LICENSE)\n",
+ "fonte": "readme",
+ "respostas": [
+  {
+   "por": "llama-3.2-90b-vision",
+   "resposta": {
+    "serve": "search",
+    "role": "vector, hybrid, and full-text search",
+    "place": [
+     "disk",
+     "network_service"
+    ],
+    "mechanism": [
+     "vector",
+     "hybrid",
+     "full_text"
+    ],
+    "mcp": "unknown",
+    "windows": "yes",
+    "portuguese": "unknown",
+    "license": "Apache-2.0",
+    "maturity": "unknown",
+    "doubt": false,
+    "evidence": "pip install chromadb, chroma run --path /chroma_db_path"
+   }
+  },
+  {
+   "por": "gemma-4-31b",
+   "resposta": {
+    "serve": "search",
+    "role": "Vector database for storing embeddings and performing hybrid/full-text search",
+    "place": [
+     "disk",
+     "network_service",
+     "library"
+    ],
+    "mechanism": [
+     "vector",
+     "hybrid",
+     "full_text",
+     "embeddings"
+    ],
+    "mcp": "unknown",
+    "windows": "unknown",
+    "portuguese": "unknown",
+    "license": "Apache-2.0",
+    "maturity": "unknown",
+    "doubt": false,
+    "evidence": "powers serverless vector, hybrid, and full-text search"
+   }
+  }
+ ]
+}

@@ -1,0 +1,29 @@
+{
+ "chave": "gh:humanizr/humanizer",
+ "urls": [
+  "https://github.com/Humanizr/Humanizer"
+ ],
+ "tipos": [
+  "library"
+ ],
+ "termos": [
+  "Humanizer .NET",
+  "human-friendly formatting",
+  "YamlParser Humanizr"
+ ],
+ "mencoes": 1,
+ "familias": [
+  "cohere"
+ ],
+ "primeira_onda": 5,
+ "nomes": [
+  "Humanizer"
+ ],
+ "resumos": [
+  "A .NET library for human-friendly formatting, which includes the original YamlParser component for simple YAML parsing."
+ ],
+ "readme_status": "ok",
+ "readme_nome": "readme.md",
+ "readme_cortado": false,
+ "readme": "# Humanizer\n\n[![Build Status](https://dev.azure.com/dotnet/Humanizer/_apis/build/status/Humanizer-CI?branchName=main)](https://dev.azure.com/dotnet/Humanizer/_build?definitionId=14)\n[![NuGet version](https://img.shields.io/nuget/v/Humanizer.svg?logo=nuget&cacheSeconds=300)](https://www.nuget.org/packages/Humanizer)\n[![NuGet downloads](https://img.shields.io/nuget/dt/Humanizer.svg?logo=nuget&cacheSeconds=300)](https://www.nuget.org/packages/Humanizer)\n\nHumanizer is a .NET library for turning strings, enums, dates, times, durations, numbers, quantities, and collections into human-friendly text.\n\n## Install\n\n```console\ndotnet add package Humanizer\n```\n\nSelect your Humanizer version in the [documentation site](https://humanizr.net/docs/) for version-correct package, framework, and API guidance.\n\n## Example\n\n```csharp\nusing System.Globalization;\nusing Humanizer;\n\nvar culture = CultureInfo.GetCultureInfo(\"en-US\");\nvar text = TimeSpan.FromMinutes(2).Humanize(culture: culture);\nvar indianNumber = 1_000_000_000L.ToIndianWords(IndianScaleStyle.CroreBased);\nvar precise = TimeSpan.FromMilliseconds(1500).HumanizeWithFractionalSeconds(\n    precision: 1,\n    maxFractionalDigits: 3,\n    roundingMode: MidpointRounding.ToEven,\n    culture: culture,\n    maxUnit: TimeUnit.Second);\n\nConsole.WriteLine(text); // 2 minutes\nConsole.WriteLine(indianNumber); // one hundred crore\nConsole.WriteLine(precise); // 1.5 seconds\n\nvar german = CultureInfo.GetCultureInfo(\"de-DE\");\nvar duration = TimeSpan.FromDays(7).HumanizeWithCase(\n    GrammaticalCase.Dative,\n    culture: german);\n\nConsole.WriteLine($\"in {duration}\"); // in einer Woche\n```\n\nIn v4 previews, applications can provide the exact noun forms for a culture's\nCLDR cardinal categories:\n\n```csharp\nvar files = new PluralizationForms(\n    singular: \"plik\",\n    other: \"pliku\",\n    few: \"pliki\",\n    many: \"plików\");\n\nif (files.TryPluralize(5m, CultureInfo.GetCultureInfo(\"pl\"), out var noun))\n    Console.WriteLine(noun); // plików\n```\n\n`TryPluralize` uses the required cardinal rule for every supported culture and\nreturns `false` when the selected form was not supplied. `TrySingularize`\nresolves any exact form in the same set. See\n[inflection and quantities](https://humanizr.net/docs/scenarios/inflection-and-quantities/)\nfor examples.\n\n`HumanizeWithCase` returns only the duration phrase; add any required\npreposition yourself. Singular forms may include a locale-authored one-word\nor article, and a locale may encode a count in the unit form. Locales and custom\ncomponents without verified case support throw `NotSupportedException`\ninstead of falling back to English.\n\nV4 previews also provide opt-in decimal SI and binary IEC byte-size APIs:\n\n```csharp\nvar size = ByteSize.FromBytes(1_000_000);\n\nConsole.WriteLine(size.Format(ByteSizeUnitSystem.DecimalSi)); // 1 MB\nConsole.WriteLine(size.Format(ByteSizeUnitSystem.BinaryIec)); // 976.56 KiB\n```\n\nLegacy byte-size APIs keep their established unit factors. See\n[byte sizes and rates](https://humanizr.net/docs/scenarios/byte-sizes-and-rates/)\nfor explicit formatting, parsing, composites, and rates.\n\n## Documentation\n\n- [Start using Humanizer](https://humanizr.net/docs/start/overview/)\n- [Common scenarios](https://humanizr.net/docs/scenarios/strings-and-casing/)\n- [Upgrade between versions](https://humanizr.net/docs/upgrading/)\n- [Configure the migration analyzer](https://humanizr.net/docs/analyzer/)\n- [API reference](https://humanizr.net/docs/api/)\n\n## Repository\n\nThe main library is in [`src/Humanizer`](src/Humanizer), and its xUnit tests are in [`tests/Humanizer.Tests`](tests/Humanizer.Tests). Read the [contribution guide](.github/CONTRIBUTING.md) before sending a change.\n\nHumanizer is available under the [MIT license](license.txt).\n\n## Support\n\n- [Report a bug or request a feature](https://github.com/Humanizr/Humanizer/issues)\n- [Report a documentation issue](https://github.com/Humanizr/Humanizer/issues/new?labels=documentation)\n- [Read the versioned documentation](https://humanizr.net/docs/)\n"
+}

@@ -1,0 +1,75 @@
+{
+ "nome": "obsidian-semantic-mcp",
+ "url": "https://github.com/DalecB/obsidian-semantic-mcp",
+ "papel": "disco+MCP pronto",
+ "windows": "yes (Node >=24 via npx; README documenta Windows nativo, mas o CI não roda em windows-latest)",
+ "mcp": "yes: servidor próprio, stdio (tools index_status, index_vault, search_notes, read_note; somente leitura)",
+ "portugues": "Embeddings padrão bge-m3 via Ollama (multilíngue, configurável por OBSIDIAN_EMBED_MODEL). FTS5 com tokenizer unicode61 (sem stemmer de português; remoção de acentos é o padrão do unicode61, inferido, não confirmado na doc do SQLite).",
+ "markdown_frontmatter": "Indexa .md; parser próprio de frontmatter (chaves/tags); chunking por títulos Markdown mais um chunk-resumo por arquivo; reforço por título/caminho/heading. Filtro por campo de frontmatter não confirmado nas tools.",
+ "atualizacao": "Watcher de filesystem só marca o índice como sujo; reindexação incremental roda antes da próxima busca; sem recursive watch, faz scan incremental antes de cada busca; index_vault manual.",
+ "embeddings_endpoint": "Só Ollama (OLLAMA_BASE_URL, POST /api/embed), não é OpenAI-compatível. Usar o FreeLLMAPI exigiria adaptador.",
+ "recursos": "Node >=24 + Ollama rodando; um arquivo SQLite (node:sqlite) com FTS5 e vetores. Sem números de RAM na fonte.",
+ "licenca": "MIT",
+ "ultimo_release": "v0.3.1, 2026-08-06 (early preview)",
+ "atividade": "último commit 2026-08-06",
+ "maturidade": "alpha/beta (README: 'early preview', schemas podem mudar antes do 1.0)",
+ "encaixe": "Disco de cada máquina: lê a pasta de notas, índice SQLite descartável. Impedimento: exige Ollama local (sem base_url OpenAI) e Node 24; somente leitura.",
+ "evidencias": [
+  {
+   "campo": "windows",
+   "url": "https://github.com/DalecB/obsidian-semantic-mcp",
+   "citacao": "On native Windows, use `-- cmd /c npx -y @dalecb/obsidian-semantic-mcp`"
+  },
+  {
+   "campo": "mcp",
+   "url": "https://github.com/DalecB/obsidian-semantic-mcp",
+   "citacao": "An MCP client such as Codex, Claude Desktop, Cursor, or another stdio MCP client"
+  },
+  {
+   "campo": "portugues",
+   "url": "https://github.com/DalecB/obsidian-semantic-mcp",
+   "citacao": "ollama pull bge-m3 ... OBSIDIAN_EMBED_MODEL = \"bge-m3\""
+  },
+  {
+   "campo": "portugues",
+   "url": "https://raw.githubusercontent.com/DalecB/obsidian-semantic-mcp/main/src/database.mjs",
+   "citacao": "CREATE VIRTUAL TABLE IF NOT EXISTS chunks_fts USING fts5( ... tokenize='unicode61'"
+  },
+  {
+   "campo": "markdown_frontmatter",
+   "url": "https://github.com/DalecB/obsidian-semantic-mcp",
+   "citacao": "split notes by Markdown headings -> create one summary chunk per file"
+  },
+  {
+   "campo": "atualizacao",
+   "url": "https://github.com/DalecB/obsidian-semantic-mcp",
+   "citacao": "The filesystem watcher only marks the index dirty. Indexing runs once, immediately before the next search"
+  },
+  {
+   "campo": "embeddings_endpoint",
+   "url": "https://raw.githubusercontent.com/DalecB/obsidian-semantic-mcp/main/src/ollama.mjs",
+   "citacao": "this.fetchImpl(`${this.baseUrl}/api/embed`"
+  },
+  {
+   "campo": "recursos",
+   "url": "https://raw.githubusercontent.com/DalecB/obsidian-semantic-mcp/main/package.json",
+   "citacao": "\"engines\": { \"node\": \">=24.0.0\" }"
+  },
+  {
+   "campo": "licenca",
+   "url": "https://raw.githubusercontent.com/DalecB/obsidian-semantic-mcp/main/LICENSE",
+   "citacao": "MIT License Copyright (c) 2026 JayB"
+  },
+  {
+   "campo": "maturidade",
+   "url": "https://github.com/DalecB/obsidian-semantic-mcp",
+   "citacao": "Status: `0.3.1` early preview. ... ranking behavior and tool schemas may change before `1.0`."
+  }
+ ],
+ "nao_verificado": [
+  "CI em windows-latest (ci.yml só usa setup-node 24; runner não confirmado)",
+  "filtro por campo de frontmatter nas tools",
+  "remoção de acentos do unicode61 (conhecimento geral, não lido na doc do SQLite)",
+  "RAM/disco"
+ ]
+}

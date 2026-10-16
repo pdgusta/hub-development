@@ -1,0 +1,87 @@
+Docs
+
+ /
+
+ Reference
+
+ /
+
+ Elasticsearch
+
+ /
+
+ Text analysis components
+
+ /
+
+ Token filter reference
+
+ASCII folding token filter
+
+Converts alphabetic, numeric, and symbolic characters that are not in the Basic Latin Unicode block (first 127 ASCII characters) to their ASCII equivalent, if one exists. For example, the filter changes à to a.
+
+This filter uses Lucene’s ASCIIFoldingFilter.
+
+Example
+
+The following analyze API request uses the asciifolding filter to drop the diacritical marks in açaí à la carte:
+
+ GET /_analyze
+ {
+ "tokenizer" : "standard",
+ "filter" : ["asciifolding"],
+ "text" : "açaí à la carte"
+}
+
+The filter produces the following tokens:
+
+[ acai, a, la, carte ]
+
+Add to an analyzer
+
+The following create index API request uses the asciifolding filter to configure a new custom analyzer.
+
+ PUT /asciifold_example
+ {
+ "settings": {
+ "analysis": {
+ "analyzer": {
+ "standard_asciifolding": {
+ "tokenizer": "standard",
+ "filter": [ "asciifolding" ]
+ }
+ }
+ }
+ }
+}
+
+Configurable parameters
+
+preserve_original
+(Optional, Boolean) If true, emit both original tokens and folded tokens. Defaults to false.
+
+Customize
+
+To customize the asciifolding filter, duplicate it to create the basis for a new custom token filter. You can modify the filter using its configurable parameters.
+
+For example, the following request creates a custom asciifolding filter with preserve_original set to true:
+
+ PUT /asciifold_example
+ {
+ "settings": {
+ "analysis": {
+ "analyzer": {
+ "standard_asciifolding": {
+ "tokenizer": "standard",
+ "filter": [ "my_ascii_folding" ]
+ }
+ },
+ "filter": {
+ "my_ascii_folding": {
+ "type": "asciifolding",
+ "preserve_original": true
+ }
+ }
+ }
+ }
+}

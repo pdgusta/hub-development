@@ -1,0 +1,32 @@
+{
+ "chave": "web:solr.apache.org/guide/8_11/language-analysis.html",
+ "modelo": "claude-sonnet-5-5",
+ "ts": "2026-10-13T21:12:04Z",
+ "resultado": "corrige",
+ "conferencia": {
+  "resultado": "corrige",
+  "final": {
+   "serve": "search",
+   "role": "Solr reference guide chapter on tokenizers, stemmers and collation for language-specific text analysis",
+   "place": [
+    "network_service"
+   ],
+   "mechanism": [
+    "full_text"
+   ],
+   "mcp": "unknown",
+   "windows": "unknown",
+   "portuguese": "unknown",
+   "license": "unknown",
+   "maturity": "unknown",
+   "doubt": false,
+   "evidence": "This section contains information about tokenizers and filters related to character set conversion or for use with specific languages."
+  },
+  "o_que_mudou": [
+   "portuguese: yes/unknown -> unknown, visible README does not mention Portuguese",
+   "mechanism: bm25 dropped, only analysis for full_text",
+   "place: library dropped, it is a Solr server config"
+  ],
+  "nota": "Doc of Solr analyzers; relevant only if Solr is chosen for Portuguese full-text; version 8.11 is old."
+ }
+}

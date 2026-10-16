@@ -1,0 +1,69 @@
+{
+ "nome": "LocalAI + LangChain",
+ "nome_canonico": "LocalAI (mudler/LocalAI, antigo go-skynet/LocalAI)",
+ "chave": "gh:go-skynet/localai",
+ "url": "https://github.com/mudler/LocalAI",
+ "serve": "stack",
+ "area": "llm_runtime",
+ "identidade": "A URL go-skynet/LocalAI responde 301 para mudler/LocalAI (mesmo projeto, repo movido). O item juntava LocalAI e LangChain; verifiquei a peça principal, LocalAI. LangChain não verificado.",
+ "windows": "only_wsl_or_docker: o README só traz Quickstart para macOS (DMG) e contêineres Docker/podman; a palavra Windows não aparece no README. Ativos da release v4.11.0: darwin-arm64, linux-amd64, linux-arm64, launcher linux, DMG; nenhum binário Windows.",
+ "mcp": "third_party: LocalAI é cliente MCP (conecta o modelo a servidores MCP HTTP e stdio); não expõe as notas como servidor MCP. Transportes de cliente: HTTP remoto e stdio.",
+ "portugues": "nao_aplicavel",
+ "markdown_frontmatter": "nao_aplicavel",
+ "atualizacao": "nao_aplicavel",
+ "embeddings_endpoint": "Serve embeddings por API OpenAI-compatível com modelos locais (README lista Embeddings generation); é o inverso do hub, que já tem o FreeLLMAPI como gateway.",
+ "recursos": "Núcleo Go com backends em imagens à parte (llama.cpp, vLLM etc.); roda só em CPU ou com GPU. Números de RAM/disco: nao_verificado.",
+ "licenca": "MIT",
+ "ultimo_release": "2026-10-02, v4.11.0",
+ "atividade": "último commit 2026-10-13",
+ "maturidade": "stable (releases frequentes 4.x; sem selo explícito)",
+ "encaixe": "Seria um segundo gateway OpenAI-compatível de embeddings local, redundante com o FreeLLMAPI. Impedimento: sem binário Windows; exige Docker ou WSL, vetados no hub.",
+ "evidencias": [
+  {
+   "campo": "identidade",
+   "url": "https://github.com/go-skynet/LocalAI",
+   "citacao": "HTTP/1.1 301 Moved Permanently (para github.com/mudler/LocalAI)"
+  },
+  {
+   "campo": "windows",
+   "url": "https://github.com/mudler/LocalAI/releases/expanded_assets/v4.11.0",
+   "citacao": "assets: local-ai-v4.11.0-darwin-arm64, local-ai-v4.11.0-linux-amd64, local-ai-v4.11.0-linux-arm64, LocalAI.dmg"
+  },
+  {
+   "campo": "windows",
+   "url": "https://raw.githubusercontent.com/mudler/LocalAI/master/README.md",
+   "citacao": "docker run -ti --name local-ai -p 8080:8080 localai/localai:latest"
+  },
+  {
+   "campo": "mcp",
+   "url": "https://localai.io/docs/features/mcp/",
+   "citacao": "Multiple Server Support: Configure both remote HTTP and local stdio servers"
+  },
+  {
+   "campo": "embeddings_endpoint",
+   "url": "https://raw.githubusercontent.com/mudler/LocalAI/master/README.md",
+   "citacao": "Drop-in API compatibility: OpenAI, Anthropic, and ElevenLabs APIs across every backend"
+  },
+  {
+   "campo": "licenca",
+   "url": "https://raw.githubusercontent.com/mudler/LocalAI/master/README.md",
+   "citacao": "MIT - Author Ettore Di Giacinto"
+  },
+  {
+   "campo": "ultimo_release",
+   "url": "https://github.com/mudler/LocalAI/releases.atom",
+   "citacao": "v4.11.0, updated 2026-10-02T08:02:03Z"
+  },
+  {
+   "campo": "atividade",
+   "url": "https://github.com/mudler/LocalAI/commits/HEAD.atom",
+   "citacao": "updated 2026-10-13T23:06:34Z"
+  }
+ ],
+ "nao_verificado": [
+  "LangChain (peça secundária do item)",
+  "RAM e disco",
+  "Windows via WSL (docs não consultadas a fundo)",
+  "selo oficial de maturidade"
+ ]
+}

@@ -1,0 +1,29 @@
+{
+ "chave": "conceito:solr-bm25",
+ "modelo": "claude-opus-5-5",
+ "ts": "2026-10-13T23:37:22Z",
+ "tipo": "conceito",
+ "resultado": "discorda",
+ "auditoria": {
+  "resultado": "discorda",
+  "erro": "place 'library' errado: Apache Solr é servidor Java (network_service); a biblioteca seria o Lucene, que não é a ferramenta do card.",
+  "final": {
+   "concept_en": "bm25",
+   "serve": "search",
+   "role": "Provides BM25 ranking for search results",
+   "mechanism": [
+    "bm25"
+   ],
+   "place": [
+    "network_service"
+   ],
+   "tools_on_card": [
+    "Apache Solr"
+   ],
+   "doubt": false,
+   "evidence": "A ranking algorithm for search results."
+  },
+  "gravidade": "leve",
+  "nota": "BM25 é a perna léxica certa, mas via Solr exige servidor Java pesado; para notas pessoais, BM25 embutido (SQLite FTS5, Tantivy) cabe melhor."
+ }
+}
