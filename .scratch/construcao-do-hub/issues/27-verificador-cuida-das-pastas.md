@@ -1,7 +1,7 @@
 # 27: O verificador cuida das pastas: `index.md`, links `par://`, `other/` e o fim da resposta
 
 Type: task
-Status: ready-for-agent
+Status: claimed
 Etapa: 1 (esqueleto)
 Blocked by: 05, 06
 
@@ -19,3 +19,4 @@ Blocked by: 05, 06
 ## Comments
 
 - 2026-10-16 ~21h30 (maestro): publicado pela decisão do Gustavo (rodada `2026-10-16-ticket-05-perguntas-do-trilho`, pergunta 1, A). As quatro tarefas estavam no spec e ficaram fora dos 26 tickets no fatiamento do `/to-tickets`.
+- 2026-10-17 (Vela): pego (`claimed`). Worktree `C:\context-hub-wt\ticket-27`, ramo `ticket-27`, de `integracao` 8b9beef. Falta: tudo (4 tarefas).

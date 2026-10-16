@@ -5,3 +5,4 @@
 - 2026-10-16 20h00, ticket 02, c8d2267, 14 verdes (11 do esqueleto + 3 do instalador do 03); provas 02 (Docker) e 03 (codex) não repetidas, árvores idênticas às revisadas (Rebite).
 - 2026-10-16 20h11, ticket 05, 0d04985, 37 verdes (34 do agents/code/test + 3 do instalador do 03); prova 02 e prova 03 não repetidas, árvores idênticas às revisadas (Rebite).
 - 2026-10-16 20h28, ticket 01, 45ec3b0, 37 verdes (34 do agents/code/test + 3 do instalador do 03); provas 01, 02 e 03 não repetidas, árvores idênticas às revisadas (Rebite).
+- 2026-10-16 20h32, ticket 06, 8b9beef, 44 verdes (agents/code/test, gerar-exclusoes, instalador do 03); sincronizador.ps1 e provas 01/02/03 não repetidos, árvores idênticas às revisadas (Rebite).
