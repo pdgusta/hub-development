@@ -1,7 +1,7 @@
 # 05: Frontmatter imposto: esquemas, verificador e "nova iniciativa"
 
 Type: task
-Status: claimed
+Status: resolved
 Etapa: 1 (esqueleto)
 Blocked by: 04
 
@@ -37,3 +37,9 @@ Blocked by: 04
   01 e 02 chamam `agents/test/hub-de-ensaio/montar.mjs`; na junção, trocar por `agents/code/test/` e repetir. Rebite
   avisado. Falta: junção (Rebite).
 - 2026-10-16 20h00 (integrador, Rebite): lição do ticket 02 (parecer do Fiel, `etapas/00-provas/parecer-Vela.md`): a prova 02 chama `agents/test/hub-de-ensaio/montar.mjs` em `agents/code/test/provas/02-pastas-com-ponto/banco.psm1` (cópia do módulo da prova 01). Se este ticket move o montador para `agents/code/test/`, a chamada precisa mudar e a prova 02 ser repetida; não copiar a versão antiga para contornar.
+- 2026-10-17 ~0h20 (Trilho): a pedido do Rebite, juntei `integracao` (c8d2267, ticket 02) no ramo e troquei em
+  `provas/02-pastas-com-ponto/banco.psm1:51` o caminho do `montar` para `agents/code/test/`. 34 testes verdes; prova 02
+  toda PASSA (saída 0). Commit a18bbed. Falta: rodada curta do Fiel nesse diff, depois o Rebite.
+- 2026-10-17 ~0h40 (Trilho): rodada 4 do Fiel (só o diff 817f850..a18bbed): passa. A leitura do Fielzinho fica para
+  depois (limite de uso). Rebite avisado com o HEAD a18bbed. Falta: junção (Rebite).
+- 2026-10-16 20h11 (integrador, Rebite): juntado em `integracao`, commit 0d04985 (merge `--no-ff` de `ticket-05` a18bbed, o HEAD da rodada 4 "passa" do Fiel; árvore juntada idêntica à do ramo). Testes: `node --test "agents/code/test/*.test.mjs"` + `instalar.test.mjs` do 03 = 37/37 verdes. A prova 02 (Docker) não foi repetida: árvore idêntica à testada pelo Fiel na rodada 4 (12 PASSA, saída 0). A prova 03 (`codex exec`) não foi repetida: pasta idêntica à do `ticket-03`. Ressalvas: a leitura do Fielzinho na rodada 4 ficou pendente (limite de uso); se ele achar algo, vira ressalva sem desfazer a junção. Limites do parecer: YAML sem transformação segura é recusado sem escrita; a janela entre releitura e escrita não foi verificada; índices, links, `other` e fim de resposta são do 27; o `--checar` no hook/MCP depende das etapas deles; hub de ensaio antigo não serve, montar em destino novo. Se o `README.md` da raiz (que ganhou os campos comuns) fica no hub é decisão do maestro. **Resolvido.**

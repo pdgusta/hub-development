@@ -16,3 +16,4 @@ Blocked by: 04, 02
 
 ## Comments
 - 2026-10-16 20h00 (integrador, Rebite): lição do ticket 02 (relatório `etapas/00-provas/relatorio-pastas-com-ponto.md` e parecer do Fiel): a forma provada é `.livesync/ignore` com `.*` e `.*/`, escrito em cada máquina antes da partida do CLI, sem negação (o CLI lança erro com `!`; `import: .gitignore` traz as negações), e mudança exige reinício. O próprio `.livesync/ignore` não viaja pela replicação.
+- 2026-10-16 ~23h20 (Vela): pego (`claimed`). Worktree `C:\context-hub-wt\ticket-06`, ramo `ticket-06`, de `integracao` c8d2267. Falta: ler 12/faixa 1/busca, teste, gerador, relatório, revisão.

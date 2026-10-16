@@ -17,3 +17,4 @@ Blocked by: 05, 03
 - [ ] fora do hub, o hook não faz nada
 
 ## Comments
+- 2026-10-16 ~20h20 (maestro): passado ao Trilho, como antecipação da etapa 5 (bloqueios 05 e 03 resolvidos; plano: até 3 agentes, sem depender de peça que não existe). Primeiro commit do ramo, separado: tirar o `README.md` da raiz do hub (decisão do ticket 12: raiz = `AGENTS.md` + seis raízes; era marcador do "Início do hub"), a pedido do maestro pela ressalva do Rebite na junção do 05.

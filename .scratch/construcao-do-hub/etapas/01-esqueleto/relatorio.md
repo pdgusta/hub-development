@@ -21,6 +21,11 @@
 - 2026-10-16 ~23h55: revisão 3 (Fiel e Fielzinho): passa, sem pendência obrigatória. Ressalva de integração: as provas
   01 e 02 ainda chamam `agents/test/hub-de-ensaio/montar.mjs`; ao juntar o 05, apontar para `agents/code/test/` e
   repetir as provas. Rebite avisado.
+- 2026-10-17 ~0h20: a pedido do Rebite, `integracao` (c8d2267, ticket 02) juntada no ramo e o caminho do `montar` na
+  prova 02 trocado (commit a18bbed). 34 testes verdes; prova 02 com 12 PASSA. Rodada 4 do Fiel: passa (o Fielzinho lê
+  depois). Rebite avisado.
+- 2026-10-17: ticket 05 juntado em `integracao` (0d04985) e resolvido pelo Rebite, 37 testes verdes na junção. Espero
+  o próximo ticket do maestro (o 06 espera a prova 02, já juntada).
 
 ## Onde mora cada peça (opção C: "quem chama")
 - O que um agente chama é skill em `agents/skills/<peça>/`: `agents/skills/nova-iniciativa/`.

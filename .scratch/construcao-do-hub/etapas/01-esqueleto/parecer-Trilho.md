@@ -251,3 +251,26 @@ Hub de ensaio antigo não deve ser usado; montar em destino novo com a versão i
 Os módulos das provas 01/02 ainda chamam agents/test/hub-de-ensaio/montar.mjs e devem
 ser ajustados ao integrar esta migração, repetindo as provas.
 Avisar apenas Trilho para encaminhar ao Rebite.
+
+## Ticket 05 — rodada 4 (curta, pedida pelo Rebite) — Fiel (2026-10-16)
+
+Escopo: só o diff 817f850..a18bbed no ramo ticket-05.
+Veredito: **passa**. Sem consertos.
+
+Evidências (rodadas pelo Fiel):
+1. Merge 6b5110e de integracao (c8d2267, ticket 02): `git show --cc` sem resolução de conflito;
+   integracao é ancestral de a18bbed.
+2. a18bbed muda só `agents/code/test/provas/02-pastas-com-ponto/banco.psm1:51`, de
+   `agents\test\hub-de-ensaio` para `agents\code\test\hub-de-ensaio\montar.mjs`; o arquivo existe.
+   `git grep agents[/\]test` no ramo: nada sobrou.
+3. `node --test "agents/code/test/*.test.mjs"`: 34 passam, 0 falham.
+4. `prova.ps1` da prova 02 (com cifra, portas 5996/5997): 12 casos PASSA, saída 0.
+   Log: `etapas/01-esqueleto/revisao-05-r4-prova02.log`. Contêineres hub-ensaio-02-a/b e a pasta
+   TEMP/hub-ensaio-02 apagados no fim (as pastas hub-ensaio-02-XXXXXX em TEMP são de 2026-10-15).
+
+Fielzinho: no limite de uso do Codex até 20:26; a leitura dele fica para depois. Se ele achar
+algo, entra como ressalva para o Rebite, sem segurar a junção.
+
+Fora do escopo, para o ticket 01 (Brasa): o ramo ticket-01 ainda chama
+`agents\test\hub-de-ensaio\montar.mjs` em `provas/01-banco/banco.psm1:49` e na cópia da prova 02.
+Vai quebrar do mesmo jeito ao juntar depois do 05.
