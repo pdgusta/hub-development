@@ -2,7 +2,7 @@
 titulo: Fim da resposta: quando soltar o agente
 ticket: 16
 aberta: 2026-10-16
-estado: aberta
+estado: absorvida
 ---
 
 No fim de cada resposta de agente, um hook (mod no Claude Code, `Stop` no Codex, `agentStop` no Copilot) roda o

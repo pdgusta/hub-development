@@ -1,0 +1,66 @@
+{
+  "envio": "8baa1d13-6c9b-4c5d-83a8-64a7bc07488a",
+  "tipo": "resposta",
+  "enviada": "2026-10-16T20:39:35-03:00",
+  "alvo": {
+    "tipo": "rodada",
+    "id": "2026-10-16-laco-no-fim-da-resposta",
+    "titulo": "Fim da resposta: quando soltar o agente"
+  },
+  "ticket": "16",
+  "substitui": null,
+  "rodada": {
+    "id": "2026-10-16-laco-no-fim-da-resposta",
+    "base": "d4e6dae4f17aad75ea1e71a9f01ac45118f6816c2d9dc2f4b7a4cf9db323ecbe",
+    "titulo": "Fim da resposta: quando soltar o agente",
+    "ticket": "16",
+    "perguntas": [
+      {
+        "id": "laco-fim-da-resposta",
+        "titulo": "Quando o hook solta o agente que ainda tem falta",
+        "tipo": "escolha",
+        "recomendada": [
+          "A"
+        ],
+        "opcoes": [
+          {
+            "chave": "A",
+            "texto": "Devolve uma vez; se o agente parar de novo logo em seguida ainda com falta, solta e registra a falta (no `estado.json` da vigia, como item que aparece no início da próxima sessão e na tela de estado); nunca prende o agente, e nada some calado"
+          },
+          {
+            "chave": "B",
+            "texto": "Devolve até três vezes seguidas; na quarta parada, solta e registra a falta como na A"
+          },
+          {
+            "chave": "C",
+            "texto": "Nunca solta enquanto houver falta, como o spec diz hoje; se o agente não conseguir consertar, só você interrompe a sessão"
+          }
+        ],
+        "proposta": null
+      },
+      {
+        "id": "algo-mais",
+        "titulo": "Algo mais?",
+        "tipo": "texto",
+        "recomendada": [],
+        "opcoes": [],
+        "proposta": null
+      }
+    ]
+  },
+  "corpo_hash": "6ff4f57ba114061a5ce4063d769a80c2a4f6a6f99fe3a430623750395876b7a2",
+  "corpo": {
+    "tipo": "resposta",
+    "rodada": "2026-10-16-laco-no-fim-da-resposta",
+    "base": "d4e6dae4f17aad75ea1e71a9f01ac45118f6816c2d9dc2f4b7a4cf9db323ecbe",
+    "respostas": {
+      "laco-fim-da-resposta": {
+        "escolha": [
+          "B"
+        ],
+        "outra": null,
+        "comentario": null
+      }
+    }
+  }
+}

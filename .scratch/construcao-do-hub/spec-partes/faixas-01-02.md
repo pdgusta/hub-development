@@ -572,7 +572,7 @@ fim de resposta e checagem de início, o 11 (Como os agentes gravam no hub) sobr
   fazer numa resposta que não mexeu no trabalho (só conversa), para não devolver toda resposta.
 - Como um script sem IA sabe que "a memória privada ganhou algo que o hub não tem": quais arquivos de memória cada
   harness tem (a do Claude Code é conhecida; a do Codex e a do Copilot, não verificadas) e se basta ver que mudaram.
-- Proteção contra laço de devolução (a resposta devolvida que devolve de novo).
+- ~~Proteção contra laço de devolução~~: decidida em 2026-10-16 (rodada `laco-no-fim-da-resposta`, Gustavo, B): o hook de fim devolve até três vezes seguidas; na quarta parada ainda com falta, solta e registra a falta no `estado.json` da vigia (aparece no início da próxima sessão e na tela de estado). Vale para o verificador (ticket 27) e para a retomada (ticket 18).
 - O mod de fim num Claude Code gerenciado pela empresa (não verificado, 14); o mod rodar em `claude -p` (não verificado).
 - A extensão `onAgentStop` do Copilot depende de `--experimental`.
 - Os hooks do Codex com acesso total (não verificado, 14); o `codex exec` desta máquina não gravava arquivo com o
