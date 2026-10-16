@@ -17,3 +17,4 @@ Blocked by: 01, 04
 
 ## Comments
 - 2026-10-16 20h28 (integrador, Rebite): lições do ticket 01 (parecer do Fiel, `etapas/00-provas/parecer-Brasa.md`): (1) o caso "nada em claro" da prova 01 só procura nomes e textos que ela mesma cria; incluir nomes e trechos do hub de ensaio, como a sonda do Fiel (`_all_docs?include_docs=true` crus dos dois bancos); (2) os contêineres da prova se chamam `hub-ensaio-00-*`, o spec do Worker 4 diz `hub-ensaio-04-*`: o kit decide; (3) `banco.psm1` está duplicado entre as provas 01 e 02 (e o 06 importa o da 02): juntar aqui.
+- 2026-10-16 20:30 (maestro): receita da etapa 2 decidida (rodada `2026-10-16-etapa-2-receita`, A): Brasa faz o 07 e depois o 08.

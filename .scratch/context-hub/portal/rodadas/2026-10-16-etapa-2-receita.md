@@ -2,7 +2,7 @@
 titulo: Etapa 2 (o banco): receita
 ticket: 16
 aberta: 2026-10-16
-estado: aberta
+estado: absorvida
 ---
 
 **Onde estamos.** A etapa 0 (as três provas de risco) está completa e juntada: os dois CouchDB replicam com a cifra,
