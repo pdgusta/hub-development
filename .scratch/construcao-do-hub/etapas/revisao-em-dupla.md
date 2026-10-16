@@ -1,7 +1,9 @@
 # Revisão em dupla: Fiel e Fielzinho (desde 2026-10-16)
 
 O Gustavo pôs um segundo revisor ao lado do Fiel: o **Fielzinho** (Codex GPT 6-Astra, esforço médio, acesso total).
-Os dois cooperam em cada ticket. Duas leituras independentes pegam mais do que uma. Regras comuns da construção:
+Desde 2026-10-16 ~20h o **Fiel** é um Claude Opus 5.5 médio (era Codex GPT 6.1 Sol; o Gustavo trocou), e o estado das
+revisões dele fica em `etapas/estado-revisor.md`. Os dois cooperam em cada ticket. Duas leituras independentes, de
+modelos diferentes, pegam mais do que uma. Regras comuns da construção:
 `regras-da-construcao.md`; valem para os dois.
 
 ## Fluxo de cada ticket

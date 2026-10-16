@@ -13,6 +13,14 @@
 - 2026-10-16 ~22h: o código mudou para `agents/code/` (rodada "onde mora o código", opção C, do Gustavo).
 - 2026-10-16 ~22h40: ticket 05 pronto, `integracao` (3857c98, prova 03) juntada no ramo (b7c99c8), 28 testes verdes;
   pedida a revisão ao Fiel.
+- 2026-10-16 ~23h10: revisão 1 do Fiel: volta (YAML em mapa flow corrompido ao trocar `type`; cabeçalho sem fechamento
+  tratado como nota sem frontmatter; arquivo em pasta com ponto alterado quando passado direto). Consertado no commit
+  71d12c1, 32 testes verdes; pedida a revisão 2.
+- 2026-10-16 ~23h40: revisão 2 (Fiel e Fielzinho, em dupla): volta (comentário YAML recuado apagado ao trocar `type`;
+  nota arquivada lida pela ficha da pasta ativa). Consertado no commit 817f850, 34 testes verdes; pedida a revisão 3.
+- 2026-10-16 ~23h55: revisão 3 (Fiel e Fielzinho): passa, sem pendência obrigatória. Ressalva de integração: as provas
+  01 e 02 ainda chamam `agents/test/hub-de-ensaio/montar.mjs`; ao juntar o 05, apontar para `agents/code/test/` e
+  repetir as provas. Rebite avisado.
 
 ## Onde mora cada peça (opção C: "quem chama")
 - O que um agente chama é skill em `agents/skills/<peça>/`: `agents/skills/nova-iniciativa/`.
@@ -53,9 +61,13 @@
   `summary: auto`, `local: false`. O `status` dos tipos sem ciclo (núcleo incluso) é de quem escreve.
 - **Guarda** (escolha 14): troca só as linhas dos campos deduzidos (o resto do arquivo fica igual, CRLF preservado);
   relê o arquivo logo antes de gravar e, se mudou, refaz sobre o texto novo (até três vezes; depois recusa sem gravar).
+  Antes de gravar, o novo frontmatter é relido: se não volta exatamente com os campos esperados (ex.: mapa flow
+  `{...}`), recusa sem gravar ("escreva um campo por linha"). Cabeçalho que abre `---` e não fecha é YAML inválido.
+  Comentário recuado depois do campo trocado fica; comentário na mesma linha do campo trocado recusa sem gravar.
   A janela entre a releitura e a gravação continua não verificada. `HUB_VERIFICADOR_PAUSA_MS` só existe para o teste.
 - **Nota arquivada** (`<raiz>/_archive/AAAA-MM-DD--<nome>/...`): vale o esquema do caminho de origem mais
-  `archived_at`; o `type` fica o de origem.
+  `archived_at`; o `type` fica o de origem. A `initiative` e o `title` do núcleo saem da ficha arquivada (a que está
+  na mesma pasta `_archive/...`), nunca da pasta ativa homônima.
 - **Skill "nova iniciativa"**: `agents/skills/nova-iniciativa/SKILL.md` e `nova-iniciativa.mjs`. Cria a pasta, o núcleo
   de seis arquivos e as pastas dos blocos; não cria o `AGENTS.md` da iniciativa (escolha 20). Confere tudo antes de
   criar (valor fora do catálogo: nada é criado). Rodar de novo só cria o que falta; nada existente é regravado (`wx`).
@@ -73,7 +85,8 @@
 - `node agents/code/bin/verificar-frontmatter.mjs [--raiz <hub>] [--corrigir] <arquivo|pasta>...` → 0 se nenhuma
   nota recusa, 1 se alguma. Linhas: `recusa: <caminho>: <falta>; <falta>`, `completou: <caminho>: <campos>`,
   `aviso: <caminho>: ...` (sem `--corrigir`, `aviso: ...: completaria <campos>`). Pastas: só `.md`, sem as com ponto.
-  Raiz: `--raiz`, senão `HUB_ROOT`, senão a primeira pasta acima com `agents/frontmatter/paths.yml`. Arquivo fora do
+  Caminho com ponto em qualquer parte (`.secrets/`, `.maestri/`) fica de fora também passado direto e no `--checar`:
+  o arquivo nem é lido, nada é gravado nem cobrado (no `--checar`, o conteúdo da entrada é ignorado). Raiz: `--raiz`, senão `HUB_ROOT`, senão a primeira pasta acima com `agents/frontmatter/paths.yml`. Arquivo fora do
   hub: nada.
 - `node agents/code/bin/verificar-frontmatter.mjs --raiz <hub> --checar <caminho no hub>` com o conteúdo proposto na
   entrada padrão: valida como se o dedutível já estivesse completo, não grava; para o hook do ticket 14 e o MCP.
@@ -98,7 +111,7 @@ cd C:\context-hub-wt\ticket-05
 node --test "agents/code/test/*.test.mjs"
 node agents/code/bin/verificar-hub.mjs .
 ```
-28 testes: 11 do 04 (`04-esqueleto.test.mjs`), 13 do verificador (`05-frontmatter.test.mjs`) e 4 da skill
+34 testes: 11 do 04 (`04-esqueleto.test.mjs`), 19 do verificador (`05-frontmatter.test.mjs`) e 4 da skill
 (`05-nova-iniciativa.test.mjs`). No Node 24, `node --test <pasta>` falha; use o padrão entre aspas. A prova 03 (em
 `provas/`) não depende de nada daqui; o `instalar.test.mjs` dela segue verde depois da junção.
 

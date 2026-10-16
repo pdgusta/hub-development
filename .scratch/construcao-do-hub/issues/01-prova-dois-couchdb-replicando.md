@@ -19,3 +19,4 @@ Blocked by: None (can start immediately)
 ## Comments
 
 - 2026-10-16 19:10, Brasa: peguei (Status claimed). Worktree `C:\context-hub-wt\ticket-01`, ramo `ticket-01`, a partir de `integracao` (69cb383). Li spec (Worker 4), faixa 4 da parte 03-04, ticket 48 e o CLI do spike. Achado antes de codar: o sal da cifra (`_local/obsidian_livesync_sync_parameters`) e o milestone são documentos `_local`, que a replicação do CouchDB não copia; o kit precisa gravar o mesmo sal nos dois bancos antes do primeiro dispositivo. Plano: `provas/01-banco/` com `compose.yml`, `04.env` (nomes do spec), `subir.ps1`, `descer.ps1` e `prova.ps1` (teste de ponta a ponta). Falta: tudo.
+- 2026-10-16 20:40, Brasa: prova verde com cifra, sem cifra e com o `.ini` em CRLF; a contraprova sem o sal comum falha como esperado. Relatório em `etapas/00-provas/relatorio-banco.md`. Commits 43a4ea9 e 246393b. Pedida a revisão ao Fiel.

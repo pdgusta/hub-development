@@ -163,3 +163,91 @@ será validado nas respectivas etapas. Não expandir o ticket 05 para esses iten
 
 Encaminhado apenas ao Trilho. A próxima solicitação de revisão seguirá em dupla com
 Fielzinho, conforme a instrução recebida durante esta rodada.
+
+## Ticket 05 — rodada 2 — leitura independente de Fiel (2026-10-16)
+
+Revisão em dupla acionada: pedido repassado imediatamente ao Fielzinho por Maestri.
+HEAD 71d12c1, ramo ticket-05 limpo ao iniciar; integracao 3857c98 é ancestral (código 0).
+Li o diff dos consertos e o relatório atualizado sem ler o parecer do parceiro.
+verificar-hub no próprio repositório passou, com os avisos previstos de caminho sem tipo.
+git diff --check b7c99c8..HEAD sem achados.
+Conserto YAML: analisar testa a equivalência dos campos após aplicarTrocas e, se falha,
+retorna trocas vazias/novoTexto original e recusa. separar recusa abertura sem fechamento.
+Conserto de exclusão: analisar ignora componente iniciado por ponto antes da análise
+de tipo/YAML; a checagem distinta de CLAUDE.md permanece intacta.
+Novos testes cobrem mapa flow sem escrita, multilinha preservado, cabeçalho aberto e
+arquivo/pasta ocultos explícitos mais --checar. Suíte de 32 testes ainda em execução.
+Conclusão provisória de Fiel: consertos atendidos; aguardando testes e leitura independente
+do parceiro para fechar o veredito conjunto.
+
+### Resultado independente de Fiel — rodada 2
+
+Suíte concluída: 32 testes passaram, 0 falhas, código 0.
+Comando: node --test "agents/code/test/*.test.mjs".
+Os quatro novos casos passaram. Conclusão de Fiel: passa, sem conserto obrigatório
+remanescente desta rodada. Ainda não é o fechamento conjunto: aguarda Fielzinho.
+
+### Acordo e fechamento conjunto — ticket 05, rodada 2
+
+Veredito: **volta**. Fiel e Fielzinho de acordo na primeira troca.
+32/32 testes passaram nas execuções independentes de ambos. Os consertos da rodada 1
+estão atendidos nos casos cobertos. A leitura independente do parceiro trouxe duas
+reproduções adicionais, aceitas por Fiel após conferir parecer e trechos responsáveis.
+Parecer independente: parecer-Trilho-fielzinho.md. Nenhum impasse.
+
+Lista única de consertos (ambos encontrados por Fielzinho):
+
+1. **Preservar comentários YAML ao trocar campo dedutível.**
+   frontmatter.mjs:237 consome linhas seguintes iniciadas por espaço. Uma nota válida
+   com type: errado seguido de '  # Comentário humano a preservar.' perde o comentário
+   ao corrigir type. A saída é 0; mesmosCampos só compara valores e não detecta a perda.
+   Preservar o comentário ou recusar sem escrever caso a troca segura não seja possível.
+   Cobrir pela CLI comentário indentado junto ao campo corrigido. Completar por trecho
+   não autoriza apagar o restante; o relatório promete preservá-lo.
+
+2. **Deduzir dados de nota arquivada pela ficha arquivada, sem usar a pasta ativa.**
+   frontmatter.mjs:54–67 e 103 usam o caminho de origem também para lerFicha.
+   Uma ficha em initiatives/_archive/2026-10-16--arquivada/initiative.md com
+   id: id-arquivado é ignorada ao corrigir research/nota.md da mesma árvore:
+   initiative: id-arquivado vira initiative: arquivada, código 0.
+   Separar caminho lógico para o esquema do caminho físico da ficha.
+   Testar ID diferente do slug, pasta ativa homônima e title do núcleo pela ficha arquivada.
+   Isso é validação de nota arquivada já entregue no 05; não pede implementar o arquivador.
+
+Fixture independente e reproduções detalhadas:
+C:/Users/GUSTAV~1.DEL/AppData/Local/Temp/hub-ensaio-revisao-05-N4GLSx
+Ver parecer-Trilho-fielzinho.md. Fiel confirmou a causalidade pelo código revisado.
+
+Ajuste de precisão (Fielzinho): o relatório diz nada lido para caminho com ponto, mas
+verificar-frontmatter lê o arquivo antes de analisar ignorá-lo. Ajustar a descrição ou
+antecipar o filtro; não houve escrita/exposição no caso já corrigido.
+
+Avisar somente Trilho. Próxima rodada é a terceira: respeitar o teto de voltas e passar
+com eventuais ressalvas escritas, conforme a regra da revisão em dupla.
+
+## Ticket 05 — rodada 3 — leitura independente de Fiel (2026-10-16)
+
+HEAD 817f850, ramo inicialmente limpo, integracao 3857c98 ancestral (código 0).
+Li o diff e o relatório atualizado sem ler a nova seção do parceiro.
+Executei node --test "agents/code/test/*.test.mjs": 34 passaram, 0 falhas, código 0.
+Executei verificar-hub .: código 0, apenas avisos já conhecidos.
+Conferidos os consertos: comentário recuado preservado, inline recusado sem escrita;
+ficha física arquivada separada do caminho lógico do tipo, com ID distinto do slug
+e pasta ativa homônima nos testes; title do núcleo vem da ficha arquivada.
+ficaDeFora agora é aplicado antes do readFileSync na entrada explícita.
+Conclusão independente de Fiel: passa, sem conserto obrigatório restante.
+Terceira rodada: permanece o teto de voltas, com limitações documentadas.
+
+### Fechamento conjunto — ticket 05, rodada 3
+
+Veredito: **passa com ressalvas documentadas**. Fiel e Fielzinho de acordo na primeira troca.
+Ambos executaram a suíte: 34 testes passaram, 0 falhas, código 0; verificar-hub passa.
+Os consertos da rodada 2, encontrados por Fielzinho, foram atendidos.
+Sem consertos obrigatórios restantes. Parecer independente: parecer-Trilho-fielzinho.md.
+Limites: casos YAML sem transformação segura são recusados sem escrita; a janela entre
+releitura e escrita segue não verificada; índices/links/other/fim de resposta pertencem
+ao 27; consumo de --checar no hook/MCP depende das respectivas etapas.
+Hub de ensaio antigo não deve ser usado; montar em destino novo com a versão integrada.
+Os módulos das provas 01/02 ainda chamam agents/test/hub-de-ensaio/montar.mjs e devem
+ser ajustados ao integrar esta migração, repetindo as provas.
+Avisar apenas Trilho para encaminhar ao Rebite.

@@ -28,3 +28,12 @@ Blocked by: 04
   verdes (`node --test "agents/code/test/*.test.mjs"`). Os três critérios cobertos por teste. Código em `agents/code/`
   e a skill em `agents/skills/nova-iniciativa/` (opção C). As quatro tarefas a mais do verificador foram para o ticket
   27. Detalhes no relatório da etapa 1. Falta: revisão do Fiel.
+- 2026-10-16 ~23h10 (Trilho): revisão 1 do Fiel: volta, dois consertos (YAML preservado ao corrigir e cabeçalho sem
+  fechamento recusado; caminho com ponto de fora também direto e no `--checar`). Feito no commit 71d12c1, 32 testes
+  verdes. Falta: revisão 2.
+- 2026-10-16 ~23h40 (Trilho): revisão 2 (em dupla): volta, dois consertos (comentário YAML preservado; ficha arquivada
+  na nota arquivada) e um ajuste de texto. Feito no commit 817f850, 34 testes verdes. Falta: revisão 3.
+- 2026-10-16 ~23h55 (Trilho): revisão 3 (Fiel e Fielzinho): passa, HEAD 817f850, 34 testes verdes. Ressalva: as provas
+  01 e 02 chamam `agents/test/hub-de-ensaio/montar.mjs`; na junção, trocar por `agents/code/test/` e repetir. Rebite
+  avisado. Falta: junção (Rebite).
+- 2026-10-16 20h00 (integrador, Rebite): lição do ticket 02 (parecer do Fiel, `etapas/00-provas/parecer-Vela.md`): a prova 02 chama `agents/test/hub-de-ensaio/montar.mjs` em `agents/code/test/provas/02-pastas-com-ponto/banco.psm1` (cópia do módulo da prova 01). Se este ticket move o montador para `agents/code/test/`, a chamada precisa mudar e a prova 02 ser repetida; não copiar a versão antiga para contornar.

@@ -1,7 +1,7 @@
 # 06: Gerador de exclusões
 
 Type: task
-Status: ready-for-agent
+Status: claimed
 Etapa: 1 (esqueleto)
 Blocked by: 04, 02
 
@@ -15,3 +15,4 @@ Blocked by: 04, 02
 - [ ] a lista funciona no sincronizador na forma provada pelo ticket 02 e na exclusão da busca
 
 ## Comments
+- 2026-10-16 20h00 (integrador, Rebite): lição do ticket 02 (relatório `etapas/00-provas/relatorio-pastas-com-ponto.md` e parecer do Fiel): a forma provada é `.livesync/ignore` com `.*` e `.*/`, escrito em cada máquina antes da partida do CLI, sem negação (o CLI lança erro com `!`; `import: .gitignore` traz as negações), e mudança exige reinício. O próprio `.livesync/ignore` não viaja pela replicação.

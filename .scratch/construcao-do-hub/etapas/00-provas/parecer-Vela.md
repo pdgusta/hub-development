@@ -116,3 +116,82 @@ Ressalvas da rodada 1 mantidas: notify precisa compor consumidores no kit; Stop 
 com duas condições verdadeiras; fixture mínimo não prova frontmatter/núcleo completo;
 TUI, toast e segunda máquina ficam fora desta prova. Não impedem o aceite do risco
 específico: hooks e notify funcionando em codex exec com acesso total e HOME de ensaio.
+
+## Ticket 02 — rodada 1 — leitura independente de Fiel (2026-10-16)
+
+Ramo ticket-02, HEAD 6191e40, limpo; integracao 3857c98 ancestral (código 0).
+Repassado imediatamente a Fielzinho; Docker/CLI real reservado ao Fiel.
+Fontes lidas: brief 00-provas, regras, ticket de construção 02, relatório, ticket
+resolvido 48, regra do 12 já conferida, Worker 4 do spec, módulo/prova/compose/env/ini.
+Fonte primária local do CLI no commit 1414144 conferida: IgnoreRules.ts normaliza
+barras e padrões, rejeita !; main.ts carrega ignore na partida e usa split(path.sep)
+no filtro interno; observador usa regex de caminho absoluto para partes com ponto.
+Conferidas as doze asserções: controle no outro disco e nos bancos A/B, ausência
+de caminho com ponto no outro disco e nos dois bancos, em execução e após reinício.
+Leitor usa banco local próprio sem vault, permitindo listar os caminhos decifrados.
+E2EE e caminho ofuscado vêm das configurações geradas, com sal comum nos documentos
+_local de cada CouchDB. Compose fixa couchdb:3.5.2 e bind de portas em 127.0.0.1.
+Não achei bloqueio pela leitura independente. Resultado final depende das execuções.
+
+Antes de rodar: TEMP/hub-ensaio-02 inexistente; caminho absoluto de limpeza conferido
+como C:/Users/gustavo.delfino/AppData/Local/Temp/hub-ensaio-02, dentro de TEMP.
+Portas 5996/5997 sem listener; Docker mostrava só hub-ensaio-00-a/b, 5994/5995,
+da Brasa. Esses contêineres/portas não foram alterados.
+Prova verde em execução com saída em revisao-02-com-exclusao.log.
+Ainda faltam vermelho esperado e verificação explícita de resíduos.
+
+Ressalvas de integração observadas na leitura: módulo ainda chama agents/test/
+hub-de-ensaio/montar.mjs, válido em sua base integrada atual; ao juntar o 05 precisa
+mudar para agents/code/test/. Remove-EnsaioBanco não confere exit do compose down;
+o revisor verificará contêineres, volumes, pasta e processos após cada rodada.
+
+### Execução verde de Fiel — ticket 02
+
+pwsh -NoProfile -File agents/code/test/provas/02-pastas-com-ponto/prova.ps1:
+código 0; 12 PASSA, nenhuma FALHA; final prova 2: tudo passou.
+Saída integral: revisao-02-com-exclusao.log (nesta pasta de etapas).
+Após terminar, conferência separada: nenhum contêiner/volume hub-ensaio-02-*,
+nenhum node.exe com argumento dentro de hub-ensaio-02, pasta TEMP/hub-ensaio-02 ausente.
+Os recursos da Brasa não foram tocados.
+Iniciada a execução -SemExclusao, log revisao-02-sem-exclusao.log; resultado pendente.
+Parecer independente do Fielzinho lido após registrar minha leitura: propõe passa
+condicionado às execuções e limpeza. Ressalvas compatíveis com minha análise.
+
+### Vermelho e limpeza de Fiel — ticket 02
+
+pwsh -NoProfile -File agents/code/test/provas/02-pastas-com-ponto/prova.ps1 -SemExclusao:
+código 1 esperado; 6 PASSA (todos os controles) e 6 FALHA (exclusão), nas duas fases.
+Log integral: revisao-02-sem-exclusao.log. Após reinício vazaram .venv, .git, .cache,
+.env e .secrets aninhados, incluindo arquivos rodando/partida, nos bancos A/B e disco B.
+Na primeira fase vazaram os arquivos preexistentes na partida; não alegar novo vazamento
+pelo observador com base nesse bloco. O .oculto de primeiro nível ficou fora no vermelho.
+Após terminar: contêineres e volumes hub-ensaio-02-* ausentes; processos node.exe
+com argumentos hub-ensaio-02 ausentes; pasta TEMP/hub-ensaio-02 ausente.
+Docker continua com hub-ensaio-00-a/b em 5994/5995 (Brasa), sem alteração por esta revisão.
+Conclusão independente de Fiel: passa, sem conserto obrigatório. Aguardando fechar
+o acordo explícito com Fielzinho com estas saídas.
+
+Retificação da última nota de limpeza: a última execução de docker ps veio vazia;
+os contêineres 00-a/b da Brasa já não estavam rodando naquele instante. A revisão
+não executou comandos contra esses recursos. A afirmação acima de que continuavam
+rodando não se aplica a essa última observação; a limpeza independente só certifica
+os recursos hub-ensaio-02, conforme os filtros usados.
+
+### Fechamento conjunto — ticket 02, rodada 1
+
+Veredito: **passa**. Fiel e Fielzinho de acordo na primeira troca.
+Fielzinho confirmou que leu os dois logs completos; aceitou verde 12/12 (código 0),
+vermelho com 6 controles PASSA e 6 exclusões FALHA (código 1 esperado), e a limpeza
+conferida por Fiel após cada rodada. Sem conserto obrigatório.
+
+Ressalvas aceitas pela dupla: (1) ao integrar o ticket 05, atualizar a chamada do
+montador para agents/code/test/hub-de-ensaio/montar.mjs e repetir a prova;
+(2) na primeira fase do vermelho, vazaram arquivos preexistentes na partida;
+(3) ausência observada na janela da prova, com apoio do filtro conferido na fonte;
+(4) banco novo, envio A->B, sem plugin/segunda máquina/limpeza de vazamento antigo;
+(5) cleanup do script não confere exit do compose down, compensado nesta revisão
+por conferência explícita de resíduos; (6) ignore por máquina, antes da partida,
+sem negação e com reinício após mudanças. Gerador e kit devem consumir essas condições.
+
+Evidências finais: revisao-02-com-exclusao.log, revisao-02-sem-exclusao.log e
+parecer-Vela-fielzinho.md. Nenhum código/spec/ticket editado. Avisar somente Vela.
