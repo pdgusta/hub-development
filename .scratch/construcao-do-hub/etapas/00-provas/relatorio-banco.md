@@ -34,7 +34,11 @@ recompilar (`C:\Projetos\spike-livesync\livesync-src\src\apps\cli\dist\index.cjs
 ### Evidência
 
 Comando: `pwsh -NoProfile -File agents/code/test/provas/01-banco/prova.ps1` (sai 0 quando tudo passa). Commits
-43a4ea9 e 246393b.
+43a4ea9, 246393b e 0c8c639 (montar.mjs em `agents/code/test`, depois do ticket 05).
+
+Depois de juntar `integracao` em 0d04985 (tickets 02 e 05), rodada de novo do HEAD 0c8c639: **tudo passou**; o hub de
+ensaio, agora com 90 arquivos, chegou ao B em 16,3 s, e as travessias levaram de 0,5 a 2,1 s. A rodada abaixo é a de
+antes do merge.
 Rodada final, com E2EE e caminho ofuscado (a escolha aceita):
 
 ```

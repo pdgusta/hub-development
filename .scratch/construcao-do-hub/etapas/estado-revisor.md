@@ -42,3 +42,23 @@ Nota para o 01 (Brasa): ramo ticket-01 ainda chama agents\test\hub-de-ensaio nas
 Falta: resultado da prova, contêineres hub-ensaio-02 apagados, acordo com Fielzinho, parecer, avisar Trilho.
 05 rodada 4: prova 02 PASSA (12 casos, saída 0), limpeza ok. Parecer fechado PASSA pelo Fiel sozinho;
 Fielzinho no limite até 20:26, leitura dele pendente. Trilho avisado.
+
+## 01 (Brasa) — 2026-10-16 ~20:15
+
+Rodada órfã da prova 01 (revisor anterior, 20:00, revisao-01-cifrada.log parou na colisão) derrubada:
+PIDs 139424/175468, hub-ensaio-00-a/b down -v, TEMP/hub-ensaio-00 apagada. Não há parecer-Brasa ainda.
+Brasa juntou integracao (0d04985) e trocou o caminho do montar (0c8c639). Revisar do HEAD do ticket-01.
+01: repassado ao Fielzinho (no limite até 20:26). Li ticket, relatório, spec Worker 4, prova.ps1.
+Ramo contém integracao; 5 arquivos novos em provas/01-banco; banco.psm1 = cópia da 02 menos 3 acréscimos, mais -SemSalComum.
+Achado a conferir: "nada em claro" só busca nomes/textos do teste, não os 44 arquivos do hub de ensaio.
+Plano: quando a Brasa avisar, rodar prova com cifra (log revisao-01-r1-cifrada.log) e uma com -Manter para varrer docs crus por nomes do hub.
+
+## 06 (Vela) rodada 1 — 2026-10-16
+
+Repassado ao Fielzinho. Ramo d45be5d contém integracao 0d04985. gerador.test.mjs 5/5 (Fiel).
+Achado 1 (Fiel): ehLocal usa regex própria; verificador (lib/frontmatter.mjs, js-yaml 4, index.yml local boolean)
+aceita local: True/TRUE e fechamento '--- ' com espaço; o gerador não reconhece -> pasta vaza calada.
+Reproduzido: index.md 'local: True' -> locais []. Conserto: usar separar() da lib e dados.local === true, com teste.
+Rodando em segundo plano: prova 01 (revisao-01-r1-cifrada.log) e sincronizador 06 (revisao-06-r1-sincronizador.log).
+06 r1: VOLTA (conserto 1, local lido como o verificador). sincronizador.ps1 invalidado: Vela editando worktree durante a rodada.
+Parecer em etapas/01-esqueleto/parecer-Vela.md. Vela avisada.

@@ -1,7 +1,7 @@
 # 14: Guardas: regravação inteira e ficha fora do esquema
 
 Type: task
-Status: ready-for-agent
+Status: claimed
 Etapa: 5 (guardas no disco)
 Blocked by: 05, 03
 
@@ -18,3 +18,9 @@ Blocked by: 05, 03
 
 ## Comments
 - 2026-10-16 ~20h20 (maestro): passado ao Trilho, como antecipação da etapa 5 (bloqueios 05 e 03 resolvidos; plano: até 3 agentes, sem depender de peça que não existe). Primeiro commit do ramo, separado: tirar o `README.md` da raiz do hub (decisão do ticket 12: raiz = `AGENTS.md` + seis raízes; era marcador do "Início do hub"), a pedido do maestro pela ressalva do Rebite na junção do 05.
+
+- 2026-10-17 (Trilho): ticket pego, `Status: claimed`. Worktree `C:\context-hub-wt\ticket-14`, ramo `ticket-14`, de
+  `integracao` (0d04985). Primeiro commit (3055de9): sai o `README.md` da raiz (ticket 12). Costuras: (1) o hook
+  `node agents/code/hooks/guardas/antes-da-ferramenta.mjs <claude|codex|copilot>` com o evento na entrada, alimentado
+  pelas entradas gravadas na bancada do ticket 11 (`C:\Projetos\bancada-acesso\gravacao\`); (2) ponta a ponta com
+  `claude -p`, `codex exec` e `copilot -p` em HOME de ensaio. Falta: tudo depois do README.
