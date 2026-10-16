@@ -1,0 +1,152 @@
+{
+  "envio": "f3e5386f-cc9d-4ed1-958f-2653a407dafc",
+  "tipo": "resposta",
+  "enviada": "2026-10-16T20:38:21-03:00",
+  "alvo": {
+    "tipo": "rodada",
+    "id": "2026-10-16-pastas-locais-depois-do-gerador",
+    "titulo": "Pastas locais: o que o gerador de exclusões deixou em aberto"
+  },
+  "ticket": "16",
+  "substitui": null,
+  "rodada": {
+    "id": "2026-10-16-pastas-locais-depois-do-gerador",
+    "base": "6253318b3bac58b87d5b72e02ec1f7bff13c0d0db7a2a096af51a5a3910f22a4",
+    "titulo": "Pastas locais: o que o gerador de exclusões deixou em aberto",
+    "ticket": "16",
+    "perguntas": [
+      {
+        "id": "pasta-local-nova",
+        "titulo": "Como nasce uma pasta local",
+        "tipo": "escolha",
+        "recomendada": [
+          "A"
+        ],
+        "opcoes": [
+          {
+            "chave": "A",
+            "texto": "Por um script \"nova pasta local\" (skill em `agents/skills/`, como a \"nova iniciativa\"), que para o sincronizador, cria a pasta com o `index.md` `local: true`, roda o gerador e religa; o contrato manda usar o script, e criar à mão fica sujeito ao vazamento"
+          },
+          {
+            "chave": "B",
+            "texto": "A pasta nasce com ponto no nome (ex.: `.rascunho/`, que nunca replica), ganha o `index.md` `local: true`, o gerador roda e só então ela perde o ponto; sem parar o sincronizador, mas com um passo a mais e um nome provisório"
+          },
+          {
+            "chave": "C",
+            "texto": "Aceitar o vazamento curto e limpar depois (o que vazou some do banco e da outra máquina na limpeza da pergunta 3)"
+          }
+        ],
+        "proposta": null
+      },
+      {
+        "id": "quem-roda-o-gerador",
+        "titulo": "Quem roda o gerador depois da instalação",
+        "tipo": "escolha",
+        "recomendada": [
+          "A"
+        ],
+        "opcoes": [
+          {
+            "chave": "A",
+            "texto": "A vigia, a cada passada (5 min): roda o gerador; se a lista mudou, religa o sincronizador e avisa; se o gerador recusar (YAML ilegível), vira item da vigia com o caminho; é a rede de segurança para `index.md` editado à mão"
+          },
+          {
+            "chave": "B",
+            "texto": "Só o script da pergunta 1 e o kit; um `index.md` editado à mão fica sem efeito até o próximo uso do script ou do kit"
+          },
+          {
+            "chave": "C",
+            "texto": "Uma tarefa agendada própria, separada da vigia, só para o gerador"
+          }
+        ],
+        "proposta": null
+      },
+      {
+        "id": "tornar-local",
+        "titulo": "Pôr `local: true` numa pasta que já replicou",
+        "tipo": "escolha",
+        "recomendada": [
+          "A"
+        ],
+        "opcoes": [
+          {
+            "chave": "A",
+            "texto": "Um passo \"tornar local\" no mesmo script: para o sincronizador, gera a lista e apaga a pasta do banco pelo CLI do LiveSync, o que tira a cópia da outra máquina e mantém a desta; o 08 prova que a cópia desta máquina não é apagada junto"
+          },
+          {
+            "chave": "B",
+            "texto": "Não suportar: o verificador recusa pôr `local: true` numa pasta que já replicou e manda criar uma pasta local nova e mover os arquivos para ela"
+          },
+          {
+            "chave": "C",
+            "texto": "Limpeza à mão, por você, quando acontecer"
+          }
+        ],
+        "proposta": null
+      },
+      {
+        "id": "exclusao-do-git",
+        "titulo": "Como a pasta local sai do git",
+        "tipo": "escolha",
+        "recomendada": [
+          "A"
+        ],
+        "opcoes": [
+          {
+            "chave": "A",
+            "texto": "O mesmo gerador escreve `.git/info/exclude`, que vale só nesta máquina e não é versionado: cada máquina exclui as pastas locais dela, e o nome de uma pasta local não viaja para a outra nem para o GitHub"
+          },
+          {
+            "chave": "B",
+            "texto": "O gerador escreve no `.gitignore` versionado: o nome das pastas locais das duas máquinas fica no repositório e no GitHub"
+          }
+        ],
+        "proposta": null
+      },
+      {
+        "id": "algo-mais",
+        "titulo": "Algo mais?",
+        "tipo": "texto",
+        "recomendada": [],
+        "opcoes": [],
+        "proposta": null
+      }
+    ]
+  },
+  "corpo_hash": "492352777a2a337f2b7d9d66078871cff1fb1ced83879211f40ef2f7681345af",
+  "corpo": {
+    "tipo": "resposta",
+    "rodada": "2026-10-16-pastas-locais-depois-do-gerador",
+    "base": "6253318b3bac58b87d5b72e02ec1f7bff13c0d0db7a2a096af51a5a3910f22a4",
+    "respostas": {
+      "pasta-local-nova": {
+        "escolha": [
+          "A"
+        ],
+        "outra": null,
+        "comentario": null
+      },
+      "quem-roda-o-gerador": {
+        "escolha": [
+          "A"
+        ],
+        "outra": null,
+        "comentario": null
+      },
+      "tornar-local": {
+        "escolha": [
+          "A"
+        ],
+        "outra": null,
+        "comentario": null
+      },
+      "exclusao-do-git": {
+        "escolha": [
+          "A"
+        ],
+        "outra": null,
+        "comentario": null
+      }
+    }
+  }
+}

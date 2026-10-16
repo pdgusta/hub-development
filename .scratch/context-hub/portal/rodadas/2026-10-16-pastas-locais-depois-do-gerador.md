@@ -2,7 +2,7 @@
 titulo: Pastas locais: o que o gerador de exclusões deixou em aberto
 ticket: 16
 aberta: 2026-10-16
-estado: aberta
+estado: absorvida
 ---
 
 O ticket 06 entrou: o **gerador de exclusões** lê os marcadores (tudo que tem ponto e toda pasta cujo `index.md` diz

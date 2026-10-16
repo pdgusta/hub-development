@@ -19,3 +19,4 @@ Blocked by: 08, 10
 
 ## Comments
 - 2026-10-16 20h32 (integrador, Rebite): lição do ticket 06 (parecer do Fiel, rodada 2, `etapas/01-esqueleto/parecer-Vela.md`): `agents/code/bin/gerar-exclusoes.mjs` recusa com código 2, sem gravar, se algum `index.md` tem YAML ilegível, e isso trava a lista inteira. Quem chama o gerador tem de mostrar esse erro, não engolir. Pasta local criada com o CLI rodando vaza: parar, gerar, religar.
+- 2026-10-16 20:38 (maestro): decisão do Gustavo (rodada `2026-10-16-pastas-locais-depois-do-gerador`, pergunta 2, A): a vigia roda o gerador de exclusões a cada passada; se a lista mudou, religa o sincronizador e avisa; se o gerador recusar (YAML ilegível, código 2), vira item da vigia com o caminho. Entra neste ticket.

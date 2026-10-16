@@ -274,6 +274,13 @@ do `status` da rodada 19.
   `.maestri/`, o índice da busca) e a pasta cujo `index.md` diz `local: true`. Um script gera a exclusão do sync e da
   busca a partir desses marcadores; o sincronizador (faixa 4) e a busca (faixa 3) a consomem. O glossário põe a pasta não
   replicada também fora do GitHub.
+- Decidido em 2026-10-16 (rodada `pastas-locais-depois-do-gerador`, Gustavo, todas A; ticket 28 da construção): a pasta
+  local nasce por um script "nova pasta local" (skill em `agents/skills/`), que para o sincronizador, cria a pasta com o
+  `index.md` `local: true`, roda o gerador e religa; o contrato manda usar o script. O mesmo script tem o passo "tornar
+  local" para pasta que já replicou: para o sincronizador, gera a lista e apaga a pasta do banco pelo CLI do LiveSync (sai
+  a cópia da outra máquina, fica a desta). O gerador também escreve `.git/info/exclude` (por máquina, não versionado).
+  Depois da instalação, a vigia roda o gerador a cada passada; se a lista mudou, religa o sincronizador e avisa; se o
+  gerador recusar (YAML ilegível), vira item da vigia com o caminho (ticket 16 da construção).
 
 **Texto dos anexos (12, rodada 16)**
 - Arquivo irmão `<anexo>.md` com `title`, `source` e `extractor` (Docling ou pandoc, com versão); vale para PDF, Word,
