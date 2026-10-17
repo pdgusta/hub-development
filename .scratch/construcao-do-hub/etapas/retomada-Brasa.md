@@ -35,11 +35,13 @@ especial "Um trabalho pesado por vez" (a trava `etapas/trava-pesada.md`) e "Test
 
 ### Próximo passo exato
 
-1. Fila do pesado em `etapas/fila-pesada.md`: Cinzel, Rebite, eu. Quando o Rebite avisar "trava livre", lançar
+1. Fila do pesado em `etapas/fila-pesada.md`: Rebite, Trilho (Docker do 16), eu. Só lançar quando o Trilho avisar "trava livre" (o aviso automático do Rebite não vale; o corredor pega a trava assim que ela fica livre, então não lançar antes da vez), lançar
    destacado: `Start-Process pwsh -WindowStyle Hidden -ArgumentList '-NoProfile','-File','C:/context-hub-wt/ticket-08/.local/fatias.ps1','-Fatias','2,3,4,5,6,7,07'` (07 = teste do 07, o passo do kit mudou)
    e vigiar `etapas/logs/08-fatias.status` (Monitor com tail -F). Ao "PEGOU a trava": tirar o meu nome da fila. Ao
    "SOLTOU": avisar o próximo da fila (`maestri ask "<nome>" "trava livre, sua vez"`).
-2. Com SEM-MEMORIA (20 min abaixo de 2 GB): avisar o maestro, não forçar.
+2. Com SEM-MEMORIA (20 min abaixo de 2 GB): avisar o maestro, não forçar. Com "CEDE a trava ao Trilho" (depois das
+   06:58, entre fatias, uma vez, se a fila ainda tem "Trilho: Codex do 15"): `maestri ask "Trilho" "trava livre, sua vez"`;
+   o corredor espera e retoma sozinho ("RETOMA").
 3. Preencher a tabela do relatório `etapas/relatorio-08-banco-limites.md`; commit do retrato
    (`agents/code/test/banco/retrato/`); testes do 08 e dos arquivos mexidos (sem a suíte inteira: só o Rebite, na junção); revisão com o Fiel.
 

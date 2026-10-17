@@ -19,3 +19,5 @@ Blocked by: 09, 05
 - [ ] nota fora do esquema é recusada
 
 ## Comments
+
+- 04:42 (maestro): reservado para o Cinzel (continua no fork). Costuras já; código depois do "passa" do 09, num ramo ticket-10 do fork a partir do ticket-09 (e no hub a partir de ticket-09 ou de integracao com o 09 juntado).

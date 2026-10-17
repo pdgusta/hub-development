@@ -27,6 +27,7 @@ Por isso o diário abaixo registra cada evento com hora.
 - (processo) O 16 (vigia) começou antes do 08 e do 10, sobre o 07; junção só depois deles.
 - (processo) A suíte inteira roda só na junção, pelo Rebite; o construtor roda os testes do ticket e dos arquivos mexidos. Fila do trabalho pesado em `etapas/fila-pesada.md`.
 
+- (técnica) No 09, só é conflito quando a base não é mais folha viva; gravar sobre folha viva de nota em conflito grava e avisa.
 - (técnica, ~04h35) Pontos abertos da faixa 5 decididos no 09: `delete_note` exige `base_rev` (o spec deixava a guarda em aberto); append/prepend sem base gravam como filha da versão lida.
 
 - (técnica, 2026-10-17 ~03h50) O hub-busca expõe só a `search` nos três harnesses (a `read` dele furava o aviso de
@@ -142,3 +143,4 @@ nuvem.
 - 04:25: 35 e 33 passaram no Fiel. Trilho começa o 16 (vigia) antes dos bloqueios, pelo mandato (08 e 10 entram por merge; junção só com eles resolvidos).
 - 04:27: costuras do 16 aceitas; 'piora' decidida pelo mandato (item sobe de nível; novo conta como ok antes).
 - 04:40: 16 adiantado (Trilho, 7024828, 8/8 sem Docker). Fila: Rebite (suíte 33/35), Trilho (Docker 16), Brasa (08; solta entre fatias para o Codex do 15 depois de 06:58).
+- 04:44: 09 verde nas duas costuras, revisão no Fiel (fork 61a6e70, hub 3d9d0bb); achados aceitos (fusão automática do LiveSync; conflito só com base morta). Cinzel adianta as costuras do 10.

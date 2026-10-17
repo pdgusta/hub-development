@@ -45,3 +45,5 @@ Blocked by: 07
   - Fork `ticket-09` em 61a6e70: costura A 12/12, vermelho medido antes; unitários 272/1 e e2e local 36/7, iguais à base do upstream.
   - Hub `ticket-09` em 3d9d0bb, com `integracao` 33b817a juntada: costura B 21 PASSA (`etapas/logs/09-docker-4.log`); sem Docker 12 PASSA.
   - Achados no caminho: o sincronizador do LiveSync funde sozinho conflitos de linhas diferentes (caso 4b, nada se perde); o passo 05 rodava um `dist` velho, e agora remonta quando um fonte é mais novo. Trava solta às 04:37; Rebite avisado.
+
+- 04:42 (maestro, mandato): achados do Cinzel aceitos: (1) o sincronizador funde sozinho conflito de linhas diferentes (o agente recebe "conflito", a releitura vem fundida, nada se perde; só a mesma linha fica para a pessoa); (2) só é conflito quando a base não é mais versão viva; gravar sobre uma folha viva de nota com conflito aberto grava e avisa que o conflito segue aberto. `delete_note` com base saiu pela lib (`storeDeletionAtRevision`), sem ticket seguinte.
