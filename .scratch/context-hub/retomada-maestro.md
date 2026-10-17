@@ -275,3 +275,5 @@ nuvem.
 - 10:21: ronda; cron duplicado apagado (fica o 269a3193). Rebite com a trava (suíte do 16, fce0529, desde 10:19). Fiel revisando o 21. Brasa testa se a cota do gpt-6-astra é à parte (um pedido).
 - 10:21: o gpt-6-astra não tem cota à parte (Brasa, um pedido às 10:20: limite até 12:15). Codex só às 12:15.
 - 10:28: 25 fases 4-7 escritas (puladas até as peças); corte do medidor desce toda pilha registrada. 16 juntado (fce0529), suíte com o Rebite.
+- 10:31: corte do 25 com pilhas registradas (25be145, medidor 5/5). Vela espera o 16 resolver para o 17.
+- 10:38: 21 r1 com 2 consertos (f32bd4c); achado do caminho longo (fs.watch aborta com nome curto) nas regras e no 23; Trilho na fila depois da suíte do 16.

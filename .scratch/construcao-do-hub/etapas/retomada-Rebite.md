@@ -66,3 +66,4 @@ a ponta do ramo é a do parecer (ou que depois dela só entrou evidência ou `gi
   Falta: resolver o 16 (ressalva do laco/exclusoes no parecer; Fielzinho lê depois), registro, avisos; depois o 17 (Vela
   junta integracao no ramo, testa sobre o estado.json real, rodada do Fiel, me avisa). 23 segura até 11, 16, 17 e 18.
 - Docker do 16 não repetido: idêntico ao revisado (8ª rodada do Trilho vale; r2 só mexeu em filtro de `descartados()`).
+- Maestro: ao soltar a trava da suíte do 16, avisar o Trilho (Docker do 21, 4ª rodada).

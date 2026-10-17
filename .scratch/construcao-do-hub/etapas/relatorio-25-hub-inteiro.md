@@ -93,8 +93,12 @@ Puladas com o motivo até a peça entrar na árvore (`FASES` no topo do orquestr
 - Teste sem Docker: `25-pares-sem-docker` 2/2 (novo; manutencao com o CLI falso: o .env leva o do A, o outro par visto
   daqui, a máquina, o repositório nu; o leitor configurado; a segunda chamada não refaz). Orquestrador e detector do 29
   verdes. **Deslize de método:** o código da ponte veio antes do teste da manutencao.
-- **Riscos, para a rodada real:** o corte do medidor só desce `hub-ensaio-25-*` (na fase 7 os contêineres são do 22:
-  numa queda, sobram e o corredor seguinte recusa partir); os textos da notificação e do `estado_do_hub` foram lidos do
+- **Corte com várias pilhas (25be145, pedido do maestro):** cada fase que sobe algo grava `pilhas/<nome>.json` na pasta
+  do medidor (prefixo dos contêineres e o comando de descer: `pares.ps1 -Acao descer`, `cliente.ps1 -Acao descer`) e o
+  apaga ao descer. O medidor mede os contêineres de todos os prefixos registrados e, no corte, derruba o dono, roda o
+  descer de cada pilha e tira contêineres, volumes e redes de cada prefixo; o `corte.json` diz o que desceu e com que
+  código. Teste sem Docker com duas pilhas (25-medidor 5/5).
+- **Riscos, para a rodada real:** os textos da notificação e do `estado_do_hub` foram lidos do
   teste do 16, não vistos; o pedido do arquivar depende de o agente ler a skill (com shell); a fase 7 repete o ponta a
   ponta do 22 por dentro.
 

@@ -215,3 +215,5 @@ Próximo: revisão do 21 (Trilho, Docker da 3ª rodada passou) — depois do /cl
 Sat, Oct 17, 2026 10:15:54 AM 21 r1 (Trilho, 1c87f9b): retomado após /clear; revisão do Fiel em curso (Fielzinho sem cota até 12h15).
 10:16 37 (Cinzel, c16e53f sobre 18 31afe63): pedido recebido; na fila depois do 21 e do 22.
 10:25 21 r1: VOLTA (Fiel sozinho), 1 guarda dentro-do-hub com outro disco (arquivar.mjs:39); 2 Docker não mostra sincronizador vivo após arquivar (Assertion fs-event.c no log; abortar reproduzido com TEMP curto). Parecer etapas/parecer-21-Trilho.md. Próximo: 22 (Brasa), depois 37 (Cinzel).
+10:33 22 r1: VOLTA (Fiel sozinho), 1 token trocado no .env não vale (proxy segue de pé com o velho; sonda: velho 200, novo 401). Ressalva: 10.env.modelo add/add com o 21. Parecer etapas/parecer-22-Brasa.md. Próximo: 37 (Cinzel); repassar 21, 22, 37 ao Fielzinho às 12h15.
+10:34 Brasa avisada do 22 r1. 37 r1 (Cinzel): lendo.

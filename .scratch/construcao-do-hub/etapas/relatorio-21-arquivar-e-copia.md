@@ -4,7 +4,7 @@
 
 ## Estado
 
-- Ramo `ticket-21` (HEAD 1c87f9b, com o ticket-16 0332466), worktree `C:\context-hub-wt\ticket-21`, de `integracao` 9cc878b com o
+- Ramo `ticket-21` (HEAD 5fe3fda: f32bd4c com integracao fce0529, o 16 juntado), worktree `C:\context-hub-wt\ticket-21`, de `integracao` 9cc878b com o
   `ticket-16` juntado (c36ece4), porque o item da cópia diária na vigia é do 16 (maestro, 07:31).
 - **Junção só com 08 e 16 resolvidos.** O que depende do 08 entra quando ele for juntado.
 - Costuras aceitas: `etapas/costuras-21-Trilho.md`.
@@ -74,6 +74,31 @@
     `archived_at`; recusa com a replicação parada; a cópia empurra o ramo do par; remoto quebrado sai com erro e a
     vigia notifica; os contêineres saem.
 - Sem Docker em 1c87f9b: 21-* e afetados (04, 05, 20, 07-kit-sem-docker): 78/78.
+
+## Rodada 1 do Fiel (VOLTA, 2 consertos), feitos em f32bd4c
+
+1. **Pasta de outro disco passava pela guarda** (`D:/fora/pasta`): o `relative` do Windows devolve o caminho absoluto,
+   e a guarda olhava o texto já com `/`. Agora `isAbsolute(relative(hub, origem))` recusa "não está dentro do hub".
+   Casos novos: `Z:/fora/pasta` e `Z:\fora\pasta`.
+2. **Provar que o sincronizador de A segue de pé depois do arquivar.**
+   - De onde vinha o `Assertion failed: !_wcsnicmp(filename, dir, dirlen), file src\win\fs-event.c, line 72`: **não
+     do Docker** (o `logs/trilho-21-docker-3.log` tem 11 linhas, sem ele). Veio dos testes leves (duas vezes, no
+     registro da rodada de 1c87f9b): o observador dublê abortou. Ele observava o hub de ensaio pelo `%TEMP%` com o
+     nome curto do Windows (`C:\Users\GUSTAV~1.DEL\...`); o libuv compara o nome do evento com o da pasta observada e
+     aborta. O Fiel reproduziu numa sonda: curto aborta, longo fica vivo. Uma sonda minha mais simples (um arquivo só)
+     não abortou em nenhum dos dois: o aborto depende de quantos eventos chegam.
+   - O CLI de verdade observa o hub pelo caminho longo: `C:\context-hub`; no Docker,
+     `C:\Users\gustavo.delfino\AppData\Local\Temp\hub-ensaio-21` (o `GetTempPath` do PowerShell dá o longo).
+   - Teste leve: o dublê observa pelo `realpathSync.native` (longo), como o CLI, e o teste confere que ele **segue
+     vivo** depois do arquivar e depois do ir-e-voltar do caso "aberto por editor".
+   - Docker: depois do arquivar, confere o **mesmo PID** do sincronizador de A e que **uma nota nova em A chega ao
+     B**; o registro mostra o caminho do hub e o longo.
+   - Achado para o kit (o maestro levou às regras e ao 23): com `HUB_ROOT` em nome curto, o sincronizador pode abortar
+     ao arquivar ou ao mover arquivos à mão.
+- Ressalvas feitas: a data da mensagem da cópia diária é a local (`sv-SE`), não UTC; o comentário "Troca de trecho"
+  voltou para cima do `aplicarTrocas`. Sem conserto: no caminho arquivo por arquivo, subpasta vazia não vai para o
+  destino (o LiveSync não replica pasta vazia); falha na devolução sai como exceção, com estado parcial (raro).
+- Testes leves em f32bd4c: 21-*, 04, 05, 20: 77/77. Docker 4ª rodada: pela fila (1b).
 
 ## O que espera o 08
 

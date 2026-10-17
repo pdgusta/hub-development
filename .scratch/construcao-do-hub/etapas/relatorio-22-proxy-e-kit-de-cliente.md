@@ -34,7 +34,10 @@ Brasa, 2026-10-17. Ramo `ticket-22`, worktree `C:/context-hub-wt/ticket-22`, de 
   - O proxy expande o ambiente por padrão (`-expand-env`). Uma variável ausente vira token vazio, e o proxy recusa
     subir: `authTokens[0] cannot be empty`, conferido à mão.
 - **Pronto:** o `/_readyz` responde 200, e cada rota responde 401 sem token. Uma rota que não montou dá 404.
-- **Idempotente:** com o mesmo config e o processo de pé, não toca. Config mais novo que o processo: religa.
+- **Idempotente:** com o mesmo config, os mesmos tokens e o processo de pé, não toca. Config mais novo que o
+  processo, ou um token trocado no `.env` (revogar a gravação de um cliente, girar o de uma instância): religa.
+  - Os tokens não estão no config: na partida, o passo grava `ambiente.sha256` (hash do ambiente, nunca o token) na
+    pasta de estado e compara na volta seguinte (parecer r1, conserto 1; teste: o token velho dá 401, o novo abre).
   - O PID só vale se o processo for o `mcp-proxy.exe` desta pasta com este config.
   - `-WhatIf` só lista; `-Descer` para.
 - **Tokens:** um por rota, nenhum igual a outro nem ao de uma instância; o kit recusa repetido.

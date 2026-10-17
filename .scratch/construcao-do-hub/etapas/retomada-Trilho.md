@@ -11,7 +11,10 @@ Leia antes: `etapas/regras-da-construcao.md` (inteiras), `etapas/fila-pesada.md`
   fechado na janela quieta). **Ao voltar: `maestri check "Rebite"`; se não chegou, reenviar** o aviso (ramo, 19/19,
   Docker 8ª, relatório `etapas/relatorio-16-vigia.md`, parecer `etapas/parecer-16-Trilho.md`, HUB_MCP_BANCO_DIR =
   `C:/Projetos/hub-mcp-banco-wt/ticket-11`).
-### B. Ticket 21: Docker 3ª rodada TUDO PASSOU; revisão pedida ao Fiel (~10h, ficou na fila dele: conferir com maestri check)
+### B. Ticket 21: Fiel r1 VOLTA (2 consertos), feitos em f32bd4c; HEAD 5fe3fda (com integracao fce0529)
+- Próximo: Docker 4ª rodada na fila 1b (depois da suíte do Rebite, antes das 12h15) para logs/trilho-21-docker-4.log;
+  ao soltar, avisar o MAESTRO; verde: pedir a rodada 2 ao Fiel (o Fielzinho lê depois das 12h15).
+### B-antes. (Docker 3ª tudo passou; revisão r1 pedida ~10h)
 - Worktree `C:/context-hub-wt/ticket-21`, ramo `ticket-21`, HEAD 1c87f9b (9ce2496 + merge do ticket-16 0332466).
 - Testes: 21-* e afetados (04, 05, 20, 07-kit-sem-docker) 78/78; Docker `logs/trilho-21-docker-3.log` 9 PASSA.
 - Relatório `etapas/relatorio-21-arquivar-e-copia.md` em dia (Achado 3: EPERM pelo fs.watch numa subpasta; arquivo

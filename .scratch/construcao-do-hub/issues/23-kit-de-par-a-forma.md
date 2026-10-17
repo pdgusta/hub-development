@@ -34,3 +34,5 @@ Blocked by: 11, 15, 17, 18, 20, 27
 - 2026-10-17 ~09h55 (Cinzel): rodada 2 do Fiel PASSA (`../etapas/parecer-23-Cinzel.md`), ramo `ticket-23` f304e6c, 14/14. Rebite avisado: junção só com 11, 15, 17, 18, 20 e 27 resolvidos (mandato). Fielzinho lê depois das 12h15.
 - 2026-10-17 ~09h35 (Cinzel): reaberto pelo Fiel (detector do 29 sem exceção para o app-server). Conserto a419182: exceção estreita com motivo e teste; `harness-real.test.mjs` 7/7. Rodada 3 pedida.
 - 2026-10-17 09:23 (Cinzel): rodada 3 do Fiel PASSA em a419182 (harness-real 7/7 no 23 e no 24). Ressalva: a exceção olha só o texto do teste; o kit roda por pwsh e não é importado. Rebite avisado da ponta nova.
+
+- 10:37 (maestro): lição do 21 (Trilho): o kit grava `HUB_ROOT` e afins no caminho longo do Windows (nome curto faz o `fs.watch` do node abortar, libuv fs-event.c:72).

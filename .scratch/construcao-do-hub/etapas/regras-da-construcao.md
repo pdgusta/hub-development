@@ -80,6 +80,9 @@ Valem para todo construtor e revisor das etapas. Plano decidido: `revisao/plano/
 - **Codex: hífen do nome do servidor MCP vira sublinhado no hook** (achado do Trilho no 15, 2026-10-17; a doc não diz):
   `mcp__hub-busca__search` chega como `mcp__hub_busca__search`. Matcher do Codex para `hub-banco`, `vigia` etc. usa
   o sublinhado.
+- **Caminho longo do Windows** (Trilho no 21): com `HUB_ROOT` ou `TEMP` em nome curto (`GUSTAV~1.DEL`), o `fs.watch`
+  do node pode abortar quando um arquivo sai de uma pasta (libuv `fs-event.c:72`). Use sempre o caminho longo; o kit
+  grava o caminho longo.
 - **Testes do fork do MCP:** `node --import tsx --test "src/**/*.test.ts"` com `TEMP`/`TMP` no caminho longo (ver
   `juntar-tickets.md`).
 

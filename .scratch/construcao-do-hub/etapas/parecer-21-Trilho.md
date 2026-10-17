@@ -1,6 +1,6 @@
 # Parecer do ticket 21 (Trilho): arquivar e cópia diária
 
-## Rodada 1 — 2026-10-17 ~12h05 (Fiel sozinho; Fielzinho sem cota até 12h15, leitura dele pendente)
+## Rodada 1 — 2026-10-17 ~10h20 (Fiel sozinho; Fielzinho sem cota até 12h15, leitura dele pendente)
 
 Ramo `ticket-21`, HEAD 1c87f9b (com o ticket-16 0332466). `integracao` andou só pela junção do 16 (fce0529); merge
 sem conflito (`git merge-tree`).
@@ -31,6 +31,9 @@ sem conflito (`git merge-tree`).
 
 ### Ressalvas (não bloqueiam)
 
+- **Junção com o 22:** o 21 e o 22 (Brasa) criam o mesmo arquivo novo `agents/code/kit/par/env/10.env.modelo`, com
+  conteúdos diferentes (o 21: `HUB_MAQUINA`, `HUB_COPIA_*`; o 22: `HUB_PROXY_*`). Quem juntar depois terá conflito
+  add/add; as duas metades têm de ficar. Aviso ao Rebite junto com o passa.
 - No caminho arquivo por arquivo, subpasta vazia não vai para o destino (só arquivos são movidos; o `rmdir` a
   apaga). O LiveSync não replica pasta vazia; fica igual para o outro par, mas some nesta máquina.
 - Se devolver no meio falhar (`arquivar.mjs:120-127`), sai exceção sem recusa e o estado fica parcial; caso raro.
