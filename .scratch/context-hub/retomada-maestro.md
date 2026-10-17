@@ -133,7 +133,7 @@ C:\context-hub log --oneline -3 integracao`, `etapas/trava-pesada.md` e `etapas/
   indexação, npm, harness real). Suíte comum: `node --test "agents/code/test/**/*.test.mjs"` sem `HUB_HARNESS_REAL`
   (os de harness ficam pulados; ticket 29); `--test-concurrency=1` sob carga. Se travar de novo, as saídas são do
   Gustavo: baixar a memória do Docker (Settings > Resources) ou aumentar o arquivo de paginação.
-- **Codex:** o Gustavo tem 3 reinícios de cota (semanais) guardados: pedir a ele só se a cota acabar e travar a reta final. Nos testes com o Codex, o GPT 6.1 Sol; o gpt-6-astra só para revisão (Fielzinho) e o que exige inteligência. Sem cota até 12:15 de 2026-10-17 (Fielzinho e qualquer harness real com Codex). Pendente: Codex real do 11 (Cinzel); leituras atrasadas do Fielzinho (fila do Fiel).
+- **Codex:** o Gustavo tem 3 reinícios de cota (semanais) guardados: pedir a ele só se a cota acabar e travar a reta final. Dentro do Codex (só quando o trabalho é dele): GPT 6.1 Sol em testes e tarefas menores; gpt-6-astra na revisão (Fielzinho) e em tarefa do Codex que exige raciocínio. Sem cota até 12:15 de 2026-10-17 (Fielzinho e qualquer harness real com Codex). Pendente: Codex real do 11 (Cinzel); leituras atrasadas do Fielzinho (fila do Fiel).
 
 ## Quem está no canvas (2026-10-17 10:50)
 
