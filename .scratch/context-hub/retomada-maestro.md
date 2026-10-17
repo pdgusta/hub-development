@@ -122,7 +122,7 @@ C:\context-hub log --oneline -3 integracao`, `etapas/trava-pesada.md` e `etapas/
   indexação, npm, harness real). Suíte comum: `node --test "agents/code/test/**/*.test.mjs"` sem `HUB_HARNESS_REAL`
   (os de harness ficam pulados; ticket 29); `--test-concurrency=1` sob carga. Se travar de novo, as saídas são do
   Gustavo: baixar a memória do Docker (Settings > Resources) ou aumentar o arquivo de paginação.
-- **Codex:** sem cota de novo até 12:15 de 2026-10-17 (Fielzinho e qualquer harness real com Codex). Pendente: Codex real do 11 (Cinzel); leituras atrasadas do Fielzinho (fila do Fiel).
+- **Codex:** o Gustavo tem 3 reinícios de cota (semanais) guardados: pedir a ele só se a cota acabar e travar a reta final. gpt-6-astra liberado à vontade nos testes. Sem cota até 12:15 de 2026-10-17 (Fielzinho e qualquer harness real com Codex). Pendente: Codex real do 11 (Cinzel); leituras atrasadas do Fielzinho (fila do Fiel).
 
 ## Quem está no canvas (2026-10-17 ~04h)
 
@@ -269,3 +269,6 @@ nuvem.
 - 09:54: fatias 1+2 do 08 VERDES na janela quieta (18/0, 514db7a; 51 MiB viajou, 201 não; pico 1.724 MB livres). Item do Gustavo da fatia 2 cai. Vela no 25.
 - 10:03: 1ª rodada real do 25 verde (fases 1-3; pico na indexação: 1.472 MB de node; mín. livre 1.831 MB). Janela quieta encerrada; Brasa e Vela salvas. Plano de religar no topo.
 - 10:11: Maestri reiniciado pelo Gustavo; os sete recrutas voltaram sozinhos com o contexto (o Maestri retoma as sessões). Ronda recriada (cron 269a3193). Recados reenviados (Rebite: 16; Fiel: 21, fatia 2, 18).
+- 10:16: Fiel limpo e retomado (21 e 22 na fila dele). Vela adianta as fases 4-7 do 25 sem Docker.
+- 10:17: ronda; Rebite juntando o 16 (teste dele rodando); Brasa tinha um pedido sem Enter (reenviado); todos ≤36%; 1,1 GB livres.
+- 10:18: Gustavo: guarda os 3 reinícios do Codex (usar se a cota travar a reta final); gpt-6-astra liberado nos testes do Codex (regras atualizadas).
