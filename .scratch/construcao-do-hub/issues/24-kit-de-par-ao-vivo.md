@@ -20,3 +20,5 @@ Blocked by: 23
 
 - 08:42 (maestro, mandato): começa já com o Cinzel, sobre o `ticket-23` (dele, em revisão): os três harnesses de verdade com o kit instalado na pasta de configuração de ensaio, uma sessão de cada, modelos baratos, pela fila; o Codex depois das 12h15. Junção depois do 23.
 - 2026-10-17 08:50 (Cinzel): peguei o 24 (`claimed`), sobre o `ticket-23`. Costuras ao maestro: `../etapas/costuras-24-Cinzel.md`.
+
+- 08:43 (maestro, mandato): costuras do Cinzel aceitas (`../etapas/costuras-24-Cinzel.md`): harness aberto num repositório fora do hub; casa de ensaio no lugar do HOME (USERPROFILE) no Claude e no Copilot, `CODEX_HOME` no Codex; se um harness não seguir o HOME, troca pela variável dele e registra. Login copiado para a casa de ensaio nas condições do aval (hash antes e depois, apagar ao fim). Aceite = responder a palavra do ensaio; skill de marca e servidores MCP só registrados.
