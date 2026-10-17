@@ -351,3 +351,4 @@ nuvem.
 - 17:25: Brasa fora (`claude --resume f538f66e-6cb5-4a2d-bc3d-16815b8e0c68`); 22 evidência 22811cb; pedido de rodada curta no topo de etapas/retomada-Brasa.md (mandar ao Fiel quando religar).
 - 17:26: Cinzel fora (24 evidência 2000575; pedido ao Fiel em retomada-Cinzel.md). No canvas: Vela (25), Rebite, maestro.
 - 18:01: 25 noite (17:22-17:58): fase 5 VERDE; fase 7 travou 28 min (ponte do cliente presa no pipe dos serviços do 22; defeito da Vela); fase 4: base não desceu ao B de novo (diagnóstico quebrou em sintaxe PS). Vela conserta (~10 min) e roda Codex 1-3, depois 4 e 7. Decidido: se a 4 cair igual, para e religo a Brasa (replicação, 08) para diagnosticar; teto 20h.
+- 18:02: aviso do Rebite ao Lume caiu no PowerShell (44 juntado df6c2e5; docs 5ª leva f640bbd): reenviar ao religar o Lume.
