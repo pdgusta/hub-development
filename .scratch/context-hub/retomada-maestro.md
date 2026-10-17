@@ -164,3 +164,4 @@ nuvem.
 - 05:23: ronda; Trilho com a trava (Docker do 16); 1,2 GB livres. Pastas de %TEMP%: sem login; limpeza recusada pela permissão automática (fica para o Gustavo); ticket 36 publicado. Vela 43%: salvar no próximo ponto seguro.
 - 05:25: Vela limpa (17 em 96bddcb, 15/15); pega o 36 enquanto espera o Codex.
 - 05:26: 09 juntado (9453e3e), suíte pendente com a do 28; Cinzel limpo (10: fork 58c8504, hub f7a8358, sem Docker verde).
+- 05:33: Trilho terminou o Docker do 16 (trava à Brasa 05:20, fatias 3-7). Cinzel com o teste Docker do 10 escrito (b2d855e); fila: Brasa, Cinzel, Rebite (28+09), Trilho (Codex 15), Brasa (fatia 2 em hora quieta).
