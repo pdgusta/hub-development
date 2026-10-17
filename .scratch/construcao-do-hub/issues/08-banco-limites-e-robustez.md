@@ -33,3 +33,4 @@ Blocked by: 07, 06
 - 2026-10-17 05h40, Brasa: fatia 3 vermelha (5 falhas): o binário de base de 1 MiB não chegou ao B (provável EBUSY: gravado direto no hub, o CLI sai e ninguém o religava na espera). Consertos e0e0ecc/881acc7: os arquivos da fatia 3 entram prontos no hub (escritos fora e movidos); esperas da fatia 3 com o laço; bug do teste (`@($null).Count` = 1 dava PASSA ao ramo apagado sem ramo); registros dos CLIs guardados em `.local/logs-08`. Corredor cedeu a trava ao Trilho antes da fatia 4; retoma 4 a 7 e o 07; a 3 de novo depois.
 - 2026-10-17 06h16, Brasa: peguei a trava; corredor PID 230316, fatias 3 a 7 e o 07; cede à Vela depois da primeira.
 - 2026-10-17 06h22, Brasa: fatia 3 verde (10 PASSA). Trava cedida à Vela; faltam 4 a 7 e o 07.
+- 2026-10-17 06h30, Brasa: fatias 4, 5 e 6 verdes (5, 5 e 8 PASSA). Trava cedida ao Fiel; faltam a 7 e o teste do 07.

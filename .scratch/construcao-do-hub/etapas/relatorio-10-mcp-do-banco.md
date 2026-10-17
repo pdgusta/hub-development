@@ -77,9 +77,9 @@ fork.
 
 | Rodada | Resultado | Log (`etapas/logs/`) |
 |---|---|---|
-| 1 (05:49) | **30 PASSA, 4 FALHA, todas do teste.** (a) três casos "o initialize começa pela cabeça": o `AGENTS.md` do hub de ensaio tem CRLF, e o teste esperava `"# Context hub\n"`; a cabeça veio certa (`# Context hub\r\n`). (b) "as duas versões ficam no banco": 1 folha. O par gravou uma linha nova no fim; o cliente, com a mesma base, gravou outra linha nova no mesmo lugar. A resposta foi "conflito: releia e refaça", mas o sincronizador do LiveSync fundiu as duas mudanças sozinho, como no caso 4b do 09. Conserto do teste (6095213): a cabeça aceita `\r?\n`; o par grava a linha e depois a muda, e o cliente, com a versão velha, muda **a mesma linha**. Nenhum contêiner sobrou | `10-docker-1.log` |
+| 1 (05:49) | **28 PASSA, 4 FALHA, todas do teste.** (a) três casos "o initialize começa pela cabeça": o `AGENTS.md` do hub de ensaio tem CRLF, e o teste esperava `"# Context hub\n"`; a cabeça veio certa (`# Context hub\r\n`). (b) "as duas versões ficam no banco": 1 folha. O par gravou uma linha nova no fim; o cliente, com a mesma base, gravou outra linha nova no mesmo lugar. A resposta foi "conflito: releia e refaça", mas o sincronizador do LiveSync fundiu as duas mudanças sozinho, como no caso 4b do 09. Conserto do teste (6095213): a cabeça aceita `\r?\n`; o par grava a linha e depois a muda, e o cliente, com a versão velha, muda **a mesma linha**. Nenhum contêiner sobrou | `10-docker-1.log` |
 | 09 de novo (05:51) | **21 PASSA, saída 0**, com o fork do 10 e as três instâncias no `.env` | `10-docker-2.log` |
-| 2 (06:12) | **34 PASSA, saída 0**. As duas de escrita: o cliente com a versão velha ouve "conflito", as 2 folhas ficam no banco, e relida a nota, o cliente grava; a resposta avisa que o conflito segue aberto. Nenhum contêiner sobrou | `10-docker-3.log` |
+| 2 (06:12) | **32 PASSA, saída 0**. As duas de escrita: o cliente com a versão velha ouve "conflito", as 2 folhas ficam no banco, e relida a nota, o cliente grava; a resposta avisa que o conflito segue aberto. Nenhum contêiner sobrou | `10-docker-3.log` |
 
 ### Sem Docker, na suíte comum
 
@@ -132,8 +132,14 @@ e ia ao banco sem frontmatter, e pelo MCP ninguém a completa depois.
   - os testes Docker do 09 e do 10 mandam o texto já com o `updated` de hoje. Sem isso, o texto gravado diferia do
     mandado, e a comparação com o disco falharia;
   - o do 10 ganhou o caso "nota de inbox sem frontmatter chega ao disco completada".
-- **Upstream:** unitários 272/1 e e2e local 36/7, iguais à base; tipos sem erro novo. O Docker da rodada 2 fica com o
-  Fiel, com a trava.
+- **Upstream:** unitários 272/1 e e2e local 36/7, iguais à base; tipos sem erro novo.
+- **Revisão da rodada 2: PASSA** (Fiel, ~06h40). Docker com a trava, 06h29–06h34, com o fork do 10:
+  - o 10 deu **33 PASSA**: os 32 da rodada anterior mais a inbox completada (`etapas/logs/revisao-10-r2-docker.log`);
+  - o 09 deu **21 PASSA** (`revisao-10-r2-docker-09.log`);
+  - nenhum contêiner sobrou;
+  - e2e do fork 14/14.
+
+  A leitura do Fielzinho fica pendente.
 
 ## Uso de harness e login
 

@@ -104,9 +104,9 @@ Corredor destacado `.local/fatias.ps1` (aval do maestro, ~04h10):
 | 1 | nada com ponto nem `local: true` chega ao banco, na varredura de partida e com o CLI rodando | verde (rodada 03h37, 14 PASSA) |
 | 2 | 51 MiB viaja (60 na primeira versão; baixado pela memória da máquina, maestro 05h20); 201 MiB não viaja, não entra no banco e fica identificável | PREENCHER |
 | 3 | colisão de binário: a mais nova nas duas pastas; a perdida num ramo apagado, recuperada byte a byte antes e depois da compactação | verde (06h20, 10 PASSA: a base chegou em 33 s; a mais nova nas duas pastas em 6 s; ramo apagado nos dois bancos; recuperada byte a byte antes e depois da compactação). A 1ª tentativa (05h25) caiu na base gravada direto no hub |
-| 4 | conflito de texto aberto; retrato em dia | PREENCHER |
-| 5 | o kit de novo não muda nada (arquivos do kit, contêiner, replicação, PID) | PREENCHER |
-| 6 | laço: nada caído, nada a fazer; CLI morto; CLI morto e CouchDB fora; nada se perde | PREENCHER |
+| 4 | conflito de texto aberto; retrato em dia | verde (06h24, 5 PASSA) |
+| 5 | o kit de novo não muda nada (arquivos do kit, contêiner, replicação, PID) | verde (06h26, 5 PASSA: os dois pares) |
+| 6 | laço: nada caído, nada a fazer; CLI morto; CLI morto e CouchDB fora; nada se perde | verde (06h27, 8 PASSA: CLI religado; CouchDB e CLI religados e o sync retoma nos dois sentidos em 4 s) |
 | 7 | retrato com a replicação parada | PREENCHER |
 
 A primeira rodada (todas as fatias, 03h37) foi parada pelo Claude Code por falta de memória na máquina aos 18 min, na

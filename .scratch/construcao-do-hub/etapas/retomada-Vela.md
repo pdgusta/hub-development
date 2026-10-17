@@ -310,3 +310,4 @@ node --test agents/code/test/05-frontmatter.test.mjs
 - 06h25 (17): real Claude+Copilot 4/4 (06:22-06:24, com a trava; devolvida à Brasa). Evidência c629ae5. Relatório etapas/relatorio-17-vigia-nas-telas.md escrito. Falta: Codex depois das 06:58 (fila; trava), merge do 16 quando entrar, Fiel, Rebite.
 - 06h25 (36): rodada 1 do Fiel VOLTA (parecer-36-Vela.md): a limpeza em uncaughtException apagava as pastas no meio. Conserto (sem commit ainda): só limpa nesses eventos antes do primeiro teste (marca no beforeEach da raiz; o before da raiz roda até na queda do carregamento). 36-pasta-de-ensaio 8/8. 5b90550: 176/176 sem sobra; rodada 2 pedida ao Fiel. Não mexer na worktree.
 - 06:28 (36): rodada 2 PASSA; Rebite avisado. 36 encerrado do meu lado. Próximo: Codex do 17 depois das 06:58 (fila/trava).
+- 06:38: trava oferecida pelo Trilho; recusada (Codex só depois das 06:58), passada à Brasa. Pedir a vez de novo depois das 06:58.

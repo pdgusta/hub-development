@@ -159,3 +159,6 @@ Docker 28+09 armado em segundo plano: parte sozinho quando a trava do Trilho sum
 10 r2 (fork 1e86ad1, hub a40ec84): conserto conferido no código; e2e fork 14/14. Docker na fila (item 6). 36 r2 (5b90550) pedido.
 36 r2: PASSA. Vela avisada.
 Docker do 10 r2 pronto: bash etapas/logs/fiel-docker-10.sh (na minha vez; ao soltar, avisar o próximo da fila).
+Maestro: Docker do 10 entra primeiro entre fatias da Brasa; Brasa avisada; ao soltar, devolver a ela.
+10 r2: PASSA (Docker 33 + 21 PASSA). Trava passada ao Trilho 06h35. Cinzel avisado.
+16 r1 (Trilho, aa70e98): pedido recebido; Fiel sozinho.

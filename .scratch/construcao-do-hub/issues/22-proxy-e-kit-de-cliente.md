@@ -18,3 +18,5 @@ Blocked by: 10, 12
 
 ## Comments
 - 2026-10-16 23h10 (integrador, Rebite): lição do ticket 12 (parecer do Fiel, `etapas/parecer-12-Trilho.md`): `agents/skills/busca/iniciar.ps1` não passa `--allowed-host`; quando a busca for servida pelo proxy, o Host observado precisa entrar (spec, Worker 3). O servidor da busca também faz `GET registry.npmjs.org/.../latest` a cada partida.
+
+- 06:38 (maestro): abre com o 10 juntado (9cc878b); vai ao primeiro construtor livre (provável: o Trilho, depois do 16).

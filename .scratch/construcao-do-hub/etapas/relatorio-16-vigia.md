@@ -1,6 +1,6 @@
 # Relatório do ticket 16: vigia, passada, estado e notificação (Trilho)
 
-Rascunho de 2026-10-17 ~06h. Falta a 4ª rodada do Docker (fila, item 4, a partir de 06:58).
+2026-10-17 06:40. Pronto para revisão.
 
 ## Estado
 
@@ -59,7 +59,9 @@ Rascunho de 2026-10-17 ~06h. Falta a 4ª rodada do Docker (fila, item 4, a parti
   - 1ª rodada (05h): 6 falhas (achados 1 a 3, base da colisão antes do hub inteiro replicar).
   - 2ª (05:14, `logs/trilho-16-docker-2.log`): 10 passam; forja do ramo apagado com 409, sem dados.
   - 3ª (05:40, `logs/trilho-16-docker-3.log`): 12 passam; o daemon apagou, o `recuperar` não achou (achados 4 a 6).
-  - 4ª: a rodar.
+  - 4ª (06:35, `logs/trilho-16-docker-4.log`, ramo aa70e98): **tudo passou** (16 casos). O daemon apagou o ramo
+    perdedor (sem forja); o `recuperar` gravou `inbox/foto-da-vigia.recuperado-3.png` com os bytes da versão perdida;
+    o original fica; a cópia do banco e os contêineres saem.
 
 ## O que espera o 08 e o 10
 

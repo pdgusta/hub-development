@@ -39,3 +39,20 @@ pendente).
 1. O verificador fica no cache de `import`: um `frontmatter.mjs` novo no hub pede religar o MCP (escrito no relatório).
 2. Os caminhos `/banco/mcp` e `/banco-escrita/mcp` do spec ficam para a faixa 10 (proxy): decisão (a) do maestro.
 3. A instância do cliente grava no mesmo banco; a separação é só o token (escrito no relatório).
+
+# Rodada 2 — Fiel — 2026-10-17 ~06h40
+
+Fork ticket-10 1e86ad1; hub ticket-10 a40ec84.
+
+## Veredito: PASSA
+
+- Conserto: o write, o edit e o move gravam o `novoTexto` do `analisar` e respondem "Completado pelo esquema:
+  <campos>". O write e o edit passam `mudado` = agora; o move não, e o `type` passa a ser o do destino.
+- Fork `test/hub.e2e.test.ts` com `HUB_TESTE_HUB`: 14/14 (Fiel), com os 4 casos novos.
+- Docker com a trava (Fiel, 06h29–06h34, `HUB_MCP_BANCO_DIR` = worktree do fork do 10):
+  - `10-mcp-banco.test.ps1`: 33 PASSA, 0 FALHA, "ticket 10: tudo passou". São os mesmos casos da rodada 1 do Cinzel
+    mais "nota de inbox sem frontmatter chega ao disco completada (Completado pelo esquema: type, title, status,
+    created, updated)". Log `etapas/logs/revisao-10-r2-docker.log`.
+  - `09-mcp-banco.test.ps1` com o fork do 10: 21 PASSA (`revisao-10-r2-docker-09.log`).
+  - Nenhum contêiner sobrando; árvores limpas.
+- Ressalvas da rodada 1 seguem. A leitura do Fielzinho fica pendente.
