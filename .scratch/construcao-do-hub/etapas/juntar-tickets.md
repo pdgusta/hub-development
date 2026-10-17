@@ -27,6 +27,10 @@ pedir uma junção.
    - Teste que chama harness de verdade (`codex exec`, `claude -p`, `copilot -p`), copia login ou sobe Docker: rode só
      se a árvore juntada difere, nos arquivos dele, da que o revisor testou (`git diff ticket-NN HEAD -- <pasta>`);
      se é idêntica, não rode e escreva o porquê. Docker só em `127.0.0.1`, nomes `hub-ensaio-*`, apagados ao fim.
+   - Vermelho num teste que o ticket juntado não toca (a máquina está com pouca memória e a suíte inteira pesa): rode o
+     arquivo que falhou sozinho três vezes e a suíte de novo com `--test-concurrency=1`. Os dois verdes: mantenha a
+     junção, grave o log em `etapas/juncao-NN-suite-falha-*.log` e avise o dono do teste. Qualquer um vermelho: trate
+     como teste vermelho (abaixo).
    - Teste vermelho: se o commit de junção é o seu e acabou de nascer, desfaça com `git reset --hard ORIG_HEAD`;
      avise o construtor e o maestro com a saída.
 4. **Resolva o ticket**: em `issues/NN-*.md`, `Status: resolved` e um comentário (data, hora, "integrador", hash da
