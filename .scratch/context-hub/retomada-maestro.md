@@ -378,3 +378,4 @@ nuvem.
 - 19:13: Fiel VOLTA parcial do 25 (fase 7 não rodou harness; evidência sobrescrita); consertos fc6b10c, dac76e6, f6a0f21. Ordem: fase 7, fase 4, Codex 2, numa subida se der; nada pesado começa depois de 19h45.
 - 19:21: 24 RESOLVIDO (suíte 359: 345/14/0; 56cd23a); 22 com a evidência do Codex. Só o 25 aberto (e o 26 do Gustavo). Vela com a trava (fases 7, 4, Codex 2).
 - 19:39: 25: fases 7 (Claude+Copilot, de verdade), 4 (Claude+Copilot) e 2 do Codex VERDES antes de 19:45 (B convergiu em 218 s). Rodada 2 do Fiel em 4628138. Decidido: sem Codex nas fases 4-7 (Para rever); observação do par novo no ticket 26.
+- 19:49: 25 PASSA r2 no Fiel (com ressalvas) e juntado (ca62332); suíte desde 19:50, fim ~20:23.
