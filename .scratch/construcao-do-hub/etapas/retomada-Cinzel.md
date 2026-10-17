@@ -24,6 +24,16 @@ Leia antes: `etapas/regras-da-construcao.md` (inteiras), o ticket do momento e e
   - Ressalvas: o `move_note` com conflito na origem não diz que o destino já foi gravado; o passo 05 remonta um build
     velho mas não religa o MCP que já roda (o código velho segue rodando).
   - A sonda dele: `etapas/logs/sonda-09-fiel.e2e.test.ts`.
+- Consertos adiantados (05:00), fora dos ramos em revisão, sem Docker ainda:
+  - Fork: worktree `C:/Projetos/hub-mcp-banco-wt/conserto-09`, ramo `ticket-09-conserto` d2a5a40 (node_modules e
+    lib/livesync-commonlib são junções para o fork; não comitar). `outcome` com `before`: é conflito quando aparece folha
+    que não estava antes nem é a nossa; `move_note` com conflito ou recusa na origem diz que o destino já foi gravado.
+    Dois casos novos no `versao.e2e.test.ts` (simultânea: pelo menos uma diz conflito; move com origem velha). Tipos
+    iguais à base.
+  - Hub: worktree `C:/context-hub-wt/conserto-09`, ramo `ticket-09-conserto` ca17738: `Start-McpBanco` religa quando o
+    `dist/main` é mais novo que o processo; caso novo no `09-mcp-banco.test.ps1`. Sem Docker 1 PASSA.
+  - Com o parecer: se pedir esses consertos, `git merge --ff-only ticket-09-conserto` em cada `ticket-09`, rodar as
+    costuras A e B com a trava, pedir a volta. Apagar as duas worktrees de conserto no fim.
 - Próximo: o parecer do Fiel, e então os consertos (até duas voltas). Depois do "passa", avisar o Rebite:
   `maestri ask "Rebite" "Cinzel: ticket 09 passou na revisão, ramo ticket-09 (hub) e ticket-09 (fork hub-mcp-banco), testes ..., relatório ..., parecer ..."`.
 
@@ -43,8 +53,10 @@ Leia antes: `etapas/regras-da-construcao.md` (inteiras), o ticket do momento e e
     o campo `vistos`. Sem arquivo ou ilegível: "estado indisponível: <motivo>". Com `passada` de mais de 15 min, vai
     junto o aviso "a vigia não roda desde <hora>"; sem `passada`, sem aviso.
 - O FastMCP cria cada sessão lendo `this.#options.instructions` (`node_modules/fastmcp/dist/chunk-DMSZ2FEE.js`,
-  linhas 1508 e 1680). Um getter no objeto de opções deve reler o `AGENTS.md` a cada sessão; conferir se o FastMCP
-  copia as opções.
+  linhas 1508 e 1680). Conferido (05:05): o construtor guarda `options` por referência; só copia (`...options`) quando
+  há `options.auth` sem `oauth`. O fork usa `serverOptions.authenticate` (`src/main.ts` 337 e 363), não `auth`: um
+  getter `instructions` em `serverOptions` (main.ts 326) é relido a cada sessão. O upstream já tem `READ_ONLY=true`
+  (main.ts 43; `registerTools` não registra as de gravação): base da instância de leitura.
 
 ## Armadilhas
 

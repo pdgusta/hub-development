@@ -1,1 +1,0 @@
-- Trilho (construtor), 2026-10-17 04:53: Docker do 16 (16-vigia.test.ps1, hub-ensaio-16-a/b, 5996/5997), worktree ticket-16. Apago ao fim.

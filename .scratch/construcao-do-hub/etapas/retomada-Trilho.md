@@ -1,91 +1,58 @@
-# Retomada do Trilho (construtor), gravada em 2026-10-17 ~01h20 (São Paulo)
+# Retomada do Trilho (construtor), gravada em 2026-10-17 ~05h40 (São Paulo)
 
-Leia antes: `etapas/regras-da-construcao.md` (inteiras), os tickets 12, 13 e 15 (Comments) e os relatórios deles. Responda em pt-BR, frases curtas. Sem
-subagentes. Maestro = "Claude Code"; revisor = "Fiel"; integrador = "Rebite".
+Leia antes: `etapas/regras-da-construcao.md` (inteiras; regras novas: até um subagente leve e até três Haiku 5.5 para QA
+simples; suíte inteira só na junção, pelo Rebite; fila do pesado em `etapas/fila-pesada.md`), o ticket 16 e o 15
+(Comments), `etapas/costuras-16-Trilho.md`. Responda em pt-BR, frases curtas. Maestro = "Claude Code"; revisor =
+"Fiel"; integrador = "Rebite"; outros construtores: Brasa (08), Vela (28), Cinzel (09, 10).
 
-## Onde estou (2026-10-17 ~01h20, São Paulo)
-- Tickets 12 e 15: juntados (integracao). Ticket 13 (gemini pronto e desligado): ramo ticket-13, worktree
-  C:/context-hub-wt/ticket-13, com integracao 57e85cf juntada (merge 6bfb506). Relatório etapas/relatorio-13-gemini.md.
-  Commits: f8b8769 (teste do 12 pelo índice), 32e77b2 (gemini.env e iniciar.ps1 -Gemini, 4 testes com dublê),
-  95e37b7 (teste único feito: 62 pedidos ao Google; contêiner parado de novo).
-- eb7c941: o teste do 13 fecha todos os dublês. Suíte 172 passam, 8 pulados, 0 falham. Merge de integracao 57e85cf (6bfb506). Revisão do 13 PEDIDA ao Fiel em 2026-10-17 ~02h05 (HEAD 6bfb506); esperar o parecer em etapas/parecer-13-Trilho.md.
-- Fiel PASSOU o 13 (rodada 1); passado ao Rebite em 2026-10-17 ~02h05. Próximo: Codex do 12 e do 15 na vez da trava (Brasa, Vela, depois eu).
-- Ticket 35 (aval sem parecer registrado): ramo ticket-35, worktree C:/context-hub-wt/ticket-35, commits 140417a d65b18a 0b01cd9, teste do acervo 21/21. Falta: suíte comum com a trava, revisão do Fiel, Rebite. Relatório etapas/relatorio-35-avais.md. O Codex do 12 e do 15 tem prioridade quando a trava vier.
-- 2026-10-17 ~03h15: Codex do 12 PASSOU com a search aprovada (0ea1016, evidência 3faad20). Codex do 15 falhou: usou a read do MCP. Maestro decidiu A: só a search nos três (34ed657 no ticket-12; no ticket-15 cherry-pick 46e44d2 e c1b6133, mais 3bc8c8b no teste do 15). Falta: com a trava, real do 12 e do 15 nos três (HUB_HARNESS_REAL=1, sem HARNESSES, --test-concurrency=1), commits de evidência, rodada do Fiel do 12 e do 15, Rebite. Depois: suíte e revisão do 35, então o ticket 33.
-- 2026-10-17 ~03h40: real do 12 nos três PASSOU (evidência 8558abe). 15: Claude e Copilot passaram (evidência no ticket-15); Codex no limite de uso até 06:58. Falta: Codex do 15 depois das 06:58 (HARNESSES=codex, com a trava), commit de evidência, Fiel do 12 e do 15, Rebite. Enquanto isso: suíte e revisão do 35.
-- 2026-10-17 ~04h20: 12 juntado (3c24d68). Ticket 33: ramo ticket-33, worktree C:/context-hub-wt/ticket-33, commits 4323d0c aea27ff 07e6b92, testes do 27 verdes; falta suíte e revisão. Fila da trava em etapas/fila-pesada.md (a Brasa avisa); na minha vez: suíte do 35 e do 33; depois das 06:58, Codex do 15.
-- 2026-10-17 ~04h40: 35 e 33 PASSARAM no Fiel e foram ao Rebite. Só falta o Codex do 15 depois das 06:58 (HARNESSES=codex, trava pela fila), commit de evidência, Fiel do 15, Rebite.
-- 2026-10-17 ~05h30: ticket 16 (vigia): worktree C:/context-hub-wt/ticket-16, costuras aceitas (etapas/costuras-16-Trilho.md, com as respostas do maestro e da Brasa). Feito: passada (tudo em ordem, conflito pelo caminho do ls do leitor, replicação parada >15 min, outro par sem resposta, notificação só quando piora, copia-diaria), teste agents/code/test/16-vigia.test.mjs 6/6 (dublês HTTP e CLI falso em agents/code/test/vigia/). Falta: vigia recuperar (receita da Brasa), SKILL.md, leitor da vigia no kit (HUB_VIGIA_LEITOR_DB), ponta a ponta Docker pela fila (dois pares E2EE do ensaio do 07, portas 5996/5997), relatório, revisão. Depois do 08: binário descartado, 200 MiB, sincronizador parado, gerador a cada passada; depois do 10: estado_do_hub. Codex do 15 às 07:00 tem prioridade.
-- Pendente: o ponta a ponta do Codex no 12 e no 15 (limite de uso até 01:34). Aviso agendado para 01:40 (pode ter
-  se perdido no /clear: conferir a hora e seguir).
+## Fechados nesta sessão
+12 (rodada 3, só a search nos três harnesses), 13, 33 e 35: juntados e resolvidos (integracao 33b817a).
 
-## Falta (próximo passo exato)
-1. Ler o parecer do Fiel do 13 (etapas/parecer-13-Trilho.md) e aplicar consertos; depois do passa, avisar o Rebite.
-2. Codex (depois das 01:34; é harness de verdade: trava pesada em etapas/trava-pesada.md antes, apagar ao fim):
-   no ticket-12 (git merge integracao antes), HUB_HARNESS_REAL=1 HARNESSES=codex node --test --test-concurrency=1
-   agents/code/test/ponta-a-ponta/12-busca.test.mjs; no ticket-15 (worktree C:/context-hub-wt/ticket-15, merge de
-   integracao antes), o mesmo com 15-leitura.test.mjs. Um commit só de evidência em cada ramo (evidencia-NN/codex e os
-   hashes); uso de login no relatório de cada um; rodada curta do Fiel dos dois; aviso ao Rebite (ele junta e comenta).
-3. Se o Codex do 15 falhar: a leitura por PowerShell não caiu no adaptador (leiturasDoShell em
-   agents/code/hooks/leitura/leitura.mjs); conserto no ramo ticket-15.
+## Em aberto
+### A. Ticket 15: falta só o Codex de verdade (prioridade depois das 06:58)
+- Worktree `C:/context-hub-wt/ticket-15`, ramo `ticket-15`. Claude e Copilot já passaram (evidência 7ad8dee). O
+  Codex bateu no limite de uso ("try again at 6:58 AM").
+- Pegar a trava pela fila (entra entre fatias da Brasa; ela solta se eu estiver esperando). Antes: `git merge
+  integracao` no ramo (o 12 r3 já está lá; os cherry-picks 46e44d2/c1b6133 têm o mesmo conteúdo).
+- `cd C:/context-hub-wt/ticket-15; HUB_HARNESS_REAL=1 HARNESSES=codex node --test --test-concurrency=1
+  agents/code/test/ponta-a-ponta/15-leitura.test.mjs` (log em `etapas/logs/`). Conferir `evidencia-15/hashes-codex.json`
+  (`apagado: true`, configs iguais; `.claude.json` muda pelas sessões abertas, só registro) e que não há chave na
+  evidência. Commit só de evidência. Seção "Rodada de 2026-10-17" do `etapas/relatorio-15-aviso-de-leitura.md`.
+  Rodada do Fiel do 15 (o que mudou: 46e44d2, c1b6133, 3bc8c8b e as evidências) e, depois do passa, o Rebite.
 
-## Regras novas a lembrar
-- Trava pesada (regras): Docker, suíte inteira, indexação da busca, npm install, harness de verdade: conferir
-  etapas/trava-pesada.md (se menos de 30 min, esperar), criar com nome/o quê/hora, apagar ao fim. Suíte com
-  --test-concurrency=1. Teste só do próprio arquivo dispensa a trava.
-- FreeLLMAPI: contêiner freellmapi-freellmapi-1 (docker start/stop, nunca criar), memória livre >= 2 GB antes. Uso do
-  dia: docker exec com node e better-sqlite3 em /app/server/data/freeapi.db (MSYS_NO_PATHCONV=1 no Git Bash).
-- Script .ps1 sem [CmdletBinding()] não recusa opção desconhecida (vai para $args).
+### B. Ticket 16: vigia (claimed; código feito, falta o ponta a ponta com Docker passar)
+- Worktree `C:/context-hub-wt/ticket-16`, ramo `ticket-16`, de integracao 33b817a; HEAD ff0f362.
+- Feito: `agents/skills/vigia/` (`vigia.mjs` com `passada` e `recuperar`, `notificar.ps1`, `recuperar.ps1` pela
+  receita da Brasa, `SKILL.md`); `gravarPassada` em `agents/code/bin/lib/vigia.mjs` (itens da vigia com
+  `fonte: 'vigia'`, `vistos`, `piorou`); kit: `HUB_VIGIA_LEITOR_DB` e `HUB_VIGIA_OUTRO_PAR_URL` no `04.env.modelo` e o
+  leitor no `Install-ParBanco`. Conserto do 12 em commit separado b4e7272 (a skill da busca não cita a `read`): citar
+  no relatório.
+- Testes: `node --test agents/code/test/16-vigia.test.mjs` 8/8 (dublês HTTP, CLI falso em `agents/code/test/vigia/`).
+  Ponta a ponta: `pwsh -NoProfile -File agents/code/test/16-vigia.test.ps1` (Docker, hub-ensaio-16-a/b, 5996/5997,
+  pela fila; ao soltar a trava, avisar quem o maestro disser; limpar os contêineres).
+- Primeira rodada do Docker (05h20): 6 falhas, todas consertadas em ff0f362, a rodar de novo:
+  1. `HUB_OUTRO_PAR_URL` é o B visto de dentro do contêiner (host.docker.internal): a vigia usa
+     `HUB_VIGIA_OUTRO_PAR_URL` (no teste, `$ensaio.B.Url`).
+  2. `open_revs=all` responde em multipart sem `Accept: application/json` (vigia e teste consertados).
+  3. A base da colisão não chegava ao B em 60 s: o hub inteiro ainda replicava; o teste espera o A→B antes.
+  4. O JSON do `info` do CLI vem entre linhas de registro: a vigia pega o bloco de `{` a `}` em linhas próprias.
+  5. "O daemon apagou o ramo perdedor" falhou, talvez só pelo item 2. Se falhar de novo, o teste forja fiel (receita da
+     Brasa) e segue; dizer no relatório se foi forjado. A Brasa ainda não confirmou no Docker que o daemon apaga.
+- Depois de verde: relatório `etapas/relatorio-16-vigia.md` (feito, achados acima, Docker, combinado com o Cinzel,
+  conserto do 12, o que espera o 08 e o 10), comentário no ticket, revisão do Fiel, Rebite **só com 08 e 10 resolvidos**
+  (o Rebite junta depois). Entram quando juntados: cenários do 08 (binário descartado na passada, 200 MiB, sincronizador
+  parado, gerador de exclusões a cada passada, item `fim-da-resposta`) e o `estado_do_hub` real do 10 (Cinzel).
 
-## Achados (vão para o relatório)
-1. **Caminho curto do Windows** (`GUSTAV~1.DEL`): o vigia de arquivos aborta o servidor na primeira mudança
-   ("Assertion failed: !_wcsnicmp(filename, dir, dirlen)", libuv `src\win\fs-event.c`). Conserto no `iniciar.ps1`
-   (realpathSync.native por `node -p`). O teste usa o `%TEMP%` curto de propósito.
-2. **Vigia perde nota logo depois da partida**: gravando 20 notas em pastas novas logo que o MCP responde, 8 ficaram
-   fora (medição de depuração); com 300 ms entre gravações, nada se perdeu. O `reindex` incremental recupera.
-   Remédio: `relatorio.mjs --consertar` (sugerir ao maestro: a vigia, faixa 7, roda isso a cada passada). Intermitente
-   no teste (perdidas 0 nas últimas rodadas).
-3. **Cabeçalho quebrado entra no índice no reindex**: o gray-matter guarda o texto em cache; na segunda leitura passa
-   vazio. Provado: `m(t)` lança, `m(t)` de novo devolve `{}`. O relatório lista a recusada com `no_indice`.
-4. **Índice guarda caminho em NFD** (`busca-por-paráfrase.md`); comparar sempre em NFC.
-5. Sem a lista do gerador, a busca leria `inbox/.rascunho-oculto.md` e a pasta `local: true` (provado por mutação);
-   `.secrets/` e `.maestri/` saíam só pelo `.gitignore`. A ferramenta não ignora arquivo com ponto sozinha.
-6. O servidor faz `GET https://registry.npmjs.org/obsidian-hybrid-search/latest` na partida (checagem de versão);
-   `rerank: true` baixaria um modelo de ~570 MB (não usamos).
-7. Download (liberado pelo maestro): `npm install` do obsidian-hybrid-search 0.16.2, 261 pacotes, 538 MB em
-   node_modules, ~1 min; os scripts de instalação (better-sqlite3, onnxruntime-node, protobufjs) rodaram apesar do aviso
-   `allow-scripts` do npm 11. Modelo arctic já estava em `~\.cache\huggingface\Snowflake` (313 MB), nada baixado.
-
-## Falta (próximo passo exato)
-1. `git -C C:\context-hub-wt\ticket-12 merge integracao` e rodar `node --test "agents/code/test/*.test.mjs"` (o glob
-   não desce em `ponta-a-ponta/` nem `provas/`) e as duas suítes do 12.
-2. Respostas do maestro (2026-10-16 22h23): (a) as **linhas de registro do MCP de busca nos três harnesses entram no
-   12**, formato de cada harness tirado da documentação oficial com o trecho citado, no molde dos fragmentos do 14
-   (`agents/code/hooks/guardas/fragmentos/*.json`) e do 27; (b) o **aceite com harness real entra no 12**, atrás de
-   `HUB_HARNESS_REAL=1` (ver `agents/code/test/harness-real.mjs` do 29): confere que o harness chamou a busca e devolveu
-   o caminho certo, sem julgar a redação. Login de ensaio pela regra (copiar, hashes antes/depois, apagar, registrar).
-3. `agents/skills/busca/SKILL.md` (ferramenta `search`, modos, `relatorio.mjs`; a busca é a porta) e
-   `agents/code/kit/par/env/03.env` com `HUB_MCP_BUSCA_URL=http://127.0.0.1:3939/mcp`.
-4. Relatório `etapas/relatorio-12-busca.md` (feito, achados, downloads, medidas, usos de login); comentário no ticket.
-5. Revisão: `maestri ask "Fiel" "Trilho: ticket 12 pronto para revisão no ramo ticket-12 (HEAD <hash>), relatório
-   <caminho>"`. Depois do passa, avisar o Rebite.
+## Decisões desta sessão
+- Piora = item sobe de nível em relação à passada anterior; item novo conta como `ok`; desce e volta a subir notifica
+  de novo (maestro, no ticket 16).
+- Estado velho: o `estado_do_hub` (Cinzel, 10) devolve o JSON e o aviso "a vigia não roda desde <hora>" com passada de
+  mais de 15 min; tira `vistos`.
+- Só a `search` do hub-busca nos três harnesses (12 r3, opção A do maestro).
 
 ## Armadilhas
-- **Barra invertida some em heredoc** (bash e `python - <<EOF`): `'\n'` vira quebra real. Use o Edit para trechos com `\`.
+- Guarda de segredo: comando com o texto `.env` em padrão de grep é recusado inteiro (heredoc junto se perde).
+- Barra invertida some em heredoc do bash/python: use o Edit para trechos com `\`.
+- `maestri ask` para recruta ocupado fica na fila dele: conferir com `maestri check`.
+- Dublê HTTP no próprio processo do teste: chamar a vigia com `execFile` (assíncrono), nunca `spawnSync`.
 - Write num arquivo existente exige Read antes.
-- `before()` do node:test roda antes do fim do módulo: constantes usadas nele vêm antes (TDZ).
-- Outro construtor pode rodar testes no `%TEMP%` ao mesmo tempo: não apagar `hub-ensaio-*` em massa.
-- `timeout` do bash não mata o `node` filho do `pwsh`; no teste, `taskkill /T /F /PID <pid que abri>`.
-- No `pwsh`, `\"` dentro de argumento para `node -e` quebra; use aspas simples dentro de aspas duplas.
-
-## Comandos
-```
-cd C:\context-hub-wt\ticket-12
-$env:HUB_BUSCA_OHS = 'C:\Projetos\bancada-busca\ohs\node_modules\obsidian-hybrid-search'   # só leitura, opcional
-node --test agents/code/test/12-busca.test.mjs        # ~3-4 min
-node --test agents/code/test/12-kit-busca.test.mjs    # ~2 min, sem HUB_BUSCA_OHS
-node --test "agents/code/test/*.test.mjs"
-```
-
-## Scratchpad
-Só depuração descartável (`dbg*.mjs`, `hub-dbg`, `ohs-lock`); o lock já está no repositório. Os achados estão acima.

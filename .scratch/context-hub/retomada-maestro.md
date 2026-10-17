@@ -149,3 +149,4 @@ nuvem.
 - 04:47: ronda; Rebite com a trava (suíte 33/35 desde 04:37); 28 da Vela na rodada 3 do Fiel (Docker na fila depois do 16); Cinzel 44% e Trilho 41%: pedidos para salvar; 3,4 GB livres.
 - 04:48: Cinzel limpo; leu a retomada (09 em revisão, 10 com costuras).
 - 04:54: 35 e 33 resolvidos (33b817a), suíte 199/0. Ressalvas do 33 ficam no radar (caminho de rede solto no texto não avisa; link em código em linha alerta; //host conta como rede). Trilho com a trava (Docker do 16).
+- 05:06: Docker do 16: 6 falhas na 1ª rodada, consertadas (ff0f362). Trilho limpo; fila: Fiel (28+09), Brasa (08), Trilho (16 de novo; Codex do 15 a partir de 06:58).

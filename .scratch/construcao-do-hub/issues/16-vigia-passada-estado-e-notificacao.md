@@ -28,3 +28,4 @@ Blocked by: 08, 10
 - 2026-10-17 ~04h50 (Trilho): pego (claimed). Worktree C:/context-hub-wt/ticket-16, ramo ticket-16, de integracao 33b817a. Costuras propostas em etapas/costuras-16-Trilho.md.
 
 - 04:26 (maestro, decidido pelo mandato; o spec deixava "piora" em aberto, faixa 7): **piora = algum item sobe de nível em relação à passada anterior; item novo conta como "ok" antes** (então item novo acima de ok notifica). Sem repetição enquanto nada sobe; um item que desce e volta a subir notifica de novo. Lugar: `agents/skills/vigia/` (spec, "Onde mora o código": a vigia com `vigia recuperar` é skill). Costuras do Trilho aceitas (`etapas/costuras-16-Trilho.md`).
+- 2026-10-17 ~05h40 (Trilho): código da vigia feito (ff0f362, 16-vigia.test.mjs 8/8). Docker 1ª rodada: 6 falhas, consertadas em ff0f362, a rodar de novo pela fila. Estado em etapas/retomada-Trilho.md e etapas/costuras-16-Trilho.md.
