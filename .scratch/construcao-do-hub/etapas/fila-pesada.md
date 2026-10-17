@@ -4,8 +4,8 @@ Quem solta a trava avisa o primeiro da fila (`maestri ask "<nome>" "trava livre,
 Quem pega a trava se tira da fila. Ordem pelo caminho crítico; o maestro reordena. Portas 5996/5997 são de vários
 testes (09, 16): limpe os contêineres ao soltar.
 
-(trava: ver trava-pesada.md; Brasa desde 09:16, Docker do 22) — ordem a partir de 09:35:
-2. **Janela quieta** (o maestro conduz; plano na retomada do maestro): todos salvam, os agentes menos Brasa e Vela
-   saem; Brasa roda o Docker do 22 (com os harnesses) e a fatia 1+2 do 08; Vela roda a 1ª rodada real do 25 (fases 1-3); depois o maestro religa todos. Começa quando o Trilho soltar a trava do 21.
-3. Rebite: suítes das junções que estiverem prontas
-4. Depois das 12h15 (Codex): Cinzel (11, depois 24) e Vela (18), um de cada vez
+(trava: ver trava-pesada.md) — ordem a partir de 10:15 (janela quieta feita: 22, fatia 2 do 08 e 25 fases 1-3 verdes):
+1. Rebite: suíte da junção do 16, depois a do 17 (quando juntar)
+2. A partir das 12h15 (Codex), um de cada vez: Cinzel (Codex do 11, depois do 24), Vela (Codex do 18, depois do 25
+   fases 1-3, ~5 min), Brasa (Codex do 22, pilha inteira ~12 min)
+3. Rebite: as demais junções (18, 21, 22, 11, 23, 24, 37), conforme passarem
