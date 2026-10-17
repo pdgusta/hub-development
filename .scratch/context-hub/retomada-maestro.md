@@ -162,3 +162,4 @@ nuvem.
 - 05:13: costuras do 17 aceitas (mod pela linha de status).
 - 05:17: 09 passa no Fiel (Cinzel leva ao Rebite; começa o código do 10). 28 passa. Fatia 2 do 08 derrubou a memória (2.900 → 513 MB): fatias 3-7 primeiro; a 2 com 51 MiB numa hora quieta. Fiel achou 1.325 pastas hub-ensaio-* em %TEMP% (testes que não apagam): varrendo.
 - 05:23: ronda; Trilho com a trava (Docker do 16); 1,2 GB livres. Pastas de %TEMP%: sem login; limpeza recusada pela permissão automática (fica para o Gustavo); ticket 36 publicado. Vela 43%: salvar no próximo ponto seguro.
+- 05:25: Vela limpa (17 em 96bddcb, 15/15); pega o 36 enquanto espera o Codex.
