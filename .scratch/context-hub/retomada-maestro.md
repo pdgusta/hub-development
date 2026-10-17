@@ -44,7 +44,7 @@ Por isso o diário abaixo registra cada evento com hora.
 - Proxy de MCP que repasse o `instructions` (achado do 22).
 - Acervo de referências (futuro): vídeos em motion como referência de estilo. Primeiro item:
   https://youtu.be/mZ27vUoOEB0 ("I Bet Nobody Has Ever Explained the Backend Ecosystem Like This Before", Cloud X
-  Berry). Só referência visual de motion; explorar o tema depois do 25 (Gustavo, 2026-10-17 ~11h30).
+  Berry). Só referência visual de motion. **Backlog sem gatilho**: opção, não compromisso (Gustavo, 2026-10-17 ~11h30).
 
 ## Plano da fatia 2 do 08 — FEITO 09:52, verde (Gustavo, 2026-10-17 ~09h30: "no momento oportuno pause tudo e deixe menos agentes")
 
