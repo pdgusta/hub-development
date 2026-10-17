@@ -1,7 +1,7 @@
 # 19: Roteamento de skills
 
 Type: task
-Status: ready-for-agent
+Status: claimed
 Etapa: 8 (skills e acervo)
 Blocked by: 04
 
@@ -16,3 +16,5 @@ Blocked by: 04
 - [ ] usar uma skill vira linha no registro
 
 ## Comments
+- 2026-10-16 ~21h55 (maestro): passado à Vela depois do 27 (etapa 1 fechada). Primeiro commit: testes do 27 apagam as próprias pastas do TEMP; limpeza das `hub-ensaio-*` com mais de 2 horas.
+- 2026-10-17 (Vela): pego (claimed). Worktree C:/context-hub-wt/ticket-19, ramo ticket-19, de integracao 0a8e17f. Primeiro: limpeza das pastas de TEMP nos testes do 27.

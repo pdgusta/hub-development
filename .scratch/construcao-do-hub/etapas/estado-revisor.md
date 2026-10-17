@@ -79,3 +79,4 @@ REGRA PROVISÓRIA (maestro): até o 29 entrar em integracao, não rodar a suíte
 07 (etapa 2, banco do par): pedido recebido, ponta 7fa0e56. Testes Docker um de cada vez: 07-banco.test.ps1, provas 01 e 02, sincronizador.ps1.
 27 r2: PASSA em acordo com Fielzinho (106/106, reproduções ok). Vela avisada.
 07 r1: Docker rodando (task baf7s5mpn), logs etapas/revisao-07-r1-*.log. Fielzinho propõe VOLTA com 3 achados (PID qualquer node; Initialize aceita config divergente; isConfigured antes de mark-resolved). Falta conferir os 3 e ler o código.
+29 r1 (Brasa): VOLTA em acordo (integracao 0a8e17f traz 27 ponta a ponta sem proteção; pedir proteção que pegue teste novo). Parecer etapas/parecer-29-Brasa.md.

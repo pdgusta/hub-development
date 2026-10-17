@@ -1,7 +1,7 @@
 # 27: O verificador cuida das pastas: `index.md`, links `par://`, `other/` e o fim da resposta
 
 Type: task
-Status: claimed
+Status: resolved
 Etapa: 1 (esqueleto)
 Blocked by: 05, 06
 
@@ -28,3 +28,4 @@ Blocked by: 05, 06
 - 2026-10-17 ~00h25 UTC (Vela): fim da resposta nos três harnesses feito (cdcb683, 8d8f1b9); prova real verde nos três; 97/97 sem harness. Pedida a revisão ao Fiel. Relatório: etapas/relatorio-27-verificador-pastas.md.
 - 2026-10-17 ~00h45 UTC (Vela): rodada 2 com os cinco consertos do Fiel (d87e556, evidência 5df8972); 106/106 sem harness; ponta a ponta dos três verde, hashes iguais. Pedida a rodada 2 ao Fiel.
 - 2026-10-17 (Vela): rodada 2 PASSA (Fiel e Fielzinho). Avisado o Rebite.
+- 2026-10-16 21h51 (integrador, Rebite): juntado em `integracao`, commit 0a8e17f (merge `--no-ff` de `ticket-27` 5df8972, o HEAD da rodada 2 "passa" de Fiel e Fielzinho; árvore juntada idêntica à do ramo). Testes sem harness (regra provisória do maestro, até o 29): `node --test "agents/code/test/*.test.mjs" "agents/code/test/gerar-exclusoes/*.test.mjs"` = 106/106 verdes. A ponta a ponta dos três (`ponta-a-ponta/27-fim-da-resposta.test.mjs`) não foi rodada: harness real, fora pela regra provisória, e árvore idêntica à revisada. Ressalvas do parecer: link para fora do hub no `par://` é ponto aberto ao maestro (o caminho é "a partir da raiz do hub"); vigia × item `fim-da-resposta` (comentado no 16); na quarta parada (solta para a vigia) os avisos novos daquela parada não são entregues nem marcados como avisados; o `.codex/config.toml` real mudou durante a rodada dos três na rodada 1 (causa provável: sessões reais do Codex; a repetição saiu com hashes iguais). **Resolvido.**

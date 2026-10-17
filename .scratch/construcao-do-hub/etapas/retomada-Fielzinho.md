@@ -1,40 +1,65 @@
 # Retomada — Fielzinho
 
-Atualizada 2026-10-17. Revisor parceiro do Fiel. Planejamento C:/Projetos/context-hub; código C:/context-hub. Sem subagentes; não editar código/spec/tickets; nada global. pt-BR curto. Releia inteiros revisao-em-dupla.md e regras-da-construcao.md; maestri list. Fiel fecha e responde ao construtor.
+Atualizada em 2026-10-17. Revisor parceiro do Fiel. Planejamento em C:/Projetos/context-hub; código em C:/context-hub.
+Respostas em pt-BR, curtas. Sem subagentes; não editar código, spec ou tickets; nada global. Ao retomar, leia inteiros
+revisao-em-dupla.md e regras-da-construcao.md e rode maestri list. Fiel fecha o veredito e responde ao construtor.
 
-## Duas revisões agora
+## Pendente: ticket 07, Brasa, rodada 1
 
-### 07 — Brasa, rodada1
+Ramo ticket-07, worktree C:/context-hub-wt/ticket-07, HEAD 7fa0e56e04fa30f2236f34b6b68ccffca13cf822. Na revisão,
+integracao 8d1d785 era ancestral; agora integracao avançou para 0a8e17f com o27. Parecer próprio:
+etapas/parecer-Brasa-fielzinho.md. **VOLTA independente; acordo ainda pendente.**
 
-Ramo ticket-07, worktree C:/context-hub-wt/ticket-07, HEAD7fa0e56e04fa30f2236f34b6b68ccffca13cf822; integracao8d1d785 ancestral, limpa. Leitura independente concluída, **VOLTA**, três achados no parecer etapas/parecer-Brasa-fielzinho.md. Enviados por maestri ask Fiel (sessãoexec36961 ainda esperando; Fiel já confirmou recebimento em nova mensagem). Docker somente Fiel:07-banco,prova01,prova02,sincronizador06. Logs novos prometidos em etapas/revisao-07-r1-*.log. Não li parecer dele.
+Três achados enviados ao Fiel por maestri ask; ele confirmou recebimento e ainda vai conferir:
+1. Get-PidSincronizador aceita qualquer node no PID salvo; Stop pode matar outro processo e Start não subir o daemon.
+   Reproduzido com node inofensivo próprio, encerrado pelo pai. Nenhum processo alheio tocado.
+2. Initialize-Dispositivo aceita isConfigured:true mesmo com banco errado e cifra/ofuscação desligadas, apesar do env cifrado.
+3. isConfigured salvo antes de mark-resolved; após falha na aceitação, segunda chamada retorna sem repetir a aceitação.
+   CLI dublê local provou uma chamada mark-resolved em duas tentativas.
 
-Achados reproduzidos semDocker:
-1.Get-PidSincronizador aceita outro node pelo PID/nome e Stop pode matar alheio. Usei node inofensivo próprio, encerrado pelo pai; nenhum processo alheio tocado.
-2.Initialize-Dispositivo retorna por isConfigured:true com banco errado/encrypt:false/ofuscação:false apesar envCifra:true.
-3.isConfigured salvo antes mark-resolved; falha na aceitação deixa próxima chamada retornar sem aceitá-lo. CLI dublê local injeta falha, mark-resolved chamado só1vez em2tentativas.
-Parser7arquivosPS e passo real WhatIf com hashes iguais, saída0. Reproduções em temp próprias apagadas finalmente. Logs daBrasa lidos:24PASSA,17PASSA+2VE,12PASSA,14PASSA, todos saída0. NãoexecuteiDocker. Limites/laço/retrato são08, não cobrar07. Senha da replicação não comparada fica observação, não conserto novo.
-Próximo: ler logs próprios doFiel quando avisar; discutir3achados e registrar acordo.
+Verificações próprias: parser dos sete arquivos PowerShell alterados, sem erros; passo real -WhatIf sem mudar hashes;
+reproduções focadas sem Docker, temporários próprios apagados em finally. Logs da Brasa conferidos:24PASSA,
+17PASSA+2VÊ,12PASSA,14PASSA, todos saída0. Limites/laço/retrato são do08. Não cobrar no07.
 
-### 27 — Vela, rodada2
+**Docker só Fiel**:07-banco,prova01,prova02,sincronizador06. Logs prometidos em etapas/revisao-07-r1-*.log.
+Última leitura parcial do log07:WhatIf e subidaA/B passaram; replicaçãoA em running falhou(estado vazio),B passou.
+Não é resultado final. Próximo passo: receber logs/diagnóstico e avaliação dos três achados; registrar acordo.
+Não reenviar o pedido igual. Não li parecer do Fiel para substituir a análise própria.
 
-Novo pedido doFiel recebido enquanto07roda. Ramo ticket-27, worktree C:/context-hub-wt/ticket-27, HEAD5df8972d1677a37f4df7c38156ddf094812c68b9, limpa, integracao8d1d785 ancestral. Diff8d8f1b9..5df8972 e relatório atualizado lidos; cinco consertos parecem atendidos. **Não li parecer novo doFiel.**
-Teste seguro rodando: node --test "agents/code/test/*.test.mjs" agents/code/test/gerar-exclusoes/gerador.test.mjs, sessãoexec29744. Não repetir: coletar resultado. Esperado106/106 (relatório). Ainda não gravei rodada2 no parecer; próximo passo coletar resultado, registrar revisão dos5consertos em etapas/parecer-Vela-fielzinho.md e conversar comFiel.
-Evidência nova dos3harnesses lida sem rodar/importar: marca,devolve .secrets,solta semfalta, Copilot continuacao:true. Registro inclui faltas/avisos. hashes-claude-codex-copilot.json:8hashes iguais,3pastas apagadas. Evidência é de falta, não aviso isolado; testes semharness cobrem aviso pelo canal.
-Consertos:r2 protege nomes; semarquivos retorna semCLI; avisos entram emdevolução informativa semgastarconta e registro; URIError tratado porlink e subprocesso caído devolvido; par://.secrets recusado. Fora dohub permanece ressalva aomaestro, acordo darodada1.
+## Ticket 29, Brasa, rodada 1: encerrada em VOLTA
 
-## Regras de testes
+Ramo ticket-29, worktree C:/context-hub-wt/ticket-29, HEAD 02667615efb76a291b5839f0c7770f9d15dffe22.
+Parecer próprio separado do07: etapas/parecer-29-Brasa-fielzinho.md. Fiel fechou em etapas/parecer-29-Brasa.md.
+Acordo VOLTA nos dois consertos:
+1. Meu: incorporar integracao0a8e17f e proteger também ponta-a-ponta/27-fim-da-resposta.test.mjs. Na ponta integrada,
+   ele apaga evidência no topo e chama três harnesses sem flag. O29 antigo só cobre03/14. Incluir27 na prova sem flag.
+2. Fiel, aceito: prova sem harness deve detectar chamada a harness fora da proteção; não depender só de nomes fixos.
 
-Nova regra: não rodar ponta-a-ponta/ nem provas/03-codex-hooks/. Até29entrar, nunca globrecursivo de todosostestes. Docker/harness sóFiel. .mjs de ponta a ponta roda aoimportar. Rootglob agents/code/test/*.test.mjs + gerador específico é seguro.
+Teste próprio na árvore antiga29, com flag removida do env do filho:86testes,83passam,3pulados,saída0,84,2s.
+SHA256 de todos os arquivos versionados antes/depois:nenhum alterado. Log no ramo:
+.local/revisao-fielzinho-29-sem-variavel.log. Nenhuma execução com HUB_HARNESS_REAL=1. Evidências opt-in da Brasa
+lidas:11/11,hashes14 iguais,pastas/login apagados. Sessões de ask e de teste já encerradas. Sem acordo pendente.
+Próximo passo: aguardar correção da Brasa ou outro pedido do Fiel.
 
-## Anteriores
+## Ticket 27, Vela, rodada 2: PASSA em dupla
 
-27r1:VOLTA nos5consertos, acordoFiel registrado em parecer-Vela-fielzinho.md.14Trilho passou emdupla, parecer-Trilho-fielzinho.md.05,02,01,06 passaram; pareceres nas subpastas de etapas. Todososachados/evidências emarquivos. Não há decisão exclusiva nochat.
+HEAD 5df8972d1677a37f4df7c38156ddf094812c68b9, worktree C:/context-hub-wt/ticket-27. Integrado em0a8e17f.
+Cinco consertos aceitos:nomes protegidos,turno sem escrita,avisos ao agente/registro,URI e queda do subprocesso,
+par:// para .secrets. Parecer próprio etapas/parecer-Vela-fielzinho.md; fechamento do Fiel etapas/parecer-Vela.md.
+Testes próprios106/106,saída0,126s. Evidência real lida:três devolvem e soltam;Copilot continuação;8hashes iguais;
+3pastas apagadas. Não executei harness. Fora do hub fica ressalva ao maestro. Sem acordo pendente.
 
-## Atualização posterior
+## Regras e armadilhas
 
-27 rodada2: testes próprios concluídos106/106, saída0,126,0s. Parecer-Vela-fielzinho.md atualizado: PASSA independente. Pedido de acordo enviado aoFiel por maestri ask, sessão98049 pendente. Semnovo bloqueio; todosos5consertos aceitos. Nenhumharnessreal.
-07: log próprio doFiel lido parcialmente. WhatIf/subidaA/B verdes; replicaçãoAemrunning falhou(estado vazio),Bpassou. Não éresultadofinal. Registrar diagnóstico dele antes de fechar. Ramo07continua7fa0e56.
+- Até29 corrigido e integrado, não rodar glob recursivo da suíte em integracao:27 ainda chama harness sem flag.
+- No ramo29 revisado, a suíte inteira foi autorizada sem flag. Em qualquer revisão, **não ligar HUB_HARNESS_REAL=1**
+  sem pedido específico. Docker/harness só Fiel nas revisões atuais. .mjs de ponta a ponta pode executar ao importar.
+- Não importar testes para conferir sintaxe. Ler primeiro a proteção e os efeitos no topo.
+- integracao anda; registrar HEAD/base sem fazer merge pelo revisor.
+- mtime Windows pode ficar anterior a Date.now dentro do mesmo milissegundo: reproduções usam utimes explícito.
+- Maestri ask pode ficar esperando; não reenviar pedido igual. A resposta chega como nova mensagem.
+- Todos os achados e acordos estão nos pareceres. Nenhuma decisão depende só do chat.
 
-## Acordo 27 concluído
+## Revisões anteriores
 
-Fiel confirmou PASSA na rodada2, fechamento em etapas/parecer-Vela.md. Acordo registrado no parecer próprio. Sem pendência no27; aguardando somente07 (Docker e conferência dos três achados pelo Fiel).
+14 Trilho passou em dupla:etapas/parecer-Trilho-fielzinho.md.05,02,01,06 passaram; pareceres nas subpastas de etapas.

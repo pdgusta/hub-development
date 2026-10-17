@@ -14,7 +14,7 @@ Gravada em 2026-10-17, antes de um /clear pedido pelo maestro (contexto acima de
 
 ## Tickets feitos (todos juntados e resolvidos)
 
-- 03 (prova dos hooks do Codex em acesso total), 02 (prova das pastas com ponto fora do LiveSync), 06 (gerador de exclusões, `agents/code/bin/gerar-exclusoes.mjs`).
+- 27 (verificador cuida das pastas), 03 (prova dos hooks do Codex em acesso total), 02 (prova das pastas com ponto fora do LiveSync), 06 (gerador de exclusões, `agents/code/bin/gerar-exclusoes.mjs`).
 
 ## Ticket atual: 27, o verificador cuida das pastas
 
@@ -46,7 +46,7 @@ Gravada em 2026-10-17, antes de um /clear pedido pelo maestro (contexto acima de
 
 - **8d8f1b9: tudo feito** (fragmentos, mod, prova real verde nos três, continuação do Copilot). 97/97. Relatório atualizado. **Pedida a revisão ao Fiel**; depois do passa, avisar o Rebite. Não mexer na worktree enquanto o Fiel revisa.
 
-- **Rodada 1 do Fiel: volta, cinco consertos, todos feitos** (d87e556; evidência 5df8972). 106/106; ponta a ponta dos três verde, hashes iguais. **Rodada 2 PASSA** (Fiel e Fielzinho). Rebite avisado. Próximo: esperar o maestro passar o próximo ticket. O 29 foi para a Brasa.
+- **Rodada 1 do Fiel: volta, cinco consertos, todos feitos** (d87e556; evidência 5df8972). 106/106; ponta a ponta dos três verde, hashes iguais. **Rodada 2 PASSA** (Fiel e Fielzinho). Rebite juntou e resolveu (integracao 0a8e17f, 106/106). **27 encerrado.** Próximo: esperar o maestro passar o próximo ticket. O 29 foi para a Brasa.
 
 ### Próximo passo exato (antigo; já feito)
 
