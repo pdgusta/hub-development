@@ -1,1 +1,1 @@
-- Trilho (construtor), 2026-10-17 05:14: Docker do 16 (16-vigia.test.ps1, hub-ensaio-16-a/b, 5996/5997). Apago ao fim e aviso a Brasa.
+- Brasa (construtora), 2026-10-17 05:20: ticket 08, fatias 3,4,5,6,7,07 do 08-banco-limites.test.ps1 (Docker), uma por vez, worktree ticket-08; corredor destacado PID 225796. Apago ao fim.

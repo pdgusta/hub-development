@@ -50,7 +50,27 @@ Leia antes: `etapas/regras-da-construcao.md` (inteiras), o ticket do momento e e
   getter `instructions` em `serverOptions` (main.ts 326) é relido a cada sessão. O upstream já tem `READ_ONLY=true`
   (main.ts 43; `registerTools` não registra as de gravação): base da instância de leitura.
 
+## Ticket 10: andamento (05:40)
+
+- 09 passou (rodada 2) e já está em `integracao` 9453e3e; Rebite avisado.
+- Fork: worktree `C:/Projetos/hub-mcp-banco-wt/ticket-10`, ramo `ticket-10` (de `ticket-09` d2a5a40). `node_modules`
+  e `lib/livesync-commonlib` são junções para o fork principal: soltar com `cmd /c rmdir` antes de remover a worktree.
+  O fork principal fica em `ticket-09`.
+- Hub: worktree `C:/context-hub-wt/ticket-10`, ramo `ticket-10` de `integracao` 9453e3e. Nada feito ainda.
+- Costura A sem Docker: `test/hub.e2e.test.ts` (modo local, VAULT_PATH = hub de ensaio, HUB_ROOT igual), rodar com
+  `node --import tsx --test test/hub.e2e.test.ts`. Feito, verde: cabeça e troca (c182dcc), cabeça indisponível e
+  regra curta (98a407e), `estado_do_hub` (commit seguinte). Código em `src/hub.ts`; getter `instructions` em main.ts.
+- Falta: (1) instância de leitura no A; (2) frontmatter (import dinâmico de
+  `HUB_ROOT/agents/code/bin/lib/frontmatter.mjs`, recusa com a mensagem da guarda de disco; AGENTS.md e SKILL.md
+  passam; vale para nota nova); (3) hub: passo 05 com as três instâncias (8796/8797/8798, `.env` com
+  `HUB_MCP_BANCO_LEITURA_*` e `HUB_MCP_BANCO_CLIENTE_*`, `HUB_ROOT`), teste B com Docker e cifra (os de versão de novo
+  com a cifra: o 09-mcp-banco.test.ps1 já usa o par cifrado do 07); (4) relatório, revisão.
+- Combinado com a Vela (17): ver o comentário de 05h25 no ticket 10.
+
 ## Armadilhas
+
+- `%TEMP%` é caminho curto (`GUSTAV~1.DEL`): o `fs.watch` do modo local cai (assert do libuv). Nos testes, `realpath`.
+- `src/*.ts` do fork tem CRLF: editar com o Edit, nunca com python em modo texto.
 
 - Rode a trava e a fila: `etapas/trava-pesada.md` e `etapas/fila-pesada.md`. Ao soltar, avise quem o maestro mandar.
 - O passo 05 só remontava o fork quando faltava o `dist`. Depois de mudar o `src`, rode `npx tsup` no fork, ou

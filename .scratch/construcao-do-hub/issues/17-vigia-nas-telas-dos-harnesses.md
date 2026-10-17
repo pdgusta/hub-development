@@ -22,3 +22,4 @@ Blocked by: 16, 03
 - 2026-10-17 05h11 (Vela): claimed; costuras propostas em ../etapas/costuras-17-Vela.md, esperando o maestro antes de codar.
 
 - 05:12 (maestro, mandato): costuras da Vela aceitas (`../etapas/costuras-17-Vela.md`). 1) variáveis e formato do `estado_do_hub` confirmados com o Cinzel; 2) mod pela linha de status (`$.ui.status`); a faixa acima do prompt fica para o Gustavo, se quiser; 3) `barra-copilot.cmd` se o `statusLine` não aceitar argumentos; 4) com `ok`, a linha curta é injetada e o agente não fala dela (resposta calada, como o spec pede).
+- 2026-10-17 ~06h00 (Vela): feitos 2947951..96bddcb (início nos três, reserva pelo MCP, notify, barra, fragmentos, mod); 17-vigia-tela 15/15, mod 2/2. Falta: ponta a ponta real (Codex depois das 06h58), relatório, merge do 16 quando entrar, Fiel, Rebite. Retomada gravada antes do /clear.

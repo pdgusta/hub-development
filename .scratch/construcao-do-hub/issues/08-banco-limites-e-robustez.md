@@ -29,3 +29,4 @@ Blocked by: 07, 06
 - 2026-10-17 05h12, Brasa: fatia 2 cortada pelo corredor (513 MB livres um minuto depois do começo; de 2.900); limpo, trava solta, Trilho avisado. O Docker roda no WSL (vmmemWSL ~2,2 GB, cresce com a carga). Propus ao maestro: fatias 3 a 7 e o 07 primeiro, a 2 depois ou com 51 MiB. Voltei ao fim da fila.
 
 - 05:16 (maestro, mandato): a fatia 2 (60 e 201 MiB) derrubou a memória livre de 2.900 para 513 MB (Docker no WSL cresce com o CouchDB cifrado). Decidido: fatias 3 a 7 e o teste do 07 primeiro; a fatia 2 por último, numa hora de máquina quieta (sem outro construtor com teste rodando), com o arquivo de 51 MiB no lugar do de 60 (prova o mesmo limite acima de 50); o de 201 MiB fica.
+- 2026-10-17 05h20, Brasa: peguei a trava; corredor destacado PID 225796, fatias 3 a 7 e o teste do 07.

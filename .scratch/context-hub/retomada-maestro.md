@@ -36,6 +36,11 @@ Por isso o diário abaixo registra cada evento com hora.
 - (técnica) Tickets de conserto publicados pelo maestro: 34 (roteamento), 35 (aval sem parecer). Tornar local faz
   `git rm -r --cached` (histórico guarda o antigo). Ticket 33 foi ao Trilho, não à Vela como dizia a opção.
 
+## Para o Gustavo, de dia (não bloqueia)
+
+- Apagar as ~1.325 pastas `hub-ensaio-*` antigas em `%TEMP%` (sem login dentro, conferido); a limpeza em massa pelo
+  maestro foi recusada pela permissão automática. Ticket 36 conserta os testes que as deixam.
+
 ## Leia nesta ordem
 
 Caminhos relativos a `C:\Projetos\context-hub\`.
@@ -156,3 +161,4 @@ nuvem.
 - 05:09: 28 juntado (ea6f353), suíte pendente; Rebite na fila depois do Trilho (o 28 não bloqueia ninguém; ordem mantida).
 - 05:13: costuras do 17 aceitas (mod pela linha de status).
 - 05:17: 09 passa no Fiel (Cinzel leva ao Rebite; começa o código do 10). 28 passa. Fatia 2 do 08 derrubou a memória (2.900 → 513 MB): fatias 3-7 primeiro; a 2 com 51 MiB numa hora quieta. Fiel achou 1.325 pastas hub-ensaio-* em %TEMP% (testes que não apagam): varrendo.
+- 05:23: ronda; Trilho com a trava (Docker do 16); 1,2 GB livres. Pastas de %TEMP%: sem login; limpeza recusada pela permissão automática (fica para o Gustavo); ticket 36 publicado. Vela 43%: salvar no próximo ponto seguro.

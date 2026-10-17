@@ -5,10 +5,13 @@ simples; suíte inteira só na junção, pelo Rebite; fila do pesado em `etapas/
 (Comments), `etapas/costuras-16-Trilho.md`. Responda em pt-BR, frases curtas. Maestro = "Claude Code"; revisor =
 "Fiel"; integrador = "Rebite"; outros construtores: Brasa (08), Vela (28), Cinzel (09, 10).
 
-## Agora (05:08)
-- Brasa com a trava desde 05:06 (08, fatias). Ao fim da fatia 2 ela solta e me avisa; eu rodo o Docker do 16 e aviso
-  a Brasa ao soltar (o corredor dela retoma sozinho).
-- 15: `git merge integracao` feito (3c8f8a6), sem conflito; teste do 15 sem harness real: pulado, ok.
+## Agora (05:23)
+- Docker do 16, 2ª rodada (05:14, log `logs/trilho-16-docker-2.log`): 10 passam; o daemon não apagou o ramo perdedor do
+  binário em 90 s e a forja deu 409 (Document update conflict) sem dados. Conserto 8e661db: retrato das folhas no
+  registro, forja relê e tenta 3 vezes, "daemon apagou" vira [INFO] (prova do 08), "ramo apagado forjado" é Confere.
+- Próximo: 3ª rodada do Docker entre fatias da Brasa (ela está com a trava desde 05:20, fatias 3-7). Ler o retrato
+  das folhas: se o ramo apagado vier sem `children` visível, a detecção da vigia tem o mesmo problema.
+- 15: `git merge integracao` feito (3c8f8a6); Codex depois das 06:58.
 
 ## Fechados nesta sessão
 12 (rodada 3, só a search nos três harnesses), 13, 33 e 35: juntados e resolvidos (integracao 33b817a).

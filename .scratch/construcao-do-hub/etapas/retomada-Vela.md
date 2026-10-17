@@ -256,3 +256,42 @@ node --test agents/code/test/05-frontmatter.test.mjs
   initialize antes, header mcp-session-id nos pedidos seguintes. O e2e do fork tem um parseSSE que cai para JSON.
 - Teste agents/code/test/17-vigia-tela.test.mjs; script agents/code/hooks/vigia/tela.mjs.
 - 05h15: 2947951 (início nos três) e 7a3c445 (reserva pelo MCP, node:http sem agente: o fetch deixava conexão viva e o node caía ao sair, asserção do libuv); 17-vigia-tela 10/10. Próximo: notify do Codex.
+
+## PRÓXIMO (gravado 2026-10-17 ~06h00, antes do /clear pedido pelo maestro, contexto 43%)
+
+- Encerrados nesta sessão: 34 (resolvido), 28 (rodada 3 PASSA, juntado: integracao ea6f353). O 09 passou ao Cinzel.
+- **Ticket atual: 17, vigia nas telas** (issues/17-vigia-nas-telas-dos-harnesses.md, Status claimed). Ramo ticket-17,
+  worktree C:/context-hub-wt/ticket-17, de integracao 9453e3e (com o 09). Costuras aceitas pelo maestro:
+  etapas/costuras-17-Vela.md (as quatro respostas: reserva pelo MCP com o Cinzel; mod = linha de status; .cmd só se
+  precisar: NÃO precisou; com ok, linha curta e agente calado).
+- Commits: 2947951 (início nos três), 7a3c445 (reserva pelo estado_do_hub do MCP), 754e269 (notify do Codex),
+  6b39f7a (barra), cb5c01b (fragmentos), 96bddcb (mod). Worktree limpa.
+- Peças:
+  - agents/code/hooks/vigia/tela.mjs: modos `inicio <claude|codex|copilot>`, `notify '<json>'`, `barra <claude|copilot>`,
+    todos com --hub. Regra do texto num lugar só (resumo() e linha()). Reserva por node:http sem agente (o fetch deixava
+    conexão viva e o node no Windows caía ao sair: asserção do libuv src\win\async.c); sem process.exit no fim
+    (process.exitCode = 0). notify: memória em <hub>/.local/vigia/notify-codex.json (assinatura = itens fora de ok com o
+    nível); só avisa com divergência e assinatura nova; falha do notificador não grava a assinatura. Notificador:
+    HUB_VIGIA_NOTIFICAR, senão <hub>/agents/skills/vigia/notificar.ps1 (vem com o 16). barra lê só o arquivo (sem MCP).
+  - agents/code/hooks/vigia/fragmentos/{claude,codex,copilot,codex-notify,copilot-statusline}.json ({{DIR}}, {{HUB}}).
+  - agents/code/mods/vigia/ (plugin vigia-do-hub): session.start + turn.start + $.clock.every(60 s) chamam
+    `tela.mjs barra claude` por $.process.run e põem em $.ui.status. hooks/vigia.test.ts (claude plugin test 2/2;
+    no kit de teste: mock.env, mock.clock, e hooks do teste devolvem { value: ... }; session.start devolve { cwd }).
+- Testes: `node --test agents/code/test/17-vigia-tela.test.mjs` 15/15; `cd agents/code/mods/vigia && claude plugin
+  validate . && claude plugin test .` 2/2.
+- Achado (fonte: app.js do @github/copilot-win32-x64 1.0.98, função da statusLine): no Windows o statusLine.command roda
+  com shell: true, cwd da sessão, JSON da sessão no stdin, limite 10 s; comando com argumentos funciona (sem .cmd).
+- **Falta (próximo passo exato):**
+  1. Ponta a ponta real: agents/code/test/ponta-a-ponta/17-vigia-tela.test.mjs no molde do 27/19 (comHarness,
+     HUB_HARNESS_REAL=1, HARNESSES=claude,copilot agora; codex depois das 06h58), com trava pesada e o aval de login
+     (HOME de ensaio, hashes, modelos baratos). Fragmentos de início instalados no HOME de ensaio; estado.json de
+     divergência no hub de ensaio: a resposta começa com o aviso; sem arquivo e sem MCP: "estado indisponível"; fora do
+     hub: nada. Evidência em evidencia-17/.
+  2. Relatório etapas/relatorio-17-vigia-nas-telas.md (escolhas: barra sem MCP; .cmd desnecessário; dois canais no
+     Codex; não verificados: toast do notify e statusLine na tela).
+  3. Quando o 16 entrar em integracao: git merge integracao e um teste sobre o estado.json que o `vigia passada` grava.
+  4. Testes do ticket e dos arquivos mexidos (a suíte inteira é do Rebite), Fiel, Rebite.
+- Regras novas desta sessão: suíte inteira só na junção (Rebite); até um subagente por vez (tarefa fechada e leve) e até
+  três Haiku 5.5 esforço médio só para tarefa simples ou QA; o Cinzel é o quarto construtor.
+- Armadilha repetida: heredoc do Git Bash come `\` (virou `\` e quebrou JS duas vezes): para texto com barra invertida,
+  usar o Write/Edit.

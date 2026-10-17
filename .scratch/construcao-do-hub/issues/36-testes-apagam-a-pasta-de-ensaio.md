@@ -1,0 +1,27 @@
+# 36: Os testes apagam a pasta de ensaio, também quando falham
+
+Type: task
+Status: ready-for-agent
+Etapa: infraestrutura de teste (fora da sequência)
+Blocked by: None (can start immediately)
+
+**What to build:** O Fiel achou 1.325 pastas `hub-ensaio-*` esquecidas em `%TEMP%` (2026-10-17 ~05h). Por prefixo:
+27=556, 05=394, 04=209, 05n=76, 14=36, 20=31, 19=17, mais algumas. A regra da construção diz que teste que cria pasta em
+`%TEMP%` apaga a sua no fim, mesmo falhando; esses testes não cumprem. Conserto: um ajudante comum de pasta de ensaio
+(cria e registra a limpeza com `t.after`/`after` do `node:test`, e `try/finally` nos `.ps1`) usado pelos testes que
+montam hub de ensaio, a começar pelos prefixos acima. Nenhuma pasta tem cópia de login (conferido pelo maestro).
+
+**Fonte:** aviso do Fiel; `../etapas/regras-da-construcao.md` ("Teste que cria pasta em `%TEMP%` apaga a sua no fim,
+mesmo falhando").
+
+**Blocked by:** None (can start immediately)
+
+- [ ] rodar os testes de 04, 05, 14, 19, 20 e 27 (inclusive com uma falha forçada) não deixa pasta `hub-ensaio-*` nova
+      em `%TEMP%`
+- [ ] os testes novos usam o mesmo ajudante
+- [ ] a suíte segue verde
+
+## Comments
+
+- 2026-10-17 05h20 (maestro): publicado pelo aviso do Fiel. As 1.325 pastas antigas continuam lá (nenhuma tem login; a
+  limpeza em massa foi recusada pela permissão automática e fica para o Gustavo). Dono: o primeiro construtor livre.
