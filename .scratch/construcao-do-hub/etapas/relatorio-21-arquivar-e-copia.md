@@ -1,10 +1,10 @@
 # Relatório do ticket 21: arquivar e cópia diária (Trilho)
 
-2026-10-17 ~08h10. Rascunho: falta o Docker (pela fila) e o 08.
+2026-10-17 ~08h10. Rascunho. ~09h40: conserto do EPERM (9ce2496); falta a 3ª rodada do Docker (pela fila) e o 16 resolvido.
 
 ## Estado
 
-- Ramo `ticket-21` (HEAD 4d7853c), worktree `C:\context-hub-wt\ticket-21`, de `integracao` 9cc878b com o
+- Ramo `ticket-21` (HEAD 9ce2496), worktree `C:\context-hub-wt\ticket-21`, de `integracao` 9cc878b com o
   `ticket-16` juntado (c36ece4), porque o item da cópia diária na vigia é do 16 (maestro, 07:31).
 - **Junção só com 08 e 16 resolvidos.** O que depende do 08 entra quando ele for juntado.
 - Costuras aceitas: `etapas/costuras-21-Trilho.md`.
@@ -46,11 +46,25 @@
    (4d7853c).
 2. O `montar.mjs` commita a pasta local do hub de ensaio (`initiatives/context-hub/labs`) no `main`: a cópia diária a tira
    do índice na primeira passada (caso de teste).
+3. **O rename da pasta dá EPERM com o sincronizador rodando** (Docker, 1ª rodada 08:05 e 2ª 09:05,
+   `logs/trilho-21-docker-1.log` e `-2.log`). Causa, provada num teste leve: o CLI observa o hub com o chokidar, que
+   abre um `fs.watch` em cada pasta; no Windows, um `fs.watch` numa **subpasta** bloqueia o rename da pasta-mãe; o da
+   própria pasta não bloqueia. Esperar não adianta (o CLI segura enquanto roda). O primeiro conserto (22abdd2, esperar
+   10 s e recusar "em uso") só mudou a mensagem.
+   - Conserto (9ce2496, com aval do maestro, 09h25): tenta o rename da pasta; com EPERM, move **arquivo por arquivo**
+     para a pasta nova (o `fs.watch` não impede mover arquivos) e apaga a árvore velha, vazia, por `rmdir` (o que alguém
+     gravar nela no meio fica, e a saída diz). Sem parar o sincronizador.
+   - Arquivo aberto por um editor sem partilha de apagar: o rename dele falha; espera até 10 s; depois **devolve o que
+     já tinha movido**, apaga o destino e recusa "em uso". Nada muda.
+   - **No meio da mudança, o outro par pode ver parte dos arquivos no lugar novo e parte no velho** (o CLI manda um
+     apagar e um criar por arquivo, como faria com o rename). **O fim é consistente**: o mesmo de um rename da pasta.
+   - O node abre arquivo partilhando o apagar: aberto pelo node, o arquivo se move. O teste segura o arquivo como um
+     editor (.NET, `FileShare.Read`).
 
 ## Testes
 
 - Sem Docker: `node --test agents/code/test/21-*.test.mjs`: conferir-cabeca 4, copia-diaria 4, limpar-arquivo 1,
-  arquivar 7. Com os afetados (04, 05, 05-nova-iniciativa, 20, 07-kit-sem-docker): 75/75.
+  arquivar 10 (em 9ce2496: pasta observada como pelo sincronizador; aberto por editor, devolve tudo). Com os afetados (04, 05, 05-nova-iniciativa, 20, 07-kit-sem-docker): 75/75.
 - Docker: `pwsh -NoProfile -File agents/code/test/21-arquivar.test.ps1` (hub-ensaio-21-a/b, 5996/5997): arquivar entre
   dois pares (a pasta chega ao B com o `archived_at`); recusa com a replicação parada; cópia com o remoto quebrado sai
   com erro e a passada seguinte da vigia notifica. A rodar, pela fila.

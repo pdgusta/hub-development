@@ -56,3 +56,23 @@ resolvidos.
 - `23-kit.test.mjs`: 14/14 (Fiel). Hashes das configurações reais e listagens das pastas globais iguais antes e
   depois; sem sobra em `%TEMP%`; árvore limpa.
 - Ressalva do desfazer para o 26: anotada pelo Cinzel.
+
+## Reabertura — 2026-10-17 ~10h55: **VOLTA** (achado do Fiel ao revisar o 24)
+
+Errei na rodada 2: não rodei o detector do 29. `node --test agents/code/test/harness-real.test.mjs` no ramo
+ticket-23 (f304e6c): **2 falhas**, "23-kit.test.mjs sem comHarness" (o teste sobe o app-server do Codex, uma das
+marcas do detector: `harness-real.test.mjs:19`), e o caso "sem HUB_HARNESS_REAL, os testes de harness aparecem
+pulados" também falha por isso. A suíte da junção ficaria vermelha.
+
+Conserto 2: conciliar o 23 com o 29 sem perder o teste da forma na suíte comum. A decisão do maestro (resposta 3:
+app-server sem modelo e sem login roda sem trava) pede uma exceção explícita e estreita no detector (só o app-server,
+sem login nem modelo, com o motivo), ou separar a parte do `hooks.state` num teste atrás do `comHarness`. Escolha do
+Cinzel, com o maestro se mexer no 29. Rodar `harness-real.test.mjs` junto.
+
+## Rodada 3 — 2026-10-17 ~11h10 (a419182): **PASSA**
+
+Conserto 2 feito: exceção `SO_APP_SERVER` no detector do 29, só para `23-kit.test.mjs`, com motivo; cai se o arquivo
+citar login ou harness com modelo. Teste novo da exceção. `harness-real.test.mjs`: 7/7 no ticket-23 e no ticket-24
+(e7d38ae) (Fiel). Árvore limpa.
+Ressalva: a exceção olha só o texto do arquivo de teste; o kit roda por `pwsh` (não importado), então um login que
+entrasse no `08-harnesses.mjs` não derrubaria a exceção. Hoje o kit não copia login (lido na r1).

@@ -117,6 +117,16 @@ O que a passada ganhou:
 - A ressalva do 08 sobre o `Restore-RamoApagado` sem `finally` não toca o `recuperar`: ele tem receita própria
   (`recuperar.ps1`), com `finally` que apaga a cópia e o leitor dela, e o Docker confere a cópia saindo.
 
+## Rodada final do Fiel (VOLTA por 1 conserto), feito em 0332466
+
+- **Texto resolvido virava "binário descartado"**: o LiveSync apaga o perdedor de um conflito de texto do mesmo jeito
+  (folha apagada com `path`). A passada agora só conta o caminho fora do `isPlainText` do LiveSync (`.md`, `.txt`,
+  `.svg`, `.html`, `.csv`, `.css`, `.js`, `.xml` e também `.canvas`, que está no fonte da commonlib e não estava no
+  parecer). Caso no teste sem Docker: uma `.md` e um `.canvas` com folha apagada não viram item. 19/19.
+  O `recuperar` e o `olhei` seguem aceitando qualquer caminho (recuperar a versão perdida de uma nota não faz mal).
+- Ressalva, sem conserto: `laco` e `exclusoes` notificam a cada ação (item novo acima de `ok`). Se o CLI cair muito (o
+  EBUSY do 08), sai um aviso por volta do laço que religou. Fica para o uso dizer se é ruído.
+
 ## O que espera o 08 e o 10
 
 - 08: resolvido e juntado; cenários ligados (acima). A fatia 2 do 08 (51 e 201 MiB pelos pares) segue pendente lá; aqui o

@@ -222,3 +222,5 @@ nuvem.
 - 09:07: 18 rodada 2 passa com ressalvas; 2 e 3 consertadas (f36df85), rodada curta; ressalva 1 aceita, rede vira ticket 37. 25: medidor, ponte e fases 1-3 em 1c30e48.
 - 09:08: preparo leve do 25 pronto (974d74d); 1ª rodada real (fases 1-3) na fila depois do 22.
 - 09:14: Docker do 16 tudo passou (20 casos), revisão final pedida. 21: rename bloqueado pelo watch do CLI numa subpasta; arquivar passa a mover arquivo por arquivo (aceito).
+- 09:19: ronda; Brasa com a trava (22, 09:16); Vela 44%, Cinzel 43%, Fiel 43%: salvar; 1,0 GB livres.
+- 09:24: 24: Claude e Copilot com harness real passaram (Codex às 12:15); 23 passou, espera bloqueios. Vela e Cinzel limpos; Cinzel pega o 37 até 12:15.

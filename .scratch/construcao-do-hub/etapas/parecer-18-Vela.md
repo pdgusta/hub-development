@@ -71,3 +71,8 @@ Veredito: **PASSA** (Fiel sozinho). Ressalvas 2 e 3 da rodada 2 feitas: `anotar`
 `<sessão>.gravados` (`appendFileSync`); a sessão é gravada por troca atômica; a marca de turno novo apaga a lista (a
 continuação do Copilot não). Sonda do Fiel repetida com 12 anotações em paralelo: 12 de 12, três vezes. `NotebookEdit`
 no matcher e no `anota`. 18, 27 e 14: 73/73. Árvore limpa. Ressalva 1 (shell) com o maestro.
+
+## Rodada curta de evidência — 2026-10-17 ~11h (31afe63, só evidência)
+
+**PASSA.** Real de novo no Claude e no Copilot, 2/2 (`logs/18-real-2.log`); a devolução veio pela lista do `anota`;
+`apagado: true` nos dois; o commit só mexe em `evidencia-18/`. Falta o Codex depois das 12h15 (rodada curta).

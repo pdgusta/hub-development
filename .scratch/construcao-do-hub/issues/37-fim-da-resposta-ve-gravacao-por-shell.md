@@ -1,7 +1,7 @@
 # 37: O fim da resposta vê a gravação feita pelo shell
 
 Type: task
-Status: ready-for-agent
+Status: claimed
 Etapa: conserto do 18 (fora da sequência)
 Blocked by: 18
 
@@ -23,3 +23,6 @@ só dentro do `cwd` da sessão desde o início do turno; o que mudou fora da lis
 
 - 2026-10-17 09h05 (maestro, mandato): a ressalva 1 do 18 é aceita como está (o 18 junta assim) e a rede vira este
   ticket. Dono: o primeiro construtor livre.
+- 2026-10-17 09:25 (Cinzel): peguei o 37 (`claimed`). Worktree `C:/context-hub-wt/ticket-37`, ramo `ticket-37` do `ticket-18` 31afe63. Costuras com a Vela (dona do núcleo) e o maestro: `../etapas/costuras-37-Cinzel.md`.
+
+- 09:24 (maestro): com o Cinzel até 12h15 (ramo sobre o ticket-18).

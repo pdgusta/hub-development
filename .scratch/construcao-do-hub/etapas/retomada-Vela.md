@@ -384,3 +384,49 @@ node --test agents/code/test/05-frontmatter.test.mjs
 - 10:50 (25): fila: 1ª rodada real do 25 depois do Docker do 22 da Brasa (item 3b); a Brasa avisa. Ao fim: mandar ao maestro a tabela de pico por fase (evidencia-25/resumo.md).
 - 11:00 (18): rodada curta PASSA em f36df85 (Fiel). Rebite avisado: junção só depois do 17 e do 16; faltam a repetição real Claude+Copilot (fila, depois do Cinzel) e o Codex depois das 12h15, em commits só de evidência com rodada curta.
 - 09:13 (relógio): CORREÇÃO: as linhas acima marcadas 09:02 a 11:00 tinham horas estimadas por mim, adiantadas; tudo aquilo aconteceu entre ~08:40 e 09:13. 09:13: trava pega pelo aval do Cinzel; real do 18 de novo (Claude+Copilot) rodando, log etapas/logs/18-real-2.log. Ao fim: avisar a Brasa.
+- 09:16 (18): real de novo 2/2 (09:14-09:16), evidência 31afe63; trava solta, Brasa avisada. Pedida rodada curta de evidência ao Fiel. Falta: Codex depois das 12h15.
+
+## PRÓXIMO (gravado 2026-10-17 09:20, antes do /clear pedido pelo maestro, contexto 44%)
+
+### Ticket 18 (retomada): passa; esperando evidência e junção
+- Ramo ticket-18, worktree C:/context-hub-wt/ticket-18 (integracao 9cc878b + ticket-17 3e8bbc8; NÃO juntei a integracao
+  e98a891 ainda). HEAD 31afe63 (evidência). Código: f36df85.
+- Rodadas do Fiel: 1 volta (o fim cobrava a nota de quem não gravou; raiz no núcleo do 27), 2 passa com ressalvas, curta
+  (f36df85) passa. Rebite avisado: junção só depois do 17 e do 16. Ressalva 1 (gravação por shell fora da lista) aceita
+  pelo maestro; virou o ticket 37.
+- Conserto no núcleo (vale para o 27): `fim-da-resposta.mjs <h> anota` no PostToolUse (Claude: fragmentos/claude.json
+  no settings, matcher Write|Edit|MultiEdit|NotebookEdit; Codex PostToolUse apply_patch; Copilot postToolUse
+  create|edit|apply_patch). Caminhos pelos ADAPTADORES da guarda do 14 (import dinâmico). Lista em
+  `<hub>/.local/fim-da-resposta/<sessão>.gravados` (appendFileSync, uma linha por caminho); sessão .json por troca
+  atômica; marca de turno novo apaga a lista. Ajudante de teste agents/code/test/gravacao.mjs.
+- Esperando: rodada curta de EVIDÊNCIA do Fiel em 31afe63 (pedida 09:17).
+- Falta: **Codex real depois das 12h15** (fila; junto com o do Cinzel): `cd C:/context-hub-wt/ticket-18 &&
+  HUB_HARNESS_REAL=1 HARNESSES=codex node --test --test-concurrency=1 agents/code/test/ponta-a-ponta/18-retomada.test.mjs`
+  com a trava; primeiro uso real do PostToolUse do apply_patch (se não disparar, o fim não devolve: investigar).
+  Commit só de evidência, relatório (seção Prova real), rodada curta do Fiel, avisar Rebite. Quando o 16 entrar:
+  `git merge integracao` no ramo (e o 17 antes).
+- Testes: `node --test agents/code/test/18-retomada.test.mjs agents/code/test/27-fim-da-resposta.test.mjs
+  agents/code/test/17-vigia-tela.test.mjs agents/code/test/19-roteamento.test.mjs agents/code/test/14-guardas.test.mjs`
+  (com as provas puladas e harness-real: 114 passam, 8 pulados).
+
+### Ticket 25 (junção e prova do hub inteiro): preparo leve pronto
+- Ramo ticket-25, worktree C:/context-hub-wt/ticket-25 (de integracao e98a891). Status claimed. HEAD 974d74d.
+- Costuras aceitas: etapas/costuras-25-Vela.md (as quatro: wsl --shutdown pelo corredor só com trava e docker ps vazio;
+  limite de memória só no ensaio, saiu por `docker update --memory 384m --memory-swap 384m` igual à Brasa no 22; busca
+  em fase separada; agora só o leve). Relatório etapas/relatorio-25-hub-inteiro.md.
+- Peças: ponta-a-ponta/25/medidor.ps1 (teste 25-medidor 4/4), 25/pares.ps1 (teste 25-pares-sem-docker 1/1),
+  ponta-a-ponta/harnesses.mjs (comum), ponta-a-ponta/25-hub-inteiro.test.mjs (fases 1 busca, 2 pares com guarda +
+  recebe + claro, 3 banco reiniciado; 4-7 todo), 25/corredor.ps1.
+- **Próximo:** a 1ª rodada real entra depois do Docker do 22 da Brasa (fila item 3b); a Brasa avisa. Lançar:
+  `Start-Process pwsh -WindowStyle Hidden -ArgumentList '-NoProfile','-File','C:/context-hub-wt/ticket-25/agents/code/test/ponta-a-ponta/25/corredor.ps1','-Fases','1,2,3','-Harnesses','claude,copilot'`
+  (o corredor cria e apaga a trava; status em etapas/logs/25-corredor.status, prova em 25-prova.log). Ao fim: mandar
+  ao maestro a tabela de pico por fase (agents/code/test/ponta-a-ponta/evidencia-25/resumo.md), avisar o próximo da
+  fila, consertar o que os passos com Docker da ponte pedirem (primeiro uso), preencher "Fica para a instalação" no
+  relatório.
+- Ainda fora (ressalva do 11): write_note pelos harnesses (registro do hub-banco vem com 11/23) e o MCP reconectando.
+
+### Armadilhas desta sessão
+- **Hora:** olhar `date` antes de escrever hora em retomada/ticket (escrevi horas estimadas e adiantadas; corrigido).
+- CRLF: troca por `node -e` não casa em arquivo CRLF (o 27 ponta a ponta); usar o Edit (ler antes).
+- `maestri ask` demora quando o outro responde direto: mandar em segundo plano.
+- 09:21 (18): rodada curta de evidência PASSA em 31afe63 (Fiel). Resta só o Codex depois das 12h15 (commit de evidência + rodada curta + aviso ao Rebite).

@@ -1,1 +1,1 @@
-- Vela (construtora), 2026-10-17 09:13: harness real do 18 de novo (Claude e Copilot), ponta-a-ponta/18-retomada, ~5 min. Ao fim, aviso a Brasa.
+- Brasa (construtora), 2026-10-17 09:16: ticket 22, Docker do proxy (hub-ensaio-22-a/b, 5996/5997, MCP 8796-8798) e os três harnesses como cliente; corredor destacado PID 241480. Apago ao fim.

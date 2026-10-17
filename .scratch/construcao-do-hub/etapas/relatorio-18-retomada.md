@@ -78,7 +78,12 @@ Rodadas:
 - Login: `.credentials.json` do Claude e os campos de login do Copilot copiados para `%TEMP%\hub-ensaio-18-*`; pastas
   apagadas (`apagado: true`); configurações reais iguais por hash (`hashes-claude-copilot.json`). Sem token na
   evidência (procura por `ghu_|gho_|sk-|refresh_token|access_token`). Modelos: haiku e claude-haiku-5.5.
-- **Codex: pendente**, depois das 12h15 (cota), junto com o do Cinzel.
+- **Claude Code e Copilot de novo, depois do conserto (f36df85), 2026-10-17 09:14–09:16: 2/2 verdes**
+  (`etapas/logs/18-real-2.log`; evidência 31afe63). A devolução saiu pela lista do `anota` (Claude pelo `PostToolUse` do
+  `settings.json`, Copilot pelo `postToolUse`); depois soltou "sem falta". `last_agent` igual à primeira rodada.
+  Sessão 2 com `ZEBRA-42` nos dois. Pastas apagadas, configurações reais iguais por hash, sem token na evidência.
+- **Codex: pendente**, depois das 12h15 (cota), junto com o do Cinzel. Primeiro uso real do `PostToolUse` do
+  `apply_patch`.
 
 ## Rodada 1 do Fiel: volta, 1 conserto (e1c5eac)
 

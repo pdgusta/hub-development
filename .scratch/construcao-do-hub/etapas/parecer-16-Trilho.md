@@ -34,3 +34,38 @@ Falta para os critérios:
    seja ok.
 3. O `recuperar` replica o banco inteiro para `<db>-recupera` a cada folha descartada. Com várias folhas, várias
    cópias inteiras. Pesa com o hub grande.
+
+## Rodada final (rodada 1) — 2026-10-17 ~10h50 (HEAD 280b778, com integracao e98a891)
+
+Veredito: **VOLTA**, por 1 conserto. Fiel sozinho (Fielzinho sem cota até 12h15; leitura pendente). As três ressalvas
+da leitura intermediária foram feitas (trava no `estado.json`, 401 vira `informa`, `recuperar` com uma cópia só).
+
+Conferido pelo Fiel:
+- `node --test agents/code/test/16-vigia.test.mjs`: 19/19 (Fiel). Árvore limpa.
+- Docker: não repeti (fila cheia, memória no limite). Li `logs/trilho-16-docker-8.log`, rodado pelo Trilho na mesma
+  ponta 280b778: "tudo passou" (20 casos), com binário descartado pelo caminho em claro, `recuperar` com os bytes da
+  versão perdida, o original mantido e a cópia do banco apagada, sincronizador parado, laço, lista de exclusões que
+  muda e religa, `estado_do_hub` real sem `vistos`, contêineres apagados.
+- Cenários do 08: `acima-do-limite` pelo `Get-AcimaDoLimite` consertado no 08 (forma longa, sem pastas locais);
+  Config Doctor pela versão da regra (decisão do maestro; não verificado com o Obsidian aberto, declarado).
+
+### Consertos
+
+1. **(Fiel) Conflito de TEXTO resolvido vira "binário descartado".** `descartados()` (`vigia.mjs` ~136-151) conta toda
+   folha apagada com `path` ao lado da viva. No fonte do LiveSync, o perdedor de texto é apagado pelo mesmo caminho do
+   binário: `resolveByDeletingRevision` → `deleteRevisionFromDB` → `deleteRevisionFromDBCore` → `db.delete(info, rev)`
+   (`livesync-commonlib`, `ServiceFileHandlerBase.js:636`), que é o `_deleted` sobre o documento inteiro do achado do
+   08. Isso acontece com texto quando os dois lados são iguais (`isSame`, `operations.ts:146-163`) e quando o Gustavo
+   escolhe uma versão na janela de conflito. A vigia então acusa "binário descartado em inbox/nota.md" como
+   `divergencia`, com notificação, até um `olhei`. O spec (faixa 7) pede o ramo apagado **de binário**.
+   - Conserto: só caminho que o LiveSync não trata como texto (`isPlainText`: `.md`, `.txt`, `.svg`, `.html`, `.csv`,
+     `.css`, `.js`, `.xml`; `livesync-commonlib/dist/string_and_binary/path.js:135`). Caso no teste sem Docker: folha
+     apagada com `path` de uma `.md` ao lado da viva não vira item.
+   - Não reproduzido no Docker (a resolução de texto não está no ensaio); achado pela fonte.
+
+### Ressalvas (não seguram)
+
+1. `laco` e `exclusoes` são `informa` novos a cada ação: pela regra de piora (item novo conta como `ok` antes), cada
+   religação do CLI pelo laço (ex.: o EBUSY do 08) e cada pasta local nova notificam. Pode virar ruído; rever com o
+   uso.
+2. A 5ª rodada Docker teve o registro sobrescrito (declarado).

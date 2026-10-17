@@ -161,3 +161,15 @@ e98a891 (log em `logs/23-testes-1.log`). Nenhuma pasta `hub-ensaio-23-*` nem `hu
 
 Testes: `23-kit.test.mjs` 14/14, ramo `ticket-23` f304e6c. Ressalva nova do Fiel para o 26: o desfazer
 para em `~/.claude.json` e `config.toml`, que o harness regrava; lá, desfazer por chave.
+
+## Rodada 3 (reaberto pelo Fiel: o detector do 29)
+
+O `harness-real.test.mjs` (ticket 29) acha pelo texto todo teste que chega a um harness (`app-server` é uma das marcas)
+e exige `comHarness`. O 23 sobe o app-server do Codex em toda passada do passo 08 (o hash dos hooks), então pôr só o
+`hooks.state` atrás do `comHarness` não basta: o teste inteiro iria para trás da variável e sairia da suíte comum.
+Conserto: uma exceção estreita no detector, `SO_APP_SERVER`, com o motivo (só `hooks/list`, sem modelo, sem login,
+sem cota; resposta 3 das costuras). A exceção cai se o próprio arquivo citar login ou harness que chama modelo
+(`CODEX_JS`, `COPILOT_JS`, `claude.exe`, `npm-loader`, `.credentials.json`, `auth.json`, `'exec'`). Teste novo no
+detector: a exceção aponta arquivo que existe, tem motivo, sobe mesmo o app-server e não cita login. Ramo `ticket-23`
+a419182: `harness-real.test.mjs` 7/7; `23-kit.test.mjs` sem mudança (14/14 na f304e6c). O `ticket-24` juntou
+(e7d38ae): detector 7/7.
