@@ -1,7 +1,7 @@
 # 16: Vigia: passada, estado e notificação
 
 Type: task
-Status: ready-for-agent
+Status: claimed
 Etapa: 6 (vigia)
 Blocked by: 08, 10
 
@@ -25,3 +25,6 @@ Blocked by: 08, 10
 - 2026-10-17 00:21 (maestro): decisão do Gustavo (rodada `acervo-do-maestro-tres-lacunas`, 3 A): a conferência do acervo grava um item no `estado.json` quando um catálogo cita peça que sumiu (ticket 31); a vigia o lê e mostra como os outros.
 
 - 04:23 (maestro, decidido pelo mandato de 2026-10-17): começa antes dos bloqueios, com o Trilho, sobre a ponta de `integracao` (o 07 já está lá): a passada, o estado por troca atômica, a notificação só quando piora, a citação pelo caminho decifrado e o recuperar. Os cenários que dependem do 08 (binário descartado, acima de 200 MiB, sincronizador parado, laço) e o `estado_do_hub` real (10) entram quando eles forem juntados (`git merge integracao` no ramo). Junção só com 08 e 10 resolvidos.
+- 2026-10-17 ~04h50 (Trilho): pego (claimed). Worktree C:/context-hub-wt/ticket-16, ramo ticket-16, de integracao 33b817a. Costuras propostas em etapas/costuras-16-Trilho.md.
+
+- 04:26 (maestro, decidido pelo mandato; o spec deixava "piora" em aberto, faixa 7): **piora = algum item sobe de nível em relação à passada anterior; item novo conta como "ok" antes** (então item novo acima de ok notifica). Sem repetição enquanto nada sobe; um item que desce e volta a subir notifica de novo. Lugar: `agents/skills/vigia/` (spec, "Onde mora o código": a vigia com `vigia recuperar` é skill). Costuras do Trilho aceitas (`etapas/costuras-16-Trilho.md`).

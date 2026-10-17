@@ -23,6 +23,7 @@ Por isso o diário abaixo registra cada evento com hora.
 
 ## Para rever com o Gustavo
 
+- (técnica) "Piora" da vigia (aberto no spec): item sobe de nível em relação à passada anterior; item novo conta como ok antes. Ticket 16.
 - (processo) O 16 (vigia) começou antes do 08 e do 10, sobre o 07; junção só depois deles.
 - (processo) A suíte inteira roda só na junção, pelo Rebite; o construtor roda os testes do ticket e dos arquivos mexidos. Fila do trabalho pesado em `etapas/fila-pesada.md`.
 
@@ -139,3 +140,4 @@ nuvem.
 - 04:19: ronda; Cinzel com a trava (Docker do 09, desde 04:09); Fiel revisando; todos ≤37%; 2,1 GB livres; nada a destravar.
 - 04:23: 35 (ef38e4d) e 33 (33b817a) juntados, falta a suíte; fila: Cinzel, Rebite, Brasa.
 - 04:25: 35 e 33 passaram no Fiel. Trilho começa o 16 (vigia) antes dos bloqueios, pelo mandato (08 e 10 entram por merge; junção só com eles resolvidos).
+- 04:27: costuras do 16 aceitas; 'piora' decidida pelo mandato (item sobe de nível; novo conta como ok antes).

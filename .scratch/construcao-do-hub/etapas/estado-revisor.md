@@ -141,3 +141,4 @@ Regra nova (maestro, ~04h): construtor roda só os testes do ticket e dos arquiv
 35 r1 (Trilho, ebae5ca) e 33 r1 (Trilho, 07e6b92): pedidos recebidos; Fiel sozinho (Fielzinho sem cota até 06h58).
 35 r1: PASSA (Fiel sozinho; 22/22). Parecer parecer-35-Trilho.md. 28 r2 pedido (2eec8e9) — na fila depois do 33; Docker espera trava (Cinzel).
 33 r1: PASSA com 3 ressalvas (Fiel sozinho; 37/37; sonda de 14 casos). Parecer parecer-33-Trilho.md.
+28 r2: VOLTA por 1 conserto (-Titulo perdido no Invoke-Cartao). 1-3 da r1 feitos. Docker na r3 (trava do Cinzel 04h09). Vela avisada.

@@ -93,3 +93,9 @@ O CLI falso ganhou `ls`, `rm` e `sync` (banco vazio), para o `-TornarLocal` sem 
 | 28-pastas-locais-sem-docker (pastas-locais-sem-docker.ps1) | 24 PASSA (vermelho antes: 11 falhas) |
 | Docker 28-pastas-locais.test.ps1 | o Fiel roda na rodada 2, com a trava |
 | suíte inteira | não rodada: pela regra nova (2026-10-17), só na junção, pelo Rebite. Em 2eec8e9 (com integracao 3c24d68): gerador + 04-esqueleto 21/21; 28 sem Docker e 07 sem Docker 2/2 |
+
+## Rodada 3 (conserto do parecer da rodada 2)
+
+Commit 5436cad. O `-Titulo` sumia sem aviso: `Invoke-Cartao @('marcar') + $(...)` está em modo de comando, e o `+` e o
+título caíam em `$args`. Agora a expressão vai entre parênteses. Teste (vermelho antes): `-Titulo 'Rascunhos da semana'`
+grava `title: "Rascunhos da semana"`. Sem Docker: 25 PASSA. As outras chamadas do script recebem uma lista literal só.

@@ -42,3 +42,33 @@
 VOLTA em acordo: o Fielzinho deu VOLTA pelos 1 e 2, e o Fiel aceitou os dois (reproduzidos). O 3 (Fiel) foi
 enviado ~03h45; o Fielzinho ficou sem cota até 06h58 antes de responder. A leitura dele sobre o 3 fica pendente
 para a rodada 2.
+
+# Rodada 2 — Fiel — 2026-10-17 ~04h30
+
+Ramo ticket-28, HEAD 2eec8e9 (e134279, 39abd57, merge de integracao 3c24d68). Fiel sozinho (Fielzinho sem cota até
+06h58; leitura dele pendente, inclusive do 3 da rodada 1).
+
+## Veredito: VOLTA (1 conserto)
+
+## Os três da rodada 1: feitos
+- 1: `cartao.mjs` lê e escreve `local` só no frontmatter (`separar`), preservando o corpo. Repro do Fielzinho repetida
+  pelo Fiel: `local: true` só no corpo → `recusa: reference/exemplo já existe e não é local`, código 1, sincronizador
+  não parado, lista vazia.
+- 2: caminho real conferido antes de parar o sincronizador. Repro da junction: `recusa: fora do hub: ...`, código 1,
+  `ARQUIVO_FORA=False`. E o script só religa se a pasta está em `locais` do JSON do gerador.
+- 3: `VERSIONADOS_COM_PONTO` com `.claude-plugin/`; teste do mod novo em `gerador.test.mjs:132`.
+
+## Conserto
+1. **`-Titulo` some calado** (Fiel). `nova-pasta-local.ps1`: `Invoke-Cartao @('marcar') + $(if ($Titulo) ...)` está
+   em modo de comando. O `+` e o título viram argumentos soltos; a função não é avançada, então eles caem em `$args`
+   sem erro. Prova direta: função igual com `[string[]]$argumentos` recebe `n=1: marcar` com e sem título. Pela skill
+   real (hub de ensaio, CLI falso): `-Pasta reference/rascunhos -Titulo 'Rascunhos da semana'` → código 0, mas
+   `title: "rascunhos"`. O Docker passa `-Titulo 'Rascunhos de A'` (28-pastas-locais.test.ps1:48) e não confere.
+   Conserto: montar a lista entre parênteses, `Invoke-Cartao (@('marcar') + ...)`, e um teste que confira o título.
+
+## Evidências
+- Repro dos três casos: script em scratchpad do Fiel (cópia da do Fielzinho + caso do título). Ensaios apagados;
+  nenhum `hub-ensaio-28-*` sobrando. Árvore do ramo limpa.
+- Docker (`28-pastas-locais.test.ps1`): não rodado; trava do Cinzel (04h09). Roda na rodada 3, com a trava, sobre o
+  código final.
+- Rodada 3 = teto: passa com ressalvas escritas, depois do Docker.
