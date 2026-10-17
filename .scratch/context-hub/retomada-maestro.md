@@ -99,6 +99,13 @@ C:\context-hub log --oneline -3 integracao`, `etapas/trava-pesada.md` e `etapas/
 
 ## Como a operação funciona agora
 
+- **Fila do trabalho pesado:** `etapas/fila-pesada.md` (o maestro ordena pelo caminho crítico; quem solta a trava avisa
+  o próximo). Suíte inteira só na junção (Rebite). "Achados comuns" nas regras (hífen no Codex, caminho longo, testes do
+  fork). Janela quieta (todos saem menos quem roda o teste pesado) quando a memória não deixa.
+- **Ronda automática:** CronCreate `13,38 * * * *` (id 269a3193, só desta sessão: recriar depois de reinício). Mensagem
+  de recruta parada sem Enter no prompt: reenviar com `maestri ask "<nome>" --raw ""`. Recruta que saiu (`/exit`)
+  vira PowerShell: o que chega lá vira erro do shell.
+
 - **Construção pelo `/implement-spec`**, invocado pelo Gustavo em 2026-10-16. **Até 4 construtores, cada recruta até 1 subagente por vez mais até 3 Haiku 5.5 médio para tarefa simples ou QA** (Gustavo, 2026-10-17 ~04h; regras atualizadas; o papel ainda diz "sem subagentes", não editar papel em uso). Plano em
   `.scratch/construcao-do-hub/revisao/plano/proposta-de-etapas.md` ("Decidido").
 - **Ciclo de um ticket:** o construtor faz (skill `tdd`), pede revisão ao **Fiel**, que revisa em dupla com o
