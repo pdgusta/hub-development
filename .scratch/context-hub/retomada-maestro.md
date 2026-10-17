@@ -73,7 +73,7 @@ C:\context-hub log --oneline -3 integracao`, `etapas/trava-pesada.md` e `etapas/
   indexação, npm, harness real). Suíte comum: `node --test "agents/code/test/**/*.test.mjs"` sem `HUB_HARNESS_REAL`
   (os de harness ficam pulados; ticket 29); `--test-concurrency=1` sob carga. Se travar de novo, as saídas são do
   Gustavo: baixar a memória do Docker (Settings > Resources) ou aumentar o arquivo de paginação.
-- **Codex:** cota de volta desde 01:34.
+- **Codex:** sem cota de novo até 06:58 de 2026-10-17 (Trilho e Fielzinho). Pendente nessa hora: Codex real do 15; leituras do Fielzinho.
 
 ## Quem está no canvas (2026-10-17 ~04h)
 
@@ -127,3 +127,5 @@ nuvem.
 - ~04h15: limite 4 construtores e 1 subagente por recruta; Cinzel recrutado para o 09 (a Vela fica no 28).
 - ~04h20: mais até 3 subagentes Haiku 5.5 médio por recruta (tarefa simples ou QA); regras e recrutas avisados.
 - ~04h35: costuras do Cinzel no 09 aceitas; decidi pelo mandato os pontos abertos da faixa 5 (append/prepend com base opcional, nota nova como raiz, move recusa destino, delete exige base_rev, read com rev). Ticket 09.
+- ~04h45: real do 12 nos três passa só com a search (8558abe), rodada do Fiel pedida; 15: Claude e Copilot passam (7ad8dee); Codex sem cota de novo até 06h58 (vale também para o Fielzinho): Codex do 15 depois. Trilho roda a suíte do 35 com a trava.
+- 03h47 (relógio real; as horas do diário entre ~03h e ~04h45 acima foram estimadas e estão adiantadas ~1h — use `date` daqui em diante): ronda. Brasa com a trava (teste Docker do 08, desde 03h37); Trilho espera para a suíte do 35; Vela e Cinzel trabalhando; Fiel 14%; memória livre 1,2 GB (vmmemWSL 1,9 GB do Docker); nada a destravar.
