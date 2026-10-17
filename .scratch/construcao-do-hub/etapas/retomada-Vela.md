@@ -134,3 +134,4 @@ node --test agents/code/test/05-frontmatter.test.mjs
 - Ramo ticket-30, worktree C:/context-hub-wt/ticket-30, de integracao f83c8f5. Commits c52ccc1, 03cbbb6, ca5b389 (bomba de data do 05, aval do maestro; avisar o Trilho, que não está ligado a mim: pedi ao maestro).
 - Relatório etapas/relatorio-30-montador-mostra-falha.md. Próximo: suíte verde -> revisão do Fiel -> Rebite.
 - Às 01:40: pausar e rodar a prova do Codex do 20 (passos na seção PRÓXIMO acima).
+- 00h35: revisão pedida ao Fiel em ca5b389; Trilho avisado (o maestro ligou os construtores entre si: assunto entre construtores vai direto). Suíte repetida em segundo plano (scratchpad suite-30c.log).

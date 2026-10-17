@@ -35,3 +35,8 @@ Construtora: Vela. Ramo `ticket-30`, worktree `C:\context-hub-wt\ticket-30`, de 
 ## Testes
 
 - `node --test "agents/code/test/**/*.test.mjs"`: ver o fim deste relatório.
+- Em 03cbbb6 (antes do conserto da data): 176 testes, 166 verdes, 2 vermelhos (a bomba de data do 05), 8 pulados.
+- Em ca5b389, suíte inteira: 159 verdes, 9 vermelhos, 8 pulados. Os 9 são todos do 12-busca: "a busca não ficou
+  pronta em 3 minutos" (indexação lenta, máquina com memória no limite e outros recrutas rodando). Log:
+  `etapas/ticket-30-suite-falha-12.log`. O 12-busca sozinho, logo depois: 9/9. Mesma falha de tempo da junção do 15.
+- Harness real: não rodado (o 30 não mexe na prova 03, nas guardas nem nos hooks).

@@ -1,0 +1,388 @@
+✔ o verificar-hub passa no hub de ensaio (5402.3786ms)
+✔ o verificar-hub recusa um CLAUDE.md dentro do hub (5168.6839ms)
+✔ o verificar-hub recusa um CLAUDE.md acima do hub (5177.8132ms)
+✔ o verificar-hub recusa AGENTS.md sem o bloco da cabeça (6206.2139ms)
+✔ o verificar-hub recusa a cabeça com mais de 2.000 caracteres e aceita a de 2.000 (6572.1413ms)
+✔ o verificar-hub avisa, sem recusar, outra pasta na raiz (5594.4536ms)
+✔ o hub de ensaio tem duas iniciativas com o núcleo, notas em pt-BR, um binário e .git próprio (4640.5707ms)
+✔ o montar recusa destino que já tem conteúdo (5306.5485ms)
+✔ o verificar-hub recusa um CLAUDE.md em pasta com ponto, fora do .git (7070.7335ms)
+✔ o verificar-hub recusa hub sem .git próprio ou com .git falso (6210.7804ms)
+✔ o verificar-hub aceita uma worktree do hub (.git em arquivo) (5226.2354ms)
+✔ o verificador aceita a nota certa (4857.2972ms)
+✔ o verificador recusa a nota sem status, dizendo o campo (5376.4745ms)
+✔ o verificador recusa stage fora do ciclo do tipo (6770.7639ms)
+✔ o verificador completa só o dedutível, por troca de trecho (7377.6529ms)
+✔ o verificador não apaga uma edição feita entre a leitura e a gravação (7327.9417ms)
+✔ o verificador completa o título do log de mês novo pela ficha (6559.8188ms)
+✔ a nota do inbox sem frontmatter é completada; ao sair do inbox, vale o esquema do destino (10355.5556ms)
+✔ AGENTS.md, SKILL.md e pastas com ponto ficam intocados (6869.0278ms)
+✔ YAML inválido é devolvido sem gravar (8648.7672ms)
+✔ --checar valida o conteúdo proposto sem gravar, como o hook e o MCP vão chamar (6753.5175ms)
+✔ a nota arquivada vale pelo esquema de origem mais archived_at (5954.6729ms)
+✔ nota com fim de linha CRLF é completada e continua CRLF (5859.1924ms)
+✔ o verificar-hub recusa nota fora do esquema em qualquer lugar do hub (6349.4977ms)
+✔ frontmatter em mapa flow que não dá para trocar por trecho é recusado sem gravar (8110.818ms)
+✖ campos de várias linhas ficam como estavam quando outro campo é trocado (6702.7762ms)
+✔ cabeçalho aberto sem fechamento é YAML inválido, devolvido sem gravar (4859.7951ms)
+✔ caminho com ponto fica de fora também quando passado direto e no --checar (6557.028ms)
+✖ comentário YAML junto ao campo trocado fica; comentário na mesma linha recusa sem gravar (4985.7497ms)
+✔ nota arquivada é completada pela ficha arquivada, não pela pasta ativa homônima (5277.4146ms)
+✔ nova iniciativa em clients/ nasce com o núcleo de seis arquivos válidos (15354.1052ms)
+✔ nova iniciativa em initiatives/ nasce com o núcleo de seis arquivos válidos (12247.6066ms)
+✔ rodar a nova iniciativa de novo não duplica nem sobrescreve (24989.9814ms)
+✔ a nova iniciativa recusa valor fora do catálogo da ficha (18804.3911ms)
+medidas do ticket 12:
+{
+  "quando": "2026-10-17T03:26:42.032Z"
+}
+
+✖ uma pergunta em pt-BR por palavra acha a nota esperada entre as 3 primeiras (182952.7563ms)
+✖ uma pergunta em pt-BR por paráfrase, sem palavra em comum com a nota, acha a nota entre as 3 primeiras (2.8646ms)
+✖ uma nota nova gravada no disco aparece sem reindexar, por palavra e por paráfrase; o tempo só é medido (0.2932ms)
+✖ nada com ponto no caminho nem de pasta local: true aparece, nem o que chega com a busca ligada (0.1522ms)
+✖ o relatório conta as notas indexadas e lista as recusadas por cabeçalho quebrado (0.1293ms)
+✖ pedido com Host estranho é recusado; o servidor só escuta em 127.0.0.1 (0.0875ms)
+✖ em inglês, no mesmo índice e sem dizer o idioma, a nota em inglês vem entre as 3 primeiras; o .pdf.md entra, o binário não (0.0857ms)
+✖ uma rajada de 200 notas copiadas de uma vez termina toda indexada; o tempo só é medido (0.0841ms)
+✖ a segunda partida reaproveita o índice: o mesmo banco, a busca pronta e a indexação mais curta (0.1417ms)
+✔ com -WhatIf, o kit diz o que faria e não grava nada (1624.4011ms)
+✔ o kit instala a versão fixa pelo package-lock, só no .local\busca do hub (69369.8179ms)
+✔ rodar de novo não muda nada (1007.8607ms)
+✔ a busca sobe com a instalação do kit e responde (57893.3927ms)
+✔ bancada, codex: c1-parcial.md → passa (2049.1213ms)
+✔ bancada, codex: c2-conflito.md → passa (2278.059ms)
+✔ bancada, codex: c3-add-existente.md → recusa (1383.9091ms)
+✔ bancada, codex: c3-update-inteiro.md → recusa (805.103ms)
+✔ bancada, codex: c3-delete-add.md → recusa (1621.3158ms)
+✔ bancada, codex: h-add-existente.md → recusa (1816.9712ms)
+✔ bancada, codex: h-update-inteiro.md → recusa (1976.6059ms)
+✔ bancada, codex: h-delete-add.md → recusa (2368.0837ms)
+✔ bancada, codex: h-parcial.md → passa (1424.4066ms)
+✔ bancada, codex: h-novo.md → passa (1325.4848ms)
+✔ bancada, claude: Edit caso1.md → passa (875.8242ms)
+✔ bancada, claude: Edit caso2.md → passa (1300.4918ms)
+✔ bancada, claude: Write caso3.md → recusa (1258.2811ms)
+✔ bancada, claude: Write caso4.md → recusa (1113.8923ms)
+✔ bancada, claude: Edit caso4.md → passa (1086.5007ms)
+✔ bancada, claude: Write caso4-novo.md → passa (1601.0306ms)
+✔ bancada, claude: Write caso3b.md → recusa (1835.3924ms)
+✔ bancada, copilot: edit caso1.md → passa (1176.4678ms)
+✔ bancada, copilot: edit caso2.md → passa (939.2603ms)
+✔ bancada, copilot: create caso3.md → recusa (795.5297ms)
+✔ bancada, copilot: create caso4.md → recusa (1077.4257ms)
+✔ bancada, copilot: edit caso4.md → passa (1021.6106ms)
+✔ bancada, copilot: create caso4-novo.md → passa (1391.2635ms)
+✔ bancada, copilot: create caso3b.md → recusa (1138.5309ms)
+✔ claude: nota nova sem status é recusada; com status, passa (1074.3027ms)
+✔ claude: troca de trecho que tira o status é recusada; a que mantém, passa (1230.5692ms)
+✔ claude: fora do hub, a regravação passa e o hook não diz nada (521.5158ms)
+✔ codex: nota nova sem status é recusada; com status, passa (881.5504ms)
+✔ codex: troca de trecho que tira o status é recusada; a que mantém, passa (619.1712ms)
+✔ codex: fora do hub, a regravação passa e o hook não diz nada (161.6595ms)
+✔ copilot: nota nova sem status é recusada; com status, passa (629.6627ms)
+✔ copilot: troca de trecho que tira o status é recusada; a que mantém, passa (390.3725ms)
+✔ copilot: fora do hub, a regravação passa e o hook não diz nada (138.5129ms)
+✔ o hub alcançado por junction é o mesmo hub: regravar por ela é recusado (137.1784ms)
+✔ cada decisão dentro do hub vira uma linha em .local/guardas/registro.jsonl; fora do hub, nada (5080.8987ms)
+✔ patch com quebra de linha depois do *** End Patch ainda confere a ficha (Codex e apply_patch do Copilot) (1485.1605ms)
+✔ em caminho com ponto dentro do hub, regravar existente é recusado; nota nova sem frontmatter passa (213.0701ms)
+✔ claude: ler inteiro um arquivo grande sem ter buscado dá "busque antes", sem recusa (122.0154ms)
+✔ claude: o aviso sai uma vez por arquivo por sessão; noutra sessão, sai de novo (285.4745ms)
+✔ claude: arquivo pequeno não avisa (182.5674ms)
+✔ claude: a busca apontou o arquivo e ele foi lido inteiro: "leia o trecho que a busca apontou" (445.0203ms)
+✔ claude: a busca apontou o arquivo e só um trecho foi lido: sem aviso (229.7091ms)
+✔ fora do hub, o hook sai sem aviso (91.7843ms)
+✔ copilot: os mesmos avisos pelo view e pela busca (565.4962ms)
+✔ codex: a leitura por comando de shell avisa igual; busca e filtro de linhas contam (689.5014ms)
+✔ cada leitura de arquivo do hub fica no registro da máquina, com o aviso que deu (178.0291ms)
+✔ a tabela do hub passa no esquema; skill que ainda não está em agents/skills/ é aviso, não recusa (2509.1288ms)
+✔ linha fora do esquema é recusada, com o id da linha (4291.4764ms)
+✔ claude: pedido de pesquisa que não cita o FreeLLMAPI recebe "use a skill freellmapi" (5683.5749ms)
+✔ codex: pedido de pesquisa que não cita o FreeLLMAPI recebe "use a skill freellmapi" (8014.3303ms)
+✔ pedido que já cita a skill, ou que não casa, não recebe nada (9401.44ms)
+✔ recruta pelo papel recebe as skills da linha do papel (5147.997ms)
+✔ nota pelo caminho recebe a skill da linha do caminho (6443.3569ms)
+✔ copilot: o hook de arquivo não injeta (a doc diz que a saída é descartada); nada na saída (9374.6371ms)
+✔ fora do hub, sai na hora (7531.6006ms)
+✔ usar uma skill do acervo vira linha no registro da máquina, com workspace e data (9098.7013ms)
+✔ skill de fora do acervo não vira linha (6066.9387ms)
+✔ claude: a skill indicada rodou: o fim registra "sim" com a linha da tabela, sem bloquear (9199.0516ms)
+✔ claude: a skill indicada não rodou: o fim registra "não" com a linha, sem bloquear (9148.2599ms)
+✔ codex: sem evento de uso de skill, o fim registra "não verificado" (13654.5687ms)
+✔ copilot: sem evento de uso de skill, o fim registra "não verificado" (13859.111ms)
+✔ turno sem indicação não escreve no registro (16590.0746ms)
+✔ sessão que chega ao hub pelo atalho (junction) recebe a indicação (12695.1147ms)
+✖ agents\code\test\20-acervo.test.mjs (177.5992ms)
+✖ agents\code\test\27-fim-da-resposta.test.mjs (296.3146ms)
+✖ agents\code\test\27-pastas.test.mjs (132.2712ms)
+✖ agents\code\test\gerar-exclusoes\gerador.test.mjs (400.0152ms)
+✖ agents\code\test\harness-real.test.mjs (353.1048ms)
+✖ agents\code\test\ponta-a-ponta\12-busca.test.mjs (585.0081ms)
+✖ agents\code\test\ponta-a-ponta\14-guardas.test.mjs (338.6924ms)
+✖ agents\code\test\ponta-a-ponta\15-leitura.test.mjs (216.6219ms)
+✖ agents\code\test\ponta-a-ponta\19-roteamento.test.mjs (339.8618ms)
+✖ agents\code\test\ponta-a-ponta\20-acervo.test.mjs (376.5388ms)
+✖ agents\code\test\ponta-a-ponta\27-fim-da-resposta.test.mjs (297.6003ms)
+✖ agents\code\test\provas\03-codex-hooks\instalar.test.mjs (413.2936ms)
+✖ agents\code\test\provas\03-codex-hooks\prova.test.mjs (55.0775ms)
+ℹ tests 123
+ℹ suites 0
+ℹ pass 99
+ℹ fail 24
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1091289.7777
+
+✖ failing tests:
+
+test at agents\code\test\05-frontmatter.test.mjs:247:1
+✖ campos de várias linhas ficam como estavam quando outro campo é trocado (6702.7762ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  ... Skipped lines
+  
+    '---\n' +
+      'title: >\n' +
+      '  Um título\n' +
+      '  dobrado\n' +
+      'type: research\n' +
+  ...
+      'created: 2026-10-16\n' +
+  +   'updated: 2026-10-17\n' +
+  -   'updated: 2026-10-16\n' +
+      'question: Pergunta?\n' +
+      'stage: open\n' +
+      'status: rascunho\n' +
+      '---\n' +
+      '\n' +
+  
+      at TestContext.<anonymous> (file:///C:/context-hub-wt/integracao/agents/code/test/05-frontmatter.test.mjs:254:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '---\ntitle: >\n  Um título\n  dobrado\ntype: research\naliases:\n  - um\n  - dois\ninitiative: context-hub\ncreated: 2026-10-16\nupdated: 2026-10-17\nquestion: Pergunta?\nstage: open\nstatus: rascunho\n---\n\nCorpo.\n',
+    expected: '---\ntitle: >\n  Um título\n  dobrado\ntype: research\naliases:\n  - um\n  - dois\ninitiative: context-hub\ncreated: 2026-10-16\nupdated: 2026-10-16\nquestion: Pergunta?\nstage: open\nstatus: rascunho\n---\n\nCorpo.\n',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at agents\code\test\05-frontmatter.test.mjs:280:1
+✖ comentário YAML junto ao campo trocado fica; comentário na mesma linha recusa sem gravar (4985.7497ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+    '---\n' +
+      'type: research\n' +
+      '  # Comentário humano a preservar.\n' +
+      'title: Comentada\n' +
+      'initiative: context-hub\n' +
+      'created: 2026-10-16\n' +
+  +   'updated: 2026-10-17\n' +
+  -   'updated: 2026-10-16\n' +
+      'question: Pergunta?\n' +
+      'stage: open\n' +
+      'status: rascunho\n' +
+      '---\n' +
+      '\n' +
+  
+      at TestContext.<anonymous> (file:///C:/context-hub-wt/integracao/agents/code/test/05-frontmatter.test.mjs:288:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '---\ntype: research\n  # Comentário humano a preservar.\ntitle: Comentada\ninitiative: context-hub\ncreated: 2026-10-16\nupdated: 2026-10-17\nquestion: Pergunta?\nstage: open\nstatus: rascunho\n---\n\nCorpo.\n',
+    expected: '---\ntype: research\n  # Comentário humano a preservar.\ntitle: Comentada\ninitiative: context-hub\ncreated: 2026-10-16\nupdated: 2026-10-16\nquestion: Pergunta?\nstage: open\nstatus: rascunho\n---\n\nCorpo.\n',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at agents\code\test\12-busca.test.mjs:64:1
+✖ uma pergunta em pt-BR por palavra acha a nota esperada entre as 3 primeiras (182952.7563ms)
+  Error: a busca não ficou pronta em 3 minutos: [resolve_model_type] Architecture(s) not found in MODEL_TYPE_MAPPING: [GteModel] for model type 'gte'. Falling back to EncoderOnly (single model.onnx file). If you encounter issues, please report at: https://github.com/huggingface/transformers.js/issues/new/choose
+  Unknown model class "gte", attempting to construct from base class.
+  [mcp-http] listening on http://127.0.0.1:52444/mcp
+  Indexing vault...
+  10/52 (19%) — 3m 17s remaining
+  20/52 (38%) — 2m 26s remaining
+  30/52 (58%) — 1m 53s remaining
+  
+      at iniciar (file:///C:/context-hub-wt/integracao/agents/code/test/12-busca/servidor.mjs:70:9)
+      at async TestContext.<anonymous> (file:///C:/context-hub-wt/integracao/agents/code/test/12-busca.test.mjs:60:14)
+      at async TestHook.run (node:internal/test_runner/test:1389:7)
+
+test at agents\code\test\12-busca.test.mjs:71:1
+✖ uma pergunta em pt-BR por paráfrase, sem palavra em comum com a nota, acha a nota entre as 3 primeiras (2.8646ms)
+  Error: a busca não ficou pronta em 3 minutos: [resolve_model_type] Architecture(s) not found in MODEL_TYPE_MAPPING: [GteModel] for model type 'gte'. Falling back to EncoderOnly (single model.onnx file). If you encounter issues, please report at: https://github.com/huggingface/transformers.js/issues/new/choose
+  Unknown model class "gte", attempting to construct from base class.
+  [mcp-http] listening on http://127.0.0.1:52444/mcp
+  Indexing vault...
+  10/52 (19%) — 3m 17s remaining
+  20/52 (38%) — 2m 26s remaining
+  30/52 (58%) — 1m 53s remaining
+  
+      at iniciar (file:///C:/context-hub-wt/integracao/agents/code/test/12-busca/servidor.mjs:70:9)
+      at async TestContext.<anonymous> (file:///C:/context-hub-wt/integracao/agents/code/test/12-busca.test.mjs:60:14)
+      at async TestHook.run (node:internal/test_runner/test:1389:7)
+
+test at agents\code\test\12-busca.test.mjs:95:1
+✖ uma nota nova gravada no disco aparece sem reindexar, por palavra e por paráfrase; o tempo só é medido (0.2932ms)
+  Error: a busca não ficou pronta em 3 minutos: [resolve_model_type] Architecture(s) not found in MODEL_TYPE_MAPPING: [GteModel] for model type 'gte'. Falling back to EncoderOnly (single model.onnx file). If you encounter issues, please report at: https://github.com/huggingface/transformers.js/issues/new/choose
+  Unknown model class "gte", attempting to construct from base class.
+  [mcp-http] listening on http://127.0.0.1:52444/mcp
+  Indexing vault...
+  10/52 (19%) — 3m 17s remaining
+  20/52 (38%) — 2m 26s remaining
+  30/52 (58%) — 1m 53s remaining
+  
+      at iniciar (file:///C:/context-hub-wt/integracao/agents/code/test/12-busca/servidor.mjs:70:9)
+      at async TestContext.<anonymous> (file:///C:/context-hub-wt/integracao/agents/code/test/12-busca.test.mjs:60:14)
+      at async TestHook.run (node:internal/test_runner/test:1389:7)
+
+test at agents\code\test\12-busca.test.mjs:107:1
+✖ nada com ponto no caminho nem de pasta local: true aparece, nem o que chega com a busca ligada (0.1522ms)
+  Error: a busca não ficou pronta em 3 minutos: [resolve_model_type] Architecture(s) not found in MODEL_TYPE_MAPPING: [GteModel] for model type 'gte'. Falling back to EncoderOnly (single model.onnx file). If you encounter issues, please report at: https://github.com/huggingface/transformers.js/issues/new/choose
+  Unknown model class "gte", attempting to construct from base class.
+  [mcp-http] listening on http://127.0.0.1:52444/mcp
+  Indexing vault...
+  10/52 (19%) — 3m 17s remaining
+  20/52 (38%) — 2m 26s remaining
+  30/52 (58%) — 1m 53s remaining
+  
+      at iniciar (file:///C:/context-hub-wt/integracao/agents/code/test/12-busca/servidor.mjs:70:9)
+      at async TestContext.<anonymous> (file:///C:/context-hub-wt/integracao/agents/code/test/12-busca.test.mjs:60:14)
+      at async TestHook.run (node:internal/test_runner/test:1389:7)
+
+test at agents\code\test\12-busca.test.mjs:140:1
+✖ o relatório conta as notas indexadas e lista as recusadas por cabeçalho quebrado (0.1293ms)
+  Error: a busca não ficou pronta em 3 minutos: [resolve_model_type] Architecture(s) not found in MODEL_TYPE_MAPPING: [GteModel] for model type 'gte'. Falling back to EncoderOnly (single model.onnx file). If you encounter issues, please report at: https://github.com/huggingface/transformers.js/issues/new/choose
+  Unknown model class "gte", attempting to construct from base class.
+  [mcp-http] listening on http://127.0.0.1:52444/mcp
+  Indexing vault...
+  10/52 (19%) — 3m 17s remaining
+  20/52 (38%) — 2m 26s remaining
+  30/52 (58%) — 1m 53s remaining
+  
+      at iniciar (file:///C:/context-hub-wt/integracao/agents/code/test/12-busca/servidor.mjs:70:9)
+      at async TestContext.<anonymous> (file:///C:/context-hub-wt/integracao/agents/code/test/12-busca.test.mjs:60:14)
+      at async TestHook.run (node:internal/test_runner/test:1389:7)
+
+test at agents\code\test\12-busca.test.mjs:165:1
+✖ pedido com Host estranho é recusado; o servidor só escuta em 127.0.0.1 (0.0875ms)
+  Error: a busca não ficou pronta em 3 minutos: [resolve_model_type] Architecture(s) not found in MODEL_TYPE_MAPPING: [GteModel] for model type 'gte'. Falling back to EncoderOnly (single model.onnx file). If you encounter issues, please report at: https://github.com/huggingface/transformers.js/issues/new/choose
+  Unknown model class "gte", attempting to construct from base class.
+  [mcp-http] listening on http://127.0.0.1:52444/mcp
+  Indexing vault...
+  10/52 (19%) — 3m 17s remaining
+  20/52 (38%) — 2m 26s remaining
+  30/52 (58%) — 1m 53s remaining
+  
+      at iniciar (file:///C:/context-hub-wt/integracao/agents/code/test/12-busca/servidor.mjs:70:9)
+      at async TestContext.<anonymous> (file:///C:/context-hub-wt/integracao/agents/code/test/12-busca.test.mjs:60:14)
+      at async TestHook.run (node:internal/test_runner/test:1389:7)
+
+test at agents\code\test\12-busca.test.mjs:176:1
+✖ em inglês, no mesmo índice e sem dizer o idioma, a nota em inglês vem entre as 3 primeiras; o .pdf.md entra, o binário não (0.0857ms)
+  Error: a busca não ficou pronta em 3 minutos: [resolve_model_type] Architecture(s) not found in MODEL_TYPE_MAPPING: [GteModel] for model type 'gte'. Falling back to EncoderOnly (single model.onnx file). If you encounter issues, please report at: https://github.com/huggingface/transformers.js/issues/new/choose
+  Unknown model class "gte", attempting to construct from base class.
+  [mcp-http] listening on http://127.0.0.1:52444/mcp
+  Indexing vault...
+  10/52 (19%) — 3m 17s remaining
+  20/52 (38%) — 2m 26s remaining
+  30/52 (58%) — 1m 53s remaining
+  
+      at iniciar (file:///C:/context-hub-wt/integracao/agents/code/test/12-busca/servidor.mjs:70:9)
+      at async TestContext.<anonymous> (file:///C:/context-hub-wt/integracao/agents/code/test/12-busca.test.mjs:60:14)
+      at async TestHook.run (node:internal/test_runner/test:1389:7)
+
+test at agents\code\test\12-busca.test.mjs:190:1
+✖ uma rajada de 200 notas copiadas de uma vez termina toda indexada; o tempo só é medido (0.0841ms)
+  Error: a busca não ficou pronta em 3 minutos: [resolve_model_type] Architecture(s) not found in MODEL_TYPE_MAPPING: [GteModel] for model type 'gte'. Falling back to EncoderOnly (single model.onnx file). If you encounter issues, please report at: https://github.com/huggingface/transformers.js/issues/new/choose
+  Unknown model class "gte", attempting to construct from base class.
+  [mcp-http] listening on http://127.0.0.1:52444/mcp
+  Indexing vault...
+  10/52 (19%) — 3m 17s remaining
+  20/52 (38%) — 2m 26s remaining
+  30/52 (58%) — 1m 53s remaining
+  
+      at iniciar (file:///C:/context-hub-wt/integracao/agents/code/test/12-busca/servidor.mjs:70:9)
+      at async TestContext.<anonymous> (file:///C:/context-hub-wt/integracao/agents/code/test/12-busca.test.mjs:60:14)
+      at async TestHook.run (node:internal/test_runner/test:1389:7)
+
+test at agents\code\test\12-busca.test.mjs:207:1
+✖ a segunda partida reaproveita o índice: o mesmo banco, a busca pronta e a indexação mais curta (0.1417ms)
+  Error: a busca não ficou pronta em 3 minutos: [resolve_model_type] Architecture(s) not found in MODEL_TYPE_MAPPING: [GteModel] for model type 'gte'. Falling back to EncoderOnly (single model.onnx file). If you encounter issues, please report at: https://github.com/huggingface/transformers.js/issues/new/choose
+  Unknown model class "gte", attempting to construct from base class.
+  [mcp-http] listening on http://127.0.0.1:52444/mcp
+  Indexing vault...
+  10/52 (19%) — 3m 17s remaining
+  20/52 (38%) — 2m 26s remaining
+  30/52 (58%) — 1m 53s remaining
+  
+      at iniciar (file:///C:/context-hub-wt/integracao/agents/code/test/12-busca/servidor.mjs:70:9)
+      at async TestContext.<anonymous> (file:///C:/context-hub-wt/integracao/agents/code/test/12-busca.test.mjs:60:14)
+      at async TestHook.run (node:internal/test_runner/test:1389:7)
+
+test at agents\code\test\20-acervo.test.mjs:1:1
+✖ agents\code\test\20-acervo.test.mjs (177.5992ms)
+  'test failed'
+
+test at agents\code\test\27-fim-da-resposta.test.mjs:1:1
+✖ agents\code\test\27-fim-da-resposta.test.mjs (296.3146ms)
+  'test failed'
+
+test at agents\code\test\27-pastas.test.mjs:1:1
+✖ agents\code\test\27-pastas.test.mjs (132.2712ms)
+  'test failed'
+
+test at agents\code\test\gerar-exclusoes\gerador.test.mjs:1:1
+✖ agents\code\test\gerar-exclusoes\gerador.test.mjs (400.0152ms)
+  'test failed'
+
+test at agents\code\test\harness-real.test.mjs:1:1
+✖ agents\code\test\harness-real.test.mjs (353.1048ms)
+  'test failed'
+
+test at agents\code\test\ponta-a-ponta\12-busca.test.mjs:1:1
+✖ agents\code\test\ponta-a-ponta\12-busca.test.mjs (585.0081ms)
+  'test failed'
+
+test at agents\code\test\ponta-a-ponta\14-guardas.test.mjs:1:1
+✖ agents\code\test\ponta-a-ponta\14-guardas.test.mjs (338.6924ms)
+  'test failed'
+
+test at agents\code\test\ponta-a-ponta\15-leitura.test.mjs:1:1
+✖ agents\code\test\ponta-a-ponta\15-leitura.test.mjs (216.6219ms)
+  'test failed'
+
+test at agents\code\test\ponta-a-ponta\19-roteamento.test.mjs:1:1
+✖ agents\code\test\ponta-a-ponta\19-roteamento.test.mjs (339.8618ms)
+  'test failed'
+
+test at agents\code\test\ponta-a-ponta\20-acervo.test.mjs:1:1
+✖ agents\code\test\ponta-a-ponta\20-acervo.test.mjs (376.5388ms)
+  'test failed'
+
+test at agents\code\test\ponta-a-ponta\27-fim-da-resposta.test.mjs:1:1
+✖ agents\code\test\ponta-a-ponta\27-fim-da-resposta.test.mjs (297.6003ms)
+  'test failed'
+
+test at agents\code\test\provas\03-codex-hooks\instalar.test.mjs:1:1
+✖ agents\code\test\provas\03-codex-hooks\instalar.test.mjs (413.2936ms)
+  'test failed'
+
+test at agents\code\test\provas\03-codex-hooks\prova.test.mjs:1:1
+✖ agents\code\test\provas\03-codex-hooks\prova.test.mjs (55.0775ms)
+  'test failed'
