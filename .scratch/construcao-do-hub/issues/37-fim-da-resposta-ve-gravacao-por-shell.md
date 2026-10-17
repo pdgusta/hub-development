@@ -33,3 +33,5 @@ só dentro do `cwd` da sessão desde o início do turno; o que mudou fora da lis
 - 2026-10-17 10:25 (Cinzel): 14, 18, 27 e 37 juntos 105/105 (`../etapas/logs/37-testes.log`). Relatório `../etapas/relatorio-37-fim-ve-gravacao-por-shell.md`. Revisão pedida ao Fiel, ramo `ticket-37` c16e53f.
 - 2026-10-17 ~11h05 (Cinzel): rodada 1 do Fiel VOLTA (nota de fora virava falta e ganhava last_agent). Conserto 4b695d5, combinado com a Vela: nota de fora só cala a cobrança, com aviso; nunca falta nem last_agent. 113/113 (`../etapas/logs/37-testes-r2.log`). Rodada 2 pedida.
 - 2026-10-17 ~11h20 (Cinzel): rodada 2 do Fiel PASSA em 4b695d5 (113/113; `../etapas/parecer-37-Cinzel.md`). Ressalva para o próximo ticket do fim: avisar a nota de fora só quando ela calou uma cobrança (a sessão gravou na iniciativa). Rebite avisado: junção depois do 18.
+
+- 10:55 (maestro, mandato): ressalva da rodada 2 (avisar a nota de fora só quando ela calou uma cobrança) entra no próprio 37, já que ele espera o 18 para juntar: commit no ramo e rodada curta do Fiel.

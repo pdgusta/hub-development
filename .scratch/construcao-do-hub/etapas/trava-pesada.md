@@ -1,1 +1,1 @@
-- Trilho (construtor), 2026-10-17 10:46: Docker do 21, 4ª rodada (hub-ensaio-21-a/b, 5996/5997), ~6 min. Apago ao fim; depois aviso o maestro.
+- Trilho (construtor), 2026-10-17 10:55: Docker do 21 feito; agora o 12-busca.test.mjs no ramo do 16 (indexação), ~?? min. Apago ao fim; depois aviso o Rebite.
