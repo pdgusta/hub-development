@@ -56,3 +56,7 @@ Não mexer na construção em curso (mudaria o kit no meio). Depois do 25: um en
 código de iniciativa, com `--dry-run` primeiro, `--no-global` e `DO_NOT_TRACK=1`, para ver (1) se o mapa ajuda os
 agentes no código das iniciativas e (2) como os hooks globais dele convivem com os do kit. As ideias do formato de
 decisão entram como proposta para o acervo e os esquemas de frontmatter, numa rodada com o Gustavo.
+
+## Decisão do Gustavo (2026-10-17 ~09h50)
+
+Aceita: fica para depois do 25, no radar. Nada muda na construção em curso.

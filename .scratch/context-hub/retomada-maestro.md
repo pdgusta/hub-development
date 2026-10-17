@@ -21,6 +21,11 @@ relatórios em `etapas/`, os commits de `integracao` e do repositório de planej
 `visuais-pelo-designer`, `visual-diagrama-no-centro`, `legibilidade-dos-titulos`, `headless-edge-para-qa-visual`.
 Por isso o diário abaixo registra cada evento com hora.
 
+## Radar (depois do 25)
+
+- Trail-Code (`pesquisa-trail-code.md`): ensaio num repositório de iniciativa (`--dry-run`, `--no-global`,
+  `DO_NOT_TRACK=1`) e as ideias do formato de decisão para o acervo. Gustavo aceitou deixar para depois do 25.
+
 ## Plano da fatia 2 do 08 (Gustavo, 2026-10-17 ~09h30: "no momento oportuno pause tudo e deixe menos agentes")
 
 Momento: logo depois que a Brasa terminar o Docker do 22 (ou na primeira calmaria). Passos: (1) cada recruta chega a
@@ -241,3 +246,4 @@ nuvem.
 - 09:34: janela: Rebite salvo e encerrado (/exit, opção 1). Religar: `claude --resume eedaf0e1-3e28-47b7-83d4-928cfb078956` (ou `claude` + retomada).
 - 09:35: janela: Cinzel (`claude --resume aecf4ac4-c129-472d-bce0-94c103e3df86`), Fiel (`claude --resume 17b1605d-5943-4a07-b008-39cfc958ac1d`) e Fielzinho (/quit; religar `codex` + retomada) encerrados. Falta o Trilho (Docker do 21).
 - 09:39: janela aberta: Trilho encerrado (`claude --resume ee794bc3-1b7b-41f5-90b1-6b43b5679eaa`); 21 3ª rodada tudo passou; 16 passou no Fiel (rodada 2), aviso ao Rebite caiu no PowerShell: reenviar ao religar. 2,6 GB livres. Brasa: 22 e fatia 2; Vela: 25.
+- 09:43: Gustavo: Trail-Code para depois do 25, no radar.
