@@ -339,3 +339,4 @@ nuvem.
 - 15:22: suíte 41+40+43+docs: 289 (278/10/1 falha: 27-pastas, link em código inline na página mcp-do-banco.md dos docs). Decidido: 41, 40, 43 resolvidos; docs pendente até o Lume trocar a página (Rebite roda o 27-pastas); causa no verificador = ticket 44 (Brasa). Trava com a Vela (Codex do 18).
 - 15:23: 41, 40, 43 resolvidos; 11 juntado (51fa382), suíte depois do Codex do 18 (antes da Brasa).
 - 15:32: divergência do Lume (link relativo com ../ no verificador de pastas) entrou no ticket 44.
+- 15:43: Codex do 22 cortado (15:33; 583 MB na subida dos pares, Docker com o canvas cheio). Decidido: janela quieta da noite (~17h30): Brasa 22 → Cinzel 24 → Vela 25 (4,5,7 + Codex); antes, sem Docker, Rebite: suíte 11(+18), junções 18, 37, 44, 23. Docker parado. Previsão dada ao Gustavo: construção fechada ~20h (82% por tickets, ~85% ponderado).
