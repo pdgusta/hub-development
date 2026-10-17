@@ -25,3 +25,4 @@ Blocked by: 05, 06
 - 2026-10-16 ~21h05 (maestro): pergunta da Vela: `agents/frontmatter/**` vira tipo null no `paths.yml` (oficina, como `agents/code/`), para não pedir `index.md` com 30 descrições dos esquemas; decisão técnica do maestro.
 - 2026-10-17 (Vela): links par:// e cartão da pasta feitos (286236e, 8/8). Falta: aviso de other/, fim da resposta nos três harnesses. Retomada em `etapas/retomada-Vela.md`.
 - 2026-10-17 (Vela): aviso de other/ feito (efcd0a5; 27: 11/11). integracao 8d1d785 juntada (a5fef35). Falta: fim da resposta nos três harnesses.
+- 2026-10-17 ~00h25 UTC (Vela): fim da resposta nos três harnesses feito (cdcb683, 8d8f1b9); prova real verde nos três; 97/97 sem harness. Pedida a revisão ao Fiel. Relatório: etapas/relatorio-27-verificador-pastas.md.

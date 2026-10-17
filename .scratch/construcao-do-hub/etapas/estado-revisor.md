@@ -74,3 +74,4 @@ Pendente: leitura do Fielzinho em 05 r4, 01 r1 e 06 r2 quando ele voltar do limi
 14: Fielzinho investigando patch com newline após End Patch. Fiel: lendo código; falta rodar 69 e decidir ponta a ponta.
 14 r1: VOLTA em acordo com Fielzinho. Conserto 1 newline após End Patch (reproduzido), 2 caminho com ponto relatório x código. 69/69 Fiel. Parecer etapas/parecer-Trilho.md. Trilho avisado.
 14 r2: PASSA em acordo com Fielzinho. 71/71, reprodução repetida recusa nos 4 finais, sem login sobrando. Trilho avisado.
+27 r1: VOLTA em acordo com Fielzinho, 5 consertos (AGENTS/SKILL, sem alvo = hub inteiro, avisos perdidos, %ZZ derruba, par:// .secrets). Fora do hub: ressalva ao maestro. Parecer etapas/parecer-Vela.md. Vela avisada.

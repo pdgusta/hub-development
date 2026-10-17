@@ -20,7 +20,17 @@ Revisores: Fiel e Fielzinho (dupla). Integrador: Rebite (depois do "passa", `mae
   `%TEMP%\hub-ensaio-<Nome>`), notas, pastas locais pelo gerador, amostra do hub para "nada em claro", leitor.
 - `agents/code/test/07-banco.test.ps1`: o teste de ponta a ponta (Docker; fora do `node --test`).
 
-### Próximo passo exato
+### Próximo passo exato (22h55)
+
+Em revisão com o Fiel (pedida 22h55). Rodada final verde, relatório completo. Próximo: aplicar os consertos do
+parecer `etapas/parecer-Brasa.md` (o Fiel decide a pasta); depois do passa, avisar o Rebite.
+
+### Antes (22h40)
+
+0. Feito: 810bbde (provas sobre o módulo), 7fa0e56 (religar o CLI), merge 3babfb2 de integracao 8d1d785; 07 verde
+   (24 PASSA, `.local/07-verde-2.log`). Relatório `etapas/relatorio-07-banco-do-par.md` escrito; falta a seção
+   "Rodada final" (logs `.local/prova01-2.log`, `prova02-2.log`, `06-2.log`, rodando em fila) e pedir revisão ao Fiel.
+
 
 1. (feito) teste verde e commit 4967c69. Rodar o teste: `pwsh -NoProfile -File agents/code/test/07-banco.test.ps1` em segundo plano, com log em `.local/07.log` e um laço `until grep saida=`. Contêineres `hub-ensaio-07-a/b`, portas 5994/5995.
 2. (21h50, sem commit ainda) item 3 editado na worktree: `ensaio.psm1` ganhou `Start-EnsaioBanco [-Exclusoes {}]`,
@@ -59,7 +69,10 @@ Revisores: Fiel e Fielzinho (dupla). Integrador: Rebite (depois do "passa", `mae
 ### Comandos de teste
 
 - Ticket 07: `pwsh -NoProfile -File agents/code/test/07-banco.test.ps1` (saída 0 = verde).
-- Rápidos do repositório: `node --test "agents/code/test/**/*.test.mjs"`.
+- Rápidos do repositório (regra provisória do maestro, até o ticket 29 entrar em integracao: fora `ponta-a-ponta/` e
+  `provas/03-codex-hooks/`, que chamam harness de verdade): `node --test agents/code/test/04-esqueleto.test.mjs
+  agents/code/test/05-frontmatter.test.mjs agents/code/test/05-nova-iniciativa.test.mjs agents/code/test/14-guardas.test.mjs
+  agents/code/test/gerar-exclusoes/gerador.test.mjs`. Depois do 29: só com `HUB_HARNESS_REAL=1`.
 - Provas: `pwsh -NoProfile -File agents/code/test/provas/01-banco/prova.ps1` e `.../02-pastas-com-ponto/prova.ps1`;
   teste do 06: `pwsh -NoProfile -File agents/code/test/gerar-exclusoes/sincronizador.ps1`.
 

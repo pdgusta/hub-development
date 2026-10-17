@@ -51,6 +51,10 @@ Valem para todo construtor e revisor das etapas. Plano decidido: `revisao/plano/
 - Dados de cliente (STRATA, VOEGOL, AVIANCA, TRF3, SBF): só o nome da iniciativa; nada de dado pessoal; notas de ensaio
   com texto inventado.
 - Grave o estado em arquivo a cada passo: um `/clear` a qualquer momento não pode perder nada.
+- **Testes com harness de verdade** (ponta a ponta do 14 em `agents/code/test/ponta-a-ponta/`, prova 03 em
+  `agents/code/test/provas/03-codex-hooks/`) chamam Claude, Codex e Copilot, copiam login e regravam evidência. Até o
+  ticket 29 entrar em `integracao`, não rode a suíte inteira: rode os testes do seu ticket e os outros sem essas duas
+  pastas. Depois do 29, eles só rodam com `HUB_HARNESS_REAL=1`, e só quando o seu ticket mexe neles.
 - **Contexto acima de 40%** (Gustavo, 2026-10-16): no próximo ponto seguro (commit com testes verdes, ou o fim do
   ticket), grave `C:\Projetos\context-hub\.scratch\construcao-do-hub\etapas\retomada-<seu nome>.md`: ticket, ramo,
   worktree, o que está feito, o que falta (próximo passo exato), decisões e armadilhas do caminho, comandos de teste, e

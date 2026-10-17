@@ -122,3 +122,4 @@ decidir antes do ticket 18).
 - 20:38: rodada das pastas locais respondida (todas A); ticket 28 publicado (etapa 2, espera o 07). Aberta: `2026-10-16-laco-no-fim-da-resposta`.
 - 20:39: laço no fim da resposta decidido (B: até três devoluções, na quarta solta e registra). Nenhuma rodada aberta.
 - ~21h10: ticket 14 resolvido e juntado (8d1d785); README.md da raiz saiu. Trilho no 12 (busca; primeiro commit conserta as pastas do 14 em %TEMP%). Limpeza de contexto: Vela, Brasa e Fielzinho limpos e retomados; Trilho com /clear na fila.
+- ~21h35: achado da Brasa: a suíte chama os harnesses de verdade (prova 03, ponta a ponta do 14). Ticket 29 publicado e passado à Vela (enquanto o 27 está em revisão); regra provisória nas regras e no juntar-tickets: deixar essas pastas de fora até o 29 entrar. 07 da Brasa em revisão.

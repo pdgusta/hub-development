@@ -44,7 +44,9 @@ Gravada em 2026-10-17, antes de um /clear pedido pelo maestro (contexto acima de
 - Copilot agentStop (doc docs.github.com/en/copilot/reference/hooks-configuration): entrada `sessionId`, `cwd`, `stop_hook_active` (snake); saída `decision: block` + `reason`; o CLI corta sozinho em 8 blocks seguidos. userPromptSubmitted de arquivo: saída ignorada (serve só para marcar).
 - Deslize: usei um subagente web-fetch para ler essa doc (regra: sem subagentes). Registrar no relatório.
 
-### Próximo passo exato (antigo; 1 já feito, 2 em curso)
+- **8d8f1b9: tudo feito** (fragmentos, mod, prova real verde nos três, continuação do Copilot). 97/97. Relatório atualizado. **Pedida a revisão ao Fiel**; depois do passa, avisar o Rebite. Não mexer na worktree enquanto o Fiel revisa.
+
+### Próximo passo exato (antigo; já feito)
 
 1. **Aviso de `other/`** (teste antes, em `27-pastas.test.mjs`). Três ou mais notas em `other/`, no hub inteiro, cujo `why_other` divide a maioria das palavras significativas (descartar as curtas) formam grupo. O aviso cita as três e pede bloco novo em `agents/blocks.md`. É só aviso, não falta. Ligar no `verificar-pastas` (passada única sobre o hub, não por alvo).
 2. **Fim da resposta nos três harnesses.**
