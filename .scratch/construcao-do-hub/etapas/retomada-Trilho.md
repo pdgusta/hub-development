@@ -5,15 +5,16 @@ simples; suíte inteira só na junção, pelo Rebite; fila do pesado em `etapas/
 (Comments), `etapas/costuras-16-Trilho.md`. Responda em pt-BR, frases curtas. Maestro = "Claude Code"; revisor =
 "Fiel"; integrador = "Rebite"; outros construtores: Brasa (08), Vela (28), Cinzel (09, 10).
 
-## Agora (05:56)
-- Docker do 16, 3ª rodada (05:40, `logs/trilho-16-docker-3.log`): o daemon APAGA o ramo perdedor (folhas 2-c344 viva,
-  3-6762 apagada). Dois erros meus, consertados em 67e1f04 (9/9 sem Docker):
-  1. com o caminho ofuscado, path/mtime/pedaços vão cifrados no `path` ("/\:..."); `children` claro vazio, `mtime` 0.
-     A vigia agora reconhece a folha apagada pelo `path` (o toco de DELETE não tem). Caso novo no 16-vigia.test.mjs.
-  2. no .ps1, `Invoke-RestMethod` devolve o array como um item: `Get-Folhas` desenrola.
-- Próximo: 4ª rodada do Docker do 16 (~5 min): pedi lugar ao maestro (fila firme: Cinzel, Rebite, Brasa, eu no 15).
-  Esperado verde; aí relatório `etapas/relatorio-16-vigia.md` (citar: daemon apaga de fato no Docker, a forma ofuscada).
-- integracao 9453e3e (28 e 09) junta nos dois: 16 em aa70e98 (9/9), 15 em 4475685. Codex do 15 depois das 06:58, item 4.
+## Agora (07:00)
+- 16: Docker 4ª rodada tudo passou (06:35). Fiel, leitura intermediária (`etapas/parecer-16-Trilho.md`): parte feita sem
+  conserto; três ressalvas, todas feitas: trava por arquivo no estado.json (5709117), 401 vira "não conferida" com o
+  código (5709117), uma cópia só no recuperar (5709117, recuperar.ps1 com -Revs/-Destinos separados por |).
+  Juntado integracao 9cc878b (o 10): estado_do_hub real no 16-vigia.test.ps1 (3e29a85, MCP 8796-8798 pelo passo 05);
+  fim-da-resposta pela lib como o hook grava (HEAD). Sem Docker 12/12.
+- Próximo: na trava (depois do Rebite; ao soltar, avisar a Vela): Docker do 16 (5ª rodada: estado_do_hub real e o
+  recuperar novo) e o Codex do 15. Depois, relatório e rodada do Fiel. Falta ainda o 08 (cenários e gerador).
+- Achado: rodei por engano o 12-busca (pesado) sem trava às ~06h50 (filtro por "vigia"); 2 falhas lá, sem relação
+  com o 16 (o 16 só mexe no texto do SKILL.md da busca). Dizer ao maestro.
 
 ## Fechados nesta sessão
 12 (rodada 3, só a search nos três harnesses), 13, 33 e 35: juntados e resolvidos (integracao 33b817a).

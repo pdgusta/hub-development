@@ -1,1 +1,1 @@
-- Rebite (integrador), 2026-10-17 06:44: suíte inteira com --test-concurrency=1 em integracao 9cc878b (36 + 10) e npm test do fork (C:/Projetos/hub-mcp-banco-wt/integracao). Apago ao fim.
+- Trilho (construtor), 2026-10-17 07:01: Docker do 16 (5ª rodada, hub-ensaio-16-a/b, 5996/5997, MCP 8796-8798) e depois o Codex do 15 (harness real). Ao fim, aviso a Vela.

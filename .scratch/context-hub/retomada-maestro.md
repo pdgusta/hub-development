@@ -179,3 +179,4 @@ nuvem.
 - 06:49: ronda; memória livre 577 MB (suíte do Rebite + npm test do fork). Brasa limpa; 08 vai à revisão com a fatia 2 pendente (evidência numa hora quieta). Fielzinho com cota de novo.
 - 06:49: 11 pronto para o harness real (c21dbf1). Fila: Rebite (agora), Trilho (16+15), Vela (17), Cinzel (11), Brasa (fatia 2 com máquina quieta; o maestro avisa). Memória livre voltou a 2,1 GB.
 - 06:52: 08 na revisão (124f43d). Brasa no 22.
+- 07:01: 36 resolvido (suíte 210/0). 10 não: npm test do fork rodou 0 testes no Windows (falso verde); comando trocado em juntar-tickets.md; Rebite roda depois do Trilho. Costuras do 22 aceitas (harness real como cliente, uma sessão de cada). Trilho rodou o 12-busca sem trava ~06:50 por 2 min (deslize, não repete).

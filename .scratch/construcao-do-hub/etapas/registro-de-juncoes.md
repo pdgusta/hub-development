@@ -24,3 +24,4 @@
 - 2026-10-17 06h12, tickets 28 (ea6f353) e 09 (9453e3e; fork hub-mcp-banco ticket-09 d2a5a40 fora de integracao), suíte com --test-concurrency=1 e trava: 202, 194 verdes, 8 pulados, 0 falhas, git limpo; Docker do 28 e do 09 não repetidos por mim (Rebite).
 - 2026-10-17 06h20, fork hub-mcp-banco: ramo integracao criado em d2a5a40 (ticket-09 juntado), worktree de junção C:/Projetos/hub-mcp-banco-wt/integracao (Rebite).
 - 2026-10-17 06h45, ticket 10 juntado: hub 9cc878b, fork 34c3e50 (worktree do fork com junções para node_modules e lib/livesync-commonlib da cópia principal); suíte do hub (36 + 10) e npm test do fork esperam a trava (Rebite).
+- 2026-10-17 07h00, ticket 36 (85efe3b), suíte do hub com --test-concurrency=1 e trava, junto com o 10 (9cc878b): 210, 202 verdes, 8 pulados, 0 falhas, git limpo; 36 resolvido. O npm test do fork rodou 0 testes (aspas simples no script, no Windows): não vale; o 10 espera os unitários do fork (Rebite).
