@@ -50,21 +50,42 @@ Leia antes: `etapas/regras-da-construcao.md` (inteiras), o ticket do momento e e
   getter `instructions` em `serverOptions` (main.ts 326) é relido a cada sessão. O upstream já tem `READ_ONLY=true`
   (main.ts 43; `registerTools` não registra as de gravação): base da instância de leitura.
 
-## Ticket 10: andamento (05:40)
+## Ticket 10: andamento (salvo às ~06h00, contexto em 47%)
 
-- 09 passou (rodada 2) e já está em `integracao` 9453e3e; Rebite avisado.
-- Fork: worktree `C:/Projetos/hub-mcp-banco-wt/ticket-10`, ramo `ticket-10` (de `ticket-09` d2a5a40). `node_modules`
-  e `lib/livesync-commonlib` são junções para o fork principal: soltar com `cmd /c rmdir` antes de remover a worktree.
-  O fork principal fica em `ticket-09`.
-- Hub: worktree `C:/context-hub-wt/ticket-10`, ramo `ticket-10` de `integracao` 9453e3e. Nada feito ainda.
-- Costura A sem Docker: `test/hub.e2e.test.ts` (modo local, VAULT_PATH = hub de ensaio, HUB_ROOT igual), rodar com
-  `node --import tsx --test test/hub.e2e.test.ts`. Feito, verde: cabeça e troca (c182dcc), cabeça indisponível e
-  regra curta (98a407e), `estado_do_hub` (commit seguinte). Código em `src/hub.ts`; getter `instructions` em main.ts.
-- Falta: (1) instância de leitura no A; (2) frontmatter (import dinâmico de
-  `HUB_ROOT/agents/code/bin/lib/frontmatter.mjs`, recusa com a mensagem da guarda de disco; AGENTS.md e SKILL.md
-  passam; vale para nota nova); (3) hub: passo 05 com as três instâncias (8796/8797/8798, `.env` com
-  `HUB_MCP_BANCO_LEITURA_*` e `HUB_MCP_BANCO_CLIENTE_*`, `HUB_ROOT`), teste B com Docker e cifra (os de versão de novo
-  com a cifra: o 09-mcp-banco.test.ps1 já usa o par cifrado do 07); (4) relatório, revisão.
+- 09 passou (rodada 2) e já está em `integracao` 9453e3e; Rebite avisado. Nada pendente no 09.
+- Fork: worktree `C:/Projetos/hub-mcp-banco-wt/ticket-10`, ramo `ticket-10` (de `ticket-09` d2a5a40), ponta 58c8504.
+  `node_modules` e `lib/livesync-commonlib` são junções para o fork principal: soltar com `cmd /c rmdir` antes de
+  remover a worktree. O fork principal (`C:/Projetos/hub-mcp-banco`) fica em `ticket-09`.
+  - Feito, costura A sem Docker, `test/hub.e2e.test.ts` (modo local; VAULT_PATH = HUB_ROOT = hub de ensaio em %TEMP%
+    com realpath): 10/10 com `HUB_TESTE_HUB=C:/context-hub-wt/ticket-10 node --import tsx --test test/hub.e2e.test.ts`
+    (sem a variável, o bloco de frontmatter aparece pulado). Cabeça e troca de arquivo; cabeça > 2.000 ou ausente;
+    regra curta nas 4; `estado_do_hub` (recente, velha > 15 min, sem `passada`, ilegível, sem arquivo); instância de
+    leitura; frontmatter (nota nova recusada, certa grava, edit recusado, AGENTS.md e SKILL.md gravam).
+  - Código: `src/hub.ts` (`readHead`, `hubInstructions`, `SHORT_RULE`, `hubState`, `checkFrontmatter` por import
+    dinâmico de `HUB_ROOT/agents/code/bin/lib/frontmatter.mjs`, mensagem da guarda de disco com "Recusado:"); getter
+    `instructions` e `HUB_ROOT` em `src/main.ts`; regra curta no invólucro do `addTool`, `estado_do_hub` e `offSchema`
+    (write, edit, move no destino) em `src/tools.ts`. Sem HUB_ROOT, tudo como o upstream.
+  - Upstream: unitários 272/1 (a falha de base) com TEMP longo; tipos iguais à base. Falta rodar o e2e local do upstream
+    (`sh .local/e2e-local.sh` no fork principal dava 36/7; rodar o equivalente na worktree, precisa de `npx tsup`).
+- Hub: worktree `C:/context-hub-wt/ticket-10`, ramo `ticket-10` de `integracao` 9453e3e, ponta f7a8358.
+  - Feito: `mcp-banco.psm1` com as três instâncias (tabela `$script:Instancias`; `Read-EnvMcpBanco` devolve a de
+    escrita com `McpInstancias`; recusa chave faltando, fora de 127.0.0.1, mesma porta, mesmo token); `Start-McpBanco`
+    passa `HUB_ROOT = $par.Vault` e `READ_ONLY`; `Install`/`Uninstall` sobem e param as três; `env/05.env.modelo` com
+    as 6 linhas. Sem Docker verde: `node --test agents/code/test/09-mcp-banco-sem-docker.test.mjs` (1/1, 18 casos).
+- **Próximo passo exato:**
+  1. `agents/code/test/09-mcp-banco.test.ps1` linha 55: o `.env` de ensaio tem de ganhar as linhas
+     `HUB_MCP_BANCO_LEITURA_URL/TOKEN` (8797) e `HUB_MCP_BANCO_CLIENTE_URL/TOKEN` (8798), tokens distintos
+     (`New-Segredo 24`); senão o passo recusa.
+  2. Escrever `agents/code/test/10-mcp-banco.test.ps1` (costura B, Docker `hub-ensaio-10-a/b` 5996/5997, par cifrado do
+     07 por `ensaio.psm1`, fork por `HUB_MCP_BANCO_DIR` = a worktree do fork): as três sobem; leitura sem ferramenta de
+     gravação e recusa gravar; escrita e cliente gravam com base e dão conflito com base velha, cada uma só com o seu
+     token (o token de uma não abre outra: 401); cabeça do AGENTS.md do hub de ensaio no `initialize` e, trocado o
+     arquivo, sessão nova com a nova; regra curta; `estado_do_hub` com um `estado.json` de exemplo em
+     `<hub>/.local/vigia/` e sem ele "estado indisponível"; nota fora do esquema recusada (conferir se o hub montado
+     pelo `ensaio.psm1` tem `agents/frontmatter` e `agents/code/bin/lib`); `-Descer` para as três; nada sobra.
+  3. Com a trava (`etapas/trava-pesada.md` e a fila): rodar o 10 e o 09 (os de versão de novo com a cifra), logs em
+     `etapas/logs/10-docker-*.log`.
+  4. Relatório `etapas/relatorio-10-mcp-do-banco.md`, comentário no ticket 10, pedir revisão ao Fiel.
 - Combinado com a Vela (17): ver o comentário de 05h25 no ticket 10.
 
 ## Armadilhas
