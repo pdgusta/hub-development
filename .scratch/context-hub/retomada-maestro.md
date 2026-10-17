@@ -238,3 +238,6 @@ nuvem.
 - 09:29: 21 conserto do EPERM (9ce2496), 3ª rodada na fila depois do 22; 16 voltou por 1 conserto (0332466), com o Fiel. Fila: Brasa (22), Trilho (21), janela quieta (fatia 2 + 25), Rebite, Codex após 12:15.
 - 09:32: pesquisa do Trail-Code (README por curl) em .scratch/context-hub/pesquisa-trail-code.md: complementa o hub nos repositórios de código; ideias para depois; não mexe na construção.
 - 09:33: 22 falhou por esperar a frase no stdout (estava no stderr), conserto bae29bd; memória sem corte. Janela quieta anunciada para depois do 21 do Trilho: 22 + fatia 2 (Brasa), 25 (Vela); os outros saem.
+- 09:34: janela: Rebite salvo e encerrado (/exit, opção 1). Religar: `claude --resume eedaf0e1-3e28-47b7-83d4-928cfb078956` (ou `claude` + retomada).
+- 09:35: janela: Cinzel (`claude --resume aecf4ac4-c129-472d-bce0-94c103e3df86`), Fiel (`claude --resume 17b1605d-5943-4a07-b008-39cfc958ac1d`) e Fielzinho (/quit; religar `codex` + retomada) encerrados. Falta o Trilho (Docker do 21).
+- 09:39: janela aberta: Trilho encerrado (`claude --resume ee794bc3-1b7b-41f5-90b1-6b43b5679eaa`); 21 3ª rodada tudo passou; 16 passou no Fiel (rodada 2), aviso ao Rebite caiu no PowerShell: reenviar ao religar. 2,6 GB livres. Brasa: 22 e fatia 2; Vela: 25.
