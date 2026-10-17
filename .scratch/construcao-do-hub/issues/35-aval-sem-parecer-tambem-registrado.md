@@ -1,7 +1,7 @@
 # 35: Todo aval aprovado é registrado, também sem parecer
 
 Type: task
-Status: claimed
+Status: resolved
 Etapa: conserto do 31 (fora da sequência)
 Blocked by: 31
 
@@ -28,3 +28,4 @@ decisão do Gustavo das três lacunas do acervo (rodada `2026-10-16-acervo-do-ma
 - 2026-10-17 ~02h30 (Trilho): pego (claimed). Worktree C:/context-hub-wt/ticket-35, ramo ticket-35, de integracao 236b3ef.
 - 2026-10-17 ~02h35 (Trilho): 140417a, d65b18a, 0b01cd9. Teste do acervo 21/21. Falta: suíte comum (trava), revisão. Relatório etapas/relatorio-35-avais.md.
 - 2026-10-17 ~04h40 (Trilho): Fiel PASSA (etapas/parecer-35-Trilho.md). Passado ao Rebite.
+- 2026-10-17 04h53 (integrador, Rebite): juntado em `integracao`, commit ef38e4d (merge `--no-ff` de `ticket-35` ebae5ca, o HEAD da rodada 1 "passa" do Fiel; o ramo partia de 3c24d68, sem arquivo em comum). Testes, com a trava, junto com o 33 (33b817a): `node --test --test-concurrency=1 "agents/code/test/**/*.test.mjs"` sem variáveis = 199, 191 verdes, 8 pulados, 0 falhas (16 min); `git status` limpo. Ressalva do parecer: a pendência de um `ask` recusado fica; se o mesmo texto exato for gravado depois por um caminho sem aval, vira registro "aprovado" (igual ao 31 com parecer). A leitura do Fielzinho ficou pendente. **Resolvido.**

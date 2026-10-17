@@ -1,1 +1,1 @@
-- Rebite (integrador), 2026-10-17 04:37: suíte inteira com --test-concurrency=1 em integracao 33b817a, junção do 35 e do 33 (C:/context-hub-wt/integracao). Apago ao fim.
+- Trilho (construtor), 2026-10-17 04:53: Docker do 16 (16-vigia.test.ps1, hub-ensaio-16-a/b, 5996/5997), worktree ticket-16. Apago ao fim.

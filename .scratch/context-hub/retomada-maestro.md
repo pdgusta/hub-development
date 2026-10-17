@@ -147,3 +147,5 @@ nuvem.
 - 04:45: costuras do 10 (Cinzel) aceitas; portas 8796/8797/8798; caminho do estado.json a combinar com o Trilho (16).
 - 04:47: estado velho do estado_do_hub decidido (aviso acima de 15 min). SKILL.md da busca ainda cita read/status: conserto em commit separado no 16.
 - 04:47: ronda; Rebite com a trava (suíte 33/35 desde 04:37); 28 da Vela na rodada 3 do Fiel (Docker na fila depois do 16); Cinzel 44% e Trilho 41%: pedidos para salvar; 3,4 GB livres.
+- 04:48: Cinzel limpo; leu a retomada (09 em revisão, 10 com costuras).
+- 04:54: 35 e 33 resolvidos (33b817a), suíte 199/0. Ressalvas do 33 ficam no radar (caminho de rede solto no texto não avisa; link em código em linha alerta; //host conta como rede). Trilho com a trava (Docker do 16).
