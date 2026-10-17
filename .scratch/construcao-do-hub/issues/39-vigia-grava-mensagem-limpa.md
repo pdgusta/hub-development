@@ -21,3 +21,4 @@ gravar só a mensagem limpa (sem sequências de cor; caminho do `TEMP` trocado p
 ## Comments
 
 - 2026-10-17 11h45 (maestro): publicado pelo achado da Vela. Dono: o Trilho (fez o 16), depois do 38.
+- 2026-10-17 ~12h30 (Trilho): ramo ticket-39 (4309277). Limpeza em lib/vigia.mjs (todo item: sem cor, TEMP como %TEMP%); kit.ps1 sai só com a mensagem. 16-vigia 21/21 (2 novos), 17 invertido (afirmava a cor), 17+27+21 39/39, 20 22/22. Junta com o 38 sem conflito. Relatório etapas/relatorio-39-vigia-mensagem-limpa.md; revisão pedida ao Fiel.

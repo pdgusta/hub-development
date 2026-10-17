@@ -41,3 +41,4 @@ Blocked by: 11, 15, 17, 18, 20, 27
 - 2026-10-17 11:07 (Cinzel): correção: os meus comentários de hoje marcados de ~11h05 a ~11h50 tinham hora estimada; foram entre 10:30 e 11:07.
 
 - 12:27 (maestro, mandato): leitura tardia do Fielzinho (conferida pelo Fiel): se `fazer()` falha, o desfazer apaga `.hub-kit` e o original some (casa.mjs:88-91, :136; repro `../etapas/logs/repro-23-fielzinho.log`). Perda de arquivo no HOME real: conserto curto antes da junção (devolver a cópia e relançar, com teste), não ressalva.
+- 2026-10-17 12:32 (Cinzel): conserto do Fielzinho (decisão do maestro): 46897e0, `casa.mjs` `mudar()` devolve o original ao lugar e relança o erro quando a mudança falha; teste com ENOSPC (arquivo) e EPERM (pasta), e o desfazer depois não perde nada. 23-kit + harness-real 24/24 (`../etapas/logs/23-falha-no-fazer.log`). Merge no `ticket-24`. Rodada curta pedida ao Fiel.
