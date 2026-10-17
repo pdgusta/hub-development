@@ -111,6 +111,7 @@ Leia antes: `etapas/regras-da-construcao.md` (inteiras), o ticket do momento e e
 - Cinzel ~06:45: rodada 2 PASSA (Fiel). Rebite avisado. Nada pendente no 10 além da junção.
 - Cinzel ~07h: o 10 foi juntado pelo Rebite (hub integracao 9cc878b; fork integracao 34c3e50). Ele resolve o ticket depois da suíte e do npm test. Nada pendente comigo. Próximo: o maestro passa o próximo ticket.
 
-## Ticket 11: MCP do banco pelos três harnesses (pego ~07h05)
+## Ticket 11: MCP do banco pelos três harnesses (pego ~06h45)
 
 - Worktree `C:/context-hub-wt/ticket-11`, ramo `ticket-11` de `integracao` 9cc878b. Costuras propostas: `etapas/costuras-11-Cinzel.md` (à espera do maestro). Modelo: `agents/code/test/ponta-a-ponta/12-busca.test.mjs`. Doc do Codex por curl no scratchpad (openai_base_url; instructions: "Codex reads the MCP instructions field"; 512 primeiros caracteres).
+- Cinzel 06:50: costuras aceitas (modo local; duas do Copilot; regra seguida e banco recriado fora, ressalva para o 25). Hub `ticket-11` c21dbf1: `11-mcp-banco.test.mjs` sem harness 4/4 (montagem, captura, onde, leitura; com `HUB_MCP_BANCO_DIR` do fork com o 10, senão a montagem aparece pulada) e `ponta-a-ponta/11-mcp-banco.test.mjs` (pulado sem `HUB_HARNESS_REAL=1`). Fork: worktree `C:/Projetos/hub-mcp-banco-wt/ticket-11` (ramo ticket-11 de integracao 34c3e50; node_modules e lib/livesync-commonlib são junções), dist montado, sem mudança. Na fila (item 4) para o harness real. Comando: `HUB_HARNESS_REAL=1 HUB_MCP_BANCO_DIR=C:/Projetos/hub-mcp-banco-wt/ticket-11 node --test --test-concurrency=1 agents/code/test/ponta-a-ponta/11-mcp-banco.test.mjs` na worktree do hub.

@@ -20,6 +20,6 @@ Blocked by: 10, 03
 
 - 06:38 (maestro): passado ao Cinzel (o 10 foi juntado: hub 9cc878b, fork 34c3e50). A pergunta do login já está respondida: aval do Gustavo para a construção inteira (rodada `2026-10-16-login-dos-harnesses-no-ensaio`, nas regras). Harness real pela fila; Codex com cota desde 06:58.
 
-- 2026-10-17 ~07h05 (Cinzel): peguei o 11 (`claimed`). Worktree `C:/context-hub-wt/ticket-11` de `integracao` 9cc878b. Costuras propostas ao maestro: `etapas/costuras-11-Cinzel.md`.
+- 2026-10-17 ~06h45 (Cinzel): peguei o 11 (`claimed`). Worktree `C:/context-hub-wt/ticket-11` de `integracao` 9cc878b. Costuras propostas ao maestro: `etapas/costuras-11-Cinzel.md`.
 
 - 06:41 (maestro, mandato): costuras do Cinzel aceitas (`../etapas/costuras-11-Cinzel.md`). (1) fork em modo local (pasta), sem Docker: os critérios medem o que o servidor entrega ao harness, não o CouchDB; o caminho inteiro com banco cifrado fica para o 25. (2) aval para duas sessões do Copilot (com e sem `--allow-all-mcp-server-instructions`), modelo barato, nas condições do aval de login. (3) "regra seguida" e banco recriado ficam fora (não estão nos critérios); registrar no relatório como ressalva para o 25.

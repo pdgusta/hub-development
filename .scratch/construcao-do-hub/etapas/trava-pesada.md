@@ -1,1 +1,1 @@
-- Brasa (construtora), 2026-10-17 06:39: ticket 08, fatias 7,07 do 08-banco-limites.test.ps1 (Docker), uma por vez, worktree ticket-08; corredor destacado PID 228384. Apago ao fim.
+- Rebite (integrador), 2026-10-17 06:44: suíte inteira com --test-concurrency=1 em integracao 9cc878b (36 + 10) e npm test do fork (C:/Projetos/hub-mcp-banco-wt/integracao). Apago ao fim.

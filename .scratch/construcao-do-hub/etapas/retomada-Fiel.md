@@ -9,36 +9,32 @@ arquivo. Depois `maestri list`. Caminhos relativos a `C:/Projetos/context-hub/.s
 - Respondo só ao construtor; ele leva o passa ao Rebite. Achado em ticket já juntado: gravo no parecer e o construtor
   leva ao maestro (vira ticket seguinte).
 
-## Fila (nada em curso agora)
-1. **35 (Trilho)**, **28 (Vela)**, **08 (Brasa)**, **33** (dono a ver): ainda não pedidos. Fluxo: repassar ao
-   Fielzinho, `git log/status`, `merge-base --is-ancestor integracao HEAD`, ler ticket (`../issues/NN-*.md`),
-   relatório e diff, rodar os testes do ticket, sondar, parecer, acordo, avisar o construtor.
-   - 08 é do banco (limites, laço, retrato; ressalvas do 07 apontam para ele): Docker com a trava, um de cada vez.
-2. **Leituras atrasadas do Fielzinho** ainda sem parecer dele: 13, 32, 30, 20, 15, 12, 29. Quando chegar cada uma,
-   gravar "Leitura do Fielzinho" no parecer (aceito/recusado com motivo); ticket já juntado → construtor leva ao
-   maestro.
+## Fila (2026-10-17 ~07h; nada em curso)
+1. **15 (Trilho)**: rodada nova depois do Codex real (cota 06h58). Fragmento só com a search; o 15-leitura.test.mjs
+   precisa gravar o claude-settings.json (ressalva 2 do 12 r3).
+2. **16 (Trilho)**: rodada final quando o 08 for juntado. Faltam os cenários do 08, o gerador a cada passada, o
+   estado_do_hub real e o item fim-da-resposta. Três ressalvas no parecer-16-Trilho.md (a principal: atualização
+   perdida no estado.json). Docker meu na rodada final, com a trava.
+3. **08 (Brasa)**: ainda não pedido.
+4. **Leituras do Fielzinho** (cota a partir de 06h58), todas pendentes: 28 (achado 3 da r1, r2, r3), 12 r3, 35, 33,
+   09, 36, 10, 16, mais as antigas 13, 32, 30, 20, 15, 12, 29. Quando chegar cada uma, gravar "Leitura do Fielzinho"
+   no parecer; ticket já juntado → o construtor leva ao maestro.
 
-## Pareceres fechados
+## Pareceres fechados hoje (2026-10-17, depois da retomada das 04h; Fiel sozinho, salvo o 28 r1)
 | Ticket | Construtor | Parecer | Nota |
 |---|---|---|---|
-| 05 r4 | Trilho | `01-esqueleto/parecer-Trilho.md` | acordo |
-| 01 r1 | Brasa | `00-provas/parecer-Brasa.md` | acordo |
-| 06 r2 | Vela | `01-esqueleto/parecer-Vela.md` | acordo |
-| 14 r2 | Trilho | `parecer-Trilho.md` | acordo |
-| 27 r2 | Vela | `parecer-Vela.md` | acordo (link fora do hub virou o 32) |
-| 29 r2 | Brasa | `parecer-29-Brasa.md` | Fiel sozinho; leitura do Fielzinho pendente |
-| 19 r1 | Vela | `parecer-19-Vela.md` | leitura tardia do Fielzinho: 2 achados → consertados no 34 |
-| 12 r2 | Trilho | `parecer-12-Trilho.md` | Fiel sozinho; leitura pendente |
-| 15 r1 | Trilho | `parecer-15-Trilho.md` | Fiel sozinho; leitura pendente |
-| 20 r2 | Vela | `parecer-20-Vela.md` | Fiel sozinho; leitura pendente |
-| 30 r1 | Vela | `parecer-30-Vela.md` | Fiel sozinho; leitura pendente |
-| 32 r2 | Vela | `parecer-32-Vela.md` | Fiel sozinho; leitura pendente |
-| 13 r1 | Trilho | `parecer-13-Trilho.md` | Fiel sozinho; leitura pendente |
-| 31 r3 | Vela | `parecer-31-Vela.md` | acordo; passa com ressalva (aval sem parecer não registrado → ticket seguinte) |
-| 07 r3 | Brasa | `02-banco/parecer-Brasa.md` | acordo; Docker 4/4 com a trava |
-| 34 r1 | Vela | `parecer-34-Vela.md` | acordo |
+| 28 r3 | Vela | `parecer-28-Vela.md` | PASSA; Docker 14 PASSA |
+| 12 r3 | Trilho | `parecer-12-Trilho.md` | PASSA; só a search nos três |
+| 35 r1 | Trilho | `parecer-35-Trilho.md` | PASSA |
+| 33 r1 | Trilho | `parecer-33-Trilho.md` | PASSA com 3 ressalvas |
+| 09 r2 | Cinzel | `parecer-09-Cinzel.md` | PASSA; simultânea vira conflito |
+| 36 r2 | Vela | `parecer-36-Vela.md` | PASSA |
+| 10 r2 | Cinzel | `parecer-10-Cinzel.md` | PASSA; Docker 33+21 |
+| 16 | Trilho | `parecer-16-Trilho.md` | leitura intermediária, sem rodada |
 
-Aceites reais do Codex pendentes de rodada curta, se os construtores pedirem: 12, 15, 20 (o do 20 veio no 31).
+Fila pesada: `etapas/fila-pesada.md` (o maestro ordena; quem solta avisa o próximo). Scripts meus de Docker em
+`etapas/logs/fiel-docker-*.sh` (criam e apagam a trava). Regras novas: até 1 subagente leve e 3 Haiku 5.5 (tarefa
+simples ou QA); construtor não roda a suíte inteira (o Rebite roda na junção).
 
 ## Como reviso
 - Rodo os testes do ticket eu mesmo; reproduzo cada achado com sonda (hub de ensaio por

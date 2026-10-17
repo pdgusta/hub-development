@@ -1,4 +1,4 @@
-# Ticket 11: costuras propostas (Cinzel, 2026-10-17 ~07h)
+# Ticket 11: costuras propostas (Cinzel, 2026-10-17 ~06h45)
 
 Worktree do hub: `C:/context-hub-wt/ticket-11`, ramo `ticket-11` da ponta de `integracao` 9cc878b. No fork, nenhuma
 mudança prevista. Só uma worktree `ticket-11` da `integracao` do fork (34c3e50), para ter um `dist` montado com o 10.

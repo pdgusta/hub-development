@@ -7,11 +7,13 @@ especial "Um trabalho pesado por vez" (a trava `etapas/trava-pesada.md`) e "Test
 - Maestro: `maestri ask "Claude Code" ...`.
 - Fila: o ticket 07 agora, depois o 08 (receita da etapa 2, opção A).
 
-## Ticket 08 (banco: limites e robustez): começando
+## Ticket 08 (banco: limites e robustez): só falta a fatia 2, depois a revisão
 
-- Ramo `ticket-08`, worktree `C:/context-hub-wt/ticket-08`, de `integracao` 763813a. Status claimed.
-- Costuras confirmadas pelo maestro ~03h15 (comentário no ticket 08). Retrato em `agents/code/test/banco/retrato/`. Kit só escreve o XML da tarefa.
-- Lição do Rebite: esperas pelo estado, com folga, e falha que diz "tempo".
+- Ramo `ticket-08`, worktree `C:/context-hub-wt/ticket-08`, ponta b02fa4f (com `integracao` 9453e3e juntada em 68fc451).
+- Costuras confirmadas pelo maestro ~03h15 (comentário no ticket 08). Retrato em `agents/code/test/banco/retrato/`.
+- Docker verde: fatias 1 (03h37), 3 a 7 (06h20 a 06h39) e o teste do 07 (06h39, 24 PASSA). Logs em
+  `etapas/logs/08-fatia-N.log`; estado do corredor em `etapas/logs/08-fatias.status`.
+- Relatório `etapas/relatorio-08-banco-limites.md` com a tabela preenchida, menos a fatia 2.
 
 ### Feito
 
@@ -26,6 +28,17 @@ especial "Um trabalho pesado por vez" (a trava `etapas/trava-pesada.md`) e "Test
 
 ### Armadilhas
 
+- Arquivo grande gravado direto no hub derruba o observador do CLI (EBUSY) e o CLI sai ("Exiting for systemd restart"):
+  o laço é o supervisor. No teste, `New-Aleatorio` escreve fora do hub e move (só a fatia 2 usa `-Direto`, de
+  propósito), e as esperas de binário usam `Espera-ComLaco`.
+- Com o caminho ofuscado, a folha apagada se reconhece pelo `path` (o `children` em claro vem vazio); `open_revs` só em
+  JSON com `Accept: application/json`, e o array vem como um item só (achados do Trilho, ticket 16).
+- `@($null).Count` é 1: conferir `$null -ne` antes de contar.
+- O Docker roda no WSL (`vmmemWSL`), que cresce com a carga; 60 MiB nos dois bancos derrubou a memória livre para 513 MB.
+- Python em heredoc com caminho do Windows estraga `\t` e `\0`: usar o Edit ou `chr(92)`; conferir caracteres de
+  controle com `grep -a -P '[\x00-\x08]'`.
+- Nunca deixar o corredor esperar a trava sozinho: ele passava à frente da fila (05h47). Agora sai se ocupada.
+
 - O CLI resolve colisão de binário sozinho pelo `mtime` (`conflictResolution/operations.ts`, isBinary) e apaga a
   perdida com `_deleted` sobre o corpo inteiro (`EntryManagerImpls.js`). O `pull-rev` recusa revisão apagada: a
   recuperação copia o banco (`_replicate`), reabre a folha com PUT do mesmo corpo sem `_deleted`, grava o sal na cópia
@@ -35,15 +48,16 @@ especial "Um trabalho pesado por vez" (a trava `etapas/trava-pesada.md`) e "Test
 
 ### Próximo passo exato
 
-1. Fila do pesado em `etapas/fila-pesada.md`: eu logo depois do Trilho. Ordem firme na fila (maestro 05h50; mudou: o Cinzel avisa). Ao lançar, criar `.local/ceder` com "Vela (real do 17)": ela entra depois da primeira fatia (3b na fila); depois das 06:58, o Trilho (Codex do 15). O corredor não espera a trava (ocupada na partida: termina) e, ao ceder, termina e anota as fatias que faltam (relançar com elas). Antes: só lançar quando o Trilho avisar "trava livre" (o aviso automático do Rebite não vale; o corredor pega a trava assim que ela fica livre, então não lançar antes da vez), lançar
-   destacado: `Start-Process pwsh -WindowStyle Hidden -ArgumentList '-NoProfile','-File','C:/context-hub-wt/ticket-08/.local/fatias.ps1','-Fatias','7,07'` (3 a 6 verdes até 06h29) (07 = teste do 07, o passo do kit mudou). A fatia 2 (51 e 201 MiB, a03b3ac) por último, numa hora de máquina quieta que o maestro combina
-   e vigiar `etapas/logs/08-fatias.status` (Monitor com tail -F). Ao "PEGOU a trava": tirar o meu nome da fila. Ao
-   "SOLTOU" no fim: avisar o Cinzel (Docker do 10; maestro 05h27). No ceder do meio: avisar o Trilho.
-2. Com SEM-MEMORIA (20 min abaixo de 2 GB): avisar o maestro, não forçar. Com "CEDE a trava ao Trilho" (depois das
-   06:58, entre fatias, uma vez, se a fila ainda tem "Trilho: Codex do 15"): `maestri ask "Trilho" "trava livre, sua vez"`;
-   o corredor espera e retoma sozinho ("RETOMA").
-3. Preencher a tabela do relatório `etapas/relatorio-08-banco-limites.md`; commit do retrato
-   (`agents/code/test/banco/retrato/`); testes do 08 e dos arquivos mexidos (sem a suíte inteira: só o Rebite, na junção); revisão com o Fiel.
+1. A fatia 2 (51 e 201 MiB; a03b3ac) numa hora de máquina quieta que o maestro combina (fila, último item). Lançar
+   destacado: `Start-Process pwsh -WindowStyle Hidden -ArgumentList '-NoProfile','-File','C:/context-hub-wt/ticket-08/.local/fatias.ps1','-Fatias','2'`
+   e vigiar `etapas/logs/08-fatias.status` (Monitor com tail -F).
+   - O corredor (cópia em `etapas/logs/08-corredor-fatias.ps1`): sai se a trava estiver ocupada na partida; piso de
+     2 GB antes de cada fatia (20 min: SEM-MEMORIA, avisar o maestro); corte abaixo de 700 MB, com limpeza; cede entre
+     fatias com `.local/ceder` (nome de quem) ou o Codex do 15 depois das 06:58, e aí PARA e anota o que falta.
+   - Ao pegar a trava: tirar o meu nome da fila. Ao soltar: avisar o primeiro da fila.
+2. Preencher a linha da fatia 2 no relatório; `git merge integracao` se andou; teste sem Docker
+   (`pwsh -NoProfile -File agents/code/test/banco/kit-sem-docker.ps1`). Sem a suíte inteira (só o Rebite, na junção).
+3. Pedir a revisão ao Fiel: ramo `ticket-08`, relatório `etapas/relatorio-08-banco-limites.md`.
 
 ## Ticket 07 (fechado: juntado e resolvido, integracao 763813a)
 

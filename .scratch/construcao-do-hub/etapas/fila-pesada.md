@@ -9,6 +9,6 @@ Entre uma fatia e outra a Brasa solta para quem estiver esperando, nesta ordem:
 1. Fiel: Docker da revisão do 10, rodada 2 (~8 min; caminho crítico)
 2. Trilho: Docker do 16, 4ª rodada (~5 min), e o Codex do 15 se já passou de 06:58
 3. Vela: harness real do 17, Claude e Copilot (Codex do 17 depois das 06:58)
+4. Cinzel: harness real do 11 (Claude, Codex e Copilot duas vezes, ~10 min, uma sessão por vez; o Codex só depois de 06:58)
 Depois das fatias da Brasa:
-4. Rebite: suíte da junção do 36 e do 10 (hub 9cc878b) e npm test do fork (integracao 34c3e50), ~20 min
 5. Brasa: fatia 2 do 08, em hora quieta combinada pelo maestro

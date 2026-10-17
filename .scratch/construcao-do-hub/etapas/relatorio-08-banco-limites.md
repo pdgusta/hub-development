@@ -102,12 +102,13 @@ Corredor destacado `.local/fatias.ps1` (aval do maestro, ~04h10):
 | Fatia | O que prova | Resultado |
 |---|---|---|
 | 1 | nada com ponto nem `local: true` chega ao banco, na varredura de partida e com o CLI rodando | verde (rodada 03h37, 14 PASSA) |
-| 2 | 51 MiB viaja (60 na primeira versão; baixado pela memória da máquina, maestro 05h20); 201 MiB não viaja, não entra no banco e fica identificável | PREENCHER |
+| 2 | 51 MiB viaja (60 na primeira versão; baixado pela memória da máquina, maestro 05h20); 201 MiB não viaja, não entra no banco e fica identificável | PENDENTE: roda como evidência numa hora de máquina quieta, combinada pelo maestro; o Fiel fecha a rodada com ela (o código não muda por ela; maestro, 2026-10-17) |
 | 3 | colisão de binário: a mais nova nas duas pastas; a perdida num ramo apagado, recuperada byte a byte antes e depois da compactação | verde (06h20, 10 PASSA: a base chegou em 33 s; a mais nova nas duas pastas em 6 s; ramo apagado nos dois bancos; recuperada byte a byte antes e depois da compactação). A 1ª tentativa (05h25) caiu na base gravada direto no hub |
 | 4 | conflito de texto aberto; retrato em dia | verde (06h24, 5 PASSA) |
 | 5 | o kit de novo não muda nada (arquivos do kit, contêiner, replicação, PID) | verde (06h26, 5 PASSA: os dois pares) |
 | 6 | laço: nada caído, nada a fazer; CLI morto; CLI morto e CouchDB fora; nada se perde | verde (06h27, 8 PASSA: CLI religado; CouchDB e CLI religados e o sync retoma nos dois sentidos em 4 s) |
-| 7 | retrato com a replicação parada | PREENCHER |
+| 7 | retrato com a replicação parada | verde (06h39, 4 PASSA) |
+| 07 | o teste do 07 (o passo do kit ganhou o passo da tarefa) | verde (06h39, 24 PASSA) |
 
 A primeira rodada (todas as fatias, 03h37) foi parada pelo Claude Code por falta de memória na máquina aos 18 min, na
 fatia 2. Limpei o daemon pelo PID, os contêineres, a pasta e a trava.
@@ -115,6 +116,16 @@ fatia 2. Limpei o daemon pelo PID, os contêineres, a pasta e a trava.
 A segunda tentativa da fatia 2 (05h11, destacada) foi cortada pelo próprio corredor: a memória livre caiu de 2.900 para
 513 MB em um minuto, com o arquivo de 60 MiB indo aos dois bancos. O Docker roda no WSL (`vmmemWSL`), que cresce com a
 carga. O maestro decidiu: fatias 3 a 7 e o teste do 07 antes; a 2 por último, com 51 MiB, numa hora de máquina quieta.
+
+Retrato gravado em `agents/code/test/banco/retrato/` (b02fa4f), com um README: binário com ramo apagado, conflito
+aberto, `_scheduler/docs` em dia e parado. Sem senha, frase nem sal.
+
+O corredor (`.local/fatias.ps1` na worktree) tem cópia em `etapas/logs/08-corredor-fatias.ps1`.
+
+## Estado para a revisão
+
+- Ponta `124f43d`: `integracao` 9cc878b (ticket 10 e 36) juntada sobre b02fa4f. Depois da junção, sem Docker: `kit-sem-docker.ps1` tudo passou.
+- A fatia 2 fica pendente por decisão do maestro: a revisão começa sem ela, e ela entra como evidência quando a máquina estiver quieta.
 
 ## Não verificado
 

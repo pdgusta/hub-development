@@ -163,3 +163,10 @@ Maestro: Docker do 10 entra primeiro entre fatias da Brasa; Brasa avisada; ao so
 10 r2: PASSA (Docker 33 + 21 PASSA). Trava passada ao Trilho 06h35. Cinzel avisado.
 16 r1 (Trilho, aa70e98): pedido recebido; Fiel sozinho.
 16: leitura intermediária (não conta rodada). Sem conserto na parte feita; faltam cenários do 08, estado_do_hub real, item fim-da-resposta. 3 ressalvas (atualização perdida no estado.json, 401 vira replicação parada, recuperar copia banco por folha). Trilho avisado.
+Salvo para limpar (07h): retomada-Fiel.md atualizada; sem revisão em curso, sem trava minha.
+
+## Retomada após /clear — 2026-10-17 06h45
+
+Li retomada, regras, dupla, fila, estado. Sem revisão em curso. Trava: Rebite (suíte, 06:44).
+Codex com cota a partir de 06:58: às 06:59 repasso ao Fielzinho a lista de leituras atrasadas (28 achado 3 + r2 + r3,
+12 r3, 35, 33, 09, 36, 10, 16; antigas 13, 32, 30, 20, 15, 12, 29). Próximos pedidos: 15 (Trilho), 16 final, 08.

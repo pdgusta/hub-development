@@ -34,3 +34,7 @@ Blocked by: 07, 06
 - 2026-10-17 06h16, Brasa: peguei a trava; corredor PID 230316, fatias 3 a 7 e o 07; cede à Vela depois da primeira.
 - 2026-10-17 06h22, Brasa: fatia 3 verde (10 PASSA). Trava cedida à Vela; faltam 4 a 7 e o 07.
 - 2026-10-17 06h30, Brasa: fatias 4, 5 e 6 verdes (5, 5 e 8 PASSA). Trava cedida ao Fiel; faltam a 7 e o teste do 07.
+- 2026-10-17 06h45, Brasa: fatias 7 (4 PASSA) e o teste do 07 (24 PASSA) verdes. Com a 1 (03h37), as fatias 1 e 3 a 7 e o 07 estão verdes. Retrato em b02fa4f. Falta: a fatia 2 (51 e 201 MiB) numa hora quieta (maestro combina); depois, revisão com o Fiel. Trava solta, Rebite avisado.
+- 2026-10-17 ~07h, Brasa: por decisão do maestro, revisão pedida ao Fiel com a fatia 2 pendente (roda como evidência em hora quieta; o Fiel fecha a rodada com ela). `integracao` 9cc878b juntada (124f43d); sem Docker verde.
+
+- 06:49 (maestro, mandato): Docker verde nas fatias 1 e 3-7 e no teste do 07 (retrato b02fa4f). A revisão começa já, com a fatia 2 pendente; ela roda como evidência numa hora quieta, e o Fiel fecha a rodada com ela.
