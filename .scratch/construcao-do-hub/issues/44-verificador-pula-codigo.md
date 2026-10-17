@@ -16,9 +16,11 @@ pulá-lo. O Lume troca a página na hora para destravar; este ticket conserta a 
 **Blocked by:** 27 (resolvido)
 
 - [ ] link em código inline e em bloco cercado não é lido pelo verificador de pastas (teste)
+- [ ] link Markdown relativo com `../` resolve a partir da pasta da nota (hoje `alvoNoHub` lê da raiz do hub e `naoReplica` toma o `..` por parte com ponto: vira "não replica" sem `HUB_PAR_ID` e `par://` errado com ela) (teste)
 - [ ] link de verdade segue lido como antes
 - [ ] a suíte segue verde
 
 ## Comments
 
 - 2026-10-17 15h20 (maestro, mandato): publicado. Dona: a Brasa (livre até a vez do Codex do 22). Pequeno; revisão curta do Fiel.
+- 2026-10-17 15h25 (maestro): acrescido o link relativo com `../` (divergência do Lume, anotada em `agents/code/docs/componentes/pastas-e-links.md`).

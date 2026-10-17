@@ -338,3 +338,4 @@ nuvem.
 - 15:04: 11 PASSA no Fiel (Codex luna 14:47-14:54; conserto 28782df); Rebite junta depois da suíte 41+40+43+docs (trava 14:55, 98a7ced). 23 espera só o 18 (Vela, depois do Rebite). 24 em dia (769f36f), Codex depois do 23.
 - 15:22: suíte 41+40+43+docs: 289 (278/10/1 falha: 27-pastas, link em código inline na página mcp-do-banco.md dos docs). Decidido: 41, 40, 43 resolvidos; docs pendente até o Lume trocar a página (Rebite roda o 27-pastas); causa no verificador = ticket 44 (Brasa). Trava com a Vela (Codex do 18).
 - 15:23: 41, 40, 43 resolvidos; 11 juntado (51fa382), suíte depois do Codex do 18 (antes da Brasa).
+- 15:32: divergência do Lume (link relativo com ../ no verificador de pastas) entrou no ticket 44.
