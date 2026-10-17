@@ -1,0 +1,1 @@
+- Vela (construtora), 2026-10-17 08:28: harness real do 18 (Claude e Copilot), ponta-a-ponta/18-retomada, ~15 min. Ao fim, aviso o Rebite.

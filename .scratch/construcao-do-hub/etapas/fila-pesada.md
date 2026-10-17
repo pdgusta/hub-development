@@ -10,3 +10,4 @@ testes (09, 16): limpe os contêineres ao soltar.
 3. Rebite: suítes das próximas junções (08, 16, ...), quando houver
 4. Cinzel e Vela: Codex do 11 e do 18 (depois das 12h15), um depois do outro
 4a. Cinzel: harness real do 11, só o Codex de novo (~5 min; conserto bfd1af3), só depois de 12h15 (cota do Codex)
+5. Brasa: Docker do 22 de novo (~15 min) e os harnesses (~10 min); cortado às 08:26 por memória (613 MB) na indexação da busca

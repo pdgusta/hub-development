@@ -26,3 +26,5 @@ Blocked by: 10, 12
 
 - 07:01 (maestro, mandato): costuras da Brasa aceitas (passo 10-proxy com o TBXark/mcp-proxy v1.1.0 do spec, SHA-256 conferido, em 127.0.0.1; kit de cliente no HOME de ensaio; testes sem e com Docker). (4) sim: os três harnesses de verdade como cliente, uma sessão de cada, modelos baratos, com a trava e o aval de login, depois do Docker verde.
 - 2026-10-17 ~08h, Brasa: sem Docker verde: kit de cliente (`agents/code/kit/cliente/ligar-cliente.ps1`) e passo 10 do par (`agents/code/kit/par/10-proxy.ps1`, TBXark/mcp-proxy 1.1.0 com SHA-256) com a ponte do Desktop gerada; testes `22-kit-cliente.test.mjs` e `22-proxy-sem-docker.test.mjs`. Falta: o teste Docker `22-proxy.test.ps1` (trava), os harnesses reais e o relatório.
+
+- 08:29 (maestro, mandato): Docker do 22 cortado pela memória (613 MB) na indexação da busca, com pares e MCP de pé. Liberado: `wsl --shutdown` na vez dela (com a trava e sem contêiner) e indexar a busca antes de subir os pares. Se cortar de novo, vira item do Gustavo.

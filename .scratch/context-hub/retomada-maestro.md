@@ -209,3 +209,4 @@ nuvem.
 - 08:11: 15 resolvido (e2b7607, 210/0). 08 juntado (e98a891), suíte na fila. Trilho: merge do 08 no 16 e rodada final; depois o 17 junta.
 - 08:19: ronda; Brasa com a trava (22, 08:17); Trilho 44%: salvar no próximo ponto; 1,7 GB livres.
 - 08:23: Trilho limpo e retomado (21: EPERM no rename consertado 22abdd2, 2ª rodada na fila; 16: falta ligar os cenários do 08).
+- 08:29: Docker do 22 cortado (613 MB, na indexação); liberado wsl --shutdown na vez dela e indexar antes dos pares. Trava com a Vela (18).

@@ -64,3 +64,22 @@ Ramo `ticket-16`, worktree `C:/context-hub-wt/ticket-16`, de `integracao` 33b817
 - Testes: `agents/code/test/16-vigia.test.mjs` 8/8 (sem Docker); `agents/code/test/16-vigia.test.ps1` (Docker, pela fila) a rodar.
 - Achado para o maestro: `agents/skills/busca/SKILL.md` ainda cita a ferramenta `read` do hub-busca, que o 12 r3 tirou dos harnesses.
 - Conserto do 12 (pedido do maestro), commit separado b4e7272: agents/skills/busca/SKILL.md não cita mais a read do hub-busca. Vai para o relatório do 16.
+
+## Cenários do 08 na passada (2026-10-17 ~08h45; proposta ao maestro)
+A passada chama o kit do 08 por um pwsh só (`Read-EnvPar` do .env do par): `Get-AcimaDoLimite`, `Get-PidSincronizador`,
+`Update-Exclusoes` (o gerador), `Stop-`/`Start-Sincronizador`. Costura do teste: a mesma `vigia passada --env`.
+1. **Binário descartado**: `_changes?style=all_docs` → documentos com mais de uma folha → `open_revs=all`; folha apagada
+   com `path` ao lado da viva = descartado. Caminho em claro: a rev viva casada com a rev do `ls` do leitor.
+   `divergencia`. "Até o Gustavo olhar" (aberto no spec): proposta, sai com `vigia recuperar` dele ou `vigia olhei
+   <caminho>`; guardado por rev em `.local/vigia/olhados.json`. Dublê: o retrato `binario-ramo-apagado.json`.
+2. **Acima de 200 MiB**: `Get-AcimaDoLimite`; um item `divergencia` por arquivo, com o caminho.
+3. **Sincronizador parado**: `Get-PidSincronizador` vazio → `informa` (não é uma das três divergências; o laço religa
+   em até 1 min). Dublê: o CLI falso ganha `daemon`.
+4. **Laço**: o que o laço fez desde a passada anterior (`laco.log`) → `informa` "o laço religou ... às HH:MM".
+5. **Gerador a cada passada** (decisão 2026-10-16 20:38): `mudou` → para e religa o sincronizador, item `informa`;
+   código 2 → item `informa` com o caminho do `index.md` ilegível, sem religar.
+6. **Config Doctor** (sem detector no spec): no fonte do plugin 1.0.35, o Doctor abre na partida quando
+   `checkUnsuitableValues(settings).version != settings.doctorProcessedVersion`. Detector: `doctorProcessedVersion` do
+   `<hub>/.obsidian/plugins/obsidian-livesync/data.json` diferente da versão da `DoctorRegulation` no `main.js`
+   instalado → `informa` "Config Doctor pendente: o sync do Obsidian para até você responder". Plugin ausente: sem item.
+   Não verificado com o Obsidian aberto.
