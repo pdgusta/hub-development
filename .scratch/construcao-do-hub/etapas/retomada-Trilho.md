@@ -5,13 +5,15 @@ simples; suíte inteira só na junção, pelo Rebite; fila do pesado em `etapas/
 (Comments), `etapas/costuras-16-Trilho.md`. Responda em pt-BR, frases curtas. Maestro = "Claude Code"; revisor =
 "Fiel"; integrador = "Rebite"; outros construtores: Brasa (08), Vela (28), Cinzel (09, 10).
 
-## Agora (05:23)
-- Docker do 16, 2ª rodada (05:14, log `logs/trilho-16-docker-2.log`): 10 passam; o daemon não apagou o ramo perdedor do
-  binário em 90 s e a forja deu 409 (Document update conflict) sem dados. Conserto 8e661db: retrato das folhas no
-  registro, forja relê e tenta 3 vezes, "daemon apagou" vira [INFO] (prova do 08), "ramo apagado forjado" é Confere.
-- Próximo: 3ª rodada do Docker entre fatias da Brasa (ela está com a trava desde 05:20, fatias 3-7). Ler o retrato
-  das folhas: se o ramo apagado vier sem `children` visível, a detecção da vigia tem o mesmo problema.
-- 15: `git merge integracao` feito (3c8f8a6); Codex depois das 06:58.
+## Agora (05:56)
+- Docker do 16, 3ª rodada (05:40, `logs/trilho-16-docker-3.log`): o daemon APAGA o ramo perdedor (folhas 2-c344 viva,
+  3-6762 apagada). Dois erros meus, consertados em 67e1f04 (9/9 sem Docker):
+  1. com o caminho ofuscado, path/mtime/pedaços vão cifrados no `path` ("/\:..."); `children` claro vazio, `mtime` 0.
+     A vigia agora reconhece a folha apagada pelo `path` (o toco de DELETE não tem). Caso novo no 16-vigia.test.mjs.
+  2. no .ps1, `Invoke-RestMethod` devolve o array como um item: `Get-Folhas` desenrola.
+- Próximo: 4ª rodada do Docker do 16 (~5 min): pedi lugar ao maestro (fila firme: Cinzel, Rebite, Brasa, eu no 15).
+  Esperado verde; aí relatório `etapas/relatorio-16-vigia.md` (citar: daemon apaga de fato no Docker, a forma ofuscada).
+- 15: `git merge integracao` feito (3c8f8a6); Codex depois das 06:58, item 4 da fila.
 
 ## Fechados nesta sessão
 12 (rodada 3, só a search nos três harnesses), 13, 33 e 35: juntados e resolvidos (integracao 33b817a).

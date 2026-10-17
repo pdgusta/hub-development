@@ -35,8 +35,8 @@ especial "Um trabalho pesado por vez" (a trava `etapas/trava-pesada.md`) e "Test
 
 ### Próximo passo exato
 
-1. Fila do pesado em `etapas/fila-pesada.md`: eu logo depois do Trilho. Só lançar quando o Trilho avisar "trava livre" (o aviso automático do Rebite não vale; o corredor pega a trava assim que ela fica livre, então não lançar antes da vez), lançar
-   destacado: `Start-Process pwsh -WindowStyle Hidden -ArgumentList '-NoProfile','-File','C:/context-hub-wt/ticket-08/.local/fatias.ps1','-Fatias','3,4,5,6,7,07'` (07 = teste do 07, o passo do kit mudou). A fatia 2 (51 e 201 MiB, a03b3ac) por último, numa hora de máquina quieta que o maestro combina
+1. Fila do pesado em `etapas/fila-pesada.md`: eu logo depois do Trilho. Ordem firme na fila (maestro 05h50): Cinzel, Rebite, eu. Só lançar depois do aviso do Rebite. O corredor não espera a trava (ocupada na partida: termina) e, ao ceder, termina e anota as fatias que faltam (relançar com elas). Antes: só lançar quando o Trilho avisar "trava livre" (o aviso automático do Rebite não vale; o corredor pega a trava assim que ela fica livre, então não lançar antes da vez), lançar
+   destacado: `Start-Process pwsh -WindowStyle Hidden -ArgumentList '-NoProfile','-File','C:/context-hub-wt/ticket-08/.local/fatias.ps1','-Fatias','3,4,5,6,7,07'` (a 3 vermelha às 05h25, consertada em e0e0ecc; a 4 parada no começo às 05h48) (07 = teste do 07, o passo do kit mudou). A fatia 2 (51 e 201 MiB, a03b3ac) por último, numa hora de máquina quieta que o maestro combina
    e vigiar `etapas/logs/08-fatias.status` (Monitor com tail -F). Ao "PEGOU a trava": tirar o meu nome da fila. Ao
    "SOLTOU" no fim: avisar o Cinzel (Docker do 10; maestro 05h27). No ceder do meio: avisar o Trilho.
 2. Com SEM-MEMORIA (20 min abaixo de 2 GB): avisar o maestro, não forçar. Com "CEDE a trava ao Trilho" (depois das

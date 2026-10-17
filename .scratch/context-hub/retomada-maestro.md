@@ -166,3 +166,4 @@ nuvem.
 - 05:26: 09 juntado (9453e3e), suíte pendente com a do 28; Cinzel limpo (10: fork 58c8504, hub f7a8358, sem Docker verde).
 - 05:33: Trilho terminou o Docker do 16 (trava à Brasa 05:20, fatias 3-7). Cinzel com o teste Docker do 10 escrito (b2d855e); fila: Brasa, Cinzel, Rebite (28+09), Trilho (Codex 15), Brasa (fatia 2 em hora quieta).
 - 05:48: corrida na trava: o corredor destacado da Brasa retomava a trava sozinho e furava a fila. Ordem firme: Cinzel (10), Rebite (suíte 28+09), Brasa (fatias 3-7), Trilho (Codex 15 após 06:58). Mensagem do Rebite tinha ficado sem Enter: reenviado.
+- 05:57: 09 de novo com três instâncias e cifra: 21 PASSA. 10: 30 PASSA, 4 falhas só do teste (CRLF no AGENTS.md do ensaio; conflito fundido pelo LiveSync), consertado 6095213; Cinzel entra depois do Rebite (~3 min). 16: erro do teste com caminho ofuscado, consertado 67e1f04; 4ª rodada Docker junto do Codex do 15 após 06:58.
