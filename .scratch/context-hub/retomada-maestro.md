@@ -82,4 +82,11 @@ resposta (até três devoluções); linha nova no catálogo é livre; três lacu
 `par://<par>/<unidade>/<caminho>`; teste único do gemini liberado. Radar: recrutas em sessões do Claude na nuvem.
 Repositório de planejamento versionado (primeiro commit 2026-10-16).
 
+## Desde a reescrita (2026-10-17 ~01h15)
+
+- Duas suítes rodaram juntas (Brasa 00h58, Trilho 01h06; a trava da Brasa foi sobrescrita). O Trilho parou a dele; a da
+  Brasa deu 2 falhas por tempo na busca do 12. Agora: Trilho roda a suíte do 13 com a trava e pede a revisão; a Brasa
+  (limpa às ~01h15, leu a retomada) repete a suíte do 07 depois, então rodada 2 ao Fiel.
+- Trilho (49%) e Fiel (43%) estão acima de 40%: limpar no próximo ponto seguro.
+
 ## Nenhuma rodada aberta.

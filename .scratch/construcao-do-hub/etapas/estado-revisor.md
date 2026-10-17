@@ -94,3 +94,11 @@ Fielzinho sem cota até 01:34 (maestro): revisar sozinho e registrar leitura pen
 20 r2: PASSA (13/13, sondas ok). Vela avisada.
 REGRA (maestro): trabalho pesado (Docker, suíte inteira, busca, npm install, harness real) só com etapas/trava-pesada.md (esperar se <30 min; criar com nome/o que/hora; apagar no fim, mesmo falhando). Teste de um arquivo não precisa.
 30 r1 (Vela): PASSA (46/46 nos testes ligados; suíte inteira com a Vela; reabre se vermelho fora do 12-busca). Parecer etapas/parecer-30-Vela.md.
+
+## Salvo para limpar — 2026-10-17
+
+Retomada completa em etapas/retomada-Fiel.md (tabela de pareceres, próximos pedidos, regras vivas).
+Ocioso. Próximos: 13 (Trilho), 07 r2 (Brasa), rodadas curtas do Codex (12, 15, 20).
+Sem Docker nem ensaio de pé.
+31 r1 VOLTA (parecer forjável em .local/acervo/pareceres). 32 r1 VOLTA (espaço no caminho gera link quebrado). Pareceres etapas/parecer-31-Vela.md e parecer-32-Vela.md. Vela avisada.
+31 r2 e 32 r2: PASSA (19/19, 18/18, sondas ok). Suítes pendentes da trava; reabrem se vermelho. Vela avisada.

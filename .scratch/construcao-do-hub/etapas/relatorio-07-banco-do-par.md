@@ -173,7 +173,13 @@ o `init-settings`, o `remote-add` e o `mark-resolved` (com uma falha inventada).
 | Teste | Resultado |
 |---|---|
 | `07-banco.test.ps1` em 6911857 | 24 PASSA, saída 0 (log `.local/07-r2e.log`; hub A→B, 175 arquivos, em 37 s) |
-| prova 01, prova 02, teste do 06 | PREENCHER |
+| prova 01 em 87ce68b | 17 PASSA, saída 0 (hub A→B, 260 arquivos, em 70 s; `.local/prova01-r2g.log`) |
+| prova 02 | 12 PASSA, saída 0 (`.local/prova02-r2f.log`) |
+| teste do 06 | 14 PASSA, saída 0 (`.local/06-r2f.log`) |
+| suíte comum (`node --test`) | PREENCHER: repetir com a trava. A rodada em cea150b deu 2 falhas por tempo na indexação da busca (ticket 12), rodando junto com a suíte do Trilho |
+
+A prova 01 caiu uma vez antes (00:18): o daemon do par A não ficou pronto em 60 s, com a máquina carregada. A espera
+subiu para 180 s em 87ce68b.
 
 **Memória:** a máquina ficou sem memória duas vezes, e o sistema parou a fila.
 - A primeira vez (~23h05) foi no meio da prova 01. Limpei os contêineres `hub-ensaio-00-a/b` e a pasta, pelos `.env`

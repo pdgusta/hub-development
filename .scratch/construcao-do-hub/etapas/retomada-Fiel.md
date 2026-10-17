@@ -1,37 +1,65 @@
-# Retomada do Fiel (revisor, Claude Opus 5.5) — 2026-10-17
+# Retomada do Fiel (revisor, Claude Opus 5.5 médio) — 2026-10-17
 
-Leia nesta ordem: `regras-da-construcao.md`, `revisao-em-dupla.md`, `estado-revisor.md` (fim), este arquivo.
+Leia nesta ordem: `regras-da-construcao.md` e `revisao-em-dupla.md` (inteiros), o fim de `estado-revisor.md`, este
+arquivo. Depois `maestri list`. Todos os caminhos abaixo são relativos a
+`C:/Projetos/context-hub/.scratch/construcao-do-hub/etapas/`.
 
-## Fechados (passa)
-05 r4, 01 r1, 06 r2, 14 r2, 27 r2, 29 r2. Pareceres: `01-esqueleto/parecer-Trilho.md` (05), `00-provas/parecer-Brasa.md`
-(01), `01-esqueleto/parecer-Vela.md` (06), `parecer-Trilho.md` (14), `parecer-Vela.md` (27), `parecer-29-Brasa.md`.
-Também 19 r1 (`parecer-19-Vela.md`). Pendente: leitura do Fielzinho no 29 r2, 07 r2 e 19 r1 (sem cota até 01:34).
+## Quem é quem
+- Construtores: Brasa, Vela, Trilho. Integrador: Rebite (junta em `integracao`). Maestro: "Claude Code".
+- Fielzinho (Codex): parceiro de revisão. Esteve sem cota do Codex; o maestro mandou revisar sozinho e registrar no
+  parecer que a leitura dele fica para depois. Quando a cota voltar, ele lê os que fechei sozinho e conta o que achar
+  (vira ressalva para o Rebite, sem segurar junção).
+- Eu respondo só ao construtor (maestri ask); ele leva o passa ao Rebite.
 
-## 20 r2 PASSA; 15 r1 PASSA (`parecer-15-Trilho.md`); 12 r2 PASSA. Codex pendente no 12, 15 e 20 (rodadas curtas
-de evidência depois das 01:34 de São Paulo). Leitura do Fielzinho pendente: 07, 12, 15, 19, 20, 29.
+## Próximos pedidos (anunciados pelo maestro)
+1. **Ticket 13 (Trilho)**: ainda não pedido. Seguir o fluxo: repassar ao Fielzinho, ler ticket/relatório/diff, rodar.
+2. **Ticket 07 rodada 2 (Brasa, banco do par)**: ramo ticket-07, worktree `C:/context-hub-wt/ticket-07`. Conferir os
+   3 consertos da r1 (`02-banco/parecer-Brasa.md`): (1) `Get-PidSincronizador` conferir a linha de comando do daemon,
+   não só o nome `node` (banco.psm1:215); (2) `Initialize-Dispositivo` comparar banco/cifra/frase/ofuscação com o
+   `.env` em vez de voltar cedo com `isConfigured` (:185); (3) `isConfigured` só depois do `ACCEPTED` do
+   `mark-resolved` (:197/:199). Cada um com teste. Docker (com trava): `pwsh -NoProfile -File
+   agents/code/test/07-banco.test.ps1`, provas 01 e 02 (`agents/code/test/provas/0{1,2}-*/prova.ps1`),
+   `agents/code/test/gerar-exclusoes/sincronizador.ps1`, um de cada vez, logs `revisao-07-r2-<nome>.log`. Na r1, sob
+   carga, 07-banco e prova02 deram 1 vermelho de tempo cada; repetidos, passaram. Esta é a 2ª volta: na 3ª, passa com
+   ressalvas.
+3. **Rodadas curtas de evidência do Codex** (aceite real, cota voltou às 01:34 de São Paulo): 12 (Trilho), 15
+   (Trilho), 20 (Vela). Conferir o commit só de evidência: registro/saída do Codex, hashes iguais, login apagado.
+   Não rodar harness eu mesmo sem necessidade.
 
-## 12 r1 fechado VOLTA (1 conserto: medidas.json regravado pelo teste comum); esperando rodada curta com Codex
-(`parecer-12-Trilho.md`).
+## Pareceres fechados (todos passa, salvo nota)
+| Ticket | Construtor | Parecer | Nota |
+|---|---|---|---|
+| 05 r4 | Trilho | `01-esqueleto/parecer-Trilho.md` | acordo com Fielzinho |
+| 01 r1 | Brasa | `00-provas/parecer-Brasa.md` | acordo |
+| 06 r2 | Vela | `01-esqueleto/parecer-Vela.md` | acordo |
+| 14 r2 | Trilho | `parecer-Trilho.md` | acordo |
+| 27 r2 | Vela | `parecer-Vela.md` | acordo; ressalva "link fora do hub" aberta ao maestro |
+| 29 r2 | Brasa | `parecer-29-Brasa.md` | Fiel sozinho |
+| 19 r1 | Vela | `parecer-19-Vela.md` | Fiel sozinho |
+| 12 r2 | Trilho | `parecer-12-Trilho.md` | Fiel sozinho; Codex pendente |
+| 15 r1 | Trilho | `parecer-15-Trilho.md` | Fiel sozinho; Codex pendente |
+| 20 r2 | Vela | `parecer-20-Vela.md` | Fiel sozinho; Codex pendente |
+| 30 r1 | Vela | `parecer-30-Vela.md` | Fiel sozinho; reabre se a suíte da Vela der vermelho fora do 12-busca |
+| 31 r2 | Vela | `parecer-31-Vela.md` | Fiel sozinho; suíte e ponta a ponta Claude pendentes da trava (reabre se vermelho) |
+| 32 r2 | Vela | `parecer-32-Vela.md` | Fiel sozinho; suíte pendente da trava (reabre se vermelho) |
+| 07 r1 | Brasa | `02-banco/parecer-Brasa.md` | **VOLTA** (3 consertos), aguardando r2 |
 
-## 07 r1 fechado VOLTA (parecer `etapas/02-banco/parecer-Brasa.md`); Brasa avisada. Esperando a rodada 2.
+Leitura do Fielzinho pendente: 07, 12, 15, 19, 20, 29, 30.
 
-## (histórico) ticket 07 (Brasa, banco do par), rodada 1
-- Ramo ticket-07, worktree `C:/context-hub-wt/ticket-07`, código em 7fa0e56 (Brasa juntou integracao 0a8e17f em e3ff419
-  depois; nada dela mudou). Relatório `etapas/relatorio-07-banco-do-par.md`.
-- Docker do Fiel em sequência (07-banco.test.ps1, prova01, prova02, sincronizador): logs
-  `etapas/revisao-07-r1-<nome>.log` (cada um termina com `saida=N` e a lista de contêineres hub-ensaio que sobraram).
-- Fielzinho propôs VOLTA (parecer-Brasa-fielzinho.md) com três achados: (1) `Get-PidSincronizador` aceita qualquer
-  node no PID salvo (impede daemon; Stop mata processo alheio); (2) `Initialize-Dispositivo` aceita
-  `isConfigured:true` com banco/cifra/ofuscação divergentes do env; (3) `isConfigured` gravado antes do
-  `mark-resolved`: falha no meio deixa o dispositivo nunca aceito. Falta: conferir os três no código
-  (`agents/code/kit/par/banco/banco.psm1`), ler os logs Docker, gravar `etapas/02-banco/parecer-Brasa.md`, avisar Brasa.
-
-30 r1 PASSA (`parecer-30-Vela.md`; reabre se a suíte da Vela der vermelho fora do 12-busca).
+## Como reviso (o que funcionou)
+- `git log`, `git status`, `git merge-base --is-ancestor integracao HEAD`; ler ticket (`../issues/NN-*.md`),
+  relatório e diff; rodar os testes do ticket eu mesmo; reproduzir cada achado com sonda própria (hub de ensaio por
+  `node agents/code/test/hub-de-ensaio/montar.mjs <dest>`, eventos JSON pelo stdin dos hooks).
+- Parecer: veredito passa/volta, consertos numerados com linha, reprodução e quem achou; ressalvas; evidências.
+- Depois de rodar testes, `git status` limpo; se meu teste sujou a árvore, desfazer só o que eu causei.
+- Gravar estado no `estado-revisor.md` a cada passo.
 
 ## Regras vivas
-- Trabalho pesado (Docker, suíte inteira, busca, npm install, harness real): só com `etapas/trava-pesada.md`
-  (se existe com menos de 30 min, esperar; senão criar com nome, o que roda e hora; apagar no fim, mesmo falhando).
-- Não rodar `ponta-a-ponta/` nem `provas/03-codex-hooks/` (até o 29 em integracao; depois só com `HUB_HARNESS_REAL=1`).
-- Docker só o Fiel; um teste por vez; derrubar o que sobrar.
-- maestri ask com `/`, nunca `\`.
-- Ressalva aberta ao maestro: link para fora do hub (story 44) no 27.
+- Trabalho pesado (Docker, suíte inteira, indexação da busca, npm install, harness real): conferir `trava-pesada.md`;
+  se existe com menos de 30 min, esperar; senão criar com nome, o que roda e hora; apagar no fim, mesmo falhando.
+  Teste de um arquivo só não precisa.
+- Harness real só com `HUB_HARNESS_REAL=1` (ticket 29 juntado); a suíte comum pula esses testes.
+- Docker só o Fiel; um teste por vez; derrubar o que sobrar (`docker ps -a | grep hub-ensaio`).
+- maestri ask com `/`, nunca `\`. Ask longo pode estourar o tempo do comando (o construtor está ocupado); a
+  mensagem chega mesmo assim.
+- Teto: duas voltas; na terceira, passa com ressalvas escritas. Sem subagentes. Nada global de verdade.

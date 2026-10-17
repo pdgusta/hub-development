@@ -1,22 +1,34 @@
-# Retomada do Trilho (construtor), gravada em 2026-10-17 ~00h50 (São Paulo)
+# Retomada do Trilho (construtor), gravada em 2026-10-17 ~01h20 (São Paulo)
 
-Leia antes: `etapas/regras-da-construcao.md` (inteiras), os tickets 12 e 15 (Comments) e os relatórios deles. Responda em pt-BR, frases curtas. Sem
+Leia antes: `etapas/regras-da-construcao.md` (inteiras), os tickets 12, 13 e 15 (Comments) e os relatórios deles. Responda em pt-BR, frases curtas. Sem
 subagentes. Maestro = "Claude Code"; revisor = "Fiel"; integrador = "Rebite".
 
-## Onde estou (2026-10-17 ~00h50, São Paulo)
-- Ticket 12: juntado (integracao c5b946a). Ticket 15: rodada 1 do Fiel passa (ramo ticket-15, HEAD c789b9d, worktree
-  C:/context-hub-wt/ticket-15); Rebite avisado. Relatórios: etapas/relatorio-12-busca.md e etapas/relatorio-15-aviso-de-leitura.md.
-- Pendente nos dois: o ponta a ponta do Codex (limite de uso até 01:34 de 2026-10-17, hora de São Paulo). Aviso
-  agendado (sleep em segundo plano) para 01:40.
+## Onde estou (2026-10-17 ~01h20, São Paulo)
+- Tickets 12 e 15: juntados (integracao). Ticket 13 (gemini pronto e desligado): ramo ticket-13, worktree
+  C:/context-hub-wt/ticket-13, com integracao 5d84d76 juntada (merge acca259). Relatório etapas/relatorio-13-gemini.md.
+  Commits: f8b8769 (teste do 12 pelo índice), 32e77b2 (gemini.env e iniciar.ps1 -Gemini, 4 testes com dublê),
+  95e37b7 (teste único feito: 62 pedidos ao Google; contêiner parado de novo).
+- eb7c941: o teste do 13 fecha todos os dublês (a suíte travava no 13-gemini). Falta: suíte comum com a trava e --test-concurrency=1, depois pedir a revisão ao Fiel. Contexto acima de 40%: salvo para limpar.
+- Pendente: o ponta a ponta do Codex no 12 e no 15 (limite de uso até 01:34). Aviso agendado para 01:40 (pode ter
+  se perdido no /clear: conferir a hora e seguir).
 
 ## Falta (próximo passo exato)
-1. Às 01:40: no ticket-12, HUB_HARNESS_REAL=1 HARNESSES=codex node --test --test-concurrency=1
-   agents/code/test/ponta-a-ponta/12-busca.test.mjs; no ticket-15, o mesmo com 15-leitura.test.mjs. Um commit só de
-   evidência em cada ramo (evidencia-12/codex ou evidencia-15/codex e os hashes); uso de login nos relatórios.
-2. Pedir ao Fiel a rodada curta dos dois juntos; depois avisar o Rebite (ele junta e comenta nos tickets).
-3. Se falhar: conserto no ramo do ticket. No 15, falha esperada é a leitura por PowerShell não cair no adaptador
-   do Codex (leiturasDoShell em agents/code/hooks/leitura/leitura.mjs).
-4. Esperar o próximo ticket do maestro.
+1. Ler o parecer do Fiel do 13 (etapas/parecer-13-Trilho.md) e aplicar consertos; depois do passa, avisar o Rebite.
+2. Codex (depois das 01:34; é harness de verdade: trava pesada em etapas/trava-pesada.md antes, apagar ao fim):
+   no ticket-12 (git merge integracao antes), HUB_HARNESS_REAL=1 HARNESSES=codex node --test --test-concurrency=1
+   agents/code/test/ponta-a-ponta/12-busca.test.mjs; no ticket-15 (worktree C:/context-hub-wt/ticket-15, merge de
+   integracao antes), o mesmo com 15-leitura.test.mjs. Um commit só de evidência em cada ramo (evidencia-NN/codex e os
+   hashes); uso de login no relatório de cada um; rodada curta do Fiel dos dois; aviso ao Rebite (ele junta e comenta).
+3. Se o Codex do 15 falhar: a leitura por PowerShell não caiu no adaptador (leiturasDoShell em
+   agents/code/hooks/leitura/leitura.mjs); conserto no ramo ticket-15.
+
+## Regras novas a lembrar
+- Trava pesada (regras): Docker, suíte inteira, indexação da busca, npm install, harness de verdade: conferir
+  etapas/trava-pesada.md (se menos de 30 min, esperar), criar com nome/o quê/hora, apagar ao fim. Suíte com
+  --test-concurrency=1. Teste só do próprio arquivo dispensa a trava.
+- FreeLLMAPI: contêiner freellmapi-freellmapi-1 (docker start/stop, nunca criar), memória livre >= 2 GB antes. Uso do
+  dia: docker exec com node e better-sqlite3 em /app/server/data/freeapi.db (MSYS_NO_PATHCONV=1 no Git Bash).
+- Script .ps1 sem [CmdletBinding()] não recusa opção desconhecida (vai para $args).
 
 ## Achados (vão para o relatório)
 1. **Caminho curto do Windows** (`GUSTAV~1.DEL`): o vigia de arquivos aborta o servidor na primeira mudança

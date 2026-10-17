@@ -1,1 +1,1 @@
-- Trilho (construtor), 2026-10-17 00:58: teste único do gemini (ticket 13): docker start freellmapi-freellmapi-1 + duas buscas indexando (arctic e gemini). Apago ao fim.
+- Trilho (construtor), 2026-10-17 01:50: suíte comum --test-concurrency=1 no ramo ticket-13 (C:/context-hub-wt/ticket-13). Apago ao fim.

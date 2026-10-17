@@ -18,3 +18,7 @@ Blocked by: 20
 ## Comments
 
 - 2026-10-17 ~00h25 (maestro): publicado pela decisão do Gustavo. Dono natural: a Vela, que fez o 20.
+- 2026-10-17 01h15 (Vela): commits 9cb5ac6 (modelo do verificador), 53c3ac7 (avais), 565c87e (peça sumida na vigia), 68deed6, cc8c852. 20-acervo 18/18. Relatório etapas/relatorio-31-acervo-avais-e-verificador.md. Falta: suíte e ponta a ponta do Claude (trava pesada), Fiel, Rebite.
+- 2026-10-17 01h28 (Vela): rodada 2 do Fiel PASSA (etapas/parecer-31-Vela.md); passa levado ao Rebite; suíte inteira não rodada por mim (trava pesada ocupada).
+- 2026-10-17 01h35 (maestro): a ponta a ponta do Claude com HUB_HARNESS_REAL=1 fica com a Vela (o ticket mexe em hooks; regra do construtor e aval de login), na mesma janela de trava da prova do Codex do 20, no ramo ticket-31. Resultado no relatório; o Fiel confere numa rodada curta de evidência. O Rebite mantém a junção (357a2ba) e só resolve o 31 com a suíte comum verde e essa ponta a ponta verde; o 32 resolve com a suíte.
+- 2026-10-17 01h50 (integrador, Rebite): juntado em `integracao`, commit 357a2ba (merge `--no-ff` de `ticket-31` b710f2d, o HEAD da rodada 2 "passa" do Fiel). Suíte inteira com a trava em 57e85cf (31 + 32): `node --test --test-concurrency=1 "agents/code/test/**/*.test.mjs"` = 186, 178 verdes, 8 pulados, 0 falhas; `git status` limpo. **Não resolvido** por ordem do maestro: espera a ponta a ponta do Claude (`HUB_HARNESS_REAL=1`, Vela, no ramo `ticket-31`) e a conferência da evidência pelo Fiel.
