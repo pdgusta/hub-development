@@ -19,3 +19,4 @@ Blocked by: None (can start immediately)
 ## Comments
 
 - 2026-10-16 ~21h35 (maestro): publicado pelo achado da Brasa no 07. Dono: a Vela (fez a prova 03), enquanto o 27 está em revisão; a ponta a ponta do 14 é do Trilho, que ela pode consultar.
+- 2026-10-16 ~21h40 (maestro): passado à Brasa, que achou o problema e espera a revisão do 07; a Vela ficou com os cinco consertos do 27.
