@@ -361,3 +361,4 @@ nuvem.
 - 18:50: causa A→B achada (Brasa): semente de ~6,5 min depois da subida; conserto no 25 (pares.ps1 espera o B convergir; fase 2 120 s), Vela. --interval fora. Suíte 24+22 (Rebite) rodando.
 - 18:51: Brasa fora de novo (`claude --resume f538f66e-6cb5-4a2d-bc3d-16815b8e0c68`), nada pendente.
 - 19:13: Fiel VOLTA parcial do 25 (fase 7 não rodou harness; evidência sobrescrita); consertos fc6b10c, dac76e6, f6a0f21. Ordem: fase 7, fase 4, Codex 2, numa subida se der; nada pesado começa depois de 19h45.
+- 19:21: 24 RESOLVIDO (suíte 359: 345/14/0; 56cd23a); 22 com a evidência do Codex. Só o 25 aberto (e o 26 do Gustavo). Vela com a trava (fases 7, 4, Codex 2).
