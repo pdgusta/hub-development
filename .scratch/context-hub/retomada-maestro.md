@@ -312,3 +312,4 @@ nuvem.
 - 12:15: ronda; 17 juntado (e7203b4), suíte com o Rebite desde 11:59; Codex de volta: fila Cinzel (11, 24), Vela (18, 25), Brasa (22); Fielzinho volta à dupla; Vela 41%: salvar. Lume na página do 04. 4,3 GB livres. Contexto do maestro ~545k (auto-compact perto).
 - 12:19: Vela limpa e retomada.
 - 12:20: Lume com 5 páginas (docs 5b6e9b5), 1ª junção dos docs pedida ao Rebite; comentário velho do conteudo.mjs vai no 38.
+- 12:27: 23: conserto curto antes da junção (fazer() que falha apagava o original no desfazer).
