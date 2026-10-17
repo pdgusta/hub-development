@@ -1,13 +1,29 @@
 # Retomada do maestro
 
-Reescrita em 2026-10-17 ~01h (Brasília), antes de um /clear pedido pelo Gustavo.
+Reescrita em 2026-10-17 ~04h (Brasília). Atualize a cada evento.
+
+## Mandato (Gustavo, 2026-10-17 ~04h) — vale até ele dizer o contrário
+
+O maestro **orquestra sozinho e decide pelo Gustavo**, com critério "afiado o bastante para não quebrar nada e leve o
+bastante para a execução seguir com bom progresso e alinhada ao spec". Decisão crítica que só muda uma decisão já
+tomada, sem atrapalhar o resultado final, pode seguir: registre no ticket dono ("decidido pelo maestro, mandato de
+2026-10-17") e na lista **Para rever com o Gustavo** abaixo. Só o realmente bloqueante fica para ele, de dia. Liberdade
+parcial para abrir e fechar aplicativos e processos da execução. **Contexto do maestro: nunca passar de 700k tokens**;
+antes disso, esta retomada em dia e compactar. Memória `autonomia-na-construcao`.
+
+## Para rever com o Gustavo
+
+- (técnica, 2026-10-17 ~03h50) O hub-busca expõe só a `search` nos três harnesses (a `read` dele furava o aviso de
+  leitura do 15); Claude por `deny` de `mcp__hub-busca__read`. Ticket 15.
+- (técnica) Tickets de conserto publicados pelo maestro: 34 (roteamento), 35 (aval sem parecer). Tornar local faz
+  `git rm -r --cached` (histórico guarda o antigo). Ticket 33 foi ao Trilho, não à Vela como dizia a opção.
 
 ## Leia nesta ordem
 
 Caminhos relativos a `C:\Projetos\context-hub\`.
 
 1. **Este arquivo**, inteiro.
-2. `AGENTS.md` e o `MEMORY.md` da memória (já vem no contexto). Memórias novas de 2026-10-16/17 que mandam no dia a dia:
+2. `AGENTS.md` e o `MEMORY.md` da memória (já vem no contexto). Memórias que mandam no dia a dia: `autonomia-na-construcao`,
    `maestro-nao-executa`, `contexto-dos-recrutas-40`, `rodadas-pelo-chat`, `rodada-explicacao-acima-das-perguntas`.
 3. `.scratch/construcao-do-hub/etapas/regras-da-construcao.md`, inteiro (o que os recrutas seguem).
 4. `.scratch/construcao-do-hub/etapas/juntar-tickets.md` e `revisao-em-dupla.md` (o fluxo do Rebite e da dupla).
@@ -28,8 +44,8 @@ C:\context-hub log --oneline -3 integracao`, `etapas/trava-pesada.md` e `etapas/
   **Fielzinho**; depois do "passa", o construtor avisa o **Rebite**, que junta em `integracao` (worktree
   `C:\context-hub-wt\integracao`), roda a suíte, resolve o ticket e avisa o maestro. O maestro **não junta nem executa a
   construção** e não é o centro da comunicação (os três construtores estão ligados entre si); ele passa o próximo ticket
-  da fronteira, responde perguntas técnicas (registrando no ticket) e leva ao Gustavo as decisões.
-- **Decisões do Gustavo:** o portal está **fechado** desde 2026-10-17 00h24 (RAM curta; o servidor parou, o terminal
+  da fronteira, responde perguntas técnicas (registrando no ticket) e decide pelo Gustavo (mandato acima).
+- **Decisões do Gustavo (só o bloqueante, de dia):** o portal está **fechado** desde 2026-10-17 00h24 (RAM curta; o servidor parou, o terminal
   "Portal" fica no canvas, religa com `.\iniciar.cmd` na pasta do portal). Enquanto isso, cada rodada é escrita em
   `.scratch/context-hub/portal/rodadas/` (explicação lá; validar com `leitores._parse_perguntas`) e enviada pelo
   **Maestri Chat, thread blue** (`maestri say`, curta, opções e a recomendada); a resposta dele vale como da rodada:
@@ -45,32 +61,27 @@ C:\context-hub log --oneline -3 integracao`, `etapas/trava-pesada.md` e `etapas/
   indexação, npm, harness real). Suíte comum: `node --test "agents/code/test/**/*.test.mjs"` sem `HUB_HARNESS_REAL`
   (os de harness ficam pulados; ticket 29); `--test-concurrency=1` sob carga. Se travar de novo, as saídas são do
   Gustavo: baixar a memória do Docker (Settings > Resources) ou aumentar o arquivo de paginação.
-- **Codex:** a conta bateu no limite; volta às 01:34 de 2026-10-17. Pendentes nessa hora: as provas do Codex do 12, 15 e
-  20 (commits só de evidência, rodada curta do Fiel) e as leituras do Fielzinho do 07, 12, 15, 19, 20 e 29. Até lá o
-  Fiel revisa sozinho.
+- **Codex:** cota de volta desde 01:34.
 
-## Quem está no canvas
+## Quem está no canvas (2026-10-17 ~04h)
 
-- **Brasa** (Claude Opus 5.5 médio, construtora): **07** (banco do par). Consertos feitos; o teste do ticket com Docker
-  passou (24 PASSA); faltam as provas 01, 02 e o teste do 06 com Docker, um de cada vez, piso de 2 GB livres e trava.
-  Depois: **08**. Contexto ~40%.
-- **Vela** (idem): **31** (acervo: registro dos avais, verificador escolhido pelo maestro, peça que sumiu), depois **32**
-  (link para fora do hub). Contexto ~16%.
-- **Trilho** (idem): **13** (gemini pronto e desligado). Teste único liberado pelo Gustavo (A), com a cota conferida
-  antes; pode ligar o contêiner `freellmapi-freellmapi-1` e pará-lo ao fim. Contexto ~42%.
-- **Fiel** (Claude Opus 5.5 médio, desde 2026-10-16 ~20h; era Codex): revisor principal; estado em
-  `etapas/estado-revisor.md`. Contexto ~42%.
-- **Fielzinho** (Codex GPT 6-Astra médio, acesso total, iniciado pelo Gustavo): revisor parceiro; sem cota até 01:34.
-- **Rebite** (Claude, "Integrador da construção"): junta e resolve. Contexto ~20%.
-- **Portal** (terminal do servidor, parado). Aquarela e Lente saíram do canvas a pedido do Gustavo.
+- **Brasa** (Claude Opus 5.5 médio, construtora): **08** (banco: limites e robustez), worktree ticket-08 de 763813a;
+  costuras confirmadas (teste Docker `08-banco-limites.test.ps1`, laço `kit/par/banco/laco.ps1` com XML da tarefa sem
+  registrar, retrato em `agents/code/test/banco/retrato/`). Limpa ~01h15.
+- **Vela** (idem): **28** (pastas locais), depois **09** (MCP do banco, fork em `C:\Projetos\hub-mcp-banco`, banco de
+  ensaio pelo `ensaio.psm1`, porta 5996). Limpa ~02h30.
+- **Trilho** (idem): refaz o real do 12 e do 15 nos três (só a `search` do hub-busca), rodada do Fiel; depois suíte e
+  revisão do **35** (código feito, 4a17dbe); depois **33**. Limpo ~02h00.
+- **Fiel** (Claude Opus 5.5 médio): revisor principal; estado em `etapas/estado-revisor.md`. Limpo ~03h55.
+- **Fielzinho** (Codex GPT 6-Astra médio): revisor parceiro, com cota; leituras atrasadas na fila do Fiel.
+- **Rebite** (Claude): junta e resolve.
+- **Portal** (terminal do servidor, parado).
 
-## Placar (2026-10-17 ~01h)
+## Placar (2026-10-17 ~04h)
 
-- Resolvidos e juntados (15): 01-06, 12, 14, 15, 19, 20, 27, 29, 30 (`integracao` em 5d84d76). Etapas 0 e 1 completas.
-- Em curso: 07 (Brasa), 13 (Trilho), 31 (Vela). Fila: 32 (Vela). **Quase tudo o mais espera o 07**: 08, 09, 28 dependem
-  dele, e 10, 11, 16-18, 21-25 dependem desses. 26 é `ready-for-human`.
-- Tickets criados além dos 26 do `/to-tickets`: 27 (verificador das pastas), 28 (pastas locais: script e git), 29
-  (harness só sob pedido), 30 (montador mostra a falha do git), 31 (três lacunas do acervo), 32 (link fora do hub).
+- Resolvidos (19 de 35): 01-07, 12-15, 19, 20, 27, 29-32, 34 (`integracao` 763813a). 26 originais: 13 resolvidos.
+- Em curso: 08 (Brasa), 28 (Vela), 35 + real do 12/15 (Trilho). Fila: 09 (Vela), 33 (Trilho).
+- Abrem depois: 10 (09+05), 16 (08+10), 22 (10+12), 11 (10), 17 → 18, 21, 23 → 24 → 25; 26 é do Gustavo.
 
 ## Decisões do Gustavo em 2026-10-16/17 (detalhe no ticket 16)
 
@@ -79,17 +90,10 @@ Lugar do código (`agents/skills/` para o que o agente chama, `agents/code/` par
 (Brasa 07 e 08); pastas locais (script, vigia roda o gerador, tornar local, `.git/info/exclude`); laço do fim da
 resposta (até três devoluções); linha nova no catálogo é livre; três lacunas do acervo (avais em
 `agents/maestro/avais/`, o maestro escolhe o verificador, peça sumida vira item da vigia); link fora do hub
-`par://<par>/<unidade>/<caminho>`; teste único do gemini liberado. Radar: recrutas em sessões do Claude na nuvem.
-Repositório de planejamento versionado (primeiro commit 2026-10-16).
+`par://<par>/<unidade>/<caminho>`; teste único do gemini liberado; fork do MCP em repositório próprio
+`C:\Projetos\hub-mcp-banco`, só local (A); ticket 33 das sobras do link (A). Radar: recrutas em sessões do Claude na
+nuvem.
 
-## Desde a reescrita (atualizado 2026-10-17 ~02h35)
+## Diário (mais novo embaixo)
 
-- Resolvidos depois da reescrita: 32 (57e85cf), 13 (236b3ef). 31: rodada 3 passa (Fiel e Fielzinho); conserto do CRLF
-  juntado em e82ce65; o Rebite resolve com a suíte verde.
-- 07 (Brasa): rodada 2 no Fiel, já com o Fielzinho (99ea624, suíte 179/0). Ao passar, abre 08, 09 e 28.
-- Tickets novos de conserto, publicados pelo maestro (como o 30): 34 (roteamento, leitura tardia do 19) com a Vela;
-  35 (aval sem parecer, ressalva do 31) com o Trilho. Trilho depois: Codex do 12 e do 15 quando tiver a trava.
-- Limpos: Brasa ~01h15, Trilho ~02h00, Vela ~02h30, Fiel ~03h55. 12 e 15 voltam à revisão (só a search do hub-busca exposta nos três, decisão técnica do maestro no 15).
-- Rodadas do fork do MCP e das sobras do link: absorvidas (A e A, Gustavo pelo chat do terminal, ~03h30). Ticket 33 publicado (Trilho, depois do 35).
-
-- 07, 34 resolvidos (763813a). Brasa no 08 (costuras confirmadas, retrato em agents/code/test/banco/retrato/); Vela no 28 (aceito git rm --cached no tornar local), depois 09 no fork em C:\Projetos\hub-mcp-banco; Trilho: Codex do 12 e 15, suíte e revisão do 35, depois 33.
+- ~04h: mandato do Gustavo recebido.
