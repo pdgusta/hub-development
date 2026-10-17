@@ -24,9 +24,9 @@ Por isso o diário abaixo registra cada evento com hora.
 ## Plano da fatia 2 do 08 (Gustavo, 2026-10-17 ~09h30: "no momento oportuno pause tudo e deixe menos agentes")
 
 Momento: logo depois que a Brasa terminar o Docker do 22 (ou na primeira calmaria). Passos: (1) cada recruta chega a
-um ponto seguro, grava a retomada e diz "salvo"; (2) o maestro manda `/exit` a todos menos a Brasa (o nó e as ligações
+um ponto seguro, grava a retomada e diz "salvo"; (2) o maestro manda `/exit` a todos menos a Brasa e a Vela (o nó e as ligações
 ficam no canvas; o Fielzinho, `/quit`; o Portal já está parado); (3) a Brasa, com a trava: `wsl --shutdown`, fatia 1+2
-do 08 com o medidor; (4) depois, o maestro religa cada um (`maestri ask "<nome>" --raw "claude"`, no Fielzinho
+do 08 com o medidor; em seguida, na mesma janela, a Vela roda a 1ª rodada real do 25 (fases 1-3); (4) depois, o maestro religa cada um (`maestri ask "<nome>" --raw "claude"`, no Fielzinho
 `codex`) e manda "leia a sua retomada". Avisar o Gustavo no fim com os números.
 
 ## Para rever com o Gustavo
