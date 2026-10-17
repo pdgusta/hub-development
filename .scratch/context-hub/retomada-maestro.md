@@ -2,6 +2,20 @@
 
 Reescrita em 2026-10-17 ~04h; quadro e placar atualizados às 10:50 (antes do auto-compact). Atualize a cada evento.
 
+## RELIGAR DEPOIS DO REINÍCIO DO WINDOWS (2026-10-17 21h, cumulative updates)
+
+Estado às 19h40: **só o 25 aberto** (todas as fases verdes; rodada 2 do Fiel em 4628138; depois o Rebite junta e roda a
+suíte; se a suíte não coube antes das 20h, roda depois do reinício). O 26 é do Gustavo (instalação real). Depois do 25:
+**as duas peças visuais** (seção "Ao fim da execução"), que ficaram para depois do reinício.
+1. Ler esta retomada; `maestri list`; recriar a ronda (CronCreate `13,38 * * * *`, prompt "Ronda do maestro ...").
+2. Quem estava no canvas às 20h30: Vela, Fiel, Rebite (ids na linha "Resume this session" de cada terminal ou
+   `claude` + "leia a sua retomada"). Fora: Brasa (`claude --resume f538f66e-6cb5-4a2d-bc3d-16815b8e0c68`), Cinzel
+   (`claude --resume 5f789150-7546-42e6-bba6-92336755c5e8`), Lume (`claude --resume 36524a55-615b-4474-bf29-d1f5f64ae77b`;
+   reenviar: "44 juntado df6c2e5; docs 5ª leva f640bbd; 24 resolvido; 22 evidência; 25 a caminho"), Trilho
+   (`claude --resume b70813df-9197-41be-89ca-0ddcda1c49f4`), Fielzinho (saiu da execução: Codex só para testes).
+   Religar só quem tiver trabalho (Rebite e Fiel para o 25; Lume para os docs do 25; os outros só se o 25 voltar).
+3. Docker Desktop: ligar só quando um teste pedir (`docker desktop start`); `/exit` sempre pelo PowerShell.
+
 ## FEITO 10h10: religar depois do reinício do Maestri (2026-10-17 ~10h05) — todos voltaram sozinhos com contexto; ronda recriada
 
 O Gustavo reinicia o Maestri (atualização 0.25.0) no fim da janela quieta. Depois de ler esta retomada:
