@@ -5,8 +5,8 @@ Quem pega a trava se tira da fila. Ordem pelo caminho crítico; o maestro reorde
 testes (09, 16): limpe os contêineres ao soltar.
 
 (trava: ver trava-pesada.md) — ordem a partir de 14:25 (Codex com cota: o Gustavo redefiniu às 14:25; Windows reinicia às 21h):
-1. Rebite: suíte da junção do 42 (d298826), Docker parado
-2. Cinzel: Codex do 11 (gpt-6.1-sol; segura o 23)
+1. (feito 14:47: suíte do 42)
+2. (Cinzel pegou 14:47: Codex do 11, gpt-6-luna)
 3. Vela: Codex do 18 (segura o 23 e o 37)
 4. Brasa: Codex do 22 (evidência de cliente)
 5. Cinzel: Codex do 24 (depois do 23 juntado)

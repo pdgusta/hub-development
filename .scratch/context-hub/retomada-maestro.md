@@ -334,3 +334,4 @@ nuvem.
 - 14:33: Gustavo: Codex SÓ para testes (luna por padrão; sol só se o teste for difícil); execução e revisão no Claude; Fielzinho sai (2ª leitura = subagente Opus 5.5 do Fiel). Ticket 43 (MODELO_CODEX = HUB_MODELO_CODEX ?? gpt-6-luna) para a Brasa.
 - 14:37: Fielzinho fechado (sai da execução; `codex resume 01a14ae2-cbe1-77a2-830b-ca0521f42d8b` se precisar). Cinzel trocou luna no 11 (e7e1dd3) e no 24 (9936ea2); espera a trava do Rebite. Brasa no 43.
 - 14:42: ronda: suíte do 42 (Rebite, trava 14:19); 43 PASSA no Fiel (32e8217), com o Rebite (junta 41+40+43 numa suíte depois do Codex do 11); Brasa 40% → /clear; Lume em dia (docs b0ef690), espera o 41. 4,6 GB livres.
+- 14:49: 42 resolvido (suíte 285: 275/10/0). 41 (e8dde26), 40 (7caed05), 43 (45e34c7) juntados; suíte única depois do Codex do 11, com os docs do Lume juntos. Fila: Cinzel 11 → Rebite → Vela 18 → Brasa 22 → 24.
