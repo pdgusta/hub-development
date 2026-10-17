@@ -2,7 +2,7 @@
 titulo: Link para um arquivo fora do hub
 ticket: 16
 aberta: 2026-10-16
-estado: aberta
+estado: absorvida
 ---
 
 **A etapa 1 fechou.** O verificador que cuida das pastas (ticket 27) entrou: ele cria o `index.md`, avisa de notas
@@ -27,3 +27,5 @@ recomendada: B
 ## Algo mais?
 id: algo-mais
 tipo: texto
+
+<!-- respondida pelo Maestri Chat (thread blue), 2026-10-17 ~00h30; o portal estava fechado por falta de RAM -->

@@ -289,7 +289,9 @@ do `status` da rodada 19.
 **Links (12, rodada 20)**
 - O que replica: link interno normal com caminho a partir da raiz do cofre ("Absolute path in vault" do Obsidian). O que
   não replica (pasta `local: true`, pasta com ponto, fora do hub): `par://<par_id>/<caminho a partir da raiz do hub>`,
-  sem letra de unidade. De `.secrets/`, só o nome do arquivo.
+  sem letra de unidade. De `.secrets/`, só o nome do arquivo. Fora do hub (decidido em 2026-10-17, rodada
+  `link-para-fora-do-hub`, Gustavo, B): `par://<par_id>/<unidade>/<caminho>` (ex.: `par://par-1/C/Projetos/x/README.md`);
+  a unidade entra só ali, porque fora do hub não há outra âncora; o verificador reescreve e avisa (ticket 32).
 
 **Segredos (12, rodada 14)**
 - `.secrets/` dentro da iniciativa, fora do git e da busca; senhas de contas que acessam tenant no KeePass. A exclusão

@@ -2,7 +2,7 @@
 titulo: Busca: o teste único do gemini
 ticket: 16
 aberta: 2026-10-16
-estado: aberta
+estado: absorvida
 ---
 
 A busca local entrou (ticket 12): o obsidian-hybrid-search com o modelo local (arctic) acha as notas do hub de ensaio
@@ -29,3 +29,5 @@ recomendada: A
 ## Algo mais?
 id: algo-mais
 tipo: texto
+
+<!-- respondida pelo Maestri Chat (thread blue), 2026-10-17 ~00h30; o portal estava fechado por falta de RAM -->

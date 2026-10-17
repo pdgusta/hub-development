@@ -17,3 +17,4 @@ Blocked by: 12
 ## Comments
 - 2026-10-16 ~23h50 (maestro): passado ao Trilho depois do 15 (juntado ac1cd2c). Primeiro commit: o teste do 12 passa a provar o reaproveitamento do índice por evidência, não pelo tempo (falhou sob carga na junção do 15). Teste único do gemini na rodada `2026-10-16-gemini-teste-unico`.
 - 2026-10-17 ~01h05 (Trilho): pego (`claimed`). Worktree `C:/context-hub-wt/ticket-13`, ramo `ticket-13`, de `integracao` f83c8f5. Primeiro commit f8b8769 (teste do 12 pelo índice). Sem chamar o FreeLLMAPI até o maestro avisar; Docker não.
+- 2026-10-17 ~00h30 (maestro): teste único liberado pelo Gustavo (rodada `gemini-teste-unico`, A, pelo chat), nas condições da rodada (cota conferida antes, parar se passar de um quarto do que resta). Ele liberou ligar o contêiner `freellmapi-freellmapi-1` quando precisar.
