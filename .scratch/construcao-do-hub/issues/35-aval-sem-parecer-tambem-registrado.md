@@ -27,3 +27,4 @@ decisão do Gustavo das três lacunas do acervo (rodada `2026-10-16-acervo-do-ma
   Trilho, enquanto espera a trava para o Codex do 12 e do 15 (a Vela está no 34).
 - 2026-10-17 ~02h30 (Trilho): pego (claimed). Worktree C:/context-hub-wt/ticket-35, ramo ticket-35, de integracao 236b3ef.
 - 2026-10-17 ~02h35 (Trilho): 140417a, d65b18a, 0b01cd9. Teste do acervo 21/21. Falta: suíte comum (trava), revisão. Relatório etapas/relatorio-35-avais.md.
+- 2026-10-17 ~04h40 (Trilho): Fiel PASSA (etapas/parecer-35-Trilho.md). Passado ao Rebite.

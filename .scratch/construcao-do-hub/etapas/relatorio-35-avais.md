@@ -20,7 +20,7 @@ Ramo `ticket-35`, worktree `C:/context-hub-wt/ticket-35`, de `integracao` 236b3e
 
 ## Testes
 - `node --test agents/code/test/20-acervo.test.mjs`: 21 passam, 0 falham.
-- Suíte comum: pendente da trava.
+- Teste do ticket (20-acervo) depois de juntar integracao 3c24d68 (ebae5ca): 22 passam. Suíte inteira só na junção (regra nova).
 
 ## Limite conhecido
 - Pendência de um ask recusado pelo Gustavo fica no `.local/acervo/pendentes/`. Se o mesmo texto exato for gravado

@@ -137,3 +137,7 @@ Regra nova (Gustavo, 2026-10-17): além do subagente, até três subagentes Haik
 12 rodada nova (Trilho, 8558abe): pedido recebido; Fielzinho sem cota até 06h58 -> Fiel sozinho, leitura pendente.
 12 r3: PASSA (Fiel sozinho; leitura do Fielzinho pendente). 3 ressalvas, a 2 vai para o 15 (deny do Claude no 15-leitura.test). Trilho avisado.
 Maestro (~04h): Codex sem cota até 06h58; Fiel revisa sozinho; leituras do Fielzinho na fila para depois: 28 (achado 3), 12 r3, mais as antigas (13, 32, 30, 20, 15, 12, 29).
+Regra nova (maestro, ~04h): construtor roda só os testes do ticket e dos arquivos mexidos; suíte inteira só na junção (Rebite). Não pedir suíte inteira ao construtor. Trilho vai pedir 35 e 33.
+35 r1 (Trilho, ebae5ca) e 33 r1 (Trilho, 07e6b92): pedidos recebidos; Fiel sozinho (Fielzinho sem cota até 06h58).
+35 r1: PASSA (Fiel sozinho; 22/22). Parecer parecer-35-Trilho.md. 28 r2 pedido (2eec8e9) — na fila depois do 33; Docker espera trava (Cinzel).
+33 r1: PASSA com 3 ressalvas (Fiel sozinho; 37/37; sonda de 14 casos). Parecer parecer-33-Trilho.md.

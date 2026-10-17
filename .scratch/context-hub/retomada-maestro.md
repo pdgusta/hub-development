@@ -135,3 +135,5 @@ nuvem.
 - 04:00: fila do trabalho pesado criada (etapas/fila-pesada.md; regra: quem solta a trava avisa o próximo): Rebite, Cinzel (09), Brasa (08), Trilho (35). Cinzel com código do 09 pronto (fork sem commit: mandado commitar). Trilho adianta o 33 enquanto espera.
 - 04:09: rodada 3 do 12 juntada (3c24d68), suíte 186/0; aceite real do Codex do 12 fechado. Trava passou ao Cinzel (09). Lições no 15 (gravar claude-settings.json na rodada real) e no 23 (kit junta a regra no settings.json).
 - 04:15: 33 feito (Trilho, 07e6b92). Decisão do maestro: suíte inteira só na junção (Rebite), não mais no construtor antes da revisão (poupa memória); regra em regras-da-construcao.md; Trilho pede já a revisão do 35 e do 33.
+- 04:19: ronda; Cinzel com a trava (Docker do 09, desde 04:09); Fiel revisando; todos ≤37%; 2,1 GB livres; nada a destravar.
+- 04:23: 35 (ef38e4d) e 33 (33b817a) juntados, falta a suíte; fila: Cinzel, Rebite, Brasa.

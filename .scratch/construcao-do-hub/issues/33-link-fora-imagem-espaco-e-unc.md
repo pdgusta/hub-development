@@ -27,3 +27,4 @@ do verificador, sem reescrever. (3) Caminho de rede UNC (`\\servidor\pasta\x.md`
   ela).
 - 2026-10-17 ~04h00 (Trilho): pego (claimed). Worktree C:/context-hub-wt/ticket-33, ramo ticket-33, de integracao 3c24d68.
 - 2026-10-17 ~04h20 (Trilho): 4323d0c (imagem), aea27ff (espaço cru), 07e6b92 (UNC). Testes do 27: 37 verdes. Falta: suíte comum (fila da trava), revisão. Relatório etapas/relatorio-33-link-fora.md.
+- 2026-10-17 ~04h40 (Trilho): Fiel PASSA (etapas/parecer-33-Trilho.md). Ressalvas: UNC solto no texto não avisa (só link); link em código em linha alerta; //host conta como rede. Passado ao Rebite.

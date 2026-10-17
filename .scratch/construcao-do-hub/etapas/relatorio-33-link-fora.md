@@ -19,7 +19,7 @@ Ramo `ticket-33`, worktree `C:/context-hub-wt/ticket-33`, de `integracao` 3c24d6
 
 ## Testes
 - `node --test agents/code/test/27-pastas.test.mjs agents/code/test/27-fim-da-resposta.test.mjs`: 37 passam.
-- Suíte comum: na fila da trava.
+- Suíte inteira só na junção (regra nova).
 
 ## Downloads, login, Docker
 Nenhum.

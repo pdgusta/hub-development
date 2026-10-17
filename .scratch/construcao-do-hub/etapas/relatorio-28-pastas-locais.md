@@ -92,4 +92,4 @@ O CLI falso ganhou `ls`, `rm` e `sync` (banco vazio), para o `-TornarLocal` sem 
 | gerador.test.mjs | 8/8 |
 | 28-pastas-locais-sem-docker (pastas-locais-sem-docker.ps1) | 24 PASSA (vermelho antes: 11 falhas) |
 | Docker 28-pastas-locais.test.ps1 | o Fiel roda na rodada 2, com a trava |
-| suíte inteira | (preencher) |
+| suíte inteira | não rodada: pela regra nova (2026-10-17), só na junção, pelo Rebite. Em 2eec8e9 (com integracao 3c24d68): gerador + 04-esqueleto 21/21; 28 sem Docker e 07 sem Docker 2/2 |
