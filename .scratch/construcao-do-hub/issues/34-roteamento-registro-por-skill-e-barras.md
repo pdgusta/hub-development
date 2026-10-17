@@ -1,7 +1,7 @@
 # 34: Roteamento: uma linha de registro por skill e caminho com barra do Windows
 
 Type: task
-Status: ready-for-agent
+Status: claimed
 Etapa: conserto do 19 (fora da sequência)
 Blocked by: 19
 
@@ -26,3 +26,4 @@ Regras comuns: `../etapas/regras-da-construcao.md`. Número 33 reservado para a 
 
 - 2026-10-17 ~02h15 (maestro): publicado pela proposta do Fiel e da Vela (leitura tardia do 19), como o 30. Dona: a
   Vela, depois que o 31 fechar.
+- 2026-10-17 02h24 (Vela): claimed; worktree C:/context-hub-wt/ticket-34 da ponta de integracao.
