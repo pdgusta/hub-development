@@ -8,4 +8,4 @@ testes (09, 16): limpe os contêineres ao soltar.
 1. Brasa: AGORA (máquina quieta, avisada pelo maestro 07:38): fatias 1 e 2 do 08 (51 e 201 MiB), aceite final da revisão.
    Durante ela, ninguém roda nada pesado.
 2. Brasa: Docker do 22 (~15 min) e os três harnesses como cliente (~10 min)
-3. Rebite: suíte do hub do 15 rodada 2 (e2b7607, ~15 min)
+4. Cinzel: harness real do 11, só o Codex de novo (~5 min; conserto bfd1af3)

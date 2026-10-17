@@ -43,6 +43,10 @@ Por isso o diário abaixo registra cada evento com hora.
 - Apagar as ~1.325 pastas `hub-ensaio-*` antigas em `%TEMP%` (4,0 GB; sem login dentro, conferido); a limpeza em massa pelo
   maestro foi recusada pela permissão automática. Ticket 36 conserta os testes que as deixam.
 
+- Rodar a fatia 2 do teste do 08 (arquivos de 51 e 201 MiB): derruba a memória na subida dos pares mesmo com 3 GB
+  livres; com menos agentes abertos ou a memória do Docker ajustada (Settings > Resources). O 08 foi juntado com essa
+  ressalva.
+
 ## Leia nesta ordem
 
 Caminhos relativos a `C:\Projetos\context-hub\`.
@@ -193,3 +197,4 @@ nuvem.
 - 07:33: 15 rodada 2 juntado (e2b7607), suíte na fila (item 6). Nota do hífen já nas regras.
 - 07:35: costuras do 21 aceitas (15 min, recusa sem o outro par, running+0 pendentes; manutenção diária vai ao 23).
 - 07:37: real do 11 (07:28-07:36): Codex falhou, Cinzel analisa. Máquina quieta (3,1 GB): Brasa roda a fatia 2 do 08 agora, depois o Docker do 22; depois Rebite (suíte do 15).
+- 07:41: fatia 2 do 08 caiu de novo (3.183 → 621 MB); vira item do Gustavo; 08 fecha a revisão com ressalva. wsl --shutdown liberado à Brasa (sem contêineres).

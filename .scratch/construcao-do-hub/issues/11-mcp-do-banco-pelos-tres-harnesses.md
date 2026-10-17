@@ -25,3 +25,4 @@ Blocked by: 10, 03
 - 06:41 (maestro, mandato): costuras do Cinzel aceitas (`../etapas/costuras-11-Cinzel.md`). (1) fork em modo local (pasta), sem Docker: os critérios medem o que o servidor entrega ao harness, não o CouchDB; o caminho inteiro com banco cifrado fica para o 25. (2) aval para duas sessões do Copilot (com e sem `--allow-all-mcp-server-instructions`), modelo barato, nas condições do aval de login. (3) "regra seguida" e banco recriado ficam fora (não estão nos critérios); registrar no relatório como ressalva para o 25.
 
 - 07:32 (maestro): lição do 15 (Trilho): no Codex, `mcp__hub-banco__...` chega ao hook como `mcp__hub_banco__...` (hífen vira sublinhado); confira nos matchers e no que o harness cita.
+- 2026-10-17 07:45 (Cinzel): rodada 1 com harness real: Claude Code e Copilot (sem e com a opção) PASSA; o Codex falhou por erro do teste (conserto bfd1af3); rodada só do Codex na fila. Hub `ticket-11` bfd1af3.

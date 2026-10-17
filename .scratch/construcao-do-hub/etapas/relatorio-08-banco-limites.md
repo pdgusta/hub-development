@@ -147,3 +147,19 @@ Ponta `514db7a`.
    - `kit-sem-docker.ps1`: tudo passou. `integracao` em dia (9cc878b).
 
 As ressalvas ficam como estão no parecer. Fatias 1 e 2 (Docker): com o Fiel, na hora quieta.
+
+### Fatias 1 e 2 na hora quieta (07h37, 1ª tentativa)
+
+Cortada pelo corredor às 07h39: a memória livre caiu de 3.183 para 621 MB ainda na subida dos pares (2 PASSA: o passo
+sobe o par A). Limpo: nenhum contêiner, nenhuma pasta. Depois da limpeza, 881 MB livres, com a `vmmemWSL` segurando
+2,1 GB (o WSL não devolve a memória ao Windows sozinho). Log: `etapas/logs/08-fatias-1-2.log`.
+
+**Decisão do maestro (07h45):** a fatia 2 não roda de novo hoje. Ela derruba a máquina na subida dos pares mesmo com
+3 GB livres. Vira item para o Gustavo, de dia, com menos agentes abertos ou com a memória do Docker ajustada por ele. A
+revisão fecha com a fatia 2 pendente, por escrito:
+
+- tentativa de 05h11: com 60 MiB, de 2.900 para 513 MB livres em 1 min;
+- tentativa de 07h37: fatias 1+2, de 3.183 para 621 MB em 2 min, ainda na subida dos pares;
+- a `vmmemWSL` ficou com 2,1 GB depois, até o `wsl --shutdown`.
+
+A fatia 1 também não rerodou depois das junções. O último verde dela é o de 03h37.

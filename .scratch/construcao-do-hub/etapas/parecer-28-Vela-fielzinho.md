@@ -33,3 +33,11 @@ VOLTA pelos dois achados. Testes existentes9/9 verdes (12casosPS encapsulados +8
 ## Acordo rodada1
 Aceito o achado3 doFiel: o bloco .* do exclude não abre .claude-plugin/, embora git ls-files confirme os manifestos dos mods fim-da-resposta e roteamento versionados no hub. Mod novo perderia o manifesto no add comum. Exceção !.claude-plugin/ com teste de mod novo é pertinente ao git (sem mudar exclusão de sync). Acordo VOLTA nos3; confirmar pasta em locais do JSON antes de pronto/religar integra conserto1/2. Fiel confirmou reproduções e limpeza da minha sobra TEMP sem processo vivo. Docker adiado à r2 peloFiel: trava ocupada e código vai mudar. Rodada1 encerrada em acordo.
 
+
+## Leitura tardia — rodadas 2 e 3 — 2026-10-17
+
+Ponta 5436cad conferida, árvore limpa. Li diff desde fc6c78b, cartao.mjs, script PowerShell, testes, relatório e parecer do Fiel. Consertos aceitos: parser de frontmatter com corpo preservado, recusa por destino real antes de parar o sincronizador, confirmação em locais do gerador antes de prosseguir, exceção .claude-plugin/ no git e parênteses na lista de argumentos do título. O conserto do título da r3 fecha o defeito descrito na r2.
+
+Execução própria na r3: `node --test --test-concurrency=1 agents/code/test/28-pastas-locais-sem-docker.test.mjs agents/code/test/gerar-exclusoes/gerador.test.mjs`: 9/9, saída 0 (57,9 s; primeiro encapsula os 25 casos PS). Diff check fc6c78b..5436cad sem erro. Não reexecutei o código antigo da r2. Li logs/revisao-28-r3-docker.log: 14 PASSA e tudo passa, com controle chegando a B, retirada do banco/disco B, hashes em A preservados e remoções do índice git. Docker executado pelo Fiel, não por mim.
+
+**Sem achado novo; mantenho PASSA da r3 e suas ressalvas.** Não há nova mensagem ao Fiel, conforme pedido de avisar somente achados. Código/spec/ticket intactos.

@@ -319,3 +319,5 @@ node --test agents/code/test/05-frontmatter.test.mjs
 - Ramo ticket-18, worktree C:/context-hub-wt/ticket-18 (integracao 9cc878b + ticket-17 86c5a88). Junção só depois do 17 e do 16.
 - Costuras em etapas/costuras-18-Vela.md (pergunta das várias sessões: A passagem em work/passagem-<terminal>.md, ou B nota única; fim no mesmo núcleo do 27; início no tela.mjs do 17; aviso da memória do Claude; Copilot sem a extensão onAgentStop). Esperando o maestro.
 - 17 em revisão no Fiel (86c5a88): não mexer na worktree ticket-17.
+- 07:37 (18): ca2bb45 (fim devolve sem a nota) e 511ad2a (passagem do recruta em work/, work_kind handoff); 18-retomada 5/5. Próximo: sete campos + next_step, last_agent, aviso da memória do Claude, início com a nota, AGENTS.md, ponta a ponta.
+- 07:40 (17): rodada 1 VOLTA (estado sem passada); conserto 3e8bbc8, 16/16, mod 2/2; rodada 2 pedida ao Fiel. Não mexer na worktree ticket-17. 18 parado em b2ba08d (próximo: last_agent).

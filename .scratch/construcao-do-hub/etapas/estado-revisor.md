@@ -178,3 +178,4 @@ Codex com cota a partir de 06:58: às 06:59 repasso ao Fielzinho a lista de leit
 08 r2: código PASSA em acordo com Fielzinho; aceite final pende log das fatias 1,2.
 15 rodada nova (Trilho, 3d34bd1) e 17 r1 (Vela, 86c5a88) pedidos ~07h35. 08: Brasa roda -Fatias 1,2 na hora quieta (armadilha: por pwsh -File '1,2' vira 12; usar -Command).
 15 rodada nova: PASSA em acordo com Fielzinho. Trilho avisado.
+17 r1: VOLTA em acordo (conserto 1 do Fielzinho, reproduzido: estado sem passada vira em ordem). 15 fechado PASSA (aviso ao Trilho em segundo plano).

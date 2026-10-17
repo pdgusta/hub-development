@@ -37,3 +37,8 @@ A sonda terminou com saída 0 porque afirma o defeito observado; não é teste d
 4. Notify memoriza id+nivel, não o texto do item. Uma mudança apenas no resumo não avisa de novo; é a assinatura declarada nas costuras. Não trato a passagem de tempo sem mudança de item como nova divergência.
 
 Sem edição de código, spec ou tickets. Enviar ao Fiel para acordo.
+
+## Acordo com Fiel
+
+Fiel reproduziu o achado 1 e aceitou a ressalva de nao-verificavel. VOLTA fechado em parecer-17-Vela.md. Não há impasse.
+

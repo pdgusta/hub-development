@@ -39,3 +39,5 @@ Blocked by: 07, 06
 
 - 06:49 (maestro, mandato): Docker verde nas fatias 1 e 3-7 e no teste do 07 (retrato b02fa4f). A revisão começa já, com a fatia 2 pendente; ela roda como evidência numa hora quieta, e o Fiel fecha a rodada com ela.
 - 2026-10-17 ~08h, Brasa: r1 voltou (Fiel e Fielzinho) por 1 conserto. Feito em 514db7a: `Get-AcimaDoLimite` com a raiz longa e sem barra, e sem as pastas locais; 3 casos novos no `kit-sem-docker.ps1`, verde. Rodada 2 pedida ao Fiel.
+
+- 07:41 (maestro, mandato): a fatia 2 caiu de novo na subida dos pares (3.183 → 621 MB em 2 min, máquina quieta). Não se tenta mais hoje: vira item do Gustavo, de dia (menos agentes abertos ou memória do Docker ajustada por ele). O Fiel fecha a revisão com essa ressalva escrita; o 08 pode ser juntado com ela. `wsl --shutdown` liberado à Brasa para devolver a memória da VM (nenhum contêiner rodando).

@@ -18,3 +18,8 @@
 A leitura por shell é reconhecimento parcial, conforme contrato: comando composto com filtro pode classificar outra leitura inteira como trecho. O estado por sessão não tem limpeza automática. O aviso ainda alcança caminhos que a busca não indexa, e HUB_LEITURA_GRANDE inválido pode calá-lo. Esses limites já constam do relatório/ticket resolvido; não são regressões desta rodada. O teste real checa a entrega do aviso ao modelo explicitamente só no Claude; nos demais, a evidência central é o registro do hook. A leitura foi aceita e não houve recusa nos casos demonstrados.
 
 Fiel fecha a rodada. Nenhuma alteração em código/spec/ticket; sem subagentes.
+
+## Acordo com Fiel
+
+PASSA em acordo, fechado pelo Fiel. Leitura tardia da rodada 1 permanece na fila solicitada.
+

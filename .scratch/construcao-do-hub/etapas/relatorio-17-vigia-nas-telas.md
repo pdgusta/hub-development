@@ -75,3 +75,14 @@ Começou antes do 16, por mandato do maestro (05:09): contra o `estado.json` com
 
 Também feito: `integracao` 9cc878b juntada (5187a86, com o 36); o teste do 17 usa o ajudante comum de pasta de ensaio
 (273579f), 15/15 sem sobra.
+
+## Rodada 1 do Fiel: volta (1 conserto, com o Fielzinho)
+
+- Estado sem `passada` (o que a `lib/vigia.mjs` grava quando só o fim da resposta ou a peça sumida escreveram, antes
+  de a vigia rodar) virava "tudo em ordem (passada às Invalid Date)" no início e "hub: em ordem (Invalid Date)" na
+  barra. Conserto (3e8bbc8): sem passada válida, o início diz "a vigia ainda não rodou nesta máquina; não diga que a
+  sincronização foi conferida", junto com os itens dos outros hooks; a barra diz "hub: vigia ainda não rodou" (ou o
+  resumo do item, com "(vigia ainda não rodou)"). O notify não muda: só avisa divergência.
+- Teste novo com o estado da própria `lib/vigia.mjs` (gravarItem e tirarItem), nos três harnesses: 17-vigia-tela
+  16/16; mod 2/2. A reprodução `etapas/logs/repro-17-fielzinho.mjs` (que confirmava o defeito) agora falha.
+- Ressalva 1 (`nao-verificavel` perde o motivo): fica para o teste sobre o `estado.json` real do 16.
