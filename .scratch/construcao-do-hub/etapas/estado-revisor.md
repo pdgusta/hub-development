@@ -187,3 +187,4 @@ Brasa confirmou o 08 (no Rebite ~07h55). Cinzel avisado do 11 r1.
 Em aberto: 11 r2 (Codex, após 12h15); 16 final (Trilho); 17 só junta depois do 16.
 Fielzinho sem cota até 12h15. Leituras dele pendentes: 17 r2, 11 r1, mais a fila atrasada
 (28 r2/r3, 12 r3, 35, 33, 09, 36, 10, 16; antigas 13, 32, 30, 20, 15 r1, 12 r1/r2, 29).
+18 r1 (Vela, b840812, base integracao 9cc878b + 17 3e8bbc8): pedido ~08h45; Fiel sozinho (Fielzinho sem cota até 12h15).

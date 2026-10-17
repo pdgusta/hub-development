@@ -17,3 +17,5 @@ Blocked by: 13, 21, 22, 24
 ## Comments
 
 - 07:53 (maestro): do 11 (Cinzel): fica para cá a prova de que o agente segue a regra, o banco recriado e o banco cifrado de ponta a ponta pelos harnesses.
+
+- 08:33 (maestro, mandato): começa já com a Vela, como preparo: as costuras e o roteiro da prova de ponta a ponta sobre o que já está em `integracao` (07, 08, 09, 10, 12, 15), estendido quando 16, 17, 18, 21, 22, 23 e 24 forem juntados. **Memória é o risco**: o Docker do 22 e a fatia 2 do 08 caíram na subida (pares + MCP + indexação passam da memória livre). A prova precisa ser desenhada por fases (indexar antes dos pares, descer o que não se usa mais, `wsl --shutdown` antes) e medir o pico; se não couber, o relatório diz o que fica para a máquina do Gustavo com menos agentes abertos.
