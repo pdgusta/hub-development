@@ -122,3 +122,7 @@ harness de verdade". Um subagente por vez (tarefa leve) e até três Haiku de es
   o 16); 10/10 sem Docker; Fiel e Rebite avisados. Não juntar `integracao` de novo até o 16 consertado entrar.
 - ~11h35: correção do Gustavo: o Codex dos testes é o `gpt-6.1-sol` (nome exato do `models_cache.json`); 97693bb
   desfaz o astra. Ponta 97693bb (só o modelo no teste dos harnesses). A cota do sol não foi medida (o astra dividia).
+- ~11h50: o Rebite juntou o 22 em 5abe359 (integracao fdd3760, com o 16 e o 21; 10.env.modelo com as duas metades).
+  O 97693bb (o sol) ficou fora: juntei fdd3760 no ticket-22 (c1f0fa3); a diferença para integracao é só o modelo do
+  Codex. Entra com a evidência do Codex. Testes sem Docker: a 1ª volta depois do merge deu "11 testes, 1 falha" (sem
+  log guardado, não explicado); 3 voltas seguidas depois: 10/10.

@@ -1,0 +1,60 @@
+✔ uma pergunta em pt-BR por palavra acha a nota esperada entre as 3 primeiras (42637.431ms)
+✔ uma pergunta em pt-BR por paráfrase, sem palavra em comum com a nota, acha a nota entre as 3 primeiras (70.2657ms)
+✔ uma nota nova gravada no disco aparece sem reindexar, por palavra e por paráfrase; o tempo só é medido (5350.201ms)
+✔ nada com ponto no caminho nem de pasta local: true aparece, nem o que chega com a busca ligada (5825.7366ms)
+✔ o relatório conta as notas indexadas e lista as recusadas por cabeçalho quebrado (1384.1782ms)
+✔ pedido com Host estranho é recusado; o servidor só escuta em 127.0.0.1 (2072.7274ms)
+✔ em inglês, no mesmo índice e sem dizer o idioma, a nota em inglês vem entre as 3 primeiras; o .pdf.md entra, o binário não (5320.8107ms)
+✔ uma rajada de 200 notas copiadas de uma vez termina toda indexada; o tempo só é medido (16834.5021ms)
+medidas do ticket 12:
+{
+  "quando": "2026-10-17T14:44:02.759Z",
+  "nota_nova_ms": 5308,
+  "relatorio": {
+    "indexadas": 58,
+    "validas": 58,
+    "faltando": [],
+    "recusadas": [
+      {
+        "caminho": "inbox/cabecalho-quebrado.md",
+        "erro": "unexpected end of the stream within a flow collection",
+        "no_indice": false
+      }
+    ],
+    "modelo": "local:Snowflake/snowflake-arctic-embed-m-v2.0",
+    "pendentes": 0,
+    "consertadas": 0
+  },
+  "rajada_200_ms": 16801,
+  "partidas": [
+    {
+      "pronta_ms": 42522,
+      "indexacao": "34s — 1 errors"
+    },
+    {
+      "pronta_ms": 3695,
+      "indexacao": "0s — 1 errors"
+    }
+  ],
+  "reaproveitadas": 260,
+  "reindexadas_pelo_consertar": 0,
+  "recusada_no_indice_depois_do_reindex": false
+}
+
+✔ a segunda partida reaproveita o índice: o mesmo banco, a busca pronta e nenhuma nota reindexada (21905.4918ms)
+✔ com -WhatIf, o kit diz o que faria e não grava nada (919.7089ms)
+✔ o kit instala a versão fixa pelo package-lock, só no .local\busca do hub (33649.7962ms)
+✔ rodar de novo não muda nada (1140.5732ms)
+✔ a busca sobe com a instalação do kit e responde (6784.8647ms)
+✔ a configuração do gemini existe, com o modelo explícito, o gateway por variável e sem chave no arquivo (4.632ms)
+✔ desligado: a busca sobe com o arctic local e não chama o gateway, mesmo com OPENAI_* e FREELLM_* no ambiente (63945.5988ms)
+✔ ligar o gemini sem o endereço do gateway é recusado, alto, antes de subir (2727.7868ms)
+✔ ligado (-Gemini), num hub separado: os embeddings vão ao gateway da variável, com o modelo explícito e a chave (13338.2512ms)
+ℹ tests 17
+ℹ suites 0
+ℹ pass 17
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 414888.0695

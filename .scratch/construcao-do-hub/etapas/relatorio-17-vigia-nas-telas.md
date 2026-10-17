@@ -86,3 +86,19 @@ Também feito: `integracao` 9cc878b juntada (5187a86, com o 36); o teste do 17 u
 - Teste novo com o estado da própria `lib/vigia.mjs` (gravarItem e tirarItem), nos três harnesses: 17-vigia-tela
   16/16; mod 2/2. A reprodução `etapas/logs/repro-17-fielzinho.mjs` (que confirmava o defeito) agora falha.
 - Ressalva 1 (`nao-verificavel` perde o motivo): fica para o teste sobre o `estado.json` real do 16.
+
+## Junção do 16 (2026-10-17, depois do 16 resolvido)
+
+- `git merge integracao` (fdd3760, com 16, 21 e 22) no ramo ticket-17: 0eed25d, sem conflito.
+- b6ace6b: três testes novos em `17-vigia-tela.test.mjs` sobre o `estado.json` que o `vigia.mjs passada` grava de
+  verdade (os dublês do teste do 16: CouchDB e outro par por HTTP, o CLI falso como leitor), no lugar do exemplo das
+  costuras: (1) conflito: o início dos três e a barra citam a nota pelo caminho em claro, sem o id cifrado; (2) outro
+  par não verificável; (3) sem resposta.
+- **Ressalva 1 do parecer, consertada:** `outro_par.situacao = nao-verificavel` dizia "a outra máquina não responde" e
+  perdia o motivo. Agora: "não dá para conferir a outra máquina (<motivo>)" no início e "outra máquina não verificável"
+  na barra; "sem resposta" segue como antes.
+- **Achado no estado real:** o item `sincronizador` que a passada grava, quando o kit do banco falha, traz o erro do
+  PowerShell com códigos de cor (`\u001b[31;1m`) e o caminho do TEMP. A tela agora tira os códigos de cor ao ler o
+  estado (arquivo e MCP). O texto do item é do 16: levado ao maestro.
+- Testes: `17-vigia-tela` 19/19; com 16, 27 e o detector do 29, 41/41; mod `claude plugin test` 2/2. Sem sobra no TEMP.
+- Deslize de método: o código que tira as cores veio junto com o teste, não depois do vermelho.

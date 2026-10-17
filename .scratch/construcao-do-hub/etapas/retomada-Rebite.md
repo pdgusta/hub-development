@@ -94,4 +94,6 @@ a ponta do ramo é a do parecer (ou que depois dela só entrou evidência ou `gi
 - 11:25: 22 RESOLVIDO (4a47576, 215/206/9). 16 (30b735f) e 21 (fdd3760) juntados; árvore = ticket-21. Suíte dos dois com a trava em segundo plano (log etapas/logs/juncao-16-21-suite.log). Construtores ainda não avisados de 4a47576/fdd3760.
 - Maestro: depois da minha suíte, trava livre até 12h15 (aí Codex: Cinzel, Vela, Brasa). Ao resolver o 16, avisar a Vela (ela traz o 16 para o 17 e pede rodada nova ao Fiel).
 - Maestro (troca): ao soltar a trava da suíte do 16+21, avisar o Trilho (pesados do 38, ~15 min).
-- 22 ganhou 97693bb (só o modelo do Codex no 22-cliente ponta a ponta, pulado sem variável). Juntar junto com a evidência do Codex quando vier (rodada curta do Fiel); comentar no ticket 22.
+- 22: ponta c1f0fa3 (97693bb, modelo do Codex no 22-cliente, + fdd3760 juntado; difere de integracao só nessa linha). Juntar com a evidência do Codex depois de 12h15 (rodada curta do Fiel); comentar no ticket 22.
+- 11:42: 16 e 21 RESOLVIDOS; maestro, Vela (traz 16 ao 17), Brasa, Cinzel avisados; Trilho avisado da trava (38). Nenhuma junção em curso.
+- 11:50: Cinzel juntou fdd3760 nos ramos: 23 e05b367, 37 17b1f69, 11 359c8e3 (falta Codex), 24 a52b073 (falta Codex). Na junção de cada um: conferir que depois da ponta do parecer só entrou git merge integracao (git log --first-parent).

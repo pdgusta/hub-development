@@ -5,7 +5,7 @@ Leia antes: `etapas/regras-da-construcao.md` (inteiras, com os "Achados comuns")
 
 ## Agora: nada rodando, nada esperando a trava
 
-- 23: PASSA, ponta a9643c6 (caminho longo + guarda do Longo), 22/22; Rebite avisado. 24: merge do 23 em a73301d; falta só o Codex.
+- 23: PASSA, ponta e05b367 (a9643c6 + integracao fdd3760), 22/22; Rebite avisado. 24: ponta a52b073 (com o 23 e05b367), 7/7; falta só o Codex.
 - **Às 12h15** (cota do Codex), na fila (item 5 de `etapas/fila-pesada.md`), um de cada vez: primeiro o Codex do 11,
   depois o Codex do 24. Depois de mim vem a Vela (Codex do 18).
 - **Até lá, o 37** (abaixo).
@@ -13,7 +13,7 @@ Leia antes: `etapas/regras-da-construcao.md` (inteiras, com os "Achados comuns")
 
 ## Ticket 37: o fim da resposta vê a gravação pelo shell (em curso)
 
-- **Hub:** worktree `C:/context-hub-wt/ticket-37`, ramo `ticket-37` do `ticket-18` 31afe63; ponta c16e53f. Ticket
+- **Hub:** worktree `C:/context-hub-wt/ticket-37`, ramo `ticket-37` do `ticket-18` 31afe63; ponta 17b1f69 (f8e12e3 + integracao fdd3760). Ticket
   `claimed`. Núcleo é da Vela (18/27): dúvida do núcleo, pergunte a ela.
 - **Costuras aceitas** (`etapas/costuras-37-Cinzel.md`): Vela, 1/3/4 com ajustes (a)-(d); maestro, 5, 6 e (e).
   - (e) o `anota` ouve o shell (Claude `Bash|PowerShell`, Codex `Bash`, Copilot `bash|powershell`) e cria
@@ -55,7 +55,7 @@ Leia antes: `etapas/regras-da-construcao.md` (inteiras, com os "Achados comuns")
 
 ## Ticket 11: MCP do banco pelos três harnesses (rodada 1 sem conserto; falta o Codex)
 
-- **Hub:** worktree `C:/context-hub-wt/ticket-11`, ramo `ticket-11`, ponta e799d2a.
+- **Hub:** worktree `C:/context-hub-wt/ticket-11`, ramo `ticket-11`, ponta 359c8e3 (com integracao fdd3760).
 - **Fork:** worktree `C:/Projetos/hub-mcp-banco-wt/ticket-11`, ramo `ticket-11` = `integracao` 34c3e50, com o `dist`
   montado.
 - **Leia:** as costuras (`etapas/costuras-11-Cinzel.md`), o relatório (`etapas/relatorio-11-mcp-do-banco-pelos-harnesses.md`)
@@ -82,7 +82,7 @@ Leia antes: `etapas/regras-da-construcao.md` (inteiras, com os "Achados comuns")
 
 ## Ticket 24: kit ao vivo (parte fechada em revisão; falta o Codex)
 
-- **Hub:** worktree `C:/context-hub-wt/ticket-24`, ramo `ticket-24` (do `ticket-23`), ponta b3597e7 (com o 23 a9643c6 e o ajudante das skills). Parecer da rodada 1: sem conserto próprio (`etapas/parecer-24-Cinzel.md`).
+- **Hub:** worktree `C:/context-hub-wt/ticket-24`, ramo `ticket-24` (do `ticket-23`), ponta a52b073 (com o 23 e05b367 e o ajudante das skills). Parecer da rodada 1: sem conserto próprio (`etapas/parecer-24-Cinzel.md`).
 - **Leia:** as costuras aceitas (`etapas/costuras-24-Cinzel.md`) e o relatório
   (`etapas/relatorio-24-kit-de-par-ao-vivo.md`). Rodada 1: Claude e Copilot PASSA, às 09:12, log
   `etapas/logs/24-harness-1.log`, evidência no commit.
