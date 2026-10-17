@@ -63,3 +63,37 @@ Testes próprios106/106,saída0,126s. Evidência real lida:três devolvem e solt
 ## Revisões anteriores
 
 14 Trilho passou em dupla:etapas/parecer-Trilho-fielzinho.md.05,02,01,06 passaram; pareceres nas subpastas de etapas.
+
+## Atualização 2026-10-17 — rodada desta sessão
+
+07 r2 encerrada em acordo VOLTA: PID por argumento exato e configurado sem marca deve ser recusado/conferido. Parecer próprio atualizado; Fiel fecha em 02-banco/parecer-Brasa.md e roda Docker na r3 com trava. Teste sem Docker próprio: 11 PASSA.
+
+19 leitura tardia em andamento: parecer-19-Vela-fielzinho.md, dois achados (registro parcial esconde skills não usadas; barras Windows filtradas antes da normalização). Teste oficial sem harness em sessão 13674, pai 209324; aguardar término, não duplicar. Ponta 52c6328. 19 já resolvido; encaminhar achados ao Fiel sem alterar ticket.
+
+Fila recebida: 12 (0ba8532, relatório relatorio-12-busca.md); 20 (e5d24a7, relatorio-20-acervo-do-maestro.md); 31 (pedido original cc8c852, mas relatório já contém b710f2d/050fb14/4e420a6; Fiel disse que segue 31 em 050fb14 quando Vela pedir); 32 (pedido 94c42ac, relatório já contém correção 6beaf15). Confirmar ponta/escopo antes de concluir os tardios. Relatórios31/32 lidos, ainda sem revisão de código nem parecer. Fiel autorizou leituras atrasadas no próprio ritmo. Sem subagentes, nada global, sem Docker/harness real.
+
+
+19: sessão 13674 terminou, 16/16 PASSA, saída0,69,7s. Parecer independente concluído, recomendação VOLTA técnica pelos dois achados; conversa com Fiel pendente. Não há teste próprio rodando.
+
+
+## Atualização 07 r3 e31 — 2026-10-17
+19: acordo encerrado nos dois achados, Vela encaminha ao maestro.07 r3:6b1d7e8,14 PASSA próprios sem Docker; dois consertos aceitos; Fiel fará Docker com trava; parecer próprio atualizado e enviado por maestri (sessão77686).31:4e420a6 limpo, correçãoCRLF e evidência real conferidas. Parecer31 salvo com lacuna reproduzida: ask de peça de nome parecido não cria pendência/parecer; PostToolUse não registra aval aprovado. Reprodução sintética sem harness em TEMP limpo. Encaminhei para acordo/ressalva (sessão21282). Testes20+14 sem harness ainda em sessão17732, arquivo14 já37verdes; aguardar término sem repetir. Fila tardia12/20/32 continua pendente. Nenhum código/ticket/spec alterado. Próximo: obter total da sessão17732, atualizar parecer31 e comunicar Fiel; aguardar acordo. Contexto salvo.
+
+
+31: testes encerrados57/57,saída0,130,1s. Parecer atualizado: PASSA COM RESSALVA na terceira rodada, pelo teto; aguarda Fiel aceitar lacuna/encaminhar. Sem teste próprio rodando.07 aguarda avaliaçãoDocker doFiel.19 acordo encerrado.
+
+
+31 acordo encerrado com Fiel: PASSA COM RESSALVA; registro de ask sem parecer vira conserto em ticket seguinte.57/57 em cada revisor.07r3 consertos aceitos, aguardaDocker doFiel. Pendentes tardios12/20/32 preservados.
+
+
+07r3 encerrado PASSA em dupla. Finais dos quatro logs revisao-07-r3-* conferidos: tudo passou,saida0. Fiel confirmou sem sobra; Docker foi dele.14 casos semDocker próprios. Nenhum acordo pendente em07/19/31; leituras tardias12/20/32 continuam na fila.
+
+
+34 em revisão:0e39c35,basee82ce65,limpo. Leitura dos dois consertos concluída sem bloqueio; parecer-34-Vela-fielzinho.md salvo. Teste19-roteamento próprio em sessão24422; aguardar total, depois comunicarFiel. Log suíteVela185pass/0fail/8skip conferido. Sem Docker/harness. Pendências tardias12/20/32 permanecem.
+
+
+34:19/19 próprios verdes,94,3s,saída0. Parecer independente PASSA em0e39c35; sem teste rodando. Comunicar/aguardar acordoFiel.
+
+
+34 encerrado PASSA em dupla;19/19 em cada revisor. Fiel fechou parecer-34-Vela.md. Nenhum teste próprio em execução ou acordo pendente no34.
+

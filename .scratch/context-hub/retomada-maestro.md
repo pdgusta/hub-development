@@ -90,6 +90,6 @@ Repositório de planejamento versionado (primeiro commit 2026-10-16).
 - Tickets novos de conserto, publicados pelo maestro (como o 30): 34 (roteamento, leitura tardia do 19) com a Vela;
   35 (aval sem parecer, ressalva do 31) com o Trilho. Trilho depois: Codex do 12 e do 15 quando tiver a trava.
 - Limpos: Brasa ~01h15, Trilho ~02h00, Vela ~02h30. Fiel em ~48%, estado salvo 02h04: limpar depois do parecer do 07.
-- Rodada aberta pelo chat: `portal/rodadas/2026-10-17-ressalvas-do-link-fora.md` (sobras do 32; recomendada A; o
+- Rodadas abertas pelo chat: `portal/rodadas/2026-10-17-onde-mora-o-fork-do-mcp.md` (09 da Vela, recomendada A) e `portal/rodadas/2026-10-17-ressalvas-do-link-fora.md` (sobras do 32; recomendada A; o
   número 33 está reservado para ela).
 

@@ -19,3 +19,5 @@ Blocked by: 06, 07
 ## Comments
 
 - 2026-10-16 ~21h (maestro): publicado pela decisão do Gustavo na rodada `2026-10-16-pastas-locais-depois-do-gerador`. A parte da vigia (rodar o gerador a cada passada e religar) foi para o ticket 16 da construção.
+
+- 2026-10-17 ~02h50 (maestro): reservado para o Trilho, depois do 35 e do Codex do 12 e do 15; começa quando o 07 for resolvido.

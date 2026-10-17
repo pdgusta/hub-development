@@ -176,7 +176,7 @@ o `init-settings`, o `remote-add` e o `mark-resolved` (com uma falha inventada).
 | prova 01 em 87ce68b | 17 PASSA, saída 0 (hub A→B, 260 arquivos, em 70 s; `.local/prova01-r2g.log`) |
 | prova 02 | 12 PASSA, saída 0 (`.local/prova02-r2f.log`) |
 | teste do 06 | 14 PASSA, saída 0 (`.local/06-r2f.log`) |
-| suíte comum (`node --test`) | PREENCHER: repetir com a trava. A rodada em cea150b deu 2 falhas por tempo na indexação da busca (ticket 12), rodando junto com a suíte do Trilho |
+| suíte comum (`node --test --test-concurrency=1`), em 99ea624 (com a `integracao` 57e85cf), com a trava | 187 testes: 179 PASSA, 8 pulados (harness de verdade), 0 falhas, 9,4 min. Log `.local/suite-r2d.log`. As 2 falhas de cea150b eram por tempo, com a suíte do Trilho junto |
 
 A prova 01 caiu uma vez antes (00:18): o daemon do par A não ficou pronto em 60 s, com a máquina carregada. A espera
 subiu para 180 s em 87ce68b.
@@ -188,3 +188,19 @@ subiu para 180 s em 87ce68b.
 - Desde o aval do maestro, a fila (`.local/fila-docker.ps1`) confere a memória livre antes de cada prova. Abaixo de
   3 GB, ela espera 3 minutos e confere de novo. O registro fica em `.local/fila-docker.log`.
 
+
+## Rodada 3 (consertos do parecer da rodada 2)
+
+Ramo `ticket-07`, commit 6b1d7e8 (sobre 99ea624). Só `banco.psm1` e o teste sem Docker mudaram.
+
+1. **PID pelo argumento inteiro.** `Get-PidSincronizador` exige o CLI e o `CliDb` do par como argumentos inteiros da
+   linha de comando, com ou sem aspas (expressão `(^|\s)"?<caminho>"?(\s|$)`, sem diferenciar maiúsculas). Um `node`
+   com o argumento `cli-db-outro` não vale mais. Conferi à parte a linha real que o `cmd /c` dá ao `node` filho, com um
+   CLI cujo caminho tem espaço: `node  "<cli>" "<cli-db>" --settings ... daemon`, e o PID vale.
+2. **Configurado sem a marca é recusado.** Com `isConfigured: true` e sem `hub-aceito`, o kit recusa: "configurado
+   sem a marca do aceite; apague-o para refazer". Não chama o `init-settings --force` e não regrava o `settings.json`.
+   A queda no `mark-resolved` continua voltando o `isConfigured` a falso, e então a próxima chamada refaz.
+
+**Testes:** `kit-sem-docker.ps1` 14 PASSA (11 de antes e 3 novos: `cli-db-outro` não vale, `cli-db` vale, configurado
+sem marca recusado sem reconfigurar). Os dois casos novos de conserto ficaram vermelhos antes do conserto.
+`07-kit-sem-docker.test.mjs`: 1 PASSA. O Docker vai na rodada 3, rodado pelo Fiel, com a trava.

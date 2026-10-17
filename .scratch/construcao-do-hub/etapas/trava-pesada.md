@@ -1,1 +1,1 @@
-- Trilho (construtor), 2026-10-17 01:50: suíte comum --test-concurrency=1 no ramo ticket-13 (C:/context-hub-wt/ticket-13). Apago ao fim.
+- Rebite (integrador), 2026-10-17 02:41: suíte inteira com --test-concurrency=1 em integracao, junção do 31 novo (C:/context-hub-wt/integracao). Apago ao fim.

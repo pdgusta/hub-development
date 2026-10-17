@@ -5,10 +5,12 @@ subagentes. Maestro = "Claude Code"; revisor = "Fiel"; integrador = "Rebite".
 
 ## Onde estou (2026-10-17 ~01h20, São Paulo)
 - Tickets 12 e 15: juntados (integracao). Ticket 13 (gemini pronto e desligado): ramo ticket-13, worktree
-  C:/context-hub-wt/ticket-13, com integracao 5d84d76 juntada (merge acca259). Relatório etapas/relatorio-13-gemini.md.
+  C:/context-hub-wt/ticket-13, com integracao 57e85cf juntada (merge 6bfb506). Relatório etapas/relatorio-13-gemini.md.
   Commits: f8b8769 (teste do 12 pelo índice), 32e77b2 (gemini.env e iniciar.ps1 -Gemini, 4 testes com dublê),
   95e37b7 (teste único feito: 62 pedidos ao Google; contêiner parado de novo).
-- eb7c941: o teste do 13 fecha todos os dublês (a suíte travava no 13-gemini). Falta: suíte comum com a trava e --test-concurrency=1, depois pedir a revisão ao Fiel. Contexto acima de 40%: salvo para limpar.
+- eb7c941: o teste do 13 fecha todos os dublês. Suíte 172 passam, 8 pulados, 0 falham. Merge de integracao 57e85cf (6bfb506). Revisão do 13 PEDIDA ao Fiel em 2026-10-17 ~02h05 (HEAD 6bfb506); esperar o parecer em etapas/parecer-13-Trilho.md.
+- Fiel PASSOU o 13 (rodada 1); passado ao Rebite em 2026-10-17 ~02h05. Próximo: Codex do 12 e do 15 na vez da trava (Brasa, Vela, depois eu).
+- Ticket 35 (aval sem parecer registrado): ramo ticket-35, worktree C:/context-hub-wt/ticket-35, commits 140417a d65b18a 0b01cd9, teste do acervo 21/21. Falta: suíte comum com a trava, revisão do Fiel, Rebite. Relatório etapas/relatorio-35-avais.md. O Codex do 12 e do 15 tem prioridade quando a trava vier.
 - Pendente: o ponta a ponta do Codex no 12 e no 15 (limite de uso até 01:34). Aviso agendado para 01:40 (pode ter
   se perdido no /clear: conferir a hora e seguir).
 

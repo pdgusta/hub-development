@@ -1,33 +1,23 @@
 # Retomada da Brasa
 
-Atualizada em 2026-10-17 ~01h20. Papel: construtora. Regras em `etapas/regras-da-construcao.md`: leia inteiras, em
+Atualizada em 2026-10-17 ~02h25. Papel: construtora. Regras em `etapas/regras-da-construcao.md`: leia inteiras, em
 especial "Um trabalho pesado por vez" (a trava `etapas/trava-pesada.md`) e "Testes com harness de verdade".
 - Revisores: Fiel e Fielzinho, em dupla (o Fiel fecha).
 - Integrador: Rebite (`maestri ask "Rebite" ...`, depois do "passa").
 - Maestro: `maestri ask "Claude Code" ...`.
 - Fila: o ticket 07 agora, depois o 08 (receita da etapa 2, opção A).
 
-## Ticket 07 (banco do par): rodada 2 quase pronta para o Fiel
+## Ticket 07 (banco do par): rodada 3 com o Fiel
 
-- Ramo `ticket-07`, worktree `C:\context-hub-wt\ticket-07`.
-- Ponta `cea150b`: merge da `integracao` 5d84d76 (ticket 30).
-- Código da rodada 2: 6911857 (os três consertos) e 87ce68b (180 s para o daemon ficar pronto).
-- Parecer da rodada 1 (volta): `etapas/02-banco/parecer-Brasa.md`.
-- Relatório: `etapas/relatorio-07-banco-do-par.md`. A seção "Rodada 2" está escrita; falta preencher a linha da suíte.
+- Ramo `ticket-07`, worktree `C:/context-hub-wt/ticket-07`. Ponta `6b1d7e8` (consertos da r2) sobre 99ea624 (`integracao` 57e85cf juntada).
+- Rodada 2 voltou (parecer `etapas/02-banco/parecer-Brasa.md`, seção "Rodada 2"); consertos feitos, relatório seção "Rodada 3".
+- Suíte comum em 99ea624, com a trava e `--test-concurrency=1`: 179 PASSA, 8 pulados, 0 falhas (`.local/suite-r2d.log`).
+- A rodada 3 é a última: passa, com ressalvas escritas. O Fiel roda o Docker nela.
 
 ### Próximo passo exato
 
-1. Repetir a suíte comum **com a trava**:
-   - Conferir `etapas/trava-pesada.md`. Se existir com menos de 30 min, esperar. Se não, criá-la com nome, o que roda e
-     hora.
-   - Rodar `node --test "agents/code/test/**/*.test.mjs"` na worktree, com log em `.local/suite-r2d.log`.
-   - Apagar a trava ao fim, também se falhar.
-   - A última rodada (`.local/suite-r2c.log`) deu 177 testes, 167 passam, 8 pulados e 2 falhas. As duas são da
-     indexação da busca (ticket 12): a rajada de 200 notas estourou 300 s, e a segunda partida estourou 80 s. Rodou
-     junto com a suíte do Trilho (o maestro pediu que ele parasse). É vermelho por tempo, não do 07.
-2. Preencher no relatório (seção "Rodada 2") o resultado da suíte.
-3. Pedir a rodada 2 ao Fiel. Ramo `ticket-07` na ponta atual; relatório, seção "Rodada 2".
-4. Depois do passa: avisar o Rebite (ramo, testes, relatório, parecer).
+1. Rodada 3 PASSA (parecer seção "Rodada 3"). Passa levado ao Rebite ~02h45; espero a junção e o próximo ticket (08) do maestro.
+2. Depois do passa: avisar o Rebite (ramo, testes, relatório, parecer).
 
 ### Os testes com Docker da rodada 2 (todos verdes, um de cada vez)
 

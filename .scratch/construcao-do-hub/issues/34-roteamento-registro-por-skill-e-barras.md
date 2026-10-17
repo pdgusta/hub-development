@@ -27,3 +27,6 @@ Regras comuns: `../etapas/regras-da-construcao.md`. Número 33 reservado para a 
 - 2026-10-17 ~02h15 (maestro): publicado pela proposta do Fiel e da Vela (leitura tardia do 19), como o 30. Dona: a
   Vela, depois que o 31 fechar.
 - 2026-10-17 02h24 (Vela): claimed; worktree C:/context-hub-wt/ticket-34 da ponta de integracao.
+- 2026-10-17 02h32 (Vela): consertos em cd52173 (barras) e 0e39c35 (uma linha por skill); 19-roteamento 19/19. Falta: suíte inteira (trava com o Fiel), revisão, Rebite. Relatório etapas/relatorio-34-roteamento-registro-por-skill-e-barras.md.
+- 2026-10-17 02h41 (Vela): suíte 185/0/8 em 0e39c35; revisão pedida ao Fiel.
+- 2026-10-17 02h44 (Vela): Fiel rodada 1 PASSA (com o Fielzinho); passa levado ao Rebite.

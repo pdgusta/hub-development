@@ -47,3 +47,44 @@ Leitura independente encerrada. Enviar três achados ao Fiel, aguardar os logs D
 ## Logs próprios do Fiel — acompanhamento
 
 Leitura parcial de etapas/revisao-07-r1-07-banco.log enquanto a execução ainda está em andamento: WhatIf e subida A/B passaram; replicação A em running falhou (estado vazio); B em running passou. Ainda não é resultado final. Não executei Docker nem alterei a rodada dele. Aguardar diagnóstico/log completo antes do acordo.
+
+# Rodada 2 — Fielzinho (2026-10-17)
+
+Veredito independente: **VOLTA**, pelos dois pontos residuais abaixo. Acordo com o Fiel pendente. Não li o parecer dele desta rodada. Escopo: os três consertos da r1 em 6911857 e a espera em 87ce68b, na ponta 99ea624, worktree limpa.
+
+## Verificação própria
+
+- Li relatório (incluindo Rodada 2), ticket 07, regras da construção/revisão em dupla, parecer próprio r1, módulo completo, teste sem Docker, CLI falso e diff dos consertos. Conferi núcleo e Worker 4 do spec e trechos do Answer do ticket resolvido 48 sobre aceite e histórico comum.
+- Executei `pwsh -NoProfile -File agents/code/test/banco/kit-sem-docker.ps1`: 11 PASSA, saída 0. Cobre node alheio simples; falha/segunda tentativa de mark-resolved; idempotência com marca; divergências de cifra, frase, ofuscação, banco, porta e usuário.
+- Não executei Docker, harness real nem suíte inteira. Docker reservado ao Fiel. Os resultados Docker e da suíte do relatório continuam evidências da Brasa, não execuções minhas.
+- Uma reprodução adicional dos casos abaixo foi rejeitada antes da execução pela política automática, sem motivo específico. Portanto os dois achados abaixo são de leitura do código, NÃO reproduções próprias nesta rodada. Nenhum resultado dessa tentativa é contado como teste.
+
+## Consertos residuais
+
+1. **Identidade do daemon ainda usa substring, não o argumento do banco.** `banco.psm1`, função Get-PidSincronizador: `$linha.Contains($par.CliDb)` aceita, por exemplo, o banco `C:\ensaio\cli-db-outro` quando o par esperado usa `C:\ensaio\cli-db`. Também não exige o CLI esperado: basta ser node e conter a palavra daemon em algum ponto. Se o PID salvo for reutilizado por outro daemon de par com esse prefixo, Start-Sincronizador o considera ativo e Stop-Sincronizador pode encerrar o outro par. O teste atual usa um node sem argumentos semelhantes; não cobre a colisão. Recomendação: conferir os argumentos exatos de CLI, banco e comando (e a identidade temporal, se adotada), com teste de dois caminhos que compartilham prefixo. É a mesma proteção pedida no conserto 1 da r1.
+
+2. **Dispositivo configurado sem marca é refeito silenciosamente.** Initialize-Dispositivo só entra na conferência se settings E hub-aceito existem. Com settings.isConfigured=true e marca ausente, segue para `init-settings --force`, remote-add e regrava os campos de cifra. Isso inclui dispositivos da r1 e a janela entre ACCEPTED e gravação da marca. A recomendação da r1 era recusar divergência sem refazer silenciosamente dispositivo com dados; a nova marca não torna configuração existente um dispositivo novo. Recomendação: estado configurado sem marca deve parar com diagnóstico e preservar os arquivos, ou ter recuperação explícita segura; provar que não executa init-settings/remote-add nesse caso. Não alego perda de dados demonstrada: o defeito demonstrável por leitura é a reconfiguração silenciosa e o desvio da guarda solicitada.
+
+## O que ficou atendido
+
+- Falha ordinária de mark-resolved agora restaura isConfigured=false; o teste mostra a segunda chamada executando o aceite de novo. A marca só é escrita após ACCEPTED. Conserto 3 atendido nesse fluxo; a janela de marca ausente está no item 2.
+- Com a marca presente, as seis divergências testadas são recusadas e a configuração válida não é refeita. O uso da marca como testemunho do remoto cifrado é uma limitação documentada; não equivale a ler o remoto efetivo.
+- 87ce68b apenas aumenta a espera de prontidão do daemon para 180 s. Não muda a condição de sucesso.
+
+## Próximo passo
+
+Enviar estes dois pontos ao Fiel para acordo. Ele roda/avalia Docker, fecha o veredito único e responde à Brasa. Sem alterações de código, spec ou tickets; sem subagentes ou gravação global.
+
+## Acordo da rodada 2
+
+Fiel confirmou por mensagem nesta sessão: VOLTA pelos dois pontos (PID por argumento exato; configurado sem marca recusado ou conferido). Veredito único gravado por ele em 02-banco/parecer-Brasa.md. Na r3, Docker será executado pelo Fiel com a trava. Rodada 2 encerrada em acordo.
+
+
+# Rodada 3 — Fielzinho (2026-10-17)
+
+Ponta 6b1d7e8954a748359407a9f0261a594b9edffb7d, limpa. Li diff inteiro e relatório r3; executei kit-sem-docker.ps1: 14 PASSA, saída 0. Os dois consertos acordados estão atendidos: CLI/CliDb com limites de argumento recusam cli-db-outro; settings configurado sem marca lança erro antes de qualquer reconfiguração, preservando conteúdo. Falha ordinária de mark-resolved e seis divergências continuam verdes. Recomendo PASSA nos consertos, condicionado à avaliação Docker pelo Fiel. Sem Docker/harness nesta revisão. A mensagem de erro ainda sugere apagar dispositivo; preservação/recuperação deve ser decisão explícita, não ação automática. Não abro novo bloqueio nesta terceira rodada.
+
+
+## Fechamento da rodada 3 — acordo PASSA
+
+Fiel confirmou PASSA em dupla. Conferi os finais dos quatro logs próprios dele em etapas/: revisao-07-r3-07-banco.log, revisao-07-r3-prova01.log, revisao-07-r3-prova02.log e revisao-07-r3-sincronizador.log. Todos registram tudo passou e saida=0. O07 registra as duas folhas de conflito nos dois bancos, 158 procurados sem texto claro em cada banco, idempotência sem religar e religamento por pasta local nova. Limpeza sem sobra confirmada pelo Fiel; não fiz execução Docker nem inspeção própria de contêineres. Somados aos14 casos sem Docker executados por mim em6b1d7e8, os consertos estão aceitos. Rodada encerrada; Fiel responde à Brasa.

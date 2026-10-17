@@ -27,3 +27,14 @@ Ressalvas (não seguram):
 - `dentroDoHub` compara caminhos em minúsculas, sem resolver junction (o 14 resolve com `realpathSync.native`).
 - Uso e "rodou" no Codex e no Copilot: não verificado (sem evento nas docs); "sem rede" garantido só pelo código.
 - O gatilho `pesquis` casa qualquer pedido de pesquisa; ajuste pelo registro (decisão do 15).
+
+## Leitura do Fielzinho (tardia, depois da junção) — 2026-10-17
+
+Parecer dele: `parecer-19-Vela-fielzinho.md`. Dois achados, **aceitos pelo Fiel** (lidos no código: `fecharTurno` em
+`registro.mjs` junta as skills que rodaram numa linha só; `caminhosDoPedido` filtra antes de trocar `\` por `/`):
+1. Linha de papel com várias skills: o fechamento registra só as que rodaram (com `sim` se qualquer uma rodou); as
+   indicadas e não usadas somem do registro, e a medição do 15 (ajustar a tabela pelo registro) fica cega a elas.
+   Uma linha de indicação por skill.
+2. Caminho citado com barra do Windows (`research\dados.json`) não casa o gatilho `caminho`; o equivalente com `/`
+   casa. Normalizar as barras antes do filtro.
+O 19 já está em `integracao`: os dois vão como conserto num ticket seguinte (a Vela leva ao maestro); não seguram nada.

@@ -151,3 +151,58 @@ node --test agents/code/test/05-frontmatter.test.mjs
 - 01h29: 31 e 32 PASSAM (Fiel rodada 2); levados ao Rebite sem suíte inteira minha (trava). Próximo: 01:40 Codex do 20 (trava); depois, se der, ponta a ponta Claude do 31 (HUB_HARNESS_REAL=1 HARNESSES=claude ponta-a-ponta/20-acervo no ramo ticket-31).
 - 01h31: maestro: a ponta a ponta Claude do 31 também é minha, na mesma janela da trava do Codex do 20. Ordem da trava: Trilho, Rebite (suíte 31+32), depois eu; Brasa antes: esperar. Depois: relatório do 31, Fiel confere evidência, avisar Rebite (só então ele resolve o 31).
 - 01h51: Rebite juntou 31+32 (integracao 57e85cf, 178/0/8); 32 resolvido; 31 espera minha ponta a ponta Claude + Fiel. Trava com o Trilho (01:50); vigia bcrz6samt pega a trava quando ele largar.
+- 02h04: ponta a ponta real achou buraco: Edit LF em peça CRLF passava sem guarda (Claude gravou). Conserto 050fb14 (trocar do 14 casa CRLF) + asserção do Codex pelo registro. integracao juntada. Falta: rodar de novo HARNESSES=claude,codex no ticket-31 (trava; Brasa com ela 01:59), commit da evidência, relatório, Fiel, Rebite.
+- 02h06: maestro aprovou; depois de rodar de novo, pedir ao Fiel rodada nova de CÓDIGO (050fb14 + merge), não só evidência. Comentário no ticket 14 feito.
+- 02h14: evidência 4e420a6 (2ª rodada real verde Claude+Codex). Rodada nova de código pedida ao Fiel em 4e420a6. Depois do passa: avisar Rebite (junta e resolve o 31). Não mexer na worktree ticket-31.
+- 02h16: Fiel trouxe 2 consertos tardios do 19 (parecer-19-Vela.md: fecharTurno uma linha por skill; caminhosDoPedido normalizar barras antes de filtrar); levados ao maestro para ticket novo.
+- 02h18: maestro publicou o ticket 34 (issues/34-roteamento-registro-por-skill-e-barras.md, os 2 consertos do 19): meu depois que o 31 fechar. 33 reservado (sobras do link fora do hub, com o Gustavo).
+
+## PRÓXIMO (gravado 2026-10-17 02h22, antes do /clear; contexto acima de 40%)
+
+- Fechados nesta sessão: 30 (juntado, resolvido), 32 (juntado, resolvido), 31 (rodada 3 PASSA; Rebite avisado para
+  juntar 4e420a6 e resolver; conferir no ticket se ele resolveu). A prova do Codex do 20 foi feita pelo ramo do 31
+  (evidencia-20/codex, hashes-claude-codex.json).
+- **Próximo: ticket 34** (`issues/34-roteamento-registro-por-skill-e-barras.md`): os dois consertos tardios do 19 em
+  `etapas/parecer-19-Vela.md`: (1) `fecharTurno` (agents/code/hooks/roteamento/registro.mjs): linha de papel com várias
+  skills registra uma linha por skill, inclusive as indicadas e não usadas; (2) `caminhosDoPedido`: normalizar as
+  barras antes de filtrar (`research\dados.json` tem de casar). Fluxo: Status claimed; worktree
+  `git -C C:/context-hub worktree add C:/context-hub-wt/ticket-34 -b ticket-34 integracao`; tdd (teste em
+  agents/code/test/19-roteamento.test.mjs); relatório etapas/relatorio-34-...md; Fiel; Rebite.
+- Ressalvas levadas ao maestro (não são minhas até ele mandar): asks de nome parecido e da tabela sem registro em
+  agents/maestro/avais/ (31).
+- Regras novas desta sessão: **trava pesada** (`etapas/trava-pesada.md`: suíte inteira, harness real, Docker, npm,
+  indexação; criar com nome/o que/hora, apagar ao fim mesmo falhando; existe e <30 min: esperar). Construtores ligados
+  entre si (Trilho, Brasa): assunto entre construtores vai direto. Mudança de código depois do passa: rodada nova de
+  código no Fiel.
+- Armadilhas: arquivos do repo em CRLF; o Edit do Claude casa old_string LF com CRLF (a guarda agora também). Edit
+  multilinha por `node -e` não casa CRLF: usar o Edit. Bash com `&` e redirecionamento prende o comando até o fim.
+- 02h21: 31 PASSA rodada 3; Rebite avisado; ressalva (asks sem registro em avais) ao maestro. Próximo: ticket 34.
+- 02h32: ticket 34 em curso. Ramo ticket-34 (worktree C:/context-hub-wt/ticket-34), commits cd52173 e 0e39c35, 19-roteamento 19/19, relatório escrito. Falta: suíte inteira (esperar a trava), Fiel, Rebite.
+- 02h41: suíte 185/0/8 em 0e39c35; revisão pedida ao Fiel. Não mexer na worktree ticket-34 enquanto ele revisa. Depois do passa: Rebite.
+- 02h44: 34 PASSA (rodada 1); Rebite avisado. Próximo: esperar o maestro.
+
+## Ticket 09, MCP do banco com versão (2026-10-17 ~02h55): só leitura até o 07 entrar em integracao
+
+- Maestro: próximo é o 09; até o Rebite resolver o 07, só leitura (nada de worktree nem código). Depois: worktree da
+  ponta de integracao e seguir.
+- Lido: issues/09, spec Worker 5 (spec.md:141-149), faixa 5 (spec-partes/faixas-05-06.md:1-219), relatório do 07.
+- Achados: o spec diz "fork local do es617/obsidian-sync-mcp em repositório próprio fora do hub (pergunta abaixo)",
+  sem a resposta escrita; existe C:/Projetos/hub-mcp-banco, clone limpo do upstream (origin es617, main 1a4d53f
+  v0.10.0, de 2026-10-15 21h49, só package-lock.json mudado); tentativa-paralela/faixa-05 não tem nada além do início.
+- Banco de ensaio: o 07 deu agents/code/kit/par/banco/banco.psm1 e agents/code/test/banco/ensaio.psm1
+  (New-/Start-/Remove-EnsaioBanco); faixa 5 pede CouchDB em 127.0.0.1:5996, MCP 8796 (escrita) e 8797 (leitura).
+- Validador: o do hub é node (agents/code/bin/lib/frontmatter.mjs, validar exportado); o fork TS em Node pode importar
+  o mesmo, sem segundo validador (ponto aberto da faixa 5).
+- Perguntas levadas ao maestro: onde mora o fork; usar o clone existente; banco de ensaio pelo ensaio.psm1 do 07.
+- Leitura do upstream (C:/Projetos/hub-mcp-banco, só leitura): src/vault.ts grava por DirectFileManipulator.put da
+  lib/livesync-commonlib (sem revisão de base); readNote devolve só o texto. O r1.py do spike
+  (C:/Projetos/spike-livesync/r1.py) grava o pedaço (leaf) e o documento de metadados com _revisions e
+  new_edits=false sobre a rev lida, mas sem E2EE: no fork, o pedaço tem de sair cifrado pela própria lib (ver como o
+  put monta os pedaços) e só o documento de metadados ir por _bulk_docs new_edits=false. A pergunta "onde mora o fork"
+  é do Gustavo (planejamento/agentes/Worker 5.md:6).
+- Respostas do maestro (~03h00): (1) onde mora o fork: com o Gustavo pelo chat (recomendação: repositório próprio
+  C:/Projetos/hub-mcp-banco). (2) Se for o repositório próprio, usar o clone que existe; conferido: HEAD 1a4d53f =
+  tag v0.10.0 = origin/main; o package-lock.json perde 11 linhas (jose 5.10.0, optional/peer), efeito do npm install:
+  registrar no relatório. (3) Banco de ensaio pelo ensaio.psm1 do 07 (hub-ensaio-09-*, porta 5996); o fork importa
+  agents/code/bin/lib/frontmatter.mjs do hub por HUB_ROOT, sem segundo validador.
+- Até a resposta do Gustavo e o 07 em integracao: só leitura.

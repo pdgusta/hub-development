@@ -2,7 +2,7 @@
 
 ## Estado
 
-- Ramo `ticket-13` (HEAD 95e37b7), worktree `C:\context-hub-wt\ticket-13`, de `integracao` f83c8f5.
+- Ramo `ticket-13` (HEAD 6bfb506), worktree `C:\context-hub-wt\ticket-13`, de `integracao` f83c8f5; junta `integracao` 57e85cf (merge 6bfb506, sem tocar na busca).
 - Primeiro commit, separado (pedido do maestro): f8b8769, o teste do 12 prova o reaproveitamento do índice pelo índice.
 - Teste único do gemini: feito, liberado pelo Gustavo (rodada "Busca: o teste único do gemini", opção A).
 
@@ -87,7 +87,7 @@ cópia do hub de ensaio, segundo índice, as perguntas do aceite; configuração
 ## Testes
 
 - `13-gemini.test.mjs`: 4/4. `12-busca.test.mjs`: 9/9.
-- Suíte comum: a rodar com a trava antes da revisão.
+- Suíte comum (`--test-concurrency=1`, com a trava, em eb7c941 com 5d84d76 juntada): 180 testes, 172 passam, 8 pulados, 0 falham. eb7c941: o teste fecha todos os dublês (um servidor aberto segurava o processo e a primeira suíte travou no 13-gemini).
 
 ## Não verificado / para o maestro
 

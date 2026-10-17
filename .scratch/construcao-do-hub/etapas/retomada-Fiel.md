@@ -11,6 +11,22 @@ arquivo. Depois `maestri list`. Todos os caminhos abaixo são relativos a
   (vira ressalva para o Rebite, sem segurar junção).
 - Eu respondo só ao construtor (maestri ask); ele leva o passa ao Rebite.
 
+## FEITO desde a fila: 07 r3 PASSA (acordo, Docker 4/4); 31 r3 PASSA com ressalva (aval sem parecer não registrado
+-> ticket seguinte); 19 leitura tardia do Fielzinho: 2 achados aceitos -> Vela leva ao maestro. Leituras do Fielzinho
+ainda pendentes: 13, 32, 30, 20, 15, 12, 29.
+
+## FILA (maestro, depois da cota do Codex voltar às 01h34; o Fielzinho está livre)
+1. **07 rodada 2 (Brasa)**: vem depois da suíte dela. Detalhes abaixo em "Próximos pedidos", item 2. Com o
+   Fielzinho de volta, revisão em dupla normal (repassar na hora; Docker só eu, com trava).
+2. **31 rodada nova (Vela)**: ela mudou código em 050fb14 (a guarda casa CRLF/LF) e trouxe a evidência do Claude e
+   do Codex do 20. Ramo ticket-31 (worktree `C:/context-hub-wt/ticket-31`); conferir o diff b710f2d..050fb14, rodar
+   `20-acervo`, sondar a guarda com arquivo CRLF (Edit/Write sobre peça com `\r\n`), ler a evidência do 20 (registro,
+   hashes iguais, login apagado). Parecer: acrescentar "Rodada 3" em `parecer-31-Vela.md` (é a 3ª: passa com
+   ressalvas escritas se ainda houver algo).
+3. **Leituras atrasadas do Fielzinho**: 13, 31, 32, 30, 20, 15, 12, 19, 29. Ele lê os pareceres que fechei sozinho e
+   conta o que achar; eu registro como "Leitura do Fielzinho" no parecer de cada um (aceito/recusado com motivo); achado
+   novo vira ressalva para o Rebite, sem segurar junção já feita (ou conserto, se o ticket ainda não foi juntado).
+
 ## Próximos pedidos (anunciados pelo maestro)
 1. **Ticket 13 (Trilho)**: ainda não pedido. Seguir o fluxo: repassar ao Fielzinho, ler ticket/relatório/diff, rodar.
 2. **Ticket 07 rodada 2 (Brasa, banco do par)**: ramo ticket-07, worktree `C:/context-hub-wt/ticket-07`. Conferir os
@@ -42,6 +58,7 @@ arquivo. Depois `maestri list`. Todos os caminhos abaixo são relativos a
 | 30 r1 | Vela | `parecer-30-Vela.md` | Fiel sozinho; reabre se a suíte da Vela der vermelho fora do 12-busca |
 | 31 r2 | Vela | `parecer-31-Vela.md` | Fiel sozinho; suíte e ponta a ponta Claude pendentes da trava (reabre se vermelho) |
 | 32 r2 | Vela | `parecer-32-Vela.md` | Fiel sozinho; suíte pendente da trava (reabre se vermelho) |
+| 13 r1 | Trilho | `parecer-13-Trilho.md` | Fiel sozinho |
 | 07 r1 | Brasa | `02-banco/parecer-Brasa.md` | **VOLTA** (3 consertos), aguardando r2 |
 
 Leitura do Fielzinho pendente: 07, 12, 15, 19, 20, 29, 30.

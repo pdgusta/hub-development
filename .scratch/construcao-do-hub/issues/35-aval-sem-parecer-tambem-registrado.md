@@ -26,3 +26,4 @@ decisão do Gustavo das três lacunas do acervo (rodada `2026-10-16-acervo-do-ma
 - 2026-10-17 ~02h25 (maestro): publicado pela ressalva do 31 (Fielzinho, aceita pelo Fiel), como o 30 e o 34. Dono: o
   Trilho, enquanto espera a trava para o Codex do 12 e do 15 (a Vela está no 34).
 - 2026-10-17 ~02h30 (Trilho): pego (claimed). Worktree C:/context-hub-wt/ticket-35, ramo ticket-35, de integracao 236b3ef.
+- 2026-10-17 ~02h35 (Trilho): 140417a, d65b18a, 0b01cd9. Teste do acervo 21/21. Falta: suíte comum (trava), revisão. Relatório etapas/relatorio-35-avais.md.

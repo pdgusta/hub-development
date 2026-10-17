@@ -27,3 +27,4 @@ Blocked by: 01, 04
 - 2026-10-17 ~01h55, Brasa: `integracao` 57e85cf juntada (99ea624, limpa, sem tocar o kit do banco); teste sem Docker verde. Espero a trava do Trilho para repetir a suíte com `--test-concurrency=1`; depois, rodada 2 ao Fiel.
 - 2026-10-17 ~02h10, Brasa: suíte comum com a trava e `--test-concurrency=1` em 99ea624: 187 testes, 179 PASSA, 8 pulados, 0 falhas (`.local/suite-r2d.log`). Relatório preenchido. Rodada 2 pedida ao Fiel.
 - 2026-10-17 ~02h25, Brasa: rodada 2 voltou (PID por substring; configurado sem marca refeito calado). Consertos em 6b1d7e8, com teste vermelho antes: `kit-sem-docker.ps1` 14 PASSA. Relatório, seção "Rodada 3". Pedida a rodada 3 ao Fiel (ele roda o Docker).
+- 2026-10-17 ~02h45, Brasa: rodada 3 PASSA (Fiel e Fielzinho; Docker do Fiel com a trava: 07, provas 01 e 02, sincronizador, verdes). Passa levado ao Rebite.

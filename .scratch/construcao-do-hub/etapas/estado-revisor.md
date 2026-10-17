@@ -102,3 +102,17 @@ Ocioso. Próximos: 13 (Trilho), 07 r2 (Brasa), rodadas curtas do Codex (12, 15, 
 Sem Docker nem ensaio de pé.
 31 r1 VOLTA (parecer forjável em .local/acervo/pareceres). 32 r1 VOLTA (espaço no caminho gera link quebrado). Pareceres etapas/parecer-31-Vela.md e parecer-32-Vela.md. Vela avisada.
 31 r2 e 32 r2: PASSA (19/19, 18/18, sondas ok). Suítes pendentes da trava; reabrem se vermelho. Vela avisada.
+13 r1 (Trilho): PASSA (4/4; gemini.env sem chave; contêiner parado). Parecer etapas/parecer-13-Trilho.md. Trilho avisado.
+
+## Fila — 2026-10-17 (cota do Codex voltou às 01h34; Fielzinho livre)
+
+1. 07 r2 (Brasa), depois da suíte dela.
+2. 31 rodada nova (Vela, 050fb14: guarda casando CRLF/LF; evidência do Claude e do Codex do 20).
+3. Leituras atrasadas do Fielzinho: 13, 31, 32, 30, 20, 15, 12, 19, 29.
+Detalhes em etapas/retomada-Fiel.md, seção FILA. Salvo para limpar.
+07 r2: VOLTA em acordo com Fielzinho (PID por substring; configurado sem marca refeito calado). 3ª rodada = passa com ressalvas; Docker do Fiel na 3ª, com trava. Brasa avisada.
+19: leitura tardia do Fielzinho com 2 achados aceitos (registro por skill; barra do Windows no caminho); 19 já juntado -> Vela leva ao maestro. 07 r3 pedido (6b1d7e8): Docker espera a trava (Rebite). 31 nova rodada (4e420a6) em revisão.
+31 r3: PASSA com ressalva (aval de nome parecido/tabela não registrado -> ticket seguinte). Vela avisada.
+07 r3: trava pesada criada 02:21 pelo Fiel; Docker rodando em sequência (task de fundo), logs revisao-07-r3-*.log; a trava se apaga no fim do script.
+07 r3: PASSA em acordo (Docker 4/4 verde com a trava; trava apagada). Brasa avisada.
+34 r1 (Vela): PASSA em acordo (19/19). Vela avisada.

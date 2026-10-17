@@ -70,3 +70,24 @@ Fonte: rodada `2026-10-16-acervo-do-maestro-tres-lacunas` (Gustavo, 1 A, 2 B, 3 
   pareceres), nos três harnesses, mesmo com `HUB_PAPEL=maestro`; o agente não forja mais o parecer. Teste novo.
   20-acervo 19/19. Limite de sempre da guarda: ela vê `Write`/`Edit` (e o `apply_patch`, o `create`/`edit`); um
   comando de shell que grave ali não passa por ela.
+
+## Ponta a ponta real (2026-10-17, trava pesada)
+
+- 1ª rodada (01:58, ramo ticket-31 em b710f2d): **Claude falhou com achado sério**: a peça
+  `maestro-papeis/redator.md` foi gravada. O hub de ensaio sai em CRLF (checkout no Windows) e o `old_string` do
+  Edit veio em LF; o `trocar` das guardas (`hooks/guardas/guarda.mjs`, do 14) não casava, devolvia `final`
+  undefined, e a guarda do acervo deixava passar ("a troca não casa: a ferramenta falha sozinha"); o Claude Code casa os
+  dois e grava. Buraco do 14/20, não do 31. A prova do Codex do 20 (ramo ticket-20) também falhou, mas só na asserção:
+  a guarda recusou as duas gravações (registro), e o `codex exec --json` não mostra a gravação recusada nem o motivo.
+- Conserto 050fb14 (aval do maestro): o `trocar` casa o `old_string` em LF com o arquivo em CRLF, como o Claude
+  Code; teste novo em 20-acervo (vermelho antes); 20-acervo e 14-guardas 57/57. A asserção do Codex passou a olhar o
+  motivo no registro da guarda (Copilot segue pelo stdout). Comentário no ticket 14. `integracao` 57e85cf juntada
+  (da4f8fe).
+- 2ª rodada (02:09, HARNESSES=claude,codex, em da4f8fe): **verde nos dois** (2/2). Claude: a troca recusada esperando
+  o verificador, com "que não o seu (claude-haiku-5-5)" lido do transcript real; o nome parecido pediu aval. Codex: as
+  duas gravações recusadas apontando `agents/maestro/propostas/`; a proposta gravada. Login copiado
+  (`.credentials.json` em CLAUDE_CONFIG_DIR; `auth.json` em CODEX_HOME de ensaio), apagado ao fim de cada sessão;
+  hashes das pastas reais antes e depois iguais; nada de token na evidência. Evidência em
+  `agents/code/test/ponta-a-ponta/evidencia-20/{claude,codex}/` e `hashes-claude-codex.json`
+  (4e420a6).
+- Rodada 3 do Fiel: PASSA (CRLF ok, 57/57), com ressalva do Fielzinho: o ask de nome parecido e o da tabela não criam pendência, então o aval aprovado nesses casos fica sem registro em agents/maestro/avais/ (critério 1). Levada ao maestro.
