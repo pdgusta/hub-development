@@ -274,3 +274,8 @@ algo, entra como ressalva para o Rebite, sem segurar a junção.
 Fora do escopo, para o ticket 01 (Brasa): o ramo ticket-01 ainda chama
 `agents\test\hub-de-ensaio\montar.mjs` em `provas/01-banco/banco.psm1:49` e na cópia da prova 02.
 Vai quebrar do mesmo jeito ao juntar depois do 05.
+
+### Fechamento conjunto — ticket 05, rodada 4
+
+Fielzinho concluiu a leitura depois do limite de uso: **passa**, sem consertos (parecer-Trilho-fielzinho.md).
+Fiel e Fielzinho de acordo. O passa da rodada 4 fica confirmado pelos dois.

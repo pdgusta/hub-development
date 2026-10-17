@@ -121,3 +121,4 @@ decidir antes do ticket 18).
 - ~20h45: ticket 06 resolvido e juntado (8b9beef); Vela no 27 (fecha a etapa 1). Rodada aberta `2026-10-16-pastas-locais-depois-do-gerador` (as quatro ressalvas do 06: pasta local nova, quem roda o gerador, tornar local, exclusão do git); pesa no 08.
 - 20:38: rodada das pastas locais respondida (todas A); ticket 28 publicado (etapa 2, espera o 07). Aberta: `2026-10-16-laco-no-fim-da-resposta`.
 - 20:39: laço no fim da resposta decidido (B: até três devoluções, na quarta solta e registra). Nenhuma rodada aberta.
+- ~21h10: ticket 14 resolvido e juntado (8d1d785); README.md da raiz saiu. Trilho no 12 (busca; primeiro commit conserta as pastas do 14 em %TEMP%). Limpeza de contexto: Vela, Brasa e Fielzinho limpos e retomados; Trilho com /clear na fila.

@@ -68,3 +68,9 @@ Aval do Gustavo (20:24) para login dos harnesses em %TEMP%\hub-ensaio-<ticket>-*
 01 r1: PASSA (Fiel sozinho). Sonda -Manter sem vazamento; ensaio derrubado. Parecer etapas/00-provas/parecer-Brasa.md. Brasa avisada.
 06 r2: PASSA (Fiel sozinho). 7/7, 14/14, -SoPonto vermelho correto, limpo. Vela avisada.
 Pendente: leitura do Fielzinho em 05 r4, 01 r1 e 06 r2 quando ele voltar do limite.
+05 r4: Fielzinho PASSA, acordo registrado no parecer-Trilho. Fielzinho de volta; lendo 01, 06, 14.
+14 (ramo ea4d299): repassado ao Fielzinho. Revisão do Fiel em curso.
+01 e 06: acordo com Fielzinho registrado nos pareceres (passa). 01: contagem corrigida para 17 PASSA + 2 VÊ.
+14: Fielzinho investigando patch com newline após End Patch. Fiel: lendo código; falta rodar 69 e decidir ponta a ponta.
+14 r1: VOLTA em acordo com Fielzinho. Conserto 1 newline após End Patch (reproduzido), 2 caminho com ponto relatório x código. 69/69 Fiel. Parecer etapas/parecer-Trilho.md. Trilho avisado.
+14 r2: PASSA em acordo com Fielzinho. 71/71, reprodução repetida recusa nos 4 finais, sem login sobrando. Trilho avisado.

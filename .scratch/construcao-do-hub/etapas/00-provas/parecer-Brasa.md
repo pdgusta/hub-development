@@ -9,7 +9,7 @@ Conferido: integracao 0d04985 é ancestral de 0c8c639; diff contra integracao = 
 `banco.psm1` da 01 = cópia da 02 menos os três acréscimos da 02, mais `-SemSalComum` (diff conferido).
 
 Evidências (rodadas pelo Fiel):
-1. `pwsh agents/code/test/provas/01-banco/prova.ps1` (com E2EE e caminho ofuscado): 19 PASSA, saída 0;
+1. `pwsh agents/code/test/provas/01-banco/prova.ps1` (com E2EE e caminho ofuscado): 17 PASSA e 2 VÊ (registro), saída 0;
    hub de ensaio de 90 arquivos A->B em 18,2 s; travessias 1,0–3,6 s; conflito com `_conflicts` e 2 folhas nos dois
    bancos; nada em claro. Log: `etapas/00-provas/revisao-01-r1-cifrada.log`. Contêineres e pasta apagados no fim.
 2. Sonda própria (o teste só procura os nomes e textos que ele mesmo cria): rodada com `-Manter`, li os
@@ -28,3 +28,11 @@ Limpeza: a rodada órfã do revisor anterior (20:00, `revisao-01-cifrada.log`) f
 
 Fielzinho: no limite de uso do Codex até 20:26; a leitura dele fica para depois. Se ele achar algo, entra como
 ressalva para o Rebite.
+
+### Fechamento conjunto — ticket 01, rodada 1
+
+Fielzinho leu depois do limite (parecer-Brasa-fielzinho.md): **passa**. Corrigiu a contagem: 17 PASSA + 2 VÊ por log,
+não 19 PASSA (aceito; corrigido acima). Limpeza das duas rodadas do Fiel confirmada: depois da cifrada, sem contêiner
+hub-ensaio-00 nem pasta; depois da `-Manter`, ensaio derrubado à mão (PIDs 164840 e 180044 do `.pid`, `down -v`,
+pasta apagada; `docker ps -a` e `docker volume ls` filtrados vazios). Ressalvas de escopo dele somam às minhas.
+Veredito conjunto: **passa**, Fiel e Fielzinho de acordo.

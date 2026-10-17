@@ -18,3 +18,10 @@
 5. Quando soltar o agente no fim da resposta: foi ao Gustavo (rodada "Fim da resposta: quando soltar o agente"; o spec diz
    que a resposta não termina enquanto houver falta). Provisório: devolve uma vez; na segunda parada seguida, solta e
    registra a falta. Isolado num ponto só do código.
+5. **Decidido pelo Gustavo (rodada "Fim da resposta: quando soltar o agente", opção B):** o fim da resposta devolve até
+   três vezes seguidas; na quarta parada ainda com falta, solta e registra a falta no `estado.json` da vigia (para
+   aparecer no início da próxima sessão e na tela de estado). Substitui o provisório.
+- 2026-10-17: retomada gravada em `etapas/retomada-Vela.md` antes do /clear (commit 286236e, 8/8).
+6. **Decisão técnica do maestro (2026-10-17):** `agents/frontmatter/**` entra como `tipo: null` no `paths.yml` (oficina,
+   como `agents/code/` e `agents/skills/`): sem cartão da pasta, sem pedir descrição dos 30 esquemas. Só essa linha do
+   catálogo do 05 mudou. Commit 33194a1; 50/50 (27, gerador, 05 e 04).

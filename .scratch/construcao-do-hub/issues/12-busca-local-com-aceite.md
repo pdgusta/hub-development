@@ -18,3 +18,4 @@ Blocked by: 04, 06
 - [ ] pedido com endereço estranho é recusado; roda duas vezes seguidas reaproveitando o índice
 
 ## Comments
+- 2026-10-16 ~21h10 (maestro): passado ao Trilho (antecipação da etapa 4; bloqueios 04 e 06 resolvidos). Primeiro commit do ramo, separado: os testes do 14 apagam as pastas `%TEMP%/hub-ensaio-14-*` no fim (ressalva do Rebite na junção do 14) e as 33 antigas saem.

@@ -51,6 +51,11 @@ Valem para todo construtor e revisor das etapas. Plano decidido: `revisao/plano/
 - Dados de cliente (STRATA, VOEGOL, AVIANCA, TRF3, SBF): só o nome da iniciativa; nada de dado pessoal; notas de ensaio
   com texto inventado.
 - Grave o estado em arquivo a cada passo: um `/clear` a qualquer momento não pode perder nada.
+- **Contexto acima de 40%** (Gustavo, 2026-10-16): no próximo ponto seguro (commit com testes verdes, ou o fim do
+  ticket), grave `C:\Projetos\context-hub\.scratch\construcao-do-hub\etapas\retomada-<seu nome>.md`: ticket, ramo,
+  worktree, o que está feito, o que falta (próximo passo exato), decisões e armadilhas do caminho, comandos de teste, e
+  copie para o repositório o que estiver só no scratchpad da sessão. Responda ao maestro "<nome>: salvo para limpar". O
+  maestro manda o `/clear` e depois "leia a sua retomada"; você relê as regras, o ticket e a retomada e segue.
 
 ## Ao terminar
 

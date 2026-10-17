@@ -121,3 +121,16 @@ nenhum Docker ou harness real executado. Aguardando acordo final com o Fiel.
 Fiel confirmou leitura independente, 34/34 testes verdes, verificar-hub 0, HEAD 817f850
 limpo e integracao ancestral. Concordou com os consertos e esta proposta.
 Fiel fecha o parecer conjunto e responde ao Trilho. Revisão 05 encerrada pela dupla.
+
+## Rodada 4 — leitura independente posterior à integração
+
+Veredito: **passa** no escopo curto 817f850..a18bbed. Sem achado que exija conserto.
+A entrada da prova 02 é a já revisada de c8d2267; comparando essa base com a18bbed,
+a única alteração na prova é agents/test/hub-de-ensaio/montar.mjs para
+agents/code/test/hub-de-ensaio/montar.mjs. O destino existe e corresponde à migração do 05.
+Não encontrei referências agents/test no código do ramo pela busca realizada.
+Li revisao-05-r4-prova02.log: 12 PASSA, “prova 2: tudo passou”, saida=0.
+Os 34 node verdes e a limpeza de contêineres/pasta foram informados pelo Fiel nesta rodada.
+Não repeti testes nem executei Docker. Não li a nova seção do parecer principal antes
+de concluir. Integração 0d04985 informada pelo maestro; esta conferência fecha a pendência
+independente do diff solicitado, sem alterar código/spec/tickets.

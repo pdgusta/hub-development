@@ -55,3 +55,10 @@ chama (kit, vigia) precisa mostrar o erro, não engolir.
 
 Fielzinho: no limite de uso do Codex até 20:26; a leitura dele fica para depois. Se ele achar algo, entra como
 ressalva para o Rebite.
+
+### Fechamento conjunto — ticket 06, rodada 2
+
+Fielzinho leu depois do limite (`etapas/06-gerador-de-exclusoes/parecer-Vela-fielzinho.md`): **passa** em b7cd714,
+7/7 rodados por ele, meus logs conferidos. Limpeza do Fiel: sem contêiner nem pasta hub-ensaio-06 depois das duas
+rodadas da r2. Ressalvas dele (pasta local criada com o CLI rodando; índice real da busca) já constam acima.
+Veredito conjunto: **passa**, Fiel e Fielzinho de acordo.
