@@ -236,3 +236,22 @@ node --test agents/code/test/05-frontmatter.test.mjs
 - 04h16: regra nova: suíte inteira só na junção (Rebite); a minha foi parada antes de começar (trava nunca minha). Rodada 2 pedida ao Fiel em 2eec8e9. Não mexer na worktree.
 - 04h27: rodada 2 VOLTA (-Titulo); conserto 5436cad, sem Docker 25. Rodada 3 pedida ao Fiel (ele roda o Docker quando a trava do Cinzel sair). Não mexer na worktree.
 - 05h08: 28 PASSA na rodada 3 (Fiel); Rebite avisado (HEAD 5436cad; junção com integracao 33b817a sai limpa, conferido por merge-tree). Ressalvas: Docker não confere o título; leitura do Fielzinho pendente; histórico do git. Próximo: esperar o maestro.
+
+## Ticket 17, vigia nas telas (2026-10-17 ~05h20)
+
+- 28 juntado e resolvido (integracao ea6f353). Próximo do maestro: 17, antes do 16, contra o estado.json de
+  etapas/costuras-16-Trilho.md (exemplo fixo nos testes); quando o 16 entrar, merge e troca pelo real. Codex real só
+  depois das 06h58.
+- Ramo ticket-17, worktree C:/context-hub-wt/ticket-17 (de 9453e3e, já com o 09). Costuras propostas em etapas/costuras-17-Vela.md;
+  esperando o maestro antes de codar.
+- Docs por curl (scratchpad/docs): Codex notify (config-advanced.md, "Notifications": um argumento JSON, type
+  agent-turn-complete, thread-id, turn-id, cwd, input-messages, last-assistant-message); Copilot statusLine
+  (cli-config-dir-reference: type command, command = script que recebe o JSON da sessão no stdin e imprime a linha,
+  padding, refreshInterval). Mod: $.ui.status(texto); modelo agents/code/mods/fim-da-resposta (HUB_ROOT, $.process.run).
+- Maestro aceitou as costuras e as quatro (1 com o Cinzel; 2 linha de status; 3 .cmd se precisar; 4 linha curta com
+  ok, agente calado). Cinzel (10): HUB_MCP_BANCO_LEITURA_URL (http://127.0.0.1:8797/mcp) e
+  HUB_MCP_BANCO_LEITURA_TOKEN, Authorization: Bearer (sem token 401); result.content[0] text = JSON do estado.json sem
+  vistos, ou 'estado indisponível: <motivo>'; passada > 15 min: content[1] 'a vigia não roda desde <hora>'. Streamable
+  HTTP do FastMCP: POST responde text/event-stream ('data: {json}'); Accept: application/json, text/event-stream;
+  initialize antes, header mcp-session-id nos pedidos seguintes. O e2e do fork tem um parseSSE que cai para JSON.
+- Teste agents/code/test/17-vigia-tela.test.mjs; script agents/code/hooks/vigia/tela.mjs.

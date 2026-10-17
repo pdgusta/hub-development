@@ -171,6 +171,19 @@ Depois da mudança:
   commits; o passo 05 usa `npm ci`.
 - **MCP depois de o banco ser recriado:** não testado aqui (ponto aberto da faixa 5).
 
+## Rodada 2 (consertos do parecer da rodada 1)
+
+Parecer: `etapas/parecer-09-Cinzel.md` (VOLTA, 3 consertos). Levados ao `ticket-09` por fast-forward, árvore igual à
+testada pelo Fiel no Docker:
+
+- Fork `ticket-09` em d2a5a40: duas gravações ao mesmo tempo da mesma base. Também é conflito quando aparece uma folha
+  que não estava antes da gravação e não é a dela: quem chega depois ouve "conflito: releia e refaça" (antes, as duas
+  ouviam "saved"). Quem chega primeiro pode ainda ouvir "saved"; a leitura seguinte mostra o CONFLITO. `move_note` com
+  conflito ou recusa na origem diz que o destino já foi gravado. Dois casos novos no `test/versao.e2e.test.ts`.
+- Hub `ticket-09` em ca17738: o passo 05 religa o MCP quando o `dist` é mais novo que o processo; caso novo no
+  `09-mcp-banco.test.ps1`.
+- Testes (Fiel, com a trava, 05h02–05h05): fork 16/16 (com a sonda dele); hub 21 PASSA. Hub sem Docker 1/1.
+
 ## Uso de harness e login
 
 Nenhum. O 09 não chama Claude Code, Codex nem Copilot, e não copiou login. Nada foi gravado em `~`.

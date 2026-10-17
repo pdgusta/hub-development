@@ -1,7 +1,7 @@
 # 10: MCP do banco: três instâncias, cabeça, regra curta e estado
 
 Type: task
-Status: ready-for-agent
+Status: claimed
 Etapa: 3 (MCP do banco)
 Blocked by: 09, 05
 
@@ -27,3 +27,6 @@ Blocked by: 09, 05
 - 2026-10-17 ~04h55 (Cinzel): combinado com o Trilho (16, ramo ticket-16 60756e6, `agents/skills/vigia/SKILL.md`): caminho `<hub>/.local/vigia/estado.json`. Topo: `nivel`, `resumo`, `passada` (ISO; ausente se só outros donos gravaram), `outro_par {situacao, motivo?}` e `vistos` (interno da vigia: o `estado_do_hub` o tira). `itens[]`: `id`, `nivel`, `resumo`, às vezes `fonte`, `caminho`, `parada_desde`, `ultima_troca`. Sem arquivo ou ilegível: "estado indisponível". Estado velho: perguntado ao maestro (sugestão do Trilho: aviso "a vigia não roda desde <hora>" se `passada` > 15 min). Código só depois do "passa" do 09.
 
 - 04:46 (maestro, mandato): estado velho aceito como proposto (Trilho e Cinzel): não vira "indisponível"; passada com mais de 15 min leva o aviso "a vigia não roda desde <hora>"; sem o campo `passada`, sem aviso de idade. O campo `vistos` (interno da vigia) não sai no `estado_do_hub`.
+
+- 2026-10-17 ~05h25 (Cinzel): peguei o 10 (`claimed`). Fork: worktree `C:/Projetos/hub-mcp-banco-wt/ticket-10`, ramo `ticket-10` de `ticket-09` d2a5a40 (o fork principal fica em `ticket-09`). Hub: worktree `C:/context-hub-wt/ticket-10` de `integracao` 9453e3e (com o 09 juntado).
+  - Combinado com a Vela (17, reserva da checagem de início): cliente por `HUB_MCP_BANCO_LEITURA_URL/TOKEN`, `Authorization: Bearer`. `estado_do_hub`: `content[0]` text = o JSON do `estado.json` sem `vistos`, ou "estado indisponível: <motivo>"; com `passada` de mais de 15 min, um `content[1]` text "a vigia não roda desde <hora>". Transporte: streamable HTTP do FastMCP, resposta em SSE, `initialize` antes e o `mcp-session-id` nos pedidos seguintes.

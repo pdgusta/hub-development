@@ -6,4 +6,4 @@ testes (09, 16): limpe os contêineres ao soltar.
 
 (trava: ver trava-pesada.md)
 3. Trilho: Docker do 16 de novo (consertos ff0f362) e, a partir de 06:58, Codex do 15
-4. Rebite: suíte de integracao ea6f353 (junção do 28; ~16 min; fecha o 28)
+4. Rebite: suíte de integracao 9453e3e (junção do 28 e do 09; ~16 min; fecha os dois)

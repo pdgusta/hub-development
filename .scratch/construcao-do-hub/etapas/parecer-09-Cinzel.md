@@ -42,3 +42,15 @@ o conflito segue aberto (sem ela, o aceite entraria em laço). O furo é a simul
 ## Rodada 2 (curta)
 Levar `ticket-09-conserto` ao `ticket-09` nos dois repositórios. O Fiel confere que a árvore é a do conserto já
 testado; sem Docker de novo se for idêntica.
+
+# Rodada 2 (curta) — Fiel — 2026-10-17 ~05h15
+
+## Veredito: PASSA
+
+- Fast-forward conferido: fork `ticket-09` = d2a5a40, hub `ticket-09` = ca17738, as mesmas pontas que rodaram no
+  Docker da rodada 1 (fork 16/16 com a sonda; hub 21 PASSA). Sem Docker de novo.
+- Hub sem Docker: 1/1. Árvore do hub limpa. No fork, só o `package-lock.json` modificado, como no relatório (fora dos
+  commits).
+- `integracao` andou (ea6f353, junta do 28) e o ramo não a contém. `git merge-tree` junta sem conflito; o 28 não toca
+  no banco nem no kit do MCP. O Rebite junta e roda a suíte.
+- Ressalvas da rodada 1 seguem. A leitura do Fielzinho fica pendente (cota até 06h58).

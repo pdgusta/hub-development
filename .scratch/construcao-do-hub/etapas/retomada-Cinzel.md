@@ -24,17 +24,9 @@ Leia antes: `etapas/regras-da-construcao.md` (inteiras), o ticket do momento e e
   - Ressalvas: o `move_note` com conflito na origem não diz que o destino já foi gravado; o passo 05 remonta um build
     velho mas não religa o MCP que já roda (o código velho segue rodando).
   - A sonda dele: `etapas/logs/sonda-09-fiel.e2e.test.ts`.
-- Consertos adiantados (05:00), fora dos ramos em revisão, sem Docker ainda:
-  - Fork: worktree `C:/Projetos/hub-mcp-banco-wt/conserto-09`, ramo `ticket-09-conserto` d2a5a40 (node_modules e
-    lib/livesync-commonlib são junções para o fork; não comitar). `outcome` com `before`: é conflito quando aparece folha
-    que não estava antes nem é a nossa; `move_note` com conflito ou recusa na origem diz que o destino já foi gravado.
-    Dois casos novos no `versao.e2e.test.ts` (simultânea: pelo menos uma diz conflito; move com origem velha). Tipos
-    iguais à base.
-  - Hub: worktree `C:/context-hub-wt/conserto-09`, ramo `ticket-09-conserto` ca17738: `Start-McpBanco` religa quando o
-    `dist/main` é mais novo que o processo; caso novo no `09-mcp-banco.test.ps1`. Sem Docker 1 PASSA.
-  - Com o parecer: se pedir esses consertos, `git merge --ff-only ticket-09-conserto` em cada `ticket-09`, rodar as
-    costuras A e B com a trava, pedir a volta. Apagar as duas worktrees de conserto no fim.
-- Próximo: o parecer do Fiel, e então os consertos (até duas voltas). Depois do "passa", avisar o Rebite:
+- Rodada 1: VOLTA (`etapas/parecer-09-Cinzel.md`); consertos levados por fast-forward: fork `ticket-09` d2a5a40, hub
+  `ticket-09` ca17738 (worktrees e ramos de conserto apagados). Rodada 2 curta pedida ao Fiel (sem Docker: árvore igual).
+- Próximo: o "passa" da rodada 2. Depois do "passa", avisar o Rebite:
   `maestri ask "Rebite" "Cinzel: ticket 09 passou na revisão, ramo ticket-09 (hub) e ticket-09 (fork hub-mcp-banco), testes ..., relatório ..., parecer ..."`.
 
 ## Ticket 10: três instâncias, cabeça, regra curta e estado (próximo; código só depois do "passa" do 09)
