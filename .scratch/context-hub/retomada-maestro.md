@@ -56,6 +56,7 @@ do 08 com o medidor; em seguida, na mesma janela, a Vela roda a 1ª rodada real 
 `codex`) e manda "leia a sua retomada". Avisar o Gustavo no fim com os números.
 
 ## Para rever com o Gustavo
+- 2026-10-17 18h25: nota que não desce do A ao B (25, intermitente). Hipótese da Brasa (etapas/diagnostico-25-nota-nao-desce.md): a replicação contínua do daemon do CLI desiste calada depois do 'LiveSync active' e ninguém a religa. Conserto candidato, mudança de produção: `daemon --interval 5` no kit (o daemon repete e se recupera). Aprovado se a reprodução provar.
 
 - (técnica, 22) O mcp-proxy do spec não repassa o `instructions` do MCP do banco ao cliente; o contrato chega ao
   cliente pela regra curta das ferramentas e pela configuração global do kit de cliente. Consertar ou trocar o proxy: radar.
@@ -354,3 +355,4 @@ nuvem.
 - 18:02: aviso do Rebite ao Lume caiu no PowerShell (44 juntado df6c2e5; docs 5ª leva f640bbd): reenviar ao religar o Lume.
 - 18:16: 25: Codex 1-3: fases 1 e 3 verdes (c0d2b97); fase 2 (pedido proibia shell, conserto 8f6f50a) repetida 18:09: A não desceu ao B (mesmo sintoma da fase 4; intermitente: a 3 desceu às 18:00). Decidido: fase 7 agora (Claude+Copilot); Brasa religada e ligada à Vela para diagnosticar a descida A→B sem Docker; reprodução depois da 7. Teto 20h.
 - 18:20: ronda: fase 7 rodando (Vela, 18:15; 3,2 GB livres). Fiel religado (conversa nova) para as rodadas curtas do 22 (22811cb) e 24 (2000575). Vela 43%: limpa depois da 7.
+- 18:24: diagnóstico da Brasa (A→B): replicação contínua desiste calada; conserto candidato daemon --interval 5 (produção; Para rever). Reprodução depois da fase 7, teto 20h.
