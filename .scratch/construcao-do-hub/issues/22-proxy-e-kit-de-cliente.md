@@ -17,3 +17,4 @@ Blocked by: 10, 12
 - [ ] mede se o proxy repassa o `instructions`
 
 ## Comments
+- 2026-10-16 23h10 (integrador, Rebite): lição do ticket 12 (parecer do Fiel, `etapas/parecer-12-Trilho.md`): `agents/skills/busca/iniciar.ps1` não passa `--allowed-host`; quando a busca for servida pelo proxy, o Host observado precisa entrar (spec, Worker 3). O servidor da busca também faz `GET registry.npmjs.org/.../latest` a cada partida.

@@ -86,3 +86,6 @@ Fielzinho sem cota até 01:34 (maestro): revisar sozinho e registrar leitura pen
 07 r1: Docker 1ª passada (máquina carregada pela suíte do 29): 07-banco 1 FALHA (replicação A sem estado em 30 s), prova01 ok, prova02 1 FALHA (controle não chegou ao disco B), sincronizador ok; sem sobra. Os 3 achados do Fielzinho confirmados no código (linhas 185, 197/199, 215). Repetindo 07-banco e prova02 (revisao-07-r1b-*.log). Veredito previsto: VOLTA.
 07 r1: VOLTA (3 consertos do Fielzinho). Repetição: 07-banco e prova02 passam; vermelhos eram de carga. Parecer etapas/02-banco/parecer-Brasa.md. Brasa avisada.
 19 r1 (Vela): PASSA (Fiel sozinho; Fielzinho lê depois). Parecer etapas/parecer-19-Vela.md. Vela avisada.
+19 r1 PASSA (Vela avisada). 12 r1 (Trilho, busca, 0ba8532): lido relatório, iniciar.ps1, fragmentos; testes 12-busca + 12-kit rodando (revisao-12-r1-testes.log). Codex do aceite real pendente (cota); Trilho pede rodada curta depois.
+12 r1: VOLTA por 1 conserto (12-busca.test.mjs:28 regrava medidas.json versionado; desfiz com checkout). 13/13. Rodada curta junto com evidência do Codex. Parecer etapas/parecer-12-Trilho.md. Trilho avisado.
+12 r2 curta: PASSA (cc96be2, 13/13, árvore limpa). Pendente: rodada curta da evidência do Codex depois das 01:34 (São Paulo).

@@ -7,6 +7,9 @@ Leia nesta ordem: `regras-da-construcao.md`, `revisao-em-dupla.md`, `estado-revi
 (01), `01-esqueleto/parecer-Vela.md` (06), `parecer-Trilho.md` (14), `parecer-Vela.md` (27), `parecer-29-Brasa.md`.
 Também 19 r1 (`parecer-19-Vela.md`). Pendente: leitura do Fielzinho no 29 r2, 07 r2 e 19 r1 (sem cota até 01:34).
 
+## 12 r1 fechado VOLTA (1 conserto: medidas.json regravado pelo teste comum); esperando rodada curta com Codex
+(`parecer-12-Trilho.md`).
+
 ## 07 r1 fechado VOLTA (parecer `etapas/02-banco/parecer-Brasa.md`); Brasa avisada. Esperando a rodada 2.
 
 ## (histórico) ticket 07 (Brasa, banco do par), rodada 1

@@ -1,36 +1,23 @@
-# Retomada do Trilho (construtor), gravada em 2026-10-16 ~22h30 (São Paulo)
+# Retomada do Trilho (construtor), gravada em 2026-10-16 ~23h05 (São Paulo)
 
-Leia antes: `etapas/regras-da-construcao.md` (inteiras; há regra nova "Testes com harness de verdade": desde o ticket 29,
-`ponta-a-ponta/` e `provas/03-codex-hooks/` só rodam com `HUB_HARNESS_REAL=1`), o ticket
-`issues/12-busca-local-com-aceite.md` (com as respostas do maestro nos Comments) e as fontes: `spec.md` (bloco do
-Worker 3) e `spec-partes/faixas-03-04.md` (faixa 3). Responda em pt-BR, frases curtas. Sem subagentes. Maestro =
-"Claude Code"; revisor = "Fiel" (em dupla com o Fielzinho); integrador = "Rebite".
+Leia antes: `etapas/regras-da-construcao.md` (inteiras), o ticket `issues/12-busca-local-com-aceite.md` (Comments) e
+o relatório `etapas/relatorio-12-busca.md` (o estado inteiro está lá). Responda em pt-BR, frases curtas. Sem
+subagentes. Maestro = "Claude Code"; revisor = "Fiel"; integrador = "Rebite".
 
 ## Onde estou
-- **Ticket 12** (busca local com aceite), `Status: claimed`. Ramo `ticket-12`, worktree `C:\context-hub-wt\ticket-12`,
-  HEAD 616a1c0. Parte de `integracao` 8d1d785; **`integracao` andou para d5e4e16** (27 e 29 juntados): falta
-  `git merge integracao`.
-- Commits separados pedidos pelo maestro: 58b9563 (testes do 14 apagam as pastas temporárias, mesmo falhando) e 9cb10f4
-  (o mesmo no 04 e no 05, com `maxRetries`); pastas antigas `%TEMP%\hub-ensaio-04/05/14-*` apagadas.
+- Ticket 12 em revisão com o Fiel: ramo `ticket-12`, HEAD cc96be2, worktree `C:\context-hub-wt\ticket-12`, com
+  `integracao` dc56d47 juntada. Suíte comum: 141 passam, 6 pulados, 0 falham; suítes do 12: 13/13.
+- Aceite com harness real (`HUB_HARNESS_REAL=1 node --test --test-concurrency=1
+  agents/code/test/ponta-a-ponta/12-busca.test.mjs`): Claude e Copilot passam; **Codex pendente** (limite de uso da
+  conta até 01:34 de 2026-10-17).
 
-## Feito (todos verdes)
-- `agents/skills/busca/iniciar.ps1`: roda o gerador de exclusões (recusa dele para tudo, alto), lê
-  `.local/exclusoes/busca.env`, `LOCAL_EMBEDDING_MODEL=Snowflake/snowflake-arctic-embed-m-v2.0`,
-  `XDG_CACHE_HOME=<hub>\.local\busca\estado`, tira `OPENAI_*`, sobe `node <pacote>\dist\src\cli.js serve --foreground
-  --host 127.0.0.1 --port N`. Pacote: `HUB_BUSCA_OHS` ou `<hub>\.local\busca\node_modules\obsidian-hybrid-search`.
-  Converte o hub para caminho longo (ver achados).
-- `agents/skills/busca/relatorio.mjs [--url] [--consertar]`: indexadas (status), válidas, `faltando` (válidas fora do
-  índice, por caminho NFC), `recusadas` [{caminho, erro, no_indice}], modelo, pendentes, consertadas; grava
-  `.local/busca/relatorio.json`; código 1 se falta nota. `--consertar` chama o `reindex` incremental do MCP.
-- `agents/code/kit/par/03-busca.ps1` (+ `kit/par/busca/package.json` e `package-lock.json`, 0.16.2 fixo): `npm ci` em
-  `<hub>\.local\busca`, idempotente por hash do lock e versão instalada, `-WhatIf` (SupportsShouldProcess). Saída JSON
-  {hub, mudou, versao, modelo_no_cache}.
-- Testes: `agents/code/test/12-busca.test.mjs` (9: palavra, paráfrase sem palavra em comum, nota nova com tempo,
-  exclusões com ponto/local na partida e com a busca ligada, relatório, Host estranho + só 127.0.0.1, inglês + .pdf.md +
-  binário fora, rajada de 200, segunda partida reaproveitando o índice + --consertar) e
-  `agents/code/test/12-kit-busca.test.mjs` (4: -WhatIf, instala pelo lock, segunda rodada não muda, busca sobe com a
-  instalação do kit; ~1m45). Medidas em `agents/code/test/12-busca/evidencia/medidas.json` (regravado a cada rodada).
-- Medidas: nota nova ~5 s; rajada de 200 ~13-17 s; partida 1 ~11-21 s, partida 2 ~5-7 s.
+## Falta (próximo passo exato)
+1. Rodada 2 do Fiel: passa (cc96be2). Rebite juntou e resolveu (integracao c5b946a). Falta só o Codex: commit de evidência no ticket-12, rodada curta do Fiel, avisar o Rebite (ele junta e comenta).
+2. Depois das 01:34: `HARNESSES=codex` no aceite real; commit só de evidência (`evidencia-12/codex/`, hashes);
+   registrar o uso de login no relatório; pedir ao Fiel uma rodada curta só para ele. Se a junção já tiver acontecido,
+   o resultado vai como comentário no ticket 12; se falhar, vira conserto.
+3. Depois do "passa": `maestri ask "Rebite" "Trilho: ticket 12 passou na revisão, ramo ticket-12, testes <...>,
+   relatório etapas/relatorio-12-busca.md, parecer <caminho>"`.
 
 ## Achados (vão para o relatório)
 1. **Caminho curto do Windows** (`GUSTAV~1.DEL`): o vigia de arquivos aborta o servidor na primeira mudança

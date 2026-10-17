@@ -33,7 +33,15 @@ Se o Fiel devolver o 07: pausar o 29 e voltar ao 07 primeiro (maestro).
   recusa a divergência; marca `.livesync/hub-aceito` só depois do ACCEPTED, e volta isConfigured a false se falhar.
   Teste sem Docker `agents/code/test/banco/kit-sem-docker.ps1` (CLI falso `cli-falso.cjs`), chamado por
   `agents/code/test/07-kit-sem-docker.test.mjs`: verde. Esperas fixas com folga (120 s). Merge integracao d5e4e16 em
-  98a6d6e. Falta: suíte comum, Docker (07, provas 01/02, teste do 06), commit, relatório (seção rodada 2), Fiel.
+  98a6d6e, depois dc56d47 em 312650c. Achado com o CLI real: depois do aceite, o remoto fica cifrado em
+  remoteConfigurations (couchDB_* vazios); o kit lê por `remote-export <activeConfigurationId>` (o URI tem a senha:
+  só em memória). Esperas: hub A->B 300 s (175 arquivos agora). Sem Docker verde; par só com CLI real ok.
+  Corrigido de novo (commit 6911857): com o daemon rodando, nenhum comando do CLI abre o banco local (o remote-export
+  falhava no passo repetido); a marca `.livesync/hub-aceito` agora guarda db, porta e usuário (sem senha) e a
+  conferência do remoto é contra ela. Sem Docker verde (11).
+  PARADO: a fila Docker foi morta pelo sistema por falta de memória (~23h05); a prova 01 cortada foi limpa
+  (contêineres hub-ensaio-00-* e a raiz apagados). Não religar sem aval do maestro (pedido ~23h10).
+  Falta: aval; fila Docker (07, provas 01/02, teste do 06; um de cada vez); suíte comum; relatório; Fiel.
 
 - (~22h25) Merge de integracao 0a8e17f em e3ff419 (só o merge); rápidos sem harness 106 de 106. Docker do 07 não
   repetido depois deste merge (o Fiel roda o Docker na revisão).

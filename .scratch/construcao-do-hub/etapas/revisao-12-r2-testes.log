@@ -1,0 +1,55 @@
+✔ uma pergunta em pt-BR por palavra acha a nota esperada entre as 3 primeiras (10662.8212ms)
+✔ uma pergunta em pt-BR por paráfrase, sem palavra em comum com a nota, acha a nota entre as 3 primeiras (49.1912ms)
+✔ uma nota nova gravada no disco aparece sem reindexar, por palavra e por paráfrase; o tempo só é medido (5126.0961ms)
+✔ nada com ponto no caminho nem de pasta local: true aparece, nem o que chega com a busca ligada (5361.7009ms)
+✔ o relatório conta as notas indexadas e lista as recusadas por cabeçalho quebrado (489.8326ms)
+✔ pedido com Host estranho é recusado; o servidor só escuta em 127.0.0.1 (2059.5993ms)
+✔ em inglês, no mesmo índice e sem dizer o idioma, a nota em inglês vem entre as 3 primeiras; o .pdf.md entra, o binário não (5243.238ms)
+✔ uma rajada de 200 notas copiadas de uma vez termina toda indexada; o tempo só é medido (11411.6427ms)
+medidas do ticket 12:
+{
+  "quando": "2026-10-17T02:04:54.080Z",
+  "nota_nova_ms": 5102,
+  "relatorio": {
+    "indexadas": 31,
+    "validas": 31,
+    "faltando": [],
+    "recusadas": [
+      {
+        "caminho": "inbox/cabecalho-quebrado.md",
+        "erro": "unexpected end of the stream within a flow collection",
+        "no_indice": false
+      }
+    ],
+    "modelo": "local:Snowflake/snowflake-arctic-embed-m-v2.0",
+    "pendentes": 0,
+    "consertadas": 0
+  },
+  "rajada_200_ms": 11384,
+  "partidas": [
+    {
+      "pronta_ms": 10467,
+      "indexacao": "5s — 1 errors"
+    },
+    {
+      "pronta_ms": 2662,
+      "indexacao": "0s — 1 errors"
+    }
+  ],
+  "reindexadas_pelo_consertar": 0,
+  "recusada_no_indice_depois_do_reindex": false
+}
+
+✔ a segunda partida reaproveita o índice: o mesmo banco, a busca pronta e a indexação mais curta (19531.9825ms)
+✔ com -WhatIf, o kit diz o que faria e não grava nada (1087.0397ms)
+✔ o kit instala a versão fixa pelo package-lock, só no .local\busca do hub (29645.0555ms)
+✔ rodar de novo não muda nada (920.1803ms)
+✔ a busca sobe com a instalação do kit e responde (6822.3109ms)
+ℹ tests 13
+ℹ suites 0
+ℹ pass 13
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 155691.2386

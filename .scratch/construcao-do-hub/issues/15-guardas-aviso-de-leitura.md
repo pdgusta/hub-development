@@ -15,3 +15,4 @@ Blocked by: 14, 12
 - [ ] ler o trecho que a busca apontou não avisa
 
 ## Comments
+- 2026-10-16 ~23h15 (maestro): passado ao Trilho depois do 12 (juntado c5b946a); bloqueios 14 e 12 resolvidos. Às 01:40 ele pausa para o aceite do Codex do 12.
