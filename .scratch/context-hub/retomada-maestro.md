@@ -23,6 +23,7 @@ Por isso o diário abaixo registra cada evento com hora.
 
 ## Para rever com o Gustavo
 
+- (processo) O 16 (vigia) começou antes do 08 e do 10, sobre o 07; junção só depois deles.
 - (processo) A suíte inteira roda só na junção, pelo Rebite; o construtor roda os testes do ticket e dos arquivos mexidos. Fila do trabalho pesado em `etapas/fila-pesada.md`.
 
 - (técnica, ~04h35) Pontos abertos da faixa 5 decididos no 09: `delete_note` exige `base_rev` (o spec deixava a guarda em aberto); append/prepend sem base gravam como filha da versão lida.
@@ -137,3 +138,4 @@ nuvem.
 - 04:15: 33 feito (Trilho, 07e6b92). Decisão do maestro: suíte inteira só na junção (Rebite), não mais no construtor antes da revisão (poupa memória); regra em regras-da-construcao.md; Trilho pede já a revisão do 35 e do 33.
 - 04:19: ronda; Cinzel com a trava (Docker do 09, desde 04:09); Fiel revisando; todos ≤37%; 2,1 GB livres; nada a destravar.
 - 04:23: 35 (ef38e4d) e 33 (33b817a) juntados, falta a suíte; fila: Cinzel, Rebite, Brasa.
+- 04:25: 35 e 33 passaram no Fiel. Trilho começa o 16 (vigia) antes dos bloqueios, pelo mandato (08 e 10 entram por merge; junção só com eles resolvidos).

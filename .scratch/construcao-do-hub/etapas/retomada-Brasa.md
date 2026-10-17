@@ -35,7 +35,7 @@ especial "Um trabalho pesado por vez" (a trava `etapas/trava-pesada.md`) e "Test
 
 ### Próximo passo exato
 
-1. Fila do pesado em `etapas/fila-pesada.md`: Cinzel, eu, Trilho. Quando o Cinzel avisar "trava livre", lançar
+1. Fila do pesado em `etapas/fila-pesada.md`: Cinzel, Rebite, eu. Quando o Rebite avisar "trava livre", lançar
    destacado: `Start-Process pwsh -WindowStyle Hidden -ArgumentList '-NoProfile','-File','C:/context-hub-wt/ticket-08/.local/fatias.ps1','-Fatias','2,3,4,5,6,7,07'` (07 = teste do 07, o passo do kit mudou)
    e vigiar `etapas/logs/08-fatias.status` (Monitor com tail -F). Ao "PEGOU a trava": tirar o meu nome da fila. Ao
    "SOLTOU": avisar o próximo da fila (`maestri ask "<nome>" "trava livre, sua vez"`).
