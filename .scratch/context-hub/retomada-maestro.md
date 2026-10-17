@@ -352,3 +352,4 @@ nuvem.
 - 17:26: Cinzel fora (24 evidência 2000575; pedido ao Fiel em retomada-Cinzel.md). No canvas: Vela (25), Rebite, maestro.
 - 18:01: 25 noite (17:22-17:58): fase 5 VERDE; fase 7 travou 28 min (ponte do cliente presa no pipe dos serviços do 22; defeito da Vela); fase 4: base não desceu ao B de novo (diagnóstico quebrou em sintaxe PS). Vela conserta (~10 min) e roda Codex 1-3, depois 4 e 7. Decidido: se a 4 cair igual, para e religo a Brasa (replicação, 08) para diagnosticar; teto 20h.
 - 18:02: aviso do Rebite ao Lume caiu no PowerShell (44 juntado df6c2e5; docs 5ª leva f640bbd): reenviar ao religar o Lume.
+- 18:16: 25: Codex 1-3: fases 1 e 3 verdes (c0d2b97); fase 2 (pedido proibia shell, conserto 8f6f50a) repetida 18:09: A não desceu ao B (mesmo sintoma da fase 4; intermitente: a 3 desceu às 18:00). Decidido: fase 7 agora (Claude+Copilot); Brasa religada e ligada à Vela para diagnosticar a descida A→B sem Docker; reprodução depois da 7. Teto 20h.
