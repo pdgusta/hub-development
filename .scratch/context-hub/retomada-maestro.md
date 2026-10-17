@@ -174,3 +174,4 @@ nuvem.
 - 06:19: ronda; Brasa com a trava (fatias 3-7 do 08 desde 06:16), 41%: salvar ao fim das fatias; 1,8 GB livres; resto ≤31%.
 - 06:28: 36 juntado (85efe3b), suíte na fila depois da Brasa.
 - 06:39: 10 juntado (hub 9cc878b, fork integracao 34c3e50, node_modules por junção); suíte do 36+10 e npm test do fork depois das fatias da Brasa. Cinzel no 11; 22 ao próximo livre.
+- 06:42: costuras do 11 aceitas (fork local sem Docker; duas sessões do Copilot).

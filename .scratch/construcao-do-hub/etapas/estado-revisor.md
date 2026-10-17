@@ -162,3 +162,4 @@ Docker do 10 r2 pronto: bash etapas/logs/fiel-docker-10.sh (na minha vez; ao sol
 Maestro: Docker do 10 entra primeiro entre fatias da Brasa; Brasa avisada; ao soltar, devolver a ela.
 10 r2: PASSA (Docker 33 + 21 PASSA). Trava passada ao Trilho 06h35. Cinzel avisado.
 16 r1 (Trilho, aa70e98): pedido recebido; Fiel sozinho.
+16: leitura intermediária (não conta rodada). Sem conserto na parte feita; faltam cenários do 08, estado_do_hub real, item fim-da-resposta. 3 ressalvas (atualização perdida no estado.json, 401 vira replicação parada, recuperar copia banco por folha). Trilho avisado.

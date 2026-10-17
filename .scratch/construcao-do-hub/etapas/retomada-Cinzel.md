@@ -110,3 +110,7 @@ Leia antes: `etapas/regras-da-construcao.md` (inteiras), o ticket do momento e e
 - Cinzel 06:55: rodada 1 VOLTA; conserto feito (fork 1e86ad1, hub a40ec84), relatório com a seção "Rodada 2". Rodada 2 pedida ao Fiel; ele roda o Docker. Próximo: o "passa"; depois avisar o Rebite (hub ticket-10 e fork ticket-10; o integracao do fork ele cria de d2a5a40).
 - Cinzel ~06:45: rodada 2 PASSA (Fiel). Rebite avisado. Nada pendente no 10 além da junção.
 - Cinzel ~07h: o 10 foi juntado pelo Rebite (hub integracao 9cc878b; fork integracao 34c3e50). Ele resolve o ticket depois da suíte e do npm test. Nada pendente comigo. Próximo: o maestro passa o próximo ticket.
+
+## Ticket 11: MCP do banco pelos três harnesses (pego ~07h05)
+
+- Worktree `C:/context-hub-wt/ticket-11`, ramo `ticket-11` de `integracao` 9cc878b. Costuras propostas: `etapas/costuras-11-Cinzel.md` (à espera do maestro). Modelo: `agents/code/test/ponta-a-ponta/12-busca.test.mjs`. Doc do Codex por curl no scratchpad (openai_base_url; instructions: "Codex reads the MCP instructions field"; 512 primeiros caracteres).
