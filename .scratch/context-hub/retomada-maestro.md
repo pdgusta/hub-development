@@ -27,7 +27,7 @@ Por isso o diário abaixo registra cada evento com hora.
 
 - (técnica) "Piora" da vigia (aberto no spec): item sobe de nível em relação à passada anterior; item novo conta como ok antes. Ticket 16.
 - (técnica) Mod do Claude Code para a vigia: linha de status (`$.ui.status`), não a faixa acima do prompt. Ticket 17.
-- (processo) O 16 (vigia) começou antes do 08 e do 10, sobre o 07; o 17 começou antes do 16; junção só depois dos bloqueios.
+- (processo) O 16 começou antes do 08 e do 10; o 17 antes do 16; o 18 sobre o 17; o 21 sobre o 16; o 23 antes de 11, 17 e 18; junção só depois dos bloqueios.
 - (processo) A suíte inteira roda só na junção, pelo Rebite; o construtor roda os testes do ticket e dos arquivos mexidos. Fila do trabalho pesado em `etapas/fila-pesada.md`.
 
 - (técnica) No 09, só é conflito quando a base não é mais folha viva; gravar sobre folha viva de nota em conflito grava e avisa.
@@ -201,3 +201,5 @@ nuvem.
 - 07:46: Codex sem cota até 12:15. Fiel fechou sozinho: 17 r2 passa, 08 passa com ressalvas (fatia 2 do Gustavo), 15 passa. 08 → Rebite; depois o 16 pode juntar.
 - 07:47: ronda; Rebite com a trava (suíte do 15, 07:40); Brasa 40%, Vela 43%, Cinzel 41%: salvar no próximo ponto seguro; 1,7 GB livres.
 - 07:50: Cinzel (11 em revisão, menos Codex) e Brasa (22 esperando a trava) limpos e retomados.
+- 07:52: Vela limpa e retomada (18).
+- 07:54: 11 passa na rodada 1 (falta Codex 12:15); ressalvas ao 23 e 25. Cinzel começa o 23 (esqueleto do kit) antes dos bloqueios.

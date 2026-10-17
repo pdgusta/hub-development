@@ -34,11 +34,11 @@ Leia antes: `etapas/regras-da-construcao.md` (inteiras, com os "Achados comuns")
   - Codex: falhou por erro do teste. O `spawnSync` travava o repasse, que roda no mesmo processo. Conserto em bfd1af3:
     o Codex roda por `spawn` (`rodarSemTravar`).
 - **Próximo passo exato:**
-  1. Esperar o parecer do Fiel sobre a parte fechada (pedido ~07h55) e aplicar os consertos.
+  1. Feito: parecer da rodada 1 do Fiel, sem conserto (`etapas/parecer-11-Cinzel.md`). Ressalvas levadas ao maestro.
   2. **Depois de 12h15** (cota do Codex), na vez da fila (item 4 de `etapas/fila-pesada.md`), na pasta da construção:
      `pwsh -NoProfile -File etapas/logs/11-corredor.ps1 -Rodadas codex`. O corredor pega e solta a trava; o estado fica
      em `etapas/logs/11-corredor.status` e o log em `11-harness-<n>.log`. Ao soltar a trava, avisar o maestro.
-  3. Ler `evidencia-11/codex/lido.json` (`captura`: em que campo vão as marcas A e B, a regra e o `estado_do_hub`, mais
+  3. (Maestro, 07:58: tirar da evidência a lista de skills da máquina — `%USERPROFILE%/.agents/skills` — na rodada 2, também a do Copilot.) Ler `evidencia-11/codex/lido.json` (`captura`: em que campo vão as marcas A e B, a regra e o `estado_do_hub`, mais
      `em_volta_de_A`). Pôr no relatório (rodada 2 e critérios), fazer o commit da evidência e pedir a rodada 2 ao Fiel.
   4. Depois do "passa": avisar o Rebite (hub `ticket-11`; o fork não muda).
 - **Se o Codex falhar na captura:** o provedor próprio (`model_provider = "hub_captura"`, `requires_openai_auth`,

@@ -23,3 +23,6 @@ Blocked by: 11, 15, 17, 18, 20, 27
 - 07:32 (maestro): lição do 15 (Trilho): no Codex, hífen do nome do servidor MCP vira sublinhado no hook; os matchers do kit usam o sublinhado no Codex.
 
 - 07:34 (maestro): do 21: o passo `10-manutencao.ps1` (XML da tarefa diária da cópia e da vigia, sem registrar, com -WhatIf) entra aqui.
+
+- 07:53 (maestro): do 11 (Cinzel, parecer `../etapas/parecer-11-Cinzel.md`): (1) o Copilot sem `--allow-all-mcp-server-instructions` não põe as instruções do servidor no prompt: o kit liga a opção ou põe o hub-banco na lista permitida; (2) o Claude Code adia as ferramentas MCP: a regra curta do `write_note` só chega depois de um ToolSearch; a cabeça do AGENTS.md chega pelas instruções.
+- 07:53 (maestro, mandato): começa já com o Cinzel, sobre a ponta de `integracao`: o esqueleto do kit (ordem dos passos, -WhatIf, cópia e hash antes de tocar, desfazer, contrato por link e import, junction das skills, linhas de MCP, GSD fora do global com cópia, `10-manutencao.ps1`); os hooks de 11, 17 e 18 entram por merge quando forem juntados. Junção só com todos os bloqueios resolvidos.

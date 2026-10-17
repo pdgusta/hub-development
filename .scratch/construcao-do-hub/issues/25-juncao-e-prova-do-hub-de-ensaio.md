@@ -15,3 +15,5 @@ Blocked by: 13, 21, 22, 24
 - [ ] o relatório lista o que fica para a instalação de verdade e para a segunda máquina
 
 ## Comments
+
+- 07:53 (maestro): do 11 (Cinzel): fica para cá a prova de que o agente segue a regra, o banco recriado e o banco cifrado de ponta a ponta pelos harnesses.
