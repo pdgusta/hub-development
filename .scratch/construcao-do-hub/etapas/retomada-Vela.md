@@ -105,3 +105,26 @@ node --test agents/code/test/05-frontmatter.test.mjs
 - Maestro: revisão do Fiel pedida em e5d24a7; NÃO mexer na worktree enquanto ele revisa. Depois de 01:34 (e do passa ou com aval do Fiel): rodar a prova do Codex, commit só de evidência, rodada curta do Fiel, então avisar o Rebite. Pendentes com o Gustavo: catálogo (linha nova pede aval?) e as três lacunas de dono.
 - Rodada 1 do Fiel VOLTA (parecer-20-Vela.md): 2 consertos feitos em 5811579 (catálogo só com link para peça existente; pasta nova da família). 20-acervo 13/13, suíte 157/0/7. Próximo: pedir rodada 2 ao Fiel.
 - Rodada 2 do Fiel PASSA em 5811579 (ressalva: descrição do item de catálogo é texto livre). Passa levado ao Rebite. Pendente: prova do Codex depois de 01:34 (commit só de evidência + rodada curta do Fiel).
+
+## PRÓXIMO (gravado 2026-10-17, antes do /clear pedido pelo maestro)
+
+- **Ticket 20 fechado**: juntado pelo Rebite e resolvido (integracao f83c8f5; 166 verdes, 8 pulados). Rodadas do Fiel:
+  1 volta (2 consertos em 5811579), 2 passa. Relatório etapas/relatorio-20-acervo-do-maestro.md; parecer
+  etapas/parecer-20-Vela.md.
+- **Depois do /clear: ficar parada até o maestro chamar.** Não há ticket livre (a fila depende do 07 da Brasa).
+- **Às 01:40 (17/10): a prova do Codex do 20**, num commit só de evidência no ramo ticket-20, com rodada curta do Fiel:
+  1. cd C:/context-hub-wt/ticket-20 (o ramo já está em f83c8f5, com integracao junta; worktree limpa).
+  2. HUB_HARNESS_REAL=1 HARNESSES=codex node --test --test-concurrency=1 agents/code/test/ponta-a-ponta/20-acervo.test.mjs
+     (rodar em segundo plano; demora; o pedido já diz 'Você é o maestro' e 'siga para o próximo passo').
+  3. Conferir evidencia-20/codex/ (guarda-do-acervo.jsonl com 2 deny; saida com 'agents/maestro/propostas/') e
+     hashes-codex.json (reais iguais; apagado: true). Procurar vazamento: grep -rE 'ghu_|sk-|refresh_token|access_token'.
+  4. Commit só da evidência; relatório (seção 'Prova real': Codex verde, com data e hashes); pedir rodada curta ao Fiel
+     com o hash; depois do passa, avisar o Rebite.
+  - Se o Codex ainda estiver sem cota ('usage limit'), avisar o maestro e não commitar a evidência falha (apagar
+    evidencia-20/codex e hashes-codex.json).
+- **Proposta, não feita (o maestro mandou parar antes)**: intermitente do 27 que o Rebite viu
+  (etapas/juncao-20-suite-falha-27.log; 27-pastas.test.mjs:28, montar.mjs saiu 1 com stderr vazio, uma vez, na suíte
+  inteira). Causa provável: um comando git do montar.mjs falhou com a saída no stdout ou sem abrir o processo (r.error),
+  e o montar imprime só r.stderr. Conserto proposto, com teste antes (no 04-esqueleto: montar com PATH sem git sai 1 e
+  diz qual comando git falhou): o montar imprime o comando, a saída, o stdout, o stderr e r.error; o hubDeEnsaio do
+  27-pastas mostra stdout + stderr na asserção. Só fazer com o aval do maestro.
