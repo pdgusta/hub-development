@@ -1,1 +1,1 @@
-- Vela (construtora), 2026-10-17 08:28: harness real do 18 (Claude e Copilot), ponta-a-ponta/18-retomada, ~15 min. Ao fim, aviso o Rebite.
+- Rebite (integrador), 2026-10-17 08:30: suíte do hub do 08 em C:/context-hub-wt/integracao (e98a891), --test-concurrency=1, ~25 min. Apago ao fim.

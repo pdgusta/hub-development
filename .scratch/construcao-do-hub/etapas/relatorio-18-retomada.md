@@ -69,7 +69,16 @@ Code por `--plugin-dir`, `Stop` do Codex, `agentStop` do Copilot):
 2. Entre as sessões, o teste põe na nota um próximo passo que só ela traz (`ZEBRA-42`).
 3. Sessão 2, nova, sem ferramentas: a resposta traz `ZEBRA-42`, e nenhuma ferramenta leu a nota.
 
-Rodadas: _pendente_ (fila: Claude e Copilot depois da Brasa; Codex depois das 12h15, cota).
+Rodadas:
+
+- **Claude Code e Copilot, 2026-10-17 08:28–08:30: 2/2 verdes** (`etapas/logs/18-real-1.log`; evidência em
+  `evidencia-18/`). Nos dois: uma devolução ("atualize a nota de retomada"), depois solta "sem falta"; no Copilot, a
+  devolução voltou como prompt (`continuacao: true`, como no 27). `last_agent`: `claude-code claude-haiku-5-5` e
+  `copilot`. Sessão 2: "Pedir ao setor ZEBRA-42 a lista das caixas compartilhadas", sem ferramenta na nota.
+- Login: `.credentials.json` do Claude e os campos de login do Copilot copiados para `%TEMP%\hub-ensaio-18-*`; pastas
+  apagadas (`apagado: true`); configurações reais iguais por hash (`hashes-claude-copilot.json`). Sem token na
+  evidência (procura por `ghu_|gho_|sk-|refresh_token|access_token`). Modelos: haiku e claude-haiku-5.5.
+- **Codex: pendente**, depois das 12h15 (cota), junto com o do Cinzel.
 
 ## Fora deste ticket
 

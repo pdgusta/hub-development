@@ -44,12 +44,17 @@ harness de verdade". Um subagente por vez (tarefa leve) e até três Haiku de es
 
 ### Próximo passo exato
 
-1. **A vez na trava.** O Rebite está com ela desde 07:40, na suíte do 15. Sou o 1º da fila. Pode ser que o vigia
-   tenha morrido com o `/clear`: confira a trava e a memória livre. Livre a trava, lance o corredor:
-   `Start-Process pwsh -WindowStyle Hidden -ArgumentList '-NoProfile','-File','C:/context-hub-wt/ticket-22/.local/corredor-22.ps1'`.
-   Vigie `etapas/logs/22.status` (só as linhas depois de "corredor <PID> começou"). Ao pegar, tirar o meu item da fila.
-   Fila (maestro, 08h05): Rebite, Trilho (Docker do 21), eu; o Trilho me avisa. Ao soltar, avisar a **Vela** (real
-   do 18), não o Rebite; ela avisa o Rebite.
+1. **A vez na trava** (08h35). Ponta `bfe6d6a`. Fila: a Vela (real do 18) está com a trava desde 08:28; eu no fim
+   da fila (item 5). Quem soltar me avisa; ao soltar a minha, avisar quem o maestro disser (era a Vela).
+   - 4 voltas hoje: (1) submódulo do fork não iniciado (feito); (2) sobra da 1ª, o `-Manter` não descia na falha
+     (c95a265); (3) volume de dados que sobrou da minha limpeza à mão (`docker rm -f` não leva volume: usar também
+     `docker volume rm` e `docker network rm` dos `hub-ensaio-22-*`); (4) CORTADA 08:26 (613 MB) na indexação da
+     busca, com os pares e as 3 instâncias de pé.
+   - Maestro (08h30): na minha vez, `wsl --shutdown` com a trava e `docker ps` vazio, e a busca indexa antes dos
+     pares (feito em bfe6d6a). Se cortar de novo: avisar o maestro com os números; o 22 Docker vira item do Gustavo.
+   - Lançar com o desligamento: `Start-Process pwsh -WindowStyle Hidden -ArgumentList '-NoProfile','-File','C:/context-hub-wt/ticket-22/.local/corredor-22.ps1','-Wsl'`.
+   - Volta cortada deixa a pilha (sem `cliente.json`): limpar à mão os PIDs do `brasa-22\dist\main.js`, contêineres,
+     volumes, redes e `%TEMP%\hub-ensaio-22`.
 2. **Se a fase docker falhar:** ler `22-docker.log`, consertar e rodar de novo (`-SoDocker` só para o Docker).
 3. **Com tudo verde:**
    - preencher a tabela e o achado do `instructions` no relatório;

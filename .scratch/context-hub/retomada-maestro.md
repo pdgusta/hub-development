@@ -25,6 +25,7 @@ Por isso o diário abaixo registra cada evento com hora.
 
 - (**muda o spec**, 18) Várias sessões no mesmo trabalho: quem conduz mantém a `retomada.md`; cada recruta, a sua `work/passagem-<terminal>.md`; o início abre as duas (o spec dizia nota única).
 
+- (técnica) Vigia: binário descartado é divergência até `vigia recuperar` ou `vigia olhei <caminho>` (comando novo); Config Doctor pendente pelo `doctorProcessedVersion`. Ticket 16.
 - (técnica) "Piora" da vigia (aberto no spec): item sobe de nível em relação à passada anterior; item novo conta como ok antes. Ticket 16.
 - (técnica) Mod do Claude Code para a vigia: linha de status (`$.ui.status`), não a faixa acima do prompt. Ticket 17.
 - (processo) O 16 começou antes do 08 e do 10; o 17 antes do 16; o 18 sobre o 17; o 21 sobre o 16; o 23 antes de 11, 17 e 18; junção só depois dos bloqueios.
