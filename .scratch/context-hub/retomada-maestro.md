@@ -42,6 +42,9 @@ Por isso o diário abaixo registra cada evento com hora.
   `DO_NOT_TRACK=1`) e as ideias do formato de decisão para o acervo. Gustavo aceitou deixar para depois do 25.
 
 - Proxy de MCP que repasse o `instructions` (achado do 22).
+- Acervo de referências (futuro): vídeos em motion como referência de estilo. Primeiro item:
+  https://youtu.be/mZ27vUoOEB0 ("I Bet Nobody Has Ever Explained the Backend Ecosystem Like This Before", Cloud X
+  Berry). Só referência visual de motion; explorar o tema depois do 25 (Gustavo, 2026-10-17 ~11h30).
 
 ## Plano da fatia 2 do 08 — FEITO 09:52, verde (Gustavo, 2026-10-17 ~09h30: "no momento oportuno pause tudo e deixe menos agentes")
 
@@ -103,7 +106,8 @@ C:\context-hub log --oneline -3 integracao`, `etapas/trava-pesada.md` e `etapas/
   o próximo). Suíte inteira só na junção (Rebite). "Achados comuns" nas regras (hífen no Codex, caminho longo, testes do
   fork). Janela quieta (todos saem menos quem roda o teste pesado) quando a memória não deixa.
 - **Ronda automática:** CronCreate `13,38 * * * *` (id 269a3193, só desta sessão: recriar depois de reinício). Mensagem
-  de recruta parada sem Enter no prompt: reenviar com `maestri ask "<nome>" --raw ""`. Recruta que saiu (`/exit`)
+  de recruta parada sem Enter no prompt: reenviar com `maestri ask "<nome>" --raw "
+"`. Recruta que saiu (`/exit`)
   vira PowerShell: o que chega lá vira erro do shell.
 
 - **Construção pelo `/implement-spec`**, invocado pelo Gustavo em 2026-10-16. **Até 4 construtores, cada recruta até 1 subagente por vez mais até 3 Haiku 5.5 médio para tarefa simples ou QA** (Gustavo, 2026-10-17 ~04h; regras atualizadas; o papel ainda diz "sem subagentes", não editar papel em uso). Plano em
