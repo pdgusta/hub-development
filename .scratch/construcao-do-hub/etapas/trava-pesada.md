@@ -1,1 +1,1 @@
-- Rebite (integrador), 2026-10-17 02:41: suíte inteira com --test-concurrency=1 em integracao, junção do 31 novo (C:/context-hub-wt/integracao). Apago ao fim.
+- Trilho (construtor), 2026-10-17 03:03: harness de verdade (Codex) no ponta a ponta do 12 e do 15, worktrees ticket-12 e ticket-15. Apago ao fim.

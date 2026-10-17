@@ -1,7 +1,7 @@
 # 31: Acervo: registro dos avais, verificador escolhido pelo maestro e peça que sumiu
 
 Type: task
-Status: claimed
+Status: resolved
 Etapa: 8 (skills e acervo)
 Blocked by: 20
 
@@ -24,3 +24,5 @@ Blocked by: 20
 - 2026-10-17 01h50 (integrador, Rebite): juntado em `integracao`, commit 357a2ba (merge `--no-ff` de `ticket-31` b710f2d, o HEAD da rodada 2 "passa" do Fiel). Suíte inteira com a trava em 57e85cf (31 + 32): `node --test --test-concurrency=1 "agents/code/test/**/*.test.mjs"` = 186, 178 verdes, 8 pulados, 0 falhas; `git status` limpo. **Não resolvido** por ordem do maestro: espera a ponta a ponta do Claude (`HUB_HARNESS_REAL=1`, Vela, no ramo `ticket-31`) e a conferência da evidência pelo Fiel.
 - 2026-10-17 02h12 (Vela): ponta a ponta real achou buraco do CRLF (consertado em 050fb14); 2ª rodada verde em Claude e Codex; evidência commitada. Rodada nova de código pedida ao Fiel.
 - 2026-10-17 02h20 (Vela): rodada 3 do Fiel PASSA com ressalva (asks de nome parecido e da tabela sem registro em avais/); passa levado ao Rebite; ressalva ao maestro.
+- 2026-10-17 02h51 (integrador, Rebite): rodada 3 juntada em `integracao`, commit e82ce65 (merge `--no-ff` de `ticket-31` 4e420a6, o HEAD da rodada 3 "passa com ressalva escrita" de Fiel e Fielzinho: conserto do CRLF no `trocar` da guarda e evidência real do Claude, 31, e do Codex, 20). Testes, com a trava: `node --test --test-concurrency=1 "agents/code/test/**/*.test.mjs"` sem variáveis = 191, 183 verdes, 8 pulados, 0 falhas (10 min); `git status` limpo. Harness real não repetido: a Vela rodou a ponta a ponta no Claude e no Codex em 4e420a6, e os arquivos de hooks e ponta a ponta juntados são idênticos aos do ramo. **Ressalva com conserto para um ticket seguinte** (Fielzinho, aceita pelo Fiel): aval sem parecer não é registrado; o `ask` de nome parecido (`redator-2.md`) e o da tabela sem `HUB_PAPEL` não criam pendência nem parecer, e o `aval.mjs` só registra quando os dois existem. Conserto: pendência para cada `ask` e registro do aval mesmo sem parecer ("sem verificador: dispensado"). Levado ao maestro para virar ticket. **Resolvido.**
+- 2026-10-17 02h55 (integrador, Rebite): a ressalva "aval sem parecer não é registrado" virou o ticket 35 (Trilho, `35-aval-sem-parecer-tambem-registrado.md`).

@@ -1,7 +1,7 @@
 # 07: Banco do par: dois CouchDB, LiveSync e vista `.md`
 
 Type: task
-Status: claimed
+Status: resolved
 Etapa: 2 (banco)
 Blocked by: 01, 04
 
@@ -28,3 +28,5 @@ Blocked by: 01, 04
 - 2026-10-17 ~02h10, Brasa: suíte comum com a trava e `--test-concurrency=1` em 99ea624: 187 testes, 179 PASSA, 8 pulados, 0 falhas (`.local/suite-r2d.log`). Relatório preenchido. Rodada 2 pedida ao Fiel.
 - 2026-10-17 ~02h25, Brasa: rodada 2 voltou (PID por substring; configurado sem marca refeito calado). Consertos em 6b1d7e8, com teste vermelho antes: `kit-sem-docker.ps1` 14 PASSA. Relatório, seção "Rodada 3". Pedida a rodada 3 ao Fiel (ele roda o Docker).
 - 2026-10-17 ~02h45, Brasa: rodada 3 PASSA (Fiel e Fielzinho; Docker do Fiel com a trava: 07, provas 01 e 02, sincronizador, verdes). Passa levado ao Rebite.
+- 2026-10-17, Brasa: Rebite juntou o 07 em 24c7543 (com o 34); resolve com a suíte verde.
+- 2026-10-17 03h00 (integrador, Rebite): juntado em `integracao`, commit 24c7543 (merge `--no-ff` de `ticket-07` 6b1d7e8, o HEAD da rodada 3 "passa" de Fiel e Fielzinho; o ramo partia de 57e85cf, sem arquivo em comum com o 13 e o 31, merge sem conflito). Testes, com a trava, junto com o 34 (763813a): `node --test --test-concurrency=1 "agents/code/test/**/*.test.mjs"` sem variáveis = 194, 186 verdes, 8 pulados, 0 falhas (8 min); `git status` limpo. As provas com Docker (`07-banco`, prova 01, prova 02, sincronizador do 06) não foram repetidas: o Fiel as rodou verdes com a trava em 6b1d7e8, e nem elas nem o que usam (banco, montador, gerador) mudaram com o 13 e o 31. Ressalvas do parecer: as esperas fixas (30 s para o estado da replicação, 60 s para o controle) falham com a máquina carregada (esperar pelo estado, com folga maior, ou dizer na falha que foi tempo); limites, laço e retrato do banco são do 08. **Resolvido.**

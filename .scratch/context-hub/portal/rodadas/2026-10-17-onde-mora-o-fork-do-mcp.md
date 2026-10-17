@@ -2,7 +2,7 @@
 titulo: Onde mora o fork do MCP do banco
 ticket: 16
 aberta: 2026-10-17
-estado: aberta
+estado: absorvida
 ---
 
 O próximo ticket da Vela é o 09: o **MCP do banco**, por onde o agente lê e grava a verdade do hub, conferindo a versão
@@ -30,3 +30,5 @@ recomendada: A
 ## Algo mais?
 id: algo-mais
 tipo: texto
+
+<!-- respondida pelo chat do terminal (Gustavo pelo celular), 2026-10-17 ~03h30: A -->

@@ -2,7 +2,7 @@
 titulo: Link fora do hub: as três sobras
 ticket: 16
 aberta: 2026-10-17
-estado: aberta
+estado: absorvida
 ---
 
 **O link para fora do hub entrou** (ticket 32, juntado e resolvido; suíte com 186 testes, nenhuma falha). Na sua
@@ -33,3 +33,5 @@ recomendada: A
 ## Algo mais?
 id: algo-mais
 tipo: texto
+
+<!-- respondida pelo chat do terminal (Gustavo pelo celular), 2026-10-17 ~03h30: A -->

@@ -1,7 +1,7 @@
 # 34: Roteamento: uma linha de registro por skill e caminho com barra do Windows
 
 Type: task
-Status: claimed
+Status: resolved
 Etapa: conserto do 19 (fora da sequência)
 Blocked by: 19
 
@@ -30,3 +30,4 @@ Regras comuns: `../etapas/regras-da-construcao.md`. Número 33 reservado para a 
 - 2026-10-17 02h32 (Vela): consertos em cd52173 (barras) e 0e39c35 (uma linha por skill); 19-roteamento 19/19. Falta: suíte inteira (trava com o Fiel), revisão, Rebite. Relatório etapas/relatorio-34-roteamento-registro-por-skill-e-barras.md.
 - 2026-10-17 02h41 (Vela): suíte 185/0/8 em 0e39c35; revisão pedida ao Fiel.
 - 2026-10-17 02h44 (Vela): Fiel rodada 1 PASSA (com o Fielzinho); passa levado ao Rebite.
+- 2026-10-17 03h00 (integrador, Rebite): juntado em `integracao`, commit 763813a (merge `--no-ff` de `ticket-34` 0e39c35, o HEAD da rodada 1 "passa" de Fiel e Fielzinho; junto com o 07, sem arquivo em comum). Testes, com a trava: `node --test --test-concurrency=1 "agents/code/test/**/*.test.mjs"` sem variáveis = 194, 186 verdes, 8 pulados, 0 falhas; `git status` limpo. Ponta a ponta real não precisa (parecer: lógica interna, formato dos eventos não mudou). **Resolvido.**

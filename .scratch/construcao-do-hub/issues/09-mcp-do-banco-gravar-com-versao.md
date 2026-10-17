@@ -22,3 +22,5 @@ Blocked by: 07
 - 2026-10-17 ~03h00 (Vela): só leitura (ticket, faixa 5, Worker 5, relatório do 07, upstream em C:/Projetos/hub-mcp-banco v0.10.0). Esperando o Gustavo (onde mora o fork) e o 07 em integracao.
 
 - 2026-10-17 ~03h00 (maestro): a Vela perguntou onde mora o fork do es617 (o spec deixou a pergunta aberta). Levado ao Gustavo: rodada `2026-10-17-onde-mora-o-fork-do-mcp` (recomendada A, repositório próprio em `C:\Projetos\hub-mcp-banco`). Respondido pelo maestro: banco de ensaio pelo `ensaio.psm1` do 07 (`hub-ensaio-09-*`, 5996); o fork importa o `lib/frontmatter.mjs` do hub por `HUB_ROOT`, sem segundo validador.
+
+- 2026-10-17 ~03h15 (maestro): o 07 foi resolvido; o 09 segue reservado para a Vela, que começa quando o Gustavo responder sobre o fork (até lá ela faz o 28).

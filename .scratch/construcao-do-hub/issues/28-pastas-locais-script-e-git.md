@@ -1,7 +1,7 @@
 # 28: Pastas locais: o script "nova pasta local", o "tornar local" e a exclusão do git
 
 Type: task
-Status: ready-for-agent
+Status: claimed
 Etapa: 2 (banco)
 Blocked by: 06, 07
 
@@ -21,3 +21,8 @@ Blocked by: 06, 07
 - 2026-10-16 ~21h (maestro): publicado pela decisão do Gustavo na rodada `2026-10-16-pastas-locais-depois-do-gerador`. A parte da vigia (rodar o gerador a cada passada e religar) foi para o ticket 16 da construção.
 
 - 2026-10-17 ~02h50 (maestro): reservado para o Trilho, depois do 35 e do Codex do 12 e do 15; começa quando o 07 for resolvido.
+
+- 2026-10-17 ~03h15 (maestro): troca de dono: a Vela faz o 28 agora (o 09 espera a resposta do Gustavo sobre onde mora o fork); o Trilho segue no 35 e no Codex do 12 e do 15.
+- 2026-10-17 03h02 (Vela): claimed; worktree C:/context-hub-wt/ticket-28 da ponta de integracao 763813a.
+
+- 2026-10-17 ~03h25 (maestro): aceito o `git rm -r --cached` no "tornar local" (a pasta já versionada sai do git do hub daqui para frente; o histórico guarda as versões antigas, e limpar histórico não entra), proposta da Vela.

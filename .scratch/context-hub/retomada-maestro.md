@@ -90,6 +90,6 @@ Repositório de planejamento versionado (primeiro commit 2026-10-16).
 - Tickets novos de conserto, publicados pelo maestro (como o 30): 34 (roteamento, leitura tardia do 19) com a Vela;
   35 (aval sem parecer, ressalva do 31) com o Trilho. Trilho depois: Codex do 12 e do 15 quando tiver a trava.
 - Limpos: Brasa ~01h15, Trilho ~02h00, Vela ~02h30. Fiel em ~48%, estado salvo 02h04: limpar depois do parecer do 07.
-- Rodadas abertas pelo chat: `portal/rodadas/2026-10-17-onde-mora-o-fork-do-mcp.md` (09 da Vela, recomendada A) e `portal/rodadas/2026-10-17-ressalvas-do-link-fora.md` (sobras do 32; recomendada A; o
-  número 33 está reservado para ela).
+- Rodadas do fork do MCP e das sobras do link: absorvidas (A e A, Gustavo pelo chat do terminal, ~03h30). Ticket 33 publicado (Trilho, depois do 35).
 
+- 07, 34 resolvidos (763813a). Brasa no 08 (costuras confirmadas, retrato em agents/code/test/banco/retrato/); Vela no 28 (aceito git rm --cached no tornar local), depois 09 no fork em C:\Projetos\hub-mcp-banco; Trilho: Codex do 12 e 15, suíte e revisão do 35, depois 33.

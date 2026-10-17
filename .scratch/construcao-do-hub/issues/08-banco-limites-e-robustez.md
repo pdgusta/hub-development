@@ -1,7 +1,7 @@
 # 08: Banco: limites e robustez
 
 Type: task
-Status: ready-for-agent
+Status: claimed
 Etapa: 2 (banco)
 Blocked by: 07, 06
 
@@ -18,3 +18,6 @@ Blocked by: 07, 06
 - [ ] o retrato do banco está gravado para as etapas 3 e 6
 
 ## Comments
+- 2026-10-17 03h00 (integrador, Rebite): lição do 07 (parecer do Fiel, `etapas/02-banco/parecer-Brasa.md`): as esperas fixas do teste do banco (30 s para o estado da replicação, 60 s para o controle) falham com a máquina carregada; esperar pelo estado, com folga maior, ou dizer na falha que foi tempo.
+- 2026-10-17 ~03h10, Brasa: peguei (Status claimed). Worktree `C:/context-hub-wt/ticket-08`, ramo `ticket-08`, de `integracao` 763813a. Costuras propostas ao maestro (aguardo): (1) teste Docker `agents/code/test/08-banco-limites.test.ps1` pelo passo do kit, pastas e CouchDB crus (ponto e local na partida e rodando; 60/201 MiB; colisão de binário recuperada pelo cat-rev; kit de novo sem mudança); (2) laço `agents/code/kit/par/banco/laco.ps1`, uma volta por chamada, mais o XML da tarefa agendada sem registrar; (3) retrato do banco, local a decidir (proposto `agents/code/test/banco/retrato/`). Falta: tudo.
+- 2026-10-17 ~03h15 (maestro, via Brasa): costuras confirmadas. (1) teste Docker `agents/code/test/08-banco-limites.test.ps1`, com esperas pelo estado e falha que diz "tempo"; piso de memória e trava no Docker. (2) laço `agents/code/kit/par/banco/laco.ps1`, uma volta por chamada; o kit só escreve o XML da tarefa agendada, nunca registra. (3) retrato em `agents/code/test/banco/retrato/` (o `execucao/` da raiz é do plano antigo).

@@ -7,7 +7,17 @@ especial "Um trabalho pesado por vez" (a trava `etapas/trava-pesada.md`) e "Test
 - Maestro: `maestri ask "Claude Code" ...`.
 - Fila: o ticket 07 agora, depois o 08 (receita da etapa 2, opção A).
 
-## Ticket 07 (banco do par): rodada 3 com o Fiel
+## Ticket 08 (banco: limites e robustez): começando
+
+- Ramo `ticket-08`, worktree `C:/context-hub-wt/ticket-08`, de `integracao` 763813a. Status claimed.
+- Costuras confirmadas pelo maestro ~03h15 (comentário no ticket 08). Retrato em `agents/code/test/banco/retrato/`. Kit só escreve o XML da tarefa.
+- Lição do Rebite: esperas pelo estado, com folga, e falha que diz "tempo".
+
+### Próximo passo exato
+
+1. Com as costuras confirmadas: primeiro teste vermelho (fatia 1: ponto e local fora do banco, rodando e na partida).
+
+## Ticket 07 (fechado: juntado e resolvido, integracao 763813a)
 
 - Ramo `ticket-07`, worktree `C:/context-hub-wt/ticket-07`. Ponta `6b1d7e8` (consertos da r2) sobre 99ea624 (`integracao` 57e85cf juntada).
 - Rodada 2 voltou (parecer `etapas/02-banco/parecer-Brasa.md`, seção "Rodada 2"); consertos feitos, relatório seção "Rodada 3".
@@ -16,7 +26,7 @@ especial "Um trabalho pesado por vez" (a trava `etapas/trava-pesada.md`) e "Test
 
 ### Próximo passo exato
 
-1. Rodada 3 PASSA (parecer seção "Rodada 3"). Passa levado ao Rebite ~02h45; espero a junção e o próximo ticket (08) do maestro.
+1. Ticket 07 juntado e resolvido pelo Rebite (integracao 763813a, 186 verdes, 8 pulados). Lição das esperas fixas comentada no 08. Espero o maestro passar o 08.
 2. Depois do passa: avisar o Rebite (ramo, testes, relatório, parecer).
 
 ### Os testes com Docker da rodada 2 (todos verdes, um de cada vez)

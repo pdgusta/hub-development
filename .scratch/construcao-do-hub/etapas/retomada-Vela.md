@@ -206,3 +206,23 @@ node --test agents/code/test/05-frontmatter.test.mjs
   registrar no relatório. (3) Banco de ensaio pelo ensaio.psm1 do 07 (hub-ensaio-09-*, porta 5996); o fork importa
   agents/code/bin/lib/frontmatter.mjs do hub por HUB_ROOT, sem segundo validador.
 - Até a resposta do Gustavo e o 07 em integracao: só leitura.
+- 02h52: Rebite: 31 resolvido (e82ce65); 34 juntado em 763813a, suíte dele rodando. Nada a fazer até ele resolver o 34; 09 segue só leitura.
+- 03h00: 34 resolvido pelo Rebite (integracao 763813a, 186/0/8). 34 encerrado. Próximo: 09, esperando o Gustavo e o 07.
+
+## Ticket 28, pastas locais: script e git (2026-10-17 ~03h15)
+
+- Maestro: pegar o 28 enquanto o Gustavo não responde sobre o fork (o 09 segue meu). Docker com a trava.
+- Ramo ticket-28, worktree C:/context-hub-wt/ticket-28, de integracao 763813a.
+- Desenho do 28: skill agents/skills/nova-pasta-local/ (SKILL.md + nova-pasta-local.ps1, importa
+  agents/code/kit/par/banco/banco.psm1; -EnvFile do par, padrão $env:HUB_BANCO_ENV; -Pasta <rel>; -TornarLocal).
+  Nova: Stop-Sincronizador, cria pasta + index.md local: true, gerador, Start-Sincronizador. Tornar local: Stop, põe
+  local: true, gerador, CLI `rm <caminho>` de cada arquivo da pasta (ls <prefixo>) no cli-db do par + `sync`, Start.
+  Gerador recusa -> para, mostra o caminho, sincronizador parado e avisado (sai ≠ 0).
+- Gerador escreve .git/info/exclude (git rev-parse --git-path info/exclude; só se há .git), num bloco marcado
+  (preserva o resto): `.*`, `!.gitignore`, `!.gitkeep` (o esqueleto versiona os dois), `/<pasta local>/`. Não entra no
+  `mudou` (git não precisa religar nada).
+- Testes: gerador.test.mjs (exclude + git status); sem Docker o YAML ilegível; com Docker (trava) 28-pastas-locais.test.ps1
+  sobre ensaio.psm1 (hub-ensaio-28-*).
+- Pergunta ao maestro: "tornar local" de pasta já versionada também faz git rm -r --cached?
+- 03h05: maestro aceitou git rm -r --cached no 'tornar local'; relatório e aviso do script dizem que o histórico do git guarda as versões antigas (remoção só daqui para frente; limpar histórico fora). '.*' com exceções e -EnvFile/HUB_BANCO_ENV ok. Commit do exclude: e74327c (gerador 8/8). Próximo: o script (teste sem Docker do YAML antes).
+- 03h07: Gustavo decidiu (A): fork em C:/Projetos/hub-mcp-banco, repositório próprio fora do hub, só local, um ramo por ticket (ticket-09); no hub, o passo do kit (05-mcp-banco.ps1) e o teste de ponta a ponta; GitHub depois, com aval dele. O 09 é meu depois do 28. O 33 (sobras do 32) vai ao Trilho; ele pode perguntar sobre o 27 e o 32.
