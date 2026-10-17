@@ -4,9 +4,9 @@ Quem solta a trava avisa o primeiro da fila (`maestri ask "<nome>" "trava livre,
 Quem pega a trava se tira da fila. Ordem pelo caminho crítico; o maestro reordena. Portas 5996/5997 são de vários
 testes (09, 16): limpe os contêineres ao soltar.
 
-(trava: ver trava-pesada.md; Brasa desde 05:20, fatias 3-7 e 07 do 08)
-1. Cinzel: Docker do 10 (novo, ~5 min) e do 09 de novo com as três instâncias (~3 min), worktree ticket-10
-   (caminho crítico: o 10 abre 11, 22 e a junção do 16)
-2. Rebite: suíte da junção do 28 e do 09 (~16 min)
-3. Trilho: Codex do 15 (a partir de 06:58; entra entre fatias da Brasa se ela ainda estiver)
-4. Brasa: a fatia 2 do 08 (51 e 201 MiB), numa hora de máquina quieta, combinada pelo maestro
+(trava: ver trava-pesada.md) — ordem firme a partir de 05:50:
+1. Cinzel: Docker do 10 e do 09 (~8 min). Recebe da Brasa, que para o corredor dela e solta.
+2. Rebite: suíte da junção do 28 e do 09 (~16 min).
+3. Brasa: fatias 3 a 7 e 07 do 08 (o corredor dela **não pega a trava sozinho**: só depois do aviso do Rebite).
+4. Trilho: Codex do 15 (a partir de 06:58; entra entre fatias da Brasa).
+5. Brasa: fatia 2 do 08, em hora quieta combinada pelo maestro.

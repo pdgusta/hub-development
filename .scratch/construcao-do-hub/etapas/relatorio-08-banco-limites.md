@@ -97,7 +97,7 @@ Corredor destacado `.local/fatias.ps1` (aval do maestro, ~04h10):
 |---|---|---|
 | 1 | nada com ponto nem `local: true` chega ao banco, na varredura de partida e com o CLI rodando | verde (rodada 03h37, 14 PASSA) |
 | 2 | 51 MiB viaja (60 na primeira versão; baixado pela memória da máquina, maestro 05h20); 201 MiB não viaja, não entra no banco e fica identificável | PREENCHER |
-| 3 | colisão de binário: a mais nova nas duas pastas; a perdida num ramo apagado, recuperada byte a byte antes e depois da compactação | PREENCHER |
+| 3 | colisão de binário: a mais nova nas duas pastas; a perdida num ramo apagado, recuperada byte a byte antes e depois da compactação | 1ª (05h25): vermelha, o binário de base não chegou (EBUSY provável); consertada em e0e0ecc; repetir |
 | 4 | conflito de texto aberto; retrato em dia | PREENCHER |
 | 5 | o kit de novo não muda nada (arquivos do kit, contêiner, replicação, PID) | PREENCHER |
 | 6 | laço: nada caído, nada a fazer; CLI morto; CLI morto e CouchDB fora; nada se perde | PREENCHER |

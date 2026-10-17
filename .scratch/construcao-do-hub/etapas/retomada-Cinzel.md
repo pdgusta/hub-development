@@ -72,7 +72,11 @@ Leia antes: `etapas/regras-da-construcao.md` (inteiras), o ticket do momento e e
     escrita com `McpInstancias`; recusa chave faltando, fora de 127.0.0.1, mesma porta, mesmo token); `Start-McpBanco`
     passa `HUB_ROOT = $par.Vault` e `READ_ONLY`; `Install`/`Uninstall` sobem e param as três; `env/05.env.modelo` com
     as 6 linhas. Sem Docker verde: `node --test agents/code/test/09-mcp-banco-sem-docker.test.mjs` (1/1, 18 casos).
-- **Próximo passo exato:**
+- 05h45: feito o passo 1 e 2 abaixo (hub `ticket-10` b2d855e: `09-mcp-banco.test.ps1` com as 6 linhas e parando as três;
+  `10-mcp-banco.test.ps1` novo, sintaxe ok). Fork montado (`npx tsup`); e2e local do upstream na worktree 36/7, igual à
+  base (a 1ª rodada caiu inteira por partida lenta do servidor: rodar de novo). Fila: sou o 1º depois da Brasa (ela
+  avisa); ao soltar a trava, avisar o **Rebite** (2º). Corredor: `etapas/logs/10-corredor.ps1`.
+- **Próximo passo exato (era):**
   1. `agents/code/test/09-mcp-banco.test.ps1` linha 55: o `.env` de ensaio tem de ganhar as linhas
      `HUB_MCP_BANCO_LEITURA_URL/TOKEN` (8797) e `HUB_MCP_BANCO_CLIENTE_URL/TOKEN` (8798), tokens distintos
      (`New-Segredo 24`); senão o passo recusa.
@@ -100,3 +104,4 @@ Leia antes: `etapas/regras-da-construcao.md` (inteiras), o ticket do momento e e
 - O sincronizador do LiveSync funde sozinho conflitos de linhas diferentes. Um conflito de verdade, no teste, é na
   mesma linha.
 - `maestri ask` sem barra invertida nos caminhos.
+- Cinzel 05:35: 1º da fila, à espera do aviso da Brasa. Corredor pronto: `pwsh -NoProfile -File etapas/logs/10-corredor.ps1` (pega e solta a trava; estado em `logs/10-corredor.status`).

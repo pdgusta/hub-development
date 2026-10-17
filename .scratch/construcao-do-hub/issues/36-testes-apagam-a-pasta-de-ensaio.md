@@ -1,7 +1,7 @@
 # 36: Os testes apagam a pasta de ensaio, também quando falham
 
 Type: task
-Status: ready-for-agent
+Status: claimed
 Etapa: infraestrutura de teste (fora da sequência)
 Blocked by: None (can start immediately)
 
@@ -26,3 +26,5 @@ mesmo falhando").
 - 2026-10-17 05h20 (maestro): publicado pelo aviso do Fiel. As 1.325 pastas antigas continuam lá (nenhuma tem login; a
   limpeza em massa foi recusada pela permissão automática e fica para o Gustavo). Dono: o primeiro construtor livre.
 - 2026-10-17 05h25 (maestro): dona: a Vela, enquanto o 17 espera o Codex (06h58) e a fila.
+
+- 05:39 (maestro): costura da Vela aceita (ajudante `agents/code/test/pasta-de-ensaio.mjs`, limpeza no after e no exit). Arquivos de teste que um ramo aberto mexe ficam para depois da junção dele. Medida: das 1.326 pastas, só 87 nasceram depois do after (quase todas de uma rodada interrompida 01:06-01:09).
