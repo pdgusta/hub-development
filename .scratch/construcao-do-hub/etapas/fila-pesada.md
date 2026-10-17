@@ -6,6 +6,6 @@ testes (09, 16): limpe os contêineres ao soltar.
 
 (trava: ver trava-pesada.md) — ordem a partir de 12:55 (Codex sem cota até 17h15):
 1. Vela: fases 4 (vigia), 6 (arquivar) e 7 (cliente, pilha do 22) do 25, com Claude e Copilot
-2. Trilho: 12-busca do 41 com os docs (entre duas fases da Vela: ela passa a trava ao fim da fase em curso e retoma depois)
+2. Trilho: 12-busca do 41 com os docs (logo que a Vela terminar as três fases, num processo só)
 3. Rebite: junções que chegarem (22 manutenção, 23, 40, 37, 18 quando der) e a dos docs depois do 41
 4. Depois das 17h15 (Codex), um de cada vez: Cinzel (11, 24), Vela (18, 25), Brasa (22)
