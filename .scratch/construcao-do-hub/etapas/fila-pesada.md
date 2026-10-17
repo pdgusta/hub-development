@@ -5,9 +5,7 @@ Quem pega a trava se tira da fila. Ordem pelo caminho crítico; o maestro reorde
 testes (09, 16): limpe os contêineres ao soltar.
 
 (trava: ver trava-pesada.md; Rebite desde 06:44, suíte do 36+10 e npm test do fork) — ordem a partir de 06:55:
-1. Trilho: Docker do 16, 4ª rodada (~5 min), e o Codex do 15
-2. Vela: harness real do 17 (Claude, Copilot e Codex)
-4. Brasa: fatias 1 e 2 do 08 numa subida (51 e 201 MiB), aceite final da revisão do Fiel: só com a máquina quieta (ninguém mais com teste
-   rodando); o maestro avisa.
-5. Brasa: Docker do 22 (proxy e kit de cliente: par do 07 com 5996/5997, MCP 8796-8798, busca com npm ci, ~15 min); depois os três harnesses como cliente (~10 min)
-6. Rebite: suíte do hub do 15 rodada 2 (e2b7607, ~15 min), pedida às 07:34
+1. Brasa: AGORA (máquina quieta, avisada pelo maestro 07:38): fatias 1 e 2 do 08 (51 e 201 MiB), aceite final da revisão.
+   Durante ela, ninguém roda nada pesado.
+2. Brasa: Docker do 22 (~15 min) e os três harnesses como cliente (~10 min)
+3. Rebite: suíte do hub do 15 rodada 2 (e2b7607, ~15 min)

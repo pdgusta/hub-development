@@ -1,1 +1,0 @@
-- Cinzel (construtor), 2026-10-17 07:28: ticket 11, harness real (claude,codex,copilot-sem,copilot-com), uma sessão por vez, worktree ticket-11; corredor PID 240652. Apago ao fim.

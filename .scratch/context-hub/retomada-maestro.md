@@ -192,3 +192,4 @@ nuvem.
 - 07:33: 15 passou no Fiel, com o Rebite. Lição do hífen→sublinhado no Codex nas regras e nos tickets 11 e 23.
 - 07:33: 15 rodada 2 juntado (e2b7607), suíte na fila (item 6). Nota do hífen já nas regras.
 - 07:35: costuras do 21 aceitas (15 min, recusa sem o outro par, running+0 pendentes; manutenção diária vai ao 23).
+- 07:37: real do 11 (07:28-07:36): Codex falhou, Cinzel analisa. Máquina quieta (3,1 GB): Brasa roda a fatia 2 do 08 agora, depois o Docker do 22; depois Rebite (suíte do 15).
