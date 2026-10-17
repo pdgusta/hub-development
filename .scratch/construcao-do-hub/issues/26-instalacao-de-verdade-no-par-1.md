@@ -15,3 +15,5 @@ Blocked by: 25
 - [ ] o Gustavo confere os três harnesses na pasta real
 
 ## Comments
+
+- 08:42 (maestro): do 23 (Cinzel): o Copilot não tem chave de configuração nem variável para as instruções do servidor MCP; só a opção `--allow-all-mcp-server-instructions` na linha de comando. Quem abre o Copilot (o preset do Maestri, um atalho) tem de passá-la.

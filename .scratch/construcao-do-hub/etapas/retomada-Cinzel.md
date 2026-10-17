@@ -50,10 +50,10 @@ Leia antes: `etapas/regras-da-construcao.md` (inteiras, com os "Achados comuns")
 - Hub: worktree `C:/context-hub-wt/ticket-23`, ramo `ticket-23` de `integracao` e2b7607.
 - Costuras em `etapas/costuras-23-Cinzel.md`, respondidas (as três como recomendado). Relatório em
   `etapas/relatorio-23-kit-de-par-a-forma.md` (fatos de fonte e sonda do app-server).
-- Feito (tdd, `agents/code/test/23-kit.test.mjs`, 6/6, commit no ramo): instalar.ps1, registro da casa (`kit/casa.mjs`),
-  contrato, skills gerais por junction (8 skills marcadas `metadata.camada: geral`), MCP de busca e banco nos três.
-- Falta: hooks (fragmentos + hooks.state pelo app-server numa cópia temporária), GSD, Codex (sandbox), 00 conferir,
-  10-manutencao.ps1, copilot-instructions com texto além do GSD (parar e mostrar).
+- Feito: esqueleto inteiro, ramo `ticket-23` e9dcef7 (com integracao e98a891); 13/13 no `23-kit.test.mjs` (~3,5 min).
+  Relatório com tudo e as ressalvas. Revisão pedida ao Fiel (~08h45). Próximo: aplicar os consertos dele; depois de
+  17 e 18 juntados, mod, extensão onAgentStop, statusLine e notify composto (segunda leva).
+- Armadilha: em heredoc do Bash e em python, `\` some; arquivo com barra invertida, só pelo Write/Edit.
 - Próximo passo antigo (já feito): com as respostas, `tdd` pelo
   `23-kit.test.mjs` sem harness; antes de codar o MCP, ler por curl a doc do Claude e do Copilot sobre variável de
   ambiente no cabeçalho e a chave do Copilot para as instruções do servidor.

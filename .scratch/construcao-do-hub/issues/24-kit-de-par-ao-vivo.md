@@ -1,7 +1,7 @@
 # 24: Kit de par ao vivo nos três harnesses
 
 Type: task
-Status: ready-for-agent
+Status: claimed
 Etapa: 10 (kit de par)
 Blocked by: 23
 
@@ -15,3 +15,8 @@ Blocked by: 23
 
 ## Comments
 - 2026-10-16 20:24 (maestro): aval do Gustavo para copiar o login dos três harnesses em pasta de ensaio (rodada `2026-10-16-login-dos-harnesses-no-ensaio`, A, vale para a construção inteira); condições em `../etapas/regras-da-construcao.md`.
+
+- 08:42 (maestro): do 23 (Cinzel): o Copilot não tem chave de configuração nem variável para as instruções do servidor MCP; só a opção `--allow-all-mcp-server-instructions` na linha de comando. Quem abre o Copilot (o preset do Maestri, um atalho) tem de passá-la.
+
+- 08:42 (maestro, mandato): começa já com o Cinzel, sobre o `ticket-23` (dele, em revisão): os três harnesses de verdade com o kit instalado na pasta de configuração de ensaio, uma sessão de cada, modelos baratos, pela fila; o Codex depois das 12h15. Junção depois do 23.
+- 2026-10-17 08:50 (Cinzel): peguei o 24 (`claimed`), sobre o `ticket-23`. Costuras ao maestro: `../etapas/costuras-24-Cinzel.md`.

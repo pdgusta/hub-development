@@ -213,3 +213,4 @@ nuvem.
 - 08:29: Docker do 22 cortado (613 MB, na indexação); liberado wsl --shutdown na vez dela e indexar antes dos pares. Trava com a Vela (18).
 - 08:35: real do 18 verde no Claude e no Copilot (b840812), revisão pedida; Codex após 12:15. Vela começa o preparo do 25 (prova por fases por causa da memória).
 - 08:40: costuras do 25 aceitas (fases, medidor, corte 700 MB, mem_limit 384 MB nos CouchDB do ensaio); ideia passada à Brasa para o 22.
+- 08:43: 23 (esqueleto) em revisão (e9dcef7, 13/13). Achado: Copilot só tem a opção de linha de comando para instruções do MCP (24/26). Cinzel no 24 sobre o ticket-23.
