@@ -23,6 +23,8 @@ Por isso o diário abaixo registra cada evento com hora.
 
 ## Para rever com o Gustavo
 
+- (processo) A suíte inteira roda só na junção, pelo Rebite; o construtor roda os testes do ticket e dos arquivos mexidos. Fila do trabalho pesado em `etapas/fila-pesada.md`.
+
 - (técnica, ~04h35) Pontos abertos da faixa 5 decididos no 09: `delete_note` exige `base_rev` (o spec deixava a guarda em aberto); append/prepend sem base gravam como filha da versão lida.
 
 - (técnica, 2026-10-17 ~03h50) O hub-busca expõe só a `search` nos três harnesses (a `read` dele furava o aviso de
@@ -132,3 +134,4 @@ nuvem.
 - 03:59: 08 Docker caiu por memória; aval para rodar destacado, fatia por fatia, piso 2 GB, parada abaixo de 700 MB.
 - 04:00: fila do trabalho pesado criada (etapas/fila-pesada.md; regra: quem solta a trava avisa o próximo): Rebite, Cinzel (09), Brasa (08), Trilho (35). Cinzel com código do 09 pronto (fork sem commit: mandado commitar). Trilho adianta o 33 enquanto espera.
 - 04:09: rodada 3 do 12 juntada (3c24d68), suíte 186/0; aceite real do Codex do 12 fechado. Trava passou ao Cinzel (09). Lições no 15 (gravar claude-settings.json na rodada real) e no 23 (kit junta a regra no settings.json).
+- 04:15: 33 feito (Trilho, 07e6b92). Decisão do maestro: suíte inteira só na junção (Rebite), não mais no construtor antes da revisão (poupa memória); regra em regras-da-construcao.md; Trilho pede já a revisão do 35 e do 33.

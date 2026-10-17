@@ -76,7 +76,10 @@ Valem para todo construtor e revisor das etapas. Plano decidido: `revisao/plano/
 
 ## Ao terminar
 
-1. Testes verdes no seu ramo; `git merge integracao` no seu ramo se a ponta andou; testes de novo.
+1. Testes verdes no seu ramo: os arquivos de teste do seu ticket e os dos arquivos que você mexeu (sem trava). **A suíte
+   inteira roda só na junção, pelo Rebite** (maestro, 2026-10-17, para poupar memória: antes rodava duas vezes por
+   ticket); Docker e harness real do seu ticket continuam com você, com a trava. `git merge integracao` no seu ramo se
+   a ponta andou; testes de novo.
 2. Peça a revisão ao revisor do canvas: `maestri ask "<revisor>" "<etapa>: pronto para revisão no ramo <ramo>,
    relatório em <caminho>"`. Aplique os consertos (até duas voltas).
 3. Depois do "passa", avise o integrador **Rebite** (desde 2026-10-16): `maestri ask "Rebite" "<nome>: ticket NN

@@ -26,3 +26,4 @@ do verificador, sem reescrever. (3) Caminho de rede UNC (`\\servidor\pasta\x.md`
   28 e depois no 09; dono: o Trilho, depois do 35 e do Codex do 12 e do 15 (código da Vela no 27 e no 32; perguntar a
   ela).
 - 2026-10-17 ~04h00 (Trilho): pego (claimed). Worktree C:/context-hub-wt/ticket-33, ramo ticket-33, de integracao 3c24d68.
+- 2026-10-17 ~04h20 (Trilho): 4323d0c (imagem), aea27ff (espaço cru), 07e6b92 (UNC). Testes do 27: 37 verdes. Falta: suíte comum (fila da trava), revisão. Relatório etapas/relatorio-33-link-fora.md.
