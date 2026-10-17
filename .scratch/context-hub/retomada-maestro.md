@@ -144,3 +144,4 @@ nuvem.
 - 04:27: costuras do 16 aceitas; 'piora' decidida pelo mandato (item sobe de nível; novo conta como ok antes).
 - 04:40: 16 adiantado (Trilho, 7024828, 8/8 sem Docker). Fila: Rebite (suíte 33/35), Trilho (Docker 16), Brasa (08; solta entre fatias para o Codex do 15 depois de 06:58).
 - 04:44: 09 verde nas duas costuras, revisão no Fiel (fork 61a6e70, hub 3d9d0bb); achados aceitos (fusão automática do LiveSync; conflito só com base morta). Cinzel adianta as costuras do 10.
+- 04:45: costuras do 10 (Cinzel) aceitas; portas 8796/8797/8798; caminho do estado.json a combinar com o Trilho (16).
