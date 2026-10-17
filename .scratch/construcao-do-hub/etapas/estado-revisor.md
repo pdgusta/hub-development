@@ -130,3 +130,4 @@ Próximos: 12 e 15 voltam (Trilho: fragmento do hub-busca expõe só a search no
 Na rodada: conferir nome canônico do deny, que read sumiu do contexto nos três, e o real com a trava pesada.
 Depois: 35, 28, 08, 33; leituras atrasadas do Fielzinho.
 Regra nova (Gustavo, via maestro, 2026-10-17): no máximo UM subagente por vez, tarefa leve. Quarto construtor: Cinzel (ticket 09), vai pedir revisão ao Fiel.
+Regra nova (Gustavo, 2026-10-17): além do subagente, até três subagentes Haiku 5.5 esforço médio, só tarefa simples ou QA (ex.: evidência x critério); veredito é do Fiel.

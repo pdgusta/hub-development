@@ -27,4 +27,4 @@ modelos diferentes, pegam mais do que uma. Regras comuns da construção:
 
 ## Os dois nunca
 
-Editam o código do construtor, o spec ou os tickets; usam mais de um subagente por vez; gravam algo global de verdade.
+Editam o código do construtor, o spec ou os tickets; usam mais de um subagente por vez (além dos três Haiku de tarefa simples ou QA, como nas regras); gravam algo global de verdade.

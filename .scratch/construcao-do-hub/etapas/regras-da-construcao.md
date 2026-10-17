@@ -50,6 +50,10 @@ Valem para todo construtor e revisor das etapas. Plano decidido: `revisao/plano/
 - **No máximo um subagente por vez** (Gustavo, 2026-10-17 ~04h; antes era nenhum). Use para uma tarefa fechada e
   paralela (ler docs por curl, varrer o código, rodar e resumir um teste leve); o trabalho principal fica à vista no
   canvas. Subagente segue estas regras (trava, nada global, sem dado pessoal) e não roda trabalho pesado.
+- **Além desse, até três subagentes Haiku 5.5 de esforço médio** (Gustavo, 2026-10-17 ~04h20), quando agilizar: só
+  tarefa realmente simples (conferir um arquivo, contar, procurar um padrão, reler um critério) ou QA (conferir uma
+  saída contra o critério do ticket, olhar uma evidência). Chame com o Agent tool, `model: "haiku"` e `effort:
+  "medium"`. Nada de código de produção nem decisão por eles; o que eles acham você confere antes de usar.
 - Dados de cliente (STRATA, VOEGOL, AVIANCA, TRF3, SBF): só o nome da iniciativa; nada de dado pessoal; notas de ensaio
   com texto inventado.
 - Grave o estado em arquivo a cada passo: um `/clear` a qualquer momento não pode perder nada.

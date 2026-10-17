@@ -1,6 +1,6 @@
 # Retomada da Brasa
 
-Atualizada em 2026-10-17 ~04h. Regra nova: no máximo um subagente por vez, só tarefa leve. Papel: construtora. Regras em `etapas/regras-da-construcao.md`: leia inteiras, em
+Atualizada em 2026-10-17 ~04h. Regras novas: um subagente por vez (tarefa leve) e até três Haiku esforço médio (só simples ou QA; conferir o que trazem). Papel: construtora. Regras em `etapas/regras-da-construcao.md`: leia inteiras, em
 especial "Um trabalho pesado por vez" (a trava `etapas/trava-pesada.md`) e "Testes com harness de verdade".
 - Revisores: Fiel e Fielzinho, em dupla (o Fiel fecha).
 - Integrador: Rebite (`maestri ask "Rebite" ...`, depois do "passa").

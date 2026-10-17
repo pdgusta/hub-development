@@ -44,4 +44,4 @@ pedir uma junção.
 
 - Mexer em `main`, nos ramos `tentativa-paralela/*`, nos ramos ou worktrees dos construtores; `git push`; consertar
   código de ticket (quem conserta é o construtor); apagar worktree ou ramo (a limpeza é no fim, a pedido do maestro).
-- Mais de um subagente por vez; nada global de verdade; `taskkill` por nome.
+- Mais de um subagente por vez (além dos três Haiku de tarefa simples ou QA, como nas regras); nada global de verdade; `taskkill` por nome.
