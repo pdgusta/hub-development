@@ -1,7 +1,7 @@
 # 30: O montador do hub de ensaio mostra a falha do git
 
 Type: task
-Status: ready-for-agent
+Status: claimed
 Etapa: infraestrutura de teste (fora da sequência)
 Blocked by: None (can start immediately)
 
@@ -18,3 +18,4 @@ Blocked by: None (can start immediately)
 ## Comments
 
 - 2026-10-17 ~00h05 (maestro): publicado pela proposta da Vela, que o faz.
+- 2026-10-17 ~00h15 (maestro): a Vela achou datas fixas (`updated: 2026-10-16`) em dois testes do 05 que viraram vermelhos à meia-noite; conserto no 30, commit separado, só no teste, com aval do maestro; Trilho avisado.
