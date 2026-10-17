@@ -43,10 +43,66 @@ entrarem. Costuras aceitas (09:00): `etapas/costuras-25-Vela.md`.
 - `node --test agents/code/test/25-pares-sem-docker.test.mjs`: 1/1 (o passo `novo` e o resumo sem segredo).
 - A prova aparece pulada sem `HUB_HARNESS_REAL`; o detector do 29 segue verde.
 
+## Primeira rodada real (2026-10-17, janela quieta, só a Brasa e eu)
+
+- **Rodada 1, 09:53-09:57** (fases 1-3, Claude e Copilot): fase 1 (busca) e fase 3 (banco reiniciado) passam. Fase 2
+  falhou no Copilot por defeito do teste: os harnesses rodam em fila no mesmo hub A, o Claude já tinha trocado a linha
+  de `tasks.md`, e o pedido citava o texto original; o Copilot, com razão, não trocou (a guarda recusou a regravação e
+  passou a troca em `decisions.md`, como devia). Conserto 627f1a8: o pedido cita a linha como está na hora.
+- **Rodada 2, 09:58-10:01** (fases 2 e 3): passam (2 pass, 0 fail). Os passos com Docker da ponte (`subir`, `recebeu`,
+  `claro`, `reiniciar`) funcionaram no primeiro uso, sem conserto. Nada em claro nos bancos crus.
+- Evidência fc678b0 (`evidencia-25/`: resumo das duas rodadas, logs `prova-rodada-1.log` e `prova-rodada-2.log`,
+  `medida.csv`). Sem contêiner `hub-ensaio-*` e sem pasta `hub-ensaio-25-*` no TEMP ao fim; sem token na evidência.
+- Login (aval das regras): Claude `.credentials.json` e os dois campos do Copilot copiados e apagados em cada sessão
+  (horas em `hashes-claude-copilot.json`). Hashes das pastas reais iguais antes e depois, menos `~/.claude.json`: esse
+  arquivo é regravado pelo Claude Code de verdade das sessões abertas no canvas (o ensaio usa `CLAUDE_CONFIG_DIR`); a
+  prova não grava nele.
+
+| Fase | Livre mínimo (MB) | VM do WSL máx. (MB) | node máx. (MB) | Contêineres máx. (MB) | Duração |
+|---|---|---|---|---|---|
+| busca (rodada 1) | 1831 | 1929 | 1472 | — | 1:44 |
+| pares:subir (r2) | 3281 | 2268 | 351 | a 140, b 101 | 0:22 |
+| pares (r2) | 2813 | 2392 | 349 | a 182, b 145 | 2:15 |
+| banco-reiniciado (r2) | 2676 | 2357 | 223 | a 179, b 137 | 0:12 |
+| descer (r2) | 3222 | 2361 | 109 | b 136 | 0:04 |
+
+Leitura: o pico é a busca (node 1,5 GB indexando; livre mínimo 1,8 GB). Os pares com dois CouchDB a 384 MB de limite
+ficam abaixo de 200 MB cada. Com a máquina quieta, nada chegou perto do corte de 700 MB.
+
+## Fases 4 a 7 escritas (851dcdc; mandato do maestro ~10h15: contra os ramos, só leitura deles, sem merge)
+
+Puladas com o motivo até a peça entrar na árvore (`FASES` no topo do orquestrador). Ordem de execução: 1, 2, 3, 4, 6
+(as que usam os pares), descida dos pares, 5, 7. Cada fase roda sozinha (`garantirPares`).
+
+- **4 vigia (16, 17):** `pares conflito` (base comum que chega ao B, depois A e B mudam com a replicação suspensa, como o
+  teste do 16); `pares vigia` (passada com o leitor da vigia e o notificador dublê): `divergencia` com o item pelo
+  caminho em claro e uma notificação com o caminho; `pares estado-mcp` (sobe a instância de leitura e chama o
+  `estado_do_hub` como um agente): conta o conflito; depois cada harness, com o início do 17, começa a resposta pelo aviso
+  e cita a nota; no Codex, o notify chama o notificador uma vez.
+- **6 arquivar (21):** por harness, uma pasta `operations/encerrada-<h>` chega ao B; o harness recebe "terminou, arquive
+  pela skill" (shell liberado; `HUB_ARQUIVAR_AGORA` 20 min à frente, como o teste do 21); confere `_archive/<dia>--...`,
+  `archived_at` (prova que foi pela skill) e o B recebeu. Depois `pares copia`: a cópia diária sai 0 e o ramo
+  `par/ensaio-a` está no repositório nu.
+- **5 retomada (18):** sem Docker (os pares descem antes; piso 1.500 MB). Por harness, um hub novo com os hooks de
+  guardas, vigia e fim da resposta juntos (o que o 18 provou sozinho, aqui com as peças todas): devolve até a nota
+  mudar, sete campos; a sessão 2, sem ferramentas, dá o próximo passo da nota.
+- **7 cliente (22):** `25/cliente.ps1 subir` roda o `22-proxy.test.ps1 -Manter` (par, três instâncias, busca e proxy);
+  o orquestrador roda o `ponta-a-ponta/22-cliente.test.mjs` com os mesmos harnesses; `cliente.ps1 descer` (proxy, busca
+  pelo PID gravado pelo 22, instâncias, os dois pares pelo `Uninstall-ParBanco`, pasta). O valor aqui é medir a pilha
+  toda junta, a combinação que caiu por memória no 22.
+- Teste sem Docker: `25-pares-sem-docker` 2/2 (novo; manutencao com o CLI falso: o .env leva o do A, o outro par visto
+  daqui, a máquina, o repositório nu; o leitor configurado; a segunda chamada não refaz). Orquestrador e detector do 29
+  verdes. **Deslize de método:** o código da ponte veio antes do teste da manutencao.
+- **Riscos, para a rodada real:** o corte do medidor só desce `hub-ensaio-25-*` (na fase 7 os contêineres são do 22:
+  numa queda, sobram e o corredor seguinte recusa partir); os textos da notificação e do `estado_do_hub` foram lidos do
+  teste do 16, não vistos; o pedido do arquivar depende de o agente ler a skill (com shell); a fase 7 repete o ponta a
+  ponta do 22 por dentro.
+
 ## O que falta
 
-- **Primeira rodada real** (fases 1 a 3, Claude e Copilot; Codex depois das 12h15), pela fila e com o corredor.
-  Primeiro uso dos passos com Docker da ponte (`subir`, `recebeu`, `claro`, `reiniciar`): podem pedir conserto.
+- **Codex** nas fases 1-3 (depois das 12h15), pela fila.
+- **Rodada real das fases 4 a 7** quando 16+17, 18, 21 e 22 entrarem em `integracao` (então `git merge integracao` no
+  ramo ticket-25).
 - **Pela ressalva do 11, ainda fora:** o `write_note` pelos harnesses (o registro do `hub-banco` nos três chega com o 11
   e o 23) e o MCP reconectando sozinho depois do reinício. Hoje a fase 2 grava pelo disco e a 3 confere o sincronizador.
 - **As fases 4 a 7**, quando as peças entrarem. O roteiro de cada uma está nas costuras.
@@ -54,4 +110,6 @@ entrarem. Costuras aceitas (09:00): `etapas/costuras-25-Vela.md`.
 
 ## Fica para a instalação de verdade e para a segunda máquina
 
-(A preencher com a rodada real: o que não coube na memória, por fase, com os números do medidor.)
+- Fases 1-3 couberam com a máquina quieta (só dois construtores no canvas): livre mínimo 1.831 MB, na busca. Com todos
+  os agentes abertos não foi medido; a busca (indexação, ~1,5 GB de node) é a fase mais pesada, e a ordem por fases
+  (indexar e descer a busca antes de subir os pares) fica como regra para a máquina do Gustavo. (Fases 4-7 a medir quando entrarem.)

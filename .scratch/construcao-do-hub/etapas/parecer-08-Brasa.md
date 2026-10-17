@@ -94,3 +94,10 @@ Ressalvas escritas do fechamento:
    mexeu no `Get-AcimaDoLimite`, fora do caminho do Docker das fatias 1 e 3-7.
 3. As ressalvas 1-6 da rodada 1 seguem (registro do CLI caído apagado, falha do laço fora do log, janela do pwsh,
    retrato sem frase, `Restore-RamoApagado` sem `finally`, Agendador real).
+
+## Evidência das fatias 1 e 2 — 2026-10-17 (514db7a; `logs/08-fatias-1-2.log`, 09h52): **ressalvas 1 e 2 do fechamento retiradas**
+
+18 PASSA, "tudo passou": fatia 1 (partida e CLI rodando: controle nos dois bancos; nada com ponto nem da pasta local
+nos bancos nem no disco do B) e fatia 2 (51 MiB viaja A→B íntegro em 23,1 s, com o laço religando o CLI do A; 201 MiB
+não viaja nem entra no banco; fica identificável no disco do A); contêineres apagados. O 08 fica **PASSA**, só com as
+ressalvas 3-6 da rodada 1.

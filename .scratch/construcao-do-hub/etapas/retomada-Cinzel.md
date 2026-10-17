@@ -9,6 +9,7 @@ Leia antes: `etapas/regras-da-construcao.md` (inteiras, com os "Achados comuns")
 - **Às 12h15** (cota do Codex), na fila (item 5 de `etapas/fila-pesada.md`), um de cada vez: primeiro o Codex do 11,
   depois o Codex do 24. Depois de mim vem a Vela (Codex do 18).
 - **Até lá, o 37** (abaixo).
+- Codex de verdade: o gpt-6-astra está liberado (regra nova, ~10h20). Os testes do 11 (linha 140) e do 24 (linha 115) usam o gpt-6-luna; mantenho e troco para o astra se o luna falhar ou responder mal.
 
 ## Ticket 37: o fim da resposta vê a gravação pelo shell (em curso)
 
@@ -24,7 +25,8 @@ Leia antes: `etapas/regras-da-construcao.md` (inteiras, com os "Achados comuns")
   - Texto: "gravado fora das ferramentas (shell ou outro processo) nesta resposta: ...; a nota de retomada mudou?".
 - **Feito:** 977ea86 e c16e53f. `agents/code/test/37-gravacao-pelo-shell.test.mjs` 11/11 (~2 min; ajudante novo
   `eventoDeShell` em `test/gravacao.mjs`). Matchers do shell nos três fragmentos do fim.
-- **Falta (próximo passo exato):**
+- **Feito também (10:25):** 14+18+27+37 105/105; relatório; revisão pedida ao Fiel. Depois do passa: Rebite (junção depois do 18).
+- **Falta, antigo (já feito):**
   1. Rodar, sem trava, `node --test agents/code/test/18-retomada.test.mjs agents/code/test/27-fim-da-resposta.test.mjs
      agents/code/test/14-*.test.mjs agents/code/test/37-gravacao-pelo-shell.test.mjs` (~5-8 min). Se algum teste
      confere os matchers dos fragmentos, ajustar.

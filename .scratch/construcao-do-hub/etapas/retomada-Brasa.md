@@ -1,6 +1,6 @@
 # Retomada da Brasa
 
-Atualizada em 2026-10-17 ~08h. Papel: construtora. Regras em `etapas/regras-da-construcao.md`: leia inteiras, em
+Atualizada em 2026-10-17 ~10h (antes do reinício do Maestri). **Leia primeiro a seção "Estado às 09h58" no fim.** Próximo: o Codex do 22 depois das 12h15 (pedir a vez ao maestro), depois a revisão ao Fiel. Papel: construtora. Regras em `etapas/regras-da-construcao.md`: leia inteiras, em
 especial "Um trabalho pesado por vez" (a trava `etapas/trava-pesada.md` e a fila `etapas/fila-pesada.md`) e "Testes com
 harness de verdade". Um subagente por vez (tarefa leve) e até três Haiku de esforço médio (só tarefa simples ou QA).
 - Revisores: Fiel e Fielzinho, em dupla (o Fiel fecha). Integrador: Rebite. Maestro: `maestri ask "Claude Code" ...`.
@@ -97,3 +97,16 @@ harness de verdade". Um subagente por vez (tarefa leve) e até três Haiku de es
   `C:/context-hub-wt/ticket-08` (514db7a): `pwsh -Command "& 'C:/context-hub-wt/ticket-08/.local/fatias.ps1' -Fatias '1,2'"`
   em segundo plano (status `logs/08-fatias.status`); (3) a Vela roda o 25 (avisar).
 - Volta das 09:16: memória 1.347 → 919 (Docker religado) → 1.991 (09:22) → 1.374 no fim; sem corte.
+
+## Estado às 09h58 (vale mais que o resto acima)
+
+- 22: Docker VERDE (09:39, bae29bd, 15 PASSA); Claude e Copilot como cliente PASSA; Codex só por cota. Evidência
+  83d4361; relatório preenchido; comentário no ticket. Ponta do ramo `83d4361`.
+  Falta: (1) depois das 12h15, o Codex de novo: com a trava, corredor `-Wsl` inteiro (a pilha precisa subir de novo);
+  pedir a vez na fila ao maestro; (2) atualizar a linha do Codex no relatório e a evidência; (3) revisão ao Fiel.
+- 08: fatias 1+2 VERDES (09:50, 18 PASSA); anotado no ticket; 514db7a já em `integracao`. Ressalva da fatia 2 cai.
+- Medidor: `etapas/logs/medidor-brasa.ps1 -Saida <log> -Parar <arquivo>` (para quando o arquivo existe).
+- 10h15: revisão do 22 pedida ao Fiel (ponta 83d4361; sem Docker 4/4). O Fiel tirou do 08 as ressalvas 1 e 2 (fatias
+  1 e 2): o 08 fica PASSA só com as ressalvas 3-6. Às 12h15: o Codex do 22.
+- 10h21: o teste dos clientes usa o gpt-6-astra no Codex (3894a42, regra nova). Medido: o astra divide a cota com o
+  luna (limite até 12:15). Login copiado 10:20:50, apagado 10:20:57, hash real igual (registrar no relatório).

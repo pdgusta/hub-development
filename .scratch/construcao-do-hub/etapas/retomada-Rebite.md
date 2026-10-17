@@ -58,3 +58,11 @@ a ponta do ramo é a do parecer (ou que depois dela só entrou evidência ou `gi
   Na junção, rodar de novo `agents/code/test/23-kit.test.mjs` (lê os fragmentos de 17 e 18 do repositório).
 - 11 (Cinzel): espera o Codex das 12h15; ainda não avisado como passado.
 - 16 (Trilho): ainda não avisado como passado.
+
+## Em curso (10:20, depois do reinício do Maestri)
+
+- 16 juntado: integracao fce0529 (ticket-16 0332466 = parecer r2 passa; idêntico ao ramo). 16-vigia 19/19 (log
+  etapas/logs/juncao-16-vigia.log). Suíte com a trava desde 10:19 em segundo plano, log etapas/logs/juncao-16-suite.log.
+  Falta: resolver o 16 (ressalva do laco/exclusoes no parecer; Fielzinho lê depois), registro, avisos; depois o 17 (Vela
+  junta integracao no ramo, testa sobre o estado.json real, rodada do Fiel, me avisa). 23 segura até 11, 16, 17 e 18.
+- Docker do 16 não repetido: idêntico ao revisado (8ª rodada do Trilho vale; r2 só mexeu em filtro de `descartados()`).

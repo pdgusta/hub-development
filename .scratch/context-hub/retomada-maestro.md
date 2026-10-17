@@ -274,3 +274,4 @@ nuvem.
 - 10:18: Gustavo: guarda os 3 reinícios do Codex (usar se a cota travar a reta final); gpt-6-astra liberado nos testes do Codex (regras atualizadas).
 - 10:21: ronda; cron duplicado apagado (fica o 269a3193). Rebite com a trava (suíte do 16, fce0529, desde 10:19). Fiel revisando o 21. Brasa testa se a cota do gpt-6-astra é à parte (um pedido).
 - 10:21: o gpt-6-astra não tem cota à parte (Brasa, um pedido às 10:20: limite até 12:15). Codex só às 12:15.
+- 10:28: 25 fases 4-7 escritas (puladas até as peças); corte do medidor desce toda pilha registrada. 16 juntado (fce0529), suíte com o Rebite.

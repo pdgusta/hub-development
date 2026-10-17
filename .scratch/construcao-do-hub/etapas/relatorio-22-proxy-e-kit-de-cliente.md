@@ -106,28 +106,74 @@ O Desktop roda no par: no glossário, ele não é cliente. O passo 10 gera os ar
   - A ponte do Desktop e a pasta conectada são geradas, e o token fica só no `banco.headers`.
   - A segunda volta mantém o mesmo processo.
 
-### Com Docker (trava; fila, item 5)
+### Com Docker (trava)
 
 `$env:HUB_MCP_BANCO_DIR='C:/Projetos/hub-mcp-banco-wt/brasa-22'; pwsh -NoProfile -File agents/code/test/22-proxy.test.ps1`
 
-O fork roda numa worktree minha, destacada em `integracao` 34c3e50: a `integracao` do fork é do Rebite (maestro). O
-teste ainda não rodou.
+O fork roda numa worktree minha, destacada em `integracao` 34c3e50: a `integracao` do fork é do Rebite (maestro).
+
+**Rodada verde: 2026-10-17 09:39-09:43, janela quieta, ponta `bae29bd`: 15 PASSA, 0 FALHA, 5 MEDIDA.** Log:
+`etapas/logs/22-docker.log`; corredor `.local/corredor-22.ps1 -Wsl` (cópia em `etapas/logs/`).
 
 | Caso | Resultado |
 |---|---|
-| sem token e com o de outra rota, 401 nas três rotas | FALTA |
-| busca pelo proxy acha a nota | FALTA |
-| rota de leitura: lê, não lista nem aceita gravação, `.md` igual | FALTA |
-| rota do cliente: grava com a versão lida; versão velha = conflito; relida, grava | FALTA |
-| instructions pelo proxy contra a instância direto (medida) | FALTA |
-| regra curta nas 4 ferramentas de gravação pelo proxy | FALTA |
-| kit de cliente lê o `AGENTS.md` pelo proxy | FALTA |
-| ponte do Desktop gerada fala com o MCP do banco (stdio, npm cache no ensaio) | FALTA |
-| `-Descer` para o proxy | FALTA |
+| o passo 05 sobe as três instâncias | PASSA |
+| o passo 10 sobe o proxy (três rotas; ponte e pasta conectada geradas) | PASSA |
+| sem token e com o de outra rota, 401 nas três rotas | PASSA (401, 401, 401 em cada) |
+| busca pelo proxy acha a nota | PASSA |
+| rota de leitura: lê, não lista nem aceita gravação, `.md` igual | PASSA (8 ferramentas, só leitura) |
+| rota do cliente: grava com a versão lida; versão velha = conflito; relida, grava | PASSA (3 casos) |
+| instructions pelo proxy contra a instância direto (medida) | MEDIDA: **o proxy não repassa** (2019 caracteres direto; 0 pelo `/banco/mcp`) |
+| regra curta nas 4 ferramentas de gravação pelo proxy | PASSA |
+| kit de cliente lê o `AGENTS.md` pelo proxy | PASSA |
+| ponte do Desktop gerada fala com o MCP do banco (stdio, npm cache no ensaio) | PASSA (12 ferramentas, com `write_note`) |
+| `-Descer` para o proxy; com `-Manter`, sobe de novo | PASSA, PASSA |
+| nenhum contêiner `hub-ensaio-22-*` sobrou (rodadas sem `-Manter` ou com falha) | PASSA |
+
+**O que o achado do `instructions` quer dizer.** O TBXark/mcp-proxy 1.1.0 não leva o `instructions` do servidor de
+trás ao cliente. Pelo proxy, o contrato não chega pelo MCP. Dois caminhos cobrem isso: o kit de cliente grava o
+contrato no global de cada harness (lido por `read_note` pelo proxy, PASSA); e a regra curta vai na descrição das 4
+ferramentas de gravação, que o proxy repassa (PASSA). Por isso o `--allow-all-mcp-server-instructions` do lançador do
+Copilot não traz nada pelo proxy hoje; fica, sem custo, para um proxy que repasse.
+
+**Memória** (medidor a cada 5 s, `etapas/logs/medidor-22.log`): pico de 715 MB livres às 09:41, com os dois pares, as
+três instâncias, a busca e o proxy de pé; o corte do corredor é 700. vmmemWSL até 2,25 GB. CouchDB com 384 MB por
+`docker update` (só no ensaio): 140 e 110 MiB depois da subida, 170 e 138 no fim.
+
+**Voltas antes da verde** (todas descidas e limpas):
+1. 08:14: o build do fork falhou; a worktree do fork estava sem o submódulo `lib/livesync-commonlib`. Iniciado.
+2. 08:21: sobra da 1ª volta. Com `-Manter`, o teste não descia nada ao falhar. Conserto c95a265: com `-Manter`, a
+   pilha só fica de pé se tudo passou. Achado junto: o passo 9 (`-Descer`) derrubava o proxy que os harnesses usam;
+   agora ele sobe de novo.
+3. 08:23: volume do CouchDB que sobrou da minha limpeza à mão (`docker rm -f` não leva volume).
+4. 08:26: CORTADA pelo corredor (613 MB livres) na indexação da busca, com os pares de pé. Consertos (maestro e
+   Vela): `wsl --shutdown` antes (`-Wsl` no corredor), a busca indexa antes dos pares (bfe6d6a), 384 MB por CouchDB
+   (806898d).
+5. 09:22: a busca indexou em 31 s, mas o teste lia "Indexing complete" só do stdout; a frase sai no stderr.
+   Conserto bae29bd (lê os dois, como o `12-busca/servidor.mjs`).
 
 ### Harnesses de verdade como cliente
 
-FALTA, depois do Docker verde.
+`HUB_HARNESS_REAL=1 node --test --test-concurrency=1 agents/code/test/ponta-a-ponta/22-cliente.test.mjs`, com a pilha
+de pé (`-Manter`). 2026-10-17 09:47-09:48. Evidência: `agents/code/test/ponta-a-ponta/evidencia-22/` (83d4361).
+
+| Harness | Modelo | Resultado |
+|---|---|---|
+| Claude Code | haiku | PASSA: `hub-busca` e `hub-banco` conectados; `search` e `read_note` pelo proxy; respondeu a nota marcada |
+| Copilot CLI | haiku | PASSA: os dois conectados; `hub-busca-search` e `hub-banco-read_note`; respondeu a nota marcada |
+| Codex | gpt-6-luna baixo (09:47) | FALHA por cota: "You've hit your usage limit ... try again at 12:15 PM". Roda de novo depois das 12h15 |
+
+**Login no ensaio** (aval de 2026-10-16): copiados `.claude/.credentials.json` e `.codex/auth.json` e os campos de
+login do `config.json` do Copilot para os HOMEs de ensaio em `%TEMP%`, às 12:47 UTC (09:47 local); apagados com a pasta
+ao fim. Hashes antes e depois em `evidencia-22/hashes-claude-codex-copilot.json`: todos iguais, salvo
+`~/.claude.json`, que as sessões abertas do Claude Code (os terminais do canvas) gravam o tempo todo; o ensaio usa
+`CLAUDE_CONFIG_DIR` e não o toca (o mesmo no 15). A evidência não tem token nem pasta do usuário (conferido por
+`grep`: só contadores de uso).
+
+**Teste da cota do gpt-6-astra** (regra nova: o astra liberado no Codex; o teste passa a usá-lo, 3894a42): um
+`codex exec -m gpt-6-astra` de uma palavra numa casa de ensaio, 10:20 local. Copiado `.codex/auth.json` às 10:20:50,
+apagado com a casa às 10:20:57; o hash do real ficou igual (`9e42496b5bd7...`). Deu o mesmo limite: o astra divide a
+cota com o luna. O Codex como cliente roda depois das 12h15.
 
 ## Não verificado
 

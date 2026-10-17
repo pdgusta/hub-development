@@ -1,0 +1,70 @@
+✔ o verificar-hub passa no hub de ensaio (8142.7955ms)
+✔ o verificar-hub recusa um CLAUDE.md dentro do hub (20970.7186ms)
+✔ o verificar-hub recusa um CLAUDE.md acima do hub (6396.0218ms)
+✔ o verificar-hub recusa AGENTS.md sem o bloco da cabeça (8887.3541ms)
+✔ o verificar-hub recusa a cabeça com mais de 2.000 caracteres e aceita a de 2.000 (12428.2671ms)
+✔ o verificar-hub avisa, sem recusar, outra pasta na raiz (19872.3866ms)
+✔ o hub de ensaio tem duas iniciativas com o núcleo, notas em pt-BR, um binário e .git próprio (26707.5422ms)
+✔ o montar recusa destino que já tem conteúdo (14514.4694ms)
+✔ o montar sem git no PATH nomeia o comando e mostra o erro do processo (1376.8973ms)
+✔ o montar com um comando git que falha nomeia o comando e mostra o stderr dele (1394.9085ms)
+✔ o verificar-hub recusa um CLAUDE.md em pasta com ponto, fora do .git (6999.0831ms)
+✔ o verificar-hub recusa hub sem .git próprio ou com .git falso (10047.2824ms)
+✔ o verificar-hub aceita uma worktree do hub (.git em arquivo) (12953.3465ms)
+✔ o verificador aceita a nota certa (5082.4259ms)
+✔ o verificador recusa a nota sem status, dizendo o campo (4936.0455ms)
+✔ o verificador recusa stage fora do ciclo do tipo (4150.4029ms)
+✔ o verificador completa só o dedutível, por troca de trecho (5765.8809ms)
+✔ o verificador não apaga uma edição feita entre a leitura e a gravação (7406.7279ms)
+✔ o verificador completa o título do log de mês novo pela ficha (4153.5404ms)
+✔ a nota do inbox sem frontmatter é completada; ao sair do inbox, vale o esquema do destino (3568.6752ms)
+✔ AGENTS.md, SKILL.md e pastas com ponto ficam intocados (3735.2979ms)
+✔ YAML inválido é devolvido sem gravar (3207.1821ms)
+✔ --checar valida o conteúdo proposto sem gravar, como o hook e o MCP vão chamar (4742.6526ms)
+✔ a nota arquivada vale pelo esquema de origem mais archived_at (3700.2194ms)
+✔ nota com fim de linha CRLF é completada e continua CRLF (3367.4045ms)
+✔ o verificar-hub recusa nota fora do esquema em qualquer lugar do hub (8521.328ms)
+✔ frontmatter em mapa flow que não dá para trocar por trecho é recusado sem gravar (6800.7998ms)
+✔ campos de várias linhas ficam como estavam quando outro campo é trocado (4054.1908ms)
+✔ cabeçalho aberto sem fechamento é YAML inválido, devolvido sem gravar (3903.5096ms)
+✔ caminho com ponto fica de fora também quando passado direto e no --checar (4832.1714ms)
+✔ comentário YAML junto ao campo trocado fica; comentário na mesma linha recusa sem gravar (3770.3132ms)
+✔ nota arquivada é completada pela ficha arquivada, não pela pasta ativa homônima (3573.3397ms)
+✔ nova iniciativa em clients/ nasce com o núcleo de seis arquivos válidos (5296.412ms)
+✔ nova iniciativa em initiatives/ nasce com o núcleo de seis arquivos válidos (4566.6162ms)
+✔ rodar a nova iniciativa de novo não duplica nem sobrescreve (5257.3975ms)
+✔ a nova iniciativa recusa valor fora do catálogo da ficha (5041.5158ms)
+✔ o kit do banco: PID do par, dispositivo que não confere e aceite do dispositivo (10135.0259ms)
+✔ o passo do MCP do banco: simulação, endereço e token, PID do par (14707.6374ms)
+✔ uma pergunta em pt-BR por palavra acha a nota esperada entre as 3 primeiras (33031.4181ms)
+✔ uma pergunta em pt-BR por paráfrase, sem palavra em comum com a nota, acha a nota entre as 3 primeiras (88.4243ms)
+✔ uma nota nova gravada no disco aparece sem reindexar, por palavra e por paráfrase; o tempo só é medido (5307.2556ms)
+✔ nada com ponto no caminho nem de pasta local: true aparece, nem o que chega com a busca ligada (5491.1868ms)
+✖ o relatório conta as notas indexadas e lista as recusadas por cabeçalho quebrado (895.9988ms)
+✔ pedido com Host estranho é recusado; o servidor só escuta em 127.0.0.1 (2054.868ms)
+✔ em inglês, no mesmo índice e sem dizer o idioma, a nota em inglês vem entre as 3 primeiras; o .pdf.md entra, o binário não (5453.0125ms)
+✔ uma rajada de 200 notas copiadas de uma vez termina toda indexada; o tempo só é medido (14266.7922ms)
+medidas do ticket 12:
+{
+  "quando": "2026-10-17T13:27:31.706Z",
+  "nota_nova_ms": 5283,
+  "rajada_200_ms": 14231,
+  "partidas": [
+    {
+      "pronta_ms": 32859,
+      "indexacao": "25s — 2 errors"
+    },
+    {
+      "pronta_ms": 2852,
+      "indexacao": "0s — 2 errors"
+    }
+  ],
+  "reaproveitadas": 258,
+  "reindexadas_pelo_consertar": 0
+}
+
+✖ a segunda partida reaproveita o índice: o mesmo banco, a busca pronta e nenhuma nota reindexada (20019.8047ms)
+✔ com -WhatIf, o kit diz o que faria e não grava nada (1120.5137ms)
+✔ o kit instala a versão fixa pelo package-lock, só no .local\busca do hub (37797.9599ms)
+✔ rodar de novo não muda nada (958.7438ms)
+✔ a busca sobe com a instalação do kit e responde (5660.8216ms)

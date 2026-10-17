@@ -10,7 +10,18 @@ arquivo. Depois `maestri list`. Caminhos relativos a `C:/Projetos/context-hub/.s
 - Respondo só ao construtor; ele leva o passa ao Rebite. Achado em ticket já juntado: gravo no parecer e o construtor
   leva ao maestro.
 
-## Nada em curso (pausa da janela quieta, ~11h25)
+## Nada em curso (~11h45). Pedidos recebidos e ainda não começados, nesta ordem:
+- **21 (Trilho)**: ramo ticket-21 HEAD 1c87f9b (com ticket-16 0332466), relatório `relatorio-21-arquivar-e-copia.md`.
+  Testes 21-* + 04, 05, 20, 07-kit-sem-docker 78/78; Docker 3ª rodada verde (`logs/trilho-21-docker-3.log`). Olhar o
+  Achado 3: arquivar move arquivo por arquivo quando o rename da pasta dá EPERM (fs.watch do sincronizador) e
+  devolve tudo se um editor segura um arquivo (sondar isso).
+- **22 (Brasa)**: ramo ticket-22 (worktree C:/context-hub-wt/ticket-22, ponta 83d4361, com integracao e98a891),
+  relatório `relatorio-22-proxy-e-kit-de-cliente.md`. Sem Docker 4/4; Docker 15 PASSA (`logs/22-docker.log`); Claude e
+  Copilot como cliente PASSA; Codex depois das 12h15. Achado medido: o proxy não repassa o `instructions`.
+- Repassar os dois ao Fielzinho quando a cota voltar (12h15). Rodar o detector do 29 nos dois.
+
+Também fechado depois do reinício: 08, as fatias 1 e 2 (514db7a, `logs/08-fatias-1-2.log`, 18 PASSA): as ressalvas 1 e 2 do
+fechamento saíram, e o 08 fica PASSA. O "passa" do 23 r3 foi reenviado ao Cinzel; o "passa" do 16 r2 chegou ao Trilho.
 
 ## Fila ao voltar
 1. **Codex depois das 12h15** (rodadas curtas só de evidência, quando os construtores pedirem):

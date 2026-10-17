@@ -432,3 +432,26 @@ node --test agents/code/test/05-frontmatter.test.mjs
 - 09:21 (18): rodada curta de evidência PASSA em 31afe63 (Fiel). Resta só o Codex depois das 12h15 (commit de evidência + rodada curta + aviso ao Rebite).
 - 09:33 (25): maestro: janela quieta depois do 21 do Trilho; a Brasa roda o 22 e a fatia 2 do 08; depois eu rodo a 1ª rodada real do 25 (corredor, fases 1-3). Só eu e a Brasa ficam. Esperar o aviso do maestro. 37 (Cinzel): respondi sobre o núcleo (nota pelo shell conta como mudada; aviso em 'Antes de terminar:'; avisados é por turno; falso positivo do sincronizador).
 - 09:39 (25): janela aberta. Brasa: 22 e fatia 2 do 08; depois eu. Não mandar mensagem a Rebite, Fiel, Trilho, Cinzel, Fielzinho. Ao fim: tabela de pico por fase ao maestro.
+- 09:53 (25): Brasa passou a vez; corredor lançado PID 250324 (fases 1-3, claude+copilot). Status logs/25-corredor.status, prova logs/25-prova.log.
+- 09:58 (25): rodada 1 (fases 1-3): fase 1 e 3 passam; fase 2 falhou no Copilot por defeito do teste (o Claude já tinha trocado a linha de tasks.md; o pedido citava o texto antigo). Memória folgada (livre mínimo 1831 MB, na busca). Log e resumo guardados em logs/25-prova-rodada-1.log e logs/25-resumo-rodada-1.md. Conserto 627f1a8. Rodada 2 (fases 2,3) lançada PID 251604.
+- 10:02 (25): rodada 2 verde (fases 2,3). Evidência fc678b0; relatório com tabela; ticket comentado. Tabela ao maestro. Próximo: Codex (18 e 25) depois das 12h15 pela fila.
+
+## PRÓXIMO (gravado 2026-10-17 ~10h10, antes do reinício do Maestri)
+
+- **25**: 1ª rodada real verde nas fases 1-3 com Claude e Copilot (rodada 1 09:53: busca e banco reiniciado passam,
+  pares caiu por defeito do teste, conserto 627f1a8; rodada 2 09:58: fases 2-3 2/2). Evidência fc678b0 no ramo ticket-25
+  (worktree C:/context-hub-wt/ticket-25, HEAD fc678b0). Relatório etapas/relatorio-25-hub-inteiro.md com a tabela de
+  pico (já mandada ao maestro). Ticket comentado.
+  - Falta: **Codex depois das 12h15** pela fila: Start-Process pwsh -WindowStyle Hidden -ArgumentList '-NoProfile',
+    '-File','C:/context-hub-wt/ticket-25/agents/code/test/ponta-a-ponta/25/corredor.ps1','-Fases','1,2,3',
+    '-Harnesses','codex' (atenção: a evidência-25 é sobrescrita; copiar resumo/hashes antes, como fiz com
+    resumo-rodada-1.md). Fases 4-7 quando 16/17, 18, 21, 22/24 entrarem.
+- **18**: tudo passa; falta só o **Codex depois das 12h15** (comando na seção "PRÓXIMO 09:20"), commit só de evidência,
+  rodada curta do Fiel, avisar o Rebite.
+- **17**: passa; junta depois do 16 (merge integracao no ticket-17, teste sobre o estado.json real, rodada nova do Fiel).
+- **37 (Cinzel)**: respondi as costuras do núcleo (nota/passagem pelo shell conta como mudada no conferirRetomada;
+  aviso em "Antes de terminar:"; avisados é por turno; falso positivo do sincronizador). Nada meu a fazer.
+- Ordem do Codex às 12h15 (fila item 5): Cinzel (11, depois 24) e eu (18, depois 25), um de cada vez; conferir a fila.
+- 10:11: Maestri reiniciado; contexto mantido. Nada novo em integracao (e98a891; 16, 17, 18, 21, 22, 24 claimed). Fases 4-7 esperam as junções. 12h15: Codex do 18 e do 25 pela fila (o 25 ainda não está na fila: pedido ao maestro).
+- 10:19: regra nova do maestro: no Codex de verdade, o gpt-6-astra está liberado à vontade (ver regras). Em curso: fases 4-7 do 25 contra 16/17/18/21/22 (só leitura); 16 juntado em integracao fce0529 (ainda não resolvido). Ponte pares.ps1 ganhou conflito com base, manutencao, vigia, estado-mcp, copia (sem commit).
+- 10:27 (25): 851dcdc: fases 4-7 escritas (puladas até as peças entrarem); ponte com conflito/manutencao/vigia/estado-mcp/copia; 25/cliente.ps1 (pilha do 22); 25-pares-sem-docker 2/2. Relatório atualizado. Próximo: rodada real delas quando 16+17, 18, 21, 22 entrarem (merge integracao no ticket-25); 12h15 Codex do 18 e do 25.

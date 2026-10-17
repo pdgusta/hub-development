@@ -208,3 +208,10 @@ Fielzinho; novos pedidos). Sem trava nem Docker meu; sondas apagadas.
 ## Salvo — 2026-10-17 ~11h25 (janela quieta)
 Nada em curso. Retomada completa em etapas/retomada-Fiel.md (fila: Codex de 11, 24 e 18 depois das 12h15; leituras do
 Fielzinho; novos pedidos). Sem trava nem Docker meu; sondas e temporários apagados.
+Após reinício do Maestri (~11h40): 08 fatias 1+2 conferidas (18 PASSA, 514db7a) → ressalvas 1 e 2 do fechamento
+retiradas. 18 curta e evidência já fechadas antes. Reenvio do passa do 23 r3 ao Cinzel (não tinha chegado).
+Próximo: revisão do 21 (Trilho, Docker da 3ª rodada passou) — depois do /clear.
+21 (Trilho, 1c87f9b) e 22 (Brasa, 83d4361) pedidos; não começados. Salvo para limpar (~11h45); retomada atualizada.
+Sat, Oct 17, 2026 10:15:54 AM 21 r1 (Trilho, 1c87f9b): retomado após /clear; revisão do Fiel em curso (Fielzinho sem cota até 12h15).
+10:16 37 (Cinzel, c16e53f sobre 18 31afe63): pedido recebido; na fila depois do 21 e do 22.
+10:25 21 r1: VOLTA (Fiel sozinho), 1 guarda dentro-do-hub com outro disco (arquivar.mjs:39); 2 Docker não mostra sincronizador vivo após arquivar (Assertion fs-event.c no log; abortar reproduzido com TEMP curto). Parecer etapas/parecer-21-Trilho.md. Próximo: 22 (Brasa), depois 37 (Cinzel).

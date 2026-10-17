@@ -1,0 +1,27 @@
+✔ tudo em ordem: o estado é ok, guarda os itens dos outros e não notifica (21174.4155ms)
+✔ conflito de texto: divergência citando a nota pelo caminho decifrado, não pelo id cifrado (16630.5669ms)
+✔ replicação parada há mais de 15 min com o outro par ligado: divergência; antes dos 15 min, não (21188.773ms)
+✔ outro par sem resposta: informa com o motivo, nunca ok, e não suprime a replicação parada (29492.596ms)
+✔ notificação só na passada que piora: igual não repete; resolvido não notifica; voltou, notifica de novo (27590.7667ms)
+✔ item copia-diaria gravado por outro dono: informa, com notificação na passada seguinte (17987.8224ms)
+✔ binário descartado pela resolução do CLI: divergência pelo caminho em claro, até o Gustavo olhar (14790.2658ms)
+✔ sincronizador parado: informa; o laço o religou: informa o que o laço fez, uma vez (22674.8468ms)
+✔ arquivo acima de 200 MiB: divergência com o caminho; o de 200 e o que tem ponto ficam de fora (19493.0735ms)
+✔ gerador a cada passada: pasta local nova muda a lista, religa o sincronizador e avisa; igual, nada (31325.2373ms)
+✔ gerador que recusa (index.md ilegível): informa com o caminho, sem religar (15834.3453ms)
+✔ Config Doctor pendente (regra do plugin mais nova que a processada): informa; em dia ou sem plugin, nada (49646.3352ms)
+✔ olhei num caminho sem binário descartado: diz, sai 1 (14340.9878ms)
+✔ recuperar sem versão perdida: diz que não há o que recuperar, sai 1 e não grava nada (15230.8946ms)
+✔ recuperar acha a folha apagada com o corpo cifrado, e não o toco de um DELETE (35684.5255ms)
+✔ recuperar caminho que o banco não tem: diz, sai 1 (8303.3009ms)
+✔ CouchDB que recusa (401): a replicação fica "não conferida" com o código, e não vira parada (32150.0879ms)
+✔ estado.json: quem grava espera a trava do outro dono e não perde o item que ele gravou (731.3913ms)
+✔ estado.json: trava velha (dono morto) é tomada, e o item é gravado (297.3683ms)
+ℹ tests 19
+ℹ suites 0
+ℹ pass 19
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 418377.0071
