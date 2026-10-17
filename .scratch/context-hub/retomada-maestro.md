@@ -150,6 +150,9 @@ C:\context-hub log --oneline -3 integracao`, `etapas/trava-pesada.md` e `etapas/
 - **Fiel** (revisor): revisando 21 e 22; limpo ~10h12.
 - **Fielzinho** (Codex): sem cota até 12h15; leituras atrasadas na fila do Fiel.
 - **Rebite** (integrador): suíte do 16 deu vermelho, desfeito; próximo: 22, depois 16 consertado, 17, etc.
+- **Lume** (documentador técnico, Opus 5.5, desde ~11h55): documenta tudo em `agents/code/docs/` (ramo `docs`); plano
+  em `etapas/documentacao-tecnica.md`, estado em `etapas/estado-documentacao.md`; o Rebite avisa cada junção e junta o
+  ramo `docs` quando ele pede (só 12-busca e verificador).
 - **Portal**: parado.
 
 ## Placar (2026-10-17 10:50)
@@ -305,3 +308,4 @@ nuvem.
 - 11:41: 16 e 21 resolvidos (253/0). Resolvidos: 29 de 38. Trilho com a trava (pesados do 38). Vela traz o 16 ao 17. id do Sol: gpt-6.1-sol (nas regras); 38 troca o modelo dos ponta a ponta 14/19/20/27.
 - 11:41: ronda; Trilho com a trava (pesados do 38 desde 11:40); todos ≤38%; 3,2 GB livres.
 - 11:54: 17 com o 16 (0eed25d, b6ace6b), rodada nova no Fiel. Ticket 39 (vigia grava mensagem limpa) ao Trilho depois do 38.
+- 12:05: Gustavo pediu um agente só de documentação técnica: Lume recrutado (papel novo), plano em etapas/documentacao-tecnica.md, junção dos docs em juntar-tickets.md; 17 já juntado (e7203b4).

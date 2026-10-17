@@ -460,3 +460,4 @@ node --test agents/code/test/05-frontmatter.test.mjs
 - 11:39: regra: Codex de verdade nos testes com gpt-6.1-sol (nome exato do ~/.codex/models_cache.json; esforço low mantido); gpt-6-astra para revisão. Trocado em ticket-18 457896d (18-retomada) e ticket-25 63ccefc (harnesses.mjs). O 17 (ponta-a-ponta/17) ainda diz gpt-6-luna: trocar se rodar o Codex real dele de novo.
 - 11:52 (17): integracao fdd3760 juntada (0eed25d); b6ace6b testes sobre o estado real + não verificável + sem códigos de cor; 19/19, vizinhos 41/41. Rodada nova pedida ao Fiel; NÃO mexer na worktree ticket-17. Depois do passa: avisar o Rebite com a ponta.
 - 11:52: achado do item sincronizador com cores virou o ticket 39 (Trilho, depois do 38). A tela do 17 tira as cores de qualquer jeito.
+- 11:58 (17): rodada nova PASSA em b6ace6b (ressalvas: semCor só SGR; parse falho vira 'vigia não rodou'). Rebite avisado.

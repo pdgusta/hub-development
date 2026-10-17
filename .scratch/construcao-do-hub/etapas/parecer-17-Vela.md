@@ -44,3 +44,20 @@ Veredito: **PASSA** (Fiel sozinho: Fielzinho sem cota até 12h15; leitura dele p
 - `17-vigia-tela.test.mjs`: 16/16 (Fiel), com o caso novo sobre o estado da própria `lib/vigia.mjs`. A reprodução do
   Fielzinho agora dá "a vigia ainda não rodou" (não confirma mais o defeito). Árvore limpa.
 - Ressalvas da rodada 1 seguem; a 1 (nao-verificavel) vai para o teste sobre o estado real do 16. Junção só com o 16.
+
+## Rodada nova de código (junção do 16) — 2026-10-17 ~12h15 (Fiel sozinho; leitura do Fielzinho pendente)
+
+Ramo `ticket-17`, HEAD b6ace6b (merge da `integracao` fdd3760 em 0eed25d, sem conflito; o ramo contém a ponta).
+**Veredito: PASSA**; as ressalvas 1 e 2 da r1 saíram.
+
+- Ressalva 1 consertada: `nao-verificavel` diz "não dá para conferir a outra máquina (<motivo>)" e, na barra, "outra
+  máquina não verificável"; "sem resposta" segue como antes. Ressalva 2: três testes sobre o `estado.json` que o
+  `vigia.mjs passada` grava (dublês do 16).
+- Cores: `semCor` tira `\u001b[...m` do texto do JSON antes do parse (arquivo e MCP).
+- Fiel: `17-*`, `16-vigia`, `27-*` e o detector do 29: 81/81; `git status` limpo; sem sobra no TEMP.
+
+Ressalvas (não seguram):
+- `semCor` só tira SGR (`ESC[...m`); outra sequência (OSC, cursor) passa. E se o texto não parsear depois da troca,
+  a tela diz "a vigia não rodou" (arquivo) ou "o MCP não respondeu" (MCP), o que engana. Caso raro.
+- O texto colorido nasce no item `sincronizador` do 16: o certo é limpar lá (a Vela levou ao maestro).
+- A ressalva 3 da r1 (tela de verdade e toast real) segue.

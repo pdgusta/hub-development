@@ -30,12 +30,18 @@ Trilho, 2026-10-17. Ramo `ticket-38`, worktree `C:/context-hub-wt/ticket-38`, de
 
 ## Testes
 
-- `36-pasta-de-ensaio` 10/10; `38-ensaio-banco` 2/2; `07-kit-sem-docker` e `09-mcp-banco-sem-docker` verdes.
+- Leves (`logs/trilho-38-leves.log`): 36-pasta-de-ensaio, 38-ensaio-banco, 07-kit-sem-docker, 09-mcp-banco-sem-docker, 28-pastas-locais-sem-docker e o gerador do 06 (usam o ensaio.psm1): 23/23.
 - Falha forçada dos sem Docker: cópias dos dois testes com `timeout: 2500` (o pwsh morre no meio). Falharam, e nenhuma
   pasta `hub-ensaio-07-sem-docker-*`/`hub-ensaio-09sd-*` sobrou.
 - `16-vigia` 19/19 (`logs/trilho-38-16-vigia.log`). Falha forçada: cópia com o prefixo `hub-ensaio-16f-` e um teste a
   mais que monta um par (daemon falso vivo) e falha: nenhuma pasta sobrou.
-- Pesados (com a trava): PREENCHER.
+- Pesados (com a trava, 11:40 a 11:55): `12-busca`, `12-kit-busca`, `13-gemini` 17/17 (`logs/trilho-38-busca.log`); nenhuma
+  pasta nova deles em `%TEMP%` (só as antigas, de 00:01 a 04:14 de 17/10).
+- Falha forçada dos pesados (`logs/trilho-38-forcada.log`): cópias com prefixo próprio (`12f`, `12kf`, `13f`, `12pf`,
+  `15pf`) e um teste a mais que falha; no 12-kit com o `iniciar.ps1` vivo, no 13 com a busca de pé. Nos ponta a ponta,
+  `HUB_HARNESS_REAL=1 HARNESSES=nada`: a busca sobe e o teste cai em `preparar[harness] is not a function`, antes de
+  copiar login (`copiado: null`). Os cinco falharam, e nenhuma pasta sobrou. Os `hashes-nada.json` gravados pelo `after`
+  foram apagados.
 
 ## Fora, e por quê
 
@@ -45,7 +51,7 @@ Trilho, 2026-10-17. Ramo `ticket-38`, worktree `C:/context-hub-wt/ticket-38`, de
   `MODELO_CODEX = 'gpt-6.1-sol'` em `agents/code/test/harness-real.mjs`, usada nos ponta a ponta 12, 14, 15, 19, 20 e
   27 e na prova 03 (antes `gpt-6-luna`). f61906d. O 22-cliente segue no `gpt-6-astra` (da Brasa, não pedido aqui); o
   17 e o 18 ficam com a Vela. Não rodado com o Codex no 38; sem a variável, os oito aparecem pulados (8/8).
-- **17**: ainda não juntado; a troca fica para depois da junção dele (comentário no ticket).
+- **17**: juntado durante o 38 (merge 7c87301) já com o `pastaDeEnsaio` (da Vela); nada a trocar. Os dublês dele não seguram pasta.
 
 ## Armadilhas
 

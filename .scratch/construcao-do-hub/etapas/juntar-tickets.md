@@ -39,6 +39,14 @@ pedir uma junção.
 5. **Registre** uma linha em `etapas/registro-de-juncoes.md` (data, hora, ticket, hash, testes).
 6. **Avise**: `maestri ask "Claude Code" "Integrador: ticket NN juntado (<hash>), testes <resultado>; ressalvas: <...>"`.
    Depois avise os outros construtores ativos (`maestri list`) que `integracao` andou para `<hash>`, numa linha.
+   Avise também o documentador **Lume**, numa linha: `maestri ask "Lume" "ticket NN juntado, <hash>"` (sem esperar).
+
+## Junção da documentação (desde 2026-10-17)
+
+O Lume documenta em `agents/code/docs/`, no ramo `docs` (`C:\context-hub-wt\docs`). Quando ele pedir: confira que
+`git diff integracao docs --stat` só toca `agents/code/docs/`; junte com `--no-ff` ("Junta documentação: <páginas>");
+rode só o `12-busca.test.mjs` (a busca indexa o repositório) e o verificador de frontmatter; sem suíte inteira, sem
+revisão do Fiel. Registre em `registro-de-juncoes.md`. Plano inteiro: `documentacao-tecnica.md`.
 
 ## O fork do MCP do banco (desde 2026-10-17)
 

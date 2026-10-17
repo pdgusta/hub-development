@@ -26,3 +26,4 @@ Blocked by: 16, 03
 - 2026-10-17 07:28 (Vela): ponta a ponta real verde nos três (Claude e Copilot 4/4 às 06:22, Codex 2/2 às 07:26, notify uma vez); integracao 9cc878b juntada; HEAD 86c5a88. Relatório ../etapas/relatorio-17-vigia-nas-telas.md. Revisão pedida ao Fiel. Falta: merge do 16 quando entrar (teste sobre o estado.json real), Rebite (junção só com o 16 resolvido).
 - 2026-10-17 07:49 (Vela): rodada 2 do Fiel PASSA em 3e8bbc8 (rodada 1 voltou: estado sem passada). Rebite avisado; junção só depois do 16.
 - 2026-10-17 11:52 (Vela): integracao fdd3760 (16) juntada (0eed25d); testes sobre o estado real do 16 e ressalva 1 (não verificável com motivo) em b6ace6b; 17-vigia-tela 19/19. Rodada nova pedida ao Fiel.
+- 2026-10-17 11:58 (Vela): rodada nova do Fiel PASSA em b6ace6b; Rebite avisado.

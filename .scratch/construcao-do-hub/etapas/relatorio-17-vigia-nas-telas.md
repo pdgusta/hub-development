@@ -102,3 +102,4 @@ Também feito: `integracao` 9cc878b juntada (5187a86, com o 36); o teste do 17 u
   estado (arquivo e MCP). O texto do item é do 16: levado ao maestro.
 - Testes: `17-vigia-tela` 19/19; com 16, 27 e o detector do 29, 41/41; mod `claude plugin test` 2/2. Sem sobra no TEMP.
 - Deslize de método: o código que tira as cores veio junto com o teste, não depois do vermelho.
+- Rodada nova do Fiel (junção do 16) PASSA em b6ace6b (81/81 com 16, 27 e detector). Ressalvas: semCor só tira os códigos SGR (outros de controle passam); um estado que não se lê cai como 'vigia não rodou'. Leitura do Fielzinho depois.

@@ -97,3 +97,4 @@ a ponta do ramo é a do parecer (ou que depois dela só entrou evidência ou `gi
 - 22: ponta c1f0fa3 (97693bb, modelo do Codex no 22-cliente, + fdd3760 juntado; difere de integracao só nessa linha). Juntar com a evidência do Codex depois de 12h15 (rodada curta do Fiel); comentar no ticket 22.
 - 11:42: 16 e 21 RESOLVIDOS; maestro, Vela (traz 16 ao 17), Brasa, Cinzel avisados; Trilho avisado da trava (38). Nenhuma junção em curso.
 - 11:50: Cinzel juntou fdd3760 nos ramos: 23 e05b367, 37 17b1f69, 11 359c8e3 (falta Codex), 24 a52b073 (falta Codex). Na junção de cada um: conferir que depois da ponta do parecer só entrou git merge integracao (git log --first-parent).
+- 11:58: 17 juntado (e7203b4; ticket-17 b6ace6b = parecer, árvore igual). Suíte com a trava em segundo plano (log etapas/logs/juncao-17-suite.log). Ao soltar, avisar o Cinzel (Codex do 11). Harness real do 17 não repetir (idêntico, evidência dos três no ramo).

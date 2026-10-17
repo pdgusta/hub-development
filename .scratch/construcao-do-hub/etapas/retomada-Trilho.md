@@ -8,6 +8,7 @@ construtores: Brasa, Vela, Cinzel. Sem trava minha; nenhum contêiner nem pasta 
 
 ## Agora (11:40): ticket 38 (ajudante pasta-de-ensaio nos testes que faltaram)
 - Worktree C:/context-hub-wt/ticket-38, ramo ticket-38, de integracao 4a47576. Status do ticket: claimed.
+- 39: worktree C:/context-hub-wt/ticket-39, ramo ticket-39, de integracao e7203b4 (claimed).
 - Plano: (1) pasta-de-ensaio.mjs ganha antesDeApagar(fn) (para processos/dublês antes do rmSync), com caso novo no
   36-pasta-de-ensaio.test.mjs; (2) 12-busca, 12-kit-busca, 13-gemini, ponta-a-ponta 12 e 15 usam hubDeEnsaio/antesDeApagar;
   (3) PS: New-EnsaioBanco apaga a raiz se cair no meio; Remove-EnsaioBanco apaga a raiz mesmo se o Uninstall lançar;
@@ -17,7 +18,7 @@ construtores: Brasa, Vela, Cinzel. Sem trava minha; nenhum contêiner nem pasta 
   ponta a ponta 12 e 15 pelo ajudante; c0bcc5e ensaio.psm1 (New/Remove-EnsaioBanco apagam a raiz quando caem; teste novo
   38-ensaio-banco 2/2), 08/09/10 limpeza garantida, sem-Docker com -Pasta do node (07 e 09 sem Docker verdes; pwsh morto
   no meio: sem sobra). O 09 sem Docker quebra se o caminho crescer (mensagem de recusa quebra de linha): prefixo curto 09sd.
-- 16-vigia trocado (e316032, 19/19, falha forçada sem sobra). Falta: na fila pesada (1d, depois da suíte do Rebite; ele avisa; ao soltar avisar o Cinzel se passou de 12h15) rodar 12-busca, 12-kit-busca, 13-gemini verdes + falha forçada (cópia zz-forcada com
+- 38: Fiel PASSA (39/39); espera o Fielzinho (12h15) na ponta 7c87301 (merge do 17), depois Rebite. Agora: ticket 39 (vigia grava mensagem limpa no estado.json; achado da Vela no 17).
   teste que lança, --test-name-pattern), ponta a ponta 12/15 com HUB_HARNESS_REAL=1 HARNESSES=nada (falha antes do login;
   apagar evidencia hashes-nada.json depois). Conferir só os prefixos meus em %TEMP% (antigos: 12k-HTMh3h, 12k-WVNlmd,
   12-Uz6cAf, 12-vS42Wo, 13-NCcZnS). 16 e 17: trocar depois de juntados. Relatório etapas/relatorio-38-...md; revisor Fiel.

@@ -1,7 +1,7 @@
 # 39: A vigia grava a mensagem limpa no estado
 
 Type: task
-Status: ready-for-agent
+Status: claimed
 Etapa: conserto do 16 (fora da sequência)
 Blocked by: 16
 

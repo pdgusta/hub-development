@@ -1,1 +1,1 @@
-- Trilho (construtor), 2026-10-17 11:40: 38, 12-busca + 12-kit-busca + 13-gemini e falhas forçadas (ponta a ponta 12/15 sem login), em C:/context-hub-wt/ticket-38, ~20 min. Apago ao fim.
+- Rebite (integrador), 2026-10-17 11:59: suíte do hub do 17 em C:/context-hub-wt/integracao (e7203b4), --test-concurrency=1, ~20 min. Apago ao fim e aviso o Cinzel (Codex do 11).

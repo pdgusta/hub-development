@@ -65,3 +65,38 @@ test at agents\code\test\zz-f13.test.mjs:119:1
 ▶ ticket 12: a busca do hub pelos três harnesses de verdade
   ✖ nada: chama a busca do hub e devolve o caminho da nota nova, por palavra e por sentido (4.0271ms)
 ✖ ticket 12: a busca do hub pelos três harnesses de verdade (61365.6507ms)
+▶ ticket 15: o aviso de leitura nos três harnesses de verdade
+  ✖ nada: "busque antes", "leia o trecho", calado no trecho e uma vez por arquivo, sem recusa (6.3313ms)
+✖ ticket 15: o aviso de leitura nos três harnesses de verdade (180473.3022ms)
+ℹ tests 2
+ℹ suites 2
+ℹ pass 0
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 258154.7264
+
+✖ failing tests:
+
+test at agents\code\test\ponta-a-ponta\zz-f12.test.mjs:173:5
+✖ nada: chama a busca do hub e devolve o caminho da nota nova, por palavra e por sentido (4.0271ms)
+  TypeError: preparar[harness] is not a function
+      at TestContext.<anonymous> (file:///C:/context-hub-wt/ticket-38/agents/code/test/ponta-a-ponta/zz-f12.test.mjs:178:40)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Promise.all (index 0)
+      at async Suite.run (node:internal/test_runner/test:1869:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3)
+
+test at agents\code\test\ponta-a-ponta\zz-f15.test.mjs:168:5
+✖ nada: "busque antes", "leia o trecho", calado no trecho e uma vez por arquivo, sem recusa (6.3313ms)
+  TypeError: preparar[harness] is not a function
+      at TestContext.<anonymous> (file:///C:/context-hub-wt/ticket-38/agents/code/test/ponta-a-ponta/zz-f15.test.mjs:174:46)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Promise.all (index 0)
+      at async Suite.run (node:internal/test_runner/test:1869:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3)
