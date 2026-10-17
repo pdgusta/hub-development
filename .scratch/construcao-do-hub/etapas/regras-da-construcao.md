@@ -39,7 +39,8 @@ Valem para todo construtor e revisor das etapas. Plano decidido: `revisao/plano/
   `%USERPROFILE%\.claude\.credentials.json` em `CLAUDE_CONFIG_DIR`; Codex, `%USERPROFILE%\.codex\auth.json` em
   `CODEX_HOME`; Copilot, só os campos de login (`lastLoggedInUser`, `loggedInUsers`) no `config.json` do `COPILOT_HOME`
   (o token fica no cofre do Windows; não copie). Apague ao fim de cada rodada; confira as pastas reais por hash antes e
-  depois; modelos baratos (haiku no Claude e no Copilot; no Codex, o gpt-6-astra está liberado à vontade, Gustavo 2026-10-17 ~10h20); uma sessão por harness; registre
+  depois; modelos baratos (haiku no Claude e no Copilot; no Codex, o **GPT 6.1 Sol** para os testes e tarefas menores; o gpt-6-astra fica para revisão e o que exige
+  inteligência, Gustavo 2026-10-17 ~11h35; confira o nome exato do modelo na lista do Codex); uma sessão por harness; registre
   cada uso no relatório (o que copiou, quando apagou, os hashes).
 - Contêineres de ensaio (Docker): só em `127.0.0.1`, nome começando por `hub-ensaio-`, apagados ao fim da etapa.
 - Processo longo: em segundo plano, com registro em arquivo; nunca `taskkill` por nome (só o PID que você abriu).
