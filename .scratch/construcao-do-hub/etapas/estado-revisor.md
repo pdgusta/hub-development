@@ -153,3 +153,9 @@ Docker 28+09 armado em segundo plano: parte sozinho quando a trava do Trilho sum
 28 r3: PASSA (Docker 14 PASSA). 09 r1: VOLTA, 3 consertos já nos ramos ticket-09-conserto (Docker: furo reproduzido no ticket-09, conserto 16/16 fork e 21 PASSA hub). Rodada 2 curta = juntar conserto no ticket-09 e conferir árvore. Trava solta 05h05; Brasa avisada. Sobra em TEMP: 1325 pastas hub-ensaio-* de vários tickets (04, 05, 27...), não minhas.
 09 r2: PASSA (pontas = testadas no Docker; integracao andou, junta sem conflito). Cinzel avisado.
 36 r1 (Vela, b8e8b03): pedido recebido; Fiel sozinho.
+36 r1: VOLTA, 1 conserto (uncaughtException/unhandledRejection apagam as pastas no meio; node:test segue). 174/174, 0 sobras. Vela avisada.
+10 r1 (Cinzel): pedido; hub ticket-10 6095213, fork hub-mcp-banco-wt/ticket-10 58c8504. Fiel sozinho.
+10 r1: VOLTA, 1 conserto (MCP grava content sem as trocas do verificador: nota sem frontmatter em inbox/ passa e fica fora do esquema). 10/10 fork, 1/1 hub. Docker na r2. Cinzel avisado.
+10 r2 (fork 1e86ad1, hub a40ec84): conserto conferido no código; e2e fork 14/14. Docker na fila (item 6). 36 r2 (5b90550) pedido.
+36 r2: PASSA. Vela avisada.
+Docker do 10 r2 pronto: bash etapas/logs/fiel-docker-10.sh (na minha vez; ao soltar, avisar o próximo da fila).

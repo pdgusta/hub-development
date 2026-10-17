@@ -61,3 +61,14 @@ Todos com TEMP isolado (`$TEMP/v36`, caminho curto: no scratchpad, o git falha c
 - Contraprova na `integracao` 9453e3e, mesma falha forçada: o 14 e o 15 deixam uma pasta cada (queda no
   carregamento); o 27-pastas não deixa (a falha é dentro dos testes).
 - Suíte inteira: é do Rebite, na junção.
+
+## Rodada 1 do Fiel: volta (1 conserto)
+
+- A limpeza em `uncaughtException`/`unhandledRejection` apagava as pastas no meio da rodada: dentro de um teste, o
+  `node:test` só marca aquele teste como falho e segue. Conserto: nesses dois eventos, limpar só enquanto nenhum teste
+  começou (queda no carregamento). A marca é um `beforeEach` da raiz; o `before` da raiz não serve, porque roda também
+  quando o arquivo cai no carregamento (visto no teste: a queda voltou a deixar pasta).
+- Testes novos em `36-pasta-de-ensaio.test.mjs`: exceção solta e rejeição solta num teste, e o teste seguinte ainda acha
+  a pasta. 8/8; a queda no carregamento continua limpando.
+- Limite: uma exceção solta num `before` da raiz, antes do primeiro teste, ainda limpa (os testes daquele arquivo já
+  não rodam direito nesse caso).

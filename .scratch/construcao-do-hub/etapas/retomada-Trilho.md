@@ -13,7 +13,7 @@ simples; suíte inteira só na junção, pelo Rebite; fila do pesado em `etapas/
   2. no .ps1, `Invoke-RestMethod` devolve o array como um item: `Get-Folhas` desenrola.
 - Próximo: 4ª rodada do Docker do 16 (~5 min): pedi lugar ao maestro (fila firme: Cinzel, Rebite, Brasa, eu no 15).
   Esperado verde; aí relatório `etapas/relatorio-16-vigia.md` (citar: daemon apaga de fato no Docker, a forma ofuscada).
-- 15: `git merge integracao` feito (3c8f8a6); Codex depois das 06:58, item 4 da fila.
+- integracao 9453e3e (28 e 09) junta nos dois: 16 em aa70e98 (9/9), 15 em 4475685. Codex do 15 depois das 06:58, item 4.
 
 ## Fechados nesta sessão
 12 (rodada 3, só a search nos três harnesses), 13, 33 e 35: juntados e resolvidos (integracao 33b817a).

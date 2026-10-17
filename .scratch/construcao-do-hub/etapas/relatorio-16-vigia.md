@@ -4,7 +4,7 @@ Rascunho de 2026-10-17 ~06h. Falta a 4ª rodada do Docker (fila, item 4, a parti
 
 ## Estado
 
-- Ramo `ticket-16` (HEAD 67e1f04), worktree `C:\context-hub-wt\ticket-16`, de `integracao` 33b817a.
+- Ramo `ticket-16` (HEAD aa70e98, com integracao 9453e3e), worktree `C:\context-hub-wt\ticket-16`, de `integracao` 33b817a.
 - Começou antes dos bloqueios (maestro, 04:23): os cenários do 08 e o `estado_do_hub` real do 10 entram quando eles
   forem juntados. **Junção só com 08 e 10 resolvidos.**
 - Conserto do 12 em commit à parte (pedido do maestro), b4e7272: `agents/skills/busca/SKILL.md` não cita mais a

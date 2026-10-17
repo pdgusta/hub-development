@@ -1,1 +1,1 @@
-- Cinzel (construtor), 2026-10-17 06:12: ticket 10, Docker de 10 (hub-ensaio-<NN>-a/b, 5996/5997), worktree ticket-10; corredor PID 229544. Apago ao fim.
+- Brasa (construtora), 2026-10-17 06:24: ticket 08, fatias 4,5,6,7,07 do 08-banco-limites.test.ps1 (Docker), uma por vez, worktree ticket-08; corredor destacado PID 230324. Apago ao fim.

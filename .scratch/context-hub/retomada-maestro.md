@@ -170,3 +170,6 @@ nuvem.
 - 05:57: 09 de novo com três instâncias e cifra: 21 PASSA. 10: 30 PASSA, 4 falhas só do teste (CRLF no AGENTS.md do ensaio; conflito fundido pelo LiveSync), consertado 6095213; Cinzel entra depois do Rebite (~3 min). 16: erro do teste com caminho ofuscado, consertado 67e1f04; 4ª rodada Docker junto do Codex do 15 após 06:58.
 - 06:09: 36 em revisão no Fiel (b8e8b03); regra nova: testes novos usam agents/code/test/pasta-de-ensaio.mjs. Vela na fila (real do 17, Claude e Copilot, entre fatias da Brasa). Rebite com a trava desde 05:55.
 - 06:15: 28 e 09 resolvidos (9453e3e), suíte 202/0. Fork ganha ramo integracao (Rebite cria de d2a5a40; regra em juntar-tickets.md). Cinzel com a trava (10) desde 06:12.
+- 06:13: fork com ramo integracao (d2a5a40) e worktree C:/Projetos/hub-mcp-banco-wt/integracao; npm install com a trava na junção do 10.
+- 06:19: ronda; Brasa com a trava (fatias 3-7 do 08 desde 06:16), 41%: salvar ao fim das fatias; 1,8 GB livres; resto ≤31%.
+- 06:28: 36 juntado (85efe3b), suíte na fila depois da Brasa.
