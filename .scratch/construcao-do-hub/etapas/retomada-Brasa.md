@@ -44,7 +44,9 @@ Se o Fiel devolver o 07: pausar o 29 e voltar ao 07 primeiro (maestro).
   Aval do maestro (~23h05): fila com memória conferida (script `.local/fila-docker.ps1`, registro
   `.local/fila-docker.log`; abaixo de 3 GB espera 3 min). 07 VERDE em 6911857 (24 PASSA, `.local/07-r2e.log`).
   A fila foi parada de novo pelo sistema (~23h40) enquanto esperava memória para a prova 01; nada a limpar.
-  Falta: aval de novo para provas 01/02 e teste do 06; merge integracao c5b946a (ticket 12); suíte comum; relatório; Fiel.
+  (00:18) Fila de novo, piso 2 GB (aval do maestro). TRAVA `etapas/trava-pesada.md` é MINHA: apagar ao fim da fila,
+  também se ela cair. Regra nova: trabalho pesado só com a trava.
+  Falta: provas 01/02 e teste do 06 (logs `.local/*-r2f.log`); merge integracao c5b946a (ticket 12); suíte comum; relatório; Fiel.
 
 - (~22h25) Merge de integracao 0a8e17f em e3ff419 (só o merge); rápidos sem harness 106 de 106. Docker do 07 não
   repetido depois deste merge (o Fiel roda o Docker na revisão).

@@ -58,7 +58,7 @@ Valem para todo construtor e revisor das etapas. Plano decidido: `revisao/plano/
   dos harnesses, nas condições do aval de login. Teste que cria pasta em `%TEMP%` apaga a sua no fim, mesmo falhando.
 - **Um trabalho pesado por vez** (a máquina está com a memória no limite, 2026-10-17): prova com Docker, suíte inteira,
   indexação da busca, `npm install` e harness de verdade são pesados. Antes de um, confira
-  `C:\Projetos\context-hub\.scratch\construcao-do-hub\etapas	rava-pesada.md`: se existir e tiver menos de 30 min,
+  `C:/Projetos/context-hub/.scratch/construcao-do-hub/etapas/trava-pesada.md`: se existir e tiver menos de 30 min,
   espere; se não, crie-o com o seu nome, o que vai rodar e a hora, rode, e apague-o ao fim (também quando falhar). Teste
   só do seu arquivo não precisa da trava. Trava com mais de 30 min sem dono ativo: pergunte ao dono antes de apagar.
 - **Contexto acima de 40%** (Gustavo, 2026-10-16): no próximo ponto seguro (commit com testes verdes, ou o fim do
