@@ -1,7 +1,7 @@
 # 31: Acervo: registro dos avais, verificador escolhido pelo maestro e peça que sumiu
 
 Type: task
-Status: ready-for-agent
+Status: claimed
 Etapa: 8 (skills e acervo)
 Blocked by: 20
 

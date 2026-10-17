@@ -1,0 +1,1 @@
+- Trilho (construtor), 2026-10-17 00:58: teste único do gemini (ticket 13): docker start freellmapi-freellmapi-1 + duas buscas indexando (arctic e gemini). Apago ao fim.

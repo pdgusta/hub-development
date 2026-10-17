@@ -137,3 +137,11 @@ node --test agents/code/test/05-frontmatter.test.mjs
 - 00h35: revisão pedida ao Fiel em ca5b389; Trilho avisado (o maestro ligou os construtores entre si: assunto entre construtores vai direto). Suíte repetida em segundo plano (scratchpad suite-30c.log).
 - 00h40: suíte 168/0/8; Fiel PASSA; passa levado ao Rebite. Trava apagada. Próximo: 01:40 prova do Codex do 20 (com a trava pesada).
 - 30 encerrado: Rebite juntou e resolveu (integracao 5d84d76, 168/0/8). Esperando 01:40 (vigia em segundo plano) para a prova do Codex do 20.
+
+## Ticket atual: 31, acervo: registro dos avais, verificador escolhido, peça que sumiu (2026-10-17 ~00h50)
+
+- Ramo ticket-31, worktree C:/context-hub-wt/ticket-31, de integracao 5d84d76. Depois: 32 (link para fora do hub), worktree nova.
+- Desenho (testes em agents/code/test/20-acervo.test.mjs, seção 31):
+  1. Modelo do verificador: verificar-mudanca.mjs exige --modelo <m> (HUB_VERIFICADOR dublê recebe HUB_VERIFICADOR_MODELO; sem dublê, claude -p --model <m>); parecer grava `modelo`. A guarda lê o modelo do maestro no transcript (evento.transcript_path, última linha type assistant, message.model; doc: SessionStart.model pode faltar após /clear). Parecer no mesmo modelo (família opus/sonnet/haiku/fable igual, ou id igual) -> deny; diferente -> ask com "verificado por <modelo>"; modelo do maestro desconhecido -> ask com aviso.
+  2. Aval: hook PostToolUse (só Claude) aval.mjs claude --hub: lê o arquivo depois da gravação, chaveDe(rel, conteúdo); se há parecer -> grava agents/maestro/avais/AAAA-MM-DD--<skill>-<peça>.md (antes/depois, afetados=quemUsa, relatório, modelo, decisão aprovado) e apaga parecer+pendente. Guarda recusa qualquer gravação de agente em agents/maestro/avais/ (3 harnesses, mesmo com HUB_PAPEL).
+  3. Peça sumida: verificar-acervo grava item `acervo-peca-sumida` (nivel informa, como o 27) no .local/vigia/estado.json; sem falta, tira o item. Função comum registrarNaVigia em bin/lib/vigia.mjs (tirada do nucleo do 27).
