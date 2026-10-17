@@ -1,7 +1,7 @@
 # 33: Link fora do hub: a imagem mantém o `!`; espaço cru e caminho de rede avisam
 
 Type: task
-Status: ready-for-agent
+Status: claimed
 Etapa: conserto do 32 (fora da sequência)
 Blocked by: 32
 
@@ -25,3 +25,4 @@ do verificador, sem reescrever. (3) Caminho de rede UNC (`\\servidor\pasta\x.md`
 - 2026-10-17 ~03h35 (maestro): publicado pela decisão do Gustavo (A). A opção dizia "para a Vela agora", mas ela está no
   28 e depois no 09; dono: o Trilho, depois do 35 e do Codex do 12 e do 15 (código da Vela no 27 e no 32; perguntar a
   ela).
+- 2026-10-17 ~04h00 (Trilho): pego (claimed). Worktree C:/context-hub-wt/ticket-33, ramo ticket-33, de integracao 3c24d68.

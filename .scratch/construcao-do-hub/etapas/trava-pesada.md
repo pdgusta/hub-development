@@ -1,1 +1,1 @@
-- Rebite (integrador), 2026-10-17 03:56: suíte inteira com --test-concurrency=1 em integracao, junção do 12 r3 (C:/context-hub-wt/integracao). Apago ao fim.
+- Cinzel (construtor), 2026-10-17 04:09: Docker das costuras A (fork, hub-ensaio-09-f, 5996) e B (agents/code/test/09-mcp-banco.test.ps1, hub-ensaio-09-a/b, 5996/5997) do ticket 09. Apago ao fim.

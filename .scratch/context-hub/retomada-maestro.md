@@ -131,3 +131,4 @@ nuvem.
 - 03h47 (relógio real; as horas do diário entre ~03h e ~04h45 acima foram estimadas e estão adiantadas ~1h — use `date` daqui em diante): ronda. Brasa com a trava (teste Docker do 08, desde 03h37); Trilho espera para a suíte do 35; Vela e Cinzel trabalhando; Fiel 14%; memória livre 1,2 GB (vmmemWSL 1,9 GB do Docker); nada a destravar.
 - 03:59: 08 Docker caiu por memória; aval para rodar destacado, fatia por fatia, piso 2 GB, parada abaixo de 700 MB.
 - 04:00: fila do trabalho pesado criada (etapas/fila-pesada.md; regra: quem solta a trava avisa o próximo): Rebite, Cinzel (09), Brasa (08), Trilho (35). Cinzel com código do 09 pronto (fork sem commit: mandado commitar). Trilho adianta o 33 enquanto espera.
+- 04:09: rodada 3 do 12 juntada (3c24d68), suíte 186/0; aceite real do Codex do 12 fechado. Trava passou ao Cinzel (09). Lições no 15 (gravar claude-settings.json na rodada real) e no 23 (kit junta a regra no settings.json).

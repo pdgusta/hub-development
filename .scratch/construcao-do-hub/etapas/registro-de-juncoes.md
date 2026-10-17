@@ -19,3 +19,4 @@
 - 2026-10-17 02h21, ticket 13, 236b3ef, suíte com --test-concurrency=1 e trava: 190, 182 verdes, 8 pulados, 0 falhas, git limpo; teste real do gateway não repetido (cota) (Rebite).
 - 2026-10-17 02h51, ticket 31 (rodada 3), e82ce65, suíte com --test-concurrency=1 e trava: 191, 183 verdes, 8 pulados, 0 falhas, git limpo; 31 resolvido; prova real do Codex do 20 entrou junto (Rebite).
 - 2026-10-17 03h00, tickets 07 (24c7543) e 34 (763813a), suíte com --test-concurrency=1 e trava: 194, 186 verdes, 8 pulados, 0 falhas, git limpo; Docker do 07 não repetido (verde com o Fiel, nada do que usa mudou) (Rebite).
+- 2026-10-17 04h08, ticket 12 (rodada 3), 3c24d68, suíte com --test-concurrency=1 e trava: 194, 186 verdes, 8 pulados, 0 falhas, git limpo; aceite real do Codex fechado (Rebite).
