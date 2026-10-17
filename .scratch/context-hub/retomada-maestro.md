@@ -145,3 +145,5 @@ nuvem.
 - 04:40: 16 adiantado (Trilho, 7024828, 8/8 sem Docker). Fila: Rebite (suíte 33/35), Trilho (Docker 16), Brasa (08; solta entre fatias para o Codex do 15 depois de 06:58).
 - 04:44: 09 verde nas duas costuras, revisão no Fiel (fork 61a6e70, hub 3d9d0bb); achados aceitos (fusão automática do LiveSync; conflito só com base morta). Cinzel adianta as costuras do 10.
 - 04:45: costuras do 10 (Cinzel) aceitas; portas 8796/8797/8798; caminho do estado.json a combinar com o Trilho (16).
+- 04:47: estado velho do estado_do_hub decidido (aviso acima de 15 min). SKILL.md da busca ainda cita read/status: conserto em commit separado no 16.
+- 04:47: ronda; Rebite com a trava (suíte 33/35 desde 04:37); 28 da Vela na rodada 3 do Fiel (Docker na fila depois do 16); Cinzel 44% e Trilho 41%: pedidos para salvar; 3,4 GB livres.

@@ -54,3 +54,13 @@ Ramo `ticket-16`, worktree `C:/context-hub-wt/ticket-16`, de `integracao` 33b817
 - Plano da leitura: `_changes?style=all_docs` acha documentos com mais de uma folha; `GET <id>?open_revs=all` dá as
   folhas (viva em conflito = conflito; apagada com `children` = binário descartado). O caminho em claro vem do `ls` do
   leitor: a rev vencedora do documento cru é a rev que o `ls` mostra para o caminho.
+
+## Combinado com o Cinzel (ticket 10, 2026-10-17 ~05h)
+- O `estado_do_hub` devolve o `estado.json` como está, sem o campo `vistos`; sem arquivo ou ilegível, "estado indisponível".
+- Passada com mais de 15 min: devolve o JSON e o aviso "a vigia não roda desde <hora>" (sugestão minha, aceita pelo maestro). Sem `passada`, sem aviso.
+
+## Feito até 60756e6
+- `agents/skills/vigia/{vigia.mjs,notificar.ps1,recuperar.ps1,SKILL.md}`; `gravarPassada` em `agents/code/bin/lib/vigia.mjs`; leitor da vigia no passo do banco do kit (`HUB_VIGIA_LEITOR_DB`).
+- Testes: `agents/code/test/16-vigia.test.mjs` 8/8 (sem Docker); `agents/code/test/16-vigia.test.ps1` (Docker, pela fila) a rodar.
+- Achado para o maestro: `agents/skills/busca/SKILL.md` ainda cita a ferramenta `read` do hub-busca, que o 12 r3 tirou dos harnesses.
+- Conserto do 12 (pedido do maestro), commit separado b4e7272: agents/skills/busca/SKILL.md não cita mais a read do hub-busca. Vai para o relatório do 16.
