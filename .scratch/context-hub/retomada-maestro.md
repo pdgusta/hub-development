@@ -1,6 +1,6 @@
 # Retomada do maestro
 
-Reescrita em 2026-10-17 ~04h (Brasília). Atualize a cada evento.
+Reescrita em 2026-10-17 ~04h; quadro e placar atualizados às 10:50 (antes do auto-compact). Atualize a cada evento.
 
 ## FEITO 10h10: religar depois do reinício do Maestri (2026-10-17 ~10h05) — todos voltaram sozinhos com contexto; ronda recriada
 
@@ -124,27 +124,30 @@ C:\context-hub log --oneline -3 integracao`, `etapas/trava-pesada.md` e `etapas/
   Gustavo: baixar a memória do Docker (Settings > Resources) ou aumentar o arquivo de paginação.
 - **Codex:** o Gustavo tem 3 reinícios de cota (semanais) guardados: pedir a ele só se a cota acabar e travar a reta final. gpt-6-astra liberado à vontade nos testes. Sem cota até 12:15 de 2026-10-17 (Fielzinho e qualquer harness real com Codex). Pendente: Codex real do 11 (Cinzel); leituras atrasadas do Fielzinho (fila do Fiel).
 
-## Quem está no canvas (2026-10-17 ~04h)
+## Quem está no canvas (2026-10-17 10:50)
 
-- **Brasa** (Claude Opus 5.5 médio, construtora): **08** (banco: limites e robustez), worktree ticket-08 de 763813a;
-  costuras confirmadas (teste Docker `08-banco-limites.test.ps1`, laço `kit/par/banco/laco.ps1` com XML da tarefa sem
-  registrar, retrato em `agents/code/test/banco/retrato/`). Limpa ~01h15.
-- **Vela** (idem): **28** (pastas locais); depois, o próximo da fronteira. Limpa ~02h30.
-- **Trilho** (idem): refaz o real do 12 e do 15 nos três (só a `search` do hub-busca), rodada do Fiel; depois suíte e
-  revisão do **35** (código feito, 4a17dbe); depois **33**. Limpo ~02h00.
-- **Cinzel** (Claude, construtor novo, ~04h15): **09** (MCP do banco), fork em `C:\Projetos\hub-mcp-banco`. Ligado a
-  Brasa, Vela, Trilho, Fiel, Rebite.
-- **Fiel** (Claude Opus 5.5 médio): revisor principal; estado em `etapas/estado-revisor.md`. Limpo ~03h55.
-- **Fielzinho** (Codex GPT 6-Astra médio): revisor parceiro, com cota; leituras atrasadas na fila do Fiel.
-- **Rebite** (Claude): junta e resolve.
-- **Portal** (terminal do servidor, parado).
+- **Brasa** (construtora, Opus 5.5): **22** passou (r2, 63cbfd5); ramo volta a 5abe359 (sem o 16); vai ao Rebite;
+  Codex como cliente às 12h15 (rodada curta do Fiel). 08 resolvido (fatia 2 verde na janela quieta).
+- **Vela** (idem): **17** passou, junta depois do 16 (merge, teste no estado real, rodada nova do Fiel); **18** passou,
+  falta o Codex (12h15); **25** com fases 1-3 verdes (Claude e Copilot) e fases 4-7 escritas (puladas até as peças),
+  corte do medidor desce toda pilha registrada; Codex do 25 às 12h15.
+- **Trilho** (idem): **16** passou no Fiel, mas a junção ficou vermelha (busca recusa o SKILL.md da vigia por
+  cabeçalho quebrado): conserta e pede de novo. **21** r1 com 2 consertos (f32bd4c), 4ª rodada Docker na fila, depois
+  rodada do Fiel. Contexto 40%: salvar depois do 21.
+- **Cinzel** (idem): **11** passou (falta o Codex, 12h15); **23** passou (r3, a419182), segura até 11/16/17/18; **24**
+  Claude e Copilot passaram (falta o Codex); **37** em curso (c16e53f, falta 18/27/14 juntos, relatório, Fiel).
+- **Fiel** (revisor): revisando 21 e 22; limpo ~10h12.
+- **Fielzinho** (Codex): sem cota até 12h15; leituras atrasadas na fila do Fiel.
+- **Rebite** (integrador): suíte do 16 deu vermelho, desfeito; próximo: 22, depois 16 consertado, 17, etc.
+- **Portal**: parado.
 
-## Placar (2026-10-17 06:15)
+## Placar (2026-10-17 10:50)
 
-- Resolvidos (23 de 36): 01-07, 09, 12-15, 19, 20, 27-35 (`integracao` 9453e3e). Dos 26 originais: 15.
-- Em curso: 08 (Brasa, Docker por fatias), 10 (Cinzel, Docker), 16 (Trilho, falta Docker 4ª rodada), 17 (Vela, falta
-  harness real), 36 (Vela, em revisão). 15: falta o Codex real (06:58).
-- Abrem depois: 11 (10), 22 (10), 21 (08+16), 18 (17), 23 → 24 → 25; 26 é do Gustavo.
+- Resolvidos (26 de 37): 01-10, 12-15, 19, 20, 27-36. Dos 26 originais: 16.
+- Passaram na revisão e esperam junção: 16 (vermelho na junção, consertando), 17, 18 (falta Codex), 22, 23, 11 e 24
+  (falta Codex). Em curso: 21, 25, 37. Ninguém sem dono; 26 é do Gustavo.
+- Codex sem cota até 12h15 (cota única, o gpt-6-astra não é à parte). Às 12h15, um de cada vez: Cinzel (11, 24),
+  Vela (18, 25), Brasa (22). O Gustavo tem 3 reinícios semanais do Codex guardados: pedir só se travar a reta final.
 
 ## Decisões do Gustavo em 2026-10-16/17 (detalhe no ticket 16)
 
@@ -279,3 +282,4 @@ nuvem.
 - 10:38: 21 r1 com 2 consertos (f32bd4c); achado do caminho longo (fs.watch aborta com nome curto) nas regras e no 23; Trilho na fila depois da suíte do 16.
 - 10:40: ronda; Rebite com a trava (suíte do 16 desde 10:19, ~25 min); Trilho 40%: salvar depois do 21; 3,6 GB livres.
 - 10:42: 22 passa (r2, 63cbfd5), vai ao Rebite; Codex depois. Conflito add/add do 10.env.modelo com o 21: o segundo resolve.
+- 10:49: junção do 16 vermelha (12-busca recusa o SKILL.md da vigia), desfeita; Trilho conserta. Brasa volta o 22 a 5abe359 e leva ao Rebite. Quadro e placar atualizados (contexto do maestro ~495k).

@@ -67,3 +67,9 @@ a ponta do ramo é a do parecer (ou que depois dela só entrou evidência ou `gi
   junta integracao no ramo, testa sobre o estado.json real, rodada do Fiel, me avisa). 23 segura até 11, 16, 17 e 18.
 - Docker do 16 não repetido: idêntico ao revisado (8ª rodada do Trilho vale; r2 só mexeu em filtro de `descartados()`).
 - Maestro: ao soltar a trava da suíte do 16, avisar o Trilho (Docker do 21, 4ª rodada).
+- 10:30: 22 avisado pela Brasa (63cbfd5 = parecer r2 PASSA; contém fce0529; sem conflito; sem ramo no fork). Juntar
+  depois da suíte do 16 (nunca durante); testes leves: 22-kit-cliente, 22-proxy-sem-docker (harness-real pulado sem
+  variável); Docker e harness não repetir (idênticos). Depois suíte com a trava. Pendente após resolver: Codex como
+  cliente depois de 12h15 (commit só de evidência, rodada curta do Fiel) e Fielzinho. Conflito add/add do
+  kit/par/env/10.env.modelo com o 21: quem for juntado por segundo faz `git merge integracao` no ramo; eu não resolvo.
+  Atenção: ramo do 22 contém fce0529; se a suíte do 16 ficar vermelha e eu desfizer, avisar Brasa.

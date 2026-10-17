@@ -118,3 +118,5 @@ harness de verdade". Um subagente por vez (tarefa leve) e até três Haiku de es
   leitura do Fielzinho). 10.env.modelo: combinado com o Trilho que o segundo a ser juntado faz `git merge integracao`
   no próprio ramo e resolve (as duas metades); o Rebite não resolve conflito. Se o 21 entrar antes do 22: resolver eu.
   Às 12h15: o Codex do 22 (corredor inteiro, pedir a vez ao maestro); depois, evidência, relatório e o Fiel.
+- ~11h20: o Rebite desfez o 16 (integracao voltou a e98a891). Por ordem do maestro, ticket-22 voltou a 5abe359 (sem
+  o 16); 10/10 sem Docker; Fiel e Rebite avisados. Não juntar `integracao` de novo até o 16 consertado entrar.

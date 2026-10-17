@@ -47,3 +47,18 @@ Sem harness real (aceito pelo maestro: o que muda não depende da ferramenta; o 
 3. **Shell que só lê** também marca a sessão: o fim varre o cwd e não acha nada novo. Custo só de varredura, limitado.
 4. **Junção:** o kit do 23 lê as peças do fim pelo nome (`23-kit.test.mjs:201`), sem fixar matcher; os matchers novos
    entram sozinhos. O 37 junta depois do 18.
+
+## Rodada 2 (conserto da rodada 1 do Fiel, combinado com a Vela)
+
+- **Conserto 1:** o fim não sabe quem gravou o que veio de fora das ferramentas. A nota ou a passagem de fora não passa
+  mais pelos sete campos como falta e não ganha `last_agent`. Ela só cala o "atualize a nota" da iniciativa (parâmetro
+  `deFora` do `conferirRetomada`) e vai ao aviso "Antes de terminar:" com o texto: `a nota de retomada <rel> mudou fora
+  das ferramentas e contou como atualizada; se não foi você, atualize-a com o que esta resposta fez (sete campos)`.
+- **Risco aceito (Vela):** outro processo muda a nota no turno em que a sessão gravou na iniciativa pela ferramenta e
+  rodou shell: a cobrança desta sessão cala, e o aviso fica no lugar. Devolver três vezes quem gravou a nota pelo shell
+  seria pior.
+- **Testes novos:** os dois casos da sonda do Fiel (shell que só lê + nota de fora sem campo: aviso, sem falta, nota
+  intacta; nota de fora completa com o `last_agent` da outra máquina: intacta) e o do risco. Os três "Edit na iniciativa
+  e nota pelo shell" agora esperam o aviso, sem falta, e soltam na parada seguinte. O teste "nota pelo shell sem campo é
+  devolvida" saiu (contrariava o conserto).
+- `37-gravacao-pelo-shell.test.mjs` 13/13. Com 14, 18, 27 e harness-real: RESULTADO2 (`logs/37-testes-r2.log`).

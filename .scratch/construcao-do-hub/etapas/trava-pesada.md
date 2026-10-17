@@ -1,1 +1,1 @@
-- Rebite (integrador), 2026-10-17 10:19: suíte do hub do 16 em C:/context-hub-wt/integracao (fce0529), --test-concurrency=1, ~25 min. Apago ao fim.
+- Trilho (construtor), 2026-10-17 10:46: Docker do 21, 4ª rodada (hub-ensaio-21-a/b, 5996/5997), ~6 min. Apago ao fim; depois aviso o maestro.

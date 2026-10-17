@@ -6,7 +6,6 @@ testes (09, 16): limpe os contêineres ao soltar.
 
 (trava: ver trava-pesada.md) — ordem a partir de 10:15 (janela quieta feita: 22, fatia 2 do 08 e 25 fases 1-3 verdes):
 1. Rebite: suíte da junção do 16, depois a do 17 (quando juntar)
-1b. Trilho: Docker do 21, 4ª rodada (~6 min; consertos f32bd4c), logo depois da suíte do 16
 2. A partir das 12h15 (Codex), um de cada vez: Cinzel (Codex do 11, depois do 24), Vela (Codex do 18, depois do 25
    fases 1-3, ~5 min), Brasa (Codex do 22, pilha inteira ~12 min)
 3. Rebite: as demais junções (18, 21, 22, 11, 23, 24, 37), conforme passarem
