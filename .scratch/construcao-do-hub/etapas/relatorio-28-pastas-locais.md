@@ -38,7 +38,7 @@ relatório do 06 ("O que vai doer ao ligar"), lição do 02.
 | `node --test agents/code/test/gerar-exclusoes/gerador.test.mjs` (novo: exclude e `git status`; vermelho antes) | 8/8 |
 | `node --test agents/code/test/28-pastas-locais-sem-docker.test.mjs` (nova; pasta existente; YAML ilegível; vermelho antes) | 12 PASSA |
 | `node --test agents/code/test/04-esqueleto.test.mjs` (o `AGENTS.md` mudou) | 13/13 |
-| `pwsh -NoProfile -File agents/code/test/28-pastas-locais.test.ps1` (Docker, `hub-ensaio-28-a/b`, 5992/5993) | (preencher) |
+| `pwsh -NoProfile -File agents/code/test/28-pastas-locais.test.ps1` (Docker, `hub-ensaio-28-a/b`, 5992/5993) | 14 PASSA, saída 0 (log `etapas/logs/28-docker-1.log`; nenhum contêiner sobrou) |
 | suíte inteira | (preencher) |
 
 ## O que vai doer ao ligar
@@ -51,3 +51,14 @@ relatório do 06 ("O que vai doer ao ligar"), lição do 02.
 - **A vigia.** Rodar o gerador a cada passada e religar quando a lista muda é do ticket 16; aqui só o script.
 - **`HUB_BANCO_ENV`.** Quem o põe no ambiente do agente é o kit (faixa 8); sem ele, o script recusa e pede o
   `-EnvFile`.
+
+## A prova com Docker (o que ela mostra)
+
+- **Nova com o sincronizador da A rodando:** a pasta nasce, uma nota entra nela, e uma nota de controle gravada depois
+  chega à B; a pasta não está no disco da B nem no banco da A (lido pelo dispositivo leitor).
+- **Tornar local:** a pasta `reference/vai-ficar` (duas notas, uma em subpasta, já replicada e já no git) sai do disco
+  da B e do banco da A; o sincronizador da A volta (a nota de controle chega à B), e os arquivos da A ficam iguais
+  (hash), mais o `index.md` novo. O sincronizador religado não apaga do disco o que foi apagado do banco: a lista nova o
+  deixa de fora.
+- **Git do hub A:** `git status` não mostra a pasta local nem nada com ponto; a pasta tornada local saiu do índice, e o
+  status mostra as duas remoções, para a cópia diária levar.

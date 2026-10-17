@@ -24,3 +24,5 @@ Blocked by: 07
 - 2026-10-17 ~03h00 (maestro): a Vela perguntou onde mora o fork do es617 (o spec deixou a pergunta aberta). Levado ao Gustavo: rodada `2026-10-17-onde-mora-o-fork-do-mcp` (recomendada A, repositório próprio em `C:\Projetos\hub-mcp-banco`). Respondido pelo maestro: banco de ensaio pelo `ensaio.psm1` do 07 (`hub-ensaio-09-*`, 5996); o fork importa o `lib/frontmatter.mjs` do hub por `HUB_ROOT`, sem segundo validador.
 
 - 2026-10-17 ~03h15 (maestro): o 07 foi resolvido; o 09 segue reservado para a Vela, que começa quando o Gustavo responder sobre o fork (até lá ela faz o 28).
+
+- 2026-10-17 ~04h15 (maestro): troca de dono: o Gustavo subiu o limite para 4 construtores; o **Cinzel** (novo) faz o 09 agora, para o caminho crítico (10, 11, 16, 22) andar. A Vela, que leu o 09 e fez as perguntas, segue no 28 e responde ao Cinzel o que ele precisar. Decisões já tomadas aqui: fork em `C:\Projetos\hub-mcp-banco` (Gustavo, A); banco de ensaio pelo `ensaio.psm1` (`hub-ensaio-09-*`, 5996); o fork importa o `lib/frontmatter.mjs` do hub por `HUB_ROOT`.

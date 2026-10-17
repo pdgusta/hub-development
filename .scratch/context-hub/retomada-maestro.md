@@ -9,7 +9,7 @@ bastante para a execução seguir com bom progresso e alinhada ao spec". Decisã
 tomada, sem atrapalhar o resultado final, pode seguir: registre no ticket dono ("decidido pelo maestro, mandato de
 2026-10-17") e na lista **Para rever com o Gustavo** abaixo. Só o realmente bloqueante fica para ele, de dia. Liberdade
 parcial para abrir e fechar aplicativos e processos da execução. **Contexto do maestro: nunca passar de 700k tokens**;
-antes disso, esta retomada em dia e compactar. Memória `autonomia-na-construcao`.
+o auto-compact está ligado em 600k (configuração do Gustavo), então a compactação é automática; mantenha esta retomada em dia para ela. Memória `autonomia-na-construcao`.
 
 ## Para rever com o Gustavo
 
@@ -38,7 +38,7 @@ C:\context-hub log --oneline -3 integracao`, `etapas/trava-pesada.md` e `etapas/
 
 ## Como a operação funciona agora
 
-- **Construção pelo `/implement-spec`**, invocado pelo Gustavo em 2026-10-16. Até 3 construtores. Plano em
+- **Construção pelo `/implement-spec`**, invocado pelo Gustavo em 2026-10-16. **Até 4 construtores, cada recruta até 1 subagente por vez** (Gustavo, 2026-10-17 ~04h; regras atualizadas; o papel ainda diz "sem subagentes", não editar papel em uso). Plano em
   `.scratch/construcao-do-hub/revisao/plano/proposta-de-etapas.md` ("Decidido").
 - **Ciclo de um ticket:** o construtor faz (skill `tdd`), pede revisão ao **Fiel**, que revisa em dupla com o
   **Fielzinho**; depois do "passa", o construtor avisa o **Rebite**, que junta em `integracao` (worktree
@@ -68,10 +68,11 @@ C:\context-hub log --oneline -3 integracao`, `etapas/trava-pesada.md` e `etapas/
 - **Brasa** (Claude Opus 5.5 médio, construtora): **08** (banco: limites e robustez), worktree ticket-08 de 763813a;
   costuras confirmadas (teste Docker `08-banco-limites.test.ps1`, laço `kit/par/banco/laco.ps1` com XML da tarefa sem
   registrar, retrato em `agents/code/test/banco/retrato/`). Limpa ~01h15.
-- **Vela** (idem): **28** (pastas locais), depois **09** (MCP do banco, fork em `C:\Projetos\hub-mcp-banco`, banco de
-  ensaio pelo `ensaio.psm1`, porta 5996). Limpa ~02h30.
+- **Vela** (idem): **28** (pastas locais); depois, o próximo da fronteira. Limpa ~02h30.
 - **Trilho** (idem): refaz o real do 12 e do 15 nos três (só a `search` do hub-busca), rodada do Fiel; depois suíte e
   revisão do **35** (código feito, 4a17dbe); depois **33**. Limpo ~02h00.
+- **Cinzel** (Claude, construtor novo, ~04h15): **09** (MCP do banco), fork em `C:\Projetos\hub-mcp-banco`. Ligado a
+  Brasa, Vela, Trilho, Fiel, Rebite.
 - **Fiel** (Claude Opus 5.5 médio): revisor principal; estado em `etapas/estado-revisor.md`. Limpo ~03h55.
 - **Fielzinho** (Codex GPT 6-Astra médio): revisor parceiro, com cota; leituras atrasadas na fila do Fiel.
 - **Rebite** (Claude): junta e resolve.
@@ -97,3 +98,4 @@ nuvem.
 ## Diário (mais novo embaixo)
 
 - ~04h: mandato do Gustavo recebido.
+- ~04h15: limite 4 construtores e 1 subagente por recruta; Cinzel recrutado para o 09 (a Vela fica no 28).

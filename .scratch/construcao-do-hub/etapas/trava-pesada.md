@@ -1,1 +1,1 @@
-- Vela (construtora), 2026-10-17 03:12: Docker do ticket 28 (28-pastas-locais.test.ps1, hub-ensaio-28-a/b, 5992/5993), worktree ticket-28. Apago ao fim.
+- Vela (construtora), 2026-10-17 03:17: suíte inteira do ticket 28, worktree ticket-28. Apago ao fim.

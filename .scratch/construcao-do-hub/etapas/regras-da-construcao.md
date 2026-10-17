@@ -47,7 +47,9 @@ Valem para todo construtor e revisor das etapas. Plano decidido: `revisao/plano/
 ## Como trabalhar
 
 - Construa com a skill `tdd` (chame o Skill tool com `tdd`): teste de ponta a ponta primeiro, na costura mais alta.
-- **Sem subagentes.** O Gustavo quer ver o trabalho no canvas.
+- **No máximo um subagente por vez** (Gustavo, 2026-10-17 ~04h; antes era nenhum). Use para uma tarefa fechada e
+  paralela (ler docs por curl, varrer o código, rodar e resumir um teste leve); o trabalho principal fica à vista no
+  canvas. Subagente segue estas regras (trava, nada global, sem dado pessoal) e não roda trabalho pesado.
 - Dados de cliente (STRATA, VOEGOL, AVIANCA, TRF3, SBF): só o nome da iniciativa; nada de dado pessoal; notas de ensaio
   com texto inventado.
 - Grave o estado em arquivo a cada passo: um `/clear` a qualquer momento não pode perder nada.

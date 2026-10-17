@@ -1,6 +1,6 @@
 # Retomada da Brasa
 
-Atualizada em 2026-10-17 ~02h25. Papel: construtora. Regras em `etapas/regras-da-construcao.md`: leia inteiras, em
+Atualizada em 2026-10-17 ~04h. Regra nova: no máximo um subagente por vez, só tarefa leve. Papel: construtora. Regras em `etapas/regras-da-construcao.md`: leia inteiras, em
 especial "Um trabalho pesado por vez" (a trava `etapas/trava-pesada.md`) e "Testes com harness de verdade".
 - Revisores: Fiel e Fielzinho, em dupla (o Fiel fecha).
 - Integrador: Rebite (`maestri ask "Rebite" ...`, depois do "passa").
@@ -13,9 +13,31 @@ especial "Um trabalho pesado por vez" (a trava `etapas/trava-pesada.md`) e "Test
 - Costuras confirmadas pelo maestro ~03h15 (comentário no ticket 08). Retrato em `agents/code/test/banco/retrato/`. Kit só escreve o XML da tarefa.
 - Lição do Rebite: esperas pelo estado, com folga, e falha que diz "tempo".
 
+### Feito
+
+- 5110f3f: `Write-TarefaSincronizador` (XML em `<estado>/tarefa-sincronizador.xml`, nunca registrado; o teste o valida
+  pelo COM `Schedule.Service` com `NewTask(0).XmlText`, sem registrar), `Invoke-VoltaLaco` e `kit/par/banco/laco.ps1`,
+  passo novo no `Install-ParBanco`.
+- 08ce7c7: `Get-AcimaDoLimite` (`$script:LimiteMiB`); em `test/banco/ensaio.psm1`: `Get-InfoNoBanco`, `Get-FolhasCruas`,
+  `Get-RamosApagados`, `Restore-RamoApagado`; teste `agents/code/test/08-banco-limites.test.ps1` com 8 fatias
+  (exclusões; 60/201 MiB; colisão de binário e recuperação antes e depois da compactação; conflito de texto aberto;
+  retrato em dia; kit de novo; laço; retrato parado). Retrato vai para `agents/code/test/banco/retrato/`.
+- Sem Docker: `pwsh -NoProfile -File agents/code/test/banco/kit-sem-docker.ps1` tudo passou.
+
+### Armadilhas
+
+- O CLI resolve colisão de binário sozinho pelo `mtime` (`conflictResolution/operations.ts`, isBinary) e apaga a
+  perdida com `_deleted` sobre o corpo inteiro (`EntryManagerImpls.js`). O `pull-rev` recusa revisão apagada: a
+  recuperação copia o banco (`_replicate`), reabre a folha com PUT do mesmo corpo sem `_deleted`, grava o sal na cópia
+  e tira o arquivo por um leitor apontado para a cópia.
+- Docker só pelo corredor `.local/pesado.ps1 <teste> <rótulo>`: espera a trava, cria sem sobrescrever (CreateNew),
+  piso de 2 GB livres, apaga a trava no fim. Registro em `.local/pesado.log`.
+
 ### Próximo passo exato
 
-1. Com as costuras confirmadas: primeiro teste vermelho (fatia 1: ponto e local fora do banco, rodando e na partida).
+1. Ler o resultado de `.local/08-f1a.log` e consertar o que falhar (a primeira rodada Docker de todas as fatias).
+2. Depois de verde: relatório `etapas/relatorio-08-banco-limites.md`, commit do retrato, suíte comum com a trava,
+   revisão com o Fiel.
 
 ## Ticket 07 (fechado: juntado e resolvido, integracao 763813a)
 
