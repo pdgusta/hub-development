@@ -313,3 +313,4 @@ nuvem.
 - 12:19: Vela limpa e retomada.
 - 12:20: Lume com 5 páginas (docs 5b6e9b5), 1ª junção dos docs pedida ao Rebite; comentário velho do conteudo.mjs vai no 38.
 - 12:27: 23: conserto curto antes da junção (fazer() que falha apagava o original no desfazer).
+- 12:31: Lume achou que a regra de roteamento do 19 (Copilot) não entrou no AGENTS.md: ticket 40 à Vela.
