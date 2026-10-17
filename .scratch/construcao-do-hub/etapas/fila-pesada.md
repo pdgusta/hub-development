@@ -13,4 +13,3 @@ testes (09, 16): limpe os contêineres ao soltar.
 6. Rebite: junções na ordem em que chegarem (41, docs, 11, 18, 40, 37, 23, 24)
 7. Janela própria (só Vela e maestro), antes das 20h: fases 4 e 7 do 25 e as do Codex (Docker ligado bem antes; diagnóstico 3c1221a)
 Até 20h30: todos gravam a retomada; nada pesado rodando às 21h (reinício do Windows).
-- Trilho (14:26): 41 r2, 12-busca da ponta 6a728a4 (SKILL.md da busca mudou), ~6 min
