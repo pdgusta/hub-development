@@ -89,3 +89,11 @@ harness de verdade". Um subagente por vez (tarefa leve) e até três Haiku de es
 - Ticket 08: passou; a junção está com o Rebite.
 - A worktree do fork precisa do submódulo `lib/livesync-commonlib` (`git submodule update --init`); sem ele o build
   do passo 05 falha ("Could not resolve ../lib/livesync-commonlib"). Feito às 08h16.
+
+## Plano da janela quieta (maestro, 09h35)
+
+- Depois do Docker do 21 (Trilho), o maestro avisa quando os outros saírem. Então: (1) o 22 com os harnesses
+  (corredor `-Wsl`, ponta `bae29bd`: a espera da busca lê o stderr); (2) a fatia 1+2 do 08, da worktree
+  `C:/context-hub-wt/ticket-08` (514db7a): `pwsh -Command "& 'C:/context-hub-wt/ticket-08/.local/fatias.ps1' -Fatias '1,2'"`
+  em segundo plano (status `logs/08-fatias.status`); (3) a Vela roda o 25 (avisar).
+- Volta das 09:16: memória 1.347 → 919 (Docker religado) → 1.991 (09:22) → 1.374 no fim; sem corte.

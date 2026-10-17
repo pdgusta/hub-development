@@ -1,18 +1,19 @@
-# Retomada do Rebite (integrador), 2026-10-17 07h30
+# Retomada do Rebite (integrador), 2026-10-17 09h10 (antes da janela quieta)
 
 Leia nesta ordem: `regras-da-construcao.md`, `juntar-tickets.md` (inteiros), `registro-de-juncoes.md` (o que já
 entrou), `fila-pesada.md`, e esta retomada.
 
 ## Estado
 
-- Hub: worktree de junção `C:/context-hub-wt/integracao`, ramo `integracao`, ponta 9cc878b, limpa.
+- Hub: worktree de junção `C:/context-hub-wt/integracao`, ramo `integracao`, ponta e98a891, limpa.
 - Fork do MCP do banco: worktree de junção `C:/Projetos/hub-mcp-banco-wt/integracao`, ramo `integracao`, ponta
   34c3e50. Tem junções (não pastas) em `node_modules` e `lib/livesync-commonlib` para a cópia principal
   `C:/Projetos/hub-mcp-banco`. `git status` nela só com `--ignore-submodules=all`. Nunca mexer em `main` do fork.
-- Juntados e resolvidos: 01-07, 09, 10, 12 (com o Codex), 13, 14, 15, 19, 20 (com o Codex), 27-36.
-- Pendências de evidência depois de resolvidos: Codex do 15 (o Trilho rodou às 07:26; vem como commit só de
-  evidência, junto e comento no ticket). Leitura do Fielzinho pendente em vários; o que ele achar vira ressalva.
-- Nenhuma junção em curso; nenhuma trava minha.
+- Juntados e resolvidos: 01-10, 12 (com o Codex), 13, 14, 15 (rodada 2 com o Codex, e2b7607), 19, 20 (com o Codex),
+  27-36. O 08 entrou em e98a891 (fatia 2 do Docker vira item do Gustavo).
+- Leitura do Fielzinho pendente em vários; o que ele achar vira ressalva.
+- Nenhuma junção em curso; nenhuma trava minha (a trava das 09h é do Trilho, Docker do 21). Construtores e maestro
+  avisados de e98a891.
 
 ## Como faço uma junção (resumo do que o juntar-tickets manda, com o que aprendi)
 
@@ -43,27 +44,17 @@ entrou), `fila-pesada.md`, e esta retomada.
 - Testes de tempo (12-busca, 27-pastas) caem sob carga: por isso a suíte é com `--test-concurrency=1`.
 - O registro e os tickets usam a hora da máquina (-03).
 
-## Em curso (07:35)
+## Em espera (avisados, NÃO juntar ainda)
 
-- Ticket 15 rodada 2 juntado: integracao e2b7607 (ticket-15 em 3d34bd1, parecer passa). 15-leitura 9/9. Falta: suíte
-  do hub com a trava (estou no item 6 da fila; maestro aprovou), depois comentário no ticket 15 (já resolved; comentar a
-  rodada 2), linha no registro, aviso ao maestro e aos construtores. Nota do hífen do Codex já está nas regras e nos
-  tickets 11 e 23 (maestro).
-- 07:45: ticket 08 avisado pela Brasa (ponta 514db7a = parecer; PASSA com ressalvas, fatia 2 vira item do Gustavo).
-  Sem conflito com e2b7607, nenhum arquivo em comum, sem ramo no fork. Juntar depois que a suíte do 15 acabar; então
-  rodar `pwsh -File agents/code/test/banco/kit-sem-docker.ps1` (leve) e a suíte de novo com a trava; Docker não repito
-  (arquivos idênticos aos revisados). Ressalvas do fechamento do parecer vão no comentário do ticket.
-- 07:50: ticket 17 avisado pela Vela (3e8bbc8, passa r2). NÃO juntar: mandato do maestro, só depois do 16 resolvido;
-  aí a Vela junta integracao no ramo, testa sobre o estado.json real, rodada nova do Fiel, e me avisa de novo.
-- Maestro: ao soltar a trava da suíte do 15, avisar o Trilho (Docker do 21, ~6 min); ele avisa a Brasa (22). A suíte
-  do 08 entra na fila depois (pedir lugar ao maestro).
-- 08:10: 15 r2 RESOLVIDO (suíte 210/202/8, comentário no ticket, registro). Trilho avisado (trava dele desde 08:05).
-  08 juntado: integracao e98a891; kit idêntico ao revisado (Docker não repetido); 07/09/28-sem-docker 3/3 (log
-  etapas/logs/juncao-08-kit.log). Falta: suíte com a trava (item 3 da fila, depois de Trilho, Brasa, Vela 2b), resolver
-  o 08 com as ressalvas do fechamento do parecer, registro, avisos. Construtores ainda não avisados de e98a891.
-- 08:30: trava minha (Vela soltou); suíte do 08 em segundo plano, log etapas/logs/juncao-08-suite.log. Ao soltar, avisar o próximo da fila (conferir fila-pesada.md; perguntar ao maestro se ambíguo).
-- Maestro: ao soltar a trava do 08, avisar o Trilho (Docker do 21).
-- 08:57: 08 RESOLVIDO (e98a891, suíte 210/202/8). Trilho avisado da trava; maestro e construtores avisados. Nenhuma junção em curso; 17 espera o 16.
-- 09h: ticket 23 avisado pelo Cinzel (rodada 3 passa, ponta a419182, antes f304e6c; harness-real 7/7, 23-kit 14/14). NÃO juntar ainda: mandato do maestro, só com 11, 15, 17, 18, 20 e 27 resolvidos (falta 11 [Codex 12h15], 17 [espera 16], 18). Na junção, rodar de novo 23-kit.test.mjs (lê fragmentos de 17 e 18 do repositório) e conferir que a ponta do ramo ainda é a do parecer.
-- 09h: ticket 18 avisado pela Vela (f36df85, passa; leva o 17 dentro). NÃO juntar: só depois do 16 e do 17. Ainda vêm commits só de evidência (real Claude+Copilot; Codex depois de 12h15): conferir que depois de f36df85 só entrou evidência. O 18 troca o núcleo do fim do 27 (PostToolUse, fragmentos novos): na junção, atenção aos testes do 27 e ao 23-kit.
-- Maestro (09h): ordem das próximas junções: 16, depois 17, 18; o 11 depois do Codex (12h15); então 23 e 24.
+Ordem do maestro (09h): 16, depois 17, 18; o 11 depois do Codex (12h15); então 23 e 24. Antes de cada um, conferir que
+a ponta do ramo é a do parecer (ou que depois dela só entrou evidência ou `git merge integracao`).
+
+- 17 (Vela): passou r2 em 3e8bbc8. Só depois do 16 resolvido; a Vela junta integracao no ramo, testa sobre o
+  estado.json real, rodada nova do Fiel, e me avisa de novo (ponta nova).
+- 18 (Vela): passou em f36df85; leva o 17 dentro. Depois do 16 e do 17. Ainda vêm commits só de evidência (real
+  Claude+Copilot; Codex depois de 12h15). Troca o núcleo do fim do 27 (PostToolUse, fragmentos novos): atenção aos
+  testes do 27 e ao 23-kit.
+- 23 (Cinzel): passou r3 em a419182 (harness-real 7/7, 23-kit 14/14). Só com 11, 15, 17, 18, 20 e 27 resolvidos.
+  Na junção, rodar de novo `agents/code/test/23-kit.test.mjs` (lê os fragmentos de 17 e 18 do repositório).
+- 11 (Cinzel): espera o Codex das 12h15; ainda não avisado como passado.
+- 16 (Trilho): ainda não avisado como passado.

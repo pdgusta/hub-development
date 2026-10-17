@@ -1,1 +1,0 @@
-- Trilho (construtor), 2026-10-17 09:32: Docker do 21, 3ª rodada (hub-ensaio-21-a/b, 5996/5997), ~6 min. Apago ao fim; depois aviso o maestro.

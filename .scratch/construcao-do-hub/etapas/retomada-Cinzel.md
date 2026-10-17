@@ -1,13 +1,39 @@
 # Retomada do Cinzel (construtor, Claude)
 
-Leia antes: `etapas/regras-da-construcao.md` (inteiras, com os "Achados comuns"), os tickets 11, 23 e 24 (em
-`issues/`, com os comentários) e esta retomada. Gravada em 2026-10-17 ~09h20, a 43% de contexto.
+Leia antes: `etapas/regras-da-construcao.md` (inteiras, com os "Achados comuns"), os tickets 11, 23, 24 e 37 (em
+`issues/`, com os comentários) e esta retomada. Gravada em 2026-10-17 ~10h, na janela quieta pedida pelo maestro.
 
 ## Agora: nada rodando, nada esperando a trava
 
-- O Fiel revisa a rodada 3 do 23 (detector do 29). O 24 rodada 1: sem conserto próprio.
+- 23: rodada 3 PASSA (a419182); Rebite avisado. 24: falta só o Codex.
 - **Às 12h15** (cota do Codex), na fila (item 5 de `etapas/fila-pesada.md`), um de cada vez: primeiro o Codex do 11,
   depois o Codex do 24. Depois de mim vem a Vela (Codex do 18).
+- **Até lá, o 37** (abaixo).
+
+## Ticket 37: o fim da resposta vê a gravação pelo shell (em curso)
+
+- **Hub:** worktree `C:/context-hub-wt/ticket-37`, ramo `ticket-37` do `ticket-18` 31afe63; ponta c16e53f. Ticket
+  `claimed`. Núcleo é da Vela (18/27): dúvida do núcleo, pergunte a ela.
+- **Costuras aceitas** (`etapas/costuras-37-Cinzel.md`): Vela, 1/3/4 com ajustes (a)-(d); maestro, 5, 6 e (e).
+  - (e) o `anota` ouve o shell (Claude `Bash|PowerShell`, Codex `Bash`, Copilot `bash|powershell`) e cria
+    `.local/fim-da-resposta/<sessão>.shell`; o `marcar` o apaga. O fim só varre o `cwd` com esse arquivo.
+  - Varredura (`foraDasFerramentas` no `nucleo.mjs`): `mtime >= marca`, fora do `.gravados` de qualquer sessão, pula
+    ponto e `node_modules`, corta em 20.000 entradas; aviso mostra até 10 caminhos, "(e mais N)".
+  - Nota ou passagem de fora (`ehNota`, agora exportado em `nota.mjs`) entra no `conferirRetomada` e no
+    `gravarUltimoAgente` como mudada; o resto vira aviso em "Antes de terminar:" (lista `pedemAcao`), uma vez por turno.
+  - Texto: "gravado fora das ferramentas (shell ou outro processo) nesta resposta: ...; a nota de retomada mudou?".
+- **Feito:** 977ea86 e c16e53f. `agents/code/test/37-gravacao-pelo-shell.test.mjs` 11/11 (~2 min; ajudante novo
+  `eventoDeShell` em `test/gravacao.mjs`). Matchers do shell nos três fragmentos do fim.
+- **Falta (próximo passo exato):**
+  1. Rodar, sem trava, `node --test agents/code/test/18-retomada.test.mjs agents/code/test/27-fim-da-resposta.test.mjs
+     agents/code/test/14-*.test.mjs agents/code/test/37-gravacao-pelo-shell.test.mjs` (~5-8 min). Se algum teste
+     confere os matchers dos fragmentos, ajustar.
+  2. Conferir se o 23 (kit) lê os fragmentos do fim (`23-kit.test.mjs` no `ticket-23`): a mudança do matcher entra
+     sozinha na junção; anotar no relatório.
+  3. Relatório `etapas/relatorio-37-fim-ve-gravacao-por-shell.md`: o que fez, testes, e as ressalvas: o sincronizador
+     ou outro processo geram aviso se a sessão rodou shell; o `.gravados` de outra sessão some no turno novo dela, e o
+     arquivo dela vira "fora das ferramentas"; sem harness real (aceito pelo maestro).
+  4. Comentário no ticket 37, revisão ao Fiel; depois do passa, Rebite (junção depois do 18).
 
 ## Feitos
 

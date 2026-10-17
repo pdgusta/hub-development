@@ -1,0 +1,35 @@
+▶ ticket 22: os três harnesses de verdade como cliente, pelo proxy
+  ✔ claude: busca pelo proxy e lê pela rota de leitura, com o token só no ambiente (15161.103ms)
+  ✖ codex: busca pelo proxy e lê pela rota de leitura, com o token só no ambiente (5277.2735ms)
+  ✔ copilot: busca pelo proxy e lê pela rota de leitura, com o token só no ambiente (22365.3733ms)
+✖ ticket 22: os três harnesses de verdade como cliente, pelo proxy (42826.7347ms)
+ℹ tests 3
+ℹ suites 1
+ℹ pass 2
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 42945.6799
+
+✖ failing tests:
+
+test at agents\code\test\ponta-a-ponta\22-cliente.test.mjs:151:5
+✖ codex: busca pelo proxy e lê pela rota de leitura, com o token só no ambiente (5277.2735ms)
+  AssertionError [ERR_ASSERTION]: o codex não rodou o turno: You’ve hit your usage limit. Upgrade to Pro (https://chatgpt.com/explore/pro), visit https://chatgpt.com/settings/usage to purchase more credits or try again at 12:15 PM.
+  + actual - expected
+  
+  + 'You’ve hit your usage limit. Upgrade to Pro (https://chatgpt.com/explore/pro), visit https://chatgpt.com/settings/usage to purchase more credits or try again at 12:15 PM.'
+  - undefined
+  
+      at TestContext.<anonymous> (file:///C:/context-hub-wt/ticket-22/agents/code/test/ponta-a-ponta/22-cliente.test.mjs:165:16)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at async Suite.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'You’ve hit your usage limit. Upgrade to Pro (https://chatgpt.com/explore/pro), visit https://chatgpt.com/settings/usage to purchase more credits or try again at 12:15 PM.',
+    expected: undefined,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

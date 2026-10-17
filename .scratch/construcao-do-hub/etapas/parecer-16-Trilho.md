@@ -69,3 +69,11 @@ Conferido pelo Fiel:
    religação do CLI pelo laço (ex.: o EBUSY do 08) e cada pasta local nova notificam. Pode virar ruído; rever com o
    uso.
 2. A 5ª rodada Docker teve o registro sobrescrito (declarado).
+
+## Rodada 2 — 2026-10-17 ~11h20 (0332466): **PASSA**
+
+Conserto 1 feito: `descartados()` pula caminho que o LiveSync trata como texto (`.md .txt .svg .html .csv .css .js .xml
+.canvas`, conferido no `path.js:135-145` da commonlib; o `.canvas` faltava na minha lista). Caso novo sem Docker (.md e
+.canvas com folha apagada não viram item). `16-vigia.test.mjs`: 19/19 (Fiel). Árvore limpa. Fiel sozinho (Fielzinho
+lê depois). A mudança é só de filtro na passada; o Docker da 8ª rodada segue valendo para o resto. Ressalva do
+laco/exclusoes registrada, sem conserto.

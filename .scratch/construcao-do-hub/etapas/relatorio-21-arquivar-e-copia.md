@@ -1,10 +1,10 @@
 # Relatório do ticket 21: arquivar e cópia diária (Trilho)
 
-2026-10-17 ~08h10. Rascunho. ~09h40: conserto do EPERM (9ce2496); falta a 3ª rodada do Docker (pela fila) e o 16 resolvido.
+2026-10-17 ~08h10. Rascunho. ~09h40: conserto do EPERM (9ce2496). ~09h40: Docker 3ª rodada tudo passou (1c87f9b); pronto para o Fiel. Junção depois do 16.
 
 ## Estado
 
-- Ramo `ticket-21` (HEAD 9ce2496), worktree `C:\context-hub-wt\ticket-21`, de `integracao` 9cc878b com o
+- Ramo `ticket-21` (HEAD 1c87f9b, com o ticket-16 0332466), worktree `C:\context-hub-wt\ticket-21`, de `integracao` 9cc878b com o
   `ticket-16` juntado (c36ece4), porque o item da cópia diária na vigia é do 16 (maestro, 07:31).
 - **Junção só com 08 e 16 resolvidos.** O que depende do 08 entra quando ele for juntado.
 - Costuras aceitas: `etapas/costuras-21-Trilho.md`.
@@ -67,7 +67,13 @@
   arquivar 10 (em 9ce2496: pasta observada como pelo sincronizador; aberto por editor, devolve tudo). Com os afetados (04, 05, 05-nova-iniciativa, 20, 07-kit-sem-docker): 75/75.
 - Docker: `pwsh -NoProfile -File agents/code/test/21-arquivar.test.ps1` (hub-ensaio-21-a/b, 5996/5997): arquivar entre
   dois pares (a pasta chega ao B com o `archived_at`); recusa com a replicação parada; cópia com o remoto quebrado sai
-  com erro e a passada seguinte da vigia notifica. A rodar, pela fila.
+  com erro e a passada seguinte da vigia notifica.
+  - 1ª (08:05) e 2ª (09:05): o rename deu EPERM (Achado 3).
+  - 3ª (09:32, `logs/trilho-21-docker-3.log`, 1c87f9b = 9ce2496 com o ticket-16 0332466 e o 08): **tudo passou** (9
+    casos): arquivar move com o sincronizador rodando, a pasta chega ao B e sai do lugar antigo lá, com o
+    `archived_at`; recusa com a replicação parada; a cópia empurra o ramo do par; remoto quebrado sai com erro e a
+    vigia notifica; os contêineres saem.
+- Sem Docker em 1c87f9b: 21-* e afetados (04, 05, 20, 07-kit-sem-docker): 78/78.
 
 ## O que espera o 08
 

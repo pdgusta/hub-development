@@ -430,3 +430,5 @@ node --test agents/code/test/05-frontmatter.test.mjs
 - CRLF: troca por `node -e` não casa em arquivo CRLF (o 27 ponta a ponta); usar o Edit (ler antes).
 - `maestri ask` demora quando o outro responde direto: mandar em segundo plano.
 - 09:21 (18): rodada curta de evidência PASSA em 31afe63 (Fiel). Resta só o Codex depois das 12h15 (commit de evidência + rodada curta + aviso ao Rebite).
+- 09:33 (25): maestro: janela quieta depois do 21 do Trilho; a Brasa roda o 22 e a fatia 2 do 08; depois eu rodo a 1ª rodada real do 25 (corredor, fases 1-3). Só eu e a Brasa ficam. Esperar o aviso do maestro. 37 (Cinzel): respondi sobre o núcleo (nota pelo shell conta como mudada; aviso em 'Antes de terminar:'; avisados é por turno; falso positivo do sincronizador).
+- 09:39 (25): janela aberta. Brasa: 22 e fatia 2 do 08; depois eu. Não mandar mensagem a Rebite, Fiel, Trilho, Cinzel, Fielzinho. Ao fim: tabela de pico por fase ao maestro.

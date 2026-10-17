@@ -199,3 +199,12 @@ Fielzinho sem cota até 12h15. Leituras dele pendentes: 17 r2, 11 r1, mais a fil
 16 final: VOLTA (conserto 1: texto resolvido vira binário descartado; fonte). 23 REABERTO: harness-real (29) vermelho, 23-kit sem comHarness (meu erro na r2). 24: revisando.
 18 evidência 31afe63: PASSA. 24 r1: sem conserto próprio; pende Codex e o conserto 2 do 23 (detector 29).
 23 r3: PASSA (detector 7/7 em 23 e 24). Cinzel avisado.
+16 r2 (0332466): PASSA. Trilho avisado.
+
+## Salvo — 2026-10-17 ~11h25 (janela quieta)
+Nada em curso. Retomada completa em etapas/retomada-Fiel.md (fila: Codex de 11, 24 e 18 depois das 12h15; leituras do
+Fielzinho; novos pedidos). Sem trava nem Docker meu; sondas apagadas.
+
+## Salvo — 2026-10-17 ~11h25 (janela quieta)
+Nada em curso. Retomada completa em etapas/retomada-Fiel.md (fila: Codex de 11, 24 e 18 depois das 12h15; leituras do
+Fielzinho; novos pedidos). Sem trava nem Docker meu; sondas e temporários apagados.

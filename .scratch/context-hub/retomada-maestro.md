@@ -26,6 +26,8 @@ Por isso o diário abaixo registra cada evento com hora.
 - Trail-Code (`pesquisa-trail-code.md`): ensaio num repositório de iniciativa (`--dry-run`, `--no-global`,
   `DO_NOT_TRACK=1`) e as ideias do formato de decisão para o acervo. Gustavo aceitou deixar para depois do 25.
 
+- Proxy de MCP que repasse o `instructions` (achado do 22).
+
 ## Plano da fatia 2 do 08 (Gustavo, 2026-10-17 ~09h30: "no momento oportuno pause tudo e deixe menos agentes")
 
 Momento: logo depois que a Brasa terminar o Docker do 22 (ou na primeira calmaria). Passos: (1) cada recruta chega a
@@ -36,6 +38,9 @@ do 08 com o medidor; em seguida, na mesma janela, a Vela roda a 1ª rodada real 
 `codex`) e manda "leia a sua retomada". Avisar o Gustavo no fim com os números.
 
 ## Para rever com o Gustavo
+
+- (técnica, 22) O mcp-proxy do spec não repassa o `instructions` do MCP do banco ao cliente; o contrato chega ao
+  cliente pela regra curta das ferramentas e pela configuração global do kit de cliente. Consertar ou trocar o proxy: radar.
 
 - (**muda o spec**, 18) Várias sessões no mesmo trabalho: quem conduz mantém a `retomada.md`; cada recruta, a sua `work/passagem-<terminal>.md`; o início abre as duas (o spec dizia nota única).
 
@@ -247,3 +252,5 @@ nuvem.
 - 09:35: janela: Cinzel (`claude --resume aecf4ac4-c129-472d-bce0-94c103e3df86`), Fiel (`claude --resume 17b1605d-5943-4a07-b008-39cfc958ac1d`) e Fielzinho (/quit; religar `codex` + retomada) encerrados. Falta o Trilho (Docker do 21).
 - 09:39: janela aberta: Trilho encerrado (`claude --resume ee794bc3-1b7b-41f5-90b1-6b43b5679eaa`); 21 3ª rodada tudo passou; 16 passou no Fiel (rodada 2), aviso ao Rebite caiu no PowerShell: reenviar ao religar. 2,6 GB livres. Brasa: 22 e fatia 2; Vela: 25.
 - 09:43: Gustavo: Trail-Code para depois do 25, no radar.
+- 09:47: ronda na janela; Brasa com a trava (22 desde 09:39); 1,6 GB livres.
+- 09:49: 22 Docker verde (15/0), Claude e Copilot passam; proxy não repassa instructions (aceito, radar); pico 715 MB livres. Brasa na fatia 2 do 08.

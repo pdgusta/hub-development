@@ -1,31 +1,31 @@
-# Retomada do Trilho (construtor), gravada em 2026-10-17 ~09h50 (São Paulo)
+# Retomada do Trilho (construtor), gravada em 2026-10-17 ~09h45 (São Paulo), antes da janela quieta da fatia 2
 
 Leia antes: `etapas/regras-da-construcao.md` (inteiras), `etapas/fila-pesada.md`, os tickets 21 e 16, as costuras
 `etapas/costuras-21-Trilho.md` e `etapas/costuras-16-Trilho.md`. Responda em pt-BR, frases curtas. Maestro =
 "Claude Code"; revisor = "Fiel"; integrador = "Rebite"; construtores: Brasa, Vela, Cinzel.
 
-## Agora (09:50)
-### A. Ticket 16 (vigia): com o Fiel, rodada final 2 (conserto 0332466)
-- Worktree `C:/context-hub-wt/ticket-16`, ramo `ticket-16`, HEAD 0332466 (integracao e98a891 junta). 19/19
-  (`node --test agents/code/test/16-vigia.test.mjs`, ~5 min; não editar a skill com a suíte rodando). Docker 8ª
-  rodada tudo passou (`logs/trilho-16-docker-8.log`, 280b778; o conserto 0332466 só filtra texto, sem Docker de novo).
-- Rodada final do Fiel (parecer-16-Trilho.md): VOLTA por 1: texto resolvido virava binário descartado; feito
-  (isPlainText + .canvas). Pedido de nova leitura enviado ~09h48.
-- Com o passa: `maestri ask "Rebite" "Trilho: ticket 16 passou ..."` (ramo, testes 19/19 e Docker 8ª, relatório
-  `etapas/relatorio-16-vigia.md`, parecer `etapas/parecer-16-Trilho.md`). Junta o 16; o 17 da Vela sai da espera.
-### B. Ticket 21: conserto do EPERM 9ce2496; na fila (item 1) para a 3ª rodada do Docker
-- Worktree `C:/context-hub-wt/ticket-21`, ramo `ticket-21`, HEAD 9ce2496 (tem o ticket-16 só até 81b4a3d).
-- Causa provada: fs.watch do chokidar numa SUBPASTA bloqueia o rename da pasta-mãe no Windows. Conserto: rename;
-  com EPERM, arquivo por arquivo e rmdir da árvore velha; arquivo aberto por editor (sem partilha de apagar): devolve
-  e recusa. `21-arquivar.test.mjs` 10/10. Relatório atualizado (Achado 3; maestro pediu: estado parcial visível no
-  outro par durante a mudança, fim consistente).
-- Próximo: na vez (Brasa tem a trava, 09:16), `git merge ticket-16` no 21 se o 16 passou (ou integracao, se o 16 já
-  foi juntado), testes leves 21-* e afetados, Docker `pwsh -NoProfile -File agents/code/test/21-arquivar.test.ps1`
-  > `etapas/logs/trilho-21-docker-3.log` (nome novo! não sobrescrever). Soltar a trava e avisar o MAESTRO (ordem 09h50: ele abre a janela da fatia 2).
-  Verde: relatório, comentário no 21, Fiel.
+## Agora (09:45) — sem trava minha; nenhum contêiner nem pasta de ensaio minha sobrando
+### A. Ticket 16 (vigia): PASSOU no Fiel (rodada 2, 0332466); entregue ao Rebite
+- Ramo `ticket-16`, HEAD 0332466 (integracao e98a891 junta). 19/19; Docker 8ª tudo passou (`logs/trilho-16-docker-8.log`).
+- Aviso ao Rebite enviado ~09h44, mas o terminal dele respondeu só com o prompt do PowerShell (Claude dele talvez
+  fechado na janela quieta). **Ao voltar: `maestri check "Rebite"`; se não chegou, reenviar** o aviso (ramo, 19/19,
+  Docker 8ª, relatório `etapas/relatorio-16-vigia.md`, parecer `etapas/parecer-16-Trilho.md`, HUB_MCP_BANCO_DIR =
+  `C:/Projetos/hub-mcp-banco-wt/ticket-11`).
+### B. Ticket 21: Docker 3ª rodada TUDO PASSOU; falta pedir a revisão ao Fiel
+- Worktree `C:/context-hub-wt/ticket-21`, ramo `ticket-21`, HEAD 1c87f9b (9ce2496 + merge do ticket-16 0332466).
+- Testes: 21-* e afetados (04, 05, 20, 07-kit-sem-docker) 78/78; Docker `logs/trilho-21-docker-3.log` 9 PASSA.
+- Relatório `etapas/relatorio-21-arquivar-e-copia.md` em dia (Achado 3: EPERM pelo fs.watch numa subpasta; arquivo
+  por arquivo; estado parcial visível no outro par, fim consistente).
+- **Próximo:** `maestri ask "Fiel" "Trilho: ticket 21 pronto para revisão no ramo ticket-21 (1c87f9b), relatório
+  etapas/relatorio-21-arquivar-e-copia.md"`. Junção só depois do 16 juntado (`git merge integracao` no 21 então,
+  testes leves de novo).
+- Comentário no ticket 21: falta registrar o Docker 3ª verde e o pedido ao Fiel.
+
+## Para o maestro (achados soltos)
+- Em %TEMP% sobram ~540 `hub-ensaio-27-*` e ~30 `hub-ensaio-20-*` (não são minhas; os testes do 20 e do 27 não limpam).
 
 ## Fechados
-12, 13, 33, 35 (juntados). 15 passou no Fiel (3d34bd1), com o Rebite.
+16 (passou no Fiel, com o Rebite). 12, 13, 33, 35 (juntados). 15 passou no Fiel (3d34bd1), com o Rebite.
 
 ## Decisões desta sessão
 - Piora = item sobe de nível em relação à passada anterior; item novo conta como `ok`; desce e volta a subir notifica
