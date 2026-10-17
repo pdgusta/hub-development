@@ -21,6 +21,14 @@ relatórios em `etapas/`, os commits de `integracao` e do repositório de planej
 `visuais-pelo-designer`, `visual-diagrama-no-centro`, `legibilidade-dos-titulos`, `headless-edge-para-qa-visual`.
 Por isso o diário abaixo registra cada evento com hora.
 
+## Plano da fatia 2 do 08 (Gustavo, 2026-10-17 ~09h30: "no momento oportuno pause tudo e deixe menos agentes")
+
+Momento: logo depois que a Brasa terminar o Docker do 22 (ou na primeira calmaria). Passos: (1) cada recruta chega a
+um ponto seguro, grava a retomada e diz "salvo"; (2) o maestro manda `/exit` a todos menos a Brasa (o nó e as ligações
+ficam no canvas; o Fielzinho, `/quit`; o Portal já está parado); (3) a Brasa, com a trava: `wsl --shutdown`, fatia 1+2
+do 08 com o medidor; (4) depois, o maestro religa cada um (`maestri ask "<nome>" --raw "claude"`, no Fielzinho
+`codex`) e manda "leia a sua retomada". Avisar o Gustavo no fim com os números.
+
 ## Para rever com o Gustavo
 
 - (**muda o spec**, 18) Várias sessões no mesmo trabalho: quem conduz mantém a `retomada.md`; cada recruta, a sua `work/passagem-<terminal>.md`; o início abre as duas (o spec dizia nota única).
@@ -224,3 +232,4 @@ nuvem.
 - 09:14: Docker do 16 tudo passou (20 casos), revisão final pedida. 21: rename bloqueado pelo watch do CLI numa subpasta; arquivar passa a mover arquivo por arquivo (aceito).
 - 09:19: ronda; Brasa com a trava (22, 09:16); Vela 44%, Cinzel 43%, Fiel 43%: salvar; 1,0 GB livres.
 - 09:24: 24: Claude e Copilot com harness real passaram (Codex às 12:15); 23 passou, espera bloqueios. Vela e Cinzel limpos; Cinzel pega o 37 até 12:15.
+- 09:25: Gustavo: fatia 2 do 08 com menos agentes; plano na retomada (depois do 22: todos salvam, /exit em todos menos a Brasa, fatia 2, religar). Vela parada esperando a trava.
