@@ -215,3 +215,6 @@ nuvem.
 - 08:40: costuras do 25 aceitas (fases, medidor, corte 700 MB, mem_limit 384 MB nos CouchDB do ensaio); ideia passada à Brasa para o 22.
 - 08:43: 23 (esqueleto) em revisão (e9dcef7, 13/13). Achado: Copilot só tem a opção de linha de comando para instruções do MCP (24/26). Cinzel no 24 sobre o ticket-23.
 - 08:46: teste do 24 pronto (Cinzel). Fila: Rebite (suíte do 08, até ~08:55), Trilho (21), Cinzel (24 Claude+Copilot), Brasa (22), Rebite; após 12:15 os Codex (11, 24, 18).
+- 08:47: ronda; Rebite com a trava (suíte do 08, 08:30); todos ≤38%; 1,9 GB livres; nada a destravar.
+- 08:51: 16 com os cenários do 08 (280b778, 19/19); na vez do Trilho: Docker do 16 e depois do 21.
+- 08:55: 18 voltou na rodada 1 (fim cobrava quem não gravou; raiz no 27), conserto e1c5eac, rodada 2 pedida; Vela na fila depois do Cinzel.

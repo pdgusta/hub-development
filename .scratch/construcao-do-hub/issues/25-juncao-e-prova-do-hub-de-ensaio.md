@@ -1,7 +1,7 @@
 # 25: Junção e prova do hub de ensaio inteiro
 
 Type: task
-Status: ready-for-agent
+Status: claimed
 Etapa: 11 (junção)
 Blocked by: 13, 21, 22, 24
 

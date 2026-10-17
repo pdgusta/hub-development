@@ -80,6 +80,29 @@ Rodadas:
   evidência (procura por `ghu_|gho_|sk-|refresh_token|access_token`). Modelos: haiku e claude-haiku-5.5.
 - **Codex: pendente**, depois das 12h15 (cota), junto com o do Cinzel.
 
+## Rodada 1 do Fiel: volta, 1 conserto (e1c5eac)
+
+- **O fim cobrava a nota de quem não gravou** (`etapas/parecer-18-Vela.md`). O `mudados` do núcleo (27) pegava todo
+  arquivo do hub com data depois da marca: a gravação de outra sessão, ou do sincronizador, devolvia quem só
+  conversou, e o `last_agent` podia carimbar quem não escreveu.
+- Conserto, no núcleo (resolve o 27 junto):
+  - modo novo `fim-da-resposta.mjs <h> anota`, no hook depois da ferramenta (Claude Code e Codex `PostToolUse`;
+    Copilot `postToolUse`). Os caminhos saem dos adaptadores da guarda (14) e entram no arquivo da sessão
+    (`gravados`); a marca de um turno novo zera a lista;
+  - o fim, a cobrança da nota e o `last_agent` usam só essa lista;
+  - carga da guarda dentro do `anota`: se ela não carrega, a marca e o fim seguem;
+  - fragmentos: `claude.json` novo (PostToolUse `Write|Edit|MultiEdit`, no `settings.json`; marca e fim seguem no
+    mod), `PostToolUse` do `apply_patch` no Codex, `postToolUse` de `create|edit|apply_patch` no Copilot;
+  - de passagem (ressalva 3): só `<iniciativa>/retomada.md` e `work/passagem-*.md` são nota; `research/retomada.md`
+    é nota comum.
+- Testes: ajudante `agents/code/test/gravacao.mjs` (o evento de gravação de cada harness). No 27 e no 18, as gravações
+  passam pela sessão. Casos novos: duas sessões (a que só conversa solta, quatro paradas sem nada na vigia, sem
+  `last_agent` dela; a que gravou é devolvida) e `research/retomada.md`. O de duas sessões falha no código antigo.
+  18, 27, 17 e 19: 69/69. Provas reais (18, 19, 27) com o preparo ajustado (fragmento do Claude; contagem do Codex).
+- **Limite:** gravação por shell (Codex pelo `Bash`, Copilot pelo `powershell`) não é anotada e não é conferida. As
+  provas pedem `apply_patch`/`create`. O `PostToolUse` do `apply_patch` no Codex não foi visto ainda no real.
+- Falta: o real de novo (Claude e Copilot pela fila; Codex depois das 12h15), commit só de evidência.
+
 ## Fora deste ticket
 
 - Banco fora com o MCP parado (pede o fork e o Docker): só a regra no `AGENTS.md`.
