@@ -349,3 +349,4 @@ nuvem.
 - 17:21: Codex do 22 PASSA (17:19, luna; pico 1.096 MB livres). Cinzel religado (Codex do 24). Fiel religa ao fim da janela para as 3 rodadas curtas.
 - 17:25: Codex do 24 PASSA (17:20-17:21, luna). Vela religada: 25 (fases 4, 5, 7 + Codex). Brasa e Cinzel fecham relatórios e saem.
 - 17:25: Brasa fora (`claude --resume f538f66e-6cb5-4a2d-bc3d-16815b8e0c68`); 22 evidência 22811cb; pedido de rodada curta no topo de etapas/retomada-Brasa.md (mandar ao Fiel quando religar).
+- 17:26: Cinzel fora (24 evidência 2000575; pedido ao Fiel em retomada-Cinzel.md). No canvas: Vela (25), Rebite, maestro.
