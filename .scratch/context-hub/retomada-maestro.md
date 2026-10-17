@@ -11,6 +11,16 @@ tomada, sem atrapalhar o resultado final, pode seguir: registre no ticket dono (
 parcial para abrir e fechar aplicativos e processos da execução. **Contexto do maestro: nunca passar de 700k tokens**;
 o auto-compact está ligado em 600k (configuração do Gustavo), então a compactação é automática; mantenha esta retomada em dia para ela. Memória `autonomia-na-construcao`.
 
+## Ao fim da execução (ou numa pausa bloqueante que pare tudo)
+
+Pedido do Gustavo (2026-10-17 ~04h40): **duas peças visuais que resumam como foi a execução, cada detalhe**. O que é
+cada uma, o detalhe, o tipo: o maestro decide, só nessa hora (não planejar antes). Para cada peça, um time enxuto:
+**Designer + Revisor**, cada um com até 2 subagentes; as duas peças rodam em paralelo (2 Designers + 2 Revisores).
+Fontes para o detalhe: este diário, `etapas/registro-de-juncoes.md`, os `## Comments` dos tickets, os pareceres e
+relatórios em `etapas/`, os commits de `integracao` e do repositório de planejamento. Memórias que valem:
+`visuais-pelo-designer`, `visual-diagrama-no-centro`, `legibilidade-dos-titulos`, `headless-edge-para-qa-visual`.
+Por isso o diário abaixo registra cada evento com hora.
+
 ## Para rever com o Gustavo
 
 - (técnica, ~04h35) Pontos abertos da faixa 5 decididos no 09: `delete_note` exige `base_rev` (o spec deixava a guarda em aberto); append/prepend sem base gravam como filha da versão lida.
@@ -99,6 +109,20 @@ nuvem.
 
 ## Diário (mais novo embaixo)
 
+- (antes de 01h; ver ticket 16 e registro-de-juncoes) 2026-10-16: recomeço ~14h30, revisão do spec, `/implement-spec`;
+  etapas 0 e 1 completas; 15 tickets resolvidos até 00h53; portal fechado 00h24 por RAM; Codex sem cota até 01h34.
+- ~01h08: maestro limpo retoma; duas suítes pesadas juntas (Brasa 00h58, Trilho 01h06, a trava sobrescrita), 1,9 GB
+  livres; Trilho para a dele. Brasa limpa ~01h15.
+- ~01h35: 31 e 32 juntados (Vela); ponta a ponta do Claude do 31 fica com a Vela.
+- ~01h50: 32 resolvido; rodada das sobras do link enviada pelo Maestri Chat.
+- ~02h00: Trilho limpo; 13 na revisão; teste único do gemini fez 62 pedidos (limite 250).
+- ~02h05: 13 passa (r1). A Vela acha o buraco do CRLF na guarda (14/20) pela ponta a ponta do 31; conserto 050fb14.
+- ~02h15: ticket 34 (leitura tardia do 19 pelo Fielzinho). ~02h25: ticket 35 (ressalva do 31), Trilho.
+- ~02h30: Vela limpa; 13 resolvido (236b3ef). ~02h50: 31 resolvido (e82ce65) com a prova real do Codex do 20.
+- ~03h00: rodada do fork do MCP enviada. ~03h10: 07 e 34 resolvidos (763813a): abre 08, 09, 28.
+- ~03h15: Brasa no 08, Vela no 28. ~03h30: Gustavo responde pelo celular 1A 2A; ticket 33.
+- ~03h50: Codex real: 12 passa (search aprovada no codex.toml), 15 falha: a `read` do hub-busca fura o aviso; decidido
+  expor só a `search`. ~03h55: Fiel limpo.
 - ~04h: mandato do Gustavo recebido.
 - ~04h15: limite 4 construtores e 1 subagente por recruta; Cinzel recrutado para o 09 (a Vela fica no 28).
 - ~04h20: mais até 3 subagentes Haiku 5.5 médio por recruta (tarefa simples ou QA); regras e recrutas avisados.
