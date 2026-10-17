@@ -82,3 +82,5 @@ harness de verdade". Um subagente por vez (tarefa leve) e até três Haiku de es
 
 - Tickets 01, 29 e 07: juntados pelo Rebite.
 - Ticket 08: passou; a junção está com o Rebite.
+- A worktree do fork precisa do submódulo `lib/livesync-commonlib` (`git submodule update --init`); sem ele o build
+  do passo 05 falha ("Could not resolve ../lib/livesync-commonlib"). Feito às 08h16.

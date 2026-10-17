@@ -207,3 +207,5 @@ nuvem.
 - 08:01: 21 com código e testes leves (75/75); fila: Rebite (agora), Trilho (Docker 21), Brasa (22), Rebite (junções), Cinzel (Codex do 11 após 12:15).
 - 08:10: 18 em 68bf70b (31/31 com o 17; cabeça 1.869/2.000); Vela na fila depois da Brasa.
 - 08:11: 15 resolvido (e2b7607, 210/0). 08 juntado (e98a891), suíte na fila. Trilho: merge do 08 no 16 e rodada final; depois o 17 junta.
+- 08:19: ronda; Brasa com a trava (22, 08:17); Trilho 44%: salvar no próximo ponto; 1,7 GB livres.
+- 08:23: Trilho limpo e retomado (21: EPERM no rename consertado 22abdd2, 2ª rodada na fila; 16: falta ligar os cenários do 08).

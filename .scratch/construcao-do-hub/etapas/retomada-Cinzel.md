@@ -48,7 +48,13 @@ Leia antes: `etapas/regras-da-construcao.md` (inteiras, com os "Achados comuns")
 ## Ticket 23: kit de par, a forma (desde ~08h20)
 
 - Hub: worktree `C:/context-hub-wt/ticket-23`, ramo `ticket-23` de `integracao` e2b7607.
-- Costuras em `etapas/costuras-23-Cinzel.md` (3 perguntas ao maestro). Próximo passo: com as respostas, `tdd` pelo
+- Costuras em `etapas/costuras-23-Cinzel.md`, respondidas (as três como recomendado). Relatório em
+  `etapas/relatorio-23-kit-de-par-a-forma.md` (fatos de fonte e sonda do app-server).
+- Feito (tdd, `agents/code/test/23-kit.test.mjs`, 6/6, commit no ramo): instalar.ps1, registro da casa (`kit/casa.mjs`),
+  contrato, skills gerais por junction (8 skills marcadas `metadata.camada: geral`), MCP de busca e banco nos três.
+- Falta: hooks (fragmentos + hooks.state pelo app-server numa cópia temporária), GSD, Codex (sandbox), 00 conferir,
+  10-manutencao.ps1, copilot-instructions com texto além do GSD (parar e mostrar).
+- Próximo passo antigo (já feito): com as respostas, `tdd` pelo
   `23-kit.test.mjs` sem harness; antes de codar o MCP, ler por curl a doc do Claude e do Copilot sobre variável de
   ambiente no cabeçalho e a chave do Copilot para as instruções do servidor.
 - O Codex do 11 tem prioridade às 12h15.

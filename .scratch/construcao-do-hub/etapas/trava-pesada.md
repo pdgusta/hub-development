@@ -1,1 +1,0 @@
-- Trilho (construtor), 2026-10-17 08:05: Docker do 21 (21-arquivar.test.ps1, hub-ensaio-21-a/b, 5996/5997). Ao fim, aviso a Brasa.
