@@ -103,3 +103,12 @@ Rodada 1, 07:28 a 07:36, com a trava; uma sessão por vez, nas condições do av
 | copilot-sem, copilot-com | só `lastLoggedInUser` e `loggedInUsers` de `%USERPROFILE%\.copilot\config.json` (o token fica no cofre do Windows) | idem | idem |
 
 Hashes antes e depois: `evidencia-11/hashes-claude-codex-copilot-sem-copilot-com.json`.
+
+## Skills da máquina fora da evidência (2026-10-17 ~11h15, decisão do maestro 07:58): 4bc2c23 e 4be0679
+
+Ajudante `agents/code/test/ponta-a-ponta/skills-da-maquina.mjs`: troca o nome de cada skill das pastas reais
+(`~/.claude/skills`, `~/.agents/skills`, `~/.copilot/skills`) por `SKILL-DA-MAQUINA`, **por estrutura**: as strings das
+listas do init do Claude Code e os objetos de `data.skills` do Copilot com `path` numa dessas pastas. A troca no texto
+inteiro (a do 24) pegava palavra comum: a skill `research` virava `SKILL-DA-MAQUINA` no contrato do hub ("os blocos
+`research/`"). Evidência já gravada limpa a partir do commit anterior: Copilot com a opção, 585 trocas; Claude e Copilot
+sem a opção, nenhuma (o Claude rodou com `CLAUDE_CONFIG_DIR` de ensaio; o Copilot sem a opção não manda a lista).

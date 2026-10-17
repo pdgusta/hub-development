@@ -62,3 +62,11 @@ Sem harness real (aceito pelo maestro: o que muda não depende da ferramenta; o 
   e nota pelo shell" agora esperam o aviso, sem falta, e soltam na parada seguinte. O teste "nota pelo shell sem campo é
   devolvida" saiu (contrariava o conserto).
 - `37-gravacao-pelo-shell.test.mjs` 13/13. Com 14, 18, 27 e harness-real: **113/113** (`logs/37-testes-r2.log`).
+
+## Rodada 3 (ressalva da rodada 2, a pedido do maestro): f8e12e3
+
+A nota de fora só cala a cobrança e gera aviso quando é a nota de quem responde, numa iniciativa onde a sessão gravou
+pela ferramenta. A que não calou nada (sessão que só leu pelo shell, passagem de outro recruta) não gera aviso nem
+falta. Testes: a sonda do Fiel (só leitura + nota de fora sem campo) agora solta sem aviso; novo: passagem de outro
+recruta mudada fora não cala a cobrança da minha nota. `37` 14/14; com 14, 18, 27 e harness-real **114/114**
+(`logs/37-testes-r3.log`).

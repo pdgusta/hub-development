@@ -76,3 +76,23 @@ citar login ou harness com modelo. Teste novo da exceção. `harness-real.test.m
 (e7d38ae) (Fiel). Árvore limpa.
 Ressalva: a exceção olha só o texto do arquivo de teste; o kit roda por `pwsh` (não importado), então um login que
 entrasse no `08-harnesses.mjs` não derrubaria a exceção. Hoje o kit não copia login (lido na r1).
+
+## Rodada curta (lição do 21, caminho longo) — 2026-10-17 ~11h20 (Fiel sozinho; leitura do Fielzinho pendente)
+
+Ramo `ticket-23`, HEAD e6e5faa (levado ao `ticket-24` 5325a4b por merge). **Veredito: PASSA**, com 1 pedido de
+limpeza antes da junção e 2 ressalvas.
+
+- `instalar.ps1`: hub, casa e `.env` pelo `realpathSync.native` (`Longo`). Teste novo do nome curto: nada na casa com
+  `~N`, o hub chega no caminho longo. Fiel: `23-kit + harness-real` 22/22.
+- **Limpar antes do Rebite:** a worktree `C:/context-hub-wt/ticket-23` tem uma instalação do kit solta na raiz,
+  fora do git: `.agents/`, `.claude/` (com `CLAUDE.md` e skills), `.codex/AGENTS.md`, `.copilot/`, `.hub-kit/registro.json`,
+  de 10:40 (antes do commit de 10:50). O registro mostra casa e hub = a própria worktree (links para
+  `c:\context-hub-wt\ticket-23\agents.md`). Minha rodada dos testes não a recriou (mtime igual). Desfazer pelo kit
+  (`instalar.ps1 -Casa C:/context-hub-wt/ticket-23 -Desfazer`) e conferir `git status` limpo.
+- Ressalva 1 (a causa provável da sobra): casa vazia vira a pasta atual. `curto('')` no teste devolve `C:\""`
+  (conferido: `for %I in ("") do @echo %~sI`), e o `Longo` não confere a saída do node: se o node falhar, `$Casa` fica
+  vazia. Melhor: o `Longo` recusar saída vazia ou código ≠ 0, e o teste afirmar `~N` também na casa e no `.env`
+  (hoje só no hub).
+- Ressalva 2 (do relatório): o `03-busca.ps1` chamado sozinho ainda usa o `Resolve-Path`.
+- Fechamento (~11h45): instalação solta desfeita pelo kit, `git status` limpo; guarda do `Longo` em a9643c6 (para o
+  kit se o node não devolve caminho). Fiel: `23-kit + harness-real` 22/22. A ressalva 1 saiu; o PASSA segue.

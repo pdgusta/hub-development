@@ -54,3 +54,24 @@ sem conflito (`git merge-tree`).
 - `node --test agents/code/test/21-*.test.mjs agents/code/test/harness-real.test.mjs` (detector do 29): 25/25,
   com o `Assertion` do observador dublê no meio da saída. `git status` limpo depois.
 - Sondas em `%TEMP%\hub-ensaio-21-fiel-w` (apagada; os dois node da sonda encerrados por PID).
+
+## Rodada 2 — 2026-10-17 ~11h55 (Fiel sozinho; leitura do Fielzinho pendente, depois das 12h15)
+
+Ramo `ticket-21`, HEAD 462b55e (consertos f32bd4c e 462b55e; o `ticket-16` 6a0ab17 juntado). **Veredito: PASSA**,
+com um passo antes do Rebite.
+
+- Conserto 1 feito: `isAbsolute` no `relative` nativo; casos `Z:/fora/pasta` e `Z:\fora\pasta` recusam.
+- Conserto 2 feito: Docker 4ª (`logs/trilho-21-docker-4.log`): o sincronizador de A tem o mesmo PID antes e depois do
+  arquivar (233468) e uma nota nova em A chega ao B; o hub de A está no caminho longo. O `Assertion` era do dublê no
+  TEMP curto: o dublê agora observa pelo caminho longo, e os testes conferem que ele segue vivo.
+- 462b55e: a description do `arquivar/SKILL.md` tinha o mesmo `: ` do 16; as 10 skills leem pelo `separar`.
+- Fiel: `21-* + harness-real` 25/25, sem `Assertion` na saída; `git status` limpo.
+- **Antes do Rebite:** a `integracao` já tem o 22 (4a47576), e o `git merge-tree` dá **CONFLICT (add/add)** em
+  `agents/code/kit/par/env/10.env.modelo`. Juntar a `integracao` no ramo e deixar as duas metades (as linhas do proxy
+  do 22 e as da cópia do 21); repetir os testes do 21 e os do 22 (`22-kit-cliente`, `22-proxy-sem-docker`), que leem
+  esse modelo. Mandar a ponta: confiro só o arquivo e os testes.
+- Junção da `integracao` (~12h05), ponta 6b6c65e: o ramo contém a `integracao` (4a47576, com o 22); o
+  `10.env.modelo` tem as duas metades (proxy em cima, cópia embaixo), sem marca de conflito; só o `10-proxy.ps1` e
+  o `proxy.psm1` citam o modelo (nos comentários). Fiel: `21-* + 22-kit-cliente + 22-proxy-sem-docker + harness-real`
+  29/29; `git status` limpo; nenhum `mcp-proxy` de pé. **PASSA**; pode ir ao Rebite (a junção do 21 segue esperando o
+  16 resolvido, como diz o ticket).

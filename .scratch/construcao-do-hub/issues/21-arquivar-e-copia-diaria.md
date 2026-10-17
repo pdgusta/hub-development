@@ -27,3 +27,6 @@ Blocked by: 08, 16
 - 2026-10-17 ~09h45 (Trilho): Docker 2ª rodada: o arquivar recusou "em uso" de novo. Causa provada: o fs.watch do sincronizador numa subpasta bloqueia o rename da pasta-mãe no Windows. Conserto 9ce2496 (aval do maestro): arquivo por arquivo e a árvore velha sai; arquivo aberto por editor devolve tudo e recusa. 21-arquivar.test.mjs 10/10. Falta a 3ª rodada do Docker (fila), o 16 resolvido e o Fiel.
 - 2026-10-17 09:45 (Trilho): Docker 3ª rodada tudo passou (1c87f9b, `etapas/logs/trilho-21-docker-3.log`); 21-* e afetados 78/78. Próximo: revisão do Fiel; junção depois do 16.
 - 2026-10-17 ~10h00 (Trilho): revisão pedida ao Fiel (ramo ticket-21, 1c87f9b).
+- 2026-10-17 10:55 (Trilho): consertos da r1 do Fiel em f32bd4c (outro disco; Docker 4ª tudo passou com o CLI de A de pé e nota nova ao B) e 462b55e (SKILL.md sem ': '); rodada 2 pedida ao Fiel.
+
+- 2026-10-17 ~11h30 (Trilho): merge de integracao (com o 22) em ticket-21, 6b6c65e; 10.env.modelo com as duas metades (proxy e cópia). 21-* e 22-kit-cliente + 22-proxy-sem-docker 23/23 (etapas/logs/trilho-21-juncao-22.log). Ponta mandada ao Fiel.

@@ -54,7 +54,7 @@ a ponta do ramo é a do parecer (ou que depois dela só entrou evidência ou `gi
 - 18 (Vela): passou em f36df85; leva o 17 dentro. Depois do 16 e do 17. Ainda vêm commits só de evidência (real
   Claude+Copilot; Codex depois de 12h15). Troca o núcleo do fim do 27 (PostToolUse, fragmentos novos): atenção aos
   testes do 27 e ao 23-kit.
-- 23 (Cinzel): passou r3 em a419182 (harness-real 7/7, 23-kit 14/14). Só com 11, 15, 17, 18, 20 e 27 resolvidos.
+- 23 (Cinzel): passou rodada curta em a9643c6 (antes a419182) (harness-real 7/7, 23-kit 14/14). Só com 11, 15, 17, 18, 20 e 27 resolvidos.
   Na junção, rodar de novo `agents/code/test/23-kit.test.mjs` (lê os fragmentos de 17 e 18 do repositório).
 - 11 (Cinzel): espera o Codex das 12h15; ainda não avisado como passado.
 - 16 (Trilho): ainda não avisado como passado.
@@ -83,4 +83,12 @@ a ponta do ramo é a do parecer (ou que depois dela só entrou evidência ou `gi
 - Na fila: "janela quieta feita: 22, fatia 2 do 08 e 25 fases 1-3 verdes" — a fatia 2 do 08 passou; se vier commit só
   de evidência do 08, juntar e comentar no ticket 08 (tira a ressalva 1).
 - Maestro: sou o 1c da fila, logo depois do Trilho (Docker do 21). Lição do SKILL.md já nas regras.
-- 11h: 37 avisado pelo Cinzel (4b695d5, passa r2; feito sobre ticket-18 31afe63): juntar só depois do 18. Mexe em nucleo.mjs, fim-da-resposta.mjs, nota.mjs e nos três fragmentos do fim. Na junção, conferir que a base 18 juntada é a mesma (31afe63 ou a ponta do 18 que entrar) e rodar 14, 18, 27, 37.
+- 11h: 37 avisado pelo Cinzel (rodada curta passa, ponta f8e12e3, antes 4b695d5; 114/114; feito sobre ticket-18 31afe63): juntar só depois do 18. Mexe em nucleo.mjs, fim-da-resposta.mjs, nota.mjs e nos três fragmentos do fim. Na junção, conferir que a base 18 juntada é a mesma (31afe63 ou a ponta do 18 que entrar) e rodar 14, 18, 27, 37.
+- 11:02: trava minha; suíte do 22 em segundo plano (log etapas/logs/juncao-22-suite.log). 16 consertado pelo Trilho (6a0ab17), vai ao Fiel; esperar o passa. Ao soltar: avisar o próximo da fila (ver fila-pesada.md).
+- 11:45: 16 passou rodada curta (ponta 6a0ab17; só SKILL.md mudou desde 0332466). Sem conflito com 4a47576, nenhum arquivo em comum. Juntar depois da suíte do 22; rodar 16-vigia e 12-busca (sem trava) e a suíte com a trava (fila item 1: suíte do 16, depois a do 17). Docker não repetir (8ª rodada, idêntico).
+- 12:05: 21 avisado pelo Trilho (6b6c65e = parecer r2 + conferência da junção com o 22, PASSA; contém 4a47576 e 6a0ab17;
+  10.env.modelo com as duas metades; sem conflito com 4a47576). Contém também fce0529 (minha junção desfeita do 16):
+  conteúdo superado pelo 6a0ab17, só polui o histórico; avisar o maestro. Plano: depois da suíte do 22 verde, juntar
+  16 (6a0ab17) e 21 (6b6c65e), testes leves (16-vigia, 12-busca, 21-*, 22-kit-cliente, 22-proxy-sem-docker) e UMA
+  suíte para os dois, com a trava. Docker do 21 não repetir (4ª verde).
+- 11:25: 22 RESOLVIDO (4a47576, 215/206/9). 16 (30b735f) e 21 (fdd3760) juntados; árvore = ticket-21. Suíte dos dois com a trava em segundo plano (log etapas/logs/juncao-16-21-suite.log). Construtores ainda não avisados de 4a47576/fdd3760.

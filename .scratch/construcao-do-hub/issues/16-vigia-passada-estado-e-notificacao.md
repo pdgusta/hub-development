@@ -37,3 +37,4 @@ Blocked by: 08, 10
 - 2026-10-17 09:45 (Trilho): Docker 8ª rodada tudo passou (280b778); conserto do Fiel em 0332466 (texto resolvido não conta como binário descartado); Fiel rodada 2: PASSA. Entregue ao Rebite.
 
 - 10:49 (maestro): a junção do 16 (fce0529) ficou vermelha (2 falhas no 12-busca: a busca recusa `agents/skills/vigia/SKILL.md` por cabeçalho quebrado; log `../etapas/juncao-16-suite-falha-12.log`); o Rebite desfez (integracao em e98a891). O Trilho conserta e pede a junção de novo.
+- 2026-10-17 10:55 (Trilho): junção vermelha no 12-busca (description do SKILL.md com ': ', YAML inválido); conserto 6a0ab17, 12-busca 9/9; rodada curta pedida ao Fiel.

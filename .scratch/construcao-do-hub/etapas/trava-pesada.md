@@ -1,1 +1,1 @@
-- Trilho (construtor), 2026-10-17 10:55: Docker do 21 feito; agora o 12-busca.test.mjs no ramo do 16 (indexação), ~?? min. Apago ao fim; depois aviso o Rebite.
+- Rebite (integrador), 2026-10-17 11:21: suíte do hub do 16 e do 21 em C:/context-hub-wt/integracao (fdd3760), --test-concurrency=1, ~25 min. Apago ao fim.

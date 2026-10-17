@@ -1,33 +1,34 @@
-# Retomada do Trilho (construtor), gravada em 2026-10-17 ~09h45 (São Paulo), antes da janela quieta da fatia 2
+# Retomada do Trilho (construtor), gravada em 2026-10-17 ~10h55 (São Paulo), para limpar (contexto 40%)
 
-Leia antes: `etapas/regras-da-construcao.md` (inteiras), `etapas/fila-pesada.md`, os tickets 21 e 16, as costuras
-`etapas/costuras-21-Trilho.md` e `etapas/costuras-16-Trilho.md`. Responda em pt-BR, frases curtas. Maestro =
-"Claude Code"; revisor = "Fiel"; integrador = "Rebite"; construtores: Brasa, Vela, Cinzel.
+Leia antes: `etapas/regras-da-construcao.md` (inteiras, com os Achados comuns novos: caminho longo do HUB_ROOT;
+description de SKILL.md sem ': ' solto), `etapas/fila-pesada.md`, os tickets 21 e 16, os relatórios
+`etapas/relatorio-16-vigia.md` e `etapas/relatorio-21-arquivar-e-copia.md`. Responda em pt-BR, frases curtas.
+Maestro = "Claude Code"; revisor = "Fiel" (o "Fielzinho" lê depois das 12h15); integrador = "Rebite";
+construtores: Brasa, Vela, Cinzel. Sem trava minha; nenhum contêiner nem pasta de ensaio minha sobrando.
 
-## Agora (09:45) — sem trava minha; nenhum contêiner nem pasta de ensaio minha sobrando
-### A. Ticket 16 (vigia): PASSOU no Fiel (rodada 2, 0332466); entregue ao Rebite
-- Ramo `ticket-16`, HEAD 0332466 (integracao e98a891 junta). 19/19; Docker 8ª tudo passou (`logs/trilho-16-docker-8.log`).
-- Maestro reenviou ao Rebite depois do reinício do Maestri (o 1º aviso caiu). Antes: o terminal dele respondeu só com o prompt do PowerShell (Claude dele talvez
-  fechado na janela quieta). **Ao voltar: `maestri check "Rebite"`; se não chegou, reenviar** o aviso (ramo, 19/19,
-  Docker 8ª, relatório `etapas/relatorio-16-vigia.md`, parecer `etapas/parecer-16-Trilho.md`, HUB_MCP_BANCO_DIR =
-  `C:/Projetos/hub-mcp-banco-wt/ticket-11`).
-### B. Ticket 21: Fiel r1 VOLTA (2 consertos), feitos em f32bd4c; HEAD 5fe3fda (com integracao fce0529)
-- (maestro: depois do Docker, gravar a retomada e responder "Trilho: salvo para limpar"; contexto em 40%)
-- Conflito combinado com a Brasa: o 21 e o 22 criam o mesmo agents/code/kit/par/env/10.env.modelo (meu: HUB_MAQUINA/HUB_COPIA_*; dela: HUB_PROXY_*). Quem entra por último em integracao faz git merge integracao no próprio ramo e deixa as duas metades, antes de pedir a junção. Se o 22 entrar antes, é meu.
-- Próximo: Docker 4ª rodada na fila 1b (depois da suíte do Rebite, antes das 12h15) para logs/trilho-21-docker-4.log;
-  ao soltar, avisar o MAESTRO; verde: pedir a rodada 2 ao Fiel (o Fielzinho lê depois das 12h15).
-### B-antes. (Docker 3ª tudo passou; revisão r1 pedida ~10h)
-- Worktree `C:/context-hub-wt/ticket-21`, ramo `ticket-21`, HEAD 1c87f9b (9ce2496 + merge do ticket-16 0332466).
-- Testes: 21-* e afetados (04, 05, 20, 07-kit-sem-docker) 78/78; Docker `logs/trilho-21-docker-3.log` 9 PASSA.
-- Relatório `etapas/relatorio-21-arquivar-e-copia.md` em dia (Achado 3: EPERM pelo fs.watch numa subpasta; arquivo
-  por arquivo; estado parcial visível no outro par, fim consistente).
-- **Próximo:** `maestri ask "Fiel" "Trilho: ticket 21 pronto para revisão no ramo ticket-21 (1c87f9b), relatório
-  etapas/relatorio-21-arquivar-e-copia.md"`. Junção só depois do 16 juntado (`git merge integracao` no 21 então,
-  testes leves de novo).
-- Comentário no ticket 21: falta registrar o Docker 3ª verde e o pedido ao Fiel.
-
-## Para o maestro (achados soltos)
-- Em %TEMP% sobram ~540 `hub-ensaio-27-*` e ~30 `hub-ensaio-20-*` (não são minhas; os testes do 20 e do 27 não limpam).
+## Agora (10:55)
+### A. Ticket 16 (vigia): PASSOU na rodada curta (~11h); passa levado ao Rebite (~11h), ponta 6a0ab17
+- Worktree `C:/context-hub-wt/ticket-16`, ramo `ticket-16`, HEAD 6a0ab17 (sobre 0332466, que passou no Fiel r2).
+- A junção do Rebite (fce0529) ficou vermelha no 12-busca: a description do SKILL.md da vigia tinha ': ' (YAML
+  inválido). Desfeita: integracao voltou a e98a891. Conserto: "do context hub, que lê o banco". 12-busca 9/9 no ramo
+  (`logs/trilho-16-12-busca.log`); 16-vigia 19/19 (não muda).
+- Com o passa do Fiel: `maestri ask "Rebite" "Trilho: ticket 16 passou (rodada curta), ponta 6a0ab17, ..."` (o Rebite
+  pediu o aviso com a ponta nova). Docker do 16 precisa de HUB_MCP_BANCO_DIR=C:/Projetos/hub-mcp-banco-wt/ticket-11.
+- Pedido ao Fiel mandado em background; conferir com `maestri check "Fiel"` se chegou (pedido junto com o do 21).
+### B. Ticket 21: r2 PASSOU no Fiel; merge da integracao (22) feito, ponta 6b6c65e, 23/23; Fiel conferiu (PASSA); levado ao Rebite (junção espera o 16)
+- Worktree `C:/context-hub-wt/ticket-21`, ramo `ticket-21`, HEAD 462b55e.
+- Consertos da r1: f32bd4c (outro disco recusado; Docker com o mesmo PID e nota nova ao B; data local na cópia;
+  comentário do frontmatter) e 462b55e (SKILL.md do arquivar sem ': '). Docker 4ª tudo passou
+  (`logs/trilho-21-docker-4.log`); leves 77/77; 12-busca 9/9 (`logs/trilho-21-12-busca.log`).
+- O Assertion fs-event.c era do observador dublê no TEMP curto (GUSTAV~1.DEL), não do Docker; o dublê agora observa
+  pelo caminho longo e o teste confere que segue vivo. Achado levado às regras e ao 23 pelo maestro.
+- Conflito combinado com a Brasa: o 21 e o 22 criam o mesmo `agents/code/kit/par/env/10.env.modelo` (meu:
+  HUB_MAQUINA/HUB_COPIA_*; dela: HUB_PROXY_*). Quem entra por último em integracao faz `git merge integracao` no
+  próprio ramo e deixa as duas metades antes de pedir a junção. O 22 foi ao Rebite antes: provavelmente é meu.
+- O ramo do 21 contém fce0529 (a junção desfeita do 16). Antes de pedir a junção: `git merge integracao` (com o 16 já
+  juntado de novo), testes leves 21-* e afetados (04, 05, 20, 07-kit-sem-docker), e o 12-busca se a ponta mudou skill.
+- Com o passa: `maestri ask "Rebite" "Trilho: ticket 21 passou ..."` (ramo, testes, Docker 4ª, relatório, parecer
+  `etapas/parecer-21-Trilho.md`).
 
 ## Fechados
 16 (passou no Fiel, com o Rebite). 12, 13, 33, 35 (juntados). 15 passou no Fiel (3d34bd1), com o Rebite.

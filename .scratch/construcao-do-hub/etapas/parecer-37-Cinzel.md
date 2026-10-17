@@ -56,3 +56,12 @@ Ramo `ticket-37`, HEAD 4b695d5. **Veredito: PASSA** com 1 ressalva.
 Ressalva: a sessão que não mexeu na iniciativa (só um shell de leitura) ainda recebe o aviso "se não foi você,
 atualize-a com o que esta resposta fez"; um agente obediente pode gravar uma nota sem ter o que dizer. Melhor: só
 avisar a nota de fora quando ela calou uma cobrança (a sessão gravou na iniciativa). Fica para o próximo ticket do fim.
+
+## Rodada curta (ressalva da r2) — 2026-10-17 ~11h35 (Fiel sozinho; leitura do Fielzinho pendente)
+
+Ramo `ticket-37`, HEAD f8e12e3. **Veredito: PASSA**; a ressalva da r2 saiu.
+
+- A nota de fora só cala e avisa quando é a nota de quem responde, numa iniciativa onde a sessão gravou pela
+  ferramenta. Sonda da r1 de novo (sessão que só rodou `git status`; nota de outra máquina incompleta e completa):
+  solta (`null`) nos dois, e o fim não toca a nota.
+- Fiel: 14, 18, 27, 37 e harness-real 114/114; `git status` limpo.

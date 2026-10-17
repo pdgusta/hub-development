@@ -1,7 +1,7 @@
 # 22: Proxy e kit de cliente
 
 Type: task
-Status: claimed
+Status: resolved
 Etapa: 9 (manutenção e cliente)
 Blocked by: 10, 12
 
@@ -34,3 +34,4 @@ Blocked by: 10, 12
 - 2026-10-17 ~11h, Brasa: r1 do Fiel VOLTA por 1 conserto (o proxy não religava com token trocado); feito (hash do ambiente da partida, teste novo). r2 PASSA (parecer `etapas/parecer-22-Brasa.md`), ponta 63cbfd5 (depois 5abe359, sem o 16), 10/10 sem Docker. Pendente: o Codex como cliente depois das 12h15 (rodada curta do Fiel) e a leitura do Fielzinho. Ressalva para a junção: o 21 também cria `agents/code/kit/par/env/10.env.modelo` (add/add; as duas metades ficam).
 
 - 10:42 (maestro): r2 do Fiel passa (63cbfd5). Vai ao Rebite já; a evidência do Codex entra depois (rodada curta). O `10.env.modelo` nasce também no 21: o segundo a juntar resolve no próprio ramo.
+- 2026-10-17 11h21 (integrador, Rebite): juntado em `integracao`, commit 4a47576 (merge `--no-ff` de `ticket-22` 5abe359). O parecer da rodada 2 do Fiel ("passa") conferiu 63cbfd5, que é 5abe359 mais a junção do 16 (fce0529), desfeita na `integracao` por vermelho no 12-busca; a Brasa tirou o 16 do ramo, e 5abe359 só difere de 63cbfd5 nos arquivos do 16 (conferido por `git diff --name-only`). Testes: `22-kit-cliente` e `22-proxy-sem-docker` 4/4 (log `etapas/logs/juncao-22-leves.log`); suíte `node --test --test-concurrency=1 "agents/code/test/**/*.test.mjs"` sem variáveis, com a trava: 215, 206 verdes, 9 pulados, 0 falhas, `git status` limpo (log `etapas/logs/juncao-22-suite.log`). Docker e harnesses não repetidos: arquivos do 22 idênticos aos revisados (Docker verde bae29bd, `etapas/logs/22-docker.log`; Claude e Copilot passam). **Pendente (maestro, como no 08):** o Codex como cliente depois das 12h15, em commit só de evidência com rodada curta do Fiel; a leitura do Fielzinho. Ressalvas do parecer: `10.env.modelo` add/add com o 21 (quem juntar depois deixa as duas metades: o 21 já fez, 6b6c65e); o `copilot-hub.cmd` passa `--allow-all-mcp-server-instructions`, que hoje não traz nada pelo proxy; o proxy não repassa o `instructions` do MCP (2.019 direto, 0 pelo proxy; limite aceito pelo maestro às 09:49). **Resolvido.**

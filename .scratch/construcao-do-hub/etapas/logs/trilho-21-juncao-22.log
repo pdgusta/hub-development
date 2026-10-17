@@ -1,0 +1,31 @@
+✔ com os dois pares em dia e sem edição recente: move para o _archive/ da pasta-mãe, com a data, e marca archived_at (6429.9007ms)
+✔ outro par atrasado (mudança pendente na replicação dele): recusa dizendo por quê (6807.3925ms)
+✔ replicação deste par parada: recusa (6517.0895ms)
+✔ outro par sem resposta: recusa, porque não dá para saber se está em dia (5187.6214ms)
+✔ arquivo da pasta editado há minutos: recusa citando o arquivo (4094.1445ms)
+✔ raiz, pasta que não existe, já arquivada ou com ponto: recusa (4741.0577ms)
+✔ destino que já existe (arquivada hoje com o mesmo nome): recusa e não mistura (4404.9348ms)
+✔ pasta observada pelo sincronizador (fs.watch nas subpastas): arquiva arquivo por arquivo, e a pasta velha sai (5957.9258ms)
+✔ arquivo da pasta aberto por outro processo por pouco tempo: espera e arquiva (6487.7218ms)
+✔ arquivo da pasta aberto por outro processo por muito tempo: recusa dizendo que está em uso, e nada muda (15069.8747ms)
+✔ cabeça em ordem: sai 0 e diz o tamanho (4431.6015ms)
+✔ sem o bloco: recusa dizendo que falta (4642.3856ms)
+✔ cabeça acima de 2.000 caracteres: recusa com o tamanho (5014.3227ms)
+✔ sem AGENTS.md: recusa (4842.903ms)
+✔ gera um commit no ramo do par, empurra para o repositório nu e não mexe no disco (7563.3113ms)
+✔ o que não replica fica fora: .local/ e a pasta local: true, mesmo a que já estava no .git, que fica no disco (5778.4586ms)
+✔ sem mudança desde a última: nenhum commit novo, e sai 0 (8004.4834ms)
+✔ remoto quebrado: sai ≠ 0 e acende o item copia-diaria na vigia; com o remoto de volta, o item sai (6027.1302ms)
+✔ lista a pasta arquivada há 31 dias, não a de 29, e não apaga nenhuma (4046.3237ms)
+✔ o cliente fica ligado ao proxy nos três harnesses, só leitura, com o token de variável de ambiente (1019.2117ms)
+✔ -Escrita liga a gravação pela terceira rota; sem ela, a gravação sai; o que já estava nos arquivos fica (2825.686ms)
+✔ o contrato vai à configuração global dos três harnesses, e o Copilot sobe com o instructions de todos os MCP (1508.3747ms)
+✔ o passo sobe o proxy em 127.0.0.1, uma rota e um token por servidor, sem token em arquivo (16657.1818ms)
+ℹ tests 23
+ℹ suites 0
+ℹ pass 23
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 144264.6823

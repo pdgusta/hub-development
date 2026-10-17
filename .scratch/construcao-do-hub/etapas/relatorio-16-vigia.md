@@ -127,6 +127,14 @@ O que a passada ganhou:
 - Ressalva, sem conserto: `laco` e `exclusoes` notificam a cada ação (item novo acima de `ok`). Se o CLI cair muito (o
   EBUSY do 08), sai um aviso por volta do laço que religou. Fica para o uso dizer se é ruído.
 
+## Junção vermelha (Rebite, ~10h45) e conserto 6a0ab17
+
+- A suíte da junção falhou no `12-busca.test.mjs` (linhas 145 e 259): a busca recusava `agents/skills/vigia/SKILL.md`
+  por cabeçalho quebrado. A `description` tinha `: ` sem aspas ("context hub: lê o banco"): YAML inválido ("bad
+  indentation of a mapping entry", pelo `separar` do hub). O Rebite desfez a junção (integracao de volta a e98a891).
+- Conserto: "do context hub, que lê o banco". As nove skills do ramo leem pelo `separar`. `12-busca.test.mjs` 9/9 no
+  ramo (`logs/trilho-16-12-busca.log`, 2 min 45 s, com a trava). O 16-vigia não muda (19/19).
+
 ## O que espera o 08 e o 10
 
 - 08: resolvido e juntado; cenários ligados (acima). A fatia 2 do 08 (51 e 201 MiB pelos pares) segue pendente lá; aqui o

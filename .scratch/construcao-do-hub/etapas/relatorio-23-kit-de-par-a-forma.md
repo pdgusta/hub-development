@@ -183,3 +183,5 @@ hub real (`C:\context-hub`) não é junction, então o realpath só expande o no
 dados com o nome curto, e nada na casa com `~1`. O `ensaio()` do teste passou a usar o caminho longo (o `%TEMP%` do
 node vem curto). 23-kit + harness-real 22/22. Ressalva: o `03-busca.ps1` chamado sozinho ainda usa o `Resolve-Path`
 (pelo `instalar.ps1`, já recebe o caminho longo).
+Rodada curta do Fiel: PASSA. Depois, a9643c6: o `Longo` para o kit se o node falha ou devolve vazio (um caminho vazio
+virava a pasta atual; foi assim que uma instalação de 10:40 caiu na raiz da worktree, já desfeita pelo kit). 22/22.

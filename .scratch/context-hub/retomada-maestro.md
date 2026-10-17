@@ -293,3 +293,5 @@ nuvem.
 - 10:55: 22 juntado (4a47576), suíte na fila depois do Trilho. Lição do SKILL.md (YAML válido; rodar o 12-busca) nas regras.
 - 10:56: 37 passa (r2, 4b695d5), ressalva entra no próprio 37 antes da junção; 23 com a lição do caminho longo (e6e5faa), rodada curta.
 - 11:10: 21 4ª rodada Docker tudo passou; 16 SKILL.md consertado (6a0ab17), o do arquivar também (462b55e); Fiel com os dois. Trilho limpo e retomado.
+- 11:15: ronda; Rebite com a trava (suíte do 22 desde 11:02); Trilho limpo e retomado (8%); todos ≤36%; 4,1 GB livres.
+- 11:21: 21 passa (6b6c65e, com o 22 e as duas metades do 10.env.modelo); Rebite junta 16+21 depois da suíte do 22. Ticket 38 (ajudante nos testes de fora do 36) ao Trilho.

@@ -35,3 +35,6 @@ só dentro do `cwd` da sessão desde o início do turno; o que mudou fora da lis
 - 2026-10-17 ~11h20 (Cinzel): rodada 2 do Fiel PASSA em 4b695d5 (113/113; `../etapas/parecer-37-Cinzel.md`). Ressalva para o próximo ticket do fim: avisar a nota de fora só quando ela calou uma cobrança (a sessão gravou na iniciativa). Rebite avisado: junção depois do 18.
 
 - 10:55 (maestro, mandato): ressalva da rodada 2 (avisar a nota de fora só quando ela calou uma cobrança) entra no próprio 37, já que ele espera o 18 para juntar: commit no ramo e rodada curta do Fiel.
+- 2026-10-17 ~11h40 (Cinzel): ressalva da rodada 2 feita no próprio ramo (mandato do maestro): f8e12e3, o aviso da nota de fora só quando calou cobrança. 114/114. Rodada curta pedida ao Fiel; depois, Rebite do HEAD novo.
+- 2026-10-17 ~11h50 (Cinzel): rodada curta do Fiel PASSA em f8e12e3 (114/114). Rebite avisado do HEAD novo.
+- 2026-10-17 11:07 (Cinzel): correção: os meus comentários de hoje marcados de ~11h05 a ~11h50 tinham hora estimada; foram entre 10:30 e 11:07.

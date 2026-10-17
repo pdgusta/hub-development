@@ -50,3 +50,10 @@ Trava de 09:12 até o fim; log em `logs/24-harness-1.log`; evidência em
 - **Rodada 2: Codex**, depois das 12h15, logo depois do Codex do 11:
   `HUB_HARNESS_REAL=1 HARNESSES=codex node --test --test-concurrency=1 agents/code/test/ponta-a-ponta/24-kit-ao-vivo.test.mjs`.
   O que medir: se o Codex segue o `CODEX_HOME` da casa e lê o link `<casa>/.codex/AGENTS.md`.
+
+## Skills da máquina (2026-10-17 ~11h15, 432a927)
+
+O teste usa o ajudante do 11 (`ponta-a-ponta/skills-da-maquina.mjs`, por estrutura). A troca antiga, no texto inteiro,
+já tinha mexido na evidência da rodada 1 (Claude e Copilot): palavras comuns dentro das descrições das skills e dos
+comandos da máquina (`deep-research` virou `deep-SKILL-DA-MAQUINA`). Só nas listas da máquina; a resposta e o contrato
+não. Fica como está; a rodada do Codex já sai com o ajudante.

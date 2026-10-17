@@ -77,3 +77,12 @@ Conserto 1 feito: `descartados()` pula caminho que o LiveSync trata como texto (
 .canvas com folha apagada não viram item). `16-vigia.test.mjs`: 19/19 (Fiel). Árvore limpa. Fiel sozinho (Fielzinho
 lê depois). A mudança é só de filtro na passada; o Docker da 8ª rodada segue valendo para o resto. Ressalva do
 laco/exclusoes registrada, sem conserto.
+
+## Rodada curta (junção vermelha no 12-busca) — 2026-10-17 ~11h40 (Fiel sozinho; leitura do Fielzinho pendente)
+
+Ramo `ticket-16`, HEAD 6a0ab17. **Veredito: PASSA.**
+
+- O conserto é só a description do `agents/skills/vigia/SKILL.md` (`: ` sem aspas trocado por `, que lê`).
+- Fiel: as skills lidas pelo `separar` do hub (`lib/frontmatter.mjs`): a versão antiga (0332466) dá "bad indentation of
+  a mapping entry (2:41)"; em 6a0ab17, as 9 skills leem com description. O mesmo no `ticket-21` (10 skills, com o
+  arquivar). Não rodei o 12-busca (indexação pesada); vale o log do Trilho `logs/trilho-16-12-busca.log` (9/9).

@@ -4,7 +4,7 @@
 
 ## Estado
 
-- Ramo `ticket-21` (HEAD 5fe3fda: f32bd4c com integracao fce0529, o 16 juntado), worktree `C:\context-hub-wt\ticket-21`, de `integracao` 9cc878b com o
+- Ramo `ticket-21` (HEAD 462b55e), worktree `C:\context-hub-wt\ticket-21`, de `integracao` 9cc878b com o
   `ticket-16` juntado (c36ece4), porque o item da cópia diária na vigia é do 16 (maestro, 07:31).
 - **Junção só com 08 e 16 resolvidos.** O que depende do 08 entra quando ele for juntado.
 - Costuras aceitas: `etapas/costuras-21-Trilho.md`.
@@ -98,7 +98,13 @@
 - Ressalvas feitas: a data da mensagem da cópia diária é a local (`sv-SE`), não UTC; o comentário "Troca de trecho"
   voltou para cima do `aplicarTrocas`. Sem conserto: no caminho arquivo por arquivo, subpasta vazia não vai para o
   destino (o LiveSync não replica pasta vazia); falha na devolução sai como exceção, com estado parcial (raro).
-- Testes leves em f32bd4c: 21-*, 04, 05, 20: 77/77. Docker 4ª rodada: pela fila (1b).
+- Testes leves em f32bd4c: 21-*, 04, 05, 20: 77/77.
+- Docker 4ª rodada (10:47, `logs/trilho-21-docker-4.log`, 5fe3fda): **tudo passou** (11 casos). Hub do par A no caminho
+  longo; o sincronizador de A com o mesmo PID depois do arquivar (233468); uma nota nova em A chegou ao B.
+- 462b55e: o `SKILL.md` do arquivar tinha o mesmo `: ` sem aspas do 16 (YAML inválido; a busca o recusaria). Conserto
+  na description; merge do ticket-16 6a0ab17 (97f03cf). `12-busca.test.mjs` 9/9 no ramo (`logs/trilho-21-12-busca.log`).
+- Nota: o ramo tem o commit fce0529 (a junção do 16 que o Rebite desfez). Ao juntar o 21, `git merge integracao` antes
+  (o 16 já de volta lá); e o conflito do `10.env.modelo` com o 22, se ele entrar antes (combinado com a Brasa).
 
 ## O que espera o 08
 
