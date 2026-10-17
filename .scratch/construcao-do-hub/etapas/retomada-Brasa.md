@@ -26,7 +26,11 @@ Revisores: Fiel e Fielzinho (dupla). Integrador: Rebite (depois do "passa", `mae
 2. (21h50, sem commit ainda) item 3 editado na worktree: `ensaio.psm1` ganhou `Start-EnsaioBanco [-Exclusoes {}]`,
    `New-EnsaioBanco -SemSalComum` e `Set-ExclusaoComPonto`; provas 01/02 e o teste do 06 importam o `ensaio.psm1`;
    cópias apagadas (`git rm`). Falta rodar as três (uma de cada vez; logs `.local/prova01.log`, `prova02.log`,
-   `06.log`) e o 07 de novo, e commitar.
+   `06.log`) e o 07 de novo, e commitar. Prova 01: verde (saída 0, 22h). Prova 02 rodando.
+   Caso novo no 07 (item 7, vermelho esperado): rodar o passo de novo religa o CLI só se o gerador disse `mudou`. O
+   conserto vai em `Install-ParBanco` (kit/par/banco/banco.psm1): se `Update-Exclusoes` devolve `mudou` e o daemon
+   roda, `Stop-Sincronizador` antes de `Start-Sincronizador`.
+   `integracao` andou para 8d1d785 (ticket 14): juntar no ramo antes da rodada final.
 3. Ressalva 3 do parecer: as provas 01 e 02 (`agents/code/test/provas/0[12]-*/`) e o teste do 06
    (`agents/code/test/gerar-exclusoes/sincronizador.ps1`, que importa o `banco.psm1` da prova 02) passam a importar
    `agents/code/test/banco/ensaio.psm1`; apagar as cópias (`banco.psm1`, `compose.yml`, `couchdb.ini`,

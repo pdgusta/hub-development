@@ -35,7 +35,16 @@ Gravada em 2026-10-17, antes de um /clear pedido pelo maestro (contexto acima de
 
 - `agents/frontmatter/**` virou `tipo: null` no `paths.yml` (commit 33194a1): sem cartão nos esquemas.
 
-### Próximo passo exato
+### Depois do /clear de 2026-10-17 (sessão 2)
+
+- `integracao` 8d1d785 juntada (a5fef35; trouxe o 14: `agents/code/hooks/guardas/` com fragmentos por harness, e `test/ponta-a-ponta/14-guardas.test.mjs`, que é o molde da prova real).
+- Aviso de `other/` feito: efcd0a5 (`gruposDeOther` em `lib/pastas.mjs`; 27-pastas 11/11).
+- Núcleo do fim da resposta: cdcb683. `agents/code/hooks/fim-da-resposta/nucleo.mjs` (marca/fim; `DEVOLUCOES_SEGUIDAS = 3`; estado por sessão em `<hub>/.local/fim-da-resposta/<sessao>.json`; quarta parada registra item `fim-da-resposta` nível `informa` no `estado.json` da vigia, troca atômica) e `fim-da-resposta.mjs <claude|codex|copilot> <marca|fim> --hub`. Resposta igual nos três: `{"decision":"block","reason":...}`. Teste `agents/code/test/27-fim-da-resposta.test.mjs` 7/7.
+- Sem commit ainda: `hooks/fim-da-resposta/fragmentos/{codex,copilot}.json`, o mod `agents/code/mods/fim-da-resposta/` (turn.start com texto ≠ "" marca; classic.Stop chama o script; `claude plugin validate` passou; aviso: em Claude Code gerenciado por organização, classic.Stop de plugin instalado não roda) e a prova real `agents/code/test/ponta-a-ponta/27-fim-da-resposta.test.mjs` (HARNESSES=codex|claude|copilot; evidência em `evidencia-27/`).
+- Copilot agentStop (doc docs.github.com/en/copilot/reference/hooks-configuration): entrada `sessionId`, `cwd`, `stop_hook_active` (snake); saída `decision: block` + `reason`; o CLI corta sozinho em 8 blocks seguidos. userPromptSubmitted de arquivo: saída ignorada (serve só para marcar).
+- Deslize: usei um subagente web-fetch para ler essa doc (regra: sem subagentes). Registrar no relatório.
+
+### Próximo passo exato (antigo; 1 já feito, 2 em curso)
 
 1. **Aviso de `other/`** (teste antes, em `27-pastas.test.mjs`). Três ou mais notas em `other/`, no hub inteiro, cujo `why_other` divide a maioria das palavras significativas (descartar as curtas) formam grupo. O aviso cita as três e pede bloco novo em `agents/blocks.md`. É só aviso, não falta. Ligar no `verificar-pastas` (passada única sobre o hub, não por alvo).
 2. **Fim da resposta nos três harnesses.**

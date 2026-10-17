@@ -1,7 +1,7 @@
 # 12: Busca local com aceite
 
 Type: task
-Status: ready-for-agent
+Status: claimed
 Etapa: 4 (busca)
 Blocked by: 04, 06
 
@@ -19,3 +19,4 @@ Blocked by: 04, 06
 
 ## Comments
 - 2026-10-16 ~21h10 (maestro): passado ao Trilho (antecipação da etapa 4; bloqueios 04 e 06 resolvidos). Primeiro commit do ramo, separado: os testes do 14 apagam as pastas `%TEMP%/hub-ensaio-14-*` no fim (ressalva do Rebite na junção do 14) e as 33 antigas saem.
+- 2026-10-16 ~21h15 (maestro): aval para o Trilho instalar o obsidian-hybrid-search 0.16.2 por npm, só local (`.local/busca` do ensaio, versão fixa com lock), nada global; o modelo arctic já estava no cache. Os testes do 04 e 05 também apagam as próprias pastas do TEMP (commit separado neste ramo).
