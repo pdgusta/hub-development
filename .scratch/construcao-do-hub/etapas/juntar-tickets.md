@@ -45,7 +45,9 @@ pedir uma junção.
 O fork mora no repositório próprio `C:\Projetos\hub-mcp-banco` (decisão do Gustavo). Ele também tem um ramo
 `integracao`, criado pelo integrador a partir do `ticket-09` juntado (d2a5a40). Ticket que mexe no fork (10 em diante)
 tem ramo `ticket-NN` no fork e no hub; o integrador junta os dois, cada um no seu `integracao`, com o mesmo `--no-ff`, e
-roda `npm test` do fork além da suíte do hub. Nunca mexer em `main` do fork (é o upstream).
+roda os testes do fork além da suíte do hub, com
+`node --import tsx --test "src/**/*.test.ts"` (o `npm test` do fork no Windows roda 0 testes: aspas simples no cmd;
+falso verde; base do upstream: 272 passam, 1 falha). Nunca mexer em `main` do fork (é o upstream).
 
 ## Nunca
 
