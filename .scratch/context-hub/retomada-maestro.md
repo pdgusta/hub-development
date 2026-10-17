@@ -28,7 +28,7 @@ Por isso o diário abaixo registra cada evento com hora.
 
 - Proxy de MCP que repasse o `instructions` (achado do 22).
 
-## Plano da fatia 2 do 08 (Gustavo, 2026-10-17 ~09h30: "no momento oportuno pause tudo e deixe menos agentes")
+## Plano da fatia 2 do 08 — FEITO 09:52, verde (Gustavo, 2026-10-17 ~09h30: "no momento oportuno pause tudo e deixe menos agentes")
 
 Momento: logo depois que a Brasa terminar o Docker do 22 (ou na primeira calmaria). Passos: (1) cada recruta chega a
 um ponto seguro, grava a retomada e diz "salvo"; (2) o maestro manda `/exit` a todos menos a Brasa e a Vela (o nó e as ligações
@@ -63,9 +63,6 @@ do 08 com o medidor; em seguida, na mesma janela, a Vela roda a 1ª rodada real 
 - Apagar as ~1.325 pastas `hub-ensaio-*` antigas em `%TEMP%` (4,0 GB; sem login dentro, conferido); a limpeza em massa pelo
   maestro foi recusada pela permissão automática. Ticket 36 conserta os testes que as deixam.
 
-- Rodar a fatia 2 do teste do 08 (arquivos de 51 e 201 MiB): derruba a memória na subida dos pares mesmo com 3 GB
-  livres; com menos agentes abertos ou a memória do Docker ajustada (Settings > Resources). O 08 foi juntado com essa
-  ressalva.
 
 ## Leia nesta ordem
 
@@ -254,3 +251,4 @@ nuvem.
 - 09:43: Gustavo: Trail-Code para depois do 25, no radar.
 - 09:47: ronda na janela; Brasa com a trava (22 desde 09:39); 1,6 GB livres.
 - 09:49: 22 Docker verde (15/0), Claude e Copilot passam; proxy não repassa instructions (aceito, radar); pico 715 MB livres. Brasa na fatia 2 do 08.
+- 09:54: fatias 1+2 do 08 VERDES na janela quieta (18/0, 514db7a; 51 MiB viajou, 201 não; pico 1.724 MB livres). Item do Gustavo da fatia 2 cai. Vela no 25.
