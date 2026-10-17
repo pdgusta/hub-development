@@ -141,3 +141,4 @@ nuvem.
 - 04:23: 35 (ef38e4d) e 33 (33b817a) juntados, falta a suíte; fila: Cinzel, Rebite, Brasa.
 - 04:25: 35 e 33 passaram no Fiel. Trilho começa o 16 (vigia) antes dos bloqueios, pelo mandato (08 e 10 entram por merge; junção só com eles resolvidos).
 - 04:27: costuras do 16 aceitas; 'piora' decidida pelo mandato (item sobe de nível; novo conta como ok antes).
+- 04:40: 16 adiantado (Trilho, 7024828, 8/8 sem Docker). Fila: Rebite (suíte 33/35), Trilho (Docker 16), Brasa (08; solta entre fatias para o Codex do 15 depois de 06:58).

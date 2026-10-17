@@ -2,9 +2,14 @@
 
 Dois ramos `ticket-09`:
 - **Fork** em `C:\Projetos\hub-mcp-banco`, repositório próprio (decisão A do Gustavo). Parte de v0.10.0 (1a4d53f).
-  Commits 289ec4c (o código) e dd9ddb5 (consertos do teste).
-- **Hub**: worktree `C:\context-hub-wt\ticket-09`, da ponta de `integracao` 763813a. Commit ce9790b: o passo do kit e
-  os testes.
+  Commits 289ec4c (o código), dd9ddb5 (consertos do teste) e 61a6e70 (as folhas são lidas antes de limpar o sal da
+  E2EE; só o 404 conta como nota nova).
+- **Hub**: worktree `C:\context-hub-wt\ticket-09`, da ponta de `integracao` 763813a.
+  - Commits ce9790b (o passo do kit e os testes) e 619655f (o passo remonta um build velho; o teste B ganha o conflito
+    na mesma linha e a fusão do LiveSync).
+  - Depois, `integracao` 33b817a (os tickets 33 e 35) foi juntada em 3d9d0bb. Ela não toca no banco nem no kit dele,
+    só no registro da busca e no verificador. O teste sem Docker segue verde depois da junção; o Docker rodou em
+    619655f.
 
 ## O que foi construído
 
@@ -53,7 +58,7 @@ três instâncias, `estado_do_hub` e o validador de frontmatter. As descrições
 
 | Uso | O que faz |
 |---|---|
-| `pwsh 05-mcp-banco.ps1 -EnvFile <par>.env` | confere o fork (`npm ci --ignore-scripts` e build, só se faltarem) e sobe o MCP de escrita; idempotente (de pé, não religa) |
+| `pwsh 05-mcp-banco.ps1 -EnvFile <par>.env` | confere o fork (`npm ci --ignore-scripts` se faltar `node_modules`; build se faltar `dist\main.js` ou se ele for mais velho que algum fonte de `src\` ou `lib\`) e sobe o MCP de escrita; idempotente (de pé, não religa) |
 | `... -WhatIf` | só lista o que faria |
 | `... -Descer` | para o MCP |
 
@@ -70,10 +75,10 @@ três instâncias, `estado_do_hub` e o validador de frontmatter. As descrições
 
 | Critério | Costura A (fork, CouchDB sem cifra) | Costura B (hub, par do 07 com cifra) |
 |---|---|---|
-| ler e gravar com a versão lida grava, e a leitura seguinte traz a versão nova | PASSA | (preencher) |
-| gravar com versão velha deixa as duas versões no banco e a resposta diz "conflito: releia e refaça" | PASSA | (preencher) |
-| regravar nota existente sem a versão é recusado | PASSA | (preencher) |
-| a leitura de nota em conflito avisa e lista as versões; a ferramenta de conflitos lista os abertos | PASSA | (preencher) |
+| ler e gravar com a versão lida grava, e a leitura seguinte traz a versão nova | PASSA | PASSA; a gravação chega ao `.md` em 0,5 s |
+| gravar com versão velha deixa as duas versões no banco e a resposta diz "conflito: releia e refaça" | PASSA | PASSA; 2 folhas pelo dispositivo leitor, e a versão do outro escritor fica intacta no `.md` |
+| regravar nota existente sem a versão é recusado | PASSA | PASSA; o `.md` não muda |
+| a leitura de nota em conflito avisa e lista as versões; a ferramenta de conflitos lista os abertos | PASSA | PASSA; cada versão listada se lê pelo `rev` |
 
 ### Costura A: e2e do fork
 
@@ -102,13 +107,30 @@ três instâncias, `estado_do_hub` e o validador de frontmatter. As descrições
 - O outro escritor é a vista `.md`: uma edição no disco que o sincronizador leva ao banco.
 - As versões guardadas são lidas pelo dispositivo leitor do CLI (`Get-VersoesDaNota`).
 
-(preencher com o resultado)
+| Rodada | Resultado | Log (`etapas/logs/`) |
+|---|---|---|
+| 1 | 14 PASSA, 5 FALHA: o agente e o outro escritor acrescentavam linhas diferentes no fim. A resposta foi "conflito", mas o sincronizador do LiveSync no par **fundiu as duas versões sozinho**, e ficou uma folha. É a fusão automática de mudanças que não se sobrepõem; no 07, o conflito ficou porque os dois mudaram a mesma linha. O teste mudou: conflito de verdade na mesma linha (o caso do aceite), e a fusão virou o caso 4b | `09-docker-1.log` |
+| 2 | 19 PASSA, 1 FALHA: "reler e regravar" respondeu conflito | `09-docker-2.log` |
+| 3 | o mesmo, agora com registro: a base era versão viva nas duas leituras. A causa: o passo só montava o fork quando faltava `dist\main.js`, e o `dist` era de antes da regra "só é conflito se a base não é viva". Conserto: o passo remonta quando um fonte é mais novo que o build (caso novo no teste sem Docker) | `09-docker-3.log` |
+| 4 | **21 PASSA, saída 0**; nenhum contêiner nem pasta `hub-ensaio-09-*` sobrou | `09-docker-4.log` |
+
+O que a rodada 4 conferiu, além dos critérios:
+- o `-WhatIf` não sobe o MCP nem grava arquivo;
+- o passo de novo não religa (mesmo PID);
+- reler e regravar com a versão nova numa nota com conflito aberto grava, chega ao `.md` em 0,5 s, e a resposta avisa
+  que o conflito segue aberto;
+- linhas diferentes com a versão velha (4b): a resposta é "conflito", e depois o sincronizador fundiu as duas
+  mudanças numa versão, sem perder nenhuma;
+- o `-Descer` para o MCP.
 
 ### Sem Docker, na suíte comum
 
-`agents/code/test/09-mcp-banco-sem-docker.test.mjs`, que chama `banco/mcp-banco-sem-docker.ps1`: 9 PASSA.
+`agents/code/test/09-mcp-banco-sem-docker.test.mjs`, que chama `banco/mcp-banco-sem-docker.ps1`: 12 PASSA (1 teste do
+`node --test`, verde antes e depois da junção).
 - Confere: o `-WhatIf` só lista e não grava; `0.0.0.0`, `localhost` e falta de token são recusados; o PID de um node
   alheio, ou de outra porta, não vale.
+- O build conta como velho sem `dist\main.js`, ou quando um fonte é mais novo que ele; não conta quando é mais novo
+  que os fontes.
 - Esse teste passou de primeira, sem fase vermelha: o passo foi escrito antes dele. O teste de ponta a ponta (B) foi
   escrito antes de qualquer rodada do passo.
 
@@ -131,6 +153,11 @@ Depois da mudança:
   de novo, passou.
 
 ## O que vai doer ao ligar
+
+- **A resposta "conflito" pode não durar.** Com o sincronizador do LiveSync rodando no par, um conflito de mudanças
+  em linhas diferentes é fundido sozinho logo depois (caso 4b). O agente recebe "conflito: releia e refaça", e a
+  releitura já mostra a versão fundida, sem aviso. Nada se perde, e reler e refazer continua o caminho certo. Mas a
+  fusão é do LiveSync, não do agente, e ninguém a revisa. Só a colisão na mesma linha fica como conflito para a pessoa.
 
 - **Conflito que só cresce.** Ninguém pelo MCP fecha um conflito: a resolução é a pessoa, no Obsidian, e a tela de
   colisão é ticket seguinte. Cada gravação atrasada abre mais um ramo. O `get_conflicts` mostra quantos há.

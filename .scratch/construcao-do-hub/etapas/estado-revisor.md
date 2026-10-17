@@ -142,3 +142,5 @@ Regra nova (maestro, ~04h): construtor roda só os testes do ticket e dos arquiv
 35 r1: PASSA (Fiel sozinho; 22/22). Parecer parecer-35-Trilho.md. 28 r2 pedido (2eec8e9) — na fila depois do 33; Docker espera trava (Cinzel).
 33 r1: PASSA com 3 ressalvas (Fiel sozinho; 37/37; sonda de 14 casos). Parecer parecer-33-Trilho.md.
 28 r2: VOLTA por 1 conserto (-Titulo perdido no Invoke-Cartao). 1-3 da r1 feitos. Docker na r3 (trava do Cinzel 04h09). Vela avisada.
+28 r3 (5436cad): conserto do -Titulo conferido; testes sem Docker rodando; Docker espera trava do Cinzel.
+09 r1 (Cinzel): pedido recebido; fork C:/Projetos/hub-mcp-banco 61a6e70 + hub ticket-09 3d9d0bb. Fiel sozinho (Fielzinho sem cota até 06h58). 28 r3: Docker esperando trava do Rebite (04h37).
