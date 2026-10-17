@@ -48,7 +48,8 @@ harness de verdade". Um subagente por vez (tarefa leve) e até três Haiku de es
    tenha morrido com o `/clear`: confira a trava e a memória livre. Livre a trava, lance o corredor:
    `Start-Process pwsh -WindowStyle Hidden -ArgumentList '-NoProfile','-File','C:/context-hub-wt/ticket-22/.local/corredor-22.ps1'`.
    Vigie `etapas/logs/22.status` (só as linhas depois de "corredor <PID> começou"). Ao pegar, tirar o meu item da fila.
-   Ao soltar, avisar o Rebite.
+   Fila (maestro, 08h05): Rebite, Trilho (Docker do 21), eu; o Trilho me avisa. Ao soltar, avisar a **Vela** (real
+   do 18), não o Rebite; ela avisa o Rebite.
 2. **Se a fase docker falhar:** ler `22-docker.log`, consertar e rodar de novo (`-SoDocker` só para o Docker).
 3. **Com tudo verde:**
    - preencher a tabela e o achado do `instructions` no relatório;

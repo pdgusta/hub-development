@@ -205,3 +205,5 @@ nuvem.
 - 07:54: 11 passa na rodada 1 (falta Codex 12:15); ressalvas ao 23 e 25. Cinzel começa o 23 (esqueleto do kit) antes dos bloqueios.
 - 08:01: costuras do 23 aceitas (metadata.camada: geral; kit para diante de texto alheio no global).
 - 08:01: 21 com código e testes leves (75/75); fila: Rebite (agora), Trilho (Docker 21), Brasa (22), Rebite (junções), Cinzel (Codex do 11 após 12:15).
+- 08:10: 18 em 68bf70b (31/31 com o 17; cabeça 1.869/2.000); Vela na fila depois da Brasa.
+- 08:11: 15 resolvido (e2b7607, 210/0). 08 juntado (e98a891), suíte na fila. Trilho: merge do 08 no 16 e rodada final; depois o 17 junta.

@@ -4,7 +4,7 @@
 
 ## Estado
 
-- Ramo `ticket-21` (HEAD b6a1288), worktree `C:\context-hub-wt\ticket-21`, de `integracao` 9cc878b com o
+- Ramo `ticket-21` (HEAD 4d7853c), worktree `C:\context-hub-wt\ticket-21`, de `integracao` 9cc878b com o
   `ticket-16` juntado (c36ece4), porque o item da cópia diária na vigia é do 16 (maestro, 07:31).
 - **Junção só com 08 e 16 resolvidos.** O que depende do 08 entra quando ele for juntado.
 - Costuras aceitas: `etapas/costuras-21-Trilho.md`.
@@ -42,8 +42,8 @@
 ## Achados
 
 1. No Windows, `process.exit(1)` logo depois de um `fetch` derruba o node (`UV_HANDLE_CLOSING`, código 3221226505):
-   o `arquivar` sai por `process.exitCode`. A vigia (16) usa `process.exit(1)` no `recuperar`; os testes dela passam,
-   mas o risco é o mesmo.
+   o `arquivar` sai por `process.exitCode`. O mesmo conserto na vigia, no ramo do 16 (81b4a3d), juntado aqui
+   (4d7853c).
 2. O `montar.mjs` commita a pasta local do hub de ensaio (`initiatives/context-hub/labs`) no `main`: a cópia diária a tira
    do índice na primeira passada (caso de teste).
 

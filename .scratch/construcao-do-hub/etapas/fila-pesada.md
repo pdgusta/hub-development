@@ -7,5 +7,7 @@ testes (09, 16): limpe os contêineres ao soltar.
 (trava: ver trava-pesada.md) — ordem a partir de 08:00:
 1. Trilho: Docker do 21 (~6 min, hub-ensaio-21-a/b, 5996/5997)
 2. Brasa: Docker do 22 (~15 min) e os três harnesses como cliente (~10 min)
+2b. Vela: harness real do 18, Claude e Copilot (~15 min); o Codex depois das 12h15
 3. Rebite: suítes das próximas junções (08, 16, ...), quando houver
-4. Cinzel: harness real do 11, só o Codex de novo (~5 min; conserto bfd1af3), só depois de 12h15 (cota do Codex)
+4. Cinzel e Vela: Codex do 11 e do 18 (depois das 12h15), um depois do outro
+4a. Cinzel: harness real do 11, só o Codex de novo (~5 min; conserto bfd1af3), só depois de 12h15 (cota do Codex)

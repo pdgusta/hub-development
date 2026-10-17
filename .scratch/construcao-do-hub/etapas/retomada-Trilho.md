@@ -5,16 +5,13 @@ simples; suíte inteira só na junção, pelo Rebite; fila do pesado em `etapas/
 (Comments), `etapas/costuras-16-Trilho.md`. Responda em pt-BR, frases curtas. Maestro = "Claude Code"; revisor =
 "Fiel"; integrador = "Rebite"; outros construtores: Brasa (08), Vela (28), Cinzel (09, 10).
 
-## Agora (08:10)
-- **21 (arquivar e cópia diária)**, claimed. Worktree `C:/context-hub-wt/ticket-21`, ramo `ticket-21`, de integracao
-  9cc878b + ticket-16 (c36ece4). Costuras aceitas (`etapas/costuras-21-Trilho.md`, com as respostas). Feito:
-  conferir-cabeca (5061cc3, `lib/cabeca.mjs` usada também pelo verificar-hub; 21-conferir-cabeca.test.mjs 4/4),
-  copia-diaria (9d3efa4, d28e1e7; 21-copia-diaria.test.mjs 4/4; `10.env.modelo`). Falta: limpar-arquivo (só
-  simulando), arquivar (skill `agents/skills/arquivar/`, dublê dos dois CouchDB, molde do 16), Docker do arquivar
-  (pela fila; nele, copia com remoto quebrado + vigia passada notificando), relatório, Fiel. 08 entra quando juntado.
-  Rodar também 04-esqueleto e 05-frontmatter (mexi no verificar-hub) e o 07-kit-sem-docker (env novo).
-- 15: passou no Fiel; com o Rebite. 16: falta o 08 para a rodada final do Fiel.
-- Nada pesado enquanto a Brasa roda a fatia pesada do 08 (maestro, ~08h).
+## Agora (08:15)
+- **21**: código e testes leves prontos (HEAD 4d7853c; 21-*.test.mjs 16 casos; afetados 75/75). Relatório rascunho em
+  `etapas/relatorio-21-arquivar-e-copia.md`. Falta: Docker `pwsh -NoProfile -File agents/code/test/21-arquivar.test.ps1`
+  (sou o próximo depois do Rebite; ao soltar, avisar a Brasa), fechar o relatório, comentário no ticket, Fiel.
+  Junção só com 08 e 16 resolvidos.
+- 16: 81b4a3d (vigia sai por exitCode). Falta o 08 para a rodada final do Fiel.
+- 15: passou no Fiel; com o Rebite.
 
 ## Fechados nesta sessão
 12 (rodada 3, só a search nos três harnesses), 13, 33 e 35: juntados e resolvidos (integracao 33b817a).

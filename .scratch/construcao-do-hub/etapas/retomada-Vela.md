@@ -363,3 +363,7 @@ node --test agents/code/test/05-frontmatter.test.mjs
 - Armadilhas desta sessão: o Edit exige ler o arquivo antes (perdi três edições assim); heredoc com 'EOF' preserva
   as barras, mas `\.` em template literal dentro de RegExp vira `\.`; TEMP isolado precisa de caminho curto ($TEMP/v36)
   senão o git dá "Filename too long"; o detector do 29 pega 'codex.json' como codex\.js (usar nome sem extensão).
+- 07:58 (18): 8950ed7 início com a nota (nota.mjs retomadaDoInicio; tela.mjs inicio junta depois do estado; corte 4.000; recruta vê a passagem ou onde gravá-la). 18-retomada + 17-vigia-tela 31/31 (teste do ok do 17 olha só o primeiro bloco). Próximo: AGENTS.md (passo 2).
+- 08:05 (18): AGENTS.md (linha na cabeça, 1.869/2.000; seção Retomada) commitado. Próximo: ponta a ponta real (passo 3), pela fila/trava.
+- 08:10 (18): 68bf70b ponta a ponta real escrita (ponta-a-ponta/18-retomada.test.mjs; sessão 1 em clients/aurora/migracao-de-tenant cria research/ensaio-18.md, fim devolve, nota atualizada, solta, last_agent; sessão 2 sem ferramentas responde ZEBRA-42 pela nota do início). Pedido lugar na fila ao maestro. Codex sem cota até 12:15. Próximo: relatório etapas/relatorio-18-retomada.md.
+- 08:15 (18): relatório escrito; ticket comentado. Esperando a Brasa avisar a vez (item 2b da fila): HUB_HARNESS_REAL=1 HARNESSES=claude,copilot node --test --test-concurrency=1 agents/code/test/ponta-a-ponta/18-retomada.test.mjs (com trava). Codex depois das 12h15 com o Cinzel.

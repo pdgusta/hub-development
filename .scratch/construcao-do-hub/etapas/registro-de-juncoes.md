@@ -26,3 +26,4 @@
 - 2026-10-17 06h45, ticket 10 juntado: hub 9cc878b, fork 34c3e50 (worktree do fork com junções para node_modules e lib/livesync-commonlib da cópia principal); suíte do hub (36 + 10) e npm test do fork esperam a trava (Rebite).
 - 2026-10-17 07h00, ticket 36 (85efe3b), suíte do hub com --test-concurrency=1 e trava, junto com o 10 (9cc878b): 210, 202 verdes, 8 pulados, 0 falhas, git limpo; 36 resolvido. O npm test do fork rodou 0 testes (aspas simples no script, no Windows): não vale; o 10 espera os unitários do fork (Rebite).
 - 2026-10-17 07h30, ticket 10 resolvido: unitários do fork em 34c3e50 com TEMP longo = 273, 272 passam, 1 falha igual à base (separador do Windows); com TEMP curto caem 20 de caminho (Rebite).
+- 2026-10-17 08h06, ticket 15 rodada 2, e2b7607, suíte com --test-concurrency=1 e trava: 210, 202 verdes, 8 pulados, 0 falhas, git limpo; 15-leitura 9/9; harness real não repetido (árvore idêntica, evidência dos três); aceite do Codex fechado (Rebite).

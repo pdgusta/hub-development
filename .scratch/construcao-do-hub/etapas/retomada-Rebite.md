@@ -55,3 +55,9 @@ entrou), `fila-pesada.md`, e esta retomada.
   (arquivos idênticos aos revisados). Ressalvas do fechamento do parecer vão no comentário do ticket.
 - 07:50: ticket 17 avisado pela Vela (3e8bbc8, passa r2). NÃO juntar: mandato do maestro, só depois do 16 resolvido;
   aí a Vela junta integracao no ramo, testa sobre o estado.json real, rodada nova do Fiel, e me avisa de novo.
+- Maestro: ao soltar a trava da suíte do 15, avisar o Trilho (Docker do 21, ~6 min); ele avisa a Brasa (22). A suíte
+  do 08 entra na fila depois (pedir lugar ao maestro).
+- 08:10: 15 r2 RESOLVIDO (suíte 210/202/8, comentário no ticket, registro). Trilho avisado (trava dele desde 08:05).
+  08 juntado: integracao e98a891; kit idêntico ao revisado (Docker não repetido); 07/09/28-sem-docker 3/3 (log
+  etapas/logs/juncao-08-kit.log). Falta: suíte com a trava (item 3 da fila, depois de Trilho, Brasa, Vela 2b), resolver
+  o 08 com as ressalvas do fechamento do parecer, registro, avisos. Construtores ainda não avisados de e98a891.
