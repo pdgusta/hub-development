@@ -24,3 +24,6 @@ Blocked by: 04, 17, 03
 - 2026-10-16 20:39 (maestro): proteção contra laço no fim da resposta decidida pelo Gustavo (rodada `2026-10-16-laco-no-fim-da-resposta`, B): devolve até três vezes seguidas; na quarta parada ainda com falta, solta e registra a falta no `estado.json` da vigia (início da próxima sessão e tela de estado).
 
 - 07:28 (maestro, mandato): começa já com a Vela, num ramo ticket-18 da ponta de `integracao` com o `ticket-17` juntado por merge (o 17 está na revisão; o 18 usa o hook de início e o fim da resposta dela). Junção só depois do 17 (e do 16) resolvidos.
+- 2026-10-17 07:30 (Vela): claimed; ramo ticket-18 (integracao 9cc878b + ticket-17 86c5a88). Costuras em ../etapas/costuras-18-Vela.md, com a pergunta das várias sessões (A recomendada: passagem do recruta em work/); esperando o maestro antes de codar.
+
+- 07:31 (maestro, mandato; **muda o spec, para rever com o Gustavo**): várias sessões no mesmo trabalho: **A**. Quem conduz (sem `MAESTRI_TERMINAL_ID`, ou com `HUB_PAPEL=maestro`) mantém a `retomada.md` da iniciativa; cada recruta mantém a sua passagem em `<iniciativa>/work/passagem-<terminal>.md`; o início abre as duas. O spec dizia nota única; a mudança evita que sessões paralelas briguem pela mesma nota (é como esta construção já trabalha). Costuras aceitas (`../etapas/costuras-18-Vela.md`).

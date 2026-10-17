@@ -313,3 +313,9 @@ node --test agents/code/test/05-frontmatter.test.mjs
 - 06:38: trava oferecida pelo Trilho; recusada (Codex só depois das 06:58), passada à Brasa. Pedir a vez de novo depois das 06:58.
 - 07:02 (17): integracao 9cc878b juntada (5187a86, com o 36); o teste do 17 usa o ajudante comum (273579f), 15/15 sem sobra. Fila: depois do Trilho, só o Codex do 17; ao soltar, avisar o Cinzel.
 - 07:28 (17): Codex 2/2 (86c5a88); trava solta, Cinzel avisado. Revisão pedida ao Fiel em 86c5a88; não mexer na worktree. Depois: merge do 16 quando entrar, teste sobre o estado.json real, rodada nova do Fiel, Rebite.
+
+## Ticket 18, retomada: nota, início e fim (2026-10-17 ~07h40)
+
+- Ramo ticket-18, worktree C:/context-hub-wt/ticket-18 (integracao 9cc878b + ticket-17 86c5a88). Junção só depois do 17 e do 16.
+- Costuras em etapas/costuras-18-Vela.md (pergunta das várias sessões: A passagem em work/passagem-<terminal>.md, ou B nota única; fim no mesmo núcleo do 27; início no tela.mjs do 17; aviso da memória do Claude; Copilot sem a extensão onAgentStop). Esperando o maestro.
+- 17 em revisão no Fiel (86c5a88): não mexer na worktree ticket-17.

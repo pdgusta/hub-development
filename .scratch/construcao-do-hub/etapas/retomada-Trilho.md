@@ -5,16 +5,15 @@ simples; suíte inteira só na junção, pelo Rebite; fila do pesado em `etapas/
 (Comments), `etapas/costuras-16-Trilho.md`. Responda em pt-BR, frases curtas. Maestro = "Claude Code"; revisor =
 "Fiel"; integrador = "Rebite"; outros construtores: Brasa (08), Vela (28), Cinzel (09, 10).
 
-## Agora (07:00)
-- 16: Docker 4ª rodada tudo passou (06:35). Fiel, leitura intermediária (`etapas/parecer-16-Trilho.md`): parte feita sem
-  conserto; três ressalvas, todas feitas: trava por arquivo no estado.json (5709117), 401 vira "não conferida" com o
-  código (5709117), uma cópia só no recuperar (5709117, recuperar.ps1 com -Revs/-Destinos separados por |).
-  Juntado integracao 9cc878b (o 10): estado_do_hub real no 16-vigia.test.ps1 (3e29a85, MCP 8796-8798 pelo passo 05);
-  fim-da-resposta pela lib como o hook grava (HEAD). Sem Docker 12/12.
-- Próximo: na trava (depois do Rebite; ao soltar, avisar a Vela): Docker do 16 (5ª rodada: estado_do_hub real e o
-  recuperar novo) e o Codex do 15. Depois, relatório e rodada do Fiel. Falta ainda o 08 (cenários e gerador).
-- Achado: rodei por engano o 12-busca (pesado) sem trava às ~06h50 (filtro por "vigia"); 2 falhas lá, sem relação
-  com o 16 (o 16 só mexe no texto do SKILL.md da busca). Dizer ao maestro.
+## Agora (07:40)
+- 15: **Codex de verdade passou** (evidência 0283b2c). Consertos: 03f85fb (sandbox_mode no config.toml de ensaio do
+  Codex) e 64d6875 (no Codex a busca chega ao hook como `mcp__hub_busca__search`). Ramo com integracao 9cc878b
+  (3d34bd1). Relatório e comentário no ticket feitos. **Pedida a rodada do Fiel** (07:38); depois do passa, o Rebite.
+- 16: ressalvas do Fiel feitas; estado_do_hub real; fim-da-resposta pela lib. Docker 7ª rodada tudo passou
+  (`logs/trilho-16-docker-7.log`, c36ece4, com `HUB_MCP_BANCO_DIR=C:/Projetos/hub-mcp-banco-wt/ticket-11`, o fork do 10
+  compilado). Sem Docker 12/12. Relatório atualizado. **Falta o 08** (Brasa): juntar, cenários (binário descartado na
+  passada, 200 MiB, sincronizador parado, Config Doctor, gerador a cada passada) e a rodada final do Fiel.
+- Trava: soltei às 07:27, avisei o Rebite.
 
 ## Fechados nesta sessão
 12 (rodada 3, só a search nos três harnesses), 13, 33 e 35: juntados e resolvidos (integracao 33b817a).

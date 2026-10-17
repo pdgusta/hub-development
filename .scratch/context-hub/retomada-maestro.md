@@ -23,6 +23,8 @@ Por isso o diário abaixo registra cada evento com hora.
 
 ## Para rever com o Gustavo
 
+- (**muda o spec**, 18) Várias sessões no mesmo trabalho: quem conduz mantém a `retomada.md`; cada recruta, a sua `work/passagem-<terminal>.md`; o início abre as duas (o spec dizia nota única).
+
 - (técnica) "Piora" da vigia (aberto no spec): item sobe de nível em relação à passada anterior; item novo conta como ok antes. Ticket 16.
 - (técnica) Mod do Claude Code para a vigia: linha de status (`$.ui.status`), não a faixa acima do prompt. Ticket 17.
 - (processo) O 16 (vigia) começou antes do 08 e do 10, sobre o 07; o 17 começou antes do 16; junção só depois dos bloqueios.
@@ -185,3 +187,4 @@ nuvem.
 - 07:27: 10 resolvido (fork 272/1 igual à base). Fork precisa de TEMP/TMP no caminho longo (regra em juntar-tickets.md). Trava com a Vela (17) desde 07:26.
 - 07:28: Rebite limpo e retomado.
 - 07:30: 17 com o real verde nos três (86c5a88), em revisão; junção espera o 16. Vela no 18 (sobre ticket-17).
+- 07:31: 18: decidida a opção A (nota do condutor + passagem por recruta), muda o spec; para rever.
