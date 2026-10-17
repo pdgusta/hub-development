@@ -132,3 +132,18 @@ O corredor (`.local/fatias.ps1` na worktree) tem cópia em `etapas/logs/08-corre
 - Registrar a tarefa de verdade (regra: nada global). O XML foi validado pelo Agendador sem registrar.
 - Se o Agendador mata o CLI quando a volta do laço termina: o CLI sobe por `cmd /c` como processo filho. Conferir no
   primeiro registro de verdade.
+
+## Rodada 2 (consertos do parecer r1, `etapas/parecer-08-Brasa.md`)
+
+Ponta `514db7a`.
+
+1. **`Get-AcimaDoLimite`**:
+   - Lê a raiz na forma longa e sem barra no fim (`realpathSync.native`), a mesma forma do `FullName` dos arquivos. O
+     relativo sai por `GetRelativePath`.
+   - Tira as pastas locais pela mesma regra do gerador (`agents/code/bin/lib/locais.mjs`), só lendo. O gerador grava
+     as listas e pediria religar o CLI.
+   - Casos novos no `kit-sem-docker.ps1`, primeiro vermelhos e depois verdes: 201 MiB numa pasta local não entra; o
+     caminho certo com o hub terminando em barra; o caminho certo pelo nome curto do Windows.
+   - `kit-sem-docker.ps1`: tudo passou. `integracao` em dia (9cc878b).
+
+As ressalvas ficam como estão no parecer. Fatias 1 e 2 (Docker): com o Fiel, na hora quieta.

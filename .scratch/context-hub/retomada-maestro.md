@@ -180,3 +180,6 @@ nuvem.
 - 06:49: 11 pronto para o harness real (c21dbf1). Fila: Rebite (agora), Trilho (16+15), Vela (17), Cinzel (11), Brasa (fatia 2 com máquina quieta; o maestro avisa). Memória livre voltou a 2,1 GB.
 - 06:52: 08 na revisão (124f43d). Brasa no 22.
 - 07:01: 36 resolvido (suíte 210/0). 10 não: npm test do fork rodou 0 testes no Windows (falso verde); comando trocado em juntar-tickets.md; Rebite roda depois do Trilho. Costuras do 22 aceitas (harness real como cliente, uma sessão de cada). Trilho rodou o 12-busca sem trava ~06:50 por 2 min (deslize, não repete).
+- 07:19: ronda; Trilho com a trava (Codex do 15, 2ª tentativa); Fielzinho ocioso: Fiel repassa o 08 e as leituras atrasadas; 4,4 GB livres; todos ≤38%.
+- 07:21: 22 sem Docker verde; Docker do 22 na fila (item 5, ~15 min). Dist do fork na worktree do Rebite só combinado com ele.
+- 07:27: 10 resolvido (fork 272/1 igual à base). Fork precisa de TEMP/TMP no caminho longo (regra em juntar-tickets.md). Trava com a Vela (17) desde 07:26.

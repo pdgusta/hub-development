@@ -2,7 +2,13 @@
 
 ## Rodada 1 — 2026-10-17 ~07h (ramo ticket-08, ponta 124f43d, com integracao 9cc878b)
 
-Veredito: **(em acordo com o Fielzinho — pendente)**. Fatia 2 pendente por decisão do maestro.
+Veredito: **VOLTA**, em acordo com o Fielzinho (troca 1), só pelo conserto 1. Fatias 1 e 2 (Docker, Fiel) na rodada 2
+ou na hora quieta que o maestro marcar; a 2 não foi dispensada.
+
+Leitura do Fielzinho (`parecer-08-Brasa-fielzinho.md`): PASSA de código, com 21 PASSA no `kit-sem-docker.ps1`; a
+ressalva dele sobre `local: true` virou o conserto 1, com as sondas do Fiel. Ele acrescenta ao conserto: a raiz e o
+`FullName` na mesma forma longa (o `GetRelativePath` sozinho não resolve o nome curto). Ressalvas dele aceitas: o
+`Restore-RamoApagado` não apaga a cópia e o leitor num `finally`; o ciclo real do Agendador não foi provado.
 
 ### Conferido pelo Fiel
 
@@ -29,8 +35,9 @@ Veredito: **(em acordo com o Fielzinho — pendente)**. Fatia 2 pendente por dec
    - Arquivo acima de 200 MiB dentro de pasta `local: true` é listado, mas não viaja de qualquer jeito (o gerador o
      exclui; sonda: `locais: ["clientes/rascunho"]` e a função lista `clientes/rascunho/video.bin`). A própria função
      já tira o que tem ponto pelo mesmo motivo. A vigia (faixa 7, ticket 16) vai listar isso como divergência falsa.
-   - Conserto: relativo por `[IO.Path]::GetRelativePath` (ou raiz pelo `Get-Item` longo, sem barra no fim); tirar as
-     pastas locais (as do gerador). Caso no `kit-sem-docker.ps1`: hub com barra no fim e 201 MiB numa pasta local.
+   - Conserto: raiz e `FullName` na mesma forma longa (sem barra no fim), e o relativo entre os dois (Fielzinho:
+     trocar só o `Substring` mantém o nome curto divergente); tirar as pastas locais (as do gerador). Casos no
+     `kit-sem-docker.ps1`: hub com barra no fim, hub pelo nome curto e 201 MiB numa pasta local.
 
 ### Ressalvas (não seguram o passa)
 
@@ -42,6 +49,9 @@ Veredito: **(em acordo com o Fielzinho — pendente)**. Fatia 2 pendente por dec
 3. Tarefa: `pwsh.exe -WindowStyle Hidden` disparado pelo Agendador com `InteractiveToken` costuma abrir e fechar uma
    janela de console (o console nasce antes do pwsh ler o argumento). A cada minuto, isso incomoda. Não verificado
    (nada registrado, regra); conferir no registro de verdade, com o "Agendador mata o CLI filho?" do relatório.
+5. (Fielzinho) `Restore-RamoApagado` sem `finally`: um erro no meio deixa a cópia do banco e o leitor até a descida dos
+   pares. Não promover à vigia sem limpeza garantida.
+6. (Fielzinho) O XML validado não prova o ciclo real do Agendador nem se o CLI filho sobrevive ao fim do `laco.ps1`.
 4. O retrato tira a frase e o sal: serve para a forma dos documentos, não para testar o decifrar do caminho. Quem
    precisar decifrar refaz com `-Fatias 3,4,7 -Manter`.
 

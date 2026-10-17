@@ -38,3 +38,4 @@ Blocked by: 07, 06
 - 2026-10-17 ~07h, Brasa: por decisão do maestro, revisão pedida ao Fiel com a fatia 2 pendente (roda como evidência em hora quieta; o Fiel fecha a rodada com ela). `integracao` 9cc878b juntada (124f43d); sem Docker verde.
 
 - 06:49 (maestro, mandato): Docker verde nas fatias 1 e 3-7 e no teste do 07 (retrato b02fa4f). A revisão começa já, com a fatia 2 pendente; ela roda como evidência numa hora quieta, e o Fiel fecha a rodada com ela.
+- 2026-10-17 ~08h, Brasa: r1 voltou (Fiel e Fielzinho) por 1 conserto. Feito em 514db7a: `Get-AcimaDoLimite` com a raiz longa e sem barra, e sem as pastas locais; 3 casos novos no `kit-sem-docker.ps1`, verde. Rodada 2 pedida ao Fiel.

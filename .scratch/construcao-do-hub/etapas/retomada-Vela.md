@@ -311,3 +311,4 @@ node --test agents/code/test/05-frontmatter.test.mjs
 - 06h25 (36): rodada 1 do Fiel VOLTA (parecer-36-Vela.md): a limpeza em uncaughtException apagava as pastas no meio. Conserto (sem commit ainda): só limpa nesses eventos antes do primeiro teste (marca no beforeEach da raiz; o before da raiz roda até na queda do carregamento). 36-pasta-de-ensaio 8/8. 5b90550: 176/176 sem sobra; rodada 2 pedida ao Fiel. Não mexer na worktree.
 - 06:28 (36): rodada 2 PASSA; Rebite avisado. 36 encerrado do meu lado. Próximo: Codex do 17 depois das 06:58 (fila/trava).
 - 06:38: trava oferecida pelo Trilho; recusada (Codex só depois das 06:58), passada à Brasa. Pedir a vez de novo depois das 06:58.
+- 07:02 (17): integracao 9cc878b juntada (5187a86, com o 36); o teste do 17 usa o ajudante comum (273579f), 15/15 sem sobra. Fila: depois do Trilho, só o Codex do 17; ao soltar, avisar o Cinzel.

@@ -7,7 +7,17 @@ especial "Um trabalho pesado por vez" (a trava `etapas/trava-pesada.md`) e "Test
 - Maestro: `maestri ask "Claude Code" ...`.
 - Fila: o ticket 07 agora, depois o 08 (receita da etapa 2, opção A).
 
+## Ticket 22 (proxy e kit de cliente): construindo
+
+- Ramo `ticket-22`, worktree `C:/context-hub-wt/ticket-22`, de `integracao` 9cc878b. Costuras aceitas pelo maestro (comentário no ticket 22); (4) sim: uma sessão de cada harness como cliente depois do Docker verde, modelos baratos, trava e aval de login.
+- Feito (sem Docker verde): `agents/code/kit/cliente/ligar-cliente.ps1` (três harnesses, Bearer de variável `HUB_PROXY_TOKEN_*`, -Escrita, contrato em bloco marcado em CLAUDE.md/AGENTS.md/copilot-instructions.md, lançador `copilot-hub.cmd` em -Saida; sem -Contrato lê `AGENTS.md` por read_note na rota de leitura); `agents/code/kit/par/10-proxy.ps1` + `proxy/proxy.psm1` (TBXark/mcp-proxy 1.1.0, SHA-256 do pacote e do exe fixos, config com `${VAR}`, autoReconnect, pronto = `/_readyz` 200 e cada rota 401 sem token; ponte Desktop `mcp-remote@0.14.3` com `--header-file` e pasta conectada em `<estado>/desktop/`); `env/10.env.modelo` (HUB_PROXY_ADDR=127.0.0.1:8790). Testes: `node --test agents/code/test/22-kit-cliente.test.mjs agents/code/test/22-proxy-sem-docker.test.mjs` (MCP falso `test/proxy/mcp-falso.mjs`).
+- Achados: a flag `--allow-all-mcp-server-instructions` do Copilot não tem chave de config (lançador); o `tar` no PATH do Git Bash é o do MSYS (usar System32	ar.exe); o `after` do ajudante da pasta roda antes do meu: descer processos no `finally` do teste.
+- Fork: worktree minha `C:/Projetos/hub-mcp-banco-wt/brasa-22` (destacada em integracao 34c3e50; a `integracao` do fork é do Rebite, não montar lá). Rodar o Docker com `$env:HUB_MCP_BANCO_DIR='C:/Projetos/hub-mcp-banco-wt/brasa-22'` (o passo 05 faz npm ci e build: pesado, com a trava). Fila: item 5.
+- Falta: teste Docker `agents/code/test/22-proxy.test.ps1` (escrito, 69fbf09) (par do 07 com 5996/5997? conferir portas livres; fork `C:/Projetos/hub-mcp-banco-wt/integracao`; busca real com `iniciar.ps1`; cliente HTTP pelo proxy; Host; instructions medido; ponte do Desktop rodada uma vez com npm cache no ensaio); depois os harnesses reais; relatório `etapas/relatorio-22-proxy-e-kit-de-cliente.md`; revisão.
+
 ## Ticket 08 (banco: limites e robustez): em revisão com o Fiel; a fatia 2 pendente
+
+- ~08h: r1 VOLTA por 1 conserto (`Get-AcimaDoLimite`), feito em 514db7a; r2 pedida ao Fiel. O Fiel roda as fatias 1 e 2 no Docker (a 2 na hora quieta).
 
 - ~07h: revisão pedida ao Fiel (decisão do maestro) com a fatia 2 pendente no relatório. Ponta 124f43d (integracao 9cc878b juntada; sem Docker verde). A fatia 2 roda quando o maestro disser que a máquina está quieta; o Fiel fecha a rodada com ela. Passos 1 e 3 abaixo: o 3 já foi.
 

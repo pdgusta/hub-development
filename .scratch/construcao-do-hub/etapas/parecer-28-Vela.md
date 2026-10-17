@@ -89,3 +89,9 @@ Ramo ticket-28, HEAD 5436cad. Fiel sozinho (Fielzinho sem cota até 06h58; leitu
 1. O Docker passa `-Titulo 'Rascunhos de A'` sem conferir o título; o teste que confere é o sem Docker.
 2. Leitura do Fielzinho pendente (achado 3 da rodada 1 e rodadas 2 e 3): se ele achar algo, vira ticket seguinte.
 3. O histórico do git guarda as versões antigas da pasta tornada local (aval do maestro; a skill avisa).
+
+## Leitura do Fielzinho (achado 3 da rodada 1) — 2026-10-17 ~07h
+
+Fielzinho aceita o conserto 3 e o VOLTA da rodada 1: conferiu os manifestos `.claude-plugin` versionados por
+`git ls-files`; a exceção no exclude e o teste de mod novo são pertinentes. Acordo registrado também no parecer dele.
+Sem achado novo; o 28 já está juntado.

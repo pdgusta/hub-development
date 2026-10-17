@@ -103,3 +103,9 @@ Fila recebida: 12 (0ba8532, relatório relatorio-12-busca.md); 20 (e5d24a7, rela
 
 28: revisão independente VOLTA por2 reproduzidos: local:true no corpo e junction para fora.9/9 existentes verdes; nenhum teste rodando. Repro/log em etapas/logs/repro-28-fielzinho.*. Limpeza PENDENTE do TEMP hub-ensaio-28-fielzinho-486cf7a99c3b4104ac8432b4d01633c0 (handle aberto no finally; tentativa posterior bloqueada automaticamente, não contornar). Parecer atualizado. Aguardar acordo e logDockerFiel.
 
+
+08 revisão independente concluída em124f43d: parecer-08-Brasa-fielzinho.md salvo.21PASSA próprios emkit-sem-docker.ps1,saída0;nenhumDocker. Código sem bloqueio novo; aceite PENDENTEfatias1/2Fiel (2obrigatória,51/201por mandato). LogsBrasa3-7e07 verdes lidos; fatia1 antiga14PASSA em.local/08-f1a.log, mas rodada terminaFALHA60MiB. Ressalvas não bloqueantes: Get-Acima ignora ponto mas não local; helperRestore semfinally; Agendador real não provado. Próximo: acordoFiel e logs1/2.28r1 acordoVOLTA3, limpezaTEMP confirmada peloFiel;Docker28só r2. Demais leituras atrasadas serão passadas peloFiel depois08. Sem teste próprio rodando.
+
+
+08r1 acordoVOLTA: único bloqueioGet-AcimaDoLimite (relativo cortado com barra final/nome curto; pasta local indevida). Fiel reproduziu; aceitei,parecer atualizado. Normalizar ambos caminhos antesGetRelativePath,filtrar locais,testar3casos. Fatias1/2sóFiel na r2/hora quieta. Ressalvas logs/Agendador/retrato/Restore semfinally não bloqueiam. Sem teste rodando.
+

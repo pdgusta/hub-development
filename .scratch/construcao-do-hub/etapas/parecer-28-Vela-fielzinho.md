@@ -29,3 +29,7 @@ Evidência: logs/repro-28-fielzinho.ps1 e .log. Ambos os comandos da skill saír
 ## Estado final independente
 
 VOLTA pelos dois achados. Testes existentes9/9 verdes (12casosPS encapsulados +8testes gerador). Sem Docker/harness. Aguardar acordo e logDocker doFiel. Não há teste próprio rodando.
+
+## Acordo rodada1
+Aceito o achado3 doFiel: o bloco .* do exclude não abre .claude-plugin/, embora git ls-files confirme os manifestos dos mods fim-da-resposta e roteamento versionados no hub. Mod novo perderia o manifesto no add comum. Exceção !.claude-plugin/ com teste de mod novo é pertinente ao git (sem mudar exclusão de sync). Acordo VOLTA nos3; confirmar pasta em locais do JSON antes de pronto/religar integra conserto1/2. Fiel confirmou reproduções e limpeza da minha sobra TEMP sem processo vivo. Docker adiado à r2 peloFiel: trava ocupada e código vai mudar. Rodada1 encerrada em acordo.
+

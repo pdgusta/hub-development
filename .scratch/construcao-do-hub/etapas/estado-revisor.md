@@ -172,3 +172,5 @@ Codex com cota a partir de 06:58: às 06:59 repasso ao Fielzinho a lista de leit
 12 r3, 35, 33, 09, 36, 10, 16; antigas 13, 32, 30, 20, 15, 12, 29). Próximos pedidos: 15 (Trilho), 16 final, 08.
 08 r1 (Brasa, 124f43d): pedido recebido 06:49; repassado ao Fielzinho. Fatia 2 pendente (maestro). Revisão do Fiel em curso.
 08 r1: leitura do Fiel feita; parecer-08-Brasa.md provisório: conserto 1 (Get-AcimaDoLimite: relativo cortado com barra no fim/nome curto; lista pasta local), 4 ressalvas. Fatia 1 reroda junto com a 2 (-Fatias 1,2) na hora quieta. Aguardando Fielzinho.
+28 r1 achado 3: Fielzinho aceitou (acordo registrado). 08: Fielzinho iniciou leitura independente (sem Docker).
+08 r1 FECHADO: VOLTA em acordo (conserto 1). Brasa avisada. 08 r2 pedido (514db7a).

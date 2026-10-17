@@ -1,7 +1,7 @@
 # 10: MCP do banco: três instâncias, cabeça, regra curta e estado
 
 Type: task
-Status: claimed
+Status: resolved
 Etapa: 3 (MCP do banco)
 Blocked by: 09, 05
 
@@ -36,3 +36,4 @@ Blocked by: 09, 05
 - 2026-10-17 ~06h20 (Cinzel): pronto para revisão. Fork `ticket-10` 58c8504 (de `ticket-09` d2a5a40; worktree `C:/Projetos/hub-mcp-banco-wt/ticket-10`). Hub `ticket-10` 6095213 (de `integracao` 9453e3e, a ponta atual). Testes: Docker do 10 com a cifra, 32 PASSA (`etapas/logs/10-docker-3.log`; a 1ª rodada teve 4 falhas do teste, consertadas); o 09 de novo com as três instâncias, 21 PASSA (`10-docker-2.log`); sem Docker 1/1 (18 casos); fork `test/hub.e2e.test.ts` 10/10; upstream 272/1 e 36/7, iguais à base. Relatório `etapas/relatorio-10-mcp-do-banco.md`. Revisão pedida ao Fiel.
 - 2026-10-17 ~06h55 (Cinzel): rodada 1 VOLTA (parecer-10-Cinzel.md, 1 conserto: gravar o texto completado pelo verificador). Fork `ticket-10` 1e86ad1: write, edit e move gravam o `novoTexto` e dizem "Completado pelo esquema: ..."; e2e do fork 14/14 (4 casos novos, vermelho antes). Hub `ticket-10` a40ec84: testes Docker com o updated de hoje; caso de inbox completada no 10. Rodada 2 pedida ao Fiel (Docker com ele).
 - 2026-10-17 ~06h45 (Cinzel): rodada 2 PASSA (Fiel; parecer-10-Cinzel.md, fim). Docker do Fiel: 10 33 PASSA, 09 21 PASSA. Levado ao Rebite. Correção: a minha rodada de 06h12 deu 32 PASSA (não 34).
+- 2026-10-17 07h30 (integrador, Rebite): juntado nos dois repositórios: hub `integracao` 9cc878b (merge `--no-ff` de `ticket-10` 4cf4656; depois do parecer, em a40ec84, só entrou a junção de `integracao`) e fork `integracao` 34c3e50 (merge `--no-ff` de `ticket-10` 1e86ad1, o HEAD do parecer). As duas árvores juntadas são idênticas às dos ramos. Testes: suíte do hub com a trava, junto com o 36: `node --test --test-concurrency=1 "agents/code/test/**/*.test.mjs"` = 210, 202 verdes, 8 pulados, 0 falhas. Unitários do fork (`node --import tsx --test "src/**/*.test.ts"`, com `TEMP`/`TMP` no caminho longo `C:\Users\gustavo.delfino\AppData\Local\Temp`) = 273, 272 passam, 1 falha, a mesma da base (`vault-local.test.ts`, "lists all .md files recursively", separador `\` do Windows); log `etapas/juncao-10-fork-unitarios.log`. Com o TEMP no nome curto (`GUSTAV~1.DEL`) caem 20 testes de caminho (log `etapas/juncao-10-fork-unitarios-temp-curto.log`). O `npm test` do fork roda 0 testes no Windows (aspas simples no script). O Docker (10: 33 PASSA; 09 com o fork do 10: 21 PASSA) e o e2e do hub (14/14) não foram repetidos: o Fiel os rodou nas mesmas pontas. Worktree do fork com junções para `node_modules` e `lib/livesync-commonlib` da cópia principal. A leitura do Fielzinho ficou pendente. **Resolvido.**

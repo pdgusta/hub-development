@@ -1,1 +1,1 @@
-- Trilho (construtor), 2026-10-17 07:01: Docker do 16 (5ª rodada, hub-ensaio-16-a/b, 5996/5997, MCP 8796-8798) e depois o Codex do 15 (harness real). Ao fim, aviso a Vela.
+- Vela, 2026-10-17 07:27: harness real do 17, só o Codex, C:/context-hub-wt/ticket-17 (~3 min). Apago ao fim e aviso o Cinzel.
