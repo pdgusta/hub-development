@@ -336,3 +336,4 @@ nuvem.
 - 14:42: ronda: suíte do 42 (Rebite, trava 14:19); 43 PASSA no Fiel (32e8217), com o Rebite (junta 41+40+43 numa suíte depois do Codex do 11); Brasa 40% → /clear; Lume em dia (docs b0ef690), espera o 41. 4,6 GB livres.
 - 14:49: 42 resolvido (suíte 285: 275/10/0). 41 (e8dde26), 40 (7caed05), 43 (45e34c7) juntados; suíte única depois do Codex do 11, com os docs do Lume juntos. Fila: Cinzel 11 → Rebite → Vela 18 → Brasa 22 → 24.
 - 15:04: 11 PASSA no Fiel (Codex luna 14:47-14:54; conserto 28782df); Rebite junta depois da suíte 41+40+43+docs (trava 14:55, 98a7ced). 23 espera só o 18 (Vela, depois do Rebite). 24 em dia (769f36f), Codex depois do 23.
+- 15:22: suíte 41+40+43+docs: 289 (278/10/1 falha: 27-pastas, link em código inline na página mcp-do-banco.md dos docs). Decidido: 41, 40, 43 resolvidos; docs pendente até o Lume trocar a página (Rebite roda o 27-pastas); causa no verificador = ticket 44 (Brasa). Trava com a Vela (Codex do 18).
