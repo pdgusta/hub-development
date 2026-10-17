@@ -152,3 +152,4 @@ Docker 28+09 armado em segundo plano: parte sozinho quando a trava do Trilho sum
 09: Cinzel deixou consertos em ramos à parte (fork hub-mcp-banco-wt/conserto-09 d2a5a40; hub context-hub-wt/conserto-09 ca17738). Script ajustado: 28; fork ticket-09 + sonda (vermelho); fork conserto + sonda; hub conserto com HUB_MCP_BANCO_DIR do conserto. Hub ticket-09 não roda (o conserto contém o mesmo teste e mais).
 28 r3: PASSA (Docker 14 PASSA). 09 r1: VOLTA, 3 consertos já nos ramos ticket-09-conserto (Docker: furo reproduzido no ticket-09, conserto 16/16 fork e 21 PASSA hub). Rodada 2 curta = juntar conserto no ticket-09 e conferir árvore. Trava solta 05h05; Brasa avisada. Sobra em TEMP: 1325 pastas hub-ensaio-* de vários tickets (04, 05, 27...), não minhas.
 09 r2: PASSA (pontas = testadas no Docker; integracao andou, junta sem conflito). Cinzel avisado.
+36 r1 (Vela, b8e8b03): pedido recebido; Fiel sozinho.

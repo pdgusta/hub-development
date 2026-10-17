@@ -105,3 +105,4 @@ Leia antes: `etapas/regras-da-construcao.md` (inteiras), o ticket do momento e e
   mesma linha.
 - `maestri ask` sem barra invertida nos caminhos.
 - Cinzel 05:35: 1º da fila, à espera do aviso da Brasa. Corredor pronto: `pwsh -NoProfile -File etapas/logs/10-corredor.ps1` (pega e solta a trava; estado em `logs/10-corredor.status`).
+- Cinzel 05:58: Docker 05:49-05:55 (`logs/10-docker-1.log` 10: 30 PASSA 4 FALHA do teste; `logs/10-docker-2.log` 09: 21 PASSA). Conserto do teste em hub 6095213 (cabeça com CRLF; conflito na mesma linha). Próximo: rodar só o 10, item 2b da fila, depois do aviso do Rebite: `pwsh -NoProfile -File etapas/logs/10-corredor.ps1 -Testes 10`; ao soltar, avisar a **Brasa**. Depois: relatório `etapas/relatorio-10-mcp-do-banco.md` (rascunho), comentário no ticket 10, revisão ao Fiel.

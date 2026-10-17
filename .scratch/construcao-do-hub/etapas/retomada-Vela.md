@@ -295,3 +295,12 @@ node --test agents/code/test/05-frontmatter.test.mjs
   três Haiku 5.5 esforço médio só para tarefa simples ou QA; o Cinzel é o quarto construtor.
 - Armadilha repetida: heredoc do Git Bash come `\` (virou `\` e quebrou JS duas vezes): para texto com barra invertida,
   usar o Write/Edit.
+
+## Ticket 36, testes apagam a pasta de ensaio (2026-10-17 ~05h50)
+
+- Maestro: pegar o 36 enquanto o real do 17 espera o Codex (06h58) e a fila; depois voltar ao real do 17 (passos em "PRÓXIMO ~06h00" acima). Não apagar pastas antigas em massa.
+- Ramo ticket-36, worktree C:/context-hub-wt/ticket-36. 90f6463: ajudante agents/code/test/pasta-de-ensaio.mjs (pastaDeEnsaio, hubDeEnsaio; after + exit + prependListener uncaughtException) e 36-pasta-de-ensaio.test.mjs (6 casos, arquivos-modelo com TEMP isolado; tirar NODE_TEST_CONTEXT do filho).
+- Sem commit ainda: troca nos testes 04, 05, 05n, 14, 15, 19, 20, 27-fim, 27-pastas, gerador (06). Verdes e sem sobra com TEMP isolado.
+- Maestro: não trocar em arquivo que ramo aberto mexe (08: ensaio.psm1, kit-sem-docker.ps1; 10: mcp-banco-sem-docker.ps1, 09-mcp-banco.test.ps1; 15: ponta-a-ponta/15; 16, 17: testes novos). Anotado no relatório etapas/relatorio-36-pasta-de-ensaio.md.
+- Falha forçada: etapas/logs/falha-forcada-36.sh (PATH só com o node: montar falha). TEMP isolado precisa de caminho curto ($TEMP/v36), senão o git falha com "Filename too long".
+- b8e8b03: troca commitada; falha forçada nos dez sem sobra; contraprova na integracao (14 e 15 deixam pasta). Revisão pedida ao Fiel em b8e8b03; não mexer na worktree. Depois do passa: Rebite. Depois: real do 17.

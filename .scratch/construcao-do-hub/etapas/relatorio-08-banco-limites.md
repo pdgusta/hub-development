@@ -70,6 +70,12 @@ Na primeira rodada, gravar o arquivo de 60 MiB derrubou o observador do CLI do p
   4. um leitor apontado para a cópia faz `sync` e `pull-rev` da revisão nova;
   5. apaga a cópia e o leitor.
 - O comando de recuperar binário (faixa 7) pode seguir essa receita.
+- Achados do Trilho no Docker do 16 (`relatorio-16-vigia.md`, Achados 4 a 6), aplicados aqui:
+  - com o caminho ofuscado, `path`, `mtime` e a lista de pedaços vão cifrados no campo `path`, e o `children` em claro
+    vem vazio. A folha apagada se reconhece pelo `path`, porque o toco de um DELETE comum não tem;
+  - o `open_revs=all` responde em multipart sem `Accept: application/json`, e o `Invoke-RestMethod` devolve o array
+    como um item só (o ensaio desenrola);
+  - o JSON do `info` vem entre linhas de registro: o ensaio lê da linha `{` até a linha `}`.
 
 ## Testes
 

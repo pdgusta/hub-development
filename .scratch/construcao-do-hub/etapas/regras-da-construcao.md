@@ -61,7 +61,8 @@ Valem para todo construtor e revisor das etapas. Plano decidido: `revisao/plano/
   `agents/code/test/provas/03-codex-hooks/`) chamam Claude, Codex e Copilot e copiam login. O comando comum é
   `node --test "agents/code/test/**/*.test.mjs"`, sem variável: eles aparecem pulados (ticket 29). Com
   `HUB_HARNESS_REAL=1` e `--test-concurrency=1`, só quando o seu ticket mexe na prova 03, na guarda do 14 ou nos hooks
-  dos harnesses, nas condições do aval de login. Teste que cria pasta em `%TEMP%` apaga a sua no fim, mesmo falhando.
+  dos harnesses, nas condições do aval de login. Teste que cria pasta em `%TEMP%` apaga a sua no fim, mesmo falhando. Use o ajudante comum
+  `agents/code/test/pasta-de-ensaio.mjs` (`pastaDeEnsaio`, `hubDeEnsaio`; ticket 36) em todo teste novo.
 - **Um trabalho pesado por vez** (a máquina está com a memória no limite, 2026-10-17): prova com Docker, suíte inteira,
   indexação da busca, `npm install` e harness de verdade são pesados. Antes de um, confira
   `C:/Projetos/context-hub/.scratch/construcao-do-hub/etapas/trava-pesada.md`: se existir e tiver menos de 30 min,

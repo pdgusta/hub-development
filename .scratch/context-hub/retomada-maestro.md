@@ -38,7 +38,7 @@ Por isso o diário abaixo registra cada evento com hora.
 
 ## Para o Gustavo, de dia (não bloqueia)
 
-- Apagar as ~1.325 pastas `hub-ensaio-*` antigas em `%TEMP%` (sem login dentro, conferido); a limpeza em massa pelo
+- Apagar as ~1.325 pastas `hub-ensaio-*` antigas em `%TEMP%` (4,0 GB; sem login dentro, conferido); a limpeza em massa pelo
   maestro foi recusada pela permissão automática. Ticket 36 conserta os testes que as deixam.
 
 ## Leia nesta ordem
@@ -167,3 +167,4 @@ nuvem.
 - 05:33: Trilho terminou o Docker do 16 (trava à Brasa 05:20, fatias 3-7). Cinzel com o teste Docker do 10 escrito (b2d855e); fila: Brasa, Cinzel, Rebite (28+09), Trilho (Codex 15), Brasa (fatia 2 em hora quieta).
 - 05:48: corrida na trava: o corredor destacado da Brasa retomava a trava sozinho e furava a fila. Ordem firme: Cinzel (10), Rebite (suíte 28+09), Brasa (fatias 3-7), Trilho (Codex 15 após 06:58). Mensagem do Rebite tinha ficado sem Enter: reenviado.
 - 05:57: 09 de novo com três instâncias e cifra: 21 PASSA. 10: 30 PASSA, 4 falhas só do teste (CRLF no AGENTS.md do ensaio; conflito fundido pelo LiveSync), consertado 6095213; Cinzel entra depois do Rebite (~3 min). 16: erro do teste com caminho ofuscado, consertado 67e1f04; 4ª rodada Docker junto do Codex do 15 após 06:58.
+- 06:09: 36 em revisão no Fiel (b8e8b03); regra nova: testes novos usam agents/code/test/pasta-de-ensaio.mjs. Vela na fila (real do 17, Claude e Copilot, entre fatias da Brasa). Rebite com a trava desde 05:55.
