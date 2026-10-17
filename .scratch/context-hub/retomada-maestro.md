@@ -310,3 +310,5 @@ nuvem.
 - 11:54: 17 com o 16 (0eed25d, b6ace6b), rodada nova no Fiel. Ticket 39 (vigia grava mensagem limpa) ao Trilho depois do 38.
 - 12:05: Gustavo pediu um agente só de documentação técnica: Lume recrutado (papel novo), plano em etapas/documentacao-tecnica.md, junção dos docs em juntar-tickets.md; 17 já juntado (e7203b4).
 - 12:15: ronda; 17 juntado (e7203b4), suíte com o Rebite desde 11:59; Codex de volta: fila Cinzel (11, 24), Vela (18, 25), Brasa (22); Fielzinho volta à dupla; Vela 41%: salvar. Lume na página do 04. 4,3 GB livres. Contexto do maestro ~545k (auto-compact perto).
+- 12:19: Vela limpa e retomada.
+- 12:20: Lume com 5 páginas (docs 5b6e9b5), 1ª junção dos docs pedida ao Rebite; comentário velho do conteudo.mjs vai no 38.
