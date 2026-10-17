@@ -343,3 +343,4 @@ nuvem.
 - 15:46: 23 PASSA no Fiel (9fcf4cf) com achado novo: EPERM intermitente no rename do registro.json (kit/casa.mjs:118) sob carga. Decidido: conserto curto antes da junção (repetir ~2 s em EPERM/EACCES/EBUSY, com teste), Cinzel; rodada curta do Fiel.
 - 16:16: 11 resolvido (51fa382) + docs 4ª leva (a7d1517): suíte 294 (282/12/0). Juntados 18 (dc4ed6a), 37 (ebfbe6c), 23 (9f122c2); suíte do lote desde 16:20 (~30 min). 44 com o Fiel.
 - 16:44: ronda: Lume 40% → salvo, /clear, retomada. Suíte do lote 18+37+23 (Rebite, desde 16:16). 4,1 GB livres.
+- 16:51: 18, 37, 23 resolvidos (suíte 355: 342/13/0). 44 (df6c2e5) e docs 5ª leva (f640bbd) juntados; suíte desde 16:46. Janela quieta ao fim dela (~17h15): saem Cinzel, Vela, Fiel, Lume; Brasa 22 → Cinzel 24 → Vela 25; Fiel ao fim.
