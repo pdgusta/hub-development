@@ -45,6 +45,14 @@ Leia antes: `etapas/regras-da-construcao.md` (inteiras, com os "Achados comuns")
   `supports_websockets = false`) foi respeitado: na rodada 1, ele foi ao repasse. Se o backend recusar, a reserva é
   `openai_base_url` (ver a doc abaixo). Se nada servir, perguntar ao maestro.
 
+## Ticket 23: kit de par, a forma (desde ~08h20)
+
+- Hub: worktree `C:/context-hub-wt/ticket-23`, ramo `ticket-23` de `integracao` e2b7607.
+- Costuras em `etapas/costuras-23-Cinzel.md` (3 perguntas ao maestro). Próximo passo: com as respostas, `tdd` pelo
+  `23-kit.test.mjs` sem harness; antes de codar o MCP, ler por curl a doc do Claude e do Copilot sobre variável de
+  ambiente no cabeçalho e a chave do Copilot para as instruções do servidor.
+- O Codex do 11 tem prioridade às 12h15.
+
 ## Fatos de fonte (doc do Codex lida por curl em 2026-10-17)
 
 - <https://developers.openai.com/codex/mcp.md>:

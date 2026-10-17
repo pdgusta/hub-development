@@ -203,3 +203,4 @@ nuvem.
 - 07:50: Cinzel (11 em revisão, menos Codex) e Brasa (22 esperando a trava) limpos e retomados.
 - 07:52: Vela limpa e retomada (18).
 - 07:54: 11 passa na rodada 1 (falta Codex 12:15); ressalvas ao 23 e 25. Cinzel começa o 23 (esqueleto do kit) antes dos bloqueios.
+- 08:01: costuras do 23 aceitas (metadata.camada: geral; kit para diante de texto alheio no global).

@@ -1,7 +1,7 @@
 # 23: Kit de par: a forma
 
 Type: task
-Status: ready-for-agent
+Status: claimed
 Etapa: 10 (kit de par)
 Blocked by: 11, 15, 17, 18, 20, 27
 
@@ -26,3 +26,6 @@ Blocked by: 11, 15, 17, 18, 20, 27
 
 - 07:53 (maestro): do 11 (Cinzel, parecer `../etapas/parecer-11-Cinzel.md`): (1) o Copilot sem `--allow-all-mcp-server-instructions` não põe as instruções do servidor no prompt: o kit liga a opção ou põe o hub-banco na lista permitida; (2) o Claude Code adia as ferramentas MCP: a regra curta do `write_note` só chega depois de um ToolSearch; a cabeça do AGENTS.md chega pelas instruções.
 - 07:53 (maestro, mandato): começa já com o Cinzel, sobre a ponta de `integracao`: o esqueleto do kit (ordem dos passos, -WhatIf, cópia e hash antes de tocar, desfazer, contrato por link e import, junction das skills, linhas de MCP, GSD fora do global com cópia, `10-manutencao.ps1`); os hooks de 11, 17 e 18 entram por merge quando forem juntados. Junção só com todos os bloqueios resolvidos.
+- 2026-10-17 ~08h20 (Cinzel): peguei o 23 (`claimed`). Worktree `C:/context-hub-wt/ticket-23` de `integracao` e2b7607. Costuras propostas ao maestro: `../etapas/costuras-23-Cinzel.md`. O Codex do 11 continua com prioridade às 12h15.
+
+- 08:00 (maestro, mandato): costuras do Cinzel aceitas (`../etapas/costuras-23-Cinzel.md`). (1) skill de uso geral = `metadata.camada: geral` no frontmatter do `SKILL.md` (campo `metadata` do formato de skill), já em busca, maestro-*, nova-iniciativa e nova-pasta-local; (2) arquivo global com texto além do GSD: o kit para e mostra o trecho; pasta de skill de mesmo nome vai para a cópia e vira junction; (3) o app-server do Codex por segundos, sem modelo e sem login, roda sem a trava.
