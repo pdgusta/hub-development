@@ -292,3 +292,4 @@ nuvem.
 - 10:49: junção do 16 vermelha (12-busca recusa o SKILL.md da vigia), desfeita; Trilho conserta. Brasa volta o 22 a 5abe359 e leva ao Rebite. Quadro e placar atualizados (contexto do maestro ~495k).
 - 10:55: 22 juntado (4a47576), suíte na fila depois do Trilho. Lição do SKILL.md (YAML válido; rodar o 12-busca) nas regras.
 - 10:56: 37 passa (r2, 4b695d5), ressalva entra no próprio 37 antes da junção; 23 com a lição do caminho longo (e6e5faa), rodada curta.
+- 11:10: 21 4ª rodada Docker tudo passou; 16 SKILL.md consertado (6a0ab17), o do arquivar também (462b55e); Fiel com os dois. Trilho limpo e retomado.
