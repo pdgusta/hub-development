@@ -63,3 +63,4 @@ entrou), `fila-pesada.md`, e esta retomada.
   o 08 com as ressalvas do fechamento do parecer, registro, avisos. Construtores ainda não avisados de e98a891.
 - 08:30: trava minha (Vela soltou); suíte do 08 em segundo plano, log etapas/logs/juncao-08-suite.log. Ao soltar, avisar o próximo da fila (conferir fila-pesada.md; perguntar ao maestro se ambíguo).
 - Maestro: ao soltar a trava do 08, avisar o Trilho (Docker do 21).
+- 08:57: 08 RESOLVIDO (e98a891, suíte 210/202/8). Trilho avisado da trava; maestro e construtores avisados. Nenhuma junção em curso; 17 espera o 16.

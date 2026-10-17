@@ -220,3 +220,4 @@ nuvem.
 - 08:55: 18 voltou na rodada 1 (fim cobrava quem não gravou; raiz no 27), conserto e1c5eac, rodada 2 pedida; Vela na fila depois do Cinzel.
 - 08:56: 08 resolvido (e98a891, 210/0); ressalvas no ticket (fatia 2 do Gustavo; Restore-RamoApagado sem finally, não promover à vigia sem limpeza garantida). Trava com o Trilho (16, 21).
 - 09:07: 18 rodada 2 passa com ressalvas; 2 e 3 consertadas (f36df85), rodada curta; ressalva 1 aceita, rede vira ticket 37. 25: medidor, ponte e fases 1-3 em 1c30e48.
+- 09:08: preparo leve do 25 pronto (974d74d); 1ª rodada real (fases 1-3) na fila depois do 22.
