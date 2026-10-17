@@ -37,8 +37,8 @@ Como o aceite roda:
 
 | Critério | Resultado |
 |---|---|
-| os três harnesses citam o que receberam do servidor | Claude Code e Copilot: PASSA (rodada 1). Codex: PENDENTE (rodada 2) |
-| a requisição do Codex é capturada para ver onde o `instructions` chega | PENDENTE (rodada 2) |
+| os três harnesses citam o que receberam do servidor | Claude Code e Copilot: PASSA (rodada 1). Codex: PENDENTE, sem cota até 12h15 |
+| a requisição do Codex é capturada para ver onde o `instructions` chega | PENDENTE, sem cota até 12h15. A captura está pronta e testada sem harness (4/4) |
 | no Copilot CLI, com e sem a opção que libera as instruções do MCP | PASSA: as duas sessões rodaram; o resultado está abaixo |
 
 ### Rodada 1 (07:28 a 07:36, com a trava)
@@ -72,7 +72,10 @@ O que isso mostra:
 
 ### Rodada 2: só o Codex
 
-PENDENTE (na fila, depois do Rebite).
+**PENDENTE: o Codex está sem cota até 12h15** (maestro, 2026-10-17 ~07h50). O conserto do teste está em bfd1af3, e a
+rodada está na fila para depois de 12h15:
+`pwsh -NoProfile -File etapas/logs/11-corredor.ps1 -Rodadas codex`, com a trava. Os dois critérios do Codex (a
+citação e a captura) ficam abertos até lá; o resto do ticket está fechado com Claude Code e Copilot.
 
 ### Sem harness
 

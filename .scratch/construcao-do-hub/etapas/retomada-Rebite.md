@@ -49,3 +49,7 @@ entrou), `fila-pesada.md`, e esta retomada.
   do hub com a trava (estou no item 6 da fila; maestro aprovou), depois comentário no ticket 15 (já resolved; comentar a
   rodada 2), linha no registro, aviso ao maestro e aos construtores. Nota do hífen do Codex já está nas regras e nos
   tickets 11 e 23 (maestro).
+- 07:45: ticket 08 avisado pela Brasa (ponta 514db7a = parecer; PASSA com ressalvas, fatia 2 vira item do Gustavo).
+  Sem conflito com e2b7607, nenhum arquivo em comum, sem ramo no fork. Juntar depois que a suíte do 15 acabar; então
+  rodar `pwsh -File agents/code/test/banco/kit-sem-docker.ps1` (leve) e a suíte de novo com a trava; Docker não repito
+  (arquivos idênticos aos revisados). Ressalvas do fechamento do parecer vão no comentário do ticket.

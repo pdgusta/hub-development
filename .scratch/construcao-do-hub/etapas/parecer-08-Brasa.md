@@ -76,3 +76,21 @@ Veredito: **código PASSA em acordo com o Fielzinho (24 PASSA no kit-sem-docker 
   `anexos/video.bin, clientes/rascunho-b/x.bin`. Certo. Sondas apagadas; `git status` limpo.
 - Fila pesada (maestro): a fatia 2 é da Brasa, na hora quieta. Pedido: rodar `-Fatias 1,2` na mesma subida (a 1 de
   03h37 é anterior às junções; o gerador mudou no 28), log em `etapas/logs/`. O Fiel lê o log e fecha.
+
+## Fechamento — 2026-10-17 ~08h10: **PASSA com ressalvas** (decisão do maestro sobre a fatia 2)
+
+O maestro decidiu (via Brasa): a fatia 2 não roda de novo hoje e vira item para o Gustavo (de dia, com menos agentes
+ou com a memória do Docker ajustada). O código passou em acordo na rodada 2; o Fielzinho é avisado desta decisão.
+
+Ressalvas escritas do fechamento:
+1. **Critério "arquivo de 60 (51) MiB viaja e o de 201 MiB não": sem prova Docker.** Tentativas: 05h11 (60 MiB), de
+   2.900 para 513 MB livres em 1 min; 07h37 (`-Fatias 1,2`), de 3.183 para 621 MB em 2 min, ainda na subida dos pares
+   (log `etapas/logs/08-fatias-1-2.log`: só "o passo do kit sobe o par A"), cortada e limpa; `vmmemWSL` com 2,1 GB até
+   um `wsl --shutdown`. O que existe: o limite do kit igual ao do CLI (fonte do `livesync-commonlib`) e o
+   `Get-AcimaDoLimite` testado com arquivos esparsos. Item para o Gustavo: rodar
+   `pwsh -Command "& 'agents/code/test/08-banco-limites.test.ps1' -Fatias 1,2"` (por `-File`, "1,2" vira 12).
+2. **Fatia 1 sem rodada depois das junções** (último verde 03h37). Atenuante: o teste do 07 (06h44, ponta b02fa4f, que
+   já contém o 28 e o gerador novo) passou 24/24, com a pasta local nova fora do banco e nada em claro. A rodada 2 só
+   mexeu no `Get-AcimaDoLimite`, fora do caminho do Docker das fatias 1 e 3-7.
+3. As ressalvas 1-6 da rodada 1 seguem (registro do CLI caído apagado, falha do laço fora do log, janela do pwsh,
+   retrato sem frase, `Restore-RamoApagado` sem `finally`, Agendador real).

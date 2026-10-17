@@ -32,3 +32,15 @@ dependendo do 16 resolvido (relatório, "Falta" 1).
 2. O teste usa o `estado.json` de exemplo das costuras; o teste sobre o arquivo do `vigia passada` vem quando o 16
    entrar (declarado).
 3. Linha de status na tela de verdade e toast real: não verificados (declarado; modo `-p` sem tela).
+
+## Rodada 2 — 2026-10-17 ~08h15 (HEAD 3e8bbc8)
+
+Veredito: **PASSA** (Fiel sozinho: Fielzinho sem cota até 12h15; leitura dele pendente).
+
+- Conserto 1 feito: `rodou(estado)` exige `passada` que o `Date.parse` aceita. Sem ela: o `inicio` diz "a vigia ainda
+  não rodou nesta máquina; não diga que a sincronização foi conferida", junto com os itens dos outros hooks; a `barra`
+  diz "hub: vigia ainda não rodou" (ou o resumo do item informa com "(vigia ainda não rodou)"); divergência continua
+  primeiro. O aviso de "vigia parada" só com passada válida.
+- `17-vigia-tela.test.mjs`: 16/16 (Fiel), com o caso novo sobre o estado da própria `lib/vigia.mjs`. A reprodução do
+  Fielzinho agora dá "a vigia ainda não rodou" (não confirma mais o defeito). Árvore limpa.
+- Ressalvas da rodada 1 seguem; a 1 (nao-verificavel) vai para o teste sobre o estado real do 16. Junção só com o 16.

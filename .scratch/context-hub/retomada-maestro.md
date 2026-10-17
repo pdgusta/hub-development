@@ -90,7 +90,7 @@ C:\context-hub log --oneline -3 integracao`, `etapas/trava-pesada.md` e `etapas/
   indexação, npm, harness real). Suíte comum: `node --test "agents/code/test/**/*.test.mjs"` sem `HUB_HARNESS_REAL`
   (os de harness ficam pulados; ticket 29); `--test-concurrency=1` sob carga. Se travar de novo, as saídas são do
   Gustavo: baixar a memória do Docker (Settings > Resources) ou aumentar o arquivo de paginação.
-- **Codex:** sem cota de novo até 06:58 de 2026-10-17 (Trilho e Fielzinho). Pendente nessa hora: Codex real do 15; leituras do Fielzinho.
+- **Codex:** sem cota de novo até 12:15 de 2026-10-17 (Fielzinho e qualquer harness real com Codex). Pendente: Codex real do 11 (Cinzel); leituras atrasadas do Fielzinho (fila do Fiel).
 
 ## Quem está no canvas (2026-10-17 ~04h)
 
@@ -198,3 +198,4 @@ nuvem.
 - 07:35: costuras do 21 aceitas (15 min, recusa sem o outro par, running+0 pendentes; manutenção diária vai ao 23).
 - 07:37: real do 11 (07:28-07:36): Codex falhou, Cinzel analisa. Máquina quieta (3,1 GB): Brasa roda a fatia 2 do 08 agora, depois o Docker do 22; depois Rebite (suíte do 15).
 - 07:41: fatia 2 do 08 caiu de novo (3.183 → 621 MB); vira item do Gustavo; 08 fecha a revisão com ressalva. wsl --shutdown liberado à Brasa (sem contêineres).
+- 07:46: Codex sem cota até 12:15. Fiel fechou sozinho: 17 r2 passa, 08 passa com ressalvas (fatia 2 do Gustavo), 15 passa. 08 → Rebite; depois o 16 pode juntar.
