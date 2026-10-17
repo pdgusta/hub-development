@@ -43,6 +43,11 @@ Valem para todo construtor e revisor das etapas. Plano decidido: `revisao/plano/
   Fielzinho e em tarefa do Codex que exige raciocínio; não é regra para trocar de harness, Gustavo 2026-10-17 ~11h40;
   ids: `gpt-6.1-sol` e `gpt-6-astra`, do `models_cache.json` do Codex); uma sessão por harness; registre
   cada uso no relatório (o que copiou, quando apagou, os hashes).
+- **Codex sem cota (Gustavo, 2026-10-17 14h30):** ninguém para a execução esperando o Codex. Trabalho que iria para
+  o Codex como *agente* (a 2ª leitura do Fielzinho, uma tarefa delegada) vai ao Claude: **Sonnet 5.5** onde iria o
+  `gpt-6.1-sol`, **Opus 5.5** onde iria o `gpt-6-astra`; revisão por outro modelo não é exigência nesta execução. O
+  Codex segue **prioridade**: voltou a cota, volta ao Codex (o Claude é só o tapa-buraco). Não vale para a prova do
+  Codex como *harness* (o hook, o MCP, o kit no Codex): essa só se prova no Codex e espera a cota, sem segurar o resto.
 - Contêineres de ensaio (Docker): só em `127.0.0.1`, nome começando por `hub-ensaio-`, apagados ao fim da etapa.
 - Processo longo: em segundo plano, com registro em arquivo; nunca `taskkill` por nome (só o PID que você abriu).
 
