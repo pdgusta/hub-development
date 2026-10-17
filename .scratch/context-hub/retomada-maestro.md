@@ -319,3 +319,4 @@ nuvem.
 - 12:46: 17 resolvido (273/0). Junção dos docs desfeita (12-busca estourou o prazo indexando os docs); ticket 41 (busca não indexa agents/code/**) ao Trilho, antes do 39. 40 feito (db6b52c), revisão; conflito simples com o 18 no AGENTS.md. Cinzel com a trava (Codex) desde 12:37.
 - 12:49: Codex sem cota de novo até 17:15 (12:41). Vela roda fases 4/6/7 do 25 com Claude+Copilot; Brasa: manutenção do 22 à rodada curta; Cinzel: 23 rodada curta. Codex de 11/24/18/25/22 depois das 17:15.
 - 12:55: ticket 42 (mod do Claude e o atalho, divergência do Lume) para a Brasa. 41 feito (ae102ed); Trilho roda o 12-busca entre fases da Vela.
+- 13:03: corredor do 25 saiu sem rodar (piso 2.500 MB, máx. 2.040 livres). Decisão: piso 1.800 (HUB_25_PISO_MB), corte de 700 segue; Vela roda depois do 12-busca do Trilho. Se falhar, janela quieta.
