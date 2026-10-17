@@ -2,6 +2,20 @@
 
 Reescrita em 2026-10-17 ~04h (Brasília). Atualize a cada evento.
 
+## AGORA: religar depois do reinício do Maestri (2026-10-17 ~10h05)
+
+O Gustavo reinicia o Maestri (atualização 0.25.0) no fim da janela quieta. Depois de ler esta retomada:
+1. Recriar a ronda: CronCreate `13,38 * * * *` com o prompt "Ronda do maestro (mandato de 2026-10-17): ..." (confira
+   cada recruta, a trava, a memória; destrave; diário; commit; contexto < 600k).
+2. `maestri list` e `maestri check` de cada um. Quem não voltou sozinho: no Claude, `maestri ask "<nome>" --raw
+   "claude --resume <id>"` (ids: Rebite eedaf0e1-3e28-47b7-83d4-928cfb078956; Cinzel
+   aecf4ac4-c129-472d-bce0-94c103e3df86; Fiel 17b1605d-5943-4a07-b008-39cfc958ac1d; Trilho
+   ee794bc3-1b7b-41f5-90b1-6b43b5679eaa; Brasa e Vela: ver a linha "Resume this session" no terminal) ou `claude` e
+   "leia a sua retomada"; no Fielzinho, `codex` e "leia a sua retomada" (Codex sem cota até 12h15).
+3. Mensagens a reenviar: ao Rebite, "16 passou no Fiel (rodada 2), ramo do Trilho; o 23 segura até 11/16/17/18";
+   ao Fiel, "pedir a revisão do 21 (Trilho) e conferir a evidência da fatia 2 do 08 (514db7a, logs/08-fatias-1-2.log)".
+4. Fila depois: Rebite junta 16, depois 17; 12h15: Codex do 11, 24 (Cinzel), 18, 25 (Vela), 22 (Brasa).
+
 ## Mandato (Gustavo, 2026-10-17 ~04h) — vale até ele dizer o contrário
 
 O maestro **orquestra sozinho e decide pelo Gustavo**, com critério "afiado o bastante para não quebrar nada e leve o
@@ -252,3 +266,4 @@ nuvem.
 - 09:47: ronda na janela; Brasa com a trava (22 desde 09:39); 1,6 GB livres.
 - 09:49: 22 Docker verde (15/0), Claude e Copilot passam; proxy não repassa instructions (aceito, radar); pico 715 MB livres. Brasa na fatia 2 do 08.
 - 09:54: fatias 1+2 do 08 VERDES na janela quieta (18/0, 514db7a; 51 MiB viajou, 201 não; pico 1.724 MB livres). Item do Gustavo da fatia 2 cai. Vela no 25.
+- 10:03: 1ª rodada real do 25 verde (fases 1-3; pico na indexação: 1.472 MB de node; mín. livre 1.831 MB). Janela quieta encerrada; Brasa e Vela salvas. Plano de religar no topo.
