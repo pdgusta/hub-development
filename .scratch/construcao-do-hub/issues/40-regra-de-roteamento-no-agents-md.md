@@ -21,3 +21,4 @@ contrato: o relatório do 19 entrega à faixa 1 a regra de roteamento para entra
 ## Comments
 
 - 2026-10-17 12h25 (maestro): publicado pela divergência do Lume. Dona: a Vela (fez o 19), enquanto espera o Codex.
+- 2026-10-17 12:41 (Vela): claimed; feito em db6b52c (seção no corpo do AGENTS.md; teste no 19-roteamento; 52/52; cabeça 1.691). Relatório ../etapas/relatorio-40-regra-de-roteamento.md. Revisão pedida ao Fiel.

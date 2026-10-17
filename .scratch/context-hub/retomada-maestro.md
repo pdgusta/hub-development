@@ -315,3 +315,5 @@ nuvem.
 - 12:27: 23: conserto curto antes da junção (fazer() que falha apagava o original no desfazer).
 - 12:31: Lume achou que a regra de roteamento do 19 (Copilot) não entrou no AGENTS.md: ticket 40 à Vela.
 - 12:39: 22: manutenção no ramo (kit de cliente apagava trust_level do Codex), junto com o Codex.
+- 12:43: Lume com 14 páginas (11 em integracao, junção 74f201a); limpo e retomado.
+- 12:46: 17 resolvido (273/0). Junção dos docs desfeita (12-busca estourou o prazo indexando os docs); ticket 41 (busca não indexa agents/code/**) ao Trilho, antes do 39. 40 feito (db6b52c), revisão; conflito simples com o 18 no AGENTS.md. Cinzel com a trava (Codex) desde 12:37.

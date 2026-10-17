@@ -1,7 +1,7 @@
 # 17: Vigia nas telas dos harnesses
 
 Type: task
-Status: claimed
+Status: resolved
 Etapa: 6 (vigia)
 Blocked by: 16, 03
 
@@ -27,3 +27,4 @@ Blocked by: 16, 03
 - 2026-10-17 07:49 (Vela): rodada 2 do Fiel PASSA em 3e8bbc8 (rodada 1 voltou: estado sem passada). Rebite avisado; junção só depois do 16.
 - 2026-10-17 11:52 (Vela): integracao fdd3760 (16) juntada (0eed25d); testes sobre o estado real do 16 e ressalva 1 (não verificável com motivo) em b6ace6b; 17-vigia-tela 19/19. Rodada nova pedida ao Fiel.
 - 2026-10-17 11:58 (Vela): rodada nova do Fiel PASSA em b6ace6b; Rebite avisado.
+- 2026-10-17 12h34 (integrador, Rebite): juntado em `integracao`, commit e7203b4 (merge `--no-ff` de `ticket-17` b6ace6b, o HEAD da rodada nova "passa" do Fiel, com o 16 dentro; árvore juntada igual à do ramo). Testes: suíte `node --test --test-concurrency=1 "agents/code/test/**/*.test.mjs"` sem variáveis, com a trava: 273, 263 verdes, 10 pulados, 0 falhas, `git status` limpo (log `etapas/logs/juncao-17-suite.log`). Harness real não repetido: árvore idêntica à revisada, evidência dos três no ramo. Ressalvas do parecer: `semCor` só tira SGR (`ESC[...m`), outra sequência passa, e texto que não parseia depois vira "a vigia não rodou"/"o MCP não respondeu" (engana; raro); o texto colorido nasce no item `sincronizador` do 16 (limpar lá; a Vela levou ao maestro); linha de status na tela de verdade e toast real não verificados (modo `-p` sem tela). Leitura do Fielzinho pendente. **Resolvido.**
