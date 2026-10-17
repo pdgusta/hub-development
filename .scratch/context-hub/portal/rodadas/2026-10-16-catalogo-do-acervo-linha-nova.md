@@ -2,7 +2,7 @@
 titulo: Catálogo do acervo: linha nova pede aval?
 ticket: 16
 aberta: 2026-10-16
-estado: aberta
+estado: absorvida
 ---
 
 A Vela terminou o ticket 20 (o acervo do maestro e a guarda dele) e achou duas regras suas que se cruzam.
