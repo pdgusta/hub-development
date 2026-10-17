@@ -340,3 +340,4 @@ nuvem.
 - 15:23: 41, 40, 43 resolvidos; 11 juntado (51fa382), suíte depois do Codex do 18 (antes da Brasa).
 - 15:32: divergência do Lume (link relativo com ../ no verificador de pastas) entrou no ticket 44.
 - 15:43: Codex do 22 cortado (15:33; 583 MB na subida dos pares, Docker com o canvas cheio). Decidido: janela quieta da noite (~17h30): Brasa 22 → Cinzel 24 → Vela 25 (4,5,7 + Codex); antes, sem Docker, Rebite: suíte 11(+18), junções 18, 37, 44, 23. Docker parado. Previsão dada ao Gustavo: construção fechada ~20h (82% por tickets, ~85% ponderado).
+- 15:46: 23 PASSA no Fiel (9fcf4cf) com achado novo: EPERM intermitente no rename do registro.json (kit/casa.mjs:118) sob carga. Decidido: conserto curto antes da junção (repetir ~2 s em EPERM/EACCES/EBUSY, com teste), Cinzel; rodada curta do Fiel.
