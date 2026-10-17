@@ -1,0 +1,27 @@
+✔ tudo em ordem: o estado é ok, guarda os itens dos outros e não notifica (14669.613ms)
+✔ conflito de texto: divergência citando a nota pelo caminho decifrado, não pelo id cifrado (7640.6389ms)
+✔ replicação parada há mais de 15 min com o outro par ligado: divergência; antes dos 15 min, não (11329.3808ms)
+✔ outro par sem resposta: informa com o motivo, nunca ok, e não suprime a replicação parada (17938.274ms)
+✔ notificação só na passada que piora: igual não repete; resolvido não notifica; voltou, notifica de novo (15094.5649ms)
+✔ item copia-diaria gravado por outro dono: informa, com notificação na passada seguinte (8136.2112ms)
+✔ binário descartado pela resolução do CLI: divergência pelo caminho em claro, até o Gustavo olhar (8523.282ms)
+✔ sincronizador parado: informa; o laço o religou: informa o que o laço fez, uma vez (10030.0535ms)
+✔ arquivo acima de 200 MiB: divergência com o caminho; o de 200 e o que tem ponto ficam de fora (5978.2258ms)
+✔ gerador a cada passada: pasta local nova muda a lista, religa o sincronizador e avisa; igual, nada (11252.7366ms)
+✔ gerador que recusa (index.md ilegível): informa com o caminho, sem religar (6159.391ms)
+✔ Config Doctor pendente (regra do plugin mais nova que a processada): informa; em dia ou sem plugin, nada (9922.3211ms)
+✔ olhei num caminho sem binário descartado: diz, sai 1 (3993.8672ms)
+✔ recuperar sem versão perdida: diz que não há o que recuperar, sai 1 e não grava nada (4014.7298ms)
+✔ recuperar acha a folha apagada com o corpo cifrado, e não o toco de um DELETE (9842.419ms)
+✔ recuperar caminho que o banco não tem: diz, sai 1 (4091.9212ms)
+✔ CouchDB que recusa (401): a replicação fica "não conferida" com o código, e não vira parada (12476.2583ms)
+✔ estado.json: quem grava espera a trava do outro dono e não perde o item que ele gravou (699.3077ms)
+✔ estado.json: trava velha (dono morto) é tomada, e o item é gravado (125.0996ms)
+ℹ tests 19
+ℹ suites 0
+ℹ pass 19
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 172582.5495

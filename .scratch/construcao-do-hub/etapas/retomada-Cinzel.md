@@ -9,7 +9,7 @@ Leia antes: `etapas/regras-da-construcao.md` (inteiras, com os "Achados comuns")
 - **Às 12h15** (cota do Codex), na fila (item 5 de `etapas/fila-pesada.md`), um de cada vez: primeiro o Codex do 11,
   depois o Codex do 24. Depois de mim vem a Vela (Codex do 18).
 - **Até lá, o 37** (abaixo).
-- Codex de verdade: o gpt-6-astra está liberado (regra nova, ~10h20). Os testes do 11 (linha 140) e do 24 (linha 115) usam o gpt-6-luna; mantenho e troco para o astra se o luna falhar ou responder mal.
+- Codex de verdade: `gpt-6.1-sol` (regra do Gustavo; nome do `~/.codex/models_cache.json`); o gpt-6-astra fica para revisão. Já trocado no 11 (e799d2a) e no 24 (b3597e7).
 
 ## Ticket 37: o fim da resposta vê a gravação pelo shell (em curso)
 
@@ -55,7 +55,7 @@ Leia antes: `etapas/regras-da-construcao.md` (inteiras, com os "Achados comuns")
 
 ## Ticket 11: MCP do banco pelos três harnesses (rodada 1 sem conserto; falta o Codex)
 
-- **Hub:** worktree `C:/context-hub-wt/ticket-11`, ramo `ticket-11`, ponta 4be0679.
+- **Hub:** worktree `C:/context-hub-wt/ticket-11`, ramo `ticket-11`, ponta e799d2a.
 - **Fork:** worktree `C:/Projetos/hub-mcp-banco-wt/ticket-11`, ramo `ticket-11` = `integracao` 34c3e50, com o `dist`
   montado.
 - **Leia:** as costuras (`etapas/costuras-11-Cinzel.md`), o relatório (`etapas/relatorio-11-mcp-do-banco-pelos-harnesses.md`)
@@ -82,7 +82,7 @@ Leia antes: `etapas/regras-da-construcao.md` (inteiras, com os "Achados comuns")
 
 ## Ticket 24: kit ao vivo (parte fechada em revisão; falta o Codex)
 
-- **Hub:** worktree `C:/context-hub-wt/ticket-24`, ramo `ticket-24` (do `ticket-23`), ponta 432a927 (com o 23 a9643c6 e o ajudante das skills). Parecer da rodada 1: sem conserto próprio (`etapas/parecer-24-Cinzel.md`).
+- **Hub:** worktree `C:/context-hub-wt/ticket-24`, ramo `ticket-24` (do `ticket-23`), ponta b3597e7 (com o 23 a9643c6 e o ajudante das skills). Parecer da rodada 1: sem conserto próprio (`etapas/parecer-24-Cinzel.md`).
 - **Leia:** as costuras aceitas (`etapas/costuras-24-Cinzel.md`) e o relatório
   (`etapas/relatorio-24-kit-de-par-ao-vivo.md`). Rodada 1: Claude e Copilot PASSA, às 09:12, log
   `etapas/logs/24-harness-1.log`, evidência no commit.

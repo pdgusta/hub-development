@@ -13,6 +13,14 @@ construtores: Brasa, Vela, Cinzel. Sem trava minha; nenhum contêiner nem pasta 
   (3) PS: New-EnsaioBanco apaga a raiz se cair no meio; Remove-EnsaioBanco apaga a raiz mesmo se o Uninstall lançar;
   09/10 com o try logo depois do New-EnsaioBanco; 08 finally com a remoção garantida; sem-docker .ps1 recebem a raiz
   do node (pastaDeEnsaio) por parâmetro; (4) falha forçada e conferir %TEMP%; 16/17 depois de juntados.
+- Feito (11:30): 09b11d8 antesDeApagar no ajudante (+2 casos no 36, 10/10); c2eb375 12-busca, 12-kit-busca, 13-gemini,
+  ponta a ponta 12 e 15 pelo ajudante; c0bcc5e ensaio.psm1 (New/Remove-EnsaioBanco apagam a raiz quando caem; teste novo
+  38-ensaio-banco 2/2), 08/09/10 limpeza garantida, sem-Docker com -Pasta do node (07 e 09 sem Docker verdes; pwsh morto
+  no meio: sem sobra). O 09 sem Docker quebra se o caminho crescer (mensagem de recusa quebra de linha): prefixo curto 09sd.
+- 16-vigia trocado (e316032, 19/19, falha forçada sem sobra). Falta: na fila pesada (1d, depois da suíte do Rebite; ele avisa; ao soltar avisar o Cinzel se passou de 12h15) rodar 12-busca, 12-kit-busca, 13-gemini verdes + falha forçada (cópia zz-forcada com
+  teste que lança, --test-name-pattern), ponta a ponta 12/15 com HUB_HARNESS_REAL=1 HARNESSES=nada (falha antes do login;
+  apagar evidencia hashes-nada.json depois). Conferir só os prefixos meus em %TEMP% (antigos: 12k-HTMh3h, 12k-WVNlmd,
+  12-Uz6cAf, 12-vS42Wo, 13-NCcZnS). 16 e 17: trocar depois de juntados. Relatório etapas/relatorio-38-...md; revisor Fiel.
 - 21 e 16: com o Rebite (junção numa suíte só).
 
 ## Antes (10:55)

@@ -154,7 +154,7 @@ C:\context-hub log --oneline -3 integracao`, `etapas/trava-pesada.md` e `etapas/
 
 ## Placar (2026-10-17 10:50)
 
-- Resolvidos (26 de 37): 01-10, 12-15, 19, 20, 27-36. Dos 26 originais: 16.
+- Resolvidos (29 de 38, 11:40): 01-10, 12-16, 19-22, 27-36. Dos 26 originais: 19.
 - Passaram na revisão e esperam junção: 16 (vermelho na junção, consertando), 17, 18 (falta Codex), 22, 23, 11 e 24
   (falta Codex). Em curso: 21, 25, 37. Ninguém sem dono; 26 é do Gustavo.
 - Codex sem cota até 12h15 (cota única, o gpt-6-astra não é à parte). Às 12h15, um de cada vez: Cinzel (11, 24),
@@ -302,3 +302,4 @@ nuvem.
 - 11:22: 22 resolvido (4a47576, 215/0; Codex pendente). 16 (30b735f) e 21 (fdd3760) juntados; suíte única desde 11:21. Resolvidos: 27 de 38.
 - 11:32: 38 com os leves verdes; pesados do Trilho logo depois da suíte do Rebite (antes das 12:15); Docker de 08/09/10 dispensado (só limpeza; as fases do 25 exercitam).
 - 11:38: Gustavo: testes do Codex com o GPT 6.1 Sol; astra só para revisão e o que exige inteligência (regras atualizadas).
+- 11:41: 16 e 21 resolvidos (253/0). Resolvidos: 29 de 38. Trilho com a trava (pesados do 38). Vela traz o 16 ao 17. id do Sol: gpt-6.1-sol (nas regras); 38 troca o modelo dos ponta a ponta 14/19/20/27.

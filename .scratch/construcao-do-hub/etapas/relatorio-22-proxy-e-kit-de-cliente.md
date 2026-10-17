@@ -173,7 +173,7 @@ ao fim. Hashes antes e depois em `evidencia-22/hashes-claude-codex-copilot.json`
 `CLAUDE_CONFIG_DIR` e não o toca (o mesmo no 15). A evidência não tem token nem pasta do usuário (conferido por
 `grep`: só contadores de uso).
 
-**Teste da cota do gpt-6-astra** (regra nova: o astra liberado no Codex; o teste passa a usá-lo, 3894a42): um
+**Teste da cota do gpt-6-astra** (regra de ~10h20, depois corrigida pelo Gustavo: o Codex dos testes é o `gpt-6.1-sol`, 97693bb; o astra fica para revisão): um
 `codex exec -m gpt-6-astra` de uma palavra numa casa de ensaio, 10:20 local. Copiado `.codex/auth.json` às 10:20:50,
 apagado com a casa às 10:20:57; o hash do real ficou igual (`9e42496b5bd7...`). Deu o mesmo limite: o astra divide a
 cota com o luna. O Codex como cliente roda depois das 12h15.

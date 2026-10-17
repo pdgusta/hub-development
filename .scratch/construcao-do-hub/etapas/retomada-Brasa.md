@@ -120,3 +120,5 @@ harness de verdade". Um subagente por vez (tarefa leve) e até três Haiku de es
   Às 12h15: o Codex do 22 (corredor inteiro, pedir a vez ao maestro); depois, evidência, relatório e o Fiel.
 - ~11h20: o Rebite desfez o 16 (integracao voltou a e98a891). Por ordem do maestro, ticket-22 voltou a 5abe359 (sem
   o 16); 10/10 sem Docker; Fiel e Rebite avisados. Não juntar `integracao` de novo até o 16 consertado entrar.
+- ~11h35: correção do Gustavo: o Codex dos testes é o `gpt-6.1-sol` (nome exato do `models_cache.json`); 97693bb
+  desfaz o astra. Ponta 97693bb (só o modelo no teste dos harnesses). A cota do sol não foi medida (o astra dividia).

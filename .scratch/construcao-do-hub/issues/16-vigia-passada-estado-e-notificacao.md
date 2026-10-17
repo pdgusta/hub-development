@@ -1,7 +1,7 @@
 # 16: Vigia: passada, estado e notificação
 
 Type: task
-Status: claimed
+Status: resolved
 Etapa: 6 (vigia)
 Blocked by: 08, 10
 
@@ -38,3 +38,4 @@ Blocked by: 08, 10
 
 - 10:49 (maestro): a junção do 16 (fce0529) ficou vermelha (2 falhas no 12-busca: a busca recusa `agents/skills/vigia/SKILL.md` por cabeçalho quebrado; log `../etapas/juncao-16-suite-falha-12.log`); o Rebite desfez (integracao em e98a891). O Trilho conserta e pede a junção de novo.
 - 2026-10-17 10:55 (Trilho): junção vermelha no 12-busca (description do SKILL.md com ': ', YAML inválido); conserto 6a0ab17, 12-busca 9/9; rodada curta pedida ao Fiel.
+- 2026-10-17 11h41 (integrador, Rebite): juntado em `integracao`, commit 30b735f (merge `--no-ff` de `ticket-16` 6a0ab17, o HEAD da rodada curta "passa" do Fiel). A 1ª junção (fce0529, 0332466) foi desfeita às 10h46: suíte com 2 falhas no `12-busca` (a busca recusava `agents/skills/vigia/SKILL.md`, YAML inválido no `description`; log `etapas/juncao-16-suite-falha-12.log`); o conserto 6a0ab17 só troca essa linha. Testes: suíte `node --test --test-concurrency=1 "agents/code/test/**/*.test.mjs"` sem variáveis, com a trava, junto com o 21 (fdd3760, árvore igual ao `ticket-21`): 253, 244 verdes, 9 pulados, 0 falhas, `git status` limpo (log `etapas/logs/juncao-16-21-suite.log`; inclui `16-vigia` e `12-busca`). Docker não repetido: só o `SKILL.md` mudou desde a 8ª rodada (`etapas/logs/trilho-16-docker-8.log`, tudo passou). Ressalvas do parecer: `laco` e `exclusoes` são `informa` novos a cada ação, podem virar ruído de notificação (rever com o uso); a 5ª rodada Docker teve o registro sobrescrito; leitura do Fielzinho pendente. **Resolvido.**

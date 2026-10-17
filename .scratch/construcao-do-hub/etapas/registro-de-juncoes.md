@@ -30,3 +30,4 @@
 - 2026-10-17 08h56, ticket 08, e98a891, suíte com --test-concurrency=1 e trava: 210, 202 verdes, 8 pulados, 0 falhas, git limpo; 07/09/28-sem-docker 3/3; Docker não repetido (idêntico ao revisado); fatia 2 vira item do Gustavo (Rebite).
 - 2026-10-17 11h21, ticket 22, 4a47576, suíte com --test-concurrency=1 e trava: 215, 206 verdes, 9 pulados, 0 falhas, git limpo; 22-kit-cliente + 22-proxy-sem-docker 4/4; Docker e harness não repetidos (idênticos); Codex como cliente pendente para depois de 12h15 (Rebite).
 - 2026-10-17 10h46, ticket 16, fce0529 DESFEITO: suíte 229, 219 verdes, 2 falhas no 12-busca (agents/skills/vigia/SKILL.md com YAML inválido); integracao voltou a e98a891; log etapas/juncao-16-suite-falha-12.log (Rebite).
+- 2026-10-17 11h41, tickets 16 (30b735f; 6a0ab17, 2ª junção) e 21 (fdd3760), suíte com --test-concurrency=1 e trava: 253, 244 verdes, 9 pulados, 0 falhas, git limpo; Docker do 16 e do 21 não repetidos (idênticos aos revisados) (Rebite).

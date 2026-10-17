@@ -1,7 +1,7 @@
 # 21: Arquivar e cópia diária
 
 Type: task
-Status: claimed
+Status: resolved
 Etapa: 9 (manutenção e cliente)
 Blocked by: 08, 16
 
@@ -30,3 +30,4 @@ Blocked by: 08, 16
 - 2026-10-17 10:55 (Trilho): consertos da r1 do Fiel em f32bd4c (outro disco; Docker 4ª tudo passou com o CLI de A de pé e nota nova ao B) e 462b55e (SKILL.md sem ': '); rodada 2 pedida ao Fiel.
 
 - 2026-10-17 ~11h30 (Trilho): merge de integracao (com o 22) em ticket-21, 6b6c65e; 10.env.modelo com as duas metades (proxy e cópia). 21-* e 22-kit-cliente + 22-proxy-sem-docker 23/23 (etapas/logs/trilho-21-juncao-22.log). Ponta mandada ao Fiel.
+- 2026-10-17 11h41 (integrador, Rebite): juntado em `integracao`, commit fdd3760 (merge `--no-ff` de `ticket-21` 6b6c65e, o HEAD da conferência da junção com o 22, "passa" do Fiel; árvore juntada igual à do ramo). O ramo traz no histórico a fce0529 (junção do 16 desfeita), superada pelo 6a0ab17, sem efeito no código. Testes: suíte `node --test --test-concurrency=1 "agents/code/test/**/*.test.mjs"` sem variáveis, com a trava, junto com o 16: 253, 244 verdes, 9 pulados, 0 falhas, `git status` limpo (log `etapas/logs/juncao-16-21-suite.log`; inclui `21-*`, `22-kit-cliente`, `22-proxy-sem-docker`). Docker não repetido: arquivos idênticos aos da 4ª rodada (`etapas/logs/trilho-21-docker-4.log`). Ressalvas do parecer: `10.env.modelo` com as duas metades (proxy do 22 e cópia do 21), feito no ramo; no caminho arquivo por arquivo, subpasta vazia some nesta máquina (o LiveSync não replica pasta vazia); leitura do Fielzinho pendente. **Resolvido.**

@@ -1,1 +1,1 @@
-- Rebite (integrador), 2026-10-17 11:21: suíte do hub do 16 e do 21 em C:/context-hub-wt/integracao (fdd3760), --test-concurrency=1, ~25 min. Apago ao fim.
+- Trilho (construtor), 2026-10-17 11:40: 38, 12-busca + 12-kit-busca + 13-gemini e falhas forçadas (ponta a ponta 12/15 sem login), em C:/context-hub-wt/ticket-38, ~20 min. Apago ao fim.
