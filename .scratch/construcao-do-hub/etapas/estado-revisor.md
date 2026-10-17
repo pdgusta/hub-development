@@ -116,3 +116,16 @@ Detalhes em etapas/retomada-Fiel.md, seção FILA. Salvo para limpar.
 07 r3: trava pesada criada 02:21 pelo Fiel; Docker rodando em sequência (task de fundo), logs revisao-07-r3-*.log; a trava se apaga no fim do script.
 07 r3: PASSA em acordo (Docker 4/4 verde com a trava; trava apagada). Brasa avisada.
 34 r1 (Vela): PASSA em acordo (19/19). Vela avisada.
+
+## Salvo para limpar — 2026-10-17 (51%)
+
+Sem revisão em curso; 07, 31 e 34 fechados. Próximos: 35 (Trilho), 28 (Vela), 08 (Brasa), 33; leituras atrasadas do
+Fielzinho: 13, 32, 30, 20, 15, 12, 29. Retomada completa em etapas/retomada-Fiel.md. Sem Docker nem trava minha.
+
+## Retomada após /clear — 2026-10-17 ~04h
+
+Li retomada, regras, revisao-em-dupla, estado. Fielzinho com cota. Sem revisão em curso.
+Próximos: 12 e 15 voltam (Trilho: fragmento do hub-busca expõe só a search nos três; decisão (A) no ticket 15,
+~03h50: Codex enabled_tools, Copilot tools ['search'], Claude deny mcp__hub-busca__read; refazer real do 12 e 15).
+Na rodada: conferir nome canônico do deny, que read sumiu do contexto nos três, e o real com a trava pesada.
+Depois: 35, 28, 08, 33; leituras atrasadas do Fielzinho.

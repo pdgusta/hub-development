@@ -1,1 +1,1 @@
-- Trilho (construtor), 2026-10-17 03:03: harness de verdade (Codex) no ponta a ponta do 12 e do 15, worktrees ticket-12 e ticket-15. Apago ao fim.
+- Vela (construtora), 2026-10-17 03:12: Docker do ticket 28 (28-pastas-locais.test.ps1, hub-ensaio-28-a/b, 5992/5993), worktree ticket-28. Apago ao fim.

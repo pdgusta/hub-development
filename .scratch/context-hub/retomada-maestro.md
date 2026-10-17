@@ -89,7 +89,7 @@ Repositório de planejamento versionado (primeiro commit 2026-10-16).
 - 07 (Brasa): rodada 2 no Fiel, já com o Fielzinho (99ea624, suíte 179/0). Ao passar, abre 08, 09 e 28.
 - Tickets novos de conserto, publicados pelo maestro (como o 30): 34 (roteamento, leitura tardia do 19) com a Vela;
   35 (aval sem parecer, ressalva do 31) com o Trilho. Trilho depois: Codex do 12 e do 15 quando tiver a trava.
-- Limpos: Brasa ~01h15, Trilho ~02h00, Vela ~02h30. Fiel em ~48%, estado salvo 02h04: limpar depois do parecer do 07.
+- Limpos: Brasa ~01h15, Trilho ~02h00, Vela ~02h30, Fiel ~03h55. 12 e 15 voltam à revisão (só a search do hub-busca exposta nos três, decisão técnica do maestro no 15).
 - Rodadas do fork do MCP e das sobras do link: absorvidas (A e A, Gustavo pelo chat do terminal, ~03h30). Ticket 33 publicado (Trilho, depois do 35).
 
 - 07, 34 resolvidos (763813a). Brasa no 08 (costuras confirmadas, retrato em agents/code/test/banco/retrato/); Vela no 28 (aceito git rm --cached no tornar local), depois 09 no fork em C:\Projetos\hub-mcp-banco; Trilho: Codex do 12 e 15, suíte e revisão do 35, depois 33.
