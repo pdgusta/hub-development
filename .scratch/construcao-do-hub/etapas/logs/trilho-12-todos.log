@@ -1,0 +1,262 @@
+✔ o verificar-hub passa no hub de ensaio (13132.2013ms)
+✔ o verificar-hub recusa um CLAUDE.md dentro do hub (11969.0626ms)
+✔ o verificar-hub recusa um CLAUDE.md acima do hub (17538.6095ms)
+✔ o verificar-hub recusa AGENTS.md sem o bloco da cabeça (12122.8529ms)
+✔ o verificar-hub recusa a cabeça com mais de 2.000 caracteres e aceita a de 2.000 (13894.3792ms)
+✔ o verificar-hub avisa, sem recusar, outra pasta na raiz (10726.2225ms)
+✔ o hub de ensaio tem duas iniciativas com o núcleo, notas em pt-BR, um binário e .git próprio (7920.7542ms)
+✔ o montar recusa destino que já tem conteúdo (12362.417ms)
+✔ o verificar-hub recusa um CLAUDE.md em pasta com ponto, fora do .git (8063.8433ms)
+✔ o verificar-hub recusa hub sem .git próprio ou com .git falso (10348.6155ms)
+✔ o verificar-hub aceita uma worktree do hub (.git em arquivo) (11374.7233ms)
+✔ o verificador aceita a nota certa (9878.7198ms)
+✔ o verificador recusa a nota sem status, dizendo o campo (8838.2018ms)
+✔ o verificador recusa stage fora do ciclo do tipo (8200.6708ms)
+✔ o verificador completa só o dedutível, por troca de trecho (13274.6982ms)
+✔ o verificador não apaga uma edição feita entre a leitura e a gravação (10579.5229ms)
+✔ o verificador completa o título do log de mês novo pela ficha (8080.2718ms)
+✔ a nota do inbox sem frontmatter é completada; ao sair do inbox, vale o esquema do destino (12826.2591ms)
+✔ AGENTS.md, SKILL.md e pastas com ponto ficam intocados (10401.113ms)
+✔ YAML inválido é devolvido sem gravar (8876.805ms)
+✔ --checar valida o conteúdo proposto sem gravar, como o hook e o MCP vão chamar (10607.3005ms)
+✔ a nota arquivada vale pelo esquema de origem mais archived_at (8892.2805ms)
+✔ nota com fim de linha CRLF é completada e continua CRLF (7840.0916ms)
+✔ o verificar-hub recusa nota fora do esquema em qualquer lugar do hub (9457.6517ms)
+✔ frontmatter em mapa flow que não dá para trocar por trecho é recusado sem gravar (7638.0659ms)
+✔ campos de várias linhas ficam como estavam quando outro campo é trocado (7123.055ms)
+✔ cabeçalho aberto sem fechamento é YAML inválido, devolvido sem gravar (6968.8865ms)
+✔ caminho com ponto fica de fora também quando passado direto e no --checar (7149.9881ms)
+✔ comentário YAML junto ao campo trocado fica; comentário na mesma linha recusa sem gravar (5311.1543ms)
+✔ nota arquivada é completada pela ficha arquivada, não pela pasta ativa homônima (4892.6602ms)
+✔ nova iniciativa em clients/ nasce com o núcleo de seis arquivos válidos (14122.9967ms)
+✔ nova iniciativa em initiatives/ nasce com o núcleo de seis arquivos válidos (12182.4673ms)
+✔ rodar a nova iniciativa de novo não duplica nem sobrescreve (14174.0485ms)
+✔ a nova iniciativa recusa valor fora do catálogo da ficha (8884.6902ms)
+✖ uma pergunta em pt-BR por palavra acha a nota esperada entre as 3 primeiras (181139.4425ms)
+✖ uma pergunta em pt-BR por paráfrase, sem palavra em comum com a nota, acha a nota entre as 3 primeiras (2.1302ms)
+✖ uma nota nova gravada no disco aparece sem reindexar, por palavra e por paráfrase; o tempo só é medido (0.5854ms)
+✖ nada com ponto no caminho nem de pasta local: true aparece, nem o que chega com a busca ligada (0.1717ms)
+✖ o relatório conta as notas indexadas e lista as recusadas por cabeçalho quebrado (0.2024ms)
+✖ pedido com Host estranho é recusado; o servidor só escuta em 127.0.0.1 (0.2491ms)
+✖ em inglês, no mesmo índice e sem dizer o idioma, a nota em inglês vem entre as 3 primeiras; o .pdf.md entra, o binário não (0.299ms)
+✖ uma rajada de 200 notas copiadas de uma vez termina toda indexada; o tempo só é medido (0.1933ms)
+✖ a segunda partida reaproveita o índice: o mesmo banco, a busca pronta e a indexação mais curta (0.2583ms)
+✔ com -WhatIf, o kit diz o que faria e não grava nada (4811.8983ms)
+✔ o kit instala a versão fixa pelo package-lock, só no .local\busca do hub (159931.8674ms)
+✔ rodar de novo não muda nada (1601.3997ms)
+✔ a busca sobe com a instalação do kit e responde (36136.0185ms)
+✔ bancada, codex: c1-parcial.md → passa (714.208ms)
+✔ bancada, codex: c2-conflito.md → passa (472.9668ms)
+✔ bancada, codex: c3-add-existente.md → recusa (626.9573ms)
+✔ bancada, codex: c3-update-inteiro.md → recusa (777.2527ms)
+✔ bancada, codex: c3-delete-add.md → recusa (611.5949ms)
+✔ bancada, codex: h-add-existente.md → recusa (725.361ms)
+✔ bancada, codex: h-update-inteiro.md → recusa (816.4569ms)
+✔ bancada, codex: h-delete-add.md → recusa (526.1145ms)
+✔ bancada, codex: h-parcial.md → passa (512.1264ms)
+✔ bancada, codex: h-novo.md → passa (351.3667ms)
+✔ bancada, claude: Edit caso1.md → passa (1134.8439ms)
+✔ bancada, claude: Edit caso2.md → passa (639.4857ms)
+✔ bancada, claude: Write caso3.md → recusa (1315.6156ms)
+✔ bancada, claude: Write caso4.md → recusa (576.7115ms)
+✔ bancada, claude: Edit caso4.md → passa (560.7729ms)
+✔ bancada, claude: Write caso4-novo.md → passa (550.5069ms)
+✔ bancada, claude: Write caso3b.md → recusa (676.3387ms)
+✔ bancada, copilot: edit caso1.md → passa (859.3549ms)
+✔ bancada, copilot: edit caso2.md → passa (522.8097ms)
+✔ bancada, copilot: create caso3.md → recusa (673.4027ms)
+✔ bancada, copilot: create caso4.md → recusa (614.3931ms)
+✔ bancada, copilot: edit caso4.md → passa (747.6183ms)
+✔ bancada, copilot: create caso4-novo.md → passa (308.415ms)
+✔ bancada, copilot: create caso3b.md → recusa (348.9004ms)
+✔ claude: nota nova sem status é recusada; com status, passa (570.0364ms)
+✔ claude: troca de trecho que tira o status é recusada; a que mantém, passa (652.1351ms)
+✔ claude: fora do hub, a regravação passa e o hook não diz nada (296.1781ms)
+✔ codex: nota nova sem status é recusada; com status, passa (735.0058ms)
+✔ codex: troca de trecho que tira o status é recusada; a que mantém, passa (617.1304ms)
+✔ codex: fora do hub, a regravação passa e o hook não diz nada (209.1688ms)
+✔ copilot: nota nova sem status é recusada; com status, passa (496.7421ms)
+✔ copilot: troca de trecho que tira o status é recusada; a que mantém, passa (529.5455ms)
+✔ copilot: fora do hub, a regravação passa e o hook não diz nada (316.5395ms)
+✔ o hub alcançado por junction é o mesmo hub: regravar por ela é recusado (1258.6852ms)
+✔ cada decisão dentro do hub vira uma linha em .local/guardas/registro.jsonl; fora do hub, nada (10010.6613ms)
+✔ patch com quebra de linha depois do *** End Patch ainda confere a ficha (Codex e apply_patch do Copilot) (7171.0508ms)
+✔ em caminho com ponto dentro do hub, regravar existente é recusado; nota nova sem frontmatter passa (2061.7869ms)
+✔ a tabela do hub passa no esquema; skill que ainda não está em agents/skills/ é aviso, não recusa (11443.5384ms)
+✔ linha fora do esquema é recusada, com o id da linha (9363.4407ms)
+✔ claude: pedido de pesquisa que não cita o FreeLLMAPI recebe "use a skill freellmapi" (15353.415ms)
+✔ codex: pedido de pesquisa que não cita o FreeLLMAPI recebe "use a skill freellmapi" (7936.0384ms)
+✔ pedido que já cita a skill, ou que não casa, não recebe nada (11095.2509ms)
+✔ recruta pelo papel recebe as skills da linha do papel (11354.2801ms)
+✔ nota pelo caminho recebe a skill da linha do caminho (9116.5486ms)
+✔ copilot: o hook de arquivo não injeta (a doc diz que a saída é descartada); nada na saída (9153.6136ms)
+✔ fora do hub, sai na hora (12457.6441ms)
+✔ usar uma skill do acervo vira linha no registro da máquina, com workspace e data (8188.9533ms)
+✔ skill de fora do acervo não vira linha (6929.5666ms)
+✔ claude: a skill indicada rodou: o fim registra "sim" com a linha da tabela, sem bloquear (9800.1065ms)
+✔ claude: a skill indicada não rodou: o fim registra "não" com a linha, sem bloquear (8556.412ms)
+✔ codex: sem evento de uso de skill, o fim registra "não verificado" (8204.3552ms)
+✔ copilot: sem evento de uso de skill, o fim registra "não verificado" (7014.1989ms)
+✔ turno sem indicação não escreve no registro (10044.1789ms)
+✔ codex: com falta devolve três vezes seguidas; na quarta solta e registra no estado da vigia (27243.0533ms)
+✔ codex: sem falta no que mudou, solta (14139.6418ms)
+✔ copilot: com falta devolve três vezes seguidas; na quarta solta e registra no estado da vigia (29043.2624ms)
+✔ copilot: sem falta no que mudou, solta (12033.0901ms)
+✔ copilot: a devolução que volta como prompt não zera a conta nem esquece a falta (18584.6821ms)
+✔ a falta de nota que não mudou neste turno não prende a resposta (9543.7461ms)
+✔ fora do hub sai na hora, sem resposta (7335.2661ms)
+✔ o estado da vigia guarda os itens que já tinha, e o topo fica o pior (14487.6098ms)
+✔ turno sem gravação não roda o verificador: nada muda no hub, e solta (9879.3634ms)
+✔ link corrigido chega ao agente uma vez, sem contar como devolução, e fica no registro (19474.8977ms)
+✔ o aviso de other/ chega ao agente pelo fim quando o turno grava em other/ (5582.5734ms)
+✔ AGENTS.md gravado no turno não é tocado pelo fim (5651.9673ms)
+✔ URI malformada não esconde a falta da outra nota, e par:// para .secrets/ devolve (4776.9763ms)
+✔ verificador que cai não vira "sem falta": a queda volta ao agente (4740.4629ms)
+✔ link comum para pasta local vira par://, e par:// para o que replica volta a link comum, com aviso (11207.2804ms)
+✔ sem HUB_PAR_ID o link para pasta local não é reescrito e volta como falta (8989.5237ms)
+✔ link para dentro de .secrets/ volta como falta: cite só o nome do arquivo (8722.7582ms)
+✔ a pasta que chega a 10 entradas ganha index.md válido, com a lista pelos títulos (15066.9495ms)
+✔ a pasta que guarda um PNG ganha index.md; o PNG sem texto vira falta "descreva" (11612.9346ms)
+✔ rodar de novo atualiza a lista, preserva o texto livre e a descrição escrita; anexo com texto irmão não ganha linha (11996.407ms)
+✔ index.md com summary: manual não é tocado (8893.7678ms)
+✔ agents/frontmatter/ (os esquemas) não ganha cartão: é oficina, tipo null no catálogo (8745.527ms)
+✔ onde o catálogo diz tipo null (agents/code/, agents/skills/) não nasce cartão (14129.5201ms)
+✔ três notas parecidas em other/, em pastas diferentes, geram o aviso de bloco novo (não é falta) (7095.3781ms)
+✔ duas notas parecidas em other/ não geram aviso (6815.5385ms)
+✔ AGENTS.md e SKILL.md não são tocados pela conferência de links (7944.4576ms)
+✔ link com URI malformada vira falta daquela nota, e a conferência segue nas outras (8217.2414ms)
+✔ par:// para dentro de .secrets/ volta como falta: cite só o nome do arquivo (7115.1034ms)
+✔ os arquivos que chamam harness são achados (371.2592ms)
+✔ sem HUB_HARNESS_REAL, os testes de harness aparecem pulados, com o motivo, e não mexem em nada (3427.4967ms)
+✔ a conferência por hash não diz nada quando nenhum arquivo real mudou (0.9282ms)
+✔ arquivo real gravado durante a rodada de um harness: diz qual arquivo e qual rodada (9.1219ms)
+✔ arquivo real gravado fora das rodadas: diz que foi fora dos harnesses do teste (0.6537ms)
+✔ arquivo real que sumiu ou apareceu: diz que não dá para saber a hora (0.705ms)
+ℹ tests 134
+ℹ suites 0
+ℹ pass 125
+ℹ fail 9
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 224185.3523
+
+✖ failing tests:
+
+test at agents\code\test\12-busca.test.mjs:113:1
+✖ uma pergunta em pt-BR por palavra acha a nota esperada entre as 3 primeiras (181139.4425ms)
+  Error: a busca não ficou pronta em 3 minutos: [31;1mException: [0mC:\context-hub-wt\ticket-12\agents\skills\busca\iniciar.ps1:19[0m
+  [31;1m[0m[36;1mLine |[0m
+  [31;1m[0m[36;1m[36;1m  19 | [0m … th $cli)) { [36;1mthrow "busca não instalada em ${pacote}: rode agents\code[0m …[0m
+  [31;1m[0m[36;1m[36;1m[0m[36;1m[0m[36;1m     | [31;1m               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+  [31;1m[0m[36;1m[36;1m[0m[36;1m[0m[36;1m[31;1m[31;1m[36;1m     | [31;1mbusca não instalada em[0m
+  [31;1m[0m[36;1m[36;1m[0m[36;1m[0m[36;1m[31;1m[31;1m[36;1m[31;1m[36;1m     | [31;1mC:\Users\gustavo.delfino\AppData\Local\Temp\hub-ensaio-12-oN528W\hub\.local\busca\node_modules\obsidian-hybrid-search: rode agents\code\kit\par\03-busca.ps1[0m
+  
+      at iniciar (file:///C:/context-hub-wt/ticket-12/agents/code/test/12-busca.test.mjs:78:9)
+      at async TestContext.<anonymous> (file:///C:/context-hub-wt/ticket-12/agents/code/test/12-busca.test.mjs:109:14)
+      at async TestHook.run (node:internal/test_runner/test:1389:7)
+
+test at agents\code\test\12-busca.test.mjs:120:1
+✖ uma pergunta em pt-BR por paráfrase, sem palavra em comum com a nota, acha a nota entre as 3 primeiras (2.1302ms)
+  Error: a busca não ficou pronta em 3 minutos: [31;1mException: [0mC:\context-hub-wt\ticket-12\agents\skills\busca\iniciar.ps1:19[0m
+  [31;1m[0m[36;1mLine |[0m
+  [31;1m[0m[36;1m[36;1m  19 | [0m … th $cli)) { [36;1mthrow "busca não instalada em ${pacote}: rode agents\code[0m …[0m
+  [31;1m[0m[36;1m[36;1m[0m[36;1m[0m[36;1m     | [31;1m               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+  [31;1m[0m[36;1m[36;1m[0m[36;1m[0m[36;1m[31;1m[31;1m[36;1m     | [31;1mbusca não instalada em[0m
+  [31;1m[0m[36;1m[36;1m[0m[36;1m[0m[36;1m[31;1m[31;1m[36;1m[31;1m[36;1m     | [31;1mC:\Users\gustavo.delfino\AppData\Local\Temp\hub-ensaio-12-oN528W\hub\.local\busca\node_modules\obsidian-hybrid-search: rode agents\code\kit\par\03-busca.ps1[0m
+  
+      at iniciar (file:///C:/context-hub-wt/ticket-12/agents/code/test/12-busca.test.mjs:78:9)
+      at async TestContext.<anonymous> (file:///C:/context-hub-wt/ticket-12/agents/code/test/12-busca.test.mjs:109:14)
+      at async TestHook.run (node:internal/test_runner/test:1389:7)
+
+test at agents\code\test\12-busca.test.mjs:144:1
+✖ uma nota nova gravada no disco aparece sem reindexar, por palavra e por paráfrase; o tempo só é medido (0.5854ms)
+  Error: a busca não ficou pronta em 3 minutos: [31;1mException: [0mC:\context-hub-wt\ticket-12\agents\skills\busca\iniciar.ps1:19[0m
+  [31;1m[0m[36;1mLine |[0m
+  [31;1m[0m[36;1m[36;1m  19 | [0m … th $cli)) { [36;1mthrow "busca não instalada em ${pacote}: rode agents\code[0m …[0m
+  [31;1m[0m[36;1m[36;1m[0m[36;1m[0m[36;1m     | [31;1m               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+  [31;1m[0m[36;1m[36;1m[0m[36;1m[0m[36;1m[31;1m[31;1m[36;1m     | [31;1mbusca não instalada em[0m
+  [31;1m[0m[36;1m[36;1m[0m[36;1m[0m[36;1m[31;1m[31;1m[36;1m[31;1m[36;1m     | [31;1mC:\Users\gustavo.delfino\AppData\Local\Temp\hub-ensaio-12-oN528W\hub\.local\busca\node_modules\obsidian-hybrid-search: rode agents\code\kit\par\03-busca.ps1[0m
+  
+      at iniciar (file:///C:/context-hub-wt/ticket-12/agents/code/test/12-busca.test.mjs:78:9)
+      at async TestContext.<anonymous> (file:///C:/context-hub-wt/ticket-12/agents/code/test/12-busca.test.mjs:109:14)
+      at async TestHook.run (node:internal/test_runner/test:1389:7)
+
+test at agents\code\test\12-busca.test.mjs:156:1
+✖ nada com ponto no caminho nem de pasta local: true aparece, nem o que chega com a busca ligada (0.1717ms)
+  Error: a busca não ficou pronta em 3 minutos: [31;1mException: [0mC:\context-hub-wt\ticket-12\agents\skills\busca\iniciar.ps1:19[0m
+  [31;1m[0m[36;1mLine |[0m
+  [31;1m[0m[36;1m[36;1m  19 | [0m … th $cli)) { [36;1mthrow "busca não instalada em ${pacote}: rode agents\code[0m …[0m
+  [31;1m[0m[36;1m[36;1m[0m[36;1m[0m[36;1m     | [31;1m               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+  [31;1m[0m[36;1m[36;1m[0m[36;1m[0m[36;1m[31;1m[31;1m[36;1m     | [31;1mbusca não instalada em[0m
+  [31;1m[0m[36;1m[36;1m[0m[36;1m[0m[36;1m[31;1m[31;1m[36;1m[31;1m[36;1m     | [31;1mC:\Users\gustavo.delfino\AppData\Local\Temp\hub-ensaio-12-oN528W\hub\.local\busca\node_modules\obsidian-hybrid-search: rode agents\code\kit\par\03-busca.ps1[0m
+  
+      at iniciar (file:///C:/context-hub-wt/ticket-12/agents/code/test/12-busca.test.mjs:78:9)
+      at async TestContext.<anonymous> (file:///C:/context-hub-wt/ticket-12/agents/code/test/12-busca.test.mjs:109:14)
+      at async TestHook.run (node:internal/test_runner/test:1389:7)
+
+test at agents\code\test\12-busca.test.mjs:189:1
+✖ o relatório conta as notas indexadas e lista as recusadas por cabeçalho quebrado (0.2024ms)
+  Error: a busca não ficou pronta em 3 minutos: [31;1mException: [0mC:\context-hub-wt\ticket-12\agents\skills\busca\iniciar.ps1:19[0m
+  [31;1m[0m[36;1mLine |[0m
+  [31;1m[0m[36;1m[36;1m  19 | [0m … th $cli)) { [36;1mthrow "busca não instalada em ${pacote}: rode agents\code[0m …[0m
+  [31;1m[0m[36;1m[36;1m[0m[36;1m[0m[36;1m     | [31;1m               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+  [31;1m[0m[36;1m[36;1m[0m[36;1m[0m[36;1m[31;1m[31;1m[36;1m     | [31;1mbusca não instalada em[0m
+  [31;1m[0m[36;1m[36;1m[0m[36;1m[0m[36;1m[31;1m[31;1m[36;1m[31;1m[36;1m     | [31;1mC:\Users\gustavo.delfino\AppData\Local\Temp\hub-ensaio-12-oN528W\hub\.local\busca\node_modules\obsidian-hybrid-search: rode agents\code\kit\par\03-busca.ps1[0m
+  
+      at iniciar (file:///C:/context-hub-wt/ticket-12/agents/code/test/12-busca.test.mjs:78:9)
+      at async TestContext.<anonymous> (file:///C:/context-hub-wt/ticket-12/agents/code/test/12-busca.test.mjs:109:14)
+      at async TestHook.run (node:internal/test_runner/test:1389:7)
+
+test at agents\code\test\12-busca.test.mjs:214:1
+✖ pedido com Host estranho é recusado; o servidor só escuta em 127.0.0.1 (0.2491ms)
+  Error: a busca não ficou pronta em 3 minutos: [31;1mException: [0mC:\context-hub-wt\ticket-12\agents\skills\busca\iniciar.ps1:19[0m
+  [31;1m[0m[36;1mLine |[0m
+  [31;1m[0m[36;1m[36;1m  19 | [0m … th $cli)) { [36;1mthrow "busca não instalada em ${pacote}: rode agents\code[0m …[0m
+  [31;1m[0m[36;1m[36;1m[0m[36;1m[0m[36;1m     | [31;1m               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+  [31;1m[0m[36;1m[36;1m[0m[36;1m[0m[36;1m[31;1m[31;1m[36;1m     | [31;1mbusca não instalada em[0m
+  [31;1m[0m[36;1m[36;1m[0m[36;1m[0m[36;1m[31;1m[31;1m[36;1m[31;1m[36;1m     | [31;1mC:\Users\gustavo.delfino\AppData\Local\Temp\hub-ensaio-12-oN528W\hub\.local\busca\node_modules\obsidian-hybrid-search: rode agents\code\kit\par\03-busca.ps1[0m
+  
+      at iniciar (file:///C:/context-hub-wt/ticket-12/agents/code/test/12-busca.test.mjs:78:9)
+      at async TestContext.<anonymous> (file:///C:/context-hub-wt/ticket-12/agents/code/test/12-busca.test.mjs:109:14)
+      at async TestHook.run (node:internal/test_runner/test:1389:7)
+
+test at agents\code\test\12-busca.test.mjs:225:1
+✖ em inglês, no mesmo índice e sem dizer o idioma, a nota em inglês vem entre as 3 primeiras; o .pdf.md entra, o binário não (0.299ms)
+  Error: a busca não ficou pronta em 3 minutos: [31;1mException: [0mC:\context-hub-wt\ticket-12\agents\skills\busca\iniciar.ps1:19[0m
+  [31;1m[0m[36;1mLine |[0m
+  [31;1m[0m[36;1m[36;1m  19 | [0m … th $cli)) { [36;1mthrow "busca não instalada em ${pacote}: rode agents\code[0m …[0m
+  [31;1m[0m[36;1m[36;1m[0m[36;1m[0m[36;1m     | [31;1m               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+  [31;1m[0m[36;1m[36;1m[0m[36;1m[0m[36;1m[31;1m[31;1m[36;1m     | [31;1mbusca não instalada em[0m
+  [31;1m[0m[36;1m[36;1m[0m[36;1m[0m[36;1m[31;1m[31;1m[36;1m[31;1m[36;1m     | [31;1mC:\Users\gustavo.delfino\AppData\Local\Temp\hub-ensaio-12-oN528W\hub\.local\busca\node_modules\obsidian-hybrid-search: rode agents\code\kit\par\03-busca.ps1[0m
+  
+      at iniciar (file:///C:/context-hub-wt/ticket-12/agents/code/test/12-busca.test.mjs:78:9)
+      at async TestContext.<anonymous> (file:///C:/context-hub-wt/ticket-12/agents/code/test/12-busca.test.mjs:109:14)
+      at async TestHook.run (node:internal/test_runner/test:1389:7)
+
+test at agents\code\test\12-busca.test.mjs:239:1
+✖ uma rajada de 200 notas copiadas de uma vez termina toda indexada; o tempo só é medido (0.1933ms)
+  Error: a busca não ficou pronta em 3 minutos: [31;1mException: [0mC:\context-hub-wt\ticket-12\agents\skills\busca\iniciar.ps1:19[0m
+  [31;1m[0m[36;1mLine |[0m
+  [31;1m[0m[36;1m[36;1m  19 | [0m … th $cli)) { [36;1mthrow "busca não instalada em ${pacote}: rode agents\code[0m …[0m
+  [31;1m[0m[36;1m[36;1m[0m[36;1m[0m[36;1m     | [31;1m               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+  [31;1m[0m[36;1m[36;1m[0m[36;1m[0m[36;1m[31;1m[31;1m[36;1m     | [31;1mbusca não instalada em[0m
+  [31;1m[0m[36;1m[36;1m[0m[36;1m[0m[36;1m[31;1m[31;1m[36;1m[31;1m[36;1m     | [31;1mC:\Users\gustavo.delfino\AppData\Local\Temp\hub-ensaio-12-oN528W\hub\.local\busca\node_modules\obsidian-hybrid-search: rode agents\code\kit\par\03-busca.ps1[0m
+  
+      at iniciar (file:///C:/context-hub-wt/ticket-12/agents/code/test/12-busca.test.mjs:78:9)
+      at async TestContext.<anonymous> (file:///C:/context-hub-wt/ticket-12/agents/code/test/12-busca.test.mjs:109:14)
+      at async TestHook.run (node:internal/test_runner/test:1389:7)
+
+test at agents\code\test\12-busca.test.mjs:256:1
+✖ a segunda partida reaproveita o índice: o mesmo banco, a busca pronta e a indexação mais curta (0.2583ms)
+  Error: a busca não ficou pronta em 3 minutos: [31;1mException: [0mC:\context-hub-wt\ticket-12\agents\skills\busca\iniciar.ps1:19[0m
+  [31;1m[0m[36;1mLine |[0m
+  [31;1m[0m[36;1m[36;1m  19 | [0m … th $cli)) { [36;1mthrow "busca não instalada em ${pacote}: rode agents\code[0m …[0m
+  [31;1m[0m[36;1m[36;1m[0m[36;1m[0m[36;1m     | [31;1m               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+  [31;1m[0m[36;1m[36;1m[0m[36;1m[0m[36;1m[31;1m[31;1m[36;1m     | [31;1mbusca não instalada em[0m
+  [31;1m[0m[36;1m[36;1m[0m[36;1m[0m[36;1m[31;1m[31;1m[36;1m[31;1m[36;1m     | [31;1mC:\Users\gustavo.delfino\AppData\Local\Temp\hub-ensaio-12-oN528W\hub\.local\busca\node_modules\obsidian-hybrid-search: rode agents\code\kit\par\03-busca.ps1[0m
+  
+      at iniciar (file:///C:/context-hub-wt/ticket-12/agents/code/test/12-busca.test.mjs:78:9)
+      at async TestContext.<anonymous> (file:///C:/context-hub-wt/ticket-12/agents/code/test/12-busca.test.mjs:109:14)
+      at async TestHook.run (node:internal/test_runner/test:1389:7)
+EXIT 1

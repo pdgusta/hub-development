@@ -9,3 +9,4 @@
 - 2026-10-16 21h03, ticket 14, 8d1d785, 81 verdes (agents/code/test, gerar-exclusoes, instalador do 03); ponta a ponta dos três harnesses e provas não repetidas, árvores idênticas às revisadas (Rebite).
 - 2026-10-16 21h51, ticket 27, 0a8e17f, 106 verdes sem harness (agents/code/test/*.test.mjs e gerar-exclusoes); ponta a ponta dos três fora (regra provisória até o 29) e árvore idêntica à revisada (Rebite).
 - 2026-10-16 22h02, ticket 29, d5e4e16, suíte inteira sem HUB_HARNESS_REAL: 116, 112 verdes, 4 pulados (harness real), git limpo; harness real não repetido, árvore idêntica à revisada (Rebite).
+- 2026-10-16 22h28, ticket 19, dc56d47, suíte sem variável: 133, 128 verdes, 5 pulados (2ª rodada; a 1ª teve 1 falha intermitente no 05-frontmatter, que passou sozinho e na repetição); harness real não repetido, árvore idêntica à revisada (Rebite).

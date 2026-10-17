@@ -5,7 +5,7 @@ Leia nesta ordem: `regras-da-construcao.md`, `revisao-em-dupla.md`, `estado-revi
 ## Fechados (passa)
 05 r4, 01 r1, 06 r2, 14 r2, 27 r2, 29 r2. Pareceres: `01-esqueleto/parecer-Trilho.md` (05), `00-provas/parecer-Brasa.md`
 (01), `01-esqueleto/parecer-Vela.md` (06), `parecer-Trilho.md` (14), `parecer-Vela.md` (27), `parecer-29-Brasa.md`.
-Pendente: leitura do Fielzinho no 29 r2 (sem cota até 01:34).
+Também 19 r1 (`parecer-19-Vela.md`). Pendente: leitura do Fielzinho no 29 r2, 07 r2 e 19 r1 (sem cota até 01:34).
 
 ## 07 r1 fechado VOLTA (parecer `etapas/02-banco/parecer-Brasa.md`); Brasa avisada. Esperando a rodada 2.
 

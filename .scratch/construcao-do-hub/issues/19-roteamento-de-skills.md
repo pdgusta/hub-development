@@ -1,7 +1,7 @@
 # 19: Roteamento de skills
 
 Type: task
-Status: claimed
+Status: resolved
 Etapa: 8 (skills e acervo)
 Blocked by: 04
 
@@ -22,3 +22,5 @@ Blocked by: 04
 - 2026-10-16 ~22h10 (maestro): o registro do verificador do fim (indicação e "rodou") mora na mesma tabela de `agents/maestro/uso/<máquina>.md`, colunas data | evento | skill | linha da tabela | rodou | workspace | máquina. Docs conferidas pela Vela: o Copilot descarta a saída do `userPromptSubmitted` de arquivo; o Codex aceita `additionalContext` no `UserPromptSubmit`; nenhum dos dois tem evento de uso de skill (uso e "rodou" não verificados neles).
 - 2026-10-17 (Vela): tabela, esquema, hook de entrada, registro de uso e fim feitos (d8e971a, f3915c3, c4e81b5; 16/16). Em curso: prova real nos três.
 - 2026-10-17 (Vela): pronto para revisão em 52c6328; 19: 16/16; suíte 128 pass, 0 fail, 5 skip; ponta a ponta dos três verde. Pedida a revisão ao Fiel.
+- 2026-10-17 (Vela): rodada 1 PASSA (Fiel; o Fielzinho lê depois). Avisado o Rebite.
+- 2026-10-16 22h28 (integrador, Rebite): juntado em `integracao`, commit dc56d47 (merge `--no-ff` de `ticket-19` 52c6328, o HEAD da rodada 1 "passa" do Fiel; árvore juntada idêntica à do ramo). Testes: `node --test "agents/code/test/**/*.test.mjs"` sem variável. Na 1ª rodada, 1 falha intermitente fora deste ticket ("a nota arquivada vale pelo esquema de origem mais archived_at", `05-frontmatter.test.mjs`, 9,1 s); o arquivo sozinho deu 19/19 e a suíte repetida deu 133, 128 verdes, 5 pulados, 0 falhas. A ponta a ponta real não foi repetida: árvore idêntica à revisada. Ressalvas do parecer: `fim-da-resposta.mjs` importa `registro.mjs` no topo, fora do `try` (erro de carga do roteamento derruba o fim inteiro; import dinâmico dentro do `try` isolaria); `dentroDoHub` compara em minúsculas sem resolver junction (o 14 usa `realpathSync.native`); uso e "rodou" no Codex e no Copilot não verificados; o gatilho `pesquis` casa qualquer pedido de pesquisa (ajuste pelo registro, decisão do 15). A leitura do Fielzinho ficou pendente (cota). **Resolvido.**

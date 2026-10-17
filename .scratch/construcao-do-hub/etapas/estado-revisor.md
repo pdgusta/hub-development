@@ -85,3 +85,4 @@ Fielzinho sem cota até 01:34 (maestro): revisar sozinho e registrar leitura pen
 07: Brasa juntou integracao 0a8e17f (e3ff419) durante meu Docker; código do 07 igual a 7fa0e56.
 07 r1: Docker 1ª passada (máquina carregada pela suíte do 29): 07-banco 1 FALHA (replicação A sem estado em 30 s), prova01 ok, prova02 1 FALHA (controle não chegou ao disco B), sincronizador ok; sem sobra. Os 3 achados do Fielzinho confirmados no código (linhas 185, 197/199, 215). Repetindo 07-banco e prova02 (revisao-07-r1b-*.log). Veredito previsto: VOLTA.
 07 r1: VOLTA (3 consertos do Fielzinho). Repetição: 07-banco e prova02 passam; vermelhos eram de carga. Parecer etapas/02-banco/parecer-Brasa.md. Brasa avisada.
+19 r1 (Vela): PASSA (Fiel sozinho; Fielzinho lê depois). Parecer etapas/parecer-19-Vela.md. Vela avisada.

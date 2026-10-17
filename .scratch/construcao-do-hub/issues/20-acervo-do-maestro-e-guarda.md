@@ -17,3 +17,4 @@ Blocked by: 19, 03
 - [ ] cada peça da família tem nome e descrição válidos
 
 ## Comments
+- 2026-10-16 ~22h35 (maestro): próximo da Vela depois do 19 (juntado dc56d47); primeiro commit do ramo conserta as duas ressalvas do 19 (import do registro fora do try no fim-da-resposta; `dentroDoHub` sem resolver junction).
