@@ -89,3 +89,6 @@ Fielzinho sem cota até 01:34 (maestro): revisar sozinho e registrar leitura pen
 19 r1 PASSA (Vela avisada). 12 r1 (Trilho, busca, 0ba8532): lido relatório, iniciar.ps1, fragmentos; testes 12-busca + 12-kit rodando (revisao-12-r1-testes.log). Codex do aceite real pendente (cota); Trilho pede rodada curta depois.
 12 r1: VOLTA por 1 conserto (12-busca.test.mjs:28 regrava medidas.json versionado; desfiz com checkout). 13/13. Rodada curta junto com evidência do Codex. Parecer etapas/parecer-12-Trilho.md. Trilho avisado.
 12 r2 curta: PASSA (cc96be2, 13/13, árvore limpa). Pendente: rodada curta da evidência do Codex depois das 01:34 (São Paulo).
+20 r1 (Vela): VOLTA, 2 consertos (soAcrescenta aceita regra inserida no SKILL.md; pasta nova -> ENOENT -> passa). Parecer etapas/parecer-20-Vela.md. Vela avisada.
+15 r1 (Trilho): PASSA (9/9, árvore limpa; Codex pendente). Parecer etapas/parecer-15-Trilho.md. Trilho avisado.
+20 r2: PASSA (13/13, sondas ok). Vela avisada.

@@ -97,3 +97,34 @@ Ramo ticket-20, worktree C:/context-hub-wt/ticket-20, de integracao dc56d47.
   loggedInUsers), apagados ao fim de cada rodada (apagado: true); hashes dos arquivos reais iguais antes e depois
   (evidencia-20/hashes-*.json). Duas rodadas a mais no Copilot e uma no Claude, para ajustar o pedido (o modelo
   parava na primeira recusa).
+
+## Decisões do maestro sobre os três pontos (2026-10-17)
+
+1. Linha acrescentada no catálogo passa sem aval: foi ao Gustavo (rodada 'Catálogo do acervo: linha nova pede
+   aval?'). Fica como está até a resposta.
+2. Partitura sem o texto de cliente: certo, o acervo é genérico. Guardada só a receita
+   (agents/skills/maestro-setups/bateria-de-testes.md). **Ficou de fora**, por ser texto de cliente: o conteúdo das
+   notas (o roteiro de testes, o registro dos testes, o plano de seção, os rascunhos e a versão final do e-mail, o
+   roteiro de laboratório, a caixa de entrada), o histórico dos terminais (terminalChatArchives) e o próprio arquivo
+   .maestripartitura. Ficaram o nome das notas, o dono e as ligações; os codinomes e os comandos dos terminais.
+3. Verificador provisório em Sonnet: ok até a rodada das três lacunas de dono.
+
+## Revisão
+
+- Pedida ao Fiel em e5d24a7. A prova do Codex entra depois de 01:34, num commit só de evidência, com rodada curta do
+  Fiel.
+
+## Rodada 1 do Fiel: volta, dois consertos (5811579)
+
+1. Texto inserido no SKILL.md passava sem aval. Agora só passa linha de catálogo: linha de tabela ou item de lista
+   com link para peça que existe na pasta da skill (sem '..', sem caminho absoluto, sem esquema). Regra ou texto
+   novo vai ao verificador e ao aval. Teste: 'no catálogo, só a linha que aponta peça existente passa'.
+2. Peça em pasta nova da família (maestro-novo/peca.md) dava ENOENT e a guarda passava sem conferir. Agora é de
+   propósito: skill nova da família é peça nova; passa no Claude Code, salvo nome parecido com uma skill maestro-*
+   que existe (maestro-papeis-2 pede aval); Codex e Copilot recusam. Teste: 'peça numa skill nova da família'.
+- 20-acervo 13/13; suíte 157 pass, 0 fail, 7 pulados.
+
+## Rodada 2 do Fiel: PASSA (5811579)
+
+- Ressalva: a descrição de um item de catálogo é texto livre (a linha só precisa apontar peça existente).
+- Pendente: a prova real do Codex (sem cota até 01:34), num commit só de evidência, com rodada curta do Fiel.

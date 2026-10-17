@@ -137,3 +137,48 @@ O código do ticket 07 não chama Claude Code, Codex nem Copilot. A suíte rápi
   (`git checkout`): não são deste ticket.
 
 Nada gravado em `~` pelo 07.
+
+## Rodada 2 (consertos do parecer da rodada 1)
+
+Commit 6911857, com `integracao` juntada até c5b946a (ticket 12) em 68cb1b6. Os três consertos estão em
+`agents/code/kit/par/banco/banco.psm1`.
+
+1. **O PID salvo só vale se for o daemon deste par.** `Get-PidSincronizador` confere a linha de comando do processo:
+   ele precisa ser `node.exe`, com o `HUB_LIVESYNC_DB` do par e o comando `daemon`. Com um `node` alheio no PID salvo,
+   o sincronizador não conta como de pé, e `Stop-Sincronizador` não mata o processo alheio.
+2. **O dispositivo já aceito é conferido com o `.env`.**
+   - Do `settings.json` saem `encrypt`, `passphrase` e `usePathObfuscation`.
+   - Do remoto saem o banco, a porta e o usuário. O CLI de verdade guarda o remoto cifrado depois do aceite
+     (`remoteConfigurations[...].uri` com `isEncrypted: true`; os `couchDB_*` ficam vazios). Com o daemon rodando,
+     nenhum outro comando do CLI abre o banco local (o `remote-export` falhou assim no passo repetido). Por isso a
+     conferência do remoto é contra a marca do aceite.
+   - O que não confere é recusado, e a mensagem diz o campo. Regravar mudaria a cifra de um dispositivo que já tem dados.
+3. **O aceite fica numa marca, gravada só depois do `ACCEPTED`.** A marca é `<cli-db>\.livesync\hub-aceito`, com o
+   banco, a porta, o usuário e a hora, sem senha. Se o `mark-resolved` falha, o `isConfigured` volta a `false`, e a
+   próxima chamada refaz o dispositivo.
+
+**Testes sem Docker** (na suíte comum): `agents/code/test/banco/kit-sem-docker.ps1`, chamado por
+`agents/code/test/07-kit-sem-docker.test.mjs`. Ele usa um CLI falso, `agents/code/test/banco/cli-falso.cjs`, que imita
+o `init-settings`, o `remote-add` e o `mark-resolved` (com uma falha inventada). Resultado: 11 PASSA.
+- Vermelho antes do conserto: 8 falhas.
+- Conferido também com o CLI de verdade, num par só: a segunda chamada confere, e uma porta errada é recusada.
+
+**Ressalva das esperas:** mais folga.
+- Estado da replicação, conflito e chegada do controle: 120 s.
+- Hub A→B: 300 s. O hub de ensaio tem 175 arquivos desde o ticket 19.
+- A falha da replicação diz "sem estado em 120 s".
+
+**Docker:**
+
+| Teste | Resultado |
+|---|---|
+| `07-banco.test.ps1` em 6911857 | 24 PASSA, saída 0 (log `.local/07-r2e.log`; hub A→B, 175 arquivos, em 37 s) |
+| prova 01, prova 02, teste do 06 | PREENCHER |
+
+**Memória:** a máquina ficou sem memória duas vezes, e o sistema parou a fila.
+- A primeira vez (~23h05) foi no meio da prova 01. Limpei os contêineres `hub-ensaio-00-a/b` e a pasta, pelos `.env`
+  e PIDs do ensaio. Nenhum daemon tinha subido.
+- A segunda vez (~23h40) foi enquanto a fila esperava memória.
+- Desde o aval do maestro, a fila (`.local/fila-docker.ps1`) confere a memória livre antes de cada prova. Abaixo de
+  3 GB, ela espera 3 minutos e confere de novo. O registro fica em `.local/fila-docker.log`.
+

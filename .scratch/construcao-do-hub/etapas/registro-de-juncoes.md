@@ -11,3 +11,4 @@
 - 2026-10-16 22h02, ticket 29, d5e4e16, suíte inteira sem HUB_HARNESS_REAL: 116, 112 verdes, 4 pulados (harness real), git limpo; harness real não repetido, árvore idêntica à revisada (Rebite).
 - 2026-10-16 22h28, ticket 19, dc56d47, suíte sem variável: 133, 128 verdes, 5 pulados (2ª rodada; a 1ª teve 1 falha intermitente no 05-frontmatter, que passou sozinho e na repetição); harness real não repetido, árvore idêntica à revisada (Rebite).
 - 2026-10-16 23h10, ticket 12, c5b946a, suíte sem variável: 147, 141 verdes, 6 pulados, git limpo; harness real não repetido, árvore idêntica à revisada; aceite real do Codex pendente (Rebite).
+- 2026-10-16 23h47, ticket 15, ac1cd2c, suíte sem variável: 157, 150 verdes, 7 pulados (2ª rodada; a 1ª teve 1 falha de tempo no 12-busca, log etapas/juncao-15-suite-falha-12.log); harness real não repetido, árvore idêntica à revisada; aceite real do Codex pendente (Rebite).

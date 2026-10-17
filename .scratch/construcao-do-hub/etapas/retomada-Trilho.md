@@ -1,23 +1,22 @@
-# Retomada do Trilho (construtor), gravada em 2026-10-16 ~23h05 (São Paulo)
+# Retomada do Trilho (construtor), gravada em 2026-10-17 ~00h50 (São Paulo)
 
-Leia antes: `etapas/regras-da-construcao.md` (inteiras), o ticket `issues/12-busca-local-com-aceite.md` (Comments) e
-o relatório `etapas/relatorio-12-busca.md` (o estado inteiro está lá). Responda em pt-BR, frases curtas. Sem
+Leia antes: `etapas/regras-da-construcao.md` (inteiras), os tickets 12 e 15 (Comments) e os relatórios deles. Responda em pt-BR, frases curtas. Sem
 subagentes. Maestro = "Claude Code"; revisor = "Fiel"; integrador = "Rebite".
 
-## Onde estou
-- Ticket 12 em revisão com o Fiel: ramo `ticket-12`, HEAD cc96be2, worktree `C:\context-hub-wt\ticket-12`, com
-  `integracao` dc56d47 juntada. Suíte comum: 141 passam, 6 pulados, 0 falham; suítes do 12: 13/13.
-- Aceite com harness real (`HUB_HARNESS_REAL=1 node --test --test-concurrency=1
-  agents/code/test/ponta-a-ponta/12-busca.test.mjs`): Claude e Copilot passam; **Codex pendente** (limite de uso da
-  conta até 01:34 de 2026-10-17).
+## Onde estou (2026-10-17 ~00h50, São Paulo)
+- Ticket 12: juntado (integracao c5b946a). Ticket 15: rodada 1 do Fiel passa (ramo ticket-15, HEAD c789b9d, worktree
+  C:/context-hub-wt/ticket-15); Rebite avisado. Relatórios: etapas/relatorio-12-busca.md e etapas/relatorio-15-aviso-de-leitura.md.
+- Pendente nos dois: o ponta a ponta do Codex (limite de uso até 01:34 de 2026-10-17, hora de São Paulo). Aviso
+  agendado (sleep em segundo plano) para 01:40.
 
 ## Falta (próximo passo exato)
-1. Rodada 2 do Fiel: passa (cc96be2). Rebite juntou e resolveu (integracao c5b946a). Falta só o Codex: commit de evidência no ticket-12, rodada curta do Fiel, avisar o Rebite (ele junta e comenta).
-2. Depois das 01:34: `HARNESSES=codex` no aceite real; commit só de evidência (`evidencia-12/codex/`, hashes);
-   registrar o uso de login no relatório; pedir ao Fiel uma rodada curta só para ele. Se a junção já tiver acontecido,
-   o resultado vai como comentário no ticket 12; se falhar, vira conserto.
-3. Depois do "passa": `maestri ask "Rebite" "Trilho: ticket 12 passou na revisão, ramo ticket-12, testes <...>,
-   relatório etapas/relatorio-12-busca.md, parecer <caminho>"`.
+1. Às 01:40: no ticket-12, HUB_HARNESS_REAL=1 HARNESSES=codex node --test --test-concurrency=1
+   agents/code/test/ponta-a-ponta/12-busca.test.mjs; no ticket-15, o mesmo com 15-leitura.test.mjs. Um commit só de
+   evidência em cada ramo (evidencia-12/codex ou evidencia-15/codex e os hashes); uso de login nos relatórios.
+2. Pedir ao Fiel a rodada curta dos dois juntos; depois avisar o Rebite (ele junta e comenta nos tickets).
+3. Se falhar: conserto no ramo do ticket. No 15, falha esperada é a leitura por PowerShell não cair no adaptador
+   do Codex (leiturasDoShell em agents/code/hooks/leitura/leitura.mjs).
+4. Esperar o próximo ticket do maestro.
 
 ## Achados (vão para o relatório)
 1. **Caminho curto do Windows** (`GUSTAV~1.DEL`): o vigia de arquivos aborta o servidor na primeira mudança

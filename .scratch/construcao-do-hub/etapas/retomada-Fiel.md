@@ -7,6 +7,9 @@ Leia nesta ordem: `regras-da-construcao.md`, `revisao-em-dupla.md`, `estado-revi
 (01), `01-esqueleto/parecer-Vela.md` (06), `parecer-Trilho.md` (14), `parecer-Vela.md` (27), `parecer-29-Brasa.md`.
 Também 19 r1 (`parecer-19-Vela.md`). Pendente: leitura do Fielzinho no 29 r2, 07 r2 e 19 r1 (sem cota até 01:34).
 
+## 20 r2 PASSA; 15 r1 PASSA (`parecer-15-Trilho.md`); 12 r2 PASSA. Codex pendente no 12, 15 e 20 (rodadas curtas
+de evidência depois das 01:34 de São Paulo). Leitura do Fielzinho pendente: 07, 12, 15, 19, 20, 29.
+
 ## 12 r1 fechado VOLTA (1 conserto: medidas.json regravado pelo teste comum); esperando rodada curta com Codex
 (`parecer-12-Trilho.md`).
 

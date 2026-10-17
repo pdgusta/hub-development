@@ -1,7 +1,7 @@
 # 15: Guardas: aviso de leitura fora da busca
 
 Type: task
-Status: claimed
+Status: resolved
 Etapa: 5 (guardas no disco)
 Blocked by: 14, 12
 
@@ -20,3 +20,7 @@ Blocked by: 14, 12
 - 2026-10-16 ~23h25 (maestro): costuras do Trilho aceitas; 'grande' medido no vault antigo (só tamanhos, números agregados no relatório, sem caminho nem nome), como pede a user story 29 da faixa 6.
 - 2026-10-16 ~23h40 (Trilho): costuras aceitas pelo maestro. Medida de 'grande' (vault antigo, só tamanhos, só agregados; .md fora de pastas com ponto): 737 notas; bytes p50 6278, p75 14625, p90 40097, p95 84456, p99 185935, maior 347820; linhas p50 74, p75 167, p90 359, p95 654, p99 1245, maior 3016. Acima de 8 KB: 41% das notas, 89% dos bytes; 16 KB: 23%/77%; 20 KB: 19%/72%; 32 KB: 12%/63%; 40 KB: 10%/58%. Proposta: 20 000 bytes (HUB_LEITURA_GRANDE).
 - 2026-10-16 ~23h55 (Trilho): desenho: hook DEPOIS da ferramenta nos três (o preToolUse do Copilot não injeta contexto e recusa se o hook falhar; o PostToolUse dos três aceita additionalContext; doc em etapas/doc-15/). Peça agents/code/hooks/leitura/ (depois-da-ferramenta.mjs + leitura.mjs), estado por sessão em .local/leitura/. Claude: 5 testes verdes em agents/code/test/15-leitura.test.mjs (commit 1ffde0a). Falta: fora do hub, Copilot (view, hub-busca-search), Codex (MCP e leitura por Bash), fragmentos, ponta a ponta real, relatório.
+- 2026-10-17 ~00h05 (Trilho): 9b6301b: 9 verdes (Claude, Copilot por view, Codex por shell, fora do hub, registro .local/leitura/registro.jsonl), fragmentos dos três em agents/code/hooks/leitura/fragmentos/. Falta: ponta a ponta real (agents/code/test/ponta-a-ponta/15-leitura.test.mjs), relatório, revisão.
+- 2026-10-17 ~00h35 (Trilho): pronto para revisão, HEAD c789b9d. Claude e Copilot passam no ponta a ponta real; Codex pendente (cota até 01:34). Suíte comum 150 passam, 7 pulados, 0 falham. Relatório etapas/relatorio-15-aviso-de-leitura.md. Pedida a revisão ao Fiel.
+- 2026-10-17 ~00h45 (Trilho): rodada 1 do Fiel passa (c789b9d), com duas ressalvas: 'busque antes' sai também para o que a busca não indexa (ponto, local: true, não .md); HUB_LEITURA_GRANDE inválido cala o aviso. Rebite avisado. Pendente: Codex depois das 01:34.
+- 2026-10-16 23h47 (integrador, Rebite): juntado em `integracao`, commit ac1cd2c (merge `--no-ff` de `ticket-15` c789b9d, o HEAD da rodada 1 "passa" do Fiel; árvore juntada idêntica à do ramo). Testes: `node --test "agents/code/test/**/*.test.mjs"` sem variáveis. Na 1ª rodada, 1 falha fora deste ticket, no 12 (`12-busca.test.mjs:223`, a segunda partida da busca mais lenta que a primeira sob carga: 40,6 s contra 26,7 s, com indexação 0 s; log `etapas/juncao-15-suite-falha-12.log`); o 15 não mexe na busca. Repetida: 157, 150 verdes, 7 pulados, 0 falhas; `git status` limpo. Harness real não repetido: árvore idêntica à revisada. **Pendente (decisão do maestro):** o aceite real do Codex depois das 01:34, num commit só de evidência com rodada curta do Fiel. Ressalvas do parecer: o aviso "busque antes" sai também para o que a busca nunca indexa (caminho com ponto, pasta `local: true`, arquivo que não é `.md`); `HUB_LEITURA_GRANDE` inválido vira `NaN` e cala o aviso sem dizer; estado por sessão em `.local/leitura/` sem limpeza; leitura por shell do Codex só pelos comandos reconhecidos. A leitura do Fielzinho ficou pendente (cota). **Resolvido.**

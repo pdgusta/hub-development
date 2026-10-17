@@ -41,7 +41,10 @@ Se o Fiel devolver o 07: pausar o 29 e voltar ao 07 primeiro (maestro).
   conferência do remoto é contra ela. Sem Docker verde (11).
   PARADO: a fila Docker foi morta pelo sistema por falta de memória (~23h05); a prova 01 cortada foi limpa
   (contêineres hub-ensaio-00-* e a raiz apagados). Não religar sem aval do maestro (pedido ~23h10).
-  Falta: aval; fila Docker (07, provas 01/02, teste do 06; um de cada vez); suíte comum; relatório; Fiel.
+  Aval do maestro (~23h05): fila com memória conferida (script `.local/fila-docker.ps1`, registro
+  `.local/fila-docker.log`; abaixo de 3 GB espera 3 min). 07 VERDE em 6911857 (24 PASSA, `.local/07-r2e.log`).
+  A fila foi parada de novo pelo sistema (~23h40) enquanto esperava memória para a prova 01; nada a limpar.
+  Falta: aval de novo para provas 01/02 e teste do 06; merge integracao c5b946a (ticket 12); suíte comum; relatório; Fiel.
 
 - (~22h25) Merge de integracao 0a8e17f em e3ff419 (só o merge); rápidos sem harness 106 de 106. Docker do 07 não
   repetido depois deste merge (o Fiel roda o Docker na revisão).

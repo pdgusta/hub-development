@@ -15,3 +15,4 @@ Blocked by: 12
 - [ ] se o Gustavo liberar, um teste único num segundo índice de uma cópia do hub de ensaio, com o resultado gravado
 
 ## Comments
+- 2026-10-16 ~23h50 (maestro): passado ao Trilho depois do 15 (juntado ac1cd2c). Primeiro commit: o teste do 12 passa a provar o reaproveitamento do índice por evidência, não pelo tempo (falhou sob carga na junção do 15). Teste único do gemini na rodada `2026-10-16-gemini-teste-unico`.
