@@ -219,3 +219,5 @@ Sat, Oct 17, 2026 10:15:54 AM 21 r1 (Trilho, 1c87f9b): retomado após /clear; re
 10:34 Brasa avisada do 22 r1. 37 r1 (Cinzel): lendo.
 10:39 37 r1: VOLTA (Fiel sozinho), 1 nota de fora com shell no turno vira falta e last_agent desta sessão (sonda). 111/111. Parecer etapas/parecer-37-Cinzel.md. 22 r2 pedido (Brasa, f1c-ticket-22 63cbfd5): em curso.
 10:41 22 r2: PASSA (Fiel sozinho; Codex e leitura do Fielzinho pendentes). Brasa avisada.
+10:49 22 r2 refeito em 5abe359: PASSA continua (10/10). Nota: integracao sem o 16 agora (e98a891); o 21 tem o 16 juntado. 37 r2 (4b695d5) em curso.
+10:53 37 r2: PASSA c/ ressalva (aviso da nota de fora sem cobrança). 23 curta (e6e5faa) em curso.

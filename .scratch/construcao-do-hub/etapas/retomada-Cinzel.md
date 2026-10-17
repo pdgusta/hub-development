@@ -5,7 +5,7 @@ Leia antes: `etapas/regras-da-construcao.md` (inteiras, com os "Achados comuns")
 
 ## Agora: nada rodando, nada esperando a trava
 
-- 23: rodada 3 PASSA (a419182); Rebite avisado. 24: falta só o Codex.
+- 23: rodada 3 PASSA (a419182). Depois, lição do 21 (caminho longo): e6e5faa, 22/22, rodada curta pedida ao Fiel; depois do passa, avisar o Rebite da ponta nova. 24: merge do 23 em 5325a4b; falta só o Codex.
 - **Às 12h15** (cota do Codex), na fila (item 5 de `etapas/fila-pesada.md`), um de cada vez: primeiro o Codex do 11,
   depois o Codex do 24. Depois de mim vem a Vela (Codex do 18).
 - **Até lá, o 37** (abaixo).
@@ -25,6 +25,8 @@ Leia antes: `etapas/regras-da-construcao.md` (inteiras, com os "Achados comuns")
   - Texto: "gravado fora das ferramentas (shell ou outro processo) nesta resposta: ...; a nota de retomada mudou?".
 - **Feito:** 977ea86 e c16e53f. `agents/code/test/37-gravacao-pelo-shell.test.mjs` 11/11 (~2 min; ajudante novo
   `eventoDeShell` em `test/gravacao.mjs`). Matchers do shell nos três fragmentos do fim.
+- **Rodada 2 PASSA** (~11h20, 4b695d5); Rebite avisado; ressalva (avisar a nota de fora só quando calou cobrança) levada ao maestro para ticket seguinte. O 37 está fechado da minha parte.
+- **Rodada 1 do Fiel VOLTOU** (nota de fora virava falta e ganhava last_agent); conserto 4b695d5 com a Vela (só cala a cobrança, com aviso); 113/113; rodada 2 pedida ~11h05.
 - **Feito também (10:25):** 14+18+27+37 105/105; relatório; revisão pedida ao Fiel. Depois do passa: Rebite (junção depois do 18).
 - **Falta, antigo (já feito):**
   1. Rodar, sem trava, `node --test agents/code/test/18-retomada.test.mjs agents/code/test/27-fim-da-resposta.test.mjs

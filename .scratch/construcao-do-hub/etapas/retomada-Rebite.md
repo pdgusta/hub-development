@@ -73,3 +73,14 @@ a ponta do ramo é a do parecer (ou que depois dela só entrou evidência ou `gi
   cliente depois de 12h15 (commit só de evidência, rodada curta do Fiel) e Fielzinho. Conflito add/add do
   kit/par/env/10.env.modelo com o 21: quem for juntado por segundo faz `git merge integracao` no ramo; eu não resolvo.
   Atenção: ramo do 22 contém fce0529; se a suíte do 16 ficar vermelha e eu desfizer, avisar Brasa.
+- 10:46: suíte do 16 VERMELHA (229/219/2 falhas no 12-busca: agents/skills/vigia/SKILL.md com YAML inválido, ': ' no
+  description). Desfeito: integracao voltou a e98a891. Log etapas/juncao-16-suite-falha-12.log. Trilho avisado (conserto,
+  nova rodada do Fiel, ponta nova). Brasa avisada; tirou o 16 do 22.
+- 10:55: 22 juntado: integracao 4a47576 (ticket-22 5abe359; difere da revisada 63cbfd5 só nos arquivos do 16).
+  22-kit-cliente + 22-proxy-sem-docker 4/4 (log etapas/logs/juncao-22-leves.log). Falta: suíte com a trava (Trilho com
+  ela desde 10:46; pedi ao maestro ficar logo depois), resolver o 22 com pendência do Codex (12h15) e Fielzinho, registro,
+  avisos. Construtores ainda não avisados de 4a47576.
+- Na fila: "janela quieta feita: 22, fatia 2 do 08 e 25 fases 1-3 verdes" — a fatia 2 do 08 passou; se vier commit só
+  de evidência do 08, juntar e comentar no ticket 08 (tira a ressalva 1).
+- Maestro: sou o 1c da fila, logo depois do Trilho (Docker do 21). Lição do SKILL.md já nas regras.
+- 11h: 37 avisado pelo Cinzel (4b695d5, passa r2; feito sobre ticket-18 31afe63): juntar só depois do 18. Mexe em nucleo.mjs, fim-da-resposta.mjs, nota.mjs e nos três fragmentos do fim. Na junção, conferir que a base 18 juntada é a mesma (31afe63 ou a ponta do 18 que entrar) e rodar 14, 18, 27, 37.

@@ -1,0 +1,14 @@
+[PASSA] hub de ensaio A->B (320 arquivos) 
+[INFO] hub do par A: C:\Users\gustavo.delfino\AppData\Local\Temp\hub-ensaio-21\a\hub (longo: C:\Users\gustavo.delfino\AppData\Local\Temp\hub-ensaio-21\a\hub)
+[PASSA] arquivar move no par A (arquivado: clients/aurora/migracao-de-tenant → clients/aurora/_archive/2026-10-17--migracao-de-tenant
+o que não replica mudou só nesta máquina; no outro par, ficou no lugar antigo: clients/aurora/migracao-de-tenant/.secrets)
+[PASSA] a pasta arquivada chega ao par B, e sai do lugar antigo lá 
+[PASSA] a nota no B tem o archived_at 
+[PASSA] o sincronizador de A segue de pé depois do arquivar (o mesmo PID) (antes 233468, depois 233468)
+[PASSA] uma nota nova em A chega ao B depois do arquivar 
+[PASSA] com a replicação parada, recusa e não move (arquivar: não arquivo reference/sincronizacao: a replicação de envio deste par não está no _scheduler; a replicação de envio do outro par não está no _scheduler)
+[PASSA] a cópia diária empurra o ramo do par, com a pasta arquivada (copia-diaria: commit novo; empurrado para par/ensaio-a)
+[PASSA] com o remoto quebrado, a cópia sai com erro (copia-diaria: falhou: git push falhou: fatal: 'C:\Users\gustavo.delfino\AppData\Local\Temp\hub-ensaio-21\copia.git-quebrado' does not appear to be a git repository)
+[PASSA] a passada seguinte da vigia notifica a falha da cópia (Hub: o estado piorou | informa: a cópia diária falhou: git push falhou: fatal: 'C:\Users\gustavo.delfino\AppData\Local\Temp\hub-ensaio-21\copia.git-quebrado' does not appear to be a git repository | fatal: Could not read from remote repository. |  | Please make sure you have the correct access rights | and the repository exists.)
+[PASSA] os contêineres do ensaio saem 
+ticket 21: tudo passou

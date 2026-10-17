@@ -60,3 +60,9 @@ Ramo `ticket-22`, HEAD 63cbfd5 (conserto 5abe359 mais `integracao` fce0529 junta
 - Sem Docker de novo: a mudança é só na decisão de religar, coberta pelo teste sem Docker; o Docker verde (bae29bd)
   segue valendo para o resto.
 - Ressalva do `10.env.modelo` (add/add com o 21) segue: levar ao Rebite.
+
+### Rodada 2, ramo refeito — 2026-10-17 ~11h05
+Por ordem do maestro, o `ticket-22` voltou a 5abe359 (o conserto, sem o merge do 16, que o Rebite desfez em
+`integracao`; a ponta de `integracao` agora é e98a891 e o ramo a contém). Diferença para 63cbfd5 em `agents/code/kit`:
+só `banco.psm1` e `04.env.modelo`, do 16, que o proxy não usa. Fiel: 10/10 de novo, `git status` limpo. **PASSA**
+continua.

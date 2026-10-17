@@ -42,3 +42,17 @@ Ramo `ticket-37` (worktree `C:/context-hub-wt/ticket-37`), HEAD c16e53f sobre o 
 
 - `node --test 14-guardas 18-retomada 27-fim-da-resposta 27-pastas 37-gravacao-pelo-shell harness-real` (detector do
   29): 111/111. `git status` limpo.
+
+## Rodada 2 — 2026-10-17 ~11h15 (Fiel sozinho; leitura do Fielzinho pendente)
+
+Ramo `ticket-37`, HEAD 4b695d5. **Veredito: PASSA** com 1 ressalva.
+
+- Conserto 1 feito (combinado com a Vela): nota de fora das ferramentas não passa pelos sete campos como falta nem
+  ganha `last_agent`; só cala a cobrança da iniciativa dela, com aviso em "Antes de terminar:".
+- Sonda da r1 repetida (nota de outra máquina, incompleta e completa, sessão que só rodou `git status`): nos dois, só
+  o aviso, uma vez; o fim não toca a nota.
+- Fiel: 14, 18, 27, 37 e harness-real 113/113; `git status` limpo.
+
+Ressalva: a sessão que não mexeu na iniciativa (só um shell de leitura) ainda recebe o aviso "se não foi você,
+atualize-a com o que esta resposta fez"; um agente obediente pode gravar uma nota sem ter o que dizer. Melhor: só
+avisar a nota de fora quando ela calou uma cobrança (a sessão gravou na iniciativa). Fica para o próximo ticket do fim.

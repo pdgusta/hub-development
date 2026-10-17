@@ -290,3 +290,4 @@ nuvem.
 - 10:40: ronda; Rebite com a trava (suíte do 16 desde 10:19, ~25 min); Trilho 40%: salvar depois do 21; 3,6 GB livres.
 - 10:42: 22 passa (r2, 63cbfd5), vai ao Rebite; Codex depois. Conflito add/add do 10.env.modelo com o 21: o segundo resolve.
 - 10:49: junção do 16 vermelha (12-busca recusa o SKILL.md da vigia), desfeita; Trilho conserta. Brasa volta o 22 a 5abe359 e leva ao Rebite. Quadro e placar atualizados (contexto do maestro ~495k).
+- 10:55: 22 juntado (4a47576), suíte na fila depois do Trilho. Lição do SKILL.md (YAML válido; rodar o 12-busca) nas regras.

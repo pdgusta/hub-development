@@ -83,6 +83,9 @@ Valem para todo construtor e revisor das etapas. Plano decidido: `revisao/plano/
 - **Caminho longo do Windows** (Trilho no 21): com `HUB_ROOT` ou `TEMP` em nome curto (`GUSTAV~1.DEL`), o `fs.watch`
   do node pode abortar quando um arquivo sai de uma pasta (libuv `fs-event.c:72`). Use sempre o caminho longo; o kit
   grava o caminho longo.
+- **`SKILL.md` com YAML válido** (Rebite, junção do 16): o teste da busca (12) indexa o repositório inteiro e recusa
+  cabeçalho quebrado (ex.: `description` com `: ` sem aspas). Quem cria ou muda um `SKILL.md` roda o `12-busca` antes de
+  pedir a revisão.
 - **Testes do fork do MCP:** `node --import tsx --test "src/**/*.test.ts"` com `TEMP`/`TMP` no caminho longo (ver
   `juntar-tickets.md`).
 

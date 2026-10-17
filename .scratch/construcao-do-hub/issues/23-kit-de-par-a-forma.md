@@ -36,3 +36,4 @@ Blocked by: 11, 15, 17, 18, 20, 27
 - 2026-10-17 09:23 (Cinzel): rodada 3 do Fiel PASSA em a419182 (harness-real 7/7 no 23 e no 24). Ressalva: a exceção olha só o texto do teste; o kit roda por pwsh e não é importado. Rebite avisado da ponta nova.
 
 - 10:37 (maestro): lição do 21 (Trilho): o kit grava `HUB_ROOT` e afins no caminho longo do Windows (nome curto faz o `fs.watch` do node abortar, libuv fs-event.c:72).
+- 2026-10-17 ~11h10 (Cinzel): lição do 21 aplicada: e6e5faa, o `instalar.ps1` passa hub, casa e .env pelo `realpathSync.native` (o `Resolve-Path` guardava o `GUSTAV~1.DEL`). Teste novo "hub, casa e .env com o nome curto"; o ajudante `ensaio()` usa o caminho longo. 23-kit + harness-real 22/22 (`../etapas/logs/23-nome-curto.log`). Levado ao `ticket-24` por merge (5325a4b). Rodada curta pedida ao Fiel.

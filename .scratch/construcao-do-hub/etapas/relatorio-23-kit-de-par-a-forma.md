@@ -173,3 +173,13 @@ sem cota; resposta 3 das costuras). A exceção cai se o próprio arquivo citar 
 detector: a exceção aponta arquivo que existe, tem motivo, sobe mesmo o app-server e não cita login. Ramo `ticket-23`
 a419182: `harness-real.test.mjs` 7/7; `23-kit.test.mjs` sem mudança (14/14 na f304e6c). O `ticket-24` juntou
 (e7d38ae): detector 7/7.
+
+## Lição do 21: caminho longo (2026-10-17 ~11h10, e6e5faa)
+
+O `Resolve-Path` guarda o nome curto do Windows (`GUSTAV~1.DEL`), e com ele no `HUB_ROOT` o `fs.watch` do node pode
+abortar (Trilho, libuv fs-event.c:72). O `instalar.ps1` agora passa hub, casa e `.env` pelo `realpathSync.native` do
+node (função `Longo`): junctions das skills, `{{HUB}}` dos hooks, contrato e XML do passo 10 saem no caminho longo. O
+hub real (`C:\context-hub`) não é junction, então o realpath só expande o nome curto. Teste novo: hub, casa e `.env`
+dados com o nome curto, e nada na casa com `~1`. O `ensaio()` do teste passou a usar o caminho longo (o `%TEMP%` do
+node vem curto). 23-kit + harness-real 22/22. Ressalva: o `03-busca.ps1` chamado sozinho ainda usa o `Resolve-Path`
+(pelo `instalar.ps1`, já recebe o caminho longo).

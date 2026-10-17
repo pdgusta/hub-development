@@ -61,4 +61,4 @@ Sem harness real (aceito pelo maestro: o que muda não depende da ferramenta; o 
   intacta; nota de fora completa com o `last_agent` da outra máquina: intacta) e o do risco. Os três "Edit na iniciativa
   e nota pelo shell" agora esperam o aviso, sem falta, e soltam na parada seguinte. O teste "nota pelo shell sem campo é
   devolvida" saiu (contrariava o conserto).
-- `37-gravacao-pelo-shell.test.mjs` 13/13. Com 14, 18, 27 e harness-real: RESULTADO2 (`logs/37-testes-r2.log`).
+- `37-gravacao-pelo-shell.test.mjs` 13/13. Com 14, 18, 27 e harness-real: **113/113** (`logs/37-testes-r2.log`).
