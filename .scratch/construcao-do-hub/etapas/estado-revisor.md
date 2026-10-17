@@ -217,3 +217,5 @@ Sat, Oct 17, 2026 10:15:54 AM 21 r1 (Trilho, 1c87f9b): retomado após /clear; re
 10:25 21 r1: VOLTA (Fiel sozinho), 1 guarda dentro-do-hub com outro disco (arquivar.mjs:39); 2 Docker não mostra sincronizador vivo após arquivar (Assertion fs-event.c no log; abortar reproduzido com TEMP curto). Parecer etapas/parecer-21-Trilho.md. Próximo: 22 (Brasa), depois 37 (Cinzel).
 10:33 22 r1: VOLTA (Fiel sozinho), 1 token trocado no .env não vale (proxy segue de pé com o velho; sonda: velho 200, novo 401). Ressalva: 10.env.modelo add/add com o 21. Parecer etapas/parecer-22-Brasa.md. Próximo: 37 (Cinzel); repassar 21, 22, 37 ao Fielzinho às 12h15.
 10:34 Brasa avisada do 22 r1. 37 r1 (Cinzel): lendo.
+10:39 37 r1: VOLTA (Fiel sozinho), 1 nota de fora com shell no turno vira falta e last_agent desta sessão (sonda). 111/111. Parecer etapas/parecer-37-Cinzel.md. 22 r2 pedido (Brasa, f1c-ticket-22 63cbfd5): em curso.
+10:41 22 r2: PASSA (Fiel sozinho; Codex e leitura do Fielzinho pendentes). Brasa avisada.

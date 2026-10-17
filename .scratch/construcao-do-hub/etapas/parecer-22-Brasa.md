@@ -46,3 +46,17 @@ junção do 16 (fce0529); merge sem conflito (`git merge-tree`).
 - `node --test agents/code/test/22-kit-cliente.test.mjs agents/code/test/22-proxy-sem-docker.test.mjs
   agents/code/test/harness-real.test.mjs` (detector do 29): 10/10. `git status` limpo; nenhum `mcp-proxy` de pé.
 - `logs/22-docker.log`: 15 PASSA, 0 FALHA, medidas conferidas linha a linha.
+
+## Rodada 2 — 2026-10-17 ~10h55 (Fiel sozinho; leitura do Fielzinho pendente)
+
+Ramo `ticket-22`, HEAD 63cbfd5 (conserto 5abe359 mais `integracao` fce0529 juntada).
+
+**Veredito: PASSA.** O aceite dos harnesses segue pendente só do Codex (depois das 12h15, rodada curta de evidência).
+
+- Conserto 1 feito: `Start-Proxy` guarda `ambiente.sha256` (hash dos tokens da partida, nunca o token) e religa
+  quando o hash muda; `Stop-Proxy` apaga o hash. Teste novo no `22-proxy-sem-docker`: token trocado → velho 401,
+  novo 200, leitura segue; nenhum arquivo do `mcp-proxy/` tem token.
+- Fiel: `22-kit-cliente + 22-proxy-sem-docker + harness-real` 10/10; `git status` limpo; nenhum `mcp-proxy` de pé.
+- Sem Docker de novo: a mudança é só na decisão de religar, coberta pelo teste sem Docker; o Docker verde (bae29bd)
+  segue valendo para o resto.
+- Ressalva do `10.env.modelo` (add/add com o 21) segue: levar ao Rebite.

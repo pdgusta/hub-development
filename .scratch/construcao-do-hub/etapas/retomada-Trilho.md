@@ -12,6 +12,8 @@ Leia antes: `etapas/regras-da-construcao.md` (inteiras), `etapas/fila-pesada.md`
   Docker 8ª, relatório `etapas/relatorio-16-vigia.md`, parecer `etapas/parecer-16-Trilho.md`, HUB_MCP_BANCO_DIR =
   `C:/Projetos/hub-mcp-banco-wt/ticket-11`).
 ### B. Ticket 21: Fiel r1 VOLTA (2 consertos), feitos em f32bd4c; HEAD 5fe3fda (com integracao fce0529)
+- (maestro: depois do Docker, gravar a retomada e responder "Trilho: salvo para limpar"; contexto em 40%)
+- Conflito combinado com a Brasa: o 21 e o 22 criam o mesmo agents/code/kit/par/env/10.env.modelo (meu: HUB_MAQUINA/HUB_COPIA_*; dela: HUB_PROXY_*). Quem entra por último em integracao faz git merge integracao no próprio ramo e deixa as duas metades, antes de pedir a junção. Se o 22 entrar antes, é meu.
 - Próximo: Docker 4ª rodada na fila 1b (depois da suíte do Rebite, antes das 12h15) para logs/trilho-21-docker-4.log;
   ao soltar, avisar o MAESTRO; verde: pedir a rodada 2 ao Fiel (o Fielzinho lê depois das 12h15).
 ### B-antes. (Docker 3ª tudo passou; revisão r1 pedida ~10h)

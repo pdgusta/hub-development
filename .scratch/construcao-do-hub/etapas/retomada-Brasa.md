@@ -110,3 +110,11 @@ harness de verdade". Um subagente por vez (tarefa leve) e até três Haiku de es
   1 e 2): o 08 fica PASSA só com as ressalvas 3-6. Às 12h15: o Codex do 22.
 - 10h21: o teste dos clientes usa o gpt-6-astra no Codex (3894a42, regra nova). Medido: o astra divide a cota com o
   luna (limite até 12:15). Login copiado 10:20:50, apagado 10:20:57, hash real igual (registrar no relatório).
+- 10h45: Fiel r1 VOLTA por 1 conserto (o proxy não religava com token trocado). Feito: hash do ambiente em
+  `ambiente.sha256` (proxy.psm1), teste novo no 22-proxy-sem-docker (vermelho→verde). `integracao` fce0529 juntada:
+  ponta 63cbfd5; 10/10 sem Docker. Rodada 2 pedida ao Fiel. Ressalva dele: o 21 também cria `env/10.env.modelo`
+  (add/add na junção; as duas metades ficam) — avisar o Rebite junto com o passa. Às 12h15: o Codex (corredor inteiro).
+- ~11h: Fiel r2 PASSA. Levado ao Rebite (maestro: já; a evidência do Codex entra depois, rodada curta do Fiel, e a
+  leitura do Fielzinho). 10.env.modelo: combinado com o Trilho que o segundo a ser juntado faz `git merge integracao`
+  no próprio ramo e resolve (as duas metades); o Rebite não resolve conflito. Se o 21 entrar antes do 22: resolver eu.
+  Às 12h15: o Codex do 22 (corredor inteiro, pedir a vez ao maestro); depois, evidência, relatório e o Fiel.

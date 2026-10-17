@@ -277,3 +277,5 @@ nuvem.
 - 10:28: 25 fases 4-7 escritas (puladas até as peças); corte do medidor desce toda pilha registrada. 16 juntado (fce0529), suíte com o Rebite.
 - 10:31: corte do 25 com pilhas registradas (25be145, medidor 5/5). Vela espera o 16 resolver para o 17.
 - 10:38: 21 r1 com 2 consertos (f32bd4c); achado do caminho longo (fs.watch aborta com nome curto) nas regras e no 23; Trilho na fila depois da suíte do 16.
+- 10:40: ronda; Rebite com a trava (suíte do 16 desde 10:19, ~25 min); Trilho 40%: salvar depois do 21; 3,6 GB livres.
+- 10:42: 22 passa (r2, 63cbfd5), vai ao Rebite; Codex depois. Conflito add/add do 10.env.modelo com o 21: o segundo resolve.
