@@ -4,9 +4,12 @@ Reescrita em 2026-10-17 ~04h; quadro e placar atualizados às 10:50 (antes do au
 
 ## RELIGAR DEPOIS DO REINÍCIO DO WINDOWS (2026-10-17 21h, cumulative updates)
 
-Estado às 19h40: **só o 25 aberto** (todas as fases verdes; rodada 2 do Fiel em 4628138; depois o Rebite junta e roda a
-suíte; se a suíte não coube antes das 20h, roda depois do reinício). O 26 é do Gustavo (instalação real). Depois do 25:
-**as duas peças visuais** (seção "Ao fim da execução"), que ficaram para depois do reinício.
+**CONSTRUÇÃO FECHADA às 20h16 de 2026-10-17:** 25 resolvido (suíte 370: 355/15 pulados/0, integracao ca62332). Todos os
+tickets resolvidos menos o 26 (instalação nas duas máquinas, com o Gustavo). Depois do reinício, na ordem:
+(a) as **duas peças visuais** (seção "Ao fim da execução"; times Designer + Revisor, em paralelo);
+(b) o Lume põe os docs em dia com o 24, 22 e 25 e o Rebite junta os docs;
+(c) o **roteiro do 26** (duas máquinas; comunicação entre os dois maestros, ver o Radar);
+(d) a lista **Para rever com o Gustavo**.
 1. Ler esta retomada; `maestri list`; recriar a ronda (CronCreate `13,38 * * * *`, prompt "Ronda do maestro ...").
 2. Quem estava no canvas às 20h30: Vela, Fiel, Rebite (ids na linha "Resume this session" de cada terminal ou
    `claude` + "leia a sua retomada"). Fora: Brasa (`claude --resume f538f66e-6cb5-4a2d-bc3d-16815b8e0c68`), Cinzel
@@ -381,3 +384,4 @@ nuvem.
 - 19:39: 25: fases 7 (Claude+Copilot, de verdade), 4 (Claude+Copilot) e 2 do Codex VERDES antes de 19:45 (B convergiu em 218 s). Rodada 2 do Fiel em 4628138. Decidido: sem Codex nas fases 4-7 (Para rever); observação do par novo no ticket 26.
 - 19:49: 25 PASSA r2 no Fiel (com ressalvas) e juntado (ca62332); suíte desde 19:50, fim ~20:23.
 - 20:12: Gustavo: o 26 vira instalação nas DUAS máquinas (par 2 no outro PC: Claude Code, Maestri, admin, pode clonar o hub; 1º setup do jeito mais adequado; setup genérico de novo par depois). Comunicação entre os dois maestros: radar. Roteiro do 26 depois do reinício.
+- 20:17: 25 RESOLVIDO (suíte 370: 355/15/0; ca62332). CONSTRUÇÃO FECHADA (só o 26, do Gustavo). Nada pesado até o reinício.
