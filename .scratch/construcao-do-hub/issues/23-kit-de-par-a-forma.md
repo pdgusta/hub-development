@@ -21,3 +21,5 @@ Blocked by: 11, 15, 17, 18, 20, 27
 - 2026-10-17 04h08 (integrador, Rebite): lição do 12, rodada 3 (parecer do Fiel, `etapas/parecer-12-Trilho.md`, ressalva 3): `agents/code/kit/par/busca/registro/claude-settings.json` só é usado nos testes. O kit que o instalar tem de **juntar** a regra na `permissions.deny` do `settings.json` de verdade, sem sobrescrever.
 
 - 07:32 (maestro): lição do 15 (Trilho): no Codex, hífen do nome do servidor MCP vira sublinhado no hook; os matchers do kit usam o sublinhado no Codex.
+
+- 07:34 (maestro): do 21: o passo `10-manutencao.ps1` (XML da tarefa diária da cópia e da vigia, sem registrar, com -WhatIf) entra aqui.

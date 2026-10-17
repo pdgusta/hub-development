@@ -10,3 +10,4 @@ testes (09, 16): limpe os contêineres ao soltar.
 4. Brasa: fatias 1 e 2 do 08 numa subida (51 e 201 MiB), aceite final da revisão do Fiel: só com a máquina quieta (ninguém mais com teste
    rodando); o maestro avisa.
 5. Brasa: Docker do 22 (proxy e kit de cliente: par do 07 com 5996/5997, MCP 8796-8798, busca com npm ci, ~15 min); depois os três harnesses como cliente (~10 min)
+6. Rebite: suíte do hub do 15 rodada 2 (e2b7607, ~15 min), pedida às 07:34

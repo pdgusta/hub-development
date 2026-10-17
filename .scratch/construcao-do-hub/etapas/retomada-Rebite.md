@@ -42,3 +42,10 @@ entrou), `fila-pesada.md`, e esta retomada.
   quem não vale.
 - Testes de tempo (12-busca, 27-pastas) caem sob carga: por isso a suíte é com `--test-concurrency=1`.
 - O registro e os tickets usam a hora da máquina (-03).
+
+## Em curso (07:35)
+
+- Ticket 15 rodada 2 juntado: integracao e2b7607 (ticket-15 em 3d34bd1, parecer passa). 15-leitura 9/9. Falta: suíte
+  do hub com a trava (estou no item 6 da fila; maestro aprovou), depois comentário no ticket 15 (já resolved; comentar a
+  rodada 2), linha no registro, aviso ao maestro e aos construtores. Nota do hífen do Codex já está nas regras e nos
+  tickets 11 e 23 (maestro).

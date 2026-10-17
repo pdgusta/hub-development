@@ -113,3 +113,9 @@ Fila recebida: 12 (0ba8532, relatório relatorio-12-busca.md); 20 (e5d24a7, rela
 ## Ticket 08 — rodada 2, 2026-10-17
 
 Ponta 514db7a revisada. PASSA o conserto 1: raiz longa por realpathSync.native, relativo por GetRelativePath, locais pela biblioteca do gerador. Execução própria do kit-sem-docker: 24 PASSA, saída 0; três regressões novas verdes, inclusive alias 8.3 realmente diferente. Diff check verde, worktree limpa. Parecer-08-Brasa-fielzinho.md atualizado. Ressalvas r1 mantidas; fatias Docker 1/2 seguem com Fiel, não executadas por mim. Próximo passo: acordo/fechamento com Fiel e leitura das evidências quando disponíveis. Nenhum código/spec/ticket alterado.
+
+## Leituras 15 e 17 — 2026-10-17
+
+15, ponta 3d34bd1: PASSA a rodada, próprios 9/9; registros reais dos três e log Codex conferidos, sem harness próprio. Parecer-15-Trilho-fielzinho.md gravado e Fiel avisado.
+
+17, ponta 86c5a88: VOLTA proposto por um achado reproduzido: estado criado por gravarItem/tirarItem antes de qualquer passada gera tudo em ordem / Invalid Date no início e barra. Repro e log em etapas/logs/repro-17-fielzinho.*; parecer-17-Vela-fielzinho.md com evidência/linhas/recomendação. Próprios 15/15 e mod 2/2, validação verde; hashes e seis respostas reais lidos. Harness/Docker/toast não executados. Integração com 16 segue pendente. Próximo passo: acordo com Fiel; não ler parecer dele antes de enviar o próprio (leitura independente concluída). Nenhum código/spec/ticket editado. Fiel enviará lista das leituras atrasadas depois.

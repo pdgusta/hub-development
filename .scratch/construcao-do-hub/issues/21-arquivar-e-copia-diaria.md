@@ -18,3 +18,6 @@ Blocked by: 08, 16
 ## Comments
 
 - 07:31 (maestro, mandato): começa já com o Trilho, num ramo ticket-21 da ponta de `integracao` com o `ticket-16` juntado por merge (o item da cópia diária na vigia é do 16). As partes que dependem do 08 entram quando ele for juntado. Junção só com 08 e 16 resolvidos.
+- 2026-10-17 ~07h50 (Trilho): pego (claimed). Worktree C:/context-hub-wt/ticket-21, ramo ticket-21, de integracao 9cc878b com o ticket-16 juntado (c36ece4). Costuras propostas em etapas/costuras-21-Trilho.md (quatro perguntas ao maestro).
+
+- 07:34 (maestro, mandato): costuras do Trilho aceitas (`../etapas/costuras-21-Trilho.md`). (1) edição recente = arquivo da pasta mudado nos últimos 15 min; (2) outro par desligado ou sem resposta = recusa (só arquiva com o outro par em dia); (3) em dia = as duas replicações `running` e 0 pendentes no momento; (4) o `10-manutencao.ps1` (XML da tarefa diária, sem registrar) fica fora do 21 e vai para o 23.

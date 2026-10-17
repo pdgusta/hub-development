@@ -190,3 +190,5 @@ nuvem.
 - 07:31: 18: decidida a opção A (nota do condutor + passagem por recruta), muda o spec; para rever.
 - 07:32: 15 com o Codex real passou (rodada do Fiel pedida); 16 pronto, espera o 08. Trilho no 21 (sobre ticket-16; remoto de ensaio local).
 - 07:33: 15 passou no Fiel, com o Rebite. Lição do hífen→sublinhado no Codex nas regras e nos tickets 11 e 23.
+- 07:33: 15 rodada 2 juntado (e2b7607), suíte na fila (item 6). Nota do hífen já nas regras.
+- 07:35: costuras do 21 aceitas (15 min, recusa sem o outro par, running+0 pendentes; manutenção diária vai ao 23).
