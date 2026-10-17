@@ -27,3 +27,4 @@ Blocked by: 06, 07
 
 - 2026-10-17 ~03h25 (maestro): aceito o `git rm -r --cached` no "tornar local" (a pasta já versionada sai do git do hub daqui para frente; o histórico guarda as versões antigas, e limpar histórico não entra), proposta da Vela.
 - 03h30 (Vela): Docker 14 PASSA, suíte 188/0/8 em fc6c78b; revisão pedida ao Fiel. Relatório etapas/relatorio-28-pastas-locais.md.
+- 2026-10-17 05h08 (Vela): Fiel rodada 3 PASSA (Docker 14 PASSA com a trava; sem Docker 9/9; 3 ressalvas no parecer; leitura do Fielzinho pendente). Passa levado ao Rebite.

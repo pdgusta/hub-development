@@ -17,3 +17,5 @@ Blocked by: 16, 03
 
 ## Comments
 - 2026-10-16 20:24 (maestro): aval do Gustavo para copiar o login dos três harnesses em pasta de ensaio (rodada `2026-10-16-login-dos-harnesses-no-ensaio`, A, vale para a construção inteira); condições em `../etapas/regras-da-construcao.md`.
+
+- 05:09 (maestro, mandato): começa antes do 16 ser resolvido, com a Vela, sobre a ponta de `integracao`, contra o `estado.json` combinado entre o Trilho (16) e o Cinzel (10) em `../etapas/costuras-16-Trilho.md` (exemplo fixo nos testes). Quando o 16 for juntado, `git merge integracao` e trocar o exemplo pelo real. Junção só com o 16 resolvido.

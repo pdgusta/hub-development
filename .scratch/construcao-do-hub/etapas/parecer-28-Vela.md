@@ -72,3 +72,20 @@ Ramo ticket-28, HEAD 2eec8e9 (e134279, 39abd57, merge de integracao 3c24d68). Fi
 - Docker (`28-pastas-locais.test.ps1`): não rodado; trava do Cinzel (04h09). Roda na rodada 3, com a trava, sobre o
   código final.
 - Rodada 3 = teto: passa com ressalvas escritas, depois do Docker.
+
+# Rodada 3 — Fiel — 2026-10-17 ~05h10
+
+Ramo ticket-28, HEAD 5436cad. Fiel sozinho (Fielzinho sem cota até 06h58; leitura dele pendente: 3 da r1, r2, r3).
+
+## Veredito: PASSA (teto de voltas; ressalvas abaixo)
+
+- Conserto do `-Titulo`: `Invoke-Cartao (@('marcar') + ...)`; as outras chamadas passam uma lista literal só.
+  Teste novo no sem Docker (vermelho antes, segundo a Vela).
+- `node --test gerador.test.mjs 28-pastas-locais-sem-docker.test.mjs`: 9/9 (Fiel).
+- Docker `28-pastas-locais.test.ps1` com a trava (Fiel, 04h59–05h02): 14 PASSA, "tudo passa", saída 0; nenhum
+  contêiner `hub-ensaio-*` sobrando. Log `etapas/logs/revisao-28-r3-docker.log`.
+
+## Ressalvas
+1. O Docker passa `-Titulo 'Rascunhos de A'` sem conferir o título; o teste que confere é o sem Docker.
+2. Leitura do Fielzinho pendente (achado 3 da rodada 1 e rodadas 2 e 3): se ele achar algo, vira ticket seguinte.
+3. O histórico do git guarda as versões antigas da pasta tornada local (aval do maestro; a skill avisa).

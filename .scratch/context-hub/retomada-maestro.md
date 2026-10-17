@@ -24,7 +24,7 @@ Por isso o diário abaixo registra cada evento com hora.
 ## Para rever com o Gustavo
 
 - (técnica) "Piora" da vigia (aberto no spec): item sobe de nível em relação à passada anterior; item novo conta como ok antes. Ticket 16.
-- (processo) O 16 (vigia) começou antes do 08 e do 10, sobre o 07; junção só depois deles.
+- (processo) O 16 (vigia) começou antes do 08 e do 10, sobre o 07; o 17 começou antes do 16; junção só depois dos bloqueios.
 - (processo) A suíte inteira roda só na junção, pelo Rebite; o construtor roda os testes do ticket e dos arquivos mexidos. Fila do trabalho pesado em `etapas/fila-pesada.md`.
 
 - (técnica) No 09, só é conflito quando a base não é mais folha viva; gravar sobre folha viva de nota em conflito grava e avisa.
@@ -150,3 +150,5 @@ nuvem.
 - 04:48: Cinzel limpo; leu a retomada (09 em revisão, 10 com costuras).
 - 04:54: 35 e 33 resolvidos (33b817a), suíte 199/0. Ressalvas do 33 ficam no radar (caminho de rede solto no texto não avisa; link em código em linha alerta; //host conta como rede). Trilho com a trava (Docker do 16).
 - 05:06: Docker do 16: 6 falhas na 1ª rodada, consertadas (ff0f362). Trilho limpo; fila: Fiel (28+09), Brasa (08), Trilho (16 de novo; Codex do 15 a partir de 06:58).
+- 05:07: Brasa com a trava desde 05:06 (08); cede ao Trilho ao fim da fatia 2 (Docker do 16). 15 com integracao juntada (3c8f8a6).
+- 05:09: 28 passa (rodada 3), com o Rebite. Vela no 17 antes do 16, pelo mandato.
