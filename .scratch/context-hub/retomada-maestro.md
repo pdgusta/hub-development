@@ -360,3 +360,4 @@ nuvem.
 - 18:34: Fiel PASSA 24 (2000575) e 22 (22811cb), ressalva comum: evidência não grava o modelo. Rebite junta os dois. Vela pede revisão parcial do 25.
 - 18:50: causa A→B achada (Brasa): semente de ~6,5 min depois da subida; conserto no 25 (pares.ps1 espera o B convergir; fase 2 120 s), Vela. --interval fora. Suíte 24+22 (Rebite) rodando.
 - 18:51: Brasa fora de novo (`claude --resume f538f66e-6cb5-4a2d-bc3d-16815b8e0c68`), nada pendente.
+- 19:13: Fiel VOLTA parcial do 25 (fase 7 não rodou harness; evidência sobrescrita); consertos fc6b10c, dac76e6, f6a0f21. Ordem: fase 7, fase 4, Codex 2, numa subida se der; nada pesado começa depois de 19h45.
