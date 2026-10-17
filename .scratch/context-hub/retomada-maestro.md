@@ -87,6 +87,9 @@ Repositório de planejamento versionado (primeiro commit 2026-10-16).
 - Duas suítes rodaram juntas (Brasa 00h58, Trilho 01h06; a trava da Brasa foi sobrescrita). O Trilho parou a dele; a da
   Brasa deu 2 falhas por tempo na busca do 12. Agora: Trilho roda a suíte do 13 com a trava e pede a revisão; a Brasa
   (limpa às ~01h15, leu a retomada) repete a suíte do 07 depois, então rodada 2 ao Fiel.
-- Trilho (49%) e Fiel (43%) estão acima de 40%: limpar no próximo ponto seguro.
+- 31 (357a2ba) e 32 (57e85cf) juntados; 32 resolvido; 31 espera a ponta a ponta do Claude da Vela + conferência do Fiel.
+- Trilho limpo ~02h00 (13 em revisão no Fiel, HEAD 6bfb506; depois Codex do 12 e do 15, com a trava). Trava: Brasa
+  (01h59, suíte do 07), Vela, Trilho. Fiel em 48%, estado salvo 02h04 (fila em estado-revisor.md); começou a rodada 2 do 07 (Brasa, 99ea624, suíte 179/0) já com o Fielzinho: limpar depois desse parecer. 13 passou (rodada 1) e foi ao Rebite. 31 volta à revisão: a Vela mudou código (050fb14, guarda casando CRLF/LF) depois do passa.
+- Rodada aberta pelo chat: `portal/rodadas/2026-10-17-ressalvas-do-link-fora.md` (sobras do 32; recomendada A).
 
-## Nenhuma rodada aberta.
+
