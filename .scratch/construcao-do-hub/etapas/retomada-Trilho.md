@@ -6,7 +6,16 @@ description de SKILL.md sem ': ' solto), `etapas/fila-pesada.md`, os tickets 21 
 Maestro = "Claude Code"; revisor = "Fiel" (o "Fielzinho" lê depois das 12h15); integrador = "Rebite";
 construtores: Brasa, Vela, Cinzel. Sem trava minha; nenhum contêiner nem pasta de ensaio minha sobrando.
 
-## Agora (10:55)
+## Agora (11:40): ticket 38 (ajudante pasta-de-ensaio nos testes que faltaram)
+- Worktree C:/context-hub-wt/ticket-38, ramo ticket-38, de integracao 4a47576. Status do ticket: claimed.
+- Plano: (1) pasta-de-ensaio.mjs ganha antesDeApagar(fn) (para processos/dublês antes do rmSync), com caso novo no
+  36-pasta-de-ensaio.test.mjs; (2) 12-busca, 12-kit-busca, 13-gemini, ponta-a-ponta 12 e 15 usam hubDeEnsaio/antesDeApagar;
+  (3) PS: New-EnsaioBanco apaga a raiz se cair no meio; Remove-EnsaioBanco apaga a raiz mesmo se o Uninstall lançar;
+  09/10 com o try logo depois do New-EnsaioBanco; 08 finally com a remoção garantida; sem-docker .ps1 recebem a raiz
+  do node (pastaDeEnsaio) por parâmetro; (4) falha forçada e conferir %TEMP%; 16/17 depois de juntados.
+- 21 e 16: com o Rebite (junção numa suíte só).
+
+## Antes (10:55)
 ### A. Ticket 16 (vigia): PASSOU na rodada curta (~11h); passa levado ao Rebite (~11h), ponta 6a0ab17
 - Worktree `C:/context-hub-wt/ticket-16`, ramo `ticket-16`, HEAD 6a0ab17 (sobre 0332466, que passou no Fiel r2).
 - A junção do Rebite (fce0529) ficou vermelha no 12-busca: a description do SKILL.md da vigia tinha ': ' (YAML

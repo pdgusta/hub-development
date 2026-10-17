@@ -92,3 +92,4 @@ a ponta do ramo é a do parecer (ou que depois dela só entrou evidência ou `gi
   16 (6a0ab17) e 21 (6b6c65e), testes leves (16-vigia, 12-busca, 21-*, 22-kit-cliente, 22-proxy-sem-docker) e UMA
   suíte para os dois, com a trava. Docker do 21 não repetir (4ª verde).
 - 11:25: 22 RESOLVIDO (4a47576, 215/206/9). 16 (30b735f) e 21 (fdd3760) juntados; árvore = ticket-21. Suíte dos dois com a trava em segundo plano (log etapas/logs/juncao-16-21-suite.log). Construtores ainda não avisados de 4a47576/fdd3760.
+- Maestro: depois da minha suíte, trava livre até 12h15 (aí Codex: Cinzel, Vela, Brasa). Ao resolver o 16, avisar a Vela (ela traz o 16 para o 17 e pede rodada nova ao Fiel).
