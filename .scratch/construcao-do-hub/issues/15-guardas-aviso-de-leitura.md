@@ -1,7 +1,7 @@
 # 15: Guardas: aviso de leitura fora da busca
 
 Type: task
-Status: ready-for-agent
+Status: claimed
 Etapa: 5 (guardas no disco)
 Blocked by: 14, 12
 
@@ -16,3 +16,5 @@ Blocked by: 14, 12
 
 ## Comments
 - 2026-10-16 ~23h15 (maestro): passado ao Trilho depois do 12 (juntado c5b946a); bloqueios 14 e 12 resolvidos. Às 01:40 ele pausa para o aceite do Codex do 12.
+- 2026-10-16 ~23h25 (Trilho): pego (`claimed`). Worktree `C:/context-hub-wt/ticket-15`, ramo `ticket-15`, de `integracao` c5b946a. Às 01:40 pausa para o Codex do 12.
+- 2026-10-16 ~23h25 (maestro): costuras do Trilho aceitas; 'grande' medido no vault antigo (só tamanhos, números agregados no relatório, sem caminho nem nome), como pede a user story 29 da faixa 6.
