@@ -131,3 +131,9 @@ Na rodada: conferir nome canônico do deny, que read sumiu do contexto nos três
 Depois: 35, 28, 08, 33; leituras atrasadas do Fielzinho.
 Regra nova (Gustavo, via maestro, 2026-10-17): no máximo UM subagente por vez, tarefa leve. Quarto construtor: Cinzel (ticket 09), vai pedir revisão ao Fiel.
 Regra nova (Gustavo, 2026-10-17): além do subagente, até três subagentes Haiku 5.5 esforço médio, só tarefa simples ou QA (ex.: evidência x critério); veredito é do Fiel.
+28 r1 (Vela, fc6c78b): pedido recebido; repassado ao Fielzinho. Revisão do Fiel em curso.
+28 r1: parecer-28-Vela.md VOLTA (1 e 2 do Fielzinho reproduzidos; 3 do Fiel: .* no exclude esconde .claude-plugin de mod novo). Docker fica para a r2. Sobra do ensaio do Fielzinho apagada. Aguardando acordo.
+28 r1 FECHADO: VOLTA em acordo (1,2 Fielzinho; 3 Fiel, leitura do Fielzinho pendente: sem cota até 06h58). Vela avisada.
+12 rodada nova (Trilho, 8558abe): pedido recebido; Fielzinho sem cota até 06h58 -> Fiel sozinho, leitura pendente.
+12 r3: PASSA (Fiel sozinho; leitura do Fielzinho pendente). 3 ressalvas, a 2 vai para o 15 (deny do Claude no 15-leitura.test). Trilho avisado.
+Maestro (~04h): Codex sem cota até 06h58; Fiel revisa sozinho; leituras do Fielzinho na fila para depois: 28 (achado 3), 12 r3, mais as antigas (13, 32, 30, 20, 15, 12, 29).

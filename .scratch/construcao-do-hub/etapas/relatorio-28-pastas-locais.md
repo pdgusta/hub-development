@@ -39,7 +39,7 @@ relatório do 06 ("O que vai doer ao ligar"), lição do 02.
 | `node --test agents/code/test/28-pastas-locais-sem-docker.test.mjs` (nova; pasta existente; YAML ilegível; vermelho antes) | 12 PASSA |
 | `node --test agents/code/test/04-esqueleto.test.mjs` (o `AGENTS.md` mudou) | 13/13 |
 | `pwsh -NoProfile -File agents/code/test/28-pastas-locais.test.ps1` (Docker, `hub-ensaio-28-a/b`, 5992/5993) | 14 PASSA, saída 0 (log `etapas/logs/28-docker-1.log`; nenhum contêiner sobrou) |
-| suíte inteira | (preencher) |
+| suíte inteira, `node --test --test-concurrency=1 "agents/code/test/**/*.test.mjs"`, em fc6c78b, com a trava | 196 testes: 188 PASSA, 8 pulados (harness de verdade), 0 falhas (log `etapas/logs/suite-28.log`) |
 
 ## O que vai doer ao ligar
 
@@ -62,3 +62,34 @@ relatório do 06 ("O que vai doer ao ligar"), lição do 02.
   deixa de fora.
 - **Git do hub A:** `git status` não mostra a pasta local nem nada com ponto; a pasta tornada local saiu do índice, e o
   status mostra as duas remoções, para a cópia diária levar.
+
+## Rodada 2 (consertos do parecer da rodada 1)
+
+Commits e134279 (1 e 2) e o seguinte (3), sobre fc6c78b.
+
+1. **`local` só no frontmatter.** O `index.md` passa a ser lido e escrito por `agents/skills/nova-pasta-local/cartao.mjs`,
+   com o `separar` do `lib/frontmatter.mjs` (o mesmo que o gerador usa em `lib/locais.mjs`). `marcar` troca a linha
+   `local:` só dentro do bloco do frontmatter, ou a acrescenta no fim dele; sem frontmatter, põe um bloco antes; o corpo
+   não é tocado; relê e confere. Teste: `local: true` só no corpo não faz a pasta local (nova recusa); `-TornarLocal`
+   com `local: true` e com `local: false` no corpo: a pasta entra na lista, o frontmatter diz `local: true`, o corpo
+   fica igual.
+2. **Caminho real.** O `cartao.mjs ler` resolve o caminho real (`lib/caminhos.mjs`, `real`) e recusa (código 3) quando
+   o caminho real relativo ao hub não é o pedido (junction para fora, ou para outro lugar do hub, onde o gerador não
+   desce). Roda antes de parar o sincronizador. Teste: junction `reference/atalho` para fora; nova em
+   `reference/atalho/sub` e `-TornarLocal` em `reference/atalho` recusados ("fora do hub"), nada criado fora,
+   sincronizador com o mesmo PID.
+   **Com 1 e 2:** o script só segue (apagar do banco, git, religar, "pronto") se a pasta está em `locais` da saída JSON
+   do gerador; senão `parou:` com o caminho, sincronizador parado.
+3. **`.claude-plugin/` fica no git.** O bloco do `.git/info/exclude` ganhou `!.claude-plugin/`; os nomes com ponto
+   versionados ficam numa lista só (`VERSIONADOS_COM_PONTO`: `.gitignore`, `.gitkeep`, `.claude-plugin/`; conferido
+   com `git ls-files`: só esses três). Teste: mod novo `agents/code/mods/novo/.claude-plugin/plugin.json` aparece no
+   `git status`. Sonda: `.claude-plugin/` dentro de `.secrets/` não reabre a pasta (status vazio).
+
+O CLI falso ganhou `ls`, `rm` e `sync` (banco vazio), para o `-TornarLocal` sem Docker.
+
+| Teste | Resultado |
+|---|---|
+| gerador.test.mjs | 8/8 |
+| 28-pastas-locais-sem-docker (pastas-locais-sem-docker.ps1) | 24 PASSA (vermelho antes: 11 falhas) |
+| Docker 28-pastas-locais.test.ps1 | o Fiel roda na rodada 2, com a trava |
+| suíte inteira | (preencher) |

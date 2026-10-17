@@ -35,7 +35,7 @@ especial "Um trabalho pesado por vez" (a trava `etapas/trava-pesada.md`) e "Test
 
 ### Próximo passo exato
 
-1. Ler o resultado de `.local/08-f1a.log` e consertar o que falhar (a primeira rodada Docker de todas as fatias).
+1. 1ª rodada parada por memória (fatia 1 verde; achado EBUSY → CLI sai; o teste roda o laço na espera). Pedir aval ao maestro para rodar de novo; rodar destacado do shell do Claude Code?
 2. Depois de verde: relatório `etapas/relatorio-08-banco-limites.md`, commit do retrato, suíte comum com a trava,
    revisão com o Fiel.
 

@@ -1,1 +1,1 @@
-- Vela (construtora), 2026-10-17 03:17: suíte inteira do ticket 28, worktree ticket-28. Apago ao fim.
+- Rebite (integrador), 2026-10-17 03:56: suíte inteira com --test-concurrency=1 em integracao, junção do 12 r3 (C:/context-hub-wt/integracao). Apago ao fim.

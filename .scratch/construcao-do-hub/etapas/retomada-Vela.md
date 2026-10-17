@@ -231,3 +231,5 @@ node --test agents/code/test/05-frontmatter.test.mjs
 - 03h17: Docker do 28 verde (14 PASSA, log etapas/logs/28-docker-1.log). integracao não andou. Suíte inteira em segundo plano com a trava (etapas/logs/suite-28.log). Depois: relatório (linha da suíte), Fiel.
 - 03h23: maestro: o 09 passou ao Cinzel (quarto construtor); eu sigo no 28 e respondo ao Cinzel sobre o que li do 09 (seção 'Ticket 09' desta retomada). Regra nova: no máximo um subagente por vez, só tarefa fechada e leve. Depois do 28, o maestro passa o próximo.
 - 03h25: regra nova: além do subagente, até três subagentes Haiku 5.5 esforço médio (Agent, model haiku, effort medium) só para tarefa simples ou QA; nada de código de produção nem decisão; conferir o que trazem.
+- 03h30: suíte 188/0/8 em fc6c78b; revisão pedida ao Fiel. Não mexer na worktree ticket-28 enquanto ele revisa. Depois do passa: Rebite.
+- 03h42: rodada 1 do Fiel VOLTA (3 consertos); feitos em e134279 e 39abd57; sem Docker 24, gerador 8/8. Próximo: suíte (trava), pedir rodada 2 ao Fiel (ele roda o Docker).

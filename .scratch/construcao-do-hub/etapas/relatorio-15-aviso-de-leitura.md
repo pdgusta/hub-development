@@ -111,3 +111,12 @@ regrava são as sessões abertas na máquina (por isso ele só é registrado).
   faixa 7, ou uma passada do kit) fica para o maestro decidir.
 - **Busca por `path`** (notas parecidas com uma nota): os `results[].path` contam como apontados, como os da `query`.
 - Copilot no modo agente do VS Code: não testado (hooks em Preview, spec).
+
+## Rodada de 2026-10-17 (Trilho): ponta a ponta com só a search do hub-busca
+- Codex (03:09): falhou; usou a `read` do `hub-busca` (bloqueada por aprovação). A `read` furaria o aviso nos três
+  harnesses. Conserto no 12 (opção A do maestro: só a `search`), trazido para cá por cherry-pick (46e44d2, c1b6133);
+  3bc8c8b: o `settings.json` de ensaio do Claude junta o hook de leitura e o deny do `claude-settings.json`.
+- Real nos três (03:3x, com a trava): Claude e Copilot passam (evidência 7ad8dee). Codex: "You've hit your usage
+  limit ... try again at 6:58 AM". Falta o Codex depois das 06:58.
+- Usos de login: Codex 03:09; Claude, Codex e Copilot na rodada dos três; todos apagados ao fim (`apagado: true` em
+  `evidencia-15/hashes-claude-codex-copilot.json`). Configurações com hash igual; `.claude.json` só registro.

@@ -97,3 +97,9 @@ Fila recebida: 12 (0ba8532, relatório relatorio-12-busca.md); 20 (e5d24a7, rela
 
 34 encerrado PASSA em dupla;19/19 em cada revisor. Fiel fechou parecer-34-Vela.md. Nenhum teste próprio em execução ou acordo pendente no34.
 
+
+28fc6c78b em revisão: parecer-28-Vela-fielzinho.md salvo, VOLTA provisório. Reproduzido via skill real+daemon falso: local:true no corpo engana ehLocal; script sai0/reinicia/anuncia local, YAML local:false e pasta ausente no ignore. Repro em logs/repro-28-fielzinho.ps1,ensaio limpo. Testes específicos em sessão7269; aguardar. Docker sóFiel/log posterior. Próximo: fechar leitura, comunicar achadoFiel, obter resultado7269 e logDocker.
+
+
+28: revisão independente VOLTA por2 reproduzidos: local:true no corpo e junction para fora.9/9 existentes verdes; nenhum teste rodando. Repro/log em etapas/logs/repro-28-fielzinho.*. Limpeza PENDENTE do TEMP hub-ensaio-28-fielzinho-486cf7a99c3b4104ac8432b4d01633c0 (handle aberto no finally; tentativa posterior bloqueada automaticamente, não contornar). Parecer atualizado. Aguardar acordo e logDockerFiel.
+

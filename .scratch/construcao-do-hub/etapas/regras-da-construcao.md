@@ -65,7 +65,8 @@ Valem para todo construtor e revisor das etapas. Plano decidido: `revisao/plano/
 - **Um trabalho pesado por vez** (a máquina está com a memória no limite, 2026-10-17): prova com Docker, suíte inteira,
   indexação da busca, `npm install` e harness de verdade são pesados. Antes de um, confira
   `C:/Projetos/context-hub/.scratch/construcao-do-hub/etapas/trava-pesada.md`: se existir e tiver menos de 30 min,
-  espere; se não, crie-o com o seu nome, o que vai rodar e a hora, rode, e apague-o ao fim (também quando falhar). Teste
+  espere; se não, crie-o com o seu nome, o que vai rodar e a hora, rode, e apague-o ao fim (também quando falhar). **Fila** (2026-10-17): a ordem de quem espera está em `etapas/fila-pesada.md`; ao apagar a trava, avise
+  o primeiro da fila por `maestri ask` (vigia em laço morre por falta de memória; não conte com ele). Teste
   só do seu arquivo não precisa da trava. Trava com mais de 30 min sem dono ativo: pergunte ao dono antes de apagar.
 - **Contexto acima de 40%** (Gustavo, 2026-10-16): no próximo ponto seguro (commit com testes verdes, ou o fim do
   ticket), grave `C:\Projetos\context-hub\.scratch\construcao-do-hub\etapas\retomada-<seu nome>.md`: ticket, ramo,

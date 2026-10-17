@@ -26,3 +26,4 @@ Blocked by: 06, 07
 - 2026-10-17 03h02 (Vela): claimed; worktree C:/context-hub-wt/ticket-28 da ponta de integracao 763813a.
 
 - 2026-10-17 ~03h25 (maestro): aceito o `git rm -r --cached` no "tornar local" (a pasta já versionada sai do git do hub daqui para frente; o histórico guarda as versões antigas, e limpar histórico não entra), proposta da Vela.
+- 03h30 (Vela): Docker 14 PASSA, suíte 188/0/8 em fc6c78b; revisão pedida ao Fiel. Relatório etapas/relatorio-28-pastas-locais.md.

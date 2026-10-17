@@ -12,6 +12,7 @@ subagentes. Maestro = "Claude Code"; revisor = "Fiel"; integrador = "Rebite".
 - Fiel PASSOU o 13 (rodada 1); passado ao Rebite em 2026-10-17 ~02h05. Próximo: Codex do 12 e do 15 na vez da trava (Brasa, Vela, depois eu).
 - Ticket 35 (aval sem parecer registrado): ramo ticket-35, worktree C:/context-hub-wt/ticket-35, commits 140417a d65b18a 0b01cd9, teste do acervo 21/21. Falta: suíte comum com a trava, revisão do Fiel, Rebite. Relatório etapas/relatorio-35-avais.md. O Codex do 12 e do 15 tem prioridade quando a trava vier.
 - 2026-10-17 ~03h15: Codex do 12 PASSOU com a search aprovada (0ea1016, evidência 3faad20). Codex do 15 falhou: usou a read do MCP. Maestro decidiu A: só a search nos três (34ed657 no ticket-12; no ticket-15 cherry-pick 46e44d2 e c1b6133, mais 3bc8c8b no teste do 15). Falta: com a trava, real do 12 e do 15 nos três (HUB_HARNESS_REAL=1, sem HARNESSES, --test-concurrency=1), commits de evidência, rodada do Fiel do 12 e do 15, Rebite. Depois: suíte e revisão do 35, então o ticket 33.
+- 2026-10-17 ~03h40: real do 12 nos três PASSOU (evidência 8558abe). 15: Claude e Copilot passaram (evidência no ticket-15); Codex no limite de uso até 06:58. Falta: Codex do 15 depois das 06:58 (HARNESSES=codex, com a trava), commit de evidência, Fiel do 12 e do 15, Rebite. Enquanto isso: suíte e revisão do 35.
 - Pendente: o ponta a ponta do Codex no 12 e no 15 (limite de uso até 01:34). Aviso agendado para 01:40 (pode ter
   se perdido no /clear: conferir a hora e seguir).
 

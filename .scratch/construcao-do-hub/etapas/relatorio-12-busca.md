@@ -138,3 +138,23 @@ rodada do Claude; ele é só registrado, porque as sessões abertas na máquina 
 - O `03-busca.ps1` lê o HOME de `HUB_HOME_ENSAIO` (contrato do instalador) só para o campo `modelo_no_cache`; ele não
   grava nada no HOME.
 - Juntar os fragmentos nos arquivos dos harnesses de verdade: ticket 23.
+
+## Rodada de 2026-10-17 (Trilho): ponta a ponta com o Codex e só a search
+- Codex do 12, primeira rodada (03:03): falhou. "as duas chamadas de busca foram bloqueadas pelo requisito de aprovação
+  do MCP" (`codex exec` com política de aprovação `never`). Conserto 0ea1016: `[mcp_servers.hub-busca.tools.search]`
+  `approval_mode = "approve"` no `codex.toml` do kit. Segunda rodada: passou (evidência 3faad20).
+- Codex do 15 mostrou outro furo: ele tomou a ferramenta `read` do `hub-busca` como "ferramenta de leitura de arquivo".
+  A `read` lê a nota por fora do aviso do 15, nos três harnesses. Maestro (2026-10-17, opção A): só a `search` nos três.
+  34ed657: Claude Code, `claude-settings.json` novo com `permissions.deny` para `mcp__hub-busca__read`, `__reindex` e
+  `__status` (doc https://code.claude.com/docs/en/permissions.md: "A bare tool name like `Bash` removes the tool from
+  Claude's context entirely"; "To match one tool, write its full name, `mcp__<server>__<tool>`"); Codex,
+  `enabled_tools = ["search"]` ("`enabled_tools` (optional): Tool allow list."); Copilot, `"tools": ["search"]` ("Enter
+  `*` to include all tools, or provide a comma-separated list of tool names"). README do registro reescrito (a minha
+  primeira edição tinha quebrado a tabela). O teste confere que nenhum harness chama outra ferramenta do `hub-busca` e
+  que o Claude Code lista só `mcp__hub-busca__search` (nome canônico conferido no `init` da sessão de ensaio).
+- Real nos três (03:3x, `--test-concurrency=1`, com a trava): 3/3 passam. Evidência 8558abe
+  (`evidencia-12/hashes-claude-codex-copilot.json`).
+- Usos de login: Codex 03:03 e 03:07 (auth.json → CODEX_HOME de ensaio, apagado ao fim de cada rodada); Claude, Codex e
+  Copilot na rodada dos três (credentials.json, auth.json, campos de login do config.json; apagados, `apagado: true`).
+  Hashes antes e depois iguais nos arquivos de configuração; `.claude.json` mudou, só registro (as sessões abertas o
+  regravam).

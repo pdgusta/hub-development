@@ -46,3 +46,35 @@ Veredito: **passa**. Revisado pelo Fiel sozinho (Fielzinho sem cota; lê depois)
 
 Pendente (não segura, por decisão do maestro): o aceite real do Codex, num commit só de evidência depois das 01:34
 (hora de São Paulo), com outra rodada curta do Fiel.
+
+# Rodada 3 (nova, pedida pelo maestro) — Fiel — 2026-10-17 ~04h
+
+Ramo ticket-12, HEAD 8558abe; contém integracao 763813a. Commits 0ea1016, 34ed657, 3faad20, 8558abe. Decisão (A) do
+ticket 15 (~03h50): o fragmento expõe só a `search` do hub-busca nos três. Fielzinho sem cota até 06h58: Fiel sozinho,
+leitura do Fielzinho pendente.
+
+## Veredito: PASSA (com ressalvas)
+
+## Conferido
+- Fragmentos: `claude-settings.json` (deny `mcp__hub-busca__read|reindex|status`, JSON válido), `codex.toml`
+  (`enabled_tools = ["search"]`, `tools.search.approval_mode = "approve"`, TOML válido), `copilot.json`
+  (`tools: ["search"]`). README cita a doc (permissions.md, codex mcp.md, Copilot add-mcp-servers).
+- Nome canônico do deny: a evidência do Claude (`evidencia-12/claude/lido.json`) traz `ferramentas` do `init` =
+  só `mcp__hub-busca__search`; o deny pelo nome tirou as outras do contexto.
+- Copilot: a saída antiga (integracao) listava `hub-busca-read`, `-reindex`, `-status`; a nova não lista nenhuma
+  delas, só `hub-busca-search`.
+- Real nos três: 2 chamadas de `search` cada (fulltext e semantic), `outras: []`, resposta
+  `inbox/viveiro-na-cobertura.md`. Hashes: login igual antes/depois; `.claude.json` muda, mas está em `SO_REGISTRO`
+  (a sessão viva do Claude grava nele; já aceito nas rodadas anteriores). Pastas de ensaio apagadas (`usos`).
+- `node --test ponta-a-ponta/12-busca.test.mjs` sem variável: 1 pulado, 0 falhas. Árvore limpa. Harness real não
+  repetido pelo Fiel: evidência fresca do commit 8558abe.
+
+## Ressalvas (não bloqueiam)
+1. O teste só afirma a lista de ferramentas no Claude (`if (lido.ferramentas)`). No Copilot a saída já mostra a lista
+   e daria para afirmar "sem `hub-busca-read`"; no Codex não há lista na saída, só "não chamou". A prova de que a
+   `read` não está ao alcance no Codex fica para o real do 15.
+2. Ao ligar com o 15: o `15-leitura.test.mjs` de integracao grava `claude.json`, mas não grava o
+   `claude-settings.json`. Sem o deny, o Claude do real do 15 ainda vê a `read`. A rodada do 15 precisa gravar o
+   fragmento novo.
+3. Nada instala o `claude-settings.json` fora dos testes. O kit que fizer isso tem de **juntar** a regra na
+   `permissions.deny` do `settings.json` de verdade, sem sobrescrever.
