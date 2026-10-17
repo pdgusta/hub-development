@@ -40,6 +40,13 @@ pedir uma junção.
 6. **Avise**: `maestri ask "Claude Code" "Integrador: ticket NN juntado (<hash>), testes <resultado>; ressalvas: <...>"`.
    Depois avise os outros construtores ativos (`maestri list`) que `integracao` andou para `<hash>`, numa linha.
 
+## O fork do MCP do banco (desde 2026-10-17)
+
+O fork mora no repositório próprio `C:\Projetos\hub-mcp-banco` (decisão do Gustavo). Ele também tem um ramo
+`integracao`, criado pelo integrador a partir do `ticket-09` juntado (d2a5a40). Ticket que mexe no fork (10 em diante)
+tem ramo `ticket-NN` no fork e no hub; o integrador junta os dois, cada um no seu `integracao`, com o mesmo `--no-ff`, e
+roda `npm test` do fork além da suíte do hub. Nunca mexer em `main` do fork (é o upstream).
+
 ## Nunca
 
 - Mexer em `main`, nos ramos `tentativa-paralela/*`, nos ramos ou worktrees dos construtores; `git push`; consertar

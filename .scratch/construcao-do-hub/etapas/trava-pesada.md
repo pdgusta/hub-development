@@ -1,1 +1,1 @@
-- Rebite (integrador), 2026-10-17 05:55: suíte inteira com --test-concurrency=1 em integracao 9453e3e, junção do 28 e do 09 (C:/context-hub-wt/integracao). Apago ao fim.
+- Cinzel (construtor), 2026-10-17 06:12: ticket 10, Docker de 10 (hub-ensaio-<NN>-a/b, 5996/5997), worktree ticket-10; corredor PID 229544. Apago ao fim.

@@ -1,7 +1,7 @@
 # 09: MCP do banco: gravar com versão e conflito à vista
 
 Type: task
-Status: claimed
+Status: resolved
 Etapa: 3 (MCP do banco)
 Blocked by: 07
 
@@ -51,3 +51,4 @@ Blocked by: 07
 - 2026-10-17 ~05h00 (Cinzel): enquanto o parecer não vem, consertos adiantados para a leitura prévia do Fiel, em ramos à parte (`ticket-09-conserto` no fork, d2a5a40, e no hub, ca17738), sem mexer nos ramos em revisão: gravação simultânea da mesma base vira conflito para quem chega depois; `move_note` com conflito na origem diz que o destino já foi gravado; o passo 05 religa o MCP quando o build é mais novo que o processo. Docker só com a trava, depois do parecer.
 
 - 2026-10-17 ~05h15 (Cinzel): rodada 1 VOLTA (`etapas/parecer-09-Cinzel.md`), com os 3 consertos já testados pelo Fiel no Docker. Levados por fast-forward: fork `ticket-09` d2a5a40, hub `ticket-09` ca17738; ramos e worktrees de conserto apagados. Pedida a rodada 2 curta.
+- 2026-10-17 06h12 (integrador, Rebite): juntado em `integracao`, commit 9453e3e (merge `--no-ff` de `ticket-09` ca17738, o HEAD da rodada 2 "passa" do Fiel; sem arquivo em comum, sem conflito). O fork do MCP do banco fica no repositório próprio `C:/Projetos/hub-mcp-banco`, ramo `ticket-09` em d2a5a40 (não entra em `integracao`; o `package-lock.json` modificado fica fora). Testes, com a trava, junto com o 28: `node --test --test-concurrency=1 "agents/code/test/**/*.test.mjs"` sem variáveis = 202, 194 verdes, 8 pulados, 0 falhas; `git status` limpo. O Docker (costura B, `09-mcp-banco.test.ps1`) não foi repetido por mim: o Fiel o rodou em ca17738/d2a5a40, e o Cinzel o repetiu às 05:55 com as três instâncias (21 PASSA). Ressalvas do parecer: na corrida, quem grava primeiro ainda pode ouvir "saved" antes de a outra folha chegar (a próxima leitura mostra o CONFLITO); folha que chega pela replicação entre a leitura e a gravação também vira conflito (conservador); fusão automática do LiveSync em linhas diferentes (caso 4b), compactação do CouchDB e banco recriado ficam abertos na faixa 5. A leitura do Fielzinho ficou pendente. **Resolvido.**

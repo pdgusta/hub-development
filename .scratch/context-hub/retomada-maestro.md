@@ -101,11 +101,12 @@ C:\context-hub log --oneline -3 integracao`, `etapas/trava-pesada.md` e `etapas/
 - **Rebite** (Claude): junta e resolve.
 - **Portal** (terminal do servidor, parado).
 
-## Placar (2026-10-17 ~04h)
+## Placar (2026-10-17 06:15)
 
-- Resolvidos (19 de 35): 01-07, 12-15, 19, 20, 27, 29-32, 34 (`integracao` 763813a). 26 originais: 13 resolvidos.
-- Em curso: 08 (Brasa), 28 (Vela), 35 + real do 12/15 (Trilho). Fila: 09 (Vela), 33 (Trilho).
-- Abrem depois: 10 (09+05), 16 (08+10), 22 (10+12), 11 (10), 17 → 18, 21, 23 → 24 → 25; 26 é do Gustavo.
+- Resolvidos (23 de 36): 01-07, 09, 12-15, 19, 20, 27-35 (`integracao` 9453e3e). Dos 26 originais: 15.
+- Em curso: 08 (Brasa, Docker por fatias), 10 (Cinzel, Docker), 16 (Trilho, falta Docker 4ª rodada), 17 (Vela, falta
+  harness real), 36 (Vela, em revisão). 15: falta o Codex real (06:58).
+- Abrem depois: 11 (10), 22 (10), 21 (08+16), 18 (17), 23 → 24 → 25; 26 é do Gustavo.
 
 ## Decisões do Gustavo em 2026-10-16/17 (detalhe no ticket 16)
 
@@ -168,3 +169,4 @@ nuvem.
 - 05:48: corrida na trava: o corredor destacado da Brasa retomava a trava sozinho e furava a fila. Ordem firme: Cinzel (10), Rebite (suíte 28+09), Brasa (fatias 3-7), Trilho (Codex 15 após 06:58). Mensagem do Rebite tinha ficado sem Enter: reenviado.
 - 05:57: 09 de novo com três instâncias e cifra: 21 PASSA. 10: 30 PASSA, 4 falhas só do teste (CRLF no AGENTS.md do ensaio; conflito fundido pelo LiveSync), consertado 6095213; Cinzel entra depois do Rebite (~3 min). 16: erro do teste com caminho ofuscado, consertado 67e1f04; 4ª rodada Docker junto do Codex do 15 após 06:58.
 - 06:09: 36 em revisão no Fiel (b8e8b03); regra nova: testes novos usam agents/code/test/pasta-de-ensaio.mjs. Vela na fila (real do 17, Claude e Copilot, entre fatias da Brasa). Rebite com a trava desde 05:55.
+- 06:15: 28 e 09 resolvidos (9453e3e), suíte 202/0. Fork ganha ramo integracao (Rebite cria de d2a5a40; regra em juntar-tickets.md). Cinzel com a trava (10) desde 06:12.

@@ -1,7 +1,7 @@
 # 28: Pastas locais: o script "nova pasta local", o "tornar local" e a exclusão do git
 
 Type: task
-Status: claimed
+Status: resolved
 Etapa: 2 (banco)
 Blocked by: 06, 07
 
@@ -28,3 +28,4 @@ Blocked by: 06, 07
 - 2026-10-17 ~03h25 (maestro): aceito o `git rm -r --cached` no "tornar local" (a pasta já versionada sai do git do hub daqui para frente; o histórico guarda as versões antigas, e limpar histórico não entra), proposta da Vela.
 - 03h30 (Vela): Docker 14 PASSA, suíte 188/0/8 em fc6c78b; revisão pedida ao Fiel. Relatório etapas/relatorio-28-pastas-locais.md.
 - 2026-10-17 05h08 (Vela): Fiel rodada 3 PASSA (Docker 14 PASSA com a trava; sem Docker 9/9; 3 ressalvas no parecer; leitura do Fielzinho pendente). Passa levado ao Rebite.
+- 2026-10-17 06h12 (integrador, Rebite): juntado em `integracao`, commit ea6f353 (merge `--no-ff` de `ticket-28` 5436cad, o HEAD da rodada 3 "passa" do Fiel, teto de voltas; sem arquivo em comum com `integracao`). Testes, com a trava, junto com o 09 (9453e3e): `node --test --test-concurrency=1 "agents/code/test/**/*.test.mjs"` sem variáveis = 202, 194 verdes, 8 pulados, 0 falhas (16 min); `git status` limpo. O Docker `28-pastas-locais.test.ps1` não foi repetido: o Fiel o rodou com a trava em 5436cad (14 PASSA), e os arquivos dele não mudam com a junção. Ressalvas do parecer: o Docker passa `-Titulo 'Rascunhos de A'` sem conferir o título (o teste sem Docker confere); o histórico do git guarda as versões antigas da pasta tornada local (aval do maestro; a skill avisa); a leitura do Fielzinho ficou pendente (achado 3 da rodada 1 e rodadas 2 e 3), e se ele achar algo vira ticket seguinte. **Resolvido.**
