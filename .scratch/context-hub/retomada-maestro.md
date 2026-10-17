@@ -13,6 +13,8 @@ o auto-compact está ligado em 600k (configuração do Gustavo), então a compac
 
 ## Para rever com o Gustavo
 
+- (técnica, ~04h35) Pontos abertos da faixa 5 decididos no 09: `delete_note` exige `base_rev` (o spec deixava a guarda em aberto); append/prepend sem base gravam como filha da versão lida.
+
 - (técnica, 2026-10-17 ~03h50) O hub-busca expõe só a `search` nos três harnesses (a `read` dele furava o aviso de
   leitura do 15); Claude por `deny` de `mcp__hub-busca__read`. Ticket 15.
 - (técnica) Tickets de conserto publicados pelo maestro: 34 (roteamento), 35 (aval sem parecer). Tornar local faz
@@ -100,3 +102,4 @@ nuvem.
 - ~04h: mandato do Gustavo recebido.
 - ~04h15: limite 4 construtores e 1 subagente por recruta; Cinzel recrutado para o 09 (a Vela fica no 28).
 - ~04h20: mais até 3 subagentes Haiku 5.5 médio por recruta (tarefa simples ou QA); regras e recrutas avisados.
+- ~04h35: costuras do Cinzel no 09 aceitas; decidi pelo mandato os pontos abertos da faixa 5 (append/prepend com base opcional, nota nova como raiz, move recusa destino, delete exige base_rev, read com rev). Ticket 09.

@@ -1,7 +1,7 @@
 # 09: MCP do banco: gravar com versão e conflito à vista
 
 Type: task
-Status: ready-for-agent
+Status: claimed
 Etapa: 3 (MCP do banco)
 Blocked by: 07
 
@@ -26,3 +26,8 @@ Blocked by: 07
 - 2026-10-17 ~03h15 (maestro): o 07 foi resolvido; o 09 segue reservado para a Vela, que começa quando o Gustavo responder sobre o fork (até lá ela faz o 28).
 
 - 2026-10-17 ~04h15 (maestro): troca de dono: o Gustavo subiu o limite para 4 construtores; o **Cinzel** (novo) faz o 09 agora, para o caminho crítico (10, 11, 16, 22) andar. A Vela, que leu o 09 e fez as perguntas, segue no 28 e responde ao Cinzel o que ele precisar. Decisões já tomadas aqui: fork em `C:\Projetos\hub-mcp-banco` (Gustavo, A); banco de ensaio pelo `ensaio.psm1` (`hub-ensaio-09-*`, 5996); o fork importa o `lib/frontmatter.mjs` do hub por `HUB_ROOT`.
+
+- 2026-10-17 ~03h25 (Cinzel): peguei o 09 (`claimed`). Fork: `C:/Projetos/hub-mcp-banco`, ramo `ticket-09` (de v0.10.0; o `package-lock.json` só perde o `jose` opcional, vai ao relatório). Hub: worktree `C:/context-hub-wt/ticket-09` de `integracao` 763813a.
+  - Achado: a biblioteca do LiveSync já tem o gancho. `putDBEntry(nota, false, base)` (modo `force-base`) grava a nota como filha da base por `put(..., {force: true})`, que no PouchDB vira `_bulk_docs` com `new_edits=false` e `_revisions` (o caminho do `r1.py`). Os pedaços passam pela própria biblioteca, então saem cifrados com a E2EE. A leitura (`getDBEntry` com `{conflicts: true}`) já traz `_rev` e `_conflicts`. `putDBEntryAsIndependentRoot` serve para criar nota nova sem pisar numa criação simultânea.
+  - Costuras propostas ao maestro: (A) e2e do fork contra um CouchDB de ensaio na 5996; (B) teste de ponta a ponta no hub, com o par do 07 (`ensaio.psm1`, `hub-ensaio-09-*`) e o passo `agents/code/kit/par/05-mcp-banco.ps1`, na 8796. Esperando o aval.
+- 2026-10-17 ~04h35 (maestro, decidido pelo mandato de 2026-10-17): costuras A (e2e do fork, CouchDB só do fork em 5996, sem cifra) e B (par do 07 com cifra, passo `05-mcp-banco.ps1`, só a instância de escrita 8796) aceitas. Pontos abertos da faixa 5: (a) `edit_note` replace exige `base_rev`; append/prepend com `base_rev` opcional e, sem ela, gravam como filha da versão lida na mesma chamada (nunca por cima às cegas); (b) nota nova sem `base_rev` aceita como raiz; criação simultânea vira conflito; (c) `move_note` recusa destino existente; `delete_note` também exige `base_rev` e, com base velha, vira conflito como a gravação (mesmo caminho do force-base) — se a biblioteca não der isso barato, recusa apagar nota em conflito, registra no relatório e o resto vira ticket seguinte, sem segurar o 09; (d) modo local do upstream com hash do texto como versão; (e) `read_note` com `rev` opcional.
