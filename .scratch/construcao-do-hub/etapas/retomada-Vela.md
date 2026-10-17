@@ -128,3 +128,9 @@ node --test agents/code/test/05-frontmatter.test.mjs
   e o montar imprime só r.stderr. Conserto proposto, com teste antes (no 04-esqueleto: montar com PATH sem git sai 1 e
   diz qual comando git falhou): o montar imprime o comando, a saída, o stdout, o stderr e r.error; o hubDeEnsaio do
   27-pastas mostra stdout + stderr na asserção. Só fazer com o aval do maestro.
+
+## Ticket atual: 30, montador mostra a falha do git (2026-10-17 ~00h40)
+
+- Ramo ticket-30, worktree C:/context-hub-wt/ticket-30, de integracao f83c8f5. Commits c52ccc1, 03cbbb6, ca5b389 (bomba de data do 05, aval do maestro; avisar o Trilho, que não está ligado a mim: pedi ao maestro).
+- Relatório etapas/relatorio-30-montador-mostra-falha.md. Próximo: suíte verde -> revisão do Fiel -> Rebite.
+- Às 01:40: pausar e rodar a prova do Codex do 20 (passos na seção PRÓXIMO acima).

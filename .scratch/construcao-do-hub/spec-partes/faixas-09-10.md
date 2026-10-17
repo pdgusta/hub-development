@@ -121,8 +121,8 @@ de 2026-10-12 do ticket 16 e as linhas de "Decisions so far" do mapa.
 - Se as skills de uso geral fora da família `maestro-*` também ficam sob a guarda: não decidido (o que a guarda cobre está nas Implementation decisions; o núcleo foi corrigido, não cobre mais `agents/maestro/**`).
 - O hook de início age com `MAESTRI_TERMINAL_ID`, mas todo terminal do Maestri, recruta ou maestro, tem essa variável (14). Como o hook distingue o maestro do recruta não está decidido.
 - Mod ou hook de settings para a guarda: os dois são admitidos; a escolha sai do teste (junction com mod, `$.ui.ask` sem ninguém olhando, tempo do hook `agent` em Sonnet).
-- Lacuna de dono do ticket 16: quem escolhe o modelo do verificador da guarda.
-- Lacuna de dono do ticket 16: como o erro de peça citada que sumiu chega ao Gustavo.
+- ~~Lacuna de dono: quem escolhe o modelo do verificador da guarda~~: decidida em 2026-10-17 (rodada `acervo-do-maestro-tres-lacunas`, Gustavo, B): o maestro escolhe a cada vez, desde que seja um modelo diferente do dele, e diz qual usou no pedido de aval (ticket 31).
+- ~~Lacuna de dono: como o erro de peça citada que sumiu chega ao Gustavo~~: decidida em 2026-10-17 (mesma rodada, A): vira item da vigia no `estado.json` (início da próxima sessão, tela de estado, notificação se piorar); a conferência da peça citada é do ticket 31, o item é lido pela vigia (ticket 16 da construção).
 - Como a tela de aval é mostrada ao Gustavo (o `$.ui.ask` do mod é o candidato da fonte; não decidido).
 - Hooks de uso e de início no Codex e no Copilot (precisam de teste; 40, 44).
 - Hooks do usuário "saem na hora fora do hub" (14) e o acervo serve a todo maestro "dentro ou fora do hub" (40, 43): resolvido como leitura conciliadora **[aceita]** nas Implementation decisions ("Primeira instrução"); pede aval do Gustavo.
@@ -224,7 +224,7 @@ do ticket 11 para a gravação do cliente. O que vinha das rodadas 7 e 8 do tick
 
 - Lacuna de dono 4 (16): quem confere os 30 dias do `_archive/` e apaga: fora desta construção (**[ticket aberto: 56]**); o desenho `limpar-arquivo` na tarefa diária é **[aceita]**, dono e agendamento **[formato]**.
 - Lacuna de dono 5 (16): fechada como **[aceita]**: o fork relê a cabeça a cada `initialize`, sem cópia; esta faixa confere tamanho e existência.
-- Lacuna de dono 7 (16): onde fica o registro do aval de mudança no contrato: aberta, sem dono (o plano sugere a faixa 9), para o Gustavo.
+- ~~Lacuna de dono 7: onde fica o registro do aval~~: decidida em 2026-10-17 (mesma rodada, A): um arquivo por aval em `agents/maestro/avais/AAAA-MM-DD--<peça>.md`, gravado pela guarda quando o Gustavo aprova (antes e depois, quem é afetado, relatório do verificador, decisão); replica e fica fora da guarda, só a guarda escreve ali (ticket 31).
 - A data do arquivamento: no nome da pasta, **[aceita]** (ver Implementation decisions).
 - O que é "edição recente" para o script de mover, e o que ele faz com o outro par desligado (não decidido).
 - Apagar ao fim dos 30 dias contra a Lição do vault "aval só para o contrato, os adaptadores e exclusões grandes": **[ticket aberto: 56]**.

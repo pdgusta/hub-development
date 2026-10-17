@@ -2,7 +2,7 @@
 titulo: Acervo do maestro: as três lacunas de dono
 ticket: 16
 aberta: 2026-10-16
-estado: aberta
+estado: absorvida
 ---
 
 A Vela está no ticket 20: a família de skills `maestro-*` (o **acervo do maestro**: papéis, receitas de setup,

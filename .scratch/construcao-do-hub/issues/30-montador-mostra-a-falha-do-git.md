@@ -19,3 +19,4 @@ Blocked by: None (can start immediately)
 
 - 2026-10-17 ~00h05 (maestro): publicado pela proposta da Vela, que o faz.
 - 2026-10-17 ~00h15 (maestro): a Vela achou datas fixas (`updated: 2026-10-16`) em dois testes do 05 que viraram vermelhos à meia-noite; conserto no 30, commit separado, só no teste, com aval do maestro; Trilho avisado.
+- 2026-10-17 ~00h40 (Vela): claimed; worktree C:/context-hub-wt/ticket-30 de integracao f83c8f5. c52ccc1 montador nomeia o comando e mostra stdout/stderr/erro (2 testes no 04-esqueleto); 03cbbb6 as 17 asserções do montador mostram stdout+stderr; ca5b389 bomba de data no 05-frontmatter (aval do maestro). Relatório etapas/relatorio-30-montador-mostra-falha.md. Falta: suíte, revisão do Fiel, Rebite.

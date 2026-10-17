@@ -1,0 +1,126 @@
+{
+  "envio": "04ffb543-e398-4f6d-adbf-6dadcb23d920",
+  "tipo": "resposta",
+  "enviada": "2026-10-17T00:21:31-03:00",
+  "alvo": {
+    "tipo": "rodada",
+    "id": "2026-10-16-acervo-do-maestro-tres-lacunas",
+    "titulo": "Acervo do maestro: as três lacunas de dono"
+  },
+  "ticket": "16",
+  "substitui": null,
+  "rodada": {
+    "id": "2026-10-16-acervo-do-maestro-tres-lacunas",
+    "base": "0b649c8c038be4672e7d3568a286f5cc189b9eaddf1a1753da3262fb356c96e1",
+    "titulo": "Acervo do maestro: as três lacunas de dono",
+    "ticket": "16",
+    "perguntas": [
+      {
+        "id": "registro-do-aval",
+        "titulo": "Onde fica o registro de cada aval",
+        "tipo": "escolha",
+        "recomendada": [
+          "A"
+        ],
+        "opcoes": [
+          {
+            "chave": "A",
+            "texto": "Um arquivo por aval em `agents/maestro/avais/AAAA-MM-DD--<peça>.md`, gravado pela guarda quando você aprova: o antes e depois, quem é afetado, o relatório do verificador e a sua decisão; replica nas duas máquinas e fica fora da guarda (só a guarda escreve ali)"
+          },
+          {
+            "chave": "B",
+            "texto": "Uma linha por aval numa tabela única, `agents/maestro/avais.md` (data, peça, decisão, onde está o relatório do verificador); mais curto de ler, mas o antes e depois fica só no git"
+          },
+          {
+            "chave": "C",
+            "texto": "Só no histórico do git do hub (a mensagem do commit da mudança diz quem aprovou); nada a mais para manter, mas consultar exige o git"
+          }
+        ],
+        "proposta": null
+      },
+      {
+        "id": "modelo-do-verificador",
+        "titulo": "Quem escolhe o modelo do verificador",
+        "tipo": "escolha",
+        "recomendada": [
+          "A"
+        ],
+        "opcoes": [
+          {
+            "chave": "A",
+            "texto": "Uma regra fixa, escrita uma vez numa peça do próprio acervo (sob a guarda): o verificador usa um modelo de família diferente da do maestro (maestro Claude → verificador GPT, por exemplo), e só você muda essa regra, com aval"
+          },
+          {
+            "chave": "B",
+            "texto": "O maestro escolhe a cada vez, desde que seja um modelo diferente do dele, e diz qual usou no pedido de aval"
+          },
+          {
+            "chave": "C",
+            "texto": "Você escolhe a cada pedido de aval, na própria tela"
+          }
+        ],
+        "proposta": null
+      },
+      {
+        "id": "peca-que-sumiu",
+        "titulo": "Como chega a você o erro de uma peça que sumiu",
+        "tipo": "escolha",
+        "recomendada": [
+          "A"
+        ],
+        "opcoes": [
+          {
+            "chave": "A",
+            "texto": "Vira item da vigia (no `estado.json`): aparece no início da próxima sessão e na tela de estado, e a notificação do Windows sai se o estado piorar, como os outros alertas"
+          },
+          {
+            "chave": "B",
+            "texto": "O maestro avisa no terminal, numa linha, na próxima vez que abrir o acervo"
+          },
+          {
+            "chave": "C",
+            "texto": "Só o verificador de forma acusa, nos testes e na manutenção; ninguém é avisado na hora"
+          }
+        ],
+        "proposta": null
+      },
+      {
+        "id": "algo-mais",
+        "titulo": "Algo mais?",
+        "tipo": "texto",
+        "recomendada": [],
+        "opcoes": [],
+        "proposta": null
+      }
+    ]
+  },
+  "corpo_hash": "0207d588d2890a5bf2a5aa48b9e0e988253f5e7a826c23dfddbaa4bf7132d3a9",
+  "corpo": {
+    "tipo": "resposta",
+    "rodada": "2026-10-16-acervo-do-maestro-tres-lacunas",
+    "base": "0b649c8c038be4672e7d3568a286f5cc189b9eaddf1a1753da3262fb356c96e1",
+    "respostas": {
+      "registro-do-aval": {
+        "escolha": [
+          "A"
+        ],
+        "outra": null,
+        "comentario": null
+      },
+      "modelo-do-verificador": {
+        "escolha": [
+          "B"
+        ],
+        "outra": null,
+        "comentario": null
+      },
+      "peca-que-sumiu": {
+        "escolha": [
+          "A"
+        ],
+        "outra": null,
+        "comentario": null
+      }
+    }
+  }
+}
