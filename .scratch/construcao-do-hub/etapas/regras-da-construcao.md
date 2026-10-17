@@ -54,7 +54,9 @@ Valem para todo construtor e revisor das etapas. Plano decidido: `revisao/plano/
 - **Testes com harness de verdade** (ponta a ponta do 14 em `agents/code/test/ponta-a-ponta/`, prova 03 em
   `agents/code/test/provas/03-codex-hooks/`) chamam Claude, Codex e Copilot, copiam login e regravam evidência. Até o
   ticket 29 entrar em `integracao`, não rode a suíte inteira: rode os testes do seu ticket e os outros sem essas duas
-  pastas. Depois do 29, eles só rodam com `HUB_HARNESS_REAL=1`, e só quando o seu ticket mexe neles.
+  pastas. Depois do 29, o comando comum é `node --test "agents/code/test/**/*.test.mjs"`, sem variável (os testes de
+  harness aparecem pulados); com `HUB_HARNESS_REAL=1` e `--test-concurrency=1`, só quando o seu ticket mexe na prova 03,
+  na guarda do 14 ou nos hooks dos harnesses, nas condições do aval de login.
 - **Contexto acima de 40%** (Gustavo, 2026-10-16): no próximo ponto seguro (commit com testes verdes, ou o fim do
   ticket), grave `C:\Projetos\context-hub\.scratch\construcao-do-hub\etapas\retomada-<seu nome>.md`: ticket, ramo,
   worktree, o que está feito, o que falta (próximo passo exato), decisões e armadilhas do caminho, comandos de teste, e

@@ -43,3 +43,23 @@ rodada (os consertos mexem no núcleo; repetir na rodada 2).
 ### Para a rodada 2
 
 Commit com hash; suíte sem harness; ponta a ponta dos três de novo (o núcleo muda), com a regra do login.
+
+## Rodada 2 — 2026-10-17 — ramo ticket-27 em 5df8972
+
+Veredito: **passa**. Fiel e Fielzinho de acordo (parecer-Vela-fielzinho.md, rodada 2).
+
+Evidências (Fiel):
+1. Diff 8d8f1b9..5df8972 lido: `INTOCAVEIS` (AGENTS.md, SKILL.md) em `conferirLinks`; `conferir` não roda nada sem
+   arquivo mudado; avisos entregues uma vez por sessão (`avisados`), sem gastar devolução, e no registro; `porLink`
+   pega `URIError` por link; `rodar` trata saída fora de 0/1, erro e pilha no stderr como queda = falta;
+   `emSegredo` no ramo `par://`.
+2. `node --test "agents/code/test/*.test.mjs" agents/code/test/gerar-exclusoes/gerador.test.mjs`: 106/106 (sem
+   ponta-a-ponta, pela regra provisória do maestro).
+3. Minhas reproduções da rodada 1 no código novo: `par://` para `.secrets/` → falta; `[b](x%ZZ.md)` → falta
+   "caminho malformado", e a nota seguinte continua conferida; link para `labs/` → aviso de `par://`; `inbox/AGENTS.md`
+   com link para `labs/` → intocado.
+4. Ponta a ponta dos três: não repetida pelo Fiel; evidência nova lida pelo Fielzinho (três devolvem e soltam,
+   continuação do Copilot, 8 hashes iguais, 3 pastas apagadas).
+
+Ressalvas: as da rodada 1 seguem (link para fora do hub, aberto ao maestro; vigia × item `fim-da-resposta`). Menor: na
+quarta parada (solta para a vigia) os avisos novos daquela parada não são entregues nem marcados como avisados.

@@ -4,6 +4,27 @@ Atualizada em 2026-10-16 ~21h20. Papel: construtora (regras em `etapas/regras-da
 Revisores: Fiel e Fielzinho (dupla). Integrador: Rebite (depois do "passa", `maestri ask "Rebite" ...`). Maestro:
 `maestri ask "Claude Code" ...`. Fila: ticket 07 agora, depois o 08 (receita da etapa 2, opção A).
 
+## Ticket 29 (testes com harness só sob pedido), Status claimed, enquanto o 07 está em revisão
+
+Se o Fiel devolver o 07: pausar o 29 e voltar ao 07 primeiro (maestro).
+
+- Ramo `ticket-29`, worktree `C:\context-hub-wt\ticket-29`, de `integracao` 8d1d785. Commit 654c329.
+- `agents/code/test/harness-real.mjs`: `comHarness(nome, fn)` (sem `HUB_HARNESS_REAL=1`, um teste pulado com o motivo;
+  com ela, um `describe`), `relatorioDeHashes({ antes, depois, gravadoEm, rodadas })`.
+- O corpo da prova 03 (`prova.test.mjs`, `instalar.test.mjs`) e da ponta a ponta do 14 foi embrulhado em `comHarness`;
+  o `after` do 14 usa `relatorioDeHashes` (mtime do arquivo real contra a janela copiadoEm..apagadoEm de cada uso).
+- `agents/code/test/harness-real.test.mjs`: costura 1 (os três sem a variável, com HOME/TEMP/APPDATA falsos e PATH só
+  com o node: pulados com o motivo, nada criado, evidência igual) e costura 2 (as mensagens). Verde, 5 de 5.
+- Suíte inteira sem a variável: 86 testes, 83 passam, 3 pulados (`.local/suite-sem-variavel.log`).
+- (~21h50) Rodada de verdade feita: 11 de 11, commit 0266761; relatório `etapas/relatorio-29-harness-sob-pedido.md`;
+  revisão pedida ao Fiel. Próximo: consertos do parecer; depois do passa, avisar o Rebite.
+- (antes) Próximo: a rodada de verdade (`HUB_HARNESS_REAL=1 node --test --test-concurrency=1` dos três; log
+  `.local/harness-real.log`; hashes reais antes em `.local/hashes-reais-antes.txt`), conferir hashes depois, desfazer
+  ou commitar a evidência regravada (decidir: é a evidência da rodada pedida, então commitar), relatório
+  `etapas/relatorio-29-harness-sob-pedido.md`, revisão ao Fiel.
+- Aviso para o relatório: o teste de unidade `agents/code/test/14-guardas.test.mjs` (do Trilho) deixa pastas
+  `hub-ensaio-14-*` no TEMP (só hub, sem login).
+
 ## Ticket 07 (banco do par), Status claimed
 
 - Ramo `ticket-07`, worktree `C:\context-hub-wt\ticket-07`, de `integracao` 8b9beef (com o 06). Commit 4967c69: kit e teste, **verde** (21 PASSA, saída 0; log `.local/07-verde-1.log`).
@@ -20,12 +41,12 @@ Revisores: Fiel e Fielzinho (dupla). Integrador: Rebite (depois do "passa", `mae
   `%TEMP%\hub-ensaio-<Nome>`), notas, pastas locais pelo gerador, amostra do hub para "nada em claro", leitor.
 - `agents/code/test/07-banco.test.ps1`: o teste de ponta a ponta (Docker; fora do `node --test`).
 
-### Próximo passo exato (22h55)
+### Próximo passo exato (~21h20)
 
-Em revisão com o Fiel (pedida 22h55). Rodada final verde, relatório completo. Próximo: aplicar os consertos do
+Em revisão com o Fiel (pedida ~21h20). Rodada final verde, relatório completo. Próximo: aplicar os consertos do
 parecer `etapas/parecer-Brasa.md` (o Fiel decide a pasta); depois do passa, avisar o Rebite.
 
-### Antes (22h40)
+### Antes (~21h05)
 
 0. Feito: 810bbde (provas sobre o módulo), 7fa0e56 (religar o CLI), merge 3babfb2 de integracao 8d1d785; 07 verde
    (24 PASSA, `.local/07-verde-2.log`). Relatório `etapas/relatorio-07-banco-do-par.md` escrito; falta a seção
@@ -33,10 +54,10 @@ parecer `etapas/parecer-Brasa.md` (o Fiel decide a pasta); depois do passa, avis
 
 
 1. (feito) teste verde e commit 4967c69. Rodar o teste: `pwsh -NoProfile -File agents/code/test/07-banco.test.ps1` em segundo plano, com log em `.local/07.log` e um laço `until grep saida=`. Contêineres `hub-ensaio-07-a/b`, portas 5994/5995.
-2. (21h50, sem commit ainda) item 3 editado na worktree: `ensaio.psm1` ganhou `Start-EnsaioBanco [-Exclusoes {}]`,
+2. (sem commit ainda) item 3 editado na worktree: `ensaio.psm1` ganhou `Start-EnsaioBanco [-Exclusoes {}]`,
    `New-EnsaioBanco -SemSalComum` e `Set-ExclusaoComPonto`; provas 01/02 e o teste do 06 importam o `ensaio.psm1`;
    cópias apagadas (`git rm`). Falta rodar as três (uma de cada vez; logs `.local/prova01.log`, `prova02.log`,
-   `06.log`) e o 07 de novo, e commitar. Prova 01: verde (saída 0, 22h). Prova 02 rodando.
+   `06.log`) e o 07 de novo, e commitar. Prova 01: verde (saída 0). Prova 02 rodando.
    Caso novo no 07 (item 7, vermelho esperado): rodar o passo de novo religa o CLI só se o gerador disse `mudou`. O
    conserto vai em `Install-ParBanco` (kit/par/banco/banco.psm1): se `Update-Exclusoes` devolve `mudou` e o daemon
    roda, `Stop-Sincronizador` antes de `Start-Sincronizador`.

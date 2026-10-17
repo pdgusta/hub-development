@@ -75,3 +75,7 @@ Pendente: leitura do Fielzinho em 05 r4, 01 r1 e 06 r2 quando ele voltar do limi
 14 r1: VOLTA em acordo com Fielzinho. Conserto 1 newline após End Patch (reproduzido), 2 caminho com ponto relatório x código. 69/69 Fiel. Parecer etapas/parecer-Trilho.md. Trilho avisado.
 14 r2: PASSA em acordo com Fielzinho. 71/71, reprodução repetida recusa nos 4 finais, sem login sobrando. Trilho avisado.
 27 r1: VOLTA em acordo com Fielzinho, 5 consertos (AGENTS/SKILL, sem alvo = hub inteiro, avisos perdidos, %ZZ derruba, par:// .secrets). Fora do hub: ressalva ao maestro. Parecer etapas/parecer-Vela.md. Vela avisada.
+REGRA PROVISÓRIA (maestro): até o 29 entrar em integracao, não rodar a suíte inteira; fora ponta-a-ponta/ e provas/03-codex-hooks/ (harness real, login, regravam evidência). Depois do 29: só com HUB_HARNESS_REAL=1.
+07 (etapa 2, banco do par): pedido recebido, ponta 7fa0e56. Testes Docker um de cada vez: 07-banco.test.ps1, provas 01 e 02, sincronizador.ps1.
+27 r2: PASSA em acordo com Fielzinho (106/106, reproduções ok). Vela avisada.
+07 r1: Docker rodando (task baf7s5mpn), logs etapas/revisao-07-r1-*.log. Fielzinho propõe VOLTA com 3 achados (PID qualquer node; Initialize aceita config divergente; isConfigured antes de mark-resolved). Falta conferir os 3 e ler o código.

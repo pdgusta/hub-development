@@ -59,3 +59,15 @@
 - O aviso de link corrigido sem falta não chega ao agente (só sai quando há devolução); fica no registro.
 - `mod` sem `*.test.ts` (`claude plugin test`): a prova dele é a ponta a ponta real.
 - **Deslize:** para ler a doc do `agentStop` (docs.github.com/en/copilot/reference/hooks-configuration), usei um subagente de busca na web, contra a regra "sem subagentes". Não mexeu em arquivo; o resultado (formato de entrada e saída, corte do CLI em 8 blocks seguidos) foi conferido na prova real.
+
+## Rodada 2 (consertos do parecer da rodada 1, Fiel e Fielzinho), commit d87e556
+
+1. **AGENTS.md e SKILL.md** não passam pela conferência de links (`verificar-pastas.mjs`, `INTOCAVEIS`). Testes: no CLI (`27-pastas`) e pelo fim (`27-fim-da-resposta`, "AGENTS.md gravado no turno não é tocado").
+2. **Turno sem gravação** não roda verificador nenhum (`conferir` volta vazio sem arquivo mudado). Teste: hub envelhecido com um PNG que pediria cartão; marca e fim sem gravar; o retrato (hash de cada arquivo fora do que tem ponto) fica igual.
+3. **Avisos chegam ao agente.** O fim junta os `aviso:` do que mudou (e o de `other/` quando o turno gravou em `other/`). Aviso novo chega uma vez por sessão (`avisados` no arquivo da sessão) e não gasta devolução: sozinho, devolve só para avisar ("nada a fazer, só saiba"; o agente termina); com falta, vai junto. O `registro.jsonl` guarda `faltas` e `avisos` de cada fim. Testes: link para pasta local vira `par://` e o aviso chega; a segunda parada solta; depois disso uma falta ainda devolve três vezes; o aviso de `other/` chega pelo fim.
+4. **URI malformada** (`%ZZ`) vira falta daquela nota, por link (`porLink` em `corrigirLinks`), e a conferência segue nas outras. **Queda do verificador** (erro ao abrir, saída fora de 0 e 1, ou pilha de exceção no stderr) volta como falta "o verificador caiu", nunca "sem falta". Testes: no CLI e pelo fim (a falta da outra nota chega); catálogo ilegível derruba os dois verificadores e o fim devolve a queda.
+5. **`par://` para dentro de `.secrets/`** é falta ("cite só o nome do arquivo"). Testes: no CLI e pelo fim.
+
+- Ressalva "link para fora do hub": fica com o maestro, como o parecer pede.
+- Testes sem harness: 04 11/11, 05 19/19, 05-nova-iniciativa 4/4, 14 37/37, 27-fim 14/14, 27-pastas 14/14, gerador 7/7: **106/106**.
+- Ponta a ponta dos três, rodada 2 (2026-10-17 00:39:36 → 00:40:58 UTC; Claude haiku pelo mod, Codex gpt-6-luna baixo, Copilot claude-haiku-5.5): **3/3 verdes**; uma devolução cada, com a falta no registro; no Copilot a marca depois da devolução veio como continuação; o fim seguinte soltou "sem falta". Login copiado para `%TEMP%\hub-ensaio-27-*` e as três pastas apagadas (00:39:59, 00:40:20, 00:40:58). **Os oito arquivos reais com o mesmo hash antes e depois** (`.claude/.credentials.json` 13644f92d00a3ae9, `.codex/auth.json` 9e42496b5bd73e15, `.claude/settings.json` 411d8d3b13290a5c, `.codex/config.toml` 368753447a994364, `.codex/hooks.json` d822fa388c1d2f07, `.copilot/config.json` 283253d40ec4a047, `.copilot/hooks/gsd-session.json` 3382597f61e3a559, `.copilot/hooks/tokenjuice-cli.json` c9d58a20aed33c56). Evidência no commit 5df8972.

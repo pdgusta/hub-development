@@ -39,3 +39,31 @@ Scripts Node enviados pela entrada padrão, sem salvar no código. Cada reprodu�
 
 2026-10-17: Fiel confirmou VOLTA nos cinco consertos. Reproduziu independentemente 2 (CLI sem alvo regravou dois cartões), 4 (URIError com %ZZ) e 5 (par:// para .secrets sem falta). Links fora do hub ficam como ressalva, com ponto aberto ao maestro: o spec pede caminho a partir da raiz do hub, e o critério do ticket 27 cita local:true. Concordo com esse enquadramento. Parecer único em etapas/parecer-Vela.md. Fiel fecha e responde à Vela. Sem acordo pendente nesta rodada; aguardar correção ou próximo pedido.
 
+
+# Rodada 2 — 2026-10-17 — Vela, ticket 27
+
+HEAD 5df8972d1677a37f4df7c38156ddf094812c68b9 em ticket-27, worktree C:/context-hub-wt/ticket-27 limpa; integracao8d1d785 ancestral (saída0). Leitura independente do diff e relatório atualizado concluída, sem ler parecer novo do Fiel. **PASSA independente**, pendente acordo com o Fiel.
+
+## Conferência dos cinco consertos
+
+1. INTOCAVEIS impede conferirLinks de tocar AGENTS.md/SKILL.md, também quando chegam via fim. Testes novos cobrem os dois no CLI e AGENTS no fim. Resolvido na leitura.
+2. conferir retorna faltas/avisos vazios quando não há arquivos mudados, antes de chamar CLI. Teste envelhece arquivos e compara hashes da árvore com PNG antigo. Resolvido na leitura.
+3. Avisos dos arquivos do turno/cartões e aviso other quando o turno gravou em other chegam no reason. Aviso sozinho usa devolução informativa, guarda avisados e mantém devolucoes0; segunda parada sem novos avisos solta. Com falta, aviso segue junto. Registro guarda faltas/avisos. Testes cobrem aviso par://, ausência de repetição, três faltas posteriores ainda permitidas e other pelo fim. Resolvido na leitura. O texto “uma vez por sessão” do relatório é mais forte que o código: marcar reinicia o estado a cada turno; aqui a deduplicação é dentro do turno, o que evita o laço discutido. Não é novo bloqueio do aceite.
+4. URIError tratado por link, mantendo falta local e prosseguindo. rodar confere error/status/pilha no stderr e transforma queda em falta explícita. Testes cobrem duas notas (URI e segredo), CLI e fim, além de catálogo ilegível. Resolvido na leitura.
+5. Ramo PAR agora aplica emSegredo antes de naoReplica; falta pede nome simples. Testes CLI/fim. Resolvido na leitura.
+
+## Evidências reais lidas, sem executar/importar harness
+
+Nova rodada versionada: Claude/Codex têm1marca,1devolução e última soltura sem falta; Copilot tem2marcas,1devolução, marca intermediária continuacao:true e última soltura sem falta. Os três registros contêm a falta .secrets; notas finais não contêm .secrets/. hashes-claude-codex-copilot.json:8/8 iguais e3pastas apagadas. Rodada00:39:36–00:40:58UTC, condiz com relatório. Essas evidências cobrem falta e correção; o aviso isolado é coberto pelos testes de script, sem nova prova real por esta revisão.
+
+## Verificação própria em andamento
+
+Comando seguro: node --test "agents/code/test/*.test.mjs" agents/code/test/gerar-exclusoes/gerador.test.mjs. Não inclui ponta-a-ponta/ nem provas/03-codex-hooks/. Resultado próprio:106/106, saída0,126,0s (sessão29744 concluída). Nenhum Docker/harness/subagente nesta rodada. Fora do hub permanece ressalva com o maestro conforme acordo anterior.
+
+
+Rodada2: cinco consertos aceitos pela leitura independente e testes próprios. Sem novo bloqueio. Aguardar acordo com o Fiel; ele fecha e responde à Vela.
+
+
+## Acordo da rodada 2
+
+2026-10-17: Fiel confirmou **PASSA**, com fechamento em etapas/parecer-Vela.md. Cinco consertos aceitos pelos dois. Sem acordo pendente no27. O Fiel responde à Vela. Fora do hub segue ressalva ao maestro.
