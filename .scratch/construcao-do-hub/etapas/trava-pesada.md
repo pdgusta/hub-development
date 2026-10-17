@@ -1,1 +1,1 @@
-- Brasa (construtora), 2026-10-17 09:16: ticket 22, Docker do proxy (hub-ensaio-22-a/b, 5996/5997, MCP 8796-8798) e os três harnesses como cliente; corredor destacado PID 241480. Apago ao fim.
+- Trilho (construtor), 2026-10-17 09:32: Docker do 21, 3ª rodada (hub-ensaio-21-a/b, 5996/5997), ~6 min. Apago ao fim; depois aviso o maestro.

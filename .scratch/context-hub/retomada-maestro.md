@@ -25,8 +25,9 @@ Por isso o diário abaixo registra cada evento com hora.
 
 Momento: logo depois que a Brasa terminar o Docker do 22 (ou na primeira calmaria). Passos: (1) cada recruta chega a
 um ponto seguro, grava a retomada e diz "salvo"; (2) o maestro manda `/exit` a todos menos a Brasa e a Vela (o nó e as ligações
-ficam no canvas; o Fielzinho, `/quit`; o Portal já está parado); (3) a Brasa, com a trava: `wsl --shutdown`, fatia 1+2
-do 08 com o medidor; em seguida, na mesma janela, a Vela roda a 1ª rodada real do 25 (fases 1-3); (4) depois, o maestro religa cada um (`maestri ask "<nome>" --raw "claude"`, no Fielzinho
+ficam no canvas; o Fielzinho, `/quit`; o Portal já está parado); (3) a Brasa, com a trava: `wsl --shutdown`, o Docker do 22 com os harnesses, a fatia 1+2
+do 08 com o medidor; em seguida, na mesma janela, a Vela roda a 1ª rodada real do 25 (fases 1-3); (4) depois, o maestro religa cada um (`maestri ask "<nome>" --raw "claude
+"`, no Fielzinho
 `codex`) e manda "leia a sua retomada". Avisar o Gustavo no fim com os números.
 
 ## Para rever com o Gustavo
@@ -236,3 +237,4 @@ nuvem.
 - 09:28: 23 rodada 3 passa (a419182), segura até 11/16/17/18. Costuras do 37 aceitas.
 - 09:29: 21 conserto do EPERM (9ce2496), 3ª rodada na fila depois do 22; 16 voltou por 1 conserto (0332466), com o Fiel. Fila: Brasa (22), Trilho (21), janela quieta (fatia 2 + 25), Rebite, Codex após 12:15.
 - 09:32: pesquisa do Trail-Code (README por curl) em .scratch/context-hub/pesquisa-trail-code.md: complementa o hub nos repositórios de código; ideias para depois; não mexe na construção.
+- 09:33: 22 falhou por esperar a frase no stdout (estava no stderr), conserto bae29bd; memória sem corte. Janela quieta anunciada para depois do 21 do Trilho: 22 + fatia 2 (Brasa), 25 (Vela); os outros saem.

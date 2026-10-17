@@ -5,8 +5,7 @@ Quem pega a trava se tira da fila. Ordem pelo caminho crítico; o maestro reorde
 testes (09, 16): limpe os contêineres ao soltar.
 
 (trava: ver trava-pesada.md; Brasa desde 09:16, Docker do 22) — ordem a partir de 09:35:
-1. Trilho: Docker do 21, 3ª rodada (~6 min; conserto 9ce2496)
 2. **Janela quieta** (o maestro conduz; plano na retomada do maestro): todos salvam, os agentes menos Brasa e Vela
-   saem; Brasa roda a fatia 1+2 do 08; Vela roda a 1ª rodada real do 25 (fases 1-3); depois o maestro religa todos.
+   saem; Brasa roda o Docker do 22 (com os harnesses) e a fatia 1+2 do 08; Vela roda a 1ª rodada real do 25 (fases 1-3); depois o maestro religa todos. Começa quando o Trilho soltar a trava do 21.
 3. Rebite: suítes das junções que estiverem prontas
 4. Depois das 12h15 (Codex): Cinzel (11, depois 24) e Vela (18), um de cada vez
