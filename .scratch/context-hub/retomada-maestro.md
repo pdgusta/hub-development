@@ -133,7 +133,7 @@ C:\context-hub log --oneline -3 integracao`, `etapas/trava-pesada.md` e `etapas/
   indexação, npm, harness real). Suíte comum: `node --test "agents/code/test/**/*.test.mjs"` sem `HUB_HARNESS_REAL`
   (os de harness ficam pulados; ticket 29); `--test-concurrency=1` sob carga. Se travar de novo, as saídas são do
   Gustavo: baixar a memória do Docker (Settings > Resources) ou aumentar o arquivo de paginação.
-- **Codex:** o Gustavo tem 3 reinícios de cota (semanais) guardados: pedir a ele só se a cota acabar e travar a reta final. Dentro do Codex (só quando o trabalho é dele): GPT 6.1 Sol em testes e tarefas menores; gpt-6-astra na revisão (Fielzinho) e em tarefa do Codex que exige raciocínio. Sem cota até 12:15 de 2026-10-17 (Fielzinho e qualquer harness real com Codex). Pendente: Codex real do 11 (Cinzel); leituras atrasadas do Fielzinho (fila do Fiel).
+- **Codex:** o Gustavo tem 3 reinícios de cota (semanais) guardados: pedir a ele só se a cota acabar e travar a reta final. Dentro do Codex (só quando o trabalho é dele): GPT 6.1 Sol em testes e tarefas menores; gpt-6-astra na revisão (Fielzinho) e em tarefa do Codex que exige raciocínio. Sem cota até 17:15 de 2026-10-17 (acabou de novo às 12:41) (Fielzinho e qualquer harness real com Codex). Pendente: Codex real do 11 (Cinzel); leituras atrasadas do Fielzinho (fila do Fiel).
 
 ## Quem está no canvas (2026-10-17 10:50)
 
@@ -317,3 +317,4 @@ nuvem.
 - 12:39: 22: manutenção no ramo (kit de cliente apagava trust_level do Codex), junto com o Codex.
 - 12:43: Lume com 14 páginas (11 em integracao, junção 74f201a); limpo e retomado.
 - 12:46: 17 resolvido (273/0). Junção dos docs desfeita (12-busca estourou o prazo indexando os docs); ticket 41 (busca não indexa agents/code/**) ao Trilho, antes do 39. 40 feito (db6b52c), revisão; conflito simples com o 18 no AGENTS.md. Cinzel com a trava (Codex) desde 12:37.
+- 12:49: Codex sem cota de novo até 17:15 (12:41). Vela roda fases 4/6/7 do 25 com Claude+Copilot; Brasa: manutenção do 22 à rodada curta; Cinzel: 23 rodada curta. Codex de 11/24/18/25/22 depois das 17:15.
