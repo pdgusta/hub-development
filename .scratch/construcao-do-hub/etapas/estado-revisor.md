@@ -80,3 +80,6 @@ REGRA PROVISÓRIA (maestro): até o 29 entrar em integracao, não rodar a suíte
 27 r2: PASSA em acordo com Fielzinho (106/106, reproduções ok). Vela avisada.
 07 r1: Docker rodando (task baf7s5mpn), logs etapas/revisao-07-r1-*.log. Fielzinho propõe VOLTA com 3 achados (PID qualquer node; Initialize aceita config divergente; isConfigured antes de mark-resolved). Falta conferir os 3 e ler o código.
 29 r1 (Brasa): VOLTA em acordo (integracao 0a8e17f traz 27 ponta a ponta sem proteção; pedir proteção que pegue teste novo). Parecer etapas/parecer-29-Brasa.md.
+Fielzinho sem cota até 01:34 (maestro): revisar sozinho e registrar leitura pendente (07, 29 e próximos).
+29 r2: PASSA (Fiel sozinho). 116/112/4 pulados, git limpo. Brasa avisada.
+07: Brasa juntou integracao 0a8e17f (e3ff419) durante meu Docker; código do 07 igual a 7fa0e56.

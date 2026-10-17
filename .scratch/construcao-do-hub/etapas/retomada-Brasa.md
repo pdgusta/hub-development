@@ -27,6 +27,11 @@ Se o Fiel devolver o 07: pausar o 29 e voltar ao 07 primeiro (maestro).
 
 ## Ticket 07 (banco do par), Status claimed
 
+- (~22h25) Merge de integracao 0a8e17f em e3ff419 (só o merge); rápidos sem harness 106 de 106. Docker do 07 não
+  repetido depois deste merge (o Fiel roda o Docker na revisão).
+- 29: juntado e resolvido pelo Rebite (integracao d5e4e16). No 07, juntar d5e4e16 antes de passar ao Rebite; daqui em
+  diante a suíte comum é `node --test "agents/code/test/**/*.test.mjs"` (os de harness ficam pulados). Fica comigo só o que o Fielzinho achar depois.
+
 - Ramo `ticket-07`, worktree `C:\context-hub-wt\ticket-07`, de `integracao` 8b9beef (com o 06). Commit 4967c69: kit e teste, **verde** (21 PASSA, saída 0; log `.local/07-verde-1.log`).
 - Comentário de plano gravado em `issues/07-banco-do-par.md` (20:50).
 

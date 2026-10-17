@@ -22,9 +22,8 @@ pedir uma junção.
    Conflito: `git merge --abort`, nada resolvido por você; avise o construtor e o maestro com os arquivos em conflito.
 3. **Rode os testes** de `integracao` inteiros: todo `*.test.mjs` de `agents/code/test/` (e de `agents/test/` enquanto
    existir), com `node --test "<padrão entre aspas>"`, e os de cada ticket juntado como o relatório dele manda.
-   - Até o ticket 29 entrar, deixe de fora as pastas `agents/code/test/ponta-a-ponta/` e
-     `agents/code/test/provas/03-codex-hooks/`; depois dele, rode `node --test "agents/code/test/**/*.test.mjs"` sem variável (os de harness ficam pulados) e,
-     com `HUB_HARNESS_REAL=1 --test-concurrency=1`, só se o ticket juntado mexe na prova 03, na guarda do 14 ou nos hooks.
+   - Comando comum: `node --test "agents/code/test/**/*.test.mjs"`, sem variável (os de harness ficam pulados); com
+     `HUB_HARNESS_REAL=1 --test-concurrency=1`, só se o ticket juntado mexe na prova 03, na guarda do 14 ou nos hooks.
    - Teste que chama harness de verdade (`codex exec`, `claude -p`, `copilot -p`), copia login ou sobe Docker: rode só
      se a árvore juntada difere, nos arquivos dele, da que o revisor testou (`git diff ticket-NN HEAD -- <pasta>`);
      se é idêntica, não rode e escreva o porquê. Docker só em `127.0.0.1`, nomes `hub-ensaio-*`, apagados ao fim.

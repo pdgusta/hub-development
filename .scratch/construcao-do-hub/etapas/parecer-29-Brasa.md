@@ -23,3 +23,20 @@ Hash; suíte sem a variável mostrando os de harness (03, 14, 27) pulados e nenh
 limpo depois); a rodada com `HUB_HARNESS_REAL=1` só se a proteção mudou o caminho real do teste.
 
 Nota: o Fiel não repetiu a rodada com harness real nem leu a evidência regravada do 14 e da 03 nesta rodada.
+
+## Rodada 2 — 2026-10-17 — ramo ticket-29 em 0da445e
+
+Veredito: **passa** (Fiel sozinho; Fielzinho sem cota do Codex até 01:34, leitura dele fica para depois, por ordem do
+maestro; se ele achar algo, entra como ressalva para o Rebite).
+
+Evidências (Fiel):
+1. integracao 0a8e17f ancestral (merge 1736f46); worktree limpo.
+2. O 27 usa `comHarness`; o `rmSync` da evidência do 14 e do 27 está dentro do corpo protegido (linhas 49/50), não na
+   carga do módulo. `comHarness` sem a variável registra só um teste pulado, sem rodar o corpo.
+3. `node --test "agents/code/test/**/*.test.mjs"` sem `HUB_HARNESS_REAL`: 116 testes, 112 passam, 4 pulados (14, 27,
+   03 instalar, 03 prova), 0 falhas, saída 0; `git status` limpo depois. Log `etapas/revisao-29-r2-suite.log`.
+4. Conserto 2 (detector sem lista de nomes, `harness-real.test.mjs`): li o relatório e a contraprova da Brasa (teste
+   novo sem proteção chamando `claude.exe` deixa dois vermelhos); não repeti a contraprova (exigiria escrever na
+   worktree dela).
+
+Ressalva: as pastas `%TEMP%\hub-ensaio-14-*` dos testes sem harness continuam se acumulando (20 agora).

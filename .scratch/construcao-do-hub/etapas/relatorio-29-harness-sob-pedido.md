@@ -99,3 +99,39 @@ Teste novo: `agents/code/test/harness-real.test.mjs`, no `node --test` comum. Re
 - **O nome do usuário na evidência da prova 03.** A evidência versionada traz o caminho curto do usuário
   (`GUSTAV~1.DEL`) em `codex-exec.jsonl`, `config.toml`, `eventos.jsonl` e `login-apagado.txt`. Isso já estava no
   commit anterior. A do 14 tira o nome (`semCasa`); a prova 03 não tira.
+
+## Rodada 2 (consertos do parecer da rodada 1)
+
+Ponta `0da445e`, com `integracao` 0a8e17f (ticket 27) juntada em 1736f46.
+
+1. **O 27 protegido.** `ponta-a-ponta/27-fim-da-resposta.test.mjs` foi embrulhado em `comHarness`, como o 14: a
+   evidência não é apagada na carga e nenhum harness é chamado sem a variável. O `after` dele usa `relatorioDeHashes`,
+   e a linha de uso diz a variável.
+   - Vermelho antes: com o 27 incluído no teste, ele apagou `evidencia-27/` na carga. Restaurei com `git checkout`.
+2. **Sem lista de nomes.** `harness-real.test.mjs` acha sozinho os arquivos de teste que chegam a um harness ou a um
+   login, pelo texto deles e dos módulos locais que importam. As marcas:
+   - o Codex: `CODEX_JS`, `codex.js`, `app-server`, `@openai/codex`, `listarHooks`;
+   - o Copilot: `COPILOT_JS`, `npm-loader`, `@github/copilot`;
+   - o Claude: `claude.exe`;
+   - os logins: `.credentials.json`, `auth.json`.
+
+   Cada arquivo achado precisa:
+   - ter o corpo sob `comHarness(`;
+   - e, sem a variável, dar só um teste de topo pulado, com o motivo, sem mexer em evidência, TEMP nem HOME.
+
+   Os quatro conhecidos (03 instalador, 03 prova, 14, 27) estão numa conferência à parte, para a busca não passar
+   vazia.
+   - **Contraprova:** um `ponta-a-ponta/zz-contraprova.test.mjs` sem proteção, que chama `claude.exe`, deixou dois
+     testes vermelhos ("são achados" e "aparecem pulados"). Depois foi apagado.
+   - **Limite:** a busca é por texto. Um teste que chame um harness por um nome fora das marcas (outro binário, um
+     caminho montado em partes) escaparia.
+
+**Testes:**
+- `harness-real.test.mjs`: 6 de 6.
+- Suíte inteira sem a variável: 116 testes, 112 passam, 4 pulados (03 instalador, 03 prova, 14, 27). Log em
+  `.local/suite-sem-variavel-2.log`.
+- `git status` limpo depois da suíte.
+- **A rodada com `HUB_HARNESS_REAL=1` não foi repetida.** A proteção não mudou o caminho real da 03 nem do 14, que
+  passaram na rodada 1. O 27 ganhou o embrulho e a mensagem por hash, e não rodei ele de verdade (`node --check` ok).
+  Rodo se o Fiel pedir.
+
