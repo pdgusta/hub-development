@@ -133,7 +133,7 @@ C:\context-hub log --oneline -3 integracao`, `etapas/trava-pesada.md` e `etapas/
   indexação, npm, harness real). Suíte comum: `node --test "agents/code/test/**/*.test.mjs"` sem `HUB_HARNESS_REAL`
   (os de harness ficam pulados; ticket 29); `--test-concurrency=1` sob carga. Se travar de novo, as saídas são do
   Gustavo: baixar a memória do Docker (Settings > Resources) ou aumentar o arquivo de paginação.
-- **Codex:** o Gustavo tem 3 reinícios de cota (semanais) guardados: pedir a ele só se a cota acabar e travar a reta final. Dentro do Codex (só quando o trabalho é dele): GPT 6.1 Sol em testes e tarefas menores; gpt-6-astra na revisão (Fielzinho) e em tarefa do Codex que exige raciocínio. Sem cota até 17:15 de 2026-10-17 (acabou de novo às 12:41) (Fielzinho e qualquer harness real com Codex). Pendente: Codex real do 11 (Cinzel); leituras atrasadas do Fielzinho (fila do Fiel).
+- **Codex:** o Gustavo tem 3 reinícios de cota (semanais) guardados: pedir a ele só se a cota acabar e travar a reta final. Dentro do Codex (só quando o trabalho é dele): GPT 6.1 Sol em testes e tarefas menores; gpt-6-astra na revisão (Fielzinho) e em tarefa do Codex que exige raciocínio. Cota redefinida pelo Gustavo às 14:25 (restam 2 reinícios) (Fielzinho e qualquer harness real com Codex). Pendente: Codex real do 11 (Cinzel); leituras atrasadas do Fielzinho (fila do Fiel).
 
 ## Quem está no canvas (2026-10-17 10:50)
 
@@ -328,3 +328,4 @@ nuvem.
 - 14:07: suíte de 38+39+22 VERDE (285: 275/10 pulados/0; c42ffa0); 38 e 39 resolvidos. Vela roda a fase 4 com Docker; depois Rebite junta 42 e religo os outros.
 - 14:17: religados Cinzel (/clear + retomada), Lume, Fiel (conversa nova), Brasa, Trilho; Fielzinho fica fora até 17h. Docker parado de novo. Fase 4 do 25 falhou num ponto novo (base do A não desceu ao B em 120 s); diagnóstico 3c1221a; mais uma tentativa com o Docker assentado e sem wsl --shutdown; se cair, vai para a janela da fase 7. Depois: Rebite junta 42.
 - 14:18: ronda: 448 MB livres com a fase 4 da Vela rodando; Brasa e Cinzel (ociosos até 17h15) fora: Brasa `claude --resume 5b6761e2-fc3c-4b52-8903-bb4324c02fb3`, Cinzel `claude --resume 5f789150-7546-42e6-bba6-92336755c5e8`. 42 juntado (d298826), suíte depois da Vela. Fiel revisa 41.
+- 14:26: Gustavo REDEFINIU a cota do Codex (1 dos 3 reinícios) e avisou: o Windows reinicia às 21h (cumulative updates). Fila nova: suíte do 42 → Codex 11 (Cinzel) → 18 (Vela) → 22 (Brasa) → 24; janela da Vela (fases 4/7 + Codex do 25) antes das 20h; todos gravam a retomada até 20h30; nada pesado às 21h. Religados Cinzel, Brasa e Fielzinho (codex novo, Astra). Docker parado para a suíte.

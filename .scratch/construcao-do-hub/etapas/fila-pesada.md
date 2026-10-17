@@ -4,8 +4,13 @@ Quem solta a trava avisa o primeiro da fila (`maestri ask "<nome>" "trava livre,
 Quem pega a trava se tira da fila. Ordem pelo caminho crítico; o maestro reordena. Portas 5996/5997 são de vários
 testes (09, 16): limpe os contêineres ao soltar.
 
-(trava: ver trava-pesada.md) — ordem a partir de 12:55 (Codex sem cota até 17h15):
-1. (feito 14:05: suíte verde)
-2. Vela: fase 4 do 25 de novo, com Docker (~4 min; conserto fe0b800)
-3. Rebite: junções 42, 41 (depois da revisão do Fiel), docs; 40, 37, 23 quando der
-4. Depois das 17h15 (Codex), um de cada vez: Cinzel (11, 24), Vela (18, 25), Brasa (22)
+(trava: ver trava-pesada.md) — ordem a partir de 14:25 (Codex com cota: o Gustavo redefiniu às 14:25; Windows reinicia às 21h):
+1. Rebite: suíte da junção do 42 (d298826), Docker parado
+2. Cinzel: Codex do 11 (gpt-6.1-sol; segura o 23)
+3. Vela: Codex do 18 (segura o 23 e o 37)
+4. Brasa: Codex do 22 (evidência de cliente)
+5. Cinzel: Codex do 24 (depois do 23 juntado)
+6. Rebite: junções na ordem em que chegarem (41, docs, 11, 18, 40, 37, 23, 24)
+7. Janela própria (só Vela e maestro), antes das 20h: fases 4 e 7 do 25 e as do Codex (Docker ligado bem antes; diagnóstico 3c1221a)
+Até 20h30: todos gravam a retomada; nada pesado rodando às 21h (reinício do Windows).
+- Trilho (14:26): 41 r2, 12-busca da ponta 6a728a4 (SKILL.md da busca mudou), ~6 min
