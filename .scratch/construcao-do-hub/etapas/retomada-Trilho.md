@@ -21,7 +21,7 @@ Leia antes: `etapas/regras-da-construcao.md` (inteiras), `etapas/fila-pesada.md`
   outro par durante a mudança, fim consistente).
 - Próximo: na vez (Brasa tem a trava, 09:16), `git merge ticket-16` no 21 se o 16 passou (ou integracao, se o 16 já
   foi juntado), testes leves 21-* e afetados, Docker `pwsh -NoProfile -File agents/code/test/21-arquivar.test.ps1`
-  > `etapas/logs/trilho-21-docker-3.log` (nome novo! não sobrescrever). Soltar a trava e avisar quem a fila disser.
+  > `etapas/logs/trilho-21-docker-3.log` (nome novo! não sobrescrever). Soltar a trava e avisar o MAESTRO (ordem 09h50: ele abre a janela da fatia 2).
   Verde: relatório, comentário no 21, Fiel.
 
 ## Fechados
