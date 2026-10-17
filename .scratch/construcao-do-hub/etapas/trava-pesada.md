@@ -1,1 +1,1 @@
-- Rebite (integrador), 2026-10-17 08:30: suíte do hub do 08 em C:/context-hub-wt/integracao (e98a891), --test-concurrency=1, ~25 min. Apago ao fim.
+- Trilho (construtor), 2026-10-17 08:56: Docker do 16 (hub-ensaio-16-a/b, 5996/5997, MCP 8796-8798) e depois o do 21 (hub-ensaio-21-a/b, 5996/5997), ~6 min cada. Apago ao fim; depois, Cinzel.

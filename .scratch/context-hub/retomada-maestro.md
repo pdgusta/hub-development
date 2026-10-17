@@ -218,3 +218,4 @@ nuvem.
 - 08:47: ronda; Rebite com a trava (suíte do 08, 08:30); todos ≤38%; 1,9 GB livres; nada a destravar.
 - 08:51: 16 com os cenários do 08 (280b778, 19/19); na vez do Trilho: Docker do 16 e depois do 21.
 - 08:55: 18 voltou na rodada 1 (fim cobrava quem não gravou; raiz no 27), conserto e1c5eac, rodada 2 pedida; Vela na fila depois do Cinzel.
+- 08:56: 08 resolvido (e98a891, 210/0); ressalvas no ticket (fatia 2 do Gustavo; Restore-RamoApagado sem finally, não promover à vigia sem limpeza garantida). Trava com o Trilho (16, 21).

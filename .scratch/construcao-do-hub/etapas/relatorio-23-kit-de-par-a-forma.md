@@ -145,3 +145,19 @@ e98a891 (log em `logs/23-testes-1.log`). Nenhuma pasta `hub-ensaio-23-*` nem `hu
    HOME de ensaio), o contrato uma vez só e o `COPILOT_SKILLS_DIRS`.
 6. **Fora desta forma (pontos abertos do spec):** o `claude-md-and-agents-md` do Maestri, o MCP do Copilot do VS
    Code e o `trust_level` do Codex.
+
+## Rodada 2 (consertos da rodada 1 do Fiel, `parecer-23-Cinzel.md`)
+
+1. **Grupo do hub que saiu dos fragmentos.** Antes de juntar, o kit tira do `settings.json` e do `hooks.json` o grupo
+   cujo comando está dentro de `<hub>/agents/code/hooks/` e que não está em nenhum fragmento atual (fragmento mudado
+   ou peça tirada). No Copilot, tira `~/.copilot/hooks/hub-<peça>.json` de peça que saiu. No `hooks.state`, das
+   aprovações do `hooks.json` da casa fica só a que ainda vale (o hook existe e o hash bate); as do hub são regravadas.
+   Os alheios ficam. Teste novo: "fragmento mudado e peça tirada do hub" (timeout trocado nos três fragmentos da
+   leitura e a peça do acervo apagada do hub; a segunda passada deixa cada grupo uma vez, nenhum grupo do hub a mais,
+   nenhum arquivo `hub-acervo.json` e as aprovações iguais à lista do app-server).
+2. **As peças do teste saem do repositório**, não de uma lista literal: o `fragmentos/claude.json` do fim da resposta
+   (ramo `ticket-18` e1c5eac, recado da Vela) entra na junção do 18 sem mudar o teste. Conferido que ele tem a mesma
+   forma (`hooks.PostToolUse`, `{{DIR}}`, `{{HUB}}`).
+
+Testes: `23-kit.test.mjs` 14/14, ramo `ticket-23` f304e6c. Ressalva nova do Fiel para o 26: o desfazer
+para em `~/.claude.json` e `config.toml`, que o harness regrava; lá, desfazer por chave.
