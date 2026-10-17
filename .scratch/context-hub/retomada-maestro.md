@@ -51,6 +51,7 @@ relatórios em `etapas/`, os commits de `integracao` e do repositório de planej
 Por isso o diário abaixo registra cada evento com hora.
 
 ## Radar (depois do 25)
+- **Dois maestros, duas máquinas** (Gustavo, 2026-10-17 ~20h): o maestro do outro PC será outra sessão; precisam se comunicar. Candidatos a estudar (fonte primária antes de propor): o próprio hub replicado (uma pasta de recados entre maestros, vigiada por cada lado), o git do repositório do hub, ou recurso do Maestri entre máquinas (não verificado). Entra no roteiro do 26.
 
 - Trail-Code (`pesquisa-trail-code.md`): ensaio num repositório de iniciativa (`--dry-run`, `--no-global`,
   `DO_NOT_TRACK=1`) e as ideias do formato de decisão para o acervo. Gustavo aceitou deixar para depois do 25.
@@ -379,3 +380,4 @@ nuvem.
 - 19:21: 24 RESOLVIDO (suíte 359: 345/14/0; 56cd23a); 22 com a evidência do Codex. Só o 25 aberto (e o 26 do Gustavo). Vela com a trava (fases 7, 4, Codex 2).
 - 19:39: 25: fases 7 (Claude+Copilot, de verdade), 4 (Claude+Copilot) e 2 do Codex VERDES antes de 19:45 (B convergiu em 218 s). Rodada 2 do Fiel em 4628138. Decidido: sem Codex nas fases 4-7 (Para rever); observação do par novo no ticket 26.
 - 19:49: 25 PASSA r2 no Fiel (com ressalvas) e juntado (ca62332); suíte desde 19:50, fim ~20:23.
+- 20:12: Gustavo: o 26 vira instalação nas DUAS máquinas (par 2 no outro PC: Claude Code, Maestri, admin, pode clonar o hub; 1º setup do jeito mais adequado; setup genérico de novo par depois). Comunicação entre os dois maestros: radar. Roteiro do 26 depois do reinício.
