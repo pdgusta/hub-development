@@ -26,3 +26,6 @@ só dentro do `cwd` da sessão desde o início do turno; o que mudou fora da lis
 - 2026-10-17 09:25 (Cinzel): peguei o 37 (`claimed`). Worktree `C:/context-hub-wt/ticket-37`, ramo `ticket-37` do `ticket-18` 31afe63. Costuras com a Vela (dona do núcleo) e o maestro: `../etapas/costuras-37-Cinzel.md`.
 
 - 09:24 (maestro): com o Cinzel até 12h15 (ramo sobre o ticket-18).
+- 2026-10-17 09:45 (Cinzel): a Vela aceitou o núcleo com quatro ajustes (nota pelo shell conta como mudada; aviso em "Antes de terminar:"; uma vez por turno; "shell ou outro processo"). Levei ao maestro o limite da varredura, os testes sem harness real e o ajuste (e): só varrer quando a sessão rodou shell no turno.
+
+- 09:26 (maestro, mandato): costuras do Cinzel aceitas (`../etapas/costuras-37-Cinzel.md`, com os 4 ajustes da Vela): (5) varredura pula partes com ponto e `node_modules`, corta em 20.000 entradas e mostra até 10 caminhos; (6) testes pelo script com o evento dos três harnesses, sem harness real; (e) só varre quando a sessão rodou shell no turno (o anotar passa a ouvir Bash/PowerShell no Claude, Bash no Codex, bash/powershell no Copilot).

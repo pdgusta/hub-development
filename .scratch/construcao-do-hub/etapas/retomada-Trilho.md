@@ -1,52 +1,28 @@
-# Retomada do Trilho (construtor), gravada em 2026-10-17 ~08h35 (São Paulo)
+# Retomada do Trilho (construtor), gravada em 2026-10-17 ~09h50 (São Paulo)
 
 Leia antes: `etapas/regras-da-construcao.md` (inteiras), `etapas/fila-pesada.md`, os tickets 21 e 16, as costuras
 `etapas/costuras-21-Trilho.md` e `etapas/costuras-16-Trilho.md`. Responda em pt-BR, frases curtas. Maestro =
 "Claude Code"; revisor = "Fiel"; integrador = "Rebite"; construtores: Brasa, Vela, Cinzel.
 
-## Agora (08:35)
-### A. Ticket 21 (arquivar e cópia diária): claimed; código e testes leves prontos; falta o Docker
-- Worktree `C:/context-hub-wt/ticket-21`, ramo `ticket-21`, HEAD 22abdd2 (de integracao 9cc878b + ticket-16).
-  Relatório quase pronto: `etapas/relatorio-21-arquivar-e-copia.md` (pôr o EPERM nos Achados e o resultado do Docker).
-- Feito: `agents/skills/arquivar/` (arquivar.mjs, SKILL.md), `agents/code/bin/{copia-diaria,conferir-cabeca,
-  limpar-arquivo}.mjs`, `lib/cabeca.mjs` (verificar-hub usa), `trocarCampos` exportada de `lib/frontmatter.mjs`,
-  `kit/par/env/10.env.modelo`. Testes: `node --test agents/code/test/21-*.test.mjs` (cabeça 4, cópia 4, limpar 1,
-  arquivar 9) e os afetados 04, 05, 05-nova-iniciativa, 20, 07-kit-sem-docker (75/75 antes do último conserto).
-- Docker 1ª rodada (08:05, `logs/trilho-21-docker-1.log`): **o rename da pasta deu EPERM** com o sincronizador
-  rodando (um arquivo aberto por outro processo na pasta bloqueia o rename no Windows; `fs.watch` não bloqueia).
-  Conserto 22abdd2: espera até 10 s; depois recusa "em uso por outro programa", sem mover (testes com um processo
-  segurando um arquivo aberto 1,5 s e 15 s). Se o Docker der "em uso" de novo, o bloqueio é fixo do CLI: aí
-  investigar o que ele segura (handle.exe? não instalar nada global) e pensar em parar/religar o sincronizador
-  (cuidado: deleção com o CLI parado pode não propagar) ou copiar+apagar; perguntar ao maestro antes.
-- Próximo: 2ª rodada `pwsh -NoProfile -File agents/code/test/21-arquivar.test.ps1` na minha vez da fila (depois do
-  corredor do 22 da Brasa; ao soltar, avisar quem a fila disser). Verde: relatório, comentário no ticket 21, Fiel.
-  Junção só com 08 e 16 resolvidos.
-
-### B. Ticket 16 (vigia): cenários do 08 feitos, commit 280b778 (16-vigia.test.mjs 19/19, ~5,5 min)
-- Maestro aceitou (08h50): binário descartado conta até `vigia recuperar` ou `vigia olhei <caminho>` (olhados em
-  `.local/vigia/olhados.json`); Config Doctor = `doctorProcessedVersion` do data.json do plugin diferente da versão da
-  `DoctorRegulation` no main.js → informa. Proposta em `costuras-16-Trilho.md`, "Cenários do 08 na passada".
-- Feito (280b778): vigia.mjs (descartados, olhei, doKit pelo `agents/skills/vigia/kit.ps1` → banco.psm1: PID,
-  acima do limite, religar com `-Religar`; gerador a cada passada; laço pelo laco.log; configDoctor); cli-falso com
-  `daemon`; testes novos no 16-vigia.test.mjs (binário, sincronizador/laço, 200 MiB, gerador muda/recusa, Config
-  Doctor). Cada passada custa ~4 s de pwsh: a suíte leva ~5 min. Não editar vigia.mjs com a suíte rodando.
-- Falta: rodar o Docker do 16 (casos 4 e 5 novos no `16-vigia.test.ps1`, mais a passada do binário) pela fila, relatório, Fiel.
-### B0. (antes) o 08 foi juntado
-- Worktree `C:/context-hub-wt/ticket-16`, ramo `ticket-16`, HEAD 24ffb0b (integracao e98a891 junto: o 08 e o 15).
-  `node --test agents/code/test/16-vigia.test.mjs` 12/12.
-- Maestro (08:2x): ligar os cenários que dependiam do 08: **binário descartado na passada, acima de 200 MiB,
-  sincronizador parado, laço** (e, pelo ticket: Config Doctor travado, gerador de exclusões a cada passada com código
-  2 virando item com o caminho; decisão de 2026-10-16 20:38). O 08 trouxe: `kit/par/banco/laco.ps1`, mudanças no
-  `banco.psm1` (+95), `test/banco/ensaio.psm1` (+53), retratos em `agents/code/test/banco/retrato/`
-  (`binario-ramo-apagado.json`, `conflito-aberto.json`, `scheduler-docs-em-dia.json`, `scheduler-docs-parado.json`,
-  README). Ler `etapas/relatorio-08-banco-limites.md` e o diff `git diff 3ab8898 24ffb0b -- agents/code/kit
-  agents/code/test/banco` antes das costuras. Os retratos servem de dublê na suíte sem Docker.
-- Depois: Docker do 16 (com `HUB_MCP_BANCO_DIR=C:/Projetos/hub-mcp-banco-wt/ticket-11` ou o fork na integração, se
-  compilado) pela fila; relatório `etapas/relatorio-16-vigia.md`; rodada final do Fiel (parecer
-  `etapas/parecer-16-Trilho.md`, leitura intermediária com 3 ressalvas já feitas); com o passa, o Rebite junta o 16 e o
-  17 da Vela sai da espera.
-
-### C. Ticket 15: passou no Fiel (parecer-15-Trilho.md); com o Rebite (integracao e2b7607 já tem a rodada 2).
+## Agora (09:50)
+### A. Ticket 16 (vigia): com o Fiel, rodada final 2 (conserto 0332466)
+- Worktree `C:/context-hub-wt/ticket-16`, ramo `ticket-16`, HEAD 0332466 (integracao e98a891 junta). 19/19
+  (`node --test agents/code/test/16-vigia.test.mjs`, ~5 min; não editar a skill com a suíte rodando). Docker 8ª
+  rodada tudo passou (`logs/trilho-16-docker-8.log`, 280b778; o conserto 0332466 só filtra texto, sem Docker de novo).
+- Rodada final do Fiel (parecer-16-Trilho.md): VOLTA por 1: texto resolvido virava binário descartado; feito
+  (isPlainText + .canvas). Pedido de nova leitura enviado ~09h48.
+- Com o passa: `maestri ask "Rebite" "Trilho: ticket 16 passou ..."` (ramo, testes 19/19 e Docker 8ª, relatório
+  `etapas/relatorio-16-vigia.md`, parecer `etapas/parecer-16-Trilho.md`). Junta o 16; o 17 da Vela sai da espera.
+### B. Ticket 21: conserto do EPERM 9ce2496; na fila (item 1) para a 3ª rodada do Docker
+- Worktree `C:/context-hub-wt/ticket-21`, ramo `ticket-21`, HEAD 9ce2496 (tem o ticket-16 só até 81b4a3d).
+- Causa provada: fs.watch do chokidar numa SUBPASTA bloqueia o rename da pasta-mãe no Windows. Conserto: rename;
+  com EPERM, arquivo por arquivo e rmdir da árvore velha; arquivo aberto por editor (sem partilha de apagar): devolve
+  e recusa. `21-arquivar.test.mjs` 10/10. Relatório atualizado (Achado 3; maestro pediu: estado parcial visível no
+  outro par durante a mudança, fim consistente).
+- Próximo: na vez (Brasa tem a trava, 09:16), `git merge ticket-16` no 21 se o 16 passou (ou integracao, se o 16 já
+  foi juntado), testes leves 21-* e afetados, Docker `pwsh -NoProfile -File agents/code/test/21-arquivar.test.ps1`
+  > `etapas/logs/trilho-21-docker-3.log` (nome novo! não sobrescrever). Soltar a trava e avisar quem a fila disser.
+  Verde: relatório, comentário no 21, Fiel.
 
 ## Fechados
 12, 13, 33, 35 (juntados). 15 passou no Fiel (3d34bd1), com o Rebite.

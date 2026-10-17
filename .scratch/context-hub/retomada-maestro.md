@@ -233,3 +233,4 @@ nuvem.
 - 09:19: ronda; Brasa com a trava (22, 09:16); Vela 44%, Cinzel 43%, Fiel 43%: salvar; 1,0 GB livres.
 - 09:24: 24: Claude e Copilot com harness real passaram (Codex às 12:15); 23 passou, espera bloqueios. Vela e Cinzel limpos; Cinzel pega o 37 até 12:15.
 - 09:25: Gustavo: fatia 2 do 08 com menos agentes; plano na retomada (depois do 22: todos salvam, /exit em todos menos a Brasa, fatia 2, religar). Vela parada esperando a trava.
+- 09:28: 23 rodada 3 passa (a419182), segura até 11/16/17/18. Costuras do 37 aceitas.
