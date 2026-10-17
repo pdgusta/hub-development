@@ -272,3 +272,5 @@ nuvem.
 - 10:16: Fiel limpo e retomado (21 e 22 na fila dele). Vela adianta as fases 4-7 do 25 sem Docker.
 - 10:17: ronda; Rebite juntando o 16 (teste dele rodando); Brasa tinha um pedido sem Enter (reenviado); todos ≤36%; 1,1 GB livres.
 - 10:18: Gustavo: guarda os 3 reinícios do Codex (usar se a cota travar a reta final); gpt-6-astra liberado nos testes do Codex (regras atualizadas).
+- 10:21: ronda; cron duplicado apagado (fica o 269a3193). Rebite com a trava (suíte do 16, fce0529, desde 10:19). Fiel revisando o 21. Brasa testa se a cota do gpt-6-astra é à parte (um pedido).
+- 10:21: o gpt-6-astra não tem cota à parte (Brasa, um pedido às 10:20: limite até 12:15). Codex só às 12:15.
