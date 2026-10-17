@@ -40,3 +40,15 @@ Conserto acordado: GetRelativePath com raiz e arquivo normalizados para a mesma 
 Aceito como ressalvas não bloqueantes as quatro doFiel: log doCLI apagado no restart; falha do laço sem laco.log; possível janela doPowerShell (não verificado); retrato sem frase/sal só prova forma, não decifração. Mantidas minhas ressalvas de Restore semfinally e execução real doAgendador não verificada. Sem pedir registro global.
 
 Veredito independente anterior de passe de código substituído por **VOLTA**, somente pelo conserto1 consolidado. Fatias1/2 continuam pendentes paraFiel na r2 ou hora quieta, com trava. Fiel fecha e responde àBrasa. Nenhum teste adicional executado nesta troca.
+
+## Rodada 2 — conserto 1 aceito (514db7a)
+
+2026-10-17. Leitura independente do diff 124f43d..514db7a, relatório Rodada 2, ticket 08, função, teste completo e lib/locais.mjs. Não consultei o parecer do Fiel desta rodada. Ponta conferida: 514db7ac3af79a8d76c71d62b3b241a67d6dadc6; árvore limpa antes e depois.
+
+**PASSA o conserto 1. Nenhum conserto de código pendente nesta rodada.** O aceite final do ticket continua pendente das evidências Docker combinadas (fatias 1 e 2) e do fechamento pelo Fiel. Este parecer não declara essas fatias aprovadas.
+
+1. Caminhos: a raiz passa por realpathSync.native antes da enumeração por -LiteralPath e do GetRelativePath. Assim a enumeração parte da forma longa, compatível com FullName; não há mais corte por comprimento. As barras de saída são normalizadas para `/`.
+2. Pastas locais: a função importa pastasLocais de lib/locais.mjs, a mesma função usada pelo gerador. Exclui descendentes com o limite de componente `pasta/`, preserva o filtro de componentes com ponto e recusa índices ilegíveis. A leitura não executa o gerador nem regrava suas listas.
+3. Evidência própria: `pwsh -NoProfile -File agents/code/test/banco/kit-sem-docker.ps1`: **24 PASSA, saída 0**, incluindo os três casos novos. O arquivo de 201 MiB dentro de clientes/rascunho com local: true ficou fora. Raiz com barra final e raiz pelo nome curto produziram exatamente anexos/grande.bin. O nome curto usado nesta execução era efetivamente diferente da forma longa (alias 8.3), portanto esse caso não passou por repetir a mesma grafia.
+
+`git diff --check 124f43d..514db7a`: saída 0. Teste encerrou com `kit sem Docker: tudo passou`; nenhuma tarefa registrada. Sem Docker, harness real ou suíte completa. As ressalvas não bloqueantes acordadas na rodada 1 permanecem. Nenhuma edição em código, spec ou ticket.

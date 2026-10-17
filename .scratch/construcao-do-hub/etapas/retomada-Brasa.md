@@ -17,6 +17,7 @@ especial "Um trabalho pesado por vez" (a trava `etapas/trava-pesada.md`) e "Test
 
 ## Ticket 08 (banco: limites e robustez): em revisão com o Fiel; a fatia 2 pendente
 
+- ~08h20: r2 PASSA de código (Fiel e Fielzinho); NÃO levar ao Rebite ainda. Na hora quieta (maestro avisa; fila), rodar as fatias 1 e 2 NUMA SUBIDA: `Start-Process pwsh -WindowStyle Hidden -ArgumentList '-NoProfile','-File','C:/context-hub-wt/ticket-08/.local/fatias.ps1','-Fatias','1+2'` (log `etapas/logs/08-fatias-1-2.log`; o corredor chama o teste por -Command, porque por -File `-Fatias 1,2` vira 12). Depois avisar o Fiel, que fecha o passa.
 - ~08h: r1 VOLTA por 1 conserto (`Get-AcimaDoLimite`), feito em 514db7a; r2 pedida ao Fiel. O Fiel roda as fatias 1 e 2 no Docker (a 2 na hora quieta).
 
 - ~07h: revisão pedida ao Fiel (decisão do maestro) com a fatia 2 pendente no relatório. Ponta 124f43d (integracao 9cc878b juntada; sem Docker verde). A fatia 2 roda quando o maestro disser que a máquina está quieta; o Fiel fecha a rodada com ela. Passos 1 e 3 abaixo: o 3 já foi.

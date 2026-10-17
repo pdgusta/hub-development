@@ -48,7 +48,9 @@ Começou antes do 16, por mandato do maestro (05:09): contra o `estado.json` com
   - Claude (haiku) e Copilot (claude-haiku-5.5): **4/4**. Com divergência, a resposta começa pelo aviso e cita
     `reuniao.md`. Sem arquivo e sem MCP, o agente repete "estado indisponível".
   - Evidência em `evidencia-17/<harness>/<cenario>/` (saída, resposta, erros) e `hashes-claude-copilot.json`.
-  - **Codex: falta** (depois das 06:58). A mesma prova confere também o `notify` (dublê do notificador, uma chamada).
+  - Codex (gpt-6-luna, esforço baixo), 07:26, com a trava: **2/2**. O `notify` do fim do turno chamou o notificador
+    (dublê) uma vez, com "Hub: divergência" e a nota. Evidência em `evidencia-17/codex/` e `hashes-codex.json`
+    (copiado `%USERPROFILE%\.codex\auth.json` para o `CODEX_HOME` de ensaio; apagado; hashes iguais).
 - Login no ensaio (aval do Gustavo, rodada `2026-10-16-login-dos-harnesses-no-ensaio`), uma sessão por harness e
   cenário:
   - Claude: copiado `%USERPROFILE%\.claude\.credentials.json` para o `CLAUDE_CONFIG_DIR` de ensaio;
@@ -67,7 +69,9 @@ Começou antes do 16, por mandato do maestro (05:09): contra o `estado.json` com
 
 ## Falta
 
-1. Codex real depois das 06:58 (`HARNESSES=codex`), com a trava; commit só da evidência.
-2. Quando o 16 entrar em `integracao`: `git merge integracao`, e um teste sobre o `estado.json` que o `vigia passada`
+1. Quando o 16 entrar em `integracao`: `git merge integracao`, e um teste sobre o `estado.json` que o `vigia passada`
    grava, no lugar do exemplo fixo.
-3. Revisão do Fiel, depois o Rebite. A junção só com o 16 resolvido.
+2. Revisão do Fiel, depois o Rebite. A junção só com o 16 resolvido.
+
+Também feito: `integracao` 9cc878b juntada (5187a86, com o 36); o teste do 17 usa o ajudante comum de pasta de ensaio
+(273579f), 15/15 sem sobra.

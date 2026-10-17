@@ -1,7 +1,7 @@
 # 18: Retomada: nota de sete campos, início e fim
 
 Type: task
-Status: ready-for-agent
+Status: claimed
 Etapa: 7 (retomada)
 Blocked by: 04, 17, 03
 
@@ -22,3 +22,5 @@ Blocked by: 04, 17, 03
   passagem por sessão que não conduz). Decidir numa rodada antes de pegar este ticket.
 - 2026-10-16 20:24 (maestro): aval do Gustavo para copiar o login dos três harnesses em pasta de ensaio (rodada `2026-10-16-login-dos-harnesses-no-ensaio`, A, vale para a construção inteira); condições em `../etapas/regras-da-construcao.md`.
 - 2026-10-16 20:39 (maestro): proteção contra laço no fim da resposta decidida pelo Gustavo (rodada `2026-10-16-laco-no-fim-da-resposta`, B): devolve até três vezes seguidas; na quarta parada ainda com falta, solta e registra a falta no `estado.json` da vigia (início da próxima sessão e tela de estado).
+
+- 07:28 (maestro, mandato): começa já com a Vela, num ramo ticket-18 da ponta de `integracao` com o `ticket-17` juntado por merge (o 17 está na revisão; o 18 usa o hook de início e o fim da resposta dela). Junção só depois do 17 (e do 16) resolvidos.

@@ -120,3 +120,17 @@ regrava são as sessões abertas na máquina (por isso ele só é registrado).
   limit ... try again at 6:58 AM". Falta o Codex depois das 06:58.
 - Usos de login: Codex 03:09; Claude, Codex e Copilot na rodada dos três; todos apagados ao fim (`apagado: true` em
   `evidencia-15/hashes-claude-codex-copilot.json`). Configurações com hash igual; `.claude.json` só registro.
+- Codex depois da cota (07:1x a 07:26, com a trava; `logs/trilho-15-codex-1.log`, `-2.log`, `trilho-15-codex.log`):
+  1. Falhou: o shell do Codex foi recusado ("blocked by policy") e a leitura não chegou ao hook do Bash. O 15 não punha
+     `sandbox_mode = "danger-full-access"` no `config.toml` de ensaio, como os outros ponta a ponta (14, 19, 20, 27).
+     Conserto 03f85fb.
+  2. Falhou no passo B (trecho apontado veio "busque antes"). Diagnóstico com um espião temporário (fora do commit,
+     apagado): **o Codex entrega a busca ao hook como `mcp__hub_busca__search`**: troca o hífen do servidor por
+     sublinhado (a doc oficial só mostra nomes sem hífen). Conserto 64d6875: adaptador e matcher do fragmento do Codex
+     com o nome real; o teste sem harness usa o nome real (vermelho antes, 9/9 depois). Claude e Copilot não mudam.
+  3. **Passou** (evidência 0283b2c, `evidencia-15/codex/` e `hashes-codex.json`): "busque antes" na leitura inteira sem
+     busca; trecho apontado calado; arquivo apontado lido inteiro, "leia o trecho"; uma vez por arquivo.
+- Usos de login do Codex nesta rodada: quatro sessões (uma por tentativa), `auth.json` copiado para o `CODEX_HOME` de
+  ensaio e apagado ao fim de cada uma (`apagado: true`, 10:25:41 a 10:26:02 UTC na que passou). Configurações reais com
+  hash igual antes e depois; `.claude.json` muda pelas sessões abertas (só registro). Sem chave na evidência.
+- Ramo `ticket-15` com `integracao` 9cc878b (3d34bd1). Sem harness: `15-leitura.test.mjs` 9/9.

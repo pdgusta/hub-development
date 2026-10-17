@@ -63,3 +63,16 @@ ressalva dele sobre `local: true` virou o conserto 1, com as sondas do Fiel. Ele
 ### Fatia 2 (pendente)
 
 Na hora quieta (maestro avisa): `-Fatias 1,2` com a trava, pelo Fiel; log `etapas/logs/revisao-08-r1-fatias-1-2.log`.
+
+## Rodada 2 — 2026-10-17 07h30 (ponta 514db7a)
+
+Veredito: **código PASSA em acordo com o Fielzinho (24 PASSA no kit-sem-docker dele, sem conserto novo); aceite final pendente das fatias 1 e 2 (Docker).**
+
+- Conserto 1 feito (`banco.psm1`): raiz pelo `realpathSync.native` (forma longa, sem barra), relativo por
+  `GetRelativePath`, pastas locais por `lib/locais.mjs` só lendo (index.md ilegível → erro, não lista calada).
+- `kit-sem-docker.ps1` (Fiel): tudo passou, 3 casos novos (local, barra no fim, nome curto).
+- Sondas da r1 de novo (hub pelo `$TEMP` curto e com barra no fim; 201 MiB em `clientes/rascunho/` local,
+  `clientes/rascunho/sub/`, `clientes/rascunho-b/` irmã e `anexos/`): as duas formas dão
+  `anexos/video.bin, clientes/rascunho-b/x.bin`. Certo. Sondas apagadas; `git status` limpo.
+- Fila pesada (maestro): a fatia 2 é da Brasa, na hora quieta. Pedido: rodar `-Fatias 1,2` na mesma subida (a 1 de
+  03h37 é anterior às junções; o gerador mudou no 28), log em `etapas/logs/`. O Fiel lê o log e fecha.

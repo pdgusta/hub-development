@@ -183,3 +183,5 @@ nuvem.
 - 07:19: ronda; Trilho com a trava (Codex do 15, 2ª tentativa); Fielzinho ocioso: Fiel repassa o 08 e as leituras atrasadas; 4,4 GB livres; todos ≤38%.
 - 07:21: 22 sem Docker verde; Docker do 22 na fila (item 5, ~15 min). Dist do fork na worktree do Rebite só combinado com ele.
 - 07:27: 10 resolvido (fork 272/1 igual à base). Fork precisa de TEMP/TMP no caminho longo (regra em juntar-tickets.md). Trava com a Vela (17) desde 07:26.
+- 07:28: Rebite limpo e retomado.
+- 07:30: 17 com o real verde nos três (86c5a88), em revisão; junção espera o 16. Vela no 18 (sobre ticket-17).

@@ -174,3 +174,6 @@ Codex com cota a partir de 06:58: às 06:59 repasso ao Fielzinho a lista de leit
 08 r1: leitura do Fiel feita; parecer-08-Brasa.md provisório: conserto 1 (Get-AcimaDoLimite: relativo cortado com barra no fim/nome curto; lista pasta local), 4 ressalvas. Fatia 1 reroda junto com a 2 (-Fatias 1,2) na hora quieta. Aguardando Fielzinho.
 28 r1 achado 3: Fielzinho aceitou (acordo registrado). 08: Fielzinho iniciou leitura independente (sem Docker).
 08 r1 FECHADO: VOLTA em acordo (conserto 1). Brasa avisada. 08 r2 pedido (514db7a).
+08 r2 (514db7a): conserto conferido, código passa (Fiel). Falta Fielzinho r2 e log das fatias 1,2 (Brasa roda na hora quieta, fila item 4).
+08 r2: código PASSA em acordo com Fielzinho; aceite final pende log das fatias 1,2.
+15 rodada nova (Trilho, 3d34bd1) e 17 r1 (Vela, 86c5a88) pedidos ~07h35. 08: Brasa roda -Fatias 1,2 na hora quieta (armadilha: por pwsh -File '1,2' vira 12; usar -Command).

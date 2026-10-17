@@ -109,3 +109,7 @@ Fila recebida: 12 (0ba8532, relatório relatorio-12-busca.md); 20 (e5d24a7, rela
 
 08r1 acordoVOLTA: único bloqueioGet-AcimaDoLimite (relativo cortado com barra final/nome curto; pasta local indevida). Fiel reproduziu; aceitei,parecer atualizado. Normalizar ambos caminhos antesGetRelativePath,filtrar locais,testar3casos. Fatias1/2sóFiel na r2/hora quieta. Ressalvas logs/Agendador/retrato/Restore semfinally não bloqueiam. Sem teste rodando.
 
+
+## Ticket 08 — rodada 2, 2026-10-17
+
+Ponta 514db7a revisada. PASSA o conserto 1: raiz longa por realpathSync.native, relativo por GetRelativePath, locais pela biblioteca do gerador. Execução própria do kit-sem-docker: 24 PASSA, saída 0; três regressões novas verdes, inclusive alias 8.3 realmente diferente. Diff check verde, worktree limpa. Parecer-08-Brasa-fielzinho.md atualizado. Ressalvas r1 mantidas; fatias Docker 1/2 seguem com Fiel, não executadas por mim. Próximo passo: acordo/fechamento com Fiel e leitura das evidências quando disponíveis. Nenhum código/spec/ticket alterado.
