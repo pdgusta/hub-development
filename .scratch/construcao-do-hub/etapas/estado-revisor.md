@@ -83,3 +83,4 @@ REGRA PROVISÓRIA (maestro): até o 29 entrar em integracao, não rodar a suíte
 Fielzinho sem cota até 01:34 (maestro): revisar sozinho e registrar leitura pendente (07, 29 e próximos).
 29 r2: PASSA (Fiel sozinho). 116/112/4 pulados, git limpo. Brasa avisada.
 07: Brasa juntou integracao 0a8e17f (e3ff419) durante meu Docker; código do 07 igual a 7fa0e56.
+07 r1: Docker 1ª passada (máquina carregada pela suíte do 29): 07-banco 1 FALHA (replicação A sem estado em 30 s), prova01 ok, prova02 1 FALHA (controle não chegou ao disco B), sincronizador ok; sem sobra. Os 3 achados do Fielzinho confirmados no código (linhas 185, 197/199, 215). Repetindo 07-banco e prova02 (revisao-07-r1b-*.log). Veredito previsto: VOLTA.
