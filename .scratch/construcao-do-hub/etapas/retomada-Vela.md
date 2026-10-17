@@ -78,3 +78,19 @@ node --test agents/code/test/05-frontmatter.test.mjs
 - Peças: `agents/skills/routing.yml` e `routing.schema.yml`; `agents/code/bin/lib/roteamento.mjs`; `agents/code/bin/verificar-roteamento.mjs`; `agents/code/hooks/roteamento/{entrada,uso,registro,sessao}.mjs` + `fragmentos/`; o `fim-da-resposta.mjs` chama `fecharTurno` quando solta. `validar` do `lib/frontmatter.mjs` passou a ser exportado.
 - Em curso: ponta a ponta real `agents/code/test/ponta-a-ponta/19-roteamento.test.mjs` (`HUB_HARNESS_REAL=1`, `HARNESSES=...`), evidência em `evidencia-19/`.
 - 52c6328: prova real verde nos três, regra do contrato e relatório feitos. **Rodada 1 PASSA** (Fiel; ressalvas no parecer-19-Vela.md: import do registro fora do try no fim; dentroDoHub sem junction). Rebite juntou e resolveu (integracao dc56d47, 128 verdes, 5 pulados). **19 encerrado.** Próximo: esperar o maestro.
+
+## PRÓXIMO (gravado 2026-10-17, antes do /clear pedido pelo maestro, contexto 44%)
+
+- 27 e 19 encerrados (juntados e resolvidos; `integracao` em dc56d47). Nada pendente neles.
+- **Próximo: ticket 20** (`issues/20-acervo-do-maestro-e-guarda.md`: família `maestro-*`, lembrete de início que só age no Maestri, guarda do acervo). Esperar o maestro mandar; então: `Status: claimed`, worktree `C:\context-hub-wt\ticket-20` da ponta de `integracao`.
+- **Primeiro commit do 20, separado**, consertando as duas ressalvas do parecer do 19 (`etapas/parecer-19-Vela.md`), com teste antes:
+  1. `agents/code/hooks/fim-da-resposta/fim-da-resposta.mjs`: o `import { fecharTurno } from '../roteamento/registro.mjs'` está no topo, fora do `try`; um erro ao carregar o registro derruba o script do fim inteiro. Trocar por `await import(...)` dentro do `try` do `fecharTurno` (o fim nunca pode cair por causa do roteamento).
+  2. `agents/code/hooks/roteamento/sessao.mjs`, `dentroDoHub`: compara `path.resolve` sem resolver junction/symlink (`fs.realpathSync.native`); um cwd que chega pela junction do hub fica "fora". Resolver os dois lados (com fallback quando o caminho não existe). Ver também o `dentro` de `fim-da-resposta.mjs` (mesma lógica).
+- Lições desta sessão: doc externa por `curl` (versão `.md`; docs.github.com: `https://docs.github.com/api/article/body?pathname=/en/...`; Codex: `https://developers.openai.com/codex/<pagina>.md`), nunca subagente. Arquivos do repositório voltam com CRLF depois do checkout: troca de várias linhas por `node -e`/`sed` não casa; usar o Edit (ler antes). Testes com harness real só com `HUB_HARNESS_REAL=1` (ticket 29; `agents/code/test/harness-real.mjs`, `comHarness`); a ponta a ponta do 27 e do 19 é o molde. Todo teste novo apaga as próprias pastas do TEMP (`after` + `rmSync` com `maxRetries`). Outros recrutas rodam testes ao mesmo tempo: contar pastas do TEMP só com `TEMP` isolado.
+- Comandos: suíte sem harness `node --test "agents/code/test/**/*.test.mjs"` (em dc56d47: 128 pass, 5 skip).
+
+## Ticket atual: 20, acervo do maestro e guarda (2026-10-17)
+
+- Ticket issues/20-acervo-do-maestro-e-guarda.md (claimed). Ramo ticket-20, worktree C:/context-hub-wt/ticket-20, de integracao dc56d47.
+- 8acd1ce: consertos do 19 (commit separado, pedido do maestro). Novo agents/code/bin/lib/caminhos.mjs (real, relativoAoHub, dentroDoHub). Suíte 131 pass, 5 skip.
+- Próximo: ler o bloco do Worker 9 no spec e os tickets 40, 43, 44 e a escolha aceita 17; perguntar ao maestro as três lacunas de dono antes de construir a guarda.
