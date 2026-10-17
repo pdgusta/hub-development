@@ -75,6 +75,14 @@ Valem para todo construtor e revisor das etapas. Plano decidido: `revisao/plano/
   copie para o repositório o que estiver só no scratchpad da sessão. Responda ao maestro "<nome>: salvo para limpar". O
   maestro manda o `/clear` e depois "leia a sua retomada"; você relê as regras, o ticket e a retomada e segue.
 
+## Achados comuns (valem para todos)
+
+- **Codex: hífen do nome do servidor MCP vira sublinhado no hook** (achado do Trilho no 15, 2026-10-17; a doc não diz):
+  `mcp__hub-busca__search` chega como `mcp__hub_busca__search`. Matcher do Codex para `hub-banco`, `vigia` etc. usa
+  o sublinhado.
+- **Testes do fork do MCP:** `node --import tsx --test "src/**/*.test.ts"` com `TEMP`/`TMP` no caminho longo (ver
+  `juntar-tickets.md`).
+
 ## Ao terminar
 
 1. Testes verdes no seu ramo: os arquivos de teste do seu ticket e os dos arquivos que você mexeu (sem trava). **A suíte

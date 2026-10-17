@@ -189,3 +189,4 @@ nuvem.
 - 07:30: 17 com o real verde nos três (86c5a88), em revisão; junção espera o 16. Vela no 18 (sobre ticket-17).
 - 07:31: 18: decidida a opção A (nota do condutor + passagem por recruta), muda o spec; para rever.
 - 07:32: 15 com o Codex real passou (rodada do Fiel pedida); 16 pronto, espera o 08. Trilho no 21 (sobre ticket-16; remoto de ensaio local).
+- 07:33: 15 passou no Fiel, com o Rebite. Lição do hífen→sublinhado no Codex nas regras e nos tickets 11 e 23.
