@@ -7,7 +7,9 @@ Leia nesta ordem: `regras-da-construcao.md`, `revisao-em-dupla.md`, `estado-revi
 (01), `01-esqueleto/parecer-Vela.md` (06), `parecer-Trilho.md` (14), `parecer-Vela.md` (27), `parecer-29-Brasa.md`.
 Pendente: leitura do Fielzinho no 29 r2 (sem cota até 01:34).
 
-## Em curso: ticket 07 (Brasa, banco do par), rodada 1
+## 07 r1 fechado VOLTA (parecer `etapas/02-banco/parecer-Brasa.md`); Brasa avisada. Esperando a rodada 2.
+
+## (histórico) ticket 07 (Brasa, banco do par), rodada 1
 - Ramo ticket-07, worktree `C:/context-hub-wt/ticket-07`, código em 7fa0e56 (Brasa juntou integracao 0a8e17f em e3ff419
   depois; nada dela mudou). Relatório `etapas/relatorio-07-banco-do-par.md`.
 - Docker do Fiel em sequência (07-banco.test.ps1, prova01, prova02, sincronizador): logs

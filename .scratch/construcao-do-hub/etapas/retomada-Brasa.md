@@ -27,6 +27,14 @@ Se o Fiel devolver o 07: pausar o 29 e voltar ao 07 primeiro (maestro).
 
 ## Ticket 07 (banco do par), Status claimed
 
+- (~22h50) Rodada 1 VOLTOU (parecer `etapas/02-banco/parecer-Brasa.md`). Consertos na worktree, sem commit ainda:
+  `Get-PidSincronizador` confere a linha de comando (CliDb e daemon); `Initialize-Dispositivo` confere o dispositivo
+  aceito com o .env (encrypt, passphrase, usePathObfuscation, couchDB_DBNAME, couchDB_USER, porta no couchDB_URI) e
+  recusa a divergência; marca `.livesync/hub-aceito` só depois do ACCEPTED, e volta isConfigured a false se falhar.
+  Teste sem Docker `agents/code/test/banco/kit-sem-docker.ps1` (CLI falso `cli-falso.cjs`), chamado por
+  `agents/code/test/07-kit-sem-docker.test.mjs`: verde. Esperas fixas com folga (120 s). Merge integracao d5e4e16 em
+  98a6d6e. Falta: suíte comum, Docker (07, provas 01/02, teste do 06), commit, relatório (seção rodada 2), Fiel.
+
 - (~22h25) Merge de integracao 0a8e17f em e3ff419 (só o merge); rápidos sem harness 106 de 106. Docker do 07 não
   repetido depois deste merge (o Fiel roda o Docker na revisão).
 - 29: juntado e resolvido pelo Rebite (integracao d5e4e16). No 07, juntar d5e4e16 antes de passar ao Rebite; daqui em

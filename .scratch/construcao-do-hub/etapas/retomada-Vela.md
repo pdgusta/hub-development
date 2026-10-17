@@ -69,3 +69,12 @@ node --test agents/code/test/27-pastas.test.mjs
 node --test agents/code/test/gerar-exclusoes/gerador.test.mjs
 node --test agents/code/test/05-frontmatter.test.mjs
 ```
+
+## Ticket atual: 19, roteamento de skills (desde 2026-10-17)
+
+- Ticket `issues/19-roteamento-de-skills.md` (claimed). Ramo `ticket-19`, worktree `C:\context-hub-wt\ticket-19`, de `integracao` 0a8e17f, com d5e4e16 (29) junta.
+- Relatório: `etapas/relatorio-19-roteamento-de-skills.md` (decisões 1 a 6 do maestro e as docs conferidas por curl).
+- Commits: d57e36b (testes do 27 limpam o TEMP), d8e971a (tabela + esquema + `verificar-roteamento`), f3915c3 (hook de entrada + fragmentos), c4e81b5 (registro de uso, mod `agents/code/mods/roteamento/`, fim fecha a indicação). `agents/code/test/19-roteamento.test.mjs` 16/16.
+- Peças: `agents/skills/routing.yml` e `routing.schema.yml`; `agents/code/bin/lib/roteamento.mjs`; `agents/code/bin/verificar-roteamento.mjs`; `agents/code/hooks/roteamento/{entrada,uso,registro,sessao}.mjs` + `fragmentos/`; o `fim-da-resposta.mjs` chama `fecharTurno` quando solta. `validar` do `lib/frontmatter.mjs` passou a ser exportado.
+- Em curso: ponta a ponta real `agents/code/test/ponta-a-ponta/19-roteamento.test.mjs` (`HUB_HARNESS_REAL=1`, `HARNESSES=...`), evidência em `evidencia-19/`.
+- 52c6328: prova real verde nos três, regra do contrato e relatório feitos. **Pedida a revisão ao Fiel.** Não mexer na worktree enquanto ele revisa. Depois do passa: Rebite.
