@@ -95,6 +95,8 @@ para abrir e fechar aplicativos e processos da execução. Contexto do maestro: 
   (fonte primária antes de propor): uma pasta de recados no próprio hub replicado, vigiada por cada lado; o git do hub;
   recurso do Maestri entre máquinas (não verificado). Entra no roteiro do 26.
 - Proxy de MCP que repasse o `instructions` (achado do 22).
+- Pequeno, sem ticket: a evidência do Codex (`lido.json` do 22 e do 24) não grava o modelo (ressalva do Fiel).
+- Worktrees ticket-38, ticket-39 e ticket-41 ainda existem em `C:\context-hub-wt\` (limpar quando convier).
 - Trail-Code (`pesquisa-trail-code.md`): ensaio num repositório de iniciativa; Gustavo aceitou deixar para depois do 25.
 - Acervo de referências (backlog sem gatilho): vídeos em motion; primeiro item https://youtu.be/mZ27vUoOEB0.
 
@@ -111,4 +113,4 @@ Depois, confira o mundo real: `maestri list`, `git -C C:\context-hub log --oneli
 ## Diário (mais novo embaixo; o anterior está em `etapas/diario-da-construcao.md`)
 
 - 20:50: retomada limpa; diário e quadros antigos movidos para `etapas/diario-da-construcao.md`. Retomadas dos recrutas
-  limpas (Vela 633 → 47, Rebite, Fiel pelos próprios; Brasa, Cinzel, Trilho, Lume, Fielzinho por subagente).
+  limpas (Vela 633 → 47, Rebite, Fiel 31 pelos próprios; Brasa 236 → 38, Cinzel 33, Trilho 35, Lume 52 com a fila viva, Fielzinho 10 por subagente).
