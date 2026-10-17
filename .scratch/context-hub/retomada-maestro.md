@@ -357,3 +357,4 @@ nuvem.
 - 18:20: ronda: fase 7 rodando (Vela, 18:15; 3,2 GB livres). Fiel religado (conversa nova) para as rodadas curtas do 22 (22811cb) e 24 (2000575). Vela 43%: limpa depois da 7.
 - 18:24: diagnóstico da Brasa (A→B): replicação contínua desiste calada; conserto candidato daemon --interval 5 (produção; Para rever). Reprodução depois da fase 7, teto 20h.
 - 18:26: 25 fase 7 VERDE (18:23, cee35c1; mín. 939 MB). 25 hoje: 1-3, 5, 6, 7 verdes (Claude+Copilot); Codex 1 e 3 verdes; faltam 4 e Codex 2 (descida A→B, Brasa com a trava desde 18:23). Vela /clear.
+- 18:34: Fiel PASSA 24 (2000575) e 22 (22811cb), ressalva comum: evidência não grava o modelo. Rebite junta os dois. Vela pede revisão parcial do 25.
