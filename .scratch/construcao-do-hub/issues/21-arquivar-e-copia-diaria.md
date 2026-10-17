@@ -1,7 +1,7 @@
 # 21: Arquivar e cópia diária
 
 Type: task
-Status: ready-for-agent
+Status: claimed
 Etapa: 9 (manutenção e cliente)
 Blocked by: 08, 16
 
@@ -16,3 +16,5 @@ Blocked by: 08, 16
 - [ ] conferir a cabeça recusa bloco ausente ou longo
 
 ## Comments
+
+- 07:31 (maestro, mandato): começa já com o Trilho, num ramo ticket-21 da ponta de `integracao` com o `ticket-16` juntado por merge (o item da cópia diária na vigia é do 16). As partes que dependem do 08 entram quando ele for juntado. Junção só com 08 e 16 resolvidos.
