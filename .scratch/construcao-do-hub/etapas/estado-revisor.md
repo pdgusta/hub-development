@@ -191,3 +191,4 @@ Fielzinho sem cota até 12h15. Leituras dele pendentes: 17 r2, 11 r1, mais a fil
 18 r1: VOLTA (Fiel sozinho), conserto 1: fim cobra nota pela gravação de outra sessão (mudados por mtime no hub inteiro; sonda reproduzida). Vela avisada.
 23 r1 (Cinzel, esqueleto do kit, e9dcef7 com integracao e98a891): pedido ~09h10; Fiel sozinho.
 23 r1: VOLTA (Fiel sozinho), conserto 1: juntarHooks duplica hook quando o fragmento muda (sonda reproduzida). Nada global (hashes iguais). Cinzel avisado.
+18 r2: PASSA com ressalvas (shell não anotado; corrida no anotar reproduzida; NotebookEdit). Vela avisada. 23 r2 pedido (f304e6c).

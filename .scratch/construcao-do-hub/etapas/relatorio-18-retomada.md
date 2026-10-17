@@ -103,6 +103,16 @@ Rodadas:
   provas pedem `apply_patch`/`create`. O `PostToolUse` do `apply_patch` no Codex não foi visto ainda no real.
 - Falta: o real de novo (Claude e Copilot pela fila; Codex depois das 12h15), commit só de evidência.
 
+## Rodada 2 do Fiel: passa com ressalvas (e1c5eac); 2 e 3 consertadas depois
+
+- (1) Gravação por shell fica fora da lista: regressão de cobertura do 27. Levada ao maestro (aceitar ou somar uma
+  rede).
+- (2) Corrida no `anotar` (8 em paralelo perdiam caminho; leitura no meio virava "sem marca"). Conserto: a lista vai
+  num arquivo à parte (`<sessão>.gravados`), uma linha por anotação com `appendFileSync`; a sessão é gravada por troca
+  atômica; a marca de turno novo apaga a lista. Teste das oito em paralelo: vermelho 1 em 3 antes, verde 4 em 4 depois.
+- (3) `NotebookEdit` no matcher do Claude; o `anota` pega o `notebook_path` (a guarda do 14 não muda). Teste novo.
+- 18, 27, 17, 19, 14, provas reais (puladas) e harness-real: 114 passam, 8 pulados. Pede rodada curta de código.
+
 ## Fora deste ticket
 
 - Banco fora com o MCP parado (pede o fork e o Docker): só a regra no `AGENTS.md`.

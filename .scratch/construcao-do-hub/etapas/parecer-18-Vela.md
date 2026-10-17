@@ -39,3 +39,28 @@ pendente (rodada curta depois das 12h15). Junção só depois do 17 e do 16.
 2. Copilot só pelo hook `agentStop`, sem a extensão `onAgentStop`; memória privada só a do Claude Code; juntar as
    passagens na nota sem mecanismo; a opção A muda o spec. Os quatro estão declarados para rever com o Gustavo.
 3. `ehNota` aceita qualquer `retomada.md` dentro da iniciativa (ex.: `research/retomada.md`) como nota.
+
+## Rodada 2 — 2026-10-17 ~09h50 (HEAD e1c5eac)
+
+Veredito: **PASSA com ressalvas** (Fiel sozinho; Fielzinho sem cota até 12h15, leitura pendente). Codex real e a
+repetição real de Claude e Copilot vão em commit só de evidência, com rodada curta.
+
+- Conserto 1 feito, no núcleo (resolve o 27 junto): modo `anota` no PostToolUse/postToolUse guarda no arquivo da
+  sessão os caminhos que o harness informou (adaptadores da guarda do 14); fim, nota e `last_agent` só por essa lista.
+  Fragmentos: `claude.json` novo (`Write|Edit|MultiEdit`), `apply_patch` no Codex, `create|edit|apply_patch` no Copilot.
+  Ressalva 3 feita (`research/retomada.md` não é nota).
+- Testes (Fiel): 18, 27, 17, 19, 14 e harness-real: 112/112. Árvore limpa.
+
+Ressalvas novas:
+1. **Gravação por shell não entra na lista** (declarado no relatório). É regressão de cobertura do 27: antes o
+   verificador olhava todo arquivo mudado; agora o que o Codex ou o Claude gravam por shell (`Bash`, `Set-Content`,
+   script) escapa do verificador e da nota. Levar ao maestro: aceitar, ou somar uma rede (ex.: `vigia passada` ou o
+   `conferir` diário passando o verificador no que mudou).
+2. **Corrida no `anotar`** (sonda do Fiel): ler, juntar e regravar o arquivo da sessão sem trava. 8 anotações em
+   paralelo na mesma sessão gravaram 7 caminhos em duas de três rodadas; uma leitura no meio da escrita também pode
+   ver o JSON pela metade e tratar a sessão como "sem marca" (solta). Só pesa se o harness rodar os hooks de
+   ferramentas de escrita em paralelo (não verificado). Conserto barato: uma linha por anotação, por acréscimo
+   (`appendFileSync`), num arquivo à parte.
+3. Matcher do Claude sem `NotebookEdit`.
+4. O kit (23) passa a precisar juntar o `claude.json` novo do fim da resposta no `settings.json` (o Cinzel já
+   preparou o teste do 23 para isso).

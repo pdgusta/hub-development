@@ -1,10 +1,11 @@
 # Relatório do ticket 16: vigia, passada, estado e notificação (Trilho)
 
-2026-10-17 07:20. Rodada 1 do Fiel foi leitura intermediária (parecer-16-Trilho.md); ressalvas feitas. Falta o 08.
+2026-10-17 07:20. Rodada 1 do Fiel foi leitura intermediária (parecer-16-Trilho.md); ressalvas feitas.
+2026-10-17 09:10: cenários do 08 ligados (seção "Cenários do 08"); pronto para a rodada final. HEAD 280b778.
 
 ## Estado
 
-- Ramo `ticket-16` (HEAD c36ece4, com integracao 9cc878b: o 10 junto), worktree `C:\context-hub-wt\ticket-16`, de `integracao` 33b817a.
+- Ramo `ticket-16` (HEAD 280b778, com integracao e98a891: o 08, o 10 e o 15 juntos), worktree `C:\context-hub-wt\ticket-16`, de `integracao` 33b817a.
 - Começou antes dos bloqueios (maestro, 04:23): os cenários do 08 e o `estado_do_hub` real do 10 entram quando eles
   forem juntados. **Junção só com 08 e 10 resolvidos.**
 - Conserto do 12 em commit à parte (pedido do maestro), b4e7272: `agents/skills/busca/SKILL.md` não cita mais a
@@ -71,8 +72,10 @@
 
 ## Testes
 
-- Sem Docker: `node --test agents/code/test/16-vigia.test.mjs`: 12/12 (dublê HTTP do CouchDB, CLI falso em
-  `agents/code/test/vigia/`, notificador dublê).
+- Sem Docker: `node --test agents/code/test/16-vigia.test.mjs`: **19/19** em 280b778 (~5,5 min; dublê HTTP do CouchDB,
+  CLI falso em `agents/code/test/vigia/` com `daemon`, notificador dublê, retrato `binario-ramo-apagado.json` do 08).
+  Casos novos: binário descartado até `olhei`; `olhei` sem descartado; sincronizador parado e o laço; acima de 200 MiB
+  (o de 200 e o com ponto ficam fora); gerador muda a lista e religa; gerador recusa; Config Doctor.
 - Docker: `pwsh -NoProfile -File agents/code/test/16-vigia.test.ps1` (hub-ensaio-16-a/b, 5996/5997, pela fila).
   - 1ª rodada (05h): 6 falhas (achados 1 a 3, base da colisão antes do hub inteiro replicar).
   - 2ª (05:14, `logs/trilho-16-docker-2.log`): 10 passam; forja do ramo apagado com 409, sem dados.
@@ -83,10 +86,40 @@
   - 5ª (07:01): caminho do passo 05 estragado no teste (084b138). 6ª: o fork padrão não tem o `estado_do_hub`.
   - 7ª (07:10, `logs/trilho-16-docker-7.log`, c36ece4, `HUB_MCP_BANCO_DIR` = fork do 10): **tudo passou** (15 casos,
     com o `estado_do_hub` real e o `recuperar` de uma cópia só).
+  - 8ª (08:56, `logs/trilho-16-docker-8.log`, 280b778, `HUB_MCP_BANCO_DIR` = `hub-mcp-banco-wt/ticket-11`): **tudo
+    passou** (20 casos). Novos: a passada lista o binário descartado pelo caminho em claro (o daemon apagou o ramo, sem
+    forja); recuperado conta como olhado; sincronizador parado (`Stop-Sincronizador`) aponta; `Invoke-VoltaLaco`
+    religa e a passada diz "CLI religado"; pasta local nova muda a lista e a vigia religa o sincronizador (PID novo).
+    O registro da 5ª rodada (07:01) foi sobrescrito por engano nesta e se perdeu; o resumo dela fica aqui.
+
+## Cenários do 08 (rodada 2, 2026-10-17 ~09h20, 280b778; integracao e98a891 com o 08 juntada em 24ffb0b)
+
+Decisões do maestro (~08h50, no ticket 16), sobre dois pontos abertos do spec:
+- **"Até o Gustavo olhar"**: o binário descartado conta como divergência até o `vigia recuperar` dele ou um
+  `vigia olhei <caminho>`. As revisões olhadas ficam em `.local/vigia/olhados.json`; uma descartada nova volta a contar.
+- **Config Doctor**: no fonte do plugin 1.0.35 (`performDoctorConsultation`), o Doctor abre na partida quando a versão
+  da `DoctorRegulation` não é a `doctorProcessedVersion` das configurações. A vigia compara as duas pelo `main.js` e pelo
+  `data.json` de `<hub>/.obsidian/plugins/obsidian-livesync/`: diferentes = `informa` "Config Doctor pendente".
+  Plugin ausente ou sem configurar: nada. **Não verificado com o Obsidian aberto.**
+
+O que a passada ganhou:
+- `binario:<caminho>` (`divergencia`): `_changes?style=all_docs` → documentos com mais de uma folha → `open_revs=all`;
+  folha apagada com `path` ao lado da viva. O caminho em claro é o do `ls` do leitor com a rev da viva.
+- `acima-do-limite:<caminho>` (`divergencia`): o `Get-AcimaDoLimite` do kit (mesma regra das pastas locais).
+- `sincronizador` (`informa`): `Get-PidSincronizador` vazio.
+- `laco` (`informa`): o que o laço fez desde a passada anterior, pelo `laco.log` do par (com `voltas`).
+- `exclusoes` (`informa`): o gerador roda a cada passada (decisão de 2026-10-16 20:38). Lista mudada: o kit para e religa
+  o sincronizador vivo (parado, fica para o laço). Código 2: o resumo traz o `index.md` ilegível; não religa.
+- `config-doctor` (`informa`).
+- O kit é chamado por `agents/skills/vigia/kit.ps1` (um pwsh por passada: `Read-EnvPar`, `-Religar`, PID, acima do
+  limite). Custa ~4 s por passada nesta máquina; a vigia roda a cada 5 min.
+- `vigia olhei`; o `recuperar` que deu certo marca como olhado.
+- A ressalva do 08 sobre o `Restore-RamoApagado` sem `finally` não toca o `recuperar`: ele tem receita própria
+  (`recuperar.ps1`), com `finally` que apaga a cópia e o leitor dela, e o Docker confere a cópia saindo.
 
 ## O que espera o 08 e o 10
 
-- 08 (Brasa): binário descartado na passada, acima de 200 MiB, sincronizador parado, gerador de exclusões a cada passada
-  (código 2 vira item com o caminho), item `fim-da-resposta` casado com o hook do 27.
+- 08: resolvido e juntado; cenários ligados (acima). A fatia 2 do 08 (51 e 201 MiB pelos pares) segue pendente lá; aqui o
+  acima do limite é provado só no disco (sem Docker), que é o que a vigia lê.
 - 10: juntado (9cc878b); feito.
 - 27: feito (item pela lib).

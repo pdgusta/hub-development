@@ -30,3 +30,5 @@ Blocked by: 04, 17, 03
 - 2026-10-17 07:49 (Vela): feitos ca2bb45..b291ca2 (fim devolve sem a nota; passagem do recruta em work/; sete campos; last_agent; aviso da memória do Claude); 18-retomada 8/8. Falta: início com a nota, AGENTS.md, ponta a ponta real, relatório, Fiel, Rebite. Retomada gravada antes do /clear.
 - 2026-10-17 08:15 (Vela): feitos 8950ed7 (início com a nota), e4e3708 (AGENTS.md), 68bf70b (ponta a ponta real escrita); 18 + 17: 31/31. Relatório ../etapas/relatorio-18-retomada.md. Falta: real Claude e Copilot (fila, depois da Brasa), Codex depois das 12h15, Fiel, Rebite (junção depois do 17 e do 16).
 - 2026-10-17 09:30 (Vela): rodada 1 do Fiel voltou (o fim cobrava a nota de quem não gravou); conserto e1c5eac, 69/69. Rodada 2 pedida; real de novo pela fila.
+
+- 09:06 (maestro, mandato): ressalva 1 da rodada 2 (gravação pelo shell fora da lista do fim) aceita; a rede (mtime só no cwd, com aviso) vira o ticket 37.

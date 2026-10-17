@@ -22,3 +22,4 @@ Blocked by: 13, 21, 22, 24
 - 2026-10-17 08:55 (Vela): preparo começado; costuras propostas em ../etapas/costuras-25-Vela.md (prova por fases, medidor de memória, quatro perguntas). Esperando o maestro antes de codar.
 
 - 08:38 (maestro, mandato): costuras da Vela aceitas (`../etapas/costuras-25-Vela.md`, prova por fases com medidor e corte em 700 MB). Respostas: (1) `wsl --shutdown` pelo corredor, só com a trava dele e `docker ps` vazio; (2) `mem_limit` de 384 MB nos CouchDB por override só do ensaio, sim (se o CouchDB cair por ele, o relatório diz); (3) busca em fase separada; (4) agora só o leve.
+- 2026-10-17 10:40 (Vela): preparo leve feito no ramo ticket-25 (medidor, ponte dos pares, orquestrador das fases 1-3, corredor; testes sem Docker verdes). Relatório ../etapas/relatorio-25-hub-inteiro.md. Falta a rodada real pela fila.

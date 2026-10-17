@@ -44,7 +44,7 @@ harness de verdade". Um subagente por vez (tarefa leve) e até três Haiku de es
 
 ### Próximo passo exato
 
-1. **A vez na trava** (08h45). Ponta `806898d` (384 MB por CouchDB por `docker update`, combinado com a Vela; contar a ela o pico medido). Fila (maestro, 08h50): Rebite, Trilho (21), Cinzel (24), eu; o Cinzel me avisa. Era: eu no fim
+1. **A vez na trava** (08h45). Ponta `7e2a255`, com `integracao` e98a891 juntada, sem Docker 4/4 (384 MB por CouchDB por `docker update`, combinado com a Vela; contar a ela o pico medido). Fila (maestro, 08h50): Rebite, Trilho (21), Cinzel (24), eu; o Cinzel me avisa. Era: eu no fim
    da fila (item 5). Quem soltar me avisa; ao soltar a minha, avisar quem o maestro disser (era a Vela).
    - 4 voltas hoje: (1) submódulo do fork não iniciado (feito); (2) sobra da 1ª, o `-Manter` não descia na falha
      (c95a265); (3) volume de dados que sobrou da minha limpeza à mão (`docker rm -f` não leva volume: usar também
