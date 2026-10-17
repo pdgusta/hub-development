@@ -1,7 +1,7 @@
 # 22: Proxy e kit de cliente
 
 Type: task
-Status: ready-for-agent
+Status: claimed
 Etapa: 9 (manutenção e cliente)
 Blocked by: 10, 12
 
@@ -20,3 +20,5 @@ Blocked by: 10, 12
 - 2026-10-16 23h10 (integrador, Rebite): lição do ticket 12 (parecer do Fiel, `etapas/parecer-12-Trilho.md`): `agents/skills/busca/iniciar.ps1` não passa `--allowed-host`; quando a busca for servida pelo proxy, o Host observado precisa entrar (spec, Worker 3). O servidor da busca também faz `GET registry.npmjs.org/.../latest` a cada partida.
 
 - 06:38 (maestro): abre com o 10 juntado (9cc878b); vai ao primeiro construtor livre (provável: o Trilho, depois do 16).
+
+- 06:50 (maestro): passado à Brasa (o 10 está juntado em 9cc878b; o 12 resolvido).

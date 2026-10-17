@@ -178,3 +178,4 @@ nuvem.
 - 06:46: Fiel limpo e retomado (passaram hoje 28, 12, 35, 33, 09, 36, 10).
 - 06:49: ronda; memória livre 577 MB (suíte do Rebite + npm test do fork). Brasa limpa; 08 vai à revisão com a fatia 2 pendente (evidência numa hora quieta). Fielzinho com cota de novo.
 - 06:49: 11 pronto para o harness real (c21dbf1). Fila: Rebite (agora), Trilho (16+15), Vela (17), Cinzel (11), Brasa (fatia 2 com máquina quieta; o maestro avisa). Memória livre voltou a 2,1 GB.
+- 06:52: 08 na revisão (124f43d). Brasa no 22.

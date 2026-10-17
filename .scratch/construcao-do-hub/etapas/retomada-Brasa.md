@@ -7,7 +7,9 @@ especial "Um trabalho pesado por vez" (a trava `etapas/trava-pesada.md`) e "Test
 - Maestro: `maestri ask "Claude Code" ...`.
 - Fila: o ticket 07 agora, depois o 08 (receita da etapa 2, opção A).
 
-## Ticket 08 (banco: limites e robustez): só falta a fatia 2, depois a revisão
+## Ticket 08 (banco: limites e robustez): em revisão com o Fiel; a fatia 2 pendente
+
+- ~07h: revisão pedida ao Fiel (decisão do maestro) com a fatia 2 pendente no relatório. Ponta 124f43d (integracao 9cc878b juntada; sem Docker verde). A fatia 2 roda quando o maestro disser que a máquina está quieta; o Fiel fecha a rodada com ela. Passos 1 e 3 abaixo: o 3 já foi.
 
 - Ramo `ticket-08`, worktree `C:/context-hub-wt/ticket-08`, ponta b02fa4f (com `integracao` 9453e3e juntada em 68fc451).
 - Costuras confirmadas pelo maestro ~03h15 (comentário no ticket 08). Retrato em `agents/code/test/banco/retrato/`.
