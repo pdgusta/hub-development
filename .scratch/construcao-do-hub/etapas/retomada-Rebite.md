@@ -53,3 +53,5 @@ entrou), `fila-pesada.md`, e esta retomada.
   Sem conflito com e2b7607, nenhum arquivo em comum, sem ramo no fork. Juntar depois que a suíte do 15 acabar; então
   rodar `pwsh -File agents/code/test/banco/kit-sem-docker.ps1` (leve) e a suíte de novo com a trava; Docker não repito
   (arquivos idênticos aos revisados). Ressalvas do fechamento do parecer vão no comentário do ticket.
+- 07:50: ticket 17 avisado pela Vela (3e8bbc8, passa r2). NÃO juntar: mandato do maestro, só depois do 16 resolvido;
+  aí a Vela junta integracao no ramo, testa sobre o estado.json real, rodada nova do Fiel, e me avisa de novo.

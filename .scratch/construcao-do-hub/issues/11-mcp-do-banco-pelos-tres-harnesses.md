@@ -26,3 +26,4 @@ Blocked by: 10, 03
 
 - 07:32 (maestro): lição do 15 (Trilho): no Codex, `mcp__hub-banco__...` chega ao hook como `mcp__hub_banco__...` (hífen vira sublinhado); confira nos matchers e no que o harness cita.
 - 2026-10-17 07:45 (Cinzel): rodada 1 com harness real: Claude Code e Copilot (sem e com a opção) PASSA; o Codex falhou por erro do teste (conserto bfd1af3); rodada só do Codex na fila. Hub `ticket-11` bfd1af3.
+- 2026-10-17 ~07h55 (Cinzel): Codex sem cota até 12h15 (maestro): fecho o que dá com Claude e Copilot. Hub `ticket-11` ab374b4 (com `integracao` e2b7607). Revisão pedida ao Fiel da parte fechada; o Codex roda depois de 12h15 (fila, item 4) e entra como rodada 2.

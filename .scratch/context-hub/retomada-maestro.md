@@ -199,3 +199,5 @@ nuvem.
 - 07:37: real do 11 (07:28-07:36): Codex falhou, Cinzel analisa. Máquina quieta (3,1 GB): Brasa roda a fatia 2 do 08 agora, depois o Docker do 22; depois Rebite (suíte do 15).
 - 07:41: fatia 2 do 08 caiu de novo (3.183 → 621 MB); vira item do Gustavo; 08 fecha a revisão com ressalva. wsl --shutdown liberado à Brasa (sem contêineres).
 - 07:46: Codex sem cota até 12:15. Fiel fechou sozinho: 17 r2 passa, 08 passa com ressalvas (fatia 2 do Gustavo), 15 passa. 08 → Rebite; depois o 16 pode juntar.
+- 07:47: ronda; Rebite com a trava (suíte do 15, 07:40); Brasa 40%, Vela 43%, Cinzel 41%: salvar no próximo ponto seguro; 1,7 GB livres.
+- 07:50: Cinzel (11 em revisão, menos Codex) e Brasa (22 esperando a trava) limpos e retomados.

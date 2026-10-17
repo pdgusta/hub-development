@@ -321,3 +321,45 @@ node --test agents/code/test/05-frontmatter.test.mjs
 - 17 em revisão no Fiel (86c5a88): não mexer na worktree ticket-17.
 - 07:37 (18): ca2bb45 (fim devolve sem a nota) e 511ad2a (passagem do recruta em work/, work_kind handoff); 18-retomada 5/5. Próximo: sete campos + next_step, last_agent, aviso da memória do Claude, início com a nota, AGENTS.md, ponta a ponta.
 - 07:40 (17): rodada 1 VOLTA (estado sem passada); conserto 3e8bbc8, 16/16, mod 2/2; rodada 2 pedida ao Fiel. Não mexer na worktree ticket-17. 18 parado em b2ba08d (próximo: last_agent).
+- 07:49 (17): rodada 2 PASSA (3e8bbc8); Rebite avisado (junção só depois do 16; depois do 16: merge, teste sobre estado real, rodada nova).
+
+## PRÓXIMO (gravado 2026-10-17 ~08h40, antes do /clear pedido pelo maestro, contexto 43%)
+
+- Encerrados nesta sessão: 36 (juntado e resolvido, integracao 9cc878b). 17: rodada 2 do Fiel PASSA em 3e8bbc8; Rebite
+  avisado; **junção só depois do 16**. Quando o 16 entrar em integracao: no ramo ticket-17, `git merge integracao`, teste
+  sobre o estado.json que o `vigia passada` grava (no lugar do exemplo fixo; ver também a ressalva 1 do parecer:
+  `outro_par.situacao = nao-verificavel` perde o motivo), rodada nova do Fiel, então o Rebite junta.
+- **Ticket atual: 18, retomada** (issues/18-retomada-nota-inicio-e-fim.md, claimed). Ramo ticket-18, worktree
+  C:/context-hub-wt/ticket-18 (integracao 9cc878b + ticket-17 até 3e8bbc8, merge 5dedcc1). Junção só depois do 17 e do 16.
+- Decidido pelo maestro (07h40): **opção A** (registrada no 18 como mudança do spec para rever com o Gustavo) e as
+  costuras de etapas/costuras-18-Vela.md.
+- Feito (commits; `node --test agents/code/test/18-retomada.test.mjs` 8/8; com o 27, 24/24):
+  - ca2bb45: agents/code/hooks/retomada/nota.mjs (iniciativaDe, recruta, notaDe, conferirRetomada) ligado no
+    fim-da-resposta/nucleo.mjs: o turno que gravou numa iniciativa (fora das notas) sem mudar a nota é devolvido (mesma
+    conta de 3 do 27).
+  - 511ad2a: recruta (MAESTRI_TERMINAL_ID sem HUB_PAPEL=maestro) → passagem `<ini>/work/passagem-<terminal>.md`
+    (frontmatter work_kind: handoff, stage: open, agent: <terminal>; a devolução diz isso).
+  - b2ba08d: nota que mudou sem um dos sete rótulos (`- **Rótulo:**`) é falta; o next_step o verificador já cobra.
+  - c603970: last_agent na retomada.md de quem conduz ("<claude-code|codex|copilot> <modelo>"); modelo: evento.model
+    (Codex, doc "Common input fields"), transcript (Claude, modeloDaSessao do acervo/decidir.mjs), Copilot sem modelo.
+    fim(hub, sessao, env, quem) agora recebe quem = { harness, modelo, memoria }.
+  - b291ca2: memória do Claude (`<CLAUDE_CONFIG_DIR|~/.claude>/projects/<cwd com - no lugar de [^A-Za-z0-9-]>/memory/`)
+    que mudou no turno vira aviso único (cabeçalho "Antes de terminar:"), sem gastar devolução.
+- **Falta (próximo passo exato):**
+  1. Início: no `tela.mjs inicio` (do 17), depois do estado da vigia, a nota da iniciativa onde a sessão abre (subir da
+     pasta; `iniciativaDe` do nota.mjs), mais a passagem do recruta, se houver; na raiz ou fora de iniciativa: "nenhuma
+     nota aberta; ache o trabalho pela busca, pelo nome que o Gustavo der, ou pergunte"; corte em ~4.000 caracteres com
+     o caminho. Teste antes em 18-retomada.test.mjs (com e sem vigia, na raiz, fora do hub, recruta).
+  2. AGENTS.md: uma linha na cabeça (hoje 1.695 de 2.000; o verificar-hub mede) e uma seção curta (sete campos, fato e
+     hipótese, passagem do recruta, banco fora: troca de trecho e pendência em "Perguntas abertas"). Ver se o
+     04-esqueleto/verificar-hub continuam verdes.
+  3. Ponta a ponta real agents/code/test/ponta-a-ponta/18-retomada.test.mjs (molde do 17/27; fragmentos do fim do 27
+     e do início do 17 no HOME de ensaio; Claude com --plugin-dir do mod fim-da-resposta): sessão 1 numa iniciativa
+     (criar nota em research/) → devolve → atualiza a nota (sete campos) → solta; sessão 2 na mesma pasta responde o
+     próximo passo pela nota. Pela fila/trava (etapas/fila-pesada.md), harness real só quando a máquina não estiver
+     quieta para a Brasa.
+  4. Relatório etapas/relatorio-18-retomada.md (escolhas, opção A, Copilot só agentStop, memória só do Claude, fora:
+     banco fora, cliente, trabalho fora de iniciativa), Fiel, Rebite.
+- Armadilhas desta sessão: o Edit exige ler o arquivo antes (perdi três edições assim); heredoc com 'EOF' preserva
+  as barras, mas `\.` em template literal dentro de RegExp vira `\.`; TEMP isolado precisa de caminho curto ($TEMP/v36)
+  senão o git dá "Filename too long"; o detector do 29 pega 'codex.json' como codex\.js (usar nome sem extensão).

@@ -181,3 +181,4 @@ Codex com cota a partir de 06:58: às 06:59 repasso ao Fielzinho a lista de leit
 17 r1: VOLTA em acordo (conserto 1 do Fielzinho, reproduzido: estado sem passada vira em ordem). 15 fechado PASSA (aviso ao Trilho em segundo plano).
 08 FECHADO: PASSA com ressalvas (fatia 2 vira item do Gustavo, decisão do maestro; fatia 1 sem rerun, atenuada pelo 07 em b02fa4f). 17 r2 (3e8bbc8): 16/16, repro agora sem defeito (Fiel); falta Fielzinho.
 17 r2: PASSA (Fiel sozinho; Fielzinho sem cota até 12h15, leitura pendente da r2 e da fila atrasada). Vela e Brasa avisadas.
+11 r1 (Cinzel, hub ab374b4, fork ticket-11): pedido ~08h20; Fiel sozinho (Fielzinho sem cota até 12h15). Codex na r2.

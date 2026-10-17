@@ -5,15 +5,16 @@ simples; suíte inteira só na junção, pelo Rebite; fila do pesado em `etapas/
 (Comments), `etapas/costuras-16-Trilho.md`. Responda em pt-BR, frases curtas. Maestro = "Claude Code"; revisor =
 "Fiel"; integrador = "Rebite"; outros construtores: Brasa (08), Vela (28), Cinzel (09, 10).
 
-## Agora (07:40)
-- 15: **Codex de verdade passou** (evidência 0283b2c). Consertos: 03f85fb (sandbox_mode no config.toml de ensaio do
-  Codex) e 64d6875 (no Codex a busca chega ao hook como `mcp__hub_busca__search`). Ramo com integracao 9cc878b
-  (3d34bd1). Relatório e comentário no ticket feitos. **Pedida a rodada do Fiel** (07:38); depois do passa, o Rebite.
-- 16: ressalvas do Fiel feitas; estado_do_hub real; fim-da-resposta pela lib. Docker 7ª rodada tudo passou
-  (`logs/trilho-16-docker-7.log`, c36ece4, com `HUB_MCP_BANCO_DIR=C:/Projetos/hub-mcp-banco-wt/ticket-11`, o fork do 10
-  compilado). Sem Docker 12/12. Relatório atualizado. **Falta o 08** (Brasa): juntar, cenários (binário descartado na
-  passada, 200 MiB, sincronizador parado, Config Doctor, gerador a cada passada) e a rodada final do Fiel.
-- Trava: soltei às 07:27, avisei o Rebite.
+## Agora (08:10)
+- **21 (arquivar e cópia diária)**, claimed. Worktree `C:/context-hub-wt/ticket-21`, ramo `ticket-21`, de integracao
+  9cc878b + ticket-16 (c36ece4). Costuras aceitas (`etapas/costuras-21-Trilho.md`, com as respostas). Feito:
+  conferir-cabeca (5061cc3, `lib/cabeca.mjs` usada também pelo verificar-hub; 21-conferir-cabeca.test.mjs 4/4),
+  copia-diaria (9d3efa4, d28e1e7; 21-copia-diaria.test.mjs 4/4; `10.env.modelo`). Falta: limpar-arquivo (só
+  simulando), arquivar (skill `agents/skills/arquivar/`, dublê dos dois CouchDB, molde do 16), Docker do arquivar
+  (pela fila; nele, copia com remoto quebrado + vigia passada notificando), relatório, Fiel. 08 entra quando juntado.
+  Rodar também 04-esqueleto e 05-frontmatter (mexi no verificar-hub) e o 07-kit-sem-docker (env novo).
+- 15: passou no Fiel; com o Rebite. 16: falta o 08 para a rodada final do Fiel.
+- Nada pesado enquanto a Brasa roda a fatia pesada do 08 (maestro, ~08h).
 
 ## Fechados nesta sessão
 12 (rodada 3, só a search nos três harnesses), 13, 33 e 35: juntados e resolvidos (integracao 33b817a).
