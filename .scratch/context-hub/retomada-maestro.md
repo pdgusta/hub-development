@@ -359,3 +359,4 @@ nuvem.
 - 18:26: 25 fase 7 VERDE (18:23, cee35c1; mín. 939 MB). 25 hoje: 1-3, 5, 6, 7 verdes (Claude+Copilot); Codex 1 e 3 verdes; faltam 4 e Codex 2 (descida A→B, Brasa com a trava desde 18:23). Vela /clear.
 - 18:34: Fiel PASSA 24 (2000575) e 22 (22811cb), ressalva comum: evidência não grava o modelo. Rebite junta os dois. Vela pede revisão parcial do 25.
 - 18:50: causa A→B achada (Brasa): semente de ~6,5 min depois da subida; conserto no 25 (pares.ps1 espera o B convergir; fase 2 120 s), Vela. --interval fora. Suíte 24+22 (Rebite) rodando.
+- 18:51: Brasa fora de novo (`claude --resume f538f66e-6cb5-4a2d-bc3d-16815b8e0c68`), nada pendente.
