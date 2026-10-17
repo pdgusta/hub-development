@@ -10,6 +10,7 @@ testes (09, 16): limpe os contêineres ao soltar.
 2b. (feito 15:20: 41, 40, 43 resolvidos; docs pendente da página do Lume)
 3. (feito 15:19: Codex do 18, Vela) (segura o 23 e o 37)
 4. (em curso 15:2x: Codex do 22, Brasa)
+4b. Rebite: suíte do 11 (51fa382) e do 18 quando passar, com os docs se a página do Lume já mudou
 5. Cinzel: Codex do 24 (depois do 23 juntado)
 6. Rebite: junções na ordem em que chegarem (11, 18, 37, 23, 24)
 7. Janela própria (só Vela e maestro), antes das 20h: fases 4 e 7 do 25 e as do Codex (Docker ligado bem antes; diagnóstico 3c1221a)
