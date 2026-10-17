@@ -385,3 +385,4 @@ nuvem.
 - 19:49: 25 PASSA r2 no Fiel (com ressalvas) e juntado (ca62332); suíte desde 19:50, fim ~20:23.
 - 20:12: Gustavo: o 26 vira instalação nas DUAS máquinas (par 2 no outro PC: Claude Code, Maestri, admin, pode clonar o hub; 1º setup do jeito mais adequado; setup genérico de novo par depois). Comunicação entre os dois maestros: radar. Roteiro do 26 depois do reinício.
 - 20:17: 25 RESOLVIDO (suíte 370: 355/15/0; ca62332). CONSTRUÇÃO FECHADA (só o 26, do Gustavo). Nada pesado até o reinício.
+- 20:40: ronda (cron 269a3193) cancelada: construção fechada, todos parados até o reinício. Recriar depois do reinício só se houver trabalho (peças visuais).
