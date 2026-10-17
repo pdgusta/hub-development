@@ -1,0 +1,1 @@
+- Trilho (construtor), 2026-10-17 05:14: Docker do 16 (16-vigia.test.ps1, hub-ensaio-16-a/b, 5996/5997). Apago ao fim e aviso a Brasa.

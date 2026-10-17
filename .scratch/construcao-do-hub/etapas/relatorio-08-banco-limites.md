@@ -96,7 +96,7 @@ Corredor destacado `.local/fatias.ps1` (aval do maestro, ~04h10):
 | Fatia | O que prova | Resultado |
 |---|---|---|
 | 1 | nada com ponto nem `local: true` chega ao banco, na varredura de partida e com o CLI rodando | verde (rodada 03h37, 14 PASSA) |
-| 2 | 60 MiB viaja; 201 MiB não viaja, não entra no banco e fica identificável | PREENCHER |
+| 2 | 51 MiB viaja (60 na primeira versão; baixado pela memória da máquina, maestro 05h20); 201 MiB não viaja, não entra no banco e fica identificável | PREENCHER |
 | 3 | colisão de binário: a mais nova nas duas pastas; a perdida num ramo apagado, recuperada byte a byte antes e depois da compactação | PREENCHER |
 | 4 | conflito de texto aberto; retrato em dia | PREENCHER |
 | 5 | o kit de novo não muda nada (arquivos do kit, contêiner, replicação, PID) | PREENCHER |
@@ -105,6 +105,10 @@ Corredor destacado `.local/fatias.ps1` (aval do maestro, ~04h10):
 
 A primeira rodada (todas as fatias, 03h37) foi parada pelo Claude Code por falta de memória na máquina aos 18 min, na
 fatia 2. Limpei o daemon pelo PID, os contêineres, a pasta e a trava.
+
+A segunda tentativa da fatia 2 (05h11, destacada) foi cortada pelo próprio corredor: a memória livre caiu de 2.900 para
+513 MB em um minuto, com o arquivo de 60 MiB indo aos dois bancos. O Docker roda no WSL (`vmmemWSL`), que cresce com a
+carga. O maestro decidiu: fatias 3 a 7 e o teste do 07 antes; a 2 por último, com 51 MiB, numa hora de máquina quieta.
 
 ## Não verificado
 

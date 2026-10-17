@@ -155,3 +155,4 @@ nuvem.
 - 05:09: 28 passa (rodada 3), com o Rebite. Vela no 17 antes do 16, pelo mandato.
 - 05:09: 28 juntado (ea6f353), suíte pendente; Rebite na fila depois do Trilho (o 28 não bloqueia ninguém; ordem mantida).
 - 05:13: costuras do 17 aceitas (mod pela linha de status).
+- 05:17: 09 passa no Fiel (Cinzel leva ao Rebite; começa o código do 10). 28 passa. Fatia 2 do 08 derrubou a memória (2.900 → 513 MB): fatias 3-7 primeiro; a 2 com 51 MiB numa hora quieta. Fiel achou 1.325 pastas hub-ensaio-* em %TEMP% (testes que não apagam): varrendo.

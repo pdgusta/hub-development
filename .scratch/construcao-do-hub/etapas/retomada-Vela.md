@@ -255,3 +255,4 @@ node --test agents/code/test/05-frontmatter.test.mjs
   HTTP do FastMCP: POST responde text/event-stream ('data: {json}'); Accept: application/json, text/event-stream;
   initialize antes, header mcp-session-id nos pedidos seguintes. O e2e do fork tem um parseSSE que cai para JSON.
 - Teste agents/code/test/17-vigia-tela.test.mjs; script agents/code/hooks/vigia/tela.mjs.
+- 05h15: 2947951 (início nos três) e 7a3c445 (reserva pelo MCP, node:http sem agente: o fetch deixava conexão viva e o node caía ao sair, asserção do libuv); 17-vigia-tela 10/10. Próximo: notify do Codex.

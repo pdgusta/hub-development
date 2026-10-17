@@ -35,8 +35,8 @@ especial "Um trabalho pesado por vez" (a trava `etapas/trava-pesada.md`) e "Test
 
 ### Próximo passo exato
 
-1. Fila do pesado em `etapas/fila-pesada.md`: Rebite, Trilho (Docker do 16), eu. Só lançar quando o Trilho avisar "trava livre" (o aviso automático do Rebite não vale; o corredor pega a trava assim que ela fica livre, então não lançar antes da vez), lançar
-   destacado: `Start-Process pwsh -WindowStyle Hidden -ArgumentList '-NoProfile','-File','C:/context-hub-wt/ticket-08/.local/fatias.ps1','-Fatias','2,3,4,5,6,7,07'` (07 = teste do 07, o passo do kit mudou)
+1. Fila do pesado em `etapas/fila-pesada.md`: eu logo depois do Trilho. Só lançar quando o Trilho avisar "trava livre" (o aviso automático do Rebite não vale; o corredor pega a trava assim que ela fica livre, então não lançar antes da vez), lançar
+   destacado: `Start-Process pwsh -WindowStyle Hidden -ArgumentList '-NoProfile','-File','C:/context-hub-wt/ticket-08/.local/fatias.ps1','-Fatias','3,4,5,6,7,07'` (07 = teste do 07, o passo do kit mudou). A fatia 2 (51 e 201 MiB, a03b3ac) por último, numa hora de máquina quieta que o maestro combina
    e vigiar `etapas/logs/08-fatias.status` (Monitor com tail -F). Ao "PEGOU a trava": tirar o meu nome da fila. Ao
    "SOLTOU": avisar o próximo da fila (`maestri ask "<nome>" "trava livre, sua vez"`).
 2. Com SEM-MEMORIA (20 min abaixo de 2 GB): avisar o maestro, não forçar. Com "CEDE a trava ao Trilho" (depois das
@@ -67,7 +67,7 @@ especial "Um trabalho pesado por vez" (a trava `etapas/trava-pesada.md`) e "Test
 | teste do 06 | 14 PASSA | `.local/06-r2f.log` |
 
 - A fila tem conferência de memória: `.local/fila-docker.ps1`, registro em `.local/fila-docker.log`. Antes de cada
-  prova, abaixo de 2 GB livres, espera 3 min. O Docker roda numa VM do Hyper-V com 4 GB fixos.
+  prova, abaixo de 2 GB livres, espera 3 min. O Docker roda no WSL (vmmemWSL, cresce com a carga; ~2,2 GB em 05h12).
 - A fila não cria nem apaga a trava sozinha: criar antes e apagar depois, à mão.
 - O sistema parou a fila duas vezes por falta de memória (~23h05 e ~23h40). Limpei o que sobrou e registrei no
   relatório.
