@@ -59,6 +59,13 @@ Leia antes: `etapas/regras-da-construcao.md` (inteiras, com os "Achados comuns")
   ambiente no cabeçalho e a chave do Copilot para as instruções do servidor.
 - O Codex do 11 tem prioridade às 12h15.
 
+## Ticket 24: kit ao vivo (desde 08h50)
+
+- Worktree `C:/context-hub-wt/ticket-24`, ramo `ticket-24` do `ticket-23`. Costuras aceitas (`etapas/costuras-24-Cinzel.md`).
+- Teste `agents/code/test/ponta-a-ponta/24-kit-ao-vivo.test.mjs` escrito (pulado sem HUB_HARNESS_REAL). Próximo: pedir
+  lugar na fila; rodar `HUB_HARNESS_REAL=1 HARNESSES=claude,copilot node --test --test-concurrency=1 <arquivo>` com a
+  trava; o Codex depois das 12h15 (depois do Codex do 11). Log em `etapas/logs/24-harness-<n>.log`.
+
 ## Fatos de fonte (doc do Codex lida por curl em 2026-10-17)
 
 - <https://developers.openai.com/codex/mcp.md>:

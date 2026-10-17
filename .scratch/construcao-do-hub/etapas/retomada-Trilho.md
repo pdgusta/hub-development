@@ -22,7 +22,16 @@ Leia antes: `etapas/regras-da-construcao.md` (inteiras), `etapas/fila-pesada.md`
   corredor do 22 da Brasa; ao soltar, avisar quem a fila disser). Verde: relatório, comentário no ticket 21, Fiel.
   Junção só com 08 e 16 resolvidos.
 
-### B. Ticket 16 (vigia): o 08 foi juntado; ligar os cenários do 08 e pedir a rodada final ao Fiel
+### B. Ticket 16 (vigia): cenários do 08 em andamento (09h05, sem commit ainda)
+- Maestro aceitou (08h50): binário descartado conta até `vigia recuperar` ou `vigia olhei <caminho>` (olhados em
+  `.local/vigia/olhados.json`); Config Doctor = `doctorProcessedVersion` do data.json do plugin diferente da versão da
+  `DoctorRegulation` no main.js → informa. Proposta em `costuras-16-Trilho.md`, "Cenários do 08 na passada".
+- Feito (não commitado): vigia.mjs (descartados, olhei, doKit pelo `agents/skills/vigia/kit.ps1` → banco.psm1: PID,
+  acima do limite, religar com `-Religar`; gerador a cada passada; laço pelo laco.log; configDoctor); cli-falso com
+  `daemon`; testes novos no 16-vigia.test.mjs (binário, sincronizador/laço, 200 MiB, gerador muda/recusa, Config
+  Doctor). Cada passada custa ~4 s de pwsh: a suíte leva ~5 min. Não editar vigia.mjs com a suíte rodando.
+- Falta: suíte verde, commit, cenários no Docker (`16-vigia.test.ps1`), relatório, Fiel.
+### B0. (antes) o 08 foi juntado
 - Worktree `C:/context-hub-wt/ticket-16`, ramo `ticket-16`, HEAD 24ffb0b (integracao e98a891 junto: o 08 e o 15).
   `node --test agents/code/test/16-vigia.test.mjs` 12/12.
 - Maestro (08:2x): ligar os cenários que dependiam do 08: **binário descartado na passada, acima de 200 MiB,
