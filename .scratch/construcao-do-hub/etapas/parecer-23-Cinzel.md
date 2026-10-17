@@ -41,3 +41,18 @@ Veredito: **VOLTA**, por 1 conserto. Fiel sozinho (Fielzinho sem cota até 12h15
    índice; tabelas do GSD no `config.toml`; XML não validado pelo Agendador; como os harnesses enxergam a casa; pontos
    abertos do spec). Em particular: o kit não tem como ligar `--allow-all-mcp-server-instructions` do Copilot por
    arquivo (doc lida pelo Cinzel); quem abre o Copilot passa a opção (24, 26).
+
+## Rodada 2 — 2026-10-17 ~10h10 (HEAD f304e6c)
+
+Veredito: **PASSA** (Fiel sozinho; Fielzinho sem cota até 12h15, leitura pendente). Junção só com os bloqueios
+resolvidos.
+
+- Conserto 1 feito: `juntarHooks` tira antes o grupo do hub (comando em `<hub>/agents/code/hooks/`) que não está nos
+  fragmentos atuais; tira o `hub-<peça>.json` órfão do Copilot; das aprovações `hooks.state` deste `hooks.json` fica
+  só a que ainda casa hook e hash. Alheios ficam.
+- Sonda da r1 repetida, com um hook alheio no `settings.json`: 1ª passada, leitura uma vez; fragmento da leitura
+  mudado, 2ª e 3ª passadas, leitura **uma vez** no Claude e no Codex; alheio mantido; desfazer volta a casa e apaga o
+  `.hub-kit`. (A peça tirada vai pelo teste novo do Cinzel; neste ramo não há a pasta da vigia.)
+- `23-kit.test.mjs`: 14/14 (Fiel). Hashes das configurações reais e listagens das pastas globais iguais antes e
+  depois; sem sobra em `%TEMP%`; árvore limpa.
+- Ressalva do desfazer para o 26: anotada pelo Cinzel.

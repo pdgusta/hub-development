@@ -1,0 +1,24 @@
+# 09-mcp-banco.test.ps1, fork C:\Projetos\hub-mcp-banco-wt\ticket-10, 2026-10-17 05:51:48
+[PASSA] o -WhatIf n├úo sobe o MCP nem grava arquivo (c├│digo 0)
+[PASSA] o passo do kit sobe o MCP do banco em 127.0.0.1:8796 
+[PASSA] o passo de novo n├úo religa o MCP (PID 232472)
+[PASSA] com build novo, o passo religa o MCP (PID 232472 -> 228000)
+[PASSA] read_note traz a nota do hub de ensaio, igual ao disco, com a vers├úo 
+[PASSA] gravar com a vers├úo lida grava, e a leitura seguinte traz a nova (1-2ae41cc751288d8c738a90486160fc2d -> 2-e358e810bb8b4f8e9ae6c3bf00cfad4f)
+[PASSA] a grava├º├úo pelo MCP chega ao .md do par em 0,1 s
+[PASSA] a edi├º├úo no disco chega ao banco (o MCP a l├¬) 
+[PASSA] gravar com a vers├úo velha responde 'conflito: releia e refa├ºa' (conflito: releia e refa├ºa. A nota initiatives/context-hub/decisions.md mudou desde a vers├úo que voc├¬ leu.)
+[PASSA] a vers├úo do outro escritor fica intacta no .md 
+[PASSA] as duas vers├Áes ficam guardadas no banco, lidas pelo dispositivo leitor (2 folhas)
+[PASSA] read_note da nota em conflito avisa e lista as duas vers├Áes 
+[PASSA] cada vers├úo listada se l├¬ pelo rev 
+[PASSA] get_conflicts lista a nota em conflito (1 nota em conflito:)
+  vers├Áes na leitura do passo 5: 3-7d03e7578fa0468d8d02f0aadfaa66f6, 3-0d55a525778c4b8a849d0979f0222b63; na releitura: 3-7d03e7578fa0468d8d02f0aadfaa66f6, 3-0d55a525778c4b8a849d0979f0222b63 (base 3-7d03e7578fa0468d8d02f0aadfaa66f6)
+[PASSA] reler e regravar com a vers├úo nova grava (Note saved: initiatives/context-hub/decisions.md | base_rev: 4-d953e1d2734348cb8ec8eb1aa8ad032a | [Open in Obsidian](obsidian://open?vault=hub&file=initiatives%2Fcontext-hub%2Fdecisions) | Aten├º├úo: o conflito segue aberto; a nota tem 2 vers├Áes guardadas (4-d953e1d2734348cb8ec8eb1aa8ad032a, 3-0d55a525778c4b8a849d0979f0222b63). A resolu├º├úo ├® no Obsidian, pelo aviso do LiveSync.)
+[PASSA] a regrava├º├úo aparece no .md em 0,7 s
+[PASSA] regravar nota existente sem base_rev ├® recusado 
+[PASSA] linhas diferentes com a vers├úo velha: a resposta ├® 'conflito: releia e refa├ºa' 
+[PASSA] linhas diferentes: nenhuma das duas mudan├ºas some (o sincronizador fundiu as duas numa vers├úo)
+[PASSA] o -Descer para o MCP do banco 
+[PASSA] nenhum cont├¬iner hub-ensaio-09-* sobrou 
+ticket 09: tudo passou

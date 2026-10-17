@@ -64,3 +64,5 @@ entrou), `fila-pesada.md`, e esta retomada.
 - 08:30: trava minha (Vela soltou); suíte do 08 em segundo plano, log etapas/logs/juncao-08-suite.log. Ao soltar, avisar o próximo da fila (conferir fila-pesada.md; perguntar ao maestro se ambíguo).
 - Maestro: ao soltar a trava do 08, avisar o Trilho (Docker do 21).
 - 08:57: 08 RESOLVIDO (e98a891, suíte 210/202/8). Trilho avisado da trava; maestro e construtores avisados. Nenhuma junção em curso; 17 espera o 16.
+- 09h: ticket 23 avisado pelo Cinzel (f304e6c, passa r2, 23-kit 14/14). NÃO juntar ainda: mandato do maestro, só com 11, 15, 17, 18, 20 e 27 resolvidos (falta 11 [Codex 12h15], 17 [espera 16], 18). Na junção, rodar de novo 23-kit.test.mjs (lê fragmentos de 17 e 18 do repositório) e conferir que a ponta do ramo ainda é a do parecer.
+- 09h: ticket 18 avisado pela Vela (f36df85, passa; leva o 17 dentro). NÃO juntar: só depois do 16 e do 17. Ainda vêm commits só de evidência (real Claude+Copilot; Codex depois de 12h15): conferir que depois de f36df85 só entrou evidência. O 18 troca o núcleo do fim do 27 (PostToolUse, fragmentos novos): na junção, atenção aos testes do 27 e ao 23-kit.

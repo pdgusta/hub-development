@@ -50,6 +50,7 @@ Leia antes: `etapas/regras-da-construcao.md` (inteiras, com os "Achados comuns")
 - Hub: worktree `C:/context-hub-wt/ticket-23`, ramo `ticket-23` de `integracao` e2b7607.
 - Costuras em `etapas/costuras-23-Cinzel.md`, respondidas (as três como recomendado). Relatório em
   `etapas/relatorio-23-kit-de-par-a-forma.md` (fatos de fonte e sonda do app-server).
+- PASSA na rodada 2 do Fiel (f304e6c, 14/14); Rebite avisado; junção quando 11, 15, 17, 18, 20 e 27 estiverem resolvidos.
 - Feito: esqueleto inteiro, ramo `ticket-23` e9dcef7 (com integracao e98a891); 13/13 no `23-kit.test.mjs` (~3,5 min).
   Relatório com tudo e as ressalvas. Revisão pedida ao Fiel (~08h45). Próximo: aplicar os consertos dele; depois de
   17 e 18 juntados, mod, extensão onAgentStop, statusLine e notify composto (segunda leva).
@@ -62,7 +63,8 @@ Leia antes: `etapas/regras-da-construcao.md` (inteiras, com os "Achados comuns")
 ## Ticket 24: kit ao vivo (desde 08h50)
 
 - Worktree `C:/context-hub-wt/ticket-24`, ramo `ticket-24` do `ticket-23`. Costuras aceitas (`etapas/costuras-24-Cinzel.md`).
-- Teste `agents/code/test/ponta-a-ponta/24-kit-ao-vivo.test.mjs` escrito (pulado sem HUB_HARNESS_REAL). Próximo: pedir
+- Rodada 1 (Claude e Copilot) PASSA, evidência no commit, relatório `etapas/relatorio-24-kit-de-par-ao-vivo.md`. Falta o Codex.
+- Teste `agents/code/test/ponta-a-ponta/24-kit-ao-vivo.test.mjs`. (Antigo:) pedir
   lugar na fila; rodar `HUB_HARNESS_REAL=1 HARNESSES=claude,copilot node --test --test-concurrency=1 <arquivo>` com a
   trava (fila: depois do Trilho; ao soltar, avisar a Vela, real do 18 (maestro, ~09h40)); o Codex depois das 12h15 (depois do Codex do 11). Log em `etapas/logs/24-harness-<n>.log`.
 

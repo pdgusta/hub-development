@@ -1,0 +1,34 @@
+[PASSA] o par de ensaio tem a cifra de ponta a ponta ligada 
+[PASSA] o passo do kit roda 
+[PASSA] a instância de escrita responde em http://127.0.0.1:8796/mcp 
+[PASSA] a instância de leitura responde em http://127.0.0.1:8797/mcp 
+[PASSA] a instância de escrita do cliente responde em http://127.0.0.1:8798/mcp 
+[PASSA] as três rodam em processos distintos (PIDs 234432, 212276, 202364)
+[PASSA] a de escrita recusa o token das outras e o vazio (códigos 401, 401; vazio 401)
+[PASSA] a de leitura recusa o token das outras e o vazio (códigos 401, 401; vazio 401)
+[PASSA] a de escrita do cliente recusa o token das outras e o vazio (códigos 401, 401; vazio 401)
+[PASSA] o initialize da de escrita começa pela cabeça do AGENTS.md (# Context hub)
+[PASSA] o initialize da de leitura começa pela cabeça do AGENTS.md (# Context hub)
+[PASSA] o initialize da de escrita do cliente começa pela cabeça do AGENTS.md (# Context hub)
+[PASSA] trocado o AGENTS.md, a sessão nova traz a cabeça nova, sem religar (# Cabeça trocada marca-29ec210c)
+[PASSA] cabeça acima de 2.000 caracteres: fora inteira, com o motivo (cabeça do AGENTS.md indisponível: a cabeça tem 2001 caracteres (limite 2000))
+[PASSA] a de leitura não lista ferramenta de gravação, e lista read_note e estado_do_hub (read_note, get_conflicts, estado_do_hub, list_notes, search_notes, list_folders, list_tags, get_note_metadata)
+[PASSA] a de leitura lê e recusa gravar; o .md fica igual 
+[PASSA] as 4 ferramentas de gravação da de escrita começam pela regra curta 
+[PASSA] as 4 ferramentas de gravação da de escrita do cliente começam pela regra curta 
+[PASSA] a escrita do par grava com a versão lida (Note saved: initiatives/context-hub/decisions.md)
+[PASSA] a gravação da escrita do par chega ao .md 
+[PASSA] a escrita do cliente, com a versão velha, ouve 'conflito: releia e refaça' (conflito: releia e refaça. A nota initiatives/context-hub/decisions.md mudou desde a versão que você leu.)
+[PASSA] as duas versões ficam no banco (2 folhas)
+[PASSA] relida, a escrita do cliente grava, e chega ao .md (Note saved: initiatives/context-hub/decisions.md | base_rev: 4-ca6dc3e5f19a498a9c07c03245d928d0 | [Open in Obsidian](obsidian://open?vault=hub&file=initiatives%2Fcontext-hub%2Fdecisions) | Atenção: o conflito segue aberto; a nota tem 2 versões guardadas (4-ca6dc3e5f19a498a9c07c03245d928d0, 3-1a442bd7895045f7832a658b58b0026c). A resolução é no Obsidian, pelo aviso do LiveSync.)
+[PASSA] estado_do_hub da de leitura devolve o estado de exemplo sem 'vistos', sem aviso (1 bloco(s))
+[PASSA] estado_do_hub da de escrita devolve o estado de exemplo sem 'vistos', sem aviso (1 bloco(s))
+[PASSA] passada de 20 min: vem junto "a vigia não roda desde <hora>" (a vigia não roda desde 2026-10-17T09:12:10Z)
+[PASSA] sem o arquivo: "estado indisponível" e o motivo (estado indisponível: .local/vigia/estado.json não existe (a vigia não rodou nesta máquina))
+[PASSA] nota nova fora do esquema é recusada e não chega ao banco nem ao disco (Recusado: a nota initiatives/context-hub/notes/esquema-marca-29ec210c.md ficaria fora do esquema do tipo note: falta status. Corrija o frontmatter e grave de novo (esquemas em agents/frontmatter/).)
+[PASSA] a escrita do cliente também recusa 
+[PASSA] com o campo que faltava, grava e chega ao disco (Note saved: initiatives/context-hub/notes/esquema-marca-29ec210c.md)
+[PASSA] nota de inbox sem frontmatter chega ao disco completada (Completado pelo esquema: type, title, status, created, updated)
+[PASSA] o -Descer para as três instâncias 
+[PASSA] nenhum contêiner hub-ensaio-10-* sobrou 
+ticket 10: tudo passou

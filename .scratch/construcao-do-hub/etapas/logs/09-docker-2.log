@@ -1,0 +1,21 @@
+[PASSA] o -WhatIf não sobe o MCP nem grava arquivo (código 0)
+[PASSA] o passo do kit sobe o MCP do banco em 127.0.0.1:8796 
+[PASSA] o passo de novo não religa o MCP (PID 222780)
+[PASSA] read_note traz a nota do hub de ensaio, igual ao disco, com a versão 
+[PASSA] gravar com a versão lida grava, e a leitura seguinte traz a nova (1-f77b026a80cf7d295d3c0779d082c4b6 -> 2-6d6f79bee8a1481ebfbf89f8c49c286f)
+[PASSA] a gravação pelo MCP chega ao .md do par em 0,5 s
+[PASSA] a edição no disco chega ao banco (o MCP a lê) 
+[PASSA] gravar com a versão velha responde 'conflito: releia e refaça' (conflito: releia e refaça. A nota initiatives/context-hub/decisions.md mudou desde a versão que você leu.)
+[PASSA] a versão do outro escritor fica intacta no .md 
+[PASSA] as duas versões ficam guardadas no banco, lidas pelo dispositivo leitor (2 folhas)
+[PASSA] read_note da nota em conflito avisa e lista as duas versões 
+[PASSA] cada versão listada se lê pelo rev 
+[PASSA] get_conflicts lista a nota em conflito (1 nota em conflito:)
+[FALHA] reler e regravar com a versão nova grava (Releia com read_note, que lista as versões, e refaça a mudança a partir da versão atual.)
+[PASSA] a regravação aparece no .md em 0,6 s
+[PASSA] regravar nota existente sem base_rev é recusado 
+[PASSA] linhas diferentes com a versão velha: a resposta é 'conflito: releia e refaça' 
+[PASSA] linhas diferentes: nenhuma das duas mudanças some (o sincronizador fundiu as duas numa versão)
+[PASSA] o -Descer para o MCP do banco 
+[PASSA] nenhum contêiner hub-ensaio-09-* sobrou 
+1 falha(s)

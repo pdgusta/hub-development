@@ -64,3 +64,10 @@ Ressalvas novas:
 3. Matcher do Claude sem `NotebookEdit`.
 4. O kit (23) passa a precisar juntar o `claude.json` novo do fim da resposta no `settings.json` (o Cinzel já
    preparou o teste do 23 para isso).
+
+## Rodada curta de código — 2026-10-17 ~10h20 (HEAD f36df85)
+
+Veredito: **PASSA** (Fiel sozinho). Ressalvas 2 e 3 da rodada 2 feitas: `anotar` só acrescenta linha em
+`<sessão>.gravados` (`appendFileSync`); a sessão é gravada por troca atômica; a marca de turno novo apaga a lista (a
+continuação do Copilot não). Sonda do Fiel repetida com 12 anotações em paralelo: 12 de 12, três vezes. `NotebookEdit`
+no matcher e no `anota`. 18, 27 e 14: 73/73. Árvore limpa. Ressalva 1 (shell) com o maestro.

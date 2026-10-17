@@ -1,0 +1,19 @@
+[PASSA] o -WhatIf não sobe o MCP nem grava arquivo (código 0)
+[PASSA] o passo do kit sobe o MCP do banco em 127.0.0.1:8796 
+[PASSA] o passo de novo não religa o MCP (PID 212104)
+[PASSA] read_note traz a nota do hub de ensaio, igual ao disco, com a versão 
+[PASSA] gravar com a versão lida grava, e a leitura seguinte traz a nova (1-d9143c8d40d55f2c98f5874543df858e -> 2-b8fe64810f6e4714959556745c846f06)
+[PASSA] a gravação pelo MCP chega ao .md do par em 0,1 s
+[PASSA] a edição no disco chega ao banco (o MCP a lê) 
+[PASSA] gravar com a versão velha responde 'conflito: releia e refaça' (conflito: releia e refaça. A nota initiatives/context-hub/decisions.md mudou desde a versão que você leu.)
+[FALHA] a versão do outro escritor fica intacta no .md 
+[FALHA] as duas versões ficam guardadas no banco, lidas pelo dispositivo leitor (1 folhas)
+[FALHA] read_note da nota em conflito avisa e lista as duas versões 
+[FALHA] cada versão listada se lê pelo rev 
+[FALHA] get_conflicts lista a nota em conflito (Nenhuma nota em conflito.)
+[PASSA] reler e regravar com a versão nova grava ([Open in Obsidian](obsidian://open?vault=hub&file=initiatives%2Fcontext-hub%2Fdecisions))
+[PASSA] a regravação aparece no .md em 0,2 s
+[PASSA] regravar nota existente sem base_rev é recusado 
+[PASSA] o -Descer para o MCP do banco 
+[PASSA] nenhum contêiner hub-ensaio-09-* sobrou 
+5 falha(s)

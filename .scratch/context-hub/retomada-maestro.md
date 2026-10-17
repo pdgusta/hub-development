@@ -221,3 +221,4 @@ nuvem.
 - 08:56: 08 resolvido (e98a891, 210/0); ressalvas no ticket (fatia 2 do Gustavo; Restore-RamoApagado sem finally, não promover à vigia sem limpeza garantida). Trava com o Trilho (16, 21).
 - 09:07: 18 rodada 2 passa com ressalvas; 2 e 3 consertadas (f36df85), rodada curta; ressalva 1 aceita, rede vira ticket 37. 25: medidor, ponte e fases 1-3 em 1c30e48.
 - 09:08: preparo leve do 25 pronto (974d74d); 1ª rodada real (fases 1-3) na fila depois do 22.
+- 09:14: Docker do 16 tudo passou (20 casos), revisão final pedida. 21: rename bloqueado pelo watch do CLI numa subpasta; arquivar passa a mover arquivo por arquivo (aceito).

@@ -1,1 +1,1 @@
-- Trilho (construtor), 2026-10-17 08:56: Docker do 16 (hub-ensaio-16-a/b, 5996/5997, MCP 8796-8798) e depois o do 21 (hub-ensaio-21-a/b, 5996/5997), ~6 min cada. Apago ao fim; depois, Cinzel.
+- Vela (construtora), 2026-10-17 09:13: harness real do 18 de novo (Claude e Copilot), ponta-a-ponta/18-retomada, ~5 min. Ao fim, aviso a Brasa.

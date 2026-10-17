@@ -1,0 +1,254 @@
+✔ o verificar-hub passa no hub de ensaio (5002.5868ms)
+✔ o verificar-hub recusa um CLAUDE.md dentro do hub (4905.7767ms)
+✔ o verificar-hub recusa um CLAUDE.md acima do hub (4830.4539ms)
+✔ o verificar-hub recusa AGENTS.md sem o bloco da cabeça (5891.5238ms)
+✔ o verificar-hub recusa a cabeça com mais de 2.000 caracteres e aceita a de 2.000 (6261.0255ms)
+✔ o verificar-hub avisa, sem recusar, outra pasta na raiz (5534.2844ms)
+✔ o hub de ensaio tem duas iniciativas com o núcleo, notas em pt-BR, um binário e .git próprio (4787.5245ms)
+✔ o montar recusa destino que já tem conteúdo (5686.8377ms)
+✔ o montar sem git no PATH nomeia o comando e mostra o erro do processo (1135.0026ms)
+✔ o montar com um comando git que falha nomeia o comando e mostra o stderr dele (1302.9178ms)
+✔ o verificar-hub recusa um CLAUDE.md em pasta com ponto, fora do .git (5884.442ms)
+✔ o verificar-hub recusa hub sem .git próprio ou com .git falso (4981.2291ms)
+✔ o verificar-hub aceita uma worktree do hub (.git em arquivo) (6270.6299ms)
+✔ o verificador aceita a nota certa (3773.524ms)
+✔ o verificador recusa a nota sem status, dizendo o campo (4009.8462ms)
+✔ o verificador recusa stage fora do ciclo do tipo (3791.3982ms)
+✔ o verificador completa só o dedutível, por troca de trecho (4310.2655ms)
+✔ o verificador não apaga uma edição feita entre a leitura e a gravação (7010.2808ms)
+✔ o verificador completa o título do log de mês novo pela ficha (7807.7585ms)
+✔ a nota do inbox sem frontmatter é completada; ao sair do inbox, vale o esquema do destino (14360.6033ms)
+✔ AGENTS.md, SKILL.md e pastas com ponto ficam intocados (9567.4676ms)
+✔ YAML inválido é devolvido sem gravar (10110.2001ms)
+✔ --checar valida o conteúdo proposto sem gravar, como o hook e o MCP vão chamar (9496.1765ms)
+✔ a nota arquivada vale pelo esquema de origem mais archived_at (8250.1125ms)
+✔ nota com fim de linha CRLF é completada e continua CRLF (7750.7032ms)
+✔ o verificar-hub recusa nota fora do esquema em qualquer lugar do hub (9177.4205ms)
+✔ frontmatter em mapa flow que não dá para trocar por trecho é recusado sem gravar (9594.1068ms)
+✔ campos de várias linhas ficam como estavam quando outro campo é trocado (18349.2497ms)
+✔ cabeçalho aberto sem fechamento é YAML inválido, devolvido sem gravar (9513.919ms)
+✔ caminho com ponto fica de fora também quando passado direto e no --checar (8458.1854ms)
+✔ comentário YAML junto ao campo trocado fica; comentário na mesma linha recusa sem gravar (10558.2049ms)
+✔ nota arquivada é completada pela ficha arquivada, não pela pasta ativa homônima (8649.3634ms)
+✔ nova iniciativa em clients/ nasce com o núcleo de seis arquivos válidos (8807.7201ms)
+✔ nova iniciativa em initiatives/ nasce com o núcleo de seis arquivos válidos (9554.7325ms)
+✔ rodar a nova iniciativa de novo não duplica nem sobrescreve (8046.6998ms)
+✔ a nova iniciativa recusa valor fora do catálogo da ficha (9913.8852ms)
+✔ o kit do banco: PID do par, dispositivo que não confere e aceite do dispositivo (18472.0711ms)
+✔ o passo do MCP do banco: simulação, endereço e token, PID do par (33147.9702ms)
+✔ uma pergunta em pt-BR por palavra acha a nota esperada entre as 3 primeiras (78175.8642ms)
+✔ uma pergunta em pt-BR por paráfrase, sem palavra em comum com a nota, acha a nota entre as 3 primeiras (109.5123ms)
+✔ uma nota nova gravada no disco aparece sem reindexar, por palavra e por paráfrase; o tempo só é medido (5296.7874ms)
+✔ nada com ponto no caminho nem de pasta local: true aparece, nem o que chega com a busca ligada (5856.9963ms)
+✔ o relatório conta as notas indexadas e lista as recusadas por cabeçalho quebrado (2254.4941ms)
+✔ pedido com Host estranho é recusado; o servidor só escuta em 127.0.0.1 (2089.8673ms)
+✔ em inglês, no mesmo índice e sem dizer o idioma, a nota em inglês vem entre as 3 primeiras; o .pdf.md entra, o binário não (5490.2869ms)
+✔ uma rajada de 200 notas copiadas de uma vez termina toda indexada; o tempo só é medido (15074.7509ms)
+medidas do ticket 12:
+{
+  "quando": "2026-10-17T11:41:37.934Z",
+  "nota_nova_ms": 5230,
+  "relatorio": {
+    "indexadas": 56,
+    "validas": 56,
+    "faltando": [],
+    "recusadas": [
+      {
+        "caminho": "inbox/cabecalho-quebrado.md",
+        "erro": "unexpected end of the stream within a flow collection",
+        "no_indice": false
+      }
+    ],
+    "modelo": "local:Snowflake/snowflake-arctic-embed-m-v2.0",
+    "pendentes": 0,
+    "consertadas": 0
+  },
+  "rajada_200_ms": 15044,
+  "partidas": [
+    {
+      "pronta_ms": 77917,
+      "indexacao": "1m 1s — 1 errors"
+    },
+    {
+      "pronta_ms": 6207,
+      "indexacao": "0s — 1 errors"
+    }
+  ],
+  "reaproveitadas": 258,
+  "reindexadas_pelo_consertar": 21,
+  "recusada_no_indice_depois_do_reindex": true
+}
+
+✔ a segunda partida reaproveita o índice: o mesmo banco, a busca pronta e nenhuma nota reindexada (32057.5167ms)
+✔ com -WhatIf, o kit diz o que faria e não grava nada (1247.3971ms)
+✔ o kit instala a versão fixa pelo package-lock, só no .local\busca do hub (51831.8437ms)
+✔ rodar de novo não muda nada (1954.9972ms)
+✔ a busca sobe com a instalação do kit e responde (7269.5048ms)
+✔ a configuração do gemini existe, com o modelo explícito, o gateway por variável e sem chave no arquivo (5.6226ms)
+✔ desligado: a busca sobe com o arctic local e não chama o gateway, mesmo com OPENAI_* e FREELLM_* no ambiente (43653.6895ms)
+✔ ligar o gemini sem o endereço do gateway é recusado, alto, antes de subir (2665.3674ms)
+✔ ligado (-Gemini), num hub separado: os embeddings vão ao gateway da variável, com o modelo explícito e a chave (16475.7624ms)
+✔ bancada, codex: c1-parcial.md → passa (229.5725ms)
+✔ bancada, codex: c2-conflito.md → passa (191.5065ms)
+✔ bancada, codex: c3-add-existente.md → recusa (199.5865ms)
+✔ bancada, codex: c3-update-inteiro.md → recusa (200.753ms)
+✔ bancada, codex: c3-delete-add.md → recusa (242.5914ms)
+✔ bancada, codex: h-add-existente.md → recusa (178.7793ms)
+✔ bancada, codex: h-update-inteiro.md → recusa (229.8517ms)
+✔ bancada, codex: h-delete-add.md → recusa (214.129ms)
+✔ bancada, codex: h-parcial.md → passa (213.6298ms)
+✔ bancada, codex: h-novo.md → passa (337.9987ms)
+✔ bancada, claude: Edit caso1.md → passa (291.7546ms)
+✔ bancada, claude: Edit caso2.md → passa (215.4805ms)
+✔ bancada, claude: Write caso3.md → recusa (197.6912ms)
+✔ bancada, claude: Write caso4.md → recusa (190.3714ms)
+✔ bancada, claude: Edit caso4.md → passa (304.1764ms)
+✔ bancada, claude: Write caso4-novo.md → passa (267.0264ms)
+✔ bancada, claude: Write caso3b.md → recusa (262.2182ms)
+✔ bancada, copilot: edit caso1.md → passa (255.7195ms)
+✔ bancada, copilot: edit caso2.md → passa (242.6858ms)
+✔ bancada, copilot: create caso3.md → recusa (227.1504ms)
+✔ bancada, copilot: create caso4.md → recusa (174.6197ms)
+✔ bancada, copilot: edit caso4.md → passa (236.7383ms)
+✔ bancada, copilot: create caso4-novo.md → passa (198.7143ms)
+✔ bancada, copilot: create caso3b.md → recusa (211.7643ms)
+✔ claude: nota nova sem status é recusada; com status, passa (564.2281ms)
+✔ claude: troca de trecho que tira o status é recusada; a que mantém, passa (566.558ms)
+✔ claude: fora do hub, a regravação passa e o hook não diz nada (156.0461ms)
+✔ codex: nota nova sem status é recusada; com status, passa (584.0133ms)
+✔ codex: troca de trecho que tira o status é recusada; a que mantém, passa (572.4042ms)
+✔ codex: fora do hub, a regravação passa e o hook não diz nada (347.8611ms)
+✔ copilot: nota nova sem status é recusada; com status, passa (780.827ms)
+✔ copilot: troca de trecho que tira o status é recusada; a que mantém, passa (472.919ms)
+✔ copilot: fora do hub, a regravação passa e o hook não diz nada (156.5219ms)
+✔ o hub alcançado por junction é o mesmo hub: regravar por ela é recusado (163.2052ms)
+✔ cada decisão dentro do hub vira uma linha em .local/guardas/registro.jsonl; fora do hub, nada (7491.2773ms)
+✔ patch com quebra de linha depois do *** End Patch ainda confere a ficha (Codex e apply_patch do Copilot) (3473.6281ms)
+✔ em caminho com ponto dentro do hub, regravar existente é recusado; nota nova sem frontmatter passa (535.4712ms)
+✔ claude: ler inteiro um arquivo grande sem ter buscado dá "busque antes", sem recusa (217.3002ms)
+✔ claude: o aviso sai uma vez por arquivo por sessão; noutra sessão, sai de novo (544.12ms)
+✔ claude: arquivo pequeno não avisa (190.9741ms)
+✔ claude: a busca apontou o arquivo e ele foi lido inteiro: "leia o trecho que a busca apontou" (351.8228ms)
+✔ claude: a busca apontou o arquivo e só um trecho foi lido: sem aviso (325.419ms)
+✔ fora do hub, o hook sai sem aviso (163.1647ms)
+✔ copilot: os mesmos avisos pelo view e pela busca (1258.9143ms)
+✔ codex: a leitura por comando de shell avisa igual; busca e filtro de linhas contam (1690.8837ms)
+✔ cada leitura de arquivo do hub fica no registro da máquina, com o aviso que deu (264.663ms)
+✔ a tabela do hub passa no esquema; skill que ainda não está em agents/skills/ é aviso, não recusa (9316.152ms)
+✔ linha fora do esquema é recusada, com o id da linha (8950.7397ms)
+✔ claude: pedido de pesquisa que não cita o FreeLLMAPI recebe "use a skill freellmapi" (8257.205ms)
+✔ codex: pedido de pesquisa que não cita o FreeLLMAPI recebe "use a skill freellmapi" (6453.3064ms)
+✔ pedido que já cita a skill, ou que não casa, não recebe nada (6575.7003ms)
+✔ recruta pelo papel recebe as skills da linha do papel (6173.9061ms)
+✔ nota pelo caminho recebe a skill da linha do caminho (6750.1429ms)
+✔ caminho citado com barra do Windows recebe a mesma indicação que com barra comum (7611.8574ms)
+✔ copilot: o hook de arquivo não injeta (a doc diz que a saída é descartada); nada na saída (6444.471ms)
+✔ fora do hub, sai na hora (6802.1911ms)
+✔ usar uma skill do acervo vira linha no registro da máquina, com workspace e data (6639.5797ms)
+✔ skill de fora do acervo não vira linha (6843.2535ms)
+✔ claude: a skill indicada rodou: o fim registra "sim" com a linha da tabela, sem bloquear (7491.1849ms)
+✔ claude: a skill indicada não rodou: o fim registra "não" com a linha, sem bloquear (5908.1257ms)
+✔ claude: linha com duas skills, uma usada e outra não: uma linha de indicação por skill (6499.35ms)
+✔ codex: sem evento de uso de skill, o fim registra "não verificado" (7001.043ms)
+✔ copilot: sem evento de uso de skill, o fim registra "não verificado" (5722.6129ms)
+✔ turno sem indicação não escreve no registro (9525.9138ms)
+✔ sessão que chega ao hub pelo atalho (junction) recebe a indicação (5040.2232ms)
+✔ a família maestro-* do hub passa: nome e descrição válidos, porta presente, cada peça citada existe (6062.8626ms)
+✔ peça da família fora da forma é recusada: name, description, preâmbulo e peça citada que não existe (5299.0934ms)
+✔ claude: sem o Maestri o início não faz nada; com ele, lembra de começar por maestro-acervo, dentro ou fora do hub (6047.0802ms)
+✔ codex: sem o Maestri o início não faz nada; com ele, lembra de começar por maestro-acervo, dentro ou fora do hub (6020.0529ms)
+✔ copilot: sem o Maestri o início não faz nada; com ele, lembra de começar por maestro-acervo, dentro ou fora do hub (5551.2347ms)
+✔ codex: gravar numa peça protegida é recusado com o caminho de propostas, pelo caminho real, pelo atalho e fora do hub (11169.5905ms)
+✔ codex: gravar nas propostas e no registro de uso passa; a tabela só passa com HUB_PAPEL=maestro (7354.3336ms)
+✔ copilot: gravar numa peça protegida é recusado com o caminho de propostas, pelo caminho real, pelo atalho e fora do hub (8996.0861ms)
+✔ copilot: gravar nas propostas e no registro de uso passa; a tabela só passa com HUB_PAPEL=maestro (7758.7497ms)
+✔ claude: alterar uma peça é recusado até o verificador em outro modelo dar o parecer; com ele, pede o aval (8298.32ms)
+✔ claude: peça nova sem sobreposição passa; nome parecido e a tabela sem HUB_PAPEL pedem aval (7794.5743ms)
+✔ claude: no catálogo, só a linha que aponta peça existente passa; regra nova inserida espera o verificador (7629.5556ms)
+✔ claude: peça numa skill nova da família passa de propósito; skill nova de nome parecido pede aval (12888.3429ms)
+✔ 31: o verificador roda no modelo que o maestro escolhe; no mesmo modelo do maestro, a guarda recusa o relatório (9961.4538ms)
+✔ 31: com o aval aprovado, a guarda grava o registro em agents/maestro/avais/; sem parecer, não grava nada (8326.1985ms)
+✔ 35: peça de nome parecido aprovada: o registro nasce em agents/maestro/avais/ com "sem verificador: dispensado" (7468.4ms)
+✔ 35: tabela de roteamento aprovada sem HUB_PAPEL: o registro nasce; com HUB_PAPEL=maestro não houve aval (7660.5368ms)
+✔ 31: só a guarda escreve em agents/maestro/avais/: a gravação de agente é recusada nos três harnesses, mesmo do maestro (6999.5161ms)
+✔ 31: catálogo que cita peça inexistente vira item da vigia, sem apagar os outros; com a peça de volta, o item sai (7473.1413ms)
+✔ 31: sem estado da vigia e sem peça sumida, a conferência não cria o arquivo (6926.327ms)
+✔ 31: gravação de agente em .local/acervo/ é recusada nos três harnesses: parecer forjado não chega ao aval (10382.2898ms)
+✔ 31: troca com old_string em LF numa peça em CRLF não escapa da guarda (7839.466ms)
+✔ codex: com falta devolve três vezes seguidas; na quarta solta e registra no estado da vigia (10820.9884ms)
+✔ codex: sem falta no que mudou, solta (5592.1979ms)
+✔ copilot: com falta devolve três vezes seguidas; na quarta solta e registra no estado da vigia (8201.5446ms)
+✔ copilot: sem falta no que mudou, solta (4472.7939ms)
+✔ copilot: a devolução que volta como prompt não zera a conta nem esquece a falta (7138.4049ms)
+✔ a falta de nota que não mudou neste turno não prende a resposta (5482.274ms)
+✔ fora do hub sai na hora, sem resposta (4269.4636ms)
+✔ o estado da vigia guarda os itens que já tinha, e o topo fica o pior (6860.0693ms)
+✔ turno sem gravação não roda o verificador: nada muda no hub, e solta (6364.0919ms)
+✔ link corrigido chega ao agente uma vez, sem contar como devolução, e fica no registro (7735.4774ms)
+✔ o aviso de other/ chega ao agente pelo fim quando o turno grava em other/ (5775.4106ms)
+✔ AGENTS.md gravado no turno não é tocado pelo fim (5607.2125ms)
+✔ URI malformada não esconde a falta da outra nota, e par:// para .secrets/ devolve (4637.7859ms)
+✔ verificador que cai não vira "sem falta": a queda volta ao agente (4350.6235ms)
+✔ sessão que chega ao hub pelo atalho (junction) é conferida como dentro do hub (4961.3369ms)
+✔ o roteamento que não carrega não derruba o fim da resposta (4098.5797ms)
+✔ link comum para pasta local vira par://, e par:// para o que replica volta a link comum, com aviso (4542.0166ms)
+✔ sem HUB_PAR_ID o link para pasta local não é reescrito e volta como falta (5044.215ms)
+✔ link para dentro de .secrets/ volta como falta: cite só o nome do arquivo (4212.1704ms)
+✔ 32: link para fora do hub vira par://<par_id>/<unidade>/<caminho>, com aviso; a passada seguinte não o desfaz (3698.8063ms)
+✔ 32: caminho absoluto para dentro do hub fica sem letra de unidade: link comum, ou par:// se não replica (4214.6503ms)
+✔ 32: caminho de fora com espaço e parênteses vira par:// codificado, que a passada seguinte reconhece (4388.9429ms)
+✔ 32: sem HUB_PAR_ID, o link para fora do hub não é reescrito e a falta volta ao agente (4342.6505ms)
+✔ 33: imagem embutida para fora do hub ou para o que não replica vira par:// e mantém o !; a volta também (5899.9275ms)
+✔ 33: link Markdown com espaço cru no destino fica como está, e o verificador avisa (não é falta) (5081.649ms)
+✔ 33: caminho de rede (UNC) num link fica como está, e o verificador avisa (não é falta) (7667.8952ms)
+✔ a pasta que chega a 10 entradas ganha index.md válido, com a lista pelos títulos (5232.5615ms)
+✔ a pasta que guarda um PNG ganha index.md; o PNG sem texto vira falta "descreva" (4523.3782ms)
+✔ rodar de novo atualiza a lista, preserva o texto livre e a descrição escrita; anexo com texto irmão não ganha linha (4521.2829ms)
+✔ index.md com summary: manual não é tocado (4407.1275ms)
+✔ agents/frontmatter/ (os esquemas) não ganha cartão: é oficina, tipo null no catálogo (4068.8281ms)
+✔ onde o catálogo diz tipo null (agents/code/, agents/skills/) não nasce cartão (5554.6695ms)
+✔ três notas parecidas em other/, em pastas diferentes, geram o aviso de bloco novo (não é falta) (4358.491ms)
+✔ duas notas parecidas em other/ não geram aviso (4152.0113ms)
+✔ AGENTS.md e SKILL.md não são tocados pela conferência de links (4119.5786ms)
+✔ link com URI malformada vira falta daquela nota, e a conferência segue nas outras (4110.9685ms)
+✔ par:// para dentro de .secrets/ volta como falta: cite só o nome do arquivo (3777.268ms)
+✔ nova pasta local: para e religa o sincronizador; YAML ilegível o deixa parado e avisado (35526.6318ms)
+✔ o teste que falha não deixa pasta (162.8368ms)
+✔ o arquivo que cai no carregamento não deixa pasta (141.2336ms)
+✔ o processo que sai no meio do teste não deixa pasta (138.4355ms)
+✔ a exceção solta num teste não apaga a pasta dos testes seguintes (361.5474ms)
+✔ a rejeição solta num teste não apaga a pasta dos testes seguintes (379.2176ms)
+✔ uma pasta presa não segura as outras, e a falha nomeia a presa (225.3348ms)
+✔ o hub de ensaio nasce montado dentro da pasta e sai no fim (4571.882ms)
+✔ sem o ajudante, a mesma falha deixa a pasta (contraprova do caso que falha) (231.3225ms)
+✔ a pasta com index.md local: true e tudo que tem ponto saem na lista do sincronizador (314.1075ms)
+✔ a mesma lista sai para a busca, na variável que ela lê (2.5113ms)
+✔ a lista funciona na exclusão da busca (299.7446ms)
+✔ rodar de novo sem mudança não regrava e diz que nada mudou (o CLI só relê ao religar) (285.0234ms)
+✔ local: True, local: TRUE e fechamento "--- " contam como pasta local, como no verificador (209.9004ms)
+✔ index.md com YAML inválido é recusado, sem gravar nada (não dá para saber se a pasta é local) (142.8461ms)
+✔ pasta local com vírgula ou caractere de padrão no nome é recusada, sem gravar nada (376.2235ms)
+✔ o gerador escreve .git/info/exclude: git status não mostra a pasta local nem nada com ponto (5619.9751ms)
+✔ os arquivos que chamam harness são achados (16.9884ms)
+✔ sem HUB_HARNESS_REAL, os testes de harness aparecem pulados, com o motivo, e não mexem em nada (801.3275ms)
+✔ a conferência por hash não diz nada quando nenhum arquivo real mudou (0.6223ms)
+✔ arquivo real gravado durante a rodada de um harness: diz qual arquivo e qual rodada (3.2803ms)
+✔ arquivo real gravado fora das rodadas: diz que foi fora dos harnesses do teste (0.5202ms)
+✔ arquivo real que sumiu ou apareceu: diz que não dá para saber a hora (0.4825ms)
+﹣ ticket 12: a busca do hub pelos três harnesses de verdade (1.7507ms) # chama harness de verdade (login, cota, evidência versionada): rode com HUB_HARNESS_REAL=1
+﹣ ticket 14: a guarda nos três harnesses de verdade (0.8362ms) # chama harness de verdade (login, cota, evidência versionada): rode com HUB_HARNESS_REAL=1
+﹣ ticket 15: o aviso de leitura nos três harnesses de verdade (1.2073ms) # chama harness de verdade (login, cota, evidência versionada): rode com HUB_HARNESS_REAL=1
+﹣ ticket 19: o roteamento de skills nos três harnesses de verdade (1.3992ms) # chama harness de verdade (login, cota, evidência versionada): rode com HUB_HARNESS_REAL=1
+﹣ ticket 20: o lembrete de início e a guarda do acervo nos três harnesses de verdade (0.8614ms) # chama harness de verdade (login, cota, evidência versionada): rode com HUB_HARNESS_REAL=1
+﹣ ticket 27: o fim da resposta nos três harnesses de verdade (0.8087ms) # chama harness de verdade (login, cota, evidência versionada): rode com HUB_HARNESS_REAL=1
+﹣ prova 03: o instalador aprova só os hooks do fragmento (app-server do Codex) (1.8197ms) # chama harness de verdade (login, cota, evidência versionada): rode com HUB_HARNESS_REAL=1
+﹣ prova 03: hooks do Codex em acesso total (codex exec de verdade) (0.8838ms) # chama harness de verdade (login, cota, evidência versionada): rode com HUB_HARNESS_REAL=1
+ℹ tests 210
+ℹ suites 0
+ℹ pass 202
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 8
+ℹ todo 0
+ℹ duration_ms 1508308.0478
+rc=0

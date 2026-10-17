@@ -1,0 +1,23 @@
+[PASSA] o -WhatIf não sobe o MCP nem grava arquivo (código 0)
+[PASSA] o passo do kit sobe o MCP do banco em 127.0.0.1:8796 
+[PASSA] o passo de novo não religa o MCP (PID 219576)
+[PASSA] com build novo, o passo religa o MCP (PID 219576 -> 233320)
+[PASSA] read_note traz a nota do hub de ensaio, igual ao disco, com a versão 
+[PASSA] gravar com a versão lida grava, e a leitura seguinte traz a nova (1-2640ba6ef0d69a06c358a4d2e6c91863 -> 2-d852e261e31949568ce69c655d45e3ef)
+[PASSA] a gravação pelo MCP chega ao .md do par em 0,1 s
+[PASSA] a edição no disco chega ao banco (o MCP a lê) 
+[PASSA] gravar com a versão velha responde 'conflito: releia e refaça' (conflito: releia e refaça. A nota initiatives/context-hub/decisions.md mudou desde a versão que você leu.)
+[PASSA] a versão do outro escritor fica intacta no .md 
+[PASSA] as duas versões ficam guardadas no banco, lidas pelo dispositivo leitor (2 folhas)
+[PASSA] read_note da nota em conflito avisa e lista as duas versões 
+[PASSA] cada versão listada se lê pelo rev 
+[PASSA] get_conflicts lista a nota em conflito (1 nota em conflito:)
+  versões na leitura do passo 5: 3-c99cfa426a8d46609402bff44390f1e8, 3-7ddb56497360452fa5d1a3ad6e59e509; na releitura: 3-c99cfa426a8d46609402bff44390f1e8, 3-7ddb56497360452fa5d1a3ad6e59e509 (base 3-c99cfa426a8d46609402bff44390f1e8)
+[PASSA] reler e regravar com a versão nova grava (Note saved: initiatives/context-hub/decisions.md | base_rev: 4-9d18b520576747189c75c97110ce0980 | [Open in Obsidian](obsidian://open?vault=hub&file=initiatives%2Fcontext-hub%2Fdecisions) | Atenção: o conflito segue aberto; a nota tem 2 versões guardadas (4-9d18b520576747189c75c97110ce0980, 3-7ddb56497360452fa5d1a3ad6e59e509). A resolução é no Obsidian, pelo aviso do LiveSync.)
+[PASSA] a regravação aparece no .md em 0,6 s
+[PASSA] regravar nota existente sem base_rev é recusado 
+[PASSA] linhas diferentes com a versão velha: a resposta é 'conflito: releia e refaça' 
+[PASSA] linhas diferentes: nenhuma das duas mudanças some (o sincronizador fundiu as duas numa versão)
+[PASSA] o -Descer para o MCP do banco 
+[PASSA] nenhum contêiner hub-ensaio-09-* sobrou 
+ticket 09: tudo passou

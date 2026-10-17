@@ -1,0 +1,42 @@
+CASO local:true só no corpo; codigo=0
+faz: parar o sincronizador
+  completou: reference/exemplo/index.md: type, folder, local, created, updated
+faz: gerar as exclusões
+faz: religar o sincronizador
+pronto: reference/exemplo é local (fica só nesta máquina)
+LISTA=# Gerado por agents/code/bin/gerar-exclusoes.mjs: não editar à mão; rodar de novo para atualizar.
+# Tudo que tem ponto no nome, em qualquer nível.
+.*
+.*/
+# Pastas cujo index.md diz local: true.
+initiatives/context-hub/labs/**
+
+INDEX=---
+title: Exemplo
+status: em uso
+summary: auto
+type: index
+folder: exemplo
+local: false
+created: 2026-10-17
+updated: 2026-10-17
+---
+
+Exemplo de configuração:
+local: true
+
+CASO junction para fora; codigo=0
+faz: parar o sincronizador
+faz: criar reference/atalho/local/index.md com local: true
+  completou: reference/atalho/local/index.md: type, folder, created, updated
+faz: gerar as exclusões
+faz: religar o sincronizador
+pronto: reference/atalho/local é local (fica só nesta máquina)
+ARQUIVO_FORA=True
+LISTA_JUNCTION=# Gerado por agents/code/bin/gerar-exclusoes.mjs: não editar à mão; rodar de novo para atualizar.
+# Tudo que tem ponto no nome, em qualquer nível.
+.*
+.*/
+# Pastas cujo index.md diz local: true.
+initiatives/context-hub/labs/**
+

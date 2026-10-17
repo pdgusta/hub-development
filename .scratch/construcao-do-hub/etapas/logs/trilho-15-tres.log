@@ -1,0 +1,30 @@
+▶ ticket 15: o aviso de leitura nos três harnesses de verdade
+  ✔ claude: "busque antes", "leia o trecho", calado no trecho e uma vez por arquivo, sem recusa (25017.3604ms)
+  ✖ codex: "busque antes", "leia o trecho", calado no trecho e uma vez por arquivo, sem recusa (5490.7242ms)
+  ✔ copilot: "busque antes", "leia o trecho", calado no trecho e uma vez por arquivo, sem recusa (31203.5707ms)
+✖ ticket 15: o aviso de leitura nos três harnesses de verdade (239019.1747ms)
+ℹ tests 3
+ℹ suites 1
+ℹ pass 2
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 239222.077
+
+✖ failing tests:
+
+test at agents\code\test\ponta-a-ponta\15-leitura.test.mjs:163:5
+✖ codex: "busque antes", "leia o trecho", calado no trecho e uma vez por arquivo, sem recusa (5490.7242ms)
+  AssertionError [ERR_ASSERTION]: o codex não rodou o turno (limite de uso)
+      at TestContext.<anonymous> (file:///C:/context-hub-wt/ticket-15/agents/code/test/ponta-a-ponta/15-leitura.test.mjs:178:16)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Suite.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: '{"type":"thread.started","thread_id":"01a14893-27c1-7171-9c95-e01120f7b144"}\n{"type":"turn.started"}\n{"type":"error","message":"You’ve hit your usage limit. Upgrade to Pro (https://chatgpt.com/explore/pro), visit https://chatgpt.com/settings/usage to purchase more credits or try again at 6:58 AM."}\n{"type":"turn.failed","error":{"message":"You’ve hit your usage limit. Upgrade to Pro (https://chatgpt.com/explore/pro), visit https://chatgpt.com/settings/usage to purchase more credits or try again at 6:58 AM."}}\n',
+    expected: /usage limit/i,
+    operator: 'doesNotMatch',
+    diff: 'simple'
+  }

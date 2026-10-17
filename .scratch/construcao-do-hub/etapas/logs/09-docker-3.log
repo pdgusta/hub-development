@@ -1,0 +1,22 @@
+[PASSA] o -WhatIf não sobe o MCP nem grava arquivo (código 0)
+[PASSA] o passo do kit sobe o MCP do banco em 127.0.0.1:8796 
+[PASSA] o passo de novo não religa o MCP (PID 219160)
+[PASSA] read_note traz a nota do hub de ensaio, igual ao disco, com a versão 
+[PASSA] gravar com a versão lida grava, e a leitura seguinte traz a nova (1-9d7026b65cf277d354ce23d643e44010 -> 2-c3526f02238d43e2ad83be0ea11af618)
+[PASSA] a gravação pelo MCP chega ao .md do par em 0,1 s
+[PASSA] a edição no disco chega ao banco (o MCP a lê) 
+[PASSA] gravar com a versão velha responde 'conflito: releia e refaça' (conflito: releia e refaça. A nota initiatives/context-hub/decisions.md mudou desde a versão que você leu.)
+[PASSA] a versão do outro escritor fica intacta no .md 
+[PASSA] as duas versões ficam guardadas no banco, lidas pelo dispositivo leitor (2 folhas)
+[PASSA] read_note da nota em conflito avisa e lista as duas versões 
+[PASSA] cada versão listada se lê pelo rev 
+[PASSA] get_conflicts lista a nota em conflito (1 nota em conflito:)
+  versões na leitura do passo 5: 3-9d06c515dba94297a6093a2cd8ff3914, 3-14d05a3a51ea492095a027d2848515ee; na releitura: 3-9d06c515dba94297a6093a2cd8ff3914, 3-14d05a3a51ea492095a027d2848515ee (base 3-9d06c515dba94297a6093a2cd8ff3914)
+[FALHA] reler e regravar com a versão nova grava (conflito: releia e refaça. A nota initiatives/context-hub/decisions.md mudou desde a versão que você leu. | A sua gravação ficou guardada como a versão 4-7cd2ba6bb68f4654927730d875707426, ao lado de a versão 3-14d05a3a51ea492095a027d2848515ee; nenhuma foi apagada. | Releia com read_note, que lista as versões, e refaça a mudança a partir da versão atual.)
+[PASSA] a regravação aparece no .md em 0,6 s
+[PASSA] regravar nota existente sem base_rev é recusado 
+[PASSA] linhas diferentes com a versão velha: a resposta é 'conflito: releia e refaça' 
+[PASSA] linhas diferentes: nenhuma das duas mudanças some (o sincronizador fundiu as duas numa versão)
+[PASSA] o -Descer para o MCP do banco 
+[PASSA] nenhum contêiner hub-ensaio-09-* sobrou 
+1 falha(s)

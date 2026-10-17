@@ -1,0 +1,82 @@
+✔ o verificar-hub passa no hub de ensaio (9121.2856ms)
+✔ o verificar-hub recusa um CLAUDE.md dentro do hub (6956.2454ms)
+✔ o verificar-hub recusa um CLAUDE.md acima do hub (10957.5221ms)
+✔ o verificar-hub recusa AGENTS.md sem o bloco da cabeça (6615.5486ms)
+✔ o verificar-hub recusa a cabeça com mais de 2.000 caracteres e aceita a de 2.000 (7785.6301ms)
+✔ o verificar-hub avisa, sem recusar, outra pasta na raiz (6663.9163ms)
+✔ o hub de ensaio tem duas iniciativas com o núcleo, notas em pt-BR, um binário e .git próprio (5780.1611ms)
+✔ o montar recusa destino que já tem conteúdo (6306.3854ms)
+✔ o montar sem git no PATH nomeia o comando e mostra o erro do processo (1031.4541ms)
+✔ o montar com um comando git que falha nomeia o comando e mostra o stderr dele (1384.4798ms)
+✔ o verificar-hub recusa um CLAUDE.md em pasta com ponto, fora do .git (6144.6785ms)
+✔ o verificar-hub recusa hub sem .git próprio ou com .git falso (5777.7081ms)
+✔ o verificar-hub aceita uma worktree do hub (.git em arquivo) (7025.2072ms)
+✔ o verificador aceita a nota certa (5491.5402ms)
+✔ o verificador recusa a nota sem status, dizendo o campo (9725.9192ms)
+✔ o verificador recusa stage fora do ciclo do tipo (6004.292ms)
+✔ o verificador completa só o dedutível, por troca de trecho (6156.9104ms)
+✔ o verificador não apaga uma edição feita entre a leitura e a gravação (7593.5163ms)
+✔ o verificador completa o título do log de mês novo pela ficha (4945.8542ms)
+✔ a nota do inbox sem frontmatter é completada; ao sair do inbox, vale o esquema do destino (4962.0639ms)
+✔ AGENTS.md, SKILL.md e pastas com ponto ficam intocados (5155.0085ms)
+✔ YAML inválido é devolvido sem gravar (4624.2934ms)
+✔ --checar valida o conteúdo proposto sem gravar, como o hook e o MCP vão chamar (4239.9647ms)
+✔ a nota arquivada vale pelo esquema de origem mais archived_at (3019.3924ms)
+✔ nota com fim de linha CRLF é completada e continua CRLF (3845.9693ms)
+✔ o verificar-hub recusa nota fora do esquema em qualquer lugar do hub (5307.6457ms)
+✔ frontmatter em mapa flow que não dá para trocar por trecho é recusado sem gravar (4170.2875ms)
+✔ campos de várias linhas ficam como estavam quando outro campo é trocado (3415.011ms)
+✔ cabeçalho aberto sem fechamento é YAML inválido, devolvido sem gravar (4335.263ms)
+✔ caminho com ponto fica de fora também quando passado direto e no --checar (2837.9287ms)
+✔ comentário YAML junto ao campo trocado fica; comentário na mesma linha recusa sem gravar (3123.2606ms)
+✔ nota arquivada é completada pela ficha arquivada, não pela pasta ativa homônima (2793.7974ms)
+✔ nova iniciativa em clients/ nasce com o núcleo de seis arquivos válidos (4098.1841ms)
+✔ nova iniciativa em initiatives/ nasce com o núcleo de seis arquivos válidos (3137.0685ms)
+✔ rodar a nova iniciativa de novo não duplica nem sobrescreve (2982.2334ms)
+✔ a nova iniciativa recusa valor fora do catálogo da ficha (2980.7001ms)
+✔ o kit do banco: PID do par, dispositivo que não confere e aceite do dispositivo (6420.6697ms)
+✔ uma pergunta em pt-BR por palavra acha a nota esperada entre as 3 primeiras (31272.5156ms)
+✔ uma pergunta em pt-BR por paráfrase, sem palavra em comum com a nota, acha a nota entre as 3 primeiras (64.5189ms)
+✔ uma nota nova gravada no disco aparece sem reindexar, por palavra e por paráfrase; o tempo só é medido (5192.8062ms)
+✔ nada com ponto no caminho nem de pasta local: true aparece, nem o que chega com a busca ligada (5432.9614ms)
+✔ o relatório conta as notas indexadas e lista as recusadas por cabeçalho quebrado (793.6134ms)
+✔ pedido com Host estranho é recusado; o servidor só escuta em 127.0.0.1 (2044.8923ms)
+✔ em inglês, no mesmo índice e sem dizer o idioma, a nota em inglês vem entre as 3 primeiras; o .pdf.md entra, o binário não (5359.3215ms)
+✔ uma rajada de 200 notas copiadas de uma vez termina toda indexada; o tempo só é medido (14427.2411ms)
+medidas do ticket 12:
+{
+  "quando": "2026-10-17T07:14:54.979Z",
+  "nota_nova_ms": 5138,
+  "relatorio": {
+    "indexadas": 55,
+    "validas": 55,
+    "faltando": [],
+    "recusadas": [
+      {
+        "caminho": "inbox/cabecalho-quebrado.md",
+        "erro": "unexpected end of the stream within a flow collection",
+        "no_indice": false
+      }
+    ],
+    "modelo": "local:Snowflake/snowflake-arctic-embed-m-v2.0",
+    "pendentes": 0,
+    "consertadas": 0
+  },
+  "rajada_200_ms": 14397,
+  "partidas": [
+    {
+      "pronta_ms": 31089,
+      "indexacao": "25s — 1 errors"
+    },
+    {
+      "pronta_ms": 3601,
+      "indexacao": "0s — 1 errors"
+    }
+  ],
+  "reaproveitadas": 257,
+  "reindexadas_pelo_consertar": 0,
+  "recusada_no_indice_depois_do_reindex": false
+}
+
+✔ a segunda partida reaproveita o índice: o mesmo banco, a busca pronta e nenhuma nota reindexada (21512.8174ms)
+✖ agents\code\test\12-kit-busca.test.mjs (28164.4887ms)

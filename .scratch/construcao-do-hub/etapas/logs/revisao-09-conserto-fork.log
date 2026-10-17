@@ -1,0 +1,35 @@
+SONDA A => Note saved: iniciativas/alfa/simultanea.md | base_rev: 2-818304be466b42e1887e584131e093a7 | [Open in Obsidian](obsidian://open?vault=Ensaio&file=iniciativas%2Falfa%2Fsimultanea)
+SONDA B => conflito: releia e refaça. A nota iniciativas/alfa/simultanea.md mudou desde a versão que você leu. | A sua gravação ficou guardada como a versão 2-eb7f2f36891242e6ad251e9dac7be5ed, ao lado de a versão 2-818304be466b42e1887e584131e093a7; nenhuma foi apagada. | Releia com read_note, que lista as versões, e refaça a mudança a partir da versão atual.
+SONDA folhas => 2
+▶ E2E (CouchDB): writes carry the version read
+  ✔ SONDA Fiel: duas gravações ao mesmo tempo da mesma base (251.2515ms)
+SONDA apagar => Deleted: iniciativas/alfa/apagada.md
+SONDA ler apagada => Note not found: iniciativas/alfa/apagada.md
+SONDA recriar => Note saved: iniciativas/alfa/apagada.md
+SONDA ler => [Open in Obsidian](obsidian://open?vault=Ensaio&file=iniciativas%2Falfa%2Fapagada) | base_rev: 3-9925e837315a4c599cf75be9eb69f5db |  | ---
+  ✔ SONDA Fiel: recriar nota apagada sem base (234.4099ms)
+✔ E2E (CouchDB): writes carry the version read (3787.0176ms)
+▶ E2E (CouchDB): writes carry the version read
+  ✔ writing with the version read saves, and the next read brings the new version (240.008ms)
+  ✔ writing with a stale version keeps both versions and answers 'conflito: releia e refaça' (233.0108ms)
+  ✔ rewriting an existing note without base_rev is refused and changes nothing (152.114ms)
+  ✔ reading a note in conflict warns and lists the versions, each readable by its rev; get_conflicts lists it (340.82ms)
+  ✔ rewriting from the version just reread saves, and says the conflict is still open (375.5923ms)
+  ✔ a note without conflict reads with no warning (105.0968ms)
+  ✔ edit_note replace needs base_rev, and a stale one is a conflict with both versions kept (363.9587ms)
+  ✔ edit_note append without base_rev acts on the current version (343.8476ms)
+  ✔ delete_note needs base_rev; with the current one it deletes (273.8324ms)
+  ✔ delete_note with a stale base_rev is a conflict: the other writer's version stays readable (343.8996ms)
+  ✔ move_note refuses an existing destination and moves with the source's base_rev (615.3074ms)
+  ✔ move_note from a stale source is a conflict that says the destination was written (312.531ms)
+  ✔ two writes at the same time from the same base: neither is told 'saved' (218.9998ms)
+  ✔ a base_rev the note never had is refused (155.6727ms)
+✔ E2E (CouchDB): writes carry the version read (7076.8875ms)
+ℹ tests 16
+ℹ suites 2
+ℹ pass 16
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 11356.1323

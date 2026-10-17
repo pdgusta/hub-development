@@ -1,0 +1,33 @@
+SONDA A => Note saved: iniciativas/alfa/simultanea.md | base_rev: 2-8b44cc9bb1c844d38b5195b79c121daa | [Open in Obsidian](obsidian://open?vault=Ensaio&file=iniciativas%2Falfa%2Fsimultanea)
+SONDA B => Note saved: iniciativas/alfa/simultanea.md | base_rev: 2-499113c1050c430f893441a3e54c49f9 | [Open in Obsidian](obsidian://open?vault=Ensaio&file=iniciativas%2Falfa%2Fsimultanea)
+SONDA folhas => 2
+▶ E2E (CouchDB): writes carry the version read
+  ✔ SONDA Fiel: duas gravações ao mesmo tempo da mesma base (329.0351ms)
+SONDA apagar => Deleted: iniciativas/alfa/apagada.md
+SONDA ler apagada => Note not found: iniciativas/alfa/apagada.md
+SONDA recriar => Note saved: iniciativas/alfa/apagada.md
+SONDA ler => [Open in Obsidian](obsidian://open?vault=Ensaio&file=iniciativas%2Falfa%2Fapagada) | base_rev: 3-1938586ee25d4ec48cc497544106f490 |  | ---
+  ✔ SONDA Fiel: recriar nota apagada sem base (366.7172ms)
+✔ E2E (CouchDB): writes carry the version read (22307.1451ms)
+▶ E2E (CouchDB): writes carry the version read
+  ✔ writing with the version read saves, and the next read brings the new version (223.4611ms)
+  ✔ writing with a stale version keeps both versions and answers 'conflito: releia e refaça' (241.668ms)
+  ✔ rewriting an existing note without base_rev is refused and changes nothing (171.1523ms)
+  ✔ reading a note in conflict warns and lists the versions, each readable by its rev; get_conflicts lists it (644.9633ms)
+  ✔ rewriting from the version just reread saves, and says the conflict is still open (389.278ms)
+  ✔ a note without conflict reads with no warning (89.9342ms)
+  ✔ edit_note replace needs base_rev, and a stale one is a conflict with both versions kept (316.4002ms)
+  ✔ edit_note append without base_rev acts on the current version (293.7076ms)
+  ✔ delete_note needs base_rev; with the current one it deletes (277.7833ms)
+  ✔ delete_note with a stale base_rev is a conflict: the other writer's version stays readable (283.4247ms)
+  ✔ move_note refuses an existing destination and moves with the source's base_rev (574.4161ms)
+  ✔ a base_rev the note never had is refused (176.0409ms)
+✔ E2E (CouchDB): writes carry the version read (7667.0326ms)
+ℹ tests 14
+ℹ suites 2
+ℹ pass 14
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 31594.1068

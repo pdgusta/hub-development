@@ -32,3 +32,5 @@ Blocked by: 04, 17, 03
 - 2026-10-17 09:30 (Vela): rodada 1 do Fiel voltou (o fim cobrava a nota de quem não gravou); conserto e1c5eac, 69/69. Rodada 2 pedida; real de novo pela fila.
 
 - 09:06 (maestro, mandato): ressalva 1 da rodada 2 (gravação pelo shell fora da lista do fim) aceita; a rede (mtime só no cwd, com aviso) vira o ticket 37.
+- 2026-10-17 11:00 (Vela): rodada curta do Fiel PASSA em f36df85. Rebite avisado (junção depois do 17 e do 16). Faltam a repetição real e o Codex, só evidência.
+- 2026-10-17 09:13 (Vela): correção: os meus comentários de hoje marcados 09:30, 10:40 e 11:00 tinham hora estimada; foram entre 08:40 e 09:13.

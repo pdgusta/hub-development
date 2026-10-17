@@ -1,0 +1,27 @@
+[PASSA] hub de ensaio A->B (307 arquivos) 
+[FALHA] arquivar move no par A (node:fs:1074
+  binding.rename(
+          ^
+
+Error: EPERM: operation not permitted, rename 'C:\Users\gustavo.delfino\AppData\Local\Temp\hub-ensaio-21\a\hub\clients\aurora\migracao-de-tenant' -> 'C:\Users\gustavo.delfino\AppData\Local\Temp\hub-ensaio-21\a\hub\clients\aurora\_archive\2026-10-17--migracao-de-tenant'
+    at renameSync (node:fs:1074:11)
+    at principal (file:///C:/context-hub-wt/ticket-21/agents/skills/arquivar/arquivar.mjs:112:3)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async file:///C:/context-hub-wt/ticket-21/agents/skills/arquivar/arquivar.mjs:130:3 {
+  errno: -4048,
+  code: 'EPERM',
+  syscall: 'rename',
+  path: 'C:\\Users\\gustavo.delfino\\AppData\\Local\\Temp\\hub-ensaio-21\\a\\hub\\clients\\aurora\\migracao-de-tenant',
+  dest: 'C:\\Users\\gustavo.delfino\\AppData\\Local\\Temp\\hub-ensaio-21\\a\\hub\\clients\\aurora\\_archive\\2026-10-17--migracao-de-tenant'
+}
+
+Node.js v24.19.0
+Assertion failed: !(handle->flags & UV_HANDLE_CLOSING), file src\win\async.c, line 94)
+[FALHA] a pasta arquivada chega ao par B, e sai do lugar antigo lá 
+[FALHA] a nota no B tem o archived_at 
+[PASSA] com a replicação parada, recusa e não move (arquivar: não arquivo reference/sincronizacao: a replicação de envio deste par não está no _scheduler; a replicação de envio do outro par não está no _scheduler)
+[FALHA] a cópia diária empurra o ramo do par, com a pasta arquivada (copia-diaria: commit novo; empurrado para par/ensaio-a)
+[PASSA] com o remoto quebrado, a cópia sai com erro (copia-diaria: falhou: git push falhou: fatal: 'C:\Users\gustavo.delfino\AppData\Local\Temp\hub-ensaio-21\copia.git-quebrado' does not appear to be a git repository)
+[PASSA] a passada seguinte da vigia notifica a falha da cópia (Hub: o estado piorou | informa: a cópia diária falhou: git push falhou: fatal: 'C:\Users\gustavo.delfino\AppData\Local\Temp\hub-ensaio-21\copia.git-quebrado' does not appear to be a git repository | fatal: Could not read from remote repository. |  | Please make sure you have the correct access rights | and the repository exists.)
+[PASSA] os contêineres do ensaio saem 
+4 falha(s)

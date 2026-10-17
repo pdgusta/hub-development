@@ -1,0 +1,35 @@
+ÔûÂ ticket 11: o MCP do banco pelos tr├¬s harnesses de verdade
+  Ô£ö claude: usa o MCP do banco e cita o que recebeu do servidor (18153.5171ms)
+  Ô£û codex: usa o MCP do banco e cita o que recebeu do servidor (400844.4825ms)
+  Ô£ö copilot-sem: usa o MCP do banco e cita o que recebeu do servidor (29959.1475ms)
+  Ô£ö copilot-com: usa o MCP do banco e cita o que recebeu do servidor (12787.2414ms)
+Ô£û ticket 11: o MCP do banco pelos tr├¬s harnesses de verdade (491680.5014ms)
+Ôä╣ tests 4
+Ôä╣ suites 1
+Ôä╣ pass 3
+Ôä╣ fail 1
+Ôä╣ cancelled 0
+Ôä╣ skipped 0
+Ôä╣ todo 0
+Ôä╣ duration_ms 491920.6728
+
+Ô£û failing tests:
+
+test at agents\code\test\ponta-a-ponta\11-mcp-banco.test.mjs:191:5
+Ô£û codex: usa o MCP do banco e cita o que recebeu do servidor (400844.4825ms)
+  AssertionError [ERR_ASSERTION]: o servidor hub-banco n├úo apareceu no codex: Reading additional input from stdin...
+  2026-10-17T10:29:05.480189Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+  2026-10-17T10:29:05.495892Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+  2026-10-17T10:33:40.489666Z ERROR codex_models_manager::manager: failed to refresh available models: request timed out
+  
+      at TestContext.<anonymous> (file:///C:/context-hub-wt/ticket-11/agents/code/test/ponta-a-ponta/11-mcp-banco.test.mjs:211:16)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Suite.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

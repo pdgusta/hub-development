@@ -192,3 +192,7 @@ Fielzinho sem cota até 12h15. Leituras dele pendentes: 17 r2, 11 r1, mais a fil
 23 r1 (Cinzel, esqueleto do kit, e9dcef7 com integracao e98a891): pedido ~09h10; Fiel sozinho.
 23 r1: VOLTA (Fiel sozinho), conserto 1: juntarHooks duplica hook quando o fragmento muda (sonda reproduzida). Nada global (hashes iguais). Cinzel avisado.
 18 r2: PASSA com ressalvas (shell não anotado; corrida no anotar reproduzida; NotebookEdit). Vela avisada. 23 r2 pedido (f304e6c).
+23 r2: PASSA (14/14, sonda ok, nada global). Cinzel avisado. 18 rodada curta f36df85 e 16 final (280b778) pedidos.
+18 curta (f36df85): PASSA; corrida 12/12. Vela avisada. Próximo: 16 final (Trilho, 280b778).
+16 final (280b778): lendo; achado provável: descartados() acusa folha apagada de TEXTO resolvido (isSame ou escolha) como binário (fonte: deleteRevisionFromDBCore usa db.delete para os dois; isPlainText .md .txt .svg .html .csv .css .js .xml). Teste mjs rodando em segundo plano; Docker: log 8ª do Trilho em 280b778 verde.
+24 r1 (Cinzel, 7d3753b sobre 23 f304e6c): pedido ~10h40; Fiel sozinho.
