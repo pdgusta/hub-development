@@ -296,3 +296,4 @@ nuvem.
 - 11:15: ronda; Rebite com a trava (suíte do 22 desde 11:02); Trilho limpo e retomado (8%); todos ≤36%; 4,1 GB livres.
 - 11:21: 21 passa (6b6c65e, com o 22 e as duas metades do 10.env.modelo); Rebite junta 16+21 depois da suíte do 22. Ticket 38 (ajudante nos testes de fora do 36) ao Trilho.
 - 11:22: 22 resolvido (4a47576, 215/0; Codex pendente). 16 (30b735f) e 21 (fdd3760) juntados; suíte única desde 11:21. Resolvidos: 27 de 38.
+- 11:32: 38 com os leves verdes; pesados do Trilho logo depois da suíte do Rebite (antes das 12:15); Docker de 08/09/10 dispensado (só limpeza; as fases do 25 exercitam).
