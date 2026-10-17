@@ -56,6 +56,7 @@ do 08 com o medidor; em seguida, na mesma janela, a Vela roda a 1ª rodada real 
 `codex`) e manda "leia a sua retomada". Avisar o Gustavo no fim com os números.
 
 ## Para rever com o Gustavo
+- 2026-10-17 19h50: o 25 fecha sem o Codex nas fases 4-7 do hub inteiro (vigia, retomada, arquivar, cliente); nelas o Codex está provado nos tickets de cada peça (17, 18, 21, 22). Opcional antes da instalação (anotado no 26).
 - 2026-10-17 18h50: nota que não desce do A ao B (25): a reprodução da Brasa mostrou que não é replicação morta: logo depois de subir, o B recebe a semente inteira (523 arquivos, 7 MB, ~6,5 min, quase tudo agents/code) e a nota nova espera na fila. --interval descartado. Conserto só no teste (pares.ps1 espera o B convergir). **Para a instalação real:** um par novo leva minutos para receber o hub; a instalação do 2º par poderia avisar ou esperar a convergência.
 
 - (técnica, 22) O mcp-proxy do spec não repassa o `instructions` do MCP do banco ao cliente; o contrato chega ao
@@ -362,3 +363,4 @@ nuvem.
 - 18:51: Brasa fora de novo (`claude --resume f538f66e-6cb5-4a2d-bc3d-16815b8e0c68`), nada pendente.
 - 19:13: Fiel VOLTA parcial do 25 (fase 7 não rodou harness; evidência sobrescrita); consertos fc6b10c, dac76e6, f6a0f21. Ordem: fase 7, fase 4, Codex 2, numa subida se der; nada pesado começa depois de 19h45.
 - 19:21: 24 RESOLVIDO (suíte 359: 345/14/0; 56cd23a); 22 com a evidência do Codex. Só o 25 aberto (e o 26 do Gustavo). Vela com a trava (fases 7, 4, Codex 2).
+- 19:39: 25: fases 7 (Claude+Copilot, de verdade), 4 (Claude+Copilot) e 2 do Codex VERDES antes de 19:45 (B convergiu em 218 s). Rodada 2 do Fiel em 4628138. Decidido: sem Codex nas fases 4-7 (Para rever); observação do par novo no ticket 26.
