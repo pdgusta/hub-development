@@ -56,7 +56,7 @@ do 08 com o medidor; em seguida, na mesma janela, a Vela roda a 1ª rodada real 
 `codex`) e manda "leia a sua retomada". Avisar o Gustavo no fim com os números.
 
 ## Para rever com o Gustavo
-- 2026-10-17 18h25: nota que não desce do A ao B (25, intermitente). Hipótese da Brasa (etapas/diagnostico-25-nota-nao-desce.md): a replicação contínua do daemon do CLI desiste calada depois do 'LiveSync active' e ninguém a religa. Conserto candidato, mudança de produção: `daemon --interval 5` no kit (o daemon repete e se recupera). Aprovado se a reprodução provar.
+- 2026-10-17 18h50: nota que não desce do A ao B (25): a reprodução da Brasa mostrou que não é replicação morta: logo depois de subir, o B recebe a semente inteira (523 arquivos, 7 MB, ~6,5 min, quase tudo agents/code) e a nota nova espera na fila. --interval descartado. Conserto só no teste (pares.ps1 espera o B convergir). **Para a instalação real:** um par novo leva minutos para receber o hub; a instalação do 2º par poderia avisar ou esperar a convergência.
 
 - (técnica, 22) O mcp-proxy do spec não repassa o `instructions` do MCP do banco ao cliente; o contrato chega ao
   cliente pela regra curta das ferramentas e pela configuração global do kit de cliente. Consertar ou trocar o proxy: radar.
@@ -358,3 +358,4 @@ nuvem.
 - 18:24: diagnóstico da Brasa (A→B): replicação contínua desiste calada; conserto candidato daemon --interval 5 (produção; Para rever). Reprodução depois da fase 7, teto 20h.
 - 18:26: 25 fase 7 VERDE (18:23, cee35c1; mín. 939 MB). 25 hoje: 1-3, 5, 6, 7 verdes (Claude+Copilot); Codex 1 e 3 verdes; faltam 4 e Codex 2 (descida A→B, Brasa com a trava desde 18:23). Vela /clear.
 - 18:34: Fiel PASSA 24 (2000575) e 22 (22811cb), ressalva comum: evidência não grava o modelo. Rebite junta os dois. Vela pede revisão parcial do 25.
+- 18:50: causa A→B achada (Brasa): semente de ~6,5 min depois da subida; conserto no 25 (pares.ps1 espera o B convergir; fase 2 120 s), Vela. --interval fora. Suíte 24+22 (Rebite) rodando.
