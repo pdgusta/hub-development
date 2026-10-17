@@ -46,3 +46,54 @@ Ramo ticket-20, worktree C:/context-hub-wt/ticket-20, de integracao dc56d47.
 - Por isso a via escolhida é a outra que o maestro aceitou: hook de comando PreToolUse, decidindo pelo caminho real;
   recusa a alteração até existir o parecer do verificador em outro modelo para aquela mudança exata; com o parecer,
   pede o aval (ask) mostrando a recomendação.
+
+## Lembrete de início (8301996)
+
+- agents/code/hooks/acervo/inicio.mjs: só age com MAESTRI_TERMINAL_ID; age em qualquer pasta. Claude Code e Codex:
+  SessionStart com hookSpecificOutput.additionalContext (doc do Codex, developers.openai.com/codex/hooks.md, por curl);
+  Copilot CLI: sessionStart com additionalContext no topo (doc docs.github.com hooks-configuration, por curl).
+- Diagnóstico ao vivo (uma chamada, haiku, HOME de ensaio apagado): o Copilot CLI no -p roda o sessionStart de
+  arquivo e usa o additionalContext (respondeu a palavra injetada).
+- O lembrete diz 'se você é o maestro': todo terminal do Maestri tem MAESTRI_TERMINAL_ID (distinguir maestro de
+  recruta segue pendente no spec). Na prova real, sem dizer ao modelo que ele é o maestro, o Copilot respondeu
+  'nenhuma'; com 'Você é o maestro deste workspace' no pedido, citou maestro-acervo.
+
+## Guarda do acervo (86a24d9)
+
+- agents/code/hooks/acervo/decidir.mjs, guarda.mjs (reusa ADAPTADORES da guarda do 14), verificar-mudanca.mjs.
+- Protege agents/skills/maestro-*/, agents/skills/nova-iniciativa/ e agents/skills/routing.yml. agents/maestro/
+  fica fora. **As skills de papel do acervo**: o spec diz que a guarda as cobre, mas onde elas moram não está
+  decidido; hoje os papéis são peças de maestro-papeis, já cobertas.
+- Decide pelo caminho real (bin/lib/caminhos.mjs): atalho e sessão fora do hub caem na mesma guarda.
+- Codex e Copilot: deny apontando agents/maestro/propostas/. HUB_PAPEL=maestro passa na tabela, nos três.
+- Claude Code: peça nova sem nome parecido passa; nome parecido (sem acento, número e hífen, um começa pelo outro)
+  pede aval; linha só acrescentada no SKILL.md (cabeçalho igual, texto antigo inteiro dentro do novo) passa, para a
+  peça nova poder entrar no catálogo; a tabela sem HUB_PAPEL pede aval; alterar uma peça ou o catálogo: deny até o
+  parecer do verificador para aquela mudança exata (chave sha256 de caminho + texto final; pendente e parecer em
+  <hub>/.local/acervo/); com o parecer, ask com a tela de aval (o que muda, quem usa pelo registro de uso,
+  personalização 'não verificado', alternativa de variante, recomendação do verificador).
+- Verificador: HUB_VERIFICADOR, senão 'claude -p --model sonnet' (**provisório**: quem escolhe o modelo é lacuna
+  com o Gustavo).
+- Pede confirmação do maestro: (a) 'linha acrescentada no catálogo passa' (o spec diz 'mexer no catálogo pede aval'
+  e também 'peça nova sem sobreposição é livre'); (b) Bash, PowerShell e o shell do Codex não passam pela guarda
+  (ela olha Write/Edit/MultiEdit, apply_patch, create/edit), como a do 14.
+- Registro de uso: já entregue no 19 (hooks/roteamento/uso.mjs e registro.mjs); a guarda o deixa fora (testado).
+
+## Testes
+
+- agents/code/test/20-acervo.test.mjs: 11/11 (família, faltas, lembrete nos três, guarda nos três pelo caminho
+  real, pelo atalho e fora do hub, propostas, uso, tabela com e sem HUB_PAPEL, parecer e aval com verificador dublê).
+- Consertos do 19: 27-fim-da-resposta e 19-roteamento com o atalho e o registro quebrado.
+- Suíte depois de juntar integracao c5b946a (c6a31da): 155 pass, 0 fail, 6 pulados.
+
+## Prova real (e5d24a7), HUB_HARNESS_REAL=1
+
+- ponta-a-ponta/20-acervo.test.mjs: sessão aberta FORA do hub, com MAESTRI_TERMINAL_ID; troca pelo atalho, peça nova
+  pelo caminho real, proposta pelo atalho.
+- Claude Code (haiku): verde. Troca recusada esperando o verificador; redator-2.md pediu aval; proposta gravada.
+- Copilot CLI (claude-haiku-5.5): verde. As duas gravações recusadas com o caminho de propostas; proposta gravada.
+- Codex (gpt-6-luna baixo): **não rodou**, a conta estava sem cota ('usage limit' até 2026-10-17 01:34).
+- Logins copiados para %TEMP%/hub-ensaio-20-* (Claude: .credentials.json; Copilot: só lastLoggedInUser e
+  loggedInUsers), apagados ao fim de cada rodada (apagado: true); hashes dos arquivos reais iguais antes e depois
+  (evidencia-20/hashes-*.json). Duas rodadas a mais no Copilot e uma no Claude, para ajustar o pedido (o modelo
+  parava na primeira recusa).
