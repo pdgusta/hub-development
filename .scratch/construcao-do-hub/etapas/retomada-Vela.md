@@ -135,3 +135,5 @@ node --test agents/code/test/05-frontmatter.test.mjs
 - Relatório etapas/relatorio-30-montador-mostra-falha.md. Próximo: suíte verde -> revisão do Fiel -> Rebite.
 - Às 01:40: pausar e rodar a prova do Codex do 20 (passos na seção PRÓXIMO acima).
 - 00h35: revisão pedida ao Fiel em ca5b389; Trilho avisado (o maestro ligou os construtores entre si: assunto entre construtores vai direto). Suíte repetida em segundo plano (scratchpad suite-30c.log).
+- 00h40: suíte 168/0/8; Fiel PASSA; passa levado ao Rebite. Trava apagada. Próximo: 01:40 prova do Codex do 20 (com a trava pesada).
+- 30 encerrado: Rebite juntou e resolveu (integracao 5d84d76, 168/0/8). Esperando 01:40 (vigia em segundo plano) para a prova do Codex do 20.

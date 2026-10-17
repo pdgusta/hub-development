@@ -92,3 +92,5 @@ Fielzinho sem cota até 01:34 (maestro): revisar sozinho e registrar leitura pen
 20 r1 (Vela): VOLTA, 2 consertos (soAcrescenta aceita regra inserida no SKILL.md; pasta nova -> ENOENT -> passa). Parecer etapas/parecer-20-Vela.md. Vela avisada.
 15 r1 (Trilho): PASSA (9/9, árvore limpa; Codex pendente). Parecer etapas/parecer-15-Trilho.md. Trilho avisado.
 20 r2: PASSA (13/13, sondas ok). Vela avisada.
+REGRA (maestro): trabalho pesado (Docker, suíte inteira, busca, npm install, harness real) só com etapas/trava-pesada.md (esperar se <30 min; criar com nome/o que/hora; apagar no fim, mesmo falhando). Teste de um arquivo não precisa.
+30 r1 (Vela): PASSA (46/46 nos testes ligados; suíte inteira com a Vela; reabre se vermelho fora do 12-busca). Parecer etapas/parecer-30-Vela.md.

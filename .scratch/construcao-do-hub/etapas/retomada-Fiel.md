@@ -26,7 +26,11 @@ de evidência depois das 01:34 de São Paulo). Leitura do Fielzinho pendente: 07
   `mark-resolved`: falha no meio deixa o dispositivo nunca aceito. Falta: conferir os três no código
   (`agents/code/kit/par/banco/banco.psm1`), ler os logs Docker, gravar `etapas/02-banco/parecer-Brasa.md`, avisar Brasa.
 
+30 r1 PASSA (`parecer-30-Vela.md`; reabre se a suíte da Vela der vermelho fora do 12-busca).
+
 ## Regras vivas
+- Trabalho pesado (Docker, suíte inteira, busca, npm install, harness real): só com `etapas/trava-pesada.md`
+  (se existe com menos de 30 min, esperar; senão criar com nome, o que roda e hora; apagar no fim, mesmo falhando).
 - Não rodar `ponta-a-ponta/` nem `provas/03-codex-hooks/` (até o 29 em integracao; depois só com `HUB_HARNESS_REAL=1`).
 - Docker só o Fiel; um teste por vez; derrubar o que sobrar.
 - maestri ask com `/`, nunca `\`.

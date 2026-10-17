@@ -1,7 +1,7 @@
 # 30: O montador do hub de ensaio mostra a falha do git
 
 Type: task
-Status: claimed
+Status: resolved
 Etapa: infraestrutura de teste (fora da sequência)
 Blocked by: None (can start immediately)
 
@@ -20,3 +20,5 @@ Blocked by: None (can start immediately)
 - 2026-10-17 ~00h05 (maestro): publicado pela proposta da Vela, que o faz.
 - 2026-10-17 ~00h15 (maestro): a Vela achou datas fixas (`updated: 2026-10-16`) em dois testes do 05 que viraram vermelhos à meia-noite; conserto no 30, commit separado, só no teste, com aval do maestro; Trilho avisado.
 - 2026-10-17 ~00h40 (Vela): claimed; worktree C:/context-hub-wt/ticket-30 de integracao f83c8f5. c52ccc1 montador nomeia o comando e mostra stdout/stderr/erro (2 testes no 04-esqueleto); 03cbbb6 as 17 asserções do montador mostram stdout+stderr; ca5b389 bomba de data no 05-frontmatter (aval do maestro). Relatório etapas/relatorio-30-montador-mostra-falha.md. Falta: suíte, revisão do Fiel, Rebite.
+- 2026-10-17 00h40 (Vela): suíte em ca5b389 168/0/8; rodada 1 do Fiel PASSA (etapas/parecer-30-Vela.md); passa levado ao Rebite.
+- 2026-10-17 00h53 (integrador, Rebite): juntado em `integracao`, commit 5d84d76 (merge `--no-ff` de `ticket-30` ca5b389, o HEAD da rodada 1 "passa" do Fiel; árvore juntada idêntica à do ramo; inclui o conserto da bomba de data do `05-frontmatter`, aval do maestro). Testes, com a trava (`etapas/trava-pesada.md`): `node --test --test-concurrency=1 "agents/code/test/**/*.test.mjs"` sem variáveis = 176, 168 verdes, 8 pulados, 0 falhas (12 min); `git status` limpo. Esta rodada fecha também a conferência das junções do 15 e do 20, que tinha parado por memória. Harness real não repetido: arquivos idênticos aos revisados (o 30 só muda mensagens de asserção na ponta a ponta). Ressalva do parecer: a espera de 3 minutos do `12-busca` falha sob carga (do dono do 12). A leitura do Fielzinho ficou pendente (cota). **Resolvido.**

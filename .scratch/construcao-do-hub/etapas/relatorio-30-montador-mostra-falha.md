@@ -40,3 +40,5 @@ Construtora: Vela. Ramo `ticket-30`, worktree `C:\context-hub-wt\ticket-30`, de 
   pronta em 3 minutos" (indexação lenta, máquina com memória no limite e outros recrutas rodando). Log:
   `etapas/ticket-30-suite-falha-12.log`. O 12-busca sozinho, logo depois: 9/9. Mesma falha de tempo da junção do 15.
 - Harness real: não rodado (o 30 não mexe na prova 03, nas guardas nem nos hooks).
+- Repetição da suíte inteira em ca5b389 (00:32-00:39): 176 testes, 168 verdes, 0 vermelhos, 8 pulados.
+- Rodada 1 do Fiel: PASSA (parecer etapas/parecer-30-Vela.md).
