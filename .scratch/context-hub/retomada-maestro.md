@@ -356,3 +356,4 @@ nuvem.
 - 18:16: 25: Codex 1-3: fases 1 e 3 verdes (c0d2b97); fase 2 (pedido proibia shell, conserto 8f6f50a) repetida 18:09: A não desceu ao B (mesmo sintoma da fase 4; intermitente: a 3 desceu às 18:00). Decidido: fase 7 agora (Claude+Copilot); Brasa religada e ligada à Vela para diagnosticar a descida A→B sem Docker; reprodução depois da 7. Teto 20h.
 - 18:20: ronda: fase 7 rodando (Vela, 18:15; 3,2 GB livres). Fiel religado (conversa nova) para as rodadas curtas do 22 (22811cb) e 24 (2000575). Vela 43%: limpa depois da 7.
 - 18:24: diagnóstico da Brasa (A→B): replicação contínua desiste calada; conserto candidato daemon --interval 5 (produção; Para rever). Reprodução depois da fase 7, teto 20h.
+- 18:26: 25 fase 7 VERDE (18:23, cee35c1; mín. 939 MB). 25 hoje: 1-3, 5, 6, 7 verdes (Claude+Copilot); Codex 1 e 3 verdes; faltam 4 e Codex 2 (descida A→B, Brasa com a trava desde 18:23). Vela /clear.
