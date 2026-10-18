@@ -28,9 +28,9 @@ pulados, 0 falhas). O Windows reinicia às 21h de 2026-10-17 (cumulative updates
 
 1. `maestri list`. Religar **só quem tiver trabalho**: no Claude, `maestri ask "<nome>" --raw "claude --resume <id>\r"`
    pelo **PowerShell** (pelo Git Bash, `/exit` e caminhos viram caminho do MSYS), ou `claude` + "leia a sua retomada".
-   Ids: Brasa `f538f66e-6cb5-4a2d-bc3d-16815b8e0c68`; Cinzel `5f789150-7546-42e6-bba6-92336755c5e8`; Lume
-   `36524a55-615b-4474-bf29-d1f5f64ae77b`; Trilho `b70813df-9197-41be-89ca-0ddcda1c49f4`; Vela, Fiel e Rebite: a linha
-   "Resume this session" no terminal de cada um. Fielzinho saiu da execução (não religar).
+   Depois do reinício de 21h, o Maestri religou todos em sessões **antigas** (da manhã); o maestro fechou os sem
+   trabalho. Para religar, prefira **`claude` (conversa nova) + "leia a sua retomada"**: as retomadas estão limpas e
+   em dia. Fielzinho saiu da execução (não religar).
 2. Ao Lume, ao religar: "44 juntado (df6c2e5); docs 5ª leva (f640bbd); 24 resolvido; 22 com a evidência do Codex; 25 resolvido (ca62332)".
 3. Ronda (só se houver trabalho em curso): CronCreate `13,38 * * * *`, prompt "Ronda do maestro ...".
 4. Docker Desktop: ligar só quando um teste pedir (`docker desktop start`); parar com `docker desktop stop` (o
@@ -114,3 +114,4 @@ Depois, confira o mundo real: `maestri list`, `git -C C:\context-hub log --oneli
 
 - 20:50: retomada limpa; diário e quadros antigos movidos para `etapas/diario-da-construcao.md`. Retomadas dos recrutas
   limpas (Vela 633 → 47, Rebite, Fiel 31 pelos próprios; Brasa 236 → 38, Cinzel 33, Trilho 35, Lume 52 com a fila viva, Fielzinho 10 por subagente).
+- 21:10: reinício do Windows. O Maestri religou todos (sessões antigas; 714 MB livres). Fechados Brasa, Vela, Trilho, Cinzel, Fiel e Fielzinho (3,0 GB livres). No canvas: maestro, Rebite, Lume (conversa nova: retomada e docs em dia com 24, 22, 25). Próximo: as duas peças visuais.
