@@ -30,3 +30,4 @@ O fluxo de **setup num par novo** (genérico, repetível) fica para depois, ajus
 - 2026-10-17 ~20h (Gustavo, chat do maestro): escopo trocado para as duas máquinas (acima). O maestro do outro PC
   será outra sessão; achar um jeito de os dois maestros se comunicarem (pergunta aberta; candidato natural: o próprio
   hub replicado entre os pares, ver o radar na retomada do maestro). Roteiro do 26 a preparar depois do reinício.
+- 2026-10-17 ~21h40 (maestro, divergência do Lume): nenhum script do kit nem ticket define `HUB_PAR_ID` (sem ela, nenhum link fora do hub vira `par://`); anotada em `agents/code/docs/componentes/pastas-e-links.md` §5. Na instalação, o kit de par deve gravar `HUB_PAR_ID` de cada par (ex.: no `.env` do par).
