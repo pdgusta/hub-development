@@ -60,8 +60,9 @@ para abrir e fechar aplicativos e processos da execução. Contexto do maestro: 
   chegou).
 - **Decisões do Gustavo:** portal fechado (RAM); rodadas em `.scratch/context-hub/portal/rodadas/` e pelo Maestri Chat
   (thread blue), ou no chat do maestro quando ele está presente; registrar no ticket dono.
-- **Commits** deste repositório (ramo `main`, sem remoto) a cada evento; só os caminhos relevantes; rodapé
-  `Co-Authored-By` e `Claude-Session`. Nunca `git push`, nunca tocar `main`/`tentativa-paralela/*` do hub.
+- **Commits** deste repositório (ramo `main`, remoto `origin` = github.com/pdgusta/hub-development, privado) a cada
+  evento; só os caminhos relevantes; rodapé `Co-Authored-By` e `Claude-Session`. **Push deste repositório ao fim de
+  cada etapa** (Gustavo, 2026-10-17 ~23h10; `git pull` antes: há um maestro na outra máquina). Do hub, nunca `git push`.
 - **Nada global real** sem o aval do Gustavo (`~/.claude`, `~/.codex`, `~/.copilot`, `~/.agents`); cópia de login só
   por aval, apagada ao fim, com hash antes e depois. Dado de cliente só pelo nome da iniciativa.
 
@@ -132,3 +133,4 @@ Depois, confira o mundo real: `maestri list`, `git -C C:\context-hub log --oneli
 - 22:43: peça 1 horizontal PASSOU (Lupa). Gustavo: projeto em repositório privado no GitHub (ticket 47 reescrito); memórias copiadas para .scratch/context-hub/memorias-do-maestro/ e onboarding em .scratch/context-hub/onboarding-maestro.md; auditoria antes do push: sem remoto, só main, sem blob >50 MB, sem segredo, sem repositório aninhado.
 - 22:44: AS DUAS PEÇAS VISUAIS ENTREGUES ao Gustavo (Maestri Chat, thread roxa, anexos). Traço e Lupa retirados. No canvas: Brasa (45), Cinzel (46), Fiel (revisando os dois); Rebite e Lume fechados até a junção.
 - 22:48: Gustavo fez o push do projeto para github.com/pdgusta/hub-development (privado); main em dia com origin/main (f9e8461).
+- 23:15: Gustavo: o maestro faz o push deste repositório ao fim de cada etapa (A); ele clonou na outra máquina. O primeiro push pelo maestro foi barrado pelo modo automático (publicação): pedir a regra de permissão.

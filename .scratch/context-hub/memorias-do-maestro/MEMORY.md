@@ -43,3 +43,4 @@
 - [Rodadas pelo chat](rodadas-pelo-chat.md) — portal fechado por RAM: rodadas pelo Maestri Chat (thread blue); a resposta vale como do portal
 - [Autonomia na construção](autonomia-na-construcao.md) — desde 2026-10-17 ~04h o maestro decide pelo Gustavo com critério; registrar; lista 'Para rever'; contexto até 700k
 - [Codex só para testes](codex-sem-cota-usa-claude.md) — execução e revisão no Claude; Codex só nos testes, gpt-6-luna padrão, 6.1-sol se difícil; Fielzinho fora
+- [Push do planejamento](push-do-repositorio-de-planejamento.md) — o maestro faz push de pdgusta/hub-development ao fim de cada etapa (pull antes); do hub, nunca

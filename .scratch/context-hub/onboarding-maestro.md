@@ -32,9 +32,10 @@ repositório no mesmo commit, para o outro maestro receber.
 
 ## 2. Convivência entre os dois maestros
 
-- **Um repositório, duas máquinas:** `git pull` antes de começar e antes de cada rodada; commit e `git push` logo depois
-  de gravar (o maestro do par A nunca fazia push porque o repositório não tinha remoto; agora o Gustavo autorizou o
-  GitHub para este repositório: confirme com ele se você pode fazer push ou se ele faz).
+- **Um repositório, duas máquinas** (`github.com/pdgusta/hub-development`, privado): `git pull` antes de começar e
+  antes de cada rodada; commit e `git push` ao fim de cada etapa. O Gustavo autorizou o maestro a fazer push **deste**
+  repositório (2026-10-17 ~23h10); o do hub (`C:\context-hub`) continua só com ele. Se o modo automático do Claude
+  Code barrar o push, peça ao Gustavo a regra de permissão (não contorne).
 - **Não pisar no outro:** antes de mexer numa frente, veja no diário da retomada se o outro maestro está nela. Até o
   correio do ticket 48 existir, o recado entre maestros vai numa seção "Recados entre maestros" da retomada (com
   pull/push) ou pelo Gustavo.
@@ -93,4 +94,4 @@ por nome (`taskkill /IM`); matar agentes, laços ou o portal; contornar uma perm
 ## 4. Primeiro contato com o Gustavo
 
 Diga em uma linha que leu este onboarding, a retomada e as memórias, e pergunte: (1) o mandato vale para você? (2)
-quem faz push neste repositório? (3) qual frente você conduz desta máquina?
+qual frente você conduz desta máquina?
