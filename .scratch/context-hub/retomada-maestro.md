@@ -135,3 +135,4 @@ Depois, confira o mundo real: `maestri list`, `git -C C:\context-hub log --oneli
 - 22:48: Gustavo fez o push do projeto para github.com/pdgusta/hub-development (privado); main em dia com origin/main (f9e8461).
 - 23:15: Gustavo: o maestro faz o push deste repositório ao fim de cada etapa (A); ele clonou na outra máquina. O primeiro push pelo maestro foi barrado pelo modo automático (publicação): pedir a regra de permissão.
 - 23:25 (maestro do par B, lenovo-ideapad): onboarding lido, memórias copiadas. Gustavo: o mandato vale também para o maestro do par B; ele também faz push deste repositório. Ainda não há `C:\context-hub` nesta máquina. Frente do par B: a definir com o Gustavo.
+- 23:00: identidade do git local nos dois repositórios (planejamento e hub): pdgusta <gustavopottpott@hotmail.com>; global (trabalho) intocado.

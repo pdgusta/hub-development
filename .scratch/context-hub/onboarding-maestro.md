@@ -36,6 +36,9 @@ repositório no mesmo commit, para o outro maestro receber.
   antes de cada rodada; commit e `git push` ao fim de cada etapa. O Gustavo autorizou o maestro a fazer push **deste**
   repositório (2026-10-17 ~23h10); o do hub (`C:\context-hub`) continua só com ele. Se o modo automático do Claude
   Code barrar o push, peça ao Gustavo a regra de permissão (não contorne).
+- **Identidade do git** (Gustavo, 2026-10-17 ~23h25): neste repositório e no do hub, `user.name = pdgusta` e
+  `user.email = gustavopottpott@hotmail.com`, só na configuração local de cada um (`git config --local`); o global da
+  máquina é do trabalho e fica como está. Na máquina nova, grave a mesma configuração local nos dois.
 - **Não pisar no outro:** antes de mexer numa frente, veja no diário da retomada se o outro maestro está nela. Até o
   correio do ticket 48 existir, o recado entre maestros vai numa seção "Recados entre maestros" da retomada (com
   pull/push) ou pelo Gustavo.
