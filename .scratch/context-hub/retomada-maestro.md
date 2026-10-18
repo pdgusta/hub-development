@@ -115,3 +115,4 @@ Depois, confira o mundo real: `maestri list`, `git -C C:\context-hub log --oneli
 - 20:50: retomada limpa; diário e quadros antigos movidos para `etapas/diario-da-construcao.md`. Retomadas dos recrutas
   limpas (Vela 633 → 47, Rebite, Fiel 31 pelos próprios; Brasa 236 → 38, Cinzel 33, Trilho 35, Lume 52 com a fila viva, Fielzinho 10 por subagente).
 - 21:10: reinício do Windows. O Maestri religou todos (sessões antigas; 714 MB livres). Fechados Brasa, Vela, Trilho, Cinzel, Fiel e Fielzinho (3,0 GB livres). No canvas: maestro, Rebite, Lume (conversa nova: retomada e docs em dia com 24, 22, 25). Próximo: as duas peças visuais.
+- 21:16: peças visuais: brief em etapas/../resumo-visual/brief.md; papéis novos (Designer e Revisor do resumo da construção); recrutados Traço+Lupa (peça 1: a construção ticket a ticket) e Nanquim+Esquadro (peça 2: o que atrapalhou e como se resolveu); portas 8771-8774.
