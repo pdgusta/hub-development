@@ -9,20 +9,18 @@ antigos estão em `.scratch/construcao-do-hub/etapas/diario-da-construcao.md` (f
 (instalação de verdade nas **duas máquinas**, com o Gustavo). `integracao` em `ca62332` (suíte 370: 355 verdes, 15
 pulados, 0 falhas). O Windows reinicia às 21h de 2026-10-17 (cumulative updates). Ronda automática cancelada (sem trabalho).
 
-## Próximo, na ordem
+## Próximo, na ordem (combinado com o Gustavo para 2026-10-18)
 
-1. FEITO 23h: **Duas peças visuais** que resumem a execução, cada detalhe (pedido do Gustavo, 2026-10-17 ~04h40). O que é cada
-   uma, o tipo e o detalhe: o maestro decide agora. Um time enxuto por peça, **Designer + Revisor**, cada um com até 2
-   subagentes; as duas em paralelo. Fontes: `etapas/diario-da-construcao.md`, `etapas/registro-de-juncoes.md`, os
-   `## Comments` dos tickets, pareceres e relatórios em `etapas/`, os commits de `integracao` e deste repositório.
-   Memórias: `visuais-pelo-designer`, `visual-diagrama-no-centro`, `legibilidade-dos-titulos`, `headless-edge-para-qa-visual`.
-2. **Lume**: docs (`agents/code/docs/`, ramo `docs`) em dia com o 24, o 22 (evidência do Codex) e o 25; o Rebite junta
-   (só 12-busca e verificador de pastas; ver `etapas/documentacao-tecnica.md`).
-3. **Roteiro do 26** (ticket `issues/26-instalacao-de-verdade-no-par-1.md`): par 1 aqui (kit no HOME real, cópia e hash
-   antes); par 2 no outro PC (lá há Claude Code, Maestri, admin; dá para clonar o hub; primeiro setup do jeito mais
-   adequado, o fluxo genérico de "par novo" vem depois); esperar o par 2 receber o hub (minutos) e conferir uma nota de
-   ponta a ponta. Inclui a comunicação entre os dois maestros (Radar).
-4. Rever com o Gustavo a lista abaixo.
+1. Hoje à noite, sem ele: o Lume põe os docs em dia com o 45/46 e escreve `agents/code/docs/instalacao.md`; o Rebite
+   junta os docs em `integracao` e de novo no `main` do hub (sem push). Depois, os dois fecham.
+2. **Amanhã, com o Gustavo:** ele faz `git -C C:\context-hub push origin main` (um push só, já com os docs); o maestro
+   prepara `C:\hub-transporte\` (o `.env` do par B pelo `gerar-env-pares.ps1`, o `git bundle` do fork
+   `C:\Projetos\hub-mcp-banco` e o do LiveSync `C:\Projetos\spike-livesync\livesync-src`); instalação no **par A**
+   seguindo `instalacao.md` (simulação, cópia e hash, instalar, tarefas com ele); depois o **par B** (o maestro de lá
+   segue a mesma página); nota de ponta a ponta nos dois sentidos. Ticket 26; roteiro `etapas/roteiro-26.md`.
+3. Depois: 48 (correio entre maestros) e a lista **Para rever com o Gustavo**.
+
+As duas peças visuais foram entregues (2026-10-17 ~23h).
 
 ## Religar depois do reinício
 
@@ -148,3 +146,4 @@ Depois, confira o mundo real: `maestri list`, `git -C C:\context-hub log --oneli
 - 23:26: 46 PASSA r2 (dc4fd1a); Rebite junta 45 (suíte em curso) e 46, depois integracao → main (sem push). Ressalvas do Fiel no 26.
 - 23:29: Fiel e Cinzel fechados (livres; retomadas gravadas). Retirar do canvas depois que o 45 e o 46 juntarem verdes. Rebite: suíte do 45, depois o 46 (dd241ba), depois main.
 - 00:16: 45 e 46 RESOLVIDOS; main do hub 7d0c25d pronto para o push do Gustavo. Brasa e Cinzel retirados do canvas; ronda cancelada. Lume religado: docs do 45/46 e a página nova instalacao.md.
+- 00:19: Gustavo: instalação amanhã (2026-10-18). Hoje só os docs do Lume e a junção deles.
