@@ -110,3 +110,23 @@ conceito entraram.
   inferida, apagada e com até 45 min, pode ficar, desde que não invada o barco vizinho (item 5). (3) Fechar a janela às
   18h20 pode ficar. (4) Os 12 encalhes podem ficar. (5) Só 3 bugs da revisão pode ficar. (6) Os dois relatos no cartão
   da trava sobrescrita podem ficar.
+
+## Volta 2 (2026-10-17 ~22h40): PASSA
+
+Capturas novas em 1600 e 390 px. Os 11 consertos entraram:
+- A grade cai nas horas cheias: a barragem do Maestri fica ~10h06 e a comporta do Codex 14h26, ambas no lugar.
+- Nenhum rótulo fica sobre barragem ou sob o rio.
+- Todo marco tem palavra. No 390, os marcos próximos viram um só, com a contagem.
+- Os fatos foram reconferidos por script:
+  - nenhum par de barcos da trava se sobrepõe;
+  - as horas dos achados [3], [9], [34], [35] e [39] estão certas;
+  - regras[4] diz "construtores";
+  - zero ocorrências do nome de usuário no json e no html;
+  - os rótulos curtos não têm código sem palavra;
+  - o detalhe do 12 diz "quatro… e oito".
+
+Ressalvas (não obrigam):
+- No 390, nas horas mais cheias (05h-07h, 13h-15h), o rótulo empilhado chega a ficar ~1 h abaixo da marca. O traço
+  de ligação salva a leitura.
+- Dois trechos menores da trava ficam de fora, porque as fontes não escrevem início e fim: o 12-busca da busca nos
+  docs (~12h55) e a junção dos docs (12h37).

@@ -30,13 +30,13 @@
    "valor": "448 MB",
    "rotulo": "a menor memória livre medida (14h18)",
    "destaque": true,
-   "detalhe": "Ronda das 14:18, com a fase 4 do ticket 25 (junção e prova do hub inteiro) rodando.",
+   "detalhe": "Ronda das 14:18, logo depois do corte da fase 4 da prova do hub inteiro (ticket 25), às 14:17:47.",
    "fonte": "etapas/diario-da-construcao.md:159"
   },
   {
    "valor": "12",
    "rotulo": "encalhes: trabalho que caiu por falta de memória",
-   "detalhe": "Três mortos pelo sistema (fila Docker do 07, suíte das 00h35, Docker do 08) e nove cortes do medidor abaixo de 700 MB. Fontes de cada um no toque.",
+   "detalhe": "Quatro quedas fora do medidor (a fila Docker do banco do par duas vezes, a suíte da junção das 00h35 e o Docker do teste de limites do banco) e oito cortes do medidor abaixo de 700 MB. Fontes de cada um no toque.",
    "fonte": "dados-memoria-trava.json (cortes)"
   },
   {
@@ -3897,7 +3897,7 @@
  "cortes": [
   {
    "t": "2026-10-16T23:05",
-   "curto": "fila Docker do 07 morta pelo sistema",
+   "curto": "fila Docker do banco do par morta pelo sistema",
    "oque": "máquina sem memória no meio da prova 01 (ticket 07); o sistema parou a fila",
    "mb": null,
    "nota": " (hora aproximada)",
@@ -3906,7 +3906,7 @@
   },
   {
    "t": "2026-10-16T23:40",
-   "curto": "a fila do 07 morre de novo",
+   "curto": "a fila do banco do par morre de novo",
    "oque": "máquina sem memória de novo, com a fila esperando memória (ticket 07)",
    "mb": null,
    "nota": "a fila-docker do 07 (fora da BASE) mostra 740 MB às 23:23:40 e para às 23:38:47; recomeça às 00:18 (hora aproximada)",
@@ -3924,7 +3924,7 @@
   },
   {
    "t": "2026-10-17T03:59",
-   "curto": "Docker do 08 caiu aos 18 min",
+   "curto": "Docker do teste de limites do banco cai aos 18 min",
    "oque": "Docker do 08 (todas as fatias) caiu por memória aos 18 min",
    "mb": null,
    "nota": "começou 03:37; 18 min dá ~03:55. Ronda das 03:47: 1.200 MB livres (diário:27)",
@@ -3933,7 +3933,7 @@
   },
   {
    "t": "2026-10-17T05:12",
-   "curto": "fatia 2 do 08: 2.900 → 513 MB",
+   "curto": "arquivo grande do banco: 2.900 → 513 MB",
    "oque": "fatia 2 do 08 cortada pelo corredor (2.900 → 513 em ~1 min)",
    "mb": 513,
    "nota": "diário:48 registra às 05:17",
@@ -3942,7 +3942,7 @@
   },
   {
    "t": "2026-10-17T07:39",
-   "curto": "fatia 2 de novo: 3.183 → 621 MB",
+   "curto": "arquivo grande de novo: 3.183 → 621 MB",
    "oque": "fatias 1+2 do 08 cortadas (3.183 → 621 em 2 min)",
    "mb": 621,
    "nota": "diário:78 registra às 07:41",
@@ -3951,7 +3951,7 @@
   },
   {
    "t": "2026-10-17T08:26",
-   "curto": "Docker do 22 cortado: 613 MB",
+   "curto": "Docker do proxy cortado: 613 MB",
    "oque": "Docker do 22 cortado na indexação da busca",
    "mb": 613,
    "nota": "diário:90 registra às 08:29",
@@ -3960,7 +3960,7 @@
   },
   {
    "t": "2026-10-17T13:01",
-   "curto": "25, rodada 1: corte em 670 MB",
+   "curto": "prova do hub, rodada 1: corte em 670 MB",
    "oque": "25 rodada 1: corte do medidor na subida dos pares (fase 6), depois de a fase 4 não começar",
    "mb": 670,
    "nota": "NÃO está no diário (diário:151 só diz que 'saiu sem rodar'); status: prova terminou com 766 MB (25-corredor.status:14)",
@@ -3969,7 +3969,7 @@
   },
   {
    "t": "2026-10-17T13:13",
-   "curto": "25, rodada 2: corte em 480 MB",
+   "curto": "prova do hub, rodada 2: corte em 480 MB",
    "oque": "25 rodada 2: corte na subida dos pares (fase 4)",
    "mb": 480,
    "nota": "diário:152 e relatório-25:110 dizem 659 MB, que é a medida no fim da prova (25-corredor.status:19, 13:13:56)",
@@ -3978,7 +3978,7 @@
   },
   {
    "t": "2026-10-17T13:39",
-   "curto": "25, fase 7: corte em 671 MB",
+   "curto": "prova do hub, fase 7: corte em 671 MB",
    "oque": "25 fase 7 cortada na subida da pilha do 22 (12 min subindo)",
    "mb": 671,
    "nota": "diário:155 registra às 13:45",
@@ -3987,7 +3987,7 @@
   },
   {
    "t": "2026-10-17T14:17",
-   "curto": "25, fase 4: corte antes de começar (477 MB)",
+   "curto": "prova do hub, fase 4: corte antes de começar (477 MB)",
    "oque": "25 fase 4, rodada 5: corte ainda na espera do piso (começou com 562 MB)",
    "mb": 477,
    "nota": "o diário não chama de corte; diário:159 (14:18) dá 448 MB 'com a fase 4 da Vela rodando'",
@@ -3996,7 +3996,7 @@
   },
   {
    "t": "2026-10-17T15:33",
-   "curto": "Codex do 22 cortado: 583 MB",
+   "curto": "Codex no proxy cortado: 583 MB",
    "oque": "Codex do 22 cortado na subida dos pares (canvas cheio)",
    "mb": 583,
    "nota": "medidor-22c.log:127 marca 526 no mesmo segundo; diário:171 registra às 15:43",
@@ -4032,12 +4032,12 @@
    "fim": null,
    "nota": "fim não escrito; no commit a44820c (00:53) a trava já estava vazia",
    "fonte": "git (trava-pesada.md) 297352a 00:37 (texto: 'começou ~00:32', trava criada 00:36)",
-   "fim_visual": "2026-10-17T00:53"
+   "fim_visual": "2026-10-17T00:42"
   },
   {
    "quem": "Rebite",
    "oque": "suíte da junção do 30",
-   "ini": "2026-10-17T00:32",
+   "ini": "2026-10-17T00:42",
    "fim": "2026-10-17T00:53",
    "nota": "o registro dá só a hora da junção (fim); diz 'com trava'",
    "fonte": "etapas/registro-de-juncoes.md:17",
@@ -4077,12 +4077,12 @@
    "fim": null,
    "nota": "fim: o Rebite junta o 13 às 02:21 com a trava (registro:19)",
    "fonte": "git (trava-pesada.md) a71ce5b 01:51",
-   "fim_visual": "2026-10-17T02:21"
+   "fim_visual": "2026-10-17T02:05"
   },
   {
    "quem": "Rebite",
    "oque": "suíte da junção do 13",
-   "ini": "2026-10-17T01:50",
+   "ini": "2026-10-17T02:05",
    "fim": "2026-10-17T02:21",
    "nota": "só o fim",
    "fonte": "etapas/registro-de-juncoes.md:19",
@@ -4136,9 +4136,9 @@
    "quem": "Brasa",
    "oque": "Docker do 08 (todas as fatias)",
    "ini": "2026-10-17T03:37",
-   "fim": "2026-10-17T03:59",
+   "fim": "2026-10-17T03:55",
    "nota": "caiu por memória aos 18 min (~03:55); diário registra 03:59",
-   "fonte": "etapas/diario-da-construcao.md:27-28; etapas/relatorio-08-banco-limites.md:113"
+   "fonte": "etapas/diario-da-construcao.md:27-28; etapas/relatorio-08-banco-limites.md:113; etapas/relatorio-08-banco-limites.md:113 (caiu aos 18 min, ~03:55; o diário registra 03:59)"
   },
   {
    "quem": "Rebite",
@@ -4150,11 +4150,12 @@
   },
   {
    "quem": "Brasa",
-   "oque": "fatias 2-7 do 08 (corredor 217400)",
+   "oque": "corredor das fatias do banco, sem pegar a trava (parado em 2 min)",
    "ini": "2026-10-17T04:00",
    "fim": "2026-10-17T04:02",
    "nota": "o status não diz PEGOU; o corredor foi parado porque o Cinzel vinha antes na fila",
-   "fonte": "etapas/logs/08-fatias.status:1-2"
+   "fonte": "etapas/logs/08-fatias.status:1-2",
+   "lado": 1
   },
   {
    "quem": "Cinzel",
@@ -4342,7 +4343,7 @@
   {
    "quem": "Trilho",
    "oque": "Docker do 21",
-   "ini": "2026-10-17T08:05",
+   "ini": "2026-10-17T08:06",
    "fim": null,
    "nota": "fim: a Brasa pega às 08:13:15",
    "fonte": "git (trava-pesada.md) 3c10a5c 08:11",
@@ -4484,7 +4485,7 @@
   {
    "quem": "Trilho",
    "oque": "pesados do 38",
-   "ini": "2026-10-17T11:40",
+   "ini": "2026-10-17T11:41",
    "fim": null,
    "nota": "fim: o Rebite pega às 11:59",
    "fonte": "git (trava-pesada.md) f82c9ac 11:41; etapas/diario-da-construcao.md:137-138",
@@ -4575,19 +4576,18 @@
    "quem": "Rebite",
    "oque": "suíte 41+40+43+docs",
    "ini": "2026-10-17T14:55",
-   "fim": null,
+   "fim": "2026-10-17T15:18",
    "nota": "o registro escreve 15h22 (hora da junção); o log juncao-41-40-43-docs-suite.log foi gravado às 15:18 (hora do arquivo)",
-   "fonte": "etapas/diario-da-construcao.md:167; etapas/registro-de-juncoes.md:38",
-   "fim_visual": "2026-10-17T15:19"
+   "fonte": "etapas/diario-da-construcao.md:167; etapas/registro-de-juncoes.md:38; etapas/logs/juncao-41-40-43-docs-suite.log (gravado 15:18:09)"
   },
   {
    "quem": "Vela",
    "oque": "Codex do 18",
-   "ini": "2026-10-17T14:55",
+   "ini": "2026-10-17T15:18",
    "fim": "2026-10-17T15:19",
    "nota": "fila diz 'feito 15:19'; o diário das 15:22 ainda escreve 'Trava com a Vela (Codex do 18)'. Início não escrito",
-   "fonte": "etapas/fila-pesada.md:11; etapas/diario-da-construcao.md:168",
-   "ini_inferido": true
+   "fonte": "etapas/fila-pesada.md:11; etapas/diario-da-construcao.md:168; etapas/logs/18-codex.log (gravado 15:19:32, 42 s)",
+   "ini_inferido": false
   },
   {
    "quem": "Brasa",
@@ -4600,11 +4600,11 @@
   {
    "quem": "Rebite",
    "oque": "suíte do 11 + docs 4ª leva",
-   "ini": "2026-10-17T15:33",
+   "ini": "2026-10-17T15:40",
    "fim": "2026-10-17T16:16",
    "nota": "início não escrito (depois das 15:43)",
-   "fonte": "etapas/registro-de-juncoes.md:40; etapas/diario-da-construcao.md:171",
-   "ini_inferido": true
+   "fonte": "etapas/registro-de-juncoes.md:40; etapas/diario-da-construcao.md:171; etapas/logs/juncao-11-docs-suite.log (gravado 16:15:18, ~2.100 s)",
+   "ini_inferido": false
   },
   {
    "quem": "Rebite",
@@ -4695,21 +4695,21 @@
    "fonte": "etapas/diario-da-construcao.md:187; etapas/fila-pesada.md:20"
   },
   {
+   "quem": "Rebite",
+   "oque": "suíte 24+22",
+   "ini": "2026-10-17T18:47",
+   "fim": "2026-10-17T19:21",
+   "nota": "rodando às 18:50; início não escrito (leves gravados às 18:36, hora do arquivo juncao-24-22-leves.log)",
+   "fonte": "etapas/diario-da-construcao.md:189; etapas/registro-de-juncoes.md:43; etapas/logs/juncao-24-22-suite.log (gravado 19:20:55)",
+   "ini_inferido": true
+  },
+  {
    "quem": "Vela",
    "oque": "25 fase 7 (de verdade)",
    "ini": "2026-10-17T19:21",
    "fim": "2026-10-17T19:26",
    "nota": "",
    "fonte": "etapas/logs/25-corredor.status:56-60; etapas/diario-da-construcao.md:192"
-  },
-  {
-   "quem": "Rebite",
-   "oque": "suíte 24+22",
-   "ini": "2026-10-17T18:47",
-   "fim": "2026-10-17T19:22",
-   "nota": "rodando às 18:50; início não escrito (leves gravados às 18:36, hora do arquivo juncao-24-22-leves.log)",
-   "fonte": "etapas/diario-da-construcao.md:189; etapas/registro-de-juncoes.md:43",
-   "ini_inferido": true
   },
   {
    "quem": "Vela",
@@ -4834,6 +4834,7 @@
   {
    "ini": null,
    "fim": "2026-10-16T20:26",
+   "ini_antes": true,
    "curto": "sem cota até 20h26",
    "nota": "Desde: 2026-10-16 (antes das 20:12; início não registrado). Volta: 2026-10-16 20:26.",
    "fonte": "git plano 7953b50 (20:12): retomada linha 118 ('Fielzinho faz a leitura pendente ... quando a cota voltar (20:26)')"
@@ -4841,6 +4842,7 @@
   {
    "ini": "2026-10-16T22:00",
    "fim": "2026-10-17T01:34",
+   "ini_antes": true,
    "curto": "sem cota até 01h34",
    "nota": "Desde: 2026-10-16 ~22:00 (Rebite já cita 'sem cota' na junção do 29, 22h02). Volta: 2026-10-17 01:34.",
    "fonte": "issues/29:28; issues/12:28-29; diario:9; git plano 431d05b retomada linha 127; d7a0f33 ('cota de volta desde 01:34')"
@@ -4848,6 +4850,7 @@
   {
    "ini": "2026-10-17T03:37",
    "fim": "2026-10-17T06:58",
+   "ini_antes": true,
    "curto": "sem cota até 06h58",
    "nota": "Desde: 2026-10-17 ~03:37 (antes do commit 7ad8dee; o diário diz ~04h45, adiantado). Volta: 2026-10-17 06:58.",
    "fonte": "diario:26; issues/15:28; git hub 7ad8dee (03:37)"
@@ -4855,6 +4858,7 @@
   {
    "ini": "2026-10-17T07:46",
    "fim": "2026-10-17T12:15",
+   "ini_antes": false,
    "curto": "sem cota até 12h15",
    "nota": "Desde: 2026-10-17 07:46. Volta: 2026-10-17 12:15.",
    "fonte": "diario:79; diario:141"
@@ -4862,6 +4866,7 @@
   {
    "ini": "2026-10-17T12:41",
    "fim": "2026-10-17T14:26",
+   "ini_antes": false,
    "curto": "sem cota até 14h26 (Gustavo redefiniu)",
    "nota": "Desde: 2026-10-17 12:41. Volta: 2026-10-17 14:26 (redefinida pelo Gustavo; sem isso, 17:15).",
    "fonte": "diario:149; diario:160; etapas/fila-pesada.md:7 (diz 14:25)"
@@ -4903,7 +4908,6 @@
    "causa": "O daemon do LiveSync herdava os handles de quem chamava o kit.",
    "conserto": "O daemon sobe sem herdar (no commit 4967c69).",
    "aprox": true,
-   "hora_texto": "achado 2026-10-16 ~20:50; conserto 2026-10-16 20:52",
    "fontes": [
     "issues/07:22",
     "git hub 4967c69 (10-16 20:52)"
@@ -4918,9 +4922,8 @@
    "quem": "Fiel (ressalva), registrada pelo Rebite na junção do 14",
    "quebrou": "Cada rodada de testes deixava pastas hub-ensaio-14-* no %TEMP%.",
    "causa": "Os testes sem harness não apagavam a própria pasta no fim.",
-   "conserto": "58b9563 (21:07: testes do 14 apagam a pasta, mesmo falhando; 33 + 86 antigas apagadas) e 9cb10f4 (21:25: o mesmo no 04 e no 05; ~1.500 antigas apagadas). Precursor do ticket 36.",
+   "conserto": "58b9563 (21:07: testes do 14 apagam a pasta, mesmo falhando; 33 + 86 antigas apagadas) e 9cb10f4 (21:25: o mesmo no 04 e no 05; ~1.500 antigas apagadas). Precursor do ticket 36 (os testes apagam a pasta de ensaio).",
    "aprox": false,
-   "hora_texto": "achado 2026-10-16 21:03; conserto 2026-10-16 21:07 (e 21:25)",
    "fontes": [
     "issues/14:40",
     "issues/12:23",
@@ -4938,7 +4941,6 @@
    "causa": "O passo não religava o CLI quando o gerador mudava a lista de exclusões.",
    "conserto": "7fa0e56: o passo religa o CLI quando a lista muda; caso novo no teste.",
    "aprox": true,
-   "hora_texto": "achado 2026-10-16 ~21:15; conserto 2026-10-16 21:19",
    "fontes": [
     "issues/07:23",
     "git hub 7fa0e56 (10-16 21:19)"
@@ -4946,7 +4948,7 @@
   },
   {
    "id": "d1-29-suite-chama-harness",
-   "t": "2026-10-16T21:30",
+   "t": "2026-10-16T21:20",
    "t_conserto": "2026-10-16T22:00",
    "curto": "a suíte abria os harnesses de verdade",
    "ticket": "29, testes com harness de verdade só sob pedido (achado no 07)",
@@ -4955,26 +4957,25 @@
    "causa": "A prova 03 e a ponta a ponta do 14 rodavam dentro do 'node --test' comum.",
    "conserto": "Ticket 29: harness real só com HUB_HARNESS_REAL=1 (654c329, 0da445e); juntado d5e4e16 (22:00). Regra provisória antes (c5408d7, 21:33).",
    "aprox": true,
-   "hora_texto": "achado 2026-10-16 ~21:30; conserto 2026-10-16 22:00",
    "fontes": [
     "issues/07:24",
     "issues/29:21-28",
     "registro:11",
-    "git plano c5408d7"
+    "git plano c5408d7",
+    "issues/07:24 (~21:20)"
    ]
   },
   {
    "id": "d1-05-intermitente",
    "t": "2026-10-16T22:28",
    "t_conserto": "2026-10-16T22:34",
-   "curto": "teste do 05 falhou uma vez na junção",
+   "curto": "teste do frontmatter falhou uma vez",
    "ticket": "05, frontmatter imposto (na junção do 19, roteamento de skills)",
    "quem": "Rebite",
    "quebrou": "Um teste do 05 ('a nota arquivada vale pelo esquema de origem') falhou uma vez na suíte inteira.",
    "causa": "Não achada; suspeita de tempo ou disputa com outros testes (passou ao repetir, sozinho e na suíte).",
    "conserto": "cb71dcf: as saídas do verificador vão na mensagem da asserção, para a próxima falha trazer a causa.",
    "aprox": false,
-   "hora_texto": "achado 2026-10-16 22:28; conserto 2026-10-16 22:34 (só diagnóstico)",
    "fontes": [
     "registro:12",
     "issues/05:46",
@@ -4994,7 +4995,6 @@
    "causa": "Sem HUB_BUSCA_OHS, a busca não estava instalada no hub de ensaio.",
    "conserto": "67c269d: o aceite instala a busca pelo kit quando falta.",
    "aprox": true,
-   "hora_texto": "achado 2026-10-16 ~22:30; conserto 2026-10-16 22:34",
    "fontes": [
     "issues/12:27",
     "git hub 67c269d (10-16 22:34)"
@@ -5011,7 +5011,6 @@
    "causa": "A asserção dependia de tempo: sob carga a 2ª partida levou 40,6 s contra 26,7 s da 1ª.",
    "conserto": "f8b8769: o reaproveitamento se prova pelo índice (256 de 256 notas); o tempo só é medido.",
    "aprox": false,
-   "hora_texto": "achado 2026-10-16 23:47; conserto 2026-10-17 00:14",
    "fontes": [
     "registro:14",
     "issues/12:32-33",
@@ -5031,7 +5030,6 @@
    "causa": "Não achada (intermitente; sozinho deu 14/14 três vezes); o montador não mostrava o que falhou.",
    "conserto": "Ticket 30: o montador nomeia o comando git e mostra stdout/stderr (c52ccc1, 03cbbb6); juntado 5d84d76.",
    "aprox": false,
-   "hora_texto": "achado 2026-10-17 00:01; conserto 2026-10-17 00:40 (juntado; registro 00h53)",
    "fontes": [
     "registro:15",
     "issues/27:32",
@@ -5051,7 +5049,6 @@
    "causa": "Data fixa no teste ('updated: 2026-10-16'): no dia 17 a data deixou de ser 'hoje'.",
    "conserto": "ca5b389 (no 30, só no teste, com aval do maestro); juntado 5d84d76.",
    "aprox": true,
-   "hora_texto": "achado 2026-10-17 ~00:10; conserto 2026-10-17 00:18",
    "fontes": [
     "issues/30:21-22",
     "registro:16",
@@ -5070,7 +5067,6 @@
    "causa": "O 'trocar' da guarda não casava CRLF e devolvia final undefined; o Claude Code casa os dois e grava.",
    "conserto": "050fb14: o trocar casa em CRLF como o Claude; juntado com o 31 em e82ce65.",
    "aprox": false,
-   "hora_texto": "achado 2026-10-17 ~02:05; conserto 2026-10-17 02:03 (commit); juntado 02:21-02:51",
    "fontes": [
     "diario:15",
     "issues/14:41",
@@ -5089,7 +5085,6 @@
    "causa": "O 'codex exec' recusava a chamada MCP da search sem aprovação no codex.toml.",
    "conserto": "0ea1016/46e44d2: a search do hub-busca vai aprovada no codex.toml do kit.",
    "aprox": true,
-   "hora_texto": "achado 2026-10-17 ~03:00; conserto 2026-10-17 03:08",
    "fontes": [
     "issues/12:34-35",
     "git hub 46e44d2 (10-17 03:08)"
@@ -5106,7 +5101,6 @@
    "causa": "A ferramenta 'read' do MCP hub-busca não passa pelo hook do aviso em nenhum harness.",
    "conserto": "Decidido expor só a 'search' nos três (enabled_tools no Codex, tools no Copilot, deny de mcp__hub-busca__read no Claude): 34ed657/c1b6133 (03:15).",
    "aprox": true,
-   "hora_texto": "achado 2026-10-17 ~03:00 (o diário diz ~03h50, hora adiantada ~1 h); conserto 2026-10-17 03:15",
    "fontes": [
     "diario:20-21",
     "diario:27",
@@ -5127,7 +5121,6 @@
    "causa": "Gravar o arquivo de 60 MiB derrubou o observador do CLI (EBUSY no arquivo ainda sendo gravado); sem supervisor, nada religa.",
    "conserto": "a54e4aa: o teste faz o papel da tarefa; o laço do kit é o supervisor.",
    "aprox": true,
-   "hora_texto": "achado 2026-10-17 ~03:55; conserto 2026-10-17 03:57",
    "fontes": [
     "issues/08:25",
     "git hub a54e4aa (10-17 03:57)"
@@ -5144,7 +5137,6 @@
    "causa": "O outro par era visto de dentro do contêiner, open_revs vinha em multipart sem Accept JSON, o JSON do info vinha entre linhas de registro e a colisão era montada antes de o hub replicar.",
    "conserto": "ff0f362; a 4ª rodada Docker passou toda (06:40).",
    "aprox": true,
-   "hora_texto": "achado 2026-10-17 ~05:00; conserto 2026-10-17 05:03",
    "fontes": [
     "diario:43",
     "issues/16:31-32",
@@ -5163,7 +5155,6 @@
    "causa": "Testes que não apagavam a própria pasta (só 87 nasceram depois do conserto do dia 16, quase todas de uma rodada interrompida 01:06-01:09).",
    "conserto": "Ajudante comum agents/code/test/pasta-de-ensaio.mjs (90f6463, 5b90550; juntado 85efe3b) e o 38 (462e35d). A limpeza em massa foi recusada pela permissão automática: fica para o Gustavo.",
    "aprox": false,
-   "hora_texto": "achado 2026-10-17 05:17; conserto 2026-10-17 07:01 (36 resolvido); 14:07 (38 resolvido)",
    "fontes": [
     "diario:48-49",
     "diario:66",
@@ -5176,14 +5167,13 @@
    "id": "d2-08-fatia3-falso-passa",
    "t": "2026-10-17T05:40",
    "t_conserto": "2026-10-17T05:42",
-   "curto": "PASSA sem ter o que conferir (08)",
+   "curto": "PASSA sem ter o que conferir",
    "ticket": "08, banco: limites e robustez",
    "quem": "Brasa",
    "quebrou": "Fatia 3 vermelha (5 falhas): o binário de 1 MiB não chegou ao par B; e um caso dava PASSA sem ter o que conferir.",
    "causa": "Provável EBUSY (arquivo gravado direto no hub, o CLI saía e ninguém religava); no teste, @($null).Count = 1 no PowerShell dava PASSA ao 'ramo apagado' sem ramo.",
    "conserto": "e0e0ecc/881acc7: arquivos entram prontos no hub, esperas com o laço, conta certa; fatia 3 verde às 06:22.",
    "aprox": false,
-   "hora_texto": "achado 2026-10-17 05:40; conserto 2026-10-17 05:42",
    "fontes": [
     "issues/08:33-35",
     "git hub e0e0ecc (10-17 05:42)"
@@ -5193,14 +5183,13 @@
    "id": "d2-10-docker-crlf",
    "t": "2026-10-17T05:49",
    "t_conserto": "2026-10-17T05:56",
-   "curto": "teste do 10 esperava LF, veio CRLF",
+   "curto": "teste do MCP esperava LF, veio CRLF",
    "ticket": "10, MCP do banco: três instâncias, cabeça, regra curta e estado",
    "quem": "Cinzel",
    "quebrou": "1ª rodada Docker do 10: 28 PASSA, 4 FALHA, todas do teste.",
    "causa": "O AGENTS.md do ensaio vinha em CRLF (o teste esperava LF) e o LiveSync fundiu sozinho duas mudanças em linhas diferentes.",
    "conserto": "6095213: a cabeça aceita \\r?\\n; o caso de conflito muda a mesma linha.",
    "aprox": false,
-   "hora_texto": "achado 2026-10-17 05:49; conserto 2026-10-17 05:56",
    "fontes": [
     "diario:54",
     "etapas/relatorio-10-mcp-do-banco.md:80",
@@ -5218,7 +5207,6 @@
    "causa": "Com o caminho ofuscado, os pedaços vão cifrados no 'path' e o 'children' claro vem vazio.",
    "conserto": "67e1f04: acha a folha pelo corpo (path); caso novo sem Docker.",
    "aprox": true,
-   "hora_texto": "achado 2026-10-17 ~05:50; conserto 2026-10-17 05:55",
    "fontes": [
     "diario:54",
     "etapas/relatorio-16-vigia.md:49-51",
@@ -5236,7 +5224,6 @@
    "causa": "Aspas simples no script do npm, que o cmd do Windows não entende.",
    "conserto": "Comando trocado em juntar-tickets.md (node --import tsx --test \"src/**/*.test.ts\"); unitários 273: 272 passam, 1 falha igual à base. 10 resolvido.",
    "aprox": false,
-   "hora_texto": "achado 2026-10-17 07:00; conserto 2026-10-17 07:27",
    "fontes": [
     "registro:27-28",
     "diario:66",
@@ -5257,7 +5244,6 @@
    "causa": "O Codex troca o hífen do nome do servidor MCP por sublinhado (mcp__hub_busca__search); a doc não diz.",
    "conserto": "64d6875 (matcher com sublinhado) e 03f85fb (sandbox de ensaio do Codex); juntado e2b7607; lição nas regras e nos tickets 11 e 23 (07:33).",
    "aprox": true,
-   "hora_texto": "achado 2026-10-17 ~07:20; conserto 2026-10-17 07:23",
    "fontes": [
     "issues/15:30-31",
     "regras:89-91",
@@ -5275,10 +5261,9 @@
    "ticket": "10, MCP do banco: três instâncias, cabeça, regra curta e estado",
    "quem": "Rebite",
    "quebrou": "Com o TEMP no nome curto, 20 testes de caminho do fork caíam.",
-   "causa": "TEMP em GUSTAV~1.DEL ('Path traversal blocked' nos testes do fork).",
+   "causa": "TEMP em o nome curto do Windows (8.3) ('Path traversal blocked' nos testes do fork).",
    "conserto": "TEMP/TMP no caminho longo (regra em juntar-tickets.md).",
    "aprox": true,
-   "hora_texto": "achado 2026-10-17 ~07:25; conserto 2026-10-17 07:27",
    "fontes": [
     "registro:28",
     "diario:69",
@@ -5297,7 +5282,6 @@
    "causa": "Erro do teste: o processo do Codex travava o processo do teste.",
    "conserto": "bfd1af3: o Codex roda sem travar o teste; a rodada do Codex ficou para depois da cota (passou 14:54).",
    "aprox": false,
-   "hora_texto": "achado 2026-10-17 07:37; conserto 2026-10-17 07:38",
    "fontes": [
     "diario:77",
     "issues/11:28,31",
@@ -5315,7 +5299,6 @@
    "causa": "No Windows, o fs.watch do sincronizador numa subpasta bloqueia o rename da pasta-mãe (EPERM).",
    "conserto": "22abdd2 (08:19, espera 10 s) não bastou; 9ce2496 (09:18): move arquivo por arquivo e apaga a árvore velha; 3ª rodada Docker passou toda.",
    "aprox": true,
-   "hora_texto": "achado 2026-10-17 ~08:15; conserto 2026-10-17 09:18 (provado e consertado na 2ª volta)",
    "fontes": [
     "diario:89",
     "diario:101",
@@ -5328,14 +5311,13 @@
    "id": "d2-18-cobrava-quem-nao-gravou",
    "t": "2026-10-17T08:50",
    "t_conserto": "2026-10-17T08:53",
-   "curto": "o fim cobrava quem não gravou (18)",
+   "curto": "o fim cobrava quem não gravou",
    "ticket": "18, retomada: nota de sete campos, início e fim (raiz no 27)",
    "quem": "Fiel (rodada 1)",
    "quebrou": "O fim da resposta cobrava a nota de uma sessão que não tinha gravado nada.",
    "causa": "O fim olhava o que mudou na pasta, não o que a própria sessão gravou (raiz no 27).",
    "conserto": "e1c5eac: um hook depois da ferramenta anota o que a sessão gravou; rodada 2 passa (09:07).",
    "aprox": true,
-   "hora_texto": "achado 2026-10-17 ~08:50; conserto 2026-10-17 08:53",
    "fontes": [
     "diario:97",
     "diario:99",
@@ -5355,7 +5337,6 @@
    "causa": "O teste esperava 'Indexing complete' no stdout; a frase sai no stderr.",
    "conserto": "bae29bd: lê os dois, como o servidor do 12-busca; Docker verde 15/0 às 09:39.",
    "aprox": false,
-   "hora_texto": "achado 2026-10-17 09:22; conserto 2026-10-17 09:31",
    "fontes": [
     "diario:108",
     "diario:114",
@@ -5367,14 +5348,13 @@
    "id": "d2-25-fase2-tasks",
    "t": "2026-10-17T09:55",
    "t_conserto": "2026-10-17T09:58",
-   "curto": "teste citava linha já trocada (25)",
+   "curto": "teste da prova citava linha já trocada",
    "ticket": "25, junção e prova do hub de ensaio inteiro",
    "quem": "Vela",
    "quebrou": "Rodada 1 real da fase 2 falhou.",
    "causa": "Defeito do teste: citava a linha de tasks.md que o harness anterior já tinha trocado.",
    "conserto": "627f1a8; rodada 2 das fases 1-3 verde (10:02).",
    "aprox": true,
-   "hora_texto": "achado 2026-10-17 ~09:55; conserto 2026-10-17 09:58",
    "fontes": [
     "issues/25:27",
     "diario:116",
@@ -5389,10 +5369,9 @@
    "ticket": "21, arquivar e cópia diária (lição levada ao 23, kit de par)",
    "quem": "Trilho",
    "quebrou": "O node abortava ao vigiar a pasta do hub.",
-   "causa": "Com HUB_ROOT ou TEMP no nome curto do Windows (GUSTAV~1.DEL), o fs.watch do node aborta quando um arquivo sai de uma pasta (libuv fs-event.c:72).",
+   "causa": "Com HUB_ROOT ou TEMP no nome curto do Windows (o nome curto do Windows (8.3)), o fs.watch do node aborta quando um arquivo sai de uma pasta (libuv fs-event.c:72).",
    "conserto": "Sempre o caminho longo; o kit grava o caminho longo (e6e5faa 10:50, a9643c6 11:01).",
    "aprox": false,
-   "hora_texto": "achado 2026-10-17 10:38; conserto 2026-10-17 10:50 (no 23)",
    "fontes": [
     "diario:125",
     "diario:130",
@@ -5405,14 +5384,13 @@
    "id": "d2-16-skill-md-yaml",
    "t": "2026-10-17T10:46",
    "t_conserto": "2026-10-17T10:55",
-   "curto": "YAML quebrado: junção do 16 desfeita",
+   "curto": "YAML quebrado: junção da vigia desfeita",
    "ticket": "16, vigia: passada, estado e notificação",
    "quem": "Rebite",
    "quebrou": "A junção do 16 ficou vermelha (2 falhas no 12-busca) e foi desfeita.",
    "causa": "O SKILL.md da vigia tinha 'description' com ': ' sem aspas (YAML inválido); a busca indexa o repositório inteiro e recusava a skill.",
    "conserto": "6a0ab17 (10:55); o mesmo defeito no SKILL.md do arquivar, 462b55e (10:58); rejunção 30b735f, suíte 253: 244 verdes, 9 pulados, 0 falhas. Regra: quem mexe em SKILL.md roda o 12-busca.",
    "aprox": false,
-   "hora_texto": "achado 2026-10-17 10:46; conserto 2026-10-17 10:55 (rejunção 11:21; suíte 11:41)",
    "fontes": [
     "registro:32-33",
     "diario:128-129",
@@ -5434,7 +5412,6 @@
    "causa": "Em kit/casa.mjs (linhas 88-91 e 136) o desfazer apagava .hub-kit sem devolver o original; e o registro ficava fora do try.",
    "conserto": "46897e0 (12:27: devolve o original e relança o erro) e 488b377 (12:38: registro dentro do try, por temporário e troca).",
    "aprox": false,
-   "hora_texto": "achado 2026-10-17 12:27; conserto 2026-10-17 12:38 (passa 12:58)",
    "fontes": [
     "diario:144",
     "issues/23:43-46",
@@ -5445,14 +5422,13 @@
    "id": "d2-40-roteamento-fora-do-agents",
    "t": "2026-10-17T12:31",
    "t_conserto": "2026-10-17T12:41",
-   "curto": "roteamento do 19 fora do AGENTS.md",
+   "curto": "roteamento das skills fora do AGENTS.md",
    "ticket": "40, a regra de roteamento das skills no AGENTS.md (para o Copilot); origem no 19, roteamento de skills",
    "quem": "Lume",
    "quebrou": "A regra de roteamento do 19 não estava no AGENTS.md.",
    "causa": "No Copilot o hook de entrada não injeta texto (a saída do userPromptSubmitted é descartada); só o AGENTS.md chega.",
    "conserto": "db6b52c: seção no corpo do AGENTS.md, com teste no 19-roteamento; juntado 7caed05.",
    "aprox": false,
-   "hora_texto": "achado 2026-10-17 12:31; conserto 2026-10-17 12:41 (juntado 15:22)",
    "fontes": [
     "diario:145",
     "diario:148",
@@ -5472,7 +5448,6 @@
    "causa": "A busca passou a indexar as 14 páginas novas (67 notas, ~9 min estimados) e não ficou pronta no prazo de 3 min.",
    "conserto": "Ticket 41: agents/code/ fora da busca (ae102ed, 6a728a4); juntado e8dde26; com os docs, a busca ficou pronta em 21,8 s.",
    "aprox": false,
-   "hora_texto": "achado 2026-10-17 12:37; conserto 2026-10-17 12:50 (41 feito); 15:22-15:30 (docs juntados)",
    "fontes": [
     "registro:35",
     "registro:38-39",
@@ -5495,7 +5470,6 @@
    "causa": "O kit trocava inteiro o bloco hub-cliente do config.toml, levando o [projects.*] trust_level junto.",
    "conserto": "7732617: troca só as tabelas [mcp_servers.hub-*], com teste de repetição; juntado c42ffa0.",
    "aprox": false,
-   "hora_texto": "achado 2026-10-17 12:39; conserto 2026-10-17 12:43 (juntado 14:06)",
    "fontes": [
     "diario:146",
     "issues/22:39-40",
@@ -5514,7 +5488,6 @@
    "causa": "O 'dentro do hub' comparava só pelo texto do caminho (o atalho é uma junction).",
    "conserto": "363e733: compara também pelo caminho real ($.fs.stat); juntado d298826.",
    "aprox": false,
-   "hora_texto": "achado 2026-10-17 12:55; conserto 2026-10-17 12:58 (juntado 14:13; registro 14h48)",
    "fontes": [
     "diario:150",
     "issues/42:24-27",
@@ -5526,14 +5499,13 @@
    "id": "d2-25-ponte-ramo-errado",
    "t": "2026-10-17T13:40",
    "t_conserto": "2026-10-17T13:44",
-   "curto": "ponte do 25 no ramo errado do fork",
+   "curto": "ponte da prova no ramo errado do fork",
    "ticket": "25, junção e prova do hub de ensaio inteiro",
    "quem": "Vela",
    "quebrou": "A fase 4 falhou antes das sessões: o estado_do_hub do MCP veio vazio.",
    "causa": "A ponte dos pares usava o fork do MCP no ramo ticket-09, que não tem o estado_do_hub do 10.",
    "conserto": "fe0b800: a ponte aponta o ramo integracao do fork; MCP sem conteúdo falha com o porquê.",
    "aprox": true,
-   "hora_texto": "achado 2026-10-17 ~13:40; conserto 2026-10-17 13:44",
    "fontes": [
     "diario:155-156",
     "issues/25:31",
@@ -5542,7 +5514,7 @@
   },
   {
    "id": "d2-25-nota-nao-desce",
-   "t": "2026-10-17T14:17",
+   "t": "2026-10-17T14:06",
    "t_conserto": "2026-10-17T19:08",
    "curto": "a nota não descia do par A ao B",
    "ticket": "25, junção e prova do hub de ensaio inteiro",
@@ -5551,7 +5523,6 @@
    "causa": "Não era replicação morta: um par recém-subido recebe a semente inteira do hub (~520 arquivos, ~1 arquivo/s, ~6,5 min) e a nota nova espera na mesma fila.",
    "conserto": "fc6b10c: o 'subir' dos pares só devolve com o B convergido (até 15 min); fase 2 com 120 s. A hipótese do --interval 5 foi descartada. B convergiu em 218 s na rodada verde.",
    "aprox": false,
-   "hora_texto": "achado 2026-10-17 14:17 (de novo 17:22 e 18:09); conserto 2026-10-17 19:08 (verde 19:39)",
    "fontes": [
     "diario:158",
     "diario:182",
@@ -5562,28 +5533,29 @@
     "etapas/diagnostico-25-nota-nao-desce.md:6-49",
     "retomada:72-74",
     "issues/25:32-34",
-    "git hub fc6b10c (10-17 19:08)"
+    "git hub fc6b10c (10-17 19:08)",
+    "etapas/diagnostico-25-nota-nao-desce.md (1ª queda A→B às 14:06)"
    ]
   },
   {
    "id": "d2-27-link-em-codigo-inline",
-   "t": "2026-10-17T15:20",
+   "t": "2026-10-17T15:18",
    "t_conserto": "2026-10-17T15:20",
-   "curto": "link em código inline derruba o 27-pastas",
+   "curto": "link dentro de código derruba o verificador",
    "ticket": "44, o verificador de pastas não lê link dentro de código (falha no 27-pastas com os docs)",
    "quem": "Rebite",
    "quebrou": "A suíte de 41+40+43+docs deu 1 falha no 27-pastas.",
    "causa": "Uma página dos docs (mcp-do-banco.md:105) tinha o exemplo '[Open in Obsidian](...)' em código inline, e o verificador o lia como link.",
    "conserto": "Página trocada (a43decc, junção b22b099; 27-pastas 21/21); causa no verificador = ticket 44 (70b1843, a63cbb7; juntado df6c2e5, suíte 358: 345/13/0).",
    "aprox": false,
-   "hora_texto": "achado 2026-10-17 15:22; conserto 2026-10-17 15:20-15:30 (página); 17:14 (ticket 44 juntado)",
    "fontes": [
     "registro:38-39",
     "registro:42",
     "diario:168",
     "issues/44:23-30",
     "issues/40:26",
-    "etapas/juncao-docs-suite-falha-27.log"
+    "etapas/juncao-docs-suite-falha-27.log",
+    "issues/44:30 (15:18)"
    ]
   },
   {
@@ -5597,7 +5569,6 @@
    "causa": "EPERM passageiro no rename do registro.json do kit (kit/casa.mjs:118) sob carga; sozinho passava.",
    "conserto": "ceda444: as quatro trocas do kit repetem por ~2 s em EPERM/EACCES/EBUSY; 34/34 três vezes.",
    "aprox": false,
-   "hora_texto": "achado 2026-10-17 15:46; conserto 2026-10-17 15:47 (passa 17:15)",
    "fontes": [
     "diario:172",
     "issues/23:47,49-50",
@@ -5609,14 +5580,13 @@
    "id": "d2-25-fase7-pipe",
    "t": "2026-10-17T17:58",
    "t_conserto": "2026-10-17T18:04",
-   "curto": "fase 7 presa 28 min num pipe",
+   "curto": "prova do hub presa 28 min num pipe",
    "ticket": "25, junção e prova do hub de ensaio inteiro",
    "quem": "Vela",
    "quebrou": "A fase 7 travou 28 min; o diagnóstico da fase 4 quebrou em sintaxe do PowerShell.",
    "causa": "A ponte do cliente ficou presa no pipe dos serviços que o teste do 22 deixa de pé; '(try ...)' não vale como valor no PowerShell.",
    "conserto": "0aa088b (sem herdar o pipe; saída em arquivo) e 5273511 ($(try ...)).",
    "aprox": true,
-   "hora_texto": "achado 2026-10-17 ~17:58; conserto 2026-10-17 18:04",
    "fontes": [
     "diario:182",
     "git hub 0aa088b (18:04), 5273511 (18:00)"
@@ -5633,7 +5603,6 @@
    "causa": "O pedido proibia o shell, e o Codex lê pelo shell.",
    "conserto": "8f6f50a: o pedido deixa ler pelo shell (grava só pelo apply_patch).",
    "aprox": true,
-   "hora_texto": "achado 2026-10-17 ~18:05; conserto 2026-10-17 18:09",
    "fontes": [
     "diario:184",
     "git hub 8f6f50a (10-17 18:09)"
@@ -5643,14 +5612,13 @@
    "id": "d2-25-fase7-falso-verde",
    "t": "2026-10-17T19:09",
    "t_conserto": "2026-10-17T19:09",
-   "curto": "fase 7 \"verde\" sem rodar harness",
+   "curto": "prova \"verde\" sem rodar harness",
    "ticket": "25, junção e prova do hub de ensaio inteiro (fase 7, cliente)",
    "quem": "Fiel (rodada 1 parcial)",
    "quebrou": "A fase 7, dada como verde às 18:26, não tinha rodado harness nenhum.",
    "causa": "O 22-cliente herdava o NODE_TEST_CONTEXT, pulava e saía 0; a evidência ainda foi sobrescrita.",
    "conserto": "dac76e6 (roda sem o contexto herdado e exige um ok por harness) e f6a0f21 (evidência por rodada); fase 7 de verdade em b78c49d (# pass 2).",
    "aprox": false,
-   "hora_texto": "achado 2026-10-17 19:12; conserto 2026-10-17 19:09-19:11 (verde de verdade 19:21)",
    "fontes": [
     "diario:187",
     "diario:191",
@@ -5692,7 +5660,7 @@
   {
    "t": "2026-10-17T03:23",
    "curto": "até 4 construtores e 1 subagente",
-   "texto": "Até 4 construtores e 1 subagente por recruta (antes: até 3 agentes e nenhum subagente).",
+   "texto": "Até 4 construtores e 1 subagente por recruta (antes: até 3 construtores e nenhum subagente).",
    "quem": "Gustavo",
    "fonte": "diario:23; regras:59-61; git plano 2e605d1 (03:23)"
   },
@@ -5712,8 +5680,8 @@
   },
   {
    "t": "2026-10-17T09:25",
-   "curto": "fatia 2 com menos agentes abertos",
-   "texto": "Fatia 2 do 08 com menos agentes abertos: janela quieta (todos salvam e saem, menos quem roda).",
+   "curto": "teste grande do banco com menos agentes",
+   "texto": "O arquivo grande do teste de limites do banco (fatia 2, ticket 08) roda com menos agentes abertos: janela quieta (todos salvam e saem, menos quem roda).",
    "quem": "Gustavo",
    "fonte": "diario:104; diario:216-223"
   },
@@ -5754,8 +5722,8 @@
   },
   {
    "t": "2026-10-17T20:12",
-   "curto": "26: instalar nas duas máquinas",
-   "texto": "O ticket 26 vira a instalação nas DUAS máquinas (par 2 no outro PC); comunicação entre os dois maestros no radar.",
+   "curto": "instalar o hub nas duas máquinas",
+   "texto": "A instalação de verdade (ticket 26) vira a instalação nas DUAS máquinas (par 2 no outro PC); comunicação entre os dois maestros no radar.",
    "quem": "Gustavo",
    "fonte": "diario:195; issues/26:30-32; git plano 0f8bb18"
   }
@@ -5764,7 +5732,7 @@
   {
    "t": "2026-10-16T21:33",
    "curto": "harness real só sob pedido",
-   "texto": "Testes com harness de verdade só sob pedido (HUB_HARNESS_REAL=1); regra provisória até o 29.",
+   "texto": "Testes com harness de verdade só sob pedido (HUB_HARNESS_REAL=1); regra provisória até o ticket 29 (harness só sob pedido).",
    "ticket": "processo",
    "rever": false,
    "rotulo": true,
@@ -5790,53 +5758,53 @@
   },
   {
    "t": "2026-10-17T00:35",
-   "curto": "Junções mantidas apesar da suíte interrompida por memória; r",
+   "curto": "junções mantidas apesar da suíte parada",
    "texto": "Junções mantidas apesar da suíte interrompida por memória; repetir depois do 30, com a trava.",
-   "ticket": "15 e 20",
+   "ticket": "15 (aviso de leitura) e 20 (acervo do maestro)",
    "rever": false,
-   "rotulo": false,
+   "rotulo": true,
    "fonte": "registro:16"
   },
   {
    "t": "2026-10-17T01:35",
-   "curto": "Ponta a ponta do Claude fica com a Vela; o Rebite só resolve",
+   "curto": "ponta a ponta do Claude fica com a Vela",
    "texto": "Ponta a ponta do Claude fica com a Vela; o Rebite só resolve o 31 com ela verde.",
-   "ticket": "31",
+   "ticket": "31 (registro dos avais)",
    "rever": false,
-   "rotulo": false,
+   "rotulo": true,
    "fonte": "issues/31:23-24"
   },
   {
    "t": "2026-10-17T03:14",
    "curto": "a busca expõe só a search",
    "texto": "O hub-busca expõe só a search nos três harnesses (Claude por deny da read).",
-   "ticket": "15 e 12",
+   "ticket": "15 (aviso de leitura) e 12 (busca local)",
    "rever": true,
    "rotulo": true,
    "fonte": "diario:20-21; issues/15:27; retomada:82 (hora pelo git deste repositório)"
   },
   {
    "t": "2026-10-17T03:29",
-   "curto": "faixa 5 do banco decidida (09)",
+   "curto": "regras de gravação do MCP do banco",
    "texto": "Pontos abertos da faixa 5: append/prepend com base opcional, nota nova como raiz, move recusa destino, delete exige base_rev, read com rev.",
-   "ticket": "09",
+   "ticket": "09 (MCP do banco: gravar com versão)",
    "rever": true,
    "rotulo": true,
    "fonte": "diario:25; issues/09:33; retomada:83-84; git plano 1200ccb (03:29) (hora pelo git deste repositório)"
   },
   {
    "t": "2026-10-17T03:59",
-   "curto": "Rodar destacado, fatia por fatia, piso 2 GB, parar abaixo de",
+   "curto": "teste do banco fatia por fatia, piso 2 GB",
    "texto": "Rodar destacado, fatia por fatia, piso 2 GB, parar abaixo de 700 MB.",
-   "ticket": "08",
+   "ticket": "08 (limites do banco)",
    "rever": false,
-   "rotulo": false,
+   "rotulo": true,
    "fonte": "diario:28; issues/08:26"
   },
   {
    "t": "2026-10-17T04:00",
    "curto": "fila da trava: quem solta avisa o próximo",
-   "texto": "Docker do 08 destacado, fatia por fatia, piso 2 GB, parada abaixo de 700 MB; fila do trabalho pesado (quem solta a trava avisa o próximo).",
+   "texto": "Docker do teste de limites do banco (08) destacado, fatia por fatia, piso 2 GB, parada abaixo de 700 MB; fila do trabalho pesado (quem solta a trava avisa o próximo).",
    "ticket": "processo",
    "rever": false,
    "rotulo": true,
@@ -5853,83 +5821,83 @@
   },
   {
    "t": "2026-10-17T04:25",
-   "curto": "16 começa antes dos bloqueios",
+   "curto": "a vigia começa antes dos bloqueios",
    "texto": "O 16 começa antes dos bloqueios (08 e 10 entram por merge; junção só com eles resolvidos).",
-   "ticket": "16",
+   "ticket": "16 (vigia)",
    "rever": true,
    "rotulo": true,
    "fonte": "diario:34; issues/16:27; retomada:85 (hora pelo git deste repositório)"
   },
   {
    "t": "2026-10-17T04:28",
-   "curto": "\"piora\" = item sobe de nível (16)",
+   "curto": "\"piora\" na vigia = item sobe de nível",
    "texto": "'Piora' = algum item sobe de nível; item novo conta como ok antes.",
-   "ticket": "16",
+   "ticket": "16 (vigia)",
    "rever": true,
    "rotulo": true,
    "fonte": "diario:35; issues/16:30; retomada:79-80 (hora pelo git deste repositório)"
   },
   {
    "t": "2026-10-17T04:44",
-   "curto": "conflito só sem base viva (09)",
+   "curto": "conflito só quando a base não está viva",
    "texto": "Achados aceitos: o LiveSync funde sozinho linhas diferentes; conflito só quando a base não é mais folha viva.",
-   "ticket": "09",
+   "ticket": "09 (MCP do banco: gravar com versão)",
    "rever": true,
    "rotulo": true,
    "fonte": "diario:37; issues/09:49; retomada:83-84 (hora pelo git deste repositório)"
   },
   {
    "t": "2026-10-17T04:45",
-   "curto": "Portas 8796/8797/8798; regra curta nas 4 ferramentas; cabeça",
+   "curto": "portas e regra curta do MCP do banco",
    "texto": "Portas 8796/8797/8798; regra curta nas 4 ferramentas; cabeça ausente dita, nunca cortada; estado.json ilegível = 'estado indisponível'.",
-   "ticket": "10",
+   "ticket": "10 (MCP do banco: instâncias e estado)",
    "rever": false,
-   "rotulo": false,
+   "rotulo": true,
    "fonte": "diario:38; issues/10:25"
   },
   {
    "t": "2026-10-17T04:46",
-   "curto": "Estado velho: passada com mais de 15 min leva o aviso 'a vig",
+   "curto": "estado velho da vigia: aviso após 15 min",
    "texto": "Estado velho: passada com mais de 15 min leva o aviso 'a vigia não roda desde <hora>'.",
-   "ticket": "10 e 16",
+   "ticket": "10 (MCP do banco: instâncias e estado) e 16 (vigia)",
    "rever": false,
-   "rotulo": false,
+   "rotulo": true,
    "fonte": "diario:39; issues/10:29"
   },
   {
    "t": "2026-10-17T05:09",
-   "curto": "17 começa antes do 16",
+   "curto": "vigia nas telas começa antes da vigia",
    "texto": "O 17 começa antes do 16 ser resolvido, contra um estado.json combinado.",
-   "ticket": "17",
+   "ticket": "17 (vigia nas telas)",
    "rever": true,
    "rotulo": true,
    "fonte": "diario:45; issues/17:21; retomada:85"
   },
   {
    "t": "2026-10-17T05:12",
-   "curto": "vigia na linha de status (17)",
+   "curto": "vigia no Claude pela linha de status",
    "texto": "Vigia no Claude Code pela linha de status ($.ui.status); faixa acima do prompt fica para o Gustavo.",
-   "ticket": "17",
+   "ticket": "17 (vigia nas telas)",
    "rever": true,
    "rotulo": true,
    "fonte": "diario:47; issues/17:24; retomada:81"
   },
   {
    "t": "2026-10-17T05:16",
-   "curto": "Fatias 3-7 primeiro; a fatia 2 por último, com 51 MiB no lug",
+   "curto": "o arquivo grande do banco por último",
    "texto": "Fatias 3-7 primeiro; a fatia 2 por último, com 51 MiB no lugar de 60, numa hora quieta.",
-   "ticket": "08",
+   "ticket": "08 (limites do banco)",
    "rever": false,
-   "rotulo": false,
+   "rotulo": true,
    "fonte": "diario:48; issues/08:31"
   },
   {
    "t": "2026-10-17T05:48",
-   "curto": "Ordem firme na fila da trava depois da corrida.",
+   "curto": "ordem firme na fila da trava",
    "texto": "Ordem firme na fila da trava depois da corrida.",
    "ticket": "processo",
    "rever": false,
-   "rotulo": false,
+   "rotulo": true,
    "fonte": "diario:53"
   },
   {
@@ -5943,218 +5911,218 @@
   },
   {
    "t": "2026-10-17T06:49",
-   "curto": "Revisão começa já, com a fatia 2 pendente como evidência.",
+   "curto": "banco vai à revisão sem o arquivo grande",
    "texto": "Revisão começa já, com a fatia 2 pendente como evidência.",
-   "ticket": "08",
+   "ticket": "08 (limites do banco)",
    "rever": false,
-   "rotulo": false,
+   "rotulo": true,
    "fonte": "diario:63; issues/08:40"
   },
   {
    "t": "2026-10-17T07:01",
-   "curto": "Costuras aceitas: proxy TBXark v1.1.0 em 127.0.0.1; os três ",
+   "curto": "proxy local; harnesses reais como cliente",
    "texto": "Costuras aceitas: proxy TBXark v1.1.0 em 127.0.0.1; os três harnesses de verdade como cliente.",
-   "ticket": "22",
+   "ticket": "22 (proxy e kit de cliente)",
    "rever": false,
-   "rotulo": false,
+   "rotulo": true,
    "fonte": "diario:66; issues/22:27"
   },
   {
    "t": "2026-10-17T07:28",
-   "curto": "18 começa sobre o 17",
+   "curto": "retomada começa sobre a vigia nas telas",
    "texto": "O 18 começa já, sobre o ramo do 17 (junção só depois de 17 e 16).",
-   "ticket": "18",
+   "ticket": "18 (retomada)",
    "rever": true,
    "rotulo": true,
    "fonte": "issues/18:26; retomada:85"
   },
   {
    "t": "2026-10-17T07:31",
-   "curto": "18: opção A, muda o spec",
+   "curto": "retomada: opção A (muda o spec)",
    "texto": "Opção A: quem conduz mantém a retomada.md; cada recruta, a sua passagem em work/ (muda o spec).",
-   "ticket": "18",
+   "ticket": "18 (retomada)",
    "rever": true,
    "rotulo": true,
    "fonte": "diario:72; issues/18:29; retomada:77-78"
   },
   {
    "t": "2026-10-17T07:31",
-   "curto": "Começa já; costuras: edição recente = 15 min; outro par fora",
+   "curto": "arquivar começa já, 15 min de folga",
    "texto": "Começa já; costuras: edição recente = 15 min; outro par fora = recusa; em dia = running e 0 pendentes.",
-   "ticket": "21",
+   "ticket": "21 (arquivar e cópia diária)",
    "rever": false,
-   "rotulo": false,
+   "rotulo": true,
    "fonte": "issues/21:20,23"
   },
   {
    "t": "2026-10-17T07:41",
-   "curto": "A fatia 2 vira item do Gustavo; wsl --shutdown liberado à Br",
+   "curto": "arquivo grande do banco fica com o Gustavo",
    "texto": "A fatia 2 vira item do Gustavo; wsl --shutdown liberado à Brasa.",
-   "ticket": "08",
+   "ticket": "08 (limites do banco)",
    "rever": false,
-   "rotulo": false,
+   "rotulo": true,
    "fonte": "diario:78; issues/08:43"
   },
   {
    "t": "2026-10-17T07:53",
-   "curto": "23 começa antes dos bloqueios",
+   "curto": "kit de par começa antes dos bloqueios",
    "texto": "O 23 começa antes dos bloqueios (esqueleto do kit).",
-   "ticket": "23",
+   "ticket": "23 (kit de par: a forma)",
    "rever": true,
    "rotulo": true,
    "fonte": "issues/23:28; retomada:85"
   },
   {
    "t": "2026-10-17T08:00",
-   "curto": "Skill de uso geral = metadata.camada: geral; o kit para dian",
+   "curto": "skill de uso geral marcada no kit",
    "texto": "Skill de uso geral = metadata.camada: geral; o kit para diante de texto alheio no global.",
-   "ticket": "23",
+   "ticket": "23 (kit de par: a forma)",
    "rever": false,
-   "rotulo": false,
+   "rotulo": true,
    "fonte": "diario:84; issues/23:31"
   },
   {
    "t": "2026-10-17T08:29",
-   "curto": "wsl --shutdown na vez dela e indexar a busca antes dos pares",
+   "curto": "desligar o WSL e indexar antes dos pares",
    "texto": "wsl --shutdown na vez dela e indexar a busca antes dos pares.",
-   "ticket": "22",
+   "ticket": "22 (proxy e kit de cliente)",
    "rever": false,
-   "rotulo": false,
+   "rotulo": true,
    "fonte": "diario:90; issues/22:30"
   },
   {
    "t": "2026-10-17T08:30",
-   "curto": "binário descartado = divergência (16)",
+   "curto": "arquivo descartado pela vigia = divergência",
    "texto": "Binário descartado é divergência até 'vigia recuperar' ou 'vigia olhei <caminho>'.",
-   "ticket": "16",
+   "ticket": "16 (vigia)",
    "rever": true,
    "rotulo": true,
    "fonte": "issues/16:35; retomada:79"
   },
   {
    "t": "2026-10-17T08:33",
-   "curto": "Começa já como preparo; prova por fases com medidor, corte e",
+   "curto": "prova do hub por fases, corte em 700 MB",
    "texto": "Começa já como preparo; prova por fases com medidor, corte em 700 MB, mem_limit 384 MB nos CouchDB.",
-   "ticket": "25",
+   "ticket": "25 (prova do hub inteiro)",
    "rever": false,
-   "rotulo": false,
+   "rotulo": true,
    "fonte": "diario:92; issues/25:21,24"
   },
   {
    "t": "2026-10-17T08:42",
-   "curto": "Começa já sobre o ramo do 23; casa de ensaio no lugar do HOM",
+   "curto": "kit ao vivo numa casa de ensaio",
    "texto": "Começa já sobre o ramo do 23; casa de ensaio no lugar do HOME.",
-   "ticket": "24",
+   "ticket": "24 (kit de par ao vivo)",
    "rever": false,
-   "rotulo": false,
+   "rotulo": true,
    "fonte": "issues/24:21,24"
   },
   {
    "t": "2026-10-17T09:05",
-   "curto": "Ressalva 1 do 18 aceita; a rede vira o ticket 37.",
-   "texto": "Ressalva 1 do 18 aceita; a rede vira o ticket 37.",
-   "ticket": "18 e 37",
+   "curto": "rede da retomada vira ticket próprio",
+   "texto": "Ressalva 1 da retomada (ticket 18) aceita; a gravação pela rede vira um ticket próprio (37, o fim da resposta vê a gravação feita pelo shell).",
+   "ticket": "18 (retomada) e 37 (fim da resposta vê o shell)",
    "rever": false,
-   "rotulo": false,
+   "rotulo": true,
    "fonte": "diario:99; issues/18:34; issues/37:24"
   },
   {
    "t": "2026-10-17T09:13",
-   "curto": "Arquivar move arquivo por arquivo, sem parar o sincronizador",
+   "curto": "arquivar move arquivo por arquivo",
    "texto": "Arquivar move arquivo por arquivo, sem parar o sincronizador.",
-   "ticket": "21",
+   "ticket": "21 (arquivar e cópia diária)",
    "rever": false,
-   "rotulo": false,
+   "rotulo": true,
    "fonte": "diario:101; issues/21:26"
   },
   {
    "t": "2026-10-17T09:26",
-   "curto": "Costuras aceitas: varredura com limite; só varre quando a se",
+   "curto": "fim da resposta: varrer só após shell",
    "texto": "Costuras aceitas: varredura com limite; só varre quando a sessão rodou shell no turno.",
-   "ticket": "37",
+   "ticket": "37 (fim da resposta vê o shell)",
    "rever": false,
-   "rotulo": false,
+   "rotulo": true,
    "fonte": "issues/37:31"
   },
   {
    "t": "2026-10-17T09:49",
-   "curto": "proxy sem instructions: no radar (22)",
+   "curto": "proxy sem as instruções do MCP: no radar",
    "texto": "O proxy não repassa o instructions do MCP: aceito como limite conhecido; consertar ou trocar fica no radar.",
-   "ticket": "22",
+   "ticket": "22 (proxy e kit de cliente)",
    "rever": true,
    "rotulo": true,
    "fonte": "diario:114; issues/22:32; retomada:75-76"
   },
   {
    "t": "2026-10-17T10:28",
-   "curto": "Cada fase registra o que subiu; o corte do medidor desce tud",
+   "curto": "o corte do medidor derruba tudo o que subiu",
    "texto": "Cada fase registra o que subiu; o corte do medidor desce tudo.",
-   "ticket": "25",
+   "ticket": "25 (prova do hub inteiro)",
    "rever": false,
-   "rotulo": false,
+   "rotulo": true,
    "fonte": "issues/25:30; diario:123"
   },
   {
    "t": "2026-10-17T10:42",
-   "curto": "Vai ao Rebite já; a evidência do Codex entra depois.",
+   "curto": "proxy vai à junção; Codex depois",
    "texto": "Vai ao Rebite já; a evidência do Codex entra depois.",
-   "ticket": "22",
+   "ticket": "22 (proxy e kit de cliente)",
    "rever": false,
-   "rotulo": false,
+   "rotulo": true,
    "fonte": "issues/22:36"
   },
   {
    "t": "2026-10-17T10:55",
-   "curto": "A ressalva da rodada 2 entra no próprio 37 antes da junção.",
+   "curto": "ressalva entra antes da junção",
    "texto": "A ressalva da rodada 2 entra no próprio 37 antes da junção.",
-   "ticket": "37",
+   "ticket": "37 (fim da resposta vê o shell)",
    "rever": false,
-   "rotulo": false,
+   "rotulo": true,
    "fonte": "diario:130; issues/37:37"
   },
   {
    "t": "2026-10-17T11:32",
-   "curto": "Docker de 08/09/10 dispensado (as fases do 25 exercitam).",
-   "texto": "Docker de 08/09/10 dispensado (as fases do 25 exercitam).",
-   "ticket": "38",
+   "curto": "Docker do banco dispensado no ajudante",
+   "texto": "No ajudante de pasta nos testes (ticket 38), o Docker dos testes do banco e do MCP (08, 09, 10) foi dispensado: as fases da prova do hub inteiro (25) já os exercitam.",
+   "ticket": "38 (ajudante de pasta nos testes)",
    "rever": false,
-   "rotulo": false,
+   "rotulo": true,
    "fonte": "diario:135"
   },
   {
    "t": "2026-10-17T12:27",
-   "curto": "Perda de arquivo no HOME real: conserto curto antes da junçã",
+   "curto": "kit perdia arquivo: conserto antes da junção",
    "texto": "Perda de arquivo no HOME real: conserto curto antes da junção, não ressalva.",
-   "ticket": "23",
+   "ticket": "23 (kit de par: a forma)",
    "rever": false,
-   "rotulo": false,
+   "rotulo": true,
    "fonte": "diario:144; issues/23:43"
   },
   {
    "t": "2026-10-17T12:39",
-   "curto": "Manutenção do config.toml no próprio ramo, junto com a evidê",
+   "curto": "config do Codex consertado no ramo do proxy",
    "texto": "Manutenção do config.toml no próprio ramo, junto com a evidência do Codex.",
-   "ticket": "22",
+   "ticket": "22 (proxy e kit de cliente)",
    "rever": false,
-   "rotulo": false,
+   "rotulo": true,
    "fonte": "diario:146; issues/22:39"
   },
   {
    "t": "2026-10-17T12:46",
-   "curto": "Ticket 41 publicado (busca fora de agents/code/); a junção d",
+   "curto": "ticket novo: a busca sem agents/code",
    "texto": "Ticket 41 publicado (busca fora de agents/code/); a junção dos docs espera por ele.",
-   "ticket": "41",
+   "ticket": "41 (busca sem agents/code)",
    "rever": false,
-   "rotulo": false,
+   "rotulo": true,
    "fonte": "diario:148; issues/41:25"
   },
   {
    "t": "2026-10-17T13:03",
-   "curto": "Piso do corredor 1.800 MB (corte de 700 mantido).",
+   "curto": "piso do corredor da prova: 1.800 MB",
    "texto": "Piso do corredor 1.800 MB (corte de 700 mantido).",
-   "ticket": "25",
+   "ticket": "25 (prova do hub inteiro)",
    "rever": false,
-   "rotulo": false,
+   "rotulo": true,
    "fonte": "diario:151"
   },
   {
@@ -6168,72 +6136,72 @@
   },
   {
    "t": "2026-10-17T13:45",
-   "curto": "Fase 7 sozinha numa janela própria; se cair de novo, o relat",
+   "curto": "a fase 7 da prova sozinha numa janela",
    "texto": "Fase 7 sozinha numa janela própria; se cair de novo, o relatório diz que fica para a máquina do Gustavo.",
-   "ticket": "25",
+   "ticket": "25 (prova do hub inteiro)",
    "rever": false,
-   "rotulo": false,
+   "rotulo": true,
    "fonte": "diario:155"
   },
   {
    "t": "2026-10-17T14:27",
-   "curto": "O 12-busca do 41 fica para a junção (a suíte o roda).",
-   "texto": "O 12-busca do 41 fica para a junção (a suíte o roda).",
-   "ticket": "41",
+   "curto": "teste da busca fica para a junção",
+   "texto": "O teste da busca (12-busca) do ticket 41 (a busca não indexa agents/code) fica para a junção: a suíte inteira já o roda.",
+   "ticket": "41 (busca sem agents/code)",
    "rever": false,
-   "rotulo": false,
+   "rotulo": true,
    "fonte": "diario:161"
   },
   {
    "t": "2026-10-17T15:20",
-   "curto": "41, 40 e 43 resolvidos com a falha do 27-pastas; docs penden",
-   "texto": "41, 40 e 43 resolvidos com a falha do 27-pastas; docs pendentes; a causa vira o ticket 44.",
-   "ticket": "41, 40, 43 e 44",
+   "curto": "3 tickets resolvidos; verificador vira ticket",
+   "texto": "Os tickets 41 (busca sem agents/code), 40 (roteamento no AGENTS.md) e 43 (Codex usa o luna) resolvidos apesar da falha do teste do verificador de pastas (27-pastas); a documentação fica pendente; a causa vira o ticket 44 (o verificador não lê link dentro de código).",
+   "ticket": "41 (busca sem agents/code), 40 (roteamento no AGENTS.md), 43 (Codex usa o luna) e 44 (verificador pula código)",
    "rever": false,
-   "rotulo": false,
+   "rotulo": true,
    "fonte": "diario:168; issues/40:26"
   },
   {
    "t": "2026-10-17T15:43",
-   "curto": "Janela quieta da noite (~17h30): 22, depois 24, depois 25.",
+   "curto": "janela quieta da noite: um de cada vez",
    "texto": "Janela quieta da noite (~17h30): 22, depois 24, depois 25.",
-   "ticket": "processo (22, 24, 25)",
+   "ticket": "processo (22 (proxy e kit de cliente), 24 (kit de par ao vivo), 25 (prova do hub inteiro))",
    "rever": false,
-   "rotulo": false,
+   "rotulo": true,
    "fonte": "diario:171"
   },
   {
    "t": "2026-10-17T15:46",
-   "curto": "Conserto curto do EPERM antes da junção (repetir ~2 s).",
+   "curto": "EPERM do kit: repetir por 2 s",
    "texto": "Conserto curto do EPERM antes da junção (repetir ~2 s).",
-   "ticket": "23",
+   "ticket": "23 (kit de par: a forma)",
    "rever": false,
-   "rotulo": false,
+   "rotulo": true,
    "fonte": "diario:172"
   },
   {
    "t": "2026-10-17T18:01",
-   "curto": "Se a fase 4 cair igual, para e religa a Brasa para diagnosti",
+   "curto": "teto 20h; Brasa diagnostica se cair",
    "texto": "Se a fase 4 cair igual, para e religa a Brasa para diagnosticar; teto 20h.",
-   "ticket": "25",
+   "ticket": "25 (prova do hub inteiro)",
    "rever": false,
-   "rotulo": false,
+   "rotulo": true,
    "fonte": "diario:182"
   },
   {
    "t": "2026-10-17T18:16",
-   "curto": "Fase 7 agora; Brasa religada e ligada à Vela para a descida ",
+   "curto": "Brasa e Vela juntas na nota que não desce",
    "texto": "Fase 7 agora; Brasa religada e ligada à Vela para a descida A→B.",
-   "ticket": "25",
+   "ticket": "25 (prova do hub inteiro)",
    "rever": false,
-   "rotulo": false,
+   "rotulo": true,
    "fonte": "diario:184"
   },
   {
    "t": "2026-10-17T18:24",
-   "curto": "--interval 5: descartado às 18:50",
+   "curto": "\"--interval 5\": descartado às 18:50",
    "texto": "Conserto candidato 'daemon --interval 5' (produção), para rever; descartado às 18:50.",
-   "ticket": "25",
+   "ticket": "25 (prova do hub inteiro)",
    "rever": true,
    "rotulo": true,
    "fonte": "diario:186; diario:189"
@@ -6249,27 +6217,27 @@
   },
   {
    "t": "2026-10-17T19:13",
-   "curto": "Ordem: fase 7, fase 4, Codex 2, numa subida; nada pesado dep",
-   "texto": "Ordem: fase 7, fase 4, Codex 2, numa subida; nada pesado depois de 19h45.",
-   "ticket": "25",
+   "curto": "ordem final da prova numa subida só",
+   "texto": "Ordem final da prova do hub inteiro (ticket 25): fase 7, fase 4 e a fase 2 do Codex, numa subida só dos pares; nada pesado depois de 19h45.",
+   "ticket": "25 (prova do hub inteiro)",
    "rever": false,
-   "rotulo": false,
+   "rotulo": true,
    "fonte": "diario:191"
   },
   {
    "t": "2026-10-17T19:39",
-   "curto": "25 fecha sem o Codex nas fases 4-7",
+   "curto": "a prova fecha sem o Codex no hub inteiro",
    "texto": "O 25 fecha sem o Codex nas fases 4-7 (provado nos tickets 17, 18, 21, 22).",
-   "ticket": "25",
+   "ticket": "25 (prova do hub inteiro)",
    "rever": true,
    "rotulo": true,
    "fonte": "diario:193; issues/25:35; retomada:70-71"
   },
   {
    "t": "2026-10-17T19:50",
-   "curto": "nota A→B: conserto só no teste",
+   "curto": "nota que não desce: conserto só no teste",
    "texto": "Nota que não descia: conserto só no teste; na instalação, o 2º par avisa ou espera a convergência.",
-   "ticket": "25 e 26",
+   "ticket": "25 (prova do hub inteiro) e 26 (instalação de verdade)",
    "rever": true,
    "rotulo": true,
    "fonte": "issues/26:29; retomada:72-74"
@@ -6279,12 +6247,12 @@
   "t": "2026-10-17T20:17",
   "curto": "20h17: construção fechada (suíte 370, 0 falhas)",
   "titulo": "Construção fechada",
-  "texto": "O ticket 25 resolvido; suíte 370: 355 verdes, 15 pulados, 0 falhas (ca62332). Só o 26 fica, com o Gustavo.",
+  "texto": "A prova do hub inteiro (ticket 25) resolvida; suíte 370: 355 verdes, 15 pulados, 0 falhas (ca62332). Só a instalação de verdade (ticket 26) fica, com o Gustavo.",
   "fonte": "etapas/diario-da-construcao.md:196; etapas/registro-de-juncoes.md:44"
  },
  "foz": {
   "titulo": "A foz: 20h17, construção fechada",
-  "texto": "O ticket 25 resolvido fecha a construção: a suíte final tem 370 testes, 355 verdes, 15 pulados, 0 falhas (ca62332). Às 21h10 o Windows reinicia; com todos religados, 714 MB livres; fechados os sem trabalho, 3,0 GB. Ficam para o Gustavo: apagar as 1.325 pastas antigas do %TEMP% (4,0 GB) e rever as decisões marcadas no rio (marcos cheios).",
+  "texto": "A prova do hub inteiro (ticket 25) resolvida fecha a construção: a suíte final tem 370 testes, 355 verdes, 15 pulados, 0 falhas (ca62332). Às 21h10 o Windows reinicia; com todos religados, 714 MB livres; fechados os sem trabalho, 3,0 GB. Ficam para o Gustavo: apagar as 1.325 pastas antigas do %TEMP% (4,0 GB) e rever as decisões marcadas no rio (marcos cheios).",
   "fonte": "etapas/diario-da-construcao.md:196; .scratch/context-hub/retomada-maestro.md:9,68-90,117"
  }
 }

@@ -125,3 +125,4 @@ Depois, confira o mundo real: `maestri list`, `git -C C:\context-hub log --oneli
 - 21:48: peça 1 (Traço, "A construção, em partitura") PASSOU na volta 2 da Lupa (resumo-visual/peca-1-partitura.html; parecer-peca-1.md). Peça 2 (Nanquim, rio estreito) em revisão do Esquadro.
 - 21:54: Gustavo (Maestri Chat): 1A, 2A, 3A; Tailscale ainda não. Tickets 45 (banco entre duas máquinas, Brasa) e 46 (kit para duas máquinas, Cinzel) publicados; 26 bloqueado por 25, 45, 46; depois o Rebite junta integracao no main e o Gustavo faz o push. Brasa e Cinzel religados (conversa nova).
 - 21:59: Gustavo: peça 1 com scroll só horizontal (uma linha contínua da execução toda, sem scroll vertical); pedido ao Traço, rodada curta da Lupa.
+- 22:02: peça 2 (Nanquim, "rio estreito") PASSOU na volta 2 do Esquadro (peca-2-rio-estreito.html; 2 ressalvas leves). Peça 1 em ajuste (scroll só horizontal, pedido do Gustavo).
