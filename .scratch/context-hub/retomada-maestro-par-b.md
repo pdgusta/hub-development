@@ -60,3 +60,4 @@ Nada aplicado: global real só com o aval e o Gustavo vendo, com cópia e hash a
 - 23:35: recado do par A (cada maestro, a sua retomada); esta retomada criada.
 - 23:45: pré-requisitos conferidos (tudo presente menos o Copilot CLI; Docker Desktop desligado).
 - 23:55: global do maestro conferido contra global-do-maestro/README.md (só leitura); faltam os itens 1 a 6; nada aplicado.
+- 00:05: aval do Gustavo para aplicar o global. Cópia em C:/Users/gusta/backup-global-maestro-2026-10-18 (hash-antes.txt). A permissão automática barrou a escrita no ~/.claude (autoalteração); nada mudou. Script para o Gustavo rodar no scratchpad da sessão (aplicar-global-maestro.sh).
