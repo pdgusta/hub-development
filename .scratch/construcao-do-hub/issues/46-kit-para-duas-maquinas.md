@@ -33,3 +33,4 @@ diagnóstico do 25.
   Desenho: `HUB_PAR_ID` do `.env` gravado pelo passo 08 em `<hub>/.local/par.json` (lido pelo verificar-pastas e pelo
   roteamento); passo `espera` no fim (ls do leitor da vigia contra o disco, com prazo); passo opcional `proxy`; lista do
   que falta à mão na saída. Combinado com a Brasa: `etapas/logs/46-combinado-brasa.md`. Costuras enviadas ao maestro.
+- 2026-10-17 ~22h (maestro): costuras do Cinzel aceitas: HUB_PAR_ID do .env gravado em `<hub>/.local/par.json` pelo passo 08; leitores usam a variável e o arquivo como reserva (verificar-pastas, roteamento, fim da resposta); kit recusa .env sem HUB_PAR_ID (os .env de ensaio ganham a variável); passo de espera último da fila, aviso e código 0 no fim do prazo; passo opcional proxy; saída lista o que falta à mão. A Brasa gera HUB_PAR_ID nos dois .env.
