@@ -65,3 +65,9 @@ Nada aplicado: global real só com o aval e o Gustavo vendo, com cópia e hash a
 - 2026-10-18 (sessão nova, já com o global novo: Opus 5.5, CLAUDE.md do graphify): retomada lida; origin/main sem
   novidade do par A; canvas só com o maestro. Superpowers segue **não instalado** (habilitado no settings.json, sem
   cache em ~/.claude/plugins). Memória `retomada-do-maestro` ganhou a linha do par B. Frente ainda a definir.
+- 2026-10-18 (depois do pull): **frente = instalação do par B**, pelo roteiro do par A em
+  `.scratch/context-hub/instalacao-par-b.md` (guia: `agents/code/docs/instalacao.md` do hub, lido pelo `gh api`).
+  Passo 0: `core.autocrlf` = `true` (vem do system; global vazio), igual ao A. **Esperando:** o resultado do ticket
+  49 (aviso na retomada do A) antes de clonar o hub; o `.env` do B e o bundle do fork por Taildrop (ainda nada em
+  Downloads; `C:\hub-transporte` não existe). Tailscale vê o armis00323. Docker Desktop desligado (ligar perto do
+  passo 7). Pergunta ao Gustavo: instalar o Copilot CLI aqui antes do passo 8 (guia §1: efeito da ausência não verificado).
