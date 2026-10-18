@@ -71,3 +71,6 @@ Nada aplicado: global real só com o aval e o Gustavo vendo, com cópia e hash a
   49 (aviso na retomada do A) antes de clonar o hub; o `.env` do B e o bundle do fork por Taildrop (ainda nada em
   Downloads; `C:\hub-transporte` não existe). Tailscale vê o armis00323. Docker Desktop desligado (ligar perto do
   passo 7). Pergunta ao Gustavo: instalar o Copilot CLI aqui antes do passo 8 (guia §1: efeito da ausência não verificado).
+- 13:55: Gustavo: "pode instalar". `winget install GitHub.Copilot` travou 5 min sem baixar (parado pelo PID que abri);
+  instalado por `npm install -g @github/copilot` (README oficial de github/copilot-cli): **Copilot CLI 1.0.98**. Falta
+  o login, feito pelo Gustavo (`! copilot`, depois `/login`).
