@@ -127,3 +127,4 @@ Depois, confira o mundo real: `maestri list`, `git -C C:\context-hub log --oneli
 - 21:59: Gustavo: peça 1 com scroll só horizontal (uma linha contínua da execução toda, sem scroll vertical); pedido ao Traço, rodada curta da Lupa.
 - 22:02: peça 2 (Nanquim, "rio estreito") PASSOU na volta 2 do Esquadro (peca-2-rio-estreito.html; 2 ressalvas leves). Peça 1 em ajuste (scroll só horizontal, pedido do Gustavo).
 - 22:07: pedido do Gustavo: retirados do canvas Fielzinho, Trilho, Vela, Nanquim, Esquadro (dismiss; retomadas e peças gravadas). Ficam: Brasa (45), Cinzel (46), Fiel e Rebite (fechados, para revisão e junção), Lume (fechado, docs do 45/46), Traço e Lupa (peça 1 horizontal).
+- 22:39: 45 (Brasa, 02dabc4) e 46 (Cinzel) prontos; Fiel religado (conversa nova) para os dois. Achado do 45 (build do CLI diferente) anotado no 26.
