@@ -18,6 +18,12 @@ Na primeira vez, copie-a para a sua pasta de memória deste projeto:
 releia o `MEMORY.md`: ele entra no contexto de toda sessão. Quando uma memória mudar de um lado, atualize a cópia no
 repositório no mesmo commit, para o outro maestro receber.
 
+## 0b. A configuração global do Claude Code
+
+Para trabalhar do mesmo jeito (modelo, esforço, auto-compact em 600k, modo automático, plugin superpowers, as skills do
+Matt Pocock, os dois mods criados nesta frente, o subagente `opus-medium`, o `CLAUDE.md` global), siga
+`.scratch/context-hub/global-do-maestro/README.md`, **com o Gustavo vendo** (é o global real da máquina).
+
 ## 1. Leia nesta ordem
 
 1. `AGENTS.md` (raiz): como trabalhar nesta frente (pt-BR, file-first, uma decisão por vez, fonte primária, dados de

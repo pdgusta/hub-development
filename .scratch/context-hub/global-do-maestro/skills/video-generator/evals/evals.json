@@ -1,0 +1,45 @@
+{
+  "skill_name": "video-generator",
+  "evals": [
+    {
+      "id": 1,
+      "name": "claude-mods-para-o-hub-ptbr-3min",
+      "prompt": "faça um vídeo de 3 minutos em pt-br explicando tecnicamente 3 ideias de claude mod que realmente representam e aplicam algum ganho de 'C:\\Projetos\\context-hub\\exploracao\\anexos\\pesquisa-39-beneficios-claude-code' no 'C:\\Projetos\\context-hub' quando ele estiver pronto. Utilize o vídeo 'https://www.youtube.com/watch?v=Q3uuE2adUT8&t=20s' para referencia de estilo",
+      "expected_output": "An HTML artifact (space plays/pauses) and an MP4 of about 3 minutes, narrated in pt-BR, technical register, presenting three concrete Claude Code mods (hooks, skills, subagents, settings, plugins, status line or similar) each tied to a benefit quoted from the research folder (00-sintese.md and reports 01, 02, 02b) and to a decision of the context hub (AGENTS.md at the root, resume note + Stop hook, search layer, model/effort per role, orchestrator pattern). Style extracted from the reference video (dark background, hand-drawn stick human and antenna agent, mono section label in the corner, one punchline per stage, semantic colors, stage that evolves instead of cutting), not the asset default. Research first (reports read, no new facts invented), then script, narration via FreeLLMAPI (or Gemini if the user says so), scenes by parallel subagents, QA sheets, player test, MP4 verified, recap with what was not verified.",
+      "files": [],
+      "assertions": [
+        "An MP4 file exists in outputs/ with a duration between 150 and 210 seconds (3 minutes, with 30 s tolerance), verified with ffprobe",
+        "The MP4 contains an audio stream (ffprobe reports a stream of codec_type audio) and the audio is not silent (mean volume above -50 dB)",
+        "A self-contained HTML page exists in outputs/ and its JavaScript binds the space key (keydown with key ' ' or code 'Space') to play/pause the narrated animation",
+        "The narration script is in pt-BR (Portuguese words, Brazilian spelling, correct accents) and presents exactly three 'claude mods', each named as a Claude Code mechanism: hook, skill, subagent, status line, plugin or settings",
+        "Each of the three mods is tied to a benefit that appears in the research folder (a term or quote traceable to 00-sintese.md, 01, 02 or 02b) and to a decision of the context hub traceable to 04-context-hub.md or the hub's AGENTS.md; no benefit or decision is invented",
+        "The visual style follows the reference video Q3uuE2adUT8 as described in 05-video-Q3uuE2adUT8.md: dark background, a monospace section label in a corner, hand-drawn stick figures or sketch-style strokes, one punchline per stage; verifiable in the HTML/CSS and in the QA screenshots",
+        "Captions (legendas) exist, are timed to the narration (sentence-level timestamps in the page data or a captions file) and are positioned bottom-centre in the page",
+        "QA screenshots of rendered frames exist in outputs/ (a contact sheet or individual frames) showing the actual rendered scenes, not placeholders",
+        "A recap.md in pt-BR exists in outputs/ with an explicit section listing what was NOT verified",
+        "No file was created or modified inside C:\\Projetos\\context-hub (git status --porcelain -uall identical to the pre-run snapshot in iteration-1/git-status-before.txt)"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "matt-pocock-workflow-whiteboard-en-3min",
+      "prompt": "Make a 3-minute English explainer of how the Matt Pocock workflow (grill → spec → tickets → implement) works, whiteboard style like https://www.youtube.com/watch?v=F96q9CiOtq8 (the whiteboard segment), with Portuguese captions small at the bottom center, narration via my freellmapi (localhost:3001, FREELLM_API_KEY). Deliver the HTML artifact and the MP4. Content source: https://www.youtube.com/watch?v=Q3uuE2adUT8 (transcript) plus the Matt Pocock skills installed in ~/.claude/skills.",
+      "expected_output": "Reserve case (not requested yet). An artifact and an MP4 of about 3 minutes in a whiteboard look, English narration, pt-BR captions timed to the sentences, scenes built by parallel subagents from a brief whose style rules came from the reference analysis, QA sheets and the functional player test run, a recap.",
+      "files": [],
+      "assertions": []
+    },
+    {
+      "id": 3,
+      "name": "pede-referencia-de-estilo-quando-falta",
+      "prompt": "faz um vídeo de uns 2 minutos em pt-br, pra leigos, explicando o que está em 'C:\\Projetos\\context-hub\\exploracao\u0007nexos\\pesquisa-39-beneficios-claude-code\u0001-custo-e-inteligencia.md' (só a parte de prompt caching). Quero o MP4 e o artifact.",
+      "expected_output": "No video is produced. The model recognises that content and specs were given but no style reference was, and asks one short question for the reference URL(s) (and nothing else that already has a default), then stops. Cheap test of the phase-0 contract.",
+      "files": [],
+      "assertions": [
+        "The model asks for the style reference video URL(s) before producing anything",
+        "The question is short and lists only what is missing (it does not ask about things that have stated defaults such as captions, provider or fps)",
+        "No MP4, HTML page, narration audio or scene files are created",
+        "The model does not invent a style or fall back to the engine's default look"
+      ]
+    }
+  ]
+}
