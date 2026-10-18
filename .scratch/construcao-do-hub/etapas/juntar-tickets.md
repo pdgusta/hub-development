@@ -45,7 +45,7 @@ pedir uma junção.
 
 O Lume documenta em `agents/code/docs/`, no ramo `docs` (`C:\context-hub-wt\docs`). Quando ele pedir: confira que
 `git diff integracao docs --stat` só toca `agents/code/docs/`; junte com `--no-ff` ("Junta documentação: <páginas>");
-rode só o `12-busca.test.mjs` (a busca indexa o repositório) e o verificador de frontmatter; sem suíte inteira, sem
+rode só o verificador de frontmatter e o `27-pastas.test.mjs` (desde o 41 a busca não indexa `agents/code/**`, então o `12-busca` não muda com os docs); sem suíte inteira, sem
 revisão do Fiel. Registre em `registro-de-juncoes.md`. Plano inteiro: `documentacao-tecnica.md`.
 
 ## O fork do MCP do banco (desde 2026-10-17)

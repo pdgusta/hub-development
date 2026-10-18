@@ -118,3 +118,4 @@ Depois, confira o mundo real: `maestri list`, `git -C C:\context-hub log --oneli
 - 21:16: peças visuais: brief em etapas/../resumo-visual/brief.md; papéis novos (Designer e Revisor do resumo da construção); recrutados Traço+Lupa (peça 1: a construção ticket a ticket) e Nanquim+Esquadro (peça 2: o que atrapalhou e como se resolveu); portas 8771-8774.
 - 21:18: Lume: docs em dia (b20bf5f, 11 páginas), 6ª junção com o Rebite. Divergência: HUB_PAR_ID não é definida pelo kit → anotada no ticket 26.
 - 21:20: roteiro do 26 rascunhado (etapas/roteiro-26.md): ticket 45 de preparo (rede Tailscale, HUB_PAR_ID, convergência, segredos/fork/CLI, proxy na fila); decisões D1 (integracao→main e push com aval), D2 (levar o que não vai pelo git), D3 (Tailscale).
+- 21:21: docs 6ª junção (dc514db) verde sem o 12-busca: regra da junção dos docs atualizada (verificador + 27-pastas; busca não indexa agents/code desde o 41). 821 MB livres com os designers.

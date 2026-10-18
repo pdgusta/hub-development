@@ -68,7 +68,7 @@ com o link na página.
   fila e atualiza a página no seu ritmo. A fila e o progresso ficam em `etapas/estado-documentacao.md`.
 - **Junção dos docs:** a cada umas cinco páginas (ou quando o Lume pedir), o Rebite junta o ramo `docs` em
   `integracao` como um ticket só de documentação: confere que o diff só toca `agents/code/docs/`, roda o
-  `12-busca.test.mjs` (a busca indexa o repositório) e o verificador de frontmatter; sem suíte inteira, sem revisão do
+  o verificador de frontmatter e o `27-pastas.test.mjs` (desde o 41 a busca não indexa `agents/code/**`, então o `12-busca` não muda com os docs); sem suíte inteira, sem revisão do
   Fiel. Antes de pedir, o Lume faz `git merge integracao` no `docs`.
 
 ## Como o Lume trabalha
