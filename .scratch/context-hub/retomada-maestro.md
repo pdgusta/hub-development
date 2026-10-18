@@ -9,7 +9,16 @@ antigos estão em `.scratch/construcao-do-hub/etapas/diario-da-construcao.md` (f
 (instalação de verdade nas **duas máquinas**, com o Gustavo). `integracao` em `ca62332` (suíte 370: 355 verdes, 15
 pulados, 0 falhas). O Windows reinicia às 21h de 2026-10-17 (cumulative updates). Ronda automática cancelada (sem trabalho).
 
-## Próximo, na ordem (combinado com o Gustavo para 2026-10-18)
+## AGORA (2026-10-18 ~14h): reinício do Maestri pelo Gustavo, para valerem o token e os mods no par A
+
+Depois de voltar: (1) `maestri list`; feche quem voltou sem trabalho (Fiel, Rebite, Lume estão sem trabalho; Busca é um
+Shell: confira que a busca subiu de novo, senão `pwsh -NoProfile -File C:\context-hubgents\skillsusca\iniciar.ps1`
+nele); (2) Brasa: ticket 49 (casos 4 e 5: o banco do B puxa o do A numa replicação única antes do CLI); conferir se a
+trava e os contêineres de ensaio dela ficaram de pé e mande "leia a sua retomada"; (3) conferir no par A: um Claude
+Code novo fora do hub vê o contrato do hub, o `hub-banco` responde com o token do ambiente, a linha de status da vigia
+aparece; (4) o par B espera o 49 (aviso PARE em `instalacao-par-b.md`).
+
+ (combinado com o Gustavo para 2026-10-18)
 
 1. Hoje à noite, sem ele: o Lume põe os docs em dia com o 45/46 e escreve `agents/code/docs/instalacao.md`; o Rebite
    junta os docs em `integracao` e de novo no `main` do hub (sem push). Depois, os dois fecham.
