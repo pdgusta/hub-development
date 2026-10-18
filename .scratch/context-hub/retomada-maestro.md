@@ -11,7 +11,7 @@ pulados, 0 falhas). O Windows reinicia às 21h de 2026-10-17 (cumulative updates
 
 ## Próximo, na ordem
 
-1. **Duas peças visuais** que resumem a execução, cada detalhe (pedido do Gustavo, 2026-10-17 ~04h40). O que é cada
+1. FEITO 23h: **Duas peças visuais** que resumem a execução, cada detalhe (pedido do Gustavo, 2026-10-17 ~04h40). O que é cada
    uma, o tipo e o detalhe: o maestro decide agora. Um time enxuto por peça, **Designer + Revisor**, cada um com até 2
    subagentes; as duas em paralelo. Fontes: `etapas/diario-da-construcao.md`, `etapas/registro-de-juncoes.md`, os
    `## Comments` dos tickets, pareceres e relatórios em `etapas/`, os commits de `integracao` e deste repositório.
@@ -130,3 +130,4 @@ Depois, confira o mundo real: `maestri list`, `git -C C:\context-hub log --oneli
 - 22:39: 45 (Brasa, 02dabc4) e 46 (Cinzel) prontos; Fiel religado (conversa nova) para os dois. Achado do 45 (build do CLI diferente) anotado no 26.
 - 22:40: Gustavo: o projeto vai para dentro do hub em operations/hub-development (antes pensou em repositório privado à parte). Tickets 47 (migração seletiva, memórias, onboarding do maestro do par B) e 48 (correio entre maestros), ambos depois do 26.
 - 22:43: peça 1 horizontal PASSOU (Lupa). Gustavo: projeto em repositório privado no GitHub (ticket 47 reescrito); memórias copiadas para .scratch/context-hub/memorias-do-maestro/ e onboarding em .scratch/context-hub/onboarding-maestro.md; auditoria antes do push: sem remoto, só main, sem blob >50 MB, sem segredo, sem repositório aninhado.
+- 22:44: AS DUAS PEÇAS VISUAIS ENTREGUES ao Gustavo (Maestri Chat, thread roxa, anexos). Traço e Lupa retirados. No canvas: Brasa (45), Cinzel (46), Fiel (revisando os dois); Rebite e Lume fechados até a junção.
