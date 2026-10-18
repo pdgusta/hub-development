@@ -36,3 +36,4 @@ O fluxo de **setup num par novo** (genérico, repetível) fica para depois, ajus
   `main` do `C:\context-hub` e o **Gustavo** faz o push para `pdgusta/context-hub` e clona no outro PC (o maestro nunca
   faz push); (3) A: o fork e o sincronizador do LiveSync por `git bundle` num pendrive ou pasta dele, o `.env` do par B
   só à mão; (4) Tailscale **ainda não** está nas máquinas: o Gustavo instala nas duas antes do passo 4 do roteiro.
+- 2026-10-17 ~22h20 (maestro): passo a passo detalhado mandado ao Gustavo (Maestri Chat, thread roxa): pré-requisitos do par B por winget (Tailscale.Tailscale, Docker.DockerDesktop, OpenJS.NodeJS.LTS, Python.Python.3.12, Microsoft.PowerShell, Git.Git), modo de desenvolvedor; transporte em C:\hub-transporte\ (par-B.env + 2 bundles); clone por https; no par B, o Claude lê `agents/code/docs/instalacao.md` (**a escrever pelo Lume depois do 45 e do 46**).
