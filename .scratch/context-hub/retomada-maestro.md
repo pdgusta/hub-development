@@ -147,3 +147,4 @@ Depois, confira o mundo real: `maestri list`, `git -C C:\context-hub log --oneli
 - 23:12: configuração global do maestro inventariada e copiada para .scratch/context-hub/global-do-maestro/ (README, trecho do settings.json, CLAUDE.md, mods contexto-agentes e guarda-de-recrutas, skills graphify e video-generator, subagente opus-medium, regra de push do projeto); onboarding aponta para ela.
 - 23:26: 46 PASSA r2 (dc4fd1a); Rebite junta 45 (suíte em curso) e 46, depois integracao → main (sem push). Ressalvas do Fiel no 26.
 - 23:29: Fiel e Cinzel fechados (livres; retomadas gravadas). Retirar do canvas depois que o 45 e o 46 juntarem verdes. Rebite: suíte do 45, depois o 46 (dd241ba), depois main.
+- 00:16: 45 e 46 RESOLVIDOS; main do hub 7d0c25d pronto para o push do Gustavo. Brasa e Cinzel retirados do canvas; ronda cancelada. Lume religado: docs do 45/46 e a página nova instalacao.md.

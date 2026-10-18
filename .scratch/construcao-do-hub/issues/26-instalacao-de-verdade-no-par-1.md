@@ -3,7 +3,7 @@
 Type: task
 Status: ready-for-human
 Etapa: depois da junção
-Blocked by: 25, 45, 46
+Blocked by: 25, 45, 46 (todos resolvidos)
 
 **What to build:** O hub de verdade nas **duas máquinas**, no mesmo ciclo, à vista do Gustavo (decisão dele, 2026-10-17
 ~20h, no chat do maestro: prefere ver os efeitos depois de instalar no outro PC a testar sozinho aqui e achar os
@@ -39,3 +39,4 @@ O fluxo de **setup num par novo** (genérico, repetível) fica para depois, ajus
 - 2026-10-17 ~22h20 (maestro): passo a passo detalhado mandado ao Gustavo (Maestri Chat, thread roxa): pré-requisitos do par B por winget (Tailscale.Tailscale, Docker.DockerDesktop, OpenJS.NodeJS.LTS, Python.Python.3.12, Microsoft.PowerShell, Git.Git), modo de desenvolvedor; transporte em C:\hub-transporte\ (par-B.env + 2 bundles); clone por https; no par B, o Claude lê `agents/code/docs/instalacao.md` (**a escrever pelo Lume depois do 45 e do 46**).
 - 2026-10-17 ~22h40 (maestro): do 45 (Brasa): o index.cjs montado pelo montar-cli-livesync.ps1 tem hash diferente do build daqui (mesmo commit 14141446; npm ci contra o npm install de 13/10). No 26, montar o CLI também no par A, para os dois pares rodarem o mesmo build.
 - 2026-10-17 ~23h25 (maestro): ressalvas do Fiel para cá (pareceres do 45 e do 46): HUB_MAQUINA = HUB_PAR_ID (o mesmo nome da máquina; o registro de uso do roteamento passa a <id>.md); `${HUB_BANCO_ENDERECO:?}` no compose; o gerador de .env deve lembrar o `montar-cli-livesync.ps1`.
+- 2026-10-18 ~00h25 (maestro): 45 e 46 resolvidos; `main` do hub = 7d0c25d (--no-ff de integracao 8c01cfb), sem push (o push é do Gustavo). Ressalvas do Rebite para cá: do 45, `${HUB_BANCO_ENDERECO:?}` no compose, aviso para endereço fora de 100.64/10, Docker antes do Tailscale não testado, o gerador não manda rodar o montar-cli-livesync, só IPv4 e "dubious ownership" do git; do 46, as ressalvas 1, 3 e 5 da rodada 1. O Lume escreve `agents/code/docs/instalacao.md` para o maestro de cada par seguir.
