@@ -1,0 +1,26 @@
+✖ estado real do 16, outro par não verificável: a tela diz que não dá para conferir, com o motivo, e não "não responde" (15965.6964ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 16895.376
+
+✖ failing tests:
+
+test at agents\code\test\17-vigia-tela.test.mjs:373:1
+✖ estado real do 16, outro par não verificável: a tela diz que não dá para conferir, com o motivo, e não "não responde" (15965.6964ms)
+  AssertionError [ERR_ASSERTION]: o estado real traz os códigos de cor
+      at TestContext.<anonymous> (file:///C:/context-hub-wt/ticket-17/agents/code/test/17-vigia-tela.test.mjs:380:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: '{\n  "passada": "2026-10-17T15:34:44.881Z",\n  "outro_par": {\n    "situacao": "nao-verificavel",\n    "motivo": "sem HUB_OUTRO_PAR_URL no .env do par"\n  },\n  "vistos": {\n    "replicacao": "ok",\n    "outro-par": "informa",\n    "kit": "informa"\n  },\n  "nivel": "informa",\n  "resumo": "sem HUB_OUTRO_PAR_URL no .env do par",\n  "itens": [\n    {\n      "id": "replicacao",\n      "nivel": "ok",\n      "resumo": "replicação de envio em dia",\n      "ultima_troca": "2026-10-17T15:33:32.900Z",\n      "fonte": "vigia"\n    },\n    {\n      "id": "outro-par",\n      "nivel": "informa",\n      "resumo": "sem HUB_OUTRO_PAR_URL no .env do par",\n      "fonte": "vigia"\n    },\n    {\n      "id": "kit",\n      "nivel": "informa",\n      "resumo": "sincronizador não conferido: Exception: C:\\\\Users\\\\GUSTAV~1.DEL\\\\AppData\\\\Local\\\\Temp\\\\hub-ensaio-17-XZMNP8\\\\par.env sem HUB_OUTRO_PAR_URL",\n      "fonte": "vigia"\n    }\n  ]\n}\n',
+    expected: /\\u001b\[/i,
+    operator: 'match',
+    diff: 'simple'
+  }

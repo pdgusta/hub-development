@@ -1,21 +1,21 @@
-[MEDIDA] CouchDB depois da subida: hub-ensaio-22-a 139.8MiB / 384MiB; hub-ensaio-22-b 109.5MiB / 384MiB
+[MEDIDA] CouchDB depois da subida: hub-ensaio-22-a 207MiB / 384MiB; hub-ensaio-22-b 152.4MiB / 384MiB
 [PASSA] o passo 05 sobe as três instâncias 
-[PASSA] o passo 10 sobe o proxy (proxy subiu em http://127.0.0.1:59320: /busca/mcp, /banco/mcp, /banco-escrita/mcp | ponte do Claude Desktop e pasta conectada geradas (não instaladas) em C:\Users\gustavo.delfino\AppData\Local\Temp\hub-ensaio-22\a\estado\desktop)
-[PASSA] /escrita recusa sem token e com o token de outra rota (outros: 401, 401; sem: 401)
+[PASSA] o passo 10 sobe o proxy (proxy subiu em http://127.0.0.1:53152: /busca/mcp, /banco/mcp, /banco-escrita/mcp | ponte do Claude Desktop e pasta conectada geradas (não instaladas) em C:\Users\gustavo.delfino\AppData\Local\Temp\hub-ensaio-22\a\estado\desktop)
 [PASSA] /busca recusa sem token e com o token de outra rota (outros: 401, 401; sem: 401)
 [PASSA] /banco recusa sem token e com o token de outra rota (outros: 401, 401; sem: 401)
-[PASSA] o cliente busca pelo proxy e acha a nota (initiatives/context-hub/proxy-marca9eab99cc.md)
+[PASSA] /escrita recusa sem token e com o token de outra rota (outros: 401, 401; sem: 401)
+[PASSA] o cliente busca pelo proxy e acha a nota (initiatives/context-hub/proxy-marca1402cf63.md)
 [PASSA] pela rota de leitura, lê e tem a gravação recusada; o .md fica igual (estado_do_hub, get_conflicts, get_note_metadata, list_folders, list_notes, list_tags, read_note, search_notes)
 [PASSA] pela rota do cliente, grava com a versão lida, e chega ao .md (Note saved: initiatives/context-hub/decisions.md)
 [PASSA] com a versão velha, ouve 'conflito: releia e refaça' (conflito: releia e refaça. A nota initiatives/context-hub/decisions.md mudou desde a versão que você leu.)
 [PASSA] relida, grava (Note saved: initiatives/context-hub/decisions.md)
-[MEDIDA] instructions pela instância direto (2019 caracteres; 1ª linha: # Context hub)
+[MEDIDA] instructions pela instância direto (2197 caracteres; 1ª linha: # Context hub)
 [MEDIDA] instructions pelo proxy (/banco/mcp) (0 caracteres; servidor: banco; 1ª linha: )
 [MEDIDA] o proxy repassa o instructions? não: vazio pelo proxy
 [PASSA] pelo proxy, as 4 ferramentas de gravação começam pela regra curta 
 [PASSA] o kit de cliente lê o AGENTS.md pelo proxy e o põe no global do harness 
 [PASSA] a ponte do Desktop gerada fala com o MCP do banco, com a escrita (read_note, get_conflicts, estado_do_hub, write_note, list_notes, search_notes, list_folders, list_tags, edit_note, delete_note, move_note, get_note_metadata)
-[MEDIDA] CouchDB no fim: hub-ensaio-22-a 170.4MiB / 384MiB; hub-ensaio-22-b 138.3MiB / 384MiB
+[MEDIDA] CouchDB no fim: hub-ensaio-22-a 190.2MiB / 384MiB; hub-ensaio-22-b 143.6MiB / 384MiB
 [PASSA] o -Descer para o proxy 
-[PASSA] o passo 10 sobe o proxy de novo depois do -Descer (proxy subiu em http://127.0.0.1:59320: /busca/mcp, /banco/mcp, /banco-escrita/mcp | ponte do Claude Desktop e pasta conectada geradas (não instaladas) em C:\Users\gustavo.delfino\AppData\Local\Temp\hub-ensaio-22\a\estado\desktop)
+[PASSA] o passo 10 sobe o proxy de novo depois do -Descer (proxy subiu em http://127.0.0.1:53152: /busca/mcp, /banco/mcp, /banco-escrita/mcp | ponte do Claude Desktop e pasta conectada geradas (não instaladas) em C:\Users\gustavo.delfino\AppData\Local\Temp\hub-ensaio-22\a\estado\desktop)
 ticket 22: tudo passou

@@ -6,7 +6,7 @@ entrou), `fila-pesada.md`, e esta retomada.
 ## Estado
 
 - Construção fechada (maestro, 2026-10-17 ~20h20). Todos os tickets juntados e resolvidos; o último foi o 25.
-- Hub: worktree de junção `C:/context-hub-wt/integracao`, ramo `integracao`, ponta **ca62332**, limpa, verde (suíte:
+- Hub: worktree de junção `C:/context-hub-wt/integracao`, ramo `integracao`, ponta **dc514db** (docs 6ª sobre ca62332), limpa, verde (suíte:
   370, 355 verdes, 15 pulados, 0 falhas; log `logs/juncao-25-suite.log`).
 - Fork do MCP do banco: worktree de junção `C:/Projetos/hub-mcp-banco-wt/integracao`, ramo `integracao`, ponta
   34c3e50. Tem junções (não pastas) em `node_modules` e `lib/livesync-commonlib` para a cópia principal
@@ -49,8 +49,8 @@ entrou), `fila-pesada.md`, e esta retomada.
 ## Junção da documentação (Lume)
 
 Diff só em `agents/code/docs/`; `git merge --no-ff docs -m "Junta documentação: <páginas>"`; rodar `27-pastas` e
-`node agents/code/bin/verificar-frontmatter.mjs --raiz <wt> agents/code/docs` (leves); o `12-busca` é pesado e vai na
-suíte. Sem Fiel.
+`node agents/code/bin/verificar-frontmatter.mjs --raiz <wt> agents/code/docs` (leves); o `12-busca` não roda (desde o 41 a
+busca não indexa `agents/code/**`; maestro, 21h25). Sem Fiel.
 
 ## Armadilhas
 
@@ -61,3 +61,5 @@ suíte. Sem Fiel.
 - Memória baixa: perguntar ao maestro antes de rodar a suíte.
 - Windows reinicia às 21h: nada pesado começa depois das 20h.
 - O registro e os tickets usam a hora da máquina (-03).
+- 21:20 (depois do reinício das 20:57): docs 6ª juntada (dc514db; docs b20bf5f, 11 páginas, só agents/code/docs/). Verificador 0, 27-pastas 24/24 (log logs/juncao-docs-6-27-pastas.log). Falta o 12-busca (pesado, trava): 821 MB livres, perguntei ao maestro.
+- 21:25: maestro: 12-busca não roda para docs; docs 6ª registrada verde. integracao em dc514db.

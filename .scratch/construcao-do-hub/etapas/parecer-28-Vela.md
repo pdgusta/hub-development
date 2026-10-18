@@ -95,3 +95,7 @@ Ramo ticket-28, HEAD 5436cad. Fiel sozinho (Fielzinho sem cota até 06h58; leitu
 Fielzinho aceita o conserto 3 e o VOLTA da rodada 1: conferiu os manifestos `.claude-plugin` versionados por
 `git ls-files`; a exceção no exclude e o teste de mod novo são pertinentes. Acordo registrado também no parecer dele.
 Sem achado novo; o 28 já está juntado.
+
+## Leitura do Fielzinho — rodadas 2 e 3 — 2026-10-17
+
+**PASSA, sem achado novo.** Leitura concluída em 5436cad; detalhes no parecer-28-Vela-fielzinho.md, seção Leitura tardia. Conferidos os consertos de frontmatter, destino real antes de parar, confirmação na lista locais, exceção .claude-plugin/ e título da r3. Prova própria: 28-pastas-locais-sem-docker + gerador, 9/9, saída 0 (inclui 25 casos PS). Código antigo da r2 lido, não reexecutado. Log do Fiel revisao-28-r3-docker.log: 14 PASSA, tudo passa. Docker não executado por mim. Ressalvas anteriores mantidas.

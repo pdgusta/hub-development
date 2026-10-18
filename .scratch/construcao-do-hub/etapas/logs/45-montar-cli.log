@@ -1,0 +1,80 @@
+[PASSA] git bundle do repositório do LiveSync desta máquina (5,4 MiB)
+faz: clone de C:\Users\gustavo.delfino\AppData\Local\Temp\hub-ensaio-45-montar-30764\livesync.bundle em C:\Users\gustavo.delfino\AppData\Local\Temp\hub-ensaio-45-montar-30764\livesync
+faz: checkout do commit 14141446a14deab3353a8864dee41e44c372d006
+faz: npm ci na raiz de C:\Users\gustavo.delfino\AppData\Local\Temp\hub-ensaio-45-montar-30764\livesync (as dependências do CLI)
+npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+npm warn deprecated memdown@1.4.1: Superseded by memory-level (https://github.com/Level/community#faq)
+npm warn deprecated level-errors@2.0.1: Superseded by abstract-level (https://github.com/Level/community#faq)
+npm warn deprecated level-concat-iterator@2.0.1: Superseded by abstract-level (https://github.com/Level/community#faq)
+npm warn deprecated encoding-down@6.3.0: Superseded by abstract-level (https://github.com/Level/community#faq)
+npm warn deprecated levelup@4.4.0: Superseded by abstract-level (https://github.com/Level/community#faq)
+npm warn deprecated deferred-leveldown@5.3.0: Superseded by abstract-level (https://github.com/Level/community#faq)
+npm warn deprecated level-js@5.0.2: Superseded by browser-level (https://github.com/Level/community#faq)
+npm warn deprecated level-concat-iterator@3.1.0: Superseded by abstract-level (https://github.com/Level/community#faq)
+npm warn deprecated level-packager@5.1.1: Superseded by abstract-level (https://github.com/Level/community#faq)
+npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+npm warn deprecated level-codec@9.0.2: Superseded by level-transcoder (https://github.com/Level/community#faq)
+npm warn deprecated abstract-leveldown@2.7.2: Superseded by abstract-level (https://github.com/Level/community#faq)
+npm warn deprecated abstract-leveldown@6.2.3: Superseded by abstract-level (https://github.com/Level/community#faq)
+npm warn deprecated abstract-leveldown@7.2.0: Superseded by abstract-level (https://github.com/Level/community#faq)
+npm warn deprecated glob@9.3.5: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+npm warn deprecated leveldown@6.1.1: Superseded by classic-level (https://github.com/Level/community#faq)
+npm warn deprecated leveldown@5.6.0: Superseded by classic-level (https://github.com/Level/community#faq)
+
+added 832 packages in 2m
+faz: build do CLI (npm run build -w self-hosted-livesync-cli)
+
+> self-hosted-livesync-cli@1.0.35-cli build
+> vite build
+
+22:25:33 [vite-plugin-svelte] no Svelte config found at C:/Users/gustavo.delfino/AppData/Local/Temp/hub-ensaio-45-montar-30764/livesync/src/apps/cli - using default configuration.
+[36mvite v8.0.16 [32mbuilding client environment for production...[36m[39m
+[2K
+transforming...✓ 1435 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/setCredentialFeature-qcUbSyqa.cjs          0.41 kB │ gzip:   0.24 kB
+dist/chain-D9g13I5f.cjs                         0.65 kB │ gzip:   0.36 kB
+dist/externalDataInterceptor-D7DaIG7M.cjs       0.77 kB │ gzip:   0.36 kB
+dist/parseKnownFiles-DLeTaAhg.cjs               0.87 kB │ gzip:   0.40 kB
+dist/getSSOTokenFromFile-D0KPH2qZ.cjs           1.21 kB │ gzip:   0.49 kB
+dist/CredentialsProviderError-DQ_v7TCm.cjs      1.43 kB │ gzip:   0.50 kB
+dist/readFile-B3ey_wDD.cjs                      1.47 kB │ gzip:   0.56 kB
+dist/httpRequest-C7Ex2WeE.cjs                   1.64 kB │ gzip:   0.69 kB
+dist/dist-es-CaaxKLO9.cjs                       2.78 kB │ gzip:   0.96 kB
+dist/dist-es-D7nIauPC.cjs                       3.59 kB │ gzip:   1.10 kB
+dist/loadSharedConfigFiles-CqEQHuLW.cjs         4.95 kB │ gzip:   1.55 kB
+dist/configLoader-Cur07c2S.cjs                  5.35 kB │ gzip:   1.60 kB
+dist/package-BC7A0_n0.cjs                       5.89 kB │ gzip:   1.63 kB
+dist/sdk-stream-mixin-YBLWtp6l.cjs              6.13 kB │ gzip:   1.82 kB
+dist/dist-es-DhxfSNMj.cjs                       6.87 kB │ gzip:   2.15 kB
+dist/event-streams-DmrxQXpO.cjs                 7.54 kB │ gzip:   2.03 kB
+dist/date-utils-Dr5LXq4_.cjs                   13.59 kB │ gzip:   3.46 kB
+dist/dist-es-BU2b9jKG.cjs                      14.04 kB │ gzip:   3.46 kB
+dist/dist-es-vq3O1QUl.cjs                      14.31 kB │ gzip:   3.86 kB
+dist/common-B3KclSP_.cjs                       15.09 kB │ gzip:   3.63 kB
+dist/AwsRestJsonProtocol-BPmCQzXa.cjs          15.98 kB │ gzip:   3.94 kB
+dist/loadSso-Dn78jIWR.cjs                      19.54 kB │ gzip:   4.62 kB
+dist/signin-DHnd2WFx.cjs                       20.74 kB │ gzip:   4.75 kB
+dist/stream-collector-jwXXBEUn.cjs             20.77 kB │ gzip:   5.78 kB
+dist/dist-es-FcX9AtZC.cjs                      22.15 kB │ gzip:   5.55 kB
+dist/serde-DtADB-gG.cjs                        22.83 kB │ gzip:   6.13 kB
+dist/sso-oidc-B4fkm2gn.cjs                     24.77 kB │ gzip:   5.06 kB
+dist/sts-C9aqjeec.cjs                          46.81 kB │ gzip:  10.09 kB
+dist/XmlShapeDeserializer-B1_gcW92.cjs         79.03 kB │ gzip:  20.47 kB
+dist/extensions-DkDzTVCO.cjs                  183.37 kB │ gzip:  42.47 kB
+dist/index.cjs                              2,862.58 kB │ gzip: 709.04 kB
+
+[32m✓ built in 1.13s[39m
+montado: C:\Users\gustavo.delfino\AppData\Local\Temp\hub-ensaio-45-montar-30764\livesync\src\apps\cli\dist\index.cjs (commit 14141446a14deab3353a8864dee41e44c372d006, conferido)
+no .env do par: HUB_LIVESYNC_CLI=C:\Users\gustavo.delfino\AppData\Local\Temp\hub-ensaio-45-montar-30764\livesync\src\apps\cli\dist\index.cjs
+{"cli":"C:\\Users\\gustavo.delfino\\AppData\\Local\\Temp\\hub-ensaio-45-montar-30764\\livesync\\src\\apps\\cli\\dist\\index.cjs","commit":"14141446a14deab3353a8864dee41e44c372d006","sha256":"1669d00a30667e929d6e49028e686334ee08d2190bdc8385d37a0320bd8b5131"}
+[PASSA] montar pelo bundle: clone, commit, npm ci e build em 141 s
+[PASSA] a conferência do passo 04 aceita o build montado ()
+index.cjs montado: 1669d00a30667e929d6e49028e686334ee08d2190bdc8385d37a0320bd8b5131; o desta máquina: 29978ec4e4a4530339de86904d8abb1d0d58183ca2cf4b400cdc6a8cb40b83e3 (diferentes)
+[PASSA] montar de novo não refaz nada (já montado: C:\Users\gustavo.delfino\AppData\Local\Temp\hub-ensaio-45-montar-30764\livesync\src\apps\cli\dist\index.cjs (commit 14141446a14deab3353a8864dee41e44c372d006, conferido)
+no .env do par: HUB_LIVESYNC_CLI=C:\Users\gustavo.delfino\AppData\Local\Temp\hub-ensaio-45-montar-30764\livesync\src\apps\cli\dist\index.cjs
+{"cli":"C:\\Users\\gustavo.delfino\\AppData\\Local\\Temp\\hub-ensaio-45-montar-30764\\livesync\\src\\apps\\cli\\dist\\index.cjs","commit":"14141446a14deab3353a8864dee41e44c372d006","sha256":"1669d00a30667e929d6e49028e686334ee08d2190bdc8385d37a0320bd8b5131"})
+[PASSA] o CLI montado roda (init-settings) 
+[PASSA] no fim, a pasta de ensaio saiu 
+montar o CLI: tudo passou

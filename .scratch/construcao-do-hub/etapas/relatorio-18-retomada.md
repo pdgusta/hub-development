@@ -82,8 +82,13 @@ Rodadas:
   (`etapas/logs/18-real-2.log`; evidência 31afe63). A devolução saiu pela lista do `anota` (Claude pelo `PostToolUse` do
   `settings.json`, Copilot pelo `postToolUse`); depois soltou "sem falta". `last_agent` igual à primeira rodada.
   Sessão 2 com `ZEBRA-42` nos dois. Pastas apagadas, configurações reais iguais por hash, sem token na evidência.
-- **Codex: pendente**, depois das 12h15 (cota), junto com o do Cinzel. Primeiro uso real do `PostToolUse` do
-  `apply_patch`.
+- **Codex: verde** (2026-10-17 15:18, 1/1 em 41 s; `gpt-6-luna`, esforço low, pela regra nova do Gustavo: o Codex só
+  roda testes e com o Luna por padrão; troca em d4d9cc7). Ramo com `integracao` juntada (a847d43). Primeiro uso real
+  do `PostToolUse` do `apply_patch`: anotou a gravação; o fim devolveu uma vez ("atualize a nota de retomada... sete
+  campos") e soltou sem falta depois que a nota mudou; `last_agent: "codex gpt-6-luna"`; a sessão 2 respondeu
+  `ZEBRA-42` pela nota do início. Login: `auth.json` copiado no `CODEX_HOME` de ensaio e apagado com a pasta;
+  configurações reais iguais por hash (`hashes-codex.json`); sem token na evidência. Evidência f050351
+  (`evidencia-18/codex/`).
 
 ## Rodada 1 do Fiel: volta, 1 conserto (e1c5eac)
 

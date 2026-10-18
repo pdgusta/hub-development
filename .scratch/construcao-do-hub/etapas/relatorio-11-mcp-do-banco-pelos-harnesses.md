@@ -37,8 +37,8 @@ Como o aceite roda:
 
 | Critério | Resultado |
 |---|---|
-| os três harnesses citam o que receberam do servidor | Claude Code e Copilot: PASSA (rodada 1). Codex: PENDENTE, sem cota até 12h15 |
-| a requisição do Codex é capturada para ver onde o `instructions` chega | PENDENTE, sem cota até 12h15. A captura está pronta e testada sem harness (4/4) |
+| os três harnesses citam o que receberam do servidor | Claude Code e Copilot: PASSA (rodada 1). Codex: PASSA (rodada 2, 14:47) |
+| a requisição do Codex é capturada para ver onde o `instructions` chega | PASSA (rodada 2): chega na saída da ferramenta com que o modelo lista as ferramentas, à frente da descrição de cada uma; não vai ao primeiro pedido (abaixo) |
 | no Copilot CLI, com e sem a opção que libera as instruções do MCP | PASSA: as duas sessões rodaram; o resultado está abaixo |
 
 ### Rodada 1 (07:28 a 07:36, com a trava)
@@ -70,12 +70,45 @@ O que isso mostra:
 - **Hashes das pastas reais:** as quatro configurações não mudaram. O `.claude.json` mudou, mas é só registrado: as
   sessões de verdade abertas na máquina o regravam, como no 12. As quatro pastas de ensaio foram apagadas.
 
-### Rodada 2: só o Codex
+### Rodada 2: só o Codex (2026-10-17 14:47 a 14:54, com a trava): PASSA
 
-**PENDENTE: o Codex está sem cota até 12h15** (maestro, 2026-10-17 ~07h50). O conserto do teste está em bfd1af3, e a
-rodada está na fila para depois de 12h15:
-`pwsh -NoProfile -File etapas/logs/11-corredor.ps1 -Rodadas codex`, com a trava. Os dois critérios do Codex (a
-citação e a captura) ficam abertos até lá; o resto do ticket está fechado com Claude Code e Copilot.
+`pwsh -NoProfile -File etapas/logs/11-corredor.ps1 -Rodadas codex`; log `etapas/logs/11-harness-3.log` (1/1, código
+0). Evidência no commit e96cd70 (`evidencia-11/codex/`, `medidas-codex.json`, `hashes-codex.json`).
+
+- **Modelo:** `gpt-6-luna`, esforço baixo (regra nova do Gustavo, 2026-10-17 ~14h30: o Codex só roda testes, luna por
+  padrão). Troca no teste em e7e1dd3; depois do parecer da rodada 2 (Fiel), o aceite usa a constante `MODELO_CODEX` do 43 (28782df; `harness-real.test.mjs` 8/8). O luna bastou: nada de 6.1-sol.
+- **Resposta** (Codex 0.162.1): `instrucoes_comeco: Marca do começo: hub-a-42d88f`, `instrucoes_fim: Marca do fim:
+  hub-b-a55729`, `resumo: Tudo em dia (hub-c-5caf0d)`. Chamou o `estado_do_hub` pelo MCP (`mcp_tool_call`, servidor
+  `hub-banco`). A, B e C citadas.
+- **Regra curta:** no `write_note`, o modelo copiou "Marca do começo: hub-a-42d88f # Context hub ...": a descrição
+  que ele viu começa pelas instruções do servidor. O texto da regra curta estava no mesmo bloco da captura (campo
+  `regra` achado), mas as primeiras palavras eram as instruções. Por isso `citou.regra` é `false`. O aceite pede a
+  citação das instruções e do estado, e esse campo fica só registrado.
+
+**Onde o `instructions` chega no Codex** (captura, `codex/lido.json`; o repasse guardou 5 pedidos):
+- Os pedidos a `/responses` têm os campos `model`, `stream`, `input`, `tool_choice`, `parallel_tool_calls`,
+  `reasoning`, `store`, `include`, `prompt_cache_key`, `text` e `client_metadata`. Não têm `instructions` nem `tools`.
+- **Primeiro pedido (17:47:38Z, 14:47 aqui):** nenhuma marca, nem a regra. As instruções do servidor e as descrições das
+  ferramentas MCP não vão de saída ao modelo.
+- **Segundo pedido (17:47:41Z):** A, B e a regra aparecem só em `input[9].output[1].text`. É a saída de uma ferramenta
+  que o modelo rodou (`input[8]`; a saída começa por "Script completed ... Output:") e que lista as ferramentas do
+  `hub-banco`. O trecho em volta de A: `{"name":"mcp__hub_banco__delete_note","description":"Marca do começo:
+  hub-a-42d88f\n\n# Context hub ...`. Ou seja, as instruções do servidor vêm à frente da descrição da ferramenta,
+  nessa listagem.
+- **Terceiro pedido (17:47:43Z):** C chega em `input[11].output[1].text`, a saída do `estado_do_hub`.
+- **Leitura:** é o mesmo achado do Claude Code (ferramentas adiadas). No Codex, as instruções do MCP só chegam quando o
+  modelo pede a lista de ferramentas, e chegam presas à descrição de cada uma. Um agente que não liste as ferramentas
+  do `hub-banco` não vê a cabeça do `AGENTS.md` pelo servidor. Fica registrado para o 23 e o 25: a cabeça precisa
+  chegar também pelo `AGENTS.md` do lugar ou pelo kit, não só pelo MCP. A captura mostra a listagem de uma ferramenta
+  só, a `delete_note`, em volta de A. Não conferi se todas as 12 trazem as instruções, porque o repasse não guarda o
+  texto inteiro.
+- **Hashes e login:** `~/.codex/auth.json` copiado para o `CODEX_HOME` de ensaio às 17:47:36Z e apagado às 17:47:47Z.
+  As configurações reais (`.codex/config.toml`, `.codex/auth.json`, `.claude/*`, `.copilot/*`) ficaram iguais antes
+  e depois. Só o `~/.claude.json` mudou: é de registro, e as sessões abertas o regravam (como nas outras rodadas).
+
+**Depois da rodada:** `integracao` 98a7ced (com o 43) juntada no ramo (e63d951). `node --test agents/code/test/11-mcp-banco.test.mjs
+agents/code/test/ponta-a-ponta/11-mcp-banco.test.mjs`, com `HUB_MCP_BANCO_DIR` = a worktree do fork: 4 passam e 1 é
+pulado (o aceite, sem `HUB_HARNESS_REAL`).
 
 ### Sem harness
 
@@ -112,3 +145,18 @@ listas do init do Claude Code e os objetos de `data.skills` do Copilot com `path
 inteiro (a do 24) pegava palavra comum: a skill `research` virava `SKILL-DA-MAQUINA` no contrato do hub ("os blocos
 `research/`"). Evidência já gravada limpa a partir do commit anterior: Copilot com a opção, 585 trocas; Claude e Copilot
 sem a opção, nenhuma (o Claude rodou com `CLAUDE_CONFIG_DIR` de ensaio; o Copilot sem a opção não manda a lista).
+
+## Tentativa do Codex, 2026-10-17 12:40 (sem cota)
+
+Corredor `-Rodadas codex`, log `logs/11-harness-2.log`: o Codex (gpt-6.1-sol) respondeu "You've hit your usage limit ...
+try again at 5:15 PM". Login: `~/.codex/auth.json` copiado para o `CODEX_HOME` de ensaio às 12:41:02 e apagado às
+12:41:08; hashes das configurações reais iguais antes e depois (só o `~/.claude.json`, de registro, mudou: as sessões
+abertas o regravam). Evidência dessa tentativa descartada (não chegou ao modelo). Nova tentativa depois das 17h15.
+
+### Conserto da rodada 2 (Fiel, 2026-10-17)
+
+Parecer: VOLTA por um conserto mecânico. O aceite escrevia `'gpt-6-luna'` à mão, e o detector do 43
+(`harness-real.test.mjs`, "nenhum teste escreve o modelo à mão") dava 7/8. Conserto 28782df: importa `MODELO_CODEX` de
+`../harness-real.mjs` (o Luna; o Sol só por `HUB_MODELO_CODEX`). `harness-real.test.mjs` + `11-mcp-banco.test.mjs` + o
+aceite: 12 passam, 1 pulado. A evidência da rodada 2 fica (o modelo é o mesmo). O mesmo conserto foi feito no 24
+(65cb752).

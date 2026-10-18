@@ -1,0 +1,26 @@
+✔ o id do par vem do .env: depois do kit, o verificador sem a variável põe o link para fora do hub em par:// (27083.9576ms)
+✔ a variável HUB_PAR_ID vale mais que o id gravado pelo kit (13723.5971ms)
+✔ o fim da resposta, pelo hook, põe em par:// o link para fora do hub com o id que o kit gravou (15924.7202ms)
+✔ o registro de uso do roteamento, pelo hook, vai para a tabela do par que o kit gravou (15285.1393ms)
+✔ .env sem HUB_PAR_ID: o kit para, diz por quê e não grava o id (7434.4578ms)
+✔ .env com HUB_PAR_ID fora do formato: o kit para, diz por quê e não grava o id (8726.4936ms)
+✔ .env com HUB_PAR_ID terminando em hífen: o kit para, diz por quê e não grava o id (6080.7502ms)
+✔ com -WhatIf, o kit diz que gravaria o id e não grava (10724.0669ms)
+✔ espera: o disco já tem o que o banco tem, e o kit diz que o par recebeu o hub (8207.8131ms)
+✔ espera: no fim do prazo, o kit diz que o par ainda está recebendo, o que falta, e não falha (10606.8826ms)
+✔ espera: o arquivo que chega no meio do prazo encerra a espera (12751.5443ms)
+✔ espera: sem o leitor da vigia, o kit diz que não deu para conferir e não falha (4388.5499ms)
+✔ espera: banco ainda vazio não conta como recebido (8097.2787ms)
+✔ espera: com o disco igual ao banco, ainda espera o outro par terminar de enviar (11202.9144ms)
+✔ espera: no fim do prazo com o outro par ainda enviando, o kit avisa e não falha (8163.1596ms)
+✔ espera: com -WhatIf, o kit diz que esperaria e não chama o leitor (13915.1778ms)
+✔ o proxy de clientes entra na fila só quando pedido (passo proxy), com -WhatIf (8250.74ms)
+✔ a saída do kit lista o que falta ligar à mão: mod do Claude Code, Copilot, notify do Codex, tarefas e proxy (9827.1098ms)
+ℹ tests 18
+ℹ suites 0
+ℹ pass 18
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 207151.1998

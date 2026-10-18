@@ -52,3 +52,7 @@ Veredito independente anterior de passe de código substituído por **VOLTA**, s
 3. Evidência própria: `pwsh -NoProfile -File agents/code/test/banco/kit-sem-docker.ps1`: **24 PASSA, saída 0**, incluindo os três casos novos. O arquivo de 201 MiB dentro de clientes/rascunho com local: true ficou fora. Raiz com barra final e raiz pelo nome curto produziram exatamente anexos/grande.bin. O nome curto usado nesta execução era efetivamente diferente da forma longa (alias 8.3), portanto esse caso não passou por repetir a mesma grafia.
 
 `git diff --check 124f43d..514db7a`: saída 0. Teste encerrou com `kit sem Docker: tudo passou`; nenhuma tarefa registrada. Sem Docker, harness real ou suíte completa. As ressalvas não bloqueantes acordadas na rodada 1 permanecem. Nenhuma edição em código, spec ou ticket.
+
+## Fechamento acompanhado — 2026-10-17
+
+Li o fechamento do Fiel e a evidência posterior `logs/08-fatias-1-2.log`: 18 PASSA, tudo passou; partida e CLI rodando preservam exclusões, 51 MiB chega íntegro, 201 MiB não entra no banco nem chega ao B, permanece identificável em A, contêineres apagados. Concordo com o PASSA e com retirar as pendências dessas duas fatias à luz desse log. Docker não executado por mim. As ressalvas remanescentes continuam conforme o parecer do Fiel.

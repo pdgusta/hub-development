@@ -62,8 +62,11 @@ O Desktop roda no par: no glossário, ele não é cliente. O passo 10 gera os ar
 - **Claude Code:**
   - em `.claude.json`, `mcpServers` com `type: http` e `headers.Authorization: "Bearer ${VAR}"`;
   - em `settings.json`, `deny` de `read`, `reindex` e `status` da busca (como no par, ticket 12).
-- **Codex:** um bloco marcado no `config.toml` com `bearer_token_env_var`, `enabled_tools = ["search"]` na busca e
-  `default_tools_approval_mode = "approve"`.
+- **Codex:** no `config.toml`, as tabelas `[mcp_servers.hub-*]` com `bearer_token_env_var`, `enabled_tools =
+  ["search"]` na busca e `default_tools_approval_mode = "approve"`. Troca só essas tabelas, por tabela, sem bloco
+  marcado: o Codex acrescenta `[projects.'…']` ao fim do arquivo (lição 2 da prova 03), e um bloco trocado inteiro o
+  apagava (manutenção depois da junção, achado do Fielzinho aceito pelo Fiel; teste de repetição no
+  `22-kit-cliente.test.mjs`, que cobre também o formato antigo, com os marcadores, que saem).
 - **Copilot CLI:** em `mcp-config.json`, `headers` com `${VAR}` e `tools`: na busca, só `search`; no banco, `*`.
 - **Por padrão, só leitura.** `-Escrita` liga a terceira rota; rodar sem `-Escrita` a tira.
 - **Contrato:** vai num bloco marcado no global de cada harness (`CLAUDE.md`, `AGENTS.md` do `CODEX_HOME` e
@@ -165,6 +168,7 @@ de pé (`-Manter`). 2026-10-17 09:47-09:48. Evidência: `agents/code/test/ponta-
 | Claude Code | haiku | PASSA: `hub-busca` e `hub-banco` conectados; `search` e `read_note` pelo proxy; respondeu a nota marcada |
 | Copilot CLI | haiku | PASSA: os dois conectados; `hub-busca-search` e `hub-banco-read_note`; respondeu a nota marcada |
 | Codex | gpt-6-luna baixo (09:47) | FALHA por cota: "You've hit your usage limit ... try again at 12:15 PM". Roda de novo depois das 12h15 |
+| Codex | gpt-6-luna baixo (17:18, `MODELO_CODEX` do ticket 43) | PASSA (13 s): `hub-busca/search` e `hub-banco/read_note` pelo proxy, com o token só no ambiente; respondeu a nota marcada. Evidência 22811cb |
 
 **Login no ensaio** (aval de 2026-10-16): copiados `.claude/.credentials.json` e `.codex/auth.json` e os campos de
 login do `config.json` do Copilot para os HOMEs de ensaio em `%TEMP%`, às 12:47 UTC (09:47 local); apagados com a pasta
@@ -177,6 +181,19 @@ ao fim. Hashes antes e depois em `evidencia-22/hashes-claude-codex-copilot.json`
 `codex exec -m gpt-6-astra` de uma palavra numa casa de ensaio, 10:20 local. Copiado `.codex/auth.json` às 10:20:50,
 apagado com a casa às 10:20:57; o hash do real ficou igual (`9e42496b5bd7...`). Deu o mesmo limite: o astra divide a
 cota com o luna. O Codex como cliente roda depois das 12h15.
+
+**O Codex como cliente, na janela quieta (2026-10-17 17:14-17:19, ramo em integracao f640bbd).**
+- 15:21: a volta foi cortada às 15:33. A memória caiu a 583 MB na subida dos pares, com o canvas cheio. Nenhum
+  harness rodou e a cota ficou intacta. A pilha desceu limpa. O maestro passou a volta para a janela quieta.
+- 17:14: o corredor rodou sem `-Wsl`, com o Docker ligado à mão às 17:13 e assentado. O Docker passou às 17:18 (15
+  PASSA), com 2.169 MB livres. O Codex passou às 17:19 (1/1). A descida não deixou contêiner. Pico do medidor:
+  1.096 MB livres às 17:17, na subida.
+- Login: `%USERPROFILE%\.codex\auth.json` copiado para o `CODEX_HOME` de ensaio às 20:18:48 UTC (17:18:48 local) e
+  apagado às 20:18:59 UTC.
+- Hashes antes e depois em `evidencia-22/hashes-codex.json`: o `auth.json` real é igual (`9e42496b5bd7...`). Só mudou
+  `~/.claude.json`, gravado pelas sessões abertas do Claude Code.
+- A evidência (`evidencia-22/codex/`) não tem token nem pasta do usuário (`grep`). O `erros.txt` traz só o "Reading
+  additional input from stdin...".
 
 ## Não verificado
 

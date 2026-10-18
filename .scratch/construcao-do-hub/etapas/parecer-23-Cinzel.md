@@ -96,3 +96,91 @@ limpeza antes da junção e 2 ressalvas.
 - Ressalva 2 (do relatório): o `03-busca.ps1` chamado sozinho ainda usa o `Resolve-Path`.
 - Fechamento (~11h45): instalação solta desfeita pelo kit, `git status` limpo; guarda do `Longo` em a9643c6 (para o
   kit se o node não devolve caminho). Fiel: `23-kit + harness-real` 22/22. A ressalva 1 saiu; o PASSA segue.
+
+## Leitura do Fielzinho — 2026-10-17
+
+Leitura tardia das rodadas e9dcef7, f304e6c, a419182 e curta a9643c6. Conferidos instalador, Casa, junção dos hooks, aprovação isolada pelo app-server e editor TOML. As correções das rodadas estão presentes. Worktree atual e05b367: esses arquivos e 23-kit.test.mjs sem alteração desde a9643c6. Prova local do kit em andamento, sem Docker, login ou modelo.
+
+### Achado novo 1 — falha entre copiar e registrar pode perder o original no desfazer
+
+**Recomendação: corrigir antes do uso real.** Em `agents/code/kit/par/kit/casa.mjs:88-91`, `guardar(p)` move o original para `.hub-kit/copias`, `fazer()` executa a troca e só depois o registro recebe a cópia. Se a gravação/criação do link falha (por exemplo, falta de espaço ou permissão), a cópia fica sem registro. `desfazer()` processa apenas o registro e apaga toda `.hub-kit` na linha 136, incluindo esse original não registrado. Viola a cópia e o desfazer pedidos pelo ticket.
+
+Repro isolada: `etapas/logs/repro-23-fielzinho.mjs`; saída em `repro-23-fielzinho.log`, código 0. Cria config.txt de ensaio, chama `Casa.mudar` injetando ENOSPC em `fazer`, depois `desfazer`. Resultado: original_no_destino=false; registro=[]; copia_antes=true; original_depois_do_desfazer=false; copia_depois=false. A exceção é injetada; não foi necessário encher disco nem alterar permissões. Só arquivos sintéticos em TEMP, apagados ao fim.
+
+Conserto proposto: tornar a troca recuperável antes de mover o original (registro de operação pendente ou restauração garantida no catch); o desfazer não pode apagar cópias órfãs. Cobrir falha na troca e no registro, com original preservado e recuperação repetível. A classificação final, já na terceira rodada, fica com o Fiel/maestro; não reabri ticket nem alterei código.
+
+### Achado da leitura do Fielzinho, conferido pelo Fiel (~12h35)
+- **Perda do original quando a mudança falha no meio** (Fielzinho). `agents/code/kit/par/kit/casa.mjs:88-91`: o
+  `mudar` move o original para `.hub-kit/copias` (`guardar`), chama `fazer()` e só depois grava o registro. Se `fazer`
+  lança (ENOSPC, EPERM, link recusado), a cópia fica sem registro; o `desfazer` não a acha e, no fim (`:136`), apaga a
+  `.hub-kit` inteira: o original some. Reprodução do Fielzinho (`logs/repro-23-fielzinho.log`): `registro=[]`,
+  `copia_antes=true`, `original_depois_do_desfazer=false`, `copia_depois=false`. Conferido no código pelo Fiel.
+- O 23 já teve duas voltas (r1 e a reabertura); pelo teto, isto seria um passa com ressalva. Como é perda de arquivo
+  do usuário no HOME real (ticket 26), o Fiel levou ao maestro: conserto curto antes da junção (devolver a cópia e
+  relançar se `fazer` falhar, ou gravar o registro antes de `fazer`; com teste da falha) ou ressalva para o 26.
+- O 24 traz o 23 por merge: o mesmo vale para ele.
+- **Decisão do maestro (~12h40): conserto curto antes da junção**; perda de arquivo no HOME real não vai como
+  ressalva. Pedido ao Cinzel: se `fazer()` falhar, devolver a cópia ao lugar e relançar o erro, com teste da falha
+  (ENOSPC/EPERM simulado); depois rodada curta do Fiel, e o 24 traz por merge.
+
+Prova local concluída da leitura tardia: `node --test agents/code/test/23-kit.test.mjs`, **15/15, saída 0**, 263,8 s. A suíte existente não cobre a falha reproduzida acima. Fiel confirmou o achado; decisão do maestro registrada acima: conserto curto antes da junção. Aguardo a ponta corrigida, sem editar código.
+
+Precisão da prova: o teste foi iniciado em e05b367, mas a worktree avançou para 46897e0 durante a execução. Os 15 casos carregados pertencem ao teste anterior; não uso esse resultado como prova integral da ponta corrigida. Leitura e execução focada dos casos novos serão registradas separadamente.
+
+### Conferência curta de 46897e0 pelo Fielzinho
+
+Os dois testes novos passam (2/2, saída 0, filtro `a mudança que falha`). Minha sonda original também passa a preservar o original antes e depois do desfazer; log `repro-23-fielzinho-corrigido.log`.
+
+**O mesmo achado ainda ocorre se falha a gravação do registro.** O try novo cobre `fazer()`, mas `lerRegistro`, `estado(p)` e `writeFileSync(registro.json)` continuam fora. Sonda `logs/repro-23-registro-fielzinho.mjs` injeta ENOSPC somente no writeFileSync do registro após uma troca bem-sucedida: registro=[]; conteúdo antes/depois do desfazer = novo; copia_depois=false. O original foi perdido no desfazer. Saída em `.log`, código 0, TEMP sintético apagado. Não é novo requisito: a recomendação inicial já pedia cobrir falha na troca e no registro. Recomendo proteger a operação completa, inclusive persistência do registro, preservando o original se a recuperação falhar.
+
+## Rodada curta do conserto (46897e0) — 2026-10-17 ~12h55, em acordo Fiel/Fielzinho: **VOLTA** (conserto incompleto)
+- Feito: se `fazer()` falha, o `mudar` tira o que ficou pela metade, devolve o original e relança; teste com ENOSPC
+  (arquivo) e EPERM (pasta). Fiel: `23-kit + harness-real` 24/24; a repro original do Fielzinho preserva o original.
+- **Falta (Fielzinho, conferido pelo Fiel):** a gravação do registro (`fs.writeFileSync(this.arquivoRegistro, ...)`,
+  fim do `mudar`) segue fora do `try`. Com ENOSPC ali: a troca fica feita, `registro=[]`, e o desfazer deixa o texto
+  novo e apaga a cópia do original (`logs/repro-23-registro-fielzinho.log`). Pior: uma gravação pela metade corrompe o
+  `registro.json`, e aí o desfazer perde o registro de tudo.
+  Conserto: pôr no `try` tudo depois do `guardar` (a troca e a gravação do registro); se falhar, desfazer a troca e
+  devolver o original; gravar o registro por arquivo temporário e `rename` (nunca pela metade); se a própria devolução
+  falhar, não apagar a cópia (deixar a `.hub-kit` e dizer onde está). Teste: ENOSPC na gravação do registro.
+- É o mesmo conserto mandado pelo maestro (não perder o original); a próxima rodada curta fecha.
+
+## Rodada curta 2 do conserto (488b377) — 2026-10-17 ~13h30 (Fiel sozinho; Fielzinho sem cota até 17h15)
+
+**Veredito: PASSA.** Fecha o conserto mandado pelo maestro.
+- `mudar`: a troca e a gravação do registro no mesmo `try`; falhou, tira o que ficou, devolve o original e relança;
+  se a devolução falhar, a mensagem diz onde a cópia ficou. `gravarRegistro`: temporário + `rename` (nunca pela
+  metade). `desfazer` recusa antes de tocar em nada se há cópia sem registro.
+- Fiel: `23-kit + harness-real` 27/27 (casos novos: ENOSPC no registro, inteiro e pela metade; devolução que falha);
+  `git status` limpo. As duas repros do Fielzinho contra 488b377: a do `fazer` preserva o original; a do registro
+  injetava a falha no caminho antigo (`registro.json`, agora `.novo`) e não disparou, mas o resultado é seguro (o
+  desfazer volta o original), e o caso dela está nos testes novos.
+- O 24 traz por merge; confiro na rodada dele.
+
+## Rodada curta de junção (2379d38, depois 9fcf4cf) — 2026-10-17 ~16h30 (Fiel + 2ª leitura Sonnet 5.5)
+
+**Junção: PASSA em acordo.** Conflito em `harness-real.test.mjs` resolvido sem perda: ficam a exceção do app-server do
+23 (`SO_APP_SERVER`, filtro `!excecao`, teste da exceção estreita) e os dois testes do modelo do 43. `9fcf4cf^2..9fcf4cf`
+só acrescenta. 2ª leitura: `23-kit` sozinho 20/20 três vezes; `harness-real` 9/9; árvore limpa, sem sobra no TEMP.
+
+**Achado novo (Fiel), do código do 23, não da junção:** a falha que o Cinzel não registrou é um EPERM intermitente na
+troca do registro do kit. `harness-real.test.mjs` + `23-kit.test.mjs` juntos, três vezes: 29/29, 28/29, 28/29 (logs
+`logs/revisao-23-juncao-fiel-{1,2,3}.log`), em testes diferentes ("fragmento mudado..." e "a segunda passada não muda
+nada"), sempre `passo 08 parou: EPERM: operation not permitted, rename '...\.hub-kit\registro.json.novo' ->
+'...\.hub-kit\registro.json'` (`kit/casa.mjs:118`, `gravarRegistro`). O `harness-real` não toca o TEMP do 23: é carga da
+máquina mais o Windows segurando o arquivo recém-gravado (antivírus/indexador), caso conhecido do `rename` no Windows
+(o graceful-fs repete o rename em EPERM/EACCES por isso). Sozinho, 3 de 3 passam.
+Efeito real: na máquina do Gustavo, o kit de par pode parar no passo 08 de vez em quando; o `catch` do `mudar` devolve o
+original (seguro), mas a instalação falha e a suíte da junção pode ficar vermelha à toa.
+Conserto proposto (curto): repetir o `renameSync` em EPERM/EACCES/EBUSY por pouco tempo (ex.: até ~2 s, com pausa),
+no `gravarRegistro` e nas trocas do `guardar`/devolução; teste com um rename que falha EPERM nas primeiras tentativas.
+Teto de voltas do 23 já passado: decisão do maestro (conserto curto antes da junção ou ressalva para depois).
+Maestro (~16h35): conserto curto antes da junção; rodada curta do Fiel depois.
+
+## Conserto curto ceda444 — 2026-10-17 ~17h25 (Fiel + 2ª leitura Sonnet 5.5)
+
+`renomear` em `kit/casa.mjs:45-59` (até ~2 s, pausa de 100 ms, só EPERM/EBUSY/EACCES) nas quatro trocas (guardar :88,
+devolução :119, `gravarRegistro` :134, desfazer :189); nenhum outro rename no kit. 5 testes novos (passageiro nos três
+códigos no registro; passageiro ao guardar, devolver e desfazer; EPERM que não passa desiste em ~2 s e o original
+volta). Fiel: `harness-real` + `23-kit` juntos 34/34 duas vezes (`logs/revisao-23-conserto-fiel-{1,2}.log`); Cinzel
+34/34 três vezes; 2ª leitura: os 5 novos verdes, árvore limpa. **Veredito: PASSA em acordo.** Junção liberada.

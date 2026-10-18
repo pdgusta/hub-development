@@ -78,3 +78,7 @@ leitura do Fielzinho pendente.
    fragmento novo.
 3. Nada instala o `claude-settings.json` fora dos testes. O kit que fizer isso tem de **juntar** a regra na
    `permissions.deny` do `settings.json` de verdade, sem sobrescrever.
+
+## Leitura do Fielzinho — rodada 3 — 2026-10-17
+
+**PASSA, sem achado novo.** Leitura concluída em 8558abe; detalhes no parecer-12-Trilho-fielzinho.md. Conferidos fragmentos e evidências dos três: duas buscas, sem outra ferramenta, caminho esperado; Claude só expõe search. Costura do deny com o 15 conferida em 3d34bd1. Prova própria sem HUB_HARNESS_REAL: 1 skip, 0 falhas; não representa rerun do aceite real. Hashes e limpeza lidos na evidência existente; só .claude.json difere como registro documentado. Sem indexação nem harness real próprios. Ressalvas registradas mantidas.

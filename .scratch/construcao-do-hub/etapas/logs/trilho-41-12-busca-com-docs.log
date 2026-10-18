@@ -1,0 +1,52 @@
+✔ uma pergunta em pt-BR por palavra acha a nota esperada entre as 3 primeiras (50298.8585ms)
+✔ uma pergunta em pt-BR por paráfrase, sem palavra em comum com a nota, acha a nota entre as 3 primeiras (107.7536ms)
+✔ uma nota nova gravada no disco aparece sem reindexar, por palavra e por paráfrase; o tempo só é medido (5331.8545ms)
+✔ nada com ponto no caminho, de pasta local: true nem de agents/code/ aparece, nem o que chega com a busca ligada (5580.7747ms)
+✔ o relatório conta as notas indexadas e lista as recusadas por cabeçalho quebrado (8511.037ms)
+✔ pedido com Host estranho é recusado; o servidor só escuta em 127.0.0.1 (2098.0703ms)
+✔ em inglês, no mesmo índice e sem dizer o idioma, a nota em inglês vem entre as 3 primeiras; o .pdf.md entra, o binário não (5773.8398ms)
+✔ uma rajada de 200 notas copiadas de uma vez termina toda indexada; o tempo só é medido (17916.9212ms)
+medidas do ticket 12:
+{
+  "quando": "2026-10-17T16:08:15.091Z",
+  "nota_nova_ms": 5157,
+  "relatorio": {
+    "indexadas": 50,
+    "validas": 50,
+    "faltando": [],
+    "recusadas": [
+      {
+        "caminho": "inbox/cabecalho-quebrado.md",
+        "erro": "unexpected end of the stream within a flow collection",
+        "no_indice": false
+      }
+    ],
+    "modelo": "local:Snowflake/snowflake-arctic-embed-m-v2.0",
+    "pendentes": 0,
+    "consertadas": 0
+  },
+  "rajada_200_ms": 17883,
+  "partidas": [
+    {
+      "pronta_ms": 50139,
+      "indexacao": "38s — 1 errors"
+    },
+    {
+      "pronta_ms": 45480,
+      "indexacao": "0s — 1 errors"
+    }
+  ],
+  "reaproveitadas": 252,
+  "reindexadas_pelo_consertar": 21,
+  "recusada_no_indice_depois_do_reindex": true
+}
+
+✔ a segunda partida reaproveita o índice: o mesmo banco, a busca pronta e nenhuma nota reindexada (85729.1544ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 372438.4496

@@ -1,7 +1,7 @@
 # 23: Kit de par: a forma
 
 Type: task
-Status: claimed
+Status: resolved
 Etapa: 10 (kit de par)
 Blocked by: 11, 15, 17, 18, 20, 27
 
@@ -42,3 +42,11 @@ Blocked by: 11, 15, 17, 18, 20, 27
 
 - 12:27 (maestro, mandato): leitura tardia do Fielzinho (conferida pelo Fiel): se `fazer()` falha, o desfazer apaga `.hub-kit` e o original some (casa.mjs:88-91, :136; repro `../etapas/logs/repro-23-fielzinho.log`). Perda de arquivo no HOME real: conserto curto antes da junção (devolver a cópia e relançar, com teste), não ressalva.
 - 2026-10-17 12:32 (Cinzel): conserto do Fielzinho (decisão do maestro): 46897e0, `casa.mjs` `mudar()` devolve o original ao lugar e relança o erro quando a mudança falha; teste com ENOSPC (arquivo) e EPERM (pasta), e o desfazer depois não perde nada. 23-kit + harness-real 24/24 (`../etapas/logs/23-falha-no-fazer.log`). Merge no `ticket-24`. Rodada curta pedida ao Fiel.
+- 2026-10-17 12:46 (Cinzel): rodada curta do Fiel VOLTOU (registro fora do try). Conserto 488b377: registro dentro do try, gravado por temporário e troca; falhou, a troca se desfaz e o original volta; se nem a devolução der, a cópia fica e o desfazer recusa ("cópia sem registro"). Testes: ENOSPC no registro (inteiro e pela metade) e devolução que falha. 23-kit + harness-real 27/27 (`../etapas/logs/23-falha-no-registro.log`). Rodada curta pedida.
+- 2026-10-17 12:58 (Cinzel): rodada curta do Fiel PASSA em 488b377 (27/27). Ponta do ramo c7df39b (com integracao e7203b4). No `ticket-24` por merge (5680b77). Rebite avisado.
+- 2026-10-17 15:45 (Cinzel): junção da integracao 98a7ced no ramo (pedido do Rebite: conflito volta ao construtor): 2379d38. Conflito no `harness-real.test.mjs` resolvido com os dois lados (o teste do app-server do 23 e os dois do modelo do 43), igual ao 24 (769f36f). harness-real + 23-kit: na 1ª rodada juntos, 28/29 (1 falha, não registrada); depois, separados 9/9 e 20/20, e juntos 29/29 duas vezes (`../etapas/logs/23-juncao-juntos.log`, `23-juncao-juntos-2.log`). Rodada curta pedida ao Fiel.
+- 2026-10-17 15:55 (Cinzel): integracao 51fa382 (com o 11) juntada sem conflito: 9fcf4cf; harness-real 9/9 (o 23-kit não muda: só entraram arquivos do 11).
+- 2026-10-17 17:05 (Cinzel): conserto curto do EPERM passageiro (mandato do maestro, achado do Fiel na junção): ceda444, `renomear` com repetição ~2 s em EPERM/EACCES/EBUSY nas quatro trocas do `casa.mjs`; 5 testes novos (vermelho antes). harness-real + 23-kit juntos 34/34 três vezes. Relatório, seção 'Conserto curto da junção'. Rodada curta pedida ao Fiel.
+- 2026-10-17 17:15 (Cinzel): conserto ceda444 PASSA (Fiel, em acordo). integracao a7d1517 (só docs) juntada: 6bd7fb0. Rebite avisado.
+- 2026-10-17 16h17 (integrador, Rebite): lição do 11 (parecer do Fiel, `etapas/parecer-11-Cinzel.md`, ressalva 1): o Copilot só põe as instruções do servidor MCP no prompt com `--allow-all-mcp-server-instructions` ou com o `hub-banco` na lista permitida; sem isso a cabeça do `AGENTS.md` não chega a ele. Requisito do kit.
+- 2026-10-17 16h44 (integrador, Rebite): juntado em `integracao`, commit 9f122c2 (merge `--no-ff` de `ticket-23` 6bd7fb0; o Fiel deu "passa" em acordo no conserto ceda444, e depois só entrou o merge de `integracao` a7d1517, só docs). Bloqueios resolvidos antes: 11, 15, 17, 18, 20, 27. Testes: suíte `node --test --test-concurrency=1 "agents/code/test/**/*.test.mjs"` sem variáveis, com a trava, em 9f122c2 (18, 37 e 23 juntos): 355, 342 verdes, 13 pulados, 0 falhas, `git status` limpo (log `etapas/logs/juncao-18-37-23-suite.log`). Harness real não repetido: arquivos idênticos aos revisados (harness-real + 23-kit 34/34 três vezes com o Cinzel). Ressalvas do parecer, para o 26: o desfazer no HOME real vai quase sempre parar (o Claude regrava `~/.claude.json`, o Codex o `config.toml`); as ressalvas 1 a 6 do relatório (mod, extensão, `statusLine`, `notify` composto, `hooks.state` alheio, tabelas do GSD, XML não validado pelo Agendador, pontos abertos do spec); o kit não liga `--allow-all-mcp-server-instructions` do Copilot por arquivo (quem abre o Copilot passa a opção: 24, 26); a exceção de login olha só o texto do arquivo de teste. **Resolvido.**

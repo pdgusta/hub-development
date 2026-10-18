@@ -1,0 +1,60 @@
+TAP version 13
+# Subtest: ticket 25: o hub de ensaio inteiro, por fases, nos tr├¬s harnesses de verdade
+    # Subtest: fase 1 (busca): os tr├¬s acham a nota pela search
+    ok 1 - fase 1 (busca): os tr├¬s acham a nota pela search # SKIP fora de FASES
+      ---
+      duration_ms: 2.0039
+      type: 'test'
+      ...
+    # Subtest: fase 2 (pares): cada harness troca um trecho no A, a regrava├º├úo inteira ├® recusada, o B recebe, nada em claro
+    ok 2 - fase 2 (pares): cada harness troca um trecho no A, a regrava├º├úo inteira ├® recusada, o B recebe, nada em claro # SKIP fora de FASES
+      ---
+      duration_ms: 0.4404
+      type: 'test'
+      ...
+    # Subtest: fase 3 (banco reiniciado): depois de o CouchDB do A reiniciar, a grava├º├úo seguinte ainda chega ao B
+    ok 3 - fase 3 (banco reiniciado): depois de o CouchDB do A reiniciar, a grava├º├úo seguinte ainda chega ao B # SKIP fora de FASES
+      ---
+      duration_ms: 0.2494
+      type: 'test'
+      ...
+    # Subtest: fase 4 (vigia): conflito de verdade; a passada acusa e notifica, o estado_do_hub conta o mesmo, a sess├úo come├ºa pelo aviso
+    not ok 4 - fase 4 (vigia): conflito de verdade; a passada acusa e notifica, o estado_do_hub conta o mesmo, a sess├úo come├ºa pelo aviso
+      ---
+      duration_ms: 601886.4164
+      type: 'test'
+      location: 'C:\\context-hub-wt\\ticket-25\\agents\\code\\test\\ponta-a-ponta\\25-hub-inteiro.test.mjs:300:3'
+      failureType: 'testCodeFailure'
+      error: 'a fase vigia n├úo come├ºou: 2040 MB livres, piso 2500'
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: true
+      actual: false
+      operator: '=='
+      stack: |-
+        piso (file:///C:/context-hub-wt/ticket-25/agents/code/test/ponta-a-ponta/25-hub-inteiro.test.mjs:81:14)
+        async TestContext.<anonymous> (file:///C:/context-hub-wt/ticket-25/agents/code/test/ponta-a-ponta/25-hub-inteiro.test.mjs:302:20)
+        async Test.run (node:internal/test_runner/test:1389:7)
+        async Suite.processPendingSubtests (node:internal/test_runner/test:960:7)
+      ...
+# Subtest: agents\\code\\test\\ponta-a-ponta\\25-hub-inteiro.test.mjs
+not ok 1 - agents\\code\\test\\ponta-a-ponta\\25-hub-inteiro.test.mjs
+  ---
+  duration_ms: 730192.4702
+  type: 'test'
+  location: 'C:\\context-hub-wt\\ticket-25\\agents\\code\\test\\ponta-a-ponta\\25-hub-inteiro.test.mjs:1:1'
+  failureType: 'testCodeFailure'
+  exitCode: 4294967295
+  signal: ~
+  error: 'test failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+1..1
+# tests 5
+# suites 0
+# pass 0
+# fail 2
+# cancelled 0
+# skipped 3
+# todo 0
+# duration_ms 730219.9355

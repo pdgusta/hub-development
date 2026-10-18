@@ -1,7 +1,7 @@
 # 18: Retomada: nota de sete campos, início e fim
 
 Type: task
-Status: claimed
+Status: resolved
 Etapa: 7 (retomada)
 Blocked by: 04, 17, 03
 
@@ -35,3 +35,6 @@ Blocked by: 04, 17, 03
 - 2026-10-17 11:00 (Vela): rodada curta do Fiel PASSA em f36df85. Rebite avisado (junção depois do 17 e do 16). Faltam a repetição real e o Codex, só evidência.
 - 2026-10-17 09:13 (Vela): correção: os meus comentários de hoje marcados 09:30, 10:40 e 11:00 tinham hora estimada; foram entre 08:40 e 09:13.
 - 2026-10-17 12:26 (Vela): integracao e7203b4 (17) juntada no ramo (5dc63e6); 18+27+17+19+14+16: 130/130. Falta só o Codex de verdade, pela fila (depois do Cinzel).
+- 2026-10-17 15:21 (Vela): Codex de verdade verde (gpt-6-luna, 1/1; evidência f050351); integracao juntada (a847d43); 111/111 leves. Rodada curta pedida ao Fiel.
+- 2026-10-17 15:54 (Vela): rodada nova do Fiel PASSA em 4f0b09e (MODELO_CODEX; integracao 51fa382 juntada; AGENTS.md com Retomada e Roteamento). Rebite avisado.
+- 2026-10-17 16h44 (integrador, Rebite): juntado em `integracao`, commit dc4ed6a (merge `--no-ff` de `ticket-18` 4f0b09e, o HEAD da rodada nova "passa" em acordo do Fiel; o ramo já trazia a `integracao` 51fa382 com o conflito do `AGENTS.md` resolvido: "Retomada" e depois "Roteamento de skills", cabeça 1.869/2.000). Testes: suíte `node --test --test-concurrency=1 "agents/code/test/**/*.test.mjs"` sem variáveis, com a trava, em 9f122c2 (18, 37 e 23 juntos): 355, 342 verdes, 13 pulados, 0 falhas, `git status` limpo (log `etapas/logs/juncao-18-37-23-suite.log`). Harness real não repetido: arquivos idênticos aos revisados; prova real nos três no ramo (Codex gpt-6-luna em f050351). Ressalvas do parecer: a evidência do Codex é de antes da troca para a constante `MODELO_CODEX` (o mesmo modelo); a raiz `mudados` por mtime é do 27 (as faltas do verificador também caem na sessão errada); a gravação por shell não entrava na lista (coberta pelo 37). **Resolvido.**

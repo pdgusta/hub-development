@@ -1,0 +1,35 @@
+ÔûÂ ticket 11: o MCP do banco pelos tr├¬s harnesses de verdade
+  Ô£û codex: usa o MCP do banco e cita o que recebeu do servidor (6928.9647ms)
+Ô£û ticket 11: o MCP do banco pelos tr├¬s harnesses de verdade (62240.2981ms)
+Ôä╣ tests 1
+Ôä╣ suites 1
+Ôä╣ pass 0
+Ôä╣ fail 1
+Ôä╣ cancelled 0
+Ôä╣ skipped 0
+Ôä╣ todo 0
+Ôä╣ duration_ms 63011.5547
+
+Ô£û failing tests:
+
+test at agents\code\test\ponta-a-ponta\11-mcp-banco.test.mjs:204:5
+Ô£û codex: usa o MCP do banco e cita o que recebeu do servidor (6928.9647ms)
+  AssertionError [ERR_ASSERTION]: o codex n├úo rodou o turno: YouÔÇÖve hit your usage limit. Upgrade to Pro (https://chatgpt.com/explore/pro), visit https://chatgpt.com/settings/usage to purchase more credits or try again at 5:15 PM.
+  + actual - expected
+  
+  + 'YouÔÇÖve hit your usage limit. Upgrade to Pro (https://chatgpt.com/explore/pro), visit https://chatgpt.com/settings/usage to purchase more credits or try again at 5:15 PM.'
+  - undefined
+  
+      at TestContext.<anonymous> (file:///C:/context-hub-wt/ticket-11/agents/code/test/ponta-a-ponta/11-mcp-banco.test.mjs:223:16)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Promise.all (index 0)
+      at async Suite.run (node:internal/test_runner/test:1869:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'YouÔÇÖve hit your usage limit. Upgrade to Pro (https://chatgpt.com/explore/pro), visit https://chatgpt.com/settings/usage to purchase more credits or try again at 5:15 PM.',
+    expected: undefined,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

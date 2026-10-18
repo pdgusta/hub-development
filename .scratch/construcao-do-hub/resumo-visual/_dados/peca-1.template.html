@@ -12,54 +12,83 @@
   --papel:#f7f1e3; --papel2:#efe5cf; --papel3:#e6dabd;
   --tinta:#2b2520; --tinta2:#5f5446; --tinta3:#8a7d6a;
   --linha:#c9bba1;
-  --Brasa:#c25e10; --Vela:#6b4ca3; --Trilho:#2869a0; --Cinzel:#ad3f80; --Lume:#957a12;
   --verde:#2e8550; --vermelho:#c2362b;
 }
 *{box-sizing:border-box}
-html,body{margin:0;background:var(--papel);color:var(--tinta)}
+html,body{margin:0;height:100%;overflow:hidden;background:var(--papel);color:var(--tinta)}
 body{font-family:"Nunito Sans",system-ui,sans-serif;font-size:16px;line-height:1.5;
   background-image:radial-gradient(rgba(120,95,50,.05) 1px,transparent 1px);background-size:5px 5px}
-.folha{max-width:1600px;margin:0 auto;padding:40px 40px 64px}
-h1,h2,.fraunces{font-family:"Fraunces",Georgia,serif;font-weight:600;letter-spacing:-.01em}
-.sobre{font-weight:700;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--tinta2);margin:0 0 6px}
-h1{font-size:52px;line-height:1.05;margin:0 0 10px}
-.sub{font-size:18px;color:var(--tinta2);max-width:860px;margin:0 0 28px}
+h1,h2{font-family:"Fraunces",Georgia,serif;font-weight:600;letter-spacing:-.01em}
+
+/* o rolo: uma faixa só, que corre para o lado */
+#rolo{display:flex;height:100vh;height:100dvh;overflow-x:auto;overflow-y:hidden;overscroll-behavior-x:contain;scrollbar-color:var(--tinta3) var(--papel2)}
+.painel{flex:none;height:100%;overflow:hidden;position:relative}
+.painel+.painel{border-left:1.5px solid var(--tinta)}
+.dentro{padding:26px 30px 18px}
+
+/* abertura */
+#pAbre .dentro{width:440px}
+.sobre{font-weight:700;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--tinta2);margin:0 0 6px}
+h1{font-size:40px;line-height:1.05;margin:0 0 10px}
+.sub{font-size:16px;color:var(--tinta2);margin:0 0 16px}
 .sub b{color:var(--tinta)}
-
-/* ficha da obra: números grandes */
-.ficha{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0;border-top:2px solid var(--tinta);border-bottom:1px solid var(--tinta);margin-bottom:26px}
-.num{padding:16px 18px 14px;border-right:1px solid var(--linha)}
-.num:last-child{border-right:0}
-.num .v{font-family:"Fraunces",Georgia,serif;font-weight:600;font-size:46px;line-height:1}
-.num .r{font-weight:700;font-size:15px;margin-top:6px}
-.num .d{font-size:13.5px;color:var(--tinta2);line-height:1.35;margin-top:2px}
-.num .v small{font-size:22px;color:var(--tinta2);font-weight:500}
-
-/* bula */
-.bula{display:flex;flex-wrap:wrap;gap:8px 22px;align-items:center;padding:12px 16px;background:var(--papel2);border-radius:10px;margin-bottom:10px}
-.bula .t{font-weight:800;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--tinta2);margin-right:4px}
-.bula .i{display:flex;align-items:center;gap:7px;font-size:14px;font-weight:600}
+.ficha{display:grid;grid-template-columns:1fr 1fr;border-top:2px solid var(--tinta);border-bottom:1px solid var(--tinta);margin-bottom:14px}
+.num{padding:9px 10px 8px 0;border-bottom:1px solid var(--linha)}
+.num:nth-child(2n){padding-left:12px;border-left:1px solid var(--linha)}
+.num:last-child{grid-column:1/-1;border-bottom:0;padding-left:0;border-left:0}
+.num .v{font-family:"Fraunces",Georgia,serif;font-weight:600;font-size:34px;line-height:1}
+.num .r{font-weight:800;font-size:14px;margin-top:3px}
+.num .d{font-size:12.5px;color:var(--tinta2);line-height:1.3}
+.bula{display:grid;grid-template-columns:1fr 1fr;gap:4px 10px;padding:10px 12px;background:var(--papel2);border-radius:10px;margin-bottom:12px}
+.bula .t{grid-column:1/-1;font-weight:800;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--tinta2)}
+.bula .i{display:flex;align-items:center;gap:6px;font-size:13.5px;font-weight:600;line-height:1.2}
 .bula svg{flex:none}
-.ctrl{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:0 0 6px;font-size:14px;color:var(--tinta2)}
-.ctrl button{font:inherit;font-weight:700;font-size:14px;color:var(--tinta);background:var(--papel);border:1.5px solid var(--tinta);border-radius:999px;padding:5px 14px;cursor:pointer}
+.ctrl{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:10px}
+.ctrl button,.pular button{font:inherit;font-weight:700;font-size:13.5px;color:var(--tinta);background:var(--papel);border:1.5px solid var(--tinta);border-radius:999px;padding:4px 12px;cursor:pointer}
 .ctrl button[aria-pressed="true"]{background:var(--tinta);color:var(--papel)}
-.ctrl .dica{font-size:14px}
-.constr{display:flex;gap:6px;flex-wrap:wrap}
-.constr span{display:inline-flex;align-items:center;gap:5px;font-weight:700;font-size:13.5px;padding:2px 10px 2px 6px;border-radius:999px;background:var(--papel)}
-.constr i{width:12px;height:12px;border-radius:50%;display:inline-block}
+.constr{display:flex;gap:4px;flex-wrap:wrap}
+.constr span{display:inline-flex;align-items:center;gap:5px;font-weight:700;font-size:13px;padding:1px 8px 1px 5px;border-radius:999px;background:var(--papel2)}
+.constr i{width:11px;height:11px;border-radius:50%;display:inline-block}
+.pular{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:13.5px;color:var(--tinta2)}
+.pular button{font-size:13px;padding:3px 10px;border-color:var(--tinta3)}
+.denso{margin:8px 0 0;font-size:13.5px;font-weight:700;color:var(--tinta2)}
+.siga{margin-top:12px;font-weight:800;font-size:15px;display:flex;align-items:center;gap:8px}
+.siga svg{flex:none}
 
-#partitura{position:relative;margin-top:6px}
-#partitura svg{display:block;overflow:visible}
+/* partitura */
+#pPart{display:flex;overflow:visible}
+#nomes{position:sticky;left:0;z-index:3;height:100%;flex:none;background-color:var(--papel);background-image:radial-gradient(rgba(120,95,50,.05) 1px,transparent 1px);background-size:5px 5px;box-shadow:6px 0 10px -5px rgba(60,40,10,.35)}
+#partitura{flex:none;height:100%}
+#partitura svg,#nomes svg{display:block;overflow:visible}
 svg text{font-family:"Nunito Sans",system-ui,sans-serif}
 .frase{cursor:pointer}
 .frase:hover .barra{filter:brightness(1.08)}
 .apagado .frase:not(.sel),.apagado .marca:not(.sel){opacity:.18}
+.lig{fill:none;stroke:var(--tinta);stroke-width:1.3;pointer-events:none;transition:opacity .2s;opacity:0}
+.todas .lig{opacity:.32}
 .apagado .lig:not(.sel){opacity:0}
-.lig{fill:none;stroke:var(--tinta);stroke-width:1.3;pointer-events:none;transition:opacity .2s}
-.lig.base{stroke-dasharray:none;opacity:.55}
-.lig.extra{opacity:0}
-.todas .lig.extra{opacity:.32}
 .lig.sel{opacity:1!important;stroke-width:2}
+
+/* o fio e o acorde final */
+#pFio .dentro{width:1000px}
+h2{font-size:28px;line-height:1.1;margin:0 0 6px}
+#redSvg svg{display:block;overflow:visible}
+#pFim .dentro{width:max-content}
+.naipes{display:grid;grid-template-columns:repeat(4,262px);gap:14px}
+.naipes.linha{grid-template-columns:repeat(8,232px)}
+#pAbre .dentro{column-gap:28px}
+.ficha,.bula,.ctrl,.pular,.siga,.denso,h1,.sub{break-inside:avoid}
+.naipe{background:var(--papel2);border-radius:12px;padding:12px 14px;border-top:6px solid var(--c,var(--tinta))}
+.naipe .q{font-weight:800;font-size:17px}
+.naipe .p{font-size:13px;color:var(--tinta2);margin-bottom:6px}
+.naipe .big{font-family:"Fraunces",Georgia,serif;font-weight:600;font-size:34px;line-height:1}
+.naipe .big small{font-family:"Nunito Sans";font-size:14px;font-weight:700;color:var(--tinta2);margin-left:6px}
+.naipe .lst{display:flex;flex-wrap:wrap;gap:4px;margin-top:8px}
+.naipe .lst span{font-weight:700;font-size:12.5px;background:var(--papel);border-radius:6px;padding:1px 6px;cursor:pointer}
+.naipe .lst span.nasc{background:none;border:1.5px solid var(--c)}
+.coda{margin:14px 0 0;font-size:15px;color:var(--tinta2);max-width:1090px}
+.coda b{color:var(--tinta)}
+.rodape{margin:8px 0 0;font-size:12.5px;color:var(--tinta3)}
 
 /* cartão do ticket */
 #cartao{position:fixed;right:20px;top:20px;bottom:20px;width:400px;max-width:calc(100vw - 32px);background:#fffaf0;border:1.5px solid var(--tinta);border-radius:14px;box-shadow:0 18px 50px rgba(60,40,10,.22);padding:22px 22px 18px;overflow:auto;transform:translateX(120%);transition:transform .25s ease;z-index:20}
@@ -83,67 +112,42 @@ svg text{font-family:"Nunito Sans",system-ui,sans-serif}
 #cartao h3{font-size:13px;letter-spacing:.07em;text-transform:uppercase;color:var(--tinta2);margin:12px 0 6px}
 #cartao .mom{font-size:15px;margin:0 0 6px}
 
-.red{margin-top:34px;border-top:2px solid var(--tinta);padding-top:22px}
-.red h2{font-size:30px;margin:0 0 4px}
-.red .sub{margin-bottom:10px}
-#redSvg svg{display:block;overflow:visible}
-/* fim: o acorde final */
-.fim{margin-top:40px;border-top:2px solid var(--tinta);padding-top:22px}
-.fim h2{font-size:30px;margin:0 0 4px}
-.fim .sub{margin-bottom:18px}
-.naipes{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
-.naipe{background:var(--papel2);border-radius:12px;padding:14px 16px;border-top:6px solid var(--c)}
-.naipe .q{font-weight:800;font-size:18px}
-.naipe .p{font-size:13.5px;color:var(--tinta2);margin-bottom:8px}
-.naipe .big{font-family:"Fraunces",Georgia,serif;font-weight:600;font-size:38px;line-height:1}
-.naipe .big small{font-family:"Nunito Sans";font-size:15px;font-weight:700;color:var(--tinta2);margin-left:6px}
-.naipe .lst{display:flex;flex-wrap:wrap;gap:4px;margin-top:10px}
-.naipe .lst span{font-weight:700;font-size:12.5px;background:var(--papel);border-radius:6px;padding:1px 6px;cursor:pointer}
-.naipe .lst span.nasc{background:none;border:1.5px solid var(--c)}
-.equipe{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:16px}
-.equipe .naipe{border-top-color:var(--tinta)}
-.coda{margin-top:22px;font-size:16px;color:var(--tinta2)}
-.coda b{color:var(--tinta)}
-.rodape{margin-top:26px;font-size:13px;color:var(--tinta3)}
-
-@media (max-width:900px){
-  .folha{padding:24px 16px 48px}
-  h1{font-size:34px}
-  .sub{font-size:16px}
-  .ficha{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .num{border-bottom:1px solid var(--linha)}
-  .num:nth-child(2n){border-right:0}
-  .num:last-child{grid-column:1/-1}
-  .num .v{font-size:36px}
-  .naipes,.equipe{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .bula{gap:8px 14px}
-  #cartao{left:0;right:0;top:auto;bottom:0;width:auto;max-width:none;max-height:72vh;border-radius:16px 16px 0 0;transform:translateY(110%)}
+@media (max-width:700px){
+  #pAbre .dentro{width:358px;padding:20px 18px 14px}
+  h1{font-size:32px}
+  .sub{font-size:15px}
+  .dentro{padding:20px 18px 14px}
+  #pFio .dentro{width:680px}
+  .naipes{grid-template-columns:repeat(4,232px)}
+  #cartao{left:0;right:0;top:auto;bottom:0;width:auto;max-width:none;max-height:78vh;border-radius:16px 16px 0 0;transform:translateY(110%)}
 }
 </style>
 </head>
 <body>
-<main class="folha">
-  <p class="sobre">Context hub · como foi a construção · 16 e 17 de outubro de 2026</p>
-  <h1>A construção, em partitura</h1>
-  <p class="sub" id="sub"></p>
-  <section class="ficha" id="ficha" aria-label="Números da obra"></section>
-  <div class="bula" id="bula" aria-label="Como ler"></div>
-  <div class="ctrl">
-    <button id="btLig" aria-pressed="false">todas as ligaduras</button>
-    <span class="dica">Toque num ticket para ver o caminho dele e o que o segurava.</span>
-    <span class="constr" id="constr"></span>
-  </div>
-  <section id="partitura" aria-label="Partitura da construção"></section>
-  <section class="red" id="reducao"><h2>O fio que segurou o fim</h2>
+<div id="rolo">
+  <section class="painel" id="pAbre"><div class="dentro">
+    <p class="sobre">Context hub · como foi a construção · 16 e 17/10/2026</p>
+    <h1>A construção, em partitura</h1>
+    <p class="sub" id="sub"></p>
+    <div class="ficha" id="ficha" aria-label="Números da obra"></div>
+    <div class="bula" id="bula" aria-label="Como ler"></div>
+    <div class="ctrl"><button id="btLig" aria-pressed="false">todas as ligaduras</button><span class="constr" id="constr"></span></div>
+    <div class="pular" id="pular"><span>Pular para</span></div>
+    <p class="denso" id="avisoDenso" hidden>Tela baixa: cada ticket mostra só o número; o nome e o caminho aparecem ao tocar.</p>
+    <div class="siga"><span>Role para o lado; toque num ticket para ver o caminho dele</span><svg width="34" height="16" viewBox="0 0 34 16"><path d="M1 8 H30 M23 2 L31 8 L23 14" fill="none" stroke="#2b2520" stroke-width="2.2"/></svg></div>
+  </div></section>
+  <section class="painel" id="pPart" aria-label="Partitura da construção"><div id="nomes"></div><div id="partitura"></div></section>
+  <section class="painel" id="pFio"><div class="dentro">
+    <h2>O fio que segurou o fim</h2>
     <p class="sub">Redução da partitura: cada ticket só podia juntar depois que o de cima resolvia. De trás para frente, a partir do 25, o bloqueio que resolveu por último.</p>
-    <div id="redSvg"></div></section>
-  <section class="fim" id="fim"></section>
-  <p class="rodape" id="rodape"></p>
-</main>
+    <div id="redSvg"></div>
+  </div></section>
+  <section class="painel" id="pFim"><div class="dentro" id="fim"></div></section>
+</div>
 <aside id="cartao" aria-live="polite"><button class="x" aria-label="Fechar">×</button><div id="cartaoC"></div></aside>
 
 <script>
-window.onerror=function(m,u,l,c,e){document.body.insertAdjacentHTML("afterbegin","<pre id=erro>"+m+" @"+l+":"+c+" "+(e&&e.stack)+"</pre>")};window.addEventListener("unhandledrejection",function(ev){document.body.insertAdjacentHTML("afterbegin","<pre id=erro>"+(ev.reason&&ev.reason.stack||ev.reason)+"</pre>")});
+window.onerror=function(m,u,l,c,e){document.body.insertAdjacentHTML("afterbegin","<pre id=erro>"+m+" @"+l+":"+c+" "+(e&&e.stack)+"</pre>")};
 const F = /*FATOS*/null/*FIM*/;
 </script>
 <script>
@@ -162,28 +166,24 @@ function txt(s,at,pai){const e=el("text",at,pai);e.textContent=s;return e}
 const cv=document.createElement("canvas").getContext("2d");
 function larg(s,peso,tam){cv.font=`${peso} ${tam}px "Nunito Sans"`;return cv.measureText(s).width}
 function corte(s,peso,tam,max){if(larg(s,peso,tam)<=max)return s;let a=s;while(a.length>1&&larg(a+"…",peso,tam)>max)a=a.slice(0,-1);return a.replace(/[\s,:·]+$/,"")+"…"}
+const rolo=document.getElementById("rolo"), pPart=document.getElementById("pPart");
 
 // ---------- dados derivados ----------
 const TK={};F.tickets.forEach(t=>TK[t.id]=t);
 const tickets=F.tickets.filter(t=>t.frase&&t.frase.ini);
-tickets.forEach(t=>{t.a=min(t.frase.ini);t.b=min(t.frase.fim);t.bp=t.frase.pendente_ate?min(t.frase.pendente_ate):t.b;t.voltasTot=(t.revisao||[]).filter(r=>r.resultado==="VOLTA").length;});
+tickets.forEach(t=>{t.a=min(t.frase.ini);t.b=min(t.frase.fim);t.bp=t.frase.pendente_ate?min(t.frase.pendente_ate):t.b;t.voltasTot=(t.revisao||[]).filter(r=>r.resultado==="VOLTA").length;
+  t.rot=t.id+"  "+t.titulo_curto+(t.voltasTot?"  · "+t.voltasTot+(t.voltasTot>1?" voltas":" volta"):"");});
 const dependentes={};F.tickets.forEach(t=>(t.blocked_by||[]).forEach(b=>{(dependentes[b]=dependentes[b]||[]).push(t.id)}));
-function ancestrais(id,s){(TK[id].blocked_by||[]).forEach(b=>{if(!s.has(b)){s.add(b);ancestrais(b,s)}});return s}
-const CADEIA=ancestrais(F.meta.ticket_final,new Set([F.meta.ticket_final]));
+const INI=min(F.meta.espera.ate);   // a linha em escala começa aqui; antes, o compasso de espera
 
-// ---------- cabeçalho ----------
+// ---------- abertura ----------
 const N=F.numeros;
-document.getElementById("sub").innerHTML=F.meta.subtitulo.replace("{H}","seis");
-const fichaItens=[
-  [N.tickets.v,"tickets",N.tickets.d],
-  [N.resolvidos.v,"resolvidos",N.resolvidos.d],
-  [N.voltas.v,"voltas da revisão",N.voltas.d],
-  [N.juncoes.v,"junções",N.juncoes.d],
-  [N.testes.v,"testes na suíte final",N.testes.d]];
-document.getElementById("ficha").innerHTML=fichaItens.map(([v,r,d])=>`<div class="num"><div class="v">${v}</div><div class="r">${r}</div><div class="d">${d}</div></div>`).join("");
+document.getElementById("sub").innerHTML=F.meta.subtitulo;
+document.getElementById("ficha").innerHTML=[
+  [N.tickets.v,"tickets",N.tickets.d],[N.resolvidos.v,"resolvidos",N.resolvidos.d],
+  [N.voltas.v,"voltas da revisão",N.voltas.d],[N.juncoes.v,"junções",N.juncoes.d],
+  [N.testes.v,"testes na suíte final",N.testes.d]].map(([v,r,d])=>`<div class="num"><div class="v">${v}</div><div class="r">${r}</div><div class="d">${d}</div></div>`).join("");
 document.getElementById("constr").innerHTML=CONSTR.map(c=>`<span><i style="background:${COR[c]}"></i>${c}</span>`).join("")+`<span><i style="background:${COR.Lume}"></i>Lume</span>`;
-
-// bula com os sinais desenhados
 const bula=document.getElementById("bula");
 bula.innerHTML='<span class="t">Como ler</span>';
 function itemBula(rotulo,desenho){const d=document.createElement("span");d.className="i";const s=el("svg",{width:30,height:22,viewBox:"0 0 30 22"});desenho(s);d.appendChild(s);d.append(rotulo);bula.appendChild(d)}
@@ -192,309 +192,242 @@ itemBula("nasceu no caminho",s=>{el("rect",{x:2,y:8,width:26,height:7,rx:3.5,fil
 itemBula("prova pendente",s=>{el("rect",{x:1,y:8,width:10,height:7,rx:3.5,fill:COR.Brasa},s);el("line",{x1:14,y1:11.5,x2:29,y2:11.5,stroke:COR.Brasa,"stroke-width":2.2,"stroke-dasharray":"2 4","stroke-linecap":"round"},s)});
 itemBula("passa",s=>{el("circle",{cx:15,cy:11,r:4.5,fill:COR.tinta},s)});
 itemBula("volta",s=>sinalVolta(s,15,11,1));
+itemBula("resolvido",s=>{el("line",{x1:12,y1:3,x2:12,y2:19,stroke:COR.tinta,"stroke-width":1.4},s);el("line",{x1:16.5,y1:3,x2:16.5,y2:19,stroke:COR.tinta,"stroke-width":3.4},s)});
 itemBula("junção",s=>acordeMini(s,15,11,COR.verde,false));
 itemBula("junção desfeita",s=>acordeMini(s,15,11,COR.vermelho,true));
-itemBula("resolvido",s=>{el("line",{x1:12,y1:3,x2:12,y2:19,stroke:COR.tinta,"stroke-width":1.4},s);el("line",{x1:16.5,y1:3,x2:16.5,y2:19,stroke:COR.tinta,"stroke-width":3.4},s)});
 itemBula("janela quieta",s=>{fermata(s,15,14,1)});
 itemBula("bloqueio",s=>{el("path",{d:"M3 16 C 9 3, 21 3, 27 16",fill:"none",stroke:COR.tinta,"stroke-width":1.5},s)});
-
-function sinalVolta(g,x,y,k){ // sinal de repetição :‖
+function sinalVolta(g,x,y,k){
   el("circle",{cx:x-4*k,cy:y-2.6*k,r:1.5*k,fill:COR.tinta},g);el("circle",{cx:x-4*k,cy:y+2.6*k,r:1.5*k,fill:COR.tinta},g);
   el("line",{x1:x,y1:y-7*k,x2:x,y2:y+7*k,stroke:COR.tinta,"stroke-width":1.3},g);
   el("line",{x1:x+3.4*k,y1:y-7*k,x2:x+3.4*k,y2:y+7*k,stroke:COR.tinta,"stroke-width":3.2*k},g);}
 function acordeMini(g,x,y,cor,risc){[-4,4].forEach(d=>el("ellipse",{cx:x,cy:y+d,rx:4.8,ry:3.5,fill:cor,transform:`rotate(-20 ${x} ${y+d})`},g));el("line",{x1:x+5,y1:y-9,x2:x+5,y2:y+6,stroke:cor,"stroke-width":1.4},g);if(risc)el("line",{x1:x-8,y1:y+8,x2:x+9,y2:y-9,stroke:COR.vermelho,"stroke-width":2.2},g)}
 function fermata(g,x,y,k){el("path",{d:`M${x-8*k} ${y} A ${8*k} ${8*k} 0 0 1 ${x+8*k} ${y}`,fill:"none",stroke:COR.tinta,"stroke-width":2*k},g);el("circle",{cx:x,cy:y-2.4*k,r:1.8*k,fill:COR.tinta},g)}
 
-// ---------- partitura ----------
-const box=document.getElementById("partitura");
+// ---------- partitura: um sistema só, da esquerda para a direita ----------
+const box=document.getElementById("partitura"), nomesBox=document.getElementById("nomes");
 let estado={sel:null,todas:false};
+let G=null; // geometria da última renderização (para pular e centralizar)
 
 function desenhar(){
-  const W=box.clientWidth; const movel=W<700;
-  const L=movel?44:112, R=movel?8:18;
-  const DUR=(movel?120:360);           // minutos por sistema
-  const INI=movel&&F.meta.espera?min(F.meta.espera.ate):0;
-  const nSis=Math.ceil((30*60-INI)/DUR);
-  document.getElementById("sub").innerHTML=F.meta.subtitulo.replace("{H}",movel?"duas":"seis");
-  const PX=(W-L-R)/DUR;                 // px por minuto
-  const tamL=movel?12:12.5;
-  box.innerHTML="";
-  const svg=el("svg",{width:W,role:"img","aria-label":"Partitura: cada linha é um período do dia, cada pauta um papel"},box);
-  const gLig=el("g",{},null), gMain=el("g",{},svg);
-  // ---- faixas (vozes) dos construtores: empacotamento guloso, rótulo incluído
+  const movel=innerWidth<700;
+  const PX=movel?3:4;                       // px por minuto
+  const LN=(movel||(pPart.clientHeight||innerHeight)<560)?54:104;     // coluna fixa dos nomes
+  const RW=movel?150:200;                   // compasso de espera (14h30-18h30)
+  const X=m=>RW+(m-INI)*PX;
+  const Wsvg=X(FIMm)+(movel?60:100);
+  const disp=pPart.clientHeight||innerHeight; const denso=disp<560, medio=!denso&&disp<860;
+  const C=denso?{TOPO:36,lane:16,mae:14,maeF:11,fiel:12,nota:8,gap:5,lume:18,chip:10,regua:28,f:11,fl:11,ly:19}
+         :medio?{TOPO:46,lane:23,mae:16,maeF:11.5,fiel:17,nota:11,gap:7,lume:28,chip:12,regua:36,f:11,fl:11,ly:18}
+               :{TOPO:54,lane:30,mae:19,maeF:12.5,fiel:22,nota:13,gap:10,lume:34,chip:16,regua:44,f:12.5,fl:12,ly:21};
+  const tamL=C.f;
+  box.innerHTML="";nomesBox.innerHTML="";document.getElementById("avisoDenso").hidden=!denso;
+  const svg=el("svg",{role:"img","aria-label":"Partitura da construção: o tempo corre da esquerda para a direita; cada pauta é um papel"},box);
+  const gMain=el("g",{},svg), gLig=el("g",{},null);
+  // vozes dos construtores (empacotamento guloso, rótulo incluído)
   const vozes={};CONSTR.forEach(c=>vozes[c]=[]);
-  const ord=tickets.slice().sort((p,q)=>p.a-q.a);
-  ord.forEach(t=>{
-    const c=t.construtor_principal; if(!vozes[c])return;
-    const rot=t.id+"  "+t.titulo_curto+(t.voltasTot?"  · "+t.voltasTot+(t.voltasTot>1?" voltas":" volta"):""); t.rot=rot;
-    const wr=Math.min(larg(rot,600,tamL)+14, movel?190:250);
-    const fimOcup=Math.max(t.bp,t.a+wr/PX)+12/PX;
-    let v=vozes[c].findIndex(ultimo=>ultimo<=t.a); if(v<0){v=vozes[c].length;vozes[c].push(0)}
-    vozes[c][v]=fimOcup; t.voz=v;
-  });
-  // ---- eventos por pauta
-  const rev=[];F.tickets.forEach(t=>(t.revisao||[]).forEach(r=>{if(r.quando)rev.push({t:min(r.quando),r,tk:t})}));
-  rev.sort((a,b)=>a.t-b.t);
+  tickets.slice().sort((p,q)=>p.a-q.a).forEach(t=>{const c=t.construtor_principal;if(!vozes[c])return;
+    const wr=denso?34:Math.min(larg(t.rot,600,tamL)+14,260);const fimOcup=Math.max(t.bp,t.a+wr/PX)+14/PX;
+    let v=vozes[c].findIndex(u=>u<=t.a);if(v<0){v=vozes[c].length;vozes[c].push(0)}vozes[c][v]=fimOcup;t.voz=v;});
+  const rev=[];F.tickets.forEach(t=>(t.revisao||[]).forEach(r=>{if(r.quando)rev.push({t:min(r.quando),r,tk:t})}));rev.sort((a,b)=>a.t-b.t);
   const jun=F.juncoes.map(j=>({...j,t:min(j.quando)})).sort((a,b)=>a.t-b.t);
-  // suíte ao longo do tempo (para o crescendo)
   const suite=jun.filter(j=>j.suite&&j.suite.total&&j.resultado!=="desfeita").map(j=>({t:j.t,n:j.suite.total}));
   const SMAX=Math.max(...suite.map(s=>s.n));
   const janelas=F.janelas_quietas.map(j=>({...j,a:min(j.inicio),b:min(j.fim)}));
   const ces=F.reinicio?{...F.reinicio,t:min(F.reinicio.quando)}:null;
-  const maestro=F.maestro.map(m=>({...m,t:min(m.quando)}));
-  const lume=F.lume; const lumeA=min(lume.entra);
-  const fzFim=min(F.fielzinho.sai);
-  const primeiraVez={};
-  function chipPrimeira(g,chave,x,y,texto){if(primeiraVez[chave])return;primeiraVez[chave]=1;
-    const w=larg(texto,700,11.5)+12;x=Math.max(w/2+2,Math.min(W-R-w/2,x));el("rect",{x:x-w/2,y:y-9,width:w,height:17,rx:8.5,fill:COR.tinta},g);txt(texto,{x,y:y+4,"text-anchor":"middle","font-size":11.5,"font-weight":700,fill:COR.papel},g)}
-
-  let y=0;
-  const pontos={}; // id -> {fim:{x,y}, emT(t)}
-  const posFrase={};
-  if(INI){ // compasso de espera: as horas sem commit, à moda das partituras
-    const e=F.meta.espera, g=el("g",{},gMain), yR=y+14;
-    txt("16/10",{x:L-8,y:yR,"text-anchor":"end","font-size":12.5,"font-weight":800,fill:COR.tinta},g);
-    txt(hhmm(e.de)+" – "+hhmm(e.ate),{x:L,y:yR,"font-size":12.5,"font-weight":700,fill:COR.tinta2},g);
-    const ya=y+34, yb=ya+30, xm=L+(W-L-R)/2;
-    txt("Mae.",{x:L-10,y:ya+19,"text-anchor":"end","font-size":12,"font-weight":800,fill:COR.tinta},g);
-    for(let k=0;k<5;k++){const ly=ya+(yb-ya)*k/4;el("line",{x1:L,y1:ly,x2:W-R,y2:ly,stroke:COR.linha,"stroke-width":0.7},g)}
-    el("line",{x1:L,y1:ya,x2:L,y2:yb,stroke:COR.tinta,"stroke-width":1.6},g);el("line",{x1:W-R,y1:ya,x2:W-R,y2:yb,stroke:COR.tinta,"stroke-width":1},g);
-    el("rect",{x:xm-34,y:ya+11,width:68,height:8,fill:COR.tinta},g);
-    el("line",{x1:xm-34,y1:ya+6,x2:xm-34,y2:ya+24,stroke:COR.tinta,"stroke-width":1.4},g);el("line",{x1:xm+34,y1:ya+6,x2:xm+34,y2:ya+24,stroke:COR.tinta,"stroke-width":1.4},g);
-    txt("4",{x:xm,y:ya-4,"text-anchor":"middle","font-size":17,"font-weight":600,fill:COR.tinta,"font-family":"Fraunces, Georgia, serif"},g);
-    txt("4 compassos de espera: "+e.rotulo,{x:xm,y:yb+18,"text-anchor":"middle","font-size":12,"font-weight":600,"font-style":"italic",fill:COR.tinta2},g);
-    y=yb+44;
-  }
-  for(let s=0;s<nSis;s++){
-    const s0=INI+s*DUR, s1=Math.min(s0+DUR,30*60);
-    if(s0>FIMm+30)break;
-    const X=m=>L+(m-s0)*PX;
-    const dentro=(a,b)=>b>=s0&&a<=s1;
-    const g=el("g",{},gMain);
-    // quem toca neste sistema
-    const pautas=[];
-    if(maestro.some(m=>dentro(m.t,m.t))||(ces&&dentro(ces.t,ces.t))) pautas.push({k:"Maestro",nome:"Maestro",ab:"Mae."});
-    CONSTR.forEach(c=>{const vs=new Set();tickets.forEach(t=>{if(t.construtor_principal===c&&dentro(t.a,t.bp))vs.add(t.voz)});if(vs.size)pautas.push({k:c,nome:c,ab:c.slice(0,3)+".",vozes:[...vs].sort((a,b)=>a-b)})});
-    const revS=rev.filter(e=>dentro(e.t,e.t));
-    if(revS.length||dentro(0,fzFim)&&false) pautas.push({k:"Fiel",nome:"Fiel",ab:"Fiel",ev:revS});
-    const junS=jun.filter(j=>dentro(j.t,j.t));
-    if(junS.length||suite.some(x=>x.t<=s1)) pautas.push({k:"Rebite",nome:"Rebite",ab:"Reb.",ev:junS});
-    if(dentro(lumeA,FIMm)) pautas.push({k:"Lume",nome:"Lume",ab:"Lum."});
-    // régua das horas
-    const yR=y+14;
-    const off=T0%60; const h0=Math.ceil((s0+off)/60)*60-off;
-    for(let m=h0;m<=s1;m+=60){
-      const h=Math.round((T0+m)/60)%24;
-      const meia=h===0;
-      txt(meia?"0h · 17/10":(h+"h"),{x:X(m),y:yR,"text-anchor":"middle","font-size":12.5,"font-weight":meia?800:700,fill:meia?COR.tinta:COR.tinta2},g);
+  const maestro=F.maestro.map(m=>({...m,t:min(m.quando)})).filter(m=>m.t>=INI);
+  const lume=F.lume, lumeA=min(lume.entra), fzFim=min(F.fielzinho.sai);
+  const xFim=X(FIMm);
+  // pautas e alturas
+  const P=[];
+  {const filas=[];const ev=maestro.map(m=>{const x=X(m.t);const w=larg(m.rotulo,600,C.maeF);const ant=x+6+w>xFim;const a=ant?x-6-w:x-1,b=ant?x+1:x+6+w;let f=filas.findIndex(u=>u<a-8);if(f<0){f=filas.length;filas.push(0)}filas[f]=b;return{...m,x,ant,f}});
+   P.push({k:"Maestro",nome:"Maestro",ab:"Mae.",papel:"regência",ev,h:Math.max(2,filas.length)*C.mae+(denso?8:15),x0:6});}
+  CONSTR.forEach(c=>{const ts=tickets.filter(t=>t.construtor_principal===c);const x0=Math.max(RW-30,X(Math.min(...ts.map(t=>t.a)))-30);
+    P.push({k:c,nome:c,ab:c.slice(0,3)+".",papel:(c==="Brasa"||c==="Vela")?"construtora":"construtor",n:vozes[c].length,h:vozes[c].length*C.lane+(denso?4:8),x0})});
+  {const filas=[];rev.forEach(e=>{const x=X(e.t);const w=denso?0:larg(e.tk.id,700,C.fl)+11;e.esq=x+6+w>xFim;const a=e.esq?x-8-w:x-6,b=e.esq?x+6:x+6+w;let f=filas.findIndex(u=>u<a-3);if(f<0){f=filas.length;filas.push(0)}filas[f]=b;e.f=f});
+   P.push({k:"Fiel",nome:"Fiel",ab:"Fiel",papel:"revisor",ev:rev,nf:Math.max(1,filas.length),h:Math.max(1,filas.length)*C.fiel+(denso?6:12),x0:RW-30});}
+  {let ult=-1e9;jun.forEach(j=>{const x=X(j.t);const notas=(j.tickets||[]).length+(j.docs?1:0);j.n=Math.max(1,notas);j.xr=x;j.xd=Math.max(x,ult+6);const wlab=denso?0:Math.max(...(j.tickets||[]).map(i=>larg(i,700,C.fl)),j.docs?larg("docs",700,C.fl):0)+10;ult=j.xd+8+wlab});
+   const maxN=Math.max(1,...jun.map(j=>j.n));const hAc=maxN*C.nota+(denso?8:12);P.push({k:"Rebite",nome:"Rebite",ab:"Reb.",papel:"integrador",ev:jun,hAc,h:hAc+(denso?30:medio?52:64),x0:RW-30});}
+  P.push({k:"Lume",nome:"Lume",ab:"Lum.",papel:"documentador",h:C.lume,x0:X(lumeA)-30});
+  let y=C.TOPO;P.forEach(p=>{p.y=y;y+=p.h+C.gap});const Htot=y+4;
+  const k=Math.min(1,disp/Htot);
+  svg.setAttribute("viewBox",`0 0 ${Wsvg} ${Htot}`);svg.setAttribute("width",Wsvg*k);svg.setAttribute("height",Htot*k);
+  box.style.width=Wsvg*k+"px";
+  const letras=[],bordas=[];G={X,k,LN,PX,RW,letras,bordas};
+  const primeira={};
+  function chip(g,chave,x,yc,texto,escuro){if(chave){if(primeira[chave])return;primeira[chave]=1}
+    const w=larg(texto,700,11.5)+12;el("rect",{x:x-w/2,y:yc-9,width:w,height:17,rx:8.5,fill:escuro?COR.tinta:"#e6dabd"},g);txt(texto,{x,y:yc+4,"text-anchor":"middle","font-size":11.5,"font-weight":700,fill:escuro?COR.papel:COR.tinta2},g)}
+  const yTopo=P[0].y, yBase=P[P.length-1].y+P[P.length-1].h;
+  // régua das horas
+  const off=T0%60;
+  for(let m=Math.ceil((INI+off)/60)*60-off;m<=FIMm;m+=60){const h=Math.round((T0+m)/60)%24;const meia=h===0;
+    txt(meia?"0h · 17/10":(h+"h"),{x:X(m),y:C.regua,"text-anchor":"middle","font-size":12.5,"font-weight":meia?800:700,fill:meia?COR.tinta:COR.tinta2},gMain);}
+  // janelas quietas (faixa atrás das pautas)
+  janelas.forEach(j=>{const r=el("rect",{x:X(j.a),y:yTopo-4,width:(j.b-j.a)*PX,height:yBase-yTopo+8,fill:"url(#hach)"},gMain);
+    el("title",{},r).textContent=j.rotulo+" ("+hhmm(j.inicio)+"–"+hhmm(j.fim)+"): "+j.fora.join(", ")+" saíram para poupar memória";
+    const w=larg("janela quieta",700,11.5)+12;chip(gMain,null,X(j.a)+2+w/2,C.chip,"janela quieta",false);});
+  // pautas
+  P.forEach(p=>{
+    const gp=el("g",{},gMain);const pa=p.y+3,pb=p.y+p.h-3;const x0=p.x0;
+    for(let q=0;q<5;q++){const ly=pa+(pb-pa)*q/4;el("line",{x1:x0,y1:ly,x2:xFim,y2:ly,stroke:COR.linha,"stroke-width":q===0||q===4?0.9:0.6,opacity:q===0||q===4?0.9:0.55},gp)}
+    el("line",{x1:x0,y1:pa,x2:x0,y2:pb,stroke:COR.tinta,"stroke-width":1.4},gp);
+    for(let m=Math.ceil((INI+off)/60)*60-off;m<=FIMm;m+=60){const x=X(m);if(x>x0)el("line",{x1:x,y1:pa,x2:x,y2:pb,stroke:COR.linha,"stroke-width":0.9},gp)}
+    if(p.k==="Maestro"){
+      // compasso de espera: as quatro horas sem commit
+      const e=F.meta.espera, xm=(x0+RW-24)/2+4;
+      el("line",{x1:RW-24,y1:pa,x2:RW-24,y2:pb,stroke:COR.tinta,"stroke-width":1},gp);
+      el("rect",{x:xm-30,y:(pa+pb)/2-4,width:60,height:8,fill:COR.tinta},gp);
+      el("line",{x1:xm-30,y1:(pa+pb)/2-9,x2:xm-30,y2:(pa+pb)/2+9,stroke:COR.tinta,"stroke-width":1.4},gp);el("line",{x1:xm+30,y1:(pa+pb)/2-9,x2:xm+30,y2:(pa+pb)/2+9,stroke:COR.tinta,"stroke-width":1.4},gp);
+      txt("4",{x:xm+(denso?40:0),y:denso?(pa+pb)/2+5:(pa+pb)/2-12,"text-anchor":"middle","font-size":16,"font-weight":600,fill:COR.tinta,"font-family":"Fraunces, Georgia, serif"},gp);
+      const tt=txt(denso?hhmm(e.de)+"–"+hhmm(e.ate):hhmm(e.de)+"–"+hhmm(e.ate)+": "+e.rotulo,{x:x0+2,y:pb+(denso?10:13),"font-size":11.5,"font-weight":600,"font-style":"italic",fill:COR.tinta2},gp);
+      el("title",{},tt).textContent="4 compassos de espera: "+hhmm(e.de)+" a "+hhmm(e.ate)+", sem commit de ticket; "+e.rotulo;
+      p.ev.forEach(m=>{const ym=pa+(denso?10:medio?11:13)+m.f*C.mae;el("line",{x1:m.x,y1:ym-(denso?9:11),x2:m.x,y2:ym+3,stroke:COR.tinta,"stroke-width":1.6},gp);
+        const t2=txt(m.rotulo,{x:m.ant?m.x-6:m.x+6,y:ym+1,"text-anchor":m.ant?"end":"start","font-size":C.maeF,"font-weight":600,"font-style":"italic",fill:COR.tinta},gp);
+        el("title",{},t2).textContent=hhmm(m.quando)+" · "+m.rotulo+(m.detalhe?": "+m.detalhe:"");bordas.push({el:t2,x:m.ant?m.x-larg(m.rotulo,600,C.maeF)-6:m.x});});
     }
-    if(s===0&&!INI) txt("16/10",{x:L-8,y:yR,"text-anchor":"end","font-size":12.5,"font-weight":800,fill:COR.tinta},g);
-    y+=46;
-    const yTopo=y;
-    const xFimSis=X(Math.min(s1,FIMm));
-    // pautas
-    const alturas=[];
-    pautas.forEach(p=>{
-      let h;
-      if(CONSTR.includes(p.k)) h=p.vozes.length*30+8;
-      else if(p.k==="Fiel"){ // linhas de eventos empacotadas
-        const filas=[];p.ev.forEach(e=>{const x=X(e.t);const w=larg(e.tk.id,700,12)+11;e.esq=x+6+w>xFimSis;const a=e.esq?x-8-w:x-6,b=e.esq?x+6:x+6+w;let f=filas.findIndex(u=>u<a-3);if(f<0){f=filas.length;filas.push(0)}filas[f]=b;e.f=f});
-        p.nf=Math.max(1,filas.length); h=p.nf*22+12;
-      } else if(p.k==="Rebite"){
-        // acordes; deslocamento para não colidir
-        let ult=-1e9;p.ev.forEach(j=>{const x=X(j.t);const notas=(j.tickets||[]).length+(j.docs?1:0);j.n=Math.max(1,notas);j.xr=x;j.xd=Math.max(x,ult+6);const wlab=Math.max(...(j.tickets||[]).map(i=>larg(i,700,12)),j.docs?larg("docs",700,12):0)+10;ult=j.xd+8+wlab});
-        const maxN=Math.max(1,...p.ev.map(j=>j.n));p.hAc=maxN*13+12; h=p.hAc+64;
-      } else if(p.k==="Maestro"){
-        const filas=[];p.ev=maestro.filter(m=>dentro(m.t,m.t)).map(m=>{const x=X(m.t);const w=larg(m.rotulo,600,12.5);const ant=x+6+w>xFimSis;const a=ant?x-6-w:x-1,b=ant?x+1:x+6+w;let f=filas.findIndex(u=>u<a-6);if(f<0){f=filas.length;filas.push(0)}filas[f]=b;return{...m,x,ant,f}});
-        p.nf=Math.max(1,filas.length);h=p.nf*19+15;
-      } else h=34;
-      alturas.push(h);
-    });
-    let yy=y;
-    // faixa das janelas quietas e da cesura (atrás das pautas)
-    const hTot=alturas.reduce((a,b)=>a+b+10,0);
-    janelas.forEach(j=>{if(!dentro(j.a,j.b))return;const a=Math.max(j.a,s0),b=Math.min(j.b,s1);
-      el("rect",{x:X(a),y:yTopo-4,width:Math.max(2,(b-a)*PX),height:hTot,fill:COR.papel,opacity:.0},g);
-      const r=el("rect",{x:X(a),y:yTopo-4,width:Math.max(2,(b-a)*PX),height:hTot,fill:"url(#hach)",opacity:1},g);
-      el("title",{},r).textContent=j.rotulo+" ("+hhmm(j.inicio)+"–"+hhmm(j.fim)+"): "+j.fora.join(", ")+" saíram para poupar memória";
-      if(j.a>=s0){const lab="janela quieta";const w=larg(lab,700,11.5)+12;
-        el("rect",{x:X(a)+2,y:yTopo-23,width:w,height:17,rx:8.5,fill:"#e6dabd"},g);
-        txt(lab,{x:X(a)+2+w/2,y:yTopo-10.5,"text-anchor":"middle","font-size":11.5,"font-weight":700,fill:COR.tinta2},g);}
-    });
-    pautas.forEach((p,i)=>{
-      const h=alturas[i];
-      const gp=el("g",{},g);
-      // nome do papel
-      const nome=movel?p.ab:p.nome;
-      txt(nome,{x:L-10,y:yy+Math.min(h/2,22)+4,"text-anchor":"end","font-size":movel?12:14,"font-weight":800,fill:CONSTR.includes(p.k)||p.k==="Lume"?COR[p.k]:COR.tinta},gp);
-      if(!movel){const papel={Maestro:"regência",Brasa:"construtora",Vela:"construtora",Trilho:"construtor",Cinzel:"construtor",Fiel:"revisor",Rebite:"integrador",Lume:"documentador"}[p.k];
-        txt(papel,{x:L-10,y:yy+Math.min(h/2,22)+19,"text-anchor":"end","font-size":11.5,"font-weight":600,fill:COR.tinta3},gp);}
-      // linhas da pauta (5)
-      const pa=yy+3,pb=yy+h-3;
-      for(let k=0;k<5;k++){const ly=pa+(pb-pa)*k/4;el("line",{x1:L,y1:ly,x2:xFimSis,y2:ly,stroke:COR.linha,"stroke-width":k===0||k===4?0.9:0.6,opacity:k===0||k===4?0.9:0.55},gp)}
-      // barras de compasso (hora)
-      for(let m=h0;m<=Math.min(s1,FIMm);m+=60) el("line",{x1:X(m),y1:pa,x2:X(m),y2:pb,stroke:COR.linha,"stroke-width":0.9},gp);
-      p.y=yy;p.h=h;
-      // ---- conteúdo
-      if(p.k==="Maestro"){
-        p.ev.forEach(m=>{
-          const x=m.x,ant=m.ant;const ym=pa+13+m.f*19;el("line",{x1:x,y1:ym-11,x2:x,y2:ym+4,stroke:COR.tinta,"stroke-width":1.6},gp);
-          const tt=txt(m.rotulo,{x:ant?x-6:x+6,y:ym+1,"text-anchor":ant?"end":"start","font-size":12.5,"font-weight":600,"font-style":"italic",fill:COR.tinta},gp);
-          el("title",{},tt).textContent=hhmm(m.quando)+" · "+m.rotulo+(m.detalhe?": "+m.detalhe:"");
-        });
-        if(ces&&dentro(ces.t,ces.t)){} // cesura desenhada abaixo, em todas as pautas
-      }
-      if(CONSTR.includes(p.k)){
-        const mapa={};p.vozes.forEach((v,k)=>mapa[v]=k);
-        tickets.filter(t=>t.construtor_principal===p.k&&dentro(t.a,t.bp)).forEach(t=>{
-          const k=mapa[t.voz]; const by=pa+5+k*30; const cor=COR[p.k];
-          const a=Math.max(t.a,s0), b=Math.min(t.b,s1); const xa=X(a), xb=t.b>=s0?Math.max(X(b),xa+3):xa;
-          const gf=el("g",{class:"frase","data-id":t.id},gp);
-          el("title",{},gf).textContent=t.id+" · "+t.titulo+" — "+t.construtor_principal;
-          el("rect",{x:xa-2,y:by-6,width:xb-xa+4,height:30,fill:"transparent"},gf);
-          if(t.b>=s0) el("rect",{class:"barra",x:xa,y:by,width:xb-xa,height:8,rx:4,fill:cor},gf);
-          if(t.bp>t.b&&t.bp>=s0&&t.b<=s1){const pa2=Math.max(t.b,s0),pb2=Math.min(t.bp,s1);
-            const lp=el("line",{x1:X(pa2)+(t.b>=s0?10:0),y1:by+4,x2:X(pb2),y2:by+4,stroke:cor,"stroke-width":2.2,"stroke-dasharray":"2 4","stroke-linecap":"round"},gf);
-            el("title",{},lp).textContent="resolvido com uma prova pendente (o Codex sem cota); fechada às "+hhmm(t.frase.pendente_ate);
-}
-          const comeca=t.a>=s0;
-          if(comeca){
-            const nasc=t.origem!=="original";
-            el("ellipse",{cx:xa+4,cy:by+4,rx:6,ry:4.6,fill:nasc?COR.papel:cor,stroke:nasc?cor:COR.papel,"stroke-width":nasc?2.2:1.4,transform:`rotate(-20 ${xa+4} ${by+4})`},gf);
-          } else {
-            el("path",{d:`M${xa-1} ${by-3} q -5 7 0 14`,fill:"none",stroke:cor,"stroke-width":1.5},gf);
-          }
-          // marcas: revisão e junção sobre a frase
-          (t.revisao||[]).forEach(r=>{if(!r.quando)return;const m=min(r.quando);if(m<s0||m>s1)return;const x=X(m);
-            const mk=el("g",{class:"marca"},gf);
-            if(r.janela){const ja=X(Math.max(min(r.janela[0]),s0)),jb=X(Math.min(min(r.janela[1]),s1));if(jb-ja>4){el("path",{d:`M${ja} ${by-1} V${by-5} H${jb} V${by-1}`,fill:"none",stroke:COR.tinta,"stroke-width":1,opacity:.7},mk)}}
-            if(r.resultado==="VOLTA"){el("rect",{x:x-6,y:by-4,width:12,height:16,fill:COR.papel},mk);sinalVolta(mk,x,by+4,0.75)}
-            else el("circle",{cx:x,cy:by+4,r:3.2,fill:COR.tinta,stroke:COR.papel,"stroke-width":1.2},mk);
-          });
-          (t.juncoes||[]).forEach(j=>{if(!j.quando)return;const m=min(j.quando);if(m<s0||m>s1)return;const x=X(m);
-            const red=j.resultado!=="verde";
-            el("path",{d:`M${x} ${by-3} l5 7 l-5 7 l-5 -7 z`,fill:red?COR.vermelho:COR.verde,stroke:COR.papel,"stroke-width":1.2},gf);
-            if(red){el("line",{x1:x-4,y1:by,x2:x+4,y2:by+8,stroke:"#fff","stroke-width":1.6},gf);el("line",{x1:x+4,y1:by,x2:x-4,y2:by+8,stroke:"#fff","stroke-width":1.6},gf)}
-          });
-          if(t.b>=s0&&t.b<=s1&&t.resolvido){el("line",{x1:xb+3,y1:by-4,x2:xb+3,y2:by+12,stroke:COR.tinta,"stroke-width":1.3},gf);el("line",{x1:xb+7,y1:by-4,x2:xb+7,y2:by+12,stroke:COR.tinta,"stroke-width":3.2},gf)}
-          // letra (rótulo)
-          const proxA=tickets.filter(o=>o!==t&&o.construtor_principal===p.k&&o.voz===t.voz&&o.a>t.a).map(o=>o.a).sort((a,b)=>a-b)[0];
-          const lim=Math.min(proxA!=null?X(Math.min(proxA,s1+9999)):1e9,xFimSis)-(xa+2)-8;
-          const base=comeca?t.rot:"("+t.id+")  "+t.titulo_curto;
-          const r=corte(base,600,tamL,Math.max(18,lim));
-          const lt=txt("",{x:xa+1,y:by+21,"font-size":tamL,fill:COR.tinta},gf);
-          const sp=r.indexOf("  ");
-          const t1=el("tspan",{"font-weight":800},lt);t1.textContent=sp>0?r.slice(0,sp):r;
-          if(sp>0){const t2=el("tspan",{"font-weight":600,fill:COR.tinta2,dx:5},lt);t2.textContent=r.slice(sp+2)}
-          if(!comeca){lt.setAttribute("font-style","italic")}
-          posFrase[t.id]=posFrase[t.id]||[];posFrase[t.id].push({s0,s1,y:by+4,X});
-        });
-      }
-      if(p.k==="Fiel"){
-        p.ev.forEach(e=>{const x=X(e.t);const fy=pa+12+e.f*22;
-          const gm=el("g",{class:"marca frase","data-id":e.tk.id},gp);
-          el("title",{},gm).textContent=hhmm(e.r.quando)+" · ticket "+e.tk.id+": "+(e.r.resultado==="VOLTA"?"volta":"passa")+(e.r.quem&&e.r.quem!=="Fiel"?" ("+e.r.quem+")":"");
-          if(e.r.resultado==="VOLTA"){sinalVolta(gm,x+3,fy,0.85);chipPrimeira(gp,"volta",x+3,pa-6,"volta")}
-          else el("circle",{cx:x,cy:fy,r:4.2,fill:COR.tinta},gm);
-          txt(e.tk.id,{x:e.esq?x-8:x+9,"text-anchor":e.esq?"end":"start",y:fy+4.5,"font-size":12,"font-weight":700,fill:COR.tinta2},gm);
-        });
-        if(fzFim>=s0&&fzFim<=s1){const x=X(fzFim);el("line",{x1:x,y1:pa,x2:x,y2:pb,stroke:COR.tinta2,"stroke-width":1,"stroke-dasharray":"3 3"},gp);
-          const lab="Fielzinho sai";txt(lab,{x:x+4,y:pb+12,"font-size":11.5,"font-weight":700,fill:COR.tinta2,"font-style":"italic"},gp)}
-      }
-      if(p.k==="Rebite"){
-        const mid=pa+p.hAc/2+2;
-        p.ev.forEach(j=>{const x=j.xd;const desf=j.resultado==="desfeita";const cor=desf?COR.vermelho:COR.verde;
-          const notas=(j.tickets||[]).map(i=>({lab:i,id:i})).concat(j.docs?[{lab:"docs",id:null}]:[]);
-          const gm=el("g",{class:"marca"},gp);
-          el("title",{},gm).textContent=hhmm(j.quando)+" · junção "+(desf?"desfeita":j.falha_alheia?"verde com 1 falha alheia, mantida":"verde")+": "+notas.map(n=>n.lab==="docs"?"documentação":"ticket "+n.lab).join(", ")+(j.suite&&j.suite.total?" · suíte "+j.suite.total+" testes ("+j.suite.verdes+" verdes, "+j.suite.pulados+" pulados, "+j.suite.falhas+(j.suite.falhas===1?" falha)":" falhas)"):"")+(j.motivo?" · "+j.motivo:"");
-          if(Math.abs(j.xd-j.xr)>1){el("path",{d:`M${j.xr} ${pa+p.hAc-1} L${x} ${mid+((j.n-1)*13)/2+5}`,stroke:cor,"stroke-width":0.9,fill:"none",opacity:.7},gm)}
-          const n=notas.length;const top=mid-(n-1)*13/2;
-          if(j.veredito){const mv=min(j.veredito);if(mv>j.t){const xv=X(Math.min(mv,s1));const yv=pa+p.hAc-1;el("line",{x1:j.xr,y1:yv,x2:xv,y2:yv,stroke:cor,"stroke-width":1.4,opacity:.65},gm);if(mv<=s1){if(desf){el("line",{x1:xv-3.5,y1:yv-3.5,x2:xv+3.5,y2:yv+3.5,stroke:cor,"stroke-width":1.8},gm);el("line",{x1:xv+3.5,y1:yv-3.5,x2:xv-3.5,y2:yv+3.5,stroke:cor,"stroke-width":1.8},gm)}else el("line",{x1:xv,y1:yv-4,x2:xv,y2:yv+4,stroke:cor,"stroke-width":1.6},gm)}}}
-          notas.forEach((nt,k)=>{const ny=top+k*13;
-            el("ellipse",{cx:x,cy:ny,rx:5.6,ry:4.2,fill:nt.id?cor:COR.papel,stroke:cor,"stroke-width":nt.id?0:1.8,transform:`rotate(-20 ${x} ${ny})`},gm);
-            const tl=txt(nt.lab,{x:x+9,y:ny+4.3,"font-size":12,"font-weight":nt.id?800:700,fill:nt.id?COR.tinta:COR.Lume,"font-style":nt.id?"normal":"italic"},gm);
-            if(nt.id){tl.classList.add("lk");tl.style.cursor="pointer";tl.addEventListener("click",ev=>{ev.stopPropagation();selecionar(nt.id)})}
-          });
-          el("line",{x1:x+5.2,y1:top-12,x2:x+5.2,y2:top+(n-1)*13,stroke:cor,"stroke-width":1.4},gm);
-          if(desf){el("line",{x1:x-9,y1:top+(n-1)*13+9,x2:x+12,y2:top-14,stroke:COR.vermelho,"stroke-width":2.4},gm);chipPrimeira(gp,"desfeita",x,pa-6,"desfeita")}
-          if(j.suite&&j.suite.total&&!desf) txt(String(j.suite.total),{x:j.xr,y:pa+p.hAc+14,"text-anchor":"middle","font-size":11.5,"font-weight":700,fill:COR.tinta3},gm);
-        });
-        // crescendo: abertura = número de testes da suíte
-        const yC=pb-17, HM=17;
-        const nAt=m=>{if(m<suite[0].t)return null;for(let q=1;q<suite.length;q++){if(m<=suite[q].t){const A=suite[q-1],B=suite[q];return A.n+(B.n-A.n)*(m-A.t)/(B.t-A.t)}}return suite[suite.length-1].n};
-        const ca=Math.max(s0,suite[0].t), cb=Math.min(s1,FIMm);let atual=nAt(cb)||0;
-        if(cb>ca){const ms=[ca,...suite.map(su=>su.t).filter(m=>m>ca&&m<cb),cb];
-          const sup=ms.map(m=>`${X(m)},${yC-HM*nAt(m)/SMAX}`), inf=ms.map(m=>`${X(m)},${yC+HM*nAt(m)/SMAX}`);
-          const pg=el("polygon",{points:sup.concat(inf.slice().reverse()).join(" "),fill:COR.verde,opacity:.16},gp);el("title",{},pg).textContent="crescendo: a abertura é o número de testes da suíte em cada junção (11 a 370), em escala";
-          el("polyline",{points:sup.join(" "),fill:"none",stroke:COR.verde,"stroke-width":1.4},gp);el("polyline",{points:inf.join(" "),fill:"none",stroke:COR.verde,"stroke-width":1.4},gp);}
-        if(atual>0&&s1>=FIMm){const lab="ff  "+atual+" testes";const xl=X(FIMm)-10;txt(lab,{x:xl,y:yC+HM+14,"text-anchor":"end","font-size":12,"font-weight":800,"font-style":"italic",fill:COR.verde},gp)}
-        if(!primeiraVez.cresc&&suite[0].t<=s1){primeiraVez.cresc=1;txt("crescendo = testes da suíte",{x:X(Math.max(s0,suite[0].t))+4,y:yC+HM+13,"font-size":11.5,"font-weight":700,"font-style":"italic",fill:COR.verde},gp)}
-      }
-      if(p.k==="Lume"){
-        const a=Math.max(lumeA,s0),b=Math.min(FIMm,s1);
-        const by=yy+h/2-4;
-        const gf=el("g",{class:"marca"},gp);
-        el("rect",{x:X(a),y:by,width:X(b)-X(a),height:8,rx:4,fill:COR.Lume},gf);
-        if(lumeA>=s0){el("ellipse",{cx:X(a)+4,cy:by+4,rx:6,ry:4.6,fill:COR.Lume,stroke:COR.papel,"stroke-width":1.4,transform:`rotate(-20 ${X(a)+4} ${by+4})`},gf);
-          txt("documentação técnica",{x:X(a)+1,y:by+21,"font-size":tamL,"font-weight":700,fill:COR.tinta},gf);}
-        (lume.levas||[]).forEach(lv=>{const m=min(lv.quando);if(m<s0||m>s1)return;const x=X(m);const red=lv.resultado!=="verde";
-          const d=el("path",{d:`M${x} ${by-3} l5 7 l-5 7 l-5 -7 z`,fill:red?COR.vermelho:COR.verde,stroke:COR.papel,"stroke-width":1.2},gf);
-          el("title",{},d).textContent=hhmm(lv.quando)+" · "+lv.rotulo;});
-        el("title",{},gf).textContent="Lume, documentador técnico, desde "+hhmm(lume.entra);
-      }
-      yy+=h+10;
-    });
-    // cesura (reinício do Maestri) atravessa as pautas
-    if(ces&&dentro(ces.t,ces.t)){const x=X(ces.t);
-      const gc=el("g",{},g);
-      pautas.forEach(p=>{[0,6].forEach(d=>el("line",{x1:x-4+d,y1:p.y+p.h*0.25+6,x2:x+2+d,y2:p.y+p.h*0.25-8,stroke:COR.tinta,"stroke-width":2.4},gc))});
-      {const lab="reinício do Maestri";const w=larg(lab,700,11.5)+12;chipPrimeira(gc,"reinicio",x+8+w/2,yTopo-14,lab);}
-      el("title",{},gc).textContent=hhmm(ces.quando)+" · "+ces.rotulo;
+    if(CONSTR.includes(p.k)){
+      tickets.filter(t=>t.construtor_principal===p.k).forEach(t=>{
+        const by=pa+(denso?4:5)+t.voz*C.lane, cor=COR[p.k], xa=X(t.a), xb=Math.max(X(t.b),xa+3);
+        const gf=el("g",{class:"frase","data-id":t.id},gp);
+        el("title",{},gf).textContent=t.id+" · "+t.titulo+" — "+t.construtor_principal;
+        el("rect",{x:xa-2,y:by-6,width:xb-xa+4,height:C.lane,fill:"transparent"},gf);
+        el("rect",{class:"barra",x:xa,y:by,width:xb-xa,height:8,rx:4,fill:cor},gf);
+        if(t.bp>t.b){const lp=el("line",{x1:xb+10,y1:by+4,x2:X(t.bp),y2:by+4,stroke:cor,"stroke-width":2.2,"stroke-dasharray":"2 4","stroke-linecap":"round"},gf);
+          el("title",{},lp).textContent="resolvido com uma prova pendente (o Codex sem cota); fechada às "+hhmm(t.frase.pendente_ate);}
+        const nasc=t.origem!=="original";
+        if(!denso) el("ellipse",{cx:xa+4,cy:by+4,rx:6,ry:4.6,fill:nasc?COR.papel:cor,stroke:nasc?cor:COR.papel,"stroke-width":nasc?2.2:1.4,transform:`rotate(-20 ${xa+4} ${by+4})`},gf);
+        (t.revisao||[]).forEach(r=>{if(!r.quando)return;const x=X(min(r.quando));const mk=el("g",{class:"marca"},gf);
+          if(r.janela){const ja=X(min(r.janela[0])),jb=X(min(r.janela[1]));if(jb-ja>4)el("path",{d:`M${ja} ${by-1} V${by-5} H${jb} V${by-1}`,fill:"none",stroke:COR.tinta,"stroke-width":1,opacity:.7},mk)}
+          if(r.resultado==="VOLTA"){el("rect",{x:x-6,y:by-4,width:12,height:16,fill:COR.papel},mk);sinalVolta(mk,x,by+4,0.75)}
+          else el("circle",{cx:x,cy:by+4,r:3.2,fill:COR.tinta,stroke:COR.papel,"stroke-width":1.2},mk);});
+        (t.juncoes||[]).forEach(j=>{if(!j.quando)return;const x=X(min(j.quando));const red=j.resultado!=="verde";
+          el("path",{d:`M${x} ${by-3} l5 7 l-5 7 l-5 -7 z`,fill:red?COR.vermelho:COR.verde,stroke:COR.papel,"stroke-width":1.2},gf);
+          if(red){el("line",{x1:x-4,y1:by,x2:x+4,y2:by+8,stroke:"#fff","stroke-width":1.6},gf);el("line",{x1:x+4,y1:by,x2:x-4,y2:by+8,stroke:"#fff","stroke-width":1.6},gf)}});
+        if(t.resolvido){el("line",{x1:xb+3,y1:by-4,x2:xb+3,y2:by+12,stroke:COR.tinta,"stroke-width":1.3},gf);el("line",{x1:xb+7,y1:by-4,x2:xb+7,y2:by+12,stroke:COR.tinta,"stroke-width":3.2},gf)}
+        if(denso){const wp=larg(t.id,800,10.5)+10;const gpl=el("g",{},gf);el("rect",{x:xa-2,y:by-2,width:wp,height:12,rx:6,fill:nasc?COR.papel:cor,stroke:cor,"stroke-width":1.6},gpl);
+          txt(t.id,{x:xa-2+wp/2,y:by+8,"text-anchor":"middle","font-size":10.5,"font-weight":800,fill:nasc?cor:"#fff"},gpl);
+          letras.push({el:gpl,xa:xa-2,xmax:X(t.bp)-wp-8});t.y=by+4;return;}
+        const prox=tickets.filter(o=>o!==t&&o.construtor_principal===p.k&&o.voz===t.voz&&o.a>t.a).map(o=>o.a).sort((a,b)=>a-b)[0];
+        const lim=(prox!=null?X(prox):xFim+60)-(xa+2)-8;
+        const r=corte(t.rot,600,tamL,Math.max(18,lim));
+        const lt=txt("",{x:xa+1,y:by+C.ly,"font-size":tamL,fill:COR.tinta},gf);const sp=r.indexOf("  ");
+        const t1=el("tspan",{"font-weight":800},lt);t1.textContent=sp>0?r.slice(0,sp):r;
+        if(sp>0){const t2=el("tspan",{"font-weight":600,fill:COR.tinta2,dx:5},lt);t2.textContent=r.slice(sp+2)}
+        letras.push({el:lt,xa:xa+1,xmax:Math.min(X(t.bp)-40,(prox!=null?X(prox):xFim+60)-10-larg(r,700,tamL))});
+        t.y=by+4;});
     }
-    // chaves de sistema: barra inicial e, no fim da obra, barra dupla
-    el("line",{x1:L,y1:yTopo,x2:L,y2:yy-10,stroke:COR.tinta,"stroke-width":1.6},g);
-    if(s1>=FIMm){const x=X(FIMm);el("line",{x1:x,y1:yTopo,x2:x,y2:yy-10,stroke:COR.tinta,"stroke-width":1.4},g);el("line",{x1:x+5,y1:yTopo,x2:x+5,y2:yy-10,stroke:COR.tinta,"stroke-width":4},g);
-      txt("fim · "+hhmm(F.meta.fim),{x:x+2,y:yTopo-8,"text-anchor":"end","font-size":12.5,"font-weight":800,fill:COR.tinta},g);}
-    // fermatas: quem saiu na janela quieta
-    janelas.forEach(j=>{if(j.a<s0||j.a>s1)return;const x=X(j.a)+ (movel?10:14);
-      pautas.forEach(p=>{if(j.fora.includes(p.k)) {fermata(g,x,p.y+2,0.8)}});});
-    y=yy+ (movel?26:30);
-  }
-  // ---- ligaduras (bloqueios)
+    if(p.k==="Fiel"){
+      rev.forEach(e=>{const x=X(e.t);const fy=pa+(denso?6:medio?9:12)+e.f*C.fiel;const gm=el("g",{class:"marca frase","data-id":e.tk.id},gp);bordas.push({el:gm,x:e.esq?x-30:x-6});
+        el("title",{},gm).textContent=hhmm(e.r.quando)+" · ticket "+e.tk.id+": "+(e.r.resultado==="VOLTA"?"volta":"passa")+(e.r.quem&&e.r.quem!=="Fiel"?" ("+e.r.quem+")":"");
+        if(e.r.resultado==="VOLTA"){sinalVolta(gm,x+3,fy,denso?0.6:0.85);if(!denso)chip(gp,"volta",x+3,pa-7,"volta",true)}
+        else el("circle",{cx:x,cy:fy,r:denso?3:4.2,fill:COR.tinta},gm);
+        if(!denso)txt(e.tk.id,{x:e.esq?x-8:x+9,"text-anchor":e.esq?"end":"start",y:fy+4,"font-size":C.fl,"font-weight":700,fill:COR.tinta2},gm);});
+      const x=X(fzFim);el("line",{x1:x,y1:pa,x2:x,y2:pb,stroke:COR.tinta2,"stroke-width":1,"stroke-dasharray":"3 3"},gp);
+      if(!denso)txt("Fielzinho sai",{x:x+4,y:pb+12,"font-size":11.5,"font-weight":700,fill:COR.tinta2,"font-style":"italic"},gp);
+    }
+    if(p.k==="Rebite"){
+      const mid=pa+p.hAc/2+2;
+      jun.forEach(j=>{const x=j.xd;const desf=j.resultado==="desfeita";const cor=desf?COR.vermelho:COR.verde;
+        const notas=(j.tickets||[]).map(i=>({lab:i,id:i})).concat(j.docs?[{lab:"docs",id:null}]:[]);
+        const gm=el("g",{class:"marca"},gp);bordas.push({el:gm,x:x-8});
+        el("title",{},gm).textContent=hhmm(j.quando)+" · junção "+(desf?"desfeita":j.falha_alheia?"verde com 1 falha alheia, mantida":"verde")+": "+notas.map(n=>n.lab==="docs"?"documentação":"ticket "+n.lab).join(", ")+(j.suite&&j.suite.total?" · suíte "+j.suite.total+" testes ("+j.suite.verdes+" verdes, "+j.suite.pulados+" pulados, "+j.suite.falhas+(j.suite.falhas===1?" falha)":" falhas)"):"")+(j.motivo?" · "+j.motivo:"");
+        const n=notas.length;const top=mid-(n-1)*C.nota/2;
+        if(Math.abs(j.xd-j.xr)>1)el("path",{d:`M${j.xr} ${pa+p.hAc-1} L${x} ${top+(n-1)*C.nota+5}`,stroke:cor,"stroke-width":0.9,fill:"none",opacity:.7},gm);
+        if(j.veredito){const mv=min(j.veredito);if(mv>j.t){const xv=X(mv);const yv=pa+p.hAc-1;el("line",{x1:j.xr,y1:yv,x2:xv,y2:yv,stroke:cor,"stroke-width":1.4,opacity:.65},gm);
+          if(desf){el("line",{x1:xv-3.5,y1:yv-3.5,x2:xv+3.5,y2:yv+3.5,stroke:cor,"stroke-width":1.8},gm);el("line",{x1:xv+3.5,y1:yv-3.5,x2:xv-3.5,y2:yv+3.5,stroke:cor,"stroke-width":1.8},gm)}else el("line",{x1:xv,y1:yv-4,x2:xv,y2:yv+4,stroke:cor,"stroke-width":1.6},gm)}}
+        notas.forEach((nt,q)=>{const ny=top+q*C.nota;
+          el("ellipse",{cx:x,cy:ny,rx:denso?4.4:5.6,ry:denso?3.3:4.2,fill:nt.id?cor:COR.papel,stroke:cor,"stroke-width":nt.id?0:1.8,transform:`rotate(-20 ${x} ${ny})`},gm);
+          if(denso)return;
+          const tl=txt(nt.lab,{x:x+9,y:ny+4,"font-size":C.fl,"font-weight":nt.id?800:700,fill:nt.id?COR.tinta:COR.Lume,"font-style":nt.id?"normal":"italic"},gm);
+          if(nt.id){tl.style.cursor="pointer";tl.addEventListener("click",ev=>{ev.stopPropagation();selecionar(nt.id)})}});
+        el("line",{x1:x+(denso?4:5.2),y1:top-(denso?8:12),x2:x+(denso?4:5.2),y2:top+(n-1)*C.nota,stroke:cor,"stroke-width":1.4},gm);
+        if(desf){el("line",{x1:x-9,y1:top+(n-1)*C.nota+9,x2:x+12,y2:top-14,stroke:COR.vermelho,"stroke-width":2.4},gm);if(!denso)chip(gp,"desfeita",x,pa-7,"desfeita",true)}
+        if(j.suite&&j.suite.total&&!desf&&!denso)txt(String(j.suite.total),{x:j.xr,y:pa+p.hAc+14,"text-anchor":"middle","font-size":11.5,"font-weight":700,fill:COR.tinta3},gm);});
+      // crescendo: abertura = testes da suíte
+      const yC=pb-(denso?10:medio?14:17), HM=denso?9:medio?13:17;
+      const nAt=m=>{for(let q=1;q<suite.length;q++){if(m<=suite[q].t){const A=suite[q-1],B=suite[q];return A.n+(B.n-A.n)*(m-A.t)/(B.t-A.t)}}return suite[suite.length-1].n};
+      const ms=suite.map(su=>su.t).concat([FIMm]);
+      const sup=ms.map(m=>`${X(m)},${yC-HM*nAt(m)/SMAX}`), inf=ms.map(m=>`${X(m)},${yC+HM*nAt(m)/SMAX}`);
+      const pg=el("polygon",{points:sup.concat(inf.slice().reverse()).join(" "),fill:COR.verde,opacity:.16},gp);el("title",{},pg).textContent="crescendo: a abertura é o número de testes da suíte em cada junção (11 a 370), em escala";
+      el("polyline",{points:sup.join(" "),fill:"none",stroke:COR.verde,"stroke-width":1.4},gp);el("polyline",{points:inf.join(" "),fill:"none",stroke:COR.verde,"stroke-width":1.4},gp);
+      if(!denso)txt("crescendo = testes da suíte",{x:X(suite[0].t)+4,y:yC+HM+12,"font-size":11.5,"font-weight":700,"font-style":"italic",fill:COR.verde},gp);
+      txt("ff  "+suite[suite.length-1].n+" testes",{x:denso?xFim+10:xFim-10,y:denso?yC+4:yC+HM+14,"text-anchor":denso?"start":"end","font-size":denso?11:12,"font-weight":800,"font-style":"italic",fill:COR.verde},gp);
+    }
+    if(p.k==="Lume"){
+      const by=p.y+p.h/2-(denso?3:4);const gf=el("g",{class:"marca"},gp);const xa=X(lumeA);
+      el("rect",{x:xa,y:by,width:xFim-xa,height:8,rx:4,fill:COR.Lume},gf);
+      el("ellipse",{cx:xa+4,cy:by+4,rx:6,ry:4.6,fill:COR.Lume,stroke:COR.papel,"stroke-width":1.4,transform:`rotate(-20 ${xa+4} ${by+4})`},gf);
+      txt("documentação técnica",{x:denso?xa-8:xa+1,y:denso?by+7:by+21,"text-anchor":denso?"end":"start","font-size":denso?11:tamL,"font-weight":700,fill:COR.tinta},gf);
+      (lume.levas||[]).forEach(lv=>{const x=X(min(lv.quando));const red=lv.resultado!=="verde";
+        const d=el("path",{d:`M${x} ${by-3} l5 7 l-5 7 l-5 -7 z`,fill:red?COR.vermelho:COR.verde,stroke:COR.papel,"stroke-width":1.2},gf);
+        el("title",{},d).textContent=hhmm(lv.quando)+" · "+lv.rotulo;});
+      el("title",{},gf).textContent="Lume, documentador técnico, desde "+hhmm(lume.entra);
+    }
+  });
+  // cesura: reinício do Maestri, em todas as pautas
+  if(ces){const x=X(ces.t);const gc=el("g",{},gMain);
+    P.forEach(p=>{if(x>p.x0)[0,6].forEach(d=>el("line",{x1:x-4+d,y1:p.y+Math.min(p.h*0.25,14)+6,x2:x+2+d,y2:p.y+Math.min(p.h*0.25,14)-8,stroke:COR.tinta,"stroke-width":2.4},gc))});
+    const w=larg("reinício do Maestri",700,11.5)+12;chip(gc,null,x+10+w/2,C.chip,"reinício do Maestri",true);
+    el("title",{},gc).textContent=hhmm(ces.quando)+" · "+ces.rotulo;}
+  // fermatas: quem saiu em cada janela quieta
+  janelas.forEach(j=>{const x=X(j.a)+14;P.forEach(p=>{if(j.fora.includes(p.k))fermata(gMain,x,p.y+2,0.8)})});
+  // barra dupla final
+  el("line",{x1:xFim,y1:yTopo,x2:xFim,y2:yBase,stroke:COR.tinta,"stroke-width":1.4},gMain);el("line",{x1:xFim+5,y1:yTopo,x2:xFim+5,y2:yBase,stroke:COR.tinta,"stroke-width":4},gMain);
+  txt("fim · "+hhmm(F.meta.fim),{x:xFim+2,y:C.chip+4,"text-anchor":"end","font-size":12.5,"font-weight":800,fill:COR.tinta},gMain);
+  // ligaduras (bloqueios): do fim do bloqueador ao ponto do dependente na mesma hora
   svg.appendChild(gLig);
-  function ponto(id,m){const ps=posFrase[id];if(!ps)return null;let p=ps.find(q=>m>=q.s0&&m<=q.s1);if(!p){p=m<ps[0].s0?ps[0]:ps[ps.length-1];m=Math.max(p.s0,Math.min(p.s1,m))}return{x:p.X(m),y:p.y}}
-  F.tickets.forEach(t=>(t.blocked_by||[]).forEach(b=>{
-    const B=TK[b];if(!B||!B.frase||!t.frase||!B.frase.fim)return;
-    const mb=min(B.frase.fim), md=Math.max(mb,min(t.frase.ini));
-    const p1=ponto(b,mb), p2=ponto(t.id,md);if(!p1||!p2)return;
-    const dy=Math.abs(p2.y-p1.y);const c=Math.max(30,dy*0.35);
-    const d=`M${p1.x+8} ${p1.y} C ${p1.x+8+c} ${p1.y}, ${p2.x-c} ${p2.y}, ${p2.x} ${p2.y}`;
-    el("path",{d,class:"lig extra","data-a":b,"data-b":t.id},gLig);
-  }));
-  svg.setAttribute("height",y);
+  const ponto=(id,m)=>{const t=TK[id];if(!t||t.y==null)return null;return{x:X(Math.max(t.a,Math.min(t.bp,m))),y:t.y}};
+  F.tickets.forEach(t=>(t.blocked_by||[]).forEach(b=>{const B=TK[b];if(!B||!B.frase||!t.frase)return;
+    const mb=min(B.frase.fim);const p1=ponto(b,mb),p2=ponto(t.id,Math.max(mb,min(t.frase.ini)));if(!p1||!p2)return;
+    const c=Math.max(30,Math.abs(p2.y-p1.y)*0.35);
+    el("path",{d:`M${p1.x+8} ${p1.y} C ${p1.x+8+c} ${p1.y}, ${p2.x-c} ${p2.y}, ${p2.x} ${p2.y}`,class:"lig","data-a":b,"data-b":t.id},gLig);}));
   const defs=el("defs",{},svg);const pat=el("pattern",{id:"hach",width:7,height:7,patternUnits:"userSpaceOnUse",patternTransform:"rotate(45)"},defs);
   el("rect",{width:7,height:7,fill:"#efe5cf"},pat);el("line",{x1:0,y1:0,x2:0,y2:7,stroke:"#ddd0b2","stroke-width":2.4},pat);
+  // coluna fixa com os nomes das pautas (mesma escala)
+  const sn=el("svg",{viewBox:`0 0 ${LN} ${Htot}`,width:LN*k,height:Htot*k,"aria-hidden":"true"},nomesBox);
+  nomesBox.style.width=LN*k+"px";
+  G.dia=txt("16/10",{x:LN-8,y:C.regua,"text-anchor":"end","font-size":12.5,"font-weight":800,fill:COR.tinta},sn);
+  P.forEach(p=>{const yc=p.y+Math.min(p.h/2,denso?10:medio?16:22);
+    txt(movel||denso?p.ab:p.nome,{x:LN-8,y:yc+4,"text-anchor":"end","font-size":denso?12:movel?12.5:14,"font-weight":800,fill:CONSTR.includes(p.k)||p.k==="Lume"?COR[p.k]:COR.tinta},sn);
+    if(!movel&&!denso&&!medio)txt(p.papel,{x:LN-8,y:yc+19,"text-anchor":"end","font-size":11.5,"font-weight":600,fill:COR.tinta3},sn);});
   svg.querySelectorAll(".frase").forEach(f=>f.addEventListener("click",ev=>{ev.stopPropagation();selecionar(f.dataset.id)}));
   svg.addEventListener("click",()=>selecionar(null));
-  aplicar();
+  aplicar();prender();
 }
+// letra presa à borda esquerda visível enquanto a frase está na tela; dia do trecho visível
+function prender(){
+  if(!G||!G.letras)return;
+  const vl=(rolo.scrollLeft-pPart.offsetLeft)/G.k+6;   // borda esquerda visível, em coordenadas da partitura
+  G.letras.forEach(L=>{const dx=Math.max(0,Math.min(vl-L.xa,L.xmax-L.xa));L.el.setAttribute("transform",dx>0?`translate(${dx.toFixed(1)},0)`:"");
+    L.el.style.visibility=(vl>L.xa+2&&vl>L.xmax+2)?"hidden":""});   // começo sob a coluna dos nomes: some em vez de aparecer cortada
+  G.bordas.forEach(B=>{B.el.style.visibility=B.x<vl-8?"hidden":""});
+  if(G.dia){const m=INI+(vl-G.RW)/G.PX;G.dia.textContent=(T0+m)>=Date.UTC(2026,9,17)/60000?"17/10":"16/10"}
+}
+let pedido=false;
+rolo.addEventListener("scroll",()=>{if(!pedido){pedido=true;requestAnimationFrame(()=>{pedido=false;prender()})}},{passive:true});
 function aplicar(){
   const svg=box.querySelector("svg");if(!svg)return;
-  svg.classList.toggle("todas",estado.todas);
-  svg.classList.toggle("apagado",!!estado.sel);
+  svg.classList.toggle("todas",estado.todas);svg.classList.toggle("apagado",!!estado.sel);
   svg.querySelectorAll(".sel").forEach(e=>e.classList.remove("sel"));
-  if(estado.sel){
-    const ids=new Set([estado.sel,...(TK[estado.sel].blocked_by||[]),...(dependentes[estado.sel]||[])]);
+  if(estado.sel){const ids=new Set([estado.sel,...(TK[estado.sel].blocked_by||[]),...(dependentes[estado.sel]||[])]);
     svg.querySelectorAll(".frase").forEach(f=>{if(ids.has(f.dataset.id))f.classList.add("sel")});
-    svg.querySelectorAll(".lig").forEach(l=>{if(l.dataset.a===estado.sel||l.dataset.b===estado.sel)l.classList.add("sel")});
-  }
+    svg.querySelectorAll(".lig").forEach(l=>{if(l.dataset.a===estado.sel||l.dataset.b===estado.sel)l.classList.add("sel")});}
 }
 function selecionar(id){estado.sel=id;aplicar();id?abrir(id):fechar()}
+function irPara(m){if(!G)return;rolo.scrollTo({left:pPart.offsetLeft+(G.X(m)-60)*G.k,behavior:"smooth"})}
+function mostrar(id){const t=TK[id];if(t&&t.a!=null)irPara(t.a);selecionar(id)}
 document.getElementById("btLig").addEventListener("click",e=>{estado.todas=!estado.todas;e.currentTarget.setAttribute("aria-pressed",estado.todas);aplicar()});
+// pular para uma hora
+[["19h","2026-10-16T19:00"],["0h","2026-10-17T00:00"],["6h","2026-10-17T06:00"],["12h","2026-10-17T12:00"],["18h","2026-10-17T18:00"]].forEach(([r,q])=>{
+  const b=document.createElement("button");b.textContent=r;b.addEventListener("click",()=>irPara(min(q)));document.getElementById("pular").appendChild(b)});
+{const b=document.createElement("button");b.textContent="o fio do fim";b.addEventListener("click",()=>rolo.scrollTo({left:document.getElementById("pFio").offsetLeft,behavior:"smooth"}));document.getElementById("pular").appendChild(b)}
+// a roda do mouse anda para o lado
+rolo.addEventListener("wheel",e=>{if(Math.abs(e.deltaY)>Math.abs(e.deltaX)){rolo.scrollLeft+=e.deltaY;e.preventDefault()}},{passive:false});
 
 // ---------- cartão ----------
 const cart=document.getElementById("cartao"), cartC=document.getElementById("cartaoC");
 cart.querySelector(".x").addEventListener("click",()=>selecionar(null));
+cart.addEventListener("wheel",e=>e.stopPropagation(),{passive:true});
 function abrir(id){
   const t=TK[id];const cor=COR[t.construtor_principal]||COR.tinta;
   const linhas=[];
@@ -507,14 +440,14 @@ function abrir(id){
   const voltas=(t.revisao||[]).filter(r=>r.resultado==="VOLTA").length;
   const orig=t.origem==="original"?`<span class="chip">do plano</span>`:`<span class="chip" style="background:none;border:1.5px solid ${cor}">nasceu do ${t.origem.nasceu_de?("ticket "+t.origem.nasceu_de):"caminho"}</span>`;
   cartC.innerHTML=`<div class="n" style="color:${cor}">${t.id}</div><h2>${t.titulo}</h2>
-  <div class="chips"><span class="chip cor" style="background:${cor}">${(t.construtores||[t.construtor_principal]).join(" e ")}</span>${orig}<span class="chip">${voltas} ${voltas===1?"volta":"voltas"}</span></div>
+  <div class="chips">${t.construtor_principal?`<span class="chip cor" style="background:${cor}">${(t.construtores||[t.construtor_principal]).join(" e ")}</span>`:""}${orig}<span class="chip">${voltas} ${voltas===1?"volta":"voltas"}</span></div>
   ${t.entrega_curta?`<p class="ent">${t.entrega_curta}</p>`:""}
   ${t.origem!=="original"&&t.origem.motivo?`<h3>De onde nasceu</h3><p class="mom">${t.origem.motivo}</p>`:""}
   <h3>Caminho</h3>${semH.length?`<p class="mom">Sem hora certa na fonte: ${semH.map(r=>"rodada "+(r.rodada||"")+" ("+(r.resultado==="VOLTA"?"volta":"passa")+")").join(", ")}.</p>`:""}<ol>${linhas.map(l=>`<li class="${l.c}"><span class="h">${dia(l.t)}${hhmm(l.t)}</span>${l.s}</li>`).join("")}</ol>
   ${(t.blocked_by||[]).length?`<h3>Esperava</h3><div class="chips">${t.blocked_by.map(b=>`<span class="chip lk" data-id="${b}">${b} ${TK[b]?TK[b].titulo_curto:""}</span>`).join("")}</div>`:""}
   ${(dependentes[id]||[]).length?`<h3>Segurava</h3><div class="chips">${dependentes[id].map(b=>`<span class="chip lk" data-id="${b}">${b} ${TK[b].titulo_curto}</span>`).join("")}</div>`:""}
   ${(t.momentos||[]).length?`<h3>Momentos</h3>${t.momentos.map(m=>`<p class="mom">${m.quando?`<b>${dia(m.quando)}${hhmm(m.quando)}</b> · `:""}${m.texto}</p>`).join("")}`:""}`;
-  cartC.querySelectorAll(".lk").forEach(c=>c.addEventListener("click",()=>selecionar(c.dataset.id)));
+  cartC.querySelectorAll(".lk").forEach(c=>c.addEventListener("click",()=>mostrar(c.dataset.id)));
   cart.classList.add("aberto");
 }
 function fechar(){cart.classList.remove("aberto")}
@@ -523,48 +456,61 @@ document.addEventListener("keydown",e=>{if(e.key==="Escape")selecionar(null)});
 // ---------- o acorde final ----------
 function fim(){
   const porC=CONSTR.map(c=>{const ts=F.tickets.filter(t=>t.construtor_principal===c);return{c,ts,voltas:ts.reduce((a,t)=>a+(t.revisao||[]).filter(r=>r.resultado==="VOLTA").length,0)}});
-  const E=F.equipe;
   document.getElementById("fim").innerHTML=`<h2>O acorde final</h2><p class="sub">${F.meta.acorde_final}</p>
   <div class="naipes">${porC.map(p=>`<div class="naipe" style="--c:${COR[p.c]}"><div class="q" style="color:${COR[p.c]}">${p.c}</div><div class="p">construtor${p.c==="Brasa"||p.c==="Vela"?"a":""}</div>
    <div class="big">${p.ts.length}<small>tickets · ${p.voltas} ${p.voltas===1?"volta":"voltas"}</small></div>
-   <div class="lst">${p.ts.map(t=>`<span class="${t.origem!=="original"?"nasc":""}" data-id="${t.id}" title="${t.titulo}">${t.id}</span>`).join("")}</div></div>`).join("")}</div>
-  <div class="equipe">${E.map(e=>`<div class="naipe"><div class="q">${e.nome}</div><div class="p">${e.papel}</div><div class="big">${e.v}<small>${e.r}</small></div><div class="p" style="margin:8px 0 0">${e.d}</div></div>`).join("")}</div>
-  <p class="coda">${F.meta.coda}</p>`;
-  document.querySelectorAll(".lst span").forEach(s=>s.addEventListener("click",()=>{selecionar(s.dataset.id);const ps=box.querySelector(`.frase[data-id="${s.dataset.id}"]`);if(ps)ps.scrollIntoView({behavior:"smooth",block:"center"})}));
-  document.getElementById("rodape").textContent=F.meta.rodape;
+   <div class="lst">${p.ts.map(t=>`<span class="${t.origem!=="original"?"nasc":""}" data-id="${t.id}" title="${t.titulo}">${t.id}</span>`).join("")}</div></div>`).join("")}
+  ${F.equipe.map(e=>`<div class="naipe"><div class="q">${e.nome}</div><div class="p">${e.papel}</div><div class="big">${e.v}<small>${e.r}</small></div><div class="p" style="margin:6px 0 0">${e.d}</div></div>`).join("")}</div>
+  <p class="coda">${F.meta.coda}</p><p class="rodape">${F.meta.rodape}</p>`;
+  document.querySelectorAll(".lst span").forEach(s=>s.addEventListener("click",()=>mostrar(s.dataset.id)));
 }
 function reducao(){
-  const box2=document.getElementById("redSvg");const W=box2.clientWidth;const movel=W<700;
-  const L=movel?0:112,R=movel?6:18;const PX=(W-L-R)/(30*60);const X=m=>L+m*PX;
-  const ids=F.meta.cadeia_fim;const RH=movel?40:38;
+  const box2=document.getElementById("redSvg");const movel=innerWidth<700;const W=movel?640:940;
+  const PXr=(W-14)/(FIMm-INI);const X=m=>4+(m-INI)*PXr;
+  const ids=F.meta.cadeia_fim;const RH=innerHeight<620?29:38;
   box2.innerHTML="";const svg=el("svg",{width:W,height:28+ids.length*RH+10,role:"img","aria-label":"Cadeia de bloqueios que segurou o fechamento"},box2);
   const off=T0%60;
-  for(let m=Math.ceil(off/60)*60-off+ (60-off)%60*0;m<=30*60;m+=60){const h=Math.round((T0+m)/60)%24;if(m<0)continue;
-    const forte=h%6===0;el("line",{x1:X(m),y1:20,x2:X(m),y2:28+ids.length*RH,stroke:COR.linha,"stroke-width":forte?1:0.5},svg);
-    if(forte||(!movel&&h%2===0))txt(h===0?"0h":h+"h",{x:X(m),y:13,"text-anchor":"middle","font-size":12,"font-weight":h===0?800:700,fill:h===0?COR.tinta:COR.tinta2},svg)}
+  for(let m=Math.ceil((INI+off)/60)*60-off;m<=FIMm;m+=60){const h=Math.round((T0+m)/60)%24;const forte=h%6===0;
+    el("line",{x1:X(m),y1:20,x2:X(m),y2:28+ids.length*RH,stroke:COR.linha,"stroke-width":forte?1:0.5},svg);
+    if(forte||h%2===0)txt(h===0?"0h":h+"h",{x:X(m),y:13,"text-anchor":"middle","font-size":12,"font-weight":h===0?800:700,fill:h===0?COR.tinta:COR.tinta2},svg)}
   let prev=null;
-  ids.forEach((id,k)=>{const t=TK[id];const a=min(t.frase.ini),b=min(t.frase.fim),bp=t.frase.pendente_ate?min(t.frase.pendente_ate):b;
-    const y=30+k*RH;const cor=COR[t.construtor_principal];
+  ids.forEach((id,q)=>{const t=TK[id];const a=min(t.frase.ini),b=min(t.frase.fim),bp=t.frase.pendente_ate?min(t.frase.pendente_ate):b;
+    const y=30+q*RH;const cor=COR[t.construtor_principal];
     const g=el("g",{class:"frase","data-id":id,style:"cursor:pointer"},svg);
     el("title",{},g).textContent=id+" · "+t.titulo+" — "+t.construtor_principal;
     el("rect",{x:X(a),y,width:Math.max(4,X(b)-X(a)),height:9,rx:4.5,fill:cor},g);
     if(bp>b)el("line",{x1:X(b)+4,y1:y+4.5,x2:X(bp),y2:y+4.5,stroke:cor,"stroke-width":2,"stroke-dasharray":"2 4","stroke-linecap":"round"},g);
     el("line",{x1:X(b)+3,y1:y-3,x2:X(b)+3,y2:y+12,stroke:COR.tinta,"stroke-width":1.2},g);el("line",{x1:X(b)+6.5,y1:y-3,x2:X(b)+6.5,y2:y+12,stroke:COR.tinta,"stroke-width":3},g);
-    const rot=id+"  "+t.titulo_curto;const w=larg(rot,600,12.5);
-    const dir=X(a)+w+4<W-R;const lx=dir?X(a):Math.max(0,X(b)-w);
+    const rot=id+"  "+t.titulo_curto+" · "+t.construtor_principal;const w=larg(rot,600,12.5)+8;
+    const lx=X(a)+w<W?X(a):Math.max(0,W-w);
     const lt=txt("",{x:lx,y:y+24,"font-size":12.5,fill:COR.tinta},g);const t1=el("tspan",{"font-weight":800},lt);t1.textContent=id;const t2=el("tspan",{"font-weight":600,fill:COR.tinta2,dx:5},lt);t2.textContent=t.titulo_curto+" · "+t.construtor_principal;
-    if(prev){const pb=min(prev.frase.fim);const x1=X(pb)+7,y1=y-RH+4.5;const mx=Math.max(pb,a);const x2=X(mx),y2=y+4.5;
+    if(prev){const pb=min(prev.frase.fim);const x1=X(pb)+7,y1=y-RH+4.5;const x2=X(Math.max(pb,a)),y2=y+4.5;
       el("path",{d:`M${x1} ${y1} C ${x1+24} ${y1}, ${x2-24} ${y2}, ${x2} ${y2}`,fill:"none",stroke:COR.tinta,"stroke-width":1.5},svg);}
     prev=t;});
-  svg.querySelectorAll(".frase").forEach(f=>f.addEventListener("click",()=>selecionar(f.dataset.id)));
+  svg.querySelectorAll(".frase").forEach(f=>f.addEventListener("click",()=>mostrar(f.dataset.id)));
 }
-let lw=0;
-function talvez(){const w=box.clientWidth;if(w!==lw){lw=w;desenhar();reducao()}}
+// cada painel de texto cabe na altura da janela (sem rolar para baixo)
+function caber(){
+  const H=rolo.clientHeight;
+  // abertura: em tela baixa, colunas lado a lado em vez de encolher
+  const ab=document.querySelector("#pAbre .dentro");const colW=innerWidth<700?340:400;
+  ab.style.zoom=1;ab.style.columnCount="";ab.style.width="";
+  for(let n=1;n<=4;n++){if(n>1){ab.style.columnCount=n;ab.style.width=(n*colW+(n-1)*28+40)+"px"}if(ab.scrollHeight<=H)break}
+  // acorde final: os oito cartões numa linha só quando a tela é baixa
+  document.querySelector(".naipes").classList.toggle("linha",H<620);
+  document.querySelectorAll(".painel > .dentro").forEach(d=>{d.style.zoom=1;const need=d.scrollHeight;if(need>H)d.style.zoom=(H/need).toFixed(3)})}
+function tudo(){caber();desenhar();reducao();caber()}
+let lw=0,lh=0;
+function talvez(){if(innerWidth!==lw||innerHeight!==lh){lw=innerWidth;lh=innerHeight;tudo()}}
 let comecou=false;
-function comecar(){if(comecou)return;comecou=true;fim();desenhar();reducao();lw=box.clientWidth;const h=/#t=(\d+)/.exec(location.hash);if(h&&TK[h[1]])selecionar(h[1]);
+function comecar(){if(comecou)return;comecou=true;fim();tudo();lw=innerWidth;lh=innerHeight;
+  const h=/#t=(\d+)/.exec(location.hash);if(h&&TK[h[1]])selecionar(h[1]);
+  const v=/#ver=([\w-]+)/.exec(location.hash);if(v){const alvo=document.getElementById(v[1]);if(alvo)rolo.scrollLeft=alvo.offsetLeft}
+  const hm=/#hora=(\d+)/.exec(location.hash);if(hm&&G)rolo.scrollLeft=pPart.offsetLeft+(G.X(+hm[1])-60)*G.k;
+  prender();
   window.addEventListener("resize",()=>{clearTimeout(window._r);window._r=setTimeout(talvez,150)})}
 setTimeout(comecar,1500);
-if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>{if(comecou){desenhar();reducao();aplicar()}else comecar()});else comecar();
+if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>{if(comecou){tudo();aplicar()}else comecar()});else comecar();
 })();
 </script>
 </body>

@@ -22,9 +22,9 @@ Gustavo, 2026-10-17 ~21h45, pelo Maestri Chat: "A", abrir agora).
 
 **Blocked by:** 25 (resolvido)
 
-- [ ] endereço de publicação pela variável; `0.0.0.0` recusado; ensaio com endereço diferente de `127.0.0.1` verde
-- [ ] os dois `.env` gerados fora do hub, com aviso de qual levar à mão; nada de segredo no git
-- [ ] o par B sabe montar ou conferir o CLI do LiveSync na versão certa
+- [x] endereço de publicação pela variável; `0.0.0.0` recusado; ensaio com endereço diferente de `127.0.0.1` verde
+- [x] os dois `.env` gerados fora do hub, com aviso de qual levar à mão; nada de segredo no git
+- [x] o par B sabe montar ou conferir o CLI do LiveSync na versão certa
 - [ ] a suíte segue verde
 
 ## Comments
@@ -45,3 +45,16 @@ Gustavo, 2026-10-17 ~21h45, pelo Maestri Chat: "A", abrir agora).
   apagado no fim, e conferir por porta que nada ficou escutando no 100.x; a prova do montar faz `npm ci` uma vez, com
   a trava. Próximo: tdd da costura 1.
 - 2026-10-17 ~22h05 (maestro, mandato): costuras da Brasa aceitas (127.0.0.1 sempre + endereço extra por HUB_BANCO_ENDERECO; recusa 0.0.0.0, :: e não-IP; gerar-env-pares.ps1 fora do hub e de repositório git, HUB_PAR_ID diferentes; conferência do CLI no commit 14141446 e montar-cli-livesync.ps1). Prova 4 pelo Tailscale desta máquina (100.120.188.50), senha aleatória, minutos, descida conferida por porta; npm ci uma vez, com a trava.
+- 2026-10-17 ~23h (Brasa): costuras 1 e 2 verdes, commits 340f857 (endereço; `compose.endereco.yml`) e c2cc1bd
+  (`kit/par/gerar-env-pares.ps1`; `New-EnvParesBanco` escreve `HUB_PAR_ID`, `HUB_BANCO_ENDERECO`, CLI e leitor da
+  vigia por par). Teste: `node --test agents/code/test/45-duas-maquinas-sem-docker.test.mjs` (25 casos); leves do
+  banco (07, 38, 28, 09, 22, 25, 16) 37/37. Ressalva para o 26: o gerador não escreve as linhas dos passos 03, 05
+  (tokens do MCP) e 10; vêm dos modelos. Próximo: costura 3 (conferência do CLI no passo 04, montar-cli-livesync.ps1).
+- 2026-10-17 ~22h45 (Brasa): **pronto para revisão**, ramo `ticket-45` em 02dabc4. Costura 3: `Assert-CliLiveSync`
+  no passo 04 (9ee7ec2) e `kit/par/montar-cli-livesync.ps1` (2a13e88). Provas com a trava: `45-banco-endereco`
+  13/13 pelo Tailscale (100.120.188.50; nada ficou escutando; 0 contêineres e volumes) e `45-montar-cli` 6/6 (bundle,
+  `npm ci`, build em 141 s). Leves 38/38. Achado: o `index.cjs` montado tem outro hash que o daqui (mesmo commit;
+  `npm ci` x `npm install`). Relatório: `etapas/relatorio-45-banco-entre-duas-maquinas.md`. Trava solta e passada ao
+  Cinzel. Próximo: revisão do Fiel (o maestro religa).
+- 2026-10-17 ~22h55 (Brasa): o maestro religou o Fiel e passou o 45 a ele; achado do CLI anotado pelo maestro para
+  o 26 (montar o CLI também no par A). Esperando o parecer.

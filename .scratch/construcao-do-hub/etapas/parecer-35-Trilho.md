@@ -19,3 +19,7 @@ leitura dele pendente).
 ## Ressalva (não bloqueia)
 - Limite já escrito no relatório: a pendência de um ask recusado fica; se o mesmo texto exato for gravado depois por
   um caminho sem aval, vira registro "aprovado". Igual ao 31 com parecer.
+
+## Leitura do Fielzinho — 2026-10-17
+
+**PASSA, sem achado novo.** Leitura concluída em ebae5ca; detalhes no parecer-35-Trilho-fielzinho.md. Fecha o meu achado do 31: pendência e registro de aval mesmo sem parecer; tabela pelo maestro limpa pendência sem inventar aprovação. Prova própria: 20-acervo.test.mjs, 22/22, saída 0. Mantida a ressalva já aceita de reaproveitar pendência recusada quando posteriormente se grava texto idêntico. Sem harness real.

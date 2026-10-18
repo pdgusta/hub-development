@@ -1,0 +1,28 @@
+✔ a tabela do hub passa no esquema; skill que ainda não está em agents/skills/ é aviso, não recusa (7840.9416ms)
+✔ linha fora do esquema é recusada, com o id da linha (7839.1084ms)
+✔ claude: pedido de pesquisa que não cita o FreeLLMAPI recebe "use a skill freellmapi" (7285.0699ms)
+✔ codex: pedido de pesquisa que não cita o FreeLLMAPI recebe "use a skill freellmapi" (5398.5081ms)
+✔ pedido que já cita a skill, ou que não casa, não recebe nada (5511.0139ms)
+✔ recruta pelo papel recebe as skills da linha do papel (5179.9973ms)
+✔ nota pelo caminho recebe a skill da linha do caminho (5090.4915ms)
+✔ caminho citado com barra do Windows recebe a mesma indicação que com barra comum (7098.67ms)
+✔ copilot: o hook de arquivo não injeta (a doc diz que a saída é descartada); nada na saída (5649.8739ms)
+✔ fora do hub, sai na hora (5069.6993ms)
+✔ usar uma skill do acervo vira linha no registro da máquina, com workspace e data (5728.4613ms)
+✔ skill de fora do acervo não vira linha (5161.4735ms)
+✔ claude: a skill indicada rodou: o fim registra "sim" com a linha da tabela, sem bloquear (11386.5197ms)
+✔ claude: a skill indicada não rodou: o fim registra "não" com a linha, sem bloquear (6515.6743ms)
+✔ claude: linha com duas skills, uma usada e outra não: uma linha de indicação por skill (6974.0549ms)
+✔ codex: sem evento de uso de skill, o fim registra "não verificado" (6237.8826ms)
+✔ copilot: sem evento de uso de skill, o fim registra "não verificado" (5358.0511ms)
+✔ turno sem indicação não escreve no registro (6402.0263ms)
+✔ sessão que chega ao hub pelo atalho (junction) recebe a indicação (6018.9383ms)
+✔ no Copilot, que não recebe o hook de entrada, o AGENTS.md do hub de ensaio traz a regra de roteamento fora da cabeça (4841.7962ms)
+ℹ tests 20
+ℹ suites 0
+ℹ pass 20
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 133648.5615

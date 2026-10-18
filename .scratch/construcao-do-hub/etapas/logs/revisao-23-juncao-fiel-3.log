@@ -1,0 +1,59 @@
+✔ o contrato chega aos três: link simbólico no Codex e no Copilot, import no CLAUDE.md sem perder o que já havia (13705.6756ms)
+✔ com -WhatIf, a casa não muda e o kit lista o que faria (6987.8918ms)
+✖ a segunda passada não muda nada (18853.8246ms)
+✔ o desfazer volta a casa ao que era, sem sobra (27731.5521ms)
+✔ as skills de uso geral chegam por junction às duas pastas globais; a de papel fica fora; o que já estava fica (30200.1994ms)
+✔ as linhas de MCP de busca e de banco chegam aos três, com o token por variável; o que já havia fica (40164.4969ms)
+✔ os hooks de todas as peças se juntam nos três sem apagar os que havia; no Codex, cada um aprovado pelo hash (23401.799ms)
+✔ fragmento mudado e peça tirada do hub: a passada seguinte troca o grupo velho e tira o órfão, com a aprovação dele (22294.3192ms)
+✔ o GSD sai do escopo global, com cópia, e o contrato entra no lugar; o desfazer o devolve (24135.7737ms)
+✔ um copilot-instructions.md com texto além do GSD faz o kit parar e mostrar o texto, sem mudar nada (10437.3626ms)
+✔ o Codex fica em acesso total, por chave, sem perder o resto do config.toml (15365.0575ms)
+✔ com um CLAUDE.md acima do hub, o kit para antes de tudo e diz onde está (9911.0755ms)
+✔ sem CLAUDE.md no caminho, a conferência passa e o kit segue (15583.1767ms)
+✔ o passo 10 gera os XML da tarefa diária (cópia e cabeça) e da vigia de 5 min, sem registrar; -WhatIf não grava (30788.0533ms)
+✔ hub, casa e .env com o nome curto: o kit grava tudo no caminho longo (20830.1945ms)
+✔ a mudança que falha (ENOSPC) devolve o original (arquivo) ao lugar e relança o erro; o desfazer não o perde (53.6337ms)
+✔ a mudança que falha (EPERM) devolve o original (pasta) ao lugar e relança o erro; o desfazer não o perde (48.5648ms)
+✔ ENOSPC no registro: a troca se desfaz, o original volta, o registro anterior fica (91.7536ms)
+✔ ENOSPC no registro, escrito pela metade: a troca se desfaz, o original volta, o registro anterior fica (150.9364ms)
+✔ se nem a devolução do original der, o desfazer não apaga a cópia (27.0683ms)
+✔ os arquivos que chamam harness são achados (33.0677ms)
+✔ sem HUB_HARNESS_REAL, os testes de harness aparecem pulados, com o motivo, e não mexem em nada (2040.3878ms)
+✔ a conferência por hash não diz nada quando nenhum arquivo real mudou (0.77ms)
+✔ arquivo real gravado durante a rodada de um harness: diz qual arquivo e qual rodada (68.1442ms)
+✔ arquivo real gravado fora das rodadas: diz que foi fora dos harnesses do teste (48.2987ms)
+✔ arquivo real que sumiu ou apareceu: diz que não dá para saber a hora (0.5755ms)
+✔ a exceção do app-server é estreita: o arquivo existe, sobe o app-server e não cita login nem harness com modelo (5.2874ms)
+✔ o modelo do Codex nos testes é o gpt-6-luna, salvo HUB_MODELO_CODEX (980.4388ms)
+✔ nenhum teste escreve o modelo do Codex à mão (107.6678ms)
+ℹ tests 29
+ℹ suites 0
+ℹ pass 28
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 323203.4692
+
+✖ failing tests:
+
+test at agents\code\test\23-kit.test.mjs:94:1
+✖ a segunda passada não muda nada (18853.8246ms)
+  AssertionError [ERR_ASSERTION]: passo 08 parou: EPERM: operation not permitted, rename 'C:\Users\gustavo.delfino\AppData\Local\Temp\hub-ensaio-23-CtIux1\casa\.hub-kit\registro.json.novo' -> 'C:\Users\gustavo.delfino\AppData\Local\Temp\hub-ensaio-23-CtIux1\casa\.hub-kit\registro.json'
+  
+  
+  1 !== 0
+  
+      at instalar (file:///C:/context-hub-wt/ticket-23/agents/code/test/23-kit.test.mjs:47:10)
+      at TestContext.<anonymous> (file:///C:/context-hub-wt/ticket-23/agents/code/test/23-kit.test.mjs:96:3)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

@@ -1,0 +1,168 @@
+medidas do ticket 12:
+{
+  "quando": "2026-10-17T15:38:23.690Z"
+}
+
+✖ uma pergunta em pt-BR por palavra acha a nota esperada entre as 3 primeiras (190273.8745ms)
+✖ uma pergunta em pt-BR por paráfrase, sem palavra em comum com a nota, acha a nota entre as 3 primeiras (46.8232ms)
+✖ uma nota nova gravada no disco aparece sem reindexar, por palavra e por paráfrase; o tempo só é medido (1.4089ms)
+✖ nada com ponto no caminho nem de pasta local: true aparece, nem o que chega com a busca ligada (0.1383ms)
+✖ o relatório conta as notas indexadas e lista as recusadas por cabeçalho quebrado (0.1178ms)
+✖ pedido com Host estranho é recusado; o servidor só escuta em 127.0.0.1 (0.0923ms)
+✖ em inglês, no mesmo índice e sem dizer o idioma, a nota em inglês vem entre as 3 primeiras; o .pdf.md entra, o binário não (0.0857ms)
+✖ uma rajada de 200 notas copiadas de uma vez termina toda indexada; o tempo só é medido (0.0777ms)
+✖ a segunda partida reaproveita o índice: o mesmo banco, a busca pronta e nenhuma nota reindexada (0.1391ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 0
+ℹ fail 9
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 303816.237
+
+✖ failing tests:
+
+test at agents\code\test\12-busca.test.mjs:64:1
+✖ uma pergunta em pt-BR por palavra acha a nota esperada entre as 3 primeiras (190273.8745ms)
+  Error: a busca não ficou pronta em 3 minutos: [resolve_model_type] Architecture(s) not found in MODEL_TYPE_MAPPING: [GteModel] for model type 'gte'. Falling back to EncoderOnly (single model.onnx file). If you encounter issues, please report at: https://github.com/huggingface/transformers.js/issues/new/choose
+  Unknown model class "gte", attempting to construct from base class.
+  [mcp-http] listening on http://127.0.0.1:55815/mcp
+  Indexing vault...
+  10/67 (15%) — 8m 49s remaining
+  20/67 (30%) — 4m 46s remaining
+  30/67 (45%) — 2m 54s remaining
+  40/67 (60%) — 1m 47s remaining
+  50/67 (75%) — 1m 1s remaining
+  
+      at iniciar (file:///C:/context-hub-wt/integracao/agents/code/test/12-busca/servidor.mjs:73:9)
+      at async TestContext.<anonymous> (file:///C:/context-hub-wt/integracao/agents/code/test/12-busca.test.mjs:60:14)
+      at async TestHook.run (node:internal/test_runner/test:1389:7)
+
+test at agents\code\test\12-busca.test.mjs:71:1
+✖ uma pergunta em pt-BR por paráfrase, sem palavra em comum com a nota, acha a nota entre as 3 primeiras (46.8232ms)
+  Error: a busca não ficou pronta em 3 minutos: [resolve_model_type] Architecture(s) not found in MODEL_TYPE_MAPPING: [GteModel] for model type 'gte'. Falling back to EncoderOnly (single model.onnx file). If you encounter issues, please report at: https://github.com/huggingface/transformers.js/issues/new/choose
+  Unknown model class "gte", attempting to construct from base class.
+  [mcp-http] listening on http://127.0.0.1:55815/mcp
+  Indexing vault...
+  10/67 (15%) — 8m 49s remaining
+  20/67 (30%) — 4m 46s remaining
+  30/67 (45%) — 2m 54s remaining
+  40/67 (60%) — 1m 47s remaining
+  50/67 (75%) — 1m 1s remaining
+  
+      at iniciar (file:///C:/context-hub-wt/integracao/agents/code/test/12-busca/servidor.mjs:73:9)
+      at async TestContext.<anonymous> (file:///C:/context-hub-wt/integracao/agents/code/test/12-busca.test.mjs:60:14)
+      at async TestHook.run (node:internal/test_runner/test:1389:7)
+
+test at agents\code\test\12-busca.test.mjs:95:1
+✖ uma nota nova gravada no disco aparece sem reindexar, por palavra e por paráfrase; o tempo só é medido (1.4089ms)
+  Error: a busca não ficou pronta em 3 minutos: [resolve_model_type] Architecture(s) not found in MODEL_TYPE_MAPPING: [GteModel] for model type 'gte'. Falling back to EncoderOnly (single model.onnx file). If you encounter issues, please report at: https://github.com/huggingface/transformers.js/issues/new/choose
+  Unknown model class "gte", attempting to construct from base class.
+  [mcp-http] listening on http://127.0.0.1:55815/mcp
+  Indexing vault...
+  10/67 (15%) — 8m 49s remaining
+  20/67 (30%) — 4m 46s remaining
+  30/67 (45%) — 2m 54s remaining
+  40/67 (60%) — 1m 47s remaining
+  50/67 (75%) — 1m 1s remaining
+  
+      at iniciar (file:///C:/context-hub-wt/integracao/agents/code/test/12-busca/servidor.mjs:73:9)
+      at async TestContext.<anonymous> (file:///C:/context-hub-wt/integracao/agents/code/test/12-busca.test.mjs:60:14)
+      at async TestHook.run (node:internal/test_runner/test:1389:7)
+
+test at agents\code\test\12-busca.test.mjs:107:1
+✖ nada com ponto no caminho nem de pasta local: true aparece, nem o que chega com a busca ligada (0.1383ms)
+  Error: a busca não ficou pronta em 3 minutos: [resolve_model_type] Architecture(s) not found in MODEL_TYPE_MAPPING: [GteModel] for model type 'gte'. Falling back to EncoderOnly (single model.onnx file). If you encounter issues, please report at: https://github.com/huggingface/transformers.js/issues/new/choose
+  Unknown model class "gte", attempting to construct from base class.
+  [mcp-http] listening on http://127.0.0.1:55815/mcp
+  Indexing vault...
+  10/67 (15%) — 8m 49s remaining
+  20/67 (30%) — 4m 46s remaining
+  30/67 (45%) — 2m 54s remaining
+  40/67 (60%) — 1m 47s remaining
+  50/67 (75%) — 1m 1s remaining
+  
+      at iniciar (file:///C:/context-hub-wt/integracao/agents/code/test/12-busca/servidor.mjs:73:9)
+      at async TestContext.<anonymous> (file:///C:/context-hub-wt/integracao/agents/code/test/12-busca.test.mjs:60:14)
+      at async TestHook.run (node:internal/test_runner/test:1389:7)
+
+test at agents\code\test\12-busca.test.mjs:140:1
+✖ o relatório conta as notas indexadas e lista as recusadas por cabeçalho quebrado (0.1178ms)
+  Error: a busca não ficou pronta em 3 minutos: [resolve_model_type] Architecture(s) not found in MODEL_TYPE_MAPPING: [GteModel] for model type 'gte'. Falling back to EncoderOnly (single model.onnx file). If you encounter issues, please report at: https://github.com/huggingface/transformers.js/issues/new/choose
+  Unknown model class "gte", attempting to construct from base class.
+  [mcp-http] listening on http://127.0.0.1:55815/mcp
+  Indexing vault...
+  10/67 (15%) — 8m 49s remaining
+  20/67 (30%) — 4m 46s remaining
+  30/67 (45%) — 2m 54s remaining
+  40/67 (60%) — 1m 47s remaining
+  50/67 (75%) — 1m 1s remaining
+  
+      at iniciar (file:///C:/context-hub-wt/integracao/agents/code/test/12-busca/servidor.mjs:73:9)
+      at async TestContext.<anonymous> (file:///C:/context-hub-wt/integracao/agents/code/test/12-busca.test.mjs:60:14)
+      at async TestHook.run (node:internal/test_runner/test:1389:7)
+
+test at agents\code\test\12-busca.test.mjs:165:1
+✖ pedido com Host estranho é recusado; o servidor só escuta em 127.0.0.1 (0.0923ms)
+  Error: a busca não ficou pronta em 3 minutos: [resolve_model_type] Architecture(s) not found in MODEL_TYPE_MAPPING: [GteModel] for model type 'gte'. Falling back to EncoderOnly (single model.onnx file). If you encounter issues, please report at: https://github.com/huggingface/transformers.js/issues/new/choose
+  Unknown model class "gte", attempting to construct from base class.
+  [mcp-http] listening on http://127.0.0.1:55815/mcp
+  Indexing vault...
+  10/67 (15%) — 8m 49s remaining
+  20/67 (30%) — 4m 46s remaining
+  30/67 (45%) — 2m 54s remaining
+  40/67 (60%) — 1m 47s remaining
+  50/67 (75%) — 1m 1s remaining
+  
+      at iniciar (file:///C:/context-hub-wt/integracao/agents/code/test/12-busca/servidor.mjs:73:9)
+      at async TestContext.<anonymous> (file:///C:/context-hub-wt/integracao/agents/code/test/12-busca.test.mjs:60:14)
+      at async TestHook.run (node:internal/test_runner/test:1389:7)
+
+test at agents\code\test\12-busca.test.mjs:176:1
+✖ em inglês, no mesmo índice e sem dizer o idioma, a nota em inglês vem entre as 3 primeiras; o .pdf.md entra, o binário não (0.0857ms)
+  Error: a busca não ficou pronta em 3 minutos: [resolve_model_type] Architecture(s) not found in MODEL_TYPE_MAPPING: [GteModel] for model type 'gte'. Falling back to EncoderOnly (single model.onnx file). If you encounter issues, please report at: https://github.com/huggingface/transformers.js/issues/new/choose
+  Unknown model class "gte", attempting to construct from base class.
+  [mcp-http] listening on http://127.0.0.1:55815/mcp
+  Indexing vault...
+  10/67 (15%) — 8m 49s remaining
+  20/67 (30%) — 4m 46s remaining
+  30/67 (45%) — 2m 54s remaining
+  40/67 (60%) — 1m 47s remaining
+  50/67 (75%) — 1m 1s remaining
+  
+      at iniciar (file:///C:/context-hub-wt/integracao/agents/code/test/12-busca/servidor.mjs:73:9)
+      at async TestContext.<anonymous> (file:///C:/context-hub-wt/integracao/agents/code/test/12-busca.test.mjs:60:14)
+      at async TestHook.run (node:internal/test_runner/test:1389:7)
+
+test at agents\code\test\12-busca.test.mjs:190:1
+✖ uma rajada de 200 notas copiadas de uma vez termina toda indexada; o tempo só é medido (0.0777ms)
+  Error: a busca não ficou pronta em 3 minutos: [resolve_model_type] Architecture(s) not found in MODEL_TYPE_MAPPING: [GteModel] for model type 'gte'. Falling back to EncoderOnly (single model.onnx file). If you encounter issues, please report at: https://github.com/huggingface/transformers.js/issues/new/choose
+  Unknown model class "gte", attempting to construct from base class.
+  [mcp-http] listening on http://127.0.0.1:55815/mcp
+  Indexing vault...
+  10/67 (15%) — 8m 49s remaining
+  20/67 (30%) — 4m 46s remaining
+  30/67 (45%) — 2m 54s remaining
+  40/67 (60%) — 1m 47s remaining
+  50/67 (75%) — 1m 1s remaining
+  
+      at iniciar (file:///C:/context-hub-wt/integracao/agents/code/test/12-busca/servidor.mjs:73:9)
+      at async TestContext.<anonymous> (file:///C:/context-hub-wt/integracao/agents/code/test/12-busca.test.mjs:60:14)
+      at async TestHook.run (node:internal/test_runner/test:1389:7)
+
+test at agents\code\test\12-busca.test.mjs:207:1
+✖ a segunda partida reaproveita o índice: o mesmo banco, a busca pronta e nenhuma nota reindexada (0.1391ms)
+  Error: a busca não ficou pronta em 3 minutos: [resolve_model_type] Architecture(s) not found in MODEL_TYPE_MAPPING: [GteModel] for model type 'gte'. Falling back to EncoderOnly (single model.onnx file). If you encounter issues, please report at: https://github.com/huggingface/transformers.js/issues/new/choose
+  Unknown model class "gte", attempting to construct from base class.
+  [mcp-http] listening on http://127.0.0.1:55815/mcp
+  Indexing vault...
+  10/67 (15%) — 8m 49s remaining
+  20/67 (30%) — 4m 46s remaining
+  30/67 (45%) — 2m 54s remaining
+  40/67 (60%) — 1m 47s remaining
+  50/67 (75%) — 1m 1s remaining
+  
+      at iniciar (file:///C:/context-hub-wt/integracao/agents/code/test/12-busca/servidor.mjs:73:9)
+      at async TestContext.<anonymous> (file:///C:/context-hub-wt/integracao/agents/code/test/12-busca.test.mjs:60:14)
+      at async TestHook.run (node:internal/test_runner/test:1389:7)

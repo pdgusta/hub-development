@@ -1,1 +1,0 @@
-- Rebite (integrador), 2026-10-17 11:59: suíte do hub do 17 em C:/context-hub-wt/integracao (e7203b4), --test-concurrency=1, ~20 min. Apago ao fim e aviso o Cinzel (Codex do 11).

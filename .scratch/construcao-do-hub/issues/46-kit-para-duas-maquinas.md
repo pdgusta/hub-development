@@ -34,3 +34,14 @@ diagnóstico do 25.
   roteamento); passo `espera` no fim (ls do leitor da vigia contra o disco, com prazo); passo opcional `proxy`; lista do
   que falta à mão na saída. Combinado com a Brasa: `etapas/logs/46-combinado-brasa.md`. Costuras enviadas ao maestro.
 - 2026-10-17 ~22h (maestro): costuras do Cinzel aceitas: HUB_PAR_ID do .env gravado em `<hub>/.local/par.json` pelo passo 08; leitores usam a variável e o arquivo como reserva (verificar-pastas, roteamento, fim da resposta); kit recusa .env sem HUB_PAR_ID (os .env de ensaio ganham a variável); passo de espera último da fila, aviso e código 0 no fim do prazo; passo opcional proxy; saída lista o que falta à mão. A Brasa gera HUB_PAR_ID nos dois .env.
+- 2026-10-17 ~22h50 (Cinzel): item 1 feito (e714e42: `bin/lib/par.mjs`, passo 08 grava `.local/par.json`, recusa .env
+  sem id; variável primeiro; verificar-pastas, fim da resposta e roteamento testados pelo hook). Item 2 feito com o
+  CLI falso (passo `espera`, `kit/par/espera.mjs`, `-PrazoEspera`). Falta: proxy na fila, lista do que é à mão,
+  ensaio real da espera com Docker (trava), relatório.
+- 2026-10-17 ~22h30 (Cinzel): itens 1 a 4 feitos e testados leve (`test/46-kit-duas-maquinas.test.mjs`, 18 verdes;
+  23, 27, 19 verdes). A espera também confere o envio do outro par e não toma banco vazio por recebido (4e89be6).
+  Rodando com a trava: `test/46-espera-banco.test.ps1` (Docker). Relatório: `etapas/relatorio-46-kit-para-duas-maquinas.md`.
+  Depois: pedir revisão (Fiel e Rebite fora: avisar o maestro).
+- 2026-10-17 ~22h40 (Cinzel): prova com Docker 6 PASSA (`etapas/logs/46-espera-banco.log`); trava solta. Ramo ticket-46
+  pronto para revisão (5 commits sobre dc514db). Falta: a revisão (Fiel fora; pedido ao maestro) e a junção.
+- 2026-10-17 ~22h45 (Cinzel): em revisão com o Fiel (religado pelo maestro). Aviso dos docs ao Lume na junção.

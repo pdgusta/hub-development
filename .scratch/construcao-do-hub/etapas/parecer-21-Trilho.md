@@ -75,3 +75,13 @@ com um passo antes do Rebite.
   o `proxy.psm1` citam o modelo (nos comentários). Fiel: `21-* + 22-kit-cliente + 22-proxy-sem-docker + harness-real`
   29/29; `git status` limpo; nenhum `mcp-proxy` de pé. **PASSA**; pode ir ao Rebite (a junção do 21 segue esperando o
   16 resolvido, como diz o ticket).
+
+## Leitura do Fielzinho — rodadas 1, 2 e junção — 2026-10-17
+
+**PASSA, sem achado novo.** Conferidos ticket, faixa 10 do spec, relatório, código de arquivar/cópia/cabeça/limpeza, testes leves e teste Docker. Ponta 6b6c65e. Os consertos da r1 estão presentes: isAbsolute antes de normalizar barras; observador no caminho longo com prova de que segue vivo. O modelo 10.env contém proxy e cópia, sem perder uma metade.
+
+Prova própria: `node --test --test-concurrency=1 agents/code/test/21-arquivar.test.mjs agents/code/test/21-copia-diaria.test.mjs agents/code/test/21-conferir-cabeca.test.mjs agents/code/test/21-limpar-arquivo.test.mjs`: **19/19, saída 0**, 217,9 s. Cobre outro disco, recusa por atraso/edição, observador vivo, devolução com arquivo preso, cópia no nu local, exclusões, falha/recuperação do item da vigia, cabeça e simulação sem apagar. Árvore limpa e diff --check sem erro.
+
+Docker somente lido: `logs/trilho-21-docker-4.log`, 11 PASSA e tudo passou; mesmo PID do sincronizador antes/depois, nota nova chega a B, falha da cópia notificada, contêineres removidos. Não executei Docker nem indexação. Rodada 1 lida pelo histórico e pelos consertos, sem rerun da ponta antiga.
+
+Mantidas as ressalvas do movimento arquivo por arquivo (janela parcial, pastas vazias, eventual falha da devolução). As ressalvas antigas da data UTC e do comentário foram corrigidas, como consta do relatório. Sem conserto adicional solicitado.

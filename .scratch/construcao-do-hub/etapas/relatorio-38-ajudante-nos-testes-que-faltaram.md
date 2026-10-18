@@ -60,3 +60,20 @@ Trilho, 2026-10-17. Ramo `ticket-38`, worktree `C:/context-hub-wt/ticket-38`, de
   comprido, a mensagem quebra de linha e o caso falha. A pasta dele usa o prefixo curto `hub-ensaio-09sd-`, sem
   subpasta.
 - Em `%TEMP%` há pastas de outros (o Rebite roda a suíte ao mesmo tempo): conferir sobra só pelos prefixos do teste.
+
+## Rodada 2 (parecer r1 do Fiel e do Fielzinho), b854a7e
+
+- `Invoke-Limpeza` em `banco/ensaio.psm1`: cada passo do `finally` roda por conta própria, na ordem; um que lança não
+  pula os seguintes; a primeira queda volta no fim.
+- 09 e 10: cada instância do MCP para num passo seu (`{ Stop-McpBanco $i }.GetNewClosure()`), e o
+  `Remove-EnsaioBanco` vem depois, num passo próprio.
+- 08: guardar os registros (com o `New-Item`), descer os pares e apagar a raiz, cada um num passo.
+- Testes novos no `38-ensaio-banco` (7/7): o `finally` de verdade do 08, do 09 e do 10, tirado pelo parser do
+  PowerShell e rodado com dublês (o `Stop-McpBanco` da primeira instância lança; no 08, o `New-Item` lança). Contraprova:
+  com o `finally` antigo do 09 e do 10, os dois casos ficam vermelhos. Mais o `Invoke-Limpeza` sozinho e no formato
+  do 09 rodado com `-File`.
+- Achado do Lume (pedido do maestro): o comentário do topo de `hub-de-ensaio/conteudo.mjs` dizia que kind, size,
+  cadence e stage → status não estavam decididos; agora aponta o esquema do 05 (`agents/frontmatter/initiative.yml`).
+- Leves 60/60 (`logs/trilho-38-r2-leves.log`): 36, 38, 07 e 09 sem Docker, 28 sem Docker, gerador do 06, 04, 05-frontmatter.
+- Armadilha: a closure do `GetNewClosure()` só enxerga funções globais; as do módulo importado pelo teste são globais
+  (Import-Module de script), as definidas no próprio script não. Nos testes, os dublês são `function global:`.

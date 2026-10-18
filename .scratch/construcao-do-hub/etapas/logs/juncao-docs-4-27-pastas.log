@@ -1,0 +1,29 @@
+✔ link comum para pasta local vira par://, e par:// para o que replica volta a link comum, com aviso (11639.0136ms)
+✔ sem HUB_PAR_ID o link para pasta local não é reescrito e volta como falta (10925.4285ms)
+✔ link para dentro de .secrets/ volta como falta: cite só o nome do arquivo (11246.8399ms)
+✔ 32: link para fora do hub vira par://<par_id>/<unidade>/<caminho>, com aviso; a passada seguinte não o desfaz (14092.5967ms)
+✔ 32: caminho absoluto para dentro do hub fica sem letra de unidade: link comum, ou par:// se não replica (15204.3509ms)
+✔ 32: caminho de fora com espaço e parênteses vira par:// codificado, que a passada seguinte reconhece (17583.1382ms)
+✔ 32: sem HUB_PAR_ID, o link para fora do hub não é reescrito e a falta volta ao agente (16009.6273ms)
+✔ 33: imagem embutida para fora do hub ou para o que não replica vira par:// e mantém o !; a volta também (12252.3712ms)
+✔ 33: link Markdown com espaço cru no destino fica como está, e o verificador avisa (não é falta) (11301.6016ms)
+✔ 33: caminho de rede (UNC) num link fica como está, e o verificador avisa (não é falta) (10710.4508ms)
+✔ a pasta que chega a 10 entradas ganha index.md válido, com a lista pelos títulos (7726.8661ms)
+✔ a pasta que guarda um PNG ganha index.md; o PNG sem texto vira falta "descreva" (14599.185ms)
+✔ rodar de novo atualiza a lista, preserva o texto livre e a descrição escrita; anexo com texto irmão não ganha linha (10460.2564ms)
+✔ index.md com summary: manual não é tocado (9087.6782ms)
+✔ agents/frontmatter/ (os esquemas) não ganha cartão: é oficina, tipo null no catálogo (9315.3776ms)
+✔ onde o catálogo diz tipo null (agents/code/, agents/skills/) não nasce cartão (9413.3347ms)
+✔ três notas parecidas em other/, em pastas diferentes, geram o aviso de bloco novo (não é falta) (8333.5205ms)
+✔ duas notas parecidas em other/ não geram aviso (10088.9784ms)
+✔ AGENTS.md e SKILL.md não são tocados pela conferência de links (10097.4772ms)
+✔ link com URI malformada vira falta daquela nota, e a conferência segue nas outras (9280.987ms)
+✔ par:// para dentro de .secrets/ volta como falta: cite só o nome do arquivo (11492.4084ms)
+ℹ tests 21
+ℹ suites 0
+ℹ pass 21
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 260923.2327

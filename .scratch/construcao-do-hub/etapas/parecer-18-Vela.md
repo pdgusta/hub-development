@@ -76,3 +76,29 @@ no matcher e no `anota`. 18, 27 e 14: 73/73. Árvore limpa. Ressalva 1 (shell) c
 
 **PASSA.** Real de novo no Claude e no Copilot, 2/2 (`logs/18-real-2.log`); a devolução veio pela lista do `anota`;
 `apagado: true` nos dois; o commit só mexe em `evidencia-18/`. Falta o Codex depois das 12h15 (rodada curta).
+
+## Rodada curta (prova do Codex) — 2026-10-17 ~16h (Fiel; 2ª leitura por subagente na volta seguinte)
+
+Ramo `ticket-18`, f050351 (de `integracao` d298826, sem o 43). **Veredito: VOLTA** por 1 conserto mecânico.
+
+O que confere (prova real do Codex, `evidencia-18/codex/`): `registro.jsonl` mostra marca → fim devolveu ("atualize a
+nota de retomada") → fim soltou "sem falta"; `sessao-2-resposta.txt` traz ZEBRA-42; `hashes-codex.json` com antes e
+depois; evidência sem token (varredura `ghu_`, `sk-`, `refresh_token`, `access_token`, `Bearer`, `eyJ`).
+
+Conserto:
+1. (Fiel) Modelo do Codex à mão, o que o 43 (já na integracao) proíbe. Simulei o detector
+   (`harness-real.test.mjs`, "nenhum teste escreve o modelo do Codex à mão", `/\bgpt-\d/` nos `.mjs`) sobre o ramo: acusa
+   `ponta-a-ponta/18-retomada.test.mjs:136` (`-m 'gpt-6-luna'`) e `18-retomada.test.mjs:126,127,143` (`model:
+   'gpt-6-luna'` como dado). Ao juntar, a suíte fica vermelha. Juntar a integracao (51fa382 ou a ponta); no ponta a
+   ponta, `MODELO_CODEX` de `../harness-real.mjs`; no teste leve, um nome que não case `gpt-<dígito>` (o 22-kit-cliente
+   usa `o-do-usuario`). A evidência não precisa ser refeita.
+   O `git merge-tree` dá CONFLICT em `AGENTS.md` com o 40 (já previsto): manter as duas seções e conferir a cabeça
+   (`conferir-cabeca`, limite 2.000). Depois: `harness-real.test.mjs` verde e os testes do 18, 27, 17, 19 e 14.
+
+## Rodada nova (conserto 4f0b09e) — 2026-10-17 ~16h50 (Fiel + 2ª leitura Sonnet 5.5)
+
+Integracao 51fa382 juntada (8cdd2b2): `AGENTS.md` com "Retomada" e "Roteamento de skills", nada da integracao perdido,
+cabeça 1.869/2.000. 4f0b09e: ponta a ponta com `MODELO_CODEX`; leve com `o-do-usuario`. Fiel: harness-real + 18 +
+21-conferir-cabeca 29/29; 2ª leitura (`parecer-18-Vela-segunda-leitura.md`): 49 ok, 1 pulado (prova real), evidência do
+Codex conferida, árvore limpa. **Veredito: PASSA em acordo.** Ressalva: a evidência do Codex é de antes da troca para
+a constante (o mesmo `gpt-6-luna`).

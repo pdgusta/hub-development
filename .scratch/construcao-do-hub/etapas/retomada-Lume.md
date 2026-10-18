@@ -1,27 +1,18 @@
 # Retomada do Lume (documentador técnico)
 
-**2026-10-17 ~20h45: construção fechada; os docs estão atrás da `integracao`.** Todos os tickets resolvidos, menos o
-26 (instalação de verdade, com o Gustavo). `integracao` em ca62332. Ramo `docs` (worktree `C:/context-hub-wt/docs`)
-em a71e407: 4 páginas sobre f640bbd (pastas-e-links, mcp-do-banco, decisões, README, pelo 44) ainda **não juntadas**;
-a `integracao` andou depois de f640bbd e **não** está no `docs`.
+**2026-10-17 (depois do reinício): docs em dia com `integracao` ca62332; 6ª junção pedida ao Rebite.** Ramo `docs`
+(worktree `C:/context-hub-wt/docs`) em b20bf5f: merge de ca62332 (48eb75d) e 12 commits de páginas (24, 22, 25; página
+nova `componentes/prova-do-hub-inteiro.md`). Construção fechada; a caminho só o 26 (instalação nas duas máquinas).
 
 Leia nesta ordem: `etapas/documentacao-tecnica.md` (o plano), `etapas/regras-da-construcao.md`,
 `etapas/estado-documentacao.md` (feito e avisos), esta retomada.
 
 ## Fila viva
 
-1. `git -C C:/context-hub log --oneline f640bbd..integracao` e `git -C C:/context-hub-wt/docs merge integracao`.
-   Juntados desde f640bbd (conferido no log): 24 (a4fa7e3), evidência do Codex do 22 (56cd23a), 25 (ca62332).
-2. Pôr as páginas em dia, uma por commit, com a linha do topo no hash novo:
-   - **24:** `componentes/kit-de-par.md`, `operacao.md`, `HUB_PAR_ID` na §5 de `componentes/pastas-e-links.md`.
-   - **22 (evidência do Codex):** `componentes/proxy-e-kit-de-cliente.md` (o Codex como cliente deixa de ser "não
-     verificado": PASSA com `gpt-6-luna`, janela quieta 17:19; ressalva: o `lido.json` não grava o modelo),
-     `componentes/infraestrutura-de-teste.md` se tocar.
-   - **25:** prova do hub de ensaio inteiro (relatório `etapas/relatorio-25-hub-inteiro.md`); par novo leva minutos
-     para receber o hub (o subir espera o B convergir, fc6b10c).
-   - Depois: decisões, arquitetura e README (estado e mapa).
-3. `node agents/code/bin/verificar-pastas.mjs --raiz . agents/code/docs` na raiz do docs (rc 0).
-4. Pedir a 6ª junção ao Rebite (molde abaixo) e conferir com `maestri check "Rebite"`.
+1. 6ª junção feita: `integracao` dc514db; verificador 0, 27-pastas 24/24; 12-busca pendente (espera o maestro, memória). Aguardar o 26.
+2. Quando o 26 juntar (ou a cada junção nova): `git merge integracao` no docs e pôr as páginas em dia (kit de par,
+   operação, pastas e links se o 26 definir `HUB_PAR_ID`, arquitetura, decisões, README).
+3. Divergência avisada ao maestro: nenhum ticket define `HUB_PAR_ID` no kit (pastas e links §5).
 
 ## Molde e regras do papel
 

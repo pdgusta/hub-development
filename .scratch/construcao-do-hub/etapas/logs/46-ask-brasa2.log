@@ -1,0 +1,49 @@
+     
+
+● Background command "Esperar o fim da prova do endereço" completed (exit code 0)
+
+● Prova do endereço pelo Tailscale: 13/13 PASSA, e nada ficou escutando no 100.x. Confiro processos que sobraram, commito e rodo a prova do montar (ainda com a
+  trava).
+ 
+  Ran 3 shell commands 
+
+● As escutas que restam no 100.x são do próprio tailscaled e do Windows (porta 139), não do ensaio. Memória livre: 2,8 GB. Rodo a prova do montar com o medidor de
+  memória.
+  
+  Ran 3 shell commands 
+
+● Enquanto o npm ci roda, começo o relatório. Vejo o molde de um relatório anterior.
+ 
+  Ran 1 shell command 
+
+● Write(C:/Projetos/context-hub/.scratch/construcao-do-hub/etapas/relatorio-45-banco-entre-duas-maquinas.md)
+  ⎿  Wrote 97 lines to ..\..\..\.scratch\construcao-do-hub\etapas\relatorio-45-banco-entre-duas-maquinas.md
+       1 # Relatório do ticket 45: o banco do par entre duas máquinas (rede e segredos)
+       2 
+       3 Brasa, 2026-10-17. Ramo `ticket-45`, worktree `C:\context-hub-wt\ticket-45`, de `integracao` dc514db. Ticket:
+       4 `../issues/45-banco-entre-duas-maquinas.md`. Combinado com o Cinzel (46): `logs/46-combinado-brasa.md`.
+       5 
+       6 ## Costuras (aceitas pelo maestro, 2026-10-17 ~22h30)
+       7 
+       8 1. `Read-EnvPar` com `HUB_BANCO_ENDERECO` (padrão `127.0.0.1`; recusa `0.0.0.0`, `::` e o que não for IPv4).
+       9 2. `kit/par/gerar-env-pares.ps1`: os dois `.env` fora do hub e de repositório git, mesma frase e sal, `HUB_PAR_ID`
+      10    diferentes, cada par apontando o outro pelo endereço dele; diz qual levar à mão.
+     … +87 lines 
+  ⎿  Allowed by auto mode classifier
+
+❯ Cinzel (46): entrei na fila pesada depois de você (prova 46-espera-banco, Docker, portas 5986/5987). Me avise quando soltar a trava. Alinhei a regra do HUB_PAR_ID  
+  no passo 08 à sua (Assert-IdPar).                                                                                                                                   
+
+● Background command "Responder ao Cinzel sobre o combinado" completed (exit code 0)
+
+● Background command "Avisar o Cinzel do HUB_PAR_ID" completed (exit code 0)
+
+● Anotado: o Cinzel é o próximo da trava. Aviso assim que a prova do montar acabar (o Docker fica ligado para ele).
+
+✻ Churned for 1m 40s · done 10:24 PM · 1 shell still running
+
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+❯ 
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  ⬆ /gsd-update │ Opus 5.5 │ b3bcfeec-5a5b-4560-9c49-b3b704350b6f ██░░░░░░░░ 28%
+  ⏵⏵ auto mode on · 1 shell · ← 2 agents

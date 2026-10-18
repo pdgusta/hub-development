@@ -1,0 +1,48 @@
+✔ o contrato chega aos três: link simbólico no Codex e no Copilot, import no CLAUDE.md sem perder o que já havia (9269.6478ms)
+✔ com -WhatIf, a casa não muda e o kit lista o que faria (13890.5139ms)
+✔ a segunda passada não muda nada (10937.9976ms)
+✔ o desfazer volta a casa ao que era, sem sobra (11891.9426ms)
+✔ as skills de uso geral chegam por junction às duas pastas globais; a de papel fica fora; o que já estava fica (12043.6818ms)
+✔ as linhas de MCP de busca e de banco chegam aos três, com o token por variável; o que já havia fica (8737.6345ms)
+✔ os hooks de todas as peças se juntam nos três sem apagar os que havia; no Codex, cada um aprovado pelo hash (9603.2961ms)
+✔ fragmento mudado e peça tirada do hub: a passada seguinte troca o grupo velho e tira o órfão, com a aprovação dele (13755.7754ms)
+✔ o GSD sai do escopo global, com cópia, e o contrato entra no lugar; o desfazer o devolve (9245.1918ms)
+✔ um copilot-instructions.md com texto além do GSD faz o kit parar e mostrar o texto, sem mudar nada (5517.6712ms)
+✔ o Codex fica em acesso total, por chave, sem perder o resto do config.toml (10103.0889ms)
+✔ com um CLAUDE.md acima do hub, o kit para antes de tudo e diz onde está (7795.8366ms)
+✔ sem CLAUDE.md no caminho, a conferência passa e o kit segue (9047.2691ms)
+✔ o passo 10 gera os XML da tarefa diária (cópia e cabeça) e da vigia de 5 min, sem registrar; -WhatIf não grava (12630.0102ms)
+✔ hub, casa e .env com o nome curto: o kit grava tudo no caminho longo (13492.1832ms)
+✔ a mudança que falha (ENOSPC) devolve o original (arquivo) ao lugar e relança o erro; o desfazer não o perde (16.1442ms)
+✔ a mudança que falha (EPERM) devolve o original (pasta) ao lugar e relança o erro; o desfazer não o perde (15.3599ms)
+✔ ENOSPC no registro: a troca se desfaz, o original volta, o registro anterior fica (41.1001ms)
+✔ ENOSPC no registro, escrito pela metade: a troca se desfaz, o original volta, o registro anterior fica (34.5992ms)
+✔ se nem a devolução do original der, o desfazer não apaga a cópia (8.0111ms)
+✔ EPERM passageiro na troca do registro: o kit repete e grava (350.3174ms)
+✔ EACCES passageiro na troca do registro: o kit repete e grava (343.3641ms)
+✔ EBUSY passageiro na troca do registro: o kit repete e grava (331.5636ms)
+✔ EPERM passageiro ao guardar o original, ao devolvê-lo e no desfazer: o kit repete (1008.7085ms)
+✔ EPERM que não passa na troca do registro: desiste em ~2 s, o erro sobe e o original volta (2059.8005ms)
+✔ o id do par vem do .env: depois do kit, o verificador sem a variável põe o link para fora do hub em par:// (9690.6662ms)
+✔ a variável HUB_PAR_ID vale mais que o id gravado pelo kit (14330.5444ms)
+✔ o fim da resposta, pelo hook, põe em par:// o link para fora do hub com o id que o kit gravou (8732.7432ms)
+✔ o registro de uso do roteamento, pelo hook, vai para a tabela do par que o kit gravou (10054.081ms)
+✔ .env sem HUB_PAR_ID: o kit para, diz por quê e não grava o id (8383.2611ms)
+✔ .env com HUB_PAR_ID fora do formato: o kit para, diz por quê e não grava o id (8344.4346ms)
+✔ .env com HUB_PAR_ID terminando em hífen: o kit para, diz por quê e não grava o id (6914.2986ms)
+✔ com -WhatIf, o kit diz que gravaria o id e não grava (7400.3534ms)
+✔ espera: o disco já tem o que o banco tem, e o kit diz que o par recebeu o hub (7498.6933ms)
+✔ espera: no fim do prazo, o kit diz que o par ainda está recebendo, o que falta, e não falha (9065.8168ms)
+✔ espera: o arquivo que chega no meio do prazo encerra a espera (11477.4174ms)
+✔ espera: sem o leitor da vigia, o kit diz que não deu para conferir e não falha (7587.2556ms)
+✔ espera: com -WhatIf, o kit diz que esperaria e não chama o leitor (7956.5598ms)
+✔ o proxy de clientes entra na fila só quando pedido (passo proxy), com -WhatIf (9672.8899ms)
+✔ a saída do kit lista o que falta ligar à mão: mod do Claude Code, Copilot, notify do Codex, tarefas e proxy (8846.7091ms)
+ℹ tests 40
+ℹ suites 0
+ℹ pass 40
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 166098.3921

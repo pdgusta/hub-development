@@ -3,49 +3,49 @@ TAP version 13
     # Subtest: fase 1 (busca): os tr├¬s acham a nota pela search
     ok 1 - fase 1 (busca): os tr├¬s acham a nota pela search # SKIP fora de FASES
       ---
-      duration_ms: 0.9507
+      duration_ms: 0.5583
       type: 'test'
       ...
     # Subtest: fase 2 (pares): cada harness troca um trecho no A, a regrava├º├úo inteira ├® recusada, o B recebe, nada em claro
     ok 2 - fase 2 (pares): cada harness troca um trecho no A, a regrava├º├úo inteira ├® recusada, o B recebe, nada em claro
       ---
-      duration_ms: 137779.0037
+      duration_ms: 298221.0813
       type: 'test'
       ...
     # Subtest: fase 3 (banco reiniciado): depois de o CouchDB do A reiniciar, a grava├º├úo seguinte ainda chega ao B
-    ok 3 - fase 3 (banco reiniciado): depois de o CouchDB do A reiniciar, a grava├º├úo seguinte ainda chega ao B
+    ok 3 - fase 3 (banco reiniciado): depois de o CouchDB do A reiniciar, a grava├º├úo seguinte ainda chega ao B # SKIP fora de FASES
       ---
-      duration_ms: 16419.847
+      duration_ms: 0.2463
       type: 'test'
       ...
-    # Subtest: fase 4 (vigia)
-    ok 4 - fase 4 (vigia) # TODO espera o 16 e 17
+    # Subtest: fase 4 (vigia): conflito de verdade; a passada acusa e notifica, o estado_do_hub conta o mesmo, a sess├úo come├ºa pelo aviso
+    ok 4 - fase 4 (vigia): conflito de verdade; a passada acusa e notifica, o estado_do_hub conta o mesmo, a sess├úo come├ºa pelo aviso
       ---
-      duration_ms: 0.199
+      duration_ms: 48742.3643
       type: 'test'
       ...
-    # Subtest: fase 5 (retomada)
-    ok 5 - fase 5 (retomada) # TODO espera o 18
+    # Subtest: fase 6 (arquivar): cada harness arquiva pela skill, o B recebe, e a c├│pia di├íria roda
+    ok 5 - fase 6 (arquivar): cada harness arquiva pela skill, o B recebe, e a c├│pia di├íria roda # SKIP fora de FASES
       ---
-      duration_ms: 0.1086
+      duration_ms: 0.143
       type: 'test'
       ...
-    # Subtest: fase 6 (arquivar)
-    ok 6 - fase 6 (arquivar) # TODO espera o 21
+    # Subtest: fase 5 (retomada): com as pe├ºas juntas, o fim devolve at├® a nota mudar, e a sess├úo seguinte come├ºa por ela
+    ok 6 - fase 5 (retomada): com as pe├ºas juntas, o fim devolve at├® a nota mudar, e a sess├úo seguinte come├ºa por ela # SKIP fora de FASES
       ---
-      duration_ms: 0.1074
+      duration_ms: 0.1285
       type: 'test'
       ...
-    # Subtest: fase 7 (cliente)
-    ok 7 - fase 7 (cliente) # TODO espera o 22 e 24
+    # Subtest: fase 7 (cliente): pelo proxy do par, cada harness busca e l├¬, s├│ com o token no ambiente
+    ok 7 - fase 7 (cliente): pelo proxy do par, cada harness busca e l├¬, s├│ com o token no ambiente # SKIP fora de FASES
       ---
-      duration_ms: 0.0839
+      duration_ms: 0.0948
       type: 'test'
       ...
     1..7
 ok 1 - ticket 25: o hub de ensaio inteiro, por fases, nos tr├¬s harnesses de verdade
   ---
-  duration_ms: 167735.3779
+  duration_ms: 356683.6293
   type: 'suite'
   ...
 1..1
@@ -54,6 +54,6 @@ ok 1 - ticket 25: o hub de ensaio inteiro, por fases, nos tr├¬s harnesses de 
 # pass 2
 # fail 0
 # cancelled 0
-# skipped 1
-# todo 4
-# duration_ms 167843.0389
+# skipped 5
+# todo 0
+# duration_ms 356807.252

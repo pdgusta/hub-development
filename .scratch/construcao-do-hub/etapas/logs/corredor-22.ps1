@@ -3,7 +3,7 @@
 # corta e limpa. Fases: (1) 22-proxy.test.ps1 -Manter; (2) se verde, os três harnesses como cliente; no fim, desce a
 # pilha (.local/limpar-22.ps1) e solta a trava. Estado em etapas/logs/22.status; logs em etapas/logs/22-*.log.
 # Uso: Start-Process pwsh -WindowStyle Hidden -ArgumentList '-NoProfile','-File','C:/context-hub-wt/ticket-22/.local/corredor-22.ps1'
-param([switch]$SoDocker, [switch]$Wsl)
+param([switch]$SoDocker, [switch]$Wsl, [string]$Harnesses = 'claude,codex,copilot')   # -Harnesses codex: só o Codex
 $ErrorActionPreference = 'Stop'
 $wt = 'C:\context-hub-wt\ticket-22'
 $etapas = 'C:\Projetos\context-hub\.scratch\construcao-do-hub\etapas'
@@ -24,6 +24,19 @@ Nota 'PEGOU a trava'
 
 # Aval do maestro (08h30): com a trava e nenhum contêiner rodando, wsl --shutdown devolve a memória da VM do Docker;
 # espera o Docker religar (até 3 min).
+# Docker parado (a fila às vezes o deixa assim, pela memória): liga o Docker Desktop e espera até 4 min. Recém-ligado,
+# a VM está vazia: o wsl --shutdown não tem o que devolver.
+docker info *> $null
+if ($LASTEXITCODE) {
+    Nota "docker: parado; ligo o Docker Desktop ($(Livre) MB livres)"
+    Start-Process (Join-Path $env:LOCALAPPDATA 'Programs\DockerDesktop\Docker Desktop.exe')
+    $ate = (Get-Date).AddMinutes(4)
+    do { Start-Sleep -Seconds 5; docker info *> $null } while ($LASTEXITCODE -and (Get-Date) -lt $ate)
+    Nota "docker: $(if ($LASTEXITCODE) { 'NÃO ligou' } else { 'ligou' }) ($(Livre) MB livres)"
+    if ($LASTEXITCODE) { Remove-Item $trava -ErrorAction SilentlyContinue; Nota 'SOLTOU a trava; corredor terminou (codigo 6)'; exit 6 }
+    $Wsl = $false
+}
+
 if ($Wsl) {
     $rodando = @(docker ps -q)
     if ($rodando.Count) { Nota "wsl: NÃO desligo, $($rodando.Count) contêiner(es) rodando" }
@@ -71,7 +84,7 @@ try {
     $codigo = Invoke-Fase 'docker' 'pwsh' @('-NoProfile', '-File', (Join-Path $wt 'agents\code\test\22-proxy.test.ps1'), '-Manter') `
         @{ HUB_MCP_BANCO_DIR = 'C:\Projetos\hub-mcp-banco-wt\brasa-22'; COLUMNS = '400' }
     if ($codigo -eq 0 -and -not $SoDocker) {
-        $codigo = Invoke-Fase 'harness' 'node' @('--test', '--test-concurrency=1', (Join-Path $wt 'agents\code\test\ponta-a-ponta\22-cliente.test.mjs')) @{ HUB_HARNESS_REAL = '1' }
+        $codigo = Invoke-Fase 'harness' 'node' @('--test', '--test-concurrency=1', (Join-Path $wt 'agents\code\test\ponta-a-ponta\22-cliente.test.mjs')) @{ HUB_HARNESS_REAL = '1'; HARNESSES = $Harnesses }
     }
 }
 finally {

@@ -65,3 +65,33 @@ Capturei de novo em 1600 px, em 390 px e no cartão `#t=18`. Os 11 consertos est
 Ressalvas (não seguram):
 - Em 1600 px, o primeiro sistema ainda mostra 4 h quase vazias (14h30–18h30). É fiel à escala, mas o compasso de espera do 390 caberia também aqui.
 - O crescendo abre devagar porque a suíte cresce devagar; está certo, só é sutil.
+
+## Rodada curta: visão retilínea horizontal (2026-10-17 ~22h45): VOLTA (3 consertos)
+
+Capturas no Edge sem cabeça, porta 8772:
+- 1600×1000: abertura, #hora=900, #hora=1500, #ver=pFio, #ver=pFim e #t=25;
+- 1280×720: #hora=900;
+- moldura deitada 844×390: abertura, #hora=900 e #t=25;
+- moldura em pé 390×844: abertura, #hora=900, #t=25 e #ver=pFim.
+
+Os fatos não mudaram; só o subtítulo.
+
+**O que está bom.** Uma faixa só, sem rolar para baixo, e o tempo em escala de verdade numa linha. Os nomes das pautas ficam presos à esquerda. O compasso de espera (4) agora aparece também na tela larga, o que resolve a ressalva da volta 2. O modo denso, com pílula numerada no celular deitado, é uma boa saída. O cartão vira folha embaixo no celular em pé e funciona. Fio do fim e acorde final ficam lado a lado e leem bem.
+
+### Consertos
+
+1. **A letra some no meio da rolagem.** O número e o nome ficam só no começo da frase. Quem rola até 5h30 ou 15h vê barras compridas sem nome: na Vela, o 25 e o 17; no Cinzel, o 23, o 24 e o 37; no Trilho, o 16. Para saber o que são, precisa tocar, e a régua pede ler sem clique. A letra tem que ficar presa à borda esquerda da área visível enquanto a frase estiver na tela, como os nomes das pautas. Em modo denso, vale o mesmo para a pílula.
+2. **A coluna dos nomes vaza.** A letra cortada aparece ao lado dos nomes das pautas: "tificação · 1 volta", "aço cru e caminho de rede avisam", "volta", e os "9" e "8" junto de Fiel e Rebite. A coluna presa precisa de fundo opaco, com o creme do papel e uma sombra leve na borda.
+3. **Falta o dia no meio.** Rolando, aparece "9h" sem dizer de qual dia: o "17/10" só aparece junto da 0h. Ponha o dia preso no canto, acima dos nomes ("16/10" ou "17/10", conforme o trecho visível), ou junto de cada hora cheia de 6 em 6 horas.
+
+### Rodada curta, conferência dos consertos (2026-10-17 ~23h): PASSA
+
+Recapturei em 1600×1000 (#hora=300, #hora=900, #hora=1500), na moldura deitada (#hora=900) e na moldura em pé (#hora=1500).
+
+1. A letra presa funciona. Em 5h30 e em 15h aparecem com nome o 08, 28, 17, 16, 15, 10, 25, 23, 24 e 37; no modo denso, vale para as pílulas.
+2. A coluna é opaca, com sombra, e nada de "9" ou "8" soltos.
+3. O dia fica preso no canto ("17/10").
+
+Ressalvas (não seguram):
+- Os tocos de frases que terminam logo depois da coluna ficam sem nome, porque a letra some (por exemplo, o 41 do Trilho e o 43 da Brasa em #hora=1500). É coerente com a regra, e o toque completa.
+- Na moldura em pé, aparece um "s" solto ao lado de "Mae.". É resto de uma indicação do maestro, que não seguiu a mesma regra de sumir sob a coluna.

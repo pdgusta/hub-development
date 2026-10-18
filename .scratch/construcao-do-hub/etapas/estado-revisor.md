@@ -232,3 +232,67 @@ Sat, Oct 17, 2026 10:15:54 AM 21 r1 (Trilho, 1c87f9b): retomado após /clear; re
 11:58 38: repassado ao Fielzinho (com a fila de leituras atrasadas); ele sem cota até 12h15. Leitura do Fiel em curso.
 12:03 38: leitura do Fiel PASSA (39/39); parecer provisório parecer-38-Trilho.md; esperando Fielzinho (12h15).
 12:05 38 ponta 7c87301 (merge do 17): conferida; Fielzinho avisado da ponta.
+12:18 38 r1: VOLTA em acordo (conserto 1 do Fielzinho: finally do 09/10 sem proteção no Stop-McpBanco). Trilho avisado.
+12:25 23: achado do Fielzinho (casa.mjs:88-91 perde original se fazer falha) conferido; teto de voltas atingido -> perguntado ao maestro. 37: leitura do Fielzinho sem achado.
+12:26 23: maestro decidiu conserto curto antes da junção; Cinzel avisado.
+12:35 23 curta 46897e0: VOLTA em acordo (registro.json fora do try; achado do Fielzinho). Cinzel avisado.
+12:37 22: achado tardio do Fielzinho (TOML do cliente apaga [projects] dentro do bloco) aceito; Brasa leva ao maestro. 24 r1 e 21: leituras do Fielzinho sem achado. 38 r2 (b854a7e): repassar e revisar.
+12:40 38 r2 b854a7e: leitura do Fiel PASSA (25/25); esperando Fielzinho. 39 (Trilho, 4309277): em curso; repassar ao Fielzinho depois do 38.
+12:50 39 r1: leitura do Fiel PASSA (109/109). Novos: 40 (Vela db6b52c), 23 curta 488b377, 22 curta f6ac76d.
+12:50 Fielzinho sem cota até 17h15. 38 r2 e 39 r1 fechados PASSA (Fiel sozinho). Trilho avisado.
+12:56 23 curta 2 (488b377): PASSA (27/27). Cinzel avisado. Próximos: 22 curta f6ac76d, 40 db6b52c.
+12:58 22 curta f6ac76d: PASSA (11/11, sonda TOML). Brasa avisada. 24 (5680b77) e 40 (db6b52c) próximos.
+13:01 24 5680b77: conferido 27/27; pende Codex. 40 (Vela) e 42 (Brasa, 363e733) próximos.
+13:06 40 r1 db6b52c: PASSA c/ 2 ressalvas (todos os gatilhos; conflito com 18). Vela avisada. 42 (Brasa, 363e733) em curso.
+13:16 42 r1 363e733: PASSA c/ ressalva (junction no realPath só no real). Brasa avisada.
+13:16 Retomada atualizada (ponto seguro, nada em curso).
+14:13 Retomado após /clear. Fila: 41 (Trilho, ticket-41 ae102ed), 40 (Vela).
+14:21 41 (ae102ed/8497eb7): lido; achado 1 (Fiel): SKILL.md da busca não diz que agents/code/ fica fora. Leves rodando. 40 curta 535d86b (ressalva 1 feita): lida, rodar 19/04/21.
+14:24 41 r1 (8497eb7): VOLTA, 1 conserto (SKILL.md da busca sem agents/code/). 64/64. Fielzinho voltou: repassar 41 e fila.
+14:27 41 r2 6a728a4: PASSA (Fiel; Fielzinho lê depois). Próximo: 40 curta 535d86b.
+14:30 40 curta 535d86b: PASSA (20/20). Regra nova: Codex sem cota -> 2ª leitura por subagente Opus 5.5; agora Fielzinho com cota.
+14:33 41: PASSA em acordo com Fielzinho. Fielzinho segue no 40.
+14:36 Regra nova (maestro): 2ª leitura SEMPRE por subagente meu Opus 5.5 (Sonnet 5.5 se pequena); Fielzinho fora. 43 (Brasa, 32e8217) recebido.
+14:38 40: PASSA em acordo com Fielzinho. 43 (Brasa, 32e8217): Fiel 12/12+2 pulados, todo codex exec com MODELO_CODEX; 2ª leitura por subagente Sonnet em curso.
+14:39 43: PASSA (Fiel + 2ª leitura Sonnet). Brasa avisada.
+14:56 11 r2 (Cinzel, só Codex Luna, e63d951/e96cd70): recebido.
+14:57 11 r2: achado 1 (Fiel): ponta-a-ponta/11-mcp-banco.test.mjs:141 'gpt-6-luna' à mão -> detector do 43 vermelho (7/8). 4/4+1 pulado; evidência sem segredo. 2ª leitura Sonnet em curso.
+14:58 11 r2: VOLTA em acordo com a 2ª leitura (MODELO_CODEX à mão). Cinzel avisado. Próxima é a 3ª: passa com ressalvas.
+15:00 11 conserto 28782df: Fiel 8/8 no harness-real, diff só a linha. 2ª leitura Sonnet em curso. 24 65cb752: aceite com MODELO_CODEX; ramo ainda sem o 43 (17 e 22 com modelo à mão até juntar integracao).
+15:01 11 r3 28782df: PASSA em acordo. Cinzel avisado (nota do 24: juntar integracao).
+15:15 23 curta (junção 2379d38, Cinzel): recebido.
+15:16 23 curta: resolução do conflito confere (exceção do app-server + 2 testes do 43). Rodando harness-real+23-kit juntos 3x (logs revisao-23-juncao-fiel-N.log) para a falha não registrada. Suspeita: timeout 60s do spawn no harness-real.test.mjs:80 sob carga.
+15:21 18 curta (Vela, f050351): recebido; na fila depois do 23.
+15:24 23 curta: falha intermitente reproduzida (rodada 2 de 3): EPERM no rename registro.json.novo -> registro.json (casa.mjs:118, passo 08). Código do 23, não da junção. 18 curta: evidência Codex ok (hashes, registro devolveu/soltou, ZEBRA-42); achado: modelo à mão (18-retomada unit 126/127/143 e ponta-a-ponta 136) quebra o detector do 43 ao juntar; AGENTS.md conflita com o 40.
+15:25 18 curta f050351: VOLTA (modelo à mão + juntar integracao/AGENTS.md). Vela avisada.
+15:29 23: EPERM no rename do registro em 2 de 3 rodadas (testes diferentes: 'fragmento mudado' e 'segunda passada'). Esperando 2ª leitura (23-kit sozinho 3x). Depois: perguntar ao maestro (teto do 23).
+15:39 18 4f0b09e: leitura do Fiel PASSA (29/29 harness-real+18+21-cabeça; AGENTS.md com as duas seções). 2ª leitura depois da do 23 (um subagente por vez).
+15:42 23 junção 9fcf4cf: PASSA em acordo; achado EPERM (casa.mjs:118) -> maestro decide (teto).
+15:43 23: maestro mandou conserto curto (retry rename EPERM/EACCES/EBUSY ~2 s, com teste). Cinzel avisado.
+15:54 18 4f0b09e: PASSA em acordo. Vela avisada. Esperando: 23 conserto (Cinzel).
+15:58 44 (Brasa, dc748bc): recebido.
+16:02 44 dc748bc: leitura do Fiel PASSA (47/47; só verificar-pastas chama corrigirLinks). 2ª leitura Sonnet em curso. 23 conserto ceda444 recebido: lendo.
+16:02 23 ceda444: código e testes lidos (renomear com 2 s nas 4 trocas; 5 testes). Rodando harness-real+23-kit juntos 2x (revisao-23-conserto-fiel-N.log). 2ª leitura do 23 depois da do 44.
+16:06 44 r1: VOLTA em acordo (wikilink com ../ lança TypeError, pastas.mjs:140/211). Brasa avisada.
+16:09 23 ceda444: Fiel juntos 34/34 duas vezes (revisao-23-conserto-fiel-1/2.log); 2ª leitura Sonnet em curso.
+16:10 23 ceda444: PASSA em acordo. Cinzel avisado. Esperando: 44 conserto (Brasa).
+16:14 44 r2 a63cbb7: Fiel 40/40, sondas sem TypeError (wikilink ../ volta ao comportamento da base). 2ª leitura Sonnet em curso. 23 fechado PASSA (Cinzel avisado).
+16:21 44 r2: PASSA em acordo. Brasa avisada. Fila vazia.
+16:48 Salvo para limpar (janela quieta). Retomada atualizada. Nada em curso; sem trava, Docker nem ensaio meu.
+18:18 Retomado após limpeza. Rodadas curtas Codex: 22 (Brasa 22811cb) e 24 (Cinzel 2000575; Cinzel fora: veredito ao Rebite e maestro).
+18:23 22 22811cb: Fiel 14/14, MODELO_CODEX sem HUB_MODELO, auth.json igual, sem token. 24 2000575: Fiel 34/34+1 pulado, 13 hashes iguais, pasta apagada. Ambos contêm integracao f640bbd. 2ª leitura Opus (um subagente, os dois) em curso.
+18:30 22 e 24: PASSA em acordo com a 2ª leitura Opus. Pareceres gravados. Avisos: Brasa (22); Rebite e maestro (24).
+18:31 Avisos mandados (Brasa 22; Rebite e maestro 24). Maestro avisou o Rebite do 22. Esperando pedido do 25 (Vela, o que está pronto; fase 4 e 2 do Codex depois em rodada curta).
+18:37 25 (Vela, 5489b3a) parcial recebido: fases 1-3,5,6,7 Claude/Copilot; Codex 1 e 3. Fora: fase 4 e Codex 2.
+18:51 25: achado 1 (Fiel): fase 7 não rodou o 22-cliente (prova.tap vazio; 'node:test run() is being called recursively... skipping'; NODE_TEST_CONTEXT herdado no env; fase cliente 2 s; usos []). Verde falso. Achado 2 a confirmar: 25-medidor falhou 1x junto (laço de 6 em curso). Vela espera meu liberado para commitar o conserto A→B.
+18:53 25: parecer do Fiel gravado (VOLTA, conserto 1 fase 7; 4 ressalvas). 2ª leitura Opus em worktree destacada de 5489b3a. Laço do medidor em curso.
+19:04 25 r1 parcial: VOLTA em acordo com a 2ª leitura (1 fase 7 sem harness; 2 evidência sobrescrita). Laço medidor 4/4 verde. Vela avisada.
+19:11 Laço 6/6 verde (medidor fica ressalva). Veredito do 25 reenviado à Vela (ask em segundo plano). Fila: rodada curta do 25 (fase 4, Codex f2, A→B) + 2ª volta.
+19:13 Vela recebeu o veredito do 25: consertos feitos (fase 7 dac76e6 etc.), relatório e ticket corrigidos; rodada com Docker espera a trava. Espero o pedido da 2ª volta.
+19:36 25 r2 (Vela, 4628138) recebido: consertos fc6b10c, dac76e6, f6a0f21, 8cc9da2; reais b78c49d (f7), 4a60595 (f2 Codex + f4).
+19:44 25 r2: Fiel 73/0/1 (2x, com 22/23 vizinhos); evid 22/24 = integracao; consertos 1 e 2 conferidos; evidências f7 (# pass 2) e f2 Codex/f4 ok. Ressalva: seção 'Fica para a instalação' velha (fases 4-7 a medir). 2ª leitura Opus em curso.
+19:48 25 r2: PASSA c/ ressalvas em acordo (ressalva 1: texto 'Fica para a instalação' antes do Rebite). Vela avisada.
+20:17 Construção fechada (maestro). Retomada final gravada. Nada em curso.
+20:48 Retomada limpa (pedido do Gustavo): só estado atual e como retomar.
+22:36 Retomado. Pedidos: 45 (Brasa, ticket-45 02dabc4) e 46 (Cinzel, ticket-46); costura HUB_PAR_ID.
+22:38 45+46: junção sem commit em %TEMP%/hub-ensaio-45-46-fiel-juncao (4e89be6 + 02dabc4, sem conflito). Leves rodando.

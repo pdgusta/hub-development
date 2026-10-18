@@ -1,0 +1,45 @@
+- [Context Hub: esta frente](context-hub-frente-planejamento.md) — casa da frente context hub; fluxo só do Matt Pocock; file-first; uma decisão por vez
+- [Rodadas no portal](perguntas-em-respostas-md.md): rodadas em portal/rodadas/ desde 2026-10-14 (antes, nota "Rodada atual"); só a rodada em curso
+- [Pesquisar antes de explicar](pesquisar-antes-de-explicar.md) — explicar só com fonte primária; nada de "provas" enviesadas nem testes não pedidos
+- [Vault é só referência](vault-e-so-referencia.md) — o hub supera o vault; nada de convivência, ponteiros ou mudar o vault
+- [Absorver é pesquisar](absorver-e-pesquisar.md) — "absorver um repo" = ticket research em fonte primária, nunca clonar
+- [Protótipo é explicação](prototipo-e-explicacao.md) — protótipo explica com diagramas e analogias; nada de simulador para estudar
+- [Oportunidades, não objeções](oportunidades-nao-objecoes.md) — achar caminhos para o objetivo; nunca inventar restrição (ex.: "sem servidor")
+- [Sem ticket cego](sem-ticket-cego.md) — conferir Blocked by contra decisões abertas ou "em revisão" antes de sugerir ticket
+- [Dado de cliente nas duas máquinas](dado-de-cliente-nas-duas-maquinas.md): cliente vive nas duas máquinas; controle de acesso é futuro, fora da frente
+- [Gemini TTS pela Interactions API](gemini-tts-interactions-api.md) — chave GEMINI_API_KEY no ambiente; voz Sulafat; 2 chamadas em paralelo
+- [Edge headless para QA visual](headless-edge-para-qa-visual.md) — painel embutido congela rAF e screenshots; renderizar com msedge headless via http.server; matar só o msedge do próprio perfil, nunca por nome
+- [FreeLLMAPI: TTS e transcrição](freellmapi-tts-e-transcricao.md) — nunca `model: auto`; en → Cloudflare MeloTTS, resto → Gemini; cotas e reset; legendas por transcrição
+- [Sem códigos internos](sem-codigos-internos.md) — nas rodadas, nunca citar T2, C3, R18 etc. sem dizer em palavras o que são
+- [Padrão é acervo](padrao-e-acervo.md) — padronizar = acervo rico de opções prontas, nunca o mínimo; frontmatter por tipo, imposto por mecanismo, não por regra no AGENTS.md
+- [Visuais pelo Designer](visuais-pelo-designer.md) — visuais pelo recruta Designer, nunca direto; System design só muda quando ticket é resolvido
+- [Testes com o Obsidian](testes-com-obsidian.md) — capturar só o monitor principal; nunca mouse/teclado; clique em modal é pedido ao Gustavo
+- [Diagrama no centro](visual-diagrama-no-centro.md) — elogiados: mapa de metrô e maré; recusados: laudo denso e v2 só restilizada; simplificar = comunicar melhor, não cortar; reinventar = mudar a forma; título em fonte fácil de ler (Bodoni da carta do plano foi ressalva)
+- [Cota antes de bancada](cota-antes-de-bancada.md) — orçar chamadas pelo rpdLimit antes de testar provedores do FreeLLMAPI; a bancada de 2026-10-13 gastou o Google do dia
+- [Sem risada no chat](sem-risada-no-chat.md) — nunca "kkk"/"haha" para imitar o Gustavo
+- [Pesquisa pelo FreeLLMAPI](pesquisa-pelo-freellmapi.md) — pesquisa e varredura por script no FreeLLMAPI; agente Claude só com aval e custo dito
+- [Ask a recruta ocupado](ask-a-recruta-ocupado.md) — ask para recruta no meio de um turno fica sem Enter; conferir com check e reenviar com um ask novo
+- [Portal do projeto](portal-do-projeto.md) — web system local dos designs + gestão; respostas chegam ao maestro; Designer + revisor Codex Prumo
+- [Nunca editar papel em uso](nunca-editar-papel-em-uso.md) — role edit/write/assign reinicia o terminal do recruta e perde o contexto; instrução nova vai por ask
+- [Retomada do maestro](retomada-do-maestro.md) — após /clear, ler primeiro .scratch/context-hub/retomada-maestro.md e seguir a lista "Leia nesta ordem" do topo
+- [Aviso por vigia local](aviso-por-vigia-local.md) — 'chegar ao maestro' = vigia lendo arquivo local, não mensagem empurrada ao chat
+- [Rodada: essencial na opção](rodada-no-portal-o-essencial-na-opcao.md) — no portal, o 'por quê' fica escondido; o que a opção decide vai no texto dela
+- [Portal decide, terminal conversa](portal-decide-terminal-conversa.md) — decisão só no portal (rodada nova, nunca reescrever); terminal avisa em uma linha
+- [Conferir decisões antes da rodada](conferir-decisoes-antes-da-rodada.md) — reler map.md, Lições do vault e a peneira antes de propor desenho; a rodada 12 ignorou 'a busca é a porta'
+- [Carta só quando precisa](carta-so-quando-precisa.md) — rodada simples vai sem carta; a carta segue a ordem das perguntas
+- [Carta segue a rodada](carta-segue-a-rodada.md) — carta só quando o visual explica o que o texto não; sempre na ordem das perguntas da rodada
+- [Pausa no próximo ponto](pausa-no-proximo-ponto.md) — "na próxima oportunidade" = deixar terminar e não despachar; nunca matar agentes, laços, portal
+- [Rascunho fora de issues/](rascunho-fora-de-issues.md) — o portal lê todo .md de issues/ como ticket; rascunhos vão para rascunhos/
+- [Limpar recruta só depois de salvar](limpar-recruta-so-depois-de-salvar.md) — /clear só após o recruta gravar o contexto e copiar o scratchpad; se errar, /resume; mensagem embaralhada: perguntar
+- [Maestro liga recrutas](maestro-liga-recrutas.md) — `maestri connect "A" "B"` liga recrutas entre si; nunca pedir ao Gustavo; ler o `maestri help` inteiro antes de dizer que não dá
+- [Trabalho visível no canvas](trabalho-visivel-no-canvas.md) — executor aprovado vira recruta no canvas; desde 2026-10-17: até 4 construtores, cada recruta até 1 subagente
+- [Designer responde ao maestro](designer-responde-ao-amigo-do-maestro.md) — desde 2026-10-16 o Amigo do Maestro não existe; designers e revisores respondem ao "Claude Code"
+- [Legibilidade dos títulos](legibilidade-dos-titulos.md) — nos pareceres de cartas, título difícil de ler (contraste extremo, ornamental) é conserto; carta do plano aprovada com essa ressalva
+- [Rodada: explicação acima](rodada-explicacao-acima-das-perguntas.md) — texto entre `recomendada:` e as opções quebra o portal; explicação no topo; validar com `_parse_perguntas`
+- [Maestro não executa a construção](maestro-nao-executa.md) — junção, testes e worktree vão a recruta (Rebite) e os recrutas falam entre si; varredura e git o maestro faz
+- [Ask sem barra invertida](maestri-ask-sem-barra-invertida.md) — em maestri ask, caminho com \ perde letras (\t vira tabulação); usar /
+- [Contexto dos recrutas: 40%](contexto-dos-recrutas-40.md) — acima de 40%, retomada no próximo ponto seguro, "salvo para limpar", então /clear e "leia a sua retomada"
+- [Doc por curl](doc-por-curl.md) — na construção, doc externa por curl (versão .md), nunca subagente web-fetch
+- [Rodadas pelo chat](rodadas-pelo-chat.md) — portal fechado por RAM: rodadas pelo Maestri Chat (thread blue); a resposta vale como do portal
+- [Autonomia na construção](autonomia-na-construcao.md) — desde 2026-10-17 ~04h o maestro decide pelo Gustavo com critério; registrar; lista 'Para rever'; contexto até 700k
+- [Codex só para testes](codex-sem-cota-usa-claude.md) — execução e revisão no Claude; Codex só nos testes, gpt-6-luna padrão, 6.1-sol se difícil; Fielzinho fora

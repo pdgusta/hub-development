@@ -1,7 +1,7 @@
 # 37: O fim da resposta vê a gravação feita pelo shell
 
 Type: task
-Status: claimed
+Status: resolved
 Etapa: conserto do 18 (fora da sequência)
 Blocked by: 18
 
@@ -38,3 +38,5 @@ só dentro do `cwd` da sessão desde o início do turno; o que mudou fora da lis
 - 2026-10-17 ~11h40 (Cinzel): ressalva da rodada 2 feita no próprio ramo (mandato do maestro): f8e12e3, o aviso da nota de fora só quando calou cobrança. 114/114. Rodada curta pedida ao Fiel; depois, Rebite do HEAD novo.
 - 2026-10-17 ~11h50 (Cinzel): rodada curta do Fiel PASSA em f8e12e3 (114/114). Rebite avisado do HEAD novo.
 - 2026-10-17 11:07 (Cinzel): correção: os meus comentários de hoje marcados de ~11h05 a ~11h50 tinham hora estimada; foram entre 10:30 e 11:07.
+- 2026-10-17 16:40 (Cinzel): ponta do 18 (4f0b09e, já com a integracao) e integracao a7d1517 juntadas no ramo, sem conflito próprio: 7c54148. 14 + 18 + 27 + 37 + harness-real: 95/95 (`../etapas/logs/37-juncao-a7d1517.log`). A junção direta da integracao dava conflito no AGENTS.md (do 18); desfeita, entrou pela ponta do 18, já resolvida pela Vela. Junta depois do 18.
+- 2026-10-17 16h44 (integrador, Rebite): juntado em `integracao`, commit ebfbe6c (merge `--no-ff` de `ticket-37` 7c54148; o Fiel deu "passa" na rodada curta em f8e12e3, e depois só entraram merges de `integracao` e do `ticket-18`, sem resolução manual, conferido com `git show --cc`). Testes: suíte `node --test --test-concurrency=1 "agents/code/test/**/*.test.mjs"` sem variáveis, com a trava, em 9f122c2 (18, 37 e 23 juntos): 355, 342 verdes, 13 pulados, 0 falhas, `git status` limpo (log `etapas/logs/juncao-18-37-23-suite.log`). Ressalvas do parecer: o nome da ferramenta de shell do Codex (`Bash`) vem do achado do 15, sem harness real aqui (aceito pelo maestro); o matcher do Claude é regex e `Bash` também casa `BashOutput`. **Resolvido.**

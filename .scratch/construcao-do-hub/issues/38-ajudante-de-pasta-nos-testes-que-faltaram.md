@@ -1,7 +1,7 @@
 # 38: O ajudante da pasta de ensaio nos testes que ficaram de fora do 36
 
 Type: task
-Status: claimed
+Status: resolved
 Etapa: infraestrutura de teste (fora da sequência)
 Blocked by: 36
 
@@ -26,3 +26,4 @@ Depois da troca, rodar com falha forçada e conferir que nenhuma `hub-ensaio-*` 
 
 - 11:41 (maestro): o 38 também troca o modelo do Codex dos ponta a ponta 14, 19, 20 e 27 para `gpt-6.1-sol` (constante comum); 17, 18 e 25 ficam com a Vela.
 - 2026-10-17 11h58 (Trilho): pesados verdes (12-busca, 12-kit-busca, 13-gemini 17/17), falhas forçadas sem sobra (12, 12-kit, 13, ponta a ponta 12/15 antes do login, 16, sem Docker). MODELO_CODEX = gpt-6.1-sol comum (pedido do maestro). Ponta f61906d; revisão pedida ao Fiel.
+- 2026-10-17 14h06 (integrador, Rebite): juntado em `integracao`, commit 462e35d (merge `--no-ff` de `ticket-38` b854a7e, o HEAD da rodada 2 "passa" do Fiel; árvore do 38 igual à do ramo). Testes: suíte `node --test --test-concurrency=1 "agents/code/test/**/*.test.mjs"` sem variáveis, com a trava, junto com o 38, o 39 e a manutenção do 22 (c42ffa0): 285, 275 verdes, 10 pulados, 0 falhas, `git status` limpo (log `etapas/logs/juncao-38-39-22m-suite.log`; Docker Desktop parado pelo maestro na janela quieta, nenhum teste caiu por isso). Pesados do 38 não repetidos (17/17 com o Trilho, `etapas/logs/trilho-38-busca.log`; arquivos idênticos). Ressalvas do parecer: o `rmSync` do ajudante tenta 10 vezes (≈5 s), menos que os 10 s do `apagarEnsaio` antigo dos ponta a ponta; com harness lento para soltar a pasta, a falha diz "pasta de ensaio não saiu"; Docker do 08, 09 e 10 não rodou (aceito pelo maestro; as fases do 25 exercitam). Leitura do Fielzinho pendente. **Resolvido.**

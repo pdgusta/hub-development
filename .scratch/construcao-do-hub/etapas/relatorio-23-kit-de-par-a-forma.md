@@ -185,3 +185,32 @@ node vem curto). 23-kit + harness-real 22/22. Ressalva: o `03-busca.ps1` chamado
 (pelo `instalar.ps1`, já recebe o caminho longo).
 Rodada curta do Fiel: PASSA. Depois, a9643c6: o `Longo` para o kit se o node falha ou devolve vazio (um caminho vazio
 virava a pasta atual; foi assim que uma instalação de 10:40 caiu na raiz da worktree, já desfeita pelo kit). 22/22.
+
+## Mudança que falha (2026-10-17 12:32, 46897e0; leitura do Fielzinho)
+
+O `mudar()` movia o original para `.hub-kit/copias`, chamava a mudança e só depois registrava. Se a mudança falhava
+(disco cheio, permissão), o original ficava só na cópia, sem registro, e o desfazer apagava o `.hub-kit` com ele. Agora:
+falhou, o que ficou pela metade sai, o original volta ao lugar e o erro sobe. Teste: ENOSPC num arquivo e EPERM numa
+pasta, os dois com escrita pela metade; o retrato volta igual, e o desfazer seguinte não perde nada. 24/24.
+Rodada curta: VOLTA (o registro ficava fora do try). 488b377: o registro entra no try e é gravado por temporário e troca
+(`gravarRegistro`); falhou, a troca se desfaz e o original volta; se nem a devolução der, a cópia fica no `.hub-kit` e o
+desfazer recusa antes de tocar em nada ("cópia sem registro ..., devolva à mão"). Testes: ENOSPC no registro (inteiro e
+escrito pela metade: o registro anterior fica inteiro) e devolução que falha. 27/27.
+
+## Conserto curto da junção: EPERM passageiro na troca (2026-10-17 ~16h50, mandato do maestro)
+
+Achado do Fiel na rodada de junção (9fcf4cf): com `harness-real.test.mjs` e `23-kit.test.mjs` juntos, 2 de 3 rodadas
+pararam no passo 08 com `EPERM ... rename '.hub-kit\registro.json.novo' -> '.hub-kit\registro.json'`
+(`kit/casa.mjs`, `gravarRegistro`). É o Windows segurando por instantes o arquivo recém-gravado, sob carga.
+
+- **Conserto (ceda444):** `renomear` no `casa.mjs` repete o `rename` por até ~2 s, com pausa de 100 ms, em EPERM,
+  EACCES e EBUSY; outro erro sobe na hora. Vale nas quatro trocas do kit: `gravarRegistro`, `guardar` (o original vai
+  para a cópia), a devolução do original quando a mudança falha e o `desfazer`.
+- **Por que não o ajudante do arquivar:** o `renomear` de `agents/skills/arquivar/arquivar.mjs` é interno da skill (não
+  exportado), espera 10 s e é parte de um recuo arquivo por arquivo. O kit fica em `agents/code/`; a função é a mesma
+  ideia, com os mesmos códigos e o tempo pedido.
+- **Testes novos (5):** EPERM, EACCES e EBUSY passageiros (3 falhas) na troca do registro: o kit grava, sem sobra do
+  `.novo`; EPERM/EBUSY/EACCES passageiros ao guardar, ao devolver e no desfazer; EPERM que não passa: desiste em ~2 s
+  (2,1 s medidos), o erro sobe e o original volta. Vermelho antes do conserto (5 falhas), verde depois.
+- **Rodadas:** `harness-real.test.mjs` + `23-kit.test.mjs` juntos, três vezes: 34/34, 34/34, 34/34
+  (`etapas/logs/23-emuso-juntos-{1,2,3}.log`); sem pasta `hub-ensaio-23` no TEMP depois.

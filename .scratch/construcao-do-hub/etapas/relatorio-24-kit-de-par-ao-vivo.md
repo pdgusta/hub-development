@@ -45,11 +45,29 @@ Trava de 09:12 até o fim; log em `logs/24-harness-1.log`; evidência em
 - **Evidência sem dado da máquina:** os nomes das skills desta máquina saem trocados por `SKILL-DA-MAQUINA`, e a pasta
   do usuário por `%USERPROFILE%`. Nenhum `gsd-` nem `ask-matt` na saída.
 
-## Pendente
+## Rodada 2: só o Codex (2026-10-17, 17:20 a 17:21, janela quieta): PASSA
 
-- **Rodada 2: Codex**, depois das 12h15, logo depois do Codex do 11:
-  `HUB_HARNESS_REAL=1 HARNESSES=codex node --test --test-concurrency=1 agents/code/test/ponta-a-ponta/24-kit-ao-vivo.test.mjs`.
-  O que medir: se o Codex segue o `CODEX_HOME` da casa e lê o link `<casa>/.codex/AGENTS.md`.
+Trava de 17:21 até o fim; `HUB_HARNESS_REAL=1 HARNESSES=codex node --test --test-concurrency=1
+agents/code/test/ponta-a-ponta/24-kit-ao-vivo.test.mjs` no ramo `ticket-24` a3e0360 (com a integracao f640bbd); log
+`logs/24-harness-2.log` (1/1); evidência no commit 2000575 (`evidencia-24/codex/`, `hashes-codex.json`).
+
+| Harness | Resposta | Ferramentas | Servidores do hub |
+| --- | --- | --- | --- |
+| Codex 0.162.1 (`gpt-6-luna`, esforço baixo, pelo `MODELO_CODEX` do 43) | `jacaranda-1b158b` (a palavra) | nenhuma | `hub-*` registrados; o transporte cai (`error sending request for url (http://127.0.0.1:3939/mcp)`): os servidores não sobem no ensaio, como combinado |
+
+- **Modelo:** o luna bastou; nada de 6.1-sol (regra do Gustavo, 14h30).
+- **O que isso prova:**
+  - aberto num repositório fora do hub, o Codex respondeu a palavra que só o contrato do hub de ensaio sabe: leu o
+    `AGENTS.md` global pelo link `<casa>/.codex/AGENTS.md` que o kit criou;
+  - seguiu o `CODEX_HOME` da casa: o aviso do Codex cita `codex_home: ...\hub-ensaio-24-...\casa\.codex`, e os
+    servidores que ele tentou abrir são os do `config.toml` que o kit gravou na casa;
+  - o aviso "Refusing to create helper binaries under temporary dir" é do Codex com `CODEX_HOME` dentro do `%TEMP%`; só
+    registrado, não muda a resposta.
+- **Login** (nas condições do aval): `%USERPROFILE%\.codex\auth.json` → `<casa>\.codex`, de 20:20:59Z a 20:21:07Z
+  (17:20 a 17:21 aqui), apagado; a pasta de ensaio foi apagada (`pasta_apagada: true`).
+- **Nada global:** as 13 configurações reais conferidas por hash saíram iguais antes e depois, inclusive o
+  `~/.claude.json` desta vez (`hashes-codex.json`).
+- **Depois da rodada:** `23-kit.test.mjs` + `harness-real.test.mjs` no ramo: 34/34 (`logs/24-23kit-a3e0360.log`).
 
 ## Skills da máquina (2026-10-17 ~11h15, 432a927)
 

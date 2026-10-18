@@ -224,7 +224,7 @@ fatos = {
   "ticket_final": "25",
   "cadeia_fim": cadeia, "cadeia_fim_fonte": "Blocked by de cada ticket (issues/*.md); de cada um, o bloqueador que resolveu por último",
   "relogio": "git é o relógio: ticket = do primeiro commit à resolução; junção = hora do commit de junção. Horas de comentário da noite de 16/10 (adiantadas 2-3 h) e do diário entre ~03h e ~04h45 de 17/10 (~1 h, diario:27) não entram no tempo.",
-  "subtitulo": "Trinta horas, do recomeço às 14h30 de 16/10 ao fechamento às 20h17 de 17/10. Cada linha da partitura são <b>{H} horas</b>; cada compasso, <b>uma hora</b>, em escala. Cada pauta é um papel do time.",
+  "subtitulo": "Trinta horas numa linha só, do recomeço às 14h30 de 16/10 ao fechamento às 20h17 de 17/10. O tempo corre da esquerda para a direita, em escala: <b>cada compasso é uma hora</b>. Cada pauta é um papel do time.",
   "espera": {"de": "2026-10-16T14:30", "ate": "2026-10-16T18:30", "rotulo": "revisão do spec e /implement-spec", "fonte": D + ":8; primeiro commit de ticket às 18h57 (git 7c6cc47)"},
   "acorde_final": "Quem tocou o quê. Os números vêm dos tickets, dos pareceres da revisão e do registro de junções.",
   "coda": "<b>Fica para depois:</b> o ticket 26, instalação de verdade no par 1, é do Gustavo e segue aberto (vira instalação nas duas máquinas).",
@@ -238,7 +238,7 @@ fatos = {
   "testes": {"v": 370, "d": "355 verdes · 15 pulados · 0 falhas", "fonte": R + ":44"},
  },
  "equipe": [
-  {"nome": "Fiel", "papel": "revisor", "v": n_rodadas, "r": "rodadas (com as do Fielzinho)", "d": f"{n_voltas} voltas. Com o Fielzinho (segunda leitura no Codex) até as 14h37.", "fonte": "pareceres; " + D + ":164"},
+  {"nome": "Fiel", "papel": "revisor", "v": n_rodadas, "r": "rodadas", "d": f"{n_voltas} voltas. Contando as do Fielzinho (segunda leitura no Codex), que ficou até as 14h37.", "fonte": "pareceres; " + D + ":164"},
   {"nome": "Rebite", "papel": "integrador", "v": n_jun, "r": "junções", "d": f"{n_jun-n_desf-n_alheia} verdes, {n_alheia} com falha alheia mantida, {n_desf} desfeitas. A suíte cresceu de 11 para 370 testes.", "fonte": R},
   {"nome": "Lume", "papel": "documentador, desde 12h05", "v": n_docs, "r": "junções com docs", "d": "Documentação técnica em agents/code/docs/; uma leva desfeita às 12h37.", "fonte": R + ":35-42; " + D + ":140; git 62e93f7"},
   {"nome": "Maestro", "papel": "regência", "v": 9, "r": "decisões para rever", "d": "Tomadas pelo mandato do Gustavo, para conferir com ele.", "fonte": "../context-hub/retomada-maestro.md:70-85"},

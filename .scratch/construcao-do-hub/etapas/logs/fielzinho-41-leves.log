@@ -1,0 +1,26 @@
+✔ claude: ler inteiro um arquivo grande sem ter buscado dá "busque antes", sem recusa (211.5476ms)
+✔ claude: o aviso sai uma vez por arquivo por sessão; noutra sessão, sai de novo (881.9202ms)
+✔ claude: página grande de agents/code/ (fora da busca, ticket 41) não pede "busque antes" (340.8938ms)
+✔ claude: arquivo pequeno não avisa (191.1677ms)
+✔ claude: a busca apontou o arquivo e ele foi lido inteiro: "leia o trecho que a busca apontou" (570.0283ms)
+✔ claude: a busca apontou o arquivo e só um trecho foi lido: sem aviso (841.8321ms)
+✔ fora do hub, o hook sai sem aviso (461.2658ms)
+✔ copilot: os mesmos avisos pelo view e pela busca (2795.5766ms)
+✔ codex: a leitura por comando de shell avisa igual; busca e filtro de linhas contam (3211.5061ms)
+✔ cada leitura de arquivo do hub fica no registro da máquina, com o aviso que deu (451.9662ms)
+✔ a pasta com index.md local: true e tudo que tem ponto saem na lista do sincronizador (384.1493ms)
+✔ a mesma lista sai para a busca, na variável que ela lê, mais agents/code/ (2.7631ms)
+✔ a lista funciona na exclusão da busca (98.2669ms)
+✔ rodar de novo sem mudança não regrava e diz que nada mudou (o CLI só relê ao religar) (387.8548ms)
+✔ local: True, local: TRUE e fechamento "--- " contam como pasta local, como no verificador (188.4995ms)
+✔ index.md com YAML inválido é recusado, sem gravar nada (não dá para saber se a pasta é local) (132.6019ms)
+✔ pasta local com vírgula ou caractere de padrão no nome é recusada, sem gravar nada (364.5454ms)
+✔ o gerador escreve .git/info/exclude: git status não mostra a pasta local nem nada com ponto (6145.3115ms)
+ℹ tests 18
+ℹ suites 0
+ℹ pass 18
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 34091.9821

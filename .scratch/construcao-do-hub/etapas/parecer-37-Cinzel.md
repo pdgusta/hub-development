@@ -65,3 +65,11 @@ Ramo `ticket-37`, HEAD f8e12e3. **Veredito: PASSA**; a ressalva da r2 saiu.
   ferramenta. Sonda da r1 de novo (sessão que só rodou `git status`; nota de outra máquina incompleta e completa):
   solta (`null`) nos dois, e o fim não toca a nota.
 - Fiel: 14, 18, 27, 37 e harness-real 114/114; `git status` limpo.
+
+## Leitura do Fielzinho — 2026-10-17
+
+**PASSA, sem achado novo.** Leitura tardia das rodadas c16e53f, 4b695d5 e curta f8e12e3. Conferi o núcleo, a retomada, os fragmentos, as costuras e os testes. A nota observada fora das ferramentas só dispensa a cobrança quando é a nota do próprio recruta na iniciativa alterada por ferramenta. Não valida os sete campos nem troca last_agent; sessão que apenas lê não recebe essa cobrança.
+
+Prova própria: `node --test agents/code/test/37-gravacao-pelo-shell.test.mjs`, 14/14, saída 0 (188 s). Executada na worktree ticket-37 em 17b1f69; núcleo do 37 e seu teste sem mudança desde f8e12e3. A integração trouxe a correção do matcher de leitura do 15. Sem Docker nem harness real. Rodadas anteriores conferidas pelo histórico, sem rerun de cada ponta.
+
+Mantidas as limitações já escritas: mtime não identifica autoria; outro processo pode atualizar a nota e dispensar a cobrança, com aviso; limite de 20.000 entradas e exclusão dos arquivos registrados por outras sessões. Nenhum conserto adicional solicitado.

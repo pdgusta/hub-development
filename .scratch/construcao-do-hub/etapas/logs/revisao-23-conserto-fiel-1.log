@@ -1,0 +1,42 @@
+✔ o contrato chega aos três: link simbólico no Codex e no Copilot, import no CLAUDE.md sem perder o que já havia (13815.1909ms)
+✔ com -WhatIf, a casa não muda e o kit lista o que faria (10771.5343ms)
+✔ a segunda passada não muda nada (16782.7465ms)
+✔ o desfazer volta a casa ao que era, sem sobra (12275.1781ms)
+✔ as skills de uso geral chegam por junction às duas pastas globais; a de papel fica fora; o que já estava fica (11739.1902ms)
+✔ as linhas de MCP de busca e de banco chegam aos três, com o token por variável; o que já havia fica (9859.9784ms)
+✔ os hooks de todas as peças se juntam nos três sem apagar os que havia; no Codex, cada um aprovado pelo hash (12044.2499ms)
+✔ fragmento mudado e peça tirada do hub: a passada seguinte troca o grupo velho e tira o órfão, com a aprovação dele (15199.5778ms)
+✔ o GSD sai do escopo global, com cópia, e o contrato entra no lugar; o desfazer o devolve (12710.5661ms)
+✔ um copilot-instructions.md com texto além do GSD faz o kit parar e mostrar o texto, sem mudar nada (8908.6554ms)
+✔ o Codex fica em acesso total, por chave, sem perder o resto do config.toml (15186.1182ms)
+✔ com um CLAUDE.md acima do hub, o kit para antes de tudo e diz onde está (9298.7277ms)
+✔ sem CLAUDE.md no caminho, a conferência passa e o kit segue (10827.3689ms)
+✔ o passo 10 gera os XML da tarefa diária (cópia e cabeça) e da vigia de 5 min, sem registrar; -WhatIf não grava (15165.0431ms)
+✔ hub, casa e .env com o nome curto: o kit grava tudo no caminho longo (9751.9646ms)
+✔ a mudança que falha (ENOSPC) devolve o original (arquivo) ao lugar e relança o erro; o desfazer não o perde (25.242ms)
+✔ a mudança que falha (EPERM) devolve o original (pasta) ao lugar e relança o erro; o desfazer não o perde (23.5169ms)
+✔ ENOSPC no registro: a troca se desfaz, o original volta, o registro anterior fica (66.0538ms)
+✔ ENOSPC no registro, escrito pela metade: a troca se desfaz, o original volta, o registro anterior fica (68.6062ms)
+✔ se nem a devolução do original der, o desfazer não apaga a cópia (18.0383ms)
+✔ EPERM passageiro na troca do registro: o kit repete e grava (355.2755ms)
+✔ EACCES passageiro na troca do registro: o kit repete e grava (350.3793ms)
+✔ EBUSY passageiro na troca do registro: o kit repete e grava (357.5386ms)
+✔ EPERM passageiro ao guardar o original, ao devolvê-lo e no desfazer: o kit repete (1040.0422ms)
+✔ EPERM que não passa na troca do registro: desiste em ~2 s, o erro sobe e o original volta (2095.1635ms)
+✔ os arquivos que chamam harness são achados (29.4812ms)
+✔ sem HUB_HARNESS_REAL, os testes de harness aparecem pulados, com o motivo, e não mexem em nada (2248.8925ms)
+✔ a conferência por hash não diz nada quando nenhum arquivo real mudou (0.7456ms)
+✔ arquivo real gravado durante a rodada de um harness: diz qual arquivo e qual rodada (3.3424ms)
+✔ arquivo real gravado fora das rodadas: diz que foi fora dos harnesses do teste (0.4902ms)
+✔ arquivo real que sumiu ou apareceu: diz que não dá para saber a hora (0.4786ms)
+✔ a exceção do app-server é estreita: o arquivo existe, sobe o app-server e não cita login nem harness com modelo (6.136ms)
+✔ o modelo do Codex nos testes é o gpt-6-luna, salvo HUB_MODELO_CODEX (468.3338ms)
+✔ nenhum teste escreve o modelo do Codex à mão (129.5835ms)
+ℹ tests 34
+ℹ suites 0
+ℹ pass 34
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 193730.4041

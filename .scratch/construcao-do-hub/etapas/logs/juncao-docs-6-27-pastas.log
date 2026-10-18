@@ -1,0 +1,32 @@
+✔ link comum para pasta local vira par://, e par:// para o que replica volta a link comum, com aviso (8342.3533ms)
+✔ sem HUB_PAR_ID o link para pasta local não é reescrito e volta como falta (11822.0928ms)
+✔ link para dentro de .secrets/ volta como falta: cite só o nome do arquivo (9081.6223ms)
+✔ 32: link para fora do hub vira par://<par_id>/<unidade>/<caminho>, com aviso; a passada seguinte não o desfaz (7346.2185ms)
+✔ 32: caminho absoluto para dentro do hub fica sem letra de unidade: link comum, ou par:// se não replica (8956.9468ms)
+✔ 32: caminho de fora com espaço e parênteses vira par:// codificado, que a passada seguinte reconhece (6372.3175ms)
+✔ 32: sem HUB_PAR_ID, o link para fora do hub não é reescrito e a falta volta ao agente (8283.6743ms)
+✔ 33: imagem embutida para fora do hub ou para o que não replica vira par:// e mantém o !; a volta também (8278.4435ms)
+✔ 33: link Markdown com espaço cru no destino fica como está, e o verificador avisa (não é falta) (12616.1979ms)
+✔ 33: caminho de rede (UNC) num link fica como está, e o verificador avisa (não é falta) (7827.909ms)
+✔ 44: link dentro de código (em linha ou bloco cercado) é texto: nem troca, nem falta, nem aviso; o de fora segue lido (9395.7107ms)
+✔ 44: link Markdown com ./ ou ../ resolve da pasta da nota: o que replica fica; o que não replica vira par:// pela raiz (6141.1107ms)
+✔ 44: wikilink e par:// com ../ não derrubam o verificador; o link Markdown da mesma nota segue lido (8668.9788ms)
+✔ a pasta que chega a 10 entradas ganha index.md válido, com a lista pelos títulos (7520.6652ms)
+✔ a pasta que guarda um PNG ganha index.md; o PNG sem texto vira falta "descreva" (6737.1673ms)
+✔ rodar de novo atualiza a lista, preserva o texto livre e a descrição escrita; anexo com texto irmão não ganha linha (8072.4417ms)
+✔ index.md com summary: manual não é tocado (8277.4139ms)
+✔ agents/frontmatter/ (os esquemas) não ganha cartão: é oficina, tipo null no catálogo (10086.4869ms)
+✔ onde o catálogo diz tipo null (agents/code/, agents/skills/) não nasce cartão (6742.7512ms)
+✔ três notas parecidas em other/, em pastas diferentes, geram o aviso de bloco novo (não é falta) (5525.1723ms)
+✔ duas notas parecidas em other/ não geram aviso (6242.8434ms)
+✔ AGENTS.md e SKILL.md não são tocados pela conferência de links (5013.6608ms)
+✔ link com URI malformada vira falta daquela nota, e a conferência segue nas outras (4866.9126ms)
+✔ par:// para dentro de .secrets/ volta como falta: cite só o nome do arquivo (6021.2563ms)
+ℹ tests 24
+ℹ suites 0
+ℹ pass 24
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 196094.2046

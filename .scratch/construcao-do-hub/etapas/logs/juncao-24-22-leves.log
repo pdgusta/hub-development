@@ -1,0 +1,48 @@
+✔ o cliente fica ligado ao proxy nos três harnesses, só leitura, com o token de variável de ambiente (2678.2376ms)
+✔ -Escrita liga a gravação pela terceira rota; sem ela, a gravação sai; o que já estava nos arquivos fica (5524.3757ms)
+✔ o kit troca só as tabelas mcp_servers.hub-* do config.toml; a tabela que o Codex acrescenta ao fim fica (6671.4431ms)
+✔ o contrato vai à configuração global dos três harnesses, e o Copilot sobe com o instructions de todos os MCP (5639.3837ms)
+✔ o passo sobe o proxy em 127.0.0.1, uma rota e um token por servidor, sem token em arquivo (27770.9453ms)
+✔ o contrato chega aos três: link simbólico no Codex e no Copilot, import no CLAUDE.md sem perder o que já havia (15275.2606ms)
+✔ com -WhatIf, a casa não muda e o kit lista o que faria (13901.8198ms)
+✔ a segunda passada não muda nada (17374.2618ms)
+✔ o desfazer volta a casa ao que era, sem sobra (15085.9082ms)
+✔ as skills de uso geral chegam por junction às duas pastas globais; a de papel fica fora; o que já estava fica (15254.3616ms)
+✔ as linhas de MCP de busca e de banco chegam aos três, com o token por variável; o que já havia fica (14528.6903ms)
+✔ os hooks de todas as peças se juntam nos três sem apagar os que havia; no Codex, cada um aprovado pelo hash (15874.3031ms)
+✔ fragmento mudado e peça tirada do hub: a passada seguinte troca o grupo velho e tira o órfão, com a aprovação dele (18018.8992ms)
+✔ o GSD sai do escopo global, com cópia, e o contrato entra no lugar; o desfazer o devolve (16816.7581ms)
+✔ um copilot-instructions.md com texto além do GSD faz o kit parar e mostrar o texto, sem mudar nada (9521.2771ms)
+✔ o Codex fica em acesso total, por chave, sem perder o resto do config.toml (10860.4953ms)
+✔ com um CLAUDE.md acima do hub, o kit para antes de tudo e diz onde está (8648.0912ms)
+✔ sem CLAUDE.md no caminho, a conferência passa e o kit segue (10974.3555ms)
+✔ o passo 10 gera os XML da tarefa diária (cópia e cabeça) e da vigia de 5 min, sem registrar; -WhatIf não grava (22785.3066ms)
+✔ hub, casa e .env com o nome curto: o kit grava tudo no caminho longo (15888.1713ms)
+✔ a mudança que falha (ENOSPC) devolve o original (arquivo) ao lugar e relança o erro; o desfazer não o perde (23.4929ms)
+✔ a mudança que falha (EPERM) devolve o original (pasta) ao lugar e relança o erro; o desfazer não o perde (25.7875ms)
+✔ ENOSPC no registro: a troca se desfaz, o original volta, o registro anterior fica (72.2553ms)
+✔ ENOSPC no registro, escrito pela metade: a troca se desfaz, o original volta, o registro anterior fica (75.2224ms)
+✔ se nem a devolução do original der, o desfazer não apaga a cópia (13.0119ms)
+✔ EPERM passageiro na troca do registro: o kit repete e grava (351.878ms)
+✔ EACCES passageiro na troca do registro: o kit repete e grava (379.8655ms)
+✔ EBUSY passageiro na troca do registro: o kit repete e grava (351.5704ms)
+✔ EPERM passageiro ao guardar o original, ao devolvê-lo e no desfazer: o kit repete (1058.6383ms)
+✔ EPERM que não passa na troca do registro: desiste em ~2 s, o erro sobe e o original volta (2104.6724ms)
+✔ os arquivos que chamam harness são achados (222.4363ms)
+✔ sem HUB_HARNESS_REAL, os testes de harness aparecem pulados, com o motivo, e não mexem em nada (1625.5778ms)
+✔ a conferência por hash não diz nada quando nenhum arquivo real mudou (0.5415ms)
+✔ arquivo real gravado durante a rodada de um harness: diz qual arquivo e qual rodada (3.7406ms)
+✔ arquivo real gravado fora das rodadas: diz que foi fora dos harnesses do teste (0.6225ms)
+✔ arquivo real que sumiu ou apareceu: diz que não dá para saber a hora (0.556ms)
+✔ a exceção do app-server é estreita: o arquivo existe, sobe o app-server e não cita login nem harness com modelo (5.6006ms)
+✔ o modelo do Codex nos testes é o gpt-6-luna, salvo HUB_MODELO_CODEX (230.1032ms)
+✔ nenhum teste escreve o modelo do Codex à mão (114.6929ms)
+﹣ ticket 24: o kit de par ao vivo nos três harnesses de verdade (2.235ms) # chama harness de verdade (login, cota, evidência versionada): rode com HUB_HARNESS_REAL=1
+ℹ tests 40
+ℹ suites 0
+ℹ pass 39
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 1
+ℹ todo 0
+ℹ duration_ms 284500.9507
