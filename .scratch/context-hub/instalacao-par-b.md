@@ -4,6 +4,15 @@ Escrito pelo maestro do par A em 2026-10-18 ~13h30, depois de instalar o par A. 
 hub **`C:\context-hub\agents\code\docs\instalacao.md`** (vem no clone do hub). Este arquivo diz só o que é
 específico do par B e o que o par A já fez. Ticket: `.scratch/construcao-do-hub/issues/26-instalacao-de-verdade-no-par-1.md`.
 
+## PARE: ainda não clone o hub nem instale (2026-10-18 ~14h)
+
+O ticket 49 (Brasa, parcial) mostrou que **subir o B com o hub já clonado no disco é arriscado**: com final de linha
+diferente, 121 conflitos e 399 arquivos do disco do **A** reescritos; com os bytes iguais, o resultado variou entre
+nenhum conflito e 400 "binário descartado" e uma nota diferente nos dois discos. Ela está testando o caminho seguro
+(o banco do B puxa o do A numa replicação única antes de o CLI do B partir). **Não rode os passos 2, 6 e 7 até o maestro
+do A escrever aqui o caminho aprovado.** Os passos 1, 3, 4 e 5 (pré-requisitos, fork, CLI do LiveSync, cópia e hash)
+podem seguir, porque nenhum deles toca no hub nem no banco.
+
 ## O que o par A já fez (não repetir)
 
 - Par A = `armis00323`, Tailscale `100.120.188.50`, instalado às ~13h10 (CouchDB `hub-banco` em
