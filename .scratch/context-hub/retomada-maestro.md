@@ -67,6 +67,8 @@ para abrir e fechar aplicativos e processos da execução. Contexto do maestro: 
 
 ## Para rever com o Gustavo (decisões tomadas pelo mandato)
 
+- (45) A prova do banco entre máquinas expõe o CouchDB de ensaio no IP Tailscale desta máquina por alguns minutos (só a tailnet do Gustavo, senha aleatória, descida conferida por porta).
+
 - (25) Fechou sem o Codex nas fases 4-7 do hub inteiro; ali o Codex está provado nos tickets de cada peça (17, 18, 21,
   22). Opcional antes da instalação (anotado no 26).
 - (25) Nota que não descia do A ao B: não era replicação morta; um par recém-subido recebe a semente inteira (~520

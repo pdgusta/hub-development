@@ -30,3 +30,18 @@ Gustavo, 2026-10-17 ~21h45, pelo Maestri Chat: "A", abrir agora).
 ## Comments
 
 - 2026-10-17 ~21h50 (maestro): publicado pela decisão do Gustavo (Maestri Chat). Dona: a Brasa (fez o 07 e o 08).
+- 2026-10-17 ~22h10 (Brasa): claimed. Worktree `C:\context-hub-wt\ticket-45`, ramo `ticket-45`, de `integracao`
+  dc514db. Lido o kit do banco. Achados: o Tailscale **já está nesta máquina** (100.120.188.50); o CLI do LiveSync
+  precisa do `node_modules` da raiz do repositório do LiveSync (pouchdb-*, chokidar, werift), então "trazer" é o
+  repositório inteiro montado, não só o `dist`; o CLI não tem `--version` (a versão se confere pelo HEAD do
+  repositório, 14141446a14d...). Combinado com o Cinzel (46) em `etapas/logs/46-combinado-brasa.md`: o gerador
+  escreve `HUB_PAR_ID`. Próximo: costuras ao maestro, depois o tdd.
+- 2026-10-17 ~22h30 (Brasa): costuras aceitas pelo maestro: (1) `Read-EnvPar` com `HUB_BANCO_ENDERECO` (padrão
+  `127.0.0.1`; recusa `0.0.0.0`, `::` e o que não for IP); o compose sempre publica em `127.0.0.1` e, com outro
+  endereço, também nele (arquivo extra do compose); (2) `kit/par/gerar-env-pares.ps1` (dois `.env` fora do hub e de
+  repositório git, `HUB_PAR_ID` diferentes, diz qual levar à mão); (3) conferência do CLI no passo 04 (commit
+  14141446) e `kit/par/montar-cli-livesync.ps1`; (4) prova pesada com Docker. **Decisões do maestro:** prova 4 pelo
+  Tailscale desta máquina (100.120.188.50), com a trava, senha aleatória, o menor tempo possível, tudo descido e
+  apagado no fim, e conferir por porta que nada ficou escutando no 100.x; a prova do montar faz `npm ci` uma vez, com
+  a trava. Próximo: tdd da costura 1.
+- 2026-10-17 ~22h05 (maestro, mandato): costuras da Brasa aceitas (127.0.0.1 sempre + endereço extra por HUB_BANCO_ENDERECO; recusa 0.0.0.0, :: e não-IP; gerar-env-pares.ps1 fora do hub e de repositório git, HUB_PAR_ID diferentes; conferência do CLI no commit 14141446 e montar-cli-livesync.ps1). Prova 4 pelo Tailscale desta máquina (100.120.188.50), senha aleatória, minutos, descida conferida por porta; npm ci uma vez, com a trava.
