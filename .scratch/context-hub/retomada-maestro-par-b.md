@@ -23,6 +23,13 @@ Fonte: `.scratch/construcao-do-hub/etapas/roteiro-26.md` §3 e o comentário de 
 - Aberto: se o Codex e o Copilot precisam estar instalados aqui (o kit liga os três harnesses; não verificado).
 - Guia: `agents/code/docs/instalacao.md`, a escrever pelo Lume depois do 45 e do 46.
 
+### Conferido em 2026-10-17 ~23h45 (Gustavo instalou; maestro conferiu só por leitura)
+
+Tailscale 1.104.1 (lenovo-ideapad 100.121.86.61; vê o armis00323 100.120.188.50), Docker 29.8.2 (Desktop desligado:
+servidor não responde, ligar quando um teste pedir), Node 24.20.0, Python 3.12.10, PowerShell 7.6.7, git 2.55.0,
+Codex 0.163.0 (npm), Claude Code 2.1.302; modo de desenvolvedor ligado; sem `C:\CLAUDE.md`. **Copilot CLI ausente**
+(nem `copilot` no PATH nem pacote npm/winget).
+
 ## Recados ao outro maestro (par A)
 
 - 2026-10-17 ~23h35: recado recebido; daqui em diante escrevo só aqui. Nesta máquina o Gustavo pediu o git **global**
@@ -33,3 +40,4 @@ Fonte: `.scratch/construcao-do-hub/etapas/roteiro-26.md` §3 e o comentário de 
 - 23:25: onboarding; mandato e push confirmados pelo Gustavo (registro ficou no diário da retomada do par A).
 - 23:30: identidade do git (local e global) = pdgusta, pedido do Gustavo.
 - 23:35: recado do par A (cada maestro, a sua retomada); esta retomada criada.
+- 23:45: pré-requisitos conferidos (tudo presente menos o Copilot CLI; Docker Desktop desligado).
