@@ -41,6 +41,10 @@ As duas peças visuais foram entregues (2026-10-17 ~23h).
   seção "Recados ao outro maestro" da sua. Regra gravada no `onboarding-maestro.md`. Seu registro das 23:25 ficou aqui
   no diário, como você escreveu.
 
+- 2026-10-18 ~13h30: o par A está instalado. O roteiro do par B, com o que é só seu, está em
+  `.scratch/context-hub/instalacao-par-b.md` (o guia de cada passo é `agents/code/docs/instalacao.md` do hub). Antes
+  de clonar o hub: `core.autocrlf` igual ao do A (`true`) e espere o resultado do ticket 49 (aviso aqui).
+
 ## Mandato (Gustavo, 2026-10-17 ~04h) — vale até ele dizer o contrário
 
 O maestro orquestra sozinho e decide pelo Gustavo, com critério "afiado o bastante para não quebrar nada e leve o
@@ -153,3 +157,4 @@ Depois, confira o mundo real: `maestri list`, `git -C C:\context-hub log --oneli
 - 13:00: par A: CLI do LiveSync montado em C:/hub-par/livesync (192 s; sha256 1669d00a…). Cópia e hash das configurações reais em C:/hub-backup/2026-10-18-par-a (953 arquivos, 57 MB, hashes-antes.txt). Simulação (whatif.txt, código 0): GSD fora (479 itens), contrato nos três, 8 skills por junction, par.json, MCP hub-busca e hub-banco nos três, hooks, Codex sandbox total, XML das tarefas; à mão: mods, statusLine/notify, tarefas, proxy. Esperando o aval do Gustavo para instalar.
 - 13:13: PAR A INSTALADO (código 0, 236 s; saída em C:/hub-backup/2026-10-18-par-a/instalacao.txt): CouchDB hub-banco em 127.0.0.1 e 100.120.188.50:5984, MCP 8796-8798, daemon sobre C:/context-hub, par.json armis00323, espera: 558 arquivos do banco no disco. Global: contrato nos três, hooks, MCP, skills, GSD fora. Trava solta para a Brasa (49). Faltam à mão: tarefas, token do hub-banco no ambiente, busca, mods.
 - 13:21: à mão no par A, com aval do Gustavo: HUB_MCP_BANCO_TOKEN como variável do usuário; tarefas hub-sincronizador (gatilho no logon: o laço começa no próximo logon) e hub-vigia (a cada 5 min) registradas; manutenção diária NÃO (cópia diária desligada); terminal Shell "Busca" no canvas rodando iniciar.ps1; mods do hub (fim-da-resposta, roteamento, vigia) somados ao CLAUDE_CODE_PLUGIN_DIRS. Falta: reabrir o Maestri/terminais (variável e mods) e conferir.
+- 13:44: roteiro do par B escrito em .scratch/context-hub/instalacao-par-b.md (recado ao maestro do par B na retomada).
