@@ -1,69 +1,101 @@
 # Instalação do par B (lenovo-ideapad): o que o maestro de lá executa
 
-Escrito pelo maestro do par A em 2026-10-18 ~13h30, depois de instalar o par A. O guia de cada passo é a página do
-hub **`C:\context-hub\agents\code\docs\instalacao.md`** (vem no clone do hub). Este arquivo diz só o que é
-específico do par B e o que o par A já fez. Ticket: `.scratch/construcao-do-hub/issues/26-instalacao-de-verdade-no-par-1.md`.
+Reescrito pelo maestro do par A em 2026-10-18 ~15h40, depois do ticket 49 (par novo com o hub no disco; Fiel: o código
+passa, a ordem do par B é esta). Fonte dos comandos: a seção "Sequência final do par B (para copiar)" de
+`.scratch/construcao-do-hub/etapas/relatorio-49-par-novo-com-hub.md`, adaptada às decisões do Gustavo (abaixo). O guia
+de cada peça é `agents/code/docs/instalacao.md` do hub (no clone do kit); onde ele diz "clone em `C:\context-hub`",
+**vale este arquivo** (o Lume ainda vai pôr o guia em dia com o 49).
 
-## PARE: ainda não clone o hub nem instale (2026-10-18 ~14h)
-
-O ticket 49 (Brasa, parcial) mostrou que **subir o B com o hub já clonado no disco é arriscado**: com final de linha
-diferente, 121 conflitos e 399 arquivos do disco do **A** reescritos; com os bytes iguais, o resultado variou entre
-nenhum conflito e 400 "binário descartado" e uma nota diferente nos dois discos. Ela está testando o caminho seguro
-(o banco do B puxa o do A numa replicação única antes de o CLI do B partir). **Não rode os passos 2, 6 e 7 até o maestro
-do A escrever aqui o caminho aprovado.** Os passos 1, 3, 4 e 5 (pré-requisitos, fork, CLI do LiveSync, cópia e hash)
-podem seguir, porque nenhum deles toca no hub nem no banco.
+**Por que não clonar o hub em `C:\context-hub`:** o 49 provou que qualquer diferença de bytes entre o clone e o disco
+do A (basta o final de linha) vira conflito: 121 conflitos e 399 arquivos do disco do **A** reescritos. O B sobe com a
+pasta do hub **vazia**, recebe o hub pelo banco e só depois liga o git.
 
 ## O que o par A já fez (não repetir)
 
-- Par A = `armis00323`, Tailscale `100.120.188.50`, instalado às ~13h10 (CouchDB `hub-banco` em
-  `127.0.0.1:5984` e `100.120.188.50:5984`, MCP 8796-8798, daemon do LiveSync sobre `C:\context-hub`, banco com 558
-  arquivos). A replicação de envio do A já aponta para `http://100.121.86.61:5984/hub` (o B): começa sozinha quando o
-  CouchDB do B subir.
-- Os dois `.env` foram gerados **no A** (seção 3 do guia; a frase-senha e o sal da cifra são os mesmos nos dois e só
-  podem nascer juntos). O do B já está completo: `HUB_PAR_ID=lenovo-ideapad`, `HUB_BANCO_ENDERECO=100.121.86.61`,
-  `HUB_OUTRO_PAR_URL=http://100.120.188.50:5984`, `HUB_MCP_BANCO_DIR=C:\Projetos\hub-mcp-banco`, tokens próprios,
-  `HUB_MAQUINA=lenovo-ideapad`; cópia diária e proxy de clientes **desligados** (vazios). **Não gere outro `.env`.**
+- Par A = `armis00323`, Tailscale `100.120.188.50`, instalado em 2026-10-18 ~13h10; o banco tem o hub; a replicação de
+  envio do A já aponta para `http://100.121.86.61:5984/hub` e começa sozinha quando o CouchDB do B subir.
+- Os dois `.env` nasceram juntos no A (mesma frase-senha e sal). O do B: `HUB_PAR_ID=lenovo-ideapad`,
+  `HUB_BANCO_ENDERECO=100.121.86.61`, `HUB_OUTRO_PAR_URL=http://100.120.188.50:5984`,
+  `HUB_MCP_BANCO_DIR=C:\Projetos\hub-mcp-banco`, `HUB_LIVESYNC_CLI=C:\hub-par\livesync\src\apps\cli\dist\index.cjs`,
+  tokens próprios, `HUB_MAQUINA=lenovo-ideapad`; cópia diária e proxy **desligados**. **Não gere outro `.env`.**
 
-## O que chega do par A (por Taildrop, nunca pelo git)
+## Decisões do Gustavo que valem aqui (como no A)
+
+- Cópia diária e proxy de clientes desligados por enquanto: **não registrar** a tarefa `hub-manutencao-diaria`.
+- Passos à mão aprovados no A: `HUB_MCP_BANCO_TOKEN` como variável do usuário; tarefas `hub-sincronizador` e
+  `hub-vigia`; um terminal Shell "Busca" no canvas; os mods do hub no `CLAUDE_CODE_PLUGIN_DIRS`. Confirme com ele aqui.
+
+## O que chega do A por Taildrop (nunca pelo git)
 
 O maestro do A manda com `tailscale file cp <arquivo> lenovo-ideapad:` (o Gustavo liga "Send Files" no painel do
-Tailscale). No Windows, chega em `C:\Users\<usuário>\Downloads`.
-1. `lenovo-ideapad.env`: mova para `C:\hub-transporte\lenovo-ideapad.env` (fora do hub e de repositório git). Ele lê
-   o hub inteiro: não copie para outro lugar, não ponha no git.
-2. `hub-mcp-banco.bundle`: o fork do MCP do banco (ramo `integracao`, 34c3e50).
+Tailscale; chega em `C:\Users\<usuário>\Downloads`): `lenovo-ideapad.env` (mova para `C:\hub-transporte\`; ele lê o
+hub inteiro: não copie para outro lugar, não ponha no git) e `hub-mcp-banco.bundle` (o fork, ramo `integracao`).
 
-## Passos no par B, na ordem (cada um com o Gustavo vendo)
+## Os passos, um bloco por vez, lendo a saída (com o Gustavo vendo), em `pwsh`
 
-0. **Antes de clonar:** `git config --get core.autocrlf` deve dar `true`, como no A (achado da Brasa no ticket 49:
-   no A os textos do hub estão em CRLF; com `false`, cada arquivo do clone difere do banco). E **espere o resultado
-   do ticket 49** (o maestro do A avisa na retomada dele): ele diz se o B pode subir com o hub já clonado no disco ou
-   se precisa de outro caminho.
-1. Pré-requisitos (guia §1): já conferidos por você em 2026-10-17 ~23h45. Ligue o Docker Desktop. O Copilot CLI não
-   está no B: o efeito no passo 08 não foi verificado (guia §1); diga ao Gustavo antes.
-2. O hub: `git clone https://github.com/pdgusta/context-hub.git C:\context-hub` (o `main` com o guia é o fe55b12 ou
-   mais novo). Configure nele `git config --local user.name pdgusta` e `user.email gustavopottpott@hotmail.com`.
-3. O fork, do bundle: `git clone -b integracao <Downloads>\hub-mcp-banco.bundle C:\Projetos\hub-mcp-banco`.
-4. O CLI do LiveSync, do repositório público (sem bundle): `pwsh C:\context-hub\agents\code\kit\par\montar-cli-livesync.ps1 -Destino C:\hub-par\livesync -WhatIf`, depois sem `-WhatIf` (~3 min no A).
-5. Cópia e hash das configurações reais (guia §8). No A foi assim: `.claude\settings.json`, `.claude\CLAUDE.md`,
-   `.claude\skills`, `.claude\agents`, `.claude\mods`, `.claude.json`, `.codex\{config.toml,AGENTS.md,hooks.json,skills}`,
+```powershell
+# 0. Variáveis
+$Url  = 'https://github.com/pdgusta/context-hub.git'   # o hub privado (o Gustavo empurra o main do A)
+$EnvB = 'C:\hub-transporte\lenovo-ideapad.env'
+$Hub  = 'C:\context-hub'
+$Kit  = 'C:\Projetos\hub-kit'
+
+# 1. Pré-condições: autocrlf igual ao do A; a pasta do hub vazia; nenhum CLAUDE.md acima dela
+git config --global core.autocrlf true
+if (Test-Path $Hub) { if (Get-ChildItem -Force $Hub) { throw "$Hub não está vazia: pare" } } else { New-Item -ItemType Directory $Hub | Out-Null }
+
+# 2. O kit de fora, o fork e o CLI do LiveSync
+git clone -b main $Url $Kit
+git clone -b integracao "$HOME\Downloads\hub-mcp-banco.bundle" C:\Projetos\hub-mcp-banco
+pwsh "$Kit\agents\code\kit\par\montar-cli-livesync.ps1" -Destino C:\hub-par\livesync -WhatIf
+pwsh "$Kit\agents\code\kit\par\montar-cli-livesync.ps1" -Destino C:\hub-par\livesync      # ~3 min; clona o repositório público
+```
+
+3. **Cópia e hash das configurações reais** (como no A): `.claude\settings.json`, `.claude\CLAUDE.md`, `.claude\skills`,
+   `.claude\agents`, `.claude\mods`, `.claude.json`, `.codex\{config.toml,AGENTS.md,hooks.json,skills}`,
    `.copilot\{copilot-instructions.md,config.json,mcp-config.json,hooks}`, `.agents\skills`, `.agents\.skill-lock.json`
-   para `C:\hub-backup\<data>-par-b\`, com `hashes-antes.txt` (SHA256 de cada arquivo).
-6. Simulação: `pwsh C:\context-hub\agents\code\kit\par\instalar.ps1 -Casa $HOME -Hub C:\context-hub -EnvFile C:\hub-transporte\lenovo-ideapad.env -WhatIf`; leia com o Gustavo (guia §7).
-7. A instalação (o mesmo comando sem `-WhatIf`). A espera (guia §10): o banco do B recebe a replicação do A e o daemon
-   leva ao disco; na prova do 46, ~566 arquivos em 315 s.
-8. À mão, como no A (o Gustavo aprovou lá; confirme aqui):
-   - `HUB_MCP_BANCO_TOKEN` como variável do usuário, com o valor do `.env` do B
-     (`[Environment]::SetEnvironmentVariable('HUB_MCP_BANCO_TOKEN', <valor>, 'User')`);
-   - tarefas: `schtasks /create /tn hub-sincronizador /xml C:\hub-par\banco\tarefa-sincronizador.xml` e
-     `schtasks /create /tn hub-vigia /xml $HOME\.hub-kit\tarefas\hub-vigia.xml` (a manutenção diária fica para quando
-     a cópia diária for ligada);
-   - um terminal Shell "Busca" no canvas do Maestri rodando `pwsh -NoProfile -File C:\context-hub\agents\skills\busca\iniciar.ps1`;
-   - os mods do hub no `CLAUDE_CODE_PLUGIN_DIRS` do `settings.json`:
-     `;C:\context-hub\agents\code\mods\fim-da-resposta;C:\context-hub\agents\code\mods\roteamento;C:\context-hub\agents\code\mods\vigia`;
-   - reabrir o Maestri e os terminais (a variável e os mods só valem para processos novos).
-9. Apague `C:\hub-transporte\lenovo-ideapad.env` só depois que a instalação passar (ele é o `-EnvFile` do kit também
-   para desfazer e rodar de novo; guarde-o fora do hub, só nesta máquina).
-10. Conferir (guia §13): `node C:\context-hub\agents\skills\vigia\vigia.mjs passada --env C:\hub-transporte\lenovo-ideapad.env`
-    em `ok`; uma nota de teste gravada no B aparece no A e uma do A aparece no B (o maestro do A grava a dele e avisa).
+   para `C:\hub-backup\2026-10-18-par-b\`, com `hashes-antes.txt` (SHA256 de cada arquivo).
 
-Registre cada passo na sua retomada (`retomada-maestro-par-b.md`) e dê push: o maestro do A acompanha por ela.
+```powershell
+# 4. Simulação e depois banco, busca, MCP e a espera, com a pasta do hub vazia (Docker Desktop ligado)
+pwsh "$Kit\agents\code\kit\par\instalar.ps1" -Casa $HOME -Hub $Hub -EnvFile $EnvB -Passos 00,03,04,05,espera -WhatIf
+pwsh "$Kit\agents\code\kit\par\instalar.ps1" -Casa $HOME -Hub $Hub -EnvFile $EnvB -Passos 00,03,04,05,espera -PrazoEspera 900
+# siga só com "o par recebeu o hub: N arquivos do banco no disco"; senão:
+#   node "$Kit\agents\code\kit\par\espera.mjs" --hub $Hub --env $EnvB --segundos 600
+
+# 5. O git, sem tocar nos arquivos que vieram do banco
+git -C $Hub init -q -b main
+git -C $Hub remote add origin $Url
+git -C $Hub fetch -q origin main
+git -C $Hub reset -q --mixed origin/main
+git -C $Hub branch -q --set-upstream-to=origin/main
+$f = @(git -C $Hub -c core.quotePath=false ls-files -d | Where-Object { $_ -match '(^|/)\.' })   # só o que tem ponto
+if ($f) { git -C $Hub checkout -- @f }
+git -C $Hub config --local user.name pdgusta; git -C $Hub config --local user.email gustavopottpott@hotmail.com
+git -C $Hub status --short    # um " D" é nota que o A apagou depois do commit: NÃO restaurar
+
+# 6. O kit do próprio hub: 04 (regrava a tarefa com o laço do hub e o .git/info/exclude), 08 e 10
+pwsh "$Hub\agents\code\kit\par\instalar.ps1" -Casa $HOME -Hub $Hub -EnvFile $EnvB -Passos 04,08,10 -WhatIf
+pwsh "$Hub\agents\code\kit\par\instalar.ps1" -Casa $HOME -Hub $Hub -EnvFile $EnvB -Passos 04,08,10
+# conferir: o XML do laço aponta "$Hub\agents\code\kit\par\banco\laco.ps1"; o .git\info\exclude tem "# hub:exclusoes:inicio"
+# (comandos de conferência no relatório do 49, bloco 6)
+
+# 7. Tarefas (com o Gustavo): só estas duas
+schtasks /create /tn hub-sincronizador /xml C:\hub-par\banco\tarefa-sincronizador.xml
+schtasks /create /tn hub-vigia         /xml "$HOME\.hub-kit\tarefas\hub-vigia.xml"
+
+# 8. O clone de fora sai
+Remove-Item -Recurse -Force $Kit
+```
+
+9. **À mão, como no A:** `[Environment]::SetEnvironmentVariable('HUB_MCP_BANCO_TOKEN', <valor do .env do B>, 'User')`;
+   terminal Shell "Busca" no canvas com `pwsh -NoProfile -File C:\context-hub\agents\skills\busca\iniciar.ps1`; somar ao
+   `CLAUDE_CODE_PLUGIN_DIRS` do `settings.json`:
+   `;C:\context-hub\agents\code\mods\fim-da-resposta;C:\context-hub\agents\code\mods\roteamento;C:\context-hub\agents\code\mods\vigia`;
+   reabrir o Maestri (a variável e os mods só valem para processos novos).
+10. **Conferir:** `node C:\context-hub\agents\skills\vigia\vigia.mjs passada --env $EnvB` em `ok`; uma nota de teste
+    gravada no B aparece no A e uma do A aparece no B (combine com o maestro do A pela retomada).
+11. Guarde `$EnvB` só nesta máquina, fora do hub (é o `-EnvFile` para rodar de novo e desfazer).
+
+O que não foi provado (relatório do 49): o bloco 6 (o 04 do próprio hub depois do git) e o 03 e o 05 com a pasta vazia,
+só pela leitura. Pare e avise na sua retomada se algo sair diferente; o maestro do A acompanha por ela.
