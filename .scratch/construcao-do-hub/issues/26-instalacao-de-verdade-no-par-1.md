@@ -3,7 +3,7 @@
 Type: task
 Status: ready-for-human
 Etapa: depois da junção
-Blocked by: 25
+Blocked by: 25, 45, 46
 
 **What to build:** O hub de verdade nas **duas máquinas**, no mesmo ciclo, à vista do Gustavo (decisão dele, 2026-10-17
 ~20h, no chat do maestro: prefere ver os efeitos depois de instalar no outro PC a testar sozinho aqui e achar os
@@ -31,3 +31,8 @@ O fluxo de **setup num par novo** (genérico, repetível) fica para depois, ajus
   será outra sessão; achar um jeito de os dois maestros se comunicarem (pergunta aberta; candidato natural: o próprio
   hub replicado entre os pares, ver o radar na retomada do maestro). Roteiro do 26 a preparar depois do reinício.
 - 2026-10-17 ~21h40 (maestro, divergência do Lume): nenhum script do kit nem ticket define `HUB_PAR_ID` (sem ela, nenhum link fora do hub vira `par://`); anotada em `agents/code/docs/componentes/pastas-e-links.md` §5. Na instalação, o kit de par deve gravar `HUB_PAR_ID` de cada par (ex.: no `.env` do par).
+- 2026-10-17 ~21h45 (Gustavo, Maestri Chat, thread blue): (1) A: preparo agora, nos tickets 45 (banco entre duas
+  máquinas, Brasa) e 46 (kit para duas máquinas, Cinzel); (2) A: depois do 45 e do 46, o Rebite junta `integracao` no
+  `main` do `C:\context-hub` e o **Gustavo** faz o push para `pdgusta/context-hub` e clona no outro PC (o maestro nunca
+  faz push); (3) A: o fork e o sincronizador do LiveSync por `git bundle` num pendrive ou pasta dele, o `.env` do par B
+  só à mão; (4) Tailscale **ainda não** está nas máquinas: o Gustavo instala nas duas antes do passo 4 do roteiro.
