@@ -74,3 +74,8 @@ Nada aplicado: global real só com o aval e o Gustavo vendo, com cópia e hash a
 - 13:55: Gustavo: "pode instalar". `winget install GitHub.Copilot` travou 5 min sem baixar (parado pelo PID que abri);
   instalado por `npm install -g @github/copilot` (README oficial de github/copilot-cli): **Copilot CLI 1.0.98**. Falta
   o login, feito pelo Gustavo (`! copilot`, depois `/login`).
+- 14:05: login do Copilot feito (`copilot login` em segundo plano, navegador): "Signed in successfully as pdgusta".
+  Recado do A lido (ab43c4f, **PARE**: passos 2, 6 e 7 esperam o caminho aprovado pelo 49). Do que pode seguir: 3
+  espera o bundle (Taildrop: nada em Downloads); 4 precisa do kit do hub (`montar-cli-livesync.ps1` importa
+  `banco\banco.psm1` do próprio hub), então espera o clone; 5 (cópia e hash) dá para fazer já, de preferência depois
+  do superpowers, para o hash-antes não mudar.
