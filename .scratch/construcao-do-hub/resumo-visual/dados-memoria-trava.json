@@ -1,0 +1,4310 @@
+{
+ "notas": [
+  "Horas em horário de Brasília. CSVs do medidor do 25 e corte.json estavam em UTC (Z): já subtraí 3 h. Medidores da Brasa, .status, fila-docker e diário já são hora local.",
+  "hora_local vem com segundos quando a fonte tem segundos; senão, só minutos.",
+  "CSV duplicado: 25-antes-noite-medida.csv é idêntico (mesmo md5) a 25-medida-fases-1-3.csv e à medida.csv da pasta rodadas/2026-10-17-1248-... da evidência; usei só 25-medida-fases-1-3.csv. Apesar do nome '1248', os dados são de 09:59-10:01 local (12:59-13:01 UTC), a 2ª volta das fases 2-3 da manhã (o parecer-25:107 já aponta o nome que engana).",
+  "Redução: arquivos com mais de 40 linhas ficaram com início, fim, mínimo, máximo e o mínimo e o máximo de cada faixa (≤40 pontos; ≤20 nos dois CSVs fora da BASE). O mínimo de cada arquivo leva minimo_do_arquivo: true.",
+  "Medidores da Brasa (medidor-*.log): colunas hora, MB livres, MB da vmmemWSL (etapas/logs/medidor-brasa.ps1). Só a coluna de MB livres entrou.",
+  "Fontes FORA da BASE (marcadas fora_da_base: true): C:/context-hub-wt/ticket-07/.local/fila-docker.log (citado no relatorio-07:188; única medida da noite de 16→17 antes da 01h) e as medida.csv das rodadas 19:21 e 19:26 do 25 na worktree ticket-25 (ponta 4628138). Retire se a peça só puder usar a BASE.",
+  "Entradas com 'repete' são o mesmo evento já medido em outra fonte (o diário costuma registrar minutos depois). Para o gráfico, prefira a fonte do status/medidor.",
+  "Diário linhas 18-26: hora estimada e adiantada (linha 27). Os commits sugerem que o atraso variou: linha 20 (~03h50) bate com o commit 142a47f das 03:14; linha 23 (~04h15) com 2e605d1 das 03:23. Marquei hora_aproximada.",
+  "O arquivo da trava (etapas/trava-pesada.md) só foi versionado até 12:05 (commit 62e93f7); depois disso as travas vêm do diário, .status, fila-pesada e registro de junções. Os commits são retratos: a trava pode ter mudado entre eles.",
+  "Dúvida 1: diário:10 diz 'Brasa 00h58, Trilho 01h06'; o arquivo da trava no commit das 01:02 diz 'Trilho 00:58, teste do gemini'. Não sei qual dos dois está certo.",
+  "Dúvida 2: diário:152 e relatório-25 dão 659 MB para o corte das 13:13; o corte.json marca 480 MB. 659 é a leitura do status no fim da prova.",
+  "Achados não citados no diário: corte do medidor do 25 às 13:01:23 (670 MB) na rodada 1 e corte às 14:17:47 (477 MB) na rodada 5.",
+  "Paradas deliberadas para poupar memória (não são cortes): wsl --shutdown nos corredores do 22 e do 25; Docker Desktop parado às ~13:45 (2,6 GB livres), 14:17, 14:26 e 15:43 (diário:155,158,160,171).",
+  "Sem medida de memória: 2026-10-16 14:30 até 23:08 (nenhuma fonte com MB; o relatorio-07 só cita a falta de memória ~23h05); 00:49-03:47 só tem 01:08 (1,9 GB, aproximado); 01:08-03:47 vazio; 10:40-12:15 e 14:42-16:44 só têm rondas e o status do 22 (15:21-15:36); 19:33-21:10 vazio."
+ ],
+ "periodo": {
+  "inicio": "2026-10-16T14:30",
+  "fim": "2026-10-17T21:10",
+  "fuso": "America/Sao_Paulo (UTC-3)"
+ },
+ "memoria": [
+  {
+   "hora_local": "2026-10-16T23:08:05",
+   "mb": 1120,
+   "contexto": "07, fila Docker do ticket 07: 07-r2e, espero 3 min",
+   "fonte": "C:/context-hub-wt/ticket-07/.local/fila-docker.log:2",
+   "fora_da_base": true,
+   "nota": "GB com 2 casas convertidos para MB (x1000)"
+  },
+  {
+   "hora_local": "2026-10-16T23:11:07",
+   "mb": 2720,
+   "contexto": "07, fila Docker do ticket 07: 07-r2e, espero 3 min",
+   "fonte": "C:/context-hub-wt/ticket-07/.local/fila-docker.log:3",
+   "fora_da_base": true,
+   "nota": "GB com 2 casas convertidos para MB (x1000)"
+  },
+  {
+   "hora_local": "2026-10-16T23:14:08",
+   "mb": 1740,
+   "contexto": "07, fila Docker do ticket 07: 07-r2e, espero 3 min",
+   "fonte": "C:/context-hub-wt/ticket-07/.local/fila-docker.log:4",
+   "fora_da_base": true,
+   "nota": "GB com 2 casas convertidos para MB (x1000)"
+  },
+  {
+   "hora_local": "2026-10-16T23:17:09",
+   "mb": 3170,
+   "contexto": "07, fila Docker do ticket 07: 07-r2e, começa",
+   "fonte": "C:/context-hub-wt/ticket-07/.local/fila-docker.log:5",
+   "fora_da_base": true,
+   "nota": "GB com 2 casas convertidos para MB (x1000)"
+  },
+  {
+   "hora_local": "2026-10-16T23:20:37",
+   "mb": 1400,
+   "contexto": "07, fila Docker do ticket 07: 07-r2e, saida=0 no fim",
+   "fonte": "C:/context-hub-wt/ticket-07/.local/fila-docker.log:6",
+   "fora_da_base": true,
+   "nota": "GB com 2 casas convertidos para MB (x1000)"
+  },
+  {
+   "hora_local": "2026-10-16T23:20:38",
+   "mb": 1540,
+   "contexto": "07, fila Docker do ticket 07: prova01-r2e, espero 3 min",
+   "fonte": "C:/context-hub-wt/ticket-07/.local/fila-docker.log:7",
+   "fora_da_base": true,
+   "nota": "GB com 2 casas convertidos para MB (x1000)"
+  },
+  {
+   "hora_local": "2026-10-16T23:23:40",
+   "mb": 740,
+   "contexto": "07, fila Docker do ticket 07: prova01-r2e, espero 3 min",
+   "fonte": "C:/context-hub-wt/ticket-07/.local/fila-docker.log:8",
+   "fora_da_base": true,
+   "nota": "GB com 2 casas convertidos para MB (x1000)"
+  },
+  {
+   "hora_local": "2026-10-16T23:26:41",
+   "mb": 2160,
+   "contexto": "07, fila Docker do ticket 07: prova01-r2e, espero 3 min",
+   "fonte": "C:/context-hub-wt/ticket-07/.local/fila-docker.log:9",
+   "fora_da_base": true,
+   "nota": "GB com 2 casas convertidos para MB (x1000)"
+  },
+  {
+   "hora_local": "2026-10-16T23:29:42",
+   "mb": 1430,
+   "contexto": "07, fila Docker do ticket 07: prova01-r2e, espero 3 min",
+   "fonte": "C:/context-hub-wt/ticket-07/.local/fila-docker.log:10",
+   "fora_da_base": true,
+   "nota": "GB com 2 casas convertidos para MB (x1000)"
+  },
+  {
+   "hora_local": "2026-10-16T23:32:44",
+   "mb": 1810,
+   "contexto": "07, fila Docker do ticket 07: prova01-r2e, espero 3 min",
+   "fonte": "C:/context-hub-wt/ticket-07/.local/fila-docker.log:11",
+   "fora_da_base": true,
+   "nota": "GB com 2 casas convertidos para MB (x1000)"
+  },
+  {
+   "hora_local": "2026-10-16T23:35:46",
+   "mb": 2010,
+   "contexto": "07, fila Docker do ticket 07: prova01-r2e, espero 3 min",
+   "fonte": "C:/context-hub-wt/ticket-07/.local/fila-docker.log:12",
+   "fora_da_base": true,
+   "nota": "GB com 2 casas convertidos para MB (x1000)"
+  },
+  {
+   "hora_local": "2026-10-16T23:38:47",
+   "mb": 2630,
+   "contexto": "07, fila Docker do ticket 07: prova01-r2e, espero 3 min",
+   "fonte": "C:/context-hub-wt/ticket-07/.local/fila-docker.log:13",
+   "fora_da_base": true,
+   "nota": "GB com 2 casas convertidos para MB (x1000)"
+  },
+  {
+   "hora_local": "2026-10-17T00:18:41",
+   "mb": 3170,
+   "contexto": "07, fila Docker do ticket 07: prova01-r2f, começa",
+   "fonte": "C:/context-hub-wt/ticket-07/.local/fila-docker.log:16",
+   "fora_da_base": true,
+   "nota": "GB com 2 casas convertidos para MB (x1000)"
+  },
+  {
+   "hora_local": "2026-10-17T00:26:25",
+   "mb": 1950,
+   "contexto": "07, fila Docker do ticket 07: prova01-r2f, saida=1 no fim",
+   "fonte": "C:/context-hub-wt/ticket-07/.local/fila-docker.log:17",
+   "fora_da_base": true,
+   "nota": "GB com 2 casas convertidos para MB (x1000)"
+  },
+  {
+   "hora_local": "2026-10-17T00:26:27",
+   "mb": 1950,
+   "contexto": "07, fila Docker do ticket 07: prova02-r2f, espero 3 min",
+   "fonte": "C:/context-hub-wt/ticket-07/.local/fila-docker.log:18",
+   "fora_da_base": true,
+   "nota": "GB com 2 casas convertidos para MB (x1000)"
+  },
+  {
+   "hora_local": "2026-10-17T00:29:28",
+   "mb": 1590,
+   "contexto": "07, fila Docker do ticket 07: prova02-r2f, espero 3 min",
+   "fonte": "C:/context-hub-wt/ticket-07/.local/fila-docker.log:19",
+   "fora_da_base": true,
+   "nota": "GB com 2 casas convertidos para MB (x1000)"
+  },
+  {
+   "hora_local": "2026-10-17T00:32:30",
+   "mb": 2610,
+   "contexto": "07, fila Docker do ticket 07: prova02-r2f, começa",
+   "fonte": "C:/context-hub-wt/ticket-07/.local/fila-docker.log:20",
+   "fora_da_base": true,
+   "nota": "GB com 2 casas convertidos para MB (x1000)"
+  },
+  {
+   "hora_local": "2026-10-17T00:41:00",
+   "mb": 2180,
+   "contexto": "07, fila Docker do ticket 07: prova02-r2f, saida=0 no fim",
+   "fonte": "C:/context-hub-wt/ticket-07/.local/fila-docker.log:21",
+   "fora_da_base": true,
+   "nota": "GB com 2 casas convertidos para MB (x1000)"
+  },
+  {
+   "hora_local": "2026-10-17T00:41:01",
+   "mb": 2240,
+   "contexto": "07, fila Docker do ticket 07: 06-r2f, começa",
+   "fonte": "C:/context-hub-wt/ticket-07/.local/fila-docker.log:22",
+   "fora_da_base": true,
+   "nota": "GB com 2 casas convertidos para MB (x1000)"
+  },
+  {
+   "hora_local": "2026-10-17T00:44:22",
+   "mb": 1770,
+   "contexto": "07, fila Docker do ticket 07: 06-r2f, saida=0 no fim",
+   "fonte": "C:/context-hub-wt/ticket-07/.local/fila-docker.log:23",
+   "fora_da_base": true,
+   "nota": "GB com 2 casas convertidos para MB (x1000)"
+  },
+  {
+   "hora_local": "2026-10-17T00:45:02",
+   "mb": 2120,
+   "contexto": "07, fila Docker do ticket 07: prova01-r2g, começa",
+   "fonte": "C:/context-hub-wt/ticket-07/.local/fila-docker.log:27",
+   "fora_da_base": true,
+   "nota": "GB com 2 casas convertidos para MB (x1000)"
+  },
+  {
+   "hora_local": "2026-10-17T00:48:42",
+   "mb": 2820,
+   "contexto": "07, fila Docker do ticket 07: prova01-r2g, saida=0 no fim",
+   "fonte": "C:/context-hub-wt/ticket-07/.local/fila-docker.log:28",
+   "fora_da_base": true,
+   "nota": "GB com 2 casas convertidos para MB (x1000)"
+  },
+  {
+   "hora_local": "2026-10-17T00:58",
+   "mb": 3900,
+   "contexto": "antes do teste único do gemini (13, Trilho)",
+   "fonte": "etapas/relatorio-13-gemini.md:50",
+   "hora_aproximada": true,
+   "nota": "o relatório não dá hora; a trava do teste do gemini é das 00:58 (git 6823e41)"
+  },
+  {
+   "hora_local": "2026-10-17T01:08",
+   "mb": 1900,
+   "contexto": "duas suítes pesadas juntas (trava sobrescrita)",
+   "fonte": "etapas/diario-da-construcao.md:10",
+   "hora_aproximada": true,
+   "nota": "'~01h08' no diário"
+  },
+  {
+   "hora_local": "2026-10-17T03:47",
+   "mb": 1200,
+   "contexto": "ronda; Docker do 08 rodando (vmmemWSL 1,9 GB)",
+   "fonte": "etapas/diario-da-construcao.md:27"
+  },
+  {
+   "hora_local": "2026-10-17T04:19",
+   "mb": 2100,
+   "contexto": "ronda; Docker do 09 (Cinzel)",
+   "fonte": "etapas/diario-da-construcao.md:32"
+  },
+  {
+   "hora_local": "2026-10-17T04:47",
+   "mb": 3400,
+   "contexto": "ronda; suíte 33/35 (Rebite)",
+   "fonte": "etapas/diario-da-construcao.md:40"
+  },
+  {
+   "hora_local": "2026-10-17T05:11:09",
+   "mb": 2900,
+   "contexto": "08, fatias (corredor da Brasa): fatia 2: começa (2900 MB livres)",
+   "fonte": "etapas/logs/08-fatias.status:5"
+  },
+  {
+   "hora_local": "2026-10-17T05:12:24",
+   "mb": 513,
+   "contexto": "08, fatias (corredor da Brasa): fatia 2: CORTADA, 513 MB livres; paro o teste e limpo",
+   "fonte": "etapas/logs/08-fatias.status:6"
+  },
+  {
+   "hora_local": "2026-10-17T05:17",
+   "mb": 513,
+   "contexto": "fatia 2 do 08 derrubou a memória (2.900 → 513)",
+   "fonte": "etapas/diario-da-construcao.md:48",
+   "repete": "etapas/logs/08-fatias.status:5-6 (05:11-05:12)"
+  },
+  {
+   "hora_local": "2026-10-17T05:23",
+   "mb": 1200,
+   "contexto": "ronda; Docker do 16 (Trilho)",
+   "fonte": "etapas/diario-da-construcao.md:49"
+  },
+  {
+   "hora_local": "2026-10-17T05:25:12",
+   "mb": 2409,
+   "contexto": "08, fatias (corredor da Brasa): fatia 3: começa (2409 MB livres)",
+   "fonte": "etapas/logs/08-fatias.status:10"
+  },
+  {
+   "hora_local": "2026-10-17T05:40:33",
+   "mb": 2557,
+   "contexto": "08, fatias (corredor da Brasa): fatia 3: saida=1 (5 FALHA, 5 PASSA; 2557 MB livres)",
+   "fonte": "etapas/logs/08-fatias.status:11"
+  },
+  {
+   "hora_local": "2026-10-17T05:47:55",
+   "mb": 2259,
+   "contexto": "08, fatias (corredor da Brasa): fatia 4: começa (2259 MB livres)",
+   "fonte": "etapas/logs/08-fatias.status:14"
+  },
+  {
+   "hora_local": "2026-10-17T06:19",
+   "mb": 1800,
+   "contexto": "ronda; fatias 3-7 do 08",
+   "fonte": "etapas/diario-da-construcao.md:58"
+  },
+  {
+   "hora_local": "2026-10-17T06:20:18",
+   "mb": 2099,
+   "contexto": "08, fatias (corredor da Brasa): fatia 3: começa (2099 MB livres)",
+   "fonte": "etapas/logs/08-fatias.status:18"
+  },
+  {
+   "hora_local": "2026-10-17T06:22:34",
+   "mb": 2105,
+   "contexto": "08, fatias (corredor da Brasa): fatia 3: saida=0 (10 PASSA; 2105 MB livres)",
+   "fonte": "etapas/logs/08-fatias.status:19"
+  },
+  {
+   "hora_local": "2026-10-17T06:24:50",
+   "mb": 2101,
+   "contexto": "08, fatias (corredor da Brasa): fatia 4: começa (2101 MB livres)",
+   "fonte": "etapas/logs/08-fatias.status:25"
+  },
+  {
+   "hora_local": "2026-10-17T06:26:36",
+   "mb": 2041,
+   "contexto": "08, fatias (corredor da Brasa): fatia 4: saida=0 (5 PASSA; 2041 MB livres)",
+   "fonte": "etapas/logs/08-fatias.status:26"
+  },
+  {
+   "hora_local": "2026-10-17T06:26:38",
+   "mb": 2106,
+   "contexto": "08, fatias (corredor da Brasa): fatia 5: começa (2106 MB livres)",
+   "fonte": "etapas/logs/08-fatias.status:27"
+  },
+  {
+   "hora_local": "2026-10-17T06:27:47",
+   "mb": 2270,
+   "contexto": "08, fatias (corredor da Brasa): fatia 5: saida=0 (5 PASSA; 2270 MB livres)",
+   "fonte": "etapas/logs/08-fatias.status:28"
+  },
+  {
+   "hora_local": "2026-10-17T06:27:49",
+   "mb": 2286,
+   "contexto": "08, fatias (corredor da Brasa): fatia 6: começa (2286 MB livres)",
+   "fonte": "etapas/logs/08-fatias.status:29"
+  },
+  {
+   "hora_local": "2026-10-17T06:29:41",
+   "mb": 2354,
+   "contexto": "08, fatias (corredor da Brasa): fatia 6: saida=0 (8 PASSA; 2354 MB livres)",
+   "fonte": "etapas/logs/08-fatias.status:30"
+  },
+  {
+   "hora_local": "2026-10-17T06:39:05",
+   "mb": 2261,
+   "contexto": "08, fatias (corredor da Brasa): fatia 7: começa (2261 MB livres)",
+   "fonte": "etapas/logs/08-fatias.status:36"
+  },
+  {
+   "hora_local": "2026-10-17T06:39:49",
+   "mb": 2300,
+   "contexto": "08, fatias (corredor da Brasa): fatia 7: saida=0 (4 PASSA; 2300 MB livres)",
+   "fonte": "etapas/logs/08-fatias.status:37"
+  },
+  {
+   "hora_local": "2026-10-17T06:39:51",
+   "mb": 2268,
+   "contexto": "08, fatias (corredor da Brasa): fatia 07: começa (2268 MB livres)",
+   "fonte": "etapas/logs/08-fatias.status:38"
+  },
+  {
+   "hora_local": "2026-10-17T06:44:16",
+   "mb": 2387,
+   "contexto": "08, fatias (corredor da Brasa): fatia 07: saida=0 (24 PASSA; 2387 MB livres)",
+   "fonte": "etapas/logs/08-fatias.status:39"
+  },
+  {
+   "hora_local": "2026-10-17T06:49",
+   "mb": 577,
+   "contexto": "ronda; suíte do Rebite + npm test do fork",
+   "fonte": "etapas/diario-da-construcao.md:63"
+  },
+  {
+   "hora_local": "2026-10-17T06:49",
+   "mb": 2100,
+   "contexto": "memória livre voltou (depois da suíte)",
+   "fonte": "etapas/diario-da-construcao.md:64",
+   "nota": "mesma hora da linha 63, um pouco depois"
+  },
+  {
+   "hora_local": "2026-10-17T07:19",
+   "mb": 4400,
+   "contexto": "ronda; Codex do 15 (Trilho)",
+   "fonte": "etapas/diario-da-construcao.md:67"
+  },
+  {
+   "hora_local": "2026-10-17T07:37",
+   "mb": 3100,
+   "contexto": "máquina quieta; Brasa vai rodar a fatia 2",
+   "fonte": "etapas/diario-da-construcao.md:77",
+   "repete": "etapas/logs/08-fatias.status:43 (3.183)"
+  },
+  {
+   "hora_local": "2026-10-17T07:37:14",
+   "mb": 3183,
+   "contexto": "08, fatias (corredor da Brasa): fatia 1+2: começa (3183 MB livres)",
+   "fonte": "etapas/logs/08-fatias.status:43"
+  },
+  {
+   "hora_local": "2026-10-17T07:39:11",
+   "mb": 621,
+   "contexto": "08, fatias (corredor da Brasa): fatia 1+2: CORTADA, 621 MB livres; paro o teste e limpo",
+   "fonte": "etapas/logs/08-fatias.status:44"
+  },
+  {
+   "hora_local": "2026-10-17T07:40",
+   "mb": 881,
+   "contexto": "depois da limpeza da fatia 2 cortada (vmmemWSL 2,1 GB)",
+   "fonte": "etapas/relatorio-08-banco-limites.md:154",
+   "hora_aproximada": true,
+   "nota": "logo depois do corte das 07:39"
+  },
+  {
+   "hora_local": "2026-10-17T07:41",
+   "mb": 621,
+   "contexto": "fatia 2 do 08 caiu de novo (3.183 → 621)",
+   "fonte": "etapas/diario-da-construcao.md:78",
+   "repete": "etapas/logs/08-fatias.status:44 (07:39)"
+  },
+  {
+   "hora_local": "2026-10-17T07:47",
+   "mb": 1700,
+   "contexto": "ronda; suíte do 15 (Rebite)",
+   "fonte": "etapas/diario-da-construcao.md:80"
+  },
+  {
+   "hora_local": "2026-10-17T08:14:20",
+   "mb": 2055,
+   "contexto": "22, corredor da Brasa: docker: começa (2055 MB livres)",
+   "fonte": "etapas/logs/22.status:3"
+  },
+  {
+   "hora_local": "2026-10-17T08:16:01",
+   "mb": 1704,
+   "contexto": "22, corredor da Brasa: docker: saida=1 (1x [FALHA]; 1704 MB livres)",
+   "fonte": "etapas/logs/22.status:4"
+  },
+  {
+   "hora_local": "2026-10-17T08:19",
+   "mb": 1700,
+   "contexto": "ronda; Docker do 22 (Brasa)",
+   "fonte": "etapas/diario-da-construcao.md:88"
+  },
+  {
+   "hora_local": "2026-10-17T08:21:12",
+   "mb": 1940,
+   "contexto": "22, corredor da Brasa: docker: começa (1940 MB livres)",
+   "fonte": "etapas/logs/22.status:9"
+  },
+  {
+   "hora_local": "2026-10-17T08:21:20",
+   "mb": 1884,
+   "contexto": "22, corredor da Brasa: docker: saida=1 (; 1884 MB livres)",
+   "fonte": "etapas/logs/22.status:10"
+  },
+  {
+   "hora_local": "2026-10-17T08:23:07",
+   "mb": 2102,
+   "contexto": "22, corredor da Brasa: docker: começa (2102 MB livres)",
+   "fonte": "etapas/logs/22.status:15"
+  },
+  {
+   "hora_local": "2026-10-17T08:23:33",
+   "mb": 2175,
+   "contexto": "22, corredor da Brasa: docker: saida=1 (1x [PASSA]; 2175 MB livres)",
+   "fonte": "etapas/logs/22.status:16"
+  },
+  {
+   "hora_local": "2026-10-17T08:24:16",
+   "mb": 2071,
+   "contexto": "22, corredor da Brasa: docker: começa (2071 MB livres)",
+   "fonte": "etapas/logs/22.status:21"
+  },
+  {
+   "hora_local": "2026-10-17T08:26:41",
+   "mb": 613,
+   "contexto": "22, corredor da Brasa: docker: CORTADA, 613 MB livres; paro e limpo",
+   "fonte": "etapas/logs/22.status:22"
+  },
+  {
+   "hora_local": "2026-10-17T08:29",
+   "mb": 613,
+   "contexto": "Docker do 22 cortado na indexação",
+   "fonte": "etapas/diario-da-construcao.md:90",
+   "repete": "etapas/logs/22.status:22 (08:26)"
+  },
+  {
+   "hora_local": "2026-10-17T08:45",
+   "mb": 2700,
+   "contexto": "antes do 25, com os terminais do Claude Code abertos",
+   "fonte": "etapas/costuras-25-Vela.md:41",
+   "nota": "a Vela corrigiu horas estimadas de outros comentários dela (issues/25:26); esta não foi citada"
+  },
+  {
+   "hora_local": "2026-10-17T08:47",
+   "mb": 1900,
+   "contexto": "ronda; suíte do 08 (Rebite)",
+   "fonte": "etapas/diario-da-construcao.md:95"
+  },
+  {
+   "hora_local": "2026-10-17T09:16:35",
+   "mb": 1347,
+   "contexto": "22, corredor da Brasa: wsl: desligo (1347 MB livres)",
+   "fonte": "etapas/logs/22.status:27"
+  },
+  {
+   "hora_local": "2026-10-17T09:17:08",
+   "mb": 919,
+   "contexto": "22, corredor da Brasa: wsl: Docker religou (919 MB livres)",
+   "fonte": "etapas/logs/22.status:28"
+  },
+  {
+   "hora_local": "2026-10-17T09:19",
+   "mb": 1000,
+   "contexto": "ronda; Docker do 22 (Brasa)",
+   "fonte": "etapas/diario-da-construcao.md:102"
+  },
+  {
+   "hora_local": "2026-10-17T09:22:24",
+   "mb": 1991,
+   "contexto": "22, corredor da Brasa: docker: começa (1991 MB livres)",
+   "fonte": "etapas/logs/22.status:29"
+  },
+  {
+   "hora_local": "2026-10-17T09:30:30",
+   "mb": 1374,
+   "contexto": "22, corredor da Brasa: docker: saida=1 (1x [PASSA]; 1374 MB livres)",
+   "fonte": "etapas/logs/22.status:30"
+  },
+  {
+   "hora_local": "2026-10-17T09:39",
+   "mb": 2600,
+   "contexto": "janela quieta 1 aberta",
+   "fonte": "etapas/diario-da-construcao.md:111"
+  },
+  {
+   "hora_local": "2026-10-17T09:39:20",
+   "mb": 2382,
+   "contexto": "22, Docker do proxy + harnesses (janela quieta 1)",
+   "fonte": "etapas/logs/medidor-22.log:1"
+  },
+  {
+   "hora_local": "2026-10-17T09:39:20",
+   "mb": 2373,
+   "contexto": "22, corredor da Brasa: wsl: desligo (2373 MB livres)",
+   "fonte": "etapas/logs/22.status:35"
+  },
+  {
+   "hora_local": "2026-10-17T09:39:26",
+   "mb": 4456,
+   "contexto": "22, Docker do proxy + harnesses (janela quieta 1)",
+   "fonte": "etapas/logs/medidor-22.log:2"
+  },
+  {
+   "hora_local": "2026-10-17T09:39:39",
+   "mb": 2386,
+   "contexto": "22, corredor da Brasa: wsl: Docker religou (2386 MB livres)",
+   "fonte": "etapas/logs/22.status:36"
+  },
+  {
+   "hora_local": "2026-10-17T09:39:41",
+   "mb": 2388,
+   "contexto": "22, corredor da Brasa: docker: começa (2388 MB livres)",
+   "fonte": "etapas/logs/22.status:37"
+  },
+  {
+   "hora_local": "2026-10-17T09:39:51",
+   "mb": 2222,
+   "contexto": "22, Docker do proxy + harnesses (janela quieta 1)",
+   "fonte": "etapas/logs/medidor-22.log:6"
+  },
+  {
+   "hora_local": "2026-10-17T09:39:58",
+   "mb": 2232,
+   "contexto": "22, Docker do proxy + harnesses (janela quieta 1)",
+   "fonte": "etapas/logs/medidor-22.log:7"
+  },
+  {
+   "hora_local": "2026-10-17T09:40:30",
+   "mb": 1654,
+   "contexto": "22, Docker do proxy + harnesses (janela quieta 1)",
+   "fonte": "etapas/logs/medidor-22.log:12"
+  },
+  {
+   "hora_local": "2026-10-17T09:40:36",
+   "mb": 1916,
+   "contexto": "22, Docker do proxy + harnesses (janela quieta 1)",
+   "fonte": "etapas/logs/medidor-22.log:13"
+  },
+  {
+   "hora_local": "2026-10-17T09:41",
+   "mb": 715,
+   "contexto": "pico do 22 na janela (mín. livre)",
+   "fonte": "etapas/diario-da-construcao.md:114",
+   "repete": "etapas/logs/medidor-22.log:17",
+   "nota": "o diário escreve às 09:49; a medida é das 09:41"
+  },
+  {
+   "hora_local": "2026-10-17T09:41:00",
+   "mb": 715,
+   "contexto": "22, Docker do proxy + harnesses (janela quieta 1)",
+   "fonte": "etapas/logs/medidor-22.log:17",
+   "minimo_do_arquivo": true
+  },
+  {
+   "hora_local": "2026-10-17T09:41:12",
+   "mb": 1418,
+   "contexto": "22, Docker do proxy + harnesses (janela quieta 1)",
+   "fonte": "etapas/logs/medidor-22.log:19"
+  },
+  {
+   "hora_local": "2026-10-17T09:41:37",
+   "mb": 1098,
+   "contexto": "22, Docker do proxy + harnesses (janela quieta 1)",
+   "fonte": "etapas/logs/medidor-22.log:23"
+  },
+  {
+   "hora_local": "2026-10-17T09:41:49",
+   "mb": 1221,
+   "contexto": "22, Docker do proxy + harnesses (janela quieta 1)",
+   "fonte": "etapas/logs/medidor-22.log:25"
+  },
+  {
+   "hora_local": "2026-10-17T09:42:14",
+   "mb": 736,
+   "contexto": "22, Docker do proxy + harnesses (janela quieta 1)",
+   "fonte": "etapas/logs/medidor-22.log:29"
+  },
+  {
+   "hora_local": "2026-10-17T09:42:26",
+   "mb": 1001,
+   "contexto": "22, Docker do proxy + harnesses (janela quieta 1)",
+   "fonte": "etapas/logs/medidor-22.log:31"
+  },
+  {
+   "hora_local": "2026-10-17T09:42:45",
+   "mb": 773,
+   "contexto": "22, Docker do proxy + harnesses (janela quieta 1)",
+   "fonte": "etapas/logs/medidor-22.log:34"
+  },
+  {
+   "hora_local": "2026-10-17T09:43:00",
+   "mb": 1028,
+   "contexto": "22, corredor da Brasa: docker: saida=0 (5x [MEDIDA], 15x [PASSA]; 1028 MB livres)",
+   "fonte": "etapas/logs/22.status:38"
+  },
+  {
+   "hora_local": "2026-10-17T09:43:03",
+   "mb": 995,
+   "contexto": "22, Docker do proxy + harnesses (janela quieta 1)",
+   "fonte": "etapas/logs/medidor-22.log:37"
+  },
+  {
+   "hora_local": "2026-10-17T09:43:21",
+   "mb": 932,
+   "contexto": "22, Docker do proxy + harnesses (janela quieta 1)",
+   "fonte": "etapas/logs/medidor-22.log:40"
+  },
+  {
+   "hora_local": "2026-10-17T09:43:47",
+   "mb": 946,
+   "contexto": "22, Docker do proxy + harnesses (janela quieta 1)",
+   "fonte": "etapas/logs/medidor-22.log:44"
+  },
+  {
+   "hora_local": "2026-10-17T09:43:59",
+   "mb": 997,
+   "contexto": "22, Docker do proxy + harnesses (janela quieta 1)",
+   "fonte": "etapas/logs/medidor-22.log:46"
+  },
+  {
+   "hora_local": "2026-10-17T09:44:25",
+   "mb": 1038,
+   "contexto": "22, Docker do proxy + harnesses (janela quieta 1)",
+   "fonte": "etapas/logs/medidor-22.log:50"
+  },
+  {
+   "hora_local": "2026-10-17T09:44:50",
+   "mb": 1192,
+   "contexto": "22, Docker do proxy + harnesses (janela quieta 1)",
+   "fonte": "etapas/logs/medidor-22.log:54"
+  },
+  {
+   "hora_local": "2026-10-17T09:45:10",
+   "mb": 1263,
+   "contexto": "22, Docker do proxy + harnesses (janela quieta 1)",
+   "fonte": "etapas/logs/medidor-22.log:57"
+  },
+  {
+   "hora_local": "2026-10-17T09:45:22",
+   "mb": 1336,
+   "contexto": "22, Docker do proxy + harnesses (janela quieta 1)",
+   "fonte": "etapas/logs/medidor-22.log:59"
+  },
+  {
+   "hora_local": "2026-10-17T09:46:00",
+   "mb": 1323,
+   "contexto": "22, Docker do proxy + harnesses (janela quieta 1)",
+   "fonte": "etapas/logs/medidor-22.log:65"
+  },
+  {
+   "hora_local": "2026-10-17T09:46:07",
+   "mb": 1447,
+   "contexto": "22, Docker do proxy + harnesses (janela quieta 1)",
+   "fonte": "etapas/logs/medidor-22.log:66"
+  },
+  {
+   "hora_local": "2026-10-17T09:46:33",
+   "mb": 1378,
+   "contexto": "22, Docker do proxy + harnesses (janela quieta 1)",
+   "fonte": "etapas/logs/medidor-22.log:70"
+  },
+  {
+   "hora_local": "2026-10-17T09:46:39",
+   "mb": 1660,
+   "contexto": "22, Docker do proxy + harnesses (janela quieta 1)",
+   "fonte": "etapas/logs/medidor-22.log:71"
+  },
+  {
+   "hora_local": "2026-10-17T09:46:51",
+   "mb": 1671,
+   "contexto": "22, Docker do proxy + harnesses (janela quieta 1)",
+   "fonte": "etapas/logs/medidor-22.log:73"
+  },
+  {
+   "hora_local": "2026-10-17T09:47",
+   "mb": 1600,
+   "contexto": "ronda na janela; Docker do 22",
+   "fonte": "etapas/diario-da-construcao.md:113"
+  },
+  {
+   "hora_local": "2026-10-17T09:47:11",
+   "mb": 1400,
+   "contexto": "22, Docker do proxy + harnesses (janela quieta 1)",
+   "fonte": "etapas/logs/medidor-22.log:76"
+  },
+  {
+   "hora_local": "2026-10-17T09:47:30",
+   "mb": 2295,
+   "contexto": "22, Docker do proxy + harnesses (janela quieta 1)",
+   "fonte": "etapas/logs/medidor-22.log:79"
+  },
+  {
+   "hora_local": "2026-10-17T09:47:43",
+   "mb": 3541,
+   "contexto": "22, Docker do proxy + harnesses (janela quieta 1)",
+   "fonte": "etapas/logs/medidor-22.log:81"
+  },
+  {
+   "hora_local": "2026-10-17T09:47:44",
+   "mb": 3524,
+   "contexto": "22, corredor da Brasa: harness: começa (3524 MB livres)",
+   "fonte": "etapas/logs/22.status:39"
+  },
+  {
+   "hora_local": "2026-10-17T09:48:27",
+   "mb": 2817,
+   "contexto": "22, Docker do proxy + harnesses (janela quieta 1)",
+   "fonte": "etapas/logs/medidor-22.log:88"
+  },
+  {
+   "hora_local": "2026-10-17T09:48:34",
+   "mb": 3191,
+   "contexto": "22, corredor da Brasa: harness: saida=1 (1x ℹ fail 1, 1x ℹ pass 2, 1x ℹ skipped 0; 3191 MB livres)",
+   "fonte": "etapas/logs/22.status:40"
+  },
+  {
+   "hora_local": "2026-10-17T09:48:39",
+   "mb": 3598,
+   "contexto": "22, Docker do proxy + harnesses (janela quieta 1)",
+   "fonte": "etapas/logs/medidor-22.log:90"
+  },
+  {
+   "hora_local": "2026-10-17T09:48:46",
+   "mb": 3734,
+   "contexto": "22, Docker do proxy + harnesses (janela quieta 1)",
+   "fonte": "etapas/logs/medidor-22.log:91"
+  },
+  {
+   "hora_local": "2026-10-17T09:48:58",
+   "mb": 3947,
+   "contexto": "22, Docker do proxy + harnesses (janela quieta 1)",
+   "fonte": "etapas/logs/medidor-22.log:93"
+  },
+  {
+   "hora_local": "2026-10-17T09:50:02",
+   "mb": 3424,
+   "contexto": "08, fatias 1+2 (janela quieta 1)",
+   "fonte": "etapas/logs/medidor-08.log:1"
+  },
+  {
+   "hora_local": "2026-10-17T09:50:04",
+   "mb": 3415,
+   "contexto": "08, fatias (corredor da Brasa): fatia 1+2: começa (3415 MB livres)",
+   "fonte": "etapas/logs/08-fatias.status:48"
+  },
+  {
+   "hora_local": "2026-10-17T09:50:08",
+   "mb": 3183,
+   "contexto": "08, fatias 1+2 (janela quieta 1)",
+   "fonte": "etapas/logs/medidor-08.log:2"
+  },
+  {
+   "hora_local": "2026-10-17T09:50:15",
+   "mb": 3101,
+   "contexto": "08, fatias 1+2 (janela quieta 1)",
+   "fonte": "etapas/logs/medidor-08.log:3"
+  },
+  {
+   "hora_local": "2026-10-17T09:50:21",
+   "mb": 3064,
+   "contexto": "08, fatias 1+2 (janela quieta 1)",
+   "fonte": "etapas/logs/medidor-08.log:4"
+  },
+  {
+   "hora_local": "2026-10-17T09:50:27",
+   "mb": 3017,
+   "contexto": "08, fatias 1+2 (janela quieta 1)",
+   "fonte": "etapas/logs/medidor-08.log:5"
+  },
+  {
+   "hora_local": "2026-10-17T09:50:34",
+   "mb": 3043,
+   "contexto": "08, fatias 1+2 (janela quieta 1)",
+   "fonte": "etapas/logs/medidor-08.log:6"
+  },
+  {
+   "hora_local": "2026-10-17T09:50:40",
+   "mb": 2981,
+   "contexto": "08, fatias 1+2 (janela quieta 1)",
+   "fonte": "etapas/logs/medidor-08.log:7"
+  },
+  {
+   "hora_local": "2026-10-17T09:50:47",
+   "mb": 3002,
+   "contexto": "08, fatias 1+2 (janela quieta 1)",
+   "fonte": "etapas/logs/medidor-08.log:8"
+  },
+  {
+   "hora_local": "2026-10-17T09:50:53",
+   "mb": 2831,
+   "contexto": "08, fatias 1+2 (janela quieta 1)",
+   "fonte": "etapas/logs/medidor-08.log:9"
+  },
+  {
+   "hora_local": "2026-10-17T09:50:59",
+   "mb": 2784,
+   "contexto": "08, fatias 1+2 (janela quieta 1)",
+   "fonte": "etapas/logs/medidor-08.log:10"
+  },
+  {
+   "hora_local": "2026-10-17T09:51:05",
+   "mb": 2892,
+   "contexto": "08, fatias 1+2 (janela quieta 1)",
+   "fonte": "etapas/logs/medidor-08.log:11"
+  },
+  {
+   "hora_local": "2026-10-17T09:51:12",
+   "mb": 2890,
+   "contexto": "08, fatias 1+2 (janela quieta 1)",
+   "fonte": "etapas/logs/medidor-08.log:12"
+  },
+  {
+   "hora_local": "2026-10-17T09:51:18",
+   "mb": 2817,
+   "contexto": "08, fatias 1+2 (janela quieta 1)",
+   "fonte": "etapas/logs/medidor-08.log:13"
+  },
+  {
+   "hora_local": "2026-10-17T09:51:24",
+   "mb": 2798,
+   "contexto": "08, fatias 1+2 (janela quieta 1)",
+   "fonte": "etapas/logs/medidor-08.log:14"
+  },
+  {
+   "hora_local": "2026-10-17T09:51:30",
+   "mb": 2881,
+   "contexto": "08, fatias 1+2 (janela quieta 1)",
+   "fonte": "etapas/logs/medidor-08.log:15"
+  },
+  {
+   "hora_local": "2026-10-17T09:51:37",
+   "mb": 2805,
+   "contexto": "08, fatias 1+2 (janela quieta 1)",
+   "fonte": "etapas/logs/medidor-08.log:16"
+  },
+  {
+   "hora_local": "2026-10-17T09:51:43",
+   "mb": 2506,
+   "contexto": "08, fatias 1+2 (janela quieta 1)",
+   "fonte": "etapas/logs/medidor-08.log:17"
+  },
+  {
+   "hora_local": "2026-10-17T09:51:49",
+   "mb": 2253,
+   "contexto": "08, fatias 1+2 (janela quieta 1)",
+   "fonte": "etapas/logs/medidor-08.log:18"
+  },
+  {
+   "hora_local": "2026-10-17T09:51:55",
+   "mb": 1724,
+   "contexto": "08, fatias 1+2 (janela quieta 1)",
+   "fonte": "etapas/logs/medidor-08.log:19",
+   "minimo_do_arquivo": true
+  },
+  {
+   "hora_local": "2026-10-17T09:51:55",
+   "mb": 1724,
+   "contexto": "pico das fatias 1+2 do 08 (mín. livre)",
+   "fonte": "etapas/diario-da-construcao.md:115",
+   "repete": "etapas/logs/medidor-08.log:19",
+   "nota": "o diário escreve às 09:54"
+  },
+  {
+   "hora_local": "2026-10-17T09:52:02",
+   "mb": 2063,
+   "contexto": "08, fatias 1+2 (janela quieta 1)",
+   "fonte": "etapas/logs/medidor-08.log:20"
+  },
+  {
+   "hora_local": "2026-10-17T09:52:08",
+   "mb": 2337,
+   "contexto": "08, fatias 1+2 (janela quieta 1)",
+   "fonte": "etapas/logs/medidor-08.log:21"
+  },
+  {
+   "hora_local": "2026-10-17T09:52:14",
+   "mb": 2450,
+   "contexto": "08, fatias 1+2 (janela quieta 1)",
+   "fonte": "etapas/logs/medidor-08.log:22"
+  },
+  {
+   "hora_local": "2026-10-17T09:52:21",
+   "mb": 2373,
+   "contexto": "08, fatias 1+2 (janela quieta 1)",
+   "fonte": "etapas/logs/medidor-08.log:23"
+  },
+  {
+   "hora_local": "2026-10-17T09:52:27",
+   "mb": 2593,
+   "contexto": "08, fatias 1+2 (janela quieta 1)",
+   "fonte": "etapas/logs/medidor-08.log:24"
+  },
+  {
+   "hora_local": "2026-10-17T09:52:33",
+   "mb": 3089,
+   "contexto": "08, fatias 1+2 (janela quieta 1)",
+   "fonte": "etapas/logs/medidor-08.log:25"
+  },
+  {
+   "hora_local": "2026-10-17T09:52:40",
+   "mb": 3169,
+   "contexto": "08, fatias 1+2 (janela quieta 1)",
+   "fonte": "etapas/logs/medidor-08.log:26"
+  },
+  {
+   "hora_local": "2026-10-17T09:52:40",
+   "mb": 3171,
+   "contexto": "08, fatias (corredor da Brasa): fatia 1+2: saida=0 (18 PASSA; 3171 MB livres)",
+   "fonte": "etapas/logs/08-fatias.status:49"
+  },
+  {
+   "hora_local": "2026-10-17T09:52:46",
+   "mb": 3211,
+   "contexto": "08, fatias 1+2 (janela quieta 1)",
+   "fonte": "etapas/logs/medidor-08.log:27"
+  },
+  {
+   "hora_local": "2026-10-17T09:53:16",
+   "mb": 3355,
+   "contexto": "25, corredor da Vela: corredor 250324 começou: fases 1,2,3, harnesses claude,copilot, 3355 MB livres",
+   "fonte": "etapas/logs/25-corredor.status:1"
+  },
+  {
+   "hora_local": "2026-10-17T09:53:17",
+   "mb": 3339,
+   "contexto": "25, corredor da Vela: wsl --shutdown (3339 MB livres antes)",
+   "fonte": "etapas/logs/25-corredor.status:2"
+  },
+  {
+   "hora_local": "2026-10-17T09:53:36",
+   "mb": 3793,
+   "contexto": "25, corredor da Vela: depois do wsl --shutdown: 3793 MB livres",
+   "fonte": "etapas/logs/25-corredor.status:3"
+  },
+  {
+   "hora_local": "2026-10-17T09:55",
+   "mb": 1831,
+   "contexto": "25 rodada 1, fases 1-3: mín. livre na indexação da busca",
+   "fonte": "etapas/diario-da-construcao.md:116",
+   "hora_aproximada": true,
+   "nota": "o diário escreve às 10:03; a fase busca foi na volta 09:53-09:57 (etapas/logs/25-resumo-rodada-1.md:3)"
+  },
+  {
+   "hora_local": "2026-10-17T09:57:48",
+   "mb": 4146,
+   "contexto": "25, corredor da Vela: prova terminou com 1 (4146 MB livres)",
+   "fonte": "etapas/logs/25-corredor.status:4"
+  },
+  {
+   "hora_local": "2026-10-17T09:58:41",
+   "mb": 4269,
+   "contexto": "25, corredor da Vela: corredor 251604 começou: fases 2,3, harnesses claude,copilot, 4269 MB livres",
+   "fonte": "etapas/logs/25-corredor.status:6"
+  },
+  {
+   "hora_local": "2026-10-17T09:58:42",
+   "mb": 4248,
+   "contexto": "25, corredor da Vela: wsl --shutdown (4248 MB livres antes)",
+   "fonte": "etapas/logs/25-corredor.status:7"
+  },
+  {
+   "hora_local": "2026-10-17T09:59:01",
+   "mb": 4116,
+   "contexto": "25, corredor da Vela: depois do wsl --shutdown: 4116 MB livres",
+   "fonte": "etapas/logs/25-corredor.status:8"
+  },
+  {
+   "hora_local": "2026-10-17T09:59:04",
+   "mb": 3934,
+   "contexto": "25, fases 2-3 (Claude+Copilot), 2ª volta da manhã; fase pares",
+   "fonte": "etapas/logs/25-medida-fases-1-3.csv:2"
+  },
+  {
+   "hora_local": "2026-10-17T09:59:08",
+   "mb": 3823,
+   "contexto": "25, fases 2-3 (Claude+Copilot), 2ª volta da manhã; fase pares:subir",
+   "fonte": "etapas/logs/25-medida-fases-1-3.csv:3"
+  },
+  {
+   "hora_local": "2026-10-17T09:59:12",
+   "mb": 3715,
+   "contexto": "25, fases 2-3 (Claude+Copilot), 2ª volta da manhã; fase pares:subir",
+   "fonte": "etapas/logs/25-medida-fases-1-3.csv:4"
+  },
+  {
+   "hora_local": "2026-10-17T09:59:16",
+   "mb": 3701,
+   "contexto": "25, fases 2-3 (Claude+Copilot), 2ª volta da manhã; fase pares:subir",
+   "fonte": "etapas/logs/25-medida-fases-1-3.csv:5"
+  },
+  {
+   "hora_local": "2026-10-17T09:59:20",
+   "mb": 3611,
+   "contexto": "25, fases 2-3 (Claude+Copilot), 2ª volta da manhã; fase pares:subir",
+   "fonte": "etapas/logs/25-medida-fases-1-3.csv:6"
+  },
+  {
+   "hora_local": "2026-10-17T09:59:26",
+   "mb": 3544,
+   "contexto": "25, fases 2-3 (Claude+Copilot), 2ª volta da manhã; fase pares:subir",
+   "fonte": "etapas/logs/25-medida-fases-1-3.csv:7"
+  },
+  {
+   "hora_local": "2026-10-17T09:59:31",
+   "mb": 3281,
+   "contexto": "25, fases 2-3 (Claude+Copilot), 2ª volta da manhã; fase pares:subir",
+   "fonte": "etapas/logs/25-medida-fases-1-3.csv:8"
+  },
+  {
+   "hora_local": "2026-10-17T09:59:35",
+   "mb": 3236,
+   "contexto": "25, fases 2-3 (Claude+Copilot), 2ª volta da manhã; fase pares",
+   "fonte": "etapas/logs/25-medida-fases-1-3.csv:9"
+  },
+  {
+   "hora_local": "2026-10-17T09:59:39",
+   "mb": 3127,
+   "contexto": "25, fases 2-3 (Claude+Copilot), 2ª volta da manhã; fase pares",
+   "fonte": "etapas/logs/25-medida-fases-1-3.csv:10"
+  },
+  {
+   "hora_local": "2026-10-17T09:59:43",
+   "mb": 3224,
+   "contexto": "25, fases 2-3 (Claude+Copilot), 2ª volta da manhã; fase pares",
+   "fonte": "etapas/logs/25-medida-fases-1-3.csv:11"
+  },
+  {
+   "hora_local": "2026-10-17T09:59:50",
+   "mb": 3224,
+   "contexto": "25, fases 2-3 (Claude+Copilot), 2ª volta da manhã; fase pares",
+   "fonte": "etapas/logs/25-medida-fases-1-3.csv:12"
+  },
+  {
+   "hora_local": "2026-10-17T09:59:54",
+   "mb": 3370,
+   "contexto": "25, fases 2-3 (Claude+Copilot), 2ª volta da manhã; fase pares",
+   "fonte": "etapas/logs/25-medida-fases-1-3.csv:13"
+  },
+  {
+   "hora_local": "2026-10-17T09:59:59",
+   "mb": 3284,
+   "contexto": "25, fases 2-3 (Claude+Copilot), 2ª volta da manhã; fase pares",
+   "fonte": "etapas/logs/25-medida-fases-1-3.csv:14"
+  },
+  {
+   "hora_local": "2026-10-17T10:00:03",
+   "mb": 3337,
+   "contexto": "25, fases 2-3 (Claude+Copilot), 2ª volta da manhã; fase pares",
+   "fonte": "etapas/logs/25-medida-fases-1-3.csv:15"
+  },
+  {
+   "hora_local": "2026-10-17T10:00:07",
+   "mb": 3368,
+   "contexto": "25, fases 2-3 (Claude+Copilot), 2ª volta da manhã; fase pares",
+   "fonte": "etapas/logs/25-medida-fases-1-3.csv:16"
+  },
+  {
+   "hora_local": "2026-10-17T10:00:13",
+   "mb": 3213,
+   "contexto": "25, fases 2-3 (Claude+Copilot), 2ª volta da manhã; fase pares",
+   "fonte": "etapas/logs/25-medida-fases-1-3.csv:17"
+  },
+  {
+   "hora_local": "2026-10-17T10:00:17",
+   "mb": 3016,
+   "contexto": "25, fases 2-3 (Claude+Copilot), 2ª volta da manhã; fase pares",
+   "fonte": "etapas/logs/25-medida-fases-1-3.csv:18"
+  },
+  {
+   "hora_local": "2026-10-17T10:00:21",
+   "mb": 2910,
+   "contexto": "25, fases 2-3 (Claude+Copilot), 2ª volta da manhã; fase pares",
+   "fonte": "etapas/logs/25-medida-fases-1-3.csv:19"
+  },
+  {
+   "hora_local": "2026-10-17T10:00:24",
+   "mb": 2891,
+   "contexto": "25, fases 2-3 (Claude+Copilot), 2ª volta da manhã; fase pares",
+   "fonte": "etapas/logs/25-medida-fases-1-3.csv:20"
+  },
+  {
+   "hora_local": "2026-10-17T10:00:28",
+   "mb": 2813,
+   "contexto": "25, fases 2-3 (Claude+Copilot), 2ª volta da manhã; fase pares",
+   "fonte": "etapas/logs/25-medida-fases-1-3.csv:21"
+  },
+  {
+   "hora_local": "2026-10-17T10:00:34",
+   "mb": 3112,
+   "contexto": "25, fases 2-3 (Claude+Copilot), 2ª volta da manhã; fase pares",
+   "fonte": "etapas/logs/25-medida-fases-1-3.csv:22"
+  },
+  {
+   "hora_local": "2026-10-17T10:00:38",
+   "mb": 3077,
+   "contexto": "25, fases 2-3 (Claude+Copilot), 2ª volta da manhã; fase pares",
+   "fonte": "etapas/logs/25-medida-fases-1-3.csv:23"
+  },
+  {
+   "hora_local": "2026-10-17T10:00:41",
+   "mb": 3073,
+   "contexto": "25, fases 2-3 (Claude+Copilot), 2ª volta da manhã; fase pares",
+   "fonte": "etapas/logs/25-medida-fases-1-3.csv:24"
+  },
+  {
+   "hora_local": "2026-10-17T10:00:45",
+   "mb": 3058,
+   "contexto": "25, fases 2-3 (Claude+Copilot), 2ª volta da manhã; fase pares",
+   "fonte": "etapas/logs/25-medida-fases-1-3.csv:25"
+  },
+  {
+   "hora_local": "2026-10-17T10:00:49",
+   "mb": 3002,
+   "contexto": "25, fases 2-3 (Claude+Copilot), 2ª volta da manhã; fase pares",
+   "fonte": "etapas/logs/25-medida-fases-1-3.csv:26"
+  },
+  {
+   "hora_local": "2026-10-17T10:00:56",
+   "mb": 3037,
+   "contexto": "25, fases 2-3 (Claude+Copilot), 2ª volta da manhã; fase pares",
+   "fonte": "etapas/logs/25-medida-fases-1-3.csv:27"
+  },
+  {
+   "hora_local": "2026-10-17T10:01:00",
+   "mb": 3018,
+   "contexto": "25, fases 2-3 (Claude+Copilot), 2ª volta da manhã; fase pares",
+   "fonte": "etapas/logs/25-medida-fases-1-3.csv:28"
+  },
+  {
+   "hora_local": "2026-10-17T10:01:04",
+   "mb": 3025,
+   "contexto": "25, fases 2-3 (Claude+Copilot), 2ª volta da manhã; fase pares",
+   "fonte": "etapas/logs/25-medida-fases-1-3.csv:29"
+  },
+  {
+   "hora_local": "2026-10-17T10:01:08",
+   "mb": 3026,
+   "contexto": "25, fases 2-3 (Claude+Copilot), 2ª volta da manhã; fase pares",
+   "fonte": "etapas/logs/25-medida-fases-1-3.csv:30"
+  },
+  {
+   "hora_local": "2026-10-17T10:01:13",
+   "mb": 3012,
+   "contexto": "25, fases 2-3 (Claude+Copilot), 2ª volta da manhã; fase pares",
+   "fonte": "etapas/logs/25-medida-fases-1-3.csv:31"
+  },
+  {
+   "hora_local": "2026-10-17T10:01:20",
+   "mb": 3017,
+   "contexto": "25, fases 2-3 (Claude+Copilot), 2ª volta da manhã; fase pares",
+   "fonte": "etapas/logs/25-medida-fases-1-3.csv:32"
+  },
+  {
+   "hora_local": "2026-10-17T10:01:24",
+   "mb": 3155,
+   "contexto": "25, fases 2-3 (Claude+Copilot), 2ª volta da manhã; fase banco-reiniciado",
+   "fonte": "etapas/logs/25-medida-fases-1-3.csv:33"
+  },
+  {
+   "hora_local": "2026-10-17T10:01:28",
+   "mb": 3172,
+   "contexto": "25, fases 2-3 (Claude+Copilot), 2ª volta da manhã; fase banco-reiniciado",
+   "fonte": "etapas/logs/25-medida-fases-1-3.csv:34"
+  },
+  {
+   "hora_local": "2026-10-17T10:01:32",
+   "mb": 3161,
+   "contexto": "25, fases 2-3 (Claude+Copilot), 2ª volta da manhã; fase banco-reiniciado",
+   "fonte": "etapas/logs/25-medida-fases-1-3.csv:35"
+  },
+  {
+   "hora_local": "2026-10-17T10:01:36",
+   "mb": 2676,
+   "contexto": "25, fases 2-3 (Claude+Copilot), 2ª volta da manhã; fase banco-reiniciado",
+   "fonte": "etapas/logs/25-medida-fases-1-3.csv:36",
+   "minimo_do_arquivo": true
+  },
+  {
+   "hora_local": "2026-10-17T10:01:42",
+   "mb": 3222,
+   "contexto": "25, fases 2-3 (Claude+Copilot), 2ª volta da manhã; fase descer",
+   "fonte": "etapas/logs/25-medida-fases-1-3.csv:37"
+  },
+  {
+   "hora_local": "2026-10-17T10:01:46",
+   "mb": 3359,
+   "contexto": "25, fases 2-3 (Claude+Copilot), 2ª volta da manhã; fase descer",
+   "fonte": "etapas/logs/25-medida-fases-1-3.csv:38"
+  },
+  {
+   "hora_local": "2026-10-17T10:01:50",
+   "mb": 3641,
+   "contexto": "25, corredor da Vela: prova terminou com 0 (3641 MB livres)",
+   "fonte": "etapas/logs/25-corredor.status:9"
+  },
+  {
+   "hora_local": "2026-10-17T10:17",
+   "mb": 1100,
+   "contexto": "ronda; suíte do 16 (Rebite)",
+   "fonte": "etapas/diario-da-construcao.md:119"
+  },
+  {
+   "hora_local": "2026-10-17T10:40",
+   "mb": 3600,
+   "contexto": "ronda; suíte do 16 (Rebite)",
+   "fonte": "etapas/diario-da-construcao.md:126"
+  },
+  {
+   "hora_local": "2026-10-17T11:15",
+   "mb": 4100,
+   "contexto": "ronda; suíte do 22 (Rebite)",
+   "fonte": "etapas/diario-da-construcao.md:132"
+  },
+  {
+   "hora_local": "2026-10-17T11:41",
+   "mb": 3200,
+   "contexto": "ronda; pesados do 38 (Trilho)",
+   "fonte": "etapas/diario-da-construcao.md:138"
+  },
+  {
+   "hora_local": "2026-10-17T12:15",
+   "mb": 4300,
+   "contexto": "ronda; suíte do 17 (Rebite)",
+   "fonte": "etapas/diario-da-construcao.md:141"
+  },
+  {
+   "hora_local": "2026-10-17T12:48:56",
+   "mb": 1852,
+   "contexto": "25, corredor da Vela: corredor 93196 começou: fases 4,6,7, harnesses claude,copilot, 1852 MB livres",
+   "fonte": "etapas/logs/25-corredor.status:11"
+  },
+  {
+   "hora_local": "2026-10-17T12:48:58",
+   "mb": 1795,
+   "contexto": "25, corredor da Vela: wsl --shutdown (1795 MB livres antes)",
+   "fonte": "etapas/logs/25-corredor.status:12"
+  },
+  {
+   "hora_local": "2026-10-17T12:49:14",
+   "mb": 1728,
+   "contexto": "25, corredor da Vela: depois do wsl --shutdown: 1728 MB livres",
+   "fonte": "etapas/logs/25-corredor.status:13"
+  },
+  {
+   "hora_local": "2026-10-17T12:49:17",
+   "mb": 1715,
+   "contexto": "25, fases 4/6/7, rodada 1 (piso 2.500); fase piso:vigia",
+   "fonte": "etapas/logs/25-medida-auzDAF.csv:2"
+  },
+  {
+   "hora_local": "2026-10-17T12:49:47",
+   "mb": 1646,
+   "contexto": "25, fases 4/6/7, rodada 1 (piso 2.500); fase piso:vigia",
+   "fonte": "etapas/logs/25-medida-auzDAF.csv:12"
+  },
+  {
+   "hora_local": "2026-10-17T12:49:53",
+   "mb": 1983,
+   "contexto": "25, fases 4/6/7, rodada 1 (piso 2.500); fase piso:vigia",
+   "fonte": "etapas/logs/25-medida-auzDAF.csv:14"
+  },
+  {
+   "hora_local": "2026-10-17T12:50:07",
+   "mb": 2114,
+   "contexto": "25, fases 4/6/7, rodada 1 (piso 2.500); fase piso:vigia",
+   "fonte": "etapas/logs/25-medida-auzDAF.csv:19"
+  },
+  {
+   "hora_local": "2026-10-17T12:50:24",
+   "mb": 1899,
+   "contexto": "25, fases 4/6/7, rodada 1 (piso 2.500); fase piso:vigia",
+   "fonte": "etapas/logs/25-medida-auzDAF.csv:25"
+  },
+  {
+   "hora_local": "2026-10-17T12:51:00",
+   "mb": 1855,
+   "contexto": "25, fases 4/6/7, rodada 1 (piso 2.500); fase piso:vigia",
+   "fonte": "etapas/logs/25-medida-auzDAF.csv:38"
+  },
+  {
+   "hora_local": "2026-10-17T12:51:13",
+   "mb": 2123,
+   "contexto": "25, fases 4/6/7, rodada 1 (piso 2.500); fase piso:vigia",
+   "fonte": "etapas/logs/25-medida-auzDAF.csv:43"
+  },
+  {
+   "hora_local": "2026-10-17T12:51:18",
+   "mb": 2126,
+   "contexto": "25, fases 4/6/7, rodada 1 (piso 2.500); fase piso:vigia",
+   "fonte": "etapas/logs/25-medida-auzDAF.csv:45"
+  },
+  {
+   "hora_local": "2026-10-17T12:51:28",
+   "mb": 1526,
+   "contexto": "25, fases 4/6/7, rodada 1 (piso 2.500); fase piso:vigia",
+   "fonte": "etapas/logs/25-medida-auzDAF.csv:48"
+  },
+  {
+   "hora_local": "2026-10-17T12:52:03",
+   "mb": 1760,
+   "contexto": "25, fases 4/6/7, rodada 1 (piso 2.500); fase piso:vigia",
+   "fonte": "etapas/logs/25-medida-auzDAF.csv:59"
+  },
+  {
+   "hora_local": "2026-10-17T12:52:42",
+   "mb": 2053,
+   "contexto": "25, fases 4/6/7, rodada 1 (piso 2.500); fase piso:vigia",
+   "fonte": "etapas/logs/25-medida-auzDAF.csv:71"
+  },
+  {
+   "hora_local": "2026-10-17T12:52:52",
+   "mb": 1893,
+   "contexto": "25, fases 4/6/7, rodada 1 (piso 2.500); fase piso:vigia",
+   "fonte": "etapas/logs/25-medida-auzDAF.csv:73"
+  },
+  {
+   "hora_local": "2026-10-17T12:53:30",
+   "mb": 1992,
+   "contexto": "25, fases 4/6/7, rodada 1 (piso 2.500); fase piso:vigia",
+   "fonte": "etapas/logs/25-medida-auzDAF.csv:85"
+  },
+  {
+   "hora_local": "2026-10-17T12:53:33",
+   "mb": 1973,
+   "contexto": "25, fases 4/6/7, rodada 1 (piso 2.500); fase piso:vigia",
+   "fonte": "etapas/logs/25-medida-auzDAF.csv:86"
+  },
+  {
+   "hora_local": "2026-10-17T12:54:03",
+   "mb": 1702,
+   "contexto": "25, fases 4/6/7, rodada 1 (piso 2.500); fase piso:vigia",
+   "fonte": "etapas/logs/25-medida-auzDAF.csv:94"
+  },
+  {
+   "hora_local": "2026-10-17T12:54:20",
+   "mb": 1965,
+   "contexto": "25, fases 4/6/7, rodada 1 (piso 2.500); fase piso:vigia",
+   "fonte": "etapas/logs/25-medida-auzDAF.csv:100"
+  },
+  {
+   "hora_local": "2026-10-17T12:54:48",
+   "mb": 1482,
+   "contexto": "25, fases 4/6/7, rodada 1 (piso 2.500); fase piso:vigia",
+   "fonte": "etapas/logs/25-medida-auzDAF.csv:108"
+  },
+  {
+   "hora_local": "2026-10-17T12:55:23",
+   "mb": 1912,
+   "contexto": "25, fases 4/6/7, rodada 1 (piso 2.500); fase piso:vigia",
+   "fonte": "etapas/logs/25-medida-auzDAF.csv:120"
+  },
+  {
+   "hora_local": "2026-10-17T12:55:46",
+   "mb": 1714,
+   "contexto": "25, fases 4/6/7, rodada 1 (piso 2.500); fase piso:vigia",
+   "fonte": "etapas/logs/25-medida-auzDAF.csv:127"
+  },
+  {
+   "hora_local": "2026-10-17T12:55:57",
+   "mb": 2082,
+   "contexto": "25, fases 4/6/7, rodada 1 (piso 2.500); fase piso:vigia",
+   "fonte": "etapas/logs/25-medida-auzDAF.csv:131"
+  },
+  {
+   "hora_local": "2026-10-17T12:56:09",
+   "mb": 1919,
+   "contexto": "25, fases 4/6/7, rodada 1 (piso 2.500); fase piso:vigia",
+   "fonte": "etapas/logs/25-medida-auzDAF.csv:135"
+  },
+  {
+   "hora_local": "2026-10-17T12:56:49",
+   "mb": 2252,
+   "contexto": "25, fases 4/6/7, rodada 1 (piso 2.500); fase piso:vigia",
+   "fonte": "etapas/logs/25-medida-auzDAF.csv:150"
+  },
+  {
+   "hora_local": "2026-10-17T12:57:01",
+   "mb": 1743,
+   "contexto": "25, fases 4/6/7, rodada 1 (piso 2.500); fase piso:vigia",
+   "fonte": "etapas/logs/25-medida-auzDAF.csv:154"
+  },
+  {
+   "hora_local": "2026-10-17T12:57:06",
+   "mb": 2061,
+   "contexto": "25, fases 4/6/7, rodada 1 (piso 2.500); fase piso:vigia",
+   "fonte": "etapas/logs/25-medida-auzDAF.csv:156"
+  },
+  {
+   "hora_local": "2026-10-17T12:57:38",
+   "mb": 1701,
+   "contexto": "25, fases 4/6/7, rodada 1 (piso 2.500); fase piso:vigia",
+   "fonte": "etapas/logs/25-medida-auzDAF.csv:167"
+  },
+  {
+   "hora_local": "2026-10-17T12:58:10",
+   "mb": 1762,
+   "contexto": "25, fases 4/6/7, rodada 1 (piso 2.500); fase piso:vigia",
+   "fonte": "etapas/logs/25-medida-auzDAF.csv:179"
+  },
+  {
+   "hora_local": "2026-10-17T12:58:18",
+   "mb": 2263,
+   "contexto": "25, fases 4/6/7, rodada 1 (piso 2.500); fase piso:vigia",
+   "fonte": "etapas/logs/25-medida-auzDAF.csv:182"
+  },
+  {
+   "hora_local": "2026-10-17T12:58:24",
+   "mb": 1938,
+   "contexto": "25, fases 4/6/7, rodada 1 (piso 2.500); fase piso:vigia",
+   "fonte": "etapas/logs/25-medida-auzDAF.csv:184"
+  },
+  {
+   "hora_local": "2026-10-17T12:58:34",
+   "mb": 2183,
+   "contexto": "25, fases 4/6/7, rodada 1 (piso 2.500); fase piso:vigia",
+   "fonte": "etapas/logs/25-medida-auzDAF.csv:188"
+  },
+  {
+   "hora_local": "2026-10-17T12:59",
+   "mb": 2040,
+   "contexto": "25, rodada 1: fase 4 não começou (máx. 2.040 livres, piso 2.500)",
+   "fonte": "etapas/logs/25-prova-fases-4-6-7-rodada-1.log:28",
+   "hora_aproximada": true,
+   "nota": "o log não tem hora; a espera foi de 12:49 a ~12:59 (piso:vigia no 25-medida-auzDAF.csv)"
+  },
+  {
+   "hora_local": "2026-10-17T12:59:10",
+   "mb": 1979,
+   "contexto": "25, fases 4/6/7, rodada 1 (piso 2.500); fase piso:vigia",
+   "fonte": "etapas/logs/25-medida-auzDAF.csv:201"
+  },
+  {
+   "hora_local": "2026-10-17T12:59:32",
+   "mb": 2161,
+   "contexto": "25, fases 4/6/7, rodada 1 (piso 2.500); fase piso:arquivar",
+   "fonte": "etapas/logs/25-medida-auzDAF.csv:209"
+  },
+  {
+   "hora_local": "2026-10-17T13:00:09",
+   "mb": 2023,
+   "contexto": "25, fases 4/6/7, rodada 1 (piso 2.500); fase piso:arquivar",
+   "fonte": "etapas/logs/25-medida-auzDAF.csv:223"
+  },
+  {
+   "hora_local": "2026-10-17T13:00:15",
+   "mb": 2367,
+   "contexto": "25, fases 4/6/7, rodada 1 (piso 2.500); fase piso:arquivar",
+   "fonte": "etapas/logs/25-medida-auzDAF.csv:225"
+  },
+  {
+   "hora_local": "2026-10-17T13:00:31",
+   "mb": 2316,
+   "contexto": "25, fases 4/6/7, rodada 1 (piso 2.500); fase piso:arquivar",
+   "fonte": "etapas/logs/25-medida-auzDAF.csv:231"
+  },
+  {
+   "hora_local": "2026-10-17T13:00:34",
+   "mb": 2468,
+   "contexto": "25, fases 4/6/7, rodada 1 (piso 2.500); fase piso:arquivar",
+   "fonte": "etapas/logs/25-medida-auzDAF.csv:232"
+  },
+  {
+   "hora_local": "2026-10-17T13:00:55",
+   "mb": 2509,
+   "contexto": "25, fases 4/6/7, rodada 1 (piso 2.500); fase piso:arquivar",
+   "fonte": "etapas/logs/25-medida-auzDAF.csv:240"
+  },
+  {
+   "hora_local": "2026-10-17T13:01:23",
+   "mb": 670,
+   "contexto": "25, fases 4/6/7, rodada 1 (piso 2.500); fase pares:subir",
+   "fonte": "etapas/logs/25-medida-auzDAF.csv:250",
+   "minimo_do_arquivo": true
+  },
+  {
+   "hora_local": "2026-10-17T13:01:23",
+   "mb": 670,
+   "contexto": "25, corte do medidor (fase pares:subir, limite 700)",
+   "fonte": "etapas/logs/25-corte-auzDAF.json:4"
+  },
+  {
+   "hora_local": "2026-10-17T13:01:24",
+   "mb": 766,
+   "contexto": "25, corredor da Vela: prova terminou com 1 (766 MB livres)",
+   "fonte": "etapas/logs/25-corredor.status:14"
+  },
+  {
+   "hora_local": "2026-10-17T13:03",
+   "mb": 2040,
+   "contexto": "25 não rodou: máx. 2.040 livres (piso 2.500)",
+   "fonte": "etapas/diario-da-construcao.md:151",
+   "repete": "etapas/logs/25-prova-fases-4-6-7-rodada-1.log:28"
+  },
+  {
+   "hora_local": "2026-10-17T13:12:50",
+   "mb": 2239,
+   "contexto": "25, corredor da Vela: corredor 128384 começou: fases 4,6,7, harnesses claude,copilot, 2239 MB livres",
+   "fonte": "etapas/logs/25-corredor.status:16"
+  },
+  {
+   "hora_local": "2026-10-17T13:12:53",
+   "mb": 2198,
+   "contexto": "25, corredor da Vela: wsl --shutdown (2198 MB livres antes)",
+   "fonte": "etapas/logs/25-corredor.status:17"
+  },
+  {
+   "hora_local": "2026-10-17T13:13:10",
+   "mb": 2143,
+   "contexto": "25, corredor da Vela: depois do wsl --shutdown: 2143 MB livres",
+   "fonte": "etapas/logs/25-corredor.status:18"
+  },
+  {
+   "hora_local": "2026-10-17T13:13:18",
+   "mb": 2040,
+   "contexto": "25, fases 4/6/7, rodada 2 (piso 1.800); fase vigia",
+   "fonte": "etapas/logs/25-medida-0TsUvd.csv:2"
+  },
+  {
+   "hora_local": "2026-10-17T13:13:20",
+   "mb": 1878,
+   "contexto": "25, fases 4/6/7, rodada 2 (piso 1.800); fase vigia",
+   "fonte": "etapas/logs/25-medida-0TsUvd.csv:3"
+  },
+  {
+   "hora_local": "2026-10-17T13:13:23",
+   "mb": 1882,
+   "contexto": "25, fases 4/6/7, rodada 2 (piso 1.800); fase vigia",
+   "fonte": "etapas/logs/25-medida-0TsUvd.csv:4"
+  },
+  {
+   "hora_local": "2026-10-17T13:13:26",
+   "mb": 1924,
+   "contexto": "25, fases 4/6/7, rodada 2 (piso 1.800); fase vigia",
+   "fonte": "etapas/logs/25-medida-0TsUvd.csv:5"
+  },
+  {
+   "hora_local": "2026-10-17T13:13:29",
+   "mb": 1940,
+   "contexto": "25, fases 4/6/7, rodada 2 (piso 1.800); fase vigia",
+   "fonte": "etapas/logs/25-medida-0TsUvd.csv:6"
+  },
+  {
+   "hora_local": "2026-10-17T13:13:34",
+   "mb": 1927,
+   "contexto": "25, fases 4/6/7, rodada 2 (piso 1.800); fase pares:subir",
+   "fonte": "etapas/logs/25-medida-0TsUvd.csv:7"
+  },
+  {
+   "hora_local": "2026-10-17T13:13:36",
+   "mb": 1515,
+   "contexto": "25, fases 4/6/7, rodada 2 (piso 1.800); fase pares:subir",
+   "fonte": "etapas/logs/25-medida-0TsUvd.csv:8"
+  },
+  {
+   "hora_local": "2026-10-17T13:13:39",
+   "mb": 1616,
+   "contexto": "25, fases 4/6/7, rodada 2 (piso 1.800); fase pares:subir",
+   "fonte": "etapas/logs/25-medida-0TsUvd.csv:9"
+  },
+  {
+   "hora_local": "2026-10-17T13:13:44",
+   "mb": 1675,
+   "contexto": "25, fases 4/6/7, rodada 2 (piso 1.800); fase pares:subir",
+   "fonte": "etapas/logs/25-medida-0TsUvd.csv:10"
+  },
+  {
+   "hora_local": "2026-10-17T13:13:47",
+   "mb": 1477,
+   "contexto": "25, fases 4/6/7, rodada 2 (piso 1.800); fase pares:subir",
+   "fonte": "etapas/logs/25-medida-0TsUvd.csv:11"
+  },
+  {
+   "hora_local": "2026-10-17T13:13:51",
+   "mb": 1209,
+   "contexto": "25, fases 4/6/7, rodada 2 (piso 1.800); fase pares:subir",
+   "fonte": "etapas/logs/25-medida-0TsUvd.csv:12"
+  },
+  {
+   "hora_local": "2026-10-17T13:13:54",
+   "mb": 480,
+   "contexto": "25, fases 4/6/7, rodada 2 (piso 1.800); fase pares:subir",
+   "fonte": "etapas/logs/25-medida-0TsUvd.csv:13",
+   "minimo_do_arquivo": true
+  },
+  {
+   "hora_local": "2026-10-17T13:13:54",
+   "mb": 480,
+   "contexto": "25, corte do medidor (fase pares:subir, limite 700)",
+   "fonte": "etapas/logs/25-corte-0TsUvd.json:4"
+  },
+  {
+   "hora_local": "2026-10-17T13:13:56",
+   "mb": 659,
+   "contexto": "25, corredor da Vela: prova terminou com 1 (659 MB livres)",
+   "fonte": "etapas/logs/25-corredor.status:19"
+  },
+  {
+   "hora_local": "2026-10-17T13:15",
+   "mb": 659,
+   "contexto": "2ª tentativa do 25 caiu no corte",
+   "fonte": "etapas/diario-da-construcao.md:152",
+   "repete": "etapas/logs/25-corredor.status:19",
+   "nota": "659 é a medida no fim da prova; o corte.json da mesma volta marca 480 MB às 13:13:54"
+  },
+  {
+   "hora_local": "2026-10-17T13:15",
+   "mb": 2143,
+   "contexto": "depois do wsl --shutdown",
+   "fonte": "etapas/diario-da-construcao.md:152",
+   "repete": "etapas/logs/25-corredor.status:18 (13:13:10)"
+  },
+  {
+   "hora_local": "2026-10-17T13:21",
+   "mb": 3700,
+   "contexto": "começo da janela quieta 2",
+   "fonte": "etapas/relatorio-25-hub-inteiro.md:111",
+   "repete": "etapas/logs/25-corredor.status:21 (3.726)"
+  },
+  {
+   "hora_local": "2026-10-17T13:21:51",
+   "mb": 3726,
+   "contexto": "25, corredor da Vela: corredor 135476 começou: fases 4,6,7, harnesses claude,copilot, 3726 MB livres",
+   "fonte": "etapas/logs/25-corredor.status:21"
+  },
+  {
+   "hora_local": "2026-10-17T13:21:51",
+   "mb": 3762,
+   "contexto": "25, corredor da Vela: wsl --shutdown (3762 MB livres antes)",
+   "fonte": "etapas/logs/25-corredor.status:22"
+  },
+  {
+   "hora_local": "2026-10-17T13:22:07",
+   "mb": 3710,
+   "contexto": "25, corredor da Vela: depois do wsl --shutdown: 3710 MB livres",
+   "fonte": "etapas/logs/25-corredor.status:23"
+  },
+  {
+   "hora_local": "2026-10-17T13:22:10",
+   "mb": 3557,
+   "contexto": "25, fases 4/6/7, rodada 3 (janela quieta 2); fase vigia",
+   "fonte": "etapas/logs/25-medida-elzNVi.csv:2"
+  },
+  {
+   "hora_local": "2026-10-17T13:22:31",
+   "mb": 1766,
+   "contexto": "25, fases 4/6/7, rodada 3 (janela quieta 2); fase pares:subir",
+   "fonte": "etapas/logs/25-medida-elzNVi.csv:10"
+  },
+  {
+   "hora_local": "2026-10-17T13:23:04",
+   "mb": 1890,
+   "contexto": "25, fases 4/6/7, rodada 3 (janela quieta 2); fase pares:subir",
+   "fonte": "etapas/logs/25-medida-elzNVi.csv:21"
+  },
+  {
+   "hora_local": "2026-10-17T13:23:47",
+   "mb": 1405,
+   "contexto": "25, fases 4/6/7, rodada 3 (janela quieta 2); fase vigia",
+   "fonte": "etapas/logs/25-medida-elzNVi.csv:35"
+  },
+  {
+   "hora_local": "2026-10-17T13:24:02",
+   "mb": 1522,
+   "contexto": "25, fases 4/6/7, rodada 3 (janela quieta 2); fase vigia",
+   "fonte": "etapas/logs/25-medida-elzNVi.csv:40"
+  },
+  {
+   "hora_local": "2026-10-17T13:24:30",
+   "mb": 1622,
+   "contexto": "25, fases 4/6/7, rodada 3 (janela quieta 2); fase vigia",
+   "fonte": "etapas/logs/25-medida-elzNVi.csv:50"
+  },
+  {
+   "hora_local": "2026-10-17T13:24:58",
+   "mb": 1508,
+   "contexto": "25, fases 4/6/7, rodada 3 (janela quieta 2); fase vigia",
+   "fonte": "etapas/logs/25-medida-elzNVi.csv:60"
+  },
+  {
+   "hora_local": "2026-10-17T13:25",
+   "mb": 3800,
+   "contexto": "janela quieta 2 aberta",
+   "fonte": "etapas/diario-da-construcao.md:153"
+  },
+  {
+   "hora_local": "2026-10-17T13:25:25",
+   "mb": 1777,
+   "contexto": "25, fases 4/6/7, rodada 3 (janela quieta 2); fase vigia",
+   "fonte": "etapas/logs/25-medida-elzNVi.csv:69"
+  },
+  {
+   "hora_local": "2026-10-17T13:25:59",
+   "mb": 1315,
+   "contexto": "25, fases 4/6/7, rodada 3 (janela quieta 2); fase arquivar",
+   "fonte": "etapas/logs/25-medida-elzNVi.csv:81"
+  },
+  {
+   "hora_local": "2026-10-17T13:26:42",
+   "mb": 2136,
+   "contexto": "25, fases 4/6/7, rodada 3 (janela quieta 2); fase pares:descer",
+   "fonte": "etapas/logs/25-medida-elzNVi.csv:96"
+  },
+  {
+   "hora_local": "2026-10-17T13:27:32",
+   "mb": 1716,
+   "contexto": "25, fases 4/6/7, rodada 3 (janela quieta 2); fase cliente:subir",
+   "fonte": "etapas/logs/25-medida-elzNVi.csv:113"
+  },
+  {
+   "hora_local": "2026-10-17T13:27:37",
+   "mb": 2470,
+   "contexto": "25, fases 4/6/7, rodada 3 (janela quieta 2); fase cliente:subir",
+   "fonte": "etapas/logs/25-medida-elzNVi.csv:115"
+  },
+  {
+   "hora_local": "2026-10-17T13:27:59",
+   "mb": 1254,
+   "contexto": "25, fases 4/6/7, rodada 3 (janela quieta 2); fase cliente:subir",
+   "fonte": "etapas/logs/25-medida-elzNVi.csv:123"
+  },
+  {
+   "hora_local": "2026-10-17T13:28:07",
+   "mb": 1953,
+   "contexto": "25, fases 4/6/7, rodada 3 (janela quieta 2); fase cliente:subir",
+   "fonte": "etapas/logs/25-medida-elzNVi.csv:126"
+  },
+  {
+   "hora_local": "2026-10-17T13:28:34",
+   "mb": 1680,
+   "contexto": "25, fases 4/6/7, rodada 3 (janela quieta 2); fase cliente:subir",
+   "fonte": "etapas/logs/25-medida-elzNVi.csv:135"
+  },
+  {
+   "hora_local": "2026-10-17T13:29:17",
+   "mb": 1117,
+   "contexto": "25, fases 4/6/7, rodada 3 (janela quieta 2); fase cliente:subir",
+   "fonte": "etapas/logs/25-medida-elzNVi.csv:149"
+  },
+  {
+   "hora_local": "2026-10-17T13:29:44",
+   "mb": 1326,
+   "contexto": "25, fases 4/6/7, rodada 3 (janela quieta 2); fase cliente:subir",
+   "fonte": "etapas/logs/25-medida-elzNVi.csv:158"
+  },
+  {
+   "hora_local": "2026-10-17T13:30:24",
+   "mb": 1425,
+   "contexto": "25, fases 4/6/7, rodada 3 (janela quieta 2); fase cliente:subir",
+   "fonte": "etapas/logs/25-medida-elzNVi.csv:172"
+  },
+  {
+   "hora_local": "2026-10-17T13:30:34",
+   "mb": 1326,
+   "contexto": "25, fases 4/6/7, rodada 3 (janela quieta 2); fase cliente:subir",
+   "fonte": "etapas/logs/25-medida-elzNVi.csv:176"
+  },
+  {
+   "hora_local": "2026-10-17T13:30:42",
+   "mb": 1917,
+   "contexto": "25, fases 4/6/7, rodada 3 (janela quieta 2); fase cliente:subir",
+   "fonte": "etapas/logs/25-medida-elzNVi.csv:179"
+  },
+  {
+   "hora_local": "2026-10-17T13:31:21",
+   "mb": 1861,
+   "contexto": "25, fases 4/6/7, rodada 3 (janela quieta 2); fase cliente:subir",
+   "fonte": "etapas/logs/25-medida-elzNVi.csv:192"
+  },
+  {
+   "hora_local": "2026-10-17T13:32:08",
+   "mb": 1972,
+   "contexto": "25, fases 4/6/7, rodada 3 (janela quieta 2); fase cliente:subir",
+   "fonte": "etapas/logs/25-medida-elzNVi.csv:207"
+  },
+  {
+   "hora_local": "2026-10-17T13:32:19",
+   "mb": 1956,
+   "contexto": "25, fases 4/6/7, rodada 3 (janela quieta 2); fase cliente:subir",
+   "fonte": "etapas/logs/25-medida-elzNVi.csv:211"
+  },
+  {
+   "hora_local": "2026-10-17T13:32:58",
+   "mb": 2226,
+   "contexto": "25, fases 4/6/7, rodada 3 (janela quieta 2); fase cliente:subir",
+   "fonte": "etapas/logs/25-medida-elzNVi.csv:223"
+  },
+  {
+   "hora_local": "2026-10-17T13:33:43",
+   "mb": 2171,
+   "contexto": "25, fases 4/6/7, rodada 3 (janela quieta 2); fase cliente:subir",
+   "fonte": "etapas/logs/25-medida-elzNVi.csv:238"
+  },
+  {
+   "hora_local": "2026-10-17T13:34:15",
+   "mb": 2311,
+   "contexto": "25, fases 4/6/7, rodada 3 (janela quieta 2); fase cliente:subir",
+   "fonte": "etapas/logs/25-medida-elzNVi.csv:248"
+  },
+  {
+   "hora_local": "2026-10-17T13:34:39",
+   "mb": 2392,
+   "contexto": "25, fases 4/6/7, rodada 3 (janela quieta 2); fase cliente:subir",
+   "fonte": "etapas/logs/25-medida-elzNVi.csv:256"
+  },
+  {
+   "hora_local": "2026-10-17T13:35:11",
+   "mb": 1820,
+   "contexto": "25, fases 4/6/7, rodada 3 (janela quieta 2); fase cliente:subir",
+   "fonte": "etapas/logs/25-medida-elzNVi.csv:266"
+  },
+  {
+   "hora_local": "2026-10-17T13:35:18",
+   "mb": 1978,
+   "contexto": "25, fases 4/6/7, rodada 3 (janela quieta 2); fase cliente:subir",
+   "fonte": "etapas/logs/25-medida-elzNVi.csv:268"
+  },
+  {
+   "hora_local": "2026-10-17T13:35:55",
+   "mb": 2175,
+   "contexto": "25, fases 4/6/7, rodada 3 (janela quieta 2); fase cliente:subir",
+   "fonte": "etapas/logs/25-medida-elzNVi.csv:280"
+  },
+  {
+   "hora_local": "2026-10-17T13:36:28",
+   "mb": 2009,
+   "contexto": "25, fases 4/6/7, rodada 3 (janela quieta 2); fase cliente:subir",
+   "fonte": "etapas/logs/25-medida-elzNVi.csv:290"
+  },
+  {
+   "hora_local": "2026-10-17T13:36:41",
+   "mb": 1779,
+   "contexto": "25, fases 4/6/7, rodada 3 (janela quieta 2); fase cliente:subir",
+   "fonte": "etapas/logs/25-medida-elzNVi.csv:294"
+  },
+  {
+   "hora_local": "2026-10-17T13:37:16",
+   "mb": 1978,
+   "contexto": "25, fases 4/6/7, rodada 3 (janela quieta 2); fase cliente:subir",
+   "fonte": "etapas/logs/25-medida-elzNVi.csv:306"
+  },
+  {
+   "hora_local": "2026-10-17T13:38:04",
+   "mb": 1463,
+   "contexto": "25, fases 4/6/7, rodada 3 (janela quieta 2); fase cliente:subir",
+   "fonte": "etapas/logs/25-medida-elzNVi.csv:321"
+  },
+  {
+   "hora_local": "2026-10-17T13:38:25",
+   "mb": 1564,
+   "contexto": "25, fases 4/6/7, rodada 3 (janela quieta 2); fase cliente:subir",
+   "fonte": "etapas/logs/25-medida-elzNVi.csv:327"
+  },
+  {
+   "hora_local": "2026-10-17T13:39:05",
+   "mb": 671,
+   "contexto": "25, fases 4/6/7, rodada 3 (janela quieta 2); fase cliente:subir",
+   "fonte": "etapas/logs/25-medida-elzNVi.csv:340",
+   "minimo_do_arquivo": true
+  },
+  {
+   "hora_local": "2026-10-17T13:39:05",
+   "mb": 671,
+   "contexto": "25, corte do medidor (fase cliente:subir, limite 700)",
+   "fonte": "etapas/logs/25-corte-elzNVi.json:4"
+  },
+  {
+   "hora_local": "2026-10-17T13:39:06",
+   "mb": 677,
+   "contexto": "25, corredor da Vela: prova terminou com 1 (677 MB livres)",
+   "fonte": "etapas/logs/25-corredor.status:24"
+  },
+  {
+   "hora_local": "2026-10-17T13:45",
+   "mb": 671,
+   "contexto": "fase 7 do 25 caiu no corte",
+   "fonte": "etapas/diario-da-construcao.md:155",
+   "repete": "etapas/logs/25-corte-elzNVi.json (13:39:05)"
+  },
+  {
+   "hora_local": "2026-10-17T13:45",
+   "mb": 2600,
+   "contexto": "Docker Desktop parado para a suíte do Rebite (Windows em manutenção, ~1 GB)",
+   "fonte": "etapas/diario-da-construcao.md:155"
+  },
+  {
+   "hora_local": "2026-10-17T14:06:45",
+   "mb": 2082,
+   "contexto": "25, corredor da Vela: corredor 64548 começou: fases 4, harnesses claude,copilot, 2082 MB livres",
+   "fonte": "etapas/logs/25-corredor.status:26"
+  },
+  {
+   "hora_local": "2026-10-17T14:06:46",
+   "mb": 2074,
+   "contexto": "25, corredor da Vela: wsl --shutdown (2074 MB livres antes)",
+   "fonte": "etapas/logs/25-corredor.status:27"
+  },
+  {
+   "hora_local": "2026-10-17T14:07:05",
+   "mb": 2155,
+   "contexto": "25, corredor da Vela: depois do wsl --shutdown: 2155 MB livres",
+   "fonte": "etapas/logs/25-corredor.status:28"
+  },
+  {
+   "hora_local": "2026-10-17T14:07:12",
+   "mb": 1850,
+   "contexto": "25, fase 4, rodada 4; fase vigia",
+   "fonte": "etapas/logs/25-medida-fase-4-rodada-4.csv:2"
+  },
+  {
+   "hora_local": "2026-10-17T14:07:15",
+   "mb": 1771,
+   "contexto": "25, fase 4, rodada 4; fase vigia",
+   "fonte": "etapas/logs/25-medida-fase-4-rodada-4.csv:3"
+  },
+  {
+   "hora_local": "2026-10-17T14:07:18",
+   "mb": 1897,
+   "contexto": "25, fase 4, rodada 4; fase vigia",
+   "fonte": "etapas/logs/25-medida-fase-4-rodada-4.csv:4"
+  },
+  {
+   "hora_local": "2026-10-17T14:07:30",
+   "mb": 1675,
+   "contexto": "25, fase 4, rodada 4; fase pares:subir",
+   "fonte": "etapas/logs/25-medida-fase-4-rodada-4.csv:8"
+  },
+  {
+   "hora_local": "2026-10-17T14:07:33",
+   "mb": 1798,
+   "contexto": "25, fase 4, rodada 4; fase pares:subir",
+   "fonte": "etapas/logs/25-medida-fase-4-rodada-4.csv:9"
+  },
+  {
+   "hora_local": "2026-10-17T14:07:35",
+   "mb": 1822,
+   "contexto": "25, fase 4, rodada 4; fase pares:subir",
+   "fonte": "etapas/logs/25-medida-fase-4-rodada-4.csv:10"
+  },
+  {
+   "hora_local": "2026-10-17T14:07:43",
+   "mb": 1765,
+   "contexto": "25, fase 4, rodada 4; fase pares:subir",
+   "fonte": "etapas/logs/25-medida-fase-4-rodada-4.csv:12"
+  },
+  {
+   "hora_local": "2026-10-17T14:07:48",
+   "mb": 1796,
+   "contexto": "25, fase 4, rodada 4; fase pares:subir",
+   "fonte": "etapas/logs/25-medida-fase-4-rodada-4.csv:14"
+  },
+  {
+   "hora_local": "2026-10-17T14:07:58",
+   "mb": 1670,
+   "contexto": "25, fase 4, rodada 4; fase pares:subir",
+   "fonte": "etapas/logs/25-medida-fase-4-rodada-4.csv:17"
+  },
+  {
+   "hora_local": "2026-10-17T14:08:01",
+   "mb": 1582,
+   "contexto": "25, fase 4, rodada 4; fase pares:subir",
+   "fonte": "etapas/logs/25-medida-fase-4-rodada-4.csv:18"
+  },
+  {
+   "hora_local": "2026-10-17T14:08:09",
+   "mb": 1490,
+   "contexto": "25, fase 4, rodada 4; fase pares:subir",
+   "fonte": "etapas/logs/25-medida-fase-4-rodada-4.csv:21"
+  },
+  {
+   "hora_local": "2026-10-17T14:08:13",
+   "mb": 1373,
+   "contexto": "25, fase 4, rodada 4; fase pares:subir",
+   "fonte": "etapas/logs/25-medida-fase-4-rodada-4.csv:22"
+  },
+  {
+   "hora_local": "2026-10-17T14:08:19",
+   "mb": 1563,
+   "contexto": "25, fase 4, rodada 4; fase pares:subir",
+   "fonte": "etapas/logs/25-medida-fase-4-rodada-4.csv:24"
+  },
+  {
+   "hora_local": "2026-10-17T14:08:28",
+   "mb": 1365,
+   "contexto": "25, fase 4, rodada 4; fase pares:subir",
+   "fonte": "etapas/logs/25-medida-fase-4-rodada-4.csv:27"
+  },
+  {
+   "hora_local": "2026-10-17T14:08:31",
+   "mb": 1266,
+   "contexto": "25, fase 4, rodada 4; fase pares:subir",
+   "fonte": "etapas/logs/25-medida-fase-4-rodada-4.csv:28"
+  },
+  {
+   "hora_local": "2026-10-17T14:08:36",
+   "mb": 1276,
+   "contexto": "25, fase 4, rodada 4; fase vigia",
+   "fonte": "etapas/logs/25-medida-fase-4-rodada-4.csv:30"
+  },
+  {
+   "hora_local": "2026-10-17T14:08:46",
+   "mb": 1350,
+   "contexto": "25, fase 4, rodada 4; fase vigia",
+   "fonte": "etapas/logs/25-medida-fase-4-rodada-4.csv:33"
+  },
+  {
+   "hora_local": "2026-10-17T14:08:48",
+   "mb": 1314,
+   "contexto": "25, fase 4, rodada 4; fase vigia",
+   "fonte": "etapas/logs/25-medida-fase-4-rodada-4.csv:34"
+  },
+  {
+   "hora_local": "2026-10-17T14:08:51",
+   "mb": 1283,
+   "contexto": "25, fase 4, rodada 4; fase vigia",
+   "fonte": "etapas/logs/25-medida-fase-4-rodada-4.csv:35"
+  },
+  {
+   "hora_local": "2026-10-17T14:09:01",
+   "mb": 1283,
+   "contexto": "25, fase 4, rodada 4; fase vigia",
+   "fonte": "etapas/logs/25-medida-fase-4-rodada-4.csv:38"
+  },
+  {
+   "hora_local": "2026-10-17T14:09:08",
+   "mb": 1356,
+   "contexto": "25, fase 4, rodada 4; fase vigia",
+   "fonte": "etapas/logs/25-medida-fase-4-rodada-4.csv:41"
+  },
+  {
+   "hora_local": "2026-10-17T14:09:16",
+   "mb": 1345,
+   "contexto": "25, fase 4, rodada 4; fase vigia",
+   "fonte": "etapas/logs/25-medida-fase-4-rodada-4.csv:43"
+  },
+  {
+   "hora_local": "2026-10-17T14:09:21",
+   "mb": 1295,
+   "contexto": "25, fase 4, rodada 4; fase vigia",
+   "fonte": "etapas/logs/25-medida-fase-4-rodada-4.csv:45"
+  },
+  {
+   "hora_local": "2026-10-17T14:09:23",
+   "mb": 1315,
+   "contexto": "25, fase 4, rodada 4; fase vigia",
+   "fonte": "etapas/logs/25-medida-fase-4-rodada-4.csv:46"
+  },
+  {
+   "hora_local": "2026-10-17T14:09:31",
+   "mb": 1285,
+   "contexto": "25, fase 4, rodada 4; fase vigia",
+   "fonte": "etapas/logs/25-medida-fase-4-rodada-4.csv:48"
+  },
+  {
+   "hora_local": "2026-10-17T14:09:38",
+   "mb": 1306,
+   "contexto": "25, fase 4, rodada 4; fase vigia",
+   "fonte": "etapas/logs/25-medida-fase-4-rodada-4.csv:51"
+  },
+  {
+   "hora_local": "2026-10-17T14:09:42",
+   "mb": 1288,
+   "contexto": "25, fase 4, rodada 4; fase vigia",
+   "fonte": "etapas/logs/25-medida-fase-4-rodada-4.csv:52"
+  },
+  {
+   "hora_local": "2026-10-17T14:09:50",
+   "mb": 1316,
+   "contexto": "25, fase 4, rodada 4; fase vigia",
+   "fonte": "etapas/logs/25-medida-fase-4-rodada-4.csv:55"
+  },
+  {
+   "hora_local": "2026-10-17T14:09:57",
+   "mb": 1298,
+   "contexto": "25, fase 4, rodada 4; fase vigia",
+   "fonte": "etapas/logs/25-medida-fase-4-rodada-4.csv:57"
+  },
+  {
+   "hora_local": "2026-10-17T14:10:00",
+   "mb": 1310,
+   "contexto": "25, fase 4, rodada 4; fase vigia",
+   "fonte": "etapas/logs/25-medida-fase-4-rodada-4.csv:58"
+  },
+  {
+   "hora_local": "2026-10-17T14:10:07",
+   "mb": 1196,
+   "contexto": "25, fase 4, rodada 4; fase vigia",
+   "fonte": "etapas/logs/25-medida-fase-4-rodada-4.csv:61"
+  },
+  {
+   "hora_local": "2026-10-17T14:10:12",
+   "mb": 1169,
+   "contexto": "25, fase 4, rodada 4; fase vigia",
+   "fonte": "etapas/logs/25-medida-fase-4-rodada-4.csv:62"
+  },
+  {
+   "hora_local": "2026-10-17T14:10:20",
+   "mb": 1130,
+   "contexto": "25, fase 4, rodada 4; fase vigia",
+   "fonte": "etapas/logs/25-medida-fase-4-rodada-4.csv:65"
+  },
+  {
+   "hora_local": "2026-10-17T14:10:30",
+   "mb": 1056,
+   "contexto": "25, fase 4, rodada 4; fase vigia",
+   "fonte": "etapas/logs/25-medida-fase-4-rodada-4.csv:68",
+   "minimo_do_arquivo": true
+  },
+  {
+   "hora_local": "2026-10-17T14:10:32",
+   "mb": 1134,
+   "contexto": "25, fase 4, rodada 4; fase vigia",
+   "fonte": "etapas/logs/25-medida-fase-4-rodada-4.csv:69"
+  },
+  {
+   "hora_local": "2026-10-17T14:10:35",
+   "mb": 1157,
+   "contexto": "25, fase 4, rodada 4; fase vigia",
+   "fonte": "etapas/logs/25-medida-fase-4-rodada-4.csv:70"
+  },
+  {
+   "hora_local": "2026-10-17T14:10:41",
+   "mb": 1531,
+   "contexto": "25, fase 4, rodada 4; fase pares:descer",
+   "fonte": "etapas/logs/25-medida-fase-4-rodada-4.csv:72"
+  },
+  {
+   "hora_local": "2026-10-17T14:10:44",
+   "mb": 1828,
+   "contexto": "25, corredor da Vela: prova terminou com 1 (1828 MB livres)",
+   "fonte": "etapas/logs/25-corredor.status:29"
+  },
+  {
+   "hora_local": "2026-10-17T14:17:39",
+   "mb": 562,
+   "contexto": "25, corredor da Vela: corredor 193060 começou: fases 4, harnesses claude,copilot, 562 MB livres",
+   "fonte": "etapas/logs/25-corredor.status:31"
+  },
+  {
+   "hora_local": "2026-10-17T14:17:47",
+   "mb": 477,
+   "contexto": "25, corte do medidor (fase piso:vigia, limite 700)",
+   "fonte": "etapas/logs/25-corte-rodada-5.json:4"
+  },
+  {
+   "hora_local": "2026-10-17T14:17:49",
+   "mb": 461,
+   "contexto": "25, corredor da Vela: prova terminou com 1 (461 MB livres)",
+   "fonte": "etapas/logs/25-corredor.status:32"
+  },
+  {
+   "hora_local": "2026-10-17T14:18",
+   "mb": 448,
+   "contexto": "ronda; fase 4 do 25 rodando",
+   "fonte": "etapas/diario-da-construcao.md:159"
+  },
+  {
+   "hora_local": "2026-10-17T14:42",
+   "mb": 4600,
+   "contexto": "ronda; suíte do 42 (Rebite)",
+   "fonte": "etapas/diario-da-construcao.md:165"
+  },
+  {
+   "hora_local": "2026-10-17T15:21:48",
+   "mb": 3645,
+   "contexto": "22, volta do Codex cortada",
+   "fonte": "etapas/logs/medidor-22c.log:1"
+  },
+  {
+   "hora_local": "2026-10-17T15:22:13",
+   "mb": 3631,
+   "contexto": "22, corredor da Brasa: docker: parado; ligo o Docker Desktop (3631 MB livres)",
+   "fonte": "etapas/logs/22.status:45"
+  },
+  {
+   "hora_local": "2026-10-17T15:22:34",
+   "mb": 2756,
+   "contexto": "22, volta do Codex cortada",
+   "fonte": "etapas/logs/medidor-22c.log:9"
+  },
+  {
+   "hora_local": "2026-10-17T15:22:40",
+   "mb": 2595,
+   "contexto": "22, volta do Codex cortada",
+   "fonte": "etapas/logs/medidor-22c.log:10"
+  },
+  {
+   "hora_local": "2026-10-17T15:23:27",
+   "mb": 902,
+   "contexto": "22, volta do Codex cortada",
+   "fonte": "etapas/logs/medidor-22c.log:18"
+  },
+  {
+   "hora_local": "2026-10-17T15:23:28",
+   "mb": 928,
+   "contexto": "22, corredor da Brasa: docker: ligou (928 MB livres)",
+   "fonte": "etapas/logs/22.status:46"
+  },
+  {
+   "hora_local": "2026-10-17T15:23:32",
+   "mb": 1142,
+   "contexto": "22, volta do Codex cortada",
+   "fonte": "etapas/logs/medidor-22c.log:19"
+  },
+  {
+   "hora_local": "2026-10-17T15:24:12",
+   "mb": 1526,
+   "contexto": "22, volta do Codex cortada",
+   "fonte": "etapas/logs/medidor-22c.log:26"
+  },
+  {
+   "hora_local": "2026-10-17T15:24:29",
+   "mb": 1411,
+   "contexto": "22, volta do Codex cortada",
+   "fonte": "etapas/logs/medidor-22c.log:29"
+  },
+  {
+   "hora_local": "2026-10-17T15:25:08",
+   "mb": 1701,
+   "contexto": "22, volta do Codex cortada",
+   "fonte": "etapas/logs/medidor-22c.log:36"
+  },
+  {
+   "hora_local": "2026-10-17T15:25:13",
+   "mb": 1671,
+   "contexto": "22, volta do Codex cortada",
+   "fonte": "etapas/logs/medidor-22c.log:37"
+  },
+  {
+   "hora_local": "2026-10-17T15:25:58",
+   "mb": 1319,
+   "contexto": "22, volta do Codex cortada",
+   "fonte": "etapas/logs/medidor-22c.log:45"
+  },
+  {
+   "hora_local": "2026-10-17T15:26:37",
+   "mb": 1583,
+   "contexto": "22, volta do Codex cortada",
+   "fonte": "etapas/logs/medidor-22c.log:52"
+  },
+  {
+   "hora_local": "2026-10-17T15:26:48",
+   "mb": 1377,
+   "contexto": "22, volta do Codex cortada",
+   "fonte": "etapas/logs/medidor-22c.log:54"
+  },
+  {
+   "hora_local": "2026-10-17T15:27:11",
+   "mb": 1412,
+   "contexto": "22, volta do Codex cortada",
+   "fonte": "etapas/logs/medidor-22c.log:58"
+  },
+  {
+   "hora_local": "2026-10-17T15:27:22",
+   "mb": 1273,
+   "contexto": "22, volta do Codex cortada",
+   "fonte": "etapas/logs/medidor-22c.log:60"
+  },
+  {
+   "hora_local": "2026-10-17T15:28:06",
+   "mb": 1505,
+   "contexto": "22, volta do Codex cortada",
+   "fonte": "etapas/logs/medidor-22c.log:68"
+  },
+  {
+   "hora_local": "2026-10-17T15:28:23",
+   "mb": 1327,
+   "contexto": "22, volta do Codex cortada",
+   "fonte": "etapas/logs/medidor-22c.log:71"
+  },
+  {
+   "hora_local": "2026-10-17T15:28:39",
+   "mb": 1210,
+   "contexto": "22, volta do Codex cortada",
+   "fonte": "etapas/logs/medidor-22c.log:74"
+  },
+  {
+   "hora_local": "2026-10-17T15:29:02",
+   "mb": 1476,
+   "contexto": "22, volta do Codex cortada",
+   "fonte": "etapas/logs/medidor-22c.log:78"
+  },
+  {
+   "hora_local": "2026-10-17T15:29:30",
+   "mb": 1328,
+   "contexto": "22, volta do Codex cortada",
+   "fonte": "etapas/logs/medidor-22c.log:83"
+  },
+  {
+   "hora_local": "2026-10-17T15:30:03",
+   "mb": 2212,
+   "contexto": "22, volta do Codex cortada",
+   "fonte": "etapas/logs/medidor-22c.log:89"
+  },
+  {
+   "hora_local": "2026-10-17T15:30:06",
+   "mb": 2139,
+   "contexto": "22, corredor da Brasa: docker: começa (2139 MB livres)",
+   "fonte": "etapas/logs/22.status:47"
+  },
+  {
+   "hora_local": "2026-10-17T15:30:32",
+   "mb": 1869,
+   "contexto": "22, volta do Codex cortada",
+   "fonte": "etapas/logs/medidor-22c.log:94"
+  },
+  {
+   "hora_local": "2026-10-17T15:30:43",
+   "mb": 2529,
+   "contexto": "22, volta do Codex cortada",
+   "fonte": "etapas/logs/medidor-22c.log:96"
+  },
+  {
+   "hora_local": "2026-10-17T15:31:17",
+   "mb": 2535,
+   "contexto": "22, volta do Codex cortada",
+   "fonte": "etapas/logs/medidor-22c.log:102"
+  },
+  {
+   "hora_local": "2026-10-17T15:31:43",
+   "mb": 1452,
+   "contexto": "22, volta do Codex cortada",
+   "fonte": "etapas/logs/medidor-22c.log:106"
+  },
+  {
+   "hora_local": "2026-10-17T15:32:28",
+   "mb": 2573,
+   "contexto": "22, volta do Codex cortada",
+   "fonte": "etapas/logs/medidor-22c.log:114"
+  },
+  {
+   "hora_local": "2026-10-17T15:32:45",
+   "mb": 1393,
+   "contexto": "22, volta do Codex cortada",
+   "fonte": "etapas/logs/medidor-22c.log:117"
+  },
+  {
+   "hora_local": "2026-10-17T15:32:51",
+   "mb": 1471,
+   "contexto": "22, volta do Codex cortada",
+   "fonte": "etapas/logs/medidor-22c.log:118"
+  },
+  {
+   "hora_local": "2026-10-17T15:33:38",
+   "mb": 959,
+   "contexto": "22, volta do Codex cortada",
+   "fonte": "etapas/logs/medidor-22c.log:126"
+  },
+  {
+   "hora_local": "2026-10-17T15:33:44",
+   "mb": 526,
+   "contexto": "22, volta do Codex cortada",
+   "fonte": "etapas/logs/medidor-22c.log:127",
+   "minimo_do_arquivo": true
+  },
+  {
+   "hora_local": "2026-10-17T15:33:44",
+   "mb": 583,
+   "contexto": "22, corredor da Brasa: docker: CORTADA, 583 MB livres; paro e limpo",
+   "fonte": "etapas/logs/22.status:48"
+  },
+  {
+   "hora_local": "2026-10-17T15:33:50",
+   "mb": 2256,
+   "contexto": "22, volta do Codex cortada",
+   "fonte": "etapas/logs/medidor-22c.log:128"
+  },
+  {
+   "hora_local": "2026-10-17T15:34:35",
+   "mb": 899,
+   "contexto": "22, volta do Codex cortada",
+   "fonte": "etapas/logs/medidor-22c.log:136"
+  },
+  {
+   "hora_local": "2026-10-17T15:35:19",
+   "mb": 1281,
+   "contexto": "22, volta do Codex cortada",
+   "fonte": "etapas/logs/medidor-22c.log:144"
+  },
+  {
+   "hora_local": "2026-10-17T15:35:24",
+   "mb": 1267,
+   "contexto": "22, volta do Codex cortada",
+   "fonte": "etapas/logs/medidor-22c.log:145"
+  },
+  {
+   "hora_local": "2026-10-17T15:36:10",
+   "mb": 973,
+   "contexto": "22, volta do Codex cortada",
+   "fonte": "etapas/logs/medidor-22c.log:153"
+  },
+  {
+   "hora_local": "2026-10-17T15:36:15",
+   "mb": 940,
+   "contexto": "22, volta do Codex cortada",
+   "fonte": "etapas/logs/medidor-22c.log:154"
+  },
+  {
+   "hora_local": "2026-10-17T15:36:21",
+   "mb": 874,
+   "contexto": "22, volta do Codex cortada",
+   "fonte": "etapas/logs/medidor-22c.log:155"
+  },
+  {
+   "hora_local": "2026-10-17T16:44",
+   "mb": 4100,
+   "contexto": "ronda; suíte do lote 18+37+23 (Rebite)",
+   "fonte": "etapas/diario-da-construcao.md:174"
+  },
+  {
+   "hora_local": "2026-10-17T16:52",
+   "mb": 4700,
+   "contexto": "janela quieta da noite aberta",
+   "fonte": "etapas/diario-da-construcao.md:176"
+  },
+  {
+   "hora_local": "2026-10-17T17:07:42",
+   "mb": 3985,
+   "contexto": "Brasa, medidor antes do Codex do 22 (o que rodou não está escrito)",
+   "fonte": "etapas/logs/medidor-22d.log:1"
+  },
+  {
+   "hora_local": "2026-10-17T17:07:47",
+   "mb": 3641,
+   "contexto": "Brasa, medidor antes do Codex do 22 (o que rodou não está escrito)",
+   "fonte": "etapas/logs/medidor-22d.log:2"
+  },
+  {
+   "hora_local": "2026-10-17T17:07:53",
+   "mb": 2957,
+   "contexto": "Brasa, medidor antes do Codex do 22 (o que rodou não está escrito)",
+   "fonte": "etapas/logs/medidor-22d.log:3"
+  },
+  {
+   "hora_local": "2026-10-17T17:07:59",
+   "mb": 3133,
+   "contexto": "Brasa, medidor antes do Codex do 22 (o que rodou não está escrito)",
+   "fonte": "etapas/logs/medidor-22d.log:4"
+  },
+  {
+   "hora_local": "2026-10-17T17:08:04",
+   "mb": 4033,
+   "contexto": "Brasa, medidor antes do Codex do 22 (o que rodou não está escrito)",
+   "fonte": "etapas/logs/medidor-22d.log:5"
+  },
+  {
+   "hora_local": "2026-10-17T17:08:10",
+   "mb": 3742,
+   "contexto": "Brasa, medidor antes do Codex do 22 (o que rodou não está escrito)",
+   "fonte": "etapas/logs/medidor-22d.log:6"
+  },
+  {
+   "hora_local": "2026-10-17T17:08:15",
+   "mb": 2673,
+   "contexto": "Brasa, medidor antes do Codex do 22 (o que rodou não está escrito)",
+   "fonte": "etapas/logs/medidor-22d.log:7"
+  },
+  {
+   "hora_local": "2026-10-17T17:08:21",
+   "mb": 1954,
+   "contexto": "Brasa, medidor antes do Codex do 22 (o que rodou não está escrito)",
+   "fonte": "etapas/logs/medidor-22d.log:8"
+  },
+  {
+   "hora_local": "2026-10-17T17:08:26",
+   "mb": 1830,
+   "contexto": "Brasa, medidor antes do Codex do 22 (o que rodou não está escrito)",
+   "fonte": "etapas/logs/medidor-22d.log:9",
+   "minimo_do_arquivo": true
+  },
+  {
+   "hora_local": "2026-10-17T17:08:32",
+   "mb": 1884,
+   "contexto": "Brasa, medidor antes do Codex do 22 (o que rodou não está escrito)",
+   "fonte": "etapas/logs/medidor-22d.log:10"
+  },
+  {
+   "hora_local": "2026-10-17T17:08:37",
+   "mb": 2345,
+   "contexto": "Brasa, medidor antes do Codex do 22 (o que rodou não está escrito)",
+   "fonte": "etapas/logs/medidor-22d.log:11"
+  },
+  {
+   "hora_local": "2026-10-17T17:08:43",
+   "mb": 2392,
+   "contexto": "Brasa, medidor antes do Codex do 22 (o que rodou não está escrito)",
+   "fonte": "etapas/logs/medidor-22d.log:12"
+  },
+  {
+   "hora_local": "2026-10-17T17:08:48",
+   "mb": 2422,
+   "contexto": "Brasa, medidor antes do Codex do 22 (o que rodou não está escrito)",
+   "fonte": "etapas/logs/medidor-22d.log:13"
+  },
+  {
+   "hora_local": "2026-10-17T17:08:54",
+   "mb": 2450,
+   "contexto": "Brasa, medidor antes do Codex do 22 (o que rodou não está escrito)",
+   "fonte": "etapas/logs/medidor-22d.log:14"
+  },
+  {
+   "hora_local": "2026-10-17T17:08:59",
+   "mb": 2434,
+   "contexto": "Brasa, medidor antes do Codex do 22 (o que rodou não está escrito)",
+   "fonte": "etapas/logs/medidor-22d.log:15"
+  },
+  {
+   "hora_local": "2026-10-17T17:09:05",
+   "mb": 2404,
+   "contexto": "Brasa, medidor antes do Codex do 22 (o que rodou não está escrito)",
+   "fonte": "etapas/logs/medidor-22d.log:16"
+  },
+  {
+   "hora_local": "2026-10-17T17:09:10",
+   "mb": 2412,
+   "contexto": "Brasa, medidor antes do Codex do 22 (o que rodou não está escrito)",
+   "fonte": "etapas/logs/medidor-22d.log:17"
+  },
+  {
+   "hora_local": "2026-10-17T17:09:16",
+   "mb": 2406,
+   "contexto": "Brasa, medidor antes do Codex do 22 (o que rodou não está escrito)",
+   "fonte": "etapas/logs/medidor-22d.log:18"
+  },
+  {
+   "hora_local": "2026-10-17T17:09:21",
+   "mb": 2421,
+   "contexto": "Brasa, medidor antes do Codex do 22 (o que rodou não está escrito)",
+   "fonte": "etapas/logs/medidor-22d.log:19"
+  },
+  {
+   "hora_local": "2026-10-17T17:09:27",
+   "mb": 2372,
+   "contexto": "Brasa, medidor antes do Codex do 22 (o que rodou não está escrito)",
+   "fonte": "etapas/logs/medidor-22d.log:20"
+  },
+  {
+   "hora_local": "2026-10-17T17:09:32",
+   "mb": 2348,
+   "contexto": "Brasa, medidor antes do Codex do 22 (o que rodou não está escrito)",
+   "fonte": "etapas/logs/medidor-22d.log:21"
+  },
+  {
+   "hora_local": "2026-10-17T17:09:38",
+   "mb": 2350,
+   "contexto": "Brasa, medidor antes do Codex do 22 (o que rodou não está escrito)",
+   "fonte": "etapas/logs/medidor-22d.log:22"
+  },
+  {
+   "hora_local": "2026-10-17T17:09:43",
+   "mb": 3249,
+   "contexto": "Brasa, medidor antes do Codex do 22 (o que rodou não está escrito)",
+   "fonte": "etapas/logs/medidor-22d.log:23"
+  },
+  {
+   "hora_local": "2026-10-17T17:09:49",
+   "mb": 4159,
+   "contexto": "Brasa, medidor antes do Codex do 22 (o que rodou não está escrito)",
+   "fonte": "etapas/logs/medidor-22d.log:24"
+  },
+  {
+   "hora_local": "2026-10-17T17:09:54",
+   "mb": 4236,
+   "contexto": "Brasa, medidor antes do Codex do 22 (o que rodou não está escrito)",
+   "fonte": "etapas/logs/medidor-22d.log:25"
+  },
+  {
+   "hora_local": "2026-10-17T17:10:00",
+   "mb": 4432,
+   "contexto": "Brasa, medidor antes do Codex do 22 (o que rodou não está escrito)",
+   "fonte": "etapas/logs/medidor-22d.log:26"
+  },
+  {
+   "hora_local": "2026-10-17T17:13:19",
+   "mb": 5254,
+   "contexto": "22, Codex como cliente (janela da noite)",
+   "fonte": "etapas/logs/medidor-22e.log:1"
+  },
+  {
+   "hora_local": "2026-10-17T17:13:36",
+   "mb": 2776,
+   "contexto": "22, Codex como cliente (janela da noite)",
+   "fonte": "etapas/logs/medidor-22e.log:4"
+  },
+  {
+   "hora_local": "2026-10-17T17:13:52",
+   "mb": 2655,
+   "contexto": "22, Codex como cliente (janela da noite)",
+   "fonte": "etapas/logs/medidor-22e.log:7"
+  },
+  {
+   "hora_local": "2026-10-17T17:13:58",
+   "mb": 2723,
+   "contexto": "22, Codex como cliente (janela da noite)",
+   "fonte": "etapas/logs/medidor-22e.log:8"
+  },
+  {
+   "hora_local": "2026-10-17T17:14:03",
+   "mb": 2743,
+   "contexto": "22, Codex como cliente (janela da noite)",
+   "fonte": "etapas/logs/medidor-22e.log:9"
+  },
+  {
+   "hora_local": "2026-10-17T17:14:14",
+   "mb": 2769,
+   "contexto": "22, Codex como cliente (janela da noite)",
+   "fonte": "etapas/logs/medidor-22e.log:11"
+  },
+  {
+   "hora_local": "2026-10-17T17:14:36",
+   "mb": 2819,
+   "contexto": "22, Codex como cliente (janela da noite)",
+   "fonte": "etapas/logs/medidor-22e.log:15"
+  },
+  {
+   "hora_local": "2026-10-17T17:14:41",
+   "mb": 2701,
+   "contexto": "22, corredor da Brasa: docker: começa (2701 MB livres)",
+   "fonte": "etapas/logs/22.status:53"
+  },
+  {
+   "hora_local": "2026-10-17T17:14:42",
+   "mb": 2638,
+   "contexto": "22, Codex como cliente (janela da noite)",
+   "fonte": "etapas/logs/medidor-22e.log:16"
+  },
+  {
+   "hora_local": "2026-10-17T17:14:47",
+   "mb": 2611,
+   "contexto": "22, Codex como cliente (janela da noite)",
+   "fonte": "etapas/logs/medidor-22e.log:17"
+  },
+  {
+   "hora_local": "2026-10-17T17:14:58",
+   "mb": 2489,
+   "contexto": "22, Codex como cliente (janela da noite)",
+   "fonte": "etapas/logs/medidor-22e.log:19"
+  },
+  {
+   "hora_local": "2026-10-17T17:15:09",
+   "mb": 2102,
+   "contexto": "22, Codex como cliente (janela da noite)",
+   "fonte": "etapas/logs/medidor-22e.log:21"
+  },
+  {
+   "hora_local": "2026-10-17T17:15:20",
+   "mb": 1720,
+   "contexto": "22, Codex como cliente (janela da noite)",
+   "fonte": "etapas/logs/medidor-22e.log:23"
+  },
+  {
+   "hora_local": "2026-10-17T17:15:31",
+   "mb": 2238,
+   "contexto": "22, Codex como cliente (janela da noite)",
+   "fonte": "etapas/logs/medidor-22e.log:25"
+  },
+  {
+   "hora_local": "2026-10-17T17:15:48",
+   "mb": 2864,
+   "contexto": "22, Codex como cliente (janela da noite)",
+   "fonte": "etapas/logs/medidor-22e.log:28"
+  },
+  {
+   "hora_local": "2026-10-17T17:16:04",
+   "mb": 2077,
+   "contexto": "22, Codex como cliente (janela da noite)",
+   "fonte": "etapas/logs/medidor-22e.log:31"
+  },
+  {
+   "hora_local": "2026-10-17T17:16:09",
+   "mb": 2056,
+   "contexto": "22, Codex como cliente (janela da noite)",
+   "fonte": "etapas/logs/medidor-22e.log:32"
+  },
+  {
+   "hora_local": "2026-10-17T17:16:15",
+   "mb": 1449,
+   "contexto": "22, Codex como cliente (janela da noite)",
+   "fonte": "etapas/logs/medidor-22e.log:33"
+  },
+  {
+   "hora_local": "2026-10-17T17:16:32",
+   "mb": 2150,
+   "contexto": "22, Codex como cliente (janela da noite)",
+   "fonte": "etapas/logs/medidor-22e.log:36"
+  },
+  {
+   "hora_local": "2026-10-17T17:16:37",
+   "mb": 2128,
+   "contexto": "22, Codex como cliente (janela da noite)",
+   "fonte": "etapas/logs/medidor-22e.log:37"
+  },
+  {
+   "hora_local": "2026-10-17T17:16:53",
+   "mb": 1966,
+   "contexto": "22, Codex como cliente (janela da noite)",
+   "fonte": "etapas/logs/medidor-22e.log:40"
+  },
+  {
+   "hora_local": "2026-10-17T17:16:59",
+   "mb": 1975,
+   "contexto": "22, Codex como cliente (janela da noite)",
+   "fonte": "etapas/logs/medidor-22e.log:41"
+  },
+  {
+   "hora_local": "2026-10-17T17:17:15",
+   "mb": 1785,
+   "contexto": "22, Codex como cliente (janela da noite)",
+   "fonte": "etapas/logs/medidor-22e.log:44"
+  },
+  {
+   "hora_local": "2026-10-17T17:17:20",
+   "mb": 1585,
+   "contexto": "22, Codex como cliente (janela da noite)",
+   "fonte": "etapas/logs/medidor-22e.log:45"
+  },
+  {
+   "hora_local": "2026-10-17T17:17:37",
+   "mb": 1508,
+   "contexto": "22, Codex como cliente (janela da noite)",
+   "fonte": "etapas/logs/medidor-22e.log:48"
+  },
+  {
+   "hora_local": "2026-10-17T17:17:42",
+   "mb": 1502,
+   "contexto": "22, Codex como cliente (janela da noite)",
+   "fonte": "etapas/logs/medidor-22e.log:49"
+  },
+  {
+   "hora_local": "2026-10-17T17:17:53",
+   "mb": 1096,
+   "contexto": "22, Codex como cliente (janela da noite)",
+   "fonte": "etapas/logs/medidor-22e.log:51",
+   "minimo_do_arquivo": true
+  },
+  {
+   "hora_local": "2026-10-17T17:17:53",
+   "mb": 1096,
+   "contexto": "pico do Codex do 22 (mín. livre)",
+   "fonte": "etapas/diario-da-construcao.md:178",
+   "repete": "etapas/logs/medidor-22e.log:51",
+   "nota": "o diário escreve às 17:21"
+  },
+  {
+   "hora_local": "2026-10-17T17:18:04",
+   "mb": 1366,
+   "contexto": "22, Codex como cliente (janela da noite)",
+   "fonte": "etapas/logs/medidor-22e.log:53"
+  },
+  {
+   "hora_local": "2026-10-17T17:18:20",
+   "mb": 1197,
+   "contexto": "22, Codex como cliente (janela da noite)",
+   "fonte": "etapas/logs/medidor-22e.log:56"
+  },
+  {
+   "hora_local": "2026-10-17T17:18:26",
+   "mb": 1292,
+   "contexto": "22, Codex como cliente (janela da noite)",
+   "fonte": "etapas/logs/medidor-22e.log:57"
+  },
+  {
+   "hora_local": "2026-10-17T17:18:31",
+   "mb": 2035,
+   "contexto": "22, Codex como cliente (janela da noite)",
+   "fonte": "etapas/logs/medidor-22e.log:58"
+  },
+  {
+   "hora_local": "2026-10-17T17:18:45",
+   "mb": 2169,
+   "contexto": "22, corredor da Brasa: docker: saida=0 (5x [MEDIDA], 15x [PASSA]; 2169 MB livres)",
+   "fonte": "etapas/logs/22.status:54"
+  },
+  {
+   "hora_local": "2026-10-17T17:18:46",
+   "mb": 2162,
+   "contexto": "22, corredor da Brasa: harness: começa (2162 MB livres)",
+   "fonte": "etapas/logs/22.status:55"
+  },
+  {
+   "hora_local": "2026-10-17T17:18:47",
+   "mb": 2046,
+   "contexto": "22, Codex como cliente (janela da noite)",
+   "fonte": "etapas/logs/medidor-22e.log:61"
+  },
+  {
+   "hora_local": "2026-10-17T17:18:58",
+   "mb": 1753,
+   "contexto": "22, Codex como cliente (janela da noite)",
+   "fonte": "etapas/logs/medidor-22e.log:63"
+  },
+  {
+   "hora_local": "2026-10-17T17:19:03",
+   "mb": 1948,
+   "contexto": "22, corredor da Brasa: harness: saida=0 (1x ℹ fail 0, 1x ℹ pass 1, 1x ℹ skipped 0; 1948 MB livres)",
+   "fonte": "etapas/logs/22.status:56"
+  },
+  {
+   "hora_local": "2026-10-17T17:19:09",
+   "mb": 3244,
+   "contexto": "22, Codex como cliente (janela da noite)",
+   "fonte": "etapas/logs/medidor-22e.log:65"
+  },
+  {
+   "hora_local": "2026-10-17T17:19:25",
+   "mb": 3607,
+   "contexto": "22, Codex como cliente (janela da noite)",
+   "fonte": "etapas/logs/medidor-22e.log:68"
+  },
+  {
+   "hora_local": "2026-10-17T17:22:42",
+   "mb": 2920,
+   "contexto": "25, corredor da Vela: corredor 215028 começou: fases 4,5,7, harnesses claude,copilot, 2920 MB livres",
+   "fonte": "etapas/logs/25-corredor.status:34"
+  },
+  {
+   "hora_local": "2026-10-17T17:22:42",
+   "mb": 2895,
+   "contexto": "25, corredor da Vela: wsl --shutdown (2895 MB livres antes)",
+   "fonte": "etapas/logs/25-corredor.status:35"
+  },
+  {
+   "hora_local": "2026-10-17T17:23:02",
+   "mb": 3311,
+   "contexto": "25, corredor da Vela: depois do wsl --shutdown: 3311 MB livres",
+   "fonte": "etapas/logs/25-corredor.status:36"
+  },
+  {
+   "hora_local": "2026-10-17T17:58:40",
+   "mb": 4703,
+   "contexto": "25, corredor da Vela: prova terminou com 1 (4703 MB livres)",
+   "fonte": "etapas/logs/25-corredor.status:37"
+  },
+  {
+   "hora_local": "2026-10-17T18:00:12",
+   "mb": 4691,
+   "contexto": "25, corredor da Vela: corredor 175552 começou: fases 1,2,3, harnesses codex, 4691 MB livres",
+   "fonte": "etapas/logs/25-corredor.status:39"
+  },
+  {
+   "hora_local": "2026-10-17T18:00:13",
+   "mb": 4692,
+   "contexto": "25, corredor da Vela: wsl --shutdown (4692 MB livres antes)",
+   "fonte": "etapas/logs/25-corredor.status:40"
+  },
+  {
+   "hora_local": "2026-10-17T18:00:32",
+   "mb": 3416,
+   "contexto": "25, corredor da Vela: depois do wsl --shutdown: 3416 MB livres",
+   "fonte": "etapas/logs/25-corredor.status:41"
+  },
+  {
+   "hora_local": "2026-10-17T18:05:41",
+   "mb": 3572,
+   "contexto": "25, corredor da Vela: prova terminou com 1 (3572 MB livres)",
+   "fonte": "etapas/logs/25-corredor.status:42"
+  },
+  {
+   "hora_local": "2026-10-17T18:06:51",
+   "mb": 4214,
+   "contexto": "25, corredor da Vela: corredor 162372 começou: fases 2, harnesses codex, 4214 MB livres",
+   "fonte": "etapas/logs/25-corredor.status:44"
+  },
+  {
+   "hora_local": "2026-10-17T18:08:10",
+   "mb": 4098,
+   "contexto": "25, corredor da Vela: prova terminou com 1 (4098 MB livres)",
+   "fonte": "etapas/logs/25-corredor.status:45"
+  },
+  {
+   "hora_local": "2026-10-17T18:09:30",
+   "mb": 4736,
+   "contexto": "25, corredor da Vela: corredor 46584 começou: fases 2, harnesses codex, 4736 MB livres",
+   "fonte": "etapas/logs/25-corredor.status:47"
+  },
+  {
+   "hora_local": "2026-10-17T18:11:36",
+   "mb": 4461,
+   "contexto": "25, corredor da Vela: prova terminou com 1 (4461 MB livres)",
+   "fonte": "etapas/logs/25-corredor.status:48"
+  },
+  {
+   "hora_local": "2026-10-17T18:13:11",
+   "mb": 4046,
+   "contexto": "25, corredor da Vela: corredor 135212 começou: fases 7, harnesses claude,copilot, 4046 MB livres",
+   "fonte": "etapas/logs/25-corredor.status:50"
+  },
+  {
+   "hora_local": "2026-10-17T18:13:17",
+   "mb": 4061,
+   "contexto": "25, corredor da Vela: prova terminou com 1 (4061 MB livres)",
+   "fonte": "etapas/logs/25-corredor.status:51"
+  },
+  {
+   "hora_local": "2026-10-17T18:15:56",
+   "mb": 4281,
+   "contexto": "25, corredor da Vela: corredor 161692 começou: fases 7, harnesses claude,copilot, 4281 MB livres",
+   "fonte": "etapas/logs/25-corredor.status:53"
+  },
+  {
+   "hora_local": "2026-10-17T18:15:58",
+   "mb": 3903,
+   "contexto": "25, fase 7 (noite); fase cliente:subir",
+   "fonte": "etapas/logs/25-noite-f7-medida.csv:2"
+  },
+  {
+   "hora_local": "2026-10-17T18:16:01",
+   "mb": 3979,
+   "contexto": "25, fase 7 (noite); fase cliente:subir",
+   "fonte": "etapas/logs/25-noite-f7-medida.csv:3"
+  },
+  {
+   "hora_local": "2026-10-17T18:16:19",
+   "mb": 3114,
+   "contexto": "25, fase 7 (noite); fase cliente:subir",
+   "fonte": "etapas/logs/25-noite-f7-medida.csv:8"
+  },
+  {
+   "hora_local": "2026-10-17T18:16:26",
+   "mb": 3037,
+   "contexto": "25, fase 7 (noite); fase cliente:subir",
+   "fonte": "etapas/logs/25-noite-f7-medida.csv:10"
+  },
+  {
+   "hora_local": "2026-10-17T18:16:45",
+   "mb": 3224,
+   "contexto": "25, fase 7 (noite); fase cliente:subir",
+   "fonte": "etapas/logs/25-noite-f7-medida.csv:15"
+  },
+  {
+   "hora_local": "2026-10-17T18:16:57",
+   "mb": 3732,
+   "contexto": "25, fase 7 (noite); fase cliente:subir",
+   "fonte": "etapas/logs/25-noite-f7-medida.csv:19"
+  },
+  {
+   "hora_local": "2026-10-17T18:17:13",
+   "mb": 3064,
+   "contexto": "25, fase 7 (noite); fase cliente:subir",
+   "fonte": "etapas/logs/25-noite-f7-medida.csv:22"
+  },
+  {
+   "hora_local": "2026-10-17T18:17:28",
+   "mb": 3381,
+   "contexto": "25, fase 7 (noite); fase cliente:subir",
+   "fonte": "etapas/logs/25-noite-f7-medida.csv:27"
+  },
+  {
+   "hora_local": "2026-10-17T18:17:34",
+   "mb": 2468,
+   "contexto": "25, fase 7 (noite); fase cliente:subir",
+   "fonte": "etapas/logs/25-noite-f7-medida.csv:29"
+  },
+  {
+   "hora_local": "2026-10-17T18:17:38",
+   "mb": 1430,
+   "contexto": "25, fase 7 (noite); fase cliente:subir",
+   "fonte": "etapas/logs/25-noite-f7-medida.csv:30"
+  },
+  {
+   "hora_local": "2026-10-17T18:17:41",
+   "mb": 2368,
+   "contexto": "25, fase 7 (noite); fase cliente:subir",
+   "fonte": "etapas/logs/25-noite-f7-medida.csv:31"
+  },
+  {
+   "hora_local": "2026-10-17T18:18:06",
+   "mb": 2124,
+   "contexto": "25, fase 7 (noite); fase cliente:subir",
+   "fonte": "etapas/logs/25-noite-f7-medida.csv:37"
+  },
+  {
+   "hora_local": "2026-10-17T18:18:26",
+   "mb": 1848,
+   "contexto": "25, fase 7 (noite); fase cliente:subir",
+   "fonte": "etapas/logs/25-noite-f7-medida.csv:43"
+  },
+  {
+   "hora_local": "2026-10-17T18:18:29",
+   "mb": 1862,
+   "contexto": "25, fase 7 (noite); fase cliente:subir",
+   "fonte": "etapas/logs/25-noite-f7-medida.csv:44"
+  },
+  {
+   "hora_local": "2026-10-17T18:18:32",
+   "mb": 1796,
+   "contexto": "25, fase 7 (noite); fase cliente:subir",
+   "fonte": "etapas/logs/25-noite-f7-medida.csv:45"
+  },
+  {
+   "hora_local": "2026-10-17T18:18:51",
+   "mb": 1841,
+   "contexto": "25, fase 7 (noite); fase cliente:subir",
+   "fonte": "etapas/logs/25-noite-f7-medida.csv:51"
+  },
+  {
+   "hora_local": "2026-10-17T18:19:02",
+   "mb": 1626,
+   "contexto": "25, fase 7 (noite); fase cliente:subir",
+   "fonte": "etapas/logs/25-noite-f7-medida.csv:54"
+  },
+  {
+   "hora_local": "2026-10-17T18:19:19",
+   "mb": 1161,
+   "contexto": "25, fase 7 (noite); fase cliente:subir",
+   "fonte": "etapas/logs/25-noite-f7-medida.csv:59"
+  },
+  {
+   "hora_local": "2026-10-17T18:19:37",
+   "mb": 1781,
+   "contexto": "25, fase 7 (noite); fase cliente:subir",
+   "fonte": "etapas/logs/25-noite-f7-medida.csv:64"
+  },
+  {
+   "hora_local": "2026-10-17T18:19:40",
+   "mb": 1836,
+   "contexto": "25, fase 7 (noite); fase cliente:subir",
+   "fonte": "etapas/logs/25-noite-f7-medida.csv:65"
+  },
+  {
+   "hora_local": "2026-10-17T18:19:59",
+   "mb": 1687,
+   "contexto": "25, fase 7 (noite); fase cliente:subir",
+   "fonte": "etapas/logs/25-noite-f7-medida.csv:71"
+  },
+  {
+   "hora_local": "2026-10-17T18:20",
+   "mb": 3200,
+   "contexto": "ronda; fase 7 do 25 rodando",
+   "fonte": "etapas/diario-da-construcao.md:185"
+  },
+  {
+   "hora_local": "2026-10-17T18:20:09",
+   "mb": 1759,
+   "contexto": "25, fase 7 (noite); fase cliente:subir",
+   "fonte": "etapas/logs/25-noite-f7-medida.csv:74"
+  },
+  {
+   "hora_local": "2026-10-17T18:20:23",
+   "mb": 1455,
+   "contexto": "25, fase 7 (noite); fase cliente:subir",
+   "fonte": "etapas/logs/25-noite-f7-medida.csv:78"
+  },
+  {
+   "hora_local": "2026-10-17T18:20:26",
+   "mb": 1439,
+   "contexto": "25, fase 7 (noite); fase cliente:subir",
+   "fonte": "etapas/logs/25-noite-f7-medida.csv:79"
+  },
+  {
+   "hora_local": "2026-10-17T18:20:32",
+   "mb": 1344,
+   "contexto": "25, fase 7 (noite); fase cliente:subir",
+   "fonte": "etapas/logs/25-noite-f7-medida.csv:81"
+  },
+  {
+   "hora_local": "2026-10-17T18:20:48",
+   "mb": 1380,
+   "contexto": "25, fase 7 (noite); fase cliente:subir",
+   "fonte": "etapas/logs/25-noite-f7-medida.csv:86"
+  },
+  {
+   "hora_local": "2026-10-17T18:21:03",
+   "mb": 939,
+   "contexto": "25, fase 7 (noite); fase cliente:subir",
+   "fonte": "etapas/logs/25-noite-f7-medida.csv:90",
+   "minimo_do_arquivo": true
+  },
+  {
+   "hora_local": "2026-10-17T18:21:14",
+   "mb": 1252,
+   "contexto": "25, fase 7 (noite); fase cliente:subir",
+   "fonte": "etapas/logs/25-noite-f7-medida.csv:93"
+  },
+  {
+   "hora_local": "2026-10-17T18:21:22",
+   "mb": 1349,
+   "contexto": "25, fase 7 (noite); fase cliente:subir",
+   "fonte": "etapas/logs/25-noite-f7-medida.csv:96"
+  },
+  {
+   "hora_local": "2026-10-17T18:21:35",
+   "mb": 1305,
+   "contexto": "25, fase 7 (noite); fase cliente:subir",
+   "fonte": "etapas/logs/25-noite-f7-medida.csv:100"
+  },
+  {
+   "hora_local": "2026-10-17T18:21:46",
+   "mb": 1132,
+   "contexto": "25, fase 7 (noite); fase cliente:subir",
+   "fonte": "etapas/logs/25-noite-f7-medida.csv:103"
+  },
+  {
+   "hora_local": "2026-10-17T18:22:04",
+   "mb": 948,
+   "contexto": "25, fase 7 (noite); fase cliente:subir",
+   "fonte": "etapas/logs/25-noite-f7-medida.csv:108"
+  },
+  {
+   "hora_local": "2026-10-17T18:22:22",
+   "mb": 1105,
+   "contexto": "25, fase 7 (noite); fase cliente:subir",
+   "fonte": "etapas/logs/25-noite-f7-medida.csv:113"
+  },
+  {
+   "hora_local": "2026-10-17T18:22:25",
+   "mb": 1071,
+   "contexto": "25, fase 7 (noite); fase cliente:subir",
+   "fonte": "etapas/logs/25-noite-f7-medida.csv:114"
+  },
+  {
+   "hora_local": "2026-10-17T18:22:45",
+   "mb": 2654,
+   "contexto": "25, fase 7 (noite); fase descer",
+   "fonte": "etapas/logs/25-noite-f7-medida.csv:120"
+  },
+  {
+   "hora_local": "2026-10-17T18:22:48",
+   "mb": 2677,
+   "contexto": "25, fase 7 (noite); fase descer",
+   "fonte": "etapas/logs/25-noite-f7-medida.csv:121"
+  },
+  {
+   "hora_local": "2026-10-17T18:22:57",
+   "mb": 2807,
+   "contexto": "25, fase 7 (noite); fase descer",
+   "fonte": "etapas/logs/25-noite-f7-medida.csv:124"
+  },
+  {
+   "hora_local": "2026-10-17T18:23",
+   "mb": 939,
+   "contexto": "fase 7 do 25 verde (mín. livre)",
+   "fonte": "etapas/diario-da-construcao.md:187",
+   "repete": "etapas/logs/25-noite-f7-medida.csv (mínimo)",
+   "nota": "o diário escreve às 18:26"
+  },
+  {
+   "hora_local": "2026-10-17T18:23:00",
+   "mb": 2788,
+   "contexto": "25, fase 7 (noite); fase descer",
+   "fonte": "etapas/logs/25-noite-f7-medida.csv:125"
+  },
+  {
+   "hora_local": "2026-10-17T18:23:04",
+   "mb": 2901,
+   "contexto": "25, corredor da Vela: prova terminou com 0 (2901 MB livres)",
+   "fonte": "etapas/logs/25-corredor.status:54"
+  },
+  {
+   "hora_local": "2026-10-17T19:21:29",
+   "mb": 2405,
+   "contexto": "25, corredor da Vela: corredor 109808 começou: fases 7, harnesses claude,copilot, 2405 MB livres",
+   "fonte": "etapas/logs/25-corredor.status:56"
+  },
+  {
+   "hora_local": "2026-10-17T19:21:30",
+   "mb": 2389,
+   "contexto": "25, corredor da Vela: wsl --shutdown (2389 MB livres antes)",
+   "fonte": "etapas/logs/25-corredor.status:57"
+  },
+  {
+   "hora_local": "2026-10-17T19:21:48",
+   "mb": 2763,
+   "contexto": "25, corredor da Vela: depois do wsl --shutdown: 2763 MB livres",
+   "fonte": "etapas/logs/25-corredor.status:58"
+  },
+  {
+   "hora_local": "2026-10-17T19:21:51",
+   "mb": 2641,
+   "contexto": "25, fase 7 (Claude+Copilot), volta final; fase cliente:subir",
+   "fonte": "C:/context-hub-wt/ticket-25/agents/code/test/ponta-a-ponta/evidencia-25/rodadas/2026-10-17-1921-claude-copilot-f7/medida.csv:2",
+   "fora_da_base": true
+  },
+  {
+   "hora_local": "2026-10-17T19:22:03",
+   "mb": 2422,
+   "contexto": "25, fase 7 (Claude+Copilot), volta final; fase cliente:subir",
+   "fonte": "C:/context-hub-wt/ticket-25/agents/code/test/ponta-a-ponta/evidencia-25/rodadas/2026-10-17-1921-claude-copilot-f7/medida.csv:6",
+   "fora_da_base": true
+  },
+  {
+   "hora_local": "2026-10-17T19:22:45",
+   "mb": 1364,
+   "contexto": "25, fase 7 (Claude+Copilot), volta final; fase cliente:subir",
+   "fonte": "C:/context-hub-wt/ticket-25/agents/code/test/ponta-a-ponta/evidencia-25/rodadas/2026-10-17-1921-claude-copilot-f7/medida.csv:19",
+   "fora_da_base": true
+  },
+  {
+   "hora_local": "2026-10-17T19:22:54",
+   "mb": 2565,
+   "contexto": "25, fase 7 (Claude+Copilot), volta final; fase cliente:subir",
+   "fonte": "C:/context-hub-wt/ticket-25/agents/code/test/ponta-a-ponta/evidencia-25/rodadas/2026-10-17-1921-claude-copilot-f7/medida.csv:22",
+   "fora_da_base": true
+  },
+  {
+   "hora_local": "2026-10-17T19:23:18",
+   "mb": 1187,
+   "contexto": "25, fase 7 (Claude+Copilot), volta final; fase cliente:subir",
+   "fonte": "C:/context-hub-wt/ticket-25/agents/code/test/ponta-a-ponta/evidencia-25/rodadas/2026-10-17-1921-claude-copilot-f7/medida.csv:30",
+   "fora_da_base": true
+  },
+  {
+   "hora_local": "2026-10-17T19:23:29",
+   "mb": 1920,
+   "contexto": "25, fase 7 (Claude+Copilot), volta final; fase cliente:subir",
+   "fonte": "C:/context-hub-wt/ticket-25/agents/code/test/ponta-a-ponta/evidencia-25/rodadas/2026-10-17-1921-claude-copilot-f7/medida.csv:33",
+   "fora_da_base": true
+  },
+  {
+   "hora_local": "2026-10-17T19:23:38",
+   "mb": 1929,
+   "contexto": "25, fase 7 (Claude+Copilot), volta final; fase cliente:subir",
+   "fonte": "C:/context-hub-wt/ticket-25/agents/code/test/ponta-a-ponta/evidencia-25/rodadas/2026-10-17-1921-claude-copilot-f7/medida.csv:36",
+   "fora_da_base": true
+  },
+  {
+   "hora_local": "2026-10-17T19:24:02",
+   "mb": 1719,
+   "contexto": "25, fase 7 (Claude+Copilot), volta final; fase cliente:subir",
+   "fonte": "C:/context-hub-wt/ticket-25/agents/code/test/ponta-a-ponta/evidencia-25/rodadas/2026-10-17-1921-claude-copilot-f7/medida.csv:43",
+   "fora_da_base": true
+  },
+  {
+   "hora_local": "2026-10-17T19:24:10",
+   "mb": 1676,
+   "contexto": "25, fase 7 (Claude+Copilot), volta final; fase cliente:subir",
+   "fonte": "C:/context-hub-wt/ticket-25/agents/code/test/ponta-a-ponta/evidencia-25/rodadas/2026-10-17-1921-claude-copilot-f7/medida.csv:46",
+   "fora_da_base": true
+  },
+  {
+   "hora_local": "2026-10-17T19:24:40",
+   "mb": 1200,
+   "contexto": "25, fase 7 (Claude+Copilot), volta final; fase cliente:subir",
+   "fonte": "C:/context-hub-wt/ticket-25/agents/code/test/ponta-a-ponta/evidencia-25/rodadas/2026-10-17-1921-claude-copilot-f7/medida.csv:56",
+   "fora_da_base": true
+  },
+  {
+   "hora_local": "2026-10-17T19:24:45",
+   "mb": 1224,
+   "contexto": "25, fase 7 (Claude+Copilot), volta final; fase cliente:subir",
+   "fonte": "C:/context-hub-wt/ticket-25/agents/code/test/ponta-a-ponta/evidencia-25/rodadas/2026-10-17-1921-claude-copilot-f7/medida.csv:57",
+   "fora_da_base": true
+  },
+  {
+   "hora_local": "2026-10-17T19:24:53",
+   "mb": 896,
+   "contexto": "25, fase 7 (Claude+Copilot), volta final; fase cliente:subir",
+   "fonte": "C:/context-hub-wt/ticket-25/agents/code/test/ponta-a-ponta/evidencia-25/rodadas/2026-10-17-1921-claude-copilot-f7/medida.csv:60",
+   "fora_da_base": true
+  },
+  {
+   "hora_local": "2026-10-17T19:25:33",
+   "mb": 1194,
+   "contexto": "25, fase 7 (Claude+Copilot), volta final; fase cliente:subir",
+   "fonte": "C:/context-hub-wt/ticket-25/agents/code/test/ponta-a-ponta/evidencia-25/rodadas/2026-10-17-1921-claude-copilot-f7/medida.csv:73",
+   "fora_da_base": true
+  },
+  {
+   "hora_local": "2026-10-17T19:25:39",
+   "mb": 835,
+   "contexto": "25, fase 7 (Claude+Copilot), volta final; fase cliente",
+   "fonte": "C:/context-hub-wt/ticket-25/agents/code/test/ponta-a-ponta/evidencia-25/rodadas/2026-10-17-1921-claude-copilot-f7/medida.csv:75",
+   "fora_da_base": true,
+   "minimo_do_arquivo": true
+  },
+  {
+   "hora_local": "2026-10-17T19:26:11",
+   "mb": 923,
+   "contexto": "25, fase 7 (Claude+Copilot), volta final; fase cliente",
+   "fonte": "C:/context-hub-wt/ticket-25/agents/code/test/ponta-a-ponta/evidencia-25/rodadas/2026-10-17-1921-claude-copilot-f7/medida.csv:85",
+   "fora_da_base": true
+  },
+  {
+   "hora_local": "2026-10-17T19:26:24",
+   "mb": 2591,
+   "contexto": "25, fase 7 (Claude+Copilot), volta final; fase descer",
+   "fonte": "C:/context-hub-wt/ticket-25/agents/code/test/ponta-a-ponta/evidencia-25/rodadas/2026-10-17-1921-claude-copilot-f7/medida.csv:89",
+   "fora_da_base": true
+  },
+  {
+   "hora_local": "2026-10-17T19:26:27",
+   "mb": 2796,
+   "contexto": "25, corredor da Vela: prova terminou com 0 (2796 MB livres)",
+   "fonte": "etapas/logs/25-corredor.status:59"
+  },
+  {
+   "hora_local": "2026-10-17T19:26:55",
+   "mb": 2906,
+   "contexto": "25, corredor da Vela: corredor 133496 começou: fases 2,4, harnesses claude,codex,copilot, 2906 MB livres",
+   "fonte": "etapas/logs/25-corredor.status:61"
+  },
+  {
+   "hora_local": "2026-10-17T19:26:57",
+   "mb": 2728,
+   "contexto": "25, fase 2 do Codex e fase 4, volta final; fase pares",
+   "fonte": "C:/context-hub-wt/ticket-25/agents/code/test/ponta-a-ponta/evidencia-25/rodadas/2026-10-17-1926-claude-codex-copilot-f2-4/medida.csv:2",
+   "fora_da_base": true
+  },
+  {
+   "hora_local": "2026-10-17T19:27:36",
+   "mb": 2238,
+   "contexto": "25, fase 2 do Codex e fase 4, volta final; fase pares:subir",
+   "fonte": "C:/context-hub-wt/ticket-25/agents/code/test/ponta-a-ponta/evidencia-25/rodadas/2026-10-17-1926-claude-codex-copilot-f2-4/medida.csv:14",
+   "fora_da_base": true
+  },
+  {
+   "hora_local": "2026-10-17T19:28:01",
+   "mb": 1838,
+   "contexto": "25, fase 2 do Codex e fase 4, volta final; fase pares:subir",
+   "fonte": "C:/context-hub-wt/ticket-25/agents/code/test/ponta-a-ponta/evidencia-25/rodadas/2026-10-17-1926-claude-codex-copilot-f2-4/medida.csv:22",
+   "fora_da_base": true
+  },
+  {
+   "hora_local": "2026-10-17T19:28:07",
+   "mb": 2433,
+   "contexto": "25, fase 2 do Codex e fase 4, volta final; fase pares:subir",
+   "fonte": "C:/context-hub-wt/ticket-25/agents/code/test/ponta-a-ponta/evidencia-25/rodadas/2026-10-17-1926-claude-codex-copilot-f2-4/medida.csv:24",
+   "fora_da_base": true
+  },
+  {
+   "hora_local": "2026-10-17T19:28:33",
+   "mb": 2098,
+   "contexto": "25, fase 2 do Codex e fase 4, volta final; fase pares:subir",
+   "fonte": "C:/context-hub-wt/ticket-25/agents/code/test/ponta-a-ponta/evidencia-25/rodadas/2026-10-17-1926-claude-codex-copilot-f2-4/medida.csv:32",
+   "fora_da_base": true
+  },
+  {
+   "hora_local": "2026-10-17T19:28:48",
+   "mb": 1960,
+   "contexto": "25, fase 2 do Codex e fase 4, volta final; fase pares:subir",
+   "fonte": "C:/context-hub-wt/ticket-25/agents/code/test/ponta-a-ponta/evidencia-25/rodadas/2026-10-17-1926-claude-codex-copilot-f2-4/medida.csv:37",
+   "fora_da_base": true
+  },
+  {
+   "hora_local": "2026-10-17T19:29:15",
+   "mb": 1972,
+   "contexto": "25, fase 2 do Codex e fase 4, volta final; fase pares:subir",
+   "fonte": "C:/context-hub-wt/ticket-25/agents/code/test/ponta-a-ponta/evidencia-25/rodadas/2026-10-17-1926-claude-codex-copilot-f2-4/medida.csv:46",
+   "fora_da_base": true
+  },
+  {
+   "hora_local": "2026-10-17T19:29:41",
+   "mb": 2037,
+   "contexto": "25, fase 2 do Codex e fase 4, volta final; fase pares:subir",
+   "fonte": "C:/context-hub-wt/ticket-25/agents/code/test/ponta-a-ponta/evidencia-25/rodadas/2026-10-17-1926-claude-codex-copilot-f2-4/medida.csv:54",
+   "fora_da_base": true
+  },
+  {
+   "hora_local": "2026-10-17T19:29:59",
+   "mb": 2051,
+   "contexto": "25, fase 2 do Codex e fase 4, volta final; fase pares:subir",
+   "fonte": "C:/context-hub-wt/ticket-25/agents/code/test/ponta-a-ponta/evidencia-25/rodadas/2026-10-17-1926-claude-codex-copilot-f2-4/medida.csv:60",
+   "fora_da_base": true
+  },
+  {
+   "hora_local": "2026-10-17T19:30:25",
+   "mb": 1986,
+   "contexto": "25, fase 2 do Codex e fase 4, volta final; fase pares:subir",
+   "fonte": "C:/context-hub-wt/ticket-25/agents/code/test/ponta-a-ponta/evidencia-25/rodadas/2026-10-17-1926-claude-codex-copilot-f2-4/medida.csv:68",
+   "fora_da_base": true
+  },
+  {
+   "hora_local": "2026-10-17T19:30:37",
+   "mb": 1986,
+   "contexto": "25, fase 2 do Codex e fase 4, volta final; fase pares:subir",
+   "fonte": "C:/context-hub-wt/ticket-25/agents/code/test/ponta-a-ponta/evidencia-25/rodadas/2026-10-17-1926-claude-codex-copilot-f2-4/medida.csv:72",
+   "fora_da_base": true
+  },
+  {
+   "hora_local": "2026-10-17T19:31:11",
+   "mb": 2065,
+   "contexto": "25, fase 2 do Codex e fase 4, volta final; fase pares:subir",
+   "fonte": "C:/context-hub-wt/ticket-25/agents/code/test/ponta-a-ponta/evidencia-25/rodadas/2026-10-17-1926-claude-codex-copilot-f2-4/medida.csv:83",
+   "fora_da_base": true
+  },
+  {
+   "hora_local": "2026-10-17T19:31:24",
+   "mb": 1790,
+   "contexto": "25, fase 2 do Codex e fase 4, volta final; fase pares",
+   "fonte": "C:/context-hub-wt/ticket-25/agents/code/test/ponta-a-ponta/evidencia-25/rodadas/2026-10-17-1926-claude-codex-copilot-f2-4/medida.csv:87",
+   "fora_da_base": true
+  },
+  {
+   "hora_local": "2026-10-17T19:32:03",
+   "mb": 2122,
+   "contexto": "25, fase 2 do Codex e fase 4, volta final; fase vigia",
+   "fonte": "C:/context-hub-wt/ticket-25/agents/code/test/ponta-a-ponta/evidencia-25/rodadas/2026-10-17-1926-claude-codex-copilot-f2-4/medida.csv:99",
+   "fora_da_base": true
+  },
+  {
+   "hora_local": "2026-10-17T19:32:46",
+   "mb": 1690,
+   "contexto": "25, fase 2 do Codex e fase 4, volta final; fase pares:descer",
+   "fonte": "C:/context-hub-wt/ticket-25/agents/code/test/ponta-a-ponta/evidencia-25/rodadas/2026-10-17-1926-claude-codex-copilot-f2-4/medida.csv:112",
+   "fora_da_base": true,
+   "minimo_do_arquivo": true
+  },
+  {
+   "hora_local": "2026-10-17T19:32:49",
+   "mb": 2518,
+   "contexto": "25, fase 2 do Codex e fase 4, volta final; fase pares:descer",
+   "fonte": "C:/context-hub-wt/ticket-25/agents/code/test/ponta-a-ponta/evidencia-25/rodadas/2026-10-17-1926-claude-codex-copilot-f2-4/medida.csv:113",
+   "fora_da_base": true
+  },
+  {
+   "hora_local": "2026-10-17T19:32:53",
+   "mb": 2810,
+   "contexto": "25, corredor da Vela: prova terminou com 0 (2810 MB livres)",
+   "fonte": "etapas/logs/25-corredor.status:62"
+  },
+  {
+   "hora_local": "2026-10-17T21:10",
+   "mb": 714,
+   "contexto": "reinício do Windows; o Maestri religou todos os recrutas",
+   "fonte": ".scratch/context-hub/retomada-maestro.md:117"
+  },
+  {
+   "hora_local": "2026-10-17T21:10",
+   "mb": 3000,
+   "contexto": "depois de fechar Brasa, Vela, Trilho, Cinzel, Fiel e Fielzinho",
+   "fonte": ".scratch/context-hub/retomada-maestro.md:117",
+   "hora_aproximada": true,
+   "nota": "logo depois das 21:10"
+  }
+ ],
+ "trava": [
+  {
+   "quem": "Vela",
+   "o_que": "suíte do 30",
+   "inicio": "2026-10-17T00:32",
+   "fim": null,
+   "fonte": "git (trava-pesada.md) 297352a 00:37 (texto: 'começou ~00:32', trava criada 00:36)",
+   "nota": "fim não escrito; no commit a44820c (00:53) a trava já estava vazia",
+   "hora_aproximada": true
+  },
+  {
+   "quem": "Rebite",
+   "o_que": "suíte da junção do 30",
+   "inicio": null,
+   "fim": "2026-10-17T00:53",
+   "fonte": "etapas/registro-de-juncoes.md:17",
+   "nota": "o registro dá só a hora da junção (fim); diz 'com trava'"
+  },
+  {
+   "quem": "Trilho",
+   "o_que": "teste único do gemini (13)",
+   "inicio": "2026-10-17T00:58",
+   "fim": null,
+   "fonte": "git (trava-pesada.md) 6823e41 01:02",
+   "nota": "diário:10 conta duas suítes juntas (Brasa 00h58, Trilho 01h06, 'a trava sobrescrita'); o arquivo da trava diz Trilho 00:58 (gemini). Fim: diário:10 'Trilho para a dele' ~01:08"
+  },
+  {
+   "quem": "Brasa",
+   "o_que": "suíte (sem nome no diário)",
+   "inicio": "2026-10-17T00:58",
+   "fim": "2026-10-17T01:15",
+   "fonte": "etapas/diario-da-construcao.md:10-11",
+   "nota": "'Brasa limpa ~01h15' é limpeza de contexto, não é certo que seja o fim da suíte; conflito com o arquivo da trava (ver item do Trilho)",
+   "hora_aproximada": true
+  },
+  {
+   "quem": "Rebite",
+   "o_que": "suíte da junção 31+32",
+   "inicio": null,
+   "fim": "2026-10-17T01:50",
+   "fonte": "etapas/registro-de-juncoes.md:18",
+   "nota": "só o fim (hora da junção)"
+  },
+  {
+   "quem": "Trilho",
+   "o_que": "suíte do 13",
+   "inicio": "2026-10-17T01:50",
+   "fim": null,
+   "fonte": "git (trava-pesada.md) a71ce5b 01:51",
+   "nota": "fim: o Rebite junta o 13 às 02:21 com a trava (registro:19)"
+  },
+  {
+   "quem": "Rebite",
+   "o_que": "suíte da junção do 13",
+   "inicio": null,
+   "fim": "2026-10-17T02:21",
+   "fonte": "etapas/registro-de-juncoes.md:19",
+   "nota": "só o fim"
+  },
+  {
+   "quem": "Rebite",
+   "o_que": "suíte da junção do 31 r3",
+   "inicio": "2026-10-17T02:41",
+   "fim": "2026-10-17T02:51",
+   "fonte": "git (trava-pesada.md) 9f51aaa 02:47; etapas/registro-de-juncoes.md:20"
+  },
+  {
+   "quem": "Rebite",
+   "o_que": "suíte da junção 07+34",
+   "inicio": null,
+   "fim": "2026-10-17T03:00",
+   "fonte": "etapas/registro-de-juncoes.md:21",
+   "nota": "só o fim"
+  },
+  {
+   "quem": "Trilho",
+   "o_que": "Codex real do 12 e do 15",
+   "inicio": "2026-10-17T03:03",
+   "fim": null,
+   "fonte": "git (trava-pesada.md) 002c10f 03:09",
+   "nota": "fim: às 03:14 a trava já era da Vela (142a47f)"
+  },
+  {
+   "quem": "Vela",
+   "o_que": "Docker do 28",
+   "inicio": "2026-10-17T03:12",
+   "fim": null,
+   "fonte": "git (trava-pesada.md) 142a47f 03:14",
+   "nota": "fim: às 03:17 a Vela troca a trava para a suíte do 28 (2e605d1)"
+  },
+  {
+   "quem": "Vela",
+   "o_que": "suíte do 28",
+   "inicio": "2026-10-17T03:17",
+   "fim": null,
+   "fonte": "git (trava-pesada.md) 2e605d1 03:23",
+   "nota": "fim não escrito; às 03:37 a Brasa já roda o Docker do 08 (diário:27)"
+  },
+  {
+   "quem": "Brasa",
+   "o_que": "Docker do 08 (todas as fatias)",
+   "inicio": "2026-10-17T03:37",
+   "fim": "2026-10-17T03:59",
+   "fonte": "etapas/diario-da-construcao.md:27-28; etapas/relatorio-08-banco-limites.md:113",
+   "nota": "caiu por memória aos 18 min (~03:55); diário registra 03:59"
+  },
+  {
+   "quem": "Trilho",
+   "o_que": "suíte do 35",
+   "inicio": null,
+   "fim": null,
+   "fonte": "etapas/diario-da-construcao.md:26",
+   "nota": "linha 26 tem hora estimada (~04h45, adiantada); a linha 27 (03:47) diz que o Trilho ainda ESPERAVA a trava para a suíte do 35. Não há prova de que rodou com a trava",
+   "hora_aproximada": true
+  },
+  {
+   "quem": "Rebite",
+   "o_que": "suíte da junção do 12 r3",
+   "inicio": "2026-10-17T03:56",
+   "fim": "2026-10-17T04:08",
+   "fonte": "git (trava-pesada.md) 8217404 04:00; etapas/registro-de-juncoes.md:22"
+  },
+  {
+   "quem": "Brasa",
+   "o_que": "fatias 2-7 do 08 (corredor 217400)",
+   "inicio": "2026-10-17T04:00:21",
+   "fim": "2026-10-17T04:02:23",
+   "fonte": "etapas/logs/08-fatias.status:1-2",
+   "nota": "o status não diz PEGOU; o corredor foi parado porque o Cinzel vinha antes na fila"
+  },
+  {
+   "quem": "Cinzel",
+   "o_que": "Docker do 09",
+   "inicio": "2026-10-17T04:09",
+   "fim": null,
+   "fonte": "git (trava-pesada.md) c406a7e 04:09; etapas/diario-da-construcao.md:30,32",
+   "nota": "fim: às 04:37 o Rebite já tem a trava (diário:40)"
+  },
+  {
+   "quem": "Rebite",
+   "o_que": "suíte 33+35",
+   "inicio": "2026-10-17T04:37",
+   "fim": "2026-10-17T04:53",
+   "fonte": "git (trava-pesada.md) d4601a2 04:40; etapas/diario-da-construcao.md:40; etapas/registro-de-juncoes.md:23"
+  },
+  {
+   "quem": "Trilho",
+   "o_que": "Docker do 16 (1ª rodada)",
+   "inicio": "2026-10-17T04:53",
+   "fim": null,
+   "fonte": "git (trava-pesada.md) 7d56df8 04:54; etapas/diario-da-construcao.md:42",
+   "nota": "fim: no commit 4d03f54 (05:06) a trava estava vazia; a Brasa pega às 05:06:27"
+  },
+  {
+   "quem": "Brasa",
+   "o_que": "fatia 2 do 08 (cortada)",
+   "inicio": "2026-10-17T05:06:27",
+   "fim": "2026-10-17T05:12:41",
+   "fonte": "etapas/logs/08-fatias.status:3-7; git (trava-pesada.md) 400358a"
+  },
+  {
+   "quem": "Trilho",
+   "o_que": "Docker do 16 (2ª rodada)",
+   "inicio": "2026-10-17T05:14",
+   "fim": "2026-10-17T05:20",
+   "fonte": "git (trava-pesada.md) 55e9304 05:17; etapas/diario-da-construcao.md:52 ('trava à Brasa 05:20')"
+  },
+  {
+   "quem": "Brasa",
+   "o_que": "fatia 3 do 08",
+   "inicio": "2026-10-17T05:20:29",
+   "fim": "2026-10-17T05:40:33",
+   "fonte": "etapas/logs/08-fatias.status:8-12",
+   "nota": "cedeu ao Trilho antes da fatia 4"
+  },
+  {
+   "quem": "Trilho",
+   "o_que": "Docker do 16 (rodada curta, ~5 min)",
+   "inicio": "2026-10-17T05:40:33",
+   "fim": "2026-10-17T05:47:53",
+   "fonte": "etapas/logs/08-fatias.status:12-13",
+   "nota": "início e fim vêm do status da Brasa (cede / retoma)"
+  },
+  {
+   "quem": "Brasa",
+   "o_que": "fatia 4 do 08 (parada)",
+   "inicio": "2026-10-17T05:47:53",
+   "fim": "2026-10-17T05:48:46",
+   "fonte": "etapas/logs/08-fatias.status:13-15; etapas/diario-da-construcao.md:53",
+   "nota": "'corrida na trava': o corredor retomou sozinho e furou a fila"
+  },
+  {
+   "quem": "Cinzel",
+   "o_que": "Docker do 10 e do 09",
+   "inicio": "2026-10-17T05:49:01",
+   "fim": "2026-10-17T05:55:15",
+   "fonte": "etapas/logs/10-corredor.status:1-5",
+   "nota": "o status não diz o nome; o 10 é do Cinzel"
+  },
+  {
+   "quem": "Rebite",
+   "o_que": "suíte 28+09",
+   "inicio": "2026-10-17T05:55",
+   "fim": "2026-10-17T06:12",
+   "fonte": "git (trava-pesada.md) 9a5d3d1 05:57; etapas/diario-da-construcao.md:55; etapas/registro-de-juncoes.md:24"
+  },
+  {
+   "quem": "Cinzel",
+   "o_que": "Docker do 10",
+   "inicio": "2026-10-17T06:12:06",
+   "fim": "2026-10-17T06:15:45",
+   "fonte": "etapas/logs/10-corredor.status:6-9; etapas/diario-da-construcao.md:56"
+  },
+  {
+   "quem": "Rebite",
+   "o_que": "npm install na junção do 10",
+   "inicio": null,
+   "fim": null,
+   "fonte": "etapas/diario-da-construcao.md:57",
+   "nota": "linha das 06:13 diz 'npm install com a trava na junção do 10'; sem início nem fim"
+  },
+  {
+   "quem": "Brasa",
+   "o_que": "fatia 3 do 08",
+   "inicio": "2026-10-17T06:16:06",
+   "fim": "2026-10-17T06:22:34",
+   "fonte": "etapas/logs/08-fatias.status:16-22; etapas/diario-da-construcao.md:58"
+  },
+  {
+   "quem": "Vela",
+   "o_que": "real do 17 (Claude e Copilot)",
+   "inicio": "2026-10-17T06:22:34",
+   "fim": null,
+   "fonte": "etapas/logs/08-fatias.status:20",
+   "nota": "a Brasa cede à Vela às 06:22:34; fim: a Brasa pega de novo às 06:24:48"
+  },
+  {
+   "quem": "Brasa",
+   "o_que": "fatias 4, 5 e 6 do 08",
+   "inicio": "2026-10-17T06:24:48",
+   "fim": "2026-10-17T06:29:41",
+   "fonte": "etapas/logs/08-fatias.status:23-33; git (trava-pesada.md) 828191e"
+  },
+  {
+   "quem": "Fiel",
+   "o_que": "Docker do 10 (revisão)",
+   "inicio": "2026-10-17T06:29:41",
+   "fim": null,
+   "fonte": "etapas/logs/08-fatias.status:31",
+   "nota": "'CEDE a trava a Fiel (Docker do 10), depois Trilho e Vela'; fim: a Brasa pega às 06:39:02"
+  },
+  {
+   "quem": "Trilho / Vela",
+   "o_que": "na fila depois do Fiel",
+   "inicio": null,
+   "fim": null,
+   "fonte": "etapas/logs/08-fatias.status:31",
+   "nota": "o status cita os dois antes da fatia 7; sem hora própria"
+  },
+  {
+   "quem": "Brasa",
+   "o_que": "fatias 7 e 07 do 08",
+   "inicio": "2026-10-17T06:39:02",
+   "fim": "2026-10-17T06:44:16",
+   "fonte": "etapas/logs/08-fatias.status:34-40; git (trava-pesada.md) 583e2bb"
+  },
+  {
+   "quem": "Rebite",
+   "o_que": "suíte 36+10 e npm test do fork",
+   "inicio": "2026-10-17T06:44",
+   "fim": "2026-10-17T07:00",
+   "fonte": "git (trava-pesada.md) e1a6ae1 06:49; etapas/registro-de-juncoes.md:27"
+  },
+  {
+   "quem": "Trilho",
+   "o_que": "12-busca SEM a trava (deslize)",
+   "inicio": "2026-10-17T06:50",
+   "fim": "2026-10-17T06:52",
+   "fonte": "etapas/diario-da-construcao.md:66",
+   "nota": "não é trava: rodou sem ela, ~2 min",
+   "hora_aproximada": true,
+   "sem_trava": true
+  },
+  {
+   "quem": "Trilho",
+   "o_que": "Docker do 16 (5ª) e Codex do 15",
+   "inicio": "2026-10-17T07:01",
+   "fim": "2026-10-17T07:26",
+   "fonte": "git (trava-pesada.md) c67fda2 07:01; etapas/diario-da-construcao.md:67,69",
+   "nota": "fim: 'Trava com a Vela (17) desde 07:26'"
+  },
+  {
+   "quem": "Vela",
+   "o_que": "Codex real do 17",
+   "inicio": "2026-10-17T07:26",
+   "fim": null,
+   "fonte": "git (trava-pesada.md) ea221ac 07:27; etapas/diario-da-construcao.md:69",
+   "nota": "fim: o Cinzel pega às 07:28:12"
+  },
+  {
+   "quem": "Cinzel",
+   "o_que": "harness real do 11",
+   "inicio": "2026-10-17T07:28:12",
+   "fim": "2026-10-17T07:36:24",
+   "fonte": "etapas/logs/11-corredor.status:1-3; git (trava-pesada.md) 682fdc1"
+  },
+  {
+   "quem": "Brasa",
+   "o_que": "fatias 1+2 do 08 (cortada)",
+   "inicio": "2026-10-17T07:37:12",
+   "fim": "2026-10-17T07:39:29",
+   "fonte": "etapas/logs/08-fatias.status:41-45"
+  },
+  {
+   "quem": "Rebite",
+   "o_que": "suíte do 15 r2",
+   "inicio": "2026-10-17T07:40",
+   "fim": "2026-10-17T08:06",
+   "fonte": "git (trava-pesada.md) 53db1e6 07:41; etapas/diario-da-construcao.md:80; etapas/registro-de-juncoes.md:29"
+  },
+  {
+   "quem": "Trilho",
+   "o_que": "Docker do 21",
+   "inicio": "2026-10-17T08:05",
+   "fim": null,
+   "fonte": "git (trava-pesada.md) 3c10a5c 08:11",
+   "nota": "fim: a Brasa pega às 08:13:15"
+  },
+  {
+   "quem": "Brasa",
+   "o_que": "Docker do 22 (3 voltas curtas)",
+   "inicio": "2026-10-17T08:13:15",
+   "fim": "2026-10-17T08:23:34",
+   "fonte": "etapas/logs/22.status:1-18",
+   "nota": "três corredores seguidos (08:13-08:16, 08:17-08:21, 08:23-08:23)"
+  },
+  {
+   "quem": "Brasa",
+   "o_que": "Docker do 22 (cortado)",
+   "inicio": "2026-10-17T08:24:14",
+   "fim": "2026-10-17T08:26:56",
+   "fonte": "etapas/logs/22.status:19-24; etapas/diario-da-construcao.md:88"
+  },
+  {
+   "quem": "Vela",
+   "o_que": "harness real do 18",
+   "inicio": "2026-10-17T08:28",
+   "fim": null,
+   "fonte": "git (trava-pesada.md) 45741b6 08:29; etapas/diario-da-construcao.md:90",
+   "nota": "fim: o Rebite pega às 08:30"
+  },
+  {
+   "quem": "Rebite",
+   "o_que": "suíte do 08",
+   "inicio": "2026-10-17T08:30",
+   "fim": "2026-10-17T08:56",
+   "fonte": "git (trava-pesada.md) bcf01f4 08:31; etapas/diario-da-construcao.md:95; etapas/registro-de-juncoes.md:30"
+  },
+  {
+   "quem": "Trilho",
+   "o_que": "Docker do 16 e do 21",
+   "inicio": "2026-10-17T08:56",
+   "fim": null,
+   "fonte": "git (trava-pesada.md) a9d1cd9 08:56; etapas/diario-da-construcao.md:98",
+   "nota": "fim: a Vela pega às 09:13"
+  },
+  {
+   "quem": "Vela",
+   "o_que": "harness real do 18 (de novo)",
+   "inicio": "2026-10-17T09:13",
+   "fim": null,
+   "fonte": "git (trava-pesada.md) 0389a01 09:14",
+   "nota": "fim: a Brasa pega às 09:16:33"
+  },
+  {
+   "quem": "Brasa",
+   "o_que": "Docker do 22",
+   "inicio": "2026-10-17T09:16:33",
+   "fim": "2026-10-17T09:30:35",
+   "fonte": "etapas/logs/22.status:25-32; etapas/diario-da-construcao.md:102"
+  },
+  {
+   "quem": "Trilho",
+   "o_que": "Docker do 21 (3ª rodada)",
+   "inicio": "2026-10-17T09:32",
+   "fim": null,
+   "fonte": "git (trava-pesada.md) 93f2cc3 09:33",
+   "nota": "fim: diário:111 (09:39) '21 3ª rodada tudo passou'; a Brasa pega às 09:39:19"
+  },
+  {
+   "quem": "Brasa",
+   "o_que": "Docker do 22 + harnesses (janela quieta 1)",
+   "inicio": "2026-10-17T09:39:19",
+   "fim": "2026-10-17T09:48:53",
+   "fonte": "etapas/logs/22.status:33-42; etapas/diario-da-construcao.md:113"
+  },
+  {
+   "quem": "Brasa",
+   "o_que": "fatias 1+2 do 08 (verde)",
+   "inicio": "2026-10-17T09:50:01",
+   "fim": "2026-10-17T09:52:40",
+   "fonte": "etapas/logs/08-fatias.status:46-50"
+  },
+  {
+   "quem": "Vela",
+   "o_que": "25 fases 1-3 (1ª volta)",
+   "inicio": "2026-10-17T09:53:16",
+   "fim": "2026-10-17T09:57:48",
+   "fonte": "etapas/logs/25-corredor.status:1-5",
+   "nota": "'trava apagada' no fim"
+  },
+  {
+   "quem": "Vela",
+   "o_que": "25 fases 2-3 (2ª volta, verde)",
+   "inicio": "2026-10-17T09:58:41",
+   "fim": "2026-10-17T10:01:50",
+   "fonte": "etapas/logs/25-corredor.status:6-10"
+  },
+  {
+   "quem": "Rebite",
+   "o_que": "suíte do 16 (vermelha, desfeita)",
+   "inicio": "2026-10-17T10:19",
+   "fim": "2026-10-17T10:46",
+   "fonte": "git (trava-pesada.md) 832c544 10:28; etapas/diario-da-construcao.md:121,126; etapas/registro-de-juncoes.md:32"
+  },
+  {
+   "quem": "Trilho",
+   "o_que": "Docker do 21 (4ª) e depois 12-busca no ramo do 16",
+   "inicio": "2026-10-17T10:46",
+   "fim": null,
+   "fonte": "git (trava-pesada.md) 91872fa 10:49; d7fad80 10:56",
+   "nota": "fim: o Rebite roda a suíte do 22 desde 11:02 (diário:132)"
+  },
+  {
+   "quem": "Rebite",
+   "o_que": "suíte do 22",
+   "inicio": "2026-10-17T11:02",
+   "fim": "2026-10-17T11:21",
+   "fonte": "etapas/diario-da-construcao.md:132; etapas/registro-de-juncoes.md:31"
+  },
+  {
+   "quem": "Rebite",
+   "o_que": "suíte 16+21",
+   "inicio": "2026-10-17T11:21",
+   "fim": "2026-10-17T11:41",
+   "fonte": "git (trava-pesada.md) 0aa8292 11:21; etapas/diario-da-construcao.md:134; etapas/registro-de-juncoes.md:33"
+  },
+  {
+   "quem": "Trilho",
+   "o_que": "pesados do 38",
+   "inicio": "2026-10-17T11:40",
+   "fim": null,
+   "fonte": "git (trava-pesada.md) f82c9ac 11:41; etapas/diario-da-construcao.md:137-138",
+   "nota": "fim: o Rebite pega às 11:59"
+  },
+  {
+   "quem": "Rebite",
+   "o_que": "suíte do 17",
+   "inicio": "2026-10-17T11:59",
+   "fim": "2026-10-17T12:34",
+   "fonte": "git (trava-pesada.md) 62e93f7 12:05 (último commit do arquivo da trava); etapas/diario-da-construcao.md:141; etapas/registro-de-juncoes.md:34"
+  },
+  {
+   "quem": "Cinzel",
+   "o_que": "Codex do 11 (sem cota)",
+   "inicio": "2026-10-17T12:37",
+   "fim": "2026-10-17T12:41:15",
+   "fonte": "etapas/diario-da-construcao.md:148; etapas/logs/11-corredor.status:4-6"
+  },
+  {
+   "quem": "Vela",
+   "o_que": "25 fases 4/6/7, rodada 1",
+   "inicio": "2026-10-17T12:48:56",
+   "fim": "2026-10-17T13:01:24",
+   "fonte": "etapas/logs/25-corredor.status:11-15"
+  },
+  {
+   "quem": "Trilho",
+   "o_que": "12-busca com os docs (41)",
+   "inicio": null,
+   "fim": null,
+   "fonte": "etapas/diario-da-construcao.md:150-151",
+   "nota": "'Trilho roda o 12-busca entre fases da Vela' (12:55) e 'Vela roda depois do 12-busca do Trilho' (13:03); log etapas/logs/trilho-41-12-busca-com-docs.log gravado às 13:08 (hora do arquivo)"
+  },
+  {
+   "quem": "Vela",
+   "o_que": "25 fases 4/6/7, rodada 2 (cortada)",
+   "inicio": "2026-10-17T13:12:50",
+   "fim": "2026-10-17T13:13:56",
+   "fonte": "etapas/logs/25-corredor.status:16-20"
+  },
+  {
+   "quem": "Vela",
+   "o_que": "25 fases 4/6/7, rodada 3 (janela quieta 2)",
+   "inicio": "2026-10-17T13:21:51",
+   "fim": "2026-10-17T13:39:06",
+   "fonte": "etapas/logs/25-corredor.status:21-25"
+  },
+  {
+   "quem": "Rebite",
+   "o_que": "suíte 38+39+22",
+   "inicio": null,
+   "fim": "2026-10-17T14:06",
+   "fonte": "etapas/diario-da-construcao.md:155,157; etapas/registro-de-juncoes.md:36",
+   "nota": "início não escrito; o Docker foi parado ~13:45 'para a suíte do Rebite'"
+  },
+  {
+   "quem": "Vela",
+   "o_que": "25 fase 4, rodada 4",
+   "inicio": "2026-10-17T14:06:45",
+   "fim": "2026-10-17T14:10:44",
+   "fonte": "etapas/logs/25-corredor.status:26-30"
+  },
+  {
+   "quem": "Vela",
+   "o_que": "25 fase 4, rodada 5 (cortada no piso)",
+   "inicio": "2026-10-17T14:17:39",
+   "fim": "2026-10-17T14:17:49",
+   "fonte": "etapas/logs/25-corredor.status:31-33"
+  },
+  {
+   "quem": "Rebite",
+   "o_que": "suíte do 42",
+   "inicio": "2026-10-17T14:19",
+   "fim": "2026-10-17T14:47",
+   "fonte": "etapas/diario-da-construcao.md:165; etapas/fila-pesada.md:8; etapas/registro-de-juncoes.md:37"
+  },
+  {
+   "quem": "Cinzel",
+   "o_que": "Codex do 11 (verde)",
+   "inicio": "2026-10-17T14:47:13",
+   "fim": "2026-10-17T14:54:24",
+   "fonte": "etapas/logs/11-corredor.status:7-9; etapas/fila-pesada.md:9"
+  },
+  {
+   "quem": "Rebite",
+   "o_que": "suíte 41+40+43+docs",
+   "inicio": "2026-10-17T14:55",
+   "fim": null,
+   "fonte": "etapas/diario-da-construcao.md:167; etapas/registro-de-juncoes.md:38",
+   "nota": "o registro escreve 15h22 (hora da junção); o log juncao-41-40-43-docs-suite.log foi gravado às 15:18 (hora do arquivo)"
+  },
+  {
+   "quem": "Vela",
+   "o_que": "Codex do 18",
+   "inicio": null,
+   "fim": "2026-10-17T15:19",
+   "fonte": "etapas/fila-pesada.md:11; etapas/diario-da-construcao.md:168",
+   "nota": "fila diz 'feito 15:19'; o diário das 15:22 ainda escreve 'Trava com a Vela (Codex do 18)'. Início não escrito"
+  },
+  {
+   "quem": "Brasa",
+   "o_que": "Codex do 22 (cortado)",
+   "inicio": "2026-10-17T15:21:48",
+   "fim": "2026-10-17T15:33:51",
+   "fonte": "etapas/logs/22.status:43-50"
+  },
+  {
+   "quem": "Rebite",
+   "o_que": "suíte do 11 + docs 4ª leva",
+   "inicio": null,
+   "fim": "2026-10-17T16:16",
+   "fonte": "etapas/registro-de-juncoes.md:40; etapas/diario-da-construcao.md:171",
+   "nota": "início não escrito (depois das 15:43)"
+  },
+  {
+   "quem": "Rebite",
+   "o_que": "suíte do lote 18+37+23",
+   "inicio": "2026-10-17T16:16",
+   "fim": "2026-10-17T16:44",
+   "fonte": "etapas/diario-da-construcao.md:173-174; etapas/registro-de-juncoes.md:41",
+   "nota": "diário:173 diz 'desde 16:20'; diário:174 diz 'desde 16:16'"
+  },
+  {
+   "quem": "Rebite",
+   "o_que": "suíte 44 + docs 5ª leva",
+   "inicio": "2026-10-17T16:47",
+   "fim": "2026-10-17T17:14",
+   "fonte": "etapas/diario-da-construcao.md:175-176; etapas/registro-de-juncoes.md:42",
+   "nota": "diário:175 diz 'desde 16:46'"
+  },
+  {
+   "quem": "Brasa",
+   "o_que": "Codex do 22 (verde)",
+   "inicio": "2026-10-17T17:14:38",
+   "fim": "2026-10-17T17:19:20",
+   "fonte": "etapas/logs/22.status:51-58; etapas/fila-pesada.md:12,17"
+  },
+  {
+   "quem": "Cinzel",
+   "o_que": "Codex do 24",
+   "inicio": "2026-10-17T17:20",
+   "fim": "2026-10-17T17:21",
+   "fonte": "etapas/diario-da-construcao.md:179; etapas/fila-pesada.md:18"
+  },
+  {
+   "quem": "Vela",
+   "o_que": "25 fases 4/5/7 (noite)",
+   "inicio": "2026-10-17T17:22:42",
+   "fim": "2026-10-17T17:58:40",
+   "fonte": "etapas/logs/25-corredor.status:34-38"
+  },
+  {
+   "quem": "Vela",
+   "o_que": "25 Codex fases 1-3",
+   "inicio": "2026-10-17T18:00:12",
+   "fim": "2026-10-17T18:05:41",
+   "fonte": "etapas/logs/25-corredor.status:39-43"
+  },
+  {
+   "quem": "Vela",
+   "o_que": "25 Codex fase 2",
+   "inicio": "2026-10-17T18:06:51",
+   "fim": "2026-10-17T18:08:10",
+   "fonte": "etapas/logs/25-corredor.status:44-46"
+  },
+  {
+   "quem": "Vela",
+   "o_que": "25 Codex fase 2 (de novo)",
+   "inicio": "2026-10-17T18:09:30",
+   "fim": "2026-10-17T18:11:36",
+   "fonte": "etapas/logs/25-corredor.status:47-49"
+  },
+  {
+   "quem": "Vela",
+   "o_que": "25 fase 7",
+   "inicio": "2026-10-17T18:13:11",
+   "fim": "2026-10-17T18:13:17",
+   "fonte": "etapas/logs/25-corredor.status:50-52"
+  },
+  {
+   "quem": "Vela",
+   "o_que": "25 fase 7 (verde)",
+   "inicio": "2026-10-17T18:15:56",
+   "fim": "2026-10-17T18:23:04",
+   "fonte": "etapas/logs/25-corredor.status:53-55"
+  },
+  {
+   "quem": "Brasa",
+   "o_que": "reprodução da descida A→B do 25",
+   "inicio": "2026-10-17T18:23",
+   "fim": "2026-10-17T18:47",
+   "fonte": "etapas/diario-da-construcao.md:187; etapas/fila-pesada.md:20"
+  },
+  {
+   "quem": "Rebite",
+   "o_que": "suíte 24+22",
+   "inicio": null,
+   "fim": "2026-10-17T19:22",
+   "fonte": "etapas/diario-da-construcao.md:189; etapas/registro-de-juncoes.md:43",
+   "nota": "rodando às 18:50; início não escrito (leves gravados às 18:36, hora do arquivo juncao-24-22-leves.log)"
+  },
+  {
+   "quem": "Vela",
+   "o_que": "25 fase 7 (de verdade)",
+   "inicio": "2026-10-17T19:21:29",
+   "fim": "2026-10-17T19:26:27",
+   "fonte": "etapas/logs/25-corredor.status:56-60; etapas/diario-da-construcao.md:192"
+  },
+  {
+   "quem": "Vela",
+   "o_que": "25 fases 2 (Codex) e 4",
+   "inicio": "2026-10-17T19:26:55",
+   "fim": "2026-10-17T19:32:53",
+   "fonte": "etapas/logs/25-corredor.status:61-63"
+  },
+  {
+   "quem": "Rebite",
+   "o_que": "suíte do 25",
+   "inicio": "2026-10-17T19:50",
+   "fim": "2026-10-17T20:18",
+   "fonte": "etapas/diario-da-construcao.md:194; etapas/registro-de-juncoes.md:44"
+  }
+ ],
+ "cortes": [
+  {
+   "hora": "2026-10-16T23:05",
+   "o_que": "máquina sem memória no meio da prova 01 (ticket 07); o sistema parou a fila",
+   "mb_no_corte": null,
+   "fonte": "etapas/relatorio-07-banco-do-par.md:185",
+   "hora_aproximada": true
+  },
+  {
+   "hora": "2026-10-16T23:40",
+   "o_que": "máquina sem memória de novo, com a fila esperando memória (ticket 07)",
+   "mb_no_corte": null,
+   "fonte": "etapas/relatorio-07-banco-do-par.md:187",
+   "hora_aproximada": true,
+   "nota": "a fila-docker do 07 (fora da BASE) mostra 740 MB às 23:23:40 e para às 23:38:47; recomeça às 00:18"
+  },
+  {
+   "hora": "2026-10-17T00:24",
+   "o_que": "portal fechado por RAM",
+   "mb_no_corte": null,
+   "fonte": "etapas/diario-da-construcao.md:9"
+  },
+  {
+   "hora": "2026-10-17T00:35",
+   "o_que": "suíte do Rebite (conferência do 15 e do 20) interrompida por memória crítica",
+   "mb_no_corte": null,
+   "fonte": "etapas/registro-de-juncoes.md:16",
+   "nota": "no mesmo minuto nasce a regra da trava (git fc9cd8f 00:35)"
+  },
+  {
+   "hora": "2026-10-17T03:59",
+   "o_que": "Docker do 08 (todas as fatias) caiu por memória aos 18 min",
+   "mb_no_corte": null,
+   "fonte": "etapas/diario-da-construcao.md:28; etapas/relatorio-08-banco-limites.md:113; issues/08-banco-limites-e-robustez.md:26",
+   "nota": "começou 03:37; 18 min dá ~03:55. Ronda das 03:47: 1.200 MB livres (diário:27)"
+  },
+  {
+   "hora": "2026-10-17T05:12:24",
+   "o_que": "fatia 2 do 08 cortada pelo corredor (2.900 → 513 em ~1 min)",
+   "mb_no_corte": 513,
+   "fonte": "etapas/logs/08-fatias.status:6",
+   "nota": "diário:48 registra às 05:17"
+  },
+  {
+   "hora": "2026-10-17T07:39:11",
+   "o_que": "fatias 1+2 do 08 cortadas (3.183 → 621 em 2 min)",
+   "mb_no_corte": 621,
+   "fonte": "etapas/logs/08-fatias.status:44",
+   "nota": "diário:78 registra às 07:41"
+  },
+  {
+   "hora": "2026-10-17T08:26:41",
+   "o_que": "Docker do 22 cortado na indexação da busca",
+   "mb_no_corte": 613,
+   "fonte": "etapas/logs/22.status:22",
+   "nota": "diário:90 registra às 08:29"
+  },
+  {
+   "hora": "2026-10-17T13:01:23",
+   "o_que": "25 rodada 1: corte do medidor na subida dos pares (fase 6), depois de a fase 4 não começar",
+   "mb_no_corte": 670,
+   "fonte": "etapas/logs/25-corte-auzDAF.json:4",
+   "novo": true,
+   "nota": "NÃO está no diário (diário:151 só diz que 'saiu sem rodar'); status: prova terminou com 766 MB (25-corredor.status:14)"
+  },
+  {
+   "hora": "2026-10-17T13:13:54",
+   "o_que": "25 rodada 2: corte na subida dos pares (fase 4)",
+   "mb_no_corte": 480,
+   "fonte": "etapas/logs/25-corte-0TsUvd.json:4",
+   "nota": "diário:152 e relatório-25:110 dizem 659 MB, que é a medida no fim da prova (25-corredor.status:19, 13:13:56)"
+  },
+  {
+   "hora": "2026-10-17T13:39:05",
+   "o_que": "25 fase 7 cortada na subida da pilha do 22 (12 min subindo)",
+   "mb_no_corte": 671,
+   "fonte": "etapas/logs/25-corte-elzNVi.json:4",
+   "nota": "diário:155 registra às 13:45"
+  },
+  {
+   "hora": "2026-10-17T14:17:47",
+   "o_que": "25 fase 4, rodada 5: corte ainda na espera do piso (começou com 562 MB)",
+   "mb_no_corte": 477,
+   "fonte": "etapas/logs/25-corte-rodada-5.json:4",
+   "novo": true,
+   "nota": "o diário não chama de corte; diário:159 (14:18) dá 448 MB 'com a fase 4 da Vela rodando'"
+  },
+  {
+   "hora": "2026-10-17T15:33:44",
+   "o_que": "Codex do 22 cortado na subida dos pares (canvas cheio)",
+   "mb_no_corte": 583,
+   "fonte": "etapas/logs/22.status:48",
+   "nota": "medidor-22c.log:127 marca 526 no mesmo segundo; diário:171 registra às 15:43"
+  }
+ ],
+ "janelas_quietas": [
+  {
+   "nome": "janela quieta 1 (manhã)",
+   "inicio": "2026-10-17T09:34",
+   "fim": "2026-10-17T10:03",
+   "quem_saiu": [
+    "Rebite (09:34)",
+    "Cinzel (09:35)",
+    "Fiel (09:35)",
+    "Fielzinho (09:35)",
+    "Trilho (09:39)"
+   ],
+   "quem_ficou": [
+    "maestro",
+    "Brasa",
+    "Vela"
+   ],
+   "o_que_rodou": [
+    "Brasa: Docker do 22 + harnesses Claude e Copilot (09:39-09:48, verde, mín. 715 MB)",
+    "Brasa: fatias 1+2 do 08 (09:50-09:52, verde, mín. 1.724 MB)",
+    "Vela: 25 fases 1-3 (09:53-10:01, verde na 2ª volta)"
+   ],
+   "fonte": "etapas/diario-da-construcao.md:108-116; quadro em :216-223",
+   "nota": "anunciada 09:33; 'janela aberta' às 09:39 (quando o Trilho saiu); encerrada 10:03; às 10:11 o Gustavo reiniciou o Maestri e os recrutas voltaram sozinhos (diário:117). Portal já estava parado."
+  },
+  {
+   "nome": "janela quieta 2 (tarde)",
+   "inicio": "2026-10-17T13:22",
+   "fim": "2026-10-17T14:17",
+   "quem_saiu": [
+    "Cinzel",
+    "Lume",
+    "Fiel",
+    "Brasa",
+    "Fielzinho",
+    "Trilho (13:22)"
+   ],
+   "quem_ficou": [
+    "maestro",
+    "Vela",
+    "Rebite"
+   ],
+   "o_que_rodou": [
+    "Vela: 25 fases 4/6/7 (13:21-13:39): 6 verde, 4 falhou (defeito da ponte), 7 cortada em 671 MB",
+    "Rebite: suíte 38+39+22 (verde, junção 14:06)",
+    "Vela: 25 fase 4 com Docker (14:06-14:10, falhou)"
+   ],
+   "fonte": "etapas/diario-da-construcao.md:153-158; git dfd8ad2 e e19de9b (13:22)",
+   "nota": "a linha 153 do diário tem hora 13:25 mas vem antes da 154 (13:22); relatório-25:111 dá 13:21 como começo (3,7 GB livres). Religados às 14:17 Cinzel, Lume, Fiel, Brasa, Trilho; Fielzinho fora até 17h. Às 14:18 Brasa e Cinzel saem de novo (ociosos), e às 14:26 voltam com a cota do Codex redefinida."
+  },
+  {
+   "nome": "janela quieta da noite",
+   "inicio": "2026-10-17T16:52",
+   "fim": null,
+   "quem_saiu": [
+    "Fiel",
+    "Vela",
+    "Cinzel",
+    "Lume",
+    "(Trilho e Fielzinho já estavam fora)"
+   ],
+   "quem_ficou": [
+    "maestro",
+    "Rebite",
+    "Brasa"
+   ],
+   "o_que_rodou": [
+    "Rebite: suíte 44 + docs (16:47-17:14)",
+    "Brasa: Codex do 22 (17:14-17:19, verde, mín. 1.096 MB)",
+    "Cinzel religado: Codex do 24 (17:20-17:21, verde)",
+    "Vela religada (diário 17:25; o corredor dela começou 17:22): 25 fases 4/5/7 e Codex (17:22-18:23)",
+    "Brasa religada ~18:16: reprodução da descida A→B (18:23-18:47)"
+   ],
+   "fonte": "etapas/diario-da-construcao.md:175-187; etapas/fila-pesada.md:15-21; git 3a45e28 (16:52)",
+   "nota": "fim não escrito. Pistas: diário:178 'Fiel religa ao fim da janela'; diário:185 Fiel religado às 18:20. Lume ainda fora às 18:02 (diário:183) e não aparece religado no diário. Brasa saiu 17:25 e 18:51; Cinzel saiu 17:26. Construção fechada às 20:17."
+  }
+ ]
+}

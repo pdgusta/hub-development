@@ -1,0 +1,1825 @@
+[
+ {
+  "id": "23",
+  "titulo": "Kit de par: a forma",
+  "etapa": "10 (kit de par)",
+  "status": "resolved",
+  "status_fonte": "issues/23-kit-de-par-a-forma.md:4",
+  "blocked_by": [
+   "11",
+   "15",
+   "17",
+   "18",
+   "20",
+   "27"
+  ],
+  "blocked_by_fonte": "issues/23-kit-de-par-a-forma.md:6",
+  "origem": "original",
+  "construtor": {
+   "nome": "Cinzel",
+   "fonte": "issues/23-kit-de-par-a-forma.md:29"
+  },
+  "inicio": {
+   "quando": "2026-10-17T07:54",
+   "fonte": "etapas/diario-da-construcao.md:83",
+   "nota": "mandato do maestro 07:53 (issues/23-kit-de-par-a-forma.md:28): começa antes dos bloqueios; o 'peguei' do Cinzel diz ~08h20 (issues/23-kit-de-par-a-forma.md:29), hora estimada"
+  },
+  "revisao": [
+   {
+    "rodada": 1,
+    "resultado": "VOLTA",
+    "quando": null,
+    "quem": "Fiel",
+    "fonte": "etapas/parecer-23-Cinzel.md:5",
+    "janela": "entre 08:45 (pedido, issues/23-kit-de-par-a-forma.md:32) e 08:56 (conserto f304e6c)",
+    "nota": "parecer diz ~09h30 e o Cinzel ~09h45: horas estimadas; 1 conserto (grupo do hub velho ficava)"
+   },
+   {
+    "rodada": 2,
+    "resultado": "PASSA",
+    "quando": null,
+    "quem": "Fiel",
+    "fonte": "etapas/parecer-23-Cinzel.md:47",
+    "janela": "entre 08:56 (f304e6c) e 09:22 (a419182)",
+    "nota": "parecer diz ~10h10, hora estimada"
+   },
+   {
+    "rodada": 3,
+    "resultado": "VOLTA",
+    "quando": null,
+    "quem": "Fiel",
+    "fonte": "etapas/parecer-23-Cinzel.md:60",
+    "janela": "antes de 09:22 (conserto a419182)",
+    "nota": "reabertura: achada pelo Fiel ao revisar o 24 (detector de harness real sem exceção para o app-server do Codex)"
+   },
+   {
+    "rodada": 4,
+    "resultado": "PASSA",
+    "quando": "2026-10-17T09:23",
+    "quem": "Fiel",
+    "fonte": "etapas/parecer-23-Cinzel.md:72; issues/23-kit-de-par-a-forma.md:36",
+    "nota": "diário 09:28 (etapas/diario-da-construcao.md:105)"
+   },
+   {
+    "rodada": 5,
+    "resultado": "PASSA",
+    "quando": "2026-10-17T11:00",
+    "quem": "Fiel",
+    "fonte": "etapas/parecer-23-Cinzel.md:82",
+    "aproximada": true,
+    "janela": "entre 10:50 (e6e5faa) e 11:07 (correção do Cinzel, issues/23-kit-de-par-a-forma.md:41)",
+    "nota": "rodada curta da lição do caminho longo; pedido pequeno feito em a9643c6 (11:01)"
+   },
+   {
+    "rodada": 6,
+    "resultado": "VOLTA",
+    "quando": "2026-10-17T12:27",
+    "quem": "Fielzinho (conferido pelo Fiel)",
+    "fonte": "etapas/parecer-23-Cinzel.md:104; issues/23-kit-de-par-a-forma.md:43",
+    "nota": "achado da leitura tardia: se a mudança falha, o desfazer apagava o original; maestro mandou conserto curto, não ressalva",
+    "leitura_tardia": true
+   },
+   {
+    "rodada": 7,
+    "resultado": "VOLTA",
+    "quando": "2026-10-17T12:46",
+    "quem": "Fiel e Fielzinho em acordo",
+    "fonte": "etapas/parecer-23-Cinzel.md:136; issues/23-kit-de-par-a-forma.md:45",
+    "nota": "conserto 46897e0 incompleto (registro fora do try)"
+   },
+   {
+    "rodada": 8,
+    "resultado": "PASSA",
+    "quando": "2026-10-17T12:58",
+    "quem": "Fiel",
+    "fonte": "etapas/parecer-23-Cinzel.md:150; issues/23-kit-de-par-a-forma.md:46"
+   },
+   {
+    "rodada": 9,
+    "resultado": "PASSA",
+    "quando": "2026-10-17T15:46",
+    "quem": "Fiel + 2ª leitura Sonnet 5.5",
+    "fonte": "etapas/parecer-23-Cinzel.md:162; etapas/diario-da-construcao.md:172",
+    "nota": "rodada de junção; achado novo do Fiel: EPERM intermitente no rename do registro sob carga; maestro mandou conserto curto antes da junção"
+   },
+   {
+    "rodada": 10,
+    "resultado": "PASSA",
+    "quando": null,
+    "quem": "Fiel + 2ª leitura Sonnet 5.5, em acordo",
+    "fonte": "etapas/parecer-23-Cinzel.md:186; issues/23-kit-de-par-a-forma.md:50",
+    "janela": "entre 15:47 (ceda444) e 16:10 (merge 6bd7fb0)",
+    "nota": "conserto ceda444; comentário do Cinzel diz 17:15 e o parecer ~17h25, depois da junção 9f122c2 (16:16): horas erradas"
+   }
+  ],
+  "juncoes": [
+   {
+    "quando": "2026-10-17T16:44",
+    "hash": "9f122c2",
+    "resultado": "verde",
+    "suite": "355: 342 verdes, 13 pulados, 0 falhas",
+    "junto_com": [
+     "18",
+     "37"
+    ],
+    "fonte": "etapas/registro-de-juncoes.md:41",
+    "commit_em": "2026-10-17T16:16"
+   }
+  ],
+  "resolvido": {
+   "quando": "2026-10-17T16:44",
+   "fonte": "issues/23-kit-de-par-a-forma.md:52",
+   "nota": "diário 16:51 (etapas/diario-da-construcao.md:175)"
+  },
+  "entrega_curta": "Instalador do hub nos três assistentes, com cópia, simulação e desfazer.",
+  "momentos": [
+   {
+    "quando": "2026-10-17T07:53",
+    "evento": "Começa antes dos seis bloqueios; junção só com todos resolvidos",
+    "fonte": "issues/23-kit-de-par-a-forma.md:28"
+   },
+   {
+    "quando": "2026-10-17T10:37",
+    "evento": "Lição do 21: nome curto do Windows faz a vigia abortar; kit grava caminho longo",
+    "fonte": "issues/23-kit-de-par-a-forma.md:38"
+   },
+   {
+    "quando": "2026-10-17T12:27",
+    "evento": "Leitura tardia do Fielzinho: o desfazer podia perder o arquivo original no HOME",
+    "fonte": "issues/23-kit-de-par-a-forma.md:43"
+   },
+   {
+    "quando": "2026-10-17T15:46",
+    "evento": "EPERM intermitente no rename do registro sob carga; conserto repete por ~2 s",
+    "fonte": "etapas/diario-da-construcao.md:172"
+   },
+   {
+    "quando": "2026-10-17T16:16",
+    "evento": "Juntado com 18 e 37 numa suíte só (355 testes)",
+    "fonte": "etapas/diario-da-construcao.md:173"
+   }
+  ],
+  "lacunas": [
+   "horas das rodadas 1-3 e da última sem fonte exata (pareceres e comentários do Cinzel têm horas estimadas); usei janelas pelos commits"
+  ]
+ },
+ {
+  "id": "24",
+  "titulo": "Kit de par ao vivo nos três harnesses",
+  "etapa": "10 (kit de par)",
+  "status": "resolved",
+  "status_fonte": "issues/24-kit-de-par-ao-vivo.md:4",
+  "blocked_by": [
+   "23"
+  ],
+  "blocked_by_fonte": "issues/24-kit-de-par-ao-vivo.md:6",
+  "origem": "original",
+  "construtor": {
+   "nome": "Cinzel",
+   "fonte": "issues/24-kit-de-par-ao-vivo.md:22"
+  },
+  "inicio": {
+   "quando": "2026-10-17T08:43",
+   "fonte": "etapas/diario-da-construcao.md:93",
+   "nota": "'peguei' do Cinzel marcado 08:50 (issues/24-kit-de-par-ao-vivo.md:22); mandato do maestro 08:42 (issues/24-kit-de-par-ao-vivo.md:21)"
+  },
+  "revisao": [
+   {
+    "rodada": 1,
+    "resultado": "PASSA parcial",
+    "quando": null,
+    "quem": "Fiel",
+    "fonte": "etapas/parecer-24-Cinzel.md:5",
+    "janela": "entre 09:14 (evidência 7d3753b) e 09:22 (achado que reabriu o 23)",
+    "nota": "sem conserto próprio; Claude e Copilot provados; aceite final pendente do Codex; parecer diz ~11h (hora estimada)"
+   },
+   {
+    "rodada": 2,
+    "resultado": "PASSA",
+    "quando": "2026-10-17T18:34",
+    "quem": "Fiel + 2ª leitura Opus, em acordo",
+    "fonte": "etapas/parecer-24-Cinzel.md:30; etapas/diario-da-construcao.md:188",
+    "nota": "só o Codex (gpt-6-luna)"
+   }
+  ],
+  "juncoes": [
+   {
+    "quando": "2026-10-17T19:22",
+    "hash": "a4fa7e3",
+    "resultado": "verde",
+    "suite": "359: 345 verdes, 14 pulados, 0 falhas",
+    "junto_com": [
+     "22 (evidência do Codex)"
+    ],
+    "fonte": "etapas/registro-de-juncoes.md:43",
+    "commit_em": "2026-10-17T18:31"
+   }
+  ],
+  "resolvido": {
+   "quando": "2026-10-17T19:22",
+   "fonte": "issues/24-kit-de-par-ao-vivo.md:29",
+   "nota": "diário 19:21 (etapas/diario-da-construcao.md:192)"
+  },
+  "entrega_curta": "Prova de que Claude, Codex e Copilot leem o contrato instalado.",
+  "momentos": [
+   {
+    "quando": "2026-10-16T20:24",
+    "evento": "Aval do Gustavo para copiar o login dos três assistentes numa pasta de ensaio",
+    "fonte": "issues/24-kit-de-par-ao-vivo.md:17"
+   },
+   {
+    "quando": "2026-10-17T08:43",
+    "evento": "Achado: o Copilot só lê as instruções do servidor por opção de linha de comando",
+    "fonte": "etapas/diario-da-construcao.md:93"
+   },
+   {
+    "quando": "2026-10-17T09:15",
+    "evento": "Claude e Copilot respondem a palavra secreta do contrato de ensaio",
+    "fonte": "issues/24-kit-de-par-ao-vivo.md:25"
+   },
+   {
+    "quando": "2026-10-17T12:49",
+    "evento": "Codex sem cota até 17:15; a prova dele fica para a noite",
+    "fonte": "etapas/diario-da-construcao.md:149"
+   },
+   {
+    "quando": "2026-10-17T17:21",
+    "evento": "Codex (gpt-6-luna) passa na janela quieta da noite",
+    "fonte": "etapas/diario-da-construcao.md:179"
+   }
+  ],
+  "lacunas": [
+   "a rodada 1 do Fiel não tem hora exata nem veredito PASSA/VOLTA formal ('sem conserto; aceite pendente')"
+  ]
+ },
+ {
+  "id": "25",
+  "titulo": "Junção e prova do hub de ensaio inteiro",
+  "etapa": "11 (junção)",
+  "status": "resolved",
+  "status_fonte": "issues/25-juncao-e-prova-do-hub-de-ensaio.md:4",
+  "blocked_by": [
+   "13",
+   "21",
+   "22",
+   "24"
+  ],
+  "blocked_by_fonte": "issues/25-juncao-e-prova-do-hub-de-ensaio.md:6",
+  "origem": "original",
+  "construtor": {
+   "nome": "Vela",
+   "fonte": "issues/25-juncao-e-prova-do-hub-de-ensaio.md:22",
+   "ajuda": {
+    "nome": "Brasa",
+    "papel": "diagnóstico da descida A→B",
+    "fonte": "etapas/diario-da-construcao.md:189"
+   }
+  },
+  "inicio": {
+   "quando": "2026-10-17T08:35",
+   "fonte": "etapas/diario-da-construcao.md:91",
+   "nota": "mandato do maestro 08:33 (issues/25-juncao-e-prova-do-hub-de-ensaio.md:21); comentário da Vela 08:55 (issues/25-juncao-e-prova-do-hub-de-ensaio.md:22)"
+  },
+  "revisao": [
+   {
+    "rodada": 1,
+    "resultado": "VOLTA",
+    "quando": "2026-10-17T19:13",
+    "quem": "Fiel + 2ª leitura Opus, em acordo",
+    "fonte": "etapas/parecer-25-Vela.md:8; etapas/diario-da-construcao.md:191",
+    "nota": "revisão parcial; 2 consertos (fase 7 não rodava harness; evidência sobrescrita)"
+   },
+   {
+    "rodada": 2,
+    "resultado": "PASSA com ressalvas",
+    "quando": "2026-10-17T19:49",
+    "quem": "Fiel + 2ª leitura Opus, em acordo",
+    "fonte": "etapas/parecer-25-Vela.md:81; etapas/diario-da-construcao.md:194",
+    "nota": "Vela registra 19:52 (issues/25-juncao-e-prova-do-hub-de-ensaio.md:36)"
+   }
+  ],
+  "juncoes": [
+   {
+    "quando": "2026-10-17T20:18",
+    "hash": "ca62332",
+    "resultado": "verde",
+    "suite": "370: 355 verdes, 15 pulados, 0 falhas",
+    "junto_com": [],
+    "fonte": "etapas/registro-de-juncoes.md:44",
+    "commit_em": "2026-10-17T19:49"
+   }
+  ],
+  "resolvido": {
+   "quando": "2026-10-17T20:18",
+   "fonte": "issues/25-juncao-e-prova-do-hub-de-ensaio.md:37",
+   "nota": "diário 20:17: CONSTRUÇÃO FECHADA (etapas/diario-da-construcao.md:196)"
+  },
+  "entrega_curta": "Hub de ensaio inteiro provado de ponta a ponta, fase por fase.",
+  "momentos": [
+   {
+    "quando": "2026-10-17T10:03",
+    "evento": "1ª rodada real verde nas fases 1-3 (Claude e Copilot)",
+    "fonte": "etapas/diario-da-construcao.md:116"
+   },
+   {
+    "quando": "2026-10-17T13:15",
+    "evento": "Memória: 2ª tentativa caiu no corte (659 MB livres)",
+    "fonte": "etapas/diario-da-construcao.md:152"
+   },
+   {
+    "quando": "2026-10-17T18:01",
+    "evento": "Fase 7 travou 28 min (ponte presa no pipe dos serviços)",
+    "fonte": "etapas/diario-da-construcao.md:182"
+   },
+   {
+    "quando": "2026-10-17T18:50",
+    "evento": "Causa da nota que não descia achada: semente leva ~6,5 min",
+    "fonte": "etapas/diario-da-construcao.md:189"
+   },
+   {
+    "quando": "2026-10-17T19:46",
+    "evento": "Fecha sem o Codex nas fases 4-7 (decisão do maestro)",
+    "fonte": "issues/25-juncao-e-prova-do-hub-de-ensaio.md:35"
+   }
+  ],
+  "lacunas": []
+ },
+ {
+  "id": "26",
+  "titulo": "Instalação de verdade nos dois primeiros pares (com o Gustavo)",
+  "etapa": "depois da junção",
+  "status": "ready-for-human",
+  "status_fonte": "issues/26-instalacao-de-verdade-no-par-1.md:4",
+  "blocked_by": [
+   "25"
+  ],
+  "blocked_by_fonte": "issues/26-instalacao-de-verdade-no-par-1.md:6",
+  "origem": "original",
+  "construtor": null,
+  "inicio": null,
+  "revisao": [],
+  "juncoes": [],
+  "resolvido": null,
+  "entrega_curta": "Instalação de verdade nas duas máquinas, com o Gustavo; em aberto.",
+  "momentos": [
+   {
+    "quando": "2026-10-17T19:50",
+    "evento": "Aviso do 25: máquina nova leva minutos para receber o hub",
+    "fonte": "issues/26-instalacao-de-verdade-no-par-1.md:29"
+   },
+   {
+    "quando": "2026-10-17T20:12",
+    "evento": "Gustavo troca o escopo: instalar nas duas máquinas no mesmo ciclo",
+    "fonte": "etapas/diario-da-construcao.md:195"
+   }
+  ],
+  "lacunas": [
+   "ticket do Gustavo, aberto; sem construtor, revisão nem junção"
+  ]
+ },
+ {
+  "id": "27",
+  "titulo": "O verificador cuida das pastas: index.md, links par://, other/ e o fim da resposta",
+  "etapa": "1 (esqueleto)",
+  "status": "resolved",
+  "status_fonte": "issues/27-verificador-cuida-das-pastas.md:4",
+  "blocked_by": [
+   "05",
+   "06"
+  ],
+  "blocked_by_fonte": "issues/27-verificador-cuida-das-pastas.md:6",
+  "origem": {
+   "nasceu_de": "05",
+   "motivo": "quatro tarefas do verificador ficaram fora do 05 no fatiamento em tickets; decisão do Gustavo na rodada das perguntas do Trilho sobre o 05 (pergunta 1, A)",
+   "quando": "2026-10-16T19:42",
+   "quem": "Gustavo (decisão); maestro publicou",
+   "fonte": "issues/27-verificador-cuida-das-pastas.md:21; git 61888ed (criação do arquivo)",
+   "nota": "o comentário diz ~21h30, mas o arquivo já existia no commit de 19:42"
+  },
+  "construtor": {
+   "nome": "Vela",
+   "fonte": "issues/27-verificador-cuida-das-pastas.md:22"
+  },
+  "inicio": {
+   "quando": "2026-10-16T20:34",
+   "aproximada": true,
+   "fonte": "issues/27-verificador-cuida-das-pastas.md:22; git 802c2e6 (commit que traz o 'pego')",
+   "nota": "worktree de integracao 8b9beef (20:31) segundo o relatório; o 'pego' não tem hora"
+  },
+  "revisao": [
+   {
+    "rodada": 1,
+    "resultado": "VOLTA",
+    "quando": "2026-10-16T21:30",
+    "quem": "Fiel e Fielzinho em acordo",
+    "fonte": "etapas/parecer-Vela.md:5",
+    "aproximada": true,
+    "janela": "entre 21:25 (pedido, '~00h25 UTC') e 21:36 (conserto d87e556)",
+    "nota": "5 consertos, achados pelo Fielzinho; parecer datado 2026-10-17 (UTC)"
+   },
+   {
+    "rodada": 2,
+    "resultado": "PASSA",
+    "quando": "2026-10-16T21:45",
+    "quem": "Fiel e Fielzinho em acordo",
+    "fonte": "etapas/parecer-Vela.md:49; issues/27-verificador-cuida-das-pastas.md:30",
+    "aproximada": true,
+    "janela": "entre 21:41 (5df8972) e 21:49 (junção)"
+   }
+  ],
+  "juncoes": [
+   {
+    "quando": "2026-10-16T21:51",
+    "hash": "0a8e17f",
+    "resultado": "verde",
+    "suite": "106 verdes sem harness (testes de unidade e gerador; suíte inteira não rodada)",
+    "junto_com": [],
+    "fonte": "etapas/registro-de-juncoes.md:10",
+    "commit_em": "2026-10-16T21:49"
+   }
+  ],
+  "resolvido": {
+   "quando": "2026-10-16T21:51",
+   "fonte": "issues/27-verificador-cuida-das-pastas.md:31"
+  },
+  "entrega_curta": "Verificador cria índice de pasta, corrige links e cobra ao fim.",
+  "momentos": [
+   {
+    "quando": "2026-10-16T20:39",
+    "evento": "Gustavo decide: o fim da resposta devolve até três vezes, na quarta solta",
+    "fonte": "issues/27-verificador-cuida-das-pastas.md:24"
+   },
+   {
+    "quando": "2026-10-16T21:19",
+    "evento": "Prova real verde nos três assistentes (commit 8d8f1b9)",
+    "fonte": "issues/27-verificador-cuida-das-pastas.md:28; git 8d8f1b9"
+   },
+   {
+    "quando": "2026-10-17T00:01",
+    "evento": "Teste intermitente na junção do 20: montador sai 1 sem mensagem; vira o 30",
+    "fonte": "issues/27-verificador-cuida-das-pastas.md:32"
+   },
+   {
+    "quando": "2026-10-17T08:53",
+    "evento": "Conserto do núcleo do fim feito no ramo do 18: cobrava quem não gravou",
+    "fonte": "issues/27-verificador-cuida-das-pastas.md:34"
+   }
+  ],
+  "lacunas": [
+   "hora do 'pego' da Vela não escrita; usei o commit que o registra",
+   "comentários da Vela e pareceres desta noite usam data/hora UTC ('2026-10-17 ~00h25 UTC' = 21h25 local)"
+  ]
+ },
+ {
+  "id": "28",
+  "titulo": "Pastas locais: o script \"nova pasta local\", o \"tornar local\" e a exclusão do git",
+  "etapa": "2 (banco)",
+  "status": "resolved",
+  "status_fonte": "issues/28-pastas-locais-script-e-git.md:4",
+  "blocked_by": [
+   "06",
+   "07"
+  ],
+  "blocked_by_fonte": "issues/28-pastas-locais-script-e-git.md:6",
+  "origem": {
+   "nasceu_de": "06",
+   "motivo": "pastas locais depois do gerador de exclusões: decisão do Gustavo (as quatro, A); o relatório do 06 apontou o que dói ao ligar",
+   "quando": "2026-10-16T20:39",
+   "quem": "Gustavo (decisão); maestro publicou",
+   "fonte": "issues/28-pastas-locais-script-e-git.md:21; git 7a1992c (criação do arquivo)",
+   "nota": "o comentário diz ~21h; o arquivo nasceu às 20:39"
+  },
+  "construtor": {
+   "nome": "Vela",
+   "fonte": "issues/28-pastas-locais-script-e-git.md:25",
+   "nota": "reservado ao Trilho, passou à Vela"
+  },
+  "inicio": {
+   "quando": "2026-10-17T03:02",
+   "fonte": "issues/28-pastas-locais-script-e-git.md:26"
+  },
+  "revisao": [
+   {
+    "rodada": 1,
+    "resultado": "VOLTA",
+    "quando": null,
+    "quem": "Fiel e Fielzinho em acordo",
+    "fonte": "etapas/parecer-28-Vela.md:6; etapas/parecer-28-Vela.md:42",
+    "janela": "depois de 03:30 (pedido, issues/28-pastas-locais-script-e-git.md:29)",
+    "nota": "3 consertos"
+   },
+   {
+    "rodada": 2,
+    "resultado": "VOLTA",
+    "quando": "2026-10-17T04:20",
+    "quem": "Fiel",
+    "fonte": "etapas/parecer-28-Vela.md:51",
+    "aproximada": true,
+    "nota": "parecer diz ~04h30; o conserto da r2 (5436cad) é de 04:27; 1 conserto"
+   },
+   {
+    "rodada": 3,
+    "resultado": "PASSA com ressalvas",
+    "quando": "2026-10-17T05:08",
+    "quem": "Fiel",
+    "fonte": "etapas/parecer-28-Vela.md:80; issues/28-pastas-locais-script-e-git.md:30",
+    "nota": "teto de voltas; Docker 14 PASSA"
+   },
+   {
+    "rodada": 4,
+    "resultado": "PASSA",
+    "quando": null,
+    "quem": "Fielzinho",
+    "fonte": "etapas/parecer-28-Vela.md:101",
+    "nota": "leitura tardia das rodadas 2 e 3, sem achado novo",
+    "leitura_tardia": true
+   }
+  ],
+  "juncoes": [
+   {
+    "quando": "2026-10-17T06:12",
+    "hash": "ea6f353",
+    "resultado": "verde",
+    "suite": "202: 194 verdes, 8 pulados, 0 falhas",
+    "junto_com": [
+     "09"
+    ],
+    "fonte": "etapas/registro-de-juncoes.md:24",
+    "commit_em": "2026-10-17T05:09"
+   }
+  ],
+  "resolvido": {
+   "quando": "2026-10-17T06:12",
+   "fonte": "issues/28-pastas-locais-script-e-git.md:31",
+   "nota": "diário 06:15 (etapas/diario-da-construcao.md:56)"
+  },
+  "entrega_curta": "Pastas locais que não replicam, criadas por script e fora do git.",
+  "momentos": [
+   {
+    "quando": "2026-10-17T03:15",
+    "evento": "Troca de dono: a Vela pega o 28 enquanto o 09 espera o Gustavo",
+    "fonte": "issues/28-pastas-locais-script-e-git.md:25",
+    "aproximada": true
+   },
+   {
+    "quando": "2026-10-17T03:25",
+    "evento": "Aceito tirar do git a pasta tornada local (histórico guarda o antigo)",
+    "fonte": "issues/28-pastas-locais-script-e-git.md:28",
+    "aproximada": true
+   },
+   {
+    "quando": "2026-10-17T05:08",
+    "evento": "Passa na 3ª rodada, no teto de voltas",
+    "fonte": "issues/28-pastas-locais-script-e-git.md:30"
+   }
+  ],
+  "lacunas": [
+   "hora da rodada 1 do Fiel não escrita",
+   "comentários do maestro ~03h15/~03h25 caem na faixa de horas estimadas da madrugada"
+  ]
+ },
+ {
+  "id": "29",
+  "titulo": "Testes com harness de verdade só sob pedido",
+  "etapa": "infraestrutura de teste (fora da sequência)",
+  "status": "resolved",
+  "status_fonte": "issues/29-testes-com-harness-so-sob-pedido.md:4",
+  "blocked_by": [],
+  "blocked_by_fonte": "issues/29-testes-com-harness-so-sob-pedido.md:6",
+  "origem": {
+   "nasceu_de": "07",
+   "motivo": "achado da Brasa no 07: testes chamavam os assistentes de verdade, gastavam cota e falhavam quando outra sessão do Codex mexia na configuração real",
+   "quando": "2026-10-16T21:33",
+   "quem": "Brasa (achado); maestro publicou",
+   "fonte": "issues/29-testes-com-harness-so-sob-pedido.md:21; git c5408d7 (criação do arquivo)"
+  },
+  "construtor": {
+   "nome": "Brasa",
+   "fonte": "issues/29-testes-com-harness-so-sob-pedido.md:22",
+   "nota": "dono inicial era a Vela; passou à Brasa ~21h40"
+  },
+  "inicio": {
+   "quando": "2026-10-16T21:30",
+   "aproximada": true,
+   "fonte": "issues/29-testes-com-harness-so-sob-pedido.md:23",
+   "nota": "1º commit 654c329 às 21:43"
+  },
+  "revisao": [
+   {
+    "rodada": 1,
+    "resultado": "VOLTA",
+    "quando": null,
+    "quem": "Fiel e Fielzinho em acordo",
+    "fonte": "etapas/parecer-29-Brasa.md:5",
+    "janela": "entre 21:47 (0266761) e 21:56 (conserto 0da445e)",
+    "nota": "Brasa escreve ~22h20 (hora estimada)"
+   },
+   {
+    "rodada": 2,
+    "resultado": "PASSA",
+    "quando": null,
+    "quem": "Fiel",
+    "fonte": "etapas/parecer-29-Brasa.md:29",
+    "janela": "entre 21:56 (0da445e) e 22:00 (junção)",
+    "nota": "Fielzinho sem cota; Brasa escreve ~22h35"
+   }
+  ],
+  "juncoes": [
+   {
+    "quando": "2026-10-16T22:02",
+    "hash": "d5e4e16",
+    "resultado": "verde",
+    "suite": "116: 112 verdes, 4 pulados, 0 falhas",
+    "junto_com": [],
+    "fonte": "etapas/registro-de-juncoes.md:11",
+    "commit_em": "2026-10-16T22:00"
+   }
+  ],
+  "resolvido": {
+   "quando": "2026-10-16T22:02",
+   "fonte": "issues/29-testes-com-harness-so-sob-pedido.md:28"
+  },
+  "entrega_curta": "Testes com assistentes de verdade só rodam quando pedidos.",
+  "momentos": [
+   {
+    "quando": "2026-10-16T21:50",
+    "evento": "Com a variável, 11 de 11; sem ela, testes de assistente pulados",
+    "fonte": "issues/29-testes-com-harness-so-sob-pedido.md:24",
+    "aproximada": true
+   },
+   {
+    "quando": "2026-10-16T22:20",
+    "evento": "Rodada 1: o teste passa a achar sozinho quem chama assistente",
+    "fonte": "issues/29-testes-com-harness-so-sob-pedido.md:26",
+    "aproximada": true
+   },
+   {
+    "quando": "2026-10-16T22:02",
+    "evento": "Pastas de ensaio acumulando no TEMP, sem dono (vira o 36)",
+    "fonte": "issues/29-testes-com-harness-so-sob-pedido.md:28"
+   }
+  ],
+  "lacunas": [
+   "horas da Brasa nesta noite estão adiantadas em relação aos commits; rodadas datadas por janela"
+  ]
+ },
+ {
+  "id": "30",
+  "titulo": "O montador do hub de ensaio mostra a falha do git",
+  "etapa": "infraestrutura de teste (fora da sequência)",
+  "status": "resolved",
+  "status_fonte": "issues/30-montador-mostra-a-falha-do-git.md:4",
+  "blocked_by": [],
+  "blocked_by_fonte": "issues/30-montador-mostra-a-falha-do-git.md:6",
+  "origem": {
+   "nasceu_de": "20",
+   "motivo": "vermelho intermitente do 27-pastas na junção do 20 ('o montador saiu 1 sem stderr'); proposta da Vela",
+   "quando": "2026-10-17T00:03",
+   "quem": "Vela (proposta); Rebite viu a falha",
+   "fonte": "issues/30-montador-mostra-a-falha-do-git.md:20; git c7c37f4; issues/27-verificador-cuida-das-pastas.md:32"
+  },
+  "construtor": {
+   "nome": "Vela",
+   "fonte": "issues/30-montador-mostra-a-falha-do-git.md:22"
+  },
+  "inicio": {
+   "quando": null,
+   "janela": "entre 00:03 (publicação) e 00:06 (1º commit c52ccc1)",
+   "fonte": "issues/30-montador-mostra-a-falha-do-git.md:22",
+   "nota": "comentário de 'claimed' diz ~00h40, escrito depois"
+  },
+  "revisao": [
+   {
+    "rodada": 1,
+    "resultado": "PASSA",
+    "quando": "2026-10-17T00:40",
+    "quem": "Fiel",
+    "fonte": "etapas/parecer-30-Vela.md:5; issues/30-montador-mostra-a-falha-do-git.md:23"
+   }
+  ],
+  "juncoes": [
+   {
+    "quando": "2026-10-17T00:53",
+    "hash": "5d84d76",
+    "resultado": "verde",
+    "suite": "176: 168 verdes, 8 pulados, 0 falhas",
+    "junto_com": [],
+    "fonte": "etapas/registro-de-juncoes.md:17",
+    "commit_em": "2026-10-17T00:40",
+    "nota": "fecha também a conferência das junções do 15 e do 20"
+   }
+  ],
+  "resolvido": {
+   "quando": "2026-10-17T00:53",
+   "fonte": "issues/30-montador-mostra-a-falha-do-git.md:24"
+  },
+  "entrega_curta": "Montador de ensaio mostra qual comando git falhou e por quê.",
+  "momentos": [
+   {
+    "quando": "2026-10-17T00:15",
+    "evento": "Bomba de data: dois testes do 05 ficaram vermelhos à meia-noite",
+    "fonte": "issues/30-montador-mostra-a-falha-do-git.md:21",
+    "aproximada": true
+   },
+   {
+    "quando": "2026-10-17T00:35",
+    "evento": "Suíte de conferência interrompida por memória crítica",
+    "fonte": "etapas/registro-de-juncoes.md:16"
+   }
+  ],
+  "lacunas": []
+ },
+ {
+  "id": "31",
+  "titulo": "Acervo: registro dos avais, verificador escolhido pelo maestro e peça que sumiu",
+  "etapa": "8 (skills e acervo)",
+  "status": "resolved",
+  "status_fonte": "issues/31-acervo-registro-dos-avais-e-verificador.md:4",
+  "blocked_by": [
+   "20"
+  ],
+  "blocked_by_fonte": "issues/31-acervo-registro-dos-avais-e-verificador.md:6",
+  "origem": {
+   "nasceu_de": "20",
+   "motivo": "três lacunas de dono do acervo decididas pelo Gustavo depois de o 20 entrar (1 A, 2 B, 3 A)",
+   "quando": "2026-10-17T00:23",
+   "quem": "Gustavo (decisão); maestro publicou",
+   "fonte": "issues/31-acervo-registro-dos-avais-e-verificador.md:20; git d63f2f6"
+  },
+  "construtor": {
+   "nome": "Vela",
+   "fonte": "issues/31-acervo-registro-dos-avais-e-verificador.md:21"
+  },
+  "inicio": {
+   "quando": null,
+   "janela": "entre 00:23 (publicação) e 01:04 (1º commit 9cb5ac6)",
+   "fonte": "issues/31-acervo-registro-dos-avais-e-verificador.md:21"
+  },
+  "revisao": [
+   {
+    "rodada": 1,
+    "resultado": "VOLTA",
+    "quando": null,
+    "quem": "Fiel",
+    "fonte": "etapas/parecer-31-Vela.md:5",
+    "janela": "entre 01:14 (cc8c852) e 01:24 (conserto b710f2d)",
+    "nota": "1 conserto"
+   },
+   {
+    "rodada": 2,
+    "resultado": "PASSA",
+    "quando": "2026-10-17T01:28",
+    "quem": "Fiel",
+    "fonte": "etapas/parecer-31-Vela.md:32; issues/31-acervo-registro-dos-avais-e-verificador.md:22"
+   },
+   {
+    "rodada": 3,
+    "resultado": "PASSA com ressalvas",
+    "quando": "2026-10-17T02:20",
+    "quem": "Fiel e Fielzinho em acordo",
+    "fonte": "etapas/parecer-31-Vela.md:38; issues/31-acervo-registro-dos-avais-e-verificador.md:26",
+    "nota": "código novo depois do passa (conserto do CRLF); ressalva vira o 35"
+   }
+  ],
+  "juncoes": [
+   {
+    "quando": "2026-10-17T01:50",
+    "hash": "357a2ba",
+    "resultado": "verde, sem resolver",
+    "suite": "186: 178 verdes, 8 pulados, 0 falhas",
+    "junto_com": [
+     "32"
+    ],
+    "fonte": "etapas/registro-de-juncoes.md:18",
+    "commit_em": "2026-10-17T01:28",
+    "nota": "maestro segurou: esperava a ponta a ponta do Claude"
+   },
+   {
+    "quando": "2026-10-17T02:51",
+    "hash": "e82ce65",
+    "resultado": "verde",
+    "suite": "191: 183 verdes, 8 pulados, 0 falhas",
+    "junto_com": [
+     "prova real do Codex do 20"
+    ],
+    "fonte": "etapas/registro-de-juncoes.md:20",
+    "commit_em": "2026-10-17T02:21"
+   }
+  ],
+  "resolvido": {
+   "quando": "2026-10-17T02:51",
+   "fonte": "issues/31-acervo-registro-dos-avais-e-verificador.md:27"
+  },
+  "entrega_curta": "Acervo registra cada aval, exige verificador diferente e acusa peça sumida.",
+  "momentos": [
+   {
+    "quando": "2026-10-17T01:35",
+    "evento": "Maestro: só resolve com a prova real no Claude",
+    "fonte": "issues/31-acervo-registro-dos-avais-e-verificador.md:23"
+   },
+   {
+    "quando": "2026-10-17T02:12",
+    "evento": "Prova real acha buraco do fim de linha do Windows na guarda",
+    "fonte": "issues/31-acervo-registro-dos-avais-e-verificador.md:25"
+   },
+   {
+    "quando": "2026-10-17T02:55",
+    "evento": "Ressalva 'aval sem parecer não registrado' vira o ticket 35",
+    "fonte": "issues/31-acervo-registro-dos-avais-e-verificador.md:28"
+   }
+  ],
+  "lacunas": [
+   "hora da rodada 1 não escrita"
+  ]
+ },
+ {
+  "id": "32",
+  "titulo": "O verificador reescreve link para fora do hub",
+  "etapa": "1 (esqueleto), complemento do 27",
+  "status": "resolved",
+  "status_fonte": "issues/32-link-para-fora-do-hub.md:4",
+  "blocked_by": [
+   "27"
+  ],
+  "blocked_by_fonte": "issues/32-link-para-fora-do-hub.md:6",
+  "origem": {
+   "nasceu_de": "27",
+   "motivo": "ressalva do Fiel e do Fielzinho no 27 (link para fora do hub); Gustavo decidiu B pelo Maestri Chat",
+   "quando": "2026-10-17T00:31",
+   "quem": "Fiel e Fielzinho (ressalva); Gustavo (decisão)",
+   "fonte": "issues/32-link-para-fora-do-hub.md:20; git 2152d91"
+  },
+  "construtor": {
+   "nome": "Vela",
+   "fonte": "issues/32-link-para-fora-do-hub.md:21"
+  },
+  "inicio": {
+   "quando": null,
+   "janela": "entre 00:31 (publicação) e 01:18 (1º commit 94c42ac)",
+   "fonte": "issues/32-link-para-fora-do-hub.md:21"
+  },
+  "revisao": [
+   {
+    "rodada": 1,
+    "resultado": "VOLTA",
+    "quando": null,
+    "quem": "Fiel",
+    "fonte": "etapas/parecer-32-Vela.md:5",
+    "janela": "entre 01:18 (94c42ac) e 01:25 (conserto 6beaf15)",
+    "nota": "1 conserto"
+   },
+   {
+    "rodada": 2,
+    "resultado": "PASSA",
+    "quando": "2026-10-17T01:28",
+    "quem": "Fiel",
+    "fonte": "etapas/parecer-32-Vela.md:28; issues/32-link-para-fora-do-hub.md:22"
+   }
+  ],
+  "juncoes": [
+   {
+    "quando": "2026-10-17T01:50",
+    "hash": "57e85cf",
+    "resultado": "verde",
+    "suite": "186: 178 verdes, 8 pulados, 0 falhas",
+    "junto_com": [
+     "31"
+    ],
+    "fonte": "etapas/registro-de-juncoes.md:18",
+    "commit_em": "2026-10-17T01:28"
+   }
+  ],
+  "resolvido": {
+   "quando": "2026-10-17T01:50",
+   "fonte": "issues/32-link-para-fora-do-hub.md:23"
+  },
+  "entrega_curta": "Link para arquivo fora do hub vira endereço da máquina de origem.",
+  "momentos": [
+   {
+    "quando": "2026-10-17T00:24",
+    "evento": "Portal fechado por memória; decisões passam pelo Maestri Chat",
+    "fonte": "etapas/diario-da-construcao.md:9"
+   },
+   {
+    "quando": "2026-10-17T01:50",
+    "evento": "Sobras (imagem, espaço, rede) viram rodada nova e o 33",
+    "fonte": "etapas/diario-da-construcao.md:13",
+    "aproximada": true
+   }
+  ],
+  "lacunas": [
+   "hora da rodada 1 não escrita"
+  ]
+ },
+ {
+  "id": "33",
+  "titulo": "Link fora do hub: a imagem mantém o !; espaço cru e caminho de rede avisam",
+  "etapa": "conserto do 32 (fora da sequência)",
+  "status": "resolved",
+  "status_fonte": "issues/33-link-fora-imagem-espaco-e-unc.md:4",
+  "blocked_by": [
+   "32"
+  ],
+  "blocked_by_fonte": "issues/33-link-fora-imagem-espaco-e-unc.md:6",
+  "origem": {
+   "nasceu_de": "32",
+   "motivo": "três ressalvas do parecer do 32; Gustavo decidiu A pelo celular",
+   "quando": "2026-10-17T03:09",
+   "quem": "Fiel (ressalvas); Gustavo (decisão)",
+   "fonte": "issues/33-link-fora-imagem-espaco-e-unc.md:25; git 002c10f; etapas/diario-da-construcao.md:19",
+   "nota": "o comentário diz ~03h35 e o diário ~03h30, ambos na faixa de horas estimadas e adiantadas (~1h); usei o commit que criou o arquivo",
+   "hora_aproximada": true
+  },
+  "construtor": {
+   "nome": "Trilho",
+   "fonte": "issues/33-link-fora-imagem-espaco-e-unc.md:28",
+   "nota": "a opção dizia Vela, mas ela estava no 28"
+  },
+  "inicio": {
+   "quando": "2026-10-17T04:00",
+   "fonte": "etapas/diario-da-construcao.md:29",
+   "nota": "Trilho escreve ~04h00 (issues/33-link-fora-imagem-espaco-e-unc.md:28); 1º commit 4323d0c às 04:06"
+  },
+  "revisao": [
+   {
+    "rodada": 1,
+    "resultado": "PASSA com ressalvas",
+    "quando": "2026-10-17T04:25",
+    "quem": "Fiel",
+    "fonte": "etapas/parecer-33-Trilho.md:6; etapas/diario-da-construcao.md:34",
+    "nota": "Trilho escreve ~04h40 (issues/33-link-fora-imagem-espaco-e-unc.md:30)"
+   }
+  ],
+  "juncoes": [
+   {
+    "quando": "2026-10-17T04:53",
+    "hash": "33b817a",
+    "resultado": "verde",
+    "suite": "199: 191 verdes, 8 pulados, 0 falhas",
+    "junto_com": [
+     "35"
+    ],
+    "fonte": "etapas/registro-de-juncoes.md:23",
+    "commit_em": "2026-10-17T04:22"
+   }
+  ],
+  "resolvido": {
+   "quando": "2026-10-17T04:53",
+   "fonte": "issues/33-link-fora-imagem-espaco-e-unc.md:31",
+   "nota": "diário 04:54 (etapas/diario-da-construcao.md:42)"
+  },
+  "entrega_curta": "Imagem fora do hub segue imagem; espaço cru e rede geram aviso.",
+  "momentos": [
+   {
+    "quando": "2026-10-17T04:15",
+    "evento": "Feito em ~15 min; regra nova: suíte inteira só na junção",
+    "fonte": "etapas/diario-da-construcao.md:31"
+   }
+  ],
+  "lacunas": []
+ },
+ {
+  "id": "34",
+  "titulo": "Roteamento: uma linha de registro por skill e caminho com barra do Windows",
+  "etapa": "conserto do 19 (fora da sequência)",
+  "status": "resolved",
+  "status_fonte": "issues/34-roteamento-registro-por-skill-e-barras.md:4",
+  "blocked_by": [
+   "19"
+  ],
+  "blocked_by_fonte": "issues/34-roteamento-registro-por-skill-e-barras.md:6",
+  "origem": {
+   "nasceu_de": "19",
+   "motivo": "leitura tardia do Fielzinho no 19, aceita pelo Fiel: registro cego às skills não usadas e barra do Windows",
+   "quando": "2026-10-17T02:18",
+   "quem": "Fielzinho (achado); Fiel e Vela propuseram",
+   "fonte": "issues/34-roteamento-registro-por-skill-e-barras.md:27; git 6039570; etapas/diario-da-construcao.md:16"
+  },
+  "construtor": {
+   "nome": "Vela",
+   "fonte": "issues/34-roteamento-registro-por-skill-e-barras.md:29"
+  },
+  "inicio": {
+   "quando": "2026-10-17T02:24",
+   "fonte": "issues/34-roteamento-registro-por-skill-e-barras.md:29"
+  },
+  "revisao": [
+   {
+    "rodada": 1,
+    "resultado": "PASSA",
+    "quando": "2026-10-17T02:44",
+    "quem": "Fiel e Fielzinho em acordo",
+    "fonte": "etapas/parecer-34-Vela.md:5; issues/34-roteamento-registro-por-skill-e-barras.md:32"
+   }
+  ],
+  "juncoes": [
+   {
+    "quando": "2026-10-17T03:00",
+    "hash": "763813a",
+    "resultado": "verde",
+    "suite": "194: 186 verdes, 8 pulados, 0 falhas",
+    "junto_com": [
+     "07"
+    ],
+    "fonte": "etapas/registro-de-juncoes.md:21",
+    "commit_em": "2026-10-17T02:51"
+   }
+  ],
+  "resolvido": {
+   "quando": "2026-10-17T03:00",
+   "fonte": "issues/34-roteamento-registro-por-skill-e-barras.md:33"
+  },
+  "entrega_curta": "Registro de skills uma linha por skill; barra do Windows reconhecida.",
+  "momentos": [
+   {
+    "quando": "2026-10-17T02:32",
+    "evento": "Dois consertos em 8 minutos (barras e uma linha por skill)",
+    "fonte": "issues/34-roteamento-registro-por-skill-e-barras.md:30"
+   }
+  ],
+  "lacunas": []
+ },
+ {
+  "id": "35",
+  "titulo": "Todo aval aprovado é registrado, também sem parecer",
+  "etapa": "conserto do 31 (fora da sequência)",
+  "status": "resolved",
+  "status_fonte": "issues/35-aval-sem-parecer-tambem-registrado.md:4",
+  "blocked_by": [
+   "31"
+  ],
+  "blocked_by_fonte": "issues/35-aval-sem-parecer-tambem-registrado.md:6",
+  "origem": {
+   "nasceu_de": "31",
+   "motivo": "ressalva da rodada 3 do 31 (Fielzinho, aceita pelo Fiel): aval aprovado sem parecer não deixava registro",
+   "quando": "2026-10-17T02:24",
+   "quem": "Fielzinho (achado); maestro publicou",
+   "fonte": "issues/35-aval-sem-parecer-tambem-registrado.md:26; git 537ffe3; issues/31-acervo-registro-dos-avais-e-verificador.md:28"
+  },
+  "construtor": {
+   "nome": "Trilho",
+   "fonte": "issues/35-aval-sem-parecer-tambem-registrado.md:28"
+  },
+  "inicio": {
+   "quando": "2026-10-17T02:25",
+   "aproximada": true,
+   "fonte": "git 140417a (1º commit); issues/35-aval-sem-parecer-tambem-registrado.md:28",
+   "nota": "o 'pego' diz ~02h30"
+  },
+  "revisao": [
+   {
+    "rodada": 1,
+    "resultado": "PASSA",
+    "quando": "2026-10-17T04:25",
+    "quem": "Fiel",
+    "fonte": "etapas/parecer-35-Trilho.md:6; etapas/diario-da-construcao.md:34",
+    "nota": "Trilho escreve ~04h40 (issues/35-aval-sem-parecer-tambem-registrado.md:30)"
+   },
+   {
+    "rodada": 2,
+    "resultado": "PASSA",
+    "quando": null,
+    "quem": "Fielzinho",
+    "fonte": "etapas/parecer-35-Trilho.md:25",
+    "nota": "leitura tardia, sem achado novo",
+    "leitura_tardia": true
+   }
+  ],
+  "juncoes": [
+   {
+    "quando": "2026-10-17T04:53",
+    "hash": "ef38e4d",
+    "resultado": "verde",
+    "suite": "199: 191 verdes, 8 pulados, 0 falhas",
+    "junto_com": [
+     "33"
+    ],
+    "fonte": "etapas/registro-de-juncoes.md:23",
+    "commit_em": "2026-10-17T04:22"
+   }
+  ],
+  "resolvido": {
+   "quando": "2026-10-17T04:53",
+   "fonte": "issues/35-aval-sem-parecer-tambem-registrado.md:31",
+   "nota": "diário 04:54 (etapas/diario-da-construcao.md:42)"
+  },
+  "entrega_curta": "Todo aval aprovado fica registrado, mesmo sem parecer do verificador.",
+  "momentos": [
+   {
+    "quando": "2026-10-17T02:35",
+    "evento": "Código pronto em ~10 min; depois espera a fila da trava pesada",
+    "fonte": "issues/35-aval-sem-parecer-tambem-registrado.md:29",
+    "aproximada": true
+   },
+   {
+    "quando": "2026-10-17T03:47",
+    "evento": "Trilho ainda espera a trava para a suíte do 35",
+    "fonte": "etapas/diario-da-construcao.md:27"
+   },
+   {
+    "quando": "2026-10-17T04:15",
+    "evento": "Regra nova: suíte inteira só na junção; revisão pedida já",
+    "fonte": "etapas/diario-da-construcao.md:31"
+   }
+  ],
+  "lacunas": []
+ },
+ {
+  "id": "36",
+  "titulo": "Os testes apagam a pasta de ensaio, também quando falham",
+  "etapa": "infraestrutura de teste (fora da sequência)",
+  "status": "resolved",
+  "status_fonte": "issues/36-testes-apagam-a-pasta-de-ensaio.md:4",
+  "blocked_by": [],
+  "blocked_by_fonte": "issues/36-testes-apagam-a-pasta-de-ensaio.md:6",
+  "origem": {
+   "nasceu_de": null,
+   "motivo": "aviso do Fiel: 1.325 pastas de ensaio esquecidas no TEMP, contra a regra da construção",
+   "quando": "2026-10-17T05:20",
+   "quem": "Fiel (achado); maestro publicou",
+   "fonte": "issues/36-testes-apagam-a-pasta-de-ensaio.md:26; git 00c4348; etapas/diario-da-construcao.md:48"
+  },
+  "construtor": {
+   "nome": "Vela",
+   "fonte": "issues/36-testes-apagam-a-pasta-de-ensaio.md:28"
+  },
+  "inicio": {
+   "quando": "2026-10-17T05:25",
+   "fonte": "etapas/diario-da-construcao.md:50",
+   "nota": "'claimed' escrito ~05h50 (issues/36-testes-apagam-a-pasta-de-ensaio.md:31); 1º commit 90f6463 às 05:40"
+  },
+  "revisao": [
+   {
+    "rodada": 1,
+    "resultado": "VOLTA",
+    "quando": null,
+    "quem": "Fiel",
+    "fonte": "etapas/parecer-36-Vela.md:6",
+    "janela": "entre 06:05 (b8e8b03) e 06:27 (conserto 5b90550)",
+    "nota": "1 conserto: limpeza no meio por exceção solta"
+   },
+   {
+    "rodada": 2,
+    "resultado": "PASSA",
+    "quando": "2026-10-17T06:28",
+    "quem": "Fiel",
+    "fonte": "etapas/parecer-36-Vela.md:38; issues/36-testes-apagam-a-pasta-de-ensaio.md:32"
+   }
+  ],
+  "juncoes": [
+   {
+    "quando": "2026-10-17T07:00",
+    "hash": "85efe3b",
+    "resultado": "verde",
+    "suite": "210: 202 verdes, 8 pulados, 0 falhas",
+    "junto_com": [
+     "10"
+    ],
+    "fonte": "etapas/registro-de-juncoes.md:27",
+    "commit_em": "2026-10-17T06:28"
+   }
+  ],
+  "resolvido": {
+   "quando": "2026-10-17T07:00",
+   "fonte": "issues/36-testes-apagam-a-pasta-de-ensaio.md:33",
+   "nota": "diário 07:01 (etapas/diario-da-construcao.md:66)"
+  },
+  "entrega_curta": "Testes apagam sua pasta temporária de ensaio, mesmo quando falham.",
+  "momentos": [
+   {
+    "quando": "2026-10-17T05:17",
+    "evento": "Fiel acha 1.325 pastas de ensaio esquecidas no TEMP",
+    "fonte": "etapas/diario-da-construcao.md:48"
+   },
+   {
+    "quando": "2026-10-17T05:23",
+    "evento": "Limpeza em massa recusada pela permissão automática; fica para o Gustavo",
+    "fonte": "etapas/diario-da-construcao.md:49"
+   },
+   {
+    "quando": "2026-10-17T05:39",
+    "evento": "Medida: só 87 das pastas nasceram depois do ajudante",
+    "fonte": "issues/36-testes-apagam-a-pasta-de-ensaio.md:30"
+   }
+  ],
+  "lacunas": [
+   "hora da rodada 1 não escrita"
+  ]
+ },
+ {
+  "id": "37",
+  "titulo": "O fim da resposta vê a gravação feita pelo shell",
+  "etapa": "conserto do 18 (fora da sequência)",
+  "status": "resolved",
+  "status_fonte": "issues/37-fim-da-resposta-ve-gravacao-por-shell.md:4",
+  "blocked_by": [
+   "18"
+  ],
+  "blocked_by_fonte": "issues/37-fim-da-resposta-ve-gravacao-por-shell.md:6",
+  "origem": {
+   "nasceu_de": "18",
+   "motivo": "ressalva 1 da rodada 2 do Fiel no 18: gravação pelo terminal escapava da cobrança; proposta da Vela",
+   "quando": "2026-10-17T09:05",
+   "quem": "Fiel (ressalva); Vela (proposta); maestro (mandato)",
+   "fonte": "issues/37-fim-da-resposta-ve-gravacao-por-shell.md:24; etapas/diario-da-construcao.md:99; git df72608"
+  },
+  "construtor": {
+   "nome": "Cinzel",
+   "fonte": "issues/37-fim-da-resposta-ve-gravacao-por-shell.md:26"
+  },
+  "inicio": {
+   "quando": "2026-10-17T09:24",
+   "fonte": "etapas/diario-da-construcao.md:103",
+   "nota": "'peguei' 09:25 (issues/37-fim-da-resposta-ve-gravacao-por-shell.md:26)"
+  },
+  "revisao": [
+   {
+    "rodada": 1,
+    "resultado": "VOLTA",
+    "quando": null,
+    "quem": "Fiel",
+    "fonte": "etapas/parecer-37-Cinzel.md:7",
+    "janela": "entre 10:25 (pedido, issues/37-fim-da-resposta-ve-gravacao-por-shell.md:33) e 10:45 (conserto 4b695d5)",
+    "nota": "1 conserto: nota de fora virava falta"
+   },
+   {
+    "rodada": 2,
+    "resultado": "PASSA com ressalvas",
+    "quando": "2026-10-17T10:56",
+    "quem": "Fiel",
+    "fonte": "etapas/parecer-37-Cinzel.md:48; etapas/diario-da-construcao.md:130",
+    "nota": "1 ressalva, feita no próprio ramo"
+   },
+   {
+    "rodada": 3,
+    "resultado": "PASSA",
+    "quando": null,
+    "quem": "Fiel",
+    "fonte": "etapas/parecer-37-Cinzel.md:62",
+    "janela": "entre 10:58 (f8e12e3) e 11:07 (correção do Cinzel, issues/37-fim-da-resposta-ve-gravacao-por-shell.md:40)",
+    "nota": "rodada curta"
+   },
+   {
+    "rodada": 4,
+    "resultado": "PASSA",
+    "quando": null,
+    "quem": "Fielzinho",
+    "fonte": "etapas/parecer-37-Cinzel.md:71",
+    "nota": "leitura tardia, sem achado novo",
+    "leitura_tardia": true
+   }
+  ],
+  "juncoes": [
+   {
+    "quando": "2026-10-17T16:44",
+    "hash": "ebfbe6c",
+    "resultado": "verde",
+    "suite": "355: 342 verdes, 13 pulados, 0 falhas",
+    "junto_com": [
+     "18",
+     "23"
+    ],
+    "fonte": "etapas/registro-de-juncoes.md:41",
+    "commit_em": "2026-10-17T16:16"
+   }
+  ],
+  "resolvido": {
+   "quando": "2026-10-17T16:44",
+   "fonte": "issues/37-fim-da-resposta-ve-gravacao-por-shell.md:42",
+   "nota": "diário 16:51 (etapas/diario-da-construcao.md:175)"
+  },
+  "entrega_curta": "Fim da resposta avisa arquivo gravado pelo terminal durante o turno.",
+  "momentos": [
+   {
+    "quando": "2026-10-17T09:26",
+    "evento": "Costuras aceitas: só varre quando a sessão usou o terminal",
+    "fonte": "issues/37-fim-da-resposta-ve-gravacao-por-shell.md:31"
+   },
+   {
+    "quando": "2026-10-17T15:41",
+    "evento": "Junção direta dava conflito; entrou pela ponta do 18 (merge 7c54148)",
+    "fonte": "issues/37-fim-da-resposta-ve-gravacao-por-shell.md:41; git 7c54148"
+   },
+   {
+    "quando": "2026-10-17T16:16",
+    "evento": "Pronto às ~11h, esperou o 18 para juntar",
+    "fonte": "etapas/diario-da-construcao.md:173"
+   }
+  ],
+  "lacunas": [
+   "comentários do Cinzel de ~11h05 a ~11h50 e de 16:40 têm hora errada (correção dele e git)"
+  ]
+ },
+ {
+  "id": "38",
+  "titulo": "O ajudante da pasta de ensaio nos testes que ficaram de fora do 36",
+  "etapa": "infraestrutura de teste (fora da sequência)",
+  "status": "resolved",
+  "status_fonte": "issues/38-ajudante-de-pasta-nos-testes-que-faltaram.md:4",
+  "blocked_by": [
+   "36"
+  ],
+  "blocked_by_fonte": "issues/38-ajudante-de-pasta-nos-testes-que-faltaram.md:6",
+  "origem": {
+   "nasceu_de": "36",
+   "motivo": "pendência do 36: testes dos ramos abertos e os pesados ficaram sem o ajudante comum",
+   "quando": "2026-10-17T11:21",
+   "quem": "maestro",
+   "fonte": "issues/38-ajudante-de-pasta-nos-testes-que-faltaram.md:24; etapas/diario-da-construcao.md:133; git 0aa8292"
+  },
+  "construtor": {
+   "nome": "Trilho",
+   "fonte": "issues/38-ajudante-de-pasta-nos-testes-que-faltaram.md:24"
+  },
+  "inicio": {
+   "quando": null,
+   "janela": "entre 11:21 (publicação) e 11:34 (commit e316032)",
+   "fonte": "issues/38-ajudante-de-pasta-nos-testes-que-faltaram.md:25",
+   "nota": "diário 11:32: leves verdes (etapas/diario-da-construcao.md:135)"
+  },
+  "revisao": [
+   {
+    "rodada": 1,
+    "resultado": "VOLTA",
+    "quando": null,
+    "quem": "Fiel e Fielzinho em acordo",
+    "fonte": "etapas/parecer-38-Trilho.md:6",
+    "janela": "entre 11:58 (pedido, issues/38-ajudante-de-pasta-nos-testes-que-faltaram.md:28) e 12:32 (conserto b854a7e)",
+    "nota": "1 conserto achado pelo Fielzinho"
+   },
+   {
+    "rodada": 2,
+    "resultado": "PASSA",
+    "quando": null,
+    "quem": "Fiel",
+    "fonte": "etapas/parecer-38-Trilho.md:49",
+    "janela": "entre 12:32 (b854a7e) e 12:53 (merge 462e35d)",
+    "nota": "parecer diz ~13h10 (estimada)"
+   },
+   {
+    "rodada": 3,
+    "resultado": "PASSA",
+    "quando": null,
+    "quem": "Fielzinho",
+    "fonte": "etapas/parecer-38-Trilho.md:58",
+    "nota": "leitura tardia da rodada 2",
+    "leitura_tardia": true
+   }
+  ],
+  "juncoes": [
+   {
+    "quando": "2026-10-17T14:06",
+    "hash": "462e35d",
+    "resultado": "verde",
+    "suite": "285: 275 verdes, 10 pulados, 0 falhas",
+    "junto_com": [
+     "39",
+     "22 (manutenção)"
+    ],
+    "fonte": "etapas/registro-de-juncoes.md:36",
+    "commit_em": "2026-10-17T12:53"
+   }
+  ],
+  "resolvido": {
+   "quando": "2026-10-17T14:06",
+   "fonte": "issues/38-ajudante-de-pasta-nos-testes-que-faltaram.md:29",
+   "nota": "diário 14:07 (etapas/diario-da-construcao.md:157)"
+  },
+  "entrega_curta": "Limpeza da pasta de ensaio estendida aos testes que faltavam.",
+  "momentos": [
+   {
+    "quando": "2026-10-17T11:41",
+    "evento": "Também troca o modelo do Codex dos testes para gpt-6.1-sol",
+    "fonte": "issues/38-ajudante-de-pasta-nos-testes-que-faltaram.md:27"
+   },
+   {
+    "quando": "2026-10-17T13:45",
+    "evento": "Suíte da junção com o Docker Desktop parado, na janela quieta 2",
+    "fonte": "etapas/diario-da-construcao.md:155"
+   }
+  ],
+  "lacunas": []
+ },
+ {
+  "id": "39",
+  "titulo": "A vigia grava a mensagem limpa no estado",
+  "etapa": "conserto do 16 (fora da sequência)",
+  "status": "resolved",
+  "status_fonte": "issues/39-vigia-grava-mensagem-limpa.md:4",
+  "blocked_by": [
+   "16"
+  ],
+  "blocked_by_fonte": "issues/39-vigia-grava-mensagem-limpa.md:6",
+  "origem": {
+   "nasceu_de": "17",
+   "motivo": "achado da Vela no 17: o estado da vigia levava códigos de cor e caminho do TEMP (conserto no código do 16)",
+   "quando": "2026-10-17T11:45",
+   "quem": "Vela (achado); maestro publicou",
+   "fonte": "issues/39-vigia-grava-mensagem-limpa.md:23; etapas/diario-da-construcao.md:139; git 7b02c9c"
+  },
+  "construtor": {
+   "nome": "Trilho",
+   "fonte": "issues/39-vigia-grava-mensagem-limpa.md:23"
+  },
+  "inicio": {
+   "quando": null,
+   "janela": "entre 11:54 (publicação) e 12:19 (commit 4309277)",
+   "fonte": "issues/39-vigia-grava-mensagem-limpa.md:24"
+  },
+  "revisao": [
+   {
+    "rodada": 1,
+    "resultado": "PASSA com ressalvas",
+    "quando": null,
+    "quem": "Fiel",
+    "fonte": "etapas/parecer-39-Trilho.md:5",
+    "janela": "entre 12:19 (4309277) e 12:53 (merge 2d5c528)",
+    "nota": "parecer diz ~13h20 (estimada); 1 ressalva"
+   }
+  ],
+  "juncoes": [
+   {
+    "quando": "2026-10-17T14:06",
+    "hash": "2d5c528",
+    "resultado": "verde",
+    "suite": "285: 275 verdes, 10 pulados, 0 falhas",
+    "junto_com": [
+     "38",
+     "22 (manutenção)"
+    ],
+    "fonte": "etapas/registro-de-juncoes.md:36",
+    "commit_em": "2026-10-17T12:53"
+   }
+  ],
+  "resolvido": {
+   "quando": "2026-10-17T14:06",
+   "fonte": "issues/39-vigia-grava-mensagem-limpa.md:25"
+  },
+  "entrega_curta": "Vigia grava mensagens de erro limpas, sem cores nem caminho temporário.",
+  "momentos": [
+   {
+    "quando": "2026-10-17T12:30",
+    "evento": "Teste do 17 invertido: afirmava a cor, agora nega",
+    "fonte": "issues/39-vigia-grava-mensagem-limpa.md:24",
+    "aproximada": true
+   }
+  ],
+  "lacunas": []
+ },
+ {
+  "id": "40",
+  "titulo": "A regra de roteamento das skills no AGENTS.md (para o Copilot)",
+  "etapa": "conserto do 19 (fora da sequência)",
+  "status": "resolved",
+  "status_fonte": "issues/40-regra-de-roteamento-no-agents-md.md:4",
+  "blocked_by": [
+   "19"
+  ],
+  "blocked_by_fonte": "issues/40-regra-de-roteamento-no-agents-md.md:6",
+  "origem": {
+   "nasceu_de": "19",
+   "motivo": "divergência achada pelo Lume ao documentar: a regra de roteamento do 19 não entrou no contrato, e no Copilot nada indicava a skill",
+   "quando": "2026-10-17T12:25",
+   "quem": "Lume (achado); maestro publicou",
+   "fonte": "issues/40-regra-de-roteamento-no-agents-md.md:23; etapas/diario-da-construcao.md:145; git 020004a"
+  },
+  "construtor": {
+   "nome": "Vela",
+   "fonte": "issues/40-regra-de-roteamento-no-agents-md.md:24"
+  },
+  "inicio": {
+   "quando": null,
+   "janela": "entre 12:31 (publicação) e 12:41 (commit db6b52c)",
+   "fonte": "issues/40-regra-de-roteamento-no-agents-md.md:24"
+  },
+  "revisao": [
+   {
+    "rodada": 1,
+    "resultado": "PASSA com ressalvas",
+    "quando": null,
+    "quem": "Fiel",
+    "fonte": "etapas/parecer-40-Vela.md:5",
+    "janela": "entre 12:41 (db6b52c) e 13:12 (e581b96, ressalva 1)",
+    "nota": "parecer diz ~13h55 (estimada)"
+   },
+   {
+    "rodada": 2,
+    "resultado": "PASSA",
+    "quando": "2026-10-17T14:31",
+    "quem": "Fiel e Fielzinho em acordo",
+    "fonte": "etapas/parecer-40-Vela.md:24; issues/40-regra-de-roteamento-no-agents-md.md:25",
+    "nota": "rodada curta"
+   }
+  ],
+  "juncoes": [
+   {
+    "quando": "2026-10-17T15:22",
+    "hash": "7caed05",
+    "resultado": "1 falha alheia, mantida",
+    "suite": "289: 278 verdes, 10 pulados, 1 falha (27-pastas, pelo conteúdo de uma página da documentação)",
+    "junto_com": [
+     "41",
+     "43",
+     "documentação (3 junções)"
+    ],
+    "fonte": "etapas/registro-de-juncoes.md:38",
+    "commit_em": "2026-10-17T14:47",
+    "nota": "maestro decidiu resolver; a causa virou o 44"
+   }
+  ],
+  "resolvido": {
+   "quando": "2026-10-17T15:22",
+   "fonte": "issues/40-regra-de-roteamento-no-agents-md.md:26",
+   "nota": "diário 15:23 (etapas/diario-da-construcao.md:169)"
+  },
+  "entrega_curta": "Regra de qual skill usar entra no contrato, para o Copilot.",
+  "momentos": [
+   {
+    "quando": "2026-10-17T12:41",
+    "evento": "Cabeça do contrato cai a 1.691 de 2.000 caracteres",
+    "fonte": "issues/40-regra-de-roteamento-no-agents-md.md:24"
+   }
+  ],
+  "lacunas": []
+ },
+ {
+  "id": "41",
+  "titulo": "A busca não indexa agents/code/ (código e documentação técnica)",
+  "etapa": "conserto do 12 (fora da sequência)",
+  "status": "resolved",
+  "status_fonte": "issues/41-busca-nao-indexa-agents-code.md:4",
+  "blocked_by": [
+   "12"
+  ],
+  "blocked_by_fonte": "issues/41-busca-nao-indexa-agents-code.md:6",
+  "origem": {
+   "nasceu_de": "12",
+   "motivo": "1ª junção da documentação desfeita: com as 14 páginas, a indexação da busca passou do prazo de 3 min",
+   "quando": "2026-10-17T12:46",
+   "quem": "Rebite (achado); maestro (mandato)",
+   "fonte": "issues/41-busca-nao-indexa-agents-code.md:25; etapas/registro-de-juncoes.md:35; etapas/diario-da-construcao.md:148; git b1a500a"
+  },
+  "construtor": {
+   "nome": "Trilho",
+   "fonte": "issues/41-busca-nao-indexa-agents-code.md:25"
+  },
+  "inicio": {
+   "quando": null,
+   "janela": "entre 12:46 (publicação) e 12:50 (commit ae102ed)",
+   "fonte": "issues/41-busca-nao-indexa-agents-code.md:26"
+  },
+  "revisao": [
+   {
+    "rodada": 1,
+    "resultado": "VOLTA",
+    "quando": null,
+    "quem": "Fiel",
+    "fonte": "etapas/parecer-41-Trilho.md:5; etapas/diario-da-construcao.md:161",
+    "janela": "entre 14:12 (8497eb7) e 14:25 (conserto 6a728a4)",
+    "nota": "1 linha (SKILL.md da busca)"
+   },
+   {
+    "rodada": 2,
+    "resultado": "PASSA",
+    "quando": "2026-10-17T14:28",
+    "quem": "Fiel e Fielzinho em acordo",
+    "fonte": "etapas/parecer-41-Trilho.md:31; etapas/diario-da-construcao.md:162"
+   }
+  ],
+  "juncoes": [
+   {
+    "quando": "2026-10-17T15:22",
+    "hash": "e8dde26",
+    "resultado": "1 falha alheia, mantida",
+    "suite": "289: 278 verdes, 10 pulados, 1 falha (27-pastas, pelo conteúdo de uma página da documentação)",
+    "junto_com": [
+     "40",
+     "43",
+     "documentação (3 junções)"
+    ],
+    "fonte": "etapas/registro-de-juncoes.md:38",
+    "commit_em": "2026-10-17T14:47",
+    "nota": "maestro decidiu resolver; a causa virou o 44"
+   }
+  ],
+  "resolvido": {
+   "quando": "2026-10-17T15:22",
+   "fonte": "issues/41-busca-nao-indexa-agents-code.md:29",
+   "nota": "diário 15:23 (etapas/diario-da-construcao.md:169)"
+  },
+  "entrega_curta": "Busca deixa de indexar o código e a documentação técnica.",
+  "momentos": [
+   {
+    "quando": "2026-10-17T12:37",
+    "evento": "Junção da documentação desfeita: busca não ficou pronta em 3 min",
+    "fonte": "etapas/registro-de-juncoes.md:35"
+   },
+   {
+    "quando": "2026-10-17T15:22",
+    "evento": "Com o conserto, busca pronta em 21,8 s (indexação 16 s)",
+    "fonte": "issues/41-busca-nao-indexa-agents-code.md:29"
+   }
+  ],
+  "lacunas": []
+ },
+ {
+  "id": "42",
+  "titulo": "O mod do fim da resposta no Claude Code reconhece o hub aberto pelo atalho",
+  "etapa": "conserto do 27 (fora da sequência)",
+  "status": "resolved",
+  "status_fonte": "issues/42-mod-do-claude-pelo-atalho.md:4",
+  "blocked_by": [
+   "27"
+  ],
+  "blocked_by_fonte": "issues/42-mod-do-claude-pelo-atalho.md:6",
+  "origem": {
+   "nasceu_de": "27",
+   "motivo": "divergência do Lume: o mod do Claude não reconhecia o hub aberto pelo atalho, então não cobrava nada",
+   "quando": "2026-10-17T12:55",
+   "quem": "Lume (achado); maestro (mandato)",
+   "fonte": "issues/42-mod-do-claude-pelo-atalho.md:24; etapas/diario-da-construcao.md:150; git fc344f3"
+  },
+  "construtor": {
+   "nome": "Brasa",
+   "fonte": "issues/42-mod-do-claude-pelo-atalho.md:24"
+  },
+  "inicio": {
+   "quando": null,
+   "janela": "entre 12:55 (publicação) e 12:58 (commit 363e733)",
+   "fonte": "issues/42-mod-do-claude-pelo-atalho.md:25",
+   "nota": "Brasa escreve ~13h50 (estimada)"
+  },
+  "revisao": [
+   {
+    "rodada": 1,
+    "resultado": "PASSA com ressalvas",
+    "quando": "2026-10-17T13:15",
+    "quem": "Fiel",
+    "fonte": "etapas/parecer-42-Brasa.md:5; etapas/diario-da-construcao.md:152",
+    "nota": "1 ressalva: só o Claude de verdade mostra o atalho real"
+   }
+  ],
+  "juncoes": [
+   {
+    "quando": "2026-10-17T14:48",
+    "hash": "d298826",
+    "resultado": "verde",
+    "suite": "285: 275 verdes, 10 pulados, 0 falhas",
+    "junto_com": [],
+    "fonte": "etapas/registro-de-juncoes.md:37",
+    "commit_em": "2026-10-17T14:13"
+   }
+  ],
+  "resolvido": {
+   "quando": "2026-10-17T14:48",
+   "fonte": "issues/42-mod-do-claude-pelo-atalho.md:27",
+   "nota": "diário 14:49 (etapas/diario-da-construcao.md:166)"
+  },
+  "entrega_curta": "Cobrança do fim da resposta funciona no Claude aberto pelo atalho.",
+  "momentos": [],
+  "lacunas": []
+ },
+ {
+  "id": "43",
+  "titulo": "Os testes do Codex usam o gpt-6-luna por padrão",
+  "etapa": "infraestrutura de teste (fora da sequência)",
+  "status": "resolved",
+  "status_fonte": "issues/43-modelo-do-codex-nos-testes-luna.md:4",
+  "blocked_by": [
+   "38"
+  ],
+  "blocked_by_fonte": "issues/43-modelo-do-codex-nos-testes-luna.md:6",
+  "origem": {
+   "nasceu_de": "38",
+   "motivo": "regra nova do Gustavo: Codex só para testes, com o modelo luna por padrão; troca a constante fixada no 38",
+   "quando": "2026-10-17T14:33",
+   "quem": "Gustavo (pedido no chat do maestro)",
+   "fonte": "issues/43-modelo-do-codex-nos-testes-luna.md:25; etapas/diario-da-construcao.md:163; git a1c7fb0"
+  },
+  "construtor": {
+   "nome": "Brasa",
+   "fonte": "issues/43-modelo-do-codex-nos-testes-luna.md:25"
+  },
+  "inicio": {
+   "quando": null,
+   "janela": "entre 14:33 (publicação) e 14:36 (commit 32e8217)",
+   "fonte": "issues/43-modelo-do-codex-nos-testes-luna.md:26; etapas/diario-da-construcao.md:164"
+  },
+  "revisao": [
+   {
+    "rodada": 1,
+    "resultado": "PASSA",
+    "quando": "2026-10-17T14:42",
+    "quem": "Fiel + 2ª leitura Sonnet 5.5",
+    "fonte": "etapas/parecer-43-Brasa.md:5; etapas/diario-da-construcao.md:165",
+    "nota": "primeira revisão com a 2ª leitura por subagente (regra nova)"
+   }
+  ],
+  "juncoes": [
+   {
+    "quando": "2026-10-17T15:22",
+    "hash": "45e34c7",
+    "resultado": "1 falha alheia, mantida",
+    "suite": "289: 278 verdes, 10 pulados, 1 falha (27-pastas, pelo conteúdo de uma página da documentação)",
+    "junto_com": [
+     "40",
+     "41",
+     "documentação (3 junções)"
+    ],
+    "fonte": "etapas/registro-de-juncoes.md:38",
+    "commit_em": "2026-10-17T14:47",
+    "nota": "maestro decidiu resolver; a causa virou o 44"
+   }
+  ],
+  "resolvido": {
+   "quando": "2026-10-17T15:22",
+   "fonte": "issues/43-modelo-do-codex-nos-testes-luna.md:27",
+   "nota": "diário 15:23 (etapas/diario-da-construcao.md:169)"
+  },
+  "entrega_curta": "Testes do Codex usam o modelo mais barato por padrão.",
+  "momentos": [
+   {
+    "quando": "2026-10-17T14:37",
+    "evento": "Fielzinho sai da execução; 2ª leitura vira subagente do Fiel",
+    "fonte": "etapas/diario-da-construcao.md:164"
+   }
+  ],
+  "lacunas": [
+   "a hora exata do pedido do Gustavo é '~14h35' no ticket; o diário registra 14:33"
+  ]
+ },
+ {
+  "id": "44",
+  "titulo": "O verificador de pastas não lê link dentro de código",
+  "etapa": "conserto do 27 (fora da sequência)",
+  "status": "resolved",
+  "status_fonte": "issues/44-verificador-pula-codigo.md:4",
+  "blocked_by": [
+   "27"
+  ],
+  "blocked_by_fonte": "issues/44-verificador-pula-codigo.md:6",
+  "origem": {
+   "nasceu_de": "27",
+   "motivo": "falha do 27-pastas na suíte de 41+40+43+documentação: o verificador leu como link um exemplo dentro de código numa página",
+   "quando": "2026-10-17T15:20",
+   "quem": "Rebite (achado); maestro (mandato); Lume acrescentou o link relativo às 15:25",
+   "fonte": "issues/44-verificador-pula-codigo.md:25; issues/44-verificador-pula-codigo.md:26; etapas/registro-de-juncoes.md:38; git 897acb5"
+  },
+  "construtor": {
+   "nome": "Brasa",
+   "fonte": "issues/44-verificador-pula-codigo.md:25"
+  },
+  "inicio": {
+   "quando": null,
+   "janela": "entre 15:22 (publicação) e 15:40 (commit 70b1843)",
+   "fonte": "issues/44-verificador-pula-codigo.md:27",
+   "nota": "Brasa escreve 16h00 'feito'"
+  },
+  "revisao": [
+   {
+    "rodada": 1,
+    "resultado": "VOLTA",
+    "quando": null,
+    "quem": "Fiel + 2ª leitura Sonnet 5.5, em acordo",
+    "fonte": "etapas/parecer-44-Brasa.md:5",
+    "janela": "entre 15:58 (dc748bc) e 16:10 (conserto a63cbb7)",
+    "nota": "1 conserto: wikilink com ../ derrubava o verificador; parecer diz ~17h10 (estimada)"
+   },
+   {
+    "rodada": 2,
+    "resultado": "PASSA",
+    "quando": null,
+    "quem": "Fiel + 2ª leitura Sonnet 5.5, em acordo",
+    "fonte": "etapas/parecer-44-Brasa.md:29",
+    "janela": "entre 16:10 (a63cbb7) e 16:21 (merge 2609f21)"
+   }
+  ],
+  "juncoes": [
+   {
+    "quando": "2026-10-17T17:14",
+    "hash": "df6c2e5",
+    "resultado": "verde",
+    "suite": "358: 345 verdes, 13 pulados, 0 falhas",
+    "junto_com": [
+     "documentação (5ª leva)"
+    ],
+    "fonte": "etapas/registro-de-juncoes.md:42",
+    "commit_em": "2026-10-17T16:44"
+   }
+  ],
+  "resolvido": {
+   "quando": "2026-10-17T17:14",
+   "fonte": "issues/44-verificador-pula-codigo.md:30",
+   "nota": "diário 17:15 (etapas/diario-da-construcao.md:177)"
+  },
+  "entrega_curta": "Verificador ignora links dentro de código e resolve caminhos relativos.",
+  "momentos": [
+   {
+    "quando": "2026-10-17T15:21",
+    "evento": "Lume troca a página na hora para destravar a documentação",
+    "fonte": "etapas/registro-de-juncoes.md:39"
+   }
+  ],
+  "lacunas": []
+ }
+]

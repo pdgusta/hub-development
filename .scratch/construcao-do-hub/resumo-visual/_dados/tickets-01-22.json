@@ -1,0 +1,1994 @@
+[
+ {
+  "id": "01",
+  "titulo": "Prova: dois CouchDB replicando com o LiveSync",
+  "etapa": "0 (provas de risco)",
+  "status": "resolved",
+  "status_fonte": "issues/01-prova-dois-couchdb-replicando.md:4",
+  "blocked_by": [],
+  "blocked_by_fonte": "issues/01-prova-dois-couchdb-replicando.md:6",
+  "origem": "original",
+  "construtor": {
+   "nome": "Brasa",
+   "fonte": "issues/01-prova-dois-couchdb-replicando.md:21"
+  },
+  "inicio": {
+   "quando": "2026-10-16T19:10",
+   "fonte": "issues/01-prova-dois-couchdb-replicando.md:21",
+   "primeiro_commit_git": "43a4ea9 2026-10-16T19:42"
+  },
+  "revisao": [
+   {
+    "rodada": 1,
+    "resultado": "PASSA",
+    "quando": "2026-10-16T20:40",
+    "quem": "Fiel",
+    "fonte": "etapas/00-provas/parecer-Brasa.md:5",
+    "nota": "hora do comentário da Brasa (issues/01-prova-dois-couchdb-replicando.md:25); a junção no git (20:27) é anterior, então a hora está adiantada"
+   },
+   {
+    "rodada": 1,
+    "resultado": "PASSA",
+    "quando": "2026-10-17",
+    "quem": "Fielzinho",
+    "fonte": "etapas/00-provas/parecer-Brasa-fielzinho.md:56",
+    "nota": "leitura tardia do Fielzinho, só com data; fechamento conjunto em 00-provas/parecer-Brasa.md:38"
+   }
+  ],
+  "juncoes": [
+   {
+    "quando": "2026-10-16T20:27",
+    "quando_fonte": "git 45ec3b0 (data do commit de junção em integracao)",
+    "hash": "45ec3b0",
+    "resultado": "verde",
+    "suite": "37 verdes (34 de agents/code/test + 3 do instalador do 03)",
+    "junto_com": [],
+    "fonte": "etapas/registro-de-juncoes.md:7",
+    "registro_em": "2026-10-16T20:28"
+   }
+  ],
+  "resolvido": {
+   "quando": "2026-10-16T20:28",
+   "fonte": "issues/01-prova-dois-couchdb-replicando.md:26"
+  },
+  "entrega_curta": "Prova que dois bancos CouchDB replicam notas cifradas entre as máquinas",
+  "momentos": [
+   {
+    "evento": "Achado antes de codar: o sal da cifra mora num documento que a replicação não copia",
+    "quando": "2026-10-16T19:10",
+    "fonte": "issues/01-prova-dois-couchdb-replicando.md:21"
+   },
+   {
+    "evento": "Prova verde com cifra, sem cifra e com o arquivo de configuração em CRLF",
+    "quando": "2026-10-16T20:40",
+    "fonte": "issues/01-prova-dois-couchdb-replicando.md:22",
+    "nota": "hora adiantada (ver git)"
+   },
+   {
+    "evento": "A mudança de pasta do ticket 05 obrigou a trocar o caminho do montador e repetir a prova",
+    "quando": "2026-10-16T20:25",
+    "fonte": "issues/01-prova-dois-couchdb-replicando.md:24",
+    "nota": "hora adiantada (ver git)"
+   }
+  ],
+  "lacunas": [
+   "horas da Brasa em 2026-10-16 (19:10, 20:25, 20:40) conflitam com o git (junção 20:27); o git é o relógio confiável",
+   "hora exata da rodada 1 do Fiel não está em fonte confiável"
+  ]
+ },
+ {
+  "id": "02",
+  "titulo": "Prova: pastas com ponto aninhadas fora do LiveSync",
+  "etapa": "0 (provas de risco)",
+  "status": "resolved",
+  "status_fonte": "issues/02-prova-pastas-com-ponto-fora-do-livesync.md:4",
+  "blocked_by": [],
+  "blocked_by_fonte": "issues/02-prova-pastas-com-ponto-fora-do-livesync.md:6",
+  "origem": "original",
+  "construtor": {
+   "nome": "Vela",
+   "fonte": "issues/02-prova-pastas-com-ponto-fora-do-livesync.md:20",
+   "nota": "era da Brasa depois do 01; passado à Vela (issues/02-prova-pastas-com-ponto-fora-do-livesync.md:19)"
+  },
+  "inicio": {
+   "quando": "2026-10-16T22:35",
+   "fonte": "issues/02-prova-pastas-com-ponto-fora-do-livesync.md:20",
+   "aproximada": true,
+   "primeiro_commit_git": "6191e40 2026-10-16T19:48",
+   "nota": "hora do comentário do construtor/maestro em 2026-10-16 à noite; o git mostra que a junção veio antes, então a hora está adiantada"
+  },
+  "revisao": [
+   {
+    "rodada": 1,
+    "resultado": "PASSA",
+    "quando": "2026-10-16T23:15",
+    "quem": "Fiel + Fielzinho",
+    "fonte": "etapas/00-provas/parecer-Vela.md:182",
+    "aproximada": true,
+    "nota": "hora do comentário da Vela (issues/02-prova-pastas-com-ponto-fora-do-livesync.md:22), adiantada: a junção no git foi às 19:59; Fielzinho em 00-provas/parecer-Vela-fielzinho.md:79"
+   }
+  ],
+  "juncoes": [
+   {
+    "quando": "2026-10-16T19:59",
+    "quando_fonte": "git c8d2267 (data do commit de junção em integracao)",
+    "hash": "c8d2267",
+    "resultado": "verde",
+    "suite": "14 verdes (11 do esqueleto + 3 do instalador do 03)",
+    "junto_com": [],
+    "fonte": "etapas/registro-de-juncoes.md:5",
+    "registro_em": "2026-10-16T20:00"
+   }
+  ],
+  "resolvido": {
+   "quando": "2026-10-16T20:00",
+   "fonte": "issues/02-prova-pastas-com-ponto-fora-do-livesync.md:23"
+  },
+  "entrega_curta": "Prova que pastas com ponto não vazam para banco nem disco",
+  "momentos": [
+   {
+    "evento": "O teste sem exclusão reproduziu o vazamento antigo; causa achada no código do sincronizador",
+    "quando": "2026-10-16T23:00",
+    "fonte": "issues/02-prova-pastas-com-ponto-fora-do-livesync.md:21",
+    "aproximada": true,
+    "nota": "hora adiantada (ver git)"
+   },
+   {
+    "evento": "Passado da Brasa à Vela para andar em paralelo e destravar o gerador de exclusões",
+    "quando": "2026-10-16T21:25",
+    "fonte": "issues/02-prova-pastas-com-ponto-fora-do-livesync.md:19",
+    "aproximada": true,
+    "nota": "hora adiantada (ver git)"
+   }
+  ],
+  "lacunas": [
+   "horas da Vela e do maestro em 2026-10-16 (21:25 a 23:15) conflitam com o git (commit 19:48, junção 19:59)"
+  ]
+ },
+ {
+  "id": "03",
+  "titulo": "Prova: hooks do Codex em acesso total",
+  "etapa": "0 (provas de risco)",
+  "status": "resolved",
+  "status_fonte": "issues/03-prova-hooks-do-codex-em-acesso-total.md:4",
+  "blocked_by": [],
+  "blocked_by_fonte": "issues/03-prova-hooks-do-codex-em-acesso-total.md:6",
+  "origem": "original",
+  "construtor": {
+   "nome": "Vela",
+   "fonte": "issues/03-prova-hooks-do-codex-em-acesso-total.md:21"
+  },
+  "inicio": {
+   "quando": "2026-10-16",
+   "fonte": "issues/03-prova-hooks-do-codex-em-acesso-total.md:21",
+   "primeiro_commit_git": "c1b3ead 2026-10-16T18:59",
+   "nota": "comentário sem hora"
+  },
+  "revisao": [
+   {
+    "rodada": 1,
+    "resultado": "VOLTA",
+    "quando": "2026-10-16T22:20",
+    "quem": "Fiel",
+    "fonte": "etapas/00-provas/parecer-Vela.md:4",
+    "aproximada": true,
+    "nota": "hora de issues/03-prova-hooks-do-codex-em-acesso-total.md:23, adiantada (junção no git 19:20)"
+   },
+   {
+    "rodada": 2,
+    "resultado": "PASSA",
+    "quando": "2026-10-16T22:30",
+    "quem": "Fiel",
+    "fonte": "etapas/00-provas/parecer-Vela.md:85",
+    "aproximada": true,
+    "nota": "hora de issues/03-prova-hooks-do-codex-em-acesso-total.md:24, adiantada"
+   }
+  ],
+  "juncoes": [
+   {
+    "quando": "2026-10-16T19:20",
+    "quando_fonte": "git 3857c98 (data do commit de junção em integracao)",
+    "hash": "3857c98",
+    "resultado": "verde",
+    "suite": "11 do esqueleto verdes; prova do Codex não repetida",
+    "junto_com": [],
+    "fonte": "etapas/registro-de-juncoes.md:4",
+    "registro_em": "2026-10-16T21:20",
+    "suite_em_aproximada": true,
+    "nota": "registro do maestro diz ~21h20, adiantado em relação ao git"
+   }
+  ],
+  "resolvido": {
+   "quando": "2026-10-16T21:20",
+   "fonte": "issues/03-prova-hooks-do-codex-em-acesso-total.md:25",
+   "aproximada": true,
+   "nota": "hora do maestro; o git da junção é 19:20"
+  },
+  "entrega_curta": "Prova que os hooks do Codex funcionam com acesso total à máquina",
+  "momentos": [
+   {
+    "evento": "Rodada 1 voltou: o instalador aprovava hooks de outros",
+    "quando": "2026-10-16T22:20",
+    "fonte": "issues/03-prova-hooks-do-codex-em-acesso-total.md:23",
+    "aproximada": true,
+    "nota": "hora adiantada (ver git)"
+   },
+   {
+    "evento": "Login do Codex copiado para a pasta de ensaio e apagado a cada rodada",
+    "quando": "2026-10-16T22:10",
+    "fonte": "issues/03-prova-hooks-do-codex-em-acesso-total.md:22",
+    "aproximada": true,
+    "nota": "hora adiantada (ver git)"
+   }
+  ],
+  "lacunas": [
+   "horas da Vela/maestro em 2026-10-16 conflitam com o git (commits 18:59 a 19:20)"
+  ]
+ },
+ {
+  "id": "04",
+  "titulo": "Esqueleto do hub e hub de ensaio",
+  "etapa": "1 (esqueleto)",
+  "status": "resolved",
+  "status_fonte": "issues/04-esqueleto-do-hub-e-hub-de-ensaio.md:4",
+  "blocked_by": [],
+  "blocked_by_fonte": "issues/04-esqueleto-do-hub-e-hub-de-ensaio.md:6",
+  "origem": "original",
+  "construtor": {
+   "nome": "Trilho",
+   "fonte": "issues/04-esqueleto-do-hub-e-hub-de-ensaio.md:20"
+  },
+  "inicio": {
+   "quando": "2026-10-16T19:30",
+   "fonte": "issues/04-esqueleto-do-hub-e-hub-de-ensaio.md:20",
+   "aproximada": true,
+   "primeiro_commit_git": "7c6cc47 2026-10-16T18:57",
+   "nota": "hora do comentário do construtor/maestro em 2026-10-16 à noite; o git mostra que a junção veio antes, então a hora está adiantada"
+  },
+  "revisao": [
+   {
+    "rodada": 1,
+    "resultado": "VOLTA",
+    "quando": "2026-10-16T20:40",
+    "quem": "Fiel",
+    "fonte": "etapas/01-esqueleto/parecer-Trilho.md:4",
+    "aproximada": true,
+    "nota": "hora de issues/04-esqueleto-do-hub-e-hub-de-ensaio.md:28, adiantada (junção no git 19:10)"
+   },
+   {
+    "rodada": 2,
+    "resultado": "PASSA com ressalvas",
+    "quando": "2026-10-16T20:50",
+    "quem": "Fiel",
+    "fonte": "etapas/01-esqueleto/parecer-Trilho.md:66",
+    "aproximada": true,
+    "nota": "ressalva operacional; hora de issues/04-esqueleto-do-hub-e-hub-de-ensaio.md:31, adiantada"
+   }
+  ],
+  "juncoes": [
+   {
+    "quando": "2026-10-16T19:10",
+    "quando_fonte": "git b68f540 (data do commit de junção em integracao)",
+    "hash": "b68f540",
+    "resultado": "verde",
+    "suite": "11 testes do esqueleto verdes",
+    "junto_com": [],
+    "fonte": "etapas/registro-de-juncoes.md:3",
+    "registro_em": "2026-10-16T20:55",
+    "suite_em_aproximada": true,
+    "nota": "registro do maestro diz ~20h55, adiantado em relação ao git"
+   }
+  ],
+  "resolvido": {
+   "quando": "2026-10-16T20:55",
+   "fonte": "issues/04-esqueleto-do-hub-e-hub-de-ensaio.md:33",
+   "aproximada": true,
+   "nota": "hora do maestro; o git da junção é 19:10"
+  },
+  "entrega_curta": "Árvore do hub com seis raízes, contrato e hub de ensaio",
+  "momentos": [
+   {
+    "evento": "Rodada 1 voltou: hub sem .git e CLAUDE.md em pasta com ponto eram aceitos",
+    "quando": "2026-10-16T20:40",
+    "fonte": "issues/04-esqueleto-do-hub-e-hub-de-ensaio.md:28",
+    "aproximada": true,
+    "nota": "hora adiantada (ver git)"
+   },
+   {
+    "evento": "Primeira junção da construção em integracao",
+    "quando": "2026-10-16T19:10",
+    "fonte": "git b68f540"
+   }
+  ],
+  "lacunas": [
+   "horas do Trilho/maestro em 2026-10-16 conflitam com o git (primeiro commit 18:57, junção 19:10)"
+  ]
+ },
+ {
+  "id": "05",
+  "titulo": "Frontmatter imposto: esquemas, verificador e \"nova iniciativa\"",
+  "etapa": "1 (esqueleto)",
+  "status": "resolved",
+  "status_fonte": "issues/05-frontmatter-imposto.md:4",
+  "blocked_by": [
+   "04"
+  ],
+  "blocked_by_fonte": "issues/05-frontmatter-imposto.md:6",
+  "origem": "original",
+  "construtor": {
+   "nome": "Trilho",
+   "fonte": "issues/05-frontmatter-imposto.md:20"
+  },
+  "inicio": {
+   "quando": "2026-10-16T21:10",
+   "fonte": "issues/05-frontmatter-imposto.md:20",
+   "aproximada": true,
+   "primeiro_commit_git": "8b1e1a4 2026-10-16T19:16",
+   "nota": "hora do comentário do construtor/maestro em 2026-10-16 à noite; o git mostra que a junção veio antes, então a hora está adiantada"
+  },
+  "revisao": [
+   {
+    "rodada": 1,
+    "resultado": "VOLTA",
+    "quando": "2026-10-16T23:10",
+    "quem": "Fiel",
+    "fonte": "etapas/01-esqueleto/parecer-Trilho.md:125",
+    "aproximada": true,
+    "nota": "hora de issues/05-frontmatter-imposto.md:31, adiantada"
+   },
+   {
+    "rodada": 2,
+    "resultado": "VOLTA",
+    "quando": "2026-10-16T23:40",
+    "quem": "Fiel + Fielzinho",
+    "fonte": "etapas/01-esqueleto/parecer-Trilho.md:192",
+    "aproximada": true,
+    "nota": "hora de issues/05-frontmatter-imposto.md:34; achados do Fielzinho (01-esqueleto/parecer-Trilho-fielzinho.md:77)"
+   },
+   {
+    "rodada": 3,
+    "resultado": "PASSA com ressalvas",
+    "quando": "2026-10-16T23:55",
+    "quem": "Fiel + Fielzinho",
+    "fonte": "etapas/01-esqueleto/parecer-Trilho.md:243",
+    "aproximada": true,
+    "nota": "hora de issues/05-frontmatter-imposto.md:36"
+   },
+   {
+    "rodada": 4,
+    "resultado": "PASSA",
+    "quando": "2026-10-17T00:40",
+    "quem": "Fiel",
+    "fonte": "etapas/01-esqueleto/parecer-Trilho.md:258",
+    "aproximada": true,
+    "nota": "rodada curta pedida pelo Rebite; hora de issues/05-frontmatter-imposto.md:43 conflita com a junção no git (2026-10-16 20:10); Fielzinho leu depois: 01-esqueleto/parecer-Trilho-fielzinho.md:127"
+   }
+  ],
+  "juncoes": [
+   {
+    "quando": "2026-10-16T20:10",
+    "quando_fonte": "git 0d04985 (data do commit de junção em integracao)",
+    "hash": "0d04985",
+    "resultado": "verde",
+    "suite": "37 verdes (34 de agents/code/test + 3 do instalador do 03)",
+    "junto_com": [],
+    "fonte": "etapas/registro-de-juncoes.md:6",
+    "registro_em": "2026-10-16T20:11"
+   }
+  ],
+  "resolvido": {
+   "quando": "2026-10-16T20:11",
+   "fonte": "issues/05-frontmatter-imposto.md:45"
+  },
+  "entrega_curta": "Regras de cabeçalho das notas, verificador sem IA e criador de iniciativas",
+  "momentos": [
+   {
+    "evento": "O Gustavo respondeu três perguntas do Trilho; tarefas extras do verificador viraram o ticket 27",
+    "quando": "2026-10-16T21:30",
+    "fonte": "issues/05-frontmatter-imposto.md:26",
+    "aproximada": true,
+    "nota": "hora adiantada (ver git)"
+   },
+   {
+    "evento": "Duas voltas seguidas na revisão (YAML preservado; comentário e ficha arquivada)",
+    "quando": "2026-10-16T23:40",
+    "fonte": "issues/05-frontmatter-imposto.md:34",
+    "aproximada": true
+   },
+   {
+    "evento": "Teste intermitente do 05 apareceu na junção do 19 e passou ao repetir",
+    "quando": "2026-10-16T22:28",
+    "fonte": "issues/05-frontmatter-imposto.md:46"
+   }
+  ],
+  "lacunas": [
+   "horas do Trilho em 2026-10-16/17 (21:10 a 00:40) conflitam com o git (primeiro commit 19:16, junção 20:10); a ordem das rodadas é confiável, as horas não"
+  ]
+ },
+ {
+  "id": "06",
+  "titulo": "Gerador de exclusões",
+  "etapa": "1 (esqueleto)",
+  "status": "resolved",
+  "status_fonte": "issues/06-gerador-de-exclusoes.md:4",
+  "blocked_by": [
+   "04",
+   "02"
+  ],
+  "blocked_by_fonte": "issues/06-gerador-de-exclusoes.md:6",
+  "origem": "original",
+  "construtor": {
+   "nome": "Vela",
+   "fonte": "issues/06-gerador-de-exclusoes.md:19"
+  },
+  "inicio": {
+   "quando": "2026-10-16T23:20",
+   "fonte": "issues/06-gerador-de-exclusoes.md:19",
+   "aproximada": true,
+   "primeiro_commit_git": "e07a481 2026-10-16T20:04",
+   "nota": "hora do comentário do construtor/maestro em 2026-10-16 à noite; o git mostra que a junção veio antes, então a hora está adiantada"
+  },
+  "revisao": [
+   {
+    "rodada": 1,
+    "resultado": "VOLTA",
+    "quando": null,
+    "quem": "Fiel",
+    "fonte": "etapas/01-esqueleto/parecer-Vela.md:5",
+    "nota": "parecer só com data 2026-10-16; sem hora"
+   },
+   {
+    "rodada": 2,
+    "resultado": "PASSA",
+    "quando": "2026-10-17",
+    "quem": "Fiel + Fielzinho",
+    "fonte": "etapas/01-esqueleto/parecer-Vela.md:40",
+    "nota": "comentário da Vela só com data (issues/06-gerador-de-exclusoes.md:21); fechamento conjunto 01-esqueleto/parecer-Vela.md:64; Fielzinho em 06-gerador-de-exclusoes/parecer-Vela-fielzinho.md:43"
+   }
+  ],
+  "juncoes": [
+   {
+    "quando": "2026-10-16T20:31",
+    "quando_fonte": "git 8b9beef (data do commit de junção em integracao)",
+    "hash": "8b9beef",
+    "resultado": "verde",
+    "suite": "44 verdes (agents/code/test, gerar-exclusoes, instalador do 03)",
+    "junto_com": [],
+    "fonte": "etapas/registro-de-juncoes.md:8",
+    "registro_em": "2026-10-16T20:32"
+   }
+  ],
+  "resolvido": {
+   "quando": "2026-10-16T20:32",
+   "fonte": "issues/06-gerador-de-exclusoes.md:22"
+  },
+  "entrega_curta": "Gera a lista do que não sincroniza nem entra na busca",
+  "momentos": [
+   {
+    "evento": "Achado: pasta local criada com o sincronizador rodando vaza; é preciso parar, gerar e religar",
+    "quando": "2026-10-16T23:50",
+    "fonte": "issues/06-gerador-de-exclusoes.md:20",
+    "aproximada": true,
+    "nota": "hora adiantada (ver git)"
+   }
+  ],
+  "lacunas": [
+   "hora da rodada 1 do Fiel não está nas fontes",
+   "horas da Vela em 2026-10-16 conflitam com o git (commit 20:04, junção 20:31)"
+  ]
+ },
+ {
+  "id": "07",
+  "titulo": "Banco do par: dois CouchDB, LiveSync e vista .md",
+  "etapa": "2 (banco)",
+  "status": "resolved",
+  "status_fonte": "issues/07-banco-do-par.md:4",
+  "blocked_by": [
+   "01",
+   "04"
+  ],
+  "blocked_by_fonte": "issues/07-banco-do-par.md:6",
+  "origem": "original",
+  "construtor": {
+   "nome": "Brasa",
+   "fonte": "issues/07-banco-do-par.md:21"
+  },
+  "inicio": {
+   "quando": "2026-10-16T20:50",
+   "fonte": "issues/07-banco-do-par.md:21",
+   "primeiro_commit_git": "4967c69 2026-10-16T20:52"
+  },
+  "revisao": [
+   {
+    "rodada": 1,
+    "resultado": "VOLTA",
+    "quando": "2026-10-16T23:10",
+    "quem": "Fiel + Fielzinho",
+    "fonte": "etapas/02-banco/parecer-Brasa.md:5",
+    "aproximada": true,
+    "nota": "3 consertos; hora de issues/07-banco-do-par.md:25; Fielzinho em parecer-Brasa-fielzinho.md:3"
+   },
+   {
+    "rodada": 2,
+    "resultado": "VOLTA",
+    "quando": "2026-10-17T02:25",
+    "quem": "Fiel + Fielzinho",
+    "fonte": "etapas/02-banco/parecer-Brasa.md:39",
+    "aproximada": true,
+    "nota": "2ª volta; hora de issues/07-banco-do-par.md:29"
+   },
+   {
+    "rodada": 3,
+    "resultado": "PASSA",
+    "quando": "2026-10-17T02:45",
+    "quem": "Fiel + Fielzinho",
+    "fonte": "etapas/02-banco/parecer-Brasa.md:62",
+    "aproximada": true,
+    "nota": "hora de issues/07-banco-do-par.md:30"
+   }
+  ],
+  "juncoes": [
+   {
+    "quando": "2026-10-17T02:51",
+    "quando_fonte": "git 24c7543 (data do commit de junção em integracao)",
+    "hash": "24c7543",
+    "resultado": "verde",
+    "suite": "194: 186 verdes, 8 pulados, 0 falhas",
+    "junto_com": [
+     "34"
+    ],
+    "fonte": "etapas/registro-de-juncoes.md:21",
+    "registro_em": "2026-10-17T03:00"
+   }
+  ],
+  "resolvido": {
+   "quando": "2026-10-17T03:00",
+   "fonte": "issues/07-banco-do-par.md:32"
+  },
+  "entrega_curta": "Par de ensaio com dois bancos, sincronizador cifrado e notas em disco",
+  "momentos": [
+   {
+    "evento": "O processo do sincronizador herdava as alças do chamador e travava o kit",
+    "quando": "2026-10-16T21:20",
+    "fonte": "issues/07-banco-do-par.md:22"
+   },
+   {
+    "evento": "A fila de testes com Docker foi morta pelo sistema por falta de memória",
+    "quando": "2026-10-16T23:10",
+    "fonte": "issues/07-banco-do-par.md:25",
+    "aproximada": true
+   },
+   {
+    "evento": "Duas suítes juntas falharam por tempo; nasce a trava e a suíte um teste por vez",
+    "quando": "2026-10-17T01:20",
+    "fonte": "issues/07-banco-do-par.md:26",
+    "aproximada": true
+   },
+   {
+    "evento": "07 resolvido abre os tickets 08, 09 e 28",
+    "quando": "2026-10-17T03:10",
+    "fonte": "etapas/diario-da-construcao.md:18",
+    "aproximada": true,
+    "hora_aproximada": true
+   }
+  ],
+  "lacunas": []
+ },
+ {
+  "id": "08",
+  "titulo": "Banco: limites e robustez",
+  "etapa": "2 (banco)",
+  "status": "resolved",
+  "status_fonte": "issues/08-banco-limites-e-robustez.md:4",
+  "blocked_by": [
+   "07",
+   "06"
+  ],
+  "blocked_by_fonte": "issues/08-banco-limites-e-robustez.md:6",
+  "origem": "original",
+  "construtor": {
+   "nome": "Brasa",
+   "fonte": "issues/08-banco-limites-e-robustez.md:22"
+  },
+  "inicio": {
+   "quando": "2026-10-17T03:10",
+   "fonte": "issues/08-banco-limites-e-robustez.md:22",
+   "aproximada": true,
+   "primeiro_commit_git": "5110f3f 2026-10-17T03:10"
+  },
+  "revisao": [
+   {
+    "rodada": 1,
+    "resultado": "VOLTA",
+    "quando": "2026-10-17T07:00",
+    "quem": "Fiel + Fielzinho",
+    "fonte": "etapas/parecer-08-Brasa.md:5",
+    "aproximada": true,
+    "nota": "1 conserto; hora do cabeçalho (parecer-08-Brasa.md:3); Fielzinho em parecer-08-Brasa-fielzinho.md:34"
+   },
+   {
+    "rodada": 2,
+    "resultado": "PASSA com ressalvas",
+    "quando": "2026-10-17T07:30",
+    "quem": "Fiel + Fielzinho",
+    "fonte": "etapas/parecer-08-Brasa.md:69",
+    "nota": "código passa; aceite final pendente das fatias 1 e 2 do Docker"
+   },
+   {
+    "rodada": 3,
+    "resultado": "PASSA com ressalvas",
+    "quando": "2026-10-17T07:46",
+    "quem": "Fiel",
+    "fonte": "etapas/diario-da-construcao.md:79",
+    "nota": "fechamento com a fatia 2 como item do Gustavo (parecer-08-Brasa.md:80, cabeçalho diz ~08h10); ressalvas retiradas depois pela evidência das 09:52 (parecer-08-Brasa.md:98)"
+   }
+  ],
+  "juncoes": [
+   {
+    "quando": "2026-10-17T08:07",
+    "quando_fonte": "git e98a891 (data do commit de junção em integracao)",
+    "hash": "e98a891",
+    "resultado": "verde",
+    "suite": "210: 202 verdes, 8 pulados, 0 falhas",
+    "junto_com": [],
+    "fonte": "etapas/registro-de-juncoes.md:30",
+    "registro_em": "2026-10-17T08:56"
+   }
+  ],
+  "resolvido": {
+   "quando": "2026-10-17T08:56",
+   "fonte": "issues/08-banco-limites-e-robustez.md:45"
+  },
+  "entrega_curta": "Banco aguenta limites de tamanho, colisões e religa sozinho",
+  "momentos": [
+   {
+    "evento": "Primeira rodada com Docker caiu por falta de memória aos 18 minutos",
+    "quando": "2026-10-17T03:59",
+    "fonte": "etapas/diario-da-construcao.md:28"
+   },
+   {
+    "evento": "Gravar o arquivo de 60 MiB derrubou o observador do sincronizador; o laço vira supervisor",
+    "quando": "2026-10-17T04:00",
+    "fonte": "issues/08-banco-limites-e-robustez.md:25",
+    "aproximada": true
+   },
+   {
+    "evento": "Fatia 2 derrubou a memória livre de 2.900 para 513 MB",
+    "quando": "2026-10-17T05:12",
+    "fonte": "issues/08-banco-limites-e-robustez.md:29"
+   },
+   {
+    "evento": "Fatia 2 caiu de novo e virou item do Gustavo",
+    "quando": "2026-10-17T07:41",
+    "fonte": "etapas/diario-da-construcao.md:78"
+   },
+   {
+    "evento": "Fatias 1 e 2 verdes na janela quieta: 51 MiB viajou, 201 MiB não",
+    "quando": "2026-10-17T09:54",
+    "fonte": "etapas/diario-da-construcao.md:115"
+   }
+  ],
+  "lacunas": []
+ },
+ {
+  "id": "09",
+  "titulo": "MCP do banco: gravar com versão e conflito à vista",
+  "etapa": "3 (MCP do banco)",
+  "status": "resolved",
+  "status_fonte": "issues/09-mcp-do-banco-gravar-com-versao.md:4",
+  "blocked_by": [
+   "07"
+  ],
+  "blocked_by_fonte": "issues/09-mcp-do-banco-gravar-com-versao.md:6",
+  "origem": "original",
+  "construtor": {
+   "nome": "Cinzel",
+   "fonte": "issues/09-mcp-do-banco-gravar-com-versao.md:30",
+   "nota": "reservado antes à Vela, que fez as perguntas (issues/09-mcp-do-banco-gravar-com-versao.md:21, issues/09-mcp-do-banco-gravar-com-versao.md:28)"
+  },
+  "inicio": {
+   "quando": "2026-10-17T03:25",
+   "fonte": "issues/09-mcp-do-banco-gravar-com-versao.md:30",
+   "aproximada": true,
+   "primeiro_commit_git": "ce9790b 2026-10-17T03:51"
+  },
+  "revisao": [
+   {
+    "rodada": 1,
+    "resultado": "VOLTA",
+    "quando": "2026-10-17T05:10",
+    "quem": "Fiel",
+    "fonte": "etapas/parecer-09-Cinzel.md:7",
+    "aproximada": true,
+    "nota": "3 consertos já feitos em ramo à parte; hora do cabeçalho (parecer-09-Cinzel.md:3)"
+   },
+   {
+    "rodada": 2,
+    "resultado": "PASSA",
+    "quando": "2026-10-17T05:17",
+    "quem": "Fiel",
+    "fonte": "etapas/diario-da-construcao.md:48",
+    "nota": "rodada curta; parecer-09-Cinzel.md:48"
+   }
+  ],
+  "juncoes": [
+   {
+    "quando": "2026-10-17T05:10",
+    "quando_fonte": "git 9453e3e (data do commit de junção em integracao)",
+    "hash": "9453e3e",
+    "resultado": "verde",
+    "suite": "202: 194 verdes, 8 pulados, 0 falhas",
+    "junto_com": [
+     "28"
+    ],
+    "fonte": "etapas/registro-de-juncoes.md:24",
+    "registro_em": "2026-10-17T06:12",
+    "nota": "fork hub-mcp-banco ticket-09 d2a5a40 fica fora de integracao"
+   }
+  ],
+  "resolvido": {
+   "quando": "2026-10-17T06:12",
+   "fonte": "issues/09-mcp-do-banco-gravar-com-versao.md:54"
+  },
+  "entrega_curta": "Gravar no banco conferindo a versão lida e mostrando conflitos",
+  "momentos": [
+   {
+    "evento": "O Gustavo decide que o fork do MCP mora em repositório próprio",
+    "quando": "2026-10-17T03:00",
+    "fonte": "issues/09-mcp-do-banco-gravar-com-versao.md:24",
+    "aproximada": true
+   },
+   {
+    "evento": "Limite sobe para 4 construtores; Cinzel recrutado para o 09",
+    "quando": "2026-10-17T04:15",
+    "fonte": "etapas/diario-da-construcao.md:23",
+    "aproximada": true,
+    "hora_aproximada": true
+   },
+   {
+    "evento": "Achado: a biblioteca do LiveSync já sabia gravar como filha da versão lida",
+    "quando": "2026-10-17T03:25",
+    "fonte": "issues/09-mcp-do-banco-gravar-com-versao.md:31",
+    "aproximada": true
+   },
+   {
+    "evento": "Mudança de desenho aceita: só é conflito quando a versão lida não está mais viva",
+    "quando": "2026-10-17T04:44",
+    "fonte": "etapas/diario-da-construcao.md:37"
+   }
+  ],
+  "lacunas": [
+   "a hora de início do 09 vem do Cinzel (~03h25); o diário põe o recrutamento em ~04h15, numa faixa de horas adiantadas ~1h"
+  ]
+ },
+ {
+  "id": "10",
+  "titulo": "MCP do banco: três instâncias, cabeça, regra curta e estado",
+  "etapa": "3 (MCP do banco)",
+  "status": "resolved",
+  "status_fonte": "issues/10-mcp-do-banco-instancias-cabeca-e-estado.md:4",
+  "blocked_by": [
+   "09",
+   "05"
+  ],
+  "blocked_by_fonte": "issues/10-mcp-do-banco-instancias-cabeca-e-estado.md:6",
+  "origem": "original",
+  "construtor": {
+   "nome": "Cinzel",
+   "fonte": "issues/10-mcp-do-banco-instancias-cabeca-e-estado.md:31"
+  },
+  "inicio": {
+   "quando": "2026-10-17T05:25",
+   "fonte": "issues/10-mcp-do-banco-instancias-cabeca-e-estado.md:31",
+   "aproximada": true,
+   "primeiro_commit_git": "f7a8358 2026-10-17T05:25"
+  },
+  "revisao": [
+   {
+    "rodada": 1,
+    "resultado": "VOLTA",
+    "quando": "2026-10-17T06:35",
+    "quem": "Fiel",
+    "fonte": "etapas/parecer-10-Cinzel.md:7",
+    "aproximada": true,
+    "nota": "1 conserto; hora do cabeçalho (parecer-10-Cinzel.md:3)"
+   },
+   {
+    "rodada": 2,
+    "resultado": "PASSA",
+    "quando": "2026-10-17T06:40",
+    "quem": "Fiel",
+    "fonte": "etapas/parecer-10-Cinzel.md:47",
+    "aproximada": true,
+    "nota": "hora do cabeçalho (parecer-10-Cinzel.md:43)"
+   }
+  ],
+  "juncoes": [
+   {
+    "quando": "2026-10-17T06:37",
+    "quando_fonte": "git 9cc878b (data do commit de junção em integracao)",
+    "hash": "9cc878b",
+    "resultado": "verde",
+    "suite": "210: 202 verdes, 8 pulados, 0 falhas (hub); fork 273: 272 passam, 1 falha igual à base",
+    "junto_com": [
+     "36"
+    ],
+    "fonte": "etapas/registro-de-juncoes.md:26",
+    "registro_em": "2026-10-17T07:30",
+    "nota": "fork integracao 34c3e50; suíte do hub verde às 07h00 (etapas/registro-de-juncoes.md:27), unitários do fork às 07h30 (etapas/registro-de-juncoes.md:28)"
+   }
+  ],
+  "resolvido": {
+   "quando": "2026-10-17T07:30",
+   "fonte": "issues/10-mcp-do-banco-instancias-cabeca-e-estado.md:39"
+  },
+  "entrega_curta": "Três servidores do banco, contrato a cada conexão e estado da vigia",
+  "momentos": [
+   {
+    "evento": "Formato do arquivo de estado combinado com o Trilho, da vigia",
+    "quando": "2026-10-17T04:55",
+    "fonte": "issues/10-mcp-do-banco-instancias-cabeca-e-estado.md:27",
+    "aproximada": true
+   },
+   {
+    "evento": "Falso verde: o teste do fork rodou 0 testes no Windows",
+    "quando": "2026-10-17T07:01",
+    "fonte": "etapas/diario-da-construcao.md:66"
+   },
+   {
+    "evento": "Com a pasta temporária em nome curto, 20 testes do fork caem",
+    "quando": "2026-10-17T07:30",
+    "fonte": "issues/10-mcp-do-banco-instancias-cabeca-e-estado.md:39"
+   }
+  ],
+  "lacunas": []
+ },
+ {
+  "id": "11",
+  "titulo": "MCP do banco pelos três harnesses",
+  "etapa": "3 (MCP do banco)",
+  "status": "resolved",
+  "status_fonte": "issues/11-mcp-do-banco-pelos-tres-harnesses.md:4",
+  "blocked_by": [
+   "10",
+   "03"
+  ],
+  "blocked_by_fonte": "issues/11-mcp-do-banco-pelos-tres-harnesses.md:6",
+  "origem": "original",
+  "construtor": {
+   "nome": "Cinzel",
+   "fonte": "issues/11-mcp-do-banco-pelos-tres-harnesses.md:23"
+  },
+  "inicio": {
+   "quando": "2026-10-17T06:45",
+   "fonte": "issues/11-mcp-do-banco-pelos-tres-harnesses.md:23",
+   "aproximada": true,
+   "primeiro_commit_git": "bdd69e2 2026-10-17T06:46"
+  },
+  "revisao": [
+   {
+    "rodada": 1,
+    "resultado": "PASSA com ressalvas",
+    "quando": "2026-10-17T07:54",
+    "quem": "Fiel",
+    "fonte": "etapas/parecer-11-Cinzel.md:5",
+    "nota": "sem conserto, mas parcial: aceite do Codex pendente por cota (diário etapas/diario-da-construcao.md:83)"
+   },
+   {
+    "rodada": 2,
+    "resultado": "VOLTA",
+    "quando": "2026-10-17T15:10",
+    "quem": "Fiel + 2ª leitura (subagente)",
+    "fonte": "etapas/parecer-11-Cinzel.md:38",
+    "aproximada": true,
+    "nota": "conserto mecânico (modelo do Codex escrito à mão); hora de issues/11-mcp-do-banco-pelos-tres-harnesses.md:32; o diário já dá PASSA às 15:04 e o git do conserto 28782df é 14:59, então a hora está adiantada; 2ª leitura em parecer-11-Cinzel-segunda-leitura.md:3"
+   },
+   {
+    "rodada": 3,
+    "resultado": "PASSA",
+    "quando": "2026-10-17T15:04",
+    "quem": "Fiel + 2ª leitura (subagente)",
+    "fonte": "etapas/diario-da-construcao.md:167",
+    "nota": "parecer-11-Cinzel.md:61 (PASSA em acordo)"
+   }
+  ],
+  "juncoes": [
+   {
+    "quando": "2026-10-17T15:20",
+    "quando_fonte": "git 51fa382 (data do commit de junção em integracao)",
+    "hash": "51fa382",
+    "resultado": "verde",
+    "suite": "294: 282 verdes, 12 pulados, 0 falhas",
+    "junto_com": [
+     "documentação 4ª leva (a7d1517)"
+    ],
+    "fonte": "etapas/registro-de-juncoes.md:40",
+    "registro_em": "2026-10-17T16:16"
+   }
+  ],
+  "resolvido": {
+   "quando": "2026-10-17T16:16",
+   "fonte": "issues/11-mcp-do-banco-pelos-tres-harnesses.md:33"
+  },
+  "entrega_curta": "Claude Code, Codex e Copilot usando o banco de verdade",
+  "momentos": [
+   {
+    "evento": "Primeira rodada real: o Codex falhou por erro do teste",
+    "quando": "2026-10-17T07:37",
+    "fonte": "etapas/diario-da-construcao.md:77"
+   },
+   {
+    "evento": "Codex sem cota até 12h15",
+    "quando": "2026-10-17T07:46",
+    "fonte": "etapas/diario-da-construcao.md:79"
+   },
+   {
+    "evento": "Achado: o Copilot sem a opção não põe as instruções do servidor no prompt",
+    "quando": "2026-10-17T07:55",
+    "fonte": "issues/11-mcp-do-banco-pelos-tres-harnesses.md:30"
+   },
+   {
+    "evento": "Codex de verdade passou; as instruções só chegam quando o modelo lista as ferramentas",
+    "quando": "2026-10-17T14:47",
+    "fonte": "issues/11-mcp-do-banco-pelos-tres-harnesses.md:31"
+   }
+  ],
+  "lacunas": [
+   "hora exata das rodadas 2 e 3 do Fiel: cabeçalhos do parecer (~15h30, ~15h45) e comentário do Cinzel (15:10) conflitam com o diário (15:04) e o git (28782df 14:59)"
+  ]
+ },
+ {
+  "id": "12",
+  "titulo": "Busca local com aceite",
+  "etapa": "4 (busca)",
+  "status": "resolved",
+  "status_fonte": "issues/12-busca-local-com-aceite.md:4",
+  "blocked_by": [
+   "04",
+   "06"
+  ],
+  "blocked_by_fonte": "issues/12-busca-local-com-aceite.md:6",
+  "origem": "original",
+  "construtor": {
+   "nome": "Trilho",
+   "fonte": "issues/12-busca-local-com-aceite.md:23"
+  },
+  "inicio": {
+   "quando": "2026-10-16T21:30",
+   "fonte": "issues/12-busca-local-com-aceite.md:23",
+   "aproximada": true,
+   "primeiro_commit_git": "58b9563 2026-10-16T21:07"
+  },
+  "revisao": [
+   {
+    "rodada": 1,
+    "resultado": "VOLTA",
+    "quando": "2026-10-16T23:05",
+    "quem": "Fiel",
+    "fonte": "etapas/parecer-12-Trilho.md:5",
+    "aproximada": true,
+    "nota": "hora de issues/12-busca-local-com-aceite.md:29"
+   },
+   {
+    "rodada": 2,
+    "resultado": "PASSA",
+    "quando": "2026-10-16T23:20",
+    "quem": "Fiel",
+    "fonte": "etapas/parecer-12-Trilho.md:40",
+    "aproximada": true,
+    "nota": "hora de issues/12-busca-local-com-aceite.md:30; a junção no git (23:06) é anterior, hora adiantada"
+   },
+   {
+    "rodada": 3,
+    "resultado": "PASSA com ressalvas",
+    "quando": "2026-10-17T03:55",
+    "quem": "Fiel",
+    "fonte": "etapas/parecer-12-Trilho.md:56",
+    "aproximada": true,
+    "nota": "rodada nova pedida pelo maestro (só a search nos três); hora de issues/12-busca-local-com-aceite.md:36; Fielzinho PASSA depois em parecer-12-Trilho.md:84"
+   }
+  ],
+  "juncoes": [
+   {
+    "quando": "2026-10-16T23:06",
+    "quando_fonte": "git c5b946a (data do commit de junção em integracao)",
+    "hash": "c5b946a",
+    "resultado": "verde",
+    "suite": "147: 141 verdes, 6 pulados, 0 falhas",
+    "junto_com": [],
+    "fonte": "etapas/registro-de-juncoes.md:13",
+    "registro_em": "2026-10-16T23:10"
+   },
+   {
+    "quando": "2026-10-17T03:42",
+    "quando_fonte": "git 3c24d68 (data do commit de junção em integracao)",
+    "hash": "3c24d68",
+    "resultado": "verde",
+    "suite": "194: 186 verdes, 8 pulados, 0 falhas",
+    "junto_com": [],
+    "fonte": "etapas/registro-de-juncoes.md:22",
+    "registro_em": "2026-10-17T04:08",
+    "nota": "rodada 3; fecha o aceite real do Codex"
+   }
+  ],
+  "resolvido": {
+   "quando": "2026-10-16T23:10",
+   "fonte": "issues/12-busca-local-com-aceite.md:31",
+   "pendencia_fechada": {
+    "quando": "2026-10-17T04:08",
+    "fonte": "issues/12-busca-local-com-aceite.md:37"
+   }
+  },
+  "entrega_curta": "Busca local nas notas, com modelo na máquina, para os três harnesses",
+  "momentos": [
+   {
+    "evento": "Codex sem cota até 01h34; revisão segue sem ele",
+    "quando": "2026-10-16T23:00",
+    "fonte": "issues/12-busca-local-com-aceite.md:28",
+    "aproximada": true
+   },
+   {
+    "evento": "Teste da segunda partida falhou sob carga na junção do 15",
+    "quando": "2026-10-16T23:47",
+    "fonte": "issues/12-busca-local-com-aceite.md:32"
+   },
+   {
+    "evento": "Decidido expor só a ferramenta de busca nos três harnesses",
+    "quando": "2026-10-17T03:50",
+    "fonte": "issues/15-guardas-aviso-de-leitura.md:27",
+    "aproximada": true,
+    "hora_aproximada": true
+   },
+   {
+    "evento": "Codex real do 12 passou",
+    "quando": "2026-10-17T03:50",
+    "fonte": "issues/12-busca-local-com-aceite.md:34",
+    "aproximada": true,
+    "hora_aproximada": true
+   }
+  ],
+  "lacunas": [
+   "horas do Trilho em 2026-10-16 23h são próximas do git mas a rodada 2 aparece depois da junção"
+  ]
+ },
+ {
+  "id": "13",
+  "titulo": "Gemini pronto e desligado",
+  "etapa": "4 (busca)",
+  "status": "resolved",
+  "status_fonte": "issues/13-gemini-pronto-e-desligado.md:4",
+  "blocked_by": [
+   "12"
+  ],
+  "blocked_by_fonte": "issues/13-gemini-pronto-e-desligado.md:6",
+  "origem": "original",
+  "construtor": {
+   "nome": "Trilho",
+   "fonte": "issues/13-gemini-pronto-e-desligado.md:19"
+  },
+  "inicio": {
+   "quando": "2026-10-17T01:05",
+   "fonte": "issues/13-gemini-pronto-e-desligado.md:19",
+   "aproximada": true,
+   "primeiro_commit_git": "f8b8769 2026-10-17T00:14"
+  },
+  "revisao": [
+   {
+    "rodada": 1,
+    "resultado": "PASSA",
+    "quando": "2026-10-17T02:05",
+    "quem": "Fiel",
+    "fonte": "etapas/parecer-13-Trilho.md:5",
+    "aproximada": true,
+    "nota": "hora de issues/13-gemini-pronto-e-desligado.md:23 e etapas/diario-da-construcao.md:15"
+   }
+  ],
+  "juncoes": [
+   {
+    "quando": "2026-10-17T02:02",
+    "quando_fonte": "git 236b3ef (data do commit de junção em integracao)",
+    "hash": "236b3ef",
+    "resultado": "verde",
+    "suite": "190: 182 verdes, 8 pulados, 0 falhas",
+    "junto_com": [],
+    "fonte": "etapas/registro-de-juncoes.md:19",
+    "registro_em": "2026-10-17T02:21"
+   }
+  ],
+  "resolvido": {
+   "quando": "2026-10-17T02:21",
+   "fonte": "issues/13-gemini-pronto-e-desligado.md:24"
+  },
+  "entrega_curta": "Busca pelo Gemini configurada, testada uma vez e desligada",
+  "momentos": [
+   {
+    "evento": "O Gustavo libera o teste único do Gemini",
+    "quando": "2026-10-17T00:30",
+    "fonte": "issues/13-gemini-pronto-e-desligado.md:20",
+    "aproximada": true
+   },
+   {
+    "evento": "Teste único fez 62 pedidos ao Google; contêiner parado de novo",
+    "quando": "2026-10-17T01:50",
+    "fonte": "issues/13-gemini-pronto-e-desligado.md:21",
+    "aproximada": true
+   }
+  ],
+  "lacunas": [
+   "o Trilho diz ~01h05 para o início, mas o primeiro commit do ramo é 00:14"
+  ]
+ },
+ {
+  "id": "14",
+  "titulo": "Guardas: regravação inteira e ficha fora do esquema",
+  "etapa": "5 (guardas no disco)",
+  "status": "resolved",
+  "status_fonte": "issues/14-guardas-regravacao-e-ficha.md:4",
+  "blocked_by": [
+   "05",
+   "03"
+  ],
+  "blocked_by_fonte": "issues/14-guardas-regravacao-e-ficha.md:6",
+  "origem": "original",
+  "construtor": {
+   "nome": "Trilho",
+   "fonte": "issues/14-guardas-regravacao-e-ficha.md:22"
+  },
+  "inicio": {
+   "quando": "2026-10-16T20:15",
+   "fonte": "git 3055de9",
+   "primeiro_commit_git": "3055de9 2026-10-16T20:15",
+   "nota": "o comentário de início (issues/14-guardas-regravacao-e-ficha.md:22) diz só '2026-10-17', sem hora; a data real vem do git"
+  },
+  "revisao": [
+   {
+    "rodada": 1,
+    "resultado": "VOLTA",
+    "quando": "2026-10-17T00:50",
+    "quem": "Fiel + Fielzinho",
+    "fonte": "etapas/parecer-Trilho.md:5",
+    "aproximada": true,
+    "nota": "hora de issues/14-guardas-regravacao-e-ficha.md:32, conflita com a junção (2026-10-16 21:02); Fielzinho em parecer-Trilho-fielzinho.md:66"
+   },
+   {
+    "rodada": 2,
+    "resultado": "PASSA",
+    "quando": "2026-10-17T01:15",
+    "quem": "Fiel + Fielzinho",
+    "fonte": "etapas/parecer-Trilho.md:38",
+    "aproximada": true,
+    "nota": "hora de issues/14-guardas-regravacao-e-ficha.md:38, conflita com a junção; Fielzinho em parecer-Trilho-fielzinho.md:108"
+   }
+  ],
+  "juncoes": [
+   {
+    "quando": "2026-10-16T21:02",
+    "quando_fonte": "git 8d1d785 (data do commit de junção em integracao)",
+    "hash": "8d1d785",
+    "resultado": "verde",
+    "suite": "81 verdes (agents/code/test, gerar-exclusoes, instalador do 03)",
+    "junto_com": [],
+    "fonte": "etapas/registro-de-juncoes.md:9",
+    "registro_em": "2026-10-16T21:03"
+   }
+  ],
+  "resolvido": {
+   "quando": "2026-10-16T21:03",
+   "fonte": "issues/14-guardas-regravacao-e-ficha.md:40"
+  },
+  "entrega_curta": "Barra a regravação de arquivo inteiro e nota fora do padrão",
+  "momentos": [
+   {
+    "evento": "Primeiro commit tira o README da raiz do hub",
+    "quando": "2026-10-16T20:15",
+    "fonte": "git 3055de9"
+   },
+   {
+    "evento": "Vela acha buraco: arquivo em CRLF deixava a gravação passar sem conferência",
+    "quando": "2026-10-17T02:06",
+    "fonte": "issues/14-guardas-regravacao-e-ficha.md:41"
+   }
+  ],
+  "lacunas": [
+   "comentários do Trilho no 14 têm data 2026-10-17 e horas (00:50, 01:15) posteriores à junção de 2026-10-16 21:02; só a ordem é confiável"
+  ]
+ },
+ {
+  "id": "15",
+  "titulo": "Guardas: aviso de leitura fora da busca",
+  "etapa": "5 (guardas no disco)",
+  "status": "resolved",
+  "status_fonte": "issues/15-guardas-aviso-de-leitura.md:4",
+  "blocked_by": [
+   "14",
+   "12"
+  ],
+  "blocked_by_fonte": "issues/15-guardas-aviso-de-leitura.md:6",
+  "origem": "original",
+  "construtor": {
+   "nome": "Trilho",
+   "fonte": "issues/15-guardas-aviso-de-leitura.md:19"
+  },
+  "inicio": {
+   "quando": "2026-10-16T23:25",
+   "fonte": "issues/15-guardas-aviso-de-leitura.md:19",
+   "aproximada": true,
+   "primeiro_commit_git": "1ffde0a 2026-10-16T23:19"
+  },
+  "revisao": [
+   {
+    "rodada": 1,
+    "resultado": "PASSA",
+    "quando": "2026-10-17T00:45",
+    "quem": "Fiel",
+    "fonte": "etapas/parecer-15-Trilho.md:5",
+    "aproximada": true,
+    "nota": "hora de issues/15-guardas-aviso-de-leitura.md:25, conflita com a junção (2026-10-16 23:39)"
+   },
+   {
+    "rodada": 2,
+    "resultado": "PASSA",
+    "quando": "2026-10-17T07:33",
+    "quem": "Fiel + Fielzinho",
+    "fonte": "etapas/diario-da-construcao.md:74",
+    "nota": "rodada nova depois do Codex real; parecer-15-Trilho.md:26; Fielzinho parecer-15-Trilho-fielzinho.md:7"
+   }
+  ],
+  "juncoes": [
+   {
+    "quando": "2026-10-16T23:39",
+    "quando_fonte": "git ac1cd2c (data do commit de junção em integracao)",
+    "hash": "ac1cd2c",
+    "resultado": "verde",
+    "suite": "157: 150 verdes, 7 pulados, 0 falhas",
+    "junto_com": [],
+    "fonte": "etapas/registro-de-juncoes.md:14",
+    "registro_em": "2026-10-16T23:47",
+    "nota": "a 1ª rodada da suíte teve 1 falha de tempo no 12-busca, fora deste ticket; repetida verde"
+   },
+   {
+    "quando": "2026-10-17T07:32",
+    "quando_fonte": "git e2b7607 (data do commit de junção em integracao)",
+    "hash": "e2b7607",
+    "resultado": "verde",
+    "suite": "210: 202 verdes, 8 pulados, 0 falhas",
+    "junto_com": [],
+    "fonte": "etapas/registro-de-juncoes.md:29",
+    "registro_em": "2026-10-17T08:06",
+    "nota": "rodada 2; fecha o aceite real do Codex"
+   }
+  ],
+  "resolvido": {
+   "quando": "2026-10-16T23:47",
+   "fonte": "issues/15-guardas-aviso-de-leitura.md:26",
+   "pendencia_fechada": {
+    "quando": "2026-10-17T08:06",
+    "fonte": "issues/15-guardas-aviso-de-leitura.md:31"
+   }
+  },
+  "entrega_curta": "Avisa quando o agente lê arquivo grande sem buscar antes",
+  "momentos": [
+   {
+    "evento": "Tamanho 'grande' medido no vault antigo: 20.000 bytes",
+    "quando": "2026-10-16T23:40",
+    "fonte": "issues/15-guardas-aviso-de-leitura.md:21",
+    "aproximada": true
+   },
+   {
+    "evento": "Codex real: a leitura pela busca furava o aviso; só a busca fica exposta",
+    "quando": "2026-10-17T03:50",
+    "fonte": "etapas/diario-da-construcao.md:20",
+    "aproximada": true,
+    "hora_aproximada": true
+   },
+   {
+    "evento": "No Codex, hífen no nome da ferramenta chega como sublinhado",
+    "quando": "2026-10-17T07:35",
+    "fonte": "issues/15-guardas-aviso-de-leitura.md:30"
+   }
+  ],
+  "lacunas": []
+ },
+ {
+  "id": "16",
+  "titulo": "Vigia: passada, estado e notificação",
+  "etapa": "6 (vigia)",
+  "status": "resolved",
+  "status_fonte": "issues/16-vigia-passada-estado-e-notificacao.md:4",
+  "blocked_by": [
+   "08",
+   "10"
+  ],
+  "blocked_by_fonte": "issues/16-vigia-passada-estado-e-notificacao.md:6",
+  "origem": "original",
+  "construtor": {
+   "nome": "Trilho",
+   "fonte": "issues/16-vigia-passada-estado-e-notificacao.md:28"
+  },
+  "inicio": {
+   "quando": "2026-10-17T04:50",
+   "fonte": "issues/16-vigia-passada-estado-e-notificacao.md:28",
+   "aproximada": true,
+   "primeiro_commit_git": "060da24 2026-10-17T04:30",
+   "nota": "o diário põe o começo às 04:25 (etapas/diario-da-construcao.md:34)"
+  },
+  "revisao": [
+   {
+    "rodada": 0,
+    "resultado": "sem conserto (parcial, não conta como rodada)",
+    "quando": "2026-10-17T06:55",
+    "quem": "Fiel",
+    "fonte": "etapas/parecer-16-Trilho.md:6",
+    "aproximada": true,
+    "nota": "leitura intermediária"
+   },
+   {
+    "rodada": 1,
+    "resultado": "VOLTA",
+    "quando": "2026-10-17T09:29",
+    "quem": "Fiel",
+    "fonte": "etapas/diario-da-construcao.md:106",
+    "nota": "1 conserto; parecer-16-Trilho.md:40 (cabeçalho diz ~10h50, adiantado)"
+   },
+   {
+    "rodada": 2,
+    "resultado": "PASSA",
+    "quando": "2026-10-17T09:39",
+    "quem": "Fiel",
+    "fonte": "etapas/diario-da-construcao.md:111",
+    "nota": "parecer-16-Trilho.md:73 (cabeçalho diz ~11h20, adiantado)"
+   },
+   {
+    "rodada": 3,
+    "resultado": "PASSA",
+    "quando": null,
+    "quem": "Fiel",
+    "fonte": "etapas/parecer-16-Trilho.md:83",
+    "nota": "rodada curta depois da junção vermelha; entre o conserto 6a0ab17 (git 10:55) e a junção (git 11:21); cabeçalho diz ~11h40"
+   }
+  ],
+  "juncoes": [
+   {
+    "quando": "2026-10-17T10:12",
+    "quando_fonte": "git fce0529 (data do commit de junção em integracao)",
+    "hash": "fce0529",
+    "resultado": "vermelha, desfeita",
+    "suite": "229: 219 verdes, 2 falhas no 12-busca",
+    "junto_com": [],
+    "fonte": "etapas/registro-de-juncoes.md:32",
+    "registro_em": "2026-10-17T10:46",
+    "nota": "a busca recusava o SKILL.md da vigia por YAML inválido; integracao voltou a e98a891"
+   },
+   {
+    "quando": "2026-10-17T11:21",
+    "quando_fonte": "git 30b735f (data do commit de junção em integracao)",
+    "hash": "30b735f",
+    "resultado": "verde",
+    "suite": "253: 244 verdes, 9 pulados, 0 falhas",
+    "junto_com": [
+     "21"
+    ],
+    "fonte": "etapas/registro-de-juncoes.md:33",
+    "registro_em": "2026-10-17T11:41"
+   }
+  ],
+  "resolvido": {
+   "quando": "2026-10-17T11:41",
+   "fonte": "issues/16-vigia-passada-estado-e-notificacao.md:41"
+  },
+  "entrega_curta": "Vigia que confere banco e disco e avisa só quando piora",
+  "momentos": [
+   {
+    "evento": "Maestro define 'piora': algum item sobe de nível",
+    "quando": "2026-10-17T04:26",
+    "fonte": "issues/16-vigia-passada-estado-e-notificacao.md:30"
+   },
+   {
+    "evento": "Docker da vigia: 6 falhas na 1ª rodada",
+    "quando": "2026-10-17T05:06",
+    "fonte": "etapas/diario-da-construcao.md:43"
+   },
+   {
+    "evento": "Achado: com o caminho ofuscado, os pedaços vão cifrados",
+    "quando": "2026-10-17T06:40",
+    "fonte": "issues/16-vigia-passada-estado-e-notificacao.md:32"
+   },
+   {
+    "evento": "Junção vermelha: dois-pontos no texto do SKILL.md quebrou o YAML",
+    "quando": "2026-10-17T10:49",
+    "fonte": "etapas/diario-da-construcao.md:128"
+   }
+  ],
+  "lacunas": [
+   "horas dos cabeçalhos do parecer-16 (10h50, 11h20, 11h40) estão adiantadas em relação ao diário e ao git"
+  ]
+ },
+ {
+  "id": "17",
+  "titulo": "Vigia nas telas dos harnesses",
+  "etapa": "6 (vigia)",
+  "status": "resolved",
+  "status_fonte": "issues/17-vigia-nas-telas-dos-harnesses.md:4",
+  "blocked_by": [
+   "16",
+   "03"
+  ],
+  "blocked_by_fonte": "issues/17-vigia-nas-telas-dos-harnesses.md:6",
+  "origem": "original",
+  "construtor": {
+   "nome": "Vela",
+   "fonte": "issues/17-vigia-nas-telas-dos-harnesses.md:22"
+  },
+  "inicio": {
+   "quando": "2026-10-17T05:11",
+   "fonte": "issues/17-vigia-nas-telas-dos-harnesses.md:22",
+   "primeiro_commit_git": "2947951 2026-10-17T05:14"
+  },
+  "revisao": [
+   {
+    "rodada": 1,
+    "resultado": "VOLTA",
+    "quando": null,
+    "quem": "Fiel + Fielzinho",
+    "fonte": "etapas/parecer-17-Vela.md:5",
+    "nota": "estado sem passada; cabeçalho diz ~08h, mas a rodada 2 passou às 07:46; Fielzinho parecer-17-Vela-fielzinho.md:7"
+   },
+   {
+    "rodada": 2,
+    "resultado": "PASSA",
+    "quando": "2026-10-17T07:46",
+    "quem": "Fiel",
+    "fonte": "etapas/diario-da-construcao.md:79",
+    "nota": "parecer-17-Vela.md:38"
+   },
+   {
+    "rodada": 3,
+    "resultado": "PASSA",
+    "quando": "2026-10-17T11:58",
+    "quem": "Fiel",
+    "fonte": "issues/17-vigia-nas-telas-dos-harnesses.md:29",
+    "nota": "rodada nova com o 16 juntado; parecer-17-Vela.md:51"
+   }
+  ],
+  "juncoes": [
+   {
+    "quando": "2026-10-17T11:58",
+    "quando_fonte": "git e7203b4 (data do commit de junção em integracao)",
+    "hash": "e7203b4",
+    "resultado": "verde",
+    "suite": "273: 263 verdes, 10 pulados, 0 falhas",
+    "junto_com": [],
+    "fonte": "etapas/registro-de-juncoes.md:34",
+    "registro_em": "2026-10-17T12:34"
+   }
+  ],
+  "resolvido": {
+   "quando": "2026-10-17T12:34",
+   "fonte": "issues/17-vigia-nas-telas-dos-harnesses.md:30"
+  },
+  "entrega_curta": "Estado da vigia na tela e no início dos três harnesses",
+  "momentos": [
+   {
+    "evento": "Começa antes do 16, contra um exemplo fixo do estado",
+    "quando": "2026-10-17T05:09",
+    "fonte": "issues/17-vigia-nas-telas-dos-harnesses.md:21"
+   },
+   {
+    "evento": "Ponta a ponta real verde nos três harnesses",
+    "quando": "2026-10-17T07:28",
+    "fonte": "issues/17-vigia-nas-telas-dos-harnesses.md:26"
+   },
+   {
+    "evento": "Testes trocados do exemplo para o estado real do 16",
+    "quando": "2026-10-17T11:52",
+    "fonte": "issues/17-vigia-nas-telas-dos-harnesses.md:28"
+   }
+  ],
+  "lacunas": [
+   "hora da rodada 1 (VOLTA) não está em fonte confiável; fica entre 07:28 e 07:46"
+  ]
+ },
+ {
+  "id": "18",
+  "titulo": "Retomada: nota de sete campos, início e fim",
+  "etapa": "7 (retomada)",
+  "status": "resolved",
+  "status_fonte": "issues/18-retomada-nota-inicio-e-fim.md:4",
+  "blocked_by": [
+   "04",
+   "17",
+   "03"
+  ],
+  "blocked_by_fonte": "issues/18-retomada-nota-inicio-e-fim.md:6",
+  "origem": "original",
+  "construtor": {
+   "nome": "Vela",
+   "fonte": "issues/18-retomada-nota-inicio-e-fim.md:27"
+  },
+  "inicio": {
+   "quando": "2026-10-17T07:30",
+   "fonte": "issues/18-retomada-nota-inicio-e-fim.md:27",
+   "primeiro_commit_git": "ca2bb45 2026-10-17T07:34"
+  },
+  "revisao": [
+   {
+    "rodada": 1,
+    "resultado": "VOLTA",
+    "quando": "2026-10-17T08:55",
+    "quem": "Fiel",
+    "fonte": "etapas/diario-da-construcao.md:97",
+    "nota": "o fim cobrava a nota de quem não gravou; parecer-18-Vela.md:5"
+   },
+   {
+    "rodada": 2,
+    "resultado": "PASSA com ressalvas",
+    "quando": "2026-10-17T09:07",
+    "quem": "Fiel",
+    "fonte": "etapas/diario-da-construcao.md:99",
+    "nota": "parecer-18-Vela.md:45"
+   },
+   {
+    "rodada": 3,
+    "resultado": "PASSA",
+    "quando": null,
+    "quem": "Fiel",
+    "fonte": "etapas/parecer-18-Vela.md:70",
+    "nota": "rodada curta de código; a Vela corrige: foi entre 08:40 e 09:13 (issues/18-retomada-nota-inicio-e-fim.md:36)"
+   },
+   {
+    "rodada": 4,
+    "resultado": "PASSA",
+    "quando": null,
+    "quem": "Fiel",
+    "fonte": "etapas/parecer-18-Vela.md:77",
+    "nota": "rodada curta de evidência (Claude e Copilot de novo); cabeçalho ~11h"
+   },
+   {
+    "rodada": 5,
+    "resultado": "VOLTA",
+    "quando": null,
+    "quem": "Fiel",
+    "fonte": "etapas/parecer-18-Vela.md:82",
+    "nota": "prova do Codex: conserto mecânico (modelo à mão); entre a evidência f050351 (git 15:20) e o conserto 4f0b09e (git 15:35)"
+   },
+   {
+    "rodada": 6,
+    "resultado": "PASSA",
+    "quando": "2026-10-17T15:54",
+    "quem": "Fiel + 2ª leitura (subagente)",
+    "fonte": "issues/18-retomada-nota-inicio-e-fim.md:39",
+    "nota": "parecer-18-Vela.md:103; 2ª leitura parecer-18-Vela-segunda-leitura.md:1"
+   }
+  ],
+  "juncoes": [
+   {
+    "quando": "2026-10-17T16:16",
+    "quando_fonte": "git dc4ed6a (data do commit de junção em integracao)",
+    "hash": "dc4ed6a",
+    "resultado": "verde",
+    "suite": "355: 342 verdes, 13 pulados, 0 falhas",
+    "junto_com": [
+     "37",
+     "23"
+    ],
+    "fonte": "etapas/registro-de-juncoes.md:41",
+    "registro_em": "2026-10-17T16:44"
+   }
+  ],
+  "resolvido": {
+   "quando": "2026-10-17T16:44",
+   "fonte": "issues/18-retomada-nota-inicio-e-fim.md:40"
+  },
+  "entrega_curta": "Nota de retomada cobrada no fim e aberta no início da sessão",
+  "momentos": [
+   {
+    "evento": "Decidido pelo maestro (muda o spec): nota de quem conduz e passagem por recruta",
+    "quando": "2026-10-17T07:31",
+    "fonte": "issues/18-retomada-nota-inicio-e-fim.md:29"
+   },
+   {
+    "evento": "Ponta a ponta real verde no Claude e no Copilot",
+    "quando": "2026-10-17T08:35",
+    "fonte": "etapas/diario-da-construcao.md:91"
+   },
+   {
+    "evento": "A Vela corrige horas estimadas nos próprios comentários",
+    "quando": "2026-10-17T09:13",
+    "fonte": "issues/18-retomada-nota-inicio-e-fim.md:36"
+   },
+   {
+    "evento": "Codex de verdade verde",
+    "quando": "2026-10-17T15:21",
+    "fonte": "issues/18-retomada-nota-inicio-e-fim.md:38"
+   },
+   {
+    "evento": "Conflito no AGENTS.md resolvido; cabeça com 1.869 de 2.000 caracteres",
+    "quando": "2026-10-17T16:44",
+    "fonte": "issues/18-retomada-nota-inicio-e-fim.md:40"
+   }
+  ],
+  "lacunas": [
+   "horas dos cabeçalhos do parecer-18 estão adiantadas ~1h; rodadas 3, 4 e 5 sem hora confiável"
+  ]
+ },
+ {
+  "id": "19",
+  "titulo": "Roteamento de skills",
+  "etapa": "8 (skills e acervo)",
+  "status": "resolved",
+  "status_fonte": "issues/19-roteamento-de-skills.md:4",
+  "blocked_by": [
+   "04"
+  ],
+  "blocked_by_fonte": "issues/19-roteamento-de-skills.md:6",
+  "origem": "original",
+  "construtor": {
+   "nome": "Vela",
+   "fonte": "issues/19-roteamento-de-skills.md:20"
+  },
+  "inicio": {
+   "quando": "2026-10-16T22:02",
+   "fonte": "git d57e36b",
+   "primeiro_commit_git": "d57e36b 2026-10-16T22:02",
+   "nota": "o comentário de início (issues/19-roteamento-de-skills.md:20) diz só '2026-10-17', sem hora; passado à Vela ~21h55 (issues/19-roteamento-de-skills.md:19)"
+  },
+  "revisao": [
+   {
+    "rodada": 1,
+    "resultado": "PASSA",
+    "quando": null,
+    "quem": "Fiel",
+    "fonte": "etapas/parecer-19-Vela.md:5",
+    "nota": "sem hora (issues/19-roteamento-de-skills.md:25); entre o último commit 52c6328 (git 22:19) e a junção (22:24)"
+   }
+  ],
+  "juncoes": [
+   {
+    "quando": "2026-10-16T22:24",
+    "quando_fonte": "git dc56d47 (data do commit de junção em integracao)",
+    "hash": "dc56d47",
+    "resultado": "verde",
+    "suite": "133: 128 verdes, 5 pulados, 0 falhas",
+    "junto_com": [],
+    "fonte": "etapas/registro-de-juncoes.md:12",
+    "registro_em": "2026-10-16T22:28",
+    "nota": "a 1ª rodada da suíte teve 1 falha intermitente no 05-frontmatter; repetida verde"
+   }
+  ],
+  "resolvido": {
+   "quando": "2026-10-16T22:28",
+   "fonte": "issues/19-roteamento-de-skills.md:26"
+  },
+  "entrega_curta": "Tabela que indica a skill certa para cada pedido, sem IA",
+  "momentos": [
+   {
+    "evento": "Leitura tardia do Fielzinho acha 2 problemas no registro; viram o ticket 34",
+    "quando": "2026-10-17T02:15",
+    "fonte": "etapas/diario-da-construcao.md:16",
+    "aproximada": true,
+    "nota": "achados em parecer-19-Vela.md:31 e parecer-19-Vela-fielzinho.md:7"
+   }
+  ],
+  "lacunas": [
+   "comentários da Vela no 19 sem hora"
+  ]
+ },
+ {
+  "id": "20",
+  "titulo": "Acervo do maestro e a guarda dele",
+  "etapa": "8 (skills e acervo)",
+  "status": "resolved",
+  "status_fonte": "issues/20-acervo-do-maestro-e-guarda.md:4",
+  "blocked_by": [
+   "19",
+   "03"
+  ],
+  "blocked_by_fonte": "issues/20-acervo-do-maestro-e-guarda.md:6",
+  "origem": "original",
+  "construtor": {
+   "nome": "Vela",
+   "fonte": "issues/20-acervo-do-maestro-e-guarda.md:21"
+  },
+  "inicio": {
+   "quando": "2026-10-16T22:42",
+   "fonte": "git 8acd1ce",
+   "primeiro_commit_git": "8acd1ce 2026-10-16T22:42",
+   "nota": "o comentário de início (issues/20-acervo-do-maestro-e-guarda.md:21) diz só '2026-10-17', sem hora; a data real vem do git"
+  },
+  "revisao": [
+   {
+    "rodada": 1,
+    "resultado": "VOLTA",
+    "quando": null,
+    "quem": "Fiel",
+    "fonte": "etapas/parecer-20-Vela.md:5",
+    "nota": "sem hora; depois da prova real e5d24a7 (git 23:20)"
+   },
+   {
+    "rodada": 2,
+    "resultado": "PASSA",
+    "quando": null,
+    "quem": "Fiel",
+    "fonte": "etapas/parecer-20-Vela.md:35",
+    "nota": "sem hora (issues/20-acervo-do-maestro-e-guarda.md:28); entre 5811579 (git 23:42) e a junção (23:48)"
+   }
+  ],
+  "juncoes": [
+   {
+    "quando": "2026-10-16T23:48",
+    "quando_fonte": "git f83c8f5 (data do commit de junção em integracao)",
+    "hash": "f83c8f5",
+    "resultado": "verde",
+    "suite": "174: 166 verdes, 8 pulados, 0 falhas",
+    "junto_com": [],
+    "fonte": "etapas/registro-de-juncoes.md:15",
+    "registro_em": "2026-10-17T00:01",
+    "nota": "a 1ª rodada da suíte teve 1 falha intermitente no 27-pastas; repetida verde"
+   },
+   {
+    "quando": "2026-10-17T02:21",
+    "quando_fonte": "git e82ce65 (data do commit de junção em integracao)",
+    "hash": "e82ce65",
+    "resultado": "verde",
+    "suite": "191: 183 verdes, 8 pulados, 0 falhas",
+    "junto_com": [
+     "31"
+    ],
+    "fonte": "etapas/registro-de-juncoes.md:20",
+    "registro_em": "2026-10-17T02:51",
+    "nota": "só a evidência real do Codex do 20, junto com o 31"
+   }
+  ],
+  "resolvido": {
+   "quando": "2026-10-17T00:01",
+   "fonte": "issues/20-acervo-do-maestro-e-guarda.md:29",
+   "pendencia_fechada": {
+    "quando": "2026-10-17T02:51",
+    "fonte": "issues/20-acervo-do-maestro-e-guarda.md:32"
+   }
+  },
+  "entrega_curta": "Família de skills do maestro e guarda que protege o acervo",
+  "momentos": [
+   {
+    "evento": "Codex sem cota até 01h34; a prova real dele fica pendente",
+    "quando": "2026-10-16T23:20",
+    "fonte": "git e5d24a7",
+    "nota": "comentário em issues/20-acervo-do-maestro-e-guarda.md:26"
+   },
+   {
+    "evento": "O Gustavo confirma a regra da linha nova no catálogo",
+    "quando": "2026-10-17T00:16",
+    "fonte": "issues/20-acervo-do-maestro-e-guarda.md:30"
+   },
+   {
+    "evento": "As três lacunas de dono, decididas pelo Gustavo, viram o ticket 31",
+    "quando": "2026-10-17T00:21",
+    "fonte": "issues/20-acervo-do-maestro-e-guarda.md:31"
+   }
+  ],
+  "lacunas": [
+   "horas das rodadas do Fiel não estão nas fontes"
+  ]
+ },
+ {
+  "id": "21",
+  "titulo": "Arquivar e cópia diária",
+  "etapa": "9 (manutenção e cliente)",
+  "status": "resolved",
+  "status_fonte": "issues/21-arquivar-e-copia-diaria.md:4",
+  "blocked_by": [
+   "08",
+   "16"
+  ],
+  "blocked_by_fonte": "issues/21-arquivar-e-copia-diaria.md:6",
+  "origem": "original",
+  "construtor": {
+   "nome": "Trilho",
+   "fonte": "issues/21-arquivar-e-copia-diaria.md:21"
+  },
+  "inicio": {
+   "quando": "2026-10-17T07:50",
+   "fonte": "issues/21-arquivar-e-copia-diaria.md:21",
+   "aproximada": true,
+   "primeiro_commit_git": "5061cc3 2026-10-17T07:39",
+   "nota": "o maestro abriu às 07:31 (issues/21-arquivar-e-copia-diaria.md:20)"
+  },
+  "revisao": [
+   {
+    "rodada": 1,
+    "resultado": "VOLTA",
+    "quando": "2026-10-17T10:38",
+    "quem": "Fiel",
+    "fonte": "etapas/diario-da-construcao.md:125",
+    "nota": "2 consertos; parecer-21-Trilho.md:8 (cabeçalho ~10h20)"
+   },
+   {
+    "rodada": 2,
+    "resultado": "PASSA",
+    "quando": "2026-10-17T11:21",
+    "quem": "Fiel",
+    "fonte": "etapas/diario-da-construcao.md:133",
+    "nota": "parecer-21-Trilho.md:60 (cabeçalho ~11h55, adiantado); Fielzinho PASSA depois em parecer-21-Trilho.md:81"
+   }
+  ],
+  "juncoes": [
+   {
+    "quando": "2026-10-17T11:21",
+    "quando_fonte": "git fdd3760 (data do commit de junção em integracao)",
+    "hash": "fdd3760",
+    "resultado": "verde",
+    "suite": "253: 244 verdes, 9 pulados, 0 falhas",
+    "junto_com": [
+     "16"
+    ],
+    "fonte": "etapas/registro-de-juncoes.md:33",
+    "registro_em": "2026-10-17T11:41"
+   }
+  ],
+  "resolvido": {
+   "quando": "2026-10-17T11:41",
+   "fonte": "issues/21-arquivar-e-copia-diaria.md:33"
+  },
+  "entrega_curta": "Arquivar pasta com o outro par em dia; cópia diária ao GitHub",
+  "momentos": [
+   {
+    "evento": "Renomear a pasta deu erro de permissão com o sincronizador rodando",
+    "quando": "2026-10-17T08:35",
+    "fonte": "issues/21-arquivar-e-copia-diaria.md:24"
+   },
+   {
+    "evento": "Causa: o observador do sincronizador numa subpasta trava a renomeação; arquivar move arquivo por arquivo",
+    "quando": "2026-10-17T09:14",
+    "fonte": "etapas/diario-da-construcao.md:101"
+   },
+   {
+    "evento": "Docker 3ª rodada tudo passou",
+    "quando": "2026-10-17T09:45",
+    "fonte": "issues/21-arquivar-e-copia-diaria.md:28"
+   },
+   {
+    "evento": "Arquivo de configuração nasceu igual no 21 e no 22; as duas metades ficam",
+    "quando": "2026-10-17T10:42",
+    "fonte": "etapas/diario-da-construcao.md:127"
+   }
+  ],
+  "lacunas": []
+ },
+ {
+  "id": "22",
+  "titulo": "Proxy e kit de cliente",
+  "etapa": "9 (manutenção e cliente)",
+  "status": "resolved",
+  "status_fonte": "issues/22-proxy-e-kit-de-cliente.md:4",
+  "blocked_by": [
+   "10",
+   "12"
+  ],
+  "blocked_by_fonte": "issues/22-proxy-e-kit-de-cliente.md:6",
+  "origem": "original",
+  "construtor": {
+   "nome": "Brasa",
+   "fonte": "issues/22-proxy-e-kit-de-cliente.md:25",
+   "nota": "passado à Brasa às 06:50 (issues/22-proxy-e-kit-de-cliente.md:24)"
+  },
+  "inicio": {
+   "quando": "2026-10-17T07:20",
+   "fonte": "issues/22-proxy-e-kit-de-cliente.md:25",
+   "aproximada": true,
+   "primeiro_commit_git": "73c0693 2026-10-17T07:05"
+  },
+  "revisao": [
+   {
+    "rodada": 1,
+    "resultado": "VOLTA",
+    "quando": "2026-10-17T10:30",
+    "quem": "Fiel",
+    "fonte": "etapas/parecer-22-Brasa.md:8",
+    "aproximada": true,
+    "nota": "1 conserto (proxy não religava com token trocado); hora do cabeçalho (parecer-22-Brasa.md:3)"
+   },
+   {
+    "rodada": 2,
+    "resultado": "PASSA",
+    "quando": "2026-10-17T10:42",
+    "quem": "Fiel",
+    "fonte": "etapas/diario-da-construcao.md:127",
+    "nota": "parecer-22-Brasa.md:54; ramo refeito sem o 16, PASSA de novo em parecer-22-Brasa.md:67"
+   },
+   {
+    "rodada": 3,
+    "resultado": "PASSA",
+    "quando": null,
+    "quem": "Fiel",
+    "fonte": "etapas/parecer-22-Brasa.md:93",
+    "nota": "rodada curta da manutenção (achado do Fielzinho); antes da junção c42ffa0 (git 12:58); cabeçalho diz ~13h40"
+   },
+   {
+    "rodada": 4,
+    "resultado": "PASSA",
+    "quando": "2026-10-17T18:34",
+    "quem": "Fiel + 2ª leitura (subagente)",
+    "fonte": "etapas/diario-da-construcao.md:188",
+    "nota": "rodada curta da evidência do Codex; parecer-22-Brasa.md:109; parecer-22-Brasa-segunda-leitura.md:8"
+   }
+  ],
+  "juncoes": [
+   {
+    "quando": "2026-10-17T10:52",
+    "quando_fonte": "git 4a47576 (data do commit de junção em integracao)",
+    "hash": "4a47576",
+    "resultado": "verde",
+    "suite": "215: 206 verdes, 9 pulados, 0 falhas",
+    "junto_com": [],
+    "fonte": "etapas/registro-de-juncoes.md:31",
+    "registro_em": "2026-10-17T11:21"
+   },
+   {
+    "quando": "2026-10-17T12:58",
+    "quando_fonte": "git c42ffa0 (data do commit de junção em integracao)",
+    "hash": "c42ffa0",
+    "resultado": "verde",
+    "suite": "285: 275 verdes, 10 pulados, 0 falhas",
+    "junto_com": [
+     "38",
+     "39"
+    ],
+    "fonte": "etapas/registro-de-juncoes.md:36",
+    "registro_em": "2026-10-17T14:06",
+    "nota": "manutenção: o kit trocava inteiro o bloco do config.toml do Codex"
+   },
+   {
+    "quando": "2026-10-17T18:31",
+    "quando_fonte": "git 56cd23a (data do commit de junção em integracao)",
+    "hash": "56cd23a",
+    "resultado": "verde",
+    "suite": "359: 345 verdes, 14 pulados, 0 falhas",
+    "junto_com": [
+     "24"
+    ],
+    "fonte": "etapas/registro-de-juncoes.md:43",
+    "registro_em": "2026-10-17T19:22",
+    "nota": "só a evidência do Codex como cliente"
+   }
+  ],
+  "resolvido": {
+   "quando": "2026-10-17T11:21",
+   "fonte": "issues/22-proxy-e-kit-de-cliente.md:37",
+   "pendencia_fechada": {
+    "quando": "2026-10-17T19:22",
+    "fonte": "issues/22-proxy-e-kit-de-cliente.md:43"
+   }
+  },
+  "entrega_curta": "Proxy com um token por servidor e kit que liga os clientes",
+  "momentos": [
+   {
+    "evento": "Docker cortado pela memória (613 MB) na indexação da busca",
+    "quando": "2026-10-17T08:29",
+    "fonte": "etapas/diario-da-construcao.md:90"
+   },
+   {
+    "evento": "Docker verde na janela quieta; achado: o proxy não repassa as instruções do servidor",
+    "quando": "2026-10-17T09:49",
+    "fonte": "etapas/diario-da-construcao.md:114"
+   },
+   {
+    "evento": "Fielzinho acha que o kit apagava a confiança de projeto do Codex",
+    "quando": "2026-10-17T12:39",
+    "fonte": "issues/22-proxy-e-kit-de-cliente.md:39"
+   },
+   {
+    "evento": "Codex como cliente cortado pela memória (583 MB) na subida dos pares",
+    "quando": "2026-10-17T15:33",
+    "fonte": "etapas/diario-da-construcao.md:171"
+   },
+   {
+    "evento": "Codex como cliente passa na janela quieta da noite",
+    "quando": "2026-10-17T17:19",
+    "fonte": "issues/22-proxy-e-kit-de-cliente.md:41"
+   }
+  ],
+  "lacunas": [
+   "hora da rodada curta da manutenção: cabeçalho (~13h40) conflita com o git da junção (12:58)"
+  ]
+ }
+]

@@ -1,0 +1,423 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>O rio estreito</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,600;0,6..12,700;0,6..12,800;1,6..12,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --papel:#f4eedf; --papel2:#e9dfc6; --grade:#d9cdb0; --tinta:#1f2a37; --tinta2:#55606c;
+  --agua:#a8cde4; --agua2:#cfe4f1; --margem:#24557f; --seco:#c9b48a;
+  --corte:#c0392b; --pedra:#6d6458; --ponte:#8a5a2b; --placa:#1f2a37; --marco:#7a6a4f;
+  --janela:rgba(255,255,255,.55);
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--papel);color:var(--tinta)}
+body{font-family:"Nunito Sans",system-ui,sans-serif;font-size:16px;line-height:1.5}
+.topo{max-width:1400px;margin:0 auto;padding:40px 24px 8px}
+h1{font-family:Fraunces,Georgia,serif;font-weight:600;font-size:clamp(34px,5vw,56px);line-height:1.05;margin:0 0 6px;letter-spacing:-.01em}
+.sub{font-size:18px;color:var(--tinta2);margin:0 0 22px;max-width:760px}
+.numeros{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;margin:0 0 22px}
+.num{background:rgba(255,255,255,.5);border:1px solid var(--grade);border-radius:12px;padding:12px 14px;cursor:default}
+.num b{display:block;font-family:Fraunces,Georgia,serif;font-weight:600;font-size:clamp(28px,3.4vw,42px);line-height:1.05}
+.num span{display:block;font-size:14px;color:var(--tinta2);line-height:1.3;margin-top:4px}
+.num.vermelho b{color:var(--corte)}
+.legenda{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:14px;color:var(--tinta2);margin:0 0 6px;align-items:center}
+.donos i{display:inline-block;width:12px;height:12px;border-radius:3px;margin:0 4px 0 8px;vertical-align:-1px}
+.legenda svg{vertical-align:middle;margin-right:6px}
+.leitura{font-size:15px;color:var(--tinta2);margin:6px 0 0}
+#carta-wrap{position:relative;max-width:1400px;margin:0 auto;padding:0 0 10px}
+#carta{display:block;width:100%;height:auto;overflow:visible}
+.relogio{position:sticky;top:0;z-index:5;display:flex;gap:14px;align-items:baseline;justify-content:center;
+  background:rgba(244,238,223,.94);backdrop-filter:blur(3px);border-bottom:1px solid var(--grade);padding:6px 12px;font-size:14px;color:var(--tinta2)}
+.relogio b{font-family:Fraunces,Georgia,serif;font-weight:600;font-size:20px;color:var(--tinta)}
+.foz{max-width:1400px;margin:0 auto;padding:10px 24px 40px}
+.foz h2{font-family:Fraunces,Georgia,serif;font-weight:600;font-size:28px;margin:0 0 6px}
+.foz p{margin:0 0 10px;max-width:820px}
+.fontes{font-size:13px;color:var(--tinta2)}
+.fontes summary{cursor:pointer;font-weight:700}
+/* svg */
+.rot{font-family:"Nunito Sans",sans-serif;font-size:var(--fr,14px);fill:var(--tinta);font-weight:600}
+.rot.leve{font-weight:400;fill:var(--tinta2)}
+.rot.corte{fill:var(--corte);font-weight:800}
+.rot.fecho{fill:#2f7d4a;font-weight:800}
+.hora{font-family:"Nunito Sans",sans-serif;font-size:12.5px;fill:var(--tinta2);font-weight:700}
+.sond{font-family:"Nunito Sans",sans-serif;font-style:italic;font-weight:600;font-size:12.5px;fill:#163c5c}
+.titfaixa{font-family:Fraunces,Georgia,serif;font-weight:600;font-size:17px;fill:var(--tinta)}
+.alvo{cursor:pointer}
+.alvo:hover .halo,.alvo.ativo .halo{opacity:1}
+.halo{opacity:0;transition:opacity .15s}
+.fluxo{stroke:#ffffff;stroke-width:1.2;stroke-dasharray:2 14;opacity:.55;animation:corre 3.5s linear infinite}
+@keyframes corre{to{stroke-dashoffset:-32}}
+@media (prefers-reduced-motion:reduce){.fluxo{animation:none}}
+/* cartão */
+#cartao{position:fixed;z-index:20;max-width:380px;background:#fffdf7;border:1px solid var(--grade);border-radius:12px;
+  box-shadow:0 10px 30px rgba(31,42,55,.18);padding:14px 16px;font-size:15px;line-height:1.45;display:none}
+#cartao h3{font-family:Fraunces,Georgia,serif;font-weight:600;font-size:19px;margin:0 0 4px;line-height:1.2}
+#cartao .quando{font-size:13px;font-weight:700;color:var(--tinta2);margin:0 0 8px}
+#cartao dl{margin:0}#cartao dt{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--tinta2);font-weight:800;margin-top:6px}
+#cartao dd{margin:0}
+#cartao .fonte{font-size:12px;color:var(--tinta2);margin-top:8px;word-break:break-word}
+#cartao .fechar{display:none;position:absolute;right:8px;top:6px;border:0;background:none;font-size:24px;color:var(--tinta2);cursor:pointer}
+@media (max-width:700px){
+  :root{--fr:13.5px}
+  .topo{padding:22px 16px 6px}
+  .numeros{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  .numeros .num:first-child{grid-column:1 / -1}
+  .sub{font-size:16px}
+  .foz{padding:10px 16px 30px}
+  #cartao{left:8px!important;right:8px;bottom:8px;top:auto!important;max-width:none;max-height:60vh;overflow:auto}
+  #cartao .fechar{display:block}
+}
+</style>
+</head>
+<body>
+<header class="topo">
+  <h1>O rio estreito</h1>
+  <p class="sub" id="sub"></p>
+  <div class="numeros" id="numeros"></div>
+  <div class="legenda" id="legenda"></div>
+  <p class="leitura" id="leitura"></p>
+</header>
+<div class="relogio" id="relogio" aria-live="off"></div>
+<main id="carta-wrap"><svg id="carta" role="img" aria-label="Carta do rio da construção"></svg></main>
+<footer class="foz" id="foz"></footer>
+<div id="cartao" role="dialog"><button class="fechar" aria-label="Fechar">×</button><div id="cartao-corpo"></div></div>
+
+<script id="fatos" type="application/json">/*FATOS*/</script>
+<script>
+(function(){
+const F = JSON.parse(document.getElementById('fatos').textContent);
+const DONO = F.cores || {};
+const esc = s => String(s==null?'':s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+/* tempo: minutos desde o início */
+const [d0,h0] = F.meta.inicio.split('T');
+function minutos(s){ if(!s) return null; const [d,h]=s.split('T'); const dia=+d.slice(8,10), [hh,mm]=h.split(':').map(Number);
+  return (dia-+d0.slice(8,10))*1440 + hh*60 + mm - (+h0.slice(0,2)*60 + +h0.slice(3,5)); }
+const hm = s => s ? s.split('T')[1].slice(0,5).replace(':','h') : '';
+const diaHora = s => { if(!s) return ''; const d=+s.slice(8,10); return (d===16?'16/10 ':'')+hm(s); };
+const QF = minutos(F.meta.quebra_fim), FIM = minutos(F.meta.fim);
+const gb = mb => (mb/1000).toLocaleString('pt-BR',{maximumFractionDigits:1, minimumFractionDigits:1});
+
+/* itens do cartão */
+const ITENS = []; const novoItem = o => (ITENS.push(o), ITENS.length-1);
+
+function cabecalho(){
+  document.getElementById('sub').textContent = F.textos.subtitulo;
+  document.getElementById('numeros').innerHTML = F.numeros.map((n,i)=>{
+    const k=novoItem({titulo:n.rotulo, quando:'', campos:[['De onde vem', n.detalhe]], fonte:n.fonte});
+    return `<div class="num alvo ${n.destaque?'vermelho':''}" data-k="${k}" tabindex="0"><b>${esc(n.valor)}</b><span>${esc(n.rotulo)}</span></div>`;}).join('');
+  const L = [
+    ['<svg width="34" height="16"><path d="M2 2 C12 6 22 6 32 2 L32 14 C22 10 12 10 2 14Z" fill="var(--agua)" stroke="var(--margem)" stroke-width="1.3"/></svg>','largura do rio = memória livre medida'],
+    ['<svg width="16" height="26"><path d="M3 2 H13 V18 L8 24 L3 18Z" fill="#d4572a" stroke="#fff"/></svg>','barco = quem segurou a trava (um por vez); a boca do barco = 700 MB, o corte'],
+    ['<svg width="18" height="18"><path d="M3 3 L15 15 M15 3 L3 15" stroke="var(--corte)" stroke-width="3" stroke-linecap="round"/></svg>','encalhe: caiu por falta de memória'],
+    ['<svg width="20" height="30"><path d="M3 9 L8 3 L15 5 L17 11 L11 14 L4 13Z" fill="var(--pedra)"/><path d="M10 14 V25" stroke="var(--pedra)" stroke-width="2"/><path d="M2 29 Q10 21 18 29" fill="none" stroke="var(--ponte)" stroke-width="3"/></svg>','pedra = achado que derrubou algo; ponte = o conserto'],
+    ['<svg width="22" height="18"><rect x="1" y="2" width="20" height="12" rx="2" fill="var(--placa)"/><path d="M11 14 V18" stroke="var(--placa)" stroke-width="2"/></svg>','placa = regra nova do Gustavo'],
+    ['<svg width="16" height="18"><path d="M8 1 L15 9 L8 17 L1 9Z" fill="none" stroke="var(--marco)" stroke-width="2"/></svg>','marco = decisão do maestro pelo mandato'],
+    ['<svg width="30" height="16"><path d="M4 2 V14" stroke="#4f8dbb" stroke-width="6"/><path d="M20 2 V14" stroke="var(--seco)" stroke-width="6" stroke-dasharray="2 3"/></svg>','afluente do Codex: água = com cota; areia = sem cota'],
+  ];
+  const donos=[...new Set(F.trava.map(b=>b.quem))].filter(n=>DONO[n]);
+  document.getElementById('legenda').innerHTML = L.map(([s,t])=>`<span>${s}${esc(t)}</span>`).join('') +
+    `<span class="donos">quem estava no barco: ${donos.map(n=>`<i style="background:${DONO[n]}"></i>${esc(n)}`).join(' ')}</span>`;
+  document.getElementById('leitura').textContent = F.textos.como_ler;
+}
+
+function quebraTxt(txt, max){ const pal=String(txt).split(' '); const L=[]; let c='';
+  pal.forEach(p=>{ if((c+' '+p).trim().length>max && c){L.push(c);c=p;} else c=(c+' '+p).trim(); }); if(c)L.push(c); return L; }
+
+/* layout por largura */
+function layout(W){
+  const m = W < 700;
+  if(m) return {m, W, topo:30, k:156, kq:9, gapQ:64, cx:86, half:50, mbMax:F.meta.mb_max,
+    colPedra:[146], xAflu:29, xRot:182, wRot:W-182-18, xHora:2};
+  const cx = Math.round(W*0.47), half = Math.min(170, W*0.12);
+  const xRot = cx+half+268;
+  return {m, W, topo:40, k:128, kq:16, gapQ:60, cx, half, mbMax:F.meta.mb_max,
+    colPedra:[cx-half-26], xRotEsq:cx-half-88, xGut:40,
+    xAflu:cx+half+24, xMeio:cx+half+44, xRot, wRot:W-xRot-8, xHora:6};
+}
+
+function desenhar(){
+  const svg = document.getElementById('carta');
+  const W = Math.min(1400, document.getElementById('carta-wrap').clientWidth);
+  const Ly = layout(W);
+  const y = t => { const v = typeof t==='string'? minutos(t): t;
+    return v<QF ? Ly.topo + v*Ly.kq/60 : Ly.topo + QF*Ly.kq/60 + Ly.gapQ + (v-QF)*Ly.k/60; };
+  const H = y(FIM) + 40;
+  const sx = mb => mb/Ly.mbMax*Ly.half;      /* meia largura */
+  const boca = sx(F.meta.corte_mb);          /* meia boca do barco */
+  const out = []; const topo = []; // topo = camada de cima
+  ITENS.length = F.numeros.length; // mantém os do cabeçalho
+
+  /* grade da carta */
+  for(let h=Math.ceil(QF/60)*60; h<=FIM; h+=60){
+    const yy=y(h), hh=((Math.floor((h+14*60+30)/60))%24);
+    out.push(`<line x1="0" x2="${W}" y1="${yy}" y2="${yy}" stroke="var(--grade)" stroke-width="${hh%6===0?1.2:.6}"/>`);
+    const rot = h===QF ? `16/10 ${String(hh).padStart(2,'0')}h` : (hh===0 ? '17/10 00h' : `${String(hh).padStart(2,'0')}h`);
+    out.push(`<text class="hora" x="${Ly.xHora}" y="${yy-4}" paint-order="stroke" stroke="var(--papel)" stroke-width="4">${rot}</text>`);
+  }
+  /* quebra do dia 16 */
+  const yq0=y(0), yq1=y(QF), yq2=yq1+Ly.gapQ;
+  out.push(`<rect x="0" y="${yq0}" width="${W}" height="${yq2-yq0}" fill="var(--papel2)" opacity=".55"/>`);
+  out.push(`<text class="hora" x="${Ly.xHora}" y="${yq0+12}">16/10 14h30</text>`);
+  const xz=Ly.m?W:Ly.cx+Ly.half+14; let zz=`M0 ${yq1+Ly.gapQ/2}`; for(let x=0;x<=xz;x+=14) zz+=` L${x} ${yq1+Ly.gapQ/2+((x/14)%2?-6:6)}`;
+  out.push(`<path d="${zz}" fill="none" stroke="var(--tinta2)" stroke-width="1.4"/>`);
+  { const L = quebraTxt(Ly.m?F.textos.quebra_curta:F.textos.quebra, Ly.m?26:40);
+    out.push(`<text class="rot leve" x="${Ly.m?Ly.xRot:Ly.xGut}" y="${yq0+34}">${L.map((l,i)=>`<tspan x="${Ly.m?Ly.xRot:Ly.xGut}" dy="${i?16:0}">${esc(l)}</tspan>`).join('')}</text>`); }
+
+  /* janelas quietas (faixas) */
+  F.janelas.forEach(j=>{
+    const y1=y(j.ini), y2=y(j.fim);
+    const k=novoItem({titulo:'Janela quieta', quando:`${hm(j.ini)} a ${hm(j.fim)}`, campos:[['Ficaram',j.ficaram.join(', ')],['Saíram',j.sairam.join(', ')],['O que rodou',j.rodou]], fonte:j.fonte});
+    out.push(`<g class="alvo" data-k="${k}"><rect x="0" y="${y1}" width="${W}" height="${y2-y1}" fill="var(--janela)"/>
+      <rect class="halo" x="0" y="${y1}" width="${W}" height="${y2-y1}" fill="none" stroke="var(--margem)" stroke-dasharray="4 4"/>
+      </g>`);
+    /* título e quem ficou, na margem esquerda (no celular, à direita) */
+    const xj = Ly.m ? 30 : Ly.xGut;
+    let g = `<g class="alvo" data-k="${k}"><text class="titfaixa" x="${xj}" y="${y1+18}" paint-order="stroke" stroke="var(--papel)" stroke-width="5">janela quieta</text>`;
+    if(!Ly.m) g += `<text class="rot leve" x="${xj}" y="${y1+38}">no canvas só:</text>`;
+    let xx0=xj; if(!Ly.m) j.ficaram.forEach((n,i)=>{ const yy=y1+56, xx=xx0; xx0+=n.length*8.2+26;
+      g += `<circle cx="${xx+5}" cy="${yy-5}" r="5" fill="${DONO[n]||'#555'}" stroke="#fff"/><text class="rot" x="${xx+14}" y="${yy}">${esc(n)}</text>`; });
+    topo.push(g+'</g>');
+  });
+
+  /* rio */
+  const pts = F.memoria.filter(p=>p.mb!=null).map(p=>({t:minutos(p.t), mb:p.mb, p})).sort((a,b)=>a.t-b.t);
+  const t0 = pts[0].t, t1 = pts[pts.length-1].t;
+  // borda: liga pontos; linear entre sondagens (sem inventar picos)
+  /* trechos: duas sondagens a mais de 75 min uma da outra não se ligam (margem tracejada, sem água) */
+  const trechos=[[pts[0]]];
+  for(let i=1;i<pts.length;i++){ if(pts[i].t-pts[i-1].t>75) trechos.push([]); trechos[trechos.length-1].push(pts[i]); }
+  const borda = (q,s)=>[(Ly.cx+s*sx(q.mb)).toFixed(1), y(q.t).toFixed(1)];
+  const linha = P => 'M'+P.map(p=>p.join(' ')).join(' L');
+  trechos.forEach((T,i)=>{
+    const PE=T.map(q=>borda(q,-1)), PD=T.map(q=>borda(q,1));
+    out.push(`<path d="${linha(PE)} L${[...PD].reverse().map(p=>p.join(' ')).join(' L')} Z" fill="var(--agua)" stroke="var(--agua)" stroke-width="1"/>`);
+    out.push(`<path d="${linha(PE)}" fill="none" stroke="var(--margem)" stroke-width="1.6" stroke-linejoin="round"/>`);
+    out.push(`<path d="${linha(PD)}" fill="none" stroke="var(--margem)" stroke-width="1.6" stroke-linejoin="round"/>`);
+    const prox=trechos[i+1]; if(!prox) return;
+    const a=T[T.length-1], b=prox[0];
+    out.push(`<path d="M${borda(a,-1).join(' ')} L${borda(b,-1).join(' ')} M${borda(a,1).join(' ')} L${borda(b,1).join(' ')}" stroke="var(--margem)" stroke-width="1.3" stroke-dasharray="3 5" fill="none"/>`);
+    out.push(`<text class="sond" x="${Ly.cx}" y="${(y(a.t)+y(b.t))/2}" text-anchor="middle" paint-order="stroke" stroke="var(--papel)" stroke-width="4">sem ${Ly.m?'medida':'sondagem'} ${(Math.round((b.t-a.t)/6)/10).toLocaleString('pt-BR')} h</text>`);
+  });
+  // trecho sem sondagem (antes da primeira)
+  out.push(`<path d="M${Ly.cx-sx(pts[0].mb)} ${y(0)} L${Ly.cx-sx(pts[0].mb)} ${y(t0)} M${Ly.cx+sx(pts[0].mb)} ${y(0)} L${Ly.cx+sx(pts[0].mb)} ${y(t0)}" stroke="var(--margem)" stroke-width="1.3" stroke-dasharray="3 5" fill="none"/>`);
+  out.push(`<text class="sond" x="${Ly.cx}" y="${(y(QF)+y(t0))/2+Ly.gapQ/2}" text-anchor="middle">${Ly.m?'sem medida':'sem sondagem'}</text>`);
+  // fluxo
+  out.push(`<line class="fluxo" x1="${Ly.cx}" x2="${Ly.cx}" y1="${y(t0)}" y2="${y(t1)}"/>`);
+  // linha do corte (meia boca) como guia fina
+  /* sondagens escritas */
+  let ultY=-99;
+  pts.filter(q=>q.p.escrever!==false).forEach(q=>{
+    const yy=y(q.t); if(yy-ultY<15) return; ultY=yy;
+    const k=novoItem({titulo:`${gb(q.mb)} GB livres`, quando:diaHora(q.p.t), campos:[['Medida',q.p.ctx]], fonte:q.p.fonte});
+    const xx = Ly.cx - sx(q.mb) - 4;
+    topo.push(`<g class="alvo" data-k="${k}"><circle class="halo" cx="${Ly.cx-sx(q.mb)}" cy="${yy}" r="6" fill="none" stroke="#163c5c"/><circle cx="${Ly.cx-sx(q.mb)}" cy="${yy}" r="2" fill="#163c5c"/>
+      <text class="sond" x="${xx}" y="${yy+4}" text-anchor="end">${gb(q.mb)}</text></g>`);
+  });
+
+  /* barcos (trava) */
+  const rotBarco=[];
+  F.trava.forEach(b=>{
+    const y1=y(b.ini), y2=Math.max(y(b.fim||b.fim_visual), y1+14), cor=DONO[b.quem]||'#555';
+    const off = (b.lado||0)*(boca*1.15);
+    const xa=Ly.cx+off-boca, xb=Ly.cx+off+boca, bico=Math.min(14,(y2-y1)*.4);
+    const k=novoItem({titulo:`${b.quem}: ${b.oque}`, quando:`trava de ${hm(b.ini)} ${b.fim?'a '+hm(b.fim):'(fim não registrado; desenhado até '+hm(b.fim_visual)+')'}`, campos:[['Nota',b.nota]], fonte:b.fonte});
+    const fade = b.fim? '' : ` fill-opacity=".55"`;
+    topo.push(`<g class="alvo" data-k="${k}"><path d="M${xa} ${y1+3} Q${xa} ${y1} ${xa+3} ${y1} H${xb-3} Q${xb} ${y1} ${xb} ${y1+3} V${y2-bico} L${Ly.cx+off} ${y2} L${xa} ${y2-bico}Z" fill="${cor}"${fade} stroke="#fff" stroke-width="1.2"/>
+      <path class="halo" d="M${xa-3} ${y1-3} H${xb+3} V${y2+3} H${xa-3}Z" fill="none" stroke="${cor}" stroke-width="1.5"/></g>`);
+  });
+  /* episódios da trava */
+  F.episodios_trava.forEach(e=>{
+    const yy=y(e.t);
+    const k=novoItem({titulo:e.titulo, quando:hm(e.t), campos:[['O que houve',e.texto],['Como se resolveu',e.conserto]], fonte:e.fonte});
+    topo.push(`<g class="alvo" data-k="${k}"><circle cx="${Ly.cx}" cy="${yy}" r="${boca*1.7}" fill="none" stroke="var(--corte)" stroke-width="2" stroke-dasharray="5 3"/><circle class="halo" cx="${Ly.cx}" cy="${yy}" r="${boca*1.7+4}" fill="none" stroke="var(--corte)"/></g>`);
+    rotBarco.push({y:yy, txt:e.curto, k, episodio:true});
+  });
+
+  /* encalhes */
+  const rotCorte=[];
+  F.cortes.forEach(c=>{
+    const yy=y(c.t);
+    const k=novoItem({titulo:`Encalhe: ${c.oque}`, quando:diaHora(c.t), campos:[['Memória',c.mb?`${c.mb.toLocaleString('pt-BR')} MB livres`:'sem número'],['Nota',c.nota]], fonte:c.fonte});
+    const r=Ly.m?6:8;
+    topo.push(`<g class="alvo" data-k="${k}"><circle cx="${Ly.cx}" cy="${yy}" r="${r+5}" fill="#fff" opacity=".85"/><path d="M${Ly.cx-r} ${yy-r} L${Ly.cx+r} ${yy+r} M${Ly.cx+r} ${yy-r} L${Ly.cx-r} ${yy+r}" stroke="var(--corte)" stroke-width="3.4" stroke-linecap="round"/><circle class="halo" cx="${Ly.cx}" cy="${yy}" r="${r+8}" fill="none" stroke="var(--corte)"/></g>`);
+    rotCorte.push({y:yy, txt:c.curto, k, corte:true});
+  });
+
+  /* pisos */
+  (F.pisos||[]).forEach(p=>{ const yy=y(p.t), w=sx(p.mb);
+    const k=novoItem({titulo:`Piso: ${p.mb.toLocaleString('pt-BR')} MB`, quando:hm(p.t), campos:[['O que é',p.texto]], fonte:p.fonte});
+    topo.push(`<g class="alvo" data-k="${k}"><path d="M${Ly.cx-w} ${yy-5} V${yy+5} M${Ly.cx+w} ${yy-5} V${yy+5} M${Ly.cx-w} ${yy} H${Ly.cx-w+8} M${Ly.cx+w} ${yy} H${Ly.cx+w-8}" stroke="var(--ocre,#b8873a)" stroke-width="2"/><rect class="halo" x="${Ly.cx-w-4}" y="${yy-8}" width="${2*w+8}" height="16" fill="none" stroke="#b8873a"/></g>`); });
+
+  /* barragens (reinícios) */
+  F.reinicios.forEach(r=>{
+    const yy=y(r.t);
+    const k=novoItem({titulo:r.oque, quando:hm(r.t)+(r.t2?' a '+hm(r.t2):''), campos:[['Efeito',r.efeito]], fonte:r.fonte});
+    out.push(`<g class="alvo" data-k="${k}"><rect x="0" y="${yy-4}" width="${W}" height="8" fill="var(--tinta)" opacity=".85"/>
+      <rect class="halo" x="0" y="${yy-8}" width="${W}" height="16" fill="none" stroke="var(--tinta)"/>
+      <text class="titfaixa" x="${Ly.m?30:W-6}" y="${Ly.m?yy+22:yy-10}" text-anchor="${Ly.m?'start':'end'}" paint-order="stroke" stroke="var(--papel)" stroke-width="5">${esc(r.curto)}</text></g>`);
+  });
+
+  /* afluente do Codex */
+  const xa=Ly.xAflu, ya=y(F.codex_inicio), yb=y(FIM);
+  out.push(`<line x1="${xa}" x2="${xa}" y1="${ya}" y2="${yb}" stroke="#4f8dbb" stroke-width="${Ly.m?5:7}" stroke-linecap="round"/>`);
+  F.codex.forEach(c=>{
+    const y1=y(c.ini||F.codex_inicio), y2=y(c.fim);
+    const k=novoItem({titulo:'Codex sem cota', quando:`${c.ini?'desde '+diaHora(c.ini):'desde antes'} até ${hm(c.fim)}`, campos:[['Nota',c.nota]], fonte:c.fonte});
+    out.push(`<g class="alvo" data-k="${k}"><line x1="${xa}" x2="${xa}" y1="${y1}" y2="${y2}" stroke="var(--papel)" stroke-width="${Ly.m?7:9}"/>
+      <line x1="${xa}" x2="${xa}" y1="${y1}" y2="${y2}" stroke="var(--seco)" stroke-width="${Ly.m?5:7}" stroke-dasharray="2 3"/>
+      <rect class="halo" x="${xa-8}" y="${y1}" width="16" height="${y2-y1}" fill="none" stroke="var(--seco)"/>
+      </g>`);
+    rotCorte.push({y:y1+6, txt:'Codex '+c.curto, k, seco:true});
+  });
+  if(!Ly.m) out.push(`<text class="titfaixa" x="${xa}" y="${ya-10}" text-anchor="middle">Codex</text>`);
+  else out.push(`<text class="hora" x="${xa+7}" y="${ya+4}">Codex</text>`);
+  { const c=F.comporta, yy=y(c.t); const k=novoItem({titulo:c.titulo, quando:hm(c.t), campos:[['O que fez',c.texto]], fonte:c.fonte});
+    topo.push(`<g class="alvo" data-k="${k}"><rect x="${xa-11}" y="${yy-4}" width="22" height="8" rx="2" fill="#4f8dbb" stroke="#fff"/><rect class="halo" x="${xa-15}" y="${yy-8}" width="30" height="16" fill="none" stroke="#4f8dbb"/></g>`);
+    rotCorte.push({y:yy, txt:c.curto, k, aflu:true}); }
+
+  /* pedras e pontes */
+  const colunas=[]; const rotPedra=[];
+  const pedras=F.achados.map(a=>({a, y1:y(a.t), y2:a.t_conserto?y(a.t_conserto):null})).sort((p,q)=>p.y1-q.y1);
+  pedras.forEach(p=>{
+    const fim=(p.y2||p.y1)+10; let c=colunas.findIndex(v=>v<p.y1-6); if(c<0){c=colunas.length;colunas.push(0);} colunas[c]=fim;
+    const passo=Ly.m?8:12;
+    const x = Ly.m ? Ly.colPedra[0]+c*passo : Ly.colPedra[0]-c*passo;
+    const a=p.a; const k=novoItem({id:a.id, titulo:a.curto, quando:`achado ${diaHora(a.t)}${a.t_conserto?' · consertado '+diaHora(a.t_conserto):''}`,
+      campos:[['Ticket',a.ticket],['Quem achou',a.quem],['O que caiu',a.quebrou],['Por quê',a.causa],['Conserto',a.conserto]], fonte:(a.fontes||[]).join(' · ')});
+    let g=`<g class="alvo" data-k="${k}">`;
+    if(p.y2!=null){ g+=`<line x1="${x}" x2="${x}" y1="${p.y1}" y2="${p.y2}" stroke="var(--pedra)" stroke-width="1.6" opacity=".7"/>`;
+      g+=`<path d="M${x-6} ${p.y2+3} Q${x} ${p.y2-6} ${x+6} ${p.y2+3}" fill="none" stroke="var(--ponte)" stroke-width="3" stroke-linecap="round"/>`; }
+    const s=Ly.m?.8:1;
+    g+=`<path d="M${x-6*s} ${p.y1+2*s} L${x-3*s} ${p.y1-4*s} L${x+3*s} ${p.y1-5*s} L${x+6*s} ${p.y1} L${x+3*s} ${p.y1+4*s} L${x-4*s} ${p.y1+4*s}Z" fill="var(--pedra)" stroke="#fff" stroke-width=".8"/>`;
+    g+=`<rect class="halo" x="${x-9}" y="${p.y1-9}" width="18" height="${(p.y2||p.y1)-p.y1+18}" fill="none" stroke="var(--pedra)"/></g>`;
+    topo.push(g);
+    rotPedra.push({y:p.y1, x, txt:a.curto, k, pedra:true});
+  });
+
+  /* placas e marcos */
+  const rotDir=[];
+  F.regras.forEach(r=>{ const k=novoItem({titulo:'Regra nova: '+r.curto, quando:diaHora(r.t)+(r.quem?' · '+r.quem:''), campos:[['A regra',r.texto]], fonte:r.fonte});
+    rotDir.push({y:y(r.t), txt:r.curto, k, placa:true}); });
+  F.decisoes.forEach(r=>{ const k=novoItem({titulo:'Decisão do maestro', quando:diaHora(r.t)+(r.ticket?' · '+r.ticket:''), campos:[['Decidiu',r.texto],['Para rever com o Gustavo',r.rever?'sim':'não']], fonte:r.fonte});
+    rotDir.push({y:y(r.t), txt:r.curto, k, marco:true, rever:r.rever, rotulo:r.rotulo}); });
+
+  /* ---------- rótulos com empilhamento ---------- */
+  const lh=Ly.m?16:17;
+  function empilha(lista, gap){ lista.sort((a,b)=>a.y-b.y); let fundo=-1e9;
+    lista.forEach(r=>{ r.ty=Math.max(r.y-r.h/2+4, fundo+gap); fundo=r.ty+r.h; }); }
+  function icone(r,x,yy){
+    if(r.placa) return `<rect x="${x}" y="${yy-10}" width="16" height="11" rx="2" fill="var(--placa)"/>`;
+    if(r.marco) return `<path d="M${x+7} ${yy-11} L${x+13} ${yy-5} L${x+7} ${yy+1} L${x+1} ${yy-5}Z" fill="${r.rever?'var(--marco)':'none'}" stroke="var(--marco)" stroke-width="1.8"/>`;
+    if(r.corte) return `<path d="M${x+2} ${yy-10} L${x+12} ${yy} M${x+12} ${yy-10} L${x+2} ${yy}" stroke="var(--corte)" stroke-width="2.6" stroke-linecap="round"/>`;
+    if(r.pedra) return `<path d="M${x+1} ${yy-3} L${x+4} ${yy-9} L${x+10} ${yy-10} L${x+13} ${yy-5} L${x+10} ${yy-1} L${x+3} ${yy-1}Z" fill="var(--pedra)"/>`;
+    if(r.aflu) return `<rect x="${x}" y="${yy-9}" width="14" height="7" rx="2" fill="#4f8dbb"/>`;
+    if(r.seco) return `<path d="M${x+7} ${yy-12} V${yy+1}" stroke="var(--seco)" stroke-width="5" stroke-dasharray="2 2"/>`;
+    if(r.fecho) return `<path d="M${x+2} ${yy-5} L${x+6} ${yy-1} L${x+13} ${yy-10}" fill="none" stroke="#2f7d4a" stroke-width="2.6" stroke-linecap="round"/>`;
+    if(r.episodio) return `<circle cx="${x+7}" cy="${yy-5}" r="6" fill="none" stroke="var(--corte)" stroke-width="1.8" stroke-dasharray="3 2"/>`;
+    return '';
+  }
+  function poeRotulos(lista, xTxt, maxCh, ancora, lado){
+    lista.forEach(r=>{ r.L=quebraTxt(r.txt, maxCh); r.h=r.L.length*lh; });
+    empilha(lista, Ly.m?5:6);
+    lista.forEach(r=>{
+      const cls = r.corte?'rot corte':(r.marco?'rot leve':(r.fecho?'rot fecho':'rot'));
+      const xi = lado==='esq'? xTxt-16 : xTxt;
+      const xt = lado==='esq'? xTxt-22 : xTxt+20;
+      const anc = lado==='esq'?'end':'start';
+      const ty=r.ty+lh-4;
+      let g=`<g class="alvo" data-k="${r.k}">`;
+      const ax = ancora(r);
+      g+=`<path d="M${ax} ${r.y} C${(ax+xi)/2} ${r.y} ${(ax+xi)/2} ${ty-5} ${lado==='esq'?xi+16:xi-2} ${ty-5}" fill="none" stroke="${r.corte?'var(--corte)':'var(--tinta2)'}" stroke-width=".7" opacity=".55"/>`;
+      g+=icone(r, lado==='esq'?xTxt-16:xTxt, ty);
+      g+=`<text class="${cls}" x="${xt}" y="${ty}" text-anchor="${anc}">${r.L.map((l,i)=>`<tspan x="${xt}" dy="${i?lh:0}">${esc(l)}</tspan>`).join('')}</text>`;
+      const largura = Math.max(...r.L.map(l=>l.length))*7.4+24;
+      g+=`<rect class="halo" x="${lado==='esq'?xt-largura+4:xi-4}" y="${r.ty-2}" width="${largura}" height="${r.h+6}" rx="4" fill="none" stroke="var(--tinta2)"/></g>`;
+      topo.push(g);
+    });
+  }
+  if(F.fecho){ const yy=y(F.fecho.t); const k=novoItem({titulo:F.fecho.titulo, quando:hm(F.fecho.t), campos:[['O que foi',F.fecho.texto]], fonte:F.fecho.fonte});
+    out.push(`<line x1="${Ly.cx-Ly.half-10}" x2="${Ly.m?W:Ly.xMeio}" y1="${yy}" y2="${yy}" stroke="var(--tinta)" stroke-width="1.4" stroke-dasharray="1 4"/>`);
+    rotBarco.push({y:yy, txt:F.fecho.curto, k, fecho:true}); }
+  const rotMeio=[...rotCorte, ...rotBarco];
+  const ancMeio = r => r.aflu||r.seco ? Ly.xAflu+6 : (r.episodio ? Ly.cx+boca*1.8 : (r.fecho ? Ly.cx+Ly.half : Ly.cx+10));
+  const marcoSo = rotDir.filter(r=>r.marco && !r.rotulo);
+  if(Ly.m){
+    poeRotulos([...rotPedra, ...rotMeio, ...rotDir.filter(r=>r.placa)], Ly.xRot, Math.floor(Ly.wRot/7.3)-3,
+      r=>r.pedra? r.x+7 : ancMeio(r), 'dir');
+    rotDir.filter(r=>r.marco).forEach(r=>{ topo.push(`<g class="alvo" data-k="${r.k}">${icone(r, W-16, r.y+6)}<rect class="halo" x="${W-18}" y="${r.y-8}" width="18" height="16" fill="none" stroke="var(--marco)"/></g>`); });
+  } else {
+    poeRotulos(rotPedra, Ly.xRotEsq, 30, r=>r.x-7, 'esq');
+    poeRotulos(rotMeio, Ly.xMeio, 23, ancMeio, 'dir');
+    poeRotulos(rotDir.filter(r=>!r.marco || r.rotulo), Ly.xRot, Math.floor(Ly.wRot/7.4)-3, r=>Ly.xRot-24, 'dir');
+    marcoSo.forEach(r=>{ topo.push(`<g class="alvo" data-k="${r.k}">${icone(r, Ly.xRot-28, r.y+6)}<rect class="halo" x="${Ly.xRot-31}" y="${r.y-8}" width="20" height="16" fill="none" stroke="var(--marco)"/></g>`); });
+    out.push(`<line x1="${Ly.xRot-21}" x2="${Ly.xRot-21}" y1="${y(0)}" y2="${y(FIM)}" stroke="var(--grade)" stroke-width="1"/>`);
+  }
+
+  /* cabeçalhos das margens (desktop) */
+  if(!Ly.m){
+    const yt=Ly.topo-14;
+    out.push(`<text class="titfaixa" x="${Ly.xRotEsq}" y="${yt}" text-anchor="end">pedras e pontes</text>`);
+    out.push(`<text class="titfaixa" x="${Ly.cx}" y="${yt}" text-anchor="middle">memória livre</text>`);
+    out.push(`<text class="titfaixa" x="${Ly.xRot}" y="${yt}">regras e decisões</text>`);
+    out.push(`<text class="titfaixa" x="${Ly.xMeio}" y="${yt}">encalhes e Codex</text>`);
+  }
+  const Hfinal = Math.max(H, ...topo.map(()=>0));
+  svg.setAttribute('viewBox', `0 ${Ly.m?0:-10} ${W} ${H+20}`);
+  svg.setAttribute('width', W); svg.setAttribute('height', H+20);
+  svg.innerHTML = out.join('') + topo.join('');
+  svg._y = y; svg._Ly=Ly; svg._pts=pts;
+}
+
+/* relógio de bordo */
+function relogio(){
+  const svg=document.getElementById('carta'); if(!svg._y) return;
+  const r=svg.getBoundingClientRect(); const yv = innerHeight*0.45 - r.top;
+  let lo=0, hi=FIM; for(let i=0;i<30;i++){ const mid=(lo+hi)/2; if(svg._y(mid)<yv) lo=mid; else hi=mid; }
+  const t=lo; const el=document.getElementById('relogio');
+  if(yv<svg._y(0)){ el.innerHTML=`<span>role a carta: o tempo desce</span>`; return; }
+  const abs=t+14*60+30, dia=abs>=1440?17:16, h=Math.floor(abs%1440/60), m=Math.floor(abs%60);
+  const ult=[...svg._pts].reverse().find(p=>p.t<=t);
+  el.innerHTML = `<b>${dia}/10 ${String(h).padStart(2,'0')}h${String(m).padStart(2,'0')}</b>`+
+    (ult && t>=QF ? `<span>última sondagem: <strong>${gb(ult.mb)} GB</strong> livres às ${hm(ult.p.t)}</span>` : `<span>dia 16: sem medida de memória</span>`);
+}
+
+/* cartão */
+const cartao=document.getElementById('cartao'), corpo=document.getElementById('cartao-corpo');
+let fixo=false;
+function mostra(k, ev){
+  const it=ITENS[k]; if(!it) return;
+  corpo.innerHTML = `<h3>${esc(it.titulo)}</h3>${it.quando?`<p class="quando">${esc(it.quando)}</p>`:''}<dl>${(it.campos||[]).filter(c=>c[1]).map(([a,b])=>`<dt>${esc(a)}</dt><dd>${esc(b)}</dd>`).join('')}</dl>${it.fonte?`<p class="fonte">Fonte: ${esc(it.fonte)}</p>`:''}`;
+  cartao.style.display='block';
+  if(innerWidth>700 && ev){ const w=cartao.offsetWidth, h=cartao.offsetHeight;
+    let x=ev.clientX+18, yy=ev.clientY+14; if(x+w>innerWidth-10) x=ev.clientX-w-18; if(yy+h>innerHeight-10) yy=innerHeight-h-10;
+    cartao.style.left=x+'px'; cartao.style.top=Math.max(10,yy)+'px'; }
+}
+function esconde(){ cartao.style.display='none'; fixo=false; document.querySelectorAll('.ativo').forEach(e=>e.classList.remove('ativo')); }
+document.addEventListener('pointerover', e=>{ if(fixo || e.pointerType==='touch') return; const a=e.target.closest('.alvo'); if(a) mostra(+a.dataset.k, e); });
+document.addEventListener('pointermove', e=>{ if(fixo || e.pointerType==='touch') return; const a=e.target.closest('.alvo'); if(a) mostra(+a.dataset.k, e); else if(!e.target.closest('#cartao')) esconde(); });
+document.addEventListener('click', e=>{ if(e.target.closest('.fechar')) return esconde(); const a=e.target.closest('.alvo');
+  if(a){ esconde(); fixo=true; a.classList.add('ativo'); mostra(+a.dataset.k, e); } else if(!e.target.closest('#cartao')) esconde(); });
+document.addEventListener('keydown', e=>{ if(e.key==='Escape') esconde(); });
+
+function foz(){
+  const f=F.foz;
+  document.getElementById('foz').innerHTML = `<h2>${esc(f.titulo)}</h2><p>${esc(f.texto)}</p>
+  <details class="fontes"><summary>Fontes</summary><p>${esc(F.textos.fontes)}</p></details>`;
+}
+
+cabecalho(); foz(); desenhar(); relogio();
+/* #cartao=<id do achado>: abre o cartão (conferência visual) */
+const ha = decodeURIComponent(location.hash).match(/^#cartao=(.+)$/);
+if(ha){ const k = ITENS.findIndex(it=>it.id===ha[1]); if(k>=0){ fixo=true; mostra(k, {clientX:innerWidth*0.55, clientY:140}); } }
+let ultW=0; addEventListener('resize', ()=>{ const w=document.getElementById('carta-wrap').clientWidth; if(Math.abs(w-ultW)>4){ultW=w; desenhar(); relogio();} });
+addEventListener('scroll', relogio, {passive:true});
+})();
+</script>
+</body>
+</html>

@@ -120,3 +120,4 @@ Depois, confira o mundo real: `maestri list`, `git -C C:\context-hub log --oneli
 - 21:20: roteiro do 26 rascunhado (etapas/roteiro-26.md): ticket 45 de preparo (rede Tailscale, HUB_PAR_ID, convergência, segredos/fork/CLI, proxy na fila); decisões D1 (integracao→main e push com aval), D2 (levar o que não vai pelo git), D3 (Tailscale).
 - 21:21: docs 6ª junção (dc514db) verde sem o 12-busca: regra da junção dos docs atualizada (verificador + 27-pastas; busca não indexa agents/code desde o 41). 821 MB livres com os designers.
 - 21:22: docs 6ª junção verde (dc514db); Lume e Rebite fechados (sem fila). No canvas: maestro e os times das peças (Traço+Lupa, Nanquim+Esquadro).
+- 21:48: peça 1 (Traço, "A construção, em partitura") PASSOU na volta 2 da Lupa (resumo-visual/peca-1-partitura.html; parecer-peca-1.md). Peça 2 (Nanquim, rio estreito) em revisão do Esquadro.
