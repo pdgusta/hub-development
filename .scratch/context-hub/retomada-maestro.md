@@ -147,3 +147,4 @@ Depois, confira o mundo real: `maestri list`, `git -C C:\context-hub log --oneli
 - 23:29: Fiel e Cinzel fechados (livres; retomadas gravadas). Retirar do canvas depois que o 45 e o 46 juntarem verdes. Rebite: suíte do 45, depois o 46 (dd241ba), depois main.
 - 00:16: 45 e 46 RESOLVIDOS; main do hub 7d0c25d pronto para o push do Gustavo. Brasa e Cinzel retirados do canvas; ronda cancelada. Lume religado: docs do 45/46 e a página nova instalacao.md.
 - 00:19: Gustavo: instalação amanhã (2026-10-18). Hoje só os docs do Lume e a junção deles.
+- 00:29: docs 7ª juntada (7b6c406; instalacao.md nova); main do hub = fe55b12, sem push (origin/main em 7d0c25d: falta o push do Gustavo). Lume e Rebite fechados. Ninguém trabalhando até amanhã.
