@@ -79,3 +79,8 @@ Nada aplicado: global real só com o aval e o Gustavo vendo, com cópia e hash a
   espera o bundle (Taildrop: nada em Downloads); 4 precisa do kit do hub (`montar-cli-livesync.ps1` importa
   `banco\banco.psm1` do próprio hub), então espera o clone; 5 (cópia e hash) dá para fazer já, de preferência depois
   do superpowers, para o hash-antes não mudar.
+- 14:15: superpowers instalado pelo Gustavo (`/plugin`). **Passo 5 feito** (pedido dele): cópia em
+  `C:\hub-backup\2026-10-18-par-b\` com a seleção do par A, 2.674 arquivos, 26,9 MB, `hashes-antes.txt` (SHA256 por
+  arquivo) e `ausentes.txt` (não existem aqui: `.codex\hooks.json`, `.copilot\copilot-instructions.md`,
+  `mcp-config.json`, `hooks`). Nenhum link nas pastas copiadas. Script: scratchpad da sessão (`copia-par-b.ps1`).
+  Esperando: bundle do fork (passo 3), clone do hub (passos 2 e 4) e o caminho aprovado pelo 49.
