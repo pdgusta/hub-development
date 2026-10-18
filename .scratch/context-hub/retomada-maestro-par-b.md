@@ -62,3 +62,6 @@ Nada aplicado: global real só com o aval e o Gustavo vendo, com cópia e hash a
 - 23:55: global do maestro conferido contra global-do-maestro/README.md (só leitura); faltam os itens 1 a 6; nada aplicado.
 - 00:05: aval do Gustavo para aplicar o global. Cópia em C:/Users/gusta/backup-global-maestro-2026-10-18 (hash-antes.txt). A permissão automática barrou a escrita no ~/.claude (autoalteração); nada mudou. Script para o Gustavo rodar no scratchpad da sessão (aplicar-global-maestro.sh).
 - 00:15: Gustavo rodou o script (2ª vez; a 1ª parou no caminho /c/ passado ao node, sem gravar nada). Aplicado: settings.json (hash 02da292d…), CLAUDE.md (c2de7749…), mods contexto-agentes e guarda-de-recrutas, opus-medium, graphify, video-generator, 38 skills do Matt Pocock e find-skills (o CLI copiou direto em ~/.claude/skills, sem os links de ~/.agents como no par A), regra de push em .claude/settings.local.json (agora no .gitignore). Falta: superpowers pelo /plugin e reiniciar o Claude Code.
+- 2026-10-18 (sessão nova, já com o global novo: Opus 5.5, CLAUDE.md do graphify): retomada lida; origin/main sem
+  novidade do par A; canvas só com o maestro. Superpowers segue **não instalado** (habilitado no settings.json, sem
+  cache em ~/.claude/plugins). Memória `retomada-do-maestro` ganhou a linha do par B. Frente ainda a definir.
