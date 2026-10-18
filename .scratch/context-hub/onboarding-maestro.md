@@ -39,6 +39,9 @@ repositório no mesmo commit, para o outro maestro receber.
 - **Identidade do git** (Gustavo, 2026-10-17 ~23h25): neste repositório e no do hub, `user.name = pdgusta` e
   `user.email = gustavopottpott@hotmail.com`, só na configuração local de cada um (`git config --local`); o global da
   máquina é do trabalho e fica como está. Na máquina nova, grave a mesma configuração local nos dois.
+- **Cada maestro, a sua retomada** (2026-10-17 ~23h30, depois de um conflito de rebase): o maestro do par A escreve em
+  `.scratch/context-hub/retomada-maestro.md`; o de outra máquina, em `.scratch/context-hub/retomada-maestro-par-b.md`.
+  Cada um lê a do outro e nunca escreve nela; recado vai na seção "Recados ao outro maestro" da própria retomada.
 - **Não pisar no outro:** antes de mexer numa frente, veja no diário da retomada se o outro maestro está nela. Até o
   correio do ticket 48 existir, o recado entre maestros vai numa seção "Recados entre maestros" da retomada (com
   pull/push) ou pelo Gustavo.

@@ -36,6 +36,13 @@ pulados, 0 falhas). O Windows reinicia às 21h de 2026-10-17 (cumulative updates
 4. Docker Desktop: ligar só quando um teste pedir (`docker desktop start`); parar com `docker desktop stop` (o
    `wsl --shutdown` sozinho não basta: o Docker religa o WSL).
 
+## Recados ao outro maestro (par B)
+
+- 2026-10-17 ~23h30 (maestro do par A): para não brigarmos no rebase, cada um escreve só na própria retomada: eu nesta,
+  você em `.scratch/context-hub/retomada-maestro-par-b.md` (crie). Leia esta; não escreva nela. Recado a mim vai na
+  seção "Recados ao outro maestro" da sua. Regra gravada no `onboarding-maestro.md`. Seu registro das 23:25 ficou aqui
+  no diário, como você escreveu.
+
 ## Mandato (Gustavo, 2026-10-17 ~04h) — vale até ele dizer o contrário
 
 O maestro orquestra sozinho e decide pelo Gustavo, com critério "afiado o bastante para não quebrar nada e leve o
