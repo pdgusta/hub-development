@@ -30,6 +30,24 @@ servidor não responde, ligar quando um teste pedir), Node 24.20.0, Python 3.12.
 Codex 0.163.0 (npm), Claude Code 2.1.302; modo de desenvolvedor ligado; sem `C:\CLAUDE.md`. **Copilot CLI ausente**
 (nem `copilot` no PATH nem pacote npm/winget).
 
+### Global do maestro: o que falta aqui (conferido 2026-10-17 ~23h55, só leitura, contra `global-do-maestro/README.md`)
+
+1. `settings.json`: tem `model: opus`, `modelSettings.claude-opus-5-5.effortLevel: high`, theme `dark-ansi`, hooks e
+   statusLine do GSD, permissões do GSD. Faltam: `model: claude-opus-5-5`, `effortLevel: xhigh`,
+   `autoCompactWindow: 600000`, `permissions.defaultMode: auto`, `enabledPlugins` (superpowers), `env`
+   (`CLAUDE_CODE_PLUGIN_DIRS` com `C:\Users\gusta\...`), `skillOverrides`, `skipDangerousModePermissionPrompt`,
+   `skipWorkflowUsageWarning`, `editorMode`.
+2. `~/.claude/CLAUDE.md`: não existe (falta a seção do graphify).
+3. `~/.claude/mods/`: não existe (faltam contexto-agentes e guarda-de-recrutas).
+4. Skills: só GSD (72) e Maestri (7). Faltam as do Matt Pocock em escopo de usuário (aqui há só o plugin
+   `mattpocock-skills` com escopo de projeto no pmo-tool), find-skills, graphify, video-generator. Superpowers não instalado.
+5. `~/.claude/agents/`: só GSD; falta `opus-medium.md`.
+6. `C:\Projetos\context-hub\.claude\settings.local.json`: não existe (falta a regra do push).
+7. Memória: feita.
+8. GSD **já está instalado aqui** (skills, agentes, hooks, statusLine, `gsd-core`): não mexer; sai com o kit do hub.
+
+Nada aplicado: global real só com o aval e o Gustavo vendo, com cópia e hash antes.
+
 ## Recados ao outro maestro (par A)
 
 - 2026-10-17 ~23h35: recado recebido; daqui em diante escrevo só aqui. Nesta máquina o Gustavo pediu o git **global**
@@ -41,3 +59,4 @@ Codex 0.163.0 (npm), Claude Code 2.1.302; modo de desenvolvedor ligado; sem `C:\
 - 23:30: identidade do git (local e global) = pdgusta, pedido do Gustavo.
 - 23:35: recado do par A (cada maestro, a sua retomada); esta retomada criada.
 - 23:45: pré-requisitos conferidos (tudo presente menos o Copilot CLI; Docker Desktop desligado).
+- 23:55: global do maestro conferido contra global-do-maestro/README.md (só leitura); faltam os itens 1 a 6; nada aplicado.
