@@ -1,7 +1,7 @@
 # 51: A notificação da vigia chega com os acentos certos
 
 Type: task
-Status: ready-for-agent
+Status: claimed
 Etapa: conserto do 26 (fora da sequência)
 Blocked by: nenhum
 
@@ -18,3 +18,6 @@ o contrato `HUB_VIGIA_NOTIFICAR` (texto na entrada padrão).
 ## Comments
 
 - 2026-10-21 (maestro): publicado. Dona: a Brasa. Revisão: o Fiel.
+- 2026-10-21 (Brasa): feito no ramo `ticket-51` (02f026c, 16b0715). A hipótese se confirmou no teste (antes:
+  "replica├º├úo parada h├í"). O notificar.ps1 lê os bytes da entrada em UTF-8; `-Xml` para o teste. Testes leves 41/41.
+  Relatório: `etapas/relatorio-51-notificacao-com-acentos.md`. Pedida a revisão ao Fiel.

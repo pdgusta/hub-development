@@ -1,7 +1,7 @@
 # 52: A tarefa hub-sincronizador roda de verdade
 
 Type: task
-Status: ready-for-agent
+Status: claimed
 Etapa: conserto do 26 (fora da sequência; vale para o par B)
 Blocked by: nenhum
 

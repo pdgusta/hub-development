@@ -190,3 +190,4 @@ Depois, confira o mundo real: `maestri list`, `git -C C:\context-hub log --oneli
   e 52 (tarefa do sincronizador) abertos, à Brasa. Rebite: suíte do 49. Lume: instalacao.md com o 49/50. 1,7 GB livres.
 - ~12h: Lume: instalacao.md em dia com o 49 e o 50 (docs 4219de9; verificadores 0); junção pedida ao Rebite, depois
   do 49. Ressalva do fork no 05.env.modelo para o Radar.
+- ~12h10: 51 pronto (Brasa, ticket-51 02f026c+16b0715): causa confirmada (o $input do powershell 5.1 lia em OEM 850; agora lê os bytes em UTF-8); teste vermelho→verde, leves 41/41; Fiel revisa. Toast real na tela não verificado: conferir com o Gustavo depois da junção. Brasa no 52.

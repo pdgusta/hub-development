@@ -1,0 +1,42 @@
+                    │limite 40%
+● O ! roda no Git Bash, que engole as barras invertidas. Use barras normais:                                                   │
+                                                                                                                               │
+  ! git -C C:/Projetos/context-hub push                                                                                        │
+                                                                                                                               │
+✻ Worked for 8s · done 11:33 AM                                                                                                │
+                                                                                                                               │
+! git -C C:/Projetos/context-hub push                                                                                          │
+  ⎿  fatal: Cannot prompt because user interactivity has been disabled.                                                        │
+     fatal: could not read Username for 'https://github.com': terminal prompts disabled                                        │
+                                                                                                                               │
+                                                                                                                               │
+● O ! herda o ambiente desta sessão, que proíbe qualquer prompt, e a credencial do GitHub nesta máquina parece ter expirado: o │
+  Git Credential Manager quer pedir login e não consegue.                                                                      │
+                                                                                                                               │
+  Rode num PowerShell seu, fora do Claude Code (um Windows Terminal comum serve):                                              │
+                                                                                                                               │
+  git -C C:\Projetos\context-hub push                                                                                          │
+                                                                                                                               │
+  O Git Credential Manager deve abrir o navegador para o login. Depois disso a credencial fica salva, e os próximos pushes,    │
+  inclusive os meus, voltam a funcionar daqui.                                                                                 │
+                                                                                                                               │
+✻ Cooked for 9s · done 11:33 AM                                                                                                │
+                                                                                                                               │
+● Background command "Send Brasa tickets 51 and 52" completed (exit code 0)                                                    │
+                                                                                                                               │
+  Checking Brasa progress · 2s                                                                                                 │
+  ⎿  $ maestri check "Brasa" | Select-Object -Last 25                                                                          │
+                                                                                                                               │
+❯ Brasa: 51 pronto e passado ao Fiel (ramo ticket-51, 02f026c+16b0715). Causa confirmada: o $input do powershell 5.1 lia em    │
+  OEM 850; o notificar.ps1 agora lê os bytes em UTF-8. Teste vermelho antes com 'replica├º├úo', verde depois; leves 41/41.     │
+  Toast real na tela não verificado (o teste para no XML). Começando o 52.                                                     │
+  ctrl+x ctrl+s to send now                                                                                                    │
+                                                                                                                               │
+✢ Envisioning… (6s · ↓ 26 tokens)                                                                                              │
+                                                                                                                               │
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+❯ Press up to edit queued messages
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  ⚠ Transcript saving is off — inherited CLAUDE_CODE_CHILD_SESSION marker · restart with CLAUDE_CODE_FORCE_SESSION_PERSISTENCE=1 to keep future transcripts
+  ctx 10%
+  ⏵⏵ auto mode on (shift+tab to cycle)
