@@ -90,5 +90,5 @@ Nada aplicado: global real só com o aval e o Gustavo vendo, com cópia e hash a
   Esperando: bundle do fork (passo 3), clone do hub (passos 2 e 4) e o caminho aprovado pelo 49.
 - 2026-10-21 12:58: /clear; retomada e roteiro relidos; pull trouxe 49 a 52 e o fim do A. Conferido (só leitura):
   main do hub 70a9f73 no remoto; Taildrop vazio; sem `C:\hub-transporte`, `C:\context-hub`, hub-kit, fork e
-  `C:\hub-par`; pwsh aqui é só o da Store (falta o MSI, `C:\Program Files\PowerShell` não existe); Docker
+  `C:\hub-par`; pwsh aqui é só o da Store (falta o MSI, `C:\Program Files\PowerShell\7\pwsh.exe` não existe); Docker
   desligado; `gh` logado como pdgusta. Recado ao A: mandar os dois arquivos.
