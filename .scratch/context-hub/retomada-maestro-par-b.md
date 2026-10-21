@@ -120,3 +120,9 @@ Nada aplicado: global real só com o aval e o Gustavo vendo, com cópia e hash a
   **05 parou**: "build do fork falhou". Causa: submódulo `lib/livesync-commonlib` vazio (clone do bundle não o traz).
   Conserto: `submodule update --init` (f9f07e97); build verde. Estado conferido: hub-banco no ar nas duas portas, daemon
   do CLI rodando, hub já recebendo. Retomado com `-Passos 00,05,espera` (saída em `passo4b.txt` no scratchpad).
+- 13:39: **05 passou** (fork pronto; MCP do banco 8796, 8797, 8798). **Espera lenta:** 36 de 564 arquivos em ~15 min.
+  O banco do B já tem tudo (2.481 docs = A; envio ao A em dia, nada pendente); o gargalo é o daemon do CLI gravando
+  no disco: lotes de 10 arquivos a cada ~4 min, ~190% de CPU contínua (i5-8250U, 8 lógicos), banco local do CLI
+  (`C:/hub-par/cli-db`) só com 1,4 MB. Log do daemon sem detalhe (sem `--verbose`): "Initial replication complete"
+  às 13:22 e um `TimeoutNegativeWarning`. No ensaio do 46 (máquina A) 566 arquivos desceram em segundos. Causa ainda
+  não achada; daemon segue sozinho (nada perdido). Nesse ritmo: ~3h30.
