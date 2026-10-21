@@ -100,3 +100,8 @@ Nada aplicado: global real só com o aval e o Gustavo vendo, com cópia e hash a
   (cabeça só `integracao` 34c3e50). `.env` com as 28 chaves e os valores do B (par, endereço, outro par, CLI, fork,
   máquina); movido para `C:/hub-transporte/lenovo-ideapad.env`. Bundle fica em Downloads (o passo 2 clona de lá).
   Próximo: passos 1 e 2 de `instalacao-par-b.md`, com o Gustavo vendo.
+- 13:12: **passos 1 e 2 feitos** (aval do Gustavo). 1: autocrlf `true` agora também no global; `C:/context-hub` criada
+  vazia; sem `C:/CLAUDE.md`. 2: kit em `C:/Projetos/hub-kit` (main 70a9f73); fork em `C:/Projetos/hub-mcp-banco`
+  (integracao 34c3e50); CLI do LiveSync em `C:/hub-par/livesync` (commit 14141446, sha256 1669d00a = o do par A),
+  saída 0. Passo 3 já feito em 2026-10-18. Próximo: passo 4 (simulação e depois banco, busca, MCP e espera), com o
+  Docker Desktop ligado.
