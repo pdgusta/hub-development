@@ -1,0 +1,42 @@
+                                                    │limite 40%
+      198  - ~12h40: 51 r1 VOLTA (Fiel: $xml = -Xml pela caixa, toast quebrava calado); conserto fe8be14, r2 no Fiel. 52       │
+            pronto (ticket-52 2903ab7): caminho completo do pwsh (MSI se houver, senão o pwsh que roda o kit), leves 28/       │
+           28, no Fiel. Ressalva: aqui só há o pwsh da Store (7.6.7; sem C:/Program Files/PowerShell/7); a pasta dele mu       │
+           da a cada atualização. Proposta da Brasa: pwsh pelo MSI nos dois pares; perguntado ao Gustavo (instalação glo       │
+           bal).                                                                                                               │
+      199  - ~13h: pwsh 7.6.7 pelo MSI instalado pelo Gustavo no par A (`--installer-type wix`): `C:/Program Files/Power       │
+           Shell/7/pwsh.exe` conferido.                                                                                        │
+      200  - ~12h: 51 PASSA (Fiel r2; fe8be14). Brasa ligada ao Rebite (maestri connect). Fila do Rebite: 49+50 → docs 8       │
+           ª → 51 → 52 (uma suíte para 51+52).                                                                                 │
+      201 +- ~12h20: 52 PASSA com ressalvas (Fiel; só no relatório); fila do Rebite depois do 51. Reaplicação no par A:        │
+          +maestro + Gustavo, receita em etapas/relatorio-52-tarefa-do-sincronizador.md (LastTaskResult 0). Brasa e Fiel       │
+          + sem fila: gravam a retomada e saem (janela quieta para a suíte).                                                   │
+  ⎿  (timeout 5m)                                                                                                              │
+  ⎿  Allowed by auto mode classifier                                                                                           │
+                                                                                                                               │
+❯ Brasa: salvo                                                                                                                 │
+                                                                                                                               │
+  Ran 3 shell commands                                                                                                         │
+                                                                                                                               │
+● As duas retomadas estão gravadas. Fecho a Brasa e o Fiel para liberar memória para a suíte.                                  │
+                                                                                                                               │
+  Ran 1 shell command                                                                                                          │
+                                                                                                                               │
+● A Brasa e o Fiel gravaram as retomadas e foram fechados. A memória livre subiu de 1,7 GB para 2,5 GB, uma folga útil para a  │
+  suíte.                                                                                                                       │
+                                                                                                                               │
+  Agora:                                                                                                                       │
+  - o Rebite está com a suíte do 49 e, na fila dele, a documentação, o 51 e o 52;                                              │
+  - o Lume fica de prontidão, caso o 51 e o 52 peçam ajuste na documentação.                                                   │
+                                                                                                                               │
+  Quando o Rebite levar tudo ao main do hub, eu chamo você para reaplicar a tarefa do sincronizador e conferir uma notificação │
+  real.                                                                                                                        │
+                                                                                                                               │
+✻ Brewed for 55s · done 12:02 PM                                                                                               │
+                                                                                                                               │
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+❯ 
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  ⚠ Transcript saving is off — inherited CLAUDE_CODE_CHILD_SESSION marker · restart with CLAUDE_CODE_FORCE_SESSION_PERSISTENCE=1 to keep future transcripts
+  ctx 13%
+  ⏵⏵ auto mode on (shift+tab to cycle)

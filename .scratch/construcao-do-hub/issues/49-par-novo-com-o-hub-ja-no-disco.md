@@ -1,7 +1,7 @@
 # 49: Par novo com o hub já no disco
 
 Type: task
-Status: claimed
+Status: resolved
 Etapa: preparo do 26 (par B)
 Blocked by: 46
 
@@ -74,3 +74,10 @@ hub, ou o clone só depois da convergência) e escrever no relatório.
   pelo parser do pwsh; o bloco 6 só pela leitura.
 - 2026-10-18 ~15h15 (Brasa): juntado pelo Rebite (e82dd85, até c3f2868). Pendente: o ee71863 (cabeçalho do teste) fora
   da junção; juntar com o Rebite. Brasa parada (pausa do Gustavo).
+- 2026-10-21 12:08 (integrador, Rebite): resolvido. Junções e82dd85 (até c3f2868, 2026-10-18) e 35da1e6 (ee71863,
+  cabeçalho do teste). Suíte com --test-concurrency=1 e trava em 35da1e6: 390, 375 verdes, 15 pulados, 0 falhas, git
+  limpo (log etapas/logs/juncao-49-suite-2.log; a 1ª, de 2026-10-18, foi parada na pausa e não vale). O teste do 49
+  (.ps1, Docker) não repetido: idêntico ao que o Brasa e o Fiel rodaram; nenhum executor percorre *.test.ps1.
+  Ressalvas do parecer (Fiel r1, 2ª leitura r2 passa): a receita do par B está no relatório (consertos 1 a 6); os
+  casos 3, 4 e 5 são medidas; nunca rodar o 08 no HOME real antes do git; a mudança da instalacao.md é dos docs
+  (Lume, 8ª junção).

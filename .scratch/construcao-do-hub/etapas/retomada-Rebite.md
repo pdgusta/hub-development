@@ -106,3 +106,5 @@ busca não indexa `agents/code/**`; maestro, 21h25). Sem Fiel.
 - 2026-10-21: ee71863 juntado (35da1e6; 2ª leitura r2 passa; diff só o cabeçalho). Suíte com trava em segundo plano,
   log logs/juncao-49-suite-2.log. Próximo: verde → resolver 49 e 50, registro, main --no-ff sem push, avisar Lume e maestro.
 - Lume pediu docs 8ª (docs 4219de9): juntar DEPOIS da suíte do 49 e de resolver o 49; diff, frontmatter, 27-pastas.
+- Ordem do maestro (2026-10-21): depois da suíte do 49 → resolver 49+50, docs 8ª, 51 (ticket-51 fe8be14, PASSA Fiel r2, relatorio-51-notificacao-com-acentos.md), 52 quando o Fiel passar; uma suíte só para 51+52 se der (leves de cada um antes). Ligado à Brasa.
+- Brasa: 52 PASSA (ticket-52 2903ab7, de 35da1e6; leves 07-kit-sem-docker, 38, 45-duas-maquinas-sem-docker, 46-kit-duas-maquinas 28/28; relatorio-52-tarefa-do-sincronizador.md, parecer-52-Brasa.md). Junta depois do 51. Reaplicar tarefa no par A: maestro e Gustavo, não eu.

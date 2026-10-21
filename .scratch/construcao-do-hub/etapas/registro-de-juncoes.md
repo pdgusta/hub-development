@@ -47,3 +47,5 @@
 - 2026-10-18 00:11, ticket 46, 8c01cfb, suíte com --test-concurrency=1 e trava: 390, 375 verdes, 15 pulados, 0 falhas, git limpo; leves 44/44; Docker não repetido (idêntico); resolvido (Rebite).
 - 2026-10-18 00:12, main do C:/context-hub: junção --no-ff de integracao 8c01cfb, 7d0c25d (árvore igual a integracao; git limpo); sem push (o push é do Gustavo; ticket 26) (Rebite).
 - 2026-10-18 00:28, documentação 7ª: junção 7b6c406 (docs e33b71f, 11 páginas, instalacao.md nova); diff só em agents/code/docs/; verificador de frontmatter rc 0; 27-pastas 24/24 (log etapas/logs/juncao-docs-7-27-pastas.log); main do C:/context-hub = fe55b12 (--no-ff de integracao 7b6c406; origin/main em 7d0c25d); sem push (Rebite).
+- 2026-10-21 12:08, ticket 49 (e82dd85 até c3f2868; 35da1e6 com ee71863) e ticket 50 (c3f2868, no 49), suíte com --test-concurrency=1 e trava em 35da1e6: 390, 375 verdes, 15 pulados, 0 falhas, git limpo (log logs/juncao-49-suite-2.log); teste .ps1 do 49 não repetido (idêntico); 49 e 50 resolvidos (Rebite).
+- 2026-10-21 12:10, main do C:/context-hub: junção --no-ff de integracao 35da1e6, c37365b (árvore igual a integracao); sem push (Rebite).

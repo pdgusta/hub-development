@@ -1,7 +1,7 @@
 # 50: O .gitignore do hub cobre os arquivos do LiveSync
 
 Type: task
-Status: ready-for-agent
+Status: resolved
 Etapa: conserto do 26 (fora da sequência)
 Blocked by: 49
 
@@ -25,3 +25,6 @@ de um hub de ensaio com o par de pé fica limpo).
   gerador de exclusões só grava `.*` no `.git/info/exclude` se o `.git` já existe, e ali rodou antes do `git init`. O
   `C:\context-hub` do A tem o bloco e não mostra o `.livesync`. O c3f2868 fica (inócuo; cobre um hub sem o bloco). O
   conserto de fundo está na receita do 49 (o 04 de novo depois do git).
+- 2026-10-21 12:08 (integrador, Rebite): resolvido com o 49 (c3f2868 na junção e82dd85; suíte em 35da1e6 verde,
+  390/375/15/0). Causa de fundo (parecer do Fiel, conserto 4): o 04 antes do `git init`; o conserto é a ordem da
+  receita do 49.

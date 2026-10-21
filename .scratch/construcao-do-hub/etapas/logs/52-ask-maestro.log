@@ -1,0 +1,42 @@
+                                                    │limite 40%
+  Ran 3 shell commands                                                                                                         │
+                                                                                                                               │
+● Bash(cd /c/Projetos/context-hub && printf -- '- ~12h40: 51 r1 VOLTA (Fiel: $xml = -Xml pela caixa, toast quebrava calado);   │
+      conserto fe8be14, r2 no Fiel. 52 pronto (t…)                                                                             │
+  ⎿  ok                                                                                                                        │
+  ⎿  Updated .scratch\context-hub\retomada-maestro.md (+1 -0)                                                                  │
+      191  - ~12h: Lume: instalacao.md em dia com o 49 e o 50 (docs 4219de9; verificadores 0); junção pedida ao Rebite,        │
+           depois                                                                                                              │
+      192    do 49. Ressalva do fork no 05.env.modelo para o Radar.                                                            │
+      193  - ~12h10: 51 pronto (Brasa, ticket-51 02f026c+16b0715): causa confirmada (o $input do powershell 5.1 lia em O       │
+           EM 850; agora lê os bytes em UTF-8); teste vermelho→verde, leves 41/41; Fiel revisa. Toast real na tela não v       │
+           erificado: conferir com o Gustavo depois da junção. Brasa no 52.                                                    │
+      194 +- ~12h40: 51 r1 VOLTA (Fiel: $xml = -Xml pela caixa, toast quebrava calado); conserto fe8be14, r2 no Fiel. 52       │
+          + pronto (ticket-52 2903ab7): caminho completo do pwsh (MSI se houver, senão o pwsh que roda o kit), leves 28/       │
+          +28, no Fiel. Ressalva: aqui só há o pwsh da Store (7.6.7; sem C:/Program Files/PowerShell/7); a pasta dele mu       │
+          +da a cada atualização. Proposta da Brasa: pwsh pelo MSI nos dois pares; perguntado ao Gustavo (instalação glo       │
+          +bal).                                                                                                               │
+  ⎿  Allowed by auto mode classifier                                                                                           │
+                                                                                                                               │
+● O 51 voltou corrigido e está na segunda revisão do Fiel. O 52 também ficou pronto e está com ele.                            │
+                                                                                                                               │
+  Uma decisão é sua, porque instala algo no sistema. Com o 52, a tarefa do sincronizador passa a chamar o pwsh.exe pelo caminho│
+  completo. Só que nesta máquina o único PowerShell 7 é o da Microsoft Store (7.6.7), e a pasta dele muda a cada atualização   │
+  da Store. Depois de uma atualização, a tarefa voltaria a falhar sem avisar.                                                  │
+                                                                                                                               │
+  Recomendo instalar o PowerShell 7 pelo MSI nos dois pares (winget install --id Microsoft.PowerShell --source winget). Ele    │
+  fica num caminho fixo, C:\Program Files\PowerShell\7\pwsh.exe, e o kit já prefere esse caminho quando ele existe. A versão da│
+  Store pode continuar instalada, sem conflito.                                                                                │
+                                                                                                                               │
+  A alternativa é ficar só com a Store e aceitar que a tarefa quebre a cada atualização, até a próxima reaplicação.            │
+                                                                                                                               │
+  Posso instalar aqui no par A? No par B entra no roteiro de instalação.                                                       │
+                                                                                                                               │
+✻ Crunched for 31s · done 11:49 AM                                                                                             │
+                                                                                                                               │
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+❯ 
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  ⚠ Transcript saving is off — inherited CLAUDE_CODE_CHILD_SESSION marker · restart with CLAUDE_CODE_FORCE_SESSION_PERSISTENCE=1 to keep future transcripts
+  ctx 11%
+  ⏵⏵ auto mode on (shift+tab to cycle)

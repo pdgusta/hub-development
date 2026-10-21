@@ -1,10 +1,10 @@
 # Retomada da Brasa (construtora)
 
-**Ticket 49** (`issues/49-par-novo-com-o-hub-ja-no-disco.md`), ramo `ticket-49`, worktree `C:/context-hub-wt/ticket-49`,
+**Tickets 49 (juntado), 51 e 52 (com o Rebite).** O 49 (`issues/49-par-novo-com-o-hub-ja-no-disco.md`), ramo `ticket-49`, worktree `C:/context-hub-wt/ticket-49`,
 de `integracao` 7b6c406. Teste escrito e no commit a577265: `agents/code/test/49-par-novo-com-hub.test.ps1`
 (`pwsh -NoProfile -File agents/code/test/49-par-novo-com-hub.test.ps1 -Saida <json>`; Docker, portas 5988/5989, ~25 min).
 Casos 1-5 medidos às 14h35; relatório `etapas/relatorio-49-par-novo-com-hub.md`.
-Estado (pausa, ~15h15): 49 juntado em integracao (e82dd85, até c3f2868; fecha o 50); a suíte do Rebite estava rodando. Relatório com a sequência final do par B. **Pendência:** o ee71863 (só o cabeçalho do teste: casos 3, 4 e 5 são medidas) ficou fora da junção; juntar em integracao com o Rebite (`git merge ticket-49`). Fora disso, nada meu no 49. Parada a pedido do maestro (o Gustavo fechou o note). Antes: o 45 (já juntado). O notebook do par B está fechado e sem nada rodando; só volta a rodar quando o Gustavo falar (Gustavo, 2026-10-18).
+Estado (2026-10-21, fim): 49 juntado (e82dd85 e 35da1e6). 51 (ramo ticket-51, fe8be14) PASSA na r2 do Fiel, na fila do Rebite. 52 (ramo ticket-52, 2903ab7) PASSA com ressalvas (relatório ajustado), passado ao Rebite depois do 51. Relatórios: etapas/relatorio-51-notificacao-com-acentos.md e etapas/relatorio-52-tarefa-do-sincronizador.md. Pendente fora de mim: reaplicar a tarefa no par A (maestro e Gustavo, receita no relatório do 52); conferir o MSI do pwsh no par B; o toast na tela (Gustavo). Próximo: nada na fila; esperar o maestro. Não mexer no par A real (C:/hub-par, tarefas, hub-banco).
 
 ## Lições práticas
 
@@ -23,7 +23,7 @@ Estado (pausa, ~15h15): 49 juntado em integracao (e82dd85, até c3f2868; fecha o
 1. Ler `etapas/regras-da-construcao.md` inteiras, o ticket 49 e esta retomada.
 2. Seguir o próximo passo do último comentário do ticket.
 
-## Pausa do par A (2026-10-18 ~15h20, pedido do Gustavo: o notebook vai fechar)
+## Pausa do par A (2026-10-18 ~15h20; já religado pelo maestro em 2026-10-21: histórico)
 
 Desativadas as tarefas `hub-sincronizador` e `hub-vigia` (Disable-ScheduledTask); o CLI do par A parado pelo
 `Stop-Sincronizador` do kit (.env `C:\hub-transporte\armis00323.env`); o contêiner `hub-banco` parado (`docker stop`;

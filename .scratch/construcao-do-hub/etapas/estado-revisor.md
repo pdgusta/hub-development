@@ -317,3 +317,6 @@ Sat, Oct 17, 2026 10:15:54 AM 21 r1 (Trilho, 1c87f9b): retomado após /clear; re
 10-21 11:42 51 r1: VOLTA em acordo (1 $Xml/$xml colidem, toast real quebrado e sai 0; 2 teste não cobre o caminho sem -Xml). Avisando Brasa.
 10-21 11:46 51 r1: veredito entregue à Brasa (2º ask; ela já mexia no caminho real). Esperando r2.
 10-21 11:48 51 r2 (fe8be14) recebido; 52 (Brasa 2903ab7) na fila.
+10-21 11:53 51 r2 fe8be14: Fiel confere (com defeito sai 1; ramo 0 e acentos; 50/50). 2ª leitura Sonnet r2 em curso. Lendo 52.
+10-21 11:58 51 r2: PASSA em acordo. 52 (2903ab7): Fiel 37/37 (07,38,45,46,harness-real); MSI pwsh existe aqui (Program Files\PowerShell\7) -> tarefa usa ele. 2ª leitura Sonnet do 52 em curso.
+10-21 12:01 52 r1 2903ab7: PASSA c/ ressalvas em acordo (frase da Store/MSI; receita; suíte no Rebite). Avisando Brasa.
