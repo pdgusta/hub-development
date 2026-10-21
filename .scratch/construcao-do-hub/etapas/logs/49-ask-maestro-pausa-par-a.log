@@ -1,0 +1,34 @@
+       │                                      
+            .env do B e o bundle por Taildrop; o maestro do B segue instalacao-par-b.md (já sem o PARE).                       │                                      
+      177 +- 15:17: a Brasa, a pedido do Gustavo, parou também o par A: tarefas hub-sincronizador e hub-vigia DESATIVADA       │                                      
+          +S, CLI parado (Stop-Sincronizador), contêiner hub-banco parado (volume intacto; conferido). A suíte do Rebite       │                                      
+          + já tinha parado. Os mcp-banco das sessões (8796-8798) e a busca seguem. RELIGAR antes de tudo na volta: dock       │                                      
+          +er start hub-banco; Enable-ScheduledTask hub-sincronizador; Enable-ScheduledTask hub-vigia (o laço religa o C       │                                      
+          +LI em ~1 min); conferir estado_do_hub.                                                                              │                                      
+  ⎿  (timeout 4m)                                                                                                              │                                      
+  ⎿  Allowed by auto mode classifier                                                                                           │                                      
+                                                                                                                               │                                      
+● Conferi o que a Brasa parou, e está como ela disse:                                                                          │                                      
+                                                                                                                               │                                      
+  - O contêiner hub-banco está parado. Os dados do banco continuam guardados no volume dele.                                   │                                      
+  - As tarefas hub-sincronizador e hub-vigia estão desativadas.                                                                │                                      
+  - O sincronizador do par A está parado.                                                                                      │                                      
+                                                                                                                               │                                      
+  Não foi desligado: os MCP do banco das sessões abertas (portas 8796 a 8798) e a busca.                                       │                                      
+                                                                                                                               │                                      
+  Na volta, antes de qualquer outra coisa, religar o par A:                                                                    │                                      
+  docker start hub-banco                                                                                                       │                                      
+  Enable-ScheduledTask hub-sincronizador                                                                                       │                                      
+  Enable-ScheduledTask hub-vigia                                                                                               │                                      
+  O laço do sincronizador religa sozinho em cerca de 1 minuto. Depois eu confiro pelo estado_do_hub se o banco voltou a        │                                      
+  responder.                                                                                                                   │                                      
+                                                                                                                               │                                      
+  Esses passos estão na minha retomada, com push feito. Pode fechar o note.                                                    │                                      
+                                                                                                                               │                                      
+✻ Cogitated for 34s · done 3:17 PM                                                                                             │                                      
+                                                                                                                               │                                      
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+❯ 
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  ctx 9%
+  ⏵⏵ auto mode on (shift+tab to cycle) · ← 2 agents

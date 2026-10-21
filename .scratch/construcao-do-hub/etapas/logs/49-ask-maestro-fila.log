@@ -1,0 +1,34 @@
+                          
+    - O sincronizador, que passa a acompanhar C:\context-hub.                                                                  │                                      
+    - Os três MCP do banco (portas 8796 a 8798).                                                                               │                                      
+    - A busca, que instala as dependências dela.                                                                               │                                      
+    - Tudo isso passa a ocupar memória o tempo todo.                                                                           │                                      
+  - Muda o global dos três agentes:                                                                                            │                                      
+    - O contrato do hub vale em toda sessão desta máquina. O ~\.claude\CLAUDE.md ganha a linha que importa o AGENTS.md do hub, │                                      
+      e o Codex e o Copilot recebem um link para ele. Isso vale também para o seu trabalho de cliente. É o que o spec previu,  │                                      
+      mas é a maior mudança.                                                                                                   │                                      
+    - Os hooks do hub entram nos três: guardas, aviso de leitura, fim da resposta, roteamento, acervo e vigia. As guardas e o  │                                      
+      fim da resposta só agem dentro do hub.                                                                                   │                                      
+    - Os MCP hub-busca e hub-banco entram nos três.                                                                            │                                      
+    - 8 skills de uso geral entram por junction.                                                                               │                                      
+    - O Codex passa a rodar com acesso total.                                                                                  │                                      
+  - O GSD sai do escopo global: 479 itens, entre agentes, hooks, skills e a linha de status. Tudo vai para a cópia do kit e    │                                      
+    volta com -Desfazer.                                                                                                       │                                      
+  - Fica para fazer à mão, depois, com você:                                                                                   │                                      
+    - Registrar as tarefas agendadas.                                                                                          │                                      
+    - Ligar os mods do Claude Code.                                                                                            │                                      
+    - A linha de status no Copilot e o aviso da vigia no Codex.                                                                │                                      
+    - Pôr o token do MCP do banco como variável do seu usuário. Sem ela, o hub-banco responde acesso negado.                   │                                      
+                                                                                                                               │                                      
+  Por último o kit espera o banco terminar de receber o hub, até 15 minutos. O par B está desligado, então a replicação para lá│                                      
+  fica tentando e não atrapalha. A Brasa espera eu soltar a trava para o teste dela.                                           │                                      
+                                                                                                                               │                                      
+  Posso rodar a instalação de verdade?                                                                                         │                                      
+                                                                                                                               │                                      
+✻ Brewed for 8m 14s · done 1:01 PM · 1 shell still running                                                                     │                                      
+                                                                                     ✘ Auto-update failed · Run claude doctor  │                                      
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+❯ 
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  Opus 5.5 │ context-hub ██████░░░░ 60%
+  ⏵⏵ auto mode on · 1 shell · ← 2 agents

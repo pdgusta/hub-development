@@ -48,3 +48,16 @@ fim da resposta; a espera nunca falha a instalação. Combinado com a Brasa (45)
 - O `-Desfazer` não tira o `.local/par.json` (mora no hub, não na casa; é estado da máquina, inofensivo).
 - A espera compara tamanho, não hash (o `ls` do CLI dá tamanho, mtime e rev). A prova com Docker confere contra o hash.
 - A rede entre as máquinas de verdade (Tailscale) fica para o 26.
+
+## Rodada 1 do Fiel (VOLTA, 1 conserto): `parecer-46-Cinzel.md`
+
+- **Conserto** (dc4fd1a): o `HUB_PAR_ID=` vazio do `10.env.modelo`, juntado depois das linhas do gerador do 45,
+  apagava o id (o `lerEnv` deixava a última vencer). Agora as duas coisas: o `lerEnv` do 08 e o da espera não deixam
+  valor vazio apagar o que já veio; e o `10.env.modelo` não traz mais a chave (só o comentário: vem do gerador).
+  Teste novo: `.env` com `HUB_PAR_ID=casa` e as linhas dos modelos 03, 05 e 10 depois passa no `-Passos 08 -WhatIf`.
+  Sonda com o gerador de verdade (`gerar-env-pares.ps1` do ramo ticket-45, pasta em `%TEMP%`, apagada): `casa.env` +
+  modelos + um `HUB_PAR_ID=` vazio no fim → `faria: id do par (casa)`, código 0.
+- **Ressalvas acatadas:** o texto do par A virou "o banco do par ainda está vazio" (vale para os dois lados);
+  `maxBuffer` de 64 MiB no `ls` do leitor. **Para o 26:** `HUB_MAQUINA` e `HUB_PAR_ID` são o mesmo nome da máquina (dito
+  no comentário do modelo); o registro de uso passa de `<hostname>.md` para `<id>.md`.
+- Testes: `46-kit-duas-maquinas` (19) e `23-kit`: 44 verdes (`logs/46-testes-r1.log`).

@@ -1,0 +1,511 @@
+✔ o verificar-hub passa no hub de ensaio (12959.7005ms)
+✔ o verificar-hub recusa um CLAUDE.md dentro do hub (11987.9807ms)
+✔ o verificar-hub recusa um CLAUDE.md acima do hub (12251.4537ms)
+✔ o verificar-hub recusa AGENTS.md sem o bloco da cabeça (12784.7061ms)
+✔ o verificar-hub recusa a cabeça com mais de 2.000 caracteres e aceita a de 2.000 (18431.8543ms)
+✔ o verificar-hub avisa, sem recusar, outra pasta na raiz (17799.9757ms)
+✔ o hub de ensaio tem duas iniciativas com o núcleo, notas em pt-BR, um binário e .git próprio (17767.9948ms)
+✔ o montar recusa destino que já tem conteúdo (18994.3902ms)
+✔ o montar sem git no PATH nomeia o comando e mostra o erro do processo (4671.5503ms)
+✔ o montar com um comando git que falha nomeia o comando e mostra o stderr dele (6420.4028ms)
+✔ o verificar-hub recusa um CLAUDE.md em pasta com ponto, fora do .git (15390.7015ms)
+✔ o verificar-hub recusa hub sem .git próprio ou com .git falso (15446.2171ms)
+✔ o verificar-hub aceita uma worktree do hub (.git em arquivo) (22731.7052ms)
+✔ o verificador aceita a nota certa (14028.8195ms)
+✔ o verificador recusa a nota sem status, dizendo o campo (13237.7369ms)
+✔ o verificador recusa stage fora do ciclo do tipo (14028.0603ms)
+✔ o verificador completa só o dedutível, por troca de trecho (12844.1553ms)
+✔ o verificador não apaga uma edição feita entre a leitura e a gravação (15699.5651ms)
+✔ o verificador completa o título do log de mês novo pela ficha (22187.9968ms)
+✔ a nota do inbox sem frontmatter é completada; ao sair do inbox, vale o esquema do destino (19833.8213ms)
+✔ AGENTS.md, SKILL.md e pastas com ponto ficam intocados (21022.6055ms)
+✖ YAML inválido é devolvido sem gravar (19305.7453ms)
+✖ --checar valida o conteúdo proposto sem gravar, como o hook e o MCP vão chamar (63.6387ms)
+✖ a nota arquivada vale pelo esquema de origem mais archived_at (52.4869ms)
+✖ nota com fim de linha CRLF é completada e continua CRLF (64.826ms)
+✖ o verificar-hub recusa nota fora do esquema em qualquer lugar do hub (38.215ms)
+✖ frontmatter em mapa flow que não dá para trocar por trecho é recusado sem gravar (119.2002ms)
+✖ campos de várias linhas ficam como estavam quando outro campo é trocado (71.7901ms)
+✖ cabeçalho aberto sem fechamento é YAML inválido, devolvido sem gravar (52.541ms)
+✖ caminho com ponto fica de fora também quando passado direto e no --checar (66.3158ms)
+✖ comentário YAML junto ao campo trocado fica; comentário na mesma linha recusa sem gravar (56.2862ms)
+✖ nota arquivada é completada pela ficha arquivada, não pela pasta ativa homônima (56.2514ms)
+✖ agents\code\test\05-nova-iniciativa.test.mjs (49.3587ms)
+✖ agents\code\test\07-kit-sem-docker.test.mjs (51.64ms)
+✖ agents\code\test\09-mcp-banco-sem-docker.test.mjs (66.9112ms)
+✖ agents\code\test\11-mcp-banco.test.mjs (51.3113ms)
+✖ agents\code\test\12-busca.test.mjs (52.1763ms)
+✖ agents\code\test\12-kit-busca.test.mjs (48.6955ms)
+✖ agents\code\test\13-gemini.test.mjs (53.3509ms)
+✖ agents\code\test\14-guardas.test.mjs (51.925ms)
+✖ agents\code\test\15-leitura.test.mjs (49.9541ms)
+✖ agents\code\test\16-vigia.test.mjs (46.3594ms)
+✖ agents\code\test\17-vigia-tela.test.mjs (46.5978ms)
+✖ agents\code\test\18-retomada.test.mjs (60.9035ms)
+✖ agents\code\test\19-roteamento.test.mjs (57.587ms)
+✖ agents\code\test\20-acervo.test.mjs (74.0876ms)
+✖ agents\code\test\21-arquivar.test.mjs (57.9443ms)
+✖ agents\code\test\21-conferir-cabeca.test.mjs (137.4975ms)
+✖ agents\code\test\21-copia-diaria.test.mjs (73.9396ms)
+✖ agents\code\test\21-limpar-arquivo.test.mjs (55.3467ms)
+✖ agents\code\test\22-kit-cliente.test.mjs (56.7113ms)
+✖ agents\code\test\22-proxy-sem-docker.test.mjs (49.655ms)
+✖ agents\code\test\23-kit.test.mjs (46.103ms)
+✖ agents\code\test\25-cliente-sem-docker.test.mjs (48.4683ms)
+✖ agents\code\test\25-medidor.test.mjs (48.6308ms)
+✖ agents\code\test\25-pares-sem-docker.test.mjs (45.2349ms)
+✖ agents\code\test\27-fim-da-resposta.test.mjs (43.1531ms)
+✖ agents\code\test\27-pastas.test.mjs (40.4393ms)
+✖ agents\code\test\28-pastas-locais-sem-docker.test.mjs (40.3532ms)
+✖ agents\code\test\36-pasta-de-ensaio.test.mjs (47.5922ms)
+✖ agents\code\test\37-gravacao-pelo-shell.test.mjs (56.0621ms)
+✖ agents\code\test\38-ensaio-banco.test.mjs (64.0577ms)
+✖ agents\code\test\45-duas-maquinas-sem-docker.test.mjs (51.9607ms)
+✖ agents\code\test\46-kit-duas-maquinas.test.mjs (60.4878ms)
+✖ agents\code\test\gerar-exclusoes\gerador.test.mjs (62.3469ms)
+✖ agents\code\test\harness-real.test.mjs (54.6737ms)
+✖ agents\code\test\ponta-a-ponta\11-mcp-banco.test.mjs (53.2506ms)
+✖ agents\code\test\ponta-a-ponta\12-busca.test.mjs (53.5561ms)
+✖ agents\code\test\ponta-a-ponta\14-guardas.test.mjs (50.7224ms)
+✖ agents\code\test\ponta-a-ponta\15-leitura.test.mjs (45.4028ms)
+✖ agents\code\test\ponta-a-ponta\17-vigia-tela.test.mjs (49.6134ms)
+✖ agents\code\test\ponta-a-ponta\18-retomada.test.mjs (59.5132ms)
+✖ agents\code\test\ponta-a-ponta\19-roteamento.test.mjs (47.0698ms)
+✖ agents\code\test\ponta-a-ponta\20-acervo.test.mjs (45.9783ms)
+✖ agents\code\test\ponta-a-ponta\22-cliente.test.mjs (46.5929ms)
+✖ agents\code\test\ponta-a-ponta\24-kit-ao-vivo.test.mjs (37.1081ms)
+✖ agents\code\test\ponta-a-ponta\25-hub-inteiro.test.mjs (47.097ms)
+✖ agents\code\test\ponta-a-ponta\27-fim-da-resposta.test.mjs (42.183ms)
+✖ agents\code\test\provas\03-codex-hooks\instalar.test.mjs (47.4047ms)
+✖ agents\code\test\provas\03-codex-hooks\prova.test.mjs (45.8413ms)
+ℹ tests 80
+ℹ suites 0
+ℹ pass 21
+ℹ fail 59
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 384009.115
+
+✖ failing tests:
+
+test at agents\code\test\05-frontmatter.test.mjs:167:1
+✖ YAML inválido é devolvido sem gravar (19305.7453ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /recusa: .*quebrada\.md: YAML inválido/. Input:
+  
+  ''
+  
+      at TestContext.<anonymous> (file:///C:/context-hub-wt/integracao/agents/code/test/05-frontmatter.test.mjs:174:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '',
+    expected: /recusa: .*quebrada\.md: YAML inválido/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at agents\code\test\05-frontmatter.test.mjs:178:1
+✖ --checar valida o conteúdo proposto sem gravar, como o hook e o MCP vão chamar (63.6387ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  3221225794 !== 0
+  
+      at hubDeEnsaio (file:///C:/context-hub-wt/integracao/agents/code/test/pasta-de-ensaio.mjs:67:10)
+      at hubDeEnsaio (file:///C:/context-hub-wt/integracao/agents/code/test/05-frontmatter.test.mjs:17:27)
+      at TestContext.<anonymous> (file:///C:/context-hub-wt/integracao/agents/code/test/05-frontmatter.test.mjs:179:15)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 3221225794,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at agents\code\test\05-frontmatter.test.mjs:189:1
+✖ a nota arquivada vale pelo esquema de origem mais archived_at (52.4869ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  3221225794 !== 0
+  
+      at hubDeEnsaio (file:///C:/context-hub-wt/integracao/agents/code/test/pasta-de-ensaio.mjs:67:10)
+      at hubDeEnsaio (file:///C:/context-hub-wt/integracao/agents/code/test/05-frontmatter.test.mjs:17:27)
+      at TestContext.<anonymous> (file:///C:/context-hub-wt/integracao/agents/code/test/05-frontmatter.test.mjs:190:15)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 3221225794,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at agents\code\test\05-frontmatter.test.mjs:205:1
+✖ nota com fim de linha CRLF é completada e continua CRLF (64.826ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  3221225794 !== 0
+  
+      at hubDeEnsaio (file:///C:/context-hub-wt/integracao/agents/code/test/pasta-de-ensaio.mjs:67:10)
+      at hubDeEnsaio (file:///C:/context-hub-wt/integracao/agents/code/test/05-frontmatter.test.mjs:17:27)
+      at TestContext.<anonymous> (file:///C:/context-hub-wt/integracao/agents/code/test/05-frontmatter.test.mjs:206:15)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 3221225794,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at agents\code\test\05-frontmatter.test.mjs:216:1
+✖ o verificar-hub recusa nota fora do esquema em qualquer lugar do hub (38.215ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  3221225794 !== 0
+  
+      at hubDeEnsaio (file:///C:/context-hub-wt/integracao/agents/code/test/pasta-de-ensaio.mjs:67:10)
+      at hubDeEnsaio (file:///C:/context-hub-wt/integracao/agents/code/test/05-frontmatter.test.mjs:17:27)
+      at TestContext.<anonymous> (file:///C:/context-hub-wt/integracao/agents/code/test/05-frontmatter.test.mjs:217:15)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 3221225794,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at agents\code\test\05-frontmatter.test.mjs:225:1
+✖ frontmatter em mapa flow que não dá para trocar por trecho é recusado sem gravar (119.2002ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  3221225794 !== 0
+  
+      at hubDeEnsaio (file:///C:/context-hub-wt/integracao/agents/code/test/pasta-de-ensaio.mjs:67:10)
+      at hubDeEnsaio (file:///C:/context-hub-wt/integracao/agents/code/test/05-frontmatter.test.mjs:17:27)
+      at TestContext.<anonymous> (file:///C:/context-hub-wt/integracao/agents/code/test/05-frontmatter.test.mjs:226:15)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 3221225794,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at agents\code\test\05-frontmatter.test.mjs:238:1
+✖ campos de várias linhas ficam como estavam quando outro campo é trocado (71.7901ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  3221225794 !== 0
+  
+      at hubDeEnsaio (file:///C:/context-hub-wt/integracao/agents/code/test/pasta-de-ensaio.mjs:67:10)
+      at hubDeEnsaio (file:///C:/context-hub-wt/integracao/agents/code/test/05-frontmatter.test.mjs:17:27)
+      at TestContext.<anonymous> (file:///C:/context-hub-wt/integracao/agents/code/test/05-frontmatter.test.mjs:239:15)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 3221225794,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at agents\code\test\05-frontmatter.test.mjs:248:1
+✖ cabeçalho aberto sem fechamento é YAML inválido, devolvido sem gravar (52.541ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  3221225794 !== 0
+  
+      at hubDeEnsaio (file:///C:/context-hub-wt/integracao/agents/code/test/pasta-de-ensaio.mjs:67:10)
+      at hubDeEnsaio (file:///C:/context-hub-wt/integracao/agents/code/test/05-frontmatter.test.mjs:17:27)
+      at TestContext.<anonymous> (file:///C:/context-hub-wt/integracao/agents/code/test/05-frontmatter.test.mjs:249:15)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 3221225794,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at agents\code\test\05-frontmatter.test.mjs:258:1
+✖ caminho com ponto fica de fora também quando passado direto e no --checar (66.3158ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  3221225794 !== 0
+  
+      at hubDeEnsaio (file:///C:/context-hub-wt/integracao/agents/code/test/pasta-de-ensaio.mjs:67:10)
+      at hubDeEnsaio (file:///C:/context-hub-wt/integracao/agents/code/test/05-frontmatter.test.mjs:17:27)
+      at TestContext.<anonymous> (file:///C:/context-hub-wt/integracao/agents/code/test/05-frontmatter.test.mjs:259:15)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 3221225794,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at agents\code\test\05-frontmatter.test.mjs:271:1
+✖ comentário YAML junto ao campo trocado fica; comentário na mesma linha recusa sem gravar (56.2862ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  3221225794 !== 0
+  
+      at hubDeEnsaio (file:///C:/context-hub-wt/integracao/agents/code/test/pasta-de-ensaio.mjs:67:10)
+      at hubDeEnsaio (file:///C:/context-hub-wt/integracao/agents/code/test/05-frontmatter.test.mjs:17:27)
+      at TestContext.<anonymous> (file:///C:/context-hub-wt/integracao/agents/code/test/05-frontmatter.test.mjs:272:15)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 3221225794,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at agents\code\test\05-frontmatter.test.mjs:288:1
+✖ nota arquivada é completada pela ficha arquivada, não pela pasta ativa homônima (56.2514ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  3221225794 !== 0
+  
+      at hubDeEnsaio (file:///C:/context-hub-wt/integracao/agents/code/test/pasta-de-ensaio.mjs:67:10)
+      at hubDeEnsaio (file:///C:/context-hub-wt/integracao/agents/code/test/05-frontmatter.test.mjs:17:27)
+      at TestContext.<anonymous> (file:///C:/context-hub-wt/integracao/agents/code/test/05-frontmatter.test.mjs:289:15)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 3221225794,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at agents\code\test\05-nova-iniciativa.test.mjs:1:1
+✖ agents\code\test\05-nova-iniciativa.test.mjs (49.3587ms)
+  'test failed'
+
+test at agents\code\test\07-kit-sem-docker.test.mjs:1:1
+✖ agents\code\test\07-kit-sem-docker.test.mjs (51.64ms)
+  'test failed'
+
+test at agents\code\test\09-mcp-banco-sem-docker.test.mjs:1:1
+✖ agents\code\test\09-mcp-banco-sem-docker.test.mjs (66.9112ms)
+  'test failed'
+
+test at agents\code\test\11-mcp-banco.test.mjs:1:1
+✖ agents\code\test\11-mcp-banco.test.mjs (51.3113ms)
+  'test failed'
+
+test at agents\code\test\12-busca.test.mjs:1:1
+✖ agents\code\test\12-busca.test.mjs (52.1763ms)
+  'test failed'
+
+test at agents\code\test\12-kit-busca.test.mjs:1:1
+✖ agents\code\test\12-kit-busca.test.mjs (48.6955ms)
+  'test failed'
+
+test at agents\code\test\13-gemini.test.mjs:1:1
+✖ agents\code\test\13-gemini.test.mjs (53.3509ms)
+  'test failed'
+
+test at agents\code\test\14-guardas.test.mjs:1:1
+✖ agents\code\test\14-guardas.test.mjs (51.925ms)
+  'test failed'
+
+test at agents\code\test\15-leitura.test.mjs:1:1
+✖ agents\code\test\15-leitura.test.mjs (49.9541ms)
+  'test failed'
+
+test at agents\code\test\16-vigia.test.mjs:1:1
+✖ agents\code\test\16-vigia.test.mjs (46.3594ms)
+  'test failed'
+
+test at agents\code\test\17-vigia-tela.test.mjs:1:1
+✖ agents\code\test\17-vigia-tela.test.mjs (46.5978ms)
+  'test failed'
+
+test at agents\code\test\18-retomada.test.mjs:1:1
+✖ agents\code\test\18-retomada.test.mjs (60.9035ms)
+  'test failed'
+
+test at agents\code\test\19-roteamento.test.mjs:1:1
+✖ agents\code\test\19-roteamento.test.mjs (57.587ms)
+  'test failed'
+
+test at agents\code\test\20-acervo.test.mjs:1:1
+✖ agents\code\test\20-acervo.test.mjs (74.0876ms)
+  'test failed'
+
+test at agents\code\test\21-arquivar.test.mjs:1:1
+✖ agents\code\test\21-arquivar.test.mjs (57.9443ms)
+  'test failed'
+
+test at agents\code\test\21-conferir-cabeca.test.mjs:1:1
+✖ agents\code\test\21-conferir-cabeca.test.mjs (137.4975ms)
+  'test failed'
+
+test at agents\code\test\21-copia-diaria.test.mjs:1:1
+✖ agents\code\test\21-copia-diaria.test.mjs (73.9396ms)
+  'test failed'
+
+test at agents\code\test\21-limpar-arquivo.test.mjs:1:1
+✖ agents\code\test\21-limpar-arquivo.test.mjs (55.3467ms)
+  'test failed'
+
+test at agents\code\test\22-kit-cliente.test.mjs:1:1
+✖ agents\code\test\22-kit-cliente.test.mjs (56.7113ms)
+  'test failed'
+
+test at agents\code\test\22-proxy-sem-docker.test.mjs:1:1
+✖ agents\code\test\22-proxy-sem-docker.test.mjs (49.655ms)
+  'test failed'
+
+test at agents\code\test\23-kit.test.mjs:1:1
+✖ agents\code\test\23-kit.test.mjs (46.103ms)
+  'test failed'
+
+test at agents\code\test\25-cliente-sem-docker.test.mjs:1:1
+✖ agents\code\test\25-cliente-sem-docker.test.mjs (48.4683ms)
+  'test failed'
+
+test at agents\code\test\25-medidor.test.mjs:1:1
+✖ agents\code\test\25-medidor.test.mjs (48.6308ms)
+  'test failed'
+
+test at agents\code\test\25-pares-sem-docker.test.mjs:1:1
+✖ agents\code\test\25-pares-sem-docker.test.mjs (45.2349ms)
+  'test failed'
+
+test at agents\code\test\27-fim-da-resposta.test.mjs:1:1
+✖ agents\code\test\27-fim-da-resposta.test.mjs (43.1531ms)
+  'test failed'
+
+test at agents\code\test\27-pastas.test.mjs:1:1
+✖ agents\code\test\27-pastas.test.mjs (40.4393ms)
+  'test failed'
+
+test at agents\code\test\28-pastas-locais-sem-docker.test.mjs:1:1
+✖ agents\code\test\28-pastas-locais-sem-docker.test.mjs (40.3532ms)
+  'test failed'
+
+test at agents\code\test\36-pasta-de-ensaio.test.mjs:1:1
+✖ agents\code\test\36-pasta-de-ensaio.test.mjs (47.5922ms)
+  'test failed'
+
+test at agents\code\test\37-gravacao-pelo-shell.test.mjs:1:1
+✖ agents\code\test\37-gravacao-pelo-shell.test.mjs (56.0621ms)
+  'test failed'
+
+test at agents\code\test\38-ensaio-banco.test.mjs:1:1
+✖ agents\code\test\38-ensaio-banco.test.mjs (64.0577ms)
+  'test failed'
+
+test at agents\code\test\45-duas-maquinas-sem-docker.test.mjs:1:1
+✖ agents\code\test\45-duas-maquinas-sem-docker.test.mjs (51.9607ms)
+  'test failed'
+
+test at agents\code\test\46-kit-duas-maquinas.test.mjs:1:1
+✖ agents\code\test\46-kit-duas-maquinas.test.mjs (60.4878ms)
+  'test failed'
+
+test at agents\code\test\gerar-exclusoes\gerador.test.mjs:1:1
+✖ agents\code\test\gerar-exclusoes\gerador.test.mjs (62.3469ms)
+  'test failed'
+
+test at agents\code\test\harness-real.test.mjs:1:1
+✖ agents\code\test\harness-real.test.mjs (54.6737ms)
+  'test failed'
+
+test at agents\code\test\ponta-a-ponta\11-mcp-banco.test.mjs:1:1
+✖ agents\code\test\ponta-a-ponta\11-mcp-banco.test.mjs (53.2506ms)
+  'test failed'
+
+test at agents\code\test\ponta-a-ponta\12-busca.test.mjs:1:1
+✖ agents\code\test\ponta-a-ponta\12-busca.test.mjs (53.5561ms)
+  'test failed'
+
+test at agents\code\test\ponta-a-ponta\14-guardas.test.mjs:1:1
+✖ agents\code\test\ponta-a-ponta\14-guardas.test.mjs (50.7224ms)
+  'test failed'
+
+test at agents\code\test\ponta-a-ponta\15-leitura.test.mjs:1:1
+✖ agents\code\test\ponta-a-ponta\15-leitura.test.mjs (45.4028ms)
+  'test failed'
+
+test at agents\code\test\ponta-a-ponta\17-vigia-tela.test.mjs:1:1
+✖ agents\code\test\ponta-a-ponta\17-vigia-tela.test.mjs (49.6134ms)
+  'test failed'
+
+test at agents\code\test\ponta-a-ponta\18-retomada.test.mjs:1:1
+✖ agents\code\test\ponta-a-ponta\18-retomada.test.mjs (59.5132ms)
+  'test failed'
+
+test at agents\code\test\ponta-a-ponta\19-roteamento.test.mjs:1:1
+✖ agents\code\test\ponta-a-ponta\19-roteamento.test.mjs (47.0698ms)
+  'test failed'
+
+test at agents\code\test\ponta-a-ponta\20-acervo.test.mjs:1:1
+✖ agents\code\test\ponta-a-ponta\20-acervo.test.mjs (45.9783ms)
+  'test failed'
+
+test at agents\code\test\ponta-a-ponta\22-cliente.test.mjs:1:1
+✖ agents\code\test\ponta-a-ponta\22-cliente.test.mjs (46.5929ms)
+  'test failed'
+
+test at agents\code\test\ponta-a-ponta\24-kit-ao-vivo.test.mjs:1:1
+✖ agents\code\test\ponta-a-ponta\24-kit-ao-vivo.test.mjs (37.1081ms)
+  'test failed'
+
+test at agents\code\test\ponta-a-ponta\25-hub-inteiro.test.mjs:1:1
+✖ agents\code\test\ponta-a-ponta\25-hub-inteiro.test.mjs (47.097ms)
+  'test failed'
+
+test at agents\code\test\ponta-a-ponta\27-fim-da-resposta.test.mjs:1:1
+✖ agents\code\test\ponta-a-ponta\27-fim-da-resposta.test.mjs (42.183ms)
+  'test failed'
+
+test at agents\code\test\provas\03-codex-hooks\instalar.test.mjs:1:1
+✖ agents\code\test\provas\03-codex-hooks\instalar.test.mjs (47.4047ms)
+  'test failed'
+
+test at agents\code\test\provas\03-codex-hooks\prova.test.mjs:1:1
+✖ agents\code\test\provas\03-codex-hooks\prova.test.mjs (45.8413ms)
+  'test failed'

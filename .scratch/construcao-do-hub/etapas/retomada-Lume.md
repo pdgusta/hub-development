@@ -1,18 +1,21 @@
 # Retomada do Lume (documentador técnico)
 
-**2026-10-17 (depois do reinício): docs em dia com `integracao` ca62332; 6ª junção pedida ao Rebite.** Ramo `docs`
-(worktree `C:/context-hub-wt/docs`) em b20bf5f: merge de ca62332 (48eb75d) e 12 commits de páginas (24, 22, 25; página
-nova `componentes/prova-do-hub-inteiro.md`). Construção fechada; a caminho só o 26 (instalação nas duas máquinas).
+**2026-10-18: docs em dia com `integracao` 8c01cfb (45 e 46); 7ª junção feita (`integracao` 7b6c406, `main` fe55b12); terminal fechado pelo maestro até 2026-10-19.** Ramo `docs` (worktree
+`C:/context-hub-wt/docs`) em e33b71f: merge fast-forward de 8c01cfb e 8 commits (banco do par, kit de par, pastas e
+links + fim + roteamento, operação + stack, **página nova `instalacao.md`**, arquitetura, decisões, README). `main` do
+hub em 7d0c25d. A caminho só o 26 (instalação de verdade, com o Gustavo).
 
 Leia nesta ordem: `etapas/documentacao-tecnica.md` (o plano), `etapas/regras-da-construcao.md`,
 `etapas/estado-documentacao.md` (feito e avisos), esta retomada.
 
 ## Fila viva
 
-1. 6ª junção feita: `integracao` dc514db; verificador 0, 27-pastas 24/24; 12-busca pendente (espera o maestro, memória). Aguardar o 26.
-2. Quando o 26 juntar (ou a cada junção nova): `git merge integracao` no docs e pôr as páginas em dia (kit de par,
-   operação, pastas e links se o 26 definir `HUB_PAR_ID`, arquitetura, decisões, README).
-3. Divergência avisada ao maestro: nenhum ticket define `HUB_PAR_ID` no kit (pastas e links §5).
+1. 7ª junção feita: `integracao` 7b6c406, `main` fe55b12 (Rebite). Aguardar o 26.
+2. Avisos ao maestro (2026-10-18), anotados na `instalacao.md`: fork em `C:/Projetos/hub-mcp-banco` no ramo
+   `ticket-09`, fora de `integracao`; `HUB_MCP_BANCO_TOKEN` sem script que o ponha no ambiente; B com o clone no disco
+   não provado. A divergência do `HUB_PAR_ID` fechou com o 46.
+3. Quando o 26 andar (ou ticket novo juntar): `git merge integracao` no docs e pôr em dia `instalacao.md` com o que o
+   26 aprender, e as páginas tocadas.
 
 ## Molde e regras do papel
 

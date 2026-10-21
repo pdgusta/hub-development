@@ -1,7 +1,7 @@
 # 45: O banco do par entre duas máquinas (rede e segredos)
 
 Type: task
-Status: claimed
+Status: resolved
 Etapa: preparo do 26 (duas máquinas)
 Blocked by: 25
 
@@ -58,3 +58,11 @@ Gustavo, 2026-10-17 ~21h45, pelo Maestri Chat: "A", abrir agora).
   Cinzel. Próximo: revisão do Fiel (o maestro religa).
 - 2026-10-17 ~22h55 (Brasa): o maestro religou o Fiel e passou o 45 a ele; achado do CLI anotado pelo maestro para
   o 26 (montar o CLI também no par A). Esperando o parecer.
+- 2026-10-17 ~23h10 (Brasa): **Fiel r1 PASSA com ressalvas** (`etapas/parecer-45-Brasa.md`), sem conserto neste
+  ramo. Ressalvas para o 26 ou rodada curta: `${HUB_BANCO_ENDERECO:?}` no `compose.endereco.yml`; aviso para IPv4
+  fora de `100.64.0.0/10`; `restart: unless-stopped` com o Docker subindo antes do Tailscale (não testado); a saída
+  do gerador mandar rodar o `montar-cli-livesync.ps1`; "dubious ownership" do `git -C`. Avisado o Rebite.
+- 2026-10-17 ~23h15 (Brasa): o aviso ao Rebite não chegou (o terminal dele estava num PowerShell sem agente; o texto
+  virou comando com erro de sintaxe, sem efeito). Pedido ao maestro que o religue; reenviar o aviso de junção depois.
+- 2026-10-17 ~23h20 (Brasa): o maestro religou o Rebite e passou o 45 a ele. Nada pendente da Brasa no 45.
+- 2026-10-17 23:39 (integrador): juntado em `integracao` como 6494a38 (ramo ticket-45 02dabc4, parecer-45-Brasa.md PASSA). Leve 45-duas-maquinas-sem-docker 1/1; suíte com --test-concurrency=1 e trava: 371, 356 verdes, 15 pulados, 0 falhas (log etapas/logs/juncao-45-suite.log). Provas com Docker (45-banco-endereco 13/13, 45-montar-cli 6/6) não repetidas: arquivos idênticos aos revisados. Ressalvas do parecer para o 26: (1) `${HUB_BANCO_ENDERECO:?}` no compose.endereco.yml; (2) aviso de IP fora de 100.64.0.0/10; (3) restart com Docker subindo antes do Tailscale, não testado; (4) a saída do gerador não manda rodar o montar-cli-livesync.ps1; (5) só IPv4, e "dubious ownership" possível no git -C.

@@ -67,6 +67,8 @@ Plano: `documentacao-tecnica.md`. Fila e progresso; o Lume atualiza a cada pági
 
 ## Próximo
 
+Em dia com `integracao` 8c01cfb (45, 46); 7ª junção feita (`integracao` 7b6c406, `main` fe55b12). Depois: o 26, quando der.
+
 Fase 2: em dia até `integracao` ca62332 (construção fechada; só o 26 a caminho). 6ª junção pedida (docs b20bf5f).
 Antes: em dia até `integracao` df6c2e5 (44). Docs: 5ª leva juntada em f640bbd (Rebite, 27-pastas verde; suíte do lote
 em curso). Ponta do docs a71e407, 4 páginas sobre f640bbd (pastas-e-links, mcp-do-banco, decisões, README): pedir a
@@ -74,6 +76,15 @@ em curso). Ponta do docs a71e407, 4 páginas sobre f640bbd (pastas-e-links, mcp-
 `pastas-e-links.md` §5), 25, 26.
 
 ## Avisos de junção recebidos (fase 2)
+
+- 2026-10-18: 45 (6494a38) e 46 (8c01cfb) juntados (Rebite; `main` 7d0c25d). `git merge integracao` no docs
+  (fast-forward a 8c01cfb). Páginas: banco do par 5b0c155; kit de par 83b880b; pastas e links, fim da resposta e
+  roteamento 292bbf2 (id do par de reserva em `.local/par.json`: a divergência do `HUB_PAR_ID` fechou); operação e
+  stack 82fec3c; **página nova `instalacao.md`** b810a58 (passo a passo do 26 para o maestro de cada par); arquitetura
+  cefca1b, decisões eaddd6c, README e33b71f. `verificar-pastas` rc 0, frontmatter 0. **7ª junção feita pelo Rebite** (`integracao` 7b6c406; frontmatter 0, 27-pastas 24/24; `main` fe55b12).
+  Avisados ao maestro: o checkout `C:/Projetos/hub-mcp-banco` está em `ticket-09` (d2a5a40), 6 commits atrás de
+  `integracao` do fork (34c3e50); nenhum script põe `HUB_MCP_BANCO_TOKEN` no ambiente do usuário; B com o clone já no
+  disco não foi provado (a espera e o 25 tinham o B vazio).
 
 - 2026-10-17 (depois do reinício): `git merge integracao` no docs (48eb75d, `integracao` ca62332: 24 a4fa7e3, evidência
   do Codex do 22 56cd23a, 25 ca62332). Páginas: kit de par a87d81a e 9813220 (o kit ao vivo); **página nova**

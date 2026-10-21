@@ -1,7 +1,7 @@
 # 46: O kit de par pronto para duas máquinas
 
 Type: task
-Status: claimed
+Status: resolved
 Etapa: preparo do 26 (duas máquinas)
 Blocked by: 25
 
@@ -45,3 +45,7 @@ diagnóstico do 25.
 - 2026-10-17 ~22h40 (Cinzel): prova com Docker 6 PASSA (`etapas/logs/46-espera-banco.log`); trava solta. Ramo ticket-46
   pronto para revisão (5 commits sobre dc514db). Falta: a revisão (Fiel fora; pedido ao maestro) e a junção.
 - 2026-10-17 ~22h45 (Cinzel): em revisão com o Fiel (religado pelo maestro). Aviso dos docs ao Lume na junção.
+- 2026-10-17 ~23h (Cinzel): r1 do Fiel (VOLTA, 1 conserto) consertada em dc4fd1a; rodada curta pedida.
+- 2026-10-17 ~23h15 (Cinzel): r2 do Fiel PASSA (dc4fd1a). Levado ao Rebite para a junção (com o 45; aviso dos docs ao Lume na junção, pelo maestro).
+- 2026-10-17 ~23h25 (Cinzel): integracao (45) juntada no ramo, dd241ba, leves 117/117; Rebite conferiu, junta após a suíte do 45.
+- 2026-10-18 00:11 (integrador): juntado em `integracao` como 8c01cfb (ramo ticket-46 dd241ba = dc4fd1a + merge de integracao 6494a38, sem resolução à mão; parecer-46-Cinzel.md r2 PASSA). Leves 46-kit-duas-maquinas + 23-kit 44/44; suíte com --test-concurrency=1 e trava: 390, 375 verdes, 15 pulados, 0 falhas (log etapas/logs/juncao-46-suite.log). Prova com Docker 46-espera-banco (6 PASSA) não repetida: árvore idêntica à do ramo. Ressalvas que ficam (rodada 1): 1, 3 e 5.

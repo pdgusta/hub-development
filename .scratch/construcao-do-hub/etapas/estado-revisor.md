@@ -296,3 +296,19 @@ Sat, Oct 17, 2026 10:15:54 AM 21 r1 (Trilho, 1c87f9b): retomado após /clear; re
 20:48 Retomada limpa (pedido do Gustavo): só estado atual e como retomar.
 22:36 Retomado. Pedidos: 45 (Brasa, ticket-45 02dabc4) e 46 (Cinzel, ticket-46); costura HUB_PAR_ID.
 22:38 45+46: junção sem commit em %TEMP%/hub-ensaio-45-46-fiel-juncao (4e89be6 + 02dabc4, sem conflito). Leves rodando.
+23:00 45 r1: PASSA c/ ressalvas em acordo. 46 r1: VOLTA em acordo (1: HUB_PAR_ID= vazio do 10.env.modelo vence o gerado). Pareceres gravados. Avisando Brasa, Cinzel e maestro.
+23:06 Asks mortos por falta de memória após o envio; Cinzel recebeu (já no conserto; maestro também pediu). Esperando 46 r2.
+23:07 2ª leitura entregue (115/115 leves; laço dela parou por memória, o resto coberto pelos 157 do Fiel). Esperando 46 r2.
+23:19 46 r2 (dc4fd1a): diff lido; sonda gerador+modelos+HUB_PAR_ID= no fim: 'faria id do par (casa)', código 0. Leves na junção nova rodando; 2ª leitura Sonnet (diff pequeno) em curso.
+23:22 46 r2 dc4fd1a: PASSA em acordo (117/117 na junção; sonda verde). Avisando Cinzel e maestro.
+23:26 Avisos do 46 r2 mandados (Cinzel, maestro). Worktree de junção removida. Nada em curso.
+23:27 Retomada gravada. Livre (volto no 48).
+14:53 Retomado (conversa nova). Pedido: 49 rodada curta (Brasa, ticket-49 8f7f4a6).
+14:54 49: 2ª leitura Opus em curso; Fiel lendo teste e kit.
+14:59 49: sonda leve confirma labs/ (LF no A, CRLF no commit) = as 2 diferenças do caso 6. Acréscimo c3f2868 (.gitignore, fecha o 50); Brasa ligada.
+15:03 49 r1 (até c3f2868): VOLTA em acordo, só relatório/ordem do B (6 consertos: XML do laço no kit de fora, checkout ressuscita apagados, autocrlf, causa do .livesync = .git/info/exclude, comando incompleto, lista da instalacao.md). Código pode juntar. Leves 26/26. Avisando Brasa e maestro.
+15:07 49 r2 (Brasa, ee71863) recebido.
+15:10 49 r2: diff ee71863 só o cabeçalho; receita revista lida (6 consertos no texto). Sonda do passo 3 em segundo plano; 2ª leitura Sonnet r2 em curso.
+15:13 49 r2: 2ª leitura Sonnet PASSA c/ ressalvas (parecer-49-Brasa-segunda-leitura-r2.md). PAUSA do maestro (Gustavo fecha o note): r2 sem veredito enviado; perdeu o sentido com a junção. Sonda do passo 3 (bash, segundo plano) pode ter ficado em %TEMP%/hub-ensaio-49-fiel-r2.
+15:14 Sonda do passo 3: 14 com ponto voltaram (.gitignore, .gitkeep, plugin.json), nota ausente ficou ' D'; %TEMP% limpo. Pausado.
+15:14 Maestro: r2 sem veredito. Na volta: leitura curta de .scratch/context-hub/instalacao-par-b.md contra a seção final do relatório do 49. Parado.

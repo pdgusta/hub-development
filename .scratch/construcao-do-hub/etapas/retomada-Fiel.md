@@ -1,11 +1,19 @@
-# Retomada do Fiel (revisor, Claude Opus 5.5 médio) — 2026-10-17 ~20h
+# Retomada do Fiel (revisor, Claude Opus 5.5 médio) — 2026-10-18 (pausa)
 
 ## Estado atual
-- **Construção fechada** (maestro, 2026-10-17 ~20h: 25 resolvido). Nada em curso, nada pendente meu.
-- Sem trava, Docker, worktree, ensaio ou sonda minha de pé.
-- **Fielzinho fora.** A 2ª leitura é sempre um subagente meu Opus 5.5 (um por vez), em worktree destacada própria
-  quando o construtor vai mexer na dele; parecer em `parecer-<NN>-<construtor>-segunda-leitura.md`; ele não lê o meu.
-- Codex só para testes, `gpt-6-luna` pela constante `MODELO_CODEX` (`agents/code/test/harness-real.mjs`).
+- **49 (Brasa):** r1 (até c3f2868) VOLTA em acordo, só relatório/receita do par B; parecer `parecer-49-Brasa.md`,
+  2ª leitura `parecer-49-Brasa-segunda-leitura.md`. Brasa e maestro avisados. r2 (ee71863) recebida: 6 consertos no
+  relatório; 2ª leitura Sonnet PASSA c/ ressalvas (`parecer-49-Brasa-segunda-leitura-r2.md`: bloco 1 grava autocrlf
+  global; throw do bloco depois da espera; §2 "não verificado" na lista da doc). **Veredito r2 dispensado** pelo maestro. **Na volta:** leitura curta de
+  `C:/Projetos/context-hub/.scratch/context-hub/instalacao-par-b.md` contra a seção final do relatório do 49
+  (receita do par B). Até lá, parado.
+- Sonda do passo 3 terminou: 14 com ponto voltaram, a nota ausente ficou " D"; pasta de ensaio apagada.
+  nas duas máquinas; Docker antes do Tailscale); mais as do 49: kit do próprio hub `-Passos 04,08,10` depois do git
+  (XML do laço e `.git/info/exclude`), checkout só do que tem ponto, autocrlf=true no B.
+- **Fielzinho fora.** 2ª leitura por subagente Opus (Sonnet se diff pequeno), um por vez.
+- Codex só para testes, `gpt-6-luna` (`MODELO_CODEX`).
+- `maestri ask` pode não entrar: `timeout 100 maestri ask ...` e conferir com `maestri check` (grep da frase).
+- Brasa ligada a mim (maestro, 2026-10-18).
 
 ## Como retomar
 1. Ler inteiros `regras-da-construcao.md` e `revisao-em-dupla.md`; o fim de `estado-revisor.md`; este arquivo.

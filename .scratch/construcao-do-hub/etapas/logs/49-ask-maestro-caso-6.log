@@ -1,0 +1,34 @@
+                 │                                      
+      173 +- 14:56: 49 caso 6 (Brasa): com a pasta vazia o 08 para (ENOENT em agents/skills); ordem confirmada para o pa       │                                      
+          +r B: kit de fora, -Passos 00,03,04,05,espera; git init+fetch+reset --mixed+checkout do que falta (traz o que        │                                      
+          +o banco não leva, ex.: .claude-plugin/ dos mods); -Passos 08,10. 2ª rodada: 226 s, 576 arquivos, git limpo, 0       │                                      
+          + conflito. Fiel religado para a rodada curta. Ticket 50 (.gitignore do LiveSync) aberto.                            │                                      
+  ⎿  Allowed by auto mode classifier                                                                                           │                                      
+                                                                                                                               │                                      
+  Ran 2 shell commands                                                                                                         │                                      
+                                                                                                                               │                                      
+● O teste final da Brasa confirmou a ordem segura para o par B:                                                                │                                      
+                                                                                                                               │                                      
+  1. Rodar o kit de fora do hub, com o C:\context-hub vazio, só com os passos de banco, busca e MCP, e esperar o hub chegar    │                                      
+     pelo banco. No teste foram 226 segundos para 576 arquivos, sem faltar nenhum.                                             │                                      
+  2. Ligar o git na pasta, sem regravar os arquivos que vieram do banco. O git traz só o que o banco não leva, como as pastas  │                                      
+     com ponto no nome.                                                                                                        │                                      
+  3. Rodar o passo que liga os três agentes, que com o hub vazio parava por não achar as skills.                               │                                      
+                                                                                                                               │                                      
+  No fim: zero conflito, git status limpo e a vigia do A em ok.                                                                │                                      
+                                                                                                                               │                                      
+  O Fiel já está revisando, com a segunda leitura por subagente. Com o aprovado dele, reescrevo o roteiro do par B nessa ordem │                                      
+  e tiro o PARE.                                                                                                               │                                      
+                                                                                                                               │                                      
+  A Brasa também achou duas sobras do sincronizador que aparecem no git status do hub. Abri o ticket 50, pequeno, para ela pôr │                                      
+  no .gitignore depois.                                                                                                        │                                      
+                                                                                                                               │                                      
+  O maestro do par B está adiantando o que pode: instalou o Copilot CLI e espera o seu login nele.                             │                                      
+                                                                                                                               │                                      
+✻ Sautéed for 4m 45s · done 2:57 PM · 1 shell still running                                                                    │                                      
+                                                                                                        2% until auto-compact  │                                      
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+❯ 
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  ctx 55%
+  ⏵⏵ auto mode on · 1 shell · ← 2 agents

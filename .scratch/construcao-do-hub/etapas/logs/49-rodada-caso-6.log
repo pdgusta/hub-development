@@ -1,0 +1,11 @@
+--- caso 6 ---
+caso 6: passo 08 com o hub vazio: código 1 passo 08 parou: ENOENT: no such file or directory, scandir 'C:\Users\gustavo.delfino\AppData\Local\Temp\hub-ensaio-49\b\hub\agents\skills'
+caso 6: passo 10 com o hub vazio: código 0 
+[PASSA] caso 6: o kit sobe o B (código 0, 290 s; espera: {"convergiu":true,"arquivos":576,"faltam":0})
+[FALHA] caso 6: o git chega depois e vê o disco igual ao commit (1 linhas no git status: ?? .livesync/)
+[31;1mParentContainsErrorRecordException: [0mC:\context-hub-wt\ticket-49\agents\code\test\49-par-novo-com-hub.test.ps1:182[0m
+[31;1m[0m[36;1mLine |[0m
+[31;1m[0m[36;1m[36;1m 182 | [0m … omandos = @([36;1m[regex]::Matches((Get-Content -Raw (Join-Path $casa '.cla[0m …[0m
+[31;1m[0m[36;1m[36;1m[0m[36;1m[0m[36;1m     | [31;1m               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[31;1m[0m[36;1m[36;1m[0m[36;1m[0m[36;1m[31;1m[31;1m[36;1m     | [31;1mException calling "Matches" with "2" argument(s): "Value cannot be null. (Parameter 'input')"[0m
+fim 1

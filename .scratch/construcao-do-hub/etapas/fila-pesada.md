@@ -21,3 +21,6 @@ testes (09, 16): limpe os contêineres ao soltar.
    Quem termina sai; o Rebite junta ao fim de cada um.
 Até 20h30: todos gravam a retomada; nada pesado rodando às 21h (reinício do Windows).
 8. (feito 22:35: prova 46-espera-banco, Cinzel, 6 PASSA)
+
+Fila de 2026-10-18 (trava com o maestro desde 12:52, par A de verdade):
+9. (feito 14:35: prova 49, Brasa, casos 1, 2, 4 e 5; trava solta)
