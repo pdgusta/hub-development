@@ -203,3 +203,4 @@ Depois, confira o mundo real: `maestri list`, `git -C C:\context-hub log --oneli
   vigia (node → notificar.ps1, código 0); conferência visual pedida ao Gustavo. Falta: push do hub e deste repositório
   pelo Gustavo; depois só o par B.
 - ~13h20: Gustavo: notificação com acentos certa (51 conferido na tela); push do hub e deste repositório feitos. Fork do B conferido (Radar fechado). Só falta o par B.
+- ~13h30: Rebite e Lume gravaram a retomada e foram fechados (pedido do Gustavo). Canvas: só o maestro e o Busca. Só falta o par B.

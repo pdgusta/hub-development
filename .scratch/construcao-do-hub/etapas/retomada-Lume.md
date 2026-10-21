@@ -8,7 +8,7 @@ Leia nesta ordem: `etapas/documentacao-tecnica.md` (o plano), `etapas/regras-da-
 
 ## Fila viva
 
-1. 9ª junção feita: `integracao` b2ae3db, `main` 70a9f73. Nada pendente.
+1. 9ª junção feita: `integracao` b2ae3db, `main` 70a9f73, com push (maestro). Terminal fechado até o par B; ao voltar, ler esta retomada e seguir o item 2.
 2. O 26 (par B, e o `LastTaskResult` 0 da reaplicação no par A): pôr em dia `instalacao.md` com o que se aprender.
 
 ## Molde e regras do papel
