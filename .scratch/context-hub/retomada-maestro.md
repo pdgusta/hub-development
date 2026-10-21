@@ -9,25 +9,19 @@ antigos estão em `.scratch/construcao-do-hub/etapas/diario-da-construcao.md` (f
 (instalação de verdade nas **duas máquinas**, com o Gustavo). `integracao` em `ca62332` (suíte 370: 355 verdes, 15
 pulados, 0 falhas). O Windows reinicia às 21h de 2026-10-17 (cumulative updates). Ronda automática cancelada (sem trabalho).
 
-## AGORA (2026-10-18 ~14h): reinício do Maestri pelo Gustavo, para valerem o token e os mods no par A
+## AGORA (2026-10-21): tudo o que não depende do par B (pedido do Gustavo)
 
-Depois de voltar: (1) `maestri list`; feche quem voltou sem trabalho (Fiel, Rebite, Lume estão sem trabalho; Busca é um
-Shell: confira que a busca subiu de novo, senão `pwsh -NoProfile -File C:\context-hubgents\skillsusca\iniciar.ps1`
-nele); (2) Brasa: ticket 49 (casos 4 e 5: o banco do B puxa o do A numa replicação única antes do CLI); conferir se a
-trava e os contêineres de ensaio dela ficaram de pé e mande "leia a sua retomada"; (3) conferir no par A: um Claude
-Code novo fora do hub vê o contrato do hub, o `hub-banco` responde com o token do ambiente, a linha de status da vigia
-aparece; (4) o par B espera o 49 (aviso PARE em `instalacao-par-b.md`).
+O note (par B) está ocioso; o Gustavo só abre o maestro de lá quando faltar só a parte dele. Em curso:
 
- (combinado com o Gustavo para 2026-10-18)
-
-1. Hoje à noite, sem ele: o Lume põe os docs em dia com o 45/46 e escreve `agents/code/docs/instalacao.md`; o Rebite
-   junta os docs em `integracao` e de novo no `main` do hub (sem push). Depois, os dois fecham.
-2. **Amanhã, com o Gustavo:** ele faz `git -C C:\context-hub push origin main` (um push só, já com os docs); o maestro
-   prepara `C:\hub-transporte\` (o `.env` do par B pelo `gerar-env-pares.ps1`, o `git bundle` do fork
-   `C:\Projetos\hub-mcp-banco` e o do LiveSync `C:\Projetos\spike-livesync\livesync-src`); instalação no **par A**
-   seguindo `instalacao.md` (simulação, cópia e hash, instalar, tarefas com ele); depois o **par B** (o maestro de lá
-   segue a mesma página); nota de ponta a ponta nos dois sentidos. Ticket 26; roteiro `etapas/roteiro-26.md`.
-3. Depois: 48 (correio entre maestros) e a lista **Para rever com o Gustavo**.
+1. **Rebite:** ee71863 em integracao, suíte do 49 com trava (`logs/juncao-49-suite-2.log`); verde → 49 e 50
+   resolvidos, integracao no main do hub (--no-ff, sem push).
+2. **Lume:** `instalacao.md` em dia com o 49 e o 50; junção com o Rebite depois do 49.
+3. **Brasa:** tickets 51 (acentos da notificação da vigia) e 52 (tarefa hub-sincronizador com pwsh que o Agendador
+   acha); Fiel revisa; Rebite junta depois do 49.
+4. Depois: reaplicar a tarefa do 52 no par A (com o Gustavo); o Gustavo faz o push do hub (um só, com 49, 50, 51, 52 e
+   docs) e o deste repositório (a sessão do maestro não tem login do GitHub: `! git -C C:\Projetos\context-hub push`).
+5. Só então o par B: ligar Send Files no Tailscale, o A manda o `.env` do B e o bundle do fork por Taildrop, o
+   maestro do B segue `instalacao-par-b.md`. Ticket 26; depois 48 e **Para rever**.
 
 As duas peças visuais foram entregues (2026-10-17 ~23h).
 
