@@ -72,6 +72,10 @@ Nada aplicado: global real só com o aval e o Gustavo vendo, com cópia e hash a
   (inspetor): 62% em `assertNoSymbolicLinks`, 15% em `scanDirectoryInto`; criptografia desprezível. Sem o `.local`, a
   volta é de 51 arquivos. Conserto provável no kit: no par novo, a busca (03) **depois** da espera, ou a busca fora do
   vault. (Não verificado: se o ensaio do 46 tinha a busca no vault.)
+- 2026-10-21 ~13h58: **confirmado** o achado da descida lenta: com `.local/busca` fora do vault, o resto desceu a ~1
+  arquivo/s (51 → 564 em ~9 min; antes, 10 a cada 4 min). **Custo que fica também em regime** (não medido, vale para
+  o A): cada evento de arquivo no hub faz o CLI refazer a varredura inteira, ~13,6 s de CPU aqui com a busca no vault.
+  Vale um ticket: busca fora do vault, ou a varredura do CLI sem as pastas com ponto (fonte primária antes).
 
 ## Diário (mais novo embaixo)
 
@@ -138,3 +142,6 @@ Nada aplicado: global real só com o aval e o Gustavo vendo, com cópia e hash a
   Evidência: perfil de CPU de 30 s do daemon pelo inspetor (fechado ao fim; scripts `perfil.mjs` e `cadeia.mjs` no
   scratchpad) e uma varredura igual à do CLI medida à parte (`varredura.mjs`: 13,6 s, 8.639 arquivos, 99,4% em
   `.local`). Progresso: 51 de 564 às 13:45. Proposta ao Gustavo: tirar `.local/busca` do vault até a descida acabar.
+- 13:47: `.local/busca` movida para `C:/hub-par/busca-fora` (8.587 arquivos; aval do Gustavo). 13:57: **o par recebeu o
+  hub: 564 arquivos do banco no disco** (espera do kit, `convergiu: true`). Busca devolvida a `C:/context-hub/.local/busca`
+  (8.587). Próximo: passo 5 (o git, sem tocar nos arquivos do banco).
