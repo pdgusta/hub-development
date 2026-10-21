@@ -200,3 +200,4 @@ Depois, confira o mundo real: `maestri list`, `git -C C:\context-hub log --oneli
 - ~12h: 51 PASSA (Fiel r2; fe8be14). Brasa ligada ao Rebite (maestri connect). Fila do Rebite: 49+50 → docs 8ª → 51 → 52 (uma suíte para 51+52).
 - ~12h20: 52 PASSA com ressalvas (Fiel; só no relatório); fila do Rebite depois do 51. Reaplicação no par A: maestro + Gustavo, receita em etapas/relatorio-52-tarefa-do-sincronizador.md (LastTaskResult 0). Brasa e Fiel sem fila: gravam a retomada e saem (janela quieta para a suíte).
 - ~12h40: 49 e 50 RESOLVIDOS (Rebite): suíte 390/375/15/0 verde; integracao 35da1e6; main do hub c37365b (--no-ff), sem push. Rebite segue: docs 8ª, 51, 52.
+- ~13h: docs 8ª juntada (5753a7a). Lume: 51 e 52 nas páginas (docs 1820326; instalacao §12, vigia, banco-do-par, decisoes, README; verificadores 0); 9ª pedida ao Rebite depois da suíte do 51+52.
