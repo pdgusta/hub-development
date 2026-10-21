@@ -126,6 +126,10 @@ para abrir e fechar aplicativos e processos da execução. Contexto do maestro: 
   ticket-09 e o modelo aponta para ele; o par A usa a worktree `integracao`. Conferir antes do par B que o `.env` do B
   aponta para o clone do bundle (integracao 34c3e50), não para um ramo velho.
 
+- **PowerShell sem MSI a partir da 7.7** (doc oficial "Install PowerShell 7 on Windows"): o winget instala o MSIX desde
+  a 7.6; o MSI só com `--installer-type wix`, e a 7.7 não terá MSI. O 52 prefere `C:/Program Files/PowerShell/7`; na
+  7.7, o caminho fixo terá de ser o ZIP numa pasta nossa. Par B: instalar o MSI da 7.6 no roteiro.
+
 ## Leia nesta ordem (caminhos relativos a `C:\Projetos\context-hub\`)
 
 1. Este arquivo.
@@ -192,3 +196,4 @@ Depois, confira o mundo real: `maestri list`, `git -C C:\context-hub log --oneli
   do 49. Ressalva do fork no 05.env.modelo para o Radar.
 - ~12h10: 51 pronto (Brasa, ticket-51 02f026c+16b0715): causa confirmada (o $input do powershell 5.1 lia em OEM 850; agora lê os bytes em UTF-8); teste vermelho→verde, leves 41/41; Fiel revisa. Toast real na tela não verificado: conferir com o Gustavo depois da junção. Brasa no 52.
 - ~12h40: 51 r1 VOLTA (Fiel: $xml = -Xml pela caixa, toast quebrava calado); conserto fe8be14, r2 no Fiel. 52 pronto (ticket-52 2903ab7): caminho completo do pwsh (MSI se houver, senão o pwsh que roda o kit), leves 28/28, no Fiel. Ressalva: aqui só há o pwsh da Store (7.6.7; sem C:/Program Files/PowerShell/7); a pasta dele muda a cada atualização. Proposta da Brasa: pwsh pelo MSI nos dois pares; perguntado ao Gustavo (instalação global).
+- ~13h: pwsh 7.6.7 pelo MSI instalado pelo Gustavo no par A (`--installer-type wix`): `C:/Program Files/PowerShell/7/pwsh.exe` conferido.
