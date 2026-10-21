@@ -15,10 +15,11 @@ Feito sem o par B: 49, 50, 51, 52 resolvidos; docs 8ª e 9ª; main do hub 70a9f7
 tarefa hub-sincronizador reaplicada no par A (resultado 0). Recrutas sem fila (Brasa e Fiel fechados; Rebite e Lume
 no canvas, parados).
 
-1. Gustavo: conferir a notificação de teste ("Hub: teste do 51") com acentos; `git -C C:\context-hub push origin main`
+1. FEITO (Gustavo): notificação de teste com acentos certos; push do hub e deste repositório. Era: conferir a notificação de teste ("Hub: teste do 51") com acentos; `git -C C:\context-hub push origin main`
    e o push deste repositório, num terminal dele (a sessão do maestro não tem login do GitHub).
 2. Par B: ligar Send Files no Tailscale; o A manda `C:/hub-transporte/lenovo-ideapad.env` e o bundle do fork por
-   Taildrop (conferir antes o caminho do fork no `.env`: Radar); o maestro do B segue `instalacao-par-b.md` (com o MSI
+   Taildrop (fork conferido: bundle só com `integracao` 34c3e50 = ponta atual; o B clona com `-b integracao` em
+   `C:/Projetos/hub-mcp-banco`, o caminho do `.env` dele); o maestro do B segue `instalacao-par-b.md` (com o MSI
    do pwsh antes do passo 04). Ticket 26; depois 48 e **Para rever**.
 
 As duas peças visuais foram entregues (2026-10-17 ~23h).
@@ -120,10 +121,6 @@ para abrir e fechar aplicativos e processos da execução. Contexto do maestro: 
   nada religa o CLI do LiveSync se ele cair. Conserto provável: caminho completo do pwsh no XML que o passo 04 escreve
   (vale para o par B também). A `hub-vigia` usa `conhost` + node e roda.
 
-- **Fork do banco no `05.env.modelo`** (Lume, 2026-10-21): o checkout `C:/Projetos/hub-mcp-banco` segue no ramo
-  ticket-09 e o modelo aponta para ele; o par A usa a worktree `integracao`. Conferir antes do par B que o `.env` do B
-  aponta para o clone do bundle (integracao 34c3e50), não para um ramo velho.
-
 - **PowerShell sem MSI a partir da 7.7** (doc oficial "Install PowerShell 7 on Windows"): o winget instala o MSIX desde
   a 7.6; o MSI só com `--installer-type wix`, e a 7.7 não terá MSI. O 52 prefere `C:/Program Files/PowerShell/7`; na
   7.7, o caminho fixo terá de ser o ZIP numa pasta nossa. Par B: instalar o MSI da 7.6 no roteiro.
@@ -205,3 +202,4 @@ Depois, confira o mundo real: `maestri list`, `git -C C:\context-hub log --oneli
   estado_do_hub: só a divergência esperada (par B desligado). Notificação real com acentos disparada pelo caminho da
   vigia (node → notificar.ps1, código 0); conferência visual pedida ao Gustavo. Falta: push do hub e deste repositório
   pelo Gustavo; depois só o par B.
+- ~13h20: Gustavo: notificação com acentos certa (51 conferido na tela); push do hub e deste repositório feitos. Fork do B conferido (Radar fechado). Só falta o par B.
