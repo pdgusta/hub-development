@@ -122,6 +122,10 @@ para abrir e fechar aplicativos e processos da execução. Contexto do maestro: 
   nada religa o CLI do LiveSync se ele cair. Conserto provável: caminho completo do pwsh no XML que o passo 04 escreve
   (vale para o par B também). A `hub-vigia` usa `conhost` + node e roda.
 
+- **Fork do banco no `05.env.modelo`** (Lume, 2026-10-21): o checkout `C:/Projetos/hub-mcp-banco` segue no ramo
+  ticket-09 e o modelo aponta para ele; o par A usa a worktree `integracao`. Conferir antes do par B que o `.env` do B
+  aponta para o clone do bundle (integracao 34c3e50), não para um ramo velho.
+
 ## Leia nesta ordem (caminhos relativos a `C:\Projetos\context-hub\`)
 
 1. Este arquivo.
@@ -184,3 +188,5 @@ Depois, confira o mundo real: `maestri list`, `git -C C:\context-hub log --oneli
 - 2026-10-21 ~11h40: Gustavo: seguir com tudo o que não depende do par B. Commit da pausa (retomadas, pareceres, logs
   do 45/46/49). Push barrado: a sessão não tem login do GitHub (fica com o Gustavo). Tickets 51 (acentos da notificação)
   e 52 (tarefa do sincronizador) abertos, à Brasa. Rebite: suíte do 49. Lume: instalacao.md com o 49/50. 1,7 GB livres.
+- ~12h: Lume: instalacao.md em dia com o 49 e o 50 (docs 4219de9; verificadores 0); junção pedida ao Rebite, depois
+  do 49. Ressalva do fork no 05.env.modelo para o Radar.
