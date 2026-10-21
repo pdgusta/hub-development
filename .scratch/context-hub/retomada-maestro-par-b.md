@@ -56,6 +56,8 @@ Nada aplicado: global real só com o aval e o Gustavo vendo, com cópia e hash a
 - 2026-10-21 ~13h: o par A terminou (49 a 52 resolvidos; main do hub 70a9f73 no GitHub, conferido por `git ls-remote`).
   Aqui a caixa do Taildrop está **vazia**: falta mandar `lenovo-ideapad.env` e `hub-mcp-banco.bundle` para
   `lenovo-ideapad:` (Tailscale vê esta máquina em 100.121.86.61). Assim que chegarem, sigo `instalacao-par-b.md`.
+- 2026-10-21 ~13h05: **pronto para receber.** Send Files ligado no console (Gustavo conferiu); pwsh 7.6.7 pelo MSI em
+  `C:\Program Files\PowerShell\pwsh.exe` (conferido). Pode mandar os dois arquivos agora.
 
 ## Diário (mais novo embaixo)
 
@@ -92,3 +94,5 @@ Nada aplicado: global real só com o aval e o Gustavo vendo, com cópia e hash a
   main do hub 70a9f73 no remoto; Taildrop vazio; sem `C:\hub-transporte`, `C:\context-hub`, hub-kit, fork e
   `C:\hub-par`; pwsh aqui é só o da Store (falta o MSI, `C:\Program Files\PowerShell\7\pwsh.exe` não existe); Docker
   desligado; `gh` logado como pdgusta. Recado ao A: mandar os dois arquivos.
+- 13:05: Gustavo instalou o pwsh pelo MSI (conferido: 7.6.7 em Program Files) e conferiu o Send Files ligado. Taildrop
+  ainda vazio. Recado ao A atualizado.
