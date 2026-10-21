@@ -96,3 +96,7 @@ Nada aplicado: global real só com o aval e o Gustavo vendo, com cópia e hash a
   desligado; `gh` logado como pdgusta. Recado ao A: mandar os dois arquivos.
 - 13:05: Gustavo instalou o pwsh pelo MSI (conferido: 7.6.7 em Program Files) e conferiu o Send Files ligado. Taildrop
   ainda vazio. Recado ao A atualizado.
+- 13:10: chegaram por Taildrop em Downloads. Hashes conferidos com o recado do A: `.env` c3ca7fc8, bundle 09c5306a
+  (cabeça só `integracao` 34c3e50). `.env` com as 28 chaves e os valores do B (par, endereço, outro par, CLI, fork,
+  máquina); movido para `C:/hub-transporte/lenovo-ideapad.env`. Bundle fica em Downloads (o passo 2 clona de lá).
+  Próximo: passos 1 e 2 de `instalacao-par-b.md`, com o Gustavo vendo.
