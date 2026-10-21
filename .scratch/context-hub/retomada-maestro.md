@@ -51,6 +51,10 @@ As duas peças visuais foram entregues (2026-10-17 ~23h).
   e `hub-mcp-banco.bundle` (sha256 09c5306a…; só `integracao` 34c3e50). Confira os hashes ao receber. Pode seguir
   `instalacao-par-b.md`, com o MSI do pwsh antes do passo 04.
 
+- 2026-10-21 ~14h: o maestro do A agora faz push sozinho. A falha era o GCM com duas contas do GitHub (pdgusta e a do
+  trabalho) querendo perguntar qual usar; conserto só no repositório: `git config --local
+  credential.https://github.com.username pdgusta`. Se aí o push falhar igual, faça o mesmo no seu clone.
+
 ## Mandato (Gustavo, 2026-10-17 ~04h) — vale até ele dizer o contrário
 
 O maestro orquestra sozinho e decide pelo Gustavo, com critério "afiado o bastante para não quebrar nada e leve o
