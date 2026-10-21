@@ -105,3 +105,8 @@ Nada aplicado: global real só com o aval e o Gustavo vendo, com cópia e hash a
   (integracao 34c3e50); CLI do LiveSync em `C:/hub-par/livesync` (commit 14141446, sha256 1669d00a = o do par A),
   saída 0. Passo 3 já feito em 2026-10-18. Próximo: passo 4 (simulação e depois banco, busca, MCP e espera), com o
   Docker Desktop ligado.
+- 13:16: Docker Desktop ligado (29.8.2). **Simulação do passo 4** (saída 0; texto no scratchpad da sessão,
+  `passo4-whatif.txt`): busca 0.16.2 (modelo fora do cache), CouchDB em 127.0.0.1 e 100.121.86.61:5984, sal, envio para
+  o A, cli-db, leitor da vigia, exclusões, daemon, XML do laço (não registrado), fork e os três MCP do banco
+  (8796-8798), espera de até 900 s. Proxy e cópia diária fora, como decidido. Detalhe cosmético: a linha "mods do
+  Claude Code (, em agents/code/mods/)" sai com a lista vazia. Esperando o aval para rodar de verdade.
