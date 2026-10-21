@@ -58,6 +58,12 @@ Nada aplicado: global real só com o aval e o Gustavo vendo, com cópia e hash a
   `lenovo-ideapad:` (Tailscale vê esta máquina em 100.121.86.61). Assim que chegarem, sigo `instalacao-par-b.md`.
 - 2026-10-21 ~13h05: **pronto para receber.** Send Files ligado no console (Gustavo conferiu); pwsh 7.6.7 pelo MSI em
   `C:\Program Files\PowerShell\7\pwsh.exe` (conferido). Pode mandar os dois arquivos agora.
+- 2026-10-21 ~13h25: **achado para o roteiro e o guia:** clonar o fork do bundle não traz o submódulo
+  `lib/livesync-commonlib` (público, vrtmrz, fixado em f9f07e97), e o passo 05 cai em "build do fork falhou" (o
+  `npm run build` do `mcp-banco.psm1` joga a saída fora; o erro real é "Could not resolve ../lib/livesync-commonlib/...").
+  Conserto aqui: `git -C C:/Projetos/hub-mcp-banco submodule update --init`. No `instalacao-par-b.md` (passo 2) e no
+  guia, o clone do fork precisa de `--recurse-submodules` (ou o `submodule update --init` logo depois). Conserto no
+  roteiro/guia fica com você (escrevo só aqui).
 
 ## Diário (mais novo embaixo)
 
@@ -110,3 +116,7 @@ Nada aplicado: global real só com o aval e o Gustavo vendo, com cópia e hash a
   o A, cli-db, leitor da vigia, exclusões, daemon, XML do laço (não registrado), fork e os três MCP do banco
   (8796-8798), espera de até 900 s. Proxy e cópia diária fora, como decidido. Detalhe cosmético: a linha "mods do
   Claude Code (, em agents/code/mods/)" sai com a lista vazia. Esperando o aval para rodar de verdade.
+- 13:22: passo 4 rodou 00, 03 e 04 (busca, CouchDB, sal, envio ao A, cli-db, leitor, exclusões, daemon, XML do laço);
+  **05 parou**: "build do fork falhou". Causa: submódulo `lib/livesync-commonlib` vazio (clone do bundle não o traz).
+  Conserto: `submodule update --init` (f9f07e97); build verde. Estado conferido: hub-banco no ar nas duas portas, daemon
+  do CLI rodando, hub já recebendo. Retomado com `-Passos 00,05,espera` (saída em `passo4b.txt` no scratchpad).
