@@ -120,6 +120,13 @@ para abrir e fechar aplicativos e processos da execução. Contexto do maestro: 
 - Worktrees ticket-38, ticket-39 e ticket-41 ainda existem em `C:\context-hub-wt\` (limpar quando convier).
 - Trail-Code (`pesquisa-trail-code.md`): ensaio num repositório de iniciativa; Gustavo aceitou deixar para depois do 25.
 - Acervo de referências (backlog sem gatilho): vídeos em motion; primeiro item https://youtu.be/mZ27vUoOEB0.
+- **Notificação da vigia chega com acentos quebrados** (Gustavo, 2026-10-21, print: "replica├º├úo", "h├í", "m├íquina"):
+  temos que arrumar. Hipótese: `notificar()` em `agents/skills/vigia/vigia.mjs:252` manda o texto em UTF-8 pelo stdin
+  ao `powershell` 5.1 (`notificar.ps1`), que lê o stdin na página OEM (850); conferir no `notificar.ps1` antes de mexer.
+- **Tarefa `hub-sincronizador` nunca rodou no par A** (achado de 2026-10-21): a ação chama `pwsh.exe`, que aqui é o
+  atalho da Store (WindowsApps), e o Agendador devolve 0x80070002 (arquivo não encontrado); LastRunTime 1999. Sem ela,
+  nada religa o CLI do LiveSync se ele cair. Conserto provável: caminho completo do pwsh no XML que o passo 04 escreve
+  (vale para o par B também). A `hub-vigia` usa `conhost` + node e roda.
 
 ## Leia nesta ordem (caminhos relativos a `C:\Projetos\context-hub\`)
 
@@ -175,3 +182,8 @@ Depois, confira o mundo real: `maestri list`, `git -C C:\context-hub log --oneli
 - 15:09: roteiro do par B reescrito com a sequência do 49 (kit de fora, hub vazio, git depois, 04/08/10 do próprio hub, só 2 tarefas). PARE tirado. Falta: o Gustavo ligar Send Files no Tailscale e o A mandar o .env do B e o bundle do fork por Taildrop; o Lume pôr a instalacao.md em dia com o 49.
 - 15:13: PAUSA pedida pelo Gustavo (vai fechar o note; recado pela Brasa). Pedi ao Rebite parar a própria suíte (seria cortada pela suspensão), soltar a trava e gravar a retomada; Fiel e Brasa gravam e param. Não tocados: o CLI do par A (C:/hub-par) e o contêiner hub-banco (voltam sozinhos). Na volta: Rebite roda a suíte de novo, junta o 49 (até c3f2868) e o ee71863 em integracao, depois o main; o Gustavo dá push do hub; o A manda o .env do B e o bundle por Taildrop; o maestro do B segue instalacao-par-b.md (já sem o PARE).
 - 15:17: a Brasa, a pedido do Gustavo, parou também o par A: tarefas hub-sincronizador e hub-vigia DESATIVADAS, CLI parado (Stop-Sincronizador), contêiner hub-banco parado (volume intacto; conferido). A suíte do Rebite já tinha parado. Os mcp-banco das sessões (8796-8798) e a busca seguem. RELIGAR antes de tudo na volta: docker start hub-banco; Enable-ScheduledTask hub-sincronizador; Enable-ScheduledTask hub-vigia (o laço religa o CLI em ~1 min); conferir estado_do_hub.
+- 2026-10-21 11:10: RELIGADO o par A, a pedido do Gustavo: `docker start hub-banco` (CouchDB responde); as duas tarefas
+  reativadas; a busca subida à mão, desligada da sessão (iniciar.ps1, log em `C:/context-hub/.local/busca/estado/iniciar-2026-10-21.log`;
+  31 notas, nada faltando); o laço rodado à mão uma vez, porque a tarefa falha (ver Radar), e o CLI do LiveSync de pé; a vigia
+  rodou. Estado: a replicação de envio está "crashing" só porque o par B recusa a conexão (100.121.86.61:5984, econnrefused:
+  desligado ou sem CouchDB). Os recrutas não foram religados; a fila da pausa (linha de 15:13) segue igual.
