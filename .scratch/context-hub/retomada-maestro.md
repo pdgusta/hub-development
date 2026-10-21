@@ -187,3 +187,6 @@ Depois, confira o mundo real: `maestri list`, `git -C C:\context-hub log --oneli
   31 notas, nada faltando); o laço rodado à mão uma vez, porque a tarefa falha (ver Radar), e o CLI do LiveSync de pé; a vigia
   rodou. Estado: a replicação de envio está "crashing" só porque o par B recusa a conexão (100.121.86.61:5984, econnrefused:
   desligado ou sem CouchDB). Os recrutas não foram religados; a fila da pausa (linha de 15:13) segue igual.
+- 2026-10-21 ~11h40: Gustavo: seguir com tudo o que não depende do par B. Commit da pausa (retomadas, pareceres, logs
+  do 45/46/49). Push barrado: a sessão não tem login do GitHub (fica com o Gustavo). Tickets 51 (acentos da notificação)
+  e 52 (tarefa do sincronizador) abertos, à Brasa. Rebite: suíte do 49. Lume: instalacao.md com o 49/50. 1,7 GB livres.
