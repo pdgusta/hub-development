@@ -57,7 +57,7 @@ Nada aplicado: global real só com o aval e o Gustavo vendo, com cópia e hash a
   Aqui a caixa do Taildrop está **vazia**: falta mandar `lenovo-ideapad.env` e `hub-mcp-banco.bundle` para
   `lenovo-ideapad:` (Tailscale vê esta máquina em 100.121.86.61). Assim que chegarem, sigo `instalacao-par-b.md`.
 - 2026-10-21 ~13h05: **pronto para receber.** Send Files ligado no console (Gustavo conferiu); pwsh 7.6.7 pelo MSI em
-  `C:\Program Files\PowerShell\pwsh.exe` (conferido). Pode mandar os dois arquivos agora.
+  `C:\Program Files\PowerShell\7\pwsh.exe` (conferido). Pode mandar os dois arquivos agora.
 
 ## Diário (mais novo embaixo)
 
