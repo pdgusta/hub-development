@@ -108,3 +108,12 @@ busca não indexa `agents/code/**`; maestro, 21h25). Sem Fiel.
 - Lume pediu docs 8ª (docs 4219de9): juntar DEPOIS da suíte do 49 e de resolver o 49; diff, frontmatter, 27-pastas.
 - Ordem do maestro (2026-10-21): depois da suíte do 49 → resolver 49+50, docs 8ª, 51 (ticket-51 fe8be14, PASSA Fiel r2, relatorio-51-notificacao-com-acentos.md), 52 quando o Fiel passar; uma suíte só para 51+52 se der (leves de cada um antes). Ligado à Brasa.
 - Brasa: 52 PASSA (ticket-52 2903ab7, de 35da1e6; leves 07-kit-sem-docker, 38, 45-duas-maquinas-sem-docker, 46-kit-duas-maquinas 28/28; relatorio-52-tarefa-do-sincronizador.md, parecer-52-Brasa.md). Junta depois do 51. Reaplicar tarefa no par A: maestro e Gustavo, não eu.
+- 2026-10-21 12:2x: docs 8ª 5753a7a (verde, registrada); 51 juntado 30564d3; 52 juntado b506910. Próximo: leves 16,17,51 e 07-kit-sem-docker,38,45-duas-maquinas-sem-docker,46-kit-duas-maquinas; suíte com trava logs/juncao-51-52-suite.log; verde → resolver 51 e 52, registro, main, avisos.
+- Lume pediu docs 9ª (docs 1820326, contém b506910): juntar DEPOIS da suíte do 51/52; diff, frontmatter, 27-pastas.
+- 2026-10-21 ~13h: FEITO. 51 (30564d3) e 52 (b506910) juntados; suíte 391/376/15/0 verde; 51 e 52 resolvidos.
+  Docs 9ª b2ae3db (frontmatter 0, 27-pastas 24/24). main do C:/context-hub = 70a9f73 (--no-ff), sem push.
+
+## Estado ao fechar (2026-10-21 ~13h)
+
+- integracao = b2ae3db, limpa, verde. main do C:/context-hub = 70a9f73. 49, 50, 51, 52 resolvidos; docs 8ª e 9ª
+  juntadas. Nenhuma trava minha, nada em curso. Reaplicar a tarefa do 52 no par A: maestro e Gustavo.

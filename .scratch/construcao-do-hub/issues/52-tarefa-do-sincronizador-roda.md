@@ -1,7 +1,7 @@
 # 52: A tarefa hub-sincronizador roda de verdade
 
 Type: task
-Status: claimed
+Status: resolved
 Etapa: conserto do 26 (fora da sequência; vale para o par B)
 Blocked by: nenhum
 
@@ -27,3 +27,8 @@ resolvido na instalação), com teste do XML gerado. Reaplicar no par A é com o
 - 2026-10-21 (Brasa): o Fiel PASSA com ressalvas (`etapas/parecer-52-Brasa.md`); as ressalvas do relatório (o MSI
   também está no par A, e a tarefa o usa; o shell da receita; o `.env` em `C:\hub-transporte\`) ajustadas. Para o
   Rebite: ramo `ticket-52` (2903ab7), leves 28/28 (Fiel 37/37). A suíte fica com ele.
+- 2026-10-21 12:49 (integrador, Rebite): resolvido. Junção b506910 (ticket-52 2903ab7; parecer do Fiel PASSA com
+  ressalvas, só no relatório, ajustado). Leves 07-kit-sem-docker, 38, 45-duas-maquinas-sem-docker,
+  46-kit-duas-maquinas (com os do 51): 69/69. Suíte com --test-concurrency=1 e trava em b506910: 391, 376 verdes, 15
+  pulados, 0 falhas, git limpo (log etapas/logs/juncao-51-52-suite.log). Pendente fora do integrador: reaplicar a
+  tarefa no par A (maestro e Gustavo; receita no relatório).

@@ -1,19 +1,15 @@
 # Retomada do Lume (documentador técnico)
 
-**2026-10-21: docs em dia com `integracao` 35da1e6 (49 e 50); 8ª junção pedida ao Rebite.** Ramo `docs` (worktree
-`C:/context-hub-wt/docs`) em 4219de9: `instalacao.md` reescrita com o caminho do par B (hub vazio, git depois),
-banco do par, gerador de exclusões, decisões, README. A caminho: 51 (acentos da notificação da vigia), 52 (tarefa
-`hub-sincronizador` com o pwsh que o Agendador acha: pôr em dia `instalacao.md` §12 e `banco-do-par.md`), o 26.
+**2026-10-21: docs em dia com `integracao` b506910 (49 a 52); 9ª junção feita (`integracao` b2ae3db, `main` 70a9f73).** Ramo `docs` (worktree
+`C:/context-hub-wt/docs`) em 1820326. A caminho: o 26 (par B; e no par A, a reaplicação da tarefa do 52).
 
 Leia nesta ordem: `etapas/documentacao-tecnica.md` (o plano), `etapas/regras-da-construcao.md`,
 `etapas/estado-documentacao.md` (feito e avisos), esta retomada.
 
 ## Fila viva
 
-1. 8ª junção pedida (docs 4219de9): esperar o Rebite.
-2. Quando o 51 e o 52 juntarem: `git merge integracao` no docs; o 52 muda o XML do laço (`instalacao.md` §12, tirar o
-   achado; `banco-do-par.md` §3 e §7); o 51, a vigia (`vigia.md`).
-3. O 26 (par B): pôr em dia `instalacao.md` com o que a instalação do B ensinar.
+1. 9ª junção feita: `integracao` b2ae3db, `main` 70a9f73. Nada pendente.
+2. O 26 (par B, e o `LastTaskResult` 0 da reaplicação no par A): pôr em dia `instalacao.md` com o que se aprender.
 
 ## Molde e regras do papel
 

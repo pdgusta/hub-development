@@ -67,7 +67,7 @@ Plano: `documentacao-tecnica.md`. Fila e progresso; o Lume atualiza a cada pági
 
 ## Próximo
 
-Em dia com `integracao` 35da1e6 (49, 50); 8ª junção pedida (docs 4219de9).
+Em dia com `integracao` b506910 (49 a 52); 9ª junção feita (`integracao` b2ae3db, `main` 70a9f73).
 
 Em dia com `integracao` 8c01cfb (45, 46); 7ª junção feita (`integracao` 7b6c406, `main` fe55b12). Depois: o 26, quando der.
 
@@ -78,6 +78,12 @@ em curso). Ponta do docs a71e407, 4 páginas sobre f640bbd (pastas-e-links, mcp-
 `pastas-e-links.md` §5), 25, 26.
 
 ## Avisos de junção recebidos (fase 2)
+
+- 2026-10-21: 8ª junção feita (5753a7a; frontmatter 0, 27-pastas 24/24). 51 (30564d3) e 52 (b506910) juntados; a Brasa
+  já tinha posto uma linha no `vigia.md` e no `banco-do-par.md`. Merge fast-forward no docs. Páginas: vigia 363476e
+  (`notificar.ps1` em UTF-8, `-Xml`, teste 51, armadilhas), banco do par 02c3643 (52: ressalvas, teste, armadilha),
+  instalação 99e41b6 (§12: o pwsh por caminho completo, a receita de reaplicar no par A, pwsh pelo MSI), decisões
+  845ba41, README 1820326. Verificadores 0. **9ª junção feita pelo Rebite** (`integracao` b2ae3db; frontmatter 0, 27-pastas 24/24; `main` 70a9f73).
 
 - 2026-10-21: 49 (e82dd85, cabeçalho 35da1e6) e 50 (c3f2868) nas páginas, pedido do maestro. `git merge integracao`
   no docs (4219de9). `instalacao.md` reescrita 96972ad (o B com o hub vazio: kit de fora `00,03,04,05,espera`, o git

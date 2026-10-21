@@ -1,7 +1,7 @@
 # 51: A notificação da vigia chega com os acentos certos
 
 Type: task
-Status: claimed
+Status: resolved
 Etapa: conserto do 26 (fora da sequência)
 Blocked by: nenhum
 
@@ -26,3 +26,6 @@ o contrato `HUB_VIGIA_NOTIFICAR` (texto na entrada padrão).
   `integracao` juntada (4b05241). Leves 41/41. Pedida a r2.
 - 2026-10-21 (Brasa): r2 do Fiel PASSA (parecer `etapas/parecer-51-Brasa.md`, seção r2). Pronto para o Rebite: ramo
   `ticket-51` (fe8be14), leves 41/41.
+- 2026-10-21 12:49 (integrador, Rebite): resolvido. Junção 30564d3 (ticket-51 fe8be14; parecer do Fiel r2 PASSA em
+  acordo). Leves 16, 17, 51 (com os do 52): 69/69. Suíte com --test-concurrency=1 e trava em b506910 (51+52): 391,
+  376 verdes, 15 pulados, 0 falhas, git limpo (log etapas/logs/juncao-51-52-suite.log). Toast de verdade não repetido.

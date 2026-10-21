@@ -201,3 +201,9 @@ Depois, confira o mundo real: `maestri list`, `git -C C:\context-hub log --oneli
 - ~12h20: 52 PASSA com ressalvas (Fiel; só no relatório); fila do Rebite depois do 51. Reaplicação no par A: maestro + Gustavo, receita em etapas/relatorio-52-tarefa-do-sincronizador.md (LastTaskResult 0). Brasa e Fiel sem fila: gravam a retomada e saem (janela quieta para a suíte).
 - ~12h40: 49 e 50 RESOLVIDOS (Rebite): suíte 390/375/15/0 verde; integracao 35da1e6; main do hub c37365b (--no-ff), sem push. Rebite segue: docs 8ª, 51, 52.
 - ~13h: docs 8ª juntada (5753a7a). Lume: 51 e 52 nas páginas (docs 1820326; instalacao §12, vigia, banco-do-par, decisoes, README; verificadores 0); 9ª pedida ao Rebite depois da suíte do 51+52.
+- ~13h: 51 e 52 RESOLVIDOS (Rebite): suíte 391/376/15/0 verde; docs 8ª e 9ª juntadas; main do hub 70a9f73 (--no-ff de
+  integracao b2ae3db), sem push (34 à frente de origin). Tarefa hub-sincronizador REAPLICADA no par A (receita do 52):
+  ação `C:/Program Files/PowerShell/7/pwsh.exe`, Start-ScheduledTask, último resultado 0 (antes 0x80070002).
+  estado_do_hub: só a divergência esperada (par B desligado). Notificação real com acentos disparada pelo caminho da
+  vigia (node → notificar.ps1, código 0); conferência visual pedida ao Gustavo. Falta: push do hub e deste repositório
+  pelo Gustavo; depois só o par B.
