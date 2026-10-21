@@ -104,4 +104,4 @@ só pela leitura. Pare e avise na sua retomada se algo sair diferente; o maestro
 
 Instale o PowerShell 7 pelo MSI, para a tarefa `hub-sincronizador` ter um caminho fixo: `winget install --id
 Microsoft.PowerShell --source winget --installer-type wix` (com `--force` se o winget disser que já está instalado), num
-terminal com administrador. Confira `C:\Program Files\PowerShell\pwsh.exe`.
+terminal com administrador. Confira `C:\Program Files\PowerShell\7\pwsh.exe`.
