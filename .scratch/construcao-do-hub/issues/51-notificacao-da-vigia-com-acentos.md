@@ -11,8 +11,8 @@ Blocked by: nenhum
 antes do conserto: é essa a quebra. Consertar para que título e corpo cheguem ao toast com os acentos certos, sem mudar
 o contrato `HUB_VIGIA_NOTIFICAR` (texto na entrada padrão).
 
-- [ ] teste que falha antes: texto com acentos passa pelo `notificar.ps1` (ou pela parte que lê a entrada) e sai igual
-- [ ] conserto; o mesmo teste verde
+- [x] teste que falha antes: texto com acentos passa pelo `notificar.ps1` (ou pela parte que lê a entrada) e sai igual
+- [x] conserto; o mesmo teste verde
 - [ ] a suíte segue verde
 
 ## Comments
@@ -21,3 +21,6 @@ o contrato `HUB_VIGIA_NOTIFICAR` (texto na entrada padrão).
 - 2026-10-21 (Brasa): feito no ramo `ticket-51` (02f026c, 16b0715). A hipótese se confirmou no teste (antes:
   "replica├º├úo parada h├í"). O notificar.ps1 lê os bytes da entrada em UTF-8; `-Xml` para o teste. Testes leves 41/41.
   Relatório: `etapas/relatorio-51-notificacao-com-acentos.md`. Pedida a revisão ao Fiel.
+- 2026-10-21 (Brasa): r1 do Fiel (VOLTA) consertada em fe8be14: o documento em `$doc` (o `$xml` era o `-Xml`), o
+  `-Xml` depois do `LoadXml` (teste vermelho com o defeito, verde com o conserto), erro com código diferente de zero.
+  `integracao` juntada (4b05241). Leves 41/41. Pedida a r2.

@@ -1,21 +1,19 @@
 # Retomada do Lume (documentador técnico)
 
-**2026-10-18: docs em dia com `integracao` 8c01cfb (45 e 46); 7ª junção feita (`integracao` 7b6c406, `main` fe55b12); terminal fechado pelo maestro até 2026-10-19.** Ramo `docs` (worktree
-`C:/context-hub-wt/docs`) em e33b71f: merge fast-forward de 8c01cfb e 8 commits (banco do par, kit de par, pastas e
-links + fim + roteamento, operação + stack, **página nova `instalacao.md`**, arquitetura, decisões, README). `main` do
-hub em 7d0c25d. A caminho só o 26 (instalação de verdade, com o Gustavo).
+**2026-10-21: docs em dia com `integracao` 35da1e6 (49 e 50); 8ª junção pedida ao Rebite.** Ramo `docs` (worktree
+`C:/context-hub-wt/docs`) em 4219de9: `instalacao.md` reescrita com o caminho do par B (hub vazio, git depois),
+banco do par, gerador de exclusões, decisões, README. A caminho: 51 (acentos da notificação da vigia), 52 (tarefa
+`hub-sincronizador` com o pwsh que o Agendador acha: pôr em dia `instalacao.md` §12 e `banco-do-par.md`), o 26.
 
 Leia nesta ordem: `etapas/documentacao-tecnica.md` (o plano), `etapas/regras-da-construcao.md`,
 `etapas/estado-documentacao.md` (feito e avisos), esta retomada.
 
 ## Fila viva
 
-1. 7ª junção feita: `integracao` 7b6c406, `main` fe55b12 (Rebite). Aguardar o 26.
-2. Avisos ao maestro (2026-10-18), anotados na `instalacao.md`: fork em `C:/Projetos/hub-mcp-banco` no ramo
-   `ticket-09`, fora de `integracao`; `HUB_MCP_BANCO_TOKEN` sem script que o ponha no ambiente; B com o clone no disco
-   não provado. A divergência do `HUB_PAR_ID` fechou com o 46.
-3. Quando o 26 andar (ou ticket novo juntar): `git merge integracao` no docs e pôr em dia `instalacao.md` com o que o
-   26 aprender, e as páginas tocadas.
+1. 8ª junção pedida (docs 4219de9): esperar o Rebite.
+2. Quando o 51 e o 52 juntarem: `git merge integracao` no docs; o 52 muda o XML do laço (`instalacao.md` §12, tirar o
+   achado; `banco-do-par.md` §3 e §7); o 51, a vigia (`vigia.md`).
+3. O 26 (par B): pôr em dia `instalacao.md` com o que a instalação do B ensinar.
 
 ## Molde e regras do papel
 

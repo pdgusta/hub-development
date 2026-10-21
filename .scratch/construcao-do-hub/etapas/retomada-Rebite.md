@@ -103,3 +103,6 @@ busca não indexa `agents/code/**`; maestro, 21h25). Sem Fiel.
 - Ao voltar: juntar o ee71863 (só o cabeçalho do teste do 49; conferir parecer/diff antes) em integracao; depois a
   suíte de novo com trava (log novo logs/juncao-49-suite-2.log); verde → resolver 49 e 50, registro, main --no-ff
   sem push, avisos. Não tocar no CLI do par A (C:/hub-par) nem no contêiner hub-banco.
+- 2026-10-21: ee71863 juntado (35da1e6; 2ª leitura r2 passa; diff só o cabeçalho). Suíte com trava em segundo plano,
+  log logs/juncao-49-suite-2.log. Próximo: verde → resolver 49 e 50, registro, main --no-ff sem push, avisar Lume e maestro.
+- Lume pediu docs 8ª (docs 4219de9): juntar DEPOIS da suíte do 49 e de resolver o 49; diff, frontmatter, 27-pastas.

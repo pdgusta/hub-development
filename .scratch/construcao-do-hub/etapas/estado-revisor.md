@@ -312,3 +312,8 @@ Sat, Oct 17, 2026 10:15:54 AM 21 r1 (Trilho, 1c87f9b): retomado após /clear; re
 15:13 49 r2: 2ª leitura Sonnet PASSA c/ ressalvas (parecer-49-Brasa-segunda-leitura-r2.md). PAUSA do maestro (Gustavo fecha o note): r2 sem veredito enviado; perdeu o sentido com a junção. Sonda do passo 3 (bash, segundo plano) pode ter ficado em %TEMP%/hub-ensaio-49-fiel-r2.
 15:14 Sonda do passo 3: 14 com ponto voltaram (.gitignore, .gitkeep, plugin.json), nota ausente ficou ' D'; %TEMP% limpo. Pausado.
 15:14 Maestro: r2 sem veredito. Na volta: leitura curta de .scratch/context-hub/instalacao-par-b.md contra a seção final do relatório do 49. Parado.
+10-21 11:34 51 (Brasa, ticket-51 02f026c/16b0715) recebido.
+10-21 11:41 51: achado 1 (Fiel): param [string]$Xml = $xml (sem caixa) -> sem -Xml, LoadXml falha em String (notificar.ps1:19); toast real quebrado, sai 0. Leves 50/50. 2ª leitura Sonnet em curso.
+10-21 11:42 51 r1: VOLTA em acordo (1 $Xml/$xml colidem, toast real quebrado e sai 0; 2 teste não cobre o caminho sem -Xml). Avisando Brasa.
+10-21 11:46 51 r1: veredito entregue à Brasa (2º ask; ela já mexia no caminho real). Esperando r2.
+10-21 11:48 51 r2 (fe8be14) recebido; 52 (Brasa 2903ab7) na fila.

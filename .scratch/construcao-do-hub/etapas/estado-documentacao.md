@@ -67,6 +67,8 @@ Plano: `documentacao-tecnica.md`. Fila e progresso; o Lume atualiza a cada pági
 
 ## Próximo
 
+Em dia com `integracao` 35da1e6 (49, 50); 8ª junção pedida (docs 4219de9).
+
 Em dia com `integracao` 8c01cfb (45, 46); 7ª junção feita (`integracao` 7b6c406, `main` fe55b12). Depois: o 26, quando der.
 
 Fase 2: em dia até `integracao` ca62332 (construção fechada; só o 26 a caminho). 6ª junção pedida (docs b20bf5f).
@@ -76,6 +78,13 @@ em curso). Ponta do docs a71e407, 4 páginas sobre f640bbd (pastas-e-links, mcp-
 `pastas-e-links.md` §5), 25, 26.
 
 ## Avisos de junção recebidos (fase 2)
+
+- 2026-10-21: 49 (e82dd85, cabeçalho 35da1e6) e 50 (c3f2868) nas páginas, pedido do maestro. `git merge integracao`
+  no docs (4219de9). `instalacao.md` reescrita 96972ad (o B com o hub vazio: kit de fora `00,03,04,05,espera`, o git
+  com `reset --mixed` e `checkout` só do que tem ponto, o kit do hub `04,08,10`; `core.autocrlf`; só 2 tarefas; o que
+  se fez no par A em 2026-10-18; achado da `hub-sincronizador` que não roda, ticket 52); banco do par 517803c (teste e
+  medidas do 49); gerador e2f234f (exclude só com `.git`; o 50); decisões b5ad179; README 58b5122. `verificar-pastas`
+  rc 0, frontmatter 0. **8ª junção pedida ao Rebite** (depois de ele resolver o 49).
 
 - 2026-10-18: 45 (6494a38) e 46 (8c01cfb) juntados (Rebite; `main` 7d0c25d). `git merge integracao` no docs
   (fast-forward a 8c01cfb). Páginas: banco do par 5b0c155; kit de par 83b880b; pastas e links, fim da resposta e
