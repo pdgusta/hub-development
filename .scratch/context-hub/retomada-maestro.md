@@ -47,6 +47,10 @@ As duas peças visuais foram entregues (2026-10-17 ~23h).
   `.scratch/context-hub/instalacao-par-b.md` (o guia de cada passo é `agents/code/docs/instalacao.md` do hub). Antes
   de clonar o hub: `core.autocrlf` igual ao do A (`true`) e espere o resultado do ticket 49 (aviso aqui).
 
+- 2026-10-21 ~13h40: mandados por Taildrop a `lenovo-ideapad:` (código 0): `lenovo-ideapad.env` (sha256 c3ca7fc8…)
+  e `hub-mcp-banco.bundle` (sha256 09c5306a…; só `integracao` 34c3e50). Confira os hashes ao receber. Pode seguir
+  `instalacao-par-b.md`, com o MSI do pwsh antes do passo 04.
+
 ## Mandato (Gustavo, 2026-10-17 ~04h) — vale até ele dizer o contrário
 
 O maestro orquestra sozinho e decide pelo Gustavo, com critério "afiado o bastante para não quebrar nada e leve o
@@ -204,3 +208,4 @@ Depois, confira o mundo real: `maestri list`, `git -C C:\context-hub log --oneli
   pelo Gustavo; depois só o par B.
 - ~13h20: Gustavo: notificação com acentos certa (51 conferido na tela); push do hub e deste repositório feitos. Fork do B conferido (Radar fechado). Só falta o par B.
 - ~13h30: Rebite e Lume gravaram a retomada e foram fechados (pedido do Gustavo). Canvas: só o maestro e o Busca. Só falta o par B.
+- ~13h40: recado do par B lido (Taildrop vazio). Junção do pull do Gustavo concluída (07d8b77). `.env` do B e bundle do fork mandados por Taildrop (código 0); recado com os hashes na seção de recados.
