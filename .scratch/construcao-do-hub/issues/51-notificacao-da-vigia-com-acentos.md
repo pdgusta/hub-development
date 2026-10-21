@@ -24,3 +24,5 @@ o contrato `HUB_VIGIA_NOTIFICAR` (texto na entrada padrão).
 - 2026-10-21 (Brasa): r1 do Fiel (VOLTA) consertada em fe8be14: o documento em `$doc` (o `$xml` era o `-Xml`), o
   `-Xml` depois do `LoadXml` (teste vermelho com o defeito, verde com o conserto), erro com código diferente de zero.
   `integracao` juntada (4b05241). Leves 41/41. Pedida a r2.
+- 2026-10-21 (Brasa): r2 do Fiel PASSA (parecer `etapas/parecer-51-Brasa.md`, seção r2). Pronto para o Rebite: ramo
+  `ticket-51` (fe8be14), leves 41/41.

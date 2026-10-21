@@ -24,3 +24,6 @@ resolvido na instalação), com teste do XML gerado. Reaplicar no par A é com o
   (`Get-ExecutavelPwsh`: o do MSI, senão o executável do pwsh que roda o kit; nunca o atalho da Store). Teste no
   `kit-sem-docker.ps1`, vermelho antes e verde depois; leves 28/28. Reaplicação e a ressalva do pwsh da Store
   (atualização troca a pasta) em `etapas/relatorio-52-tarefa-do-sincronizador.md`. Pedida a revisão ao Fiel.
+- 2026-10-21 (Brasa): o Fiel PASSA com ressalvas (`etapas/parecer-52-Brasa.md`); as ressalvas do relatório (o MSI
+  também está no par A, e a tarefa o usa; o shell da receita; o `.env` em `C:\hub-transporte\`) ajustadas. Para o
+  Rebite: ramo `ticket-52` (2903ab7), leves 28/28 (Fiel 37/37). A suíte fica com ele.

@@ -1,13 +1,14 @@
 # Relatório do 52: a tarefa hub-sincronizador roda de verdade (Brasa, 2026-10-21)
 
-Ramo `ticket-52` (worktree `C:/context-hub-wt/ticket-52`, de `integracao` e82dd85), commit 2903ab7; `integracao` 35da1e6 juntada.
+Ramo `ticket-52` (worktree `C:/context-hub-wt/ticket-52`, de `integracao` 35da1e6), commit 2903ab7.
 
 ## A causa
 
 O XML do `Write-TarefaSincronizador` (`agents/code/kit/par/banco/banco.psm1`) tinha `<Command>pwsh.exe</Command>`.
-Nesta máquina o pwsh é o da Store (7.6.7): o `pwsh.exe` do PATH é o atalho (reparse point) em
-`%LOCALAPPDATA%\Microsoft\WindowsApps`, e o executável real fica em
-`C:\Program Files\WindowsApps\Microsoft.PowerShell_7.6.7.0_x64__8wekyb3d8bbwe\pwsh.exe`. O Agendador não achou o nome
+Nesta máquina, o `pwsh.exe` do PATH é o da Store (7.6.7): o atalho (reparse point) em
+`%LOCALAPPDATA%\Microsoft\WindowsApps`, com o executável real em
+`C:\Program Files\WindowsApps\Microsoft.PowerShell_7.6.7.0_x64__8wekyb3d8bbwe\pwsh.exe`. Também há o pwsh do MSI em
+`C:\Program Files\PowerShell\7\pwsh.exe` (achado do Fiel; é o que a tarefa passa a usar). O Agendador não achou o nome
 solto: `LastTaskResult` 2147942402 (0x80070002) no par A, última tentativa em 21/10 11:08.
 
 ## O conserto
@@ -23,11 +24,16 @@ de um `pwsh.exe` que existe e não é reparse point. Vermelho antes (`pwsh.exe` 
 executável real da Store abre direto, sem o atalho (`Start-Process` com o caminho completo, código de saída 7 devolvido).
 
 Testes leves no ramo: `07-kit-sem-docker`, `38-ensaio-banco`, `45-duas-maquinas-sem-docker`, `46-kit-duas-maquinas`:
-28/28. Sem trava.
+28/28. Sem trava. A suíte inteira fica com o Rebite na junção.
+
+Revisão: o Fiel, PASSA com ressalvas (`etapas/parecer-52-Brasa.md`); as frases sobre a Store e o shell da receita
+ajustadas depois dele.
 
 ## Como reaplicar num par já instalado (com o maestro e o Gustavo, depois da junção)
 
-No par, com o hub já na ponta que tem o 52, num `pwsh` (o mesmo que deve rodar a tarefa):
+No par, com o hub já na ponta que tem o 52, num `pwsh` qualquer. Com o MSI instalado (caso do par A), a tarefa usa o
+pwsh do MSI, seja qual for o shell; sem ele, usa o executável do pwsh que roda estes comandos. O `Select-String` abaixo
+mostra qual. O `.env` do par A fica em `C:\hub-transporte\`.
 
 ```powershell
 $EnvPar = 'C:\hub-transporte\<id do par>.env'
@@ -48,7 +54,8 @@ caminho acima mexe só na tarefa. A tarefa registrada fica habilitada (o XML diz
 - **Não verificado: a tarefa registrada rodando** (as regras não deixam registrar tarefa na construção). O teste
   confere o XML e que o Agendador aceita a definição (já existia); a conferência final é o `LastTaskResult` 0 na
   reaplicação acima.
-- **pwsh da Store:** o caminho tem a versão. Uma atualização automática do pwsh troca a pasta e a tarefa volta a
-  falhar (0x80070002) até rodar de novo o bloco acima. Proposta: instalar o pwsh pelo MSI nos dois pares
+- **pwsh só da Store** (onde não há o MSI; no par A há): o caminho tem a versão. Uma atualização automática do pwsh
+  troca a pasta e a tarefa volta a falhar (0x80070002) até rodar de novo o bloco acima. Proposta: o pwsh pelo MSI nos
+  dois pares (conferir no B)
   (`winget install --id Microsoft.PowerShell --source winget`), e o kit passa a usar o caminho fixo dele sem mudança
   de código; ou uma conferência na vigia (a ação da tarefa aponta para um arquivo que existe). Fora do escopo do 52.
