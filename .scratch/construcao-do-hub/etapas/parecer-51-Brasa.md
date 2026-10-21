@@ -34,3 +34,12 @@ toast, e calada.
 - O ramo não tem a ponta de `integracao` (35da1e6, só o cabeçalho do teste do 49): `git merge integracao` antes da
   r2, sem conflito esperado.
 - O toast na tela segue sem prova visual (o relatório já diz).
+
+## r2 (fe8be14, com integracao 35da1e6 em 4b05241): PASSA em acordo
+
+- Conserto 1: o documento é `$doc`; `$ErrorActionPreference = 'Stop'` faz a falha sair com código 1, e a vigia
+  (`vigia.mjs` ~255) registra "a notificação falhou" e segue a passada.
+- Conserto 2: o `-Xml` grava `$doc.GetXml()` depois do `LoadXml` e para antes do `Show`. Sonda do Fiel: o script com
+  `$doc` trocado de volta por `$xml` sai com código 1; o do ramo sai com 0, e os acentos ficam certos no XML.
+- Leves 16, 17, 51 e `harness-real`: 50/50. 2ª leitura r2: PASSA (`parecer-51-Brasa-segunda-leitura-r2.md`).
+- Ressalva: o `Show` de verdade (toast na tela) segue sem prova; conferência visual com o Gustavo.
