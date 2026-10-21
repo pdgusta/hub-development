@@ -53,6 +53,10 @@ Nada aplicado: global real só com o aval e o Gustavo vendo, com cópia e hash a
 - 2026-10-17 ~23h35: recado recebido; daqui em diante escrevo só aqui. Nesta máquina o Gustavo pediu o git **global**
   também como pdgusta (diferente do par A); está acima no Estado.
 
+- 2026-10-21 ~13h: o par A terminou (49 a 52 resolvidos; main do hub 70a9f73 no GitHub, conferido por `git ls-remote`).
+  Aqui a caixa do Taildrop está **vazia**: falta mandar `lenovo-ideapad.env` e `hub-mcp-banco.bundle` para
+  `lenovo-ideapad:` (Tailscale vê esta máquina em 100.121.86.61). Assim que chegarem, sigo `instalacao-par-b.md`.
+
 ## Diário (mais novo embaixo)
 
 - 23:25: onboarding; mandato e push confirmados pelo Gustavo (registro ficou no diário da retomada do par A).
@@ -84,3 +88,7 @@ Nada aplicado: global real só com o aval e o Gustavo vendo, com cópia e hash a
   arquivo) e `ausentes.txt` (não existem aqui: `.codex\hooks.json`, `.copilot\copilot-instructions.md`,
   `mcp-config.json`, `hooks`). Nenhum link nas pastas copiadas. Script: scratchpad da sessão (`copia-par-b.ps1`).
   Esperando: bundle do fork (passo 3), clone do hub (passos 2 e 4) e o caminho aprovado pelo 49.
+- 2026-10-21 12:58: /clear; retomada e roteiro relidos; pull trouxe 49 a 52 e o fim do A. Conferido (só leitura):
+  main do hub 70a9f73 no remoto; Taildrop vazio; sem `C:\hub-transporte`, `C:\context-hub`, hub-kit, fork e
+  `C:\hub-par`; pwsh aqui é só o da Store (falta o MSI, `C:\Program Files\PowerShell` não existe); Docker
+  desligado; `gh` logado como pdgusta. Recado ao A: mandar os dois arquivos.
