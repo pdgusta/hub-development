@@ -64,6 +64,14 @@ Nada aplicado: global real só com o aval e o Gustavo vendo, com cópia e hash a
   Conserto aqui: `git -C C:/Projetos/hub-mcp-banco submodule update --init`. No `instalacao-par-b.md` (passo 2) e no
   guia, o clone do fork precisa de `--recurse-submodules` (ou o `submodule update --init` logo depois). Conserto no
   roteiro/guia fica com você (escrevo só aqui).
+- 2026-10-21 ~13h45: **causa da descida lenta do par B (achado para o kit e o roteiro):** o passo 03 instala a busca
+  em `C:/context-hub/.local/busca` (8.588 arquivos, 538 MB) **antes** de o hub descer. O CLI do LiveSync, a cada
+  arquivo que grava, refaz a lista do vault inteiro no filtro de nomes repetidos (`isAcceptedInFilenameDuplicationFactory`,
+  `Computed` chaveado por `totalStorageFileEventCount`, `getFileNames()` → `scanDirectoryInto` recursivo, sem pular pastas
+  com ponto, com `lstat` em cada segmento: 83.947 `lstat` por volta, 13,6 s aqui). Perfil de CPU de 30 s do daemon
+  (inspetor): 62% em `assertNoSymbolicLinks`, 15% em `scanDirectoryInto`; criptografia desprezível. Sem o `.local`, a
+  volta é de 51 arquivos. Conserto provável no kit: no par novo, a busca (03) **depois** da espera, ou a busca fora do
+  vault. (Não verificado: se o ensaio do 46 tinha a busca no vault.)
 
 ## Diário (mais novo embaixo)
 
@@ -126,3 +134,7 @@ Nada aplicado: global real só com o aval e o Gustavo vendo, com cópia e hash a
   (`C:/hub-par/cli-db`) só com 1,4 MB. Log do daemon sem detalhe (sem `--verbose`): "Initial replication complete"
   às 13:22 e um `TimeoutNegativeWarning`. No ensaio do 46 (máquina A) 566 arquivos desceram em segundos. Causa ainda
   não achada; daemon segue sozinho (nada perdido). Nesse ritmo: ~3h30.
+- 13:45: causa achada (recado acima): `.local/busca` dentro do vault + varredura inteira do CLI a cada arquivo gravado.
+  Evidência: perfil de CPU de 30 s do daemon pelo inspetor (fechado ao fim; scripts `perfil.mjs` e `cadeia.mjs` no
+  scratchpad) e uma varredura igual à do CLI medida à parte (`varredura.mjs`: 13,6 s, 8.639 arquivos, 99,4% em
+  `.local`). Progresso: 51 de 564 às 13:45. Proposta ao Gustavo: tirar `.local/busca` do vault até a descida acabar.
