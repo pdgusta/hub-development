@@ -9,19 +9,17 @@ antigos estão em `.scratch/construcao-do-hub/etapas/diario-da-construcao.md` (f
 (instalação de verdade nas **duas máquinas**, com o Gustavo). `integracao` em `ca62332` (suíte 370: 355 verdes, 15
 pulados, 0 falhas). O Windows reinicia às 21h de 2026-10-17 (cumulative updates). Ronda automática cancelada (sem trabalho).
 
-## AGORA (2026-10-21): tudo o que não depende do par B (pedido do Gustavo)
+## AGORA (2026-10-21 ~13h): só falta o par B
 
-O note (par B) está ocioso; o Gustavo só abre o maestro de lá quando faltar só a parte dele. Em curso:
+Feito sem o par B: 49, 50, 51, 52 resolvidos; docs 8ª e 9ª; main do hub 70a9f73 (sem push); pwsh 7.6.7 pelo MSI e
+tarefa hub-sincronizador reaplicada no par A (resultado 0). Recrutas sem fila (Brasa e Fiel fechados; Rebite e Lume
+no canvas, parados).
 
-1. **Rebite:** ee71863 em integracao, suíte do 49 com trava (`logs/juncao-49-suite-2.log`); verde → 49 e 50
-   resolvidos, integracao no main do hub (--no-ff, sem push).
-2. **Lume:** `instalacao.md` em dia com o 49 e o 50; junção com o Rebite depois do 49.
-3. **Brasa:** tickets 51 (acentos da notificação da vigia) e 52 (tarefa hub-sincronizador com pwsh que o Agendador
-   acha); Fiel revisa; Rebite junta depois do 49.
-4. Depois: reaplicar a tarefa do 52 no par A (com o Gustavo); o Gustavo faz o push do hub (um só, com 49, 50, 51, 52 e
-   docs) e o deste repositório (a sessão do maestro não tem login do GitHub: `! git -C C:\Projetos\context-hub push`).
-5. Só então o par B: ligar Send Files no Tailscale, o A manda o `.env` do B e o bundle do fork por Taildrop, o
-   maestro do B segue `instalacao-par-b.md`. Ticket 26; depois 48 e **Para rever**.
+1. Gustavo: conferir a notificação de teste ("Hub: teste do 51") com acentos; `git -C C:\context-hub push origin main`
+   e o push deste repositório, num terminal dele (a sessão do maestro não tem login do GitHub).
+2. Par B: ligar Send Files no Tailscale; o A manda `C:/hub-transporte/lenovo-ideapad.env` e o bundle do fork por
+   Taildrop (conferir antes o caminho do fork no `.env`: Radar); o maestro do B segue `instalacao-par-b.md` (com o MSI
+   do pwsh antes do passo 04). Ticket 26; depois 48 e **Para rever**.
 
 As duas peças visuais foram entregues (2026-10-17 ~23h).
 
