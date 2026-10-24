@@ -40,6 +40,13 @@ no canvas, parados).
    **Próximo:** o Gustavo reabre o maestro do A pelo preset; na sessão nova, `ListAgents` deve mostrar
    `maestro-lenovo-ideapad`; responder o recado de teste do B pela skill `correio` (relatório do 48, "Comandos para o
    maestro"); depois tirar a seção "Recados ao outro maestro" desta retomada.
+5. (2026-10-24 16:10, relógio da máquina) Sessão nova pelo preset: esta é `maestro-armis00323`; o `ListAgents` mostra
+   `maestro-lenovo-ideapad` (Remote Control, running). O B ainda não tinha mandado recado (`correio ver`: nenhum;
+   `operations/hub-development/maestros/` não existia). O A mandou o teste primeiro: recado "Teste do correio (A -> B)"
+   em `maestros/armis00323.md` e campainha pelo SendMessage (entregue; a rota não confirma leitura).
+   **Próximo:** esperar o recado do B (vigia ou campainha), `correio ver` e `correio lido`; depois tirar a seção
+   "Recados ao outro maestro" desta retomada (nada aberto nela para mandar) e, se o B não tiver feito, trocar a regra
+   no `onboarding-maestro.md`.
 
 As duas peças visuais foram entregues (2026-10-17 ~23h).
 
