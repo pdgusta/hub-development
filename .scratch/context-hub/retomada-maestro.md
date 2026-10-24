@@ -62,10 +62,13 @@ no canvas, parados).
    avisar que passou no `/api/ping` e numa chamada de modelo (ele avisa pelo correio).
    ~18h: **FreeLLMAPI no ar no B e testado pelo A**: ping 200 pela tailnet; chat `groqopenaigpt-oss-20b` 200 ("ok");
    `mistralmistral-small-latest` deu 502 de um revendedor (dreamprompting, identidade do modelo; Radar). Contêiner do
-   A com `restart=no` (feito). **Espera o aval do Gustavo:** `FREELLM_BASE_URL=http://100.121.86.61:3001` como
-   variável do usuário no A; e a troca do `localhost:3001` fixo (`video-generator` global; `laco-embeddings`,
-   `bancada-busca`). A reserva `C:\hub-transporte\freellmapi-do-a\` fica até o B avisar que a tarefa do logon passou
-   num reinício.
+   A com `restart=no` (feito). ~18h05, **aval do Gustavo, feito:** `FREELLM_BASE_URL=http://100.121.86.61:3001`
+   como variável do usuário no A (só processos novos a veem); `localhost:3001` fixo trocado pela variável, com o
+   localhost de reserva, no `video-generator` global (`gen_tts.py`, `SKILL.md`, `references/narration.md`; cópia do
+   antes em `gen_tts.py.antes` no scratchpad) e na cópia em `global-do-maestro/`, em `laco-embeddings/comum.py` e
+   `LEIA.md`, e em `bancada-busca/.../modelos.mjs`. Recado ao B. **Falta:** o B avisar que a tarefa do logon passou
+   num reinício; aí apagar `C:\hub-transporte\freellmapi-do-a\` no A. Apagar o volume `freellmapi_freellmapi-data`
+   e o contêiner antigo só com o Gustavo.
 
 As duas peças visuais foram entregues (2026-10-17 ~23h).
 

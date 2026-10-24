@@ -5,8 +5,9 @@ quem grava é o script. O estado comum fica em `estado/laco.db` (SQLite), e cada
 livro-razão em `livros/<grupo>.jsonl` (só de acréscimo). Tudo retoma de onde parou: se um processo cair,
 basta rodar o mesmo comando de novo.
 
-Requisitos: Python 3.12, o gateway em `http://localhost:3001`, as variáveis de usuário `FREELLM_API_KEY` e
-`FREELLM_DASHBOARD_TOKEN`. Nenhuma dependência fora da biblioteca padrão.
+Requisitos: Python 3.12, o gateway em `FREELLM_BASE_URL` (variável de usuário; desde 2026-10-24,
+`http://100.121.86.61:3001`, no notebook pessoal; sem ela, o `gateway` do `config.json`), as variáveis de usuário
+`FREELLM_API_KEY` e `FREELLM_DASHBOARD_TOKEN`. Nenhuma dependência fora da biblioteca padrão.
 
 ## Partida (maestro)
 

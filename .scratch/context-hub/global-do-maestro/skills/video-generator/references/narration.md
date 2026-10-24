@@ -4,7 +4,9 @@
 
 ## Providers
 
-**FreeLLMAPI (local gateway, `http://localhost:3001/v1`)** — the user's own pool of free providers.
+**FreeLLMAPI (gateway at `$FREELLM_BASE_URL/v1`, a Windows *user* env var; since 2026-10-24 it runs on the user's
+personal notebook over the tailnet, `http://100.121.86.61:3001`; `localhost:3001` only as the fallback)** — the user's
+own pool of free providers.
 - Key: Windows *user* environment variable `FREELLM_API_KEY` (not visible in the Git Bash `env`; the script reads it via
   PowerShell). Test first when the user asks: `GET /v1/models` with the bearer, then one short `POST /v1/audio/speech`.
 - Request: `{model:"<provider model id>", input, voice, response_format:"mp3"}` with an explicit model, which `gen_tts.py`

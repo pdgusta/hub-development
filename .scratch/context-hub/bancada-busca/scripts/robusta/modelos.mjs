@@ -61,7 +61,7 @@ export async function carregar(slug) {
 // ---------- FreeLLMAPI
 export const API_USO = { chamadas: 0, entradas: 0, tokens_aprox: 0, erros: [] };
 function apiEmbedder(cfg) {
-  const KEY = process.env.FREELLM_API_KEY; const URL = process.env.FREELLM_URL || 'http://localhost:3001/v1/embeddings';
+  const KEY = process.env.FREELLM_API_KEY; const URL = process.env.FREELLM_URL || `${(process.env.FREELLM_BASE_URL || 'http://localhost:3001').replace(/\/+$/, '')}/v1/embeddings`;
   if (!KEY) throw new Error('FREELLM_API_KEY ausente');
   return async (texts) => {
     API_USO.chamadas++; API_USO.entradas += texts.length; API_USO.tokens_aprox += Math.round(texts.join('').length / 4);

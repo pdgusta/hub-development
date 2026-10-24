@@ -27,7 +27,7 @@ The user hands over, in their own words and order:
 If content, specs or references are missing or ambiguous (no folder, no length, no reference URL, "a video" with no
 language), ask one short question listing exactly what is missing, and wait: a video built on a guessed length or style
 is a video rebuilt. Defaults you may fill without asking, saying so: captions off unless requested (and in the narration
-language when requested); deliverables = both; provider = the FreeLLMAPI gateway when the user has it (`localhost:3001`,
+language when requested); deliverables = both; provider = the FreeLLMAPI gateway when the user has it (`$FREELLM_BASE_URL`,
 key `FREELLM_API_KEY`), else Gemini; 30 fps; working files in the scratchpad unless the user names a folder. A
 "dubbing" that is "small, centred at the bottom" means burned-in captions, not a second audio track; say which you
 understood.

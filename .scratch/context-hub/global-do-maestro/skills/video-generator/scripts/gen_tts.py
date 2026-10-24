@@ -3,8 +3,8 @@ usage: python gen_tts.py <project-dir> [ids...] [--provider freellmapi|gemini] [
 Reads roteiro.json: scenes[].lines = [[narration sentence, caption sentence (optional)], ...]  (or scenes[].narration)
 Writes audio/<id>.mp3 (silence-trimmed, loudnorm -16 LUFS, 64k mono), durations.json, cues.json, tts-log.json.
 Providers:
-  freellmapi  POST http://localhost:3001/v1/audio/speech  (key: FREELLM_API_KEY, a Windows *user* env var; read via PowerShell
-              if absent from the shell). Model by language, never "auto": English -> Cloudflare MeloTTS then Gemini; anything else ->
+  freellmapi  POST $FREELLM_BASE_URL/v1/audio/speech  (base and key FREELLM_API_KEY are Windows *user* env vars, read via
+              PowerShell if absent from the shell; base falls back to http://localhost:3001; --base overrides it). Model by language, never "auto": English -> Cloudflare MeloTTS then Gemini; anything else ->
               Gemini 3.1 TTS then 2.5 TTS (the gateway pins MeloTTS to English). Voice names are OpenAI-style, mapped per provider
               (ash->Charon, coral->Sulafat, sage->Sadaltager, cedar->Kore on Gemini). Returns WAV even if mp3 is requested.
   gemini      POST https://generativelanguage.googleapis.com/v1beta/interactions (GEMINI_API_KEY), model gemini-3.8-flash-tts,
@@ -16,7 +16,7 @@ import json, os, re, subprocess, sys, time, pathlib, difflib, concurrent.futures
 ap = argparse.ArgumentParser()
 ap.add_argument("project"); ap.add_argument("ids", nargs="*")
 ap.add_argument("--provider", default="freellmapi"); ap.add_argument("--voice", default=None); ap.add_argument("--workers", type=int, default=3)
-ap.add_argument("--no-cues", action="store_true"); ap.add_argument("--base", default="http://localhost:3001/v1")
+ap.add_argument("--no-cues", action="store_true"); ap.add_argument("--base", default=None, help="gateway /v1 URL; default: $FREELLM_BASE_URL/v1, else http://localhost:3001/v1")
 ap.add_argument("--model", default=None, help="freellmapi: provider model ids tried in order; default depends on --lang")
 ap.add_argument("--lang", default=None, help="narration language (pt-BR, en...); default: roteiro.json 'lang', else guessed from the text")
 a = ap.parse_args()
@@ -65,6 +65,8 @@ def post_multipart(url, fields, filepath, headers, timeout=240):
     with urllib.request.urlopen(req, timeout=timeout) as r: return json.loads(r.read().decode())
 
 FL_KEY = user_env("FREELLM_API_KEY"); FL_H = {"Authorization": "Bearer " + FL_KEY}
+# The gateway moved off this machine (2026-10-24: native on the personal notebook, reached over the tailnet).
+a.base = a.base or (user_env("FREELLM_BASE_URL") or "http://localhost:3001").rstrip("/") + "/v1"
 G_KEY = user_env("GEMINI_API_KEY")
 
 def synth(text):

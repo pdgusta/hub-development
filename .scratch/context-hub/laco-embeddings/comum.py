@@ -21,6 +21,11 @@ def carregar_config():
         cfg["metades_da_divisao"] = json.load(f)["metades_da_divisao"]
     cfg["chave"] = segredo(cfg["variavel_chave"])
     cfg["token_painel"] = segredo(cfg["variavel_token_painel"])
+    # O gateway saiu desta máquina (2026-10-24): FREELLM_BASE_URL vence; o "gateway" do config.json é a reserva.
+    try:
+        cfg["gateway"] = segredo("FREELLM_BASE_URL").rstrip("/")
+    except SystemExit:
+        pass
     return cfg
 
 
