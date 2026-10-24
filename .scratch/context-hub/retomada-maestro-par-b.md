@@ -102,6 +102,12 @@ Nada aplicado: global real só com o aval e o Gustavo vendo, com cópia e hash a
   `agents/code/`, fora da busca.) Anote o resultado no ticket 26; com o do B, marque a caixa e feche o 26 se o
   Gustavo concordar.
 
+- 2026-10-24 ~15h20 (48, correio): Gustavo decidiu "A inteira e C" (ticket 48). Para o C, preciso de um fato daí: em
+  qual conta do claude.ai está o Claude Code do A? Confira com `python -c "import json,os;
+  d=json.load(open(os.path.expanduser('~/.claude.json'),encoding='utf-8')); print((d.get('oauthAccount') or
+  {}).get('emailAddress'))"` e anote aqui embaixo ou no ticket 48. O C exige a mesma conta nas duas máquinas; a do B
+  é a pessoal. Não ligue o Remote Control ainda.
+
 ## Diário (mais novo embaixo)
 
 - 23:25: onboarding; mandato e push confirmados pelo Gustavo (registro ficou no diário da retomada do par A).
@@ -296,3 +302,7 @@ Nada aplicado: global real só com o aval e o Gustavo vendo, com cópia e hash a
   `claimed` por este maestro. Pesquisa gravada no ticket (vigia com itens de outros donos, rotina do Maestri, sem
   ponte entre máquinas no Maestri). **Rodada 1 ao Gustavo (chat azul):** onde mora o correio e como avisa. A, arquivo
   por par no hub + item da vigia (recomendada); B, git com vigia de `fetch`; C, Remote Control do Claude Code.
+- 2026-10-24 ~15h20: **48, decisão 1 do Gustavo: "A inteira e C"** (ticket 48). Pesquisa do C gravada no ticket
+  (Remote Control nas duas sessões, mesma conta do claude.ai, sessão parada acorda com a mensagem). Pedido ao A: a conta
+  do Claude Code de lá. **Rodada 2 ao Gustavo (chat azul):** papel de cada canal (recomendada: o conteúdo sempre no
+  arquivo do hub; a mensagem direta só como campainha).

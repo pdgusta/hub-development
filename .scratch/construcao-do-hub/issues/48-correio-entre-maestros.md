@@ -44,3 +44,17 @@ help` e `maestri routine create --help` (CLI 2026-10-24), a ferramenta `ListAgen
 
 - 2026-10-17 ~22h50 (maestro): publicado pela ideia do Gustavo.
 - 2026-10-24 (maestro do B): Gustavo: "vamos pro 48". Pesquisa em curso pelo maestro do B.
+- 2026-10-24 ~15h10 (Gustavo, Maestri Chat, thread azul), **decisão 1: "A inteira e C".** A inteira: um arquivo por
+  máquina no hub (`operations/hub-development/maestros/<máquina>.md`), cada maestro escreve só no seu; a vigia avisa
+  quando o do outro muda (barra de status e início da sessão); rotina do Maestri acorda o maestro parado. E também C:
+  mensagem direta entre os Claude Code pelo Remote Control.
+- 2026-10-24 ~15h20 (maestro do B), **pesquisa do C** (fonte primária: `code.claude.com/docs/en/remote-control.md` e
+  `cross-session-messaging.md`, baixados por curl): o Claude Code manda mensagem a uma sessão **sua** noutra máquina
+  pelos servidores da Anthropic, pela conexão de Remote Control daquela máquina. Para isso: a outra sessão precisa
+  aparecer no `ListAgents`, o que exige o Remote Control ligado nas duas (`/remote-control`, `claude --rc`, ou
+  "Enable Remote Control for all sessions" no `/config`); a mesma conta do claude.ai ("your sessions"); plano Pro, Max,
+  Team ou Enterprise (no Team e no Enterprise, um Owner liga o Remote Control). Sem o Remote Control no remetente, a
+  mensagem vai sem endereço de resposta. Sessão parada **começa um turno** com a mensagem (acorda o maestro). Sessão
+  `offline` recebe quando reconectar. A mensagem conta como uso, igual a um prompt digitado. Ela não aprova nada,
+  não muda configuração e não roda comandos no destino. Limite de tamanho por mensagem (`#limitations`, não lido).
+  Conta do Claude Code no B: a pessoal (`organizationRole: admin`, assinatura), v2.1.310. A do A: não conferida.
