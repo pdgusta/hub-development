@@ -281,3 +281,9 @@ Nada aplicado: global real só com o aval e o Gustavo vendo, com cópia e hash a
   (`issues/55-copilot-sem-mcp-do-hub.md`, ready-for-agent): o 08 para de registrar e tira os MCP do Copilot, o contrato e
   as skills dizem ao Copilot como achar e gravar sem MCP, testes e docs. Espera o `/implement 55`. Depois da junção:
   08 de novo nos dois pares; o Gustavo loga o Copilot do B com a conta do trabalho.
+- 2026-10-24 ~14h40: **correção do Gustavo**: ele queria repetir o teste do 26 com a conta do trabalho, não mudar o
+  kit. **26 reaberto** (`ready-for-human`); **55 em espera** (`needs-info`). Copilot do B logado como
+  `gustavo-delfino_armis` (device code); teste do 26 **passou** com os dois MCP. Ao mesmo tempo, o A achou que o
+  bloqueio de lá era de uma conta **antiga** do trabalho (login com hífen). Na conta SSO, o A também passou (b3cd533).
+  A hipótese "política da máquina" mandada no chat estava errada e foi corrigida no chat. **Esperando o Gustavo:**
+  fechar o 26 (três harnesses com MCP nas duas máquinas) e o 55 virar `wontfix` (sugestão do A e do B).

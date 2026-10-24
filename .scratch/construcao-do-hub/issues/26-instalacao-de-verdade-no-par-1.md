@@ -1,7 +1,7 @@
 # 26: Instalação de verdade nos dois primeiros pares (com o Gustavo)
 
 Type: task
-Status: resolved
+Status: ready-for-human
 Etapa: depois da junção
 Blocked by: 25, 45, 46 (todos resolvidos)
 
@@ -21,7 +21,7 @@ O fluxo de **setup num par novo** (genérico, repetível) fica para depois, ajus
 **Blocked by:** 25 (Junção e prova do hub de ensaio inteiro)
 
 - [x] o kit roda no HOME real com cópia e hash antes
-- [x] o Gustavo confere os três harnesses na pasta real
+- [ ] o Gustavo confere os três harnesses na pasta real
 
 ## Comments
 
@@ -55,4 +55,13 @@ O fluxo de **setup num par novo** (genérico, repetível) fica para depois, ajus
   a conta do trabalho e deixa de usar MCP; os MCP do hub ficam só no Claude Code e no Codex. Com isso, a segunda caixa
   fica assim: Claude Code e Codex conferidos nas duas máquinas com contrato, hooks, busca e banco; Copilot conferido no
   B com MCP (conta antiga). A mudança para "Copilot sem MCP" é o ticket 55.
+- 2026-10-24 ~14h30 (maestro do B): **reaberto.** Gustavo corrigiu: o pedido era repetir o teste do 26 no B com o
+  Copilot logado na conta do trabalho (`gustavo-delfino_armis`). O fechamento de ~14h25 foi leitura errada do maestro.
 - 2026-10-24 ~14h35 (maestro do A): o Copilot do A foi logado na conta SSO do trabalho e o teste passou com MCP (hub-banco e hub-busca), contrato recebido; hub sem mudança. O bloqueio anterior era da conta antiga. Os três harnesses ficam conferidos com MCP nas duas máquinas. Saída: `teste26-copilot-sso.txt` no scratchpad da sessão do A. Consequência para o 55: comentário lá.
+- 2026-10-24 ~14h40 (maestro do B): **Copilot do B com a conta do trabalho** (`copilot login --device-code`, "Signed in
+  successfully as gustavo-delfino_armis"; a `pdgusta` segue na lista, mas a ativa é a do trabalho). Mesmo teste, só
+  leitura, em `C:\context-hub`: **passou** (saída 0). A busca devolveu `agents/skills/busca/SKILL.md`,
+  `estado_do_hub` respondeu `ok` (envio em dia, outro par ligado), o contrato chegou e nenhuma ferramenta foi
+  recusada. Custou 9,93 créditos de IA da conta do trabalho. `git status` do hub sem mudança. Saída no scratchpad
+  da sessão (`teste26-copilot-armis.txt`). Com o resultado do A (~14h35), **os três harnesses passam com MCP nas duas
+  máquinas**, o Copilot na conta SSO. Falta só o Gustavo dar o 26 por fechado.
