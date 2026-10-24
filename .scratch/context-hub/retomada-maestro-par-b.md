@@ -214,3 +214,9 @@ Nada aplicado: global real só com o aval e o Gustavo vendo, com cópia e hash a
   do ramo `ticket-53` se o 53 não estiver juntado; aplicar nos pares vivos e medir no A fica com o maestro, depois da
   junção). **Fila:** mandar ao Malho quando ele avisar "53 pronto" (ele está na suíte do 53; no campo dele há um texto
   "pode seguir com os consertos depois da suíte", não enviado por mim).
+- 2026-10-24 ~12h: **53 pronto** (Malho): ramo `ticket-53` (7e20bee, e4ba4b5), revisado, teste 23/23, suíte 364/13
+  falhas fora do ramo (carga; caminhos da máquina A); relatório `etapas/relatorio-53-...`. Conferido o diff do
+  `mcp-banco.psm1`. Roteiro do par B commitado (45c048b). Malho começou o 54 (worktree `ticket-54` a partir do
+  `ticket-53`). **Pergunta ao Gustavo (chat azul):** juntar 53+54 de uma vez depois do 54 (recomendada) ou o 53 já;
+  em ambos, `merge --ff-only` no `C:/context-hub` (vault ao vivo, replica ao A), push do Gustavo e no A
+  `fetch` + `reset --mixed origin/main`. Procedimento de atualização com os dois pares vivos não está escrito no hub.
