@@ -1,7 +1,7 @@
 # 48: Correio entre os maestros dos dois pares
 
 Type: task
-Status: claimed
+Status: resolved
 Etapa: depois do 26 (os dois pares de pé)
 Blocked by: nenhum (26 resolvido)
 
@@ -110,3 +110,8 @@ por ele, conferir os dois no `ListAgents` um do outro e mandar um recado de test
   com o Gustavo. No B: passo 08 (skill ligada) e preset "Maestro" com `--remote-control` e `--name`
   `maestro-lenovo-ideapad` (o `--name` porque a doc diz que o nome do `ListAgents` vem do `/rename` ou `--name`). Falta:
   o mesmo no A, reabrir os maestros, `ListAgents` e o recado de teste nos dois sentidos.
+- 2026-10-24 ~16h15 (maestro do B): **resolvido** (Gustavo). A: 08 e preset feitos (planejamento a408e42). Os dois
+  maestros abriram pelo preset e se veem no `ListAgents` (`maestro-armis00323` e `maestro-lenovo-ideapad`, Remote
+  Control). Recado de teste nos dois sentidos pela skill `correio`, com campainha: A → B e B → A lidos (`ver`, `lido`)
+  e os dois com `Status: feito`. Seção "Recados ao outro maestro" tirada das duas retomadas; regra trocada no
+  `onboarding-maestro.md` (bf84425). Rotina de reserva do correio não criada (opcional).

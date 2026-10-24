@@ -277,3 +277,5 @@ Nada aplicado: global real só com o aval e o Gustavo vendo, com cópia e hash a
   desta retomada (tudo nela estava feito; os achados do par B já viraram os tickets 53 e 54). Regra trocada no
   `onboarding-maestro.md`: recado entre maestros só pela skill `correio`. Pendente do 48: o Gustavo fechar o ticket;
   rotina de reserva do correio não criada (opcional).
+- 2026-10-24 ~16h15: **48 resolvido** (Gustavo). Abertos na construção, pelo diário: o 56 da frente antiga (laço do
+  system design, `claimed` desde 15/10). Frente do par B sem pendência própria.
