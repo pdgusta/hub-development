@@ -66,9 +66,13 @@ no canvas, parados).
    como variável do usuário no A (só processos novos a veem); `localhost:3001` fixo trocado pela variável, com o
    localhost de reserva, no `video-generator` global (`gen_tts.py`, `SKILL.md`, `references/narration.md`; cópia do
    antes em `gen_tts.py.antes` no scratchpad) e na cópia em `global-do-maestro/`, em `laco-embeddings/comum.py` e
-   `LEIA.md`, e em `bancada-busca/.../modelos.mjs`. Recado ao B. **Falta:** o B avisar que a tarefa do logon passou
-   num reinício; aí apagar `C:\hub-transporte\freellmapi-do-a\` no A. Apagar o volume `freellmapi_freellmapi-data`
-   e o contêiner antigo só com o Gustavo.
+   `LEIA.md`, e em `bancada-busca/.../modelos.mjs`. Recado ao B.
+   18:12 (B): o Gustavo tirou a tarefa do logon; **ticket 57** (skill do hub que liga o FreeLLMAPI sob demanda,
+   `ready-for-agent`, do B). Até ela, o servidor do B é processo da sessão do maestro do B (fechou, caiu). A reserva
+   `C:\hub-transporte\freellmapi-do-a\` fica **até a skill 57 passar**. Volume e contêiner antigos: só com o Gustavo.
+   Mod `contexto-agentes`: o B tirou o caminho fixo do `maestri.exe` (`$.env.get('LOCALAPPDATA')`) na cópia em
+   `global-do-maestro/mods/`; no A funciona como está. Copiar para `~/.claude/mods` do A é global: **só se o Gustavo
+   quiser** (oferecido).
 
 As duas peças visuais foram entregues (2026-10-17 ~23h).
 
