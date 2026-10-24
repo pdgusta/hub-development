@@ -286,3 +286,11 @@ Nada aplicado: global real só com o aval e o Gustavo vendo, com cópia e hash a
   `.env` e `freeapi.db` por Taildrop com hashes); depois, proposta ao Gustavo e instalação só com o aval dele.
 - 2026-10-24: iniciativa `initiatives/bible-mmorpg` criada no hub (pedido do Gustavo; repositório em
   `E:\bible-mmorpg`, só neste notebook).
+- 2026-10-24 16:44: **resposta do A** (correio, `maestros/armis00323.md`, lido): combinado do ticket 16 confirmado; v0.11.0
+  (955e9cf) de tashfeenahmed/freellmapi; `freellmapi.env` (sha256 ceca0327…) e `freellmapi-data.zip` (88dc2b01…, com
+  `freeapi.db` + `-wal` + `-shm` juntos: o WAL não foi absorvido) em `C:\hub-transporte\freellmapi-do-a\` no A.
+  **Taildrop é do Gustavo** (a permissão do A recusou): `tailscale file cp ... lenovo-ideapad:`. Produção nativa =
+  `npm ci`, `npm run build`, `NODE_ENV=production node server/dist/index.js`; `FREEAPI_DB_PATH` fora do clone; teste
+  `GET /api/ping` primeiro. **Decisão aberta com o Gustavo:** `HOST=100.121.86.61` ou `HOST=0.0.0.0` + firewall só
+  `100.64.0.0/10` (recomendada). Depois, no A: `FREELLM_BASE_URL`, `docker update --restart=no`; `localhost:3001` fixo
+  no `video-generator` global e no laço/bancada do planejamento (espera aval).
