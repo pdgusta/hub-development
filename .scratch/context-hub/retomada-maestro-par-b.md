@@ -279,3 +279,10 @@ Nada aplicado: global real só com o aval e o Gustavo vendo, com cópia e hash a
   rotina de reserva do correio não criada (opcional).
 - 2026-10-24 ~16h15: **48 resolvido** (Gustavo). Abertos na construção, pelo diário: o 56 da frente antiga (laço do
   system design, `claimed` desde 15/10). Frente do par B sem pendência própria.
+- 2026-10-24 16:39: **frente nova: FreeLLMAPI nativo neste notebook** (pedido do Gustavo). Combinado anterior achado no
+  ticket 16 (comentário de 2026-10-14: nativo no Windows, sem Docker; `.env` e `freeapi.db` do Docker do A; preso ao
+  Tailscale; o A chama por `FREELLM_BASE_URL`). Recado ao A pelo correio ("FreeLLMAPI nativo no notebook pessoal (B):
+  como fazer") com campainha (entrega não confirmada pela rota). Esperando: a resposta do A (repositório e versão,
+  `.env` e `freeapi.db` por Taildrop com hashes); depois, proposta ao Gustavo e instalação só com o aval dele.
+- 2026-10-24: iniciativa `initiatives/bible-mmorpg` criada no hub (pedido do Gustavo; repositório em
+  `E:\bible-mmorpg`, só neste notebook).
