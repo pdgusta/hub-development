@@ -333,3 +333,9 @@ Nada aplicado: global real só com o aval e o Gustavo vendo, com cópia e hash a
   `ListAgents` (nome `maestro-lenovo-ideapad` e o do A), mandar o recado de teste pela skill `correio`
   (relatório do 48), esperar a resposta do A, `ver`/`lido`; depois tirar a seção "Recados ao outro maestro" das duas
   retomadas (a do A é do A) e trocar a regra no `onboarding-maestro.md`; rotina de reserva opcional.
+- 2026-10-24 16:10: sessão aberta pelo preset (processo `claude --remote-control maestro-lenovo-ideapad --name
+  maestro-lenovo-ideapad`); `ListAgents` mostra `maestro-armis00323` (Remote Control). Push do hub feito (origin/main
+  3e83b76). **Correio A → B funcionou:** campainha do A chegou, `ver` mostrou "Teste do correio (A -> B)", `lido` feito.
+  **B → A:** recado "Teste do correio (B -> A)" gravado em `maestros/lenovo-ideapad.md` e campainha mandada
+  (`SendMessage` ao A; a rota não confirma leitura). Esperando o A responder pelo correio; aí: `Status: feito` no meu
+  recado, tirar "Recados ao outro maestro" desta retomada e trocar a regra no `onboarding-maestro.md`.
