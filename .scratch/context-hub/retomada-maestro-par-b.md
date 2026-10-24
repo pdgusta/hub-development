@@ -166,3 +166,7 @@ Nada aplicado: global real só com o aval e o Gustavo vendo, com cópia e hash a
   min) registradas. `hub-sincronizador` rodada à mão: resultado 0, nada a religar (daemon 29000 intacto; sem linha
   nova no `laco.log`). `hub-vigia` rodou sozinha às 10:10:01: resultado 0. `hub-manutencao-diaria` não registrada.
   Próximo: passo 8 (apagar `C:/Projetos/hub-kit`) e passo 9 (à mão).
+- 2026-10-24: **passo 8 feito** (aval): `C:/Projetos/hub-kit` apagado, depois de conferir que nenhuma config, tarefa ou
+  processo o usava e que não tinha mudança local. Passo 9, estado de partida: `HUB_MCP_BANCO_TOKEN` ainda não é
+  variável do usuário (o `.claude.json` já usa `${HUB_MCP_BANCO_TOKEN}`); `CLAUDE_CODE_PLUGIN_DIRS` só com
+  contexto-agentes e guarda-de-recrutas; os três mods do hub existem. Esperando o aval do Gustavo para o 9.
