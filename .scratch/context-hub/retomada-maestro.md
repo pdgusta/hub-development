@@ -50,6 +50,14 @@ no canvas, parados).
    com o B (dito no recado), para não brigarmos no rebase.
    **Próximo:** o 48 pode fechar (falta o B trocar o onboarding e fechar o ticket); rotina de reserva "Correio" é
    opcional. Daqui em diante, recado ao B só pela skill `correio`.
+6. (16:39-16:44) Recado do B: **FreeLLMAPI nativo no notebook pessoal** (decisão de 2026-10-14, ticket 16). Respondido
+   pelo correio ("FreeLLMAPI nativo no B: respostas do A"): v0.11.0 / 955e9cf; contêiner do A parado desde 17/10
+   (137); `.env` e a pasta `data` (com WAL) copiados por `docker cp` para `C:\hub-transporte\freellmapi-do-a\`
+   (hashes no recado). **Taildrop recusado pela permissão automática**: o Gustavo manda do A
+   (`tailscale file cp ...freellmapi.env ...freellmapi-data.zip lenovo-ideapad:`). Depois do teste do B: no A,
+   `FREELLM_BASE_URL=http://100.121.86.61:3001` (usuário; hoje não existe), `docker update --restart=no` no contêiner,
+   e trocar `localhost:3001` fixo no global (`video-generator`) e no planejamento só com aval. Apagar a pasta de
+   transporte quando o B confirmar os hashes.
 
 As duas peças visuais foram entregues (2026-10-17 ~23h).
 
