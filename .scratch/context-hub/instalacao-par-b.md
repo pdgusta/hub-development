@@ -46,7 +46,9 @@ if (Test-Path $Hub) { if (Get-ChildItem -Force $Hub) { throw "$Hub não está va
 
 # 2. O kit de fora, o fork e o CLI do LiveSync
 git clone -b main $Url $Kit
-git clone -b integracao "$HOME\Downloads\hub-mcp-banco.bundle" C:\Projetos\hub-mcp-banco
+#    o fork com o submódulo lib/livesync-commonlib (o bundle não o leva; vem do GitHub). Sem ele, o passo 05 para e
+#    diz o conserto: git -C C:\Projetos\hub-mcp-banco submodule update --init (ticket 53)
+git clone --recurse-submodules -b integracao "$HOME\Downloads\hub-mcp-banco.bundle" C:\Projetos\hub-mcp-banco
 pwsh "$Kit\agents\code\kit\par\montar-cli-livesync.ps1" -Destino C:\hub-par\livesync -WhatIf
 pwsh "$Kit\agents\code\kit\par\montar-cli-livesync.ps1" -Destino C:\hub-par\livesync      # ~3 min; clona o repositório público
 ```
