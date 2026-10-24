@@ -267,3 +267,8 @@ Nada aplicado: global real só com o aval e o Gustavo vendo, com cópia e hash a
   Copilot receberam o contrato e usaram o hub-busca e o hub-banco; hub sem mudança. Recado ao A com os comandos.
   Observação: o Copilot imprimiu "Remote index: queued pdgusta/context-hub for indexing" (indexação do repositório no
   GitHub pelo próprio Copilot; não verificado o que isso implica). Próximo: o A roda o mesmo; o 26 fecha com o Gustavo.
+- 2026-10-24 ~14h15: Gustavo: a conta do Copilot agora é a do GitHub Enterprise com SSO, com políticas novas; no A
+  parece travar os MCP de terceiros. Pesquisa em fonte primária: `.scratch/context-hub/pesquisa-copilot-enterprise-mcp.md`
+  (política "MCP servers in Copilot", allowlist no `managed-settings.json`, três jeitos de entregar a política, o que
+  checar no A). No B: Copilot só com `pdgusta`, sem política local. O teste do 26 no A agora também mostra o efeito
+  dessa política.
