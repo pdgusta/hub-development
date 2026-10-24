@@ -210,3 +210,7 @@ Nada aplicado: global real só com o aval e o Gustavo vendo, com cópia e hash a
 - 2026-10-24: **54 decidido** pelo Gustavo (Maestri Chat, thread azul): caminho A, a busca sai do vault para
   `C:/hub-par/busca`; sem issue no projeto original. Ticket em `ready-for-agent`; construção espera o `/implement 54`
   do Gustavo (sugestão: o Malho, depois do 53, porque os dois mexem em `instalacao.md`).
+- 2026-10-24: Gustavo invocou `/implement 54`. Brief em `.scratch/construcao-do-hub/etapas/brief-54-par-b.md` (parte
+  do ramo `ticket-53` se o 53 não estiver juntado; aplicar nos pares vivos e medir no A fica com o maestro, depois da
+  junção). **Fila:** mandar ao Malho quando ele avisar "53 pronto" (ele está na suíte do 53; no campo dele há um texto
+  "pode seguir com os consertos depois da suíte", não enviado por mim).
