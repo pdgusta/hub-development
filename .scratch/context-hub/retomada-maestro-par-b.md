@@ -145,3 +145,8 @@ Nada aplicado: global real só com o aval e o Gustavo vendo, com cópia e hash a
 - 13:47: `.local/busca` movida para `C:/hub-par/busca-fora` (8.587 arquivos; aval do Gustavo). 13:57: **o par recebeu o
   hub: 564 arquivos do banco no disco** (espera do kit, `convergiu: true`). Busca devolvida a `C:/context-hub/.local/busca`
   (8.587). Próximo: passo 5 (o git, sem tocar nos arquivos do banco).
+- 2026-10-24: Gustavo voltou; estado conferido (daemon vivo desde 21/10 13:21, hub convergido 564/564, A sem recado
+  novo). **Passo 5 feito** (aval): git no `C:/context-hub` ligado a `origin` = github.com/pdgusta/context-hub (main
+  70a9f73, `reset --mixed`); 14 arquivos com ponto restaurados (.gitignore, .gitkeep e os 3 `plugin.json` dos mods);
+  identidade pdgusta no local. `git status`: **nenhum M nem D** (os bytes do banco batem com o git); 4 não rastreados
+  vindos do banco: os 3 `tsconfig.json` dos mods e `agents/maestro/uso/armis00323.md` (nada mexido). Próximo: passo 6.
