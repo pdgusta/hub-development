@@ -82,6 +82,16 @@ Nada aplicado: global real só com o aval e o Gustavo vendo, com cópia e hash a
   Eu confiro no disco do B e apago as duas notas de teste depois.
 - 2026-10-24 ~11h: **passo 10 fechado**: a nota do A chegou ao disco do B; as duas notas de teste foram apagadas e a
   remoção chegou aos dois bancos. Do lado do B, o 26 pode fechar. Os tickets 53 e 54 ficam comigo.
+- 2026-10-24 ~13h15: **53 e 54 juntados no `main` do hub (a9f1b4d) e no GitHub (push do Gustavo).** Os 21 arquivos já
+  estão no banco do A (vigia do B: envio em dia). No A, nesta ordem:
+  1) `git -C C:\context-hub fetch` e `git -C C:\context-hub reset --mixed origin/main`; `git status --short` deve
+     sair sem nenhum `M` (os bytes vieram pelo banco). Anote aqui se sair algum.
+  2) Medida antes (varredura aproximada, comando no fim do relatório do 54,
+     `.scratch/construcao-do-hub/etapas/relatorio-54-busca-fora-do-vault.md`).
+  3) Mudar a busca: `HUB_BUSCA_DIR=C:\hub-par\busca` no `.env` do A (pelo PowerShell; o `printf` do bash come o
+     `\b`), parar a busca no terminal Busca, `03-busca.ps1 -Hub C:\context-hub -EnvFile <env do A> -WhatIf` e depois
+     sem `-WhatIf`, religar com o `iniciar.ps1`.
+  4) Medida depois, o mesmo comando. No B, depois: 740 arquivos, 370 ms.
 
 ## Diário (mais novo embaixo)
 
@@ -231,3 +241,12 @@ Nada aplicado: global real só com o aval e o Gustavo vendo, com cópia e hash a
   main 70a9f73 → a9f1b4d, nenhum rastreado alterado. 21 arquivos subindo ao banco (lento: a busca ainda está no vault);
   espera por `espera-21.mjs` (scratchpad). Depois: push pelo Gustavo; A: `fetch` + `reset --mixed origin/main`; mudar a
   busca no B e no A (com a busca parada) e medir no A.
+- 2026-10-24 ~13h10: **push do hub feito pelo Gustavo** (`origin/main` = a9f1b4d, conferido). Os 21 arquivos demoraram
+  a subir (daemon a ~1 núcleo, varredura lenta); o `espera-21.mjs` contava errado (o `mtime` não é legível no
+  documento do banco) e foi parado. **Busca do B mudada** (o 54 aplicado aqui): `.env` do B com
+  `HUB_BUSCA_DIR=C:\hub-par\busca` (cópia em `lenovo-ideapad.env.antes-54`; o `printf` do bash come `\b`: gravar pelo
+  PowerShell); busca parada (Ctrl+C no terminal Busca), `03-busca.ps1 -EnvFile` (renomeou; 8.587 arquivos em
+  `C:\hub-par\busca`, `.local\busca` ausente, ponteiro `{"dir":"C:\\hub-par\\busca"}`), busca religada pelo
+  `iniciar.ps1` (porta 3939, sem aviso do caminho antigo). Logo depois os arquivos subiram: SKILL.md da busca no banco
+  com a data da junção; daemon parado (0 s de CPU em 10 s); vigia `ok: replicação de envio em dia`. Varredura
+  aproximada do relatório no B, depois: 740 arquivos, 7.393 `lstat`, 370 ms. Falta: o A (recado acima).
