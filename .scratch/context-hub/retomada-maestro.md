@@ -27,7 +27,15 @@ no canvas, parados).
    O B fechou o passo 10 e juntou 53+54 no main do hub (a9f1b4d). No A, ~13h40: git em a9f1b4d sem `M`; busca fora
    do vault (`C:\hub-par\busca`, rodando no terminal Busca); varredura 1.016 ms → 124 ms (recado abaixo).
    53 e 54 resolvidos pelo B. 26 resolvido pelo B. No A, o Copilot na conta SSO passou **com MCP** (o bloqueio era da
-   conta antiga): o ticket 55 (Copilot sem MCP) perdeu a premissa. **Esperando o Gustavo:** 55 segue ou `wontfix`.
+   conta antiga); 55 `wontfix` (Gustavo). 47 resolvido.
+4. (2026-10-24 ~17h30) **48 (correio entre os maestros)** juntado pelo B no main do hub (3e83b76, no GitHub). Recado do
+   B (retomada dele, ~17h15), no A: 1) FEITO: `fetch` + `reset --mixed origin/main`, sem `M`. 2) Passo 08: simulação
+   feita (`passo08-48-whatif.txt` no scratchpad): junctions `correio` em `.claude\skills` e `.agents\skills`; também
+   regravaria o `~/.claude.json` (hub-busca e hub-banco já iguais; só formatação, porque o 08 compara o texto inteiro).
+   3) Preset "Maestro": `maestri preset create "Maestro" --command 'claude --remote-control "maestro-armis00323" --name
+   "maestro-armis00323"' --maestro on --chat on` (o comando de hoje é só `claude`; modelo e esforço vêm do
+   settings.json). **Esperando o aval do Gustavo para 2 e 3**; depois ele reabre o maestro pelo preset e eu confiro
+   `maestro-lenovo-ideapad` no `ListAgents` e espero o recado de teste do B pela skill `correio`.
 
 As duas peças visuais foram entregues (2026-10-17 ~23h).
 
