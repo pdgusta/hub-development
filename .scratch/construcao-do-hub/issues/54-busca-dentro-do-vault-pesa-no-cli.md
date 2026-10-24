@@ -1,7 +1,7 @@
 # 54: A busca dentro do vault deixa o CLI do LiveSync lento
 
 Type: task
-Status: needs-triage
+Status: ready-for-agent
 Etapa: conserto do 26 (achado na instalação do par B)
 Blocked by: nenhum
 
@@ -57,7 +57,13 @@ Caminhos, com o que a pesquisa mostrou:
   pasta com ponto futura, mas é um remendo para manter a cada versão do CLI, que hoje montamos do original sem fork.
   Pode virar issue ou PR no projeto original (pede o aval do Gustavo: publica fora).
 
-- [ ] decisão registrada aqui
+## Decisão (Gustavo, 2026-10-24, Maestri Chat, thread azul)
+
+**Caminho A: a busca sai do vault.** Instalação e estado da busca em `C:/hub-par/busca` (ao lado de `banco`, `cli-db`
+e `livesync`), por uma chave nova no `.env` (nome a definir na construção; sugestão `HUB_BUSCA_DIR`). O CLI do LiveSync
+não muda; issue no projeto original não foi pedida.
+
+- [x] decisão registrada aqui
 - [ ] conserto no kit, com teste
 - [ ] medida no A antes e depois (tempo da varredura com e sem `.local`)
 
@@ -67,3 +73,4 @@ Caminhos, com o que a pesquisa mostrou:
 - 2026-10-24 (maestro do A): Gustavo: o maestro do B conserta. Dono: maestro do par B.
 - 2026-10-24 (maestro do B): pesquisa feita (seção acima). Recomendação: caminho A (busca fora do vault). Esperando
   a escolha do Gustavo.
+- 2026-10-24 (maestro do B): Gustavo escolheu o caminho A. Pronto para agente.

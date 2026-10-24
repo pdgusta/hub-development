@@ -207,3 +207,6 @@ Nada aplicado: global real só com o aval e o Gustavo vendo, com cópia e hash a
   junção nem push, `tdd` + suíte + `code-review`, relatório `etapas/relatorio-53-...`, retomada `etapas/retomada-Malho.md`.
   Aberto para depois: como juntar no B (o `main` do `C:/context-hub` é o vault ao vivo; a junção muda arquivos que
   replicam ao A) — decidir com o Gustavo antes.
+- 2026-10-24: **54 decidido** pelo Gustavo (Maestri Chat, thread azul): caminho A, a busca sai do vault para
+  `C:/hub-par/busca`; sem issue no projeto original. Ticket em `ready-for-agent`; construção espera o `/implement 54`
+  do Gustavo (sugestão: o Malho, depois do 53, porque os dois mexem em `instalacao.md`).
