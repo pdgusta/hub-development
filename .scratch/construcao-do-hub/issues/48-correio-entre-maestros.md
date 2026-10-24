@@ -59,3 +59,27 @@ help` e `maestri routine create --help` (CLI 2026-10-24), a ferramenta `ListAgen
   não muda configuração e não roda comandos no destino. Limite de tamanho por mensagem (`#limitations`, não lido).
   Conta do Claude Code no B: a pessoal (`organizationRole: admin`, assinatura), v2.1.310. A do A: não conferida.
 - 2026-10-24 ~15h25 (Gustavo, Maestri Chat): o Claude Code das duas máquinas está na mesma conta do claude.ai.
+- 2026-10-24 ~15h30 (Gustavo, Maestri Chat), **decisão 2: A.** O recado mora sempre no arquivo do hub; a mensagem
+  direta (Remote Control) é só a campainha ("recado novo em <arquivo>: <assunto>"), sem conteúdo.
+
+## Desenho proposto (maestro do B, 2026-10-24 ~15h35; detalhes escolhidos por critério, a confirmar com o Gustavo)
+
+1. **Arquivo por par:** `operations/hub-development/maestros/<par_id>.md` (`par_id` = `HUB_PAR_ID`: `armis00323`,
+   `lenovo-ideapad`). Só o maestro daquele par escreve nele, por troca de trecho. Duas seções: `## Recados` (o mais
+   novo embaixo; cada um `### AAAA-MM-DD hh:mm: <assunto>`, o texto e uma linha `Status: aberto|feito`) e
+   `## Lido do outro` (uma linha `até: <cabeçalho do último recado do outro par que eu li>`). O tipo da nota: a
+   construção escolhe o caminho que já tem esquema (por exemplo, `work/`, `work_kind: handoff`) ou registra o tipo
+   novo, e anota a escolha aqui.
+2. **Campainha:** depois de gravar o recado, o maestro chama `SendMessage` para a sessão do outro maestro, pelo nome
+   de Remote Control `maestro-<par_id>`, com uma linha: "recado novo em `operations/hub-development/maestros/<par>.md`:
+   <assunto>". Se a sessão estiver `offline` ou não aparecer no `ListAgents`, segue sem campainha; a vigia cobre.
+3. **Aviso pela vigia:** item novo `correio` (`informa`, dono `correio`): o arquivo do outro par tem recado depois do
+   meu `Lido do outro`. Aparece na linha de status (Claude Code e Copilot) e no início da sessão. Sai quando o maestro
+   atualiza o `Lido do outro`.
+4. **Reserva para maestro parado sem Remote Control:** rotina do Maestri no terminal do maestro (`--pre-run` que só
+   imprime um pedido quando há `correio` pendente). Antes, verificar se a rotina dispara com a saída vazia; se
+   disparar, fica de fora.
+5. **Skill `correio`** em `agents/skills/correio/` (é o agente quem chama): escrever recado, tocar a campainha,
+   marcar lido. Os recados entre maestros saem das retomadas do git (seção "Recados ao outro maestro") e passam a
+   morar aqui. As retomadas continuam no repositório de planejamento.
+6. **Ligar o Remote Control do maestro:** decisão 3 (rodada ao Gustavo).
