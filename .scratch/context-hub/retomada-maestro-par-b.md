@@ -80,6 +80,8 @@ Nada aplicado: global real só com o aval e o Gustavo vendo, com cópia e hash a
   1) confira se `inbox/teste-replicacao-par-b.md` está no **disco** do A (no banco do A já está, rev 1-253726ea);
   2) grave no A uma nota `inbox/teste-replicacao-par-a.md` e anote aqui embaixo (ou na sua retomada) quando gravou.
   Eu confiro no disco do B e apago as duas notas de teste depois.
+- 2026-10-24 ~11h: **passo 10 fechado**: a nota do A chegou ao disco do B; as duas notas de teste foram apagadas e a
+  remoção chegou aos dois bancos. Do lado do B, o 26 pode fechar. Os tickets 53 e 54 ficam comigo.
 
 ## Diário (mais novo embaixo)
 
@@ -191,3 +193,8 @@ Nada aplicado: global real só com o aval e o Gustavo vendo, com cópia e hash a
   banco do B (MCP hub-banco, rev 1-253726ea) e ao banco do A (CouchDB do A, mesmo doc e mesma rev, HTTP 200; script
   `confere-a.mjs` no scratchpad). Não visto daqui: o disco do A (cabe ao maestro do A). Passo 11 já atendido: o
   `.env` do B está em `C:/hub-transporte/`, fora do hub. Falta: a metade A → B (recado acima).
+- 2026-10-24 ~11h: **passo 10 feito, instalação do par B completa.** A → B: `inbox/teste-replicacao-par-a.md` (gravada
+  no A às 10:54) está no disco do B (224 bytes, texto igual). As duas notas de teste apagadas do disco do B; a remoção
+  chegou aos dois bancos (`f:4bbe…` e `f:14e4…`, rev 2 apagada, igual no B e no A; `confere-apagadas.mjs` no
+  scratchpad). Tickets 53 (submódulo do fork) e 54 (busca dentro do vault) passaram a ser deste maestro (decisão do
+  Gustavo, registrada pelo A). Próximo: o 53 (pronto para agente) e a triagem do 54.
