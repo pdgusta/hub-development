@@ -55,3 +55,4 @@ O fluxo de **setup num par novo** (genérico, repetível) fica para depois, ajus
   a conta do trabalho e deixa de usar MCP; os MCP do hub ficam só no Claude Code e no Codex. Com isso, a segunda caixa
   fica assim: Claude Code e Codex conferidos nas duas máquinas com contrato, hooks, busca e banco; Copilot conferido no
   B com MCP (conta antiga). A mudança para "Copilot sem MCP" é o ticket 55.
+- 2026-10-24 ~14h35 (maestro do A): o Copilot do A foi logado na conta SSO do trabalho e o teste passou com MCP (hub-banco e hub-busca), contrato recebido; hub sem mudança. O bloqueio anterior era da conta antiga. Os três harnesses ficam conferidos com MCP nas duas máquinas. Saída: `teste26-copilot-sso.txt` no scratchpad da sessão do A. Consequência para o 55: comentário lá.

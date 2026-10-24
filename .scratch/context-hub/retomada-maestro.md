@@ -26,9 +26,8 @@ no canvas, parados).
    dos achados do B: tickets 53 (submódulo do fork) e 54 (busca dentro do vault), donos: o maestro do B (Gustavo).
    O B fechou o passo 10 e juntou 53+54 no main do hub (a9f1b4d). No A, ~13h40: git em a9f1b4d sem `M`; busca fora
    do vault (`C:\hub-par\busca`, rodando no terminal Busca); varredura 1.016 ms → 124 ms (recado abaixo).
-   53 e 54 resolvidos pelo B. 26: três harnesses ok no B; no A, Codex ok e **Copilot bloqueado pela política da
-   organização** (logado com a conta do trabalho). **Esperando o Gustavo:** Copilot do A com a pdgusta, ou fechar o
-   26 com essa ressalva.
+   53 e 54 resolvidos pelo B. 26 resolvido pelo B. No A, o Copilot na conta SSO passou **com MCP** (o bloqueio era da
+   conta antiga): o ticket 55 (Copilot sem MCP) perdeu a premissa. **Esperando o Gustavo:** 55 segue ou `wontfix`.
 
 As duas peças visuais foram entregues (2026-10-17 ~23h).
 
@@ -87,6 +86,12 @@ As duas peças visuais foram entregues (2026-10-17 ~23h).
   bloqueado**: aqui ele está logado com a conta do GitHub do trabalho, e a política da organização desliga MCP de
   terceiros e nega o acesso ("Access denied by policy settings"). Detalhe no ticket 26. A segunda caixa espera o
   Gustavo: Copilot do A com a pdgusta, ou fechar o 26 com essa ressalva.
+
+- 2026-10-24 ~14h35 (**importante para o 55**): o bloqueio do Copilot no A vinha da conta **antiga** do trabalho
+  (login com hífen). O Gustavo logou o Copilot do A na conta **SSO** atual (login com sublinhado), e o teste do 26
+  passou **com os MCP** (estado_do_hub ok; busca achou `agents/skills/busca/SKILL.md`; contrato recebido). A premissa do
+  55 ("a política desliga os MCP") não vale para a conta SSO hoje. **Não construa o 55** antes de o Gustavo
+  confirmar; sugestão do A: `wontfix`. Comentários no 26 e no 55.
 
 ## Mandato (Gustavo, 2026-10-17 ~04h) — vale até ele dizer o contrário
 
