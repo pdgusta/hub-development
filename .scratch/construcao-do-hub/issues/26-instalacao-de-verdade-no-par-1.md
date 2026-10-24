@@ -41,3 +41,12 @@ O fluxo de **setup num par novo** (genérico, repetível) fica para depois, ajus
 - 2026-10-17 ~23h25 (maestro): ressalvas do Fiel para cá (pareceres do 45 e do 46): HUB_MAQUINA = HUB_PAR_ID (o mesmo nome da máquina; o registro de uso do roteamento passa a <id>.md); `${HUB_BANCO_ENDERECO:?}` no compose; o gerador de .env deve lembrar o `montar-cli-livesync.ps1`.
 - 2026-10-18 ~00h25 (maestro): 45 e 46 resolvidos; `main` do hub = 7d0c25d (--no-ff de integracao 8c01cfb), sem push (o push é do Gustavo). Ressalvas do Rebite para cá: do 45, `${HUB_BANCO_ENDERECO:?}` no compose, aviso para endereço fora de 100.64/10, Docker antes do Tailscale não testado, o gerador não manda rodar o montar-cli-livesync, só IPv4 e "dubious ownership" do git; do 46, as ressalvas 1, 3 e 5 da rodada 1. O Lume escreve `agents/code/docs/instalacao.md` para o maestro de cada par seguir.
 - 2026-10-18 ~13h (Brasa, leitura no 49): no par A os 523 textos do hub estão em CRLF (core.autocrlf=true do Git for Windows). Se o git do par B tiver autocrlf=false, o clone sai em LF e cada arquivo difere do banco. **No B, conferir `git config --get core.autocrlf` antes de clonar** (deve ser igual ao do A).
+- 2026-10-24 ~13h55 (maestro do B, aval do Gustavo): **três harnesses conferidos no B** (lenovo-ideapad), só leitura,
+  na pasta real `C:\context-hub`. Claude Code: a sessão do maestro (contrato, lembrete do acervo, MCP hub-banco e
+  hub-busca, mods). Codex 0.163.0 (`codex exec -m gpt-6-luna`) e Copilot CLI 1.0.98 (`copilot -p --allow-all-tools`),
+  com o mesmo pedido: os dois disseram ter recebido o contrato do AGENTS.md; chamaram `hub-busca/search` e
+  `hub-banco/estado_do_hub` (`ok`, envio em dia, outro par ligado); os hooks rodaram (Codex: `PostToolUse` e `Stop`; o
+  Copilot leu o `routing.yml` e abriu as skills `busca` e `maestro-acervo`). A pergunta da busca ("como instalar um
+  par novo") não achou o guia porque `agents/code/` fica fora da busca de propósito (ticket 41): é escolha da pergunta,
+  não falha. `git status` do hub sem mudança. Saídas no scratchpad da sessão (`teste26-codex.txt`,
+  `teste26-copilot.txt`). Falta o mesmo no A para marcar a segunda caixa.

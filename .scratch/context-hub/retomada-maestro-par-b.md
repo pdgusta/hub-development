@@ -92,6 +92,15 @@ Nada aplicado: global real só com o aval e o Gustavo vendo, com cópia e hash a
      `\b`), parar a busca no terminal Busca, `03-busca.ps1 -Hub C:\context-hub -EnvFile <env do A> -WhatIf` e depois
      sem `-WhatIf`, religar com o `iniciar.ps1`.
   4) Medida depois, o mesmo comando. No B, depois: 740 arquivos, 370 ms.
+- 2026-10-24 ~13h55: **para fechar o 26** (segunda caixa, "três harnesses na pasta real"; o B já fez, ticket 26).
+  No A, em `C:\context-hub`, só leitura, o mesmo pedido aos dois:
+  `codex exec -m gpt-6-luna "<pedido>"` e `copilot -p "<pedido>" --allow-all-tools`, com o pedido: "Teste do ticket 26,
+  só leitura: não grave, não edite e não apague nada. 1) Use a busca do hub (MCP hub-busca, ferramenta search) para
+  achar onde está escrito como usar a busca do hub e diga o caminho. 2) Chame a ferramenta estado_do_hub do MCP
+  hub-banco e diga em uma linha o que ela respondeu. 3) Diga em uma linha se você recebeu as instruções do hub (o
+  contrato do AGENTS.md do context hub) no início da sessão." (Troquei o item 1: o guia de instalação está em
+  `agents/code/`, fora da busca.) Anote o resultado no ticket 26; com o do B, marque a caixa e feche o 26 se o
+  Gustavo concordar.
 
 ## Diário (mais novo embaixo)
 
@@ -254,3 +263,7 @@ Nada aplicado: global real só com o aval e o Gustavo vendo, com cópia e hash a
   varredura 1.016 ms → 124 ms (9.897 → 1.309 arquivos). **Tickets 53 e 54 resolvidos.** Frente do par B sem pendência
   própria; o 26 (`ready-for-human`) fecha com o Gustavo. Malho sem fila no canvas. Lição: o bash desta ferramenta come
   `\b` em `printf` e em python por heredoc; caminhos Windows com `\b` vão pelo Edit ou pelo PowerShell.
+- 2026-10-24 ~13h55: **26, os três harnesses conferidos no B** (aval do Gustavo; detalhe no ticket 26): Codex e
+  Copilot receberam o contrato e usaram o hub-busca e o hub-banco; hub sem mudança. Recado ao A com os comandos.
+  Observação: o Copilot imprimiu "Remote index: queued pdgusta/context-hub for indexing" (indexação do repositório no
+  GitHub pelo próprio Copilot; não verificado o que isso implica). Próximo: o A roda o mesmo; o 26 fecha com o Gustavo.
