@@ -60,6 +60,12 @@ no canvas, parados).
    17:37 (B): hashes conferidos; dados em `C:\freellmapi-data` no B; Gustavo escolheu `HOST=0.0.0.0` + firewall só
    `100.64.0.0/10`; clone v0.11.0, build rodando. **Não apagar** `C:\hub-transporte\freellmapi-do-a\` no A até o B
    avisar que passou no `/api/ping` e numa chamada de modelo (ele avisa pelo correio).
+   ~18h: **FreeLLMAPI no ar no B e testado pelo A**: ping 200 pela tailnet; chat `groqopenaigpt-oss-20b` 200 ("ok");
+   `mistralmistral-small-latest` deu 502 de um revendedor (dreamprompting, identidade do modelo; Radar). Contêiner do
+   A com `restart=no` (feito). **Espera o aval do Gustavo:** `FREELLM_BASE_URL=http://100.121.86.61:3001` como
+   variável do usuário no A; e a troca do `localhost:3001` fixo (`video-generator` global; `laco-embeddings`,
+   `bancada-busca`). A reserva `C:\hub-transporte\freellmapi-do-a\` fica até o B avisar que a tarefa do logon passou
+   num reinício.
 
 As duas peças visuais foram entregues (2026-10-17 ~23h).
 
