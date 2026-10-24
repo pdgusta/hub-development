@@ -162,3 +162,7 @@ Nada aplicado: global real só com o aval e o Gustavo vendo, com cópia e hash a
   `C:/Program Files/PowerShell/7/pwsh.exe` e `C:/context-hub/agents/code/kit/par/banco/laco.ps1`; `.git/info/exclude`
   com `# hub:exclusoes:inicio`; `par.json` = lenovo-ideapad; AGENTS.md por link no Codex e no Copilot e import no
   `~/.claude/CLAUDE.md`; status do hub igual ao do passo 5. Próximo: passo 7 (as duas tarefas, com o Gustavo).
+- 2026-10-24 10:10: **passo 7 feito** (aval): `hub-sincronizador` (logon, repete a cada 1 min) e `hub-vigia` (a cada 5
+  min) registradas. `hub-sincronizador` rodada à mão: resultado 0, nada a religar (daemon 29000 intacto; sem linha
+  nova no `laco.log`). `hub-vigia` rodou sozinha às 10:10:01: resultado 0. `hub-manutencao-diaria` não registrada.
+  Próximo: passo 8 (apagar `C:/Projetos/hub-kit`) e passo 9 (à mão).
