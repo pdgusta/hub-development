@@ -302,3 +302,11 @@ Nada aplicado: global real só com o aval e o Gustavo vendo, com cópia e hash a
   duas regras amplas "Node.js JavaScript Runtime" (TCP/UDP, qualquer porta e endereço, Privado e Público; o Wi-Fi é
   Público), então `HOST=0.0.0.0` exporia o painel no Wi-Fi. Comandos dados ao Gustavo (admin): desativar as duas e
   criar "FreeLLMAPI (só tailnet)" na 3001 para `100.64.0.0/10`. Não ligar o servidor antes de conferir as regras.
+- 2026-10-24 17:55: **FreeLLMAPI nativo no ar no B** (opção A do Gustavo). Firewall: as duas regras amplas do `node.exe`
+  desativadas pelo Gustavo (admin) e "FreeLLMAPI (só tailnet)" criada (TCP 3001, `100.64.0.0/10`), conferido.
+  Build v0.11.0 ok; `C:\freellmapi-data\iniciar.ps1` (`NODE_ENV=production`, `HOST=0.0.0.0`, `FREEAPI_ENV_PATH`,
+  `FREEAPI_DB_PATH`, log em `C:\freellmapi-data\servidor.log`). `/api/ping` ok em 127.0.0.1 e 100.121.86.61; banco do A
+  aberto. **Servidor roda hoje como processo de segundo plano desta sessão (PID 56572):** cai se a sessão fechar.
+  Tarefa `freellmapi` no logon: a permissão automática recusou registrar ("Unauthorized Persistence"); comando dado ao
+  Gustavo. Recado ao A: ping pela tailnet + uma chamada de chat com a chave dele (modelo explícito), depois
+  `FREELLM_BASE_URL` e `docker update --restart=no`. Aqui não há `FREELLM_API_KEY` (o `video-generator` daqui precisa).
