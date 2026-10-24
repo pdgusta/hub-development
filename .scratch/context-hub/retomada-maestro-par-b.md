@@ -156,3 +156,9 @@ Nada aplicado: global real só com o aval e o Gustavo vendo, com cópia e hash a
   8 skills por junction em `.claude/skills` e `.agents/skills`, `par.json`, MCP hub-busca e hub-banco nos três, hooks
   nos três, Codex com `sandbox_mode` total; 10 gera os XML de `hub-vigia` e `hub-manutencao-diaria` (este não será
   registrado). Mexe no global real: espera o aval do Gustavo.
+- 2026-10-24: **passo 6 feito** (aval; saída 0; `passo6.txt` no scratchpad). 04 regravou o XML do laço; 08 tirou o GSD
+  do global (176 itens, com registro para `desfazer`) e ligou contrato, 8 skills, MCP hub-busca/hub-banco e hooks nos
+  três; 10 gerou os XML de hub-vigia e hub-manutencao-diaria. Conferido: XML do laço com
+  `C:/Program Files/PowerShell/7/pwsh.exe` e `C:/context-hub/agents/code/kit/par/banco/laco.ps1`; `.git/info/exclude`
+  com `# hub:exclusoes:inicio`; `par.json` = lenovo-ideapad; AGENTS.md por link no Codex e no Copilot e import no
+  `~/.claude/CLAUDE.md`; status do hub igual ao do passo 5. Próximo: passo 7 (as duas tarefas, com o Gustavo).
