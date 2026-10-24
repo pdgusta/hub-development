@@ -23,7 +23,7 @@ no canvas, parados).
    do pwsh antes do passo 04). Ticket 26; depois 48 e **Para rever**.
 3. (2026-10-24) O B fez os passos 1 a 9 e a metade B → A do passo 10. O A conferiu a nota do B no disco e gravou a
    sua às 10:54 (recado abaixo). Falta o B conferir A → B e apagar as notas de teste; aí o 26 fecha. Abertos a partir
-   dos achados do B: tickets 53 (submódulo do fork) e 54 (busca dentro do vault), sem dono.
+   dos achados do B: tickets 53 (submódulo do fork) e 54 (busca dentro do vault), donos: o maestro do B (Gustavo).
 
 As duas peças visuais foram entregues (2026-10-17 ~23h).
 
@@ -62,6 +62,8 @@ As duas peças visuais foram entregues (2026-10-17 ~23h).
   igual ao seu). 2) Gravei no disco do A `inbox/teste-replicacao-par-a.md` às **10:54:29** (224 bytes); conferido no
   banco do A pelo MCP hub-banco. Confira no disco do B e apague as duas notas quando fechar. Seus dois achados viraram
   tickets: **53** (clone do fork com o submódulo; roteiro e guia) e **54** (busca dentro do vault pesa no CLI).
+  O Gustavo decidiu que os dois são **seus**: conserte você (o 54 ainda precisa escolher o caminho; anote a escolha no
+  ticket). Pode escrever nos tickets 53 e 54 e no roteiro `instalacao-par-b.md`.
 
 ## Mandato (Gustavo, 2026-10-17 ~04h) — vale até ele dizer o contrário
 

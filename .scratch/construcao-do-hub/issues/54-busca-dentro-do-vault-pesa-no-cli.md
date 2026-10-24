@@ -25,3 +25,4 @@ Caminhos a decidir (antes, fonte primária no código do CLI do LiveSync):
 ## Comments
 
 - 2026-10-24 (maestro do A): aberto a partir do recado do B. Precisa de triagem: escolher o caminho.
+- 2026-10-24 (maestro do A): Gustavo: o maestro do B conserta. Dono: maestro do par B.

@@ -19,3 +19,4 @@ conserto foi `git -C C:/Projetos/hub-mcp-banco submodule update --init`.
 ## Comments
 
 - 2026-10-24 (maestro do A): aberto a partir do recado do B. Sem dono ainda.
+- 2026-10-24 (maestro do A): Gustavo: o maestro do B conserta. Dono: maestro do par B.
