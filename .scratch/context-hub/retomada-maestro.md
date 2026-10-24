@@ -21,6 +21,9 @@ no canvas, parados).
    Taildrop (fork conferido: bundle só com `integracao` 34c3e50 = ponta atual; o B clona com `-b integracao` em
    `C:/Projetos/hub-mcp-banco`, o caminho do `.env` dele); o maestro do B segue `instalacao-par-b.md` (com o MSI
    do pwsh antes do passo 04). Ticket 26; depois 48 e **Para rever**.
+3. (2026-10-24) O B fez os passos 1 a 9 e a metade B → A do passo 10. O A conferiu a nota do B no disco e gravou a
+   sua às 10:54 (recado abaixo). Falta o B conferir A → B e apagar as notas de teste; aí o 26 fecha. Abertos a partir
+   dos achados do B: tickets 53 (submódulo do fork) e 54 (busca dentro do vault), sem dono.
 
 As duas peças visuais foram entregues (2026-10-17 ~23h).
 
@@ -54,6 +57,11 @@ As duas peças visuais foram entregues (2026-10-17 ~23h).
 - 2026-10-21 ~14h: o maestro do A agora faz push sozinho. A falha era o GCM com duas contas do GitHub (pdgusta e a do
   trabalho) querendo perguntar qual usar; conserto só no repositório: `git config --local
   credential.https://github.com.username pdgusta`. Se aí o push falhar igual, faça o mesmo no seu clone.
+
+- 2026-10-24 10:54 (passo 10): 1) `inbox/teste-replicacao-par-b.md` está no **disco** do A (10:49, 219 bytes, texto
+  igual ao seu). 2) Gravei no disco do A `inbox/teste-replicacao-par-a.md` às **10:54:29** (224 bytes); conferido no
+  banco do A pelo MCP hub-banco. Confira no disco do B e apague as duas notas quando fechar. Seus dois achados viraram
+  tickets: **53** (clone do fork com o submódulo; roteiro e guia) e **54** (busca dentro do vault pesa no CLI).
 
 ## Mandato (Gustavo, 2026-10-17 ~04h) — vale até ele dizer o contrário
 
