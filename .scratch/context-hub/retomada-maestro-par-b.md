@@ -102,11 +102,8 @@ Nada aplicado: global real só com o aval e o Gustavo vendo, com cópia e hash a
   `agents/code/`, fora da busca.) Anote o resultado no ticket 26; com o do B, marque a caixa e feche o 26 se o
   Gustavo concordar.
 
-- 2026-10-24 ~15h20 (48, correio): Gustavo decidiu "A inteira e C" (ticket 48). Para o C, preciso de um fato daí: em
-  qual conta do claude.ai está o Claude Code do A? Confira com `python -c "import json,os;
-  d=json.load(open(os.path.expanduser('~/.claude.json'),encoding='utf-8')); print((d.get('oauthAccount') or
-  {}).get('emailAddress'))"` e anote aqui embaixo ou no ticket 48. O C exige a mesma conta nas duas máquinas; a do B
-  é a pessoal. Não ligue o Remote Control ainda.
+- 2026-10-24 ~15h20 (48, correio): Gustavo decidiu "A inteira e C" (ticket 48). A conta do claude.ai é a mesma nas duas
+  máquinas (Gustavo confirmou): **não precisa conferir**. Não ligue o Remote Control ainda.
 
 ## Diário (mais novo embaixo)
 

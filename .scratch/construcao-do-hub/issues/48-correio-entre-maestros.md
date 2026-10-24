@@ -58,3 +58,4 @@ help` e `maestri routine create --help` (CLI 2026-10-24), a ferramenta `ListAgen
   `offline` recebe quando reconectar. A mensagem conta como uso, igual a um prompt digitado. Ela não aprova nada,
   não muda configuração e não roda comandos no destino. Limite de tamanho por mensagem (`#limitations`, não lido).
   Conta do Claude Code no B: a pessoal (`organizationRole: admin`, assinatura), v2.1.310. A do A: não conferida.
+- 2026-10-24 ~15h25 (Gustavo, Maestri Chat): o Claude Code das duas máquinas está na mesma conta do claude.ai.
