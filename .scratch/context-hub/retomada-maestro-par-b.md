@@ -223,3 +223,11 @@ Nada aplicado: global real só com o aval e o Gustavo vendo, com cópia e hash a
 - 2026-10-24: **Gustavo (chat azul): A.** Juntar 53+54 de uma vez quando o 54 ficar pronto: `git -C C:/context-hub
   merge --ff-only ticket-54` (contém o 53), push pelo Gustavo, A faz `fetch` + `reset --mixed origin/main`; depois,
   aplicar o 54 nos dois pares e medir no A. Esperando o "54 pronto" do Malho.
+- 2026-10-24 ~13h: **54 pronto** (Malho): ramo `ticket-54` (dc6c0b0, 43ff3f1, a9f1b4d) a partir do `ticket-53`;
+  `HUB_BUSCA_DIR` (modelo `C:\hub-par\busca`), ponteiro `.local/busca.json`, o 03 rodado de novo muda um par antigo
+  (renomeia, mesmo disco). Índice da busca (3 arquivos `.obsidian-hybrid-search.db*`) segue na raiz do hub: o pacote
+  fixa o caminho. Testes do 54 7/7; suíte 368/12 falhas de ambiente. Relatório `etapas/relatorio-54-busca-fora-do-vault.md`
+  com os comandos para A e B e a medida no A. **Junção feita** (12:58): `merge --ff-only ticket-54` no `C:/context-hub`,
+  main 70a9f73 → a9f1b4d, nenhum rastreado alterado. 21 arquivos subindo ao banco (lento: a busca ainda está no vault);
+  espera por `espera-21.mjs` (scratchpad). Depois: push pelo Gustavo; A: `fetch` + `reset --mixed origin/main`; mudar a
+  busca no B e no A (com a busca parada) e medir no A.

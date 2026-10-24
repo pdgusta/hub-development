@@ -60,6 +60,7 @@ pwsh "$Kit\agents\code\kit\par\montar-cli-livesync.ps1" -Destino C:\hub-par\live
 
 ```powershell
 # 4. Simulação e depois banco, busca, MCP e a espera, com a pasta do hub vazia (Docker Desktop ligado)
+#    o .env precisa da linha HUB_BUSCA_DIR (modelo env\03.env): a busca vai para C:\hub-par\busca, fora do hub (ticket 54)
 pwsh "$Kit\agents\code\kit\par\instalar.ps1" -Casa $HOME -Hub $Hub -EnvFile $EnvB -Passos 00,03,04,05,espera -WhatIf
 pwsh "$Kit\agents\code\kit\par\instalar.ps1" -Casa $HOME -Hub $Hub -EnvFile $EnvB -Passos 00,03,04,05,espera -PrazoEspera 900
 # siga só com "o par recebeu o hub: N arquivos do banco no disco"; senão:
@@ -101,6 +102,20 @@ Remove-Item -Recurse -Force $Kit
 
 O que não foi provado (relatório do 49): o bloco 6 (o 04 do próprio hub depois do git) e o 03 e o 05 com a pasta vazia,
 só pela leitura. Pare e avise na sua retomada se algo sair diferente; o maestro do A acompanha por ela.
+
+## Depois do ticket 54: a busca sai do hub (par B já instalado)
+
+Com o 54 juntado no hub e o aval do Gustavo, como no guia (`agents/code/docs/instalacao.md`, §10, "Par já
+instalado"), com `$EnvB = 'C:\hub-transporte\lenovo-ideapad.env'`. Fecha o terminal "Busca" antes; o `-WhatIf` deve
+dizer "mudar a busca para C:\hub-par\busca".
+
+```powershell
+Add-Content $EnvB 'HUB_BUSCA_DIR=C:\hub-par\busca'
+pwsh C:\context-hub\agents\code\kit\par\03-busca.ps1 -Hub C:\context-hub -EnvFile $EnvB -WhatIf
+pwsh C:\context-hub\agents\code\kit\par\03-busca.ps1 -Hub C:\context-hub -EnvFile $EnvB
+Test-Path C:\context-hub\.local\busca   # False
+# terminal "Busca" de novo: pwsh -NoProfile -File C:\context-hub\agents\skills\busca\iniciar.ps1
+```
 
 ## Antes do passo 04 (2026-10-21, ticket 52)
 
