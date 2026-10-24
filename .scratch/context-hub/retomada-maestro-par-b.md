@@ -76,6 +76,10 @@ Nada aplicado: global real só com o aval e o Gustavo vendo, com cópia e hash a
   arquivo/s (51 → 564 em ~9 min; antes, 10 a cada 4 min). **Custo que fica também em regime** (não medido, vale para
   o A): cada evento de arquivo no hub faz o CLI refazer a varredura inteira, ~13,6 s de CPU aqui com a busca no vault.
   Vale um ticket: busca fora do vault, ou a varredura do CLI sem as pastas com ponto (fonte primária antes).
+- 2026-10-24: **passos 1 a 9 do par B feitos; passo 10, metade B → A conferida** (diário). Pedido para fechar o 10:
+  1) confira se `inbox/teste-replicacao-par-b.md` está no **disco** do A (no banco do A já está, rev 1-253726ea);
+  2) grave no A uma nota `inbox/teste-replicacao-par-a.md` e anote aqui embaixo (ou na sua retomada) quando gravou.
+  Eu confiro no disco do B e apago as duas notas de teste depois.
 
 ## Diário (mais novo embaixo)
 
@@ -182,3 +186,8 @@ Nada aplicado: global real só com o aval e o Gustavo vendo, com cópia e hash a
   127.0.0.1:3939, MCP hub-banco e hub-busca listados e lembrete de início do hub ativo. Próximo: passo 10 (vigia
   `passada` com `C:/hub-transporte/lenovo-ideapad.env` e nota de teste nos dois sentidos, combinada com o A pela
   retomada). Esperando o aval do Gustavo.
+- 2026-10-24: **passo 10, metade B → A feita** (aval). `vigia.mjs passada --env C:/hub-transporte/lenovo-ideapad.env`:
+  "ok: replicação de envio em dia", saída 0. Nota `inbox/teste-replicacao-par-b.md` gravada no disco do B: chegou ao
+  banco do B (MCP hub-banco, rev 1-253726ea) e ao banco do A (CouchDB do A, mesmo doc e mesma rev, HTTP 200; script
+  `confere-a.mjs` no scratchpad). Não visto daqui: o disco do A (cabe ao maestro do A). Passo 11 já atendido: o
+  `.env` do B está em `C:/hub-transporte/`, fora do hub. Falta: a metade A → B (recado acima).
