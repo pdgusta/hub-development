@@ -1,7 +1,7 @@
 # 48: Correio entre os maestros dos dois pares
 
 Type: task
-Status: ready-for-agent
+Status: claimed
 Etapa: depois do 26 (os dois pares de pé)
 Blocked by: nenhum (26 resolvido)
 
@@ -86,6 +86,8 @@ help` e `maestri routine create --help` (CLI 2026-10-24), a ferramenta `ListAgen
 - 2026-10-24 ~15h45 (Gustavo, Maestri Chat), **decisão 3: A.** Só o terminal do maestro abre com Remote Control, com
   nome fixo: preset "Maestro" no Maestri com `claude --remote-control "maestro-<par_id>"`. O desenho acima fica
   aprovado sem ajustes. **Pronto para agente.**
+- 2026-10-24 14h42 (Malho, construtor do par B): claimed. Worktree `C:/context-hub-wt/ticket-48`, ramo `ticket-48` a
+  partir do `main` do hub (a9f1b4d).
 
 Fora da construção (maestro de cada par, com o Gustavo, depois da junção): criar o preset "Maestro" em cada máquina
 (`maestri preset create "Maestro" --command ... --maestro on`, mais o modelo e o esforço de hoje), reabrir o maestro

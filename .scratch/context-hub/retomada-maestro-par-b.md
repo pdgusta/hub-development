@@ -307,3 +307,7 @@ Nada aplicado: global real só com o aval e o Gustavo vendo, com cópia e hash a
   a campainha; o Remote Control fica só no terminal do maestro, com o preset "Maestro" (`claude --remote-control
   "maestro-<par_id>"`). Desenho aprovado (ticket 48). **48 em `ready-for-agent`**, esperando o `/implement 48` (o
   Malho está livre).
+- 2026-10-24 ~16h: Gustavo invocou `/implement 48`. Brief em `.scratch/construcao-do-hub/etapas/brief-48-par-b.md`
+  (worktree `C:/context-hub-wt/ticket-48` a partir do `main` a9f1b4d; preset, Remote Control e recado de teste ficam com
+  o maestro). Malho (compactado enquanto parado; o "leia a sua retomada" no campo era só a sugestão do Claude Code)
+  recebeu e começou. Esperando o "48 pronto".
