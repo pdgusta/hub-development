@@ -272,3 +272,7 @@ Nada aplicado: global real só com o aval e o Gustavo vendo, com cópia e hash a
   (política "MCP servers in Copilot", allowlist no `managed-settings.json`, três jeitos de entregar a política, o que
   checar no A). No B: Copilot só com `pdgusta`, sem política local. O teste do 26 no A agora também mostra o efeito
   dessa política.
+- 2026-10-24 ~14h20: o A já tinha rodado o teste (f49142a): Codex ok; Copilot (conta do trabalho) bloqueado: "Third-party
+  MCP servers are disabled by your organization's Copilot policy" e "Access denied by policy settings". **Pergunta ao
+  Gustavo (chat azul):** fechar o 26 com a ressalva e abrir um ticket para o Copilot no A (recomendada), ou logar a
+  pdgusta no A e repetir o teste antes.
