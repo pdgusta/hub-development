@@ -310,3 +310,13 @@ Nada aplicado: global real só com o aval e o Gustavo vendo, com cópia e hash a
   Tarefa `freellmapi` no logon: a permissão automática recusou registrar ("Unauthorized Persistence"); comando dado ao
   Gustavo. Recado ao A: ping pela tailnet + uma chamada de chat com a chave dele (modelo explícito), depois
   `FREELLM_BASE_URL` e `docker update --restart=no`. Aqui não há `FREELLM_API_KEY` (o `video-generator` daqui precisa).
+- 2026-10-24 ~18h10: A testou pela tailnet (ping 200; `/v1/models` 345; chat `groqopenaigpt-oss-20b` 200, chave
+  unificada abriu; `mistral-small-latest` 502 de um revendedor, fora da mudança), fez `docker update --restart=no` e
+  pôs `FREELLM_BASE_URL` no A, com o `video-generator` e os scripts do planejamento lendo a variável. **Gustavo: nada
+  de tarefa no logon nem servidor preso a sessão**; quer uma skill do hub que liga sob demanda e fica no ar sem
+  sessão: **ticket 57** (`issues/57-skill-freellmapi.md`, ready-for-agent). Até ele, o servidor segue como processo
+  desta sessão (PID 56572). `C:\freellmapi-data\iniciar.ps1` sai depois da junção.
+- 2026-10-24 ~18h10: **mod contexto-agentes** não aparecia aqui: caminho do `maestri.exe` fixo do usuário do A.
+  Consertado (`$.env.get('LOCALAPPDATA')`) em `global-do-maestro/mods/contexto-agentes/hooks/register.tsx`,
+  `claude plugin validate` ok, copiado para `~/.claude/mods` (antes no scratchpad, `register.tsx.antes`). Vale na
+  próxima sessão; conferir o painel ao reabrir. Recado ao A.

@@ -7,7 +7,12 @@ import { isMaestro, parseAgentNames, parseUsage } from './parse'
 const PANE = 'contexto-agentes'
 const LIMIT = 40
 const PERIOD_MS = 60_000
-const MAESTRI = 'C:\\Users\\gustavo.delfino\\AppData\\Local\\Programs\\Maestri\\resources\\cli\\maestri.exe'
+
+// O usuário do Windows muda de uma máquina para a outra; o Maestri fica sempre no LOCALAPPDATA dele.
+async function maestri($: EngineInterface): Promise<string> {
+  const local = await $.env.get('LOCALAPPDATA')
+  return `${local}\\Programs\\Maestri\\resources\\cli\\maestri.exe`
+}
 
 const snapshot = atom({ plugin: 'contexto-agentes', key: 'snapshot' } as const, {
   agents: [],
@@ -26,11 +31,12 @@ async function refresh($: EngineInterface) {
   if (busy) return
   busy = true
   try {
-    const list = await $.process.run([MAESTRI, 'list'], { timeoutMs: 20_000 })
+    const exe = await maestri($)
+    const list = await $.process.run([exe, 'list'], { timeoutMs: 20_000 })
     const names = parseAgentNames(list.stdout)
     const agents: AgentUsage[] = []
     for (const name of names) {
-      const check = await $.process.run([MAESTRI, 'check', name], { timeoutMs: 20_000 })
+      const check = await $.process.run([exe, 'check', name], { timeoutMs: 20_000 })
       agents.push({ name, ...parseUsage(check.stdout) })
     }
     const now = new Date()
@@ -47,7 +53,7 @@ async function refresh($: EngineInterface) {
 
 export const register: Register = on => {
   on('session.start', async ($, e, next) => {
-    const who = await $.process.run([MAESTRI, 'list'], { timeoutMs: 20_000 }).catch(() => null)
+    const who = await $.process.run([await maestri($), 'list'], { timeoutMs: 20_000 }).catch(() => null)
     if (!who || !isMaestro(who.stdout)) return next(e)
 
     await $.command.register({
