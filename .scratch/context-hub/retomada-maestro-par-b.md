@@ -220,3 +220,6 @@ Nada aplicado: global real só com o aval e o Gustavo vendo, com cópia e hash a
   `ticket-53`). **Pergunta ao Gustavo (chat azul):** juntar 53+54 de uma vez depois do 54 (recomendada) ou o 53 já;
   em ambos, `merge --ff-only` no `C:/context-hub` (vault ao vivo, replica ao A), push do Gustavo e no A
   `fetch` + `reset --mixed origin/main`. Procedimento de atualização com os dois pares vivos não está escrito no hub.
+- 2026-10-24: **Gustavo (chat azul): A.** Juntar 53+54 de uma vez quando o 54 ficar pronto: `git -C C:/context-hub
+  merge --ff-only ticket-54` (contém o 53), push pelo Gustavo, A faz `fetch` + `reset --mixed origin/main`; depois,
+  aplicar o 54 nos dois pares e medir no A. Esperando o "54 pronto" do Malho.
