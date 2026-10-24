@@ -250,3 +250,7 @@ Nada aplicado: global real só com o aval e o Gustavo vendo, com cópia e hash a
   `iniciar.ps1` (porta 3939, sem aviso do caminho antigo). Logo depois os arquivos subiram: SKILL.md da busca no banco
   com a data da junção; daemon parado (0 s de CPU em 10 s); vigia `ok: replicação de envio em dia`. Varredura
   aproximada do relatório no B, depois: 740 arquivos, 7.393 `lstat`, 370 ms. Falta: o A (recado acima).
+- 2026-10-24 ~13h45: **o A aplicou** (retomada do A, 0355d8e): `reset --mixed` sem `M`, busca em `C:\hub-par\busca`,
+  varredura 1.016 ms → 124 ms (9.897 → 1.309 arquivos). **Tickets 53 e 54 resolvidos.** Frente do par B sem pendência
+  própria; o 26 (`ready-for-human`) fecha com o Gustavo. Malho sem fila no canvas. Lição: o bash desta ferramenta come
+  `\b` em `printf` e em python por heredoc; caminhos Windows com `\b` vão pelo Edit ou pelo PowerShell.

@@ -1,7 +1,7 @@
 # 54: A busca dentro do vault deixa o CLI do LiveSync lento
 
 Type: task
-Status: claimed
+Status: resolved
 Etapa: conserto do 26 (achado na instalação do par B)
 Blocked by: nenhum
 
@@ -64,8 +64,8 @@ e `livesync`), por uma chave nova no `.env` (nome a definir na construção; sug
 não muda; issue no projeto original não foi pedida.
 
 - [x] decisão registrada aqui
-- [ ] conserto no kit, com teste
-- [ ] medida no A antes e depois (tempo da varredura com e sem `.local`)
+- [x] conserto no kit, com teste
+- [x] medida no A antes e depois (tempo da varredura com e sem `.local`)
 
 ## Comments
 
@@ -77,3 +77,4 @@ não muda; issue no projeto original não foi pedida.
 - 2026-10-24 12h01 (Malho, construtor do par B): claimed. Worktree `C:/context-hub-wt/ticket-54`, ramo `ticket-54` a partir do `ticket-53` (e4ba4b5; o 53 não foi juntado).
 - 2026-10-24 12h57 (Malho): pronto e revisado no ramo `ticket-54` (dc6c0b0, 43ff3f1, a9f1b4d), a partir do `ticket-53`, sem junção nem push. A busca vai para a `HUB_BUSCA_DIR` do `.env` (modelo `C:\hub-par\busca`); o hub guarda o ponteiro `.local/busca.json`; o 03 rodado de novo muda a busca de um par antigo sem reinstalar (guia §10, "Par já instalado"). O índice (3 arquivos) fica na raiz do hub, porque o pacote fixa o caminho. `12-kit-busca` 7/7 (vermelho antes); 12-busca 9/9 e 13-gemini 4/4 sozinhos; suíte: 368 passam, 12 falham (as de ambiente do 53). Comandos para os dois pares e a medida no A estão no relatório: `etapas/relatorio-54-busca-fora-do-vault.md`.
 - 2026-10-24 ~13h40 (maestro do A): aplicado no A. `reset --mixed origin/main` sem `M`; 03 com `-EnvFile` mudou a busca para `C:\hub-par\busca` (8.589 arquivos; ponteiro gravado; religada no terminal Busca). Medida no A com o comando do relatório: antes 9.897 arquivos, 106.110 `lstat`, 1.016 ms; depois 1.309 arquivos, 12.147 `lstat`, 124 ms. Detalhe na retomada do A.
+- 2026-10-24 (maestro do B): **resolvido.** Juntado no `main` do hub (a9f1b4d, push do Gustavo). Busca fora do vault nos dois pares (`C:\hub-parusca`). Varredura aproximada: B depois 740 arquivos, 370 ms; A 1.016 ms → 124 ms (9.897 → 1.309 arquivos).
