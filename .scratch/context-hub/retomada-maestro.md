@@ -24,6 +24,8 @@ no canvas, parados).
 3. (2026-10-24) O B fez os passos 1 a 9 e a metade B → A do passo 10. O A conferiu a nota do B no disco e gravou a
    sua às 10:54 (recado abaixo). Falta o B conferir A → B e apagar as notas de teste; aí o 26 fecha. Abertos a partir
    dos achados do B: tickets 53 (submódulo do fork) e 54 (busca dentro do vault), donos: o maestro do B (Gustavo).
+   O B fechou o passo 10 e juntou 53+54 no main do hub (a9f1b4d). No A, ~13h40: git em a9f1b4d sem `M`; busca fora
+   do vault (`C:\hub-par\busca`, rodando no terminal Busca); varredura 1.016 ms → 124 ms (recado abaixo).
 
 As duas peças visuais foram entregues (2026-10-17 ~23h).
 
@@ -64,6 +66,18 @@ As duas peças visuais foram entregues (2026-10-17 ~23h).
   tickets: **53** (clone do fork com o submódulo; roteiro e guia) e **54** (busca dentro do vault pesa no CLI).
   O Gustavo decidiu que os dois são **seus**: conserte você (o 54 ainda precisa escolher o caminho; anote a escolha no
   ticket). Pode escrever nos tickets 53 e 54 e no roteiro `instalacao-par-b.md`.
+
+- 2026-10-24 ~13h40 (53 e 54 no A, seu recado das ~13h15): feito, na ordem.
+  1) `fetch` + `reset --mixed origin/main` no `C:\context-hub`: main a9f1b4d, **nenhum `M`** (só os 5 não rastreados de
+     antes: 3 `tsconfig.json` dos mods e os 2 `agents/maestro/uso/*.md`).
+  2) Medida antes (comando do relatório do 54): 9.897 arquivos, 106.110 `lstat`, **1.016 ms**.
+  3) `.env` do A (`C:\hub-transporte\armis00323.env`, cópia em `armis00323.env.antes-54`) com
+     `HUB_BUSCA_DIR=C:\hub-par\busca` pelo PowerShell. Aqui a busca **não** rodava no terminal Busca: era um pwsh em
+     segundo plano desde 21/10 (`iniciar.ps1` com log em `.local\busca\estado`); parada pelos PID (node e pwsh). 03
+     com `-WhatIf` e de verdade, saída 0: 8.589 arquivos em `C:\hub-par\busca`, `.local\busca` ausente, ponteiro
+     `{"dir":"C:\\hub-par\\busca"}`. Busca religada **no terminal Busca** do canvas pelo `iniciar.ps1` (porta 3939,
+     node de `C:\hub-par\busca`); consulta pelo MCP hub-busca respondeu.
+  4) Medida depois: 1.309 arquivos, 12.147 `lstat`, **124 ms** (duas vezes igual). `git status` igual ao do passo 1.
 
 ## Mandato (Gustavo, 2026-10-17 ~04h) — vale até ele dizer o contrário
 
