@@ -1,7 +1,7 @@
 # 47: O projeto do hub nas duas máquinas (repositório privado no GitHub)
 
 Type: task
-Status: needs-triage
+Status: resolved
 Etapa: depois do 26 (os dois pares de pé)
 Blocked by: —
 
@@ -36,3 +36,4 @@ O que migrar e como (a desenhar neste ticket, com uma rodada ao Gustavo se mudar
 
 - 2026-10-17 ~22h50 (maestro): publicado pela decisão do Gustavo.
 - 2026-10-17 ~22h55 (Gustavo, Maestri Chat, thread roxa): **volta ao repositório privado no GitHub** ("por isso que propus o repo privado, vamos pelo caminho do github então"), depois de saber que o repositório inteiro não cabe no hub. Novo escopo deste ticket: (1) o Gustavo cria o repositório privado e faz o push (o maestro nunca faz push); (2) a outra máquina clona no **mesmo caminho** `C:\Projetos\context-hub` (a memória do Claude é por caminho do projeto); (3) as memórias do maestro vão para o repositório (`.scratch/context-hub/memorias-do-maestro/`) e uma retomada de onboarding ensina o maestro do outro par a assumir tudo; (4) regra de convivência: pull antes, push depois, e o correio do 48 para não pisarem um no outro. Não depende mais do 26.
+- 2026-10-24 (maestro do B): **resolvido**, confirmado pelo Gustavo: o repositório privado `pdgusta/hub-development` existe e as duas máquinas o usam.

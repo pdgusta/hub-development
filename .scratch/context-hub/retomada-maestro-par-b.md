@@ -292,3 +292,7 @@ Nada aplicado: global real só com o aval e o Gustavo vendo, com cópia e hash a
   o usam: parece pronto, falta o Gustavo confirmar), 48 (correio entre os maestros, desbloqueado pelo 26) e o 56 da
   frente antiga (laço do system design, `claimed` desde 15/10). Recomendado ao Gustavo como próximo: o 48. O Malho está
   livre no canvas.
+- 2026-10-24 ~15h: **47 resolvido** (Gustavo confirmou). **Frente agora: ticket 48 (correio entre os maestros)**,
+  `claimed` por este maestro. Pesquisa gravada no ticket (vigia com itens de outros donos, rotina do Maestri, sem
+  ponte entre máquinas no Maestri). **Rodada 1 ao Gustavo (chat azul):** onde mora o correio e como avisa. A, arquivo
+  por par no hub + item da vigia (recomendada); B, git com vigia de `fetch`; C, Remote Control do Claude Code.
