@@ -1,9 +1,9 @@
 # 48: Correio entre os maestros dos dois pares
 
 Type: task
-Status: claimed
+Status: ready-for-agent
 Etapa: depois do 26 (os dois pares de pé)
-Blocked by: 26
+Blocked by: nenhum (26 resolvido)
 
 **What to build:** O maestro do outro PC é outra sessão; os dois precisam conversar e não pisar um no outro. Ideia do
 Gustavo (2026-10-17 ~22h45): **um arquivo de retomada no próprio hub, com cada maestro de cada par lendo por um job**.
@@ -83,3 +83,10 @@ help` e `maestri routine create --help` (CLI 2026-10-24), a ferramenta `ListAgen
    marcar lido. Os recados entre maestros saem das retomadas do git (seção "Recados ao outro maestro") e passam a
    morar aqui. As retomadas continuam no repositório de planejamento.
 6. **Ligar o Remote Control do maestro:** decisão 3 (rodada ao Gustavo).
+- 2026-10-24 ~15h45 (Gustavo, Maestri Chat), **decisão 3: A.** Só o terminal do maestro abre com Remote Control, com
+  nome fixo: preset "Maestro" no Maestri com `claude --remote-control "maestro-<par_id>"`. O desenho acima fica
+  aprovado sem ajustes. **Pronto para agente.**
+
+Fora da construção (maestro de cada par, com o Gustavo, depois da junção): criar o preset "Maestro" em cada máquina
+(`maestri preset create "Maestro" --command ... --maestro on`, mais o modelo e o esforço de hoje), reabrir o maestro
+por ele, conferir os dois no `ListAgents` um do outro e mandar um recado de teste nos dois sentidos.

@@ -303,3 +303,7 @@ Nada aplicado: global real só com o aval e o Gustavo vendo, com cópia e hash a
   (Remote Control nas duas sessões, mesma conta do claude.ai, sessão parada acorda com a mensagem). Pedido ao A: a conta
   do Claude Code de lá. **Rodada 2 ao Gustavo (chat azul):** papel de cada canal (recomendada: o conteúdo sempre no
   arquivo do hub; a mensagem direta só como campainha).
+- 2026-10-24 ~15h45: **48, decisões 2 e 3 do Gustavo: A e A.** O recado mora no arquivo do hub e a mensagem direta é só
+  a campainha; o Remote Control fica só no terminal do maestro, com o preset "Maestro" (`claude --remote-control
+  "maestro-<par_id>"`). Desenho aprovado (ticket 48). **48 em `ready-for-agent`**, esperando o `/implement 48` (o
+  Malho está livre).
