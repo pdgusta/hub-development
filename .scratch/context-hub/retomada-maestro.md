@@ -53,8 +53,8 @@ no canvas, parados).
 6. (16:39-16:44) Recado do B: **FreeLLMAPI nativo no notebook pessoal** (decisão de 2026-10-14, ticket 16). Respondido
    pelo correio ("FreeLLMAPI nativo no B: respostas do A"): v0.11.0 / 955e9cf; contêiner do A parado desde 17/10
    (137); `.env` e a pasta `data` (com WAL) copiados por `docker cp` para `C:\hub-transporte\freellmapi-do-a\`
-   (hashes no recado). **Taildrop recusado pela permissão automática**: o Gustavo manda do A
-   (`tailscale file cp ...freellmapi.env ...freellmapi-data.zip lenovo-ideapad:`). Depois do teste do B: no A,
+   (hashes no recado). Taildrop recusado pela permissão automática; **o Gustavo mandou** (~16h50, sem erro; no `!`
+   o caminho vai com `/`). Recado "FreeLLMAPI: arquivos mandados por Taildrop" ao B. Depois do teste do B: no A,
    `FREELLM_BASE_URL=http://100.121.86.61:3001` (usuário; hoje não existe), `docker update --restart=no` no contêiner,
    e trocar `localhost:3001` fixo no global (`video-generator`) e no planejamento só com aval. Apagar a pasta de
    transporte quando o B confirmar os hashes.
