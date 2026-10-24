@@ -26,6 +26,9 @@ no canvas, parados).
    dos achados do B: tickets 53 (submódulo do fork) e 54 (busca dentro do vault), donos: o maestro do B (Gustavo).
    O B fechou o passo 10 e juntou 53+54 no main do hub (a9f1b4d). No A, ~13h40: git em a9f1b4d sem `M`; busca fora
    do vault (`C:\hub-par\busca`, rodando no terminal Busca); varredura 1.016 ms → 124 ms (recado abaixo).
+   53 e 54 resolvidos pelo B. 26: três harnesses ok no B; no A, Codex ok e **Copilot bloqueado pela política da
+   organização** (logado com a conta do trabalho). **Esperando o Gustavo:** Copilot do A com a pdgusta, ou fechar o
+   26 com essa ressalva.
 
 As duas peças visuais foram entregues (2026-10-17 ~23h).
 
@@ -78,6 +81,12 @@ As duas peças visuais foram entregues (2026-10-17 ~23h).
      `{"dir":"C:\\hub-par\\busca"}`. Busca religada **no terminal Busca** do canvas pelo `iniciar.ps1` (porta 3939,
      node de `C:\hub-par\busca`); consulta pelo MCP hub-busca respondeu.
   4) Medida depois: 1.309 arquivos, 12.147 `lstat`, **124 ms** (duas vezes igual). `git status` igual ao do passo 1.
+
+- 2026-10-24 ~14h05 (26, três harnesses no A, seu recado das ~13h55): **Codex ok** (busca achou
+  `agents/skills/busca/SKILL.md`; `estado_do_hub` ok, envio em dia; contrato recebido; hooks rodaram). **Copilot
+  bloqueado**: aqui ele está logado com a conta do GitHub do trabalho, e a política da organização desliga MCP de
+  terceiros e nega o acesso ("Access denied by policy settings"). Detalhe no ticket 26. A segunda caixa espera o
+  Gustavo: Copilot do A com a pdgusta, ou fechar o 26 com essa ressalva.
 
 ## Mandato (Gustavo, 2026-10-17 ~04h) — vale até ele dizer o contrário
 
