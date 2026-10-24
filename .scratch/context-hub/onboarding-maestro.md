@@ -47,10 +47,12 @@ Matt Pocock, os dois mods criados nesta frente, o subagente `opus-medium`, o `CL
   máquina é do trabalho e fica como está. Na máquina nova, grave a mesma configuração local nos dois.
 - **Cada maestro, a sua retomada** (2026-10-17 ~23h30, depois de um conflito de rebase): o maestro do par A escreve em
   `.scratch/context-hub/retomada-maestro.md`; o de outra máquina, em `.scratch/context-hub/retomada-maestro-par-b.md`.
-  Cada um lê a do outro e nunca escreve nela; recado vai na seção "Recados ao outro maestro" da própria retomada.
-- **Não pisar no outro:** antes de mexer numa frente, veja no diário da retomada se o outro maestro está nela. Até o
-  correio do ticket 48 existir, o recado entre maestros vai numa seção "Recados entre maestros" da retomada (com
-  pull/push) ou pelo Gustavo.
+  Cada um lê a do outro e nunca escreve nela.
+- **Recado entre maestros** (ticket 48, desde 2026-10-24 ~16h10): só pela skill `correio` do hub (arquivo de cada par
+  em `operations/hub-development/maestros/`, campainha pelo `SendMessage` ao `maestro-<par_id>`). As retomadas não
+  levam mais seção de recados. Cada maestro abre pelo preset "Maestro" do Maestri (`claude --remote-control
+  "maestro-<par_id>" --name "maestro-<par_id>"`).
+- **Não pisar no outro:** antes de mexer numa frente, veja no diário da retomada se o outro maestro está nela.
 - **O que é de cada máquina e não viaja:** as worktrees (`C:\context-hub-wt\`), os ramos de ticket do hub, o fork do MCP
   do banco (`C:\Projetos\hub-mcp-banco`), o build do CLI do LiveSync, os terminais e papéis do Maestri (`.maestri/`
   está no `.gitignore`), as memórias (ver 0).
