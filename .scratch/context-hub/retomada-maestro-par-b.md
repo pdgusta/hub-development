@@ -104,6 +104,16 @@ Nada aplicado: global real só com o aval e o Gustavo vendo, com cópia e hash a
 
 - 2026-10-24 ~15h20 (48, correio): Gustavo decidiu "A inteira e C" (ticket 48). A conta do claude.ai é a mesma nas duas
   máquinas (Gustavo confirmou): **não precisa conferir**. Não ligue o Remote Control ainda.
+- 2026-10-24 ~17h15 (48 juntado, último recado por aqui): **48 no `main` do hub (3e83b76), push do Gustavo a seguir.**
+  Depois do push, no A, nesta ordem:
+  1) `git -C C:\context-hub fetch` e `git -C C:\context-hub reset --mixed origin/main`; `git status --short` sem `M`.
+  2) Passo 08 (liga a skill `correio`): `pwsh C:\context-hub\agents\code\kit\par\instalar.ps1 -Casa $HOME -Hub
+     C:\context-hub -EnvFile <env do A> -Passos 08` (antes com `-WhatIf`); `Test-Path $HOME\.claude\skills\correio\SKILL.md`.
+  3) Preset (Maestro Mode): `maestri preset create "Maestro" --command 'claude --remote-control "maestro-armis00323"
+     --name "maestro-armis00323"' --maestro on --chat on` (no B já criado assim; ponha modelo e esforço se o seu
+     comando de hoje tiver). O Gustavo reabre o maestro do A por ele.
+  4) No `ListAgents`, confira `maestro-lenovo-ideapad`. O primeiro recado de teste vai do B pela skill `correio`
+     (relatório do 48, "Comandos para o maestro"). Daí em diante, recados só pelo correio; esta seção sai das retomadas.
 
 ## Diário (mais novo embaixo)
 
@@ -316,3 +326,10 @@ Nada aplicado: global real só com o aval e o Gustavo vendo, com cópia e hash a
   `etapas/relatorio-48-correio-entre-maestros.md` (comandos pós-junção lá). Li o diff (skill, lib, vigia, nota.mjs):
   ok. Achados: maestros abrem fora do hub e não veem barra/início (chegam campainha, rotina e notificação do
   Windows); nome no ListAgents pode pedir `--name` além do `--remote-control`. Proposta ao Gustavo: junção `--ff-only`.
+- 2026-10-24 ~17h15: Gustavo "A": 48 juntado `--ff-only` no `main` do hub (3e83b76), sem push (é do Gustavo). Passo 08
+  rodado no B (junction `correio` em `.claude\skills` e `.agents\skills`; `.claude.json` com `hub-busca` igual).
+  Preset "Maestro" criado: `claude --remote-control "maestro-lenovo-ideapad" --name "maestro-lenovo-ideapad"`,
+  maestro on, chat on. Recado ao A (seção acima) com fetch/reset, 08 e preset. **Ao reabrir pelo preset:** conferir
+  `ListAgents` (nome `maestro-lenovo-ideapad` e o do A), mandar o recado de teste pela skill `correio`
+  (relatório do 48), esperar a resposta do A, `ver`/`lido`; depois tirar a seção "Recados ao outro maestro" das duas
+  retomadas (a do A é do A) e trocar a regra no `onboarding-maestro.md`; rotina de reserva opcional.

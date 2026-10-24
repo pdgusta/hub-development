@@ -106,3 +106,7 @@ help` e `maestri routine create --help` (CLI 2026-10-24), a ferramenta `ListAgen
 Fora da construção (maestro de cada par, com o Gustavo, depois da junção): criar o preset "Maestro" em cada máquina
 (`maestri preset create "Maestro" --command ... --maestro on`, mais o modelo e o esforço de hoje), reabrir o maestro
 por ele, conferir os dois no `ListAgents` um do outro e mandar um recado de teste nos dois sentidos.
+- 2026-10-24 ~17h15 (maestro do B): aval do Gustavo ("A"); ramo juntado `--ff-only` no `main` do hub (3e83b76), push
+  com o Gustavo. No B: passo 08 (skill ligada) e preset "Maestro" com `--remote-control` e `--name`
+  `maestro-lenovo-ideapad` (o `--name` porque a doc diz que o nome do `ListAgents` vem do `/rename` ou `--name`). Falta:
+  o mesmo no A, reabrir os maestros, `ListAgents` e o recado de teste nos dois sentidos.
