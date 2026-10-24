@@ -294,3 +294,11 @@ Nada aplicado: global real só com o aval e o Gustavo vendo, com cópia e hash a
   `GET /api/ping` primeiro. **Decisão aberta com o Gustavo:** `HOST=100.121.86.61` ou `HOST=0.0.0.0` + firewall só
   `100.64.0.0/10` (recomendada). Depois, no A: `FREELLM_BASE_URL`, `docker update --restart=no`; `localhost:3001` fixo
   no `video-generator` global e no laço/bancada do planejamento (espera aval).
+- 2026-10-24: **radar** (pedido do Gustavo): papéis do Maestri que ensinam o recruta a trabalhar no canvas, além da
+  função (skill `maestro-papeis`), em `estrategia-pos-pesquisa.md` §Radar. Só no radar por enquanto.
+- 2026-10-24 17:4x: FreeLLMAPI: arquivos do A conferidos (hashes batem), em `C:\hub-transporte\freellmapi-do-a\` e o
+  banco aberto em `C:\freellmapi-data\data\`; `.env` copiado para `C:\freellmapi-data\freellmapi.env`. Recado ao A: não
+  apagar a cópia dele até o teste passar. Clone `C:\Projetos\freellmapi` v0.11.0, build em curso. **Firewall:** há
+  duas regras amplas "Node.js JavaScript Runtime" (TCP/UDP, qualquer porta e endereço, Privado e Público; o Wi-Fi é
+  Público), então `HOST=0.0.0.0` exporia o painel no Wi-Fi. Comandos dados ao Gustavo (admin): desativar as duas e
+  criar "FreeLLMAPI (só tailnet)" na 3001 para `100.64.0.0/10`. Não ligar o servidor antes de conferir as regras.
