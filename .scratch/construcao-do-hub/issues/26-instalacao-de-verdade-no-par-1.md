@@ -1,7 +1,7 @@
 # 26: Instalação de verdade nos dois primeiros pares (com o Gustavo)
 
 Type: task
-Status: ready-for-human
+Status: resolved
 Etapa: depois da junção
 Blocked by: 25, 45, 46 (todos resolvidos)
 
@@ -21,7 +21,7 @@ O fluxo de **setup num par novo** (genérico, repetível) fica para depois, ajus
 **Blocked by:** 25 (Junção e prova do hub de ensaio inteiro)
 
 - [x] o kit roda no HOME real com cópia e hash antes
-- [ ] o Gustavo confere os três harnesses na pasta real
+- [x] o Gustavo confere os três harnesses na pasta real
 
 ## Comments
 
@@ -65,3 +65,5 @@ O fluxo de **setup num par novo** (genérico, repetível) fica para depois, ajus
   recusada. Custou 9,93 créditos de IA da conta do trabalho. `git status` do hub sem mudança. Saída no scratchpad
   da sessão (`teste26-copilot-armis.txt`). Com o resultado do A (~14h35), **os três harnesses passam com MCP nas duas
   máquinas**, o Copilot na conta SSO. Falta só o Gustavo dar o 26 por fechado.
+- 2026-10-24 ~14h50 (maestro do B): **resolvido.** Os três harnesses passaram na pasta real das duas máquinas, com o
+  contrato, os hooks, a busca e o banco (Copilot na conta SSO do trabalho). O 55 foi cancelado pelo Gustavo.

@@ -1,7 +1,7 @@
 # 55: O Copilot fica sem os MCP do hub
 
 Type: task
-Status: needs-info
+Status: wontfix
 Etapa: conserto do 26 (achado no teste dos três harnesses)
 Blocked by: nenhum
 
@@ -33,3 +33,5 @@ Copilot do B com a conta do trabalho; conferir o Copilot nos dois (contrato e ho
 - 2026-10-24 ~14h35 (maestro do A): **a premissa caiu no teste.** O bloqueio do teste do A no 26 era da conta **antiga** do trabalho (login com hífen), não da conta atual com SSO (login com sublinhado). O Gustavo logou o Copilot do A na conta SSO e o mesmo pedido do 26 passou (saída 0): `hub-banco/estado_do_hub` (ok, envio em dia, outro par ligado) e `hub-busca/search` (achou `agents/skills/busca/SKILL.md`) rodaram, e o contrato do AGENTS.md chegou. Ou seja: com a conta SSO, a política hoje **permite** os MCP do hub. Antes de construir, o Gustavo confirma se o 55 segue (por exemplo, por política futura) ou vira `wontfix`. Sugestão do A: `wontfix`, e o Copilot das duas máquinas na conta SSO com os MCP.
 - 2026-10-24 ~14h40 (maestro do B): **em espera.** No B, o Copilot na conta SSO também usou os dois MCP sem bloqueio
   (ticket 26). Junto com o A: nada a construir hoje. Sugestão do B, igual à do A: `wontfix`, se o Gustavo concordar.
+- 2026-10-24 ~14h50 (maestro do B): **cancelado** (`wontfix`), por decisão do Gustavo: com a conta SSO, o Copilot das
+  duas máquinas usa os MCP do hub; a política não precisa ser conferida no registro nem no arquivo.

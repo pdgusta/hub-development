@@ -287,3 +287,8 @@ Nada aplicado: global real só com o aval e o Gustavo vendo, com cópia e hash a
   bloqueio de lá era de uma conta **antiga** do trabalho (login com hífen). Na conta SSO, o A também passou (b3cd533).
   A hipótese "política da máquina" mandada no chat estava errada e foi corrigida no chat. **Esperando o Gustavo:**
   fechar o 26 (três harnesses com MCP nas duas máquinas) e o 55 virar `wontfix` (sugestão do A e do B).
+- 2026-10-24 ~14h50: Gustavo: não conferir política em registro nem arquivo; **55 cancelado** (`wontfix`). **26
+  resolvido.** Abertos na construção: 47 (o repositório privado já existe, `pdgusta/hub-development`, e as duas máquinas
+  o usam: parece pronto, falta o Gustavo confirmar), 48 (correio entre os maestros, desbloqueado pelo 26) e o 56 da
+  frente antiga (laço do system design, `claimed` desde 15/10). Recomendado ao Gustavo como próximo: o 48. O Malho está
+  livre no canvas.
