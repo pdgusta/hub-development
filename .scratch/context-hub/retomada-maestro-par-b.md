@@ -198,3 +198,6 @@ Nada aplicado: global real só com o aval e o Gustavo vendo, com cópia e hash a
   chegou aos dois bancos (`f:4bbe…` e `f:14e4…`, rev 2 apagada, igual no B e no A; `confere-apagadas.mjs` no
   scratchpad). Tickets 53 (submódulo do fork) e 54 (busca dentro do vault) passaram a ser deste maestro (decisão do
   Gustavo, registrada pelo A). Próximo: o 53 (pronto para agente) e a triagem do 54.
+- 2026-10-24: **pesquisa do 54 feita** (aval), gravada no ticket: a varredura vem do `getFiles()` do CLI, que desce
+  em todas as pastas, inclusive as com ponto (o Obsidian não desce); nenhuma configuração a evita; no `main` de hoje
+  continua igual. Recomendação ao Gustavo: busca fora do vault (`C:/hub-par/busca`). Esperando a escolha.
