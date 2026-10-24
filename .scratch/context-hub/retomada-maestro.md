@@ -34,8 +34,12 @@ no canvas, parados).
    regravaria o `~/.claude.json` (hub-busca e hub-banco já iguais; só formatação, porque o 08 compara o texto inteiro).
    3) Preset "Maestro": `maestri preset create "Maestro" --command 'claude --remote-control "maestro-armis00323" --name
    "maestro-armis00323"' --maestro on --chat on` (o comando de hoje é só `claude`; modelo e esforço vêm do
-   settings.json). **Esperando o aval do Gustavo para 2 e 3**; depois ele reabre o maestro pelo preset e eu confiro
-   `maestro-lenovo-ideapad` no `ListAgents` e espero o recado de teste do B pela skill `correio`.
+   settings.json). **2 e 3 FEITOS** (aval do Gustavo, ~17h40): 08 saída 0, junctions `correio` nas duas pastas
+   (→ `C:\context-hub\agents\skills\correio`); `~/.claude.json` sem chave diferente (cópia em
+   `claude.json.antes-48` no scratchpad; hash antes B5FCF670). Preset "Maestro" criado (maestro on, chat on).
+   **Próximo:** o Gustavo reabre o maestro do A pelo preset; na sessão nova, `ListAgents` deve mostrar
+   `maestro-lenovo-ideapad`; responder o recado de teste do B pela skill `correio` (relatório do 48, "Comandos para o
+   maestro"); depois tirar a seção "Recados ao outro maestro" desta retomada.
 
 As duas peças visuais foram entregues (2026-10-17 ~23h).
 
