@@ -170,3 +170,10 @@ Nada aplicado: global real só com o aval e o Gustavo vendo, com cópia e hash a
   processo o usava e que não tinha mudança local. Passo 9, estado de partida: `HUB_MCP_BANCO_TOKEN` ainda não é
   variável do usuário (o `.claude.json` já usa `${HUB_MCP_BANCO_TOKEN}`); `CLAUDE_CODE_PLUGIN_DIRS` só com
   contexto-agentes e guarda-de-recrutas; os três mods do hub existem. Esperando o aval do Gustavo para o 9.
+- 2026-10-24 10:20: **passo 9, itens 1 a 3 feitos** (aval). 1: `HUB_MCP_BANCO_TOKEN` como variável do usuário (valor do
+  `.env` do B, 32 caracteres, não mostrado). 2: `~/.claude/settings.json` (hash antes b5707aef…, depois c8ba7a0a…):
+  `CLAUDE_CODE_PLUGIN_DIRS` + fim-da-resposta, roteamento e vigia de `C:/context-hub/agents/code/mods/` (JSON válido,
+  as 5 pastas existem; a escrita passou desta vez). 3: terminal Shell "Busca" no canvas (`maestri recruit --preset
+  Shell`), rodando `iniciar.ps1`: modelo carregado, `[mcp-http] listening on http://127.0.0.1:3939/mcp`, indexando.
+  Falta o item 4 (Gustavo reabre o Maestri) e o passo 10. Lembrete do A: depois de reabrir, se o hub-busca falhar na
+  partida da sessão (busca ainda parada), `/mcp` reconecta.
