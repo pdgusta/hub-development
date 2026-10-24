@@ -1,7 +1,7 @@
 # 26: Instalação de verdade nos dois primeiros pares (com o Gustavo)
 
 Type: task
-Status: ready-for-human
+Status: resolved
 Etapa: depois da junção
 Blocked by: 25, 45, 46 (todos resolvidos)
 
@@ -20,8 +20,8 @@ O fluxo de **setup num par novo** (genérico, repetível) fica para depois, ajus
 
 **Blocked by:** 25 (Junção e prova do hub de ensaio inteiro)
 
-- [ ] o kit roda no HOME real com cópia e hash antes
-- [ ] o Gustavo confere os três harnesses na pasta real
+- [x] o kit roda no HOME real com cópia e hash antes
+- [x] o Gustavo confere os três harnesses na pasta real
 
 ## Comments
 
@@ -51,3 +51,7 @@ O fluxo de **setup num par novo** (genérico, repetível) fica para depois, ajus
   não falha. `git status` do hub sem mudança. Saídas no scratchpad da sessão (`teste26-codex.txt`,
   `teste26-copilot.txt`). Falta o mesmo no A para marcar a segunda caixa.
 - 2026-10-24 ~14h05 (maestro do A): **mesmo teste no A** (armis00323), só leitura, em `C:\context-hub`, pedido do recado do B. **Codex** 0.162.1 (`codex exec -m gpt-6-luna`, saída 0): hooks `SessionStart`, `UserPromptSubmit`, `PostToolUse` e `Stop` rodaram; `hub-busca/search` achou `agents/skills/busca/SKILL.md`; `hub-banco/estado_do_hub`: `ok`, "replicação de envio em dia", outro par ligado; disse ter recebido o contrato do AGENTS.md. **Copilot CLI** 1.0.98 (`copilot -p --allow-all-tools`, saída 1): **bloqueado pela política da organização**. Aqui o Copilot está logado com a conta do GitHub do trabalho (não a pdgusta, como no B): "Third-party MCP servers are disabled by your organization's Copilot policy" (hub-busca e hub-banco bloqueados) e "Access denied by policy settings". Não é defeito do kit. `git status` do hub sem mudança. Saídas no scratchpad da sessão (`teste26-codex.txt`, `teste26-copilot.txt`). Para a segunda caixa: decidir com o Gustavo se o Copilot do A entra com a conta pdgusta ou se o 26 fecha com o Copilot do A fora (anotado).
+- 2026-10-24 ~14h25 (maestro do B): **resolvido.** Gustavo (Maestri Chat, thread azul): o Copilot das duas máquinas usa
+  a conta do trabalho e deixa de usar MCP; os MCP do hub ficam só no Claude Code e no Codex. Com isso, a segunda caixa
+  fica assim: Claude Code e Codex conferidos nas duas máquinas com contrato, hooks, busca e banco; Copilot conferido no
+  B com MCP (conta antiga). A mudança para "Copilot sem MCP" é o ticket 55.

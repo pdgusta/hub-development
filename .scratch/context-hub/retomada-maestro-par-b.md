@@ -276,3 +276,8 @@ Nada aplicado: global real só com o aval e o Gustavo vendo, com cópia e hash a
   MCP servers are disabled by your organization's Copilot policy" e "Access denied by policy settings". **Pergunta ao
   Gustavo (chat azul):** fechar o 26 com a ressalva e abrir um ticket para o Copilot no A (recomendada), ou logar a
   pdgusta no A e repetir o teste antes.
+- 2026-10-24 ~14h25: **Gustavo: o Copilot das duas máquinas usa a conta do trabalho e deixa de usar MCP**; os MCP do
+  hub ficam só no Claude Code e no Codex. **26 resolvido** com essa decisão; **ticket 55** aberto
+  (`issues/55-copilot-sem-mcp-do-hub.md`, ready-for-agent): o 08 para de registrar e tira os MCP do Copilot, o contrato e
+  as skills dizem ao Copilot como achar e gravar sem MCP, testes e docs. Espera o `/implement 55`. Depois da junção:
+  08 de novo nos dois pares; o Gustavo loga o Copilot do B com a conta do trabalho.
