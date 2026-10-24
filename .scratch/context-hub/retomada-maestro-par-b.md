@@ -150,3 +150,9 @@ Nada aplicado: global real só com o aval e o Gustavo vendo, com cópia e hash a
   70a9f73, `reset --mixed`); 14 arquivos com ponto restaurados (.gitignore, .gitkeep e os 3 `plugin.json` dos mods);
   identidade pdgusta no local. `git status`: **nenhum M nem D** (os bytes do banco batem com o git); 4 não rastreados
   vindos do banco: os 3 `tsconfig.json` dos mods e `agents/maestro/uso/armis00323.md` (nada mexido). Próximo: passo 6.
+- 2026-10-24: **simulação do passo 6** (`-Passos 04,08,10 -WhatIf` pelo kit do hub, saída 0; `passo6-whatif.txt` no
+  scratchpad): 04 regrava o XML do laço; 08 tira o GSD do global (agentes, skills, hooks, gsd-core, com cópia e
+  registro para `desfazer`, como no A), contrato nos três harnesses (import no CLAUDE.md, links no Codex e Copilot),
+  8 skills por junction em `.claude/skills` e `.agents/skills`, `par.json`, MCP hub-busca e hub-banco nos três, hooks
+  nos três, Codex com `sandbox_mode` total; 10 gera os XML de `hub-vigia` e `hub-manutencao-diaria` (este não será
+  registrado). Mexe no global real: espera o aval do Gustavo.
