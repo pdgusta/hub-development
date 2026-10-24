@@ -35,4 +35,17 @@ Relatório `etapas/relatorio-53-clone-do-fork-com-submodulo.md`; ramo `ticket-53
   `22-proxy.test.ps1` (Docker) passa `-EnvFile` ao 03, sem rodar (não rodei Docker).
 - **Fim:** consertos da revisão em a9f1b4d. 12-kit-busca 7/7, 12-busca 9/9, 13-gemini 4/4 sozinhos; suíte 368/12 falhas
   de ambiente. Relatório `etapas/relatorio-54-busca-fora-do-vault.md`; comentário no ticket.
-- **Próximo passo:** nada; 54 entregue ao maestro. Esperar a junção ou um pedido de conserto.
+- **Próximo passo:** nada; 54 entregue ao maestro.
+
+## Ticket 48: entregue (3e83b76; abaixo, o histórico)
+
+- **Ticket:** `issues/48-correio-entre-maestros.md`, brief `etapas/brief-48-par-b.md`. `claimed`.
+- **Ramo/worktree:** `ticket-48` em `C:/context-hub-wt/ticket-48`, a partir do `main` (a9f1b4d). Commits 5d2d641
+  (código e testes) e fa78f26 (skill e docs).
+- **Feito:** lib `bin/lib/correio.mjs`, skill `agents/skills/correio/` (recado/ver/lido/pendente), item `correio` na
+  passada, tela (barra e início), isenção da retomada em `nota.mjs`, tipo `correio`. Testes sozinhos: 48 3/3, 17 20/20,
+  18 (caso do correio), 23-kit 25/25. Relatório `etapas/relatorio-48-correio-entre-maestros.md` com as seções
+  "Testes" e "Revisão" PENDENTES.
+- **Fim:** revisão nos dois eixos; consertos em 3e83b76. Sozinhos verdes: 48, 16, 17, 18, 23-kit e 09. Suíte: 373
+  passam, 13 falham (as de ambiente, mais o 09 sob carga). Relatório completo, comentário no ticket, maestro avisado.
+- **Próximo passo:** nada. Esperar a junção ou um pedido de conserto.

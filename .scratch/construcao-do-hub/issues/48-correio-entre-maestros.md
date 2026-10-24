@@ -88,6 +88,20 @@ help` e `maestri routine create --help` (CLI 2026-10-24), a ferramenta `ListAgen
   aprovado sem ajustes. **Pronto para agente.**
 - 2026-10-24 14h42 (Malho, construtor do par B): claimed. Worktree `C:/context-hub-wt/ticket-48`, ramo `ticket-48` a
   partir do `main` do hub (a9f1b4d).
+- 2026-10-24 (Malho): pronto e revisado no ramo `ticket-48` (5d2d641, fa78f26, 3e83b76), sem junção nem push.
+  - **Escolhas da construção (itens 1 e 4):**
+    - **tipo novo `correio`** (`agents/frontmatter/correio.yml`, exige `par_id`), no caminho da decisão 1;
+      `work/handoff` mudaria o caminho e é passagem de recruta;
+    - **a rotina fica:** o `correio pendente` sai 1 sem recado, e pela skill `maestri-routines` o pre-run diferente de
+      zero pula o disparo (não verificado na prática);
+    - **o arquivo do correio não cobra a retomada** de `operations/hub-development`.
+  - **Testes:** `48-correio` 4/4, com vermelho antes; 16, 17, 18 e 23-kit verdes sozinhos; suíte: 373 passam e 13
+    falham. Das 13, 12 são as falhas de ambiente do 53 e do 54; a outra é o 09, cortado no limite sob carga, que
+    passa sozinho.
+  - **Achados para o maestro:** a barra e o início só aparecem em sessão dentro do hub, e os maestros abrem fora; o
+    nome no `ListAgents` pode pedir `--name`.
+  - **No relatório:** os comandos (08 do kit, preset, recado de teste, rotina, tirar das retomadas a seção "Recados ao
+    outro maestro"), em `etapas/relatorio-48-correio-entre-maestros.md`.
 
 Fora da construção (maestro de cada par, com o Gustavo, depois da junção): criar o preset "Maestro" em cada máquina
 (`maestri preset create "Maestro" --command ... --maestro on`, mais o modelo e o esforço de hoje), reabrir o maestro

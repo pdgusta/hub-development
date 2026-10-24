@@ -311,3 +311,8 @@ Nada aplicado: global real só com o aval e o Gustavo vendo, com cópia e hash a
   (worktree `C:/context-hub-wt/ticket-48` a partir do `main` a9f1b4d; preset, Remote Control e recado de teste ficam com
   o maestro). Malho (compactado enquanto parado; o "leia a sua retomada" no campo era só a sugestão do Claude Code)
   recebeu e começou. Esperando o "48 pronto".
+- 2026-10-24 ~17h: "48 pronto" do Malho: ramo `ticket-48` (5d2d641, fa78f26, 3e83b76) desde a9f1b4d, revisado; 48-correio
+  4/4, suíte 373/13 (as 12 de ambiente + 09 sob carga, que passa sozinho). Relatório em
+  `etapas/relatorio-48-correio-entre-maestros.md` (comandos pós-junção lá). Li o diff (skill, lib, vigia, nota.mjs):
+  ok. Achados: maestros abrem fora do hub e não veem barra/início (chegam campainha, rotina e notificação do
+  Windows); nome no ListAgents pode pedir `--name` além do `--remote-control`. Proposta ao Gustavo: junção `--ff-only`.
