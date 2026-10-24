@@ -56,8 +56,10 @@ no canvas, parados).
    (hashes no recado). Taildrop recusado pela permissão automática; **o Gustavo mandou** (~17h30, sem erro; no `!`
    o caminho vai com `/`). Recado "FreeLLMAPI: arquivos mandados por Taildrop" ao B. Depois do teste do B: no A,
    `FREELLM_BASE_URL=http://100.121.86.61:3001` (usuário; hoje não existe), `docker update --restart=no` no contêiner,
-   e trocar `localhost:3001` fixo no global (`video-generator`) e no planejamento só com aval. Apagar a pasta de
-   transporte quando o B confirmar os hashes.
+   e trocar `localhost:3001` fixo no global (`video-generator`) e no planejamento só com aval.
+   17:37 (B): hashes conferidos; dados em `C:\freellmapi-data` no B; Gustavo escolheu `HOST=0.0.0.0` + firewall só
+   `100.64.0.0/10`; clone v0.11.0, build rodando. **Não apagar** `C:\hub-transporte\freellmapi-do-a\` no A até o B
+   avisar que passou no `/api/ping` e numa chamada de modelo (ele avisa pelo correio).
 
 As duas peças visuais foram entregues (2026-10-17 ~23h).
 
