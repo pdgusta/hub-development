@@ -177,3 +177,8 @@ Nada aplicado: global real só com o aval e o Gustavo vendo, com cópia e hash a
   Shell`), rodando `iniciar.ps1`: modelo carregado, `[mcp-http] listening on http://127.0.0.1:3939/mcp`, indexando.
   Falta o item 4 (Gustavo reabre o Maestri) e o passo 10. Lembrete do A: depois de reabrir, se o hub-busca falhar na
   partida da sessão (busca ainda parada), `/mcp` reconecta.
+- 2026-10-24 (sessão nova, depois de reabrir o Maestri): **passo 9, item 4 conferido**: nesta sessão
+  `HUB_MCP_BANCO_TOKEN` presente (32 caracteres), `CLAUDE_CODE_PLUGIN_DIRS` com os 5 mods, busca respondendo em
+  127.0.0.1:3939, MCP hub-banco e hub-busca listados e lembrete de início do hub ativo. Próximo: passo 10 (vigia
+  `passada` com `C:/hub-transporte/lenovo-ideapad.env` e nota de teste nos dois sentidos, combinada com o A pela
+  retomada). Esperando o aval do Gustavo.
