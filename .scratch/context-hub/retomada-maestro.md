@@ -102,8 +102,11 @@ no canvas, parados).
    de `pwsh -WindowStyle Hidden` a `conhost.exe --headless "pwsh.exe" ...` (`banco.psm1`, `Write-TarefaSincronizador`;
    decisão em `agents/code/docs/decisoes.md`). Código já replicado no A, **sem commit** (combinar com o Gustavo quem
    commita: as mudanças estão nas duas cópias). XML gerado e conferido em `C:\hub-par\banco\tarefa-sincronizador.xml`
-   (logon + PT1M; só a ação muda). **Esperando o aval do Gustavo** para `schtasks /create ... /f` e uma volta. Cuidado:
-   regravar zera a repetição de 1 min até o próximo logon.
+   (logon + PT1M; só a ação muda). 00:12 (aval do Gustavo): `schtasks /create ... /f` com êxito; ação = `conhost.exe
+   --headless "pwsh.exe" ...`; uma volta com 0; daemon no mesmo PID de 22:56. Recado "Janela piscando: conserto
+   aplicado no A" ao B. **Falta:** a repetição de 1 min só volta no próximo logon; o Gustavo confirmar que a janela
+   parou; combinar quem commita no hub (no A, `banco.psm1`, o teste e as docs estão `M`, com outras mudanças
+   replicadas).
 
 As duas peças visuais foram entregues (2026-10-17 ~23h).
 
