@@ -3,13 +3,22 @@ import type { EngineInterface, Register } from 'claude-code'
 import { lerAcoes, lerAvaliacao, lerEstado, lerRecrutas } from './analise'
 import type { Acao, Estado } from './analise'
 
-const MAESTRI = 'C:\\Users\\gustavo.delfino\\AppData\\Local\\Programs\\Maestri\\resources\\cli\\maestri.exe'
-const REGRAS = 'C:\\Users\\gustavo.delfino\\.claude\\mods\\guarda-de-recrutas\\regras-do-maestro.md'
+// O usuário do Windows muda de uma máquina para a outra; o Maestri fica sempre no LOCALAPPDATA dele.
+async function maestri($: EngineInterface): Promise<string> {
+  const local = await $.env.get('LOCALAPPDATA')
+  return `${local}\\Programs\\Maestri\\resources\\cli\\maestri.exe`
+}
+
+async function regras($: EngineInterface): Promise<string> {
+  const casa = await $.env.get('USERPROFILE')
+  return `${casa}\\.claude\\mods\\guarda-de-recrutas\\regras-do-maestro.md`
+}
 
 type Alvo = { nome: string; estado: Estado | null }
 
 // Os recrutas que o comando atinge, com o estado de cada um no terminal.
 async function alvos($: EngineInterface, acoes: Acao[]): Promise<Alvo[]> {
+  const MAESTRI = await maestri($)
   const list = await $.process.run([MAESTRI, 'list'], { timeoutMs: 20_000 })
   const recrutas = lerRecrutas(list.stdout)
   const nomes = new Set<string>()
@@ -39,6 +48,7 @@ async function julgar($: EngineInterface, comando: string): Promise<string | nul
 
   const efeito = acoes.some(a => a.efeito === 'remove') ? 'reinicia ou remove' : 'reinicia'
   const lista = await alvos($, acoes)
+  const REGRAS = await regras($)
   const ocupados = lista.filter(a => a.estado?.ocupado)
   const linhas = lista.length ? lista.map(a => `- ${descrever(a)}`).join('\n') : '- nenhum recruta conectado com esse papel'
   const cabeca = `guarda-de-recrutas: este comando ${efeito} o terminal destes recrutas, e a sessão deles acaba:\n${linhas}`
@@ -54,10 +64,10 @@ export const register: Register = on => {
     on('tool.call', { tool }, async ($, e, next) => {
       const motivo = await julgar($, e.command)
       return motivo ? { deny: motivo } : next(e)
-    }).catch(($, e, next) => {
+    }).catch(async ($, e, next) => {
       if (next.called) return next(e)
       return lerAcoes(e.command).length && !lerAvaliacao(e.command)
-        ? { deny: `guarda-de-recrutas: não consegui conferir o estado dos recrutas. Leia ${REGRAS}; se, avaliado o risco, ainda for o certo, repita com "# risco-avaliado: <o que você conferiu>".` }
+        ? { deny: `guarda-de-recrutas: não consegui conferir o estado dos recrutas. Leia ${await regras($)}; se, avaliado o risco, ainda for o certo, repita com "# risco-avaliado: <o que você conferiu>".` }
         : next(e)
     })
   }
