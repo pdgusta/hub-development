@@ -105,8 +105,10 @@ no canvas, parados).
    (logon + PT1M; só a ação muda). 00:12 (aval do Gustavo): `schtasks /create ... /f` com êxito; ação = `conhost.exe
    --headless "pwsh.exe" ...`; uma volta com 0; daemon no mesmo PID de 22:56. Recado "Janela piscando: conserto
    aplicado no A" ao B. **Falta:** a repetição de 1 min só volta no próximo logon; o Gustavo confirmar que a janela
-   parou; combinar quem commita no hub (no A, `banco.psm1`, o teste e as docs estão `M`, com outras mudanças
-   replicadas).
+   parou. Commit (Gustavo: o A commita): **6bbf6be** no `main` do hub do A, só os seis arquivos do conserto
+   (`banco.psm1`, `kit-sem-docker.ps1`, `banco-do-par.md`, `kit-de-par.md`, `instalacao.md`, `decisoes.md`); teste
+   não rodado; **sem push** (push do hub é do Gustavo). Recado ao B: não commitar; depois do push, `git checkout --`
+   nos seis e `pull --ff-only`. As outras mudanças replicadas no hub do A (`M`/`??`) ficaram fora.
 
 As duas peças visuais foram entregues (2026-10-17 ~23h).
 
