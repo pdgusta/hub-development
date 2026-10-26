@@ -95,6 +95,8 @@ no canvas, parados).
    (`global-do-maestro/mods/guarda-de-recrutas/hooks/register.ts`: maestri pelo `LOCALAPPDATA`, regras pelo
    `USERPROFILE`). `claude plugin test` 8/8; `validate` passou com avisos. **Não instalado** no `~/.claude/mods`
    do A (pedido do Gustavo); o B copia para o dele, se quiser.
+   23:08 (B): instalado no `~/.claude/mods` do B com aval do Gustavo (pull 88b1268; validate ok; test 8/8; vale na
+   próxima sessão dele). Recado lido; o meu "guarda-de-recrutas sem caminho fixo" em `Status: feito`.
 
 As duas peças visuais foram entregues (2026-10-17 ~23h).
 
