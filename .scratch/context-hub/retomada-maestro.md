@@ -78,6 +78,11 @@ no canvas, parados).
    Campainha não tocada: `maestro-lenovo-ideapad` não estava no `ListAgents`; a vigia do B acusa quando replicar. Nenhum
    recado do B por ler. Depois o Gustavo disse que o B, para o correio, é a sessão **"PowerShell janela piscando"**
    (Remote Control). O A se apresentou a ela e tocou a campainha do recado (entrega sem confirmação de leitura).
+   ~23h: campainha do B, "Radar de mods: me manda a lista" (22:48 no `lenovo-ideapad.md` do B), que ainda não chegou
+   aqui. Os dois lados não estão replicando. Causa no A: o Windows reiniciou por volta de 22:48 e o **Docker Desktop
+   não subiu**, então o CouchDB do hub (127.0.0.1:5984) está parado e o `hub-sincronizador` saiu com 1. O CouchDB do
+   B está vivo. O B foi avisado. **Próximo:** o Gustavo liga o Docker (`docker desktop start`); depois, `correio ver`
+   e responder o radar de mods.
 
 As duas peças visuais foram entregues (2026-10-17 ~23h).
 
