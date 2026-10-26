@@ -76,7 +76,8 @@ no canvas, parados).
 7. (2026-10-25 22:50) O maestro do A atende agora na sessão do app **"Maestro do par A para correio"**
    (`maestro-armis00323` está offline). Recado "Campainha do A: endereço novo" em `maestros/armis00323.md`.
    Campainha não tocada: `maestro-lenovo-ideapad` não estava no `ListAgents`; a vigia do B acusa quando replicar. Nenhum
-   recado do B por ler.
+   recado do B por ler. Depois o Gustavo disse que o B, para o correio, é a sessão **"PowerShell janela piscando"**
+   (Remote Control). O A se apresentou a ela e tocou a campainha do recado (entrega sem confirmação de leitura).
 
 As duas peças visuais foram entregues (2026-10-17 ~23h).
 
