@@ -73,6 +73,10 @@ no canvas, parados).
    Mod `contexto-agentes`: o B tirou o caminho fixo do `maestri.exe` (`$.env.get('LOCALAPPDATA')`) na cópia em
    `global-do-maestro/mods/`; no A funciona como está. Copiar para `~/.claude/mods` do A é global: **só se o Gustavo
    quiser** (oferecido).
+7. (2026-10-25 22:50) O maestro do A atende agora na sessão do app **"Maestro do par A para correio"**
+   (`maestro-armis00323` está offline). Recado "Campainha do A: endereço novo" em `maestros/armis00323.md`.
+   Campainha não tocada: `maestro-lenovo-ideapad` não estava no `ListAgents`; a vigia do B acusa quando replicar. Nenhum
+   recado do B por ler.
 
 As duas peças visuais foram entregues (2026-10-17 ~23h).
 
