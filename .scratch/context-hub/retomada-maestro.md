@@ -101,7 +101,7 @@ no canvas, parados).
    o daemon do LiveSync do B parou de subir mudanças; o B religou com aval do Gustavo). Conserto: a ação da tarefa passa
    de `pwsh -WindowStyle Hidden` a `conhost.exe --headless "pwsh.exe" ...` (`banco.psm1`, `Write-TarefaSincronizador`;
    decisão em `agents/code/docs/decisoes.md`). Código já replicado no A, **sem commit** (combinar com o Gustavo quem
-   commita: as mudanças estão nas duas cópias). XML gerado e conferido em `C:\hub-paranco	arefa-sincronizador.xml`
+   commita: as mudanças estão nas duas cópias). XML gerado e conferido em `C:\hub-par\banco\tarefa-sincronizador.xml`
    (logon + PT1M; só a ação muda). **Esperando o aval do Gustavo** para `schtasks /create ... /f` e uma volta. Cuidado:
    regravar zera a repetição de 1 min até o próximo logon.
 
