@@ -1,5 +1,9 @@
 # Context Hub: prova de conceito
 
+> **Histórico, só de leitura (desde 2026-10-26).** O hub existe em `C:\context-hub`, e o trabalho nele mora em
+> `operations/hub-development/` do próprio hub (retomada, tarefas, decisões). Workspace e sessão que mexem no hub abrem
+> na raiz do hub. Aqui ficam a exploração, a spec e os tickets da construção, para consulta.
+
 Este repositório é a **prova de conceito** do context hub do Gustavo, onde ele é planejado e ensaiado.
 O hub final nasce do zero em outro lugar (`C:\context-hub` ou WSL, ainda em aberto). Uma decisão só
 está fechada quando consta de um ticket resolvido.

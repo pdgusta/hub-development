@@ -1,5 +1,8 @@
 # Retomada do maestro
 
+> **Congelada em 2026-10-26.** A retomada viva é `C:\context-hub\operations\hub-development\retomada.md`; as
+> pendências abertas foram para o `tasks.md` de lá. "Para rever" e "Radar", abaixo, seguem valendo como referência.
+
 Limpa em 2026-10-17 ~20h50 (pedido do Gustavo: sem contexto velho). O diário com hora de cada evento e os quadros
 antigos estão em `.scratch/construcao-do-hub/etapas/diario-da-construcao.md` (fonte das peças visuais). Atualize a cada evento.
 
