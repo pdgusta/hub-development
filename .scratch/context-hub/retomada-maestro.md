@@ -86,6 +86,13 @@ no canvas, parados).
    `hub-envio-para-o-outro-par` (A → B) `running`. B → A ainda sem o recado do B. Hipótese: o job do B está esperando
    para tentar de novo; pedido ao B para conferir. **Próximo:** quando chegar, `correio ver` e responder o radar de
    mods. O B sugeriu ligar o Docker Desktop no logon do A: **decisão do Gustavo** (pendente).
+   ~23h03: o job B → A estava `crashing` (recuo depois do A fora) e voltou sozinho; 1.259 documentos chegaram.
+   23:02: lido o "Radar de mods: me manda a lista" e respondido com "Radar de mods: a lista do A", com campainha.
+   A seção Radar não tem uma lista de mods: os mods que existem são vigia, fim-da-resposta e roteamento (hub),
+   contexto-agentes e guarda-de-recrutas (globais, os mesmos no A e no B). As ideias vêm do ticket 44 e da §3
+   (verificador com modelo obrigatório, política por modelo e por harness, registro de uso além das skills).
+   **Pendente com o Gustavo:** tirar o caminho fixo do `guarda-de-recrutas` (`MAESTRI` e `REGRAS` em
+   `register.ts`, o mesmo conserto do contexto-agentes) na cópia do planejamento.
 
 As duas peças visuais foram entregues (2026-10-17 ~23h).
 
