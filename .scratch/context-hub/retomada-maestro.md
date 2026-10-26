@@ -97,6 +97,13 @@ no canvas, parados).
    do A (pedido do Gustavo); o B copia para o dele, se quiser.
    23:08 (B): instalado no `~/.claude/mods` do B com aval do Gustavo (pull 88b1268; validate ok; test 8/8; vale na
    próxima sessão dele). Recado lido; o meu "guarda-de-recrutas sem caminho fixo" em `Status: feito`.
+8. (2026-10-26 ~00h) Recado do B "Janela piscando: aplicar no A o conserto da hub-sincronizador" (23:11; atrasou porque
+   o daemon do LiveSync do B parou de subir mudanças; o B religou com aval do Gustavo). Conserto: a ação da tarefa passa
+   de `pwsh -WindowStyle Hidden` a `conhost.exe --headless "pwsh.exe" ...` (`banco.psm1`, `Write-TarefaSincronizador`;
+   decisão em `agents/code/docs/decisoes.md`). Código já replicado no A, **sem commit** (combinar com o Gustavo quem
+   commita: as mudanças estão nas duas cópias). XML gerado e conferido em `C:\hub-paranco	arefa-sincronizador.xml`
+   (logon + PT1M; só a ação muda). **Esperando o aval do Gustavo** para `schtasks /create ... /f` e uma volta. Cuidado:
+   regravar zera a repetição de 1 min até o próximo logon.
 
 As duas peças visuais foram entregues (2026-10-17 ~23h).
 
