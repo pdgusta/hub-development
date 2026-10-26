@@ -81,8 +81,11 @@ no canvas, parados).
    ~23h: campainha do B, "Radar de mods: me manda a lista" (22:48 no `lenovo-ideapad.md` do B), que ainda não chegou
    aqui. Os dois lados não estão replicando. Causa no A: o Windows reiniciou por volta de 22:48 e o **Docker Desktop
    não subiu**, então o CouchDB do hub (127.0.0.1:5984) está parado e o `hub-sincronizador` saiu com 1. O CouchDB do
-   B está vivo. O B foi avisado. **Próximo:** o Gustavo liga o Docker (`docker desktop start`); depois, `correio ver`
-   e responder o radar de mods.
+   B está vivo. O B foi avisado. ~22h57 (aval do Gustavo): `docker desktop start`; `hub-banco` de pé (401 em
+   127.0.0.1 e na tailnet); `hub-sincronizador` religado (daemon do LiveSync ativo desde 22:56); job
+   `hub-envio-para-o-outro-par` (A → B) `running`. B → A ainda sem o recado do B. Hipótese: o job do B está esperando
+   para tentar de novo; pedido ao B para conferir. **Próximo:** quando chegar, `correio ver` e responder o radar de
+   mods. O B sugeriu ligar o Docker Desktop no logon do A: **decisão do Gustavo** (pendente).
 
 As duas peças visuais foram entregues (2026-10-17 ~23h).
 
